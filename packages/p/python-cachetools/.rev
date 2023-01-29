@@ -161,4 +161,13 @@
   * ``badges/shields``: Change to GitHub workflow badge routes.</comment>
     <requestid>1058183</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d1b76c219834a40ea279bd833cc289cd</srcmd5>
+    <version>5.3.0</version>
+    <time>1674997827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.0:
+  * Add ``cache_info()`` function to ``@cached`` decorator.</comment>
+    <requestid>1061731</requestid>
+  </revision>
 </revisionlist>

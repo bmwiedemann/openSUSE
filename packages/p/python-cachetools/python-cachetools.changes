@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 28 12:28:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Add ``cache_info()`` function to ``@cached`` decorator.
+
+-------------------------------------------------------------------
 Fri Jan 13 09:53:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.1:
