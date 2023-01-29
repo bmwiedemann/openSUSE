@@ -2779,4 +2779,12 @@ However, upstream development now focuses on 3.x series.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061142</requestid>
   </revision>
+  <revision rev="177" vrev="28">
+    <srcmd5>cf224534eabbe2985d32c2fc1960c0d8</srcmd5>
+    <version>2.7.18</version>
+    <time>1674997802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061590</requestid>
+  </revision>
 </revisionlist>

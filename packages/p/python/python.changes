@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:00:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
 Thu Jan 19 07:14:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_unverified_test.patch because apparently switching off

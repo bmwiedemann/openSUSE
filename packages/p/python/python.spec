@@ -148,8 +148,10 @@ BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
-%if %{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
+%endif
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libopenssl-1_1-devel
 %else
 BuildRequires:  libopenssl-devel
@@ -477,7 +479,9 @@ rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/itertools.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/linuxaudiodev.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/math.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/mmap.so
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/nis.so
+%endif
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/operator.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/ossaudiodev.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/parser.so

@@ -147,7 +147,7 @@ Patch74:        skip_unverified_test.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
-%if %{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  pkg-config
@@ -555,7 +555,9 @@ cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_v
 %{_libdir}/python%{python_version}/lib-dynload/linuxaudiodev.so
 %{_libdir}/python%{python_version}/lib-dynload/math.so
 %{_libdir}/python%{python_version}/lib-dynload/mmap.so
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 %{_libdir}/python%{python_version}/lib-dynload/nis.so
+%endif
 %{_libdir}/python%{python_version}/lib-dynload/operator.so
 %{_libdir}/python%{python_version}/lib-dynload/ossaudiodev.so
 %{_libdir}/python%{python_version}/lib-dynload/parser.so
