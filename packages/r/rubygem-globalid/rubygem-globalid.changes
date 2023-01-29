@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:27:44 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * URI::GID: Update #check_scheme, no need to call super by @alexcwatt in #146
+  * JSON-encode GlobalIDs as strings by @georgeclaghorn in #149
+  * Support pattern matching of GlobalID & GlobalID::URI by @ojab in #140
+  * prevent double find by @ooooooo-q in #148
+  * implement non signed global_id helper method on fixture set by @rainerborene in #144
+
+-------------------------------------------------------------------
+Mon Jan 23 23:46:01 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.0.1
+  Fix ReDoS vulnerability in name parsing (CVE-2023-22799 [bsc#1207587])
+
+-------------------------------------------------------------------
 Sat Dec 25 00:09:14 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.0.0
