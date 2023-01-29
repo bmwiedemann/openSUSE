@@ -1514,4 +1514,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1058079</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>5491d285f43599b77bd043a2ee246df1</srcmd5>
+    <version>1.9.2</version>
+    <time>1674997833</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.2:
+  * Fixed typing definitions for :meth:`.EnvironmentContext.get_x_argument`.
+    Typing stubs are now generated for overloaded proxied methods such as
+  * Fixed regression caused by :ticket:`1145` where the string transformations
+    applied to server defaults caused expressions such as ``(getdate())`` to no
+    longer compare as equivalent on SQL Server, others.</comment>
+    <requestid>1061744</requestid>
+  </revision>
 </revisionlist>

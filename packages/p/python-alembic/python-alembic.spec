@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-alembic
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 28 14:31:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Fixed typing definitions for :meth:`.EnvironmentContext.get_x_argument`.
+    Typing stubs are now generated for overloaded proxied methods such as
+  * Fixed regression caused by :ticket:`1145` where the string transformations
+    applied to server defaults caused expressions such as ``(getdate())`` to no
+    longer compare as equivalent on SQL Server, others.
+
+-------------------------------------------------------------------
 Thu Jan  5 20:33:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:
