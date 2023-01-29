@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-eventlet
-Version:        0.33.2
+Version:        0.33.3
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
