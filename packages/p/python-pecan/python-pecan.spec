@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.8
+# Still needed by pecan.testing
+Requires:       python-WebTest >= 1.3.1
 Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
 Requires:       python-six

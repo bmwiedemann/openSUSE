@@ -299,4 +299,12 @@
   * pecan no longer depends on webtest</comment>
     <requestid>990228</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8945310d04a0672066baa03ec3f3337e</srcmd5>
+    <version>1.4.2</version>
+    <time>1674997829</time>
+    <user>dimstar_suse</user>
+    <comment>- restore webtest dependency, needed by pecan.testing</comment>
+    <requestid>1061733</requestid>
+  </revision>
 </revisionlist>

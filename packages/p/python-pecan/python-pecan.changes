@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 28 12:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restore webtest dependency, needed by pecan.testing 
+
+-------------------------------------------------------------------
 Tue Jul 19 11:55:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
