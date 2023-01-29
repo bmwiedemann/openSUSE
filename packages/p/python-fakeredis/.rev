@@ -92,4 +92,41 @@
     <comment></comment>
     <requestid>1009253</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b0a356e8c8f20e768f694fde7cc1f445</srcmd5>
+    <version>2.5.0</version>
+    <time>1674997820</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.5.0:
+  * Implement support for BITPOS (bitmap command) (#112)
+  * Fix json mget when dict is returned (#114)
+  * fix: properly export (#116)
+  * Extract param handling (#113)
+
+- update to v2.4.0:
+  * Implement LCS (#111), BITOP (#110)
+  * Fix bug checking type in scan_iter (#109)
+  * Implement GETEX (#102)
+  * Implement support for JSON.STRAPPEND (json command) (#98)
+  * Implement JSON.STRLEN, JSON.TOGGLE and fix bugs with JSON.DEL (#96)
+  * Implement PUBSUB CHANNELS, PUBSUB NUMSUB
+  * Implement JSON.CLEAR (#87)
+  * Support for redis-py v4.4.0
+  * Implement json.mget (#85)
+  * Initial json module support - JSON.GET, JSON.SET and JSON.DEL (#80)
+  * fix: add nowait for asyncio disconnect (#76)
+  * Refactor how commands are registered (#79)
+  * Refactor tests from redispy4_plus (#77)
+  * Remove support for aioredis separate from redis-py (redis-py versions
+    4.1.2 and below). (#65)
+  * Add support for redis-py v4.4rc4 (#73)
+  * Add mypy support  (#74)
+  * Implement support for zmscore by @the-wondersmith in #67
+  * What's Changed
+  * implement GETDEL and SINTERCARD support by @cunla in #57
+  * Test get float-type behavior by @cunla in #59
+  * Implement BZPOPMIN/BZPOPMAX support by @cunla in #60
+- drop fakeredis-pr54-fix-ensure_str.patch (upstream)</comment>
+    <requestid>1061721</requestid>
+  </revision>
 </revisionlist>
