@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:13:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  *   Fix ``striptags`` not stripping tags containing newlines.
+
+-------------------------------------------------------------------
 Fri Jun 24 02:55:18 UTC 2022 - Manuel Jacob <me@manueljacob.de>
 
 - Patch PKG-INFO to avoid pip failing on Python 3.6 with 
