@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 30 07:53:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.4:
+  * [Added] adding sort column to inserts #396
+  * [Added] docker: Respect $DOCKER_HOST #424
+
+-------------------------------------------------------------------
 Mon Jan  9 18:01:11 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Clean up changes file

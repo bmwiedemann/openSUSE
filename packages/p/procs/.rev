@@ -7,4 +7,14 @@
     <comment>procs</comment>
     <requestid>1057142</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>adc2452b0fd2bcc866d449f29bb7622b</srcmd5>
+    <version>0.13.4</version>
+    <time>1675095075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.4:
+  * [Added] adding sort column to inserts #396
+  * [Added] docker: Respect $DOCKER_HOST #424</comment>
+    <requestid>1061999</requestid>
+  </revision>
 </revisionlist>

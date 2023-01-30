@@ -1,7 +1,7 @@
 #
 # spec file for package procs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           procs
-Version:        0.13.3
+Version:        0.13.4
 Release:        0
-Summary:        A modern replacement for ps written in Rust 
+Summary:        A modern replacement for ps written in Rust
 License:        MIT
 URL:            https://github.com/dalance/procs
 Source0:        %{name}-%{version}.tar.gz
@@ -50,4 +51,3 @@ rm %{buildroot}%{_prefix}/.crates2.json
 %{_bindir}/procs
 
 %changelog
-
