@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 29 16:16:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- introduce %hardcode_pci_list macro for hardcoding PCI ID 
+  modaliases for Supplements; make it default to *temporarily*
+  workaround boo#1207520
+  * TW: enable only officially supported headless GPUs!
+  * Leap/sle: enable all Turing and Ampere GPUs and set the
+    appropriate modprobe.d option, so we can at least begin
+    testing on sle15-sp5 ...
+- adds pci-table.patch, generati-pci-table.sh
+
+-------------------------------------------------------------------
 Wed Jan 25 15:00:04 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - added pesign-copy-sources, pesign-spec-macros, which are needed

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Find-Object
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name File-Find-Object
 Name:           perl-File-Find-Object
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
-Summary:        An object oriented File::Find replacement
 License:        Artistic-2.0
+Summary:        An object oriented File::Find replacement
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -31,6 +31,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Class::XSAccessor)
 BuildRequires:  perl(File::TreeCreate)
 BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Test::File) >= 1.993
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(parent)
 Requires:       perl(Class::XSAccessor)

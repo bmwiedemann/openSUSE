@@ -17,7 +17,7 @@
 
 
 Name:           yambar
-Version:        1.9.0+g28
+Version:        1.9.0+g34
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT

@@ -17,7 +17,7 @@
 
 
 Name:           dMagnetic
-Version:        0.34
+Version:        0.35
 Release:        0
 Summary:        An interpreter for Magnetic Scrolls games
 License:        BSD-2-Clause

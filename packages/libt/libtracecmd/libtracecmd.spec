@@ -1,7 +1,7 @@
 #
 # spec file for package libtracecmd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source:         https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/trace-cmd-libtracecmd-%version.tar.gz
-Patch1:         static-assign.patch
+Patch1:         0001-libtracecmd-Add-initial-support-for-meson.patch
+Patch2:         0002-trace-cmd-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libtracefs-devel >= 1.6
 BuildRequires:  libzstd-devel
+BuildRequires:  meson
 BuildRequires:  source-highlight
 BuildRequires:  xmlto
 
@@ -47,43 +49,40 @@ Library for creating and reading trace-cmd data files
 %package devel
 Summary:        Development files for libtracecmd
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 Development files of the libtracecmd library
 
 %prep
-%autosetup -p1 -n trace-cmd-libtracecmd-%{version}
+%autosetup -p1 -n trace-cmd-libtracecmd-%version
 
 %build
-%make_build V=1 prefix=%{_prefix} libdir=%{_libdir} libs
-make -j1 V=1 MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
+cd lib
+%meson \
+    -Ddocs-build=true \
+    -Dhtmldir="%_docdir/%name"
+%meson_build
 
 %install
-make -j1 V=1 DESTDIR=%buildroot \
-     libdir=%{_libdir} prefix=%{_prefix} \
-     pkgconfig_dir=%{_libdir}/pkgconfig \
-     htmldir=%{_docdir}/libtracecmd pdfdir=%{_docdir}/libtracecmd \
-     install_libs install_doc
-# remove files already built&shipped in trace-cmd
-for i in man1 man5 man8; do
-	rm -Rf "%buildroot/%_mandir/$i"
-done
+cd lib
+%meson_install
+
 %fdupes %buildroot/%_prefix
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
-%{_libdir}/libtracecmd.so.1*
+%files -n %lname
+%_libdir/libtracecmd.so.1*
 %license COPYING.LIB
 
 %files devel
-%{_includedir}/trace-cmd
-%{_libdir}/libtracecmd.so
-%{_libdir}/pkgconfig/*.pc
-%{_mandir}/man*/*
-%{_docdir}/libtracecmd
+%_includedir/trace-cmd
+%_libdir/libtracecmd.so
+%_libdir/pkgconfig/*.pc
+%_mandir/man*/*
+%_docdir/libtracecmd
 %license COPYING.LIB
 %doc README
 

@@ -1,7 +1,7 @@
 #
 # spec file for package pax-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pax-utils
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ Source:         https://ftp.halifax.rwth-aachen.de/gentoo/distfiles/pax-utils-%{
 # openSUSE patches
 Patch20:        pax-utils-handle-lib64.patch
 BuildRequires:  libcap-devel
+BuildRequires:  meson
+BuildRequires:  xmlto
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -39,11 +41,11 @@ non-executable stack.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)

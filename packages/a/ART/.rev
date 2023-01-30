@@ -125,4 +125,22 @@
 </comment>
     <requestid>1046545</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f63e9d87f834c9ab08fb5866a82b7edf</srcmd5>
+    <version>1.18.1</version>
+    <time>1675095087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.1:
+  * replace omp_get_max_threads() with omp_get_num_procs()
+  * denoise: more aggressive caching of auto chroma coefficients
+  * fixed corrupted thumbnails when using the libraw decoder with a custom raw crop
+  * trying to speedup denoise with automatic chroma
+  * denoise: try avoiding recomputation of automatic chrominance denoise when not necessary
+  * saveasdlg: fixed bug in setting filename
+  * try to recover if the exiftool process returns an error
+  * better integration with exiftool (reuse the same process instead of spawning a new one every time)
+  * added support for lcms2 fast float
+</comment>
+    <requestid>1062026</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 30 14:41:59 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.11.0
+- Handle repos with multiple keys in key file (fixes #118)
+
+-------------------------------------------------------------------
 Thu Jan 26 12:11:24 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.10.0

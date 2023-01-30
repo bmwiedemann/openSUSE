@@ -1,7 +1,7 @@
 #
 # spec file for package lapce
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lapce
-Version:        0.2.5+git17
+Version:        0.2.5+git87
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce

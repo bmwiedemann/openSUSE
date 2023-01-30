@@ -1,7 +1,7 @@
 #
 # spec file for package beforelight
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           beforelight
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Sample implementation of a screen saver for X servers
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -52,7 +52,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog README.md
+%license COPYING
 %{_bindir}/beforelight
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Beforelight

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:39:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * mpvitem: use loadFile() method on PlayListModel::playingItemChanged() signal
+  * only link the KIO libs that are actualy used
+  * Fix relative M3U loading
+  * HProgressBar: refactor chapters menu into a popup with a listview
+  * HProgressBar: add tooltip for 'Skip Chapter' checkbox in chapters popup
+  * playlistmodel: getSiblingItems: use percent-encoded path with QUrl 
+
+-------------------------------------------------------------------
 Wed Jan 25 10:49:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No need to BuildRequire yt-dlp/youtube-dl: this is only a

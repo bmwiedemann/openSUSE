@@ -1,3 +1,13 @@
+gpxsee (11.12) stable; urgency=medium
+
+  * Fixed broken parsing of KML tracks with empty coordinates.
+  * Fixed bug where OziExplorer maps prevented loading any other
+    maps from the same directory.
+  * Improved marine maps (ENC, IMG) render style.
+  * Added Korean localization.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 26 Jan 2023 23:49:44 +0100
+
 gpxsee (11.11) stable; urgency=low
 
   * Improved ENC maps render style.

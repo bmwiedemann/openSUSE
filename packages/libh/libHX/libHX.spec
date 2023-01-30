@@ -1,7 +1,7 @@
 #
 # spec file for package libHX
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        4.8
+Version:        4.10
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later

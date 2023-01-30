@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Jinja2_version                3.1.2
-%global Pillow_version                9.3.0
+%global Pillow_version                9.4.0
 %global PyYAML_version                6.0
 %global Twisted_version               22.10.0
-%global attrs_version                 22.1.0
+%global attrs_version                 22.2.0
 %global bcrypt_version                3.2.0
 %global bleach_version                3.3.0
 %global canonicaljson_version         1.6.4
@@ -41,7 +41,7 @@
 %global phonenumbers_version          8.13.2
 %global prometheus_client_version     0.15.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             22.1.0
+%global pyOpenSSL_version             23.0.0
 %global pyasn1_version                0.4.8
 %global pyasn1_modules_version        0.2.8
 %global pymacaroons_version           0.13.0
@@ -59,7 +59,7 @@
 %global psycopg2_version              2.9.5
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.0
-%global lxml_version                  4.8.0
+%global lxml_version                  4.9.2
 %global sentry_sdk_version            1.11.1
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
@@ -73,7 +73,7 @@
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
 %global Pillow_version                5.4.0
-%global PyYAML_version                3.11
+%global PyYAML_version                3.13
 %global Twisted_version               18.9.0
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.7
@@ -156,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.74.0
+Version:        1.75.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 29 15:48:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Disable deprecation warnings and tests requiring internet connection.
+- Update to version 4.0.4.
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.4
+  * Allow side_effect and verify to have parameters (#3730) @ehartmann
+  * Fix running tox:dockerfile with docker secretservice enabled (#3764) @zeitounator
+  * Add some FQCNs (#3750) @muellerbe
+  * Accept any string for "network_mode" in molecule.json schema (#3725) @fredflev
+  * Fix moved libera channel (#3727) @staticdev
+  * Add "default" as a valid docker "network_mode" in molecule.json schema (#3724) @fredflev
+  * JSON Schema: Allow additionalProperties in ProvisionerConfigOptionsSshConnectionModel (#3721) @fredflev
+  * Help messages when config does not match state file (#3713) @scottalreadytaken
+  * Re-add credentials to Docker registry schema (#3706) @TheLastProject
+  Changes from version 4.0.3:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.3
+  * Add support for cgroupns_mode (#3700) @zhan9san
+  * Platform env expects a dict of vars (#3690) @zeitounator
+  * Support ANSIBLE_COLLECTIONS_PATH environment var (#3681) @nre-ableton
+  * Fix schema (#3687) @jsf9k
+  * Bump ansible-compat from 2.2.0 to 2.2.1 (#3670)
+  Changes from version 4.0.2:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.2
+  * Use FQCN at any point I found (#3680) @muellerbe
+  * Schema fix (#3671) @apatard
+  * Adopt molecule config JSON schema (#3668) @ssbarnea
+  * Replace cerberus with jsonschema for configuration validation (#3638) @zhan9san
+  * Downgrade log level when linking Ansible variables (#3646) @sleiner
+  Changes from version 4.0.1:
+  Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.1
+  * Add support for Python 3.11 (#3621) @ssbarnea
+  * Added clarifications about customizing docker images (#3604) @timblaktu
+  * Fix undocumented env vars (#3600) @gardar
+  * Document description for action arguments (verify and side_effect) (#3605) @amarao
+  Changes from version 4.0.0:
+  Full Changelog: https://github.com/ansible-community/molecule/releases/tag/v4.0.0
+  * Removed mol command line alias (#3457) @ssbarnea
+  * Remove ansible and ansible-base extras (#3395) @ssbarnea
+  * Remove support for py36 and py37 (#3436) @ssbarnea
+  * Allow bypassing role name checking (#3549) @zhan9san
+  * Add support for MOLECULE_PLATFORM_NAME (#3416) @zhan9san
+  * Add args for verify and side_effect actions (#3467) @amarao
+  * Enable packit rpm building for Fedora 35 (#3456) @ssbarnea
+  * Remove ansible and ansible-base extras (#3395) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Jul 26 21:44:46 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Disable tests on Leap.

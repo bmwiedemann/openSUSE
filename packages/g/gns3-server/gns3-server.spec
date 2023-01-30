@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.31
+Version:        2.2.37
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ URL:            https://gns3.com/
 Source0:        https://github.com/GNS3/gns3-server/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
-Patch1:         gns3-server-fix-requirements.patch
 BuildRequires:  busybox
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
@@ -82,13 +81,22 @@ You will need the new GNS3 GUI (gns3-gui repository) to control the server.
 %autosetup -p1
 find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' {} +
 find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' {} +
+cp -f %{_bindir}/busybox gns3server/compute/docker/resources/bin/busybox
 ## Relax requirements
 # Leap 15.2
 %if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
 sed -i 's|aiohttp==3.7.4.post0|aiohttp>=3.6.1|g' requirements.txt
 %endif
-sed -i 's|aiohttp==3.7.4.post0|aiohttp>=3.7.4|g' requirements.txt
-sed -i 's|==|>=|g' requirements.txt
+sed -i -r 's/==/>=/g' requirements.txt
+sed -i -r 's/3.7.4.*/3.7.4/' requirements.txt
+sed -i -r 's/distro>=1.7.*/distro>=1.6.0/' requirements.txt
+sed -i -r 's/psutil>=5.9.4/psutil>=5.8.0/' requirements.txt
+sed -i -r 's/aiofiles>=22.1.0/aiofiles>=0.7/' requirements.txt
+sed -i -r 's/Jinja2>=3.1.2/jinja2>=3.0.1/' requirements.txt
+sed -i -r 's/jsonschema>=4.17.3/jsonschema>=3.2.0/' requirements.txt
+sed -i -r 's/py-cpuinfo>=9.0.0/py-cpuinfo>=8.0.0/' requirements.txt
+sed -i -r 's/sentry-sdk.*//g' requirements.txt
+sed -i -r '/setuptools/d' requirements.txt
 
 %build
 python3 setup.py build
@@ -127,7 +135,7 @@ cp -f %{_bindir}/busybox %{python3_sitelib}/gns3server/compute/docker/resources/
 
 %files
 %license LICENSE
-%doc AUTHORS README.rst
+%doc AUTHORS README.md
 %{_bindir}/gns3server
 %{_bindir}/gns3vmnet
 %{_bindir}/gns3loopback

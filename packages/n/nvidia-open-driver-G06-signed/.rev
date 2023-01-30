@@ -29,4 +29,19 @@
 - added conflicts to nvidia-driver-G06-kmp package (boo#1207495)</comment>
     <requestid>1060962</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b4f0197ade1ed4a782c72e8f92249dc7</srcmd5>
+    <version>525.85.05</version>
+    <time>1675095014</time>
+    <user>dimstar_suse</user>
+    <comment>- introduce %hardcode_pci_list macro for hardcoding PCI ID 
+  modaliases for Supplements; make it default to *temporarily*
+  workaround boo#1207520
+  * TW: enable only officially supported headless GPUs!
+  * Leap/sle: enable all Turing and Ampere GPUs and set the
+    appropriate modprobe.d option, so we can at least begin
+    testing on sle15-sp5 ...
+- adds pci-table.patch, generati-pci-table.sh</comment>
+    <requestid>1061900</requestid>
+  </revision>
 </revisionlist>

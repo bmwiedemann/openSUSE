@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 29 11:27:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.14:
+  * create mu cache path if needed
+  * fix empty 'To:' header on reply to icalendar invitation
+  * use const char* from for time_to_string (avoids crash in some configs)
+  * mu4e-headers: appease byte-compiler
+  * mu4e-headers: fallback to :subject for :thread-subject
+  * mu-query-match-decider: add 'Related' to flags (rather than replace)
+
+-------------------------------------------------------------------
 Tue Dec  6 08:34:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.13:

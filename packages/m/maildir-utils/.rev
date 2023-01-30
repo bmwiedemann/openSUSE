@@ -537,4 +537,18 @@
   * Update some tests, avoid compiler warnings</comment>
     <requestid>1040532</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5d4bae867fb147257ed05a1f9e040d2a</srcmd5>
+    <version>1.8.14</version>
+    <time>1675095003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.14:
+  * create mu cache path if needed
+  * fix empty 'To:' header on reply to icalendar invitation
+  * use const char* from for time_to_string (avoids crash in some configs)
+  * mu4e-headers: appease byte-compiler
+  * mu4e-headers: fallback to :subject for :thread-subject
+  * mu-query-match-decider: add 'Related' to flags (rather than replace)</comment>
+    <requestid>1061865</requestid>
+  </revision>
 </revisionlist>

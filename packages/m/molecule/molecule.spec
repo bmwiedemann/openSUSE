@@ -1,7 +1,7 @@
 #
-# spec file for package python-molecule
+# spec file for package molecule
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,53 +25,58 @@
 
 %define pythons python3
 Name:           molecule
-Version:        3.6.1
+Version:        4.0.4
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
 URL:            https://github.com/ansible-community/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
 Patch0:         skip-broken-test.patch
-BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-pip
-BuildRequires:  python3-wheel
+BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 %if %{with test}
-BuildRequires:  ansible
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-mock
+BuildRequires:  ansible-lint
+BuildRequires:  python3-ansi2html
+BuildRequires:  python3-coverage
+BuildRequires:  python3-filelock
 BuildRequires:  python3-pexpect
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-html
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-plus
+BuildRequires:  python3-pytest-testinfra
+BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-yamllint
-BuildRequires:  python3-ansible-compat >= 1.0.0
-BuildRequires:  python3-Cerberus >= 1.3.2
+# Runtime dependencies of molecule
+BuildRequires:  ansible
+BuildRequires:  python3
+BuildRequires:  python3-Jinja2 >= 2.11.3
+BuildRequires:  python3-PyYAML >= 5.1
+BuildRequires:  python3-ansible-compat >= 2.2.0
 BuildRequires:  python3-click >= 8.0
 BuildRequires:  python3-click-help-colors >= 0.9
 BuildRequires:  python3-cookiecutter >= 1.7.3
 BuildRequires:  python3-enrich >= 1.2.7
-BuildRequires:  python3-filelock
-BuildRequires:  python3-importlib-metadata
-BuildRequires:  python3-Jinja2 >= 2.11.3
+BuildRequires:  python3-jsonschema >= 4.9.1
 BuildRequires:  python3-packaging
-BuildRequires:  python3-paramiko >= 2.5.0
 BuildRequires:  python3-pluggy >= 0.7.1
-BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-rich >= 9.5.1
 %endif
 BuildRequires:  fdupes
 Requires:       ansible
 Requires:       python3
-Requires:       python3-ansible-compat >= 1.0.0
-Requires:       python3-Cerberus >= 1.3.2
+Requires:       python3-Jinja2 >= 2.11.3
+Requires:       python3-PyYAML >= 5.1
+Requires:       python3-ansible-compat >= 2.2.0
 Requires:       python3-click >= 8.0
 Requires:       python3-click-help-colors >= 0.9
 Requires:       python3-cookiecutter >= 1.7.3
 Requires:       python3-enrich >= 1.2.7
-Requires:       python3-importlib-metadata
-Requires:       python3-Jinja2 >= 2.11.3
+Requires:       python3-jsonschema >= 4.9.1
 Requires:       python3-packaging
-Requires:       python3-paramiko >= 2.5.0
 Requires:       python3-pluggy >= 0.7.1
-Requires:       python3-PyYAML >= 5.1
 Requires:       python3-rich >= 9.5.1
 BuildArch:      noarch
 
@@ -106,14 +111,12 @@ sed -i '1{\@^#!/usr/bin/python@d}' %{buildroot}%{python3_sitelib}/molecule/test/
 %check
 %if %{with test}
 export PATH="%{buildroot}%{_bindir}:$PATH"
-%pytest
+%pytest -k 'not (test_command_dependency or test_sample_collection)' -W ignore:'There is no current event loop'
 %endif
 
 %files
 %license LICENSE
 %{python3_sitelib}/*
 %{_bindir}/molecule
-%{_bindir}/mol
 
 %changelog
-

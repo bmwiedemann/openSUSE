@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 22 12:05:56 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to 0.48.0~rc5:
+  * exremly long list of changes, see CHANGELOG.md shipped as part
+    of this package in /usr/share/doc/packages/openmw/CHANGELOG.md.
+  * current commit is e6b6f2c, part of the openmw-48 branch, used by
+    upstream as RC5.
+- Dropped obsolete patches:
+  * openmw-0.47.0-gcc12.patch
+  * openmw-sigaltstack.patch
+
+-------------------------------------------------------------------
 Sun Aug 14 14:49:11 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add openmw-0.47.0-gcc12.patch: Fix build with GCC 12 (gl#OpenMW/openmw#6744).

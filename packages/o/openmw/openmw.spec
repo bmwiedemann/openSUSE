@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012-2015 openSUSE_user1
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,14 @@
 
 
 Name:           openmw
-Version:        0.47.0
+Version:        0.48.0~rc5
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         https://gitlab.com/OpenMW/openmw/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM openmw-sigaltstack.patch https://gitlab.com/OpenMW/openmw/-/issues/6356 adam@mizerski.pl -- fix error: size of array 'altstack' is not an integral constant-expression
-Patch2:         openmw-sigaltstack.patch
-# PATCH-FIX-UPSTREAM openmw-0.47.0-gcc12.patch -- Fix build with GCC 12, picked from upstream, rebased on 0.47.0 (gl#OpenMW/openmw#6744)
-Patch3:         openmw-0.47.0-gcc12.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -54,11 +50,14 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libunshield)
+BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openscenegraph) >= 3.2
 BuildRequires:  pkgconfig(openthreads) >= 3.2
 BuildRequires:  pkgconfig(recastnavigation)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(yaml-cpp)
 Requires:       OpenSceneGraph-plugins
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
@@ -93,9 +92,8 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%setup -q -n openmw-openmw-%{version}
-%autopatch -p1
-cp 'files/mygui/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
+%autosetup -p1
+cp 'files/data/fonts/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
 STATIC_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
@@ -178,10 +176,12 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %{_bindir}/esmtool
 %{_bindir}/niftest
 %{_bindir}/%{name}
+%{_bindir}/%{name}-bulletobjecttool
+%{_bindir}/%{name}-cs
 %{_bindir}/%{name}-essimporter
 %{_bindir}/%{name}-iniimporter
-%{_bindir}/%{name}-cs
 %{_bindir}/%{name}-launcher
+%{_bindir}/%{name}-navmeshtool
 %{_bindir}/%{name}-wizard
 
 %changelog

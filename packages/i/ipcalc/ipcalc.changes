@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:43:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix ULA prefix generator to use only defined ULA range
+  * Corrected manpage generation
+
+-------------------------------------------------------------------
 Sat Oct 16 15:16:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

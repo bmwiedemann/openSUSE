@@ -1,7 +1,7 @@
 #
 # spec file for package minikube
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minikube
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  wget
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.19
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt

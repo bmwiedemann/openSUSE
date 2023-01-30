@@ -4,8 +4,9 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.32.1</param>
+    <param name="revision">v2.41.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="match-tag">v2*</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
@@ -14,7 +15,7 @@
   <service name="set_version" mode="disabled">
     <param name="basename">prometheus</param>
   </service>
-  <service name="go_modules" mode="manual">
-    <param name="archive">prometheus-2.32.1.tar.gz</param>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">prometheus-2.41.0.tar.gz</param>
   </service>
 </services>

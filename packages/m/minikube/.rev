@@ -545,4 +545,41 @@
   * KCI: Upgrade base image from ubuntu:focal-20220922 to ubuntu:focal-20221019 #15219</comment>
     <requestid>1039891</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>006544dd26cc1d4b31ec541f14c06bb8</srcmd5>
+    <version>1.29.0</version>
+    <time>1675095097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.29.0:
+  * Bump QEMU driver priority from experimental to default
+  * Ability to set static-ip for Docker driver
+  * GCP-Auth Addon: automatically attach credentials to newly created
+    namespaces
+  * Allow forcing 1 CPU on Linux with docker and none driver
+  * Major Improvements:
+  * Large improvements to cgroup detection and CNI and CRI configurations
+  * Prevent redownloading kicbase when already downloaded
+  * Warn when using an old ISO/Kicbase image
+  * Check brew install paths for socket_vmnet
+  * Include gcp-auth logs in 'minikube logs' output
+  * Use absolute path when calling crictl version
+  * Add additional memory overhead for VirtualBox when `--memory=max`
+  * Update Windows installer to create system-wide shortcut
+  * Add `--subnet` validation
+  * Add groups check to SSH driver
+  * Update references to deprecated beta.kubernetes.io
+  * Fix possible race condition when enabling multiple addons #15706
+  * Fix cpus config field not supporting max value #15479
+  * Fix subnet checking failing if IPv6 network found #15394
+  * Fix Docker tunnel failing if too many SSH keys #15560
+  * Fix kubelet localStorageCapacityIsolation option #15336
+  * Fix setting snapshotter to unimplemented fuse-overlayfs #15272
+  * Remove progress bar for kic download with JSON output #15482
+  * Version Upgrades:
+  * Bump default Kubernetes version from 1.25.3 to 1.26.1 #15683
+  * Addons: Update auto-pause from 0.0.2 to 0.0.3 #15331
+  * Addons: Update cloud-spanner from 1.4.6 to 1.5.0 #15440 #15667 #15707
+  * Addons: Update headlamp from 0.13.0 to 0.14.1 #15401 #15515</comment>
+    <requestid>1062044</requestid>
+  </revision>
 </revisionlist>

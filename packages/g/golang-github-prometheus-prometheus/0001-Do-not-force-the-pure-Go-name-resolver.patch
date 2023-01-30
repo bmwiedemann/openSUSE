@@ -1,7 +1,7 @@
-From 247610ea70657943fc50637380f27d262117cf8e Mon Sep 17 00:00:00 2001
+From 0b22f2168b31038524d7cef78923464cc2d58e00 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:17:06 +0100
-Subject: [PATCH 1/3] Do not force the pure Go name resolver
+Subject: [PATCH] Do not force the pure Go name resolver
 
 Revert to Go's default mechanism that will decide between the `netgo`
 pure-Go implementation and the `netcgo` cgo-based implementation depending
@@ -10,23 +10,28 @@ on OS and environment variables.
 This allows, among other things, to use Prometheus to scrape mDNS targets.
 
 Signed-off-by: Jan Fajerski <jfajerski@suse.com>
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
- .promu.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .promu.yml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index f52a646de..23e662d11 100644
+index 233295f85..4969d7de1 100644
 --- a/.promu.yml
 +++ b/.promu.yml
-@@ -10,7 +10,7 @@ build:
-           path: ./cmd/prometheus
-         - name: promtool
+@@ -12,11 +12,10 @@ build:
            path: ./cmd/promtool
--    flags: -a -tags netgo,builtinassets
-+    flags: -mod=vendor -a -tags builtinassets
+     tags:
+         all:
+-            - netgo
+             - builtinassets
+         windows:
+             - builtinassets
+-    flags: -a
++    flags: -mod=vendor -a
      ldflags: |
          -X github.com/prometheus/common/version.Version={{.Version}}
          -X github.com/prometheus/common/version.Revision={{.Revision}}
 -- 
-2.31.1
+2.39.0
 

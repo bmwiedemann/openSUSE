@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define soname_ctl liblttng-ctl
 %define sover_ctl 0
 Name:           lttng-tools
-Version:        2.13.8
+Version:        2.13.9
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only

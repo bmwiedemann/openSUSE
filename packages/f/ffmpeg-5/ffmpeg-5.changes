@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:01:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Merge ffmpeg-5-mini.spec with the main .spec file in order to
+  make building the _multibuild packages easier for the case the
+  package is named to be built for a specific distribution; an
+  example would be "A_tw-ffmpeg-5" in Packman.
+
+-------------------------------------------------------------------
 Thu Jan  5 12:57:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Provide a ffmpeg-5-mini-devel build recipe to help split

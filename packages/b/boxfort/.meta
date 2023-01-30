@@ -1,0 +1,5 @@
+<package name="boxfort" project="openSUSE:Factory">
+  <title>boxfort</title>
+  <description>A simple, cross-platform sandboxing C library powering Criterion.</description>
+  <devel project="devel:libraries:c_c++" package="boxfort"/>
+</package>

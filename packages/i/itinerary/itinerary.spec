@@ -1,7 +1,7 @@
 #
 # spec file for package itinerary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ BuildRequires:  gcc10-PIE
 %endif
 # QML imports
 Requires:       kirigami2
+Requires:       ki18n-imports
 Requires:       prison-qt5-imports
 # Runtime dependencies (itinerary won't start without these packages)
 Requires:       kopeninghours

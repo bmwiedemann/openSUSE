@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 23 03:13:13 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v17.1.0
+  * Changes of version 17.1.0
+    = Fix serifs of cursive y (#1529, #1530).
+
+-------------------------------------------------------------------
 Sat Jan 14 21:45:58 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v17.0.4

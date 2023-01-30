@@ -1,3 +1,9 @@
+-------------------------------------------------------------------
+Wed Jan 25 12:56:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't build the NIS module anymore, libnsl/NIS are deprecated
+
+-------------------------------------------------------------------
 Tue Oct 18 10:00:39 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - add patch-cve-2022-3559 (fixes CVE-2022-3559, bsc#1204427, Bug 2915)

@@ -388,4 +388,13 @@
 - Introduce repo key handling (bsc#1207334)</comment>
     <requestid>1061194</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>60189180d993f7174076f416cbd9c74b</srcmd5>
+    <version>2.11.0</version>
+    <time>1675095103</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.11.0
+- Handle repos with multiple keys in key file (fixes #118)</comment>
+    <requestid>1062072</requestid>
+  </revision>
 </revisionlist>

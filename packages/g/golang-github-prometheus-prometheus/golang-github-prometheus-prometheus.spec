@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.32.1
+Version:        2.41.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -44,8 +44,6 @@ Source5:        prometheus.firewall.xml
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
-# This patch has been applied before generating vendor tarball
-Patch3:         0003-Bump-client_golang-to-1.12.1.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros
@@ -55,7 +53,7 @@ BuildRequires:  firewall-macros
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.19
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
 Recommends:     firewalld-prometheus-config

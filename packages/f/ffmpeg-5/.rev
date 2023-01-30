@@ -98,4 +98,15 @@
     <comment></comment>
     <requestid>1060634</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>140df5302f9609d820b3de371dd45856</srcmd5>
+    <version>5.1.2</version>
+    <time>1675094982</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge ffmpeg-5-mini.spec with the main .spec file in order to
+  make building the _multibuild packages easier for the case the
+  package is named to be built for a specific distribution; an
+  example would be &quot;A_tw-ffmpeg-5&quot; in Packman.</comment>
+    <requestid>1061829</requestid>
+  </revision>
 </revisionlist>

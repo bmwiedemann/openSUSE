@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 26 23:43:07 CET 2023 - tumic@cbox.cz
+
+- Update to version 11.12
+  * Fixed broken parsing of KML tracks with empty coordinates.
+  * Fixed bug where OziExplorer maps prevented loading any other
+    maps from the same directory.
+  * Improved marine maps (ENC, IMG) render style.
+  * Added Korean localization.
+
+-------------------------------------------------------------------
 Sat Dec 10 19:10:30 CET 2022 - tumic@cbox.cz
 
 - Update to version 11.11

@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname libglslang11
+%define lname libglslang12
 Name:           glslang
-Version:        11.13.0
+Version:        12.0.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
 Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
-Patch2:         abibreak_bump.diff
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -78,7 +77,7 @@ echo "V_%version { global: *; };" >/tmp/z.sym
 %make_build
 
 %install
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 %cmake_install
 b="%buildroot"
 mkdir -p "$b/%_includedir"
@@ -101,7 +100,7 @@ done
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/*.so.11*
+%_libdir/*.so.12*
 
 %files devel
 %_bindir/gls*

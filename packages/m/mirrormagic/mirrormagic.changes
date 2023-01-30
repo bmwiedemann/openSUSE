@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 26 20:33:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.0
+  * High score server support – see all your scores and those of
+    others
+  * Multiple player names – separate scores and progress for each
+    familiy member
+  * Improved graphics with Amiga-style color-cycling graphic
+    animations
+  * Includes original title screen and title music
+  * Includes original title story from 1989, accessible from
+    main menu
+- Changed RO_GAME_DIR to BASE_PATH
+- RW_GAME_DIR is no longer used. Games scores are now written to
+  ~/.mirrormagic in user homedir.
+- Drop fix-multiple-definitions.patch and reproducible.patch,
+  both fixed upstream
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Sep 25 13:40:50 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to better declare dependencies

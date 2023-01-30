@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 23 01:33:44 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.9.0+g34:
+  * module/dwl: allow specify the name of tags
+  * CHANGELOG.md: add issue #262
+  * modules/pipewire: change type of volume from uint8 to uint16
+  * modules/pipewire: use roundf instead of ceilf for more accuracy
+  * module/river: add support for ‘layout’ events
+
+-------------------------------------------------------------------
 Fri Jan 13 10:31:05 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 1.9.0+g28:

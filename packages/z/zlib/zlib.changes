@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jan 19 11:07:25 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
-- Update to 1.13:
+- Update to 1.2.13:
   * Fix configure issue that discarded provided CC definition
   * Correct incorrect inputs provided to the CRC functions
   * Repair prototypes and exporting of new CRC functions

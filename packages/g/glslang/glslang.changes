@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 29 12:53:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * Add support for GL_NV_shader_invocation_reorder.
+  * Support extension ARB_bindless_texture.
+- Delete abibreak_bump.diff
+
+-------------------------------------------------------------------
 Thu Dec 15 14:11:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.13

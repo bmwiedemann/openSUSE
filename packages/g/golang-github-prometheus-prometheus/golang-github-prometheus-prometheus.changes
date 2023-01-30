@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Tue Jan 10 14:18:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify _service file and set go_modules to disabled
+  * this allows full preparation just using 'osc service disabledrun'
+- rebase patch 0002-Default-settings.patch
+- drop patch 0003-Bump-client_golang-to-1.12.1.patch
+- update to 2.33.0:
+  * [CHANGE] PromQL: Promote negative offset and @ modifer to stable features. #10121
+  * [CHANGE] Web: Promote remote-write-receiver to stable. #10119
+  * [FEATURE] Config: Add stripPort template function. #10002
+  * [FEATURE] Promtool: Add cardinality analysis to check metrics, enabled by flag --extended. #10045
+  * [FEATURE] SD: Enable target discovery in own K8s namespace. #9881
+  * [FEATURE] SD: Add provider ID label in K8s SD. #9603
+  * [FEATURE] Web: Add limit field to the rules API. #10152
+  * [ENHANCEMENT] Remote-write: Avoid allocations by buffering concrete structs instead of interfaces. #9934
+  * [ENHANCEMENT] Remote-write: Log time series details for out-of-order samples in remote write receiver. #9894
+  * [ENHANCEMENT] Remote-write: Shard up more when backlogged. #9274
+  * [ENHANCEMENT] TSDB: Use simpler map key to improve exemplar ingest performance. #10111
+  * [ENHANCEMENT] TSDB: Avoid allocations when popping from the intersected postings heap. #10092
+  * [ENHANCEMENT] TSDB: Make chunk writing non-blocking, avoiding latency spikes in remote-write. #10051
+  * [ENHANCEMENT] TSDB: Improve label matching performance. #9907
+  * [ENHANCEMENT] UI: Optimize the service discovery page and add a search bar. #10131
+  * [ENHANCEMENT] UI: Optimize the target page and add a search bar. #10103
+  * [BUGFIX] Promtool: Make exit codes more consistent. #9861
+  * [BUGFIX] Promtool: Fix flakiness of rule testing. #8818
+  * [BUGFIX] Remote-write: Update prometheus_remote_storage_queue_highest_sent_timestamp_seconds metric when write irrecoverably fails. #10102
+  * [BUGFIX] Storage: Avoid panic in BufferedSeriesIterator. #9945
+  * [BUGFIX] TSDB: CompactBlockMetas should produce correct mint/maxt for overlapping blocks. #10108
+  * [BUGFIX] TSDB: Fix logging of exemplar storage size. #9938
+  * [BUGFIX] UI: Fix overlapping click targets for the alert state checkboxes. #10136
+  * [BUGFIX] UI: Fix Unhealthy filter on target page to actually display only Unhealthy targets. #10103
+  * [BUGFIX] UI: Fix autocompletion when expression is empty. #10053
+  * [BUGFIX] TSDB: Fix deadlock from simultaneous GC and write. #10166
+- update to 2.33.1:
+  * [BUGFIX] SD: Fix no such file or directory in K8s SD when not running inside K8s. #10235
+- update to 2.33.2:
+  * [BUGFIX] Azure SD: Fix panic when IP Address isn't set. #10280
+  * [BUGFIX] Remote-write: Fix deadlock when stopping a shard. #10279
+- update to 2.33.3:
+  * [BUGFIX] Azure SD: Fix a regression when public IP Address isn't set. #10289
+- update to 2.33.4:
+  * [BUGFIX] TSDB: Fix panic when m-mapping head chunks onto the disk. #10316
+- update to 2.33.5:
+  * [BUGFIX] Remote-write: Fix deadlock between adding to queue and getting batch. #10395
+- update to 2.34.0:
+  * [CHANGE] UI: Classic UI removed. #10208
+  * [CHANGE] Tracing: Migrate from Jaeger to OpenTelemetry based tracing. #9724, #10203, #10276
+  * [ENHANCEMENT] TSDB: Disable the chunk write queue by default and allow configuration with the experimental flag --storage.tsdb.head-chunks-write-queue-size. #10425
+  * [ENHANCEMENT] HTTP SD: Add a failure counter. #10372
+  * [ENHANCEMENT] Azure SD: Set Prometheus User-Agent on requests. #10209
+  * [ENHANCEMENT] Uyuni SD: Reduce the number of logins to Uyuni. #10072
+  * [ENHANCEMENT] Scrape: Log when an invalid media type is encountered during a scrape. #10186
+  * [ENHANCEMENT] Scrape: Accept application/openmetrics-text;version=1.0.0 in addition to version=0.0.1. #9431
+  * [ENHANCEMENT] Remote-read: Add an option to not use external labels as selectors for remote read. #10254
+  * [ENHANCEMENT] UI: Optimize the alerts page and add a search bar. #10142
+  * [ENHANCEMENT] UI: Improve graph colors that were hard to see. #10179
+  * [ENHANCEMENT] Config: Allow escaping of $ with $$ when using environment variables with external labels. #10129
+  * [BUGFIX] PromQL: Properly return an error from histogram_quantile when metrics have the same labelset. #10140
+  * [BUGFIX] UI: Fix bug that sets the range input to the resolution. #10227
+  * [BUGFIX] TSDB: Fix a query panic when memory-snapshot-on-shutdown is enabled. #10348
+  * [BUGFIX] Parser: Specify type in metadata parser errors. #10269
+  * [BUGFIX] Scrape: Fix label limit changes not applying. #10370
+- update to 2.35.0:
+  * [CHANGE] TSDB: Delete *.tmp WAL files when Prometheus starts. #10317
+  * [CHANGE] promtool: Add new flag --lint (enabled by default) for the commands check rules and check config, resulting in a new exit code (3) for linter errors. #10435
+  * [FEATURE] Support for automatically setting the variable GOMAXPROCS to the container CPU limit. Enable with the flag --enable-feature=auto-gomaxprocs. #10498
+  * [FEATURE] PromQL: Extend statistics with total and peak number of samples in a query. Additionally, per-step statistics are available with --enable-feature=promql-per-step-stats and using stats=all in the query API.
+  * Enable with the flag --enable-feature=per-step-stats. #10369
+  * [ENHANCEMENT] Prometheus is built with Go 1.18. #10501
+  * [ENHANCEMENT] TSDB: more efficient sorting of postings read from WAL at startup. #10500
+  * [ENHANCEMENT] Azure SD: Add metric to track Azure SD failures. #10476
+  * [ENHANCEMENT] Azure SD: Add an optional resource_group configuration. #10365
+  * [ENHANCEMENT] Kubernetes SD: Support discovery.k8s.io/v1 EndpointSlice (previously only discovery.k8s.io/v1beta1 EndpointSlice was supported). #9570
+  * [ENHANCEMENT] Kubernetes SD: Allow attaching node metadata to discovered pods. #10080
+  * [ENHANCEMENT] OAuth2: Support for using a proxy URL to fetch OAuth2 tokens. #10492
+  * [ENHANCEMENT] Configuration: Add the ability to disable HTTP2. #10492
+  * [ENHANCEMENT] Config: Support overriding minimum TLS version. #10610
+  * [BUGFIX] Kubernetes SD: Explicitly include gcp auth from k8s.io. #10516
+  * [BUGFIX] Fix OpenMetrics parser to sort uppercase labels correctly. #10510
+  * [BUGFIX] UI: Fix scrape interval and duration tooltip not showing on target page. #10545
+  * [BUGFIX] Tracing/GRPC: Set TLS credentials only when insecure is false. #10592
+  * [BUGFIX] Agent: Fix ID collision when loading a WAL with multiple segments. #10587
+  * [BUGFIX] Remote-write: Fix a deadlock between Batch and flushing the queue. #10608
+- update to 2.36.0:
+  * [FEATURE] Add lowercase and uppercase relabel action. #10641
+  * [FEATURE] SD: Add IONOS Cloud integration. #10514
+  * [FEATURE] SD: Add Vultr integration. #10714
+  * [FEATURE] SD: Add Linode SD failure count metric. #10673
+  * [FEATURE] Add prometheus_ready metric. #10682
+  * [ENHANCEMENT] Add stripDomain to template function. #10475
+  * [ENHANCEMENT] UI: Enable active search through dropped targets. #10668
+  * [ENHANCEMENT] promtool: support matchers when querying label values. #10727
+  * [ENHANCEMENT] Add agent mode identifier. #9638
+  * [BUGFIX] Changing TotalQueryableSamples from int to int64. #10549
+  * [BUGFIX] tsdb/agent: Ignore duplicate exemplars. #10595
+  * [BUGFIX] TSDB: Fix chunk overflow appending samples at a variable rate. #10607
+  * [BUGFIX] Stop rule manager before TSDB is stopped. #10680
+- update to 2.36.1:
+  * [BUGFIX] promtool: Add --lint-fatal option #10840
+- update to 2.36.2:
+  * [BUGFIX] Fix serving of static assets like fonts and favicon. #10888
+- update to 2.37.0:
+  * [FEATURE] Nomad SD: New service discovery for Nomad built-in service discovery. #10915
+  * [ENHANCEMENT] Kubernetes SD: Allow attaching node labels for endpoint role. #10759
+  * [ENHANCEMENT] PromQL: Optimise creation of signature with/without labels. #10667
+  * [ENHANCEMENT] TSDB: Memory optimizations. #10873 #10874
+  * [ENHANCEMENT] TSDB: Reduce sleep time when reading WAL. #10859 #10878
+  * [ENHANCEMENT] OAuth2: Add appropriate timeouts and User-Agent header. #11020
+  * [BUGFIX] Alerting: Fix Alertmanager targets not being updated when alerts were queued. #10948
+  * [BUGFIX] Hetzner SD: Make authentication files relative to Prometheus config file. #10813
+  * [BUGFIX] Promtool: Fix promtool check config not erroring properly on failures. #10952
+  * [BUGFIX] Scrape: Keep relabeled scrape interval and timeout on reloads. #10916
+  * [BUGFIX] TSDB: Don't increment prometheus_tsdb_compactions_failed_total when context is canceled. #10772
+  * [BUGFIX] TSDB: Fix panic if series is not found when deleting series. #10907
+  * [BUGFIX] TSDB: Increase prometheus_tsdb_mmap_chunk_corruptions_total on out of sequence errors. #10406
+  * [BUGFIX] Uyuni SD: Make authentication files relative to Prometheus configuration file and fix default configuration values. #10813
+- update to 2.38.0:
+  * [FEATURE]: Web: Add a /api/v1/format_query HTTP API endpoint that allows pretty-formatting PromQL expressions. #11036 #10544 #11005
+  * [FEATURE]: UI: Add support for formatting PromQL expressions in the UI. #11039
+  * [FEATURE]: DNS SD: Support MX records for discovering targets. #10099
+  * [FEATURE]: Templates: Add toTime() template function that allows converting sample timestamps to Go time.Time values. #10993
+  * [ENHANCEMENT]: Kubernetes SD: Add __meta_kubernetes_service_port_number meta label indicating the service port number. #11002 #11053
+  * [ENHANCEMENT]: Kubernetes SD: Add __meta_kubernetes_pod_container_image meta label indicating the container image. #11034 #11146
+  * [ENHANCEMENT]: PromQL: When a query panics, also log the query itself alongside the panic message. #10995
+  * [ENHANCEMENT]: UI: Tweak colors in the dark theme to improve the contrast ratio. #11068
+  * [ENHANCEMENT]: Web: Speed up calls to /api/v1/rules by avoiding locks and using atomic types instead. #10858
+  * [ENHANCEMENT]: Scrape: Add a no-default-scrape-port feature flag, which omits or removes any default HTTP (:80) or HTTPS (:443) ports in the target's scrape address. #9523
+  * [BUGFIX]: TSDB: In the WAL watcher metrics, expose the type="exemplar" label instead of type="unknown" for exemplar records. #11008
+  * [BUGFIX]: TSDB: Fix race condition around allocating series IDs during chunk snapshot loading. #11099
+- update to 2.39.0:
+  * [FEATURE] experimental TSDB: Add support for ingesting out-of-order samples. This is configured via out_of_order_time_window field in the config file; check config file docs for more info. #11075
+  * [ENHANCEMENT] API: /-/healthy and /-/ready API calls now also respond to a HEAD request on top of existing GET support. #11160
+  * [ENHANCEMENT] PuppetDB SD: Add __meta_puppetdb_query label. #11238
+  * [ENHANCEMENT] AWS EC2 SD: Add __meta_ec2_region label. #11326
+  * [ENHANCEMENT] AWS Lightsail SD: Add __meta_lightsail_region label. #11326
+  * [ENHANCEMENT] Scrape: Optimise relabeling by re-using memory. #11147
+  * [ENHANCEMENT] TSDB: Improve WAL replay timings. #10973 #11307 #11319
+  * [ENHANCEMENT] TSDB: Optimise memory by not storing unnecessary data in the memory. #11280 #11288 #11296
+  * [ENHANCEMENT] TSDB: Allow overlapping blocks by default. --storage.tsdb.allow-overlapping-blocks now has no effect. #11331
+  * [ENHANCEMENT] UI: Click to copy label-value pair from query result to clipboard. #11229
+  * [BUGFIX] TSDB: Turn off isolation for Head compaction to fix a memory leak. #11317
+  * [BUGFIX] TSDB: Fix 'invalid magic number 0' error on Prometheus startup. #11338
+  * [BUGFIX] PromQL: Properly close file descriptor when logging unfinished queries. #11148
+  * [BUGFIX] Agent: Fix validation of flag options and prevent WAL from growing more than desired. #9876
+- update to 2.39.1:
+  * [BUGFIX] Rules: Fix notifier relabel changing the labels on active alerts. #11427
+- update to 2.40.0:
+  * [FEATURE] Add experimental support for native histograms. Enable with the flag --enable-feature=native-histograms. #11447
+  * [FEATURE] SD: Add service discovery for OVHcloud. #10802
+  * [ENHANCEMENT] Kubernetes SD: Use protobuf encoding. #11353
+  * [ENHANCEMENT] TSDB: Use golang.org/x/exp/slices for improved sorting speed. #11054 #11318 #11380
+  * [ENHANCEMENT] Consul SD: Add enterprise admin partitions. Adds __meta_consul_partition label. Adds partition config in consul_sd_config. #11482
+  * [BUGFIX] API: Fix API error codes for /api/v1/labels and /api/v1/series. #11356
+- update to 2.40.1:
+  * [BUGFIX] TSDB: Fix alignment for atomic int64 for 32 bit architecture. #11547
+  * [BUGFIX] Scrape: Fix accept headers. #11552
+- update to 2.40.2:
+  * [BUGFIX] UI: Fix black-on-black metric name color in dark mode. #11572
+- update to 2.40.3:
+  * [BUGFIX] TSDB: Fix compaction after a deletion is called. #11623
+- update to 2.40.4:
+  * [SECURITY] Fix basic authentication bypass vulnerability (CVE-2022-46146). GHSA-4v48-4q5m-8vx4
+- update to 2.40.5:
+  * [BUGFIX] TSDB: Fix queries involving native histograms due to improper reset of iterators. #11643
+- update to 2.40.6:
+  * [SECURITY] Security upgrade from go and upstream dependencies that include
+    security fixes to the net/http and os packages. #11691
+- update to 2.40.7:
+  * [BUGFIX] Use Windows native DNS resolver. #11704
+  * [BUGFIX] TSDB: Fix queries involving negative buckets of native histograms. #11699
+- modify patch 0001-Do-not-force-the-pure-Go-name-resolver.patch to work on 2.40.7
+- update to 2.41.0:
+  * [FEATURE] Relabeling: Add keepequal and dropequal relabel actions. #11564
+  * [FEATURE] Add support for HTTP proxy headers. #11712
+  * [ENHANCEMENT] Reload private certificates when changed on disk. #11685
+  * [ENHANCEMENT] Add max_version to specify maximum TLS version in tls_config. #11685
+  * [ENHANCEMENT] Add goos and goarch labels to prometheus_build_info. #11685
+  * [ENHANCEMENT] SD: Add proxy support for EC2 and LightSail SDs #11611
+  * [ENHANCEMENT] SD: Add new metric prometheus_sd_file_watcher_errors_total. #11066
+  * [ENHANCEMENT] Remote Read: Use a pool to speed up marshalling. #11357
+  * [ENHANCEMENT] TSDB: Improve handling of tombstoned chunks in iterators. #11632
+  * [ENHANCEMENT] TSDB: Optimize postings offset table reading. #11535
+  * [BUGFIX] Scrape: Validate the metric name, label names, and label values after relabeling. #11074
+  * [BUGFIX] Remote Write receiver and rule manager: Fix error handling. #11727
+- BuildRequire go1.19
+
+-------------------------------------------------------------------
 Thu Apr  7 12:36:08 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
 
 - Build firewalld-prometheus-config only for SUSE Linux Enterprise

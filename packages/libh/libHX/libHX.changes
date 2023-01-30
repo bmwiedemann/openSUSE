@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 29 13:30:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10
+  * Plug a memory leak in the formatter
+
+-------------------------------------------------------------------
+Mon Jan 23 00:39:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9
+  * socket: add sockaddr_is_local, ipaddr_is_local functions
+  * format: avoid return value truncation from HXformat_aprintf,
+    HXformat_sprintf
+
+-------------------------------------------------------------------
 Sat Dec  3 11:24:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.8

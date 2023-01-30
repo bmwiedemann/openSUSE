@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 25 21:07:37 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.37
+  * Fix StreamWriter doesn't have the wait_closed() method in
+    Python3.6. Fixes
+  * Install built-in appliances when no previous version has been
+    detected.
+  * Update documentation to install gns3-server.
+  * Give udhcpc executable right.
+
+-------------------------------------------------------------------
+Sat Jan 21 23:10:10 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.36
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.36
+- Update to version 2.2.35
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.35
+- Update to version 2.2.34
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.34
+- Update to version 2.2.33
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.33
+- Update to version 2.2.32
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.32
+- Drop patch:
+  * gns3-server-fix-requirements.patch
+
+-------------------------------------------------------------------
 Sun Apr 24 19:42:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.31

@@ -1,7 +1,7 @@
 #
 # spec file for package exim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Name:           exim
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
 BuildRequires:  libidn-devel
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1330 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  libspf2-devel
@@ -75,7 +75,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.96
-Release:        2
+Release:        0
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -199,15 +199,19 @@ cat <<-EOF > Local/Makefile
 %if %{with_sqlite}
 	LOOKUP_SQLITE=yes
 %endif
+%if 0%{?suse_version} < 1599
 	LOOKUP_NIS=yes
+        LOOKUP_LIBS=-lnsl
+%else
+        # LOOKUP_NIS=yes
+%endif
 	# LOOKUP_NISPLUS=yes
 	LOOKUP_PASSWD=yes
 	# LOOKUP_WHOSON=yes
 	CYRUS_SASLAUTHD_SOCKET=/var/run/sasl2/mux
-	LOOKUP_LIBS=-llber -lnsl
 %if %{with_ldap}
 	LDAP_LIB_TYPE=OPENLDAP2
-	LOOKUP_LIBS+=-lldap
+	LOOKUP_LIBS+=-llber -lldap
 %endif
 %if %{with_mysql}
 	LOOKUP_INCLUDE+=-I /usr/include/mysql

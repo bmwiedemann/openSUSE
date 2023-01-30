@@ -1,8 +1,8 @@
 #
 # spec file for package udp2raw-tunnel
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,8 @@ unstable UDP environments).
 sed -i 's|-ggdb||' makefile
 sed -i 's|-static||' makefile
 sed -i 's|$(shell git rev-parse HEAD)|%{version}|g' makefile
-chmod -x README.md doc/*
+chmod -x README.md
+find doc -type f | xargs chmod -x
 sed -i 's/\r$//' doc/README.zh-cn.md
 
 %build

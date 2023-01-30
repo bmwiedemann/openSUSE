@@ -159,4 +159,18 @@
     <comment></comment>
     <requestid>1060988</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a3bca9947734a749f5d6d5a3aaf08cf9</srcmd5>
+    <version>0.10.3</version>
+    <time>1675095016</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.3:
+  * mpvitem: use loadFile() method on PlayListModel::playingItemChanged() signal
+  * only link the KIO libs that are actualy used
+  * Fix relative M3U loading
+  * HProgressBar: refactor chapters menu into a popup with a listview
+  * HProgressBar: add tooltip for 'Skip Chapter' checkbox in chapters popup
+  * playlistmodel: getSiblingItems: use percent-encoded path with QUrl</comment>
+    <requestid>1061906</requestid>
+  </revision>
 </revisionlist>

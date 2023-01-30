@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:12:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.7
+   see /usr/share/doc/packages/perl-File-Find-Object/Changes
+
+  0.3.7       2023-01-01
+      - Fix test failures on mswin
+          - https://github.com/shlomif/perl-file-find-object/issues/2
+          - thanks to @jddurand
+
+-------------------------------------------------------------------
 Thu Oct 21 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.3.6

@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-gui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.31
+Version:        2.2.37
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/Networking/Other
 URL:            http://github.com/GNS3/%{name}
 Source:         https://github.com/GNS3/gns3-gui/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         %{name}_fix_desktop_file.patch
-Patch1:         gns3-gui-fix-requirements.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -51,9 +50,9 @@ BuildRequires:  python3-distro >= 1.7.0
 BuildRequires:  python3-jsonschema >= 2.4.0
 BuildRequires:  python3-psutil >= 2.2.1
 BuildRequires:  python3-pytest
+BuildRequires:  python3-qt5
 BuildRequires:  python3-sentry-sdk >= 1.5.4
 BuildRequires:  python3-sip
-BuildRequires:  python3-qt5
 BuildRequires:  xvfb-run
 # /SECTION
 
@@ -73,6 +72,19 @@ MSCA), Novell (CLP) and many other vendor certifications.
 %autosetup -p1
 find . -type f -name "*\.py" -exec sed -i 's/^#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' {} \;
 find . -type f -name "*\.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' {} \;
+
+# Relax strict requirements
+sed -i -r 's/==/>=/g' requirements.txt
+sed -i -r 's/sentry-sdk.*//g' requirements.txt
+sed -i -r '/setuptools/d' requirements.txt
+# Lower psutil>=5.8.0
+sed -i -r 's/psutil>=5.9.4/psutil>=5.8.0/' requirements.txt
+sed -i -r 's/distro>=1.7.*/distro>=1.6.0/' requirements.txt
+sed -i -r 's/jsonschema>=4.17.3/jsonschema>=3.2.0/' requirements.txt
+# Disable update alerts
+sed -i 's/"check_for_update": True,/"check_for_update": False,/' gns3/settings.py
+# Disable anonymous data collection
+sed -i 's/"send_stats": True,/"send_stats": False,/' gns3/settings.py
 
 %build
 %if 0%{?suse_version} > 1315
@@ -110,7 +122,7 @@ xvfb-run python3 -m pytest -rs
 
 %files
 %license LICENSE
-%doc AUTHORS README.rst
+%doc AUTHORS README.md
 %{_bindir}/gns3
 %{python3_sitelib}/gns3*
 %{_datadir}/icons/hicolor/*

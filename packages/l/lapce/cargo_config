@@ -3,58 +3,66 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/6cdh/tree-sitter-scheme.git"]
 git = "https://github.com/6cdh/tree-sitter-scheme.git"
-branch = "main"
+rev = "af0fd1fa452cb2562dc7b5c8a8c55551c39273b9"
 replace-with = "vendored-sources"
 
 [source."https://github.com/Himujjal/tree-sitter-svelte"]
 git = "https://github.com/Himujjal/tree-sitter-svelte"
-branch = "master"
+rev = "52e122ae68b316d3aa960a0a422d3645ba717f42"
 replace-with = "vendored-sources"
 
 [source."https://github.com/MDeiml/tree-sitter-markdown.git"]
 git = "https://github.com/MDeiml/tree-sitter-markdown.git"
-branch = "split_parser"
+rev = "272e080bca0efd19a06a7f4252d746417224959e"
 replace-with = "vendored-sources"
 
 [source."https://github.com/RenjiSann/tree-sitter-xml"]
 git = "https://github.com/RenjiSann/tree-sitter-xml"
-branch = "main"
+rev = "422528a43630db6dcc1e222d1c5ee3babd559473"
 replace-with = "vendored-sources"
 
 [source."https://github.com/VixieTSQ/tree-sitter-glimmer"]
 git = "https://github.com/VixieTSQ/tree-sitter-glimmer"
+rev = "7281caca2ba114e1960c5d944a37860ef0841426"
 replace-with = "vendored-sources"
 
 [source."https://github.com/VixieTSQ/tree-sitter-hcl"]
 git = "https://github.com/VixieTSQ/tree-sitter-hcl"
+rev = "f4aa4553344e03e149ec459549a7f686d6846626"
 replace-with = "vendored-sources"
 
 [source."https://github.com/VixieTSQ/tree-sitter-scss"]
 git = "https://github.com/VixieTSQ/tree-sitter-scss"
-branch = "patch-1"
+rev = "3aac3391ede5098edbf4cc8a9f6d0cfdfe28e5dc"
 replace-with = "vendored-sources"
 
 [source."https://github.com/WhatsApp/tree-sitter-erlang"]
 git = "https://github.com/WhatsApp/tree-sitter-erlang"
-branch = "main"
+rev = "a8b8b0e16c4f5552f5e85af3dec976a5d16af8b9"
 replace-with = "vendored-sources"
 
 [source."https://github.com/abreumatheus/tree-sitter-clojure"]
 git = "https://github.com/abreumatheus/tree-sitter-clojure"
+rev = "fdc969eb04fc711e38ad74afe441d74b3b5d3091"
+replace-with = "vendored-sources"
+
+[source."https://github.com/dragazo/human-sort"]
+git = "https://github.com/dragazo/human-sort"
 replace-with = "vendored-sources"
 
 [source."https://github.com/elixir-lang/tree-sitter-elixir.git"]
 git = "https://github.com/elixir-lang/tree-sitter-elixir.git"
+rev = "05e3631c6a0701c1fa518b0fee7be95a2ceef5e2"
 replace-with = "vendored-sources"
 
 [source."https://github.com/fwcd/tree-sitter-kotlin"]
 git = "https://github.com/fwcd/tree-sitter-kotlin"
-branch = "main"
+rev = "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569"
 replace-with = "vendored-sources"
 
 [source."https://github.com/ghishadow/tree-sitter-d"]
 git = "https://github.com/ghishadow/tree-sitter-d"
-branch = "main"
+rev = "36603135ecb37ac6494c520efff91b875815d6f7"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/druid"]
@@ -97,75 +105,77 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/latex-lsp/tree-sitter-latex"]
 git = "https://github.com/latex-lsp/tree-sitter-latex"
-branch = "master"
+rev = "b3b2cf27f33e71438ebe46934900b1153901c6f2"
 replace-with = "vendored-sources"
 
 [source."https://github.com/maxxnino/tree-sitter-zig"]
 git = "https://github.com/maxxnino/tree-sitter-zig"
-branch = "main"
+rev = "8d3224c3bd0890fe08358886ebf54fca2ed448a6"
 replace-with = "vendored-sources"
 
 [source."https://github.com/oknozor/tree-sitter-sql"]
 git = "https://github.com/oknozor/tree-sitter-sql"
-branch = "main"
+rev = "15dad0f3cae8a094a7dac17d712ea8fb25228011"
 replace-with = "vendored-sources"
 
 [source."https://github.com/panekj/tree-sitter-dockerfile"]
 git = "https://github.com/panekj/tree-sitter-dockerfile"
-branch = "queries"
+rev = "c49d819e07685c90456270f1cc654d9cba640f53"
 replace-with = "vendored-sources"
 
 [source."https://github.com/panekj/tree-sitter-nix"]
 git = "https://github.com/panekj/tree-sitter-nix"
-branch = "master"
+rev = "59fc47150ab437e8bb356c7ab21e9531e87f7cc8"
 replace-with = "vendored-sources"
 
 [source."https://github.com/panekj/tree-sitter-yaml"]
 git = "https://github.com/panekj/tree-sitter-yaml"
-branch = "master"
+rev = "80c8d76847f03e772c5c524cf29bafb56858a8d1"
 replace-with = "vendored-sources"
 
 [source."https://github.com/syntacti/tree-sitter-css"]
 git = "https://github.com/syntacti/tree-sitter-css"
-branch = "master"
+rev = "397aa132b9982fcdd2d473ed69343762a557f10a"
 replace-with = "vendored-sources"
 
 [source."https://github.com/syntacti/tree-sitter-dart"]
 git = "https://github.com/syntacti/tree-sitter-dart"
-branch = "master"
+rev = "78cad4503571d72666f78d5ba8ed6c1417653063"
 replace-with = "vendored-sources"
 
 [source."https://github.com/syntacti/tree-sitter-lua"]
 git = "https://github.com/syntacti/tree-sitter-lua"
-branch = "main"
+rev = "a29f646c14ed800aaeef1ca58a9bacc6d92922e8"
 replace-with = "vendored-sources"
 
 [source."https://github.com/szebniok/tree-sitter-wgsl"]
 git = "https://github.com/szebniok/tree-sitter-wgsl"
-branch = "master"
+rev = "272e89ef2aeac74178edb9db4a83c1ffef80a463"
 replace-with = "vendored-sources"
 
 [source."https://github.com/theHamsta/tree-sitter-glsl"]
 git = "https://github.com/theHamsta/tree-sitter-glsl"
-branch = "add-highlights.scm"
+rev = "74329feb2605deccd32b1c644af507daa6fb82f1"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-bash"]
 git = "https://github.com/tree-sitter/tree-sitter-bash"
-branch = "master"
+rev = "4488aa41406547e478636a4fcfd24f5bbc3f2f74"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-c-sharp"]
 git = "https://github.com/tree-sitter/tree-sitter-c-sharp"
-branch = "master"
+rev = "5b60f99545fea00a33bbfae5be956f684c4c69e2"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-haskell"]
 git = "https://github.com/tree-sitter/tree-sitter-haskell"
+rev = "e30bdfd53eb28c73f26a68b77d436fd2140af167"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-java.git"]
 git = "https://github.com/tree-sitter/tree-sitter-java.git"
+rev = "09d650def6cdf7f479f4b78f595e9ef5b58ce31e"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-json.git"]
@@ -175,33 +185,37 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-ocaml"]
 git = "https://github.com/tree-sitter/tree-sitter-ocaml"
+rev = "cc26b1ef111100f26a137bcbcd39fd4e35be9a59"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-php.git"]
 git = "https://github.com/tree-sitter/tree-sitter-php.git"
+rev = "ab2e72179ceb8bb0b249c8ac9162a148e911b3dc"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-ql"]
 git = "https://github.com/tree-sitter/tree-sitter-ql"
+rev = "bd087020f0d8c183080ca615d38de0ec827aeeaf"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-ruby.git"]
 git = "https://github.com/tree-sitter/tree-sitter-ruby.git"
-rev = "656abef"
+rev = "656abef0645caea793e33c1c773570722463e1d8"
 replace-with = "vendored-sources"
 
 [source."https://github.com/vantreeseba/tree-sitter-haxe"]
 git = "https://github.com/vantreeseba/tree-sitter-haxe"
+rev = "52e3d2b9c3955aca886bccc38b496ef99b603a09"
 replace-with = "vendored-sources"
 
 [source."https://github.com/varlad/tree-sitter-julia.git"]
 git = "https://github.com/varlad/tree-sitter-julia.git"
-branch = "lapce"
+rev = "2ad4c9b79e0f213b61dbb3820754bfc6306e595a"
 replace-with = "vendored-sources"
 
 [source."https://github.com/yusdacra/tree-sitter-protobuf"]
 git = "https://github.com/yusdacra/tree-sitter-protobuf"
-branch = "main"
+rev = "5aef38d655f76a6b0d172340eed3766c93b3124c"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

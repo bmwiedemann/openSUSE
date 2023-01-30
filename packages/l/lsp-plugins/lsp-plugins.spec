@@ -22,7 +22,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
@@ -113,6 +113,20 @@ the GNU/Linux platform.
 
 This is the LADSPA version of the plugins.
 
+%package -n    clap-%{name}
+Summary:       Linux Studio Plugins Documents (CLAP)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n clap-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2 and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the CLAP version of the plugins.
+
 %package devel
 Summary:        Linux Studio Plugins Development files
 Group:          Productivity/Multimedia/Sound/Utilities
@@ -129,7 +143,7 @@ Development files for Linux Studio Plugins
 %build
 #export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='lv2 vst2 doc jack ladspa xdg'
+make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='lv2 vst2 clap doc jack ladspa xdg'
 %make_build
 
 %install
@@ -161,10 +175,6 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %files devel
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/liblsp-*.a
-%dir %{_includedir}/lsp-plug.in
-%dir %{_includedir}/lsp-plug.in/r3d
-%dir %{_includedir}/lsp-plug.in/r3d/glx
-%{_includedir}/lsp-plug.in/r3d/glx/*.h
 
 %files -n ladspa-%{name}
 %{_libdir}/ladspa/%{name}-ladspa-%{version}.so
@@ -176,6 +186,10 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %files -n vst-%{name}
 %dir %{_libdir}/vst
 %{_libdir}/vst/%{name}
+
+%files -n clap-%{name}
+%dir %{_libdir}/clap
+%{_libdir}/clap/
 
 %files doc
 %{_docdir}/%{name}

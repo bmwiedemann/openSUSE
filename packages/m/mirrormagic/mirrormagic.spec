@@ -1,7 +1,7 @@
 #
 # spec file for package mirrormagic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 Name:           mirrormagic
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Puzzle game where you steer a beam of light using mirrors
 License:        GPL-2.0-only
 Group:          Amusements/Games/Logic
 URL:            https://www.artsoft.org/mirrormagic/
-Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}-linux.tar.gz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
-# PATCH-FIX-UPSTREAM -- Fix LTO multiple definitions linking issue
-Patch0:         fix-multiple-definitions.patch
-# PATCH-FIX-UPSTREAM -- bmwiedemann emailed author - will be merged
-Patch1:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(sdl2)
-Requires(pre):  group(games) user(games)
 
 %description
 This is a nice little game with color graphics and sound for your
@@ -51,18 +47,16 @@ C64 game "Deflektor".
 
 %prep
 %setup -q -b 1
-%patch0 -p1
-%patch1 -p1
+
 rm -rfv lib mirrormagic
 find . -name "*.orig" -delete
 
 %build
-%make_build sdl2 \
+%make_build \
     PROGBASE=%{name} \
     OPTIONS="%{optflags} -fPIE" \
     EXTRA_LDFLAGS="%{optflags} -pie" \
-    RO_GAME_DIR=%{_datadir}/%{name} \
-    RW_GAME_DIR=%{_localstatedir}/games/%{name}
+    BASE_PATH=%{_datadir}/%{name}
 
 %install
 # install executable
@@ -81,9 +75,7 @@ for i in 32 48 64 72 96 ; do
 done
 
 # install Desktop file
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}/scores
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}%{_prefix}
@@ -95,6 +87,5 @@ install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}/scores
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/%{name}
-%attr(0775,games,games) %{_localstatedir}/games/%{name}
 
 %changelog

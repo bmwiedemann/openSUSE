@@ -1,0 +1,15 @@
+<!-- vim: ft=xml sw=2 ts=2 noet: -->
+<services>
+	<service name="obs_scm" mode="manual">
+		<param name="url">https://gitlab.com/OpenMW/openmw.git</param>
+		<param name="scm">git</param>
+		<param name="revision">e6b6f2ced6af44fec3af12778e74a88fde0d6dd2</param>
+		<param name="version">0.48.0~rc5</param>
+	</service>
+	<service name="tar" mode="manual" />
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual" />
+</services>

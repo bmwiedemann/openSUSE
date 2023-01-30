@@ -3,7 +3,7 @@
     <param name="url">https://codeberg.org/dnkl/yambar.git</param>
     <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">f75168796ad6f361eb35c4335918468afe7cd8c6</param>
+    <param name="revision">d1776714ed97abeedd4a977f2683c8acd403de7d</param>
     <param name="versionrewrite-pattern">(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>

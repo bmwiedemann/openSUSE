@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 25 21:10:02 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Bugfix release
+  * no functional changes
+
+-------------------------------------------------------------------
+Sat Jan 21 22:46:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.36
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.36
+- Update to version 2.2.35
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.35
+- Update to version 2.2.34
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.34
+- Update to version 2.2.33
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.33
+- Update to version 2.2.32
+  https://github.com/GNS3/gns3-server/releases/tag/v2.2.32
+- Drop patch:
+  * gns3-gui-fix-requirements.patch
+
+-------------------------------------------------------------------
 Sun Oct 23 10:38:17 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

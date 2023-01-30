@@ -78,4 +78,13 @@
       21 Vanessa, Flatpak. #262</comment>
     <requestid>1060440</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fa06c0aec905d1bb722595e889f5e1c</srcmd5>
+    <version>1.5.3</version>
+    <time>1675095018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3:
+  * &quot;GLIBC_2.34 not found&quot; when trying to run the program #273</comment>
+    <requestid>1061902</requestid>
+  </revision>
 </revisionlist>

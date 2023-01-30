@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 29 13:21:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13.2
+  * No longer require certain declarations to be function
+    parameters: const, volatile, static, and variable length
+    arrays
+  * The set of word-break characters for autocompletion has been
+    expanded to be (almost) all non-identifier characters.
+  * Bit-fields having [[no_unique_address]] are now correctly
+    reported as an error.
+
+-------------------------------------------------------------------
 Sun Jan  8 15:55:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13.1

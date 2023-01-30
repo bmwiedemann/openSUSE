@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 30 10:00:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.18.1:
+  * replace omp_get_max_threads() with omp_get_num_procs()
+  * denoise: more aggressive caching of auto chroma coefficients
+  * fixed corrupted thumbnails when using the libraw decoder with a custom raw crop
+  * trying to speedup denoise with automatic chroma
+  * denoise: try avoiding recomputation of automatic chrominance denoise when not necessary
+  * saveasdlg: fixed bug in setting filename
+  * try to recover if the exiftool process returns an error
+  * better integration with exiftool (reuse the same process instead of spawning a new one every time)
+  * added support for lcms2 fast float
+
+-------------------------------------------------------------------
 Tue Jan  3 14:04:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.18.0:

@@ -1,5 +1,5 @@
 pkgname=gpxsee
-pkgver=11.11
+pkgver=11.12
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
@@ -21,5 +21,4 @@ build() {
 package() {
 	cd GPXSee-${pkgver}
 	make INSTALL_ROOT="$pkgdir" install
-	install -Dm644 pkg/appdata.xml "$pkgdir"/usr/share/metainfo/$pkgname.appdata.xml
 }

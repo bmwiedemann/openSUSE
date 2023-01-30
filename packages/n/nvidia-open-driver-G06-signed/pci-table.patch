@@ -1,0 +1,114 @@
+diff -u -r kernel-open.orig/nvidia/nv-pci-table.c kernel-open/nvidia/nv-pci-table.c
+--- kernel-open.orig/nvidia/nv-pci-table.c	2023-01-29 14:48:55.126713000 +0100
++++ kernel-open/nvidia/nv-pci-table.c	2023-01-29 14:56:28.901959000 +0100
+@@ -28,51 +28,13 @@
+ 
+ /* Devices supported by RM */
+ struct pci_device_id nv_pci_table[] = {
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_VGA << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_3D << 8),
+-        .class_mask  = ~0
+-    },
++#include "nv_pci_table_list.h"
+     { }
+ };
+ 
+ /* Devices supported by all drivers in nvidia.ko */
+ struct pci_device_id nv_module_device_table[] = {
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_VGA << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_3D << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_BRIDGE_OTHER << 8),
+-        .class_mask  = ~0
+-    },
++#include "nv_module_pci_table_list.h"
+     { }
+ };
+ 
+diff -u -r kernel-open.orig/nvidia-drm/nv-pci-table.c kernel-open/nvidia-drm/nv-pci-table.c
+--- kernel-open.orig/nvidia-drm/nv-pci-table.c	2023-01-29 14:48:51.032916000 +0100
++++ kernel-open/nvidia-drm/nv-pci-table.c	2023-01-29 14:53:47.242620000 +0100
+@@ -28,51 +28,13 @@
+ 
+ /* Devices supported by RM */
+ struct pci_device_id nv_pci_table[] = {
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_VGA << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_3D << 8),
+-        .class_mask  = ~0
+-    },
++#include "nv_pci_table_list.h"
+     { }
+ };
+ 
+ /* Devices supported by all drivers in nvidia.ko */
+ struct pci_device_id nv_module_device_table[] = {
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_VGA << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_DISPLAY_3D << 8),
+-        .class_mask  = ~0
+-    },
+-    {
+-        .vendor      = PCI_VENDOR_ID_NVIDIA,
+-        .device      = PCI_ANY_ID,
+-        .subvendor   = PCI_ANY_ID,
+-        .subdevice   = PCI_ANY_ID,
+-        .class       = (PCI_CLASS_BRIDGE_OTHER << 8),
+-        .class_mask  = ~0
+-    },
++#include "nv_module_pci_table_list.h"
+     { }
+ };
+ 

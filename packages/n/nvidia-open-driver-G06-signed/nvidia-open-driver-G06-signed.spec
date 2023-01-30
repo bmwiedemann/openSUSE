@@ -16,6 +16,8 @@
 #
 
 
+%define hardcode_pci_list 1
+
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}
 %define kernel_module_directory /usr/lib/modules
@@ -49,8 +51,10 @@ Source9:        pci_ids-unsupported-%{version}
 Source10:       pci_ids-unsupported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
+Source13:       generati-pci-table.sh
 Patch0:         0001-Don-t-override-INSTALL_MOD_DIR.patch
 Patch2:         persistent-nvidia-id-string.patch
+Patch3:         pci-table.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-source
@@ -71,8 +75,10 @@ ExclusiveArch:  x86_64 aarch64
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 
-# create hardware supplements for manual builds
+%if ! 0%{hardcode_pci_list}
+## create hardware supplements for manual builds
 %{load:%{SOURCE12}}
+%endif
 
 # newer rpmbuilds attach the kernel version and the major part of release to %%pci_id_file of the __kmp_supplements script
 # boo#1190210
@@ -86,6 +92,16 @@ for GeForce RTX 2000 series and newer GPUs.
 %setup -q -n open-gpu-kernel-modules-%{version}
 %patch0 -p1
 %patch2 -p1
+%if 0%{hardcode_pci_list}
+%patch3 -p0
+pushd kernel-open
+%if 0%{?suse_version} >= 1550
+sh %{SOURCE13} %{SOURCE2}
+%else
+sh %{SOURCE13} %{SOURCE9}
+%endif
+popd
+%endif
 set -- *
 mkdir source
 mv "$@" source/
@@ -148,7 +164,15 @@ for flavor in %flavors_to_build; do
 blacklist nouveau
 options nvidia-drm modeset=1
 ### Enable support on *all* Turing/Ampere GPUs: Alpha Quality!
+%if 0%{hardcode_pci_list}
+%if 0%{?suse_version} >= 1550
 #options nvidia NVreg_OpenRmEnableUnsupportedGpus=1
+%else
+options nvidia NVreg_OpenRmEnableUnsupportedGpus=1
+%endif
+%else
+#options nvidia NVreg_OpenRmEnableUnsupportedGpus=1
+%endif
 EOF
     echo -n "install nvidia " >> $MODPROBE_DIR/50-nvidia-$flavor.conf
     tail -n +3 %_sourcedir/modprobe.nvidia.install | awk '{ printf "%s ", $0 }' >> $MODPROBE_DIR/50-nvidia-$flavor.conf

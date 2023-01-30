@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 29 13:02:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1/SDK-1.3.239.0
+  * Add support for StreamingInterfaceINTEL in headers
+  * C++ headers: Define & and ~ bitwise operators for mask enums
+  * Add operator^
+  * Make operands to Kernel added in v5 optional
+
+-------------------------------------------------------------------
 Wed Jan 18 22:31:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.6.1+sdk236+git7.d13b522
