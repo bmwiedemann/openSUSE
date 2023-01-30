@@ -1,7 +1,7 @@
 #
 # spec file for package photoqt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           photoqt
-Version:        2.5
+Version:        2.9.1
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://photoqt.org/
 Source0:        https://photoqt.org/pkgs/%{name}-%{version}.tar.gz
-# Patch0:         photoqt-1.7-link.patch
-# Patch1:         0001-Switch-to-FindLibExiv2-from-ECM-5.53.0.patch
-# Patch2:         0002-Fix-build-with-exiv2-0.27.patch
+# PATCH-FIX-UPSTREAM - photoqt-fix-building-with-raw.patch - make raw loader work when libraw is compiled without rawspeed support
+Patch0:         photoqt-fix-building-with-raw.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel
@@ -34,11 +33,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(IL)
+BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.4.0
+BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5UiTools)
@@ -56,26 +56,22 @@ PhotoQt is a configurable image viewer.
 %autosetup -p1
 
 %build
-%cmake -DCRYPTKEY:STRING=4242 -DCHROMECAST=OFF
+%cmake -DCRYPTKEY:STRING=4242 \
+       -DCHROMECAST=OFF \
+       -DGRAPHICSMAGICK=OFF \
+       -DIMAGEMAGICK=ON
+
 make %{?_smp_mflags}
 
 %install
 %cmake_install
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %files
 %license COPYING
 %doc CHANGELOG
 %{_bindir}/%{name}
-%{_datadir}/appdata/org.photoqt.PhotoQt.appdata.xml
+%{_datadir}/metainfo/org.photoqt.PhotoQt.metainfo.xml
 %{_datadir}/applications/org.photoqt.PhotoQt*.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/icons/hicolor/*/apps/org.photoqt.PhotoQt.png
 
 %changelog

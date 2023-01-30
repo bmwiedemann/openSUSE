@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Jan 24 17:04:48 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.9.1
+  * fix: language files missing
+  * fix: network path handling on Windows
+- Changes in 2.9:
+  * add/improve: new status information labels
+  * improve: always attempt loading of Exiv2 data
+  * improve: option to move meta data back behind screen edge
+  * improve: replace PNGs icons by SVGs for better scaling
+  * improve: new filetype and backup icons
+  * improve: small interface updates
+  * improve: switch from deprecated appdata to metainfo
+  * new shortcuts: __fullscreenToggle, __fitInWindow
+  * fix: sorting of files in file and folder model
+  * fix: selection of certain localizations
+  * fix: calculation of size of pixmap cache
+  * fix: visibility of slideshow controls
+  * other smaller bug fixes and improvements
+- Changes in 2.8:
+  * file dialog: preview image can be blurred and/or its colors
+    muted
+  * file dialog: preview image can be loadedin low (fast) and
+    high (slower) resolution
+  * file dialog: option to hide tooltip with file details
+  * file dialog: reworked context menu of fileview
+  * file dialog: tooltip with file details
+  * slideshow: fix next/prev buttons during slideshow when
+    slideshow paused
+  * slideshow: controls turned into floating buttons at bottom
+    center
+  * shortcuts: support for double clicks
+  * navigation: add navigation buttons to window buttons
+  * navigation: add zoom to/from setting
+  * navigation: add min/max zoom range
+  * navigation: option to enable/disable window decoration by
+    clicking outside visible image
+  * main menu: restyled and regrouped, complementary to context
+    menu
+  * context menu: restyled and regrouped, complementary to main
+    menu
+  * metadata: turn into floating element, not hiding behind edge
+    anymore
+  * file formats: support for Adove Illustrator (AI) file format
+  * startup: validate values of some settings, ensuring they fall
+    within a valid min/max range
+  * interface: pause animated image when element opened on top
+  * interface: raise window properly when needed
+  * interface: startup background text message font size follows
+    window size
+  * interface: option to automatically pop out elements if window
+    is too small
+  * interface: option to set different overlay color in fullscreen
+  * general UI updates and color adjustments
+- Changes in 2.7:
+  * add: support for libvips image library
+  * add: support for libmpv video library
+  * add: advanced sorting by luminosity
+  * add: obtain configuration visually (About) and through
+    command line (--show-info)
+  * improve: reworked main menu with collapsible sections
+  * improve: better performance of obtaining image size info
+  * fix: mimetypes where never checked
+  * fix: hiding of viewer mode button when shortcut used
+  * various improvements and fixes under the hood
+- Changes in 2.6:
+  * add new image formats: ani, dfont, g4, heic/heif, otf,
+    pfa/pfb, pgx, qoi, sixel
+  * add: new transitions: explosion, implosion, rotation, random
+  * add: advanced sorting (including shortcuts) by: resolution,
+    dominant color, average color
+  * add: more filter options: file name/extension, resolution,
+    file size
+  * add: print support
+  * add: option to always show 'closing x'
+  * improve: general performance improvements
+  * remove no longer supported image formats: cgm, fig, fpx, flif,
+    gv, sid
+  * fix: update with GraphicsMagick caused crash
+  * fix: fully hide labels if none are set to be shown
+- Add BuildRequires pkgconfig(Qt5PrintSupport)
+- Add photoqt-fix-building-with-raw.patch, make raw loader work
+  when libraw is compiled without rawspeed support
+- Drop post/postun
+- Use ImageMagick instead of GraphicsMagick [bsc#1206620]
+
+-------------------------------------------------------------------
 Mon Jan 24 21:53:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5:
