@@ -1,0 +1,199 @@
+From a17ffb01430468f411acc5488cc9a6d27ceb1428 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Sat, 9 Jul 2022 19:26:56 +0100
+Subject: [PATCH] Add support for dependency generators
+
+1) Add support for including macros in pesign-repackage.spec by using pesign-spec-macros
+2) Add support for copying sources to the new build directory by using pesign-copy-sources
+
+Update README for dependency generation
+
+1) Add Dependency Generation section
+2) Convert to Markdown
+---
+ README => README.md       | 40 ++++++++++++++++++++++++++++++++-------
+ brp-99-pesign             | 24 +++++++++++++++++++++++
+ pesign-gen-repackage-spec |  3 +++
+ pesign-repackage.spec.in  |  9 ++++++++-
+ 4 files changed, 68 insertions(+), 8 deletions(-)
+ rename README => README.md (59%)
+
+diff --git a/README b/README.md
+similarity index 59%
+rename from README
+rename to README.md
+index aaa5da0..c8090cd 100644
+--- a/README
++++ b/README.md
+@@ -1,18 +1,19 @@
+-Signing kernel modules and EFI binaries in the Open Build Service
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ # Signing kernel modules and EFI binaries in the Open Build Service
+ 
+ RPM packages that need to sign files during build should add the following lines
+ to the specfile
+ 
++```
+ # needssslcertforbuild
+ export BRP_PESIGN_FILES='pattern...'
+ BuildRequires: pesign-obs-integration
++```
+ 
+ Debian packages need to add the following line to the Source stanza in the
+ debian/control file, which will add "Obs: needssslcertforbuild" to the generated
+ .dsc file:
+ 
+-XS-Obs: needssslcertforbuild
++```XS-Obs: needssslcertforbuild```
+ 
+ The "# needssslcertforbuild" comment tells the buildservice to store the
+ signing certificate in %_sourcedir/_projectcert.crt. At the end of the
+@@ -28,18 +29,43 @@ appends the signatures to the files. It then uses the
+ pesign-gen-repackage-spec script to generate another specfile, which
+ builds new RPMs with signed files. The supported file types are:
+ 
+-*.ko            - Signature appended to the module
+-efi binaries    - Signature embedded in a header. If a HMAC checksum named
+-                  .$file.hmac exists, it is regenerated
++- *.ko
++  - Signature appended to the module
++- efi binaries
++  - Signature embedded in a header. If a HMAC checksum named
++    .$file.hmac exists, it is regenerated
+ 
+ Debian packages can use the dh-signobs debhelper to automate signing and
+ repacking. Build-depend on dh-signobs and add --with signobs to the dh line
+ in debian/rules to use the fully automated helper.
+ Consult the dh_signobs manpage for more information.
+ 
++## Options
++
++### Kernel Module Compression
+ When BRP_PESIGN_COMPRESS_MODULE is passed, the script tries to compress the
+ kernel modules at the repackaging phase. Currently xz, gzip and zstd format is supported.
+ For enable the compression feature, put the following along with
+ BRP_PESIGN_FILES setup:
+ 
+-export BRP_PESIGN_COMPRESS_MODULE="xz"
++```export BRP_PESIGN_COMPRESS_MODULE="xz"```
++
++### Dependency Generation
++If you need macros within the pesign-repackage specfile to adjust [dependency generation](https://rpm-software-management.github.io/rpm/manual/dependency_generators.html)
++, then place these in a source file called pesign-spec-macros, this will subseqently be loaded.
++
++Example of pesign-spec-macros:
++
++```%__kmp_supplements %_sourcedir/my-find-supplements %_sourcedir/pci_ids-%{version}```
++
++To save creating duplicate copies of macros, load this file from your existing spec file by using the following:
++
++```%{load:%{_sourcedir}/pesign-spec-macros}```
++
++If you need some source files such as dependency generation scripts then place the names of these source files in a source file called pesign-copy-sources.
++
++Example of pesign-copy-sources:
++```
++my-find-supplements
++pci_ids-%{version}
++```
+diff --git a/brp-99-pesign b/brp-99-pesign
+index c6e9d54..b4ec89e 100644
+--- a/brp-99-pesign
++++ b/brp-99-pesign
+@@ -88,10 +88,34 @@ else
+ 	echo "No buildservice signing certificate"
+ 	cert=/dev/null
+ fi
++
++if test -e $RPM_SOURCE_DIR/pesign-spec-macros; then
++	sed "
++		s:%{name}:$RPM_PACKAGE_NAME:g
++		s:%{version}:$RPM_PACKAGE_VERSION:g
++	" $RPM_SOURCE_DIR/pesign-spec-macros > $output/pesign-spec-macros
++	spec_macros="--macros pesign-spec-macros"
++fi
++if test -e $RPM_SOURCE_DIR/pesign-copy-sources; then
++	sed "
++		s:%{name}:$RPM_PACKAGE_NAME:g
++		s:%{version}:$RPM_PACKAGE_VERSION:g
++	" $RPM_SOURCE_DIR/pesign-copy-sources > $output/pesign-copy-sources
++	while read -r line; do
++		if [ -n "${line}" ]; then
++			source_files="${source_files}${RPM_SOURCE_DIR}/${line}\n"
++		fi
++	done < $output/pesign-copy-sources
++	echo -e "$source_files" | head -c -1 | cpio -o > $output/source_files.cpio
++	rm $output/pesign-copy-sources
++fi
++
++
+ sed "
+ 	s:@NAME@:$RPM_PACKAGE_NAME:g
+ 	s:@PESIGN_GRUB_RESERVATION@:$pesign_grub_reservation:g
+ 	s:@PESIGN_REPACKAGE_COMPRESS@:$pesign_repackage_compress:g
++	s:@PESIGN_LOAD_SPEC_MACROS@:$spec_macros:g
+ 	/@CERT@/ {
+ 		r $cert
+ 		d
+diff --git a/pesign-gen-repackage-spec b/pesign-gen-repackage-spec
+index 688c375..078d806 100755
+--- a/pesign-gen-repackage-spec
++++ b/pesign-gen-repackage-spec
+@@ -33,6 +33,7 @@ my $output = ".";
+ my $cert_subpackage;
+ my $kmp_basename;
+ my $compress = "";
++my $macros_file = "";
+ my @rpms;
+ 
+ $ENV{LC_ALL} = "en_US.UTF-8";
+@@ -43,6 +44,7 @@ GetOptions(
+ 	"output|o=s" => \$output,
+ 	"cert-subpackage|c=s" => \$cert_subpackage,
+ 	"compress|C=s" => \$compress,
++	"macros|M=s" => \$macros_file,
+ ) or die $USAGE;
+ @rpms = @ARGV;
+ if (!@rpms) {
+@@ -270,6 +272,7 @@ sub print_package {
+ 	print SPEC "\%define _binary_payload $payloadstr\n";
+ 
+ 	if ($is_main) {
++		print SPEC "\%{load:\%_sourcedir/$macros_file}\n" if $macros_file ne "";
+ 		print SPEC "Name: $p->{name}\n";
+ 		print SPEC "Buildroot: $directory\n";
+ 		if ($p->{nosource}) {
+diff --git a/pesign-repackage.spec.in b/pesign-repackage.spec.in
+index 7b3d2e5..ca78fea 100644
+--- a/pesign-repackage.spec.in
++++ b/pesign-repackage.spec.in
+@@ -91,6 +91,8 @@ OTHER_FILES=`find %_sourcedir/ -maxdepth 1 -type f \
+ 	-not -name "_statistics" \
+ 	-not -name "logfile" \
+ 	-not -name "meta" \
++	-not -name "pesign-spec-macros" \
++	-not -name "source_files.cpio" \
+ 	-print`
+ for file in $OTHER_FILES; do
+ 	if test -e "$file"; then
+@@ -98,6 +100,11 @@ for file in $OTHER_FILES; do
+ 		cp "$file" "$_"
+ 	fi
+ done
++if test -e %_sourcedir/source_files.cpio; then
++	pushd %_sourcedir
++	cpio -i < source_files.cpio
++	popd
++fi
+ mkdir rsasigned
+ pushd rsasigned
+ cpio -idm <%_sourcedir/@NAME@.cpio.rsasign.sig
+@@ -183,7 +190,7 @@ for sig in "${sigs[@]}"; do
+ rm "$cert.pub"
+ 
+ popd
+-/usr/lib/rpm/pesign/pesign-gen-repackage-spec @PESIGN_REPACKAGE_COMPRESS@ \
++/usr/lib/rpm/pesign/pesign-gen-repackage-spec @PESIGN_REPACKAGE_COMPRESS@ @PESIGN_LOAD_SPEC_MACROS@ \
+ 	--directory=%buildroot "${rpms[@]}"
+ rpmbuild --define "%%buildroot %buildroot" --define "%%disturl $disturl" \
+ 	--define "%%_builddir $PWD" \
