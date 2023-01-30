@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 14:42:22 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Refresh patch rpi-eeprom-update-Use-tr-instead-of-strings.patch
+  Replace the third source for "strings" as well
+
+-------------------------------------------------------------------
 Sun Jan 22 20:32:45 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Packaging changes:
