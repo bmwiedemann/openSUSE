@@ -1,7 +1,7 @@
 #
 # spec file for package prison-qt5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Multimedia) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(ZXing) >= 1.2.0
 BuildRequires:  pkgconfig(libdmtx)
@@ -103,6 +104,9 @@ uniform access to generation of barcodes with data.
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %dir %{_kf5_qmldir}/org/kde/prison/
+%dir %{_kf5_qmldir}/org/kde/prison/scanner
+%{_kf5_qmldir}/org/kde/prison/scanner/libprisonscannerquickplugin.so
+%{_kf5_qmldir}/org/kde/prison/scanner/qmldir
 %{_kf5_qmldir}/org/kde/prison/libprisonquickplugin.so
 %{_kf5_qmldir}/org/kde/prison/qmldir
 
