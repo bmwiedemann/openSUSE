@@ -1,7 +1,7 @@
 #
 # spec file for package qatzip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatzip
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATzip Library
 License:        BSD-3-Clause
@@ -91,5 +91,6 @@ rm -vf %{buildroot}%{_libdir}/*.{la,a}
 %doc docs/QATzip-man.pdf
 %{_includedir}/qatzip.h
 %{_libdir}/libqatzip.so
+%{_libdir}/pkgconfig/qatzip.pc
 
 %changelog
