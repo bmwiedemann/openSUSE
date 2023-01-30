@@ -1,7 +1,7 @@
 #
 # spec file for package pitivi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-gobject
 BuildRequires:  shared-mime-info
-BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.12.2
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.2

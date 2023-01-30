@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 14:51:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gst-validate-1.0) BuildRequires, only needed for
+  tests, and we do not run those.
+
+-------------------------------------------------------------------
 Sun Jun 26 13:13:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2022.06:
