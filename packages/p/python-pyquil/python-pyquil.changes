@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 28 22:26:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.3.3
+  * Fix incorrect circuit rendering (#1520)
+- No changelog for 3.3.2
+- Fix dependencies
+
+-------------------------------------------------------------------
 Wed Sep 28 09:46:42 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.3.1 
