@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 28 16:08:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.18:
+  * Fix address sanitizer issues
+  * Fix issues with Babassl & Openssl3.0
+  * Add QAT_HW SM4 CBC support
+  * Refactor ECX provider code into single file
+  * Fix QAT_HW AES-GCM bad mac record & memleak
+  * Fix SHA3 memory leak
+  * Fix sm4-cbc build error with system default OpenSSL
+  * Symmetric performance Optimization & memleak fixes
+  *  Bug fix, README & v0.6.18 Version update
+  * Please refer README (Software requirements section) for dependent
+    libraries release version and other information.
+
+-------------------------------------------------------------------
 Sat Dec  3 23:33:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.6.17:
