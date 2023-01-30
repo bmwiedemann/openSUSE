@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 08:11:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.1.1:
+  * Add support for pkg-config in QATzip
+  * Fix Coverity issues
+  * Change lz4s with frame header to lz4s block
+  * Move lz4(s) related functions to qatzip_lz4.c
+  * Move functions outputHeader* outputFooter* to qatzip_utils.c
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sat Dec  3 23:31:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
