@@ -26,6 +26,9 @@ URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
 Source99:       python-lxml.rpmlintrc
+# PATCH-FIX-UPSTREAM close_file_before_test.patch bsc#1206555 mcepl@suse.com
+# make sure the testing data are flushed to the file
+Patch0:         close_file_before_test.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
@@ -70,7 +73,8 @@ RelaxNG, XML Schema, XSLT and C14N.
 This package contains header files needed to use lxml's C API.
 
 %prep
-%setup -q -n lxml-%{version}
+%autosetup -p1 -n lxml-%{version}
+
 cp %{SOURCE1} .
 
 # remove generated files

@@ -914,4 +914,12 @@ Send to Staging:E.
     Patch by Quentin Leffray.</comment>
     <requestid>1045999</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>6e23b6aeeccf521b93ee07c15e1d51a3</srcmd5>
+    <version>4.9.2</version>
+    <time>1675094984</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061830</requestid>
+  </revision>
 </revisionlist>

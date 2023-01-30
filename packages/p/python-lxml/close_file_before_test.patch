@@ -1,0 +1,29 @@
+---
+ src/lxml/tests/test_etree.py |    9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+--- a/src/lxml/tests/test_etree.py
++++ b/src/lxml/tests/test_etree.py
+@@ -18,6 +18,7 @@ import re
+ import gc
+ import operator
+ import textwrap
++import tempfile
+ import zlib
+ import gzip
+ 
+@@ -5276,9 +5277,11 @@ class ETreeWriteTestCase(HelperTestCase)
+ 
+     def test_write_file_gzip_parse(self):
+         tree = self.parse(_bytes('<a>'+'<b/>'*200+'</a>'))
+-        with tmpfile() as filename:
+-            tree.write(filename, compression=9)
+-            data = etree.tostring(etree.parse(filename))
++        with tempfile.NamedTemporaryFile() as f:
++            tree.write(f.name, compression=9)
++            f.file.flush()
++            f.file.seek(0)
++            data = etree.tostring(etree.parse(f.name))
+         self.assertEqual(_bytes('<a>'+'<b/>'*200+'</a>'),
+                           data)
+ 
