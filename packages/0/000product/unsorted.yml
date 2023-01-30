@@ -1455,6 +1455,8 @@ unsorted:
   - bouncycastle-util 
   - bowtie: [x86_64] 
   - bowtie2: [x86_64] 
+  - boxfort 
+  - boxfort-devel 
   - bpftool 
   - bpftool-bash-completion 
   - bpftool-rebuild 
@@ -2073,6 +2075,7 @@ unsorted:
   - clanlib-devel 
   - clanlib-doc 
   - clanlib-examples 
+  - clap-lsp-plugins 
   - clapper 
   - clapper-devel 
   - clapper-lang 
@@ -11532,7 +11535,7 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
-  - libglslang11-32bit: [x86_64] 
+  - libglslang12-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterd0 
