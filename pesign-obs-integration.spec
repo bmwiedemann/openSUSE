@@ -30,6 +30,7 @@ Patch1:         attr.patch
 Patch2:         lang.patch
 Patch3:         rpmlintrc.patch
 Patch4:         verify-sig.patch
+Patch5:         dependency-generators.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
@@ -72,7 +73,7 @@ fi
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/modsign-repackage
 %{_bindir}/modsign-verify
 %{_prefix}/lib/rpm/*

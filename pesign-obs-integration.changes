@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:16:22 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add dependency-generators.patch to support copying source files
+  and macros to the re-package build (jsc#PED-2658)
+
+-------------------------------------------------------------------
 Wed Sep 28 06:36:56 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add verify-sig.patch to verify the signatures before attaching

@@ -435,4 +435,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>1006626</requestid>
   </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>ef1410781caa42d83098b043c6ff0dc5</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1675094999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061964</requestid>
+  </revision>
 </revisionlist>
