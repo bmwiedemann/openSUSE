@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 30 12:07:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.23.0:
+  * Update CHANGELOG for v1.23.0 (#220)
+  * Add @tksm to CODEOWNERS (#219)
+  * Allow to specify --exclude-pod/container multiple times (#218)
+  * Add --only-log-lines flag that prints only log lines (#216)
+  * Fix typo of --verbosity flag (#215)
+  * Add --verbosity flag to set log level verbosity (#214)
+  * Add completion for flags with pre-defined choices (#211)
+  * Fix bug where container-state is ignored when no-follow specified (#210)
+  * Add dynamic completion for a resource query (#209)
+  * Support <resource>/<name> form as a query (#208)
+  * Fix indent in update-readme.go (#207)
+  * Update dependencies and tools (#205)
+  * Add --no-follow flag to exit when all logs have been shown (#204)
+  * Use StringArrayVarP for --include and --exclude flags (#196)
+  * Fix the invalid command in README.md (#193)
+
+-------------------------------------------------------------------
 Tue Sep 27 15:28:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.22.0:
