@@ -1,7 +1,7 @@
 #
 # spec file for package python-qcs-api-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-qcs-api-client
-Version:        0.21.1
+Version:        0.21.3
 Release:        0
 Summary:        Python client library for accessing the Rigetti QCS API
 License:        MIT
@@ -26,32 +25,36 @@ URL:            https://github.com/rigetti/qcs-api-client-python
 Source:         https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v%{version}.tar.gz#/qcs-api-client-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Use pyRFC3339 rather than rfc3339 which is not packaged
 Patch0:         switch-to-pyrfc3339.patch
-# PATCH-FIX-OPENSUSE Support newer respx
-Patch1:         support-new-respx.patch
-BuildRequires:  %{python_module PyJWT}
-BuildRequires:  %{python_module dateutil}
-BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pyRFC3339}
-BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module respx}
-BuildRequires:  %{python_module retrying}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyJWT
-Requires:       python-attrs >= 20.1
+# SECTION runtime
+BuildRequires:  %{python_module PyJWT >= 2.4.0}
+BuildRequires:  %{python_module attrs >= 21.3}
+BuildRequires:  %{python_module dateutil}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module iso8601 >= 1.0.2}
+BuildRequires:  %{python_module pyRFC3339 >= 1.1}
+BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module retrying}
+BuildRequires:  %{python_module toml >= 0.10.2}
+# /SECTION
+# SECTION test
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module respx >= 0.20}
+# /SECTION
+Requires:       python-PyJWT >= 2.4.0
+Requires:       python-attrs >= 21.3
 Requires:       python-dateutil >= 2.8.1
-Requires:       python-httpx >= 0.15
+Requires:       python-httpx >= 0.23
 Requires:       python-iso8601 >= 1.0.2
-Requires:       python-pyRFC3339
+Requires:       python-pyRFC3339 >= 1.1
 Requires:       python-pydantic >= 1.7.2
-Requires:       python-retrying >= 1.3
-Requires:       python-toml
+Requires:       python-retrying >= 1.3.3
+Requires:       python-toml >= 0.10.2
 BuildArch:      noarch
 %python_subpackages
 

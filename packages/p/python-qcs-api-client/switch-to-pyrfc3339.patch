@@ -1,13 +1,13 @@
-Index: qcs-api-client-python-0.21.0/qcs_api_client/api/reservations/find_available_reservations.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/api/reservations/find_available_reservations.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/api/reservations/find_available_reservations.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/api/reservations/find_available_reservations.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/api/reservations/find_available_reservations.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/api/reservations/find_available_reservations.py
 @@ -3,7 +3,7 @@ from typing import Any, Dict
  
  import httpx
  from retrying import retry
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ...models.find_available_reservations_response import FindAvailableReservationsResponse
  from ...types import UNSET, Response
@@ -16,20 +16,20 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/api/reservations/find_availab
  
      assert start_time_from.tzinfo is not None, "Datetime must have timezone information"
 -    json_start_time_from = rfc3339(start_time_from)
-+    json_start_time_from = parse(start_time_from)
++    json_start_time_from = generate(start_time_from)
  
      params["startTimeFrom"] = json_start_time_from
  
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/available_reservation.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/available_reservation.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/available_reservation.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/available_reservation.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/available_reservation.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/available_reservation.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..types import UNSET
  from ..util.serialization import is_not_none
@@ -38,26 +38,26 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/available_reservation.
          duration = self.duration
          assert self.end_time.tzinfo is not None, "Datetime must have timezone information"
 -        end_time = rfc3339(self.end_time)
-+        end_time = parse(self.end_time)
++        end_time = generate(self.end_time)
  
          price = self.price
          quantum_processor_id = self.quantum_processor_id
          assert self.start_time.tzinfo is not None, "Datetime must have timezone information"
 -        start_time = rfc3339(self.start_time)
-+        start_time = parse(self.start_time)
++        start_time = generate(self.start_time)
  
          field_dict: Dict[str, Any] = {}
          field_dict.update(self.additional_properties)
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/billing_invoice.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/billing_invoice.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/billing_invoice.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/billing_invoice.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/billing_invoice.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/billing_invoice.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..models.billing_invoice_status import BillingInvoiceStatus
  from ..types import UNSET
@@ -66,24 +66,24 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/billing_invoice.py
      def to_dict(self, pick_by_predicate: Optional[Callable[[Any], bool]] = is_not_none) -> Dict[str, Any]:
          assert self.period_end.tzinfo is not None, "Datetime must have timezone information"
 -        period_end = rfc3339(self.period_end)
-+        period_end = parse(self.period_end)
++        period_end = generate(self.period_end)
  
          assert self.period_start.tzinfo is not None, "Datetime must have timezone information"
 -        period_start = rfc3339(self.period_start)
-+        period_start = parse(self.period_start)
++        period_start = generate(self.period_start)
  
          starting_balance = self.starting_balance
          status = self.status.value
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/billing_upcoming_invoice.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/billing_upcoming_invoice.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/billing_upcoming_invoice.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/billing_upcoming_invoice.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/billing_upcoming_invoice.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/billing_upcoming_invoice.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..models.billing_invoice_status import BillingInvoiceStatus
  from ..types import UNSET
@@ -92,24 +92,24 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/billing_upcoming_invoi
      def to_dict(self, pick_by_predicate: Optional[Callable[[Any], bool]] = is_not_none) -> Dict[str, Any]:
          assert self.period_end.tzinfo is not None, "Datetime must have timezone information"
 -        period_end = rfc3339(self.period_end)
-+        period_end = parse(self.period_end)
++        period_end = generate(self.period_end)
  
          assert self.period_start.tzinfo is not None, "Datetime must have timezone information"
 -        period_start = rfc3339(self.period_start)
-+        period_start = parse(self.period_start)
++        period_start = generate(self.period_start)
  
          starting_balance = self.starting_balance
          status = self.status.value
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/characteristic.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/characteristic.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/characteristic.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/characteristic.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/characteristic.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/characteristic.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..types import UNSET, Unset
  from ..util.serialization import is_not_none
@@ -118,20 +118,20 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/characteristic.py
          name = self.name
          assert self.timestamp.tzinfo is not None, "Datetime must have timezone information"
 -        timestamp = rfc3339(self.timestamp)
-+        timestamp = parse(self.timestamp)
++        timestamp = generate(self.timestamp)
  
          value = self.value
          error = self.error
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/create_reservation_request.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/create_reservation_request.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/create_reservation_request.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/create_reservation_request.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/create_reservation_request.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/create_reservation_request.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..models.account_type import AccountType
  from ..types import UNSET, Unset
@@ -140,25 +140,25 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/create_reservation_req
      def to_dict(self, pick_by_predicate: Optional[Callable[[Any], bool]] = is_not_none) -> Dict[str, Any]:
          assert self.end_time.tzinfo is not None, "Datetime must have timezone information"
 -        end_time = rfc3339(self.end_time)
-+        end_time = parse(self.end_time)
++        end_time = generate(self.end_time)
  
          quantum_processor_id = self.quantum_processor_id
          assert self.start_time.tzinfo is not None, "Datetime must have timezone information"
 -        start_time = rfc3339(self.start_time)
-+        start_time = parse(self.start_time)
++        start_time = generate(self.start_time)
  
          account_id = self.account_id
          account_type: Union[Unset, str] = UNSET
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/group.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/group.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/group.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/group.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/group.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/group.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..types import UNSET
  from ..util.serialization import is_not_none
@@ -167,31 +167,31 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/group.py
      def to_dict(self, pick_by_predicate: Optional[Callable[[Any], bool]] = is_not_none) -> Dict[str, Any]:
          assert self.created_time.tzinfo is not None, "Datetime must have timezone information"
 -        created_time = rfc3339(self.created_time)
-+        created_time = parse(self.created_time)
++        created_time = generate(self.created_time)
  
          description = self.description
          id = self.id
          assert self.last_membership_updated_time.tzinfo is not None, "Datetime must have timezone information"
 -        last_membership_updated_time = rfc3339(self.last_membership_updated_time)
-+        last_membership_updated_time = parse(self.last_membership_updated_time)
++        last_membership_updated_time = generate(self.last_membership_updated_time)
  
          name = self.name
          assert self.updated_time.tzinfo is not None, "Datetime must have timezone information"
 -        updated_time = rfc3339(self.updated_time)
-+        updated_time = parse(self.updated_time)
++        updated_time = generate(self.updated_time)
  
          field_dict: Dict[str, Any] = {}
          field_dict.update(self.additional_properties)
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/reservation.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/reservation.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/reservation.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/reservation.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/reservation.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/reservation.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..models.account_type import AccountType
  from ..types import UNSET, Unset
@@ -200,18 +200,18 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/reservation.py
  
          assert self.created_time.tzinfo is not None, "Datetime must have timezone information"
 -        created_time = rfc3339(self.created_time)
-+        created_time = parse(self.created_time)
++        created_time = generate(self.created_time)
  
          assert self.end_time.tzinfo is not None, "Datetime must have timezone information"
 -        end_time = rfc3339(self.end_time)
-+        end_time = parse(self.end_time)
++        end_time = generate(self.end_time)
  
          id = self.id
          price = self.price
          quantum_processor_id = self.quantum_processor_id
          assert self.start_time.tzinfo is not None, "Datetime must have timezone information"
 -        start_time = rfc3339(self.start_time)
-+        start_time = parse(self.start_time)
++        start_time = generate(self.start_time)
  
          user_id = self.user_id
          cancellation_billing_invoice_item_id = self.cancellation_billing_invoice_item_id
@@ -220,20 +220,20 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/reservation.py
          updated_time: Union[Unset, str] = UNSET
          if not isinstance(self.updated_time, Unset):
 -            updated_time = rfc3339(self.updated_time)
-+            updated_time = parse(self.updated_time)
++            updated_time = generate(self.updated_time)
  
          field_dict: Dict[str, Any] = {}
          field_dict.update(self.additional_properties)
-Index: qcs-api-client-python-0.21.0/qcs_api_client/models/user.py
+Index: qcs-api-client-python-0.21.3/qcs_api_client/models/user.py
 ===================================================================
---- qcs-api-client-python-0.21.0.orig/qcs_api_client/models/user.py
-+++ qcs-api-client-python-0.21.0/qcs_api_client/models/user.py
+--- qcs-api-client-python-0.21.3.orig/qcs_api_client/models/user.py
++++ qcs-api-client-python-0.21.3/qcs_api_client/models/user.py
 @@ -3,7 +3,7 @@ from typing import Any, Callable, Dict,
  
  import attr
  from dateutil.parser import isoparse
 -from rfc3339 import rfc3339
-+from pyrfc3339 import parse
++from pyrfc3339 import generate
  
  from ..models.user_profile import UserProfile
  from ..types import UNSET, Unset
@@ -242,7 +242,28 @@ Index: qcs-api-client-python-0.21.0/qcs_api_client/models/user.py
      def to_dict(self, pick_by_predicate: Optional[Callable[[Any], bool]] = is_not_none) -> Dict[str, Any]:
          assert self.created_time.tzinfo is not None, "Datetime must have timezone information"
 -        created_time = rfc3339(self.created_time)
-+        created_time = parse(self.created_time)
++        created_time = generate(self.created_time)
  
          id = self.id
          idp_id = self.idp_id
+Index: qcs-api-client-python-0.21.3/pyproject.toml
+===================================================================
+--- qcs-api-client-python-0.21.3.orig/pyproject.toml
++++ qcs-api-client-python-0.21.3/pyproject.toml
+@@ -21,7 +21,7 @@ pydantic = "^1.7.2"
+ python = "^3.7"
+ python-dateutil = "^2.8.1"
+ retrying = "^1.3.3"
+-rfc3339 = "^6.2"
++pyRFC3339 = "^1.1"
+ toml = "^0.10.2"
+ PyJWT = "^2.4.0"
+ 
+@@ -53,5 +53,5 @@ multi_line_output = 3
+ include_trailing_comma = true
+ 
+ [build-system]
+-requires = ["poetry>=1.0"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core"]
++build-backend = "poetry.core.masonry.api"
