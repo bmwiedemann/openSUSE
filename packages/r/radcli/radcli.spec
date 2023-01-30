@@ -1,8 +1,8 @@
 #
 # spec file for package radcli
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 
 %define sover 5
 Name:           radcli
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A RADIUS client library
-License:        MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND MIT
 Group:          Development/Languages/C and C++
-URL:            http://radcli.github.io/radcli/
-Source:         https://github.com/radcli/radcli/archive/%{version}.tar.gz#/%{version}/%{name}-%{version}.tar.gz
+URL:            https://radcli.github.io/radcli/
+Source:         https://github.com/radcli/radcli/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -63,9 +63,9 @@ Summary:        Development files for compatibility with radiusclient-ng and fre
 Group:          Development/Libraries/C and C++
 Requires:       libradcli%{sover} = %{version}
 Requires:       radcli-devel = %{version}
-Provides:       freeradius-client-devel
 Conflicts:      freeradius-client-devel
 Conflicts:      radiusclient-ng-devel
+Provides:       freeradius-client-devel
 
 %description compat-devel
 This package contains the compatibility headers and libraries for freeradius-client and radiusclient-ng.
@@ -82,14 +82,14 @@ autoreconf -fiv
     --with-nettle \
     --with-tls \
     --enable-legacy-compat
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post   -n libradcli%{sover} -p /sbin/ldconfig
 %postun -n libradcli%{sover} -p /sbin/ldconfig
