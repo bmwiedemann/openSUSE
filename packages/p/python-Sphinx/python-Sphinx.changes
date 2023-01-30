@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:59:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add alabaster-0713-compat.patch to fix testsuite failure with
+  newer alabaster theme.
+
+-------------------------------------------------------------------
 Tue Jan 10 18:02:04 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Update to version 6.1.3

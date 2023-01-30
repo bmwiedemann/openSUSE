@@ -42,6 +42,8 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
+# PATCH-FIX-UPSTREAM: Update test_config.py::test_needs_sphinx for Alabaster 0.7.13 compat
+Patch1:         alabaster-0713-compat.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -299,7 +301,8 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 
 %if ! %{with test}
 %post
-%{python_install_alternative sphinx-apidoc sphinx-autogen sphinx-build sphinx-quickstart}
+%python_install_alternative sphinx-apidoc sphinx-autogen sphinx-build sphinx-quickstart
+:
 
 %postun
 %python_uninstall_alternative sphinx-apidoc
