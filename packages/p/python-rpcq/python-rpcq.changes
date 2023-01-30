@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 28 22:42:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.10.0
+  * Update: Add new execution results message
+- Version 3.9.2
+  * Rework types calculation with locks
+- Fix requirements, unpin msgpack
+
+-------------------------------------------------------------------
 Tue Apr 20 20:17:10 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to 3.9.1.

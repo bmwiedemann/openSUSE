@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpcq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,33 @@
 #
 
 
-%define packagename rpcq
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpcq
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        The RPC framework and message specification for Rigetti QCS
 License:        Apache-2.0
 URL:            https://github.com/rigetti/rpcq
-Source:         https://github.com/rigetti/rpcq/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+Source:         https://github.com/rigetti/rpcq/archive/v%{version}.tar.gz#/rpcq-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module msgpack >= 0.6}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-rapidjson}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack >= 0.6
-Requires:       python-numpy
 Requires:       python-python-rapidjson
 Requires:       python-pyzmq >= 17
 Requires:       python-ruamel.yaml
+# SECTION test
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,16 +50,18 @@ BuildArch:      noarch
 The RPC framework and message specification for Rigetti QCS.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%setup -q -n rpcq-%{version}
 # Fix non-executable-script
-sed -i '/^#!/d' %{packagename}/core_messages.py
-sed -i '/^#!/d' %{packagename}/messages.py
+sed -i '/^#!/d' rpcq/core_messages.py
+sed -i '/^#!/d' rpcq/messages.py
+# unpin msgpack and ignore gh#rigetti/pyqui#1178
+sed -i '/msgpack/ s/,<1.0//' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,7 +71,7 @@ sed -i '/^#!/d' %{packagename}/messages.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*egg-info
-%{python_sitelib}/%{packagename}
+%{python_sitelib}/rpcq-%{version}.dist-info
+%{python_sitelib}/rpcq
 
 %changelog
