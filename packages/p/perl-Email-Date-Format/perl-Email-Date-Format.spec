@@ -18,7 +18,7 @@
 
 %define cpan_name Email-Date-Format
 Name:           perl-Email-Date-Format
-Version:        1.007
+Version:        1.008
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Produce RFC 2822 date strings
@@ -30,6 +30,8 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(Time::Local) >= 1.27
+Requires:       perl(Time::Local) >= 1.27
 %{perl_requires}
 
 %description

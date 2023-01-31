@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 15 03:07:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.008
+   see /usr/share/doc/packages/perl-Email-Date-Format/Changes
+
+  1.008     2023-01-13 21:44:14-05:00 America/New_York
+          - use the version of Time::Local that doesn't guess at whether a year
+            is 99 or 1999 🙂
+          - skip tests on Win32 that never pass
+          - modernize just a bit of code
+
+-------------------------------------------------------------------
 Mon Jan  2 03:10:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.007
