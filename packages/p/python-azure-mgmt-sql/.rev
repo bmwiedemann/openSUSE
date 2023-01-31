@@ -199,4 +199,15 @@
 - Update Requires from setup.py (forwarded request 1046128 from glaubitz)</comment>
     <requestid>1046160</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9af4f759955476ba65bfc5b23a7693ee</srcmd5>
+    <version>4.0.0b7</version>
+    <time>1675177811</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b7
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1062081 from glaubitz)</comment>
+    <requestid>1062244</requestid>
+  </revision>
 </revisionlist>
