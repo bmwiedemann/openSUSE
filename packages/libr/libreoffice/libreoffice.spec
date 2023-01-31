@@ -105,6 +105,7 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
+Patch7:         boost-181.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
@@ -1032,6 +1033,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch6 -p1
+%patch7 -p1
 %patch9 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1

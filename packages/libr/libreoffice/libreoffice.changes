@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 28 23:37:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add boost-181.patch to fix build with boost 1.81.x
+
+-------------------------------------------------------------------
 Thu Jan 19 13:51:27 UTC 2023 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1205866 -  LO-L3: Connector lines from PPTX "break"/bend too often
