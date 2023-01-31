@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} < 1550
 %define hardcode_pci_list 1
+%else
+%define hardcode_pci_list 0
+%endif
 
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}

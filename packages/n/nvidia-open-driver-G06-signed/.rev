@@ -44,4 +44,15 @@
 - adds pci-table.patch, generati-pci-table.sh</comment>
     <requestid>1061900</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c83a1034c9cacabb4a8d5cc6b86d46ef</srcmd5>
+    <version>525.85.05</version>
+    <time>1675177757</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer use %hardcode_pci_list macro on TW, since the issue
+  with generating wrong PCI ID modaliases for Supplements
+  has been fixed now in pesign-obs-integration package for TW
+  (boo#1207520)</comment>
+    <requestid>1062105</requestid>
+  </revision>
 </revisionlist>

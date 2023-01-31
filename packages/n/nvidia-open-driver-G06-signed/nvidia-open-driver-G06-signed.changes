@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 30 17:14:28 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer use %hardcode_pci_list macro on TW, since the issue
+  with generating wrong PCI ID modaliases for Supplements
+  has been fixed now in pesign-obs-integration package for TW
+  (boo#1207520)
+
+-------------------------------------------------------------------
 Sun Jan 29 16:16:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - introduce %hardcode_pci_list macro for hardcoding PCI ID 
