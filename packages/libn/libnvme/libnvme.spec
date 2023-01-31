@@ -1,7 +1,7 @@
 #
 # spec file for package libnvme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,19 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
+BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
 BuildRequires:  swig
