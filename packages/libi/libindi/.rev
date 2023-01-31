@@ -570,4 +570,12 @@
 </comment>
     <requestid>1043612</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>cd044c87cccaeebf1f719b63f59fe265</srcmd5>
+    <version>2.0.0</version>
+    <time>1675177809</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.0</comment>
+    <requestid>1062234</requestid>
+  </revision>
 </revisionlist>

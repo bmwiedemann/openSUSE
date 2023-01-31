@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 31 10:18:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.0:
+  * Esatto & SestoSenso2 update
+  * Fix for issue1582 park status notifications and extra debugging for command errors
+  * Add delay possibility for lx200 driver pulse command
+  * Refactor - use PropertyView/WidgetView
+  * Fix BaseClient::serverDisconnected behavior
+  * Deprecated use of Property/BaseDevice as pointer
+  * Don't modify usbfs_memory_mb if already set to unlimited
+  * Switch Flip Points to use sexagesimal numbers
+  * Refactor INDI::GPS to be inline with INDI 2.0.0
+  * General cleanup
+  * Don't call serverDisconnected if the client is not connected
+  * Add refraction, and turn off J2000 for Gemini
+  * Feature/new firmware fmc mfoc (Lacerta)
+  * Downgrade to base64 for snooped blobs
+
+-------------------------------------------------------------------
 Sun Dec 18 11:02:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix cfitsio dep on TW

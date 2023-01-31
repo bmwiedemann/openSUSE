@@ -1,7 +1,7 @@
 #
 # spec file for package libindi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define so_ver 1
+%define so_ver 2
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.9.9
+Version:        2.0.0
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -176,6 +176,7 @@ export CXXFLAGS="$CFLAGS"
 %license COPYING.* COPYRIGHT LICENSE
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/indi*
+%{_bindir}/shelyak_usis
 %{_datadir}/indi/
 %{_udevdir}/rules.d/*.rules
 
@@ -191,12 +192,12 @@ export CXXFLAGS="$CFLAGS"
 %{_libdir}/indi/
 
 %files -n libindiclient%{so_ver}
-%{_libdir}/libindiclient.so.1
-%{_libdir}/libindiclient.so.1.9.9
+%{_libdir}/libindiclient.so.%{so_ver}
+%{_libdir}/libindiclient.so.%{so_ver}.*
 
 %files -n libindiclientqt%{so_ver}
-%{_libdir}/libindiclientqt.so.1
-%{_libdir}/libindiclientqt.so.1.9.9
+%{_libdir}/libindiclientqt.so.%{so_ver}
+%{_libdir}/libindiclientqt.so.%{so_ver}.*
 
 %files -n libindiAlignmentDriver%{so_ver}
 %{_libdir}/libindiAlignmentDriver.so.%{so_ver}*
