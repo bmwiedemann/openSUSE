@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 15 03:06:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.029     2023-01-13 20:57:41-05:00 America/New_York
+          - fix typo in Pod
+          - slightly clean up some archaicisms in source
+
+-------------------------------------------------------------------
 Mon Jan  2 03:07:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.028

@@ -18,7 +18,7 @@
 
 %define cpan_name Config-INI
 Name:           perl-Config-INI
-Version:        0.028
+Version:        0.029
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple .ini-file format
