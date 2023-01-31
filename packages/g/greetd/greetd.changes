@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 30 15:18:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.0:
+  * Revert "Remove 'env' from start_session"
+  * ipc: ensure backward compatibility of the protocol
+  * Change order of setting pam environment variables
+  * fakegreet: reset state on errors
+  * For FUSE-based home folders, chdir into them as the user instead of root
+  * Use /bin/sh instead of $SHELL
+  * cargo: Update dependencies
+
+-------------------------------------------------------------------
+Tue Aug  2 21:12:29 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Put greetd.pam in the right directory.
+  greetd checks for the pam file in /etc/pam.d/, not in /lib/pam.d/
+
+-------------------------------------------------------------------
 Wed May 25 02:00:37 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update vendored dependencies
