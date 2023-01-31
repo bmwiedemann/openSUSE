@@ -1,7 +1,7 @@
 #
 # spec file for package libfwsi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libfwsi1
 Name:           libfwsi
-Version:        20220927
+Version:        20230114
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -32,9 +32,9 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
