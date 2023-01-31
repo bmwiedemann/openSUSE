@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 30 21:30:36 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
+
+- New in 0.15 release
+  * Use new option for window opacity by @baierjan in #56
+  * Add openSUSE wob theme by @FilippoBonazziSUSE in #68
+  * Improve some defaults by @FilippoBonazziSUSE in #73
+  * add calendar tooltip, new weekday format by @denisok in #71
+  * fix some readme typos by @AlessandroMinoccheri in #78
+  * add scratchpad indicator by @denisok in #70
+  * Import user configuration variables by @FilippoBonazziSUSE in #77
+  * Add SwayNotificationCenter config and theme by @FilippoBonazziSUSE in #76
+  * Import all user configuration variables from environment.d by @FilippoBonazziSUSE in #82
+  * System mode menu by @FilippoBonazziSUSE in #90
+  * Add swaync configuration in waybar and hotkey by @FilippoBonazziSUSE in #83
+  * Add wob.ini configuration file for wob>=0.14 by @FilippoBonazziSUSE in #84
+  * Improve README, add screenshot by @FilippoBonazziSUSE in #94
+  * changes for 0.15 by @denisok in #91 
+
+-------------------------------------------------------------------
 Tue Jan 24 12:50:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

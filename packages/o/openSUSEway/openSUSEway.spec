@@ -20,7 +20,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
@@ -57,8 +57,12 @@ Requires:       sway-branding-openSUSE
 Requires:       tar
 Suggests:       vifm
 Suggests:       vim
+Requires:       clipman
+Requires:       mpris-ctl
+Requires:       sway-marker
 Requires:       waybar-branding-openSUSE
 Requires:       wget
+Requires:       wl-clipboard
 Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-wlr
 Requires:       xdg-utils
@@ -85,6 +89,7 @@ This pattern installs the openSUSE look and feel for sway.
 Summary:        openSUSE branding of sway
 Group:          System/GUI/Other
 BuildRequires:  sway
+Requires:       SwayNotificationCenter
 Requires:       bc
 Requires:       brightnessctl
 Requires:       fontawesome-fonts
@@ -164,6 +169,13 @@ sed -i -e "s|wofi --show.*|wofi --conf=%{_sysconfdir}/wofi/config --style=%{_sys
 install -D -p -m 644 .config/waybar/config %{buildroot}%{_sysconfdir}/xdg/waybar/config
 install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/waybar/style.css
 
+## wob
+install -D -p -m 644 .config/wob/wob.ini %{buildroot}%{_sysconfdir}/sway/wob/wob.ini
+
+## swaync
+install -D -p -m 644 .config/swaync/config.json %{buildroot}%{_sysconfdir}/sway/swaync/config.json
+install -D -p -m 644 .config/swaync/style.css %{buildroot}%{_sysconfdir}/sway/swaync/style.css
+
 %pre -n openSUSEway
 # bug #1176195, don't force enviroment, cleaning up old installations
 test -e %{_sysconfdir}/profile.d/openSUSEway.sh && rm %{_sysconfdir}/profile.d/openSUSEway.sh || true
@@ -216,6 +228,13 @@ test -e %{_datadir}/wayland-sessions/sway.desktop.orig && \
 %dir %{_sysconfdir}/wofi
 %config(noreplace) %{_sysconfdir}/wofi/config
 %config(noreplace) %{_sysconfdir}/wofi/style.css
+
+%dir %{_sysconfdir}/sway/wob
+%config %{_sysconfdir}/sway/wob/wob.ini
+
+%dir %{_sysconfdir}/sway/swaync
+%config %{_sysconfdir}/sway/swaync/config.json
+%config %{_sysconfdir}/sway/swaync/style.css
 
 %files -n waybar-branding-openSUSE
 %dir %{_sysconfdir}/xdg/waybar
