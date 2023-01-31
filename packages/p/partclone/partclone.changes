@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 28 20:54:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.23:
+  * update btrfs clone to 6.0.1
+  * create github actions for build test
+  * Support parallel unit-testing
+  * Reflect partclone 0.3.22 release in configure.ac
+  * Don't target Btrfs and exFAT tests twice
+  * Create manual-on-host.yml
+
+-------------------------------------------------------------------
 Mon Jan 16 07:12:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.22:

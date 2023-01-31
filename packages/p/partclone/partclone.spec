@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.22
+Version:        0.3.23
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
