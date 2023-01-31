@@ -18,7 +18,7 @@
 
 %define cpan_name Graphics-Toolkit-Color
 Name:           perl-Graphics-Toolkit-Color
-Version:        1.05
+Version:        1.08
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Color palette creation helper
@@ -35,12 +35,15 @@ Requires:       perl(Carp) >= 1.35
 %{perl_requires}
 
 %description
-Each object has 7 attributes, which are its RGB and HSL values and if
-possible a name. This is because humans access colors on hardware level
-(eye) in RGB, on cognition level in HSL (brain) and on cultural level
-(language) with names. Having easy access to all three and some color math
-should enable you to get the color palette you desire quickly and with no
-additional dependencies.
+Read only color holding objects with no additional dependencies. Create
+them in many different ways (see section _CONSTRUCTOR_). Access its values
+via methods from section _GETTER_ or create related color objects via
+methods listed under _METHODS_.
+
+Humans access colors on hardware level (eye) in RGB, on cognition level in
+HSL (brain) and on cultural level (language) with names. Having easy access
+to all three and some color math should enable you to get the color palette
+you desire quickly.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

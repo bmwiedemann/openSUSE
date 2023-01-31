@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 25 03:06:56 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  1.08    2023-01-24    lichtkind
+  -------
+      * = small enhancements
+      * + added method rgb_gradient_to
+      * ~ changed gradient_to  to hsl_gradient_to (but keeping compatibility)
+      * ? even more POD fixes
+  1.07    2023-01-20    lichtkind
+  -------
+      * = POD fixes
+  1.06    2023-01-20    lichtkind
+  -------
+      * = maintenance release
+      * + simplified string serialisation method (->new(eval $string) => ->new($string))
+      * ? small POD fixes
+
+-------------------------------------------------------------------
 Sun Jan  1 03:09:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.05
