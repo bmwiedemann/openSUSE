@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  9 03:08:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.218
+   see /usr/share/doc/packages/perl-Email-Simple/Changes
+
+  2.218     2023-01-08 19:49:09-05:00 America/New_York
+          - update author contact info
+          - bump version required to v5.12.0 (it was already effectively that
+            after some upstream changes)
+
+  2.217     2020-11-02 19:13:16-05:00 America/New_York (TRIAL RELEASE)
+          - add ->header_rename to header object
+          - issue a warning on non-ASCII codepoints added to message (thanks,
+            Pali Rohár)
+
+-------------------------------------------------------------------
 Thu Jun  7 05:22:34 UTC 2018 - coolo@suse.com
 
 - updated to 2.216
