@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 10 03:06:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.913
+   see /usr/share/doc/packages/perl-Email-Address/Changes
+
+  1.913     2023-01-09 19:41:25-05:00 America/New_York
+          - as ever, you should probably use Email::Address::XS instead
+          - this version now requires Perl v5.12
+          - some small tweaks to the code to take advantage of v5.12 made
+          - update distribution metadata
+
+-------------------------------------------------------------------
 Thu Jan  3 06:08:58 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.912
