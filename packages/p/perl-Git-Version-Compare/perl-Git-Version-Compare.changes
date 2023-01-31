@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 15 03:08:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.005
+   see /usr/share/doc/packages/perl-Git-Version-Compare/Changes
+
+  1.005 2023-01-14 BOOK
+      - Accepts Git non-standard version suffixes (GNUSTAVO)
+
+-------------------------------------------------------------------
 Sun Jun 12 12:28:08 UTC 2016 - coolo@suse.com
 
 - initial package 1.004
