@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  4 03:07:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-Data-Peek/ChangeLog
+
+  0.52	- 2023-01-03, H.Merijn Brand   <hmbrand@cpan.org>
+      * Tested with perl-5.36.0
+      * Update to Devel::PPPort-3.68
+      * It's 2023
+
+-------------------------------------------------------------------
 Sun Jan  2 03:06:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.51

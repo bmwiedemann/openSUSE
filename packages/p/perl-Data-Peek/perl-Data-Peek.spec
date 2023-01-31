@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Peek
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-Peek
 Name:           perl-Data-Peek
-Version:        0.51
+Version:        0.52
 Release:        0
-Summary:        Collection of low-level debug facilities
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Modified and extended debugging facilities
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
@@ -31,7 +31,7 @@ BuildRequires:  perl(Test::More) >= 0.90
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Test::Warnings)
-Recommends:     perl(Data::Dumper) >= 2.183
+Recommends:     perl(Data::Dumper) >= 2.184
 Recommends:     perl(Perl::Tidy)
 %{perl_requires}
 
