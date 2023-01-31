@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Redis
 Name:           perl-Redis
-Version:        1.999
+Version:        2.000
 Release:        0
-Summary:        Perl binding for Redis database
 License:        Artistic-2.0
+Summary:        Perl binding for Redis database
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAMS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
