@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  9 03:06:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.953
+   see /usr/share/doc/packages/perl-Email-MIME/Changes
+
+  1.953     2023-01-08 19:02:24-05:00 America/New_York
+          - as promised, this release no longer works on v5.8; in fact, due to
+            some upstream libraries, it hasn't in some time
+          - documentation has been cleaned up to stop referencing long-dead other
+            libraries or methods
+          - some small code changes to benefit from v5.10 and v5.12 improvements
+
+-------------------------------------------------------------------
 Wed Dec 15 03:06:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.952
