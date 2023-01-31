@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-MIME-ContentType
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Email-MIME-ContentType
 Name:           perl-Email-MIME-ContentType
-Version:        1.027
+Version:        1.028
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse and build a MIME Content-Type or Content-Disposition Header
