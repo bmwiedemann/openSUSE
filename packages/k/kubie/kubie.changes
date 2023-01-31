@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 30 12:07:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.2:
+  * Version 0.19.2
+  * Buffer KUBECONFIG serde_yaml writes in memory
+  * Set 600 mode file permissions on temp KUBECONFIG
+
+-------------------------------------------------------------------
 Tue Nov 15 15:43:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.19.1:
