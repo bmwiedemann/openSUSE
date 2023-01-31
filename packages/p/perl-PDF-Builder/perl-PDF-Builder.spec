@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-Builder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name PDF-Builder
 Name:           perl-PDF-Builder
-Version:        3.024
+Version:        3.025
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Facilitates the creation and modification of PDF files
@@ -42,6 +42,7 @@ Facilitates the creation and modification of PDF files
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -57,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING docs examples README.md
+%doc Changes CONTRIBUTING.md docs examples README.md
 %license LICENSE
 
 %changelog
