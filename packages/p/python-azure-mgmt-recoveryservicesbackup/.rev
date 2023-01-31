@@ -201,4 +201,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1039151 from glaubitz)</comment>
     <requestid>1039186</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>20d177a3832127bf660b343d518b4444</srcmd5>
+    <version>5.1.0.0</version>
+    <time>1675177831</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 5.1.0.0 to ensure
+  proper upgrade from previous version 5.1.0b2
+- Update Requires from setup.py (forwarded request 1062079 from glaubitz)</comment>
+    <requestid>1062249</requestid>
+  </revision>
 </revisionlist>
