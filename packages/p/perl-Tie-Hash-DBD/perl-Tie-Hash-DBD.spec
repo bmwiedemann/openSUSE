@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Hash-DBD
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Tie-Hash-DBD
 Name:           perl-Tie-Hash-DBD
-Version:        0.23
+Version:        0.24
 Release:        0
-Summary:        Tie a plain hash to a database table
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Tie plain hashes to DBI interface
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
@@ -32,9 +32,9 @@ BuildRequires:  perl(DBI) >= 1.613
 BuildRequires:  perl(Test::More) >= 0.90
 Requires:       perl(DBI) >= 1.613
 Requires:       perl(Test::More) >= 0.9
-Recommends:     perl(DBD::CSV) >= 0.58
-Recommends:     perl(DBD::Pg) >= v3.14.2
-Recommends:     perl(DBD::SQLite) >= 1.66
+Recommends:     perl(DBD::CSV) >= 0.60
+Recommends:     perl(DBD::Pg) >= v3.16.0
+Recommends:     perl(DBD::SQLite) >= 1.72
 Recommends:     perl(DBI) >= 1.643
 %{perl_requires}
 
