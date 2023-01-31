@@ -1584,4 +1584,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1674543258</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="222" vrev="220">
+    <srcmd5>ae734e40ae5affd4e4a742b77473ca8c</srcmd5>
+    <version>unknown</version>
+    <time>1675157305</time>
+    <user>dimstar_suse</user>
+    <comment>Drop more suggested stuff from the DVD</comment>
+  </revision>
 </revisionlist>
