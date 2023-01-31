@@ -288,7 +288,8 @@ dvd:
   ## still run out of space, as kr was dropped, try jp also
   - google-noto-sans-jp-fonts: [locked]
 
-  ## more space needed - dimstar - 20180419
+  ## Amarok is needed in the staging tests, but -lang is too large - dimstar - 20180419
+  - amarok
   - amarok-lang: [locked]
 
   ## and more space needed - dimstar - 20220112
