@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 20 03:07:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.030
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.030     2023-01-18 21:36:40-05:00 America/New_York
+          - "dzil new" will use command line options before configuration
+          - "dzil add" now falls back to %Mint stash options before defaults
+            (for both of the above: thanks, Graham Knop!)
+
+-------------------------------------------------------------------
 Sat Nov 26 03:06:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.029
