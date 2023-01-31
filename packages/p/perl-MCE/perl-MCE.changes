@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  6 03:07:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.884
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.884 Thu Jan 05 10:00:00 EST 2023
+    * Disabled non-blocking dequeue_nb and recv_nb tests on the Windows platform.
+      Reason: Author cannot reproduce failing tests reported by CPAN Tester aero.
+      Copied nb tests to xt folder: nonblocking_channel.t and nonblocking_queue.t
+  1.883 Tue Jan 03 20:00:00 EST 2023
+    * Fix typo in MCE::Channel::SimpleFast documentation.
+    * Improve 05_mce_child.t test.
+
+-------------------------------------------------------------------
 Sun Dec  4 03:07:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.882
