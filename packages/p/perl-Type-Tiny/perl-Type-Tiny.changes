@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 21 03:11:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.002001	2023-01-20
+
+   [ Bug Fixes ]
+   - Bugfix for Type::Tie+Storable issue affecting 32-bit builds of Perl.
+
+-------------------------------------------------------------------
 Tue Jan  3 03:14:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002000
