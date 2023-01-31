@@ -27,26 +27,27 @@ Source1:        npm-packages-offline-cache.tar.gz
 Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 Patch0:         fix-webpack-oom.patch
+Patch1:         webpack-fix-openssl3.patch
 BuildRequires:  yarn
-BuildRequires:  nodejs18
+BuildRequires:  nodejs-packaging
+BuildRequires:  fdupes
 BuildArch:      noarch
 
 %description
 A glossy Matrix collaboration client - web files
 
 %prep
-%autosetup -n element-web-%{version} -p0
+%autosetup -n element-web-%{version} -a1 -p1
 
 %build
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
-tar xf %{SOURCE1}
-ls ./npm-packages-offline-cache | head
+ls -l ./npm-packages-offline-cache | head
 
 # fix some strange dependency
-cd ./npm-packages-offline-cache
-cp matrix-analytics-events-0.0.1.tgz @matrix-analytics-events-0.0.1.tgz
-cd ..
-ls ./npm-packages-offline-cache | grep matrix-analytics-events
+cp npm-packages-offline-cache/matrix-analytics-events-0.0.1.tgz \
+   npm-packages-offline-cache/@matrix-analytics-events-0.0.1.tgz
+ls -l ./npm-packages-offline-cache/*matrix-analytics-events*
+
 sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
 sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
 
@@ -58,24 +59,27 @@ echo 'return;' > scripts/build-jitsi.js
 
 DIST_VERSION=%{version} ./scripts/package.sh
 
-cd dist
+pushd dist || exit 1
 tar xf element-%{version}.tar.gz
-cd element-%{version}
-cp ../../LICENSE ./
+popd
+cp LICENSE dist/element-%{version}/LICENSE
 
 %install
-cd dist
-cd element-%{version}
-install -d %{buildroot}/{usr/share/webapps,etc/webapps}/element
+install -d -m 0755 %{buildroot}/usr/share/webapps/element
 
-cp -r * "%{buildroot}%{_datadir}/webapps/element/"
-install -Dm644 config.sample.json -t "%{buildroot}%{_sysconfdir}/webapps/element/"
+cp -av dist/element-%{version}/* "%{buildroot}%{_datadir}/webapps/element/"
+
+install -d -m 0755 %{buildroot}%{_sysconfdir}/webapps/element/
+install -m 0644 config.sample.json "%{buildroot}%{_sysconfdir}/webapps/element/config.sample.json"
+
+%fdupes %{buildroot}%{_datadir}/webapps/element/
 
 %files
 %license LICENSE
 %dir %{_datadir}/webapps
-%dir %{_sysconfdir}/webapps
 %{_datadir}/webapps/element
-%{_sysconfdir}/webapps/element
+%dir %{_sysconfdir}/webapps
+%dir %{_sysconfdir}/webapps/element
+%config %{_sysconfdir}/webapps/element/config.sample.json
 
 %changelog

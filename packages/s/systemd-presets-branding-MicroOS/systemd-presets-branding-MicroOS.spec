@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-branding-MicroOS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %define generic_name systemd-presets-branding
 
 Name:           systemd-presets-branding-MicroOS
-Version:        20200323
+Version:        20230130
 Release:        0
 Summary:        Systemd default presets for openSUSE MicroOS
 License:        MIT
 Group:          System/Base
 Source0:        50-default-MicroOS.preset
+Source1:        50-default-MicroOS-user.preset
 BuildRequires:  systemd-presets-branding-openSUSE
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  systemd-presets-branding
@@ -48,7 +49,10 @@ Default presets for systemd on openSUSE MicroOS
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-preset
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/user-preset
+
 install -m644 %{SOURCE0}  %{buildroot}%{_prefix}/lib/systemd/system-preset/
+install -m644 %{SOURCE1}  %{buildroot}%{_prefix}/lib/systemd/user-preset/
 # Copy default presets and script
 install -m644 %{_prefix}/lib/systemd/system-preset/90-default-openSUSE.preset %{buildroot}%{_prefix}/lib/systemd/system-preset/
 
@@ -63,6 +67,7 @@ if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ] ; th
         # Note: the old version of the script is used here.
         #
         %{_prefix}/lib/%{generic_name}/branding-preset-states save
+        %{_prefix}/lib/%{generic_name}/branding-preset-states save user
 elif [ $1 -eq 1 ]; then
   touch /run/rpm-%{name}-preset-all
 fi
@@ -74,6 +79,7 @@ if [ $1 -gt 1 ] ; then
         # that have been changed and apply "systemct preset" on them.
         #
         %{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
+        %{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes user
 fi
 
 %posttrans
@@ -82,11 +88,13 @@ if [ -f /run/rpm-%{name}-preset-all ]; then
   # Don't disable services, since this would disable the
   # complete network stack.
   systemctl preset-all --preset-mode=enable-only
+  systemctl preset-all --preset-mode=enable-only --global
 fi
 rm -f /run/rpm-%{name}-preset-all
 
 %files
 %defattr(-,root,root)
 %{_prefix}/lib/systemd/system-preset/*
+%{_prefix}/lib/systemd/user-preset/50-default-MicroOS-user.preset
 
 %changelog

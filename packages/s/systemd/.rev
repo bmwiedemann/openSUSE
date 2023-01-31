@@ -6306,4 +6306,21 @@ handle manual pages that consist only of a .so directive such as
 - Make sure we apply the presets on units shipped by systemd package</comment>
     <requestid>1060655</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>4dafba1407a06e885f80e13eb0eec3a8</srcmd5>
+    <version>252.5</version>
+    <time>1675177708</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit d87834a33444b7163e741e1089e82b44af663808 (merge of v252.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/5a506d73bde7ba9261985f8e9ce084044a519432...d87834a33444b7163e741e1089e82b44af663808
+
+- Move the bash completion support for systemd-cryptenroll in udev.
+
+- systemd-testsuite: move the integration tests in a dedicated sub directory.
+
+- machines.target belongs to systemd-container, do its init/cleanup steps from
+  the scriptlets of this sub-package.</comment>
+    <requestid>1062012</requestid>
+  </revision>
 </revisionlist>

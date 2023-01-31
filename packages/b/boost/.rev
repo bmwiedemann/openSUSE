@@ -1468,4 +1468,22 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment>- ppc64le: added some new math libraries (bsc#1202594)</comment>
     <requestid>998667</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>c2e4e64514812e11dfcc0e73783bf5e8</srcmd5>
+    <version>1.81.0</version>
+    <time>1675177682</time>
+    <user>dimstar_suse</user>
+    <comment>- add boost-phoenix-revert-std-tuple-support.patch to fix
+  libetonyek and others build that use boost::phoenix 
+
+- update to 1.81.0
+  * new libraries:
+    + URL - URL Library
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_81_0.html
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1061818</requestid>
+  </revision>
 </revisionlist>

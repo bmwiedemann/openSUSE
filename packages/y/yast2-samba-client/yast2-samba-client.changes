@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 16:57:13 UTC 2023 - David Mulder <dmulder@suse.com>
+
+- Add join option for enabling group policy; (bsc#1207604).
+ - 4.5.3
+
+-------------------------------------------------------------------
 Fri Nov  4 10:16:54 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Enable pam_mount also for gdm-password service; (bsc#1204830);

@@ -17,7 +17,7 @@
 
 
 Name:           scrot
-Version:        1.8
+Version:        1.8.1
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
@@ -43,7 +43,7 @@ the dynamic loaders of imlib2.
 %autosetup -p1
 
 %build
-%configure
+%configure --with-libbsd
 %make_build
 
 %install

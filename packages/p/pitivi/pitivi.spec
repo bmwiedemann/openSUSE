@@ -42,8 +42,11 @@ Requires:       gstreamer-transcoder >= 1.8.2
 Requires:       python3-cairo
 Requires:       python3-gobject
 Requires:       python3-gst >= 1.17.90
+# librosa and opencv are needed for beat detection.
+Requires:       python3-librosa
 Requires:       python3-matplotlib-gtk3
 Requires:       python3-numpy
+Requires:       python3-opencv
 # We need a minimal version of the GES-1.0 package, so we have to specify it manually
 Requires:       typelib-1_0-GES-1_0 >= 1.17.90
 Requires:       typelib-1_0-Gst-1_0 >= 1.17.90

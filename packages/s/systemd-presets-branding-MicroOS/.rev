@@ -39,4 +39,19 @@
     <comment>- Enable container-image-prune.timer by default</comment>
     <requestid>796305</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e7f0f4533fc21f3c1b9b011c736439e5</srcmd5>
+    <version>20230130</version>
+    <time>1675177722</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce 50-default-MicroOS-user.preset to allow Systemd user
+  units for MicroOS users
+- Add transactional-update-notifier Systemd user unit to default
+  user preset. This will allow MicroOS Desktop users to have
+  Desktop notifications about transactional updates either
+  succeeding or failing. The D-Bus service in use have been audited
+  already (boo#1206163).
+- 20230130</comment>
+    <requestid>1062049</requestid>
+  </revision>
 </revisionlist>

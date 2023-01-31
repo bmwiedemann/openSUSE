@@ -1696,4 +1696,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     does not handle certain fonts. (forwarded request 1039839 from dirkmueller)</comment>
     <requestid>1040169</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>dfefe93617d6414d0f9cac0d3f50e602</srcmd5>
+    <version>378</version>
+    <time>1675177715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062037</requestid>
+  </revision>
 </revisionlist>

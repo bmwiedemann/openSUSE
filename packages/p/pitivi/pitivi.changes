@@ -5,6 +5,12 @@ Thu Jan 26 14:51:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   tests, and we do not run those.
 
 -------------------------------------------------------------------
+Wed Jan 25 20:29:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add runtime dependency on python3-librosa and python3-opencv
+  for beat detection
+
+-------------------------------------------------------------------
 Sun Jun 26 13:13:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2022.06:

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jan 30 06:57:46 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.22.1
+  https://github.com/cli/cli/releases/tag/v2.22.1
+  * Fix gh issue edit and gh pr edit for GitHub Enterprise Server by @mislav in #6921
+  * Add --reviewer flag completion by @benjlevesque in #6873
+  * Rename --confirm flag to --yes for various destructive commands by @damiensedgwick in #6915
+  * Fix race conditions in invoker_test by @cmbrose in #6905
+
+-------------------------------------------------------------------
+Thu Jan 26 09:38:56 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.22.0
+  https://github.com/cli/cli/releases/tag/v2.22.0
+  * Fix typo in has_uncommitted_changes for codespaces by @jkeech in #6812
+  * Create centralized Codespaces RPC invoker by @dmgardiner25 in #6657
+  * avoid panic when bad default given to Select by @vilmibm in #6831
+  * Rebuild container using gRPC client by @dmgardiner25 in #6830
+  * Start SSH server with gRPC client by @dmgardiner25 in #6838
+  * Add search commits command by @kevhlee in #6817
+  * Migrate search commands to new table printer and add headers by @samcoe in #6869
+  * Use AuthToken function to retrieve AuthToken instead of GetOrDefault by @samcoe in #6878
+  * Use gRPC client to notify codespace of activity by @dmgardiner25 in #6870
+  * intake doc by @vilmibm in #6815
+  * Fix JSON payloads for PR reviewers, mergedBy by @mislav in #6881
+  * repo set-default: support bare git repos by @mislav in #6880
+  * Continue projectsv2 support by @qoega in #6735
+  * Codespaces create: Fix missing billable owner notice for individuals by @RyanJamesCaldwell in #6891
+  * Half close port forwarding connections to fix hangs by @cmbrose in #6888
+  * Warn against Windows absolute path when using gh api by @kevhlee in #6895
+  * make a commit on extension create by @mntlty in #6833
+  * Fix flakey TestUpdateProjectV2Items by @mislav in #6909
+  * Bump the oauth library by @mislav in #6885
+  * Add gh repo edit --enable-discussions by @azu in #6903
+  * Add notes about project scope to various commands by @samcoe in #6907
+  * show token scopes on auth status by @mntlty in #6546
+  * repo delete: change confirmation flag to --yes by @damiensedgwick in #6911
+
+-------------------------------------------------------------------
 Wed Jan  4 09:42:11 UTC 2023 - Pavel Dostál <pdostal@suse.com>
 
 - Update to 2.21.2

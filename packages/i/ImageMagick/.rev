@@ -3521,4 +3521,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>- Enable JPEG-XL on Tumbleweed. (forwarded request 1056873 from munix9)</comment>
     <requestid>1057001</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>315b5629aa06c3e7ce11551ef76d3c95</srcmd5>
+    <version>7.1.0.60</version>
+    <time>1675177725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.0.60
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-60 (forwarded request 1062051 from polslinux)</comment>
+    <requestid>1062065</requestid>
+  </revision>
 </revisionlist>

@@ -213,3 +213,10 @@ Thu May 19 15:01:09 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
   https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V18.md#18.2.0
 
+  Patches carried over from nodejs17:
+  legacy_python.patch node-gyp-addon-gypi.patch openssl_binary_detection.patch
+test-skip-y2038-on-32bit-time_t.patch cares_public_headers.patch
+rsa-pss-revert.patch linker_lto_jobs.patch versioned.patch fix_ci_tests.patch
+manual_configure.patch npm_search_paths.patch  skip_no_console.patch
+flaky_test_rerun.patch nodejs-libpath.patch  sle12_python3_compat.patch
+

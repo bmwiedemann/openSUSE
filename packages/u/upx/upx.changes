@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 30 17:14:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.2
+  * Fix unpack of ELF x86-64 that failed with
+    "CantUnpackException: corrupt b_info"
+  * Resolve SEGV on PackLinuxElf64::invert_pt_dynamic
+- Delete upx-endiantests.patch (conflict upstream)
+- Delete 0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch
+  (merged)
+
+-------------------------------------------------------------------
 Sun Jan 15 10:35:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch

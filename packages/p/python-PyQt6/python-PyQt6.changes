@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 29 19:44:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.1
+  * Added allocationLimit() and setAllocationLimit() to
+    QImageReader.
+  * Added toHBITMAP(), fromHBITMAP(), toHICON() and fromHICON() to
+    QImage on Windows.
+  * Bug fixes.
+- Qt6TextToSpeech is not in 15.x
+
+-------------------------------------------------------------------
 Sun Oct  2 22:45:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.4.0

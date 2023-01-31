@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36f315b71f426c4f0e1098d90069ebc8</srcmd5>
+    <version>1.6.9</version>
+    <time>1675177797</time>
+    <user>dimstar_suse</user>
+    <comment>as asked by https://build.opensuse.org/users/jubalh in sr#1057054
+This package could be a candidate to be included in https://build.opensuse.org/package/show/utilities/modern-unix </comment>
+    <requestid>1062186</requestid>
+  </revision>
+</revisionlist>

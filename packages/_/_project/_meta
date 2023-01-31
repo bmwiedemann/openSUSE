@@ -28,6 +28,7 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
     <enable/>
   </debuginfo>
   <repository name="standard" rebuild="local">
+    <path project="openSUSE:Tumbleweed:OldKey" repository="standard"/>
     <arch>x86_64</arch>
     <arch>i586</arch>
   </repository>

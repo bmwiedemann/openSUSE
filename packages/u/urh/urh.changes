@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 28 12:58:16 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.4
+  * 'Remove Carrier' encoding truncates initial input.
+  * Add I/Q view.
+  * Refresh protocol view also when hidden.
+  * Adding Save As pcapng for ProtocolAnalyzer.
+  * Keep Y-Scale when showing/hiding demodulated view.
+  * Fix .sub file RAW_data strip.
+  * Add rad1o support.
+  * Fix error when selecting large ranges in Interpretation.
+  * Allow configuration of fractional font sizes.
+- Drop urh-rpmlintrc
+
+-------------------------------------------------------------------
 Mon Mar  7 10:02:30 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.3

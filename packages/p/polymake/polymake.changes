@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 30 11:46:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9
+  * fulton: markov_bases: add new client
+  * polytope: mps files: many fixes in parser and writer
+
+-------------------------------------------------------------------
+Tue Dec 20 23:49:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8
+  * plantri: introduce interface to plantri for generation of
+    planar graphs.
+  * pluecker_ideal changed to c++ client
+  * add tropical median
+- Drop vertices-31.patch (merged)
+
+-------------------------------------------------------------------
 Sat Nov 19 00:54:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7

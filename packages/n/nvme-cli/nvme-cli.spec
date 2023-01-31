@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.2.1
+Version:        2.3
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -32,8 +32,7 @@ BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnvme-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  make
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  zlib-devel

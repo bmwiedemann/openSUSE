@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 30 08:39:24 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit d87834a33444b7163e741e1089e82b44af663808 (merge of v252.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/5a506d73bde7ba9261985f8e9ce084044a519432...d87834a33444b7163e741e1089e82b44af663808
+
+-------------------------------------------------------------------
+Thu Jan 26 16:30:41 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Move the bash completion support for systemd-cryptenroll in udev.
+
+-------------------------------------------------------------------
+Thu Jan 26 16:13:43 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd-testsuite: move the integration tests in a dedicated sub directory.
+
+-------------------------------------------------------------------
+Thu Jan 26 14:02:11 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- machines.target belongs to systemd-container, do its init/cleanup steps from
+  the scriptlets of this sub-package.
+
+-------------------------------------------------------------------
 Tue Jan 24 13:19:01 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Drop 1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch

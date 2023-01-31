@@ -17,7 +17,7 @@
 
 
 Name:           upx
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        The Ultimate Packer for eXecutables
 License:        GPL-2.0-or-later
@@ -25,8 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://upx.github.io/
 Source:         https://github.com/upx/upx/releases/download/v%version/upx-%version-src.tar.xz
 Patch0:         upx-aarch64.patch
-Patch1:         upx-endiantests.patch
-Patch2:         0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel

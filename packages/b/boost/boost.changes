@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 28 22:01:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add boost-phoenix-revert-std-tuple-support.patch to fix
+  libetonyek and others build that use boost::phoenix 
+
+-------------------------------------------------------------------
+Wed Dec 14 18:00:01 CET 2022 - Arvin Schnell <aschnell@suse.com>
+
+- update to 1.81.0
+  * new libraries:
+    + URL - URL Library
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_81_0.html
+
+-------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Mon Aug 22 14:19:58 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - ppc64le: added some new math libraries (bsc#1202594)
@@ -35,7 +56,7 @@ Fri Mar 11 15:11:05 CET 2022 - aschnell@suse.com
 
 - add dependency on libzstd and libzstd-devel to get on-the-fly
   zstd compression in boost-iostreams
-  
+
 -------------------------------------------------------------------
 Tue Dec 21 09:08:17 CET 2021 - aschnell@suse.com
 

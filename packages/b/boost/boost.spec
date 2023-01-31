@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.80.0
-%define _ver 1_80_0
-%define package_version 1_80_0
+%define ver 1.81.0
+%define _ver 1_81_0
+%define package_version 1_81_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,9 +235,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.80.0
+Version:        1.81.0
 Release:        0
-%define library_version 1_80_0
+%define library_version 1_81_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -253,6 +253,8 @@ Source101:      symbol_diff.sh
 Source102:      README.boost-devel
 Patch1:         boost-thread.patch
 Patch2:         boost-no_type_punning.patch
+# https://github.com/boostorg/phoenix/pull/112
+Patch3:         boost-phoenix-revert-std-tuple-support.patch
 Patch4:         boost-pool_check_overflow.patch
 Patch5:         boost-strict_aliasing.patch
 Patch6:         boost-use_std_xml_catalog.patch
@@ -272,7 +274,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 %if %{with boost_fiber}
 BuildRequires:  gcc-c++ > 5
 %else
@@ -372,6 +374,7 @@ Requires:       libboost_test%{library_version}-devel
 Requires:       libboost_thread%{library_version}-devel
 Requires:       libboost_timer%{library_version}-devel
 Requires:       libboost_type_erasure%{library_version}-devel
+Requires:       libboost_url%{library_version}-devel
 Requires:       libboost_wave%{library_version}-devel
 Requires:       libstdc++-devel
 Conflicts:      boost-devel-impl
@@ -1065,6 +1068,22 @@ Provides:       libboost_wave-devel-impl = %{version}
 %description -n libboost_wave%{library_version}-devel
 This package contains development headers for Boost.Wave library.
 
+%package     -n libboost_url%{library_version}
+Summary:        Boost.URL runtime library
+Group:          System/Libraries
+Requires:       boost-license%{library_version}
+
+%description -n libboost_url%{library_version}
+This package contains the Boost::URL runtime library.
+
+%package     -n libboost_url%{library_version}-devel
+Summary:        Development headers for Boost.URL library
+Group:          Development/Libraries/C and C++
+Provides:       libboost_url-devel-impl = %{version}
+
+%description -n libboost_url%{library_version}-devel
+This package contains development headers for Boost.URL library.
+
 %package     -n libboost_regex%{library_version}
 Summary:        Boost.Regex runtime library
 Group:          System/Libraries
@@ -1246,6 +1265,7 @@ tasks.
 find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {} +
 %patch1 -p1
 %patch2
+%patch3 -p1
 %patch4
 %patch5
 %patch6 -p1
@@ -1613,6 +1633,7 @@ EOF
 %post -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
 %post -n libboost_system%{library_version} -p /sbin/ldconfig
 %post -n libboost_wave%{library_version} -p /sbin/ldconfig
+%post -n libboost_url%{library_version} -p /sbin/ldconfig
 %post -n libboost_random%{library_version} -p /sbin/ldconfig
 %post -n libboost_chrono%{library_version} -p /sbin/ldconfig
 %post -n libboost_locale%{library_version} -p /sbin/ldconfig
@@ -1664,6 +1685,7 @@ EOF
 %postun -n libboost_stacktrace%{library_version} -p /sbin/ldconfig
 %postun -n libboost_system%{library_version} -p /sbin/ldconfig
 %postun -n libboost_wave%{library_version} -p /sbin/ldconfig
+%postun -n libboost_url%{library_version} -p /sbin/ldconfig
 %postun -n libboost_random%{library_version} -p /sbin/ldconfig
 %postun -n libboost_chrono%{library_version} -p /sbin/ldconfig
 %postun -n libboost_locale%{library_version} -p /sbin/ldconfig
@@ -1996,6 +2018,14 @@ EOF
 %dir %{package_libdir}/cmake/boost_wave-%{version}
 %{package_libdir}/cmake/boost_wave-%{version}/*
 %{package_libdir}/libboost_wave.so
+
+%files -n libboost_url%{library_version}
+%{package_libdir}/libboost_url.so.%{version}
+
+%files -n libboost_url%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_url-%{version}
+%{package_libdir}/cmake/boost_url-%{version}/*
+%{package_libdir}/libboost_url.so
 
 %files -n libboost_regex%{library_version}
 %{package_libdir}/libboost_regex.so.%{version}

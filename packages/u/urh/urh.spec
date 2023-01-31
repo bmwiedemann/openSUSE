@@ -1,8 +1,8 @@
 #
 # spec file for package urh
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 
 Name:           urh
-Version:        2.9.3
+Version:        2.9.4
 Release:        0
 Summary:        Tool for investigating unknown wireless protocols
 License:        GPL-3.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/jopohl/urh
 Source:         https://github.com/jopohl/urh/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  limesuite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -37,21 +37,17 @@ BuildRequires:  python3-numpy
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libairspy)
 BuildRequires:  pkgconfig(libbladeRF)
 BuildRequires:  pkgconfig(libhackrf)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(uhd)
-Requires:       hicolor-icon-theme
 Requires:       python3-Cython
 Requires:       python3-numpy
 Requires:       python3-psutil
 Requires:       python3-pyzmq
 Requires:       python3-qt5
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
 Recommends:     inspectrum
 Recommends:     rfcat
 %if 0%{?suse_version} >= 1500

@@ -29,14 +29,13 @@
 
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.5
+Version:        5.15.6
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt3D/PyQt3D-%{version}.tar.gz
-Patch0:         qt3d-geometry-equals.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-devel}
@@ -52,7 +51,7 @@ BuildRequires:  pkgconfig(Qt53DInput)
 BuildRequires:  pkgconfig(Qt53DLogic)
 BuildRequires:  pkgconfig(Qt53DRender)
 Provides:       python-PyQt3D = %{version}-%{release}
-Requires:       python-qt5 >= %{version}
+Requires:       python-qt5 >= 5.15.4
 Requires:       python-qt5-sip
 
 %python_subpackages

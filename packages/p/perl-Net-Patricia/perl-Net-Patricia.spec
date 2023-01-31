@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Patricia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,10 +25,11 @@ Version:        1.22
 Release:        0
 %define cpan_name Net-Patricia
 Summary:        Patricia Trie perl module for fast IP address lookups
-License:        GPL-2.0+ and BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-Patricia/
+URL:            http://search.cpan.org/dist/Net-Patricia/
 Source:         http://www.cpan.org/authors/id/G/GR/GRUBER/%{cpan_name}-%{version}.tar.gz
+Patch1:         no-libnsl.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -40,9 +41,6 @@ Requires:       perl(Net::CIDR::Lite) >= 0.20
 Requires:       perl(Socket6)
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(version)
-%if 0%{?suse_version} > 1350
-BuildRequires:  libnsl-devel
-%endif
 %{perl_requires}
 
 %description
@@ -63,6 +61,7 @@ Table for Berkeley Unix'' by Keith Sklower.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch1 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

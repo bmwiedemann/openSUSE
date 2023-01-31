@@ -1,7 +1,7 @@
 #
 # spec file for package polymake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname   libpolymake4_7
+%define lname   libpolymake4_9
 Name:           polymake
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
@@ -28,9 +28,9 @@ URL:            https://polymake.org/
 Source:         https://github.com/polymake/polymake/archive/V%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
-Patch3:         vertices-31.patch
 BuildRequires:  bliss-devel
 BuildRequires:  cddlib-devel
+BuildRequires:  fdupes
 BuildRequires:  flint-devel
 BuildRequires:  gcc-c++ >= 5
 BuildRequires:  gmp-devel >= 4.2
@@ -85,7 +85,9 @@ objects, and other objects.
 %autosetup -p1
 
 %build
-# Not AC.
+# force using system libnormaliz
+rm -rf bundled/libnormaliz/external
+# It's not autoconf.
 ./configure --prefix="%_prefix" --libdir="%_libdir" \
 	--libexecdir="%_libdir/%name-%version" --without-native \
 	--with-bliss="%_prefix" --with-sympol="%_prefix" --with-cdd="%_prefix" \
@@ -104,6 +106,7 @@ find "%buildroot/%_includedir" -type f -exec chmod a-x {} +
 mv "%buildroot/%_libdir/polymake-%version/lib"/libp* "%buildroot/%_libdir/"
 # zero size file, why
 rm -f "%buildroot/%_libdir/polymake-%version/lib/ideal.so"
+%fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

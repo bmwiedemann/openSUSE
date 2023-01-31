@@ -204,4 +204,12 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
 - disable-live-tests.patch: refreshed</comment>
     <requestid>937232</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f7c3a99e69f5d36e8be83f490dcfb37c</srcmd5>
+    <version>1.19.0</version>
+    <time>1675177723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062054</requestid>
+  </revision>
 </revisionlist>

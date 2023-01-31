@@ -277,4 +277,14 @@
   move. (forwarded request 1057973 from eeich)</comment>
     <requestid>1057974</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d75215e5f1a83b51411e617b8010f3e3</srcmd5>
+    <version>0.19.0</version>
+    <time>1675177795</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the spack environment is set up correctly in
+  spack-generated Dockerfiles (boo#1207784):
+  Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch (forwarded request 1062187 from eeich)</comment>
+    <requestid>1062188</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 30 14:13:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dLeyna-no-python-shebang.patch: remove /usr/bin/python
+  shebang from download_sync_controller.py. The file is installed
+  into a python 3.10 site-directory and thus clearly does not need
+  a python2 shebang.
+
+-------------------------------------------------------------------
 Fri Nov 25 16:30:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.2:

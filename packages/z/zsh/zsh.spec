@@ -1,7 +1,7 @@
 #
 # spec file for package zsh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,7 @@ Requires(pre):  /sbin/install-info
 Requires(pre):  fileutils
 Requires(pre):  grep
 %endif
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Provides:       /bin/zsh
 %endif
 
@@ -186,7 +186,7 @@ done
 install -D -m 0644 %{SOURCE16} %{buildroot}%{_sysconfdir}/skel/.zshrc
 %endif
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # link zsh binary
 %if 0%{?suse_version} || 0%{?rhel} <= 6
 ln -sf %{_bindir}/zsh %{buildroot}/bin/zsh
@@ -279,7 +279,7 @@ mv Test/E01options.ztst Test/E01options.ztst.mvd
 %endif
 
 %{_bindir}/zsh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %if 0%{?suse_version} || 0%{?rhel} <= 6
 /bin/zsh
 %endif

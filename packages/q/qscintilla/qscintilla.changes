@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 29 19:48:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.13.4
+  * Added the .api files for Python v3.10 and v3.11.
+  * Bug fixes
+
+-------------------------------------------------------------------
 Sun May 29 18:30:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.3:

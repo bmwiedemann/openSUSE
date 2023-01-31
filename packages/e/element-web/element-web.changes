@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:21:26 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fixed webpack with OpenSSL3
+  * Added webpack-fix-openssl3.patch
+- Fixed building for Fedora
+- Some spec file cleanup
+
+-------------------------------------------------------------------
 Fri Jan 20 13:12:45 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.20

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 31 10:42:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+- Add tests running
+
+-------------------------------------------------------------------
+Mon Jan 30 09:47:38 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.8.1
+  * Added typing information
+
+- Update to 0.8
+  * Started tracking changes
+  * Switched to poetry
+  * Added ignoring of enumerators that work, but return no valid monitors
+  * Added `ScreenInfoError` to list of top-level symbols
+
+- Update to 0.7
+  * No changelog available
+
+- Update to 0.6.7
+  * No changelog available. 
+
+-------------------------------------------------------------------
 Thu Nov 26 06:32:42 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 0.6.6.

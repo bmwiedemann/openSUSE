@@ -8,11 +8,11 @@ of docbook2x-man.
  configure.ac |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: boinc-client_release-7.8-7.8.3/configure.ac
+Index: boinc-client_release-7.22-7.22.0/configure.ac
 ===================================================================
---- boinc-client_release-7.8-7.8.3.orig/configure.ac
-+++ boinc-client_release-7.8-7.8.3/configure.ac
-@@ -334,7 +334,7 @@ AC_SUBST([TOP_BUILD_DIR], [`pwd`])
+--- boinc-client_release-7.22-7.22.0.orig/configure.ac
++++ boinc-client_release-7.22-7.22.0/configure.ac
+@@ -375,7 +375,7 @@ AC_SUBST([TOP_BUILD_DIR], [`pwd`])
  dnl Check for docbook2x-man, which we use to create the manpages in
  dnl doc/manpages, and set the conditional HAVE_DOCBOOK2X_MAN to build
  dnl the manpages only if docbook2x-man is available.
@@ -20,4 +20,4 @@ Index: boinc-client_release-7.8-7.8.3/configure.ac
 +AC_PATH_PROG(DOCBOOK2X_MAN, docbook-to-man)
  AM_CONDITIONAL(HAVE_DOCBOOK2X_MAN, [test -n "${DOCBOOK2X_MAN}"])
  
- AC_SUBST([CLIENT_BIN_FILENAME],[boinc${EXEEXT}])
+ if test "${enable_wasm}" = yes ; then

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,15 +44,14 @@ ExclusiveArch:  do_not_build
 %endif
 
 # PyQt5 built against SIP v4 is not compatible with this version of QScintilla.
-# if your distro target still uses the SIPv4 built PyQt5, disable python bindings here
+# if your distro target still uses the SIPv4 built PyQt5, disable python bindings
 %bcond_without python
 
-%{?!python_module:%define python3-%{**}}
 %define skip_python2 1
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 %define sonum   15
 Name:           qscintilla%{?psuffix}
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only

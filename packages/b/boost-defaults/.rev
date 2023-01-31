@@ -98,4 +98,12 @@
     <comment>- update to Boost 1.80.0</comment>
     <requestid>997726</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6fadae5608b8dd0dd6aa7409836eb2e3</srcmd5>
+    <version>1.81.0</version>
+    <time>1675177681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043104</requestid>
+  </revision>
 </revisionlist>

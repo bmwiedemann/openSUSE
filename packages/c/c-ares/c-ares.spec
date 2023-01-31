@@ -1,7 +1,7 @@
 #
 # spec file for package c-ares
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,11 @@
 
 %define sonum   2
 %define libname libcares%{sonum}
-
 %if 0%{!?cmake_build:1}
 %define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
 %endif
-
 Name:           c-ares
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -37,9 +35,9 @@ Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
 # Needed for getservbyport_r function to work properly.
 BuildRequires:  netcfg
+BuildRequires:  pkgconfig
 
 %description
 c-ares is a C library that performs DNS requests and name resolves

@@ -1,0 +1,40 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Jan 31 09:24:46 2023 +0100
+Subject: Make sure spack environment is set up in Dockerfile template
+Patch-mainline: Not yet
+Git-commit: 865116877fe2536485326aa0fb53943160fa5e25
+References: 
+
+The Dockerfile template did source the script
+/opt/spack/share/spack/setup-env.sh
+which lead to the binary 'spack' not being found and the
+environment not being set up properly for `spack env activate .`.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ share/spack/templates/container/Dockerfile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+diff --git a/share/spack/templates/container/Dockerfile b/share/spack/templates/container/Dockerfile
+index b10dcf08..dc9b91e5 100644
+--- a/share/spack/templates/container/Dockerfile
++++ b/share/spack/templates/container/Dockerfile
+@@ -19,7 +19,8 @@ RUN mkdir {{ paths.environment }} \
+ {{ manifest }} > {{ paths.environment }}/spack.yaml
+ 
+ # Install the software, remove unnecessary deps
+-RUN cd {{ paths.environment }} && spack env activate . && spack install --fail-fast && spack gc -y
++RUN . /opt/spack/share/spack/setup-env.sh && \
++    cd {{ paths.environment }} && spack env activate . && spack install --fail-fast && spack gc -y
+ {% if strip %}
+ 
+ # Strip all the binaries
+@@ -31,7 +32,7 @@ RUN find -L {{ paths.view }}/* -type f -exec readlink -f '{}' \; | \
+ {% endif %}
+ 
+ # Modifications to the environment that are necessary to run
+-RUN cd {{ paths.environment }} && \
++RUN . /opt/spack/share/spack/setup-env.sh && cd {{ paths.environment }} && \
+     spack env activate --sh -d . >> /etc/profile.d/z10_spack_environment.sh
+ 
+ {% if extra_instructions.build %}

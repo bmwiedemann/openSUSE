@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1038611</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>765a2674397d7e3c7919a774ab8751d9</srcmd5>
+    <version>0.8.2</version>
+    <time>1675177733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dLeyna-no-python-shebang.patch: remove /usr/bin/python
+  shebang from download_sync_controller.py. The file is installed
+  into a python 3.10 site-directory and thus clearly does not need
+  a python2 shebang.
+</comment>
+    <requestid>1062096</requestid>
+  </revision>
 </revisionlist>

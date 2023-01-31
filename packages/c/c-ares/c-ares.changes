@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jan 29 09:31:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  Security:
+  * Low. Stack overflow in ares_set_sortlist() which is used
+    during c-ares initialization and typically provided by an
+    administrator and not an end user.
+  Changes:
+  * Add ARES_OPT_HOSTS_FILE similar to ARES_OPT_RESOLVCONF for
+    specifying a custom hosts file location.
+  Bug fixes:
+  * Fix memory leak in reading /etc/hosts when using localhost
+    fallback.
+  * Fix chain building c-ares when libresolv is already included by
+    another project.
+  * File lookup should not immediately abort as there may be other
+    tries due to search criteria.
+  * Asterisks should be allowed in host validation as CNAMEs may
+    reference wildcard domains.
+  * AutoTools build system referenced bad STDC_HEADERS macro.
+  * Even if one address class returns a failure for
+    ares_getaddrinfo() we should still return the results we have.
+  * Fix ares_getaddrinfo() numerical address resolution with
+    AF_UNSPEC
+  * Fix tools and help information.
+  * Various documentation fixes and cleanups.
+  * Add include guards to ares_data.h
+  * c-ares could try to exceed maximum number of iovec entries
+    supported by system.
+  * The RFC6761 6.3 states localhost subdomains must be offline too
+
+-------------------------------------------------------------------
 Tue Dec  7 16:57:20 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.18.1. Changes since 1.17.2:

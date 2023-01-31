@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:27:44 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Sat Oct 22 05:22:28 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add zsh-sh subpackage to offer Zsh users a "native" way to handle

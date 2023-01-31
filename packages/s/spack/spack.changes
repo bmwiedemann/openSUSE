@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 31 08:29:00 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Make sure the spack environment is set up correctly in
+  spack-generated Dockerfiles (boo#1207784):
+  Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch
+
+-------------------------------------------------------------------
 Wed Jan 11 13:04:37 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Fix var_path: this regression was introduced with the update

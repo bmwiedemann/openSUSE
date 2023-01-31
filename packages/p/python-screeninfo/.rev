@@ -26,4 +26,25 @@
     <comment></comment>
     <requestid>851326</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>74b193b14ca26dd34f569989a5cdb06b</srcmd5>
+    <version>0.8.1</version>
+    <time>1675177806</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+- Add tests running
+- Update to 0.8.1
+  * Added typing information
+- Update to 0.8
+  * Started tracking changes
+  * Switched to poetry
+  * Added ignoring of enumerators that work, but return no valid monitors
+  * Added `ScreenInfoError` to list of top-level symbols
+- Update to 0.7
+  * No changelog available
+- Update to 0.6.7
+  * No changelog available. 
+</comment>
+    <requestid>1062212</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 13:48:49 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- no-libnsl.diff: don't link against libnsl if we don't use it
+
+-------------------------------------------------------------------
 Mon Feb 26 12:44:51 UTC 2018 - opensuse@dstoecker.de
 
 - New systems requires explicit libnsl-devel for building

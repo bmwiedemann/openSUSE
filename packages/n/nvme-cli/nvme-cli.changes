@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 30 13:55:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.3:
+  * Added support for Flexible Data Placement (TP4146)
+  * Added Persistent Discovery Controller support (TP8013/TP8014)
+  * nvme-mi: support for firmware downloads
+  * nvme device-self-test learned the --wait command line argument
+    which makes nvme-cli to wait (incl. progress bar) in foreground
+    until the test has finished.
+  * A lot of bug fixes all over the place
+- Update spec file
+  * Project depends on meson >= 0.50.0
+  * make build dependency dropped
+
+-------------------------------------------------------------------
 Wed Nov 02 17:10:58 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.2.1:

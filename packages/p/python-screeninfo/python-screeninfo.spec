@@ -1,7 +1,7 @@
 #
 # spec file for package python-screeninfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,48 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-screeninfo
-Version:        0.6.6
+Version:        0.8.1
 Release:        0
 Summary:        Fetch location and size of physical screens
 License:        MIT
 URL:            https://github.com/rr-/screeninfo
-Source0:        https://github.com/rr-/screeninfo/archive/%{version}.tar.gz#/screeninfo-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source0:        https://github.com/rr-/screeninfo/archive/refs/tags/%{version}.tar.gz#/screeninfo-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Suggests:       python-Cython
+Suggests:       python-dataclasses
+Suggests:       python-pyobjc-framework-Cocoa
+BuildArch:      noarch
 %if 0%{?suse_version} <= 1500
 BuildRequires:  %{python_module dataclasses}
 %endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
 Python module to fetch location and size of physical screens.
 
 %prep
-%setup -q -n screeninfo-%{version}
+%autosetup -p1 -n screeninfo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# upstream does not provide any tests
+%pytest tests
 
 %files %{python_files}
 %license LICENSE.md
 %doc README.md
-%dir %{python_sitelib}/screeninfo/
-%dir %{python_sitelib}/screeninfo/enumerators/
-%{python_sitelib}/screeninfo-%{version}-py%{python_version}.egg-info/
-%{python_sitelib}/screeninfo/*.py*
-%{python_sitelib}/screeninfo/enumerators/*.py*
-%pycache_only %{python_sitelib}/screeninfo/__pycache__/
-%pycache_only %{python_sitelib}/screeninfo/enumerators/__pycache__/
+%{python_sitelib}/screeninfo
+%{python_sitelib}/screeninfo-%{version}*-info
 
 %changelog

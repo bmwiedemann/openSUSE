@@ -137,7 +137,6 @@
 %{_datadir}/bash-completion/completions/systemd-cat
 %{_datadir}/bash-completion/completions/systemd-cgls
 %{_datadir}/bash-completion/completions/systemd-cgtop
-%{_datadir}/bash-completion/completions/systemd-cryptenroll
 %{_datadir}/bash-completion/completions/systemd-delta
 %{_datadir}/bash-completion/completions/systemd-detect-virt
 %{_datadir}/bash-completion/completions/systemd-id128

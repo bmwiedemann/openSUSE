@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 
 Name:           roundcubemail
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later

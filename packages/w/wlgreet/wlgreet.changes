@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 30 15:30:42 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.4.1:
+  * update dependencies to solve an issue with wayland-rs and newer Wayland
+    compositors
+
+-------------------------------------------------------------------
 Fri Jun  3 01:28:50 UTC 2022 - Timothy Brown <stimut@gmail.com>
 
 - Update to 0.4. This release fixes a wl_output version 4

@@ -55,6 +55,7 @@ Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inc
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
+Patch100:       Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod

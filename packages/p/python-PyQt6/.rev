@@ -88,4 +88,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment>Update to 6.4.0</comment>
     <requestid>1007749</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8060014c18c57a75a2ef36bef8d03951</srcmd5>
+    <version>6.4.1</version>
+    <time>1675177760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062115</requestid>
+  </revision>
 </revisionlist>

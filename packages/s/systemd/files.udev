@@ -28,6 +28,7 @@
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
 %if %{without bootstrap}
+%{_datadir}/bash-completion/completions/systemd-cryptenroll
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/pkgconfig/udev.pc

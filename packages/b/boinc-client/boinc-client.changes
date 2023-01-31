@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 24 13:03:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 7.22
+  * Add not-in-use computing prefs
+  * Update cpu/gpu resources when app_config is re-read
+
+-------------------------------------------------------------------
 Fri Dec  2 11:28:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.20.5

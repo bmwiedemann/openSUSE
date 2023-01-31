@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.44.g5a506d73bd
+%define archive_version +suse.46.gd87834a334
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        252.4
+Version:        252.5
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -557,24 +557,24 @@ Requires:       systemd-portable
 Requires:       xz
 
 %description testsuite
-This package contains the unit tests as well as the extended
-testsuite. The unit tests are used to check various internal functions
-used by systemd whereas the extended testsuite is used to test various
-functionalities of systemd and all its components.
+This package contains the unit tests as well as the extended testsuite. The unit
+tests are used to check various internal functions used by systemd whereas the
+extended testsuite is used to test various functionalities of systemd and all
+its components.
 
-Note that the extended testsuite only works with UID=0.
+Note that you need root privileges to run the extended testsuite.
 
 Run the following python script to run all unit tests at once:
 $ %{_testsuitedir}/run-unit-tests.py
 
 To run the full extended testsuite do the following:
-$ NO_BUILD=1 TEST_NESTED_VM=1 %{_testsuitedir}/test/run-integration-tests.sh
+$ NO_BUILD=1 TEST_NESTED_VM=1 %{_testsuitedir}/integration-tests/run-integration-tests.sh
 
 Or to run one specific integration test:
-$ NO_BUILD=1 TEST_NESTED_VM=1 make -C %{_testsuitedir}/test/TEST-01-BASIC clean setup run
+$ NO_BUILD=1 TEST_NESTED_VM=1 make -C %{_testsuitedir}/integration-tests/TEST-01-BASIC clean setup run
 
-For more details on the available options to run the extended
-testsuite, please refer to %{_testsuitedir}/test/README.testsuite.
+For more details on the available options to run the extended testsuite, please
+refer to %{_testsuitedir}/integration-tests/README.testsuite.
 %endif
 
 %if %{with experimental}
@@ -942,14 +942,18 @@ rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
 rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if %{with testsuite}
-cp -a test %{buildroot}%{_testsuitedir}/
-# When the tests are installed, the effective testdata directory is in
-# %{_testsuitedir}, the other one, which is actually a symlink, is only useful
-# when the tests are run directly from the source.
-rm %{buildroot}%{_testsuitedir}/test/testdata
-# kbd-model-map became a dangling symlink, drop it.
-rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
-find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
+# -Dinstall_test took care of installing the unit tests only (those in
+# src/tests) and testdata directory. Here we copy the integration tests
+# including also all related scripts used to prepare and run the integration
+# tests in dedicated VMs. During the copy, all symlinks are replaced by the
+# files they point to making sure we won't try to embed dangling symlinks.
+mkdir -p %{buildroot}%{_testsuitedir}/integration-tests
+tar -cO \
+    --dereference \
+    --exclude=testdata \
+    --exclude-vcs  \
+    --exclude-vcs-ignores \
+    -C test/ . | tar -xC %{buildroot}%{_testsuitedir}/integration-tests
 %endif
 
 %if %{without bootstrap}
@@ -962,7 +966,6 @@ find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %pre
 # Units listed below can be enabled at installation according to their preset
 # setting.
-%systemd_pre machines.target
 %systemd_pre remote-fs.target
 %systemd_pre getty@.service
 %systemd_pre systemd-timesyncd.service
@@ -1022,7 +1025,6 @@ fi
 
 # Units listed below can be enabled at installation accoding to their preset
 # setting.
-%systemd_post machines.target
 %systemd_post remote-fs.target
 %systemd_post getty@.service
 %systemd_post systemd-timesyncd.service
@@ -1136,7 +1138,11 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %postun -n libudev%{?mini}1 -p %ldconfig
 %postun -n libsystemd0%{?mini} -p %ldconfig
 
+%pre container
+%systemd_pre machines.target
+
 %post container
+%systemd_post machines.target
 %tmpfiles_create systemd-nspawn.conf
 %if %{with machined}
 %ldconfig
@@ -1157,7 +1163,11 @@ if [ $1 -gt 1 ]; then
         %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh || :
 fi
 
+%preun container
+%systemd_preun machines.target
+
 %postun container
+%systemd_postun machines.target
 %ldconfig
 %endif
 
@@ -1381,7 +1391,7 @@ fi
 %if %{with testsuite}
 %files testsuite
 %defattr(-,root,root)
-%doc %{_testsuitedir}/test/README.testsuite
+%doc %{_testsuitedir}/integration-tests/README.testsuite
 %{_testsuitedir}
 %endif
 
