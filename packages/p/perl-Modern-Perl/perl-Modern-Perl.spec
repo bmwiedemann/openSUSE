@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Modern-Perl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Modern-Perl
 Name:           perl-Modern-Perl
-Version:        1.20220515
+Version:        1.20230106
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Enable all of the features of Modern Perl with one import

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  6 03:07:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20230106
+   see /usr/share/doc/packages/perl-Modern-Perl/Changes
+
+  1.20230106 2023-01-05 17:15:46-08:00 America/Los_Angeles
+      - update for 2023 year bundle
+      - fix a few nits in tests
+
+-------------------------------------------------------------------
 Mon May 16 03:07:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20220515
