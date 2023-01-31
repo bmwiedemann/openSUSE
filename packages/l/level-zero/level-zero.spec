@@ -2,7 +2,7 @@
 # spec file for package level-zero
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2022 Alessandro de Oliveira Faria (A.K.A CABELO) <cabelo@opensuse.org>
+# Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A CABELO) <cabelo@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           level-zero
-Version:        1.8.12
+Version:        1.9.4
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT

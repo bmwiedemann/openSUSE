@@ -25,4 +25,16 @@
     <comment></comment>
     <requestid>1059838</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cfdabc6de8b75b40723a64a48306354b</srcmd5>
+    <version>1.9.4</version>
+    <time>1675177771</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.4:
+  * Add support for Level Zero spec v1.5
+  * Fix some compilation issues with windows non-vc compiler
+  * Fix building when included in another cmake project.
+</comment>
+    <requestid>1062145</requestid>
+  </revision>
 </revisionlist>
