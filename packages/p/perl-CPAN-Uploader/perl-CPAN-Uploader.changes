@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 15 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103018
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+
+  0.103018  2023-01-13 21:11:24-05:00 America/New_York
+          - a bit of refactoring and testing of .pause parser (thanks, Shlomi
+            Fish)
+
+-------------------------------------------------------------------
 Mon Jan  2 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.103017

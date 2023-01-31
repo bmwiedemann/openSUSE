@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Uploader
 Name:           perl-CPAN-Uploader
-Version:        0.103017
+Version:        0.103018
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Upload things to the CPAN
