@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230130" schemaversion="4.1">
+<image name="OBS__MicroOS___20230131" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230130</productvar>
+      <productvar name="VERSION">20230131</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230130,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230131,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230130/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230131/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -139,7 +139,7 @@
       <repopackage name="bluez-qt-imports" arch="x86_64"/>
       <repopackage name="bluez-qt-udev" arch="x86_64"/>
       <repopackage name="bolt" arch="x86_64"/>
-      <repopackage name="boost-license1_80_0"/>
+      <repopackage name="boost-license1_81_0"/>
       <repopackage name="branding-openSUSE" arch="x86_64"/>
       <repopackage name="breeze" arch="x86_64"/>
       <repopackage name="breeze5-cursors" arch="x86_64"/>
@@ -886,11 +886,11 @@
       <repopackage name="libblogger2" arch="x86_64"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_date_time1_80_0"/>
-      <repopackage name="libboost_filesystem1_80_0"/>
-      <repopackage name="libboost_iostreams1_80_0"/>
-      <repopackage name="libboost_locale1_80_0"/>
-      <repopackage name="libboost_thread1_80_0"/>
+      <repopackage name="libboost_date_time1_81_0"/>
+      <repopackage name="libboost_filesystem1_81_0"/>
+      <repopackage name="libboost_iostreams1_81_0"/>
+      <repopackage name="libboost_locale1_81_0"/>
+      <repopackage name="libboost_thread1_81_0"/>
       <repopackage name="libbox2d2"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbreezecommon5-5" arch="x86_64"/>
@@ -1551,7 +1551,6 @@
       <repopackage name="libpwquality-lang"/>
       <repopackage name="libpwquality-tools" arch="x86_64"/>
       <repopackage name="libpwquality1"/>
-      <repopackage name="libpython2_7-1_0" arch="x86_64"/>
       <repopackage name="libpython3_10-1_0"/>
       <repopackage name="libqaccessibilityclient-qt5-0" arch="x86_64"/>
       <repopackage name="libqalculate22" arch="x86_64"/>
@@ -2291,7 +2290,6 @@
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="purpose-lang" arch="x86_64"/>
-      <repopackage name="python-base" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
       <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-brlapi" arch="x86_64"/>

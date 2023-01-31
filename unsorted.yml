@@ -526,7 +526,6 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
-  - amarok 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -1329,7 +1328,7 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
+  - blender: [x86_64] 
   - blender-demo: [x86_64] 
   - blender-lang: [x86_64] 
   - bless 
@@ -1411,27 +1410,27 @@ unsorted:
   - boost-gnu-openmpi4-hpc-devel: [x86_64] 
   - boost-gnu-openmpi4-hpc-python3: [x86_64] 
   - boost-jam 
-  - boost1_80_0-doc-html 
-  - boost1_80_0-doc-pdf 
-  - boost1_80_0-jam 
-  - boost1_80_0-quickbook 
-  - boost_1_80_0-gnu-hpc: [x86_64] 
-  - boost_1_80_0-gnu-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-mpich-hpc: [x86_64] 
-  - boost_1_80_0-gnu-mpich-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-mpich-hpc-python3: [x86_64] 
-  - boost_1_80_0-gnu-mvapich2-hpc: [x86_64] 
-  - boost_1_80_0-gnu-mvapich2-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-mvapich2-hpc-python3: [x86_64] 
-  - boost_1_80_0-gnu-openmpi2-hpc: [x86_64] 
-  - boost_1_80_0-gnu-openmpi2-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-openmpi2-hpc-python3: [x86_64] 
-  - boost_1_80_0-gnu-openmpi3-hpc: [x86_64] 
-  - boost_1_80_0-gnu-openmpi3-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-openmpi3-hpc-python3: [x86_64] 
-  - boost_1_80_0-gnu-openmpi4-hpc: [x86_64] 
-  - boost_1_80_0-gnu-openmpi4-hpc-devel: [x86_64] 
-  - boost_1_80_0-gnu-openmpi4-hpc-python3: [x86_64] 
+  - boost1_81_0-doc-html 
+  - boost1_81_0-doc-pdf 
+  - boost1_81_0-jam 
+  - boost1_81_0-quickbook 
+  - boost_1_81_0-gnu-hpc: [x86_64] 
+  - boost_1_81_0-gnu-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-mpich-hpc: [x86_64] 
+  - boost_1_81_0-gnu-mpich-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-mpich-hpc-python3: [x86_64] 
+  - boost_1_81_0-gnu-mvapich2-hpc: [x86_64] 
+  - boost_1_81_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-mvapich2-hpc-python3: [x86_64] 
+  - boost_1_81_0-gnu-openmpi2-hpc: [x86_64] 
+  - boost_1_81_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-openmpi2-hpc-python3: [x86_64] 
+  - boost_1_81_0-gnu-openmpi3-hpc: [x86_64] 
+  - boost_1_81_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-openmpi3-hpc-python3: [x86_64] 
+  - boost_1_81_0-gnu-openmpi4-hpc: [x86_64] 
+  - boost_1_81_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - boost_1_81_0-gnu-openmpi4-hpc-python3: [x86_64] 
   - booth 
   - booth-test 
   - bootiso 
@@ -2121,6 +2120,7 @@ unsorted:
   - cloud-netconfig-ec2 
   - cloud-netconfig-gce 
   - cloudproviders-extension-nextcloud 
+  - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
   - clustduct 
@@ -2740,6 +2740,7 @@ unsorted:
   - cura-fdm-materials 
   - cura-lulzbot: [x86_64] 
   - curlftpfs 
+  - curlie 
   - curtail 
   - curtail-lang 
   - cutecom 
@@ -3471,6 +3472,7 @@ unsorted:
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
+  - empty-fake-package 
   - enblend-enfuse 
   - enblend-enfuse-doc 
   - enca 
@@ -7122,7 +7124,10 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
+  - heaptrack 
   - heaptrack-devel 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -9339,6 +9344,7 @@ unsorted:
   - libIlmThread-3_1-30-32bit: [x86_64] 
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
+  - libKChart2 
   - libKDb3-4 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
@@ -10316,121 +10322,125 @@ unsorted:
   - libbobcat6 
   - libboinc7 
   - libboost_atomic-devel 
-  - libboost_atomic1_80_0 
-  - libboost_atomic1_80_0-32bit: [x86_64] 
-  - libboost_atomic1_80_0-devel 
+  - libboost_atomic1_81_0 
+  - libboost_atomic1_81_0-32bit: [x86_64] 
+  - libboost_atomic1_81_0-devel 
   - libboost_chrono-devel 
-  - libboost_chrono1_80_0 
-  - libboost_chrono1_80_0-devel 
+  - libboost_chrono1_81_0 
+  - libboost_chrono1_81_0-devel 
   - libboost_container-devel 
-  - libboost_container1_80_0 
-  - libboost_container1_80_0-32bit: [x86_64] 
-  - libboost_container1_80_0-devel 
+  - libboost_container1_81_0 
+  - libboost_container1_81_0-32bit: [x86_64] 
+  - libboost_container1_81_0-devel 
   - libboost_context-devel 
-  - libboost_context1_80_0 
-  - libboost_context1_80_0-32bit: [x86_64] 
-  - libboost_context1_80_0-devel 
+  - libboost_context1_81_0 
+  - libboost_context1_81_0-32bit: [x86_64] 
+  - libboost_context1_81_0-devel 
   - libboost_contract-devel 
-  - libboost_contract1_80_0 
-  - libboost_contract1_80_0-devel 
+  - libboost_contract1_81_0 
+  - libboost_contract1_81_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_80_0 
-  - libboost_coroutine1_80_0-32bit: [x86_64] 
-  - libboost_coroutine1_80_0-devel 
+  - libboost_coroutine1_81_0 
+  - libboost_coroutine1_81_0-32bit: [x86_64] 
+  - libboost_coroutine1_81_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_80_0-32bit: [x86_64] 
-  - libboost_date_time1_80_0-devel 
+  - libboost_date_time1_81_0-32bit: [x86_64] 
+  - libboost_date_time1_81_0-devel 
   - libboost_fiber-devel 
-  - libboost_fiber1_80_0 
-  - libboost_fiber1_80_0-32bit: [x86_64] 
-  - libboost_fiber1_80_0-devel 
+  - libboost_fiber1_81_0 
+  - libboost_fiber1_81_0-32bit: [x86_64] 
+  - libboost_fiber1_81_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_80_0-32bit: [x86_64] 
-  - libboost_filesystem1_80_0-devel 
+  - libboost_filesystem1_81_0-32bit: [x86_64] 
+  - libboost_filesystem1_81_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_80_0 
-  - libboost_graph1_80_0-32bit: [x86_64] 
-  - libboost_graph1_80_0-devel 
+  - libboost_graph1_81_0 
+  - libboost_graph1_81_0-32bit: [x86_64] 
+  - libboost_graph1_81_0-devel 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_80_0 
-  - libboost_graph_parallel1_80_0-32bit: [x86_64] 
-  - libboost_graph_parallel1_80_0-devel 
+  - libboost_graph_parallel1_81_0 
+  - libboost_graph_parallel1_81_0-32bit: [x86_64] 
+  - libboost_graph_parallel1_81_0-devel 
   - libboost_headers-devel 
-  - libboost_headers1_80_0-devel 
+  - libboost_headers1_81_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_80_0-32bit: [x86_64] 
-  - libboost_iostreams1_80_0-devel 
-  - libboost_json1_80_0 
-  - libboost_json1_80_0-32bit: [x86_64] 
-  - libboost_json1_80_0-devel 
+  - libboost_iostreams1_81_0-32bit: [x86_64] 
+  - libboost_iostreams1_81_0-devel 
+  - libboost_json1_81_0 
+  - libboost_json1_81_0-32bit: [x86_64] 
+  - libboost_json1_81_0-devel 
   - libboost_locale-devel 
-  - libboost_locale1_80_0-32bit: [x86_64] 
-  - libboost_locale1_80_0-devel 
+  - libboost_locale1_81_0-32bit: [x86_64] 
+  - libboost_locale1_81_0-devel 
   - libboost_log-devel 
-  - libboost_log1_80_0 
-  - libboost_log1_80_0-devel 
+  - libboost_log1_81_0 
+  - libboost_log1_81_0-devel 
   - libboost_math-devel 
-  - libboost_math1_80_0 
-  - libboost_math1_80_0-32bit: [x86_64] 
-  - libboost_math1_80_0-devel 
+  - libboost_math1_81_0 
+  - libboost_math1_81_0-32bit: [x86_64] 
+  - libboost_math1_81_0-devel 
   - libboost_mpi-devel 
-  - libboost_mpi1_80_0 
-  - libboost_mpi1_80_0-32bit: [x86_64] 
-  - libboost_mpi1_80_0-devel 
-  - libboost_mpi_python-py3-1_80_0 
-  - libboost_mpi_python-py3-1_80_0-devel 
+  - libboost_mpi1_81_0 
+  - libboost_mpi1_81_0-32bit: [x86_64] 
+  - libboost_mpi1_81_0-devel 
+  - libboost_mpi_python-py3-1_81_0 
+  - libboost_mpi_python-py3-1_81_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_80_0 
-  - libboost_nowide1_80_0-32bit: [x86_64] 
-  - libboost_nowide1_80_0-devel 
-  - libboost_numpy-py3-1_80_0 
-  - libboost_numpy-py3-1_80_0-devel 
+  - libboost_nowide1_81_0 
+  - libboost_nowide1_81_0-32bit: [x86_64] 
+  - libboost_nowide1_81_0-devel 
+  - libboost_numpy-py3-1_81_0 
+  - libboost_numpy-py3-1_81_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_80_0-32bit: [x86_64] 
-  - libboost_program_options1_80_0-devel 
-  - libboost_python-py3-1_80_0-32bit: [x86_64] 
-  - libboost_python-py3-1_80_0-devel 
+  - libboost_program_options1_81_0 
+  - libboost_program_options1_81_0-32bit: [x86_64] 
+  - libboost_program_options1_81_0-devel 
+  - libboost_python-py3-1_81_0-32bit: [x86_64] 
+  - libboost_python-py3-1_81_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_80_0 
-  - libboost_random1_80_0-32bit: [x86_64] 
-  - libboost_random1_80_0-devel 
+  - libboost_random1_81_0 
+  - libboost_random1_81_0-32bit: [x86_64] 
+  - libboost_random1_81_0-devel 
   - libboost_regex-devel 
-  - libboost_regex1_80_0 
-  - libboost_regex1_80_0-32bit: [x86_64] 
-  - libboost_regex1_80_0-devel 
+  - libboost_regex1_81_0 
+  - libboost_regex1_81_0-32bit: [x86_64] 
+  - libboost_regex1_81_0-devel 
   - libboost_serialization-devel 
-  - libboost_serialization1_80_0 
-  - libboost_serialization1_80_0-32bit: [x86_64] 
-  - libboost_serialization1_80_0-devel 
+  - libboost_serialization1_81_0 
+  - libboost_serialization1_81_0-32bit: [x86_64] 
+  - libboost_serialization1_81_0-devel 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_80_0 
-  - libboost_stacktrace1_80_0-32bit: [x86_64] 
-  - libboost_stacktrace1_80_0-devel 
+  - libboost_stacktrace1_81_0 
+  - libboost_stacktrace1_81_0-32bit: [x86_64] 
+  - libboost_stacktrace1_81_0-devel 
   - libboost_system-devel 
-  - libboost_system1_80_0 
-  - libboost_system1_80_0-32bit: [x86_64] 
-  - libboost_system1_80_0-devel 
+  - libboost_system1_81_0 
+  - libboost_system1_81_0-32bit: [x86_64] 
+  - libboost_system1_81_0-devel 
   - libboost_test-devel 
-  - libboost_test1_80_0 
-  - libboost_test1_80_0-32bit: [x86_64] 
-  - libboost_test1_80_0-devel 
+  - libboost_test1_81_0 
+  - libboost_test1_81_0-32bit: [x86_64] 
+  - libboost_test1_81_0-devel 
   - libboost_thread-devel 
-  - libboost_thread1_80_0-32bit: [x86_64] 
-  - libboost_thread1_80_0-devel 
+  - libboost_thread1_81_0-32bit: [x86_64] 
+  - libboost_thread1_81_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_80_0 
-  - libboost_timer1_80_0-devel 
+  - libboost_timer1_81_0 
+  - libboost_timer1_81_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_80_0 
-  - libboost_type_erasure1_80_0-32bit: [x86_64] 
-  - libboost_type_erasure1_80_0-devel 
+  - libboost_type_erasure1_81_0 
+  - libboost_type_erasure1_81_0-32bit: [x86_64] 
+  - libboost_type_erasure1_81_0-devel 
+  - libboost_url1_81_0 
+  - libboost_url1_81_0-32bit: [x86_64] 
+  - libboost_url1_81_0-devel 
   - libboost_wave-devel 
-  - libboost_wave1_80_0 
-  - libboost_wave1_80_0-32bit: [x86_64] 
-  - libboost_wave1_80_0-devel 
+  - libboost_wave1_81_0 
+  - libboost_wave1_81_0-32bit: [x86_64] 
+  - libboost_wave1_81_0-devel 
   - libboringssl1 
   - libbotan-2-19 
   - libbotan-2-19-32bit: [x86_64] 
@@ -11668,9 +11678,6 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
-  - libgpod-lang 
-  - libgpod-tools 
-  - libgpod4 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -12137,15 +12144,15 @@ unsorted:
   - libindi 
   - libindi-devel 
   - libindi-plugins 
-  - libindiAlignmentDriver1 
+  - libindiAlignmentDriver2 
   - libindicator-devel 
   - libindicator3-7 
   - libindicator3-devel 
   - libindicator7 
-  - libindiclient1 
-  - libindiclientqt1 
-  - libindidriver1 
-  - libindilx200-1 
+  - libindiclient2 
+  - libindiclientqt2 
+  - libindidriver2 
+  - libindilx200-2 
   - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
   - libinfinity-0_7-0 
@@ -12278,6 +12285,7 @@ unsorted:
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
+  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
@@ -12403,7 +12411,6 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
-  - liblastfm5-1 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12584,7 +12591,6 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
-  - libmariadbd19 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12869,7 +12875,6 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
-  - libmygpo-qt5-1 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -13102,7 +13107,6 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
-  - libofa0 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -13580,7 +13584,7 @@ unsorted:
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
-  - libpolymake4_7 
+  - libpolymake4_9 
   - libpolys-4_3_1 
   - libpolys-devel 
   - libpoppler-cpp0-32bit: [x86_64] 
@@ -14695,7 +14699,6 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
-  - libtag-extras1 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
@@ -15877,6 +15880,7 @@ unsorted:
   - logback-javadoc 
   - logcli 
   - logdigest 
+  - logfilegen 
   - logstalgia 
   - logtail 
   - logtop 
@@ -22159,7 +22163,7 @@ unsorted:
   - python3-bcc 
   - python3-bindep 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_80_0 
+  - python3-boost_parallel_mpi1_81_0 
   - python3-botan 
   - python3-bump2version 
   - python3-caca 

@@ -113,6 +113,7 @@
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="amavisd-new-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -218,7 +219,7 @@
     <package name="bluez-qt-udev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bluez-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="boost-license1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="boost-license1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -836,9 +837,6 @@
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="health-checker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="health-checker-plugins-MicroOS" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="heaptrack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="heaptrack-gui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="heaptrack-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="hfsutils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hicolor-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="hicolor-icon-theme-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1291,7 +1289,6 @@
     <package name="libImath-3_1-29" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKChart2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKEduVocDocument5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1645,13 +1642,12 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libboost_date_time1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_filesystem1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_iostreams1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_locale1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_program_options1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libboost_python-py3-1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_thread1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_date_time1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_filesystem1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_iostreams1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_locale1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_python-py3-1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_thread1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1965,6 +1961,9 @@
     <package name="libgphoto2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgphoto2_port12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgpm2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="libgpod4" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgps30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2122,7 +2121,6 @@
     <package name="libkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkcddb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkcddb-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkchart-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkcompactdisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2166,6 +2164,7 @@
     <package name="libkyotocabinet16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2212,6 +2211,7 @@
     <package name="libmalcontent-ui-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmanette-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libmariadb3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libmariadbd19" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libmarkdown2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmatroska7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libmaxminddb0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2258,6 +2258,7 @@
     <package name="libmusicbrainz5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmwaw-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmxml1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libmygpo-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libmypaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmypaint0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmythes-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2301,6 +2302,7 @@
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libokteta-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -2615,6 +2617,7 @@
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libtag-extras1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libtag1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtag_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
