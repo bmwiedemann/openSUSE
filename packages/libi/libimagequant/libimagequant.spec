@@ -1,7 +1,7 @@
 #
 # spec file for package libimagequant
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libimagequant
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        Palette quantization library
 License:        GPL-3.0-or-later

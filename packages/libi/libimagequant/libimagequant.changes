@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:44:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18:
+  - added more perceptually-weighed color selection
+  - dropped problematic omp_set_nested()
+  - fixed a rare memory leak
+
+-------------------------------------------------------------------
 Mon Aug  8 16:00:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - disable sse on non-x86 architectures 
