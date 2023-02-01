@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 21 03:06:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.77
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.77      2023-01-20 14:59:14 +1100
+    - Documentation improvements (gh#389, #gh#390)
+    - Additional noisy diagnostic when trying to use the regular
+      download negotiator plugin with a GitHub releases page
+      (gh#388, gh#390)
+
+-------------------------------------------------------------------
 Thu Dec 29 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.76
