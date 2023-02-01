@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 23 03:12:23 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.002010
+   see /usr/share/doc/packages/perl-Test-Needs/Changes
+
+  0.002010 - 2023-01-22
+    - split main test into three separate scripts
+    - avoid outputting multiple plans if used with no_plan
+
+-------------------------------------------------------------------
 Wed May 26 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.002009

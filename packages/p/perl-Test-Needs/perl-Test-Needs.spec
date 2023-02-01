@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Needs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Needs
 Name:           perl-Test-Needs
-Version:        0.002009
+Version:        0.002010
 Release:        0
-Summary:        Skip tests when modules not available
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Skip tests when modules not available
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
