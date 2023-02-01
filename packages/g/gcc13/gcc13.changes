@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 27 10:35:15 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add support for new front-ends Rust and Modula-2.
+- Align _multibuild order with gcc12 package.
+- Bump to ca8fb0096713a8477614ef874f16ba5bf16c48bc, git5428.
+
+-------------------------------------------------------------------
+Mon Jan 23 15:19:53 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add bootstrap conditional to allow --without=bootstrap to be
+  specified to speed up local builds for testing.
+
+-------------------------------------------------------------------
+Mon Jan 23 08:45:24 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump included newlib to version 4.3.0. 
+
+-------------------------------------------------------------------
+Thu Jan 19 11:34:00 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9) 
+  * pulls Go frontend fix to fix build fail on s390x
+  * pulls upstream fix for PR107678, obsoleting gcc13-pr107678.patch
+- Also package libhwasan_preinit.o on aarch64.
+
+-------------------------------------------------------------------
 Tue Jan 17 09:30:14 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Configure external timezone database provided by the timezone

@@ -7,6 +7,8 @@
 <flavor>cross-arm-gcc13</flavor>
 <flavor>cross-avr-gcc13-bootstrap</flavor>
 <flavor>cross-avr-gcc13</flavor>
+<flavor>cross-pru-gcc13-bootstrap</flavor>
+<flavor>cross-pru-gcc13</flavor>
 <flavor>cross-x86_64-gcc13</flavor>
 <flavor>cross-s390x-gcc13</flavor>
 <flavor>cross-sparc-gcc13</flavor>
@@ -21,8 +23,6 @@
 <flavor>cross-arm-none-gcc13</flavor>
 <flavor>cross-epiphany-gcc13-bootstrap</flavor>
 <flavor>cross-epiphany-gcc13</flavor>
-<flavor>cross-pru-gcc13-bootstrap</flavor>
-<flavor>cross-pru-gcc13</flavor>
 <flavor>cross-riscv64-elf-gcc13-bootstrap</flavor>
 <flavor>cross-riscv64-elf-gcc13</flavor>
 <flavor>cross-rx-gcc13-bootstrap</flavor>

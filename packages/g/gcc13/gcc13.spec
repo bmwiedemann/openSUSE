@@ -27,6 +27,8 @@
 %define usrmerged 1
 %endif
 
+%bcond_without bootstrap
+
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
 %if %{suse_version} >= 1310
@@ -68,9 +70,17 @@
 %define build_d 0
 %endif
 
+%define build_m2 1
+
 %if %{build_objcp}
 %define build_cp 1
 %define build_objc 1
+%endif
+
+%ifarch %ix86 x86_64 aarch64
+%define build_rust 1
+%else
+%define build_rust 0
 %endif
 
 # For optional compilers only build C, C++, Fortran, Ada and Go
@@ -78,6 +88,8 @@
 %define build_objc 0
 %define build_objcp 0
 %define build_d 0
+%define build_rust 0
+%define build_m2 0
 %endif
 
 %ifarch x86_64
@@ -101,7 +113,7 @@
 %define use_lto_bootstrap 0
 %ifarch x86_64 ppc64le s390x aarch64
 %if %{suse_version} > 1500
-%define use_lto_bootstrap 1
+%define use_lto_bootstrap %{with bootstrap}
 %endif
 %endif
 
@@ -141,6 +153,7 @@
 %define libgphobos_sover 4
 %define libgdruntime_sover 4
 %define libgccjit_sover 0
+%define libm2_sover 18
 
 # Shared library package suffix
 # This is used for the "non-standard" set of libraries, the standard
@@ -174,6 +187,7 @@
 %define libgphobos_suffix %{plv libgphobos %{libgphobos_sover}}
 %define libgdruntime_suffix %{plv libgdruntime %{libgdruntime_sover}}
 %define libgccjit_suffix %{plv libgccjit %{libgccjit_sover}}
+%define libm2_suffix %{plv libm2 %{libm2_sover}}
 
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc13
@@ -187,7 +201,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git5199
+Version:        13.0.1+git5428
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -352,7 +366,7 @@ Source1:        change_spec
 Source2:        gcc13-rpmlintrc
 Source3:        gcc13-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-4.2.0.20211231.tar.xz
+Source5:        newlib-4.3.0.20230120.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -364,7 +378,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc13-pr107678.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -379,7 +392,8 @@ Core package for the GNU Compiler Collection, including the C language
 frontend.
 
 Language frontends other than C are split to different sub-packages,
-namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++ and gcc-go.
+namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++, gcc-go,
+gcc-rust and gcc-m2.
 
 %package -n gcc13-32bit
 Summary:        The GNU C Compiler 32bit support
@@ -1892,6 +1906,321 @@ Requires:       libgccjit%{libgccjit_sover}%{libgccjit_suffix}
 %description -n libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}
 Package contains header files and documentation for GCC JIT front-end.
 
+%package rust
+Summary:        GNU Rust Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13 = %{version}-%{release}
+Requires:       gcc13-rust = %{version}-%{release}
+
+%description rust
+This package contains a Rust compiler.
+
+%package rust-32bit
+Summary:        GNU Rust Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13-32bit = %{version}-%{release}
+Requires:       gcc13-rust = %{version}-%{release}
+
+%description rust-32bit
+This package contains a Rust compiler.
+
+%package rust-64bit
+Summary:        GNU Rust Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13-64bit = %{version}-%{release}
+Requires:       gcc13-rust = %{version}-%{release}
+
+%description rust-64bit
+This package contains a Rust compiler.
+
+%package m2
+Summary:        GNU Modula-2 Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13 = %{version}-%{release}
+Requires:       gcc13-m2 = %{version}-%{release}
+Requires:       libm2cor%{libm2_sover} >= %{version}-%{release}
+Requires:       libm2iso%{libm2_sover} >= %{version}-%{release}
+Requires:       libm2log%{libm2_sover} >= %{version}-%{release}
+Requires:       libm2min%{libm2_sover} >= %{version}-%{release}
+Requires:       libm2pim%{libm2_sover} >= %{version}-%{release}
+
+%description m2
+This package contains a Modula-2 compiler.
+
+%package m2-32bit
+Summary:        GNU Modula-2 Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13-32bit = %{version}-%{release}
+Requires:       gcc13-m2 = %{version}-%{release}
+Requires:       libm2cor%{libm2_sover}-32bit >= %{version}-%{release}
+Requires:       libm2iso%{libm2_sover}-32bit >= %{version}-%{release}
+Requires:       libm2log%{libm2_sover}-32bit >= %{version}-%{release}
+Requires:       libm2min%{libm2_sover}-32bit >= %{version}-%{release}
+Requires:       libm2pim%{libm2_sover}-32bit >= %{version}-%{release}
+
+%description m2-32bit
+This package contains a Modula-2 compiler.
+
+%package m2-64bit
+Summary:        GNU Modula-2 Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc13-64bit = %{version}-%{release}
+Requires:       gcc13-m2 = %{version}-%{release}
+Requires:       libm2cor%{libm2_sover}-64bit >= %{version}-%{release}
+Requires:       libm2iso%{libm2_sover}-64bit >= %{version}-%{release}
+Requires:       libm2log%{libm2_sover}-64bit >= %{version}-%{release}
+Requires:       libm2min%{libm2_sover}-64bit >= %{version}-%{release}
+Requires:       libm2pim%{libm2_sover}-64bit >= %{version}-%{release}
+
+%description m2-64bit
+This package contains a Modula-2 compiler.
+
+%package -n libm2log%{libm2_sover}%{libm2_suffix}
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2log%{libm2_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2log%{libm2_sover}
+
+%description -n libm2log%{libm2_sover}%{libm2_suffix}
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2log%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%postun -n libm2log%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%package -n libm2log%{libm2_sover}%{libm2_suffix}-32bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2log%{libm2_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2log%{libm2_sover}-32bit
+
+%description -n libm2log%{libm2_sover}%{libm2_suffix}-32bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2log%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libm2log%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libm2log%{libm2_sover}%{libm2_suffix}-64bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2log%{libm2_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2log%{libm2_sover}-64bit
+
+%description -n libm2log%{libm2_sover}%{libm2_suffix}-64bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2log%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libm2log%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%package -n libm2cor%{libm2_sover}%{libm2_suffix}
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2cor%{libm2_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2cor%{libm2_sover}
+
+%description -n libm2cor%{libm2_sover}%{libm2_suffix}
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2cor%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%postun -n libm2cor%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%package -n libm2cor%{libm2_sover}%{libm2_suffix}-32bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2cor%{libm2_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2cor%{libm2_sover}-32bit
+
+%description -n libm2cor%{libm2_sover}%{libm2_suffix}-32bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2cor%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libm2cor%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libm2cor%{libm2_sover}%{libm2_suffix}-64bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2cor%{libm2_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2cor%{libm2_sover}-64bit
+
+%description -n libm2cor%{libm2_sover}%{libm2_suffix}-64bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2cor%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libm2cor%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%package -n libm2iso%{libm2_sover}%{libm2_suffix}
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2iso%{libm2_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2iso%{libm2_sover}
+
+%description -n libm2iso%{libm2_sover}%{libm2_suffix}
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2iso%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%postun -n libm2iso%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%package -n libm2iso%{libm2_sover}%{libm2_suffix}-32bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2iso%{libm2_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2iso%{libm2_sover}-32bit
+
+%description -n libm2iso%{libm2_sover}%{libm2_suffix}-32bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2iso%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libm2iso%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libm2iso%{libm2_sover}%{libm2_suffix}-64bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2iso%{libm2_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2iso%{libm2_sover}-64bit
+
+%description -n libm2iso%{libm2_sover}%{libm2_suffix}-64bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2iso%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libm2iso%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%package -n libm2pim%{libm2_sover}%{libm2_suffix}
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2pim%{libm2_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2pim%{libm2_sover}
+
+%description -n libm2pim%{libm2_sover}%{libm2_suffix}
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2pim%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%postun -n libm2pim%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%package -n libm2pim%{libm2_sover}%{libm2_suffix}-32bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2pim%{libm2_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2pim%{libm2_sover}-32bit
+
+%description -n libm2pim%{libm2_sover}%{libm2_suffix}-32bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2pim%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libm2pim%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libm2pim%{libm2_sover}%{libm2_suffix}-64bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2pim%{libm2_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2pim%{libm2_sover}-64bit
+
+%description -n libm2pim%{libm2_sover}%{libm2_suffix}-64bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2pim%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libm2pim%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%package -n libm2min%{libm2_sover}%{libm2_suffix}
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2min%{libm2_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2min%{libm2_sover}
+
+%description -n libm2min%{libm2_sover}%{libm2_suffix}
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2min%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%postun -n libm2min%{libm2_sover}%{libm2_suffix} -p /sbin/ldconfig
+
+%package -n libm2min%{libm2_sover}%{libm2_suffix}-32bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2min%{libm2_sover}-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2min%{libm2_sover}-32bit
+
+%description -n libm2min%{libm2_sover}%{libm2_suffix}-32bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2min%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%postun -n libm2min%{libm2_sover}%{libm2_suffix}-32bit -p /sbin/ldconfig
+
+%package -n libm2min%{libm2_sover}%{libm2_suffix}-64bit
+Summary:        GNU Modula-2 compiler runtime library
+License:        BSL-1.0
+Group:          Development/Languages/Other
+Provides:       libm2min%{libm2_sover}-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libm2min%{libm2_sover}-64bit
+
+%description -n libm2min%{libm2_sover}%{libm2_suffix}-64bit
+Runtime library for the GNU Modula-2 language.
+
+%post -n libm2min%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
+%postun -n libm2min%{libm2_sover}%{libm2_suffix}-64bit -p /sbin/ldconfig
+
 %package -n gcc13-testresults
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
@@ -2001,7 +2330,7 @@ Results from running the gcc and target library testsuites.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-4.2.0.20211231/newlib .
+ln -s newlib-4.3.0.20230120/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -2025,7 +2354,6 @@ ln -s newlib-4.2.0.20211231/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
-%patch21 -p0
 %patch51
 %patch60 -p1
 %patch61
@@ -2090,6 +2418,12 @@ languages=$languages,d
 %endif
 %if %{build_jit}
 languages=$languages,jit
+%endif
+%if %{build_rust}
+languages=$languages,rust
+%endif
+%if %{build_m2}
+languages=$languages,m2
 %endif
 
 # In general we want to ship release checking enabled compilers
@@ -2384,9 +2718,13 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "riscv64"
 	--disable-multilib \
 %endif
+%if %{with bootstrap}
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}
 	--with-build-config=bootstrap-lto-lean \
 	--enable-link-mutex \
+%endif
+%else
+	--disable-bootstrap \
 %endif
 %ifarch riscv64
 	--enable-link-mutex \
@@ -2405,7 +2743,9 @@ amdgcn-amdhsa,\
 STAGE1_FLAGS="-g -O2"
 %if 0%{?do_profiling} && !0%{?building_testsuite:1}
 %ifarch x86_64 %ix86 ppc64le s390x aarch64
+%if %{with bootstrap}
 %define use_pgo_bootstrap 1
+%endif
 %endif
 %endif
 %{?use_pgo_bootstrap:setarch `arch` -R} make %{?make_output_sync} %{?use_pgo_bootstrap:profiledbootstrap} STAGE1_CFLAGS="$STAGE1_FLAGS" BOOT_CFLAGS="$RPM_OPT_FLAGS" %{?_smp_mflags}
@@ -2447,7 +2787,8 @@ for lib in libobjc libgfortran libquadmath libcaf_single \
     libgomp libgomp-plugin-hsa libstdc++ libsupc++ libgo \
     libasan libhwasan libatomic libitm libtsan liblsan libubsan libvtv \
     libstdc++fs libgomp-plugin-nvptx libgomp-plugin-gcn \
-    libgdruntime libgphobos libstdc++exp; do
+    libgdruntime libgphobos libstdc++exp \
+    libm2cor libm2iso libm2log libm2min libm2pim; do
   rm -f %{buildroot}/%{versmainlibdir}/$lib.la
 %if %{biarch}
   rm -f %{buildroot}/%{versmainlibdirbi}/$lib.la
@@ -2536,6 +2877,13 @@ for libname in \
 %endif
 %if %{build_gcn}
   libgomp-plugin-gcn \
+%endif
+%if %{build_m2}
+  libm2log \
+  libm2cor \
+  libm2iso \
+  libm2pim \
+  libm2min \
 %endif
 %ifarch %atomic_arch
   libatomic \
@@ -3635,6 +3983,98 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %{_prefix}/include/libgccjit.h
 %{_prefix}/include/libgccjit++.h
 %{_infodir}/libgccjit.info.gz
+%endif
+
+%if %{build_rust}
+%files rust
+%defattr(-,root,root)
+%{_prefix}/bin/gccrs%{binsuffix}
+%{libsubdir}/rust1
+%endif
+
+%if %{build_m2}
+%files m2
+%defattr(-,root,root)
+%{_prefix}/bin/gm2%{binsuffix}
+%{libsubdir}/cc1gm2
+%{versmainlibdir}/m2
+%versmainlib libm2log.a
+%versmainlib libm2log.so
+%versmainlib libm2cor.a
+%versmainlib libm2cor.so
+%versmainlib libm2iso.a
+%versmainlib libm2iso.so
+%versmainlib libm2pim.a
+%versmainlib libm2pim.so
+%versmainlib libm2min.a
+%versmainlib libm2min.so
+%doc %{_mandir}/man1/gm2%{binsuffix}.1.gz
+
+%if %{separate_biarch}
+%files m2%{separate_biarch_suffix}
+%defattr(-,root,root)
+%{versmainlibdirbi}/m2
+%versbiarchlib libm2log.a
+%versbiarchlib libm2log.so
+%versbiarchlib libm2cor.a
+%versbiarchlib libm2cor.so
+%versbiarchlib libm2iso.a
+%versbiarchlib libm2iso.so
+%versbiarchlib libm2pim.a
+%versbiarchlib libm2pim.so
+%versbiarchlib libm2min.a
+%versbiarchlib libm2min.so
+%endif
+
+%files -n libm2log%{libm2_sover}%{libm2_suffix}
+%defattr(-,root,root)
+%mainlib libm2log.so.%{libm2_sover}*
+
+%if %{separate_biarch}
+%files -n libm2log%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%biarchlib libm2log.so.%{libm2_sover}*
+%endif
+
+%files -n libm2cor%{libm2_sover}%{libm2_suffix}
+%defattr(-,root,root)
+%mainlib libm2cor.so.%{libm2_sover}*
+
+%if %{separate_biarch}
+%files -n libm2cor%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%biarchlib libm2cor.so.%{libm2_sover}*
+%endif
+
+%files -n libm2iso%{libm2_sover}%{libm2_suffix}
+%defattr(-,root,root)
+%mainlib libm2iso.so.%{libm2_sover}*
+
+%if %{separate_biarch}
+%files -n libm2iso%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%biarchlib libm2iso.so.%{libm2_sover}*
+%endif
+
+%files -n libm2pim%{libm2_sover}%{libm2_suffix}
+%defattr(-,root,root)
+%mainlib libm2pim.so.%{libm2_sover}*
+
+%if %{separate_biarch}
+%files -n libm2pim%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%biarchlib libm2pim.so.%{libm2_sover}*
+%endif
+
+%files -n libm2min%{libm2_sover}%{libm2_suffix}
+%defattr(-,root,root)
+%mainlib libm2min.so.%{libm2_sover}*
+
+%if %{separate_biarch}
+%files -n libm2min%{libm2_sover}%{libm2_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%biarchlib libm2min.so.%{libm2_sover}*
+%endif
 %endif
 
 %if 0%{?run_tests:1}

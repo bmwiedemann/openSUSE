@@ -48,6 +48,8 @@
 %define usrmerged 1
 %endif
 
+%bcond_without bootstrap
+
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
 %if %{suse_version} >= 1310
@@ -89,9 +91,17 @@
 %define build_d 0
 %endif
 
+%define build_m2 1
+
 %if %{build_objcp}
 %define build_cp 1
 %define build_objc 1
+%endif
+
+%ifarch %ix86 x86_64 aarch64
+%define build_rust 1
+%else
+%define build_rust 0
 %endif
 
 # For optional compilers only build C, C++, Fortran, Ada and Go
@@ -99,6 +109,8 @@
 %define build_objc 0
 %define build_objcp 0
 %define build_d 0
+%define build_rust 0
+%define build_m2 0
 %endif
 
 %ifarch x86_64
@@ -122,7 +134,7 @@
 %define use_lto_bootstrap 0
 %ifarch x86_64 ppc64le s390x aarch64
 %if %{suse_version} > 1500
-%define use_lto_bootstrap 1
+%define use_lto_bootstrap %{with bootstrap}
 %endif
 %endif
 
@@ -162,6 +174,7 @@
 %define libgphobos_sover 4
 %define libgdruntime_sover 4
 %define libgccjit_sover 0
+%define libm2_sover 18
 
 # Shared library package suffix
 # This is used for the "non-standard" set of libraries, the standard
@@ -195,6 +208,7 @@
 %define libgphobos_suffix %{plv libgphobos %{libgphobos_sover}}
 %define libgdruntime_suffix %{plv libgdruntime %{libgdruntime_sover}}
 %define libgccjit_suffix %{plv libgccjit %{libgccjit_sover}}
+%define libm2_suffix %{plv libm2 %{libm2_sover}}
 
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc13
@@ -208,7 +222,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git5199
+Version:        13.0.1+git5428
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -373,7 +387,7 @@ Source1:        change_spec
 Source2:        gcc13-rpmlintrc
 Source3:        gcc13-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-4.2.0.20211231.tar.xz
+Source5:        newlib-4.3.0.20230120.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -385,7 +399,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc13-pr107678.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -500,7 +513,7 @@ Results from running the gcc and target library testsuites.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-4.2.0.20211231/newlib .
+ln -s newlib-4.3.0.20230120/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -524,7 +537,6 @@ ln -s newlib-4.2.0.20211231/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
-%patch21 -p0
 %patch51
 %patch60 -p1
 %patch61
@@ -589,6 +601,12 @@ languages=$languages,d
 %endif
 %if %{build_jit}
 languages=$languages,jit
+%endif
+%if %{build_rust}
+languages=$languages,rust
+%endif
+%if %{build_m2}
+languages=$languages,m2
 %endif
 
 # In general we want to ship release checking enabled compilers
@@ -883,9 +901,13 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "riscv64"
 	--disable-multilib \
 %endif
+%if %{with bootstrap}
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}
 	--with-build-config=bootstrap-lto-lean \
 	--enable-link-mutex \
+%endif
+%else
+	--disable-bootstrap \
 %endif
 %ifarch riscv64
 	--enable-link-mutex \
@@ -904,7 +926,9 @@ amdgcn-amdhsa,\
 STAGE1_FLAGS="-g -O2"
 %if 0%{?do_profiling} && !0%{?building_testsuite:1}
 %ifarch x86_64 %ix86 ppc64le s390x aarch64
+%if %{with bootstrap}
 %define use_pgo_bootstrap 1
+%endif
 %endif
 %endif
 %{?use_pgo_bootstrap:setarch `arch` -R} make %{?make_output_sync} %{?use_pgo_bootstrap:profiledbootstrap} STAGE1_CFLAGS="$STAGE1_FLAGS" BOOT_CFLAGS="$RPM_OPT_FLAGS" %{?_smp_mflags}

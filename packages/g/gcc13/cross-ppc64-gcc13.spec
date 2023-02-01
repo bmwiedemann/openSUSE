@@ -37,6 +37,8 @@
 %define build_nvptx 0
 %define build_gcn 0
 %define build_d 0
+%define build_rust 0
+%define build_m2 0
 
 %define enable_plugins 0
 %define build_jit 0
@@ -101,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git5199
+Version:        13.0.1+git5428
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -115,7 +117,7 @@ Source1:        change_spec
 Source2:        gcc13-rpmlintrc
 Source3:        gcc13-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-4.2.0.20211231.tar.xz
+Source5:        newlib-4.3.0.20230120.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -127,7 +129,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc13-pr107678.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -305,7 +306,7 @@ only, it is not intended for any other use.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-4.2.0.20211231/newlib .
+ln -s newlib-4.3.0.20230120/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -329,7 +330,6 @@ ln -s newlib-4.2.0.20211231/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
-%patch21 -p0
 %patch51
 %patch60 -p1
 %patch61
@@ -394,6 +394,12 @@ languages=$languages,d
 %endif
 %if %{build_jit}
 languages=$languages,jit
+%endif
+%if %{build_rust}
+languages=$languages,rust
+%endif
+%if %{build_m2}
+languages=$languages,m2
 %endif
 
 # In general we want to ship release checking enabled compilers
@@ -688,9 +694,13 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "riscv64"
 	--disable-multilib \
 %endif
+%if %{with bootstrap}
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}
 	--with-build-config=bootstrap-lto-lean \
 	--enable-link-mutex \
+%endif
+%else
+	--disable-bootstrap \
 %endif
 %ifarch riscv64
 	--enable-link-mutex \

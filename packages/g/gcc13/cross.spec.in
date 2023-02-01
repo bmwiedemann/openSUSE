@@ -15,6 +15,8 @@
 %define build_nvptx 0
 %define build_gcn 0
 %define build_d 0
+%define build_rust 0
+%define build_m2 0
 
 %define enable_plugins 0
 %define build_jit 0

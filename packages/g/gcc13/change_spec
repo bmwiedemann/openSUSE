@@ -103,6 +103,7 @@ add_glibc_cross cross-riscv64-gcc$base_ver riscv64 riscv64-suse-linux
 add_cross cross-arm-gcc$base_ver arm arm-suse-linux-gnueabi %define gcc_icecream 1
 add_cross cross-avr-gcc$base_ver-bootstrap avr avr "%define gcc_libc_bootstrap 1"
 add_cross cross-avr-gcc$base_ver avr avr
+add_newlib_cross cross-pru-gcc$base_ver pru pru
 add_cross cross-x86_64-gcc$base_ver x86_64 x86_64-suse-linux %define gcc_icecream 1
 add_cross cross-s390x-gcc$base_ver s390x s390x-suse-linux %define gcc_icecream 1
 add_cross cross-sparc-gcc$base_ver sparcv9 sparc-suse-linux %define gcc_icecream 1
@@ -115,7 +116,6 @@ add_cross cross-hppa-gcc$base_ver-bootstrap hppa hppa-suse-linux %define gcc_lib
 add_cross cross-hppa-gcc$base_ver hppa hppa-suse-linux %define gcc_icecream 1
 add_newlib_cross cross-arm-none-gcc$base_ver arm-none arm-none-eabi
 add_newlib_cross cross-epiphany-gcc$base_ver epiphany epiphany-elf
-add_newlib_cross cross-pru-gcc$base_ver pru pru
 #add_newlib_cross cross-nds32le-gcc$base_ver nds32le nds32le-elf
 add_newlib_cross cross-riscv64-elf-gcc$base_ver riscv64 riscv64-elf
 #add_newlib_cross cross-rl78-gcc$base_ver rl78 rl78-elf

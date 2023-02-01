@@ -51,4 +51,24 @@
     <user>dimstar_suse</user>
     <comment>Also package libhwasan_preinit.o on aarch64. Rapid-fix as discussed with richard over slack</comment>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d7b4ac34334ccb258f3d12dc6a445c5</srcmd5>
+    <version>13.0.1+git5428</version>
+    <time>1675265901</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for new front-ends Rust and Modula-2.
+- Align _multibuild order with gcc12 package.
+- Bump to ca8fb0096713a8477614ef874f16ba5bf16c48bc, git5428.
+
+- Add bootstrap conditional to allow --without=bootstrap to be
+  specified to speed up local builds for testing.
+
+- Bump included newlib to version 4.3.0. 
+
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9) 
+  * pulls Go frontend fix to fix build fail on s390x
+  * pulls upstream fix for PR107678, obsoleting gcc13-pr107678.patch
+- Also package libhwasan_preinit.o on aarch64.</comment>
+    <requestid>1061993</requestid>
+  </revision>
 </revisionlist>
