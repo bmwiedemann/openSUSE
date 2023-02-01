@@ -115,4 +115,12 @@
   * SIP v6.7 is now required.</comment>
     <requestid>1058080</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7f9c97913b0bde028b9a8853c71e6403</srcmd5>
+    <version>1.14.1</version>
+    <time>1675265908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062108</requestid>
+  </revision>
 </revisionlist>

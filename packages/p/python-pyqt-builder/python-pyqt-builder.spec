@@ -18,7 +18,7 @@
 
 %define mname pyqt-builder
 Name:           python-%{mname}
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
@@ -26,8 +26,6 @@ URL:            https://www.riverbankcomputing.com/software/pyqt-builder
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
 # PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com
 Patch0:         support-python3.6.patch
-# PATCH-FEATURE-SUSE pyqt-builder-add-timeline5.15.patch code@bnavigator.de
-Patch1:         pyqt-builder-add-timeline5.15.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

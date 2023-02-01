@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 24 18:51:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.1
+  * Support different patch versions for Qt v5.15.
+- Drop pyqt-builder-add-timeline5.15.patch
+
+-------------------------------------------------------------------
 Thu Jan 12 21:14:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add pyqt-builder-add-timeline5.15.patch for Qt3D 5.15.8
