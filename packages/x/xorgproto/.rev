@@ -163,4 +163,14 @@ yesterday's tarball.</comment>
     <comment></comment>
     <requestid>998573</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c9e12a824709dc2c8bf14e66fa9afa10</srcmd5>
+    <version>2022.2</version>
+    <time>1675265906</time>
+    <user>dimstar_suse</user>
+    <comment>- switched to multibuild for -doc package to avoid build cycles
+
+- Build documentation (boo#1207721)</comment>
+    <requestid>1062233</requestid>
+  </revision>
 </revisionlist>
