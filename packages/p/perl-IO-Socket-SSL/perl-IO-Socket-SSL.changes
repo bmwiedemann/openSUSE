@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 26 03:07:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.081
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.081 2023/01/25
+  - new function set_msg_callback for user defined callback on each SSL message
+  - showcase function in example/ssl_client.pl and example/ssl_server.pl for
+    computing JA3S/JA3 fingerprints
+  - fix tracing added in 2.076 to no longer include SSL3_RT_HEADER (noise)
+  2.080 2023/01/18
+  - move certs into t/ so that distributions like CentOS don't install the
+    test certificates as part of the documentation any longer.
+  2.079 2023/01/16
+  - properly extract IPv6 address for verification from PeerAddr if not explicitly
+    given as SSL_verifycn_name.
+    https://github.com/noxxi/p5-io-socket-ssl/issues/123
+
+-------------------------------------------------------------------
 Mon Dec 12 03:08:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.078
