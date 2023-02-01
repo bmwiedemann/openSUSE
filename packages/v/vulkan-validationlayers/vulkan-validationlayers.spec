@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-validationlayers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.236.0
+Version:        1.3.239.0
 Release:        0
-%define lname libVkLayer_utils-1_3_236_0
+%define lname libVkLayer_utils-1_3_239_0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
@@ -28,7 +28,7 @@ Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/
 Source9:        %name-rpmlintrc
 Patch1:         ver.diff
 Patch2:         xxhash.diff
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.7.12
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 11.13
 BuildRequires:  memory-constraints
@@ -38,7 +38,7 @@ BuildRequires:  spirv-headers >= 1.6.1+sdk236
 BuildRequires:  spirv-tools-devel >= 2022.4+sdk236
 BuildRequires:  vulkan-headers
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(vulkan) >= 1.3.236
+BuildRequires:  pkgconfig(vulkan) >= 1.3.239
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1
@@ -71,7 +71,7 @@ This package contains support files for the VkLayer utility library.
 
 %prep
 %autosetup -n Vulkan-ValidationLayers-sdk-%version -p1
-perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt
+perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt */CMakeLists.txt
 
 %build
 %limit_build -m 2000

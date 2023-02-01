@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-headers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Consider only updating the sources in lockstep.
 #
 Name:           vulkan-headers
-Version:        1.3.236.0
+Version:        1.3.239.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0

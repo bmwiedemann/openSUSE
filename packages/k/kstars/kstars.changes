@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 31 10:27:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.3:
+  * Optical trains editor reworked
+  * Add mount altitude constraint to scheduler altitude check
+  * Focus timer bug version 2
+  * Update to support INDI v2.0.0
+  * Auto focus overscan
+  * Fix major calculation error in calculating DSLR field of view
+  * Full changelog: https://invent.kde.org/education/kstars/-/blob/stable-3.6.3/ChangeLog
+
+-------------------------------------------------------------------
 Fri Dec  9 13:07:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.2:

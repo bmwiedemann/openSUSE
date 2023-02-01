@@ -1,7 +1,7 @@
 #
 # spec file for package extrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           extrace
-Version:        1575153394.f02ef88
-Release:        2
+Version:        0.9
+Release:        0
 Summary:        Traces all program executions occurring on a system
 License:        GPL-2.0-only
 URL:            https://github.com/leahneukirchen/extrace
@@ -52,4 +52,3 @@ mv %{buildroot}%{_mandir}/man1/pwait.1 %{buildroot}%{_mandir}/man1/extrace-pwait
 %{_sbindir}/extrace-pwait
 
 %changelog
-

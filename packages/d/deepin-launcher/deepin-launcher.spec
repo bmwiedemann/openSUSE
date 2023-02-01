@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-launcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-launcher
 Source0:        https://github.com/linuxdeepin/dde-launcher/archive/%{version}/%{_name}-%{version}.tar.gz
+# https://github.com/linuxdeepin/dde-launcher/commit/0612c1181f232eb1c7be05a40c9c951a51cd0f2a
+Patch2:         fix-stuck-issue.patch
 Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  gtest
@@ -52,7 +54,7 @@ Deepin desktop-environment - Launcher module
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 
 %build

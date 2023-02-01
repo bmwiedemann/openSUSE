@@ -74,4 +74,16 @@
     <comment></comment>
     <requestid>1058126</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6dede0568a3c2d529564fa8c8aaacb8b</srcmd5>
+    <version>3.3.1</version>
+    <time>1675265974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.1
+  * fix intermittent EC TPM_RC_KEY return
+  * add import section to man pages
+  * Add importable sealed data
+  * Fix name hash for importable keys and data (forwarded request 1062344 from jejb1)</comment>
+    <requestid>1062393</requestid>
+  </revision>
 </revisionlist>

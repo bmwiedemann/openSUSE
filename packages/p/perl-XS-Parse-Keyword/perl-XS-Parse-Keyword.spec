@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Keyword
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.31
+Version:        0.32
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax

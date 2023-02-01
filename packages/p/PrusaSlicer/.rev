@@ -262,4 +262,12 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
   * Luckily, the package compiles with recently updated occt v7.7 (forwarded request 1046020 from bnavigator)</comment>
     <requestid>1046021</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>c4c63094d4e9396be9fd90bb5ebd1001</srcmd5>
+    <version>2.5.0</version>
+    <time>1675265953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062332</requestid>
+  </revision>
 </revisionlist>

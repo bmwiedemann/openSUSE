@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Jan 31 17:50:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * Update containerd patches to fix regression in handling push errors
+  * Multiple fixes for History API #3530
+  * Fix issue with parallel build requests using local cache imports #3493
+  * Builtin Dockerfile frontend has been updated to 1.5.1, fixing possible
+    panic in certain warning condition #3505
+  * Fix possible hang when closing down the SSH forwarding socket in v0.11.0
+  * Fix typo in an environment variable used to configure OpenTelemetry
+    endpoints #3508
+  * Builtin Dockerfile frontend has been updated to v1.5.0
+    https://github.com/moby/buildkit/releases/tag/dockerfile%2F1.5.0
+  * BuildKit and compatible frontends can now produce SBOM (Software Bill of
+    Materials) attestations for the build results to show the dependencies
+    of the build. These attestations can be added to images and locally
+    exported files. Using Dockerfiles, SBOM information can be configured to
+    be produced also based on files in intermediate build stages or build
+    context, or run processes that manually define the SBOM dependencies.
+    When exporting an image, layer mapping is also produced that allows
+    tracing a SBOM package to a specific build step. #3258 #3290 #3249 #2983
+    #3358 #3312 #3407 #3408 #3410 #3414 #3422
+  * BuildKit can now produce a Provenance attestation for the build result
+    in SLSA format. Provenance attestations describe how a build was
+    produced, and what sources/parameters were used. In addition to fields
+    part of the SLSA specification, Buildkit's provenance also exports
+    BuildKit-specific metadata like LLB steps with their source- and layer
+    mapping. Provenance attestation will capture all the build sources
+    visible to BuildKit, for example, not only the Git repository where the
+    project's source is coming from but also the digests of all the
+    container images used during the build. #3240 #3428 #3428 #3462
+  * BuildKit now supports reproducible builds by setting `SOURCE_DATE_EPOCH`
+    build argument or `source-date-epoch` exporter attribute. This
+    deterministic date will be used in image metadata instead of the current
+    time. #2918 #3262 #3152 Read documentation
+  * OCI annotations can now be set to build results exported as images or
+    OCI layouts. Annotations can be set on both image manifests and indexes,
+    as well as descriptors to them. #3283 #3061 #2975 #2879 Read
+    documentation
+  * New Build History API allows listening to events about builds starting
+    and completing, and streaming progress of active builds. New commands
+    `buildctl debug monitor`, `buildctl debug logs` and `buildctl debug get`
+    have been added to use this API. Build records also keep OpenTelemetry
+    traces, provenance attestations, and image manifests if they were
+    created by the build. #3294 #3339 #3440
+  * Build results exported with image, local or tar exporters now support
+    attestations. In addition to builtin SBOM and Provenance attestations,
+    frontends can produce custom attestations in in-toto format #3197 #3070
+    #3129 #3073 #3063 #2935 #3289 #3389 #3321 #3342 #3461 Read documentation
+  * New Source type `oci-layout://` allows builds to import images from OCI
+    directory structure on the client side. This allows using local versions
+    of the image. #3112 #3300 #3122 #3034 #2971 #2827 #3397
+  * Build requests now support sending a Source policy definition. A policy
+    can be used to deny access to specific sources (e.g. images or URLs) or
+    only allow access to specific image namespaces. Policies can also be
+    used to modify sources when they are requested by the build, for
+    example, pin a tag requested by the build to a specific digest even if
+    it has already changed in the registry. #3332
+  * New remote cache backend: Azure Blob Storage #3010
+  * New remote cache backend: S3 #2824 #3065
+  * BuildKit now supports Nydus compression type #2581
+  * OCI exporter now supports attribute `tar=false` to export OCI layout
+    into a directory instead of downloading a tarball. #3162
+  * Setting multiple cache exporters for a single build is now supported
+    #3024 #3271
+  * Cache exporters can now be configured to ignore exporting errors #3430
+  * Remote cache import/export to client-side local files now supports tag
+    parameter for scoping cache #3111
+  * CNI network namespaces are now provisioned from a pool for increased
+    performance #3107
+  * New Info service has been added to control API for asking BuildKit
+    daemon's version #2725
+  * Gateway API now has a new `Evaluate` method to control the lazy solve
+    behavior #3137
+  * Allow mounting secrets with empty contents #3081
+  * New RemoveMountStubsRecursive option has been added to LLB ExecOp to
+    control the cleanup behavior of mounts. By default, empty mount stubs
+    are now cleaned up recursively in new frontends. #3314
+  * LLB Image source now allows pulling partial layer chains from image
+  * Allow hostname to be set by network provider (K8S_POD_NAME) #3044
+  * Improve handling and logging of API health checks #2998
+  * RegistryToken auth from Docker config is now allowed as authentication
+    input #2868
+  * Image exporter with containerd worker now allows skipping adding image
+    to containerd image store with `store=false`. If not set then images
+    stored images are now guaranteed to be unlazied and unpacked. #2800
+  * `buildctl` now loads Github runtime environment when using GHA remote
+    cache #2707
+  * Support for `conflist` when configuring CNI networking #3029
+  * Platform info has been added to the build result descriptor metadata
+  * Allow sourcemaps to link single LLB vertex to multiple source locations
+  * Support for SSH connection helper #2843
+  * Empty stub paths created by mount points when build container runs are
+    now cleaned up and do not remain in the final image. #3307 #3149
+  * Improve performance on BoltDB commits #3261
+  * Indentation of some of the image manifests has been fixed to use double
+    spaces #3259
+  * Fix caching checksum error on copying files with custom UID/GID #3295
+  * Fix cases where copy operation left behind nondeterministic timestamps
+    for better support for reproducible builds #3298
+  * Fix SSH forwarding incompatibility with OpenSSH >= 8.9 #3274
+  * Stargz has been updated to v0.13.0 #3280
+  * Embedded QEMU emulators have been updated to v7.1.0 with new patches for
+    path handling. #3386
+  * Fix unpacking images with no layers #3251
+  * Fix possible nil pointer exception in LLB bridge #3233 #3169 #3066
+  * Fix cleanup of containerd tasks if a start fails #3253
+  * Fix handling Windows paths in content checksums #3227
+  * Fix possible missing newline in progress output #3072
+  * Fix possible early EOF on SSH forwarding #3431
+  * Fix possible panic in concurrent OpenTelemetry access #3058
+  * Previously deprecated old cache options have been removed #2982
+  * Daemonless script has been updated to handle already stopped process
+    #3005
+  * Fix closing session if shared by multiple clients #2995
+  * `buildctl du` command now supports JSON formatting #2992
+  * Registry push errors now show additional context #2981
+  * Improve default description of FileOp vertexes #2932
+  * Make sure progress from exporting is properly keyed on parallel requests
+  * Terminal colors are now configurable #2954
+  * Build errors now always print stacktraces to daemon logs in debug mode
+- switch packaging to zstd
+- include ldflags to set the version number in the binaries correctly
+
+-------------------------------------------------------------------
 Wed Nov 24 09:43:06 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Initial Packaging 

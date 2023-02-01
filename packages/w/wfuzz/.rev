@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>940914</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>efcdb31b6466e7ddb56fe6bbd3b0423a</srcmd5>
+    <version>3.1.0</version>
+    <time>1675266330</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed a problem preventing this package to build in Factory
+- Fixed URL in spec file
+- Removed shebang to fix rpmlint warning
+- First version of wfuzz package.
+</comment>
+    <requestid>1062471</requestid>
+  </revision>
 </revisionlist>

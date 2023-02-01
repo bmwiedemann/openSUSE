@@ -1598,4 +1598,12 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Ensure amarok is on the DVD - needed for staging</comment>
   </revision>
+  <revision rev="224" vrev="222">
+    <srcmd5>f0dcd1c8f134451e8557685824813292</srcmd5>
+    <version>unknown</version>
+    <time>1675265928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062275</requestid>
+  </revision>
 </revisionlist>

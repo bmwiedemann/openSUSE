@@ -16,12 +16,12 @@
 #
 
 
-%define libsoname %{name}12
+%define libsoname %{name}2
 %if 0%{?fedora_version}
 %global debug_package %{nil}
 %endif
 Name:           libcotp
-Version:        1.2.8
+Version:        2.0.0
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -33,9 +33,9 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libbaseencode-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
+Obsoletes:      libbaseencode <= 1.0.15
 
 %description
 %{name} C library for generating TOTP and HOTP according to RFC-6238.

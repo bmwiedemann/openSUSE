@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 31 13:51:08 UTC 2023 - trenn@suse.de
+
+- Update to version 5.12.0.130.g2f3c12e:
+  * Fix formatting in mdadm events table
+  * Add new exec-borg script to contrib/
+  * ChangeLog: v5.12 milestone: Fix issue #3127
+  * use derive_t instead of int inside ovs_stats_get_port_stat_value
+  * In macOS 12, `IOMasterPort` is deprecated in favor of `IOMainPort`
+  * - allow alertmanager correlation and resolve - fix meta names with ':'
+  * fix drop probability
+  * add config option to write metadata
+- Fix build issue if net-snmp has NETSNMP_DISABLE_MD5 set:
+A Fix-compile-issue-if-net-snmp-has-NETSNMP_DISABLE_MD5-set.patch
+- Use autosetup and adopt patches from -p0 to -p1:
+M    collectd-fix-config.patch
+M    collectd-fix_spamassassin_doc.patch
+- Use obs_scm and others in _service file:
+A    _service
+A    _servicedata
+A    collectd.obsinfo
+
+-------------------------------------------------------------------
 Wed Feb 16 20:11:55 UTC 2022 - Thomas Renninger <trenn@suse.de>
 
 - Add (Build)Requirements for these plugins (jsc#SLE-23472):

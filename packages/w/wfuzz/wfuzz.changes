@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  1 14:35:52 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Fixed a problem preventing this package to build in Factory
+
+-------------------------------------------------------------------
 Thu Dec 16 14:17:14 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
-- Fixed URL in spec file 
+- Fixed URL in spec file
 
 -------------------------------------------------------------------
 Fri Jun 25 10:10:02 UTC 2021 - Paolo Perego <paolo.perego@suse.com>

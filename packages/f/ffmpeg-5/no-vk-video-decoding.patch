@@ -1,0 +1,31 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-01-31 17:02:24.764525660 +0100
+
+VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME changed to
+VK_KHR_VIDEO_DECODE_H264_EXTENSION_NAME between VK 1.3.236 -> 1.3.239, and now
+ffmpeg fails to build. Upstream ffmpeg has just removed the optional extensions
+again - see commit eb0455d64690eed0068e5cb202f72ecdf899837c .
+
+---
+ libavutil/hwcontext_vulkan.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: ffmpeg-5.1.2/libavutil/hwcontext_vulkan.c
+===================================================================
+--- ffmpeg-5.1.2.orig/libavutil/hwcontext_vulkan.c
++++ ffmpeg-5.1.2/libavutil/hwcontext_vulkan.c
+@@ -356,12 +356,14 @@ static const VulkanOptExtension optional
+ #endif
+ 
+     /* Video encoding/decoding */
++#if 0
+     { VK_KHR_VIDEO_QUEUE_EXTENSION_NAME,                      FF_VK_EXT_NO_FLAG                },
+     { VK_KHR_VIDEO_DECODE_QUEUE_EXTENSION_NAME,               FF_VK_EXT_NO_FLAG                },
+     { VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME,               FF_VK_EXT_NO_FLAG                },
+     { VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME,                FF_VK_EXT_NO_FLAG                },
+     { VK_EXT_VIDEO_DECODE_H264_EXTENSION_NAME,                FF_VK_EXT_NO_FLAG                },
+     { VK_EXT_VIDEO_DECODE_H265_EXTENSION_NAME,                FF_VK_EXT_NO_FLAG                },
++#endif
+ };
+ 
+ /* Converts return values to strings */

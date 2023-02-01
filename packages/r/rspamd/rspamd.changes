@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:11:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't build against libnsl, it's not used and deprecated
+
+-------------------------------------------------------------------
 Mon Nov 14 16:35:33 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Move cleanup code to %pre because otherwise it doesnt trigger

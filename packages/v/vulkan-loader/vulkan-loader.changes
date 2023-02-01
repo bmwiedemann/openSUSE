@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 29 12:38:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.239.0
+  * layers: update documentation to make it clear the
+    VK_LAYER_PATH supports both explicit directories and files
+  * layers: modify TestLayerDetails so either files or
+    directories can be set on VK_LAYER_PATH env var
+
+-------------------------------------------------------------------
 Thu Dec 15 13:55:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.236.0

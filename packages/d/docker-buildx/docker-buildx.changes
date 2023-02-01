@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 31 14:59:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.2:
+  * build: better message output for git provenance
+  * build: silently fail if git remote not found
+  * build: fix multi-node merge to read descriptor from result
+  * bake: SOURCE_DATE_EPOCH: fix `panic: assignment to entry in nil map`
+  * build: fix preferred platform not taken account
+
+-------------------------------------------------------------------
 Fri Jan 27 06:09:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.1:

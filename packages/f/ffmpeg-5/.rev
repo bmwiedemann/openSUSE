@@ -109,4 +109,12 @@
   example would be &quot;A_tw-ffmpeg-5&quot; in Packman.</comment>
     <requestid>1061829</requestid>
   </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>021f53f2515be95f814bc64150b86dd3</srcmd5>
+    <version>5.1.2</version>
+    <time>1675265937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-vk-video-decoding.patch to resolve build failure with Vulkan 1.3.239</comment>
+    <requestid>1062300</requestid>
+  </revision>
 </revisionlist>

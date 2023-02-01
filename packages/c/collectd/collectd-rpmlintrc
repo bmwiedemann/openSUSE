@@ -1,12 +1,5 @@
-addFilter('perl5-naming-policy-not-applied')
-
 addFilter('non-etc-or-var-file-marked-as-conffile .*/spamassassin/99_collectd.cf')
 addFilter('non-etc-or-var-file-marked-as-conffile .*/collectd/postgresql_default.conf')
 
 addFilter('macro-in-comment')
 
-#There no fsf address in that file
-addFilter('incorrect-fsf-address /usr/share/doc/packages/collectd/contrib/network-proxy.py')
-
-# Can't delete this file in the post section
-addFilter('suse-filelist-forbidden-backup-file')

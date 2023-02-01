@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  1 09:37:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Drop libbaseencode dep, since it's no longer necessary and obsolete it
+- Fix changelog typo
+
+-------------------------------------------------------------------
+Tue Jan 31 23:25:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * In particular, libbaseencode has been merged with libcotp, so now users
+    can call base32 functions by just including `cotp.h`
+  BREAKING CHANGES:
+  * `totp_verify` has been removed
+  * `hotp_verify` has been removed
+  * `base64_encode` has been removed
+  * `base64_decode` has been removed
+  ADDED:
+  * new API `otp_to_int`
+  * `base32` encoding and decoding functions from libbaseencode
+  * new tests for libcotp
+  CHANGES:
+  * the soversion is now set only from the `$major` version (e.g. `2`), and
+    not from `$major$minor` (e.g. `12`) like it used to be.
+
+-------------------------------------------------------------------
 Sun Jan  8 14:45:11 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.8:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:42:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Replace wrong libnsl build require with correct libtirpc one
+- fix-configure-libwrap-dependencies.diff: libwrap does not 
+  depend on libnsl
+
+-------------------------------------------------------------------
 Tue Aug 10 11:50:18 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

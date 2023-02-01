@@ -1,7 +1,7 @@
 #
 # spec file for package argus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           argus
 Version:        3.0.8.3
 Release:        0
 Summary:        Network Monitoring Tool
-License:        GPL-2.0-only AND LGPL-2.1-only AND BSD-3-Clause AND MIT
+License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only AND MIT
 Group:          Productivity/Networking/Diagnostic
 URL:            https://openargus.org/
 Source:         https://qosient.com/argus/dev/%{name}-%{version}.tar.gz
@@ -29,10 +29,11 @@ Source4:        argus_linux.8.gz
 Source5:        argus.service
 Patch1:         %{name}-3.0.6.1-libpcap.patch
 Patch2:         harden_argus.service.patch
+Patch3:         fix-configure-libwrap-dependencies.diff
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  libnsl-devel
 BuildRequires:  libpcap-devel
+BuildRequires:  libtirpc-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 BuildRequires:  tcsh
@@ -58,6 +59,7 @@ Daemon for Argus network monitoring tool.
 cp %{SOURCE3} .
 cp %{SOURCE4} man/man8/
 %patch2 -p1
+%patch3 -p1
 
 %build
 #autoreconf -fiv

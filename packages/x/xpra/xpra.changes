@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 14:21:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Tue Nov 29 15:33:54 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version v5.0+git20221127.3e61ef1c:

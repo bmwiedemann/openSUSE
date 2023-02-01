@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
   infiniband %{expand:%{rdt_plugin}} interface ipc iptables ipvs irq \\\
   load logfile log_logstash \\\
   madwifi match_empty_counter match_hashed match_regex match_timediff match_value \\\
-  mdevents mbmon md memcached memory multimeter \\\
+  mdevents mbmon md memcached memory mmc multimeter \\\
   netlink network nfs nginx notify_nagios ntpd numa olsrd openvpn \\\
   perl ping protocols powerdns processes \\\
   rrdcached rrdtool %{expand:%{sensors_plugin}} serial statsd swap syslog \\\
@@ -33,7 +33,6 @@
   unixsock uptime users uuid vmem vserver \\\
   wireless write_graphite write_http write_log write_sensu write_tsdb \\\
   write_prometheus zfs_arc zookeeper
-
 %ifnarch s390 s390x
 %define sensors    1
 %define sensors_plugin sensors
@@ -41,14 +40,12 @@
 %define sensors    0
 %define sensors_plugin %{nil}
 %endif
-
 # dpdk exclusive build arch requirements copied:
 %ifarch aarch64 x86_64 ppc64le
 %define dpdk       1
 %else
 %define dpdk       0
 %endif
-
 %ifarch x86_64 %{ix86}
 %define intel_rdt    1
 %define rdt_plugin intel_rdt
@@ -56,15 +53,15 @@
 %define intel_rdt    0
 %define rdt_plugin %{nil}
 %endif
-
 Name:           collectd
-Version:        5.12.0
+Version:        5.12.0.130.g2f3c12e
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
 Group:          System/Monitoring
 URL:            http://collectd.org/
-Source:         http://collectd.org/files/collectd-%{version}.tar.bz2
+# Source:         http://collectd.org/files/collectd-%%{version}.tar.bz2
+Source:         collectd-%{version}.tar.bz2
 Source1:        collectd.suse.init
 Source2:        collectd.apache2.conf
 Source3:        collectd-js.apache2.conf
@@ -81,24 +78,17 @@ Patch8:         9e36cd85a2bb_sigrok_Update_to_support_libsigrok_0_4.patch
 # PATCH-FIX-OPENSUSE avoid-pg-config.patch avoid pg_config if possible
 Patch11:        avoid-pg-config.patch
 Patch12:        harden_collectd.service.patch
+Patch13:        Fix-compile-issue-if-net-snmp-has-NETSNMP_DISABLE_MD5-set.patch
 # for /etc/apache2/... ownership (rpmlint):
 BuildRequires:  apache2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
-%if %{dpdk}
-BuildRequires:  dpdk-devel >= 19.08
-%endif
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
-# intel_rdt -> pqos.h
-# intel-cmt-cat exclusive build arch requirements copied:
-%if %{intel_rdt}
-BuildRequires:  libpqos-devel
-%endif
 BuildRequires:  java-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  libgcrypt-devel
@@ -122,31 +112,17 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(OpenIPMI)
 BuildRequires:  pkgconfig(OpenIPMIpthread)
-%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
-BuildRequires:  pkgconfig(Qgpsmm)
-BuildRequires:  pkgconfig(libgps)
-BuildRequires:  pkgconfig(libsigrok)
-%endif
 BuildRequires:  pkgconfig(dbi)
 BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmnl)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-BuildRequires:  pkgconfig(libmodbus)
-%endif
-%if 0%{?is_opensuse}
-BuildRequires:  pkgconfig(libmosquitto)
-%endif
-BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-BuildRequires:  pkgconfig(librabbitmq)
-%endif
 BuildRequires:  pkgconfig(librrd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupsclient)
@@ -162,6 +138,28 @@ Requires(post): %fillup_prereq
 Obsoletes:      collectd-beta < %{version}
 Provides:       collectd-beta = %{version}-%{release}
 %{?systemd_requires}
+%if %{dpdk}
+BuildRequires:  dpdk-devel >= 19.08
+%endif
+# intel_rdt -> pqos.h
+# intel-cmt-cat exclusive build arch requirements copied:
+%if %{intel_rdt}
+BuildRequires:  libpqos-devel
+%endif
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
+BuildRequires:  pkgconfig(Qgpsmm)
+BuildRequires:  pkgconfig(libgps)
+BuildRequires:  pkgconfig(libsigrok)
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(libmodbus)
+%endif
+%if 0%{?is_opensuse}
+BuildRequires:  pkgconfig(libmosquitto)
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+BuildRequires:  pkgconfig(librabbitmq)
+%endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  pkgconfig(libnutclient)
 %endif
@@ -497,7 +495,7 @@ Requires:       %{name} = %{version}-%{release}
 Optional %{name} plugin for filtering and parsing logs.
 
 %package plugin-ubi
-Summary:        ubifs plugin for %{name}
+Summary:        UBIFS plugin for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
 
@@ -516,27 +514,15 @@ Optional %{name} plugin to send values to InfluxDB using line protocol via udp
 Summary:        All Monitoring Plugins for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-Requires:       %{name}-plugin-amqp = %{version}-%{release}
-%endif
 Requires:       %{name}-plugin-buddyinfo = %{version}-%{release}
 Requires:       %{name}-plugin-connectivity = %{version}-%{release}
 Requires:       %{name}-plugin-dbi = %{version}-%{release}
-%if 0%{?sle_version} < 150000  || 0%{?is_opensuse}
-Requires:       %{name}-plugin-gps = %{version}-%{release}
-%endif
 Requires:       %{name}-plugin-ipmi = %{version}-%{release}
 Requires:       %{name}-plugin-java = %{version}-%{release}
 Requires:       %{name}-plugin-logparser = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-Requires:       %{name}-plugin-modbus = %{version}-%{release}
-%endif
-%if 0%{?is_opensuse}
-Requires:       %{name}-plugin-mqtt = %{version}-%{release}
-%endif
 Requires:       %{name}-plugin-mysql = %{version}-%{release}
 Requires:       %{name}-plugin-notify-desktop = %{version}-%{release}
 Requires:       %{name}-plugin-openldap = %{version}-%{release}
@@ -546,9 +532,6 @@ Requires:       %{name}-plugin-pinba = %{version}-%{release}
 Requires:       %{name}-plugin-postgresql = %{version}-%{release}
 Requires:       %{name}-plugin-procevent = %{version}-%{release}
 Requires:       %{name}-plugin-python3 = %{version}-%{release}
-%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
-Requires:       %{name}-plugin-sigrok = %{version}-%{release}
-%endif
 Requires:       %{name}-plugin-smart = %{version}-%{release}
 Requires:       %{name}-plugin-snmp = %{version}-%{release}
 Requires:       %{name}-plugin-synproxy = %{version}-%{release}
@@ -561,6 +544,21 @@ Requires:       %{name}-plugin-write_stackdriver = %{version}-%{release}
 Requires:       %{name}-plugin-write_syslog = %{version}-%{release}
 Requires:       %{name}-web = %{version}-%{release}
 Requires:       %{name}-web-js = %{version}-%{release}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+Requires:       %{name}-plugin-amqp = %{version}-%{release}
+%endif
+%if 0%{?sle_version} < 150000  || 0%{?is_opensuse}
+Requires:       %{name}-plugin-gps = %{version}-%{release}
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+Requires:       %{name}-plugin-modbus = %{version}-%{release}
+%endif
+%if 0%{?is_opensuse}
+Requires:       %{name}-plugin-mqtt = %{version}-%{release}
+%endif
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
+Requires:       %{name}-plugin-sigrok = %{version}-%{release}
+%endif
 %if 0%{?suse_version} >= 1330
 Requires:       %{name}-plugin-nut = %{version}-%{release}
 %endif
@@ -611,19 +609,7 @@ This package contains the required development environment
 to write %{name} unixsock clients.
 
 %prep
-%setup -q -n "collectd-%{version}"
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6
-%patch7 -p1
-%if 0%{?suse_version} > 1320
-%patch8 -p1
-%endif
-%patch11 -p1
-%patch12 -p1
+%autosetup -p1
 
 sed -i 's|@@VERSION@@|%{version}|g' configure.ac
 
@@ -899,7 +885,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
 
 %if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
-
 %files plugin-sigrok
 %{_libdir}/collectd/sigrok.so
 %{_libdir}/collectd/sigrok.la

@@ -1,6 +1,7 @@
+<?xml version="1.0"?>
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/rootless-containers/rootlesskit.git</param>
-              <param name="changesrevision">b25a0bad15d664c4ee8885ba622569425e918a68</param></service><service name="tar_scm">
-                <param name="url">https://github.com/moby/buildkit.git</param>
-              <param name="changesrevision">6d53896d28a0b1b1670617ebcdd0582bcab14b90</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/moby/buildkit.git</param>
+    <param name="changesrevision">944939944ca4cc58a11ace4af714083cfcd9a3c7</param>
+  </service>
+</servicedata>

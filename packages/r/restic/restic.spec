@@ -1,7 +1,7 @@
 #
 # spec file for package restic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -30,10 +30,11 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
+Patch:          disable-selfupdate.patch
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.18
 
 %description
 restic is a backup program. It supports verification, encryption,
@@ -43,7 +44,7 @@ snapshots and deduplication.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(restic:bash-completion)
+Supplements:    (restic and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -53,14 +54,14 @@ Bash command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(restic:zsh)
+Supplements:    (restic and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q -a 3
+%autosetup -p 1 -a 3
 
 %build
 # Set up GOPATH.
@@ -71,7 +72,10 @@ cp -rT $PWD $HOME/go/src/%{import_path}
 # Build restic. We don't use build.go because it builds statically, uses go
 # modules, and also restricts the Go version in cases where it's not actually
 # necessary. We disable go modules because restic still provides a vendor/.
-GO111MODULE=off go build -o %{name} -buildmode=pie \
+GO111MODULE=off go build -o %{name} \
+%ifnarch ppc64 s390x
+	-buildmode=pie \
+%endif
 	-ldflags "-s -w -X main.version=%{version}" \
 	%{import_path}/cmd/restic
 

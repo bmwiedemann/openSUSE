@@ -1,7 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,6 +90,8 @@ BuildRequires:  pkgconfig(libwebp) >= 0.4
 #BuildRequires:  pkgconfig(pam)
 #BuildRequires:  pkgconfig(pam_misc)
 BuildRequires:  pkgconfig(py3cairo)
+BuildRequires:  procps-devel
+BuildRequires:  qrencode-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
 BuildRequires:  pkgconfig(xcomposite)
@@ -98,8 +100,6 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  procps-devel
-BuildRequires:  qrencode-devel
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
@@ -230,6 +230,11 @@ rm -rf %{buildroot}%{_datadir}/xpra/cuda
 mkdir -pv %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/xpra %{buildroot}%{_pam_vendordir}
+%endif
+
 %fdupes -s %{buildroot}
 
 %pre
@@ -237,6 +242,18 @@ getent group xpra >/dev/null || groupadd -r xpra
 mkdir -p %{_rundir}/%{name} || exit 1
 %service_add_pre %{name}.service
 %service_add_pre %{name}.socket
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/xpra ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/xpra ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %service_add_post %{name}.service
@@ -259,15 +276,19 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %endif
 %license COPYING
 %dir %{_datadir}/xpra
-%dir %{_sysconfdir}/pam.d
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
 %dir %{_sysconfdir}/xpra/content-categories
 %dir %{_sysconfdir}/xpra/content-parent
 %dir %{_sysconfdir}/xpra/content-type
 %dir %{_sysconfdir}/xpra/http-headers
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/xpra.conf
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/xpra
+%else
+%dir %{_sysconfdir}/pam.d
 %config(noreplace) %{_sysconfdir}/pam.d/xpra
+%endif
+%config(noreplace) %{_sysconfdir}/dbus-1/system.d/xpra.conf
 %config(noreplace) %{_sysconfdir}/xpra/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/conf.d/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/content-categories/*.conf
@@ -316,4 +337,3 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %ghost %dir %{_rundir}/xpra/proxy
 
 %changelog
-

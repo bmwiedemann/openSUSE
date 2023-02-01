@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 17 17:35:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.1:
+  * Garbage collection problem causing file bloat on clean
+  * Don't assume sorted objects in pdf_objcmp
+  * Don't layout empty documents
+  * Type 3 font char bboxes
+  * Added MOBI input format support
+  * Added Story API for creating PDF documents from formatted text
+  * Added API to create, edit, and delete links
+  * Support custom images for Stamp annotations
+  * Support interior color on Polygon annotations
+  * Support line endings on PolyLine annotations
+  * Improved SVG output
+  * C++/Python/C# binding:
+    * Changes to naming of wrapper functions and classes
+    * Added limited support for callbacks into Python, using SWIG Directors
+
+-------------------------------------------------------------------
 Wed Aug 17 19:15:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.3:

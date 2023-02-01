@@ -25,20 +25,20 @@
 %global PyYAML_version                6.0
 %global Twisted_version               22.10.0
 %global attrs_version                 22.2.0
-%global bcrypt_version                3.2.0
-%global bleach_version                3.3.0
+%global bcrypt_version                4.0.1
+%global bleach_version                5.0.1
 %global canonicaljson_version         1.6.4
 %global canonicaljson_max_version     2
 %global cryptography_version          38.0.4
-%global frozendict_version            2.3.3
-%global idna_version                  3.3
+%global frozendict_version            2.3.4
+%global idna_version                  3.4
 %global ijson_version                 3.1.4
 %global jsonschema_version            4.17.3
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               1.0.3
+%global msgpack_version               1.0.4
 %global netaddr_version               0.8.0
-%global phonenumbers_version          8.13.2
+%global phonenumbers_version          8.13.4
 %global prometheus_client_version     0.15.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
@@ -53,9 +53,9 @@
 %global typing_extensions_version     4.1.1
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
-%global matrix_synapse_ldap3_version  0.2.1
+%global matrix_synapse_ldap3_version  0.2.2
 # TODO: bump to 22.0
-%global packaging_version             21.3
+%global packaging_version             23.0
 %global psycopg2_version              2.9.5
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.0
@@ -156,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.75.0
+Version:        1.76.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

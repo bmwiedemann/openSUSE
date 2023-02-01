@@ -1,7 +1,7 @@
 #
 # spec file for package kstars
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -68,7 +68,7 @@ BuildRequires:  cmake(StellarSolver) >= 2.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(libindi) >= 1.9.9
+BuildRequires:  pkgconfig(libindi) >= 2.0.0
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       libqt5-qtquickcontrols

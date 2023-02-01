@@ -18,13 +18,13 @@
 
 
 Name:           mupdf
-Version:        1.20.3
+Version:        1.21.1
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://mupdf.com/
-Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.zst
+Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch

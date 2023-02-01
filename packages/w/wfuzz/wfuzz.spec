@@ -1,7 +1,7 @@
 #
 # spec file for package wfuzz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
@@ -69,6 +69,7 @@ tool by pentesters for pentesters ;)
 %prep
 %autosetup -p1 -n wfuzz-%{version}
 sed -i '1{/^#!/ d}' src/wfuzz/wfuzz.py
+sed -i 's/pyparsing>=2.4\*/pyparsing>=2.4/g' setup.py
 
 %build
 %python_build

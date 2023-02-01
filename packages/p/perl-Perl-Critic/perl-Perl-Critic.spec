@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Critic
 Name:           perl-Perl-Critic
-Version:        1.146
+Version:        1.148
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Critique Perl source code for best-practices
@@ -55,7 +55,6 @@ BuildRequires:  perl(Readonly) >= 2
 BuildRequires:  perl(String::Format) >= 1.18
 BuildRequires:  perl(Term::ANSIColor) >= 2.02
 BuildRequires:  perl(Test::Builder) >= 0.92
-BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(B::Keywords) >= 1.23

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 31 18:24:47 UTC 2023 - PragmaticLinux <info@pragmaticlinux.com>
+
+- install files from the addons/ and platforms/ directories - boo#1207806
+- correct shebang fix for htmlreport/cppcheck-htmlreport
+
+-------------------------------------------------------------------
+Mon Jan 30 12:07:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  * Many improvements and fixes in checkers.
+  * New check: use memset/memcpy instead of loop
+  CLI:
+  * if the file provided via "--file-list" cannot be opened it
+    will now error out
+  * add command-line option "--disable=" to individually disable
+    checks
+  GUI:
+  * Detect when installed version is old. There is setting in
+    Edit/Preferences to turn this on.
+  * Fix path issue with backslashes
+  * Cleanup *.ctu-info files after analysis
+  Build:
+  * the deprecated Makefile option SRCDIR is no longer accepted
+  * added CMake option BUILD_CORE_DLL to build lib as
+    cppcheck-core.dll with Visual Studio
+
+-------------------------------------------------------------------
 Wed Dec  7 22:39:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.3:

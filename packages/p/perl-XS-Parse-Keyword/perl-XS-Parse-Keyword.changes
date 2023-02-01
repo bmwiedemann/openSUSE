@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 13 03:11:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.32    2023-01-12
+          [BUGFIXES]
+           * Ensure that XPK_TERMEXPR acting as a fullexpr is OK with empty
+             parens (RT145618)
+
+-------------------------------------------------------------------
 Mon Dec 26 03:08:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.31

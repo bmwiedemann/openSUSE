@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 31 19:38:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build for openSUSE Leap
+- package examples and more documentation
+
+-------------------------------------------------------------------
 Mon Jan 30 20:57:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Initial package, 1.0.0

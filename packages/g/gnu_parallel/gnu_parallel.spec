@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_parallel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20221222
+Version:        20230122
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later

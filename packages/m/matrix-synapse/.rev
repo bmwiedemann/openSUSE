@@ -667,4 +667,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.75.0</comment>
     <requestid>1061962</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>70822cff61dd7a1a4c2f4385fc592da7</srcmd5>
+    <version>1.76.0</version>
+    <time>1675265963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.76.0</comment>
+    <requestid>1062352</requestid>
+  </revision>
 </revisionlist>

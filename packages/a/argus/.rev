@@ -209,4 +209,12 @@ Based on audit of 3.0.6.1 (forwarded request 155892 from babelworx)</comment>
     <comment></comment>
     <requestid>912408</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>a273f9768a825ccdec68758634c6b238</srcmd5>
+    <version>3.0.8.3</version>
+    <time>1675265994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062429</requestid>
+  </revision>
 </revisionlist>

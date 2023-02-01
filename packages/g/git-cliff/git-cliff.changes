@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 25 06:37:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.1.2:
+  * Do not skip all tags when skip_tags is empty (#136)
+  * Allow saving context to a file (#138)
+  * Derive the tag order from commits instead of timestamp (#139)
+  * Use timestamp for deriving the tag order (#139)
+
+-------------------------------------------------------------------
 Wed Jan 18 04:06:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.1.1:

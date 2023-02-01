@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 31 15:04:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.69.0:
+  * Allow scanning unpacked container filesystems (#1485)
+  * fix: allow template for syft convert (#1521)
+  * 1465 attestation with private key (#1502)
+
+-------------------------------------------------------------------
 Thu Jan 26 06:37:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.68.1:

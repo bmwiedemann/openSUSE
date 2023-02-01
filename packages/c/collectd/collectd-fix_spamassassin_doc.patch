@@ -1,7 +1,7 @@
 Index: contrib/SpamAssassin/Collectd.pm
 ===================================================================
---- contrib/SpamAssassin/Collectd.pm.orig
-+++ contrib/SpamAssassin/Collectd.pm
+--- a/contrib/SpamAssassin/Collectd.pm.orig
++++ b/contrib/SpamAssassin/Collectd.pm
 @@ -4,12 +4,6 @@
  
  Collectd - plugin for filling collectd with stats 

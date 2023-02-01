@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 13 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20230112
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20230112 2023-01-12 22:49:04+00:00 UTC
+    - Add parser method to parse json serialized object back
+      into the object(s) it represents
+
+-------------------------------------------------------------------
 Thu Sep 16 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20210915

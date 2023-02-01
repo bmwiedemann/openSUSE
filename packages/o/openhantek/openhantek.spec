@@ -1,7 +1,7 @@
 #
 # spec file for package openhantek
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openhantek
-Version:        3.3.1
+Version:        3.3.2.1
 Release:        0
 Summary:        Software for Hantek DSO6022 USB digital signal oscilloscopes
 License:        GPL-3.0-or-later

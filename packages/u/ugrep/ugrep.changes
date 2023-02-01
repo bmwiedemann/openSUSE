@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  1 07:32:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.7:
+  * handle gnutar archive extension field formats to search huge
+    files (>4GB) stored in (gnu) tar archives
+- includes changes gro 3.9.6:
+  * Fixed a Unicode-specific regex pattern syntax issue that caused
+    a valid regex pattern to produce a regex syntax error message
+
+-------------------------------------------------------------------
 Sun Jan 15 12:18:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9.5:

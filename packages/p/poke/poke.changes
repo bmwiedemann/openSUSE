@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Wed Jan 25 20:52:34 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.0:
+  * User interface updates
+    + A screen pager has been added to the poke application.
+    + A tracer has been added to libpoke and the poke application.
+    + A new command sdiff (for "structured diff") has been added to the
+      poke application, that provides a way to generate patchable diffs
+      of mapped structured Poke values.
+    + When no name is passed to the .mem command, an unique name for the
+      memory IOS with the form *N* will be used automatically, where N
+      is a positive integer.
+    + auto-completion of 'attributes is now available in the poke
+      application.
+    + Constraint errors now contain details on the location (which
+      field) where the constraint error happens, along with the
+      particular expression that failed.
+    + Inline assembler expressions and statements are now supported.
+    + Both =printf= and =format= now support printing values of type
+      =any=.
+    + Both =printf= and =format= now support printing integral values
+      interpreted as floating-point values encoded in IEEE 754.
+    + Pre-conditional optional fields are added to complement the
+      currently supported post-conditional optional fields.
+    + A new option =.set autoremap no= can be used in order to tell poke
+      to not remap mapped values automatically.
+    + The :to argument to the =extract= command is now optional, and
+      defaults to the empty string.
+    + ${XDG_CONFIG_HOME:-$HOME/.config} is now preferred to
+      XDG_CONFIG_DIRS.
+  * Poke Language updates
+    + Array and struct constructors are now primaries in the Poke
+      syntax.
+    + Bit-concatenation is now supported in l-values.
+    + Arrays can now be indented by size, by specifying an offset as an
+      index.
+    + Union types can now be declared as "integral".
+    + Support for "computed fields" has been added to struct and union
+      types.
+    + This version introduces three new Poke attributes that work on
+      values of type =any=.
+    + Two new operators have been introduced to facilitate operating
+      Poke array as stacks in an efficient way: apush and apop.
+    + Poke programs can now hook in the IO subsystem by installing
+      functions that will be invoked when certain operations on IO
+      spaces are being performed.
+    + The 'length attribute is now valid in values of type =any=.
+    + Poke declarations can now be annotated as =immutable=.
+    + A new compiler built-in =iolist= has been introduced, that returns
+      an array with the IO space identifiers of currently open IOS.
+    + We have changed the logic of the EXCOND operator ?!.  It now
+      evaluates to 1 (true) if the execution of the first operand raises
+      the specified exception, and to 0 (false) otherwise.
+    + The containing struct or union value can now be refered as SELF in
+      the body of methods.  SELF is of type =any=.
+    + Integer literal suffixes (B, H, U, etc) are case-insensitive.
+    + Casting to union types now raise a compile-time error.
+    + If no explicit message is specified in calls to =assert=, a
+      default one showing the source code of the failing condition is
+      constructed and used instead.
+    + An operator =remap= has been used in order to force a re-map of
+      some mapped Poke value.
+    + Signed integral types of one bit are not allowed.
+    + The built-in function get_time has been renamed to gettime, to
+      follow the usual naming of the corresponding standard C function.
+  * Standard Poke Library updates
+    + New standard functions.
+    + libpoke updates
+      - New API function pk_struct_ref_set_field_value.
+      - New API function pk_type_name.
+  * Pickles updates
+    + New pickles.
+    + The ELF pickle now provides functions implementing ELF hashing.
+  * Build system updates
+    + It is now supported to configure the poke sources with
+      --disable-hserver.
+  * Documentation updates
+    + Documentation for the =format= language construction has been
+      added to the poke manual.
+  * Other updates
+    + A new program poked, for "poke daemon", has been contributed to
+      the poke distribution. poked links with libpoke and uses Unix
+      sockets to act as a broker to communicate with an instance of a
+      Poke incremental compiler.
+    + The machine-interface subsystem has been removed from poke, in
+      favor of the poked approach.
+    + The example GUI that was intended to be a test tool for the
+      machine interface has been removed from the poke distribution.
+    + Many bugs have been fixed.
+- Remove jitter-0.9.284-noexec-stack-arm-i586.patch: Fixed upstream.
+- Drop json-c dependency: Machine-interface has been removed.
+
+-------------------------------------------------------------------
 Wed Sep  7 18:53:40 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.4:

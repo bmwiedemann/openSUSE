@@ -1,7 +1,7 @@
 #
 # spec file for package cppcheck
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        2.9.3
+Version:        2.10
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -25,6 +25,7 @@ URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
@@ -91,7 +92,7 @@ cd ..
     DB2MAN=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
 
 # use python3 as interpreter
-sed -i "s|env python|python3|g" htmlreport/cppcheck-htmlreport
+sed -i "s|env python3|python3|g" htmlreport/cppcheck-htmlreport
 
 %check
 export CXXFLAGS="%{optflags}"
@@ -108,6 +109,16 @@ install -Dpm 0644  cppcheck.1 \
   %{buildroot}%{_mandir}/man1/cppcheck.1
 install -d %{buildroot}%{_datadir}/%{name}/cfg
 install -pm 0644 cfg/*.cfg %{buildroot}%{_datadir}/%{name}/cfg
+install -d %{buildroot}%{_datadir}/%{name}/platforms
+install -pm 0644 platforms/*.xml %{buildroot}%{_datadir}/%{name}/platforms
+install -d %{buildroot}%{_datadir}/%{name}/addons
+install -pm 0644 addons/*.py %{buildroot}%{_datadir}/%{name}/addons
+# Give execute permission to python addons with a shebang to fix non-executable-script
+find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 chmod +x
+# Correct shebang to fix env-script-interpreter
+find %{buildroot}%{_datadir}/%{name}/addons -type f -size +0 -exec awk 'NR == 1 && /^#!.*python/ { exit } { exit 1 }' {} \; -print0 | xargs -0 sed -i "s|env python3|python3|g"
+# Remove duplicate files
+%fdupes -s %{buildroot}%{_datadir}/%{name}/platforms
 
 %files
 %doc AUTHORS

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 31 14:11:40 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Net-Pcap/Changes
+
+  0.21 - 2023-01-19 - Max Maischein (CORION)
+    [Configure]
+    - Avoid implicit ints during feature probing
+      This is required for compatibility with future compilers as (for example)
+      Fedora is moving to stricter C compiler versions.
+      This is merely a cleanup of the C code probing for Pcap functionality,
+      no need to upgrade.
+    [Code]
+    - use "our" for global variable declaration
+    - Don't inherit from Exporter anymore
+      This might break modules that rely on Net::Pcap isa Exporter, but that
+      was never documented.
+  0.20 - 2021-12-17 - Max Maischein (CORION)
+    [Bugfixes]
+    - CPAN RT #118727 Spelling fixes
+      Reported by Gregor Herrmann
+
+-------------------------------------------------------------------
 Tue Nov 22 19:57:04 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Add missing dependencies for pcapdump [bsc#1201615]

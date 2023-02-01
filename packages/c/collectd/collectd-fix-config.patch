@@ -1,7 +1,7 @@
 Index: src/collectd.conf.in
 ===================================================================
---- src/collectd.conf.in.orig
-+++ src/collectd.conf.in
+--- a/src/collectd.conf.in.orig
++++ b/src/collectd.conf.in
 @@ -272,7 +272,7 @@
  #<Plugin apache>
  #  <Instance "local">

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  4 03:11:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.49	- 2023-01-03, H.Merijn Brand
+      * csv2xlsx --split=CxP [--split-label=C]
+      * Full documentation/manual for csv2xlsx
+      * Fix non-integer arguments to getline_all (issue 39)
+      * It's 2023
+
+-------------------------------------------------------------------
 Thu May 26 03:07:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.48

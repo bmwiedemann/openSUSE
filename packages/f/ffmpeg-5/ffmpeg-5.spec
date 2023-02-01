@@ -108,6 +108,7 @@ Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        no-vk-video-decoding.patch
 
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
@@ -845,6 +846,7 @@ Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        no-vk-video-decoding.patch
 BuildRequires:  c_compiler
 
 %description

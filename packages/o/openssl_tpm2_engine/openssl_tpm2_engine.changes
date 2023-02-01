@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 31 21:17:40 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.3.1
+  * fix intermittent EC TPM_RC_KEY return
+  * add import section to man pages
+  * Add importable sealed data
+  * Fix name hash for importable keys and data
+
+-------------------------------------------------------------------
 Fri Jan 12 20:58:15 UTC 2023 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.2.1

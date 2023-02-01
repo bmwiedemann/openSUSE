@@ -17,7 +17,7 @@
 
 
 Name:           git-cliff
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Changelog generator for git repositories
 URL:            https://github.com/orhun/git-cliff

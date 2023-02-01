@@ -687,4 +687,12 @@
     <comment>- Update to release 20221222</comment>
     <requestid>1045000</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>73a95c5a215785915389c448a04fa2e7</srcmd5>
+    <version>20230122</version>
+    <time>1675266331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062465</requestid>
+  </revision>
 </revisionlist>

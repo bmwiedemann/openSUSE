@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 31 15:04:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.12.0:
+  * fix deploy when field notes not given to external (#3347)
+  * Added labelSelector to configmap lists at waitForNamespaceD… (#3329)
+  * build(deps): Bump mheap/github-action-required-labels from 2 to 3 (#3319)
+  * build(deps): Bump actions/stale from 6 to 7 (#3306)
+  * Add parameter for pass thru of allowPrivilegeEscalation (#3291) (#3292)
+  * fix: add markdown reading (#3332)
+  * Check deployed dev environments when inferring the name (#3300)
+  * feat: add support for custom commands in `okteto up` (#3215)
+  * feat: update copyright to 2023 (#3324)
+  * Filled up an incomplete comment (#3318)
+  * Solves okteto/app#5180. Destroy preview calls Okteto API to destroy the preview and stream logs (#3308)
+
+-------------------------------------------------------------------
 Fri Jan 13 10:28:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.11.1:

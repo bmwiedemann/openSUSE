@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Jan 31 21:33:43 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.15.1
+  * Fix: Remove b2_download_file_by_name: 404 warning from B2 backend
+  * Fix: Make prune --quiet not print progress bar
+  * Fix: Make self-update --output work with new filename on Windows
+  * Fix: Add missing ETA in backup progress bar
+  * Enh: Ignore empty lock files
+- Remove accidentally left over unused patch build.patch
+
+-------------------------------------------------------------------
+Tue Jan 24 18:46:48 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Allow build with architectures that do not support -buildmode=pie
+- New Patch disable-selfupdate.patch: Disable self-update, because updates
+  will be made using package manager
+- Replace packageand by conditionals
+- Update to version 0.15.0
+  * Make mount return exit code 0 after receiving Ctrl-C / SIGINT
+  * Make restore replace existing symlinks
+  * Don't read password from stdin for backup --stdin
+  * Delete files on Backblaze B2 more reliably
+  * Make SFTP backend report no space left on device
+  * Improve handling of interrupted syscalls in mount command
+  * Fix stuck copy command when -o <backend>.connections=1
+  * Correct prune statistics for partially compressed repositories
+  * Make ls return exit code 1 if snapshot cannot be loaded
+  * Make backup no longer hang on Solaris when seeing a FIFO file
+  * Support ExFAT-formatted local backends on macOS Ventura
+  * Make init ignore "Access Denied" errors when creating S3 buckets
+  * Make self-update enabled by default only in release builds
+  * Don't generate negative UIDs and GIDs in tar files from dump
+  * Include full snapshot ID in JSON output of backup
+  * Make unlock display message only when locks were actually removed
+  * Don't print skipped snapshots by default in copy command
+  * Update dependencies and require Go 1.18 or newer
+  * Implement rewrite command
+  * Restore files with long runs of zeros as sparse files
+  * Support restoring symbolic links on Windows
+  * Inform about successful retries after errors
+  * Improve handling of directories with duplicate entries
+  * Support B2 API keys restricted to hiding but not deleting files
+  * Make init open only one connection for the SFTP backend
+  * Handle cache corruption on disk and in downloads
+  * Stricter repository lock handling
+  * Make backup file read concurrency configurable
+  * Add support for credential_process to S3 backend
+  * Make mount command support macOS using macFUSE 4.x
+  * Support JSON output for the init command
+  * Optimize prune memory usage
+  * Improve speed of parent snapshot detection in backup command
+  * Add compression statistics to the stats command
+  * Provide command completion for PowerShell
+  * Allow backup file tree scanner to be disabled
+  * Improve handling of ErrDot errors in rclone and sftp backends
+  * Ignore additional/unknown files in repository
+  * Improve backup performance for small files
+
+-------------------------------------------------------------------
 Thu Aug 25 22:52:37 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.14.0:

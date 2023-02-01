@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Pcap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-Pcap
 Name:           perl-Net-Pcap
-Version:        0.20
+Version:        0.21
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to the pcap(3) LBL packet capture library
@@ -43,24 +43,6 @@ like kernel-level packet filtering and access to internal statistics.
 
 Common applications include network statistics collection, security
 monitoring, network debugging, etc.
-
-%package -n pcapdump
-Summary:        Dump packets from the network
-Requires:       %{name} = %{version}
-
-%description -n pcapdump
-Command line tool to dump packets from the network.
-
-pcapdump mimics the very basic features of tcpdump(1) and provides a good
-example of how to use Net::Pcap.
-
-%package -n pcapinfo
-Summary:        Prints detailed information about the network devices
-Requires:       %{name} = %{version}
-
-%description -n pcapinfo
-pcapinfo prints detailed information about the network devices and Pcap library
-available on the current host.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
@@ -87,12 +69,29 @@ install -D -m0755 eg/pcapdump "%{buildroot}%{_bindir}/pcapdump"
 %exclude %{_bindir}/pcapdump
 %exclude %{_mandir}/man1/pcapinfo.1%{?ext_man}
 
+%package -n pcapdump
+Summary:        Dump packets from the network
+Requires:       %{name} = %{version}
+
+%description -n pcapdump
+Command line tool to dump packets from the network.
+
+pcapdump mimics the very basic features of tcpdump(1) and provides a good
+example of how to use Net::Pcap.
+
+%package -n pcapinfo
+Summary:        Prints detailed information about the network devices
+Requires:       %{name} = %{version}
+
+%description -n pcapinfo
+pcapinfo prints detailed information about the network devices and Pcap library
+available on the current host.
+
 %files -n pcapdump
 %{_bindir}/pcapdump
 
 %files -n pcapinfo
 %{_bindir}/pcapinfo
 %{_mandir}/man1/pcapinfo.1%{?ext_man}
-%doc Changes README stubs.inc
 
 %changelog

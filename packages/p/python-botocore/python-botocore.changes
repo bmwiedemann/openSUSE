@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 31 14:50:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.29.60
+  * api-change:``clouddirectory``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``cloudformation``: This feature provides a method of obtaining which regions a
+    stackset has stack instances deployed in.
+  * api-change:``discovery``: Update ImportName validation to 255 from the current length of 100
+  * api-change:``dlm``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``ec2``: We add Prefix Lists as a new route destination option for LocalGatewayRoutes.
+    This will allow customers to create routes to Prefix Lists. Prefix List routes will allow customers
+    to group individual CIDR routes with the same target into a single route.
+  * api-change:``imagebuilder``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``kafka``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``mediaconvert``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``swf``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+- from version 1.29.59
+  * api-change:``application-autoscaling``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``appstream``: Fixing the issue where Appstream waiters hang for fleet_started and
+    fleet_stopped.
+  * api-change:``elasticbeanstalk``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``fis``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``glacier``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``greengrass``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``greengrassv2``: Enabled FIPS endpoints for GovCloud (US) in SDK.
+  * api-change:``mediatailor``: This release introduces the As Run logging type, along with API and
+    documentation updates.
+  * api-change:``outposts``: Adding support for payment term in GetOrder, CreateOrder responses.
+  * api-change:``sagemaker-runtime``: Update sagemaker-runtime client to latest version
+  * api-change:``sagemaker``: This release supports running SageMaker Training jobs with container
+    images that are in a private Docker registry.
+  * api-change:``serverlessrepo``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+
+-------------------------------------------------------------------
 Fri Jan 27 13:20:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.58

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  4 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.017
+   see /usr/share/doc/packages/perl-CPAN-Meta-Check/Changes
+
+  0.017     2023-01-03 16:53:14+01:00 Europe/Amsterdam
+            - Use Module::Metadata for more accurate testing
+
+  0.016     2023-01-03 14:25:46+01:00 Europe/Amsterdam
+            - Fix rounding issue in test
+
+  0.015     2023-01-03 03:42:47+01:00 Europe/Amsterdam
+            - Drop Test::Deep prereq
+
+-------------------------------------------------------------------
 Sat Nov 26 06:07:40 UTC 2016 - coolo@suse.com
 
 - updated to 0.014

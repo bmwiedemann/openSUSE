@@ -26,12 +26,15 @@ URL:            https://psemiletov.github.io/logfilegen/
 Source:         https://github.com/psemiletov/logfilegen/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1599
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 Logfilegen is a tool to generate common server (nginx, etc) or user-defined
-format log files. It can generate log file with the desired rate (lines per 
-second), the file size, lines count and the duration. Each variable of the log 
-file can be redefined by the random or static value. The tool is designed to 
+format log files. It can generate log file with the desired rate (lines per
+second), the file size, lines count and the duration. Each variable of the log
+file can be redefined by the random or static value. The tool is designed to
 be fast and customizable.
 
 %prep
@@ -39,7 +42,11 @@ be fast and customizable.
 
 %build
 %cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix}
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%if 0%{?suse_version} < 1599
+	-DCMAKE_CXX_COMPILER=g++-12 \
+%endif
+	%{nil}
 %make_build
 
 %install
@@ -48,6 +55,7 @@ be fast and customizable.
 %files
 %license LICENSE
 %doc ChangeLog README.md
+%doc docs/config.md docs/templates.md templates/*
 %{_bindir}/logfilegen
 
 %changelog

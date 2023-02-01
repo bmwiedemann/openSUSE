@@ -7,4 +7,16 @@
     <comment>Another Azure SDK package</comment>
     <requestid>1056388</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8cced003c0cd7df8846bc9d485e6d35f</srcmd5>
+    <version>1.0.0</version>
+    <time>1675266006</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1062436 from glaubitz)</comment>
+    <requestid>1062454</requestid>
+  </revision>
 </revisionlist>

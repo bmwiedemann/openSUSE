@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Moo
 Name:           perl-Moo
-Version:        2.005004
+Version:        2.005005
 Release:        0
-Summary:        Minimalist Object Orientation (with Moose compatibility)
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Minimalist Object Orientation (with Moose compatibility)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -32,7 +32,6 @@ BuildRequires:  perl(Class::Method::Modifiers) >= 1.10
 BuildRequires:  perl(Role::Tiny) >= 2.002003
 BuildRequires:  perl(Sub::Defer) >= 2.006006
 BuildRequires:  perl(Sub::Quote) >= 2.006006
-BuildRequires:  perl(Test::Fatal) >= 0.003
 BuildRequires:  perl(Test::More) >= 0.94
 Requires:       perl(Class::Method::Modifiers) >= 1.10
 Requires:       perl(Role::Tiny) >= 2.002003

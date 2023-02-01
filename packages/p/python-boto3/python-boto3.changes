@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan 31 15:11:21 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.60
+  * api-change:``clouddirectory``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in
+    SDK.
+  * api-change:``cloudformation``: [``botocore``] This feature provides a method of obtaining which
+    regions a stackset has stack instances deployed in.
+  * api-change:``discovery``: [``botocore``] Update ImportName validation to 255 from the current
+    length of 100
+  * api-change:``dlm``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``ec2``: [``botocore``] We add Prefix Lists as a new route destination option for
+    LocalGatewayRoutes. This will allow customers to create routes to Prefix Lists. Prefix List routes
+    will allow customers to group individual CIDR routes with the same target into a single route.
+  * api-change:``imagebuilder``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in
+    SDK.
+  * api-change:``kafka``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``mediaconvert``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in
+    SDK.
+  * api-change:``swf``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+- from version 1.26.59
+  * api-change:``application-autoscaling``: [``botocore``] Enabled FIPS endpoints for GovCloud (US)
+    regions in SDK.
+  * api-change:``appstream``: [``botocore``] Fixing the issue where Appstream waiters hang for
+    fleet_started and fleet_stopped.
+  * api-change:``elasticbeanstalk``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions
+    in SDK.
+  * api-change:``fis``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``glacier``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``greengrass``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``greengrassv2``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) in SDK.
+  * api-change:``mediatailor``: [``botocore``] This release introduces the As Run logging type, along
+    with API and documentation updates.
+  * api-change:``outposts``: [``botocore``] Adding support for payment term in GetOrder, CreateOrder
+    responses.
+  * api-change:``sagemaker-runtime``: [``botocore``] Update sagemaker-runtime client to latest version
+  * api-change:``sagemaker``: [``botocore``] This release supports running SageMaker Training jobs
+    with container images that are in a private Docker registry.
+  * api-change:``serverlessrepo``: [``botocore``] Enabled FIPS endpoints for GovCloud (US) regions in
+    SDK.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Jan 27 13:33:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.58

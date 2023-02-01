@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 31 18:34:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add gentoo-887055-boost-fix.patch
+  * Fix build error with boost-filesystem 1.81
+  * gh#prusa3d/PrusaSlicer#9294
+  * https://bugs.gentoo.org/887055
+
+-------------------------------------------------------------------
 Sun Jan  1 17:25:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update up-occt-version.patch

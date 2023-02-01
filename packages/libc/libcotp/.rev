@@ -53,4 +53,29 @@
 </comment>
     <requestid>1056899</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92274a146c2985c20a7a303679c936dc</srcmd5>
+    <version>2.0.0</version>
+    <time>1675265961</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libbaseencode dep, since it's no longer necessary and obsolete it
+- Fix changelog typo
+- update to 2.0.0:
+  * In particular, libbaseencode has been merged with libcotp, so now users
+    can call base32 functions by just including `cotp.h`
+  BREAKING CHANGES:
+  * `totp_verify` has been removed
+  * `hotp_verify` has been removed
+  * `base64_encode` has been removed
+  * `base64_decode` has been removed
+  ADDED:
+  * new API `otp_to_int`
+  * `base32` encoding and decoding functions from libbaseencode
+  * new tests for libcotp
+  CHANGES:
+  * the soversion is now set only from the `$major` version (e.g. `2`), and
+    not from `$major$minor` (e.g. `12`) like it used to be.
+</comment>
+    <requestid>1062422</requestid>
+  </revision>
 </revisionlist>

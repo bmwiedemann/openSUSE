@@ -28,8 +28,10 @@ Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version
 Patch0:         PrusaSlicer-boost1.79.patch
 # PATCH-FIX-UPSTREAM PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
 Patch1:         PrusaSlicer-cereal.patch
+# PATCH-FIX-UPSTREAM gentoo-887055-boost-fix.patch -- gh#prusa3d/PrusaSlicer#9294
+Patch2:         gentoo-887055-boost-fix.patch
 # PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
-Patch2:         up-occt-version.patch
+Patch3:         up-occt-version.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
