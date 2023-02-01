@@ -49,4 +49,12 @@ needs to go into openSUSE:Factory:Staging:adi:131</comment>
     <comment></comment>
     <requestid>735809</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>905a7631cda3b5203bb39ea58241ba94</srcmd5>
+    <version>2.006008</version>
+    <time>1675265915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062201</requestid>
+  </revision>
 </revisionlist>

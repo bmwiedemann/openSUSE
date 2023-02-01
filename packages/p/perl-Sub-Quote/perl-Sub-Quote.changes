@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 21 03:10:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.006008
+   see /usr/share/doc/packages/perl-Sub-Quote/Changes
+
+  2.006008 - 2023-01-20
+    - drop Test::Fatal prereq
+    - recommend Sub::Util rather than Sub::Name
+    - use XString for quoting strings where possible
+    - move tests for quotify on perl 5.6 to author only
+
+  2.006_007 - 2022-04-05
+    - accurately detect numbers vs strings in quotify on perl 5.36
+    - accurately detect booleans in quotify on perl 5.36
+    - add workaround for float formatting for perls compiled to use gcvd
+
+-------------------------------------------------------------------
 Fri Oct  4 09:38:38 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.006006
