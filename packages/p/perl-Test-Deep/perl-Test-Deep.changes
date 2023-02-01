@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan  8 03:08:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.204
+   see /usr/share/doc/packages/perl-Test-Deep/Changes
+
+  1.204     2023-01-07 18:01:37-05:00 America/New_York
+          - restore v5.12 compatibility (see commit 66b79eb for the amusing
+            anecdote)
+  1.203     2023-01-07 11:38:14-05:00 America/New_York
+          - try to avoid clobbering global error variables when loading test
+            libraries (thanks, Felipe Gasper)
+          - hash_each now enumates keys in sort() order, to make errors more
+            consistent
+  1.202     2023-01-04 20:40:46-05:00 America/New_York
+          - no changes since trial releases
+          - Test::Deep now requires perl v5.12.
+  1.201     2023-01-03 19:28:05-05:00 America/New_York (TRIAL RELEASE)
+          - correct Changes entry about which version version of perl is required
+  1.200     2023-01-02 16:55:10-05:00 America/New_York (TRIAL RELEASE)
+          - converted to Dist::Zilla
+          - Test::Deep will now require v5.12, and this may go up.  This change
+            allows simplification of the Makefile.PL, which was coping with a
+            mistake made twelve years ago.
+
+-------------------------------------------------------------------
 Mon Mar  2 03:16:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.130
