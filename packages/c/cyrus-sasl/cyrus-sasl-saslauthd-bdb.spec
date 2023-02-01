@@ -44,7 +44,6 @@ BuildRequires:  krb5-devel
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
-BuildRequires:  opie
 BuildRequires:  pam-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  pkgconfig(systemd)

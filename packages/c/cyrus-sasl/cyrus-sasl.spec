@@ -36,7 +36,6 @@ BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-BuildRequires:  opie
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 Conflicts:      cyrus-sasl-bdb

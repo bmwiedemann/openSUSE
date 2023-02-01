@@ -39,7 +39,6 @@ BuildRequires:  krb5-mini-devel
 BuildRequires:  libsasl2-3
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-BuildRequires:  opie
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 %ifarch ppc64
