@@ -7,4 +7,14 @@
     <comment>log file generator</comment>
     <requestid>1062230</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16c1eacecee090c5ef83222e84971074</srcmd5>
+    <version>1.0.0</version>
+    <time>1675265956</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for openSUSE Leap
+- package examples and more documentation
+</comment>
+    <requestid>1062335</requestid>
+  </revision>
 </revisionlist>
