@@ -315,4 +315,13 @@
 - Refresh move_to_run.patch</comment>
     <requestid>1035297</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dba15c81f50b0199287ab20b41191f55</srcmd5>
+    <version>1.9.7</version>
+    <time>1675265911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.7:
+  * Fix megaraid for PERC H330 Adapter #520</comment>
+    <requestid>1062174</requestid>
+  </revision>
 </revisionlist>
