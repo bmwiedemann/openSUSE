@@ -3,6 +3,8 @@
     <param name="url">https://github.com/leahneukirchen/extrace.git</param>
     <param name="scm">git</param>
     <param name="filename">extrace</param>
+    <param name="revision">v0.9</param>
+    <param name="versionformat">0.9</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
