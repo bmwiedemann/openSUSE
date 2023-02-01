@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 02 06:48:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.69.1:
+  * chore: update spdx/tools-golang to v0.5.0-rc1 (#1503)
+  * feat: update golang to 1.19 (#1526)
+  * Update syft bootstrap tools to latest versions. (#1525)
+
+-------------------------------------------------------------------
 Tue Jan 31 15:04:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.69.0:
