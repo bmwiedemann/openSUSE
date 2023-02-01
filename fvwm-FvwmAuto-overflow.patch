@@ -1,0 +1,11 @@
+--- modules/FvwmAuto/FvwmAuto.c.orig
++++ modules/FvwmAuto/FvwmAuto.c
+@@ -340,6 +340,8 @@ main(int argc, char **argv)
+ 	{
+ 		len = max(len, strlen(leave_fn));
+ 	}
++	/* add space for newline and trailing 0 */
++	len += 2;
+ 	if (do_pass_id)
+ 	{
+ 		len += 32;
