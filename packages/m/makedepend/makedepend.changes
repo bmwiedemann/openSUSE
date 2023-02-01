@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 31 12:42:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed 0001-Avoid-depending-on-xproto.patch to
+  u_Avoid-depending-on-xproto.patch, i.e. patch is to be upstreamed
+
+-------------------------------------------------------------------
+Tue Jan 31 09:27:16 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to avoid the xproto (+pkgconfig) dependency,
+  useful for boo#1207721:
+  * 0001-Avoid-depending-on-xproto.patch
+
+-------------------------------------------------------------------
 Tue Dec 20 12:09:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.8:

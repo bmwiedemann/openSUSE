@@ -1,7 +1,7 @@
 #
 # spec file for package makedepend
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,12 @@ License:        MIT
 Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(xproto) >= 7.0.17
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/xorg/util/makedepend/-/merge_requests/10
+Patch1:         u_Avoid-depending-on-xproto.patch
+# For autogen.sh
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
 
@@ -42,6 +46,7 @@ has changed.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build
 

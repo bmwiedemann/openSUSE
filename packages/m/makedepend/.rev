@@ -95,4 +95,17 @@
     <comment></comment>
     <requestid>1045912</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ca1ffecbe3daf4569f6c9400c32aac43</srcmd5>
+    <version>1.0.8</version>
+    <time>1675265905</time>
+    <user>dimstar_suse</user>
+    <comment>- renamed 0001-Avoid-depending-on-xproto.patch to
+  u_Avoid-depending-on-xproto.patch, i.e. patch is to be upstreamed
+
+- Add patch to avoid the xproto (+pkgconfig) dependency,
+  useful for boo#1207721:
+  * 0001-Avoid-depending-on-xproto.patch</comment>
+    <requestid>1062231</requestid>
+  </revision>
 </revisionlist>

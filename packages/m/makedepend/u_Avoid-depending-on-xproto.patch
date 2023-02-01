@@ -1,0 +1,80 @@
+From 1c75b54c0f05da2a979347712eae6f07d9d2ab1b Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Tue, 31 Jan 2023 10:22:52 +0100
+Subject: [PATCH] Avoid depending on xproto
+
+makedepend is rather early in the distro bootstrap chain, so it shouldn't pull
+in anything it doesn't really need.
+
+xproto is only pulled in for two macros which we can just as easily provide
+ourselves.
+---
+ configure.ac |  3 ---
+ def.h        | 21 +++++++++++++++++++--
+ main.c       |  1 +
+ 3 files changed, 20 insertions(+), 5 deletions(-)
+
+Index: makedepend-1.0.8/configure.ac
+===================================================================
+--- makedepend-1.0.8.orig/configure.ac
++++ makedepend-1.0.8/configure.ac
+@@ -26,8 +26,5 @@ AC_CHECK_FUNCS([rename fchmod])
+ dnl Use 64-bit file operations on 32-bit systems that support them
+ AC_SYS_LARGEFILE
+ 
+-dnl Check for pkg-config packages
+-PKG_CHECK_MODULES(X, [xproto >= 7.0.17])
+-
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+Index: makedepend-1.0.8/def.h
+===================================================================
+--- makedepend-1.0.8.orig/def.h
++++ makedepend-1.0.8/def.h
+@@ -28,8 +28,6 @@ in this Software without prior written a
+ # include "makedepend-config.h"
+ #endif
+ 
+-#include <X11/Xos.h>
+-#include <X11/Xfuncproto.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -38,6 +36,25 @@ in this Software without prior written a
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ 
++#ifndef _X_ATTRIBUTE_PRINTF
++#if __has_attribute(__format__) \
++    || defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 203)
++# define _X_ATTRIBUTE_PRINTF(x,y) __attribute__((__format__(__printf__,x,y)))
++#else /* not gcc >= 2.3 */
++# define _X_ATTRIBUTE_PRINTF(x,y)
++#endif
++#endif
++
++#ifndef _X_NORETURN
++#if __has_attribute(noreturn) \
++    || (defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 205)) \
++    || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
++# define _X_NORETURN __attribute((noreturn))
++#else
++# define _X_NORETURN
++#endif /* GNUC  */
++#endif
++
+ #define MAXDEFINES	512
+ #define MAXFILES	2048
+ #define MAXINCFILES	128	/* "-include" files */
+Index: makedepend-1.0.8/main.c
+===================================================================
+--- makedepend-1.0.8.orig/main.c
++++ makedepend-1.0.8/main.c
+@@ -44,6 +44,7 @@ in this Software without prior written a
+ #endif
+ 
+ #include <stdarg.h>
++#include <unistd.h>
+ 
+ #ifdef __sun
+ # include <sys/utsname.h>
