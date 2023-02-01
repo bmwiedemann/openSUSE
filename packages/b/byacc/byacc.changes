@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:24:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221229:
+  * autoconf update
+  * configure.in:
+    correct help-message for --disable-btyacc option, and fix the reporting of
+    the selected option value in the configure script's output
+
+-------------------------------------------------------------------
 Sat Dec  3 19:17:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221106:
