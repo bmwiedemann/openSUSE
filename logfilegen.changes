@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  6 16:37:10 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 1.1.0:
+  * slightly faster
+  * Adds new macros for combining several commands into one (@meta) and
+    for using sequences as a macro (@seq).
+
+-------------------------------------------------------------------
 Tue Jan 31 19:38:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build for openSUSE Leap
