@@ -3169,11 +3169,6 @@ unsorted:
   - docker-compose 
   - docker-compose-switch 
   - docker-fish-completion 
-  - docker-kubic: [x86_64] 
-  - docker-kubic-bash-completion: [x86_64] 
-  - docker-kubic-fish-completion: [x86_64] 
-  - docker-kubic-kubeadm-criconfig: [x86_64] 
-  - docker-kubic-zsh-completion: [x86_64] 
   - docker-lock 
   - docker-machine-driver-kvm2: [x86_64] 
   - docker-zsh-completion 
@@ -10597,10 +10592,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -11724,6 +11719,7 @@ unsorted:
   - libgstclapperglbaseimporter0 
   - libgstcodecparsers-1_0-0-32bit: [x86_64] 
   - libgstcodecs-1_0-0-32bit: [x86_64] 
+  - libgstcuda-1_0-0-32bit: [x86_64] 
   - libgstfft-1_0-0-32bit: [x86_64] 
   - libgstgl-1_0-0-32bit: [x86_64] 
   - libgstinsertbin-1_0-0 
@@ -11752,6 +11748,7 @@ unsorted:
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
+  - libgstwebrtcnice-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
@@ -13269,8 +13266,9 @@ unsorted:
   - libopenssl1_0_0-hmac-32bit: [x86_64] 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
+  - libopenssl1_1-32bit: [x86_64] 
   - libopenssl1_1-hmac-32bit: [x86_64] 
-  - libopenssl3-32bit: [x86_64] 
+  - libopenssl3-hmac-32bit: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -13581,10 +13579,13 @@ unsorted:
   - libpng12-compat-devel-32bit: [x86_64] 
   - libpng12-devel 
   - libpng12-devel-32bit: [x86_64] 
+  - libpng16-16-x86-64-v3: [x86_64] 
   - libpng16-compat-devel 
   - libpng16-compat-devel-32bit: [x86_64] 
+  - libpng16-compat-devel-x86-64-v3: [x86_64] 
   - libpng16-devel 
   - libpng16-devel-32bit: [x86_64] 
+  - libpng16-devel-x86-64-v3: [x86_64] 
   - libpng16-tools 
   - libpnglite0 
   - libpocketsphinx1 
@@ -13969,8 +13970,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft3 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13993,7 +13994,7 @@ unsorted:
   - libraw1394-tools 
   - libraw23-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -14177,7 +14178,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -19053,7 +19054,6 @@ unsorted:
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
   - openssl-1_1-doc 
-  - openssl-3 
   - openssl-3-doc 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
@@ -32569,6 +32569,7 @@ unsorted:
   - qatlib-devel: [x86_64] 
   - qatzip: [x86_64] 
   - qatzip-devel: [x86_64] 
+  - qbe 
   - qbittorrent 
   - qbittorrent-nox 
   - qbs 
@@ -33198,7 +33199,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
@@ -43746,6 +43747,7 @@ unsorted:
   - typelib-1_0-ColordGtk-1_0 
   - typelib-1_0-Colorhug-1_0 
   - typelib-1_0-CryptUI-0_0 
+  - typelib-1_0-CudaGst-1_0 
   - typelib-1_0-Cvc-1_0 
   - typelib-1_0-Dbusmenu-0_4 
   - typelib-1_0-DbusmenuGtk-0_4 
@@ -43831,6 +43833,7 @@ unsorted:
   - typelib-1_0-GstBadAudio-1_0 
   - typelib-1_0-GstClapper-1 
   - typelib-1_0-GstCodecs-1_0 
+  - typelib-1_0-GstCuda-1_0 
   - typelib-1_0-GstGL-1_0 
   - typelib-1_0-GstGLEGL-1_0 
   - typelib-1_0-GstGLWayland-1_0 
@@ -43844,6 +43847,7 @@ unsorted:
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
   - typelib-1_0-GstTranscoder-1_0 
+  - typelib-1_0-GstVa-1_0 
   - typelib-1_0-GstValidate-1_0 
   - typelib-1_0-GstVulkan-1_0 
   - typelib-1_0-GstVulkanWayland-1_0 
