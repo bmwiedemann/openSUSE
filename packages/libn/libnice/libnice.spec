@@ -1,7 +1,7 @@
 #
 # spec file for package libnice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnice
-Version:        0.1.19
+Version:        0.1.21
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1

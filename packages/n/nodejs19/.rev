@@ -95,4 +95,14 @@ For details, see CHANGELOG_V19.md</comment>
   otherwise some unit tests can fail</comment>
     <requestid>1061207</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1238cc011a4ff48e121f0c826d791ce8</srcmd5>
+    <version>19.5.0</version>
+    <time>1675357685</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use pkg_vcmp to decide BuildDependencies: this works based
+  on 'installed packages' which is not interpreted correctly by the
+  scheduler. Rather switch to boolean dependencies.</comment>
+    <requestid>1062437</requestid>
+  </revision>
 </revisionlist>

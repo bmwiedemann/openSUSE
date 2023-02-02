@@ -18,8 +18,8 @@
  16 files changed, 207 insertions(+), 70 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2023-01-16 08:31:57.044889237 +0000
-@@ -5988,12 +5988,15 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2023-01-23 13:06:54.872588922 +0000
+@@ -5986,12 +5986,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -37,7 +37,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6003,7 +6006,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6001,7 +6004,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -46,21 +46,21 @@
  CF_EOF
  fi
  
-@@ -6043,7 +6046,7 @@ cat >>$cf_edit_man <<CF_EOF
- 		mv \$TMP.$cf_so_strip \$TMP
+@@ -6041,7 +6044,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
--	cf_target="\$cf_target.$cf_so_strip"
-+	t="\$t.$cf_so_strip"
+-	cf_target="\$cf_target.$cf_manpage_so_strip"
++	t="\$t.$cf_manpage_so_strip"
  CF_EOF
  fi
  
-@@ -6052,23 +6055,23 @@ case "$MANPAGE_FORMAT" in
+@@ -6050,23 +6053,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
 -		cf_target="\`echo \$cf_target|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
-+		t="\`echo \$t|sed -e 's/\.[[1-9]]\+[[a-z]]*/.0/'\`"
++		t="\`echo \$t|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
  	fi
  CF_EOF
    ;;
@@ -79,13 +79,13 @@
  			cd "\$cf_subdir\${section}" && (
 -				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
 +				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
- 				test -n "$cf_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_so_strip\$%%'\`
+ 				test -n "$cf_manpage_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_manpage_so_strip\$%%'\`
 -				cf_target=\`basename "\$cf_target"\`
 +				t=\`basename "\$t"\`
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6077,7 +6080,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6075,7 +6078,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -94,7 +94,7 @@
  							then
  								continue
  							fi
-@@ -6087,18 +6090,18 @@ CF_EOF
+@@ -6085,18 +6088,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -115,8 +115,8 @@
 +					elif test "\$t" != "\$cf_alias\${suffix}" ; then
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
- if test -n "$cf_compress" ; then
-@@ -6118,9 +6121,9 @@ cat >>$cf_edit_man <<CF_EOF
+ if test -n "$cf_manpage_compress" ; then
+@@ -6116,9 +6119,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -129,7 +129,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6140,6 +6143,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6138,6 +6141,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -138,7 +138,7 @@
  esac
  done
 --- configure
-+++ configure	2023-01-16 08:31:57.044889237 +0000
++++ configure	2023-01-23 13:08:03.243347215 +0000
 @@ -6457,7 +6457,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -168,7 +168,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15255,12 +15255,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15252,12 +15252,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -186,7 +186,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15270,7 +15273,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15267,7 +15270,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -195,16 +195,16 @@
  CF_EOF
  fi
  
-@@ -15310,7 +15313,7 @@ cat >>$cf_edit_man <<CF_EOF
- 		mv \$TMP.$cf_so_strip \$TMP
+@@ -15307,7 +15310,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
--	cf_target="\$cf_target.$cf_so_strip"
-+	t="\$t.$cf_so_strip"
+-	cf_target="\$cf_target.$cf_manpage_so_strip"
++	t="\$t.$cf_manpage_so_strip"
  CF_EOF
  fi
  
-@@ -15319,23 +15322,23 @@ case "$MANPAGE_FORMAT" in
+@@ -15316,23 +15319,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -228,13 +228,13 @@
  			cd "\$cf_subdir\${section}" && (
 -				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
 +				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
- 				test -n "$cf_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_so_strip\$%%'\`
+ 				test -n "$cf_manpage_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_manpage_so_strip\$%%'\`
 -				cf_target=\`basename "\$cf_target"\`
 +				t=\`basename "\$t"\`
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15344,7 +15347,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15341,7 +15344,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -243,7 +243,7 @@
  							then
  								continue
  							fi
-@@ -15354,18 +15357,18 @@ CF_EOF
+@@ -15351,18 +15354,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -264,8 +264,8 @@
 +					elif test "\$t" != "\$cf_alias\${suffix}" ; then
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
- if test -n "$cf_compress" ; then
-@@ -15385,9 +15388,9 @@ cat >>$cf_edit_man <<CF_EOF
+ if test -n "$cf_manpage_compress" ; then
+@@ -15382,9 +15385,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -278,7 +278,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15407,6 +15410,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15404,6 +15407,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -287,7 +287,7 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2023-01-09 11:47:28.916395348 +0000
++++ include/curses.h.in	2023-01-23 13:00:47.039268881 +0000
 @@ -97,7 +97,7 @@
  
  #ifdef __cplusplus
@@ -308,7 +308,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2023-01-09 11:47:28.916395348 +0000
++++ include/termcap.h.in	2023-01-23 13:00:47.039268881 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -319,7 +319,7 @@
  
  #undef  NCURSES_OSPEED
 --- include/tic.h
-+++ include/tic.h	2023-01-09 11:47:28.916395348 +0000
++++ include/tic.h	2023-01-23 13:00:47.039268881 +0000
 @@ -236,12 +236,12 @@ struct user_table_entry
   */
  
@@ -336,7 +336,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames.in
-+++ man/man_db.renames.in	2023-01-09 11:47:28.916395348 +0000
++++ man/man_db.renames.in	2023-01-23 13:00:47.039268881 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -354,7 +354,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2023-01-09 11:47:28.916395348 +0000
++++ man/ncurses.3x	2023-01-23 13:00:47.039268881 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fP(\*n) for further details.]
  .SS Datatypes
@@ -367,7 +367,7 @@
  called \fIwindows\fP, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2023-01-09 11:47:28.916395348 +0000
++++ misc/gen-pkgconfig.in	2023-01-23 13:00:47.039268881 +0000
 @@ -83,6 +83,8 @@ if [ "$includedir" != "/usr/include" ];
  fi
  
@@ -440,7 +440,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2023-01-16 08:34:35.237940172 +0000
++++ misc/terminfo.src	2023-01-23 13:00:47.043268809 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -704,7 +704,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2023-01-09 11:47:28.920395274 +0000
++++ ncurses/Makefile.in	2023-01-23 13:00:47.043268809 +0000
 @@ -242,7 +242,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -715,7 +715,7 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	FGREP="@FGREP@" $(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2023-01-09 11:47:28.920395274 +0000
++++ ncurses/run_cmd.sh	2023-01-23 13:00:47.043268809 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -729,7 +729,7 @@
 +
 +exec /bin/sh -e ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2023-01-09 11:47:28.920395274 +0000
++++ ncurses/tinfo/MKfallback.sh	2023-01-23 13:00:47.043268809 +0000
 @@ -66,14 +66,22 @@ if test $# != 0 ; then
  	TERMINFO=`pwd`/$tmp_info
  	export TERMINFO
@@ -773,7 +773,7 @@
  	done
  
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2023-01-09 11:47:28.920395274 +0000
++++ ncurses/tinfo/lib_setup.c	2023-01-23 13:00:47.043268809 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
@@ -785,7 +785,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- progs/Makefile.in
-+++ progs/Makefile.in	2023-01-09 11:47:28.920395274 +0000
++++ progs/Makefile.in	2023-01-23 13:00:47.043268809 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
@@ -805,7 +805,7 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2023-01-09 11:47:28.920395274 +0000
++++ test/test.priv.h	2023-01-23 13:00:47.043268809 +0000
 @@ -1108,12 +1108,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
@@ -822,7 +822,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- test/tracemunch
-+++ test/tracemunch	2023-01-09 11:47:28.920395274 +0000
++++ test/tracemunch	2023-01-23 13:00:47.043268809 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl

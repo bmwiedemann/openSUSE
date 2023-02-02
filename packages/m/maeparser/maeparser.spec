@@ -1,7 +1,7 @@
 #
 # spec file for package maeparser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define abiver 1
 Name:           maeparser
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Maestro file parser
 License:        MIT

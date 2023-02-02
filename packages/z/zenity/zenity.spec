@@ -1,7 +1,7 @@
 #
 # spec file for package zenity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           zenity
-Version:        3.43.0
+Version:        3.44.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/zenity/3.44/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig

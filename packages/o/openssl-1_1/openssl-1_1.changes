@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 14 12:56:06 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Set OpenSSL 3.0 as the default openssl [bsc#1205042]
+  * For compatibility with OpenSSL 3.0, the OpenSSL master
+    configuration file openssl.cnf has been renamed to
+    openssl-1_1.cnf. The executables openssl, c_rehash, CA.pl and
+    tsget.pl have been also renamed to openssl-1_1, c_rehash-1_1,
+    CA-1_1.pl and tsget-1_1.pl, respectively.
+  * Add openssl-1_1-devel as conflicting with libopenssl-3-devel
+  * Add openssl-1_1-openssl-config.patch
+
+-------------------------------------------------------------------
 Wed Dec 14 09:04:40 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - POWER10 performance enhancements for cryptography [jsc#PED-512]

@@ -42,15 +42,15 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 20.10.21
-%define git_version 3056208812eb
-%define git_commit_epoch 1666698255
+%define real_version 20.10.23
+%define git_version 6051f1429
+%define git_commit_epoch 1674059068
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
 # networking. All other key runtime dependencies (containerd, runc) are stable
 # enough that this isn't necessary.
-%define libnetwork_version 0dde5c895075df6e3630e76f750a447cf63f4789
+%define libnetwork_version 05b93e0d3a95952f70c113b0bc5bdb538d7afdd7
 
 %define dist_builddir  %{_builddir}/dist-suse
 %define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
@@ -78,10 +78,6 @@ Source103:      README_SUSE.md
 Source104:      docker-audit.rules
 Source105:      docker-daemon.json
 Source106:      docker.sysusers
-# Kubelet-specific sources.
-# bsc#1086185 -- but we only apply this on Kubic.
-Source900:      docker-kubic-service.conf
-Source901:      kubelet.env
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
 #       in the suse-<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
@@ -91,8 +87,6 @@ Patch100:       0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
 Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 # SUSE-FEATURE: Add support to mirror unofficial/private registries
 #               <https://github.com/docker/docker/pull/34319>.
-Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
-# SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1073877 bsc#1099277
 Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42273. bsc#1183855 bsc#1175081
 Patch301:       0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
@@ -117,9 +111,7 @@ BuildRequires:  fish
 BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
-# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.18' here, so just require 1.18 exactly. bsc#1172608
-BuildRequires:  go1.18
+BuildRequires:  golang(API) = 1.18
 Requires:       (apparmor-parser or container-selinux)
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
@@ -157,26 +149,6 @@ Recommends:     lvm2 >= 2.2.89
 Recommends:     git-core >= 1.7
 ExcludeArch:    s390 ppc
 
-# KUBIC-SPECIFIC: This was required when upgrading from the original kubic
-#                 packaging, when everything was renamed to -kubic. It also is
-#                 used to ensure that nothing complains too much when using
-#                 -kubic packages. Hopfully it can be removed one day.
-%if "%flavour" == "kubic"
-# Obsolete old packege without the -kubic suffix
-Obsoletes:      %{realname} = 1.12.6
-Obsoletes:      %{realname}_1_12_6
-# Conflict with non-kubic package, and provide equivalent
-Conflicts:      %{realname}
-Provides:       %{realname} = %{version}
-# Kubernetes requires cri-runtime, which should be provided only by the -kubic flavour of this package
-Provides:       cri-runtime
-# No i586 Kubernetes, so docker-kubic must not be built for i586 also
-ExcludeArch:    i586
-# Disable leap based builds for kubic flavor (bsc#1121412)
-%if 0%{?suse_version} == 1500 && 0%{?is_opensuse}
-ExclusiveArch:  do_not_build
-%endif
-%endif
 
 %description
 Docker complements LXC with a high-level API which operates at the process
@@ -194,17 +166,6 @@ Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)
 BuildArch:      noarch
-# KUBIC-SPECIFIC: This was required when upgrading from the original kubic
-#                 packaging, when everything was renamed to -kubic. It also is
-#                 used to ensure that nothing complains too much when using
-#                 -kubic packages. Hopfully it can be removed one day.
-%if "%flavour" == "kubic"
-# Obsolete old packege without the -kubic suffix
-Obsoletes:      %{realname}-bash-completion = 1.12.6
-# Conflict with non-kubic package, and provide equivalent
-Conflicts:      %{realname}-bash-completion > 1.12.6
-Provides:       %{realname}-bash-completion = %{version}
-%endif
 
 %description bash-completion
 Bash command line completion support for %{name}.
@@ -216,17 +177,6 @@ Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
-# KUBIC-SPECIFIC: This was required when upgrading from the original kubic
-#                 packaging, when everything was renamed to -kubic. It also is
-#                 used to ensure that nothing complains too much when using
-#                 -kubic packages. Hopfully it can be removed one day.
-%if "%flavour" == "kubic"
-# Obsolete old packege without the -kubic suffix
-Obsoletes:      %{realname}-zsh-completion = 1.12.6
-# Conflict with non-kubic package, and provide equivalent
-Conflicts:      %{realname}-zsh-completion > 1.12.6
-Provides:       %{realname}-zsh-completion = %{version}
-%endif
 
 %description zsh-completion
 Zsh command line completion support for %{name}.
@@ -238,28 +188,9 @@ Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    packageand(%{name}:fish)
 BuildArch:      noarch
-%if "%flavour" == "kubic"
-# Conflict with non-kubic package, and provide equivalent
-Conflicts:      %{realname}-fish-completion
-Provides:       %{realname}-fish-completion = %{version}
-%endif
 
 %description fish-completion
 Fish command line completion support for %{name}.
-
-%if "%flavour" == "kubic"
-%package kubeadm-criconfig
-Summary:        docker container runtime configuration for kubeadm
-Group:          System/Management
-Requires:       kubernetes-kubeadm
-Requires(post): %fillup_prereq
-Supplements:    docker-kubic
-Provides:       kubernetes-kubeadm-criconfig
-Conflicts:      cri-o-kubeadm-criconfig
-
-%description kubeadm-criconfig
-docker container runtime configuration for kubeadm
-%endif
 
 %prep
 %setup -q -n %{realname}-%{version}_%{git_version}
@@ -270,10 +201,6 @@ docker container runtime configuration for kubeadm
 # PATCH-SUSE: Secrets patches.
 %patch100 -p1
 %patch101 -p1
-%endif
-%if "%flavour" == "kubic"
-# PATCH-SUSE: Mirror patch.
-%patch200 -p1
 %endif
 # bsc#1099277
 %patch300 -p1
@@ -395,9 +322,6 @@ install -D -m0755 %{proxy_builddir}/docker-proxy %{buildroot}/%{_bindir}/docker-
 
 # systemd service
 install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/%{realname}.service
-%if "%flavour" == "kubic"
-install -D -m0644 %{SOURCE900} %{buildroot}%{_unitdir}/%{realname}.service.d/90-kubic.conf
-%endif
 ln -sf service %{buildroot}%{_sbindir}/rcdocker
 
 # udev rules that prevents dolphin to show all docker devices and slows down
@@ -420,12 +344,6 @@ install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 
 # sysusers.d
 install -D -m0644 %{SOURCE106} %{buildroot}%{_sysusersdir}/%{name}.conf
-
-%if "%flavour" == "kubic"
-# place kubelet.env in fillupdir (for kubeadm-criconfig)
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE901}
-install -D -m0644 %{SOURCE901} %{buildroot}%{_fillupdir}/sysconfig.kubelet
-%endif
 
 %fdupes %{buildroot}
 
@@ -451,11 +369,6 @@ grep -q '^dockremap:' /etc/subgid || \
 %service_add_post %{realname}.service
 %{fillup_only -n docker}
 
-%if "%flavour" == "kubic"
-%post kubeadm-criconfig
-%fillup_only -n kubelet
-%endif
-
 %preun
 %service_del_preun %{realname}.service
 
@@ -474,10 +387,6 @@ grep -q '^dockremap:' /etc/subgid || \
 
 %{_unitdir}/%{realname}.service
 %{_sysusersdir}/%{name}.conf
-%if "%flavour" == "kubic"
-%dir %{_unitdir}/%{realname}.service.d/
-%{_unitdir}/%{realname}.service.d/90-kubic.conf
-%endif
 
 %dir %{_sysconfdir}/docker
 %config(noreplace) %{_sysconfdir}/docker/daemon.json
@@ -502,11 +411,5 @@ grep -q '^dockremap:' /etc/subgid || \
 %files fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/%{realname}.fish
-
-%if "%flavour" == "kubic"
-%files kubeadm-criconfig
-%defattr(-,root,root)
-%{_fillupdir}/sysconfig.kubelet
-%endif
 
 %changelog

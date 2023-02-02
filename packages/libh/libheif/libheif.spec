@@ -37,6 +37,10 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# from https://github.com/strukturag/libheif/commit/b6812284a2d70f29a5121ec3dbe652da07fdbbb7.patch
+Patch0:         b6812284a2d70f29a5121ec3dbe652da07fdbbb7.patch
+# rebased from https://github.com/strukturag/libheif/commit/2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
+Patch1:         2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

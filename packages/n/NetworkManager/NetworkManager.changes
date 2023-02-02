@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 27 18:39:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.12:
+  + Make sure "external-ids" stays up to date in Open vSwitch
+    database on a connection reapply.
+  + Retry if a netlink sockets runs out of buffer space before
+    we're able to read results of a link change.
+  + Fix a possible race involving concurrent invocation of iptables
+    in IPv4 shared mode.
+  + Other various fixes.
+
+-------------------------------------------------------------------
 Wed Jan 11 11:17:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.40.10:

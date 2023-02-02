@@ -734,4 +734,12 @@ From the patch header
     <comment></comment>
     <requestid>1045097</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>5ac1efe0a5874548301b7cba51980954</srcmd5>
+    <version>1.22.0</version>
+    <time>1675357618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061546</requestid>
+  </revision>
 </revisionlist>

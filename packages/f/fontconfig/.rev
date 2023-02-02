@@ -820,4 +820,19 @@ As we probably don't want a prerelease in 13.1, please checkin there also (forwa
     <comment></comment>
     <requestid>1034672</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>a3db619fb38250682606e9be78cbaf3d</srcmd5>
+    <version>2.14.2</version>
+    <time>1675357630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.2:
+  * Adjust indentation between programlisting in fontconfig-user.sgml
+  * Add some missing constant names for weight
+  * Report more detailed logs instead of assertion
+  * Fix a typo in description for HAVE_STDATOMIC_PRIMITIVES
+  * Ignore LC_CTYPE if set to &quot;UTF-8&quot;
+  * add --with-default-sub-pixel-rendering option
+  * Add FC_DESKTOP_NAME property</comment>
+    <requestid>1062384</requestid>
+  </revision>
 </revisionlist>

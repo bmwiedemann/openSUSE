@@ -49,4 +49,12 @@
     <comment>Update to version 1.0.1 (forwarded request 1042423 from develop7)</comment>
     <requestid>1042424</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cee2d0b53ab6f55c3ab3b8eed162b4b6</srcmd5>
+    <version>1.0.1</version>
+    <time>1675357718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062540</requestid>
+  </revision>
 </revisionlist>

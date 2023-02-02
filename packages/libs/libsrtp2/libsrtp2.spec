@@ -1,7 +1,7 @@
 #
 # spec file for package libsrtp2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libsrtp2
 %define lname	libsrtp2-1
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 License:        BSD-3-Clause

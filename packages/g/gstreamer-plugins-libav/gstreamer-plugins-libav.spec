@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-libav
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-libav
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        LGPL-2.1-or-later

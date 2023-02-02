@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-good
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-good
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -35,6 +35,7 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
+Patch0:         reduce-required-meson.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -48,19 +49,28 @@ BuildRequires:  libavc1394-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.61.0
 BuildRequires:  nasm
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  zlib-devel
+
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+
+# Disable qt6 for now (see -Dqt6=disabled passed to meson)
+#BuildRequires:  pkgconfig(Qt6Core)
+#BuildRequires:  pkgconfig(Qt6Gui)
+#BuildRequires:  pkgconfig(Qt6Qml)
+#BuildRequires:  pkgconfig(Qt6Quick)
+#BuildRequires:  pkgconfig(Qt6WaylandClient)
+
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-gobject) >= 1.10.0
@@ -90,7 +100,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.40.0
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.9
-BuildRequires:  pkgconfig(shout) >= 2.0
+BuildRequires:  pkgconfig(shout) >= 2.4.3
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(taglib) >= 1.5
 BuildRequires:  pkgconfig(twolame) >= 0.3.10
@@ -168,8 +178,9 @@ export PYTHON=%{_bindir}/python3
 	-Daalib=disabled \
 %endif
 	-Ddoc=disabled \
-        -Drpicamsrc=disabled \
+	-Drpicamsrc=disabled \
 	-Dv4l2-probe=true \
+	-Dqt6=disabled \
 	%{nil}
 %meson_build
 
@@ -193,9 +204,10 @@ fi
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstIirEqualizer3Bands.prs
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstQTMux.prs
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstVP8Enc.prs
+%{_libdir}/gstreamer-%{gst_branch}/libgstadaptivedemux2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstalaw.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstalpha.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstalphacolor.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstalpha.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstapetag.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudioparsers.so
@@ -212,8 +224,8 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstflv.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstflxdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgdkpixbuf.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstgoom.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgoom2k1.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstgoom.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsticydemux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstid3demux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstimagefreeze.so
@@ -233,8 +245,8 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstpng.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpulseaudio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreplaygain.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtpmanager.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtsp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstshapewipe.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsmpte.so
@@ -254,6 +266,7 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstwavpack.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwavparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstximagesrc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstxingmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsty4menc.so
 
 %files extra

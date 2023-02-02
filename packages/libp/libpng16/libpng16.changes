@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  1 12:18:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: some*.la files are symlinks. Adjust spec to use
+   find -type f,l
+
+-------------------------------------------------------------------
+Wed Feb  1 09:24:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) to allow alternative providers as well
+- build with glibc hwcaps optimized libs
+
+-------------------------------------------------------------------
 Fri Nov 25 11:49:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.6.39:

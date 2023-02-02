@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _sonum  1_1
+%define _sonum  3
 Name:           openssl
-Version:        1.1.1s
+Version:        3.0.7
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
-# Yes there is no license. But, to not confuse people, keep it aligned to the pkg
-License:        OpenSSL
+# Yes there is no license but to not confuse people keep it aligned to the pkg
+License:        Apache-2.0
 Group:          Productivity/Networking/Security
 URL:            https://www.openssl.org/
 Source0:        README.SUSE
@@ -35,13 +35,16 @@ BuildArch:      noarch
 Provides:       openssl(cli)
 
 %description
-OpenSSL is a software library to be used in applications that need to
-secure communications over computer networks against eavesdropping or
-need to ascertain the identity of the party at the other end.
-OpenSSL contains an implementation of the SSL and TLS protocols.
+The OpenSSL Project is a collaborative effort to develop a robust,
+commercial-grade, full-featured, and open source toolkit implementing
+the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS
+v1) protocols with full-strength cryptography. The project is managed
+by a worldwide community of volunteers that use the Internet to
+communicate, plan, and develop the OpenSSL toolkit and its related
+documentation.
 
 %package -n libopenssl-devel
-Summary:        Development files for OpenSSL
+Summary:        Include Files and Libraries mandatory for Development
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libopenssl%{_sonum} = %{version}
@@ -55,9 +58,8 @@ Provides:       pkgconfig(libcrypto) = %{version}
 Provides:       pkgconfig(openssl) = %{version}
 
 %description -n libopenssl-devel
-This package is a dummy package that always depends on the
-version of corresponding openssl packages that openSUSE
-currently supports.
+This package contains all necessary include files and libraries needed
+to develop applications that require these.
 
 %prep
 cp %{SOURCE0} .

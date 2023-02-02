@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 28 22:38:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- run bash specific post with bash 
+
+-------------------------------------------------------------------
 Thu Jan 26 16:43:42 UTC 2023 - Reinhard Max <max@suse.com>
 
 - boo#1207577: set /var/lib/ntp/var/run/ntp to 775

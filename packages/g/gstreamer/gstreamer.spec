@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -34,6 +34,8 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
+# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
+Patch3:         reduce-required-meson.patch
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
@@ -41,14 +43,14 @@ BuildRequires:  flex >= 2.5.31
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  meson >= 0.59
+BuildRequires:  meson >= 0.61
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libdw)
@@ -137,7 +139,7 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-
 
 %build
 export PYTHON=%{_bindir}/python3
-sed -i "s/^executable('gst-plugin-scanner',/executable('gst-plugin-scanner-%{_target_cpu}',/" libs/gst/helpers/meson.build
+sed -i "s/executable('gst-plugin-scanner',/executable('gst-plugin-scanner-%{_target_cpu}',/" libs/gst/helpers/meson.build
 sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
 # TODO: enable dbghelp
 %meson \
@@ -154,6 +156,15 @@ sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
 %endif
 	%{nil}
 %meson_build
+
+# meson 0.61.4 in SLE 15 SP5 doesn't generate all variables needed in the pc files
+# As a result the pkgconfig(...) provides are not generated in the rpm file so
+# we have to add the variables to the pc files if they're missing
+for pc in *-suse-linux/meson-private/*.pc ; do
+   grep -q ^datarootdir= $pc || sed -ie "/^pluginsdir=.*/a datarootdir=\${prefix}\/share" $pc ;
+   grep -q ^datadir= $pc || sed -ie "/^datarootdir=.*/a datadir=\${datarootdir}" $pc ;
+   grep -q ^libexecdir= $pc || sed -ie "/^datadir=.*/a libexecdir=\${prefix}\/libexec" $pc ;
+done
 
 %install
 %meson_install

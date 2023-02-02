@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %define maj_min 1.1
 %define _rname  openssl
 Name:           openssl-1_1
-# Don't forget to update the version in the "openssl" package!
+# Don't forget to update the version in the "openssl" meta-package!
 Version:        1.1.1s
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
@@ -130,16 +130,14 @@ Patch76:        openssl-1_1-Fixed-counter-overflow.patch
 Patch77:        openssl-1_1-chacha20-performance-optimizations-for-ppc64le-with-.patch
 Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes.patch
 Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
-
-Requires:       libopenssl1_1 = %{version}-%{release}
+#PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
+Patch80:        openssl-1_1-openssl-config.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
+Requires:       libopenssl1_1 = %{version}-%{release}
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
 %endif
-Conflicts:      ssl
-Provides:       ssl
-Provides:       openssl(cli)
 # Needed for clean upgrade path, boo#1070003
 Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
@@ -178,11 +176,9 @@ Group:          Development/Libraries/C and C++
 Requires:       libopenssl1_1 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
-# we need to have around only the exact version we are able to operate with
-Conflicts:      libopenssl-devel < %{version}
-Conflicts:      libopenssl-devel > %{version}
 Conflicts:      ssl-devel
-Provides:       ssl-devel
+# Conflicting names with libopenssl-3-devel
+Conflicts:      libopenssl-3-devel
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl-1_1_0-devel
 # Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
@@ -221,6 +217,8 @@ this package's base documentation.
 
 %prep
 %autosetup -p1 -n %{_rname}-%{version}
+
+cp apps/openssl.cnf apps/openssl-1_1.cnf
 
 %build
 %ifarch armv5el armv5tel
@@ -306,9 +304,19 @@ cp %{tar_package_name} %{_other}
 %make_install %{?_smp_mflags}
 # kill static libs
 rm -f %{buildroot}%{_libdir}/lib*.a
+
+# Rename the openssl CLI to openssl-1_1
+mv %{buildroot}%{_bindir}/openssl %{buildroot}%{_bindir}/openssl-1_1
+
+# Install the openssl-1_1.cnf config file
+install -m 644 apps/openssl-1_1.cnf %{buildroot}%{_sysconfdir}/ssl/openssl-1_1.cnf
+
 # remove the cnf.dist
-rm -f %{buildroot}%{_sysconfdir}/ssl/openssl.cnf.dist
+rm -f %{buildroot}%{_sysconfdir}/ssl/openssl-1_1.cnf.dist
+rm -f %{buildroot}%{_sysconfdir}/ssl/ct_log_list.cnf
+rm -f %{buildroot}%{_sysconfdir}/ssl/ct_log_list.cnf.dist
 ln -sf ./%{_rname} %{buildroot}/%{_includedir}/ssl
+
 mkdir %{buildroot}/%{_datadir}/ssl
 mv %{buildroot}/%{ssletcdir}/misc %{buildroot}/%{_datadir}/ssl/
 # Create the two directories into which packages will drop their configuration
@@ -410,17 +418,14 @@ unset LD_LIBRARY_PATH
 %files -f filelist
 %doc CHANGE* NEWS README
 %dir %{ssletcdir}
-%config (noreplace) %{ssletcdir}/openssl.cnf
+%config (noreplace) %{ssletcdir}/openssl-1_1.cnf
 %attr(700,root,root) %{ssletcdir}/private
 %dir %{ssletcdir}/engines.d
 %dir %{ssletcdir}/engdef.d
-%{ssletcdir}/ct_log_list.cnf
-%{ssletcdir}/ct_log_list.cnf.dist
-
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
-%{_bindir}/c_rehash
+%{_bindir}/c_rehash-1_1
 %{_bindir}/fips_standalone_hmac
-%{_bindir}/%{_rname}
+%{_bindir}/openssl-1_1
 
 %changelog

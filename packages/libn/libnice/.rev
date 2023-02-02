@@ -347,4 +347,12 @@
   * A number of bug fixes (forwarded request 975128 from cgiboudeaux)</comment>
     <requestid>975332</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e147e744b99d635fa4bd36431db72929</srcmd5>
+    <version>0.1.21</version>
+    <time>1675357612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061299</requestid>
+  </revision>
 </revisionlist>

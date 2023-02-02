@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 02 06:48:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.3:
+  * Version 0.19.3
+  * Delete old release script
+  * Github actions handle publish now
+  * Apply clippy lints
+  * Add job to publish to crates.io when tag is created
+
+-------------------------------------------------------------------
 Mon Jan 30 12:07:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.19.2:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 23:36:42 UTC 2023 - malcolmlewis@opensuse.org
+
+- Spec file cleanup to fix build errors.
+
+-------------------------------------------------------------------
 Fri Oct 15 12:10:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

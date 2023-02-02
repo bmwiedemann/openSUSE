@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.19.2
+Version:        0.19.3
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib

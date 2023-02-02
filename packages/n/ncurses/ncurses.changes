@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 23 13:00:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230121
+  + correct limit-check when dumping tc/use clause via tic -I (report by
+    Gabriel Ravier).
+  + correct a check for manpage-alias in edit_man.sh, to work with out of
+    tree builds (report by Sven Joachim).
+- Port ncurses-6.4.dif to patch 20230121
+
+-------------------------------------------------------------------
 Mon Jan 16 08:30:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230114

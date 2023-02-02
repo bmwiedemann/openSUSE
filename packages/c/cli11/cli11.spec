@@ -1,7 +1,7 @@
 #
 # spec file for package cli11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define upstream_name CLI11
 
 Name:           cli11
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        Command line parser for C++11
 License:        BSD-3-Clause

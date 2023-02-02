@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  1 14:33:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.10.23-ce
+  * see upstream changelog at https://docs.docker.com/engine/release-notes/#201023
+
+- drop kubic flavor as kubic is EOL. this removes:
+  kubelet.env docker-kubic-service.conf 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 11:49:32 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.21-ce. See upstream changelog online at

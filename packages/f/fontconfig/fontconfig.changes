@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 28 21:23:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.2:
+  * Adjust indentation between programlisting in fontconfig-user.sgml
+  * Add some missing constant names for weight
+  * Report more detailed logs instead of assertion
+  * Fix a typo in description for HAVE_STDATOMIC_PRIMITIVES
+  * Ignore LC_CTYPE if set to "UTF-8"
+  * add --with-default-sub-pixel-rendering option
+  * Add FC_DESKTOP_NAME property
+
+-------------------------------------------------------------------
 Tue Nov  8 23:10:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.1:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 27 14:32:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
+      b6812284a2d70f29a5121ec3dbe652da07fdbbb7.patch: (bsc#1206945)
+  * replace internal API with public API and fix typo (Fixes #745)
+
+-------------------------------------------------------------------
 Fri Jan 20 14:37:00 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add missing BuildRequires for SVT-AV1 support for Tumbleweed (only

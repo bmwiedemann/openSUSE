@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Feb  1 10:54:56 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1270, fixes the following problems
+  * The code style has to be checked manually.
+  * MS-Windows console: not flushing termguicolors.
+  * Code in same_leader() can be simplified.
+  * Code is indented more than necessary.
+  * :runtime completion can be further improved.
+  * Cannot have a line break before an object member access.
+  * Cannot access a private object member in a lambda defined inside the class.
+  * Coverity warns for not checking function return value.
+  * Code for :runtime completion is not consistent.
+  * :setglobal cannot use script-local function for "expr" option.
+  * Cursor briefly displayed in a wrong position when pressing Esc in Insert
+  mode after autoindent was used.
+  * Code is indented more than necessary.
+  * Code is indented more than necessary.
+  * Divide by zero with 'smoothscroll' set and a narrow window.
+  * Cannot export an interface. (Ernie Rael)
+  * Cannot export an abstract class. (Ernie Rael)
+  * Cannot use an object method with :defer. (Ernie Rael)
+  * Checking returned value of ga_grow() is inconsistent.
+  * MS-Windows: scrollback cropped off on Vim exit.
+  * Calling a method on an interface does not work.
+  * Changing 'virtualedit' does not have immediate effect.
+  * NetworkManager connection files are not recognized.
+  * Code style is not check in test scripts.
+  * Code style test fails.
+  * Diffmode test fails.
+  * Coverity warns for possible NULL pointer usage.
+  * Elsa files are not recognized.
+  * The did_set_string_option function is too long.
+  * KDL files are not recognized.
+  * Motif: compiler warning for unused argument.
+  * Using an interface method may give a compilation error.
+  * Error for space before ": type" is inconsistent.
+  * The did_set_string_option function is too long.
+  * .clangd and .stylelintrc files don't get a filetype.
+
+-------------------------------------------------------------------
 Thu Jan 26 07:49:28 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - drop vim-8.0-ttytype-test.patch as it changes test_options.vim which we

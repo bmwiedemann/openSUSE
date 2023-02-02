@@ -275,7 +275,7 @@ if [ $1 -eq 0 ]; then
      test -e %{_localstatedir}/log/ntp  && rm -f %{_localstatedir}/log/ntp
 fi
 
-%post
+%post -p /bin/bash
 
 getntpconf() {
   # Get the value of a single-value ntp.conf directive, first match wins.

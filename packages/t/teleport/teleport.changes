@@ -1,4 +1,1050 @@
 -------------------------------------------------------------------
+Thu Feb 02 06:59:38 UTC 2023 - kastl@b1-systems.de
+
+- remove non-breakable-space character from changes file
+- Update to version 11.3.2:
+  * Release 11.3.2 (#21121)
+  * Update ec2-tags.mdx (#21115)
+  * Fix MongoDB readHeaderAndPayload BSON max size (#21113)
+  * [v11] Fix direct node dial from WebUI (#20928)
+  * Update docker-compose docs (#21045)
+  * Use CDN links for install node scripts (#20985) (#21057)
+  * [v11] Remove CentOS6 and RHEL6 as valid distros (#20986)
+  * Skip TestBot_Run_CARotation (#20944)
+  * Use `SameSiteNoneMode` for application access cookies (#21049)
+  * Fix data race when closing listener (#21040)
+  * Conditionally build the UI if there are changes. (#20489) (#21018)
+  * [v11] Use the webassets directory at the root of the project for the web ui. (#21016)
+  * remove quotes from messages in makefile (#20740)
+  * Open Support links in UI to new page (#20984)
+  * [v11] Merge backports (#20997)
+  * [v11] Enable building teleport with the new UI location (#20965)
+  * Elasticsearch: explicitly require `--db-user`. (#20695) (#20919)
+  * Use concurrent streams for SFTP connections (#20953)
+  * update docs version (#20973)
+  * Disable disk-based logging for TestResizeTerminal (#20871)
+  * Fix language for try out teleport intro (#20948)
+  * Use a GitHub app for the check and backport workflows (#20873) (#20958)
+  * [v11] Add node and yarn to the buildboxes in preparation for the webapps merge (#20952)
+  * Hardware Key UX fixes (#20949)
+  * Update Rust to 1.67.0 (#20883)
+  * [v11] chore: Bump Buf to v1.13.1 (#20921)
+  * Added 01/26 Upcoming Releases Update
+  * [v11] fix `tsh proxy aws --endpoint-url` (#20880)
+  * Temporarily ignore the web directory when linting for license headers.
+  * [v11] Migrate AppLauncher tests into webapps. (#1532)
+  * Rearrange buildbox layers for faster updates (#20838)
+  * Use ghcr image for doc tests (#20876)
+  * Update app tests for rewritten headers (#20801)
+  * [v11] Add support for Moderated Sessions in the Web UI (#1540)
+  * [v11] [Discover] Enable mysql flow (#1539)
+  * [v11] feat: login rule audit events (#1537)
+  * [v11] Connect: Add useWorkspaceLoggedInUser (#1536)
+  * [v11] Update eref (#1534)
+  * Decode URL encoded values from AppLauncher's ARN. (#1530)
+  * Update e ref (#1528)
+  * Add --quiet to eslint package.json script (#1510) (#1523)
+  * Update webapps.e reference to latest commit (#1522)
+  * Fix clipboard permissions apparent inconsistency (#1509) (#1513)
+  * Change the application access authentication flow (#1515)
+  * capture additional prehog events (#1508)
+  * [v11] backport #1505 (Revert "Use sessionStorage for Authentication Bearer Token) (#1506)
+  * Add lazy loading for desktop sessions (#1503)
+  * Add lazy loading for session playback (#1502)
+  * Update e ref (#1500)
+  * Make trusted cluster screen hidden based on user roles (#1484) (#1494)
+  * Update Electron to 22.0.0 (#1498) (#1499)
+  * [v11] Discover: Implement Day 1 Database Postgres Flow (#1487)
+  * Update sessionPath value to new endpoint (#1486) (#1492)
+  * [v11] [Connect] requestableRoles and suggestedReviewers on LoggedInUser (#1485)
+  * [v11] Make bundled tsh available outside of Connect (#1488)
+  * Connect: Add missing modal stories, misc modal fixes (#1479) (#1482)
+  * Include session id in Session Uploaded event display (#1476)
+  * awaits the file write and close to avoid data corruption (#1471) (#1472)
+  * Fix websocket close (#1463) (#1470)
+  * [v11] add app access dynamodb event (#1462)
+  * [v11] backport #1275 (Use sessionStorage for Authentication Bearer Token) (#1458)
+  * Adds a status code to the closing of the tdp client's websocket (#1442) (#1455)
+  * [v11] [Connect] Use resourcesList in review access request table (#1456)
+  * Add support for InstanceJoin and BotJoin audit events (#1414) (#1440)
+  * Update electron-builder to 24.0.0-alpha.5 (#1434) (#1438)
+  * Connect: Use typed URIs (#1394) (#1436)
+  * Fix Connect stories (#1422) (#1435)
+  * Connect: Implement tshd event handlers for db cert renewal (#1383) (#1416)
+  * Add `recoveryCodesEnabled` (#1408) (#1419)
+  * Add subject value to app sessions (#1413) (#1426)
+  * alert convention matches grpc (#1424) (#1425)
+  * [Connect] Async autocomplete (#1406) (#1423)
+  * Fix large file corruption (#1382) (#1421)
+  * capture events from webapps (#1344) (#1411)
+  * Connect: Tell fpm to not use symlinks when building the rpm package (#1407) (#1410)
+  * useAsync: Add support for abort signal (#1377) (#1409)
+  * Update xterm to 5.0.0 (#1400) (#1401)
+  * [v11] backport #1321 (Add checkbox component to design package)  (#1393)
+  * Lazy load Telemetry only when needed (#1399)
+  * Fix alerts from not disappearing on route changes (#1395) (#1397)
+  * Display `verb`, `request_path` & `response_code` in `kube.request` events (#1384) (#1391)
+  * [v11] Use a single websocket for SSH connections (#1361) (#1392)
+  * Pass clusterUri rather than documentUri to retryWithRelogin (#1385) (#1386)
+  * [v11] [Connect] Use server side search in resource tables (Advanced Search) (#1381)
+  * [v11] Forward SSH agent (#1366) (#1370)
+  * [v11] Update to Electron 21 (#1351) (#1360)
+  * Fix iterating over null array for sshLogins from fetched nodes (#1356)
+  * [Discover] Refactor SetupAccess Screens (#1310)
+  * Prevent non-https protocol from opening external windows (#1343) (#1345)
+  * Shared Directory Audit Events (#1290) (#1348)
+  * Connect: Set up tshd events server for tshd-initiated communication (#1285) (#1339)
+  * [v11] retryWithRelogin: Enable use outside of document context (#1341)
+  * Show all kinds of active sessions (#1337)
+  * [v11] Log shared process `stdout` and `stderr` (#1046) (#1336)
+  * [v11] Discover: Add back button for `TestConnection` screens (#1329)
+  * Update ensureBaseUrl to use URL constructors only (#1328) (#1330)
+  * Update ensureBaseUrl conditional (#1320) (#1322)
+  * [v11] Handle private key policy errors and config (#1298) (#1311)
+  * Warn user when desktop is active (#1297) (#1312)
+  * Connect: Use gap instead of margins for <Label> groups (#1316) (#1317)
+  * [UI]: Make roles render as labels (#1299) (#1308)
+  * [v11] Connect: Accommodate for making gRPC server creds in shared process (#1220) (#1302)
+  * Change Session Recording created date to UTC timestamp (#1304) (#1305)
+  * Make linguist correctly classify JS protobuf files (#1300) (#1301)
+  * [v11] Stop `FeatureBox` from adding a scrollbar (#1295)
+  * Connect: Fix filtering internal logins (#1292) (#1293)
+  * [v11] Discover implement kube flow day 1 (#1287)
+  * Change Desktop page to link to Discover, fix k8s typo (#1289)
+  * [v11] [Connect] Conditionally render Access Request navigation menu (#1281)
+  * [v11] File Transfer UI fixes (#1276) (#1284)
+  * [v11] Assumed roles bar improvements (#1274) (#1283)
+  * Connect: Adjust size of sync button & search input (#1280) (#1282)
+  * Connect testing fixes (#1269) (#1272)
+  * Update support ticket url (#1259)
+  * Fixes clipboard sync (#1250) (#1267)
+  * [v11] Do not keep assumed requests in `app_state.json` (#1254) (#1255)
+  * CatchError and Discover related feature extensions (#1249) (#1262)
+  * [v11] [Connect] Add Document Access Requests (#1203) (#1252)
+  * [v11] Backports (#1248)
+  * Update e-ref (#1245)
+  * [v11] Add support for Cassandra audit events (#1241)
+  * [v11] Add file transfer to Connect (#1225) (#1244)
+  * [Teleport] Create Tabs Component(#1234)
+  * Fix copy for SCP upload audit event (#1233)
+  * TDP PNG2 (#1230)
+  * Handles connect and disconnect audits for database servers where database name is not given. (#1226)
+  * Create TextSelectCopyMulti that allows multi lines and adding comments (#1194)
+  * Add audit log changes for SSM executions (#1192)
+  * Add `WEBPACK_PORT` (#1215)
+  * Add application CRUD audit events.
+  * Elasticsearch audit events. (#1213)
+  * Update Hot Reloading to work under more conditions, add `WEBPACK_PORT` (#1210)
+  * Create a FeatureContext to replace passing features as a prop (#1211)
+  * Add caching to Webpack during development (#1207)
+  * Add events for create, update and delete `kube_clusters` (#1202)
+  * Remove `raw-loader` completely (#1206)
+  * [Discover] Desktop Setup Flow (#1172)
+  * Minor kube fixes (#1195)
+  * add cluster alert links to UX (#1193)
+  * Add type-check step to CI (#1197)
+  * Remove auto-refresh for Active Sessions list (#1196)
+  * Add kube support (#1191)
+  * Fix double scroll bars, make everything have min width 1250px (#1178)
+  * Add BannerList and Banner components to display cluster alerts on load (#1169)
+  * [Discover] Check permission during the flow step instead of at beginning (#1185)
+  * Use node server_name of addr.local in audit log display (#1089)
+  * Change DEB artifact name (#1183)
+  * [Discover] Bug fix appending index number to login trait names (#1180)
+  * [Discover] User menu checkmark, alert bubble, tweaks (#1173)
+  * Adds `is_empty` to the File System Object (#1174)
+  * Remove leftover Connect proto file, update shared process protos (#1162)
+  * [Discover] Add permissions checks and available Teleport versions (#1126)
+  * [Discover] Update copy and design tweaks (#1131)
+  * Update generated protos for Connect (#1155)
+  * Update GitHub connector template (#1157)
+  * Adds special handling for CapsLock on MacOS (#1153)
+  * Enforce react-testing-library eslint rules (#1150)
+  * Allow Webpack's HTTPS options to be set through environment variables (#1151)
+  * adds (preview) to Share Directory menu item (#1148)
+  * Add `--request-id` flag to connection instructions for Kubes and Databases (#1130)
+  * Turn on directory sharing by default  (#1141)
+  * Add default value for CONNECT_TSH_BIN_PATH in dev mode (#1143)
+  * Change Linux artifact names (#1142)
+  * Add support for Connect builds with Touch ID (#1116)
+  * Ignore `*.story.tsx` when type checking during Webpack builds (#1140)
+  * [Discover] Implement onboarding (#1121)
+  * update e ref (#1129)
+  * Improve Linux support (#1098)
+  * Enable no-unused-vars (#1118)
+  * [Discover] Prompt the user on pressing the back button during Discover (#1119)
+  * Add functional empty states to discover UI (#1106)
+  * bump e-ref (#1117)
+  * [Discover] Refactor context and top nav user menu dropdown (#1113)
+  * Reorganize approach to cluster names (#1086)
+  * Move electron-builder to a JS file (#1111)
+  * [Discover] Refactor and re-use Main component styling (#1112)
+  * Add warning dialog for unsupported browsers for directory sharing (#1110)
+  * Add an event for when a session recording is accessed (#970)
+  * SharedDirectoryDeleteRequest and SharedDirectoryDeleteResponse (#1096)
+  * [Discovery] Add Finish Component and Tweaks (#1109)
+  * Remove building native deps from `yarn build-term` (#1058)
+  * Use `.ico` for Windows (#1097)
+  * style sidebar (#1104)
+  * Update app access events (#1100)
+  * Remove AgentConnect (#1099)
+  * [Discover] Test Connection Boilerplating (#1094)
+  * `SharedDirectoryCreateRequest` and `SharedDirectoryCreateResponse` (#1090)
+  * Show Connect icon in better quality (#1091)
+  * Add a playback speed selector for Desktop Access recordings (#1072)
+  * [Discover] Add resource discovery polling and static OS logins (#1088)
+  * [Connect] Refactor FormLogin and add passwordless capabilities (#1019)
+  * `SharedDirectoryMoveResponse` (#1074)
+  * Switch webapps automation to main repo (#1082)
+  * Mark app session with "AWS" (#1050)
+  * Refactor input focusing after transition (#1071)
+  * Move focus to active document (#1070)
+  * Dockerfile: Check yarn.lock only on CI servers (#1076)
+  * Use git diff to show the difference after yarn install (#1069)
+  * Update e reference to master (#1073)
+  * Add protocol interceptor (#1025)
+  * useDocumentGateway: Default to '' rather than '0' (#1061)
+  * Add SFTP audit events (#968)
+  * Add ability to change port for db proxy (#900)
+  * CI: Fail if an update to yarn.lock is needed (#1047)
+  * Remove the stash (#1055)
+  * webassets: stash and pull to stay up to date (#1054)
+  * Further improvements to the webassets automation (#1053)
+  * `SharedDirectoryMoveRequest` (#1045)
+  * Fix git push (#1052)
+  * Checkout webassets at the right branch (#1051)
+  * Set TCP protocol explicitly (#1048)
+  * Tidy up `sharedDirectoryManager` (#1010)
+  * `SharedDirectoryWriteResponse` (#1008)
+  * `SharedDirectoryWriteRequest` (#1007)
+  * `SharedDirectoryReadResponse` (#1005)
+  * `SharedDirectoryReadRequest` (#1003)
+  * `SharedDirectoryListResponse` (#1000)
+  * `SharedDirectoryListRequest` (#999)
+  * Add automation to update webassets on push (#868)
+  * `SharedDirectoryInfoResponse` (#996)
+  * Add resource selection scaffold (#1035)
+  * [discover] Create Download Script Component (#1028)
+  * Add dash to Windows artifact name (#1039)
+  * Make "Learn More" button open Connect docs (#1040)
+  * Allow only one instance of Connect (#1038)
+  * Allow users to update Upgrade Window Start (#980)
+  * Connect: Wait for tshd gRPC server to start (#1021)
+  * Fix minor Windows issues (#1027)
+  * Add Windows support for Connect (#971)
+  * Fix the plugins for Connect so React Refresh works (#1032)
+  * Add unsafe-eval to CSP in dev mode to make source maps work (#1031)
+  * Added eslint rule to enforce the order of file imports (#1030)
+  * Add source maps and type checking to Webpack, config improvements (#985)
+  * Create LoginTrait Component (#992)
+  * Add section to README about audit events (#1022)
+  * Add `c-` prefix to the OS field of the feedback form (#1009)
+  * Display UTC time in audit log and session recording log (#991)
+  * Remove pathname injection in 404 message (#1002)
+  * added a content-security-policy (#987)
+  * add database uses db configure create (#912)
+  * Fix bug caused by having no participants in a Kube session recording (#995)
+  * updated webPreferences config (#988)
+  * deny any permission requests until needed (#986)
+  * `SharedDirectoryInfoRequest` (#966)
+  * `SharedDirectoryAcknowledge` (#965)
+  * `SharedDirectoryAnnounce` (#960)
+  * Remove unnecessary tranformValue for gap (#984)
+  * Updates Babel build targets (#977)
+  * Apply discover perm check (#982)
+  * Add gap property to Flex (#981)
+  * Fix typo in malformed packet error (#978)
+  * Update caniuse-lite (#975)
+  * Add k8s to recordings and active sessions list (#972)
+  * Remove EOT fonts (#969)
+  * Update teleterm protobuf files (#967)
+  * autofill username if loggedInUser exists on cluster (#954)
+  * Add targetUser to DocumentGateway help text (#961)
+  * Discover wizard screen POC + boilerplating (#942)
+  * Directory sharing menu item (#952)
+  * [3/3] Prettify teleterm package and add prettier to CI rule (#956)
+  * [2/3] Prettify shared, build, and teleport packages (#955)
+  * [1/3] Prettify Design Package (#953)
+  * Adds directory sharing flag to the ACL, protected by a config variable (#951)
+  * Connect: Add note about resource lifecycle to readme (#950)
+  * wrap switchTab in a conditional (#941)
+  * Change page size in Connect to 15 (#943)
+  * Make DocumentGateway responsive (#944)
+  * fowards path parameter to app access authentication (#913)
+  * Change window title to `Teleport Connect Preview` (#939)
+  * Add section about --insecure to Connect's readme (#937)
+  * Sort connections only when the list opens and show newest on the top (#925)
+  * Filter out logins starting with dash (#932)
+  * Update "Connect with GUI" section, add universal context menu (#926)
+  * Add default username for Redis (#919)
+  * Fix menu bug (#929)
+  * Limit db connections to one per db server & db username (#889)
+  * if no tab present, do nothing when CMD+W pressed (#923)
+  * Add ability to change db name for db proxy (#883)
+  * Fall back to leaf cluster id when restoring leaf cluster terminal document (#920)
+  * Update eref: change language 'search' to 'resource' access req (#921)
+  * Show connection type in connection tracker (#906)
+  * Show cluster breadcrumbs (#901)
+  * Remove username from the `Identity` selector  (#903)
+  * Connect `ShareFeedback` with API (#899)
+  * Update e-ref: prevent rendering with nonrecoverable error [access request] (#910)
+  * Small fixes and tweaks while going through test plan (#908)
+  * Refactor StepSlider Component (#884)
+  * changes 0.0.0.0 to 127.0.0.1 (#905)
+  * Add story for Identity (#902)
+  * Update e-ref for story fix (#897)
+  * Update e-ref: fix for search based request list total count bug (#894)
+  * Revert "setup project to run prettier (#886)" (#893)
+  * Mention Teleport Connect in the README (#888)
+  * Ensure the gateway is created only when opening the document (#890)
+  * setup project to run prettier (#886)
+  * Re-order kube resource connection instructions for clarity  (#880)
+  * Add share feedback form (#878)
+  * Show node specific ssh logins options (#873)
+  * Add `TextArea` and `FieldTextArea` components (#870)
+  * Update e-ref (#881)
+  * Build Connect in Webapps-Build pipeline  (#874)
+  * Restart cluster gateways on login (#879)
+  * Add error callback to `handleRequest()` method on devserver (#877)
+  * Various small fixes and touch ups (#876)
+  * Add `access_request.search` event to audit log (#875)
+  * Show recent clusters list (#865)
+  * Search based request related changes and Table addons (#867)
+  * Improve handling timeouts when resolving shell env (#862)
+  * Fix null role response from users fetch (#871)
+  * Change app name to `Teleport Connect` (#869)
+  * Fix logout icon (#859)
+  * Create agent type for resources (#828)
+  * type-check script: Perform type check only (#861)
+  * Add missing word to `PromptSsoStatus` (#854)
+  * SQLServer audit events (#860)
+  * Fix types for Logger/NullService (#864)
+  * Retry with relogin on errors related to expired certs (#846)
+  * Capture tshd logs (#853)
+  * Allow "Activity" tab to be hidden (#844)
+  * Add get-teleport-connect-dir script (#856)
+  * Use only dmg target for Teleport Connect (#855)
+  * Update eref for docs link fix (#850)
+  * Do not show the login dialog when user adds a cluster that is connected (#840)
+  * Prevent `active` label jumping in identity list (#839)
+  * Remove connections when logging out (#837)
+  * Increase scrollback size to 5k lines (#838)
+  * Do not include secrets in gRPC logs (#829)
+  * Add cloud link download to Help & Support (#820)
+  * Create a LabelPicker component (#823)
+  * yarn.lock: electron@^19 -> electron@19.0.0 (#833)
+  * Upgrade Electron to 19.0.0 (#830)
+  * Add two event codes for SSO test flow. (#717)
+  * Prevent `restorePersistedState()` crash when there is no persisted workspace for a cluster (#825)
+  * Add gRPC files generation and logging to shared process (#821)
+  * Update Electron & add shared process (#819)
+  * Add tooltips with keyboard shortcuts (#822)
+  * Refactor Teleport Reset/Invite Flow (#818)
+  * Create new SlideTab component (#817)
+  * Refactor Teleport Login Flow (#816)
+  * Create StepSlider Component (#815)
+  * useDocumentGateway: Remove null rootCluster checks (#814)
+  * useDocumentGateway: Pin shell to correct cluster (#812)
+  * Add Kubes initial sorting (#810)
+  * Add Initial Sorting for Tables (#809)
+  * Add Clickable Labels (#791)
+  * Add predicate doc link with predicate error messages (#776)
+  * Update e ref (#805)
+  * Add new icons: key, arrow forward/back (#804)
+  * Device name wiring and clean up FormNewCredentials (#803)
+  * Passwordless wiring on login and add device (#724)
+  * Indicate whether session.network events were allowed or blocked (#800)
+  * Move RecoveryCode component from enterprise (#789)
+  * bump webapps.e hash.
+  * Fix pagination bug (#798)
+  * Bump Teleport Connect version to 1.0.1 (#796)
+  * Omit title when comparing previous and current documents (#788)
+  * Update author and owner in package.json to be Gravitational (#792)
+  * update webapps.e submodule.
+  * Pin local shell to the specified cluster (#767)
+  * When updating cluster resources, remove only those that belong to this cluster (#782)
+  * Simplify k8s join (#750)
+  * Replace "Lorem ipsum" for empty states (#756)
+  * Hide command bar when no cluster is selected (#772)
+  * Prepend PATH with bundled tsh (#769)
+  * Change predicate example to use bracket notation (#774)
+  * Add configure step (#751)
+  * Add support for notarization (#770)
+  * Use new Teleconnect icon (#768)
+  * Teleport Connect: Add dropdown for database name (#757)
+  * Remove state related to a cluster when removing it (#755)
+  * Fix trying to read from a null token (#759)
+  * Fix check for the --insecure flag (#758)
+  * Show database username suggestions in Teleport Connect (#754)
+  * Change app name to `Teleport Connect` (#753)
+  * Add Serverside Pagination, Filtering, and Sorting (#739)
+  * Resolve issues on logout (#740)
+  * Change connections shortcut to `Command/Ctrl-P` (#747)
+  * Fix getting cwd in presence of lsof warnings (#745)
+  * Add IAM method to web ui (#690)
+  * Close `Identity` popover after selecting an option (#741)
+  * Fix not clickable notifications when displayed over xterm
+  * Use new colors for theme
+  * Bring back native scrollbar as the styled one causes content to jump when it becomes visible
+  * Use the mac package download link instead of the tarball.
+  * update webapps to support more MySQL audit events (#729)
+  * IdentityList: Move roles list back into conditional (#736)
+  * Add max-width on Identity popover (#735)
+  * DocumentGateway: Replace the Copy button with a Run button (#733)
+  * Use dropdown for the db connect button (#732)
+  * Fix path to packaged assets in Teleterm (#731)
+  * Use DB CLI commands provided by tsh daemon (#726)
+  * Show cluster document instead of keyboard shortcuts as an empty state
+  * Show leaf cluster selector only when cluster has leaves
+  * Adds the Servers tab as a configurable UI feature (#728)
+  * Save window size and position
+  * Create shared instance of `fileStorage` for all processes, save app state before closing
+  * Handle cancellation of `ClusterConnectDialog` when changing workspace, use `onCancel` instead of `onClose`
+  * Ask user whether to reopen previous documents
+  * Support Electron's main process environment in `theme/getPlatform()`
+  * Move App initialization to the `AppInitializer` so it has access to all contexts
+  * Use dark background for the window
+  * Resolve shell env (#718)
+  * Simplify the db connection tab (#720)
+  * Prevent crash when network or cluster is offline (#712)
+  * Add Redis, MariaDB and Microsoft SQL Server to DB wizard (#709)
+  * Improve Teleterm README (#719)
+  * Remove u2f components and logic (#711)
+  * Use teleterm/logger in runtimeSettings (#716)
+  * Remove global `keyDown` handler from `KeyboardArrowsNavigation` as it blocked submitting forms
+  * Submit modals' forms on `Enter` press
+  * Revert "Use x64 arch when building & packaging Teleterm"
+  * Fix accessing `serversSyncStatus` Map in `clustersService`
+  * Do not block app rendering when initializing function fails
+  * Use `Notifications` error in `syncRootCluster()` and `removeGateway()`
+  * Show errors in `ClusterResources`' tables using standard `Danger` labels
+  * Add `Notifications` component and service
+  * Use x64 arch when building & packaging Teleterm
+  * Update e-ref
+  * Update getMfaOptions to createMfaOptions
+  * Fix half auto-filling OTP's for input boxes meant for it (#706)
+  * Update to electron@13.6.9 (#703)
+  * Limit navigation capabilities to reduce attack surface
+  * Update node snapshot for new terminology.
+  * Modify wording of add node messaging.
+  * Add view documentation button to desktop view.
+  * Fix Active Sessions Table Misalignment (#699)
+  * use has* to determine when to render the Add resource buttons.
+  * Properly use `css` prop
+  * Make connections icon bigger
+  * Enable `babel-plugin-styled-components` in production and tests (#697)
+  * Apply `Identity` design changes
+  * Change command `cluster-remove` to `cluster-logout`
+  * Adjust `Identity` layout, combine `logout` and `clusterRemove` into a single action
+  * Update snapshots for new UI changes.
+  * Cleanup issues with jumping elements and some button cleanup.
+  * Use connection dropdown instead of modal for supplying SSH username
+  * Render ssh menu item as `NavLink` only when URL is provided
+  * Update protobufs for Teleterm (LoginRequest params)
+  * Update command for updating proto files
+  * Show username when possible in identity list (#687)
+  * Prevent breaking layout on long cluster name (#688)
+  * remove `Navigator` code (#685)
+  * Update electron-builder to 23.0.3
+  * Fixed up failing CI.
+  * Update failing snapshot tests from the updated Empty UI.
+  * Use inline style instead of modifying text template.
+  * Lint
+  * Fix flashing the 'add entity' button on load when empty.
+  * Hide header add button if empty.
+  * Update desktop UI empty state to new layout.
+  * Updated nodes page to new empty state.
+  * Update empty state for databases to new design.
+  * Update empty Kubernetes listing page to new design.
+  * Format Empty component to new design layout and apply new change to applications view.
+  * Change shortcut to open `QuickInput`
+  * Force `TopBar` items to take full height
+  * Hide kubes and apps
+  * Show leaf cluster name when possible in Connections list
+  * Change placeholder text in `ClusterAdd`
+  * Autocomplete database names for tsh proxy db
+  * Don't close the tab on non-zero exit code
+  * Always use root cluster URI to obtain `documentsService` in `useServerConnect`
+  * Update connection icon
+  * Automatically try to connect a connection when possible
+  * Display cluster name for each connection
+  * Take `localClusterUri` into account in `QuickInput` (#679)
+  * make middle part of `TopBar` central
+  * always show active item in `QuickInputList`
+  * adjust `QuickInput` to match designs
+  * add simple empty state to pickers
+  * Launch unsupported invocations of tsh ssh in local shell
+  * Remove leftover cruft from quick pickers
+  * Simplify manual db join (#653)
+  * Refactor join tokens generation to use new endpoint (#672)
+  * Update teleterm styles (#674)
+  * Create DocumentTshNode after executing "tsh ssh" in command bar
+  * Include command to run in AutocompleteResult
+  * useQuickInput: Rename serviceQuickInput to quickInputService
+  * Fix opening new terminal when there's no active document
+  * Adjust how showing & hiding autocomplete works in command bar
+  * Append space after picking command suggestion
+  * Open command bar commands in new local shell
+  * Autocomplete ssh hostnames
+  * QuickInputService.getAutocomplete: Return no-match on empty suggestions
+  * Automatically append @ after ssh login suggestion
+  * Ignore case for autocomplete
+  * Autocomplete commands and ssh logins
+  * Remove old pickers, rename Item to Suggestion
+  * Remove code related to empty command bar item
+  * Show autocomplete suggestions in command bar
+  * Remove command palette commands from command launcher
+  * Reformat commandLauncher.ts
+  * Improve identity picker (#670)
+  * Add clusters picker (#668)
+  * Update e-ref for regression fixes (#665)
+  * Fix Table Regression Bugs (#642)
+  * Support the 'unknown' audit event
+  * Updates Alert to use break-word (#655)
+  * Add keyboard support to `Connections` popover (#651)
+  * changes hostname to be the hostname rather than the ip addr (#654)
+  * Simplify manual app joining process (#641)
+  * Add connections switcher (#647)
+  * smooth out progress bar (#648)
+  * Add cluster context switching (#624)
+  * added internal back in
+  * Add windows internal logins back in
+  * internal k8s users
+  * internal k8s groups add
+  * remove whitespace and changes
+  * grammer
+  * Set all protocols
+  * Update default roles template
+  * desktop playback error handling (#638)
+  * only synchronize clipboards if data was or is going to be sent (#640)
+  * Update FormLogin.tsx (#608)
+  * Disable autocomplete on the SSH login input (#605)
+  * Fix two 'unkown' mispellings in alerts
+  * Use generated join token to simplify manual resources join (#619)
+  * Maintain aspect ratio on Desktop Playback (#635)
+  * Edit api response for getXXX (resources) (#622)
+  * Fix clipboard sync (#628)
+  * added missing prop.
+  * lint.
+  * Add cluster name to `tsh login` for kube instructions (#632)
+  * Use prop drilling to get the isEnterprise flag down into the DownloadLinks components.
+  * Remove the context calls from DownloadLinks to make testing easier.
+  * Update command for generating gRPC files for Teleterm
+  * Add more tests to Teleterm (#601)
+  * add missing license.
+  * If running in enterprise version then provide the enterprise download links.
+  * desktop per session mfa (#613)
+  * Clipboard (#594)
+  * Add chrome as unsupported for U2F checks (#609)
+  * Update e-ref for fetch more btn move (#607)
+  * Move Fetch More Button In Table (#606)
+  * Fix date picker (#604)
+  * postgres function is not prepared statements, revert
+  * update postgres events, and 2 more mysql statements event
+  * Add desktop clipboard audit events
+  * switch recordings service endpoint back to clusterEventsRecordingsPath so that returned recordings respect rbac where clauses, and users won't try to playback desktop sessions they don't have permission to (#600)
+  * Add `VirtualScroll` component (#595)
+  * add UT and test out storybook
+  * Add the `cert.create` event (#584)
+  * Update teleterm proto files (#593)
+  * Allow the automatic toggle to be visible when adding new nodes in OSS version.
+  * add db_name
+  * add events
+  * modifyResponse: Add optional space before /> to regex (#591)
+  * Teleterm Preview (beta) (#590)
+  * moving progress bar (#577)
+  * Add session connect event (#583)
+  * Update e-ref for flaky test fix and DataTable import (#582)
+  * Remove DataTable v1 (#573)
+  * Add storybook, make TunnelPublicAddress prop optional
+  * Add public tunnel address
+  * desktop session recording (#572)
+  * Fix typo in makeCluster and add unit test (#578)
+  * Update e-ref for date-fns migration (#571)
+  * Replace momentjs with date-fns (#568)
+  * Fixed the lint warnings for unused variables in the desktop session story.
+  * List recordings (#558)
+  * Add x11 forward events (#561)
+  * Clean up custom cells in Tables (#550)
+  * Update e-ref for updated UsageSummary and RequestList (#551)
+  * Update MfaDeviceList to use TableV2 (#549)
+  * Update RecordingList to TableV2 (#546)
+  * Table V2 Tweaks (#544)
+  * Update SessionList to TableV2 (#545)
+  * Update ClusterList to TableV2 (#548)
+  * Update RoleList to TableV2 (#542)
+  * Update UserList to TableV2 (#543)
+  * Update EventList to TableV2 (#541)
+  * Disable drone for PR (#540)
+  * Add Postgres Audit Events (#512)
+  * Update AppList to use TableV2 (#535)
+  * Add the `access_request.delete` event (#532)
+  * Update DesktopList to use TableV2 (#537)
+  * Update KubeList to use TableV2 (#536)
+  * Update DatabaseList to TableV2 (#534)
+  * Update NodeList to use Table V2 (#525)
+  * Add Table V2 (#524)
+  * Update xterm to the latest (#511)
+  * Adds a TDP Error message (#527)
+  * Replace `waitForElement` and `wait` with `waitFor` in tests (#529)
+  * Add error message for failed SSO authorization (#530)
+  * Add pagination to SelectFilters component (#518)
+  * Address `eslint` warnings (#522)
+  * Restore Build pipeline in CI (#521)
+  * Remove unused code (#517)
+  * Revert "Remove old `PlayerNext` (#513)" (#515)
+  * Remove old `PlayerNext` (#513)
+  * Create url filter and query params hook (#465)
+  * FIx devServer csrf and berear token handling (#506)
+  * Move search bar into Table (#502)
+  * Update e-ref for Invite/Reset refactoring and YAML import fix (#503)
+  * Fix YAML template imports (#501)
+  * Refactor Invites/Reset Components (#496)
+  * move jest rules to test overrides (#498)
+  * Add Separate Recordings List Service (#491)
+  * GCB buildfile
+  * cleanup `webpack.base.js` (#476)
+  * CR
+  * Makes getDisplaySize its own function
+  * removing unecessary client from onInit
+  * mirroring backend variable name updates
+  * updates to use connection string params rather than json
+  * attempting to add login and screensize to websocket string but getting smartcard not enabled, going back to master for a sanity check
+  * Update build depedencies (#473)
+  * Update e-ref for invite/reset welcome card (#483)
+  * Add prompt prior to form for Invite and Reset (#479)
+  * Make language for empty resources list more accurate (#472)
+  * Fix Safari Favicon & Update Docker Node Version (#464)
+  * changes inaccurate desktopId to desktopName
+  * updated to use cleaner backend api
+  * adds useMemo for document.title
+  * consolidating username, desktopId, clusterId extraction
+  * mimics clusterId • username@hostname document title of console for desktop sessions
+  * Create a general multiselect filter component (#454)
+  * Bug fix: Show a authentication dialog for web terminal (#452)
+  * Add created date to recovery codes respones (#442)
+  * State UTC timezone for consistent dates in tests (#449)
+  * Add account dashboard support for SSO users (#445)
+  * Update e-ref for dashboard (#446)
+  * MFA Device Management Dashboard (#412)
+  * Add audit log support for privilege token event (#440)
+  * adds Firefox specific keycodes
+  * adds mouse wheel support
+  * add preventDefault to prevent default browser shortcuts from interfering with desktop sessions
+  * refinements while creating isaiah/features-test branch for enterprise repo
+  * adds a test to ensure that the client only emits a "connect" message on the first png frame
+  * emit connect event when the connection is actually confirmed
+  * adds back disconnected flag (now private)
+  * Revert "removing disconnected flag"
+  * adding desktops to the cluster list
+  * fixing cell naming and component usage
+  * adding name column
+  * Add webauthn options to forms (#423)
+  * changing ts to js to remove allow json from tsconfig to see if that fixes ci error
+  * Remove the OS column in the desktop list view
+  * updating test and snapshot
+  * changing the disconnected message
+  * configuring Audit logs to display desktop events
+  * removing disconnected flag
+  * redesign to remove focus variable
+  * refactored with styled components
+  * removing resize
+  * moving TdpClientCanvas to its own directory
+  * CR nits
+  * refining naming
+  * Change RenderData to ImageData
+  * adds test for decoding regions
+  * adds test for message decoding
+  * Adds Desktops (preview) to the Main.story
+  * fixing test.
+  * making chrome-windows keycodes the default
+  * changing desktopServers to desktops
+  * fixing tests
+  * adds ui labels
+  * removing unnecessary useCallback
+  * shorter topbar and domain changed to hostname
+  * pipes in the windows logins from the userACL and displays allowed logins (carbon copy of how we do it for ssh server access
+  * Adds (preview) to desktop features and adds acl check for desktops. Now needs to add logic for windows_desktop_logins
+  * dealing with ts version discrepancy
+  * removing saveMessages flag
+  * rename connection to connectionAttempt
+  * performance testing code for requestAnimationFrame-array
+  * Sets up the basics of a performance test in storybook
+  * adding flag for capturing arraybufs as they come in and printing them to the console on disconnect
+  * fixing storybook
+  * makes system work accross browsers by using onload function
+  * moves openNewTab into a utils file and uses it for Desktop
+  * adds storybook and fixes incorrect loading jsx logic
+  * big performance improvements by converting image array buffer to a base64 encoded string and strapping that as the source of an html image element
+  * Changing websocket type to arraybuffer and modifying codec to work with that
+  * ignoring unrecognized keys
+  * refactor
+  * extending protocol functionality to full mvp functionality
+  * finishing touches
+  * makes TdpClientCanvas its own file component with state hook
+  * refactored internal structure
+  * refactors client and DesktopSession to simplify state management
+  * Revert "Noticed that it was confusing the the tdpclient was now both an emitter, and could return a Promise on the initial connection. This redesign puts the Promise logic into useDesktopSession so that tdpclient remains exclusively an event emitter."
+  * Noticed that it was confusing the the tdpclient was now both an emitter, and could return a Promise on the initial connection. This redesign puts the Promise logic into useDesktopSession so that tdpclient remains exclusively an event emitter.
+  * makes tdpclient.connect a promise so that it can be passed into a Promise.all and state can be consolidated
+  * changing styling
+  * CR
+  * adds disconnected state, adds storyboard
+  * Updating comments
+  * switches jsx components to use useTheme hook instead of being a implicit styled-components theme consumers which is confusing
+  * gets the real user@Host and adds logic for tracking a meta state between rest api calls and websocket
+  * updating topbar, icons, adding action menu
+  * Moves TopBar into its own file, adds ActionMenu (needs to updated with appropriate in-menu behavior)
+  * adds clipboard sharing en/disabled text and icon
+  * replace direct call to socket.close() with a tdpclient.disconnect for easier mock-ing
+  * adds cleanup handling and fixes bugs
+  * converts client to be an emitter
+  * deleting vestigial cruft
+  * move connection string wrangling to hook
+  * renamings and minor fixes
+  * First draft of a system which can pop up a new desktop session and render desktop screen to canvas
+  * Moves getHostName into api service for use elsewhere in the code
+  * Opens a new window when a desktop is selected (currently displays an empty Console component)
+  * nit
+  * removing status light
+  * CR
+  * nits
+  * cleaning up rdp port from domain addr
+  * Adds the basic design for the table
+  * Adding Desktop and Circle icons
+  * displays desktop data in table
+  * Strips Desktops of some database cruft that I'm not focusing on for now and creates a desktops service which successfully retrieves desktop objects from the backend
+  * renaming DatabaseList to DesktopList
+  * renaming Databases.tsx to Desktops
+  * copying Databases into a new Desktops dir and adding it as an option in the sidebar, and renaming useDatabases to useDesktops
+  * small fixes from final CR
+  * cosmetic changes + updating based on updated rfd0037
+  * renaming to "tdp"
+  * adds the nodejs TextEncoder to the window
+  * updating to use browser TextEncoder api. Unfortunately its another one jsdom hasn't caught up to yet
+  * adding codec and encoding tests
+  * Add webauthn support to web terminal mfa prompt (#421)
+  * Add webauthn methods to auth service (#418)
+  * Remove depracated endpoints (#417)
+  * Add Array Buffer and Base64URL converter (#415)
+  * Add database created/updated/deleted events (#413)
+  * Move FormLogin and FormInvite from shared to teleport (#411)
+  * Delete Gravity (#410)
+  * Update e-ref (#408)
+  * Add support for SessionProcessExit event (#407)
+  * Yarn workspace fails to add local package as dependency (#405)
+  * Add Account Recovery Flows (#398)
+  * Fix table pager clipping (#390)
+  * Update e-ref for access requests table fix (#392)
+  * Add support for unicode passwords (#389)
+  * Add watcher that logs user out when reaching max idle timeout  (#378)
+  * Add lock events to audit log (#377)
+  * Update Github YAML (#365)
+  * Temp fix for empty paginate result in session recording list (#368)
+  * [forward-port] AWS Console Access Tweaks (#366)
+  * Fix overflowing text with long cluster name in tc list view (#361)
+  * update e-ref (#360)
+  * Convert applications tiles view to table view (#340) (#359)
+  * Update e-ref: Access request bug fix and design update (#355)
+  * MongoDB and MySQL GCP support (#350)
+  * Use filter `session.end` to retrieve events for session recording screen (#339)
+  * Allow webapps to build without e (#352)
+  * Update trusted_cluster_enterprise.yaml
+  * Revert events list sorting back to original (latest to oldest) (#341)
+  * Add pagination to Audit Log screen (#329)
+  * Update drone signature for drone.teleport.dev (#334)
+  * Empty States (#333)
+  * Refactor services get link return value (#331)
+  * Refactor default dropdown selector CSS (#317)
+  * Add more icons to design package (#327)
+  * Update e-ref for changes in switchback banner (#324)
+  * Add kube and db to our cluster list action menu  (#323)
+  * :memo: Update e-ref for webapps.e database
+  * Created database access screen (#303)
+  * Update e-ref on adding Kube feature (#318)
+  * Create Kubernetes access screen (#304)
+  * Language/wording fixes with our editor (#313)
+  * Fix manual tsh login commands for apps and nodes (#311)
+  * Set default empty object on regular renew token request (#314)
+  * Filter out session end events with "session_recording" set to off (#306)
+  * Use dedicated API for app FQDN resolving (#284)
+  * Update e-ref on billing chart ytick formatting fix (#290)
+  * :bug: Fix not being able to filter nodes by searching exact label
+  * Updated empty node name to N/A and changed the placeholder text (#246, #276) (#278)
+  * Update renew session response and renew URL (#261)
+  * Type and style tweaks and add unix display date (#257)
+  * Correct misspelling in kubernetes comment for role (#263)
+  * Remove duplicate `deny` section in Role template (#260)
+  * Update e-ref: Remove verb update check for access request reviews (#258)
+  * Update README.md
+  * mfa related fixes (#251)
+  * Add more fields to user context (#216)
+  * terminal: check whether the browser supports U2F (#249)
+  * ssh: handle U2F challenge in web terminal (#248)
+  * Update link to github discussion and feedback email (#239)
+  * Add billing events for audit logs (#245)
+  * Convert datetimes returned by day-picker lib to begin at start and end of day (#244)
+  * Support multiple MFA methods on login (#241)
+  * Add Billing Feature (#238)
+  * Increase token renewal threshold to 3 min (#242)
+  * Update README.md
+  * mfa: support multiple U2F devices on login (#236)
+  * Handle new MFA audit events
+  * Implement OAuth-style state token for AAP auth flow
+  * Disable use of web workers in ace editor (#232)
+  * Fix bug and consistent error banner placement (#233)
+  * Fix error handling on the Delete Role Dialog (#231)
+  * Open source and refactor resources (#222)
+  * Refactor error handling for auth cn (#226)
+  * Add app URI validation regexp to match backend logic (#227)
+  * Tiny grammar fix (#223)
+  * Check for browser u2f support and display user-friendly err msg (#218)
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Populate "Node" name in k8s session recordings (#214)
+  * Update e-ref (#213)
+  * Replace app name check with regex that conform to rfc 1035 (#210)
+  * Refactor and update user context object (#211)
+  * Add database access audit events
+  * Set default role to 'admin' vs 'admins' (#208)
+  * Grab auth type from config for manual step flag --auth (#201)
+  * Rename Blog (#202)
+  * Update links to https://goteleport.com (#200)
+  * Fix manual steps and remove share session dialog (#199)
+  * Disable AddServer and AddApp buttons on leaf clusters (#198)
+  * Fix some regression bugs (#197)
+  * Fix instructions for Manual steps (#196)
+  * Minor improvements to dialogs (#195)
+  * Add ShareSession dialog and share button to DocumentSsh (#193)
+  * Safari fixes (#192)
+  * Add KUBE_REQUEST event and improve existing k8s events (#190)
+  * Lisa/manual testing bugs (#189)
+  * TextSelectCopy appends $ to text when bash flag is true (#188)
+  * Teleport V5 (#185)
+  * [teleport] Implement account access check and waiting room (#178)
+  * Fix case sensitive testing for sso providers (#174)
+  * [teleport] Add session.reject, trusted_cluster.create/delete events (#172)
+  * [teleport] Handle null value response when retrieving audit logs (#166)
+  * Remove gh from web-apps Docker image (#154)
+  * [teleport] Remove url, proxy version, node count from clusters list (#152)
+  * Update gh version to latest
+  * [teleport] Remove checking for error keywords for websocket close event (#147)
+  * Install gh in Dockerfile
+  * Tidy up
+  * Tidy up
+  * Remove update-teleport-repo
+  * Change update-teleport-repo job to raise a PR rather than instantly committing
+  * Raise a PR rather than pushing to Teleport
+  * [teleport] Set server/cluster ID for new session requests (#140)
+  * [teleport] Fix flex issue with terminal ActionBar (#141)
+  * Check out submodules
+  * Check out submodules
+  * Change directory
+  * Split up steps and add dockersock
+  * Install make
+  * Sign file
+  * Add initial .drone.yml
+  * [teleport] Work around for server sending close events for shell exit errors(#127)
+  * [teleport] Drop UTM link prefixes (#128)
+  * Add boaders and onhover styles to table rows (#126)
+  * [teleport] Fix grammar for non/interactive session event log (#124)
+  * [teleport] Various fixes (#123)
+  * Typescript conversion mostly in shared package (#120)
+  * Fix a bug with 0 nodes in the cluster list
+  * Add Open Terminal Button to the Cluster List (#121)
+  * Bring back QuickLaunch (#118)
+  * Better audit events description (#117)
+  * [teleport] Set user permission for viewing audit logs (#116)
+  * [design] Remove uppercasing of login names (#115)
+  * Update icomoon library with new icons (#114)
+  * Touchups round 2 (#113)
+  * Grammatical fix (#112)
+  * [Teleport] Remove sessions view from Audit Log (#109)
+  * [Teleport] Use native URLSearchParams to handle escape symbols in URL params (#107)
+  * [Teleport] Account for empty hostname and server addrs in Session (#106)
+  * Allow dashes for login name in QuickLauncher (#108)
+  * [Teleport] Replace session button with quicklauncher in Node (#105)
+  * [Teleport] Fix assortment of user issues (#103)
+  * Update e-ref (#104)
+  * [Teleport] Tweak styling for topbar auto scrollX and text alignment (#102)
+  * Replace cluster view button and open terminal related actions in new tabs (#101)
+  * Check for expired session before resources unload (redirect) (#100)
+  * Fix session scroller (#99)
+  * Replace "entity" with "name" in Audit Events
+  * Delete un-used files
+  * Alexey/updateddesign (#98)
+  * Update xterm to 2.8.1 (#95)
+  * Filter non interactive sessions out (#94)
+  * Address code review
+  * Change action btn, rename title, refactor fetchSession
+  * Add back clusterId for makeSessions, refactor fetchSession
+  * Clean up active sessions list
+  * update e-ref
+  * Bump jquery from 3.4.1 to 3.5.0 in /packages/gravity (#89)
+  * [Teleport] Allow switching tabs with hotkeys (#81)
+  * update e-ref (#82)
+  * [Teleport] Create Support component, story, and snpashot test (#78)
+  * Fix U2F login error messages (#76)
+  * Display nodes hostname instead of its ID under session audit log (#75)
+  * Display hostname and addr in active sessions list (#74)
+  * README file updates
+  * Fixed broken docker build
+  * Cleanup
+  * Type SessionList
+  * Use local tsc intance when building force project
+  * Fix eslint warning messages
+  * Add proto files to force MVP
+  * use custom scrollbars styles on macs
+  * Address url-loader breaking changes
+  * Fix OSS redirects (#72)
+  * Auto close active terminal tab on terminal.close event (#73)
+  * update e-ref (#71)
+  * Fix url-loader and file-loader (#70)
+  * Fix build pipeline (#66)
+  * Display cluster info when user clicks btn using user context (#63)
+  * Simplify and clean up Makefile (#62)
+  * use UTC in unit-tests (#58)
+  * Fix broken tests (#59)
+  * Automated builds (#53)
+  * Receive auth version for Cluster interface (#54)
+  * update e-ref (#57)
+  * fix: vscode does not resolve aliases in the new files
+  * Fix peer dep. warnings (#56)
+  * Cleanup
+  * cleanup
+  * dist files + updated e-ref
+  * Update e-ref
+  * JS to TS migration (#55)
+  * [teleport] Receive and display nodeCount and publicURL in cluster table (#52)
+  * Remove unused imports from makeEvent.ts
+  * Typescript migration (#51)
+  * [Teleport] Prompt user with a confirmation window for session tabs (#49)
+  * Refactor tabs creation to a separate hook and add unit-tests (#50)
+  * Do not rerender in-active document (#47)
+  * regenerate dist files
+  * New Terminal (#46)
+  * Unit test rest of Dialog*.jsx and TopNav*.jsx (#45)
+  * Read localAuthEnabled config from backend (#44)
+  * Unit Test Popover (#43)
+  * Unit test teleport/Login (#40) closes #39
+  * Test rendering of SideNav, SideNavItem, SideNavItemIcon (#41)
+  * Unit test featureBase (#38)
+  * Unit test useStore (#37)
+  * Unit test FormPassword (#36)
+  * Unit test FormLogin (#35)
+  * Unit test FieldSelect (#34)
+  * Test useRule unsubscribe behavior and some cleanup (#33)
+  * Unit test FieldInput (#32)
+  * Unit test useRule custom hook from Validation (#31)
+  * Prettify package design (#25)
+  * Unit test rules.js and Validation provider context (#30)
+  * Prettify package shared (#27)
+  * Prettify root config files for *.{js,json} (#29)
+  * Update README.md
+  * Unit Test ButtonSso and Validator Class (#24)
+  * Unit Test shared/ActionMenu (#23)
+  * Update dist files
+  * Fix modal test failing and include code coverage scripts (#22)
+  * Unit test design pkg (#18)
+  * Update E reference and port Gravity changes (#17)
+  * Add unit-test for Portal component (#16)
+  * Unit test LabelInput and LabelState (#15)
+  * Unit Test Design/Package/* [Part 3] (#14)
+  * Unit test all components inside Table.jsx (#13)
+  * Add vscode config file
+  * Add ResetPassword and Invite (#12)
+  * Unit Test Design/Packges [Part 2] (#11)
+  * Unit test Design/Alert, Button, ButtonIcon [Part 1] (#10)
+  * Snapshot Test package/gravity/login Story (#9)
+  * Finish converting package/design stories to CSF [Part 3] (#8)
+  * Disable eBPF stories (#7)
+  * Convert Card*, DataTable, Dialog*, Flex stories to CSF [Part 2] (#6)
+  * Update README and convert Alert, Button to CSF (#5)
+  * Upgrade storybook and convert a few stories to CSF
+  * Disable github hooks
+  * Docker should work when submodules are missing
+  * Rename e submodule to webapps.e
+  * Fix storybook sorting
+  * Add Force Web UI package
+  * Add initial BPF viewer implementation
+  * Add typescript support and update npm depenencies
+  * Update README.md (#2)
+  * Fix user invite
+  * Fix typos
+  * Add a better comment
+  * Do not delete dist folders on make clean
+  * Update packages/build README file.
+  * Update e-ref
+  * Allow custom webpack config in dev builds
+  * Refactor dev server code
+  * Change default datetime format
+  * Fix type on design stories
+  * Update e-ref
+  * Docs (#1)
+  * Exclude all dist folders
+  * Update e-ref
+  * dist files
+  * Update e-ref
+  * Add E reference
+  * Move code to this repo
+  * Initial commit
+
+-------------------------------------------------------------------
+Tue Jan 31 15:22:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 11.3.1:
+  * Release 11.3.1 (#20864)
+  * Add tsh proxy types aws,db,ssh to CLI ref (#20547)
+  * Fixed issue where container image tag and push step would fail due to missing `docker pull` `--platform` argument (#20859)
+
+-------------------------------------------------------------------
+Tue Jan 31 15:16:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 11.3.0:
+  * Release 11.3.0 (#20841)
+  * InstallNode Script: use correct version (oss vs ent) (#20816)
+  * WebAPI/CreateDB: improve error message when DB already exists (#20755)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#20803)
+  * [v11] Add support for Moderated Sessions in the Web UI  (#19647)
+  * Fix key attestation error on `tsh login` (#20712)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#20790)
+  * Renew Kubernetes cluster credentials until the cluster is removed from inventory (#20788)
+  * [v11] update e and webassets to latest v11 (#20780)
+  * [v11] feat: evaluate login rules for OIDC and SAML users (#20738)
+  * Pass parent context to `prompt.Confirmation()` in `identityfile`. (#20685) (#20773)
+  * [v11] feat: evaluate login rules for GitHub users (#20737)
+  * fix(azure): verify if system identity is set (#20483)
+  * Add test that verifies connectivity when Auth is down (#20450) (#20683)
+  * [v11] Reject access requests with invalid cluster names (#20674)
+  * [v11] Convert rhel `VERSION_ID`s to only include the major version (#20604)
+  * Fix two issues with Oracle MySQL client on Windows. (#20599)
+  * [v11] feat: add login rule audit event types
+  * [v11] feat: add RW verbs for login rules to preset editor role
+  * [v11] ci: Use large macOS runner for build-macos workflow (#20718)
+  * [v11] Disconnect moderated session on Ctrl+C (#20588)
+  * Alert ack API + CLI implementation (#20692)
+  * Enforce using github.com/google/uuid (#20633) (#20681)
+  * Update ssh-approval-email.mdx (#20701)
+  * [v11] Move connection metrics to `proxy.Router` (#20688)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#20625)
+  * [v11] (buddy) helm: Add nodeSelector field (#20441)
+  * [v11] helm: have proxy reload certificates daily (#20503)
+  * helm: addPodMonitor support (#20564)
+  * [v11] Fix typo in install-node script's usage message (#20668)
+  * Show `client_idle_timeout_message` for windows access (#20617)
+  * [v11] feat: add login rule evaluator to auth.Server (#20629)
+  * Document Machine ID and CircleCI joining (#20545)
+  * Docs. Direct invite link via docs (#20548)
+  * helm: support passing raw config in `teleport-kube-agent` (#20129) (#20449)
+  * [v11] Docker install doc updates (#20578)
+  * Update FedRAMP link (#20464)
+  * Docs version update (#20612)
+  * Fix: change var to inner scope's Testing t (#20595)
+  * fix `tctl auth sign --format kubernetes` when using remote auth server (#20497) (#20571)
+  * Increase `ReadDeadline` to accommodate slow clients (#20517)
+
+-------------------------------------------------------------------
 Tue Jan 24 20:42:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 11.2.3:
@@ -263,7 +1309,7 @@ Tue Nov 29 08:02:09 UTC 2022 - kastl@b1-systems.de
   * Fix trusted clusters for Desktop Access
   * Enable and fix AuditOn. (#18574)
   * update teleport.e submodule (#18687)
-  * [v11] Adds GCP GKE auto-discovery (#18396)
+  * [v11] Adds GCP GKE auto-discovery (#18396)
   * [v11] [Docs] Fix rewrite key example. (#18387)
   * Add ability to have multiple Github auth connector implementations (#18521)
   * [v11] Allow configuration of identity file and proxy url with env in `tctl` and `tsh`. (#18673)

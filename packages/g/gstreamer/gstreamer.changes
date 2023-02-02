@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jan 27 10:10:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to reduce the required meson version to 0.61.0 since
+  that's what we have in SLE 15:
+  * reduce-required-meson.patch
+- Probably because of a problem in SLE's meson, the generated
+  pkgconfig files are missing some variables that are needed by
+  rpm to generate the pkgconfig(...) provides correctly. In order
+  to fix this, we now check for those variables and insert them
+  in the pc files before installation if they're missing.
+
+-------------------------------------------------------------------
+Tue Jan 24 16:46:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + AV1 video codec support improvements
+  + New HLS, DASH and Microsoft Smooth Streaming adaptive streaming
+    clients
+  + Qt6 support for rendering video inside a QML scene
+  + Minimal builds optimised for binary size, including only the
+    individual elements needed
+  + Playbin3, Decodebin3, UriDecodebin3, Parsebin enhancements and
+    stabilisation
+  + WebRTC simulcast support and support for Google Congestion
+    Control
+  + WebRTC-based media server ingestion/egress (WHIP/WHEP) support
+  + New easy to use batteries-included WebRTC sender plugin
+  + Easy RTP sender timestamp reconstruction for RTP and RTSP
+  + ONVIF timed metadata support
+  + New fragmented MP4 muxer and non-fragmented MP4 muxer
+  + New plugins for Amazon AWS storage and audio transcription
+    services
+  + New gtk4paintablesink and gtkwaylandsink renderers
+  + New videocolorscale element that can convert and scale in one
+    go for better performance
+  + High bit-depth video improvements
+  + Touchscreen event support in navigation API
+  + Rust plugins now shipped in macOS and Windows/MSVC binary
+    packages
+  + H.264/H.265 timestamp correction elements for PTS/DTS
+    reconstruction before muxers
+  + Improved design for DMA buffer sharing and modifier handling
+    for hardware-accelerated video decoders/encoders/filters and
+    capturing/rendering on Linux
+  + Video4Linux2 hardware accelerated decoder improvements
+  + CUDA integration and Direct3D11 integration and plugin
+    improvements
+  + New H.264 / AVC, H.265 / HEVC and AV1 hardware-accelerated
+    video encoders for AMD GPUs using the Advanced Media Framework
+    (AMF) SDK
+  + applemedia: H.265 / HEVC video encoding + decoding support
+  + androidmedia: H.265 / HEVC video encoding support
+  + New "force-live" property for audiomixer, compositor,
+    glvideomixer, d3d11compositor etc.
+  + Lots of new plugins, features, performance improvements and bug
+    fixes
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Dec 22 12:43:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.5:

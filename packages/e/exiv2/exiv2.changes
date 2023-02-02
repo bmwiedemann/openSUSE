@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 17:42:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add always-use-signed-char-for-conversion.patch for test suite
+  fixes on non-x86_64
+
+-------------------------------------------------------------------
 Sat Jan 21 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.6:

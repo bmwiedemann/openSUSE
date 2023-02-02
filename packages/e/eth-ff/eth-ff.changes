@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:16:29 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add topology-fix-support-for-disabled-MD5-authentication.patch to fix
+  compilation issues with net-snmp with disabled MD5 authentication.
+
+-------------------------------------------------------------------
 Thu Sep 15 07:30:22 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v11.3.0.0-130 (jsc#PED-349)

@@ -769,4 +769,12 @@
   * Treat Exif.Sony1.PreviewImage as undefined tag</comment>
     <requestid>1060107</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>61375c304109e89f9b72b5eb5e743afb</srcmd5>
+    <version>0.27.6</version>
+    <time>1675357623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062320</requestid>
+  </revision>
 </revisionlist>

@@ -3949,4 +3949,12 @@
   * ncurses-6.4.dif</comment>
     <requestid>1058637</requestid>
   </revision>
+  <revision rev="230" vrev="3">
+    <srcmd5>517e5b14c4e50ae54740265e81ffd16d</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1675357610</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062058</requestid>
+  </revision>
 </revisionlist>

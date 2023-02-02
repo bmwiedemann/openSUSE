@@ -205,4 +205,13 @@ trim changes file</comment>
     <comment>- Remove stale references to ocaml_make_testsuite</comment>
     <requestid>1046306</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6bdbbe6ee9c7236f642fae6029624016</srcmd5>
+    <version>20230101</version>
+    <time>1675357646</time>
+    <user>dimstar_suse</user>
+    <comment>Allow variables in smp_mflags to be interpolated
+  for https://github.com/rpm-software-management/rpm/issues/2343 (forwarded request 1061850 from bmwiedemann)</comment>
+    <requestid>1062399</requestid>
+  </revision>
 </revisionlist>

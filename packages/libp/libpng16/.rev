@@ -709,4 +709,13 @@
   + tools: Fix a memory leak in pngcp. (forwarded request 1038184 from dimstar)</comment>
     <requestid>1038197</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a298ada5d7057d9da1964c09a1eb0512</srcmd5>
+    <version>1.6.39</version>
+    <time>1675357657</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build: some*.la files are symlinks. Adjust spec to use
+   find -type f,l (forwarded request 1062444 from dimstar)</comment>
+    <requestid>1062455</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,41 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:17:50 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto-policies requirements for the regression tests
+
+-------------------------------------------------------------------
+Wed Jan 25 11:09:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Set OpenSSL 3.0.7 as the default openssl [bsc#1205042]
+  * Rename openssl-1.1.0-no-html.patch to openssl-no-html-docs.patch
+  * Rebase openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
+  * Package a copy of the original default config file called
+    openssl.cnf and name it as openssl-orig.cnf and warn the user
+    if the files differ.
+  * Add openssl-3-devel as conflicting with libopenssl-1_1-devel
+  * Remove patches:
+    - fix-config-in-tests.patch
+    - openssl-use-versioned-config.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 09:10:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Create the openssl ca-certificates directory in case the
+  ca-certificates package is not installed. This directory is
+  required by the nodejs regression tests. [bsc#1207484]
+
+-------------------------------------------------------------------
 Wed Dec 14 16:38:05 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Fix X.509 Policy Constraints Double Locking [bsc#1206374, CVE-2022-3996]
   * Add patch: openssl-3-Fix-double-locking-problem.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 12:40:04 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Compute the hmac files for FIPS 140-3 integrity checking of the
+  openssl shared libraries using the brp-50-generate-fips-hmac
+  script. Also computed for the 32bit package.
 
 -------------------------------------------------------------------
 Tue Nov  1 18:29:41 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>

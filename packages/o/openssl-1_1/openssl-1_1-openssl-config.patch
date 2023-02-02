@@ -1,0 +1,530 @@
+Index: openssl-1.1.1s/Configurations/unix-Makefile.tmpl
+===================================================================
+--- openssl-1.1.1s.orig/Configurations/unix-Makefile.tmpl
++++ openssl-1.1.1s/Configurations/unix-Makefile.tmpl
+@@ -140,8 +140,8 @@ INSTALL_SHLIB_INFO={- join(" ", map { "\
+ INSTALL_ENGINES={- join(" ", map { dso($_) } @{$unified_info{install}->{engines}}) -}
+ INSTALL_PROGRAMS={- join(" ", map { $_.$exeext } @{$unified_info{install}->{programs}}) -}
+ {- output_off() if $disabled{apps}; "" -}
+-BIN_SCRIPTS=$(BLDDIR)/tools/c_rehash
+-MISC_SCRIPTS=$(BLDDIR)/apps/CA.pl $(BLDDIR)/apps/tsget.pl:tsget
++BIN_SCRIPTS=$(BLDDIR)/tools/c_rehash-1_1
++MISC_SCRIPTS=$(BLDDIR)/apps/CA-1_1.pl $(BLDDIR)/apps/tsget-1_1.pl:tsget-1_1
+ {- output_on() if $disabled{apps}; "" -}
+ 
+ APPS_OPENSSL={- use File::Spec::Functions;
+@@ -579,14 +579,14 @@ install_ssldirs:
+ 			: {- output_on() if windowsdll(); "" -}; \
+ 		fi; \
+ 	done
+-	@$(ECHO) "install $(SRCDIR)/apps/openssl.cnf -> $(DESTDIR)$(OPENSSLDIR)/openssl.cnf.dist"
+-	@cp $(SRCDIR)/apps/openssl.cnf "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf.new"
+-	@chmod 644 "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf.new"
+-	@mv -f "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf.new" "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf.dist"
+-	@if [ ! -f "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf" ]; then \
+-		$(ECHO) "install $(SRCDIR)/apps/openssl.cnf -> $(DESTDIR)$(OPENSSLDIR)/openssl.cnf"; \
+-		cp $(SRCDIR)/apps/openssl.cnf "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf"; \
+-		chmod 644 "$(DESTDIR)$(OPENSSLDIR)/openssl.cnf"; \
++	@$(ECHO) "install $(SRCDIR)/apps/openssl-1_1.cnf -> $(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf.dist"
++	@cp $(SRCDIR)/apps/openssl-1_1.cnf "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf.new"
++	@chmod 644 "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf.new"
++	@mv -f "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf.new" "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf.dist"
++	@if [ ! -f "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf" ]; then \
++		$(ECHO) "install $(SRCDIR)/apps/openssl-1_1.cnf -> $(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf"; \
++		cp $(SRCDIR)/apps/openssl-1_1.cnf "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf"; \
++		chmod 644 "$(DESTDIR)$(OPENSSLDIR)/openssl-1_1.cnf"; \
+ 	fi
+ 	@$(ECHO) "install $(SRCDIR)/apps/ct_log_list.cnf -> $(DESTDIR)$(OPENSSLDIR)/ct_log_list.cnf.dist"
+ 	@cp $(SRCDIR)/apps/ct_log_list.cnf "$(DESTDIR)$(OPENSSLDIR)/ct_log_list.cnf.new"
+@@ -870,7 +870,7 @@ lint:
+ 
+ generate_apps:
+ 	( cd $(SRCDIR); $(PERL) VMS/VMSify-conf.pl \
+-				< apps/openssl.cnf > apps/openssl-vms.cnf )
++				< apps/openssl-1_1.cnf > apps/openssl-vms.cnf )
+ 
+ generate_crypto_bn:
+ 	( cd $(SRCDIR); $(PERL) crypto/bn/bn_prime.pl > crypto/bn/bn_prime.h )
+Index: openssl-1.1.1s/Configure
+===================================================================
+--- openssl-1.1.1s.orig/Configure
++++ openssl-1.1.1s/Configure
+@@ -35,7 +35,7 @@ my $usage="Usage: Configure [no-<cipher>
+ #               directories bin, lib, include, share/man, share/doc/openssl
+ #               This becomes the value of INSTALLTOP in Makefile
+ #               (Default: /usr/local)
+-# --openssldir  OpenSSL data area, such as openssl.cnf, certificates and keys.
++# --openssldir  OpenSSL data area, such as openssl-1_1.cnf, certificates and keys.
+ #               If it's a relative directory, it will be added on the directory
+ #               given with --prefix.
+ #               This becomes the value of OPENSSLDIR in Makefile and in C.
+Index: openssl-1.1.1s/INSTALL
+===================================================================
+--- openssl-1.1.1s.orig/INSTALL
++++ openssl-1.1.1s/INSTALL
+@@ -296,7 +296,7 @@
+                    be undesirable if small executable size is an objective.
+ 
+   no-autoload-config
+-                   Don't automatically load the default openssl.cnf file.
++                   Don't automatically load the default openssl-1_1.cnf file.
+                    Typically OpenSSL will automatically load a system config
+                    file which configures default ssl options.
+ 
+Index: openssl-1.1.1s/NEWS
+===================================================================
+--- openssl-1.1.1s.orig/NEWS
++++ openssl-1.1.1s/NEWS
+@@ -5,6 +5,9 @@
+   This file gives a brief overview of the major changes between each OpenSSL
+   release. For more details please read the CHANGES file.
+ 
++  IMPORTANT: For compatibility with OpenSSL 3.0, the OpenSSL master
++  configuration file openssl.cnf has been renamed to openssl-1_1.cnf.
++
+   Major changes between OpenSSL 1.1.1r and OpenSSL 1.1.1s [1 Nov 2022]
+ 
+       o Fixed a regression introduced in OpenSSL 1.1.1r not refreshing the
+Index: openssl-1.1.1s/doc/HOWTO/certificates.txt
+===================================================================
+--- openssl-1.1.1s.orig/doc/HOWTO/certificates.txt
++++ openssl-1.1.1s/doc/HOWTO/certificates.txt
+@@ -16,7 +16,7 @@ Certificate authorities should read http
+ In all the cases shown below, the standard configuration file, as
+ compiled into openssl, will be used.  You may find it in /etc/,
+ /usr/local/ssl/ or somewhere else.  By default the file is named
+-openssl.cnf and is described at https://www.openssl.org/docs/apps/config.html.
++openssl-1_1.cnf and is described at https://www.openssl.org/docs/apps/config.html.
+ You can specify a different configuration file using the
+ '-config {file}' argument with the commands shown below.
+ 
+Index: openssl-1.1.1s/doc/man3/OPENSSL_config.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man3/OPENSSL_config.pod
++++ openssl-1.1.1s/doc/man3/OPENSSL_config.pod
+@@ -15,7 +15,7 @@ OPENSSL_config, OPENSSL_no_config - simp
+ 
+ =head1 DESCRIPTION
+ 
+-OPENSSL_config() configures OpenSSL using the standard B<openssl.cnf> and
++OPENSSL_config() configures OpenSSL using the standard B<openssl-1_1.cnf> and
+ reads from the application section B<appname>. If B<appname> is NULL then
+ the default section, B<openssl_conf>, will be used.
+ Errors are silently ignored.
+Index: openssl-1.1.1s/doc/man5/config.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man5/config.pod
++++ openssl-1.1.1s/doc/man5/config.pod
+@@ -7,7 +7,7 @@ config - OpenSSL CONF library configurat
+ =head1 DESCRIPTION
+ 
+ The OpenSSL CONF library can be used to read configuration files.
+-It is used for the OpenSSL master configuration file B<openssl.cnf>
++It is used for the OpenSSL master configuration file B<openssl-1_1.cnf>
+ and in a few other places like B<SPKAC> files and certificate extension
+ files for the B<x509> utility. OpenSSL applications can also use the
+ CONF library for their own purposes.
+Index: openssl-1.1.1s/include/internal/cryptlib.h
+===================================================================
+--- openssl-1.1.1s.orig/include/internal/cryptlib.h
++++ openssl-1.1.1s/include/internal/cryptlib.h
+@@ -51,7 +51,7 @@ typedef struct app_mem_info_st APP_INFO;
+ typedef struct mem_st MEM;
+ DEFINE_LHASH_OF(MEM);
+ 
+-# define OPENSSL_CONF             "openssl.cnf"
++# define OPENSSL_CONF             "openssl-1_1.cnf"
+ 
+ # ifndef OPENSSL_SYS_VMS
+ #  define X509_CERT_AREA          OPENSSLDIR
+Index: openssl-1.1.1s/Configurations/descrip.mms.tmpl
+===================================================================
+--- openssl-1.1.1s.orig/Configurations/descrip.mms.tmpl
++++ openssl-1.1.1s/Configurations/descrip.mms.tmpl
+@@ -140,8 +140,8 @@ INSTALL_SHLIBS={- join(", ", map { "-\n\
+ INSTALL_ENGINES={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{engines}}) -}
+ INSTALL_PROGRAMS={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{programs}}) -}
+ {- output_off() if $disabled{apps}; "" -}
+-BIN_SCRIPTS=[.tools]c_rehash.pl
+-MISC_SCRIPTS=[.apps]CA.pl, [.apps]tsget.pl
++BIN_SCRIPTS=[.tools]c_rehash-1_1.pl
++MISC_SCRIPTS=[.apps]CA-1_1.pl, [.apps]tsget-1_1.pl
+ {- output_on() if $disabled{apps}; "" -}
+ 
+ APPS_OPENSSL={- use File::Spec::Functions;
+Index: openssl-1.1.1s/VMS/openssl_utils.com.in
+===================================================================
+--- openssl-1.1.1s.orig/VMS/openssl_utils.com.in
++++ openssl-1.1.1s/VMS/openssl_utils.com.in
+@@ -8,7 +8,7 @@ $	OPENSSL		:== $OSSL$EXE:OPENSSL'v'
+ $
+ $	IF F$TYPE(PERL) .EQS. "STRING"
+ $	THEN
+-$	    C_REHASH	:== 'PERL' OSSL$EXE:c_rehash.pl
++$	    C_REHASH	:== 'PERL' OSSL$EXE:c_rehash-1_1.pl
+ $	ELSE
+ $	    WRITE SYS$ERROR "NOTE: no perl => no C_REHASH"
+ $	ENDIF
+Index: openssl-1.1.1s/apps/CA.pl.in
+===================================================================
+--- openssl-1.1.1s.orig/apps/CA.pl.in
++++ openssl-1.1.1s/apps/CA.pl.in
+@@ -113,10 +113,10 @@ sub run
+ 
+ 
+ if ( $WHAT =~ /^(-\?|-h|-help)$/ ) {
+-    print STDERR "usage: CA.pl -newcert | -newreq | -newreq-nodes | -xsign | -sign | -signCA | -signcert | -crl | -newca [-extra-cmd extra-params]\n";
+-    print STDERR "       CA.pl -pkcs12 [-extra-pkcs12 extra-params] [certname]\n";
+-    print STDERR "       CA.pl -verify [-extra-verify extra-params] certfile ...\n";
+-    print STDERR "       CA.pl -revoke [-extra-ca extra-params] certfile [reason]\n";
++    print STDERR "usage: CA-1_1.pl -newcert | -newreq | -newreq-nodes | -xsign | -sign | -signCA | -signcert | -crl | -newca [-extra-cmd extra-params]\n";
++    print STDERR "       CA-1_1.pl -pkcs12 [-extra-pkcs12 extra-params] [certname]\n";
++    print STDERR "       CA-1_1.pl -verify [-extra-verify extra-params] certfile ...\n";
++    print STDERR "       CA-1_1.pl -revoke [-extra-ca extra-params] certfile [reason]\n";
+     exit 0;
+ }
+ if ($WHAT eq '-newcert' ) {
+Index: openssl-1.1.1s/apps/build.info
+===================================================================
+--- openssl-1.1.1s.orig/apps/build.info
++++ openssl-1.1.1s/apps/build.info
+@@ -73,7 +73,7 @@ IF[{- !$disabled{apps} -}]
+   GENERATE[progs.h]=progs.pl $(APPS_OPENSSL)
+   DEPEND[progs.h]=../configdata.pm
+ 
+-  SCRIPTS=CA.pl tsget.pl
+-  SOURCE[CA.pl]=CA.pl.in
+-  SOURCE[tsget.pl]=tsget.in
++  SCRIPTS=CA-1_1.pl tsget-1_1.pl
++  SOURCE[CA-1_1.pl]=CA.pl.in
++  SOURCE[tsget-1_1.pl]=tsget.in
+ ENDIF
+Index: openssl-1.1.1s/apps/tsget.in
+===================================================================
+--- openssl-1.1.1s.orig/apps/tsget.in
++++ openssl-1.1.1s/apps/tsget.in
+@@ -47,7 +47,7 @@ sub create_curl {
+     $curl->setopt(CURLOPT_VERBOSE, 1) if $options{d};
+     $curl->setopt(CURLOPT_FAILONERROR, 1);
+     $curl->setopt(CURLOPT_USERAGENT,
+-        "OpenTSA tsget.pl/openssl-{- $config{version} -}");
++        "OpenTSA tsget-1_1.pl/openssl-{- $config{version} -}");
+ 
+     # Options for POST method.
+     $curl->setopt(CURLOPT_UPLOAD, 1);
+Index: openssl-1.1.1s/doc/man1/CA.pl.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/CA.pl.pod
++++ openssl-1.1.1s/doc/man1/CA.pl.pod
+@@ -2,16 +2,16 @@
+ 
+ =head1 NAME
+ 
+-CA.pl - friendlier interface for OpenSSL certificate programs
++CA-1_1.pl - friendlier interface for OpenSSL certificate programs
+ 
+ =head1 SYNOPSIS
+ 
+-B<CA.pl>
++B<CA-1_1.pl>
+ B<-?> |
+ B<-h> |
+ B<-help>
+ 
+-B<CA.pl>
++B<CA-1_1.pl>
+ B<-newcert> |
+ B<-newreq> |
+ B<-newreq-nodes> |
+@@ -23,15 +23,15 @@ B<-crl> |
+ B<-newca>
+ [B<-extra-cmd> extra-params]
+ 
+-B<CA.pl> B<-pkcs12> [B<-extra-pkcs12> extra-params] [B<certname>]
++B<CA-1_1.pl> B<-pkcs12> [B<-extra-pkcs12> extra-params] [B<certname>]
+ 
+-B<CA.pl> B<-verify> [B<-extra-verify> extra-params] B<certfile>...
++B<CA-1_1.pl> B<-verify> [B<-extra-verify> extra-params] B<certfile>...
+ 
+-B<CA.pl> B<-revoke> [B<-extra-ca> extra-params] B<certfile> [B<reason>]
++B<CA-1_1.pl> B<-revoke> [B<-extra-ca> extra-params] B<certfile> [B<reason>]
+ 
+ =head1 DESCRIPTION
+ 
+-The B<CA.pl> script is a perl script that supplies the relevant command line
++The B<CA-1_1.pl> script is a perl script that supplies the relevant command line
+ arguments to the B<openssl> command for some common certificate operations.
+ It is intended to simplify the process of certificate creation and management
+ by the use of some simple options.
+@@ -136,19 +136,19 @@ Users should consult B<openssl> command
+ 
+ Create a CA hierarchy:
+ 
+- CA.pl -newca
++ CA-1_1.pl -newca
+ 
+ Complete certificate creation example: create a CA, create a request, sign
+ the request and finally create a PKCS#12 file containing it.
+ 
+- CA.pl -newca
+- CA.pl -newreq
+- CA.pl -sign
+- CA.pl -pkcs12 "My Test Certificate"
++ CA-1_1.pl -newca
++ CA-1_1.pl -newreq
++ CA-1_1.pl -sign
++ CA-1_1.pl -pkcs12 "My Test Certificate"
+ 
+ =head1 DSA CERTIFICATES
+ 
+-Although the B<CA.pl> creates RSA CAs and requests it is still possible to
++Although the B<CA-1_1.pl> creates RSA CAs and requests it is still possible to
+ use it with DSA certificates and requests using the L<req(1)> command
+ directly. The following example shows the steps that would typically be taken.
+ 
+@@ -162,7 +162,7 @@ Create a DSA CA certificate and private
+ 
+ Create the CA directories and files:
+ 
+- CA.pl -newca
++ CA-1_1.pl -newca
+ 
+ enter cacert.pem when prompted for the CA filename.
+ 
+@@ -173,22 +173,22 @@ can optionally be created first):
+ 
+ Sign the request:
+ 
+- CA.pl -sign
++ CA-1_1.pl -sign
+ 
+ =head1 NOTES
+ 
+-Most of the filenames mentioned can be modified by editing the B<CA.pl> script.
++Most of the filenames mentioned can be modified by editing the B<CA-1_1.pl> script.
+ 
+ If the demoCA directory already exists then the B<-newca> command will not
+ overwrite it and will do nothing. This can happen if a previous call using
+ the B<-newca> option terminated abnormally. To get the correct behaviour
+ delete the demoCA directory if it already exists.
+ 
+-Under some environments it may not be possible to run the B<CA.pl> script
++Under some environments it may not be possible to run the B<CA-1_1.pl> script
+ directly (for example Win32) and the default configuration file location may
+ be wrong. In this case the command:
+ 
+- perl -S CA.pl
++ perl -S CA-1_1.pl
+ 
+ can be used and the B<OPENSSL_CONF> environment variable changed to point to
+ the correct path of the configuration file.
+Index: openssl-1.1.1s/doc/man1/ca.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/ca.pod
++++ openssl-1.1.1s/doc/man1/ca.pod
+@@ -698,7 +698,7 @@ the database has to be kept in memory.
+ The B<ca> command really needs rewriting or the required functionality
+ exposed at either a command or interface level so a more friendly utility
+ (perl script or GUI) can handle things properly. The script
+-B<CA.pl> helps a little but not very much.
++B<CA-1_1.pl> helps a little but not very much.
+ 
+ Any fields in a request that are not present in a policy are silently
+ deleted. This does not happen if the B<-preserveDN> option is used. To
+@@ -754,7 +754,7 @@ are in year 2050 or later.
+ 
+ =head1 SEE ALSO
+ 
+-L<req(1)>, L<spkac(1)>, L<x509(1)>, L<CA.pl(1)>,
++L<req(1)>, L<spkac(1)>, L<x509(1)>, L<CA-1_1.pl(1)>,
+ L<config(5)>, L<x509v3_config(5)>
+ 
+ =head1 COPYRIGHT
+Index: openssl-1.1.1s/doc/man1/rehash.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/rehash.pod
++++ openssl-1.1.1s/doc/man1/rehash.pod
+@@ -6,7 +6,7 @@ Original text by James Westby, contribut
+ =head1 NAME
+ 
+ openssl-c_rehash, openssl-rehash,
+-c_rehash, rehash - Create symbolic links to files named by the hash values
++c_rehash-1_1, rehash - Create symbolic links to files named by the hash values
+ 
+ =head1 SYNOPSIS
+ 
+@@ -19,13 +19,13 @@ B<[-n]>
+ B<[-v]>
+ [ I<directory>...]
+ 
+-B<c_rehash>
++B<c_rehash-1_1>
+ I<flags...>
+ 
+ =head1 DESCRIPTION
+ 
+-On some platforms, the OpenSSL B<rehash> command is available as
+-an external script called B<c_rehash>.  They are functionally equivalent,
++On some platforms, the OpenSSL B<rehash-1_1> command is available as
++an external script called B<c_rehash-1_1>.  They are functionally equivalent,
+ except for minor differences noted below.
+ 
+ B<rehash> scans directories and calculates a hash value of each
+@@ -66,7 +66,7 @@ more than one such object appears in the
+ 
+ =head2 Script Configuration
+ 
+-The B<c_rehash> script
++The B<c_rehash-1_1> script
+ uses the B<openssl> program to compute the hashes and
+ fingerprints. If not found in the user's B<PATH>, then set the
+ B<OPENSSL> environment variable to the full pathname.
+Index: openssl-1.1.1s/doc/man1/tsget.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/tsget.pod
++++ openssl-1.1.1s/doc/man1/tsget.pod
+@@ -35,7 +35,7 @@ line.
+ The tool sends the following HTTP request for each timestamp request:
+ 
+         POST url HTTP/1.1
+-        User-Agent: OpenTSA tsget.pl/<version>
++        User-Agent: OpenTSA tsget-1_1.pl/<version>
+         Host: <host>:<port>
+         Pragma: no-cache
+         Content-Type: application/timestamp-query
+@@ -108,7 +108,7 @@ Either option B<-C> or option B<-P> must
+ =item B<-P> CA_path
+ 
+ (HTTPS) The path containing the trusted CA certificates to verify the peer's
+-certificate. The directory must be prepared with the B<c_rehash>
++certificate. The directory must be prepared with the B<c_rehash-1_1>
+ OpenSSL utility. Either option B<-C> or option B<-P> must be given in case of
+ HTTPS. (Optional)
+ 
+Index: openssl-1.1.1s/doc/man1/verify.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/verify.pod
++++ openssl-1.1.1s/doc/man1/verify.pod
+@@ -75,7 +75,7 @@ The file should contain one or more cert
+ A directory of trusted certificates. The certificates should have names
+ of the form: hash.0 or have symbolic links to them of this
+ form ("hash" is the hashed certificate subject name: see the B<-hash> option
+-of the B<x509> utility). Under Unix the B<c_rehash> script will automatically
++of the B<x509> utility). Under Unix the B<c_rehash-1_1> script will automatically
+ create symbolic links to a directory of certificates.
+ 
+ =item B<-no-CAfile>
+Index: openssl-1.1.1s/doc/man1/x509.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man1/x509.pod
++++ openssl-1.1.1s/doc/man1/x509.pod
+@@ -932,7 +932,7 @@ The hash algorithm used in the B<-subjec
+ before OpenSSL 1.0.0 was based on the deprecated MD5 algorithm and the encoding
+ of the distinguished name. In OpenSSL 1.0.0 and later it is based on a
+ canonical version of the DN using SHA1. This means that any directories using
+-the old form must have their links rebuilt using B<c_rehash> or similar.
++the old form must have their links rebuilt using B<c_rehash-1_1> or similar.
+ 
+ =head1 COPYRIGHT
+ 
+Index: openssl-1.1.1s/doc/man3/SSL_CTX_load_verify_locations.pod
+===================================================================
+--- openssl-1.1.1s.orig/doc/man3/SSL_CTX_load_verify_locations.pod
++++ openssl-1.1.1s/doc/man3/SSL_CTX_load_verify_locations.pod
+@@ -63,7 +63,7 @@ If more than one CA certificate with the
+ extension must be different (e.g. 9d66eef0.0, 9d66eef0.1 etc). The search
+ is performed in the ordering of the extension number, regardless of other
+ properties of the certificates.
+-Use the B<c_rehash> utility to create the necessary links.
++Use the B<c_rehash-1_1> utility to create the necessary links.
+ 
+ The certificates in B<CApath> are only looked up when required, e.g. when
+ building the certificate chain or when actually performing the verification
+@@ -137,7 +137,7 @@ Prepare the directory /some/where/certs
+ for use as B<CApath>:
+ 
+  cd /some/where/certs
+- c_rehash .
++ c_rehash-1_1 .
+ 
+ =head1 SEE ALSO
+ 
+Index: openssl-1.1.1s/test/recipes/80-test_ca.t
+===================================================================
+--- openssl-1.1.1s.orig/test/recipes/80-test_ca.t
++++ openssl-1.1.1s/test/recipes/80-test_ca.t
+@@ -27,27 +27,27 @@ plan tests => 5;
+  SKIP: {
+      $ENV{OPENSSL_CONFIG} = '-config "'.srctop_file("test", "CAss.cnf").'"';
+      skip "failed creating CA structure", 4
+-	 if !ok(run(perlapp(["CA.pl","-newca"], stdin => undef)),
++	 if !ok(run(perlapp(["CA-1_1.pl","-newca"], stdin => undef)),
+ 		'creating CA structure');
+ 
+      $ENV{OPENSSL_CONFIG} = '-config "'.srctop_file("test", "Uss.cnf").'"';
+      skip "failed creating new certificate request", 3
+-	 if !ok(run(perlapp(["CA.pl","-newreq"])),
++	 if !ok(run(perlapp(["CA-1_1.pl","-newreq"])),
+ 		'creating certificate request');
+ 
+      $ENV{OPENSSL_CONFIG} = '-rand_serial -config "'.$std_openssl_cnf.'"';
+      skip "failed to sign certificate request", 2
+-	 if !is(yes(cmdstr(perlapp(["CA.pl", "-sign"]))), 0,
++	 if !is(yes(cmdstr(perlapp(["CA-1_1.pl", "-sign"]))), 0,
+ 		'signing certificate request');
+ 
+-     ok(run(perlapp(["CA.pl", "-verify", "newcert.pem"])),
++     ok(run(perlapp(["CA-1_1.pl", "-verify", "newcert.pem"])),
+         'verifying new certificate');
+ 
+      skip "CT not configured, can't use -precert", 1
+          if disabled("ct");
+ 
+      $ENV{OPENSSL_CONFIG} = '-config "'.srctop_file("test", "Uss.cnf").'"';
+-     ok(run(perlapp(["CA.pl", "-precert"], stderr => undef)),
++     ok(run(perlapp(["CA-1_1.pl", "-precert"], stderr => undef)),
+         'creating new pre-certificate');
+ }
+ 
+Index: openssl-1.1.1s/tools/build.info
+===================================================================
+--- openssl-1.1.1s.orig/tools/build.info
++++ openssl-1.1.1s/tools/build.info
+@@ -1,5 +1,5 @@
+ {- our $c_rehash_name =
+-       $config{target} =~ /^(VC|vms)-/ ? "c_rehash.pl" : "c_rehash";
++       $config{target} =~ /^(VC|vms)-/ ? "c_rehash-1_1.pl" : "c_rehash-1_1";
+    "" -}
+ IF[{- !$disabled{apps} -}]
+   SCRIPTS={- $c_rehash_name -}
+Index: openssl-1.1.1s/tools/c_rehash.in
+===================================================================
+--- openssl-1.1.1s.orig/tools/c_rehash.in
++++ openssl-1.1.1s/tools/c_rehash.in
+@@ -8,7 +8,7 @@
+ # in the file LICENSE in the source distribution or at
+ # https://www.openssl.org/source/license.html
+ 
+-# Perl c_rehash script, scan all files in a directory
++# Perl c_rehash-1_1 script, scan all files in a directory
+ # and add symbolic links to their hash values.
+ 
+ my $dir = {- quotify1($config{openssldir}) -};
+@@ -44,7 +44,7 @@ while ( $ARGV[0] =~ /^-/ ) {
+ }
+ 
+ sub help {
+-	print "Usage: c_rehash [-old] [-h] [-help] [-v] [dirs...]\n";
++	print "Usage: c_rehash-1_1 [-old] [-h] [-help] [-v] [dirs...]\n";
+ 	print "   -old use old-style digest\n";
+ 	print "   -h or -help print this help text\n";
+ 	print "   -v print files removed and linked\n";
+@@ -73,7 +73,7 @@ if (! -x $openssl) {
+ 		}	
+ 	}
+ 	if ($found == 0) {
+-		print STDERR "c_rehash: rehashing skipped ('openssl' program not available)\n";
++		print STDERR "c_rehash-1_1: rehashing skipped ('openssl-1_1' program not available)\n";
+ 		exit 0;
+ 	}
+ }

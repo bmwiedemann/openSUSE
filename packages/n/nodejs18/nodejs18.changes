@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 07:58:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use pkg_vcmp to decide BuildDependencies: this works based
+  on 'installed packages' which is not interpreted correctly by the
+  scheduler. Rather switch to boolean dependencies.
+
+------------------------------------------------------------------
 Wed Jan 25 12:01:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Again use openssl-3, if available.

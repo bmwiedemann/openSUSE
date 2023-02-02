@@ -480,4 +480,19 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>1009286</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b018c0e0763d99c80feb777a9cb4855d</srcmd5>
+    <version>3.24.0</version>
+    <time>1675357665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.0:
+  + This release contains major updates to Hungarian, UEB, and
+    Chinese bopomofo braille. Danish has been completely reworked
+    and there is now support for the Danish braille standard 2022.
+    There are also some new tables so that liblouis can now
+    generate Georgian computer braille, Swahili (Kenya) and
+    Chichewa (Malawi). Aside from that there is the usual
+    assortment of code cleanups and bug fixes.</comment>
+    <requestid>1062486</requestid>
+  </revision>
 </revisionlist>

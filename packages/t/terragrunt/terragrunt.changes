@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 02 06:50:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.1:
+  * fix AES256 encryption validation (#2337)
+  * Fix typos (#2406)
+  * [skip ci] Added FUNDING.yml (#2429)
+  * Flaky TestInputsToTflintVar fix (#2427)
+
+-------------------------------------------------------------------
 Fri Jan 20 09:54:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.43.0:

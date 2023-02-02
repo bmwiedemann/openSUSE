@@ -1,7 +1,7 @@
 #
 # spec file for package libkeccak
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 %autosetup -p1
 
 %build
-%make_build CFLAGS="%optflags"
+%make_build CFLAGS="%optflags" LDFLAGS="" LDOPTIMISE=""
 
 %install
 mkdir -p %buildroot%_libdir

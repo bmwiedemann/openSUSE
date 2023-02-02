@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 22:53:16 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230202.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230202
+  * Add JRuby 9.3.10.0 by @headius in #2137
+
+-------------------------------------------------------------------
 Tue Jan 24 20:12:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230124.

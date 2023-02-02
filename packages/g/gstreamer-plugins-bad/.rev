@@ -1177,4 +1177,40 @@
     <comment></comment>
     <requestid>1045100</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>812196eb8ff3b4b12cc3187b460c3410</srcmd5>
+    <version>1.22.0</version>
+    <time>1675357619</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily disable zxing, waiting for updated version to land
+  in Factory.
+- Add patch to reduce the required meson version to 0.61.0 since
+  that's what we have in SLE 15:
+  * reduce-required-meson.patch
+- Probably because of a problem in SLE's meson, the generated
+  pkgconfig files are missing some variables that are needed by
+  rpm to generate the pkgconfig(...) provides correctly. In order
+  to fix this, we now check for those variables and insert them
+  in the pc files before installation if they're missing.
+- Only build the microdns plugin in TW since SLE is missing the
+  required dependencies.
+- Add new shared libs libgstcuda-1_0-0 and libgstwebrtcnice-1_0-0
+  to baselibs.conf.
+- Update to version 1.22.0:
+  + Please see changes in gstreamer main package, major version
+    bump.
+- Pass amfcodec=disabled and directshow=disabled to meson, not
+  supported on linux (yet?).
+- Build qsv plugin only for supported targets via passing
+  conditional qsv=disabled/enabled to meson.
+- Add pkgconfig(gtk+-3.0) BuildRequires: New dependency.
+- Package new sub-packages
+  + libgstcuda-1_0-0
+  + libgstwebrtcnice-1_0-0
+  + typelib-1_0-CudaGst-1_0
+  + typelib-1_0-GstCuda-1_0
+  + typelib-1_0-GstVa-1_0
+</comment>
+    <requestid>1062597</requestid>
+  </revision>
 </revisionlist>

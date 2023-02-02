@@ -1,7 +1,7 @@
 #
 # spec file for package libhandy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_glade 1
 
 Name:           libhandy
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later

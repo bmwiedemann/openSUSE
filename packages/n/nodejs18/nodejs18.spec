@@ -282,15 +282,13 @@ Requires:       openssl-has-RSA_get0_pss_params
 
 %if 0%{?suse_version} >= 1500
 BuildRequires:  openssl >= %{openssl_req_ver}
+BuildRequires:  (libopenssl1_1-hmac if libopenssl-1_1-devel)
+BuildRequires:  (libopenssl3-hmac if libopenssl-3-devel)
 %else
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
-%endif
-
-%if %{pkg_vcmp pkgconfig(openssl) > '3.0' }
-BuildRequires:  libopenssl3-hmac
-%else
 BuildRequires:  libopenssl1_1-hmac
 %endif
+
 
 # /suse_version
 %endif

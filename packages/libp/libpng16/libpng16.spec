@@ -1,7 +1,7 @@
 #
 # spec file for package libpng16
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,8 @@ Source3:        rpm-macros.libpng-tools
 Source4:        baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
+%{?suse_build_hwcaps_libs}
 
 %package -n %{libname}
 Summary:        Library for the Portable Network Graphics Format (PNG)
@@ -50,7 +51,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 Requires:       pkgconfig
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 Recommends:     libpng%{branch}-compat-devel
 #
 
@@ -117,7 +118,7 @@ sed -i -e 's/^\(CFLAGS.*\)$/\1 -fsanitize=address/' \
 
 %install
 %make_install
-rm %{buildroot}/%{_libdir}/libpng*.la
+find %{buildroot} -type f,l -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sysconfdir}/rpm
 install -D -m644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.libpng-tools
 %if %{debug_build} ||%{asan_build}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 02 07:22:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230128T202938Z:
+  * Use --api-key flag on register when provided (#4458)
+  * fix: hide duration flag its not useful for users (#4457)
+  * Add support for restoring SSE-C encrypted objects (#4456)
+  * use humanize.IBytes instead of humanize.Bytes (#4455)
+  * cleanup mc to use 'go' errs to be 'e' (#4450)
+  * Corrected the logic for calculating the expiration no of days (#4451)
+  * Corrected output for command `mc admin info` (#4448)
+  * Support --airgap in unregister command (#4441)
+  * Add support of giving a comment to service accounts (#4438)
+  * Improve message when profile upload fails (#4443)
+  * Simplify/speedup container image publishing script (#4442)
+
+-------------------------------------------------------------------
 Fri Jan 13 06:10:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230111T031416Z:

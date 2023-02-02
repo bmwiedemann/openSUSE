@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,11 +32,12 @@ Source2:        baselibs.conf
 
 Patch4:         add_wayland_dep_to_tests.patch
 Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+Patch6:         reduce-required-meson.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel >= 2.40.0
+BuildRequires:  glib2-devel >= 2.62.0
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  libICE-devel
 BuildRequires:  libSM-devel
@@ -44,7 +45,7 @@ BuildRequires:  libXext-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  meson >= 0.59
+BuildRequires:  meson >= 0.61
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -81,6 +82,7 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zlib)
 Requires:       gstreamer >= %{gstreamer_req_version}
@@ -492,6 +494,7 @@ to compile and link applications that use gstreamer-plugins-base.
 %autosetup -n %{_name}-%{version} -N
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -506,6 +509,15 @@ export PYTHON=%{_bindir}/python3
 	-Dtremor=disabled \
 	%{nil}
 %meson_build
+
+# meson 0.61.4 in SLE 15 SP5 doesn't generate all variables needed in the pc files
+# As a result the pkgconfig(...) provides are not generated in the rpm file so
+# we have to add the variables to the pc files if they're missing
+for pc in *-suse-linux/meson-private/*.pc ; do
+   grep -q ^datarootdir= $pc || sed -ie "/^pluginsdir=.*/a datarootdir=\${prefix}\/share" $pc ;
+   grep -q ^datadir= $pc || sed -ie "/^datarootdir=.*/a datadir=\${datarootdir}" $pc ;
+   grep -q ^libexecdir= $pc || sed -ie "/^datadir=.*/a libexecdir=\${prefix}\/libexec" $pc ;
+done
 
 %install
 %meson_install
@@ -567,9 +579,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgsttcp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttheora.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttypefindfunctions.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstvideoconvert.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstvideoconvertscale.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideorate.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstvideoscale.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideotestsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvolume.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvorbis.so

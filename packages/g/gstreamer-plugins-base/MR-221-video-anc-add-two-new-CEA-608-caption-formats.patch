@@ -1,10 +1,10 @@
 https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/merge_requests/221
 
-diff --git a/gst-libs/gst/video/video-anc.c b/gst-libs/gst/video/video-anc.c
-index 102240ba003586ce9d29e5c2951f20751068c36a..3d6054477a61564bbc0a7b6f51374de200c71b6d 100644
---- a/gst-libs/gst/video/video-anc.c
-+++ b/gst-libs/gst/video/video-anc.c
-@@ -1028,6 +1028,8 @@ gst_buffer_add_video_caption_meta (GstBuffer * buffer,
+Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
+===================================================================
+--- gst-plugins-base-1.22.0.orig/gst-libs/gst/video/video-anc.c
++++ gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
+@@ -1017,6 +1017,8 @@ gst_buffer_add_video_caption_meta (GstBu
    switch (caption_type) {
      case GST_VIDEO_CAPTION_TYPE_CEA608_RAW:
      case GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A:
@@ -13,7 +13,7 @@ index 102240ba003586ce9d29e5c2951f20751068c36a..3d6054477a61564bbc0a7b6f51374de2
      case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
      case GST_VIDEO_CAPTION_TYPE_CEA708_CDP:
        break;
-@@ -1077,6 +1079,10 @@ gst_video_caption_type_from_caps (const GstCaps * caps)
+@@ -1066,6 +1068,10 @@ gst_video_caption_type_from_caps (const
        return GST_VIDEO_CAPTION_TYPE_CEA608_RAW;
      } else if (g_strcmp0 (format, "s334-1a") == 0) {
        return GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A;
@@ -24,7 +24,7 @@ index 102240ba003586ce9d29e5c2951f20751068c36a..3d6054477a61564bbc0a7b6f51374de2
      }
    } else if (gst_structure_has_name (s, "closedcaption/x-cea-708")) {
      if (g_strcmp0 (format, "cc_data") == 0) {
-@@ -1114,6 +1120,14 @@ gst_video_caption_type_to_caps (GstVideoCaptionType type)
+@@ -1103,6 +1109,14 @@ gst_video_caption_type_to_caps (GstVideo
        caption_caps = gst_caps_new_simple ("closedcaption/x-cea-608",
            "format", G_TYPE_STRING, "s334-1a", NULL);
        break;
@@ -39,11 +39,11 @@ index 102240ba003586ce9d29e5c2951f20751068c36a..3d6054477a61564bbc0a7b6f51374de2
      case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
        caption_caps = gst_caps_new_simple ("closedcaption/x-cea-708",
            "format", G_TYPE_STRING, "cc_data", NULL);
-diff --git a/gst-libs/gst/video/video-anc.h b/gst-libs/gst/video/video-anc.h
-index bb5883c5207e88314467ead1209f76f64c8c4dc0..f3a1d69b9a6300acda45fa2c30371043e7f1d0cd 100644
---- a/gst-libs/gst/video/video-anc.h
-+++ b/gst-libs/gst/video/video-anc.h
-@@ -357,7 +357,53 @@ GstVideoBarMeta *gst_buffer_add_video_bar_meta (GstBuffer * buffer, guint8 field
+Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.h
+===================================================================
+--- gst-plugins-base-1.22.0.orig/gst-libs/gst/video/video-anc.h
++++ gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.h
+@@ -345,7 +345,53 @@ GstVideoBarMeta *gst_buffer_add_video_ba
   *      offset relative to the base-line of the original image format (line 9
   *      for 525-line field 1, line 272 for 525-line field 2, line 5 for
   *      625-line field 1 and line 318 for 625-line field 2).
@@ -98,7 +98,7 @@ index bb5883c5207e88314467ead1209f76f64c8c4dc0..f3a1d69b9a6300acda45fa2c30371043
   *      can also contain 608-in-708 and the first byte of each triplet has to
   *      be inspected for detecting the type.
   * @GST_VIDEO_CAPTION_TYPE_CEA708_CDP: CEA-708 (and optionally CEA-608) in
-@@ -373,7 +419,9 @@ typedef enum {
+@@ -361,7 +407,9 @@ typedef enum {
    GST_VIDEO_CAPTION_TYPE_CEA608_RAW		= 1,
    GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A		= 2,
    GST_VIDEO_CAPTION_TYPE_CEA708_RAW		= 3,

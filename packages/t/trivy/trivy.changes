@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 01 16:17:14 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.37.1:
+  * fix(sbom): download the Java DB when generating SBOM (#3539)
+  * fix: use cgo free sqlite driver (#3521)
+  * ci: fix path to dist folder (#3527)
+
+-------------------------------------------------------------------
 Wed Feb 01 12:09:23 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.37.0:

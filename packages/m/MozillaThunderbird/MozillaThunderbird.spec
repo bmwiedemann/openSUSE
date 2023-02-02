@@ -1,8 +1,8 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
-#               2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2023 SUSE LLC
+#               2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          102
-%define mainver        %major.6.1
-%define orig_version   102.6.1
+%define mainver        %major.7.1
+%define orig_version   102.7.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -180,7 +180,7 @@ Source6:        suse-default-prefs.js
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 Source9:        thunderbird.appdata.xml
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/4503820/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/f4363ab1d76e173666e56408d44fe00af16ddbd8/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit

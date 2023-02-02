@@ -1,7 +1,7 @@
 #
-# spec file for package libbobcat
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global _name bobcat
 %global _lib_name lib%{_name}
 %global _lib_version 6
@@ -27,13 +28,13 @@
 %endif
 
 Name:           %{_lib_name}%{?psuffix}
-Version:        6.02.00
+Version:        6.02.02
 Release:        0
 Summary:        Shared library implementing C++ classes that are frequently used
 License:        GPL-3.0-only
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/bobcat
-Source0:         %{_name}-%{version}.tar.bz2
+Source0:        https://gitlab.com/fbb-git/bobcat/-/archive/%{version}/bobcat-%{version}.tar.gz
 Source1:        initialbobcatlib
 %if "%{name}" == "%{_lib_name}-light"
 BuildRequires:  the_silver_searcher
@@ -50,15 +51,15 @@ BuildRequires:  yodl
 BuildRequires:  gcc-c++
 
 %package devel-static
+Summary:        Bobcat static library
+Group:          Development/Libraries/C and C++
 %if "%{name}" == "%{_lib_name}-light"
 Conflicts:      %{_lib_name}-devel
 Conflicts:      %{_lib_name}-devel-static
 %endif
-Summary:    Bobcat static library
-Group:      Development/Libraries/C and C++
 
 %if "%{name}" == "%{_lib_name}"
-Requires:   %{_lib_name}-devel = %{version}
+Requires:       %{_lib_name}-devel = %{version}
 
 %description
 Bobcat is an acronym of `Brokken's Own Base Classes And Templates'. It is a
@@ -79,9 +80,9 @@ developed by Frank Brokken. All of Frank's C++ programs hosted at GitLab
 depend on `bobcat'.
 
 %package devel
-Summary:    Headers and documentation for the Bobcat library
-Group:      Development/Libraries/C and C++
-Requires:   %{_lib_name}%{_lib_version} = %{version}
+Summary:        Headers and documentation for the Bobcat library
+Group:          Development/Libraries/C and C++
+Requires:       %{_lib_name}%{_lib_version} = %{version}
 
 %description devel
 Headers and documentation of classes defined in the Bobcat library.
@@ -129,13 +130,11 @@ popd
 %postun -n%{_lib_name}%{_lib_version} -p /sbin/ldconfig
 
 %files -n %{_lib_name}%{_lib_version}
-%defattr(-,root,root)
 %doc README
 %{_libdir}/%{_lib_name}.so.%{_lib_version}
 %attr(755, -, -) %{_libdir}/%{_lib_name}.so.%{version}
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/%{_lib_name}.so
 %doc %{_docdir}/%{_lib_name}%{_lib_version}-devel/
 %{_includedir}/%{_name}/

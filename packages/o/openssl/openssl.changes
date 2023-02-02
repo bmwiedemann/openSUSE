@@ -1,43 +1,57 @@
 -------------------------------------------------------------------
-Wed Nov  2 12:09:53 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+Tue Nov  1 15:46:44 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
-- updated to 1.1.s release
-
--------------------------------------------------------------------
-Thu Jul  7 07:13:31 UTC 2022 - Marcus Meissner <meissner@suse.com>
-
-- updated to 1.1.q release
+- Update to 3.0.7
 
 -------------------------------------------------------------------
-Mon Jun 27 07:48:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
+Tue Nov  1 10:42:00 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
-- Update to 1.1.1p release
-
--------------------------------------------------------------------
-Tue Jun  7 10:30:55 UTC 2022 - Marcus Meissner <meissner@suse.com>
-
-- Update to 1.1.1o release
+- Update to 3.0.6
 
 -------------------------------------------------------------------
-Thu May  5 08:41:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+Thu Jul 21 09:09:07 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
-- Use same %description as openssl-3 (describe the software,
-  not the project).
+- Update to 3.0.5
+
+-------------------------------------------------------------------
+Mon Jul 18 12:03:55 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.4
+
+-------------------------------------------------------------------
+Mon Jul 18 12:03:21 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.3
 
 -------------------------------------------------------------------
 Tue Mar 15 17:41:47 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1n release
+- Update to 3.0.2
 
 -------------------------------------------------------------------
-Tue Dec 28 12:34:04 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+Thu Jan 13 10:49:26 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1m release
+- Update to 3.0.1
 
 -------------------------------------------------------------------
-Tue Aug 24 19:32:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+Tue Sep  7 14:58:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1l release
+- Update to 3.0.0
+
+-------------------------------------------------------------------
+Thu Jul 29 16:46:14 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Beta 2
+
+-------------------------------------------------------------------
+Mon Jul  5 14:29:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Beta 1
+
+-------------------------------------------------------------------
+Fri Jun 11 13:17:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 17
 
 -------------------------------------------------------------------
 Mon May 31 09:56:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -48,24 +62,81 @@ Mon May 31 09:56:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
   allows us to easier change the recommended default version.
 
 -------------------------------------------------------------------
-Thu Mar 25 22:59:26 UTC 2021 - Jason Sikes <jsikes@suse.com>
+Mon May 10 02:13:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1k release
-
--------------------------------------------------------------------
-Fri Feb 19 08:01:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
-
-- Update to 1.1.1j release
+- Update to 3.0.0 Alpha 16
 
 -------------------------------------------------------------------
-Tue Dec  8 15:41:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+Sat May  1 19:58:48 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1i release
+- Update to 3.0.0 Alpha 15
 
 -------------------------------------------------------------------
-Tue Sep 22 20:41:09 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+Mon Apr 19 12:35:57 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 1.1.1h release
+- Update to 3.0.0 Alpha 14
+
+-------------------------------------------------------------------
+Wed Apr 14 17:55:21 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 13
+
+-------------------------------------------------------------------
+Fri Feb 19 08:58:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 12
+
+-------------------------------------------------------------------
+Fri Feb 12 11:47:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 11
+
+-------------------------------------------------------------------
+Sat Jan  9 10:05:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 10
+
+-------------------------------------------------------------------
+Thu Dec 17 09:14:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 9
+
+-------------------------------------------------------------------
+Thu Nov  5 18:34:07 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 8
+
+-------------------------------------------------------------------
+Thu Oct 15 16:44:44 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 7
+
+-------------------------------------------------------------------
+Fri Aug  7 14:47:10 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 3.0.0 Alpha 6
+
+-------------------------------------------------------------------
+Mon Jul 20 09:20:35 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 5
+
+-------------------------------------------------------------------
+Fri Jun 26 07:20:13 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 4
+- Change license to Apache-2.0
+
+-------------------------------------------------------------------
+Fri Jun  5 12:31:12 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 3
+
+-------------------------------------------------------------------
+Wed May 20 12:41:20 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 2
+- Update baselibs.conf
 
 -------------------------------------------------------------------
 Tue Apr 21 13:43:27 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>

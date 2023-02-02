@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Feb 01 02:11:14 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.54+1:
+  * Fixed crash when creating lightweight table,
+    (gh#giuspen/cherrytree#2204).
+  * Added menu item action to toggle focus between text and
+    integrated terminal with default shortcut Ctrl+Shift+T,
+    (gh#giuspen/cherrytree#1772).
+  * Added search dialog option to override search exclusions,
+    (gh#giuspen/cherrytree#2174).
+  * Added menu item action to insert today's node under the
+    selected node rather than under the tree root,
+    (gh#giuspen/cherrytree#40).
+  * Implemented option to keep cherrytree always on top, under top
+    menu 'view', (gh#giuspen/cherrytree#2145).
+  * Number of table cells to use as threshold for light mode made
+    configurable (default 25).
+  * Integrated terminal shell configurable in preferences dialog.
+  * Fixed issue with integrated terminal when using zsh as default
+    shell, (gh#giuspen/cherrytree#2199).
+  * Lightweight variant of tables support Ctrl+Space to navigate in
+    and out.
+  * Lightweight variant of tables entering newline in table cell
+    with Ctrl+Enter or Alt+Enter.
+  * Dialog all matches improved to show also the node tags and the
+    pattern searched.
+  * Dialog search with regexp, added help button to display
+    reference web page.
+  * Fixed searching for regexp everything (.*) freeze,
+    (gh#giuspen/cherrytree#2190).
+  * Fix title not shown on taskbar button in cinnamon when menubar
+    in titlebar.
+  * Implementing lightweight variant of tables,
+    (gh#giuspen/cherrytree#2140).
+  * Updated translations.
+- Changes from version 0.99.53:
+  * Fixed crash when changing terminal font in preferences dialog
+    and terminal never shown in the session,
+    (gh#giuspen/cherrytree#2177).
+  * Fixed issue of growing encrypted document size when configured
+    with no backups, (gh#giuspen/cherrytree#2178).
+  * Implementing lightweight variant of tables,
+    (gh#giuspen/cherrytree#2140).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Nov 26 22:23:52 UTC 2022 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.52:

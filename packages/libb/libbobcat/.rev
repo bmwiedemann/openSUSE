@@ -8,4 +8,19 @@
 * Add conflicts between libbobcat-devel and libbobcat-light-devel</comment>
     <requestid>1033082</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af010ca539d63659263be2c09dcaa5d0</srcmd5>
+    <version>6.02.02</version>
+    <time>1675357628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.02.02:
+  * Accidentally the ArgConfig header file included ../arg/arg instead of
+    &lt;bobcat/arg&gt; causing compilation failures of files including
+    &lt;bobcat/argconfig&gt;. Fixed in this release.
+  * The singleton classes Arg, ArgConfig, ReadLineHistory, and Signal now
+    return their allocated memory when programs using them end.
+  * Rewrote ReadLineHistory.
+  * Repaired the linking option specifications in the ReadLine* man-pages.</comment>
+    <requestid>1062357</requestid>
+  </revision>
 </revisionlist>

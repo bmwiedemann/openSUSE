@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-git
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,7 @@
 %bcond_with test
 %endif
 
+%define pythons python3
 Name:           mercurial-extension-hg-git
 Version:        1.0.1
 Release:        0
@@ -37,7 +38,10 @@ BuildRequires:  mercurial
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-gpg
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-wheel
 BuildRequires:  unzip
 Requires:       mercurial
 Requires:       python3-dulwich >= 0.19.0
@@ -54,10 +58,10 @@ The Hg-Git plugin can convert commits/changesets losslessly from one system to a
 %setup -q -n hg-git-%{version}
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check

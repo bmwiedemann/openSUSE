@@ -461,7 +461,7 @@ ocaml setup.ml -configure \\\
 	dune installed-libraries $OCAML_DUNE_INSTALLED_LIBRARIES_ARGS ; \
 	if test -z "${_smp_mflags}" ;\
 	then \
-		_smp_mflags='%%{?_smp_mflags}' ;\
+		_smp_mflags="%%{?_smp_mflags}" ;\
 		case "$(ocamlc --version)" in \\\
 		4.08*) _smp_mflags='-j1' ;;\\\
 		4.09*) _smp_mflags='-j1' ;;\\\
@@ -480,7 +480,7 @@ ocaml setup.ml -configure \\\
 %endif
 	if test -z "${_smp_mflags}" ;\
 	then \
-		_smp_mflags='%%{?_smp_mflags}' ;\
+		_smp_mflags="%%{?_smp_mflags}" ;\
 		case "$(ocamlc --version)" in \\\
 		4.08*) _smp_mflags='-j1' ;;\\\
 		4.09*) _smp_mflags='-j1' ;;\\\

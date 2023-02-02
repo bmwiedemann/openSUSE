@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  1 19:48:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 109.0.1
+  * Fixed jank when loading pages containing a large number of
+    emoji characters (bmo#1809081)
+  * Fixed an issue causing authentication prompts to not appear
+    when loading pages in some enterprise environments
+    (bmo#1809151)
+  * ixed inconsistent sizing of event listener checkboxes inside
+    the Inspector developer tool (bmo#1811760)
+
+-------------------------------------------------------------------
 Mon Jan 16 06:54:09 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 109.0

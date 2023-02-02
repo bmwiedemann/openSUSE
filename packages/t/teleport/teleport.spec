@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        11.2.3
+Version:        11.3.2
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0

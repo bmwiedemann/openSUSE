@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan  7 14:41:10 UTC 2023 - Haochuan Chen <haochuan.chen@univ-lorraine.fr>
+
+- Update to version 2.3.2:
+  * Bugfix: Consistently use ADL for lexical_cast, making it easier to extend for custom template types #820
+  * Bugfix: Tweak the parsing of files for flags with disable_flag_override #800]
+  * Bugfix: Handle out of bounds long long #807
+  * Bugfix: Spacing of make_description min option output #808
+  * Bugfix: Print last parsed subcommand's help message #822
+  * Bugfix: Avoid floating point warning in GCC 12 #803
+  * Bugfix: Fix a few gcc warnings #813
+  * Backend: Max CMake tested 3.22 -> 3.24 #823
+
+- Update to version 2.3.1:
+  * Bugfix: App::get_option_group implementation missing #793
+  * Bugfix: Fix spacing when setting an empty footer #796
+  * Bugfix: Address Klocwork static analysis checking issues #785
+
+-------------------------------------------------------------------
 Mon Oct 24 09:57:11 UTC 2022 - Haochuan Chen <haochuan.chen@univ-lorraine.fr>
 
 - Disable tests for %{?sle_version} <= 150300 due to possible issues of old 

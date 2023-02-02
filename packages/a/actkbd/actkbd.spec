@@ -1,7 +1,7 @@
 #
 # spec file for package actkbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           actkbd
 Version:        0.2.8
 Release:        0
@@ -35,7 +34,6 @@ Source3:        actkbd.sysconfig
 Patch0:         actkbd-0.2.7-amd64.patch
 BuildRequires:  systemd-rpm-macros
 Requires(post): %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
@@ -44,24 +42,25 @@ commands. It can be used to utilize multimedia keys on simple setups, or
 assigned custom actions to rarely used keys.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags}"
 
 %install
-install -Dm 644 %{SOURCE1} %{buildroot}%{_unitdir}/actkbd.service
-mkdir -p %{buildroot}%{_sbindir}/
+install -d -m 0755 %{buildroot}%{_unitdir} \
+                   %{buildroot}%{_sbindir} \
+                   %{buildroot}%{_sysconfdir} \
+                   %{buildroot}%{_fillupdir} \
+                   %{buildroot}%{_docdir}/%{name}/samples
+
+install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/actkbd.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcactkbd
 
-install -Dm 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/actkbd.conf
-install -Dm 644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.actkbd
-
-install -Dm 755 actkbd %{buildroot}%{_sbindir}/actkbd
-
-install -d %{buildroot}%{_docdir}/%{name}/samples
-install -dm 644 samples %{buildroot}%{_docdir}/%{name}/samples
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/actkbd.conf
+install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.actkbd
+install -m 0755 actkbd %{buildroot}%{_sbindir}/actkbd
+install -m 0644 samples/* %{buildroot}%{_docdir}/%{name}/samples/
 
 %pre
 %service_add_pre actkbd.service
@@ -77,7 +76,6 @@ install -dm 644 samples %{buildroot}%{_docdir}/%{name}/samples
 %service_del_postun actkbd.service
 
 %files
-%defattr(-,root,root)
 %doc README NEWS FAQ AUTHORS
 %config %{_sysconfdir}/actkbd.conf
 %{_fillupdir}/*

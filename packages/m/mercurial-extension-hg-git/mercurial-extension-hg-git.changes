@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  1 19:56:50 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Use pyproject.toml instead of setup.py for build and install.
+- Add python3-setuptools_scm to determine the correct version of the package.
+
+-------------------------------------------------------------------
 Mon Dec 12 15:53:46 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 1.0.1

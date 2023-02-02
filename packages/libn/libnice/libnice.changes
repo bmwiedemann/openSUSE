@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:37:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.21:
+  * Only use `ifr_ifindex` if OS supports it, fixes build on iOS
+    and FreeBSD.
+- Changes from version 0.1.20:
+  * Remove support for GStreamer 0.10 builds.
+  * Add macro to check LIBNICE version.
+  * Added utility function to get the STUN server from a candidate.
+  * Support additional header in built-in HTTP proxy client.
+  * Add boxed type for NiceAddress for bindings.
+  * Add API to get the interface index for a local address.
+  * Explicitly bind to a specific interface when creating UDP
+    sockets.
+  * Limit the number of stored incoming checks based on a property.
+  * Do asynchronous DNS resolution for STUN and TURN servers.
+  * Add introspection friendly API to get an allocated string from
+    a NiceCandidate.
+  * Enable gst-full to link in a single element.
+
+-------------------------------------------------------------------
 Thu May  5 09:13:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.1.19:

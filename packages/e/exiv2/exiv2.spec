@@ -28,6 +28,7 @@ Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{v
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
 Patch1:         CVE-2022-3953.patch
+Patch2:         always-use-signed-char-for-conversion.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

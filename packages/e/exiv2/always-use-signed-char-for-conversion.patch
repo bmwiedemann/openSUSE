@@ -1,0 +1,23 @@
+Treat std::string characters always as signed char
+even on architectures where char is unsigned.
+
+Fixes missing testsuite exceptions.
+
+--- a/src/value.cpp
++++ b/src/value.cpp
+@@ -352,13 +352,13 @@ namespace Exiv2 {
+     long StringValueBase::toLong(long n) const
+     {
+         ok_ = true;
+-        return value_.at(n);
++        return static_cast<long>(static_cast<signed char>(value_.at(n)));
+     }
+ 
+     float StringValueBase::toFloat(long n) const
+     {
+         ok_ = true;
+-        return value_.at(n);
++        return static_cast<float>(static_cast<signed char>(value_.at(n)));
+     }
+ 
+     Rational StringValueBase::toRational(long n) const

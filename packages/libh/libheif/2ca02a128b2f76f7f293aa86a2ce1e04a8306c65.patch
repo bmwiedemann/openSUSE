@@ -1,0 +1,22 @@
+From 2ca02a128b2f76f7f293aa86a2ce1e04a8306c65 Mon Sep 17 00:00:00 2001
+From: Dirk Farin <dirk.farin@gmail.com>
+Date: Sat, 21 Jan 2023 13:29:27 +0100
+Subject: [PATCH] fixed typo (#745)
+
+---
+ libheif/plugins/heif_encoder_svt.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libheif-1.14.2/libheif/plugins/heif_encoder_svt.cc
+===================================================================
+--- libheif-1.14.2.orig/libheif/plugins/heif_encoder_svt.cc
++++ libheif-1.14.2/libheif/plugins/heif_encoder_svt.cc
+@@ -639,7 +639,7 @@ struct heif_error svt_encode_image(void*
+     svt_config.matrix_coefficients = static_cast<EbMatrixCoefficients>(nclx->get_matrix_coefficients());
+     svt_config.color_range = nclx->get_full_range_flag() ? EB_CR_FULL_RANGE : EB_CR_STUDIO_RANGE;
+ #else
+-    svt_config.color_primaries = static_cast<uint8_t>(nclx->colour_primaries);
++    svt_config.color_primaries = static_cast<uint8_t>(nclx->color_primaries);
+     svt_config.transfer_characteristics = static_cast<uint8_t>(nclx->transfer_characteristics);
+     svt_config.matrix_coefficients = static_cast<uint8_t>(nclx->matrix_coefficients);
+     svt_config.color_range = nclx->full_range_flag ? 1 : 0;

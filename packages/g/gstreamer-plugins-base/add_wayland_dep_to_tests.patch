@@ -1,11 +1,13 @@
---- orig-gst-plugins-base-1.19.90/tests/check/meson.build	2022-01-28 15:28:42.000000000 +0100
-+++ gst-plugins-base-1.19.90/tests/check/meson.build	2022-01-29 22:32:03.705900464 +0100
-@@ -134,7 +134,7 @@
+Index: gst-plugins-base-1.22.0/tests/check/meson.build
+===================================================================
+--- gst-plugins-base-1.22.0.orig/tests/check/meson.build
++++ gst-plugins-base-1.22.0/tests/check/meson.build
+@@ -135,7 +135,7 @@ if build_gstgl
    test_defines += ['-DTEST_GST_GL_ABI_CHECK']
  endif
  
 -test_deps = [gst_dep, gst_base_dep, gst_net_dep, gst_check_dep, audio_dep,
 +test_deps = [gst_dep, gst_base_dep, gst_net_dep, gst_check_dep, wayland_client_dep, audio_dep,
    video_dep, pbutils_dep, rtp_dep, rtsp_dep, tag_dep, allocators_dep, app_dep,
-   fft_dep, riff_dep, sdp_dep, gio_dep, valgrind_dep] + glib_deps
+   fft_dep, riff_dep, sdp_dep, gio_dep, valgrind_dep]
  

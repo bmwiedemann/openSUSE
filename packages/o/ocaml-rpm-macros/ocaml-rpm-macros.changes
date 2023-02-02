@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 08:34:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Allow variables in smp_mflags to be interpolated
+  for https://github.com/rpm-software-management/rpm/issues/2343
+
+-------------------------------------------------------------------
 Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
 
 - Remove stale references to ocaml_make_testsuite

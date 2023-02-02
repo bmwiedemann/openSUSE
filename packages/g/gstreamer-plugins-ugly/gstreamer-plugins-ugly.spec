@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-ugly
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -33,12 +33,13 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         reduce-required-meson.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  liba52-devel
 BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.61.0
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -132,7 +133,6 @@ export PYTHON=%{_bindir}/python3
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdsub.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrealmedia.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstxingmux.so
 
 %if 0%{?BUILD_ORIG}
 %if 0%{?BUILD_ORIG_ADDON}

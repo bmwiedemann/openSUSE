@@ -1,52 +1,89 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.24.0:
+  + This release contains major updates to Hungarian, UEB, and
+    Chinese bopomofo braille. Danish has been completely reworked
+    and there is now support for the Danish braille standard 2022.
+    There are also some new tables so that liblouis can now
+    generate Georgian computer braille, Swahili (Kenya) and
+    Chichewa (Malawi). Aside from that there is the usual
+    assortment of code cleanups and bug fixes.
+  + For a detailed list of all the changes refer to
+    https://github.com/liblouis/liblouis/milestone/34?closed=1
+  + Braille table improvements:
+    - New grade 1, 1.2, 1.3, 1.4, 1.5 and 2 tables for Swahili
+      (Kenya) and grade 1 table for Chichewa (Malawi).
+    - Improvements to Hungarian.
+    - Update braille patterns of some Chinese characters and
+      phrases in the Chinese bopomofo braille table
+    - Add experimental Georgian computer braille table
+    - Updated the Danish tables to the new 2022 Danish braille
+      standard
+    - Limited contraction level (grade 2l or 1.5) is no longer part
+      of the Danish braille standard 2022.
+    - There is no longer any need for "literary" tables. In Danish
+      braille, capital letters are now always indicated, and steps
+      have been taken in the standard to ensure better
+      back-translation.
+    - As requested by The Danish Braille Committee, the tables for
+      the 1993 standard will be kept as an option for at least a
+      year. All the 1993 tables have been renamed to include
+      "_1993" in the filename, so the new tables will be used as
+      default.
+    - Improvements to UEB.
+    - Add new sign for German sharp S (ICEB July 2022)
+    - Fix a couple of acronyms which require grade 1 indicator
+      (LLB, LLP)
+    - Fix placement of numeral sign in letters comma digits
+    - Review rules for "under" and "there" contractions
+
+-------------------------------------------------------------------
 Sat Oct  1 11:06:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.23.0:
-  - Fix a problem in the parsing of faulty unbalanced context
-    expressions. Thanks to Samuel Thibault.
-  - Fix a buffer overflow problem when ~output.length~ is larger than
-    ~input.length~. Thanks to Samuel Thibault.
-  - Fix an endless loop in the handling of computer braille. Thanks to
-    Bert Frees.
-  ** Braille table improvements
-  - Remove computer braille from Japanese Kantenji as it is not part of
-    the standard. Thanks to Kensaku Yoza.
-  - Bring Swedish tables up to date with the latest standard published
-    by Punktskriftsnämnden (the Swedish Braille Authority) in 2009. The
-    table for uncontracted braille was replaced and new tables for
-    (partially and fully) contracted braille have been added. Thanks to
-    David Renström from Insyn Scandinavia AB.
-  - Improvements to Hungarian (added more exceptions) and migration to
-    the ~nonumsign~ opcode thanks to Attila Hammer.
-  - Fixed a bug in the Ukrainian table that led to wrong translation of
-    some uppercase letters. Thanks to Andrey Yakuboy and Bert Frees.
-  - Augment the UEB grade 2 tables to resolve an ambiguity between lower
-    groupsigns and punctuation at the beginning of words by placing a letter
-    sign at the front of punctuation. This resolves an ambiguity between, for
-    example, "discount" and ".count". Thanks to Krzysztof Drewniak.
-  - Add a new table for /Chinese Common Braille Scheme/ which is a type
-    of braille used for spelling Mandarin Chinese. It is a variant of
-    the /Chinese Current Braille System/ but has more perfect marking
-    rules and produces less ambiguity than the latter. For more
-    information see the comments in ~zhcn-cbs.ctb~. Thanks to Cary-Rowen
-    and Frank.
-  - Updates to the Chinese bopomofo braille table thanks to Bo-Cheng
-    Jhan:
-    - Update braille patterns of some Chinese characters and phrases
-    - Add braille patterns for various Greek symbols
-    - Add "Math rules" section and the mixed number rule
-    - Add braille patterns for ☐ (⣏⣀⣹), ☑ (⣏⣿⣹), and ☒ (⣏⣭⣹)
-  - New table for Kinyarwanda braille thanks to Jake Kyle from Compass
-    Braille.
-  - New table for Luganda braille thanks to Jake Kyle from Compass
-    Braille.
-  - Improvements to the Russian contracted braille table
-    thanks to Andrey Yakuboy:
-    - Now prefixes "из" and "без" are correctly contracted
-      before hard sign (ъ).
-    - Fixed a contraction for word "кое-где", now it is contracted
-      according to rules.
-    - Other minor fixes and improvements.
+- Update to version 3.23.0:
+  + Fix a problem in the parsing of faulty unbalanced context
+    expressions.
+  + Fix a buffer overflow problem when ~output.length~ is larger
+    than ~input.length~.
+  + Fix an endless loop in the handling of computer braille.
+  + Braille table improvements:
+    - Remove computer braille from Japanese Kantenji as it is not
+      part of the standard.
+    - Bring Swedish tables up to date with the latest standard
+      published by Punktskriftsnämnden (the Swedish Braille
+      Authority) in 2009. The table for uncontracted braille was
+      replaced and new tables for (partially and fully) contracted
+      braille have been added.
+    - Improvements to Hungarian (added more exceptions) and
+      migration to the ~nonumsign~ opcode.
+    - Fixed a bug in the Ukrainian table that led to wrong
+      translation of some uppercase letters.
+    - Augment the UEB grade 2 tables to resolve an ambiguity
+      between lower groupsigns and punctuation at the beginning of
+      words by placing a letter sign at the front of punctuation.
+      This resolves an ambiguity between, for example, "discount"
+      and ".count".
+    - Add a new table for /Chinese Common Braille Scheme/ which is
+      a type of braille used for spelling Mandarin Chinese. It is a
+      variant of the /Chinese Current Braille System/ but has more
+      perfect marking rules and produces less ambiguity than the
+      latter. For more information see the comments in
+      ~zhcn-cbs.ctb~.
+    - Updates to the Chinese bopomofo braille table:
+      . Update braille patterns of some Chinese characters and
+        phrases
+      . Add braille patterns for various Greek symbols
+      . Add "Math rules" section and the mixed number rule
+      . Add braille patterns for ☐ (⣏⣀⣹), ☑ (⣏⣿⣹), and ☒ (⣏⣭⣹)
+    - New table for Kinyarwanda braille
+    - New table for Luganda braille
+    - Improvements to the Russian contracted braille table:
+      . Now prefixes "из" and "без" are correctly contracted
+        before hard sign (ъ).
+      . Fixed a contraction for word "кое-где", now it is
+        contracted according to rules.
+      . Other minor fixes and improvements.
 
 -------------------------------------------------------------------
 Fri Jun 24 12:05:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

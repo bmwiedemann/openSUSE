@@ -1,0 +1,27 @@
+commit ba2486d3f78e2292e2b057ea37763c9c658cbcee
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Fri Jan 27 10:13:12 2023 +0100
+
+    topology: fix support for disabled MD5 authentication
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git Topology/hpnmgt_snmp.c Topology/hpnmgt_snmp.c
+index e5bd84b9a6cb..b6a7b29d276d 100644
+--- Topology/hpnmgt_snmp.c
++++ Topology/hpnmgt_snmp.c
+@@ -2139,9 +2139,14 @@ HMGT_STATUS_T collect_data(SNMPHost *hosts, SNMPOid *sw_oids, SNMPOid *nic_oids,
+ 	//Authentication Protocol
+ 	if ( (secLevel == SNMP_SEC_LEVEL_AUTHNOPRIV) || (secLevel == SNMP_SEC_LEVEL_AUTHPRIV) ) {
+ 		if (strcmp(fabric->SnmpAuthenticationProtocol, "MD5") == 0) {
++#ifndef NETSNMP_DISABLE_MD5
+ 			authProtocol = usmHMACMD5AuthProtocol;
+ 			authProtocolLength = USM_AUTH_PROTO_MD5_LEN;
+ 			DBGPRINT("Running MD5 authentication \n");
++#else
++			fprintf(stderr, "%s: MD5 authentication selected but disabled in net-snmp\n", __func__);
++			configParseError = 1;
++#endif
+ 		} else if (strcmp(fabric->SnmpAuthenticationProtocol, "SHA") == 0) {
+ 			authProtocol = usmHMACSHA1AuthProtocol;
+ 			authProtocolLength = USM_AUTH_PROTO_SHA_LEN;

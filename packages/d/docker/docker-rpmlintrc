@@ -1,9 +1,6 @@
-# This is intentional, since we use _multibuild for the flavours.
-addFilter ("^docker-kubic.src: W: invalid-spec-name")
-
 # The #! comes from upstream.
-addFilter ("^docker(-kubic)?-bash-completion.noarch: W: sourced-script-with-shebang /etc/bash_completion.d/docker bash")
-addFilter ("^docker(-kubic)?-zsh-completion.noarch: W: sourced-script-with-shebang /etc/zsh_completion.d/docker zsh")
+addFilter ("^docker-bash-completion.noarch: W: sourced-script-with-shebang /etc/bash_completion.d/docker bash")
+addFilter ("^docker-zsh-completion.noarch: W: sourced-script-with-shebang /etc/zsh_completion.d/docker zsh")
 
 # -test is something that is used internally and isn't actually shipped -- it's a pseduo-source package.
-addFilter ("^docker(-kubic)?-test.*")
+addFilter ("^docker-test.*")

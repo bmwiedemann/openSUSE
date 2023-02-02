@@ -669,4 +669,15 @@
   * docs: typo in --skip-files (#3454)</comment>
     <requestid>1062442</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c5fc41c1b6715f2a463eb4ef3e84d2c4</srcmd5>
+    <version>0.37.1</version>
+    <time>1675357710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.1:
+  * fix(sbom): download the Java DB when generating SBOM (#3539)
+  * fix: use cgo free sqlite driver (#3521)
+  * ci: fix path to dist folder (#3527)</comment>
+    <requestid>1062489</requestid>
+  </revision>
 </revisionlist>

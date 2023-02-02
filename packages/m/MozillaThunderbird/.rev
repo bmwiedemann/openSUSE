@@ -4667,4 +4667,41 @@ I cannot test locally unfortunately.
     malicious extensions</comment>
     <requestid>1044166</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>d84f60856d3a0939066a6300550ebbf3</srcmd5>
+    <version>102.7.1</version>
+    <time>1675357632</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.7.1
+  * Microsoft Office 365 accounts were unable to authenticate
+  * https://www.thunderbird.net/en-US/thunderbird/102.7.1/releasenotes/
+  MFSA 2023-04
+  * CVE-2023-0430 (bmo#1769000)
+    Revocation status of S/Mime signature certificates was not checked
+- update create-tar.sh
+
+- Mozilla Thunderbird 102.7.0
+  https://www.thunderbird.net/en-US/thunderbird/102.7.0/releasenotes/
+  MFSA 2023-03 (bsc#1207119)
+  * CVE-2022-46871 (bmo#1795697)
+    libusrsctp library out of date
+  * CVE-2023-23598 (bmo#1800425)
+    Arbitrary file read from GTK drag and drop on Linux
+  * CVE-2023-23599 (bmo#1777800)
+    Malicious command could be hidden in devtools output on
+    Windows
+  * CVE-2023-23601 (bmo#1794268)
+    URL being dragged from cross-origin iframe into same tab
+    triggers navigation
+  * CVE-2023-23602 (bmo#1800890)
+    Content Security Policy wasn't being correctly applied to
+    WebSockets in WebWorkers
+  * CVE-2022-46877 (bmo#1795139)
+    Fullscreen notification bypass
+  * CVE-2023-23603 (bmo#1800832)
+    Calls to &lt;code&gt;console.log&lt;/code&gt; allowed bypasing Content
+    Security Policy via format directive
+  * CVE-2023-23605 (bmo#1764921, bmo#1802690, bmo#1806974)</comment>
+    <requestid>1062396</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  1 00:11:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.02.02:
+  * Accidentally the ArgConfig header file included ../arg/arg instead of
+    <bobcat/arg> causing compilation failures of files including
+    <bobcat/argconfig>. Fixed in this release.
+  * The singleton classes Arg, ArgConfig, ReadLineHistory, and Signal now
+    return their allocated memory when programs using them end.
+  * Rewrote ReadLineHistory.
+  * Repaired the linking option specifications in the ReadLine* man-pages.
+
+-------------------------------------------------------------------
 Thu Nov  3 13:11:56 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Remove unecessary Provides 

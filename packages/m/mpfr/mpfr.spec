@@ -1,7 +1,7 @@
 #
 # spec file for package mpfr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mpfr
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        The GNU multiple-precision floating-point library
 License:        LGPL-3.0-or-later
@@ -27,7 +27,7 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         mpfr-4.1.1-patch01.patch
+Patch0:         tests-tsprintf.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 

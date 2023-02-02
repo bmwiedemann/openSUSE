@@ -1,8 +1,8 @@
-Index: gstreamer-1.18.5/tools/gst-inspect.c
+Index: gstreamer-1.22.0/tools/gst-inspect.c
 ===================================================================
---- gstreamer-1.18.5.orig/tools/gst-inspect.c
-+++ gstreamer-1.18.5/tools/gst-inspect.c
-@@ -1750,7 +1750,224 @@ print_tracer_info (GstPluginFeature * fe
+--- gstreamer-1.22.0.orig/tools/gst-inspect.c
++++ gstreamer-1.22.0/tools/gst-inspect.c
+@@ -1869,7 +1869,224 @@ print_tracer_info (GstPluginFeature * fe
   * is meant for machines, not humans.
   */
  static void
@@ -228,7 +228,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
  {
    GstPadDirection direction;
    const gchar *type_name;
-@@ -1776,6 +1993,13 @@ print_plugin_automatic_install_info_code
+@@ -1895,6 +2112,13 @@ print_plugin_automatic_install_info_code
      return;
    }
  
@@ -242,7 +242,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
    /* decoder/demuxer sink pads should always be static and there should only
     * be one, the same applies to encoders/muxers and source pads */
    static_templates = gst_element_factory_get_static_pad_templates (factory);
-@@ -1812,15 +2036,20 @@ print_plugin_automatic_install_info_code
+@@ -1931,15 +2155,20 @@ print_plugin_automatic_install_info_code
      gst_structure_remove_field (s, "rate");
      gst_structure_remove_field (s, "depth");
      gst_structure_remove_field (s, "clock-rate");
@@ -267,7 +267,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
  {
    const gchar *const *protocols;
  
-@@ -1829,13 +2058,19 @@ print_plugin_automatic_install_info_prot
+@@ -1948,13 +2177,19 @@ print_plugin_automatic_install_info_prot
      switch (gst_element_factory_get_uri_type (factory)) {
        case GST_URI_SINK:
          while (*protocols != NULL) {
@@ -289,7 +289,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
            ++protocols;
          }
          break;
-@@ -1846,7 +2081,7 @@ print_plugin_automatic_install_info_prot
+@@ -1965,7 +2200,7 @@ print_plugin_automatic_install_info_prot
  }
  
  static void
@@ -298,7 +298,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
  {
    GList *features, *l;
  
-@@ -1865,11 +2100,15 @@ print_plugin_automatic_install_info (Gst
+@@ -1984,11 +2219,15 @@ print_plugin_automatic_install_info (Gst
      if (feature_plugin == plugin) {
        GstElementFactory *factory;
  
@@ -317,7 +317,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
      }
      if (feature_plugin)
        gst_object_unref (feature_plugin);
-@@ -1891,7 +2130,7 @@ print_all_plugin_automatic_install_info
+@@ -2012,7 +2251,7 @@ print_all_plugin_automatic_install_info
      plugin = (GstPlugin *) (plugins->data);
      plugins = g_list_next (plugins);
  
@@ -326,7 +326,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
    }
    gst_plugin_list_free (orig_plugins);
  }
-@@ -1958,6 +2197,7 @@ main (int argc, char *argv[])
+@@ -2098,6 +2337,7 @@ real_main (int argc, char *argv[])
    gboolean do_print_blacklist = FALSE;
    gboolean plugin_name = FALSE;
    gboolean print_aii = FALSE;
@@ -334,7 +334,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
    gboolean uri_handlers = FALSE;
    gboolean check_exists = FALSE;
    gboolean color_always = FALSE;
-@@ -1979,6 +2219,9 @@ main (int argc, char *argv[])
+@@ -2119,6 +2359,9 @@ real_main (int argc, char *argv[])
                "or all plugins provide.\n                                       "
                "Useful in connection with external automatic plugin "
                "installation mechanisms"), NULL},
@@ -344,7 +344,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
      {"plugin", '\0', 0, G_OPTION_ARG_NONE, &plugin_name,
          N_("List the plugin contents"), NULL},
      {"types", 't', 0, G_OPTION_ARG_STRING, &types,
-@@ -2144,7 +2387,7 @@ main (int argc, char *argv[])
+@@ -2284,7 +2527,7 @@ real_main (int argc, char *argv[])
        /* if there is such a plugin, print out info */
        if (plugin) {
          if (print_aii) {
@@ -353,7 +353,7 @@ Index: gstreamer-1.18.5/tools/gst-inspect.c
          } else {
            print_plugin_info (plugin);
            print_plugin_features (plugin);
-@@ -2157,13 +2400,17 @@ main (int argc, char *argv[])
+@@ -2297,13 +2540,17 @@ real_main (int argc, char *argv[])
  
            if (plugin) {
              if (print_aii) {

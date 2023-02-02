@@ -1274,4 +1274,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment>- boo#1207577: set /var/lib/ntp/var/run/ntp to 775</comment>
     <requestid>1061308</requestid>
   </revision>
+  <revision rev="134" vrev="11">
+    <srcmd5>3c970bbb86c394a07988c96d760cd1a0</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1675357701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062463</requestid>
+  </revision>
 </revisionlist>

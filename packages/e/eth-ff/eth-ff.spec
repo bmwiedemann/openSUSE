@@ -1,7 +1,7 @@
 #
 # spec file for package eth-ff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        eth-ff.rpmlintrc
 Patch1:         eth-ff-suse-build-fixes.patch
 Patch2:         eth-ff-add-shebang-for-exp-files.patch
+Patch3:         topology-fix-support-for-disabled-MD5-authentication.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -71,6 +72,7 @@ Contains tools for managing fabric on a management node.
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
 %patch2
+%patch3
 
 %build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
