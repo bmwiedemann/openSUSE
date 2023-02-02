@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230203" schemaversion="4.1">
+<image name="OBS__MicroOS___20230207" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230203</productvar>
+      <productvar name="VERSION">20230207</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230203,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230207,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230203/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230207/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -910,8 +910,8 @@
       <repopackage name="libcairo2"/>
       <repopackage name="libcairomm-1_0-1" arch="x86_64"/>
       <repopackage name="libcamel-1_2-64" arch="x86_64"/>
-      <repopackage name="libcamera-base0_0_3"/>
-      <repopackage name="libcamera0_0_3"/>
+      <repopackage name="libcamera-base0_0_4"/>
+      <repopackage name="libcamera0_0_4"/>
       <repopackage name="libcanberra-gtk-module-common" arch="x86_64"/>
       <repopackage name="libcanberra-gtk0" arch="x86_64"/>
       <repopackage name="libcanberra-gtk2-module" arch="x86_64"/>
@@ -1914,7 +1914,7 @@
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzvbi0"/>
-      <repopackage name="libZXing1"/>
+      <repopackage name="libZXing3"/>
       <repopackage name="libzypp" arch="x86_64"/>
       <repopackage name="libzypp-plugin-appdata" arch="x86_64"/>
       <repopackage name="lockdev"/>
