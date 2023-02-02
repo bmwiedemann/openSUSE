@@ -1328,7 +1328,7 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender: [x86_64] 
+  - blender: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
   - blender-demo: [x86_64] 
   - blender-lang: [x86_64] 
   - bless 
@@ -4161,7 +4161,6 @@ unsorted:
   - frei0r-plugins-devel 
   - frei0r-plugins-opencv 
   - frescobaldi: [x86_64] 
-  - freshplayerplugin 
   - fribidi-devel 
   - frink 
   - fritzing 
@@ -6747,6 +6746,7 @@ unsorted:
   - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
+  - gstreamer-plugins-vaapi-devel 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder 
   - gstreamer-transcoder-devel 
@@ -8237,6 +8237,8 @@ unsorted:
   - jupyter-ipyscales 
   - jupyter-ipysheet 
   - jupyter-ipyvolume 
+  - jupyter-ipyvue-nbextension 
+  - jupyter-ipyvuetify-nbextension 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
   - jupyter-jupyter-wysiwyg 
@@ -8247,6 +8249,9 @@ unsorted:
   - jupyter-jupyterlab 
   - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
+  - jupyter-jupyterlab-ipyvolume 
+  - jupyter-jupyterlab-ipyvue 
+  - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-pygments 
   - jupyter-jupyterlab-templates 
@@ -9202,6 +9207,7 @@ unsorted:
   - leechcraft-xproxy 
   - leechcraft-xtazy 
   - leechcraft-zalil 
+  - leftwm 
   - leiningen 
   - lekha: [x86_64] 
   - lemon 
@@ -10471,7 +10477,6 @@ unsorted:
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
-  - libbtrfsutil1 
   - libbudgie-plugin0 
   - libbudgie-private0 
   - libbudgietheme0 
@@ -19254,6 +19259,7 @@ unsorted:
   - pacemaker-devel 
   - pacemaker-libs 
   - pacemaker-remote 
+  - pacemaker-schemas 
   - packETH 
   - packETH-cli 
   - package-translations 
@@ -22360,6 +22366,7 @@ unsorted:
   - python3-oslotest 
   - python3-osprofiler 
   - python3-ovsdbapp 
+  - python3-pacemaker 
   - python3-paraview 
   - python3-partio 
   - python3-pcp 
@@ -23368,7 +23375,6 @@ unsorted:
   - python310-cstruct 
   - python310-csv23 
   - python310-csvkit 
-  - python310-ctypescrypto 
   - python310-cu2qu 
   - python310-cufflinks 
   - python310-curio 
@@ -23948,6 +23954,8 @@ unsorted:
   - python310-ipython 
   - python310-ipython_genutils 
   - python310-ipyvolume 
+  - python310-ipyvue 
+  - python310-ipyvuetify 
   - python310-ipywebrtc 
   - python310-ipywidgets 
   - python310-irc 
@@ -24434,7 +24442,6 @@ unsorted:
   - python310-osc-tiny 
   - python310-oscrypto 
   - python310-osmviz 
-  - python310-ospd 
   - python310-ospd-openvas 
   - python310-outcome 
   - python310-ovirt-engine-sdk 
@@ -26698,7 +26705,6 @@ unsorted:
   - python38-cstruct 
   - python38-csv23 
   - python38-csvkit 
-  - python38-ctypescrypto 
   - python38-cu2qu 
   - python38-cufflinks 
   - python38-curio 
@@ -27308,6 +27314,8 @@ unsorted:
   - python38-ipython 
   - python38-ipython_genutils 
   - python38-ipyvolume 
+  - python38-ipyvue 
+  - python38-ipyvuetify 
   - python38-ipywebrtc 
   - python38-ipywidgets 
   - python38-irc 
@@ -27803,7 +27811,6 @@ unsorted:
   - python38-osc-tiny 
   - python38-oscrypto 
   - python38-osmviz 
-  - python38-ospd 
   - python38-ospd-openvas 
   - python38-outcome 
   - python38-ovirt-engine-sdk 
@@ -30104,7 +30111,6 @@ unsorted:
   - python39-cstruct 
   - python39-csv23 
   - python39-csvkit 
-  - python39-ctypescrypto 
   - python39-cu2qu 
   - python39-cufflinks 
   - python39-curio 
@@ -30714,6 +30720,8 @@ unsorted:
   - python39-ipython 
   - python39-ipython_genutils 
   - python39-ipyvolume 
+  - python39-ipyvue 
+  - python39-ipyvuetify 
   - python39-ipywebrtc 
   - python39-ipywidgets 
   - python39-irc 
@@ -31210,7 +31218,6 @@ unsorted:
   - python39-osc-tiny 
   - python39-oscrypto 
   - python39-osmviz 
-  - python39-ospd 
   - python39-ospd-openvas 
   - python39-outcome 
   - python39-ovirt-engine-sdk 
@@ -33424,6 +33431,13 @@ unsorted:
   - ripgrep-zsh-completion 
   - rist-tools 
   - ritchie-cli 
+  - river: [x86_64] 
+  - river-bash-completion: [x86_64] 
+  - river-devel: [x86_64] 
+  - river-fish-completion: [x86_64] 
+  - river-riverctl: [x86_64] 
+  - river-rivertile: [x86_64] 
+  - river-zsh-completion: [x86_64] 
   - rk-devel 
   - rkdeveloptool 
   - rke 
