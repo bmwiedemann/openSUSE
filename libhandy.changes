@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 13:27:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.1:
+  + Fix double click handling for HdyWindowHandle and HdyHeaderBar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 15 14:31:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.0:
