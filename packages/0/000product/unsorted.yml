@@ -1834,6 +1834,7 @@ unsorted:
   - cargo1.63 
   - cargo1.65 
   - cargo1.66 
+  - cargo1.67 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -4360,10 +4361,13 @@ unsorted:
   - gcc13-go-32bit: [x86_64] 
   - gcc13-info 
   - gcc13-locale 
+  - gcc13-m2 
+  - gcc13-m2-32bit: [x86_64] 
   - gcc13-obj-c++ 
   - gcc13-obj-c++-32bit: [x86_64] 
   - gcc13-objc 
   - gcc13-objc-32bit: [x86_64] 
+  - gcc13-rust 
   - gcc13-testresults 
   - gcc7 
   - gcc7-32bit: [x86_64] 
@@ -9820,7 +9824,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_236_0 
+  - libVkLayer_utils-1_3_239_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -10750,7 +10754,7 @@ unsorted:
   - libcorrect-devel 
   - libcorrect0_0_0 
   - libcotp-devel 
-  - libcotp12 
+  - libcotp2 
   - libcourier-unicode7 
   - libcpath-devel 
   - libcpath1 
@@ -12567,6 +12571,16 @@ unsorted:
   - liblz4-devel 
   - liblzo2-2-32bit: [x86_64] 
   - libm17n0-32bit: [x86_64] 
+  - libm2cor18 
+  - libm2cor18-32bit: [x86_64] 
+  - libm2iso18 
+  - libm2iso18-32bit: [x86_64] 
+  - libm2log18 
+  - libm2log18-32bit: [x86_64] 
+  - libm2min18 
+  - libm2min18-32bit: [x86_64] 
+  - libm2pim18 
+  - libm2pim18-32bit: [x86_64] 
   - libm4ri-0_0_20200125 
   - libm4ri-devel 
   - libm4rie-0_0_20200125 
@@ -23280,6 +23294,7 @@ unsorted:
   - python310-cloudflare 
   - python310-cloudpickle 
   - python310-cloudscraper 
+  - python310-cloup 
   - python310-cluster 
   - python310-cma 
   - python310-cmapfile 
@@ -26602,6 +26617,7 @@ unsorted:
   - python38-cloudflare 
   - python38-cloudpickle 
   - python38-cloudscraper 
+  - python38-cloup 
   - python38-cluster 
   - python38-cma 
   - python38-cmapfile 
@@ -30007,6 +30023,7 @@ unsorted:
   - python39-cloudflare 
   - python39-cloudpickle 
   - python39-cloudscraper 
+  - python39-cloup 
   - python39-cluster 
   - python39-cma 
   - python39-cmapfile 
@@ -33585,6 +33602,7 @@ unsorted:
   - rust1.63 
   - rust1.65 
   - rust1.66 
+  - rust1.67 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -45017,6 +45035,7 @@ unsorted:
   - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
   - xorgproto-devel: [i586] 
+  - xorgproto-doc 
   - xorgxrdp 
   - xorriso-tcltk 
   - xortool 
