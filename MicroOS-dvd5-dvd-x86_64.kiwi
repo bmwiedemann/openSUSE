@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230131" schemaversion="4.1">
+<image name="OBS__MicroOS___20230202" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230131</productvar>
+      <productvar name="VERSION">20230202</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230131,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230202,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230131/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230202/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1131,6 +1131,7 @@
       <repopackage name="libgstbasecamerabinsrc-1_0-0"/>
       <repopackage name="libgstcodecparsers-1_0-0"/>
       <repopackage name="libgstcodecs-1_0-0"/>
+      <repopackage name="libgstcuda-1_0-0"/>
       <repopackage name="libgstfft-1_0-0"/>
       <repopackage name="libgstgl-1_0-0"/>
       <repopackage name="libgstisoff-1_0-0"/>
@@ -1152,6 +1153,7 @@
       <repopackage name="libgstvulkan-1_0-0"/>
       <repopackage name="libgstwayland-1_0-0"/>
       <repopackage name="libgstwebrtc-1_0-0"/>
+      <repopackage name="libgstwebrtcnice-1_0-0"/>
       <repopackage name="libgthread-2_0-0" arch="x86_64"/>
       <repopackage name="libgtk-2_0-0"/>
       <repopackage name="libgtk-3-0"/>
@@ -1470,7 +1472,6 @@
       <repopackage name="libopeniscsiusr0" arch="x86_64"/>
       <repopackage name="libopenjp2-7"/>
       <repopackage name="libopenmpt0"/>
-      <repopackage name="libopenssl1_1"/>
       <repopackage name="libopenssl3"/>
       <repopackage name="libopus0"/>
       <repopackage name="liborc-0_4-0"/>
@@ -2070,7 +2071,7 @@
       <repopackage name="openssh-common" arch="x86_64"/>
       <repopackage name="openssh-server" arch="x86_64"/>
       <repopackage name="openssl" arch="x86_64"/>
-      <repopackage name="openssl-1_1" arch="x86_64"/>
+      <repopackage name="openssl-3" arch="x86_64"/>
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
       <repopackage name="opensuse-welcome" arch="x86_64"/>
       <repopackage name="openvpn" arch="x86_64"/>
