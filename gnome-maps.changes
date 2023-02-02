@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 08:56:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.4:
+  + Prevent the scale to cover the sidebar when the window is
+    narrow.
+
+-------------------------------------------------------------------
 Sat Jan  7 12:45:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:
