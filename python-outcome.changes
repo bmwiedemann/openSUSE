@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 09:52:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- pull in dbm for all flavors on SLE15 SP4+ as well
+
+-------------------------------------------------------------------
 Tue Oct  4 22:25:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.2.0

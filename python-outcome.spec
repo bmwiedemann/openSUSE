@@ -1,7 +1,7 @@
 #
 # spec file for package python-outcome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module pytest}
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || (0%{suse_version} == 1500 && 0%{?sle_version} >= 150400)
 # for more than one python 3 flavor, but no python2 flavor
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module pytest-asyncio}
