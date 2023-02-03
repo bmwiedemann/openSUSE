@@ -1173,4 +1173,27 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207398</comment>
   </revision>
+  <revision rev="148" vrev="5">
+    <srcmd5>ab8be6be9bf83f3f531036d0cd987acc</srcmd5>
+    <version>0.10.4</version>
+    <time>1675458284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062642</requestid>
+  </revision>
+  <revision rev="149" vrev="6">
+    <srcmd5>4e94b41cbd4173a10a896d1d16a9a6cd</srcmd5>
+    <version>0.10.4</version>
+    <time>1675516139</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207901</comment>
+  </revision>
+  <revision rev="150" vrev="7">
+    <srcmd5>7eb046064ec3336e23eb8a8b35f03174</srcmd5>
+    <version>0.10.4</version>
+    <time>1675792050</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>1063377</requestid>
+  </revision>
 </revisionlist>
