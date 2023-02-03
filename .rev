@@ -1088,4 +1088,22 @@ FIXES (LSP):
     gethostbyname and libnsl is deprecated</comment>
     <requestid>1061030</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8d6c8024e0b7b02cfd0c0da9a31fec1d</srcmd5>
+    <version>0.8.3</version>
+    <time>1675458322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.8.3:
+  - clipboard: Show provider warning when not during batch
+    changes
+  - diff: Avoid restoring invalid 'foldcolumn' value
+  - filetype: Don't pass empty string to detect
+  - messages: Reset msg_grid_scroll_discount when redrawing
+  - rbuffer: Handle edge case where write_ptr has wrapped around
+  - rpc: Don't parse msgpack if buflen is 0
+  - treesitter: Properly restore 'syntax' (#21358)
+  - treesitter: Validate language name
+</comment>
+    <requestid>1062687</requestid>
+  </revision>
 </revisionlist>
