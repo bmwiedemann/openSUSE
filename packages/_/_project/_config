@@ -953,7 +953,8 @@ Prefer: python38-pytest python39-pytest python310-pytest
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
 # We prefer the new name
-Prefer: libopenssl1_1-32bit openssl-1_1
+Prefer: openssl
+#Prefer: libopenssl1_1-32bit openssl-1_1
 
 # Enchant has multiple backends to chose from, make a decision for OBS
 Prefer: enchant-1-backends
