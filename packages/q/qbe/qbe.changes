@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jan 31 12:08:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove BuildRequires since c_compiler, glibc, and glibc-devel are
+  pulled in the vm during buildtime.
+
+-------------------------------------------------------------------
+Sat Jan 28 02:27:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for qbe 1.0

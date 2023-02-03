@@ -1,0 +1,205 @@
+Index: Cirq-1.1.0/cirq-core/cirq/_compat.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/_compat.py
++++ Cirq-1.1.0/cirq-core/cirq/_compat.py
+@@ -138,9 +138,7 @@ def proper_repr(value: Any) -> str:
+         return Printer().doprint(value)
+ 
+     if isinstance(value, np.ndarray):
+-        if np.issubdtype(value.dtype, np.datetime64):
+-            return f'np.array({value.tolist()!r}, dtype=np.{value.dtype!r})'
+-        return f'np.array({value.tolist()!r}, dtype=np.{value.dtype})'
++        return f'np.array({value.tolist()!r}, dtype=np.{value.dtype!r})'
+ 
+     if isinstance(value, pd.MultiIndex):
+         return f'pd.MultiIndex.from_tuples({repr(list(value))}, names={repr(list(value.names))})'
+Index: Cirq-1.1.0/cirq-core/cirq/_compat_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/_compat_test.py
++++ Cirq-1.1.0/cirq-core/cirq/_compat_test.py
+@@ -110,7 +110,7 @@ def test_dataclass_repr_numpy():
+             return dataclass_repr(self, namespace='cirq.testing')
+ 
+     tc = TestClass2(np.ones(3))
+-    assert repr(tc) == "cirq.testing.TestClass2(x=np.array([1.0, 1.0, 1.0], dtype=np.float64))"
++    assert repr(tc) == "cirq.testing.TestClass2(x=np.array([1.0, 1.0, 1.0], dtype=np.dtype('float64')))"
+ 
+ 
+ def test_proper_eq():
+Index: Cirq-1.1.0/cirq-core/cirq/linalg/decompositions_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/linalg/decompositions_test.py
++++ Cirq-1.1.0/cirq-core/cirq/linalg/decompositions_test.py
+@@ -367,12 +367,12 @@ def test_kak_repr():
+ cirq.KakDecomposition(
+     interaction_coefficients=(0.5, 0.25, 0),
+     single_qubit_operations_before=(
+-        np.array([[0j, (1+0j)], [(1+0j), 0j]], dtype=np.complex128),
+-        np.array([[0j, -1j], [1j, 0j]], dtype=np.complex128),
++        np.array([[0j, (1+0j)], [(1+0j), 0j]], dtype=np.dtype('complex128')),
++        np.array([[0j, -1j], [1j, 0j]], dtype=np.dtype('complex128')),
+     ),
+     single_qubit_operations_after=(
+-        np.array([[1.0, 0.0], [0.0, 1.0]], dtype=np.float64),
+-        np.array([[(1+0j), 0j], [0j, (-1+0j)]], dtype=np.complex128),
++        np.array([[1.0, 0.0], [0.0, 1.0]], dtype=np.dtype('float64')),
++        np.array([[(1+0j), 0j], [0j, (-1+0j)]], dtype=np.dtype('complex128')),
+     ),
+     global_phase=1)
+ """.strip()
+Index: Cirq-1.1.0/cirq-core/cirq/ops/kraus_channel_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/ops/kraus_channel_test.py
++++ Cirq-1.1.0/cirq-core/cirq/ops/kraus_channel_test.py
+@@ -105,8 +105,8 @@ def test_kraus_channel_repr():
+         repr(x_meas)
+         == """\
+ cirq.KrausChannel(kraus_ops=[\
+-np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.complex64), \
+-np.array([[(0.5+0j), (-0.5+0j)], [(-0.5+0j), (0.5+0j)]], dtype=np.complex64)], \
++np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.dtype('complex64')), \
++np.array([[(0.5+0j), (-0.5+0j)], [(-0.5+0j), (0.5+0j)]], dtype=np.dtype('complex64'))], \
+ key='x_meas')"""
+     )
+ 
+Index: Cirq-1.1.0/cirq-core/cirq/ops/measurement_gate_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/ops/measurement_gate_test.py
++++ Cirq-1.1.0/cirq-core/cirq/ops/measurement_gate_test.py
+@@ -317,23 +317,23 @@ def test_op_repr():
+             b,
+             key='out',
+             invert_mask=(False, True),
+-            confusion_map={(0,): np.array([[0, 1], [1, 0]], dtype=np.int64)},
++            confusion_map={(0,): np.array([[0, 1], [1, 0]], dtype=np.dtype('int64'))},
+         )
+     ) == (
+         "cirq.measure(cirq.LineQubit(0), cirq.LineQubit(1), "
+         "key=cirq.MeasurementKey(name='out'), "
+         "invert_mask=(False, True), "
+-        "confusion_map={(0,): np.array([[0, 1], [1, 0]], dtype=np.int64)})"
++        "confusion_map={(0,): np.array([[0, 1], [1, 0]], dtype=np.dtype('int64'))})"
+     )
+ 
+ 
+ def test_repr():
+     gate = cirq.MeasurementGate(
+-        3, 'a', (True, False), (1, 2, 3), {(2,): np.array([[0, 1], [1, 0]], dtype=np.int64)}
++        3, 'a', (True, False), (1, 2, 3), {(2,): np.array([[0, 1], [1, 0]], dtype=np.dtype('int64'))}
+     )
+     assert repr(gate) == (
+         "cirq.MeasurementGate(3, cirq.MeasurementKey(name='a'), (True, False), "
+-        "qid_shape=(1, 2, 3), confusion_map={(2,): np.array([[0, 1], [1, 0]], dtype=np.int64)})"
++        "qid_shape=(1, 2, 3), confusion_map={(2,): np.array([[0, 1], [1, 0]], dtype=np.dtype('int64'))})"
+     )
+ 
+ 
+Index: Cirq-1.1.0/cirq-core/cirq/ops/mixed_unitary_channel_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/ops/mixed_unitary_channel_test.py
++++ Cirq-1.1.0/cirq-core/cirq/ops/mixed_unitary_channel_test.py
+@@ -95,16 +95,16 @@ def test_matrix_mixture_str():
+ 
+ def test_matrix_mixture_repr():
+     mix = [
+-        (0.5, np.array([[1, 0], [0, 1]], dtype=np.complex64)),
+-        (0.5, np.array([[0, 1], [1, 0]], dtype=np.complex64)),
++        (0.5, np.array([[1, 0], [0, 1]], dtype=np.dtype('complex64'))),
++        (0.5, np.array([[0, 1], [1, 0]], dtype=np.dtype('complex64'))),
+     ]
+     half_flip = cirq.MixedUnitaryChannel(mix, key='flip')
+     assert (
+         repr(half_flip)
+         == """\
+ cirq.MixedUnitaryChannel(mixture=[\
+-(0.5, np.array([[(1+0j), 0j], [0j, (1+0j)]], dtype=np.complex64)), \
+-(0.5, np.array([[0j, (1+0j)], [(1+0j), 0j]], dtype=np.complex64))], \
++(0.5, np.array([[(1+0j), 0j], [0j, (1+0j)]], dtype=np.dtype('complex64'))), \
++(0.5, np.array([[0j, (1+0j)], [(1+0j), 0j]], dtype=np.dtype('complex64')))], \
+ key='flip')"""
+     )
+ 
+Index: Cirq-1.1.0/cirq-core/cirq/sim/density_matrix_simulator_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/sim/density_matrix_simulator_test.py
++++ Cirq-1.1.0/cirq-core/cirq/sim/density_matrix_simulator_test.py
+@@ -951,9 +951,9 @@ def test_density_matrix_step_result_repr
+             )
+         )
+         == "cirq.DensityMatrixStepResult(sim_state=cirq.DensityMatrixSimulationState("
+-        "initial_state=np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.complex64), "
++        "initial_state=np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.dtype('complex64')), "
+         "qubits=(cirq.LineQubit(0),), "
+-        "classical_data=cirq.ClassicalDataDictionaryStore()), dtype=np.complex64)"
++        "classical_data=cirq.ClassicalDataDictionaryStore()), dtype=np.dtype('complex64'))"
+     )
+ 
+ 
+@@ -1034,9 +1034,9 @@ def test_density_matrix_trial_result_rep
+     expected_repr = (
+         "cirq.DensityMatrixTrialResult("
+         "params=cirq.ParamResolver({'s': 1}), "
+-        "measurements={'m': np.array([[1]], dtype=np.int32)}, "
++        "measurements={'m': np.array([[1]], dtype=np.dtype('int32'))}, "
+         "final_simulator_state=cirq.DensityMatrixSimulationState("
+-        "initial_state=np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.complex64), "
++        "initial_state=np.array([[(0.5+0j), (0.5+0j)], [(0.5+0j), (0.5+0j)]], dtype=np.dtype('complex64')), "
+         "qubits=(cirq.LineQubit(0),), "
+         "classical_data=cirq.ClassicalDataDictionaryStore()))"
+     )
+Index: Cirq-1.1.0/cirq-core/cirq/sim/sparse_simulator_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/sim/sparse_simulator_test.py
++++ Cirq-1.1.0/cirq-core/cirq/sim/sparse_simulator_test.py
+@@ -775,9 +775,9 @@ def test_sparse_simulator_repr():
+     # No equality so cannot use cirq.testing.assert_equivalent_repr
+     assert (
+         repr(step) == "cirq.SparseSimulatorStep(sim_state=cirq.StateVectorSimulationState("
+-        "initial_state=np.array([[0j, (1+0j)], [0j, 0j]], dtype=np.complex64), "
++        "initial_state=np.array([[0j, (1+0j)], [0j, 0j]], dtype=np.dtype('complex64')), "
+         "qubits=(cirq.LineQubit(0), cirq.LineQubit(1)), "
+-        "classical_data=cirq.ClassicalDataDictionaryStore()), dtype=np.complex64)"
++        "classical_data=cirq.ClassicalDataDictionaryStore()), dtype=np.dtype('complex64'))"
+     )
+ 
+ 
+Index: Cirq-1.1.0/cirq-core/cirq/sim/sparse_simulator.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/sim/sparse_simulator.py
++++ Cirq-1.1.0/cirq-core/cirq/sim/sparse_simulator.py
+@@ -282,5 +282,5 @@ class SparseSimulatorStep(
+         # Dtype doesn't have a good repr, so we work around by invoking __name__.
+         return (
+             f'cirq.SparseSimulatorStep(sim_state={self._sim_state!r},'
+-            f' dtype=np.{self._dtype.__name__})'
++            f' dtype=np.{np.dtype(self._dtype)!r})'
+         )
+Index: Cirq-1.1.0/cirq-core/cirq/sim/state_vector_simulator_test.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/sim/state_vector_simulator_test.py
++++ Cirq-1.1.0/cirq-core/cirq/sim/state_vector_simulator_test.py
+@@ -35,9 +35,9 @@ def test_state_vector_trial_result_repr(
+     expected_repr = (
+         "cirq.StateVectorTrialResult("
+         "params=cirq.ParamResolver({'s': 1}), "
+-        "measurements={'m': np.array([[1]], dtype=np.int32)}, "
++        "measurements={'m': np.array([[1]], dtype=np.dtype('int32'))}, "
+         "final_simulator_state=cirq.StateVectorSimulationState("
+-        "initial_state=np.array([0j, (1+0j)], dtype=np.complex64), "
++        "initial_state=np.array([0j, (1+0j)], dtype=np.dtype('complex64')), "
+         "qubits=(cirq.NamedQubit('a'),), "
+         "classical_data=cirq.ClassicalDataDictionaryStore()))"
+     )
+Index: Cirq-1.1.0/cirq-core/cirq/sim/density_matrix_simulator.py
+===================================================================
+--- Cirq-1.1.0.orig/cirq-core/cirq/sim/density_matrix_simulator.py
++++ Cirq-1.1.0/cirq-core/cirq/sim/density_matrix_simulator.py
+@@ -303,7 +303,7 @@ class DensityMatrixStepResult(simulator_
+         # Dtype doesn't have a good repr, so we work around by invoking __name__.
+         return (
+             f'cirq.DensityMatrixStepResult(sim_state={self._sim_state!r},'
+-            f' dtype=np.{self._dtype.__name__})'
++            f' dtype=np.{np.dtype(self._dtype)!r})'
+         )
+ 
+ 

@@ -171,4 +171,12 @@
   * Fix various py26 unit test failures (9ca5a14)</comment>
     <requestid>1060113</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>61fc3b7eb4fe71dedc2039b1ba7cbff1</srcmd5>
+    <version>0.18.3</version>
+    <time>1675357649</time>
+    <user>dimstar_suse</user>
+    <comment>- pull in dbm for all flavors on SLE15 SP4+ as well</comment>
+    <requestid>1062425</requestid>
+  </revision>
 </revisionlist>

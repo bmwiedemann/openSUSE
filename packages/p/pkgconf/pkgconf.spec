@@ -1,7 +1,7 @@
 #
 # spec file for package pkgconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,6 +54,8 @@ URL:            http://pkgconf.org/
 Source0:        https://distfiles.dereferenced.org/%{name}/%{name}-%{version}.tar.xz
 # Simple wrapper script to offer platform versions of pkgconfig from Fedora
 Source1:        platform-pkg-config.in
+# PATCH-FIX-UPSTREAM pkgconf-CVE-2023-24056.patch bsc#1207394 CVE-2023-24056 qzhao@suse.com -- Backport commit 628b2b2baf from upstream, test for, and stop string processing, on truncation.
+Patch0:         pkgconf-CVE-2023-24056.patch
 # For regenerating autotools scripts
 BuildRequires:  autoconf
 BuildRequires:  automake

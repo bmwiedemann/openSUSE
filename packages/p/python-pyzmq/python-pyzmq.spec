@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,9 @@ Recommends:     python-simplejson
 Recommends:     python-tornado
 Suggests:       python-paramiko
 # SECTION Test requirements
+%if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module numpy}
+%endif
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}

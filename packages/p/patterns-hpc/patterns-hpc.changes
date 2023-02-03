@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:18:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't recommend ypbind, it's deprecated and will be removed
+
+-------------------------------------------------------------------
 Fri Apr 29 09:06:34 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Remove occurrances of openmpi2 - which is obsolete

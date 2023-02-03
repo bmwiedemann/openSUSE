@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-hpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ This particular package contains all the HPC related patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package compute_node
 %pattern_serverfunctions
 Summary:        HPC Basic Compute Node
@@ -66,7 +66,6 @@ Recommends:     salt-minion
 Recommends:     slurm-node
 Recommends:     vim
 Recommends:     wget
-Recommends:     ypbind
 # python 2.7 deps
 Recommends:     ganglia-gmond
 Recommends:     genders

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  2 09:37:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- upgrade opt-einsum to requires as it is imported by tensor/
+  unconditionally
+
+-------------------------------------------------------------------
 Sat Jan 14 11:35:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.4.2

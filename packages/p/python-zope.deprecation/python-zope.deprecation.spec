@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deprecation
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.deprecation
 Version:        4.4.0
 Release:        0
@@ -30,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION documentation requirements
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  python3-Sphinx
 # /SECTION
 %python_subpackages
 
@@ -67,7 +66,10 @@ pushd build/lib
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope.deprecation-%{version}*-info
+%{python_sitelib}/zope.deprecation-%{version}*-nspkg.pth
+%{python_sitelib}/zope/deprecation
 
 %files -n %{name}-doc
 %doc build/sphinx/html/

@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1061576</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>94dcbe0377874115b43007fb54fd87b7</srcmd5>
+    <version>1.4.2</version>
+    <time>1675357739</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade opt-einsum to requires as it is imported by tensor/
+  unconditionally</comment>
+    <requestid>1062607</requestid>
+  </revision>
 </revisionlist>

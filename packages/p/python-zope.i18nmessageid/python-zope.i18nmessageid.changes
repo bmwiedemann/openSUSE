@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 13:11:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Explicitly require python3-Sphinx for building the docs. It could
+  have been omitted from %pythons for %python_module in a 15.X
+  backport project.
+
+-------------------------------------------------------------------
 Mon Dec  5 13:49:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.1.1 

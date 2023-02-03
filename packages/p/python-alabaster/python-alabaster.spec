@@ -1,7 +1,7 @@
 #
 # spec file for package python-alabaster
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alabaster
-Version:        0.7.12
+Version:        0.7.13
 Release:        0
 Summary:        Modified Kr Sphinx doc theme
 License:        BSD-3-Clause

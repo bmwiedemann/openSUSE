@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  1 13:14:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Implement python packaging best practise: Don't cathall platlib
+- Explicitly require python3-Sphinx for building the docs. It could
+  have been omitted from %pythons for %python_module in a 15.X
+  backport project.
+
+-------------------------------------------------------------------
 Fri Sep 24 11:51:36 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

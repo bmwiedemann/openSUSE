@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 13:12:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip numy tests for the testsuite on SLE15
+
+-------------------------------------------------------------------
 Wed Nov  9 11:44:45 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with OpenSSL 3.0 [bsc#1205042]

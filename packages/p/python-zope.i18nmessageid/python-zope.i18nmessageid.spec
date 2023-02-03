@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ Version:        5.1.1
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
-URL:            https://www.python.org/pypi/zope.i18nmessageid
+URL:            https://github.com/zopefoundation/zope.i18nmessageid
 Source:         https://files.pythonhosted.org/packages/source/z/zope.i18nmessageid/zope.i18nmessageid-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  python3-Sphinx
 Requires:       python-six
 # /SECTION
 # SECTION testing requirements

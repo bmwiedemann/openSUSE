@@ -463,4 +463,12 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
   * Temporarily disable test_on_recv_basic</comment>
     <requestid>1035017</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>df70e6760527a518cc5f15eb769cf46a</srcmd5>
+    <version>24.0.1</version>
+    <time>1675357656</time>
+    <user>dimstar_suse</user>
+    <comment>- skip numy tests for the testsuite on SLE15</comment>
+    <requestid>1062451</requestid>
+  </revision>
 </revisionlist>

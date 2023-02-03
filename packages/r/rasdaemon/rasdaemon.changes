@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Feb 01 13:35:51 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.7.0.7.git+24204af:
+  * README: Update instructions about how to contribute.
+  * Makefile.am: enable all options on make distcheck.
+  * configure.ac: get rid of obsolete macros.
+  * ci.yml: add libtraceevent-dev dependency.
+  * Remove the old libtrace.
+  * Adjust indentations.
+  * Convert to use libtraceevent.
+  * on_tag.yml: use a different approach to upload artifact.
+  * Add a release workflow.
+- Changes from version 0.7.0:
+  * .gitignore: add the auto-generated "compile" file.
+  * INSTALL: update from latest version of it.
+  * configure.ac: fix bashisms.
+  * labels/asus: add ASUS TUF GAMING B450-PLUS II.
+  * rasdaemon: Add four modules supported by HiSilicon common
+    section.
+  * rasdaemon: Fix for a memory out-of-bounds issue and optimized
+    code to remove duplicate function.
+  * rasdaemon: ras-mc-ctl: Updated HiSilicon platform name.
+  * rasdaemon: ras-mc-ctl: Relocate reading and display Kunpeng920
+    errors to under Kunpeng9xx.
+  * rasdaemon: ras-mc-ctl: Add support to display the HiSilicon
+    vendor errors for a specified module.
+  * rasdaemon: ras-mc-ctl: Add printing usage if necessary
+    parameters are not passed for the vendor-error options.
+  * rasdaemon: ras-mc-ctl: Reformat error info of the HiSilicon
+    Kunpeng920.
+  * rasdaemon: ras-mc-ctl: Modify error statistics for HiSilicon
+    KunPeng9xx common errors.
+  * rasdaemon: Modify recording Hisilicon common error data.
+  * rasdaemon: Support cpu fault isolation for recoverable errors.
+  * rasdaemon: Support cpu fault isolation for corrected errors.
+  * rasdaemon: ras-memory-failure-handler: handle localtime()
+    failure correctly.
+  * rasdaemon: mce-amd-smca: properly limit bank types.
+  * rasdaemon: ras-report: fix possible but unlikely file
+    descriptor leak.
+  * libtrace: Use XSI version of strerror_r on non glibc systems.
+  * rasdaemon: use the new block_rq_error tracepoint.
+- Add build requires libtraceevent-devel.
+
+-------------------------------------------------------------------
 Tue May 10 09:21:05 UTC 2022 - moritz.kodytek@suse.com
 
 - Update to version 0.6.8.0.git+c225517:

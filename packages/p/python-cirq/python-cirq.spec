@@ -1,7 +1,7 @@
 #
 # spec file for package python-cirq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,21 @@
 #
 
 
-%define packagename Cirq
-%define skip_python2 1
 %define plainpython python
-# not all requirements available right now
-%bcond_with rigetti
-%define cirqmodules core aqt google ionq pasqal web %{?_with_rigetty:rigetty}
+%define cirqmodules core aqt google ionq pasqal web rigetti
 Name:           python-cirq
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library for writing quantum circuits
 License:        Apache-2.0
 URL:            https://github.com/quantumlib/Cirq
-Source:         https://github.com/quantumlib/Cirq/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests.patch gh#quantumlib/Cirq#5911
-Patch:          fix-tests.patch
+Source:         https://github.com/quantumlib/Cirq/archive/v%{version}.tar.gz#/Cirq-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cirq-pr5991-np1.24.patch gh#quantumlib/Cirq#5991
+Patch0:         cirq-pr5991-np1.24.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION cirq-core
@@ -56,30 +55,13 @@ BuildRequires:  %{python_module protobuf >= 3.12.0}
 # google-api-core[grpc]
 BuildRequires:  %{python_module grpcio}
 # /SECTION
-%if %{with rigetti}
-BuildRequires:  %{python_module attrs >= 20.3}
-BuildRequires:  %{python_module certifi >= 2021.5.30}
-BuildRequires:  %{python_module h11 >= 0.9.0}
-BuildRequires:  %{python_module httpcore >= 0.11.1}
-BuildRequires:  %{python_module httpx >= 0.15.5}
-BuildRequires:  %{python_module idna >= 2.10}
-BuildRequires:  %{python_module iso8601 >= 0.1.14}
-BuildRequires:  %{python_module pydantic >= 1.8.2}
-BuildRequires:  %{python_module pyjwt >= 1.7.1}
-BuildRequires:  %{python_module pyquil >= 3.0.0}
-BuildRequires:  %{python_module python-dateutil >= 2.8.1}
-BuildRequires:  %{python_module qcs-api-client >= 0.8.0}
-BuildRequires:  %{python_module retrying >= 1.3.3}
-BuildRequires:  %{python_module rfc3339 >= 6.2}
-BuildRequires:  %{python_module rfc3986 >= 1.5.0}
-BuildRequires:  %{python_module sniffio >= 1.2.0}
-BuildRequires:  %{python_module toml >= 0.10.2}
-%endif
-# SECTION cirq-core/contrib
-BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module pyquil >= 3.2.0}
+# SECTION cirq-core[contrib]
+BuildRequires:  %{python_module autoray}
 BuildRequires:  %{python_module PyLaTeX >= 1.3.0}
 BuildRequires:  %{python_module numba >= 0.53}
-BuildRequires:  %{python_module pyquil}
+BuildRequires:  %{python_module opt-einsum}
+BuildRequires:  %{python_module ply >= 3.6}
 BuildRequires:  %{python_module quimb}
 # /SECTION
 # SECTION test
@@ -87,6 +69,8 @@ BuildRequires:  %{python_module flynt >= 0.60}
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module freezegun >= 0.3.15}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-randomly}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 #/SECTION
 Requires:       %plainpython(abi) = %python_version
@@ -95,10 +79,8 @@ Requires:       python-cirq-core
 Requires:       python-cirq-google
 Requires:       python-cirq-ionq
 Requires:       python-cirq-pasqal
-Requires:       python-cirq-web
-%if %{with rigetti}
 Requires:       python-cirq-rigetti
-%endif
+Requires:       python-cirq-web
 # quimb does not support 32 bit arch.
 ExcludeArch:    %ix86 %arm ppc
 BuildArch:      noarch
@@ -130,6 +112,19 @@ circuits and running them against quantum computers and simulators.
 
 This module contains everything you'd need to write quantum algorithms for NISQ devices and run them on the built-in Cirq simulators.
 In order to run algorithms on a given quantum hardware platform, you'll have to install the right cirq module as well.
+
+%package core-contrib
+Summary:        Cirq quantum algorithms for NISQ devices
+Requires:       python-PyLaTeX >= 1.3.0
+Requires:       python-autoray
+Requires:       python-cirq-core = %{version}
+Requires:       python-numba >= 0.53
+Requires:       python-opt-einsum
+Requires:       python-ply >= 3.6
+Requires:       python-quimb
+
+%description core-contrib
+The cirq-core[contrib] extra
 
 %package aqt
 Summary:        Cirq quantum algorithms on AQT quantum computers
@@ -178,25 +173,9 @@ and features in Cirq. cirq-web also provides a development environment for contr
 their own visualizations to the module.
 
 %package rigetti
-Summary:        A Cirq package to simulate and connect to Rigetti quantum computers and Quil QVM
-Requires:       python-attrs >= 20.3
-Requires:       python-certifi >= 2021.5.30
+Summary:        Cirq package for Rigetti quantum computers and Quil QVM
 Requires:       python-cirq-core = %{version}
-Requires:       python-h11 >= 0.9.0
-Requires:       python-httpcore >= 0.11.1
-Requires:       python-httpx >= 0.15.5
-Requires:       python-idna >= 2.10
-Requires:       python-iso8601 >= 0.1.14
-Requires:       python-pydantic >= 1.8.2
-Requires:       python-pyjwt >= 1.7.1
-Requires:       python-pyquil >= 3.0.0
-Requires:       python-python-dateutil >= 2.8.1
-Requires:       python-qcs-api-client >= 0.8.0
-Requires:       python-retrying >= 1.3.3
-Requires:       python-rfc3339 >= 6.2
-Requires:       python-rfc3986 >= 1.5.0
-Requires:       python-sniffio >= 1.2.0
-Requires:       python-toml >= 0.10.2
+Requires:       python-pyquil >= 3.2.0
 
 %description rigetti
 Cirq is a Python library for writing, manipulating, and optimizing quantum
@@ -205,36 +184,31 @@ circuits and running them against quantum computers and simulators.
 This module provides everything you'll need to run Cirq quantum algorithms on Rigetti quantum computers.
 
 %prep
-%autosetup -p1 -n %{packagename}-%{version}
+%autosetup -p1 -n Cirq-%{version}
 
 %build
 for p in %cirqmodules; do
   pushd cirq-$p
-  %python_build
+  %pyproject_wheel
   popd
 done
-%python_build
+%pyproject_wheel
 
 %install
 for p in %cirqmodules; do
-  pushd cirq-$p
-  %python_install
-  popd
+  cp cirq-$p/dist/*.whl dist/
 done
-%python_install
+%python_expand cp dist/*.whl build/
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # tests assume testfiles and import path to be the same, but we test BUILDROOT
 donttest="test_json_test_data_coverage"
 donttest="$donttest or test_json_and_repr_data"
-# mock error
-donttest="$donttest or test_get_engine_sampler"
-# version in release isn't updated in this test
-donttest="$donttest or test_version"
 for p in %cirqmodules; do
   pushd cirq-$p
-  %pytest -k "not ($donttest)"
+  %pytest -v -k "not ($donttest)" -n auto
   popd
 done
 
@@ -248,6 +222,10 @@ done
 %license cirq-core/LICENSE
 %{python_sitelib}/cirq
 %{python_sitelib}/cirq_core-%{version}*-info
+
+%files %{python_files core-contrib}
+%doc cirq-core/README.rst
+%license cirq-core/LICENSE
 
 %files %{python_files aqt}
 %doc cirq-aqt/README.rst
@@ -280,12 +258,10 @@ done
 %{python_sitelib}/cirq_web
 %{python_sitelib}/cirq_web-%{version}*-info
 
-%if %{with rigetti}
 %files %{python_files rigetti}
 %doc cirq-rigetti/README.rst
 %license cirq-rigetti/LICENSE
 %{python_sitelib}/cirq_rigetti
 %{python_sitelib}/cirq_rigetti-%{version}*-info
-%endif
 
 %changelog

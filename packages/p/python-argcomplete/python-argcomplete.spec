@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -80,7 +80,7 @@ export LANG=en_US.UTF-8
   # https://github.com/kislyuk/argcomplete/issues/256
   # https://github.com/kislyuk/argcomplete/issues/299
   sed -i -e "1s|#!.*python.*|#!%{_bindir}/$python|" test/prog scripts/*
-  sed -i -e "s|python |$python |g" test/test.py
+  sed -i -e "s|python3 |$python |g" test/test.py
   PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
 }
 

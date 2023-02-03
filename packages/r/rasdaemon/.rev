@@ -154,4 +154,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>977356</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>226cc04b7aaaf970c148a068404d13d8</srcmd5>
+    <version>0.7.0.7.git+24204af</version>
+    <time>1675357735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062600</requestid>
+  </revision>
 </revisionlist>

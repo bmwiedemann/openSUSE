@@ -1,7 +1,7 @@
 #
 # spec file for package python-cached-property
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/cached-property
 # PATCH-FIX-UPSTREAM skip test that rely on wrong freezegun behaviour
 # https://github.com/pydanny/cached-property/pull/125
 Patch0:         freezegun-skip.patch
+# PATCH-FIX-UPSTREAM Don't use asyncio.coroutine if it's not available -- https://github.com/pydanny/cached-property/pull/267
+Patch1:         python311.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -42,8 +44,7 @@ computational expensive properties quick and easy and it works in Python 2
 and 3.
 
 %prep
-%setup -q -n cached-property-%{version}
-%patch0 -p1
+%autosetup -p1 -n cached-property-%{version}
 printf 'import sys\nif sys.version_info < (3, 0): collect_ignore = ["tests/test_async_cached_property.py", "tests/test_coroutine_cached_property.py"]' > conftest.py
 
 %build

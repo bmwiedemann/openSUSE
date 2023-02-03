@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jan 28 19:10:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * This Cirq release focuses on tracking and improving performance
+    of key workflows like circuit construction, parameter
+    resolution etc. The release also adds a new transformers
+    framework for qubit routing and provides an efficient
+    implementation of the qubit routing algorithm described in
+    arXiv:1902.08091 [quant-ph]
+  ## Backwards Incompatible Changes
+  * 7892143 Print multi-qubit circuit with asymmetric depolarizing
+    noise correctly (#5931) by Paige
+  * af1267d Allow repeated measurements in deferred transformer
+    (#5857) by Dax Fohl
+  ## What's New
+  * New top level objects in cirq-core:
+    - RoutingSwapTag
+    - AbstractInitialMapper
+    - HardCodedInitialMapper
+    - LineInitialMapper
+    - MappingManager
+    - RouteCQC
+    - routed_circuit_with_mapping
+- Add subpackage for cirq_core[contrib]
+- Enable -rigetti package: pyquil and all its dependants are
+  available (gh#quantumlib/Cirq#5681)
+- Drop fix-tests.patch
+- Add cirq-pr5991-np1.24.patch -- gh#quantumlib/Cirq#5991
+
+-------------------------------------------------------------------
 Wed Nov 16 09:16:50 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed python-six dependency

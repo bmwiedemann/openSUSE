@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 29 09:26:47 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add pkgconf-CVE-2023-24056.patch: Backport commit 628b2b2baf from
+  upstream, test for, and stop string processing, on truncation
+  (bsc#1207394 CVE-2023-24056). 
+
+-------------------------------------------------------------------
 Mon Aug 23 09:18:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.8.0:

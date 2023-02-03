@@ -1,0 +1,6 @@
+<package name="qbe" project="openSUSE:Factory">
+  <title>qbe</title>
+  <description>Small embeddable C compiler backend.</description>
+  <devel project="devel:tools:compiler" package="qbe"/>
+  <url>https://c9x.me/compile</url>
+</package>

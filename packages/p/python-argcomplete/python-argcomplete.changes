@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 31 23:49:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix substitution on tests/test.py to test the current python flavor 
+
+-------------------------------------------------------------------
 Wed Jul  6 10:04:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

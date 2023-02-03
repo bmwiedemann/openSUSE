@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsproto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h11 >= 0.9.0
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1520
-BuildRequires:  %{python_module dataclasses}
-%endif
-BuildRequires:  (python36-dataclasses if python36-base)
 # SECTION test requirements
 BuildRequires:  %{python_module h11 >= 0.9.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%if 0%{?python_version_nodots} <= 36
-Requires:       python-dataclasses
-%endif
 %python_subpackages
 
 %description

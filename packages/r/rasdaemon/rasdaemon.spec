@@ -1,7 +1,7 @@
 #
 # spec file for package rasdaemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.6.8.0.git+c225517
+Version:        0.7.0.7.git+24204af
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
+BuildRequires:  libtraceevent-devel
 BuildRequires:  sqlite3-devel
 Requires(pre):  %fillup_prereq
 Requires:       perl-DBD-SQLite
@@ -47,7 +48,7 @@ EDAC drivers and DIMM labels are loaded at system startup, as well as
 an utility for reporting current error counts from the EDAC sysfs files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fvi

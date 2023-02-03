@@ -31,6 +31,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cytoolz >= 0.8.0
 Requires:       python-numba >= 0.39
 Requires:       python-numpy >= 1.17
+Requires:       python-opt-einsum >= 3.2
 Requires:       python-psutil >= 4.3.1
 Requires:       python-scipy >= 1.0.0
 Requires:       python-tqdm >= 4
@@ -40,29 +41,28 @@ Recommends:     python-autoray >= 0.5.1
 Recommends:     python-diskcache >= 3.0
 Recommends:     python-matplotlib >= 2
 Recommends:     python-networkx
-Recommends:     python-opt-einsum >= 3.2
 Suggests:       python-mpi4py
 Suggests:       python-petsc4py
 Suggests:       python-randomgen >= 1.18
 Suggests:       python-slepc4py
+# This package does not support 32 bit arch, s390x fails too
+ExcludeArch:    %{ix86} %{arm} ppc s390x
 # SECTION test
-BuildRequires:  %{python_module pytest}
-# runtime
-BuildRequires:  %{python_module cytoolz >= 0.8.0}
-BuildRequires:  %{python_module numba >= 0.39}
-BuildRequires:  %{python_module numpy >= 1.17}
-BuildRequires:  %{python_module psutil >= 4.3.1}
-BuildRequires:  %{python_module scipy >= 1.0.0}
-BuildRequires:  %{python_module tqdm >= 4}
 # extra
 BuildRequires:  %{python_module autoray >= 0.5.1}
+# runtime
+BuildRequires:  %{python_module cytoolz >= 0.8.0}
 BuildRequires:  %{python_module diskcache >= 3.0}
 BuildRequires:  %{python_module matplotlib >= 2}
 BuildRequires:  %{python_module networkx >= 2.3}
+BuildRequires:  %{python_module numba >= 0.39}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module opt-einsum >= 3.2}
+BuildRequires:  %{python_module psutil >= 4.3.1}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 1.0.0}
+BuildRequires:  %{python_module tqdm >= 4}
 # /SECTION
-# This package does not support 32 bit arch, s390x fails too
-ExcludeArch:    %ix86 %arm ppc s390x
 %python_subpackages
 
 %description

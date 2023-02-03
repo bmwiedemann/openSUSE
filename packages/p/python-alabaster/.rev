@@ -80,4 +80,14 @@ Resubmit with fixed license</comment>
   * see changelog.rst for the detailed changes</comment>
     <requestid>682114</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55007a092a19664642a13a8c988ce45d</srcmd5>
+    <version>0.7.13</version>
+    <time>1675357621</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.13:
+  * drop support for older than python 3.6
+  * require sphinx 6+</comment>
+    <requestid>1058612</requestid>
+  </revision>
 </revisionlist>

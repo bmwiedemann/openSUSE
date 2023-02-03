@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 31 23:18:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to fix tests with 3.11 
+
+-------------------------------------------------------------------
 Sat Dec 19 17:50:16 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.2:

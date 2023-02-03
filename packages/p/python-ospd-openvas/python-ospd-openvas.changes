@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 31 23:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.4.5:
+  Added
+  * Make openvas-scanner option visible for the client (#784) (#791)
+  * Set openvas and nmap caps at container start, with some compose
+    installations docker forgets it.
+  * documentation about new features bd705d3
+  * documentation and examples for credentials 5b6b668
+  * description of table_driven_lsc to OSPD_PARAMS ecdb67c
+  * log info for VT update (#619) fc3b80c
+  * possibility to handle redis tcp connections configured in openvas 29373b7
+  * package_unreliable qod_type to nvti_cache 61a3a35
+  * use qod_type from advisory when available 47927c7
+  * possibility to disable advisories hashsum verification 614a2ec
+  * gpg verification for notus (#557) d73d03d
+  * documentation for notus-scanner (#537) 9508f09
+  * Notus integration (#510) 2f39d2a
+  * notus advisories in get_vts (#518) f78c64a
+  * merge ospd into ospd-openvas 44cc135
+  * smoke test for get.vts (#513) b3c0b6b
+  Changed
+  * version of the OSP documentation 76d5586
+  * Allow openvas access raw sockets and network within container 0eefae9
+  * Extend the <get_version/> cmd and add <check_feed/> cmd (#558) c810de8
+  * Use poetry as build tool for pip installations #559 f3e42c2
+  * Handle script timeout as script preferences instead of server preference (#509) af97d06
+  Bug Fixes
+  * using empty dict as scanner-params instead of returning 404 7850833
+  * within python 3.9 and higher notus results are missing b42c758
+  * set to cvss2 when cvss3 is either not present or NULL 2963af4
+  * check for param to be present in calculate_vts_collection_hash 358456d
+  * missing reload on update_vts 96bc329
+  * crash when no severity got found 30a760b
+  * Stop and resume scan (#604) 41b25c2
+  * stacktrace on sensor when unexpectedly closing a ssh connection 487a58e
+  * do not load oids in openvas when handled by notus 15f50bb
+  * ospd-openvas should not crash on missing plugin_feed_info.inc 989a876
+  * mqtt network loop (#587) 9b5cecc
+  * Hash calculation of NVT fields 552b5f6
+  * prepare notus parser to use family when defined deb850c
+  * set sentry-sdk dependency to optional 80ed7ca
+  * warning on ERRMSG (#570) bf26ad0
+  * missing category of notus advisories (#569) 02cfd3b
+  * mqtt on_disconnect method (#538) 915f02e
+  * fix dead host count (#511) (#516) 2a17e18
+  * Fix get_status (#471) 866ea24 
+
+-------------------------------------------------------------------
 Mon Aug 17 07:54:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix download archives

@@ -36,7 +36,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || (0%{suse_version} == 1500 && 0%{?sle_version} >= 150400)
 BuildRequires:  %{python_module dbm}
 %else
 BuildRequires:  python3-dbm

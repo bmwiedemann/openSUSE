@@ -102,4 +102,12 @@ New dependecy of python-Pyramid</comment>
     <comment></comment>
     <requestid>1040339</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eeb2fd809572682ddf66f20efd8fb4ab</srcmd5>
+    <version>5.1.1</version>
+    <time>1675357663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062480</requestid>
+  </revision>
 </revisionlist>

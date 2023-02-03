@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,9 @@ BuildArch:      noarch
 BuildRequires:  %{python_module SecretStorage = %{version}}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jeepney >= 0.6}
+%if %{?suse_version} >= 1550
 BuildRequires:  dbus-1-daemon
+%endif
 BuildRequires:  gnome-keyring
 %endif
 %python_subpackages

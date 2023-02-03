@@ -123,4 +123,12 @@
 - drop 170.patch (upstream)</comment>
     <requestid>1007724</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e6c7d231cf3560375d34c6f5767d1b85</srcmd5>
+    <version>1.2.0</version>
+    <time>1675357666</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer supports python 3.6, we can drop the 3.6 specific requires</comment>
+    <requestid>1062522</requestid>
+  </revision>
 </revisionlist>
