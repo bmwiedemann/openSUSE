@@ -49,9 +49,12 @@
 %endif
 %if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} )
 %bcond_without lmdb
-%bcond_without libnsl
 %else
 %bcond_with    lmdb
+%endif
+%if 0%{?suse_version} >= 1320 && 0%{?suse_version} < 1599
+%bcond_without libnsl
+%else
 %bcond_with    libnsl
 %endif
 %bcond_without ldap
@@ -185,6 +188,10 @@ else
   export CCARGS="${CCARGS} -DUSE_TLS"
   export AUXLIBS="${AUXLIBS} -lssl -lcrypto"
 fi
+#
+%if %{without libnsl}
+export CCARGS="${CCARGS} -DNO_NIS"
+%endif
 #
 %if %{with ldap}
 export CCARGS="${CCARGS} -DHAS_LDAP -DLDAP_DEPRECATED=1 -DUSE_LDAP_SASL"

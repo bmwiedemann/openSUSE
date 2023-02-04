@@ -9,7 +9,7 @@ Index: VirtualBox-7.0.6/src/VBox/Additions/linux/installer/vboxadd.sh
 ===================================================================
 --- VirtualBox-7.0.6.orig/src/VBox/Additions/linux/installer/vboxadd.sh
 +++ VirtualBox-7.0.6/src/VBox/Additions/linux/installer/vboxadd.sh
-@@ -869,9 +869,11 @@ dmnstatus()
+@@ -890,9 +890,11 @@ dmnstatus()
      fi
  }
  
@@ -28,7 +28,7 @@ Index: VirtualBox-7.0.6/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
 --- VirtualBox-7.0.6.orig/src/VBox/Installer/linux/vboxdrv.sh
 +++ VirtualBox-7.0.6/src/VBox/Installer/linux/vboxdrv.sh
-@@ -48,6 +48,9 @@ DEVICE=/dev/vboxdrv
+@@ -47,6 +47,9 @@ DEVICE=/dev/vboxdrv
  MODPROBE=/sbin/modprobe
  SCRIPTNAME=vboxdrv.sh
  

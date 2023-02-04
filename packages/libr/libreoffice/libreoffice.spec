@@ -118,6 +118,8 @@ Patch14:        use-fixmath-shared-library.patch
 Patch15:        bsc1204825.patch
 # LO-L3: Connector lines from PPTX "break"/bend too often
 Patch16:        bsc1205866.patch
+# PATCH-FIX-UPSTREAM Remove_dependency_on_BitArray_h.patch -- Remove dependency on BitArray.h from zxing-1.2.0
+Patch17:        Remove_dependency_on_BitArray_h.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1045,6 +1047,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 %patch990 -p1
 %patch991 -p1
 

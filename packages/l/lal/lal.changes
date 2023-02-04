@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 28 06:06:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build after numpy 1.24 API changes, add
+  replace_numpy_object.patch
+- Explicitly add python3-py dependency, no longer pulled in by
+  pytest
+- Replace broken python_compileall macro by correct compileall
+  invocation (>= 3.9 only, skip with 3.8), make reproducible
+- Disable build on all architecture where char is unsigned
+
+-------------------------------------------------------------------
 Sat Nov 26 02:40:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 7.2.4:

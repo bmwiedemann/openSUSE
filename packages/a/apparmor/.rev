@@ -2515,4 +2515,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
     <comment></comment>
     <requestid>1055771</requestid>
   </revision>
+  <revision rev="186" vrev="3">
+    <srcmd5>2167b49f63425edd5f9273ad4144015d</srcmd5>
+    <version>3.1.2</version>
+    <time>1675516260</time>
+    <user>dimstar_suse</user>
+    <comment>- add nscd-systemd-userdb.diff: allow nscd to read systemd-userdb
+  (boo#1207698) (forwarded request 1062036 from cboltz)</comment>
+    <requestid>1062692</requestid>
+  </revision>
 </revisionlist>

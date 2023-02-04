@@ -17,7 +17,7 @@
 
 
 Name:           python-traitlets
-Version:        5.8.1
+Version:        5.9.0
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause

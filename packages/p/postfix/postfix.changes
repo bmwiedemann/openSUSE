@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 13:30:52 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS support on Factory (deprecated and will be removed)
+
+-------------------------------------------------------------------
 Wed Jan 18 12:09:13 UTC 2023 - Hu <cathy.hu@suse.com>
 
 - Fix SELinux labeling issue caused by /usr/sbin/config.postfix (bsc#1207227).

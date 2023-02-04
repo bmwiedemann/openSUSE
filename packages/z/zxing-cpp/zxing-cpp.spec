@@ -1,7 +1,7 @@
 #
 # spec file for package zxing-cpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 1
+%define sover 3
 Name:           zxing-cpp
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
@@ -26,12 +26,7 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE cmake-check-system-first.patch -- Search system for needed libraries first
-Patch0:         cmake-check-system-first.patch
-# PATCH-FIX-UPSTREAM 269.patch -- Update stb_image/stb_image_write
-Patch1:         269.patch
-# PATCH-FIX-UPSTREAM 0001-test-update-to-libfmt-v9.0.0.patch -- fmt 9 compatibility
-Patch2:         0001-test-update-to-libfmt-v9.0.0.patch
+
 BuildRequires:  pkgconfig
 # Use cmake3 package on SLE12 because cmake is too old (version 3.5)
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
@@ -99,17 +94,15 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %endif
 %ctest
 
-%post -n libZXing%{sover} -p /sbin/ldconfig
-%postun -n libZXing%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libZXing%{sover}
 
 %files -n libZXing%{sover}
 %doc README.md
-%license LICENSE.*
-%{_libdir}/libZXing.so.%{sover}
-%{_libdir}/libZXing.so.%{sover}.*
+%license LICENSE
+%{_libdir}/libZXing.so.*
 
 %files devel
-%license LICENSE.*
+%license LICENSE
 %{_includedir}/ZXing/
 %{_libdir}/cmake/ZXing/
 %{_libdir}/libZXing.so

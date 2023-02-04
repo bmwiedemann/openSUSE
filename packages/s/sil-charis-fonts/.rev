@@ -100,4 +100,12 @@
   * Maintenance release (forwarded request 956609 from cornelisbb)</comment>
     <requestid>956690</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>01f53b915b33be766b4fc4538e48bbe3</srcmd5>
+    <version>6.200</version>
+    <time>1675516298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063074</requestid>
+  </revision>
 </revisionlist>

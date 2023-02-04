@@ -963,4 +963,12 @@ I would be grateful.
     <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
     <requestid>1056497</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>f843620c0aab622bdcdb576fbc3c1bdc</srcmd5>
+    <version>22.12.2</version>
+    <time>1675516431</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
+    <requestid>1062769</requestid>
+  </revision>
 </revisionlist>

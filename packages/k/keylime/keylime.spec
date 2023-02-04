@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -176,7 +176,7 @@ patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_attest
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ca
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_ima_policy
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_runtime_policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
@@ -191,7 +191,7 @@ for cfg in config/*.conf; do
 done
 
 install -Dpm 0644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
-install -Dpm 0644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
+install -Dpm 0644 ./services/var-lib-%{srcname}-secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
 install -Dpm 0644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 0644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
 
@@ -212,7 +212,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_install_alternative %{srcname}_agent
 %python_install_alternative %{srcname}_attest
 %python_install_alternative %{srcname}_ca
-%python_install_alternative %{srcname}_convert_ima_policy
+%python_install_alternative %{srcname}_convert_runtime_policy
 %python_install_alternative %{srcname}_ima_emulator
 %python_install_alternative %{srcname}_registrar
 %python_install_alternative %{srcname}_tenant
@@ -224,7 +224,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_uninstall_alternative %{srcname}_agent
 %python_uninstall_alternative %{srcname}_attest
 %python_uninstall_alternative %{srcname}_ca
-%python_uninstall_alternative %{srcname}_convert_ima_policy
+%python_uninstall_alternative %{srcname}_convert_runtime_policy
 %python_uninstall_alternative %{srcname}_ima_emulator
 %python_uninstall_alternative %{srcname}_registrar
 %python_uninstall_alternative %{srcname}_tenant
@@ -286,7 +286,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_agent
 %python_alternative %{_bindir}/%{srcname}_attest
 %python_alternative %{_bindir}/%{srcname}_ca
-%python_alternative %{_bindir}/%{srcname}_convert_ima_policy
+%python_alternative %{_bindir}/%{srcname}_convert_runtime_policy
 %python_alternative %{_bindir}/%{srcname}_ima_emulator
 %python_alternative %{_bindir}/%{srcname}_registrar
 %python_alternative %{_bindir}/%{srcname}_tenant

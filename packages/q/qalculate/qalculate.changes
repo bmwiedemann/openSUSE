@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 28 16:16:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Fix retrieval of exchange rates from mycurrency.net and add alternative
+    secondary exchange rates sources
+  * Add m/s³, m/s⁴, m/s⁵, and m/s⁶ as derived units (improves automatic unit
+    conversion)
+  * Check that the output of command, in command() function, is a reasonably
+    sane expression
+  * EUR has replaced HRK as currency of Croatia
+  * Fix MathStructure::countTotalChildren() with count_function_as_one set
+    to false
+  * Fix unit tests
+
+-------------------------------------------------------------------
 Tue Dec 27 10:00:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:

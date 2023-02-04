@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  4 09:48:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add -Wno-error=deprecated-declarations for openssl-3
+- OpenSSL3.patch: patch from Ubuntu to fix openssl 3 build.
+
+-------------------------------------------------------------------
 Wed Apr 28 16:11:39 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 0.9.4:

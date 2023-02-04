@@ -5,6 +5,13 @@ Tue Jan 24 17:42:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
   fixes on non-x86_64
 
 -------------------------------------------------------------------
+Tue Jan 24 10:40:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable bugfixes.github.test_CVE_2018_12265.AdditionOverflowInLoaderExifJpeg
+  as it is broken on some archs
+  See: https://github.com/Exiv2/exiv2/issues/933
+
+-------------------------------------------------------------------
 Sat Jan 21 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.6:

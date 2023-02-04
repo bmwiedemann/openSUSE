@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  1 21:46:49 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+-  Fix a few places that did not get updated for the transition from
+   /sbin => /usr/sbin, and /etc/udev => /usr/lib/udev.  boo#1207736.
+   ldconfig has not been moved in Leap 15.4 - use /sbin for it.
+
+-------------------------------------------------------------------
 Tue Jan 24 20:15:06 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
 
 - VirtualBox 7.0.6 (released January 17 2023)

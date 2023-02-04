@@ -358,4 +358,14 @@
   * https://www.php.net/ChangeLog-8.php#8.1.14</comment>
     <requestid>1057006</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>da19a3f370f6fc5885e8477982ee1f24</srcmd5>
+    <version>8.1.15</version>
+    <time>1675516296</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.15
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.1.15</comment>
+    <requestid>1063063</requestid>
+  </revision>
 </revisionlist>

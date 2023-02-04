@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-proto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,8 @@ its code and API.
 %package devel
 Summary:        The X11 Protocol: X Protocol C Bindings
 Group:          Development/Libraries/X11
-Provides:       xorg-x11-proto-devel = 7.6
-Obsoletes:      xorg-x11-proto-devel <= 7.6
+#Provides:       xorg-x11-proto-devel = 7.6
+#Obsoletes:      xorg-x11-proto-devel <= 7.6
 %if %{with python2}
 Requires:       python2-xcb-proto-devel = %{version}
 %else

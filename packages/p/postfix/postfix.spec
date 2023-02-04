@@ -39,7 +39,11 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%if 0%{?suse_version} < 1599
 %bcond_without libnsl
+%else
+%bcond_with libnsl 
+%endif
 %bcond_without ldap
 Name:           postfix
 Version:        3.7.3
@@ -204,6 +208,9 @@ else
   export AUXLIBS="${AUXLIBS} -lssl -lcrypto"
 fi
 #
+%if %{without libnsl}
+export CCARGS="${CCARGS} -DNO_NIS"
+%endif
 %if %{with ldap}
 export CCARGS="${CCARGS} -DHAS_LDAP -DLDAP_DEPRECATED=1 -DUSE_LDAP_SASL"
 export AUXLIBS_LDAP="-lldap -llber"

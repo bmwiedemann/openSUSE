@@ -979,4 +979,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
     <requestid>1056568</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>6ce78054fc1c200565d79bcbef13052c</srcmd5>
+    <version>22.12.2</version>
+    <time>1675516479</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
+    <requestid>1062840</requestid>
+  </revision>
 </revisionlist>

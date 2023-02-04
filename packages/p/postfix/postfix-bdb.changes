@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 13:30:52 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS support on Factory (deprecated and will be removed)
+
+-------------------------------------------------------------------
 Mon Nov 14 15:07:44 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - postfix default main.cf myhostname default causes conflict

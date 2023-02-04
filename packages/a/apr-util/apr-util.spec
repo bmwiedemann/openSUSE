@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         dso_libdir %{_libdir}/apr-util-%{apuver}
 %define         includedir %{_includedir}/apr-%{apuver}
 Name:           apr-util
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        Apache Portable Runtime (APR) Utility Library
 License:        Apache-2.0
@@ -29,15 +29,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://apr.apache.org/
 Source:         http://www.apache.org/dist/apr/apr-util-%{version}.tar.bz2
 Source2:        http://www.apache.org/dist/apr/apr-util-%{version}.tar.bz2.asc
-Source3:        %{name}.keyring
+Source3:        https://downloads.apache.org/apr/KEYS#/%{name}.keyring
 Patch1:         apr-util-1.4.1-testmemcache-initialize-values-array.patch
 Patch2:         apr-util-visibility.patch
-# PATCH-FIX-OPENSUSE apr-util-mariadb-10.2.patch dimstar@opensuse.org -- Fix build with mariadb 10.2
-Patch3:         apr-util-mariadb-10.2.patch
 # PATCH-FIX-OPENSUSE apr-util-postgresql.patch max@suse.com -- Fix build with PostgreSQL 11
 Patch4:         apr-util-postgresql.patch
-# https://svn.apache.org/viewvc?view=revision&revision=1825312
-Patch5:         apr-util-apr_dbm_gdbm-fix-handling-of-error-codes.patch
 BuildRequires:  apr-devel
 BuildRequires:  autoconf
 BuildRequires:  doxygen
@@ -112,12 +108,7 @@ Requires:       %{libname} = %{version}
 DBD driver for SQLite 3 database.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> docs/doxygen.conf

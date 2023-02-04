@@ -62,4 +62,12 @@
     <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
     <requestid>1056446</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a2e461e0ac69ee29afd0c2754ceda02</srcmd5>
+    <version>22.12.2</version>
+    <time>1675516398</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
+    <requestid>1062718</requestid>
+  </revision>
 </revisionlist>

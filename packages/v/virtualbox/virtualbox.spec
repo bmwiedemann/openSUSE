@@ -57,6 +57,7 @@ Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 Group:          %{package_group}
 URL:            https://www.virtualbox.org/
 #
@@ -297,28 +298,6 @@ the terms of the GNU Public License (GPL).
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##########################################
 
 %package qt
@@ -339,28 +318,6 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #########################################
 
 %package websrv
@@ -373,29 +330,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -422,28 +356,6 @@ VirtualBox guest addition tools.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
 
 %package -n python3-%{name}
@@ -465,28 +377,6 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
 
 %package devel
@@ -500,28 +390,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -558,28 +426,6 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
 
 %package guest-desktop-icons
@@ -591,28 +437,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

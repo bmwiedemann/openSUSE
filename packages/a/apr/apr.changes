@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  2 19:55:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.2:
+  * CVE-2022-24963: Integer Overflow or Wraparound vulnerability in
+    apr_encode functions allows an attacker to write beyond bounds 
+    of a buffer (boo#1207870)
+  * Add error handling for lseek() failures in apr_file_write() and
+    apr_file_writev()
+  * Avoid an overflow on 32 bit platforms
+  * Don't silently set APR_FOPEN_NOCLEANUP for apr_file_mktemp()
+    created file to avoid a fd and inode leak when/if later passed
+    to apr_file_setaside().
+  * build system fixes and fixes for other platforms
+- drop apr-CVE-2021-35940.patch included upstream (CVE-2021-35940)
+
+-------------------------------------------------------------------
 Sat Mar 26 10:43:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Remove autoreconf call, it breaks with uptodate autoconf versions

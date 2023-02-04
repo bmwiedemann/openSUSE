@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 30 11:33:05 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- add nscd-systemd-userdb.diff: allow nscd to read systemd-userdb
+  (boo#1207698)
+
+-------------------------------------------------------------------
 Tue Dec 27 10:20:43 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Feb 03 09:21:52 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.6.0:
+  * bump version to 6.6.0
+  * codestyle: Annotate registrar_common.py and add to mypy
+  * codestyle: Type-annotate tenant.py
+  * codestyle: Type-annotate registrar_client.py and add to mypy
+  * black: Upgrade to new 23.1.0 and reformat some sources
+  * pylint: Fix an issue related to usage of dict R1735 (use-dict-literal)
+  * pylint: Fix two issues related to C0325 (superfluous-parens)
+  * pylint: Fix an unreachable-code issue
+  * pylintrc: Ignore W0719 (broad-exception-raised)
+  * codestyle: Type-annotate revocation_notifier.py and add to mypy
+  * CI/CD: Use later version of actions for style-checks
+  * pre-commit: Use isort v5.12 and black v22.12
+  * migrations: Move bind parameter from MetaData() to reflect() method
+  * pylint: Ignore newly reported too-many-ancestors issue
+  * docker/ci: Remove image used for TPM 1.2 tests
+  * docker/ci: Update ci image to base on Fedora 37
+  * docs: Update IMA instructions to new runtime policy format
+  * docs: point newcomers to the design document
+  * docs: add basic (m)TLS instructions to the installation guide
+  * docs: update REST APIs TLS documentation to match new default setup
+  * docs: remove old development instructions, move dev conainter section
+  * docs: update theme to min 1.1.0
+  * docs: fix formatting of example IMA-policy
+  * codestyle: Get rid of casts on return value from get_tpm_metadata()
+  * codestyle: Add missing type annotations to tpm_main.py and add to mypy
+  * codestyle: Add missing type annotations to tpm_abstract.py and add to mypy
+  * tenant: Implement updateallowlist command to update an existing allowlist
+  * verifier: Implement PUT method to update named allowlist
+  * verifier: AllowlistHandler: Move getting runtime policy in DB format to function
+  * verifier: AllowlistHandler: Deduplicate code validating REST API input
+  * verifier: proper support for listening on 0.0.0.0 (fixes #705)
+  * script: Remove unused argument argv
+  * pylintc: Remove outdated modules from list of ignore modules
+  * Rename keylime_agent_secure.mount to comply policy
+  * scripts: Also copy excluded files and verification keys from base policy
+  * scripts: Improve descriptions in create_policy tool
+  * scripts: Add user-provided keys to the policy
+  * scripts: update create_policy script to latest runtime policy JSON format
+  * Rename "create_allowlist.sh" to "create_runtime_policy.sh"
+  * Implement major Keylime policy overhaul
+
+-------------------------------------------------------------------
 Mon Jan 23 08:28:17 UTC 2023 - aplanas@suse.com
 
 - Update to version v6.5.3:

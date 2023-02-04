@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  2 13:45:39 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- update to 2.0.26:
+  * m68k: pass rng seed via BI_RNG_SEED
+  * workflow: update to checkout@v3
+  * LoongArch: Remove redundant cmdline parameters when using --reuse-cmdline option
+  * LoongArch: Add purgatory framework code
+  * LoongArch: PE format image loading support
+  * LoongArch: Add kexec/kdump support
+  * config: Add LoongArch architecture support in config.guess and config.sub files
+  * ppc64: remove rma_top limit
+- refresh kexec-tools-riscv64.patch.
+
+-------------------------------------------------------------------
 Tue Dec 27 12:37:09 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

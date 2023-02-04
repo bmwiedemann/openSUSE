@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  2 19:25:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use chrpath during build to delete otherwise illegal runtime
+  directories stored as RPATH in the executables
+
+-------------------------------------------------------------------
 Fri Jan 27 14:32:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch

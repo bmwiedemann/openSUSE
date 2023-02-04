@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define boost_min_version 1.66
 Name:           wesnoth
-Version:        1.17.1
+Version:        1.17.12
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
-Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/wesnoth/wesnoth/issues/6986 - How about adding a note to the GitHub release page saying "Don't download the tarballs from here"?
+Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2 
 # PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
 Patch1:         wesnoth-cmake-fix-find-readline.patch
-BuildRequires:  cmake >= 3.7
+BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
@@ -57,8 +58,8 @@ BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.1
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(pangocairo) >= 1.22.0
-BuildRequires:  pkgconfig(sdl2) >= 2.0.8
+BuildRequires:  pkgconfig(pangocairo) >= 1.44.0
+BuildRequires:  pkgconfig(sdl2) >= 2.0.10
 Requires:       dejavu
 Requires:       sazanami-fonts
 Requires:       wesnoth-data = %{version}
@@ -93,6 +94,7 @@ Requires:       wesnoth-fslayout
 %package fslayout
 Summary:        Battle for Wesnoth: Basic file system layout
 Group:          Amusements/Games/Strategy/Turn Based
+BuildArch:      noarch
 
 %description data
 This package contains the game data for Battle For Wesnoth.
@@ -111,7 +113,7 @@ This package solely contains the basic file structure in order to have it owned 
 
 %prep
 %setup -q
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 %patch1 -p1
 %endif
 

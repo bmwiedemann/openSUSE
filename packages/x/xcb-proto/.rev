@@ -170,4 +170,13 @@
   * Call AC_OUTPUT without arguments</comment>
     <requestid>984006</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>90ec581fa603e7c145c3c16b0f114fdc</srcmd5>
+    <version>7.6_1.15.2</version>
+    <time>1675516258</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer let xcb-proto-devel provide/obsolete
+  xorg-x11-proto-devel; this looks weird ...</comment>
+    <requestid>1062677</requestid>
+  </revision>
 </revisionlist>

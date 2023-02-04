@@ -1061,4 +1061,12 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>1056823</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>57a85f8acf7aff83ebf1caf7edaffd85</srcmd5>
+    <version>2.0.26</version>
+    <time>1675516254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062651</requestid>
+  </revision>
 </revisionlist>

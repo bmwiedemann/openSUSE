@@ -41,6 +41,7 @@ Source99:       baselibs.conf
 Patch0:         b6812284a2d70f29a5121ec3dbe652da07fdbbb7.patch
 # rebased from https://github.com/strukturag/libheif/commit/2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
 Patch1:         2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
+BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -161,6 +162,7 @@ for e in heif-convert \
          heif-thumbnailer
          do
             install -m 0755 build/examples/$e %{buildroot}%{_bindir}/$e
+            chrpath --delete %{buildroot}%{_bindir}/$e
             install -m 0644 examples/$e.1 %{buildroot}%{_mandir}/man1/$e.1
          done
 %else

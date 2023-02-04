@@ -1,8 +1,8 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">texlab-4.3.2.tar.gz</param>
-     <param name="compression">gz</param>
+     <param name="srctar">texlab-5.1.0.tar.gz</param>
+     <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled" />

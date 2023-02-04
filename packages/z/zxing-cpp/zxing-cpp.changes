@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jan 25 14:01:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.0:
+  * Switch to UTF8 based API and remove deprecated UTF16 one
+    (Result::text())
+  * Remove all API deprecated in 1.4
+  * Adding a wrapper for iOS
+  * New Aztec detector implementation to support arbitrary rotation
+    and position of the symbol
+  * Support multi-symbol detection in Aztec detector
+  * Replace all Qt originated ECI/CharacterSet conversion code with
+    a new implementation
+  * Require c++17 to build library and client code
+  * New DecodeHints::textMode() and Result::text(TextMode) API to
+    specify how bytes are rendered into text
+  * HRI (human readable interpretation) is the new default for the
+    TextMode (has been for most cases before, but not all)
+  * New DecodeHits::tryInvert() feature to test for inverted
+    symbols (white on black background)
+- Changes from version 1.4.0:
+  * Note: this is an intermediary release on the way to 2.0. This
+    code is (supposed to be) API compatible (via the ReadBarcode.h
+    interface) with v1.3.0 but contains quite a few additional
+    deprecations. It still has SO number 1, which is as wrong as it
+    was for release v1.3.0 and it is not ABI compatible with 1.3
+    either. 2.0 will be basically 1.4 but with all deprecated API
+    removed and the final fix for #333.
+  * Reader support for Micro QRCode by @corbers
+  * Prepared switch from std::wstring based utf16 to std::string
+    based utf8 results, use new ZX_USE_UTF8 macro to transition to
+    the upcoming 2.0 API
+  * Much improved 'binary' data support via new Result::bytes()
+    API, see #334 for a detailed background discussion.
+  * New Result::contentType() API returning information about the
+    type of content (like text vs. binary, etc.)
+  * Better standards conformance with respect to ECI handling, see
+    Results::bytesECI()
+  * Support for proper ECI handling across structured append
+    symbols (see MergeStructuredAppendResults())
+  * New Result::error() API with improved error handling, see also
+    DecodeHints::returnErrors()
+  * Removed all internal header files from the installed set, so
+    only the ReadBarcode.h based APIs are supported from here on
+    out
+  * Removed all sample images from the 'source' distribution
+    zip/tar balls (much reduced size)
+  * Python read_barcode returns None if no symbol was found (might
+    break existing code if not checked for None before)
+- Changes from version 1.3.0:
+  * Multi-barcode reading with the new std::vector<Result>
+    ReadBardcodes(...) function. Does not work for Aztec,
+    DataMatrix and Maxicode, yet.
+  * Multi-resolution scanning that can automatically downscale the
+    input to substantially increase the detection rate on high
+    resolution scans, see DecodeHints::tryDownscale, currently only
+    enabled in the ReadBardcodes function
+  * New Result::symbologyIdentifier property
+  * Updated and improved android wrapper
+- Drop patches fixed upstream:
+  * 269.patch
+  * 0001-test-update-to-libfmt-v9.0.0.patch
+  * cmake-check-system-first.patch
+- Bump sover to 3 following upstream changes.
+
+-------------------------------------------------------------------
 Tue Sep 20 07:10:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add fmt 9.0 compatibility patch (boo#1202273):

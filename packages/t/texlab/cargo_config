@@ -1,5 +1,10 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
+[source."https://github.com/salsa-rs/salsa"]
+git = "https://github.com/salsa-rs/salsa"
+rev = "20c7834ff34fd00a41b59bec61f3d5c85ea3abd4"
+replace-with = "vendored-sources"
+
 [source.vendored-sources]
 directory = "vendor"

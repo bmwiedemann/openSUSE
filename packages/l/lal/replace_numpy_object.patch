@@ -1,0 +1,27 @@
+From e4269307540b77ffc015c7be54191cf3350c798b Mon Sep 17 00:00:00 2001
+From: "duncan.macleod" <duncan.macleod@ligo.org>
+Date: Tue, 10 Jan 2023 16:30:46 +0000
+Subject: [PATCH] lal: replace numpy.object with builtin object
+
+numpy.object was a deprecated alias to object, see
+https://numpy.org/devdocs/release/1.20.0-notes.html#using-the-aliases-of-builtin-types-like-np-int-is-deprecated
+---
+ lal/swig/SWIGTestLALPython.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lal/swig/SWIGTestLALPython.py b/lal/swig/SWIGTestLALPython.py
+index b634b2c3d7..661c6fecab 100644
+--- a/swig/SWIGTestLALPython.py
++++ b/swig/SWIGTestLALPython.py
+@@ -135,7 +135,7 @@ def test_string_conversions():
+ strs = ["a", "bc", "def"]
+ sv = lal.CreateStringVector(*strs)
+ assert sv.length == 3
+-assert (sv.data.astype(numpy.object) == strs).all()
++assert (sv.data.astype(object) == strs).all()
+ strs[0] = "ghijk"
+ sv.data[0] = strs[0]
+ strs.append("lmnopq")
+-- 
+GitLab
+

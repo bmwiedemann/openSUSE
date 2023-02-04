@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  3 17:19:25 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.17.12:
+  * https://github.com/wesnoth/wesnoth/blob/master/changelog.md#version-11712
+- Changed source URL from github to http://files.wesnoth.org,
+  see https://github.com/wesnoth/wesnoth/issues/6986
+- Package fslayout uses now noarch as BuildArch
+- Raise some minimum requirements: cmake >= 3.14 (3.7),
+  pkgconfig(pangocairo) >= 1.44.0 (1.22.0),
+  pkgconfig(sdl2) >= 2.0.10 (2.0.8)
+- Rebase wesnoth-cmake-fix-find-readline.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 19:10:45 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Rebase wesnoth-cmake-fix-find-readline.patch

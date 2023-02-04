@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:48:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.0:
+  * build fixes on ARM
+  * small quality improvement
+
+-------------------------------------------------------------------
 Sat Nov 27 13:07:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.0:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  2 19:38:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.6.3
+  * CVE-2022-25147: Integer Overflow or Wraparound vulnerability in
+    apr_base64 function allows an attacker to write beyond bounds
+    of a buffer (boo#1207866)
+  * build system updates   
+- drop patches now included upstream:
+  * apr-util-apr_dbm_gdbm-fix-handling-of-error-codes.patch
+  * apr-util-mariadb-10.2.patch
+
+-------------------------------------------------------------------
 Tue Dec 21 10:50:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key (taken from apr package) and validate

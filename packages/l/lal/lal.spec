@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- See https://git.ligo.org/lscsoft/lalsuite/-/commit/847f9f1bf9c8e029db6426de098a963d542ab08b.patch
 Patch0:         swig_4_1_compat.patch
+# PATCH-FIX-UPSTREAM -- https://git.ligo.org/lscsoft/lalsuite/-/commit/e4269307540b.patch
+Patch1:         replace_numpy_object.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -65,7 +67,10 @@ Requires:       python-scipy
 Requires:       python-six
 Recommends:     python-ligo-lw
 Recommends:     python-ligo-segments
-ExcludeArch:    %{ix86}
+# Broken on all archs where 'char' is unsigned
+# https://git.ligo.org/lscsoft/lalsuite/-/issues/581
+# Also broken on x86
+ExcludeArch:    %{ix86} %{arm} %{ppc} aarch64 ppc64 ppc64le riscv64
 %if %{with octave}
 BuildRequires:  octave-devel
 BuildRequires:  swig >= 4.0
@@ -77,6 +82,8 @@ BuildRequires:  swig >= 3.0
 BuildRequires:  python3-freezegun
 BuildRequires:  python3-ligo-lw
 BuildRequires:  python3-ligo-segments
+# python3-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
+BuildRequires:  python3-py
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-scipy
@@ -171,11 +178,27 @@ find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot}%{_libdir} -name "*.a" -delete -print
 
 %{python_expand # FIX env HASHBANGS
-sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/gpstime.py
-sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/series.py
-sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/antenna.py
+sed -Ei "1{/^#!\/usr\/bin\/env python/d}" \
+    %{buildroot}%{$python_sitearch}/lal/{gpstime,series,antenna}.py
+rm %{buildroot}%{$python_sitearch}/lal/__pycache__/{gpstime,series,antenna}*.pyc
+
+# Only compileall >= 3.9 has '-s strip_prefix' option
+if [ %{$python_version_nodots} -ge 39 ]; then \
+  for d in %{buildroot}%{$python_sitelib} %{buildroot}%{$python_sitearch}; do \
+    if [ -d $d ]; then \
+      $python -m compileall -s %{buildroot} $d; \
+      $python -O -m compileall -s %{buildroot} $d; \
+    fi; \
+  done \
+fi;
 }
-%{?python_compileall}
+# python_compileall is broken, see https://github.com/openSUSE/python-rpm-macros/issues/150
+#%%{?python_compileall}
+
+%{python_expand # Verify we don't have broken cache files
+# "-exec false {} +" makes the return code nonzero on match
+find %{buildroot}%{$python_sitearch} -iname \*pyc -type f \( -exec grep 'home/abuild' '{}' \; -and -exec false '{}' \+ \)
+}
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
 %endif

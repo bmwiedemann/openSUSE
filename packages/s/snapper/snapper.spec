@@ -39,7 +39,7 @@ License:        GPL-2.0-only
 Group:          System/Packages
 URL:            http://snapper.io/
 Source:         snapper-%{version}.tar.bz2
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_test-devel
@@ -55,19 +55,16 @@ BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
 %endif
-%if 0%{?suse_version} >= 1550
-BuildRequires:  libbtrfsutil-devel
-%endif
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1310
 BuildRequires:  libmount-devel >= 2.24
 %endif
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} >= 23
 BuildRequires:  pkgconfig
 BuildRequires:  systemd
 %else
 BuildRequires:  pkg-config
 %endif
-%if 0%{?fedora_version} || 0%{?centos_version}
+%if 0%{?fedora_version} >= 24 || 0%{?centos_version} >= 800
 BuildRequires:	glibc-langpack-de
 BuildRequires:	glibc-langpack-fr
 BuildRequires:	glibc-langpack-en
@@ -75,7 +72,7 @@ BuildRequires:	glibc-langpack-en
 BuildRequires:  glibc-locale
 %endif
 %if ! 0%{?mandriva_version}
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} >= 23
 BuildRequires:  dbus-devel
 BuildRequires:  docbook-style-xsl
 %else
@@ -95,7 +92,6 @@ BuildRequires:  libzypp(plugin:commit)
 BuildRequires:  pam-devel
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
 BuildRequires:  json-c-devel
-BuildRequires:  libselinux-devel
 %else
 BuildRequires:  libjson-c-devel
 %endif
@@ -135,12 +131,11 @@ autoreconf -fvi
 	--enable-coverage \
 %endif
 	--with-pam-security="%{pam_security_dir}"				\
-%if ! 0%{?suse_version}
+%if 0%{?suse_version} <= 1310
 	--disable-rollback							\
-	--disable-btrfs-quota							\
 %endif
-%if 0%{?fedora_version} || 0%{?rhel_version}
-	--enable-selinux							\
+%if 0%{?suse_version} <= 1310
+	--disable-btrfs-quota							\
 %endif
 	--disable-silent-rules --disable-ext4
 make %{?_smp_mflags}
@@ -212,7 +207,7 @@ test -f /etc/logrotate.d/snapper.rpmsave && mv -v /etc/logrotate.d/snapper.rpmsa
 %defattr(-,root,root)
 %{_bindir}/snapper
 %{_sbindir}/snapperd
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1310
 %{_sbindir}/mksubvolume
 %endif
 %dir %{_prefix}/lib/snapper
@@ -220,7 +215,7 @@ test -f /etc/logrotate.d/snapper.rpmsave && mv -v /etc/logrotate.d/snapper.rpmsa
 %{_mandir}/*/snapper.8*
 %{_mandir}/*/snapperd.8*
 %{_mandir}/*/snapper-configs.5*
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1310
 %doc %{_mandir}/*/mksubvolume.8*
 %endif
 %if 0%{?suse_version} > 1500
@@ -288,7 +283,7 @@ done
 %postun -n libsnapper6 -p /sbin/ldconfig
 
 %package -n libsnapper-devel
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1325
 Requires:       libboost_headers-devel
 %else
 Requires:       boost-devel
@@ -301,7 +296,7 @@ Requires:       libxml2-devel
 %if 0%{?suse_version}
 Requires:       libbtrfs-devel
 %endif
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1310
 Requires:       libmount-devel >= 2.24
 %endif
 Summary:        Header files and documentation for libsnapper

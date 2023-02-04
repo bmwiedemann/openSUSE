@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 28 01:13:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.1.0:
+  * Allow manually overriding the root directory using a texlabroot/.texlabroot marker file. See the wiki for more information. (#826, #838)
+  * Deprecate texlab.rootDirectory setting in favor of .texlabroot files
+  * Do not use .git, .chktexrc, .latexmkrc files/directories to determine the root directory (#826)
+  * Fix building documents without an explicit root directory (#837)
+- Changes from 5.0.0:
+  * BREAKING: texlab.rootDirectory is now used as the folder path from which the compiler is executed relative to the main document. By default it is equal to ".". For more information, please visit the wiki.
+  * Improve performance of completion by a huge margin due to a faster filtering method used internally
+  * Do not discover project files beyond the provided workspace folders
+  * Try to guess the root directory by checking for files such as .latexmkrc or Tectonic.toml if texlab.rootDirectory is not set
+  * Update positions of reported build diagnostics when editing the affected line
+  * Do not treat links to files as bidirectional by default. This prevents issues where texlab ends up compiling the wrong file in projects with shared files (#806, #757, #679)
+  * Fix coverage of directories which need to be watched for changes (#502, #491)
+  * Resolve links of the import package correctly
+  * Use filterText of completion items when filtering internally (#829)
+- Specfile changes:
+  * Enable tests
+  * Enable `--all-features` flag
+
+-------------------------------------------------------------------
 Mon Nov 21 21:22:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 4.3.2:

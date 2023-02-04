@@ -1,7 +1,7 @@
 #
 # spec file for package liblqr
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_ver 0
-
 Name:           liblqr
 Version:        0.4.2
 Release:        0
 Summary:        Liquid Rescale seam-carving library
-License:        LGPL-3.0 and GPL-3.0
+License:        LGPL-3.0-only AND GPL-3.0-only
 Group:          System/Libraries
-Url:            http://liblqr.wikidot.com/
+URL:            https://liblqr.wikidot.com/
 Source0:        http://liblqr.wikidot.com/local--files/en:download-page/liblqr-1-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  glib2-devel
 BuildRequires:  libxslt-tools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Liquid Rescale (lqr) library provides a C/C++ API for performing
@@ -38,7 +36,7 @@ non-uniform resizing of images by the seam-carving technique.
 
 %package -n liblqr-1-%{so_ver}
 Summary:        Liquid Rescale seam-carving library
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          System/Libraries
 
 %description -n liblqr-1-%{so_ver}
@@ -47,7 +45,7 @@ non-uniform resizing of images by the seam-carving technique.
 
 %package devel
 Summary:        Development files for the Liquid Rescale library
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 Requires:       liblqr-1-%{so_ver} = %{version}
 
@@ -65,28 +63,26 @@ sed -i "s,/nwalsh/html/chunk.xsl,/nwalsh/current/html/chunk.xsl," docs/lqr_style
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 cd docs
-make
+%make_build
 cd ..
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 # remove .la files
-find %{buildroot} -name \*.la -exec rm -f {} \;
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n liblqr-1-%{so_ver} -p /sbin/ldconfig
-
 %postun -n liblqr-1-%{so_ver} -p /sbin/ldconfig
 
 %files -n liblqr-1-%{so_ver}
-%defattr(-,root,root,-)
-%doc COPYING.LESSER
+%license COPYING.LESSER
 %{_libdir}/liblqr-1.so.%{so_ver}*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING* ChangeLog NEWS README TODO
+%license COPYING*
+%doc AUTHORS ChangeLog NEWS README TODO
 %doc docs/{liblqr_manual.html,html/}
 %{_includedir}/lqr-1/
 %{_libdir}/liblqr-1.so

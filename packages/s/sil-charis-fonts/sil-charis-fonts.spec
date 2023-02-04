@@ -1,7 +1,7 @@
 #
 # spec file for package sil-charis-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sil-charis-fonts
-Version:        6.101
+Version:        6.200
 Release:        0
 Summary:        Smart Unicode Font for Latin and Cyrillic Scripts
 License:        OFL-1.1

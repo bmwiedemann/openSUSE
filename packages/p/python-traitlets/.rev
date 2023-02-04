@@ -147,4 +147,14 @@
     (@maartenbreddels)</comment>
     <requestid>1058563</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>09e16037be2e55b426c0f395e7bd58d6</srcmd5>
+    <version>5.9.0</version>
+    <time>1675516269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.0
+  * Polishing argcomplete support #829 (@azjps)
+</comment>
+    <requestid>1063000</requestid>
+  </revision>
 </revisionlist>

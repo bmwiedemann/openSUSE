@@ -1,7 +1,7 @@
 #
 # spec file for package sbsigntools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Version:        0.9.4
 Release:        0
 URL:            http://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
 Source:         %{name}-%{version}.tar.gz
+Patch0:         OpenSSL3.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel
@@ -42,10 +43,12 @@ This package installs tools which can cryptographically sign EFI
 binaries and drivers.
 
 %prep
-%autosetup
+%setup -q
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
+CFLAGS="%optflags -Wno-error=deprecated-declarations"
 %configure
 make %{?jobs:-j%jobs}
 
@@ -55,7 +58,7 @@ make check
 %install
 %make_install
 
-%files 
+%files
 %license COPYING
 %{_bindir}/*
 %{_mandir}/man1/*

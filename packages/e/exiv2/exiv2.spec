@@ -132,7 +132,12 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %cmake_install
 
 %check
-%ctest -- -j1
+%ifarch aarch64 ppc64 ppc64le ppc
+# bugfixes.github.test_CVE_2018_12265.AdditionOverflowInLoaderExifJpeg is broken on some archs
+# See: https://github.com/Exiv2/exiv2/issues/933
+export disabled_tests="-E bugfixTests"
+%endif
+%ctest -- -j1 $disabled_tests
 
 for t in \
     addmoddel \

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 28 00:55:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.16.0:
+  * Fixed an anonymous function assignment local x = function() being unnecessarily indented if the function body contains a comment (#627)
+  * Fixed malformed formatting when there is a newline between a return token and the expressions (#605)
+  * Fixed malformed formatting of multi-assignment or multi-returns where there is a comment within the expressions list (#637)
+  * Update internal parser:
+    - (lua52) Support Lua 5.2 fractional hexidecimal / hexidecimal with exponents (#621)
+    - (lua52) Support LuaJIT number suffixes LL/ULL/i (#621)
+    - (lua52) Support \z escape sequences in strings (#613)
+    - (luau) Support Luau string interpolation (#607)
+  * Several optimisations applied to formatting functions to reduce time taken. Files which previously did not terminate (6MB+) now finish in reasonable time. (#591)
+  * Assignments of the form local name = function will no longer hang at the equals token, and instead force parameters multiline, to reduce unnecessary indentation. (#595)
+  * Unnecessary parentheses around Luau types will now be removed (#611)
+  * Collapse a body containing only a goto statement when collapse_simple_statement is set (#618)
+
+
+-------------------------------------------------------------------
 Fri Dec 16 16:00:34 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Disable --all-features in test since `cargo-insta` is

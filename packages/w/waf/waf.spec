@@ -1,7 +1,7 @@
 #
 # spec file for package waf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waf
-Version:        2.0.24
+Version:        2.0.25
 Release:        0
 Summary:        The Waf build system
 License:        BSD-3-Clause

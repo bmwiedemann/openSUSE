@@ -49,10 +49,10 @@ if [ -f ~/.config/VirtualBox/disable ] ; then
     echo $INODE > ~/.config/VirtualBox/disable
     if [ "$LINE" != "$INODE" ] ; then
 	if [ -f /usr/bin/kdesu ] ; then
-	    kdesu /sbin/vbox-fix-usb-rules.sh
+	    kdesu /usr/sbin/vbox-fix-usb-rules.sh
 	fi
 	if [ -f /usr/bin/gnomesu ] ; then
-	    gnomesu /sbin/vbox-fix-usb-rules.sh
+	    gnomesu /usr/sbin/vbox-fix-usb-rules.sh
 	fi
     fi
 fi

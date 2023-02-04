@@ -1,7 +1,7 @@
 #
 # spec file for package apr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         installbuilddir %{_libdir}/apr-%{aprver}/build
 %define         includedir %{_includedir}/apr-%{aprver}
 Name:           apr
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        Apache Portable Runtime (APR) Library
 License:        Apache-2.0
@@ -29,13 +29,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://apr.apache.org/
 Source0:        https://www.apache.org/dist/apr/apr-%{version}.tar.bz2
 Source1:        https://www.apache.org/dist/apr/apr-%{version}.tar.bz2.asc
-Source2:        %{name}.keyring
+Source2:        https://downloads.apache.org/apr/KEYS#/%{name}.keyring
 Patch5:         apr-visibility.patch
 Patch9:         apr-proc-mutex-map-anon.patch
 # prevent random failures of the testsuite (sendfile test)
 Patch10:        apr-test-sendfile-timeout.patch
-# CVE-2021-3594 [bsc#1187367], invalid pointer initialization may lead to information disclosure (udp)
-Patch11:        apr-CVE-2021-35940.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libuuid-devel
@@ -43,7 +41,6 @@ BuildRequires:  lksctp-tools-devel
 # for the testsuite
 BuildRequires:  netcfg
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 APR is Apache's Portable Runtime Library, designed to be a support
@@ -83,11 +80,7 @@ This subpackage contains header files for developing applications
 that want to make use of APR.
 
 %prep
-%setup -q
-%patch5 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -p1
 
 # Do not put date to doxy content
 sed -i \
@@ -106,11 +99,11 @@ sed -i \
 	--disable-static \
 	--enable-posix-shm \
 	--with-sendfile
-make %{?_smp_mflags} CFLAGS="%{optflags} -DREADDIR_IS_THREAD_SAFE -fvisibility=hidden -fPIC"
-make dox %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -DREADDIR_IS_THREAD_SAFE -fvisibility=hidden -fPIC"
+%make_build dox
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install %{?_smp_mflags}
+%make_install
 # Move docs to more convenient location
 mv docs/dox/html html
 # Unpackaged files:
@@ -128,9 +121,9 @@ sed -ri '/^Libs/{s,-l(uuid|crypt) ,,g}' \
 %check
 %if ! 0%{?qemu_user_space_build}
 %ifarch ppc ppc64 ppc64le
-make check -j1 || { echo "ignore PowerPC transient test failures"; exit 0; }
+%make_build check -j1 || { echo "ignore PowerPC transient test failures"; exit 0; }
 %else
-make check -j1
+%make_build check -j1
 %endif
 %endif
 
@@ -138,12 +131,11 @@ make check -j1
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root,-)
 %doc CHANGES
 %if 0%{?suse_version} > 1315
 %license LICENSE
 %else
-%doc LICENSE
+%license LICENSE
 %endif
 %doc NOTICE
 %{_libdir}/libapr-%{aprver}.so.*
@@ -151,7 +143,6 @@ make check -j1
 %{_libdir}/libapr-%{aprver}.so
 
 %files devel
-%defattr(-,root,root,-)
 %doc docs/APRDesign.html
 %doc docs/canonical_filenames.html
 %doc docs/incomplete_types

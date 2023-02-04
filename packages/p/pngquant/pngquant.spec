@@ -1,7 +1,7 @@
 #
 # spec file for package pngquant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pngquant
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        Tool for lossy compression of PNG images
 License:        GPL-3.0-or-later
