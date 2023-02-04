@@ -1,0 +1,11 @@
+--- gst-editing-services-1.22.0-orig/meson.build	2023-01-23 20:29:34.000000000 +0100
++++ gst-editing-services-1.22.0/meson.build	2023-01-26 03:14:53.940091761 +0100
+@@ -110,7 +110,7 @@
+ endif
+ gstcontroller_dep = dependency('gstreamer-controller-1.0', version : gst_req,
+   fallback : ['gstreamer', 'gst_controller_dep'])
+-gstvalidate_dep = dependency('gst-validate-1.0', version : gst_req, required : get_option('validate'),
++gstvalidate_dep = dependency('gstreamer-validate-1.0', version : gst_req, required : get_option('validate'),
+   fallback : ['gst-devtools', 'validate_dep'])
+ 
+ gio_dep = dependency('gio-2.0', version: glib_req)

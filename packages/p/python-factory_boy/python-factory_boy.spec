@@ -1,7 +1,7 @@
 #
 # spec file for package python-factory_boy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module Django if (%python-base without python36-base)}
+%if 0%{suse_version} >= 1550
+BuildRequires:  %{python_module Django}
+%endif
 Requires:       python-Faker >= 0.7.0
 BuildArch:      noarch
 %python_subpackages

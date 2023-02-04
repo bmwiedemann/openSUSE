@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  1 20:37:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to run tests with pytest 
+- build with all python flavors for SLE 15 SP4+
+
+-------------------------------------------------------------------
 Sat Jan  7 22:55:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  2 19:49:05 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.200:
+  * This release is focused on adding features and 300+ glyphs,
+    including support for over 180 additional characters mostly from
+    Unicode 14 and 15. It does not include significant changes to
+    line spacing, glyph widths, or kerning that might cause document
+    reflow or layout changes—except for minor improvements to the
+    size and weight of superscript, subscript, and modifier letters
+  * Most important changes: support for subscript and superscript
+    numerals and automatic fractions
+
+-------------------------------------------------------------------
 Sun Feb 27 13:05:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 6.101:

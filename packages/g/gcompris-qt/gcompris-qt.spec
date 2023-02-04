@@ -30,42 +30,46 @@ Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{na
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  libqt5-qtcharts-imports >= 5.12.0
+BuildRequires:  libqt5-qtgraphicaleffects >= 5.12.0
+BuildRequires:  libqt5-qtimageformats >= 5.12.0
 BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Charts) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Charts) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.12.0
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5QuickTemplates2) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Script) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Sensors) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Quick) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5QuickTemplates2) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Script) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Sensors) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Test) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
 BuildRequires:  pkgconfig(openssl)
 # Runtime requirements, it doesn't start without them (boo#1011125)
 Requires:       %{name}-activities = %{version}
-Requires:       libQt5Multimedia5 >= 5.9.0
-Requires:       libQt5Svg5 >= 5.9.0
-Requires:       libqt5-qtgraphicaleffects >= 5.9.0
-Requires:       libqt5-qtimageformats >= 5.9.0
+Requires:       libQt5Multimedia5 >= 5.12.0
+Requires:       libQt5Svg5 >= 5.12.0
+Requires:       libqt5-qtcharts-imports >= 5.12.0
+Requires:       libqt5-qtgraphicaleffects >= 5.12.0
+Requires:       libqt5-qtimageformats >= 5.12.0
 Requires:       qml-box2d
 Recommends:     %{name}-voices = %{version}
 Provides:       gcompris = 17.10
 Obsoletes:      gcompris < 17.10
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(Qt5QmlModels) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5QmlModels) >= 5.12.0
 %else
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.12.0
 %endif
 
 %description

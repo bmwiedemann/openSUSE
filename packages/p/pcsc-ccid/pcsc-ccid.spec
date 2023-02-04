@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-ccid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pcsc-ccid
 %define _name ccid
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
@@ -80,7 +80,7 @@ sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_ccid.rules >%{buildroot}/%{_u
 %files
 %defattr(-,root,root)
 # NEWS is empty
-%doc AUTHORS ChangeLog README.md README.towitoko contrib/Kobil_mIDentity_switch/README_Kobil_mIDentity_switch.txt SCARDGETATTRIB.txt
+%doc AUTHORS ChangeLog README.md README.towitoko contrib/Kobil_mIDentity_switch/README_Kobil_mIDentity_switch.txt SCARDGETATTRIB.md
 %license COPYING LICENSE.openct
 %config (noreplace) %{_sysconfdir}/reader.conf.d/*
 %{ifddir}/*

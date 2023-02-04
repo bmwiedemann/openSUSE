@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  3 08:31:57 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add missing runtime libqt5-qtcharts-imports dependency for
+  Fraction activity.
+
+-------------------------------------------------------------------
 Sat Jan 21 19:44:48 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 3.1

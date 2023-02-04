@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,33 @@
 %bcond_with libalternatives
 %endif
 
-%define         skip_python2 1
-%define mainver 3.1.1
+%define gitcommits 27
+%define gitcommit 2da614b
+%define pyver 3.1.1
+%define labver 2.1.1
 %define jupver  6.1.2
-%define labver  2.1.1
+%{?gitcommits:%define mainsuffix .%{gitcommits}.g%{gitcommit}}
+%define mpyver  %{pyver}%{?mainsuffix}
+%define mjupver %{jupver}%{?mainsuffix}
+%define mlabver %{labver}%{?mainsuffix}
+%define anypythondist python3dist
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
 %define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
 %define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb
 Name:           python-nbdime
-Version:        %{mainver}
+Version:        %{mpyver}
 Release:        0
 Summary:        Tools for diffing and merging Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbdime
-Source:         https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%{mainver}.tar.gz
+# Source:         https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%%{pyver}.tar.gz
+# Building from non-pypy published source repositories requires npm install to fetch javascript sources online
+# Created on a network connected system with in a working directory without ':' in the the pathname.
+#   git clone https://github.com/jupyter/nbdime.git
+#   cd nbdime
+#   python3 -m build --sdist .
+#   git describe --tags --match '[0-9].*' | sed -e 's/^/mpyver /' -e 's/-/./g'
+Source:         nbdime-%{pyver}.dev0.tar.gz
 BuildRequires:  %{python_module GitPython >= 2.1.6}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pygments}
@@ -61,7 +74,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-tornado}
 # /SECTION
-Requires:       jupyter-nbdime = %{jupver}
+Requires:       jupyter-nbdime = %{mjupver}
 Requires:       python-GitPython >= 2.1.6
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pygments
@@ -82,8 +95,8 @@ Conflicts:      python-jupyter_nbdime-git < 1.0.5
 Conflicts:      python-jupyter_nbdime-hg < 1.0.5
 Recommends:     python-tabulate
 Suggests:       python-notebook
-Provides:       python-jupyter_nbdime = %{mainver}-%{release}
-Obsoletes:      python-jupyter_nbdime < %{mainver}-%{release}
+Provides:       python-jupyter_nbdime = %{mpyver}-%{release}
+Obsoletes:      python-jupyter_nbdime < %{mpyver}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -94,9 +107,9 @@ Jupyter Notebooks.
 This package provides the python interface.
 
 %package     -n jupyter-nbdime
-Version:        %{jupver}
+Version:        %{mjupver}
 Summary:        A JupyterLab extension for showing Notebook diffs
-Requires:       (%(echo "%{python_module nbdime = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       %{anypythondist}(nbdime) = %{pyver}%{?gitcommits:.%gitcommits}
 Conflicts:      python3-jupyter_nbdime < 1.0.5
 
 %description -n jupyter-nbdime
@@ -106,11 +119,11 @@ Jupyter Notebooks.
 This package provides the tools and jupyter notebook extension.
 
 %package     -n jupyter-nbdime-jupyterlab
-Version:        %{labver}
+Version:        %{mlabver}
 Release:        0
 Summary:        A JupyterLab extension for showing Notebook diffs
 Requires:       jupyter-jupyterlab
-Requires:       (%(echo "%{python_module nbdime = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       %{anypythondist}(nbdime) = %{pyver}%{?gitcommits:.%gitcommits}
 
 %description -n jupyter-nbdime-jupyterlab
 The nbdime package provides tools for diffing and merging of
@@ -119,18 +132,18 @@ Jupyter Notebooks.
 This package provides the JupyterLab extension.
 
 %package git
-Version:        %{mainver}
+Version:        %{mpyver}
 Summary:        Git integration for python-nbdime
 Requires:       git-core
-Requires:       python-nbdime = %{mainver}
+Requires:       python-nbdime = %{mpyver}
 # python3-jupyter_nbdime-git = JUPVER (!) was provided by a jupyter-nbdime-git package until end of 2022
-Provides:       python-jupyter_nbdime-git = %{jupver}-%{release}
-Obsoletes:      python-jupyter_nbdime-git < %{jupver}-%{release}
+Provides:       python-jupyter_nbdime-git = %{mjupver}-%{release}
+Obsoletes:      python-jupyter_nbdime-git < %{mjupver}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       jupyter-nbdime-git = %{jupver}-%{release}
-Obsoletes:      jupyter-nbdime-git < %{jupver}-%{release}
+Provides:       jupyter-nbdime-git = %{mjupver}-%{release}
+Obsoletes:      jupyter-nbdime-git < %{mjupver}-%{release}
 %else
-Conflicts:      jupyter-nbdime-git < %{jupver}-%{release}
+Conflicts:      jupyter-nbdime-git < %{mjupver}-%{release}
 %endif
 %if %{with libalternatives}
 Requires:       alts
@@ -146,18 +159,18 @@ Jupyter Notebooks.
 This package provides git integration.
 
 %package hg
-Version:        %{mainver}
+Version:        %{mpyver}
 Summary:        Mercurial integration for python-nbdime
 Requires:       mercurial
-Requires:       python-nbdime = %{mainver}
+Requires:       python-nbdime = %{mpyver}
 # python3-jupyter_nbdime-hg = JUPVER (!) was provided by a jupyter-nbdime-git package until end of 2022
-Provides:       python-jupyter_nbdime-hg = %{jupver}-%{release}
-Obsoletes:      python-jupyter_nbdime-hg < %{jupver}-%{release}
+Provides:       python-jupyter_nbdime-hg = %{mjupver}-%{release}
+Obsoletes:      python-jupyter_nbdime-hg < %{mjupver}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       jupyter-nbdime-hg = %{jupver}-%{release}
-Obsoletes:      jupyter-nbdime-hg < %{jupver}-%{release}
+Provides:       jupyter-nbdime-hg = %{mjupver}-%{release}
+Obsoletes:      jupyter-nbdime-hg < %{mjupver}-%{release}
 %else
-Conflicts:      jupyter-nbdime-hg < %{jupver}-%{release}
+Conflicts:      jupyter-nbdime-hg < %{mjupver}-%{release}
 %endif
 %if %{with libalternatives}
 Requires:       alts
@@ -173,7 +186,9 @@ Jupyter Notebooks.
 This package provides mercurial integration.
 
 %prep
-%autosetup -p1 -n nbdime-%{mainver}
+%autosetup -p1 -n nbdime-%{pyver}.dev0
+%{?gitcommits:sed -i "s/'dev'/'%{gitcommits}'/" nbdime/_version.py}
+# gh#jupyter/nbdime#651
 sed -i 's/^import mock/from unittest import mock/' nbdime/tests/test_*.py
 find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
 find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
@@ -254,7 +269,7 @@ done
 %python_alternative %{_bindir}/nbmerge
 %python_alternative %{_bindir}/nbmerge-web
 %{python_sitelib}/nbdime/
-%{python_sitelib}/nbdime-%{mainver}.dist-info/
+%{python_sitelib}/nbdime-%{pyver}%{?gitcommits:.%gitcommits}.dist-info/
 
 %files %{python_files git}
 %license LICENSE.md

@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-vaapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-vaapi
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
@@ -64,6 +64,15 @@ gstreamer-vaapi is a collection of GStreamer plugins and helper
 libraries that allow hardware accelerated video decoding through
 VA-API.
 
+%package devel
+Summary:        Gstreamer VA-API plugins -- Development files
+
+%description devel
+gstreamer-vaapi is a collection of GStreamer plugins and helper
+libraries that allow hardware accelerated video decoding through
+VA-API.
+This package contains the devel files of %{name}
+
 %prep
 %autosetup -n gstreamer-vaapi-%{version} -p1
 
@@ -71,13 +80,14 @@ VA-API.
 %meson \
 	-Dpackage-origin='http://download.opensuse.org' \
 	-Ddoc=disabled \
-	-Dwith_egl=yes \
-	-Dwith_encoders=yes \
-	-Dwith_drm=yes \
-	-Dwith_glx=yes \
-	-Dwith_wayland=yes \
-	-Dwith_x11=yes \
+	-Degl=enabled \
+	-Dencoders=enabled \
+	-Ddrm=enabled \
+	-Dglx=enabled \
+	-Dwayland=enabled \
+	-Dx11=enabled \
 	-Dexamples=disabled \
+	-Dtests=disabled \
 	%{nil}
 %meson_build
 
@@ -88,5 +98,9 @@ VA-API.
 %license COPYING.LIB
 %doc AUTHORS NEWS README
 %{_libdir}/gstreamer-%{gst_branch}/libgstvaapi.so
+
+%files devel
+%dir %{_libdir}/gstreamer-%{gst_branch}/pkgconfig
+%{_libdir}/gstreamer-%{gst_branch}/pkgconfig/gstvaapi.pc
 
 %changelog

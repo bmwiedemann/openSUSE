@@ -1173,4 +1173,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207398</comment>
   </revision>
+  <revision rev="148" vrev="5">
+    <srcmd5>ab8be6be9bf83f3f531036d0cd987acc</srcmd5>
+    <version>0.10.4</version>
+    <time>1675458284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062642</requestid>
+  </revision>
 </revisionlist>

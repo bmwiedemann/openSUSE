@@ -94,4 +94,12 @@
 - Multibuild test flavor: avoid (possible) build cycle (forwarded request 998388 from bnavigator)</comment>
     <requestid>998389</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e053062d07fa88dd2c9335fd4dc2cf5</srcmd5>
+    <version>0.10.0</version>
+    <time>1675458335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062934</requestid>
+  </revision>
 </revisionlist>

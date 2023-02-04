@@ -10,4 +10,17 @@
   </hardware>
   <sandbox>kvm</sandbox>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+	<size unit="G">11</size>
+      </memory>
+      <disk>
+	<size unit="G">14</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>

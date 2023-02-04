@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  3 07:33:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Boost >= 1.18, add upstream
+  Add_missing_iostream_header.patch
+
+-------------------------------------------------------------------
 Tue Jan 17 10:43:47 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.4.1:

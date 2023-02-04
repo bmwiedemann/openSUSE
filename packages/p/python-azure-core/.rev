@@ -353,4 +353,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1056346 from glaubitz)</comment>
     <requestid>1056387</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b65d92e056986efcfa025ccb84e86e83</srcmd5>
+    <version>1.26.3</version>
+    <time>1675458355</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.26.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1062995 from glaubitz)</comment>
+    <requestid>1063009</requestid>
+  </revision>
 </revisionlist>

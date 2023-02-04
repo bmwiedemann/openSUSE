@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 21:41:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.7:
+  Add the nvme native multipath devices filter to the collectl.conf
+
+-------------------------------------------------------------------
 Mon Dec  5 12:58:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.6:

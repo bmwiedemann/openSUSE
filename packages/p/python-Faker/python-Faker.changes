@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  1 20:31:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop python 3.7 specific dependencies - not in any existing SUSE
+  distribution anymore 
+
+-------------------------------------------------------------------
 Wed Dec  7 14:05:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v15.3.4 - 2022-11-30

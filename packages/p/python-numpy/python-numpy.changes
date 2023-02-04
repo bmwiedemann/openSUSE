@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  1 21:44:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build-conditionalize cblas dependency, it is missing on SLE <= 15
+  related to bsc#1177260 not being fixable for SLE15 (jsc#PED-3257)
+
+-------------------------------------------------------------------
 Sun Jan 22 19:55:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Slightly reformat the specfile condition blocks: The

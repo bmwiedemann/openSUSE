@@ -1,0 +1,8 @@
+<package name="river" project="openSUSE:Factory">
+  <title>RiverWM</title>
+  <description>River is a dynamic tiling Wayland compositor with flexible runtime configuration.
+
+Join us at #river on irc.libera.chat. Read our man pages and our wiki.</description>
+  <devel project="X11:Wayland" package="river"/>
+  <url>https://github.com/riverwm/river</url>
+</package>

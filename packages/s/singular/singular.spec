@@ -1,7 +1,7 @@
 #
 # spec file for package singular
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           singular
-Version:        4.3.1
-Release:        0
 %define verud	4_3_1
+%define mainversion 4.3.1
+%define patchlevel p3
+
+Name:           singular
+Version:        %{mainversion}%{?patchlevel:.%{patchlevel}}
+Release:        0
 Summary:        Singular CAS
-License:        GPL-2.0 and GPL-3.0 and LGPL-2.1 and BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://www.singular.uni-kl.de/
-
-#Git-Clone:	https://github.com/Singular/Sources
-Source:         https://github.com/Singular/Singular/archive/refs/tags/Release-4-3-1.tar.gz
+# Upstream does not tag or publish patch releases on Github
+Source0:        https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-1/singular-%{mainversion}%{patchlevel}.tar.gz
 Source9:        %name-rpmlintrc
-Patch1:         0001-src-resolve-strict-aliasing-violation-in-ndbm.cc.patch
-Patch2:         0001-src-remove-__DATE__-__TIME__.patch
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake
 BuildRequires:  bison >= 1.2.2
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.4
 BuildRequires:  flint-devel >= 2.4
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2
-BuildRequires:  latex2html
 BuildRequires:  libtool
 BuildRequires:  mpfr-devel >= 3
 BuildRequires:  ncurses-devel
@@ -136,7 +134,8 @@ Summary:        Singular's POLYS library
 Group:          System/Libraries
 
 %description -n libpolys-%verud
-(Upstream has not provided any description.)
+Data structures and basic algorithms for polynomials
+in Singular
 
 %package -n libpolys-devel
 Summary:        Development files for Singular's POLYS library
@@ -145,7 +144,8 @@ Requires:       libSingular-devel = %version-%release
 Requires:       libpolys-%verud = %version-%release
 
 %description -n libpolys-devel
-(Upstream has not provided any description.)
+Data structures and basic algorithms for polynomials
+in Singular
 
 %package -n libSingular-%verud
 Summary:        Singular's Singular library
@@ -179,7 +179,9 @@ Requires:       libsingular_resources-%verud = %version-%release
 (Upstream has not provided any description.)
 
 %prep
-%autosetup -n Singular-Release-4-3-1 -p1
+%autosetup -n singular-%{mainversion} -p1
+# Remove prebuilt documantation
+rm doc/doc.tbz2
 
 %build
 ./autogen.sh
@@ -190,10 +192,6 @@ Requires:       libsingular_resources-%verud = %version-%release
 b="%buildroot"
 %make_install PACKAGE_VERSION="%version"
 rm -f "$b/%_libdir"/*.la
-find "$b" -type f -name "*.la" -exec perl -i -pe \
-	's(^(libdir|dependency_libs)=\x27(.*)\x27)
-	  ("$1=\x27".&{sub{$_=pop;s(-L\s*\S+)()g;$_}}($2)."\x27")e' \
-	"{}" "+"
 mkdir -p "$b/%_bindir"
 blen="${#b}"
 for i in "$b/%_libexecdir/%name"/*Singular; do

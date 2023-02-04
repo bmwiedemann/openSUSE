@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.27.58
+Version:        1.27.60
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0

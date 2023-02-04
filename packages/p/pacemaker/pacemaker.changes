@@ -1,9 +1,70 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:49:40 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230125.95bb4788a:
+- libpacemaker: avoid assertion failure if a node_state entry doesn't have an uname yet (bsc#1207319)
+- libpacemaker: unify bailing out in pcmk__inject_node() (bsc#1207319)
+
+-------------------------------------------------------------------
+Wed Jan 25 09:18:57 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230124.a29e52df9:
+- executor: fix regression in remote node shutdown
+- scheduler: avoid memory leak when finding compatible instance
+
+-------------------------------------------------------------------
+Tue Jan 24 14:01:07 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230123.f414133a7:
+- libcrmcommon: avoid infinite regression when logging v1 patchsets
+- controller: clear last failure from CIB even if executor state unavailable
+- scheduler: downgrade message about instance where it shouldn't be
+- controller: use %u with g_hash_table_size()
+- fenced: use enum fenced_target_by consistently
+- scheduler: update Chinese translation
+
+-------------------------------------------------------------------
+Wed Jan 18 11:16:06 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230117.dd503ddbb:
+- libcrmcommon: bump feature set for crm_attribute --pattern with -v/-D and permanent attributes
+- resource agents: add depth="0" to validate-all metadata
+
+-------------------------------------------------------------------
+Thu Jan 12 16:25:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230111.39e62b78e:
+- rpm: Add a python3-pacemaker subpackage.
+- python: Add a private pacemaker._cts module.
+- python: Add the pacemaker.buildoptions module.
+- python: Add the pacemaker.exitstatus module.
+- python: Add the very beginnings of a pacemaker python library.
+
+-------------------------------------------------------------------
+Thu Jan 12 14:51:46 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230110.292d6bf6b:
+- libpe_status: clarify more pointer arguments
+- libcrmcommon: Improve prefix spacing in XML logging functions
+
+-------------------------------------------------------------------
+Fri Dec 23 13:27:39 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20221220.51cc0bfbc:
+- scheduler: order cloned fence device probes same as other clones
+- libcrmcommon: Remove colon and space from log line after prefix
+- libcrmcommon: Avoid out-of-bounds string access in log_data_element
+- libcrmcommon: Don't use aliases in XML logging functions
+- libcrmcommon: pcmk__output_xml_add_node() -> *_copy()
+- libcrmcommon: Assert on failed copy in copy_xml()
+- tools: Allow patterns for permanent attribute in crm_attribute.
+
+-------------------------------------------------------------------
 Thu Dec 22 12:59:33 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.5+20221212.b4db7685a:
 - cts-scheduler: update test for preventing inactive instances from starting if probe is unrunnable on any nodes (bsc#1206263)
-- scheduler: prevent inactive instances from starting if probe is unrunnable on any nodes  (bsc#1206263)
+- scheduler: prevent inactive instances from starting if probe is unrunnable on any nodes (bsc#1206263)
 - libpacemaker: ensure any pending recurring monitor gets updated if it fails (bsc#1206263)
 - cts-scheduler: update test for preventing a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
 - scheduler: prevent a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,24 +25,19 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbval%{psuffix}
-Version:        0.9.6
+Version:        0.10.0
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/computationalmodelling/nbval
 Source:         https://files.pythonhosted.org/packages/source/n/nbval/nbval-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nbval-filter-mpldeprecation.patch -- gh#computationalmodelling/nbval#167
-Patch0:         nbval-filter-mpldeprecation.patch
-# PATCH-FIX-UPSTREAM 0001-Make-tests-pass-with-ipykernel-6.0.0.patch -- Taken from archlinux, yan12125@gmail.com
-# https://github.com/archlinux/svntogit-community/blob/0aeb3d7e25d351606f46becc33f79e1c369572d0/python-nbval/trunk/0001-Make-tests-pass-with-ipykernel-6.0.0.patch (with whitespace changes)
-Patch1:         0001-Make-tests-pass-with-ipykernel-6.0.0.patch
-# PATCH-FIX-UPSTREAM nbval-sanitize-figure-size.patch gh#computationalmodelling/nbval#183
-Patch2:         nbval-sanitize-figure-size.patch
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-coverage
@@ -50,14 +45,15 @@ Requires:       python-ipykernel
 Requires:       python-jupyter-client
 Requires:       python-nbformat
 Requires:       python-pytest >= 2.8
-Requires:       python-six
 Provides:       python-jupyter_nbval = %{version}
 Obsoletes:      python-jupyter_nbval < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module nbdime}
 BuildRequires:  %{python_module nbval = %{version}}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module sympy}
 %endif
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
@@ -85,11 +81,11 @@ sed -i 's/\r$//' README.md
 %if ! %{with test}
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -97,8 +93,8 @@ export LANG=en_US.UTF-8
 %check
 # see dodo.py for call signature
 %{pytest tests/ --nbval \
-                --current-env \
-                --sanitize-with tests/sanitize_defaults.cfg \
+                --nbval-current-env \
+                --nbval-sanitize-with tests/sanitize_defaults.cfg \
                 --ignore tests/ipynb-test-samples
 }
 %endif
@@ -108,7 +104,7 @@ export LANG=en_US.UTF-8
 %doc README.md
 %license LICENSE
 %{python_sitelib}/nbval
-%{python_sitelib}/nbval-%{version}*-info
+%{python_sitelib}/nbval-%{version}.dist-info
 %endif
 
 %changelog

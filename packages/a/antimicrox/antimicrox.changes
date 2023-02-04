@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 30 19:53:38 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.3
+  * Add checkbox enabling numeric keypad in ButtonEditDialog
+  * Update translations: Spanish, Korean, Russian
+  * Add translations: Rusyn, Portugese(Brazil)
+  * Name mismatch in set selector list
+  * Shebang ignored in execute bind
+  * Mouse spring mode not working in wayland session
+  * Some code refactors and docs updates
+  * Logs improvements
+  
+-------------------------------------------------------------------
 Tue Nov 22 18:33:08 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.3.2

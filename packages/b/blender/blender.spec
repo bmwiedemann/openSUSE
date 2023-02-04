@@ -68,6 +68,7 @@
 %bcond_without opensubdiv
 %bcond_without openvdb
 %bcond_without osl
+# https://github.com/audaspace/audaspace/issues/13
 %bcond_with    system_audaspace
 %bcond_without system_glew
 # TBD: contributions welcome
@@ -95,6 +96,8 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://github.com/blender/blender/commit/79837c5ed4b5.patch#/Add_missing_iostream_header.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -222,7 +225,7 @@ BuildRequires:  alembic-devel
 BuildRequires:  openCOLLADA-devel
 %endif
 %if %{with embree}
-BuildRequires:  embree-devel
+BuildRequires:  cmake(embree)
 %endif
 %if %{with oidn}
 BuildRequires:  OpenImageDenoise-devel

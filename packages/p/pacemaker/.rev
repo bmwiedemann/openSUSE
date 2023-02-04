@@ -2061,4 +2061,12 @@
 - daemons, tools: Unregister formats before exiting (forwarded request 1055788 from yan_gao)</comment>
     <requestid>1055789</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0572c2fd2bbab122b0250f28c811fe54</srcmd5>
+    <version>2.1.5+20230125.95bb4788a</version>
+    <time>1675458281</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1062632 from yan_gao)</comment>
+    <requestid>1062633</requestid>
+  </revision>
 </revisionlist>

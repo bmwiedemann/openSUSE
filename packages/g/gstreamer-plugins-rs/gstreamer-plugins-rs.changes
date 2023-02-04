@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Wed Jan 25 22:24:43 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.9.8+git20230124.d9e9468:
+  * aws: Update to AWS SDK 0.53/0.23
+  * dav1d:
+    - Don't flush the decoder when draining
+    - Don't treat any kind of bitstream error immediately as fatal
+    - Get rid of some unnecessary `unwrap()`s
+    - Only drain at most one decoded frame per input frame unless
+      the decoder requires more before accepting new data
+    - Remove unnecessary frame dropping loop
+  * Downgrade clap dependency to 4.0
+  * gtk4:
+    - Asynchronously flush frames from GDK
+    - Keep `GstGLMemory` alive as long as it is used inside GDK
+    - Make no caps in the allocation query a non-error
+    - Only provide a buffer pool to upstream if it requested one
+  * livesync: fix late-threshold property min value
+  * meson:
+    - Only enable cargo features when options are enabled (bis)
+    - Update version to 0.9.8
+
+-------------------------------------------------------------------
+Fri Jan 13 15:12:47 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.9.5+git20230111.df3b908:
+  * awss3hlssink: Add stats property.
+  * aws:
+    - Update to AWS SDK 0.52/0.22
+    - Update to test-with 0.9
+  * cargo_wrapper:
+    - Fix setting of PKG_CONFIG_PATH and CARGO_TARGET_DIR
+    - Handle windows paths for depfiles
+    - Write to log with line-buffering
+  * deny:
+    - Ignore duplicated base64 dependency for now
+    - Remove duplicated windows dependencies
+    - Update
+  * fmp4mux:
+    - Only push fragment_offset if write_mfra is true
+    - Remove obsolete comment
+  * gtk4:
+    - Add support for GL on macOS
+    - Don't error out when the main context channel does not exist
+      anymore when rendering
+    - Don't try to use GL mapped video frames as raw RGB memory
+    - Flush frames from the paintable when shutting down the sink
+    - Handle more GL context creation failures gracefully
+    - Propagate the GL display to the remainder of the pipeline
+    - Reduce number of unwraps during GL context creation and query
+      handling
+    - Release GStreamer GL context and display when going back to
+      NULL state
+    - Remove 'gst' from gtksink debug category name
+    - Remove 'gst' prefix from another debug category
+    - Rename a variable to make more sense
+    - Reset app context and display if GL context creation fails
+    - Update dependencies to releases
+    - Use `glib::ThreadGuard` instead of the fragile crate
+    - Use GL implicitly without the gst_gl feature on macOS
+  * meson:
+    - Add an option to build examples
+    - Add options for all plugins
+    - Disable webp plugin on Windows and macOS
+    - Do not serialize env, use env: kwarg
+    - Enable gstreamer-gl-1.0 features in gtk4 plugin
+    - Fix pkgconfig detection when specified in machine file
+    - Handle windows path separator correctly
+    - Only enable cargo features when options are enabled
+    - Require gstreamer-gl-1.0 for gtkpaintablesink
+    - Require tomllib / tomli python modules explicitly
+  * rav1e: Enable threading support
+  * Revert "Revert "rav1e: Update to rav1e 0.6""
+  * rtpav1depay: Implement srcpad set_caps
+  * textahead: fix previous buffers
+  * Update Cargo.lock
+  * video/gtk4: Fix typo in info logs
+  * webrtcsink: fix panic on pre-bwe request error
+- Pass sodium=enabled instead of sodium=system to meson following
+  upstream changes.
+
+-------------------------------------------------------------------
+Fri Dec 23 17:42:20 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.9.3+git20221216.b701003:
+  * Add a WebRTC WHEP source element
+  * Add livesync plugin
+  * audiornnoise:
+    - Add debug output for voice activity to help you choose a
+      threshold
+    - Add voice detection threshold
+    - Use correct value range for the samples
+  * aws:
+    - s3sink: Treat stopping without EOS as an error for multipart
+      upload
+    - Update to env_logger 0.10 for the tests
+  * ci: Disable gst-build job for now
+  * dav1ddec: Lower rank to primary
+  * deny:
+    - Remove another dependency that is not duplicated anymore
+    - Remove dependencies that are not duplicated anymore
+    - Update
+  * Fix various new clippy warnings
+  * fmp4mux:
+    - Crank clock for the first fragment in more tests
+    - For video with N/1001 framerates use N as timescale
+    - Handle EOS correctly if it happens before a fragment start
+      time was determined
+    - Re-work buffer dequeueing and calculations of timestamps
+    - Skip gap buffers earlier to consider them for the sample
+      durations and fragment start durations
+  * gif: Update to gif 0.12
+  * gst-plugin-mp4: Add new MP4 plugin with a non-fragmented MP4
+    muxer
+  * gtk4:
+    - Deactivate application GL context again after `fill_info()`
+    - Deactivate the context if we fail to fill_info
+    - example: Use a bin with a `videoconvert` in the non-GL case
+    - Make GL support fully optional
+    - Only require GTK 4.6 if GL support is enabled
+  * livesync:
+    - Add missing version to the gst-plugin-gtk4 /
+      gst-plugin-version-helper dependencies
+    - Fix version
+    - Use release versions of the GLib/GStreamer bindings
+  * meson: Fix build of static plugins
+  * mp4:
+    - Add ONVIF non-fragmented MP4 muxer
+    - Add version to gst-plugin-version-helper dependency
+    - Remove unneeded cast in tests
+    - Update to url 2
+  * mp4mux:
+    - Adjust durations and possibly stream start time on
+      encountering a gap buffer
+    - Don't write empty chunks at the end if the last buffer of a
+      stream started a new chunk and happened to be a from a gap
+      event
+    - Don't write gap edit lists if their duration would be zero
+    - Factor out running time to UTC time calculation into a
+      function
+    - Fix edit list shift for streams with initial DTS smaller
+      earliest PTS but initial DTS positive
+    - For video with N/1001 framerates use N as timescale
+    - Remove unnecessary error case of negative PTS when doing the
+      ONVIF UTC time calculations
+    - Skip gap buffers instead of writing empty samples
+  * mux/{mp4, fmp4}: Hard depend on feature v1_18
+  * ndisrc:
+    - Use actual number of channels in positions_from_mask
+    - Use default channel mask for audio output
+  * net/ndi: fix build with --no-default-features
+  * net: Update to async-tungstenite 0.19
+  * Provide explicit type to `Iterator::sum()` calls to avoid
+    ambiguity
+  * spotify: fix "start a runtime from within a runtime" with
+    static link
+  * textahead: add settings to display previous buffers
+  * textwrap: Don't panic on empty buffers
+  * threadshare: Update to concurrent-queue 2
+  * tttocea608: Don't fail if a gap event contains no duration
+  * Update Cargo.lock
+  * video/gtk4:
+    - Implement support for GLTextures when possible.
+    - Rename Object types and struct to something simpler
+    - Restrict visibility of struct related to the Frame
+  * webrtchttp:
+    - Do not block webrtcbin signal handlers for sending candidates
+    - Do not import element_imp_error
+    - Don't use let-else for now
+    - Drop unused dependencies
+    - Factor out the common bits for WHIP and WHEP
+    - Fix documentation JSON
+    - Fix formatting
+    - Fix missing import for docs build
+    - Implement timeout for waiting on futures
+    - Remove unnecessary clippy warning override
+    - Use a proper Rust type name for ICE transport policy
+    - Use tokio runtime for spawning thread used for candidate
+      offer
+    - whipsink:
+      . Add candidates when sending the offer
+      . Construct TURN URL correctly
+      . Miscellaneous clean up
+  * webrtc/README: update command to run the signalling server
+  * webrtcsink: Support nvv4l2vp9enc
+  * whipsink: Handle offer creation errors more gracefully
+
+-------------------------------------------------------------------
 Thu Nov 17 16:19:32 UTC 2022 - alarrosa@suse.com
 
 - Update to version 0.9+git20221113.274e57a:
@@ -24,47 +212,61 @@ Thu Nov 17 16:19:32 UTC 2022 - alarrosa@suse.com
   * fmp4mux: Don't allow VP9 for CMAF
   * fmp4mux: Add initial Opus support
   * docs: Remove some stale entries of renamed elements
-  * aws: Skip s3 test on Windows until we figure out why it times out
+  * aws: Skip s3 test on Windows until we figure out why it times
+    out
   * Fix various new clippy warnings
-  * fmp4mux: For VP9, write resolution into the tkhd and include a stss box to signal that not all frames are sync samples
+  * fmp4mux: For VP9, write resolution into the tkhd and include a
+    stss box to signal that not all frames are sync samples
   * webrtc: Update to human_bytes 0.4
   * aws: Update to aws 0.21/0.51
   * fmp4mux: Remove unused uuid dependency
   * Update Cargo.lock
-  * fmp4mux: Clip negative PTS to zero/last PTS instead of erroring out
-  * fmp4mux: Send force-keyunit events for now if the ideal position has already passed
+  * fmp4mux: Clip negative PTS to zero/last PTS instead of erroring
+    out
+  * fmp4mux: Send force-keyunit events for now if the ideal
+    position has already passed
   * fmp4mux: Add debug log when writing the mfra box
-  * fmp4mux: Reset timing infos to None if a stream only contained gap events for a whole fragment
-  * fmp4mux: If a stream is longer than the main stream at EOS, simply include all of its buffers in the last fragment nonetheless
+  * fmp4mux: Reset timing infos to None if a stream only contained
+    gap events for a whole fragment
+  * fmp4mux: If a stream is longer than the main stream at EOS,
+    simply include all of its buffers in the last fragment
+    nonetheless
   * whipsink: Add object to debug logs
   * fmp4mux: don't require dts for predictive-only formats like vp9
   * aws: fix title in README
   * deny: Update
-  * fmp4: add support for muxing VP9 streams in cmaf, dash and iso fmp4
+  * fmp4: add support for muxing VP9 streams in cmaf, dash and iso
+    fmp4
   * Add Cargo.lock
   * Update to release versions of gtk-rs and gstreamer-rs
   * Update versions to 0.9.0
   * Update to async-tungstenite 0.18
   * pngenc: Encode every frame individually
   * ts/pad: use `gst::Pad` in handlers trait functions...
-  * ts/pad: don't pass self as ref in remaining handler traits functions
+  * ts/pad: don't pass self as ref in remaining handler traits
+    functions
   * textwrap: Update to textwrap 0.16
   * Move from `imp.instance()` to `imp.obj()`
   * Remove `&` for `obj` in log macros
   * Update docs
   * Add all missing plugins/elements to the README.md
-  * Fix GObject type names, GStreamer debug category names and element factory names
+  * Fix GObject type names, GStreamer debug category names and
+    element factory names
   * Add new mux subdirectory for container formats
-  * rtp: Move GCC bandwidth estimation element from webrtc to rtp plugin
-  * Make GStreamer plugin/crate/library/directory names and descriptions consistent
+  * rtp: Move GCC bandwidth estimation element from webrtc to rtp
+    plugin
+  * Make GStreamer plugin/crate/library/directory names and
+    descriptions consistent
   * Rename rtpav1 plugin to just rtp
   * videocompare: Update README with reference
-  * Sort members in Cargo.toml and meson.build alphabetically and the same in both files
+  * Sort members in Cargo.toml and meson.build alphabetically and
+    the same in both files
   * Various minor cleanups
   * meson: Fix warning
   * videocompare: Fix warning
   * Take advantage of `Into<Option<_>>` args
-  * onvifmetadatacombiner: On timeout don't wait for metadata to arrive anymore but output the current video frame
+  * onvifmetadatacombiner: On timeout don't wait for metadata to
+    arrive anymore but output the current video frame
   * onvifmetadatacombiner: Add a lot of trace debug output
   * spotifyaudiosrc: convert to PushSrc
 

@@ -391,4 +391,22 @@
   * Translation Updates (forwarded request 1060249 from manfred-h)</comment>
     <requestid>1060259</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ffef58d6d502aa6faac9c1ed3b37758d</srcmd5>
+    <version>0.7.3</version>
+    <time>1675458345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.3:
+  * Add timestamp to log entries in settings and plugin menu
+  * Update description text of apps panel in settings
+  * Change text of option to &quot;Allow urgent notifications&quot;
+  * Add panel plugin setting for log icon size in menu
+  * Make it easier to add things to the panel plugin settings
+  * Fix possible segfault when counting apps frequency in log
+  * Clean and DRY up the log population code
+  * Fix panel plugin menu icon blurriness when UI scale &gt; 1
+  * Update XfceNotifyDaemon header comment
+  * Translation Updates (forwarded request 1062605 from manfred-h)</comment>
+    <requestid>1062958</requestid>
+  </revision>
 </revisionlist>

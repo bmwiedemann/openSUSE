@@ -104,15 +104,13 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.5+20221212.b4db7685a
+Version:        2.1.5+20230125.95bb4788a
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://www.clusterlabs.org/
-# Hint: use "spectool -s 0 pacemaker.spec" (rpmdevtools) to check the final URL:
-# https://github.com/ClusterLabs/pacemaker/archive/e91769e5a39f5cb2f7b097d3c612368f0530535e/pacemaker-e91769e.tar.gz
 Source0:        %{name}-%{version}.tar.xz
 Source1:        crm_report.in
 Source100:      pacemaker.rpmlintrc
@@ -126,7 +124,7 @@ Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
 Patch10:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
-# Required for core functionality
+# Required basic build tools
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -137,9 +135,11 @@ BuildRequires:  gettext-tools >= 0.18
 BuildRequires:  grep
 BuildRequires:  help2man
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
+BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 # Required for agent_config.h which specifies the correct scratch directory
 BuildRequires:  resource-agents
 BuildRequires:  sed
@@ -148,22 +148,26 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
 BuildRequires:  pkgconfig(dbus-1)
+# Required for core functionality
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(libexslt)
 # Pacemaker requires a minimum libqb functionality
-BuildRequires:  pkgconfig(libqb) > 0.17.0
+BuildRequires:  pkgconfig(libqb) >= 0.17.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(ncurses)
 # Pacemaker requires a minimum Python functionality
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 Requires:       %{name}-cli = %{version}-%{release}
+%if %{enable_cluster_libs_pkg}
+Requires:       %{name}-cluster-libs = %{version}-%{release}
+%endif
+Requires:       %{name}-libs = %{version}-%{release}
 Requires:       corosync >= 2.0.0
-Requires:       psmisc
 Requires:       python3
+Requires:       python3-%{name} = %{version}-%{release}
 Requires:       resource-agents
 Recommends:     crmsh
 Recommends:     fence-agents
@@ -172,6 +176,7 @@ Recommends:     sbd
 Suggests:       graphviz
 Conflicts:      heartbeat < 3.0
 Conflicts:      libheartbeat2 < 3.0.0
+# Booth requires this
 Provides:       pacemaker-ticket-support = 2.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
@@ -235,6 +240,7 @@ be part of the cluster.
 Summary:        Core Pacemaker libraries
 Group:          System/Libraries
 Requires(pre):  shadow
+Requires:       %{name}-schemas = %{version}-%{release}
 # sbd 1.4.0+ supports the libpe_status API for pe_working_set_t
 # sbd 1.4.2+ supports startup/shutdown handshake via pacemakerd-api
 #            and handshake defaults to enabled for rhel builds
@@ -248,25 +254,39 @@ Obsoletes:      libpacemaker3 < %version-%release
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The pacemaker-libs package contains shared libraries needed for cluster
+The %{name}-libs package contains shared libraries needed for cluster
 nodes and those just running the CLI tools.
 
 %package cluster-libs
 Summary:        Cluster Libraries used by Pacemaker
 Group:          System/Libraries
+Requires:       %{name}-libs = %{version}-%{release}
 
 %description cluster-libs
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The pacemaker-cluster-libs package contains cluster-aware shared
+The %{name}-cluster-libs package contains cluster-aware shared
 libraries needed for nodes that will form part of the cluster nodes.
+
+%package -n python3-%{name}
+Summary:        Python libraries for Pacemaker
+Requires:       %{name}-libs = %{version}-%{release}
+Requires:       python3
+BuildArch:      noarch
+
+%description -n python3-%{name}
+Pacemaker is an advanced, scalable High-Availability cluster resource
+manager.
+
+The python3-%{name} package contains a Python library that can be used
+to interface with Pacemaker.
 
 %package remote
 Summary:        Pacemaker remote executor daemon for non-cluster nodes
 Group:          Productivity/Clustering/HA
 Requires:       %{name}-cli = %{version}-%{release}
-Requires:       procps
+Requires:       %{name}-libs = %{version}-%{release}
 Requires:       resource-agents
 %{?systemd_requires}
 
@@ -307,34 +327,46 @@ Obsoletes:      libpacemaker-devel < %version-%release
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
 
-The pacemaker-devel package contains headers and shared libraries
+The %{name}-devel package contains headers and shared libraries
 for developing tools for Pacemaker.
 
-%package       cts
+%package cts
 Summary:        Test framework for cluster-related technologies
 Group:          Productivity/Clustering/HA
 Requires:       %{name} = %{version}-%{release}
 Requires:       procps
 Requires:       psmisc
 Requires:       python3
+Requires:       python3-%{name} = %{version}-%{release}
 Requires:       python3-psutil
 BuildArch:      noarch
 #Requires:       python3-systemd
 Recommends:     python3-systemd
 
-%description   cts
+%description cts
 Test framework for cluster-related technologies like Pacemaker
 
-%package       doc
+%package doc
 Summary:        Documentation for Pacemaker
 Group:          Productivity/Clustering/HA
 BuildArch:      noarch
 
-%description   doc
+%description doc
 Documentation for Pacemaker.
 
 Pacemaker is an advanced, scalable High-Availability cluster resource
 manager.
+
+%package schemas
+Summary:        Schemas and upgrade stylesheets for Pacemaker
+Group:          Productivity/Clustering/HA
+BuildArch:      noarch
+
+%description schemas
+Schemas and upgrade stylesheets for Pacemaker
+
+Pacemaker is an advanced, scalable High-Availability cluster resource
+manager
 
 %prep
 %autosetup -p1
@@ -360,7 +392,6 @@ autoreconf -fvi
 
 %configure \
         --docdir=%{_docdir}/%{name}                \
-        --disable-static                           \
         --disable-silent-rules                     \
 %if %{with_nagios}
         --with-nagios=true                         \
@@ -380,6 +411,7 @@ autoreconf -fvi
         %{?concurrent_fencing}                         \
         %{?resource_stickiness}                        \
         %{?compat20}                                   \
+        --disable-static                               \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
         --localstatedir=%{_var}                        \
@@ -387,8 +419,16 @@ autoreconf -fvi
 
 make %{?_smp_mflags}
 
+pushd python
+%py3_build
+popd
+
 %install
 %make_install
+
+pushd python
+%py3_install
+popd
 
 rm -fr %{buildroot}/etc/sysconfig
 install -d -m755 %{buildroot}%{_fillupdir}
@@ -403,12 +443,6 @@ install -m 644 etc/sysconfig/crm_mon %{buildroot}%{_fillupdir}/sysconfig.crm_mon
 find %{buildroot} -type f -name "*.a" -delete -print
 # Don't package libtool archives
 find %{buildroot} -type f -name "*.la" -delete -print
-
-# For now, don't package the servicelog-related binaries built only for
-# ppc64le when certain dependencies are installed. If they get more exercise by
-# advanced users, we can reconsider.
-rm -f %{buildroot}/%{_sbindir}/notifyServicelogEvent
-rm -f %{buildroot}/%{_sbindir}/ipmiservicelogd
 
 ln -s service %{buildroot}%{_sbindir}/rcpacemaker
 ln -s service %{buildroot}%{_sbindir}/rcpacemaker_remote
@@ -483,12 +517,17 @@ getent group %{gname} >/dev/null || groupadd -r %{gname} -g %{hacluster_id}
 getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -s /sbin/nologin -c "cluster user" %{uname}
 exit 0
 
+%if %{defined ldconfig_scriptlets}
+%ldconfig_scriptlets libs
+%ldconfig_scriptlets cluster-libs
+%else
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
 
 %if %{enable_cluster_libs_pkg}
 %post cluster-libs -p /sbin/ldconfig
-%postun clsuter-libs -p /sbin/ldconfig
+%postun cluster-libs -p /sbin/ldconfig
+%endif
 %endif
 
 %if %{with_regression_tests}
@@ -517,7 +556,9 @@ fi
 %dir %{_libexecdir}/pacemaker
 %{_libexecdir}/pacemaker/*
 
+%if %{with stonithd}
 %{_sbindir}/fence_legacy
+%endif
 %{_sbindir}/fence_watchdog
 
 %{_mandir}/man7/pacemaker-controld.7%{ext_man}
@@ -526,7 +567,9 @@ fi
 %{_mandir}/man7/ocf_pacemaker_controld.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_o2cb.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_remote.7%{ext_man}
+%if %{with stonithd}
 %{_mandir}/man8/fence_legacy.8%{ext_man}
+%endif
 %{_mandir}/man8/fence_watchdog.8%{ext_man}
 %{_mandir}/man8/pacemakerd.8%{ext_man}
 
@@ -560,6 +603,7 @@ fi
 %{_sbindir}/crm_mon
 %{_sbindir}/crm_node
 %{_sbindir}/crm_resource
+%{_sbindir}/crm_rule
 %{_sbindir}/crm_standby
 %{_sbindir}/crm_verify
 %{_sbindir}/crmadmin
@@ -568,13 +612,12 @@ fi
 %{_sbindir}/crm_simulate
 %{_sbindir}/crm_report
 %{_sbindir}/crm_report.pacemaker
-%{_sbindir}/crm_rule
 %{_sbindir}/crm_ticket
 %{_sbindir}/stonith_admin
-%exclude %{_datadir}/pacemaker/alerts
-%exclude %{_datadir}/pacemaker/tests
-%{_datadir}/pacemaker
-%{_datadir}/pkgconfig/pacemaker-schemas.pc
+# "dirname" is owned by -schemas, which is a prerequisite
+%{_datadir}/pacemaker/report.collector
+%{_datadir}/pacemaker/report.common
+# XXX "dirname" is not owned by any prerequisite
 %{_datadir}/snmp/mibs/PCMK-MIB.txt
 
 %exclude %{ocf_root}/resource.d/pacemaker/controld
@@ -595,7 +638,9 @@ fi
 %exclude %{_mandir}/man7/ocf_pacemaker_o2cb.*
 %exclude %{_mandir}/man7/ocf_pacemaker_remote.*
 %{_mandir}/man8/*
+%if %{with stonithd}
 %exclude %{_mandir}/man8/fence_legacy.*
+%endif
 %exclude %{_mandir}/man8/fence_watchdog.*
 %exclude %{_mandir}/man8/pacemakerd.*
 %exclude %{_mandir}/man8/pacemaker-remoted.*
@@ -622,7 +667,9 @@ fi
 #%license licenses/LGPLv2.1
 %license COPYING
 %doc ChangeLog
+%if !%{enable_cluster_libs_pkg}
 %{_libdir}/libcrmcluster.so.*
+%endif
 
 %if %{enable_cluster_libs_pkg}
 %files cluster-libs
@@ -631,6 +678,14 @@ fi
 %license COPYING
 %doc ChangeLog
 %endif
+
+%files -n python3-%{name}
+%{python3_sitelib}/pacemaker/
+%{python3_sitelib}/pacemaker-*.egg-info
+%exclude %{python3_sitelib}/pacemaker/_cts/
+#%license licenses/LGPLv2.1
+%license COPYING
+%doc ChangeLog
 
 %files remote
 %{_unitdir}/pacemaker_remote.service
@@ -651,6 +706,7 @@ fi
 
 %files cts
 %{python3_sitelib}/cts
+%{python3_sitelib}/pacemaker/_cts/
 %{_datadir}/pacemaker/tests
 
 %{_libexecdir}/pacemaker/cts-log-watcher
@@ -667,5 +723,14 @@ fi
 #%license licenses/LGPLv2.1
 %license COPYING
 %doc ChangeLog
+
+%files schemas
+#%license licenses/GPLv2
+%dir %{_datadir}/pacemaker
+%{_datadir}/pacemaker/*.rng
+%{_datadir}/pacemaker/*.xsl
+%{_datadir}/pacemaker/api
+%{_datadir}/pacemaker/base
+%{_datadir}/pkgconfig/pacemaker-schemas.pc
 
 %changelog

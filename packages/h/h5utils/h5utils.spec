@@ -1,7 +1,7 @@
 #
 # spec file for package h5utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           h5utils
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Utilities for Data Conversions from hdf5
 License:        GPL-2.0-or-later AND MIT

@@ -7,4 +7,12 @@
     <comment>utilities for visualization and conversion of scientific data in the HDF5 format</comment>
     <requestid>655381</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>163a55867d498c355de268836711aaf5</srcmd5>
+    <version>1.13.2</version>
+    <time>1675458332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062670</requestid>
+  </revision>
 </revisionlist>

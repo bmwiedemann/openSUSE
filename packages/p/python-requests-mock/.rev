@@ -270,4 +270,13 @@
   * Fix failing pytest</comment>
     <requestid>1056828</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>32a2e1ac0d7abdaa76b7a36d182e998e</srcmd5>
+    <version>1.10.0</version>
+    <time>1675458273</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to run tests with pytest 
+- build with all python flavors for SLE 15 SP4+</comment>
+    <requestid>1062543</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  3 07:46:47 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add icinga2-boost.patch to make compilable on Boost v1.81 
+  and fix build error on Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Nov  8 15:21:48 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.6

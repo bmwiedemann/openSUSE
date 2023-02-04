@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 26 01:48:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + Please see changes in gstreamer main package, major version
+    bump.
+- Add gst-editing-services-fix-pc-name.patch: pc file was renamed.
+- Replace pkgconfig(gst-validate-1.0) with
+  pkgconfig(gstreamer-validate-1.0) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Dec 23 19:41:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.5:

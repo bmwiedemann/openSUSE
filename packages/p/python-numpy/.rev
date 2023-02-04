@@ -1036,4 +1036,13 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>1060374</requestid>
   </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>74e321a7be1e7ff21babb54e614f5ef6</srcmd5>
+    <version>1.24.1</version>
+    <time>1675458277</time>
+    <user>dimstar_suse</user>
+    <comment>- build-conditionalize cblas dependency, it is missing on SLE &lt;= 15
+  related to bsc#1177260 not being fixable for SLE15 (jsc#PED-3257)</comment>
+    <requestid>1062552</requestid>
+  </revision>
 </revisionlist>

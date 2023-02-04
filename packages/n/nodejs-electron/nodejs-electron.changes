@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  1 20:17:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.2.0
+  * Fixed a BrowserWindow maxWidth or maxHeight of 0 causing strange resizing behavior.
+  * Fixed tray icon not showing on desktop environments that have no support for app indicator.
+  * Updated Chromium to 108.0.5359.215
+  * Ensure clean destruction of network::WebTransport (CVE-2023-0471)
+
+-------------------------------------------------------------------
 Thu Jan 26 08:29:33 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.1.0
   * Added `label` property to `Display` objects.

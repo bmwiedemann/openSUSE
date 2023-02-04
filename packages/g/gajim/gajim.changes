@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  4 14:57:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.0:
+  * Port to pyproject.toml.
+  * Preferences: Add 0 and 25 MiB to preview size settings.
+  * Account wizard: Don't allow to add account twice.
+  * Fix loading localised emojis.
+  * HTTPUpload: Don’t cache temp path.
+  * JingleAudio: Always resample audio before processing with
+    webrtcdsp.
+  * Disable legacy ciphers in cryptography.
+- Add gajim-1.7.0-fix-status-switching.patch: Make switching status
+  work again (commit 3c2c6448).
+
+-------------------------------------------------------------------
 Sat Jan 14 17:11:58 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.6.1:

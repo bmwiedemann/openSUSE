@@ -28,15 +28,12 @@ Patch0:         remove-mock.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module purl}
-BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3}
 BuildRequires:  %{python_module requests-futures}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module testrepository >= 0.0.18}
-BuildRequires:  %{python_module testtools}
 BuildRequires:  python-rpm-macros
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || (0%{?suse_version} == 1500 && 0%{?sle_version} >= 154000)
 BuildRequires:  %{python_module dbm}
 %else
 BuildRequires:  python3-dbm
@@ -65,19 +62,11 @@ You should checkout the docs for more information.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/pytest
-
-mv .testr.conf .testr.conf.orig
-%{python_expand # first line can't be empty
-rm -rf .testrepository
-sed 's/python /$python /' .testr.conf.orig >| .testr.conf
-testr init
-testr run --parallel
-}
+%pytest tests
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst ChangeLog
-%{python_sitelib}/*
+%{python_sitelib}/requests_mock*
 
 %changelog

@@ -142,4 +142,12 @@
   - Do not override signals receivers registered in a :meth:`~factory.django.mute_signals` context.</comment>
     <requestid>946656</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4a87c15d262a9e558e3fae480fb01be3</srcmd5>
+    <version>3.2.1</version>
+    <time>1675458274</time>
+    <user>dimstar_suse</user>
+    <comment>- skip testing with Django on SLE15</comment>
+    <requestid>1062545</requestid>
+  </revision>
 </revisionlist>

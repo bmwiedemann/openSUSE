@@ -43,12 +43,16 @@ BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module gpg}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module urllib3 >= 1.24.1}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
 %endif
 %endif
 Requires:       python-urllib3 >= 1.24.1
+%if %{python_version_nodots} < 38
+Requires:       python-typing_extensions
+%endif
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-fastimport

@@ -226,4 +226,12 @@ Should be build &amp; tested in par with gcompris-qt-voices</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061792</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>aca6e538acec64ca90eb00fa25c3f0ed</srcmd5>
+    <version>3.1</version>
+    <time>1675458377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063054</requestid>
+  </revision>
 </revisionlist>

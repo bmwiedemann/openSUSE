@@ -1,7 +1,7 @@
 #
 # spec file for package sil-andika-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           sil-andika-fonts
 License:        OFL-1.1
 Group:          System/X11/Fonts
 Summary:        Sans serif, Unicode-compliant Font For Literacy Use
-Version:        6.101
+Version:        6.200
 Release:        0
 URL:            https://software.sil.org/andika/
 Source0:        https://software.sil.org/downloads/r/andika/Andika-%{version}.zip

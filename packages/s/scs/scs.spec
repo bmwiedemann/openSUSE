@@ -17,12 +17,14 @@
 
 
 Name:           scs
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Numerical package for solving large-scale convex cone problems
 License:        MIT
 URL:            https://github.com/cvxgrp/scs
 Source:         https://github.com/cvxgrp/scs/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Install lib files with protection bits 755
+Patch1:         executable-libs.patch
 BuildRequires:  lapack-devel
 BuildRequires:  make
 
@@ -39,7 +41,7 @@ solving large-scale convex cone problems.
 This package provides development libraries and headers for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build

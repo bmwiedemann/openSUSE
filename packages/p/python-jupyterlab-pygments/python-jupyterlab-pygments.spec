@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
 Source:         https://files.pythonhosted.org/packages/py2.py3/j/jupyterlab-pygments/jupyterlab_pygments-%{version}-py2.py3-none-any.whl
-Source1:        https://raw.githubusercontent.com/jupyterlab/jupyterlab_pygments/%{version}/notebooks/Example.ipynb
+# Slightly modified from https://github.com/jupyterlab/jupyterlab_pygments/blob/0.2.2/notebooks/Example.ipynb
+Source1:        Example.ipynb
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

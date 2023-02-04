@@ -62,4 +62,12 @@
   * Disable optimization causing issues when debugging Python 3.10 and 3.11.</comment>
     <requestid>1060514</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>18ffb87e04ab14bd1cc69db2751bbbd1</srcmd5>
+    <version>1.6.6</version>
+    <time>1675458283</time>
+    <user>dimstar_suse</user>
+    <comment>- skip more tests for python 3.11</comment>
+    <requestid>1062640</requestid>
+  </revision>
 </revisionlist>

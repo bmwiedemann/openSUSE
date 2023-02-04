@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 16 20:47:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * `override_dbus_timeout` setting to override the notification timeout set
+    via dbus.
+  * Support notification gaps via the `gap_size` setting. Note that since
+    the notifications are not separate windows, you cannot click in between the
+    notifications.
+  * Make `min_icon_size` and `max_icon_size` a rule for even more
+    flexibility
+  * The window offset is now scaled according to `scale` as well. This way
+    notification stay visually in the same place on higher DPI screens.
+  * For the recursive icon lookup, revert to using `min_icon_size` and
+    `max_icon_size` instead of `icon_size`. `min_icon_size` is used as the size to
+    look for in icon themes.
+  * Recursive icon lookup is no longer experimental.
+  * Recursive icon lookup is enabled in the default dunstrc. This does not
+    change your settings when you have a custom dunstrc.
+  * Added back the `action_name` setting that was accidentally dropped.
+  * Broken `dunstctl history`.
+  * Merged a few wayland fixes from mako (https://github.com/emersion/mako)
+    * `follow=keyboard`: Fix regression where we don't fall back to mouse
+    * Raw icons not being scaled according to icon size
+    * Notifications not disappearing. For some people notifications would
+      sometimes stay on screen until a new notification appeared. This should
+      not happen anymore
+
+-------------------------------------------------------------------
 Thu Apr 14 04:33:51 UTC 2022 - Timothy Brown <stimut@gmail.com>
 
 - Update to 1.8.1

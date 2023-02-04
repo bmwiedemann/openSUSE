@@ -382,4 +382,13 @@
     <comment></comment>
     <requestid>1041185</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d137330165c4656d261336cf7c62f370</srcmd5>
+    <version>15.3.4</version>
+    <time>1675458272</time>
+    <user>dimstar_suse</user>
+    <comment>- drop python 3.7 specific dependencies - not in any existing SUSE
+  distribution anymore</comment>
+    <requestid>1062542</requestid>
+  </revision>
 </revisionlist>

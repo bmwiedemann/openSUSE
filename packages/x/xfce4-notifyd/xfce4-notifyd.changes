@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  2 08:55:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.7.3:
+  * Add timestamp to log entries in settings and plugin menu
+  * Update description text of apps panel in settings
+  * Change text of option to "Allow urgent notifications"
+  * Add panel plugin setting for log icon size in menu
+  * Make it easier to add things to the panel plugin settings
+  * Fix possible segfault when counting apps frequency in log
+  * Clean and DRY up the log population code
+  * Fix panel plugin menu icon blurriness when UI scale > 1
+  * Update XfceNotifyDaemon header comment
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan 22 09:13:44 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.7.2:

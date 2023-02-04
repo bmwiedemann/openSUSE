@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only

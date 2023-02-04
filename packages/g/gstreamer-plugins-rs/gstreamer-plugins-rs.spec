@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-rs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.9+git20221113.274e57a
+Version:        0.9.8+git20230124.d9e9468
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  clang
 #BuildRequires:  csound-devel
 BuildRequires:  llvm
 BuildRequires:  git
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.60
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-tomli
@@ -107,7 +107,7 @@ export RUSTFLAGS=%{rustflags}
 	--default-library=shared \
 	-Ddoc=disabled \
 	-Ddav1d=auto \
-	-Dsodium=system \
+	-Dsodium=enabled \
 	-Dcsound=disabled \
 	%{nil}
 %meson_build
@@ -127,6 +127,7 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstclaxon.so
 # Disable csound for now, bring issue upstream
 #%%{_libdir}/gstreamer-%%{gst_branch}/libgstcsound.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfallbackswitch.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
@@ -134,32 +135,33 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthsv.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstjson.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstlivesync.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstmp4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstndi.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstraptorq.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstregex.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsclosedcaption.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsfile.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsflv.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstjson.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsonvif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrspng.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstregex.so
-%{_libdir}/gstreamer-%{gst_branch}/libgsttextwrap.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsvideofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebrtc.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttextwrap.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstthreadshare.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsvideofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtchttp.so
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml

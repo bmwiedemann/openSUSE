@@ -18,26 +18,26 @@
 
 %define __requires_exclude ^typelib\\(AppIndicator3\\).*$
 %if 0%{?suse_version} > 1500
-%define py3ver 3
-%define py3pkg python3
-%define py3pkg_sitelib %{python3_sitelib}
+# Build only one time
+%define pythons %{primary_python}
 %else
 # Requires at least python 3.10
-%define py3ver 3.10
-%define py3pkg python310
-%define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
+%define pythons python310
 %endif
 Name:           gajim
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.6/gajim-%{version}.tar.gz
-BuildRequires:  %{py3pkg}-nbxmpp >= 4.0.1
-BuildRequires:  %{py3pkg}-precis-i18n >= 1.0.0
-BuildRequires:  %{py3pkg}-setuptools
+Source:         https://gajim.org/downloads/1.7/gajim-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gajim-1.7.0-fix-status-switching.patch philipp@hoerist.com -- Make switching status work again (commit 3c2c6448).
+Patch0:         gajim-1.7.0-fix-status-switching.patch
+BuildRequires:  %{python_module nbxmpp >= 4.0.1}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module precis-i18n >= 1.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -45,27 +45,20 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpcre1
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-generators >= 20220912
+BuildRequires:  python-rpm-macros >= 20220912
 BuildRequires:  update-desktop-files
-Requires:       %{py3pkg}-Pillow
-Requires:       %{py3pkg}-base
-Requires:       %{py3pkg}-cryptography >= 3.4.8
-Requires:       %{py3pkg}-css-parser
-Requires:       %{py3pkg}-gobject-Gdk
-Requires:       %{py3pkg}-gobject-cairo
-Requires:       %{py3pkg}-gssapi
-Requires:       %{py3pkg}-keyring
-Requires:       %{py3pkg}-nbxmpp >= 4.0.1
-Requires:       %{py3pkg}-precis-i18n >= 1.0.0
-Requires:       %{py3pkg}-pycairo >= 1.16.0
+Requires:       %{python3_dist gssapi}
+Requires:       %{python_flavor}-gobject-Gdk
+Requires:       %{python_flavor}-gobject-cairo
 Requires:       ca-certificates-mozilla
 Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 3.0
-# gajim-remote
-Recommends:     %{py3pkg}-dbus-python
 # OMEMO encryption
+Recommends:     %{python3_dist axolotl}
 Recommends:     gajim-plugin-omemo
-Recommends:     %{py3pkg}-axolotl
 BuildArch:      noarch
+%{?python_enable_dependency_generator}
 
 %description
 Gajim is a Jabber/XMPP client. It works with MATE and GNOME, but does
@@ -93,20 +86,25 @@ Features:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 sed -i '1{/\/usr\/bin\/*/d;}' gajim/gajim_remote.py
 
 %build
-python%{py3ver} setup.py build
+%pyproject_wheel
+./pep517build/build_metadata.py -o dist/metadata
 
 %install
-python%{py3ver} setup.py install \
-  --root=%{buildroot} --prefix=%{_prefix}
+%pyproject_install
+./pep517build/install_metadata.py dist/metadata --prefix=%{buildroot}%{_prefix}
 
 mkdir -p %{buildroot}%{_datadir}/
-mv %{buildroot}{%{py3pkg_sitelib}/%{name}/data,%{_datadir}/%{name}}/
-ln -s %{_datadir}/%{name} %{buildroot}%{py3pkg_sitelib}/%{name}/data
+mv %{buildroot}{%{python_sitelib}/%{name}/data,%{_datadir}/%{name}}/
+ln -s %{_datadir}/%{name} %{buildroot}%{python_sitelib}/%{name}/data
+
+# Move locales to the system path.
+mv %{buildroot}%{_datadir}/{%{name}/locale,locale}/
+ln -s %{_datadir}/locale %{buildroot}%{_datadir}/%{name}/locale
 
 # The plugins subdirectory must be owned by the package.
 mkdir %{buildroot}%{_datadir}/%{name}/plugins/
@@ -119,8 +117,10 @@ mkdir %{buildroot}%{_datadir}/%{name}/plugins/
 %license COPYING
 %{_bindir}/%{name}*
 %{_datadir}/%{name}/
-%{py3pkg_sitelib}/%{name}/
-%{py3pkg_sitelib}/%{name}-*
+# Symlink to /usr/share/locale
+%exclude %{_datadir}/%{name}/locale
+%{python_sitelib}/%{name}/
+%{python_sitelib}/%{name}-*
 %{_datadir}/applications/*%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}*.*
 %dir %{_datadir}/metainfo/
@@ -128,5 +128,6 @@ mkdir %{buildroot}%{_datadir}/%{name}/plugins/
 %{_mandir}/man?/%{name}*%{?ext_man}
 
 %files lang -f %{name}.lang
+%{_datadir}/%{name}/locale
 
 %changelog

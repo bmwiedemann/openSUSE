@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-editing-services
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,15 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gst-editing-services-fix-pc-name.patch -- Rename pc file that was renamed
+Patch0:         gst-editing-services-fix-pc-name.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -38,12 +40,12 @@ BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.16
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.18.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-controller-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-validate-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.3
 BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 2.91.3
@@ -172,7 +174,9 @@ editing-related applications.
 %{_datadir}/bash-completion/completions/ges-launch-1.0
 %{_datadir}/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
 %{_libdir}/gst-validate-launcher/python/launcher/apps/geslaunch.py
-%{python3_sitearch}/gi/overrides/GES.py
+%dir %{python3_sitelib}/gi
+%dir %{python3_sitelib}/gi/overrides
+%{python3_sitelib}/gi/overrides/GES.py
 
 %files -n libges-1_0-0
 %license COPYING

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %define octpkg  stk
 Name:           octave-forge-%{octpkg}
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Small Octave Toolbox for Kriging
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
+Source0:        https://github.com/stk-kriging/stk/releases/download/%{version}/stk-%{version}-octpkg.tar.gz#/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  octave-devel >= 4.0.0
-Requires:       octave-cli >= 4.0.0
+BuildRequires:  octave-devel >= 4.0.1
+Requires:       octave-cli >= 4.0.1
 
 %description
 The STK is a (not so) Small Toolbox for Kriging. Its primary focus
@@ -61,7 +61,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

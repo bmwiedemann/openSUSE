@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-rtsp-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.20.5
+Version:        1.22.0
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later

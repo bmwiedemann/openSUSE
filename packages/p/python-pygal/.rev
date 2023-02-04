@@ -73,4 +73,13 @@
 </comment>
     <requestid>937745</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ee8b3351d64bf8960247da8b167a3518</srcmd5>
+    <version>3.0.0</version>
+    <time>1675458278</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 2.x (no longer supported) and enable CairoSVG
+  for all python flavors not just the main one</comment>
+    <requestid>1062554</requestid>
+  </revision>
 </revisionlist>

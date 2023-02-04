@@ -7,4 +7,12 @@
     <comment>used by new versions of jupyter packages to be submitted soon (TM)</comment>
     <requestid>1045756</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a5153ea5d4a17cf5bd56b622d09d6521</srcmd5>
+    <version>0.6.2</version>
+    <time>1675458337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062935</requestid>
+  </revision>
 </revisionlist>

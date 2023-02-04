@@ -629,4 +629,13 @@ source service setup which messed up my spec file.
     (boo#1202353, boo#1205149) (forwarded request 1038931 from mwilck)</comment>
     <requestid>1038933</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ad3cc1586e3566da8a5bf7b406c48390</srcmd5>
+    <version>16.0.29</version>
+    <time>1675458280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.29:
+  * modprobe.conf: s390x: remove softdep on fbcon (boo#1207853) (forwarded request 1062627 from mwilck)</comment>
+    <requestid>1062630</requestid>
+  </revision>
 </revisionlist>

@@ -82,4 +82,20 @@
 </comment>
     <requestid>1045758</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>83d40a1f7b196051f1d818a69d59d2dc</srcmd5>
+    <version>unknown</version>
+    <time>1675458337</time>
+    <user>dimstar_suse</user>
+    <comment>- Package current master commit as version 3.1.1.27.g2da614b
+  * generated sdist with networked machine capable of running npm
+- Notable PRs included:
+  * Remove usage of ipython_genutils #618
+  * Jupyter server 2.0 compatability fixes #649
+  * Compatible with asynchronous contentsmanager #596
+  * Update typescript #641
+  * Update cell marker format to use bold correctly #648
+</comment>
+    <requestid>1062938</requestid>
+  </revision>
 </revisionlist>

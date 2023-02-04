@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  2 12:02:36 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.29:
+  * modprobe.conf: s390x: remove softdep on fbcon (boo#1207853)
+
+-------------------------------------------------------------------
 Tue Nov 29 16:13:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.28:

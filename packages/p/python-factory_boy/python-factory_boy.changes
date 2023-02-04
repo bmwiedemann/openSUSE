@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 20:48:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip testing with Django on SLE15 
+
+-------------------------------------------------------------------
 Sat Jan 15 16:04:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  2 18:26:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- version 1.5.2
+  * Add support of
+    - KAPELSE KAP-LINK
+    - LDU LANDI
+    - Sensyl SSC-HV Reader
+    - TOKEN2 MFA NFC Reader
+    - TOKEN2 Molto2
+    - Thales RF Reader
+   * Alcor Micro AU9560: Remove high speeds since they are not
+     supported
+  * Hack for AlcorMicro AU9560 and Acos-ID card
+  * configure.ac: disable the use of --disable-usbdropdir
+
+-------------------------------------------------------------------
 Tue Nov 15 17:12:47 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.5.1

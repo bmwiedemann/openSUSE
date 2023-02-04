@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%global skip_python2 1
 Name:           python-pygal
 Version:        3.0.0
 Release:        0
@@ -26,13 +27,13 @@ Group:          Development/Languages/Python
 URL:            http://pygal.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pygal/pygal-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/Kozea/pygal/%{version}/COPYING
+BuildRequires:  %{python_module CairoSVG}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-CairoSVG
 Requires:       python-lxml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

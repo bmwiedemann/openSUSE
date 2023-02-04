@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  3 11:53:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6
+  * 212 commits, 193 changed files, none of them is a changelog
+  * no upstream release notes
+- PEP517 build
+- New jupyter-jupyterlab-ipyvolume subpackage for the jupyterlab
+  extension
+
+-------------------------------------------------------------------
 Fri Apr 23 04:39:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

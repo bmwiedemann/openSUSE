@@ -339,4 +339,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1040607</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>500f1db49100ed2ac91af58e92874c97</srcmd5>
+    <version>9.1.1</version>
+    <time>1675458306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062662</requestid>
+  </revision>
 </revisionlist>

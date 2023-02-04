@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ data with a wide range of selectable projection functions.
 
 %package -n %{libname}
 Summary:        Cartographic projection software
+License:        MIT
 Group:          Development/Libraries/C and C++
 
 %description -n %{libname}
@@ -55,6 +56,7 @@ data with a wide range of selectable projection functions.
 
 %package devel
 Summary:        Development files for PROJ
+License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       libproj-devel = %{version}
@@ -73,7 +75,7 @@ This package contains libproj and the appropriate header files and man pages.
 Summary:      %{countryname} datum grids for Proj\
 BuildArch:    noarch\
 # See README.DATA \
-License:      BSD-2-Clause and CC0-1.0 and CC-BY-4.0 and CC-BY-SA-4.0 and SUSE-Public-Domain \
+License:      BSD-2-Clause AND CC0-1.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND SUSE-Public-Domain \
 Supplements:  proj\
 \
 %description data-%{countrycode}\
@@ -82,7 +84,7 @@ Supplements:  proj\
 %files data-%{countrycode}\
 %{wildcard}\
 %{extrafile}
-
+License:        MIT
 %data_subpkg -c at -n Austria
 %data_subpkg -c au -n Australia
 %data_subpkg -c be -n Belgium

@@ -39,6 +39,7 @@ Sqlite3 DBI driver module for the Qore Programming Language.
 %package doc
 Summary:        Documentation and examples for the Qore sqlute3 module
 Group:          Development/Languages/Other
+BuildArch:      noarch
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
@@ -57,7 +58,8 @@ xml module.
 %files
 %license COPYING
 %doc README RELEASE-NOTES AUTHORS
-%{_libdir}/qore-modules/*
+%dir %{_libdir}/qore-modules
+%{_libdir}/qore-modules/*.qmod
 
 %files doc
 %doc test docs

@@ -1,0 +1,22 @@
+From 79837c5ed4b57925bf6c6bb9e7c2248f6f52bbb0 Mon Sep 17 00:00:00 2001
+From: Sebastian Parborg <darkdefende@gmail.com>
+Date: Wed, 4 Jan 2023 15:23:26 +0100
+Subject: [PATCH] Fix building with boost >= 1.81
+
+In boost 1.81 they no longer implicitly include <iostream> anymore.
+---
+ intern/locale/boost_locale_wrapper.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/intern/locale/boost_locale_wrapper.cpp b/intern/locale/boost_locale_wrapper.cpp
+index fb0e194352a7..80e8d89799a8 100644
+--- a/intern/locale/boost_locale_wrapper.cpp
++++ b/intern/locale/boost_locale_wrapper.cpp
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <boost/locale.hpp>
++#include <iostream>
+ #include <stdio.h>
+ 
+ #include "boost_locale_wrapper.h"

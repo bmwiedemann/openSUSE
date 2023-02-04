@@ -1,7 +1,7 @@
 #
 # spec file for package wiiuse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,8 @@ BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sdl)
 
 %description
 Wiiuse is a library written in C that connects with several Nintendo

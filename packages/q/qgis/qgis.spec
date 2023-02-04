@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.28.2
+Version:        3.28.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only

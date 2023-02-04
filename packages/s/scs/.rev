@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>947417</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6643a1cf1cc9f5496d27ad9e03d8555</srcmd5>
+    <version>3.2.0</version>
+    <time>1675458339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Return ability to reuse workspace and update problem parameters.
+- add executable-libs.patch to install libs as executable
+</comment>
+    <requestid>1062946</requestid>
+  </revision>
 </revisionlist>

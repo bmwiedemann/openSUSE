@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:30:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * no release notes
+- Drop nbval-filter-mpldeprecation.patch
+- Drop nbval-sanitize-figure-size.patch
+- Drop 0001-Make-tests-pass-with-ipykernel-6.0.0.patch
+
+-------------------------------------------------------------------
 Sat Aug 20 17:48:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove python36 skiptest code

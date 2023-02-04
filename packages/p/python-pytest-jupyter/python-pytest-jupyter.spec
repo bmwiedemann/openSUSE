@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,45 +29,45 @@ Name:           python-pytest-jupyter%{psuffix}
 Version:        0.6.2
 Release:        0
 Summary:        A pytest plugin for testing Jupyter libraries and extensions
-License:        MIT and BSD-3-Clause
+License:        MIT AND BSD-3-Clause
 URL:            https://github.com/jupyter-server/pytest-jupyter
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-jupyter/pytest_jupyter-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/p/pytest_jupyter/pytest_jupyter-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-jupyter_core
 Requires:       python-pytest
-%if %{with test}
-BuildRequires:  %{python_module pytest-jupyter = %{version}}
-BuildRequires:  %{python_module pytest-jupyter-server = %{version}}
-BuildRequires:  %{python_module pytest-jupyter-client = %{version}}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module nbformat}
-%endif
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module pytest-jupyter = %{version}}
+BuildRequires:  %{python_module pytest-jupyter-client = %{version}}
+BuildRequires:  %{python_module pytest-jupyter-server = %{version}}
+BuildRequires:  %{python_module pytest-timeout}
+%endif
 %python_subpackages
 
 %description
 A pytest plugin for testing Jupyter libraries and extensions.
 
 %package client
-Summary: A pytest plugin for testing Jupyter libraries and extensions [client] extra
-Requires: python-pytest-jupyter = %{version}
-Requires: python-jupyter_client >= 7.4
-Requires: python-ipykernel
+Summary:        A pytest plugin for testing Jupyter libraries and extensions [client] extra
+Requires:       python-ipykernel
+Requires:       python-jupyter_client >= 7.4
+Requires:       python-pytest-jupyter = %{version}
 
 %description client
 A pytest plugin for testing Jupyter libraries and extensions.
 This subpackage provides the [client] extra dependencies
 
 %package server
-Summary: A pytest plugin for testing Jupyter libraries and extensions [server] extra
-Requires: python-pytest-jupyter = %{version}
-Requires: python-pytest-jupyter-client = %{version}
-Requires: python-nbformat >= 5.3
-Requires: python-jupyter-server >= 1.21
+Summary:        A pytest plugin for testing Jupyter libraries and extensions [server] extra
+Requires:       python-jupyter-server >= 1.21
+Requires:       python-nbformat >= 5.3
+Requires:       python-pytest-jupyter = %{version}
+Requires:       python-pytest-jupyter-client = %{version}
 
 %description server
 A pytest plugin for testing Jupyter libraries and extensions.
@@ -93,6 +94,7 @@ sed -i 's/--color=yes//' pyproject.toml
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/pytest_jupyter
 %{python_sitelib}/pytest_jupyter-%{version}.dist-info
 

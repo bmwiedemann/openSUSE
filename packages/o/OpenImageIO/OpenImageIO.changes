@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb  1 21:44:14 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 2.4.8.0
+  * oiiotool --pdiff: test, be sure to count it as making output.
+    #3723
+  * IBAprep should not zero out deep images when creating dst #3724
+  * PBM: Fix for incorrect inverting of 1-bit pbm images. #3731
+  * New ImageSpec:set_colorspace() sets color space metadata in a
+    consistent way. #3734
+  * BMP: set colorspace to sRGB #3701
+  * PNG: Add EXIF support when writing PNG files. #3735
+  * PSD: Fix wrong oiio:UnassociatedAlpha metadata for PSD files.
+    #3750
+  * platform.h: set up macros for detecting MSVS 2019 and 2022
+    #3727
+  * typedesc.h: Extend TypeDescFromC template to the full set of
+    pixel types #3726
+  * Testing: many improvements for testing and code coverage. #3730
+    #3654 #3694 #3699 #3732 #3741 #3745 #3747
+  * Testing: Fix long-broken ref images for texture-icwrite test
+    #3733
+  * Docs: Updated RTD docmentation style, looks much nicer. #3737
+  * Docs: improve description of ociodisplay and others.
+  * Docs: Fix old release notes to document all CVEs addressed in
+    certain prior releases.
+
+-------------------------------------------------------------------
 Wed Jan 25 11:15:32 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - BuildRequire pkgconfig(libavdevice) instead of ffmpeg-devel: let
@@ -11,26 +38,21 @@ Mon Jan  2 14:02:00 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
   * IOMemReader detects and errors for out-of-range read positions.
     #3712
   * Build/Mac: Suppress some deprecation warnings when building wth
-    the newest
-  * Apple clang. #3709 #3710
+    the newest Apple clang. #3709 #3710
   * ARM: Fix signed/unsigned SIMD mismatch in vbool4::load. #3722
   * Build: New CMake variable INTERNALIZE_FMT, when set to OFF will
-    ensure
-  * that the fmt headers are not internalized (copied to the
-    installed part
-  * of OIIO). The default is ON, matching old behavior. #3598
+    ensure that the fmt headers are not internalized (copied to the
+    installed part of OIIO). The default is ON, matching old
+    behavior. #3598
   * Testing: Improved testing of iinfo #3688 #3706, 'term' output
-    #3714, igrep
-  * #3715.
+    #3714, igrep #3715.
   * build_openexr.bash: bump default version of OpenEXR/Imath
-    retrieved to be
-  * 3.1.5. #3703
+    retrieved to be 3.1.5. #3703
   * span.h: Make sure the cspan alias also allows the Extent
-    template
-  * argument; add a custom formatter to print spans. #3685
+    template argument; add a custom formatter to print spans. #3685
   * ustring.h: #if guards to let the header be Cuda-safe. #3718
   * Internals: refactoring to remove duplicated code for iinfo and
-  * oiiotool --info. #3688
+    oiiotool --info. #3688
   * Internals: remove the last instances of unsafe std::sprintf.
     #3705
 - add fmt-devel to -devel package dependencies

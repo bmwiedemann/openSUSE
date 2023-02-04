@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  1 22:46:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip python 2.x (no longer supported) and enable CairoSVG
+  for all python flavors not just the main one 
+
+-------------------------------------------------------------------
 Thu Dec  9 10:19:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary patches: pytest4.patch, pytest6.patch, and

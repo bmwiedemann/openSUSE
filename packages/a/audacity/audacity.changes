@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb  3 16:24:02 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to 3.2.3:
+  This is a patch release for Audacity 3.2. It adds ability to share
+  audio publicly and fixes some bugs.
+  * #3884 Audio can now be shared publicly on audio.com
+  * #4040 Fixed the screenshot tool
+  * #4019 Selecting audio no longer marks the project as changed
+  * #3693 A new toolbar with cut/copy/paste buttons has been added
+  * #3216 Plain UI for VST3 plugins no longer show MIDI CC parameters
+  * #2620 The effects sidebar no longer can fill the entire screen
+- Update to 3.2.4:
+  This is a hotfix release. It fixes the following bug:
+  * #4057 Fixed the meters not retaining size
+- Increase the constraints to avoid OOM at the build time
+
+-------------------------------------------------------------------
 Tue Dec 20 22:54:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gtk+-2.0) with pkgconfig(gtk+-3.0)

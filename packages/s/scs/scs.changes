@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:19:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Return ability to reuse workspace and update problem parameters.
+- add executable-libs.patch to install libs as executable
+
+-------------------------------------------------------------------
 Mon Jan 17 04:33:26 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 3.1.0.

@@ -1,7 +1,7 @@
 #
 # spec file for package collectl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           collectl
-Version:        4.3.6
+Version:        4.3.7
 Release:        0
 Summary:        System status data collection utility
 License:        Artistic-1.0 AND GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://collectl.sourceforge.net
-Source0:        http://sourceforge.net/projects/collectl/files/collectl/%{name}-%{version}/%{name}-%{version}.src.tar.gz
+Source0:        https://sourceforge.net/projects/collectl/files/collectl/%{name}-%{version}/%{name}-%{version}.src.tar.gz
 Source1:        collectl.service
 Source2:        collectl.sysconfig
 Patch0:         harden_collectl.service.patch

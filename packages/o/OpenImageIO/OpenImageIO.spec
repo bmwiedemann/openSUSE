@@ -35,7 +35,7 @@
 %define so_ver 2_4
 %define major_minor_ver 2.4
 Name:           OpenImageIO
-Version:        2.4.7.0
+Version:        2.4.8.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause

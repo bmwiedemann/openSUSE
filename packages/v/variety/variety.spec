@@ -1,7 +1,7 @@
 #
 # spec file for package variety
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only

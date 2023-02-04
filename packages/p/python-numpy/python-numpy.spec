@@ -46,8 +46,10 @@
 #
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%bcond_without cblas
 %else
 %bcond_with libalternatives
+%bcond_with cblas
 %endif
 #
 %bcond_with ringdisabled
@@ -112,10 +114,12 @@ BuildRequires:  gcc-gfortran
 BuildRequires:  openblas-devel > 0.3.20
 %else
 BuildRequires:  blas-devel
-BuildRequires:  cblas-devel
 BuildRequires:  lapack-devel
+%if %{with cblas}
 # openblas has significantly better performance for some operations
+BuildRequires:  cblas-devel
 Recommends:     libopenblas_pthreads0
+%endif
 %endif
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -157,7 +161,9 @@ Requires:       %plainpython(abi) = %{python_version}
 Requires:       openblas-devel
 %else
 Requires:       blas-devel
+%if %{with cblas}
 Requires:       cblas-devel
+%endif
 Requires:       lapack-devel
 %endif
 %else

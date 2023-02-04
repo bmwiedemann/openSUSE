@@ -61,4 +61,13 @@
 </comment>
     <requestid>1045279</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>98f02af86828726a919f59c1a5ac21ef</srcmd5>
+    <version>0.2.2</version>
+    <time>1675458335</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify Example.ipynb because nbval 0.10 abolished saving the
+  input history (forwarded request 1062690 from bnavigator)</comment>
+    <requestid>1062691</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67830ce5b6de1e019add384b66a561c9</srcmd5>
+    <version>0.2.0+g24</version>
+    <time>1675458299</time>
+    <user>dimstar_suse</user>
+    <comment>I want to add river in openSUSE:Factory. 
+
+Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
+    <requestid>1062647</requestid>
+  </revision>
+</revisionlist>

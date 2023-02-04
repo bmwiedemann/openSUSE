@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 30 20:14:29 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires pkgconfig and use pkgconfig for sdl, fix
+  building for openSUSE Leap
+
+-------------------------------------------------------------------
 Sat Apr 10 20:04:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.15.5

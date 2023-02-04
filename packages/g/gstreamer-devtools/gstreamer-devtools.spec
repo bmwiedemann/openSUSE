@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   gst-devtools
 
 Name:           gstreamer-devtools
-Version:        1.20.4
+Version:        1.22.0
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
@@ -155,7 +155,7 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' debug-viewer/gst-
 %{_libdir}/gstreamer-1.0/validate/libgstvalidategapplication.so
 %{_libdir}/gstreamer-1.0/validate/libgstvalidategtk.so
 %{_libdir}/gstreamer-1.0/validate/libgstvalidatessim.so
-%{_libdir}/pkgconfig/gst-validate-1.0.pc
+%{_libdir}/pkgconfig/gstreamer-validate-1.0.pc
 %{_libdir}/libgstvalidate-1.0.so
 %{_libdir}/libgstvalidate-default-overrides-1.0.so
 

@@ -49,7 +49,7 @@
 %endif
 
 Name:           osc
-Version:        1.0.0~b3
+Version:        1.0.0~b4
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -62,8 +62,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        debian.dirs
 Source2:        debian.docs
 %endif
-Patch1:         https://github.com/openSUSE/osc/pull/1228.patch
-Patch2:         https://github.com/openSUSE/osc/pull/1217.patch
+
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -83,6 +82,9 @@ Requires:       %{use_python_pkg}-urllib3
 
 # needed for showing download progressbars
 Recommends:     %{use_python_pkg}-progressbar
+
+# needed for setting the default editor by distro
+Recommends:     %{use_python_pkg}-distro
 
 # needed for storing credentials in kwallet/gnome-keyring
 Recommends:     %{use_python_pkg}-keyring
