@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        22.12.1
+Version:        22.12.2
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
