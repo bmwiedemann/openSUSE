@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  5 07:52:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.25:
+  * Fix invalid characters returned by find_program #2397
+  * Prepare for distutils removal (Python 3.12 regression) #2402
+  * Improve cp65001 compat in cpython < 3.3 #2346
+  * Add Fujitsu Fortran compiler detection on ARM64FX #2348
+  * Support multiple Sphinx output formats #2344
+  * Improve PyQt5 detection #2343
+  * Add asynchronous wafcache uploads
+
+-------------------------------------------------------------------
 Mon Jun 27 19:50:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (2.0.24)
