@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 28 09:38:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add ba0d8cfcec3d3b0112d1c54991853e6003f2fbf6.patch to resolve
+  python 3.11 build failure
+- add 0001-pypubsub-Replace-deprecated-inspect.getargspec.patch
+  to fix another python 3.11 build failure
+
+-------------------------------------------------------------------
 Thu Jan 26 09:14:45 UTC 2023 - pgajdos@suse.com
 
 - add repack script to sources in spec file
