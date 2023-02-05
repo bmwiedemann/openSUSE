@@ -9944,7 +9944,7 @@ unsorted:
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_9_7 
-  - libZXing1-32bit: [x86_64] 
+  - libZXing3-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
@@ -10477,6 +10477,7 @@ unsorted:
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
+  - libbtrfsutil1 
   - libbudgie-plugin0 
   - libbudgie-private0 
   - libbudgietheme0 
@@ -44502,6 +44503,7 @@ unsorted:
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
   - wayland-protocols-devel 
+  - waylock: [x86_64] 
   - wayshot 
   - wayvnc 
   - wbg 
