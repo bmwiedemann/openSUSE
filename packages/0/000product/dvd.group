@@ -827,6 +827,9 @@
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="health-checker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="health-checker-plugins-MicroOS" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="heaptrack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="heaptrack-gui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="heaptrack-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="hfsutils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hicolor-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="hicolor-icon-theme-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1206,6 +1209,7 @@
     <package name="libImath-3_1-29" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKChart2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKEduVocDocument5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1559,6 +1563,7 @@
     <package name="libboost_filesystem1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libboost_iostreams1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libboost_locale1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_program_options1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libboost_python-py3-1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libboost_thread1_81_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2034,6 +2039,7 @@
     <package name="libkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkcddb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkcddb-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkchart-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkcompactdisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
