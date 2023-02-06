@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -187,7 +187,7 @@ if test -f %{_datadir}/smartmontools/drivedb.h.rpmsave ; then
     DRIVEDB_H_RELEASE_RPM="$(sed -n 's/^.*$Id: drivedb.h \([0-9][0-9]*\) .*$/\1/p' <%{_datadir}/smartmontools/drivedb.h)"
     DRIVEDB_H_RELEASE_SAVED="$(sed -n 's/^.*$Id: drivedb.h \([0-9][0-9]*\) .*$/\1/p' <%{_datadir}/smartmontools/drivedb.h.rpmsave)"
     # Note: The SAVED release number may be broken. The test syntax must cover it and replace old file.
-    if test "$DRIVEDB_H_RELEASE_RPM" -lt "$DRIVEDB_H_RELEASE_SAVED" ; then
+    if test "$DRIVEDB_H_RELEASE_RPM" -lt "${DRIVEDB_H_RELEASE_SAVED:-0}" ; then
 	# If it is an update to the new branch, always replace the database.
 	# Extract drivedb.h branch for the new version to default_branch.
 	eval $(grep "^default_branch=\"[^\"]*\"$" /usr/sbin/update-smart-drivedb)

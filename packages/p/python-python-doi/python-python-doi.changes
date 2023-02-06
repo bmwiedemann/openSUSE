@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sat Feb  4 18:13:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for python-doi 0.2.0.
+- Add mark-network-tests.patch isolating network-requiring tests
+  (gh#alejandrogallo/python-doi#1).

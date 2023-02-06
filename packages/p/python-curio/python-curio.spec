@@ -1,7 +1,7 @@
 #
 # spec file for package python-curio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-curio
 Version:        1.6
 Release:        0
@@ -26,45 +24,31 @@ License:        BSD-Source-Code
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
 Patch0:         make-tests-reproducible.patch
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module contextvars}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{?python_version_nodots} == 36
-Requires:       python-contextvars
-%endif
 %python_subpackages
 
 %description
 Curio is a library for performing concurrent I/O with coroutines in Python 3.
 
 %prep
-%setup -q -n curio-%{version}
-%patch0 -p1
+%autosetup -p1 -n curio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# disabled network tests
-skiptest_allpython="test_ssl_outgoing or test_socket_funcs"
-# https://github.com/dabeaz/curio/issues/336
-# The dependency tree on curio is too large to just define skip_python36.
-# Let's hope the python36 flavor will be in Tumbleweed before upstream drops
-# Python 3.6 support completely, so that a dedicated staging project can work
-# out the skips on all the depending packages.
-skiptest_python36_only=" or test_uqueue_asyncio_consumer or test_uevent_get_asyncio or test_universal"
-%if 0%{?python3_version_nodots} == 36
-skiptest_python3_only="$skiptest_python36_only"
-%endif
-%pytest -k "not (${skiptest_allpython} ${skiptest_$python_only})"
+%pytest -m "not internet"
 
 %files %{python_files}
 %license LICENSE

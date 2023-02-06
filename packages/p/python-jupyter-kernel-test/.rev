@@ -21,4 +21,15 @@
   * Fix typos #71 (@martinRenou)</comment>
     <requestid>1031310</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>322de85fbfe5ca880e115e09300a5477</srcmd5>
+    <version>0.5.0</version>
+    <time>1675621395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0
+  * Fix client 8 compat #109 (@blink1073)
+  * CI and maintenance cleanups
+</comment>
+    <requestid>1063297</requestid>
+  </revision>
 </revisionlist>

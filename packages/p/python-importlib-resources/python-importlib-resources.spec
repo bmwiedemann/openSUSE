@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python3-%{**}}
-%define skip_python2 1
 Name:           python-importlib-resources
 Version:        5.10.2
 Release:        0
@@ -25,12 +23,12 @@ Summary:        Read resources from Python packages
 License:        Apache-2.0
 URL:            https://importlib-resources.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 # Breaking the depcycle; not absolutely needed as ZipReader is not executed in tests.
 # BuildRequires:  %%{python_module zipp >= 3.1.0 if %%python-base < 3.10}
@@ -66,8 +64,6 @@ consistent semantics.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# create pycache so that update-zips.py does not fail with ValueError
-python3 -m compileall $PWD/importlib_resources/tests/
 %pytest
 
 %files %{python_files}

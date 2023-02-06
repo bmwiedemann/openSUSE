@@ -1,0 +1,20 @@
+---
+ test/test-content_negotation.py |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/test/test-content_negotation.py
++++ b/test/test-content_negotation.py
+@@ -71,11 +71,13 @@ def test_content_negotiation_raises_an_h
+ 
+ 
+ # warnings
++@pytest.mark.vcr
+ def test_content_negotiation_throws_warnings():
+     with pytest.warns(UserWarning):
+         cn.content_negotiation(ids=["10.1126/science.169.3946.635", "foo"])
+ 
+ 
++@pytest.mark.vcr
+ def test_content_negotiation_throws_warnings_can_be_suppressed():
+     warnings.filterwarnings("ignore")
+     x = cn.content_negotiation(ids=["10.1126/science.169.3946.635", "foo"])

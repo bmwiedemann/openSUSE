@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gTTS
-Version:        2.2.4
+Version:        2.3.1
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pndurette/gTTS
 Source:         https://github.com/pndurette/gTTS/archive/refs/tags/v%{version}.tar.gz#/gTTS-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM demock.patch gh#pndurette/gTTS#343 mcepl@suse.com
-# remove dependency on the external mock package
-Patch0:         demock.patch
-# PATCH-FIX-UPSTREAM network-tests.patch gh#pndurette/gTTS#344 mcepl@suse.com
-# one more test marked as the network requiring
-Patch1:         network-tests.patch
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module gTTS-token >= 1.1.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.9}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools >= 38.6}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module sphinx-click}
+BuildRequires:  %{python_module sphinx_mdinclude}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
@@ -62,10 +60,10 @@ sentences where the speech would naturally pause.
 %autosetup -p1 -n gTTS-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gtts-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -80,9 +78,10 @@ sentences where the speech would naturally pause.
 %python_uninstall_alternative gtts-cli
 
 %files %{python_files}
-%doc CHANGELOG.rst README.md
+%doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/gtts-cli
-%{python_sitelib}/*
+%{python_sitelib}/gtts
+%{python_sitelib}/gTTS-%{version}*-info
 
 %changelog

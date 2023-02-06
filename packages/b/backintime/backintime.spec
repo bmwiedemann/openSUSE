@@ -41,6 +41,7 @@ Requires:       pkexec
 %endif
 Requires:       python3
 Requires:       python3-keyring
+Requires:       python3-packaging
 Requires:       rsync
 Recommends:     encfs
 Recommends:     sshfs

@@ -124,4 +124,33 @@
 </comment>
     <requestid>963733</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dfd2d41b43e10f9af6043a95c98c7479</srcmd5>
+    <version>2.3.1</version>
+    <time>1675621228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  - Bug fixes:
+    - test: include missing required *.txt test files in dist
+    - loosen dependancies for click and requests, removes six
+      dependancy
+    - test: missing @pytest.mark.net on net-enabled test
+    - test: remove mock package test dependancy
+Features
+    - Centralize project metadata and config into a single
+      pyproject.toml
+    - Drop support for Python 2.7 (long overdue), Python 3.6
+      (end-of-life)
+    - Modernize package config and build/release workflow
+    - Simplify language generator
+    - Languages added: zh-CN (Chinese (Simplified)), zh-TW
+      (Chinese (Traditional))
+    - Languages removed: cy (Welsh), eo (Esperanto), mk
+      (Macedonian), ms (Malay), zh-CN (Chinese)
+- Remove upstreamed patches:
+  - demock.patch
+  - network-tests.patch
+</comment>
+    <requestid>1063200</requestid>
+  </revision>
 </revisionlist>

@@ -10603,7 +10603,7 @@ unsorted:
   - libcephsqlite: [x86_64] 
   - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
-  - libceres2 
+  - libceres3 
   - libcerf-devel 
   - libcerf2 
   - libcerror-devel 
@@ -16057,6 +16057,7 @@ unsorted:
   - lua53-coxpcall 
   - lua53-cyrussasl 
   - lua53-devel 
+  - lua53-digestif 
   - lua53-dkjson 
   - lua53-doc 
   - lua53-editorconfig-core-lua 
@@ -16123,6 +16124,7 @@ unsorted:
   - lua54-coxpcall 
   - lua54-cyrussasl 
   - lua54-devel 
+  - lua54-digestif 
   - lua54-dkjson 
   - lua54-doc 
   - lua54-editorconfig-core-lua 
@@ -23845,6 +23847,7 @@ unsorted:
   - python310-h5py-openmpi2 
   - python310-h5py-openmpi3 
   - python310-h5py-openmpi4 
+  - python310-habanero 
   - python310-hammett 
   - python310-hankel 
   - python310-hanzidentifier 
@@ -24957,6 +24960,7 @@ unsorted:
   - python310-python-dbusmock 
   - python310-python-debian 
   - python310-python-docs-theme 
+  - python310-python-doi 
   - python310-python-dotenv 
   - python310-python-editor 
   - python310-python-engineio 
@@ -25319,6 +25323,7 @@ unsorted:
   - python310-sphinx-tabs 
   - python310-sphinx-testing 
   - python310-sphinx-version-warning 
+  - python310-sphinx_mdinclude 
   - python310-sphinx_press_theme 
   - python310-sphinx_rtd_theme 
   - python310-sphinxcontrib-apidoc 
@@ -27193,6 +27198,7 @@ unsorted:
   - python38-h5py-openmpi2 
   - python38-h5py-openmpi3 
   - python38-h5py-openmpi4 
+  - python38-habanero 
   - python38-hammett 
   - python38-hankel 
   - python38-hanzidentifier 
@@ -28345,6 +28351,7 @@ unsorted:
   - python38-python-dbusmock 
   - python38-python-debian 
   - python38-python-docs-theme 
+  - python38-python-doi 
   - python38-python-dotenv 
   - python38-python-editor 
   - python38-python-engineio 
@@ -28728,6 +28735,7 @@ unsorted:
   - python38-sphinx-tabs 
   - python38-sphinx-testing 
   - python38-sphinx-version-warning 
+  - python38-sphinx_mdinclude 
   - python38-sphinx_press_theme 
   - python38-sphinx_rtd_theme 
   - python38-sphinxcontrib-apidoc 
@@ -30599,6 +30607,7 @@ unsorted:
   - python39-h5py-openmpi2 
   - python39-h5py-openmpi3 
   - python39-h5py-openmpi4 
+  - python39-habanero 
   - python39-hammett 
   - python39-hankel 
   - python39-hanzidentifier 
@@ -31752,6 +31761,7 @@ unsorted:
   - python39-python-dbusmock 
   - python39-python-debian 
   - python39-python-docs-theme 
+  - python39-python-doi 
   - python39-python-dotenv 
   - python39-python-editor 
   - python39-python-engineio 
@@ -32135,6 +32145,7 @@ unsorted:
   - python39-sphinx-tabs 
   - python39-sphinx-testing 
   - python39-sphinx-version-warning 
+  - python39-sphinx_mdinclude 
   - python39-sphinx_press_theme 
   - python39-sphinx_rtd_theme 
   - python39-sphinxcontrib-apidoc 

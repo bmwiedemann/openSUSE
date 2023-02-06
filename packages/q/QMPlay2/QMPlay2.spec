@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        22.10.23
+Version:        23.02.05
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -30,7 +30,7 @@ Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/
 Patch1:         0001-add-opensuse-customizations.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
-# Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
+# Use gcc 11 for openSUSE Leap 15.4+ and SLE15SP4+
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
 %endif
@@ -100,6 +100,9 @@ It's a development package for %{name}.
 
 %build
 # Build options
+# - Override shared linker flags from /usr/lib/rpm/macros.d/macros.cmake
+#   because the "--no-undefined -Wl" flag is not compatible with QMPlay2
+# - Set gcc11 as compiler for openSUSE Leap 15.4+ and SLE15SP4+
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400

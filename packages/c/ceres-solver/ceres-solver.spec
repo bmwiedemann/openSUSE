@@ -1,7 +1,7 @@
 #
 # spec file for package ceres-solver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define sover 2
+%define sover 3
 Name:           ceres-solver
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        C++ library for modeling and solving optimization problems
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://ceres-solver.org/
 Source:         http://ceres-solver.org/%{name}-%{version}.tar.gz
-Patch0:         https://github.com/ceres-solver/ceres-solver/commit/941ea13475913ef8322584f7401633de9967ccc8.patch#/fix-tbb-2021.1-detection.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  glog-devel >= 0.3.1
+BuildRequires:  memory-constraints
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(eigen3) >= 3.3.0
 
@@ -72,6 +72,9 @@ This package is built with Eigen only.
 %autosetup -p1
 
 %build
+# _constraints/memoryperjob can not be increased without
+# rejecting too many workers (even most on some archs)
+%limit_build -m 1500
 %cmake \
   -DCXSPARSE=ON \
   -DSUITESPARSE=ON \
@@ -94,6 +97,7 @@ This package is built with Eigen only.
 %{_libdir}/libceres.so
 
 %files -n libceres%{sover}
-%{_libdir}/libceres.so.%{sover}*
+%{_libdir}/libceres.so.%{sover}
+%{_libdir}/libceres.so.%{version}
 
 %changelog

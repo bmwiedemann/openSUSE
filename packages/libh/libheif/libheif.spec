@@ -138,13 +138,13 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
     -DWITH_LIBDE265=OFF \
     -DWITH_X265=OFF \
     -DWITH_EXAMPLES=OFF \
+%else
+    -DCMAKE_SKIP_RPATH=ON \
 %endif
 %if 0%{?suse_version} <= 1500
     -DCMAKE_CXX_FLAGS="-pthread" \
 %endif
 %if %{with plugins}
-    -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF \
     -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
 %else
     -DENABLE_PLUGIN_LOADING=OFF

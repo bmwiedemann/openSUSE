@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  2 02:54:22 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.9.1:
+  * Fix builds on s390x (@jonathanspw, #402)
+  * Fix zero refresh rate on some monitors (macOS)
+  * Fix default formatting of Wifi module
+
+-------------------------------------------------------------------
 Mon Jan 23 16:30:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.9.0

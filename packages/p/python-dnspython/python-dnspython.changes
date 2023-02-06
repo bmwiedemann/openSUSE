@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb  4 15:48:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * The get_soa() method has been added to dns.zone.Zone.
+  * The minimum TLS version is now 1.2.
+  * EDNS padding is now supported. Messages with EDNS enabled and
+    with a non-zero pad option will be automatically padded
+    appropriately when converted to wire format.
+  * dns.zone.from_text() and dns.zone.from_file() now have an
+    allow_directives parameter to allow finer control over how
+    directives in zonefiles are processed.
+  * A preliminary implementation of DNS-over-QUIC has been added,
+    and will be available if the aioquic library is present. See
+    dns.query.quic(), dns.asyncquery.quic(), and examples/doq.py
+    for more info. This API is subject to change in future releases
+    For asynchronous I/O, both asyncio and Trio are supported,
+    but Curio is not.
+  * DNSSEC signing support has been added to the dns.dnssec module,
+    along with a number of functions to help generate DS, CDS, and
+    CDNSKEY RRsets.
+  * Curio asynchronous I/O support is deprecated as of this release
+    and will be removed in a future release.
+  * The resolver object’s nameserver field is planned to become a
+    property in dnspython 2.4. Writing to this field other than by
+    direct assignment is deprecated, and so is depending on the
+    mutability and form of the iterable returned when it is read.
+
+-------------------------------------------------------------------
 Mon Oct 10 07:13:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Include in filelist directories with their content.

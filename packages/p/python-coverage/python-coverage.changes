@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 28 13:38:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Added: the debug output file can now be specified with ``[run]
+    debug_file`` in the configuration file.  Closes `issue 1319`_.
+  * Performance: fixed a slowdown with dynamic contexts that's been around
+    since 6.4.3. 
+  * Typing: all product and test code has type annotations.
+  * Fix: On Python 3.7, a file with type annotations but no ``from
+    __future__ import annotations`` would be missing statements in
+    the coverage report. This is now fixed, closing `issue 1524`_.
+  * Performance: an internal cache of file names was accidentally disabled,
+    resulting in sometimes drastic reductions in performance.  This is now fixed,
+     closing `issue 1527`_.
+
+-------------------------------------------------------------------
 Wed Jan  4 16:20:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.3:

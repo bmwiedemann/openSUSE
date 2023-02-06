@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  3 11:07:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 33
+  * Fix a race-condition when starting systemd-services from the
+    launcher.
+  * Changes in dbus service-files will no longer affect ongoing
+    activation attempts.
+
+-------------------------------------------------------------------
 Fri Aug  5 10:15:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 32

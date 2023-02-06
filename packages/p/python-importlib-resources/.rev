@@ -89,4 +89,12 @@ It does NOT conflict with python38 standard library.</comment>
   proposed in gh-100586.</comment>
     <requestid>1046280</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fc8ce3d1316e238f1cedfd922715e42e</srcmd5>
+    <version>5.10.2</version>
+    <time>1675621211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063146</requestid>
+  </revision>
 </revisionlist>

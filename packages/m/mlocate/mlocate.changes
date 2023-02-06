@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  3 15:35:01 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove ProtectKernelModules from systemd unit as it makes files
+  inaccessible that are then not visible for locate (bsc#1207884)
+
+-------------------------------------------------------------------
 Wed Sep 14 13:16:44 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Pass "--shell=/bin/sh" to "su" when running the "updatedb"

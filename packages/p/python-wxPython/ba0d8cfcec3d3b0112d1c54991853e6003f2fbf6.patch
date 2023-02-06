@@ -1,0 +1,35 @@
+From ba0d8cfcec3d3b0112d1c54991853e6003f2fbf6 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Mon, 7 Nov 2022 11:49:27 -0500
+Subject: [PATCH] wscript: Use EXT_SUFFIX when available to fix build on Py
+ 3.11
+
+This is a backport of a an upstream fix in waf's check_python_headers().
+
+See: https://gitlab.com/ita1024/waf/-/commit/8d6cbb3657bdbf2ad5ef33b8ba51f29747743e1d
+---
+ wscript | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/wscript b/wscript
+index 6b53bcd5e..048a3df6d 100644
+--- a/wscript
++++ b/wscript
+@@ -383,7 +383,7 @@ def my_check_python_headers(conf):
+     if not pybin:
+         conf.fatal('Could not find the python executable')
+ 
+-    v = 'prefix SO LDFLAGS LIBDIR LIBPL INCLUDEPY Py_ENABLE_SHARED MACOSX_DEPLOYMENT_TARGET LDSHARED CFLAGS'.split()
++    v = 'prefix SO EXT_SUFFIX LDFLAGS LIBDIR LIBPL INCLUDEPY Py_ENABLE_SHARED MACOSX_DEPLOYMENT_TARGET LDSHARED CFLAGS'.split()
+     try:
+         lst = conf.get_python_variables(["get_config_var('%s') or ''" % x for x in v])
+     except RuntimeError:
+@@ -397,7 +397,7 @@ def my_check_python_headers(conf):
+     if dct[x]:
+         conf.env[x] = conf.environ[x] = dct[x]
+ 
+-    env['pyext_PATTERN'] = '%s' + dct['SO'] # not a mistake
++    env['pyext_PATTERN'] = '%s' + (dct['EXT_SUFFIX'] or dct['SO']) # SO is deprecated in 3.5 and removed in 3.11
+ 
+     # Check for python libraries for embedding
+     all_flags = dct['LDFLAGS'] + ' ' + dct['CFLAGS']

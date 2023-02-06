@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  2 14:31:01 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Catch another invalid state in %post: DRIVEDB_H_RELEASE_SAVED
+  might end up empty
+
+-------------------------------------------------------------------
 Thu Apr 21 11:48:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - refresh keyring with new signing key 
@@ -80,7 +86,6 @@ Wed Jan  6 12:10:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - drop smartd-service-novm.patch (upstream)
 - drop smartmontools-smartd-service.patch
   (SLE+Leap, now in upstream, bsc#1183699)
-
 
 -------------------------------------------------------------------
 Sat Jan  4 01:53:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>

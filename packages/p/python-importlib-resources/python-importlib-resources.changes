@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  2 18:51:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove obsolete cache compilation for tests
+  * fixes d:l:p:backports 15.4_py39 build failure.
+- Avoid building for not supported Python <= 3.6
+
+-------------------------------------------------------------------
 Mon Jan  2 19:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.10.2:

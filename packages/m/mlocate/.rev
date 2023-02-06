@@ -258,4 +258,12 @@ The group warning is fixed in rpmlint devel project already.</comment>
     <comment>Don't depend on nobody's login shell to execute updatedb. [jsc#PED-1717].</comment>
     <requestid>1003535</requestid>
   </revision>
+  <revision rev="30" vrev="32">
+    <srcmd5>eba048edaf2865f34af0b35d429f126a</srcmd5>
+    <version>0.26</version>
+    <time>1675621237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063255</requestid>
+  </revision>
 </revisionlist>

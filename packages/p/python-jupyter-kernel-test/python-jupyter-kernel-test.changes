@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  5 16:05:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.0
+  * Fix client 8 compat #109 (@blink1073)
+  * CI and maintenance cleanups
+
+-------------------------------------------------------------------
 Wed Oct 26 10:26:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.4.5

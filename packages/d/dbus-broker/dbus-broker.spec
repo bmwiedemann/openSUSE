@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-broker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dbus-broker
-Version:        32
+Version:        33
 Release:        0
 Summary:        XDG-conforming message bus implementation
 License:        Apache-2.0

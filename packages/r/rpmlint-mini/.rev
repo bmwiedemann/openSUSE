@@ -965,4 +965,12 @@ undo bootstrap workaround</comment>
 - Copy libraries required by _rpm.cpython to the testing root (boo#1203093).</comment>
     <requestid>1002662</requestid>
   </revision>
+  <revision rev="116" vrev="9">
+    <srcmd5>5f169da3cd8ad15b250eefaacaa67f5d</srcmd5>
+    <version>MACRO</version>
+    <time>1675621209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062937</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  2 14:50:24 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Don't include copy of libc
+
+-------------------------------------------------------------------
 Mon Sep 12 07:27:17 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove extra %make_build arguments.

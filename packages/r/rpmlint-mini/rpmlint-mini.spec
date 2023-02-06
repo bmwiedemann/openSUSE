@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,10 @@ for file in $(cat %{SOURCE1}); do
 done
 popd
 ldd %{python_sitearch}/rpm/*.so | while read L T R A
-do cp '-aLt%{buildroot}/opt/testing/lib' "${R}" || # is it a virtual library?
+do
+# skip libc, it must match the system ld.so (which we cannot replace)
+case $L in libc.*) continue;; esac
+cp '-aLt%{buildroot}/opt/testing/lib' "${R}" || # is it a virtual library?
 ! <"${R}" || # it is a real library and still could not be copied
 false # this is necessary to really fail
 done

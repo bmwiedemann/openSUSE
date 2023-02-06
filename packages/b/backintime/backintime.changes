@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  5 18:45:23 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Require python3-packaging
+
+-------------------------------------------------------------------
 Sun Jan  8 18:28:22 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Remove backintime-rsync324_args.patch (no longer needed)

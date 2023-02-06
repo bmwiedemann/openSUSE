@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Feb  4 11:16:58 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.1.0.
+  * New Features:
+    + Support for CUDA based dense solvers - DENSE_QR,
+      DENSE_NORMAL_CHOLESKY & DENSE_SCHUR (Joydeep Biswas,
+      Sameer Agarwal)
+    + Manifold is the new LocalParameterization. Version 2.1 is
+      the transition release where users can use both
+      LocalParameterization as well as Manifold objects as they
+      transition from the former to the latter.
+      LocalParameterization will be removed in version 2.2.
+      There should be no numerical change to the results as a
+      result of this change. (Sameer Agarwal, Johannes Beck,
+      Sergiu Deitsch)
+    + A number of changes to Jet s (Sergiu Deitsch):
+      - Jet gained support for, copysign, fma (fused multiply-add),
+        midpoint (C++20 and above), lerp (C++20 and above),
+        3-argument hypot (C++17 and above), log10, log1p, exp1m,
+        norm (squared norm).
+      - Quiet floating-point comparison: isless, isgreater,
+        islessgreater, islessequal, isgreaterequal, isunordered,
+        signbit, fdim
+      - Categorization and comparison operations are applied
+        exclusively and consistently to the scalar part of a
+        Jet now: isnan, isinf, isnormal, isfinite, fpclassify
+        (new), fmin, fmax
+      - It is now possible to safely compare a Jet against a
+        scalar (or literal) without constructing a Jet first
+        (even if it’s nested)
+        This enables interaction with various arithmetic functions
+        that expect a scalar like instance, such as
+        boost::math::pow<-N> for reciprocal computation.
+    + Add NumericDiffFirstOrderFunction (Sameer Agarwal)
+  * Backward Incompatible API Changes:
+    + LocalParameterization is deprecated. It will be removed
+      in version 2.2. Use Manifold instead.
+    + Classification functions like IsFinite are deprecated.
+      Use the C++11 functions (isfinite, isnan etc) going
+      forward. However to maintain consistent behaviour with
+      comparison operators, these functions only inspect the
+      scalar part of the Jet.
+  * Many Bug Fixes & Minor Changes, for details, see
+    http://ceres-solver.org/version_history.html
+- Drop upstream fix-tbb-2021.1-detection.patch
+- Use memory-constrains to avoid occasional OOM build failures
+
+-------------------------------------------------------------------
 Mon Feb 21 02:16:20 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with TBB >= 2021.1, add

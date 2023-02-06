@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-dnspython%{psuffix}
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
@@ -40,47 +38,46 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module typing}
-# doh:
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module h2}
-BuildRequires:  %{python_module requests-toolbelt}
-BuildRequires:  %{python_module requests}
+# dnssec
+Requires:       python-cryptography
+Requires:       python-httpx
 # idna
-BuildRequires:  %{python_module idna}
+Requires:       python-idna >= 2.1
+# Requires despite optional: see description
+# doh
+Requires:       python-requests
+Requires:       python-requests-toolbelt
+# HTTP/2 support in httpx
+Recommends:     python-h2
+Suggests:       python-curio >= 1.2
+# curio
+Suggests:       python-sniffio >= 1.1
+# trio
+Suggests:       python-trio >= 0.14.0
+BuildArch:      noarch
+%if %{with test}
 # dnssec
 BuildRequires:  %{python_module cryptography}
-# trio
-BuildRequires:  %{python_module trio >= 0.14.0}
+BuildRequires:  %{python_module curio >= 1.2}
+BuildRequires:  %{python_module h2}
+# doh:
+BuildRequires:  %{python_module httpx}
+# idna
+BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests}
 # curio
 BuildRequires:  %{python_module sniffio >= 1.1}
-BuildRequires:  %{python_module curio >= 1.2}
-BuildRequires:  %{python_module pytest}
+# trio
+BuildRequires:  %{python_module trio >= 0.14.0}
+BuildRequires:  %{python_module typing}
 BuildRequires:  netcfg
 BuildRequires:  (python3-contextvars if python3-base < 3.7)
 %endif
 %if 0%{?python_version_nodots} < 37
 Requires:       python-contextvars
 %endif
-# Requires despite optional: see description
-# doh
-Requires:       python-requests
-Requires:       python-httpx
-Requires:       python-requests-toolbelt
-# idna
-Requires:       python-idna >= 2.1
-# dnssec
-Requires:       python-cryptography
-# trio
-Suggests:       python-trio >= 0.14.0
-# curio
-Suggests:       python-sniffio >= 1.1
-Suggests:       python-curio >= 1.2
-# HTTP/2 support in httpx
-Recommends:     python-h2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

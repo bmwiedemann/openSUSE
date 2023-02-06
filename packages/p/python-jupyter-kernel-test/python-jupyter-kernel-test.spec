@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-kernel-test
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-kernel-test
-Version:        0.4.5
+Version:        0.5.0
 Release:        0
 Summary:        A tool for testing Jupyter kernels
 License:        BSD-3-Clause

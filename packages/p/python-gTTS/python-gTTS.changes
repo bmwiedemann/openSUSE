@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb  4 18:39:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.1:
+  - Bug fixes:
+    - test: include missing required *.txt test files in dist
+    - loosen dependancies for click and requests, removes six
+      dependancy
+    - test: missing @pytest.mark.net on net-enabled test
+    - test: remove mock package test dependancy
+Features
+    - Centralize project metadata and config into a single
+      pyproject.toml
+    - Drop support for Python 2.7 (long overdue), Python 3.6
+      (end-of-life)
+    - Modernize package config and build/release workflow
+    - Simplify language generator
+    - Languages added: zh-CN (Chinese (Simplified)), zh-TW
+      (Chinese (Traditional))
+    - Languages removed: cy (Welsh), eo (Esperanto), mk
+      (Macedonian), ms (Malay), zh-CN (Chinese)
+- Remove upstreamed patches:
+  - demock.patch
+  - network-tests.patch
+
+-------------------------------------------------------------------
 Mon Mar 21 14:46:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Make tests working at least a little bit. Requires two new patches:

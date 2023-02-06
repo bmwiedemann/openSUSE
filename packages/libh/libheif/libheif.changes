@@ -12,6 +12,12 @@ Fri Jan 27 14:32:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * replace internal API with public API and fix typo (Fixes #745)
 
 -------------------------------------------------------------------
+Fri Jan 27 12:03:34 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- The fix for rpath error for the examples sub-package was mistakenly
+  moved
+
+-------------------------------------------------------------------
 Fri Jan 20 14:37:00 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add missing BuildRequires for SVT-AV1 support for Tumbleweed (only

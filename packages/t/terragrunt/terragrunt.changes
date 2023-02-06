@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 04 12:23:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.2:
+  * Improved handling of default value for sse_algorithm (#2438)
+
+-------------------------------------------------------------------
 Thu Feb 02 06:50:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.43.1:

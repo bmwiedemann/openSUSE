@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  2 18:41:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile from obsolete python36 flavor expressions
+- PEP517 build
+
+-------------------------------------------------------------------
+Tue Jan 31 23:57:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip building for 3.6 
+
+-------------------------------------------------------------------
 Thu Oct 27 22:40:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.6: 

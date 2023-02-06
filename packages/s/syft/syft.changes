@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 04 07:45:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.70.0:
+  * fix: update config struct to not decode password/key (#1538)
+  * Update syft bootstrap tools to latest versions. (#1537)
+  * feat: add traefik classifier (#1504)
+  * fix: don't hardcode Cosign attest type (#1533)
+  * chore(deps): bump github.com/docker/docker (#1531)
+  * Update syft bootstrap tools to latest versions. (#1530)
+
+-------------------------------------------------------------------
 Thu Feb 02 06:48:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.69.1:
