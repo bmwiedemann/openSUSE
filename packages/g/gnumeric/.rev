@@ -1053,4 +1053,12 @@
     <comment></comment>
     <requestid>1060493</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>2674f2da7dfbf73bd238b838c1c4ad71</srcmd5>
+    <version>1.12.55</version>
+    <time>1675689348</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1063294 from iznogood)</comment>
+    <requestid>1063401</requestid>
+  </revision>
 </revisionlist>

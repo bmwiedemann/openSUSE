@@ -1,0 +1,5 @@
+<package name="rpcs3" project="openSUSE:Factory">
+  <title>PS3 emulator/debugger</title>
+  <description>An open-source PlayStation 3 emulator/debugger written in C++.</description>
+  <devel project="Emulators" package="rpcs3"/>
+</package>

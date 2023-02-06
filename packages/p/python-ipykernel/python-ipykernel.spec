@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.20.2
+Version:        6.21.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -44,7 +44,7 @@ BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION dependencies
 BuildRequires:  %{python_module comm >= 0.1.1}
-BuildRequires:  %{python_module debugpy >= 1.0}
+BuildRequires:  %{python_module debugpy >= 1.6.5}
 BuildRequires:  %{python_module ipython >= 7.23.1}
 BuildRequires:  %{python_module jupyter-client >= 6.1.12}
 BuildRequires:  %{python_module matplotlib-inline >= 0.1}
@@ -54,8 +54,9 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 5.1.0}
+BuildRequires:  %{python_module jupyter-core >= 5.1 or (%python-jupyter-core >= 4.12 with %python-jupyter-core < 5.0)}
 Requires:       python-comm >= 0.1.1
-Requires:       python-debugpy >= 1.0
+Requires:       python-debugpy >= 1.6.5
 Requires:       python-ipython >= 7.23.1
 Requires:       python-jupyter-client >= 6.1.12
 Requires:       python-matplotlib-inline >= 0.1
@@ -65,6 +66,7 @@ Requires:       python-psutil
 Requires:       python-pyzmq >= 17
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 5.4.0
+Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb  5 15:18:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.4:
+  + autogen.sh:
+    - Add default patch prefix
+    - Honor NOCONFIGURE=1
+    - Use exec instead of waiting for configure to finish
+    - Use quoted string variables
+  + Build xz tarballs instead of bzip2
+  + configure: Drop AM_MAINTAINER_MODE
+  + Ensure consistency between the manpage and the output of the -h
+    option
+  + gitlab CI:
+    - Add a basic build test
+    - Stop requiring Signed-off-by in commits
+  + Update configure.ac bug URL for gitlab migration
+  + Update README for gitlab migration
+  + Use real program name for help message
+- Modernize spec.
+
+-------------------------------------------------------------------
 Sat Jan 19 11:09:06 UTC 2013 - zaitor@opensuse.org
 
 - Update to version 1.0.3:

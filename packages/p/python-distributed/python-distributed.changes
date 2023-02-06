@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Feb  5 13:22:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.1.1
+  ## Enhancements
+  * P2P shuffle deduplicates data and can be run several times
+    (GH#7486) Hendrik Makait
+  * Reverse order of get_logs() and get_worker_logs() (GH#7475)
+    Nicholas R. Knezek
+  * Add prometheus metric for time and memory used per task prefix
+    (GH#7406) Thomas Grainger
+  * Additive worker counts in Prometheus (GH#7468) crusaderky
+  * Add help tool for taskstream (GH#7478) Florian Jetter
+  ## Bug Fixes
+  * Do not allow for a worker to reject a drop replica request
+    (GH#7490) Hendrik Makait
+  * Fix un/packing for namedtuples with custom constructors
+    (GH#7465) antonymayi
+  * Documentation
+  * Remove timeout= from docstring example for worker_client
+    (GH#7497) Florian Jetter
+  ## Maintenance
+  * Ignore get_default_shuffle_algorithm linting issue (GH#7506)
+    Florian Jetter
+  * Remove set_config when using default client (GH#7482) Florian
+    Jetter
+  * Update gpuCI RAPIDS_VER to 23.04 (GH#7501)
+  * Fix test_balance_expensive_tasks and improve helper functions
+    in test_steal.py (GH#7253) Hendrik Makait
+  * Sign every compute task with run ID to correlate response
+    (GH#7463) Hendrik Makait
+- Release 2023.1.0
+  ## New Features
+  * Add local SubprocessCluster that runs workers in separate
+    processes (GH#7431) Hendrik Makait
+  ## Enhancements
+  * Ensure client session is quiet after cluster.close() or
+    client.shutdown() (GH#7429) James Bourbeau
+  * Set lifetime-stagger default value to None (GH#7445)
+    bstadlbauer
+  * Memory thresholds should never be exactly 0.0 (GH#7458) Stuart
+    Berg
+  * Remove the Incorrect-Sizeof-Warning (GH#7450) Mads R. B.
+    Kristensen
+  * Log exceptions in P2P shuffle tasks (GH#7442) Hendrik Makait
+  * Add support for packing namedtuple and add test for future
+    resolution in submit (GH#7292) Andrew
+  * Avoid deep copy on lz4 decompression (GH#7437) crusaderky
+  * Avoid deep copy of numpy buffers on unspill (GH#7435)
+    crusaderky
+  * Don’t error when clicking on empty task stream plot (GH#7432)
+    James Bourbeau
+  * Do not count spilled memory when comparing vs. process memory
+    (GH#7430) crusaderky
+  * Stop Client periodic callbacks during shutdown() (GH#7428)
+    James Bourbeau
+  * Add dask spec CLI (GH#7427) Matthew Rocklin
+  * Create new zstd (de)compressor for each compression call
+    (GH#7404) Dylan Wragge
+  * Rename managed_in_memory etc. to match GUI (GH#7418) crusaderky
+  * Warn users when sizeof() returns inflated output (GH#7419)
+    crusaderky
+  ## Bug Fixes
+  * Ensure dicts are properly recognized as msgpack serializable
+    (GH#7473) Florian Jetter
+  * Reset state of ShuffleSchedulerExtension on restart (GH#7446)
+    Hendrik Makait
+  * Reject non-string column names in P2P shuffle (GH#7447) Hendrik
+    Makait
+  * Avoid int32 in dashboard (GH#7443) Matthew Rocklin
+  * Fix P2PShuffle serialization for categorical data (GH#7410)
+    Hendrik Makait
+  * WorkerPorcess blocks on kill if still starting (GH#7424)
+    Matthew Rocklin
+  ## Documentation
+  * Move Prometheus docs from dask/dask (GH#7405) crusaderky
+  ## Maintenance
+  * Various cleanups in semaphore (GH#5885) Florian Jetter
+  * test_rlimit fails on MacOSX (GH#7457) crusaderky
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (GH#7464)
+  * Remove conditional imports of psutil (GH#7462) crusaderky
+  * Drop support for zict < 2.1.0 (GH#7456) crusaderky
+  * Fix flaky test_digests (GH#7454) crusaderky
+  * Add minimum dependency testing to CI (GH#7285) Charles
+    Blackmon-Luca
+  * Avoid overflow in statitics.mean (GH#7426) Matthew Rocklin
+  * Ignore numpy bool8 deprecation (GH#7423) Matthew Rocklin
+  * Add missing skips for pyarrow (GH#7416) Elliott Sales de
+    Andrade
+  * Be more permissive about expected ciphers in tests (GH#7417)
+    Elliott Sales de Andrade
+  * Revert “TST: Fetch executables from build root (GH#2551)”
+    (GH#7415) Elliott Sales de Andrade
+
+-------------------------------------------------------------------
 Mon Jan  2 21:03:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.12.1

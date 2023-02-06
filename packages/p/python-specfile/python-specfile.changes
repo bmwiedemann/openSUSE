@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  6 06:32:11 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.13.2:
+  * Fixed infinite loop that occured when section options were 
+    followed by whitespace.
+
+-------------------------------------------------------------------
 Mon Jan 23 15:38:33 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.13.1:

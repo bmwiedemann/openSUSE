@@ -729,4 +729,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
   due to being referenced in the .desktop file (forwarded request 1042512 from gmbr3)</comment>
     <requestid>1042555</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>1fe1084deb4d809be28f793c327816ec</srcmd5>
+    <version>43.1</version>
+    <time>1675689351</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1063397 from iznogood)</comment>
+    <requestid>1063406</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythonfinder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,17 @@ Version:        1.3.1
 Release:        0
 Summary:        A tool to locate Python on the system
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/pythonfinder
 Source:         https://github.com/sarugaku/pythonfinder/archive/refs/tags/v%{version}.tar.gz#/pythonfinder-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sarugaku/pythonfinder#127
+Patch0:         support-packaging-22.patch
 BuildRequires:  %{python_module setuptools >= 36.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-cached-property
 Requires:       python-click
-Requires:       python-packaging
+Requires:       python-packaging >= 22.0
 Requires:       python-vistir >= 0.2.5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module crayons}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module packaging >= 22.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vistir >= 0.2.5}
 # /SECTION
@@ -50,7 +51,7 @@ BuildRequires:  %{python_module vistir >= 0.2.5}
 A Python discovery tool to locate Python on the system.
 
 %prep
-%setup -q -n pythonfinder-%{version}
+%autosetup -p1 -n pythonfinder-%{version}
 rm -r tasks
 
 sed -i '/addopts/d' setup.cfg

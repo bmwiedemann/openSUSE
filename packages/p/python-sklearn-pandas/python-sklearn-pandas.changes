@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  6 08:06:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests gh#scikit-learn-contrib/sklearn-pandas#248
+
+-------------------------------------------------------------------
 Sat Feb 12 23:37:31 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.2.0:

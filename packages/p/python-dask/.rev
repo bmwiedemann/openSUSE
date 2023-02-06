@@ -1471,4 +1471,107 @@
     <comment></comment>
     <requestid>1056245</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>afe874e912e75878a59d9faa707136e7</srcmd5>
+    <version>2023.1.1</version>
+    <time>1675695293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2023.1.1
+  ## Enhancements
+  * Add to_backend method to Array and _Frame (GH#9758) Richard
+    (Rick) Zamora
+  * Small fix for timestamp index divisions in pandas 2.0 (GH#9872)
+    Irina Truong
+  * Add numeric_only to DataFrame.cov and DataFrame.corr (GH#9787)
+    James Bourbeau
+  * Fixes related to group_keys default change in pandas 2.0
+    (GH#9855) Irina Truong
+  * infer_datetime_format compatibility for pandas 2.0 (GH#9783)
+    James Bourbeau
+  ## Bug Fixes
+  * Fix serialization bug in BroadcastJoinLayer (GH#9871) Richard
+    (Rick) Zamora
+  * Satisfy broadcast argument in DataFrame.merge (GH#9852) Richard
+    (Rick) Zamora
+  * Fix pyarrow parquet columns statistics computation (GH#9772)
+    aywandji
+  ## Documentation
+  * Fix “duplicate explicit target name” docs warning (GH#9863)
+    Chiara Marmo
+  * Fix code formatting issue in “Defining a new collection
+    backend” docs (GH#9864) Chiara Marmo
+  * Update dashboard documentation for memory plot (GH#9768) Jayesh
+    Manani
+  * Add docs section about no-worker tasks (GH#9839) Florian Jetter
+  ## Maintenance
+  * Additional updates for detecting a distributed scheduler
+    (GH#9890) James Bourbeau
+  * Update gpuCI RAPIDS_VER to 23.04 (GH#9876)
+  * Reverse precedence between collection and distributed default
+    (GH#9869) Florian Jetter
+  * Update xarray-contrib/issue-from-pytest-log to version 1.2.6
+    (GH#9865) James Bourbeau
+  * Dont require dask config shuffle default (GH#9826) Florian
+    Jetter
+  * Un-xfail datetime64 Parquet roundtripping tests for new
+    fastparquet (GH#9811) James Bourbeau
+  * Add option to manually run upstream CI build (GH#9853) James
+    Bourbeau
+  * Use custom timeout in CI builds (GH#9844) James Bourbeau
+  * Remove kwargs from make_blockwise_graph (GH#9838) Florian
+    Jetter
+  * Ignore warnings on persist call in
+    test_setitem_extended_API_2d_mask (GH#9843) Charles
+    Blackmon-Luca
+  * Fix running S3 tests locally (GH#9833) James Bourbeau
+- Release 2023.1.0
+  ## Enhancements
+  * Use distributed default clients even if no config is set
+    (GH#9808) Florian Jetter
+  * Implement ma.where and ma.nonzero (GH#9760) Erik Holmgren
+  * Update zarr store creation functions (GH#9790) Ryan Abernathey
+  * iteritems compatibility for pandas 2.0 (GH#9785) James Bourbeau
+  * Accurate sizeof for pandas string[python] dtype (GH#9781)
+    crusaderky
+  * Deflate sizeof() of duplicate references to pandas object types
+    (GH#9776) crusaderky
+  * GroupBy.__getitem__ compatibility for pandas 2.0 (GH#9779)
+    James Bourbeau
+  * append compatibility for pandas 2.0 (GH#9750) James Bourbeau
+  * get_dummies compatibility for pandas 2.0 (GH#9752) James
+    Bourbeau
+  * is_monotonic compatibility for pandas 2.0 (GH#9751) James
+    Bourbeau
+  * numpy=1.24 compatability (GH#9777) James Bourbeau
+  ## Documentation
+  * Remove duplicated encoding kwarg in docstring for to_json
+    (GH#9796) Sultan Orazbayev
+  * Mention SubprocessCluster in LocalCluster documentation
+    (GH#9784) Hendrik Makait
+  * Move Prometheus docs to dask/distributed (GH#9761) crusaderky
+  ## Maintenance
+  * Temporarily ignore RuntimeWarning in
+    test_setitem_extended_API_2d_mask (GH#9828) James Bourbeau
+  * Fix flaky test_threaded.py::test_interrupt (GH#9827) Hendrik
+    Makait
+  * Update xarray-contrib/issue-from-pytest-log in upstream report
+    (GH#9822) James Bourbeau
+  * pip install dask on gpuCI builds (GH#9816) Charles
+    Blackmon-Luca
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (GH#9815)
+  * Resolve sqlalchemy import failures in mindeps testing (GH#9809)
+    Charles Blackmon-Luca
+  * Ignore sqlalchemy.exc.RemovedIn20Warning (GH#9801) Thomas
+    Grainger
+  * xfail datetime64 Parquet roundtripping tests for pandas 2.0
+    (GH#9786) James Bourbeau
+  * Remove sqlachemy 1.3 compatibility (GH#9695) McToel
+  * Reduce size of expected DoK sparse matrix (GH#9775) Elliott
+    Sales de Andrade
+  * Remove executable flag from dask/dataframe/io/orc/utils.py
+    (GH#9774) Elliott Sales de Andrade
+- Drop dask-pr9777-np1.24.patch
+</comment>
+    <requestid>1063413</requestid>
+  </revision>
 </revisionlist>

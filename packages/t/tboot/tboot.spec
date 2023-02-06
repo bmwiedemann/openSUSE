@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tboot
-%define ver 1.10.2
+%define ver 1.11.1
 Version:        20210614_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
@@ -83,14 +83,14 @@ make debug=y install DISTDIR="%{buildroot}" MANPATH="%{buildroot}/%{_mandir}"
 %{_sysconfdir}/grub.d/20_linux_xen_tboot
 
 %post
-%if 0%{?update_bootloader_check_type_reinit_post:1} 
+%if 0%{?update_bootloader_check_type_reinit_post:1}
 %update_bootloader_check_type_reinit_post grub2 grub2-efi
 %else
 /sbin/update-bootloader --reinit || true
 %endif
 
 %postun
-%if 0%{?update_bootloader_check_type_reinit_post:1} 
+%if 0%{?update_bootloader_check_type_reinit_post:1}
 # there is no clean solution for refresh during package removal at the moment.
 # %%posttrans is not executed during package removal.
 %update_bootloader_check_type_reinit_post grub2 grub2-efi

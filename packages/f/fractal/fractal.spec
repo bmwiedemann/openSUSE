@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)  >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig(pango) >= 1.34
 BuildRequires:  pkgconfig(pangocairo) >= 1.34
 

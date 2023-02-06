@@ -41,4 +41,12 @@ Required to allow builds to complete.</comment>
     <comment>- Update to release 20230130</comment>
     <requestid>1062100</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b12324245ca99c44d80330257a2c791</srcmd5>
+    <version>20230202</version>
+    <time>1675689323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to relesae 20230202</comment>
+    <requestid>1063321</requestid>
+  </revision>
 </revisionlist>

@@ -309,4 +309,17 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
 </comment>
     <requestid>1007728</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5f584306154d9897ddbe67c19e42201e</srcmd5>
+    <version>0.22.1</version>
+    <time>1675689350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.22.1:
+  * Close screen overlay by hitting Esc key - a failsafe method
+  * Don't open screen overlay while a video call app is fullscreen
+  * Fixed screen overlays timer label getting ellipsized
+  * Fixed screen overlay being over screensaver animation
+  * Add --reset commandline option (forwarded request 1063361 from jubalh)</comment>
+    <requestid>1063402</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:33:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v0.3.10
+  * Fix image_to_osd regression (reported by @klavdijS)
+- v0.3.9
+  * Support only python 3.7+ (3.6 is End of Life)
+  * Switch from deprecated distutils version parsing to packaging.version
+  * Add build system requirements in order for pip to properly install Pillow
+- v0.3.8
+  * Header handling in file_to_dict function by @igor-ma
+  * Proper raising behavior in case of timeout by @amenezes
+  * __version__ attribute support by @amenezes
+  * Couple of bug fixes
+
+-------------------------------------------------------------------
 Mon Mar  1 02:53:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update license to Apache-2.0

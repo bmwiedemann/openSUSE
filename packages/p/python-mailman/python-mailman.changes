@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb  6 05:02:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.3.8:
+  * The deprecated SQLAlchemy query.values() method is replaced by
+    query.with_entities(). This fixes an issue with MariaDB that truncated
+    the generated postfix_lmtp file. (Closes #1044)
+  * An uncaught passlib.exc.UnknownHashError in utilities/passwords.py is
+    now caught and handled appropriately. (Closes #1046)
+  * Rejection notices for a message with an RFC 2047 encoded Subject: now
+    display the decoded subject. (Closes #672)
+  * Don't RFC 2047 encode display names in UserNotifications. Allow sending
+    utf-8 encoded notifications. (Closes #673)
+  * Don't replace non-ascii in subjects in notifications. (Closes #673)
+  * The mailman members command no longer RFC 2047 encodes non-ascii display
+    names. (Closes #1048)
+  * Improve the performance of Held message handling by reducing the total
+    number of database calls required. (Fixes #1026 and #1045)
+  * Add support for Python 3.10. (Closes #936)
+  * Add support for Python 3.11 (See !1076)
+  * Add support for SQLAlchemy 1.4+ (Closes #964)
+  * Drop support for Python 3.6 since SQLAlchemy 2.0 will drop support for
+    it and it is EOL by now. (See !1035)
+  * The fix for #994 in 3.3.6 blocked too many subscription attempts. This is
+    now corrected and another test added.
+- Drop patches now included upstream:
+  * mailman-support-sqlalchemy-1-4.patch
+  * python-mailman-test_interact_default_banner.patch
+  * support-alembic-1-8.patch
+  * support-attrs-22.patch
+  * support-sqlalchemy-1-4.patch
+
+-------------------------------------------------------------------
 Wed Dec 14 22:47:22 UTC 2022 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Fix timers target to avoid systemd ordering cycle

@@ -18,7 +18,7 @@
 
 Name:           libfwps
 %define lname	libfwps1
-Version:        20230130
+Version:        20230202
 Release:        0
 Summary:        Library for Windows Property Store data types
 License:        LGPL-3.0-or-later

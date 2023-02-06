@@ -18,7 +18,7 @@
 
 %define lname	liblnk1
 Name:           liblnk
-Version:        20221023
+Version:        20230205
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -32,11 +32,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
@@ -44,8 +44,8 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfole) >= 20220115
-BuildRequires:  pkgconfig(libfwps) >= 20220122
-BuildRequires:  pkgconfig(libfwsi) >= 20220927
+BuildRequires:  pkgconfig(libfwps) >= 20230202
+BuildRequires:  pkgconfig(libfwsi) >= 20230114
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

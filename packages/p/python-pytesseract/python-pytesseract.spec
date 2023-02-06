@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytesseract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytesseract
-Version:        0.3.7
+Version:        0.3.10
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
 License:        Apache-2.0
@@ -31,21 +30,21 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-setuptools
-Requires:       tesseract-traineddata-deu
-Requires:       tesseract-traineddata-eng
+Requires:       tesseract-ocr-traineddata-deu
+Requires:       tesseract-ocr-traineddata-eng
 Requires:       pkgconfig(tesseract)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  tesseract-ocr-traineddata-deu
+BuildRequires:  tesseract-ocr-traineddata-eng
+BuildRequires:  tesseract-ocr-traineddata-fra
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  tesseract-traineddata-deu
-BuildRequires:  tesseract-traineddata-eng
-BuildRequires:  tesseract-traineddata-fra
 BuildRequires:  pkgconfig(tesseract)
 # /SECTION
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -62,7 +61,7 @@ bounding box data is planned for future releases.
 
 %prep
 %setup -q -n pytesseract-%{version}
-sed -i -e '/^#!\//, 1d' src/pytesseract.py
+sed -i -e '/^#!\//, 1d' pytesseract/pytesseract.py
 
 %build
 %python_build
@@ -73,6 +72,7 @@ sed -i -e '/^#!\//, 1d' src/pytesseract.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export TESSDATA_PREFIX=%{_datadir}/tessdata/
 %pytest
 
 %post
@@ -85,6 +85,7 @@ sed -i -e '/^#!\//, 1d' src/pytesseract.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pytesseract
-%{python_sitelib}/*
+%{python_sitelib}/pytesseract
+%{python_sitelib}/pytesseract-%{version}*-info
 
 %changelog

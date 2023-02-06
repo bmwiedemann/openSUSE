@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  5 15:09:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.21.1
+  * Restore nest-asyncio for tk loop #1086 (@blink1073)
+- Release 6.21.0
+  * Expose session start file in file. #1078 (@Carreau)
+  * Add copy_to_globals debug request handling #1055 (@brichet)
+
+-------------------------------------------------------------------
 Sun Jan 22 12:56:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.20.2

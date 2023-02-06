@@ -1,7 +1,7 @@
 #
 # spec file for package python-sklearn-pandas
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 # SciPy 1.6.0 dropped support for Python 3.6
 %define         skip_python36 1
@@ -60,7 +59,10 @@ methods and pandas-style Data Frames.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not README.rst"
+# Some tests are broken with the latest version of scikit-learn
+# gh#scikit-learn-contrib/sklearn-pandas#248
+donttest="test_onehot_df or test_dict_vectorizer"
+%pytest -k "not (README.rst or $donttest)"
 
 %files %{python_files}
 %doc README.rst

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-licenses
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pip-licenses
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        Python packages license list
 License:        MIT
@@ -35,9 +35,11 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module PrettyTable}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages

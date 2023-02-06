@@ -17,7 +17,7 @@
 
 
 Name:           pax-utils
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Tools to Check ELF Files for Security Relevant Properties
 License:        GPL-2.0-or-later

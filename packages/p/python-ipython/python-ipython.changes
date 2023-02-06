@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Feb  5 15:17:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.9.0
+  * Second release of IPython in 2023, last Friday of the month, we
+    are back on track. This is a small release with a few
+    bug-fixes, and improvements, mostly with respect to terminal
+    shortcuts.
+  * The biggest improvement for 8.9 is a drastic amelioration if
+    the auto-suggestions sponsored by D.E. Shaw and implemented by
+    the more and more active contributor @krassowski.
+    - right accepts a single character from suggestion
+    - ctrl+right accepts a semantic token (macos default shortcuts
+      take precedence and need to be disabled to make this work)
+    - backspace deletes a character and resumes hinting
+      autosuggestions
+    - ctrl-left accepts suggestion and moves cursor left one
+      character.
+    - backspace deletes a character and resumes hinting
+      autosuggestions
+    - down moves to suggestion to later in history when no lines
+      are present below the cursors.
+    - up moves to suggestion from earlier in history when no lines
+      are present above the cursor.
+  * This is best described by the Gif posted by @krassowski, and in
+    the PR itself PR gh#ipython/ipython#13888.
+  * Please report any feedback in order for us to improve the user
+    experience. In particular we are also working on making the
+    shortcuts configurable.
+  * If you are interested into better terminal shortcut, I also
+    invite you to participate in issue gh#ipython/iüythpn#13879.
+
+-------------------------------------------------------------------
 Tue Jan  3 14:26:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove the ipythonMAJ.MIN entrypoint

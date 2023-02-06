@@ -547,4 +547,34 @@
   + Updated translations. (forwarded request 1039198 from dimstar)</comment>
     <requestid>1039365</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ea324e76409fa28191b7b0f95e7ec279</srcmd5>
+    <version>43.6</version>
+    <time>1675693530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.6:
+  + Backport a fix for preferences crashing due to GtkExpression
+    bindings.
+  + Fix default font size in editor.
+  + Fix top padding for editor.
+  + Fix decoding of hex-encoded UTF-8 from gdb in path names.
+
+- Update to version 43.5:
+  + Fix selection for number of build CPUs in preferences with
+    additional concurrency options.
+  + Allow closing tabs with ctrl+w when focus is within the tab
+    bar.
+  + Use &quot;meson setup&quot; when initializing build directories.
+  + Fix various runtime warnings.
+  + Fix tooltips for combo rows in preferences.
+  + Improve zoom-with-wheel-scroll in some situations.
+  + Fix save/record actions with Sysprof plugin.
+  + Fix editing of configure options in preferences.
+  + Fix terminal search.
+  + Add README.md to meson templates.
+  + Fixes to Rust GTK project template.
+  + Updated translations.
+- Enable build of doc subpackage again. (forwarded request 1063080 from iznogood)</comment>
+    <requestid>1063405</requestid>
+  </revision>
 </revisionlist>

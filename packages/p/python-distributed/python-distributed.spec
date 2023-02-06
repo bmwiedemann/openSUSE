@@ -44,7 +44,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.12.1
+Version:        2023.1.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -62,21 +62,21 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-certifi
+Requires:       python-Jinja2 >= 2.10.3
+Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 7.0
 Requires:       python-cloudpickle >= 1.5.0
 Requires:       python-dask = %{version}
 Requires:       python-locket >= 1.0.0
-Requires:       python-msgpack >= 0.6.0
+Requires:       python-msgpack >= 1.0.0
 Requires:       python-packaging >= 20.0
-Requires:       python-psutil >= 5.0
-Requires:       python-sortedcontainers
+Requires:       python-psutil >= 5.7.0
+Requires:       python-sortedcontainers >= 2.0.5
 Requires:       python-tblib
 Requires:       python-toolz >= 0.10.0
 Requires:       python-tornado >= 6.0.3
-Requires:       python-urllib3
-Requires:       python-zict >= 0.1.3
+Requires:       python-urllib3 >= 1.24.3
+Requires:       python-zict >= 2.1.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -142,6 +142,8 @@ donttest="test_git_revision"
 donttest+=" or test_version_warning_in_cluster"
 # invalid task state
 donttest+=" or test_fail_to_pickle_execute_2"
+# too slow for obs
+donttest+=" or test_nanny_timeout"
 
 # Some tests randomly fail server-side -- too slow for obs (?)
 # see also https://github.com/dask/distributed/issues/5818

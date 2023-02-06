@@ -1,7 +1,7 @@
 #
 # spec file for package rootlesskit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,16 +46,19 @@ the real root on the host from potential container-breakout attacks.
 %build
 go build -mod=vendor -buildmode=pie -o _output/rootlesskit %{provider_prefix}/cmd/rootlesskit
 go build -mod=vendor -buildmode=pie -o _output/rootlessctl %{provider_prefix}/cmd/rootlessctl
+go build -mod=vendor -buildmode=pie -o _output/rootlesskit-docker-proxy %{provider_prefix}/cmd/rootlesskit-docker-proxy
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
 install -m 0755 _output/rootlesskit %{buildroot}%{_bindir}/rootlesskit
 install -m 0755 _output/rootlessctl %{buildroot}%{_bindir}/rootlessctl
+install -m 0755 _output/rootlesskit-docker-proxy %{buildroot}%{_bindir}/rootlesskit-docker-proxy
 
 %files
 %license LICENSE
 %doc README.md docs/*.md
 %{_bindir}/rootlesskit
 %{_bindir}/rootlessctl
+%{_bindir}/rootlesskit-docker-proxy
 
 %changelog

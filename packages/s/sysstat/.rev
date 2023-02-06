@@ -888,4 +888,12 @@
     <comment></comment>
     <requestid>1035320</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>beb4f1ae8f3ad4c856858a5aa4c2dd35</srcmd5>
+    <version>12.6.1</version>
+    <time>1675689335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063391</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.8.0
+Version:        8.9.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       (python-prompt_toolkit >= 3.0.11 with python-prompt_toolkit < 3.1)
+Requires:       (python-prompt_toolkit >= 3.0.30 with python-prompt_toolkit < 3.1)
 # requires the full stdlib including sqlite3
 Requires:       python >= 3.8
 Requires:       python-backcall

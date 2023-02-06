@@ -1,7 +1,7 @@
 #
 # spec file for package python-moto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define skip_python2 1
 Name:           python-moto
-Version:        4.0.10
+Version:        4.1.0
 Release:        0
-Summary:        Library to mock out the boto library
+Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
-URL:            https://github.com/spulec/moto
+URL:            https://github.com/getmoto/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE remove-mock.patch -- https://trello.com/c/S6eADbii
-Patch1:         remove-mock.patch
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.1
@@ -35,7 +34,6 @@ Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.12.201
 Requires:       python-cryptography >= 3.3.1
-Requires:       python-pytz
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.13.0
 Requires:       python-xmltodict
@@ -66,26 +64,23 @@ BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
-BuildRequires:  %{python_module openapi-spec-validator}
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module pyparsing >= 3}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.2.8}
+BuildRequires:  %{python_module pyparsing >= 3.0.7}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateutil < 3}
 BuildRequires:  %{python_module python-jose}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.5}
 BuildRequires:  %{python_module responses >= 0.13.0}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
-BuildRequires:  %{python_module sure}
+BuildRequires:  %{python_module surer}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module Werkzeug >= 0.5 without (%python-Werkzeug >= 2.2.0 with %python-Werkzeug < 2.2.2)}
 # /SECTION
 %python_subpackages
 
 %description
-A library that allows your python tests to mock out the boto
-library.
+A library that allows your python tests to mock out AWS Services
 
 %package all
 Summary:        Library to mock out the boto library -- all extras
@@ -128,10 +123,10 @@ for f in athena/utils.py ec2/regions.py medialive/exceptions.py redshift/utils.p
 done
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/moto_server
@@ -153,7 +148,8 @@ donttest+=" or (test_server and test_appsync_list_tags_for_resource)"
 donttest+=" or (test_server and test_s3_server_post_to_bucket_redirect)"
 donttest+=" or (test_multiple_accounts_server and test_with_custom_request_header)"
 donttest+=" or test_invoke_function_from_sqs_exception"
-
+# 32-bit platforms can't handle dates beyond 2038
+[ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile
 deselect_for_parallel=" or test_kinesisvideoarchivedmedia or test_awslambda or test_batch or test_ec2 or test_sqs"
 parallel_tests="./tests/test_awslambda ./tests/test_batch ./tests/test_ec2 ./tests/test_sqs"
@@ -172,7 +168,7 @@ export MOTO_CALL_RESET_API=false
 %license LICENSE
 %python_alternative %{_bindir}/moto_server
 %{python_sitelib}/moto
-%{python_sitelib}/moto-%{version}*-info
+%{python_sitelib}/moto-%{version}.dist-info
 
 %files %{python_files all}
 %license LICENSE

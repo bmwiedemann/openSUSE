@@ -94,4 +94,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>delete system-libs.patch</comment>
     <requestid>1038479</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5810ad1dff4f365533565edb596d1820</srcmd5>
+    <version>20230205</version>
+    <time>1675689324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230205</comment>
+    <requestid>1063322</requestid>
+  </revision>
 </revisionlist>

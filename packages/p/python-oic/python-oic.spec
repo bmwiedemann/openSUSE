@@ -1,7 +1,7 @@
 #
 # spec file for package python-oic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname oic
 Name:           python-oic
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A complete OpenID Connect implementation in Python
 License:        Apache-2.0
 URL:            https://github.com/OpenIDC/pyoidc
 Source:         https://github.com/OpenIDC/pyoidc/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-scheme-message.patch gh#OpenIDC/pyoidc@6fa769a59b8b
 Patch0:         fix-scheme-message.patch
 BuildRequires:  %{python_module Beaker}
 BuildRequires:  %{python_module Mako}
@@ -90,7 +90,8 @@ export PYTHONPATH=src
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/oic
+%{python_sitelib}/oic-%{version}*-info
 %python_alternative %{_bindir}/oic-client-management
 
 %changelog

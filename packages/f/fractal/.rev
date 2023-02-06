@@ -141,4 +141,12 @@
     <comment></comment>
     <requestid>949402</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b4d82e3eb2c91b9af150806a94b93b97</srcmd5>
+    <version>4.4.1</version>
+    <time>1675689352</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1063172 from iznogood)</comment>
+    <requestid>1063399</requestid>
+  </revision>
 </revisionlist>

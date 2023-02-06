@@ -1,7 +1,7 @@
 #
 # spec file for package libhmac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libhmac
 %define lname	libhmac1
-Version:        20220425
+Version:        20230205
 Release:        0
 Summary:        Library to support various HMACs
 License:        LGPL-3.0-or-later
@@ -26,16 +26,17 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libhmac
 Source:         https://github.com/libyal/libhmac/releases/download/%version/libhmac-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libhmac/releases/download/%version/libhmac-alpha-%version.tar.gz.asc
+Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libuna) >= 20220611
 BuildRequires:  pkgconfig(openssl) >= 1.0
 # Various notes: https://en.opensuse.org/libyal
 

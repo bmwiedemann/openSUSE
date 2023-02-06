@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-core%{psuffix}
-Version:        5.1.3
+Version:        5.2.0
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause

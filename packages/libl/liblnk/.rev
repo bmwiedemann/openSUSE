@@ -175,4 +175,12 @@ part of summer 2013 libyal refresh for opensuse 13.1
     <comment>add missing libbfio-devel</comment>
     <requestid>1046591</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>858c709de45d02f2c7ae699e8b56c534</srcmd5>
+    <version>20230205</version>
+    <time>1675689325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230205</comment>
+    <requestid>1063328</requestid>
+  </revision>
 </revisionlist>

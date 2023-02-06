@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  6 06:22:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-packaging-22.patch:
+  * Support packaging >= 22. 
+
+-------------------------------------------------------------------
 Mon Dec 12 17:40:21 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

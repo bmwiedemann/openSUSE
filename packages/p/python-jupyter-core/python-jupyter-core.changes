@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  5 15:58:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.2.0
+  * Set up shell command-line tab-completion for jupyter and
+    subcommands #337 (@azjps)
+- Release 5.1.5
+  *  Don't format logs in log call. #336 (@Carreau)
+- Release 5.1.4
+  * Suppress any exception in _do_i_own shortcut #335 (@minrk)
+
+-------------------------------------------------------------------
 Sun Jan 22 12:58:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.1.3

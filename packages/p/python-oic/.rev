@@ -69,4 +69,31 @@
 - Add patch fix-scheme-message.patch</comment>
     <requestid>956898</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a029d359567d114c8ca9e9dd803d931</srcmd5>
+    <version>1.5.0</version>
+    <time>1675689344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch fix-scheme-message.patch with upstream change
+  gh#OpenIDC/pyoidc@6fa769a59b8b
+- Update to 1.5.0:
+  * Try to fix the generic response parsing and handling by @schlenk in #817
+  * Remove travis config by @schlenk in #819
+  * Remove Client.grant_from_state() by @schlenk in #820
+  * move beaker to an optional/extras requirement under 'examples' by @biyeun in #823
+  * Added support for python 3.11 by @tpazderka in #828
+  * Fixed RP-Initiated Logout To Accept id_token_hint by @infohash in #829
+  * fix for some provider return birthdate:null in userInfo by @pkking in #831
+  * Fix mypy errors with no_implicit_optional=True by @schlenk in #832
+  * Schedule daily CI run by @tpazderka in #833
+  * Simplified Http Request by @infohash in #836
+  * Fix tox config for v4 by @tpazderka in #837
+- Update to 1.4.0:
+  * Toolfix by @schlenk in #802
+  * docs: Fix a few typos by @timgates42 in #794
+  * Drop python 3.6 by @tpazderka in #810
+  * Moved from pyldap to python-ldap by @infohash in #814
+</comment>
+    <requestid>1063369</requestid>
+  </revision>
 </revisionlist>

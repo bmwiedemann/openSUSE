@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %define mypython_sitelib %{python3_sitelib}
 %endif
 Name:           python-mailman%{psuffix}
-Version:        3.3.6
+Version:        3.3.8
 Release:        0
 Summary:        A Mailing List Manager
 Group:          Productivity/Networking/Email/Mailinglists
@@ -69,16 +69,6 @@ Source31:       python-mailman.rpmlintrc
 #
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
-# whitespace fix
-Patch0:         python-mailman-test_interact_default_banner.patch
-# Support SQLAlchemy 1.4 ... maybe backward compatible
-Patch1:         support-sqlalchemy-1-4.patch
-# Suppprt Alembic 1.8.x
-Patch2:         support-alembic-1-8.patch
-# Disable cache_ok warnings on console messages: disable caching completely at the moment
-Patch3:         mailman-support-sqlalchemy-1-4.patch
-# Support attrs 22.1
-Patch4:         support-attrs-22.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -100,12 +90,12 @@ Mailman is a mailing list manager from the GNU project.
 %package -n mailman3
 Summary:        A mailing list manager
 Requires:       %{mypython}-SQLAlchemy >= 1.2.3
-Requires:       %{mypython}-aiosmtpd >= 1.4.1
+Requires:       %{mypython}-aiosmtpd >= 1.4.3
 Requires:       %{mypython}-alembic
 Requires:       %{mypython}-atpublic
 Requires:       %{mypython}-authheaders >= 0.14.0
 Requires:       %{mypython}-authres >= 1.0.1
-Requires:       %{mypython}-click >= 7.0
+Requires:       %{mypython}-click >= 8.0
 Requires:       %{mypython}-dnspython >= 1.14.0
 Requires:       %{mypython}-falcon > 3.0.0
 Requires:       %{mypython}-flufl.bounce >= 4.0

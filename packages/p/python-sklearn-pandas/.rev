@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>954095</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cff163aab8874fa210eb8f9fb14716d4</srcmd5>
+    <version>2.2.0</version>
+    <time>1675689338</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests gh#scikit-learn-contrib/sklearn-pandas#248
+</comment>
+    <requestid>1063364</requestid>
+  </revision>
 </revisionlist>

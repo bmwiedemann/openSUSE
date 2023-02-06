@@ -32,7 +32,7 @@ BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  ninja
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig

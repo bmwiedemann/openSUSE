@@ -1,0 +1,11 @@
+diff --git a/rpcs3/CMakeLists.txt b/rpcs3/CMakeLists.txt
+index 72b3e06e0bd..5a599102287 100644
+--- a/rpcs3/CMakeLists.txt
++++ b/rpcs3/CMakeLists.txt
+@@ -217,6 +217,4 @@ if(UNIX AND NOT APPLE)
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)
+     install(DIRECTORY ../bin/git
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)
+-    install(DIRECTORY ../bin/test
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)
+ endif()

@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -51,6 +51,7 @@ BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python >= 3.8
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
+Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
 Requires:       python-jupyter-client >= 7.4.4
 Requires:       python-jupyter_events >= 0.4.0
@@ -65,7 +66,6 @@ Requires:       python-tornado >= 6.2
 Requires:       python-traitlets >= 5.6
 Requires:       python-websocket-client
 Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or python-jupyter-core >= 5.1)
-Requires:       (python-anyio >= 3.1.0 with python-anyio < 4)
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}

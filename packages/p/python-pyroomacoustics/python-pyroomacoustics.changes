@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Feb  6 11:38:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 0.7.3
+  * Fixes issue #293 due to the C++ method Room::next_wall_hit not handling 2D
+    shoebox rooms, which cause a seg fault
+- 0.7.2 - 2022-11-15
+  * Appveyor builds for compiled wheels for win32/win64 x86
+  * Fixes missing import statement in room.plot for 3D rooms (PR #286)
+  * On win64, bss.fastmnmf would fail due to some singular matrix. 1) protect
+    solve with try/except and switch to pseudo-inverse if necessary, 2) change
+    eps 1e-7 -> 1e-6
+- 0.7.1 - 2022-11-11
+  * Fixed pypi upload for windows wheels
+- 0.7.0 - 2022-11-10
+  * Added the AnechoicRoom class.
+  * Added FastMNMF2 (Fast Multichannel Nonnegative Matrix Factorization 2) to
+    bss subpackage.
+  * Randomized image source method for removing sweeping echoes in shoebox
+    rooms.
+  * Adds the cart2spher method in pyroomacoustics.doa.utils to convert from
+    cartesian to spherical coordinates.
+  * Example room_complex_wall_materials.py
+  * CI for python 3.10
+  * Cleans up the plot_rir function in Room so that the labels are neater. It
+    also adds an extra option kind that can take values "ir", "tf", or "spec"
+    to plot the impulse responses, transfer functions, or spectrograms of the
+    RIR.
+  * Refactored the implementation of FastMNMF.
+  * Modified the document of __init__.py in doa subpackage.
+  * End of Python 3.6 support.
+  * Removed the deprecated realtime sub-module.
+  * Removed the deprecated functions pyroomacoustics.transform.analysis,
+    pyroomacoustics.transform.synthesis,
+    pyroomacoustics.transform.compute_synthesis_window. They are replaced by
+    the equivalent functions in pyroomacoustics.transform.stft sub-module.
+  * The minimum required version of numpy was changed to 1.13.0 (use of
+    np.linalg.multi_dot in doa sub-package see #271)
+  * Fixed most warnings in the tests
+  * Fixed bug in examples/adaptive_filter_stft_domain.py
+- 0.6.0 - 2021-11-29
+  * New DOA method: MUSIC with pseudo-spectra normalization. Thanks @4bian!
+    Normalizes MUSIC pseudo spectra before averaging across frequency axis.
+  * Issue 235: fails when set_ray_tracing is called, but no mic_array is set
+  * Issue 236: general ISM produces the wrong transmission coefficients
+  * Removes an unncessery warning for some rooms when ray tracing is not needed
+  * Unify code format by using Black
+  * Add code linting in continuous integration
+  * Drop CI support for python 3.5
+- 0.5.0 - 2021-09-06
+  * Adds tracking of reflection order with respect to x/y/z axis in the shoebox
+    image source model engine. The orders are available in source.orders_xyz
+    after running the image source model
+  * Support for microphone and source directivites for image source model.
+    Source directivities just for shoebox room. Available directivities are
+    frequency-independent (cardioid patterns), although the infrastructure is
+    there for frequency-dependent directivities: frequency-dependent usage in
+    Room.compute_rir and abstract Directivity class.
+  * Examples scripts and notebook for directivities.
+  * Fix wrong bracketing for negative values in is_inside (ShoeBox)
+- 0.4.3 - 2021-02-18
+  * Support for Python 3.8 and 3.9
+  * Fixes typo in a docstring
+  * Update docs to better reflect actual function parameters
+  * Fixes the computation of the cost function of SRP-PHAT doa algorithm (bug
+    reported in #PR197)
+  * Improve the computation of the auxiliary variables in AuxIVA and ILRMA.
+    Unnecessary division operations are reduced.
+
+-------------------------------------------------------------------
 Fri Feb 12 11:21:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.4.2

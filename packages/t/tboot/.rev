@@ -621,4 +621,41 @@
 - dropped tboot-Add-more-mbi-validation.patch</comment>
     <requestid>912700</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>64f224abbf0d4d8655985b63e041b3d7</srcmd5>
+    <version>20210614_1.11.1</version>
+    <time>1675689450</time>
+    <user>dimstar_suse</user>
+    <comment>- required update due to openSSL 3.0 deprecation errors in current version
+- updated to v1.11.1 / 20230125:
+      20230125: v1.11.1
+      - Revert log memory range extension (caused memory overlaps and boot failures)
+      20221223: v1.11.0
+      - Fixed TPM handling to flush objects after integrity measurement (Intel PTT limitations)
+      - Exteded low memory range for logs (HCC CPUs had issue with not enough memory)
+      - &quot;agile&quot; removed from PCR Extend policy options (requested deprecation)
+      - Added handling for flexible ACM Info Table format
+      - lcptools: CPPFLAGS use by environment in build
+      - lcptools: removed __DATE__ refs to make build reproducible
+      - Only platform-matchin SINIT modules can be selected
+      - txt-acminfo: Map TXT heap using mmap
+      - Typo fix in man page
+      20220304: v1.10.5
+      - Fixed mlehash.c to bring back functionality and make it GCC12 compliant
+      - Reverted change for replacing EFI memory to bring back Tboot in-memory logs
+      20220224: v1.10.4
+      - Fix hash printing for SHA384, SHA512 and SM3
+      - Touch ups for GCC12
+      - Set GDT to map CS and DS to 4GB before jumping to Linux
+      - make efi_memmap_reserve handle gaps like e820_protect_region
+      - Ensure that growth of Multiboot tags does not go beyond original area
+      - Replace EFI memory map in Multiboot2 info
+      - Fix endianness of pcr_info-&gt;pcr_selection.size_of_select
+      -  Don't ignore locality in PCR file
+      - Fix composite hashing algorithm for PCONF elements to match lcptools-1
+      20211210: v1.10.3
+      - Add UNI-VGA license information
+      - Remove poly1305 object files on clean</comment>
+    <requestid>1063392</requestid>
+  </revision>
 </revisionlist>

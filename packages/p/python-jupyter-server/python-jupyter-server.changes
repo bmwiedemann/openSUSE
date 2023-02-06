@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  5 16:11:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.1
+  * remove upper bound on anyio #1192 (@minrk)
+- Release 2.2.0
+  ## Enhancements made
+  * Only load enabled extension packages #1180 (@minrk)
+  * Pass in a logger to get_metadata #1176 (@yuvipanda)
+  ## Bugs fixed
+  * Don't assume that resources entries are relative #1182 (@ojarjur)
+  ## Maintenance and upkeep improvements
+  * Updates for client 8 #1188 (@blink1073)
+  * Use repr in logging for exception. #1185 (@Carreau)
+
+-------------------------------------------------------------------
 Sun Jan 15 20:54:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.0

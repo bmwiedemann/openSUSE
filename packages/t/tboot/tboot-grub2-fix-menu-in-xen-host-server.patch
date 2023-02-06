@@ -23,11 +23,11 @@ v3:
 References: bnc#865815
 Porting to tboot in order to fix duplicated xen entries
 
-Index: tboot-1.10.0/tboot/20_linux_tboot
+Index: tboot-1.11.1/tboot/20_linux_tboot
 ===================================================================
---- tboot-1.10.0.orig/tboot/20_linux_tboot
-+++ tboot-1.10.0/tboot/20_linux_tboot
-@@ -205,6 +205,49 @@ while [ "x${tboot_list}" != "x" ] && [ "
+--- tboot-1.11.1.orig/tboot/20_linux_tboot
++++ tboot-1.11.1/tboot/20_linux_tboot
+@@ -219,6 +219,49 @@ while [ "x${tboot_list}" != "x" ] && [ "
  		break
  	    fi
  	done
@@ -77,11 +77,11 @@ Index: tboot-1.10.0/tboot/20_linux_tboot
  	if test -n "${initrd}" ; then
  	    echo "Found initrd image: ${dirname}/${initrd}" >&2
  	else
-Index: tboot-1.10.0/tboot/20_linux_xen_tboot
+Index: tboot-1.11.1/tboot/20_linux_xen_tboot
 ===================================================================
---- tboot-1.10.0.orig/tboot/20_linux_xen_tboot
-+++ tboot-1.10.0/tboot/20_linux_xen_tboot
-@@ -52,6 +52,12 @@ fi
+--- tboot-1.11.1.orig/tboot/20_linux_xen_tboot
++++ tboot-1.11.1/tboot/20_linux_xen_tboot
+@@ -58,6 +58,12 @@ fi
  export TEXTDOMAIN=grub
  export TEXTDOMAINDIR=${prefix}/share/locale
  
@@ -94,7 +94,7 @@ Index: tboot-1.10.0/tboot/20_linux_xen_tboot
  CLASS="--class gnu-linux --class gnu --class os --class xen"
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
-@@ -185,9 +191,17 @@ linux_list=`for i in /boot/vmlinu[xz]-*
+@@ -191,9 +197,17 @@ linux_list=`for i in /boot/vmlinu[xz]-*
  if [ "x${linux_list}" = "x" ] ; then
      exit 0
  fi

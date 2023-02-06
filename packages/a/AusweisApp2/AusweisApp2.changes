@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  5 20:05:56 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- switch to generic openssl-devel to allow openssl-3
+
+-------------------------------------------------------------------
 Mon Jan 23 09:29:26 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

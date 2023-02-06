@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  5 20:39:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230205
+  * Python bindings updates
+  * openssl3 API update
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are

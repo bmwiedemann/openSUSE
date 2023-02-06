@@ -1,7 +1,7 @@
 #
 # spec file for package xvidtune
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xvidtune
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Video mode tuner for the X server
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org
+Source0:        %{url}/releases/individual/app/%{name}-%{version}.tar.xz
+
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -33,25 +34,24 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xvidtune is a client interface to the X server video mode
 extension (XFree86-VidModeExtension).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/xvidtune
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Xvidtune

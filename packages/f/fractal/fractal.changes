@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  4 14:20:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(openssl) with explicit libopenssl-1_1-devel
+  BuildRequires as fractal does not support building with openssl
+  3 and newer yet.
+
+-------------------------------------------------------------------
 Wed Jan 26 19:03:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 6fa1a23596d65d94aa889efe725174e6cd2903f0.patch: Fix build

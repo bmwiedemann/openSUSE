@@ -1606,4 +1606,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <comment></comment>
     <requestid>1062275</requestid>
   </revision>
+  <revision rev="225" vrev="223">
+    <srcmd5>8e20c8a17b518fcf1a67436f3cd136ac</srcmd5>
+    <version>unknown</version>
+    <time>1675690656</time>
+    <user>dimstar_suse</user>
+    <comment>Remove some more suggested tags; these are non-default installed things, and we need space</comment>
+  </revision>
 </revisionlist>

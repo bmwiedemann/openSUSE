@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  6 07:12:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.1:
+  * Close screen overlay by hitting Esc key - a failsafe method
+  * Don't open screen overlay while a video call app is fullscreen
+  * Fixed screen overlays timer label getting ellipsized
+  * Fixed screen overlay being over screensaver animation
+  * Add --reset commandline option
+
+-------------------------------------------------------------------
 Mon Oct  3 15:17:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.0:

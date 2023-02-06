@@ -401,4 +401,17 @@
 </comment>
     <requestid>1060266</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e640cdd3690c2a06ff4746f7907f4f38</srcmd5>
+    <version>6.21.1</version>
+    <time>1675689317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.21.1
+  * Restore nest-asyncio for tk loop #1086 (@blink1073)
+- Release 6.21.0
+  * Expose session start file in file. #1078 (@Carreau)
+  * Add copy_to_globals debug request handling #1055 (@brichet)
+</comment>
+    <requestid>1063284</requestid>
+  </revision>
 </revisionlist>

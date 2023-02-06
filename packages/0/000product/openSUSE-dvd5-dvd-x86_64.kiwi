@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230205" schemaversion="4.1">
+<image name="OBS__openSUSE___20230206" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230205</productvar>
+      <productvar name="VERSION">20230206</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230205,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230206,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230205/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230206/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -170,9 +170,7 @@
       <repopackage name="audit"/>
       <repopackage name="augeas"/>
       <repopackage name="augeas-lenses"/>
-      <repopackage name="autoconf" arch="x86_64"/>
       <repopackage name="autofs"/>
-      <repopackage name="automake" arch="x86_64"/>
       <repopackage name="autotrace"/>
       <repopackage name="autoyast2"/>
       <repopackage name="autoyast2-installation"/>
@@ -197,7 +195,6 @@
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
       <repopackage name="bash-sh"/>
-      <repopackage name="bbswitch-kmp-default" arch="x86_64"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -208,9 +205,6 @@
       <repopackage name="bind-utils"/>
       <repopackage name="binutils"/>
       <repopackage name="biosdevname"/>
-      <repopackage name="bison" arch="x86_64"/>
-      <repopackage name="bison-lang" arch="x86_64"/>
-      <repopackage name="bitstream-vera-fonts"/>
       <repopackage name="blinken"/>
       <repopackage name="blinken-lang"/>
       <repopackage name="blog"/>
@@ -228,8 +222,6 @@
       <repopackage name="bluez-zsh-completion"/>
       <repopackage name="bolt"/>
       <repopackage name="boost-license1_81_0"/>
-      <repopackage name="bovo"/>
-      <repopackage name="bovo-lang"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze"/>
       <repopackage name="breeze5-cursors"/>
@@ -278,8 +270,6 @@
       <repopackage name="catfish-lang"/>
       <repopackage name="cd-discid"/>
       <repopackage name="cdparanoia"/>
-      <repopackage name="cdrdao"/>
-      <repopackage name="cdrecord"/>
       <repopackage name="cellwriter"/>
       <repopackage name="cepces"/>
       <repopackage name="cepces-certmonger"/>
@@ -295,7 +285,6 @@
       <repopackage name="chrony"/>
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
-      <repopackage name="circuslinux"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
       <repopackage name="clang15"/>
@@ -310,7 +299,6 @@
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-lang"/>
       <repopackage name="cpio"/>
@@ -324,7 +312,6 @@
       <repopackage name="cpupower-lang"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
-      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
@@ -334,7 +321,6 @@
       <repopackage name="cryptsetup"/>
       <repopackage name="cryptsetup-doc"/>
       <repopackage name="cryptsetup-lang"/>
-      <repopackage name="csmash"/>
       <repopackage name="ctags"/>
       <repopackage name="cups"/>
       <repopackage name="cups-backends"/>
@@ -398,12 +384,9 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
-      <repopackage name="dragonplayer"/>
-      <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
       <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
@@ -467,7 +450,6 @@
       <repopackage name="expect"/>
       <repopackage name="eyeD3"/>
       <repopackage name="f2fs-tools"/>
-      <repopackage name="facetimehd-kmp-default" arch="x86_64"/>
       <repopackage name="farstream-data"/>
       <repopackage name="fbiterm"/>
       <repopackage name="fcitx"/>
@@ -522,7 +504,6 @@
       <repopackage name="folks-data"/>
       <repopackage name="folks-lang"/>
       <repopackage name="fontconfig"/>
-      <repopackage name="fontconfig-devel" arch="x86_64"/>
       <repopackage name="fontconfig-lang"/>
       <repopackage name="fonts-config"/>
       <repopackage name="fonts-KanjiStrokeOrders"/>
@@ -534,7 +515,6 @@
       <repopackage name="freecell-solver-presets"/>
       <repopackage name="freeipmi"/>
       <repopackage name="freerdp"/>
-      <repopackage name="freetype2-devel" arch="x86_64"/>
       <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
       <repopackage name="fuse"/>
@@ -585,7 +565,6 @@
       <repopackage name="geoclue2"/>
       <repopackage name="geocode-glib"/>
       <repopackage name="gettext-runtime"/>
-      <repopackage name="gettext-tools" arch="x86_64"/>
       <repopackage name="ghostscript"/>
       <repopackage name="ghostscript-fonts"/>
       <repopackage name="ghostscript-fonts-grops"/>
@@ -864,7 +843,6 @@
       <repopackage name="gvfs-backends"/>
       <repopackage name="gvfs-fuse"/>
       <repopackage name="gvfs-lang"/>
-      <repopackage name="gvim" arch="x86_64"/>
       <repopackage name="gweather4-data"/>
       <repopackage name="gwenview5"/>
       <repopackage name="gwenview5-lang"/>
@@ -872,12 +850,9 @@
       <repopackage name="gzip"/>
       <repopackage name="hack-fonts"/>
       <repopackage name="haveged"/>
-      <repopackage name="hdjmod-kmp-default" arch="x86_64"/>
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
-      <repopackage name="hexchat" arch="x86_64"/>
-      <repopackage name="hexchat-lang" arch="x86_64"/>
       <repopackage name="hfsutils"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
@@ -978,15 +953,7 @@
       <repopackage name="jfsutils"/>
       <repopackage name="jhead"/>
       <repopackage name="jmdict"/>
-      <repopackage name="joycond" arch="x86_64"/>
-      <repopackage name="joycond-autoload" arch="x86_64"/>
       <repopackage name="json-glib-lang"/>
-      <repopackage name="juk"/>
-      <repopackage name="juk-lang"/>
-      <repopackage name="k3b"/>
-      <repopackage name="k3b-lang"/>
-      <repopackage name="k4dirstat"/>
-      <repopackage name="k4dirstat-lang"/>
       <repopackage name="kaccounts-integration"/>
       <repopackage name="kaccounts-integration-lang"/>
       <repopackage name="kaccounts-providers"/>
@@ -1008,18 +975,8 @@
       <repopackage name="kate"/>
       <repopackage name="kate-lang"/>
       <repopackage name="kate-plugins"/>
-      <repopackage name="katomic"/>
-      <repopackage name="katomic-lang"/>
       <repopackage name="kbd"/>
       <repopackage name="kbd-legacy"/>
-      <repopackage name="kblackbox"/>
-      <repopackage name="kblackbox-lang"/>
-      <repopackage name="kblocks"/>
-      <repopackage name="kblocks-lang"/>
-      <repopackage name="kbounce"/>
-      <repopackage name="kbounce-lang"/>
-      <repopackage name="kbreakout"/>
-      <repopackage name="kbreakout-lang"/>
       <repopackage name="kbruch"/>
       <repopackage name="kbruch-lang"/>
       <repopackage name="kcachegrind"/>
@@ -1030,7 +987,6 @@
       <repopackage name="kcalutils-lang"/>
       <repopackage name="kcharselect"/>
       <repopackage name="kcharselect-lang"/>
-      <repopackage name="kchmviewer"/>
       <repopackage name="kcm_sddm"/>
       <repopackage name="kcm_sddm-lang"/>
       <repopackage name="kcm_tablet"/>
@@ -1042,8 +998,6 @@
       <repopackage name="kcontacts-lang"/>
       <repopackage name="kcoreaddons"/>
       <repopackage name="kcoreaddons-lang"/>
-      <repopackage name="kcron"/>
-      <repopackage name="kcron-lang"/>
       <repopackage name="kdav"/>
       <repopackage name="kdav-lang"/>
       <repopackage name="kdbg"/>
@@ -1075,12 +1029,8 @@
       <repopackage name="kdevelop5-lang"/>
       <repopackage name="kdevplatform"/>
       <repopackage name="kdevplatform-lang"/>
-      <repopackage name="kdf"/>
-      <repopackage name="kdf-lang"/>
       <repopackage name="kdialog"/>
       <repopackage name="kdialog-lang"/>
-      <repopackage name="kdiamond"/>
-      <repopackage name="kdiamond-lang"/>
       <repopackage name="kdoctools"/>
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
@@ -1128,11 +1078,7 @@
       <repopackage name="kgamma5-lang"/>
       <repopackage name="kgeography"/>
       <repopackage name="kgeography-lang"/>
-      <repopackage name="kget"/>
-      <repopackage name="kget-lang"/>
       <repopackage name="kglobalaccel5"/>
-      <repopackage name="kgoldrunner"/>
-      <repopackage name="kgoldrunner-lang"/>
       <repopackage name="kguiaddons"/>
       <repopackage name="khangman"/>
       <repopackage name="khangman-lang"/>
@@ -1158,27 +1104,20 @@
       <repopackage name="kio-lang"/>
       <repopackage name="kio_audiocd"/>
       <repopackage name="kio_audiocd-lang"/>
-      <repopackage name="kio_iso"/>
       <repopackage name="kio_kamera"/>
       <repopackage name="kipi-plugins"/>
       <repopackage name="kipi-plugins-lang"/>
       <repopackage name="kirigami2"/>
       <repopackage name="kirigami2-lang"/>
-      <repopackage name="kiriki"/>
-      <repopackage name="kiriki-lang"/>
       <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
       <repopackage name="kitinerary"/>
       <repopackage name="kiwi-pxeboot"/>
-      <repopackage name="kjumpingcube"/>
-      <repopackage name="kjumpingcube-lang"/>
       <repopackage name="kldap"/>
       <repopackage name="kldap-lang"/>
       <repopackage name="kleopatra"/>
       <repopackage name="kleopatra-lang"/>
-      <repopackage name="klines"/>
-      <repopackage name="klines-lang"/>
       <repopackage name="klogd"/>
       <repopackage name="kmag"/>
       <repopackage name="kmag-lang"/>
@@ -1200,29 +1139,15 @@
       <repopackage name="kmod-bash-completion"/>
       <repopackage name="kmousetool"/>
       <repopackage name="kmousetool-lang"/>
-      <repopackage name="kmouth"/>
-      <repopackage name="kmouth-lang"/>
       <repopackage name="kmozillahelper"/>
       <repopackage name="kmplot"/>
       <repopackage name="kmplot-lang"/>
-      <repopackage name="knavalbattle"/>
-      <repopackage name="knavalbattle-lang"/>
-      <repopackage name="knetwalk"/>
-      <repopackage name="knetwalk-lang"/>
       <repopackage name="knewstuff"/>
       <repopackage name="knewstuff-imports"/>
       <repopackage name="knotes"/>
       <repopackage name="knotes-lang"/>
-      <repopackage name="kolf"/>
-      <repopackage name="kolf-lang"/>
-      <repopackage name="kollision"/>
-      <repopackage name="kollision-lang"/>
-      <repopackage name="kolourpaint"/>
-      <repopackage name="kolourpaint-lang"/>
       <repopackage name="kompare"/>
       <repopackage name="kompare-lang"/>
-      <repopackage name="konquest"/>
-      <repopackage name="konquest-lang"/>
       <repopackage name="konsole"/>
       <repopackage name="konsole-part"/>
       <repopackage name="konsole-part-lang"/>
@@ -1231,8 +1156,6 @@
       <repopackage name="kontactinterface-lang"/>
       <repopackage name="konversation"/>
       <repopackage name="konversation-lang"/>
-      <repopackage name="kopete"/>
-      <repopackage name="kopete-lang"/>
       <repopackage name="korganizer"/>
       <repopackage name="korganizer-lang"/>
       <repopackage name="kpackage"/>
@@ -1251,15 +1174,10 @@
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
       <repopackage name="krb5-client"/>
-      <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
       <repopackage name="kross"/>
       <repopackage name="kross-lang"/>
-      <repopackage name="kruler"/>
-      <repopackage name="kruler-lang"/>
-      <repopackage name="krusader"/>
-      <repopackage name="krusader-lang"/>
       <repopackage name="ksanecore-lang"/>
       <repopackage name="kscreen5"/>
       <repopackage name="kscreen5-lang"/>
@@ -1268,37 +1186,21 @@
       <repopackage name="kscreenlocker-lang"/>
       <repopackage name="kservice"/>
       <repopackage name="kservice-lang"/>
-      <repopackage name="kshisen"/>
-      <repopackage name="kshisen-lang"/>
-      <repopackage name="ksirk"/>
-      <repopackage name="ksirk-lang"/>
       <repopackage name="ksmtp"/>
       <repopackage name="ksmtp-lang"/>
-      <repopackage name="kspaceduel"/>
-      <repopackage name="kspaceduel-lang"/>
-      <repopackage name="ksquares"/>
-      <repopackage name="ksquares-lang"/>
       <repopackage name="ksshaskpass5"/>
       <repopackage name="ksshaskpass5-lang"/>
       <repopackage name="ksudoku"/>
       <repopackage name="ksudoku-lang"/>
       <repopackage name="ksysguardsystemstats-data"/>
-      <repopackage name="ksystemlog"/>
-      <repopackage name="ksystemlog-lang"/>
       <repopackage name="ksystemstats5"/>
       <repopackage name="ksystemstats5-lang"/>
-      <repopackage name="kteatime"/>
-      <repopackage name="kteatime-lang"/>
       <repopackage name="ktexteditor"/>
       <repopackage name="ktexteditor-lang"/>
-      <repopackage name="ktimer"/>
-      <repopackage name="ktimer-lang"/>
       <repopackage name="ktnef"/>
       <repopackage name="ktnef-lang"/>
       <repopackage name="ktouch"/>
       <repopackage name="ktouch-lang"/>
-      <repopackage name="kubrick"/>
-      <repopackage name="kubrick-lang"/>
       <repopackage name="kuserfeedback-imports"/>
       <repopackage name="kuserfeedback-lang"/>
       <repopackage name="kvm_stat"/>
@@ -1310,7 +1212,6 @@
       <repopackage name="kwalletmanager5-lang"/>
       <repopackage name="kwayland"/>
       <repopackage name="kwayland-integration"/>
-      <repopackage name="kwikdisk"/>
       <repopackage name="kwin5"/>
       <repopackage name="kwin5-lang"/>
       <repopackage name="kwordquiz"/>
@@ -1345,7 +1246,6 @@
       <repopackage name="libao4"/>
       <repopackage name="libaom3"/>
       <repopackage name="libapparmor1"/>
-      <repopackage name="libapparmor1-32bit" arch="x86_64"/>
       <repopackage name="libappindicator3-1"/>
       <repopackage name="libappmenu-gtk2-parser0"/>
       <repopackage name="libappmenu-gtk3-parser0"/>
@@ -1433,7 +1333,6 @@
       <repopackage name="libbpf1"/>
       <repopackage name="libbreezecommon5-5"/>
       <repopackage name="libbrlapi0_8"/>
-      <repopackage name="libbrotli-devel" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlicommon1-32bit" arch="x86_64"/>
       <repopackage name="libbrotlidec1"/>
@@ -1447,7 +1346,6 @@
       <repopackage name="libbytesize1"/>
       <repopackage name="libbz2-1"/>
       <repopackage name="libbz2-1-32bit" arch="x86_64"/>
-      <repopackage name="libbz2-devel" arch="x86_64"/>
       <repopackage name="libcaca0"/>
       <repopackage name="libcacard0"/>
       <repopackage name="libcairo-gobject2"/>
@@ -1575,7 +1473,6 @@
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
-      <repopackage name="libdrm-devel" arch="x86_64"/>
       <repopackage name="libdrm2"/>
       <repopackage name="libdrm_amdgpu1"/>
       <repopackage name="libdrm_intel1"/>
@@ -1600,8 +1497,6 @@
       <repopackage name="libedata-cal-2_0-2"/>
       <repopackage name="libedataserver-1_2-27"/>
       <repopackage name="libedataserverui-1_2-4"/>
-      <repopackage name="libedc_ecc1_0"/>
-      <repopackage name="libedc_ecc_dec1_0"/>
       <repopackage name="libedit0"/>
       <repopackage name="libeditorconfig0"/>
       <repopackage name="libefa1"/>
@@ -1620,7 +1515,6 @@
       <repopackage name="libestr0"/>
       <repopackage name="libetonyek-0_1-1"/>
       <repopackage name="libev4"/>
-      <repopackage name="libevdev-devel" arch="x86_64"/>
       <repopackage name="libevdev-tools"/>
       <repopackage name="libevdev2"/>
       <repopackage name="libevdocument3-4"/>
@@ -1630,7 +1524,6 @@
       <repopackage name="libexif12"/>
       <repopackage name="libexiv2-27"/>
       <repopackage name="libexo-2-0"/>
-      <repopackage name="libexpat-devel" arch="x86_64"/>
       <repopackage name="libexpat1"/>
       <repopackage name="libexpat1-32bit" arch="x86_64"/>
       <repopackage name="libexslt0"/>
@@ -1660,7 +1553,7 @@
       <repopackage name="libfido2-1"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
-      <repopackage name="libFLAC++10"/>
+      <repopackage name="libFLAC++10" arch="x86_64"/>
       <repopackage name="libFLAC12"/>
       <repopackage name="libflashrom1"/>
       <repopackage name="libflatpak0"/>
@@ -1670,7 +1563,6 @@
       <repopackage name="libfolks26"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontconfig1-32bit" arch="x86_64"/>
-      <repopackage name="libfontenc-devel" arch="x86_64"/>
       <repopackage name="libfontenc1"/>
       <repopackage name="libfonts"/>
       <repopackage name="libformula"/>
@@ -1687,7 +1579,6 @@
       <repopackage name="libfribidi0"/>
       <repopackage name="libfribidi0-32bit" arch="x86_64"/>
       <repopackage name="libftdi1-2"/>
-      <repopackage name="libftgl2" arch="x86_64"/>
       <repopackage name="libfuse2"/>
       <repopackage name="libfuse3-3"/>
       <repopackage name="libfwupd2"/>
@@ -1906,7 +1797,6 @@
       <repopackage name="libibverbs1"/>
       <repopackage name="libical-glib3"/>
       <repopackage name="libical3"/>
-      <repopackage name="libICE-devel" arch="x86_64"/>
       <repopackage name="libICE6"/>
       <repopackage name="libICE6-32bit" arch="x86_64"/>
       <repopackage name="libicu72"/>
@@ -1938,7 +1828,6 @@
       <repopackage name="libiptcdata0"/>
       <repopackage name="libiscsi9"/>
       <repopackage name="libisl23"/>
-      <repopackage name="libiso9660-11"/>
       <repopackage name="libisoburn1"/>
       <repopackage name="libisofs6"/>
       <repopackage name="libiterm1"/>
@@ -2049,7 +1938,6 @@
       <repopackage name="libKF5DNSSD5"/>
       <repopackage name="libKF5DNSSD5-lang"/>
       <repopackage name="libKF5DocTools5"/>
-      <repopackage name="libKF5Emoticons5"/>
       <repopackage name="libKF5EventViews5"/>
       <repopackage name="libKF5GlobalAccel5"/>
       <repopackage name="libKF5GlobalAccel5-lang"/>
@@ -2143,7 +2031,6 @@
       <repopackage name="libKF5TextWidgets5-lang"/>
       <repopackage name="libKF5ThreadWeaver5"/>
       <repopackage name="libKF5Tnef5"/>
-      <repopackage name="libKF5Torrent6"/>
       <repopackage name="libKF5UnitConversion5"/>
       <repopackage name="libKF5UnitConversion5-lang"/>
       <repopackage name="libKF5Wallet5"/>
@@ -2194,7 +2081,6 @@
       <repopackage name="libksysguard5-lang"/>
       <repopackage name="libksysguard5-plugins"/>
       <repopackage name="libKSysGuardSystemStats1"/>
-      <repopackage name="libktorrent-lang"/>
       <repopackage name="libKUserFeedbackCore1"/>
       <repopackage name="libKUserFeedbackWidgets1"/>
       <repopackage name="libkwalletbackend5-5"/>
@@ -2272,7 +2158,6 @@
       <repopackage name="libmetis5"/>
       <repopackage name="libmfx1" arch="x86_64"/>
       <repopackage name="libmicrodns1"/>
-      <repopackage name="libmikmod3"/>
       <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
@@ -2283,7 +2168,6 @@
       <repopackage name="libmm-glib0"/>
       <repopackage name="libmng2"/>
       <repopackage name="libmnl0"/>
-      <repopackage name="libmodplug1"/>
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmount1-32bit" arch="x86_64"/>
@@ -2379,7 +2263,6 @@
       <repopackage name="libopenssl3-32bit" arch="x86_64"/>
       <repopackage name="libopenssl3-hmac"/>
       <repopackage name="libopus0"/>
-      <repopackage name="libopusfile0"/>
       <repopackage name="liborc-0_4-0"/>
       <repopackage name="liborcus-0_17-0"/>
       <repopackage name="libosinfo"/>
@@ -2388,7 +2271,6 @@
       <repopackage name="libostree"/>
       <repopackage name="libostree-1-1"/>
       <repopackage name="libotf1"/>
-      <repopackage name="libotr5"/>
       <repopackage name="libp11-3"/>
       <repopackage name="libp11-kit0"/>
       <repopackage name="libp11-kit0-32bit" arch="x86_64"/>
@@ -2408,7 +2290,6 @@
       <repopackage name="libpcap1"/>
       <repopackage name="libpcaudio0"/>
       <repopackage name="libpci3"/>
-      <repopackage name="libpciaccess-devel" arch="x86_64"/>
       <repopackage name="libpciaccess0"/>
       <repopackage name="libpcre1"/>
       <repopackage name="libpcre2-16-0"/>
@@ -2431,7 +2312,6 @@
       <repopackage name="libpipewire-0_3-0"/>
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpixman-1-0-32bit" arch="x86_64"/>
-      <repopackage name="libpixman-1-0-devel" arch="x86_64"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
       <repopackage name="libplacebo229"/>
@@ -2443,7 +2323,6 @@
       <repopackage name="libpng12-0-32bit" arch="x86_64"/>
       <repopackage name="libpng16-16"/>
       <repopackage name="libpng16-16-32bit" arch="x86_64"/>
-      <repopackage name="libpodofo0_9_8"/>
       <repopackage name="libpolkit-agent-1-0"/>
       <repopackage name="libpolkit-gobject-1-0"/>
       <repopackage name="libpolkit-qt5-1-1"/>
@@ -2657,8 +2536,6 @@
       <repopackage name="libSDL-1_2-0"/>
       <repopackage name="libSDL2-2_0-0"/>
       <repopackage name="libSDL_gfx15"/>
-      <repopackage name="libSDL_image-1_2-0"/>
-      <repopackage name="libSDL_mixer-1_2-0"/>
       <repopackage name="libseccomp2"/>
       <repopackage name="libsecret-1-0"/>
       <repopackage name="libsecret-lang"/>
@@ -2683,7 +2560,6 @@
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>
       <repopackage name="libslp1"/>
-      <repopackage name="libSM-devel" arch="x86_64"/>
       <repopackage name="libSM6"/>
       <repopackage name="libSM6-32bit" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
@@ -2707,7 +2583,6 @@
       <repopackage name="libsoup-lang"/>
       <repopackage name="libsoup2-lang"/>
       <repopackage name="libsource-highlight4"/>
-      <repopackage name="libsox3"/>
       <repopackage name="libsoxr0"/>
       <repopackage name="libspandsp3"/>
       <repopackage name="libspectre1"/>
@@ -2787,7 +2662,6 @@
       <repopackage name="libtirpc3"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
-      <repopackage name="libtool" arch="x86_64"/>
       <repopackage name="libtotem-plparser-mini18"/>
       <repopackage name="libtotem-plparser18"/>
       <repopackage name="libtowitoko2"/>
@@ -2826,14 +2700,12 @@
       <repopackage name="libusbredirparser1"/>
       <repopackage name="libutempter0"/>
       <repopackage name="libutf8proc2"/>
-      <repopackage name="libuuid-devel" arch="x86_64"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libuuid1-32bit" arch="x86_64"/>
       <repopackage name="libuv1"/>
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
-      <repopackage name="libv4l2rds0" arch="x86_64"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -2841,7 +2713,6 @@
       <repopackage name="libva-x11-2"/>
       <repopackage name="libva2"/>
       <repopackage name="libvamp-hostsdk3" arch="x86_64"/>
-      <repopackage name="libvcdinfo0"/>
       <repopackage name="libvdeplug3"/>
       <repopackage name="libvdpau1"/>
       <repopackage name="libverto1"/>
@@ -2923,12 +2794,10 @@
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-6-32bit" arch="x86_64"/>
       <repopackage name="libX11-data"/>
-      <repopackage name="libX11-devel" arch="x86_64"/>
       <repopackage name="libX11-xcb1"/>
       <repopackage name="libx86emu3"/>
       <repopackage name="libxapian30"/>
       <repopackage name="libxatracker2"/>
-      <repopackage name="libXau-devel" arch="x86_64"/>
       <repopackage name="libXau6"/>
       <repopackage name="libXau6-32bit" arch="x86_64"/>
       <repopackage name="libXaw3d8"/>
@@ -2936,7 +2805,6 @@
       <repopackage name="libxcb-composite0"/>
       <repopackage name="libxcb-cursor0"/>
       <repopackage name="libxcb-damage0"/>
-      <repopackage name="libxcb-devel" arch="x86_64"/>
       <repopackage name="libxcb-dpms0"/>
       <repopackage name="libxcb-dri2-0"/>
       <repopackage name="libxcb-dri3-0"/>
@@ -2951,20 +2819,16 @@
       <repopackage name="libxcb-render0"/>
       <repopackage name="libxcb-render0-32bit" arch="x86_64"/>
       <repopackage name="libxcb-res0"/>
-      <repopackage name="libxcb-screensaver0" arch="x86_64"/>
       <repopackage name="libxcb-shape0"/>
       <repopackage name="libxcb-shm0"/>
       <repopackage name="libxcb-shm0-32bit" arch="x86_64"/>
       <repopackage name="libxcb-sync1"/>
       <repopackage name="libxcb-util1"/>
-      <repopackage name="libxcb-xf86dri0" arch="x86_64"/>
       <repopackage name="libxcb-xfixes0"/>
       <repopackage name="libxcb-xinerama0"/>
       <repopackage name="libxcb-xinput0"/>
       <repopackage name="libxcb-xkb1"/>
-      <repopackage name="libxcb-xtest0" arch="x86_64"/>
       <repopackage name="libxcb-xv0"/>
-      <repopackage name="libxcb-xvmc0" arch="x86_64"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libxcb1-32bit" arch="x86_64"/>
       <repopackage name="libXcomposite1"/>
@@ -2972,14 +2836,11 @@
       <repopackage name="libxcrypt-devel"/>
       <repopackage name="libXcursor1"/>
       <repopackage name="libXcursor1-32bit" arch="x86_64"/>
-      <repopackage name="libxcvt-devel" arch="x86_64"/>
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
       <repopackage name="libXdamage1-32bit" arch="x86_64"/>
-      <repopackage name="libXdmcp-devel" arch="x86_64"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxerces-c-3_2"/>
-      <repopackage name="libXext-devel" arch="x86_64"/>
       <repopackage name="libXext6"/>
       <repopackage name="libXext6-32bit" arch="x86_64"/>
       <repopackage name="libxfce4kbd-private-3-0"/>
@@ -2991,7 +2852,6 @@
       <repopackage name="libxfce4util-lang"/>
       <repopackage name="libxfce4util7"/>
       <repopackage name="libxfconf-0-3"/>
-      <repopackage name="libXfixes-devel" arch="x86_64"/>
       <repopackage name="libXfixes3"/>
       <repopackage name="libXfixes3-32bit" arch="x86_64"/>
       <repopackage name="libXfont1"/>
@@ -3006,7 +2866,6 @@
       <repopackage name="libxkbcommon-x11-0"/>
       <repopackage name="libxkbcommon0"/>
       <repopackage name="libxkbcommon0-32bit" arch="x86_64"/>
-      <repopackage name="libxkbfile-devel" arch="x86_64"/>
       <repopackage name="libxkbfile1"/>
       <repopackage name="libxkbregistry0"/>
       <repopackage name="libxklavier16"/>
@@ -3017,19 +2876,12 @@
       <repopackage name="libxmlsec1-1"/>
       <repopackage name="libxmlsec1-nss1"/>
       <repopackage name="libxmlsec1-openssl1"/>
-      <repopackage name="libXmu-devel" arch="x86_64"/>
       <repopackage name="libXmu6"/>
       <repopackage name="libXmuu1"/>
-      <repopackage name="libXp-devel" arch="x86_64"/>
-      <repopackage name="libXp6" arch="x86_64"/>
-      <repopackage name="libXpm-devel" arch="x86_64"/>
       <repopackage name="libXpm4"/>
       <repopackage name="libXpresent1"/>
-      <repopackage name="libXprintUtil-devel" arch="x86_64"/>
-      <repopackage name="libXprintUtil1" arch="x86_64"/>
       <repopackage name="libXrandr2"/>
       <repopackage name="libXrandr2-32bit" arch="x86_64"/>
-      <repopackage name="libXrender-devel" arch="x86_64"/>
       <repopackage name="libXrender1"/>
       <repopackage name="libXrender1-32bit" arch="x86_64"/>
       <repopackage name="libXRes1"/>
@@ -3038,11 +2890,9 @@
       <repopackage name="libxslt1"/>
       <repopackage name="libXss1"/>
       <repopackage name="libXss1-32bit" arch="x86_64"/>
-      <repopackage name="libXt-devel" arch="x86_64"/>
       <repopackage name="libXt6"/>
       <repopackage name="libxtables12"/>
       <repopackage name="libXtst6"/>
-      <repopackage name="libXv-devel" arch="x86_64"/>
       <repopackage name="libXv1"/>
       <repopackage name="libXv1-32bit" arch="x86_64"/>
       <repopackage name="libXvMC1"/>
@@ -3098,11 +2948,8 @@
       <repopackage name="lokalize-lang"/>
       <repopackage name="lomoco"/>
       <repopackage name="lsb-release"/>
-      <repopackage name="lskat"/>
-      <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lttng-modules-kmp-default" arch="x86_64"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3165,7 +3012,6 @@
       <repopackage name="Mesa-demo-es"/>
       <repopackage name="Mesa-demo-x"/>
       <repopackage name="Mesa-dri"/>
-      <repopackage name="Mesa-dri-devel" arch="x86_64"/>
       <repopackage name="Mesa-gallium"/>
       <repopackage name="Mesa-libEGL1"/>
       <repopackage name="Mesa-libGL1"/>
@@ -3179,7 +3025,6 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="microos-tools"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
@@ -3259,8 +3104,6 @@
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
-      <repopackage name="msr-safe-kmp-default" arch="x86_64"/>
-      <repopackage name="mtdev-devel" arch="x86_64"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
       <repopackage name="mugshot"/>
@@ -3366,12 +3209,9 @@
       <repopackage name="obex-data-server"/>
       <repopackage name="ocfs2-tools"/>
       <repopackage name="ofl"/>
-      <repopackage name="okteta"/>
       <repopackage name="okteta-data"/>
-      <repopackage name="okteta-lang"/>
       <repopackage name="okular"/>
       <repopackage name="okular-lang"/>
-      <repopackage name="okular-spectre"/>
       <repopackage name="open-iscsi"/>
       <repopackage name="open-isns"/>
       <repopackage name="open-vm-tools"/>
@@ -3425,8 +3265,6 @@
       <repopackage name="pam-32bit" arch="x86_64"/>
       <repopackage name="pam-config"/>
       <repopackage name="pam-manpages"/>
-      <repopackage name="pam_apparmor"/>
-      <repopackage name="pam_apparmor-32bit" arch="x86_64"/>
       <repopackage name="pam_krb5-32bit" arch="x86_64"/>
       <repopackage name="pam_mount"/>
       <repopackage name="pam_mount-32bit" arch="x86_64"/>
@@ -3515,7 +3353,6 @@
       <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol"/>
       <repopackage name="pavucontrol-lang"/>
-      <repopackage name="pcfclock-kmp-default" arch="x86_64"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcsc-acr38"/>
@@ -3766,7 +3603,6 @@
       <repopackage name="pragha-plugins"/>
       <repopackage name="prctl"/>
       <repopackage name="presage-data"/>
-      <repopackage name="printproto-devel" arch="x86_64"/>
       <repopackage name="prison-qt5-imports"/>
       <repopackage name="procinfo"/>
       <repopackage name="procmail"/>
@@ -4004,7 +3840,6 @@
       <repopackage name="rdma-ndd"/>
       <repopackage name="re2c"/>
       <repopackage name="read-only-root-fs"/>
-      <repopackage name="readcd"/>
       <repopackage name="readline-doc"/>
       <repopackage name="rebootmgr"/>
       <repopackage name="remmina"/>
@@ -4022,14 +3857,11 @@
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
-      <repopackage name="rsibreak"/>
-      <repopackage name="rsibreak-lang"/>
       <repopackage name="rsvg-thumbnailer"/>
       <repopackage name="rsync"/>
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>
       <repopackage name="rtkit"/>
-      <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
@@ -4507,7 +4339,6 @@
       <repopackage name="sonnet"/>
       <repopackage name="sonnet-imports"/>
       <repopackage name="sound-theme-freedesktop"/>
-      <repopackage name="sox"/>
       <repopackage name="spacenavd"/>
       <repopackage name="spamassassin"/>
       <repopackage name="spamassassin-spamc"/>
@@ -4515,7 +4346,6 @@
       <repopackage name="spectacle"/>
       <repopackage name="spectacle-lang"/>
       <repopackage name="speech-dispatcher"/>
-      <repopackage name="speedcrunch"/>
       <repopackage name="splix"/>
       <repopackage name="spu-tools"/>
       <repopackage name="sqlite3-tcl"/>
@@ -4548,8 +4378,6 @@
       <repopackage name="susepaste-screenshot"/>
       <repopackage name="sushi"/>
       <repopackage name="sushi-lang"/>
-      <repopackage name="sweeper"/>
-      <repopackage name="sweeper-lang"/>
       <repopackage name="swell-foop"/>
       <repopackage name="swell-foop-lang"/>
       <repopackage name="swtpm"/>
@@ -4597,7 +4425,6 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
-      <repopackage name="systemd-devel" arch="x86_64"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
@@ -4658,7 +4485,6 @@
       <repopackage name="totem-pl-parser"/>
       <repopackage name="totem-pl-parser-lang"/>
       <repopackage name="totem-plugins"/>
-      <repopackage name="tp_smapi-kmp-default" arch="x86_64"/>
       <repopackage name="traceroute"/>
       <repopackage name="tracker"/>
       <repopackage name="tracker-data-files"/>
@@ -4791,7 +4617,6 @@
       <repopackage name="unar"/>
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
-      <repopackage name="unclutter" arch="x86_64"/>
       <repopackage name="unison"/>
       <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
@@ -4806,17 +4631,8 @@
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-lang"/>
       <repopackage name="util-linux-systemd"/>
-      <repopackage name="util-macros-devel" arch="x86_64"/>
       <repopackage name="v4l-conf"/>
-      <repopackage name="v4l-utils" arch="x86_64"/>
-      <repopackage name="v4l-utils-lang" arch="x86_64"/>
-      <repopackage name="v4l2loopback-autoload" arch="x86_64"/>
-      <repopackage name="v4l2loopback-kmp-default" arch="x86_64"/>
-      <repopackage name="v4l2loopback-utils" arch="x86_64"/>
       <repopackage name="vacation"/>
-      <repopackage name="vcdimager"/>
-      <repopackage name="vendor-reset-kmp-default" arch="x86_64"/>
-      <repopackage name="vhba-kmp-default" arch="x86_64"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
@@ -4846,7 +4662,6 @@
       <repopackage name="vsftpd"/>
       <repopackage name="vte-lang"/>
       <repopackage name="vulkan-tools"/>
-      <repopackage name="vym"/>
       <repopackage name="w3m"/>
       <repopackage name="wallpaper-branding-openSUSE"/>
       <repopackage name="wayland-utils"/>
@@ -4861,7 +4676,6 @@
       <repopackage name="wicked"/>
       <repopackage name="wicked-service"/>
       <repopackage name="WindowMaker"/>
-      <repopackage name="WindowMaker-themes"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
       <repopackage name="wireplumber"/>
@@ -4872,7 +4686,6 @@
       <repopackage name="wol-lang"/>
       <repopackage name="wondershaper"/>
       <repopackage name="wpa_supplicant"/>
-      <repopackage name="wpa_supplicant-gui" arch="x86_64"/>
       <repopackage name="wqy-zenhei-fonts"/>
       <repopackage name="wsdd"/>
       <repopackage name="wxWidgets-lang" arch="x86_64"/>
@@ -4881,7 +4694,6 @@
       <repopackage name="xauth"/>
       <repopackage name="xawtv"/>
       <repopackage name="xbitmaps"/>
-      <repopackage name="xbitmaps-devel" arch="x86_64"/>
       <repopackage name="xbrlapi"/>
       <repopackage name="xclip"/>
       <repopackage name="xclock"/>
@@ -4914,7 +4726,6 @@
       <repopackage name="xf86-input-evdev"/>
       <repopackage name="xf86-input-joystick"/>
       <repopackage name="xf86-input-libinput"/>
-      <repopackage name="xf86-input-mouse" arch="x86_64"/>
       <repopackage name="xf86-input-vmmouse"/>
       <repopackage name="xf86-input-wacom"/>
       <repopackage name="xf86-video-ark"/>
@@ -4997,7 +4808,6 @@
       <repopackage name="xkeyboard-config"/>
       <repopackage name="xkeyboard-config-lang"/>
       <repopackage name="xli"/>
-      <repopackage name="xlockmore" arch="x86_64"/>
       <repopackage name="xmessage"/>
       <repopackage name="xml-commons-apis"/>
       <repopackage name="xmlcharent"/>
@@ -5012,11 +4822,9 @@
       <repopackage name="xorg-x11-libX11-ccache"/>
       <repopackage name="xorg-x11-server"/>
       <repopackage name="xorg-x11-server-extra"/>
-      <repopackage name="xorg-x11-server-sdk" arch="x86_64"/>
       <repopackage name="xorg-x11-server-Xvfb"/>
       <repopackage name="xorg-x11-Xvnc"/>
       <repopackage name="xorg-x11-Xvnc-module"/>
-      <repopackage name="xorgproto-devel" arch="x86_64"/>
       <repopackage name="xorriso"/>
       <repopackage name="xprop"/>
       <repopackage name="xrandr"/>
@@ -5030,18 +4838,14 @@
       <repopackage name="xsetroot"/>
       <repopackage name="xsettingsd"/>
       <repopackage name="xstroke"/>
-      <repopackage name="xtables-addons-kmp-default" arch="x86_64"/>
       <repopackage name="xtables-plugins"/>
       <repopackage name="xterm"/>
       <repopackage name="xterm-bin"/>
       <repopackage name="xterm-resize"/>
       <repopackage name="xtermset"/>
-      <repopackage name="xtrans" arch="x86_64"/>
       <repopackage name="xwayland"/>
       <repopackage name="xz"/>
       <repopackage name="xz-lang"/>
-      <repopackage name="yakuake"/>
-      <repopackage name="yakuake-lang"/>
       <repopackage name="yarn"/>
       <repopackage name="yast2"/>
       <repopackage name="yast2-add-on"/>
@@ -5182,7 +4986,6 @@
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
-      <repopackage name="zlib-devel" arch="x86_64"/>
       <repopackage name="zoo"/>
       <repopackage name="zsh"/>
       <repopackage name="zstd"/>

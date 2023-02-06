@@ -189,4 +189,19 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>1060265</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>48964699eae2b9e9b80fc1e621cf43dd</srcmd5>
+    <version>5.2.0</version>
+    <time>1675689319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.0
+  * Set up shell command-line tab-completion for jupyter and
+    subcommands #337 (@azjps)
+- Release 5.1.5
+  *  Don't format logs in log call. #336 (@Carreau)
+- Release 5.1.4
+  * Suppress any exception in _do_i_own shortcut #335 (@minrk)
+</comment>
+    <requestid>1063296</requestid>
+  </revision>
 </revisionlist>

@@ -42,15 +42,13 @@
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.12.1
+Version:        2023.1.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 # SourceRepository: https://github.com/dask/dask
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM  dask-pr9777-np1.24.patch gh#dask/dask#9777
-Patch0:         dask-pr9777-np1.24.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}

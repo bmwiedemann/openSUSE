@@ -81,4 +81,23 @@
     <comment></comment>
     <requestid>875927</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2130977a708c1afb47a9409be39f2cd4</srcmd5>
+    <version>0.3.10</version>
+    <time>1675689345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.3.10
+  * Fix image_to_osd regression (reported by @klavdijS)
+- v0.3.9
+  * Support only python 3.7+ (3.6 is End of Life)
+  * Switch from deprecated distutils version parsing to packaging.version
+  * Add build system requirements in order for pip to properly install Pillow
+- v0.3.8
+  * Header handling in file_to_dict function by @igor-ma
+  * Proper raising behavior in case of timeout by @amenezes
+  * __version__ attribute support by @amenezes
+  * Couple of bug fixes
+</comment>
+    <requestid>1063382</requestid>
+  </revision>
 </revisionlist>
