@@ -6690,9 +6690,9 @@ unsorted:
   - grsync 
   - grsync-lang 
   - grub2-branding-upstream 
-  - grub2-i386-efi: [i586] 
-  - grub2-i386-efi-debug: [i586] 
-  - grub2-i386-efi-extras: [i586] 
+  - grub2-i386-efi 
+  - grub2-i386-efi-debug 
+  - grub2-i386-efi-extras 
   - grub2-i386-pc-debug 
   - grub2-i386-pc-extras 
   - grub2-i386-xen: [i586] 
@@ -7142,10 +7142,7 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
-  - heaptrack 
   - heaptrack-devel 
-  - heaptrack-gui 
-  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -9441,7 +9438,6 @@ unsorted:
   - libIlmThread-3_1-30-32bit: [x86_64] 
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
-  - libKChart2 
   - libKDb3-4 
   - libKF5Emoticons5 
   - libKF5JsEmbed5 
@@ -10496,7 +10492,6 @@ unsorted:
   - libboost_numpy-py3-1_81_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_81_0 
   - libboost_program_options1_81_0-32bit: [x86_64] 
   - libboost_program_options1_81_0-devel 
   - libboost_python-py3-1_81_0-32bit: [x86_64] 
@@ -10694,10 +10689,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres3 
   - libcerf-devel 
@@ -12391,7 +12386,6 @@ unsorted:
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
-  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
@@ -14082,8 +14076,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft3 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -14106,7 +14100,7 @@ unsorted:
   - libraw1394-tools 
   - libraw23-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -14290,7 +14284,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -18499,6 +18493,7 @@ unsorted:
   - obs-service-cargo_audit: [x86_64] 
   - obs-service-cargo_vendor 
   - obs-service-cdi_containers_meta: [x86_64] 
+  - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
   - obs-service-download_files 
   - obs-service-download_url 
@@ -22386,6 +22381,7 @@ unsorted:
   - python3-keystoneclient 
   - python3-keystonemiddleware 
   - python3-kiwi 
+  - python3-kiwi-keg 
   - python3-ktoblzcheck 
   - python3-lammps 
   - python3-lash 
@@ -22901,6 +22897,7 @@ unsorted:
   - python310-asdf-standard 
   - python310-asdf-transform-schemas 
   - python310-asdf-wcs-schemas 
+  - python310-ase 
   - python310-asgiref 
   - python310-asn1crypto 
   - python310-aspectlib 
@@ -26221,6 +26218,7 @@ unsorted:
   - python38-asdf-standard 
   - python38-asdf-transform-schemas 
   - python38-asdf-wcs-schemas 
+  - python38-ase 
   - python38-asgiref 
   - python38-asn1crypto 
   - python38-aspectlib 
@@ -29635,6 +29633,7 @@ unsorted:
   - python39-asdf-standard 
   - python39-asdf-transform-schemas 
   - python39-asdf-wcs-schemas 
+  - python39-ase 
   - python39-asgiref 
   - python39-asn1crypto 
   - python39-aspectlib 
@@ -33345,7 +33344,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
@@ -44134,6 +44133,7 @@ unsorted:
   - udev-mini 
   - udev-persistent-ifnames 
   - udhcp 
+  - udica 
   - udiskie 
   - udiskie-lang 
   - udisks2-docs 
@@ -45581,6 +45581,7 @@ unsorted:
   - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
+  - zypper-keys-plugin 
   - zypper-lifecycle-plugin 
   - zziplib-devel 
   - zziplib-devel-32bit: [x86_64] 
