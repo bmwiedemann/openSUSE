@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  5 18:06:11 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Apply downstream patch from Gentoo to fix a crash with openSSL 3
+  (boo#1207914):
+  * transmission-3.00-openssl-3.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 20:26:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - boo#1207555: Transmission can't open Bittorrent v2 torrents
@@ -76,12 +83,12 @@ Fri May 29 07:36:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
     - Fix prepending of drive letter to various user-selected paths
       on Windows.
     - Fix sorting by progress in presence of magnet transfers.
-    - Fix .torrent file trashing upon addition. 
+    - Fix .torrent file trashing upon addition.
     - Add queue up/down hotkeys.
     - Reduce torrent properties (file tree) memory usage.
     - Display tooltips in torrent properties (file tree) in case
       the names don't fit.
-    - Improve UI look on hi-dpi displays. 
+    - Improve UI look on hi-dpi displays.
     - Use session ID (if available) to check if session is local
       or not.
     - Use default (instead of system) locale to be more flexible.
@@ -402,7 +409,7 @@ Fri Jul 11 20:56:31 UTC 2014 - dimstar@opensuse.org
     - Fix toggle-downloading-by-pressing-spacebar in the file list.
     - Fix "Open URL" crash from dangling pointer.
     - Support launching downloaded files from inside Transmission.
-    - On Windows, use native Windows icons. 
+    - On Windows, use native Windows icons.
     - Improved network status info and tooltip in the status bar.
     - Fix "Open Torrent" dialog crash in Qt 5.2.
   + Daemon:
@@ -840,7 +847,7 @@ Tue Feb 14 19:50:44 UTC 2012 - zaitor@opensuse.org
     - Filtering by state and tracker.
     - Sorting by size.
     - Larger, easier-to-press toolbar buttons.
-    - Fix the torrent size and time remaining in the inspector's 
+    - Fix the torrent size and time remaining in the inspector's
       details tab.
     - Bundle jQuery and the stylesheets to avoid third-party CDNs.
     - Upgrade to jQuery 1.7.1.
@@ -1208,7 +1215,7 @@ Sun Aug  8 15:37:49 CEST 2010 - bjorn.lie@gmail.com
   + All Platforms:
     - Fix display bug in tr_truncd()
   + GTK+:
-    - Fix inaccurate "active torrent" counts in the filterbar 
+    - Fix inaccurate "active torrent" counts in the filterbar
     - Fix display bug with magnet link names
   + Qt:
     - Fix crash when accessing a password-protected remote session
@@ -1676,7 +1683,7 @@ Sun Jul 19 20:24:43 CEST 2009 - bjorn.lie@gmail.com
    - Make DHT a compile-time option
   + GTK+
    - Use GDK-safe versions of g_idle_add() and g_timeout_add*()
-   - Save some space in GTK+ >= 2.16.0 by not building 
+   - Save some space in GTK+ >= 2.16.0 by not building
      SexyIconEntry
   + Qt
    - Fix bug that crashed Qt client when setting alternative
@@ -1853,7 +1860,7 @@ Fri Feb 27 23:22:17 CET 2009 - vuntz@novell.com
 - Update to version 1.51:
   + All Platforms
     - Fix configure script issues with non-gcc compilers and
-      user-defined CFLAGS environment variables 
+      user-defined CFLAGS environment variables
     - Decrease CPU usage in some situations
     - Close a rare race condition on startup
     - More efficient use of libcurl when curl 7.18.0 or newer is
@@ -1986,7 +1993,7 @@ Fri Apr  4 16:06:48 CEST 2008 - vuntz@suse.de
 - Import from the build service, with cleanups.
 
 -------------------------------------------------------------------
-Thu Apr 3 2008 - awafaa@opensuse.org 
+Thu Apr 3 2008 - awafaa@opensuse.org
 
 - Initial build in new repository
 
