@@ -1,6 +1,6 @@
---- conf/upsmon.conf.sample.in
-+++ conf/upsmon.conf.sample.in
-@@ -243,6 +243,15 @@
+--- a/conf/upsmon.conf.sample.in
++++ b/conf/upsmon.conf.sample.in
+@@ -312,6 +312,15 @@
  # IGNORE - Don't do anything
  #
  # If you use IGNORE, don't use any other flags on the same line.

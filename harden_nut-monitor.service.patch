@@ -1,9 +1,9 @@
 Index: nut-2.7.4/scripts/systemd/nut-monitor.service.in
 ===================================================================
---- nut-2.7.4.orig/scripts/systemd/nut-monitor.service.in
-+++ nut-2.7.4/scripts/systemd/nut-monitor.service.in
-@@ -3,6 +3,17 @@ Description=Network UPS Tools - power de
- After=local-fs.target network.target nut-server.service
+--- a/scripts/systemd/nut-monitor.service.in
++++ b/scripts/systemd/nut-monitor.service.in
+@@ -3,6 +3,17 @@
+ PartOf=nut.target
  
  [Service]
 +# added automatically, for details please see
@@ -17,6 +17,6 @@ Index: nut-2.7.4/scripts/systemd/nut-monitor.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@SBINDIR@/upsmon
- PIDFile=@PIDPATH@/upsmon.pid
- Type=forking
+ EnvironmentFile=-@CONFPATH@/nut.conf
+ SyslogIdentifier=%N
+ ExecStart=@SBINDIR@/upsmon -F

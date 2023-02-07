@@ -1,9 +1,9 @@
 Index: nut-2.7.4/scripts/systemd/nut-driver.service.in
 ===================================================================
---- nut-2.7.4.orig/scripts/systemd/nut-driver.service.in
-+++ nut-2.7.4/scripts/systemd/nut-driver.service.in
-@@ -4,6 +4,17 @@ After=local-fs.target network.target
- StopWhenUnneeded=yes
+--- a/scripts/systemd/nut-driver@.service.in
++++ b/scripts/systemd/nut-driver@.service.in
+@@ -38,6 +38,17 @@
+ # Finally note that "nut-driver-enumerator.service" should take care of this.
  
  [Service]
 +# added automatically, for details please see
@@ -17,6 +17,6 @@ Index: nut-2.7.4/scripts/systemd/nut-driver.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@SBINDIR@/upsdrvctl start
- ExecStop=@SBINDIR@/upsdrvctl stop
- Type=forking
+ EnvironmentFile=-@CONFPATH@/nut.conf
+ SyslogIdentifier=%N
+ ExecStart=/bin/sh -c 'NUTDEV="`@NUT_LIBEXECDIR@/nut-driver-enumerator.sh --get-device-for-service %i`" && [ -n "$NUTDEV" ] || { echo "FATAL: Could not find a NUT device section for service unit %i" >&2 ; exit 1 ; } ; @SBINDIR@/upsdrvctl start "$NUTDEV"'

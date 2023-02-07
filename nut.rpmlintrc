@@ -1,0 +1,6 @@
+addFilter("binary-or-shlib-calls-gethostbyname /usr/libexec/ups/driver/apcupsd-ups")
+addFilter("logrotate-log-dir-not-packaged /var/log$")
+addFilter("obsolete-not-provided nut-devel-doc-pdf")
+addFilter("obsolete-not-provided nut-doc-pdf")
+addFilter("obsolete-not-provided nut-hal")
+addFilter("potential-bashisms /usr/libexec/nut-driver-enumerator.sh")
