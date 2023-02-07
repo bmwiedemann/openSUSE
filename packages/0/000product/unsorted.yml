@@ -23385,9 +23385,11 @@ unsorted:
   - python310-cirq: [x86_64] 
   - python310-cirq-aqt: [x86_64] 
   - python310-cirq-core: [x86_64] 
+  - python310-cirq-core-contrib: [x86_64] 
   - python310-cirq-google: [x86_64] 
   - python310-cirq-ionq: [x86_64] 
   - python310-cirq-pasqal: [x86_64] 
+  - python310-cirq-rigetti: [x86_64] 
   - python310-cirq-web: [x86_64] 
   - python310-ciscoconfparse 
   - python310-cl 
@@ -26710,9 +26712,11 @@ unsorted:
   - python38-cirq: [x86_64] 
   - python38-cirq-aqt: [x86_64] 
   - python38-cirq-core: [x86_64] 
+  - python38-cirq-core-contrib: [x86_64] 
   - python38-cirq-google: [x86_64] 
   - python38-cirq-ionq: [x86_64] 
   - python38-cirq-pasqal: [x86_64] 
+  - python38-cirq-rigetti: [x86_64] 
   - python38-cirq-web: [x86_64] 
   - python38-ciscoconfparse 
   - python38-cl 
@@ -30119,9 +30123,11 @@ unsorted:
   - python39-cirq: [x86_64] 
   - python39-cirq-aqt: [x86_64] 
   - python39-cirq-core: [x86_64] 
+  - python39-cirq-core-contrib: [x86_64] 
   - python39-cirq-google: [x86_64] 
   - python39-cirq-ionq: [x86_64] 
   - python39-cirq-pasqal: [x86_64] 
+  - python39-cirq-rigetti: [x86_64] 
   - python39-cirq-web: [x86_64] 
   - python39-ciscoconfparse 
   - python39-cl 
