@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  6 11:41:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.10.0
+  * New classes MultiNiftiLabelsMasker and MultiNiftiMapsMasker create maskers
+    to extract signals from a list of subjects with 4D images using
+    parallelization (#3237 by Yasmin Mzayek).
+  * Updated docs with a new theme using furo (#3125 by Alexis Thual).
+  * permuted_ols and non_parametric_inference now support TFCE statistic (#3196
+    by Taylor Salo).
+  * permuted_ols and non_parametric_inference now support cluster-level
+    Family-wise error correction (#3181 by Taylor Salo).
+  * save_glm_to_bids has been added, which writes model outputs to disk
+    according to BIDS convention (#2715 by Taylor Salo).
+
+-------------------------------------------------------------------
 Tue Oct 11 22:59:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove fix-test-decoder.patch merged upstream
