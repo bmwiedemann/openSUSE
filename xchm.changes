@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  6 19:33:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.35
+  * Fixed a few compile-time wxWidgets deprecation warnings.
+
+-------------------------------------------------------------------
 Thu Dec 30 19:16:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.33
