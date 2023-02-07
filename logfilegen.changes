@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  8 15:50:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 1.2.0:
+  * The log rotation queue minimal length is 1 now, i.e. one log
+    file + at least one rotation file, if needed.
+  * Add a new, simpler version of the benchmark: --test
+
+-------------------------------------------------------------------
 Mon Feb  6 16:37:10 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - logfilegen 1.1.0:
