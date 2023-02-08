@@ -1,0 +1,30 @@
+From: Matthias Bach <marix@marix.org>
+Date: 2018-11-04 21:40:00 +0100
+Subject: Ensure the default KBFS mount directoy is created on service start
+References: https://github.com/keybase/kbfs/issues/1655
+Upstream: never
+
+This ensure that the default KBFS mount directory is create on service start.
+Upstream does this using their `run_keybase` script which is not included in
+this package.
+
+This solution is much cleaner than upstreams. However, we cannot directly
+upstream it due to the hack for Leap 15.0. In addition, upstream probably
+wouldn't like the Systemd 235 requirement.
+
+diff -rub kbfs-2.10.1o/packaging/linux/systemd/kbfs.service kbfs-2.10.1/packaging/linux/systemd/kbfs.service
+
+--- kbfs-2.10.1o/packaging/linux/systemd/kbfs.service	2018-11-13 19:08:53.000000000 +0100
++++ kbfs-2.10.1/packaging/linux/systemd/kbfs.service	2018-11-23 20:42:55.907799624 +0100
+@@ -13,6 +13,11 @@
+ ExecStart=/usr/bin/kbfsfuse -debug -log-to-file
+ ExecStop=-/bin/sh -c 'fusermount -uz "$(keybase config get -d -b mountdir)"'
+ Restart=on-failure
++# Ensure the default mountdir exists
++RuntimeDirectory=keybase/kbfs
++RuntimeDirectoryMode=0700
++# Work around Systemd on Leap 15.0 being to old for RuntimeDirectory with deep directories (requires Systemd 235)
++ExecStartPre=/bin/sh -c 'mkdir -p "${XDG_RUNTIME_DIR}/keybase/kbfs"'
+ 
+ [Install]
+ WantedBy=default.target

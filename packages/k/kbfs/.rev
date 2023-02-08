@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>442d780f6a2cbc15890551f61b513dc9</srcmd5>
+    <version>2.8.0</version>
+    <time>1541865650</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2018-11/msg00020.html
+
+Please be aware that this package depends (not build-depends) on the package
+keybase-client whose submission was requested via SR#647076. Thus, this package
+should be accepted after, or in combination with that package.</comment>
+    <requestid>647077</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7467148812ee02f98a4466ea90e24fb6</srcmd5>
+    <version>2.8.0</version>
+    <time>1542012317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648258</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a03e938f0cd27ac40138e4bdead5309</srcmd5>
+    <version>2.10.1</version>
+    <time>1543311668</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.10.1
+  * This solves an issue with Git operations leaking disk cache.</comment>
+    <requestid>651453</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79fe35c051bb34ef0e7e2be65f0d528d</srcmd5>
+    <version>2.11.0</version>
+    <time>1546946856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662540</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6cd812a4fa7add01d534121eb7ef4c81</srcmd5>
+    <version>2.11.0</version>
+    <time>1580842550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769871</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9bd05e47ee4c469b2224bb1891f942ba</srcmd5>
+    <version>2.11.0</version>
+    <time>1609532040</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859622</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>eb1d4c519e78c1d66da4cf57d8cccf99</srcmd5>
+    <version>2.11.0</version>
+    <time>1622664749</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to Go 1.14 as Go 1.16 breaks the build</comment>
+    <requestid>896984</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>07c2238e85d348f7114e5e72856ded95</srcmd5>
+    <version>2.11.0</version>
+    <time>1651180064</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>973264</requestid>
+  </revision>
+</revisionlist>
