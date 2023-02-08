@@ -1,0 +1,12 @@
+#!/bin/sh
+pkg=$1
+[ -n "$1" ] || exit 1
+first=$(echo $pkg | cut -c1)
+p=packages/$first/$pkg #FIXME lib*
+test -d $p || exit 2
+rm -rf $p
+git rm $p
+git commit -m "Drop $pkg submodule"
+git subtree add -P $p https://code.opensuse.org/package/$pkg master
+(cd /data/openSUSE-test/$p/ && git pull )
+cp -a /data/openSUSE-test/$p/.git $p/
