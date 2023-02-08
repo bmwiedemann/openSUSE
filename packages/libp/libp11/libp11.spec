@@ -1,7 +1,7 @@
 #
 # spec file for package libp11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,7 +130,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n openssl-engine-%{name}
 %if 0%{?suse_version} > 1325
-%{_libdir}/engines-?.?
+%{_libdir}/engines-*
 %else
 %{_libdir}/engines
 %endif

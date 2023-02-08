@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 5 21:37:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.0:
+  * Add support for XEP-0461: Message Replies.
+  * Add SASLprep profile.
+  * Require PyGObject 3.42.0.
+
+-------------------------------------------------------------------
 Mon Jan 23 23:28:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.1.0:

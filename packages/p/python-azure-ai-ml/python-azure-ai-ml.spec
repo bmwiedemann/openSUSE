@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-ml
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Microsoft Azure Machine Learning Client Library for Python
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1.0}
 BuildRequires:  %{python_module applicationinsights}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-common >= 1.1}
-BuildRequires:  %{python_module azure-core >= 1.8.0}
+BuildRequires:  %{python_module azure-core >= 1.23.0}
 BuildRequires:  %{python_module azure-identity}
 BuildRequires:  %{python_module azure-mgmt-core >= 1.3.0}
 BuildRequires:  %{python_module azure-storage-blob >= 12.10.0}
@@ -61,7 +61,7 @@ Requires:       python-PyYAML >= 5.1.0
 Requires:       python-applicationinsights <= 0.11.10
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common >= 1.1
-Requires:       python-azure-core >= 1.8.0
+Requires:       python-azure-core >= 1.23.0
 Requires:       python-azure-identity
 Requires:       python-azure-mgmt-core >= 1.3.0
 Requires:       python-azure-storage-blob >= 12.10.0

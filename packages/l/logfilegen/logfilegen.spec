@@ -18,7 +18,7 @@
 
 
 Name:           logfilegen
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Log file generator for server log files and user-defined formats
 License:        Unlicense
@@ -55,7 +55,7 @@ be fast and customizable.
 %files
 %license LICENSE
 %doc ChangeLog README.md
-%doc docs/config.md docs/templates.md templates/*
+%doc docs/config.md docs/templates.md
 %{_bindir}/logfilegen
 
 %changelog

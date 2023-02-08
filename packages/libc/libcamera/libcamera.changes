@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:08:27 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.0.4:
+  Bugfixes:
+   * libcamera: yaml_parser: Use C locale
+   * libcamera: base: utils: Support C libraries lacking locale support
+   * py: cam.py: Fix duplicate metadata output if more than one stream
+   * libcamera: camera: Fix validateColorSpaces to choose main colour space
+   * pipeline: raspberrypi: Fix handling of colour spaces
+  Core:
+   * test: Fix/Enable testing with ASan
+   * test: Remove redundant pipeline tests
+   * meson: Only build pipeline handlers needed in host architecture
+   * meson: Add 'all' choice to pipelines option
+   * utils: checkstyle.py: Add commit title checker
+   * libcamera: ipa_module: Relax ipaModuleInfo symbol size check
+   * pipeline: Support configuration file paths
+  ipa:
+   * camera_sensor: Improve h/v flip handling
+   * camera_sensor: Add AR0521 Sensor support
+   * camera_sensor: Add OV4689 Sensor support
+   * camera_sensor: Add support for OmniVision OV8858
+   * raspberrypi: Support Autofocus with PDAF
+   * raspberrypi: Support for the Sony IMX708 sensor
+   * rkisp1: Raise maximum analogue gain
+  pipeline:
+   * raspberrypi: Support parameters from a configuration file
+   * raspberrypi: Add a parameter to disable startup drop frames
+   * libcamera: rkisp1: Add support for Transform
+  apps:
+   * gstreamer: Add bayer8 support to libcamerasrc
+   * qcam: Show string representation of pixel format
+  ABI Compliance:
+   * abi-compliance-checker reports 100% ABI and API compatibility with
+     with v0.0.3
+
+-------------------------------------------------------------------
 Wed Dec 21 08:13:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.0.3:

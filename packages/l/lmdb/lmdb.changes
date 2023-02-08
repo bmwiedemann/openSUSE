@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 23 08:02:00 UTC 2023 - Alexander Kuznetsov <alx.kuzza@gmail.com>
+- update to 0.9.29:
+  * lmdump is not creating lock files
+
+-------------------------------------------------------------------
 Fri Mar 19 21:04:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.29:

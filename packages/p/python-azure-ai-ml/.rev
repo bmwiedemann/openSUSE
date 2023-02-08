@@ -60,4 +60,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1059904 from glaubitz)</comment>
     <requestid>1059958</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba6680aadb9451c354b02ecc6813f5ad</srcmd5>
+    <version>1.4.0</version>
+    <time>1675792245</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 1063604 from glaubitz)</comment>
+    <requestid>1063624</requestid>
+  </revision>
 </revisionlist>

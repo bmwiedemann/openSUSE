@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Feb  7 12:11:22 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.15.0
+  - New: Add [Huey](https://huey.readthedocs.io/en/latest/) Integration (#1555)
+  - Profiling: Do not send single sample profiles (#1879)
+  - Profiling: Add additional test coverage for profiler (#1877)
+  - Profiling: Always use builtin time.sleep (#1869)
+  - Profiling: Defaul in_app decision to None (#1855)
+  - Profiling: Remove use of threading.Event (#1864)
+  - Profiling: Enable profiling on all transactions (#1797)
+  - FastAPI: Fix check for Starlette in FastAPI integration (#1868)
+  - Flask: Do not overwrite default for username with email address in FlaskIntegration (#1873)
+  - Tests: Add py3.11 to test-common (#1871)
+  - Fix: Don't log whole event in before_send / event_processor drops (#1863)
+- Changes from 1.14.0
+  - Add `before_send_transaction` (#1840)
+  - Django: Always remove values of Django session related cookies. (#1842)
+  - Profiling: Enable profiling for ASGI frameworks (#1824)
+  - Profiling: Better gevent support (#1822)
+  - Profiling: Add profile context to transaction (#1860)
+  - Profiling: Use co_qualname in python 3.11 (#1831)
+  - OpenTelemetry: fix Use dict for sentry-trace context instead of tuple (#1847)
+  - OpenTelemetry: fix extra dependency (#1825)
+  - OpenTelemetry: fix NoOpSpan updates scope (#1834)
+  - OpenTelemetry: Make sure to noop when there is no DSN (#1852)
+  - FastAPI: Fix middleware being patched multiple times (#1841)
+  - Starlette: Avoid import of pkg_resource with Starlette integration (#1836)
+  - Removed code coverage target (#1862)
+- Changes from 1.13.0
+  - Add Starlite integration (#1748)
+  - Profiling: Remove sample buffer from profiler (#1791)
+  - Profiling: Performance tweaks to profile sampler (#1789)
+  - Add span for Django SimpleTemplateResponse rendering (#1818)
+  - Use @wraps for Django Signal receivers (#1815)
+  - Add enqueued_at and started_at to rq job extra (#1024)
+  - Remove sanic v22 pin (#1819)
+  - Add support for `byterray` and `memoryview` built-in types (#1833)
+  - Handle `"rc"` in SQLAlchemy version. (#1812)
+  - Doc: Use .venv (not .env) as a virtual env location in CONTRIBUTING.md (#1790)
+  - Auto publish to internal pypi on release (#1823)
+  - Added Python 3.11 to test suite (#1795)
+  - Update test/linting dependencies (#1801)
+  - Deps: bump sphinx from 5.2.3 to 5.3.0 (#1686)
+- Changes from 1.12.1
+  - Link errors to OTel spans (#1787) by @antonpirker
+- Changes from 1.12.0
+  - This adds support to automatically integrate OpenTelemetry performance tracing with Sentry.
+    (#1772, #1766, #1765)
+  - Tox Cleanup (#1749)
+  - CI: Fix Github action checks (#1780)
+  - Profiling: Introduce active thread id on scope (#1764)
+  - Profiling: Eagerly hash stack for profiles (#1755)
+  - Profiling: Resolve inherited method class names (#1756)
+- Changes from 1.11.1
+  - Move set_transaction_name out of event processor in fastapi/starlette (#1751)
+  - Expose proxy_headers as top level config and use in ProxyManager: 
+    https://docs.sentry.io/platforms/python/configuration/options/#proxy-headers (#1746)
+
+-------------------------------------------------------------------
 Mon Nov 14 15:19:03 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.11.0

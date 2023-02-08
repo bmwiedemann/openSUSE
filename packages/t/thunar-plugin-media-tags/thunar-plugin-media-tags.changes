@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  6 17:06:10 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.4.0
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Replace libexo with libxfce4util
+  * Replace ExoBinding with GBinding
+  * Fix compilation warnings
+  * Adds new README.md and updates
+  * AM_INIT_AUTOMAKE macro with foreign option
+  * A couple of autotools improvements
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jun 15 09:32:03 UTC 2018 - seife+obs@b1-systems.com
 
 - update to version 0.3.0

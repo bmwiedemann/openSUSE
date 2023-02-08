@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jan 23 22:09:31 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 2.8.0
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  * NUT now supports more i2c and modbus devices, as well as libusb-1.0
+    support as an alternative to earlier libusb-0.1 (so new
+    dependency-based categories of packages for drivers may be due).
+  * NUT Python modules and scripts (e.g. NUT-Monitor variants) should
+    work with python-2.7 and with python-3.x, so covering historic
+    distro releases as well as new ones (and so your distro can deliver
+    one or both, probably in several packages with different
+    dependencies in the latter case).
+  * NUT provides revised reference systemd and SMF service unit
+    definitions, including support of drivers wrapped into individual
+    service instances with varying dependencies based on different
+    media required (networked stack, USB stack, etc.), and many daemons
+    include -F option for running "in foreground" to avoid extra
+    forking after one already done by a service framework - you may
+    want to use those in your packaged deliverables.
+  * NUT newly provides the "nut-driver-enumerator" script and service,
+    which allows it to follow edition of ups.conf and dynamically
+    define+(re)start and stop+undefine service instances for drivers -
+    there are several ways it can be integrated for different
+    use-cases.
+  * Yhere are several new configuration keywords and CLI options - so
+    while new NUT builds should work with old configs and scripts, the
+    opposite is not necessarily true (old binaries may reject
+    configurations taking advantage of new features).
+  * There are several new protocol keywords - but old and new NUT
+    daemons (data server and clients) should be able to communicate
+    both ways.
+  * It is assumed that API/ABI changes may require third-party NUT
+    clients (library consumers of libnutclient, libupsclient,
+    libnutscan... -- their version info was bumped accordingly) to get
+    rebuilt, in order to work with the new NUT release in a stable
+    fashion.
+  * The dummy-ups driver used in automated testing now processes *.dev
+    filename patterns once and does not loop, like it still does for
+    *.seq and other files (by default).
+  * USB code is now more strict about logical minimum/maximum ranges
+    for data reported from devices, and some devices were already found
+    to make mistakes - so there is also a mechanism for turning a blind
+    eye to known issues and fix-up such report descriptors to produce
+    intended sane values.
+  * New documentation page docs/config-prereqs.txt highlights packaged
+    dependencies installable on a large range of platforms to build as
+    much of NUT as possible (incidentally, ones NUT CI farm uses to
+    test every iteration).
+- Remove upstreamed and obsolete patches:
+  * nut-doc-cables.patch
+  * nut-systemd-dirs.patch
+  * nut-upssched.patch
+  * nutscanner-ftbfs.patch
+  * openssl-1_1.patch
+  * reproducible.patch
+  * use-pkg-config-gdlib.diff
+- Source is no longer GPG signed, so keyring is not needed anymore
+  * nut.keyring
+- Unused additional source file removed (was added as a source, but
+  not packaged)
+  * nut.sleep
+- Don't install Solaris init files univited (PR#
+  * nut-Solaris-init-files.patch
+
+-------------------------------------------------------------------
 Wed May 11 23:01:34 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Build the basic documentation again (bsc#1197789#c7).

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Feb  5 17:04:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- yascreen 1.96: 
+ * various bug fixes, compatibility fixes, and build system fixes
+ * re-licenced to LGPL-3.0+
+- spec file fix-up for Factory, add upstream signing key
+
+-------------------------------------------------------------------
+Sat Apr  2 11:30:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unquantified claims from description
+
+-------------------------------------------------------------------
+Wed Jan 19 17:28:38 UTC 2022 - Jonathan Papineau <jonathan@jontech.app>
+
+- Initial packaging of yascreen 1.86

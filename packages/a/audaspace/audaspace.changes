@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Feb  4 17:22:00 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 1.4.0
+  * Support for OS specific/native audio devices/backends has been
+    added, that is PulseAudio (Linux), WASAPI (Windows) and
+    CoreAudio (MacOS).
+  * New sound effects have been added, namely Modulator and
+    Equalizer. Thanks to Marcos Perez for contributing the
+    Equalizer.
+  * File stream info: if an audio file contains multiple streams
+    you can choose which one to process instead of taking the first
+    one (this feature is only supported by ffmpeg, not libsndfile).
+  * API Change: double instead of float for time values for more
+    precise timing control.
+  * There have been lots of bugfixes, which are basically the
+    majority of all changes.
+  * And some other minor improvements were implemented as well.
+- Drop upstream patches:
+  * audaspace-gcc7.patch
+  * audaspace-plugin-build-options.patch
+  * audaspace-support-ffmpeg4.patch
+  * 034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch
+- Add pkgconfig(pulse) to allow audio via pulseaudio/pipewire
+- Use pkgconfig(jack), let distro select jack implementation
+- Split plugins packages to avoid pulling in excessive
+  dependencies, and recommend at least one device plugin from
+  the library.
+
+-------------------------------------------------------------------
 Wed Jul 13 09:36:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch: Support

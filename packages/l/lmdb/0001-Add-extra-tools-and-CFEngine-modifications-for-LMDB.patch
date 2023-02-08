@@ -97,7 +97,7 @@ index 000000000000..0e3ee4bb61c2
 +    rc = mdb_env_create(&env);
 +    if(rc) return report_error(rc);
 +
-+    rc = mdb_env_open(env, argv[2], MDB_NOSUBDIR, 0644);
++    rc = mdb_env_open(env, argv[2], MDB_NOSUBDIR | MDB_NOLOCK, 0644);
 +    if(rc) return report_error(rc);
 +
 +    rc = mdb_txn_begin(env, NULL, MDB_RDONLY, &txn);

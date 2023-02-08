@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-plugin-media-tags
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define plugin_name thunar-media-tags-plugin
 
 Name:           thunar-plugin-media-tags
-Url:            http://thunar.xfce.org/pwiki/projects/thunar-media-tags-plugin
-Version:        0.3.0
+URL:            https://docs.xfce.org/xfce/thunar/media-tags
+Version:        0.4.0
 Release:        0
-Source0:        http://archive.xfce.org/src/thunar-plugins/thunar-media-tags-plugin/0.3/%{plugin_name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/thunar-plugins/thunar-media-tags-plugin/0.4/%{plugin_name}-%{version}.tar.bz2
 Summary:        Thunar Plugin for Editing Media File Metadata and Renaming Based on Metadata
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(exo-2) >= 0.11.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(taglib)
-BuildRequires:  pkgconfig(thunarx-3)
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.0.0
+BuildRequires:  pkgconfig(taglib) >= 1.4
+BuildRequires:  pkgconfig(thunarx-3) >= 1.0.1
 Requires:       thunar >= 1.7.0
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}

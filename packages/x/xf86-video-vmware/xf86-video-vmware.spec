@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-vmware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-video-vmware
-Version:        13.3.0+12
+Version:        13.4.0
 Release:        0
 Summary:        VMware SVGA video driver for the Xorg X server
 License:        MIT
@@ -27,7 +27,6 @@ URL:            http://xorg.freedesktop.org/
 # Source url disabled, we are using a git checkout via source service
 #Source0:        http://xorg.freedesktop.org/releases/individual/driver/%%{name}-%%{version}.tar.bz2
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         u_Fix-build-gcc-12.patch
 ExclusiveArch:  %ix86 x86_64
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -57,7 +56,7 @@ vmware is an Xorg driver for VMware virtual video cards.
 # We have some -z now related errors during X default startup (boo#1197994):
 # this is directly visible on startup, so easy to test later on.
 export SUSE_ZNOW=0
-NOCONFIGURE=1 ./autogen.sh
+NOCONFIGURE=1 autoreconf -fi
 %configure
 %make_build
 

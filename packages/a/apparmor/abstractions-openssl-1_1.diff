@@ -1,0 +1,12 @@
+diff --git a/profiles/apparmor.d/abstractions/openssl b/profiles/apparmor.d/abstractions/openssl
+index c0c09fb45..65939ae44 100644
+--- a/profiles/apparmor.d/abstractions/openssl
++++ b/profiles/apparmor.d/abstractions/openssl
+@@ -11,6 +11,7 @@
+   abi <abi/3.0>,
+ 
+   /etc/ssl/openssl.cnf r,
++  /etc/ssl/openssl-*.cnf r,
+   /etc/ssl/{engdef,engines}.d/ r,
+   /etc/ssl/{engdef,engines}.d/*.cnf r,
+   /usr/share/ssl/openssl.cnf r,

@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define lname       libcamera0_0_3
-%define lname_base  libcamera-base0_0_3
+%define lname       libcamera0_0_4
+%define lname_base  libcamera-base0_0_4
 Name:           libcamera
-Version:        0.0.3
+Version:        0.0.4
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

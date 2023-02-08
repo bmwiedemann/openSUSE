@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3
 %define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux

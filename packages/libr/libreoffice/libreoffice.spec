@@ -126,11 +126,15 @@ Patch101:       0001-Revert-java-9-changes.patch
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
+# PATCH-FIX-UPSTREAM Add riscv64 support (backport of commit bc9487f745be)
+Patch1000:      riscv64-support.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
 BuildRequires:  awk
+%ifnarch riscv64
 BuildRequires:  binutils-gold
+%endif
 BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
@@ -280,7 +284,7 @@ Provides:       %{name}-icon-theme-crystal = %{version}
 Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
-ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le riscv64
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_79_0.tar.xz
@@ -1050,6 +1054,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch17 -p1
 %patch990 -p1
 %patch991 -p1
+%patch1000 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1127,7 +1132,11 @@ export NOCONFIGURE=yes
 %configure \
         --with-parallelism=%{jobs} \
         --enable-eot \
+%ifarch riscv64
+        --enable-ld=bfd \
+%else
         --enable-ld=gold \
+%endif
 %if %{with lto}
         --enable-lto \
 %endif

@@ -18,7 +18,7 @@
 
 Name:           libjxl
 %define lname   libjxl0_8
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause

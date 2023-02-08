@@ -16,6 +16,7 @@ Wed Nov 30 14:34:58 UTC 2022 - Andreas Schwab <schwab@suse.de>
 Tue Nov 29 11:45:36 MST 2022 - carnold@suse.com
 
 - Update to version 1.48.6
+  * jsc#PED-2113
   * This is a bug fix release. No upstream changelog.
 - Drop f162e47e-m4-Fix-configure-disable-ocaml.patch
 

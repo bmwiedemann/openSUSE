@@ -17,7 +17,7 @@
 
 
 Name:           whatsapp-for-linux
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        WhatsApp for Linux
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.34
 
 %description

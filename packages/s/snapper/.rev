@@ -1188,4 +1188,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207901</comment>
   </revision>
+  <revision rev="150" vrev="7">
+    <srcmd5>7eb046064ec3336e23eb8a8b35f03174</srcmd5>
+    <version>0.10.4</version>
+    <time>1675792050</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>1063377</requestid>
+  </revision>
 </revisionlist>

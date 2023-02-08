@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,21 +18,23 @@
 
 
 Name:           ntpsec
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
 URL:            https://www.ntpsec.org/
-Source0:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz.asc
+Source0:        https://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz
+Source1:        https://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz.asc
+# https://ftp.ntpsec.org/pub/releases/ntpsec.gpg.pub.asc
+Source2:        ntpsec.keyring
 Source3:        %{name}.changes
 Source4:        logrotate.ntp
 Source8:        ntp.conf
-Patch0:	harden_ntp-wait.service.patch
-Patch1:	harden_ntpd.service.patch
-Patch2:	harden_ntplogtemp.service.patch
-Patch3:	harden_ntpviz-daily.service.patch
-Patch4:	harden_ntpviz-weekly.service.patch
+Patch0:         harden_ntp-wait.service.patch
+Patch1:         harden_ntpd.service.patch
+Patch2:         harden_ntplogtemp.service.patch
+Patch3:         harden_ntpviz-daily.service.patch
+Patch4:         harden_ntpviz-weekly.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  bison
@@ -149,6 +151,8 @@ python3 ./waf build --verbose %{?_smp_mflags}
 %install
 python3 ./waf install --destdir=%{buildroot}
 
+rm %{buildroot}/usr/bin/runtests
+
 # Use correct path in unit file
 
 ln -s service %{buildroot}%{_sbindir}/rcntpd
@@ -238,7 +242,7 @@ exit 0
 %{_libdir}/libntpc.so
 
 %files
-%license LICENSE.adoc
+%license LICENSES/*
 %doc NEWS.adoc README.adoc
 %config(noreplace) %{_sysconfdir}/ntp.conf
 %{_sbindir}/rcntpd

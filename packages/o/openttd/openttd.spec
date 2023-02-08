@@ -1,7 +1,7 @@
 #
 # spec file for package openttd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2007-2012 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 Name:           openttd
-Version:        12.2
+Version:        13.0
 Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only

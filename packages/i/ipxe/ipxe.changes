@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  6 17:47:32 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- cross-aarch64-gcc7 is not available for SLE-15 (i586).
+  Also, there is no Leap port for i586, so let's disable aarch64
+  cross-compile target on i586 (bsc#1207796).
+
+-------------------------------------------------------------------
 Mon Jan 23 14:43:38 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - enable compressed images

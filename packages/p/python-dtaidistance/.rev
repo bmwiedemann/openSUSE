@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>871599</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bde3959ba004e1114ca974bbec7b9b53</srcmd5>
+    <version>2.3.10</version>
+    <time>1675792192</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests with latest numpy &gt;= 1.24
+- Update to 2.3.10
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.5
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.4
+  * Additional clustering techniques. E.g. DTW Barycenter Averaging for
+    clustering, k-medoids.
+  * Subsequence search and local concurrences.
+  * Improved Windows compatibility.
+  * Anaconda release (by @m-rossi )
+  * Improved visualisations
+</comment>
+    <requestid>1063598</requestid>
+  </revision>
 </revisionlist>

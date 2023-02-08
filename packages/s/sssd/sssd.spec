@@ -398,7 +398,7 @@ autoreconf -fiv
 %install
 # sss_obfuscate is compatible with both python 2 and 3
 perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
-%make_install
+%make_install dbuspolicydir=%{_datadir}/dbus-1/system.d
 b="%buildroot"
 
 # Copy some defaults
@@ -662,7 +662,7 @@ done
 %dir %_mandir/??/man5/
 %_mandir/??/man5/sssd-ifp.5*
 %_unitdir/sssd-ifp.service
-%config %_sysconfdir/dbus-1/system.d/org.freedesktop.sssd.infopipe.conf
+%_datadir/dbus-1/system.d/org.freedesktop.sssd.infopipe.conf
 %_datadir/dbus-1/system-services/org.freedesktop.sssd.infopipe.service
 
 %files ipa

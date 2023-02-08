@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 30 13:55:00 UTC 2023 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Update to upstream 2.3.0 (yes, 2.3.0 is newer than 2.3.0d6 for upstream):
+  * adds better Python 3 compatibility
+  * updated PIP URL
+  * removed unencrypted git protocol use
+
+-------------------------------------------------------------------
 Thu Jan  9 13:34:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - With the upgrade to 2.3.0d6 obsoleted these patches:

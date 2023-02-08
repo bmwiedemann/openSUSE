@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  6 17:11:49 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add harfbuzz-CVE-2023-25193.patch: limit how far we skip when
+  looking back (boo#1207922 CVE-2023-25193).
+
+-------------------------------------------------------------------
 Sat Dec 17 09:26:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 6.0.0:

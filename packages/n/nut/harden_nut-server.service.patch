@@ -2,8 +2,8 @@ Index: nut-2.7.4/scripts/systemd/nut-server.service.in
 ===================================================================
 --- nut-2.7.4.orig/scripts/systemd/nut-server.service.in
 +++ nut-2.7.4/scripts/systemd/nut-server.service.in
-@@ -8,6 +8,17 @@ Wants=nut-driver.service
- Before=nut-monitor.service
+@@ -18,6 +18,17 @@
+ PartOf=nut.target
  
  [Service]
 +# added automatically, for details please see
@@ -17,6 +17,6 @@ Index: nut-2.7.4/scripts/systemd/nut-server.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@SBINDIR@/upsd 
- Type=forking
- 
+ EnvironmentFile=-@CONFPATH@/nut.conf
+ SyslogIdentifier=%N
+ # Note: foreground mode by default skips writing a PID file (and

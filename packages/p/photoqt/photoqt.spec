@@ -17,15 +17,13 @@
 
 
 Name:           photoqt
-Version:        2.9.1
+Version:        3.0
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://photoqt.org/
 Source0:        https://photoqt.org/pkgs/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - photoqt-fix-building-with-raw.patch - make raw loader work when libraw is compiled without rawspeed support
-Patch0:         photoqt-fix-building-with-raw.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel

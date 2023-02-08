@@ -1,0 +1,249 @@
+From 67ed25a8f7764e61647c3c31d09a1e60db38006b Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 16 Feb 2022 11:20:54 +0100
+Subject: [PATCH 18/34] COMMON: Add post-quantum algorithm OIDs
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/include/include.mk         |  2 +-
+ usr/include/pqc_oids.h         | 48 ++++++++++++++++++++++++++
+ usr/lib/common/common.mk       |  3 +-
+ usr/lib/common/globals.c       |  1 +
+ usr/lib/common/pqc_defs.h      | 48 ++++++++++++++++++++++++++
+ usr/lib/common/pqc_supported.c | 78 ++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 178 insertions(+), 2 deletions(-)
+ create mode 100644 usr/include/pqc_oids.h
+ create mode 100644 usr/lib/common/pqc_defs.h
+ create mode 100644 usr/lib/common/pqc_supported.c
+
+diff --git a/usr/include/include.mk b/usr/include/include.mk
+index 79e593d7..a63e043f 100644
+--- a/usr/include/include.mk
++++ b/usr/include/include.mk
+@@ -3,7 +3,7 @@ opencryptokiincludedir = ${includedir}/opencryptoki
+ opencryptokiinclude_HEADERS =						\
+ 	usr/include/apiclient.h	usr/include/pkcs11types.h		\
+ 	usr/include/pkcs11.h						\
+-	usr/include/ec_curves.h
++	usr/include/ec_curves.h usr/include/pqc_oids.h
+ 
+ noinst_HEADERS +=							\
+ 	usr/include/apictl.h usr/include/local_types.h			\
+diff --git a/usr/include/pqc_oids.h b/usr/include/pqc_oids.h
+new file mode 100644
+index 00000000..0891373e
+--- /dev/null
++++ b/usr/include/pqc_oids.h
+@@ -0,0 +1,48 @@
++/*
++ * COPYRIGHT (c) International Business Machines Corp. 2022
++ *
++ * This program is provided under the terms of the Common Public License,
++ * version 1.0 (CPL-1.0). Any use, reproduction or distribution for this
++ * software constitutes recipient's acceptance of CPL-1.0 terms which can be
++ * found in the file LICENSE file or at
++ * https://opensource.org/licenses/cpl1.0.php
++ */
++
++
++#ifndef _PQC_OIDS_H_
++#define _PQC_OIDS_H_
++
++/*
++ * OIDs and their DER encoding for the post-quantum crypto algorithms
++ * supported by OpenCryptoki:
++ */
++
++/* Dilithium Round 2 high-security (SHAKE-256): 1.3.6.1.4.1.2.267.1.6.5 */
++#define OCK_DILITHIUM_R2_65        { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x01, 0x06, 0x05 }
++
++/* Dilithium Round 2 for outbound authentication: 1.3.6.1.4.1.2.267.1.8.7 */
++#define OCK_DILITHIUM_R2_87        { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x01, 0x08, 0x07 }
++
++/* Dilithium Round 3 weak (SHAKE-256): 1.3.6.1.4.1.2.267.7.4.4 */
++#define OCK_DILITHIUM_R3_44        { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x07, 0x04, 0x04 }
++
++/* Dilithium Round 3 recommended (SHAKE-256): 1.3.6.1.4.1.2.267.7.6.5 */
++#define OCK_DILITHIUM_R3_65        { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x07, 0x06, 0x05 }
++
++/* Dilithium Round 3 high-security (SHAKE-256): 1.3.6.1.4.1.2.267.7.8.7 */
++#define OCK_DILITHIUM_R3_87        { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x07, 0x08, 0x07 }
++
++/* Kyber Round 2 768 (SHAKE-128): 1.3.6.1.4.1.2.267.5.3.3 */
++#define OCK_KYBER_R2_768           { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x05, 0x03, 0x03 }
++
++/* Kyber Round 2 1024 (SHAKE-128): 1.3.6.1.4.1.2.267.5.4.4 */
++#define OCK_KYBER_R2_1024          { 0x06, 0x0B, 0x2B, 0x06, 0x01, 0x04, \
++                                     0x01, 0x02, 0x82, 0x0B, 0x05, 0x04, 0x04 }
++
++#endif                          // _PQC_OIDS_H_
+diff --git a/usr/lib/common/common.mk b/usr/lib/common/common.mk
+index 6341cb74..93f1e21f 100644
+--- a/usr/lib/common/common.mk
++++ b/usr/lib/common/common.mk
+@@ -7,4 +7,5 @@ noinst_HEADERS +=							\
+ 	usr/lib/common/p11util.h usr/lib/common/event_client.h		\
+ 	usr/lib/common/list.h usr/lib/common/tok_specific.h		\
+ 	usr/lib/common/uri_enc.h usr/lib/common/uri.h 			\
+-	usr/lib/common/buffer.h usr/lib/common/pin_prompt.h
++	usr/lib/common/buffer.h usr/lib/common/pin_prompt.h		\
++	usr/lib/common/pqc_defs.h
+diff --git a/usr/lib/common/globals.c b/usr/lib/common/globals.c
+index db4d352c..5b79e785 100644
+--- a/usr/lib/common/globals.c
++++ b/usr/lib/common/globals.c
+@@ -27,6 +27,7 @@
+ #include "defs.h"
+ #include "host_defs.h"
+ #include "h_extern.h"
++#include "pqc_oids.h"
+ 
+ struct ST_FCN_LIST function_list;
+ 
+diff --git a/usr/lib/common/pqc_defs.h b/usr/lib/common/pqc_defs.h
+new file mode 100644
+index 00000000..51ee1200
+--- /dev/null
++++ b/usr/lib/common/pqc_defs.h
+@@ -0,0 +1,48 @@
++/*
++ * COPYRIGHT (c) International Business Machines Corp. 2022
++ *
++ * This program is provided under the terms of the Common Public License,
++ * version 1.0 (CPL-1.0). Any use, reproduction or distribution for this
++ * software constitutes recipient's acceptance of CPL-1.0 terms which can be
++ * found in the file LICENSE file or at
++ * https://opensource.org/licenses/cpl1.0.php
++ */
++
++#ifndef _PQC_DEFS
++#define _PQC_DEFS
++
++#include <stdio.h>
++
++#include "pqc_oids.h"
++
++extern const CK_BYTE dilithium_r2_65[];
++extern const CK_ULONG dilithium_r2_65_len;
++extern const CK_BYTE dilithium_r2_87[];
++extern const CK_ULONG dilithium_r2_87_len;
++extern const CK_BYTE dilithium_r3_44[];
++extern const CK_ULONG dilithium_r3_44_len;
++extern const CK_BYTE dilithium_r3_56[];
++extern const CK_ULONG dilithium_r3_56_len;
++extern const CK_BYTE dilithium_r3_87[];
++extern const CK_ULONG dilithium_r3_87_len;
++
++extern const CK_BYTE kyber_r2_768[];
++extern const CK_ULONG kyber_r2_768_len;
++extern const CK_BYTE kyber_r2_1024[];
++extern const CK_ULONG kyber_r2_1024_len;
++
++struct pqc_oid {
++    const CK_BYTE *oid;
++    CK_ULONG oid_len;
++    CK_ULONG keyform;
++};
++
++extern const struct pqc_oid dilithium_oids[];
++extern const struct pqc_oid kyber_oids[];
++
++const struct pqc_oid *find_pqc_by_keyform(const struct pqc_oid *pqcs,
++                                          CK_ULONG keyform);
++const struct pqc_oid *find_pqc_by_oid(const struct pqc_oid *pqcs,
++                                      CK_BYTE *oid, CK_ULONG oid_len);
++
++#endif
+diff --git a/usr/lib/common/pqc_supported.c b/usr/lib/common/pqc_supported.c
+new file mode 100644
+index 00000000..4f048c33
+--- /dev/null
++++ b/usr/lib/common/pqc_supported.c
+@@ -0,0 +1,78 @@
++/*
++ * COPYRIGHT (c) International Business Machines Corp. 2022
++ *
++ * This program is provided under the terms of the Common Public License,
++ * version 1.0 (CPL-1.0). Any use, reproduction or distribution for this
++ * software constitutes recipient's acceptance of CPL-1.0 terms which can be
++ * found in the file LICENSE file or at
++ * https://opensource.org/licenses/cpl1.0.php
++ */
++
++#include <string.h>
++#include "pkcs11types.h"
++#include "pqc_defs.h"
++
++const CK_BYTE dilithium_r2_65[] = OCK_DILITHIUM_R2_65;
++const CK_ULONG dilithium_r2_65_len = sizeof(dilithium_r2_65);
++const CK_BYTE dilithium_r2_87[] = OCK_DILITHIUM_R2_87;
++const CK_ULONG dilithium_r2_87_len = sizeof(dilithium_r2_87);
++const CK_BYTE dilithium_r3_44[] = OCK_DILITHIUM_R3_44;
++const CK_ULONG dilithium_r3_44_len = sizeof(dilithium_r3_44);
++const CK_BYTE dilithium_r3_65[] = OCK_DILITHIUM_R3_65;
++const CK_ULONG dilithium_r3_65_len = sizeof(dilithium_r3_65);
++const CK_BYTE dilithium_r3_87[] = OCK_DILITHIUM_R3_87;
++const CK_ULONG dilithium_r3_87_len = sizeof(dilithium_r3_87);
++
++const struct pqc_oid dilithium_oids[] = {
++    { .oid = dilithium_r2_65, .oid_len = dilithium_r2_65_len,
++      .keyform = CK_IBM_DILITHIUM_KEYFORM_ROUND2_65 },
++    { .oid = dilithium_r2_87, .oid_len = dilithium_r2_87_len,
++      .keyform = CK_IBM_DILITHIUM_KEYFORM_ROUND2_87 },
++    { .oid = dilithium_r3_44, .oid_len = dilithium_r3_44_len,
++      .keyform = CK_IBM_DILITHIUM_KEYFORM_ROUND3_44 },
++    { .oid = dilithium_r3_65, .oid_len = dilithium_r3_65_len,
++      .keyform = CK_IBM_DILITHIUM_KEYFORM_ROUND3_65 },
++    { .oid = dilithium_r3_87, .oid_len = dilithium_r3_87_len,
++      .keyform = CK_IBM_DILITHIUM_KEYFORM_ROUND3_87 },
++    { .oid = NULL, .oid_len = 0, .keyform = 0 }
++};
++
++const CK_BYTE kyber_r2_768[] = OCK_KYBER_R2_768;
++const CK_ULONG kyber_r2_768_len = sizeof(kyber_r2_768);
++const CK_BYTE kyber_r2_1024[] = OCK_KYBER_R2_1024;
++const CK_ULONG kyber_r2_1024_len = sizeof(kyber_r2_1024);
++
++const struct pqc_oid kyber_oids[] = {
++    { .oid = kyber_r2_768, .oid_len = kyber_r2_768_len,
++       .keyform = CK_IBM_KYBER_KEYFORM_ROUND2_768 },
++    { .oid = kyber_r2_1024, .oid_len = kyber_r2_1024_len,
++      .keyform = CK_IBM_KYBER_KEYFORM_ROUND2_1024 },
++    { .oid = NULL, .oid_len = 0, .keyform = 0 }
++};
++
++const struct pqc_oid *find_pqc_by_keyform(const struct pqc_oid *pqcs,
++                                          CK_ULONG keyform)
++{
++    CK_ULONG i;
++
++    for (i = 0; pqcs[i].oid != NULL; i++) {
++        if (pqcs[i].keyform == keyform)
++            return &pqcs[i];
++    }
++
++    return NULL;
++}
++
++const struct pqc_oid *find_pqc_by_oid(const struct pqc_oid *pqcs,
++                                      CK_BYTE *oid, CK_ULONG oid_len)
++{
++    CK_ULONG i;
++
++    for (i = 0; pqcs[i].oid != NULL; i++) {
++        if (pqcs[i].oid_len == oid_len &&
++            memcmp(pqcs[i].oid, oid, oid_len) == 0)
++            return &pqcs[i];
++    }
++
++    return NULL;
++}
+-- 
+2.16.2.windows.1
+

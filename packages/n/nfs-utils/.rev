@@ -1698,4 +1698,16 @@
   (bsc#1203746)</comment>
     <requestid>1037197</requestid>
   </revision>
+  <revision rev="176" vrev="37">
+    <srcmd5>e6b706842312109a6b2848609254e1f2</srcmd5>
+    <version>unknown</version>
+    <time>1675792044</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename all drop-in options.conf files as 10-options.conf
+  This makes it easier for other packages to over-ride
+  with a drop-in with a later sequence number.
+  resource-agents does this.
+  (bsc#1207843)</comment>
+    <requestid>1063330</requestid>
+  </revision>
 </revisionlist>

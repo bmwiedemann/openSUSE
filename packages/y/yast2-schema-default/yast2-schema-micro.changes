@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  7 14:11:39 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- drop yast2-dhcp-server and yast2-http-server schema from TW as
+  it also depends on yast2-dns-server (bsc#1205363)
+- 4.5.9
+
+-------------------------------------------------------------------
+Mon Feb  6 16:16:30 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- drop yast2-dns-server schema from TW (bsc#1205363)
+- 4.5.8
+
+-------------------------------------------------------------------
 Mon Jan 23 22:04:58 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - drop yast2-sound schema spec from TW where yast2-sound is dropped

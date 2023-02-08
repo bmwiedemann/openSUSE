@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:41:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against openSSL 3.
+
+-------------------------------------------------------------------
 Mon Oct 17 01:22:26 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 0.4.12:

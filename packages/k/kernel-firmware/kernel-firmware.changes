@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb 06 07:56:54 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230125 (git commit 5c11a3742947):
+  (jsc#PED-1167, jsc#PED-1169, jsc#PED-1171)
+  * amdgpu: Add VCN 4.0.2 firmware
+  * amdgpu: Add PSP 13.0.4 firmware
+  * amdgpu: Add SDMA 6.0.1 fimware
+  * amdgpu: Add GC 11.0.1 firmware
+  * amdgpu: Add DCN 3.1.4 firmware
+  * iwlwifi: remove old intermediate 5.15+ firmwares
+  * iwlwifi: remove 5.10 and 5.15 intermediate old firmwares
+  * iwlwifi: remove 5.4 and 5.10 intermediate old firmwares
+  * iwlwifi: remove 4.19 and 5.4 intermediate old firmwares
+  * iwlwifi: remove old unsupported older than 4.14 LTS
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * amdgpu: update vangogh firmware
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * brcm: add configuration files for CyberTan WC121
+  * qcom: add firmware files for Adreno A200
+  * rtw89: 8852c: update fw to v0.27.56.10
+  *  QCA: Add Bluetooth firmware for QCA2066
+
+-------------------------------------------------------------------
 Wed Jan 18 13:26:13 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Correct alias list for ACPI entries (bsc#1207211)

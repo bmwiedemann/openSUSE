@@ -103,4 +103,12 @@
 - Drop vkmark-fix-missing-include.patch</comment>
     <requestid>1037922</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>45be1a06a4a90fe6156056f0acc4e7f8</srcmd5>
+    <version>2017.08+git.20220909</version>
+    <time>1675792180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063584</requestid>
+  </revision>
 </revisionlist>

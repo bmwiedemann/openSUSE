@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  5 18:20:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6
+  Changes:
+  * Fix missing port # in pcap files
+  * Print MAC keys only for non AEAD ciphers
+
+-------------------------------------------------------------------
 Thu May 26 13:14:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5

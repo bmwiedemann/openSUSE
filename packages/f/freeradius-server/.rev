@@ -921,4 +921,41 @@ Feature Improvements
     <comment></comment>
     <requestid>1058729</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0c3bac073b668b5eaab15c66d4793e8e</srcmd5>
+    <version>3.2.1</version>
+    <time>1675792153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.1:
+  Feature Improvements
+  *  Add dictionary.ciena, dictionary.nile, and DHCPv4 dictionaries
+  *  Add simultaneous-use queries for MS SQL
+  *  Add radmin command for &quot;stats pool &lt;module-name&gt;&quot;
+     which prints out statistics about the connection pools.
+  *  Client statistics now shows &quot;conflicts&quot;,
+     to count conflicting packets.
+  *  New optional &quot;lightweight accounting-on/off&quot; strategy.
+     When refreshing queries.conf you should also add the new
+     nasreload table and corresponding GRANTs to your DB schema.
+  *  Add TLS-Client-Cert-X509v3-Certificate-Policies, which helps
+     with Eduroam.
+  *  Allow auth+acct for TCP sockets, too.
+  *  Add rlm_cache_redis. See raddb/mods-available/cache for details.
+  *  Allow radmin to look up home servers by name, too.
+  *  Ensure that dynamic clients don't create loops on duplicates
+  *  Removed rlm_sqlhpwippool. There was no documentation, no configuration,
+     and the module was ~15 years old with no one using it.
+  *  Marked rlm_python3 as stable.
+  *  Add sigalgs_list. See raddb/mods-available/eap
+  *  For rlm_linelog, when opening files in /dev, look at &quot;permissions&quot;
+     to see whether to open them r/w.
+  *  More flexibility for dynamic home servers. See
+     doc/configuration/dynamic_home_servers.md and
+     raddb/home_servers/README.md.
+  *  Allow setting of application_name for PostgreSQL.
+     See mods-available/sql.
+  Bug Fixes
+  *  Correct test for open sessions in radacct for MS SQL.</comment>
+    <requestid>1063506</requestid>
+  </revision>
 </revisionlist>

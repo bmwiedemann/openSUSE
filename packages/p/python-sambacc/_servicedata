@@ -1,0 +1,6 @@
+<servicedata>
+ <service name="tar_scm">
+  <param name="url">https://github.com/samba-in-kubernetes/sambacc.git</param>
+  <param name="changesrevision">9d8b89291177ff69c1bd1791e27a7f578757fb0b</param>
+ </service>
+</servicedata>

@@ -158,4 +158,14 @@ use xorrisofs for creating iso
     <comment></comment>
     <requestid>1060625</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0e3eed9f77de54505d6cc8bbd1760fe9</srcmd5>
+    <version>1.21.1+git20230120.a99e435c</version>
+    <time>1675792174</time>
+    <user>dimstar_suse</user>
+    <comment>- cross-aarch64-gcc7 is not available for SLE-15 (i586).
+  Also, there is no Leap port for i586, so let's disable aarch64
+  cross-compile target on i586 (bsc#1207796). (forwarded request 1063501 from eeich)</comment>
+    <requestid>1063544</requestid>
+  </revision>
 </revisionlist>

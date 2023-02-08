@@ -1388,4 +1388,12 @@
     <comment></comment>
     <requestid>1061605</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>24834eba171b9ded20ca74c3b550f228</srcmd5>
+    <version>2.38.4</version>
+    <time>1675792055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38.4 (forwarded request 1062689 from mgorse)</comment>
+    <requestid>1063404</requestid>
+  </revision>
 </revisionlist>

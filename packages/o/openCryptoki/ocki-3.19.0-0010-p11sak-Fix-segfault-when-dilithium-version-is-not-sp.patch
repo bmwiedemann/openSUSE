@@ -1,0 +1,34 @@
+From bea2552c40339d9013eaaa55b13491c7e36fbadf Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Tue, 8 Nov 2022 15:49:22 +0100
+Subject: [PATCH 10/34] p11sak: Fix segfault when dilithium version is not
+ specified with generate-key
+
+Command 'p11sak generate-key ibm-dilithium' segfaults because the dilithium
+version is not specified, but the code does not check for a NULL pointer.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/sbin/p11sak/p11sak.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/usr/sbin/p11sak/p11sak.c b/usr/sbin/p11sak/p11sak.c
+index b399c88a..8cfcb21d 100644
+--- a/usr/sbin/p11sak/p11sak.c
++++ b/usr/sbin/p11sak/p11sak.c
+@@ -1843,6 +1843,12 @@ static CK_RV check_args_gen_key(p11sak_kt *kt, CK_ULONG keylength,
+     case kt_3DES:
+         break;
+     case kt_IBM_DILITHIUM:
++        if (dilithium_ver == NULL) {
++            fprintf(stderr,
++                    "Cipher key type [%d] supported but Dilithium version not set in arguments. Try adding argument <r2_65>\n",
++                    *kt);
++            return CKR_ARGUMENTS_BAD;
++        }
+         if (strcasecmp(dilithium_ver, "r2_65") == 0) {
+             break;
+         } else {
+-- 
+2.16.2.windows.1
+

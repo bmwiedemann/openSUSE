@@ -7,4 +7,41 @@
     <comment>New package of community supported tool for AMD SEV platform administration</comment>
     <requestid>987954</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d7806f5b55fe1b8df93ec4b58ea1807b</srcmd5>
+    <version>0.3.2+git.e37c4d6</version>
+    <time>1675792163</time>
+    <user>dimstar_suse</user>
+    <comment>- Set cargo_vendor update param to false to bypass upstream semvar issues
+- Update to v0.3.2 + git commit e37c4d6
+     src/main: Remove README portion of main.rs
+     .github: Remove cargo readme CI test
+     docs: Add a generable man page
+     ci: Add asciidoctor as a build dependency
+     ok: Add Genoa processor identifying
+     ok: Rewrite processor generation querying
+     secret: Add docs and update README.md
+     Add `secret build` subcommand
+     measurement: rework some functions for use with `secret build`
+     main: Improve error printing on exit
+     measurement: Add docs and update README.md
+     measurement: Comment why we aren't using sev crate
+     Change `measurement build` output to measurement+nonce
+     Add `measurement build --launch-measure-blob`
+     Add `measurement build --vmsa-cpu0, --vmsa-cpu1, --num-cpus`
+     Add `measurement build --firmware --kernel --initrd --cmdline`
+     Add `measurement build --outfile PATH`
+     Let `measurement build --tk` accept path or base64 string
+     Let `measurement build` accept int values as hex too
+     Add `measurement build` subcommand
+     Update version to 0.3.2
+     Update sev crate to 1.0.1
+     Update to 0.3.1
+     build(deps): bump httparse from 1.7.1 to 1.8.0
+     Add CODEOWNERS file
+     CI: Drop rust 1.51.0 testing
+     Fix clippy warnings with rust nightly
+     ok: Show if Page flush MSR is enabled/disabled</comment>
+    <requestid>1063528</requestid>
+  </revision>
 </revisionlist>

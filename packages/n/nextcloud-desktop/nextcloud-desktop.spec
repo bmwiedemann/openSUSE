@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.6.6
+Version:        3.7.1
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5KIO) >= 5.16
 ###BuildRequires:  cmake(Qt5Keychain)
@@ -291,10 +292,10 @@ done
 
 %files dolphin
 %{_libdir}/libnextclouddolphinpluginhelper.so
-%{_libdir}/qt5/plugins/nextclouddolphinactionplugin.so
 %dir %{_libdir}/qt5/plugins/kf5/overlayicon/
 %{_libdir}/qt5/plugins/kf5/overlayicon/nextclouddolphinoverlayplugin.so
-%{_datadir}/kservices5/nextclouddolphinactionplugin.desktop
+%dir %{_libdir}/qt5/plugins/kf5/kfileitemaction/
+%{_libdir}/qt5/plugins/kf5/kfileitemaction/nextclouddolphinactionplugin.so
 %endif
 
 %changelog

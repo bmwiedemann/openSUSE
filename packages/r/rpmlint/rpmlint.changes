@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 06 15:37:37 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230206.a2c4626:
+  * dbus-service: adjust sssd-dbus infopipe whitelisting to /usr (bsc#1207586)
+  * d-bus services: adjust NetworkManager-fortisslvpn from /etc to /usr (bsc#1207585)
+  * dbus-services: adjust pulseaudio to new /usr path (bsc#1207584)
+
+-------------------------------------------------------------------
 Wed Jan 25 10:05:47 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230125.20e5b58:

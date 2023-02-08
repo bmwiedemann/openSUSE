@@ -1,0 +1,29 @@
+From 3b8f82b2aaf34fa67901aa27f85ae7973d5553d0 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Fri, 21 Oct 2022 10:10:36 +0200
+Subject: [PATCH 04/34] Mechtable: CKM_IBM_DILITHIUM can also be used for key
+ generation
+
+Currently this is not used anywhere, but let's correct it anyway.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/api/mechtable.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/lib/api/mechtable.inc b/usr/lib/api/mechtable.inc
+index 4a28192c..f74e08b7 100644
+--- a/usr/lib/api/mechtable.inc
++++ b/usr/lib/api/mechtable.inc
+@@ -78,7 +78,7 @@ const struct mechrow mechtable_rows[] =
+      { "CKM_IBM_ATTRIBUTEBOUND_WRAP", CKM_IBM_ATTRIBUTEBOUND_WRAP,   0, MC_INFORMATION_UNAVAILABLE, MCF_WRAPUNWRAP | MCF_NEEDSPARAM },
+      { "CKM_IBM_BTC_DERIVE",          CKM_IBM_BTC_DERIVE,            0, MC_INFORMATION_UNAVAILABLE, MCF_DERIVE | MCF_NEEDSPARAM },
+      { "CKM_IBM_CMAC",                CKM_IBM_CMAC,                  0,           MC_KEY_DEPENDENT, MCF_SIGNVERIFY },
+-     { "CKM_IBM_DILITHIUM",           CKM_IBM_DILITHIUM,             0,                       3366, MCF_SIGNVERIFY },/* Size unknown */
++     { "CKM_IBM_DILITHIUM",           CKM_IBM_DILITHIUM,             0,                       3366, MCF_KEYGEN | MCF_SIGNVERIFY },
+      { "CKM_IBM_ECDSA_OTHER",         CKM_IBM_ECDSA_OTHER,           0,           MC_KEY_DEPENDENT, MCF_SIGNVERIFY | MCF_NEEDSPARAM },
+      { "CKM_IBM_EC_X25519",           CKM_IBM_EC_X25519,             0, MC_INFORMATION_UNAVAILABLE, MCF_DERIVE },
+      { "CKM_IBM_EC_X448",             CKM_IBM_EC_X448,               0, MC_INFORMATION_UNAVAILABLE, MCF_DERIVE },
+-- 
+2.16.2.windows.1
+

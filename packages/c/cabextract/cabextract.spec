@@ -1,7 +1,7 @@
 #
 # spec file for package cabextract
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cabextract
-Version:        1.9.1
+Version:        1.10
 Release:        0
 Summary:        A Program to Extract Microsoft Cabinet Files
 License:        GPL-3.0-or-later
@@ -36,15 +36,15 @@ cabextract can be used to unpack these files.
 %autosetup
 
 %build
-%configure\
-	--with-external-libmspack
+%configure \
+  --with-external-libmspack
 %make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING

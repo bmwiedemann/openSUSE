@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>744472</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ff5aae71446182cd482ca54786ced393</srcmd5>
+    <version>0.6.1</version>
+    <time>1675792252</time>
+    <user>dimstar_suse</user>
+    <comment>- disable depreacted declarations warnings for openssl 3 for now. (forwarded request 1063395 from msmeissn)</comment>
+    <requestid>1063647</requestid>
+  </revision>
 </revisionlist>

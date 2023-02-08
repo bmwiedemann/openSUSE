@@ -96,10 +96,8 @@
 
 %if "%{flavor}" == "drivers"
   %define glamor 0
-%if 0%{?suse_version} > 1550
-%ifnarch s390 s390x
+%if 0%{?suse_version} > 1550 && 0%{with_opencl}
   %define with_rusticl 1
-%endif
 %endif
 %else
   # No llvm dependencies

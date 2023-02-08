@@ -1,0 +1,31 @@
+From b17570340533d36db1782e5aeafc9107c607b7c4 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 7 Nov 2022 14:04:01 +0100
+Subject: [PATCH 09/34] EP11: Fix memory leak introduced with recent commit
+
+Function publ_key_get_spki() allocates the SPKI buffer, so it must be freed
+afterwards.
+
+Fixes: 638fa126c8cb28ff7daf2bb383a0461c8f9fe6f8
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/ep11_stdll/ep11_specific.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/usr/lib/ep11_stdll/ep11_specific.c b/usr/lib/ep11_stdll/ep11_specific.c
+index 3b14a557..9e320503 100644
+--- a/usr/lib/ep11_stdll/ep11_specific.c
++++ b/usr/lib/ep11_stdll/ep11_specific.c
+@@ -5452,6 +5452,8 @@ error:
+         free(chk_attr);
+     if (spki_attr != NULL)
+         free(spki_attr);
++    if (spki != NULL)
++        free(spki);
+     if (new_attrs)
+         free_attribute_array(new_attrs, new_attrs_len);
+     if (new_attrs1)
+-- 
+2.16.2.windows.1
+

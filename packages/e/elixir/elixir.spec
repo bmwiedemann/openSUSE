@@ -27,17 +27,15 @@ Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz
 Source2:        macros.elixir
 BuildRequires:  gcc
 BuildRequires:  make
-# required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
 Requires:       erlang >= 23
-Requires:       git >= 1.7
 BuildRequires:  erlang >= 23
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
-BuildRequires:  git >= 1.7
+# required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
+BuildRequires:  git-core >= 1.7
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Requires:       erlang
 
 %description
 Elixir is a functional meta-programming aware language built on top

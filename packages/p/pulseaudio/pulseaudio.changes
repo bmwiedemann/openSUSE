@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 15:20:09 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d file to /usr (bsc#1207584)
+
+-------------------------------------------------------------------
 Mon Jul 18 12:17:39 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to 16.1 (bsc#1201331):

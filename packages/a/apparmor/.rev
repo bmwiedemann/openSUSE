@@ -2524,4 +2524,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   (boo#1207698) (forwarded request 1062036 from cboltz)</comment>
     <requestid>1062692</requestid>
   </revision>
+  <revision rev="187" vrev="4">
+    <srcmd5>895730fdfa91317e59fe9010bdf116c6</srcmd5>
+    <version>3.1.2</version>
+    <time>1675792108</time>
+    <user>dimstar_suse</user>
+    <comment>- add abstractions-openssl-1_1.diff: allow to read
+  /etc/ssl/openssl-1_1.cnf in abstractions/openssl (boo#1207911) (forwarded request 1063513 from cboltz)</comment>
+    <requestid>1063514</requestid>
+  </revision>
 </revisionlist>

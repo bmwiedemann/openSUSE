@@ -1,7 +1,7 @@
 #
 # spec file for package tdom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  libexpat-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tcllib
 Source0:        http://tdom.org/downloads/tdom-%{version}-src.tgz
-Patch0:         install-libraries-libdir.patch
 
 %description
 tDOM combines high performance XML data processing with easy and
@@ -59,7 +58,7 @@ mkdir build
 cd build
 CFLAGS="%optflags -DUSE_INTERP_ERRORLINE" ../configure \
 	--prefix=%_prefix \
-	--libdir=%_libdir \
+	--libdir=%tcl_archdir \
 	--mandir=%_mandir \
 	--with-tcl=%_libdir \
 	--disable-tdomalloc \
@@ -69,7 +68,7 @@ cd ../extensions/tnc
 autoreconf --force
 CFLAGS="%optflags" ./configure \
 	--prefix=%_prefix \
-	--libdir=%_libdir \
+	--libdir=%tcl_archdir \
 	--mandir=%_mandir \
 	--with-tcl=%_libdir \
 	--with-tdom=../../build
@@ -83,21 +82,21 @@ make test TCLLIBPATH=../../build EXTRA_PATH=../../build
 
 %install
 cd build
-make DESTDIR=%buildroot pkglibdir=%tclscriptdir/%name%version install
-chmod 644 %buildroot/%_libdir/*.a
-cd ../extensions/tnc
-make DESTDIR=%buildroot pkglibdir=%tclscriptdir/tnc0.3.0 install
+make DESTDIR=%buildroot install
+make -C ../extensions/tnc DESTDIR=%buildroot install
+#chmod 644 %buildroot/%tcl_archdir/*.a
 
 %files
 %license MPL_2.0.html LICENSE
 %doc ChangeLog CHANGES README.md
 %doc %_mandir/man*/*
-%tclscriptdir/*
-%_libdir/*.so
+%tcl_archdir/*
+%exclude %tcl_archdir/*Config.sh
+%exclude %tcl_archdir/*/*.a
 
 %files devel
-%_libdir/tdomConfig.sh
-%_libdir/*.a
+%tcl_archdir/*Config.sh
+%tcl_archdir/*/*.a
 %_includedir/tdom.h
 
 %changelog

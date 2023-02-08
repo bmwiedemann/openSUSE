@@ -49,8 +49,7 @@
 %endif
 
 %if 0%{?suse_version} >= 1550 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
-# Temp disable zxing - waiting for updated version to land in Factory
-#%%bcond_without zxing
+%bcond_without zxing
 %else
 %bcond_with zxing
 %endif

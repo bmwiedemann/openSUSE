@@ -150,4 +150,12 @@
    - imx477: Update tuning file for the latest camera modules (forwarded request 1044027 from polslinux)</comment>
     <requestid>1044049</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6ae6a42f46a507a470f6f1912dc090e5</srcmd5>
+    <version>0.0.4</version>
+    <time>1675792101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063498</requestid>
+  </revision>
 </revisionlist>

@@ -415,6 +415,11 @@ mkdir -p %{buildroot}%{_sysconfdir}/pulse/system.pa.d
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-disable_flat_volumes.conf
 # user
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
+# move dbus-1 system.d file to /usr
+install -Dm0644 %{buildroot}%{_sysconfdir}/dbus-1/system.d/pulseaudio-system.conf %{buildroot}%{_datadir}/dbus-1/system.d/pulseaudio-system.conf
+rm -rf %{buildroot}%{_sysconfdir}/dbus-1
+
+
 %find_lang %{name}
 
 %pre -n system-user-pulse -f pulseaudio.pre
@@ -571,7 +576,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/pulse/daemon.conf
 %config(noreplace) %{_sysconfdir}/pulse/default.pa
 %config(noreplace) %{_sysconfdir}/pulse/system.pa
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/pulseaudio-system.conf
+%{_datadir}/dbus-1/system.d/pulseaudio-system.conf
 # init
 %dir %{_userunitdir}
 %{_userunitdir}/%{name}.service

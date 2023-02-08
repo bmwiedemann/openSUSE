@@ -1217,4 +1217,15 @@
 </comment>
     <requestid>1046251</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3bc713dd1a5ccf43490ab09e26e935c4</srcmd5>
+    <version>1.23.1</version>
+    <time>1675792246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.1
+  * Bugfixes:
+    #8325: &quot;accept: function not implemented&quot; after upgrading to syncthing v1.20.1
+</comment>
+    <requestid>1063623</requestid>
+  </revision>
 </revisionlist>

@@ -167,4 +167,14 @@
 </comment>
     <requestid>1058089</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>15e36b841e47bc2bc9ad365b30308ab2</srcmd5>
+    <version>5.2.10</version>
+    <time>1675792175</time>
+    <user>dimstar_suse</user>
+    <comment>-Disable QRCode image generation for tumbleweed
+  * liblinphone is not currently compatible with zxing-cpp 2.0.0
+</comment>
+    <requestid>1063537</requestid>
+  </revision>
 </revisionlist>

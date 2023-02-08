@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  6 11:26:40 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- disable depreacted declarations warnings for openssl 3 for now.
+
+-------------------------------------------------------------------
 Wed Oct 30 13:57:50 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - add cjose-0.6.1-concatkdf.patch to fix concatkdf failures on big

@@ -152,4 +152,13 @@
     <comment></comment>
     <requestid>971064</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>5d81caab933256317341a59a79eff70e</srcmd5>
+    <version>0.9.2</version>
+    <time>1675792242</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1207959: Install binaries and scripts under %tcl_archdir
+- Obsoletes install-libraries-libdir.patch</comment>
+    <requestid>1063622</requestid>
+  </revision>
 </revisionlist>

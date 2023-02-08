@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  6 09:27:27 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.89:
+  * Fix bug introduced in 2.88 (commit fe91134b) which can result
+    in corruption of the DNS cache internal data structures and
+    logging of "cache internal error". This has only been seen
+    in one place in the wild, and it took considerable effort
+    to even generate a test case to reproduce it, but there's
+    no way to be sure it won't strike, and the effect is to break
+    the cache badly. Installations with DNSSEC enabled are more
+    likely to see the problem, but not running DNSSEC does not
+    guarantee that it won't happen. Thanks to Timo van Roermund
+    for reporting the bug and for his great efforts in chasing
+    it down.
+- remove no longer needed rpmlintrc filters
+
+-------------------------------------------------------------------
 Fri Dec 23 07:48:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.88:

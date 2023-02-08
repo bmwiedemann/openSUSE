@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  2 23:00:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0:
+  * add: shortcut: load random image in folder
+  * add: filedialog: forward/backward mouse button navigates through history
+  * add: filedialog: access settings manager
+  * improve: file dialog: use native path separators
+  * improve: file dialog: improve subfolder listing
+  * improve: file dialog: breadcrumbs handling
+  * improve: file dialog: up/down arrows in icon view moves rows up/down
+  * improve: right click and context menus
+  * improve: custom menu entries (icons, path, etc.)
+  * improve: histogram: support for images other than 32bit
+  * improve: face tagger: use click-and-draw instead of click-then-draw to
+    mark new faces
+  * improve: face tagger:  preserves other meta data
+  * improve: performance and resilience for RAW images
+  * improve: structure and rendering of SVG icons
+  * fix usage of file URI scheme
+  * many more bug fixes and improvements
+- drop photoqt-fix-building-with-raw.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jan 24 17:04:48 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.9.1

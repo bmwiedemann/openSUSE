@@ -268,4 +268,14 @@
     <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
     <requestid>977264</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5bc866540ebcf9746f5ac85ad83cba7e</srcmd5>
+    <version>13.4.0</version>
+    <time>1675792104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.4.0
+- supersedes u_Fix-build-gcc-12.patch
+- switched back to tarball from git checkout via source service</comment>
+    <requestid>1063499</requestid>
+  </revision>
 </revisionlist>

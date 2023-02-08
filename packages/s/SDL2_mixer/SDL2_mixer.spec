@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_mixer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_mixer
 %define lname	libSDL2_mixer-2_0-0
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib
@@ -27,6 +27,8 @@ URL:            http://libsdl.org/projects/SDL_mixer/
 
 #Git-Clone:     https://github.com/libsdl-org/SDL_mixer
 Source:         https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz
+Source2:        https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz.sig
+Source3:        %name.keyring
 BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config

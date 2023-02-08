@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Feb  5 18:53:49 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- bpfmon 2.51:
+  * support latest yascreen
+- add upstream signing key and verify signature
+
+-------------------------------------------------------------------
+Wed Jan 19 18:32:15 UTC 2022 - Jonathan Papineau <jonathan@jontech.app>
+
+- Initial packaging of bpfmon 2.50

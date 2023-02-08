@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  6 15:03:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.66 (jsc#ECO-3319)
+  - Ubuntu 22.04 CIS
+  - OL7 stig v2r9 update
+  - Bump OL8 STIG version to V1R4
+  - Update RHEL7 STIG to V3R10
+  - Update RHEL8 STIG to V1R9
+  - Introduce CIS RHEL9 profiles
+- also various SUSE profile fixes were done
+
+-------------------------------------------------------------------
 Mon Dec  5 10:44:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.65 (jsc#ECO-3319)

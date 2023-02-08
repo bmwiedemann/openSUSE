@@ -1,0 +1,63 @@
+From 7b4b5ef263aaa202667f318f4dcb09b01d3f025a Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 24 Oct 2022 12:58:16 +0200
+Subject: [PATCH 05/34] EP11: Remove DSA/DH parameter generation mechanisms
+ from CP filter
+
+Commit 836f2a25b928127c3bfb8f94a57cc16aa76a84c3 removed the DSA/DH
+parameter generation mechanisms CKM_DSA_PARAMETER_GEN and
+CKM_DH_PKCS_PARAMETER_GEN from the EP11 token code. Also remove
+them from the CP filter config file and from a comment in the code.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/ep11_stdll/ep11_specific.c   | 3 +--
+ usr/lib/ep11_stdll/ep11cpfilter.conf | 8 ++++----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/usr/lib/ep11_stdll/ep11_specific.c b/usr/lib/ep11_stdll/ep11_specific.c
+index d3688c56..432790f1 100644
+--- a/usr/lib/ep11_stdll/ep11_specific.c
++++ b/usr/lib/ep11_stdll/ep11_specific.c
+@@ -1720,8 +1720,7 @@ static CK_RV check_key_attributes(STDLL_TokData_t * tokdata,
+             check_types = &check_types_pub[0];
+             attr_cnt = sizeof(check_types_pub) / sizeof(CK_ULONG);
+         }
+-        /* do nothing for CKM_DH_PKCS_KEY_PAIR_GEN
+-           and CKM_DH_PKCS_PARAMETER_GEN and CKK_IBM_PQC_DILITHIUM */
++        /* do nothing for CKM_DH_PKCS_KEY_PAIR_GEN and CKK_IBM_PQC_DILITHIUM */
+         break;
+     case CKO_PRIVATE_KEY:
+         if ((kt == CKK_EC) || (kt == CKK_ECDSA) || (kt == CKK_DSA)) {
+diff --git a/usr/lib/ep11_stdll/ep11cpfilter.conf b/usr/lib/ep11_stdll/ep11cpfilter.conf
+index 6d979053..0d3a6b3f 100644
+--- a/usr/lib/ep11_stdll/ep11cpfilter.conf
++++ b/usr/lib/ep11_stdll/ep11cpfilter.conf
+@@ -48,20 +48,20 @@ XCP_CPB_UNWRAP_SYMM: CKM_AES_CBC, CKM_AES_CBC_PAD, CKM_DES3_CBC, CKM_DES3_CBC_PA
+ # generate asymmetric keypairs
+ XCP_CPB_KEYGEN_ASYMM: CKM_RSA_PKCS_KEY_PAIR_GEN, CKM_RSA_X9_31_KEY_PAIR_GEN, CKM_EC_KEY_PAIR_GEN, CKM_DSA_KEY_PAIR_GEN, CKM_DH_PKCS_KEY_PAIR_GEN
+ 
+-# generate or derive symmetric keys, including DSA parameters
+-XCP_CPB_KEYGEN_SYMM: CKM_AES_KEY_GEN, CKM_DES2_KEY_GEN, CKM_DES3_KEY_GEN, CKM_DSA_PARAMETER_GEN, CKM_DH_PKCS_PARAMETER_GEN, CKM_PBE_SHA1_DES3_EDE_CBC, CKM_DES_KEY_GEN, CKM_GENERIC_SECRET_KEY_GEN
++# generate or derive symmetric keys
++XCP_CPB_KEYGEN_SYMM: CKM_AES_KEY_GEN, CKM_DES2_KEY_GEN, CKM_DES3_KEY_GEN, CKM_PBE_SHA1_DES3_EDE_CBC, CKM_DES_KEY_GEN, CKM_GENERIC_SECRET_KEY_GEN
+ 
+ # RSA private-key or key-encrypt use
+ XCP_CPB_ALG_RSA: CKM_RSA_PKCS, CKM_RSA_PKCS_KEY_PAIR_GEN, CKM_RSA_X9_31_KEY_PAIR_GEN, CKM_RSA_PKCS_PSS, CKM_SHA1_RSA_X9_31, CKM_SHA1_RSA_PKCS, CKM_SHA1_RSA_PKCS_PSS, CKM_SHA256_RSA_PKCS, CKM_SHA256_RSA_PKCS_PSS, CKM_SHA224_RSA_PKCS, CKM_SHA224_RSA_PKCS_PSS, CKM_SHA384_RSA_PKCS, CKM_SHA384_RSA_PKCS_PSS, CKM_SHA512_RSA_PKCS, CKM_SHA512_RSA_PKCS_PSS, CKM_RSA_X9_31
+ 
+ # DSA private-key use
+-XCP_CPB_ALG_DSA: CKM_DSA_PARAMETER_GEN, CKM_DSA_KEY_PAIR_GEN, CKM_DSA, CKM_DSA_SHA1
++XCP_CPB_ALG_DSA: CKM_DSA_KEY_PAIR_GEN, CKM_DSA, CKM_DSA_SHA1
+ 
+ # EC private-key use
+ XCP_CPB_ALG_EC: CKM_EC_KEY_PAIR_GEN, CKM_ECDH1_DERIVE, CKM_ECDSA, CKM_ECDSA_SHA224, CKM_ECDSA_SHA256, CKM_ECDSA_SHA384, CKM_ECDSA_SHA512
+ 
+ # Diffie-Hellman use (private keys)
+-XCP_CPB_ALG_DH: CKM_ECDH1_DERIVE, CKM_DH_PKCS_PARAMETER_GEN, CKM_DH_PKCS_KEY_PAIR_GEN, CKM_DH_PKCS_DERIVE
++XCP_CPB_ALG_DH: CKM_ECDH1_DERIVE, CKM_DH_PKCS_KEY_PAIR_GEN, CKM_DH_PKCS_DERIVE
+ 
+ # allow key derivation (symmetric+EC/DH)
+ XCP_CPB_DERIVE: CKM_SHA1_KEY_DERIVATION, CKM_SHA256_KEY_DERIVATION, CKM_SHA384_KEY_DERIVATION, CKM_SHA512_KEY_DERIVATION, CKM_SHA224_KEY_DERIVATION, CKM_ECDH1_DERIVE, CKM_DH_PKCS_DERIVE
+-- 
+2.16.2.windows.1
+

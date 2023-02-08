@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sat Feb  4 23:11:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for isbnlib 3.10.12.
+- Add mark-network-tests.patch to skip test which require network
+  access (gh#xlcnd/isbnlib#121).

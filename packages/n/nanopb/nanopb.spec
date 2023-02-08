@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.7
+Version:        0.4.6
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
@@ -65,7 +65,7 @@ Source code of nanopb - a C implementation of Google's Protocol Buffers data
 format.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake \
@@ -83,6 +83,7 @@ files=$(grep -rl '#!/usr/bin/env python' %{buildroot}%{src_install_dir}) && echo
 # Fix name and interpreter
 ln -s %{_bindir}/nanopb_generator.py %{buildroot}%{_bindir}/nanopb_generator
 sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator.py
+sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/protoc-gen-nanopb
 
 %fdupes %{buildroot}%{src_install_dir}
 

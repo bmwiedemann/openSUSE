@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 10:01:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.20.2
+  * Build system changes only
+
+-------------------------------------------------------------------
 Mon Sep  5 07:44:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add back Provides: SDL2_ttf = %version to library package: the

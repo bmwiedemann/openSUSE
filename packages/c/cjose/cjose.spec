@@ -1,7 +1,7 @@
 #
 # spec file for package cjose
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ C library implementing the Javascript Object Signing and Encryption (JOSE)
 %autopatch -p1
 
 %build
+CFLAGS="%optflags -Wno-deprecated-declarations"
 %configure --disable-static
 make %{?_smp_mflags}
 

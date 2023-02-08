@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 06 09:12:33 UTC 2023 - witold.bedyk@suse.com
+
+- Update to version 8.5.20:
+  * Security: SVG: Add dompurify preprocessor step
+    (bsc#1207749, CVE-2022-23552)
+  * Security: Snapshots: Fix originalUrl spoof security issue
+    (bsc#1207750, CVE-2022-39324)
+  * Security: Omit error from http response 
+  * Bug fix: Email and username trimming and invitation validation
+
+-------------------------------------------------------------------
 Fri Nov 18 10:52:52 UTC 2022 - witold.bedyk@suse.com
 
 - Update to version 8.5.15 (jsc#PED-2617):

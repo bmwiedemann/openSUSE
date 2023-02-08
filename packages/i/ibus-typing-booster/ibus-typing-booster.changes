@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 06 15:04:22 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.21.0
+- Add an option to disable Typing Booster in terminals
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/414)
+- Update emoji annotations from CLDR
+- Add autosettings option (command line only at the moment, useful for
+  https://github.com/mike-fabian/ibus-typing-booster/issues/328)
+- Translation update from Weblate (de 100%, uk 100%)
+
+-------------------------------------------------------------------
 Mon Jan 23 15:44:41 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Use xvfb-run

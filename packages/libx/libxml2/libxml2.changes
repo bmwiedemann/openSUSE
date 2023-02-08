@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 09:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove zlib-devel, pkgconfig(zlib) is sufficient
+
+-------------------------------------------------------------------
 Mon Oct 31 18:12:58 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Add W3C conformance tests to the testsuite (bsc#1204585):

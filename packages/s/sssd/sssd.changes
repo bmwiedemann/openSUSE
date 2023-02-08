@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 15:23:54 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d file to /usr (bsc#1207586)
+
+-------------------------------------------------------------------
 Tue Jan  3 12:01:41 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

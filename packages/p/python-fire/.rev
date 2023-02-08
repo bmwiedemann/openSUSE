@@ -112,4 +112,20 @@
     <comment></comment>
     <requestid>962274</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a2d14fa5fd343110e6facba2bc0b87ee</srcmd5>
+    <version>0.5.0</version>
+    <time>1675792169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0: 
+  * Support for custom serializers with fire.Fire(serializer=your_serializer)
+  * Auto-generated help text now shows short arguments (e.g. -a) when
+    appropriate
+  * Default values are now shown in help for kwonly arguments
+  * Completion script fix where previously completions might not show at all
+- Refresh python-fire-no-mock.patch
+- Add patch support-python-311.patch:
+  * Support Python 3.11</comment>
+    <requestid>1063536</requestid>
+  </revision>
 </revisionlist>

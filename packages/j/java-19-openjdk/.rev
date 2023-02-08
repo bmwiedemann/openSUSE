@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1037220</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b2b8224e39dd5ea8f1046532fea66ec</srcmd5>
+    <version>19.0.2.0</version>
+    <time>1675792248</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU fixes</comment>
+    <requestid>1063630</requestid>
+  </revision>
 </revisionlist>

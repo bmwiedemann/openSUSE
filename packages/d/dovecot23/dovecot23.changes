@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  5 16:07:02 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add patch to fix building with OpenSSL-3 (boo#1207958)
+  + fix-build-with-openssl-3.patch
+
+-------------------------------------------------------------------
 Thu Dec 22 20:47:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - removed obsolete dovecot-2.3.19-fix-doveadm-sync-special-folders.patch

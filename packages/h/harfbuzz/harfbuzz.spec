@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM harfbuzz-CVE-2023-25193.patch boo#1207922 mgorse@suse.com -- limit how far we skip when looking back.
+Patch0:         harfbuzz-CVE-2023-25193.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson

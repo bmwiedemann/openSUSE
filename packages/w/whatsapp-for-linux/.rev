@@ -87,4 +87,19 @@
   * &quot;GLIBC_2.34 not found&quot; when trying to run the program #273</comment>
     <requestid>1061902</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a26321cc0f75b890455bfe6d42487f4</srcmd5>
+    <version>1.6.0</version>
+    <time>1675792113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Implemented enhancements:
+    + Notification sound #173
+  * Fixed bugs:
+    + &quot;GLIBC_2.34 not found&quot; appeared when trying to run the program
+      .deb installed OK #273
+    + Snap version displays unreadable/misplaced fonts in KDE Plasma
+      running wayland #230</comment>
+    <requestid>1063453</requestid>
+  </revision>
 </revisionlist>

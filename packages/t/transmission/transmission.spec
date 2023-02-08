@@ -29,6 +29,7 @@ Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
 Patch0:         harden_transmission-daemon.service.patch
 Patch1:         transmission-hybrid-torrent-length.patch
+Patch2:         transmission-3.00-openssl-3.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -125,6 +126,7 @@ Discovery, DHT, µTP, PEX and magnet links.
 cp %{SOURCE3} .
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch_nodejs_version
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hatch_nodejs_version
 Version:        0.3.1
 Release:        0
@@ -26,12 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/agoose77/hatch-nodejs-version
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_nodejs_version/hatch_nodejs_version-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 0.21.0}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hatchling >= 0.21.0
+Provides:       python-hatch-nodejs-version = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 

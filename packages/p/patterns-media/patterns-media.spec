@@ -41,6 +41,7 @@ such as DVD's
 
 
 ################################################################################
+
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -466,6 +467,11 @@ Suggests:       mangler
 Suggests:       twinkle
 %ifarch x86_64
 Recommends:     efibootmgr
+%endif
+# NVIDIA's openGPU driver
+%ifarch x86_64 aarch64
+Recommends:     kernel-firmware-nvidia-gsp-G06
+Recommends:     nvidia-open-driver-G06-signed-kmp-default
 %endif
 
 %description rest_core_dvd

@@ -17,7 +17,7 @@
 
 
 Name:           ecwolf
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        An opensource implementation of Wolfenstein3D engine
 License:        GPL-2.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  6 00:23:05 UTC 2023 - Neil Brown <nfbrown@suse.com>
+
+- Rename all drop-in options.conf files as 10-options.conf
+  This makes it easier for other packages to over-ride
+  with a drop-in with a later sequence number.
+  resource-agents does this.
+  (bsc#1207843)
+
+-------------------------------------------------------------------
 Tue Nov 22 00:27:06 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - Add 0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch

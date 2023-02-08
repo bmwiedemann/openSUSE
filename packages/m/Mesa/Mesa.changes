@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  6 13:52:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Don't enable rusticl without opencl
+
+-------------------------------------------------------------------
 Fri Jan 27 17:27:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.3.4

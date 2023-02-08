@@ -1,4 +1,2 @@
 # rpm cannot find the libcontainers-common dependency
-addFilter ("^skopeo.* W: explicit-lib-dependency libcontainers-common")
-# same package but on OBS not SLE OBS
-addFilter ("E: SUSE_Backports_policy-SLE_conflict")
+addFilter ("^skopeo.* E: explicit-lib-dependency libcontainers-common")

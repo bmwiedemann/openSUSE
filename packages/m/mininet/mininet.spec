@@ -1,7 +1,7 @@
 #
 # spec file for package mininet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mininet
-Version:        2.3.0d6
+Version:        2.3.0
 Release:        0
 Summary:        Network emulator for rapid prototyping of Software Defined Networks (SDN)
 # mininet is MIT and util/sch_htb-ofbuf/sch_htb.c is GPL-2.0+

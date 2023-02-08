@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  5 14:16:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.1
+  * Allow fast-lossless for 16-bit float input
+  * Fix OOB read in exif.h
+
+-------------------------------------------------------------------
 Wed Jan 18 15:13:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.8

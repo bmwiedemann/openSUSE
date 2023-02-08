@@ -1,7 +1,7 @@
 #
 # spec file for package pyenv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.3.9
+Version:        2.3.12
 Release:        0
 Summary:        Python Version Management
 License:        MIT

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:25:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.38
+  * Add Russian layout with typographic symbols
+  * Update symbols/ru
+  * symbols/us: uncomment the nine keys in the international Dvorak layout
+  * symbols/bg: reduce the "enhanced" layout to an include + three overrides
+  * symbols/epo: reshuffle a comment, and drop unneeded key types
+  * replace some Unicode codes with their corresponding symbol name
+  * symbols/no: add missing symbols to Sami layout, and remove duplicates
+  * symbols/no: add non-dead grave and such to Sami layout, and reshuffle
+  * Add apple:jp_oadg109a and apple:jp_pc106 variants
+  * Added Gujarati KaGaPa layout (guj-kagapa)
+  * Update base.xml
+  * rules: add option 'swap_ralt_rctl'
+  * prerelease push, for translations
+  * Handy script for publishing
+  * Making ru(typo) more consistent with existing variants
+  * Prerelease translation sync
+  * fix rx-51 third level modifier
+  * Add Latvia Modern Cyrillic keyboard layout
+  * add colemak_dh_ortho
+  * Add `trademark` to level4 of us-intl layout
+  * dv-intl: add placeholder chars to lvl3+, bind LSGT
+
+-------------------------------------------------------------------
 Tue Oct  4 18:24:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.37

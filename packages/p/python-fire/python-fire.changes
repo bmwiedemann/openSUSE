@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  7 01:05:45 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0: 
+  * Support for custom serializers with fire.Fire(serializer=your_serializer)
+  * Auto-generated help text now shows short arguments (e.g. -a) when
+    appropriate
+  * Default values are now shown in help for kwonly arguments
+  * Completion script fix where previously completions might not show at all
+- Refresh python-fire-no-mock.patch
+- Add patch support-python-311.patch:
+  * Support Python 3.11
+
+-------------------------------------------------------------------
 Wed Mar 16 12:52:10 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

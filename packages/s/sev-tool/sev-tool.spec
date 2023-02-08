@@ -1,7 +1,7 @@
 #
 # spec file for package sev-tool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,23 +22,24 @@ Release:        0
 Summary:        A tool for interacting with AMD SEV
 License:        Apache-2.0
 Group:          Productivity/Security
-Url:            https://github.com/AMDESE/sev-tool
+URL:            https://github.com/AMDESE/sev-tool
 Source:         %{name}_%{version}.orig.tar.gz
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  libuuid-devel
 
 %if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 600 || 0%{?centos_version} >= 600
-BuildRequires: openssl-devel
+BuildRequires:  openssl-devel
 %else
-BuildRequires: libopenssl-devel
+BuildRequires:  libopenssl-1_1-devel
 %endif
 
 BuildRequires:  libvirt-devel
 BuildRequires:  make
 BuildRequires:  openssl >= 1.1.0
+
 %description
 A tool for provisioning SEV encrypted virtual guests, executing hardware tests, and running host machine introspection.
 

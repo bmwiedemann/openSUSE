@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Tue Feb  7 12:28:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.1
+  - Backport/5393/stable 3.7 by @mgallien in #5403
+  - Fix wrong estimated time when doing sync. in #4902
+  - Bugfix/selective sync abort error in #4903
+  - Set UnifiedSearchResultNothingFound visibility less messily in #4751
+  - Clean up QML type and singleton registration in #4817
+  - Simplify activity list delegates by making them ItemDelegates, clean up in #4786
+  - Improve activity list highlighting/keyboard item selection in #4781
+  - Replace private API QZipWriter with KArchive in #4768
+  - makes Qt WebEngine optional only on macOS in #4875
+  - Bugfix/conflict resolution when selecting folder in #4914
+  - Fix fileactivitylistmodel QML registration in #4920
+  - Updated link to documentation in #4792
+  - Fix menu bar height calculation on macOS in #4917
+  - Fix ActivityItem activityHover error in #4921
+  - Fix add account window text clipping, enlarge text in #4910
+  - Accept valid lsColJob reply XML content types in #4919
+  - Fix low-resolution file changed overlay icons in activities in #4930
+  - Refactor ActivityListModel population mechanisms in #4736
+  - Make account setup wizard's adjustWizardSize resize to current page size instead of largest wizard page in #4911
+  - Deallocate call notification dialog objects when closed by @claucambra in #4939
+  - Ensure that the file being processed has had its etag properly sanitised, log etag more in #4940
+  - Feature/syncjournaldb handle errors in #4819
+  - Do not format text in QML components as HTML in #4944
+  - Fix two factor auth notification: activity item was disabled. in #4961
+  - Add a placeholder item for empty activity list in #4959
+  - Ensure strings in main window QML are presented as plain text and not HTML by @claucambra in #4972
+  - Improve handling of file name clashes by @claucambra in #4970
+  - Add a QSortFilterProxyModel-based SortedActivityListModel by @claucambra in #4933
+  - Bring back .lnk files on Windows and always treat them as non-virtual files. by @allexzander in #4968
+  - Fix two factor authentication notification by @camilasan in #4967
+  - Ensure placeholder message in emoji picker wraps correctly in #4960
+  - Make activity action button an actual button, clean up contents in #4784
+  - Improve the error box QML component in #4976
+  - Fix 'Reply' primary property. in #4985
+  - Fix sync progress bar colours in dark mode in #4986
+  - Fix predefined status text formatting in #4987
+  - Don't set up tray context menu on macOS, even if not building app bundle in #4988
+  - Ci/check clang tidy in ci in #4995
+  - check our code with clang-tidy in #4999
+  - alway use constexpr for all text constants in #4996
+  - avoid possibly crashing static_cast in #4994
+  - switch AppImage CI to latest tag: client-appimage-6 in #5003
+  - configure a list of checks for clang-tidy in #5004
+  - Fix link shares default expire date being enforced as maximum expire date even when maximum date enforcement is disabled on the server in #4982
+  - apply modernize-use-using via clang-tidy in #4993
+  - Ci/use no discard in #4992
+  - Fix files not unlocking after lock time expired in #4962
+  - Update client image in #5002
+  - let's check the format via some github action in #4991
+  - Feature/vfs windows sharing and lock state in #4942
+  - Update after tx migrate in #5019
+  - Improve 'Handle local file editing' feature. Add loading popup. Add force sync before opening a file. in #4990
+  - Command-line client. Do not trust SSL certificates by default, unless '--trust' option is set. in #5022
+  - Bugfix/files lock fail metadata in #5024
+  - do not ignore return value in #4998
+  - improve logs when adding sync errors in activity list of main dialog in #5032
+  - Fix invisible user status selector button not being checked when user is in Offline mode in #5012
+  - use correct version copmparison on NSIS updater: fix update from rc in #4979
+  - Bugfix/check token for edit locally requests in #5039
+  - Fix the dismiss button: display it whenever possible. in #4989
+  - Fix account not found when doing local file editing. in #5040
+  - Improve "pretty user name"-related strings, display in webflow credentials in #5013
+  - Update CHANGELOG with 3.6.1 changes. in #5066
+  - Fix call notification dialog buttons in #5074
+  - validate certificate for E2EE against private key in #4949
+  - emit missing signal to update folder sync status icon in #5087
+  - Update CMake usage in README build instructions in #5086
+  - Clean up methods in sync engine in #5071
+  - Make Systray's void methods slots in #5042
+  - Remove unneeded parameter from CleanupPollsJob constructor in #5070
+  - Add a 'Sync now' button to the sync status header in the tray window in #5018
+  - Modernise and improve code in AccountManager in #5026
+  - Fix macOS autoupdater settings in #5102
+  - Validate and sanitise edit locally token and relpath before sending to server in #5093
+  - Refactor FolderMan's "Edit Locally" capabilities as separate class in #5107
+  - Modernise and improve code in AccountSettings in #5027
+  - Fix compatibility with newer python3-nautilus in #5105
+  - Only show Sync Now button if account is connected in #5097
+  - use new public API to open an edit locally URL in #5116
+  - Add a new file details window, unify file activity and sharing in #4929
+  - E2EE. Do not generate keypair without user request. in #5067
+  - Fix incorrect current user index when adding or removing a user account. Also fix incorrect user avatar lookup by id. in #5092
+  - Remove unused internal link widget from old share dialog in #5123
+  - Use separate variable for cfg file name in CMAKE. in #5136
+  - Bugfix/delete folders during propagation even when propagation has errors in #5104
+  - Remove unused app pointer in CocoaInitializer in #5127
+  - Ensure 'Sync now' button doesn't have its text elided in #5129
+  - Fix share delegate button icon colors in dark mode in #5132
+  - Do not use copy-assignment of QDialog. in #5148
+  - Remove unused remotePath in User::processCompletedSyncItem in #5118
+  - Make user status selector modal, show user header in #5145
+  - properly escape a path when creating a test file during tests in #5151
+  - Add support cmake unity build in #5109
+  - Fix typo of connector in #5157
+  - fully qualify types in signals and slots in #5088
+  - Remove reference to inexistent property in NCCustomButton in #5173
+  - Fix ActivityList delegate warnings in #5172
+  - Ensure forcing a folder to be synced unpauses syncing on said folder in #5152
+  - switch back to upstream craft in #5178
+  - fix renaming of folders with a deep hierarchy inside them in #5182
+  - fix instances of: c++11 range-loop might detach Qt container warnings in #5089
+  - Implement context menu entry "Leave this share" in #5081
+  - check that we update local file mtime on changes from server in #5188
+  - Add end-to-end tests to our CI in #5124
+  - Modernize the Dolphin action plugin in #5192
+  - Ci/do not modify configuration file duringtests in #5200
+  - cmake: Use FindPkgConfig's pkg_get_variable instead of custom macro in #5199
+  - Fix tray window margins, stop cutting into window border in #5202
+  - fix regressions on pinState management when doing renames in #520
+  - Fix bad custom button alignments, sizings, etc. in #5189
+  - Ci/do not override configuration file in #5206
+  - Clearly tell user that E2EE has been enabled for an account in #5164
+  - Fix CfApiShellExtensionsIPCTest in #5209
+  - l10n: Fixed grammar in #5220
+  - Prevent bad encrypting of folder if E2EE has not been correctly set up in #5223
+  - Remove close/dismiss button from encryption message in #5163
+  - Update macOS shell integration deployment targets in #5227
+  - Bugfix/case cash conflicts should not terminate sync in #5224
+  - Differentiate between E2EE not being enabled at all vs. E2EE being enabled already through another device in account settings message in #5179
+  - Ensure more QML text components are rendering things as plain text in #5231
+  - l10n: Correct spelling in #5221
+  - Make use of plain text-enforcing qml labels in #5233
+  - Feature/edit file locally restart sync in #5175
+  - Fix CI errors for Edit Locally. in #5241
+  - Lock file when editing locally in #5226
+  - Format some QLabels as plain text in #5247
+  - do not create GUI from a random thread and show error on real error in #5253
+  - Fix BasicComboBox internal layout in #5216
+  - Explicitly size and align user status selector text input to avoid bugs with alternate QtQuick styles in #5214
+  - do not use bulk upload for e2ee files in #5256
+  - Only show mnemonic request dialog when user explicitly wants to enable E2EE in #5181
+  - Replace share settings popup with a page on a StackView in #5194
+  - Add interactive NC Talk notifications on macOS in #5143
+  - Show file details within the tray dialog, rather than in a separate dialog in #5139
+  - Silence sync termination errors when running EditLocallyJob. in #5261
+  - Fix typo in #5257
+  - Add an "Encrypt" menu entry in file browser context menu for folders in #5263
+  - Add a nix flake for easy building and dev environments in #5007
+  - Add an internal link share to the share dialog in #5131
+  - Avoid the Get-Task-Allow Entitlement (macOS Notarization) in #5274
+  - sets a fixed version for pixman when buildign desktop client via Craft in #5269
+  - Fix SyncEngineTest failure when localstate is destroyed. in #5273
+  - Feature/remove obsolete names in #5271
+  - Remove unused HeaderBanner component in #5245
+  - Feature/do not sync enc folders if e2ee is not setup in #5258
+  - fix migration from old settings configuration files in #5141
+  - Use QFileInfo::exists where we are only creating a QFileInfo to check if file exists in #5291
+  - Make correct use of Qt signal 'emit' keyword in #5287
+  - Remove unused variables in #5290
+  - Declare all QRegularExpressions statically in #5289
+  - l10n: Remove space in #5297
+  - Feature/move shellextensions to root installdir in #5295
+  - Improve backup dark mode palette for Windows in #5298
+  - Allow setting up an account with apppasword and folder via command-line arguments. For deployment. in #5296
+  - Update file's metadata in the local database when the etag changes while file remains unchanged. 
+    Fix subsequent conflict when locking and unlocking. in #5293
+  - Fix warnings on QPROPERTY-s in #5286
+  - Replace now deprecated FSEventStreamScheduleWithRunLoop with FSEventStreamSetDispatchQueue in #5272
+  - Fix macOS shell integration class inits in #5299
+  - Drop dependency on Qt Quick Controls 1 in #5309
+  - Fix full-text search results not being opened in browser in #5279
+  - Feature/allow forceoverrideurl via command line in #5329
+  - Bugfix/e2ee vulnerability empty metadatakeys in #5323
+  - Always generate random initialization vector when uploading encrypted file in #5324
+  - Fix bad string for translation. in #5358
+  - Update legal notice to 2023 in #5361
+  - Fix migration from legacy client when override server url is set in #5322
+  - Don't try to lock folders when editing locally in #5317
+  - Fix fetch more unified search result item not being clickable in #5266
+  - Add ability to disable E2EE in #5167
+  - Remove unused monochrome icons setting in #5366
+  - Feature/sync with case clash names in #5232
+  - Edit locally. Do not lock if locking is disabled on the server. in #5371
+  - Revert "Merge pull request #5366 from nextcloud/bugfix/remove-mono-icons-setting" in #5372
+  - Open calendar notifications in the browser. in #4684
+  - Migrate old configs in #5362
+  - Always unlock E2EE folders, even when network failure or crash. in #5370
+  - [stable-3.7] Fix displaying of file details button for local syncfileitem activities in #5380
+  - [stable-3.7] Improve config upgrade warning dialog in #5386
+  - Backport/5385/stable 3.7 in #5388
+
+-------------------------------------------------------------------
 Fri Jan 20 10:17:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.6

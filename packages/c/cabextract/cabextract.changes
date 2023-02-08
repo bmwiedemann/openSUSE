@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  6 16:45:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10
+  * Multiple -F filters can be given. cabextract will extract
+    files matching any of the filters.
+  * cabextract now overwrites symlinks by default. This is to be
+    consistent with other archive tools. Use the new -k option for
+    the old behaviour of keeping symlinks. This does not affect
+    symlinks in the -d dirpath option.
+  * New -n option to never overwrite files.
+  * New -i option to interactively prompt if you want to overwrite
+    files.
+
+-------------------------------------------------------------------
 Fri Sep 20 12:53:17 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

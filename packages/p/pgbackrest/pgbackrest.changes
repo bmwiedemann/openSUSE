@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  6 07:53:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.44
+  + Remove support for PostgreSQL 9.0/9.1/9.2. 
+  + Restore errors when no backup matches the current version of PostgreSQL. 
+  + Add compress-level range checking for each compress-type. 
+  + Documentation improvements
+
+-------------------------------------------------------------------
 Tue Dec  6 16:32:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.43

@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:27:02 UTC 2023 - dcermak@suse.com
+
+- stop building with libostree, this has been disabled upstream three years ago
+  and is now broken
+- add fish & zsh completion subpackages
+- correct -completion subpackages requires, buildarch & supplements
+- remove outdated buildtags for opensuse pre-Leap
+- fix rpmlint filters
+
+- Update to version 1.10.0:
+  * Release v1.10.0
+  * Update for https://github.com/klauspost/pgzip/pull/50
+  * Revert addition of -compat=1.17 to (go mod tidy)
+  * Update vendor containers/(common,image)
+  * [CI:DOCS] Add quay-description update reminder
+  * Bump github.com/containers/storage from 1.42.0 to 1.43.0
+  * Fix documentation in the default registries.d content.
+  * default.yaml should have all options commented
+  * warn about ineffective destination opts in sync cmd
+  * document imageDestOptions.warnAboutIneffectiveOptions()
+  * warn users about --dest-compress and --dest-decompress misuse
+  * warn users about --dest-compress and --dest-decompress misuse
+  * Don't abort sync if the registry returns invalid tags
+  * add inspect layersData
+  * Stop using docker/docker/pkg/homedir in tests
+  * Update for c/image's update of github.com/gobuffalo/pop
+  * Don't include git commit from a parent directory in the --version output
+  * Remove unused GIT_BRANCH definition
+  * Point at --all in the --preserve-digests option documentation
+  * Talk about "registry repositories" in (skopeo sync) documentation
+  * Fix looking for commands with GNU make 4.2.1
+  * Fix a comment
+  * Reformat with Go 1.19's gofmt
+  * Fix running tests on macOS
+  * Optimize upstream skopeo container image build
+  * GHA: Re-use identical workflow from buildah repo
+  * Bump to v1.9.3-dev
+  * Release v1.9.2
+  * Bump github.com/containers/common from 0.49.0 to 0.49.1
+  * Cirrus: Update CI VM images to match podman CI
+  * [CI:DOCS] Cirrus: Use the latest imgts container
+  * Bump to v1.9.2-dev
+  * Release v1.9.1
+  * Stop using deprecated names from c/common/pkg/retry
+  * Update to github.com/containers/common v0.49.0
+  * Update to github.com/containers/image/v5 v5.22.0
+  * Bump github.com/containers/storage from 1.41.0 to 1.42.0
+  * Bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * Bump to v1.9.1-dev
+  * Release v1.9.0
+  * Update for the renames of sigstore to lookaside
+  * Add --sign-by-sigstore-private-key to (skopeo copy) and (skopeo sync)
+  * Vendor in c/image with sigstore support
+  * Revert "Change a repo used for sync tests"
+  * Vendor unreleased c/image with OCI artifact support
+  * Use errors.As() instead of direct type checks
+  * Remove uses of pkg/errors
+  * Modify error messages on failures to close
+  * Introduce noteCloseFailure, use it for reporting of cleanup errors
+  * Bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Update IRC information
+  * Use bytes.ReplaceAll instead of bytes.Replace(..., -1)
+  * Update & fix skopeo multiarch image Containerfiles
+  * Cirrus: Migrate multiarch build off github actions
+  * Bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.7.4
+  * Bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * [CI:DOCS] skopeo.spec.rpkg: Fix syntax highlighting
+  * [CI:DOCS] Makefile: include cautionary note for rpm target
+  * CoPR: Autobuild rpm on rhcontainerbot/podman-next
+  * Enable schema1 support on the test registries
+  * Update for docker/distribution CLI change
+  * Use an updated CI image
+  * Change a repo used for sync tests
+  * Use testing.T.Setenv instead of os.Setenv in tests
+  * Update go.mod to Go 1.17
+  * Bump github.com/docker/docker
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.7.2
+  * Bump github.com/containers/ocicrypt from 1.1.4 to 1.1.5
+  * Cirrus: use Ubuntu 22.04 LTS
+  * Update to github.com/opencontainers/runc >= 1.1.2
+  * fix make completions for all POSIX shells
+  * Update to gopkg.in/yaml.v3 v3.0.0
+  * Updated skopeo logo with new artwork
+  * [CI:DOCS] Pin actions to a full length commit SHA
+  * shell completion: add completion for transports names
+  * shell completion: add install instructions docs
+  * shell completion: add Makefile target
+  * Stop calling gpgme-config
+  * Update c/image
+  * Remove cgo_pthread_ordering_workaround.go
+  * add completion command to generate shell completion scripts
+  * Bump github.com/docker/docker
+  * Bump github.com/containers/storage from 1.40.2 to 1.41.0
+  * Avoid hard-coding the location of bash
+  * Config files live in /usr/local/etc on FreeBSD
+  * Bump github.com/docker/docker
+  * Move to v1.8.1-dev
+  * Bump to v1.8.0
+  * Bump ocicrypt to v1.1.4
+  * Vendor in containers/storage v1.40.2
+  * Vendor in containers/(common, storage, image)
+  * [CI:DOCS] install.md: include distro package info links
+  * [CI:DOCS] install.md: remove Kubic package info for Ubuntu
+  * Cirrus: Update to F36 w/ netavark+aardvark-dns
+  * Update vendor of containers/(common,storage,image)
+  * Use filepath.WalkDir instead of filepath.Walk
+  * Extract four copies of the same loop into a function
+  * Update users of deprecated io/ioutil
+  * Add option to specify the identity for signing
+  * Bump containers/image to include sign identity option
+  * delete non-existent option in the cmdline example
+  * Add dry-run mode to skopeo-sync
+  * Update skopeoimage/README.md that tags are v-prefixed
+  * Bump to v1.7.1-dev
+  * Release 1.7.0
+  * Bump github.com/prometheus/client_golang to v1.11.1
+  * Bump github.com/containers/common from 0.47.4 to 0.47.5
+  * Bump github.com/containers/storage from 1.38.2 to 1.39.0
+  * Bump github.com/docker/docker
+  * Improve the (skopeo delete) man page
+  * Bump github.com/containers/ocicrypt from 1.1.2 to 1.1.3
+  * Update the command to install golint
+  * Formally record that we require Go 1.15
+  * Use check.C.MkDir() instead of manual ioutil.TempDir() calls
+  * Update to Go 1.14 and revendor
+  * Use assert.ErrorContains
+  * Bump github.com/stretchr/testify from 1.7.0 to 1.7.1
+  * Simplify the proxy server a bit
+  * Add various missing error handling
+  * Remove assignments to an unused variable
+  * Rename "self" receiver
+  * Add support for docker-archive: to skopeo list-tags
+  * Bump github.com/spf13/cobra from 1.3.0 to 1.4.0
+  * Bump github.com/docker/docker
+  * Update github.com/containerd/containerd
+  * Bump github.com/containers/image/v5 from 5.19.1 to 5.20.0
+  * do not recommend upgrading all packages
+  * Improve a comment in the 010-inspect.bats test
+  * Move to v1.7.0-dev
+  * Bump to v1.6.1
+  * Work around systemd-resolved's handling of .invalid domains
+  * Beautify a few calls
+  * Only look for the layer digests in the Layers field.
+  * Don't expect the config blob to be listed in (skopeo inspect)
+  * Cirrus: Use updated VM images
+  * Bump c/common to v0.47.4
+  * tests: skip sif test on RHEL
+  * Bump to v1.6.1-dev
+  * Release v1.6.0
+  * Bump version of containers/image and containers/common
+  * Improve the documentation of boolean flags
+  * Document where various fields of (skopeo inspect) come from
+  * Improve the documentation of the argument to (skopeo inspect)
+  * Update vendor of containers/storage and containers/common
+  * add a SIF systemtest
+  * Update vendor of containers/common
+  * Github workflow: Fix yaml syntax
+  * Bump github.com/containers/storage from 1.38.0 to 1.38.1
+  * prompt-less signing via passphrase file
+  * Github-workflow: Report both failures and errors
+  * Run codespell on code
+  * Update the vendor of containers/common
+  * Bump github.com/containers/storage from 1.37.0 to 1.38.0
+  * Update github.com/containerd/containerd to 1.5.9
+  * Fix the pseudo-version of github.com/opencontainers/image-spec
+  * Update github.com/opencontainers/runc to v1.0.3
+  * Bump github.com/spf13/cobra from 1.2.1 to 1.3.0
+  * Bump github.com/docker/docker
+  * Add option to preserve digests on copy
+  * Add option to preserve digests on copy
+  * proxy: Also bump compatible semver
+  * proxy: Add a GetFullConfig method
+  * Update github.com/containerd/containerd to v1.5.8
+  * Update opencontainers/image-spec
+  * Add an option to allow copying image indexes alone
+  * Use a dynamic temp dir for test
+  * Bump to 1.5.3-dev
+  * Release 1.5.2
+  * Update to c/image v5.17.0
+  * Cirrus: Bump Fedora to release 35 & Ubuntu to 21.10
+  * Bump github.com/docker/docker
+  * proxy: Uncapitalize all errors
+  * tests: Add new "procutils" that exposes PDEATHSIG
+  * proxy_test: Test `GetConfig`
+  * proxy_test: Add helper to read all from a reply
+  * proxy_test: Add a helper method to call without fd
+  * proxy: Add support for manifest lists
+  * tests/integration/proxy_test: New test that exercises `proxy.go`
+  * proxy: Use float → int helper for pipeid
+  * proxy: Add a helper to return a byte array
+  * proxy: Add an API to fetch the config upconverted to OCI
+  * Fix bug that prevented useful diagnostics on registry fail
+  * use fedora:latest in contrib/skopeoimage/*/Dockerfile
+  * Move to v1.5.2-dev
+  * Bump to v1.5.1
+  * main: Error out if an unrecognized subcommand is provided
+  * move optional-flag code to c/common/pkg/flag
+  * Add --dest-precompute-digests option for docker
+  * bump containers/image to 2541165
+  * Add instructions to generate static binaries
+  * Add new `experimental-image-proxy` hidden command
+  * issue#785 inspect command - introduce a way to skip querying available tags for an image
+  * Document container images as an alternative to installing packages
+  * Introduce --username and --password to pass credentials
+  * Move to v1.5.1-dev
+
+-------------------------------------------------------------------
 Fri Oct  8 14:33:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.5.0:

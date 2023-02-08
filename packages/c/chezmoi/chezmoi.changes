@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  7 16:50:11 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.30.0:
+  * feat: Add zstd compression support
+  * feat: Add external_ attribute for directories
+  * fix: Make chezmoi init --purge-binary always remove binary
+  * Set CHEZMOI* environment variables when running cd command
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Wed Jan 25 11:24:38 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.29.4:

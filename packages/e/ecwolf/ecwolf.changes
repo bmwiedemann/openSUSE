@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  6 17:15:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.1
+  * Fixed crash when picking up Chaingun while already holding a
+    Chaingun.
+  * Fake Hitler actor can no longer open doors, no longer
+    erroneously backs away from the player, and continues to
+    "dodge" when out of sight.
+  * Fixed support for gray scale PNGs.
+  * Added support for 32:9 aspect ratio displays and additional
+    resolutions.
+
+-------------------------------------------------------------------
 Fri Jan 20 22:50:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add patches

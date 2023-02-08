@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  6 13:23:12 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- rest_core_dvd: added recommends to packages for nVidia's openGPU
+  driver
+  * nvidia-open-driver-G06-signed-kmp-default
+  * kernel-firmware-nvidia-gsp-G06
+
+-------------------------------------------------------------------
 Wed Jan 25 09:20:20 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove NIS utilities, they are deprecated and will be removed

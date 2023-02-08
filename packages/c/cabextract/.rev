@@ -211,4 +211,12 @@
   * Rerelease of 1.9 with some packaging issues fixed</comment>
     <requestid>732180</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>de77387b0f4ffc333d2e4150c742cd40</srcmd5>
+    <version>1.10</version>
+    <time>1675792177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063576</requestid>
+  </revision>
 </revisionlist>

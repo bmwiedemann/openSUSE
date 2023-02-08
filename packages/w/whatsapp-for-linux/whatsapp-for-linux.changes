@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  4 18:17:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * Implemented enhancements:
+    + Notification sound #173
+  * Fixed bugs:
+    + "GLIBC_2.34 not found" appeared when trying to run the program
+      .deb installed OK #273
+    + Snap version displays unreadable/misplaced fonts in KDE Plasma
+      running wayland #230
+
+-------------------------------------------------------------------
 Sun Jan 29 18:18:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.3:

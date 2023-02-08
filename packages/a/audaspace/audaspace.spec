@@ -1,7 +1,7 @@
 #
 # spec file for package audaspace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,46 +18,35 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_3
-%define soversion 1.3
+%define sover 1_4
+%define soversion 1.4
 
 Name:           audaspace
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/audaspace/audaspace/releases/tag/v%{version}
-Source0:        audaspace-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM audaspace-gcc7.patch davejplater@gmail.com -- add missing "#include <functional>" picked up by gcc7
-Patch0:         audaspace-gcc7.patch
-#PATCH-FIX-UPSTREAM audaspace-plugin-build-options.patch davejplater@gmail.com -- add options for building plugins.
-# See boo#1057965
-Patch1:         audaspace-plugin-build-options.patch
-# PATCH-FIX-UPSTREAM audaspace-support-ffmpeg4.patch -- Support ffmpeg v4
-Patch2:         audaspace-support-ffmpeg4.patch
-# PATCH-FIX-UPSTREAM 034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch -- Support ffmpeg v5
-Patch3:         https://github.com/audaspace/audaspace/commit/034645c883a51dfc8897dccce15aa8ee4a9d5c8c.patch
+URL:            https://audaspace.github.io/
+Source0:        https://github.com/audaspace/audaspace/archive/refs/tags/v%{version}.tar.gz#/audaspace-%{version}.tar.gz
 BuildRequires:  cmake > 3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
-BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3-base
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(sndfile)
-#BuildRequires:  python-devel
-#BuildRequires:  python3-Sphinx
-BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy-devel
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
-#Requires:
+BuildRequires:  pkgconfig(sndfile)
 
 %description
 Audaspace (pronounced "outer space") is a high-level audio library written
@@ -65,20 +54,67 @@ in C++ with language bindings for Python for example. It started out as the
 audio engine of the 3D modelling application Blender and is now released as
 a standalone library. This package contains demo binaries.
 
-%package        plugins
-Summary:        Plugins for %{name}
+%package        plugin-ffmpeg
+Summary:        FFmpeg plugin for %{name}
 Group:          System/Libraries
-Requires:       %{name} = %{version}
+Provides:       audaspace-fileplugin
+Supplements:    libaudaspace%{sover}
 
-%description    plugins
-Audaspace (pronounced "outer space") is a high-level audio library written
-in C++ with language bindings for Python for example. It started out as the
-audio engine of the 3D modelling application Blender and is now released as
-a standalone library. This package contains audio plugins.
+%description    plugin-ffmpeg
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the FFmpeg plugin
+
+%package        plugin-jack
+Summary:        JACK plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-deviceplugin
+
+%description    plugin-jack
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the JACK plugin
+
+%package        plugin-openal
+Summary:        OpenAL plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-deviceplugin
+
+%description    plugin-openal
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the OpenAL plugin
+
+%package        plugin-pulse
+Summary:        Pulseaudio plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-deviceplugin
+Supplements:    (libaudaspace%{sover} and (pulseaudio or pulseaudio-pipewire))
+
+%description    plugin-pulse
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the Pulseaudio plugin
+
+%package        plugin-sdl2
+Summary:        SDL2 plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-deviceplugin
+
+%description    plugin-sdl2
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the SDL2 plugin
+
+%package        plugin-sndfile
+Summary:        Sndfile plugin for %{name}
+Group:          System/Libraries
+Provides:       audaspace-fileplugin
+
+%description    plugin-sndfile
+Audaspace (pronounced "outer space") is a high-level audio library.
+This package contains the Sndfile plugin
 
 %package -n libaudaspace%{sover}
 Summary:        A high-level audio library
 Group:          System/Libraries
+Recommends:     audaspace-deviceplugin
+Recommends:     audaspace-fileplugin
 
 %description -n libaudaspace%{sover}
 Audaspace (pronounced "outer space") is a high-level audio library written
@@ -109,8 +145,6 @@ a standalone library.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Requires:       %{name}-plugins = %{version}
 Requires:       libaudaspace%{sover} = %{version}
 Requires:       libaudaspace-c%{sover} = %{version}
 Requires:       libaudaspace-py%{sover} = %{version}
@@ -132,34 +166,20 @@ developing applications that use %{name}.
 
 %prep
 %setup -n audaspace-%{version} -q
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
 
 %build
-tmpflags="%{optflags}"
-%ifarch ppc64le
-# avoid contentions between SDL vector and gcc defines
-# disable the include of altivec.h in /usr/include/SDL2/SDL_cpuinfo.h
-# note that --disable-altivec not supported by gcc 4.8
-tmpflags="$tmpflags -U__ALTIVEC__"
-%endif
-# NOTE: python3 numpy include flag (-isystem points to includes) reported upstream.
-%cmake -DWITH_VERSIONED_PLUGINS:BOOL=FALSE \
-      -DWITH_FFMPEG:BOOL=TRUE \
-      -DCMAKE_EXE_LINKER_FLAGS:STRING="$CMAKE_EXE_LINKER_FLAGS -pie" \
-      -DDEFAULT_PLUGIN_PATH:PATH=%{_libdir}/%{name}-%{soversion}/plugins \
-      -DWITH_PYTHON_MODULE:BOOL=off \
-      -DCMAKE_C_FLAGS:STRING="%{optflags} -isystem %{python3_sitearch}/numpy/core/include/" \
-      -DCMAKE_CXX_FLAGS:STRING="${tmpflags} -isystem %{python3_sitearch}/numpy/core/include/" \
-      -DDOCUMENTATION_INSTALL_PATH:PATH=%{_docdir}/%{name}
+%cmake \
+    -DWITH_VERSIONED_PLUGINS:BOOL=FALSE \
+    -DWITH_FFMPEG:BOOL=TRUE \
+    -DDEFAULT_PLUGIN_PATH:PATH=%{_libdir}/%{name}-%{soversion} \
+    -DWITH_PYTHON_MODULE:BOOL=off \
+    -DDOCUMENTATION_INSTALL_PATH:PATH=%{_docdir}/%{name}
 %cmake_build
 
 %install
 %cmake_install
-find %{buildroot} -name '*.la' -delete
-%fdupes -s %{buildroot}%{_docdir}/%{name}
+
+%fdupes %{buildroot}%{_docdir}/%{name}
 
 %post -n libaudaspace%{sover} -p /sbin/ldconfig
 
@@ -177,13 +197,26 @@ find %{buildroot} -name '*.la' -delete
 %license LICENSE
 %{_bindir}/*
 
-%files plugins
-%dir %{_libdir}/%{name}-%{soversion}
-%dir %{_libdir}/%{name}-%{soversion}/plugins
-%{_libdir}/%{name}-%{soversion}/plugins/*.so
-#%%{_libdir}/%%{name}-%%{soversion}/plugins/*.so
+%files plugin-ffmpeg
+%{_libdir}/%{name}-%{soversion}/libaudffmpeg.so
+
+%files plugin-jack
+%{_libdir}/%{name}-%{soversion}/libaudjack.so
+
+%files plugin-openal
+%{_libdir}/%{name}-%{soversion}/libaudopenal.so
+
+%files plugin-pulse
+%{_libdir}/%{name}-%{soversion}/libaudpulseaudio.so
+
+%files plugin-sdl2
+%{_libdir}/%{name}-%{soversion}/libaudsdl.so
+
+%files plugin-sndfile
+%{_libdir}/%{name}-%{soversion}/libaudlibsndfile.so
 
 %files -n libaudaspace%{sover}
+%dir %{_libdir}/%{name}-%{soversion}
 %{_libdir}/libaudaspace.so.%{soversion}
 
 %files -n libaudaspace-c%{sover}

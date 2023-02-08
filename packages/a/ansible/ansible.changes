@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  2 07:09:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.2.0:
+  Ansible 7.2.0 will include ansible-core 2.14.2 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+
+-------------------------------------------------------------------
 Thu Jan 12 12:17:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - do no longer remove ./ansible_collections/lowlydba/sqlserver/

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan 31 22:08:30 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to v0.3.2 + git commit e37c4d6
+     src/main: Remove README portion of main.rs
+     .github: Remove cargo readme CI test
+     docs: Add a generable man page
+     ci: Add asciidoctor as a build dependency
+     ok: Add Genoa processor identifying
+     ok: Rewrite processor generation querying
+     secret: Add docs and update README.md
+     Add `secret build` subcommand
+     measurement: rework some functions for use with `secret build`
+     main: Improve error printing on exit
+     measurement: Add docs and update README.md
+     measurement: Comment why we aren't using sev crate
+     Change `measurement build` output to measurement+nonce
+     Add `measurement build --launch-measure-blob`
+     Add `measurement build --vmsa-cpu0, --vmsa-cpu1, --num-cpus`
+     Add `measurement build --firmware --kernel --initrd --cmdline`
+     Add `measurement build --outfile PATH`
+     Let `measurement build --tk` accept path or base64 string
+     Let `measurement build` accept int values as hex too
+     Add `measurement build` subcommand
+     Update version to 0.3.2
+     Update sev crate to 1.0.1
+     Update to 0.3.1
+     Update to 0.3.1
+     build(deps): bump httparse from 1.7.1 to 1.8.0
+     Add CODEOWNERS file
+     CI: Drop rust 1.51.0 testing
+     Fix clippy warnings with rust nightly
+     ok: Show if Page flush MSR is enabled/disabled
+     ok: Change TestResult.name to String
+     Replace error.rs with anyhow crate
+     ok: Expand coverage for all AMD CPU model numbers
+
+-------------------------------------------------------------------
 Thu Jul  7 17:15:42 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
 
 - Disable obs_scm service by default

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb  6 14:18:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to upstream version 1.2.0:
+  * Fixed:
+    - Updated minimal version of tpm2-tss to 2.4.x
+    - Fix encoding of emptyauth
+    - Fix some memory leaks
+    - Parent handle issues with signed representation by switching
+      parent handle to BIGNUM.
+    - Fixed RSA_NO_PADDING modes with OpenSSL 1.1.1
+    - Fixed autogen (bootstrap) call from release package by
+      embedding VERSION file.
+  * Added:
+    - Use of restricted keys for signing
+    - StirRandom
+    - Run tests using swtpm
+    - The ability to import key blobs from things like the
+      tpm2-tools project.
+    - Compatibility with openssl >=1.1.x
+    - Support for ECDH
+    - QNX support.
+    - Only set -Werror for non-release builds.
+    - Additional checks on TPM responses
+    - CODE_OF_CONDUCT
+    - SECURITY reporting instructions
+
+-------------------------------------------------------------------
 Wed Mar  3 12:29:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - pass --disable-defaultflags to avoid breakage of our gcc-PIE profile (->

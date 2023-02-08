@@ -101,4 +101,34 @@ All that was intended here was to have the bug ref next to the change responsibl
 so let's do that: add the bug ref to the change responsible for it. (forwarded request 939078 from dimstar)</comment>
     <requestid>940279</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12186d9865eb3c9b8e33cd0aa716d317</srcmd5>
+    <version>1.2.0</version>
+    <time>1675792184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.2.0:
+  * Fixed:
+    - Updated minimal version of tpm2-tss to 2.4.x
+    - Fix encoding of emptyauth
+    - Fix some memory leaks
+    - Parent handle issues with signed representation by switching
+      parent handle to BIGNUM.
+    - Fixed RSA_NO_PADDING modes with OpenSSL 1.1.1
+    - Fixed autogen (bootstrap) call from release package by
+      embedding VERSION file.
+  * Added:
+    - Use of restricted keys for signing
+    - StirRandom
+    - Run tests using swtpm
+    - The ability to import key blobs from things like the
+      tpm2-tools project.
+    - Compatibility with openssl &gt;=1.1.x
+    - Support for ECDH
+    - QNX support.
+    - Only set -Werror for non-release builds.
+    - Additional checks on TPM responses
+    - CODE_OF_CONDUCT
+    - SECURITY reporting instructions (forwarded request 1063432 from pmonrealgonzalez)</comment>
+    <requestid>1063587</requestid>
+  </revision>
 </revisionlist>

@@ -94,6 +94,9 @@ Patch12:        dnsmasq-cpu-possible.diff
 # allow nscd to read systemd userdb (boo#1207698, submitted upstream 2023-01-30 https://gitlab.com/apparmor/apparmor/-/merge_requests/977)
 Patch13:        nscd-systemd-userdb.diff
 
+# abstractions/openssl: allow to read /etc/ssl/openssl-1_1.cnf (boo#1207911, upstreaming TODO)
+Patch14:        abstractions-openssl-1_1.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
@@ -360,6 +363,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch6
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 export SUSE_ASNEEDED=0

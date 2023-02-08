@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  6 18:06:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 13.4.0
+- supersedes u_Fix-build-gcc-12.patch
+- switched back to tarball from git checkout via source service
+
+-------------------------------------------------------------------
 Sat May 14 17:40:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - set SUSE_ZNOW to 0 (boo#1197994)

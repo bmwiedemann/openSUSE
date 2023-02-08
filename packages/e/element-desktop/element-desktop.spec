@@ -34,6 +34,7 @@ BuildRequires:  jq
 BuildRequires:  moreutils
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  yarn
+BuildRequires:  fdupes
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
 
@@ -44,65 +45,67 @@ BuildArch:      noarch
 A glossy Matrix collaboration client - desktop
 
 %prep
-%setup -q
+%setup -q -a1 -a2
+%autopatch -p1
 SYSTEM_ELECTRON_VERSION=$(<%{_libdir}/electron/version)
 jq -c '.build["electronVersion"]="'$SYSTEM_ELECTRON_VERSION'" | .build["electronDist"]="%{_libdir}/electron"' < package.json | sponge package.json
 jq -c '.build["linux"]["target"]="dir"' < package.json | sponge package.json
 cat package.json
 jq '.piwik=false | .update_base_url=null' < element.io/release/config.json | sponge element.io/release/config.json
-pwd
-cd ..
-pwd
-ls -l
-tar xvf %{SOURCE1}
-cd element-desktop-%{version}
 
 %build
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' >> .yarnrc
 echo 'nodedir %{_includedir}/electron' >> .yarnrc
-tar xf %{SOURCE2}
-ls ./npm-packages-offline-cache | head
 
 export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 yarn install --offline --pure-lockfile
 
-#tar xf %%{SOURCE6}
-export PATH="$PATH:node_modules/.bin"
+export PATH="$(pwd)/node_modules/.bin:${PATH}"
 #export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
 #yarn run build:native
 yarn run build:universal
 
 %install
-install -d %{buildroot}{%{_datadir}/element/,%{_sysconfdir}/webapps/element}
 
 # Install the app content, replace the webapp with a symlink to the system package
-cp -pr dist/linux-universal-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
+install -d -m 0755 "%{buildroot}%{_datadir}/element/"
+cp -av dist/linux-universal-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
 ln -s %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Config file
+install -m 0755 -d %{buildroot}%{_sysconfdir}/element
+install -m 0644 element.io/release/config.json "%{buildroot}%{_sysconfdir}/element/config.json"
+
+install -m 0755 -d %{buildroot}%{_sysconfdir}/webapps/element
 ln -s %{_sysconfdir}/element/config.json "%{buildroot}%{_sysconfdir}/webapps/element/config.json"
-install -Dm644 element.io/release/config.json -t "%{buildroot}%{_sysconfdir}/element"
-mkdir -p "%{buildroot}%{_datadir}/webapps/element/"
-ln -s %{_sysconfdir}/webapps/element/config.json "%{buildroot}%{_datadir}/webapps/element/config.json" # moved here from element-web to make symlink check happy
+
+install -d -m 0755 "%{buildroot}%{_datadir}/webapps/element/"
+ln -s %{_sysconfdir}/element/config.json "%{buildroot}%{_datadir}/webapps/element/config.json" # moved here from element-web to make symlink check happy
 
 # Required extras
-install -Dm644 %{SOURCE3} -t "%{buildroot}%{_datadir}/applications/"
-install -Dm755 %{SOURCE4} "%{buildroot}%{_bindir}/%{name}"
+install -d -m 0755 "%{buildroot}%{_datadir}/applications/"
+install -m 0644 %{SOURCE3} "%{buildroot}%{_datadir}/applications/io.element.Element.desktop"
+install -d -m 0755 "%{buildroot}%{_bindir}/"
+install -m 0755 %{SOURCE4} "%{buildroot}%{_bindir}/%{name}"
 
 # Icons
-install -Dm644 ../element-web-%{version}/res/themes/element/img/logos/element-logo.svg "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/io.element.Element.svg"
+install -d -m 0755 "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/"
+install -m 0644 element-web-%{version}/res/themes/element/img/logos/element-logo.svg "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/io.element.Element.svg"
 for i in 16 24 48 64 96 128 256 512; do
-	install -Dm644 build/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/io.element.Element.png"
+	install -d -m 0755 "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/"
+	install -m 0644 build/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/io.element.Element.png"
 done
+
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/element/
-%config %{_sysconfdir}/element/config.json
-%config %{_sysconfdir}/webapps/element/config.json
+%config(noreplace) %{_sysconfdir}/element/config.json
+%{_sysconfdir}/webapps/element/config.json
 %{_datadir}/webapps/element/config.json
 %{_sysconfdir}/element/
 %{_datadir}/applications/io.element.Element.desktop

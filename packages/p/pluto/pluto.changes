@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 06 17:27:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.0:
+  * fix: add removed-in to storage.k8s.io/v1beta1.CSIStorageCapacity (#448)
+  * feat: add namespace and context to API Resources method (#410)
+  * Fixed a linter error causing lack of compilation in Go 1.19 by removing deprecated io/ioutil functions and replacing them with their Go 1.16 counterparts. (#439)
+  * Update alpine and other build dependencies (#433)
+  * Remove experimental features in build (#429)
+  * feat: allow hiding headers in output (#417)
+  * Bump helm.sh/helm/v3 from 3.10.1 to 3.10.3 (#426)
+
+-------------------------------------------------------------------
 Thu Jan 05 14:01:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.12.0:

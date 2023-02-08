@@ -78,4 +78,12 @@
     <comment></comment>
     <requestid>1001215</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c846d92b890b3d22aeb0fec599a2e339</srcmd5>
+    <version>2.20.2</version>
+    <time>1675792200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.20.2</comment>
+    <requestid>1063599</requestid>
+  </revision>
 </revisionlist>

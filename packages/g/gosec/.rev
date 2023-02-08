@@ -83,4 +83,41 @@
   * _service recompress change tar compression from gz to xz (forwarded request 1043862 from jfkw)</comment>
     <requestid>1043867</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d15c98c3eb4989693e60b1f0be13948</srcmd5>
+    <version>2.15.0</version>
+    <time>1675792134</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to version 2.15.0
+- Fix dependencies after renovate update
+- chore(deps): update all dependencies (#922)
+- Update to Go 1.20 and fix unit tests (#923)
+- Update Go to latest version (#920)
+- Update hardcoded_credentials.go fix: adaper equal expr which const value at left (#917)
+- Fix github latest URL (#918)
+- Fix github release url (#916)
+- chore(deps): update module github.com/onsi/ginkgo/v2 to v2.7.0 (#914)
+- Update Go version in CI script (#913)
+- Track back when a file path was sanitized with filepath.Clean (#912)
+- Fix the TLS config rule when parsing the settings from a variable (#911)
+- Fix build after updating the dependencies (#910)
+- chore(deps): update all dependencies (#909)
+- Fix dependencies after renovate update (#907)
+- chore(deps): update all dependencies (#906)
+- Update slack badge and link (#905)
+- Auto-detect TLS MinVersion integer base (#903)
+- Adding s390x support (#902)
+- chore(deps): update all dependencies (#904)
+- chore(deps): update all dependencies (#898)
+- Additional types for bad defer check (#897)
+- chore(deps): update all dependencies (#894)
+- chore(deps): update all dependencies (#892)
+- Update Go version in CI scripts (#889)
+- chore(deps): update all dependencies (#888)
+- Allow to override build date with SOURCE_DATE_EPOCH (#887)
+- chore(deps): update all dependencies (#886)
+- chore(deps): update all dependencies (#884)
+- fileperms: bitwise permission comparison (#883) (forwarded request 1063437 from ph03nix)</comment>
+    <requestid>1063471</requestid>
+  </revision>
 </revisionlist>

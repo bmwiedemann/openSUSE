@@ -190,4 +190,41 @@
     <comment></comment>
     <requestid>1037470</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>41fd7b78cffee36a3ae835f3fd73b52f</srcmd5>
+    <version>0.14.4</version>
+    <time>1675792193</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Do-not-use-warnings-from-numpy.patch and numpy-1.24.patch to fix issues
+  with latest numpy gh#holoviz/datashader#1176 gh#holoviz/datashader#1158
+- Update to 0.14.4
+  * This release adds a new where reduction that provides improved inspection
+    capabilities and adds support for colormaps that are tuples of hex values.
+    There are also various bug fixes and compatibility improvements.
+    Thanks to @ianthomas23, @maximlt and @Hoxbro.
+  ## Enhancements:
+  * New where reduction to provide improved inspection functionality:
+    - Add new where reduction (#1155)
+    - Where reduction using dataframe row index (#1164)
+    - CUDA support for where reduction (#1167)
+    - User guide page for where reduction (#1172)
+  * Support colormaps that are tuples of hex values (#1173)
+  * Add governance docs (#1165)
+  * Improve documentation build system (#1170, #1171)
+  * Improvements to CI:
+    - Rename default branch from master to main (#1156)
+    - Use holoviz_task install action (#1163)
+  ## Bug fixes:
+  * Validate calculated log canvas range (#1154)
+  * Better validate canvas.line() coordinate lengths (#1160)
+  * Return early in eq_hist() if all data masked out (#1168)
+  ## Compatibility:
+  * Follow recommended numba best practice.
+    - Ensure cuda functions are correctly jitted (#1153)
+    - nopython=True everywhere (#1162)
+  * Update dependencies:
+    - Pip pyarrow in tests dependencies (#1174)
+</comment>
+    <requestid>1063601</requestid>
+  </revision>
 </revisionlist>

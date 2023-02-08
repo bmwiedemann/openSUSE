@@ -925,4 +925,12 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
   upstream. (forwarded request 1043469 from iznogood)</comment>
     <requestid>1043773</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>636226f7ef07123b779717c3c99174db</srcmd5>
+    <version>6.0.0</version>
+    <time>1675792105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063505</requestid>
+  </revision>
 </revisionlist>

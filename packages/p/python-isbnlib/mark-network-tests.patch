@@ -1,0 +1,215 @@
+---
+ isbnlib/_openl.py                    |    3 +++
+ isbnlib/test/test_cache_decorator.py |    2 ++
+ isbnlib/test/test_editions.py        |    5 +++++
+ isbnlib/test/test_ext.py             |    4 +++-
+ isbnlib/test/test_goom.py            |    2 ++
+ isbnlib/test/test_metadata.py        |    1 +
+ isbnlib/test/test_openl.py           |    1 +
+ isbnlib/test/test_rename.py          |    4 ++++
+ isbnlib/test/test_webservice.py      |    2 ++
+ isbnlib/test/test_wiki.py            |    2 ++
+ isbnlib/test/test_words.py           |    2 ++
+ setup.cfg                            |    3 +++
+ 12 files changed, 30 insertions(+), 1 deletion(-)
+
+--- a/isbnlib/_openl.py
++++ b/isbnlib/_openl.py
+@@ -4,6 +4,8 @@
+ import logging
+ import re
+ 
++import pytest
++
+ from .dev import stdmeta
+ from .dev._bouth23 import u
+ from .dev._exceptions import RecordMappingError
+@@ -72,6 +74,7 @@ def _records(isbn, data):
+     return _mapper(isbn, records)
+ 
+ 
++@pytest.mark.network
+ def query(isbn):
+     """Query the openlibrary.org service for metadata."""
+     data = wquery(SERVICE_URL.format(isbn=isbn), user_agent=UA)
+--- a/isbnlib/test/test_cache_decorator.py
++++ b/isbnlib/test/test_cache_decorator.py
+@@ -2,6 +2,7 @@
+ # flake8: noqa
+ # pylint: skip-file
+ """Tests for the @cache."""
++import pytest
+ 
+ # TODO add more tests for other operations
+ 
+@@ -9,6 +10,7 @@ from .. import classify, meta, registry
+ 
+ cache = registry.metadata_cache
+ 
++pytestmark = pytest.mark.network
+ 
+ def setup_module():
+     meta('9780375869020')  #  <-- set
+--- a/isbnlib/test/test_editions.py
++++ b/isbnlib/test/test_editions.py
+@@ -22,21 +22,25 @@ def test_editions_openl():
+     assert (len(editions('9780151446476', service='openl')) >= 1) == True
+ 
+ 
++@pytest.mark.network
+ def test_editions_thingl():
+     """Test the 'thingl editions' service."""
+     assert (len(editions('9780151446476', service='thingl')) > 2) == True
+ 
+ 
++@pytest.mark.network
+ def test_editions_wiki():
+     """Test the 'wiki editions' service."""
+     assert (len(editions('9780440414803', service='wiki')) > 5) == True
+ 
+ 
++@pytest.mark.network
+ def test_editions_any():
+     """Test the 'any editions' service."""
+     assert (len(editions('9780151446476', service='any')) > 1) == True
+ 
+ 
++@pytest.mark.network
+ def test_editions_merge():
+     """Test the 'merge editions' service."""
+     assert (len(editions('9780151446476', service='merge')) > 2) == True
+@@ -54,6 +58,7 @@ def test_editions_NotRecognizedServiceEr
+         editions('9780156001311', service='xxx')
+ 
+ 
++@pytest.mark.network
+ def test_cache():
+     """Test the 'editions' cache."""
+     t = timer()
+--- a/isbnlib/test/test_ext.py
++++ b/isbnlib/test/test_ext.py
+@@ -38,7 +38,7 @@ def test_mask():
+     with pytest.raises(Exception):
+         mask('0000000000000')
+ 
+-
++@pytest.mark.network
+ def test_isbn_from_words():
+     """Test 'isbn_from_words' command."""
+     assert len(isbn_from_words('old men and sea')) == 13
+@@ -51,12 +51,14 @@ def test_doi():
+     assert doi('9791090636071') == '10.979.1090636/071'
+ 
+ 
++@pytest.mark.network
+ def test_desc():
+     """Test 'desc' command."""
+     assert (len(desc('9780156001311')) > 10) == True
+     assert desc('9780000000000') == ''
+ 
+ 
++@pytest.mark.network
+ def test_cover():
+     """Test 'cover' command."""
+     assert (len(repr(cover('9780156001311'))) > 50) == True
+--- a/isbnlib/test/test_goom.py
++++ b/isbnlib/test/test_goom.py
+@@ -4,9 +4,11 @@
+ """
+ tests
+ """
++import pytest
+ 
+ from .. import _goom as goom
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_goom():
+     """Test the Google's Multiple Books service."""
+--- a/isbnlib/test/test_metadata.py
++++ b/isbnlib/test/test_metadata.py
+@@ -10,6 +10,7 @@ import pytest
+ from .._ext import meta
+ from .._metadata import query
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_query():
+     """Test the query of metadata with 'low level' queries."""
+--- a/isbnlib/test/test_openl.py
++++ b/isbnlib/test/test_openl.py
+@@ -9,6 +9,7 @@ import pytest
+ 
+ from .._metadata import query
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_query():
+     """Test 'openl' metadata service."""
+--- a/isbnlib/test/test_rename.py
++++ b/isbnlib/test/test_rename.py
+@@ -12,6 +12,10 @@ from .._ext import ren
+ from ..dev._bouth23 import b2u3
+ from ..dev.helpers import cwdfiles
+ 
++import pytest
++
++pytestmark = pytest.mark.network
++
+ WINDOWS = os.name == 'nt'
+ ENCODING = locale.getpreferredencoding()
+ if ENCODING != 'UTF-8':
+--- a/isbnlib/test/test_webservice.py
++++ b/isbnlib/test/test_webservice.py
+@@ -4,9 +4,11 @@
+ """
+ tests
+ """
++import pytest
+ 
+ from ..dev.webservice import query as wsquery
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_webservice():
+     """Test that values can be passed to a WebService query."""
+--- a/isbnlib/test/test_wiki.py
++++ b/isbnlib/test/test_wiki.py
+@@ -2,9 +2,11 @@
+ # flake8: noqa
+ # pylint: skip-file
+ """ tests for wikipedia."""
++import pytest
+ 
+ from .._metadata import query
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_query():
+     """Test 'wiki' metadata service."""
+--- a/isbnlib/test/test_words.py
++++ b/isbnlib/test/test_words.py
+@@ -4,9 +4,11 @@
+ """
+ tests
+ """
++import pytest
+ 
+ from .. import _gwords as words
+ 
++pytestmark = pytest.mark.network
+ 
+ def test_words():
+     """Test 'isbn_from_words' function."""
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -57,6 +57,9 @@ ignore=
+     W503
+ extend-ignore=E203,S001
+ 
++[tool:pytest]
++markers =
++    network: tests requiring network connection
+ 
+ [pep8]
+ ignore=E701,E70,E702,W503

@@ -44,4 +44,12 @@
 - Enabled tests (but they seem to required a root user).</comment>
     <requestid>762221</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8173704bf8d746afbf271e732d905254</srcmd5>
+    <version>2.3.0</version>
+    <time>1675792112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063639</requestid>
+  </revision>
 </revisionlist>

@@ -51,4 +51,13 @@
   * This release only supports LSTM neural net based engine (--oem 1)</comment>
     <requestid>1059187</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1db4fc543efc442183e5dbe129d3a738</srcmd5>
+    <version>4.1.0+git.20191030.6572757</version>
+    <time>1675792207</time>
+    <user>dimstar_suse</user>
+    <comment>- add provides for 'tesseract-traineddata-{language}' as some
+ packages still using this old requires</comment>
+    <requestid>1063609</requestid>
+  </revision>
 </revisionlist>

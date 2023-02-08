@@ -31,6 +31,12 @@ Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  binutils-devel
+# Do not build i586 for Leap/SLE: no such port available
+%ifarch i586
+%if 0%{?sle_version}
+%define no_aarch64_cc 1
+%endif
+%endif
 %ifnarch %{ix86} x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-x86_64-gcc7
@@ -38,11 +44,13 @@ BuildRequires:  cross-x86_64-gcc7
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
 %endif
+%if !0%{?no_aarch64_cc}
 %ifnarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
+%endif
 %endif
 %endif
 BuildRequires:  perl
@@ -115,7 +123,7 @@ make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
 %ifarch aarch64
 make_ipxe bin-arm64-efi/snp.efi
 %else
-make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi
+%{!?no_aarch64_cc:make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi}
 %endif
 
 make_ipxe \
@@ -136,7 +144,7 @@ install -D -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-
 install -D -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-x86_64.efi
 install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
 %endif
-install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi
+%{!?no_aarch64_cc:install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi}
 
 %files bootimgs
 %defattr(-,root,root)
@@ -148,7 +156,7 @@ install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp
 %{_datadir}/%{name}/ipxe-x86_64.efi
 %{_datadir}/%{name}/snp-x86_64.efi
 %endif
-%{_datadir}/%{name}/snp-arm64.efi
+%{!?no_aarch64_cc:%{_datadir}/%{name}/snp-arm64.efi}
 %{_datadir}/%{name}/undionly.kpxe
 %license COPYING COPYING.GPLv2 COPYING.UBDL
 

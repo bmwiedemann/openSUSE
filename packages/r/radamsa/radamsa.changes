@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  1 17:40:20 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Update to 0.6
+- Add ol.c.gz that it is needed to compile the code
+- Removed no more needed files
+
+
+-------------------------------------------------------------------
 Tue Mar 17 09:34:11 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop no longer working downlaod url
@@ -25,4 +33,3 @@ Mon Mar 16 19:23:16 UTC 2015 - mpluskal@suse.com
 Fri Nov 21 11:44:33 UTC 2014 - mpluskal@suse.com
 
 - Initial package
-

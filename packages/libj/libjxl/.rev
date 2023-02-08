@@ -50,4 +50,12 @@ Leap 15.5
     <comment>- Update to release 0.8</comment>
     <requestid>1059421</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2493f9e960b9d19c0d82556c28853353</srcmd5>
+    <version>0.8.1</version>
+    <time>1675792042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8.1</comment>
+    <requestid>1063309</requestid>
+  </revision>
 </revisionlist>

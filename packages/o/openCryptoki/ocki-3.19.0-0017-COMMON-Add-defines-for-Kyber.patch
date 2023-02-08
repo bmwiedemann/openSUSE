@@ -1,0 +1,103 @@
+From d4bb3258779d757ce6faf5b698c70af77ab7647f Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 16 Feb 2022 13:51:16 +0100
+Subject: [PATCH 17/34] COMMON: Add defines for Kyber
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/include/pkcs11types.h | 49 +++++++++++++++++++++++++++++++++++++++++++++++
+ usr/lib/common/p11util.c  |  4 ++++
+ 2 files changed, 53 insertions(+)
+
+diff --git a/usr/include/pkcs11types.h b/usr/include/pkcs11types.h
+index 6bf9c1fa..3d967a13 100644
+--- a/usr/include/pkcs11types.h
++++ b/usr/include/pkcs11types.h
+@@ -439,6 +439,11 @@ typedef CK_ULONG CK_KEY_TYPE;
+ #endif
+ #define CKK_IBM_DILITHIUM        CKK_IBM_PQC_DILITHIUM
+ 
++#ifndef OCK_NO_EP11_DEFINES
++#define CKK_IBM_PQC_KYBER        CKK_VENDOR_DEFINED + 0x10024
++#endif
++#define CKK_IBM_KYBER            CKK_IBM_PQC_KYBER
++
+ /* CK_CERTIFICATE_TYPE is a value that identifies a certificate
+  * type */
+ /* CK_CERTIFICATE_TYPE was changed from CK_USHORT to CK_ULONG
+@@ -614,6 +619,49 @@ typedef CK_ULONG CK_ATTRIBUTE_TYPE;
+ #define CKA_IBM_DILITHIUM_T0      (CKA_VENDOR_DEFINED + 0xd0007)
+ #define CKA_IBM_DILITHIUM_T1      (CKA_VENDOR_DEFINED + 0xd0008)
+ 
++#define CKA_IBM_KYBER_MODE        (CKA_VENDOR_DEFINED + 0x0000E)
++
++#define CKA_IBM_KYBER_KEYFORM     (CKA_VENDOR_DEFINED + 0xd0009)
++#define CKA_IBM_KYBER_PK          (CKA_VENDOR_DEFINED + 0xd000A)
++#define CKA_IBM_KYBER_SK          (CKA_VENDOR_DEFINED + 0xd000B)
++
++#define CK_IBM_KYBER_KEYFORM_ROUND2_768    1
++#define CK_IBM_KYBER_KEYFORM_ROUND2_1024   2
++
++#define CK_IBM_KYBER_KEM_VERSION           0
++
++typedef CK_ULONG CK_IBM_KYBER_KEM_MODE;
++
++#define CK_IBM_KYBER_KEM_ENCAPSULATE       1
++#define CK_IBM_KYBER_KEM_DECAPSULATE       2
++
++typedef CK_ULONG CK_IBM_KYBER_KDF_TYPE;
++
++#if !defined(CKD_VENDOR_DEFINED)
++#define CKD_VENDOR_DEFINED                 0x80000000UL
++#endif
++
++#ifndef OCK_NO_EP11_DEFINES
++#define CKD_IBM_HYBRID_NULL                CKD_VENDOR_DEFINED + 0x00000001UL
++#define CKD_IBM_HYBRID_SHA1_KDF            CKD_VENDOR_DEFINED + 0x00000002UL
++#define CKD_IBM_HYBRID_SHA224_KDF          CKD_VENDOR_DEFINED + 0x00000003UL
++#define CKD_IBM_HYBRID_SHA256_KDF          CKD_VENDOR_DEFINED + 0x00000004UL
++#define CKD_IBM_HYBRID_SHA384_KDF          CKD_VENDOR_DEFINED + 0x00000005UL
++#define CKD_IBM_HYBRID_SHA512_KDF          CKD_VENDOR_DEFINED + 0x00000006UL
++#endif
++
++typedef struct CK_IBM_KYBER_PARAMS {
++    CK_ULONG                ulVersion;
++    CK_IBM_KYBER_KEM_MODE   mode;
++    CK_IBM_KYBER_KDF_TYPE   kdf;
++    CK_BBOOL                bPrepend;
++    CK_BYTE                 *pCipher;
++    CK_ULONG                ulCipherLen;
++    CK_BYTE                 *pSharedData;
++    CK_ULONG                ulSharedDataLen;
++    CK_OBJECT_HANDLE        hSecret;
++} CK_IBM_KYBER_PARAMS;
++
+ /* For NSS 3.30: */
+ #define NSSCK_VENDOR_NSS          0x4E534350
+ #define CKA_NSS                   (CKA_VENDOR_DEFINED | NSSCK_VENDOR_NSS)
+@@ -941,6 +989,7 @@ typedef CK_ULONG CK_MECHANISM_TYPE;
+ #define CKM_IBM_SHA3_512               CKM_VENDOR_DEFINED + 0x00010004
+ #define CKM_IBM_CMAC                   CKM_VENDOR_DEFINED + 0x00010007
+ #define CKM_IBM_DILITHIUM              CKM_VENDOR_DEFINED + 0x00010023
++#define CKM_IBM_KYBER                  CKM_VENDOR_DEFINED + 0x00010024
+ #define CKM_IBM_SHA3_224_HMAC          CKM_VENDOR_DEFINED + 0x00010025
+ #define CKM_IBM_SHA3_256_HMAC          CKM_VENDOR_DEFINED + 0x00010026
+ #define CKM_IBM_SHA3_384_HMAC          CKM_VENDOR_DEFINED + 0x00010027
+diff --git a/usr/lib/common/p11util.c b/usr/lib/common/p11util.c
+index f3a031e3..8b81ab42 100644
+--- a/usr/lib/common/p11util.c
++++ b/usr/lib/common/p11util.c
+@@ -234,6 +234,10 @@ const char *p11_get_cka(CK_ATTRIBUTE_TYPE atype)
+         _sym2str(CKA_IBM_DILITHIUM_T0);
+         _sym2str(CKA_IBM_DILITHIUM_T1);
+         _sym2str(CKA_IBM_PQC_PARAMS);
++        _sym2str(CKA_IBM_KYBER_KEYFORM);
++        _sym2str(CKA_IBM_KYBER_MODE);
++        _sym2str(CKA_IBM_KYBER_PK);
++        _sym2str(CKA_IBM_KYBER_SK);
+     default:
+         sprintf(buf, "unknown attribute type 0x%08lx", atype);
+         return buf;
+-- 
+2.16.2.windows.1
+

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Feb 06 16:43:16 UTC 2023 - dmulder@suse.com
+
+- Update to version v0.2+git.56.9d8b892:
+  * container: parameterize the sambacc containerfile
+  * container: update build.sh with ability to install dependencies
+
+-------------------------------------------------------------------
+Mon Jan 30 18:05:51 UTC 2023 - dmulder@suse.com
+
+- Update to version v0.2+git.54.f426c23:
+  * Revert "container: Switch to CentOS Stream 9 as base image"
+  * mergify.yml: Fix a typo
+  * container: Switch to CentOS Stream 9 as base image
+  * github: add mergify configuration YAML file
+  * sambacc: re-format with black version 23.1a1
+  * docs: add first full document describing JSON config
+  * tox.ini: avoid one tox warning when running py3-mypy
+  * pyproject: require type annotations for sambacc function defs
+  * sambacc: complete type annotations for container_dns.py
+  * sambacc: complete type annotations for simple_waiter.py
+
+-------------------------------------------------------------------
+Mon Oct 10 16:43:53 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Initial commit of sources

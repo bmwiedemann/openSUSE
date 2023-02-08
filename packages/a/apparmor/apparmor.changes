@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  6 19:27:40 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- add abstractions-openssl-1_1.diff: allow to read
+  /etc/ssl/openssl-1_1.cnf in abstractions/openssl (boo#1207911)
+
+-------------------------------------------------------------------
 Mon Jan 30 11:33:05 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - add nscd-systemd-userdb.diff: allow nscd to read systemd-userdb

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fire
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fire
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A library for automatically generating command line interfaces
 License:        Apache-2.0
 URL:            https://github.com/google/python-fire
 Source:         https://files.pythonhosted.org/packages/source/f/fire/fire-%{version}.tar.gz
-# https://github.com/google/python-fire/pull/265/files
+# Based on https://github.com/google/python-fire/pull/265/files
 Patch0:         python-fire-no-mock.patch
+Patch1:         support-python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,8 +47,7 @@ Python Fire is a library for automatically generating command line
 interfaces (CLIs) from a Python object.
 
 %prep
-%setup -q -n fire-%{version}
-%autopatch -p1
+%autosetup -p1 -n fire-%{version}
 
 %build
 %python_build

@@ -1,5 +1,5 @@
---- src/dnsmasq.c.orig
-+++ src/dnsmasq.c
+--- a/src/dnsmasq.c.orig
++++ b/src/dnsmasq.c
 @@ -581,11 +581,10 @@ int main (int argc, char **argv)
    if (!option_bool(OPT_DEBUG) && getuid() == 0)   
      {

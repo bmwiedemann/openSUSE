@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  6 08:55:57 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to match current requirements
+
+-------------------------------------------------------------------
+Wed Feb  1 10:47:11 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-support.patch: Add backport of riscv64 support
+- No gold on riscv64
+
+-------------------------------------------------------------------
 Sat Jan 28 23:37:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add boost-181.patch to fix build with boost 1.81.x

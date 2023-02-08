@@ -26,12 +26,12 @@
 
 
 Name:           swww
-Version:        0.6.0+git18
+Version:        0.7.0
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
 URL:            https://github.com/Horus645/swww
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging

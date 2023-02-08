@@ -1,7 +1,7 @@
 #
 # spec file for package vkmark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,9 +36,6 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 ExcludeArch:    %{arm} %{ix86}
-%ifarch %{x86_64}
-BuildRequires:  Mesa-libVulkan-devel
-%endif
 
 %description
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.

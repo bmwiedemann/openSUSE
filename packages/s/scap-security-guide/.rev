@@ -280,4 +280,19 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042353</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>176ae9e734311628026c48df8032f5f7</srcmd5>
+    <version>0.1.66</version>
+    <time>1675792130</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.66 (jsc#ECO-3319)
+  - Ubuntu 22.04 CIS
+  - OL7 stig v2r9 update
+  - Bump OL8 STIG version to V1R4
+  - Update RHEL7 STIG to V3R10
+  - Update RHEL8 STIG to V1R9
+  - Introduce CIS RHEL9 profiles
+- also various SUSE profile fixes were done</comment>
+    <requestid>1063457</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.0.25
+Version:        3.2.1
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
@@ -34,8 +34,8 @@ Summary:        RADIUS Server
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Networking/Radius/Servers
 URL:            http://www.freeradius.org/
-Source:         ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.bz2
-Source99:       ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.bz2.sig
+Source:         ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-%{version}.tar.bz2
+Source99:       ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-%{version}.tar.bz2.sig
 # keyring downloaded via link @ ftp://ftp.freeradius.org/pub/freeradius/README
 Source100:      freeradius.keyring
 Source1:        radiusd.service
@@ -77,6 +77,7 @@ BuildRequires:  pam-devel
 BuildRequires:  perl
 BuildRequires:  postgresql-devel
 BuildRequires:  python3-devel
+BuildRequires:  sqlite3
 BuildRequires:  sqlite3-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(apr-1)
@@ -405,6 +406,8 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/files/*
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/preprocess
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*
+%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/realm
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/realm/freeradius-naptr-to-home-server.sh
 %dir %attr(750,root,radiusd) /etc/raddb/mods-config/sql/moonshot-targeted-ids
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/preprocess/*
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql
@@ -429,6 +432,7 @@ done
 # sites-available
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/sites-available
 %{_sysconfdir}/raddb/sites-available/README
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/aws-nlb
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/control-socket
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/decoupled-accounting
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/robust-proxy-accounting
@@ -455,6 +459,8 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/challenge
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/resource-check
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/totp
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/google-ldap-auth
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/sites-available/tls-cache
 
 # sites-enabled
 # symlink: %%{_sysconfdir}/raddb/sites-enabled/xxx -> ../sites-available/xxx
@@ -468,7 +474,7 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/always
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/attr_filter
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/cache
-%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/cache_eap
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/cache_auth
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/chap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/counter
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/cui
@@ -493,6 +499,8 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/idn
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/inner-eap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/ippool
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/json
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/ldap_google
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/linelog
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/logintime
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/mac2ip
@@ -501,7 +509,6 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/mschap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/ntlm_auth
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/opendirectory
-%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/otp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/pam
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/pap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/passwd
@@ -537,7 +544,6 @@ done
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-enabled
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/always
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/attr_filter
-%config(missingok) %{_sysconfdir}/raddb/mods-enabled/cache_eap
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/chap
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/date
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/detail
@@ -613,7 +619,6 @@ done
 %{_libdir}/freeradius/rlm_cache.so
 %{_libdir}/freeradius/rlm_chap.so
 %{_libdir}/freeradius/rlm_counter.so
-%{_libdir}/freeradius/rlm_cram.so
 %{_libdir}/freeradius/rlm_date.so
 %{_libdir}/freeradius/rlm_detail.so
 %{_libdir}/freeradius/rlm_dhcp.so
@@ -634,10 +639,10 @@ done
 %{_libdir}/freeradius/rlm_expr.so
 %{_libdir}/freeradius/rlm_files.so
 %{_libdir}/freeradius/rlm_ippool.so
+%{_libdir}/freeradius/rlm_json.so
 %{_libdir}/freeradius/rlm_linelog.so
 %{_libdir}/freeradius/rlm_logintime.so
 %{_libdir}/freeradius/rlm_mschap.so
-%{_libdir}/freeradius/rlm_otp.so
 %{_libdir}/freeradius/rlm_pam.so
 %{_libdir}/freeradius/rlm_pap.so
 %{_libdir}/freeradius/rlm_passwd.so
@@ -818,7 +823,8 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/sqlite/queries.conf
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite
-%attr(750,root,radiusd) %config %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-refresh.sh
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-close-after-reload.pl
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-new-data-usage-period.sh
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/process-radacct-schema.sql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/queries.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/main/sqlite/schema.sql

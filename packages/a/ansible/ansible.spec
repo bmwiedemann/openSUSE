@@ -30,7 +30,7 @@
 %endif
 
 Name:           ansible
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -46,11 +46,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.14.1
+BuildRequires:  ansible-core >= 2.14.2
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       ansible-core >= 2.14.1
+Requires:       ansible-core >= 2.14.2
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$

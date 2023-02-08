@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,12 +149,12 @@ make %{?_smp_mflags}
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 find %{buildroot} -type f -name '*.la' -delete -print
-install -D -m 644 %{SOURCE20} %{buildroot}%{_unitdir}/nfs-mountd.service.d/options.conf
-install -D -m 644 %{SOURCE21} %{buildroot}%{_unitdir}/nfs-server.service.d/options.conf
-install -D -m 644 %{SOURCE22} %{buildroot}%{_unitdir}/rpc-gssd.service.d/options.conf
-install -D -m 644 %{SOURCE23} %{buildroot}%{_unitdir}/rpc-statd.service.d/options.conf
-install -D -m 644 %{SOURCE24} %{buildroot}%{_unitdir}/rpc-statd-notify.service.d/options.conf
-install -D -m 644 %{SOURCE25} %{buildroot}%{_unitdir}/rpc-svcgssd.service.d/options.conf
+install -D -m 644 %{SOURCE20} %{buildroot}%{_unitdir}/nfs-mountd.service.d/10-options.conf
+install -D -m 644 %{SOURCE21} %{buildroot}%{_unitdir}/nfs-server.service.d/10-options.conf
+install -D -m 644 %{SOURCE22} %{buildroot}%{_unitdir}/rpc-gssd.service.d/10-options.conf
+install -D -m 644 %{SOURCE23} %{buildroot}%{_unitdir}/rpc-statd.service.d/10-options.conf
+install -D -m 644 %{SOURCE24} %{buildroot}%{_unitdir}/rpc-statd-notify.service.d/10-options.conf
+install -D -m 644 %{SOURCE25} %{buildroot}%{_unitdir}/rpc-svcgssd.service.d/10-options.conf
 install -D -m 644 %{SOURCE26} %{buildroot}%{_sysconfdir}/nfs.conf
 install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-server

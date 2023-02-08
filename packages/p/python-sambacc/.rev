@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2fc5a1f7ea72cbb3818dd8b1c419a31</srcmd5>
+    <version>v0.2+git.56.9d8b892</version>
+    <time>1675792138</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of sambacc. This is a dependency of samba containers.</comment>
+    <requestid>1063470</requestid>
+  </revision>
+</revisionlist>

@@ -289,6 +289,9 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
   -DENABLE_STRICT=OFF          \
   -DENABLE_STATIC=OFF          \
   -DENABLE_FLEXIAPI=OFF        \
+%if 0%{?suse_version} > 1500
+  -DENABLE_QRCODE=OFF          \
+%endif
   -DCMAKE_LINK_WHAT_YOU_USE=ON
 
 %cmake_build

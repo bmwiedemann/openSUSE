@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  7 12:43:54 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.23.1
+  * Bugfixes:
+    #8325: "accept: function not implemented" after upgrading to syncthing v1.20.1
+
+-------------------------------------------------------------------
 Mon Jan  2 17:38:38 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.23.0

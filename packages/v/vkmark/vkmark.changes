@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  2 01:32:52 UTC 2023 - malcolmlewis@opensuse.org
+
+- Drop build requires on deprecated Mesa-libVulkan-devel.
+
+-------------------------------------------------------------------
 Thu Nov 24 13:55:41 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2017.08+git.20220909:

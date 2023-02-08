@@ -1,55 +1,59 @@
-Index: pip-api-0.0.10/pip_api/__init__.py
+Index: pip-api-0.0.30/pip_api/__init__.py
 ===================================================================
---- pip-api-0.0.10.orig/pip_api/__init__.py
-+++ pip-api-0.0.10/pip_api/__init__.py
-@@ -1,6 +1,6 @@
+--- pip-api-0.0.30.orig/pip_api/__init__.py
++++ pip-api-0.0.30/pip_api/__init__.py
+@@ -1,7 +1,7 @@
  import sys
  
 -from pip_api._vendor.packaging import version as packaging_version
+-from pip_api._vendor.packaging.version import Version
 +from packaging import version as packaging_version
++from packaging.version import Version
  
  # Import this now because we need it below
  from pip_api._version import version
-Index: pip-api-0.0.10/pip_api/_hash.py
+Index: pip-api-0.0.30/pip_api/_hash.py
 ===================================================================
---- pip-api-0.0.10.orig/pip_api/_hash.py
-+++ pip-api-0.0.10/pip_api/_hash.py
-@@ -1,4 +1,4 @@
--from pip_api._vendor.packaging.version import Version
-+from packaging.version import Version
+--- pip-api-0.0.30.orig/pip_api/_hash.py
++++ pip-api-0.0.30/pip_api/_hash.py
+@@ -1,6 +1,6 @@
+ import os
+ 
+-from pip_api._vendor.packaging.version import Version  # type: ignore
++from packaging.version import Version  # type: ignore
  
  import pip_api
  from pip_api._call import call
-Index: pip-api-0.0.10/pip_api/_installed_distributions.py
+Index: pip-api-0.0.30/pip_api/_installed_distributions.py
 ===================================================================
---- pip-api-0.0.10.orig/pip_api/_installed_distributions.py
-+++ pip-api-0.0.10/pip_api/_installed_distributions.py
-@@ -3,7 +3,7 @@ import re
- import pip_api
+--- pip-api-0.0.30.orig/pip_api/_installed_distributions.py
++++ pip-api-0.0.30/pip_api/_installed_distributions.py
+@@ -7,7 +7,7 @@ import pip_api
  from pip_api._call import call
+ from pip_api.exceptions import PipError
  
--from pip_api._vendor.packaging.version import Version
-+from packaging.version import Version
+-from pip_api._vendor.packaging.version import parse  # type: ignore
++from packaging.version import parse  # type: ignore
  
  
  class Distribution:
-Index: pip-api-0.0.10/pip_api/_parse_requirements.py
+Index: pip-api-0.0.30/pip_api/_parse_requirements.py
 ===================================================================
---- pip-api-0.0.10.orig/pip_api/_parse_requirements.py
-+++ pip-api-0.0.10/pip_api/_parse_requirements.py
-@@ -13,7 +13,7 @@ try:  # py27
- except ImportError:
-     from urllib import pathname2url
+--- pip-api-0.0.30.orig/pip_api/_parse_requirements.py
++++ pip-api-0.0.30/pip_api/_parse_requirements.py
+@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional,
+ from urllib.parse import urljoin, unquote, urlsplit
+ from urllib.request import pathname2url, url2pathname
  
--from pip_api._vendor.packaging import requirements, specifiers
-+from packaging import requirements, specifiers
+-from pip_api._vendor.packaging import requirements, specifiers  # type: ignore
++from packaging import requirements, specifiers  # type: ignore
  
  from pip_api.exceptions import PipError
  
-Index: pip-api-0.0.10/tests/conftest.py
+Index: pip-api-0.0.30/tests/conftest.py
 ===================================================================
---- pip-api-0.0.10.orig/tests/conftest.py
-+++ pip-api-0.0.10/tests/conftest.py
+--- pip-api-0.0.30.orig/tests/conftest.py
++++ pip-api-0.0.30/tests/conftest.py
 @@ -6,7 +6,7 @@ import pytest
  import pretend
  import virtualenv
@@ -58,4 +62,17 @@ Index: pip-api-0.0.10/tests/conftest.py
 +from packaging.version import Version
  
  import pip_api
+ 
+Index: pip-api-0.0.30/tests/test_installed_distributions.py
+===================================================================
+--- pip-api-0.0.30.orig/tests/test_installed_distributions.py
++++ pip-api-0.0.30/tests/test_installed_distributions.py
+@@ -2,7 +2,7 @@ import os
+ import pytest
+ 
+ import pip_api
+-from pip_api._vendor.packaging.version import parse
++from packaging.version import parse
+ from pip_api.exceptions import PipError
+ 
  

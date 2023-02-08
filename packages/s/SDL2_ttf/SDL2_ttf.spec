@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_ttf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_ttf
 %define lname	libSDL2_ttf-2_0-0
-Version:        2.20.1
+Version:        2.20.2
 Release:        0
 Summary:        Simple DirectMedia Layer 2 Truetype library
 License:        Zlib

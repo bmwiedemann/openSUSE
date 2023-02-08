@@ -134,4 +134,23 @@
     under nilearn/glm/first_level/hemodynamic_models.py, which resulted</comment>
     <requestid>1010211</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6dee54124e4c9f632596673c30423374</srcmd5>
+    <version>0.10.0</version>
+    <time>1675792125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0
+  * New classes MultiNiftiLabelsMasker and MultiNiftiMapsMasker create maskers
+    to extract signals from a list of subjects with 4D images using
+    parallelization (#3237 by Yasmin Mzayek).
+  * Updated docs with a new theme using furo (#3125 by Alexis Thual).
+  * permuted_ols and non_parametric_inference now support TFCE statistic (#3196
+    by Taylor Salo).
+  * permuted_ols and non_parametric_inference now support cluster-level
+    Family-wise error correction (#3181 by Taylor Salo).
+  * save_glm_to_bids has been added, which writes model outputs to disk
+    according to BIDS convention (#2715 by Taylor Salo).
+</comment>
+    <requestid>1063455</requestid>
+  </revision>
 </revisionlist>

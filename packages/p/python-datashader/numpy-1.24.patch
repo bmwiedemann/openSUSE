@@ -1,0 +1,15 @@
+Index: datashader-0.14.4/datashader/tests/test_dask.py
+===================================================================
+--- datashader-0.14.4.orig/datashader/tests/test_dask.py
++++ datashader-0.14.4/datashader/tests/test_dask.py
+@@ -999,8 +999,8 @@ def test_auto_range_line(DataFrame):
+ 
+     # axis1 ragged arrays
+     (dict(data={
+-        'x': pd.array([[-4, -2, 0], [2, 4]]),
+-        'y': pd.array([[0, -4, 0], [4, 0]])
++        'x': pd.array([[-4, -2, 0], [2, 4]], dtype=object),
++        'y': pd.array([[0, -4, 0], [4, 0]], dtype=object)
+     }, dtype='Ragged[float32]'), dict(x='x', y='y', axis=1))
+ ])
+ def test_area_to_zero_fixedrange(DataFrame, df_kwargs, cvs_kwargs):

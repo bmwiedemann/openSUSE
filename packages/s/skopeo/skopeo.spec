@@ -1,7 +1,7 @@
 #
 # spec file for package skopeo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,13 @@
 
 %define project        github.com/containers/skopeo
 
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
-# Build with libostree-devel for openSUSE Tumbleweed and Leap 15
-%define with_libostree 1
-%endif
 Name:           skopeo
-Version:        1.5.0
+Version:        1.10.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/containers/skopeo
+URL:            https://%project
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
 Requires:       libcontainers-common
@@ -40,11 +36,8 @@ BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.17
 ExcludeArch:    s390
-%if 0%{?with_libostree}
-BuildRequires:  libostree-devel
-%endif
 
 %description
 skopeo is a command line utility for various operations on container images and
@@ -54,14 +47,36 @@ storage mechanisms.
 
 %package bash-completion
 Summary:        Bash completion for skopeo
+Buildarch:      noarch
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 This package contains the bash completion for skopeo.
 
+%package fish-completion
+Summary:        Fish completion for skopeo
+Buildarch:      noarch
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+
+%description fish-completion
+This package contains the fish completion for skopeo.
+
+%package zsh-completion
+Summary:        Zsh completion for skopeo
+Buildarch:      noarch
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+This package contains the zsh completion for skopeo.
+
 %prep
-%setup -q
-# No shbang for completions
-sed -i 's|#! /bin/bash|# bash completion for skopeo|' completions/bash/skopeo
+%autosetup
 
 %build
 mkdir -p .gopath/src/github.com/containers
@@ -70,22 +85,12 @@ export GOPATH=$PWD/.gopath
 
 export BUILDTAGS="exclude_graphdriver_aufs"
 
-%if 0%{?suse_version} <= 1320
-	BUILDTAGS+=" libdm_no_deferred_remove"
-%endif
-
-# Starting from https://github.com/containers/image/pull/587, ostree is disabled
-# by default.
-%if 0%{?with_libostree}
-	BUILDTAGS+=" containers_image_ostree"
-%endif
-
 # Build.
 GO111MODULE=on go build -mod=vendor "-buildmode=pie" -ldflags "-X main.gitCommit=" -gcflags "" -tags "$BUILDTAGS" -o skopeo %{project}/cmd/skopeo
-make %{?_smp_mflags} docs PREFIX=%{_prefix}
+%make_build docs PREFIX=%{_prefix}
 
 %install
-%make_install PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix} install-docs install-completions
 # Drop unneeded files
 rm -rv %{buildroot}/etc/containers
 
@@ -96,6 +101,18 @@ rm -rv %{buildroot}/etc/containers
 %{_mandir}/man1/skopeo*.1*
 
 %files bash-completion
-%{_datadir}/bash-completion/completions/*
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

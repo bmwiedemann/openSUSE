@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2018-2022 SUSE LLC
+# Copyright (c) 2018-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,44 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch1:         ocki-3.19-remove-make-install-chgrp.patch
+Patch001:       ocki-3.19-remove-make-install-chgrp.patch
+#
+Patch002:       ocki-3.19.0-0001-EP11-Unify-key-pair-generation-functions.patch
+Patch003:       ocki-3.19.0-0002-EP11-Do-not-report-DSA-DH-parameter-generation-as-be.patch
+Patch004:       ocki-3.19.0-0003-EP11-Do-not-pass-empty-CKA_PUBLIC_KEY_INFO-to-EP11-h.patch
+Patch005:       ocki-3.19.0-0004-Mechtable-CKM_IBM_DILITHIUM-can-also-be-used-for-key.patch
+Patch006:       ocki-3.19.0-0005-EP11-Remove-DSA-DH-parameter-generation-mechanisms-f.patch
+Patch007:       ocki-3.19.0-0006-EP11-Pass-back-chain-code-for-CKM_IBM_BTC_DERIVE.patch
+Patch008:       ocki-3.19.0-0007-EP11-Supply-CKA_PUBLIC_KEY_INFO-with-CKM_IBM_BTC_DER.patch
+Patch009:       ocki-3.19.0-0008-EP11-Supply-CKA_PUBLIC_KEY_INFO-when-importing-priva.patch
+Patch010:       ocki-3.19.0-0009-EP11-Fix-memory-leak-introduced-with-recent-commit.patch
+Patch011:       ocki-3.19.0-0010-p11sak-Fix-segfault-when-dilithium-version-is-not-sp.patch
+Patch012:       ocki-3.19.0-0011-EP11-remove-dead-code-and-unused-variables.patch
+Patch013:       ocki-3.19.0-0012-EP11-Update-EP11-host-library-header-files.patch
+Patch014:       ocki-3.19.0-0013-EP11-Support-EP11-host-library-version-4.patch
+Patch015:       ocki-3.19.0-0014-EP11-Add-new-control-points.patch
+Patch016:       ocki-3.19.0-0015-EP11-Default-unknown-CPs-to-ON.patch
+Patch017:       ocki-3.19.0-0016-COMMON-Add-defines-for-Dilithium-round-2-and-3-varia.patch
+Patch018:       ocki-3.19.0-0017-COMMON-Add-defines-for-Kyber.patch
+Patch019:       ocki-3.19.0-0018-COMMON-Add-post-quantum-algorithm-OIDs.patch
+Patch020:       ocki-3.19.0-0019-COMMON-Dilithium-key-BER-encoding-decoding-allow-dif.patch
+Patch021:       ocki-3.19.0-0020-COMMON-EP11-Add-CKA_VALUE-holding-SPKI-PKCS-8-of-key.patch
+Patch022:       ocki-3.19.0-0021-COMMON-EP11-Allow-to-select-Dilithium-variant-via-mo.patch
+Patch023:       ocki-3.19.0-0022-EP11-Query-supported-PQC-variants-and-restrict-usage.patch
+Patch024:       ocki-3.19.0-0023-POLICY-Dilithium-strength-and-signature-size-depends.patch
+Patch025:       ocki-3.19.0-0024-TESTCASES-Test-Dilithium-variants.patch
+Patch026:       ocki-3.19.0-0025-COMMON-EP11-Add-Kyber-key-type-and-mechanism.patch
+Patch027:       ocki-3.19.0-0026-EP11-Add-support-for-generating-and-importing-Kyber-.patch
+Patch028:       ocki-3.19.0-0027-EP11-Add-support-for-encrypt-decrypt-and-KEM-operati.patch
+Patch029:       ocki-3.19.0-0028-POLICY-STATISTICS-Check-for-Kyber-KEM-KDFs-and-count.patch
+Patch030:       ocki-3.19.0-0029-TESTCASES-Add-tests-for-CKM_IBM_KYBER.patch
+Patch031:       ocki-3.19.0-0030-p11sak-Support-additional-Dilithium-variants.patch
+Patch032:       ocki-3.19.0-0031-p11sak-Add-support-for-IBM-Kyber-key-type.patch
+Patch033:       ocki-3.19.0-0032-testcase-Enhance-p11sak-testcase-to-generate-IBM-Kyb.patch
+Patch034:       ocki-3.19.0-0033-EP11-Supply-CKA_PUBLIC_KEY_INFO-with-CKM_IBM_BTC_DER.patch
+Patch035:       ocki-3.19.0-0034-EP11-Fix-setting-unknown-CPs-to-ON.patch
+Patch036:       ocki-3.19.0-0035-Fix-compile-error-error-initializer-element-is-not-c.patch
+#
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -126,8 +163,7 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %endif
 
 %prep
-%setup -q -n %{oc_cvs_tag}-%{version}
-%patch1 -p1
+%autosetup -p 1 -n %{oc_cvs_tag}-%{version}
 
 cp %{SOURCE2} .
 

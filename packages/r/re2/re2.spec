@@ -1,7 +1,7 @@
 #
 # spec file for package re2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,9 @@
 #
 
 
-%global longver 2022-12-01
+%global longver 2023-02-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-10
-%ifarch s390 s390x riscv64 armv6l armv6hl
-%bcond_with test
-%else
-%bcond_without test
-%endif
 Name:           re2
 Version:        %{shortver}
 Release:        0
@@ -33,12 +28,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.10.2
-%if %{?suse_version} < 1550
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(icu-uc)
 
 %description
 RE2 is a C++ library providing a fast, safe, thread-friendly alternative to
@@ -84,26 +77,18 @@ you will need to install %{name}-devel.
 %autosetup -n %{name}-%{longver}
 
 %build
-%if 0%{?suse_version} < 1550
-export CXX=g++-11
-%endif
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DRE2_USE_ICU=ON \
+	%{nil}
 %cmake_build
 
 %install
 %cmake_install
 
 %check
-# Test if created library is installed correctly
-%if 0%{?suse_version} < 1550
-export CXX=g++-11
-%endif
-%make_build shared-testinstall DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
-%if %{with test}
-# Actual functionality tests
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
 %ctest --repeat until-pass:9
-%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

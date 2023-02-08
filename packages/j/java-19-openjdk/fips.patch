@@ -1,8 +1,23 @@
-diff --git a/make/autoconf/lib-sysconf.m4 b/make/autoconf/lib-sysconf.m4
-new file mode 100644
-index 00000000000..b2b1c1787da
---- /dev/null
-+++ b/make/autoconf/lib-sysconf.m4
+--- jdk19u-jdk-19.0.2-7/make/autoconf/libraries.m4	2023-02-07 08:52:48.348206372 +0100
++++ jdk19u-jdk-19.0.2-7/make/autoconf/libraries.m4	2023-02-07 08:53:14.592364269 +0100
+@@ -35,6 +35,7 @@
+ m4_include([lib-x11.m4])
+ 
+ m4_include([lib-tests.m4])
++m4_include([lib-sysconf.m4])
+ 
+ ################################################################################
+ # Determine which libraries are needed for this configuration
+@@ -107,6 +108,7 @@
+   LIB_SETUP_X11
+ 
+   LIB_TESTS_SETUP_GTEST
++  LIB_SETUP_SYSCONF_LIBS
+ 
+   BASIC_JDKLIB_LIBS=""
+   if test "x$TOOLCHAIN_TYPE" != xmicrosoft; then
+--- jdk19u-jdk-19.0.2-7/make/autoconf/lib-sysconf.m4	1970-01-01 01:00:00.000000000 +0100
++++ jdk19u-jdk-19.0.2-7/make/autoconf/lib-sysconf.m4	2023-02-07 08:53:14.592364269 +0100
 @@ -0,0 +1,84 @@
 +#
 +# Copyright (c) 2021, Red Hat, Inc.
@@ -88,31 +103,9 @@ index 00000000000..b2b1c1787da
 +  fi
 +  AC_SUBST(USE_SYSCONF_NSS)
 +])
-diff --git a/make/autoconf/libraries.m4 b/make/autoconf/libraries.m4
-index 7a1d8d80bb2..1807cb71073 100644
---- a/make/autoconf/libraries.m4
-+++ b/make/autoconf/libraries.m4
-@@ -35,6 +35,7 @@ m4_include([lib-std.m4])
- m4_include([lib-x11.m4])
- 
- m4_include([lib-tests.m4])
-+m4_include([lib-sysconf.m4])
- 
- ################################################################################
- # Determine which libraries are needed for this configuration
-@@ -107,6 +108,7 @@ AC_DEFUN_ONCE([LIB_SETUP_LIBRARIES],
-   LIB_SETUP_X11
- 
-   LIB_TESTS_SETUP_GTEST
-+  LIB_SETUP_SYSCONF_LIBS
- 
-   BASIC_JDKLIB_LIBS=""
-   if test "x$TOOLCHAIN_TYPE" != xmicrosoft; then
-diff --git a/make/autoconf/spec.gmk.in b/make/autoconf/spec.gmk.in
-index 8908a5deb3c..2fce35f5b2d 100644
---- a/make/autoconf/spec.gmk.in
-+++ b/make/autoconf/spec.gmk.in
-@@ -854,6 +854,10 @@ INSTALL_SYSCONFDIR=@sysconfdir@
+--- jdk19u-jdk-19.0.2-7/make/autoconf/spec.gmk.in	2023-02-07 08:52:48.348206372 +0100
++++ jdk19u-jdk-19.0.2-7/make/autoconf/spec.gmk.in	2023-02-07 08:53:14.592364269 +0100
+@@ -854,6 +854,10 @@
  # Libraries
  #
  
@@ -123,15 +116,12 @@ index 8908a5deb3c..2fce35f5b2d 100644
  USE_EXTERNAL_LCMS:=@USE_EXTERNAL_LCMS@
  LCMS_CFLAGS:=@LCMS_CFLAGS@
  LCMS_LIBS:=@LCMS_LIBS@
-diff --git a/make/modules/java.base/Lib.gmk b/make/modules/java.base/Lib.gmk
-index 0d5a6c9846c..5ca12054351 100644
---- a/make/modules/java.base/Lib.gmk
-+++ b/make/modules/java.base/Lib.gmk
-@@ -164,6 +164,31 @@ ifeq ($(call isTargetOsType, unix), true)
-   endif
+--- jdk19u-jdk-19.0.2-7/make/modules/java.base/Lib.gmk	2023-02-07 08:52:48.424206829 +0100
++++ jdk19u-jdk-19.0.2-7/make/modules/java.base/Lib.gmk	2023-02-07 08:53:14.592364269 +0100
+@@ -165,6 +165,31 @@
  endif
  
-+################################################################################
+ ################################################################################
 +# Create the systemconf library
 +
 +LIBSYSTEMCONF_CFLAGS :=
@@ -156,14 +146,12 @@ index 0d5a6c9846c..5ca12054351 100644
 +  TARGETS += $(BUILD_LIBSYSTEMCONF)
 +endif
 +
- ################################################################################
++################################################################################
  # Create the symbols file for static builds.
  
-diff --git a/src/java.base/linux/native/libsystemconf/systemconf.c b/src/java.base/linux/native/libsystemconf/systemconf.c
-new file mode 100644
-index 00000000000..8dcb7d9073f
---- /dev/null
-+++ b/src/java.base/linux/native/libsystemconf/systemconf.c
+ ifeq ($(STATIC_BUILD), true)
+--- jdk19u-jdk-19.0.2-7/src/java.base/linux/native/libsystemconf/systemconf.c	1970-01-01 01:00:00.000000000 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/linux/native/libsystemconf/systemconf.c	2023-02-07 08:53:14.592364269 +0100
 @@ -0,0 +1,224 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -389,11 +377,9 @@ index 00000000000..8dcb7d9073f
 +      return (fips_enabled == '1' ? JNI_TRUE : JNI_FALSE);
 +    }
 +}
-diff --git a/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java b/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
-index 38836d2701e..324620a8e9b 100644
---- a/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
-+++ b/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
-@@ -31,6 +31,7 @@ import java.security.SecureRandom;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-02-07 08:52:48.432206878 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-02-07 08:53:14.592364269 +0100
+@@ -31,6 +31,7 @@
  import java.security.PrivilegedAction;
  import java.util.HashMap;
  import java.util.List;
@@ -401,7 +387,7 @@ index 38836d2701e..324620a8e9b 100644
  import static sun.security.util.SecurityConstants.PROVIDER_VER;
  import static sun.security.util.SecurityProviderConstants.*;
  
-@@ -78,6 +79,10 @@ import static sun.security.util.SecurityProviderConstants.*;
+@@ -78,6 +79,10 @@
  
  public final class SunJCE extends Provider {
  
@@ -412,996 +398,57 @@ index 38836d2701e..324620a8e9b 100644
      @java.io.Serial
      private static final long serialVersionUID = 6812507587804302833L;
  
-@@ -143,285 +148,287 @@ public final class SunJCE extends Provider {
+@@ -143,6 +148,7 @@
      void putEntries() {
          // reuse attribute map and reset before each reuse
          HashMap<String, String> attrs = new HashMap<>(3);
--        attrs.put("SupportedModes", "ECB");
--        attrs.put("SupportedPaddings", "NOPADDING|PKCS1PADDING|OAEPPADDING"
--                + "|OAEPWITHMD5ANDMGF1PADDING"
--                + "|OAEPWITHSHA1ANDMGF1PADDING"
--                + "|OAEPWITHSHA-1ANDMGF1PADDING"
--                + "|OAEPWITHSHA-224ANDMGF1PADDING"
--                + "|OAEPWITHSHA-256ANDMGF1PADDING"
--                + "|OAEPWITHSHA-384ANDMGF1PADDING"
--                + "|OAEPWITHSHA-512ANDMGF1PADDING"
--                + "|OAEPWITHSHA-512/224ANDMGF1PADDING"
--                + "|OAEPWITHSHA-512/256ANDMGF1PADDING");
--        attrs.put("SupportedKeyClasses",
--                "java.security.interfaces.RSAPublicKey" +
--                "|java.security.interfaces.RSAPrivateKey");
--        ps("Cipher", "RSA",
--                "com.sun.crypto.provider.RSACipher", null, attrs);
--
--        // common block cipher modes, pads
--        final String BLOCK_MODES = "ECB|CBC|PCBC|CTR|CTS|CFB|OFB" +
--            "|CFB8|CFB16|CFB24|CFB32|CFB40|CFB48|CFB56|CFB64" +
--            "|OFB8|OFB16|OFB24|OFB32|OFB40|OFB48|OFB56|OFB64";
--        final String BLOCK_MODES128 = BLOCK_MODES +
--            "|CFB72|CFB80|CFB88|CFB96|CFB104|CFB112|CFB120|CFB128" +
--            "|OFB72|OFB80|OFB88|OFB96|OFB104|OFB112|OFB120|OFB128";
--        final String BLOCK_PADS = "NOPADDING|PKCS5PADDING|ISO10126PADDING";
--
--        attrs.clear();
--        attrs.put("SupportedModes", BLOCK_MODES);
--        attrs.put("SupportedPaddings", BLOCK_PADS);
--        attrs.put("SupportedKeyFormats", "RAW");
--        ps("Cipher", "DES",
--                "com.sun.crypto.provider.DESCipher", null, attrs);
--        psA("Cipher", "DESede", "com.sun.crypto.provider.DESedeCipher",
--                attrs);
--        ps("Cipher", "Blowfish",
--                "com.sun.crypto.provider.BlowfishCipher", null, attrs);
--
--        ps("Cipher", "RC2",
--                "com.sun.crypto.provider.RC2Cipher", null, attrs);
--
--        attrs.clear();
--        attrs.put("SupportedModes", BLOCK_MODES128);
--        attrs.put("SupportedPaddings", BLOCK_PADS);
--        attrs.put("SupportedKeyFormats", "RAW");
--        psA("Cipher", "AES",
--                "com.sun.crypto.provider.AESCipher$General", attrs);
--
--        attrs.clear();
--        attrs.put("SupportedKeyFormats", "RAW");
--        psA("Cipher", "AES/KW/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES_KW_NoPadding",
--                attrs);
--        ps("Cipher", "AES/KW/PKCS5Padding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES_KW_PKCS5Padding",
--                null, attrs);
--        psA("Cipher", "AES/KWP/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES_KWP_NoPadding",
--                attrs);
--
--        psA("Cipher", "AES_128/ECB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES128_ECB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_128/CBC/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES128_CBC_NoPadding",
--                attrs);
--        psA("Cipher", "AES_128/OFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES128_OFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_128/CFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES128_CFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_128/KW/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES128_KW_NoPadding",
--                attrs);
--        ps("Cipher", "AES_128/KW/PKCS5Padding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES128_KW_PKCS5Padding",
--                null, attrs);
--        psA("Cipher", "AES_128/KWP/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES128_KWP_NoPadding",
--                attrs);
--
--        psA("Cipher", "AES_192/ECB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES192_ECB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_192/CBC/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES192_CBC_NoPadding",
--                attrs);
--        psA("Cipher", "AES_192/OFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES192_OFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_192/CFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES192_CFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_192/KW/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES192_KW_NoPadding",
--                attrs);
--        ps("Cipher", "AES_192/KW/PKCS5Padding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES192_KW_PKCS5Padding",
--                null, attrs);
--        psA("Cipher", "AES_192/KWP/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES192_KWP_NoPadding",
--                attrs);
--
--        psA("Cipher", "AES_256/ECB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES256_ECB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_256/CBC/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES256_CBC_NoPadding",
--                attrs);
--        psA("Cipher", "AES_256/OFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES256_OFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_256/CFB/NoPadding",
--                "com.sun.crypto.provider.AESCipher$AES256_CFB_NoPadding",
--                attrs);
--        psA("Cipher", "AES_256/KW/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES256_KW_NoPadding",
--                attrs);
--        ps("Cipher", "AES_256/KW/PKCS5Padding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES256_KW_PKCS5Padding",
--                null, attrs);
--        psA("Cipher", "AES_256/KWP/NoPadding",
--                "com.sun.crypto.provider.KeyWrapCipher$AES256_KWP_NoPadding",
--                attrs);
--
--        attrs.clear();
--        attrs.put("SupportedModes", "GCM");
--        attrs.put("SupportedKeyFormats", "RAW");
--
--        ps("Cipher", "AES/GCM/NoPadding",
--                "com.sun.crypto.provider.GaloisCounterMode$AESGCM", null,
--                attrs);
--        psA("Cipher", "AES_128/GCM/NoPadding",
--                "com.sun.crypto.provider.GaloisCounterMode$AES128",
--                attrs);
--        psA("Cipher", "AES_192/GCM/NoPadding",
--                "com.sun.crypto.provider.GaloisCounterMode$AES192",
--                attrs);
--        psA("Cipher", "AES_256/GCM/NoPadding",
--                "com.sun.crypto.provider.GaloisCounterMode$AES256",
--                attrs);
--
--        attrs.clear();
--        attrs.put("SupportedModes", "CBC");
--        attrs.put("SupportedPaddings", "NOPADDING");
--        attrs.put("SupportedKeyFormats", "RAW");
--        ps("Cipher", "DESedeWrap",
--                "com.sun.crypto.provider.DESedeWrapCipher", null, attrs);
--
--        attrs.clear();
--        attrs.put("SupportedModes", "ECB");
--        attrs.put("SupportedPaddings", "NOPADDING");
--        attrs.put("SupportedKeyFormats", "RAW");
--        psA("Cipher", "ARCFOUR",
--                "com.sun.crypto.provider.ARCFOURCipher", attrs);
--
--        attrs.clear();
--        attrs.put("SupportedKeyFormats", "RAW");
--        ps("Cipher",  "ChaCha20",
--                "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Only",
--                null, attrs);
--        psA("Cipher",  "ChaCha20-Poly1305",
--                "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
--                attrs);
--
--        // PBES1
--        psA("Cipher", "PBEWithMD5AndDES",
--                "com.sun.crypto.provider.PBEWithMD5AndDESCipher",
--                null);
--        ps("Cipher", "PBEWithMD5AndTripleDES",
--                "com.sun.crypto.provider.PBEWithMD5AndTripleDESCipher");
--        psA("Cipher", "PBEWithSHA1AndDESede",
--                "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndDESede",
--                null);
--        psA("Cipher", "PBEWithSHA1AndRC2_40",
--                "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC2_40",
--                null);
--        psA("Cipher", "PBEWithSHA1AndRC2_128",
--                "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC2_128",
--                null);
--        psA("Cipher", "PBEWithSHA1AndRC4_40",
--                "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC4_40",
--                null);
--
--        psA("Cipher", "PBEWithSHA1AndRC4_128",
--                "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC4_128",
--                null);
--
--        // PBES2
--        ps("Cipher", "PBEWithHmacSHA1AndAES_128",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA1AndAES_128");
--
--        ps("Cipher", "PBEWithHmacSHA224AndAES_128",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA224AndAES_128");
--
--        ps("Cipher", "PBEWithHmacSHA256AndAES_128",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA256AndAES_128");
--
--        ps("Cipher", "PBEWithHmacSHA384AndAES_128",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA384AndAES_128");
--
--        ps("Cipher", "PBEWithHmacSHA512AndAES_128",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA512AndAES_128");
--
--        ps("Cipher", "PBEWithHmacSHA1AndAES_256",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA1AndAES_256");
--
--        ps("Cipher", "PBEWithHmacSHA224AndAES_256",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA224AndAES_256");
--
--        ps("Cipher", "PBEWithHmacSHA256AndAES_256",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA256AndAES_256");
--
--        ps("Cipher", "PBEWithHmacSHA384AndAES_256",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA384AndAES_256");
--
--        ps("Cipher", "PBEWithHmacSHA512AndAES_256",
--                "com.sun.crypto.provider.PBES2Core$HmacSHA512AndAES_256");
--
--        /*
--         * Key(pair) Generator engines
--         */
--        ps("KeyGenerator", "DES",
--                "com.sun.crypto.provider.DESKeyGenerator");
--        psA("KeyGenerator", "DESede",
--                "com.sun.crypto.provider.DESedeKeyGenerator",
--                null);
--        ps("KeyGenerator", "Blowfish",
--                "com.sun.crypto.provider.BlowfishKeyGenerator");
--        psA("KeyGenerator", "AES",
--                "com.sun.crypto.provider.AESKeyGenerator",
--                null);
--        ps("KeyGenerator", "RC2",
--                "com.sun.crypto.provider.KeyGeneratorCore$RC2KeyGenerator");
--        psA("KeyGenerator", "ARCFOUR",
--                "com.sun.crypto.provider.KeyGeneratorCore$ARCFOURKeyGenerator",
--                null);
--        ps("KeyGenerator", "ChaCha20",
--                "com.sun.crypto.provider.KeyGeneratorCore$ChaCha20KeyGenerator");
--        ps("KeyGenerator", "HmacMD5",
--                "com.sun.crypto.provider.HmacMD5KeyGenerator");
--
--        psA("KeyGenerator", "HmacSHA1",
--                "com.sun.crypto.provider.HmacSHA1KeyGenerator", null);
--        psA("KeyGenerator", "HmacSHA224",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA224",
--                null);
--        psA("KeyGenerator", "HmacSHA256",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA256",
--                null);
--        psA("KeyGenerator", "HmacSHA384",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA384",
--                null);
--        psA("KeyGenerator", "HmacSHA512",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512",
--                null);
--        psA("KeyGenerator", "HmacSHA512/224",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512_224",
--                null);
--        psA("KeyGenerator", "HmacSHA512/256",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512_256",
--                null);
--
--        psA("KeyGenerator", "HmacSHA3-224",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_224",
--                null);
--        psA("KeyGenerator", "HmacSHA3-256",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_256",
--                null);
--        psA("KeyGenerator", "HmacSHA3-384",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_384",
--                null);
--        psA("KeyGenerator", "HmacSHA3-512",
--                "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_512",
--                null);
--
--        psA("KeyPairGenerator", "DiffieHellman",
--                "com.sun.crypto.provider.DHKeyPairGenerator",
--                null);
 +        if (!systemFipsEnabled) {
-+            attrs.put("SupportedModes", "ECB");
-+            attrs.put("SupportedPaddings", "NOPADDING|PKCS1PADDING|OAEPPADDING"
-+                    + "|OAEPWITHMD5ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA1ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-1ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-224ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-256ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-384ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-512ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-512/224ANDMGF1PADDING"
-+                    + "|OAEPWITHSHA-512/256ANDMGF1PADDING");
-+            attrs.put("SupportedKeyClasses",
-+                    "java.security.interfaces.RSAPublicKey" +
-+                    "|java.security.interfaces.RSAPrivateKey");
-+            ps("Cipher", "RSA",
-+                    "com.sun.crypto.provider.RSACipher", null, attrs);
-+
-+            // common block cipher modes, pads
-+            final String BLOCK_MODES = "ECB|CBC|PCBC|CTR|CTS|CFB|OFB" +
-+                "|CFB8|CFB16|CFB24|CFB32|CFB40|CFB48|CFB56|CFB64" +
-+                "|OFB8|OFB16|OFB24|OFB32|OFB40|OFB48|OFB56|OFB64";
-+            final String BLOCK_MODES128 = BLOCK_MODES +
-+                "|CFB72|CFB80|CFB88|CFB96|CFB104|CFB112|CFB120|CFB128" +
-+                "|OFB72|OFB80|OFB88|OFB96|OFB104|OFB112|OFB120|OFB128";
-+            final String BLOCK_PADS = "NOPADDING|PKCS5PADDING|ISO10126PADDING";
-+
-+            attrs.clear();
-+            attrs.put("SupportedModes", BLOCK_MODES);
-+            attrs.put("SupportedPaddings", BLOCK_PADS);
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            ps("Cipher", "DES",
-+                    "com.sun.crypto.provider.DESCipher", null, attrs);
-+            psA("Cipher", "DESede", "com.sun.crypto.provider.DESedeCipher",
-+                    attrs);
-+            ps("Cipher", "Blowfish",
-+                    "com.sun.crypto.provider.BlowfishCipher", null, attrs);
-+
-+            ps("Cipher", "RC2",
-+                    "com.sun.crypto.provider.RC2Cipher", null, attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedModes", BLOCK_MODES128);
-+            attrs.put("SupportedPaddings", BLOCK_PADS);
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            psA("Cipher", "AES",
-+                    "com.sun.crypto.provider.AESCipher$General", attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            psA("Cipher", "AES/KW/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES_KW_NoPadding",
-+                    attrs);
-+            ps("Cipher", "AES/KW/PKCS5Padding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES_KW_PKCS5Padding",
-+                    null, attrs);
-+            psA("Cipher", "AES/KWP/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES_KWP_NoPadding",
-+                    attrs);
-+
-+            psA("Cipher", "AES_128/ECB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES128_ECB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_128/CBC/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES128_CBC_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_128/OFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES128_OFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_128/CFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES128_CFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_128/KW/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES128_KW_NoPadding",
-+                    attrs);
-+            ps("Cipher", "AES_128/KW/PKCS5Padding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES128_KW_PKCS5Padding",
-+                    null, attrs);
-+            psA("Cipher", "AES_128/KWP/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES128_KWP_NoPadding",
-+                    attrs);
-+
-+            psA("Cipher", "AES_192/ECB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES192_ECB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_192/CBC/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES192_CBC_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_192/OFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES192_OFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_192/CFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES192_CFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_192/KW/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES192_KW_NoPadding",
-+                    attrs);
-+            ps("Cipher", "AES_192/KW/PKCS5Padding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES192_KW_PKCS5Padding",
-+                    null, attrs);
-+            psA("Cipher", "AES_192/KWP/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES192_KWP_NoPadding",
-+                    attrs);
-+
-+            psA("Cipher", "AES_256/ECB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES256_ECB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_256/CBC/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES256_CBC_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_256/OFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES256_OFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_256/CFB/NoPadding",
-+                    "com.sun.crypto.provider.AESCipher$AES256_CFB_NoPadding",
-+                    attrs);
-+            psA("Cipher", "AES_256/KW/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES256_KW_NoPadding",
-+                    attrs);
-+            ps("Cipher", "AES_256/KW/PKCS5Padding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES256_KW_PKCS5Padding",
-+                    null, attrs);
-+            psA("Cipher", "AES_256/KWP/NoPadding",
-+                    "com.sun.crypto.provider.KeyWrapCipher$AES256_KWP_NoPadding",
-+                    attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedModes", "GCM");
-+            attrs.put("SupportedKeyFormats", "RAW");
-+
-+            ps("Cipher", "AES/GCM/NoPadding",
-+                    "com.sun.crypto.provider.GaloisCounterMode$AESGCM", null,
-+                    attrs);
-+            psA("Cipher", "AES_128/GCM/NoPadding",
-+                    "com.sun.crypto.provider.GaloisCounterMode$AES128",
-+                    attrs);
-+            psA("Cipher", "AES_192/GCM/NoPadding",
-+                    "com.sun.crypto.provider.GaloisCounterMode$AES192",
-+                    attrs);
-+            psA("Cipher", "AES_256/GCM/NoPadding",
-+                    "com.sun.crypto.provider.GaloisCounterMode$AES256",
-+                    attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedModes", "CBC");
-+            attrs.put("SupportedPaddings", "NOPADDING");
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            ps("Cipher", "DESedeWrap",
-+                    "com.sun.crypto.provider.DESedeWrapCipher", null, attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedModes", "ECB");
-+            attrs.put("SupportedPaddings", "NOPADDING");
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            psA("Cipher", "ARCFOUR",
-+                    "com.sun.crypto.provider.ARCFOURCipher", attrs);
-+
-+            attrs.clear();
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            ps("Cipher",  "ChaCha20",
-+                    "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Only",
-+                    null, attrs);
-+            psA("Cipher",  "ChaCha20-Poly1305",
-+                    "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
-+                    attrs);
-+
-+            // PBES1
-+            psA("Cipher", "PBEWithMD5AndDES",
-+                    "com.sun.crypto.provider.PBEWithMD5AndDESCipher",
-+                    null);
-+            ps("Cipher", "PBEWithMD5AndTripleDES",
-+                    "com.sun.crypto.provider.PBEWithMD5AndTripleDESCipher");
-+            psA("Cipher", "PBEWithSHA1AndDESede",
-+                    "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndDESede",
-+                    null);
-+            psA("Cipher", "PBEWithSHA1AndRC2_40",
-+                    "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC2_40",
-+                    null);
-+            psA("Cipher", "PBEWithSHA1AndRC2_128",
-+                    "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC2_128",
-+                    null);
-+            psA("Cipher", "PBEWithSHA1AndRC4_40",
-+                    "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC4_40",
-+                    null);
-+
-+            psA("Cipher", "PBEWithSHA1AndRC4_128",
-+                    "com.sun.crypto.provider.PKCS12PBECipherCore$PBEWithSHA1AndRC4_128",
-+                    null);
-+
-+            // PBES2
-+            ps("Cipher", "PBEWithHmacSHA1AndAES_128",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA1AndAES_128");
-+
-+            ps("Cipher", "PBEWithHmacSHA224AndAES_128",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA224AndAES_128");
-+
-+            ps("Cipher", "PBEWithHmacSHA256AndAES_128",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA256AndAES_128");
-+
-+            ps("Cipher", "PBEWithHmacSHA384AndAES_128",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA384AndAES_128");
-+
-+            ps("Cipher", "PBEWithHmacSHA512AndAES_128",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA512AndAES_128");
-+
-+            ps("Cipher", "PBEWithHmacSHA1AndAES_256",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA1AndAES_256");
-+
-+            ps("Cipher", "PBEWithHmacSHA224AndAES_256",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA224AndAES_256");
-+
-+            ps("Cipher", "PBEWithHmacSHA256AndAES_256",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA256AndAES_256");
-+
-+            ps("Cipher", "PBEWithHmacSHA384AndAES_256",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA384AndAES_256");
-+
-+            ps("Cipher", "PBEWithHmacSHA512AndAES_256",
-+                    "com.sun.crypto.provider.PBES2Core$HmacSHA512AndAES_256");
-+
-+            /*
-+             * Key(pair) Generator engines
-+             */
-+            ps("KeyGenerator", "DES",
-+                    "com.sun.crypto.provider.DESKeyGenerator");
-+            psA("KeyGenerator", "DESede",
-+                    "com.sun.crypto.provider.DESedeKeyGenerator",
-+                    null);
-+            ps("KeyGenerator", "Blowfish",
-+                    "com.sun.crypto.provider.BlowfishKeyGenerator");
-+            psA("KeyGenerator", "AES",
-+                    "com.sun.crypto.provider.AESKeyGenerator",
-+                    null);
-+            ps("KeyGenerator", "RC2",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$RC2KeyGenerator");
-+            psA("KeyGenerator", "ARCFOUR",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$ARCFOURKeyGenerator",
-+                    null);
-+            ps("KeyGenerator", "ChaCha20",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$ChaCha20KeyGenerator");
-+            ps("KeyGenerator", "HmacMD5",
-+                    "com.sun.crypto.provider.HmacMD5KeyGenerator");
-+
-+            psA("KeyGenerator", "HmacSHA1",
-+                    "com.sun.crypto.provider.HmacSHA1KeyGenerator", null);
-+            psA("KeyGenerator", "HmacSHA224",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA224",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA256",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA256",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA384",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA384",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA512",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA512/224",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512_224",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA512/256",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA512_256",
-+                    null);
-+
-+            psA("KeyGenerator", "HmacSHA3-224",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_224",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA3-256",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_256",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA3-384",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_384",
-+                    null);
-+            psA("KeyGenerator", "HmacSHA3-512",
-+                    "com.sun.crypto.provider.KeyGeneratorCore$HmacKG$SHA3_512",
-+                    null);
-+
-+            psA("KeyPairGenerator", "DiffieHellman",
-+                    "com.sun.crypto.provider.DHKeyPairGenerator",
-+                    null);
+         attrs.put("SupportedModes", "ECB");
+         attrs.put("SupportedPaddings", "NOPADDING|PKCS1PADDING|OAEPPADDING"
+                 + "|OAEPWITHMD5ANDMGF1PADDING"
+@@ -422,6 +428,7 @@
+         psA("KeyPairGenerator", "DiffieHellman",
+                 "com.sun.crypto.provider.DHKeyPairGenerator",
+                 null);
 +        }
  
          /*
           * Algorithm parameter generation engines
-@@ -430,15 +437,17 @@ public final class SunJCE extends Provider {
+@@ -430,6 +437,7 @@
                  "DiffieHellman", "com.sun.crypto.provider.DHParameterGenerator",
                  null);
  
--        /*
--         * Key Agreement engines
--         */
--        attrs.clear();
--        attrs.put("SupportedKeyClasses", "javax.crypto.interfaces.DHPublicKey" +
--                        "|javax.crypto.interfaces.DHPrivateKey");
--        psA("KeyAgreement", "DiffieHellman",
--                "com.sun.crypto.provider.DHKeyAgreement",
--                attrs);
 +        if (!systemFipsEnabled) {
-+            /*
-+             * Key Agreement engines
-+             */
-+            attrs.clear();
-+            attrs.put("SupportedKeyClasses", "javax.crypto.interfaces.DHPublicKey" +
-+                            "|javax.crypto.interfaces.DHPrivateKey");
-+            psA("KeyAgreement", "DiffieHellman",
-+                    "com.sun.crypto.provider.DHKeyAgreement",
-+                    attrs);
+         /*
+          * Key Agreement engines
+          */
+@@ -439,6 +447,7 @@
+         psA("KeyAgreement", "DiffieHellman",
+                 "com.sun.crypto.provider.DHKeyAgreement",
+                 attrs);
 +        }
  
          /*
           * Algorithm Parameter engines
-@@ -531,197 +540,199 @@ public final class SunJCE extends Provider {
+@@ -531,6 +540,7 @@
          psA("AlgorithmParameters", "ChaCha20-Poly1305",
                  "com.sun.crypto.provider.ChaCha20Poly1305Parameters", null);
  
--        /*
--         * Key factories
--         */
--        psA("KeyFactory", "DiffieHellman",
--                "com.sun.crypto.provider.DHKeyFactory",
--                null);
--
--        /*
--         * Secret-key factories
--         */
--        ps("SecretKeyFactory", "DES",
--                "com.sun.crypto.provider.DESKeyFactory");
--
--        psA("SecretKeyFactory", "DESede",
--                "com.sun.crypto.provider.DESedeKeyFactory", null);
--
--        psA("SecretKeyFactory", "PBEWithMD5AndDES",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithMD5AndDES",
--                null);
--
--        /*
--         * Internal in-house crypto algorithm used for
--         * the JCEKS keystore type.  Since this was developed
--         * internally, there isn't an OID corresponding to this
--         * algorithm.
--         */
--        ps("SecretKeyFactory", "PBEWithMD5AndTripleDES",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithMD5AndTripleDES");
--
--        psA("SecretKeyFactory", "PBEWithSHA1AndDESede",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndDESede",
--                null);
--
--        psA("SecretKeyFactory", "PBEWithSHA1AndRC2_40",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC2_40",
--                null);
--
--        psA("SecretKeyFactory", "PBEWithSHA1AndRC2_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC2_128",
--                null);
--
--        psA("SecretKeyFactory", "PBEWithSHA1AndRC4_40",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC4_40",
--                null);
--
--        psA("SecretKeyFactory", "PBEWithSHA1AndRC4_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC4_128",
--                null);
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA1AndAES_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA1AndAES_128");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA224AndAES_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA224AndAES_128");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA256AndAES_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA256AndAES_128");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA384AndAES_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA384AndAES_128");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_128",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_128");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA1AndAES_256",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA1AndAES_256");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA224AndAES_256",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA224AndAES_256");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA256AndAES_256",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA256AndAES_256");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA384AndAES_256",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA384AndAES_256");
--
--        ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_256",
--                "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_256");
--
--        // PBKDF2
--        psA("SecretKeyFactory", "PBKDF2WithHmacSHA1",
--                "com.sun.crypto.provider.PBKDF2Core$HmacSHA1",
--                null);
--        ps("SecretKeyFactory", "PBKDF2WithHmacSHA224",
--                "com.sun.crypto.provider.PBKDF2Core$HmacSHA224");
--        ps("SecretKeyFactory", "PBKDF2WithHmacSHA256",
--                "com.sun.crypto.provider.PBKDF2Core$HmacSHA256");
--        ps("SecretKeyFactory", "PBKDF2WithHmacSHA384",
--                "com.sun.crypto.provider.PBKDF2Core$HmacSHA384");
--        ps("SecretKeyFactory", "PBKDF2WithHmacSHA512",
--                "com.sun.crypto.provider.PBKDF2Core$HmacSHA512");
--
--        /*
--         * MAC
--         */
--        attrs.clear();
--        attrs.put("SupportedKeyFormats", "RAW");
--        ps("Mac", "HmacMD5", "com.sun.crypto.provider.HmacMD5", null, attrs);
--        psA("Mac", "HmacSHA1", "com.sun.crypto.provider.HmacSHA1",
--                attrs);
--        psA("Mac", "HmacSHA224",
--                "com.sun.crypto.provider.HmacCore$HmacSHA224", attrs);
--        psA("Mac", "HmacSHA256",
--                "com.sun.crypto.provider.HmacCore$HmacSHA256", attrs);
--        psA("Mac", "HmacSHA384",
--                "com.sun.crypto.provider.HmacCore$HmacSHA384", attrs);
--        psA("Mac", "HmacSHA512",
--                "com.sun.crypto.provider.HmacCore$HmacSHA512", attrs);
--        psA("Mac", "HmacSHA512/224",
--                "com.sun.crypto.provider.HmacCore$HmacSHA512_224", attrs);
--        psA("Mac", "HmacSHA512/256",
--                "com.sun.crypto.provider.HmacCore$HmacSHA512_256", attrs);
--        psA("Mac", "HmacSHA3-224",
--                "com.sun.crypto.provider.HmacCore$HmacSHA3_224", attrs);
--        psA("Mac", "HmacSHA3-256",
--                "com.sun.crypto.provider.HmacCore$HmacSHA3_256", attrs);
--        psA("Mac", "HmacSHA3-384",
--                "com.sun.crypto.provider.HmacCore$HmacSHA3_384", attrs);
--        psA("Mac", "HmacSHA3-512",
--                "com.sun.crypto.provider.HmacCore$HmacSHA3_512", attrs);
--
--        ps("Mac", "HmacPBESHA1",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA1",
--                null, attrs);
--        ps("Mac", "HmacPBESHA224",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA224",
--                null, attrs);
--        ps("Mac", "HmacPBESHA256",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA256",
--                null, attrs);
--        ps("Mac", "HmacPBESHA384",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA384",
--                null, attrs);
--        ps("Mac", "HmacPBESHA512",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512",
--                null, attrs);
--        ps("Mac", "HmacPBESHA512/224",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_224",
--                null, attrs);
--        ps("Mac", "HmacPBESHA512/256",
--                "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_256",
--                null, attrs);
--
--
--        // PBMAC1
--        ps("Mac", "PBEWithHmacSHA1",
--                "com.sun.crypto.provider.PBMAC1Core$HmacSHA1", null, attrs);
--        ps("Mac", "PBEWithHmacSHA224",
--                "com.sun.crypto.provider.PBMAC1Core$HmacSHA224", null, attrs);
--        ps("Mac", "PBEWithHmacSHA256",
--                "com.sun.crypto.provider.PBMAC1Core$HmacSHA256", null, attrs);
--        ps("Mac", "PBEWithHmacSHA384",
--                "com.sun.crypto.provider.PBMAC1Core$HmacSHA384", null, attrs);
--        ps("Mac", "PBEWithHmacSHA512",
--                "com.sun.crypto.provider.PBMAC1Core$HmacSHA512", null, attrs);
--        ps("Mac", "SslMacMD5",
--                "com.sun.crypto.provider.SslMacCore$SslMacMD5", null, attrs);
--        ps("Mac", "SslMacSHA1",
--                "com.sun.crypto.provider.SslMacCore$SslMacSHA1", null, attrs);
--
--        /*
--         * KeyStore
--         */
--        ps("KeyStore", "JCEKS",
--                "com.sun.crypto.provider.JceKeyStore");
--
--        /*
--         * SSL/TLS mechanisms
--         *
--         * These are strictly internal implementations and may
--         * be changed at any time.  These names were chosen
--         * because PKCS11/SunPKCS11 does not yet have TLS1.2
--         * mechanisms, and it will cause calls to come here.
--         */
--        ps("KeyGenerator", "SunTlsPrf",
--                "com.sun.crypto.provider.TlsPrfGenerator$V10");
--        ps("KeyGenerator", "SunTls12Prf",
--                "com.sun.crypto.provider.TlsPrfGenerator$V12");
--
--        ps("KeyGenerator", "SunTlsMasterSecret",
--                "com.sun.crypto.provider.TlsMasterSecretGenerator",
--                List.of("SunTls12MasterSecret", "SunTlsExtendedMasterSecret"),
--                null);
--
--        ps("KeyGenerator", "SunTlsKeyMaterial",
--                "com.sun.crypto.provider.TlsKeyMaterialGenerator",
--                List.of("SunTls12KeyMaterial"), null);
--
--        ps("KeyGenerator", "SunTlsRsaPremasterSecret",
--                "com.sun.crypto.provider.TlsRsaPremasterSecretGenerator",
--                List.of("SunTls12RsaPremasterSecret"), null);
 +        if (!systemFipsEnabled) {
-+            /*
-+             * Key factories
-+             */
-+            psA("KeyFactory", "DiffieHellman",
-+                    "com.sun.crypto.provider.DHKeyFactory",
-+                    null);
-+
-+            /*
-+             * Secret-key factories
-+             */
-+            ps("SecretKeyFactory", "DES",
-+                    "com.sun.crypto.provider.DESKeyFactory");
-+
-+            psA("SecretKeyFactory", "DESede",
-+                    "com.sun.crypto.provider.DESedeKeyFactory", null);
-+
-+            psA("SecretKeyFactory", "PBEWithMD5AndDES",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithMD5AndDES",
-+                    null);
-+
-+            /*
-+             * Internal in-house crypto algorithm used for
-+             * the JCEKS keystore type.  Since this was developed
-+             * internally, there isn't an OID corresponding to this
-+             * algorithm.
-+             */
-+            ps("SecretKeyFactory", "PBEWithMD5AndTripleDES",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithMD5AndTripleDES");
-+
-+            psA("SecretKeyFactory", "PBEWithSHA1AndDESede",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndDESede",
-+                    null);
-+
-+            psA("SecretKeyFactory", "PBEWithSHA1AndRC2_40",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC2_40",
-+                    null);
-+
-+            psA("SecretKeyFactory", "PBEWithSHA1AndRC2_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC2_128",
-+                    null);
-+
-+            psA("SecretKeyFactory", "PBEWithSHA1AndRC4_40",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC4_40",
-+                    null);
-+
-+            psA("SecretKeyFactory", "PBEWithSHA1AndRC4_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithSHA1AndRC4_128",
-+                    null);
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA1AndAES_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA1AndAES_128");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA224AndAES_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA224AndAES_128");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA256AndAES_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA256AndAES_128");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA384AndAES_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA384AndAES_128");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_128",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_128");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA1AndAES_256",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA1AndAES_256");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA224AndAES_256",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA224AndAES_256");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA256AndAES_256",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA256AndAES_256");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA384AndAES_256",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA384AndAES_256");
-+
-+            ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_256",
-+                    "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_256");
-+
-+            // PBKDF2
-+            psA("SecretKeyFactory", "PBKDF2WithHmacSHA1",
-+                    "com.sun.crypto.provider.PBKDF2Core$HmacSHA1",
-+                    null);
-+            ps("SecretKeyFactory", "PBKDF2WithHmacSHA224",
-+                    "com.sun.crypto.provider.PBKDF2Core$HmacSHA224");
-+            ps("SecretKeyFactory", "PBKDF2WithHmacSHA256",
-+                    "com.sun.crypto.provider.PBKDF2Core$HmacSHA256");
-+            ps("SecretKeyFactory", "PBKDF2WithHmacSHA384",
-+                    "com.sun.crypto.provider.PBKDF2Core$HmacSHA384");
-+            ps("SecretKeyFactory", "PBKDF2WithHmacSHA512",
-+                    "com.sun.crypto.provider.PBKDF2Core$HmacSHA512");
-+
-+            /*
-+             * MAC
-+             */
-+            attrs.clear();
-+            attrs.put("SupportedKeyFormats", "RAW");
-+            ps("Mac", "HmacMD5", "com.sun.crypto.provider.HmacMD5", null, attrs);
-+            psA("Mac", "HmacSHA1", "com.sun.crypto.provider.HmacSHA1",
-+                    attrs);
-+            psA("Mac", "HmacSHA224",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA224", attrs);
-+            psA("Mac", "HmacSHA256",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA256", attrs);
-+            psA("Mac", "HmacSHA384",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA384", attrs);
-+            psA("Mac", "HmacSHA512",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA512", attrs);
-+            psA("Mac", "HmacSHA512/224",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA512_224", attrs);
-+            psA("Mac", "HmacSHA512/256",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA512_256", attrs);
-+            psA("Mac", "HmacSHA3-224",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA3_224", attrs);
-+            psA("Mac", "HmacSHA3-256",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA3_256", attrs);
-+            psA("Mac", "HmacSHA3-384",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA3_384", attrs);
-+            psA("Mac", "HmacSHA3-512",
-+                    "com.sun.crypto.provider.HmacCore$HmacSHA3_512", attrs);
-+
-+            ps("Mac", "HmacPBESHA1",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA1",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA224",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA224",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA256",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA256",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA384",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA384",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA512",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA512/224",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_224",
-+                    null, attrs);
-+            ps("Mac", "HmacPBESHA512/256",
-+                    "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_256",
-+                    null, attrs);
-+
-+
-+            // PBMAC1
-+            ps("Mac", "PBEWithHmacSHA1",
-+                    "com.sun.crypto.provider.PBMAC1Core$HmacSHA1", null, attrs);
-+            ps("Mac", "PBEWithHmacSHA224",
-+                    "com.sun.crypto.provider.PBMAC1Core$HmacSHA224", null, attrs);
-+            ps("Mac", "PBEWithHmacSHA256",
-+                    "com.sun.crypto.provider.PBMAC1Core$HmacSHA256", null, attrs);
-+            ps("Mac", "PBEWithHmacSHA384",
-+                    "com.sun.crypto.provider.PBMAC1Core$HmacSHA384", null, attrs);
-+            ps("Mac", "PBEWithHmacSHA512",
-+                    "com.sun.crypto.provider.PBMAC1Core$HmacSHA512", null, attrs);
-+            ps("Mac", "SslMacMD5",
-+                    "com.sun.crypto.provider.SslMacCore$SslMacMD5", null, attrs);
-+            ps("Mac", "SslMacSHA1",
-+                    "com.sun.crypto.provider.SslMacCore$SslMacSHA1", null, attrs);
-+
-+            /*
-+             * KeyStore
-+             */
-+            ps("KeyStore", "JCEKS",
-+                    "com.sun.crypto.provider.JceKeyStore");
-+
-+            /*
-+             * SSL/TLS mechanisms
-+             *
-+             * These are strictly internal implementations and may
-+             * be changed at any time.  These names were chosen
-+             * because PKCS11/SunPKCS11 does not yet have TLS1.2
-+             * mechanisms, and it will cause calls to come here.
-+             */
-+            ps("KeyGenerator", "SunTlsPrf",
-+                    "com.sun.crypto.provider.TlsPrfGenerator$V10");
-+            ps("KeyGenerator", "SunTls12Prf",
-+                    "com.sun.crypto.provider.TlsPrfGenerator$V12");
-+
-+            ps("KeyGenerator", "SunTlsMasterSecret",
-+                    "com.sun.crypto.provider.TlsMasterSecretGenerator",
-+                    List.of("SunTls12MasterSecret", "SunTlsExtendedMasterSecret"),
-+                    null);
-+
-+            ps("KeyGenerator", "SunTlsKeyMaterial",
-+                    "com.sun.crypto.provider.TlsKeyMaterialGenerator",
-+                    List.of("SunTls12KeyMaterial"), null);
-+
-+            ps("KeyGenerator", "SunTlsRsaPremasterSecret",
-+                    "com.sun.crypto.provider.TlsRsaPremasterSecretGenerator",
-+                    List.of("SunTls12RsaPremasterSecret"), null);
-+        }
+         /*
+          * Key factories
+          */
+@@ -723,6 +733,7 @@
+                 "com.sun.crypto.provider.TlsRsaPremasterSecretGenerator",
+                 List.of("SunTls12RsaPremasterSecret"), null);
      }
++    }
  
      // Return the instance of this class or create one if needed.
-diff --git a/src/java.base/share/classes/java/security/Security.java b/src/java.base/share/classes/java/security/Security.java
-index 7218f536804..7be83f5eeaa 100644
---- a/src/java.base/share/classes/java/security/Security.java
-+++ b/src/java.base/share/classes/java/security/Security.java
-@@ -32,6 +32,7 @@ import java.net.URL;
+     static SunJCE getInstance() {
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/java/security/Security.java	2023-02-07 08:52:48.456207022 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/java/security/Security.java	2023-02-07 08:53:14.592364269 +0100
+@@ -32,6 +32,7 @@
  
  import jdk.internal.event.EventHelper;
  import jdk.internal.event.SecurityPropertyModificationEvent;
@@ -1409,7 +456,7 @@ index 7218f536804..7be83f5eeaa 100644
  import jdk.internal.access.SharedSecrets;
  import jdk.internal.util.StaticProperty;
  import sun.security.util.Debug;
-@@ -47,12 +48,20 @@ import sun.security.jca.*;
+@@ -47,12 +48,20 @@
   * implementation-specific location, which is typically the properties file
   * {@code conf/security/java.security} in the Java installation directory.
   *
@@ -1430,7 +477,7 @@ index 7218f536804..7be83f5eeaa 100644
      /* Are we debugging? -- for developers */
      private static final Debug sdebug =
                          Debug.getInstance("properties");
-@@ -67,6 +76,19 @@ public final class Security {
+@@ -67,6 +76,19 @@
      }
  
      static {
@@ -1450,7 +497,7 @@ index 7218f536804..7be83f5eeaa 100644
          // doPrivileged here because there are multiple
          // things in initialize that might require privs.
          // (the FileInputStream call and the File.exists call,
-@@ -84,6 +106,7 @@ public final class Security {
+@@ -84,6 +106,7 @@
          props = new Properties();
          boolean loadedProps = false;
          boolean overrideAll = false;
@@ -1458,7 +505,15 @@ index 7218f536804..7be83f5eeaa 100644
  
          // first load the system properties file
          // to determine the value of security.overridePropertiesFile
-@@ -192,6 +216,61 @@ public final class Security {
+@@ -98,6 +121,7 @@
+                 if (sdebug != null) {
+                     sdebug.println("reading security properties file: " +
+                                 propFile);
++                    sdebug.println(props.toString());
+                 }
+             } catch (IOException e) {
+                 if (sdebug != null) {
+@@ -192,6 +216,61 @@
              }
          }
  
@@ -1520,11 +575,8 @@ index 7218f536804..7be83f5eeaa 100644
      }
  
      /*
-diff --git a/src/java.base/share/classes/java/security/SystemConfigurator.java b/src/java.base/share/classes/java/security/SystemConfigurator.java
-new file mode 100644
-index 00000000000..98ffced455b
---- /dev/null
-+++ b/src/java.base/share/classes/java/security/SystemConfigurator.java
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/java/security/SystemConfigurator.java	1970-01-01 01:00:00.000000000 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/java/security/SystemConfigurator.java	2023-02-07 08:53:14.592364269 +0100
 @@ -0,0 +1,249 @@
 +/*
 + * Copyright (c) 2019, 2021, Red Hat, Inc.
@@ -1775,11 +827,8 @@ index 00000000000..98ffced455b
 +        }
 +    }
 +}
-diff --git a/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java b/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java
-new file mode 100644
-index 00000000000..3f3caac64dc
---- /dev/null
-+++ b/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	1970-01-01 01:00:00.000000000 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	2023-02-07 08:53:14.592364269 +0100
 @@ -0,0 +1,31 @@
 +/*
 + * Copyright (c) 2020, Red Hat, Inc.
@@ -1812,11 +861,9 @@ index 00000000000..3f3caac64dc
 +    boolean isSystemFipsEnabled();
 +    boolean isPlainKeySupportEnabled();
 +}
-diff --git a/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java b/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
-index 08e1133ffae..7d6e6b3cbc6 100644
---- a/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
-+++ b/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
-@@ -42,6 +42,7 @@ import java.io.PrintStream;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-02-07 08:52:48.480207166 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-02-07 08:53:14.596364294 +0100
+@@ -42,6 +42,7 @@
  import java.io.PrintWriter;
  import java.io.RandomAccessFile;
  import java.security.ProtectionDomain;
@@ -1824,7 +871,7 @@ index 08e1133ffae..7d6e6b3cbc6 100644
  import java.security.Signature;
  
  /** A repository of "shared secrets", which are a mechanism for
-@@ -87,6 +88,7 @@ public class SharedSecrets {
+@@ -87,6 +88,7 @@
      private static JavaSecuritySpecAccess javaSecuritySpecAccess;
      private static JavaxCryptoSealedObjectAccess javaxCryptoSealedObjectAccess;
      private static JavaxCryptoSpecAccess javaxCryptoSpecAccess;
@@ -1832,7 +879,7 @@ index 08e1133ffae..7d6e6b3cbc6 100644
  
      public static void setJavaUtilCollectionAccess(JavaUtilCollectionAccess juca) {
          javaUtilCollectionAccess = juca;
-@@ -498,4 +500,15 @@ public class SharedSecrets {
+@@ -498,4 +500,15 @@
              MethodHandles.lookup().ensureInitialized(c);
          } catch (IllegalAccessException e) {}
      }
@@ -1848,11 +895,9 @@ index 08e1133ffae..7d6e6b3cbc6 100644
 +        return javaSecuritySystemConfiguratorAccess;
 +    }
  }
-diff --git a/src/java.base/share/classes/module-info.java b/src/java.base/share/classes/module-info.java
-index e280defabe0..724dcf76edd 100644
---- a/src/java.base/share/classes/module-info.java
-+++ b/src/java.base/share/classes/module-info.java
-@@ -155,6 +155,8 @@ module java.base {
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/module-info.java	2023-02-07 08:52:48.432206878 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/module-info.java	2023-02-07 08:53:14.596364294 +0100
+@@ -155,6 +155,8 @@
          java.naming,
          java.rmi,
          jdk.charsets,
@@ -1861,11 +906,9 @@ index e280defabe0..724dcf76edd 100644
          jdk.jartool,
          jdk.jlink,
          jdk.net;
-diff --git a/src/java.base/share/classes/sun/security/provider/SunEntries.java b/src/java.base/share/classes/sun/security/provider/SunEntries.java
-index 46d3ee8bb06..53bc4851d23 100644
---- a/src/java.base/share/classes/sun/security/provider/SunEntries.java
-+++ b/src/java.base/share/classes/sun/security/provider/SunEntries.java
-@@ -30,6 +30,7 @@ import java.net.*;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-02-07 08:52:48.504207310 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-02-07 08:53:14.596364294 +0100
+@@ -30,6 +30,7 @@
  import java.util.*;
  import java.security.*;
  
@@ -1873,7 +916,7 @@ index 46d3ee8bb06..53bc4851d23 100644
  import jdk.internal.util.StaticProperty;
  import sun.security.action.GetBooleanAction;
  import sun.security.util.SecurityProviderConstants;
-@@ -83,6 +84,10 @@ import static sun.security.util.SecurityProviderConstants.getAliases;
+@@ -83,6 +84,10 @@
  
  public final class SunEntries {
  
@@ -1884,284 +927,41 @@ index 46d3ee8bb06..53bc4851d23 100644
      // the default algo used by SecureRandom class for new SecureRandom() calls
      public static final String DEF_SECURE_RANDOM_ALGO;
  
-@@ -94,99 +99,101 @@ public final class SunEntries {
+@@ -94,6 +99,7 @@
          // common attribute map
          HashMap<String, String> attrs = new HashMap<>(3);
  
--        /*
--         * SecureRandom engines
--         */
--        attrs.put("ThreadSafe", "true");
--        if (NativePRNG.isAvailable()) {
--            add(p, "SecureRandom", "NativePRNG",
--                    "sun.security.provider.NativePRNG", attrs);
--        }
--        if (NativePRNG.Blocking.isAvailable()) {
--            add(p, "SecureRandom", "NativePRNGBlocking",
--                    "sun.security.provider.NativePRNG$Blocking", attrs);
--        }
--        if (NativePRNG.NonBlocking.isAvailable()) {
--            add(p, "SecureRandom", "NativePRNGNonBlocking",
--                    "sun.security.provider.NativePRNG$NonBlocking", attrs);
--        }
--        attrs.put("ImplementedIn", "Software");
--        add(p, "SecureRandom", "DRBG", "sun.security.provider.DRBG", attrs);
--        add(p, "SecureRandom", "SHA1PRNG",
--                "sun.security.provider.SecureRandom", attrs);
--
--        /*
--         * Signature engines
--         */
--        attrs.clear();
--        String dsaKeyClasses = "java.security.interfaces.DSAPublicKey" +
--                "|java.security.interfaces.DSAPrivateKey";
--        attrs.put("SupportedKeyClasses", dsaKeyClasses);
--        attrs.put("ImplementedIn", "Software");
--
--        attrs.put("KeySize", "1024"); // for NONE and SHA1 DSA signatures
--
--        addWithAlias(p, "Signature", "SHA1withDSA",
--                "sun.security.provider.DSA$SHA1withDSA", attrs);
--        addWithAlias(p, "Signature", "NONEwithDSA",
--                "sun.security.provider.DSA$RawDSA", attrs);
--
--        // for DSA signatures with 224/256-bit digests
--        attrs.put("KeySize", "2048");
--
--        addWithAlias(p, "Signature", "SHA224withDSA",
--                "sun.security.provider.DSA$SHA224withDSA", attrs);
--        addWithAlias(p, "Signature", "SHA256withDSA",
--                "sun.security.provider.DSA$SHA256withDSA", attrs);
--
--        addWithAlias(p, "Signature", "SHA3-224withDSA",
--                "sun.security.provider.DSA$SHA3_224withDSA", attrs);
--        addWithAlias(p, "Signature", "SHA3-256withDSA",
--                "sun.security.provider.DSA$SHA3_256withDSA", attrs);
--
--        attrs.put("KeySize", "3072"); // for DSA sig using 384/512-bit digests
--
--        addWithAlias(p, "Signature", "SHA384withDSA",
--                "sun.security.provider.DSA$SHA384withDSA", attrs);
--        addWithAlias(p, "Signature", "SHA512withDSA",
--                "sun.security.provider.DSA$SHA512withDSA", attrs);
--        addWithAlias(p, "Signature", "SHA3-384withDSA",
--                "sun.security.provider.DSA$SHA3_384withDSA", attrs);
--        addWithAlias(p, "Signature", "SHA3-512withDSA",
--                "sun.security.provider.DSA$SHA3_512withDSA", attrs);
--
--        attrs.remove("KeySize");
 +        if (!systemFipsEnabled) {
-+            /*
-+             * SecureRandom engines
-+             */
-+            attrs.put("ThreadSafe", "true");
-+            if (NativePRNG.isAvailable()) {
-+                add(p, "SecureRandom", "NativePRNG",
-+                        "sun.security.provider.NativePRNG", attrs);
-+            }
-+            if (NativePRNG.Blocking.isAvailable()) {
-+                add(p, "SecureRandom", "NativePRNGBlocking",
-+                        "sun.security.provider.NativePRNG$Blocking", attrs);
-+            }
-+            if (NativePRNG.NonBlocking.isAvailable()) {
-+                add(p, "SecureRandom", "NativePRNGNonBlocking",
-+                        "sun.security.provider.NativePRNG$NonBlocking", attrs);
-+            }
-+            attrs.put("ImplementedIn", "Software");
-+            add(p, "SecureRandom", "DRBG", "sun.security.provider.DRBG", attrs);
-+            add(p, "SecureRandom", "SHA1PRNG",
-+                    "sun.security.provider.SecureRandom", attrs);
- 
--        add(p, "Signature", "SHA1withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA1withDSAinP1363Format");
--        add(p, "Signature", "NONEwithDSAinP1363Format",
--                "sun.security.provider.DSA$RawDSAinP1363Format");
--        add(p, "Signature", "SHA224withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA224withDSAinP1363Format");
--        add(p, "Signature", "SHA256withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA256withDSAinP1363Format");
--        add(p, "Signature", "SHA384withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA384withDSAinP1363Format");
--        add(p, "Signature", "SHA512withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA512withDSAinP1363Format");
--        add(p, "Signature", "SHA3-224withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA3_224withDSAinP1363Format");
--        add(p, "Signature", "SHA3-256withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA3_256withDSAinP1363Format");
--        add(p, "Signature", "SHA3-384withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA3_384withDSAinP1363Format");
--        add(p, "Signature", "SHA3-512withDSAinP1363Format",
--                "sun.security.provider.DSA$SHA3_512withDSAinP1363Format");
--        /*
--         *  Key Pair Generator engines
--         */
--        attrs.clear();
--        attrs.put("ImplementedIn", "Software");
--        attrs.put("KeySize", "2048"); // for DSA KPG and APG only
-+            /*
-+             * Signature engines
-+             */
-+            attrs.clear();
-+            String dsaKeyClasses = "java.security.interfaces.DSAPublicKey" +
-+                    "|java.security.interfaces.DSAPrivateKey";
-+            attrs.put("SupportedKeyClasses", dsaKeyClasses);
-+            attrs.put("ImplementedIn", "Software");
-+
-+            attrs.put("KeySize", "1024"); // for NONE and SHA1 DSA signatures
-+
-+            addWithAlias(p, "Signature", "SHA1withDSA",
-+                    "sun.security.provider.DSA$SHA1withDSA", attrs);
-+            addWithAlias(p, "Signature", "NONEwithDSA",
-+                    "sun.security.provider.DSA$RawDSA", attrs);
-+
-+            // for DSA signatures with 224/256-bit digests
-+            attrs.put("KeySize", "2048");
-+
-+            addWithAlias(p, "Signature", "SHA224withDSA",
-+                    "sun.security.provider.DSA$SHA224withDSA", attrs);
-+            addWithAlias(p, "Signature", "SHA256withDSA",
-+                    "sun.security.provider.DSA$SHA256withDSA", attrs);
-+
-+            addWithAlias(p, "Signature", "SHA3-224withDSA",
-+                    "sun.security.provider.DSA$SHA3_224withDSA", attrs);
-+            addWithAlias(p, "Signature", "SHA3-256withDSA",
-+                    "sun.security.provider.DSA$SHA3_256withDSA", attrs);
-+
-+            attrs.put("KeySize", "3072"); // for DSA sig using 384/512-bit digests
-+
-+            addWithAlias(p, "Signature", "SHA384withDSA",
-+                    "sun.security.provider.DSA$SHA384withDSA", attrs);
-+            addWithAlias(p, "Signature", "SHA512withDSA",
-+                    "sun.security.provider.DSA$SHA512withDSA", attrs);
-+            addWithAlias(p, "Signature", "SHA3-384withDSA",
-+                    "sun.security.provider.DSA$SHA3_384withDSA", attrs);
-+            addWithAlias(p, "Signature", "SHA3-512withDSA",
-+                    "sun.security.provider.DSA$SHA3_512withDSA", attrs);
-+
-+            attrs.remove("KeySize");
-+
-+            add(p, "Signature", "SHA1withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA1withDSAinP1363Format");
-+            add(p, "Signature", "NONEwithDSAinP1363Format",
-+                    "sun.security.provider.DSA$RawDSAinP1363Format");
-+            add(p, "Signature", "SHA224withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA224withDSAinP1363Format");
-+            add(p, "Signature", "SHA256withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA256withDSAinP1363Format");
-+            add(p, "Signature", "SHA384withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA384withDSAinP1363Format");
-+            add(p, "Signature", "SHA512withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA512withDSAinP1363Format");
-+            add(p, "Signature", "SHA3-224withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA3_224withDSAinP1363Format");
-+            add(p, "Signature", "SHA3-256withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA3_256withDSAinP1363Format");
-+            add(p, "Signature", "SHA3-384withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA3_384withDSAinP1363Format");
-+            add(p, "Signature", "SHA3-512withDSAinP1363Format",
-+                    "sun.security.provider.DSA$SHA3_512withDSAinP1363Format");
-+            /*
-+             *  Key Pair Generator engines
-+             */
-+            attrs.clear();
-+            attrs.put("ImplementedIn", "Software");
-+            attrs.put("KeySize", "2048"); // for DSA KPG and APG only
- 
--        String dsaKPGImplClass = "sun.security.provider.DSAKeyPairGenerator$";
--        dsaKPGImplClass += (useLegacyDSA? "Legacy" : "Current");
--        addWithAlias(p, "KeyPairGenerator", "DSA", dsaKPGImplClass, attrs);
-+            String dsaKPGImplClass = "sun.security.provider.DSAKeyPairGenerator$";
-+            dsaKPGImplClass += (useLegacyDSA? "Legacy" : "Current");
-+            addWithAlias(p, "KeyPairGenerator", "DSA", dsaKPGImplClass, attrs);
+         /*
+          * SecureRandom engines
+          */
+@@ -187,6 +193,7 @@
+         String dsaKPGImplClass = "sun.security.provider.DSAKeyPairGenerator$";
+         dsaKPGImplClass += (useLegacyDSA? "Legacy" : "Current");
+         addWithAlias(p, "KeyPairGenerator", "DSA", dsaKPGImplClass, attrs);
 +        }
  
          /*
           * Algorithm Parameter Generator engines
-@@ -201,42 +208,44 @@ public final class SunEntries {
+@@ -201,6 +208,7 @@
          addWithAlias(p, "AlgorithmParameters", "DSA",
                  "sun.security.provider.DSAParameters", attrs);
  
--        /*
--         * Key factories
--         */
--        addWithAlias(p, "KeyFactory", "DSA",
--                "sun.security.provider.DSAKeyFactory", attrs);
--
--        /*
--         * Digest engines
--         */
--        addWithAlias(p, "MessageDigest", "MD2", "sun.security.provider.MD2",
--                attrs);
--        addWithAlias(p, "MessageDigest", "MD5", "sun.security.provider.MD5",
--                attrs);
--        addWithAlias(p, "MessageDigest", "SHA-1", "sun.security.provider.SHA",
--                attrs);
 +        if (!systemFipsEnabled) {
-+            /*
-+             * Key factories
-+             */
-+            addWithAlias(p, "KeyFactory", "DSA",
-+                    "sun.security.provider.DSAKeyFactory", attrs);
- 
--        addWithAlias(p, "MessageDigest", "SHA-224",
--                "sun.security.provider.SHA2$SHA224", attrs);
--        addWithAlias(p, "MessageDigest", "SHA-256",
--                "sun.security.provider.SHA2$SHA256", attrs);
--        addWithAlias(p, "MessageDigest", "SHA-384",
--                "sun.security.provider.SHA5$SHA384", attrs);
--        addWithAlias(p, "MessageDigest", "SHA-512",
--                "sun.security.provider.SHA5$SHA512", attrs);
--        addWithAlias(p, "MessageDigest", "SHA-512/224",
--                "sun.security.provider.SHA5$SHA512_224", attrs);
--        addWithAlias(p, "MessageDigest", "SHA-512/256",
--                "sun.security.provider.SHA5$SHA512_256", attrs);
--        addWithAlias(p, "MessageDigest", "SHA3-224",
--                "sun.security.provider.SHA3$SHA224", attrs);
--        addWithAlias(p, "MessageDigest", "SHA3-256",
--                "sun.security.provider.SHA3$SHA256", attrs);
--        addWithAlias(p, "MessageDigest", "SHA3-384",
--                "sun.security.provider.SHA3$SHA384", attrs);
--        addWithAlias(p, "MessageDigest", "SHA3-512",
--                "sun.security.provider.SHA3$SHA512", attrs);
-+            /*
-+             * Digest engines
-+             */
-+            addWithAlias(p, "MessageDigest", "MD2", "sun.security.provider.MD2",
-+                         attrs);
-+            addWithAlias(p, "MessageDigest", "MD5", "sun.security.provider.MD5",
-+                         attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-1", "sun.security.provider.SHA",
-+                         attrs);
-+
-+            addWithAlias(p, "MessageDigest", "SHA-224",
-+                    "sun.security.provider.SHA2$SHA224", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-256",
-+                    "sun.security.provider.SHA2$SHA256", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-384",
-+                    "sun.security.provider.SHA5$SHA384", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-512",
-+                    "sun.security.provider.SHA5$SHA512", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-512/224",
-+                    "sun.security.provider.SHA5$SHA512_224", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA-512/256",
-+                    "sun.security.provider.SHA5$SHA512_256", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA3-224",
-+                    "sun.security.provider.SHA3$SHA224", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA3-256",
-+                    "sun.security.provider.SHA3$SHA256", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA3-384",
-+                    "sun.security.provider.SHA3$SHA384", attrs);
-+            addWithAlias(p, "MessageDigest", "SHA3-512",
-+                    "sun.security.provider.SHA3$SHA512", attrs);
+         /*
+          * Key factories
+          */
+@@ -237,6 +245,7 @@
+                 "sun.security.provider.SHA3$SHA384", attrs);
+         addWithAlias(p, "MessageDigest", "SHA3-512",
+                 "sun.security.provider.SHA3$SHA512", attrs);
 +        }
  
          /*
           * Certificates
-diff --git a/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java b/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
-index ca79f25cc44..225517ac69b 100644
---- a/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
-+++ b/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
-@@ -27,6 +27,7 @@ package sun.security.rsa;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-02-07 08:52:48.504207310 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-02-07 08:53:14.596364294 +0100
+@@ -27,6 +27,7 @@
  
  import java.util.*;
  import java.security.Provider;
@@ -2169,7 +969,7 @@ index ca79f25cc44..225517ac69b 100644
  import static sun.security.util.SecurityProviderConstants.getAliases;
  
  /**
-@@ -36,6 +37,10 @@ import static sun.security.util.SecurityProviderConstants.getAliases;
+@@ -36,6 +37,10 @@
   */
  public final class SunRsaSignEntries {
  
@@ -2180,106 +980,46 @@ index ca79f25cc44..225517ac69b 100644
      private void add(Provider p, String type, String algo, String cn,
               List<String> aliases, HashMap<String, String> attrs) {
           services.add(new Provider.Service(p, type, algo, cn,
-@@ -56,49 +61,58 @@ public final class SunRsaSignEntries {
+@@ -56,13 +61,17 @@
          // start populating content using the specified provider
          // common attribute map
          HashMap<String, String> attrs = new HashMap<>(3);
--        attrs.put("SupportedKeyClasses",
--                "java.security.interfaces.RSAPublicKey" +
--                "|java.security.interfaces.RSAPrivateKey");
 +        if (!systemFipsEnabled) {
-+            attrs.put("SupportedKeyClasses",
-+                    "java.security.interfaces.RSAPublicKey" +
-+                    "|java.security.interfaces.RSAPrivateKey");
+         attrs.put("SupportedKeyClasses",
+                 "java.security.interfaces.RSAPublicKey" +
+                 "|java.security.interfaces.RSAPrivateKey");
 +        }
  
          add(p, "KeyFactory", "RSA",
                  "sun.security.rsa.RSAKeyFactory$Legacy",
                  getAliases("PKCS1"), null);
--        add(p, "KeyPairGenerator", "RSA",
--                "sun.security.rsa.RSAKeyPairGenerator$Legacy",
--                getAliases("PKCS1"), null);
--        addA(p, "Signature", "MD2withRSA",
--                "sun.security.rsa.RSASignature$MD2withRSA", attrs);
--        addA(p, "Signature", "MD5withRSA",
--                "sun.security.rsa.RSASignature$MD5withRSA", attrs);
--        addA(p, "Signature", "SHA1withRSA",
--                "sun.security.rsa.RSASignature$SHA1withRSA", attrs);
--        addA(p, "Signature", "SHA224withRSA",
--                "sun.security.rsa.RSASignature$SHA224withRSA", attrs);
--        addA(p, "Signature", "SHA256withRSA",
--                "sun.security.rsa.RSASignature$SHA256withRSA", attrs);
--        addA(p, "Signature", "SHA384withRSA",
--                "sun.security.rsa.RSASignature$SHA384withRSA", attrs);
--        addA(p, "Signature", "SHA512withRSA",
--                "sun.security.rsa.RSASignature$SHA512withRSA", attrs);
--        addA(p, "Signature", "SHA512/224withRSA",
--                "sun.security.rsa.RSASignature$SHA512_224withRSA", attrs);
--        addA(p, "Signature", "SHA512/256withRSA",
--                "sun.security.rsa.RSASignature$SHA512_256withRSA", attrs);
--        addA(p, "Signature", "SHA3-224withRSA",
--                "sun.security.rsa.RSASignature$SHA3_224withRSA", attrs);
--        addA(p, "Signature", "SHA3-256withRSA",
--                "sun.security.rsa.RSASignature$SHA3_256withRSA", attrs);
--        addA(p, "Signature", "SHA3-384withRSA",
--               "sun.security.rsa.RSASignature$SHA3_384withRSA", attrs);
--        addA(p, "Signature", "SHA3-512withRSA",
--                "sun.security.rsa.RSASignature$SHA3_512withRSA", attrs);
 +
 +        if (!systemFipsEnabled) {
-+            add(p, "KeyPairGenerator", "RSA",
-+                    "sun.security.rsa.RSAKeyPairGenerator$Legacy",
-+                    getAliases("PKCS1"), null);
-+            addA(p, "Signature", "MD2withRSA",
-+                    "sun.security.rsa.RSASignature$MD2withRSA", attrs);
-+            addA(p, "Signature", "MD5withRSA",
-+                    "sun.security.rsa.RSASignature$MD5withRSA", attrs);
-+            addA(p, "Signature", "SHA1withRSA",
-+                    "sun.security.rsa.RSASignature$SHA1withRSA", attrs);
-+            addA(p, "Signature", "SHA224withRSA",
-+                    "sun.security.rsa.RSASignature$SHA224withRSA", attrs);
-+            addA(p, "Signature", "SHA256withRSA",
-+                    "sun.security.rsa.RSASignature$SHA256withRSA", attrs);
-+            addA(p, "Signature", "SHA384withRSA",
-+                    "sun.security.rsa.RSASignature$SHA384withRSA", attrs);
-+            addA(p, "Signature", "SHA512withRSA",
-+                    "sun.security.rsa.RSASignature$SHA512withRSA", attrs);
-+            addA(p, "Signature", "SHA512/224withRSA",
-+                    "sun.security.rsa.RSASignature$SHA512_224withRSA", attrs);
-+            addA(p, "Signature", "SHA512/256withRSA",
-+                    "sun.security.rsa.RSASignature$SHA512_256withRSA", attrs);
-+            addA(p, "Signature", "SHA3-224withRSA",
-+                    "sun.security.rsa.RSASignature$SHA3_224withRSA", attrs);
-+            addA(p, "Signature", "SHA3-256withRSA",
-+                    "sun.security.rsa.RSASignature$SHA3_256withRSA", attrs);
-+            addA(p, "Signature", "SHA3-384withRSA",
-+                   "sun.security.rsa.RSASignature$SHA3_384withRSA", attrs);
-+            addA(p, "Signature", "SHA3-512withRSA",
-+                    "sun.security.rsa.RSASignature$SHA3_512withRSA", attrs);
+         add(p, "KeyPairGenerator", "RSA",
+                 "sun.security.rsa.RSAKeyPairGenerator$Legacy",
+                 getAliases("PKCS1"), null);
+@@ -92,13 +101,18 @@
+                "sun.security.rsa.RSASignature$SHA3_384withRSA", attrs);
+         addA(p, "Signature", "SHA3-512withRSA",
+                 "sun.security.rsa.RSASignature$SHA3_512withRSA", attrs);
 +        }
  
          addA(p, "KeyFactory", "RSASSA-PSS",
                  "sun.security.rsa.RSAKeyFactory$PSS", attrs);
--        addA(p, "KeyPairGenerator", "RSASSA-PSS",
--                "sun.security.rsa.RSAKeyPairGenerator$PSS", attrs);
--        addA(p, "Signature", "RSASSA-PSS",
--                "sun.security.rsa.RSAPSSSignature", attrs);
 +
 +        if (!systemFipsEnabled) {
-+            addA(p, "KeyPairGenerator", "RSASSA-PSS",
-+                    "sun.security.rsa.RSAKeyPairGenerator$PSS", attrs);
-+            addA(p, "Signature", "RSASSA-PSS",
-+                    "sun.security.rsa.RSAPSSSignature", attrs);
+         addA(p, "KeyPairGenerator", "RSASSA-PSS",
+                 "sun.security.rsa.RSAKeyPairGenerator$PSS", attrs);
+         addA(p, "Signature", "RSASSA-PSS",
+                 "sun.security.rsa.RSAPSSSignature", attrs);
 +        }
 +
          addA(p, "AlgorithmParameters", "RSASSA-PSS",
                  "sun.security.rsa.PSSParameters", null);
      }
-diff --git a/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java b/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java
-index a7fc33d9ffb..cec40ba7b21 100644
---- a/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java
-+++ b/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java
-@@ -32,6 +32,7 @@ import java.security.cert.*;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2023-02-07 08:52:48.508207334 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2023-02-07 08:53:14.596364294 +0100
+@@ -32,6 +32,7 @@
  import java.util.*;
  import java.util.concurrent.locks.ReentrantLock;
  import javax.net.ssl.*;
@@ -2287,26 +1027,10 @@ index a7fc33d9ffb..cec40ba7b21 100644
  import sun.security.action.GetPropertyAction;
  import sun.security.provider.certpath.AlgorithmChecker;
  import sun.security.validator.Validator;
-@@ -536,22 +537,40 @@ public abstract class SSLContextImpl extends SSLContextSpi {
+@@ -536,6 +537,23 @@
          private static final List<CipherSuite> serverDefaultCipherSuites;
  
          static {
--            supportedProtocols = Arrays.asList(
--                ProtocolVersion.TLS13,
--                ProtocolVersion.TLS12,
--                ProtocolVersion.TLS11,
--                ProtocolVersion.TLS10,
--                ProtocolVersion.SSL30,
--                ProtocolVersion.SSL20Hello
--            );
--
--            serverDefaultProtocols = getAvailableProtocols(
--                    new ProtocolVersion[] {
--                ProtocolVersion.TLS13,
--                ProtocolVersion.TLS12,
--                ProtocolVersion.TLS11,
--                ProtocolVersion.TLS10
--            });
 +            if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
 +                    .isSystemFipsEnabled()) {
 +                // RH1860986: TLSv1.3 key derivation not supported with
@@ -2324,36 +1048,21 @@ index a7fc33d9ffb..cec40ba7b21 100644
 +                    ProtocolVersion.TLS10
 +                });
 +            } else {
-+                supportedProtocols = Arrays.asList(
-+                    ProtocolVersion.TLS13,
-+                    ProtocolVersion.TLS12,
-+                    ProtocolVersion.TLS11,
-+                    ProtocolVersion.TLS10,
-+                    ProtocolVersion.SSL30,
-+                    ProtocolVersion.SSL20Hello
-+                );
-+
-+                serverDefaultProtocols = getAvailableProtocols(
-+                        new ProtocolVersion[] {
-+                    ProtocolVersion.TLS13,
-+                    ProtocolVersion.TLS12,
-+                    ProtocolVersion.TLS11,
-+                    ProtocolVersion.TLS10
-+                });
+             supportedProtocols = Arrays.asList(
+                 ProtocolVersion.TLS13,
+                 ProtocolVersion.TLS12,
+@@ -552,6 +570,7 @@
+                 ProtocolVersion.TLS11,
+                 ProtocolVersion.TLS10
+             });
 +            }
  
              supportedCipherSuites = getApplicableSupportedCipherSuites(
                      supportedProtocols);
-@@ -842,12 +861,23 @@ public abstract class SSLContextImpl extends SSLContextSpi {
+@@ -842,12 +861,23 @@
              ProtocolVersion[] candidates;
              if (refactored.isEmpty()) {
                  // Client and server use the same default protocols.
--                candidates = new ProtocolVersion[] {
--                        ProtocolVersion.TLS13,
--                        ProtocolVersion.TLS12,
--                        ProtocolVersion.TLS11,
--                        ProtocolVersion.TLS10
--                    };
 +                if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
 +                        .isSystemFipsEnabled()) {
 +                    // RH1860986: TLSv1.3 key derivation not supported with
@@ -2364,21 +1073,19 @@ index a7fc33d9ffb..cec40ba7b21 100644
 +                            ProtocolVersion.TLS10
 +                        };
 +                } else {
-+                    candidates = new ProtocolVersion[] {
-+                            ProtocolVersion.TLS13,
-+                            ProtocolVersion.TLS12,
-+                            ProtocolVersion.TLS11,
-+                            ProtocolVersion.TLS10
-+                        };
+                 candidates = new ProtocolVersion[] {
+                         ProtocolVersion.TLS13,
+                         ProtocolVersion.TLS12,
+                         ProtocolVersion.TLS11,
+                         ProtocolVersion.TLS10
+                     };
 +                }
              } else {
                  // Use the customized TLS protocols.
                  candidates =
-diff --git a/src/java.base/share/classes/sun/security/ssl/SunJSSE.java b/src/java.base/share/classes/sun/security/ssl/SunJSSE.java
-index 894e26dfad8..8b16378b96b 100644
---- a/src/java.base/share/classes/sun/security/ssl/SunJSSE.java
-+++ b/src/java.base/share/classes/sun/security/ssl/SunJSSE.java
-@@ -27,6 +27,8 @@ package sun.security.ssl;
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2023-02-07 08:52:48.508207334 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2023-02-07 08:53:14.596364294 +0100
+@@ -27,6 +27,8 @@
  
  import java.security.*;
  import java.util.*;
@@ -2387,31 +1094,26 @@ index 894e26dfad8..8b16378b96b 100644
  import static sun.security.util.SecurityConstants.PROVIDER_VER;
  
  /**
-@@ -102,8 +104,13 @@ public class SunJSSE extends java.security.Provider {
+@@ -102,8 +104,13 @@
              "sun.security.ssl.SSLContextImpl$TLS11Context", null, null);
          ps("SSLContext", "TLSv1.2",
              "sun.security.ssl.SSLContextImpl$TLS12Context", null, null);
--        ps("SSLContext", "TLSv1.3",
--            "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
 +        if (!SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
 +                .isSystemFipsEnabled()) {
 +            // RH1860986: TLSv1.3 key derivation not supported with
 +            // the Security Providers available in system FIPS mode.
-+            ps("SSLContext", "TLSv1.3",
-+                "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
+         ps("SSLContext", "TLSv1.3",
+             "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
 +        }
          ps("SSLContext", "TLS",
              "sun.security.ssl.SSLContextImpl$TLSContext",
              List.of("SSL"), null);
-diff --git a/src/java.base/share/conf/security/java.security b/src/java.base/share/conf/security/java.security
-index f913c981ddc..fd1d0a9e478 100644
---- a/src/java.base/share/conf/security/java.security
-+++ b/src/java.base/share/conf/security/java.security
-@@ -79,6 +79,16 @@ security.provider.tbd=Apple
- security.provider.tbd=SunPKCS11
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/conf/security/java.security	2023-02-07 08:52:48.516207383 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/conf/security/java.security	2023-02-07 08:53:14.596364294 +0100
+@@ -80,6 +80,16 @@
  #security.provider.tbd=SunPKCS11 ${java.home}/lib/security/nss.cfg
  
-+#
+ #
 +# Security providers used when FIPS mode support is active
 +#
 +fips.provider.1=SunPKCS11 ${java.home}/conf/security/nss.fips.cfg
@@ -2421,26 +1123,39 @@ index f913c981ddc..fd1d0a9e478 100644
 +fips.provider.5=SunJCE
 +fips.provider.6=SunRsaSign
 +
- #
++#
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
-@@ -289,6 +299,11 @@ policy.ignoreIdentityScope=false
- #
+ # Entries containing errors (parsing, etc) will be ignored. Use the
+@@ -290,6 +300,11 @@
  keystore.type=pkcs12
  
-+#
+ #
 +# Default keystore type used when global crypto-policies are set to FIPS.
 +#
 +fips.keystore.type=PKCS11
 +
- #
++#
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-diff --git a/src/java.base/share/lib/security/default.policy b/src/java.base/share/lib/security/default.policy
-index 20f53b1cd4c..6db2393efb8 100644
---- a/src/java.base/share/lib/security/default.policy
-+++ b/src/java.base/share/lib/security/default.policy
-@@ -123,6 +123,7 @@ grant codeBase "jrt:/jdk.charsets" {
+ # When set to 'true', both JKS and PKCS12 keystore types support loading
+@@ -327,6 +342,13 @@
+ security.overridePropertiesFile=true
+ 
+ #
++# Determines whether this properties file will be appended to
++# using the system properties file stored at
++# /etc/crypto-policies/back-ends/java.config
++#
++security.useSystemPropertiesFile=false
++
++#
+ # Determines the default key and trust manager factory algorithms for
+ # the javax.net.ssl package.
+ #
+--- jdk19u-jdk-19.0.2-7/src/java.base/share/lib/security/default.policy	2023-02-07 08:52:48.524207431 +0100
++++ jdk19u-jdk-19.0.2-7/src/java.base/share/lib/security/default.policy	2023-02-07 08:53:14.596364294 +0100
+@@ -123,6 +123,7 @@
  grant codeBase "jrt:/jdk.crypto.ec" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
@@ -2448,7 +1163,7 @@ index 20f53b1cd4c..6db2393efb8 100644
      permission java.lang.RuntimePermission "loadLibrary.sunec";
      permission java.security.SecurityPermission "putProviderProperty.SunEC";
      permission java.security.SecurityPermission "clearProviderProperties.SunEC";
-@@ -132,6 +133,7 @@ grant codeBase "jrt:/jdk.crypto.ec" {
+@@ -132,6 +133,7 @@
  grant codeBase "jrt:/jdk.crypto.cryptoki" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.com.sun.crypto.provider";
@@ -2456,11 +1171,8 @@ index 20f53b1cd4c..6db2393efb8 100644
      permission java.lang.RuntimePermission "accessClassInPackage.jdk.internal.misc";
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
-new file mode 100644
-index 00000000000..187be7295f3
---- /dev/null
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	1970-01-01 01:00:00.000000000 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2023-02-07 08:53:14.596364294 +0100
 @@ -0,0 +1,490 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -2952,11 +1664,9 @@ index 00000000000..187be7295f3
 +        }
 +    }
 +}
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
-index cae28a06d7b..1c5bd3d15ac 100644
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
-@@ -37,6 +37,8 @@ import javax.crypto.*;
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-02-07 08:52:49.672214338 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-02-07 08:53:14.600364318 +0100
+@@ -37,6 +37,8 @@
  import javax.crypto.interfaces.*;
  import javax.crypto.spec.*;
  
@@ -2965,7 +1675,7 @@ index cae28a06d7b..1c5bd3d15ac 100644
  import sun.security.rsa.RSAUtil.KeyType;
  import sun.security.rsa.RSAPublicKeyImpl;
  import sun.security.rsa.RSAPrivateCrtKeyImpl;
-@@ -69,6 +71,9 @@ import sun.security.jca.JCAUtil;
+@@ -69,6 +71,9 @@
   */
  abstract class P11Key implements Key, Length {
  
@@ -2975,7 +1685,7 @@ index cae28a06d7b..1c5bd3d15ac 100644
      private static final long serialVersionUID = -2575874101938349339L;
  
      private static final String PUBLIC = "public";
-@@ -396,8 +401,9 @@ abstract class P11Key implements Key, Length {
+@@ -396,8 +401,9 @@
                      new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
  
@@ -2987,7 +1697,7 @@ index cae28a06d7b..1c5bd3d15ac 100644
  
          switch (algorithm) {
          case "RSA":
-@@ -452,7 +458,8 @@ abstract class P11Key implements Key, Length {
+@@ -452,7 +458,8 @@
  
          public String getFormat() {
              token.ensureValid();
@@ -2997,15 +1707,8 @@ index cae28a06d7b..1c5bd3d15ac 100644
                  return null;
              } else {
                  return "RAW";
-@@ -1574,4 +1581,3 @@ final class SessionKeyRef extends PhantomReference<P11Key> {
-         this.clear();
-     }
- }
--
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-index 0f65a8b3221..0a406e1a2c8 100644
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-02-07 08:52:49.676214362 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-02-07 08:53:14.600364318 +0100
 @@ -26,6 +26,9 @@
  package sun.security.pkcs11;
  
@@ -3016,7 +1719,7 @@ index 0f65a8b3221..0a406e1a2c8 100644
  import java.util.*;
  
  import java.security.*;
-@@ -42,6 +45,7 @@ import javax.security.auth.callback.PasswordCallback;
+@@ -42,6 +45,7 @@
  
  import com.sun.crypto.provider.ChaCha20Poly1305Parameters;
  
@@ -3024,7 +1727,7 @@ index 0f65a8b3221..0a406e1a2c8 100644
  import jdk.internal.misc.InnocuousThread;
  import sun.security.util.Debug;
  import sun.security.util.ResourcesMgr;
-@@ -62,6 +66,37 @@ import static sun.security.pkcs11.wrapper.PKCS11Exception.RV.*;
+@@ -62,6 +66,37 @@
   */
  public final class SunPKCS11 extends AuthProvider {
  
@@ -3062,7 +1765,7 @@ index 0f65a8b3221..0a406e1a2c8 100644
      private static final long serialVersionUID = -1354835039035306505L;
  
      static final Debug debug = Debug.getInstance("sunpkcs11");
-@@ -326,9 +361,19 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -326,9 +361,19 @@
              // request multithreaded access first
              initArgs.flags = CKF_OS_LOCKING_OK;
              PKCS11 tmpPKCS11;
@@ -3084,7 +1787,7 @@ index 0f65a8b3221..0a406e1a2c8 100644
              } catch (PKCS11Exception e) {
                  if (debug != null) {
                      debug.println("Multi-threaded initialization failed: " + e);
-@@ -343,8 +388,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -343,8 +388,9 @@
                  } else {
                      initArgs.flags = 0;
                  }
@@ -3096,7 +1799,7 @@ index 0f65a8b3221..0a406e1a2c8 100644
              }
              p11 = tmpPKCS11;
  
-@@ -384,6 +430,24 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -384,6 +430,24 @@
              if (nssModule != null) {
                  nssModule.setProvider(this);
              }
@@ -3121,11 +1824,26 @@ index 0f65a8b3221..0a406e1a2c8 100644
          } catch (Exception e) {
              if (config.getHandleStartupErrors() == Config.ERR_IGNORE_ALL) {
                  throw new UnsupportedOperationException
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
-index 4b06daaf264..55e14945469 100644
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
-@@ -49,6 +49,9 @@ package sun.security.pkcs11.wrapper;
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java	2023-02-07 08:52:49.676214362 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java	2023-02-07 08:53:14.600364318 +0100
+@@ -191,6 +191,14 @@
+     }
+ 
+     /**
++     * Constructor taking the error code from the RV enum and
++     * extra info for error message.
++     */
++    public PKCS11Exception(RV errorEnum, String extraInfo) {
++        this(errorEnum.value, extraInfo);
++    }
++
++    /**
+      * Constructor taking the error code (the CKR_* constants in PKCS#11) and
+      * extra info for error message.
+      */
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-02-07 08:52:49.676214362 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-02-07 08:53:14.600364318 +0100
+@@ -49,6 +49,9 @@
  
  import java.io.File;
  import java.io.IOException;
@@ -3135,7 +1853,7 @@ index 4b06daaf264..55e14945469 100644
  import java.util.*;
  
  import java.security.AccessController;
-@@ -174,18 +177,43 @@ public class PKCS11 {
+@@ -174,19 +177,44 @@
          return version;
      }
  
@@ -3143,16 +1861,15 @@ index 4b06daaf264..55e14945469 100644
 +     * Compatibility wrapper to allow this method to work as before
 +     * when FIPS mode support is not active.
 +     */
-+    public static synchronized PKCS11 getInstance(String pkcs11ModulePath,
-+           String functionList, CK_C_INITIALIZE_ARGS pInitArgs,
-+           boolean omitInitialize) throws IOException, PKCS11Exception {
+     public static synchronized PKCS11 getInstance(String pkcs11ModulePath,
+             String functionList, CK_C_INITIALIZE_ARGS pInitArgs,
+             boolean omitInitialize) throws IOException, PKCS11Exception {
 +        return getInstance(pkcs11ModulePath, functionList,
 +                           pInitArgs, omitInitialize, null, null);
 +    }
 +
-     public static synchronized PKCS11 getInstance(String pkcs11ModulePath,
-             String functionList, CK_C_INITIALIZE_ARGS pInitArgs,
--            boolean omitInitialize) throws IOException, PKCS11Exception {
++    public static synchronized PKCS11 getInstance(String pkcs11ModulePath,
++            String functionList, CK_C_INITIALIZE_ARGS pInitArgs,
 +            boolean omitInitialize, MethodHandle fipsKeyImporter,
 +            MethodHandle fipsKeyExporter)
 +                    throws IOException, PKCS11Exception {
@@ -3164,25 +1881,24 @@ index 4b06daaf264..55e14945469 100644
 +                    fipsKeyExporter != null;
              if ((pInitArgs != null)
                      && ((pInitArgs.flags & CKF_OS_LOCKING_OK) != 0)) {
--                pkcs11 = new PKCS11(pkcs11ModulePath, functionList);
 +                if (nssFipsMode) {
 +                    pkcs11 = new FIPSPKCS11(pkcs11ModulePath, functionList,
 +                            fipsKeyImporter, fipsKeyExporter);
 +                } else {
-+                    pkcs11 = new PKCS11(pkcs11ModulePath, functionList);
+                 pkcs11 = new PKCS11(pkcs11ModulePath, functionList);
 +                }
-             } else {
--                pkcs11 = new SynchronizedPKCS11(pkcs11ModulePath, functionList);
++            } else {
 +                if (nssFipsMode) {
 +                    pkcs11 = new SynchronizedFIPSPKCS11(pkcs11ModulePath,
 +                            functionList, fipsKeyImporter, fipsKeyExporter);
-+                } else {
-+                    pkcs11 = new SynchronizedPKCS11(pkcs11ModulePath, functionList);
-+                }
+             } else {
+                 pkcs11 = new SynchronizedPKCS11(pkcs11ModulePath, functionList);
              }
++            }
              if (omitInitialize == false) {
                  try {
-@@ -1976,4 +2004,194 @@ static class SynchronizedPKCS11 extends PKCS11 {
+                     pkcs11.C_Initialize(pInitArgs);
+@@ -1976,4 +2004,194 @@
          super.C_GenerateRandom(hSession, randomData);
      }
  }
@@ -3377,30 +2093,9 @@ index 4b06daaf264..55e14945469 100644
 +    }
 +}
  }
-diff --git a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
-index 8a560a2c48d..7d68520375b 100644
---- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
-+++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Exception.java
-@@ -190,6 +190,14 @@ public class PKCS11Exception extends Exception {
-         return "0x" + Functions.toFullHexString((int)errorCode);
-     }
- 
-+    /**
-+     * Constructor taking the error code from the RV enum and
-+     * extra info for error message.
-+     */
-+    public PKCS11Exception(RV errorEnum, String extraInfo) {
-+        this(errorEnum.value, extraInfo);
-+    }
-+
-     /**
-      * Constructor taking the error code (the CKR_* constants in PKCS#11) and
-      * extra info for error message.
-diff --git a/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java b/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
-index 200ed63634f..fa258d736d0 100644
---- a/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
-+++ b/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
-@@ -38,6 +38,7 @@ import java.util.HashMap;
+--- jdk19u-jdk-19.0.2-7/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-02-07 08:52:49.676214362 +0100
++++ jdk19u-jdk-19.0.2-7/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-02-07 08:53:14.600364318 +0100
+@@ -38,6 +38,7 @@
  import java.util.Iterator;
  import java.util.List;
  
@@ -3408,7 +2103,7 @@ index 200ed63634f..fa258d736d0 100644
  import sun.security.ec.ed.EdDSAAlgorithmParameters;
  import sun.security.ec.ed.EdDSAKeyFactory;
  import sun.security.ec.ed.EdDSAKeyPairGenerator;
-@@ -56,6 +57,10 @@ public final class SunEC extends Provider {
+@@ -56,6 +57,10 @@
  
      private static final long serialVersionUID = -2279741672933606418L;
  
@@ -3419,247 +2114,50 @@ index 200ed63634f..fa258d736d0 100644
      private static class ProviderServiceA extends ProviderService {
          ProviderServiceA(Provider p, String type, String algo, String cn,
              HashMap<String, String> attrs) {
-@@ -249,83 +254,85 @@ public final class SunEC extends Provider {
+@@ -249,6 +254,7 @@
          putXDHEntries();
          putEdDSAEntries();
  
--        /*
--         * Signature engines
--         */
--        putService(new ProviderService(this, "Signature",
--            "NONEwithECDSA", "sun.security.ec.ECDSASignature$Raw",
--            null, ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA1withECDSA", "sun.security.ec.ECDSASignature$SHA1",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA224withECDSA", "sun.security.ec.ECDSASignature$SHA224",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA256withECDSA", "sun.security.ec.ECDSASignature$SHA256",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA384withECDSA", "sun.security.ec.ECDSASignature$SHA384",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA512withECDSA", "sun.security.ec.ECDSASignature$SHA512",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA3-224withECDSA", "sun.security.ec.ECDSASignature$SHA3_224",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA3-256withECDSA", "sun.security.ec.ECDSASignature$SHA3_256",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA3-384withECDSA", "sun.security.ec.ECDSASignature$SHA3_384",
--            ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "SHA3-512withECDSA", "sun.security.ec.ECDSASignature$SHA3_512",
--            ATTRS));
--
--        putService(new ProviderService(this, "Signature",
--             "NONEwithECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$RawinP1363Format"));
--        putService(new ProviderService(this, "Signature",
--             "SHA1withECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$SHA1inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--             "SHA224withECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$SHA224inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--             "SHA256withECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$SHA256inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--            "SHA384withECDSAinP1363Format",
--            "sun.security.ec.ECDSASignature$SHA384inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--            "SHA512withECDSAinP1363Format",
--            "sun.security.ec.ECDSASignature$SHA512inP1363Format"));
--
--        putService(new ProviderService(this, "Signature",
--             "SHA3-224withECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$SHA3_224inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--             "SHA3-256withECDSAinP1363Format",
--             "sun.security.ec.ECDSASignature$SHA3_256inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--            "SHA3-384withECDSAinP1363Format",
--            "sun.security.ec.ECDSASignature$SHA3_384inP1363Format"));
--        putService(new ProviderService(this, "Signature",
--            "SHA3-512withECDSAinP1363Format",
--            "sun.security.ec.ECDSASignature$SHA3_512inP1363Format"));
--
--        /*
--         *  Key Pair Generator engine
--         */
--        putService(new ProviderServiceA(this, "KeyPairGenerator",
--            "EC", "sun.security.ec.ECKeyPairGenerator", ATTRS));
--
--        /*
--         * Key Agreement engine
--         */
--        putService(new ProviderService(this, "KeyAgreement",
--            "ECDH", "sun.security.ec.ECDHKeyAgreement", null, ATTRS));
 +        if (!systemFipsEnabled) {
-+            /*
-+             * Signature engines
-+             */
-+            putService(new ProviderService(this, "Signature",
-+                "NONEwithECDSA", "sun.security.ec.ECDSASignature$Raw",
-+                null, ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA1withECDSA", "sun.security.ec.ECDSASignature$SHA1",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA224withECDSA", "sun.security.ec.ECDSASignature$SHA224",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA256withECDSA", "sun.security.ec.ECDSASignature$SHA256",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA384withECDSA", "sun.security.ec.ECDSASignature$SHA384",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA512withECDSA", "sun.security.ec.ECDSASignature$SHA512",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA3-224withECDSA", "sun.security.ec.ECDSASignature$SHA3_224",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA3-256withECDSA", "sun.security.ec.ECDSASignature$SHA3_256",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA3-384withECDSA", "sun.security.ec.ECDSASignature$SHA3_384",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "SHA3-512withECDSA", "sun.security.ec.ECDSASignature$SHA3_512",
-+                ATTRS));
-+
-+            putService(new ProviderService(this, "Signature",
-+                 "NONEwithECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$RawinP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                 "SHA1withECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$SHA1inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                 "SHA224withECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$SHA224inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                 "SHA256withECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$SHA256inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                "SHA384withECDSAinP1363Format",
-+                "sun.security.ec.ECDSASignature$SHA384inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                "SHA512withECDSAinP1363Format",
-+                "sun.security.ec.ECDSASignature$SHA512inP1363Format"));
-+
-+            putService(new ProviderService(this, "Signature",
-+                 "SHA3-224withECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$SHA3_224inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                 "SHA3-256withECDSAinP1363Format",
-+                 "sun.security.ec.ECDSASignature$SHA3_256inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                "SHA3-384withECDSAinP1363Format",
-+                "sun.security.ec.ECDSASignature$SHA3_384inP1363Format"));
-+            putService(new ProviderService(this, "Signature",
-+                "SHA3-512withECDSAinP1363Format",
-+                "sun.security.ec.ECDSASignature$SHA3_512inP1363Format"));
-+
-+            /*
-+             *  Key Pair Generator engine
-+             */
-+            putService(new ProviderServiceA(this, "KeyPairGenerator",
-+                "EC", "sun.security.ec.ECKeyPairGenerator", ATTRS));
-+
-+            /*
-+             * Key Agreement engine
-+             */
-+            putService(new ProviderService(this, "KeyAgreement",
-+                "ECDH", "sun.security.ec.ECDHKeyAgreement", null, ATTRS));
-+        }
+         /*
+          * Signature engines
+          */
+@@ -327,6 +333,7 @@
+         putService(new ProviderService(this, "KeyAgreement",
+             "ECDH", "sun.security.ec.ECDHKeyAgreement", null, ATTRS));
      }
++    }
  
      private void putXDHEntries() {
-@@ -342,23 +349,25 @@ public final class SunEC extends Provider {
+ 
+@@ -342,6 +349,7 @@
              "X448", "sun.security.ec.XDHKeyFactory.X448",
              ATTRS));
  
--        putService(new ProviderService(this, "KeyPairGenerator",
--            "XDH", "sun.security.ec.XDHKeyPairGenerator", null, ATTRS));
--        putService(new ProviderServiceA(this, "KeyPairGenerator",
--            "X25519", "sun.security.ec.XDHKeyPairGenerator.X25519",
--            ATTRS));
--        putService(new ProviderServiceA(this, "KeyPairGenerator",
--            "X448", "sun.security.ec.XDHKeyPairGenerator.X448",
--            ATTRS));
--
--        putService(new ProviderService(this, "KeyAgreement",
--            "XDH", "sun.security.ec.XDHKeyAgreement", null, ATTRS));
--        putService(new ProviderServiceA(this, "KeyAgreement",
--            "X25519", "sun.security.ec.XDHKeyAgreement.X25519",
--            ATTRS));
--        putService(new ProviderServiceA(this, "KeyAgreement",
--            "X448", "sun.security.ec.XDHKeyAgreement.X448",
--            ATTRS));
 +        if (!systemFipsEnabled) {
-+            putService(new ProviderService(this, "KeyPairGenerator",
-+                "XDH", "sun.security.ec.XDHKeyPairGenerator", null, ATTRS));
-+            putService(new ProviderServiceA(this, "KeyPairGenerator",
-+                "X25519", "sun.security.ec.XDHKeyPairGenerator.X25519",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "KeyPairGenerator",
-+                "X448", "sun.security.ec.XDHKeyPairGenerator.X448",
-+                ATTRS));
-+
-+            putService(new ProviderService(this, "KeyAgreement",
-+                "XDH", "sun.security.ec.XDHKeyAgreement", null, ATTRS));
-+            putService(new ProviderServiceA(this, "KeyAgreement",
-+                "X25519", "sun.security.ec.XDHKeyAgreement.X25519",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "KeyAgreement",
-+                "X448", "sun.security.ec.XDHKeyAgreement.X448",
-+                ATTRS));
-+        }
+         putService(new ProviderService(this, "KeyPairGenerator",
+             "XDH", "sun.security.ec.XDHKeyPairGenerator", null, ATTRS));
+         putService(new ProviderServiceA(this, "KeyPairGenerator",
+@@ -360,6 +368,7 @@
+             "X448", "sun.security.ec.XDHKeyAgreement.X448",
+             ATTRS));
      }
++    }
  
      private void putEdDSAEntries() {
-@@ -373,21 +382,23 @@ public final class SunEC extends Provider {
+ 
+@@ -373,6 +382,7 @@
          putService(new ProviderServiceA(this, "KeyFactory",
              "Ed448", "sun.security.ec.ed.EdDSAKeyFactory.Ed448", ATTRS));
  
--        putService(new ProviderService(this, "KeyPairGenerator",
--            "EdDSA", "sun.security.ec.ed.EdDSAKeyPairGenerator", null, ATTRS));
--        putService(new ProviderServiceA(this, "KeyPairGenerator",
--            "Ed25519", "sun.security.ec.ed.EdDSAKeyPairGenerator.Ed25519",
--            ATTRS));
--        putService(new ProviderServiceA(this, "KeyPairGenerator",
--            "Ed448", "sun.security.ec.ed.EdDSAKeyPairGenerator.Ed448",
--            ATTRS));
--
--        putService(new ProviderService(this, "Signature",
--            "EdDSA", "sun.security.ec.ed.EdDSASignature", null, ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "Ed25519", "sun.security.ec.ed.EdDSASignature.Ed25519", ATTRS));
--        putService(new ProviderServiceA(this, "Signature",
--            "Ed448", "sun.security.ec.ed.EdDSASignature.Ed448", ATTRS));
 +        if (!systemFipsEnabled) {
-+            putService(new ProviderService(this, "KeyPairGenerator",
-+                "EdDSA", "sun.security.ec.ed.EdDSAKeyPairGenerator", null, ATTRS));
-+            putService(new ProviderServiceA(this, "KeyPairGenerator",
-+                "Ed25519", "sun.security.ec.ed.EdDSAKeyPairGenerator.Ed25519",
-+                ATTRS));
-+            putService(new ProviderServiceA(this, "KeyPairGenerator",
-+                "Ed448", "sun.security.ec.ed.EdDSAKeyPairGenerator.Ed448",
-+                ATTRS));
-+
-+            putService(new ProviderService(this, "Signature",
-+                "EdDSA", "sun.security.ec.ed.EdDSASignature", null, ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "Ed25519", "sun.security.ec.ed.EdDSASignature.Ed25519", ATTRS));
-+            putService(new ProviderServiceA(this, "Signature",
-+                "Ed448", "sun.security.ec.ed.EdDSASignature.Ed448", ATTRS));
+         putService(new ProviderService(this, "KeyPairGenerator",
+             "EdDSA", "sun.security.ec.ed.EdDSAKeyPairGenerator", null, ATTRS));
+         putService(new ProviderServiceA(this, "KeyPairGenerator",
+@@ -388,6 +398,7 @@
+             "Ed25519", "sun.security.ec.ed.EdDSASignature.Ed25519", ATTRS));
+         putService(new ProviderServiceA(this, "Signature",
+             "Ed448", "sun.security.ec.ed.EdDSASignature.Ed448", ATTRS));
 +        }
  
      }

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  7 05:18:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.30:
+  * Support editable project location (#148)
+  * Do not treat `--trusted-host` as a requirement (#136)
+  * Expose whether a requirement is editable (#131)
+  * Use correct long flag for requirements (#118)
+  * Support for hashed requirements (#126)
+  * Drop support for Python 3.6, test against pip==22.0.x (#127)
+  * Pass PIP_DISABLE_PIP_VERSION_CHECK to all invocations (#114)
+  * Support the --path parameter when calling pip list (#112)
+  * Add support for parsing URL requirements (#109)
+  * Allow installed_distributions to be filtered for global distributions (#103)
+  * Support Python 3.10
+  * Allow requirement markers to be parsed (#99)
+  * Use pip list's JSON output for installed_distributions (#93)
+  * Drop support for Python 3.5 (#94)
+  * Add type hints (#97)
+  * Ensure environment vars are passed to subprocess call (#68)
+  * Drop support for Python 2.7
+  * Add experimental PEP 650 support
+  * Fix issue with handling LegacyVersions (#66)
+  * Support Python 3.9
+- Add patch support-packaging-changes.patch:
+  * Drop a test parameter that doesn't work with our version of packaging.
+- Include non-shipped test data as test-data.tar.gz.
+- Switch to GitHub tarball for tests.
+- Refresh unvendor.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 10:09:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.0.14

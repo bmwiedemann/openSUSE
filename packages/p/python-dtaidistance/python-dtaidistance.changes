@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb  7 09:40:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with latest numpy >= 1.24
+- Update to 2.3.10
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.5
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.4
+  * Additional clustering techniques. E.g. DTW Barycenter Averaging for
+    clustering, k-medoids.
+  * Subsequence search and local concurrences.
+  * Improved Windows compatibility.
+  * Anaconda release (by @m-rossi )
+  * Improved visualisations
+
+-------------------------------------------------------------------
 Fri Feb 12 22:35:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.2.4

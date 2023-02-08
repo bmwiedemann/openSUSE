@@ -6170,4 +6170,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.1.8 &amp; btrfs warn fix &amp; saa7146 reenablement</comment>
     <requestid>1060565</requestid>
   </revision>
+  <revision rev="677" vrev="1">
+    <srcmd5>af29957623a62b3057ee6e71cf61f6ea</srcmd5>
+    <version>6.1.10</version>
+    <time>1675792097</time>
+    <user>dimstar_suse</user>
+    <comment>6.1.10 &amp; 6.1.9 &amp; other fixes</comment>
+    <requestid>1063362</requestid>
+  </revision>
 </revisionlist>

@@ -136,4 +136,13 @@
 - Add 'PB_ENABLE_MALLOC=1' so that we can build Criterion.</comment>
     <requestid>1061804</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fa03e40312919c62394a4df5656fe240</srcmd5>
+    <version>0.4.6</version>
+    <time>1675792135</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back to 0.4.6 since 0.4.7 breaks nanopb_generator.py thus breaking
+  some packages (e.g. Criterion: https://github.com/nanopb/nanopb/issues/845)</comment>
+    <requestid>1063469</requestid>
+  </revision>
 </revisionlist>

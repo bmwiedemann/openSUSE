@@ -75,6 +75,7 @@ Summary:       %{langname} language data for %{name}\
 BuildArch:     noarch\
 Requires:      tesseract-ocr >= %{version}\
 Provides:      tesseract-ocr-traineddata-%{oldlangname} = %{version} \
+Provides:      tesseract-traineddata-%{oldlangname} = %{version} \
 Obsoletes:     tesseract-ocr-traineddata-%{oldlangname} < 4\
 Obsoletes:     tesseract-traineddata-%{oldlangname} <= 3.02\
 \

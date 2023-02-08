@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      19
 %global interimver      0
-%global updatever       1
-%global buildver        10
+%global updatever       2
+%global buildver        7
 %global openjdk_repo    jdk19u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -166,7 +166,6 @@ Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
-Patch16:        system-crypto-policy.patch
 Patch17:        nss-security-provider.patch
 Patch18:        fips.patch
 #
@@ -434,7 +433,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch15 -p1
 %endif
 
-%patch16 -p1
 %patch17 -p1
 %patch18 -p1
 
@@ -1066,7 +1064,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
-%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %if ! %{with zero}

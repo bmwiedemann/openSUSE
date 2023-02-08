@@ -1,7 +1,7 @@
 #
 # spec file for package xchm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xchm
-Version:        1.33
+Version:        1.35
 Release:        0
 Summary:        A wxWidgets CHM document viewer
 License:        GPL-2.0-or-later

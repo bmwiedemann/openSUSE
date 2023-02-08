@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-api
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pip-api
-Version:        0.0.14
+Version:        0.0.30
 Release:        0
 Summary:        The official unofficial pip API
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/di/pip-api
-Source:         https://files.pythonhosted.org/packages/source/p/pip-api/pip-api-%{version}.tar.gz
+Source0:        https://github.com/di/pip-api/releases/download/%{version}/pip-api-%{version}.tar.gz
+Source1:        test-data.tar.gz
+# PATCH-FIX-OPENSUSE We do not want a vendored packaging.
 Patch0:         unvendor.patch
+# PATCH-FIX-OPENSUSE Remove a test parameter that is broken with our shipped
+# packaging.
+Patch1:         support-packaging-changes.patch
 BuildRequires:  %{python_module packaging >= 20.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pretend}
@@ -34,7 +37,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 20.3
 Requires:       python-pip
 BuildArch:      noarch
 %python_subpackages
@@ -43,8 +45,7 @@ BuildArch:      noarch
 The official unofficial pip API.
 
 %prep
-%setup -q -n pip-api-%{version}
-%patch0 -p1
+%autosetup -p1 -a 1 -n pip-api-%{version}
 rm -Rf ./pip_api/_vendor
 
 %build
@@ -55,15 +56,13 @@ rm -Rf ./pip_api/_vendor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# All the following download stuff using pip thus skip them:
-#   test_installed_distributions
-#   test_all_the_right_pips
-#   test_isolation
-%pytest -v -k 'not (test_installed_distributions or test_all_the_right_pips or test_isolation)'
+# Broken with current packaging
+%pytest -k 'not test_installed_distributions_legacy_version'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pip_api
+%{python_sitelib}/pip_api*info
 
 %changelog

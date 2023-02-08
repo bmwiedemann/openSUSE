@@ -1,29 +1,17 @@
-Index: freeradius-server-3.0.20/src/modules/stable
+Index: freeradius-server-3.2.1/src/modules/rlm_python3/example.py
 ===================================================================
---- freeradius-server-3.0.20.orig/src/modules/stable
-+++ freeradius-server-3.0.20/src/modules/stable
-@@ -25,6 +25,7 @@ rlm_passwd
- rlm_perl
- rlm_preprocess
- rlm_python
-+rlm_python3
- rlm_radutmp
- rlm_realm
- rlm_rest
-Index: freeradius-server-3.0.20/src/modules/rlm_python3/example.py
-===================================================================
---- freeradius-server-3.0.20.orig/src/modules/rlm_python3/example.py
-+++ freeradius-server-3.0.20/src/modules/rlm_python3/example.py
+--- freeradius-server-3.2.1.orig/src/modules/rlm_python3/example.py
++++ freeradius-server-3.2.1/src/modules/rlm_python3/example.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python3
 +#!/usr/bin/python3
  #
  # Python module example file
  # Miguel A.L. Paraz <mparaz@mparaz.com>
-Index: freeradius-server-3.0.20/src/modules/rlm_python3/radiusd.py
+Index: freeradius-server-3.2.1/src/modules/rlm_python3/radiusd.py
 ===================================================================
---- freeradius-server-3.0.20.orig/src/modules/rlm_python3/radiusd.py
-+++ freeradius-server-3.0.20/src/modules/rlm_python3/radiusd.py
+--- freeradius-server-3.2.1.orig/src/modules/rlm_python3/radiusd.py
++++ freeradius-server-3.2.1/src/modules/rlm_python3/radiusd.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python3
 +#!/usr/bin/python3

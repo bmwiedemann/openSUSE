@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Feb  4 12:29:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.1:
+  * Bugfixes
+    - Make no-jinja-when also detect list conditions (#2975) @ssbarnea
+    - Fix exception related to include_tasks (#2974) @ssbarnea
+    - Allow noqa comments without colons (#2971) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Feb  2 07:10:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.0:
+  * Minor Changes
+    - Extend fqcn rule to complain on `collections` keyword (#2825) @jcgruenhage
+    - Determine if passed arguments are playbooks or not (#2912) @ssbarnea
+  * Bugfixes
+    - Avoid caching on role_name regex (#2876) (#2876) @DanInProgress
+    - Change the way rules are listed from command line (#2940 (#2940) @ssbarnea
+    - Added example for skip list on command line (#2964) (#2964) @ajinkyau
+    - Do not install collection locally in offline mode (#2926) (#2926) @jensrudolf
+    - Improved coverage for empty string compare and galaxy rules (#2963) @ajinkyau
+    - Add support for Ansible 2.15 (#2960 (#2960) @ssbarnea
+    - Rename warning[raw-non-string] to no-free-form[raw-non-string] (#2956) @ssbarnea
+    - Correct run-once rule identifier and related examples (#2952) @ajinkyau
+    - Fix typo in doc site name (#2954) @utoddl
+    - Replace sphinx with mkdocs (#2942) @ssbarnea
+    - Remove rich markdown header override (#2938) @ssbarnea
+    - Fixing OpenWrt name; Adding OpenWrt 22.03 (#2928) @sscheib
+    - Ignore args rule finding if value for choice has jinja template (#2929) @klaus-tux
+    - Allow warnings to be skipped (#2925) @ssbarnea
+    - Fix spacing in option help strings (#2920) @thomwiggers
+    - Allow dumping of SARIF files (#2921) @ssbarnea
+    - Change treatment of files that fail to load structured data (#2919) @ssbarnea
+    - Fix github archives metadata (#2914) @ssbarnea
+    - Fix print leak with meta-unsupported-ansible (#2913) @ssbarnea
+
+-------------------------------------------------------------------
 Fri Jan 20 10:04:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.11.0:

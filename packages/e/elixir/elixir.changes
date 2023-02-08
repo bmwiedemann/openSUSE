@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  7 09:06:15 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Drop git as a requires and switch buildrequires from git to git-core
+ * Git is not needed to use Elixir, only to run some tests
+   (which git-core can accomplish on its own without git)
+
+-------------------------------------------------------------------
 Tue Jan 10 11:50:09 UTC 2023 - Fabrizio Sestito <fabrizio.sestito@suse.com>
 
 - Elixir 1.14.2 

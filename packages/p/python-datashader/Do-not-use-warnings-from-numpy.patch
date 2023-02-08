@@ -1,0 +1,71 @@
+From 141210c8366599190c51987f7de126ff8f689961 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 7 Feb 2023 09:15:37 +0100
+Subject: [PATCH] Do not use warnings from numpy
+
+numpy has removed the warnings symbol from the __init__.py file so
+np.warnings is not valid in newer versions of numpy. This patch justs
+imports the warnings module and use it directly.
+---
+ datashader/core.py                        | 6 +++---
+ datashader/transfer_functions/__init__.py | 6 ++++--
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/datashader/core.py b/datashader/core.py
+index 7c53658..5f17528 100644
+--- a/datashader/core.py
++++ b/datashader/core.py
+@@ -2,6 +2,7 @@ from __future__ import annotations
+ 
+ from numbers import Number
+ from math import log10
++import warnings
+ 
+ import numpy as np
+ import pandas as pd
+@@ -424,7 +425,6 @@ The axis argument to Canvas.line must be 0 or 1
+ 
+         if (line_width > 0 and ((cudf and isinstance(source, cudf.DataFrame)) or
+                                (dask_cudf and isinstance(source, dask_cudf.DataFrame)))):
+-            import warnings
+             warnings.warn(
+                 "Antialiased lines are not supported for CUDA-backed sources, "
+                 "so reverting to line_width=0")
+@@ -1255,8 +1255,8 @@ def bypixel(source, canvas, glyph, agg, *, antialias=False):
+     canvas.validate()
+ 
+     # All-NaN objects (e.g. chunks of arrays with no data) are valid in Datashader
+-    with np.warnings.catch_warnings():
+-        np.warnings.filterwarnings('ignore', r'All-NaN (slice|axis) encountered')
++    with warnings.catch_warnings():
++        warnings.filterwarnings('ignore', r'All-NaN (slice|axis) encountered')
+         return bypixel.pipeline(source, schema, canvas, glyph, agg, antialias=antialias)
+ 
+ 
+diff --git a/datashader/transfer_functions/__init__.py b/datashader/transfer_functions/__init__.py
+index 1a9fffc..a60802d 100755
+--- a/datashader/transfer_functions/__init__.py
++++ b/datashader/transfer_functions/__init__.py
+@@ -5,6 +5,8 @@ from collections.abc import Iterator
+ from collections import OrderedDict
+ from io import BytesIO
+ 
++import warnings
++
+ import numpy as np
+ import numba as nb
+ import toolz as tz
+@@ -457,8 +459,8 @@ def _interpolate_alpha(data, total, mask, how, alpha, span, min_alpha, rescale_d
+             a_scaled, discrete_levels = a_scaled
+ 
+         # All-NaN objects (e.g. chunks of arrays with no data) are valid in Datashader
+-        with np.warnings.catch_warnings():
+-            np.warnings.filterwarnings('ignore', r'All-NaN (slice|axis) encountered')
++        with warnings.catch_warnings():
++            warnings.filterwarnings('ignore', r'All-NaN (slice|axis) encountered')
+             norm_span = [np.nanmin(a_scaled).item(), np.nanmax(a_scaled).item()]
+ 
+         if rescale_discrete_levels and discrete_levels is not None:  # Only valid for how='eq_hist'
+-- 
+2.39.1
+

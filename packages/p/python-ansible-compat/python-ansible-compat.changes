@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 31 15:05:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 3.0.0:
+  * Major Changes
+    - Require ansible-core 2.12 or newer (#215) @ssbarnea
+  * Minor Changes
+    - Address ansible 2.15 compatibility related to AnsibleCollectionConfig (#213) @ssbarnea
+  * Bugfixes
+    - Required subprocess-tee>=0.4.1 (#211) @ssbarnea
+- update to 3.0.1:
+  * Bugfixes
+    - Avoid double initialization of ansible runtime (#218) @ssbarnea
+    - Update README.md for 3.0.0 release (#217) @ianw
+
+-------------------------------------------------------------------
 Sun Dec 18 20:51:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - ignore deprecation warning for 'There is no current event loop'

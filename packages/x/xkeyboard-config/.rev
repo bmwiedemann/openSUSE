@@ -878,4 +878,33 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     <comment></comment>
     <requestid>1008396</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>f3ff5c9c5e298d8e4af144b768a1e56b</srcmd5>
+    <version>2.38</version>
+    <time>1675792052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38
+  * Add Russian layout with typographic symbols
+  * Update symbols/ru
+  * symbols/us: uncomment the nine keys in the international Dvorak layout
+  * symbols/bg: reduce the &quot;enhanced&quot; layout to an include + three overrides
+  * symbols/epo: reshuffle a comment, and drop unneeded key types
+  * replace some Unicode codes with their corresponding symbol name
+  * symbols/no: add missing symbols to Sami layout, and remove duplicates
+  * symbols/no: add non-dead grave and such to Sami layout, and reshuffle
+  * Add apple:jp_oadg109a and apple:jp_pc106 variants
+  * Added Gujarati KaGaPa layout (guj-kagapa)
+  * Update base.xml
+  * rules: add option 'swap_ralt_rctl'
+  * prerelease push, for translations
+  * Handy script for publishing
+  * Making ru(typo) more consistent with existing variants
+  * Prerelease translation sync
+  * fix rx-51 third level modifier
+  * Add Latvia Modern Cyrillic keyboard layout
+  * add colemak_dh_ortho
+  * Add `trademark` to level4 of us-intl layout
+  * dv-intl: add placeholder chars to lvl3+, bind LSGT</comment>
+    <requestid>1063380</requestid>
+  </revision>
 </revisionlist>

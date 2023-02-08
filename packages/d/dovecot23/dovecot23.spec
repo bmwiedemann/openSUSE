@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot23
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,8 +158,12 @@ Source9:        dovecot-2.3-pigeonhole.configfiles
 Source10:       https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
 Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot23.keyring
+# PATCH-FIX-OPENSUSE - boo#932386
 Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
+# PATCH-FIX-SLE - boo#854512
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
+# PATCH-FIX-OPENSUSE - boo#1207958
+Patch2:         fix-build-with-openssl-3.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
