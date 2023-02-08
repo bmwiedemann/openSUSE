@@ -974,7 +974,12 @@ unsorted:
   - audaspace 
   - audaspace-devel 
   - audaspace-doc 
-  - audaspace-plugins 
+  - audaspace-plugin-ffmpeg 
+  - audaspace-plugin-jack 
+  - audaspace-plugin-openal 
+  - audaspace-plugin-pulse 
+  - audaspace-plugin-sdl2 
+  - audaspace-plugin-sndfile 
   - audio-recorder 
   - audio-recorder-lang 
   - audiofile 
@@ -1465,6 +1470,7 @@ unsorted:
   - bowtie2: [x86_64] 
   - boxfort 
   - boxfort-devel 
+  - bpfmon 
   - bpftool 
   - bpftool-bash-completion 
   - bpftool-rebuild 
@@ -10249,9 +10255,9 @@ unsorted:
   - libaubio-devel 
   - libaubio5 
   - libaubio5-32bit: [x86_64] 
-  - libaudaspace-c1_3 
-  - libaudaspace-py1_3 
-  - libaudaspace1_3 
+  - libaudaspace-c1_4 
+  - libaudaspace-py1_4 
+  - libaudaspace1_4 
   - libaudcore5 
   - libaudgui5 
   - libaudiofile1 
@@ -10568,7 +10574,6 @@ unsorted:
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
-  - libbtrfsutil1 
   - libbudgie-plugin0 
   - libbudgie-private0 
   - libbudgietheme0 
@@ -10613,10 +10618,10 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_0_3-32bit: [x86_64] 
+  - libcamera-base0_0_4-32bit: [x86_64] 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_0_3-32bit: [x86_64] 
+  - libcamera0_0_4-32bit: [x86_64] 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk3-0-32bit: [x86_64] 
@@ -13186,8 +13191,9 @@ unsorted:
   - libnumbertext-devel 
   - libnumbertext-tools 
   - libnuspell5 
-  - libnutclient0 
-  - libnutscan1 
+  - libnutclient2 
+  - libnutclientstub1 
+  - libnutscan2 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit: [x86_64] 
@@ -15056,7 +15062,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_3_0 
+  - libuhd4_4_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -15094,7 +15100,7 @@ unsorted:
   - libupnpp-devel 
   - libupnpp12 
   - libupower-glib-devel 
-  - libupsclient4 
+  - libupsclient6 
   - liburcu-devel 
   - liburcu8-32bit: [x86_64] 
   - liburfkill-glib-devel 
@@ -15696,6 +15702,7 @@ unsorted:
   - libyang2 
   - libyara-devel 
   - libyara9 
+  - libyascreen0 
   - libyate6_4_0 
   - libyaz-devel 
   - libyaz5 
@@ -24073,6 +24080,7 @@ unsorted:
   - python310-ipywebrtc 
   - python310-ipywidgets 
   - python310-irc 
+  - python310-isbnlib 
   - python310-isc_dhcp_leases 
   - python310-iso3166 
   - python310-iso8601 
@@ -25304,6 +25312,7 @@ unsorted:
   - python310-s3transfer 
   - python310-sadisplay 
   - python310-safe-netrc 
+  - python310-sambacc 
   - python310-samplerate 
   - python310-sane 
   - python310-sanlock 
@@ -27438,6 +27447,7 @@ unsorted:
   - python38-ipywebrtc 
   - python38-ipywidgets 
   - python38-irc 
+  - python38-isbnlib 
   - python38-isc_dhcp_leases 
   - python38-iso3166 
   - python38-iso8601 
@@ -28710,6 +28720,7 @@ unsorted:
   - python38-s3transfer 
   - python38-sadisplay 
   - python38-safe-netrc 
+  - python38-sambacc 
   - python38-samplerate 
   - python38-sane 
   - python38-sanlock 
@@ -30849,6 +30860,7 @@ unsorted:
   - python39-ipywebrtc 
   - python39-ipywidgets 
   - python39-irc 
+  - python39-isbnlib 
   - python39-isc_dhcp_leases 
   - python39-iso3166 
   - python39-iso8601 
@@ -32121,6 +32133,7 @@ unsorted:
   - python39-s3transfer 
   - python39-sadisplay 
   - python39-safe-netrc 
+  - python39-sambacc 
   - python39-samplerate 
   - python39-sane 
   - python39-sanlock 
@@ -33797,6 +33810,7 @@ unsorted:
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
   - samba-tool 
+  - sambacc 
   - sampler 
   - samplicator 
   - samtools 
@@ -34194,6 +34208,8 @@ unsorted:
   - skkdic-extra 
   - skopeo 
   - skopeo-bash-completion 
+  - skopeo-fish-completion 
+  - skopeo-zsh-completion 
   - skrooge 
   - skrooge-lang 
   - sl 
@@ -45349,6 +45365,7 @@ unsorted:
   - yara 
   - yara-doc 
   - yaru-icon-theme 
+  - yascreen-devel 
   - yasm 
   - yasm-devel 
   - yast2-adcommon-python 

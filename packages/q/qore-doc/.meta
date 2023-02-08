@@ -1,8 +1,0 @@
-<package name="qore-doc" project="openSUSE:Factory">
-  <title>Qore Programming Language</title>
-  <description>Qore is a scripting language supporting threading and embedded logic, designed for applying a flexible scripting-based approach to enterprise interface development but is also useful as a general purpose language.
-</description>
-  <devel project="openSUSE:Factory" package="qore"/>
-  <url>http://qore.org</url>
-  <bcntsynctag>qore</bcntsynctag>
-</package>
