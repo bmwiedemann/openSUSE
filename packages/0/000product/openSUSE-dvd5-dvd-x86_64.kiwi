@@ -3595,9 +3595,11 @@
       <repopackage name="postfix"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
+      <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql15"/>
       <repopackage name="postgresql15-contrib"/>
+      <repopackage name="postgresql15-llvmjit"/>
       <repopackage name="postgresql15-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="power-profiles-daemon"/>
