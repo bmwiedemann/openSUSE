@@ -1,0 +1,20 @@
+--- a/3rdparty/CMakeLists.txt
++++ b/3rdparty/CMakeLists.txt
+@@ -1,4 +1 @@
+ add_subdirectory(parson)
+-if (NOT WITH_GLES2)
+-    add_subdirectory(angle)
+-endif()
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -144,10 +144,6 @@ add_definitions(${REQ_CFLAGS_OTHER})
+ add_definitions(-DXP_UNIX)
+ 
+ include_directories(3rdparty)
+-if (NOT WITH_GLES2)
+-    include_directories(3rdparty/angle/include)
+-    list(APPEND REQ_LIBRARIES shader_translator)
+-endif()
+ 
+ set(SYMBOLMAP "-Wl,-version-script=\"${CMAKE_SOURCE_DIR}/src/symbolmap\"")
+ 

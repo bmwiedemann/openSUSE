@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>323af1b27bcdb37cce9188a9bba96150</srcmd5>
+    <version>0.3.0</version>
+    <time>1436734399</time>
+    <user>coolo</user>
+    <comment>3rdparty/angle license problem fixed</comment>
+    <requestid>315593</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f08f7eb5a543999ca29fb5b6ecc7581e</srcmd5>
+    <version>0.3.1</version>
+    <time>1437724737</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>318178</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f1386a0cadaf5e924da3d50990bb168c</srcmd5>
+    <version>0.3.1</version>
+    <time>1438548364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>319916</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fefa466a81d68e5740735435cdc89f50</srcmd5>
+    <version>0.3.2</version>
+    <time>1440135693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>324412</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cee9863967319707a10eb4da8de20223</srcmd5>
+    <version>0.3.2</version>
+    <time>1443068121</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332556</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48b1658cc59493a73f5e9813a680e70b</srcmd5>
+    <version>0.3.3</version>
+    <time>1444285526</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>336813</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>152c9ab7d3234f1f3ce4fa7b2a562e4d</srcmd5>
+    <version>0.3.3</version>
+    <time>1447696298</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344302</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dcf1946de338cf1b4e3453e2139042c</srcmd5>
+    <version>0.3.4</version>
+    <time>1451674068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>350927</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>15db6c372ca5a82c115d71d9379fc70e</srcmd5>
+    <version>0.3.5</version>
+    <time>1462051868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391753</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c838c4f8f86470dd1f76b795470f3760</srcmd5>
+    <version>0.3.5</version>
+    <time>1468579899</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>407729</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5746ee36c8928d3a77a692e9d4d91d20</srcmd5>
+    <version>0.3.6</version>
+    <time>1479503021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>440763</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ca0f50b2fb291f421ecb1cca0e3d4b8</srcmd5>
+    <version>0.3.7</version>
+    <time>1501572346</time>
+    <user>maxlin_factory</user>
+    <comment>update to 0.3.7 and fixed the i586 build</comment>
+    <requestid>513633</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b5956da46e1110b02cb5ac5d9d357a2</srcmd5>
+    <version>0.3.9</version>
+    <time>1534322363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629300</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>893d75aa2f4d93dcb757799f3a60dd78</srcmd5>
+    <version>0.3.11</version>
+    <time>1568379738</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730458</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>65575c6804c94932ab98f4412d78cdf2</srcmd5>
+    <version>0.3.11</version>
+    <time>1572443225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743899</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>85470fd8c938ad373887c032e495f128</srcmd5>
+    <version>0.3.11</version>
+    <time>1582555857</time>
+    <user>dimstar_suse</user>
+    <comment>- Require flash-player-ppapi instead of chromium-pepper-flash.</comment>
+    <requestid>778249</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a7e88154043d4fa2211debe914b5bac1</srcmd5>
+    <version>0.3.11</version>
+    <time>1629795290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913852</requestid>
+  </revision>
+</revisionlist>
