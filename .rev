@@ -43,4 +43,13 @@
 - Remove dino-0.3.0-libsoup.patch</comment>
     <requestid>1033469</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6cc5cb468761ab71d0f0e256e11d51b</srcmd5>
+    <version>0.4.0</version>
+    <time>1675873223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  See https://dino.im/blog/2023/02/dino-0.4-release/</comment>
+    <requestid>1063735</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dino
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           dino
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
 License:        GPL-3.0-only
@@ -55,7 +55,8 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsrtp2)
@@ -276,7 +277,6 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/applications/im.dino.Dino.desktop
 %{_datadir}/dbus-1/services/im.dino.Dino.service
 %{_datadir}/icons/hicolor/*/apps/*dino*
-%{_datadir}/icons/hicolor/*/status/*dino*
 %{_datadir}/metainfo/im.dino.Dino.appdata.xml
 %if ! %{with separated_libs}
 %{_libdir}/libdino.so.*
