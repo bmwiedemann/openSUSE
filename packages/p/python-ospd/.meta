@@ -1,0 +1,12 @@
+<package name="python-ospd" project="openSUSE:Factory">
+  <title>A base class for the OSP (Open Scanner Protocol)</title>
+  <description>OSPD is a base class for scanner wrappers which share the same
+communication protocol: OSP (Open Scanner Protocol). OSP creates
+a unified interface for different security scanners and makes
+their control flow and scan results consistently available under
+the central Greenbone Vulnerability Manager service.
+
+</description>
+  <devel project="devel:languages:python" package="python-ospd"/>
+  <url>https://www.openvas.org</url>
+</package>
