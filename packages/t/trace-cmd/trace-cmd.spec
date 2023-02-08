@@ -17,7 +17,7 @@
 
 
 Name:           trace-cmd
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only
@@ -55,9 +55,10 @@ Python plugin support for trace-cmd
 
 %build
 %meson \
-    -Ddocs-build=true \
+    --default-library=shared \
     -Dhtmldir=%{_docdir}/%{name}
 %meson_build
+%meson_build docs
 
 %install
 %meson_install

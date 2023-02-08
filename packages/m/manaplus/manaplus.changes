@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 16:59:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires SDL2 for openSUSE Leap: fix for building with
+  sdl12_compat (Error: Failed loading SDL2 library)
+
+-------------------------------------------------------------------
 Tue Sep  6 09:56:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-include-time_h.patch to fix build on Factory

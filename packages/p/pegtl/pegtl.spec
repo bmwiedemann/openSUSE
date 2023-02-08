@@ -1,7 +1,7 @@
 #
 # spec file for package pegtl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Summary:        Parsing Expression Grammar (PEG) Template Library
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/taocpp/PEGTL
-Version:        2.8.3
+Version:        3.2.7
 Release:        0
 BuildRequires:  cmake >= 3.8.0
 BuildRequires:  gcc-c++

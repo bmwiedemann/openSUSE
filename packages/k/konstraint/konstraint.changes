@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 08 07:42:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.25.0:
+  * Bump github.com/open-policy-agent/opa from 0.48.0 to 0.49.0 (#368)
+  * Bump k8s.io/apiextensions-apiserver from 0.26.0 to 0.26.1 (#365)
+  * Bump k8s.io/apimachinery from 0.26.0 to 0.26.1 (#364)
+  * Bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#363)
+  * Bump golang from 1.19.4-alpine to 1.19.5-alpine (#362)
+  * Bump github.com/open-policy-agent/opa from 0.47.4 to 0.48.0 (#360)
+  * Bump alpine from 3.17.0 to 3.17.1 (#361)
+  * Bump golang.org/x/text from 0.5.0 to 0.6.0 (#359)
+  * Bump k8s.io/apiextensions-apiserver from 0.23.4 to 0.26.0 (#354)
+  * Bump golang from 1.19.3-alpine to 1.19.4-alpine (#357)
+  * Bump golang from 1.19.3-alpine to 1.19.4-alpine (#357)
+  * Bump github.com/open-policy-agent/opa from 0.47.0 to 0.47.4 (#358)
+  * Bump k8s.io/apimachinery from 0.25.4 to 0.26.0 (#355)
+  * Bump alpine from 3.16.3 to 3.17.0 (#348)
+  * Bump github.com/open-policy-agent/opa from 0.46.1 to 0.47.0 (#349)
+  * Bump golang.org/x/text from 0.4.0 to 0.5.0 (#350)
+  * Update test data to use OPA metadata (#341)
+  * Use environment file for GITHUB_OUTPUT (#347)
+  * Bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#344)
+  * Bump k8s.io/apimachinery from 0.25.3 to 0.25.4 (#345)
+  * Bump alpine from 3.16.2 to 3.16.3 (#346)
+  * Bump github.com/open-policy-agent/opa from 0.45.0 to 0.46.1 (#343)
+  * Bump golang from 1.19.2-alpine to 1.19.3-alpine (#342)
+  * Bump github.com/spf13/cobra from 1.6.0 to 1.6.1 (#340)
+
+-------------------------------------------------------------------
 Thu Oct 20 05:03:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.24.0:

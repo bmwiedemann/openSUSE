@@ -74,14 +74,14 @@ NetworkManager.
 %make_build
 
 %install
-%make_install
+%make_install dbusservicedir=%{_datadir}/dbus-1/system.d
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README
-%config %{_sysconfdir}/dbus-1/system.d/nm-fortisslvpn-service.conf
+%{_datadir}/dbus-1/system.d/nm-fortisslvpn-service.conf
 %{_vpnservicedir}/nm-fortisslvpn-service.name
 %{_libexecdir}/nm-fortisslvpn-service
 %{_libexecdir}/nm-fortisslvpn-pinentry

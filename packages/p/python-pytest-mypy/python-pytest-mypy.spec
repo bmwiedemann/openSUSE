@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mypy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-pytest-mypy
-Version:        0.10.0
+Version:        0.10.3
 Release:        0
 Summary:        Mypy static type checker plugin for Pytest
 License:        MIT

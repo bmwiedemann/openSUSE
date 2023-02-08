@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  6 17:00:40 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Added patch (bsc#1207947) 
+  * s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch 
+
+-------------------------------------------------------------------
 Wed Jan 11 15:39:38 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated read_values.c for z16 machine type (bsc#1206832)
   * Added the IBM LinuxONE Emperor 4 machine type
+  * Updated the z16 machine type to IBM z16 A01
 
 -------------------------------------------------------------------
 Tue Jan 10 08:22:05 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>

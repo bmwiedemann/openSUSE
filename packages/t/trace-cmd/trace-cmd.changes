@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  7 13:32:43 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (3.1.6)
+  * Make sure 32 bit stat works on large files
+  * Fix usage of temp file in trace-cmd stream
+  * Do not block when stopping trace-cmd stream threads
+  * Fix flushing issue with trace-cmd stream
+  * Set default sleep of trace-cmd stream to 1/2 second
+  * Remove calls to lseek64() and friends in lieu of defining _FILE_OFFSET_BITS=64
+- Sync meson build patch with latest upstream version
+  * Documentation is build via extra build target
+
+-------------------------------------------------------------------
 Tue Dec 27 09:28:02 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (3.1.5)

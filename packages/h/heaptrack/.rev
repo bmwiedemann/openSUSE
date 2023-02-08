@@ -87,4 +87,14 @@
     <comment>Update to 1.4.0</comment>
     <requestid>1038407</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8396cdc74275f1d0a3c2c663cfa4cd7a</srcmd5>
+    <version>1.4.0</version>
+    <time>1675873213</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GCC 13 and boost 1.81 compatibility patches:
+  * 0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+  * 0001-Add-missing-include.patch</comment>
+    <requestid>1063700</requestid>
+  </revision>
 </revisionlist>

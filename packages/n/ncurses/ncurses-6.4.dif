@@ -139,7 +139,7 @@
  done
 --- configure
 +++ configure	2023-01-23 13:08:03.243347215 +0000
-@@ -6457,7 +6457,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -6463,7 +6463,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -148,7 +148,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -6830,8 +6830,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+@@ -6836,8 +6836,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
  	else
  		cf_cv_shared_soname='`basename $@`'
  	fi
@@ -159,7 +159,7 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -8070,7 +8070,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -8076,7 +8076,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -168,7 +168,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15252,12 +15252,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15258,12 +15258,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -186,7 +186,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15267,7 +15270,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15273,7 +15276,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -195,7 +195,7 @@
  CF_EOF
  fi
  
-@@ -15307,7 +15310,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15313,7 +15316,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -204,7 +204,7 @@
  CF_EOF
  fi
  
-@@ -15316,23 +15319,23 @@ case "$MANPAGE_FORMAT" in
+@@ -15322,23 +15325,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -234,7 +234,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15341,7 +15344,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15347,7 +15350,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -243,7 +243,7 @@
  							then
  								continue
  							fi
-@@ -15351,18 +15354,18 @@ CF_EOF
+@@ -15357,18 +15360,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -265,7 +265,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15382,9 +15385,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15388,9 +15391,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -278,7 +278,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15404,6 +15407,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15410,6 +15413,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -676,7 +676,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -10398,7 +10473,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -10418,7 +10493,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -685,7 +685,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -18052,7 +18127,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -18072,7 +18147,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -694,7 +694,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18310,7 +18385,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18330,7 +18405,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

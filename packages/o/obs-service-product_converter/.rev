@@ -196,4 +196,13 @@
   * fix use_undecided=&quot;true&quot; special case</comment>
     <requestid>1009817</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dc244b8a1d3aa8091bd826adc75c036d</srcmd5>
+    <version>1.5.4</version>
+    <time>1675873251</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.5.4
+  * make purl_distro of SPDX data configurable</comment>
+    <requestid>1063832</requestid>
+  </revision>
 </revisionlist>

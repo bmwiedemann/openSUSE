@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb  7 14:35:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version xorg-server-21.1.7:
+  * This release contains the fix for CVE-2023-0494 in today's security
+    advisory: 
+    https://lists.x.org/archives/xorg-announce/2023-February/003320.html
+    It also fixes a second possible OOB access during EnqueueEvent and a
+    crasher caused by ResourceClientBits not correctly honouring the
+    MaxClients value in the configuration file.
+- supersedes U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch,
+  U_xorg-server-oob-read-enqueue-event.patch
+
+-------------------------------------------------------------------
+Wed Feb  1 10:18:32 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch
+  * DeepCopyPointerClasses use-after-free (CVE-2023-0494, 
+    ZDI-CAN-19596, bsc#1207783)
+
+-------------------------------------------------------------------
 Wed Jan 25 16:02:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - rename u_xorg-server-oob-read-enqueue-event.patch to 

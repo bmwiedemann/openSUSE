@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:08:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230128
+  + document XF, kxIN and kxOUT -TD
+  + add note on sun/wscons/cmdtool/shelltool -TD
+  + modify configure script check for pkg-config library directory to
+    take into account an older version 0.15.0 which used PKG_CONFIG_PATH
+    but not PKG_CONFIG_LIBDIR
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Jan 23 13:00:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230121

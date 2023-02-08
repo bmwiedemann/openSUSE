@@ -1,0 +1,32 @@
+Index: hankel-1.2.1/setup.cfg
+===================================================================
+--- hankel-1.2.1.orig/setup.cfg
++++ hankel-1.2.1/setup.cfg
+@@ -50,14 +50,14 @@ dev =
+ 	pre-commit
+ 	pytest
+ 	pytest-cov
+-	sphinx>=2.0<3
++	sphinx>=2.0,<3
+ 	sphinx-rtd-theme
+ docs = 
+ 	ipykernel
+ 	nbsphinx
+ 	numpydoc
+ 	pandoc
+-	sphinx>=2.0<3
++	sphinx>=2.0,<3
+ 	sphinx-rtd-theme
+ tests = 
+ 	pre-commit
+Index: hankel-1.2.1/docs/requirements.txt
+===================================================================
+--- hankel-1.2.1.orig/docs/requirements.txt
++++ hankel-1.2.1/docs/requirements.txt
+@@ -2,5 +2,5 @@ ipykernel
+ nbsphinx
+ numpydoc
+ pandoc
+-sphinx>=2.0<3
++sphinx>=2.0,<3
+ sphinx_rtd_theme

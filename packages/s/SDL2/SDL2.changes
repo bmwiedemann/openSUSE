@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  7 00:16:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.26.3
+  * Fixed infinite loop shutting down WGI controllers
+  * Fixed centering the D-pad on some Xbox controllers
+
+-------------------------------------------------------------------
 Tue Jan  3 22:40:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26.2

@@ -97,4 +97,16 @@
 </comment>
     <requestid>1008000</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>59cc19fa079a726d19533c0541bfe09a</srcmd5>
+    <version>2023.02.06</version>
+    <time>1675873209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.02.06.
+  * Synchronize with OpenCL v3.0.13 specification release.
+  * Note: this is the first OpenCL-CLHPP release with the new
+    date-based naming convention.
+</comment>
+    <requestid>1063687</requestid>
+  </revision>
 </revisionlist>

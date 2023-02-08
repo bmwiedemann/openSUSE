@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy-1.24.patch to make it work with numpy >= 1.24
+  gh#ronnyandersson/zignal#11
+
+-------------------------------------------------------------------
 Fri Feb 12 14:16:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build 

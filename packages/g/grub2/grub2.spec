@@ -478,6 +478,8 @@ Patch951:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch952:       0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
 Patch953:       grub2-increase-crypttab-path-buffer.patch
 Patch954:       0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
+Patch955:       0001-grub-core-modify-sector-by-sysfs-as-disk-sector.patch
+Patch956:       0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

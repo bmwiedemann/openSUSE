@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  7 07:46:18 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.11-58-g38d6afd3b78:
+  + test/CMakeLists.txt: move 'APPEND rgw_libs Boost::filesystem' to top level
+
+-------------------------------------------------------------------
+Fri Jan 27 09:47:26 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.11-57-g9be7fb44a33:
+  + ceph.spec.in: Replace %usrmerged macro with regular version check
+- checkin.sh: default to ses7p branch
+
+-------------------------------------------------------------------
+Fri Jan 27 00:45:39 UTC 2023 - Michael Fritch <michael.fritch@suse.com>
+
+- Update to 16.2.11-56-gc067055f8f5:
+  + (bsc#1199183) osd, tools, kv: non-aggressive, on-line trimming of accumulated dups
+  + (bsc#1200262) ceph-volume: fix fast device alloc size on mulitple device 
+  + (bsc#1200501) cephadm: update monitoring container images
+  + (bsc#1200978) mgr/dashboard: prevent alert redirect
+  + (bsc#1201797) mgr/volumes: Add subvolumegroup resize cmd
+  + (bsc#1201837) mgr/volumes: Fix subvolume discover during upgrade (CVE-2022-0670)
+  + (bsc#1201976) monitoring/ceph-mixin: add RGW host to label info
+  + (bsc#1202077) mgr/dashboard: enable addition of custom Prometheus alerts
+  + (bsc#1203375) python-common: Add 'KB' to supported suffixes in SizeMatcher
+  + (bsc#1204430) ceph-crash: drop privleges to run as "ceph" user, rather than root (CVE-2022-3650)
+  + (bsc#1205025) rgw: Guard against malformed bucket URLs (CVE-2022-3854)
+  + (bsc#1205436) mgr/dashboard: fix rgw connect when using ssl
+
+-------------------------------------------------------------------
 Thu Oct  6 04:06:27 UTC 2022 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.9-539-gea74dd900cd:
@@ -16,6 +46,7 @@ Wed Jul 13 07:18:02 UTC 2022 - Tim Serong <tserong@suse.com>
 - Update to 16.2.9-536-g41a9f9a5573:
   + (bsc#1195359, bsc#1200553) rgw: check bucket shard init status in RGWRadosBILogTrimCR 
   + (bsc#1194131) ceph-volume: honour osd_dmcrypt_key_size option (CVE-2021-3979)
+  + (bsc#1196046) mgr/cephadm: try to get FQDN for configuration files
 
 -------------------------------------------------------------------
 Thu Jun  9 23:37:24 UTC 2022 - Tim Serong <tserong@suse.com>
@@ -37,6 +68,7 @@ Mon May 23 23:56:57 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
   + (jsc#SES-2515) High-availability NFS export 
   + (bsc#1196044) cephadm: prometheus: The generatorURL in alerts is only using hostname
   + (bsc#1196785) cephadm: avoid crashing on expected non-zero exit
+  + (bsc#1187748) When an RBD is mapped, it is attempted to be deployed as an OSD.
 
 -------------------------------------------------------------------
 Tue Apr 19 21:15:33 UTC 2022 - Michael Fritch <michael.fritch@suse.com>
@@ -92,6 +124,7 @@ Mon Jan 10 21:24:48 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 16.2.7-37-gb3be69440db:
   + (bsc#1194353) Downstream branding breaks dashboard npm build 
+  + (bsc#1188911) OSD marked down causes wrong backfill_toofull
 
 -------------------------------------------------------------------
 Tue Nov 22 12:57:53 UTC 2021 - Nathan Cutler <ncutler@suse.com>
@@ -286,6 +319,9 @@ Thu Apr  1 15:10:47 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 - Update to 16.2.0-31-g5922b2b9c1:
   + rebase on top of upstream v16.2.0 (first stable release in Pacific series)
     see https://ceph.io/releases/v16-2-0-pacific-released/
+  + (bsc#1192838) cephadm: Fix iscsi client caps (allow mgr <service status> calls)
+  + (bsc#1200317) mgr/cephadm: fix and improve osd draining
+  + (bsc#1206158) add iscsi and nfs to upgrade process
 
 -------------------------------------------------------------------
 Fri Mar 26 10:14:59 UTC 2021 - Nathan Cutler <ncutler@suse.com>
@@ -325,6 +361,7 @@ Wed Jan 27 15:17:14 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.1.0-46-g571704f730
   + rebase on top of upstream v16.1.0 (Pacific release candidate)
+  + (bsc#1192840) mgr/mgr_module.py: CLICommand: Fix parsing of kwargs arguments
   + drop obsolete downstream patches that were causing conflicts:
     * cephadm: use registry.suse.com by default
     * cephadm: add global flag --container-init

@@ -1,42 +1,75 @@
-From 01634c38eba221e913398872b84c5ed6349279e5 Mon Sep 17 00:00:00 2001
+From d5546a791bd0fdde30c8fb6e58fc614a056c038e Mon Sep 17 00:00:00 2001
 From: Daniel Wagner <dwagner@suse.de>
 Date: Thu, 7 Jul 2022 13:11:59 +0200
-Subject: [PATCH] libtraceevent: Add initial support for meson
+Subject: [PATCH v7] libtraceevent: Add initial support for meson
 
-Introduce Meson as build framework for building libtraceevent. This
-lives besides the Makefiles until all the expected initial fallouts
-have been dealed with.
+Introduce Meson as build framework for building libtraceevent.
 
 The build steps are:
 
   # configure using .build as build directory and install destination
   # /tmp/test
-  meson --prefix=/tmp/libtraceevent .build
+  meson setup --prefix=/tmp/libtraceevent .build
 
   # trigger the build
-  ninja -C .build
+  meson compile -C .build
 
-  # install the library
-  ninja -C .build install
+  # In case you want to build the documentation, trigger the
+  # build via the 'docs' target:
+  meson compile -C build docs
 
-In case you want to build/install the documentation the setup is
-
-  meson -Ddocs-build=true .build
+  # install the library (and documentation)
+  meson install -C .build
 
 Signed-off-by: Daniel Wagner <dwagner@suse.de>
 ---
- Documentation/install-man.sh.in |  10 ++
- Documentation/meson.build       | 177 ++++++++++++++++++++++++++++++++
- include/traceevent/meson.build  |  14 +++
- meson.build                     |  55 ++++++++++
- meson_options.txt               |  20 ++++
- plugins/dynamic_list.sh         |  14 +++
- plugins/meson.build             |  44 ++++++++
- samples/meson.build             |  11 ++
- src/meson.build                 |  37 +++++++
- utest/meson.build               |  16 +++
- 10 files changed, 398 insertions(+)
- create mode 100755 Documentation/install-man.sh.in
+v7:
+ - set default html doc path to share/doc/libtraceevent-doc
+ - install (any) man5 pages (keep it in sync with other projects)
+
+v6:
+ - changed project defaults to --default-library=both
+ - code style consistency updates
+ - hardening doc install script (shellcheck)
+ - renamed install-man.sh.in to install-docs.sh.in
+ - install-docs.sh.in installs html pages too
+ - introduces docs target
+ - updated copyright year
+ - streamlined documentation meson build file
+ 
+v5:
+ - build unit test only if CUnit is found
+ - default build target is debug
+ - do not install man pages into subdirs
+ 
+v4:
+ - install man pages to correct section, in this case 3
+ - run check-doc when building the docs
+
+v3:
+ - build documentation
+ - build samples
+ - changed default install to /usr/local
+
+v2:
+ - changed include path exported in pkg-config
+   exports the same paths as per Makefile
+
+v1:
+ - initial version
+
+ Documentation/install-docs.sh.in |  20 ++++
+ Documentation/meson.build        | 196 +++++++++++++++++++++++++++++++
+ include/traceevent/meson.build   |  14 +++
+ meson.build                      |  54 +++++++++
+ meson_options.txt                |  18 +++
+ plugins/dynamic_list.sh          |  11 ++
+ plugins/meson.build              |  44 +++++++
+ samples/meson.build              |   9 ++
+ src/meson.build                  |  35 ++++++
+ utest/meson.build                |  16 +++
+ 10 files changed, 417 insertions(+)
+ create mode 100644 Documentation/install-docs.sh.in
  create mode 100644 Documentation/meson.build
  create mode 100644 include/traceevent/meson.build
  create mode 100644 meson.build
@@ -47,31 +80,41 @@ Signed-off-by: Daniel Wagner <dwagner@suse.de>
  create mode 100644 src/meson.build
  create mode 100644 utest/meson.build
 
-diff --git a/Documentation/install-man.sh.in b/Documentation/install-man.sh.in
-new file mode 100755
-index 000000000000..2cd4bcafbf4f
---- /dev/null
-+++ b/Documentation/install-man.sh.in
-@@ -0,0 +1,10 @@
-+#!/bin/bash
-+
-+install -d ${DESTDIR}/@MANDIR@/man3/
-+
-+for man in $(find @SRCDIR@ -name '*\.3' -type f); do
-+    echo Installing $man to ${DESTDIR}/@MANDIR@/man3/
-+    install -m 0644 $man ${DESTDIR}/@MANDIR@/man3/
-+done
-+
-+
-diff --git a/Documentation/meson.build b/Documentation/meson.build
+diff --git a/Documentation/install-docs.sh.in b/Documentation/install-docs.sh.in
 new file mode 100644
-index 000000000000..097da50857b3
+index 000000000000..eca9b1f42dcc
 --- /dev/null
-+++ b/Documentation/meson.build
-@@ -0,0 +1,177 @@
++++ b/Documentation/install-docs.sh.in
+@@ -0,0 +1,20 @@
++#!/bin/bash
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
++
++for section in 1 3 5; do
++    while IFS= read -r -d '' man; do
++        [ ! -d "${DESTDIR}@MANDIR@/man${section}" ] && install -d "${DESTDIR}@MANDIR@/man${section}"
++
++        echo Installing "${man}" to "${DESTDIR}@MANDIR@/man${section}"
++        install -m 0644 "${man}" "${DESTDIR}@MANDIR@/man${section}/"
++    done< <(find "@SRCDIR@" -name "*\.${section}" -type f -print0)
++done
++
++while IFS= read -r -d '' html; do
++    [ ! -d "${DESTDIR}@HTMLDIR@"  ] && install -d "${DESTDIR}@HTMLDIR@"
++
++    echo Installing "${html}" to "${DESTDIR}@HTMLDIR@"
++    install -m 0644 "${html}" "${DESTDIR}@HTMLDIR@"
++done< <(find "@SRCDIR@" -name "*\.html" -type f -print0)
+diff --git a/Documentation/meson.build b/Documentation/meson.build
+new file mode 100644
+index 000000000000..b0d3a88d66c9
+--- /dev/null
++++ b/Documentation/meson.build
+@@ -0,0 +1,196 @@
++# SPDX-License-Identifier: LGPL-2.1
++#
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +# input text file: man page section
 +sources = {
@@ -115,20 +158,23 @@ index 000000000000..097da50857b3
 +    'libtraceevent-tseq.txt': '3',
 +}
 +
++conf_dir = meson.current_source_dir() + '/'
++top_source_dir = meson.current_source_dir() + '/../'
++
 +#
 +# For asciidoc ...
-+#	-7.1.2,	no extra settings are needed.
-+#	8.0-,	set ASCIIDOC8.
++#   -7.1.2,     no extra settings are needed.
++#    8.0-,      set ASCIIDOC8.
 +#
 +
 +#
 +# For docbook-xsl ...
-+#	-1.68.1,	set ASCIIDOC_NO_ROFF? (based on changelog from 1.73.0)
-+#	1.69.0,		no extra settings are needed?
-+#	1.69.1-1.71.0,	set DOCBOOK_SUPPRESS_SP?
-+#	1.71.1,		no extra settings are needed?
-+#	1.72.0,		set DOCBOOK_XSL_172.
-+#	1.73.0-,	set ASCIIDOC_NO_ROFF
++#   -1.68.1,         set ASCIIDOC_NO_ROFF? (based on changelog from 1.73.0)
++#    1.69.0,         no extra settings are needed?
++#    1.69.1-1.71.0,  set DOCBOOK_SUPPRESS_SP?
++#    1.71.1,         no extra settings are needed?
++#    1.72.0,         set DOCBOOK_XSL_172.
++#    1.73.0-,        set ASCIIDOC_NO_ROFF
 +#
 +
 +#
@@ -149,7 +195,7 @@ index 000000000000..097da50857b3
 +else
 +    asciidoc = find_program('asciidoc')
 +    asciidoc_extra  = ['--unsafe']
-+    asciidoc_extra += ['-f', meson.current_source_dir() + '/asciidoc.conf']
++    asciidoc_extra += ['-f', conf_dir + 'asciidoc.conf']
 +    asciidoc_html = 'xhtml11'
 +
 +    r = run_command(asciidoc, '--version', check: true)
@@ -159,11 +205,11 @@ index 000000000000..097da50857b3
 +    endif
 +endif
 +
-+manpage_xsl = meson.current_source_dir() + '/manpage-normal.xsl'
++manpage_xsl = conf_dir + 'manpage-normal.xsl'
 +
 +if get_option('docbook-xls-172')
 +    asciidoc_extra += ['-a', 'libtraceevent-asciidoc-no-roff']
-+    manpage_xsl = meson.current_source_dir() + '/manpage-1.72.xsl'
++    manpage_xsl = conf_dir + 'manpage-1.72.xsl'
 +elif get_option('asciidoc-no-roff')
 +    # docbook-xsl after 1.72 needs the regular XSL, but will not
 +    # pass-thru raw roff codes from asciidoc.conf, so turn them off.
@@ -174,51 +220,63 @@ index 000000000000..097da50857b3
 +xmlto_extra = []
 +
 +if get_option('man-bold-literal')
-+    xmlto_extra += ['-m ', meson.current_source_dir() + '/manpage-bold-literal.xsl']
++    xmlto_extra += ['-m ', conf_dir + 'manpage-bold-literal.xsl']
 +endif
 +
 +if get_option('docbook-suppress-sp')
-+    xmlto_extra += ['-m ',  meson.current_source_dir() + '/manpage-suppress-sp.xsl']
++    xmlto_extra += ['-m ',  conf_dir + 'manpage-suppress-sp.xsl']
 +endif
 +
-+gen = generator(asciidoc,
-+                output: '@BASENAME@.xml',
-+                arguments: [
-+                    '-b', 'docbook',
-+                    '-d', 'manpage',
-+                    '-a', 'libtraceevent_version=' + meson.project_version(),
-+                    '-o', '@OUTPUT@']
-+                    + asciidoc_extra
-+                    + ['@INPUT@'])
++check_doc = custom_target(
++    'check-doc',
++    output: 'dummy',
++    command : [
++        top_source_dir + 'check-manpages.sh',
++        meson.current_source_dir()])
 +
++gen = generator(
++    asciidoc,
++    output: '@BASENAME@.xml',
++    arguments: [
++        '-b', 'docbook',
++        '-d', 'manpage',
++        '-a', 'libtraceevent_version=' + meson.project_version(),
++        '-o', '@OUTPUT@']
++        + asciidoc_extra
++        +  ['@INPUT@'])
++
++man = []
++html = []
 +foreach txt, section : sources
 +    # build man page(s)
 +    xml = gen.process(txt)
-+    man = custom_target(txt.underscorify() + '_man',
-+                        input: xml,
-+                        output: '@BASENAME@.' + section,
-+                        command: [xmlto,
-+                        '-m', manpage_xsl,
-+                        'man',
-+                        '-o', '@OUTPUT@']
-+                        + xmlto_extra
-+                        + ['@INPUT@'],
-+                        build_by_default : true)
++    man += custom_target(
++        txt.underscorify() + '_man',
++        input: xml,
++        output: '@BASENAME@.' + section,
++        depends: check_doc,
++        command: [
++            xmlto,
++            '-m', manpage_xsl,
++            'man',
++            '-o', '@OUTPUT@']
++            + xmlto_extra
++            + ['@INPUT@'])
 +
 +    # build html pages
-+    custom_target(
-+       txt.underscorify() + '_html',
-+       input: txt,
-+       output: '@BASENAME@.html',
-+       command: [asciidoc,
-+                '-b', asciidoc_html,
-+                '-d', 'manpage',
-+	        '-a', 'libtraceevent_version=' + meson.project_version(),
-+                '-o', '@OUTPUT@']
-+                + asciidoc_extra
-+                + ['@INPUT@'],
-+       install: true,
-+       install_dir: htmldir)
++    html += custom_target(
++        txt.underscorify() + '_html',
++        input: txt,
++        output: '@BASENAME@.html',
++        depends: check_doc,
++        command: [
++            asciidoc,
++            '-b', asciidoc_html,
++            '-d', 'manpage',
++            '-a', 'libtraceevent_version=' + meson.project_version(),
++            '-o', '@OUTPUT@']
++            + asciidoc_extra
++            + ['@INPUT@'])
 +endforeach
 +
 +# Install path workaround because:
@@ -232,29 +290,33 @@ index 000000000000..097da50857b3
 +#   causing the install step to fail (confusion where the generated files
 +#   are stored)
 +#
++# - The documentation build is not part of the 'build' target. The user
++#   has explicitly to trigger the doc build. Hence the documentation is
++#   not added to the 'install' target.
++#
 +# Thus just use a plain old shell script to move the generated files to the
 +# right location.
 +
 +conf = configuration_data()
 +conf.set('SRCDIR', meson.current_build_dir())
 +conf.set('MANDIR', mandir)
++conf.set('HTMLDIR', htmldir)
 +configure_file(
-+    input:         'install-man.sh.in',
-+    output:        'install-man.sh',
-+    configuration: conf,
-+)
++    input: 'install-docs.sh.in',
++    output: 'install-docs.sh',
++    configuration: conf)
 +
 +meson.add_install_script(
-+    join_paths(meson.current_build_dir(), 'install-man.sh'))
++    join_paths(meson.current_build_dir(), 'install-docs.sh'))
 diff --git a/include/traceevent/meson.build b/include/traceevent/meson.build
 new file mode 100644
-index 000000000000..187b136ed138
+index 000000000000..d3512cafbe38
 --- /dev/null
 +++ b/include/traceevent/meson.build
 @@ -0,0 +1,14 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +headers = [
 +   'event-parse.h',
@@ -264,17 +326,17 @@ index 000000000000..187b136ed138
 +]
 +
 +foreach h : headers
-+	install_headers(h, subdir : 'traceevent')
++    install_headers(h, subdir : 'traceevent')
 +endforeach
 diff --git a/meson.build b/meson.build
 new file mode 100644
-index 000000000000..54621a6d05c4
+index 000000000000..86907b23f0d9
 --- /dev/null
 +++ b/meson.build
-@@ -0,0 +1,55 @@
+@@ -0,0 +1,54 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +project(
 +    'libtraceevent', ['c'],
@@ -282,21 +344,21 @@ index 000000000000..54621a6d05c4
 +    license: 'LGPL-2.1',
 +    version: '1.7.0',
 +    default_options: [
-+      'c_std=gnu99',
-+      'buildtype=debug',
-+      'prefix=/usr/local',
-+      'warning_level=1',
-+    ]
-+)
++        'c_std=gnu99',
++        'buildtype=debug',
++        'default_library=both',
++        'prefix=/usr/local',
++        'warning_level=1',
++    ])
 +
 +library_version = meson.project_version()
 +
 +cunit_dep = dependency('cunit', required : false)
 +
 +prefixdir = get_option('prefix')
-+mandir    = join_paths(prefixdir, get_option('mandir'))
-+htmldir   = join_paths(prefixdir, get_option('htmldir'))
-+libdir    = join_paths(prefixdir, get_option('libdir'))
++mandir = join_paths(prefixdir, get_option('mandir'))
++htmldir = join_paths(prefixdir, get_option('htmldir'))
++libdir = join_paths(prefixdir, get_option('libdir'))
 +plugindir = get_option('plugindir')
 +if plugindir == ''
 +    plugindir = join_paths(libdir, 'libtraceevent/plugins')
@@ -304,8 +366,8 @@ index 000000000000..54621a6d05c4
 +
 +add_project_arguments(
 +    [
-+      '-D_GNU_SOURCE',
-+      '-DPLUGIN_DIR="@0@"'.format(plugindir),
++        '-D_GNU_SOURCE',
++        '-DPLUGIN_DIR="@0@"'.format(plugindir),
 +    ],
 +    language : 'c',
 +)
@@ -319,29 +381,26 @@ index 000000000000..54621a6d05c4
 +    subdir('utest')
 +endif
 +subdir('samples')
-+if get_option('docs-build')
-+    custom_target('check-doc',
-+                   output: 'dummy',
-+                   command : ['check-manpages.sh',
-+                              meson.current_source_dir() + '/Documentation'],
-+	           build_by_default : true)
-+    subdir('Documentation')
-+endif
++subdir('Documentation')
++
++custom_target(
++    'docs',
++    output: 'docs',
++    depends: [html, man],
++    command: ['echo'])
 diff --git a/meson_options.txt b/meson_options.txt
 new file mode 100644
-index 000000000000..14c6fc0cc36d
+index 000000000000..b2294f6f3b05
 --- /dev/null
 +++ b/meson_options.txt
-@@ -0,0 +1,20 @@
+@@ -0,0 +1,18 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +option('plugindir', type : 'string',
 +       description : 'set the plugin dir')
-+option('docs-build', type : 'boolean', value : false,
-+       description : 'build documentation')
-+option('htmldir', type : 'string', value : '',
++option('htmldir', type : 'string', value : 'share/doc/libtraceevent-doc',
 +       description : 'directory for HTML documentation')
 +option('asciidoctor', type : 'boolean', value: false,
 +       description : 'use asciidoctor instead of asciidoc')
@@ -355,47 +414,44 @@ index 000000000000..14c6fc0cc36d
 +       description : 'docbook suppress sp')
 diff --git a/plugins/dynamic_list.sh b/plugins/dynamic_list.sh
 new file mode 100755
-index 000000000000..e1480eaa694f
+index 000000000000..66bb0fadfdef
 --- /dev/null
 +++ b/plugins/dynamic_list.sh
-@@ -0,0 +1,14 @@
+@@ -0,0 +1,11 @@
 +#!/bin/sh
 +# SPDX-License-Identifier: LGPL-2.1
 +
 +symbol_type=$(nm -u -D $@ | awk 'NF>1 {print $1}' | xargs echo "U w W" |
-+	      tr 'w ' 'W\n' | sort -u | xargs echo)
++              tr 'w ' 'W\n' | sort -u | xargs echo)
 +
 +if [ "$symbol_type" = "U W" ]; then
-+	echo '{'
-+
-+	nm -u -D $@ | awk 'NF>1 {sub("@.*", "", $2); print "\t"$2";"}' |
-+	sort -u
-+
-+	echo '};'
++    echo '{'
++    nm -u -D $@ | awk 'NF>1 {sub("@.*", "", $2); print "\t"$2";"}' | sort -u
++    echo '};'
 +fi
 diff --git a/plugins/meson.build b/plugins/meson.build
 new file mode 100644
-index 000000000000..f3260b17d69a
+index 000000000000..74ad664e4b4b
 --- /dev/null
 +++ b/plugins/meson.build
 @@ -0,0 +1,44 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +plugins = [
-+    'plugin_jbd2.c',
++    'plugin_cfg80211.c',
++    'plugin_function.c',
++    'plugin_futex.c',
 +    'plugin_hrtimer.c',
++    'plugin_jbd2.c',
 +    'plugin_kmem.c',
 +    'plugin_kvm.c',
 +    'plugin_mac80211.c',
 +    'plugin_sched_switch.c',
-+    'plugin_function.c',
-+    'plugin_futex.c',
-+    'plugin_xen.c',
 +    'plugin_scsi.c',
-+    'plugin_cfg80211.c',
 +    'plugin_tlb.c',
++    'plugin_xen.c',
 +]
 +
 +pdeps = []
@@ -425,30 +481,28 @@ index 000000000000..f3260b17d69a
 +    install_dir: plugindir)
 diff --git a/samples/meson.build b/samples/meson.build
 new file mode 100644
-index 000000000000..827d044c8720
+index 000000000000..e62ff83d087d
 --- /dev/null
 +++ b/samples/meson.build
-@@ -0,0 +1,11 @@
+@@ -0,0 +1,9 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +executable(
 +    'test-event',
 +    ['test-event.c'],
 +    dependencies: libtraceevent_dep,
-+    include_directories: [incdir]
-+)
-+
++    include_directories: [incdir])
 diff --git a/src/meson.build b/src/meson.build
 new file mode 100644
-index 000000000000..d9c0bd315735
+index 000000000000..20b1b7bb95d9
 --- /dev/null
 +++ b/src/meson.build
-@@ -0,0 +1,37 @@
+@@ -0,0 +1,35 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +sources= [
 +   'event-parse-api.c',
@@ -466,32 +520,30 @@ index 000000000000..d9c0bd315735
 +    sources,
 +    version: library_version,
 +    include_directories: [incdir],
-+    install: true,
-+)
++    install: true)
 +
 +pkg = import('pkgconfig')
-+pkg.generate(libtraceevent,
++pkg.generate(
++    libtraceevent,
 +    subdirs: 'traceevent',
 +    filebase: meson.project_name(),
 +    name: meson.project_name(),
 +    version: meson.project_version(),
 +    description: 'Manage trace event',
-+    url: 'https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/',
-+)
++    url: 'https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/')
 +
 +libtraceevent_dep = declare_dependency(
 +    include_directories: ['.'],
-+    link_with: libtraceevent,
-+)
++    link_with: libtraceevent)
 diff --git a/utest/meson.build b/utest/meson.build
 new file mode 100644
-index 000000000000..06eb887e35e6
+index 000000000000..d819a6c798b5
 --- /dev/null
 +++ b/utest/meson.build
 @@ -0,0 +1,16 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +source = [
 +    'trace-utest.c',

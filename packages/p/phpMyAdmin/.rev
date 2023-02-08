@@ -1514,4 +1514,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment>update changes file, fix missing bugzilla info</comment>
     <requestid>989041</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>a8963e5893ec64041e31ffbd20f415f1</srcmd5>
+    <version>5.2.1</version>
+    <time>1675873225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063734</requestid>
+  </revision>
 </revisionlist>

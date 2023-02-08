@@ -40,4 +40,21 @@
     <comment></comment>
     <requestid>983627</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6a476a25447c1924bad318231cb74d0</srcmd5>
+    <version>4.5.0</version>
+    <time>1675873218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.0:
+  * Run Python 3.10 tests on CI
+  * Type annotations
+  * Add new DamerauLevenshtein... classes
+  * update rapidfuzz
+  * Ensure that maximum normalised distance is &lt;= 1
+  * Ensure editex parameters are sensible
+  * Ignore inconsistent timings on some comparison tests
+  * add support for rapidfuzz
+- Fix up the download URL due to upstream dropping v.</comment>
+    <requestid>1063712</requestid>
+  </revision>
 </revisionlist>

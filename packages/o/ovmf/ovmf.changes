@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 19 08:01:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-aarch64.patch: this fixes https://bugzilla.suse.com/show_bug.cgi?id=1207095
+
+-------------------------------------------------------------------
 Thu Dec  8 12:16:49 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch

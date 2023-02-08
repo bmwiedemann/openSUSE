@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Jan 28 20:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.7:
+  * Removed superfluous deprecated include.
+  * Made `unwind()` optional for parse tree nodes.
+  * Fixed `demangle()` for MSVC, again.
+  * Fixed `demangle()` for GCC 12.
+  * Added missing include for fallback `demangle()` implementations.
+  * Fixed `version.hpp`.
+  * Fixed `static_assert` in `demangle()` with recent MSVC.
+  * Added rule `odigit` for octal digits.
+  * Enabled default-constructed state in `state<>`, `change_state<>`, and
+    `change_action_and_state<>`.
+  * Changed rules in `tao/pegtl/contrib/integer.hpp` to not throw by
+    default.
+  * Added `tao/pegtl/contrib/separated_seq.hpp`.
+  * Added `tao/pegtl/contrib/iri.hpp` grammar for IRIs.
+  * Added `tao/pegtl/contrib/proto3.hpp` grammar for protocol buffer v3.
+  * Added an optional limiter to guard against infinite recursion.
+  * Fixed CMake export error.
+  * Improved compile time efficiency.
+  * Added support for disabling exceptions with `-fno-exceptions`.
+  * Improved efficiency of parse tree nodes.
+  * Fixed namespace issue with `tao::pegtl::demangle<T>()` (was:
+    `tao::demangle<T>()`).
+  * Made `analyze()` more verbose by default to aid finding the rule cycles.
+  * Added `parse_nested()` overload that accepts a `position` as first
+    argument.
+  * Added some experimental and undocumented `contrib` features and their
+    infrastructure.
+  * Improved CMake support for `<filesystem>` fallbacks and alternatives.
+  * Re-enabled support for GCC 7.
+  * Automatically link with `libstdc++fs` or `libc++fs` as needed.
+  * Added automatic fallback from `std::filesystem` to `std::experimental::filesystem`.
+  * Added manual fallback from `std::filesystem` to `boost::filesystem`.
+  * Thank you Beman Dawes!
+  * Converted continuous integration infrastructure to GitHub Actions.
+  * Use the **migration guide** when updating.
+  * Updated required C++ standard to C++17.
+  * Updated required CMake version to 3.8.
+  * The macro `TAO_PEGTL_NAMESPACE` now contains the fully qualified namespace,
+    e.g. `tao::pegtl`.
+  * Added `[[nodiscard]]` or `[[noreturn]]` to most non-void functions.
+  * Replaced `analysis_t` with more general and complete `rule_t` and `subs_t`.
+  * Added functions to visit all rules of a grammar.
+  * Added functions to measure rule coverage of a parsing run.
+  * Moved the analysis function and header to contrib.
+  * Replaced `tao::pegtl::input_error` with `std::system_error` and
+    `std::filesystem::filesystem_error`.
+  * Added `must_if<>`
+    * Allows to define custom error messages for global errors.
+    * Adds a non-intrusive way to define global parse errors for a grammar retroactively.
+  * Removed the need for RTTI.
+    * Some broken/unknown compilers will use RTTI as a fallback, without demangling.
+  * Moved `tao::pegtl::internal::demangle<T>()` to `tao::demangle<T>()`.
+  * Improved generated code to be shorter and more efficient.
+  * Removed the need for RTTI.
+  * Changed `std::string` to `std::filesystem::path` for filename parameters.
+  * Renamed `byte_in_line` to `column` and use 1-based counting.
+  * Moved rule `eolf` from inline namespace `tao::pegtl::ascii` to `tao::pegtl`.
+  * Changed rules in `tao/pegtl/contrib/integer.hpp` to not accept redundant
+    leading zeros.
+  * Added rules to `tao/pegtl/contrib/integer.hpp` that test unsigned values
+    against a maximum.
+  * Demoted UTF-16 and UTF-32 support to contrib.
+  * Demoted UINT-8, UINT-16, UINT-32 and UINT-64 support to contrib.
+  * Folded `contrib/counter.hpp` into `json_count.cpp`, count is superceded by coverage.
+  * Removed right padding from `contrib/json.hpp`'s `value`.
+  * Removed option of state's `S::success()` to have an extended signature to
+    get access to the current `apply_mode`, `rewind_mode`, *action*- and
+    *control* class (template).
+  * Removed compatibility macros starting with `TAOCPP_PEGTL_`.
+  * Removed compatibility uppercase enumerators.
+  * Removed compatibility `peek_byte()` member functions.
+  * Removed compatibility header `changes.hpp` from contrib.
+
+-------------------------------------------------------------------
 Sat Mar 27 14:02:07 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 2.8.3:

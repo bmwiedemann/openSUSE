@@ -60,9 +60,10 @@ Development files of the libtracecmd library
 %build
 cd lib
 %meson \
-    -Ddocs-build=true \
+    --default-library=shared \
     -Dhtmldir="%_docdir/%name"
 %meson_build
+%meson_build docs
 
 %install
 cd lib

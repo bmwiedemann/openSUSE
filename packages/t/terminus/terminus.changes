@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb  6 10:32:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.1.0:
+  * Ensure that the Guake window is always inside the screen
+  * Fixed "new tab" operation after DnD into a new window
+  * Added Drag'n'Drop support to move tiles between windows and tabs, or into a new window
+  * Added "Select all" option
+  * Added pointer autohide option
+  * Added reset and clear options
+  * Fixed Guake window zero height on first run
+  * Fixed Guake keybinding failing until re-set
+  * Added hotkeys to close a tile and a tab
+  * Now asks for confirmation when trying to close a terminal with a running program
+  * Fixed color scheme selection
+  * Allows to change the top bar colors
+  * Cleaned the color management code
+  * Added support for Gnome Shell 43
+  * Added shortcuts for horizontal and vertical split
+  * Now the window doesn't get stuck in maximized mode when resized too much
+  * Close the tabs with the central button
+  * If there are too much tabs, show scroll buttons
+  * Now the extension doesn't loose the connection with Terminus when the computer locks
+  * Set a right value for the TERM environment variable
+  * Use the user-defined terminal instead of /bin/bash by default
+  * Migrated to GtkApplication
+  * Don't relaunch terminus if the extension is disabled
+  * Added zoom capabilities
+  * Added key for showing the menu
+
+-------------------------------------------------------------------
 Thu Jul  1 13:46:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.13.0

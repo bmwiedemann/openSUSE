@@ -24,7 +24,7 @@ function usage {
     echo "Notes:"
     echo "    If existing clone is given, repo and branch are ignored."
     echo "    Repo defaults to https://github.com/SUSE/ceph.git"
-    echo "    Branch defaults to ses6"
+    echo "    Branch defaults to ses7p"
     exit 1
 }
 
@@ -61,7 +61,7 @@ eval set -- "$GETOPT"
 
 EXISTING=""
 REPO="https://github.com/SUSE/ceph.git"
-BRANCH="ses6"
+BRANCH="ses7p"
 while true ; do
     case "$1" in
         -b|--branch)   BRANCH="$2"   ; shift 2 ;;

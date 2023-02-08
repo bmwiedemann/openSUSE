@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Feb 08 12:44:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.0:
+  * build(deps): bump go.opentelemetry.io/otel from 1.12.0 to 1.13.0
+  * bump docker engine and cli version to 23.0.0 with buildkit(v0.11.2) and buildx (v0.10.2)
+  * prevent assignment to entry in nil map
+  * wait on service containers as dependencies to be deterministic
+  * use containers we expect to start for wait condition
+  * detect replacement container is created and inform printer so it attach and don't stop
+  * bump golang to 1.20
+  * ci: Replace deprecated command with environment file
+  * add log when copying files/directories between host and containers (both way)
+  * support dry-run for cp command
+  * initial support for `sync`
+  * use tilt watcher to track filesystem changes
+  * adjust code and dependencies
+  * cleanup deprecated ioutil functions (#5919)
+  * watch: optimization to help avoid inotify nodes for large file trees (#5769)
+  * tests: make test fixtures responsible for tearing themselves down (#5512)
+  * lint: fix local-prefixes for goimports (#5453)
+  * ci: add exportloopref linter and upgrade to golangci-lint v1.43.0 (#5281)
+  * build: ensure file handles properly closed (#5298)
+  * Fix local go_lintfix errors (#5191)
+  * watch: use WalkDir to speed up file listing (#4684)
+  * test: clean up test loggers a bit (#4580)
+  * test: fix lint errors on Darwin (macOS) (#4247)
+  * test: enable unused check, remove dead code (#4208)
+  * watch: improve error messages when you run out of inotify instances (#3960)
+  * dockerignore: convert ignore patterns to absolute paths [ch9237] (#3743)
+  * watch: fix a dumb errcheck (#3622)
+  * watch: increase the windows watch i/o buffer (#3620)
+  * change org name from windmilleng to tilt-dev (#3346)
+  * watch: use the recursive watcher on windows (#3306)
+  * Revert "watch: fix inotify tests on windows" (#3147)
+  * watch: fix inotify tests on windows (#3140)
+  * circleci: run make shorttest on windows. flag off a large swath of broken tests (#3132)
+  * tilt: enable errcheck on tests (#2877)
+  *  ci: enable staticcheck, fix problems that were surfaced (#2809)
+  * logger: move to pkg (#2031)
+  * watch: add retry counts to fsync (#2023)
+  * dockerignore: improve MatchesEntireDir (#1865)
+  * watch: move more of the directory-skipping logic into the interface (#1864)
+  * watch: add a simple check when there are no exclusions (#1863)
+  * watch: skip setup if nothing is being watched (#1861)
+  * watch: FileEvents must always be absolute (#1841)
+  * watch: add tests for ignores and number of watches (#1838)
+  * watch: change the watcher interface to better match how we actually use it (#1835)
+  * watch: record num watches in expvars (#1795)
+  * makefile: fix goimports -local (#1763)
+  * watch: fix spurious errors while watching (#1726)
+  * watch: don't watch each individual file (#1613)
+  * live_update: error if syncing from outside of docker context (#1396)
+  * watch: tfw you have a test that asserts broken file-watch behavior :cry: (#1354)
+  * watch: add watch function that traverses up directory structure recursively (#1013)
+  * watch: remove inotify-specific bits of watcher_linux (#890)
+  * watch: fix a bug when a file and its ancestor both have direct watches (#863)
+  * testing: update internal/watch to use the tempdir fixture (#862)
+  * cleanup: wrap errors properly (#772)
+  * watch: use `sinceWhen` and `HistoryDone` to avoid spurious events (#557)
+  * watch: fix a spurious error (#344)
+  * watch: try a slightly different ignore strategy (#174)
+  * watch: fix more data races on darwin (#166)
+  * watch: a new strategy for handling spurious events, hoping to fix race conditions (#163)
+  * watch: fix a flaky test by ignoring spurious events correctly (#162)
+  * watch: fix a segfault on linux (#148)
+  * watch: stop skipping tests (#145)
+  * watch: simplify the fileEvent interface to only contain paths (#144)
+  * add errcheck (#93)
+  * tilt: copy watch code from tesseract
+  * Add remote buildx driver
+  * rename `convert` to `config` to align with compose v1 UX
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.2 to 1.12.0
+  * add dry-run support of pause and unpause commands
+  * build(deps): bump github.com/containerd/containerd from 1.6.15 to 1.6.16
+  * support dry-run for kill command
+  * update tty and plain text writers to support dry run mode
+  * refresh Maintainers list
+  * Support for docker compose build --push when using multiple platforms
+  * Update docs to add `--scale` argument to `compose create`
+  * Add `--scale` to `compose create`, refactor scale option
+  * Fix: Handle concurrent threads using mutex on the rainbowColor function
+  * Remove unecessary files
+  * Fix: remove the infinite goroutine
+  * Remove unecessary files
+  * Fix: remove the infinite goroutine
+  * alias -n for --tail to align with docker CLI
+  * cleanup TUI lines after switching to "compact" mode
+  * Update docs to mention `COMPOSE_PARALLEL_LIMITS` and ways to configure parallelism
+  * fix docs to reflect docker compose ps being aligned with docker ps
+  * Revert "Fix Goroutine leak in v2/command/formatter"
+  * Fix Linting Issues
+  * Feat: Clean inifinite Goroutine
+  * Only account running containers for logs
+  * bump compose-go to version v1.9.0
+  * allow a TTY to be allocated with -t
+  * debounce refresh requests with quietperiod
+  * Add tests for filtering containers not created by Compose
+  * Ignore containers created outside compose
+  * directly embed the orignal APIClient in the DryRunClient
+  * identify functions which need to be ovorridden for dry run feature
+  * add alpha command to test dry-run
+  * create custom CLI when dry-run mode active update documentation
+  * add DryRun API Client with delagation pattern
+  * add dry-run flag
+  * use compose service methods when exist instead of directly service.dockerCli
+  * mark alpha command as experimental
+  * Adjust terminal height calc
+  * introduce experimental watch command (skeletton)
+  * Skip child events when printer events > terminal height
+  * fix typo
+  * Update docs programatically like you're supposed to
+  * fix docs yaml
+  * This option lives in the create options, not the run options
+  * Add remove-orphans functionality to run, because it recommends that in error messages
+  * Add :cucumber: GHA workflow
+  * introduce --remove-orphans in compose create command
+  * pass proxy config as build args - same as docker/buildx#959
+  * Remove unused kube tag
+  * build(deps): bump github.com/containerd/containerd from 1.6.14 to 1.6.15
+  * Update expected Cucumber `compose ps` output to match changes
+
+-------------------------------------------------------------------
 Tue Jan 10 05:50:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.1:

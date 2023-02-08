@@ -1,7 +1,7 @@
 #
 # spec file for package python-tensorpac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-tensorpac
@@ -26,6 +25,8 @@ Summary:        Tensor-based phase-Amplitude coupling package
 License:        BSD-3-Clause
 URL:            https://etiennecmb.github.io/tensorpac/
 Source:         https://github.com/EtienneCmb/tensorpac/archive/refs/tags/v%{version}.tar.gz#/tensorpac-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE numpy-1.24.patch gh#EtienneCmb/tensorpac#17
+Patch0:         numpy-1.24.patch
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +52,7 @@ Tensorpac is an Python toolbox for computing Phase-Amplitude Coupling
 (PAC) using tensors and parallel computing.
 
 %prep
-%setup -q -n tensorpac-%{version}
+%autosetup -p1 -n tensorpac-%{version}
 chmod a-x LICENSE README.rst
 # upstream tarball contains py3.7 cache files
 rm -rf */__pycache__
@@ -79,6 +80,7 @@ donttest+=" or (TestUtils and test_psd)"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tensorpac
+%{python_sitelib}/tensorpac*-info
 
 %changelog

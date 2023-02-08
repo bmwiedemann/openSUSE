@@ -3899,4 +3899,24 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   out-of-bounds read in EnqueueEvent.</comment>
     <requestid>1060975</requestid>
   </revision>
+  <revision rev="417" vrev="1">
+    <srcmd5>268f9ada9f706ef000804cf2b205bed4</srcmd5>
+    <version>21.1.7</version>
+    <time>1675873192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version xorg-server-21.1.7:
+  * This release contains the fix for CVE-2023-0494 in today's security
+    advisory: 
+    https://lists.x.org/archives/xorg-announce/2023-February/003320.html
+    It also fixes a second possible OOB access during EnqueueEvent and a
+    crasher caused by ResourceClientBits not correctly honouring the
+    MaxClients value in the configuration file.
+- supersedes U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch,
+  U_xorg-server-oob-read-enqueue-event.patch
+
+- U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch
+  * DeepCopyPointerClasses use-after-free (CVE-2023-0494, 
+    ZDI-CAN-19596, bsc#1207783)</comment>
+    <requestid>1063640</requestid>
+  </revision>
 </revisionlist>

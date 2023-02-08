@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 10:32:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- updated to 2.14
+* added support for retry during download assets
+
+-------------------------------------------------------------------
 Sun Mar 14 03:09:39 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.13

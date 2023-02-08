@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-AssetPack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Mojolicious-Plugin-AssetPack
 Name:           perl-Mojolicious-Plugin-AssetPack
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Compress and convert CSS, Less, Sass, JavaScript and CoffeeScript files
 License:        Artistic-2.0

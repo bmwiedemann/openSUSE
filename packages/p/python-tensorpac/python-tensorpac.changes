@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:35:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy-1.24.patch to make it compatible with numpy >= 1.24
+  gh#EtienneCmb/tensorpac#17
+
+-------------------------------------------------------------------
 Sat Feb 26 11:11:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Upgrading to 1.1 (from GitHub tarball): no changelog was made

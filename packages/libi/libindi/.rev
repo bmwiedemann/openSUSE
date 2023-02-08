@@ -578,4 +578,12 @@
     <comment>Update to 2.0.0</comment>
     <requestid>1062234</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>d340234936556e9112e5b8d2a9bf14e5</srcmd5>
+    <version>2.0.0</version>
+    <time>1675873259</time>
+    <user>dimstar_suse</user>
+    <comment>multiple fixes from master since there won't be a new release for the next 2 months</comment>
+    <requestid>1063865</requestid>
+  </revision>
 </revisionlist>

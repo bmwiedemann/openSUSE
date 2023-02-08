@@ -26,6 +26,10 @@
 %define build_pdf 1
 %endif
 
+%define lmod_min_lua_version 5.1
+%define version_name_suffix() %{lua: x=string.gsub(rpm.expand("%*"),"([0-9]+)%.([0-9]+).*","%1%2"); print(x)}
+%{!?lua_pref:%define lua_pref lua}
+
 %define lua_lmod_modulesdir %{_datarootdir}/lmod/modulefiles
 %define lua_lmod_admin_modulesdir %{_datarootdir}/lmod/admin/modulefiles
 %define lua_lmod_moduledeps %{_datarootdir}/lmod/moduledeps
@@ -44,19 +48,19 @@ Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}
 Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
 Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
 
+BuildRequires:  %{lua_pref} >= %{lmod_min_lua_version}
+BuildRequires:  %{lua_pref}-devel >= %{lmod_min_lua_version}
+BuildRequires:  %{lua_pref}-luafilesystem
+BuildRequires:  %{lua_pref}-luaposix
+BuildRequires:  %{lua_pref}-luaterm
 BuildRequires:  bc
-BuildRequires:  lua >= %{lua_version}
-BuildRequires:  lua-devel >= %{lua_version}
-BuildRequires:  lua-luafilesystem
-BuildRequires:  lua-luaposix
-BuildRequires:  lua-luaterm
 BuildRequires:  procps
 BuildRequires:  rsync
 BuildRequires:  tcl
-Requires:       lua >= %{lua_version}
-Requires:       lua-luafilesystem
-Requires:       lua-luaposix
-Requires:       lua-luaterm
+# Do not require a lua interpreter directly, this will be handled implicitly
+Requires:       lua%{version_name_suffix %lua_version}-luafilesystem
+Requires:       lua%{version_name_suffix %lua_version}-luaposix
+Requires:       lua%{version_name_suffix %lua_version}-luaterm
 Requires:       tcl
 Conflicts:      Modules
 %if 0%{suse_version} >= 1550

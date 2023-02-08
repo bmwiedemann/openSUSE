@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jan 31 15:32:40 UTC 2023 - dmulder@suse.com
+
+- Update to version 1675179058.924c983:
+  * Fix debug option incorrect for smbd
+
+-------------------------------------------------------------------
+Mon Jan 30 17:49:37 UTC 2023 - dmulder@suse.com
+
+- Update to version 1675100262.602a449:
+  * Remove TESTING sambacc package
+
+-------------------------------------------------------------------
+Thu Jan 26 21:46:54 UTC 2023 - David Mulder <dmulder@suse.com>
+
+- Initial commit
+

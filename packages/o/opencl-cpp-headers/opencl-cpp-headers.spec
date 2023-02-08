@@ -1,8 +1,8 @@
 #
 # spec file for package opencl-cpp-headers
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Aaron Puchert.
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 #
 
 
-%global _tagver 2022.09.30
-
 Name:           opencl-cpp-headers
-Version:        2.0.19
+Version:        2023.02.06
 Release:        0
 Summary:        OpenCL C++ headers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/OpenCL/
-Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{_tagver}.tar.gz
+Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  findutils
 Conflicts:      opencl-headers-1_2
@@ -42,7 +40,7 @@ This package provides the official C++ headers for OpenCL, which are wrappers
 around the C headers.
 
 %prep
-%setup -q -n OpenCL-CLHPP-%{_tagver}
+%setup -q -n OpenCL-CLHPP-%{version}
 
 %build
 # Fix line endings

@@ -136,7 +136,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.9.539+gea74dd900cd
+Version:	16.2.11.58+g38d6afd3b78
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -152,7 +152,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.9-539-gea74dd900cd.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.11-58-g38d6afd3b78.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -562,6 +562,7 @@ Group:          System/Filesystems
 Requires:       ceph-mgr = %{_epoch_prefix}%{version}-%{release}
 Requires:       ceph-grafana-dashboards = %{_epoch_prefix}%{version}-%{release}
 Requires:       ceph-prometheus-alerts = %{_epoch_prefix}%{version}-%{release}
+Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?fedora} || 0%{?rhel}
 Requires:       python%{python3_pkgversion}-cherrypy
 Requires:       python%{python3_pkgversion}-jwt
@@ -611,6 +612,7 @@ Requires:       python%{python3_pkgversion}-pecan
 Requires:       python%{python3_pkgversion}-pyOpenSSL
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-dateutil
+Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?fedora} || 0%{?rhel} >= 8
 Requires:       python%{python3_pkgversion}-cherrypy
 Requires:       python%{python3_pkgversion}-pyyaml
@@ -1208,12 +1210,14 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.9-539-gea74dd900cd
+%autosetup -p1 -n ceph-16.2.11-58-g38d6afd3b78
 
 %build
-# LTO can be enabled as soon as the following GCC bug is fixed:
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200
+# Disable lto on systems that do not support symver attribute
+# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200 for details
+%if ( 0%{?rhel} && 0%{?rhel} < 9 ) || ( 0%{?suse_version} && 0%{?suse_version} <= 1500 )
 %define _lto_cflags %{nil}
+%endif
 
 %if 0%{with seastar} && 0%{?rhel}
 . /opt/rh/gcc-toolset-9/enable
@@ -1400,7 +1404,7 @@ touch %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 chmod 0600 %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 
 # firewall templates and /sbin/mount.ceph symlink
-%if 0%{?suse_version} && !0%{?usrmerged}
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 ln -sf %{_sbindir}/mount.ceph %{buildroot}/sbin/mount.ceph
 %endif
@@ -1553,8 +1557,7 @@ exit 0
 
 %if ! 0%{?suse_version}
 %postun -n cephadm
-userdel -r cephadm || true
-exit 0
+[ $1 -ne 0 ] || userdel cephadm || :
 %endif
 
 %files -n cephadm
@@ -1580,13 +1583,15 @@ exit 0
 %{_bindir}/rbd-replay-many
 %{_bindir}/rbdmap
 %{_sbindir}/mount.ceph
-%if 0%{?suse_version} && !0%{?usrmerged}
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 /sbin/mount.ceph
 %endif
 %if %{with lttng}
 %{_bindir}/rbd-replay-prep
 %endif
 %exclude %{_bindir}/ceph-post-file
+%dir %{_libdir}/ceph/denc
+%{_libdir}/ceph/denc/denc-mod-*.so
 %{_tmpfilesdir}/ceph-common.conf
 %{_mandir}/man8/ceph-authtool.8*
 %{_mandir}/man8/ceph-conf.8*

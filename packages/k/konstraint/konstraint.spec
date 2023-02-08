@@ -1,7 +1,7 @@
 #
 # spec file for package konstraint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           konstraint
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        A policy management tool for interacting with Gatekeeper
 License:        Apache-2.0

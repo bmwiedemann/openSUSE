@@ -53,7 +53,7 @@ Index: gzdoom-g4.8.2/src/common/rendering/vulkan/system/vk_builders.cpp
  	/* .maxTaskWorkGroupSizeY_NV = */ 1,
  	/* .maxTaskWorkGroupSizeZ_NV = */ 1,
  	/* .maxMeshViewCountNV = */ 4,
-+#if GLSLANG_VERSION_MAJOR == 11 && GLSLANG_VERSION_MINOR >= 12
++#if (GLSLANG_VERSION_MAJOR == 11 && GLSLANG_VERSION_MINOR >= 12) || GLSLANG_VERSION_MAJOR > 11
 +	256, 256, 128, 128, 128, 128, 128, 128, 4,
 +#endif
  	/* .maxDualSourceDrawBuffersEXT = */ 1,

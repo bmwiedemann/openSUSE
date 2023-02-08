@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  7 15:34:13 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- added CreateMt-Targets.patch 
+  which moonts in resolv.conf and files for SCC registration
+- added config-ww4.sh which is used for initial configuration for
+  simple network setups
+
+-------------------------------------------------------------------
+Tue Jan 31 18:24:50 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add %sysusers_requires macro to account for missing dependencies
+  (boo#1207802).
+
+-------------------------------------------------------------------
 Tue Jan 24 11:17:32 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - added make-ipxe-binary-source-configureable.patch
+- use distro ipxe binaries instead of binaries blobs from the
+  warewulf github repo
 
 -------------------------------------------------------------------
 Thu Jan 19 11:13:58 UTC 2023 - Christian Goll <cgoll@suse.com>

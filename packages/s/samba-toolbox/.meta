@@ -1,0 +1,5 @@
+<package name="samba-toolbox" project="openSUSE:Factory">
+  <title>Samba Toolbox container</title>
+  <description></description>
+  <devel project="network:samba:CONTAINERS" package="samba-toolbox"/>
+</package>

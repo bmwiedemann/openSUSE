@@ -90,4 +90,13 @@
     <comment></comment>
     <requestid>974294</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>122478fd35dfc8cf5d5995e568918059</srcmd5>
+    <version>1.2.1</version>
+    <time>1675873214</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fix-requirements.patch:
+  * Stop specifying an invalid Sphinx version.</comment>
+    <requestid>1063709</requestid>
+  </revision>
 </revisionlist>

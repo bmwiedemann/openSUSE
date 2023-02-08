@@ -3530,4 +3530,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-60 (forwarded request 1062051 from polslinux)</comment>
     <requestid>1062065</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>c1f4bda0f1c355cd3a96b1f9bd6988c3</srcmd5>
+    <version>7.1.0.61</version>
+    <time>1675873190</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.61
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md</comment>
+    <requestid>1063625</requestid>
+  </revision>
 </revisionlist>

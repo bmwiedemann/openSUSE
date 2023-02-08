@@ -1,0 +1,37 @@
+From 3d4fff328ba9a06d9799563f357cfe5968f1f79c Mon Sep 17 00:00:00 2001
+From: Ask Hjorth Larsen <asklarsen@gmail.com>
+Date: Mon, 16 Jan 2023 16:41:15 +0100
+Subject: [PATCH] set window title in way that will not crash on matplotlib
+ 3.6+
+
+---
+ ase/cli/band_structure.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/ase/cli/band_structure.py b/ase/cli/band_structure.py
+index 303c64b88..603ad659a 100644
+--- a/ase/cli/band_structure.py
++++ b/ase/cli/band_structure.py
+@@ -16,15 +16,17 @@ def read_band_structure(filename):
+ 
+ def main(args, parser):
+     import matplotlib.pyplot as plt
++
+     bs = read_band_structure(args.calculation)
+     emin, emax = (float(e) for e in args.range)
+-    fig = plt.gcf()
+-    fig.canvas.set_window_title(args.calculation)
++    fig = plt.figure(args.calculation)
+     ax = fig.gca()
++
+     bs.plot(ax=ax,
+             filename=args.output,
+             emin=emin + bs.reference,
+             emax=emax + bs.reference)
++
+     if args.output is None:
+         plt.show()
+ 
+-- 
+GitLab
+

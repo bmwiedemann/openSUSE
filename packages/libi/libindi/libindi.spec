@@ -26,6 +26,9 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         fix-operator.patch
+Patch1:         fix-timestamp.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel
@@ -140,8 +143,7 @@ capabilities and communicate with the device drivers and build a
 completely dynamic GUI based on the services provided by the device.
 
 %prep
-%setup -q -n indi-%{version}
-%autopatch -p1
+%autosetup -p1 -n indi-%{version}
 
 %build
 %define _lto_cflags %{nil}

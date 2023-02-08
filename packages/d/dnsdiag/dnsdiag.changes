@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  4 15:41:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  * Add -m flag to enforce cache-miss
+  * Add -r flag to clear RD flag (disable recursion)
+  * Remove support for python 3.4 - 3.6
+  * Other minor quality of life improvements
+
+-------------------------------------------------------------------
 Thu May 13 13:47:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.2

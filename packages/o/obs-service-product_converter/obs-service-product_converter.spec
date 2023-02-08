@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define service product_converter
 
 Name:           obs-service-%service
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        An OBS source service: create product media build descriptions
 License:        GPL-2.0-or-later

@@ -3957,4 +3957,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1062058</requestid>
   </revision>
+  <revision rev="231" vrev="4">
+    <srcmd5>4ca57f804f5ed996523f996069823eae</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1675873174</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20230128
+  + document XF, kxIN and kxOUT -TD
+  + add note on sun/wscons/cmdtool/shelltool -TD
+  + modify configure script check for pkg-config library directory to
+    take into account an older version 0.15.0 which used PKG_CONFIG_PATH
+    but not PKG_CONFIG_LIBDIR
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif</comment>
+    <requestid>1063409</requestid>
+  </revision>
 </revisionlist>

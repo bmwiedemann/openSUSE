@@ -1,0 +1,43 @@
+---
+ setup.cfg                          |    3 +++
+ tests/test_dynamodb_cache.py       |    1 +
+ tests/test_interface_uniformity.py |    1 +
+ tests/test_redis_cache.py          |    2 +-
+ 4 files changed, 6 insertions(+), 1 deletion(-)
+
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -34,11 +34,14 @@ python_requires = >= 3.7
+ where = src
+ 
+ [tool:pytest]
++addopts = --strict-markers
+ testpaths = tests
+ filterwarnings = 
+ 	error
+ 	default::DeprecationWarning:cachelib.uwsgi
+ 	default::DeprecationWarning:cachelib.redis
++markers =
++	network: mark a test which requires net access
+ 
+ [coverage:run]
+ branch = True
+--- a/tests/test_dynamodb_cache.py
++++ b/tests/test_dynamodb_cache.py
+@@ -29,5 +29,6 @@ def cache_factory(request):
+         request.cls.cache_factory = _factory
+ 
+ 
++@pytest.mark.network
+ class TestDynamoDbCache(CommonTests, ClearTests, HasTests):
+     pass
+--- a/tests/test_interface_uniformity.py
++++ b/tests/test_interface_uniformity.py
+@@ -19,6 +19,7 @@ def create_cache_list(request, tmpdir):
+     request.cls.cache_list = [FileSystemCache(tmpdir), mc, rc, SimpleCache()]
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.usefixtures("redis_server", "memcached_server")
+ class TestInterfaceUniformity:
+     def test_types_have_all_base_methods(self):

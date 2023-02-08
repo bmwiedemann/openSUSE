@@ -1,0 +1,1037 @@
+-------------------------------------------------------------------
+Fri Nov 18 21:03:32 UTC 2022 - jgleissner@suse.com
+
+- Update to version 2.0.2:
+  * Bump version: 2.0.1 → 2.0.2
+  * Fix spec file name in .bumpversion.cfg
+  * Do not obsolete python-kiwi_keg
+  * Add unit test for missing include path message
+  * Log message if include path does not exist (issue#113)
+  * Use kiwi-keg instead of keg as source dist name
+  * Rename package to python-kiwi-keg
+  * Include doc source dir in Manifest
+
+-------------------------------------------------------------------
+Fri Nov 18 13:04:55 UTC 2022 - jgleissner@suse.com
+
+- Update to version 2.0.1:
+  * Bump version: 2.0.0 → 2.0.1
+  * Drop rpmlintrc
+  * Use argument defaults that match type hints
+  * Add missing dependeny on 'schema' to setup.py
+
+-------------------------------------------------------------------
+Fri Nov 11 14:05:26 UTC 2022 - jgleissner@suse.com
+
+- Update to version 2.0.0:
+  * Redesign image definition layout (codename 'minikeg')
+  * Documentation overhaul
+  * Build man page when building package
+  * Install man pages in the correct section
+  * Support multibuild parameter in src service
+  * OBS src service: write _multibuild file
+  * improve source info tracking
+  * changelog generator: output dates in YAML changelog
+  * make keg man page more akin to usual man-page style
+  * OBS source service: add support for change log generator
+  * changelog_generator: support multiple revision args
+  * Support multiple roots for changelog generation
+  * Support multiple full recipes roots
+  * Add changelog generator
+
+-------------------------------------------------------------------
+Fri Oct 29 15:30:56 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Increment patch version on service run
+
+  By default read the version element from the written config.kiwi
+  file and increment the patch part of the version information by 1
+  This action can be prevented by the <disable-version-bump>
+  parameter
+
+-------------------------------------------------------------------
+Thu Oct 28 16:14:01 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Complete obs service
+
+  This commit implements the actual keg call and store
+  of result image data in the output directory from
+  which OBS auto commits the data to the project if
+  called on the remote side. This Fixes #68
+
+-------------------------------------------------------------------
+Wed Oct 27 19:24:57 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Handle errors in input data more gracefully
+
+  Check input objects for type before trying a dictionary rmerge.
+  Print error message instead of stack trace when image defintion populate fails.
+  Use separate exception for data errors.
+
+-------------------------------------------------------------------
+Wed Oct 27 16:30:43 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add dependency on Jinja2
+
+-------------------------------------------------------------------
+Thu Oct 21 15:54:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added mandatory outdir option
+
+  When OBS calls the service through the API it appends
+  the --outdir option. The passed information must be used
+  to store the contents of the project. OBS will commit
+  everything in --outdir to the backend
+
+-------------------------------------------------------------------
+Mon Oct 11 16:18:42 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update unit tests for kiwi API usage
+
+-------------------------------------------------------------------
+Mon Oct 11 15:23:59 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Rename service to compose_kiwi_description
+
+  In addition to the rename also allow an additional keg recipe
+  location to be used in conjunction with a main recipe location
+
+-------------------------------------------------------------------
+Fri Oct 01 16:36:34 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Support profile parameters in base profiles
+
+  Copy profile parameter section from the base profile (if exists) into nested
+  profiles and remove it from the base profile. This allows to have profile parameters
+  in the base section rather than requiring all profile parameter containing sections
+  to be in the nested profiles, potentially reducing duplication.
+
+-------------------------------------------------------------------
+Thu Sep 23 11:11:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added keg obs service
+
+  The fetch_from_keg obs service can be used to integrate
+  the creation of image descriptions via keg with the open
+  build service. This commit creates the basic structure
+  for the service.
+
+-------------------------------------------------------------------
+Thu Sep 09 17:03:51 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Do not include base profiles in _multibuild file
+
+-------------------------------------------------------------------
+Thu Sep 09 15:50:52 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Drop check for 'arch' key
+
+  Do not require image definition dict to have an 'arch' key. This is
+  now handle via generic schema comments.
+
+-------------------------------------------------------------------
+Wed Aug 25 20:56:06 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Remove left-over debug message
+
+-------------------------------------------------------------------
+Wed Aug 25 20:50:19 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add support for nested profiles
+
+  Add support for nested profiles in multi-build image definitions.
+  This potentially allows for shorter package sections, less duplication in
+  overlay archives, and shorter config.sh scripts.
+  This commit also streamlines the produced overlay archives by not including
+  directories multiple times.
+
+-------------------------------------------------------------------
+Thu Aug 19 20:14:16 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Undo spacing change
+
+-------------------------------------------------------------------
+Thu Aug 19 20:08:39 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Better errors and dest-dir default (issue#58)
+
+  Add default destination directory (issue#58).
+  Do basic verification of image data structure and print error messages
+  instead of stack dumps.
+
+-------------------------------------------------------------------
+Tue Jul 20 17:12:57 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Push rendered SUSE documentation for release
+
+-------------------------------------------------------------------
+Tue Jul 20 14:16:43 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Bump version: 1.0.0 → 1.1.0
+
+-------------------------------------------------------------------
+Tue Jul 13 21:18:53 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- More typo fixes
+
+-------------------------------------------------------------------
+Tue Jul 13 21:17:32 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Typo fixes in documentation
+
+-------------------------------------------------------------------
+Tue Jul 13 15:51:37 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add parameter for setting image version
+
+-------------------------------------------------------------------
+Thu Jul 08 19:02:52 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Expand on single- vs multi-build.
+
+-------------------------------------------------------------------
+Thu Jul 08 16:13:33 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fix missing mypy library stubs
+
+  For static type checking many modules startet to create
+  library stubs packages to contain the types, like header
+  files in C/C++. This commit installs the missing stubs
+  package to the development environment
+
+-------------------------------------------------------------------
+Wed Jul 07 16:09:09 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Documentation fixes
+
+  Some re-phrasing in "command line" section.
+  Various typo fixes.
+
+-------------------------------------------------------------------
+Tue Jul 06 15:41:09 CEST 2021 - Stefan Knorr <sknorr@suse.de>
+
+- DC: Update to new suse2021 stylesheets
+
+-------------------------------------------------------------------
+Tue Jul 06 09:44:46 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add note about profile specific parameters to documentation
+
+-------------------------------------------------------------------
+Fri Jul 02 16:26:47 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add documentation on keg recipes data strucutre
+
+-------------------------------------------------------------------
+Thu Jun 03 19:13:28 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Bump version: 0.0.8 → 1.0.0
+
+-------------------------------------------------------------------
+Thu Jun 03 19:11:13 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Remove unused import
+
+-------------------------------------------------------------------
+Thu Jun 03 19:09:18 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Improve list-recipes functionality
+
+  Instead of looking for directories with a image.yaml, try to construct
+  an image definition from all leaf directories in 'images'. This adds
+  basic validation of the image definitions.
+  Add image name, description, and version number to output.
+
+-------------------------------------------------------------------
+Mon May 17 18:13:16 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Fix return type hint for get_script_path()
+
+-------------------------------------------------------------------
+Mon May 17 18:01:30 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Do not indent file content in config scripts
+
+  When generating file content in config scripts, do not indent file content
+  in profile sections.
+  Also added descriptive comments to script_utils functions.
+
+-------------------------------------------------------------------
+Mon May 17 12:53:13 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Rename utils.py to file_utils.py
+
+-------------------------------------------------------------------
+Mon May 17 12:44:09 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Drop obsolete template files
+
+-------------------------------------------------------------------
+Fri May 14 19:15:40 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Generate config.sh and images.sh directly
+
+  This moves generating the config scripts into keg rather than relying on
+  templates in keg-recipes. Use of templates is still supported to generate
+  script headers which can be used to provide additional information available
+  from the data dictionary.
+
+-------------------------------------------------------------------
+Wed May 05 15:27:36 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Properly support overwriting of keys
+
+  Keys from upper levels may be overwritten in lower levels, but adding
+  subsequent data modules may revert that by merging upper level dict files
+  again. This commit prevents duplicate merging.
+
+-------------------------------------------------------------------
+Wed Apr 28 13:58:53 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Do not generate _mbuild if no profiles are defined
+
+-------------------------------------------------------------------
+Wed Apr 28 13:48:17 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add support for _multibuild creation
+
+-------------------------------------------------------------------
+Mon Apr 26 19:06:15 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Typo fixes
+
+-------------------------------------------------------------------
+Mon Apr 26 10:28:07 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Formatting fixes
+
+-------------------------------------------------------------------
+Sat Apr 24 10:13:53 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Fix unit test for create_overlays
+
+-------------------------------------------------------------------
+Fri Apr 23 20:01:47 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Be compatible with python 3.6
+
+  Do not use shutils.copytree for compatibility with python 3.6. The
+  dirs_exists_ok parameter was introduced with python 3.8.
+
+-------------------------------------------------------------------
+Fri Apr 23 18:28:38 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Generate overlay archive tags for schema
+
+  Process overlay data when the image defintion is populated, and add archive
+  tags to the profile sections for use in schema templates.
+  Also add collected archive information to data dictonary root, for easier
+  archive generation later.
+  Simplify archive generation, produce tarball directly without intermediate
+  copy, and set file ownership to 'root'.
+  Change mockup recipes data to be more in line with real data layout.
+
+-------------------------------------------------------------------
+Wed Apr 21 15:27:38 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add dump-dict parameter
+
+  Adds an option to dump the generated data dictionary to stdout instead
+  of creating an image description. Useful for debugging.
+
+-------------------------------------------------------------------
+Tue Apr 20 18:28:16 CEST 2021 - Stefan Knorr <sknorr@suse.de>
+
+- docs: Minor typo/consistency fixes
+
+-------------------------------------------------------------------
+Tue Apr 20 16:10:02 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation title
+
+  After a converstation with Stefan Knorr from the doc team
+  we agreed on updating the Keg title to be more specific.
+  In addition a short information what Keg is was added under
+  the title. In the rendered SUSE layout this information
+  appears under the Preface section.
+
+-------------------------------------------------------------------
+Thu Apr 15 16:23:15 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.7 → 0.0.8
+
+-------------------------------------------------------------------
+Thu Apr 15 16:22:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed package build
+
+  keg binary and docs not added to spec filelist
+
+-------------------------------------------------------------------
+Thu Apr 15 15:52:36 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.6 → 0.0.7
+
+-------------------------------------------------------------------
+Thu Apr 15 15:52:14 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added MANIFEST.in
+
+  Documentation missing in package data
+
+-------------------------------------------------------------------
+Thu Apr 15 15:40:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.5 → 0.0.6
+
+-------------------------------------------------------------------
+Thu Apr 15 15:39:40 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed sorting issue in unit tests
+
+  There is a code test on a dict traversal which can lead
+  to different ordering. The unit test which tests these
+  contents needs to compare on a sorted base
+
+-------------------------------------------------------------------
+Thu Apr 15 15:23:05 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.4 → 0.0.5
+
+-------------------------------------------------------------------
+Wed Apr 07 20:37:34 CEST 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Use template to add archive
+
+-------------------------------------------------------------------
+Wed Mar 31 14:25:32 CEST 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Option to disable creation
+
+  - Affects only root tarballs
+
+-------------------------------------------------------------------
+Tue Mar 30 20:33:39 CEST 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Create overlay tarballs by default
+
+  - Tarball creation by default
+  - Add flag to disable tarball creation
+  - Add archive name to xml file if tarball is not root
+
+-------------------------------------------------------------------
+Thu Mar 18 17:27:43 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Move root check inside method
+
+-------------------------------------------------------------------
+Thu Mar 18 09:53:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed doc string
+
+  Make sure line breaks for data type descriptions happens
+  after the type declaration. This avoids rendering mistakes
+  for the documentation build
+
+-------------------------------------------------------------------
+Thu Mar 18 09:51:16 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added information about data read from image tree
+
+  With --verbose set print information which file
+  from the image definition was read in the order of
+  their reading.
+
+-------------------------------------------------------------------
+Wed Mar 17 19:03:29 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Generate overlay tarball
+
+  - Use the new defined overlay structure
+
+-------------------------------------------------------------------
+Wed Mar 17 17:21:19 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- make flake8 happy
+
+-------------------------------------------------------------------
+Wed Mar 17 16:53:13 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- add unit test coverage for delete-key support
+
+  Adds a key to a (not actually produced) Leap <= 15.1 image description and
+  removes it for the Leap 15.2 one that is used in the unit test. This will cover
+  the corresponding code path.
+
+  This also required a slight rearrangment of the mockup image defintion, as it
+  wasn't quite using the appropriate keg data layout.
+
+-------------------------------------------------------------------
+Wed Mar 17 12:26:30 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Better performance for getting the files
+
+-------------------------------------------------------------------
+Wed Mar 17 09:38:56 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure recipe list is returned sorted
+
+-------------------------------------------------------------------
+Wed Mar 17 09:31:03 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Simplify list recipes
+
+  The implementation used os.scandir which returns unsorted
+  information that can also vary between calls. Therefore we
+  saw periodically failures on the unit tests and the feature
+  could be implemented using os.walk with less code and
+  sorted output
+
+-------------------------------------------------------------------
+Tue Mar 16 16:19:04 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Allow dict keys to be null when merging
+
+  Allow keys to be 'null' when merging into data dictionary. This can be used to
+  delete an inherited key.
+
+-------------------------------------------------------------------
+Mon Mar 15 20:25:32 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add archive element if not root
+
+  - Only add archive elements to config.kiwi if not root
+
+-------------------------------------------------------------------
+Mon Mar 15 16:17:01 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update overlay structure
+
+  - Parse overlay yaml allowing duplicate keys
+  - Check overlaynames are present
+  - Create different overlay tarballs
+  - Update config.kiwi with the proper archive elements
+
+-------------------------------------------------------------------
+Mon Mar 15 10:41:18 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.3 → 0.0.4
+
+-------------------------------------------------------------------
+Mon Mar 15 10:39:10 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update keg documentation
+
+  Add missing information about new --list-recipes option
+  Also fixed a typo in the docopt usage string for this
+  option
+
+-------------------------------------------------------------------
+Thu Mar 11 09:26:05 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- script template file is not related to schema type
+
+  The script template file names for config.sh.templ, images.sh.templ
+  were prefixed by the schema type, e.g 'vm'. This is not needed
+  because the contents of the scripts are defined by the collected
+  data from the image definition tree and do not change in ther
+  semantic depending on the schema type. Therefore we only need
+  one template for config.sh and one template for images.sh
+
+-------------------------------------------------------------------
+Thu Mar 11 09:23:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed comment indentation in script templates
+
+-------------------------------------------------------------------
+Wed Mar 10 18:23:36 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Sort the list
+
+-------------------------------------------------------------------
+Wed Mar 10 17:00:47 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Fixes
+
+  - Rename option to create overlays tarball
+  - Tarball includes only the overlays directories
+
+-------------------------------------------------------------------
+Wed Mar 10 16:26:35 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add support for images.sh script
+
+  Unfortunately adding support for another script hook was not
+  possible without changing the layout of the image definition
+  data for scripts. The basic structure for the scripts config.sh
+  and images.sh is now as follows:
+
+  ```yaml
+  config:
+  # config.sh setup
+  config_script:
+  NAMESPACE:
+  - SCRIPTLET_NAME
+  files:
+  NAMESPACE:
+  - PATH_DEFINITION
+  services:
+  NAMESPACE:
+  - SERVICE_DEFINITION
+  sysconfig:
+  NAMESPACE:
+  - FILE_DEFINITION
+
+  # images.sh setup
+  image_script:
+  SAME_STRUCTURE_AS_FOR_CONFIG_SCRIPT
+  ```
+
+  On merge of this commit the data structure in the keg-recipes
+  repository must be adapted. This Fixes #35
+
+-------------------------------------------------------------------
+Wed Mar 10 11:43:00 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Show paths instead of names
+
+-------------------------------------------------------------------
+Wed Mar 10 10:52:06 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add option to list available recipes
+
+  This Fixes #32
+
+-------------------------------------------------------------------
+Tue Mar 09 12:45:41 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update overlay creation
+
+  - Place the overlay structure under root in destination dir
+  - Add option to create a tarball
+
+-------------------------------------------------------------------
+Mon Mar 08 17:41:59 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Create missing overlay dirs in destination dir
+
+-------------------------------------------------------------------
+Sun Mar 07 22:49:55 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add support for overlay files
+
+  This Fixes #30
+
+-------------------------------------------------------------------
+Thu Mar 04 13:10:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Preserve XML comments
+
+  The KIWI validation does not preserve comments after validation
+  as they have no meaning for the processing of the image description.
+  However for OBS comments are treated as project configurations
+  and therefore the toplevel comments if present must be added back.
+
+  Because comment processing is tricky especially for inline comments
+  and when moving to a another than the XML markup, this commit also
+  includes a processing refactoring. In addition to the toplevel
+  comment preserve on XML documents it also adds format processing
+  options as follows:
+
+  Added two new options --format-xml|--format-yaml which allows
+  to explicitly specify if on top of the Keg generated KIWI
+  description an update to the current KIWI schema should be
+  applied or not. In addition a warning about handling of
+  comments in this mode will be issued
+
+  If no format-* options are given the keg generated XML document
+  is only validated against the KIWI API but not translated into
+  the installed schema. This allows to keep all comments as
+  created by the keg jinja template mechanism.
+
+  This Fixes #19
+
+-------------------------------------------------------------------
+Wed Mar 03 10:06:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Keg vs. keg consistency
+
+  Use Keg to name the project and `keg` to name the commandline tool
+
+-------------------------------------------------------------------
+Tue Mar 02 19:08:00 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Fixes
+
+  - wrong indentation
+  - remove extra blank line
+
+-------------------------------------------------------------------
+Tue Mar 02 19:02:20 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Use property decorator
+
+  - Use the properties available to access the attributes
+  - Add missing properties
+  - Add setter
+
+-------------------------------------------------------------------
+Tue Mar 02 17:35:09 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update image definition populate methods
+
+  - Add update profiles method
+  - Add update contents method
+
+-------------------------------------------------------------------
+Tue Mar 02 15:50:58 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Refactor utils
+
+  Turn the code into a class.
+  Remove code duplication in some methods
+  Update a method name
+
+-------------------------------------------------------------------
+Tue Mar 02 15:48:08 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Improve overall error checking
+
+  Make sure obvios errors like recipe path does not exist
+  or schema template was not found are catched by keg.
+  Also make sure validation errors from KIWI are part of
+  the log output
+
+-------------------------------------------------------------------
+Tue Mar 02 11:07:46 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation pre review by Jesus, Robert
+
+-------------------------------------------------------------------
+Tue Mar 02 10:04:23 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add back 100% code coverage check
+
+-------------------------------------------------------------------
+Tue Mar 02 09:32:37 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Reference the Leap example
+
+  Improve user experience with keg to provide an example that
+  actually can run outside of obs and without access to private
+  SLES repos.
+
+-------------------------------------------------------------------
+Tue Mar 02 08:27:19 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed call for create_kiwi_description
+
+  The CLI call did not take the new markup argument into account
+
+-------------------------------------------------------------------
+Tue Mar 02 00:42:28 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Fix type hints
+
+-------------------------------------------------------------------
+Tue Mar 02 00:36:35 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add type hint checker
+
+  This Fixes #16
+
+-------------------------------------------------------------------
+Mon Mar 01 20:54:38 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update rmerge doc string
+
+-------------------------------------------------------------------
+Mon Mar 01 16:21:06 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add template functions tests
+
+  - Test template functions
+  - Add type hints
+  - Rename parse_yaml_tree method to get_yaml_tree
+
+  This Fixes #12
+
+-------------------------------------------------------------------
+Mon Mar 01 13:37:12 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.2 → 0.0.3
+
+-------------------------------------------------------------------
+Mon Mar 01 13:36:35 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed unit tests to respect keg version updates
+
+-------------------------------------------------------------------
+Mon Mar 01 13:18:56 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 0.0.1 → 0.0.2
+
+-------------------------------------------------------------------
+Mon Mar 01 13:18:41 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed bumpversion config
+
+  Adapt to new location of version.py
+
+-------------------------------------------------------------------
+Mon Mar 01 12:12:29 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Handle unsupported markup types
+
+  Raise a KegError on unsupported markup type, currently
+  we support xml and yaml
+
+-------------------------------------------------------------------
+Sun Feb 28 18:40:25 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Test if given destination directory exists
+
+-------------------------------------------------------------------
+Sun Feb 28 18:08:28 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added release target to Actions workflow
+
+  On tags a new release to PyPi will be made. A new release
+  tag is only allowed to be set and pushed via bumpversion
+  on main. This Fixes #8
+
+-------------------------------------------------------------------
+Sun Feb 28 17:50:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Turn README into ReST style
+
+  Allow the python index to correctly display it
+
+-------------------------------------------------------------------
+Sun Feb 28 17:38:20 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Rename python namespace from keg to kiwi_keg
+
+  The project and namespace keg is already registered on the
+  python package index. Thus we need to rename the python
+  namespace as it cannot co-exist with an already registered
+  one
+
+-------------------------------------------------------------------
+Sun Feb 28 17:08:54 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added install chapter
+
+-------------------------------------------------------------------
+Sun Feb 28 10:15:58 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added doc_suse tox target
+
+  Build SUSE documentation from sphinx based project.
+  This will be the docs that gets published on
+  documentation.suse.com
+
+-------------------------------------------------------------------
+Sat Feb 27 19:31:14 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added Keg Documentation
+
+  Added overview chapter and update manual page
+  This Fixes #7
+
+-------------------------------------------------------------------
+Fri Feb 26 17:35:21 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed packaging metadata for pypi
+
+-------------------------------------------------------------------
+Fri Feb 26 17:19:37 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed leap/15.2/image.yaml in test data tree
+
+  The wrong include path was used
+
+-------------------------------------------------------------------
+Fri Feb 26 15:43:45 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Explain tox targets
+
+-------------------------------------------------------------------
+Fri Feb 26 15:19:23 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added support for YAML markup in KiwiDescription
+
+-------------------------------------------------------------------
+Fri Feb 26 15:18:18 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added anymarkup to virtual environment
+
+  keg will also support YAML output. For this the anymarkup
+  module is needed.
+
+-------------------------------------------------------------------
+Fri Feb 26 14:59:33 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Remove dots for build status badge
+
+-------------------------------------------------------------------
+Fri Feb 26 14:51:02 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Update build status badge
+
+-------------------------------------------------------------------
+Fri Feb 26 14:13:20 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add information for contributing
+
+  This Fixes #13
+
+-------------------------------------------------------------------
+Fri Feb 26 12:58:32 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Refactor generator
+
+  Turn the generator into a class. Apply the single responsibilty
+  OO pattern. Add tests for the code and give the single parts
+  of the processing a name. Update the keg commandline code to
+  make use of the classes. Keg should also be usuable as an API,
+  thus I think it's important come up with a good class design.
+  This Fixes #10
+
+-------------------------------------------------------------------
+Thu Feb 25 18:42:16 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Flake fixes for keg generator
+
+  prior refactor make sure at least the linter is happy with it
+
+-------------------------------------------------------------------
+Thu Feb 25 17:58:48 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed main docopt setup and use of logging
+
+  The logging facility was used in a wrong way by passing
+  the log object around. This commit fixes this part and
+  also puts the docopt string to the python top scope were
+  it belongs to. The result of this code is now also covered
+  by tests which makes sure to handle errors the way we
+  want it
+
+-------------------------------------------------------------------
+Thu Feb 25 17:57:12 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Temporary disable 100% code coverage in tests
+
+  Until we are writing tests to fully cover the existing code
+  this commit disables the test coverage check such that we
+  can use the pull request checks
+
+-------------------------------------------------------------------
+Thu Feb 25 12:49:27 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add tests for KegImageDefinition class
+
+  The KegImageDefinition class takes a keg image definition
+  and composes/includes recursively all data that belongs
+  to this image definition. The component data is taken
+  from the provided data tree. This commit tests the
+  traversal of data and checks on the expected output.
+  This Fixes #11
+
+-------------------------------------------------------------------
+Thu Feb 25 12:47:43 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added test data infrastructur
+
+  For testing components of keg we need a test data infrastructure.
+  The proposed data is based on composing a Leap 15.2 JeOS image
+
+-------------------------------------------------------------------
+Fri Feb 12 15:23:27 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- fix: some data dirs may be skipped
+
+  Declare only actually scanned directories as already scanned.
+
+-------------------------------------------------------------------
+Tue Feb 09 14:26:21 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- adjust year in copyright notice
+
+-------------------------------------------------------------------
+Thu Jan 28 14:43:18 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- use docopt instead of argparse
+
+-------------------------------------------------------------------
+Wed Jan 27 09:41:25 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Move to github actions
+
+  Due to the strange travis policies we are moving the
+  tox targets to github actions
+
+-------------------------------------------------------------------
+Thu Jan 21 14:45:52 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add support for config.sh script lib
+
+  Read script files from data directories and make them available to
+  config.sh template renderer.
+
+-------------------------------------------------------------------
+Thu Jan 14 18:10:44 CET 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Add support for additional data trees
+
+  Add support for specifing additional optional data root directories that will
+  be scanned after the main one. This allows to pull additional parameters or
+  overwrite exiting ones from a separate repository.
+
+-------------------------------------------------------------------
+Tue Dec 22 15:30:16 CET 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Initial code drop
+
+  Initial code drop, supports generation of config.kiwi and config.sh.
+
+-------------------------------------------------------------------
+Tue Dec 08 18:54:39 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added KiwiDescription class
+
+  The KiwiDescription class allows to validate and markup translate
+  a given KIWI description file against the KIWI API. The translation
+  through the KIWI API includes automatic XSLT processing into the
+  schema used by KIWI at call time and pretty formats the output
+
+-------------------------------------------------------------------
+Tue Dec 08 16:52:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed status branch name
+
+  keg uses main not master
+
+-------------------------------------------------------------------
+Tue Dec 08 16:51:36 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Consolidate README into ReST
+
+-------------------------------------------------------------------
+Mon Nov 30 13:29:49 CET 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- - Initial README
+
+-------------------------------------------------------------------
+Thu Nov 26 15:55:48 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Initial Application Setup
+
+  Setup python project for keg:
+
+  * tox based development environment
+  * pytest unit tests and coverage
+  * bumpversion version management
+  * rpm package spec and changelog management
+  * sphinx documentation
+

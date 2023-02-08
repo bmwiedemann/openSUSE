@@ -83,4 +83,23 @@
     <comment></comment>
     <requestid>865258</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>94e61380eb34a7b0173d512932262351</srcmd5>
+    <version>4.0.35</version>
+    <time>1675873248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.35
+  * This release provides Python 3.11 wheels, plus some other wheel fixes.
+  * There is also an import memory fix when using fast_execute_many.
+- Changes from version 4.0.34 
+  * Mac wheels are finally here. Thanks to all that worked on the code for that. Please let us
+    know if there are any problems with the wheels on PyPI
+  * Python 3.10 wheels are also available
+  * Fix for DSNs with non-ASCII characters.
+  * Memory leak fix with Decimal parameters.
+  * PostgreSQL dates of -Infinity/+Infinity changed to year 1 and 9999 instead of raising an error.
+- Remove upstreamed patch:
+  * fix_install_location_of_pyodbc.pyi.patch</comment>
+    <requestid>1063824</requestid>
+  </revision>
 </revisionlist>

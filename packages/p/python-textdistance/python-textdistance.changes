@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  8 04:09:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.0:
+  * Run Python 3.10 tests on CI
+  * Type annotations
+  * Add new DamerauLevenshtein... classes
+  * update rapidfuzz
+  * Ensure that maximum normalised distance is <= 1
+  * Ensure editex parameters are sensible
+  * Ignore inconsistent timings on some comparison tests
+  * add support for rapidfuzz
+- Fix up the download URL due to upstream dropping v.
+
+-------------------------------------------------------------------
 Sat Jun 18 14:19:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - More than one test can timeout

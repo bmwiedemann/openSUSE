@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Summary:        An OBS source service: Download, verify and vendor Rust crates (
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Version:        0.4.3~5
+Version:        0.4.4~0
 Release:        0
 Source:         %{name}-%{version}.tar.zst
 BuildRequires:  python3 >= 3.8

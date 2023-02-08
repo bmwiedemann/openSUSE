@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>998784</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4e19b74b758f2a28bcfcc1487f23b19</srcmd5>
+    <version>0.10.2</version>
+    <time>1675873248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.2:
+  - Fix logging pollution due to DynamoDB logging handler
+  - Improve error message when FileSystemCache methods are called
+    with non-str keys.
+  - Added DynamoDb as a cache backend
+- Add skip-failing-tests.patch to skip failing tests requiring
+  network access (gh#pallets-eco/cachelib#228).
+</comment>
+    <requestid>1063823</requestid>
+  </revision>
 </revisionlist>

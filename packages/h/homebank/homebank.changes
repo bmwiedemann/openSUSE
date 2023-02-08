@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  6 18:10:55 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.2:
+  * change: updated the example.xhb file with up to date data
+  * change: avoid to call the update currency api unless file
+    last save is less than 24h
+  * bugfix: lp#2004631 date and column title alignement
+  * bugfix: lp#2004053 budget manage table view category column
+    no ellipsis nor resizable
+  * bugfix: lp#2002873 changing a category name do not update
+    the list
+  * bugfix: lp#2002699 en_GB locale faultly translated to Arabic
+    by a user
+  * bugfix: lp#2002650 update currency at program start always
+    mark the file changed
+  * bugfix: lp#2002348 impossible to schedule income template
+    with an amount equal to 0
+  * bugfix: lp#2000480 crash importing OFX under specific
+    conditions
+  * bugfix: lp#2000452 vehicle cost report shows duplicated subcats
+
+-------------------------------------------------------------------
 Mon Jan  9 16:41:47 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 5.6.1:

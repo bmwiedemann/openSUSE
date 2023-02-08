@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb  7 14:29:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.1.8
+  * This release contains the fix for CVE-2023-0494 in today's
+    security advisory: 
+    https://lists.x.org/archives/xorg-announce/2023-February/003320.html
+  * It also fixes a second possible OOB access during EnqueueEvent.
+- supersedes U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch
+
+-------------------------------------------------------------------
+Thu Feb  2 15:39:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- improved summary and description 
+- added requires to xkeyboard-config
+- added recommends to xorg-x11-fonts-core
+- removed unused 'package' section
+
+-------------------------------------------------------------------
+Wed Feb  1 10:06:15 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch
+  * DeepCopyPointerClasses use-after-free (CVE-2023-0494, 
+    ZDI-CAN-19596, bsc#1207783)
+
+-------------------------------------------------------------------
 Sat Dec 31 15:51:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.1.7

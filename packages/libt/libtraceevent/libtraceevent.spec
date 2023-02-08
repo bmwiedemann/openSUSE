@@ -71,10 +71,11 @@ The package provides header and other needed development files for the library %
 %autosetup -p1
 
 %meson \
-    -Ddocs-build=true \
+    --default-library=shared \
     -Dhtmldir=%{_docdir}/%{name} \
     -Dplugindir=%{_libdir}/%{sodname}/plugins
 %meson_build
+%meson_build docs
 
 %install
 %meson_install

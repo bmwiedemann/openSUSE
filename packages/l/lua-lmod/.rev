@@ -430,4 +430,18 @@
   issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch (forwarded request 1058224 from eeich)</comment>
     <requestid>1058225</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>a7fea52509b3c7c886ca0a0b00de4887</srcmd5>
+    <version>8.7.17</version>
+    <time>1675873211</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not 'Require:' lua interpreter explicitly: this will be
+  handled by an auto-generated dependency.
+- After a discussion with Dominique (dimstar@opensuse.org)
+  he agreed to define the preferred Lua vesion in %%lua_pref
+  in the ProjConfig of oS:Factory so that it can be used in
+  'BuildRequires:'. Take advantage of this new value (with a
+  fallback). (forwarded request 1063842 from eeich)</comment>
+    <requestid>1063843</requestid>
+  </revision>
 </revisionlist>

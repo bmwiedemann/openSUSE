@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  7 19:25:14 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Match the Lua version and version name suffix of Lua libraries
+  in Requires: to what has been used for building. Also set the
+  minimal Lua version required by Lmod (bsc#1207970).
+- Do not 'Require:' lua interpreter explicitly: this will be
+  handled by an auto-generated dependency.
+- After a discussion with Dominique (dimstar@opensuse.org)
+  he agreed to define the preferred Lua vesion in %%lua_pref
+  in the ProjConfig of oS:Factory so that it can be used in
+  'BuildRequires:'. Take advantage of this new value (with a
+  fallback).
+
+-------------------------------------------------------------------
 Fri Jan 13 06:07:14 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Updated to version 8.7.15:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  8 02:24:16 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix nvmf boot device setup (bsc#1207811)
+  * 0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 02:11:47 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix unknown filesystem error on disks with 4096 sector size (bsc#1207064)
+  * 0001-grub-core-modify-sector-by-sysfs-as-disk-sector.patch
+
+-------------------------------------------------------------------
+Sat Feb  4 05:57:02 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix GCC 13 build failure (bsc#1201089)
+  * 0002-AUDIT-0-http-boot-tracker-bug.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 02:48:05 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Move unsupported zfs modules into 'extras' packages

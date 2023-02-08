@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>1059310</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b336610f190637beb5a5f479cacdfe81</srcmd5>
+    <version>1.6.4</version>
+    <time>1675873236</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync meson build patch with latest upstream version
+  * Documentation is built via extra build target</comment>
+    <requestid>1063776</requestid>
+  </revision>
 </revisionlist>

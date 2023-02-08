@@ -72,9 +72,10 @@ This subpackage contains the header files.
 
 %build
 %meson \
-    -Ddocs-build=true \
+    --default-library=shared \
     -Dhtmldir="%_docdir/%name"
 %meson_build
+%meson_build docs
 
 %install
 %meson_install

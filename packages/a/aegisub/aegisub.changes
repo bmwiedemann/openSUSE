@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 07:41:42 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Add aegisub-3.3.3-fix-boost-181-build.patch copied from mageia 
+  to fix build against boost-1.81
+
+-------------------------------------------------------------------
 Thu Dec 29 22:16:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 3.3.3

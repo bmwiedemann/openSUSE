@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:56:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.91.0
+  * Support for changing Data Guard role of a database instance within the Database service
+  * Support for listing autonomous container database versions in the Database service
+  * Support for specifying a database version when creating or updating an autonomous
+    container database in the Database service
+  * Support for specifying an eCPU count when creating or updating autonomous
+    shared databases in the Database service
+  * Support for Helm attestation and Helm arguments on deploy operations in the DevOps service
+  * Support for uploading master key wallets for deployments in the GoldenGate service
+  * Support for custom configurations in the Operations Insights service
+  * Field `cpu_core_count` has been made optional in the models `AutonomousDatabaseSummary`
+    and `AutonomousDatabase` in the Database service
+- from version 2.90.4
+  * Support for ECPU billing for autonomous databases and dedicated autonomous
+    databases on Exadata Cloud at Customer in the Database service
+  * Support for providing a vault secret ID when creating or updating
+    autonomous shared databases in the Database service
+  * Support for including ORDS and database transform URLs as autonomous
+    database connections in the Database service
+  * Support for role-based access control on OpenSearch clusters in the Search service
+  * Support for managed shell stages on deployments in the DevOps service
+  * Support for memory encryption on confidential VMs in the Compute service
+  * Support for configuration items, and reporting ownership of configuration
+    items, in the Application Performance Monitoring service
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Wed Jan 25 11:08:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.90.3

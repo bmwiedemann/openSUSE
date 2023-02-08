@@ -385,4 +385,12 @@ Removed spec file generated git_version.h, it's not needed when  git metadata is
     <comment></comment>
     <requestid>1045820</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>81233bb392b25cc5da2219b1d2a8ee72</srcmd5>
+    <version>3.3.3</version>
+    <time>1675873222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063732</requestid>
+  </revision>
 </revisionlist>

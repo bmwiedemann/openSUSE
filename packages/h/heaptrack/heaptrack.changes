@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  7 23:22:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add GCC 13 and boost 1.81 compatibility patches:
+  * 0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+  * 0001-Add-missing-include.patch
+
+-------------------------------------------------------------------
 Sun Nov 27 08:15:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.4.0

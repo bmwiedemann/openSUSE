@@ -1,0 +1,26 @@
+From 0756c3f9818c95c764fbdc5f274b823d5b801f07 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pawe=C5=82=20Soja?= <kernel32.pl@gmail.com>
+Date: Tue, 7 Feb 2023 08:29:40 +0100
+Subject: [PATCH] Remove protected operator& for INDI::BaseDevice (#1843)
+
+---
+ libs/indidevice/basedevice.h | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/libs/indidevice/basedevice.h b/libs/indidevice/basedevice.h
+index 8799fbbc38..899f58b87a 100644
+--- a/libs/indidevice/basedevice.h
++++ b/libs/indidevice/basedevice.h
+@@ -293,11 +293,6 @@ class BaseDevice
+         }
+ 
+     protected:
+-        BaseDevice *operator&()
+-        {
+-            return this;
+-        }
+-
+         friend class AbstractBaseClientPrivate;
+         std::shared_ptr<BaseDevicePrivate> d_ptr;
+         BaseDevice(BaseDevicePrivate &dd);
+

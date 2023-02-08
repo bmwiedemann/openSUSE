@@ -1,7 +1,7 @@
 #
 # spec file for package python-textdistance
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define skip_python2 1
 Name:           python-textdistance
-Version:        4.2.1
+Version:        4.5.0
 Release:        0
 Summary:        Compute distance between the two texts
 License:        MIT
 URL:            https://github.com/life4/textdistance
-Source:         https://github.com/life4/textdistance/archive/refs/tags/v.%{version}.tar.gz#/python-textdistance-%{version}.tar.gz
+Source:         https://github.com/life4/textdistance/archive/refs/tags/%{version}.tar.gz#/textdistance-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE hypothesis-profile-conftest.patch -- add hypothesis profile for slow OBS executions, code@bnavigator.de
 Patch1:         hypothesis-profile-conftest.patch
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +48,7 @@ Compute distance between sequences. 30+ algorithms, pure python
 implementation, common interface, optional external libs usage.
 
 %prep
-%autosetup -p1 -n textdistance-v.%{version}
+%autosetup -p1 -n textdistance-%{version}
 chmod a-x README.md
 
 %build

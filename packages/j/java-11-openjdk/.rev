@@ -463,4 +463,12 @@
     <comment></comment>
     <requestid>1034682</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>140c43a85e3d4d86913f9e6cef34da87</srcmd5>
+    <version>11.0.18.0</version>
+    <time>1675873178</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU fixes</comment>
+    <requestid>1063564</requestid>
+  </revision>
 </revisionlist>

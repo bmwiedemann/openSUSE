@@ -696,4 +696,12 @@
   + (bsc#1202292) ceph.spec.in: Add -DFMT_DEPRECATED_OSTREAM to CXXFLAGS</comment>
     <requestid>1008320</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>7ff8573a1bd7911341d4a2cfc649aab0</srcmd5>
+    <version>16.2.11.58+g38d6afd3b78</version>
+    <time>1675873184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063578</requestid>
+  </revision>
 </revisionlist>

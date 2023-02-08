@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyodbc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyodbc
-Version:        4.0.30
+Version:        4.0.35
 Release:        0
 Summary:        Python ODBC API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mkleehammer/pyodbc
 Source:         https://files.pythonhosted.org/packages/source/p/pyodbc/pyodbc-%{version}.tar.gz
+# PATCH-FIX-INSTALL-LOCATION-UPSTREAM fix_install_location_of_pyodbc.pyi.patch -- based on PR 1146
+Patch1:         fix_install_location_of_pyodbc.pyi.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  gcc-c++
@@ -43,8 +44,10 @@ even more.
 
 %prep
 %setup -q -n pyodbc-%{version}
+%patch1 -p1
 
 %build
+export CFLAGS="%{optflags}"
 %python_build
 
 %install
@@ -57,7 +60,9 @@ $python tests${TESTDIRSUFFIX::1}/sqlitetests.py -v "Driver=SQLITE3;Database=sqli
 }
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/pyodbc*-info
+%{python_sitearch}/pyodbc.pyi
+%{python_sitearch}/pyodbc*.so
 %license LICENSE.txt
 %doc README.md
 

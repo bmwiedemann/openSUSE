@@ -10,11 +10,11 @@ References: gh#HaxeFoundation/hashlink#521
  CMakeLists.txt | 51 ++++++++++++++++++++++++++++++--------------------
  1 file changed, 31 insertions(+), 20 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4dbce78..e073af1 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -33,6 +33,11 @@ else()
+Index: hashlink-1.13/CMakeLists.txt
+===================================================================
+--- hashlink-1.13.orig/CMakeLists.txt
++++ hashlink-1.13/CMakeLists.txt
+@@ -34,6 +34,11 @@ else()
      set(CMAKE_C_STANDARD_REQUIRED ON)
  endif()
  
@@ -26,7 +26,7 @@ index 4dbce78..e073af1 100644
  # put output in "bin"
  
  set(OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/bin)
-@@ -136,24 +141,29 @@ set_target_properties(libhl
+@@ -137,24 +142,28 @@ set_target_properties(libhl
      COMPILE_DEFINITIONS "_USRDLL;LIBHL_EXPORTS"
  )
  
@@ -36,7 +36,7 @@ index 4dbce78..e073af1 100644
 -    src/main.c
 -    src/module.c
 -    src/debugger.c
--	src/profile.c
+-    src/profile.c
 -)
 +if(INTERPRETER_ENABLED)
 +    add_executable(hl
@@ -50,14 +50,14 @@ index 4dbce78..e073af1 100644
  
 -if (UNIX AND NOT APPLE)
 -    set_target_properties(hl PROPERTIES INSTALL_RPATH "$ORIGIN;${CMAKE_INSTALL_PREFIX}/lib")
+-endif()
 +    if (UNIX AND NOT APPLE)
 +        set_target_properties(hl PROPERTIES INSTALL_RPATH "$ORIGIN;${CMAKE_INSTALL_PREFIX}/lib")
 +    endif()
-+
-+    target_link_libraries(hl libhl)
- endif()
  
 -target_link_libraries(hl libhl)
++    target_link_libraries(hl libhl)
++endif()
  
  if(WIN32)
      target_link_libraries(libhl ws2_32 user32)
@@ -68,7 +68,7 @@ index 4dbce78..e073af1 100644
  else()
      target_link_libraries(libhl m dl pthread)
  endif()
-@@ -271,12 +281,8 @@ if(BUILD_TESTING)
+@@ -272,12 +281,8 @@ if(BUILD_TESTING)
      #####################
      # Tests
  
@@ -82,7 +82,7 @@ index 4dbce78..e073af1 100644
          add_test(NAME hello.hl
              COMMAND hl ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test/hello.hl
          )
-@@ -329,10 +335,15 @@ set(HDLL_DESTINATION
+@@ -330,10 +335,15 @@ set(HDLL_DESTINATION
      ${CMAKE_INSTALL_LIBDIR}
  )
  
@@ -101,6 +101,3 @@ index 4dbce78..e073af1 100644
      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
      ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
--- 
-2.36.1
-

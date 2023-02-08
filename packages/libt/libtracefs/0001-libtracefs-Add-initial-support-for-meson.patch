@@ -1,43 +1,78 @@
-From 376e39f8d2f45709fdee46fc2f97b3f56c767ce9 Mon Sep 17 00:00:00 2001
+From de739be1299aaa30469fc90ddc0f97ea915c784e Mon Sep 17 00:00:00 2001
 From: Daniel Wagner <dwagner@suse.de>
 Date: Thu, 7 Jul 2022 14:05:49 +0200
-Subject: [PATCH] libtracefs: Add initial support for meson
+Subject: [PATCH v7] libtracefs: Add initial support for meson
 
-Introduce Meson as build framework for building libtracefs. This
-lives besides the Makefiles until all the expected initial fallouts
-have been dealed with.
+Introduce Meson as build framework for building libtracefs.
 
 The build steps are:
 
   # configure using .build as build directory and install destination
   # /tmp/test
-  meson --prefix=/tmp/libtracefs .build
+  meson setup --prefix=/tmp/libtraceevent .build
 
   # trigger the build
-  ninja -C .build
+  meson compile -C .build
 
-  # install the library
-  ninja -C .build install
+  # In case you want to build the documentation, trigger the
+  # build via the 'docs' target:
+  meson compile -C build docs
 
-In case you want to build/install the documentation the setup is
-
-  meson -Ddocs-build=true .build
+  # install the library (and documentation)
+  meson install -C .build
 
 Signed-off-by: Daniel Wagner <dwagner@suse.de>
 ---
- Documentation/install-man.sh.in |  15 +++
- Documentation/list-txt.sh       |  11 ++
- Documentation/meson.build       | 177 ++++++++++++++++++++++++++++++++
- include/meson.build             |   9 ++
- meson.build                     |  50 +++++++++
- meson_options.txt               |  18 ++++
- samples/extract-example.sh      |   3 +
- samples/meson.build             |  46 +++++++++
- src/meson.build                 |  65 ++++++++++++
- utest/meson.build               |  17 +++
- 10 files changed, 411 insertions(+)
- create mode 100755 Documentation/install-man.sh.in
- create mode 100644 Documentation/list-txt.sh
+ v7:
+ - set default html doc path to share/doc/libtracefs-doc
+ - list libtraceevent in Required pkg-config section.
+ - install (any) man5 pages (keep it in sync with other projects)
+
+v6:
+ - changed project defaults to --default-library=both
+ - code style consistency updates
+ - hardening doc install script (shellcheck)
+ - renamed install-man.sh.in to install-docs.sh.in
+ - install-docs.sh.in installs html pages too
+ - introduces docs target
+ - updated copyright year
+ - streamlined documentation meson build file
+
+v5:
+ - build unit test only if cunit is found
+ - default build target is debug
+ - do not install man pages into subdirs
+ - install sqlhist (because we install the man page too, so why not the tool?)
+
+v4:
+ - add subdir include path to cflags in pkgconfg file
+ - refactoring build instruction for section 1 and section 3 documentation
+   into one loop (reduce code duplication)
+
+v3:
+ - build documetation
+ - build samples
+ - set default location to /usr/local
+
+v2:
+ - updated commit message
+ - dropped the include path patch, the pkg-config
+   from libtraceevent is including them
+
+v1:
+ - initial version
+
+ Documentation/install-docs.sh.in |  20 ++++
+ Documentation/meson.build        | 197 +++++++++++++++++++++++++++++++
+ include/meson.build              |  11 ++
+ meson.build                      |  47 ++++++++
+ meson_options.txt                |  16 +++
+ samples/extract-example.sh       |   3 +
+ samples/meson.build              |  45 +++++++
+ src/meson.build                  |  63 ++++++++++
+ utest/meson.build                |  17 +++
+ 9 files changed, 419 insertions(+)
+ create mode 100755 Documentation/install-docs.sh.in
  create mode 100644 Documentation/meson.build
  create mode 100644 include/meson.build
  create mode 100644 meson.build
@@ -47,55 +82,44 @@ Signed-off-by: Daniel Wagner <dwagner@suse.de>
  create mode 100644 src/meson.build
  create mode 100644 utest/meson.build
 
-diff --git a/Documentation/install-man.sh.in b/Documentation/install-man.sh.in
+diff --git a/Documentation/install-docs.sh.in b/Documentation/install-docs.sh.in
 new file mode 100755
-index 000000000000..8ab2cb982e1d
+index 000000000000..eca9b1f42dcc
 --- /dev/null
-+++ b/Documentation/install-man.sh.in
-@@ -0,0 +1,15 @@
++++ b/Documentation/install-docs.sh.in
+@@ -0,0 +1,20 @@
 +#!/bin/bash
-+
-+for man in $(find @SRCDIR@ -name '*\.1' -type f); do
-+    [ ! -d ${DESTDIR}/@MANDIR@/man1/ ] && install -d ${DESTDIR}/@MANDIR@/man1/
-+
-+    echo Installing $man to ${DESTDIR}/@MANDIR@/man1/
-+    install -m 0644 $man ${DESTDIR}/@MANDIR@/man1/
-+done
-+
-+for man in $(find @SRCDIR@ -name '*\.3' -type f); do
-+    [ ! -d ${DESTDIR}/@MANDIR@/man3/ ] && install -d ${DESTDIR}/@MANDIR@/man3/
-+
-+    echo Installing $man to ${DESTDIR}/@MANDIR@/man3/
-+    install -m 0644 $man ${DESTDIR}/@MANDIR@/man3/
-+done
-diff --git a/Documentation/list-txt.sh b/Documentation/list-txt.sh
-new file mode 100644
-index 000000000000..89c3bceff14c
---- /dev/null
-+++ b/Documentation/list-txt.sh
-@@ -0,0 +1,11 @@
-+#!/bin/bash
-+
-+SECTION=$1
-+TXT_PATH=$2
-+
-+if [ "$SECTION" = "1" ] ; then
-+  ls -1 ${TXT_PATH}/libtracefs-*.txt.1
-+elif [ "$SECTION" = "3" ] ; then
-+  ls -1 ${TXT_PATH}/libtracefs-*.txt
-+  ls -1 ${TXT_PATH}/libtracefs.txt
-+fi
-diff --git a/Documentation/meson.build b/Documentation/meson.build
-new file mode 100644
-index 000000000000..07ac222201b8
---- /dev/null
-+++ b/Documentation/meson.build
-@@ -0,0 +1,177 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
++
++for section in 1 3 5; do
++    while IFS= read -r -d '' man; do
++        [ ! -d "${DESTDIR}@MANDIR@/man${section}" ] && install -d "${DESTDIR}@MANDIR@/man${section}"
++
++        echo Installing "${man}" to "${DESTDIR}@MANDIR@/man${section}"
++        install -m 0644 "${man}" "${DESTDIR}@MANDIR@/man${section}/"
++    done< <(find "@SRCDIR@" -name "*\.${section}" -type f -print0)
++done
++
++while IFS= read -r -d '' html; do
++    [ ! -d "${DESTDIR}@HTMLDIR@"  ] && install -d "${DESTDIR}@HTMLDIR@"
++
++    echo Installing "${html}" to "${DESTDIR}@HTMLDIR@"
++    install -m 0644 "${html}" "${DESTDIR}@HTMLDIR@"
++done< <(find "@SRCDIR@" -name "*\.html" -type f -print0)
+diff --git a/Documentation/meson.build b/Documentation/meson.build
+new file mode 100644
+index 000000000000..efb78b602965
+--- /dev/null
++++ b/Documentation/meson.build
+@@ -0,0 +1,197 @@
++# SPDX-License-Identifier: LGPL-2.1
++#
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +# input text file: man page section
++
 +sources = {
 +    'libtracefs-sqlhist.txt.1': '1',
 +    'libtracefs-cpu-open.txt': '3',
@@ -137,20 +161,23 @@ index 000000000000..07ac222201b8
 +    'libtracefs-utils.txt': '3',
 +}
 +
-+#
++conf_dir = meson.current_source_dir() + '/'
++top_source_dir = meson.current_source_dir() + '/../'
++
++##
 +# For asciidoc ...
-+#	-7.1.2,	no extra settings are needed.
-+#	8.0-,	set ASCIIDOC8.
++#   -7.1.2,     no extra settings are needed.
++#    8.0-,      set ASCIIDOC8.
 +#
 +
 +#
 +# For docbook-xsl ...
-+#	-1.68.1,	set ASCIIDOC_NO_ROFF? (based on changelog from 1.73.0)
-+#	1.69.0,		no extra settings are needed?
-+#	1.69.1-1.71.0,	set DOCBOOK_SUPPRESS_SP?
-+#	1.71.1,		no extra settings are needed?
-+#	1.72.0,		set DOCBOOK_XSL_172.
-+#	1.73.0-,	set ASCIIDOC_NO_ROFF
++#   -1.68.1,         set ASCIIDOC_NO_ROFF? (based on changelog from 1.73.0)
++#    1.69.0,         no extra settings are needed?
++#    1.69.1-1.71.0,  set DOCBOOK_SUPPRESS_SP?
++#    1.71.1,         no extra settings are needed?
++#    1.72.0,         set DOCBOOK_XSL_172.
++#    1.73.0-,        set ASCIIDOC_NO_ROFF
 +#
 +
 +#
@@ -171,7 +198,7 @@ index 000000000000..07ac222201b8
 +else
 +    asciidoc = find_program('asciidoc')
 +    asciidoc_extra  = ['--unsafe']
-+    asciidoc_extra += ['-f', meson.current_source_dir() + '/asciidoc.conf']
++    asciidoc_extra += ['-f', conf_dir + 'asciidoc.conf']
 +    asciidoc_html = 'xhtml11'
 +
 +    r = run_command(asciidoc, '--version', check: true)
@@ -181,11 +208,11 @@ index 000000000000..07ac222201b8
 +    endif
 +endif
 +
-+manpage_xsl = meson.current_source_dir() + '/manpage-normal.xsl'
++manpage_xsl = conf_dir + 'manpage-normal.xsl'
 +
 +if get_option('docbook-xls-172')
 +    asciidoc_extra += ['-a', 'libtraceevent-asciidoc-no-roff']
-+    manpage_xsl = meson.current_source_dir() + '/manpage-1.72.xsl'
++    manpage_xsl = conf_dir + 'manpage-1.72.xsl'
 +elif get_option('asciidoc-no-roff')
 +    # docbook-xsl after 1.72 needs the regular XSL, but will not
 +    # pass-thru raw roff codes from asciidoc.conf, so turn them off.
@@ -196,51 +223,63 @@ index 000000000000..07ac222201b8
 +xmlto_extra = []
 +
 +if get_option('man-bold-literal')
-+    xmlto_extra += ['-m ', meson.current_source_dir() + '/manpage-bold-literal.xsl']
++    xmlto_extra += ['-m ', conf_dir + 'manpage-bold-literal.xsl']
 +endif
 +
 +if get_option('docbook-suppress-sp')
-+    xmlto_extra += ['-m ',  meson.current_source_dir() + '/manpage-suppress-sp.xsl']
++    xmlto_extra += ['-m ',  conf_dir + 'manpage-suppress-sp.xsl']
 +endif
 +
-+gen = generator(asciidoc,
-+                output: '@BASENAME@.xml',
-+                arguments: [
-+                    '-b', 'docbook',
-+                    '-d', 'manpage',
-+                    '-a', 'libtraceevent_version=' + meson.project_version(),
-+                    '-o', '@OUTPUT@']
-+                    + asciidoc_extra
-+                    + ['@INPUT@'])
++check_doc = custom_target(
++    'check-doc',
++    output: 'dummy',
++    command : [
++        top_source_dir + 'check-manpages.sh',
++        meson.current_source_dir()])
 +
++gen = generator(
++    asciidoc,
++    output: '@BASENAME@.xml',
++    arguments: [
++        '-b', 'docbook',
++        '-d', 'manpage',
++        '-a', 'libtraceevent_version=' + meson.project_version(),
++        '-o', '@OUTPUT@']
++        + asciidoc_extra
++        +  ['@INPUT@'])
++
++man = []
++html = []
 +foreach txt, section : sources
 +    # build man page(s)
 +    xml = gen.process(txt)
-+    man = custom_target(txt.underscorify() + '_man',
-+                        input: xml,
-+                        output: '@BASENAME@.' + section,
-+                        command: [xmlto,
-+                        '-m', manpage_xsl,
-+                        'man',
-+                        '-o', '@OUTPUT@']
-+                        + xmlto_extra
-+                        + ['@INPUT@'],
-+                        build_by_default : true)
++    man += custom_target(
++        txt.underscorify() + '_man',
++        input: xml,
++        output: '@BASENAME@.' + section,
++        depends: check_doc,
++        command: [
++            xmlto,
++            '-m', manpage_xsl,
++            'man',
++            '-o', '@OUTPUT@']
++            + xmlto_extra
++            + ['@INPUT@'])
 +
 +    # build html pages
-+    custom_target(
-+       txt.underscorify() + '_html',
-+       input: txt,
-+       output: '@BASENAME@.html',
-+       command: [asciidoc,
-+                '-b', asciidoc_html,
-+                '-d', 'manpage',
-+	        '-a', 'libtraceevent_version=' + meson.project_version(),
-+                '-o', '@OUTPUT@']
-+                + asciidoc_extra
-+                + ['@INPUT@'],
-+       install: true,
-+       install_dir: htmldir)
++    html += custom_target(
++        txt.underscorify() + '_html',
++        input: txt,
++        output: '@BASENAME@.html',
++        depends: check_doc,
++        command: [
++            asciidoc,
++            '-b', asciidoc_html,
++            '-d', 'manpage',
++            '-a', 'libtraceevent_version=' + meson.project_version(),
++            '-o', '@OUTPUT@']
++            + asciidoc_extra
++            + ['@INPUT@'])
 +endforeach
 +
 +# Install path workaround because:
@@ -254,44 +293,50 @@ index 000000000000..07ac222201b8
 +#   causing the install step to fail (confusion where the generated files
 +#   are stored)
 +#
++# - The documentation build is not part of the 'build' target. The user
++#   has explicitly to trigger the doc build. Hence the documentation is
++#   not added to the 'install' target.
++#
 +# Thus just use a plain old shell script to move the generated files to the
 +# right location.
 +
 +conf = configuration_data()
 +conf.set('SRCDIR', meson.current_build_dir())
 +conf.set('MANDIR', mandir)
++conf.set('HTMLDIR', htmldir)
 +configure_file(
-+    input:         'install-man.sh.in',
-+    output:        'install-man.sh',
-+    configuration: conf,
-+)
++    input: 'install-docs.sh.in',
++    output: 'install-docs.sh',
++    configuration: conf)
 +
 +meson.add_install_script(
-+    join_paths(meson.current_build_dir(), 'install-man.sh'))
++    join_paths(meson.current_build_dir(), 'install-docs.sh'))
 diff --git a/include/meson.build b/include/meson.build
 new file mode 100644
-index 000000000000..1bbfe8afb280
+index 000000000000..52db432c8275
 --- /dev/null
 +++ b/include/meson.build
-@@ -0,0 +1,9 @@
+@@ -0,0 +1,11 @@
 +# SPDX-License-Identifier: LGPL-2.1
++#
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +headers = [
 +   'tracefs.h',
 +]
 +
 +foreach h : headers
-+	install_headers(h, subdir : 'libtracefs')
++    install_headers(h, subdir : 'libtracefs')
 +endforeach
 diff --git a/meson.build b/meson.build
 new file mode 100644
-index 000000000000..1ef7969d655a
+index 000000000000..e793cfc16e14
 --- /dev/null
 +++ b/meson.build
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,47 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +project(
 +    'libtracefs', ['c'],
@@ -299,12 +344,11 @@ index 000000000000..1ef7969d655a
 +    license: 'LGPL-2.1',
 +    version: '1.6.3',
 +    default_options: [
-+      'c_std=gnu99',
-+      'buildtype=debug',
-+      'prefix=/usr/local',
-+      'warning_level=1',
-+    ]
-+)
++        'c_std=gnu99',
++        'buildtype=debug',
++        'default_library=both',
++        'prefix=/usr/local',
++        'warning_level=1'])
 +
 +library_version = meson.project_version()
 +
@@ -312,16 +356,15 @@ index 000000000000..1ef7969d655a
 +cunit_dep = dependency('cunit', required : false)
 +
 +prefixdir = get_option('prefix')
-+bindir    = join_paths(prefixdir, get_option('bindir'))
-+mandir    = join_paths(prefixdir, get_option('mandir'))
-+htmldir   = join_paths(prefixdir, get_option('htmldir'))
++bindir = join_paths(prefixdir, get_option('bindir'))
++mandir = join_paths(prefixdir, get_option('mandir'))
++htmldir = join_paths(prefixdir, get_option('htmldir'))
 +
 +add_project_arguments(
 +    [
-+      '-D_GNU_SOURCE',
++        '-D_GNU_SOURCE',
 +    ],
-+    language : 'c',
-+)
++    language : 'c')
 +
 +incdir = include_directories(['include'])
 +
@@ -331,27 +374,24 @@ index 000000000000..1ef7969d655a
 +    subdir('utest')
 +endif
 +subdir('samples')
-+if get_option('docs-build')
-+    custom_target('check-doc',
-+                   output: 'dummy',
-+                   command : ['check-manpages.sh',
-+                              meson.current_source_dir() + '/Documentation'],
-+	           build_by_default : true)
-+    subdir('Documentation')
-+endif
++subdir('Documentation')
++
++custom_target(
++    'docs',
++    output: 'docs',
++    depends: [html, man],
++    command: ['echo'])
 diff --git a/meson_options.txt b/meson_options.txt
 new file mode 100644
-index 000000000000..9bcd66f49f06
+index 000000000000..1d92c28d5935
 --- /dev/null
 +++ b/meson_options.txt
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,16 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
-+option('docs-build', type : 'boolean', value : false,
-+       description : 'build documentation')
-+option('htmldir', type : 'string', value : '',
++option('htmldir', type : 'string', value : 'share/doc/libtracefs-doc',
 +       description : 'directory for HTML documentation')
 +option('asciidoctor', type : 'boolean', value: false,
 +       description : 'use asciidoctor instead of asciidoc')
@@ -374,13 +414,13 @@ index 000000000000..c5c0f702e7f0
 +cat $1 | sed -ne '/^EXAMPLE/,/FILES/ { /EXAMPLE/,+2d ; /^FILES/d ;  /^--/d ; p}' > $2
 diff --git a/samples/meson.build b/samples/meson.build
 new file mode 100644
-index 000000000000..0c36231ef29a
+index 000000000000..5e8ad270f812
 --- /dev/null
 +++ b/samples/meson.build
-@@ -0,0 +1,46 @@
+@@ -0,0 +1,45 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +examples = [
 +    'dynevents',
@@ -400,9 +440,10 @@ index 000000000000..0c36231ef29a
 +]
 +
 +extract_examples = find_program('extract-example.sh')
-+gen = generator(extract_examples,
-+                output: '@BASENAME@.c',
-+                arguments: ['@INPUT@', '@OUTPUT@'])
++gen = generator(
++   extract_examples,
++   output: '@BASENAME@.c',
++   arguments: ['@INPUT@', '@OUTPUT@'])
 +
 +foreach ex : examples
 +    src = gen.process(meson.current_source_dir() + '/../Documentation/libtracefs-@0@.txt'.format(ex))
@@ -410,8 +451,7 @@ index 000000000000..0c36231ef29a
 +        ex.underscorify(),
 +        src,
 +        dependencies: [libtracefs_dep, libtraceevent_dep],
-+        include_directories: [incdir]
-+     )
++        include_directories: [incdir])
 +endforeach
 +
 +# sqlhist is unique and stands on its own
@@ -422,17 +462,16 @@ index 000000000000..0c36231ef29a
 +   dependencies: [libtracefs_dep, libtraceevent_dep],
 +   include_directories: [incdir],
 +   install: true,
-+   install_dir: bindir,
-+)
++   install_dir: bindir)
 diff --git a/src/meson.build b/src/meson.build
 new file mode 100644
-index 000000000000..43139b6de268
+index 000000000000..56087e2301bf
 --- /dev/null
 +++ b/src/meson.build
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,63 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +sources= [
 +   'tracefs-dynevents.c',
@@ -470,40 +509,38 @@ index 000000000000..43139b6de268
 +    version: library_version,
 +    dependencies: [libtraceevent_dep],
 +    include_directories: [incdir],
-+    install: true,
-+)
++    install: true)
 +
 +libtracefs_static = static_library(
 +    'tracefs_static',
 +    sources, lfiles, pfiles,
 +    dependencies: [libtraceevent_dep],
 +    include_directories: [incdir],
-+    install: false,
-+)
++    install: false)
 +
 +pkg = import('pkgconfig')
-+pkg.generate(libtracefs,
++pkg.generate(
++    libtracefs,
++    libraries: [libtraceevent_dep],
 +    subdirs: 'libtracefs',
 +    filebase: meson.project_name(),
 +    name: meson.project_name(),
 +    version: meson.project_version(),
 +    description: 'Manage trace fs',
-+    url: 'https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/',
-+)
++    url: 'https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/')
 +
 +libtracefs_dep = declare_dependency(
 +    include_directories: ['.'],
-+    link_with: libtracefs,
-+)
++    link_with: libtracefs)
 diff --git a/utest/meson.build b/utest/meson.build
 new file mode 100644
-index 000000000000..8c8caf37803d
+index 000000000000..91a526fca2bf
 --- /dev/null
 +++ b/utest/meson.build
 @@ -0,0 +1,17 @@
 +# SPDX-License-Identifier: LGPL-2.1
 +#
-+# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++# Copyright (c) 2023 Daniel Wagner, SUSE LLC
 +
 +source = [
 +    'trace-utest.c',

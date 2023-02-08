@@ -24,6 +24,7 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
 Source0:        https://github.com/wangqr/Aegisub/archive/refs/tags/v%{version}.tar.gz#/Aegisub-%{version}.tar.gz
 Patch0:         aegisub-buildfix_autotools.patch
+Patch1:         aegisub-3.3.3-fix-boost-181-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

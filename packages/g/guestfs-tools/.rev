@@ -47,4 +47,12 @@
     <comment>Update to version 1.48.3</comment>
     <requestid>1061414</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7da4e714e1ce94a7b9e2a7e0f41cc546</srcmd5>
+    <version>1.48.3</version>
+    <time>1675873201</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063524</requestid>
+  </revision>
 </revisionlist>

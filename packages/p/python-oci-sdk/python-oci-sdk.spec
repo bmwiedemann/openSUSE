@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.90.3
+Version:        2.91.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -79,7 +79,7 @@ rm -rf src/oci/_vendor/
 find . -name "*.py" -exec sed -i 's/from oci._vendor //' \{\} +
 sed -i 's/from \._vendor //' src/oci/*.py
 sed -i 's/ oci._vendor.jwt as//' src/oci/auth/*.py
-sed -i 's/oci\._vendor\.//' src/oci/*.py src/oci/auth/signers/*.py src/oci/retry/*.py src/oci/object_storage/transfer/internal/*.py tests/*.py
+sed -i 's/oci\._vendor\.//' src/oci/*.py src/oci/auth/*.py src/oci/auth/signers/*.py src/oci/retry/*.py src/oci/object_storage/transfer/internal/*.py tests/*.py
 sed -i 's/from . import vcr_mods//' tests/test_config_container.py
 
 %build

@@ -42,4 +42,14 @@
     <comment>- skip python 3.6 build</comment>
     <requestid>871454</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5450ae287a4513458a37dcb5efe59c4c</srcmd5>
+    <version>0.6.0</version>
+    <time>1675873229</time>
+    <user>dimstar_suse</user>
+    <comment>- Add numpy-1.24.patch to make it work with numpy &gt;= 1.24
+  gh#ronnyandersson/zignal#11
+</comment>
+    <requestid>1063752</requestid>
+  </revision>
 </revisionlist>

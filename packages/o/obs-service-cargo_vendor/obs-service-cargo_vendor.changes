@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 08 00:46:57 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.4.4~0:
+  * Change default compression, default to locked
+  * Tweaks
+
+-------------------------------------------------------------------
 Fri Jun 10 01:54:30 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Enforce run time requires on python 3.8

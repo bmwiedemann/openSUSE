@@ -1,0 +1,210 @@
+From c61b8e9a4b7f440962c97ad659bc763d55d5e50a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pawe=C5=82=20Soja?= <kernel32.pl@gmail.com>
+Date: Sun, 5 Feb 2023 07:14:11 +0100
+Subject: [PATCH] Resolve timestamp name conflict. (#1837)
+
+---
+ drivers/auxiliary/lpm.cpp                     |  2 +-
+ .../ClientAPIForAlignmentDatabase.cpp         |  2 +-
+ libs/indicore/indicom.c                       |  4 +--
+ libs/indicore/indicom.h                       |  2 +-
+ libs/indicore/indiuserio.c                    | 26 +++++++++----------
+ libs/indidevice/basedevice.cpp                |  2 +-
+ 6 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/auxiliary/lpm.cpp b/drivers/auxiliary/lpm.cpp
+index 4909ab8f80..86fce834df 100644
+--- a/drivers/auxiliary/lpm.cpp
++++ b/drivers/auxiliary/lpm.cpp
+@@ -243,7 +243,7 @@ bool LPM::getReadings()
+             if (fp != nullptr)
+             {
+                 LOG_DEBUG("save reading...");
+-                fprintf(fp, "%f\t%s\n", mpsas, timestamp());
++                fprintf(fp, "%f\t%s\n", mpsas, indi_timestamp());
+                 fflush(fp);
+             }
+             count++;
+diff --git a/libs/alignment/ClientAPIForAlignmentDatabase.cpp b/libs/alignment/ClientAPIForAlignmentDatabase.cpp
+index 753029bfd9..8da9c1def9 100644
+--- a/libs/alignment/ClientAPIForAlignmentDatabase.cpp
++++ b/libs/alignment/ClientAPIForAlignmentDatabase.cpp
+@@ -583,7 +583,7 @@ bool ClientAPIForAlignmentDatabase::SendEntryData(const AlignmentDatabaseEntry &
+     {
+         // I have a BLOB to send
+         SetDriverBusy();
+-        BaseClient->startBlob(Device->getDeviceName(), pBLOB->getName(), timestamp());
++        BaseClient->startBlob(Device->getDeviceName(), pBLOB->getName(), indi_timestamp());
+         BaseClient->sendOneBlob(pBLOB->at(0)->getName(), CurrentValues.PrivateDataSize, pBLOB->at(0)->getFormat(),
+                                 CurrentValues.PrivateData.get());
+         BaseClient->finishBlob();
+diff --git a/libs/indicore/indicom.c b/libs/indicore/indicom.c
+index d2b21801c5..c68537f4db 100644
+--- a/libs/indicore/indicom.c
++++ b/libs/indicore/indicom.c
+@@ -317,7 +317,7 @@ void IDLog(const char *fmt, ...)
+ {
+     va_list ap;
+     /* JM: Since all INDI's stderr are timestampped now, we don't need to time stamp ID Log */
+-    /*fprintf (stderr, "%s ", timestamp());*/
++    /*fprintf (stderr, "%s ", indi_timestamp());*/
+     va_start(ap, fmt);
+     vfprintf(stderr, fmt, ap);
+     va_end(ap);
+@@ -345,7 +345,7 @@ double time_ns()
+ }
+ 
+ /* return current system time in message format */
+-const char *timestamp()
++const char *indi_timestamp()
+ {
+     static char ts[32];
+     struct tm *tp;
+diff --git a/libs/indicore/indicom.h b/libs/indicore/indicom.h
+index ed7e553617..378c166964 100644
+--- a/libs/indicore/indicom.h
++++ b/libs/indicore/indicom.h
+@@ -346,7 +346,7 @@ double time_ns();
+ /** \brief Create an ISO 8601 formatted time stamp. The format is YYYY-MM-DDTHH:MM:SS
+  *  \return The formatted time stamp.
+  */
+-const char *timestamp();
++const char *indi_timestamp();
+ 
+ /** \brief rangeHA Limits the hour angle value to be between -12 ---> 12
+  *  \param r current hour angle value
+diff --git a/libs/indicore/indiuserio.c b/libs/indicore/indiuserio.c
+index 5a2bfa7dcd..8de6c2b4ca 100644
+--- a/libs/indicore/indiuserio.c
++++ b/libs/indicore/indiuserio.c
+@@ -297,7 +297,7 @@ void IUUserIODeleteVA(
+         userio_xml_escape(io, user, name);
+         userio_prints    (io, user, "'\n");
+     }
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+ 
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+ 
+@@ -367,7 +367,7 @@ void IDUserIOMessageVA(
+         userio_xml_escape(io, user, dev);
+         userio_prints    (io, user, "'\n");
+     }
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, "/>\n");
+ }
+@@ -421,7 +421,7 @@ void IUUserIODefTextVA(
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(tvp->s)); // safe
+     userio_printf    (io, user, "  perm='%s'\n", permStr(tvp->p)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", tvp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -468,7 +468,7 @@ void IUUserIODefNumberVA(
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(n->s)); // safe
+     userio_printf    (io, user, "  perm='%s'\n", permStr(n->p)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", n->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -521,7 +521,7 @@ void IUUserIODefSwitchVA(
+     userio_printf    (io, user, "  perm='%s'\n", permStr(s->p)); // safe
+     userio_printf    (io, user, "  rule='%s'\n", ruleStr(s->r)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", s->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -562,7 +562,7 @@ void IUUserIODefLightVA(
+     userio_xml_escape(io, user, lvp->group);
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(lvp->s)); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -605,7 +605,7 @@ void IUUserIODefBLOBVA(
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(b->s)); // safe
+     userio_printf    (io, user, "  perm='%s'\n", permStr(b->p)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", b->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -641,7 +641,7 @@ void IUUserIOSetTextVA(
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(tvp->s)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", tvp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -666,7 +666,7 @@ void IUUserIOSetNumberVA(
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(nvp->s)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", nvp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -691,7 +691,7 @@ void IUUserIOSetSwitchVA(
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(svp->s)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", svp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -714,7 +714,7 @@ void IUUserIOSetLightVA(
+     userio_xml_escape(io, user, lvp->name);
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(lvp->s)); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -738,7 +738,7 @@ void IUUserIOSetBLOBVA(
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(bvp->s)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", bvp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     s_userio_xml_message_vprintf(io, user, fmt, ap);
+     userio_prints    (io, user, ">\n");
+ 
+@@ -763,7 +763,7 @@ void IUUserIOUpdateMinMax(
+     userio_prints    (io, user, "'\n");
+     userio_printf    (io, user, "  state='%s'\n", pstateStr(nvp->s)); // safe
+     userio_printf    (io, user, "  timeout='%g'\n", nvp->timeout); // safe
+-    userio_printf    (io, user, "  timestamp='%s'\n", timestamp()); // safe
++    userio_printf    (io, user, "  timestamp='%s'\n", indi_timestamp()); // safe
+     userio_prints    (io, user, ">\n");
+ 
+     for (int i = 0; i < nvp->nnp; i++)
+diff --git a/libs/indidevice/basedevice.cpp b/libs/indidevice/basedevice.cpp
+index 11bc9a66c9..b5c3fcdcf8 100644
+--- a/libs/indidevice/basedevice.cpp
++++ b/libs/indidevice/basedevice.cpp
+@@ -867,7 +867,7 @@ void BaseDevice::doMessage(XMLEle *msg)
+     if (time_stamp)
+         snprintf(msgBuffer, MAXRBUF, "%s: %s ", valuXMLAtt(time_stamp), valuXMLAtt(message));
+     else
+-        snprintf(msgBuffer, MAXRBUF, "%s: %s ", timestamp(), valuXMLAtt(message));
++        snprintf(msgBuffer, MAXRBUF, "%s: %s ", indi_timestamp(), valuXMLAtt(message));
+ 
+     std::string finalMsg = msgBuffer;
+ 
+

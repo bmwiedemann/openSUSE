@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  7 21:01:14 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2023.02.06.
+  * Synchronize with OpenCL v3.0.13 specification release.
+  * Note: this is the first OpenCL-CLHPP release with the new
+    date-based naming convention.
+
+-------------------------------------------------------------------
 Tue Oct  4 19:59:04 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.0.19.

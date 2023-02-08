@@ -1,4 +1,408 @@
 -------------------------------------------------------------------
+Tue Feb  7 07:00:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.18+10 (January 2023 CPU)
+  * CVEs
+    + CVE-2023-21835, bsc#1207246
+    + CVE-2023-21843, bsc#1207248
+  * Security fixes
+    + JDK-8286070: Improve UTF8 representation
+    + JDK-8286496: Improve Thread labels
+    + JDK-8287411: Enhance DTLS performance
+    + JDK-8288516: Enhance font creation
+    + JDK-8289350: Better media supports
+    + JDK-8293554: Enhanced DH Key Exchanges
+    + JDK-8293598: Enhance InetAddress address handling
+    + JDK-8293717: Objective view of ObjectView
+    + JDK-8293734: Improve BMP image handling
+    + JDK-8293742: Better Banking of Sounds
+    + JDK-8295687: Better BMP bounds
+  * Other changes
+    + JDK-4819544: SwingSet2 JTable Demo throws NullPointerException
+    + JDK-6782021: It is not possible to read local computer
+      certificates with the SunMSCAPI provider
+    + JDK-6829250: Reg test:
+      java/awt/Toolkit/ScreenInsetsTest/ScreenInsetsTest.java fails
+      in Windows
+    + JDK-7001973: java/awt/Graphics2D/CopyAreaOOB.java fails
+    + JDK-8022403: sun/java2d/DirectX/OnScreenRenderingResizeTest/
+      /OnScreenRenderingResizeTest.java fails
+    + JDK-8028998: [TEST_BUG] [macosx] java/awt/dnd/
+      /DropTargetEnterExitTest/MissedDragExitTest.java failed
+    + JDK-8029633: Raw inner class constructor ref should not
+      perform diamond inference
+    + JDK-8030121: java/awt/dnd/MissingDragExitEventTest/
+      /MissingDragExitEventTest.java fails
+    + JDK-8079267: [TEST_BUG] Test java/awt/Frame/MiscUndecorated/
+      /RepaintTest.java fails
+    + JDK-8129827: [TEST_BUG] Test java/awt/Robot/RobotWheelTest/
+      /RobotWheelTest.java fails
+    + JDK-8159599: [TEST_BUG] java/awt/Modal/
+      /ModalInternalFrameTest/ModalInternalFrameTest.java
+    + JDK-8169187: [macosx] Aqua: java/awt/image/multiresolution/
+      /MultiresolutionIconTest.java
+    + JDK-8172269: When checking the default behaviour for a scroll
+      tab layout and checking the 'opaque' checkbox, the area behind
+      tabs is not red.
+    + JDK-8178698: javax/sound/midi/Sequencer/MetaCallback.java
+      failed with timeout
+    + JDK-8193942: Regression automated test '/open/test/jdk/javax/
+      /swing/JFrame/8175301/ScaledFrameBackgroundTest.java' fails
+    + JDK-8194126: Regression automated Test '/open/test/jdk/javax/
+      /swing/JColorChooser/Test7194184.java' fails
+    + JDK-8198343: Test java/awt/print/PrinterJob/
+      /TestPgfmtSetMPA.java may fail w/o printer
+    + JDK-8199290: [TESTBUG]
+      sun.hotspot.WhiteBox$WhiteBoxPermission is not copied
+    + JDK-8202836: [macosx] test
+      java/awt/Graphics/TextAAHintsTest.java fails
+    + JDK-8206125: [windows] cannot pass relative path to
+      --with-boot-jdk
+    + JDK-8210047: some pages contain content outside of landmark
+      region
+    + JDK-8211002: test/jdk/java/lang/Math/PowTests.java skips
+      testing for non-corner-case values
+    + JDK-8212096: javax/net/ssl/ServerName/
+      /SSLEngineExplorerMatchedSNI.java failed intermittently due
+      to SSLException: Tag mismatch
+    + JDK-8213239: Configure cannot handle command overrides with
+      arguments
+    + JDK-8215571: jdb does not include jdk.* in the default class
+      filter
+    + JDK-8217032: Check pandoc capabilities in configure
+    + JDK-8222091: Javadoc does not handle package annotations
+      correctly on package-info.java
+    + JDK-8222251: preflow visitor is not visiting lambda
+      expressions
+    + JDK-8226236: win32: gc/metaspace/
+      /TestCapacityUntilGCWrapAround.java fails
+    + JDK-8227179: Test for new gc+metaspace=info output format
+    + JDK-8227651: Tests fail with SSLProtocolException: Input
+      record too big
+    + JDK-8228672: [TESTBUG] gc/metaspace/TestSizeTransitions.java
+      fails on 32-bit platforms
+    + JDK-8233557: [TESTBUG] DoubleClickTitleBarTest.java fails on
+      macOs
+    + JDK-8233558: [TESTBUG] WindowOwnedByEmbeddedFrameTest.java
+      fails on macos
+    + JDK-8233565: [TESTBUG] NullModalityDialogTest.java fails on
+      MacOS
+    + JDK-8233648: [TESTBUG] DefaultMenuBarTest.java failing on
+      macos
+    + JDK-8239708: Split basics.m4 into basic.m4 and util.m4
+    + JDK-8240281: Remove failing assertion code when selecting
+      first memory state in SuperWord::co_locate_pack
+    + JDK-8242468: VS2019 build missing vcruntime140_1.dll
+    + JDK-8243565: some gc tests use 'test.java.opts' and not
+      'test.vm.opts'
+    + JDK-8243568: serviceability/logging/TestLogRotation.java uses
+      'test.java.opts' and not 'test.vm.opts'
+    + JDK-8244010: Simplify usages of
+      ProcessTools.createJavaProcessBuilder in our tests
+    + JDK-8244557: test/jdk/javax/swing/JTabbedPane/
+      /TestBackgroundScrollPolicy.java failed
+    + JDK-8247676: vcruntime140_1.dll is not needed on 32-bit
+      Windows
+    + JDK-8249694: java/lang/StringBuffer/HugeCapacity.java and
+      j/l/StringBuilder/HugeCapacity.java tests shouldn't be
+      @ignore-d
+    + JDK-8253877: gc/g1/TestGCLogMessages.java fails - missing
+      "Evacuation failure" message
+    + JDK-8254874: ZGC: JNIHandleBlock verification failure in
+      stack watermark processing
+    + JDK-8254976: Re-enable swing jtreg tests which were broken
+      due to samevm mode
+    + JDK-8255439: System Tray icons get corrupted when Windows
+      scaling changes
+    + JDK-8256109: Create implementation for NSAccessibilityButton
+      protocol
+    + JDK-8257679: Improved unix compatibility layer in Windows
+      build (winenv)
+    + JDK-8257722: Improve "keytool -printcert -jarfile" output
+    + JDK-8258005: JDK build fails with incorrect fixpath script
+    + JDK-8259485: Document need for short paths when building on
+      Windows
+    + JDK-8260272: bash configure --prefix does not work after
+      JDK-8257679
+    + JDK-8261336: IGV: enhance default filters
+    + JDK-8261445: Use memory_order_relaxed for os::random().
+    + JDK-8261758: [TESTBUG] gc/g1/TestGCLogMessages.java fails if
+      ergonomics detect too small InitialHeapSize
+    + JDK-8263326: Remove ReceiverTypeData check from
+      serviceability/sa/TestPrintMdo.java
+    + JDK-8263871: On sem_destroy() failing we should assert
+    + JDK-8264593: debug.cpp utilities should be available in
+      product builds.
+    + JDK-8264666: Change implementation of safeAdd/safeMult in the
+      LCMSImageLayout class
+    + JDK-8266082: AssertionError in Annotate.fromAnnotations with
+      -Xdoclint
+    + JDK-8266967: debug.cpp utility find() should print Java
+      Object fields.
+    + JDK-8268361: Fix the infinite loop in next_line
+    + JDK-8268860: Windows-Aarch64 build is failing in GitHub
+      actions
+    + JDK-8268893: jcmd to trim the glibc heap
+    + JDK-8269029: compiler/codegen/TestCharVect2.java fails for
+      client VMs
+    + JDK-8269873: serviceability/sa/Clhsdb tests are using a C2
+      specific VMStruct field
+    + JDK-8272123: Problem list 4 jtreg tests which regularly fail
+      on macos-aarch64
+    + JDK-8273236: keytool does not accurately warn about
+      algorithms that are disabled but have additional constraints
+    + JDK-8273553: sun.security.ssl.SSLEngineImpl.closeInbound also
+      has similar error of JDK-8253368
+    + JDK-8273578: javax/swing/JMenu/4515762/bug4515762.java fails
+      on macOS 12
+    + JDK-8273685: Remove jtreg tag manual=yesno for
+      java/awt/Graphics/LCDTextAndGraphicsState.java & show test
+      instruction
+    + JDK-8274029: Remove jtreg tag manual=yesno for  java/awt/
+      /print/Dialog/DialogOrient.java
+    + JDK-8274032: Remove jtreg tag manual=yesno for java/awt/print/
+      /PrinterJob/ImagePrinting/ImageTypes.java & show test UI
+    + JDK-8274296: Update or Problem List tests which may fail with
+      uiScale=2 on macOS
+    + JDK-8274456: Remove jtreg tag manual=yesno
+      java/awt/print/PrinterJob/PageDialogTest.java
+    + JDK-8274563: jfr/event/oldobject/TestClassLoaderLeak.java
+      fails when GC cycles are not happening
+    + JDK-8274597: Some of the dnd tests time out and fail
+      intermittently
+    + JDK-8275170: Some jtreg sound tests should be marked with
+      sound keyword
+    + JDK-8275535: Retrying a failed authentication on multiple
+      LDAP servers can lead to users blocked
+    + JDK-8276841: Add support for Visual Studio 2022
+    + JDK-8277159: Fix java/nio/file/FileStore/Basic.java test by
+      ignoring /run/user/* mount points
+    + JDK-8277497: Last column cell in the JTable row is read as
+      empty cell
+    + JDK-8277881: Missing SessionID in TLS1.3 resumption in
+      compatibility mode
+    + JDK-8277970: Test jdk/sun/security/ssl/SSLSessionImpl/
+      /NoInvalidateSocketException.java fails with "tag mismatch"
+    + JDK-8279066: entries.remove(entry) is useless in
+      PKCS12KeyStore
+    + JDK-8279695: [TESTBUG] modify compiler/loopopts/
+      /TestSkeletonPredicateNegation.java to run on C1 also
+    + JDK-8280158: New test from JDK-8274736 failed with/without
+      patch in JDK11u
+    + JDK-8280550: SplittableRandom#nextDouble(double,double) can
+      return result >= bound
+    + JDK-8280863: Update build README to reflect that MSYS2 is
+      supported
+    + JDK-8280890: Cannot use '-Djava.system.class.loader' with
+      class loader in signed JAR
+    + JDK-8280948: Write a regression test for JDK-4659800
+    + JDK-8280950: RandomGenerator:NextDouble() default behavior
+      non conformant after JDK-8280550 fix
+    + JDK-8281183: RandomGenerator:NextDouble() default behavior
+      partially fixed by JDK-8280950
+    + JDK-8281296: Create a regression test for JDK-4515999
+    + JDK-8281297: TestStressG1Humongous fails with
+      guarantee(is_range_uncommitted)
+    + JDK-8282046: Create a regression test for JDK-8000326
+    + JDK-8282276: Problem list failing two Robot Screen Capture
+      tests
+    + JDK-8282306: os::is_first_C_frame(frame*) crashes on invalid
+      link access
+    + JDK-8282345: handle latest VS2022 in abstract_vm_version
+    + JDK-8282402: Create a regression test for JDK-4666101
+    + JDK-8282640: Create a test for JDK-4740761
+    + JDK-8282642: vmTestbase/gc/gctests/LoadUnloadGC2/
+      /LoadUnloadGC2.java fails intermittently with exit code 1
+    + JDK-8282730: LdapLoginModule throw NPE from logout method
+      after login failure
+    + JDK-8282777: Create a Regression test for JDK-4515031
+    + JDK-8282778: Create a regression test for JDK-4699544
+    + JDK-8282857: Create a regression test for JDK-4702690
+    + JDK-8282936: Write a regression test for JDK-4615365
+    + JDK-8282937: Write a regression test for JDK-4820080
+    + JDK-8283199: Linux os::cpu_microcode_revision() stalls cold
+      startup
+    + JDK-8283422: Create a new test for JDK-8254790
+    + JDK-8284294: Create an automated regression test for RFE
+      4138746
+    + JDK-8284358: Unreachable loop is not removed from C2 IR,
+      leading to a broken graph
+    + JDK-8284521: Write an automated regression test for RFE
+      4371575
+    + JDK-8284690: [macos] VoiceOver : Getting
+      java.lang.IllegalArgumentException: Invalid location on
+      Editable JComboBox
+    + JDK-8284732: FFI_GO_CLOSURES macro not defined but required
+      for zero build on Mac OS X
+    + JDK-8284752: Zero does not build on Mac OS X due to missing
+      os::current_thread_enable_wx implementation
+    + JDK-8284771: java/util/zip/CloseInflaterDeflaterTest.java
+      failed with "AssertionError: Expected IOException to be
+      thrown, but nothing was thrown"
+    + JDK-8284884: Replace polling with waiting in
+      javax/swing/text/html/parser/Parser/8078268/bug8078268.java
+    + JDK-8284977: MetricsTesterCgroupV2.getLongValueEntryFromFile
+      fails when named value doesn't exist
+    + JDK-8285305: Create an automated test for JDK-4495286
+    + JDK-8285373: Create an automated test for JDK-4702233
+    + JDK-8285604: closed sun/java2d/GdiRendering/
+      /ClipShapeRendering.java failed with "Incorrect color ffeeeeee
+      instead of ff0000ff in pixel (100, 100)"
+    + JDK-8285617: Fix java/awt/print/PrinterJob/ImagePrinting/
+      /PrintARGBImage.java manual test
+    + JDK-8285698: Create a test to check the focus stealing of
+      JPopupMenu from JComboBox
+    + JDK-8285794: AsyncGetCallTrace might acquire a lock via
+      JavaThread::thread_from_jni_environment
+    + JDK-8285836: sun/net/www/http/KeepAliveCache/
+      /KeepAliveProperty.java failed with "RuntimeException: Failed
+      in server"
+    + JDK-8285921: serviceability/dcmd/jvmti/AttachFailed/
+      /AttachReturnError.java fails on Alpine
+    + JDK-8286624: Regression Test CoordinateTruncationBug.java
+      fails on OL8.3
+    + JDK-8286663: Resolve IDE warnings in WTrayIconPeer and
+      SystemTray
+    + JDK-8286772: java/awt/dnd/DropTargetInInternalFrameTest/
+      /DropTargetInInternalFrameTest.html times out and fails in
+      Windows
+    + JDK-8286872: Refactor add/modify notification icon (TrayIcon)
+    + JDK-8287076: Document.normalizeDocument() produces different
+      results
+    + JDK-8287091: aarch64 : guarantee(val < (1ULL << nbits))
+      failed: Field too big for insn
+    + JDK-8287425: Remove unnecessary register push for
+      MacroAssembler::check_klass_subtype_slow_path
+    + JDK-8287609: macOS: SIGSEGV at [CoreFoundation]
+      CFArrayGetCount / sun.font.CFont.getTableBytesNative
+    + JDK-8287724: Fix various issues with msys2
+    + JDK-8287826: javax/accessibility/4702233/
+      /AccessiblePropertiesTest.java fails to compile
+    + JDK-8287895: Some langtools tests fail on msys2
+    + JDK-8287896: PropertiesTest.sh fail on msys2
+    + JDK-8287902: UnreadableRB case in MissingResourceCauseTest is
+      not working reliably on Windows
+    + JDK-8287917: System.loadLibrary does not work on Big Sur if
+      JDK is built with macOS SDK 10.15 and earlier
+    + JDK-8288132: Update test artifacts in QuoVadis CA interop
+      tests
+    + JDK-8288302: Shenandoah: SIGSEGV in vm maybe related to jit
+      compiling xerces
+    + JDK-8288377: [REDO] DST not applying properly with zone id
+      offset set with TZ env variable
+    + JDK-8288445: AArch64: C2 compilation fails with
+      guarantee(!true || (true && (shift != 0))) failed: impossible
+      encoding
+    + JDK-8288599: com/sun/management/OperatingSystemMXBean/
+      /TestTotalSwap.java: Expected total swap size ... but
+      getTotalSwapSpaceSize returned ...
+    + JDK-8288985: P11TlsKeyMaterialGenerator should work with
+      ChaCha20-Poly1305
+    + JDK-8289043: C2: Vector constant materialization attempt
+    + JDK-8289146: containers/docker/TestMemoryWithCgroupV1.java
+      fails on linux ppc64le machine with missing Memory and Swap
+      Limit output
+    + JDK-8290207: Missing notice in dom.md
+    + JDK-8290209: jcup.md missing additional text
+    + JDK-8290451: Incorrect result when switching to C2 OSR
+      compilation from C1
+    + JDK-8290529: C2: assert(BoolTest(btest).is_canonical())
+      failure
+    + JDK-8290705: StringConcat::validate_mem_flow asserts with
+      "unexpected user: StoreI"
+    + JDK-8290711: assert(false) failed: infinite loop in
+      PhaseIterGVN::optimize
+    + JDK-8290781: Segfault at
+      PhaseIdealLoop::clone_loop_handle_data_uses
+    + JDK-8291459: JVM crash with GenerateOopMap::error_work(char
+      const*, __va_list_tag*)
+    + JDK-8291461: assert(false) failed: bad AD file
+    + JDK-8292083: Detected container memory limit may exceed
+      physical machine memory
+    + JDK-8292158: AES-CTR cipher state corruption with AVX-512
+    + JDK-8292541: [Metrics] Reported memory limit may exceed
+      physical machine memory
+    + JDK-8292682: Code change of JDK-8282730 not updated to
+      reflect CSR update
+    + JDK-8292778: EncodingSupport_md.c convertUtf8ToPlatformString
+      wrong placing of free
+    + JDK-8292866:
+      Java_sun_awt_shell_Win32ShellFolder2_getLinkLocation check
+      MultiByteToWideChar return value for failures
+    + JDK-8292887: Bump update version for OpenJDK: jdk-11.0.18
+    + JDK-8292899: CustomTzIDCheckDST.java testcase failed on AIX
+      platform
+    + JDK-8293044: C1: Missing access check on non-accessible class
+    + JDK-8293472: Incorrect container resource limit detection if
+      manual cgroup fs mounts present
+    + JDK-8293540: [Metrics] Incorrectly detected resource limits
+      with additional cgroup fs mounts
+    + JDK-8293578: Duplicate ldc generated by javac
+    + JDK-8293672: Update freetype md file
+    + JDK-8293816: CI: ciBytecodeStream::get_klass() is not
+      consistent
+    + JDK-8293826: Closed test fails after JDK-8276108 on aarch64
+    + JDK-8293828: JFR: jfr/event/oldobject/TestClassLoaderLeak.java
+      still fails when GC cycles are not happening
+    + JDK-8293834: Update CLDR data following tzdata 2022c update
+    + JDK-8293998: [PPC64] JfrGetCallTrace: assert(_pc != nullptr)
+      failed: must have PC
+    + JDK-8294138: [11u] Revert change from JDK-8210962 in basic.m4
+    + JDK-8294307: ISO 4217 Amendment 173 Update
+    + JDK-8294357: (tz) Update Timezone Data to 2022d
+    + JDK-8294578: [PPC64] C2: Missing is_oop information when
+      using disjoint compressed oops mode
+    + JDK-8294740: Add cgroups keyword to TestDockerBasic.java
+    + JDK-8295173: (tz) Update Timezone Data to 2022e
+    + JDK-8295288: Some vm_flags tests associate with a wrong BugID
+    + JDK-8295322: Tests for JDK-8271459 were not backported to 11u
+    + JDK-8295429: Update harfbuzz md file
+    + JDK-8295469: S390X: Optimized builds are broken
+    + JDK-8295554: Move the "sizecalc.h" to the correct location
+    + JDK-8295641: Fix DEFAULT_PROMOTED_VERSION_PRE=ea for -dev
+    + JDK-8295714: GHA ::set-output is deprecated and will be
+      removed
+    + JDK-8295723: security/infra/wycheproof/RunWycheproof.java
+      fails with Assertion Error
+    + JDK-8295872: [PPC64] JfrGetCallTrace: Need pc == nullptr
+      check before frame constructor
+    + JDK-8295952: Problemlist existing compiler/rtm tests also on
+      x86
+    + JDK-8296108: (tz) Update Timezone Data to 2022f
+    + JDK-8296239: ISO 4217 Amendment 174 Update
+    + JDK-8296480: java/security/cert/pkix/policyChanges/
+      /TestPolicy.java is failing
+    + JDK-8296485: BuildEEBasicConstraints.java test fails with
+      SunCertPathBuilderException
+    + JDK-8296496: Overzealous check in sizecalc.h prevents large
+      memory allocation
+    + JDK-8296632: Write a test to verify the content change of
+      TextArea sends TextEvent
+    + JDK-8296652: Restore windows aarch64 fixpath patch that was
+      removed in 8239708
+    + JDK-8296715: CLDR v42 update for tzdata 2022f
+    + JDK-8296957: One more cast in SAFE_SIZE_NEW_ARRAY2
+    + JDK-8297147: UnexpectedSourceImageSize test times out on slow
+      machines when fastdebug is used
+    + JDK-8297153: sun/java2d/DirectX/OnScreenRenderingResizeTest/
+      /OnScreenRenderingResizeTest.java fails again
+    + JDK-8297241: Update sun/java2d/DirectX/
+      /OnScreenRenderingResizeTest/OnScreenRenderingResizeTest.java
+    + JDK-8297481: Create a regression test for JDK-4424517
+    + JDK-8297656: AArch64: Enable AES/GCM Intrinsics
+    + JDK-8297804: (tz) Update Timezone Data to 2022g
+    + JDK-8298737: 8296772 backport to jdk11u caused build error on
+      sparc
+    + JDK-8299393: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.18
+    + JDK-8299439: java/text/Format/NumberFormat/CurrencyFormat.java
+      fails for hr_HR
+    + JDK-8299483: ProblemList java/text/Format/NumberFormat/
+      /CurrencyFormat.java
+    + JDK-8299616: [11u] Bootcycle build fails after JDK-8257679
+      backport
+
+-------------------------------------------------------------------
 Tue Nov  8 23:29:41 UTC 2022 - Javier Llorente <javier@opensuse.org>
 
 - Fix jconsole.desktop icon

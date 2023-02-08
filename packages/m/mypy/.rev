@@ -376,4 +376,26 @@
     <comment></comment>
     <requestid>1060693</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>94e3deb9b2aea99b25ee3c2dca94c360</srcmd5>
+    <version>1.0.0</version>
+    <time>1675873203</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test testI64Cast (gh#python/mypy#14633).
+- Update to 1.0.0 (YAY!):
+  - Mypy 1.0 is up to 40% faster than mypy 0.991 when type
+    checking the Dropbox internal codebase. We also set up a
+    daily job to measure the performance of the most recent
+    development version of mypy to make it easier to track
+    changes in performance.
+  - Warn About Variables Used Before Definition
+  - Detect Possibly Undefined Variables (Experimental)
+  - Support the “Self” Type
+  - Support ParamSpec in Type Aliases
+  - ParamSpec and Generic Self Types No Longer Experimental
+  - Miscellaneous New Features
+  - plenty of bug fixes
+</comment>
+    <requestid>1063669</requestid>
+  </revision>
 </revisionlist>

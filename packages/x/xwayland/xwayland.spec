@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %endif
 
 Name:           xwayland
-Version:        22.1.7
+Version:        22.1.8
 Release:        0
 URL:            http://xorg.freedesktop.org
-Summary:        X
+Summary:        Xwayland Xserver
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
@@ -93,7 +93,8 @@ Requires(pre):  %fillup_prereq
 %endif
 Requires:       pkgconfig
 Requires:       xkbcomp
-#Recommends:     xorg-x11-fonts-core
+Requires:       xkeyboard-config
+Recommends:     xorg-x11-fonts-core
 %ifnarch s390 s390x
 Requires:       libpixman-1-0
 %endif
@@ -101,16 +102,6 @@ Obsoletes:      xorg-x11-server-wayland < %{version}
 Provides:       xorg-x11-server-wayland = %{version}
 
 %description
-This package contains the Xwayland Server.
-
-%package %{name}
-Summary:        Xwayland Xserver
-Group:          System/X11/Servers/XF86_4
-Requires:       xkbcomp
-Requires:       xkeyboard-config
-Recommends:     xorg-x11-fonts-core
-
-%description %{name}
 This package contains the Xserver running on the Wayland Display Server.
 
 %package devel

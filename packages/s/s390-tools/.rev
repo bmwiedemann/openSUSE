@@ -642,4 +642,13 @@
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)</comment>
     <requestid>1057829</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>958a1aeb489e28ab5998dc576c3dba12</srcmd5>
+    <version>2.25.0</version>
+    <time>1675873736</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch (bsc#1207947) 
+  * s390-tools-sles15sp5-zkey-Support-EP11-host</comment>
+    <requestid>1063869</requestid>
+  </revision>
 </revisionlist>

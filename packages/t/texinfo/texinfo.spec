@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later

@@ -9,6 +9,7 @@ Wed Jan 25 09:14:32 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 Fri Jan 20 15:06:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 2.0.3
+  - Fix memory page address print issue
 - Remove upstreamed patch
   - librtasevent-Fix-memory-page-address-print-issue.patch
 - Refresh spec file

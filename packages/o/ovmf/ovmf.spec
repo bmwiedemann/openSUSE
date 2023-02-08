@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,8 @@ Patch12:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.pat
 Patch13:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
 # Bug 1206078 - qemu-ovmf-x86_64-202211 is broken: NvVarStore Variable header State was invalid
 Patch14:        %{name}-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch
+# Bug 1207095
+Patch15:        fix-aarch64.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -187,6 +189,7 @@ rm -rf $PKG_TO_REMOVE
 %endif
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

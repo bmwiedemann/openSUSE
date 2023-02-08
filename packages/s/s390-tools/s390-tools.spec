@@ -130,6 +130,7 @@ Source99:       zfcp_host_configure.8
 
 # IBM patches
 Patch001:       s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
+Patch002:       s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  7 20:43:32 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.13
+  * support for CArray (contiguous memory array of objects)
+  * support for @:packed (requires latest Haxe) : declare an object field like
+    in C struct
+  * improved GC performances
+  * completed int64 support, including int64 maps
+  * added DirectX12 support
+  * added SDL/DX mouse handle API (by @Yanrishatum)
+  * added named threads support + debugger support
+  * ... and many additional changes
+- Add 0001-fix-return-non-void-functions.patch: fix build with -Werror=return-type
+- Drop 0001-cmake-Link-sdl.hdll-with-OpenGL.patch: accepted upstream
+
+-------------------------------------------------------------------
 Sun Jul 10 16:36:47 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add 0001-fix-rpath.patch: Fix the RPATH of the hl binary to comply with rpm validations

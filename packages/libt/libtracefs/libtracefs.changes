@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 13:23:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Sync meson build patch with latest upstream version
+  * Documentation is built via extra build target
+
+-------------------------------------------------------------------
 Wed Jan 18 09:39:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4:

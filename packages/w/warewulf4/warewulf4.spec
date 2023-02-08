@@ -30,12 +30,15 @@ URL:            https://warewulf.org
 Source0:        https://github.com/hpcng/warewulf/archive/v%{version}%{?rls_cndt}.tar.gz#/warewulf4-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source3:        warewulf4-rpmlintrc
+Source10:       config-ww4.sh
 Patch1:         make-ipxe-binary-source-configureable.patch
+Patch2:         CreateMt-Targets.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
 BuildRequires:  firewalld
 %endif
+BuildRequires:  distribution-release
 BuildRequires:  dracut
 BuildRequires:  go >= 1.15
 BuildRequires:  golang-packaging
@@ -46,14 +49,14 @@ BuildRequires:  sysuser-tools
 BuildRequires:  tftp
 BuildRequires:  yq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#Requires:       %{name}-ipxe = %{version}
+%sysusers_requires
 Requires:       %{name}-overlay = %{version}
-Recommends:     dhcp-server
+Requires:       dhcp-server
+Requires:       ipxe-bootimgs
+Requires:       pigz
+Requires:       tftp
 Recommends:     ipmitool
-Recommends:     ipxe-bootimgs
-Recommends:     ipxe-bootimgs
 Recommends:     nfs-kernel-server
-Recommends:     tftp
 
 %{go_nostrip}
 
@@ -146,7 +149,9 @@ yq e '
   .tftp.ipxe."00:00" = "undionly.kpxe" |
   .tftp.ipxe."00:07" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:09" = "ipxe-x86_64.efi" |
-  .tftp.ipxe."00:0B" = "snp-arm64.efi"'\
+  .tftp.ipxe."00:0B" = "snp-arm64.efi" |
+  .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
+  .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 sed -i 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 
@@ -155,6 +160,7 @@ echo "u warewulf -" > system-user-%{name}.conf
 echo "g warewulf -" >> system-user-%{name}.conf
 %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
 install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+install -D -m 755 %{S:10} %{buildroot}%{_datadir}/warewulf/scripts/config-warewulf.sh
 
 # get the slurm package readay
 mkdir -p %{buildroot}%{_datadir}/warewulf/overlays/host/etc/slurm
@@ -174,6 +180,7 @@ EOF
 
 %post
 %service_add_post warewulfd.service
+%{_datadir}/warewulf/scripts/config-warewulf.sh
 
 %preun
 %service_del_preun warewulfd.service
@@ -201,6 +208,7 @@ EOF
 %{_sbindir}/rcwarewulfd
 %{_unitdir}/warewulfd.service
 %{_sysusersdir}/system-user-%{name}.conf
+%{_datadir}/warewulf/scripts
 
 %files overlay
 # The configuration files in this location are for the compute

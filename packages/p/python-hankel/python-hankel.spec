@@ -1,7 +1,7 @@
 #
 # spec file for package python-hankel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %define modname hankel
 Name:           python-hankel
 Version:        1.2.1
 Release:        0
 Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/steven-murray/hankel
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Work around gh#steven-murray/hankel#80
+Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +47,7 @@ Hankel is a Python library to perform simple and accurate Hankel
 transformations using the method of Ogata 2005.
 
 %prep
-%setup -q -n hankel-%{version}
+%autosetup -p1 -n hankel-%{version}
 
 %build
 %python_build

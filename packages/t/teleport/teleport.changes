@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Feb 08 08:08:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.0.1:
+  * Release 12.0.1 (#21372)
+  * Fix operator build (#21369)
+  * fix lint-breaking spacing (#21356)
+  * [v12] Preview Page (#21283)
+
+-------------------------------------------------------------------
+Wed Feb 08 07:53:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.0.0:
+  Full changelog is available at
+  https://github.com/gravitational/teleport/releases/tag/v12.0.0
+
+  Teleport 12 brings the following marquee features and improvements:
+    - Device Trust (Preview, Enterprise only)
+    - Passwordless Windows access for local users (Preview, Enterprise only)
+    - Per-pod RBAC for Kubernetes Access (Preview)
+    - Azure and GCP CLI support for Application Access (Preview)
+    - Support for more databases in Database Access:
+      - AWS DynamoDB
+      - AWS Redshift Serverless
+      - AWS RDS Proxy for PostgreSQL/MySQL
+      - Azure SQLServer Auto Discovery
+      - Azure Flexible Servers
+    - Refactored Helm charts (Preview)
+    - Dropped support for SHA1 in Server Access
+    - Signed/notarized macOS binaries
+
+  * Azure and GCP CLI support for Application Access (Preview)
+    In Teleport 12 administrators can interact with Azure and GCP APIs through
+    Application Access using `tsh az` and `tsh gcloud` CLI commands, or using
+    standard `az` and `gcloud` tools through the local application proxy.
+  * Support for more databases in Database Access
+    Database Access in Teleport 12 brings a number of new integrations to AWS-hosted
+    databases such as DynamoDB (now with audit log support), Redshift Serverless and
+    RDS Proxy for PostgreSQL/MySQL.
+    On Azure, Database Access adds SQLServer auto-discovery and support for Azure
+    Flexible Server for PostgreSQL/MySQL.
+  * Refactored Helm charts (Preview)
+    The “teleport-cluster” Helm chart underwent significant refactoring in Teleport
+    12 to provide better scalability and UX. Proxy and Auth are now separate
+    deployments and the new “scratch” chart mode makes it easier to provide a custom
+    Teleport config.
+    “Custom” mode users should follow the migration guide:
+    https://goteleport.com/docs/ver/12.x/deploy-a-cluster/helm-deployments/migration-v12/
+  * Dropped support for SHA1 in Server Access
+    Newer OpenSSH clients connecting to Teleport 12 clusters no longer need the
+    “PubAcceptedKeyTypes” workaround to include the deprecated “sha” algorithm.
+  * Signed/notarized macOS binaries
+    Users who download Teleport 12 Darwin binaries would no longer get an untrusted
+    software warning from macOS.
+  * tctl edit
+    tctl now supports an edit subcommand, allowing you to edit resources directly in
+    your preferred text editor.
+  * Breaking Changes
+    Please familiarize yourself with the following potentially disruptive changes in
+    Teleport 12 before upgrading.
+    - Helm charts
+      The teleport-cluster Helm chart underwent significant changes in Teleport 12. To
+      upgrade from an older version of the Helm chart deployed in “custom” mode, use
+      the following migration guide:
+      https://goteleport.com/docs/ver/12.x/deploy-a-cluster/helm-deployments/migration-v12/
+      Additionally, PSPs are removed from the chart when installing on Kubernetes 1.23
+      and higher to account for the deprecation/removal of PSPs by Kubernetes.
+    - tctl auth export
+      The tctl auth export command only exports the private key when passing the
+      --keys flag. Previously it would output the certificate and private key
+      together.
+    - Desktop Access
+      Windows Desktop sessions disable the wallpaper by default, improving
+      performance. To restore the previous behavior, add `show_desktop_wallpaper: true`
+      to your windows_desktop_service config.
+
+-------------------------------------------------------------------
 Thu Feb 02 06:59:38 UTC 2023 - kastl@b1-systems.de
 
 - remove non-breakable-space character from changes file

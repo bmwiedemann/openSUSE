@@ -29,6 +29,10 @@ Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{v
 Source1:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        heaptrack.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Add-missing-include.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_container-devel

@@ -36,14 +36,14 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.6
+Version:        21.1.7
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
 # Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xserver-xorg-server-%{version}.tar.xz
+Source0:        xorg-server-%{version}.tar.xz
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
@@ -208,7 +208,6 @@ Patch12:        n_xorg-wrapper-anybody.patch
 Patch100:       u_01-Improved-ConfineToShape.patch
 Patch101:       u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grabbing-a-shaped-window.patch
 Patch104:       u_xorg-server-xdmcp.patch
-Patch105:       U_xorg-server-oob-read-enqueue-event.patch
 
 Patch117:       xorg-x11-server-byte-order.patch
 
@@ -348,7 +347,7 @@ Group:          Development/Sources
 This package contains patched sources of X.Org Server.
 
 %prep
-%setup -q -n xserver-xorg-server-%{version} -a3
+%setup -q -n xorg-server-%{version} -a3
 # Early verification if the ABI Defines are correct. Let's not waste build cycles if the Provides are wrong at the end.
 sh %{SOURCE92} --verify . %{SOURCE91}
 
@@ -370,7 +369,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch100 -p1
 #%patch101 -p1
 %patch104 -p1
-%patch105 -p1
 %patch117 -p1
 %patch160 -p1
 %patch208 -p1

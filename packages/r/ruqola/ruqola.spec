@@ -1,7 +1,7 @@
 #
 # spec file for package ruqola
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        1.8.1
+Version:        1.9.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source2:        %{name}.keyring
 %endif
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons) >= 5.91.0
@@ -42,6 +43,7 @@ BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Prison)
+BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextWidgets)
@@ -90,12 +92,14 @@ It's a native alternative to the official embedded browser type of desktop app a
 %{_kf5_libdir}/libruqolacore.so.*
 %{_kf5_libdir}/libruqolawidgets.so.*
 %{_kf5_libdir}/librocketchatrestapi-qt5*
+%{_kf5_libdir}/libruqola-*
 %dir %{_kf5_plugindir}/ruqolaplugins
 %dir %{_kf5_plugindir}/ruqolaplugins/authentication
 %{_kf5_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
+%dir %{_kf5_plugindir}/kf5/ruqola-translator
+%{_kf5_plugindir}/kf5/ruqola-translator/*
 %dir %{_kf5_plugindir}/ruqolaplugins/textplugins
-%{_kf5_plugindir}/ruqolaplugins/textplugins/ruqola_webshortcuttextplugin.so
-%{_kf5_plugindir}/ruqolaplugins/textplugins/ruqola_texttospeechtextplugin.so
+%{_kf5_plugindir}/ruqolaplugins/textplugins/ruqola_*.so
 # upstream installs with execute bit, gives a linter warning
 %attr(0644,-,-) %{_kf5_applicationsdir}/org.kde.ruqola.desktop
 %{_kf5_iconsdir}/hicolor/*/*/*.*

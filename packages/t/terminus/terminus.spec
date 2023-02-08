@@ -1,7 +1,7 @@
 #
 # spec file for package terminus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           terminus
-Version:        1.13.0
+Version:        2.1.0
 Release:        0
 Summary:        An X terminal written in Vala
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  vala
+BuildRequires:  vala >= 0.30
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)

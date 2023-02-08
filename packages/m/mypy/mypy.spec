@@ -22,7 +22,7 @@
 %define types_psutil_version 5.9.5.6
 %define types_setuptools_version 65.6.0.3
 Name:           mypy
-Version:        0.991
+Version:        1.0.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -130,8 +130,10 @@ unset PYTHONPATH
 # cannot compile unoptimized with suse headers
 export MYPYC_OPT_LEVEL=2
 if [ $(getconf LONG_BIT) -ne 64 ]; then
-  # https://github.com/python/mypy/issues/11148
+  # gh#python/mypy#11148
   donttest+=" or testSubclassSpecialize or testMultiModuleSpecialize"
+  # gh#python/mypy#14633
+  donttest+=" or testI64Cast"
   # fails only in python36 (EOL)
   python36_donttest+=" or testIntOps"
 fi

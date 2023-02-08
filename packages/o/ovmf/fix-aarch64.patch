@@ -1,0 +1,11 @@
+--- edk2-edk2-stable202211/ArmVirtPkg/ArmVirt.dsc.inc.orig	2023-01-19 08:59:32.038767625 +0100
++++ edk2-edk2-stable202211/ArmVirtPkg/ArmVirt.dsc.inc	2023-01-19 08:59:54.262881719 +0100
+@@ -368,7 +368,7 @@
+   # reserved ones, with the exception of LoaderData regions, of which OS loaders
+   # (i.e., GRUB) may assume that its contents are executable.
+   #
+-  gEfiMdeModulePkgTokenSpaceGuid.PcdDxeNxMemoryProtectionPolicy|0xC000000000007FD5
++  gEfiMdeModulePkgTokenSpaceGuid.PcdDxeNxMemoryProtectionPolicy|0xC000000000007FD1
+ 
+ [Components.common]
+   #

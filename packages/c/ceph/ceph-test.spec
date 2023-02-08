@@ -136,7 +136,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.2.9.539+gea74dd900cd
+Version: 16.2.11.58+g38d6afd3b78
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -152,7 +152,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.2.9-539-gea74dd900cd.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.11-58-g38d6afd3b78.tar.bz2
 %if 0%{?suse_version}
 Source94: ceph-rpmlintrc
 Source95: checkin.sh
@@ -595,12 +595,14 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.2.9-539-gea74dd900cd
+%autosetup -p1 -n ceph-16.2.11-58-g38d6afd3b78
 
 %build
-# LTO can be enabled as soon as the following GCC bug is fixed:
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200
+# Disable lto on systems that do not support symver attribute
+# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48200 for details
+%if ( 0%{?rhel} && 0%{?rhel} < 9 ) || ( 0%{?suse_version} && 0%{?suse_version} <= 1500 )
 %define _lto_cflags %{nil}
+%endif
 
 %if 0%{with seastar} && 0%{?rhel}
 . /opt/rh/gcc-toolset-9/enable
@@ -787,7 +789,7 @@ touch %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 chmod 0600 %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 
 # firewall templates and /sbin/mount.ceph symlink
-%if 0%{?suse_version} && !0%{?usrmerged}
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 ln -sf %{_sbindir}/mount.ceph %{buildroot}/sbin/mount.ceph
 %endif
@@ -892,6 +894,7 @@ rm -rf %{buildroot}%{_sbindir}/mount.ceph
 rm -rf %{buildroot}/sbin/mount.ceph
 rm -rf %{buildroot}%{_bindir}/rbd-replay-prep
 rm -rf %{buildroot}%{_bindir}/ceph-post-file
+rm -rf %{buildroot}%{_libdir}/ceph/denc/denc-mod-*.so
 rm -rf %{buildroot}%{_tmpfilesdir}/ceph-common.conf
 rm -rf %{buildroot}%{_mandir}/man8/ceph-authtool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-conf.8*
@@ -1136,7 +1139,7 @@ rm -rf build
 %endif
 %if ! 0%{?suse_version}
 %endif
-%if 0%{?suse_version} && !0%{?usrmerged}
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %endif
 %if %{with lttng}
 %endif

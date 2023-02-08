@@ -1,0 +1,44 @@
+From a59b58f6ae327a8f6949991cb5531db01e1ba14d Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Tue, 7 Feb 2023 15:10:15 -0500
+Subject: [PATCH] grub2: Can't setup a default boot device correctly on nvme
+ device in Beta3
+
+The patch in Bug 200486 - SUSE1205666 - SLES15SP5 Beta1: Setup multiple dev path
+ for a nvmf boot device in grub2 caused the issue.  That patch didn't consider
+nvme devices carefully.
+
+The new patch will check "nvme-of" instead of "nvme" to call
+build_multi_boot_device().
+
+Signed-off-by: Wen Xiong<wenxiong@linux.ibm.com>
+---
+ grub-core/osdep/unix/platform.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index db8fa4b95..fb47c0ffa 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -288,11 +288,15 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 	}
+       *ptr = '\0';
+     }
+-  else if (grub_strstr(install_device, "nvme"))
+-	boot_device =  build_multi_boot_device(install_device);
+-  else
++  else {
+     boot_device = get_ofpathname (install_device);
+ 
++    if (grub_strstr(boot_device, "nvme-of")) {
++       free (boot_device);
++       boot_device =  build_multi_boot_device(install_device);
++    }
++  }
++
+   if (grub_util_exec ((const char * []){ "nvsetenv", "boot-device",
+ 	  boot_device, NULL }))
+     {
+-- 
+2.39.1
+
