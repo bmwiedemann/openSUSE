@@ -3327,9 +3327,11 @@
     <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql15" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql15-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql15-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql15-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4247,7 +4249,7 @@
     <package name="tv-fonts" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Adw-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-AppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="typelib-1_0-AppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-AyatanaAppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

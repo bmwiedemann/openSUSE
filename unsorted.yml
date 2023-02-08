@@ -1561,6 +1561,7 @@ unsorted:
   - budgie-desktop-doc 
   - budgie-desktop-lang 
   - budgie-desktop-view 
+  - budgie-desktop-view-lang 
   - budgie-dropby-applet 
   - budgie-extras 
   - budgie-extras-daemon 
@@ -10574,8 +10575,10 @@ unsorted:
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
+  - libbudgie-appindexer0 
   - libbudgie-plugin0 
   - libbudgie-private0 
+  - libbudgie-raven-plugin0 
   - libbudgietheme0 
   - libbuffer0_3 
   - libbullet-devel 
@@ -21206,6 +21209,7 @@ unsorted:
   - pgadmin4-web 
   - pgadmin4-web-uwsgi 
   - pgbackrest 
+  - pgloader 
   - pgn-extract 
   - phetsarath-fonts 
   - phobos-devel 
@@ -21647,7 +21651,6 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21754,7 +21757,6 @@ unsorted:
   - postgresql15-devel 
   - postgresql15-devel-mini 
   - postgresql15-docs 
-  - postgresql15-llvmjit 
   - postgresql15-llvmjit-devel 
   - postgresql15-plperl 
   - postgresql15-plpython 
@@ -24398,7 +24400,6 @@ unsorted:
   - python310-moban 
   - python310-moban-ansible 
   - python310-mobi 
-  - python310-mock 
   - python310-mock-open 
   - python310-mocket 
   - python310-mockito 
@@ -27770,7 +27771,6 @@ unsorted:
   - python38-moban 
   - python38-moban-ansible 
   - python38-mobi 
-  - python38-mock 
   - python38-mock-open 
   - python38-mocket 
   - python38-mockito 
@@ -31185,7 +31185,6 @@ unsorted:
   - python39-moban 
   - python39-moban-ansible 
   - python39-mobi 
-  - python39-mock 
   - python39-mock-open 
   - python39-mocket 
   - python39-mockito 
@@ -34086,7 +34085,6 @@ unsorted:
   - setroubleshoot-plugins 
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
-  - sev-tool 
   - sevctl: [x86_64] 
   - sfcgal: [x86_64] 
   - sfcgal-devel: [x86_64] 
@@ -43898,6 +43896,7 @@ unsorted:
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
   - typelib-1_0-Budgie-1_0 
+  - typelib-1_0-BudgieRaven-1_0 
   - typelib-1_0-BuzztraxCore-1_1 
   - typelib-1_0-BuzztraxCore-1_1-32bit: [x86_64] 
   - typelib-1_0-BuzztraxIc-1_1 
