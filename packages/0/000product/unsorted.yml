@@ -17,8 +17,9 @@ unsorted:
   - AMF-docs 
   - ART 
   - AppCSXCAD 
+  - AppStream-compose 
+  - AppStream-compose-devel 
   - AppStream-devel 
-  - AppStream-doc 
   - AusweisApp2 
   - Bear 
   - Botan 
@@ -6181,6 +6182,7 @@ unsorted:
   - gnome-calendar-lang 
   - gnome-colors-icon-theme 
   - gnome-commander 
+  - gnome-commander-devel 
   - gnome-commander-lang 
   - gnome-common 
   - gnome-connections 
@@ -6280,8 +6282,8 @@ unsorted:
   - gnome-themes-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage: [i586] 
-  - gnome-usage-lang: [i586] 
+  - gnome-usage 
+  - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
   - gnonograms 
@@ -6718,11 +6720,11 @@ unsorted:
   - gsl-gnu-hpc 
   - gsl-gnu-hpc-devel 
   - gsl-gnu-hpc-doc 
-  - gsl_2_6-gnu-hpc 
-  - gsl_2_6-gnu-hpc-devel 
-  - gsl_2_6-gnu-hpc-doc 
-  - gsl_2_6-gnu-hpc-examples 
-  - gsl_2_6-gnu-hpc-module 
+  - gsl_2_7_1-gnu-hpc 
+  - gsl_2_7_1-gnu-hpc-devel 
+  - gsl_2_7_1-gnu-hpc-doc 
+  - gsl_2_7_1-gnu-hpc-examples 
+  - gsl_2_7_1-gnu-hpc-module 
   - gsmartcontrol 
   - gsoap-devel 
   - gsoap-doc 
@@ -10172,6 +10174,7 @@ unsorted:
   - libappmenu-gtk-parser-devel 
   - libappmenu-gtk2-parser-devel 
   - libappmenu-gtk3-parser-devel 
+  - libappstream-compose0 
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
@@ -10400,6 +10403,8 @@ unsorted:
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
+  - libblastrampoline-devel: [x86_64] 
+  - libblastrampoline5: [x86_64] 
   - libbliss0_77 
   - libblitz0 
   - libblkid-devel 
@@ -11796,9 +11801,9 @@ unsorted:
   - libgsf-devel 
   - libgsf-tools 
   - libgsl-gnu-hpc 
-  - libgsl_2_6-gnu-hpc 
+  - libgsl_2_7_1-gnu-hpc 
   - libgslcblas-gnu-hpc 
-  - libgslcblas_2_6-gnu-hpc 
+  - libgslcblas_2_7_1-gnu-hpc 
   - libgsm-devel 
   - libgsm-devel-32bit: [x86_64] 
   - libgsm-utils 
@@ -21758,6 +21763,7 @@ unsorted:
   - postgresql15-postgis-utils 
   - postgresql15-server-devel 
   - postgresql15-test 
+  - postgresql15-timescaledb 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -43878,6 +43884,7 @@ unsorted:
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppStream-1.0 
+  - typelib-1_0-AppStream-compose-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
   - typelib-1_0-Aravis-0.8 
   - typelib-1_0-AtrilDocument-1_5_0 

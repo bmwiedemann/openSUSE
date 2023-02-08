@@ -475,8 +475,6 @@
       <repopackage name="gnome-themes-accessibility-gtk2" arch="x86_64"/>
       <repopackage name="gnome-tweaks" arch="x86_64"/>
       <repopackage name="gnome-tweaks-lang" arch="x86_64"/>
-      <repopackage name="gnome-usage" arch="x86_64"/>
-      <repopackage name="gnome-usage-lang" arch="x86_64"/>
       <repopackage name="gnome-user-docs" arch="x86_64"/>
       <repopackage name="gnomekbd-tools" arch="x86_64"/>
       <repopackage name="gnu-free-fonts"/>
@@ -959,8 +957,6 @@
       <repopackage name="libdaemon0" arch="x86_64"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdav1d6"/>
-      <repopackage name="libdazzle-1_0-0" arch="x86_64"/>
-      <repopackage name="libdazzle-lang" arch="x86_64"/>
       <repopackage name="libdb-4_8"/>
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbus-glib-1-2" arch="x86_64"/>
@@ -1236,6 +1232,7 @@
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjxl0_8" arch="x86_64"/>
       <repopackage name="libkaccounts2" arch="x86_64"/>
+      <repopackage name="libkColorPicker0" arch="x86_64"/>
       <repopackage name="libkdecorations2-5" arch="x86_64"/>
       <repopackage name="libkdecorations2-5-lang" arch="x86_64"/>
       <repopackage name="libkdecorations2private9" arch="x86_64"/>
@@ -1346,6 +1343,7 @@
       <repopackage name="libKF5WindowSystem5-lang" arch="x86_64"/>
       <repopackage name="libKF5XmlGui5" arch="x86_64"/>
       <repopackage name="libKF5XmlGui5-lang" arch="x86_64"/>
+      <repopackage name="libkImageAnnotator0" arch="x86_64"/>
       <repopackage name="libkioarchive5" arch="x86_64"/>
       <repopackage name="libkmod2"/>
       <repopackage name="libKPipeWire5" arch="x86_64"/>
@@ -2515,6 +2513,8 @@
       <repopackage name="sonnet-imports" arch="x86_64"/>
       <repopackage name="sound-theme-freedesktop"/>
       <repopackage name="spax" arch="x86_64"/>
+      <repopackage name="spectacle" arch="x86_64"/>
+      <repopackage name="spectacle-lang" arch="x86_64"/>
       <repopackage name="speech-dispatcher" arch="x86_64"/>
       <repopackage name="spice-vdagent" arch="x86_64"/>
       <repopackage name="sqlite3-tcl" arch="x86_64"/>
