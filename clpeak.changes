@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Feb 07 09:16:52 UTC 2022 - mardnh@gmx.de
+
+- Update to version 1.1.1:
+  * Add non-blocking read/write transfers.
+  * Added 24bit fast MAD Integer Compute test.
+  * Updated results with various Intel, AMD and NVidia hardware.
+  * Use opencl.hpp instead of cl.hpp
+  * Fix icd build issue.
+
+-------------------------------------------------------------------
+Tue Mar 31 19:24:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to upstream release 1.1.0
+  * All the kernels are now de-unrolled
+  * Prior to this, all mad or fetch operations were manually
+    unrolled which created register pressure on low-end devices.
+    Now the operations are put in a for loop and left for the
+    compiler to unroll
+  * General improvements
+
+-------------------------------------------------------------------
+Fri Dec 13 13:11:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git.20191206:
+  * enqueueWriteBuffer: Initialize host buffer to obtain accurate measurement
+  * Move jetson result to pocl folder
+  * [snap] use new cmake file for versions
+  * Add AMD Ryzen 7 3700X
+  * Bump rc
+  * [travis] remove explicit branch
+  * [src] auto format cpp files
+  * Bump version to rc1
+  * [android] cosmetic changes
+  * [travis] add deploy section
+  * [travis] use cmake to invoke cpack
+  * [travis] explicitly specify configuration to cpack
+  * Update travis file
+  * [cmake] fix a string in set
+  * Add cpack
+  * Add suffix to version
+  * remove int kernel restriction for apple
+  * [cmake] fix extra libs for static version
+  * [travis] add arm64
+  * skip exit code for no platform error
+  * [travis] call ctest
+  * [cmake] add a test run
+  * Create Jeston Nano (Tegra X1)
+  * Undo disabling of int kernels for intel
+  * Reduce register usage in kernels
+  * [android] update cmake to include version
+  * Create Intel_UHD_Graphics_620.log
+  * Update README.md
+  * Print half-precision with a capital letter
+  * Add results for Radeon RX 570
+  * Add version info
+  * [travis] use generator instead of platform type for windows
+  * Revert "[cmake] pass CMAKE_GENERATOR_PLATFORM to external project build"
+  * Revert "[cmake] fix error in prev commit"
+  * [cmake] fix error in prev commit
+  * [cmake] pass CMAKE_GENERATOR_PLATFORM to external project build
+  * [travis] try other method of forcing win64
+  * [travis] force x64 on windows
+  * Update readme
+  * [travis] trim os list
+  * [travis] add more os in matrix
+  * [travis] specify xenial
+  * [yml] Rename to yml
+  * [travis] add initial yaml file
+  * [cmake] install LICENSE file
+  * Delete STATUS file
+  * [cmake] fix typo in prev commit
+  * [cmake] windows specific changes
+  * [cmake] Build ICD if not present
+  * [results] remove bin symbols
+  * Add results for GeForce RTX 2080 Ti
+  * Add snapcraft file
+  * [cmake] add an install target
+  * Remove exception for snapdragon platform
+  * trim fn: check before call
+  * [android] upgrade to latest sdk
+  * Place max transfer bw size in common
+  * Place max global bw size in common
+  * Add a seperate multiplier for DP
+  * some more warn fixes
+  * [cmake] throw warning on conversion loss
+  * Use higher size datatypes for memory size
+  * Add an unused macro
+  * Disable depcration warn on windows
+  * Flush the queue after every run iteration
+  * Disable integer kernel in intel only on windows
+  * Revert "Allow int tests on intel"
+  * fix global bw test to use right multiplier
+  * Allow int tests on intel
+  * Global size now is multiple of local size
+  * Trim strings returned by cl APIs
+  * fix warnings
+  * set OPENCL target version
+  * Stop using cl.hpp from deps
+  * Add a gitignore
+  * [cmake] OPENCL_ROOT is not required
+  * Use ulong for alloc vars
+  * Reduce load on integer kernel
+  * Use FindOpenCL rather than custom OpenCL finders
+  * Added result for RTX2080
+
+-------------------------------------------------------------------
+Thu Mar 22 14:13:21 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 1.0+git.20170625 to fix build on AArch64:
+  * Remove march native flag
+  * Always define OS_NAME even for unknown architectures
+  * Add AMD_Ryzen_5_1600.log
+
+-------------------------------------------------------------------
+Tue May 30 08:35:31 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0+git.20170525:
+  * Add GTX 1080 Ti results
+  * Remove non printable chars from log file
+  * Add One Plus 3T results
+  * Macbook pro results submitted by Harry Mallon
+  * Rename Macbook_Pro_2013.log to Mac_Pro_Late_2013_.log
+  * Not passing half as kernel argument
+  * Fix uninitialized variable
+  * Ignore ignored-attributes warning in g++, clang++
+  * Enable support for FreeBSD.
+
+-------------------------------------------------------------------
+Sun Jan 22 10:33:04 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Sun Nov 13 23:23:39 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.0+git.20160805:
+  * Add Galaxy S7 (Adreno 530) results
+  * migrate to android studio
+  * add missing x86 dummy folder
+  * cosmetic ui layout changes
+  * fix jumpdown list index
+  * gpus only for snapdragon
+  * update android.mk for new half-precision
+  * add dummy folders for release
+  * update android build files
+- Change naming scheme
+- Some small spec file cleanups
+
+-------------------------------------------------------------------
+Sat Jun 27 11:44:59 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1422696808.9a39c0c:
+  + Update README.md
+  + Handle mem alloc failures gracefully
+  + Add results of Hawaii given by Schleimer Ben
+
+-------------------------------------------------------------------
+Thu Jan 15 08:43:20 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1419703962.3df45ca:
+  + Mali T628 results shared by Sebastian Schaetz
+  + Added compute unit, clock frequency and clock frequency units to XML file
+  + CMakeLists: Remove -march=native options in case of cross compilation
+  + src/common: Implement roundtoPowOf2 with binary logic
+  + Add AMD A10-7850K and GeForce GTX 750
+  + Add Celeron N2930 and Core i5-4570
+  + Support clang in cmake Add armv8 in android jni
+  + Preserve isComputeInt and isComputeDP across platforms
+  + Add integer compute (GIOPS) to A10-7850K results
+  + Add results from monster GTX 980 submitted by Gosuke yosita
+  + Link statically to libopencl-stub
+  + Add missing symbol in logger_android Fix bug in roundToPowOf2
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Tue Oct 07 19:52:41 UTC 2014 - mardnh@gmx.de
+
+- initial package, version 0.0+git.1406390327.78b5cde:
+  + 1. android logger interface. Renamed few files 2. Call stub reset api if required
+  + Decrease work-group size to 128 for qualcomm platforms, with 256 kernel fails to launch
+  + Update README.md
+  + Update README with proper formatting
+  + Build program per device. Otherwise qualcomm platform fails to compile for 2 devices at 1 shot!
+  + Adding march native in cmake for linux. Required for x86 Adding results of Apple Iris Pro & other devices submitted by users
+  + Fix win32 warning
+  + Android GUI app initial commit
+  + Avoid OsLib setenv. It is not implemented in 4.2.2 Create a jni function to call setenv
+  + Remove trailing white-spaces Update README. Android app available
+  + Nexus-5 & Moto-G results
+
