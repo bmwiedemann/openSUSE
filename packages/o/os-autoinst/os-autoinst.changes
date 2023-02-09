@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 11 02:12:42 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1675977373.865ccf1:
+  * Introduce VNC_EXTRA_VARS variable
+  * Allow debugging JSON RPC per job
+  * Fix retry logic for git clone
+  * Turn off commit signing in git tests
+  * sshVirtsh: Show virsh stderr output on virsh start failure
+  * Isotovideo/Interface.pm: Bump interface to 35
+  * backend/qemu.pm: Add virtio_console_user fifo name
+
+-------------------------------------------------------------------
 Wed Feb 08 13:37:18 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1675863430.39ed46d:
