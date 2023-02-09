@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         https://download.gnome.org/sources/gnome-commander/1.16/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 96f706fa7833af79e01625c0118b36f6c83c7d44.patch luc14n0@opensuse.org -- Do not install the static libgcmd library
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-commander/-/commit/96f706fa7833af79e01625c0118b36f6c83c7d44.patch
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11
@@ -85,8 +87,6 @@ export CXX=%{_bindir}/g++-11
 
 %install
 %meson_install
-# Delete static libgcmd.a
-find %{buildroot}%{_libdir} -type f -name "*.a" -delete -print
 find %{buildroot}%{_datadir} -size 0 -delete
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}

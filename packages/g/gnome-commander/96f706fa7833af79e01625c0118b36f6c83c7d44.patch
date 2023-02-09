@@ -1,0 +1,23 @@
+From 96f706fa7833af79e01625c0118b36f6c83c7d44 Mon Sep 17 00:00:00 2001
+From: Uwe Scholz <u.scholz83@gmx.de>
+Date: Sat, 4 Feb 2023 21:01:59 +0100
+Subject: [PATCH] Do not install the static libgcmd library
+
+---
+ libgcmd/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libgcmd/meson.build b/libgcmd/meson.build
+index 5c2a39ea..4c0f9d19 100644
+--- a/libgcmd/meson.build
++++ b/libgcmd/meson.build
+@@ -29,6 +29,5 @@ libgcmd_dep = declare_dependency(
+ libgcmd = static_library('gcmd',
+   include_directories: [libgcmd_includes],
+   dependencies: common_deps,
+-  install: true,
+   sources: [libgcmd_headers, libgcmd_sources],
+ )
+-- 
+GitLab
+

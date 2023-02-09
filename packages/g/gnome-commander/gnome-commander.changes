@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 00:41:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add 96f706fa7833af79e01625c0118b36f6c83c7d44.patch: avoid the 
+  installation of the libgcmd static library.
+- Drop find/delete command used to remove the libgcmd static
+  library from the build root.
+
+-------------------------------------------------------------------
 Sun Jan 22 16:56:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.0:
