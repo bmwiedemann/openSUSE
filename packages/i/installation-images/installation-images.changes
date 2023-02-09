@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Feb 9 15:56:20 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#627
+- make /var/lib/chrony writable (bsc#1207374)
+- 17.75
+
+--------------------------------------------------------------------
 Wed Feb 8 18:39:11 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#626
