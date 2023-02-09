@@ -1,6 +1,6 @@
 #!/bin/sh
 : ${SKIP:=false}
-$SKIP || tail -200 /home/opensuserabbit/dumprabbit.json | timeout 3m scripts/rabbithandle.py
+$SKIP || tail -200 /home/opensuserabbit/dumprabbit.json | timeout 3m scripts/rabbithandle-single.py
 
 rsync="rsync -a \
   --max-size=999000k \
