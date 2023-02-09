@@ -3491,6 +3491,7 @@ unsorted:
   - empty-fake-package 
   - enblend-enfuse 
   - enblend-enfuse-doc 
+  - enc 
   - enca 
   - enca-devel 
   - encfs 
@@ -10312,9 +10313,12 @@ unsorted:
   - libax25io0 
   - libayatana-appindicator-devel 
   - libayatana-appindicator1 
+  - libayatana-appindicator3-1 
   - libayatana-appindicator3-devel 
+  - libayatana-ido3-0_4-0 
   - libayatana-ido3-0_4-0-32bit: [x86_64] 
   - libayatana-indicator-devel 
+  - libayatana-indicator3-7 
   - libayatana-indicator3-devel 
   - libayatana-indicator7 
   - libazurestorage7 
@@ -12382,6 +12386,7 @@ unsorted:
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_8-32bit: [x86_64] 
+  - libjxl0_8-x86-64-v3: [x86_64] 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
   - libkadm5clnt7 
@@ -13298,7 +13303,6 @@ unsorted:
   - libopenblas_0_3_21-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_openmp-devel 
   - libopenblas_openmp-devel-32bit: [x86_64] 
-  - libopenblas_openmp0 
   - libopenblas_openmp0-32bit: [x86_64] 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit: [x86_64] 
@@ -21679,6 +21683,7 @@ unsorted:
   - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
+  - postgresql11-orafce 
   - postgresql11-pg_cron 
   - postgresql11-pgagent 
   - postgresql11-pgaudit 
@@ -21700,6 +21705,7 @@ unsorted:
   - postgresql12-docs 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
+  - postgresql12-orafce 
   - postgresql12-pg_cron 
   - postgresql12-pgagent 
   - postgresql12-pgaudit 
@@ -21722,6 +21728,7 @@ unsorted:
   - postgresql13-docs 
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
+  - postgresql13-orafce 
   - postgresql13-pg_cron 
   - postgresql13-pgagent 
   - postgresql13-pgaudit 
@@ -21742,6 +21749,7 @@ unsorted:
   - postgresql14-docs 
   - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
+  - postgresql14-orafce 
   - postgresql14-pg_cron 
   - postgresql14-pgagent 
   - postgresql14-pgaudit 
@@ -21758,6 +21766,7 @@ unsorted:
   - postgresql15-devel-mini 
   - postgresql15-docs 
   - postgresql15-llvmjit-devel 
+  - postgresql15-orafce 
   - postgresql15-plperl 
   - postgresql15-plpython 
   - postgresql15-pltcl 
@@ -43889,6 +43898,7 @@ unsorted:
   - typelib-1_0-AtrilView-1_5_0 
   - typelib-1_0-Avahi-0_6 
   - typelib-1_0-AyatanaAppIndicator-0_1 
+  - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
   - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
