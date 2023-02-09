@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  8 23:30:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.1:
+  * Raise nbxmpp version to 4.2.0.
+  * Improve KeepassXC Integration.
+  * MUC: Enable archiving when creating MUCs on ejabberd.
+  * Apply SASLprep to passwords.
+  * Make switching status work again.
+- Drop gajim-1.7.0-fix-status-switching.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Feb  4 14:57:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.7.0:

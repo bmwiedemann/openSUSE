@@ -2758,4 +2758,27 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- floatn.patch: Update _FloatN header support for C++ in GCC 13 (forwarded request 1043380 from Andreas_Schwab)</comment>
     <requestid>1043381</requestid>
   </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>131131c29cb7e67d647ccb4a0b51b873</srcmd5>
+    <version>2.37</version>
+    <time>1675956083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to glibc 2.37
+  * The getent tool now supports the --no-addrconfig option
+  * The dynamic linker no longer loads shared objects from the &quot;tls&quot;
+    subdirectories on the library search path or the subdirectory that
+    corresponds to the AT_PLATFORM system name, or employs the legacy AT_HWCAP
+    search mechanism, which was deprecated in version 2.33
+- printf-grouping.patch: Account for grouping in printf width (BZ #30068)
+- strftime-time64.patch: Use 64-bit time_t interfaces in strftime and
+  strptime (BZ #30053)
+- glibcextract-compile-c-snippet.patch, sys-mount-kernel-definition.patch,
+  sys-mount-usage.patch, nscd-netlink-cache-invalidation.patch,
+  syslog-large-messages.patch, dlmopen-libc-early-init.patch,
+  ldd-vdso-dependency.patch, syslog-extra-whitespace.patch,
+  errlist-edeadlock.patch, makeflags.patch, get-nscd-addresses.patch,
+  x86-64-avx2-string-functions.patch, nscd-aicache.patch,
+  dl-debug-bindings.patch, floatn.patch: Removed (forwarded request 1063589 from Andreas_Schwab)</comment>
+    <requestid>1063590</requestid>
+  </revision>
 </revisionlist>

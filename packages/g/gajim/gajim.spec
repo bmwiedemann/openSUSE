@@ -25,16 +25,14 @@
 %define pythons python310
 %endif
 Name:           gajim
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
-Summary:        XMPP client written in Python and Gtk
+Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/1.7/gajim-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gajim-1.7.0-fix-status-switching.patch philipp@hoerist.com -- Make switching status work again (commit 3c2c6448).
-Patch0:         gajim-1.7.0-fix-status-switching.patch
-BuildRequires:  %{python_module nbxmpp >= 4.0.1}
+BuildRequires:  %{python_module nbxmpp >= 4.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
@@ -86,7 +84,7 @@ Features:
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 sed -i '1{/\/usr\/bin\/*/d;}' gajim/gajim_remote.py
 

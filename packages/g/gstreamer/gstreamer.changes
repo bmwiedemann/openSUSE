@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 22:30:48 UTC 2023 - munix9@googlemail.com
+
+- Add fix using sed to find gst-plugin-scanner-%{_target_cpu}
+  program (boo#1207908).
+
+-------------------------------------------------------------------
 Fri Jan 27 10:10:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to reduce the required meson version to 0.61.0 since

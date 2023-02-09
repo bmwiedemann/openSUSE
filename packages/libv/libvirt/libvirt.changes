@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  8 18:01:55 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix umount of /dev in VM private namespace
+  c3f16cea-qemu-cleanup-label-on-umount-failure.patch,
+  697c16e3-qemu_process-better-debug-message.patch,
+  5155ab4b-qemu_namespace-nested-mounts-when-umount.patch
+  boo#1207889
+
+-------------------------------------------------------------------
 Tue Jan 17 17:33:00 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 9.0.0

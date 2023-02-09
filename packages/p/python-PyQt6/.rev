@@ -96,4 +96,13 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1062115</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>005ea0a1bd3c3ad08f574fd2c53d9328</srcmd5>
+    <version>6.4.2</version>
+    <time>1675957285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v6.4.2
+  * Fixed a regression in pylupdate</comment>
+    <requestid>1063979</requestid>
+  </revision>
 </revisionlist>

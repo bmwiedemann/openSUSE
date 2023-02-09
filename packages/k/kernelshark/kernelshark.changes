@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 16:14:45 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (2.2.0)
+ - Drop 0001-kernel-shark-Build-missed_event-as-GUI-plugin.patch
+
+-------------------------------------------------------------------
 Wed Aug 17 12:09:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (2.1.1)

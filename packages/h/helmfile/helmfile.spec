@@ -27,7 +27,7 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helmfile/helmfile
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Requires:       helm
+Requires:       helm >= 3.11.1
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.19

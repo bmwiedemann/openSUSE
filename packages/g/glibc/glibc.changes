@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  1 16:06:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.37
+  * The getent tool now supports the --no-addrconfig option
+  * The dynamic linker no longer loads shared objects from the "tls"
+    subdirectories on the library search path or the subdirectory that
+    corresponds to the AT_PLATFORM system name, or employs the legacy AT_HWCAP
+    search mechanism, which was deprecated in version 2.33
+- printf-grouping.patch: Account for grouping in printf width (BZ #30068)
+- strftime-time64.patch: Use 64-bit time_t interfaces in strftime and
+  strptime (BZ #30053)
+- glibcextract-compile-c-snippet.patch, sys-mount-kernel-definition.patch,
+  sys-mount-usage.patch, nscd-netlink-cache-invalidation.patch,
+  syslog-large-messages.patch, dlmopen-libc-early-init.patch,
+  ldd-vdso-dependency.patch, syslog-extra-whitespace.patch,
+  errlist-edeadlock.patch, makeflags.patch, get-nscd-addresses.patch,
+  x86-64-avx2-string-functions.patch, nscd-aicache.patch,
+  dl-debug-bindings.patch, floatn.patch: Removed
+
+-------------------------------------------------------------------
+Tue Dec 27 12:24:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Remove reference to obsolete %usrmerged macro (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Dec 15 23:25:15 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - floatn.patch: Update _FloatN header support for C++ in GCC 13

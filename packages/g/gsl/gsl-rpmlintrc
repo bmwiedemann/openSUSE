@@ -1,8 +1,0 @@
-# HPC allows simultaneous installation of multiple versions of the same
-# library even with the same so-name. These are provided in non-system
-# directories which are not handled by entries to /etc/ld.so.conf but
-# by the well known concept of environment modules which allow users
-# to customize their runtime library stack per session.
-# Therefore, the package version, not the so version is used for
-# package names.
-addFilter(".*-hpc.*shlib-policy-name-error.*")

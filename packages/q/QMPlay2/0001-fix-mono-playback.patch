@@ -1,0 +1,26 @@
+From a9e317f992b415ed79674489f9709b96cd9d329d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Mon, 6 Feb 2023 18:10:02 +0100
+Subject: [PATCH] PipeWire: Fix mono playback
+
+Amends: 9ba667080b080761a03921e93a66bef5f5eefb9d
+---
+ src/modules/PipeWire/PipeWireWriter.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/modules/PipeWire/PipeWireWriter.cpp b/src/modules/PipeWire/PipeWireWriter.cpp
+index 1ed3ce85..d8667f9f 100644
+--- a/src/modules/PipeWire/PipeWireWriter.cpp
++++ b/src/modules/PipeWire/PipeWireWriter.cpp
+@@ -425,6 +425,11 @@ void PipeWireWriter::recreateStream()
+             SPA_AUDIO_CHANNEL_SR,
+         }
+     };
++    if (m_chn == 1)
++    {
++        for (int i = 0; i < 8; ++i)
++            info.position[i] = SPA_AUDIO_CHANNEL_MONO;
++    }
+ 
+     const spa_pod *params[2];
+     params[0] = spa_format_audio_raw_build(

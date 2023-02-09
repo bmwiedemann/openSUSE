@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  9 07:35:30 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Set USE_SYSTEM_BPF_BCC to ON so system libraries are used
+- Update to 0.17.0
+  + Support opaque pointer (boo#1207295)
+  + Support 32-bit ARM systems
+  + Support BTF in kernel modules
+  + Add %rh option to print buffer as hex without \x
+  + Add stdbool.h to built-in headers
+  + Raise minimum versions for libbpf and bcc and vendor them for local builds
+  + Support comparison for integer arrays
+  + Drop Ubuntu 19.10 lockdown detection
+  + Fix pointer/register loads on 32-bit architectures
+  + Fix kprobe multi-attachment
+  + Fix attaching to multiple USDT probes using the same wildcard
+  + Fix pointer arithmetics codegen
+  + Fix segfault for invalid AssignVarStatement visit
+  + Better handling of missing function trace support files
+  + Fix unroll ID reset
+  + Support profile and interval probes in probe matcher
+  + Fix BTF detection macro in tools/old/mdflush.bt
+
+-------------------------------------------------------------------
 Mon Jan  9 07:19:16 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Bump LLVM major version to 15 in preparation for Leap 15.5/SLES 15-SP5

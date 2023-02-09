@@ -28,6 +28,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-fix-mono-playback.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 11 for openSUSE Leap 15.4+ and SLE15SP4+

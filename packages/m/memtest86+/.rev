@@ -297,4 +297,32 @@ The main modification of the package is:
     <comment></comment>
     <requestid>894064</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4a8976e9b8f329d50722d4383e661759</srcmd5>
+    <version>6.10</version>
+    <time>1675956116</time>
+    <user>dimstar_suse</user>
+    <comment>- add pesign magic
+- fixed i586 build
+
+- Update to 6.10
+  - Add support for Secure Boot Signing
+  - Add support for Headless EFI system
+  - Add various command line options
+  - Add support for legacy ATI SB400
+  - Fix an issue related to BadRAM pattern
+  - Fix disabling SMP using F2 at startup
+  - Fix crash on SuperMicro X10SDV
+  - Various bug fixes and optimizations
+- Update to 6.01
+  - False positives in test 9 [Modulo 20, random pattern] (issue #216)
+  - Failing to remove the big PASS/FAIL status banner (issue #130 and #173)
+
+- Update to 6.00:
+- Drop all patches can no more use:
+  fix-destdir
+  memtest86+-5.01-no-optimization.patch
+  memtest86+-5.31b-discard-note_gnu_property.patch</comment>
+    <requestid>1063852</requestid>
+  </revision>
 </revisionlist>

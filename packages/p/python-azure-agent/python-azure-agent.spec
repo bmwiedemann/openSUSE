@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
 Patch7:         reset-dhcp-deprovision.patch
 Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
+# PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
+Patch9:         remove-mock.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -82,8 +84,11 @@ Summary:        Unit tests
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Requires:       openssl
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+# We are only building against Python 3 for SLE15+, and we don't need mock.
+%if 0%{?suse_version} && 0%{?suse_version} > 1315 && 0%{?suse_version} < 1500
 Requires:       python3-mock
+%endif
+%if 0%{?suse_version} && 0%{?suse_version} > 1315
 Requires:       python3-pytest
 %else
 Requires:       python-mock
@@ -101,6 +106,7 @@ Unit tests for python-azure-agent.
 %endif
 %patch7
 %patch8
+%patch9 -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315

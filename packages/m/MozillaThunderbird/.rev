@@ -4704,4 +4704,13 @@ I cannot test locally unfortunately.
   * CVE-2023-23605 (bmo#1764921, bmo#1802690, bmo#1806974)</comment>
     <requestid>1062396</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>0d9bb48650ece94e963e6ad5a4f1a67c</srcmd5>
+    <version>102.7.2</version>
+    <time>1675956124</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.7.2
+  * Various crash fixes</comment>
+    <requestid>1063880</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  8 17:07:32 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.14.0
+  * Added decimeter to list of supported units PR#202
+  * Removed deprecated mb as symbol for millibar unit PR#203
+  * Fixed failure to preserve dtype in rescale PR#204
+  * Added exp2 as a supported ufunc
+  * Fixed failure to handle units with floordiv PR#207
+  * Added femtofarad (fF) to list of supported units
+  * Dropped support for Python 3.7
+  * Dropped support for NumPy versions older than 1.19
+  * Converted the project packaging from setup.py-based to pyproject.toml-based
+
+-------------------------------------------------------------------
 Thu Jun 23 06:30:01 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

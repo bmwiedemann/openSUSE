@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  8 21:22:03 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.4.6
+  Improvements and Bug Fixes:
+  * Updated IMDb data source to better support TV series (kde#463717, kde#460401)
+  * Fixed fallback to https scheme in SRU data source (kde#463438).
+  * Fixed bug with timing of multisource config read (kde#461861).
+  * Fixed edit dialog resizing (kde#462237).
+
+-------------------------------------------------------------------
 Thu Nov 17 12:31:35 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.4.5

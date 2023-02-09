@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:08:25 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.0.0b5
+  - rq list: Fix a traceback when --type is not specified
+  - core.checkout_package(): Use pathlib.Path
+  - connection: Retry all, not just default allowed methods
+  - connection: Wait between retries
+
+-------------------------------------------------------------------
 Fri Feb  3 10:11:27 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.0.0b4

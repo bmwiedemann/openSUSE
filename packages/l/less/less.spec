@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig
 Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
+Patch3:         https://github.com/gwsw/less/commit/a78e1351113cef564d790a730d657a321624d79c.patch#/cve-2022-46663.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -51,9 +52,7 @@ have to read the entire input file before starting. It is possible to
 start an editor at any time from within less.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2
+%autosetup -p1
 #
 # the ./configure script is not writable for the normal user
 # rather fix permissions for all files

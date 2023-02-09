@@ -1,4 +1,34 @@
 --------------------------------------------------------------------
+Wed Feb 8 18:39:11 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#626
+- use grub2-i386-efi package on x86_64 (bsc#1208057)
+- 17.74
+
+--------------------------------------------------------------------
+Wed Feb 8 18:21:32 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#625
+- move open-iscsi into initrd to ensure config files are writable
+  (bsc#1207374)
+- 17.73
+
+--------------------------------------------------------------------
+Wed Feb 8 13:38:53 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#624
+- fix grub2-i386-efi inclusion
+- 17.72
+
+--------------------------------------------------------------------
+Wed Feb 8 12:43:59 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#623
+- support 32-bit UEFI firmware on x86_64/i386 (bsc#1208003,
+  jsc#PED-2569)
+- 17.71
+
+--------------------------------------------------------------------
 Fri Jan 27 15:16:26 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#622

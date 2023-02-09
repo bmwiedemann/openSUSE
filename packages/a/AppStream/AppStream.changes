@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Feb  4 03:14:38 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to version 0.16.0:
+    * Features:
+        + pool: Offer API to look up components by bundles
+        + Bump format version to 0.16
+        + Add new AsSystemInfo to read information about the current OS and device
+        + Add helper to get device names from a modalias
+        + Implement support for external release metadata
+        + Add validation support for external release metadata
+        + compose: Validate external release metadata used for the catalog as well
+        + its: Add rule for standalone release metadata
+        + Add function to test if an AsRelation is satisfied on the current system
+        + cli: Add command to list category contents
+        + cli: Display colored checkmarks if possible
+        + cli: Add new is-satisfied check to test relations from the command-line
+        + cli: Add Markdown export support for metainfo-to-news
+        + qt: Add support for SystemInfo & relation satisfication checks
+    * Specification:
+        + spec: Specify a metadata format for external release descriptions
+    * Bugfixes:
+        + Fix build with Clang 15
+        + Give a better error message if trying to list too many categories
+        + Adjust documentation of AsPool.get_components_by_categories to reflect reality
+        + validator: Validate merge component catalog data properly again
+    * Miscellaneous:
+        + Consistently name catalog metadata as such everywhere
+- Update support-meson0.59.patch for latest version of AppStream
+- Build AppStream with compose support as a separate package.
+
+-------------------------------------------------------------------
+Fri Jan 13 22:51:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use %ldconfig_scriptlets. Leap 15.3 is out of maintenance.
+
+-------------------------------------------------------------------
 Thu Jan 12 07:53:52 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.15.6:

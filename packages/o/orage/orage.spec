@@ -1,7 +1,7 @@
 #
 # spec file for package orage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,26 @@
 
 
 Name:           orage
-Version:        4.16.0
+Version:        4.18.0
 Release:        0
 Summary:        Time-managing Application for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://docs.xfce.org/panel-plugins/orage/start
-Source:         http://archive.xfce.org/src/apps/orage/4.16/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/orage/4.18/%{name}-%{version}.tar.bz2
 Source1:        README.SUSE
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
-BuildRequires:  pkgconfig(libical)
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2)
+BuildRequires:  pkgconfig(libical) >= 3.0
+BuildRequires:  pkgconfig(libnotify) >= 0.7.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
 BuildRequires:  pkgconfig(popt)
-Requires:       exo-tools
-Requires:       xfce4-panel
 Recommends:     %{name}-lang = %{version}-%{release}
 # use /usr/bin/play to play notification sounds
 Recommends:     sox
@@ -65,8 +64,6 @@ cp %{SOURCE1} .
 %install
 %make_install
 
-%suse_update_desktop_file -r org.xfce.orage.globaltime X-XFCE Utility Clock GTK
-
 %fdupes %{buildroot}%{_datadir}
 
 %find_lang %{name} %{?no_lang_C}
@@ -74,15 +71,13 @@ cp %{SOURCE1} .
 %files
 %license COPYING
 %doc README.md AUTHORS NEWS README.SUSE
-%{_bindir}/globaltime
 %{_bindir}/orage
 %dir %{_datadir}/%{name}
 %{_datadir}/orage/sounds/
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*
 %{_datadir}/metainfo/*.appdata.xml
-%{_datadir}/xfce4/panel/plugins/*.desktop
-%{_libdir}/xfce4/panel/plugins/*
+%{_datadir}/dbus-1/services/org.xfce.orage.service
 
 %files lang -f %{name}.lang
 

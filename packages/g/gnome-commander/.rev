@@ -101,4 +101,12 @@
     <comment>New stable release (forwarded request 983688 from iznogood)</comment>
     <requestid>983861</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7a2461d9ce1ed5333247efe05505d946</srcmd5>
+    <version>1.16.0</version>
+    <time>1675956217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064001</requestid>
+  </revision>
 </revisionlist>

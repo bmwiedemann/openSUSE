@@ -1,7 +1,7 @@
 #
 # spec file for package libmspack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # "alpha" in the version string just says that it is an alpha version.
 %define _version %{version}alpha
 Name:           libmspack
-Version:        0.10.1
+Version:        0.11
 Release:        0
 Summary:        Library That Implements Different Microsoft Compressions
 License:        LGPL-2.1-only
@@ -82,17 +82,17 @@ This subpacke provides useful programs that make use of libmspack.
 %build
 %configure\
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 cd examples
 install -d %{buildroot}%{_bindir}
-../libtool --mode=install /usr/bin/install -c cabd_memory cabrip chmextract msexpand multifh oabextract %{buildroot}%{_bindir}
+../libtool --mode=install %{_bindir}/install -c cabd_memory cabrip chmextract msexpand multifh oabextract %{buildroot}%{_bindir}
 rm %{buildroot}%{_libdir}/*.*a
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libmspack0 -p /sbin/ldconfig
 %postun -n libmspack0 -p /sbin/ldconfig

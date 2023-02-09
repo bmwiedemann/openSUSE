@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 #
 Name:           qcoro%{?_pkg_name_suffix}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Coroutines for Qt
 License:        MIT

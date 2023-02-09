@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 25 04:34:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Use unittest.mock first, falling back to mock if required.
+- Tighten Requires against python3-mock. 
+
+-------------------------------------------------------------------
 Thu Sep 29 20:40:07 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - Add paa_12_sp5_rdma_no_ext_driver.patch (bsc#1203181)

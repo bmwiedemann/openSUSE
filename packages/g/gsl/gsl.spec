@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname gsl
-%define vers 2.6
-%define _vers 2_6
-%define lgsl_so_v   25
+%define vers 2.7.1
+%define _vers 2_7_1
+%define lgsl_so_v   27
 %define lgslcblas_so_v 0
 
 %if "%{flavor}" == ""
@@ -120,7 +120,6 @@ URL:            https://www.gnu.org/software/%{pname}/
 Source0:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
-Source3:        gsl-rpmlintrc
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
 BuildRequires:  autoconf

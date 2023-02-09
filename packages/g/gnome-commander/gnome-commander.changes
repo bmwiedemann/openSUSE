@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jan 22 16:56:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.0:
+  + New menu entry for (un)selecting only files
+  + Restored internal search after it was removed in version 1.14.0
+  + Migrated build system from GNU autotools to Meson
+  + Bugs fixed:
+    - Fix for showing wrong progress percentage when transfering
+      files
+    - Get rid of several deprecated Gtk2 widgets
+    - Fixes for copy/move; Fixes for canceling copy/move operations
+    - Fixes for delete operation; Allow cancelling deletion of
+      files; Fix for progress dialog
+    - Fix for creating directory with enabled Samba support
+    - Fix for disabling all plugins
+    - Fix for some errors on console
+    - Fix for changing the color scheme
+    - Disable beeping when reaching the end of the file list
+    - Various minor code improvements
+  + Updated translations.
+- Add meson BuildRequires and macros following upstreams port.
+- Add desktop-file-utils BuildRequires, new mandatory dependency.
+- Following the above, add appstream-glib and pkgconfig(gtest)
+  BuildRequires and check section, run meson_test macro during
+  build.
+- Add devel sub-package.
+- Remove new static libgcmd.a during install.
+
+-------------------------------------------------------------------
 Sun Jun 19 10:50:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.3:

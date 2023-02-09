@@ -166,4 +166,18 @@
     tokens from within Cloud Shell, without any prompt. (#420) (forwarded request 1010424 from glaubitz)</comment>
     <requestid>1010483</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8e2a1bfefb72b0f12a3452421d5cfe1</srcmd5>
+    <version>1.21.0</version>
+    <time>1675956146</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.0
+  + Support getting an ssh certificate via broker (#515)
+  + Support B2C's usage pattern of using client id as a scope (#505, #530)
+  + MSAL's token cache helper can now be used to store tokens returned
+    by App Service's Managed Identity (#519)
+  + Switch to a new set of regional endpoints (#513)
+  + Test matrix covers Python 3.11 (#512) (forwarded request 1063813 from glaubitz)</comment>
+    <requestid>1063879</requestid>
+  </revision>
 </revisionlist>

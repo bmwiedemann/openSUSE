@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:50:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add pesign magic
+- fixed i586 build
+
+-------------------------------------------------------------------
+Sat Feb  4 15:41:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.10
+  - Add support for Secure Boot Signing
+  - Add support for Headless EFI system
+  - Add various command line options
+  - Add support for legacy ATI SB400
+  - Fix an issue related to BadRAM pattern
+  - Fix disabling SMP using F2 at startup
+  - Fix crash on SuperMicro X10SDV
+  - Various bug fixes and optimizations
+- Update to 6.01
+  - False positives in test 9 [Modulo 20, random pattern] (issue #216)
+  - Failing to remove the big PASS/FAIL status banner (issue #130 and #173)
+
+-------------------------------------------------------------------
+Sat Oct 29 10:23:02 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.00:
+- Drop all patches can no more use:
+  fix-destdir
+  memtest86+-5.01-no-optimization.patch
+  memtest86+-5.31b-discard-note_gnu_property.patch
+
+-------------------------------------------------------------------
 Wed May 12 12:34:56 UTC 2021 - olaf@aepfle.de
 
 - Use _binary_payload w1.gzdio to make sure this firmware package

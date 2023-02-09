@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Feb  8 12:42:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.29.66
+  * api-change:``transfer``: Updated the documentation for the ImportCertificate API call, and added
+    examples.
+- from version 1.29.65
+  * api-change:``compute-optimizer``: AWS Compute optimizer can now infer if Kafka is running on an
+    instance.
+  * api-change:``customer-profiles``: This release deprecates the PartyType and Gender enum data
+    types from the Profile model and replaces them with new PartyTypeString and GenderString
+    attributes, which accept any string of length up to 255.
+  * api-change:``frauddetector``: My AWS Service (Amazon Fraud Detector) - This release introduces
+    Cold Start Model Training which optimizes training for small datasets and adds intelligent methods
+    for treating unlabeled data. You can now train Online Fraud Insights or Transaction Fraud Insights
+    models with minimal historical-data.
+  * api-change:``mediaconvert``: The AWS Elemental MediaConvert SDK has added improved scene change
+    detection capabilities and a bandwidth reduction filter, along with video quality enhancements, to
+    the AVC encoder.
+  * api-change:``outposts``: Adds OrderType to Order structure. Adds PreviousOrderId and
+    PreviousLineItemId to LineItem structure. Adds new line item status REPLACED. Increases maximum
+    length of pagination token.
+- from version 1.29.64
+  * enhancement:AWSCRT: Upgrade awscrt version to 0.16.9
+  * api-change:``proton``: Add new GetResourcesSummary API
+  * api-change:``redshift``: Corrects descriptions of the parameters for the API operations
+    RestoreFromClusterSnapshot, RestoreTableFromClusterSnapshot, and CreateCluster.
+- from version 1.29.63
+  * api-change:``appconfig``: AWS AppConfig introduces KMS customer-managed key (CMK) encryption of
+    configuration data, along with AWS Secrets Manager as a new configuration data source. S3 objects
+    using SSE-KMS encryption and SSM Parameter Store SecureStrings are also now supported.
+  * api-change:``connect``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``ec2``: Documentation updates for EC2.
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``keyspaces``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``quicksight``: QuickSight support for Radar Chart and Dashboard Publish Options
+  * api-change:``redshift``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``sso-admin``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+- from version 1.29.62
+  * bugfix:``s3``: boto3 no longer overwrites user supplied `Content-Encoding` with `aws-chunked`
+    when user also supplies `ChecksumAlgorithm`.
+  * api-change:``devops-guru``: This release adds filter support ListAnomalyForInsight API.
+  * api-change:``forecast``: This release will enable customer select INCREMENTAL as ImportModel in
+    Forecast's CreateDatasetImportJob API. Verified latest SDK containing required attribute, following
+    https://w.amazon.com/bin/view/AWS-Seer/Launch/Trebuchet/
+  * api-change:``iam``: Documentation updates for AWS Identity and Access Management (IAM).
+  * api-change:``mediatailor``: The AWS Elemental MediaTailor SDK for Channel Assembly has added
+    support for program updates, and the ability to clip the end of VOD sources in programs.
+  * api-change:``sns``: Additional attributes added for set-topic-attributes.
+- from version 1.29.61
+  * api-change:``accessanalyzer``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``appsync``: This release introduces the feature to support EventBridge as AppSync
+    data source.
+  * api-change:``cloudtrail-data``: Add CloudTrail Data Service to enable users to ingest activity
+    events from non-AWS sources into CloudTrail Lake.
+  * api-change:``cloudtrail``: Add new "Channel" APIs to enable users to manage channels used for
+    CloudTrail Lake integrations, and "Resource Policy" APIs to enable users to manage the
+    resource-based permissions policy attached to a channel.
+  * api-change:``codeartifact``: This release introduces a new DeletePackage API, which enables
+    deletion of a package and all of its versions from a repository.
+  * api-change:``connectparticipant``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``ec2``: This launch allows customers to associate up to 8 IP addresses to their NAT
+    Gateways to increase the limit on concurrent connections to a single destination by eight times
+    from 55K to 440K.
+  * api-change:``groundstation``: DigIF Expansion changes to the Customer APIs.
+  * api-change:``iot``: Added support for IoT Rules Engine Cloudwatch Logs action batch mode.
+  * api-change:``kinesis``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``opensearch``: Amazon OpenSearch Service adds the option for a VPC endpoint
+    connection between two domains when the local domain uses OpenSearch version 1.3 or 2.3. You can
+    now use remote reindex to copy indices from one VPC domain to another without a reverse proxy.
+  * api-change:``outposts``: Enabled FIPS endpoints for GovCloud (US) regions in SDK.
+  * api-change:``polly``: Amazon Polly adds two new neural American English voices - Ruth, Stephen
+  * api-change:``sagemaker``: Amazon SageMaker Automatic Model Tuning now supports more completion
+    criteria for Hyperparameter Optimization.
+  * api-change:``securityhub``: New fields have been added to the AWS Security Finding Format.
+    Compliance.SecurityControlId is a unique identifier for a security control across standards.
+    Compliance.AssociatedStandards contains all enabled standards in which a security control is
+    enabled.
+  * api-change:``support``: This fixes incorrect endpoint construction when a customer is explicitly
+    setting a region.
+
+-------------------------------------------------------------------
 Tue Jan 31 14:50:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.60

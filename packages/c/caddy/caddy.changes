@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 09 10:19:47 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.6.3:
+  * New trusted_proxies global option (within servers) can be used to specify trusted proxy IP ranges globally
+  * Unix sockets on Windows now supported as proxy upstreams
+  * Proxied WebSocket connections are now logged with correct status code and "size" (bytes read + bytes written)
+  * The quic-go package has received significant optimizations and HTTP/3 should be more efficient now
+  * CVE-2022-41721: ineffective mitigation for unsafe io.ReadAll (boo#1207207)
+
+-------------------------------------------------------------------
 Thu Oct 13 19:10:18 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.6.2:

@@ -67,4 +67,12 @@
     <comment></comment>
     <requestid>1037485</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>07be83491887d44f55095d5b0fa19dbf</srcmd5>
+    <version>0.8.0</version>
+    <time>1675956204</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.0 (forwarded request 1063959 from krop)</comment>
+    <requestid>1063962</requestid>
+  </revision>
 </revisionlist>

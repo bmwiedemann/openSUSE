@@ -141,6 +141,7 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-
 export PYTHON=%{_bindir}/python3
 sed -i "s/executable('gst-plugin-scanner',/executable('gst-plugin-scanner-%{_target_cpu}',/" libs/gst/helpers/meson.build
 sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
+sed -i 's/^#define EXESUFFIX$/#define EXESUFFIX "-%{_target_cpu}"/' gst/gstpluginloader.c
 # TODO: enable dbghelp
 %meson \
 	-Dptp-helper-permissions=capabilities \

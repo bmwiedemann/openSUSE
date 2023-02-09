@@ -1,7 +1,7 @@
 #
 # spec file for package libjaylink
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libjaylink
-Version:        0.2.0
+Version:        0.3.1
 Release:        0
 URL:            https://gitlab.zapb.de/libjaylink/libjaylink.git
 Summary:        USB interface library for J-Link
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): udev
-Requires(postun): udev
+Requires(postun):udev
 %define _udevdir %(pkg-config --variable udevdir udev)
 Provides:       libjaylink0:%{_udevdir}/rules.d/99-libjaylink.rules
 
@@ -83,16 +83,13 @@ sed -e 's/GROUP="plugdev"/GROUP="users"/' <contrib/99-libjaylink.rules >%{buildr
 %postun -n libjaylink0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %{_udevdir}/rules.d/99-libjaylink.rules
 
 %files -n libjaylink0
-%defattr(-,root,root,-)
 %{_libdir}/libjaylink.so.0*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/libjaylink/
 %{_libdir}/libjaylink.so
 %{_libdir}/pkgconfig/libjaylink.pc

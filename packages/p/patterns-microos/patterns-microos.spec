@@ -457,9 +457,9 @@ Requires:       gnome-color-manager
 #Requires:       gnome-packagekit
 Requires:       gnome-shell-classic
 Requires:       gnome-software
+Requires:       gnome-system-monitor
 Requires:       gnome-terminal
 Requires:       gnome-tweak-tool
-Requires:       gnome-usage
 Requires:       gnome-user-docs
 # bnc#879466
 Requires:       gpgme
@@ -612,6 +612,32 @@ Suggests:       power-profiles-daemon
 
 # Doesn't depend on PackageKit, but also works for other backends
 Requires:       discover-notifier
+
+# Spectacle to be able to take screenshots out of the box
+Requires:       spectacle
+
+# Default Plasma app to quickly use emojis (because people are using too much emoji nowadays)
+Requires:       plasma5-desktop-emojier
+Requires:       google-noto-coloremoji-fonts
+
+# Breeze GTK2, GTK3 and GTK4 (commented out until Plasma 5.27)
+#Requires:       (gtk4-metatheme-breeze if gtk4)
+Requires:       (gtk2-metatheme-breeze if gtk2)
+Requires:       (gtk3-metatheme-breeze if gtk3)
+
+# Default Plasma/Oxygen sounds for applications
+Requires:       oxygen5-sounds
+
+# Plasma system monitor (because is a good app to have, as gnome-usage)
+Requires:       plasma5-systemmonitor
+
+# For seeing thumbnails in Dolphin
+Requires:       libqt5-qtimageformats
+Requires:       ffmpegthumbs
+Requires:       kdegraphics-thumbnailers
+
+# For being able to change SDDM settings
+Requires:       kcm_sddm
 
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma

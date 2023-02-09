@@ -1,4 +1,4 @@
-osc (1.0.0~b4-0) unstable; urgency=low
+osc (1.0.0~b5-0) unstable; urgency=low
   - Update to 0.174.0:
     - fix password deletion via "osc config -d <apiurl> pass"
     - support changing the password store via "osc config <apiurl>

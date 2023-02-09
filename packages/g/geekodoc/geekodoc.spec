@@ -1,7 +1,7 @@
 #
 # spec file for package geekodoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  tests
 #
 Name:           geekodoc
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
 License:        GPL-3.0-only

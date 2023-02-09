@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb  8 12:27:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.11.2
+  * compatibility to numpy >1.24
+- 0.11.1
+  * Minor release. Small fixes to image windowing, four dimensional visualizer,
+    and adding of a structure attribute to the sidpy.dataset object.
+- 0.11
+  * Added CHANNEL dimension type for sidpy dimensions (for example of usage see
+    this link) . This is useful for multi-channel spectral datasets, which can
+    now be plotted using the intrinsic .plot() method
+  * Added updated capability on spectral visualizer to enable plotting of
+    multi-channel spectra
+  * Small changes with set_dimension() method to be more robust
+  * Minor bug fixes
+  * Updates to various tests
+- 0.10
+  * This release adds a few 'under the hood' changes to the sidpy dataset
+    object, with respect to chunking and folding/unfolding. Some minor edits to
+    some visualization functions were also made. A new method
+    visualize_fit_results() to the SidFitter class was added to aid in
+    visualization of functional fits.
+- 0.0.9
+  * Added fitter class and improved tests.
+
+-------------------------------------------------------------------
 Fri Oct 21 12:10:57 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

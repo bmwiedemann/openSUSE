@@ -1,7 +1,7 @@
 #
 # spec file for package python-quantities
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-quantities
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
 URL:            https://github.com/python-quantities/python-quantities/
-Source:         https://github.com/python-quantities/python-quantities/archive/v%{version}.tar.gz#/python-quantities-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/q/quantities/quantities-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.16
@@ -38,28 +40,25 @@ BuildArch:      noarch
 Support for physical quantities with units, based on numpy.
 
 %prep
-%autosetup -p1 -n python-quantities-%{version}
-# Test no longer fails when expected to fail.
-# https://github.com/python-quantities/python-quantities/issues/8
-rm quantities/tests/test_umath.py
+%autosetup -p1 -n quantities-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Change to unittest because pytest not support.
-# https://github.com/python-quantities/python-quantities/issues/160
-%pyunittest discover -v
+mv quantities .quantities
+%pytest -v --pyargs quantities.tests
+mv .quantities quantities
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license doc/user/license.rst
 %dir %{python_sitelib}/quantities
 %{python_sitelib}/quantities/*
-%{python_sitelib}/quantities-%{version}-py*.egg-info
+%{python_sitelib}/quantities-%{version}*-info
 
 %changelog

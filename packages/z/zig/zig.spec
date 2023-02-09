@@ -25,33 +25,26 @@ Version:        0.10.1
 Release:        0
 Summary:        Compiler for the Zig language
 License:        MIT
-Group:          Development/Languages
+Group:          Development/Languages/Other
 URL:            https://ziglang.org/
 Source0:        https://ziglang.org/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        macros.%{name}
 Source2:        zig-rpmlintrc
 Patch0:         0000-invoke-lld-llvm15.patch
 Patch2:         0002-no-lld-libs-and-includes.patch
+BuildRequires:  clang15-devel
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
-BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1500
-BuildRequires:  clang15-devel
 BuildRequires:  lld15
 BuildRequires:  llvm15-devel
+BuildRequires:  zlib-devel
 Requires:       lld15
-%else
-BuildRequires:  clang = 15.0.6
-BuildRequires:  lld = 15.0.6
-BuildRequires:  llvm-devel = 15.0.6
-Requires:       lld = 15.0.6
-%endif
 
 # llvm-config is missing targets for ppc and arm architectures.
 # ExcludeArch:    ppc64 ppc64le %%arm %%ix86
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
 
 # Zig needs this to work
 Requires:       %{name}-libs = %{version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  1 21:29:31 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- BuildRequire python3-toml on Leap.
+
+-------------------------------------------------------------------
 Wed Feb  1 19:56:50 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Use pyproject.toml instead of setup.py for build and install.

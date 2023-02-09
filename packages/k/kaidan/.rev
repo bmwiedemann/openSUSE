@@ -7,4 +7,15 @@
     <comment>The package seems to compile fine.</comment>
     <requestid>991008</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0e27b366c90e6edb4a793e82db9a95d9</srcmd5>
+    <version>0.8.0</version>
+    <time>1675956201</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix build with ZXing &gt;= 2.0:
+  * 0001-QrCodeDecoder-Replace-deprecated-BarcodeFormat-QR_CO.patch
+  * 0001-QrCodeGenerator-Replace-deprecated-BarcodeFormat-QR_.patch
+  * 0001-Support-ZXing-2.0.patch</comment>
+    <requestid>1063958</requestid>
+  </revision>
 </revisionlist>

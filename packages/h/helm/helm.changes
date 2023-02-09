@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Feb  9 11:07:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.1 (bsc#1208084, CVE-2023-25165)
+  * Update to func handling
+- from version 3.11.0
+  * Fix improper use of Table request/response to k8s API
+  * Check status code before retrying request
+  * bump version to v3.11.0
+  * Bump containerd to 1.6.15, oras-go to 1.2.2 and image-spec to v1.1.0-rc2
+  * change linting error messages for null values in arrays
+  * Fix after CR
+  * Trigger CI
+  * Add test for User-Agent header setting and refactor
+  * Fix User-Agent header in requests made by Helm
+  * Bump k8s.io deps to v0.26.0
+  * fix adopted resource not replaced
+  * chore(deps): bump github.com/BurntSushi/toml from 1.2.0 to 1.2.1
+  * Resolve conflicts for go.mod and go.sum
+  * Fix backwards compatibility
+  * docs: add docs for cli/values.Options
+  * Update chartrepo.go
+  * chore(deps): bump golang.org/x/text from 0.4.0 to 0.5.0
+  * bump sprig version 3.2.3
+  * Update string handling
+  * Update repo handling
+  * improve error message on plugin install
+  * harmonize URL reference resolving
+  * Update logic of non-git situation just to print warning logs
+  * Add a flag var to check git is installed or not
+  * Add support for CSVs in template --api-versions arg
+  * update .golangci for go1.18
+  * redirect registry client output to stderr
+  * chore(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.1
+  * Readiness & liveness probes correct port
+  * Update schema validation handling
+  * fix a few function names on comments
+  * use intstr.GetScaledValueFromIntOrPercent instead of the deprecated
+  * Updating the deb location for azure cli
+  * retry http request on temporary errors
+  * Revert "Tolerate temporary errors from etcdserver"
+  * Updating the repo the azure cli is installed from
+  * Updating to kubernetes 1.25.2 packages
+  * Allow CGO_ENABLED to be overridden for build
+  * chore(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * chore(deps): bump github.com/lib/pq from 1.10.6 to 1.10.7
+  * chore(deps): bump github.com/BurntSushi/toml from 1.1.0 to 1.2.0
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.1.2 to 1.2.0
+  * Tolerate temporary errors from etcdserver
+  * update: Optimize the error message
+  * add nil judge for dependency , maintainers validate  and some testcase.
+  * Fix code style
+  * bump version to v3.10.0
+  * Addressing review comments - move printing code out of client.go
+  * Addressing review comments: Extend Interface with new InterfaceResources to avoid breaking changes Move change to staus command behind --show-resources flag
+  * feat(helm): Supporting helm3 to show up resource names that were deployed as part of release in helm status command
+  * During deletion, explicitly log already deleted resource name.
+  * fix: add cases.NoLower option for we can get same effect to strings.Title
+  * one defer
+  * don't change r.CachePath
+  * avoid adding new public function
+  * fix tests
+  * fix: clean up temp files in FindChartInAuthAndTLSAndPassRepoURL (#11171)
+  * Fix URL with encoded path support for ChartDownloader
+
+-------------------------------------------------------------------
 Wed Dec 14 15:50:30 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.10.3 (bsc#1206467, CVE-2022-23524,

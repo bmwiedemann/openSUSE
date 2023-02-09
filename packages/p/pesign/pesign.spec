@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Patch7:         pesign-boo1158197-fix-pesigncheck-gcc10.patch
 # PATCH-FIX-UPSTREAM pesign-boo1185663-set-rpmmacrodir.patch boo#1185663 glin@suse.com -- Set the rpm macro directory at build time
 Patch8:         pesign-boo1185663-set-rpmmacrodir.patch
 Patch9:         harden_pesign.service.patch
+Patch10:        pesign-bsc1202933-Use-normal-file-permissions-instead-of-ACLs.patch
+Patch11:        pesign-bsc1202933-Make-etc-pki-pesign-writeable.patch
 BuildRequires:  efivar-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  mozilla-nss-devel
@@ -68,10 +70,12 @@ with the PE and Authenticode specifications.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
-make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie"
+make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie" libexecdir=%{_libexecdir}
 
 %install
 mkdir -p %{buildroot}%{_localstatedir}/lib/pesign

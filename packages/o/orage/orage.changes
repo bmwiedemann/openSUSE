@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  8 17:00:53 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Changed Orage internal time and data strings to GDateTime (MR !20)
+  * In event list, fixed event hiding when event start at 00:00 and
+    end 00:00 in same date (this kind event can be created when
+    creating full day event, save event and then unset full day option).
+    (MR !20)
+  * Removed bundled libical (Issue #5)
+  * Removed panel plugin (Issue #11)
+  * Removed GlobalTime (Issue #12)
+  * Replaced old Orage icons (Issue #16) and removed 160x160 icons
+  * Replaced deprecated dbus-glib with GDBus (Issue #4)
+  * Changed event attach order in day view window (Issue #15)
+  * Added Wayland support (Issue #2)
+  * Fixed orage_persistent_alarms.txt not found messages (MR !35)
+  * Fixed after wakeup tray icon updating (Issue #14)
+  * Changed alarm_structure to reference counted structure. This
+    fixes warnings about memory leaks (MR !38, replaces MR !8)
+  * Changed libnotify minimum version to 0.7.0 (MR !39)
+  * Disabled sound alarm when sound command is not set (MR !40)
+  * Fixed large ical file import (Issue #8)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Apr  8 10:49:55 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Fix categories in org.xfce.orage.globaltime.desktop

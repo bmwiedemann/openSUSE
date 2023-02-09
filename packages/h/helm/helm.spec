@@ -1,7 +1,7 @@
 #
 # spec file for package helm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define git_commit d506314abfb5d21419df8c7e7e68012379db2354
 %define git_dirty clean
 Name:           helm
-Version:        3.10.3
+Version:        3.11.1
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0

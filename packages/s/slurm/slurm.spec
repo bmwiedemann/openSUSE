@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -1517,7 +1517,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %defattr(-, %slurm_u, %slurm_u, -)
 %dir %attr(-, %slurm_u, %slurm_u) /srv/slurm-testsuite
 %attr(-, root, root) %{_datadir}/%{name}
-%if 0%{?sle_version} == 120200
+%if 0%{?sle_version} == 120200 || 0%{?suse_version} >= 1550
 %dir %{_pam_secconfdir}/limits.d
 %endif
 %doc testsuite/expect/README

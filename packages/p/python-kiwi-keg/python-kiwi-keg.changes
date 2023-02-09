@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 08 17:18:54 UTC 2023 - jgleissner@suse.com
+
+- Update to version 2.0.3:
+  * Bump version: 2.0.2 → 2.0.3
+
+-------------------------------------------------------------------
+Wed Feb 08 17:13:05 UTC 2023 - jgleissner@suse.com
+
+- Update to version 2.0.2:
+  * Use keg instead of kiwi-keg as source dir name
+  * Nameing consistency
+  * Warn if referenced archive is not defined
+  * tox.ini: Use allowlist_external
+  * CI testing: Use Ubuntu 20.04 for python 3.6 build
+  * Fix unit tests of OBS src service module
+  * Regenerate docbook source file
+  * Fix issues with man page sources
+  * Update installation documentation
+
+-------------------------------------------------------------------
 Fri Nov 18 21:03:32 UTC 2022 - jgleissner@suse.com
 
 - Update to version 2.0.2:

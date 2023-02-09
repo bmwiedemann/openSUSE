@@ -1,6 +1,7 @@
 #
 # spec file for package python-kiwi-keg
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 SUSE Software Solutions Germany GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,13 +12,11 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Please submit bugfixes or comments via:
-#
-#       https://github.com/SUSE-Enceladus/keg/issues
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# If they aren't provided by a system installed macro, define them
+
 %{!?_defaultdocdir: %global _defaultdocdir %{_datadir}/doc}
 %{!?__python3: %global __python3 /usr/bin/python3}
 
@@ -43,35 +42,36 @@
 %endif
 
 Name:           python-kiwi-keg
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
-Url:            https://github.com/SUSE-Enceladus/keg
+URL:            https://github.com/SUSE-Enceladus/keg
 Summary:        KEG - Image Composition Tool
 License:        GPL-3.0-or-later
 %if "%{_vendor}" == "debbuild"
 # Needed to set Maintainer in output debs
-Packager:       Public Cloud Team <public-cloud-dev@susecloud.net>
 %endif
 Group:          %{pygroup}
-Source:         kiwi-keg-%{version}.tar.gz
+Source:         keg-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
 BuildRequires:  python%{python3_pkgversion}-%{develsuffix}
 BuildRequires:  python%{python3_pkgversion}-Jinja2
-BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildRequires:  python%{python3_pkgversion}-Sphinx
-BuildRequires:  fdupes
+BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildArch:      noarch
 
 %description
 KEG is an image composition tool for KIWI image descriptions
 
+
 # python3-kiwi-keg
+
 %package -n python%{python3_pkgversion}-kiwi-keg
 Summary:        KEG - Image Composition Tool
 Group:          Development/Languages/Python
+Requires:       python%{python3_pkgversion}-Jinja2
 Requires:       python%{python3_pkgversion}-docopt
 Requires:       python%{python3_pkgversion}-kiwi >= 9.21.21
-Requires:       python%{python3_pkgversion}-Jinja2
 Requires:       python%{python3_pkgversion}-schema
 Requires:       python%{python3_pkgversion}-setuptools
 %if 0%{?ubuntu} || 0%{?debian}
@@ -91,8 +91,8 @@ KEG is an image composition tool for KIWI image descriptions
 %package -n obs-service-compose_kiwi_description
 Summary:        An OBS service: generate KIWI description using KEG
 Group:          Development/Tools/Building
-Requires:       python%{python3_pkgversion}-kiwi-keg
 Requires:       git
+Requires:       python%{python3_pkgversion}-kiwi-keg
 
 %description -n obs-service-compose_kiwi_description
 This is a source service for openSUSE Build Service.
@@ -102,7 +102,7 @@ more given git repositories that contain keg-recipes source tree. It supports
 auto-generation of change log files from commit history.
 
 %prep
-%setup -q -n kiwi-keg-%{version}
+%setup -q -n keg-%{version}
 
 %build
 # Build Python 3 version

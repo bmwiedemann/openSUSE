@@ -730,4 +730,12 @@
     <comment>October 2022 CPU</comment>
     <requestid>1039379</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>793307bebe4b97a2ff18a819ce4d996c</srcmd5>
+    <version>1.8.0.362</version>
+    <time>1675956102</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU fixes</comment>
+    <requestid>1063667</requestid>
+  </revision>
 </revisionlist>

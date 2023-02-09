@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.22.3.orig/requirements.txt oci-cli-3.22.3/requirements.txt
---- oci-cli-3.22.3.orig/requirements.txt	2023-01-24 11:01:27.000000000 +0100
-+++ oci-cli-3.22.3/requirements.txt	2023-01-25 16:27:46.000400884 +0100
+diff -Nru oci-cli-3.22.5.orig/requirements.txt oci-cli-3.22.5/requirements.txt
+--- oci-cli-3.22.5.orig/requirements.txt	2023-02-07 19:11:34.000000000 +0100
++++ oci-cli-3.22.5/requirements.txt	2023-02-08 11:07:27.800184095 +0100
 @@ -2,42 +2,42 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.22.3.orig/requirements.txt oci-cli-3.22.3/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.90.3
+-oci==2.91.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -37,7 +37,7 @@ diff -Nru oci-cli-3.22.3.orig/requirements.txt oci-cli-3.22.3/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.90.3
++oci>=2.91.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -60,6 +60,9 @@ diff -Nru oci-cli-3.22.3.orig/requirements.txt oci-cli-3.22.3/requirements.txt
 -virtualenv==20.13.0
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
+-PyYAML>=5.4,<6
+-docutils==0.15.2
+-prompt-toolkit==3.0.29
 +sphinx>=3.3.0
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.0
@@ -68,24 +71,22 @@ diff -Nru oci-cli-3.22.3.orig/requirements.txt oci-cli-3.22.3/requirements.txt
 +virtualenv>=20.13.0
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
- PyYAML>=5.4,<6
--docutils==0.15.2
--prompt-toolkit==3.0.29
++PyYAML>=5.4
 +docutils>=0.15.2
 +prompt-toolkit>=3.0.29
  setuptools>65.5.1; python_version > '3.6'
 -setuptools==59.6.0; python_version == '3.6'
 \ No newline at end of file
 +setuptools>=59.6.0; python_version >= '3.6'
-diff -Nru oci-cli-3.22.3.orig/setup.py oci-cli-3.22.3/setup.py
---- oci-cli-3.22.3.orig/setup.py	2023-01-24 11:01:27.000000000 +0100
-+++ oci-cli-3.22.3/setup.py	2023-01-25 16:26:58.163937566 +0100
+diff -Nru oci-cli-3.22.5.orig/setup.py oci-cli-3.22.5/setup.py
+--- oci-cli-3.22.5.orig/setup.py	2023-02-07 19:11:34.000000000 +0100
++++ oci-cli-3.22.5/setup.py	2023-02-08 11:06:31.704832653 +0100
 @@ -29,23 +29,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.90.3',
-+    'oci>=2.90.3',
+-    'oci==2.91.0',
++    'oci>=2.91.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==7.1.2',

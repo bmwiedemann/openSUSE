@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  9 08:26:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.0
+  * test: use offscreen QPA for QCoroQuick tests
+  * Update pymdown-extensions requirement from ~=9.8 to ~=9.9
+  * cmake: make sure we explicitly find_package Qt private modules
+  * Update pygments requirement from ~=2.13 to ~=2.14
+  * Implement moveToThread() awaitable
+  * Implement sleepFor() and sleepUntil() coroutines
+  * Make QCoro::waitFor() usable with any awaitable
+  * Fix QCoro::waitFor() for Awaitable with operator co_await
+
+-------------------------------------------------------------------
 Wed Nov 23 08:17:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.7.0. Check

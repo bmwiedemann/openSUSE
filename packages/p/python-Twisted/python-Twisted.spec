@@ -49,6 +49,8 @@ Patch5:         no-pygtkcompat.patch
 Patch6:         remove-dependency-version-upper-bounds.patch
 # PATCH-FIX-UPSTREAM py311-tests-compat.patch gh#twisted/twisted#11734 gh#twisted/twisted#11733
 Patch7:         py311-tests-compat.patch
+# PATCH-FIX-UPSTREAM gh#twisted/twisted#11787
+Patch8:         support-new-glibc.patch
 BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

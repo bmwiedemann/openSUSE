@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Feb  7 17:13:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u362 (icedtea-3.26.0)
+  * January 2023 CPU
+  * CVEs
+    + CVE-2023-21830, bsc#1207249
+    + CVE-2023-21843, bsc#1207248
+  * Security fixes
+    + JDK-8285021: Improve CORBA communication
+    + JDK-8286496: Improve Thread labels
+    + JDK-8288516: Enhance font creation
+    + JDK-8289350: Better media supports
+    + JDK-8293554: Enhanced DH Key Exchanges
+    + JDK-8293598: Enhance InetAddress address handling
+    + JDK-8293717: Objective view of ObjectView
+    + JDK-8293734: Improve BMP image handling
+    + JDK-8293742: Better Banking of Sounds
+    + JDK-8295687: Better BMP bounds
+  * New features
+    + Support for building with autoconf 2.71
+  * Import of OpenJDK 8 u362 build 09
+    + JDK-6885993: Named Thread: introduce print() and 
+      print_on(outputStream* st) methods
+    + JDK-7124218: [TEST_BUG] [macosx] Space should select cell in 
+      the JTable
+    + JDK-8054066: com/sun/jdi/DoubleAgentTest.java fails with 
+      timeout
+    + JDK-8067941: [TESTBUG] Fix tests for OS with 64K page size.
+    + JDK-8071530: Update OS detection code to reflect Windows 10 
+      version change
+    + JDK-8073464: GC workers do not have thread names
+    + JDK-8079255: [TEST_BUG] [macosx] Test closed/java/awt/Robot/
+      /RobotWheelTest/RobotWheelTest fails for Mac only
+    + JDK-8129827: [TEST_BUG] Test java/awt/Robot/RobotWheelTest/
+      /RobotWheelTest.java fails
+    + JDK-8148005: One byte may be corrupted by 
+      get_datetime_string()
+    + JDK-8159599: [TEST_BUG] java/awt/Modal/ModalInternalFrameTest/
+      /ModalInternalFrameTest.java
+    + JDK-8159720: Failure of C2 compilation with tiered prevents 
+      some C1 compilations
+    + JDK-8197859: VS2017 Complains about UINTPTR_MAX definition in 
+      globalDefinitions_VisCPP.hpp
+    + JDK-8206456: [TESTBUG] docker jtreg tests fail on systems 
+      without cpuset.effective_cpus / cpuset.effective_mems
+    + JDK-8221529: [TESTBUG] Docker tests use old/deprecated image 
+      on AArch64
+    + JDK-8224506: [TESTBUG] TestDockerMemoryMetrics.java fails 
+      with exitValue = 137
+    + JDK-8233551: [TESTBUG] SelectEditTableCell.java fails on MacOS
+    + JDK-8241086: Test runtime/NMT/HugeArenaTracking.java is 
+      failing on 32bit Windows
+    + JDK-8253702: BigSur version number reported as 10.16, should 
+      be 11.nn
+    + JDK-8255559: Leak File Descriptors Because of 
+      ResolverLocalFilesystem#engineResolveURI()
+    + JDK-8265527: tools/javac/diags/CheckExamples.java fails after 
+      JDK-8078024 8u backport
+    + JDK-8269039: Disable SHA-1 Signed JARs
+    + JDK-8269850: Most JDK releases report macOS version 12 as 
+      10.16 instead of 12.0
+    + JDK-8270344: Session resumption errors
+    + JDK-8271459: C2: Missing NegativeArraySizeException when 
+      creating StringBuilder with negative capacity
+    + JDK-8273176: handle latest VS2019 in abstract_vm_version
+    + JDK-8274563: jfr/event/oldobject/TestClassLoaderLeak.java 
+      fails when GC cycles are not happening
+    + JDK-8274840: Update OS detection code to recognize Windows 11
+    + JDK-8275887: jarsigner prints invalid digest/signature 
+      algorithm warnings if keysize is weak/disabled
+    + JDK-8280890: Cannot use '-Djava.system.class.loader' with 
+      class loader in signed JAR
+    + JDK-8283277: ISO 4217 Amendment 171 Update
+    + JDK-8283903: GetContainerCpuLoad does not return the correct 
+      result in share mode
+    + JDK-8284389: Improve stability of GHA Pre-submit testing by 
+      caching cygwin installer
+    + JDK-8284622: Update versions of some Github Actions used in 
+      JDK workflow
+    + JDK-8286582: Build fails on macos aarch64 when using 
+      --with-zlib=bundled
+    + JDK-8288928: Incorrect GPL header in pnglibconf.h (backport 
+      of JDK-8185041)
+    + JDK-8289549: ISO 4217 Amendment 172 Update
+    + JDK-8292762: Remove .jcheck directories from jdk8u 
+      subcomponents
+    + JDK-8293181: Bump update version of OpenJDK: 8u362
+    + JDK-8293461: Add a test for JDK-8290832
+    + JDK-8293828: JFR: jfr/event/oldobject/TestClassLoaderLeak.java
+      still fails when GC cycles are not happening
+    + JDK-8294307: ISO 4217 Amendment 173 Update
+    + JDK-8294357: (tz) Update Timezone Data to 2022d
+    + JDK-8294863: Enable partial tier1 testing in GHA for JDK8
+    + JDK-8295164: JDK 8 jdi tests should not use tasklist command 
+      on Windows
+    + JDK-8295173: (tz) Update Timezone Data to 2022e
+    + JDK-8295288: Some vm_flags tests associate with a wrong BugID
+    + JDK-8295714: GHA ::set-output is deprecated and will be 
+      removed
+    + JDK-8295723: security/infra/wycheproof/RunWycheproof.java 
+      fails with Assertion Error
+    + JDK-8295915: Problemlist compiler/rtm failures specific to 8u
+    + JDK-8295950: Enable langtools/tier1 in GHA for 8u
+    + JDK-8296108: (tz) Update Timezone Data to 2022f
+    + JDK-8296239: ISO 4217 Amendment 174 Update
+    + JDK-8296555: Enable hotspot/tier1 for 64-bit builds in GHA 
+      for 8u
+    + JDK-8296715: CLDR v42 update for tzdata 2022f
+    + JDK-8296959: Fix hotspot shell tests of 8u on multilib systems
+    + JDK-8297141: Fix hotspot/test/runtime/SharedArchiveFile/
+      /DefaultUseWithClient.java for 8u
+    + JDK-8297804: (tz) Update Timezone Data to 2022g
+    + JDK-8299439: java/text/Format/NumberFormat/CurrencyFormat.java
+      fails for hr_HR
+    + JDK-8299483: ProblemList java/text/Format/NumberFormat/
+      /CurrencyFormat.java
+    + JDK-8300178: JDK-8286496 causes build failure on older GCC
+    + JDK-8300225: JDK-8288516 causes build failure on Windows + 
+      VS2010
+  * Bug fixes
+    + Don't run check-aes on Zero builds (pointless and slow)
+- Removed patch:
+  * java-1_8_0-openjdk-autoconf27.patch
+    + fixed upstream
+
+-------------------------------------------------------------------
 Thu Dec  1 17:23:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u352 (icedtea-3.25.0)

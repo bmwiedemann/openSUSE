@@ -1011,4 +1011,13 @@
     <comment></comment>
     <requestid>1042071</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>bbd701c78eae5487516a6f4fb6ed6ae9</srcmd5>
+    <version>22.05.5</version>
+    <time>1675956206</time>
+    <user>dimstar_suse</user>
+    <comment>- testsuite: on laster SUSE versions claim ownership of directory
+  /etc/security/limits.d. (forwarded request 1063954 from eeich)</comment>
+    <requestid>1063957</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %define sysroot %{_prefix}/%{binutils_os}/sys-root
 %endif
 
-%if 0%{?usrmerged} || 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 %bcond_without usrmerged
 %else
 %bcond_with usrmerged
@@ -137,10 +137,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.36
+Version:        2.37
 Release:        0
 %if %{without snapshot}
-%define git_id c804cd1c00
+%define git_id a704fd9a13
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -280,36 +280,10 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM glibcextract.py: Add compile_c_snippet
-Patch1000:      glibcextract-compile-c-snippet.patch
-# PATCH-FIX-UPSTREAM linux: Mimic kernel definition for BLOCK_SIZE
-Patch1001:      sys-mount-kernel-definition.patch
-# PATCH-FIX-UPSTREAM linux: Fix sys/mount.h usage with kernel headers
-Patch1002:      sys-mount-usage.patch
-# PATCH-FIX-UPSTREAM nscd: Fix netlink cache invalidation if epoll is used (BZ #29415)
-Patch1003:      nscd-netlink-cache-invalidation.patch
-# PATCH-FIX-UPSTREAM syslog: Fix large messages (CVE-2022-39046, BZ #29536)
-Patch1004:      syslog-large-messages.patch
-# PATCH-FIX-UPSTREAM elf: Call __libc_early_init for reused namespaces (BZ #29528)
-Patch1005:      dlmopen-libc-early-init.patch
-# PATCH-FIX-UPSTREAM elf: Restore how vDSO dependency is printed with LD_TRACE_LOADED_OBJECTS (BZ #29539)
-Patch1006:      ldd-vdso-dependency.patch
-# PATCH-FIX-UPSTREAM syslog: Remove extra whitespace between timestamp and message (BZ #29544)
-Patch1007:      syslog-extra-whitespace.patch
-# PATCH-FIX-UPSTREAM errlist: add missing entry for EDEADLOCK (BZ #29545)
-Patch1008:      errlist-edeadlock.patch
-# PATCH-FIX-UPSTREAM Makerules: fix MAKEFLAGS assignment for upcoming make-4.4 (BZ# 29564)
-Patch1009:      makeflags.patch
-# PATCH-FIX-UPSTREAM get_nscd_addresses: Fix subscript typos (BZ #29605)
-Patch1010:      get-nscd-addresses.patch
-# PATCH-FIX-UPSTREAM check for required cpu features in AVX2 string functions (BZ #29611)
-Patch1011:      x86-64-avx2-string-functions.patch
-# PATCH-FIX-UPSTREAM nscd: Drop local address tuple variable (BZ #29607)
-Patch1012:      nscd-aicache.patch
-# PATCH-FIX-UPSTREAM elf: Reinstate on DL_DEBUG_BINDINGS _dl_lookup_symbol_x
-Patch1013:      dl-debug-bindings.patch
-# PATCH-FIX-UPSTREAM Update _FloatN header support for C++ in GCC 13
-Patch1014:      floatn.patch
+# PATCH-FIX-UPSTREAM Account for grouping in printf width (BZ #30068)
+Patch1000:      printf-grouping.patch
+# PATCH-FIX-UPSTREAM Use 64-bit time_t interfaces in strftime and strptime (BZ #30053)
+Patch1001:      strftime-time64.patch
 
 ###
 # Patches awaiting upstream approval
@@ -536,19 +510,6 @@ library in a cross compilation setting.
 %if %{without snapshot}
 %patch1000 -p1
 %patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
-%patch1011 -p1
-%patch1012 -p1
-%patch1013 -p1
-%patch1014 -p1
 %endif
 
 %patch2000 -p1
@@ -932,10 +893,6 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 install -m 644 %{SOURCE5} %{buildroot}/etc
 %endif
 
-mkdir -p %{buildroot}%{_includedir}/resolv
-install -m 0644 resolv/mapv4v6addr.h %{buildroot}%{_includedir}/resolv/
-install -m 0644 resolv/mapv4v6hostent.h %{buildroot}%{_includedir}/resolv/
-
 %if %{build_html}
 mkdir -p %{buildroot}%{_datadir}/doc/glibc
 cp -p cc-base/manual/libc/*.html %{buildroot}%{_datadir}/doc/glibc
@@ -1060,7 +1017,7 @@ rm -f %{buildroot}%{_libdir}/lib*
 %else
 rm -f %{buildroot}%{_libdir}/lib*.a
 %endif
-rm -f %{buildroot}%{_bindir}/{ld.so,ldd*,sprof}
+rm -f %{buildroot}%{_bindir}/{ld.so,ldd,sprof}
 rm -rf %{buildroot}%{_mandir}/man*
 rm -rf %{buildroot}%{rootsbindir} %{buildroot}%{_includedir}
 %ifarch riscv64
@@ -1259,9 +1216,6 @@ exit 0
 %{_bindir}/getent
 %{_bindir}/iconv
 %attr(755,root,root) %{_bindir}/ldd
-%ifarch %ix86 sparc sparcv9 m68k
-	%{_bindir}/lddlibc4
-%endif
 %{_bindir}/locale
 %{_bindir}/localedef
 %dir %attr(0755,root,root) %{_libexecdir}/getconf

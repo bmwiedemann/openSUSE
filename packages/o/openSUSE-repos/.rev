@@ -47,4 +47,12 @@
   * Add openh264 repos as enabled by default</comment>
     <requestid>1060421</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6648cecf5bfa39ed4eaf81816956a1c8</srcmd5>
+    <version>20230209.87a5e9e</version>
+    <time>1675956218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064008</requestid>
+  </revision>
 </revisionlist>

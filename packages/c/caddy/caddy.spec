@@ -1,7 +1,7 @@
 #
 # spec file for package caddy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0

@@ -9,7 +9,7 @@
     <param name="versionformat">0.2.0~git.%cd</param>
     <param name="revision">master</param>
     -->
-    <param name="revision">0.2.0</param>
+    <param name="revision">0.3.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="recompress" mode="disabled">

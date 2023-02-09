@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  7 15:02:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "cve-2022-46663.patch" to fix a vulnerability in less that
+  could be exploited for denial-of-service attacks or even remote
+  code execution by printing specially crafted escape sequences to
+  the terminal. [CVE-2022-46663, bsc#1207815]
+
+- Refreshed all other patches with quilt to an uniform -p1 patch
+  style, which allows us to use %autosetup and simplify the spec
+  file a bit.
+
+-------------------------------------------------------------------
 Wed Sep 14 09:05:33 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 608:

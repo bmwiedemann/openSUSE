@@ -1,7 +1,7 @@
 #
 # spec file for package python-sidpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %define packagename sidpy
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-sidpy
-Version:        0.0.8
+Version:        0.11.2
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
 URL:            https://pycroscopy.github.io/sidpy/
 Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+BuildRequires:  %{python_module ase}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
 BuildRequires:  %{python_module dask-array >= 0.10}
@@ -40,10 +40,13 @@ BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module scikit-learn}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-ase
 Requires:       python-cytoolz
 Requires:       python-dask >= 0.10
 Requires:       python-dask-array >= 0.10
@@ -57,6 +60,8 @@ Requires:       python-mpi4py
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
 Requires:       python-qt5
+Requires:       python-scikit-learn
+Requires:       python-scipy
 Requires:       python-toolz
 BuildArch:      noarch
 %python_subpackages
@@ -77,7 +82,9 @@ sed -i 's:pytest-runner:pytest:' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Broken test
+donttest="test_standard_serial_compute_few_jobs"
+%pytest -k "not $donttest"
 
 %files %{python_files}
 %doc README.rst

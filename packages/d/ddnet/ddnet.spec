@@ -1,7 +1,7 @@
 #
 # spec file for package ddnet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 Name:           ddnet
-Version:        16.5
+Version:        16.7.2
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
 Group:          Amusements/Games/Action/Race
 URL:            https://ddnet.org/
-Source:         https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
+
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  appstream-glib
+BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -36,6 +40,8 @@ BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pnglite-devel
 BuildRequires:  python3
+BuildRequires:  rust
+BuildRequires:  rust-std
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
@@ -63,7 +69,6 @@ own maps, or run your own server.
 %package        data
 Summary:        Data files for %{name}
 Requires:       %{name} = %{version}-%{release}
-Requires:       hicolor-icon-theme
 BuildArch:      noarch
 
 %description    data
@@ -77,21 +82,38 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Standalone server for DDraceNetwork (DDNet).
 
 %prep
-%autosetup -p1
+%setup -qa1
+
+mkdir cargo-home
+cat >cargo-home/config <<EOF
+[source.crates-io]
+registry = 'https://github.com/rust-lang/crates.io-index'
+replace-with = 'vendored-sources'
+[source."https://github.com/selaux/android-ndk-rs"]
+git = "https://github.com/selaux/android-ndk-rs"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = './vendor'
+EOF
 
 %build
-%cmake \
-  -DPREFER_BUNDLED_LIBS=OFF \
-  -DAUTOUPDATE=OFF \
-  -DANTIBOT=ON \
-  -DUPNP=ON \
-  -DSTEAM=OFF \
-  -DVIDEORECORDER=OFF
-%cmake_build
+export CARGO_HOME=`pwd`/cargo-home/
+mkdir -p build && cd build
+# NOTE that %%cmake macro breaks linking.
+cmake .. \
+    -DCMAKE_BUILD_TYPE=Release  \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+    -DPREFER_BUNDLED_LIBS=OFF \
+    -DAUTOUPDATE=OFF \
+    -DANTIBOT=ON \
+    -DUPNP=ON \
+    -DSTEAM=OFF \
+    -DVIDEORECORDER=OFF
 
 %install
+export CARGO_HOME=`pwd`/cargo-home/
 %cmake_install
-
 install -Dp -m 0644 man/DDNet.6 %{buildroot}%{_mandir}/man6/DDNet.6
 install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man6/DDNet-Server.6
 

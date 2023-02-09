@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  9 09:53:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- CVE-2023-25165: Require helm >= 3.11.1
+
+-------------------------------------------------------------------
 Mon Jan 23 17:02:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.150.0:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  9 07:54:01 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- testsuite: on laster SUSE versions claim ownership of directory
+  /etc/security/limits.d.
+
+-------------------------------------------------------------------
 Fri Dec  2 16:39:45 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Move the ext_sensors/rrd plugin to a separate package: this

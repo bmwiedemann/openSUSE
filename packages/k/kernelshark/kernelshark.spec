@@ -1,7 +1,7 @@
 #
 # spec file for package kernelshark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           kernelshark
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Visualisation tool for trace-cmd data
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/kernel-shark.git
 Source0:        kernelshark-%{version}.tar.xz
-Patch1:         0001-kernel-shark-Build-missed_event-as-GUI-plugin.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
 BuildRequires:  cmake

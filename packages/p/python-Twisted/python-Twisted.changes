@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 08:19:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-glibc.patch:
+  * Support new glibc changes. 
+
+-------------------------------------------------------------------
 Tue Jan 10 17:43:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add py311-tests-compat.patch to fix tests with python 3.11

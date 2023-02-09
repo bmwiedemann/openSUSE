@@ -1,6 +1,7 @@
 #
 # spec file for package voms
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 mischa.salle@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,35 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-Name: voms
-Version: 2.1.0~rc0
-%define upstream_version 2.1.0-rc0
-Release: 0
-Summary: The Virtual Organisation Membership Service
-License: Apache-2.0
-URL: https://wiki.italiangrid.it/VOMS
+
+
+Name:           voms
+Version:        2.1.0~rc3
+%define upstream_version 2.1.0-rc3
+Release:        0
+Summary:        The Virtual Organisation Membership Service
+License:        Apache-2.0
+URL:            https://wiki.italiangrid.it/VOMS
 Source:         https://github.com/italiangrid/voms/archive/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
-#		Check if NID is defined
-#		https://github.com/italiangrid/voms/issues/60
-#		https://github.com/italiangrid/voms/pull/61
-Patch0:		%{name}-nid-defined.patch
-#		Fix for GCC 7
-#		https://github.com/italiangrid/voms/pull/56
-Patch1:		%{name}-gcc7.patch
-#		Create RFC proxies as default
-#		https://github.com/italiangrid/voms/pull/57
-Patch2:		%{name}-default-proxyver.patch
-#		Don't use macros in AC_CHECK_LIB
-#		https://github.com/italiangrid/voms/pull/58
-Patch3:		%{name}-lib-check-no-macro.patch
-#		VOMS API compilation fails against kerberos gss API header
-#		https://github.com/italiangrid/voms/issues/54
-#		https://github.com/italiangrid/voms/pull/62
-Patch4:		%{name}-gssapi-header.patch
-#               We don't build the server and can patch out gsoap dependency
-Patch5:         voms-disable-gsoap.patch
 
 %description
 The Virtual Organization Membership Service (VOMS) is an attribute authority
@@ -51,18 +35,18 @@ certificates and SAML assertions used in the Grid environment for
 authorization purposes.
 
 %package -n libvomsapi1
-Summary:	The Virtual Organisation Membership Service C++ APIs
-Group:		System/Libraries
-BuildRequires:	gcc-c++
+Summary:        The Virtual Organisation Membership Service C++ APIs
+Group:          System/Libraries
+BuildRequires:  gcc-c++
 
-BuildRequires:	libopenssl-devel
-BuildRequires:	libexpat-devel
-BuildRequires:	libtool
-BuildRequires:	pkgconfig
-BuildRequires:	libxslt
-BuildRequires:	docbook-xsl-stylesheets
-BuildRequires:	doxygen
-BuildRequires:	bison
+BuildRequires:  bison
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  doxygen
+BuildRequires:  libexpat-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  libtool
+BuildRequires:  libxslt
+BuildRequires:  pkgconfig
 # Needed for macro fdupes
 BuildRequires:  fdupes
 
@@ -78,11 +62,11 @@ This package provides libraries that applications using the VOMS functionality
 will bind to.
 
 %package devel
-Summary:	Virtual Organization Membership Service Development Files
-Group:		Development/Libraries/C and C++
-Requires:	libvomsapi1%{?_isa} = %{version}-%{release}
-Requires:	libopenssl-devel
-Requires:	automake
+Summary:        Virtual Organization Membership Service Development Files
+Group:          Development/Libraries/C and C++
+Requires:       automake
+Requires:       libopenssl-devel
+Requires:       libvomsapi1%{?_isa} = %{version}-%{release}
 
 %description devel
 The Virtual Organization Membership Service (VOMS) is an attribute authority
@@ -95,20 +79,20 @@ authorization purposes.
 This package provides header files for programming with the VOMS libraries.
 
 %package doc
-Summary:	Virtual Organization Membership Service Documentation
-Group:		Documentation
-BuildArch:	noarch
+Summary:        Virtual Organization Membership Service Documentation
+Group:          Documentation
+BuildArch:      noarch
 
 %description doc
 Documentation for the Virtual Organization Membership Service APIs.
 
 %package clients
-Summary:	Virtual Organization Membership Service Clients
-Group:		Applications/Internet
-Requires:	libvomsapi1%{?_isa} = %{version}-%{release}
+Summary:        Virtual Organization Membership Service Clients
+Group:          Applications/Internet
+Requires:       libvomsapi1%{?_isa} = %{version}-%{release}
 
-Requires(post):	    update-alternatives
-Requires(postun):   update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description clients
 The Virtual Organization Membership Service (VOMS) is an attribute authority
@@ -198,7 +182,7 @@ if [ -r %{_sysconfdir}/vomses.rpmsave -a ! -r %{_sysconfdir}/vomses ] ; then
 fi
 
 %pre clients
-if [ $1 -eq 2 ]; then 
+if [ $1 -eq 2 ]; then
   for c in voms-proxy-init voms-proxy-info voms-proxy-destroy; do
     if [[ -x %{_bindir}/$c && ! -L %{_bindir}/$c ]]; then
       rm -f %{_bindir}/$c
@@ -211,7 +195,7 @@ fi
     --install	%{_bindir}/voms-proxy-init voms-proxy-init \
 		%{_bindir}/voms-proxy-init2 50 \
     --slave	%{_mandir}/man1/voms-proxy-init.1.gz voms-proxy-init-man \
-		%{_mandir}/man1/voms-proxy-init2.1.gz 
+		%{_mandir}/man1/voms-proxy-init2.1.gz
 
 %{_sbindir}/update-alternatives \
     --install	%{_bindir}/voms-proxy-info voms-proxy-info \

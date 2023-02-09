@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define simpletest 1
 
 %ifarch x86_64
@@ -27,16 +28,16 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-Name:           kernel-firmware-nvidia-gsp-G06 
+Name:           kernel-firmware-nvidia-gsp-G06
 URL:            https://www.nvidia.com/en-us/drivers/unix/
-Version:        525.85.05
+Version:        525.89.02
 Release:        0
 Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
-License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
+License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
-Source0:        NVIDIA-Linux-x86_64-%{version}.run       
-Source1:        NVIDIA-Linux-aarch64-%{version}.run       
-Nosource:       0
+Source0:        NVIDIA-Linux-x86_64-%{version}.run
+Source1:        NVIDIA-Linux-aarch64-%{version}.run
+NoSource:       0
 %if 0%{simpletest} == 1
 Source2:        %{name}-rpmlintrc
 ExclusiveArch:  x86_64 aarch64

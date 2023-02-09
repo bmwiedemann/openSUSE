@@ -79,4 +79,117 @@
     <comment></comment>
     <requestid>1035924</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5292379d6d442d60aef989dff9e1d51d</srcmd5>
+    <version>16.7.2</version>
+    <time>1675956189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.7.2:
+  * [Client] Default to Vulkan graphics backend (higher FPS) and
+    handle errors
+  * [Client] Implement exact matches in search and exclude
+    strings using &quot;&quot; in serverbrowser
+  * [Client] Render bar below server browser to show loading
+    progression
+  * [Client] Allow translations to reorder string substitutions
+  * [Client] Ignore connecting players in search terms when
+    &quot;Filter connecting players&quot; is on
+  * [Client] Adjust no weak prediction to updated server code
+  * [Client] Copy the demo timeline markers when slicing a demo
+  * [Client] Handle ordinal joystick hat keys as combined cardinal
+    hat keys
+  * [Client] Add support for hot-plugging gamecontrollers
+  * [Client] Register application separately to specify its
+    displayed name
+  * [Client] Fix signed integer overflow on client input message
+  * [Client] Fix undefined behavior when unpacking snapshot deltas
+  * [Client] Remove possible overflow in str_comp_filenames
+  * [Client] Fix edge cases where demo tick seeking did not work
+  * [Client] Fix smooth zooming overshooting the target zoom level
+  * [Client] Add button that tells you how to save power
+  * [Client] Colorify BW &amp; F-DDrace gamemodes
+  * [Editor] Add tooltips for the buttons that open directories
+    and files
+  * [Editor] Add separate ed_limit_max_zoom_level for editor,
+    fix editor smooth zooming when joining/reloading game
+  * [Editor] Deactivate editor hotkeys while dialog or editbox
+    is active
+  * [Editor] Fix issues when closing multiple editor popups at
+    the same time
+  * [Server] Make restart command work
+  * [Server] Send laser objects as DDNetLaser with type
+  * [Server] Add README.md for the mastersrv, briefly explaining
+    the setup
+  * [Server] Add tool to manually ping the mastersrv
+  * [Server] Persist AFK state of players on map change,
+    fix players always being considered AFK with sv_max_afk_time 0
+  * [Server] Fix scoreboard showing wrong best time
+  * [Server] Swap times should be per player, not per team
+  * [Server] Improve move_sqlite script to adapt timezone
+- Changes in 16.6:
+  * [Tooling] Add support for Rust code in DDNet
+  * [Client] Add friend counter in server browser
+  * [Client] Add buttons+increased length on demo viewbar
+  * [Editor] Improve UI
+  * [Editor] Smooth zoom
+  * [Server] Add 4 minutes of logs for moderators
+  * [Client] Fix crash when cutting a demo opened from
+    command line
+  * [Client] Fix heap-buffer-overflow in DDNetLaser
+    prediction code
+  * [Client] Fix incorrect cursor position after exiting
+    pause/spec
+  * [Client] More confirmation menus
+  * [Client] Fix client crash when launching with screenshot
+    command
+  * [Client] Fix key reader text flashing for one frame
+  * [Client] Remove // in ddnet:// url handler
+  * [Client] Fix client crash when unpacking a sixup packet
+  * [Client] Fix invalid demo cutting, Add slice highlighting
+  * [Client] Fix choppy demo seeking when start/end ticks are
+    very large
+  * [Client] Allow both shift keys to be used for all hotkeys
+  * [Client] Switch to Vulkan 1.1
+  * [Client] Correct color for Gores gametype in serverbrowser
+  * [Client] Fix Ctrl+F hotkey not checking for Ctrl key, minor
+    improvement to tile details popup layout
+  * [Editor] Add &quot;Tools &gt; Remove unused envelopes&quot;
+  * [Editor] Fix large popups being outside of screen, add margin
+  * [Editor] Fix incorrect minimum values for tele, speedup and
+    switch layers
+  * [Editor] Change hotkey Ctrl+A to Ctrl+T for layer/tile details
+  * [Editor] Also append sounds when appending a map to
+    another map 
+  * [Editor] Fix height and margin of sound and image popups
+  * [Editor] Search for images/sounds in subfolders when readding
+    in editor, show selection dialog if multiple files with the
+    same are found, show error popup when file cannot be found
+  * [Editor] Add Shift+G editor hotkey to toggle visibility of
+    game layers
+  * [Editor] Fix editor crash when shifting left/right, fix wrong
+    up/down shifting
+  * [Editor] Adjust quad point position and texture U/V relatively
+  * [Editor] Hex values in info feature
+  * [Editor] Fix crashes when scrolling with up/down keys on empty
+    sounds/images lists
+  * [Editor] Fix text input not working when entering editor with
+    bind, fix IME not being deactivated when editor is closed
+  * [Server] Fix physics change by weak hook fix
+  * [Server] Write log and sqlite files to storage unless given
+    as absolute path
+  * [Server] Add reason to vote mute, fix vote mute
+  * [Server] Reset teams when restarting round 
+  * [Server] Report extra player info to master http
+  * [Server] Fix CGun::Fire server crash
+  * [Tooling] Add an optional vscode workspace
+  * [Tooling] Add vim syntax files for config files
+  * [Tooling] Add tests for int packer, huffman compression
+  * [Tooling] Add more tests for hashing, CSemaphore and
+    utf8 confusables
+- Add _service file to create the cargo_vendor tarball
+- Add BuildRequires cargo and rust to use rust for building
+- Fix branding-requires-unversioned hicolor-icon-theme warning
+</comment>
+    <requestid>1063930</requestid>
+  </revision>
 </revisionlist>

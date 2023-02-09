@@ -471,4 +471,12 @@ See changelog in:
       bsc#1206471, CVE-2022-23526):</comment>
     <requestid>1043303</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6501105c9fdeb125e2858fc0f3be18d0</srcmd5>
+    <version>3.11.1</version>
+    <time>1675956210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063985</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb  9 12:18:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Comment out gtk4-metatheme-breeze until Plasma 5.27
+
+-------------------------------------------------------------------
+Thu Feb  9 09:25:33 UTC 2023 - Denys Madureira <denysmb@zoho.com>
+
+- Add the folowing packages for Plasma Desktop pattern
+- Add spectacle
+- Add plasma5-desktop-emojier and google-noto-coloremoji-fonts
+- Add gtk2-metatheme-breeze, gtk3-metatheme-breeze and gtk4-metatheme-breeze
+- Add oxygen5-sounds
+- Add plasma5-systemmonitor
+- Add libqt5-qtimageformats, kdegraphics-thumbnailers and ffmpegthumbs (for thumbnails)
+- Add kcm_sddm
+
+-------------------------------------------------------------------
+Wed Feb  8 09:50:14 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove gnome-usage (obsolete upstream), restore gnome-system-monitor for
+  GNOME Desktop (boo#1205108) 
+
+-------------------------------------------------------------------
 Wed Jan 11 15:55:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add transactional-update-notifier to the microos_desktop_common

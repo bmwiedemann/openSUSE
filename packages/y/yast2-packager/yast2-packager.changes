@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 17:29:25 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Prevent crash if nil dependencies instead of [] (bsc#1208068)
+- 4.5.14
+
+-------------------------------------------------------------------
 Thu Jan 26 13:52:26 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
 
 - Added wicked-nbft package when Linuxrc sets UseNBFT

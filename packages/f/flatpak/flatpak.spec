@@ -34,7 +34,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -152,6 +152,7 @@ Requires:       flatpak
 Requires(postun):flatpak
 Requires(postun):sed
 Supplements:    flatpak
+BuildArch:      noarch
 
 %description remote-flathub
 Flathub is a widely used repository for Flatpak applications. This package

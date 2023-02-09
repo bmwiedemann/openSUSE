@@ -1,7 +1,7 @@
 #
 # spec file for package tellico
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.4.5
+Version:        3.4.6
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later

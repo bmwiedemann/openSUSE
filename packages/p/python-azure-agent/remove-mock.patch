@@ -1,0 +1,176 @@
+Index: WALinuxAgent-2.8.0.11/tests/common/dhcp/test_dhcp.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/common/dhcp/test_dhcp.py
++++ WALinuxAgent-2.8.0.11/tests/common/dhcp/test_dhcp.py
+@@ -15,7 +15,10 @@
+ # Requires Python 2.6+ and Openssl 1.0+
+ #
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import azurelinuxagent.common.dhcp as dhcp
+ import azurelinuxagent.common.osutil.default as osutil
+ from tests.tools import AgentTestCase, open_patch, patch
+Index: WALinuxAgent-2.8.0.11/tests/common/osutil/test_default.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/common/osutil/test_default.py
++++ WALinuxAgent-2.8.0.11/tests/common/osutil/test_default.py
+@@ -22,7 +22,10 @@ import subprocess
+ import tempfile
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ import azurelinuxagent.common.conf as conf
+ import azurelinuxagent.common.osutil.default as osutil
+Index: WALinuxAgent-2.8.0.11/tests/common/test_event.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/common/test_event.py
++++ WALinuxAgent-2.8.0.11/tests/common/test_event.py
+@@ -26,7 +26,10 @@ import threading
+ import xml.dom
+ from datetime import datetime, timedelta
+ 
+-from mock import MagicMock
++try:
++    from unittest.mock import MagicMock
++except ImportError:
++    from mock import MagicMock
+ 
+ from azurelinuxagent.common.utils import textutil, fileutil
+ from azurelinuxagent.common import event, logger
+Index: WALinuxAgent-2.8.0.11/tests/common/test_version.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/common/test_version.py
++++ WALinuxAgent-2.8.0.11/tests/common/test_version.py
+@@ -20,7 +20,10 @@ from __future__ import print_function
+ import os
+ import textwrap
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ import azurelinuxagent.common.conf as conf
+ from azurelinuxagent.common.future import ustr
+Index: WALinuxAgent-2.8.0.11/tests/distro/test_scvmm.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/distro/test_scvmm.py
++++ WALinuxAgent-2.8.0.11/tests/distro/test_scvmm.py
+@@ -20,7 +20,10 @@
+ import os
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ import azurelinuxagent.daemon.scvmm as scvmm
+ from azurelinuxagent.common import conf
+Index: WALinuxAgent-2.8.0.11/tests/ga/mocks.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/ga/mocks.py
++++ WALinuxAgent-2.8.0.11/tests/ga/mocks.py
+@@ -17,7 +17,10 @@
+ 
+ import contextlib
+ 
+-from mock import PropertyMock
++try:
++    from unittest.mock import PropertyMock
++except ImportError:
++    from mock import PropertyMock
+ from azurelinuxagent.ga.exthandlers import ExtHandlersHandler
+ from azurelinuxagent.ga.remoteaccess import RemoteAccessHandler
+ from azurelinuxagent.ga.update import UpdateHandler, get_update_handler
+Index: WALinuxAgent-2.8.0.11/tests/ga/test_collect_telemetry_events.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/ga/test_collect_telemetry_events.py
++++ WALinuxAgent-2.8.0.11/tests/ga/test_collect_telemetry_events.py
+@@ -26,7 +26,10 @@ import string
+ import uuid
+ from collections import defaultdict
+ 
+-from mock import patch, MagicMock
++try:
++    from unittest.mock import patch, MagicMock
++except ImportError:
++    from mock import patch, MagicMock
+ 
+ from azurelinuxagent.common import conf
+ from azurelinuxagent.common.event import EVENTS_DIRECTORY
+Index: WALinuxAgent-2.8.0.11/tests/ga/test_remoteaccess_handler.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/ga/test_remoteaccess_handler.py
++++ WALinuxAgent-2.8.0.11/tests/ga/test_remoteaccess_handler.py
+@@ -16,7 +16,10 @@
+ #
+ from datetime import timedelta, datetime
+ 
+-from mock import Mock, MagicMock
++try:
++    from unittest.mock import Mock, MagicMock
++except ImportError:
++    from mock import Mock, MagicMock
+ from azurelinuxagent.common.osutil.default import DefaultOSUtil
+ from azurelinuxagent.common.protocol.goal_state import RemoteAccess
+ from azurelinuxagent.common.protocol.util import ProtocolUtil
+Index: WALinuxAgent-2.8.0.11/tests/ga/test_send_telemetry_events.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/ga/test_send_telemetry_events.py
++++ WALinuxAgent-2.8.0.11/tests/ga/test_send_telemetry_events.py
+@@ -24,7 +24,10 @@ import time
+ import uuid
+ from datetime import datetime, timedelta
+ 
+-from mock import MagicMock, Mock, patch, PropertyMock
++try:
++    from unittest.mock import MagicMock, Mock, patch, PropertyMock
++except ImportError:
++    from mock import MagicMock, Mock, patch, PropertyMock
+ 
+ from azurelinuxagent.common import logger
+ from azurelinuxagent.common.datacontract import get_properties
+Index: WALinuxAgent-2.8.0.11/tests/ga/test_update.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/ga/test_update.py
++++ WALinuxAgent-2.8.0.11/tests/ga/test_update.py
+@@ -26,7 +26,10 @@ import azurelinuxagent.common.osutil.def
+ 
+ _ORIGINAL_POPEN = subprocess.Popen
+ 
+-from mock import PropertyMock
++try:
++    from unittest.mock import PropertyMock
++except ImportError:
++    from mock import PropertyMock
+ 
+ from azurelinuxagent.common import conf
+ from azurelinuxagent.common.event import EVENTS_DIRECTORY, WALAEventOperation
+Index: WALinuxAgent-2.8.0.11/tests/utils/test_network_util.py
+===================================================================
+--- WALinuxAgent-2.8.0.11.orig/tests/utils/test_network_util.py
++++ WALinuxAgent-2.8.0.11/tests/utils/test_network_util.py
+@@ -16,7 +16,10 @@
+ #
+ import subprocess
+ 
+-from mock.mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ import azurelinuxagent.common.utils.networkutil as networkutil
+ from tests.tools import AgentTestCase

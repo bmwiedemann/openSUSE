@@ -1,7 +1,7 @@
 #
 # spec file for package logstalgia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,29 @@
 
 
 Name:           logstalgia
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        A website access log visualization tool
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://logstalgia.io/
 Source:         https://github.com/acaudwell/Logstalgia/releases/download/logstalgia-%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  Mesa-libGLU-devel
 BuildRequires:  ftgl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
 BuildRequires:  pkgconfig(freetype2) >= 9.0.3
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(sdl2) >= 2.0
 Requires:       freefont
 %if 0%{?suse_version} > 1325
+BuildRequires:  libboost_filesystem-devel >= 1.46
 BuildRequires:  libboost_headers-devel >= 1.46
+BuildRequires:  libboost_system-devel >= 1.46
 %else
 BuildRequires:  boost-devel >= 1.46
 %endif

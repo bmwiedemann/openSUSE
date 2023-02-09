@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.25.0
+%global icedtea_version 3.26.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       352
-%global buildver        08
+%global updatever       362
+%global buildver        09
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -189,7 +189,6 @@ Patch15:        make-jobserver-detection.patch
 Patch103:       ppc-zero-hotspot.patch
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
-Patch1003:      java-1_8_0-openjdk-autoconf27.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
@@ -411,7 +410,6 @@ this package unless you really need to.
 %ifarch s390
 %patch1002 -p1
 %endif
-%patch1003 -p1
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg

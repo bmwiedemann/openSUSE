@@ -814,4 +814,12 @@ two places:   gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools -/-&gt;
     <comment></comment>
     <requestid>1058160</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>66999d8929e0f14ca75ae0fc47f6f542</srcmd5>
+    <version>1.14.2</version>
+    <time>1675956110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063683</requestid>
+  </revision>
 </revisionlist>

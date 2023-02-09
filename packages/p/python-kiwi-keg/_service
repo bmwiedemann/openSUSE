@@ -2,15 +2,15 @@
   <service name="obs_scm" mode="manual">
     <param name="url">git@github.com:SUSE-Enceladus/keg.git</param>
     <param name="scm">git</param>
-    <param name="version">2.0.2</param>
-    <param name="revision">v2.0.2</param>
-    <param name="filename">kiwi-keg</param>
+    <param name="version">2.0.3</param>
+    <param name="revision">v2.0.3</param>
+    <param name="filename">keg</param>
     <param name="changesgenerate">enable</param>
     <param name="extract">package/python-kiwi-keg.spec</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="buildtime" />
-  <service name="recompress" mode="buildtime">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual" />
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>

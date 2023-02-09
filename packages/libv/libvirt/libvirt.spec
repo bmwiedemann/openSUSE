@@ -306,6 +306,9 @@ Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         ef482951-apparmor-Allow-umount-dev.patch
 Patch1:         d6a8b9ee-qemu-Fix-managed-no-when-creating-ethdev.patch
+Patch2:         c3f16cea-qemu-cleanup-label-on-umount-failure.patch
+Patch3:         697c16e3-qemu_process-better-debug-message.patch
+Patch4:         5155ab4b-qemu_namespace-nested-mounts-when-umount.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

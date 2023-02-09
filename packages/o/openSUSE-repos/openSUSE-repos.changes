@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 09 12:48:24 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230209.87a5e9e:
+  * Drop obsoleting of TW from openSUSE-repos-MicroOS
+  * Do not use distver for TW and MicroOS openh264 repo
+
+-------------------------------------------------------------------
 Mon Jan 23 13:05:23 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230123.088570b:

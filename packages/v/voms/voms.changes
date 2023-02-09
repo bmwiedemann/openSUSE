@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  6 12:36:36 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.1.0~rc3
+  - no useful upstream change entry
+- voms-gcc7.patch: upstreamed
+- voms-lib-check-no-macro.patch: upstreamed
+- voms-default-proxyver.patch: upstreamed
+- voms-nid-defined.patch: upstreamed
+- voms-gssapi-header.patch: upstreamed
+- voms-disable-gsoap.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Jan 27 07:30:48 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - initial commit of voms 2.1.0~rc0 which is a library for 

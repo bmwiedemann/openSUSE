@@ -61,7 +61,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20230123.088570b
+Version:        20230209.87a5e9e
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -74,15 +74,12 @@ Requires:       zypper
 Conflicts:      otherproviders(openSUSE-repos)
 Provides:       openSUSE-repos
 %if "%{?theme}" == "Tumbleweed"
-# Unconditionally ensure Leap upgrades to Tumbleweed
 Obsoletes:      openSUSE-repos-Leap
 Obsoletes:      openSUSE-repos-LeapMicro
 %endif
 %if "%{?theme}" == "MicroOS"
-# Support migration from literally anything including TW to MicroOS
 Obsoletes:      openSUSE-repos-Leap
 Obsoletes:      openSUSE-repos-LeapMicro
-Obsoletes:      openSUSE-repos-Tumbleweed
 %endif
 
 %description

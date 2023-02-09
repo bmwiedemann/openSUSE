@@ -42,6 +42,10 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
+# On Leap, setuptools_scm does not explicitly require toml, but needs it to provide the correct version in dist-info.
+%if 0%{?suse_version} < 1550
+BuildRequires:  python3-toml
+%endif
 BuildRequires:  unzip
 Requires:       mercurial
 Requires:       python3-dulwich >= 0.19.0

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       5
-%global buildver        8
+%global updatever       6
+%global buildver        10
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -1069,7 +1069,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
-%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %if ! %{with zero}

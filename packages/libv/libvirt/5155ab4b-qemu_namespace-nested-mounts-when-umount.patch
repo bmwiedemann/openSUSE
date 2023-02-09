@@ -1,0 +1,54 @@
+From 927ddc0ec04e6a838fa807df4546e14f60927949 Mon Sep 17 00:00:00 2001
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 7 Feb 2023 15:06:32 +0100
+Subject: [PATCH 3/3] qemu_namespace: Deal with nested mounts when umount()-ing
+ /dev
+
+In one of recent commits (v9.0.0-rc1~106) I've made our QEMU
+namespace code umount the original /dev. One of the reasons was
+enhanced security, because previously we just mounted a tmpfs
+over the original /dev. Thus a malicious QEMU could just
+umount("/dev") and it would get to the original /dev with all
+nodes.
+
+Now, on some systems this introduced a regression:
+
+   failed to umount devfs on /dev: Device or resource busy
+
+But how this could be? We've moved all file systems mounted under
+/dev to a temporary location. Or have we? As it turns out, not
+quite. If there are two file systems mounted on the same target,
+e.g. like this:
+
+  mount -t tmpfs tmpfs /dev/shm/ && mount -t tmpfs tmpfs /dev/shm/
+
+then only the top most (i.e. the last one) is moved. See
+qemuDomainUnshareNamespace() for more info.
+
+Now, we could enhance our code to deal with these "doubled" mount
+points. Or, since it is the top most file system that is
+accessible anyways (and this one is preserved), we can
+umount("/dev") in a recursive fashion.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2167302
+Fixes: 379c0ce4bfed8733dfbde557c359eecc5474ce38
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Jim Fehlig <jfehlig@suse.com>
+(cherry picked from commit 5155ab4b2a704285505dfea6ffee8b980fdaa29e)
+---
+ src/qemu/qemu_namespace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libvirt-9.0.0/src/qemu/qemu_namespace.c
+===================================================================
+--- libvirt-9.0.0.orig/src/qemu/qemu_namespace.c
++++ libvirt-9.0.0/src/qemu/qemu_namespace.c
+@@ -777,7 +777,7 @@ qemuDomainUnshareNamespace(virQEMUDriver
+     }
+ 
+ #if defined(__linux__)
+-    if (umount("/dev") < 0) {
++    if (umount2("/dev", MNT_DETACH) < 0) {
+         virReportSystemError(errno, "%s", _("failed to umount devfs on /dev"));
+         goto cleanup;
+     }

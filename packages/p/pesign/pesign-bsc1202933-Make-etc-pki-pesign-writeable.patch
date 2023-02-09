@@ -1,0 +1,25 @@
+From 73cd25615367ff1f9a19fdfd38017f68a12a354d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 7 Feb 2023 15:34:09 +0800
+Subject: [PATCH] Make /etc/pki/pesign/ writeable
+
+The default NSS database for the pesign daemon is stored in /etc/pki/pesign/.
+Make it writeable after hardening the service.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/pesign.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/pesign.service.in b/src/pesign.service.in
+index 87accee..8542c63 100644
+--- a/src/pesign.service.in
++++ b/src/pesign.service.in
+@@ -20,3 +20,4 @@ Type=forking
+ PIDFile=/run/pesign.pid
+ ExecStart=/usr/bin/pesign --daemonize
+ ExecStartPost=@@LIBEXECDIR@@/pesign/pesign-authorize
++ReadWritePaths=/etc/pki/pesign/
+-- 
+2.35.3
+

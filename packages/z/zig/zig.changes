@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  2 02:13:28 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable build with riscv64 and %{mips64} arches.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:41:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Declare Group as "Development/Languages/Other" to remove some warnings.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:12:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix version required for LLVM on Leap.
+
+-------------------------------------------------------------------
 Wed Jan 25 03:31:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add rpm-macros to recommends.

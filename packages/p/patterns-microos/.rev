@@ -579,4 +579,24 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1058720</requestid>
   </revision>
+  <revision rev="61" vrev="61">
+    <srcmd5>348ba0848e14684692ed676625f5cbcd</srcmd5>
+    <version>5.0</version>
+    <time>1675956141</time>
+    <user>dimstar_suse</user>
+    <comment>- Comment out gtk4-metatheme-breeze until Plasma 5.27
+
+- Add the folowing packages for Plasma Desktop pattern
+- Add spectacle
+- Add plasma5-desktop-emojier and google-noto-coloremoji-fonts
+- Add gtk2-metatheme-breeze, gtk3-metatheme-breeze and gtk4-metatheme-breeze
+- Add oxygen5-sounds
+- Add plasma5-systemmonitor
+- Add libqt5-qtimageformats, kdegraphics-thumbnailers and ffmpegthumbs (for thumbnails)
+- Add kcm_sddm
+
+- Remove gnome-usage (obsolete upstream), restore gnome-system-monitor for
+  GNOME Desktop (boo#1205108)</comment>
+    <requestid>1064003</requestid>
+  </revision>
 </revisionlist>

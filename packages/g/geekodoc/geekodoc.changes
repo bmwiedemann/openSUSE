@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 13:22:47 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.0
+
+- Release 2.2.0
+  - Base GeekoDoc2 on DocBook 5.2CR5
+  - Correct GeekoDoc1 with transclusion attributes. The transclusion.rnc
+    file is reduced to the bare minimum as those attributes are
+    provided by DocBook 5.2CR5 already.
+
+-------------------------------------------------------------------
 Thu Apr 21 16:29:55 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.1.1
 
 - Release 2.1.1

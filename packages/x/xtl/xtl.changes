@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 21 17:28:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.5:
+  * added a backport of the C++20 header for integer comparison
+
+-------------------------------------------------------------------
 Tue Oct 18 19:15:36 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Enable unit test at package build

@@ -1,7 +1,7 @@
 #
 # spec file for package kaidan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,16 @@ Version:        0.8.0
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND AML AND CC-BY-SA-4.0
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://www.kaidan.im
 Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kaidan.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-QrCodeDecoder-Replace-deprecated-BarcodeFormat-QR_CO.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-QrCodeGenerator-Replace-deprecated-BarcodeFormat-QR_.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Support-ZXing-2.0.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  extra-cmake-modules >= 5.40.0
 BuildRequires:  update-desktop-files

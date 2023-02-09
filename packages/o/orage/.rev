@@ -15,4 +15,12 @@
     <comment>- Fix categories in org.xfce.orage.globaltime.desktop (forwarded request 967750 from mauriziogalli)</comment>
     <requestid>967757</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db1daca20d06b4cc36f64d4a1cdb7594</srcmd5>
+    <version>4.18.0</version>
+    <time>1675956197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063949</requestid>
+  </revision>
 </revisionlist>

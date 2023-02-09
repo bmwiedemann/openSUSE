@@ -73,7 +73,7 @@
   boo#1204604: '20221109'
   boo#1204605: '20221022'
   boo#1204629: '20221024'
-  boo#1204833: '20230207'
+  boo#1204833: '20230208'
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
@@ -98,10 +98,10 @@
   boo#1206614: '20230208'
   boo#1206949: '20230119'
   boo#1207382: '20230123'
-  boo#1207384: '20230207'
+  boo#1207384: '20230208'
   boo#1207385: '20230208'
   boo#1207386: '20230208'
-  boo#1207390: '20230207'
+  boo#1207390: '20230208'
   boo#1207509: '20230126'
   boo#1207524: '20230125'
   boo#1207567: '20230125'
@@ -211,15 +211,16 @@
   poo#122557: '20230118'
   poo#122776: '20230110'
   poo#122809: '20230111'
-  poo#122926: '20230207'
+  poo#122926: '20230208'
   poo#123127: '20230208'
   poo#123577: '20230124'
   poo#123637: '20230126'
-  poo#123739: '20230207'
+  poo#123739: '20230208'
   poo#123763: '20230206'
   poo#123855: '20230131'
   poo#123918: '20230205'
-  poo#123924: '20230207'
+  poo#123924: '20230208'
+  poo#124077: '20230208'
   poo#63397: '20220921'
   poo#80628: '20230208'
   poo#99312: '20220502'
@@ -265,7 +266,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230208</value>
+    <value>20230209</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -283,22 +284,16 @@ products:
   - ceph-image:
     - x86_64
   - csi-attacher-image:
-    - i586
     - x86_64
   - csi-livenessprobe-image:
-    - i586
     - x86_64
   - csi-node-driver-registrar-image:
-    - i586
     - x86_64
   - csi-provisioner-image:
-    - i586
     - x86_64
   - csi-resizer-image:
-    - i586
     - x86_64
   - csi-snapshotter-image:
-    - i586
     - x86_64
   - kubic-coredns-image:
     - x86_64
@@ -337,12 +332,10 @@ products:
   - kubic-nfs-client-provisioner-image:
     - x86_64
   - kubic-pause-image:
-    - i586
     - x86_64
   - kubic-rbac-manager-image:
     - x86_64
   - kubic-velero-image:
-    - i586
     - x86_64
   - kubic-weave-kube-image:
     - x86_64
@@ -390,19 +383,13 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-#  - opensuse-tensorflow2-image:
-#    - x86_64
   - opensuse-toolbox-image:
-    - i586
     - x86_64
   - opensuse-tumbleweed-image:docker:
-    - i586
     - x86_64
   - opensuse-tumbleweed-dnf-image:docker-dnf:
-    - i586
     - x86_64
   - opensuse-tumbleweed-dnf-image:docker-microdnf:
-    - i586
     - x86_64
   - opensuse-wsdd-image:
     - x86_64
@@ -411,16 +398,12 @@ products:
   - prometheus-webhook-snmp-image:
     - x86_64
   - tumbleweed-busybox-image:
-    - i586
     - x86_64
   - busybox-image:
-    - i586
     - x86_64
   - micro-image:
-    - i586
     - x86_64
   - minimal-image:
-    - i586
     - x86_64
   containerfile:
   - cdi-apiserver-container:
@@ -438,62 +421,44 @@ products:
   - cdi-uploadserver-container:
     - x86_64
   - cups-image:
-    - i586
     - x86_64
   - go1.16-devel-container:
-    - i586
     - x86_64
   - go1.17-devel-container:
-    - i586
     - x86_64
   - go1.18-devel-container:
-    - i586
     - x86_64
   - httpd-image:
-    - i586
     - x86_64
   - influxdb-image:
     - x86_64
   - java11-devel-container:
-    - i586
     - x86_64
   - java15-devel-container:
-    - i586
     - x86_64
   - keylime-control-plane-image:
-    - i586
     - x86_64
   - microos-docserv-image:
     - x86_64
   - opensuse-memcached-image:
-    - i586
     - x86_64
   - rust-keylime-image:
-    - i586
     - x86_64
   - samba-ad-dc-image:
-    - i586
     - x86_64
   - samba-ad-server:
-    - i586
     - x86_64
   - samba-client:
-    - i586
     - x86_64
   - samba-server:
-    - i586
     - x86_64
   - samba-toolbox:
-    - i586
     - x86_64
   - samba-image:
-    - i586
     - x86_64
   - tomcat-image:
-    - i586
     - x86_64
   - init-image:
-    - i586
     - x86_64
   - virt-api-container:
     - x86_64
@@ -508,7 +473,6 @@ products:
   - virt-operator-container:
     - x86_64
   - virt-vmdp-container:
-    - i586
     - x86_64
   - virt-exportproxy-container:
     - x86_64
@@ -564,22 +528,16 @@ products:
   - openSUSE-MicroOS:VMware:
     - x86_64
   - opensuse-tumbleweed-dnf-image:lxc-dnf:
-    - i586
     - x86_64
   - opensuse-tumbleweed-dnf-image:lxc-microdnf:
-    - i586
     - x86_64
   - opensuse-tumbleweed-dnf-image:networkd-dnf:
-    - i586
     - x86_64
   - opensuse-tumbleweed-dnf-image:networkd-microdnf:
-    - i586
     - x86_64
   - opensuse-tumbleweed-image:lxc:
-    - i586
     - x86_64
   - opensuse-tumbleweed-image:networkd:
-    - i586
     - x86_64
   - openSUSE-Tumbleweed-Yomi:livecd:
     - x86_64
@@ -608,9 +566,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230208'
-published: '20230207'
-publishing: '20230207'
+    <value>failed: ''
+published: '20230208'
+publishing: '20230208'
 testing: '20230208'
 </value>
   </attribute>

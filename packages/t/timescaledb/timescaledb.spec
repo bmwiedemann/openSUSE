@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.6.0
+Version:        2.9.3
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
@@ -29,8 +29,6 @@ Group:          Productivity/Databases/Tools
 URL:            https://www.timescale.com/
 Source:         https://github.com/timescale/%{ext_name}/archive/%{version}/%{ext_name}-%{version}.tar.gz
 Source1:        series
-Patch1:         clang-format9_support.diff
-Patch2:         https://github.com/timescale/timescaledb/commit/ab6b90caf.patch
 
 BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  cmake >= 3.11

@@ -339,4 +339,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
 - Change to systemd-sysusers</comment>
     <requestid>932763</requestid>
   </revision>
+  <revision rev="41" vrev="11">
+    <srcmd5>cdc34f34211646e9e3d5b037171eaa9f</srcmd5>
+    <version>113</version>
+    <time>1675956111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063715</requestid>
+  </revision>
 </revisionlist>

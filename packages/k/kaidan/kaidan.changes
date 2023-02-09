@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  9 08:09:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patches to fix build with ZXing >= 2.0:
+  * 0001-QrCodeDecoder-Replace-deprecated-BarcodeFormat-QR_CO.patch
+  * 0001-QrCodeGenerator-Replace-deprecated-BarcodeFormat-QR_.patch
+  * 0001-Support-ZXing-2.0.patch
+
+-------------------------------------------------------------------
 Fri Oct  1 16:00:38 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to 0.8.0:

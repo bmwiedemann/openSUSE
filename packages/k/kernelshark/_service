@@ -3,8 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://git.kernel.org/pub/scm/utils/trace-cmd/kernel-shark.git</param>
     <param name="filename">kernelshark</param>
-    <param name="revision">kernelshark-v2.1.1</param>
-    <param name="version">v2.1.1</param>
+    <param name="revision">kernelshark-v2.2.0</param>
+    <param name="version">v2.2.0</param>
     <param name="match-tag">kernelshark-*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

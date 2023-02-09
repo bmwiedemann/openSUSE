@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 17:48:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607):
+  * CVE-2023-24607-qtbase-6.4.diff
+
+-------------------------------------------------------------------
 Fri Jan  6 16:46:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.2:
