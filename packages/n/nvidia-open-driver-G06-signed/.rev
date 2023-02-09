@@ -63,4 +63,15 @@
     <comment>- Update to version 525.89.02</comment>
     <requestid>1063917</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0b2f5e08291b5b74dcad8f97d571605d</srcmd5>
+    <version>525.89.02</version>
+    <time>1676038113</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer use %hardcode_pci_list macro on sle15/Leap15, since the
+  issue with generating wrong PCI ID modaliases for Supplements
+  has been fixed meanwhile also in pesign-obs-integration package
+  for sle15/Leap15 (boo#1207520)</comment>
+    <requestid>1064248</requestid>
+  </revision>
 </revisionlist>

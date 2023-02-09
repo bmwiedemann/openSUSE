@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:49:44 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer use %hardcode_pci_list macro on sle15/Leap15, since the
+  issue with generating wrong PCI ID modaliases for Supplements
+  has been fixed meanwhile also in pesign-obs-integration package
+  for sle15/Leap15 (boo#1207520)
+
+-------------------------------------------------------------------
 Wed Feb  8 21:50:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 525.89.02
