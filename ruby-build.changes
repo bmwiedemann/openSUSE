@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  8 17:12:06 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230208.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230208.1
+  * Add Ruby 3.2.1 by @pmor in #2147
+  * Remove obsolete `topaz-dev` formula by @hsbt in #2146
+- Changes from version 20230208.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230208
+  * Remove patch for openssl-1.1.1q by @eregon in #2139
+  * Add JRuby 9.4.1.0 by @headius in #2138
+  * Added dependabot update for GitHub Actions by @hsbt in #2141
+  * Bump actions/checkout from 2 to 3 by @dependabot in #2142
+  * Update old versions of JRuby URLs by @hsbt in #2145
+  * Bump up latest stable versions of OpenSSL by @hsbt in #2140
+  * Bump mislav/bump-homebrew-formula-action from 1 to 2 by @dependabot in #2143
+  * Bump redhat-plumbers-in-action/differential-shellcheck from 3 to 4 by @dependabot in #2144
+
+-------------------------------------------------------------------
 Wed Feb  1 22:53:16 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230202.
