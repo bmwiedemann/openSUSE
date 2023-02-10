@@ -1,6 +1,8 @@
---- mysql-connector-c++-8.0.25-src/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp	2021-03-15 17:21:15.000000000 +0200
-+++ mysql-connector-c++-8.0.25-mod/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp	2021-05-12 17:23:50.806629061 +0300
-@@ -403,7 +403,11 @@
+Index: b/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp
+===================================================================
+--- a/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp
++++ b/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp
+@@ -479,7 +479,11 @@ int MySQL_NativeConnectionWrapper::get_p
  /* {{{ MySQL_NativeConnectionWrapper::has_query_attributes() */
  bool MySQL_NativeConnectionWrapper::has_query_attributes()
  {
@@ -11,4 +13,18 @@
 +#endif
  }
  /* }}} */
+ 
+Index: b/cdk/include/mysql/cdk/foundation/CMakeLists.txt
+===================================================================
+--- a/cdk/include/mysql/cdk/foundation/CMakeLists.txt
++++ b/cdk/include/mysql/cdk/foundation/CMakeLists.txt
+@@ -48,7 +48,8 @@ CHECK_CXX_SOURCE_COMPILES(
+  ADD_CONFIG(HAVE_STATIC_ASSERT)
+ 
+ CHECK_CXX_SOURCE_COMPILES(
+- "void main() { return is_same<bool,char>::value; }"
++ "#include <type_traits>
++  int main() { return std::is_same<bool,char>::value; }"
+  HAVE_IS_SAME)
+  ADD_CONFIG(HAVE_IS_SAME)
  

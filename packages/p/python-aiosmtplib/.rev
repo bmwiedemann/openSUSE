@@ -93,4 +93,14 @@
 </comment>
     <requestid>1035265</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc485cb3debaadea16a3a1b01e3f1773</srcmd5>
+    <version>2.0.1</version>
+    <time>1676036166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Bugfix: &quot;tests&quot; and &quot;docs&quot; in the sdist should be includes,
+    not packages, so that they do not get put in site-packages.</comment>
+    <requestid>1064217</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:19:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Fix ext:database backend failing to initialize
+  * Improved inline code documentation for the crypto module
+
+-------------------------------------------------------------------
 Tue Jan  3 08:16:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually correct BuildRequires. 

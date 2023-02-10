@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 10:39:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.3.5
+  * bug fix release which fixes bugs found since Mesa 22.3.4
+  * see https://docs.mesa3d.org/relnotes/22.3.5.html for more
+    details
+- refreshed u_dep_xcb.patch
+
+-------------------------------------------------------------------
 Mon Feb  6 13:52:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Don't enable rusticl without opencl

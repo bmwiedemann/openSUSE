@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  9 10:17:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v5.15.9
+  * Fix the order in which modules are built so that the composite
+    Qt module is built after everything it depends on.
+
+-------------------------------------------------------------------
 Sun Jan 29 19:45:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.15.8

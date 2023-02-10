@@ -137,4 +137,12 @@ Prefer: -waybar-branding-openSUSE
     <comment></comment>
     <requestid>1062998</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>bbec67565d548687f04b8ec0bdd6e27c</srcmd5>
+    <version>0.15</version>
+    <time>1676036157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064222</requestid>
+  </revision>
 </revisionlist>

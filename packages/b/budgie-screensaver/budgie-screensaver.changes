@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:52:31 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use new budgie namespace for XDG autostart
+
+-------------------------------------------------------------------
 Thu Jan 12 16:28:22 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

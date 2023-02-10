@@ -17,7 +17,7 @@
 
 
 Name:           python-sip6
-Version:        6.7.5
+Version:        6.7.7
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP

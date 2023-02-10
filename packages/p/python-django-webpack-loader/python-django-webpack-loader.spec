@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-webpack-loader
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Django plugin to transparently use webpack
 License:        MIT

@@ -33,13 +33,13 @@ Cr-Commit-Position: refs/heads/main@{#1073605}
  .../idn_spoof_checker_unittest.cc             | 28 +++++++++++--------
  2 files changed, 25 insertions(+), 12 deletions(-)
 
-diff --git a/components/url_formatter/spoof_checks/idn_spoof_checker.cc b/components/url_formatter/spoof_checks/idn_spoof_checker.cc
-index aaff7c60bb918..87f62e49f487f 100644
---- a/components/url_formatter/spoof_checks/idn_spoof_checker.cc
-+++ b/components/url_formatter/spoof_checks/idn_spoof_checker.cc
-@@ -713,6 +713,15 @@ void IDNSpoofChecker::SetAllowedUnicodeSet(UErrorCode* status) {
-   allowed_set.remove(0xA640u, 0xA69Fu);  // Cyrillic Extended-B
-   allowed_set.remove(0xA720u, 0xA7FFu);  // Latin Extended-D
+Index: chromium-110.0.5481.38/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+===================================================================
+--- chromium-110.0.5481.38.orig/components/url_formatter/spoof_checks/idn_spoof_checker.cc
++++ chromium-110.0.5481.38/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+@@ -722,6 +722,15 @@ void IDNSpoofChecker::SetAllowedUnicodeS
+   allowed_set.remove(0x200Du);  // Zero Width Joiner
+ #endif
  
 +#if U_ICU_VERSION_MAJOR_NUM < 72
 +  // Unicode 15 changes ZWJ and ZWNJ from allowed to restricted. Restrict them

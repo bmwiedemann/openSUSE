@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:20:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Add a `FakeWebpackLoader` for running tests
+
+-------------------------------------------------------------------
 Fri Jan 20 15:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:

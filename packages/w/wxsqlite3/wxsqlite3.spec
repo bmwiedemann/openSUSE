@@ -1,7 +1,7 @@
 #
 # spec file for package wxsqlite3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define wx_version_soname  %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@')
 %define sover 0
 Name:           wxsqlite3
-Version:        4.8.1
+Version:        4.9.1
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1
 URL:            https://github.com/utelle/wxsqlite3
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/utelle/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  gcc-c++

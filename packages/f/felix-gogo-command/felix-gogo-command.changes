@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:13:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.1.2
+- Changes from 1.1.0 to 1.1.2
+  * Improvement
+    + [FELIX-6038] - pull Java 7 support back in for gogo runtime,
+      shell and console
+- Changes from 1.0.2 to 1.1.0
+  * Bug
+    + [FELIX-5143] - Gogo Command bundle should not include
+      org.osgi.service.log classes
+    + [FELIX-5958] - gogo command exports org.osgi.service.log
+  * New Feature
+    + [FELIX-5835] - Upgrade to JDK 8
+    + [FELIX-5836] - Upgrade to OSGi r6
+  * Improvement
+    + [FELIX-5969] - remove transitive dependencies from gogo
+      command
+    + [FELIX-5970] - Add requirement & capabilities model so gogo
+      can be resolved
+    + [FELIX-5999] - cleanup compiler warnings
+    + [FELIX-6002] - Remove legacy code in Gogo Command
+    + [FELIX-6003] - Add some resolver checks to make sure
+      @RequireGogo annotation works for both jline and shell
+    + [FELIX-6007] - create a gogo bom
+
+-------------------------------------------------------------------
 Tue Mar 22 09:00:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove forcing of maven.compiler.release, since it is not needed

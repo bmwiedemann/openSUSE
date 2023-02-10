@@ -31,4 +31,12 @@
     <comment>bsc#1205463, CVE-2022-45047</comment>
     <requestid>1036214</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4e6346a41c7ac700a4fab8d9f698fcac</srcmd5>
+    <version>2.9.2</version>
+    <time>1676036127</time>
+    <user>dimstar_suse</user>
+    <comment>cleanup</comment>
+    <requestid>1064155</requestid>
+  </revision>
 </revisionlist>

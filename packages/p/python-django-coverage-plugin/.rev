@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1003759</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb63b77cf1bd3f9f40297b2315136bde</srcmd5>
+    <version>3.0.0</version>
+    <time>1676036176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Dropped support for Python 2.7, Python 3.6, and Django 1.8.
+  * Declare our support for Python 3.11 and Django 4.1.</comment>
+    <requestid>1064240</requestid>
+  </revision>
 </revisionlist>

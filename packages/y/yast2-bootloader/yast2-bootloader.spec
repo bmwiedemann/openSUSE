@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-bootloader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.5.7
+Version:        4.5.8
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -39,7 +39,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:cfa_grub2) >= 1.0.1
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
-PreReq:         /bin/sed %fillup_prereq
+PreReq:         %fillup_prereq
+PreReq:         /bin/sed
 # Base classes for inst clients
 Requires:       parted
 # ReducedRecorder

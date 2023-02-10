@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 10 03:09:26 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230210.df3b7a92:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: behave: Adjust functional test for previous change
+  * Dev: utils: Add sudo for the commands in user hints
+
+-------------------------------------------------------------------
+Wed Feb 08 14:31:39 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230208.b437e499:
+  * Dev: spec: Requires parallax version 1.0.8
+
+-------------------------------------------------------------------
+Tue Feb 07 07:23:40 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230207.3485cdd1:
+  * Fix: hawk fails to parse the slash (bsc#1206217)
+
+-------------------------------------------------------------------
+Sat Jan 28 08:04:37 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230128.8541d6a8:
+  * Fix: extra logs while configuring passwordless (bsc#1207720)
+
+-------------------------------------------------------------------
 Tue Jan 17 08:42:48 UTC 2023 - nicholas.yang@suse.com
 
 - Update to version 4.4.1+20230117.fb8b3c2b:

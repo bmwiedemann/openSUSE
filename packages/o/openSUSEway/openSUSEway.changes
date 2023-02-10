@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  3 10:43:28 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Automatically format the spec file after extracting it.
+  Any meaningful changes can be manually fed back to the upstream Git repo.
+
+-------------------------------------------------------------------
+Fri Feb  3 10:28:58 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Automatically extract the spec file
+  The spec file is now maintained in Git. The `extract` parameter of the
+  `obs_scm` service allows you to automatically extract the file from the
+  obscpio archive when running the service, updating the OBS copy of the spec
+  file to the upstream maintained one.
+
+-------------------------------------------------------------------
 Wed Feb  1 10:12:18 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add _service file, replace .tar.gz with .obscpio

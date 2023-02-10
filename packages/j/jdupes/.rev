@@ -38,4 +38,26 @@
   * Some minor under-the-hood changes for future enhancements</comment>
     <requestid>1040814</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb00d6ff97e806ab31527afd6bf010e9</srcmd5>
+    <version>1.21.3</version>
+    <time>1676036064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.3:
+  * Major performance fix in the double traversal prevention tree
+    code
+  * Added undocumented '-9' benchmark option for testing traversal
+    code
+  * Extra error checks to try to finally solve a very rare crash
+    bug
+  * Tiny code size reduction by discarding unused xxHash code
+  * jody_hash re-added as a build-time option
+  * Many options/features/safety checks can now be selectively
+    compiled out
+  * New 'make BARE_BONES=1' option builds the most minimal jdupes
+    possible
+  * Fix exit behavior when no valid directories are given
+  * Only act on &quot;normal&quot; files and directories</comment>
+    <requestid>1064066</requestid>
+  </revision>
 </revisionlist>

@@ -25,4 +25,15 @@
     <comment></comment>
     <requestid>975101</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e3788cebcda16b4ee5fe1238c7a4800</srcmd5>
+    <version>1.5.1</version>
+    <time>1676036164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Add support for Python 3.11.
+  * Drop support for decorating non-async functions with
+    @template (deprecated since 0.16).</comment>
+    <requestid>1064213</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 25 12:12:36 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.3.10
+
+-------------------------------------------------------------------
+Mon Aug  1 14:13:32 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.3.9
+- Update patch jffi-fix-system-ffi.patch
+- Remove obsolete %pom_xpath_remove
+- Remove "case FFI_BAD_ARGTYPE:" from jni/jffi/CallContext.c because
+  FFI_BAD_ARGTYPE constant is not defined in /usr/include/ffi.h
+
+-------------------------------------------------------------------
 Mon Mar 21 11:23:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-antrun-plugin >= 3.0.0

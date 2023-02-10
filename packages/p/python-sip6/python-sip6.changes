@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb  9 10:11:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.7
+  * bug-fix release
+  * Refactored the handling of composite classes so that they are
+    populated properly.
+  * Changes to the XML generation to reduce differences to earlier
+    versions.
+
+-------------------------------------------------------------------
+Wed Feb  1 10:17:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 6.7.5
+  * breaks Qt import in PyQt5
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2023-January/045137.html
+
+-------------------------------------------------------------------
+Sun Jan 29 19:40:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.6
+  * Minor bug-fix release
+  * The latest version of ABI v13 is v13.4.1.
+  * The latest version of ABI v12 is v12.11.1.
+  * Significantly reduced the memory requirements.
+
+-------------------------------------------------------------------
 Thu Jan 12 09:02:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to support python 3.6 needed by SLE15:

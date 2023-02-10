@@ -301,4 +301,16 @@ Upgrade to version 12.6:
 - Sync spec file with postgresql15.</comment>
     <requestid>1035216</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8f92354e6348bef6537cbdf0e481348a</srcmd5>
+    <version>12.14</version>
+    <time>1676036034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.14:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/12/release-12-14.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064057</requestid>
+  </revision>
 </revisionlist>

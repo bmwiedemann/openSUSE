@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:13:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.1:
+  * update go modules (#196) (bsc#1208095, CVE-2023-25165)
+  * Add weekly and daily to unvalid releases (#187)
+
+-------------------------------------------------------------------
 Thu Jan 05 13:59:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.0:

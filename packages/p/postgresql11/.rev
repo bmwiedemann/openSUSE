@@ -337,4 +337,15 @@ Upgrade to version 11.11:
 - Sync spec file with postgresql15.</comment>
     <requestid>1035215</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c89fdedb17ed75ea371febd4487932ec</srcmd5>
+    <version>11.19</version>
+    <time>1676036036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.19:
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064058</requestid>
+  </revision>
 </revisionlist>

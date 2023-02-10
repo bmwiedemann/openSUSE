@@ -1,0 +1,47 @@
+From 6a280321880fffed8765d65226b92f991443dbc6 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 7 Feb 2023 22:47:50 +0800
+Subject: [PATCH 08/13] tpm2: allow some command parameters to be NULL
+
+There are some parameters of TPM2 commmands allowing to be empty such
+as 'encryptedSalt' of 'TPM2_StartAuthSession' and 'pcrDigest' of
+'TPM2_PolicyPCR'. Instead of forcing the user of those functions to
+declare an empty variable, we can just pack a u16 zero to fabricate an
+empty variable when the user passes NULL for them.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 8081b8bf3..a56f7a5e5 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -238,7 +238,10 @@ TPM2_StartAuthSession (const TPMI_DH_OBJECT tpmKey,
+   if (tag == TPM_ST_SESSIONS)
+     grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+   grub_tpm2_mu_TPM2B_Marshal (&in, nonceCaller->size, nonceCaller->buffer);
+-  grub_tpm2_mu_TPM2B_Marshal (&in, encryptedSalt->size, encryptedSalt->secret);
++  if (encryptedSalt)
++    grub_tpm2_mu_TPM2B_Marshal (&in, encryptedSalt->size, encryptedSalt->secret);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
+   grub_tpm2_buffer_pack_u8 (&in, sessionType);
+   grub_tpm2_mu_TPMT_SYM_DEF_Marshal (&in, symmetric);
+   grub_tpm2_buffer_pack_u16 (&in, authHash);
+@@ -295,7 +298,10 @@ TPM2_PolicyPCR (const TPMI_SH_POLICY policySessions,
+   grub_tpm2_buffer_pack_u32 (&in, policySessions);
+   if (tag == TPM_ST_SESSIONS)
+     grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+-  grub_tpm2_mu_TPM2B_Marshal (&in, pcrDigest->size, pcrDigest->buffer);
++  if (pcrDigest)
++    grub_tpm2_mu_TPM2B_Marshal (&in, pcrDigest->size, pcrDigest->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
+   grub_tpm2_mu_TPML_PCR_SELECTION_Marshal (&in, pcrs);
+   if (in.error)
+     return TPM_RC_FAILURE;
+-- 
+2.35.3
+

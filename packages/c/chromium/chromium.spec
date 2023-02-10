@@ -40,15 +40,14 @@
 %bcond_without arm_bti
 %bcond_without system_icu
 %bcond_without ffmpeg_51
-%bcond_without system_avif
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_with ffmpeg_51
-%bcond_with system_avif
 %endif
+%bcond_with system_avif
 # LLVM version
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
 %define llvm_version 12
@@ -74,7 +73,7 @@
 %define ffmpeg_version 58
 %endif
 Name:           chromium
-Version:        109.0.5414.119
+Version:        110.0.5481.77
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -108,7 +107,7 @@ Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch15:        chromium-109-compiler.patch
+Patch15:        chromium-110-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch50:        chromium-clang-nomerge.patch
@@ -121,6 +120,10 @@ Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
+Patch104:       chromium-110-NativeThemeBase-fabs.patch
+Patch105:       chromium-110-CredentialUIEntry-const.patch
+Patch106:       chromium-110-DarkModeLABColorSpace-pow.patch
+Patch107:       v8-move-the-Stack-object-from-ThreadLocalTop.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -129,7 +132,7 @@ Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch206:       chromium-109-clang-lp154.patch
 Patch207:       chromium-icu72-1.patch
 Patch208:       chromium-icu72-2.patch
-Patch209:       chromium-icu72-3.patch
+Patch210:       chromium-110-system-libffi.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -413,11 +416,8 @@ keeplibs=(
     net/third_party/uri_template
     third_party/abseil-cpp
     third_party/angle
-    third_party/angle/src/common/third_party/base
-    third_party/angle/src/common/third_party/smhasher
     third_party/angle/src/common/third_party/xxhash
     third_party/angle/src/third_party/libXNVCtrl
-    third_party/angle/src/third_party/trace_event
     third_party/angle/src/third_party/volk
     third_party/apple_apsl
     third_party/axe-core
@@ -469,7 +469,6 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/i18n
     third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
-    third_party/devtools-frontend/src/front_end/third_party/lit-html
     third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
@@ -511,7 +510,6 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libgav1
     third_party/libjingle
-    third_party/libjxl
     third_party/libphonenumber
     third_party/libsecret
     third_party/libsrtp
@@ -550,7 +548,6 @@ keeplibs=(
     third_party/pdfium/third_party/bigint
     third_party/pdfium/third_party/freetype
     third_party/pdfium/third_party/lcms
-    third_party/pdfium/third_party/libpng16
     third_party/pdfium/third_party/libtiff
     third_party/pdfium/third_party/skia_shared
     third_party/pdfium/third_party/libopenjpeg
@@ -619,6 +616,7 @@ keeplibs=(
     v8/src/third_party/siphash
     v8/src/third_party/utf8-decoder
     v8/src/third_party/valgrind
+    v8/third_party/glibc
     v8/third_party/inspector_protocol
     v8/third_party/v8/builtins
 )
@@ -831,8 +829,6 @@ myconf_gn+=" use_system_harfbuzz=true"
 %if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
 %endif
-myconf_gn+=" use_system_libwayland=true"
-myconf_gn+=" use_system_wayland_scanner=true"
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}

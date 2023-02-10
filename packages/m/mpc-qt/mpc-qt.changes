@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:52:54 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 23.02
+  Features and/or improvements in this version:
+  * Expose pipewire buffer setting
+  * Sanitize more illegal characters from filenames
+  * Fix compatibility with newer KDE, dropping some UX fixes for
+    older KDE
+  * Fix control area hiding on multiple monitors
+  * Implement copying subtitle text to clipboard with ctrl-s
+  * Turn off prefer forced subs
+  * Better support for ultra-dark themes
+  * Implement basic ricing support
+  In addition, there may be other improvements not listed here.
+
+-------------------------------------------------------------------
 Sat Feb  5 10:25:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 22.02

@@ -71,6 +71,10 @@ rm -rf src/test/
 %build
 %{mvn_build} -f
 
+# The tooling generates Java 9+ require, but it a multi-release jar that works with Java 8 just fine
+sed -i 's|compilerTarget=9|compilerTarget=1\.8|' .xmvn/properties
+sed -i 's|<requiresJava>9</requiresJava>|<requiresJava>1\.8</requiresJava>|' .xmvn-reactor
+
 %install
 %mvn_install
 

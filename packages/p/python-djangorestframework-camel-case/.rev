@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>942512</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3eb7daf85a69db6ce0fb4f3fa2ad4e5d</srcmd5>
+    <version>1.4.0</version>
+    <time>1676036175</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * added ignore_keys</comment>
+    <requestid>1064236</requestid>
+  </revision>
 </revisionlist>

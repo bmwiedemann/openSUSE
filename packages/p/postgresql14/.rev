@@ -114,4 +114,16 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Sync spec file with postgresql15.</comment>
     <requestid>1035222</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>68b14d40da4bafb35aa0acf3d1282b87</srcmd5>
+    <version>14.7</version>
+    <time>1676036032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.7:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/14/release-14-7.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064055</requestid>
+  </revision>
 </revisionlist>

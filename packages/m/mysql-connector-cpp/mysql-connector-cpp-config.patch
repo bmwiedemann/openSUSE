@@ -1,6 +1,8 @@
---- mysql-connector-c++-8.0.22-new/jdbc/cmake/DepFindMySQL.cmake.pre	2020-09-02 19:04:07.000000000 +0300
-+++ mysql-connector-c++-8.0.22-new/jdbc/cmake/DepFindMySQL.cmake	2020-12-08 01:28:25.680029053 +0200
-@@ -469,9 +469,9 @@
+Index: b/jdbc/cmake/DepFindMySQL.cmake
+===================================================================
+--- a/jdbc/cmake/DepFindMySQL.cmake
++++ b/jdbc/cmake/DepFindMySQL.cmake
+@@ -490,9 +490,9 @@ function(use_mysql_config)
  
    # Install location
  

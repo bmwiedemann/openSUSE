@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  9 12:03:40 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 11.19:
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.
+
+-------------------------------------------------------------------
 Thu Nov 10 16:30:04 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1205300: Update to 11.18:

@@ -1,7 +1,7 @@
-Index: chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
+Index: chromium-110.0.5481.30/build/linux/unbundle/libusb.gn
 ===================================================================
 --- /dev/null
-+++ chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
++++ chromium-110.0.5481.30/build/linux/unbundle/libusb.gn
 @@ -0,0 +1,24 @@
 +# Copyright 2016 The Chromium Authors. All rights reserved.
 +# Use of this source code is governed by a BSD-style license that can be
@@ -27,13 +27,13 @@ Index: chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
 +  ]
 +  public_configs = [ ":system_libusb" ]
 +}
-Index: chromium-70.0.3538.54/build/linux/unbundle/replace_gn_files.py
+Index: chromium-110.0.5481.30/build/linux/unbundle/replace_gn_files.py
 ===================================================================
---- chromium-70.0.3538.54.orig/build/linux/unbundle/replace_gn_files.py
-+++ chromium-70.0.3538.54/build/linux/unbundle/replace_gn_files.py
-@@ -27,6 +27,7 @@ REPLACEMENTS = {
+--- chromium-110.0.5481.30.orig/build/linux/unbundle/replace_gn_files.py
++++ chromium-110.0.5481.30/build/linux/unbundle/replace_gn_files.py
+@@ -54,6 +54,7 @@ REPLACEMENTS = {
+   'libevent': 'third_party/libevent/BUILD.gn',
    'libjpeg': 'third_party/libjpeg.gni',
-   'libjxl' : 'third_party/libjxl/BUILD.gn',
    'libpng': 'third_party/libpng/BUILD.gn',
 +  'libusb': 'third_party/libusb/BUILD.gn',
    'libvpx': 'third_party/libvpx/BUILD.gn',

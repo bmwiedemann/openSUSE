@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-backgrounds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           budgie-backgrounds
-Version:        0.1+9
+Version:        1.0+0
 Release:        0
 Summary:        The default background set for the Budgie Desktop
 License:        CC0-1.0
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-backgrounds
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  meson
 BuildRequires:  ImageMagick
 BuildRequires:  jhead
+BuildRequires:  meson
 BuildArch:      noarch
 
 %description

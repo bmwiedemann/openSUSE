@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:15:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.3.2:
+  * update alpine (#918)
+
+-------------------------------------------------------------------
+Fri Feb 10 06:14:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.3.1:
+  * update go modules (#917)
+  * Fix #908 by generating release name (#909)
+  * Update dangerousCapabilities.yaml (#866)
+
+-------------------------------------------------------------------
 Thu Jan 05 20:31:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 7.3.0:

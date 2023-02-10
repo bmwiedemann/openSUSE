@@ -5,6 +5,10 @@
     <param name="revision">0.15</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">(.*)</param>
+    <param name="extract">openSUSEway.spec</param>
+  </service>
+  <service name="format_spec_file" mode="manual">
+    <param name="specfile">openSUSEway.spec</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

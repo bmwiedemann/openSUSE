@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  9 15:54:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.9.1:
+  * Upgrade to SQLite3 Multiple Ciphers version 1.5.4 (SQLite version 3.40.0)
+  * fixed issue wxSQLite3Database::SetJournalMode always returns DELETE
+
+-------------------------------------------------------------------
 Mon May  9 12:04:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.8.1:

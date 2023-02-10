@@ -1,0 +1,27 @@
+From 2851932b86752893b9195ef288dbbc8ffcc932d3 Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Sun, 5 Feb 2023 12:03:35 +0300
+Subject: [PATCH] Fix separator replacement mistake
+
+---
+ kstars/indi/indicamera.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/kstars/indi/indicamera.cpp b/kstars/indi/indicamera.cpp
+index 32860f1aa..cbfa070ee 100644
+--- a/kstars/indi/indicamera.cpp
++++ b/kstars/indi/indicamera.cpp
+@@ -1112,7 +1112,8 @@ void Camera::updateUploadSettings(const QString &remoteDir)
+         if (uploadT && remoteDir.isEmpty() == false)
+         {
+             auto uploadDir = remoteDir;
+-            uploadDir.replace("/", "\\");
++            // N.B. Need to convert any Windows directory separators / to Posix separators /
++            uploadDir.replace("\\", "/");
+             IUSaveText(uploadT, uploadDir.toLatin1().constData());
+         }
+ 
+-- 
+GitLab
+
+

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  8 15:20:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Backport multiple fixes from the master branch, because there won't be
+  a new release for the next two months:
+  * Add fix-dir-separator.patch
+  * Add fix-indi-timestamp.patch
+  * Add fix-placeholder-path-part1.patch
+  * Add fix-placeholder-path-part2.patch
+  * Add fix-scheduler.patch
+
+-------------------------------------------------------------------
 Tue Jan 31 10:27:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.3:

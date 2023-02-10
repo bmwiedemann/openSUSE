@@ -240,4 +240,14 @@
   * Set Rules-Requires-Root: no</comment>
     <requestid>1039915</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a032b314bfae81ff962a8a5d513f6d66</srcmd5>
+    <version>2.49</version>
+    <time>1676036154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.49:
+  * Add missing python3-setuptools Depends
+  * Adapt tests to setuptools 54+</comment>
+    <requestid>1064200</requestid>
+  </revision>
 </revisionlist>

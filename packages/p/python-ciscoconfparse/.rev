@@ -284,4 +284,41 @@
     - Add documentation build instructions to `README.md`</comment>
     <requestid>1061732</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>56614643a753714698f9e91a3e6e1052</srcmd5>
+    <version>1.7.14</version>
+    <time>1676036174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.14:
+  * Allow `CiscoConfParse()` to parse an empty
+    configuration command list i.e. `CiscoConfParse([])`; remove
+    the `ValueError()` raised on parsing an empty config.
+  * Re-implement and simplify
+    `CiscoConfParse().sync_diff()` with `HDiff()`.
+  * Rename variables in `HDiff().compress_dict_diffs()`.
+  * Rename dict_line to line and add the command indent
+  * Add 'parents' to `HDiff()` diff dicts and add parent
+    line output in `sync_diff()`
+  * Expand `CiscoConfParse()` test coverage for reading
+    files from disk
+  * Fix `CiscoConfParse().read_config_file()` recursive
+    call in `read_config_file()`.
+  * Fix `CiscoConfParse().read_config_file()` missing
+    `open()` in `read_config_file()`.
+  * Fix file-open test escapes associated with github issue
+  * Fix `CiscoConfParse().read_config_file()` argument name
+    test escape (ref github issue #262)
+  * Improve file `open()` error handling.  NOTE:
+    `FileNotFoundError()` is now raised for invalid file paths.
+  * Improve edge case handling for Cisco IOS banner
+    delimiters.
+  * Remove `_validate_ConfigObjs()` and improve logic in
+    `CiscoConfParse().__init__()`.
+  * Revert back to using `read_config_file()` if the config
+    is stored in a file.
+  * Fix unit tests to work with version 1.7.8+
+  * Streamline `CiscoConfParse().__init__()` logic and
+    delegate `__init__()` tasks to dedicated methods.</comment>
+    <requestid>1064237</requestid>
+  </revision>
 </revisionlist>

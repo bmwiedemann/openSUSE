@@ -1,7 +1,7 @@
 #
 # spec file for package python-dirtyjson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dirtyjson
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Python JSON decoder that can extract data from dirty input
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/codecobblers/dirtyjson
 Source:         https://files.pythonhosted.org/packages/source/d/dirtyjson/dirtyjson-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#codecobblers/dirtyjson#6
-Patch0:         support-python-310.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

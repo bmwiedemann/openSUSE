@@ -1,0 +1,44 @@
+From ffb0fe8f2dc9256af6df2e3199e3f950e6b8b830 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 8 Feb 2023 10:35:49 +0800
+Subject: [PATCH 09/13] tpm2: remove the unnecessary variables
+
+Since the NULL 'encryptedSalt' of 'TPM2_StartAuthSession' is handled as
+an empty TPM2B structure, there is no need to declare an empty salt.
+As for 'nonceTPM', we don't use in the following TPM2 commands, so we
+can safely ignore it.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/module.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
+index 8ede48bbf..3537f223c 100644
+--- a/grub-core/tpm2/module.c
++++ b/grub-core/tpm2/module.c
+@@ -352,9 +352,7 @@ grub_tpm2_protector_srk_recover (const struct grub_tpm2_protector_context *ctx,
+   grub_size_t sealed_key_size;
+   TPM_HANDLE srk_handle;
+   TPM2B_NONCE nonceCaller = { 0 };
+-  TPM2B_ENCRYPTED_SECRET salt = { 0 };
+   TPMT_SYM_DEF symmetric = { 0 };
+-  TPM2B_NONCE nonceTPM = { 0 };
+   TPMI_SH_AUTH_SESSION session;
+   TPML_PCR_SELECTION pcrSel = {
+     .count = 1,
+@@ -405,9 +403,9 @@ grub_tpm2_protector_srk_recover (const struct grub_tpm2_protector_context *ctx,
+   nonceCaller.size = TPM_SHA256_DIGEST_SIZE;
+   symmetric.algorithm = TPM_ALG_NULL;
+ 
+-  rc = TPM2_StartAuthSession (TPM_RH_NULL, TPM_RH_NULL, 0, &nonceCaller, &salt,
++  rc = TPM2_StartAuthSession (TPM_RH_NULL, TPM_RH_NULL, NULL, &nonceCaller, NULL,
+                               TPM_SE_POLICY, &symmetric, TPM_ALG_SHA256,
+-                              &session, &nonceTPM, 0);
++                              &session, NULL, NULL);
+   if (rc)
+     {
+       grub_error (err, N_("Failed to start auth session (TPM2_StartAuthSession "
+-- 
+2.35.3
+

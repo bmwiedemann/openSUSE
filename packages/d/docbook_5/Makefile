@@ -11,8 +11,8 @@ endif
 
 SHELL         := /bin/bash
 PACKAGE       := docbook_5
-VERSION       := 5.2CR3
-DB_VERSIONS   := 5.0 5.1 5.2CR3
+VERSION       := 5.2CR5
+DB_VERSIONS   := 5.0 5.1 5.2CR5
 LAST_VER      := $(lastword $(DB_VERSIONS))
 CDIR          := $(shell pwd)
 #

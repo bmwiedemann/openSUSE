@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:37:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.9:
+  * Disallow SQLAlchemy 2.
+
+-------------------------------------------------------------------
 Sat Jan 15 16:26:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.8:

@@ -1,0 +1,696 @@
+From 2b94a992464aa2d00333ab3f13f065da99196440 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 7 Feb 2023 18:14:59 +0800
+Subject: [PATCH 02/13] tpm2: declare the input arguments of TPM2 functions as
+ const
+
+The arguments, except the buffer, of the marshal functions are invariable.
+Also, the TPM2 command parameters are supposed not changed by the
+command. Declare those arguments as 'const' so that the compiler can
+help to detect the undesired change on those arguments. Besides, it's
+easier to tell which arguments are the command parameters and which are
+the response parameters.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/mu.c                    | 64 +++++++++++++-------------
+ grub-core/tpm2/tpm2.c                  | 64 +++++++++++++-------------
+ include/grub/tpm2/internal/functions.h | 64 +++++++++++++-------------
+ include/grub/tpm2/mu.h                 | 64 +++++++++++++-------------
+ 4 files changed, 128 insertions(+), 128 deletions(-)
+
+diff --git a/grub-core/tpm2/mu.c b/grub-core/tpm2/mu.c
+index c5f5c7b5f..6d3294c5b 100644
+--- a/grub-core/tpm2/mu.c
++++ b/grub-core/tpm2/mu.c
+@@ -49,7 +49,7 @@ grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPM2B_Marshal (grub_tpm2_buffer_t buffer,
+-                            grub_uint16_t size,
++                            const grub_uint16_t size,
+                             const grub_uint8_t* b)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, size);
+@@ -60,8 +60,8 @@ grub_tpm2_mu_TPM2B_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (grub_tpm2_buffer_t buffer,
+-                                        TPMI_ALG_SYM_OBJECT algorithm,
+-                                        TPMU_SYM_KEY_BITS *p)
++                                        const TPMI_ALG_SYM_OBJECT algorithm,
++                                        const TPMU_SYM_KEY_BITS *p)
+ {
+   switch (algorithm)
+     {
+@@ -78,8 +78,8 @@ grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_SYM_MODE_Marshal (grub_tpm2_buffer_t buffer,
+-                                    TPMI_ALG_SYM_OBJECT algorithm,
+-                                    TPMU_SYM_MODE *p)
++                                    const TPMI_ALG_SYM_OBJECT algorithm,
++                                    const TPMU_SYM_MODE *p)
+ {
+   switch (algorithm)
+     {
+@@ -96,7 +96,7 @@ grub_tpm2_mu_TPMU_SYM_MODE_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMT_SYM_DEF_Marshal (grub_tpm2_buffer_t buffer,
+-                                   TPMT_SYM_DEF *p)
++                                   const TPMT_SYM_DEF *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->algorithm);
+   grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (buffer, p->algorithm, &p->keyBits);
+@@ -134,7 +134,7 @@ grub_tpm2_mu_TPMA_OBJECT_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_SCHEME_XOR_Marshal (grub_tpm2_buffer_t buffer,
+-                                      TPMS_SCHEME_XOR *p)
++                                      const TPMS_SCHEME_XOR *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->hashAlg);
+   grub_tpm2_buffer_pack_u16 (buffer, p->kdf);
+@@ -142,15 +142,15 @@ grub_tpm2_mu_TPMS_SCHEME_XOR_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_SCHEME_HMAC_Marshal (grub_tpm2_buffer_t buffer,
+-                                       TPMS_SCHEME_HMAC *p)
++                                       const TPMS_SCHEME_HMAC *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->hashAlg);
+ }
+ 
+ void
+ grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (grub_tpm2_buffer_t buffer,
+-                                            TPMI_ALG_KEYEDHASH_SCHEME scheme,
+-                                            TPMU_SCHEME_KEYEDHASH *p)
++                                            const TPMI_ALG_KEYEDHASH_SCHEME scheme,
++                                            const TPMU_SCHEME_KEYEDHASH *p)
+ {
+   switch (scheme)
+     {
+@@ -170,7 +170,7 @@ grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                            TPMT_KEYEDHASH_SCHEME *p)
++                                            const TPMT_KEYEDHASH_SCHEME *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->scheme);
+   grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (buffer, p->scheme, &p->details);
+@@ -178,14 +178,14 @@ grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+-                                           TPMS_KEYEDHASH_PARMS *p)
++                                           const TPMS_KEYEDHASH_PARMS *p)
+ {
+   grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (buffer, &p->scheme);
+ }
+ 
+ void
+ grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (grub_tpm2_buffer_t buffer,
+-                                          TPMT_SYM_DEF_OBJECT *p)
++                                          const TPMT_SYM_DEF_OBJECT *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->algorithm);
+   grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (buffer, p->algorithm, &p->keyBits);
+@@ -194,8 +194,8 @@ grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                       TPMI_ALG_RSA_DECRYPT scheme,
+-                                       TPMU_ASYM_SCHEME *p __attribute__ ((unused)))
++                                       const TPMI_ALG_RSA_DECRYPT scheme,
++                                       const TPMU_ASYM_SCHEME *p __attribute__ ((unused)))
+ {
+   switch (scheme)
+     {
+@@ -210,7 +210,7 @@ grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                      TPMT_RSA_SCHEME *p)
++                                      const TPMT_RSA_SCHEME *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->scheme);
+   grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (buffer, p->scheme, &p->details);
+@@ -218,7 +218,7 @@ grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_RSA_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+-                                     TPMS_RSA_PARMS *p)
++                                     const TPMS_RSA_PARMS *p)
+ {
+   grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (buffer, &p->symmetric);
+   grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (buffer, &p->scheme);
+@@ -228,14 +228,14 @@ grub_tpm2_mu_TPMS_RSA_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+-                                           TPMS_SYMCIPHER_PARMS *p)
++                                           const TPMS_SYMCIPHER_PARMS *p)
+ {
+   grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (buffer, &p->sym);
+ }
+ 
+ void
+ grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                      TPMT_ECC_SCHEME *p)
++                                      const TPMT_ECC_SCHEME *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->scheme);
+   grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (buffer, p->scheme, &p->details);
+@@ -243,8 +243,8 @@ grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                      TPMI_ALG_KDF scheme,
+-                                      TPMU_KDF_SCHEME *p)
++                                      const TPMI_ALG_KDF scheme,
++                                      const TPMU_KDF_SCHEME *p)
+ {
+   switch (scheme)
+     {
+@@ -270,7 +270,7 @@ grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMT_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+-                                      TPMT_KDF_SCHEME *p)
++                                      const TPMT_KDF_SCHEME *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->scheme);
+   grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (buffer, p->scheme, &p->details);
+@@ -278,7 +278,7 @@ grub_tpm2_mu_TPMT_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_ECC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+-                                     TPMS_ECC_PARMS *p)
++                                     const TPMS_ECC_PARMS *p)
+ {
+   grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (buffer, &p->symmetric);
+   grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (buffer, &p->scheme);
+@@ -288,8 +288,8 @@ grub_tpm2_mu_TPMS_ECC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+-                                        grub_uint32_t type,
+-                                        TPMU_PUBLIC_PARMS *p)
++                                        const grub_uint32_t type,
++                                        const TPMU_PUBLIC_PARMS *p)
+ {
+   switch (type)
+     {
+@@ -313,7 +313,7 @@ grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_ECC_POINT_Marshal (grub_tpm2_buffer_t buffer,
+-                                     TPMS_ECC_POINT *p)
++                                     const TPMS_ECC_POINT *p)
+ {
+   grub_tpm2_mu_TPM2B_Marshal (buffer, p->x.size, p->x.buffer);
+   grub_tpm2_mu_TPM2B_Marshal (buffer, p->y.size, p->y.buffer);
+@@ -321,8 +321,8 @@ grub_tpm2_mu_TPMS_ECC_POINT_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMU_PUBLIC_ID_Marshal (grub_tpm2_buffer_t buffer,
+-                                     TPMI_ALG_PUBLIC type,
+-                                     TPMU_PUBLIC_ID *p)
++                                     const TPMI_ALG_PUBLIC type,
++                                     const TPMU_PUBLIC_ID *p)
+ {
+   switch(type)
+     {
+@@ -344,7 +344,7 @@ grub_tpm2_mu_TPMU_PUBLIC_ID_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMT_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
+-                                  TPMT_PUBLIC *p)
++                                  const TPMT_PUBLIC *p)
+ {
+   grub_tpm2_buffer_pack_u16 (buffer, p->type);
+   grub_tpm2_buffer_pack_u16 (buffer, p->nameAlg);
+@@ -356,7 +356,7 @@ grub_tpm2_mu_TPMT_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPM2B_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
+-                                   TPM2B_PUBLIC *p)
++                                   const TPM2B_PUBLIC *p)
+ {
+   grub_uint32_t start;
+   grub_uint16_t size;
+@@ -377,7 +377,7 @@ grub_tpm2_mu_TPM2B_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
+-                                            TPMS_SENSITIVE_CREATE *p)
++                                            const TPMS_SENSITIVE_CREATE *p)
+ {
+   grub_tpm2_mu_TPM2B_Marshal (buffer, p->userAuth.size, p->userAuth.buffer);
+   grub_tpm2_mu_TPM2B_Marshal (buffer, p->data.size, p->data.buffer);
+@@ -385,7 +385,7 @@ grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
+ 
+ void
+ grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
+-                                             TPM2B_SENSITIVE_CREATE *sensitiveCreate)
++                                             const TPM2B_SENSITIVE_CREATE *sensitiveCreate)
+ {
+   grub_uint32_t start;
+   grub_uint16_t size;
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 1cd969d5d..5377ad2c7 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -76,12 +76,12 @@ grub_tpm2_submit_command (TPMI_ST_COMMAND_TAG tag,
+ }
+ 
+ TPM_RC
+-TPM2_CreatePrimary (TPMI_RH_HIERARCHY primaryHandle,
++TPM2_CreatePrimary (const TPMI_RH_HIERARCHY primaryHandle,
+                     const TPMS_AUTH_COMMAND *authCommand,
+-                    TPM2B_SENSITIVE_CREATE *inSensitive,
+-                    TPM2B_PUBLIC *inPublic,
+-                    TPM2B_DATA *outsideInfo,
+-                    TPML_PCR_SELECTION *creationPCR,
++                    const TPM2B_SENSITIVE_CREATE *inSensitive,
++                    const TPM2B_PUBLIC *inPublic,
++                    const TPM2B_DATA *outsideInfo,
++                    const TPML_PCR_SELECTION *creationPCR,
+                     TPM_HANDLE *objectHandle,
+                     TPM2B_PUBLIC *outPublic,
+                     TPM2B_CREATION_DATA *creationData,
+@@ -165,14 +165,14 @@ TPM2_CreatePrimary (TPMI_RH_HIERARCHY primaryHandle,
+ }
+ 
+ TPM_RC
+-TPM2_StartAuthSession (TPMI_DH_OBJECT tpmKey,
+-                       TPMI_DH_ENTITY bind,
++TPM2_StartAuthSession (const TPMI_DH_OBJECT tpmKey,
++                       const TPMI_DH_ENTITY bind,
+                        const TPMS_AUTH_COMMAND *authCommand,
+-                       TPM2B_NONCE *nonceCaller,
+-                       TPM2B_ENCRYPTED_SECRET *encryptedSalt,
+-                       TPM_SE sessionType,
+-                       TPMT_SYM_DEF *symmetric,
+-                       TPMI_ALG_HASH authHash,
++                       const TPM2B_NONCE *nonceCaller,
++                       const TPM2B_ENCRYPTED_SECRET *encryptedSalt,
++                       const TPM_SE sessionType,
++                       const TPMT_SYM_DEF *symmetric,
++                       const TPMI_ALG_HASH authHash,
+                        TPMI_SH_AUTH_SESSION *sessionHandle,
+                        TPM2B_NONCE *nonceTpm,
+                        TPMS_AUTH_RESPONSE *authResponse)
+@@ -235,10 +235,10 @@ TPM2_StartAuthSession (TPMI_DH_OBJECT tpmKey,
+ }
+ 
+ TPM_RC
+-TPM2_PolicyPCR (TPMI_SH_POLICY policySessions,
++TPM2_PolicyPCR (const TPMI_SH_POLICY policySessions,
+                 const TPMS_AUTH_COMMAND *authCommand,
+-                TPM2B_DIGEST *pcrDigest,
+-                TPML_PCR_SELECTION *pcrs,
++                const TPM2B_DIGEST *pcrDigest,
++                const TPML_PCR_SELECTION *pcrs,
+                 TPMS_AUTH_RESPONSE *authResponse)
+ {
+   TPM_RC rc;
+@@ -285,7 +285,7 @@ TPM2_PolicyPCR (TPMI_SH_POLICY policySessions,
+ }
+ 
+ TPM_RC
+-TPM2_ReadPublic (TPMI_DH_OBJECT objectHandle,
++TPM2_ReadPublic (const TPMI_DH_OBJECT objectHandle,
+                  const TPMS_AUTH_COMMAND* authCommand,
+                  TPM2B_PUBLIC *outPublic)
+ {
+@@ -322,10 +322,10 @@ TPM2_ReadPublic (TPMI_DH_OBJECT objectHandle,
+ }
+ 
+ TPM_RC
+-TPM2_Load (TPMI_DH_OBJECT parent_handle,
+-           TPMS_AUTH_COMMAND const *authCommand,
+-           TPM2B_PRIVATE *inPrivate,
+-           TPM2B_PUBLIC *inPublic,
++TPM2_Load (const TPMI_DH_OBJECT parent_handle,
++           const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_PRIVATE *inPrivate,
++           const TPM2B_PUBLIC *inPublic,
+            TPM_HANDLE *objectHandle,
+            TPM2B_NAME *name,
+            TPMS_AUTH_RESPONSE *authResponse)
+@@ -383,7 +383,7 @@ TPM2_Load (TPMI_DH_OBJECT parent_handle,
+ }
+ 
+ TPM_RC
+-TPM2_Unseal (TPMI_DH_OBJECT itemHandle,
++TPM2_Unseal (const TPMI_DH_OBJECT itemHandle,
+              const TPMS_AUTH_COMMAND *authCommand,
+              TPM2B_SENSITIVE_DATA *outData,
+              TPMS_AUTH_RESPONSE *authResponse)
+@@ -434,7 +434,7 @@ TPM2_Unseal (TPMI_DH_OBJECT itemHandle,
+ }
+ 
+ TPM_RC
+-TPM2_FlushContext (TPMI_DH_CONTEXT handle)
++TPM2_FlushContext (const TPMI_DH_CONTEXT handle)
+ {
+   TPM_RC rc;
+   struct grub_tpm2_buffer in;
+@@ -465,7 +465,7 @@ TPM2_FlushContext (TPMI_DH_CONTEXT handle)
+ 
+ TPM_RC
+ TPM2_PCR_Read (const TPMS_AUTH_COMMAND *authCommand,
+-               TPML_PCR_SELECTION  *pcrSelectionIn,
++               const TPML_PCR_SELECTION  *pcrSelectionIn,
+                grub_uint32_t *pcrUpdateCounter,
+                TPML_PCR_SELECTION *pcrSelectionOut,
+                TPML_DIGEST *pcrValues,
+@@ -524,7 +524,7 @@ TPM2_PCR_Read (const TPMS_AUTH_COMMAND *authCommand,
+ }
+ 
+ TPM_RC
+-TPM2_PolicyGetDigest (TPMI_SH_POLICY policySession,
++TPM2_PolicyGetDigest (const TPMI_SH_POLICY policySession,
+                       const TPMS_AUTH_COMMAND *authCommand,
+                       TPM2B_DIGEST *policyDigest,
+                       TPMS_AUTH_RESPONSE *authResponse)
+@@ -576,12 +576,12 @@ TPM2_PolicyGetDigest (TPMI_SH_POLICY policySession,
+ }
+ 
+ TPM_RC
+-TPM2_Create (TPMI_DH_OBJECT parentHandle,
++TPM2_Create (const TPMI_DH_OBJECT parentHandle,
+              const TPMS_AUTH_COMMAND *authCommand,
+-             TPM2B_SENSITIVE_CREATE *inSensitive,
+-             TPM2B_PUBLIC *inPublic,
+-             TPM2B_DATA *outsideInfo,
+-             TPML_PCR_SELECTION *creationPCR,
++             const TPM2B_SENSITIVE_CREATE *inSensitive,
++             const TPM2B_PUBLIC *inPublic,
++             const TPM2B_DATA *outsideInfo,
++             const TPML_PCR_SELECTION *creationPCR,
+              TPM2B_PRIVATE *outPrivate,
+              TPM2B_PUBLIC *outPublic,
+              TPM2B_CREATION_DATA *creationData,
+@@ -660,10 +660,10 @@ TPM2_Create (TPMI_DH_OBJECT parentHandle,
+ }
+ 
+ TPM_RC
+-TPM2_EvictControl (TPMI_RH_PROVISION auth,
+-                   TPMI_DH_OBJECT objectHandle,
++TPM2_EvictControl (const TPMI_RH_PROVISION auth,
++                   const TPMI_DH_OBJECT objectHandle,
+                    const TPMS_AUTH_COMMAND *authCommand,
+-                   TPMI_DH_PERSISTENT persistentHandle,
++                   const TPMI_DH_PERSISTENT persistentHandle,
+                    TPMS_AUTH_RESPONSE *authResponse)
+ {
+   struct grub_tpm2_buffer in;
+diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
+index f08b45ed2..8fda8ceab 100644
+--- a/include/grub/tpm2/internal/functions.h
++++ b/include/grub/tpm2/internal/functions.h
+@@ -22,12 +22,12 @@
+ #include <grub/tpm2/internal/structs.h>
+ 
+ TPM_RC
+-TPM2_CreatePrimary (TPMI_RH_HIERARCHY primaryHandle,
++TPM2_CreatePrimary (const TPMI_RH_HIERARCHY primaryHandle,
+                     const TPMS_AUTH_COMMAND *authCommand,
+-                    TPM2B_SENSITIVE_CREATE *inSensitive,
+-                    TPM2B_PUBLIC *inPublic,
+-                    TPM2B_DATA *outsideInfo,
+-                    TPML_PCR_SELECTION *creationPCR,
++                    const TPM2B_SENSITIVE_CREATE *inSensitive,
++                    const TPM2B_PUBLIC *inPublic,
++                    const TPM2B_DATA *outsideInfo,
++                    const TPML_PCR_SELECTION *creationPCR,
+                     TPM_HANDLE *objectHandle,
+                     TPM2B_PUBLIC *outPublic,
+                     TPM2B_CREATION_DATA *creationData,
+@@ -37,69 +37,69 @@ TPM2_CreatePrimary (TPMI_RH_HIERARCHY primaryHandle,
+                     TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_StartAuthSession (TPMI_DH_OBJECT tpmKey,
+-                       TPMI_DH_ENTITY bind,
++TPM2_StartAuthSession (const TPMI_DH_OBJECT tpmKey,
++                       const TPMI_DH_ENTITY bind,
+                        const TPMS_AUTH_COMMAND *authCommand,
+-                       TPM2B_NONCE *nonceCaller,
+-                       TPM2B_ENCRYPTED_SECRET *encryptedSalt,
+-                       TPM_SE sessionType,
+-                       TPMT_SYM_DEF *symmetric,
+-                       TPMI_ALG_HASH authHash,
++                       const TPM2B_NONCE *nonceCaller,
++                       const TPM2B_ENCRYPTED_SECRET *encryptedSalt,
++                       const TPM_SE sessionType,
++                       const TPMT_SYM_DEF *symmetric,
++                       const TPMI_ALG_HASH authHash,
+                        TPMI_SH_AUTH_SESSION *sessionHandle,
+                        TPM2B_NONCE *nonceTpm,
+                        TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_PolicyPCR (TPMI_SH_POLICY policySession,
++TPM2_PolicyPCR (const TPMI_SH_POLICY policySession,
+                 const TPMS_AUTH_COMMAND *authCommand,
+-                TPM2B_DIGEST *pcrDigest,
+-                TPML_PCR_SELECTION *pcrs,
++                const TPM2B_DIGEST *pcrDigest,
++                const TPML_PCR_SELECTION *pcrs,
+                 TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_ReadPublic (TPMI_DH_OBJECT objectHandle,
++TPM2_ReadPublic (const TPMI_DH_OBJECT objectHandle,
+                  const TPMS_AUTH_COMMAND* authCommand,
+                  TPM2B_PUBLIC *outPublic);
+ 
+ TPM_RC
+-TPM2_Load (TPMI_DH_OBJECT parent_handle,
+-           TPMS_AUTH_COMMAND const *authCommand,
+-           TPM2B_PRIVATE *inPrivate,
+-           TPM2B_PUBLIC *inPublic,
++TPM2_Load (const TPMI_DH_OBJECT parent_handle,
++           const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_PRIVATE *inPrivate,
++           const TPM2B_PUBLIC *inPublic,
+            TPM_HANDLE *objectHandle,
+            TPM2B_NAME *name,
+            TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_Unseal (TPMI_DH_OBJECT item_handle,
++TPM2_Unseal (const TPMI_DH_OBJECT item_handle,
+              const TPMS_AUTH_COMMAND *authCommand,
+              TPM2B_SENSITIVE_DATA *outData,
+              TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_FlushContext (TPMI_DH_CONTEXT handle);
++TPM2_FlushContext (const TPMI_DH_CONTEXT handle);
+ 
+ TPM_RC
+ TPM2_PCR_Read (const TPMS_AUTH_COMMAND *authCommand,
+-               TPML_PCR_SELECTION  *pcrSelectionIn,
++               const TPML_PCR_SELECTION *pcrSelectionIn,
+                grub_uint32_t *pcrUpdateCounter,
+                TPML_PCR_SELECTION *pcrSelectionOut,
+                TPML_DIGEST *pcrValues,
+                TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_PolicyGetDigest (TPMI_SH_POLICY policySession,
++TPM2_PolicyGetDigest (const TPMI_SH_POLICY policySession,
+                       const TPMS_AUTH_COMMAND *authCommand,
+                       TPM2B_DIGEST *policyDigest,
+                       TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_Create (TPMI_DH_OBJECT parentHandle,
++TPM2_Create (const TPMI_DH_OBJECT parentHandle,
+              const TPMS_AUTH_COMMAND *authCommand,
+-             TPM2B_SENSITIVE_CREATE *inSensitive,
+-             TPM2B_PUBLIC *inPublic,
+-             TPM2B_DATA *outsideInfo,
+-             TPML_PCR_SELECTION *creationPCR,
++             const TPM2B_SENSITIVE_CREATE *inSensitive,
++             const TPM2B_PUBLIC *inPublic,
++             const TPM2B_DATA *outsideInfo,
++             const TPML_PCR_SELECTION *creationPCR,
+              TPM2B_PRIVATE *outPrivate,
+              TPM2B_PUBLIC *outPublic,
+              TPM2B_CREATION_DATA *creationData,
+@@ -108,10 +108,10 @@ TPM2_Create (TPMI_DH_OBJECT parentHandle,
+              TPMS_AUTH_RESPONSE *authResponse);
+ 
+ TPM_RC
+-TPM2_EvictControl (TPMI_RH_PROVISION auth,
+-                   TPMI_DH_OBJECT objectHandle,
++TPM2_EvictControl (const TPMI_RH_PROVISION auth,
++                   const TPMI_DH_OBJECT objectHandle,
+                    const TPMS_AUTH_COMMAND *authCommand,
+-                   TPMI_DH_PERSISTENT persistentHandle,
++                   const TPMI_DH_PERSISTENT persistentHandle,
+                    TPMS_AUTH_RESPONSE *authResponse);
+ 
+ #endif /* ! GRUB_TPM2_INTERNAL_FUNCTIONS_HEADER */
+diff --git a/include/grub/tpm2/mu.h b/include/grub/tpm2/mu.h
+index 4f4058f9d..1e5065bb4 100644
+--- a/include/grub/tpm2/mu.h
++++ b/include/grub/tpm2/mu.h
+@@ -28,22 +28,22 @@ grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (grub_tpm2_buffer_t buf,
+ 
+ void
+ grub_tpm2_mu_TPM2B_Marshal (grub_tpm2_buffer_t buf,
+-                            grub_uint16_t size,
++                            const grub_uint16_t size,
+                             const grub_uint8_t* buffer);
+ 
+ void
+ grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (grub_tpm2_buffer_t buf,
+-                                        TPMI_ALG_SYM_OBJECT algorithm,
+-                                        TPMU_SYM_KEY_BITS *p);
++                                        const TPMI_ALG_SYM_OBJECT algorithm,
++                                        const TPMU_SYM_KEY_BITS *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_SYM_MODE_Marshal (grub_tpm2_buffer_t buf,
+-                                    TPMI_ALG_SYM_OBJECT algorithm,
+-                                    TPMU_SYM_MODE *p);
++                                    const TPMI_ALG_SYM_OBJECT algorithm,
++                                    const TPMU_SYM_MODE *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_SYM_DEF_Marshal (grub_tpm2_buffer_t buf,
+-                                   TPMT_SYM_DEF *p);
++                                   const TPMT_SYM_DEF *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_PCR_SELECTION_Marshal (grub_tpm2_buffer_t buf,
+@@ -59,92 +59,92 @@ grub_tpm2_mu_TPMA_OBJECT_Marshal (grub_tpm2_buffer_t buf,
+ 
+ void
+ grub_tpm2_mu_TPMS_SCHEME_XOR_Marshal (grub_tpm2_buffer_t buf,
+-                                      TPMS_SCHEME_XOR *p);
++                                      const TPMS_SCHEME_XOR *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_SCHEME_HMAC_Marshal (grub_tpm2_buffer_t buf,
+-                                       TPMS_SCHEME_HMAC *p);
++                                       const TPMS_SCHEME_HMAC *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (grub_tpm2_buffer_t buf,
+-                                            TPMI_ALG_KEYEDHASH_SCHEME scheme,
+-                                            TPMU_SCHEME_KEYEDHASH *p);
++                                            const TPMI_ALG_KEYEDHASH_SCHEME scheme,
++                                            const TPMU_SCHEME_KEYEDHASH *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                            TPMT_KEYEDHASH_SCHEME *p);
++                                            const TPMT_KEYEDHASH_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Marshal (grub_tpm2_buffer_t buf,
+-                                           TPMS_KEYEDHASH_PARMS *p);
++                                           const TPMS_KEYEDHASH_PARMS *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (grub_tpm2_buffer_t buf,
+-                                          TPMT_SYM_DEF_OBJECT *p);
++                                          const TPMT_SYM_DEF_OBJECT *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                       TPMI_ALG_RSA_DECRYPT scheme,
+-                                       TPMU_ASYM_SCHEME *p);
++                                       const TPMI_ALG_RSA_DECRYPT scheme,
++                                       const TPMU_ASYM_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                      TPMT_RSA_SCHEME *p);
++                                      const TPMT_RSA_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_RSA_PARMS_Marshal (grub_tpm2_buffer_t buf,
+-                                     TPMS_RSA_PARMS *p);
++                                     const TPMS_RSA_PARMS *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Marshal (grub_tpm2_buffer_t buf,
+-                                           TPMS_SYMCIPHER_PARMS *p);
++                                           const TPMS_SYMCIPHER_PARMS *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                      TPMT_ECC_SCHEME *p);
++                                      const TPMT_ECC_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                      TPMI_ALG_KDF scheme,
+-                                      TPMU_KDF_SCHEME *p);
++                                      const TPMI_ALG_KDF scheme,
++                                      const TPMU_KDF_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buf,
+-                                      TPMT_KDF_SCHEME *p);
++                                      const TPMT_KDF_SCHEME *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_ECC_PARMS_Marshal (grub_tpm2_buffer_t buf,
+-                                     TPMS_ECC_PARMS *p);
++                                     const TPMS_ECC_PARMS *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buf,
+-                                        grub_uint32_t type,
+-                                        TPMU_PUBLIC_PARMS *p);
++                                        const grub_uint32_t type,
++                                        const TPMU_PUBLIC_PARMS *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_ECC_POINT_Marshal (grub_tpm2_buffer_t buf,
+-                                     TPMS_ECC_POINT *p);
++                                     const TPMS_ECC_POINT *p);
+ 
+ void
+ grub_tpm2_mu_TPMU_PUBLIC_ID_Marshal (grub_tpm2_buffer_t buf,
+-                                     TPMI_ALG_PUBLIC type,
+-                                     TPMU_PUBLIC_ID *p);
++                                     const TPMI_ALG_PUBLIC type,
++                                     const TPMU_PUBLIC_ID *p);
+ 
+ void
+ grub_tpm2_mu_TPMT_PUBLIC_Marshal (grub_tpm2_buffer_t buf,
+-                                  TPMT_PUBLIC *p);
++                                  const TPMT_PUBLIC *p);
+ 
+ void
+ grub_tpm2_mu_TPM2B_PUBLIC_Marshal (grub_tpm2_buffer_t buf,
+-                                   TPM2B_PUBLIC *p);
++                                   const TPM2B_PUBLIC *p);
+ 
+ void
+ grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buf,
+-                                            TPMS_SENSITIVE_CREATE *p);
++                                            const TPMS_SENSITIVE_CREATE *p);
+ 
+ void
+ grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buf,
+-                                             TPM2B_SENSITIVE_CREATE *sensitiveCreate);
++                                             const TPM2B_SENSITIVE_CREATE *sensitiveCreate);
+ 
+ void
+ grub_tpm2_mu_TPM2B_Unmarshal (grub_tpm2_buffer_t buf,
+-- 
+2.35.3
+

@@ -1,4 +1,4 @@
-README.SUSE (2022-12-08)
+README.SUSE (2023-02-09)
 ========================
 
 XML Catalog File
@@ -55,12 +55,14 @@ DocBook V5.2
 The significant differences from 5.1 to 5.2 are:
 
 * Many new synopsis elements for programming languages.
-* New danger admonition element.
-* New formalgroup element to support subfigures, etc.
+* New <danger> admonition element.
+* New <formalgroup> element to support subfigures, etc.
 * New transclusion fixup attributes.
 * New class attribute on sectioning elements support legal sections.
 * New meta element added to info.
-* Added XInclude-enabled schema versions of Assembly and BITS schemas.
+* Added XInclude-enabled schema versions of Assembly and ITS schemas.
+* Allow <info> as root element
+* Many bug fixes
 
 
 DocBook V5.1

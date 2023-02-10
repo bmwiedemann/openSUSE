@@ -1,0 +1,213 @@
+From ce303ea71075bd687acde19c5f5be504647ec801 Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Mon, 6 Feb 2023 10:43:13 +0300
+Subject: [PATCH] Fix placeholder path on Windows due to hardcoded POSIX
+ separators
+
+---
+ kstars/auxiliary/ksutils.cpp            | 12 ++++++++++--
+ kstars/auxiliary/xplanetimageviewer.cpp |  7 +++----
+ kstars/ekos/capture/capture.cpp         | 11 ++++++-----
+ kstars/ekos/capture/placeholderpath.cpp |  7 ++-----
+ kstars/ekos/focus/focus.cpp             |  2 +-
+ kstars/fitsviewer/fitsdata.cpp          |  2 +-
+ kstars/indi/indicamera.cpp              |  5 +++--
+ kstars/kstars.kcfg                      |  2 +-
+ 8 files changed, 27 insertions(+), 21 deletions(-)
+
+diff --git a/kstars/auxiliary/ksutils.cpp b/kstars/auxiliary/ksutils.cpp
+index 8f4b30f58..664bbcca8 100644
+--- a/kstars/auxiliary/ksutils.cpp
++++ b/kstars/auxiliary/ksutils.cpp
+@@ -931,11 +931,11 @@ void Logging::UseFile()
+         QDir dir;
+         QString path =
+             QDir(KSPaths::writableLocation(QStandardPaths::AppLocalDataLocation))
+-            .filePath("logs/" + QDateTime::currentDateTime().toString("yyyy-MM-dd"));
++                .filePath("logs" + QDir::separator() + QDateTime::currentDateTime().toString("yyyy-MM-dd"));
+         dir.mkpath(path);
+         QString name =
+             "log_" + QDateTime::currentDateTime().toString("HH-mm-ss") + ".txt";
+-        _filename = path + QStringLiteral("/") + name;
++        _filename = path + QDir::separator() + name;
+ 
+         // Clear file contents
+         QFile file(_filename);
+@@ -1131,6 +1131,14 @@ QString getDefaultPath(const QString &option)
+ #endif
+         return prefix + "/bin/indiserver";
+     }
++    else if (option == "PlaceholderFormat")
++    {
++#if defined(Q_OS_WIN)
++        return "\%t\%T\%F\%t_%T_%F";
++#else
++        return "/%t/%T/%F/%t_%T_%F";
++#endif
++    }
+     else if (option == "INDIHubAgent")
+     {
+ #if defined(INDI_PREFIX)
+diff --git a/kstars/auxiliary/xplanetimageviewer.cpp b/kstars/auxiliary/xplanetimageviewer.cpp
+index a169f726e..1365e7fe7 100644
+--- a/kstars/auxiliary/xplanetimageviewer.cpp
++++ b/kstars/auxiliary/xplanetimageviewer.cpp
+@@ -783,11 +783,10 @@ bool XPlanetImageViewer::setupOutputFile()
+     {
+         if(m_File.fileName().contains("xplanetfifo") && m_File.exists())
+             return true;
+-        QDir kstarsTempDir(KSPaths::writableLocation(QStandardPaths::TempLocation) + "/" + qAppName());
++        QDir kstarsTempDir(KSPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() + qAppName());
+         kstarsTempDir.mkpath(".");
+         m_File.setFileName(kstarsTempDir.filePath(QString("xplanetfifo%1.png").arg(QUuid::createUuid().toString().mid(1, 8)).toLatin1()));
+-        int mkFifoSuccess = 0; //Note if the return value of the command is 0 it succeeded, -1 means it failed.
+-        if ((mkFifoSuccess = mkfifo(m_File.fileName().toLatin1(), S_IRUSR | S_IWUSR) < 0))
++        if (mkfifo(m_File.fileName().toLatin1(), S_IRUSR | S_IWUSR) < 0)
+         {
+             KSNotification::error(i18n("Error making FIFO file %1: %2.", m_File.fileName(), strerror(errno)));
+             return false;
+@@ -797,7 +796,7 @@ bool XPlanetImageViewer::setupOutputFile()
+ #endif
+ 
+     //If the user is using windows or has not selected to use FIFO, it uses files in the KStars data directory.
+-    QDir xPlanetDirPath(KSPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/" + "xplanet");
++    QDir xPlanetDirPath(KSPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + QDir::separator() + "xplanet");
+     xPlanetDirPath.mkpath(".");
+     m_File.setFileName(xPlanetDirPath.filePath(m_ObjectName + ".png"));
+     return true;
+diff --git a/kstars/ekos/capture/capture.cpp b/kstars/ekos/capture/capture.cpp
+index 0d3ff0c40..79fdbeab7 100644
+--- a/kstars/ekos/capture/capture.cpp
++++ b/kstars/ekos/capture/capture.cpp
+@@ -6859,11 +6859,12 @@ QString Capture::previewFilename(FilenamePreviewType previewType)
+ {
+     QString previewText;
+     QString m_format;
++    auto separator = QDir::separator();
+ 
+     if (previewType == LOCAL_PREVIEW)
+     {
+-        if(!fileDirectoryT->text().endsWith("/") && !placeholderFormatT->text().startsWith("/"))
+-            placeholderFormatT->setText("/" + placeholderFormatT->text());
++        if(!fileDirectoryT->text().endsWith(separator) && !placeholderFormatT->text().startsWith(separator))
++            placeholderFormatT->setText(separator + placeholderFormatT->text());
+         m_format = fileDirectoryT->text() + placeholderFormatT->text() + formatSuffixN->prefix() + formatSuffixN->cleanText();
+     }
+     else if (previewType == REMOTE_PREVIEW)
+@@ -6882,8 +6883,8 @@ QString Capture::previewFilename(FilenamePreviewType previewType)
+         QString previewSeq;
+         if (m_SequenceURL.toLocalFile().isEmpty())
+         {
+-            if (m_format.startsWith("/"))
+-                previewSeq = m_format.left(m_format.lastIndexOf("/"));
++            if (m_format.startsWith(separator))
++                previewSeq = m_format.left(m_format.lastIndexOf(separator));
+         }
+         else
+             previewSeq = m_SequenceURL.toLocalFile();
+@@ -6901,7 +6902,7 @@ QString Capture::previewFilename(FilenamePreviewType previewType)
+ 
+     // Must change directory separate to UNIX style for remote
+     if (previewType == REMOTE_PREVIEW)
+-        previewText.replace("/", "\\");
++        previewText.replace(separator, "/");
+ 
+     return previewText;
+ }
+diff --git a/kstars/ekos/capture/placeholderpath.cpp b/kstars/ekos/capture/placeholderpath.cpp
+index a47ccaa80..2632121d6 100644
+--- a/kstars/ekos/capture/placeholderpath.cpp
++++ b/kstars/ekos/capture/placeholderpath.cpp
+@@ -316,10 +316,7 @@ QString PlaceholderPath::generateFilename(const QString &directory,
+     if (batch_mode)
+         currentDir = directory;
+     else
+-        currentDir = KSPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() + "kstars/";
+-
+-    //    if (currentDir.endsWith(QDir::separator()) == false)
+-    //        currentDir += QDir::separator();
++        currentDir = KSPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() + "kstars" + QDir::separator();
+ 
+     QString tempFormat = currentDir + format + "_%s" + QString::number(formatSuffix);
+ 
+@@ -465,7 +462,7 @@ QList<int> PlaceholderPath::getCompletedFileIds(const SequenceJob &job, const QS
+     QRegularExpressionMatch match;
+     QRegularExpression re("^" + path_info.fileName() + "$");
+     QList<int> ids = {};
+-    for (auto name : matchingFiles)
++    for (auto &name : matchingFiles)
+     {
+         match = re.match(name);
+         if (match.hasMatch())
+diff --git a/kstars/ekos/focus/focus.cpp b/kstars/ekos/focus/focus.cpp
+index e63514822..0a5b789c7 100644
+--- a/kstars/ekos/focus/focus.cpp
++++ b/kstars/ekos/focus/focus.cpp
+@@ -2229,7 +2229,7 @@ void Focus::setHFRComplete()
+         // IS8601 contains colons but they are illegal under Windows OS, so replacing them with '-'
+         // The timestamp is no longer ISO8601 but it should solve interoperality issues between different OS hosts
+         QString name     = "autofocus_frame_" + now.toString("HH-mm-ss") + ".fits.gz";
+-        QString filename = path + QStringLiteral("/") + name + QStringLiteral("[compress R 100,100]");
++        QString filename = path + QDir::separator() + name + QStringLiteral("[compress R 100,100]");
+         m_ImageData->saveImage(filename);
+     }
+ 
+diff --git a/kstars/fitsviewer/fitsdata.cpp b/kstars/fitsviewer/fitsdata.cpp
+index bda15af98..78194e894 100644
+--- a/kstars/fitsviewer/fitsdata.cpp
++++ b/kstars/fitsviewer/fitsdata.cpp
+@@ -51,7 +51,7 @@
+ 
+ QString getTemporaryPath()
+ {
+-    return QDir(KSPaths::writableLocation(QStandardPaths::TempLocation) + "/" +
++    return QDir(KSPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() +
+                 qAppName()).path();
+ }
+ 
+diff --git a/kstars/indi/indicamera.cpp b/kstars/indi/indicamera.cpp
+index cbfa070ee..161e557a2 100644
+--- a/kstars/indi/indicamera.cpp
++++ b/kstars/indi/indicamera.cpp
+@@ -170,13 +170,14 @@ void Camera::registerProperty(INDI::Property prop)
+         if (svp)
+         {
+             bool ok = false;
++            auto separator = QDir::separator();
+             for (const auto &it : *svp)
+             {
+                 QString key = QString(it.getLabel());
+                 double value = key.toDouble(&ok);
+                 if (!ok)
+                 {
+-                    QStringList parts = key.split("/");
++                    QStringList parts = key.split(separator);
+                     if (parts.count() == 2)
+                     {
+                         bool numOk = false, denOk = false;
+@@ -1113,7 +1114,7 @@ void Camera::updateUploadSettings(const QString &remoteDir)
+         {
+             auto uploadDir = remoteDir;
+             // N.B. Need to convert any Windows directory separators / to Posix separators /
+-            uploadDir.replace("\\", "/");
++            uploadDir.replace(QDir::separator(), "/");
+             IUSaveText(uploadT, uploadDir.toLatin1().constData());
+         }
+ 
+diff --git a/kstars/kstars.kcfg b/kstars/kstars.kcfg
+index eafcd8890..eab887b28 100644
+--- a/kstars/kstars.kcfg
++++ b/kstars/kstars.kcfg
+@@ -1787,7 +1787,7 @@
+       </entry>
+       <entry name="PlaceholderFormat" type="String">
+          <label>How to format captured image filename.</label>
+-         <default>/%t/%T/%F/%t_%T_%F</default>
++         <default code="true">KSUtils::getDefaultPath("PlaceholderFormat")</default>
+       </entry>
+       <entry name="RemoteCaptureDirectory" type="String">
+          <label>Path to remote capture directory to save images.</label>
+-- 
+GitLab
+
+

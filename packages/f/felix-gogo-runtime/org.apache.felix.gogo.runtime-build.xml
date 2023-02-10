@@ -117,7 +117,7 @@
 		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
 		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
 		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Provide-Capability" value="osgi.service;effective:=active;objectClass=&quot;org.apache.felix.service.command.CommandProcessor&quot;,osgi.service;effective:=active;objectClass=&quot;org.apache.felix.service.threadio.ThreadIO&quot;"/>
+		<attribute name="Provide-Capability" value="org.apache.felix.gogo;org.apache.felix.gogo=&quot;runtime.implementation&quot;;version:Version=&quot;1.0.0&quot;,osgi.service;effective:=active;objectClass=&quot;org.apache.felix.service.command.CommandProcessor&quot;,osgi.service;effective:=active;objectClass=&quot;org.apache.felix.service.threadio.ThreadIO&quot;"/>
 		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
       </manifest>
     </jar>

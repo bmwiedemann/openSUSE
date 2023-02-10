@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:01:51 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.115
+  * mdgpu: add marketing names from amd-5.4 (22.40)
+  * amdgpu: add some additional marketing names
+  * tests/amdgpu: use AMDGPU_TIMEOUT_INFINITE to query fence
+  * intel: Eliminate need to keep adding PCI IDs
+  * drm_fourcc: sync drm_fourcc with latest drm-next kernel
+  * xf86drm: Add support for decoding Vivante format modifiers
+  * tests/amdgpu/jpeg: enable unit test for jpeg 4
+  * xf86drm: fix warning in drmGetFormatModifierNameFromVivante()
+  * xf86drm: add support for printing AMD GFX11 modifiers
+
+-------------------------------------------------------------------
 Wed Nov 23 14:20:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Apply n_libdrm-drop-valgrind-dep-generic.patch and

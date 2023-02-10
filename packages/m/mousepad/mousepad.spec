@@ -1,7 +1,7 @@
 #
 # spec file for package mousepad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.5.10
+Version:        0.6.0
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
@@ -28,8 +28,8 @@ Source:         https://archive.xfce.org/src/apps/mousepad/0.5/mousepad-%{versio
 BuildRequires:  appstream-glib
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
-BuildRequires:  pkgconfig(gmodule-2.0)  >= 2.52.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.2
+BuildRequires:  pkgconfig(gmodule-2.0)  >= 2.56.2
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4)

@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Mon Feb  6 16:13:12 UTC 2023 - Marcus Meissner <meissner@suse.com>
-
-- select openssl 1.1.1 explicit, software not yet ported.
-
--------------------------------------------------------------------
-Wed Aug  7 20:43:16 UTC 2019 - Larry Dewey <ldewey@suse.com>
-
-- Initial Commit (jsc#SLE-8354)

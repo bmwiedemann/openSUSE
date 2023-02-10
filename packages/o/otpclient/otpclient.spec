@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -30,8 +30,7 @@ Source2:        otpclient.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libbaseencode-devel >= 1.0.9
-BuildRequires:  libcotp-devel >= 1.2.1
+BuildRequires:  libcotp-devel >= 2.0.0
 BuildRequires:  libgcrypt-devel >= 1.6.0
 BuildRequires:  libjansson-devel >= 2.10.0
 BuildRequires:  libpng16-devel >= 1.6.0

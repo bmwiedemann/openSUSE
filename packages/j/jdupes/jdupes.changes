@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  9 17:13:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.3:
+  * Major performance fix in the double traversal prevention tree
+    code
+  * Added undocumented '-9' benchmark option for testing traversal
+    code
+  * Extra error checks to try to finally solve a very rare crash
+    bug
+  * Tiny code size reduction by discarding unused xxHash code
+  * jody_hash re-added as a build-time option
+  * Many options/features/safety checks can now be selectively
+    compiled out
+  * New 'make BARE_BONES=1' option builds the most minimal jdupes
+    possible
+  * Fix exit behavior when no valid directories are given
+  * Only act on "normal" files and directories 
+  
+-------------------------------------------------------------------
 Tue Dec  6 21:35:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1:

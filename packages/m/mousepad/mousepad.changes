@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  9 18:10:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.0
+  * Dependency Changes:
+    - GLib >= 2.56.2
+  * New Features:
+    - Keep saved state in memory to track actual modification state
+  * Appearance Changes / Minor Improvements:
+    - Add "match whole word" toggle to search toolbar (#180, !124)
+  * Code Refactoring:
+    - cleanup: prefs: Reduce the diff from what Glade 3.40.0 would do
+    - cleanup: Use G_DECLARE_FINAL_TYPE
+    - cleanup: Remove dead code
+    - cleanup: Use consistent naming and avoid duplicated code
+    - build: Let xdt-depends.m4 macros set GLib macros
+    - flatpak: Updates from Flathub
+  * Bug Fixes:
+    - Clear undo action list in case of unbuffered modification
+    - Set file properties only for actual changes
+    - Emit "encoding-changed" after setting BOM if needed
+    - Update action states on reload
+    - Mark document as modified if line ending actually changes (Fixes #187)
+    - Do not show the menubar on Alt key release if focus is lost (#185)
+    - plugins: Do not resize unnecessarily the prefs dialog on Wayland
+    - Initialize static variable only once
+    - prefs-dialog: Improve history widget alignment (Fixes #173)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jul 10 17:29:42 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.10

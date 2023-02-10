@@ -211,7 +211,7 @@ def patch_file(patchfile, timestamp):
     vout(1, 'patch {}'.format(patchfile))
     with open(patchfile, 'r+', encoding = 'utf-8') as f:
         content = f.read()
-        patched, count = re.subn('\d{8}_\d{6}', timestamp, content)
+        patched, count = re.subn('\d{8}', timestamp, content)
         if count and content != patched:
             f.seek(0)
             f.write(patched)

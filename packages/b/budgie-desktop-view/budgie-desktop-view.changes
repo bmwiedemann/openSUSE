@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 05 15:27:38 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 1.2.1+0:
+  * Handle the new BDS desktop file naming in B-D master
+  * Use arrow instead of HAND1
+  * Remove unused gtk-update-icon-cache
+  * Implement translations support using the budgie-desktop-view
+    transifex project
+  * Add updatePot and updateTranslations scripts
+  * Move mkrelease.sh to scripts/mkRelease.sh
+  * Add editorconfig
+
+-------------------------------------------------------------------
 Mon Aug 29 17:50:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move autostart back to /etc until aaa_base is fixed

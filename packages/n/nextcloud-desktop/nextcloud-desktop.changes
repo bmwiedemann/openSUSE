@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:25:57 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.3
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+
+-------------------------------------------------------------------
+Thu Feb  9 19:06:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.2
+  - No regular changelog from upstream.
+    See instead: https://github.com/nextcloud/desktop/compare/v3.7.1...v3.7.2
+
+-------------------------------------------------------------------
 Tue Feb  7 12:28:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.7.1

@@ -1,7 +1,7 @@
 #
 # spec file for package apache-sshd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,21 +66,24 @@ This package provides %{name}.
 %patch1 -p1
 
 rm -rf sshd-core/src/main/java/org/apache/sshd/agent/unix
+%pom_remove_dep -r tomcat:tomcat-apr
 
 # Avoid unnecessary dep on spring framework
 %pom_remove_dep :spring-framework-bom
 %pom_remove_dep :testcontainers-bom sshd-sftp sshd-core
 
 # Build the core modules only
-%pom_disable_module assembly
 %pom_disable_module sshd-mina
+%pom_remove_dep -r org.apache.sshd:sshd-mina
 %pom_disable_module sshd-netty
 %pom_disable_module sshd-ldap
 %pom_disable_module sshd-git
 %pom_disable_module sshd-contrib
 %pom_disable_module sshd-spring-sftp
+%pom_remove_dep -r org.apache.sshd:sshd-spring-sftp
 %pom_disable_module sshd-cli
 %pom_disable_module sshd-openpgp
+%pom_disable_module assembly
 
 # Disable plugins we don't need for RPM builds
 %pom_remove_plugin :apache-rat-plugin

@@ -33,6 +33,11 @@ URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+Patch0:         fix-dir-separator.patch
+Patch1:         fix-indi-timestamp.patch
+Patch2:         fix-placeholder-path-part1.patch
+Patch3:         fix-placeholder-path-part2.patch
+Patch4:         fix-scheduler.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

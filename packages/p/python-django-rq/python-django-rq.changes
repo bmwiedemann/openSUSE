@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:30:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Able to show multiple execution results for each job
+    (requires RQ v1.12). 
+  * Various admin interface improvements.
+
+-------------------------------------------------------------------
 Wed Jan  4 16:21:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.6.0:

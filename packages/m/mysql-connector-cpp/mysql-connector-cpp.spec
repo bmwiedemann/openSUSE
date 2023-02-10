@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-cpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libmysqlcppconn9
 %define x_libname libmysqlcppconn8-2
 Name:           mysql-connector-cpp
-Version:        8.0.28
+Version:        8.0.32
 Release:        0
 Summary:        MySQL Connector/C++: Standardized database driver for C++ development
 License:        SUSE-GPL-2.0-with-FLOSS-exception

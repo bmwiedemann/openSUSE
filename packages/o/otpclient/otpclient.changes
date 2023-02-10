@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 10 09:41:55 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.4:
+  * make auto-lock and secret service mutually exclusive (#279)
+  * fix importing plain AEGIS (#281)
+  * fix importing encrypted AEGIS on some distros (#281)
+  * rename disable_secret_service setting to use_secret_service
+
+-------------------------------------------------------------------
 Fri Jan 13 13:31:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.3:

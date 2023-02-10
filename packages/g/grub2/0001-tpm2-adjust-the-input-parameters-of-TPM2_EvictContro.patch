@@ -1,0 +1,73 @@
+From bc5ecda21bb612f786f614623da782d7ad6d8325 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 7 Feb 2023 18:01:31 +0800
+Subject: [PATCH 01/13] tpm2: adjust the input parameters of TPM2_EvictControl
+
+Per "TCG TPM2 Part3 Commands", 'persistentHandle' of TPM2_EvictControl
+is in the parameter area, i.e. after the authorization command. Adjust
+the order of the arguments to match the spec definition.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c                  | 2 +-
+ include/grub/tpm2/internal/functions.h | 2 +-
+ util/grub-protect.c                    | 8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 2407a844d..1cd969d5d 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -662,8 +662,8 @@ TPM2_Create (TPMI_DH_OBJECT parentHandle,
+ TPM_RC
+ TPM2_EvictControl (TPMI_RH_PROVISION auth,
+                    TPMI_DH_OBJECT objectHandle,
+-                   TPMI_DH_PERSISTENT persistentHandle,
+                    const TPMS_AUTH_COMMAND *authCommand,
++                   TPMI_DH_PERSISTENT persistentHandle,
+                    TPMS_AUTH_RESPONSE *authResponse)
+ {
+   struct grub_tpm2_buffer in;
+diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
+index a1c71fae5..f08b45ed2 100644
+--- a/include/grub/tpm2/internal/functions.h
++++ b/include/grub/tpm2/internal/functions.h
+@@ -110,8 +110,8 @@ TPM2_Create (TPMI_DH_OBJECT parentHandle,
+ TPM_RC
+ TPM2_EvictControl (TPMI_RH_PROVISION auth,
+                    TPMI_DH_OBJECT objectHandle,
+-                   TPMI_DH_PERSISTENT persistentHandle,
+                    const TPMS_AUTH_COMMAND *authCommand,
++                   TPMI_DH_PERSISTENT persistentHandle,
+                    TPMS_AUTH_RESPONSE *authResponse);
+ 
+ #endif /* ! GRUB_TPM2_INTERNAL_FUNCTIONS_HEADER */
+diff --git a/util/grub-protect.c b/util/grub-protect.c
+index d03be3e90..5ff76b613 100644
+--- a/util/grub-protect.c
++++ b/util/grub-protect.c
+@@ -695,8 +695,8 @@ grub_protect_tpm2_get_srk (struct grub_protect_args *args, TPM_HANDLE *srk)
+   /* Persist SRK */
+   if (args->tpm2_persist)
+     {
+-      rc = TPM2_EvictControl (TPM_RH_OWNER, srkHandle, args->tpm2_srk,
+-                              &authCommand, NULL);
++      rc = TPM2_EvictControl (TPM_RH_OWNER, srkHandle, &authCommand,
++                              args->tpm2_srk, NULL);
+       if (rc == TPM_RC_SUCCESS)
+         {
+           TPM2_FlushContext (srkHandle);
+@@ -877,8 +877,8 @@ grub_protect_tpm2_remove (struct grub_protect_args *args)
+   /* Evict SRK */
+   authCommand.sessionHandle = TPM_RS_PW;
+ 
+-  rc = TPM2_EvictControl (TPM_RH_OWNER, args->tpm2_srk, args->tpm2_srk,
+-                          &authCommand, NULL);
++  rc = TPM2_EvictControl (TPM_RH_OWNER, args->tpm2_srk, &authCommand,
++                          args->tpm2_srk, NULL);
+   if (rc != TPM_RC_SUCCESS)
+     {
+       fprintf (stderr,
+-- 
+2.35.3
+

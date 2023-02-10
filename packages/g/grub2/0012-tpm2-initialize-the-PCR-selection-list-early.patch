@@ -1,0 +1,103 @@
+From 1dcae21faa281496a79ee2caf59772bf36b16b9e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 8 Feb 2023 11:20:45 +0800
+Subject: [PATCH 12/13] tpm2: initialize the PCR selection list early
+
+The PCR selection list will be used in several TPM2 commands for the
+authorized policy mode. Declare the PCR selection list in
+grub_tpm2_protector_context and initialize the list after checking the
+arguments of the tpm2 module so that other functions can use the list
+directly.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/module.c | 39 +++++++++++++++++++++------------------
+ 1 file changed, 21 insertions(+), 18 deletions(-)
+
+diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
+index b404d8449..c819ef616 100644
+--- a/grub-core/tpm2/module.c
++++ b/grub-core/tpm2/module.c
+@@ -43,6 +43,7 @@ struct grub_tpm2_protector_context
+   grub_tpm2_protector_mode_t mode;
+   grub_uint8_t pcrs[TPM_MAX_PCRS];
+   grub_uint8_t pcr_count;
++  TPML_PCR_SELECTION pcr_list;
+   TPM_ALG_ID asymmetric;
+   TPM_ALG_ID bank;
+   const char *keyfile;
+@@ -353,23 +354,12 @@ grub_tpm2_protector_srk_recover (const struct grub_tpm2_protector_context *ctx,
+   TPM2B_NONCE nonceCaller = { 0 };
+   TPMT_SYM_DEF symmetric = { 0 };
+   TPMI_SH_AUTH_SESSION session;
+-  TPML_PCR_SELECTION pcrSel = {
+-    .count = 1,
+-    .pcrSelections = {
+-      {
+-        .hash = ctx->bank,
+-        .sizeOfSelect = 3,
+-        .pcrSelect = { 0 }
+-      },
+-    }
+-  };
+   TPMS_AUTH_COMMAND authCmd = { 0 };
+   TPM_HANDLE sealed_key_handle;
+   TPM2B_NAME name;
+   TPMS_AUTH_RESPONSE authResponse;
+   TPM2B_SENSITIVE_DATA data;
+   grub_uint8_t *key_out;
+-  grub_uint8_t i;
+   grub_err_t err;
+ 
+   /* Retrieve Sealed Key */
+@@ -413,13 +403,7 @@ grub_tpm2_protector_srk_recover (const struct grub_tpm2_protector_context *ctx,
+     }
+ 
+   /* Policy PCR */
+-  for (i = 0; i < ctx->pcr_count; i++)
+-    pcrSel
+-      .pcrSelections[0]
+-      .pcrSelect[TPM2_PCR_TO_SELECT(ctx->pcrs[i])]
+-        |= TPM2_PCR_TO_BIT(ctx->pcrs[i]);
+-
+-  rc = TPM2_PolicyPCR (session, NULL, NULL, &pcrSel, NULL);
++  rc = TPM2_PolicyPCR (session, NULL, NULL, &ctx->pcr_list, NULL);
+   if (rc)
+     {
+       grub_error (err, N_("Failed to submit PCR policy (TPM2_PolicyPCR failed "
+@@ -538,6 +522,23 @@ grub_tpm2_protector_recover_key (grub_uint8_t **key, grub_size_t *key_size)
+   return GRUB_ERR_NONE;
+ }
+ 
++static void
++initialize_pcr_list (struct grub_tpm2_protector_context *ctx)
++{
++  TPMS_PCR_SELECTION *pcr_sel;
++  grub_uint8_t i;
++
++  grub_memset (&ctx->pcr_list, 0, sizeof (TPML_PCR_SELECTION));
++
++  ctx->pcr_list.count = 1;
++
++  pcr_sel = &ctx->pcr_list.pcrSelections[0];
++  pcr_sel->hash = ctx->bank;
++  pcr_sel->sizeOfSelect = 3;
++
++  for (i = 0; i < ctx->pcr_count; i++)
++    pcr_sel->pcrSelect[TPM2_PCR_TO_SELECT(ctx->pcrs[i])] |= TPM2_PCR_TO_BIT(ctx->pcrs[i]);
++}
+ 
+ static grub_err_t
+ grub_tpm2_protector_check_args (struct grub_tpm2_protector_context *ctx)
+@@ -593,6 +594,8 @@ grub_tpm2_protector_check_args (struct grub_tpm2_protector_context *ctx)
+         ctx->asymmetric = TPM_ALG_RSA;
+     }
+ 
++  initialize_pcr_list (ctx);
++
+   return GRUB_ERR_NONE;
+ }
+ 
+-- 
+2.35.3
+

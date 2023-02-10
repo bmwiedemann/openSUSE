@@ -4,8 +4,8 @@
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <!-- Set this commit to add rust-analyzer support -->
-    <!-- <param name="revision">1.25.1</param> -->
-    <param name="revision">8f6b53628ad996ad86f9c6225fa500cddf860905</param>
+    <!-- <param name="revision">8f6b53628ad996ad86f9c6225fa500cddf860905</param> -->
+    <param name="revision">1.25.2</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -15,12 +15,12 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">rustup</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">

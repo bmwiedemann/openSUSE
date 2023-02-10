@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  8 21:17:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.2.1
+  * Fixed audio worklet scripts failing to run when nodeIntegrationInWorker: true.
+- Fix missing files in debugsource package
+- Remove third_party/breakpad from tarball and drop breakpad-system-curl.patch. It has been dead code for a while.
+
+-------------------------------------------------------------------
 Wed Feb  1 20:17:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.2.0
   * Fixed a BrowserWindow maxWidth or maxHeight of 0 causing strange resizing behavior.

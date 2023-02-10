@@ -1,0 +1,30 @@
+From 4f00de963f3cf483d4067cdf0e86147248e9456e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 8 Feb 2023 15:12:10 +0800
+Subject: [PATCH 07/13] tpm2: pack the missing authorization command for
+ TPM2_PCR_Read
+
+When the caller of TPM2_PCR_Read() passes a valid authorization command,
+we should pack it into the 'in' buffer before sending the command.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 8a98fa251..8081b8bf3 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -535,6 +535,8 @@ TPM2_PCR_Read (const TPMS_AUTH_COMMAND *authCommand,
+ 
+   /* Marshal */
+   grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+   grub_tpm2_mu_TPML_PCR_SELECTION_Marshal (&in, pcrSelectionIn);
+   if (in.error)
+     return TPM_RC_FAILURE;
+-- 
+2.35.3
+

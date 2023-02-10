@@ -1560,4 +1560,15 @@ Changes:
 - Set home to /root when running build time services</comment>
     <requestid>1056167</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>bf4a5ed929267721760acf80522a91c8</srcmd5>
+    <version>20230208</version>
+    <time>1676036042</time>
+    <user>dimstar_suse</user>
+    <comment>- SPDX SBOM generation for container and product builds
+- Revert &amp; Redo &quot;Better filetype detection for temp changes files&quot;
+- Fix typo in glibc hwcaps supplements
+- Implement lua string macros</comment>
+    <requestid>1063831</requestid>
+  </revision>
 </revisionlist>

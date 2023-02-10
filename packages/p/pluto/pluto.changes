@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:15:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.2:
+  * Update alpine to latest edge (#451)
+
+-------------------------------------------------------------------
+Fri Feb 10 06:13:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.1:
+  * update go modules (#450)
+
+-------------------------------------------------------------------
 Mon Feb 06 17:27:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.13.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-distutils-extra
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distutils-extra
-Version:        2.47
+Version:        2.49
 Release:        0
 Summary:        Distutils/Setuptools Adapter
 License:        GPL-2.0-only

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  9 18:17:02 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.13.0
+  * New Features:
+    - Add print support (#1)
+  * Bug Fixes:
+    - editor-chooser: Expand tree view vertically
+    - properties-dialog: Update thumbnail on "ready" signal
+    - Fix remaining blurry icons when UI scale > 1
+    - thumbnailer: Properly support window scaling (#81)
+    - Revert "thumbnailer: Increase thumbnail sizes"
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 22 16:58:34 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.12.4

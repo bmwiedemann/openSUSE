@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-bootstrap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,7 @@ Patch33:        eclipse-ppc64.patch
 Patch34:        eclipse-libkeystorelinuxnative.patch
 # PATCH-FIX-UPSTREAM bsc#1183728 CVE-2020-27225 Help Subsystem does not authenticate active help requests
 Patch35:        eclipse-CVE-2020-27225.patch
+Patch36:        eclipse-ant.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -524,6 +525,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
+%patch36 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \

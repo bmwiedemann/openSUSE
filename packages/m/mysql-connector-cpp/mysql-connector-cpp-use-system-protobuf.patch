@@ -1,30 +1,39 @@
-diff -uNr mysql-connector-c++-8.0.20-org/cdk/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/CMakeLists.txt
---- mysql-connector-c++-8.0.20-org/cdk/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
-+++ mysql-connector-c++-8.0.20-src/cdk/CMakeLists.txt	2020-05-13 18:37:49.147107797 +0300
-@@ -97,6 +97,7 @@
+Index: b/cdk/CMakeLists.txt
+===================================================================
+--- a/cdk/CMakeLists.txt
++++ b/cdk/CMakeLists.txt
+@@ -97,6 +97,7 @@ find_dependency(SSL)
  #find_dependency(Protobuf)
  find_dependency(RapidJSON)
  find_dependency(Coverage)
-+find_package(Protobuf REQUIRED)
++#find_package(Protobuf REQUIRED)
  
  
  # TODO: These macros should not be used in public headers because they are
-diff -uNr mysql-connector-c++-8.0.20-org/cdk/core/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/core/CMakeLists.txt
---- mysql-connector-c++-8.0.20-org/cdk/core/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
-+++ mysql-connector-c++-8.0.20-src/cdk/core/CMakeLists.txt	2020-05-13 18:37:49.147107797 +0300
-@@ -45,7 +45,7 @@
+Index: b/cdk/protocol/mysqlx/CMakeLists.txt
+===================================================================
+--- a/cdk/protocol/mysqlx/CMakeLists.txt
++++ b/cdk/protocol/mysqlx/CMakeLists.txt
+@@ -26,7 +26,8 @@
+ # along with this program; if not, write to the Free Software Foundation, Inc.,
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA
  
- target_link_libraries(cdk
-   PUBLIC  cdk_mysqlx cdk_parser
--  PRIVATE ext::pb-lite  # required by codecc.cc
-+  PRIVATE protobuf::libprotobuf-lite  # required by codecc.cc
- )
+-find_dependency(Protobuf)
++#find_dependency(Protobuf)
++find_package(Protobuf REQUIRED)
+ find_dependency(Compression)
  
- add_coverage(cdk)
-diff -uNr mysql-connector-c++-8.0.20-org/cdk/protocol/mysqlx/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/protocol/mysqlx/CMakeLists.txt
---- mysql-connector-c++-8.0.20-org/cdk/protocol/mysqlx/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
-+++ mysql-connector-c++-8.0.20-src/cdk/protocol/mysqlx/CMakeLists.txt	2020-05-13 18:37:49.151107769 +0300
-@@ -109,6 +109,65 @@
+ include(CheckIncludeFile)
+@@ -39,7 +40,7 @@ add_config(HAVE_BYTEORDER_H)
+ 
+ add_config_option(DEBUG_PROTOBUF BOOL ADVANCED DEFAULT OFF "Debug Protobuf messages")
+ 
+-set(use_full_protobuf ${WITH_TESTS})
++set(use_full_protobuf 1)
+ 
+ if (DEBUG_PROTOBUF)
+   message("Protobuf debugging enabled")
+@@ -111,6 +112,65 @@ if(NOT use_full_protobuf)
  
  endif(NOT use_full_protobuf)
  
@@ -90,15 +99,33 @@ diff -uNr mysql-connector-c++-8.0.20-org/cdk/protocol/mysqlx/CMakeLists.txt mysq
  
  mysqlx_protobuf_generate_cpp(PB_SRCS PB_HDRS ${proto_mysqlx_defs})
  
-@@ -130,9 +187,9 @@
+@@ -129,11 +189,11 @@ target_include_directories(cdk_proto_mys
+   ${CMAKE_CURRENT_BINARY_DIR}
  )
  
- if(use_full_protobuf)
--  target_link_libraries(cdk_proto_mysqlx PRIVATE ext::pb-full)
-+  target_link_libraries(cdk_proto_mysqlx PRIVATE protobuf::libprotobuf)
- else()
--  target_link_libraries(cdk_proto_mysqlx PRIVATE ext::pb-lite)
-+  target_link_libraries(cdk_proto_mysqlx PRIVATE protobuf::libprotobuf-lite)
- endif()
+-if(use_full_protobuf)
+-  target_link_libraries(cdk_proto_mysqlx PRIVATE ext::protobuf)
+-else()
+-  target_link_libraries(cdk_proto_mysqlx PRIVATE ext::protobuf-lite)
+-endif()
++#if(use_full_protobuf)
++#  target_link_libraries(cdk_proto_mysqlx PRIVATE ext:protobuf)
++#else()
++#  target_link_libraries(cdk_proto_mysqlx PRIVATE ext::protobuf-lite)
++#endif()
  
  target_link_libraries(cdk_proto_mysqlx
+   PRIVATE cdk_foundation ext::z ext::lz4 ext::zstd
+Index: b/cdk/core/CMakeLists.txt
+===================================================================
+--- a/cdk/core/CMakeLists.txt
++++ b/cdk/core/CMakeLists.txt
+@@ -45,7 +45,7 @@ add_library(cdk STATIC ${cdk_sources} ${
+ 
+ target_link_libraries(cdk
+   PUBLIC  cdk_mysqlx cdk_parser
+-  PRIVATE ext::protobuf-lite  # required by codecc.cc
++#  PRIVATE ext::protobuf-lite  # required by codecc.cc
+ )
+ 
+ add_coverage(cdk)

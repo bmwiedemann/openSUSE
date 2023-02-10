@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -37,21 +37,22 @@ BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
+
 BuildRequires:  pkgconfig(atk)
-BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
-BuildRequires:  pkgconfig(exo-2)
+BuildRequires:  pkgconfig(exo-2) >= 0.11.2
 BuildRequires:  pkgconfig(garcon-1) >= 4.17.0
 BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.17.0
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libwnck-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libwnck-3.0) >= 3.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.1
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.2
@@ -62,6 +63,8 @@ BuildRequires:  pkgconfig(xext)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
+# typelib(AppIndicator3) is needed for statusnotifier plugin to be fully usable with appindicators
+Requires:       typelib(AppIndicator3)
 Provides:       xfce4-panel-doc = %{version}
 Obsoletes:      xfce4-panel-doc <= 4.12.0
 Provides:       xfce4-panel-plugins = %{version}

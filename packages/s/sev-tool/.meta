@@ -1,5 +1,0 @@
-<package name="sev-tool" project="openSUSE:Factory">
-  <title>AMD sev-tool</title>
-  <description>A tool used to provision secured virtualized guests, run tests against SEV, and provide machine introspection on hosts to guarantee proper dependencies are provided.</description>
-  <devel project="security" package="sev-tool"/>
-</package>

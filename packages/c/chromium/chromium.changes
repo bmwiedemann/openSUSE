@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb  8 20:16:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 110.0.5481.77 (boo#1208029):
+  * CVE-2023-0696: Type Confusion in V8
+  * CVE-2023-0697: Inappropriate implementation in Full screen mode
+  * CVE-2023-0698: Out of bounds read in WebRTC
+  * CVE-2023-0699: Use after free in GPU
+  * CVE-2023-0700: Inappropriate implementation in Download
+  * CVE-2023-0701: Heap buffer overflow in WebUI
+  * CVE-2023-0702: Type Confusion in Data Transfer
+  * CVE-2023-0703: Type Confusion in DevTools
+  * CVE-2023-0704: Insufficient policy enforcement in DevTools
+  * CVE-2023-0705: Integer overflow in Core
+  * Various fixes from internal audits, fuzzing and other initiatives
+- build with bundled libavif
+- dropped patches:
+  * chromium-109-compiler.patch
+  * chromium-icu72-3.patch
+- added patches:
+  * chromium-110-compiler.patch
+  * chromium-110-system-libffi.patch
+  * chromium-110-NativeThemeBase-fabs.patch
+  * chromium-110-CredentialUIEntry-const.patch
+  * chromium-110-DarkModeLABColorSpace-pow.patch
+  * v8-move-the-Stack-object-from-ThreadLocalTop.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 04:51:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 109.0.5414.119 (boo#1207512):

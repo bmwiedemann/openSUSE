@@ -62,4 +62,16 @@
 </comment>
     <requestid>1041747</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f463bbe942b4aa5df90d7727b9cde5b7</srcmd5>
+    <version>1.105</version>
+    <time>1676036160</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.105:
+  * More understandable module hotfixes description
+  * Add options to download only built RPMs/spec files
+  * Use the --dirname parameter for copr-cli monitor
+  * Disable appstream by default</comment>
+    <requestid>1064202</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:19:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.71.0:
+  * switch from trigger-release target to release target (#1560)
+  * Speed up cataloging by replacing globs searching with index lookups (#1510)
+  * Update syft bootstrap tools to latest versions. (#1549)
+  * Fix installed versions (#1556)
+  * chore(deps): bump golang.org/x/net from 0.5.0 to 0.6.0 (#1558)
+  * feat: add postgresql classifier (#1536)
+  * Add release trigger (#1501)
+  * chore(deps): bump golang.org/x/mod from 0.7.0 to 0.8.0 (#1552)
+  * chore(deps): bump golang.org/x/term from 0.4.0 to 0.5.0 (#1551)
+  * fix: add support for licenses not found on list (#1540)
+  * Update syft bootstrap tools to latest versions. (#1541)
+  * feat: Allow specific versions of formats to be specified (#1543)
+  * Update Stereoscope to c49244e4d66f1ee789027ea23acc746968799c3b (#1539)
+  * source: when base is set, responsePath should be absolute (#1542)
+
+-------------------------------------------------------------------
 Sat Feb 04 07:45:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.70.0:

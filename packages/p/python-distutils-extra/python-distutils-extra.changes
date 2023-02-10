@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.49:
+  * Add missing python3-setuptools Depends
+  * Adapt tests to setuptools 54+
+
+-------------------------------------------------------------------
 Sat Dec  3 22:38:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.47:

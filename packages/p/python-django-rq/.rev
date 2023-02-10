@@ -19,4 +19,15 @@ already being maintained over a long period by https://build.opensuse.org/users/
     admin. Thanks @robertaistleitner!</comment>
     <requestid>1055950</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a797b1e929e82e2d0dc1ce6df967ade2</srcmd5>
+    <version>2.7.0</version>
+    <time>1676036170</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.0:
+  * Able to show multiple execution results for each job
+    (requires RQ v1.12). 
+  * Various admin interface improvements.</comment>
+    <requestid>1064214</requestid>
+  </revision>
 </revisionlist>

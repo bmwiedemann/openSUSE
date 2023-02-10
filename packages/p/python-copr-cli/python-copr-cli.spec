@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           python-copr-cli
-Version:        1.104
+Version:        1.105
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
-URL:            https://pagure.io/copr/copr
+URL:            https://github.com/fedora-copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-cli-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

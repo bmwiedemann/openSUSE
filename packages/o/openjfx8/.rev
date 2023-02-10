@@ -56,4 +56,12 @@
     <comment>Let xmvn detect where generate javadoc is</comment>
     <requestid>976414</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c6d5b6f19b1772408887a1fdec327bb4</srcmd5>
+    <version>8.0.202</version>
+    <time>1676036139</time>
+    <user>dimstar_suse</user>
+    <comment>Don't buidl javadoc on arm32 - fixes build</comment>
+    <requestid>1064179</requestid>
+  </revision>
 </revisionlist>

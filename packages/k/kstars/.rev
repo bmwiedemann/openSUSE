@@ -1133,4 +1133,12 @@
     <comment>update to 3.6.3</comment>
     <requestid>1062459</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>387ef6835602a35e0f4fcb9fa2ce0b68</srcmd5>
+    <version>3.6.3</version>
+    <time>1676036142</time>
+    <user>dimstar_suse</user>
+    <comment>multiple fixes after stable release</comment>
+    <requestid>1064154</requestid>
+  </revision>
 </revisionlist>

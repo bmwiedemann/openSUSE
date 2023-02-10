@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-command
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global bundle  org.apache.felix.gogo.command
 Name:           felix-gogo-command
-Version:        1.0.2
+Version:        1.1.2
 Release:        0
 Summary:        Apache Felix Gogo command line shell for OSGi
 License:        Apache-2.0
@@ -30,7 +30,8 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:gogo-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.felix:org.apache.felix.gogo.runtime)
-BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:org.osgi.service.log)
+BuildRequires:  mvn(org.osgi:osgi.annotation)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildArch:      noarch
 
@@ -53,11 +54,10 @@ This package contains API documentation for %{name}.
 %{mvn_file} : felix/%{bundle}
 
 # Use provided scope because this is useful on OSGi frameworks other than Felix
-%pom_change_dep :org.osgi.core :osgi.core::provided
-%pom_change_dep :org.osgi.compendium :osgi.cmpn::provided
-
-# Needed for tests
-%pom_add_dep junit:junit::test
+%pom_change_dep :osgi.core :::provided
+%pom_change_dep :osgi.annotation :::provided
+%pom_change_dep :junit :::test
+%pom_change_dep :mockito-core :::test
 
 %build
 %{mvn_build} -f

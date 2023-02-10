@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 09 23:51:59 UTC 2023 - william.brown@suse.com
+
+- Update to version 1.25.2~0:
+  * properly fix mips64el
+  * update compiler paths in docker images
+  * temporary fix for the docker ci
+  * Add -x and enable SC1090
+  * Fix shell check warning
+  * update version in install script
+  * update version to 1.25.2
+  * add changelog entry
+  * allow sha1 signing keys without a cutoff date
+
+-------------------------------------------------------------------
 Tue Nov 01 22:42:58 UTC 2022 - william.brown@suse.com
 
 - Update vendored dependencies

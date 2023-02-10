@@ -1,7 +1,7 @@
 #
 # spec file for package esbuild
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
-
+#macros for Fedora
+%global goipath  github.com/evanw/esbuild
+%global tag   v%{version}
+%global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.15.11
+Version:        0.17.5
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT
@@ -27,25 +30,19 @@ URL:            https://esbuild.github.io
 Source0:        https://github.com/evanw/esbuild/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Patch0:         remove-version-check.patch
+BuildRequires:  util-linux
 %if 0%{?fedora}
-BuildRequires:  golang
 BuildRequires:  go-rpm-macros
+BuildRequires:  golang
 %else
-BuildRequires:  golang(API)
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API)
 %endif
-BuildRequires: util-linux
-
-#macros for Fedora
-%global goipath  github.com/evanw/esbuild
-%global tag   v%{version}
-%global extractdir0 esbuild-%version
-
 
 %description
 esbuild is a JavaScript bundler and minifier.
 
-%gopkg
+%{gopkg}
 
 %prep
 %autosetup -a1 -p1
@@ -54,19 +51,16 @@ esbuild is a JavaScript bundler and minifier.
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
-
 %if 0%{?fedora}
 %goprep -k -e
 %gobuild ./cmd/esbuild
 %else
-%goprep .
+%{goprep} .
 go build -v -p 4 -x -buildmode=pie -mod vendor ./cmd/esbuild
 %endif
 
-
-
 %install
-install -pvDm755 %name "%{buildroot}/%{_bindir}/%{name}"
+install -pvDm755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
 %license LICENSE.md

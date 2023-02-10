@@ -69,4 +69,13 @@
   * NOTE: Skipped version 1.2.0 to match `webpack-bundle-tracker` version</comment>
     <requestid>1059993</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>376d6fef5b15676cb0d099f90fb8b015</srcmd5>
+    <version>1.8.1</version>
+    <time>1676036169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * Add a `FakeWebpackLoader` for running tests</comment>
+    <requestid>1064210</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define pgversion 15.1
+%define pgversion 15.2
 %define pgmajor 15
 %define buildlibs 1
 %define tarversion %{pgversion}
-%define latest_supported_llvm_ver 14
+%define latest_supported_llvm_ver 15
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor

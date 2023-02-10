@@ -218,8 +218,12 @@ ant -f build.xml
 cp -a %{_sourcedir}/build-sources.xml .
 
 %build
-%mvn_package : __noinstall
-%{mvn_build} -f -- -Dbuild.java.arch=%{archinstall} -Dproject.build.sourceEncoding=UTF-8
+%{mvn_package} : __noinstall
+%{mvn_build} -f \
+%ifarch %{arm}
+    -j \
+%endif
+    -- -Dbuild.java.arch=%{archinstall} -Dproject.build.sourceEncoding=UTF-8
 
 ant -f build-sources.xml
 
@@ -279,7 +283,9 @@ ln -s %{openjfxdir}/bin/javapackager %{buildroot}%{_bindir}
 %files src
 %{openjfxdir}/javafx-src.zip
 
+%ifnarch %{arm}
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
+%endif
 
 %changelog

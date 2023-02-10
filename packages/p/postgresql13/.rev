@@ -246,4 +246,16 @@
 - Sync spec file with postgresql15.</comment>
     <requestid>1035217</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>18c5f8cdf789abcec8b96a487349e8d4</srcmd5>
+    <version>13.10</version>
+    <time>1676036033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.10:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/13/release-13-10.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064056</requestid>
+  </revision>
 </revisionlist>

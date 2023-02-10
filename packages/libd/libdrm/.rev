@@ -1625,4 +1625,21 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>1037626</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>e683bb1766895eb36155f073df22c6f1</srcmd5>
+    <version>2.4.115</version>
+    <time>1676036027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.115
+  * mdgpu: add marketing names from amd-5.4 (22.40)
+  * amdgpu: add some additional marketing names
+  * tests/amdgpu: use AMDGPU_TIMEOUT_INFINITE to query fence
+  * intel: Eliminate need to keep adding PCI IDs
+  * drm_fourcc: sync drm_fourcc with latest drm-next kernel
+  * xf86drm: Add support for decoding Vivante format modifiers
+  * tests/amdgpu/jpeg: enable unit test for jpeg 4
+  * xf86drm: fix warning in drmGetFormatModifierNameFromVivante()
+  * xf86drm: add support for printing AMD GFX11 modifiers</comment>
+    <requestid>1064020</requestid>
+  </revision>
 </revisionlist>

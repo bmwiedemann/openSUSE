@@ -5188,4 +5188,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1063442</requestid>
   </revision>
+  <revision rev="470" vrev="342">
+    <srcmd5>cec8c4f34d98fcc1146c08ee82a2c0cf</srcmd5>
+    <version>unknown</version>
+    <time>1676036024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.3.5
+  * bug fix release which fixes bugs found since Mesa 22.3.4
+  * see https://docs.mesa3d.org/relnotes/22.3.5.html for more
+    details
+- refreshed u_dep_xcb.patch</comment>
+    <requestid>1063999</requestid>
+  </revision>
 </revisionlist>

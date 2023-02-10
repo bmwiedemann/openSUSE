@@ -17,10 +17,11 @@
 
 
 Name:           javaparser
-Version:        3.24.2
+Version:        3.24.9
 Release:        0
-Summary:        Java 1 to 13 Parser and Abstract Syntax Tree for Java
+Summary:        Java 1 to 15 Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
+Group:          Development/Libraries/Java
 URL:            https://javaparser.org
 Source0:        https://github.com/javaparser/javaparser/archive/%{name}-parent-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -28,15 +29,16 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(net.java.dev.javacc:javacc)
+BuildRequires:  mvn(org.checkerframework:checker-qual)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:javacc-maven-plugin)
+BuildRequires:  mvn(org.javassist:javassist)
 BuildArch:      noarch
 
 %description
-This package contains a Java 1 to 13 Parser with AST generation and
-visitor support. The AST records the source code structure, javadoc
-and comments. It is also possible to change the AST nodes or create new
-ones to modify the source code.
+A set of libraries implementing a Java 1.0 - Java 15 Parser with advanced
+analysis functionalities. This includes preview features to Java 13, with Java
+14 preview features work-in-progress.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -53,6 +55,8 @@ sed -i 's/\r//' readme.md
 %pom_remove_plugin -r :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :coveralls-maven-plugin
+
+%pom_add_dep org.checkerframework:checker-qual javaparser-symbol-solver-core
 
 # Compatibility alias
 %{mvn_alias} :javaparser-core com.google.code.javaparser:javaparser
@@ -77,12 +81,6 @@ sed -i \
 # Missing dep on jbehave for testing
 %pom_disable_module javaparser-core-testing
 %pom_disable_module javaparser-core-testing-bdd
-
-# Don't build the symbol solver
-%pom_disable_module javaparser-symbol-solver-core
-#%pom_disable_module javaparser-symbol-solver-logic
-#%pom_disable_module javaparser-symbol-solver-model
-%pom_disable_module javaparser-symbol-solver-testing
 
 # Only need to ship the core module
 %pom_disable_module javaparser-core-generators

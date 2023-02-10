@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb  2 09:34:13 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.40.1.0
+  * Features
+    ~ update SQLite to 3.40.1 (4ba7c8c)
+    ~ allow correct recognition of android os if running termux
+      (89ceb0d)
+  * Fixes
+    ~ jdbc: DatabaseMetaData#getPrimaryKeys and getExportedKeys
+      should return an empty ResultSet for sqlite_schema (0dc6ad9),
+      closes #831
+    ~ jdbc: DatabaseMetaData#getColumns should also retrieve
+      columns from SYSTEM TABLE types (473f528)
+    ~ DatabaseMetaData#getTypeInfo's result should be ordered by
+      DATA_TYPE (05bb929), closes #832
+    ~ native: fixes and improvements for backup/restore (b13c908)
+    ~ jdbc: DatabaseMetaData#getImportedKeys reports empty FK_NAME
+      when created using quotes (ba69b2e), closes #506
+  * Changes
+    ~ replace mention of sqlite_master with sqlite_schema (e68bc05)
+    ~ use temp directory instead of ./target (f97c0a0)
+  * Build
+    ~ release depends on test_graalvm (9f521a4)
+    ~ refine GraalVM native-image configuration and fix native test
+      execution (e437b3f)
+    ~ hide bot names from release contributors (5d1a280)
+    ~ replace java 18 with java 19 (4c80ee7)
+    ~ use temp directory instead of ./target (e14c3b8), closes #825
+    ~ try to fix build native for PRs (f7bd3cd)
+    ~ try to fix build native for PRs (b23de9e)
+    ~ try to fix build native for PRs (5aa6a30)
+    ~ add 2023 url for amalgamation download (e3b6f8c)
+    ~ deps: bump JReleaser to 1.4.0 (0db312f)
+    ~ add test for unixepoch (3904e83)
+  * Documentation
+    ~ use https for links to www.sqlite.org (7ac8de8)
+    ~ update README badge for CI (832d26f)
+    ~ changelog shows breaking change description (5ad78ba), closes
+      #814
+
+-------------------------------------------------------------------
 Tue Nov 22 03:19:44 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.40.0.0

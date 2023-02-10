@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtplib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-aiosmtplib
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
@@ -52,7 +52,6 @@ Python asyncio SMTP client.
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/{tests,docs}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

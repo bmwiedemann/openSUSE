@@ -31,4 +31,12 @@
     <comment>fix build with plexus-utils 3.5.0</comment>
     <requestid>1031162</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c6cd8323ad72d88c6081f780d99ff923</srcmd5>
+    <version>3.0.0</version>
+    <time>1676036128</time>
+    <user>dimstar_suse</user>
+    <comment>This works with java 8 too</comment>
+    <requestid>1064158</requestid>
+  </revision>
 </revisionlist>

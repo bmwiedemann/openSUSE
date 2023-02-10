@@ -1,7 +1,7 @@
 #
 # spec file for package jdupes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jdupes
-Version:        1.21.1
+Version:        1.21.3
 Release:        0
 Summary:        A powerful duplicate file finder and an enhanced fork of 'fdupes'
 License:        MIT

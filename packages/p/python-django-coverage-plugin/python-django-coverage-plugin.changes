@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:37:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Dropped support for Python 2.7, Python 3.6, and Django 1.8.
+  * Declare our support for Python 3.11 and Django 4.1.
+
+-------------------------------------------------------------------
 Sat Sep  3 03:48:09 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.0.3

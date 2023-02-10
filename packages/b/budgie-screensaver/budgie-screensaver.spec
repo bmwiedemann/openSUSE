@@ -64,7 +64,7 @@ Fork of GNOME Screensaver for Budgie 10
 %install
 %meson_install
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
-cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 %find_lang budgie-screensaver
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
@@ -94,7 +94,7 @@ done
 %{_bindir}/budgie-screensaver-command
 %{_libexecdir}/budgie-screensaver-dialog
 %{_datadir}/applications/budgie-screensaver.desktop
-%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 %{_mandir}/man1/budgie-screensaver-command.1%{?ext_man}
 %{_mandir}/man1/budgie-screensaver.1%{?ext_man}
 

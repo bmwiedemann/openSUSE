@@ -19,7 +19,7 @@
 %global cluster jnr
 %global sover 1.2
 Name:           jffi
-Version:        1.3.4
+Version:        1.3.10
 Release:        0
 Summary:        Java Foreign Function Interface
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -66,7 +66,9 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 %patch0
 %patch1
-%patch4
+%patch4 -p1
+
+sed -i -e '/case FFI_BAD_ARGTYPE:/,3d' jni/jffi/CallContext.c
 
 # ppc{,64} fix
 # https://bugzilla.redhat.com/show_bug.cgi?id=561448#c9
@@ -74,7 +76,6 @@ sed -i.cpu -e '/m\$(MODEL)/d' {jni,libtest}/GNUmakefile
 
 %if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
 sed -i -e 's#tasks\>#target\>#g' pom.xml
-%pom_xpath_remove "pom:plugin[pom:artifactId='maven-antrun-plugin']/pom:executions/pom:execution/pom:configuration/pom:sourceRoot"
 %pom_xpath_set "pom:plugin[pom:artifactId='maven-antrun-plugin']/pom:version" "3.0.0"
 %pom_add_plugin "org.codehaus.mojo:build-helper-maven-plugin:3.2.0" pom.xml "
     <executions>

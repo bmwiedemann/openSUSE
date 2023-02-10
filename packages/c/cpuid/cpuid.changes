@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Jan 28 19:47:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- updaet to 20230120:
+  * Intel's 13th Generation Core datasheet provides stepping names as
+    well as numbers!  So:
+  * cpuid.c: Added synth decoding for (0,6),(11,7) Raptor Lake B0 stepping.
+  * cpuid.c: Added synth decoding for (0,6),(11,15) Raptor Lake C0
+    steppings, and clarified case for unknown stepping.
+  * cpuid.man: Added 743844: 13th Generation Core datasheet.
+  * cpuid.c: Fixed (0,6)(12,15) synth typo: Emearld Rapids.
+  * cpuid.c: Added 6/eax IA32_HW_FEEDBACK_THREAD_CONFIG bit 25.
+  * cpuid.c: Added 7/0/edx SGX-KEYS: SGX attestation services.
+  * cpuid.c: Clarified 7/0/edx IA32_MCU_OPT_CTRL SRBDS mitigation MSR.
+  * cpuid.c: Clarified 7/0/edx IA32_TSX_FORCE_ABORT MSR.
+  * cpuid.c: Added 7/1/edx CET_SSS: shadow stacks w/o page faults.
+  * cpuid.c: Added several 7/2/edx bits.
+  * cpuid.c: In 0xd/0/eax, corrected CET_U & CET_S, which were IA32_XSS.
+  * cpuid.c: In 0xd/0/eax, removed the IA32_XSS bits, which aren't
+    relevant for XCR0.
+  * cpuid.c: For 0xd/1/ecx, enumerate the IA32_XSS bits instead of a
+    hex bitmask.
+  * cpuid.c: For 0xd, added IA32_XSS PASID state (couple places).
+  * cpuid.c: Renamed 0x1a: Native Model ID.
+  * cpuid.c: Added synth & uarch decoding for (0,6),(11,15) Raptor Lake
+    from MSR_CPUID_table*.
+  * cpuid.c: Added synth decoding for (0,6),(9,7),5 Pentium Gold G7400,
+    based on instlatx64 sample.
+  * cpuid.c: Added rudimentary synth decoding for future (0,6),(12,15)
+    Emerald Rapids CPUs.
+  * cpuid.c: Added 7/1/eax LASS: linear address space separation.
+  * cpuid.c: Corrected 0x18/n/edx maximum number of addressible IDs, which
+    should use minus-one notation.
+  * cpuid.c: Certain leaves cannot be displayed correctly in isolation,
+    i.e. without information about other leaves saved in the stash.  For
+    example, the display for leaf 3 uses bits saved from leaf 1.  If the
+    -l/--leaf option is used to restrict cpuid to reading only a single
+    leaf, such leaves now are displayed as raw hex, rather than with
+    incorrect information.  This is handled by passing a NULL stash to
+    print_reg() and below, and by many new checks for a NULL stash.
+  * cpuid.c: Updated cache associativity strings used in 0x80000006 and
+    0x80000019 leaves to use value ranges, as in AMD docs.
+  * cpuid.c: Fixed mistake in AMD L3 range reservation support: it's in
+    0x80000020/0 register EBX, not ECX.
+  * cpuid.c: Added 0x80000026/0/edx extended APIC ID.
+  * cpuid.c: Added synth & uarch decoding for (10,15),(1,1) Genoa, from
+    AMD 57095 revision guide.
+  * cpuid.man: Added AMD 57095 revision guides, and some older guides that
+    I'd forgotten.
+
+-------------------------------------------------------------------
 Mon Dec 05 09:50:12 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to release 20221201

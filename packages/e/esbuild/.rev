@@ -7,4 +7,12 @@
     <comment>add &quot;esbuild&quot; so users don't need to have npm </comment>
     <requestid>1011038</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7eba2f2524610855cdc6342c02def5af</srcmd5>
+    <version>0.17.5</version>
+    <time>1676036069</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064088</requestid>
+  </revision>
 </revisionlist>

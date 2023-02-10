@@ -82,4 +82,13 @@
 - drop fix_test_fixture_33.patch: obsolete</comment>
     <requestid>946666</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ddda0bf6e91e468f9fef624097145d5</srcmd5>
+    <version>0.5.9</version>
+    <time>1676036171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.9:
+  * Disallow SQLAlchemy 2.</comment>
+    <requestid>1064218</requestid>
+  </revision>
 </revisionlist>

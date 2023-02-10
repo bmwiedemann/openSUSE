@@ -193,7 +193,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.2.0
+Version:        22.2.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -272,7 +272,6 @@ Patch1054:      thread_annotations-fix-build-with-system-abseil.patch
 Patch1063:      system-libbsd.patch
 Patch1065:      base-system-nspr.patch
 Patch1066:      system-gtest.patch
-Patch1067:      breakpad-system-curl.patch
 Patch1068:      system-six.patch
 Patch1069:      system-usb_ids.patch
 Patch1070:      skia-system-vulkan-headers.patch
@@ -657,6 +656,8 @@ clang -v
 
 # Use stable path to source to make use of ccache
 %autosetup -n src -p1
+
+
 
 # Sanity check if macro corresponds to the actual ABI
 test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') = %abi_version
@@ -1272,7 +1273,7 @@ rsync -av --exclude '*.pak.info' locales %{buildroot}%{_libdir}/electron/
 
 
 install -pm 0755 electron                -t %{buildroot}%{_libdir}/electron/
-install -pm 0755 chrome_crashpad_handler -t %{buildroot}%{_libdir}/electron/
+install -pm 0755 chrome_crashpad_handler -t %{buildroot}%{_libdir}/electron/ ||true
 install -pm 0755 libEGL.so               -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libGLESv2.so            -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libqt5_shim.so          -t %{buildroot}%{_libdir}/electron/ ||true
@@ -1296,6 +1297,16 @@ cp /dev/stdin %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron <<"EOF"
 %%electron_req Requires: electron%{_isa}(abi) = %{abi_version}
 EOF
 chmod -v 644 %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron
+
+#help debugedit find the source files
+ln -srv third_party/emoji-segmenter/src/emoji_presentation_scanner.c -t out/Release
+ln -srv third_party/emoji-segmenter/src/emoji_presentation_scanner.rl -t out/Release
+ln -srv third_party/angle/src/compiler/translator/glslang.l -t out/Release
+ln -srv third_party/angle/src/compiler/preprocessor/preprocessor.l -t out/Release
+ln -srv third_party -t out/Release
+ln -srv third_party/libvpx -t third_party/libvpx/source/libvpx/third_party
+ln -srv third_party -t third_party/libvpx/source/libvpx/vp8
+ln -srv third_party -t third_party/libvpx/source/libvpx/vp9
 
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html

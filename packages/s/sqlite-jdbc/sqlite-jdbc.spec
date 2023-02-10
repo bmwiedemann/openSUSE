@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite-jdbc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.40.0.0
-%global amalgamation_version 3400000
+%global version 3.40.1.0
+%global amalgamation_version 3400100
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}

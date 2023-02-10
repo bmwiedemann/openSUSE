@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013-2016 Ikey Doherty <ikey@solus-project.com>
 # Copyright (c) 2021 Callum Farmer <gmbr3@opensuse.org>
 #
@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.6.4+0
+Version:        10.7+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -58,23 +58,30 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  pkgconfig(gee-0.8)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libcanberra-gtk3)
 # flatpak/snap
 Recommends:     (xdg-desktop-portal-gnome if (flatpak or snapd))
 # https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
 Conflicts:      gnome-shell
 #
 # rebrand and gnome porting
-Requires:       budgie-desktop-view >= 1.2+0
-Requires:       budgie-screensaver >= 5.0.2+0
+Requires:       budgie-desktop-view >= 1.2.1+0
+Requires:       budgie-screensaver >= 5.1.0+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
+Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20220627.1
-Requires:       budgie-control-center >= 1.0.2+0
+Requires:       budgie-control-center >= 1.2.0+0
 #
 # unchanged SOVER but new APIs
 Requires:       libraven0 >= %{version}
 Requires:       libbudgietheme0 >= %{version}
 Requires:       libbudgie-plugin0 >= %{version}
 Requires:       libbudgie-private0 >= %{version}
+Requires:       libbudgie-appindexer0 >= %{version}
+Requires:       libbudgie-raven-plugin0 >= %{version}
 #
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
@@ -90,13 +97,22 @@ Requires(postun):update-alternatives
 Budgie Desktop is the flagship desktop for the Solus Operating System.
 
 %package -n typelib-1_0-Budgie-1_0
-Summary:        Introspection bindings for the Budgie Desktop
+Summary:        Main Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
 Requires:       typelib-1_0-PeasGtk-1_0
 
 %description -n typelib-1_0-Budgie-1_0
 This package provides GObject Introspection files required for
 developing Budgie Applets using interpreted languages, such as Python
+GObject Introspection bindings.
+
+%package -n typelib-1_0-BudgieRaven-1_0
+Summary:        Raven Introspection bindings for the Budgie Desktop
+Group:          System/Libraries
+
+%description -n typelib-1_0-BudgieRaven-1_0
+This package provides GObject Introspection files required for
+developing Budgie Raven plugins using interpreted languages, such as Python
 GObject Introspection bindings.
 
 %package devel
@@ -106,6 +122,8 @@ Requires:       libraven0 = %{version}
 Requires:       libbudgietheme0 = %{version}
 Requires:       libbudgie-plugin0 = %{version}
 Requires:       libbudgie-private0 = %{version}
+Requires:       libbudgie-appindexer0 = %{version}
+Requires:       libbudgie-raven-plugin0 = %{version}
 
 %description devel
 This package provides development files required for software to be
@@ -149,6 +167,20 @@ Group:          System/Libraries
 %description -n libbudgie-private0
 Private library for Budgie desktop to link against.
 
+%package -n libbudgie-appindexer0
+Summary:        Private library for Budgie Menu
+Group:          System/Libraries
+
+%description -n libbudgie-appindexer0
+Private library for Budgie menu to link against.
+
+%package -n libbudgie-raven-plugin0
+Summary:        Shared library for Budgie raven plugins
+Group:          System/Libraries
+
+%description -n libbudgie-raven-plugin0
+Shared library for budgie raven plugins to link against.
+
 %lang_package
 
 %prep
@@ -167,7 +199,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-rm %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
 
 %find_lang %{name}
 
@@ -179,30 +211,30 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 [ -f %{_datadir}/xsessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
   --remove default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop
 
-%post   -n libraven0 -p /sbin/ldconfig
-%postun -n libraven0 -p /sbin/ldconfig
-%post   -n libbudgietheme0 -p /sbin/ldconfig
-%postun -n libbudgietheme0 -p /sbin/ldconfig
-%post   -n libbudgie-plugin0 -p /sbin/ldconfig
-%postun -n libbudgie-plugin0 -p /sbin/ldconfig
-%post   -n libbudgie-private0 -p /sbin/ldconfig
-%postun -n libbudgie-private0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libraven0
+%ldconfig_scriptlets -n libbudgietheme0
+%ldconfig_scriptlets -n libbudgie-plugin0
+%ldconfig_scriptlets -n libbudgie-private0
+%ldconfig_scriptlets -n libbudgie-appindexer0
+%ldconfig_scriptlets -n libbudgie-raven-plugin0
 
 %files
 %license LICENSE LICENSE.LGPL2.1
-%{_datadir}/gnome-session
 %{_bindir}/budgie-*
+%{_bindir}/org.buddiesofbudgie*
+%{_libexecdir}/budgie-desktop
 %{_mandir}/man1/*%{?ext_man}
-%{_datadir}/applications/budgie-*.desktop
+%{_datadir}/budgie
+%{_datadir}/applications/*.desktop
 %{_datadir}/backgrounds
-%{_datadir}/glib-2.0/schemas/com.solus-project.*.gschema.xml
-%{_datadir}/glib-2.0/schemas/20_solus-project.budgie.wm.gschema.override
+%{_datadir}/glib-2.0/schemas/*.gschema.xml
+%{_datadir}/glib-2.0/schemas/*.gschema.override
 %{_datadir}/icons/hicolor/scalable/*/*.svg
+%{_datadir}/gnome-session
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
-%{_datadir}/budgie
-%{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
+%{_sysconfdir}/xdg/autostart/*.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 
@@ -220,15 +252,26 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %files -n libbudgie-private0
 %{_libdir}/libbudgie-private.so.*
 
+%files -n libbudgie-appindexer0
+%{_libdir}/libbudgie-appindexer.so.*
+
+%files -n libbudgie-raven-plugin0
+%{_libdir}/libbudgie-raven-plugin.so.*
+
 %files devel
 %{_includedir}/budgie-desktop
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Budgie-1.0.gir
+%{_datadir}/gir-1.0/BudgieRaven-1.0.gir
 %{_datadir}/vala/vapi/budgie-1.0.*
+%{_datadir}/vala/vapi/budgie-raven-plugin-1.0.*
 
 %files -n typelib-1_0-Budgie-1_0
 %{_libdir}/girepository-1.0/Budgie-1.0.typelib
+
+%files -n typelib-1_0-BudgieRaven-1_0
+%{_libdir}/girepository-1.0/BudgieRaven-1.0.typelib
 
 %files doc
 %{_datadir}/gtk-doc/html/budgie-desktop

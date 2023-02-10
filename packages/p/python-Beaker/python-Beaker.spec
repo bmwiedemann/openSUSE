@@ -17,7 +17,7 @@
 
 
 Name:           python-Beaker
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A Session and Caching library with WSGI Middleware
 License:        BSD-3-Clause

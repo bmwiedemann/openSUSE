@@ -299,4 +299,14 @@
     <comment>- Actually correct BuildRequires.</comment>
     <requestid>1046427</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>431c53eaf1b247d118212e1ae49c6d24</srcmd5>
+    <version>1.12.1</version>
+    <time>1676036162</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.1:
+  * Fix ext:database backend failing to initialize
+  * Improved inline code documentation for the crypto module</comment>
+    <requestid>1064207</requestid>
+  </revision>
 </revisionlist>

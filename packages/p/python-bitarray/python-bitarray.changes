@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:27:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * add util.sc_encode() and util.sc_decode() for
+    compression of sparse bitarrays
+  * add util.any_and()
+  * add util.intervals()
+  * move functionality of the following utility functions
+    entirely to C:
+    hex2ba(), base2ba(), deserialize(), vl_decode(), zeros()
+  * improve error checking for unpickling
+  * add distance metrics
+
+-------------------------------------------------------------------
 Mon Jan  2 18:35:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.2:

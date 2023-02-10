@@ -1,0 +1,68 @@
+From 14a8c03f1a3b09250ea933f1a072dfdfef8c4a48 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 9 Feb 2023 14:56:05 +0800
+Subject: [PATCH 03/13] tpm2: resend the command on TPM_RC_RETRY
+
+Sometimes TPM may return TPM_RC_RETRY for some reason, and the only
+thing we can do is to send the command again. To avoid pending in the
+while loop indefinitely, just try to send the command 3 times.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c | 33 ++++++++++++++++++++++++++++-----
+ 1 file changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 5377ad2c7..1176d968b 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -25,11 +25,11 @@
+ #include <grub/types.h>
+ 
+ static TPM_RC
+-grub_tpm2_submit_command (TPMI_ST_COMMAND_TAG tag,
+-                          TPM_CC commandCode,
+-                          TPM_RC* responseCode,
+-                          const struct grub_tpm2_buffer* in,
+-                          struct grub_tpm2_buffer* out)
++grub_tpm2_submit_command_real (const TPMI_ST_COMMAND_TAG tag,
++                               const TPM_CC commandCode,
++                               TPM_RC *responseCode,
++                               const struct grub_tpm2_buffer *in,
++                               struct grub_tpm2_buffer *out)
+ {
+   grub_err_t err;
+   struct grub_tpm2_buffer buf;
+@@ -75,6 +75,29 @@ grub_tpm2_submit_command (TPMI_ST_COMMAND_TAG tag,
+   return TPM_RC_SUCCESS;
+ }
+ 
++static TPM_RC
++grub_tpm2_submit_command (const TPMI_ST_COMMAND_TAG tag,
++                          const TPM_CC commandCode,
++                          TPM_RC *responseCode,
++                          const struct grub_tpm2_buffer *in,
++                          struct grub_tpm2_buffer *out)
++{
++  TPM_RC err;
++  int retry_cnt = 0;
++
++  /* Catch TPM_RC_RETRY and send the command again */
++  do {
++    err = grub_tpm2_submit_command_real (tag, commandCode, responseCode,
++                                         in, out);
++    if (err != TPM_RC_RETRY)
++      break;
++
++    retry_cnt++;
++  } while (retry_cnt < 3);
++
++  return err;
++}
++
+ TPM_RC
+ TPM2_CreatePrimary (const TPMI_RH_HIERARCHY primaryHandle,
+                     const TPMS_AUTH_COMMAND *authCommand,
+-- 
+2.35.3
+

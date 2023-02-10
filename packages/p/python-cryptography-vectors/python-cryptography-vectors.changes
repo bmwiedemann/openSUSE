@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  9 09:52:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 39.0.1:
+  * Update test vectors to match python-cryptography 39.0.1
+
+-------------------------------------------------------------------
 Mon Jan  2 19:34:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 39.0.0

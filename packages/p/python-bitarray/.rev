@@ -155,4 +155,21 @@
   * optimize `richcompare()`</comment>
     <requestid>1046261</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5bed3e42c2f08d27f351a60edf4eb23e</srcmd5>
+    <version>2.7.0</version>
+    <time>1676036163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.0:
+  * add util.sc_encode() and util.sc_decode() for
+    compression of sparse bitarrays
+  * add util.any_and()
+  * add util.intervals()
+  * move functionality of the following utility functions
+    entirely to C:
+    hex2ba(), base2ba(), deserialize(), vl_decode(), zeros()
+  * improve error checking for unpickling
+  * add distance metrics</comment>
+    <requestid>1064212</requestid>
+  </revision>
 </revisionlist>

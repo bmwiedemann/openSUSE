@@ -628,4 +628,14 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>1062112</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>6a6c760ad5808fb346ba8b45f65d923d</srcmd5>
+    <version>5.15.9</version>
+    <time>1676036020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v5.15.9
+  * Fix the order in which modules are built so that the composite
+    Qt module is built after everything it depends on.</comment>
+    <requestid>1063978</requestid>
+  </revision>
 </revisionlist>

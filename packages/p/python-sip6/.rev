@@ -144,4 +144,26 @@
     <comment></comment>
     <requestid>1058065</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fdf6d35c446f339941986d526207318a</srcmd5>
+    <version>6.7.7</version>
+    <time>1676036019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.7.7
+  * bug-fix release
+  * Refactored the handling of composite classes so that they are
+    populated properly.
+  * Changes to the XML generation to reduce differences to earlier
+    versions.
+- Revert to 6.7.5
+  * breaks Qt import in PyQt5
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2023-January/045137.html
+- Update to 6.7.6
+  * Minor bug-fix release
+  * The latest version of ABI v13 is v13.4.1.
+  * The latest version of ABI v12 is v12.11.1.
+  * Significantly reduced the memory requirements.
+</comment>
+    <requestid>1063977</requestid>
+  </revision>
 </revisionlist>

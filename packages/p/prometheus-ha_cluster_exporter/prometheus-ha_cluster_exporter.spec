@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-ha_cluster_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.3.0+git.1653405719.2a65dfc
+Version:        1.3.1+git.1676027782.ad3c0e9
 Release:        0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
 License:        Apache-2.0

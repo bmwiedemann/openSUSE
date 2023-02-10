@@ -39,4 +39,16 @@
   * https://www.postgresql.org/docs/15/release-15-1.html</comment>
     <requestid>1035223</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d1847a39e32e2951d488db1e108486b</srcmd5>
+    <version>15.2</version>
+    <time>1676036030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.2:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064054</requestid>
+  </revision>
 </revisionlist>

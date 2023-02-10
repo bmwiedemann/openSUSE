@@ -1,7 +1,7 @@
 #
 # spec file for package rustup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,14 +29,14 @@ Obsoletes:      %{1}1.52%{?2:-%{2}} < %{rust_version} \
 Obsoletes:      %{1}1.51%{?2:-%{2}} < %{rust_version}
 
 Name:           rustup
-Version:        1.25.1~23
+Version:        1.25.2~0
 Release:        0
 Summary:        A tool for managing user Rust toolchains
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
 Group:          Development/Languages/Rust
 URL:            https://github.com/rust-lang/rustup
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        %{name}-rpmlintrc
 BuildRequires:  cargo-packaging

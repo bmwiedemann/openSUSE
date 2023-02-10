@@ -180,4 +180,13 @@
     <comment>update</comment>
     <requestid>1059324</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6ba2dbf0a48536b575f2f30d443eab01</srcmd5>
+    <version>1.8.1</version>
+    <time>1676036038</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.8.1
+  * make use of SPDX SBOM generation tool</comment>
+    <requestid>1063829</requestid>
+  </revision>
 </revisionlist>

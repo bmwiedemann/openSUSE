@@ -127,4 +127,12 @@
     <comment>- Update to release 20221201</comment>
     <requestid>1040214</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54d8444ab39d292d36c35a2dfe15cb70</srcmd5>
+    <version>20230120</version>
+    <time>1676036057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064049</requestid>
+  </revision>
 </revisionlist>

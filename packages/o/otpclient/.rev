@@ -251,4 +251,17 @@
 </comment>
     <requestid>1058252</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>52d8bc80e05dd82665a2e350a5f51657</srcmd5>
+    <version>3.1.4</version>
+    <time>1676036153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4:
+  * make auto-lock and secret service mutually exclusive (#279)
+  * fix importing plain AEGIS (#281)
+  * fix importing encrypted AEGIS on some distros (#281)
+  * rename disable_secret_service setting to use_secret_service
+</comment>
+    <requestid>1064195</requestid>
+  </revision>
 </revisionlist>

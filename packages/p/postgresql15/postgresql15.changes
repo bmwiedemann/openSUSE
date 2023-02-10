@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 11:38:35 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 15.2:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.
+
+-------------------------------------------------------------------
 Thu Nov 10 14:35:02 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Update to 15.1:

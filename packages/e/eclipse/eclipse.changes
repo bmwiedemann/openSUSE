@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 07:31:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-ant.patch
+    + allow building with newer ant versions
+
+-------------------------------------------------------------------
 Mon Jun 13 09:27:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with hamcrest 2.2

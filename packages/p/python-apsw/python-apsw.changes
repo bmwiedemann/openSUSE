@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:08:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.40.1.0:
+  * Implemented `window functions
+  * Function flags can be specified to
+    Connection.createscalarfunction and
+    Connection.createaggregatefunction
+  * Added apsw.mapping_function_flags
+  * Added Connection.trace_v2` with apsw.mapping_trace_codes
+    and apsw.mapping_statement_status
+  * Ensure all SQLite APIs are wrapped.
+  * When an unraisable exception happens, sqlite3_log is
+    now called so you will have context within SQLite's actions.
+  * sys.unraisablehook now called first, and if it doesn't exist then
+    sys.excepthook as before.
+  * When the wrong type is given for a function argument, the
+    error message now includes the parameter name and function
+    signature.
+  * Let SQLite do size checking instead of APSW for strings and
+    blobs.
+  * Added :meth:`apsw.ext.log_sqlite` which installs a handler
+    that forwards SQLite messages to the logging module
+  * Added set_default_vfs and unregister_vfs taking vfs
+    names.
+
+-------------------------------------------------------------------
 Mon Dec  5 20:22:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.40.0.0:

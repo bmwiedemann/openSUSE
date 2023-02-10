@@ -386,4 +386,12 @@
     <comment>3.40.0.0</comment>
     <requestid>1037219</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b127aaa0afb7718befe08c64d1b715cb</srcmd5>
+    <version>3.40.1.0</version>
+    <time>1676036138</time>
+    <user>dimstar_suse</user>
+    <comment>3.40.1.0</comment>
+    <requestid>1064178</requestid>
+  </revision>
 </revisionlist>

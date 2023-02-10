@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb 05 15:26:49 UTC 2023 - gmbr3@opensuse.org
+
+- Budgie Desktop 10.7 "Superhero Raven"
+  * New application indexer, replacing our use of libgnome-menus
+    and unifying our logic used in both Budgie Menu and Budgie Run
+    Dialog
+  * Budgie Desktop Settings now has a new design for widget
+    selection
+  * Budgie Menu now leverages switcheroo-control if available to
+    switch between GPU environments when launching applications
+    that request it
+  * Budgie Menu now provides a "personal user menu" which has
+    quick XDG directory access
+  * In the new bottom strip of Budgie Menu, we now have buttons for
+    launching Budgie Desktop Settings, Budgie Control Center
+    and our new Power Dialog
+  * New Budgie Screenshot application built into the desktop
+  * Full list available at:
+    https://blog.buddiesofbudgie.org/budgie-10-7-released/
+- Add BRs pkgconfig(gee-0.8), pkgconfig(gstreamer-1.0),
+  pkgconfig(libcanberra), pkgconfig(libcanberra-gtk3)
+- New libraries libbudgie-appindexer0, libbudgie-raven-plugin0
+- New introspection binding BudgieRaven-1.0
+- Some change of namespace from org.solus-project to
+  org.buddiesofbudgie
+
+-------------------------------------------------------------------
 Fri Sep 02 12:18:40 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.6.4+0:
@@ -41,10 +68,12 @@ Thu Jul 14 13:20:52 UTC 2022 - gmbr3@opensuse.org
   * Workspace item size now independent of workspace width
   * Attempt re-adding nameless windows on name change.
   * Set a mininum expiry timeout for notification popups
-  * Drop unnecessary Comment in daemon desktop that produces warning.
+  * Drop unnecessary Comment in daemon desktop that produces
+    warning.
   * Fixes spec compliance for closing notifications
   * Reset ITL button's first_app and class group app on swap
-  * IconTasklist: Swap button key in hashtable when first_app changes
+  * IconTasklist: Swap button key in hashtable when first_app
+    changes
   * Fix various compile-time warnings in Vala code
   * Workspaces: Adjust app spacing and align with panel edges
   * Increase size and density of workspaces in workspace applet
@@ -54,7 +83,8 @@ Thu Jul 14 13:20:52 UTC 2022 - gmbr3@opensuse.org
   * Use meson warning_level instead of global warning flags
   * Fix deprecations in vapi and ClockApplet
   * Use simple selectors in _widgets.scss to resolve warning
-  * Mark [GtkChild] properties as unowned to resolve compiler warnings
+  * Mark [GtkChild] properties as unowned to resolve compiler
+    warnings
   * Regenerate vapi for mutter 10 This commit updates the vapi for
     mutter 10/clutter et al since the stable release of GNOME 42.
     This also fixes an existing issue with our generation of
@@ -120,8 +150,8 @@ Wed Mar 16 09:12:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 Sat Mar 12 13:20:16 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.6+3:
-  * Proper icon tasklist scaling (#64)
-  * Fix inconsistency when opening Raven (#68)
+  * Proper icon tasklist scaling
+  * Fix inconsistency when opening Raven
   * Add a null check to budgie_popover_manager_ungrab
 
 -------------------------------------------------------------------
@@ -136,15 +166,19 @@ Tue Mar 08 17:32:36 UTC 2022 - gmbr3@opensuse.org
   * Remove inset shadow on hover for icon tasklist
   * Remove notification group padding to stop Raven size shifting
   * Add support for mutter 10 / GNOME42
-  * Actually fix notification pausing sometimes breaking Firefox notifications
+  * Actually fix notification pausing sometimes breaking Firefox
+    notifications
   * Fix notification mute button sometimes starting without an image
   * Scale down the logo too
   * Update logo
-  * Fix some applications showing their own notification popups when paused
+  * Fix some applications showing their own notification popups when
+    paused
   * Fix Current Internal Theme
-  * Ensure gschema override for switch-input-source* is formatted correctly.
+  * Ensure gschema override for switch-input-source* is formatted
+    correctly.
   * Add keywords to budgie-desktop-settings.desktop
-  * Perform additional sanity check on add_app due to invalid windows being tracked on app closures.
+  * Perform additional sanity check on add_app due to invalid windows
+    being tracked on app closures.
   * Fix vertical panel struts
   * Fix Raven size adjustments.
   * Remove background on notifs in Raven
@@ -200,13 +234,13 @@ Sat Oct 16 15:36:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 Fri Sep 24 10:16:51 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.3+12:
-  * Clock applet: Don't show empty second/date label if not enabled (#2168)
-  * Revert "Use ibus daemonize to allow ibus popups to appear Closes: #729 (#2111)"
+  * Clock applet: Don't show empty second/date label if not enabled
+  * Revert "Use ibus daemonize to allow ibus popups to appear
   * Require GNOME Stack 41 (alpha+)
-  * Add Mutter 9 support (#2165)
+  * Add Mutter 9 support
   * Update README with intentions going into B11.
-  * Use ibus daemonize to allow ibus popups to appear Closes: #729 (#2111)
-  * Enable Mod3 (Meta or Hyper) for Tab Switching (#2164)
+  * Use ibus daemonize to allow ibus popups to appear
+  * Enable Mod3 (Meta or Hyper) for Tab Switching
 
 -------------------------------------------------------------------
 Sun Aug 08 11:19:09 UTC 2021 - gmbr3@opensuse.org
@@ -298,29 +332,30 @@ Thu Feb 11 09:08:58 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+481e9bd2:
   * Update submodules
-  * Resolve issues with status applet spacing persistence (#2093)
+  * Resolve issues with status applet spacing persistence
 
 -------------------------------------------------------------------
 Mon Jan 11 11:47:18 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+e04e3b8f:
-  * Add spacing setting to StatusApplet (#2088)
-  * Add setting to pause notifications while apps are fullscreen (#2092)
-  * Synchronize X errors in carbon_child_realize (#2091)
+  * Add spacing setting to StatusApplet
+  * Add setting to pause notifications while apps are fullscreen
+  * Synchronize X errors in carbon_child_realize
 
 -------------------------------------------------------------------
 Tue Jan 05 08:45:06 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+09d4afe9:
   * Update copyright to 2021
-  * Prevent Budgie Desktop Settings from being pinned via drag-and-drop. Fixes #2085.
-  * Use standard mute/unmute methods (#2084)
+  * Prevent Budgie Desktop Settings from being pinned via
+    drag-and-drop
+  * Use standard mute/unmute methods
 
 -------------------------------------------------------------------
 Mon Dec 21 19:08:37 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 10.5.2+3d2b8998:
-  * Fix regression in Budgie Desktop Settings icon handling (#2082)
+  * Fix regression in Budgie Desktop Settings icon handling
 
 -------------------------------------------------------------------
 Wed Dec 09 15:21:08 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
@@ -328,7 +363,7 @@ Wed Dec 09 15:21:08 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 - Removed budgie-desktop-nemo-autostart.desktop
 - Removed nemo-instead-of-nautilus.patch: nemo no longer used 
 - Update to version 10.5.2+5a56d6dd:
-  * Fix issue with KeePass causing panel segfaults (#2072)
+  * Fix issue with KeePass causing panel segfaults
   * Bump to 10.5.2
   * Last sync of translations before release.
   * Ensure our requirement bumps for GNOME 3.36 stack is consistent.
@@ -336,8 +371,8 @@ Wed Dec 09 15:21:08 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
   * Add Click Policy to Budgie Desktop Settings.
   * Add note that Caja won't be an available override at this time.
   * Sync translations.
-  * Rejig nemo support with desktop settings (#2064)
-  * Apply dock mode class on init (#2058)
+  * Rejig nemo support with desktop settings
+  * Apply dock mode class on init
 
 -------------------------------------------------------------------
 Mon Nov 23 20:06:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
@@ -345,7 +380,8 @@ Mon Nov 23 20:06:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 - Update to version 10.5.1+ed8be169:
   * Precise fullscreen tracking in Abomination
   * Update carbontray and fix its copyright headers
-  * Implement setting to choose which side of the screen Raven opens on
+  * Implement setting to choose which side of the screen Raven
+    opens on
 
 -------------------------------------------------------------------
 Mon Nov  2 19:30:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
@@ -475,7 +511,8 @@ Mon Aug 10 20:02:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 Mon Aug 10 19:15:07 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add patches:
-  * Rework-grab-and-ungrab-keys.patch (gh#solus-project/budgie-desktop#1907)
+  * Rework-grab-and-ungrab-keys.patch
+    (gh#solus-project/budgie-desktop#1907)
   * mutter-3-35-91.patch (gh#solus-project/budgie-desktop#1939)
   * gnome-coexistance.patch (gh#solus-project/budgie-desktop#1984)
 - Remove old %post and %postun

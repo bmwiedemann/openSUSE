@@ -6,6 +6,7 @@ Sun Jan 29 09:31:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
   * Low. Stack overflow in ares_set_sortlist() which is used
     during c-ares initialization and typically provided by an
     administrator and not an end user.
+    (bsc#1208067, CVE-2022-4904)
   Changes:
   * Add ARES_OPT_HOSTS_FILE similar to ARES_OPT_RESOLVCONF for
     specifying a custom hosts file location.

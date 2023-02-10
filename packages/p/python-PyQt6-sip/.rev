@@ -44,4 +44,14 @@
   * The array type is now accessible from the sip module.</comment>
     <requestid>984547</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d2275765f6f00547926d54cec49dda0</srcmd5>
+    <version>13.4.1</version>
+    <time>1676036065</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to ABI version 13.4.1
+  *  am_send, wt_reserve
+</comment>
+    <requestid>1064076</requestid>
+  </revision>
 </revisionlist>

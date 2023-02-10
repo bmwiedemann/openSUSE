@@ -1,0 +1,86 @@
+From 4cde0a1bfb8382677c331e0cf4fa482afadbfa1f Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 7 Feb 2023 18:37:25 +0800
+Subject: [PATCH 06/13] tpm2: check the command parameters of TPM2 commands
+
+Some command parameters should not be NULL. Add the conditional check to
+avoid the potential NULL pointer reference.
+
+Besides, for TPM2_StartAuthSession, when 'tpmKey' is 'TPM_RH_NULL', the
+size of 'encryptedSalt' must be 0 per "TCG TPM2 Part3 Commands".
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index 1176d968b..8a98fa251 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -127,6 +127,9 @@ TPM2_CreatePrimary (const TPMI_RH_HIERARCHY primaryHandle,
+   TPM_RC responseCode;
+   grub_uint32_t parameterSize;
+ 
++  if (!inSensitive || !inPublic || !outsideInfo || !creationPCR)
++    return TPM_RC_VALUE;
++
+   if (!objectHandle)
+     objectHandle = &objectHandleTmp;
+   if (!outPublic)
+@@ -210,6 +213,13 @@ TPM2_StartAuthSession (const TPMI_DH_OBJECT tpmKey,
+   TPM_RC responseCode;
+   grub_uint32_t param_size;
+ 
++  if (!nonceCaller || !symmetric)
++    return TPM_RC_VALUE;
++
++  if (tpmKey == TPM_RH_NULL &&
++      (encryptedSalt && encryptedSalt->size != 0))
++    return TPM_RC_VALUE;
++
+   if (!sessionHandle)
+     sessionHandle = &sessionHandleTmp;
+   if (!nonceTpm)
+@@ -272,6 +282,9 @@ TPM2_PolicyPCR (const TPMI_SH_POLICY policySessions,
+   TPM_RC responseCode;
+   grub_uint32_t param_size;
+ 
++  if (!pcrs)
++    return TPM_RC_VALUE;
++
+   if (!authResponse)
+     authResponse = &authResponseTmp;
+ 
+@@ -363,6 +376,9 @@ TPM2_Load (const TPMI_DH_OBJECT parent_handle,
+   TPM_RC responseCode;
+   grub_uint32_t param_size;
+ 
++  if (!inPrivate || !inPublic)
++    return TPM_RC_VALUE;
++
+   if (!objectHandle)
+     objectHandle = &objectHandleTmp;
+   if (!name)
+@@ -506,7 +522,7 @@ TPM2_PCR_Read (const TPMS_AUTH_COMMAND *authCommand,
+   grub_uint32_t parameterSize;
+ 
+   if (!pcrSelectionIn)
+-    return TPM_RC_FAILURE;
++    return TPM_RC_VALUE;
+ 
+   if (!pcrUpdateCounter)
+     pcrUpdateCounter = &pcrUpdateCounterTmp;
+@@ -625,6 +641,9 @@ TPM2_Create (const TPMI_DH_OBJECT parentHandle,
+   TPM_RC rc;
+   grub_uint32_t parameterSize;
+ 
++  if (!inSensitive || !inPublic || !outsideInfo || !creationPCR)
++    return TPM_RC_VALUE;
++
+   if (!outPrivate)
+     outPrivate = &outPrivateTmp;
+   if (!outPublic)
+-- 
+2.35.3
+

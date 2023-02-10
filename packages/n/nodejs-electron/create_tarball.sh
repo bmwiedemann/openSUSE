@@ -175,7 +175,6 @@ keeplibs=(
     third_party/blink #Integral part of chrome
     third_party/boringssl #Factory has an ancient version, but upstream seems to have gave up on making it a shared library
     third_party/boringssl/src/third_party/fiat #Not in any distro
-    third_party/breakpad #Integral part of chrome
     # We don't need it (disable-catapult.patch)
     #third_party/catapult
     #third_party/catapult/common/py_vulcanize/third_party/rcssmin
@@ -390,7 +389,7 @@ echo ">>>>>> Hardlink duplicate files to reduce extraction time"
 /usr/lib/rpm/fdupes_wrapper src
 
 echo ">>>>>> Create tarball"
-ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd -vvcf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cf failed"
     cleanup_and_exit 1

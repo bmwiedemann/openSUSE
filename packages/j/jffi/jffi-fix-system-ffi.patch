@@ -1,21 +1,22 @@
-diff -up jni/GNUmakefile.patch4 jni/GNUmakefile
---- jni/GNUmakefile.patch4	2021-07-08 22:01:13.455019146 +0300
-+++ jni/GNUmakefile	2021-07-08 22:10:00.737857846 +0300
-@@ -265,7 +265,7 @@ debug:
+diff -up jffi-jffi-1.3.9/jni/GNUmakefile.p04 jffi-jffi-1.3.9/jni/GNUmakefile
+--- jffi-jffi-1.3.9/jni/GNUmakefile.p04	2022-05-11 12:10:48.933683705 +0300
++++ jffi-jffi-1.3.9/jni/GNUmakefile	2022-05-11 12:12:26.005900040 +0300
+@@ -277,7 +277,7 @@ debug:
  	@echo "JFFI_BUILD_DIR=$(JFFI_BUILD_DIR)"
  	@echo "OBJS=$(OBJS)"
  
 -$(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
 +$(LIBJFFI):  $(OBJS)
- 	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI_LIBS) $(LIBS)
+ 	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI) $(LIBS)
  	$(STRIP) $@
- 
-@@ -277,7 +277,9 @@ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.S $(wild
+ ifeq ($(OS), darwin)
+@@ -292,7 +292,9 @@ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.S $(wild
  	@mkdir -p $(@D)
  	@$(CC) $(CFLAGS) -o $@ -c $<
  
+-$(OBJS) : $(LIBFFI)
 +ifneq ($(USE_SYSTEM_LIBFFI),1)
- $(OBJS) : $(LIBFFI_LIBS)
++$(OBJS) : $(LIBFFI)
 +endif
  
  ifeq ($(OS), darwin)

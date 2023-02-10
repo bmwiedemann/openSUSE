@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  9 12:39:46 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR5
+
+- Update to version 5.2CR5
+  fixes a bug where the cols attribute on entrytbl element was
+  incorrectly optional.
+
+-------------------------------------------------------------------
+Thu Feb  9 12:39:46 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR4
+
+- Update to version 5.2CR4
+  - Fix OASIS identifiers in catalog, CR4 (#245)
+  - Allow info to be a top-level element in a document (#244)
+  - Fix XInclude declarations, inconsistencies (#243)
+  - Documentation updates (#242)
+
+-------------------------------------------------------------------
 Thu Dec  8 13:36:14 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR3
 
 - Update to version 5.2CR3

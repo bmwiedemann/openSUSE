@@ -1,0 +1,42 @@
+From 608a13db2ab07f59b17d3a58fd698633f8fec8e5 Mon Sep 17 00:00:00 2001
+From: Hy Murveit <hy@murveit.com>
+Date: Sun, 5 Feb 2023 09:04:57 +0300
+Subject: [PATCH] m_TargetName was being overwritten when the UI Element
+ targetNameT was programmatically modified. This cause the signaling from the
+ scheduler to capture to be missed (e.g. when targetNameT was set by reading a
+ .esq file). This sets it so that m_TargetName is only overwritten when the
+ user modifies the UI element, and not when it is changed programmatically.
+
+---
+ kstars/ekos/capture/capture.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kstars/ekos/capture/capture.cpp b/kstars/ekos/capture/capture.cpp
+index 7b5449095..0d3ff0c40 100644
+--- a/kstars/ekos/capture/capture.cpp
++++ b/kstars/ekos/capture/capture.cpp
+@@ -517,10 +517,11 @@ Capture::Capture()
+     connect(formatSuffixN, QOverload<int>::of(&QSpinBox::valueChanged), this, &Capture::generatePreviewFilename);
+     connect(captureExposureN, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
+             &Capture::generatePreviewFilename);
+-    connect(targetNameT, &QLineEdit::textChanged, this, [ = ]()
++    connect(targetNameT, &QLineEdit::textEdited, this, [ = ]()
+     {
+         m_TargetName = targetNameT->text();
+         generatePreviewFilename();
++        qCDebug(KSTARS_EKOS_CAPTURE) << "Changed target to" << m_TargetName << "because of user edit";
+     });
+     connect(captureTypeS, &QComboBox::currentTextChanged, this, &Capture::generatePreviewFilename);
+ 
+@@ -4460,6 +4461,7 @@ void Capture::syncGUIToJob(SequenceJob * job)
+     targetNameT->setText(jobTargetName);
+     captureCountN->setValue(job->getCoreProperty(SequenceJob::SJ_Count).toInt());
+     captureDelayN->setValue(job->getCoreProperty(SequenceJob::SJ_Delay).toInt() / 1000);
++    fileDirectoryT->setText(job->getCoreProperty(SequenceJob::SJ_LocalDirectory).toString());
+     fileUploadModeS->setCurrentIndex(job->getUploadMode());
+     fileRemoteDirT->setEnabled(fileUploadModeS->currentIndex() != 0);
+     fileRemoteDirT->setText(job->getCoreProperty(SequenceJob::SJ_RemoteDirectory).toString());
+-- 
+GitLab
+
+

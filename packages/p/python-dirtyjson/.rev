@@ -24,4 +24,14 @@
   * Support Python 3.10.</comment>
     <requestid>948299</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49858ee13757d3ca3f02d36cc19cf766</srcmd5>
+    <version>1.0.8</version>
+    <time>1676036163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.8:
+  * Add Python 3.10 support
+- drop support-python-310.patch (upstream)</comment>
+    <requestid>1064208</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:49:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.95.2:
+  * Fixed the aggregation of the minimum ratio
+  Intel:
+  * [Airmont][Silvermont] Attempt to decode `tCKE` from DRMC
+    register
+  * [Airmont] Improve `tWTPr`, `B2B`, `tWWDR` timings
+  * [Airmont] Provide a new IMC decoder
+  * Add the Emerald Rapids architecture entry
+  * [DDR5][DDR4] Add the `RCDw` IMC timing
+  * [Raptor Lake ] De-activate the MSR Uncore counter
+  AMD:
+  * "Zen3/Barcelo-R" and "Zen3+ Rembrandt-R" codenames
+  * [Zen] Thermal highest limit reset fix
+  Misc:
+  * Code review and Registers documentation:
+    AMD HWCR, Intel HDC and DRP
+
+-------------------------------------------------------------------
 Mon Jan 23 08:50:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.95.1:

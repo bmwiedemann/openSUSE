@@ -212,4 +212,14 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
     <comment></comment>
     <requestid>1062054</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b952e4c56ed2506be6eb336d2b165a09</srcmd5>
+    <version>1.19.0</version>
+    <time>1676036028</time>
+    <user>dimstar_suse</user>
+    <comment>Bug reference change only
+
+    (bsc#1208067, CVE-2022-4904)</comment>
+    <requestid>1064045</requestid>
+  </revision>
 </revisionlist>

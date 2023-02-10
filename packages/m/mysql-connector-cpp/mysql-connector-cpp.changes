@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  8 12:07:20 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Updated to version 8.0.32
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-32.html
+- Rebased mysql-connector-cpp-config.patch
+- Fixed mysql-connector-cpp-config.patch to exclude more unsupported
+- Add a compile fix for the is_same test in
+  mysql-connector-cpp-test-feature.patch 
+- Add various fixes to mysql-connector-cpp-use-system-protobuf.patch
+
+-------------------------------------------------------------------
 Fri Apr  8 10:01:37 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.28

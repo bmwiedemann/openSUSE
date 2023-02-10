@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 10 07:33:15 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Advertize capability needed by other felix-gogo artifacts
+
+-------------------------------------------------------------------
 Wed Mar 16 13:12:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build system to ant so that we can eventually avoid

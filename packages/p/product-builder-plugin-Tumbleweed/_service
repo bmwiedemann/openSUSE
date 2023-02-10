@@ -5,8 +5,8 @@
     <param name="revision">SLE_15</param>
 -->
     <param name="scm">git</param>
-    <param name="version">1.7.0</param>
-    <param name="revision">1.7.0</param>
+    <param name="version">1.8.1</param>
+    <param name="revision">1.8.1</param>
   </service>
   <service mode="manual" name="set_version" />
   <service mode="buildtime" name="tar"/>

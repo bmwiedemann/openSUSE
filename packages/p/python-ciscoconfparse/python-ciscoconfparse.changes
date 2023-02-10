@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:28:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.14:
+  * Allow `CiscoConfParse()` to parse an empty
+    configuration command list i.e. `CiscoConfParse([])`; remove
+    the `ValueError()` raised on parsing an empty config.
+  * Re-implement and simplify
+    `CiscoConfParse().sync_diff()` with `HDiff()`.
+  * Rename variables in `HDiff().compress_dict_diffs()`.
+  * Rename dict_line to line and add the command indent
+  * Add 'parents' to `HDiff()` diff dicts and add parent
+    line output in `sync_diff()`
+  * Expand `CiscoConfParse()` test coverage for reading
+    files from disk
+  * Fix `CiscoConfParse().read_config_file()` recursive
+    call in `read_config_file()`.
+  * Fix `CiscoConfParse().read_config_file()` missing
+    `open()` in `read_config_file()`.
+  * Fix file-open test escapes associated with github issue
+  * Fix `CiscoConfParse().read_config_file()` argument name
+    test escape (ref github issue #262)
+  * Improve file `open()` error handling.  NOTE:
+    `FileNotFoundError()` is now raised for invalid file paths.
+  * Improve edge case handling for Cisco IOS banner
+    delimiters.
+  * Remove `_validate_ConfigObjs()` and improve logic in
+    `CiscoConfParse().__init__()`.
+  * Revert back to using `read_config_file()` if the config
+    is stored in a file.
+  * Fix unit tests to work with version 1.7.8+
+  * Streamline `CiscoConfParse().__init__()` logic and
+    delegate `__init__()` tasks to dedicated methods.
+  * Validate that `CiscoConfParse().ConfigObjs` is None or
+    instance of `collections.abc.Sequence()`
+  * Convert all checks for `collections.abc.Iterator` to
+    `collections.abc.Sequence`; ref github issue #256
+  * Add more error conditions and explicit errors in
+    ciscoconfparse/ciscoconfparse.py
+  * Implement `read_config_file()` logic
+  * Add more unit tests
+
+-------------------------------------------------------------------
 Sat Jan 28 12:29:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.7:

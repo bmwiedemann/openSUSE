@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 10 00:24:10 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Ensure statusnotifier plugin is fully usable with appindicators
+
+-------------------------------------------------------------------
+Thu Feb  9 17:20:26 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * directorymenu: Add missing sanity check
+  * panel: Properly handle null string as property default value
+  * Revert "Use RGBA visual only if compositing is enabled (Fixes
+    gxo#xfce/xfce4-panel#251)" (gxo#xfce/xfce4-panel#672)
+  * Revert "systray: Do not require compositing to be enabled to
+    use RGBA visual"
+  * systray: Fix blurry icons in prefs dialog when UI scale > 1
+  * launcher: Fix blurry icons in prefs and add dialogs when UI
+    scale > 1
+  * launcher: Use GIcon for the tooltip icon (gxo#xfce/xfce4-panel#674)
+  * pager: Use WnckHandle if available (gxo#xfce/xfce4-panel#695)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Jan 11 11:37:08 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.1

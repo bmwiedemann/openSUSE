@@ -138,9 +138,11 @@
   </group>
 
   <group>
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2CR5/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2CR4/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
+    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2CR3/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2CR2/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
     <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2CR1/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
-    <rewriteSystem systemIdStartString="http://www.oasis-open.org/docbook/xml/5.2b12/" rewritePrefix="http://www.oasis-open.org/docbook/xml/@VERSION@/"/>
   </group>
 
 </catalog>
