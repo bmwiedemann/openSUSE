@@ -1,0 +1,54 @@
+From 8491b1fd5e7c97edc104a3ac3b8ece5464e652b0 Mon Sep 17 00:00:00 2001
+From: Illia Polishchuk <illia.a.polishchuk@globallogic.com>
+Date: Fri, 13 Jan 2023 20:54:44 +0200
+Subject: [PATCH] ANV: Add extra memory types for ANV driver instead of a
+ single one
+
+Some game engines can't handle single type well
+And Intel on Windows uses 3 types so it's better to add extra one here
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7360
+Reviewed-by: Lionel Landwerlin <lionel.g.landwerlin@intel.com>
+Signed-off-by: Illia Polishchuk <illia.a.polishchuk@globallogic.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/20693>
+---
+ src/intel/vulkan/anv_device.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/src/intel/vulkan/anv_device.c b/src/intel/vulkan/anv_device.c
+index a2e5d2ba398f..40d8949f011a 100644
+--- a/src/intel/vulkan/anv_device.c
++++ b/src/intel/vulkan/anv_device.c
+@@ -509,14 +509,23 @@ anv_physical_device_init_heaps(struct anv_physical_device *device, int fd)
+ 
+       /* Big core GPUs share LLC with the CPU and thus one memory type can be
+        * both cached and coherent at the same time.
++       *
++       * But some game engines can't handle single type well
++       * https://gitlab.freedesktop.org/mesa/mesa/-/issues/7360#note_1719438
++       *
++       * And Intel on Windows uses 3 types so it's better to add extra one here
+        */
+-      device->memory.type_count = 1;
++      device->memory.type_count = 2;
+       device->memory.types[0] = (struct anv_memory_type) {
+-         .propertyFlags = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT |
+-                          VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT |
+-                          VK_MEMORY_PROPERTY_HOST_COHERENT_BIT |
+-                          VK_MEMORY_PROPERTY_HOST_CACHED_BIT,
+-         .heapIndex = 0,
++          .propertyFlags = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
++          .heapIndex = 0,
++      };
++      device->memory.types[1] = (struct anv_memory_type) {
++          .propertyFlags = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT |
++                           VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT |
++                           VK_MEMORY_PROPERTY_HOST_COHERENT_BIT |
++                           VK_MEMORY_PROPERTY_HOST_CACHED_BIT,
++          .heapIndex = 0,
+       };
+    } else {
+       device->memory.heap_count = 1;
+-- 
+GitLab
+

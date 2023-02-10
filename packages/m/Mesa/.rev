@@ -5200,4 +5200,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - refreshed u_dep_xcb.patch</comment>
     <requestid>1063999</requestid>
   </revision>
+  <revision rev="471" vrev="343">
+    <srcmd5>d719d7bc9f1b2e62201f35ac8de6dacb</srcmd5>
+    <version>unknown</version>
+    <time>1676150414</time>
+    <user>dimstar_suse</user>
+    <comment>- U_ReturnME.patch
+  * fixes blackscreen in Return To Monkey Island on Intel graphics
+    (boo#1208145)</comment>
+    <requestid>1064280</requestid>
+  </revision>
 </revisionlist>
