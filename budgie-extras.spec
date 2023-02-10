@@ -17,7 +17,7 @@
 
 
 Name:           budgie-extras
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
@@ -386,6 +386,7 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
   -Dxdg-appdir=%{_distconfdir}/xdg/autostart \
   -Dwith-zeitgeist=false \
   -Dbuild-all=true \
+  -Dwith-default-schema=false \
   %{nil}
 
 %meson_build

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  9 15:31:28 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Budgie Extras 1.5.0 "Breathing Space"
+  * Lots of new and updated translations from the wonderful
+    translations team
+  * traditional layout now reflects the budgie desktop v10.7
+    default layout.
+  * bug-fix - reset key-grabs (overlays) where there is not a
+    custom defined key combination
+  * code-cleanup don't hard-code /tmp in various applets
+  * bug-fix - wallstreet accepts custom folder with spaces
+  * Trash Applet has been updated as follows:
+  * support multiple file drag and drop to panel icon
+  * show trash full icon when there are items in trash
+  * open trash folder instead of popup when > 100 items
+  * fix paths with certain characters not restoring correctly
+
+-------------------------------------------------------------------
 Fri May 27 14:12:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.4.0 "Budgie Bonanza"
