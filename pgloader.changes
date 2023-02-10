@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan 31 15:25:03 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 3.6.9
+  + Add default support for MSSQL auto-incrementing bigint and smallint
+  + Improve pgloader docs
+- Changes from version 3.6.8
+  + Use the unix-namestring as the hash key for SQL queries
+  + Added support for sequences with minvalue defined
+  + Fix mapping mysql signed int with auto_incement to postgresql serial
+- Changes from version 3.6.7
+  + Set SBCL dynamic space size to 16 GB on 64 bit architectures
+  + Improve documentation with command lines and defaults
+  + SBCL compiler notes should not be fatal to pgloader
+- Update copyright year 
+
+-------------------------------------------------------------------
+Mon Jul  4 03:06:06 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.6.6
+  + Maintenance release fixing the bundle build process
+- Removed old merged patches: command-line-arguments.patch
+  82397a78.patch
+- Update copyright year
+
+-------------------------------------------------------------------
 Wed Aug 18 07:46:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce filesize of /usr/bin/pgloader by 19MB

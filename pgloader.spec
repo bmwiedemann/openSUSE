@@ -1,7 +1,7 @@
 #
 # spec file for package pgloader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,13 @@
 
 
 Name:           pgloader
-Version:        3.6.2
+Version:        3.6.9
 Release:        0
 Summary:        Fast data loader for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
 Source:         https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
-Patch1:         command-line-arguments.patch
-#Fix build error with sbcl 2.0.9
-Patch2:         https://github.com/AccelerationNet/cl-csv/commit/82397a78.patch
-#Fix build with sbcl 2.1
-Source1:        https://github.com/sharplispers/ironclad/archive/v0.54.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
@@ -61,14 +56,6 @@ from the pgloader command directly.
 
 %prep
 %setup -q -n %{name}-bundle-%{version}
-%patch1 -p1
-cd local-projects/cl-csv
-%patch2 -p1
-cd ../..
-#Upgrade ironclad
-rm -rf software/ironclad-*
-cd software
-tar -xf %{S:1}
 
 %build
 export CFLAGS="%{optflags}"
