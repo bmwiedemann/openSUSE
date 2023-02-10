@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 05 15:28:32 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 1.2.0+0:
+  * thunderbolt: Ensure client and devices exist when setting
+    visibility
+  * thunderbolt: Hide panel if there's no thunderbolt hardware
+  * info-overview: Remove "Mesa" prefix for Intel Iris driver
+  * wwan: wait for apn_list to exist to add SIM providers
+  * wwan: Set apn access method before adding to list
+  * wwan: Update apn list only if device is available
+  * wwan: Track apn list updates
+  * Better english for the duplicate fingerprint
+  * user-account: Return duplicate notification when the finger is
+    exist
+  * info-overview: Add "Kernel Version" row
+  * info: Make get_hardware_model use a hostnamed property getter
+  * net-device-ethernet: Don't check device iface name
+  * net-device-ethernet: Prevent double free
+  * network: Fixed Network profiles shown on wrong device
+  * network: Fix an assertion failure
+  * cc-printers-panel: don't show two Add Printer buttons at once
+
+-------------------------------------------------------------------
 Thu Oct 06 13:05:25 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 1.1.1+0:
