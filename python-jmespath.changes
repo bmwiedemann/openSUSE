@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 09:10:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We actually don't need simplejson at all, it is just for 2.6
+  [sic!] compatibility.
+
+-------------------------------------------------------------------
 Sat Sep 17 15:41:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
