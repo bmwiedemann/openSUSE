@@ -24,7 +24,7 @@ Tue Jan 31 15:02:55 UTC 2023 - mrueckert@suse.de
   * Hierarchical Query identifys the leaves
   * Update the connect_by_root example, for better semantics
   * fix: CONNECT_BY_ROOT in hierarchical query is converted to WITH RECURSIVE syntax
-  * the table [200~utl_file.utl_file_dir is dumpable
+  * the table [200~utl_file.utl_file_dir is dumpable
   * fix compilation against pg master
   * prepare for 4.0.2
   * fix -wextra warnings

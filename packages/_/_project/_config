@@ -543,6 +543,8 @@ Prefer: python39-tornado
 Prefer: python310-tornado
 Prefer: python311-tornado
 
+# have choice for libopenblas.so.0()(64bit) needed by libopencv407: libopenblas_openmp0 libopenblas_pthreads0 libopenblas_serial0
+Prefer: -libopenblas_openmp0 -libopenblas_pthreads0
 
 Prefer: -gnome-bluetooth-1
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
