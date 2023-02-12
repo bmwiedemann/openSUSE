@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 11 11:20:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.2:
+  * xcursors: Alias existing cursor defaults to cursor-spec cursor
+    names
+  * xdg-activation: accept pointer focus for new tokens
+  * xwayland/xwm: unpair even if surface is NULL
+  * backend/x11: fix delta_discrete value
+  * backend/x11: fix initial value of wlr_x11_buffer.n_busy
+  * backend/drm: disable all CRTCs after VT switch
+  * render/vulkan: fix vkCmdClearAttachments validation error
+  * backend/drm: set "max bpc" property based on pixel format
+  * xdg-shell: reset added/committed flag on unmap
+  * backend/wayland: don't cache next item when destroying buffers
+  * output: don't attach buffer on first commit if disabled
+  * backend/wayland: allow superseding a previous commit
+  * backend/wayland: update output mode after commit is done
+  * render/gles2: default to highp if available
+  * build: bump version to 0.16.2
+  * render/vulkan: use correct source offset in read_pixels 
+
+-------------------------------------------------------------------
 Sun Dec 25 16:51:41 UTC 2022 - llyyr <llyyr.public@gmail.com>
 
 - Update to 0.16.1:

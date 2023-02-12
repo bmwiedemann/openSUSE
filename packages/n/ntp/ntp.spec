@@ -325,7 +325,7 @@ if [ ! -f $KEYSFILE ]; then
   FILE=$(mktemp -p /etc)
   chmod 0640 $FILE
   chown root:ntp $FILE
-  mv $FILE $KEYSFILE
+  mv -Z $FILE $KEYSFILE
 fi
 
 CONTROLKEY=$(getntpconf controlkey)

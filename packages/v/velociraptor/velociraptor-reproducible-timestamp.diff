@@ -1,0 +1,30 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: magefile: use stable timestamps for build
+
+In order to create reprodicible builds, we can't have timestamps that vary
+without anything else changing.
+diff --git a/magefile.go b/magefile.go
+index 16badc2b..76011657 100644
+--- a/magefile.go
++++ b/magefile.go
+@@ -428,10 +428,18 @@ func build_gui_files() error {
+ }
+ 
+ func flags() string {
+-	timestamp := time.Now().Format(time.RFC3339)
++	timestamp := os.Getenv("VELOCIRAPTOR_BUILD_TIME")
++	if timestamp == "" {
++		timestamp = time.Now().Format(time.RFC3339)
++	}
+ 	flags := fmt.Sprintf(` -X "www.velocidex.com/golang/velociraptor/config.build_time=%s"`, timestamp)
+ 
+-	flags += fmt.Sprintf(` -X "www.velocidex.com/golang/velociraptor/config.commit_hash=%s"`, hash())
++	head := os.Getenv("VELOCIRAPTOR_GIT_HEAD")
++	if head == "" {
++		head = hash()
++	}
++
++	flags += fmt.Sprintf(` -X "www.velocidex.com/golang/velociraptor/config.commit_hash=%s"`, head)
+ 
+ 	// If we are running on the CI pipeline we need to know the run
+ 	// number and URL so we can report them.

@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Mon Feb 06 16:38:15 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.26~git20230205:
+  * cellVdec: Fix AU decode count on callback (#13342)
+  * CLI: add option to boot rsx capture
+  * Clarify unknown type log message
+  * Replace std::filesystem::u8path with TODO
+  * Fix package installation exit condition after error occured
+  * Improve logging during package installations
+  * rsx: Formatting change
+  * rsx/overlays: Force disable rounded rectangles on macOS
+  * rsx/overlays: Support disabling vertex-snap on a per-draw-call basis
+  * rsx/overlays: Remove workaround no longer required
+  * rsx: Unify UI rendering shaders
+  * sys_game: Implemented sys_game_board_storage_write() & Made it modifiable
+  * sys_prx: Fix PRX module filename reading (#13339)
+  * Add more disconnected limitations in sys_net
+  * rsx/overlays: Re-export spinner
+  * Update wolfssl from 5.5.0 to 5.5.4
+  * Update FAudio from 22.08 to 23.02
+  * - fix analog_t required for some games - changing mapping to better fit to games (for example, select is rarely used)
+  * rsx/overlays/message-queue: Do not fade albedo, only alpha
+  * GUI: Remove ANSI color code from TTY
+  * Game list: Use the latest game icon instead of 1.00's (#13340)
+  * SDL: Fix button presses
+  * Remove obsolete shader compilation hint settings
+  * rsx/overlays: Cache the loading animated icon
+  * rsx/overlays: Make animation caching possible
+  * rsx/overlays: Work around some commitee grandstanding shenanigans
+  * rsx/overlays: Minor fixups
+  * rsx/overlays: Ellide redundant clock read
+  * rsx/overlays: Add time unit to some measured variables
+  * rsx/overlays: Shorten notification fadeout
+  * rsx/overlays: Fix msvc project files
+  * rsx/overlays: Naming sense
+  * rsx/overlays: Remove redundant resize
+  * rsx/overlay: Some cleanup in animated icon class
+  * rsx: Reverse declaration order for animated icon
+  * cmake: Add shader compile notification to build system
+  * rsx/overlays: Move shader compiling notification to a separate cpp file
+  * rsx/overlays: Darken background a bit
+  * rsx: Lower shader notification duration to 5 seconds
+  * rsx: Remove unnecessary debug pragma
+  * rsx: Implement overlay message queue stacking
+  * ui: Add 24x24 loading animation
+  * build: Fix linux build
+  * rsx: Use animated icon and message queue for shader compiler notifications
+  * rsx: Fix message queue order and positioning
+  * rsx: Add support for rounded rectangles
+  * rsx: Implement notification queue
+  * System.cpp: Do not create VFS directories outside of RPCS3 dir (#13311)
+  * overlays/osk: fix y offset direction facepalm
+  * cellOskDialog: improve kb event hook callback
+  * overlays/osk: clear on enter
+  * overlays/osk: Do not render preview background in separate windows mode
+  * overlays/osk: show dialog on key input
+  * overlays/osk: Clear text properly in continuous mode
+  * cellOskDialog: don't wait for osk event_hook_callback
+  * overlays/osk: hide title in separate window mode
+  * overlays/osk: fix dialog positioning
+  * cellOskDialog: use getter instead of weak_ptr
+  * overlays: allow keyboard input if pads are intercepted
+  * overlays/osk: fix cellOskDialogExtInputDeviceLock
+  * overlays: don't flip if the overlay is invisible
+  * overlays/osk: keep dialog open in continuous mode
+  * overlays/osk: handle input device change
+  * overlays/osk: visualize separate windows
+  * rsx: Ignore bad face mode configuration
+  * Print LV2 Syscall Usage only if increased since last print
+  * readme: Remove Azure, rename Cirrus CI badges
+  * evdev_gun: enable udev code on BSDs
+  * Update MoltenVK to 1.2.2 (VK 1.3.239)
+  * vk: Drop deprecated (239) and removed (240) header
+  * Fix SDL CMake warnings
+  * SPU LLVM: Minor SUMB AVX-512 path optimization - Tweak shuffle to allow LLVM to emit a cheap blend instruction instead of the expensive VPERMI2W instruction
+  * input: fix dynamic pad handler mode reset
+  * perfoverlay: fix minimal graph min/max calculation
+  * Qt: fix vfs dialog usb tab cast
+  * sys_usbd: Improved usb_handler_thread timing
+  * USIO: Always resize the response vector to the given size
+  * sys_game: Implemented sys_game_get_rtc_status() & Updated sys_game_board_storage_read()
+  * rsx: Remove framebuffer_status_valid flag and move to state
+  * rsx: Fix graphics state foot-gun
+  * Allow unbinding pad buttons by right clicking (#13283)
+  * Whitelist EA Active 2 accessories
+  * sys_usbd: fix usb handler deinitialization
+  * Deprecate HDD0/disc, make RPCS3/games movable (#13265)
+  * macOS CI: move to AArch64 VM (x64 builds) (#13155)
+  * overlays: do not open home menu in VSH
+  * overlays: add simple home menu
+  * overlays/osk: move pointer variables to fxo
+  * overlays/osk: add analog movement if CELL_OSKDIALOG_NO_INPUT_ANALOG is unset
+  * overlays/osk: Fix layout and positioning
+  * cellOskDialog: cellOskDialogSetSeparateWindowOption
+  * cellOskDialog: improve dictionary functions
+  * overlays/osk: implement first osk pointer
+  * overlays/osk: implement scaling
+  * overlays/osk: align osk position
+  * cellOskDialog: fix error check and improve initialKeyLayout logic
+  * overlays/osk: implement "support languages"
+  * Fix emucore.vcxproj.filters
+  * Fix BUILDING.md Vulkan SDK Version
+  * Thread: silence -Wsign-compare on FreeBSD aarch64
+  * USIO: Do not crash simply due to invalid commands
+  * sys_usbd: Added buffer null check for sys_usbd_transfer_data()
+  * sys_fs: Improved sys_fs_fcntl(0xc0000015&0xc000001c)
+  * USB: Added VFS USB mass storage devices to the USB device list
+  * overlays: fix indentation
+  * Recording: Fix possible encoder segfault
+  * cellUserInfo: fix potentially locked user dialogs
+  * input: move config getters to base class
+  * input: fix ds4 led/rumble in pad settings
+  * rsx: Fix inadvertent signal override for MSAA
+  * rsx: Allow vertex fetch from uninitialized register
+  * Qt: add system cmd dialog
+  * Qt: Remove CELL_SYSUTIL_SYSTEM_MENU_CLOSE menu option
+  * Add output scaling filtering options, migrate FSR checkbox to these options
+  * rsx: Fix some pipe state signal propagation routines
+  * PRX/savestates/VSH: Associate PRX with library, fix VSH browser (#13221)
+  * Qt: Allow users to create shortcuts for existing bootable entries even after canceling the installation
+  * Qt: more package install fixes
+  * Qt: fix some package install cancellation issues
+  * package_reader: fix some warnings
+  * vk: Bump max number of suppported inline draw calls to 32k
+  * rsx/vk: Fix some problems with dynamic state updates
+  * vk: Avoid loading the whole dynamic state properties if only the shader changed
+  * rsx: Simplify the debug overlay print text routines.
+  * vk: Switch programs if the primitive type changed
+  * Fix GCC11 compilation
+  * Fix compilation
+  * glsl: Update fog enums in shaders
+  * rsx: Propagate decode failures up the chain.
+  * Fix GCC compilation
+  * rsx: Use gcm cast to handle input enum validation
+  * rsx: Fix printing of expected values
+  * vk: Short-circuit program load if state did not change
+  * rsx: Do not call a dynamic function to simply test-and-set. Do it inline.
+  * vk: Fix rare crash when handling mixed depth format types
+  * rsx: Improve performance by using an integral type to indicate error
+  * rsx: Fix vertex decode
+  * rsx: Fixup vertex enums in shaders
+  * refactor: Fix build
+  * Refactor gcm enums
+  * rsx/lv2: Refactor DMA control stuff after VSH work
+  * rsx: Minor refactoring RSXThread
+  * USIO: Backup file fixup
+  * Qt: move progress indication to own handler
+  * Qt: use play_sound callback instead of QSound
+  * cellMouse: decrease some log levels
+  * Fix some includes and warnings
+  * USIO: Emulation Performance Optimization
+  * Qt: add shortcut manager
+  * Set LSApplicationCategoryType to games
+  * pine: fix some warnings
+  * pine: simplify writing strings
+  * pine: replace goto with lambda
+  * Input: ignore F11 in keyboard pad handler (starts/stops recordings)
+  * Qt: Disable ESC to exit fullscreen if kb shortcuts are disabled
+  * Improve error logging
+  * Unbreak BSD
+  * VSH Improvements (#13172)
+
+-------------------------------------------------------------------
 Wed Jan 25 12:42:08 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
 
 - Add patch fix-test-files.patch

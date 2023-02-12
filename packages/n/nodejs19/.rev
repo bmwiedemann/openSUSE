@@ -105,4 +105,12 @@ For details, see CHANGELOG_V19.md</comment>
   scheduler. Rather switch to boolean dependencies.</comment>
     <requestid>1062437</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e6a9246a3067f7cd2c9a2f7444113c62</srcmd5>
+    <version>19.6.0</version>
+    <time>1676150406</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064244</requestid>
+  </revision>
 </revisionlist>

@@ -1713,4 +1713,16 @@
 - ethtool: link mode nwords cleanup and new advertise link mode map names</comment>
     <requestid>1061060</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>ce94fc57fc16290b6d0d92d2cb13ddd9</srcmd5>
+    <version>0.6.72</version>
+    <time>1676148948</time>
+    <user>dimstar_suse</user>
+    <comment>- bond: workaround 6.1 kernel enslave regression (boo#1206674)
+  The kernel bond enslave rtnetlink message processing changed
+  breaking an `ip link set down master bond0 dev eth0` like
+  enslave which worked with all kernels from 4.12 up to 6.0.
+  [+ 0001-bond-workaround-6.1-enslave-regression-boo-1206674.patch]</comment>
+    <requestid>1064159</requestid>
+  </revision>
 </revisionlist>

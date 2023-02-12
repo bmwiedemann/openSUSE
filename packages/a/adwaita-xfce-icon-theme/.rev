@@ -25,4 +25,12 @@
   * Fix up entries in index.theme (forwarded request 1059531 from mauriziogalli)</comment>
     <requestid>1059534</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7a901c719ed8b5ebd5251d2f2d9e6f58</srcmd5>
+    <version>0.0.3+git0.e0f73b9</version>
+    <time>1676149083</time>
+    <user>dimstar_suse</user>
+    <comment>- Dependency adwaita-icon-theme needs to be explicit (forwarded request 1064419 from mauriziogalli)</comment>
+    <requestid>1064422</requestid>
+  </revision>
 </revisionlist>

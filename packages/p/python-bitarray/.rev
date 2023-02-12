@@ -172,4 +172,13 @@
   * add distance metrics</comment>
     <requestid>1064212</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b0d3b6eea283ed580034cea45f0801b5</srcmd5>
+    <version>2.7.1</version>
+    <time>1676149032</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * optimize ``util.sc_encode()``</comment>
+    <requestid>1064329</requestid>
+  </revision>
 </revisionlist>

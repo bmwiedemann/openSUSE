@@ -17,7 +17,7 @@
 
 
 Name:           fuse3
-Version:        3.13.0
+Version:        3.13.1
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source1:        https://github.com/libfuse/libfuse/releases/download/fuse-%versi
 Source2:        fuse.keyring
 Source1000:     baselibs.conf
 Patch1:         conf-rename.patch
+Patch2:         0001-Split-config.h-into-private-and-public-config.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig

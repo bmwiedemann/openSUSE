@@ -1,0 +1,65 @@
+---
+ copr-cli.spec    |    4 ----
+ copr_cli/util.py |    4 ++--
+ setup.py         |    1 -
+ 3 files changed, 2 insertions(+), 7 deletions(-)
+
+--- a/copr-cli.spec
++++ b/copr-cli.spec
+@@ -32,7 +32,6 @@ BuildRequires: util-linux
+ %if %{with python3}
+ Requires:      python3-copr >= %min_python_copr_version
+ Requires:      python3-jinja2
+-Requires:      python3-simplejson
+ Requires:      python3-humanize
+ Requires:      python3-koji
+ Requires:      python3-future
+@@ -47,13 +46,11 @@ BuildRequires: python3-humanize
+ BuildRequires: python3-pytest
+ BuildRequires: python3-responses
+ BuildRequires: python3-setuptools
+-BuildRequires: python3-simplejson
+ BuildRequires: python3-munch
+ BuildRequires: python3-future
+ %else
+ Requires:      python-copr >= %min_python_copr_version
+ Requires:      python-jinja2
+-Requires:      python-simplejson
+ Requires:      python-humanize
+ Requires:      python-future
+ 
+@@ -65,7 +62,6 @@ BuildRequires: python-humanize
+ BuildRequires: python-mock
+ BuildRequires: python2-responses
+ BuildRequires: python-setuptools
+-BuildRequires: python-simplejson
+ BuildRequires: python-munch
+ BuildRequires: python-future
+ %endif
+--- a/copr_cli/util.py
++++ b/copr_cli/util.py
+@@ -1,7 +1,7 @@
+ # coding: utf-8
+ 
+ import humanize
+-import simplejson
++import json
+ 
+ 
+ try:
+@@ -66,4 +66,4 @@ def serializable(result):
+ 
+ 
+ def json_dumps(result):
+-    return simplejson.dumps(serializable(result), indent=4, sort_keys=True, for_json=True)
++    return json.dumps(serializable(result), indent=4, sort_keys=True)
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,6 @@ This part is a command line interface to
+ requires = [
+     'copr',
+     'humanize',
+-    'simplejson',
+     'jinja2',
+     'setuptools',
+     'future',

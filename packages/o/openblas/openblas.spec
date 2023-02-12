@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 
 %define _vers 0_3_21
 %define vers 0.3.21
+%define so_v 0
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -146,10 +147,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if %{without hpc}
+%define so_a %{so_v}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}_%{flavor}
 %endif
-%define so_v 0
 %define p_prefix %_prefix
 %define p_includedir %_includedir/%pname
 %define p_libdir %_libdir/openblas%{?flavor:-%{flavor}}
@@ -157,6 +158,7 @@ ExclusiveArch:  do_not_build
 %define num_threads 64
 
 %else
+%define so_a %{nil}
 # Magic for OBS Staging. Only build the flavors required by
 # other packages in the ring.
 %if %{with ringdisabled}
@@ -211,7 +213,7 @@ BuildRequires:  suse-hpc
 %description
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
-%package     -n lib%{name}%{?so_v}
+%package     -n lib%{name}%{so_a}
 Summary:        An optimized BLAS library based on GotoBLAS2, %{flavor} version
 Group:          System/Libraries
 %if %{without hpc}
@@ -233,7 +235,7 @@ Obsoletes:      lib%{pname}o0
 %hpc_requires
 %endif
 
-%description -n lib%{name}%{?so_v}
+%description -n lib%{name}%{so_a}
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
 %{?with_hpc:%{hpc_master_package  -l -L}}
@@ -241,7 +243,7 @@ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 %package     -n lib%{name}-devel
 Summary:        Development libraries for OpenBLAS, %{flavor} version
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{?so_v} = %{version}
+Requires:       lib%{name}%{so_a} = %{version}
 %if %{without hpc}
 Requires:       %{pname}-common-devel = %{version}
 %if 0%{?arch_flavor}
@@ -303,7 +305,7 @@ cp %{SOURCE2} .
 
 # create baselibs.conf based on flavor
 cat >  %{_sourcedir}/baselibs.conf <<EOF
-lib%{name}%{?so_v}
+lib%{name}%{so_a}
     +%{p_libdir}/libopenblas.*\.so\.*
 lib%{name}-devel
     +%{p_libdir}/libopenblas\.so
@@ -379,6 +381,8 @@ EOF
 [[ -z $jobs ]] && jobs=1
 # NEVER use %%_smp_mflags with top level make:
 # set MAKE_NB_JOBS instead and let the build do the work!
+# Do not use LIBNAMESUFFIX as it will not allow the different flavors to
+# be plugin replacements of each other
 make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      %{?openblas_opt} \
      COMMON_OPT="%{optflags} %{?addopt}" \
@@ -387,7 +391,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      OPENBLAS_INCLUDE_DIR=%{p_includedir} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
-     %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+     %{!?with_hpc:FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
      %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
      %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} CEXTRALIB=""}}
 
@@ -401,8 +405,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
-    PREFIX=%{p_prefix} \
-    %{!?with_hpc:LIBNAMESUFFIX=%flavor}
+    PREFIX=%{p_prefix}
 
 # Delete info about OBS host cpu
 %ifarch %ix86 x86_64
@@ -421,34 +424,39 @@ rm -rf %{buildroot}%{p_includedir}/
 sed -i 's|%{buildroot}||g' %{buildroot}%{p_cmakedir}/*.cmake
 sed -i 's|_%{flavor}||g' %{buildroot}%{p_cmakedir}/*.cmake
 
+# Remove library type specific so. This is solved differently.
+# Needed when not using LIBNAMESUFFIX.
+rm -f %{buildroot}%{p_libdir}/lib%{pname}*-r%{version}.so
+rm -f %{buildroot}%{p_libdir}/lib%{pname}*-r%{version}.a
+rm -f %{buildroot}%{p_libdir}/lib%{pname}.so
+# Instead set up new 'devel'-link for flavor:
+ln -s lib%{pname}.so.%{so_v} %{buildroot}%{p_libdir}/lib%{pname}.so
+
 # Put libraries in correct location
 rm -rf %{buildroot}%{p_libdir}/lib%{name}*
 
 # Install the serial library
-install -D -p -m 755 lib%{name}.so %{buildroot}%{p_libdir}/lib%{pname}.so.0
-install -D -p -m 644 lib%{name}.a %{buildroot}%{p_libdir}/lib%{pname}.a
+install -D -p -m 755 lib%{pname}.so %{buildroot}%{p_libdir}/lib%{pname}.so.%{so_v}
+install -D -p -m 644 lib%{pname}.a %{buildroot}%{p_libdir}/lib%{pname}.a
 
 # Fix source permissions (also applies to LAPACK)
 find -name \*.f -exec chmod 644 {} +
 
-# Dummy target for update-alternatives
+# update-alternatives strategy in %%post:
+# update-alternatives:
+#  /usr/lib64/libblas.so.<so_v> -> /etc/alternatives/libblas.so.<so_v>_<arch> -> /usr/lib64/openblas-<flavor>/libblas.so.<so_v>
+#  /usr/lib64/openblas-default -> /etc/alternatives/openblas-default_<arch> -> /usr/lib64/openblas-<flavor>
+# directly - default shared lib in default location
+#  /usr/lib64/libopenblas.so.<so_v> -> /usr/lib64/openblas_default/libopenblas.so.<so_v>
+#  /usr/lib64/libopenblas.so -> libopenblas.so.<so_v>
+
 install -d %{buildroot}/%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/libblas.so.3 %{buildroot}/%{_libdir}/libblas.so.3
-ln -sf %{_sysconfdir}/alternatives/libcblas.so.3 %{buildroot}/%{_libdir}/libcblas.so.3
-ln -sf %{_sysconfdir}/alternatives/liblapack.so.3 %{buildroot}/%{_libdir}/liblapack.so.3
-ln -sf %{_sysconfdir}/alternatives/liblapacke.so.3 %{buildroot}/%{_libdir}/liblapacke.so.3
-ln -sf %{_sysconfdir}/alternatives/openblas-default %{buildroot}/%{_libdir}/openblas-default
-ln -s lib%{pname}.so.%{so_v} %{buildroot}%{p_libdir}/lib%{pname}.so
-ln -s %{p_libdir}/lib%{pname}.so.%{so_v} %{buildroot}/%{_libdir}/lib%{name}.so.%{so_v}
-ln -s %{p_libdir}/lib%{pname}.so %{buildroot}/%{_libdir}/lib%{name}.so
-ln -s %{_libdir}/openblas-default %{buildroot}%{_sysconfdir}/alternatives/openblas-default
-ln -s %{_sysconfdir}/alternatives/openblas-default/lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{pname}.so.%{so_v}
+
 %if 0%{?build_devel}
-ln -s lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{pname}.so
 install -d %{buildroot}%{_libdir}/pkgconfig/
-ln -s %{_sysconfdir}/alternatives/openblas-default/pkgconfig/openblas.pc %{buildroot}%{_libdir}/pkgconfig/
+ln -s %{_sysconfdir}/alternatives/openblas-default_%{_arch}/pkgconfig/openblas.pc %{buildroot}%{_libdir}/pkgconfig/
 install -d %{buildroot}/%{_libdir}/cmake
-ln -s %{_sysconfdir}/alternatives/openblas-default/cmake/openblas %{buildroot}/%{_libdir}/cmake/
+ln -s %{_sysconfdir}/alternatives/openblas-default_%{_arch}/cmake/openblas %{buildroot}/%{_libdir}/cmake/
 %endif
 
 %else # with hpc
@@ -506,21 +514,26 @@ d=%{_libdir}/cmake/openblas
 
 %post -n lib%{name}%{so_v}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/openblas-default openblas-default %{p_libdir} %openblas_so_prio
+   %{_libdir}/openblas-default openblas-default_%{_arch} %{p_libdir} %openblas_so_prio
+# Cannot package this link - brp-25-symlink doesn't recognize links created by update-alternatives
+ln -sf openblas-default/lib%{pname}.so.%{so_v} %{_libdir}/lib%{pname}.so.%{so_v}
 for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
     %{_sbindir}/update-alternatives --install \
-     %{_libdir}/${lib} ${lib} %{_libdir}/lib%{pname}.so.%{so_v}  20
+     %{_libdir}/${lib} ${lib}_%{_arch} %{p_libdir}/lib%{pname}.so.%{so_v}  20
 done
 /sbin/ldconfig
+
+%post -n %{pname}-common-devel
+ln -sf lib%{pname}.so.%{so_v} %{_libdir}/lib%{pname}.so
 
 %postun -n lib%{name}%{so_v}
 if [ ! -f %{p_libdir}/lib%{pname}.so.%{so_v} ]; then
     for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
-	%{_sbindir}/update-alternatives --remove ${lib} %{_libdir}/lib%{pname}.so.%{so_v}
+	%{_sbindir}/update-alternatives --remove ${lib}_%{_arch} %{_libdir}/lib%{pname}.so.%{so_v}
     done
 fi
 if [ ! -d %{p_libdir} ]; then
-    %{_sbindir}/update-alternatives --remove openblas-default %{p_libdir}
+    %{_sbindir}/update-alternatives --remove openblas-default_%{_arch} %{p_libdir}
 fi
 /sbin/ldconfig
 
@@ -543,23 +556,23 @@ fi
 
 %endif
 
-%files -n lib%{name}%{?so_v}
+%files -n lib%{name}%{so_a}
 %defattr(-,root,root,-)
-%{p_libdir}/lib%{pname}.so.0
+%{p_libdir}/lib%{pname}.so.%{so_v}
 %if %{without hpc}
 %dir %{p_libdir}
-%{_libdir}/openblas-default
-%{_libdir}/lib%{name}.so.%{so_v}
-%{_libdir}/lib%{pname}.so.%{so_v}
+# Created by %%post
+%ghost %{_libdir}/lib%{pname}.so.%{so_v}
+%ghost %{_libdir}/openblas-default
 %ghost %{_libdir}/libblas.so.3
 %ghost %{_libdir}/libcblas.so.3
 %ghost %{_libdir}/liblapack.so.3
 %ghost %{_libdir}/liblapacke.so.3
-%ghost %{_sysconfdir}/alternatives/openblas-default
-%ghost %{_sysconfdir}/alternatives/libblas.so.3
-%ghost %{_sysconfdir}/alternatives/libcblas.so.3
-%ghost %{_sysconfdir}/alternatives/liblapack.so.3
-%ghost %{_sysconfdir}/alternatives/liblapacke.so.3
+%ghost %{_sysconfdir}/alternatives/openblas-default_%{_arch}
+%ghost %{_sysconfdir}/alternatives/libblas.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/libcblas.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/liblapack.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3_%{_arch}
 %else
 %hpc_dirs
 %{p_libdir}/libopenblas*r*.so
@@ -575,7 +588,6 @@ fi
 %hpc_pkgconfig_file
 %{p_includedir}/
 %else
-%{_libdir}/lib%{name}.so
 %dir %{p_libdir}/cmake
 %dir %{p_libdir}/pkgconfig
 %{p_libdir}/pkgconfig
@@ -588,7 +600,8 @@ fi
 %files -n %{pname}-common-devel
 %license LICENSE
 %doc Changelog.txt GotoBLAS* README.md README.SUSE
-%{_libdir}/lib%{pname}.so
+# created by %%post
+%ghost %{_libdir}/lib%{pname}.so
 %{p_includedir}/
 %{_libdir}/pkgconfig/openblas.pc
 %dir %{_libdir}/cmake

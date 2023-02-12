@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  8 16:00:38 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Disable strict aliasing due to its violation:
+  https://sourceforge.net/p/ddrescue/tickets/6/
+
+-------------------------------------------------------------------
 Tue Dec 27 10:31:33 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

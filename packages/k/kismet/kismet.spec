@@ -1,7 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,9 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://www.kismetwireless.net/
 #Git-Clone:     https://github.com/kismetwireless/kismet.git
 Source:         https://github.com/kismetwireless/kismet/archive/%{name}-%{realver}.tar.gz
-Source1:        %{name}-rpmlintrc
+Source2:        %{name}.sysusers
 Patch0:         kismet-fix-build.patch
+Patch1:         harden_kismet.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -42,6 +43,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libpcre)
@@ -72,10 +75,14 @@ Recommends:     kismet-logtools
 Requires(pre):  permissions
 Requires(pre):  shadow
 Provides:       group(kismet)
+Provides:       user(kismet)
 %if 0%{with ubertooth}
 Recommends:     kismet-capture-ubertooth-one
 %endif
-%{?systemd_requires}
+%{?systemd_ordering}
+%{?sysusers_requires}
+
+%global homedir %{_localstatedir}/lib/%{name}
 
 %description
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -294,6 +301,9 @@ want to make use of kismet.
 find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py install --root=$(DESTDIR)|g' {} \;
 # Fix wrong-script-end-of-line-encoding
 sed -i 's/\r$//' http_data/css/layout.css
+# rpmlint will complain about missing shebangs otherwise
+chmod a-x http_data/css/*.css
+%patch1 -p1
 
 %build
 %limit_build -m 2500
@@ -303,6 +313,8 @@ sed -i 's/\r$//' http_data/css/layout.css
     --disable-optimization
 make %{?_smp_mflags} all
 make %{?_smp_mflags} plugins
+
+%sysusers_generate_pre %{SOURCE2} %{name} %{name}.conf
 
 %install
 export INSTUSR=`id -un`
@@ -314,15 +326,17 @@ export SUID="no"
 install -D -m 0644 packaging/systemd/kismet.service %{buildroot}%{_unitdir}/%{name}.service
 install -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-# kistmet systemwide plugin dir
+install -D -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
+# kismet home dir
+install -m 750 -d %{buildroot}%{homedir}
+# kismet systemwide plugin dir
 install -d %{buildroot}%{_libdir}/kismet/
 # install kismet plugins
 install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alertsyslog.so
 %fdupes -s %{buildroot}%{_datadir}/kismet
 
-%pre
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
-getent group kismet >/dev/null || groupadd -r kismet
 
 %verifyscript
 %verify_permissions -e %{_bindir}/kismet_cap_linux_bluetooth
@@ -335,7 +349,6 @@ getent group kismet >/dev/null || groupadd -r kismet
 %service_add_post %{name}.service
 %set_permissions %{_bindir}/kismet_cap_linux_bluetooth
 %set_permissions %{_bindir}/kismet_cap_linux_wifi
-exit 0
 
 %postun
 %service_del_postun %{name}.service
@@ -366,6 +379,9 @@ exit 0
 %{_sbindir}/rc%{name}
 %dir %{_libdir}/kismet/
 %{_libdir}/kismet/alertsyslog.so
+%{_sysusersdir}/%{name}.conf
+#
+%attr(750,%{name},%{name}) %dir %{homedir}
 
 %files logtools
 %{_bindir}/kismetdb_clean

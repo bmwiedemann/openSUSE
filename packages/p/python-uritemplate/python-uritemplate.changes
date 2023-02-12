@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 10 21:05:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove completely unnecessary dependency on python-simplejson.
+
+-------------------------------------------------------------------
 Sat Nov  6 18:27:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:

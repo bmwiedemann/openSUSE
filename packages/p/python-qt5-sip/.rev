@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>1058062</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>48e43f5b56774117c92787cd865dfa71</srcmd5>
+    <version>12.11.1</version>
+    <time>1676148946</time>
+    <user>dimstar_suse</user>
+    <comment>update in sync with sip6</comment>
+    <requestid>1064077</requestid>
+  </revision>
 </revisionlist>

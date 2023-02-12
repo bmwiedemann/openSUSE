@@ -1,7 +1,7 @@
 #
 # spec file for package lighttpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.68
+Version:        1.4.69
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -325,7 +325,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/mod.template
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/proxy.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/scgi.conf
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/secdownload.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/simple_vhost.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/ssi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/status.conf
@@ -385,7 +384,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %doc doc/outdated/redirect.txt
 %doc doc/outdated/rewrite.txt
 %doc doc/outdated/scgi.txt
-%doc doc/outdated/secdownload.txt
 %doc doc/outdated/security.txt
 %doc doc/outdated/setenv.txt
 %doc doc/outdated/simple-vhost.txt

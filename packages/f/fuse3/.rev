@@ -198,4 +198,12 @@
     <comment>- Update to release 3.13</comment>
     <requestid>1058305</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>848aa97630f70dc18c0020d07525c8e5</srcmd5>
+    <version>3.13.1</version>
+    <time>1676148955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.13.1</comment>
+    <requestid>1064198</requestid>
+  </revision>
 </revisionlist>

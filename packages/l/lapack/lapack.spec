@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Linear Algebra Package
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-URL:            http://www.netlib.org/lapack/
+URL:            https://www.netlib.org/lapack/
 Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/lapack-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch1:         lapack-3.2.2.patch
@@ -34,6 +34,8 @@ Patch3:         Fix-some-minor-inconsistencies-in-LAPACKE_czgesvdq.patch
 Patch4:         Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/38f3eeee3108b18158409ca2a100e6fe03754781
 Patch5:         Fix-out-of-bounds-read.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         https://github.com/Reference-LAPACK/lapack/commit/87536aa3c8bb.patch#/Restore_missing_deprecated_prototypes.patch
 
 BuildRequires:  gcc-fortran
 BuildRequires:  python3-base
@@ -209,70 +211,75 @@ statically, which is highly discouraged.
 sed -i -e '1 s@env python@python3@' lapack_testing.py
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global optflags_f %{optflags}
+%ifarch %{ix86}
+%global test_precflags "-ffloat-store"
+%endif
+
+cp make.inc.example make.inc
+# for ABI compatibility we need to build the deprecated interfaces
+echo 'BUILD_DEPRECATED = Yes' >> make.inc
+
+%make_build cleanlib
+%make_build blaslib \
+  FFLAGS="%{optflags_f} -fPIC"
+mkdir tmp
+( cd tmp; ar x ../librefblas.a )
+gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} -Wl,--no-undefined tmp/*.o
+ln -s libblas.so.%{version} libblas.so
+rm -rf tmp
+
+%make_build cblaslib \
+  CFLAGS="%{optflags} -fPIC -DADD_ "
+mkdir tmp
+( cd tmp; ar x ../libcblas.a )
+gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
+ln -s libcblas.so.%{version} libcblas.so
+rm -rf tmp
+
+%make_build lapacklib \
+  FFLAGS="%{optflags_f} -fPIC"
+mkdir tmp
+( cd tmp; ar x ../liblapack.a )
+gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
+ln -s liblapack.so.%{version} liblapack.so
+rm -rf tmp
+
+make %{?_smp_mflags} lapackelib \
+  CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
+mkdir tmp
+( cd tmp; ar x ../liblapacke.a )
+gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} -Wl,--no-undefined tmp/*.o -L. -llapack
+ln -s liblapacke.so.%{version} liblapacke.so
+rm -rf tmp
+
+# Build test binaries - blas
+%make_build -C BLAS/TESTING FFLAGS="%{optflags_f} %{?test_precflags}"
+# Build test binaries - cblas
+%make_build -C CBLAS/testing FFLAGS="%{optflags_f} %{?test_precflags}"
+# Build test binaries - lapack
+%make_build -C TESTING/MATGEN FFLAGS="%{optflags_f} %{?test_precflags}"
+%make_build -C TESTING/LIN FFLAGS="%{optflags_f} %{?test_precflags}"
+%make_build -C TESTING/EIG FFLAGS="%{optflags_f} %{?test_precflags}"
+
+%check
 # Increase stack size, required for xeigtstz, see
 # https://github.com/Reference-LAPACK/lapack/issues/335
 # Remove for lapack > 3.9
 ulimit -s 16384
 
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%global optflags_f %{optflags}
-case "$RPM_ARCH" in
-    i[0-9]86) PRECFLAGS="-ffloat-store" ;;
-    *)        PRECFLAGS="" ;;
-esac
-export PRECFLAGS
-cp make.inc.example make.inc
-
-make cleanlib %{?_smp_mflags}
-make %{?_smp_mflags} blaslib \
-  FFLAGS="%{optflags_f} -fPIC"
-mkdir tmp
-( cd tmp; ar x ../librefblas.a )
-gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} tmp/*.o
-ln -s libblas.so.%{version} libblas.so
-rm -rf tmp
-
-make blas_testing \
-  FFLAGS="%{optflags_f} $PRECFLAGS" \
-  FFLAGS_NOOPT="%{optflags_f} $PRECFLAGS -O0"
-if grep -B15 -A15 FAIL BLAS/*.out; then
+%make_build blas_testing FFLAGS="%{optflags_f} %{?test_precflags}"
+if grep -B15 -A15 FAIL BLAS/TESTING/*.out; then
   echo
   echo "blas_testing FAILED"
   false
 fi
-mv librefblas.a libblas.a
 
-make %{?_smp_mflags} cblaslib \
-  CFLAGS="%{optflags} -fPIC -DADD_ "
-mkdir tmp
-( cd tmp; ar x ../libcblas.a )
-gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} tmp/*.o -L. -lblas
-ln -s libcblas.so.%{version} libcblas.so
-rm -rf tmp
-make %{?_smp_mflags} cblas_testing \
-  CFLAGS="%{optflags} -fPIC"
-grep -B15 -A15 FAIL TESTING/*.out && false
+%make_build cblas_testing CFLAGS="%{optflags} -fPIC"
+grep -B15 -A15 FAIL CBLAS/testing/*.out && false
 
-make %{?_smp_mflags} lapacklib \
-  FFLAGS="%{optflags_f} -fPIC"
-mkdir tmp
-( cd tmp; ar x ../liblapack.a )
-gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} tmp/*.o -L. -lblas
-ln -s liblapack.so.%{version} liblapack.so
-rm -rf tmp
-
-cd LAPACKE
-make %{?_smp_mflags} lapacke \
-  CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
-mkdir tmp
-( cd tmp; ar x ../../liblapacke.a )
-gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} tmp/*.o -L.. -llapack
-ln -s liblapacke.so.%{version} liblapacke.so
-rm -rf tmp
-cd ..
-
-make lapack_testing \
-  FFLAGS="%{optflags_f} $PRECFLAGS"
+%make_build lapack_testing FFLAGS="%{optflags_f} %{?test_precflags}"
 if grep -B15 -A15 FAIL TESTING/*.out; then
   echo
   echo "lapack_testing FAILED"
@@ -285,42 +292,32 @@ install -d %{buildroot}/%{_sysconfdir}/alternatives
 install -d %{buildroot}/%{_includedir}
 ## BLAS
 install -d %{buildroot}/%{_libdir}/blas
-install -m 644 libblas.a %{buildroot}/%{_libdir}
+install -m 644 librefblas.a %{buildroot}/%{_libdir}/libblas.a
 install -m 755 libblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libblas.so.%{version} %{buildroot}/%{_libdir}/blas/libblas.so.3
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
-# dummy target for update-alternatives
-ln -s %{_sysconfdir}/alternatives/libblas.so.3 %{buildroot}/%{_libdir}/libblas.so.3
 ## CBLAS
 install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
 install -m 644 libcblas.a %{buildroot}/%{_libdir}
 install -m 755 libcblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
 ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
-# dummy target for update-alternatives
-ln -s %{_sysconfdir}/alternatives/libcblas.so.3 %{buildroot}/%{_libdir}/libcblas.so.3
 ## LAPACK
 install -d %{buildroot}/%{_libdir}/lapack
 install -m 644 liblapack.a %{buildroot}/%{_libdir}
 install -m 755 liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack
 ln -s liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapack.so.3
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
-# dummy target for update-alternatives
-ln -s %{_sysconfdir}/alternatives/liblapack.so.3 %{buildroot}/%{_libdir}/liblapack.so.3
 ## LAPACKE
-cd LAPACKE
-install -m 644 include/*.h %{buildroot}/%{_includedir}
-install -m 644 ../liblapacke.a %{buildroot}/%{_libdir}
+install -m 644 LAPACKE/include/*.h %{buildroot}/%{_includedir}
+install -m 644 liblapacke.a %{buildroot}/%{_libdir}
 install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack
 ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapacke.so.3
 ln -s lapack/liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
-# dummy target for update-alternatives
-ln -s %{_sysconfdir}/alternatives/liblapacke.so.3 %{buildroot}/%{_libdir}/liblapacke.so.3
-cd ..
 
 %post -n libblas3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libblas.so.3 libblas.so.3 %{_libdir}/blas/libblas.so.3  50
+   %{_libdir}/libblas.so.3 libblas.so.3_%{_arch} %{_libdir}/blas/libblas.so.3  50
 /sbin/ldconfig
 
 %preun -n libblas3
@@ -339,7 +336,7 @@ fi
 
 %post -n liblapack3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapack.so.3 liblapack.so.3 %{_libdir}/lapack/liblapack.so.3  50
+   %{_libdir}/liblapack.so.3 liblapack.so.3_%{_arch} %{_libdir}/lapack/liblapack.so.3  50
 /sbin/ldconfig
 
 %preun -n liblapack3
@@ -358,7 +355,7 @@ fi
 
 %post -n libcblas3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libcblas.so.3 libcblas.so.3 %{_libdir}/blas/libcblas.so.3  50
+   %{_libdir}/libcblas.so.3 libcblas.so.3_%{_arch} %{_libdir}/blas/libcblas.so.3  50
 /sbin/ldconfig
 
 %preun -n libcblas3
@@ -377,7 +374,7 @@ fi
 
 %post -n liblapacke3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapacke.so.3 liblapacke.so.3 %{_libdir}/lapack/liblapacke.so.3  50
+   %{_libdir}/liblapacke.so.3 liblapacke.so.3_%{_arch} %{_libdir}/lapack/liblapacke.so.3  50
 /sbin/ldconfig
 
 %preun -n liblapacke3
@@ -401,7 +398,7 @@ fi
 %{_libdir}/lapack/liblapack.so.%{version}
 %{_libdir}/lapack/liblapack.so.3
 %ghost %{_libdir}/liblapack.so.3
-%ghost %{_sysconfdir}/alternatives/liblapack.so.3
+%ghost %{_sysconfdir}/alternatives/liblapack.so.3_%{_arch}
 
 %files -n libblas3
 %doc README.md
@@ -410,7 +407,7 @@ fi
 %{_libdir}/blas/libblas.so.%{version}
 %{_libdir}/blas/libblas.so.3
 %ghost %{_libdir}/libblas.so.3
-%ghost %{_sysconfdir}/alternatives/libblas.so.3
+%ghost %{_sysconfdir}/alternatives/libblas.so.3_%{_arch}
 
 %files devel
 %{_libdir}/liblapack.so
@@ -428,7 +425,7 @@ fi
 %{_libdir}/lapack/liblapacke.so.%{version}
 %{_libdir}/lapack/liblapacke.so.3
 %ghost %{_libdir}/liblapacke.so.3
-%ghost %{_sysconfdir}/alternatives/liblapacke.so.3
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3_%{_arch}
 
 %files -n lapacke-devel
 %doc LAPACKE/README
@@ -446,7 +443,7 @@ fi
 %{_libdir}/blas/libcblas.so.%{version}
 %{_libdir}/blas/libcblas.so.3
 %ghost %{_libdir}/libcblas.so.3
-%ghost %{_sysconfdir}/alternatives/libcblas.so.3
+%ghost %{_sysconfdir}/alternatives/libcblas.so.3_%{_arch}
 
 %files -n cblas-devel
 %doc CBLAS/README

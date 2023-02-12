@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  7 15:47:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Wed Jan 25 11:13:36 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
 
 - restore dependency on /usr/bin/pwscore (bsc#1202277)

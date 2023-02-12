@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  8 21:03:01 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Fix use of run_cmd.sh
+
+-------------------------------------------------------------------
 Mon Feb  6 10:08:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230128

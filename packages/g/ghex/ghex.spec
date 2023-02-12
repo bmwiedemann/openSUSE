@@ -1,7 +1,7 @@
 #
 # spec file for package ghex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        43.0
+Version:        43.1
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later

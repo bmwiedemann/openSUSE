@@ -1,7 +1,7 @@
 #
 # spec file for package FreeFileSync
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Patch0:         FreeFileSync-build.patch
 Patch1:         FreeFileSync-resources.patch
 Patch2:         FreeFileSync-icon-loader.patch
 Patch3:         FreeFileSync-disable-in-app-updates.patch
-Patch4:         FreeFileSync-openssl-1.1.1.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel

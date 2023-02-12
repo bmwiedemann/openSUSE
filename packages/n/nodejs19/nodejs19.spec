@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs19
-Version:        19.5.0
+Version:        19.6.0
 Release:        0
 
 # Double DWZ memory limits
@@ -170,8 +170,6 @@ Patch132:       test-skip-y2038-on-32bit-time_t.patch
 Patch200:       versioned.patch
 
 Patch305:       qemu_timeouts_arches.patch
-Patch306:       sysctl.patch
-Patch307:       s390.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -372,7 +370,7 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.14
+Provides:       bundled(uvwasi) = 0.0.15
 Provides:       bundled(libuv) = 1.44.2
 Provides:       bundled(v8) = 10.8.168.25
 %if %{with intree_brotli}
@@ -387,13 +385,13 @@ Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.0
 Provides:       bundled(simdutf) = 3.1.0
 
-Provides:       bundled(node-acorn) = 8.8.1
+Provides:       bundled(node-acorn) = 8.8.2
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.15.3
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.14.0
+Provides:       bundled(node-undici) = 5.16.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -422,7 +420,7 @@ Requires:       nodejs-common
 Requires:       nodejs19 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 9.3.1
+Provides:       npm(npm) = 9.4.0
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -520,12 +518,12 @@ Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 5.1.1
 Provides:       bundled(node-just-diff-apply) = 5.4.1
 Provides:       bundled(node-libnpmaccess) = 7.0.1
-Provides:       bundled(node-libnpmdiff) = 5.0.7
-Provides:       bundled(node-libnpmexec) = 5.0.7
-Provides:       bundled(node-libnpmfund) = 4.0.7
+Provides:       bundled(node-libnpmdiff) = 5.0.8
+Provides:       bundled(node-libnpmexec) = 5.0.8
+Provides:       bundled(node-libnpmfund) = 4.0.8
 Provides:       bundled(node-libnpmhook) = 9.0.1
 Provides:       bundled(node-libnpmorg) = 5.0.1
-Provides:       bundled(node-libnpmpack) = 5.0.7
+Provides:       bundled(node-libnpmpack) = 5.0.8
 Provides:       bundled(node-libnpmpublish) = 7.0.6
 Provides:       bundled(node-libnpmsearch) = 6.0.1
 Provides:       bundled(node-libnpmteam) = 5.0.1
@@ -705,8 +703,6 @@ popd
 %patch200 -p1
 
 %patch305 -p1
-%patch306 -p1
-%patch307 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50

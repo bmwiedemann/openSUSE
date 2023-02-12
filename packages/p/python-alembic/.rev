@@ -1527,4 +1527,15 @@
     longer compare as equivalent on SQL Server, others.</comment>
     <requestid>1061744</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>3ba22ef6b961adf6b89bcc17ec7e5078</srcmd5>
+    <version>1.9.3</version>
+    <time>1676150404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.3:
+  * Fixed issue where rendering of user-defined types
+    that then went onto use the .with_variant() method would
+    fail to render, if using SQLAlchemy 2.0's version of variants.</comment>
+    <requestid>1064239</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xz-java
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Peter Conrad
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,21 @@
 
 
 Name:           xz-java
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Pure Java implementation of XZ compression
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://tukaani.org/xz/java.html
+URL:            https://tukaani.org/xz/java.html
 Source:         http://tukaani.org/xz/xz-java-%{version}.zip
-Patch0:         xz-java-source-version.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
-BuildArch:      noarch
 Provides:       java-xz
 Obsoletes:      java-xz
+BuildArch:      noarch
 
 %description
 This is an implementation of XZ data compression in pure Java.
@@ -49,11 +48,10 @@ This package contains the API documentation of xz-java.
 
 %prep
 %setup -q -c -n %{name}
-%patch0 -p1
 
 %build
 sed -i 's/linkoffline="[^"]*"//;/extdoc_/d' build.xml
-ant  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 clean jar doc maven
+ant -Dant.build.javac.{source,target}=8 clean jar doc maven
 
 %install
 # jar

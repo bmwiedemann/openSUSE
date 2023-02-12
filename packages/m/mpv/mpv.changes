@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Feb 08 22:55:48 UTC 2023 - jaime.marquinez.ferrandiz@fastmail.net
+
+- Update to version 0.35.1+git.20230128.140ec21c:
+  * ao_pipewire: log version and other useful debug info
+  * wayland: error out if essential protocol support is missing
+  * wayland: also log refresh rate on surface entrance
+  * vo_gpu_next: fix undefined behavior on alpha-first formats
+  * meson: prepend MPV_CONFDIR path with prefix
+  * meson: unbreak dl check on BSDs without libdl
+  * lcms: fix crash with lcms2-related options if lcms is disabled
+  * meson: fix stdatomic detection on bsd
+  * osc: don't spam window-controls bindings on every render
+  * wayland: check for resize/move in touch event first
+  * ao_coreaudio: use device's nominal sample rate for latency properties
+  * ao_pipewire: properly clean up resources
+  * filter_kernels: fix kaiser
+  * hwdec/d3d11va: fix a possible memory leak
+  * external_files: set log level for potential files to trace
+  * vo_opengl: do not blindly reject all Microsoft's OpenGL implementations
+  * ao_coreaudio: use AudioUnitReset as ao_driver.reset to prevent long restart
+  * hwdec_drmprime: fix memory leak
+  * vo: hwdec: fix libdrm-related memory leak
+  * draw_bmp: ensure last slice width is less than total width
+  * wayland: dispatch and wait for compositor events in uninit
+  * demux: boost read EBU R128 gain values to ReplayGain's reference level
+  * version.py/version.sh: bump copyright year
+  * vulkan: fix build error for 32bit builds with clang
+  * vo_wlshm: cleanup on failure
+  * ra_d3d11: fix incorrect type
+  * meson: also search for rst2html with .py extension
+  * audio: fix crash during uninit with ao_lavc
+  * mp_image: fix XYZ primaries default
+  * vd_lavc: add "auto" choice for vd-lavc-dr
+  * vo: implement VO_DR_FLAG_HOST_CACHED
+  * x11: fix issue with xpresent timing feedback
+- Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
+
+-------------------------------------------------------------------
 Fri Dec 23 18:17:30 UTC 2022 - mia@0x0.st
 
 - Update to version 0.35+git.20221222.657fd280:

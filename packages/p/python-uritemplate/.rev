@@ -58,4 +58,13 @@
   - Better support number-like types as values for variables in a template</comment>
     <requestid>929913</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8f0e95803aedafc369722f61b45138a6</srcmd5>
+    <version>4.1.1</version>
+    <time>1676149033</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove completely unnecessary dependency on python-simplejson.
+</comment>
+    <requestid>1064338</requestid>
+  </revision>
 </revisionlist>

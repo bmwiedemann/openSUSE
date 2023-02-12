@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 URL:            https://github.com/shimmerproject/adwaita-xfce-icon-theme
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  adwaita-icon-theme
+Requires:       adwaita-icon-theme
 BuildArch:      noarch
 Provides:       openSUSE-xfce-icon-theme = 4.16.2
 Obsoletes:      openSUSE-xfce-icon-theme < 4.16.2

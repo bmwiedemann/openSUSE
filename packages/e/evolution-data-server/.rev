@@ -2206,4 +2206,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
   + Updated translations. (forwarded request 1056685 from iznogood)</comment>
     <requestid>1057046</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>cf83946d45d94962371e1e335e61a999</srcmd5>
+    <version>3.46.4</version>
+    <time>1676150417</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1064188 from iznogood)</comment>
+    <requestid>1064287</requestid>
+  </revision>
 </revisionlist>

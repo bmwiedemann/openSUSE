@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 10 16:42:04 UTC 2023 - dmulder@suse.com
+
+- Update to version 1675868083.94e3130:
+  * toolbox: Add openSUSE specific Containerfile
+  * toolbox: Make Containerfile Fedora specific
+  * client: Add openSUSE specific Containerfile
+  * client: Make Containerfile Fedora specific
+  * ad-server: Add openSUSE specific Containerfile
+  * ad-server: Make Containerfile Fedora specific
+  * server: Add openSUSE specific Containerfile
+  * server: Make Containerfile Fedora specific
+  * github: fix minor "spelling" mistake in mergify rules
+  * workflows: Share samba-client image for building toolbox
+
+-------------------------------------------------------------------
 Tue Jan 31 15:32:40 UTC 2023 - dmulder@suse.com
 
 - Update to version 1675179058.924c983:

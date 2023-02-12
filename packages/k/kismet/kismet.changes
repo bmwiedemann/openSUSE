@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 26 18:55:19 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Drop unnecessary root privileges in the systemd unit (bsc#1207654).
+  * switch from old-style user/group mgmt to sysusers.
+- Disable overly strict hardenings that would break some capture binaries,
+  e.g. kismet_cap_linux_wifi.
+- Remove superfluous executable bits from CSS files.
+
+-------------------------------------------------------------------
+Tue Jan  3 07:40:34 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_kismet.service.patch
+
+-------------------------------------------------------------------
 Wed Aug 17 21:50:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022-08-R1:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 26 20:06:09 UTC 2023 - jeffm@suse.com
+
+- Update to version 0.6.7.4~git63.4a1ed09d:
+  * utils/time.js: fix handling of nanosecond-resolution timestamps
+- Added patches:
+  * velociraptor-reproducible-timestamp.diff
+
+-------------------------------------------------------------------
+Tue Jan 24 20:57:08 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Use obsinfo mtime to produce stable build timestamp (bsc#1207369).
+
+-------------------------------------------------------------------
+Tue Jan 24 15:07:09 UTC 2023 - jeffm@suse.com
+
+- Update to version 0.6.7.4~git60.8abed37a:
+  * http_comms: create ring buffer temporary file in the same directory
+  * cronsnoop: plumb in real scope logging
+  * cronsnoop: don't treat routine errors as fatal
+  * cronsnoop: fix typo
+
+-------------------------------------------------------------------
 Sat Jan 21 04:07:38 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Fixed release detection to include Tumblweed
@@ -27,11 +49,6 @@ Fri Jan 20 20:18:49 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
   - sdjournal-build-fix-for-SLE12.patch
 
 -------------------------------------------------------------------
-Fri Jan 20 16:37:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
-
-- add memory limit to systemd unit
-
----------------------------------------------------------------------
 Fri Jan 20 16:37:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add memory limit to systemd unit

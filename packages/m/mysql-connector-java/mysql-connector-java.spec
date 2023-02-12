@@ -25,6 +25,13 @@ Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
 URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
+# NOTE:
+#   the following file contains the generated protobuf files with
+#   previous versions of protoc (protobuf) that are needed to build
+#   in previous SUSE distros.
+#   Source from:
+#   https://github.com/mysql/mysql-connector-j/commit/6976d9d779b498c254fc5cab5e69cfc74fc3e4f0
+Source1:        mysql-connector-java-generated-for-protobuf-3.9.2.tar.xz
 Group:          Development/Languages/Java
 Patch0:         javac-check.patch
 # NOTE: Oracle OCI is not packaged yet
@@ -69,6 +76,15 @@ set that supports the capabilities of MySQL.
 %setup -q -n mysql-connector-j-%{version}
 %patch0 -p1
 %patch1 -p1
+
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
+# ship protobuf generated files compatible with protobuf 3.9.2
+# which is the version we have in SLE15 SP2, the files were taken
+# from commit 6976d9d779b498c254fc5cab5e69cfc74fc3e4f0, which is
+# the last version compatible with that version of protobuf and
+# are equivalent in functionality
+tar -xvf %SOURCE1 -C .
+%endif
 
 # remove OCI support
 rm -rf src/main/protocol-impl/java/com/mysql/cj/protocol/a/authentication/AuthenticationOciClient.java

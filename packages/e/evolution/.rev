@@ -2440,4 +2440,12 @@ Recommended for 12.3</comment>
   + Updated translations. (forwarded request 1056686 from iznogood)</comment>
     <requestid>1057047</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>c7fa5212769b9e0d1d76822fe0892a62</srcmd5>
+    <version>3.46.4</version>
+    <time>1676150419</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1064189 from iznogood)</comment>
+    <requestid>1064288</requestid>
+  </revision>
 </revisionlist>

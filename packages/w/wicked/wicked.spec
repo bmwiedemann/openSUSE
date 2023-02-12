@@ -26,6 +26,7 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
+Patch1:         0001-bond-workaround-6.1-enslave-regression-boo-1206674.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -193,6 +194,7 @@ This package provides the wicked development files.
 
 %prep
 %setup
+%patch1 -p1
 
 %build
 test -x ./configure || autoreconf --force --install

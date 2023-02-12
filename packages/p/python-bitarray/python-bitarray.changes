@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 17:42:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * optimize ``util.sc_encode()``
+
+-------------------------------------------------------------------
 Fri Feb 10 10:27:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.0:

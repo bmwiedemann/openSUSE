@@ -19,7 +19,7 @@
 %define gs_plugin_api 19
 
 Name:           gnome-software
-Version:        43.3
+Version:        43.4
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later

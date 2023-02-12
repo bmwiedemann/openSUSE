@@ -383,4 +383,15 @@
     + The 'Password modified' time is now updated immediately when deleting a history entry.</comment>
     <requestid>1057855</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cfc8b2b039eba7d8b595f460920b89ce</srcmd5>
+    <version>2.53.1</version>
+    <time>1676149076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.53.1
+  * When testing a KDF ('Test' button in the database settings dialog), KeePass now spawns a child process that performs the KDF computation (which allows to cancel the test more cleanly in the case of excessive parameters; security is unaffected, because dummy data is used for the test).
+  * Removed the 'Export - No Key Repeat' application policy flag; KeePass now always asks for the current master key when trying to export data.
+  * Minor other improvements.</comment>
+    <requestid>1064392</requestid>
+  </revision>
 </revisionlist>

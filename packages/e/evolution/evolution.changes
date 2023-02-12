@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 10 09:22:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.4:
+  + Markdown: Enhance convert of mail signature into markdown
+  + CollectionAccountEditor: Fix packing of the switch widgets
+  + Bugs fixed:
+    - Moving message does not select previous message
+    - "Private reply" addressed to list when sender is one of my
+      accounts
+    - Calendar:
+      . Preserve Work Week view on date change, if possible
+      . Copy through clipboard can break series
+    - ENameSelectorEntry: Refresh completion results more ofter
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  6 19:27:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.3:

@@ -18,4 +18,36 @@ causing crashes in libbpfgo.</comment>
     <comment>- Fixed release detection to include Tumblweed (forwarded request 1060079 from jeff_mahoney)</comment>
     <requestid>1060080</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d5ab49d7ab53d2287270aa7f3c6a1a10</srcmd5>
+    <version>0.6.7.4~git63.4a1ed09d</version>
+    <time>1676148994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.7.4~git63.4a1ed09d:
+  * utils/time.js: fix handling of nanosecond-resolution timestamps
+- Added patches:
+  * velociraptor-reproducible-timestamp.diff
+
+- Use obsinfo mtime to produce stable build timestamp (bsc#1207369).
+
+- Update to version 0.6.7.4~git60.8abed37a:
+  * http_comms: create ring buffer temporary file in the same directory
+  * cronsnoop: plumb in real scope logging
+  * cronsnoop: don't treat routine errors as fatal
+  * cronsnoop: fix typo
+
+- Update to version 0.6.7.4~git63.4a1ed09d:
+  * utils/time.js: fix handling of nanosecond-resolution timestamps
+- Added patches:
+  * velociraptor-reproducible-timestamp.diff
+
+- Use obsinfo mtime to produce stable build timestamp (bsc#1207369).
+
+- Update to version 0.6.7.4~git60.8abed37a:
+  * http_comms: create ring buffer temporary file in the same directory
+  * cronsnoop: plumb in real scope logging
+  * cronsnoop: don't treat routine errors as fatal
+  * cronsnoop: fix typo</comment>
+    <requestid>1064242</requestid>
+  </revision>
 </revisionlist>

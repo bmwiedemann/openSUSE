@@ -127,7 +127,9 @@ autoconf
 # avoid running dependency generation step
 touch .dep
 
-OPT_FLAGS="%{optflags}"
+# GCC 13 newly detects a violation of the strict aliasing rule:
+# https://sourceforge.net/p/ddrescue/tickets/6/
+OPT_FLAGS="%{optflags} -fno-strict-aliasing"
 %make_build RPM_OPT_FLAGS="$OPT_FLAGS" LIBDIR=%{_libdir} LIB=%{_lib}
 
 %install
@@ -140,7 +142,7 @@ ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 %endif
 
 %check
-%make_build RPM_OPT_FLAGS="%{optflags} -fcommon" check
+%make_build RPM_OPT_FLAGS="%{optflags} -fcommon -fno-strict-aliasing" check
 
 %files
 %doc README.dd_rescue TODO

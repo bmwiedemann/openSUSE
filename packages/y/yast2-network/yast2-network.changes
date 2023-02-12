@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  9 21:19:33 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix calling method read on nil crash in bootloader caused by
+  not restoring SCR chroot in save_network client when running
+  in autoyast (bsc#1207968)
+- 4.5.16
+
+-------------------------------------------------------------------
 Wed Jan 25 13:52:26 UTC 2023 - Knut Alejandro Anderssen González <kanderssen@suse.com>
 
 - During installation, do not configure DHCP if there is some

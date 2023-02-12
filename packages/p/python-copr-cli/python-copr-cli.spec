@@ -23,6 +23,10 @@ Summary:        Copr cli
 License:        GPL-2.0-or-later
 URL:            https://github.com/fedora-copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-cli-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-simplejson.patch gh#fedora-copr/copr#2539 mcepl@suse.com
+# Remove dependency on simplejson
+# (not upstream, which on master switched to ujson)
+Patch0:         remove-simplejson.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +37,6 @@ Requires:       python-future
 Requires:       python-humanize
 Requires:       python-requests-gssapi
 Requires:       python-responses
-Requires:       python-simplejson
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -44,15 +47,17 @@ BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-gssapi}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module simplejson}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
 CLI tool to run copr.
 
 %prep
-%setup -q -n copr-cli-%{version}
+%autosetup -p1 -n copr-cli-%{version}
+
 sed -i '1{/#!/d}' copr_cli/package_build_order.py
 
 %build

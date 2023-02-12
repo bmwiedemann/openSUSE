@@ -619,4 +619,17 @@
     <comment></comment>
     <requestid>1045254</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>b03252f33563577c7f1779de7d9bc1b4</srcmd5>
+    <version>0.3.21</version>
+    <time>1676148945</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not set LIBNAMESUFFIX to mark different flavors as this causes
+  the SONAME to be different so that different flavors of OpenBLAS
+  cannot serve as plugin replacements of each other (boo#1177260).
+- Fix a fallout of making alternatives directory arch dependent.
+- Remove unneeded links that will be created by update-alternatives.
+  Create remaining links %post scripts properly %ghost-ing the files. (forwarded request 1063627 from eeich)</comment>
+    <requestid>1063744</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.24
 %define lname   libmpv2
 Name:           mpv
-Version:        0.35+git.20221222.657fd280
+Version:        0.35.1+git.20230128.140ec21c
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later

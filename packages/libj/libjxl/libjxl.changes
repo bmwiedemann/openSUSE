@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:14:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build glibc hwcaps optimized overlay
+
+-------------------------------------------------------------------
 Sun Feb  5 14:16:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.8.1

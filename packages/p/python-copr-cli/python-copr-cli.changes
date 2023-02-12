@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 10 22:45:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add remove-simplejson.patch (gh#fedora-copr/copr#2539).
+
+-------------------------------------------------------------------
 Fri Feb 10 10:05:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.105:

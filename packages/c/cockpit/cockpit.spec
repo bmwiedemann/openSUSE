@@ -230,8 +230,13 @@ make -j$(nproc) check
 # In obs we get  write error: stdout
 %make_install | tee make_install.log
 make install-tests DESTDIR=%{buildroot}
+%if 0%{?suse_version} > 1500
+mkdir -p $RPM_BUILD_ROOT%{_pam_vendordir}
+install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_pam_vendordir}/cockpit
+%else
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/pam.d
 install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cockpit
+%endif
 rm -f %{buildroot}/%{_libdir}/cockpit/*.so
 install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
 
@@ -322,7 +327,12 @@ done
 for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
     rm %{buildroot}/%{_libexecdir}/$libexec
 done
-rm -r %{buildroot}/%{_libdir}/security %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
+rm -r %{buildroot}/%{_libdir}/security %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
+%if 0%{?suse_version} > 1500
+rm -r %{buildroot}/%{_pam_vendordir}
+%else
+rm -r %{buildroot}/%{_sysconfdir}/pam.d
+%endif
 rm %{buildroot}/usr/bin/cockpit-bridge
 rm -f %{buildroot}%{_libexecdir}/cockpit-ssh
 rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
@@ -510,7 +520,11 @@ authentication via sssd/FreeIPA.
 %doc %{_mandir}/man8/pam_ssh_add.8.gz
 %dir %{_sysconfdir}/cockpit
 %config(noreplace) %{_sysconfdir}/cockpit/ws-certs.d
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/cockpit
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/cockpit
+%endif
 # dir is not owned by pam in openSUSE
 %dir %{_sysconfdir}/motd.d
 # created in %post, so that users can rm the files
@@ -558,6 +572,12 @@ getent passwd cockpit-wsinstance >/dev/null || useradd -r -g cockpit-wsinstance 
 if %{_sbindir}/selinuxenabled 2>/dev/null; then
     %selinux_relabel_pre -s %{selinuxtype}
 fi
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/cockpit ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post ws
 if [ -x %{_sbindir}/selinuxenabled ]; then
@@ -606,6 +626,14 @@ fi
 %if 0%{?suse_version}
 %verifyscript ws
 %verify_permissions -e %{_libexecdir}/cockpit-session
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans ws
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/cockpit ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 # -------------------------------------------------------------------------------

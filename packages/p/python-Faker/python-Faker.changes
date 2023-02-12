@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:01:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.8.1:
+  * Sort and add new Arabic words in `ar_AA` and `ar_PS`.
+  * Add `emoji` provider.
+  * Fix `name_female` and `name_male` mixed names for `en_GB`.
+  * Add method to generate JSON as bytes.
+  * Fix `siret` and `siren` generation for `fr_FR` locale company
+    information.
+  * Add `fr_CA` address provider.
+  * Add `zipcode`, `postcode` and `postalcode` to `pl_PL`.
+  * Update phone number formats for `es_ES` locale.
+  * Add new `fr_BE` and `nl_BE` `Person` providers.
+  * Add `fr_CA` date time provider.
+  * Allow passing optional json encoder in `json` provider.
+  * Fix missing comma in `en_NZ` address provider.
+  * Fix amount and layout of sample data.
+
+-------------------------------------------------------------------
 Wed Feb  1 20:31:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop python 3.7 specific dependencies - not in any existing SUSE

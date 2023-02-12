@@ -246,4 +246,18 @@
   * Add *allow_empty* option to `XMLSchemaBase` validation API</comment>
     <requestid>1007722</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>baee30dec2623f9d3bd619e35d33e99d</srcmd5>
+    <version>2.2.0</version>
+    <time>1676150405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Refine string serialization of XML resources and data
+    elements
+  * Switch to use elementpath v4
+  * Fix sequence_type property for XSD types
+  * Remove *XsdElement.get_attribute()*: unused and doesn't work
+    as expected</comment>
+    <requestid>1064241</requestid>
+  </revision>
 </revisionlist>

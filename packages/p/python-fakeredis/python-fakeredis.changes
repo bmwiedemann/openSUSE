@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:40:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Fix import error for NoneType (#120)
+  * Implement
+      - JSON.ARRINDEX
+      - JSON.OBJLEN
+      - JSON.OBJKEYS
+      - JSON.ARRPOP
+      - JSON.ARRTRIM
+      - JSON.NUMINCRBY
+      - JSON.NUMMULTBY
+      - XADD
+      - XLEN
+      - XRANGE
+      - XREVRANGE
+  * Implement `JSON.TYPE`, `JSON.ARRLEN` and `JSON.ARRAPPEND`
+  * Fix encoding of None (#118)
+
+-------------------------------------------------------------------
 Mon Jan 23 09:19:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.5.0:

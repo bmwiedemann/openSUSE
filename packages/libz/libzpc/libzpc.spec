@@ -1,7 +1,7 @@
 #
 # spec file for package libzpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libzpc
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source:         https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
-Patch0:         libzpc-sles15p4-mark-stack-nonexec.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -61,8 +60,7 @@ shared library for the libzpc RPM.
 %autosetup -p1
 
 %build
-mkdir build && cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -DBUILD_DOC=ON
+%cmake -DBUILD_DOC=ON
 %make_build
 
 %install
@@ -76,13 +74,13 @@ cd build
 %files -n libzpc1
 %doc README.md
 %license LICENSE
-%{_libdir}/libzpc.so.1
-%{_libdir}/libzpc.so.1.0.0
+%{_libdir}/%{name}.so.1
+%{_libdir}/%{name}.so.%{version}
 
 %files devel
 %dir %{_includedir}/zpc
 %{_includedir}/zpc/*.h
-%{_libdir}/libzpc.so
-%{_datadir}/pkgconfig/libzpc.pc
+%{_libdir}/%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

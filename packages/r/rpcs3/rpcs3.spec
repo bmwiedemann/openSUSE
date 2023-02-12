@@ -1,7 +1,7 @@
 #
 # spec file for package rpcs3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.26~git20230109
+Version:        0.0.26~git20230205
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -27,14 +27,14 @@ Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
 BuildRequires:  gcc-c++ >= 9
 BuildRequires:  cmake(x86-64) >= 3.14.1
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libevdev)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libedit)
 
 #graphics backend dependencies:
 #-------------------------------------------------
@@ -71,20 +71,20 @@ BuildRequires:  pkgconfig(libswscale)
 
 #qt dependencies
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.15.2
+BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Svg)  >= 5.15.2
-BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
 
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 ExclusiveArch:  x86_64
 
 %description

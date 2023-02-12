@@ -1,7 +1,7 @@
 #
 # spec file for package clustershell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@
 %global srcname ClusterShell
 
 Name:           clustershell
-Version:        1.9
+Version:        1.9.1
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later

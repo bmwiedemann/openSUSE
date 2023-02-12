@@ -17,7 +17,7 @@
 
 
 Name:           python-awkward-cpp
-Version:        7
+Version:        8
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
@@ -75,7 +75,6 @@ awkward.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_includedir}/
 cp -r header-only/awkward %{buildroot}%{_includedir}/
-
 
 %check
 %pytest_arch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 16:40:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refresh patches and remove weird replacement of conftest.py
+  command in %%prep.
+
+-------------------------------------------------------------------
 Tue Jan 31 23:18:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python311.patch to fix tests with 3.11 

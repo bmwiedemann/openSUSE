@@ -1,7 +1,7 @@
 #
 # spec file for package qore-linenoise-module
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define src_name module-linenoise-%{version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-linenoise-module
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Linenoise module for Qore
 License:        LGPL-2.1-or-later OR MIT
@@ -31,13 +31,11 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  qore
-BuildRequires:  qore-devel >= 1.0.0
+BuildRequires:  qore >= 1.12.4
+BuildRequires:  qore-stdlib >= 1.12.4
+BuildRequires:  qore-devel >= 1.12.4
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
-# Version schema changed, remove with 1.0.1 release
-Obsoletes:      %{name} = 1.0.0+qore1.0.10
-Obsoletes:      %{name} = 1.0.0+qore0.9.15
 
 %description
 The linenoise module provides readline-like functionality to Qore,
@@ -69,6 +67,6 @@ linenoise module.
 
 %files doc
 %doc README
-%doc %{__builddir}/html
+%doc %{__builddir}/docs/linenoise/html
 
 %changelog

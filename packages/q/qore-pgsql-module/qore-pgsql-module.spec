@@ -39,6 +39,7 @@ BuildRequires:  postgresql-devel
 %endif
 BuildRequires:  qore
 BuildRequires:  qore-devel >= 1.0.0
+BuildRequires:  qore-stdlib >= 1.0.0
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description

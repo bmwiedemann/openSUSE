@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb  4 03:40:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update tp v18.0.0
+  * Changes of version 18.0.0
+    = [Breaking] Change the way to control whether notches are
+      added to connected equals and hyphens.
+      ~ Whether notches are added are controlled by variant system
+        (#1537).
+      ~ Added separate variant selectors to control whether to add
+        notches to arrow bars.
+    = Add support of Unicode Variation Sequence for 0 that adds a
+      slash (#1534).
+    = Fix shaping of /> in Kitty (#1538).
+
+-------------------------------------------------------------------
 Mon Jan 23 03:13:13 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v17.1.0

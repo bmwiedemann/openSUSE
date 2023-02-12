@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b86383829e54efeac7c147cf5e57d05</srcmd5>
+    <version>4.1.1+git0.519b5b5</version>
+    <time>1676149026</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to maintain Orafce in Factory and to use server:database:postgresql/orafce as the devel/feeder project</comment>
+    <requestid>1064312</requestid>
+  </revision>
+</revisionlist>

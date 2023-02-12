@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  7 15:00:43 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1208004: Make %post script SELinux aware 
+
+-------------------------------------------------------------------
 Sat Jan 28 22:38:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - run bash specific post with bash 

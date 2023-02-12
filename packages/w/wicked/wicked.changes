@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Fri Feb 10 07:15:55 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- bond: workaround 6.1 kernel enslave regression (boo#1206674)
+  The kernel bond enslave rtnetlink message processing changed
+  breaking an `ip link set down master bond0 dev eth0` like
+  enslave which worked with all kernels from 4.12 up to 6.0.
+  [+ 0001-bond-workaround-6.1-enslave-regression-boo-1206674.patch]
+
+-------------------------------------------------------------------
 Wed Jan 25 21:41:04 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.6.72

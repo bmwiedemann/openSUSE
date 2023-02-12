@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 10 13:06:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * Fix calling PlotContainer.set_font to set font color,
+  * Fix a regression in yt.load where '$HOME' and '~' path
+    weren't expanded
+  * (partial) Fix issue #4286 SDF frontend breaks load() if
+    target file lacks read permission
+  * (FLASH) Fix domain edges padding in reduced dimensions
+  * (partial) Delay expensive imports
+  * Cleanup calls to private methods _setup_plots in
+    cookbook
+
+-------------------------------------------------------------------
 Mon Jan  2 14:12:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 4.1.3:

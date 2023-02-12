@@ -1,7 +1,7 @@
 #
 # spec file for package qore-uuid-module
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define qore_version 1.0.10
 %define module_api   %(qore --latest-module-api 2>/dev/null)
-%define src_name     module-uuid-release-%{qore_version}
+%define src_name     module-uuid-%{version}
 Name:           qore-uuid-module
-Version:        1.4.0+qore%{qore_version}
+Version:        1.4.1
 Release:        0
 Summary:        UUID module for Qore
-License:        LGPL-2.1+ or MIT
+License:        LGPL-2.1-or-later OR MIT
 Group:          Development/Languages
 URL:            https://qore.org
-Source:         https://github.com/qorelanguage/module-uuid/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+Source:         https://github.com/qorelanguage/module-uuid/archive/refs/tags/v%{version}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libuuid-devel
-BuildRequires:  qore
-BuildRequires:  qore-devel >= %{qore_version}
+BuildRequires:  qore >= 1.12.4
+BuildRequires:  qore-stdlib >= 1.12.4
+BuildRequires:  qore-devel >= 1.12.4
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
@@ -67,6 +67,6 @@ uuid module.
 %{_libdir}/qore-modules
 
 %files doc
-%doc %{__builddir}/html
+%doc %{__builddir}/docs/uuid/html
 
 %changelog

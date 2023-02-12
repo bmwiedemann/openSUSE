@@ -1,7 +1,47 @@
 -------------------------------------------------------------------
+Fri Feb 10 15:24:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix multibuild: do not mention main flavor in multibuild, as it
+  is implicit built.
+
+-------------------------------------------------------------------
+Thu Feb  9 17:04:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.6:
+  * Fix an incorrect assertion that could be used to crash
+    dbus-daemon or other users of DBusServer prior to
+    authentication, if libdbus was compiled with assertions
+    enabled.
+    We recommend that production builds of dbus, for example in
+    OS distributions, should be compiled with checks but
+    without assertions.
+  * When connected to a dbus-broker, stop dbus-monitor from
+    incorrectly replying to Peer method calls that were sent to the
+    dbus-broker with a NULL destination
+  * Fix out-of-bounds varargs read in the dbus-daemon's config-
+    parser.  This is not attacker-triggerable and appears to be
+    harmless in practice, but is technically undefined behaviour
+    and is detected as such by AddressSanitizer.
+  * Avoid a data race in multi-threaded use of DBusCounter
+  * Fix a crash with some glibc versions when non-auditable
+    SELinux events are logged (dbus!386, Jeremi Piotrowski)
+  * If dbus_message_demarshal() runs out of memory while
+    validating a message, report it as NoMemory rather than
+    InvalidArgs (dbus#420, Simon McVittie)
+  * Use C11 _Alignof if available, for better standards-
+    compliance
+  * Stop including an outdated copy of pkg.m4 in the git tree
+  * Documentation:
+  * Fix the test-apparmor-activation test after dbus#416
+  * Internal changes:
+  * Fix CI builds with recent git versions (dbus#447, Simon
+    McVittie)
+- switch to using multibuild
+
+-------------------------------------------------------------------
 Wed Oct 26 08:53:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.14.4 (bsc#1204111, CVE-2022-42010, 
+- update to 1.14.4 (bsc#1204111, CVE-2022-42010,
                     bsc#1204112, CVE-2022-42011,
                     bsc#1204113, CVE-2022-42012):
   This is a security update for the dbus 1.14.x stable branch, fixing

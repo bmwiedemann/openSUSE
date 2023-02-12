@@ -201,4 +201,14 @@
 - drop remove-nose.patch (upstream)</comment>
     <requestid>1060481</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>44cecf4a43a65f278fc9c66fb1a15156</srcmd5>
+    <version>1.0.1</version>
+    <time>1676148954</time>
+    <user>dimstar_suse</user>
+    <comment>- We actually don't need simplejson at all, it is just for 2.6
+  [sic!] compatibility.
+</comment>
+    <requestid>1064187</requestid>
+  </revision>
 </revisionlist>

@@ -588,4 +588,12 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>999878</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>7e8a2e1a3d8a929e805bb6980d2e8dec</srcmd5>
+    <version>2022_08_R1</version>
+    <time>1676149014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064256</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 11 00:49:02 UTC 2023 - Stephane Thiell <sthiell@stanford.edu>
+
+- Update to upstream release 1.9.1:
+    * clush: select proper last parsed config file
+    * setup.py: update download url and remove python 2.6 support
+    * setup.py: improvements for pip install and venv
+    * doc: correct typo 'sterr'
+    * Fix typos found with codespell
+    * RangeSet: support negative ranges
+    * RangeSet: remove duplicate intiter() definition
+
+-------------------------------------------------------------------
 Mon Nov 28 21:05:43 UTC 2022 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.9:

@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 10 09:19:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.4:
+  + Parse URI strings into GUri in a relaxed mode
+  + IMAPx: Folder refresh could remove new message from local
+    summary
+  + Bugs fixed:
+    - libedataserverui4: (almost) empty GIR/VAPI file
+    - IMAP: Inbox hidden in offline with "Show only subscribed
+      folders"
+    - Google Task modification not synced
+    - CalDAV: Can fail to refresh content in some cases
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  6 19:25:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.3:
   + Fix a crash under source_registry_object_added_no_owner()
   + ESoupAuthBearer: Add debug prints
-  + Bugs fixed: 
+  + Bugs fixed:
     - e_util_change_uri_component: Reset default port when changing
       scheme
     - Prompting for password too often

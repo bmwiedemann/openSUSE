@@ -129,4 +129,27 @@
 - drop fakeredis-pr54-fix-ensure_str.patch (upstream)</comment>
     <requestid>1061721</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e3d72c5e686fc7c4ddb1815bc751d736</srcmd5>
+    <version>2.7.1</version>
+    <time>1676148958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * Fix import error for NoneType (#120)
+  * Implement
+      - JSON.ARRINDEX
+      - JSON.OBJLEN
+      - JSON.OBJKEYS
+      - JSON.ARRPOP
+      - JSON.ARRTRIM
+      - JSON.NUMINCRBY
+      - JSON.NUMMULTBY
+      - XADD
+      - XLEN
+      - XRANGE
+      - XREVRANGE
+  * Implement `JSON.TYPE`, `JSON.ARRLEN` and `JSON.ARRAPPEND`
+  * Fix encoding of None (#118)</comment>
+    <requestid>1064219</requestid>
+  </revision>
 </revisionlist>

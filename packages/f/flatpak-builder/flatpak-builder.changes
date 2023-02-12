@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:32:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0) and
+  pkgconfig(libxml-2.0) BuildRequires: Align with what configure
+  checks for.
+
+-------------------------------------------------------------------
 Sun Dec  4 15:44:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.2.3:

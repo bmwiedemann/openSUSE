@@ -1,7 +1,0 @@
---- libzpc-1.0.0/src/misc_asm.S.xx	2021-11-02 15:41:24.603185606 +0100
-+++ libzpc-1.0.0/src/misc_asm.S	2021-11-02 15:41:33.667185600 +0100
-@@ -58,3 +58,4 @@
- .cfi_endproc
- .size	memcmp_consttime, .-memcmp_consttime
- .size   memcmp_consttime,.-memcmp_consttime
-+.section        .note.GNU-stack,"",@progbits

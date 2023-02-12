@@ -40,7 +40,7 @@
 %endif
 
 Name:           velociraptor-client
-Version:        0.6.7.4~git53.0e85855
+Version:        0.6.7.4~git63.4a1ed09d
 Release:        0
 Summary:        Endpoint visibility and collection tool (endpoint only)
 Group:          System/Monitoring
@@ -53,10 +53,12 @@ Source3:        %{name}.config.placeholder
 Source4:        vmlinux.h-%{vmlinux_h_version}.tar.xz
 Source5:        update-vendoring.sh
 Source6:        sysconfig.%{name}
+Source7:        %{projname}.obsinfo
 Patch1:         velociraptor-golang-mage-vendoring.diff
 Patch2:         velociraptor-skip-git-submodule-import-for-OBS-build.patch
 Patch3:         vendor-build-fixes-for-SLE12.patch
 Patch4:         sdjournal-build-fix-for-SLE12.patch
+Patch5:         velociraptor-reproducible-timestamp.diff
 BuildRequires:  fileb0x
 BuildRequires:  golang-packaging
 BuildRequires:  mage
@@ -107,6 +109,14 @@ cp vmlinux.h-%{vmlinux_h_version}/vmlinux-%{_arch}.h \
 # rm -rf artifacts/definitions/Windows
 
 %build
+
+# Reproductible builds need stable timestamps
+timestamp=$(date -Iseconds --utc --date=@$(grep mtime: %{SOURCE7}|sed -e 's/mtime: //'))
+git_commit=$(grep commit: %{SOURCE7}|sed -e 's/commit: //g')
+
+export VELOCIRAPTOR_BUILD_TIME=$timestamp
+export VELOCIRAPTOR_GIT_HEAD=$git_commit
+
 PATH=$PATH:/usr/sbin make linux_bare BUILD_LIBBPFGO=%{with bpf}
 
 %install

@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>1061724</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ebc9474a86bfc6f25257f8915840185</srcmd5>
+    <version>8</version>
+    <time>1676148993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8:
+  * Add GenericDocument ctor overload to specify JSON type
+  * Add FAQ
+  * Add forward declaration header `fwd.h`
+  * Add @PlatformIO Library Registry manifest file
+  * Implement assignment operator for BigInteger
+  * Add comments support
+  * Adding coapp definition
+  * documenttest.cpp: EXPECT_THROW when checking empty allocator
+  * GenericDocument: add implicit conversion to ParseResult
+  * Use &lt;wchar.h&gt; with C++ linkage on Windows ARM
+  * Detect little endian for Microsoft ARM targets
+  * Check Nan/Inf when writing a double
+  * Add JSON Schema Implementation
+  * Add iostream wrapper
+  * Add Jsonx example for converting JSON into JSONx (a XML
+    format)
+  * Add optional unresolvedTokenIndex parameter to Pointer::Get()
+  * Add encoding validation option for Writer/PrettyWriter
+  * Add Writer::SetMaxDecimalPlaces()
+  * Support {0, } and {0, m} in Regex
+  * Add Value::Get/SetFloat(), Value::IsLossLessFloat/Double()
+  * Add stream position check to reader unit tests
+  * Add Templated accessors and range-based for
+  * Add (Pretty)Writer::RawValue()
+  * Add Document::Parse(std::string), Document::Parse(const
+    char*, size_t length) and related APIs.
+  * Add move constructor for GenericSchemaDocument
+  * Add VS2010 and VS2015 to AppVeyor CI
+  * Add parse-by-parts example</comment>
+    <requestid>1064235</requestid>
+  </revision>
 </revisionlist>

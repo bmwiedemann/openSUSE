@@ -1,7 +1,7 @@
 #
 # spec file for package php-composer2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT

@@ -710,7 +710,7 @@
  
  ./fallback.c : $(tinfo)/MKfallback.sh
 -	$(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
-+	$(SHELL) -e $(srcdir)/run_cmd.sh $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
++	$(SHELL) $(srcdir)/run_cmd.sh $(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
  
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	FGREP="@FGREP@" $(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
@@ -727,7 +727,7 @@
 +fi
 +export PATH LD_LIBRARY_PATH
 +
-+exec /bin/sh -e ${1+"$@"}
++exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
 +++ ncurses/tinfo/MKfallback.sh	2023-01-23 13:00:47.043268809 +0000
 @@ -66,14 +66,22 @@ if test $# != 0 ; then

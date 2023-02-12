@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-jmespath
 Version:        1.0.1
 Release:        0
@@ -29,11 +28,9 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.4
-Requires:       python-simplejson
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -95,7 +92,8 @@ mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jmespath
+%{python_sitelib}/jmespath-%{version}*-info
 %python_alternative %{_bindir}/jp
 
 %changelog

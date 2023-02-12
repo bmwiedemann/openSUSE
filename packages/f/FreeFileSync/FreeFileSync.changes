@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 11 14:48:04 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
+
+- Drop FreeFileSync-openssl-1.1.1.patch as it is no longer needed
+
+-------------------------------------------------------------------
 Sun Dec 25 20:20:12 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.29

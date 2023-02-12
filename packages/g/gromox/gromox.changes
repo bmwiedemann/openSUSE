@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  3 16:16:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3
+  * pff2mt: support non-Unicode PFF files
+  * ldap_adaptor: read ldap_start_tls, ldap_mail_attr from
+    orgparam table
+  * Support Emojis in HTML-to-RTF conversion code
+  * exmdb_provider: implement message store softdelete count
+    properties
+  * dbop_sqlite: guard schema upgrades with transaction
+  * Do not fail entire HTML-to-RTF conversion or calls like
+    getpropvals(PR_RTF_COMPRESSED) when encountering garbage
+    bytes
+  * exmdb_provider: have folder message count properties respect
+    softdelete
+  * zcore: mapi_copyto had inverted meaning of MAPI_NOREPLACE
+
+-------------------------------------------------------------------
 Mon Jan 16 19:14:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2

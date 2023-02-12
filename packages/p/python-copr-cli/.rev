@@ -74,4 +74,13 @@
   * Disable appstream by default</comment>
     <requestid>1064202</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>960063cb2c98845f0450826725815161</srcmd5>
+    <version>1.105</version>
+    <time>1676149072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-simplejson.patch (gh#fedora-copr/copr#2539).
+</comment>
+    <requestid>1064371</requestid>
+  </revision>
 </revisionlist>

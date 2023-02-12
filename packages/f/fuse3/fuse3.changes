@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  6 19:46:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.13.1
+  * Fixed an issue that resulted in errors when attempting to
+    compile against installed libfuse headers (because libc
+    symbol versioning support was not detected correctly in this
+    case).
+- Add 0001-Split-config.h-into-private-and-public-config.patch
+  to fix doubly-defined macros and build failure elsewhere.
+
+-------------------------------------------------------------------
 Fri Jan 13 21:23:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.13

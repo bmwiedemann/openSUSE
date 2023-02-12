@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Feb 10 00:32:30 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix missing symbols for deprecated functions in LAPACK, add
+  Restore_missing_deprecated_prototypes.patch
+- Add -Wl,--no-undefined when creating shared libraries,
+  to catch missing symbols during build
+- Test fixes:
+  * Build test binaries during %build, run in %check
+  * Fix incorrect path for test output, to actually catch
+    any test failures
+- Spec file cleanup:
+  * Do not rename blaslib, it is used for test binaries
+  * Use same commands for building lapacke as for other libs
+  * Remove unused FFLAGS_NOOP for test binaries
+
+-------------------------------------------------------------------
+Sun Feb  5 19:59:26 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Remove unneeded links. These will be taken care of by the
+  update-alternatives. This will bring this package in sync
+  with openblas.
+
+-------------------------------------------------------------------
+Thu Feb  2 13:16:02 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Build deprecated functions again to avoid breaking the ABI.
+  (boo#1207989)
+
+-------------------------------------------------------------------
+Wed Jan 25 20:47:53 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Make library links in the alternatives directory arch dependent.
+  This avoids conflicts when both 32-bit and 64-bit versions are
+  installed (boo#1207563).
+
+-------------------------------------------------------------------
 Tue Mar 15 14:20:50 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Consolidate dummy links for update-alternatives bringing them

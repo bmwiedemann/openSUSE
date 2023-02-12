@@ -1,19 +1,19 @@
-Index: PyQt5_sip-12.11.0/setup.py
+Index: PyQt5_sip-12.11.1/setup.py
 ===================================================================
---- PyQt5_sip-12.11.0.orig/setup.py
-+++ PyQt5_sip-12.11.0/setup.py
+--- PyQt5_sip-12.11.1.orig/setup.py
++++ PyQt5_sip-12.11.1/setup.py
 @@ -40,6 +40,6 @@ setup(
          name='PyQt5_sip',
-         version='12.11.0',
+         version='12.11.1',
          license='SIP',
 -        python_requires='>=3.7',
 +        python_requires='>=3.6',
          ext_modules=[module]
       )
-Index: PyQt5_sip-12.11.0/sip.h
+Index: PyQt5_sip-12.11.1/sip.h
 ===================================================================
---- PyQt5_sip-12.11.0.orig/sip.h
-+++ PyQt5_sip-12.11.0/sip.h
+--- PyQt5_sip-12.11.1.orig/sip.h
++++ PyQt5_sip-12.11.1/sip.h
 @@ -24,8 +24,8 @@
  #include <Python.h>
  
@@ -25,10 +25,10 @@ Index: PyQt5_sip-12.11.0/sip.h
  #endif
  
  
-Index: PyQt5_sip-12.11.0/siplib.c
+Index: PyQt5_sip-12.11.1/siplib.c
 ===================================================================
---- PyQt5_sip-12.11.0.orig/siplib.c
-+++ PyQt5_sip-12.11.0/siplib.c
+--- PyQt5_sip-12.11.1.orig/siplib.c
++++ PyQt5_sip-12.11.1/siplib.c
 @@ -1041,6 +1041,10 @@ const sipAPIDef *sip_init_library(PyObje
      PyObject *obj;
      PyMethodDef *md;
@@ -40,7 +40,7 @@ Index: PyQt5_sip-12.11.0/siplib.c
      /* Add the SIP version number. */
      obj = PyLong_FromLong(SIP_VERSION);
  
-@@ -13289,12 +13293,16 @@ int sip_api_convert_from_slice_object(Py
+@@ -13294,12 +13298,16 @@ int sip_api_convert_from_slice_object(Py
          Py_ssize_t *start, Py_ssize_t *stop, Py_ssize_t *step,
          Py_ssize_t *slicelength)
  {
@@ -57,10 +57,10 @@ Index: PyQt5_sip-12.11.0/siplib.c
  }
  
  
-Index: PyQt5_sip-12.11.0/PKG-INFO
+Index: PyQt5_sip-12.11.1/PKG-INFO
 ===================================================================
---- PyQt5_sip-12.11.0.orig/PKG-INFO
-+++ PyQt5_sip-12.11.0/PKG-INFO
+--- PyQt5_sip-12.11.1.orig/PKG-INFO
++++ PyQt5_sip-12.11.1/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -70,10 +70,10 @@ Index: PyQt5_sip-12.11.0/PKG-INFO
  License-File: LICENSE
  License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: PyQt5_sip-12.11.0/PyQt5_sip.egg-info/PKG-INFO
+Index: PyQt5_sip-12.11.1/PyQt5_sip.egg-info/PKG-INFO
 ===================================================================
---- PyQt5_sip-12.11.0.orig/PyQt5_sip.egg-info/PKG-INFO
-+++ PyQt5_sip-12.11.0/PyQt5_sip.egg-info/PKG-INFO
+--- PyQt5_sip-12.11.1.orig/PyQt5_sip.egg-info/PKG-INFO
++++ PyQt5_sip-12.11.1/PyQt5_sip.egg-info/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS

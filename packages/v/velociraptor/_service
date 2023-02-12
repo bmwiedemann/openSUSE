@@ -1,6 +1,6 @@
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/jeffmahoney/linux-security-sensor</param>
+    <param name="url">https://github.com/SUSE/linux-security-sensor</param>
     <param name="filename">velociraptor</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="revision">sensor-base-0.6.7</param>

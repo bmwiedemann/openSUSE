@@ -144,4 +144,21 @@ https://github.com/yt-project/yt/releases.
 </comment>
     <requestid>1046208</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b351aa559a1c55cb132332d4383fbd0</srcmd5>
+    <version>4.1.4</version>
+    <time>1676149010</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.4:
+  * Fix calling PlotContainer.set_font to set font color,
+  * Fix a regression in yt.load where '$HOME' and '~' path
+    weren't expanded
+  * (partial) Fix issue #4286 SDF frontend breaks load() if
+    target file lacks read permission
+  * (FLASH) Fix domain edges padding in reduced dimensions
+  * (partial) Delay expensive imports
+  * Cleanup calls to private methods _setup_plots in
+    cookbook</comment>
+    <requestid>1064246</requestid>
+  </revision>
 </revisionlist>

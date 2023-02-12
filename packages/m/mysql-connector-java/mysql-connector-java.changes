@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 27 16:38:41 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Ship protobuf 3.9.2 compatible generated files to support 
+  older distro versions.
+  - Added file mysql-connector-java-generated-for-protobuf-3.9.2.tar.xz
+
+-------------------------------------------------------------------
 Thu Jan 26 17:12:29 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 8.0.32:

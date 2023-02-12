@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:36:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.3:
+  * Fixed issue where rendering of user-defined types
+    that then went onto use the .with_variant() method would
+    fail to render, if using SQLAlchemy 2.0's version of variants.
+
+-------------------------------------------------------------------
 Sat Jan 28 14:31:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.2:

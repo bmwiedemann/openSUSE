@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  3 11:44:55 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 19.6.0:
+  * ESM: Leverage loaders when resolving subsequent loaders
+    Loaders now apply to subsequent loaders, for example:
+    --experimental-loader ts-node --experimental-loader loader-written-in-typescript
+  * deps: upgrade npm to 9.4.0
+    Added --install-strategy=linked option for installations
+    similar to pnpm.
+
+- sysctl.patch, s390.patch: upstreamed, removed
+
+-------------------------------------------------------------------
 Wed Feb  1 07:58:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use pkg_vcmp to decide BuildDependencies: this works based

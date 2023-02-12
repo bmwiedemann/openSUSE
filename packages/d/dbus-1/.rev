@@ -1486,4 +1486,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
       dbus-daemon --system or a custom DBusServer. In uncommon configurations</comment>
     <requestid>1031295</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>48cf589c4160423cc0e5d485e68334b7</srcmd5>
+    <version>1.14.6</version>
+    <time>1676148959</time>
+    <user>dimstar_suse</user>
+    <comment>fix multibuild</comment>
+    <requestid>1064302</requestid>
+  </revision>
 </revisionlist>

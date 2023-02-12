@@ -3973,4 +3973,12 @@
   * ncurses-6.4.dif</comment>
     <requestid>1063409</requestid>
   </revision>
+  <revision rev="232" vrev="5">
+    <srcmd5>c8cc4e8b64d5d0d73c57a523cf4b018e</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1676148942</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix use of run_cmd.sh (forwarded request 1063975 from Andreas_Schwab)</comment>
+    <requestid>1063980</requestid>
+  </revision>
 </revisionlist>

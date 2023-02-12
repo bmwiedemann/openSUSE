@@ -1,7 +1,7 @@
 #
 # spec file for package python-uritemplate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 %bcond_without tests
 Name:           python-uritemplate
@@ -28,10 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/uritemplate
 Source:         https://files.pythonhosted.org/packages/source/u/uritemplate/uritemplate-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-simplejson
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,7 +37,7 @@ This is a Python implementation of RFC6570, URI Template, and can expand
 templates up to and including Level 4 in that specification
 
 %prep
-%setup -q -n uritemplate-%{version}
+%autosetup -p1 -n uritemplate-%{version}
 
 %build
 %python_build
@@ -59,6 +56,7 @@ $python tests/test_uritemplate.py
 %files %{python_files}
 %license LICENSE LICENSE.*
 %doc AUTHORS.rst HISTORY.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/uritemplate
+%{python_sitelib}/uritemplate-%{version}*-info
 
 %changelog

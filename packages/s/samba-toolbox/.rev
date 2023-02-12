@@ -7,4 +7,23 @@
     <comment>Initial submission, from https://github.com/openSUSE/samba-container</comment>
     <requestid>1062298</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4ed49ea7a441ac5e235e2dd0c1d262c</srcmd5>
+    <version>unknown</version>
+    <time>1676149030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1675868083.94e3130:
+  * toolbox: Add openSUSE specific Containerfile
+  * toolbox: Make Containerfile Fedora specific
+  * client: Add openSUSE specific Containerfile
+  * client: Make Containerfile Fedora specific
+  * ad-server: Add openSUSE specific Containerfile
+  * ad-server: Make Containerfile Fedora specific
+  * server: Add openSUSE specific Containerfile
+  * server: Make Containerfile Fedora specific
+  * github: fix minor &quot;spelling&quot; mistake in mergify rules
+  * workflows: Share samba-client image for building toolbox
+</comment>
+    <requestid>1064319</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 10 01:00:09 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 2.3.5:
+  * Right click menu was pointing to the wrong list row
+  * Double click to connect
+- Changes from version 2.3.4:
+  * Errors when connected to a device with the DisconnectItems plugin enabled
+- Changes from version 2.3.3:
+  * Issues with NM PANU connections of equally named devices
+  * Submenus in KDE Plasma tray
+  * Avoid using StatusNotifierItem and GtkStatusIcon icons in parallel
+  * Do not re-use dbusmenu item identifiers; avoids issues at least with 
+    gnome-shell-extension-appindicator
+- Changes from version 2.3.2:
+  * StatusNotifierItem submenus did not work in lxqt-panel (@niknah)
+  * StatusNotifierItem vanished on panel restarts
+  * StatusNotifierItem compatibility issues with libdbusmenu used at least 
+    by xfce4-panel and Waybar
+  * StatusNotifierItem showed the menu on left click in xfce4-panel
+- Changes from version 2.3.1:
+  * StatusNotifierItem sent an incomplete NewStatus signal.
+  * Avoid statusbar resize when showing progressbar
+- Changes from version 2.3.0:
+  * Blocked emblem was not visible for scales other than 1
+  * Audio profile switcher in applet menu (@abhijeetviswa)
+  * Symbolic tray icon option (GSettings switch symbolic-status-icons in 
+    org.blueman.general)
+  * Replace AppIndicator with DBus StatusNotifierItem
+  * Use a GtkTreeModelFilter to show/hide unnamed devices
+  * Replace sigint hack with GLib to catch it
+  * Port meson from deprecated python3 module
+  * Rework battery handling
+  * Merge Battery applet plugin into ConnectionNotifier
+  * Symbolic icons and small UI improvements
+- Changes from version 2.2.5:
+  * Fix network interface iteration on 32 bit systems
+  * Manager: Fix cancel button in send-note dialog
+  * Fix battery and signals bars
+  
+- Removed blueman-2.2.4-ayatana-appindicator.patch as Appindicator
+  has been replaced with DBus StatusNotifierItem
+- Dependencies.md file is no longer packaged
+
+-------------------------------------------------------------------
 Mon Apr 11 08:14:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend -lang package: the auto-generated -lang package

@@ -484,4 +484,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1008621</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a73bec1552b7d650d7b43c69bf30b460</srcmd5>
+    <version>43.1</version>
+    <time>1676149019</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1064089 from iznogood)</comment>
+    <requestid>1064289</requestid>
+  </revision>
 </revisionlist>

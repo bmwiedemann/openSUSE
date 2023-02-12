@@ -37,6 +37,8 @@ BuildRequires:  pkgconfig >= 0.24
 BuildRequires:  xmlto
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(flatpak) >= %{flatpak_version}
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -44,6 +46,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdw) >= 0.172
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
 BuildRequires:  pkgconfig(ostree-1) >= 2017.14
 BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       %{_bindir}/bzip2

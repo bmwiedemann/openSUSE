@@ -1,8 +1,10 @@
-Index: cached-property-1.5.1/tests/test_cached_property.py
-===================================================================
---- cached-property-1.5.1.orig/tests/test_cached_property.py
-+++ cached-property-1.5.1/tests/test_cached_property.py
-@@ -191,6 +191,7 @@
+---
+ tests/test_cached_property.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/tests/test_cached_property.py
++++ b/tests/test_cached_property.py
+@@ -188,6 +188,7 @@ class TestCachedPropertyWithTTL(TestCach
          self.assert_cached(check, 2)
          self.assert_cached(check, 2)
  

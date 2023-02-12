@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 11 13:44:05 UTC 2023 - Matthias Bach <marix@marix.org> - 2.53.1
+
+- Update to 2.53.1
+  * When testing a KDF ('Test' button in the database settings dialog), KeePass now spawns a child process that performs the KDF computation (which allows to cancel the test more cleanly in the case of excessive parameters; security is unaffected, because dummy data is used for the test).
+  * Removed the 'Export - No Key Repeat' application policy flag; KeePass now always asks for the current master key when trying to export data.
+  * Minor other improvements.
+
+-------------------------------------------------------------------
 Wed Jan 11 20:01:30 UTC 2023 - Matthias Bach <marix@marix.org> - 2.53
 
 - Update to 2.53

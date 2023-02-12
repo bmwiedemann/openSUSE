@@ -45,7 +45,6 @@ and 3.
 
 %prep
 %autosetup -p1 -n cached-property-%{version}
-printf 'import sys\nif sys.version_info < (3, 0): collect_ignore = ["tests/test_async_cached_property.py", "tests/test_coroutine_cached_property.py"]' > conftest.py
 
 %build
 %python_build

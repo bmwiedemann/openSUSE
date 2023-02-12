@@ -1,0 +1,466 @@
+-------------------------------------------------------------------
+Fri Feb 10 10:38:48 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Added "Name:" tag. 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:32:55 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove pg 10 support 
+
+-------------------------------------------------------------------
+Tue Jan 31 15:03:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 15
+
+-------------------------------------------------------------------
+Tue Jan 31 15:02:55 UTC 2023 - mrueckert@suse.de
+
+- Update to version 4.1.1+git0.519b5b5:
+  * prepare for 4.1.1
+  * build on master (16) branch
+  * use adv lock to synchronize start of pipe and alert tests
+  * add connect by level < num in migration docs
+  * Hierarchical Query identifys the leaves
+  * Update the connect_by_root example, for better semantics
+  * fix: CONNECT_BY_ROOT in hierarchical query is converted to WITH RECURSIVE syntax
+  * the table [200~utl_file.utl_file_dir is dumpable
+  * fix compilation against pg master
+  * prepare for 4.0.2
+  * fix -wextra warnings
+  * fix shadowed variable varning
+  * fix msvc build for PostgreSQL 14
+  * fix build for pg16
+  * fix META file and prepare for 4.0.1
+  * to_multi_byte and to_single_byte support euc_cn(gb2312)
+  * add  oracle sql migration : CONNECT_BY_ROOT
+  * fix oracle connect by
+  * prepare for 4.0.0 release
+  * remove obsolete ref on orafce_sql
+  * rename shadow variable
+  * initial merge of dbms_sql from orafce_sql
+  * other cleaning after removing support for unsupported pg releases
+  * increase version
+  * remove support for PostgreSQL 10 and older
+  * Fix database creation during installchecks for ICU cluster
+  * fix dbms_output.serveroutput(true) clear the buffer.It conforms to the features of oracle.
+  * prepare for 3.25.1
+  * fix calculation of plvstr.is_prefix for negative numeric values - see issue #198
+  * fix for pre 14 releases
+  * doc and regress tests
+  * remove useless func decl
+  * support for older releases
+  * initial implementation
+  * initial
+  * fix build against master (16) branch
+  * wrap possible unsupported DDL to dynamic SQL
+  * specify schema inside definition function tanh
+  * only set editorconfig
+  * prepare for 3.24.4
+  * remove redundant ALTER FUNCTION #191
+  * prepare for 3.24.3
+  * PostgreSQL older than 12 doesn't allow ALTER FUNCTION pg_catalog.x SET SCHEMA oracle. Only dirty way by direct modification of system catalogue is possible. see issue #190
+  * prepare for 3.24.2
+  * fix missing oracle.mod functions in update scripts
+  * prepare for 3.24.1
+  * fix regress nlssort test for PostgreSQL 9.5 without \if command
+  * Fix race condition during initialization in ora_lock_shmem.
+  * nlssort: Add a missing call to PG_RE_THROW.
+  * Limit nlssort test to Linux/glibc systems with en_US.utf8 installed.
+  * NEWS
+  * set storage for varchar2 and nvarchar2 to extended strategy
+  * prepare for 3.23
+  * fix broken calculation in plvdate_isleapyear function #184
+  * fix support for pg9.5, fix regress tests for older releases
+  * prepare for 3.22.1
+  * Fix read past the end of string in to_sigle_byte().
+  * Fix dbms_utility.get_time() to use the full range of int32.
+  * fix readme
+  * prepare for 3.22.0
+  * move dbobjects from public and pg_catalog schemas to oracle schema
+  * moving objects from public and pg_catalog to oracle schema
+  * move RequestAddinShmemSpace to shmem_request_hook for PostgreSQL 15
+  * Update sql_migration06.md
+  * Restore sqlparse.c and sqlparse.h
+  * Undo comment
+  * Add comment
+  * Add Parallel safe to mod function
+  * Bug fix
+  * Add mod function for Oracle compatibility
+  * Fix typos and spelling in docs and error messages
+  * prepare for 3.21.1
+  * fix mswin build - regexp functions was not really marked as dllexport due missing include of builtins.h
+  * remove empty line
+  * fix of some compatibility issues
+  * REG_NOSUB is working only on PostgreSQL 15
+  * workable release for PostgreSQL 15
+  * modification for compotibility with orafce.regexp_instr
+  * backport regexp_instr from PostgreSQL 15, use C version instead PLpgSQL for better possibilities of usage regexp API
+  * prepare for 3.20.0
+  * Fix regexp_instr() function with occurrence when the same value matching a pattern is found at several place in the string.
+  * signature of nvl2 function is enhanced to "any", anyelement, anyelement. After this change, the behavior is more close to Oracle. Unfortunatelly - this change can break extension update for some customers that uses nvl2 in views.
+  * support negative start argument for function substrb. Originally orafce used buildin bytea substr function. Now it recalculate start argument. see issue #172
+  * prepare for 3.19
+  * Allow empty string on input of functions to_number and to_date. In this case returns NULL.
+  * remove white spaces
+  * replace obsolete CSTRING macro by text_to_csring function
+  * prepare for 3.18.1
+  * fix - badly handled fn_extra in oracle.greatest(least) function
+  * prepare for 3.18.0
+  * Update README.asciidoc
+  * Update README.asciidoc
+  * use older API for iteration over an array. Now, oracle.greatest and oracle.least are working on all supported releases
+  * remove negative tests related to orafce.greatest because: a) error message is different on supported pg versions, b) the coverage and benefit of these tests is low
+  * remove two lines from regress tests of greatest due dependency on used collate
+  * Add documentation for greatest and least functions.
+  * Update upgrade extension file with the smallint addition.
+  * Add greatest/least SQL redefinition for smallint Add regression tests fot the two functions.
+  * Oracle functions LEAST and GREATEST return NULL if at least one of the parameters is NULL. This is not the case for the PostgreSQL equivalent functions which only return NULL when all the parameters are NULL. This patch creates the two functions in the oracle schema to have the same behavior than in Oracle.
+  * Minor grammatical fix to README.asciidoc
+  * fix typo in charpad.c
+  * fix typo in orafce--3.17.sql
+  * Update Orafce_Documentation_05.md
+  * Catch dbms_random.string() output variation on Windows
+
+-------------------------------------------------------------------
+Tue Nov 30 19:41:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 13 and 14 
+
+-------------------------------------------------------------------
+Tue Nov 30 19:41:08 UTC 2021 - mrueckert@suse.de
+
+- Update to version 3.17.0+git12.e9ab8a3:
+  * Fix some typos in plunit.c and plvdate.c.
+  * Fix a non-standard function declaration.
+  * pg_nextpower2_32 is available for pg13+|
+  * fix typo in plvdate.c
+  * fix typo in alert.c
+  * Improve the place that double the size of a buffer
+  * Fix access privileges of utl_file.tmpdir()
+  * prepare for 3.17.0
+  * This patch reproduce the same behavior of the regexp_* function with null input.
+  * Fix version number in install script.
+  * Remove duplicate variable declarations
+  * Allow even longer runtimes in DBMS_UTILITY.GET_TIME test
+  * prepare for 3.16.2
+  * fix build for msvc
+  * prepare for 3.16.1
+  * sql/dbms_utility.sql: Allow longer test runtime
+  * fix some shared memory leaks, reduce an possibility to raise an error 'lock requested error' by cleaning locks (these locks are not Postgres's locks) in dbms_alert_removeall and by triggering cleaning shared memory from locks related to closed processes when there are not free locks - per #PR 140 reported by @rbapin
+  * prepare for 3.16.0
+  * rename pipe type to orafce_pipe due conflict with pipe function from unistd.h
+  * ensure public access to public schema
+  * add missing sql file for 3.16
+  * Add DBMS_UTILITY.GET_TIME function, it returns the current time in 100th's of a second from a point in time in the past. This function is used for determining elapsed time. This function is widely used in some Oracle installation for timing of functions or statements.
+  * fix warning on MSVC
+  * prepare for 3.15.1
+  * Remove reference to pg_enc2name_tbl variable. It is not available on MSVC, and for this functionality it is not necessary
+  * prepare for 3.15.0
+  * function regexp_match cannot be used because it is available from Postgres 10
+  * Add Oracle regexp_replace() function which supports start position and occurrence. It correspond to the Oracle behavior and consist in plpgsql functions based on PG regexp_matches() and regexp_replace(). All details of the implementation is explained in the documentation. Also include in this patch also include regression tests for regexp_replace() including the Oracle queries and results in comment.
+  * just reformatting
+  * just reformatting
+  * Remove wrong and unused code.
+  * Apply orafce rule for assignment on remaining call to position() and length.
+  * Use better style for assignment instead of pseudo query.
+  * - Improve performances by replacing SELECT ... INTO syntax with := - Replace call to regexp_match() by regexp_matches() to support   PostgreSQL 9.5 and 9.6. - Remove obsolete orafce--3.14.sql file - Update regression test to disable CONTEXT trace.
+  * Add Oracle regexp_like(), regexp_count(), regexp_instr() and regexp_substr() functions. They correspond to the Oracle behavior and consist in plpgsql functions based on PG regexp_matches(). All details of the implementation is explained in the documentation. This patch also include a regression test regexp_func.sql including the Oracle queries and results in comment.
+  * more ilustrative description of msvc project properties
+  * Oracle.sysdate uses time zone stored in GUC orafce.timezone. The setting of configuration value was correct - the global variable orafce_timezone has correct content (it can be checked by SELECT oracle.dbtimezone(). But direct output of this GUC (show orafce.timezone) was broken because the handler of system timezone was used and the statement "show orafce.timezone" did same output like "show timezone", and it is surely wrong.
+  * pre 3.14 changes
+  * When nvarchar2 and varchar2 was introduced, then was not possibility to correctly set protransform column. Orafce used UPDATE of pg_proc table. Unfortunatelly, this new dependency was not coverget by entry in pg_depend. Today this issue breaks binary upgrade. Fix is simple - on new Postgres it uses ALTER FUNCTION SUPPORT, for older releases it tries to fix pg_depend table.
+  * implementation of unistr function
+  * Added ppc64le architecture
+  * Added some transactions behavior differences
+  * Catch dbms_random.string() output variation on big-endian
+  * Fix the wrong filter in oracle.user_tables view in orafce--3.6--3.7.sql.
+  * Update README.asciidoc
+  * Update others.c
+  * Use correct macros to convert between Datums and pointers.
+  * note in readme
+  * prepare for 3.13.4
+  * forgotten files
+  * prepare for 3.13.3
+  * enable utf_file on MSWin
+  * cleaning build on MSWin
+  * reduce stack size
+  * minor cleaning
+  * prepare for 3.12
+  * fix warning for postgres 13
+  * fix asciidoc format
+  * minor README fix
+  * travis status
+  * PostgreSQL 9.4 is not supported
+  * example to trigger func
+  * fix build and tests for older releases
+  * trigger functions - ensure so only null or only empty string is used
+  * fix: 'if' condition is always true
+  * prepare for 3.11.1
+  * missing test output file
+  * only PostgreSQL 9.4 and higher are supported
+  * Run the testsuite on travis-ci.org
+  * clean warnings detected by -Wextra
+  * forgot. GRANT
+  * The previous securing of utl_file package required SECURITY DEFINER flags on functions. Using this flag is security risk. Insted using SECURITY DEFINER we allow READ from utl_file.utl_file_dir to PUBLIC. This design has one advantage - the final user can control usage of these function with granting user rights just only on table utl_file.utl_file_dir.
+  * Update README.asciidoc
+  * Update README.asciidoc
+  * Update README.asciidoc
+  * Update README.asciidoc
+  * fix long standing bug - function with access to utl_file_dir should to has security definer flag
+  * fix compilation against Postgres 13
+  * small fixes and rewrite of utl_file paragraph
+  * the safe dictionary in utl_file package can be identified by name too
+  * Fix doc and comment about months_between returning numeric (not float8).
+  * there are some differences between Oracle and Orafce
+  * fix compilation on PostgreSQL 13 (by removing useless include), fix to_multi_byte('\')
+  * prepare for 3.9.0
+  * remove extra clean to allow repeateable build without bison
+  * Orafce is licenced under 0-clause BSD licence
+  * polishing licence
+  * use postgres routines for printing float4, float8 values in to_char function (reduce garbage and trailing zeroes)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:33:24 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove dead PG versions
+
+-------------------------------------------------------------------
+Tue Oct 22 18:47:45 UTC 2019 - mrueckert@suse.de
+
+- Update to version 3.8.0+git4.a65cfb8:
+  * return back missing files
+  * fresh parser files
+  * master is now unreleased 3.9
+  * minor enhancing user_constraints view - use conrelid::regclass instead table_name. This will be  consistent with index name, and show schema for tables that are not on search_path
+  * prepare for 3.8
+  * qualify decode function to be installable on greenplum
+  * fix PostgreSQL 12 support
+  * missing files
+  * typo
+  * fix compilation and regress tests for PostgreSQL 11
+  * Revert "Merge pull request #83 from kato-sho/fix-build-for-PG12"
+  * Fix build for PostgreSQL 12
+  * remove extra #include utils/nabstime.h
+  * update against change format of FunctionCallInfo in PostgreSQL 12
+  * fix compilation for pre PostgreSQL 12
+  * fix compile for PostgreSQL 12
+  * prepare for 3.7.2
+  * bug fix release
+  * fix bad filter in oracle.user_tables view
+  * update NEWS
+  * use older syntax for create operator command
+  * add warning about possible compatibility issue
+  * fix docs
+  * null safe pipe operator for (n)varchar2 should be explicitly enabled (due compatibility)
+  * bugfix should to use OR REPLACE clause
+  * add bugfixes to update script
+  * fix readme
+  * more faster (n)varchar2 null safe concat
+  * null safe concat operator for varchar2 and nvarchar2
+  * fix compilation for PostgreSQL 12
+  * target type should be qualified
+  * broken formula for add_month
+  * fix broken oracle.add_months for last day in month
+  * fix comment assigned to wrong object
+  * minor doc nvl
+
+-------------------------------------------------------------------
+Tue Oct 22 15:34:13 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- adding postgresql12 to _multibuild
+
+-------------------------------------------------------------------
+Sat Oct 27 03:03:24 UTC 2018 - mrueckert@suse.de
+
+- Update to version 3.6.1+git24.cf58d28:
+  * remove strict flag for nvl functions
+  * minor cleaning
+  * remove pre 9.4 support
+  * fixes for 12
+  * fix compile on PostgreSQL 12
+  * missing reset fsec in ora_timestamptz_round function
+  * #74 - badly joined comment
+  * #75 set correct type for trunc and round two params functions - float4
+  * allow usage of schema oracle and plunit
+  * copy paste correction intarray -> orafce
+  * fix broken compilation on non MSC platforms
+  * fix output path
+  * add postgresql 10.3 target support need ICU header by path c:\icu
+  * fix conversion from 'size_t' to 'int'
+  * add 9.6 build environments fix C89 compatible compliance
+  * fix nensenses related yyllex, using older form of bison option
+  * new function  oracle.numtodsinterval
+  * disallow functions from utl_file package on MS Windows
+  * clean headers used by msvc
+  * cleaning complete build on msvc
+  * add missing files for windows compilation
+  * fix #64
+  * dba_segments view, cleaning
+  * Fix formatting of examples.
+  * Append documentation about how to translate REGEXP_SUBSTR Oracle function to PostgreSQL.
+  * fix the position of a half-width space added by rpad().
+  * enhancing emulation of Oracle views
+  * fix some segfaults reported by Andreas Seltenreich #59
+  * new few Oracle system views
+  * prepare for 3.6
+  * Minor bug in doc
+  * Avoid setting unused variable value
+  * Fix issue #54 - missing collatable flag for string types varchar2, nvarchar2.
+  * Ensure LWLockRegisterTranche call in every session before LWLockAcquire call.
+  * Preparation for 3.5 release.
+  * add missing V1 signatures
+  * Add Orafce Documentation and Oracle to PostgreSQL Migration Guide
+- drop patch orafce-orafce_sql_yyparse-bison26.patch
+
+-------------------------------------------------------------------
+Thu Oct 25 14:12:35 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Add build for PostgreSQL 11 and drop 9.3.
+- BuildRequire server-devel instead of devel.
+
+-------------------------------------------------------------------
+Thu Aug 10 16:56:05 UTC 2017 - mrueckert@suse.de
+
+- update to 3.4.0
+  * new aggregate function wm_concat
+  * PostgreSQL 9.6, 10 are supported well
+  * remove support for 8.3, 8.4, 9.0, 9.1 (only 9.2 and higher
+    are supported)
+  * new functions: sysdate, sessiontimezone, dbtimezone
+  * remove support for 8.2
+  * add support for 9.5
+  * change the releasion number system
+  * new functions: to_single_byte, to_multi_byte, nanvl, length,
+    ltrim, btrim, rtrim, lpad, rpad
+  * fix compilation issue in new code for Pg <= 9.1
+
+-------------------------------------------------------------------
+Thu Aug 10 16:51:40 UTC 2017 - mrueckert@suse.de
+
+- switch to multibuild
+
+-------------------------------------------------------------------
+Thu Feb 19 11:40:34 UTC 2015 - mrueckert@suse.de
+
+- update to 3.0.9
+  * PostgreSQL 9.4 compilation
+  * new datatype and related functions: oracle.date
+  * new varchar2, nvarchar2 types and related functions
+    (Amit Langote)
+  * oracle.substr emulate better Oracle substr function behave
+    (Vinayak Pokale)
+  * fix few internal issues that breaks a PGXN tests (Pavel Stehule)
+
+-------------------------------------------------------------------
+Mon Oct 14 12:56:20 UTC 2013 - darin@darins.net
+
+- rename README.orafunc to README.asciidoc
+
+-------------------------------------------------------------------
+Wed Oct  9 18:12:43 UTC 2013 - darin@darins.net
+
+- updated to verion 3.0.6
+- generate specs for PG 9.3
+
+-------------------------------------------------------------------
+Thu Aug  8 13:30:27 UTC 2013 - darin@darins.net
+
+- patch for compilation error with Bison >=2.6
+  See also http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=710633 
+
+-------------------------------------------------------------------
+Mon Dec 17 13:19:24 UTC 2012 - darin@darins.net
+
+- renamed orafce.spec to orafce.spec.in 
+
+-------------------------------------------------------------------
+Thu Nov  1 19:30:27 UTC 2012 - darin@darins.net
+
+- updated name in template
+- set proper install location
+
+-------------------------------------------------------------------
+Fri Oct 26 12:47:21 UTC 2012 - darin@darins.net
+
+- added pre_checkin.sh to generate .spec and .changes 
+
+-------------------------------------------------------------------
+Thu Oct 25 13:03:26 UTC 2012 - darin@darins.net
+
+- updated to orafce-HEAD-36ccc5b from git repository which supports
+  postgresql 9.2. As there's no official release i'm calling it 5a
+- created .specs to support multiple versions of PG
+- removed/renamed orafce.spec
+
+-------------------------------------------------------------------
+Tue Dec 13 18:58:24 UTC 2011 - darin@darins.net
+
+- Fixed non-standard Group 
+
+-------------------------------------------------------------------
+Tue Dec 13 18:51:32 UTC 2011 - darin@darins.net
+
+- added FLEX=/usr/bin/flex to make statement in %build.
+  See http://pgfoundry.org/forum/forum.php?set=custom&forum_id=410&style=nested&max_rows=25&submit=Change+View 
+
+-------------------------------------------------------------------
+Tue Dec 13 18:34:07 UTC 2011 - darin@darins.net
+
+- updated package to 3.0.4
+
+-------------------------------------------------------------------
+Tue Dec 13 16:28:51 UTC 2011 - darin@darins.net
+
+- moved %changelog to .changes file
+
+-------------------------------------------------------------------
+Fri Apr 15 2011 - Darin Perusich <darin@darins.net>
+
+- Ported to OpenSuSE
+- Update to 3.0.3
+
+-------------------------------------------------------------------
+Wed Apr 28 2010 - Jean-Francois Saucier <jfsaucier@infoglobe.ca> - 3.0.1-3
+
+- Rename back the package to orafce after discussion on devel list
+
+-------------------------------------------------------------------
+Mon Apr 19 2010 - Jean-Francois Saucier <jfsaucier@infoglobe.ca> - 3.0.1-2
+
+- Make some cleanup as described in #251805
+- Clean %%files section
+- Rename the package back to postgresql-orafce to be consistent with other extensions
+
+-------------------------------------------------------------------
+Fri Oct  2 2009 - Devrim GUNDUZ <devrim@commandprompt.com> - 3.0.1-1
+
+- Update to 3.0.1
+- Remove patch0, it is in upstream now.
+- Apply some 3.0 fixes to spec.
+
+-------------------------------------------------------------------
+Wed Aug 20 2008 - Devrim GUNDUZ <devrim@commandprompt.com> - 2.1.4-1
+
+- Update to 2.1.4
+
+-------------------------------------------------------------------
+Sun Jan 20 2008 - Devrim GUNDUZ <devrim@commandprompt.com> - 2.1.3-2
+
+- Spec file fixes, per bz review #251805
+
+-------------------------------------------------------------------
+Mon Jan 14 2008 - Devrim GUNDUZ <devrim@commandprompt.com> - 2.1.3-1
+
+- Update to 2.1.3
+
+-------------------------------------------------------------------
+Fri Aug 10 2007 - Devrim GUNDUZ <devrim@commandprompt.com> - 2.1.1-1
+
+- Update to 2.1.1
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Aug 30 2006 - Devrim GUNDUZ <devrim@commandprompt.com> - 2.0.1-1
+
+- Initial packaging

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8:
+  * Add GenericDocument ctor overload to specify JSON type
+  * Add FAQ
+  * Add forward declaration header `fwd.h`
+  * Add @PlatformIO Library Registry manifest file
+  * Implement assignment operator for BigInteger
+  * Add comments support
+  * Adding coapp definition
+  * documenttest.cpp: EXPECT_THROW when checking empty allocator
+  * GenericDocument: add implicit conversion to ParseResult
+  * Use <wchar.h> with C++ linkage on Windows ARM
+  * Detect little endian for Microsoft ARM targets
+  * Check Nan/Inf when writing a double
+  * Add JSON Schema Implementation
+  * Add iostream wrapper
+  * Add Jsonx example for converting JSON into JSONx (a XML
+    format)
+  * Add optional unresolvedTokenIndex parameter to Pointer::Get()
+  * Add encoding validation option for Writer/PrettyWriter
+  * Add Writer::SetMaxDecimalPlaces()
+  * Support {0, } and {0, m} in Regex
+  * Add Value::Get/SetFloat(), Value::IsLossLessFloat/Double()
+  * Add stream position check to reader unit tests
+  * Add Templated accessors and range-based for
+  * Add (Pretty)Writer::RawValue()
+  * Add Document::Parse(std::string), Document::Parse(const
+    char*, size_t length) and related APIs.
+  * Add move constructor for GenericSchemaDocument
+  * Add VS2010 and VS2015 to AppVeyor CI
+  * Add parse-by-parts example
+  * Support parse number as string
+
+-------------------------------------------------------------------
 Fri Jan 27 17:59:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v7

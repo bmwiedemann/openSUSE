@@ -1,7 +1,7 @@
 #
 # spec file for package blueman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,13 @@
 %bcond_with nemo
 %endif
 Name:           blueman
-Version:        2.2.4
+Version:        2.3.5
 Release:        0
 Summary:        GTK Bluetooth Manager
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://github.com/blueman-project/blueman
 Source:         https://github.com/%{name}-project/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE blueman-2.2.4-ayatana-appindicator.patch -- Support Ayatana AppIndicators.
-Patch0:         blueman-2.2.4-ayatana-appindicator.patch
 BuildRequires:  adwaita-icon-theme
 BuildRequires:  automake
 BuildRequires:  dbus-1-python3-devel
@@ -142,7 +140,7 @@ This package add sendto integration for Nemo.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 sed -i '1s/python.*/python3/' apps/%{name}-*
 echo -e 'NotShowIn=KDE;GNOME;Pantheon;' >> data/%{name}.desktop.in
 
@@ -189,7 +187,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcblueman-applet
 %service_del_postun blueman-mechanism.service
 
 %files
-%doc CHANGELOG.md Dependencies.md FAQ README.md blueman.rules
+%doc CHANGELOG.md FAQ README.md blueman.rules
 %license COPYING
 %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_bindir}/%{name}-*

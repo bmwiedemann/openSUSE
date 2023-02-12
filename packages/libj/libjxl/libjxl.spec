@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libhwy) >= 1.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+%{?suse_build_hwcaps_libs}
 
 %description
 JPEG XL is a raster-graphics file format that supports both lossy and

@@ -43,4 +43,12 @@ Requires SR#908927
     <comment></comment>
     <requestid>930756</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>305c884a55ceba1cd9c4307e0f3da1dc</srcmd5>
+    <version>1.4.1</version>
+    <time>1676149038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064353</requestid>
+  </revision>
 </revisionlist>

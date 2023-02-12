@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Refine string serialization of XML resources and data
+    elements
+  * Switch to use elementpath v4
+  * Fix sequence_type property for XSD types
+  * Remove *XsdElement.get_attribute()*: unused and doesn't work
+    as expected
+
+-------------------------------------------------------------------
 Mon Oct  3 16:12:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:

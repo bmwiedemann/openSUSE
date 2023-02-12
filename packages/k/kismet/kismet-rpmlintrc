@@ -1,2 +1,0 @@
-# Filter out false positives - CSS files aren't scripts
-addFilter("W: script-without-shebang /usr/share/kismet/httpd/css/.*")

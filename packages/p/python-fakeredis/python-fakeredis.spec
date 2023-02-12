@@ -17,7 +17,7 @@
 
 
 Name:           python-fakeredis
-Version:        2.5.0
+Version:        2.7.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT

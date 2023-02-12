@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 19:42:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to ABI version 12.11.1
+  *  error on subclassing enums
+
+-------------------------------------------------------------------
 Thu Jan 12 07:37:05 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to revert the drop of support for python 3.6:

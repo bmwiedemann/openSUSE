@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 19:32:21 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 1.9
+  * Release notes at /usr/share/doc/packages/xz-java/NEWS
+- Remove obsolete patch:
+  * xz-java-source-version.patch
+
+-------------------------------------------------------------------
 Wed Feb 13 12:27:36 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - add provides/obsoletes for xz-java (boo#1125298)
