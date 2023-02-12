@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230212" schemaversion="4.1">
+<image name="OBS__openSUSE___20230213" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230212</productvar>
+      <productvar name="VERSION">20230213</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230212,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230213,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230212/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230213/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -793,6 +793,7 @@
       <repopackage name="gtk3-tools"/>
       <repopackage name="gtk4-branding-openSUSE"/>
       <repopackage name="gtk4-lang"/>
+      <repopackage name="gtk4-metatheme-breeze"/>
       <repopackage name="gtk4-metatheme-greybird-geeko"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtk4-tools"/>
@@ -957,6 +958,8 @@
       <repopackage name="kcalutils-lang"/>
       <repopackage name="kcharselect"/>
       <repopackage name="kcharselect-lang"/>
+      <repopackage name="kcm_flatpak"/>
+      <repopackage name="kcm_flatpak-lang"/>
       <repopackage name="kcm_sddm"/>
       <repopackage name="kcm_sddm-lang"/>
       <repopackage name="kcm_tablet"/>
@@ -1775,7 +1778,7 @@
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5"/>
       <repopackage name="libkdecorations2-5-lang"/>
-      <repopackage name="libkdecorations2private9"/>
+      <repopackage name="libkdecorations2private10"/>
       <repopackage name="libkdegames"/>
       <repopackage name="libkdegames-lang"/>
       <repopackage name="libkdegames-qt5-imports"/>
@@ -1916,8 +1919,9 @@
       <repopackage name="libKF5QuickAddons5"/>
       <repopackage name="libKF5Runner5"/>
       <repopackage name="libKF5Sane5"/>
-      <repopackage name="libKF5Screen7"/>
-      <repopackage name="libKF5Screen7-lang"/>
+      <repopackage name="libKF5Screen8"/>
+      <repopackage name="libKF5Screen8-lang"/>
+      <repopackage name="libKF5ScreenDpms8"/>
       <repopackage name="libKF5Solid5"/>
       <repopackage name="libKF5Solid5-lang"/>
       <repopackage name="libKF5SonnetCore5"/>
@@ -1969,6 +1973,7 @@
       <repopackage name="libKPimSMTP5"/>
       <repopackage name="libKPipeWire5"/>
       <repopackage name="libKPipeWire5-lang"/>
+      <repopackage name="libKPipeWireDmaBuf5"/>
       <repopackage name="libKPipeWireRecord5"/>
       <repopackage name="libksane-lang"/>
       <repopackage name="libKSaneCore1"/>
@@ -4624,13 +4629,10 @@
       <repopackage name="yast2-core"/>
       <repopackage name="yast2-country"/>
       <repopackage name="yast2-country-data"/>
-      <repopackage name="yast2-dhcp-server"/>
-      <repopackage name="yast2-dns-server"/>
       <repopackage name="yast2-firewall"/>
       <repopackage name="yast2-firstboot"/>
       <repopackage name="yast2-ftp-server"/>
       <repopackage name="yast2-hardware-detection"/>
-      <repopackage name="yast2-http-server"/>
       <repopackage name="yast2-installation"/>
       <repopackage name="yast2-instserver"/>
       <repopackage name="yast2-iscsi-client"/>

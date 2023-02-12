@@ -578,6 +578,7 @@ unsorted:
   - ant-contrib-manual 
   - ant-findbugs 
   - ant-imageio 
+  - ant-jakartamail 
   - ant-javamail 
   - ant-jdepend 
   - ant-jmf 
@@ -21416,6 +21417,8 @@ unsorted:
   - plasma5-nano-lang 
   - plasma5-sdk 
   - plasma5-sdk-lang 
+  - plasma5-welcome 
+  - plasma5-welcome-lang 
   - plasma5-workspace-devel 
   - plasma5-workspace-wallpapers 
   - plasmaengineexplorer5 
@@ -45395,6 +45398,7 @@ unsorted:
   - yast2-core-devel 
   - yast2-devtools 
   - yast2-dns-manager 
+  - yast2-dns-server 
   - yast2-docker: [x86_64] 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
