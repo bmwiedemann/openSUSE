@@ -508,6 +508,8 @@
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fwupd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="galculator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="galculator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gcab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -797,6 +799,7 @@
     <package name="gtk3-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk4-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk4-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="gtk4-metatheme-breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gtk4-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="gtk4-schema" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gtk4-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -958,6 +961,8 @@
     <package name="kcalutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kcm_flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kcm_flatpak-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_tablet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1339,8 +1344,9 @@
     <package name="libKF5QuickAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Runner5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Sane5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5Screen7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5Screen7-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5Screen8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5Screen8-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5ScreenDpms8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Solid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Solid5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SonnetCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1378,6 +1384,7 @@
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWire5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWire5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPipeWireDmaBuf5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWireRecord5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKSaneCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2040,7 +2047,7 @@
     <package name="libkcompactdisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdecorations2private9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkdecorations2private10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdegames" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdegames-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdegames-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3003,8 +3010,6 @@
     <package name="oxygen5-sounds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="package-update-indicator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="package-update-indicator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4568,13 +4573,10 @@
     <package name="yast2-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-country-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="yast2-dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-dns-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-firstboot" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2-ftp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-hardware-detection" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-http-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-instserver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-iscsi-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
