@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 10 18:58:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Grasshopper update (2.9) to fix font loading deadlock on startup 
+
+-------------------------------------------------------------------
 Sat Apr 10 22:58:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.0.4:

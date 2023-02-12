@@ -1,7 +1,7 @@
 #
 # spec file for package proteus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           proteus
-Version:        %{majorver}.7
+Version:        %{majorver}.8
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later

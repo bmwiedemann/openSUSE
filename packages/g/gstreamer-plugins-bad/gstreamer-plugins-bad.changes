@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  7 13:02:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop building openh264 by default even on 3'rd party
+  buildservices, do this via bcond. Codec now available via a
+  special repo.
+
+-------------------------------------------------------------------
 Sun Feb  5 13:20:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable zxing again, now that the updated version have landed.

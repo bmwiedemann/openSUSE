@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 11 17:59:44 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Replaced gnome-calculator with galculator since it better integrates
+  with Xfce look and feel.
+- Do not recommend package-update-indicator on Tumbleweed. Only Leap 
+  supports update method via PackageKit.
+
+-------------------------------------------------------------------
 Sun Apr  3 09:22:07 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Install blueman because blueberry is no longer available 

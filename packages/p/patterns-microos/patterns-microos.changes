@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 11 12:33:19 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add thunderbolt device management to desktop-common (boo#1208150) 
+
+-------------------------------------------------------------------
 Thu Feb  9 12:18:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Comment out gtk4-metatheme-breeze until Plasma 5.27
@@ -22,6 +27,12 @@ Wed Feb  8 09:50:14 UTC 2023 - Richard Brown <rbrown@suse.com>
   GNOME Desktop (boo#1205108) 
 
 -------------------------------------------------------------------
+Wed Feb  1 20:28:08 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add baloo5-file to kde pattern, missed as a recommended in
+  pattern, required for a number of desktop search functions
+
+-------------------------------------------------------------------
 Wed Jan 11 15:55:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add transactional-update-notifier to the microos_desktop_common
@@ -39,7 +50,7 @@ Wed Jan 11 15:55:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 -------------------------------------------------------------------
 Fri Nov 25 12:33:10 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Remove redundant gnome-system-monitor (boo#1205108) 
+- Remove redundant gnome-system-monitor (boo#1205108)
 
 -------------------------------------------------------------------
 Fri Nov 18 00:26:15 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>

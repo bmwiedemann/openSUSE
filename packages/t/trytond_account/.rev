@@ -342,4 +342,12 @@
     <comment>bugfix version</comment>
     <requestid>997703</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>897954364bca2ccc86e6ced8a2f5895d</srcmd5>
+    <version>6.0.14</version>
+    <time>1676225682</time>
+    <user>dimstar_suse</user>
+    <comment>removing 5.0 series files</comment>
+    <requestid>1064663</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 07 14:07:31 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.25.3:
+  * Update .gitlab-ci.yml file
+  * Update .gitlab-ci.yml file
+  * chore: better omit test and chores from changelog
+  * fix: Adding git name/email for homebrew
+  * docs: update installation instructions for windows
+  * test(project): add missing project tests
+  * fix(project): fixes issue with filtering with starred and membership
+  * fix(mr): Fixed EOF error when todo is called multiple times
+
+-------------------------------------------------------------------
 Tue Jan 11 02:28:38 UTC 2022 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 1.22.0:

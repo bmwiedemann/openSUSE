@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:48:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.1
+  * Update copyright year
+  * Use XfceScreensaver from Libxfce4ui (!33)
+  * screensaver: Fall back on lock command if D-Bus call failed (#142, !24)
+  * panel-plugin: Properly disconnect signal handler
+  * build: Fix autotools warnings
+  * Fix management of source ids
+  * panel-plugin: Add missing ref on image
+  * Fix blurriness in icons when UI scale factor > 1 (!30)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 22 14:01:48 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0

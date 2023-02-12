@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 10 16:29:34 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Expose all core functionality from IscsiClientLib, with options
+  to suppress usage of pop-ups (related t gh#yast/d-installer#402).
+
+-------------------------------------------------------------------
+Fri Feb 10 15:41:21 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Finish client: copy the content of both /etc/iscsi and
+  /var/lib/iscsi (bsc#1207374).
+- Finish client: never enable both the iscsid socket and the
+  service (partial fix for bsc#1207839).
+- 4.5.7
+
+-------------------------------------------------------------------
 Wed Nov  2 17:03:48 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Call external commands without path (bsc#1204959)

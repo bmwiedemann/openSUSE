@@ -1,7 +1,7 @@
 #
 # spec file for package rescue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rescue
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Action Adventure in Space
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Other
-URL:            http://rescue.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/Rescue_%{version}.zip
+URL:            https://rescue.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/Rescue_%{version}.zip
 Source1:        %{name}.sh
 Source2:        %{name}.desktop
 BuildRequires:  dos2unix

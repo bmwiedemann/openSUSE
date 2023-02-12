@@ -1,0 +1,144 @@
+From: Claudio Fontana <cfontana@suse.de>
+Date: Thu, 29 Sep 2022 11:30:31 +0200
+Subject: module: removed unused function argument "mayfail"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+mayfail is always passed as false for every invocation throughout the program.
+It controls whether to printf or not to printf an error on
+g_module_open failure.
+
+Remove this unused argument.
+
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20220929093035.4231-2-cfontana@suse.de>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 2106106d80489fb9b10cd3ccfaec811988e797cb)
+Resolves: bsc#1208139
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ include/qemu/module.h |  8 ++++----
+ softmmu/qtest.c       |  2 +-
+ util/module.c         | 20 +++++++++-----------
+ 3 files changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index bd73607104c951a34512a156cff0..8c012bbe038d3c67ccc7f0795287 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -61,15 +61,15 @@ typedef enum {
+ #define fuzz_target_init(function) module_init(function, \
+                                                MODULE_INIT_FUZZ_TARGET)
+ #define migration_init(function) module_init(function, MODULE_INIT_MIGRATION)
+-#define block_module_load_one(lib) module_load_one("block-", lib, false)
+-#define ui_module_load_one(lib) module_load_one("ui-", lib, false)
+-#define audio_module_load_one(lib) module_load_one("audio-", lib, false)
++#define block_module_load_one(lib) module_load_one("block-", lib)
++#define ui_module_load_one(lib) module_load_one("ui-", lib)
++#define audio_module_load_one(lib) module_load_one("audio-", lib)
+ 
+ void register_module_init(void (*fn)(void), module_init_type type);
+ void register_dso_module_init(void (*fn)(void), module_init_type type);
+ 
+ void module_call_init(module_init_type type);
+-bool module_load_one(const char *prefix, const char *lib_name, bool mayfail);
++bool module_load_one(const char *prefix, const char *lib_name);
+ void module_load_qom_one(const char *type);
+ void module_load_qom_all(void);
+ void module_allow_arch(const char *arch);
+diff --git a/softmmu/qtest.c b/softmmu/qtest.c
+index f8acef2628d33760906e7b7b890a..76eb7bac563ea9608e1272f923cc 100644
+--- a/softmmu/qtest.c
++++ b/softmmu/qtest.c
+@@ -756,7 +756,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+         g_assert(words[1] && words[2]);
+ 
+         qtest_send_prefix(chr);
+-        if (module_load_one(words[1], words[2], false)) {
++        if (module_load_one(words[1], words[2])) {
+             qtest_sendf(chr, "OK\n");
+         } else {
+             qtest_sendf(chr, "FAIL\n");
+diff --git a/util/module.c b/util/module.c
+index 8ddb0e18f517809282ffb45a0a14..8563edd6267cc6e2fbea2cb61e65 100644
+--- a/util/module.c
++++ b/util/module.c
+@@ -144,7 +144,7 @@ static bool module_check_arch(const QemuModinfo *modinfo)
+     return true;
+ }
+ 
+-static int module_load_file(const char *fname, bool mayfail, bool export_symbols)
++static int module_load_file(const char *fname, bool export_symbols)
+ {
+     GModule *g_module;
+     void (*sym)(void);
+@@ -172,10 +172,8 @@ static int module_load_file(const char *fname, bool mayfail, bool export_symbols
+     }
+     g_module = g_module_open(fname, flags);
+     if (!g_module) {
+-        if (!mayfail) {
+-            fprintf(stderr, "Failed to open module: %s\n",
+-                    g_module_error());
+-        }
++        fprintf(stderr, "Failed to open module: %s\n",
++                g_module_error());
+         ret = -EINVAL;
+         goto out;
+     }
+@@ -208,7 +206,7 @@ out:
+ }
+ #endif
+ 
+-bool module_load_one(const char *prefix, const char *lib_name, bool mayfail)
++bool module_load_one(const char *prefix, const char *lib_name)
+ {
+     bool success = false;
+ 
+@@ -256,7 +254,7 @@ bool module_load_one(const char *prefix, const char *lib_name, bool mayfail)
+             if (strcmp(modinfo->name, module_name) == 0) {
+                 /* we depend on other module(s) */
+                 for (sl = modinfo->deps; *sl != NULL; sl++) {
+-                    module_load_one("", *sl, false);
++                    module_load_one("", *sl);
+                 }
+             } else {
+                 for (sl = modinfo->deps; *sl != NULL; sl++) {
+@@ -287,7 +285,7 @@ bool module_load_one(const char *prefix, const char *lib_name, bool mayfail)
+     for (i = 0; i < n_dirs; i++) {
+         fname = g_strdup_printf("%s/%s%s",
+                 dirs[i], module_name, CONFIG_HOST_DSOSUF);
+-        ret = module_load_file(fname, mayfail, export_symbols);
++        ret = module_load_file(fname, export_symbols);
+         g_free(fname);
+         fname = NULL;
+         /* Try loading until loaded a module file */
+@@ -333,7 +331,7 @@ void module_load_qom_one(const char *type)
+         }
+         for (sl = modinfo->objs; *sl != NULL; sl++) {
+             if (strcmp(type, *sl) == 0) {
+-                module_load_one("", modinfo->name, false);
++                module_load_one("", modinfo->name);
+             }
+         }
+     }
+@@ -354,7 +352,7 @@ void module_load_qom_all(void)
+         if (!module_check_arch(modinfo)) {
+             continue;
+         }
+-        module_load_one("", modinfo->name, false);
++        module_load_one("", modinfo->name);
+     }
+     module_loaded_qom_all = true;
+ }
+@@ -370,7 +368,7 @@ void qemu_load_module_for_opts(const char *group)
+         }
+         for (sl = modinfo->opts; *sl != NULL; sl++) {
+             if (strcmp(group, *sl) == 0) {
+-                module_load_one("", modinfo->name, false);
++                module_load_one("", modinfo->name);
+             }
+         }
+     }

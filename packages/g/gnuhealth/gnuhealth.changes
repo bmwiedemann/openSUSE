@@ -1,15 +1,24 @@
 -------------------------------------------------------------------
-Mon Jan  9 19:36:41 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+Sun Feb 12 13:38:44 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
-- Version 4.0.5
-  * health_crypto: Fix bug #63558: Fault: 'NoneType' object has no attribute 'name'
-  * Fix bug #63557: Missing view architecture for ('calendar.category', None, 'tree')
-  * Fix bug #63533: Model 'gnuhealth.pol' is missing a default access
-  * Fix bug #63532: health_caldav misses requiremnt vobject in setup.py
-  * Fix bug #63517: Fault: 'webdav' is not in list
-  * Fix bug #62777: The term health prof used for both initiating and signing professional in patient evaluation
-  * Fix bug #62634: Missing Spanish Translations
-
+- version 4.2.0
+  * Enhanced Medical Imaging functionality and ergonomics. 
+  * Introduced GNU Health "Focus on" section on patient main form.
+  * Surgery package has been vastly revised and enhanced in collaboration 
+    with our colleagues from Cirugia Solidaria
+  * Enhanced Insurance and billing functionality.
+  * The Vital Record System (VRS) can now issue reports on birth and
+    death certificates.
+  * Demographics can now accept entering estimate age / DoB. 
+  * Health services has now the functionality of "grouping" all the tests
+    from a single order - lab and medical imaging.
+  * Improved Patient encounter / evaluation.
+  * Weblate translations holds 35 languages
+  * On the technical side, we have improved unit testing on each package,
+    speedup load times on large datafiles and using python-sql for most
+    queries.
+  * GNU Health is now REUSE (Free Software Foundation Europe) compliant.
+  
 -------------------------------------------------------------------
 Thu Jun 16 15:37:00 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 

@@ -1,8 +1,0 @@
---- ./setup.py.orig	2022-07-13 00:24:21.798070153 +0800
-+++ ./setup.py	2022-07-13 08:29:07.921631859 +0800
-@@ -32,4 +32,4 @@
- 
- sys.path.insert(0, "wlroots")
- 
--setup(**keywords_with_side_effects(sys.argv))
-+setup(**keywords_with_side_effects(sys.argv), include_dirs=["/usr/include/wayland", "/usr/include/libxkbcommon", "/usr/include/libinput", "/usr/include/libdrm", "/usr/include/pixman-1"])

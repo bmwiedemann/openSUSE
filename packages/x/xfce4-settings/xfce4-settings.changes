@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 11 09:32:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Update copyright year
+  * mime-settings: Increase dialog size (!96)
+  * display: fix blurry 'help' indicator on output (#400, !95)
+  * display: fix blurry icon in profiles treeview
+  * display: fix blurry icons in minimal display settings dialog
+  * mime: fix blurry icons in default app menus
+  * mouse: fix blurriness in cursor theme previews
+  * appearance: fix blurry subpixel antialias icons
+  * appearance: fix blurry icon theme previews
+  * xfsettingsd: Make xsettings.xml well-formed (Fixes #431, !94)
+  * xfsettingsd: Remove duplicated config line (Fixes #425)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 22 15:07:26 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.1

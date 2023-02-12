@@ -201,4 +201,72 @@
     <comment>bugfix version</comment>
     <requestid>1043011</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5a2fc555a5c9097dfeb9eda4cf28ba36</srcmd5>
+    <version>4.2.0</version>
+    <time>1676225692</time>
+    <user>dimstar_suse</user>
+    <comment>- verion 4.2.0
+  * Instance and connection information visible at the GTK client title 
+  * Add GNUHEalth scalable icon - svg - for desktop menu and panel entries
+  * see Changelog for full description
+  * separate gnuhalth-client.desktop file removed
+- version 4.0.1
+  * various bug fixes, see changelog
+  * plugins adapted and renamed for 4.0
+  
+- version 4.0.0
+  * based on Tryton 6.0
+  * for details see CHANGELOG
+- add upstream signing key and verify source signature
+- python_dependency_generator removed (misses dependencies....)
+- version 3.8.1
+  spec-file updated to use new python macros 
+- remove __pycache__ from plugins (boo#1178453)
+- version 3.6.9
+  various bugfixes (including boo#1170553)
+- version 3.6.8
+  * Removed the deprecated App Menu in favor of the Menu Bar.
+  * Migrate from obsolete Table to Grid
+  * Fix the footer
+  * Include accelerator for preferences (ctrl+shift+p) and fix
+    accelerator for shortcuts (ctrl+shift+F1) 
+  * Avoid maximizing application at startup
+  * Remove unused fast tabbing option from menu
+  * Allow setting the GH command line on the bottom again (cli_position =
+    bottom). By default is top.
+- version 3.6.6
+  * Fix bug #57682: GTK Client - CLI is activated when pressing Shift+Z
+  * Add GNU Health shortcuts to the help window
+- update frl plugin to 3.6.1
+- version 3.6.5: Fix variable name to values
+- version 3.6.4 #57371  Error when assigning a health professional on the work schedule
+- version 3.6.3 - various performance improvements 
+- version 3.6.2 - various bugfixes
+- version 3.6.0
+- camera.diff added
+  plugins changed from *latest* to version 3.4.x
+- plugin_frl updated to version 3.4.1 
+- version 3.4.4 - Security fix boo#1131707
+- link to python2-GooCalendar (remains python2) boo#1131096
+- Version 3.4.3
+  * Fix bug #55458: Command line gets activated with shift Z 
+  * many bugfixes from tryton client
+- version 3.4.2 with many bugfixes
+- New client for the GNU Health 3.4 series based on Tryton 4.6 series
+  * Enhanced support for Calendar and WebDAV system
+  * Native client has a command line interface
+  * Over 30 new commands for the main daily tasks
+  * Enhanced GNU Health camera plugin, including zoom
+  * gnuhealth_crypto.patch replaced by plugin
+  * Activity Log window on the client
+  * SYSINFO command to retrieve the information about client and server 
+  * Customize the banner on the client
+- Bugfix Release 3.2.6
+- Add emptly build phase to silence rpmlint
+- Drop python-rsvg require, the code does not include it
+- GNU Health client - initial version 3.2.5
+</comment>
+    <requestid>1064690</requestid>
+  </revision>
 </revisionlist>

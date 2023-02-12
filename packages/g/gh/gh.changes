@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:25:56 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.23.0
+  https://github.com/cli/cli/releases/tag/v2.23.0
+  What's New
+  * repo fork: Add --default-branch-only flag by @jsoref in #6983
+  * repo edit: Add visibility warning by @tuananhlai and @samcoe in #6980
+  What's Changed
+  * secret set: Fix setting Codespaces user secrets by @joshmgross in #6923
+  * secret set: Fix setting Dependabot org secrets by @samcoe in #6941
+  * secret set: Fix multiline values when reading from .env file by @mislav in #6932
+  * run: Fix integer overflow error when more than 255 run attempts by @samcoe in #6935
+  * extension browse: Improve usability and accessibility by @vilmibm in #6584
+  * issue/pr edit: Fix adding/removing projects using flags by @samcoe in #6955
+  * codespace delete: Default to authenticated user by @luanzeba in #6944
+  * codespace create: Default to using current repo by @rneatherway in #6596
+  * repo set-default: Fix interactive mode not showing all remotes by @despreston in #6969
+  * GH_DEBUG: Fix API logging corrupting response bodies by @mislav in #6976
+  * Avoid implicitly fetching when adding a new git remote by @mislav in #6990
+  * Sanitize ANSII control characters returned from the server by @samcoe in #6916, #6956
+  * Disable gh update checker in our precompiled binaries by @mislav in #6977
+  * Disallow update checker delaying the gh process by @mislav in #6978
+  * Bump github.com/cli/oauth from 1.0.0 to 1.0.1 by @dependabot in #6948
+  * Bump microsoft/setup-msbuild from 1.1.3 to 1.3.1 by @dependabot in #6973
+
+-------------------------------------------------------------------
 Mon Jan 30 06:57:46 UTC 2023 - Pavel Dostál <pdostal@suse.com>
 
 - Update to 2.22.1

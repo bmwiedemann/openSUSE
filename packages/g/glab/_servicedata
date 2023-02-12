@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/profclems/glab.git</param>
-              <param name="changesrevision">612ff864276e848c4cfdef187b5f16f5c52f3c25</param></service></servicedata>
+              <param name="changesrevision">612ff864276e848c4cfdef187b5f16f5c52f3c25</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.com/gitlab-org/cli.git</param>
+              <param name="changesrevision">7ab3ef14820c565a9430fa0da58a491048699638</param></service></servicedata>

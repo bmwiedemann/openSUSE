@@ -409,4 +409,12 @@
   * Translation Updates (forwarded request 1062605 from manfred-h)</comment>
     <requestid>1062958</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c71d8fdf8d4db8087970f1af4b1477b8</srcmd5>
+    <version>0.8.0</version>
+    <time>1676225661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064406</requestid>
+  </revision>
 </revisionlist>

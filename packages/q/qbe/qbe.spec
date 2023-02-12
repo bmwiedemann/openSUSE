@@ -17,7 +17,7 @@
 
 
 Name:           qbe
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Small embeddable C compiler backend
 Group:          Development/Languages/Other

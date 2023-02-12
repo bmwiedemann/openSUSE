@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Feb 10 06:25:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.12:
+  * build(deps-dev): bump pytest-subprocess in /sdk/python (#4482)
+  * feat: implements registry auth on container (#4502)
+  * feat: implement cache sharing mode + add GraphQL enum type (#4437)
+  * Fix TestDirectoryWithTimestamps for non-ext4 filesystems (#4548)
+  * build(deps): bump typescript from 4.9.4 to 4.9.5 in /website (#4495)
+  * build(deps): bump sass from 1.57.1 to 1.58.0 in /website (#4510)
+  * build(deps): bump @docusaurus/preset-classic in /website (#4536)
+  * docs: Fix Rust,PHP syntax highlight and API response in GraphQL docs (#4533)
+  * build(deps): bump @docusaurus/theme-mermaid in /website (#4530)
+  * build(deps): bump @docusaurus/core from 2.3.0 to 2.3.1 in /website (#4529)
+  * build(deps-dev): bump @typescript-eslint/parser in /sdk/nodejs (#4494)
+  * Fix cache key examples in Go and Python SDKs (#4446)
+  * chore: fallback to existing engine with docker (#4489)
+  * This commit updates the sed command line in the (#4525)
+  * docs: Added platform clarification in Google Cloud + GitHub guide (#4526)
+  * docs: Updated quickstart example repository URL (#4527)
+  * add entrypoint to engine image (#4521)
+  * ci: Pass engine test job if otel-collector fails (#4512)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4496)
+  * Generate strictly typed scalars to improve type safety (#4503)
+  * ci: Improve how we handle cached vertices (#4498)
+  * Adds minor fixes to quickstart (#4506)
+  * Add quickstart fixes (#4500)
+  * build(deps-dev): bump typescript from 4.9.4 to 4.9.5 in /sdk/nodejs (#4492)
+  * This commit upgrades Docusaurus to 2.3.0 and corrects (#4497)
+  * docs: Added quickstart guide (#4391)
+  * fix: Merge container from env vars with existing env vars (#4455)
+  * refactor: group common funcs into upper interface (#4415)
+  * build(deps-dev): bump eslint from 8.32.0 to 8.33.0 in /sdk/nodejs (#4481)
+  * website: remove amplitude (#4433)
+  * ci: Upload journal.log & comment.md as artifacts (#4487)
+  * engine: fix workdir verification on Windows (#4486)
+  * Fix session error handling (#4421)
+  * Remove PR comments for engine tests (#4478)
+  * build(deps): bump @docusaurus/theme-mermaid in /website (#4475)
+  * website: fix code tags css in dark mode (#4468)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4430)
+  * ci: Collect traces & logs from pipeline runs and publish to Loki & Tempo  (#4340)
+  * Fixed Node.js multibuild example (#4452)
+  * Fix container use in nodejs get started guide. (#4462)
+
+-------------------------------------------------------------------
 Fri Jan 27 06:08:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.10:

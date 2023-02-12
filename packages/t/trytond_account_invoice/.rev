@@ -194,4 +194,13 @@
     <comment>bugfix version</comment>
     <requestid>993357</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7bd8e687422262c217036d605e8e04f0</srcmd5>
+    <version>6.0.8</version>
+    <time>1676225680</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 6.0.8 - Bugfix Release
+</comment>
+    <requestid>1064662</requestid>
+  </revision>
 </revisionlist>

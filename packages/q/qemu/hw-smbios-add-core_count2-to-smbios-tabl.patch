@@ -1,0 +1,128 @@
+From: Julia Suvorova <jusual@redhat.com>
+Date: Tue, 11 Oct 2022 13:17:27 +0200
+Subject: hw/smbios: add core_count2 to smbios table type 4
+
+In order to use the increased number of cpus, we need to bring smbios
+tables in line with the SMBIOS 3.0 specification. This allows us to
+introduce core_count2 which acts as a duplicate of core_count if we have
+fewer cores than 256, and contains the actual core number per socket if
+we have more.
+
+core_enabled2 and thread_count2 fields work the same way.
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20220731162141.178443-2-jusual@redhat.com>
+Message-Id: <20221011111731.101412-2-jusual@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit 05e27d74c7dc5318367521f020bf0d4a32228dcc)
+References: bsc#1202282, jsc#PED-2592
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/smbios/smbios.c           | 19 ++++++++++++++++---
+ hw/smbios/smbios_build.h     |  9 +++++++--
+ include/hw/firmware/smbios.h | 12 ++++++++++++
+ 3 files changed, 35 insertions(+), 5 deletions(-)
+
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 417d65471704ee6babaebb2ba02e..e55bca8e42c834508df820c05eb9 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -711,8 +711,14 @@ static void smbios_build_type_3_table(void)
+ static void smbios_build_type_4_table(MachineState *ms, unsigned instance)
+ {
+     char sock_str[128];
++    size_t tbl_len = SMBIOS_TYPE_4_LEN_V28;
+ 
+-    SMBIOS_BUILD_TABLE_PRE(4, T4_BASE + instance, true); /* required */
++    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_64) {
++        tbl_len = SMBIOS_TYPE_4_LEN_V30;
++    }
++
++    SMBIOS_BUILD_TABLE_PRE_SIZE(4, T4_BASE + instance,
++                                true, tbl_len); /* required */
+ 
+     snprintf(sock_str, sizeof(sock_str), "%s%2x", type4.sock_pfx, instance);
+     SMBIOS_TABLE_SET_STR(4, socket_designation_str, sock_str);
+@@ -739,8 +745,15 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance)
+     SMBIOS_TABLE_SET_STR(4, serial_number_str, type4.serial);
+     SMBIOS_TABLE_SET_STR(4, asset_tag_number_str, type4.asset);
+     SMBIOS_TABLE_SET_STR(4, part_number_str, type4.part);
+-    t->core_count = t->core_enabled = ms->smp.cores;
+-    t->thread_count = ms->smp.threads;
++
++    t->core_count = (ms->smp.cores > 255) ? 0xFF : ms->smp.cores;
++    t->core_enabled = t->core_count;
++
++    t->core_count2 = t->core_enabled2 = cpu_to_le16(ms->smp.cores);
++
++    t->thread_count = (ms->smp.threads > 255) ? 0xFF : ms->smp.threads;
++    t->thread_count2 = cpu_to_le16(ms->smp.threads);
++
+     t->processor_characteristics = cpu_to_le16(0x02); /* Unknown */
+     t->processor_family2 = cpu_to_le16(0x01); /* Other */
+ 
+diff --git a/hw/smbios/smbios_build.h b/hw/smbios/smbios_build.h
+index 56b5a1e3f301b24a134141859076..351660024e6ecb599b88f4975042 100644
+--- a/hw/smbios/smbios_build.h
++++ b/hw/smbios/smbios_build.h
+@@ -27,6 +27,11 @@ extern unsigned smbios_table_max;
+ extern unsigned smbios_table_cnt;
+ 
+ #define SMBIOS_BUILD_TABLE_PRE(tbl_type, tbl_handle, tbl_required)        \
++        SMBIOS_BUILD_TABLE_PRE_SIZE(tbl_type, tbl_handle, tbl_required,   \
++                                    sizeof(struct smbios_type_##tbl_type))\
++
++#define SMBIOS_BUILD_TABLE_PRE_SIZE(tbl_type, tbl_handle,                 \
++                                    tbl_required, tbl_len)                \
+     struct smbios_type_##tbl_type *t;                                     \
+     size_t t_off; /* table offset into smbios_tables */                   \
+     int str_index = 0;                                                    \
+@@ -39,12 +44,12 @@ extern unsigned smbios_table_cnt;
+         /* use offset of table t within smbios_tables */                  \
+         /* (pointer must be updated after each realloc) */                \
+         t_off = smbios_tables_len;                                        \
+-        smbios_tables_len += sizeof(*t);                                  \
++        smbios_tables_len += tbl_len;                                     \
+         smbios_tables = g_realloc(smbios_tables, smbios_tables_len);      \
+         t = (struct smbios_type_##tbl_type *)(smbios_tables + t_off);     \
+                                                                           \
+         t->header.type = tbl_type;                                        \
+-        t->header.length = sizeof(*t);                                    \
++        t->header.length = tbl_len;                                       \
+         t->header.handle = cpu_to_le16(tbl_handle);                       \
+     } while (0)
+ 
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index e7d386f7c837b16f341aba22bcf8..7f3259a6300af0d7b8a359b879f5 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -18,6 +18,8 @@
+ 
+ 
+ #define SMBIOS_MAX_TYPE 127
++#define offsetofend(TYPE, MEMBER) \
++       (offsetof(TYPE, MEMBER) + sizeof_field(TYPE, MEMBER))
+ 
+ /* memory area description, used by type 19 table */
+ struct smbios_phys_mem_area {
+@@ -187,8 +189,18 @@ struct smbios_type_4 {
+     uint8_t thread_count;
+     uint16_t processor_characteristics;
+     uint16_t processor_family2;
++    /* SMBIOS spec 3.0.0, Table 21 */
++    uint16_t core_count2;
++    uint16_t core_enabled2;
++    uint16_t thread_count2;
+ } QEMU_PACKED;
+ 
++typedef enum smbios_type_4_len_ver {
++    SMBIOS_TYPE_4_LEN_V28 = offsetofend(struct smbios_type_4,
++                                        processor_family2),
++    SMBIOS_TYPE_4_LEN_V30 = offsetofend(struct smbios_type_4, thread_count2),
++} smbios_type_4_len_ver;
++
+ /* SMBIOS type 8 - Port Connector Information */
+ struct smbios_type_8 {
+     struct smbios_structure_header header;

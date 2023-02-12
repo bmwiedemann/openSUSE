@@ -375,6 +375,9 @@ Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
 Requires:       udev-configure-printer
 
+# Add thunderbolt device management (boo#1208150)
+Requires:       bolt
+
 # Common tools
 Requires:       bash-completion
 Requires:       bluez-firmware
@@ -576,6 +579,8 @@ Requires:       kgamma5
 Requires:       kwrited5
 Requires:       phonon4qt5-backend-gstreamer
 Requires:       plasma-nm5
+# Manually pull in baloo5-file to better support desktop search functions/desktop integration
+Requires:       baloo5-file
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin

@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1042355</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d314b7addb9f94470d7b17cf2d8b89bb</srcmd5>
+    <version>0.15.24</version>
+    <time>1676225658</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove fix-include-paths.patch
+- Use pkg-config and %optflags for CFLAGS.
+</comment>
+    <requestid>1064439</requestid>
+  </revision>
 </revisionlist>

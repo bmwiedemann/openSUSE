@@ -23,6 +23,7 @@
 %define gst_branch 1.0
 %bcond_with faac
 %bcond_with faad
+%bcond_with openh264
 
 %if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
 %bcond_without avtp
@@ -221,7 +222,9 @@ BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libopenaptx) == 0.2.0
 BuildRequires:  pkgconfig(librtmp)
+%if %{with openh264}
 BuildRequires:  pkgconfig(openh264) >= 1.3.0
+%endif
 BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
 BuildRequires:  pkgconfig(vo-amrwbenc) >= 0.1.0
 BuildRequires:  pkgconfig(x265)
@@ -742,8 +745,6 @@ export PYTHON=%{_bindir}/python3
 	-Dvoaacenc=disabled \
 	-Dx265=disabled \
 	-Dopenaptx=disabled \
-%else
-	-Dopenh264=enabled \
 %endif
 	-Dgpl=enabled \
 %if %{without avtp}
@@ -757,6 +758,9 @@ export PYTHON=%{_bindir}/python3
 %endif
 %if %{without fdk_aac}
 	-Dfdkaac=disabled \
+%endif
+%if %{without openh264}
+	-Dopenh264=disabled \
 %endif
 	-Ddirectfb=disabled \
 	-Ddoc=disabled \
@@ -1167,18 +1171,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoaacenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
-
 %if %{with faac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaac.so
 %endif
-
 %if %{with faad}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %endif
-
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
+%if %{with openh264}
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtmp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsiren.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx265.so

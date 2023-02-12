@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,15 @@
 #
 
 
-%bcond_with tests 0
+%bcond_with tests 1
 
 %define         skip_python2 1
 %define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
-%define         majorver 4.0
+%define         majorver 4.2
 
 Name:           gnuhealth
 
-Version:        %{majorver}.5
+Version:        %{majorver}.0
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -143,10 +143,10 @@ mkdir -p -m 755 %{buildroot}%{_bindir}
 install -p -m 755 gnuhealth-control %{buildroot}%{_bindir}/gnuhealth-control
 install -p -m 755 %{S:5} %{buildroot}%{_bindir}/openSUSE-gnuhealth-setup
 install -p -m 755 %{S:6} %{buildroot}%{_bindir}/gnuhealth
-install -p -m 755 scripts/demo/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
+install -p -m 755 scripts/demodb/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
 
 #delete empty demo directory
-rm -rf scripts/demo
+rm -rf scripts/demodb
 
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
@@ -155,12 +155,12 @@ install -p -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}-webdav@.service
 mkdir -p %{buildroot}%{_sysconfdir}/tryton
 
 #remove double license file:
-rm backend/fhir/client/COPYING
+## rm backend/fhir/client/COPYING
 
 #Move FHIR server to examples directory
 mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
-mv backend/fhir* %{buildroot}%{_docdir}/%{name}/examples/.
-rmdir backend
+mv doc/* %{buildroot}%{_docdir}/%{name}/examples/.
+rmdir doc
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -220,10 +220,10 @@ EOF
 %{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
-%doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/* doc/*
+%doc README.rst Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/* 
 %{_docdir}/%{name}/examples*
 %dir %{_sysconfdir}/tryton
-%license COPYING
+%license COPYING LICENSES/*
 %exclude %{python3_sitelib}/%{name}_orthanc*
 %exclude %{python3_sitelib}/trytond/modules/health_orthanc*
 %{python3_sitelib}/*

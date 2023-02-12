@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  test
 %define pyname  pywayland
 Name:           python-%{pyname}
-Version:        0.4.14
+Version:        0.4.15
 Release:        0
 Summary:        Python binding to the wayland library using cffi
 License:        NCSA
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.21
@@ -52,12 +53,12 @@ Python binding to the wayland library using cffi.
 %patch0 -p1
 
 %build
-export CFLAGS="-I/usr/include/wayland ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
 %python_exec pywayland/ffi_build.py
 %python_build
 
 %install
-export CFLAGS="-I/usr/include/wayland ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
 %python_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -66,9 +67,9 @@ export CFLAGS="-I/usr/include/wayland ${CFLAGS}"
 
 %if %{with test}
 %check
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
 mkdir -p %{buildroot}/fake-xdg-runtime-dir
 export XDG_RUNTIME_DIR=%{buildroot}/fake-xdg-runtime-dir
-export CFLAGS="-I/usr/include/wayland ${CFLAGS}"
 %python_exec -m pywayland.scanner
 %pytest -vv
 rm -rfv ${XDG_RUNTIME_DIR}

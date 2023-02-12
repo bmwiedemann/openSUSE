@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 12 06:10:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.3:
+  * fix : rules to load client configuration to connect to a kubernetes cluster (#419)
+
+-------------------------------------------------------------------
 Fri Feb 10 06:15:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.13.2:
@@ -8,7 +14,7 @@ Fri Feb 10 06:15:14 UTC 2023 - kastl@b1-systems.de
 Fri Feb 10 06:13:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.13.1:
-  * update go modules (#450)
+  * update go modules (#450) (bsc#1208093, CVE-2023-25165)
 
 -------------------------------------------------------------------
 Mon Feb 06 17:27:04 UTC 2023 - kastl@b1-systems.de

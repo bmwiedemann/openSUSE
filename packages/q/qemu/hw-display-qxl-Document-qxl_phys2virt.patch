@@ -1,0 +1,49 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Date: Mon, 28 Nov 2022 21:27:38 +0100
+Subject: hw/display/qxl: Document qxl_phys2virt()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20221128202741.4945-3-philmd@linaro.org>
+(cherry picked from commit b1901de83a9456cde26fc755f71ca2b7b3ef50fc)
+Resolves: bsc#1205808
+Fixes: CVE-2022-4144
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/display/qxl.h | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/hw/display/qxl.h b/hw/display/qxl.h
+index e74de9579df3db6e3b6924b1a8c2..78b3a6c9ba8e3a598d6553867a6c 100644
+--- a/hw/display/qxl.h
++++ b/hw/display/qxl.h
+@@ -147,6 +147,25 @@ OBJECT_DECLARE_SIMPLE_TYPE(PCIQXLDevice, PCI_QXL)
+ #define QXL_DEFAULT_REVISION (QXL_REVISION_STABLE_V12 + 1)
+ 
+ /* qxl.c */
++/**
++ * qxl_phys2virt: Get a pointer within a PCI VRAM memory region.
++ *
++ * @qxl: QXL device
++ * @phys: physical offset of buffer within the VRAM
++ * @group_id: memory slot group
++ *
++ * Returns a host pointer to a buffer placed at offset @phys within the
++ * active slot @group_id of the PCI VGA RAM memory region associated with
++ * the @qxl device. If the slot is inactive, or the offset is out
++ * of the memory region, returns NULL.
++ *
++ * Use with care; by the time this function returns, the returned pointer is
++ * not protected by RCU anymore.  If the caller is not within an RCU critical
++ * section and does not hold the iothread lock, it must have other means of
++ * protecting the pointer, such as a reference to the region that includes
++ * the incoming ram_addr_t.
++ *
++ */
+ void *qxl_phys2virt(PCIQXLDevice *qxl, QXLPHYSICAL phys, int group_id);
+ void qxl_set_guest_bug(PCIQXLDevice *qxl, const char *msg, ...)
+     G_GNUC_PRINTF(2, 3);

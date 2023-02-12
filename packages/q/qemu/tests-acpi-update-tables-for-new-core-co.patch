@@ -1,0 +1,128 @@
+From: Julia Suvorova <jusual@redhat.com>
+Date: Tue, 11 Oct 2022 13:17:31 +0200
+Subject: tests/acpi: update tables for new core count test
+
+Changes in the tables (for 275 cores):
+FACP:
++                 Use APIC Cluster Model (V4) : 1
+
+APIC:
++[02Ch 0044   1]                Subtable Type : 00 [Processor Local APIC]
++[02Dh 0045   1]                       Length : 08
++[02Eh 0046   1]                 Processor ID : 00
++[02Fh 0047   1]                Local Apic ID : 00
++[030h 0048   4]        Flags (decoded below) : 00000001
++                           Processor Enabled : 1
+...
++
++[81Ch 2076   1]                Subtable Type : 00 [Processor Local APIC]
++[81Dh 2077   1]                       Length : 08
++[81Eh 2078   1]                 Processor ID : FE
++[81Fh 2079   1]                Local Apic ID : FE
++[820h 2080   4]        Flags (decoded below) : 00000001
++                           Processor Enabled : 1
++                      Runtime Online Capable : 0
++
++[824h 2084   1]                Subtable Type : 09 [Processor Local x2APIC]
++[825h 2085   1]                       Length : 10
++[826h 2086   2]                     Reserved : 0000
++[828h 2088   4]          Processor x2Apic ID : 000000FF
++[82Ch 2092   4]        Flags (decoded below) : 00000001
++                           Processor Enabled : 1
++[830h 2096   4]                Processor UID : 000000FF
+...
+
+DSDT:
++            Processor (C001, 0x01, 0x00000000, 0x00)
++            {
++                Method (_STA, 0, Serialized)  // _STA: Status
++                {
++                    Return (CSTA (One))
++                }
++
++                Name (_MAT, Buffer (0x08)  // _MAT: Multiple APIC Table Entry
++                {
++                     0x00, 0x08, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00   // ........
++                })
++                Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
++                {
++                    CEJ0 (One)
++                }
++
++                Method (_OST, 3, Serialized)  // _OST: OSPM Status Indication
++                {
++                    COST (One, Arg0, Arg1, Arg2)
++                }
++            }
+...
++            Processor (C0FE, 0xFE, 0x00000000, 0x00)
++            {
++                Method (_STA, 0, Serialized)  // _STA: Status
++                {
++                    Return (CSTA (0xFE))
++                }
++
++                Name (_MAT, Buffer (0x08)  // _MAT: Multiple APIC Table Entry
++                {
++                     0x00, 0x08, 0xFE, 0xFE, 0x01, 0x00, 0x00, 0x00   // ........
++                })
++                Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
++                {
++                    CEJ0 (0xFE)
++                }
++
++                Method (_OST, 3, Serialized)  // _OST: OSPM Status Indication
++                {
++                    COST (0xFE, Arg0, Arg1, Arg2)
++                }
++            }
++
++            Device (C0FF)
++            {
++                Name (_HID, "ACPI0007" /* Processor Device */)  // _HID: Hardware ID
++                Name (_UID, 0xFF)  // _UID: Unique ID
++                Method (_STA, 0, Serialized)  // _STA: Status
++                {
++                    Return (CSTA (0xFF))
++                }
++
++                Name (_MAT, Buffer (0x10)  // _MAT: Multiple APIC Table Entry
++                {
++                    /* 0000 */  0x09, 0x10, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00,  // ........
++                    /* 0008 */  0x01, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00   // ........
++                })
++                Method (_EJ0, 1, NotSerialized)  // _EJx: Eject Device, x=0-9
++                {
++                    CEJ0 (0xFF)
++                }
++
++                Method (_OST, 3, Serialized)  // _OST: OSPM Status Indication
++                {
++                    COST (0xFF, Arg0, Arg1, Arg2)
++                }
++            }
++
+...
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Message-Id: <20220731162141.178443-6-jusual@redhat.com>
+Message-Id: <20221011111731.101412-6-jusual@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit b22fbc5bcb6bd2412889f2c48a29c86880a30552)
+[Moved the updated binaries directly in RPM sources]
+References: bsc#1202282, jsc#PED-2592
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index e81dc67a2e52bc6553494325d248..dfb8523c8bf457c471cea8d860ef 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,4 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/q35/APIC.core-count2",
+-"tests/data/acpi/q35/DSDT.core-count2",
+-"tests/data/acpi/q35/FACP.core-count2",

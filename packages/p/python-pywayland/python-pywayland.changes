@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  4 15:10:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use pkg-config and %optflags to set CFLAGS.
+
+-------------------------------------------------------------------
+Mon Jan 30 12:58:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update 0.4.15:
+  * Addressed CVE-2007-4559
+  * Fix bug in protocols generated with latest version of wayland-protocols
+  * Bump version of wayland-protocols in release and in CI to 1.31
+
+-------------------------------------------------------------------
 Sat Aug 20 07:06:08 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.4.14:

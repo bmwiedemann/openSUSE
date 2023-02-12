@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 11 19:41:44 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.23.0:
+  * fix: create `lintTxt`
+  * chore: update go.mod
+  * feat: add `--filter`
+  * feat: Add pre-commit support (#558)
+  * chore: update runner name
+  * Add `perf` workflow
+  * docs: fix typos (#553)
+  * chore: set version for Docker
+
+-------------------------------------------------------------------
 Wed Jan 18 20:03:10 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.22.0:

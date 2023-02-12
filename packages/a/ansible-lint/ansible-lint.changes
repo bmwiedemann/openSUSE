@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 12 07:15:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.12.2:
+  * Bugfixes
+    - Use XDG_CACHE_HOME instead of XDG_CONFIG_CACHE (#3009) @gangefors
+    - Adding galaxy[tag] check for required tags (#3006) @alisonlhart
+    - Fix playbook/rulebook detection (#3005) @apatard
+    - Improved documentation building (#3007) @ssbarnea
+    - Rename meta-unsupported-ansible to meta-runtime and correct its logic (#3000) @alisonlhart
+    - Avoid stack trace caused by bad filename matching pattern (#3001) @ssbarnea
+    - Embed ansible_compat in linter (#2994) @ssbarnea
+    - Bump cryptography to 39.0.1 (#2996) @ssbarnea
+    - Keep jinja2 leading spaces (#2993) @ssbarnea
+    - Add schema[moves] messages for moved plugins (#2992) @ssbarnea
+    - Updated galaxy rule imports and improved code coverage (#2985) @ajinkyau
+
+-------------------------------------------------------------------
 Sat Feb  4 12:29:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.12.1:

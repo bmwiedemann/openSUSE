@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-settings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -28,16 +28,17 @@ URL:            https://docs.xfce.org/xfce/xfce4-settings/start
 Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.18/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(garcon-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(exo-2) >= 0.11.0
+BuildRequires:  pkgconfig(fontconfig) >= 2.6.0
+BuildRequires:  pkgconfig(garcon-1) >= 0.1.10
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.13
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
 BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(x11)

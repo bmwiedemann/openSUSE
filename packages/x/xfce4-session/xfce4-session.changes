@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:27:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.1
+  * Update copyright year
+  * Fix bus name acquisition/ownership (#54, !34)
+  * Use XfceScreensaver from Libxfce4ui (!35)
+  * build: Fix previous commit
+  * build: Fix autotools warnings
+  * Avoid duplicating directories in the tail of $XDG_* envs (#111, !21)
+  * settings: Fix memory leak
+  * libxfsm: Fix wrong return value
+  * Fix memory leaks when opening xfce4-session-settings
+  * Fix blurry session snapshots (!33)
+  * Fix blurry icons in autostart tab when UI scale > 1 (!33)
+  * build: Fix GTK deprecation warnings (!32)
+  * build: Fix some other GDK deprecation warnings (!32)
+  * build: Fix gdk_error_trap_push/pop() deprecation warnings (!32)
+  * build: Let xdt-depends.m4 macros set GLib macros (!32)
+  * build: Remove GDK_VERSION_MIN_REQUIRED/MAX_ALLOWED (!32)
+  * Make use of translations for run hooks (Fixes #156)
+  * Translation Updates
+- Regenerate xfce4-session-adapt-session-scripts-git.patch and
+  xfce4-session-adapt-session-scripts.patch
+- Remove two stray comments about add-light-locker-support patches
+
+-------------------------------------------------------------------
 Thu Dec 22 13:18:02 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0

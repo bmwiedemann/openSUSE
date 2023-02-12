@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  5 03:51:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.1:
+  * Improvements on performance and expressiveness
+  * support for Apple ARM-based hardware (arm64_apple target);
+  * support for thread-local storage;
+  * a new blit instruction to copy small aggregates;
+  * a new hlt instruction to flag non-termination;
+  * a new stack slot coalescing optimization. 
+
+-------------------------------------------------------------------
 Tue Jan 31 12:08:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove BuildRequires since c_compiler, glibc, and glibc-devel are

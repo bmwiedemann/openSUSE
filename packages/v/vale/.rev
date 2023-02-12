@@ -138,4 +138,20 @@
   * chore: use `docker buildx` (forwarded request 1059441 from jfkw)</comment>
     <requestid>1059449</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6817e588f0bae90f01d1dbf09a6d5b0</srcmd5>
+    <version>2.23.0</version>
+    <time>1676225664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.23.0:
+  * fix: create `lintTxt`
+  * chore: update go.mod
+  * feat: add `--filter`
+  * feat: Add pre-commit support (#558)
+  * chore: update runner name
+  * Add `perf` workflow
+  * docs: fix typos (#553)
+  * chore: set version for Docker (forwarded request 1064423 from jfkw)</comment>
+    <requestid>1064425</requestid>
+  </revision>
 </revisionlist>

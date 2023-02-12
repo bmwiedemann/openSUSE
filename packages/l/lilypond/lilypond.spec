@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 ExcludeArch:    i586
 
 Name:           lilypond
-Version:        2.24.0
+Version:        2.24.1
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later

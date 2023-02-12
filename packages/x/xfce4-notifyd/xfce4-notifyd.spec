@@ -17,27 +17,29 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://docs.xfce.org/apps/notifyd/start
-Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.7/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.8/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  exo-tools
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.34
 Requires:       libnotify-tools
 Requires:       xfce4-notifyd-branding = %{version}-%{release}
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -91,6 +93,7 @@ rm -rf %{buildroot}
 %{_bindir}/xfce4-notifyd-config
 %{_datadir}/applications/xfce4-notifyd-config.desktop
 %{_datadir}/icons/hicolor/*/apps/org.xfce.notification.*
+%{_datadir}/icons/hicolor/scalable/status/org.xfce.notification.*
 %{_datadir}/icons/hicolor/scalable/status/notification-*symbolic.svg
 %dir %{_datadir}/themes/*
 %dir %{_datadir}/themes/*/xfce-notify-4.0

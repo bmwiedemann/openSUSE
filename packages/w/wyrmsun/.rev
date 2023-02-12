@@ -172,4 +172,14 @@
     <comment></comment>
     <requestid>974179</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9aafdd68c62f9180077fbb7259d2f61c</srcmd5>
+    <version>5.3.6</version>
+    <time>1676225648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.6:
+  * https://github.com/Andrettin/Wyrmsun/compare/v5.3.5...v5.3.6 
+</comment>
+    <requestid>1061668</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond-doc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ ExcludeArch:    i586
 ExcludeArch:    i586 aarch64 ppc64le s390x
 %endif
 Name:           lilypond-doc
-Version:        2.24.0
+Version:        2.24.1
 Release:        0
 Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only

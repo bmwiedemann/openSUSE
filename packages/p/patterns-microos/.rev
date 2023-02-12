@@ -599,4 +599,17 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   GNOME Desktop (boo#1205108)</comment>
     <requestid>1064003</requestid>
   </revision>
+  <revision rev="62" vrev="62">
+    <srcmd5>a54715adf8d84707e4d9893407f0cd08</srcmd5>
+    <version>5.0</version>
+    <time>1676225647</time>
+    <user>dimstar_suse</user>
+    <comment>- Add thunderbolt device management to desktop-common (boo#1208150) 
+
+- Add baloo5-file to kde pattern, missed as a recommended in
+  pattern, required for a number of desktop search functions
+
+- Remove redundant gnome-system-monitor (boo#1205108)</comment>
+    <requestid>1064386</requestid>
+  </revision>
 </revisionlist>

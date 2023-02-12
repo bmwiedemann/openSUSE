@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -37,11 +37,18 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
+Recommends:     ghostscript
+Recommends:     libxml2-tools
+Recommends:     poppler-tools
+Recommends:     python-certifi
+Recommends:     (%{python_flavor}-matplotlib-tk if tk)
+Provides:       python-matplotlib-gtk = %{version}
+Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION build
-BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
@@ -57,23 +64,16 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 # SECTION runtime
-Requires:       python-contourpy >= 1.0.1
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
 Requires:       python-Pillow >= 6.2.0
+Requires:       python-contourpy >= 1.0.1
 Requires:       python-kiwisolver >= 1.0.1
 Requires:       python-numpy >= 1.19
 Requires:       python-packaging >= 20.0
 Requires:       python-pyparsing > 2.2.1
 Requires:       python-python-dateutil >= 2.7
 # /SECTION
-Recommends:     ghostscript
-Recommends:     libxml2-tools
-Recommends:     poppler-tools
-Recommends:     python-certifi
-Recommends:     (%{python_flavor}-matplotlib-tk if tk)
-Provides:       python-matplotlib-gtk = %{version}
-Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION test
 %if %{with test}
 BuildRequires:  %{python_module matplotlib = %{version}}

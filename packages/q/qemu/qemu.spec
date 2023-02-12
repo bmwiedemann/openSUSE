@@ -152,6 +152,9 @@ Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
 Source201:      DSDT.pcie
+Source202:      APIC.core-count2
+Source203:      DSDT.core-count2
+Source204:      FACP.core-count2
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -194,15 +197,33 @@ Patch00030:     linux-user-remove-conditionals-for-many-.patch
 Patch00031:     meson-enforce-a-minimum-Linux-kernel-hea.patch
 Patch00032:     linux-user-drop-conditionals-for-obsolet.patch
 Patch00033:     block-io_uring-revert-Use-io_uring_regis.patch
-Patch00034:     pc-q35-Bump-max_cpus-to-1024.patch
-Patch00035:     configure-Add-Wno-gnu-variable-sized-typ.patch
-Patch00036:     Update-linux-headers-to-v6.0-rc4.patch
-Patch00037:     s390x-pci-add-routine-to-get-host-functi.patch
-Patch00038:     s390x-pci-enable-for-load-store-interpre.patch
-Patch00039:     s390x-pci-don-t-fence-interpreted-device.patch
-Patch00040:     s390x-pci-enable-adapter-event-notificat.patch
-Patch00041:     s390x-pci-let-intercept-devices-have-sep.patch
-Patch00042:     s390x-pci-reflect-proper-maxstbl-for-gro.patch
+Patch00034:     hw-smbios-support-for-type-8-port-connec.patch
+Patch00035:     hw-smbios-add-core_count2-to-smbios-tabl.patch
+Patch00036:     openSUSE-pc-q35-Bump-max_cpus-to-1024.patch
+Patch00037:     bios-tables-test-teach-test-to-use-smbio.patch
+Patch00038:     tests-acpi-allow-changes-for-core_count2.patch
+Patch00039:     bios-tables-test-add-test-for-number-of-.patch
+Patch00040:     tests-acpi-update-tables-for-new-core-co.patch
+Patch00041:     configure-Add-Wno-gnu-variable-sized-typ.patch
+Patch00042:     Update-linux-headers-to-v6.0-rc4.patch
+Patch00043:     s390x-pci-add-routine-to-get-host-functi.patch
+Patch00044:     s390x-pci-enable-for-load-store-interpre.patch
+Patch00045:     s390x-pci-don-t-fence-interpreted-device.patch
+Patch00046:     s390x-pci-enable-adapter-event-notificat.patch
+Patch00047:     s390x-pci-let-intercept-devices-have-sep.patch
+Patch00048:     s390x-pci-reflect-proper-maxstbl-for-gro.patch
+Patch00049:     module-removed-unused-function-argument-.patch
+Patch00050:     module-rename-module_load_one-to-module_.patch
+Patch00051:     module-add-Error-arguments-to-module_loa.patch
+Patch00052:     dmg-warn-when-opening-dmg-images-contain.patch
+Patch00053:     accel-abort-if-we-fail-to-load-the-accel.patch
+Patch00054:     s390x-tod-kvm-don-t-save-restore-the-TOD.patch
+Patch00055:     hw-display-qxl-Have-qxl_log_command-Retu.patch
+Patch00056:     hw-display-qxl-Document-qxl_phys2virt.patch
+Patch00057:     hw-display-qxl-Pass-requested-buffer-siz.patch
+Patch00058:     hw-display-qxl-Avoid-buffer-overrun-in-q.patch
+Patch00059:     ui-vnc-clipboard-fix-integer-underflow-i.patch
+Patch00060:     hw-acpi-erst.c-Fix-memory-handling-issue.patch
 # Patches applied in roms/seabios/:
 Patch01000:     openSUSE-switch-to-python3-as-needed.patch
 Patch01001:     openSUSE-build-enable-cross-compilation-.patch
@@ -2317,6 +2338,10 @@ cd %blddir
 # package sources, and put it in place now, before the tests themselves.
 # If that patch is removed, the following line needs to go as well.
 cp %{SOURCE201} %{srcdir}/tests/data/acpi/microvm/
+
+# Patch 'tests/acpi: update tables for new core count test' requires some new
+# binaries to be introcuded too. Let's copy them in place as well
+cp %{SOURCE202} %{SOURCE203} %{SOURCE204} %{srcdir}/tests/data/acpi/q35/
 
 %if 0%{?qemu_user_space_build}
 # Seccomp is not supported by linux-user emulation

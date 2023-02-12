@@ -508,6 +508,8 @@
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fwupd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="galculator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="galculator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gcab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3003,8 +3005,6 @@
     <package name="oxygen5-sounds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="package-update-indicator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="package-update-indicator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

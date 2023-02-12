@@ -1,0 +1,56 @@
+From: Nico Boehr <nrb@linux.ibm.com>
+Date: Wed, 12 Oct 2022 14:32:29 +0200
+Subject: s390x/tod-kvm: don't save/restore the TOD in PV guests
+
+Under PV, the guest's TOD clock is under control of the ultravisor and the
+hypervisor cannot change it.
+
+With upcoming kernel changes[1], the Linux kernel will reject QEMU's
+request to adjust the guest's clock in this case, so don't attempt to set
+the clock.
+
+This avoids the following warning message on save/restore of a PV guest:
+
+warning: Unable to set KVM guest TOD clock: Operation not supported
+
+[1] https://lore.kernel.org/all/20221011160712.928239-2-nrb@linux.ibm.com/
+
+Fixes: c3347ed0d2ee ("s390x: protvirt: Support unpack facility")
+Signed-off-by: Nico Boehr <nrb@linux.ibm.com>
+Message-Id: <20221012123229.1196007-1-nrb@linux.ibm.com>
+[thuth: Add curly braces]
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+(cherry picked from commit 38621181ae3cbec62e3490fbc14f6ac01642d07a)
+Resolves: bsc#1206527
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/s390x/tod-kvm.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/hw/s390x/tod-kvm.c b/hw/s390x/tod-kvm.c
+index 9d0cbfbce2bf56b3593d712bd082..e2202dae2dc203a2848a3d0faaaf 100644
+--- a/hw/s390x/tod-kvm.c
++++ b/hw/s390x/tod-kvm.c
+@@ -13,6 +13,7 @@
+ #include "qemu/module.h"
+ #include "sysemu/runstate.h"
+ #include "hw/s390x/tod.h"
++#include "hw/s390x/pv.h"
+ #include "kvm/kvm_s390x.h"
+ 
+ static void kvm_s390_get_tod_raw(S390TOD *tod, Error **errp)
+@@ -84,6 +85,14 @@ static void kvm_s390_tod_vm_state_change(void *opaque, bool running,
+     S390TODState *td = opaque;
+     Error *local_err = NULL;
+ 
++    /*
++     * Under PV, the clock is under ultravisor control, hence we cannot restore
++     * it on resume.
++     */
++    if (s390_is_pv()) {
++        return;
++    }
++
+     if (running && td->stopped) {
+         /* Set the old TOD when running the VM - start the TOD clock. */
+         kvm_s390_set_tod_raw(&td->base, &local_err);

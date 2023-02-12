@@ -152,6 +152,9 @@ Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
 Source201:      DSDT.pcie
+Source202:      APIC.core-count2
+Source203:      DSDT.core-count2
+Source204:      FACP.core-count2
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -2250,6 +2253,10 @@ cd %blddir
 # package sources, and put it in place now, before the tests themselves.
 # If that patch is removed, the following line needs to go as well.
 cp %{SOURCE201} %{srcdir}/tests/data/acpi/microvm/
+
+# Patch 'tests/acpi: update tables for new core count test' requires some new
+# binaries to be introcuded too. Let's copy them in place as well
+cp %{SOURCE202} %{SOURCE203} %{SOURCE204} %{srcdir}/tests/data/acpi/q35/
 
 %if 0%{?qemu_user_space_build}
 # Seccomp is not supported by linux-user emulation

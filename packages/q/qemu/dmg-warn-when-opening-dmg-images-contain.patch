@@ -1,0 +1,46 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 29 Sep 2022 11:30:34 +0200
+Subject: dmg: warn when opening dmg images containing blocks of unknown type
+
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20220929093035.4231-5-cfontana@suse.de>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+(cherry picked from commit 971974f0a9745a5163e1c825d38da03118054ae2)
+Resolves: bsc#1208139
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ block/dmg.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/block/dmg.c b/block/dmg.c
+index 837f18aa20ff7ebb35f961a9626c..96f8c2d14f004d0901d72d00b551 100644
+--- a/block/dmg.c
++++ b/block/dmg.c
+@@ -254,6 +254,25 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
+     for (i = s->n_chunks; i < s->n_chunks + chunk_count; i++) {
+         s->types[i] = buff_read_uint32(buffer, offset);
+         if (!dmg_is_known_block_type(s->types[i])) {
++            switch (s->types[i]) {
++            case UDBZ:
++                warn_report_once("dmg-bzip2 module is missing, accessing bzip2 "
++                                 "compressed blocks will result in I/O errors");
++                break;
++            case ULFO:
++                warn_report_once("dmg-lzfse module is missing, accessing lzfse "
++                                 "compressed blocks will result in I/O errors");
++                break;
++            case UDCM:
++            case UDLE:
++                /* Comments and last entry can be ignored without problems */
++                break;
++            default:
++                warn_report_once("Image contains chunks of unknown type %x, "
++                                 "accessing them will result in I/O errors",
++                                 s->types[i]);
++                break;
++            }
+             chunk_count--;
+             i--;
+             offset += 40;

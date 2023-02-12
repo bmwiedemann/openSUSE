@@ -1,0 +1,172 @@
+From: Hal Martin <hal.martin@gmail.com>
+Date: Fri, 12 Aug 2022 15:51:53 +0200
+Subject: hw/smbios: support for type 8 (port connector)
+
+PATCH v1: add support for SMBIOS type 8 to qemu
+PATCH v2: incorporate patch v1 feedback and add smbios type=8 to qemu-options
+
+internal_reference: internal reference designator
+external_reference: external reference designator
+connector_type: hex value for port connector type (see SMBIOS 7.9.2)
+port_type: hex value for port type (see SMBIOS 7.9.3)
+
+After studying various vendor implementationsi (Dell, Lenovo, MSI),
+the value of internal connector type was hard-coded to 0x0 (None).
+
+Example usage:
+-smbios type=8,internal_reference=JUSB1,external_reference=USB1,connector_type=0x12,port_type=0x10 \
+-smbios type=8,internal_reference=JAUD1,external_reference="Audio Jack",connector_type=0x1f,port_type=0x1d \
+-smbios type=8,internal_reference=LAN,external_reference=Ethernet,connector_type=0x0b,port_type=0x1f \
+-smbios type=8,internal_reference=PS2,external_reference=Mouse,connector_type=0x0f,port_type=0x0e \
+-smbios type=8,internal_reference=PS2,external_reference=Keyboard,connector_type=0x0f,port_type=0x0d
+
+Signed-off-by: Hal Martin <hal.martin@gmail.com>
+
+Message-Id: <20220812135153.17859-1-hal.martin@gmail.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit fd8caa253c56ed126c09d3b9cc682753ff12218f)
+References: bsc#1202282, jsc#PED-2592
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/smbios/smbios.c           | 63 ++++++++++++++++++++++++++++++++++++
+ include/hw/firmware/smbios.h | 10 ++++++
+ qemu-options.hx              |  2 ++
+ 3 files changed, 75 insertions(+)
+
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 59091c8454bf6d8d05c4c8313753..417d65471704ee6babaebb2ba02e 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -111,6 +111,13 @@ static struct {
+     .processor_id = 0,
+ };
+ 
++struct type8_instance {
++    const char *internal_reference, *external_reference;
++    uint8_t connector_type, port_type;
++    QTAILQ_ENTRY(type8_instance) next;
++};
++static QTAILQ_HEAD(, type8_instance) type8 = QTAILQ_HEAD_INITIALIZER(type8);
++
+ static struct {
+     size_t nvalues;
+     char **values;
+@@ -337,6 +344,29 @@ static const QemuOptDesc qemu_smbios_type4_opts[] = {
+     { /* end of list */ }
+ };
+ 
++static const QemuOptDesc qemu_smbios_type8_opts[] = {
++    {
++        .name = "internal_reference",
++        .type = QEMU_OPT_STRING,
++        .help = "internal reference designator",
++    },
++    {
++        .name = "external_reference",
++        .type = QEMU_OPT_STRING,
++        .help = "external reference designator",
++    },
++    {
++        .name = "connector_type",
++        .type = QEMU_OPT_NUMBER,
++        .help = "connector type",
++    },
++    {
++        .name = "port_type",
++        .type = QEMU_OPT_NUMBER,
++        .help = "port type",
++    },
++};
++
+ static const QemuOptDesc qemu_smbios_type11_opts[] = {
+     {
+         .name = "value",
+@@ -718,6 +748,26 @@ static void smbios_build_type_4_table(MachineState *ms, unsigned instance)
+     smbios_type4_count++;
+ }
+ 
++static void smbios_build_type_8_table(void)
++{
++    unsigned instance = 0;
++    struct type8_instance *t8;
++
++    QTAILQ_FOREACH(t8, &type8, next) {
++        SMBIOS_BUILD_TABLE_PRE(8, T0_BASE + instance, true);
++
++        SMBIOS_TABLE_SET_STR(8, internal_reference_str, t8->internal_reference);
++        SMBIOS_TABLE_SET_STR(8, external_reference_str, t8->external_reference);
++        /* most vendors seem to set this to None */
++        t->internal_connector_type = 0x0;
++        t->external_connector_type = t8->connector_type;
++        t->port_type = t8->port_type;
++
++        SMBIOS_BUILD_TABLE_POST;
++        instance++;
++    }
++}
++
+ static void smbios_build_type_11_table(void)
+ {
+     char count_str[128];
+@@ -1030,6 +1080,7 @@ void smbios_get_tables(MachineState *ms,
+             smbios_build_type_4_table(ms, i);
+         }
+ 
++        smbios_build_type_8_table();
+         smbios_build_type_11_table();
+ 
+ #define MAX_DIMM_SZ (16 * GiB)
+@@ -1381,6 +1432,18 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+                            UINT16_MAX);
+             }
+             return;
++        case 8:
++            if (!qemu_opts_validate(opts, qemu_smbios_type8_opts, errp)) {
++                return;
++            }
++            struct type8_instance *t;
++            t = g_new0(struct type8_instance, 1);
++            save_opt(&t->internal_reference, opts, "internal_reference");
++            save_opt(&t->external_reference, opts, "external_reference");
++            t->connector_type = qemu_opt_get_number(opts, "connector_type", 0);
++            t->port_type = qemu_opt_get_number(opts, "port_type", 0);
++            QTAILQ_INSERT_TAIL(&type8, t, next);
++            return;
+         case 11:
+             if (!qemu_opts_validate(opts, qemu_smbios_type11_opts, errp)) {
+                 return;
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 4b7ad77a44f0622dccda24e41eb6..e7d386f7c837b16f341aba22bcf8 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -189,6 +189,16 @@ struct smbios_type_4 {
+     uint16_t processor_family2;
+ } QEMU_PACKED;
+ 
++/* SMBIOS type 8 - Port Connector Information */
++struct smbios_type_8 {
++    struct smbios_structure_header header;
++    uint8_t internal_reference_str;
++    uint8_t internal_connector_type;
++    uint8_t external_reference_str;
++    uint8_t external_connector_type;
++    uint8_t port_type;
++} QEMU_PACKED;
++
+ /* SMBIOS type 11 - OEM strings */
+ struct smbios_type_11 {
+     struct smbios_structure_header header;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 31c04f7eea0b2401249eee86ac3b..ba5a3226d7e5d3550583b0fe1e2b 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2548,6 +2548,8 @@ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
+     "              [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]\n"
+     "              [,processor-id=%d]\n"
+     "                specify SMBIOS type 4 fields\n"
++    "-smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]\n"
++    "                specify SMBIOS type 8 fields\n"
+     "-smbios type=11[,value=str][,path=filename]\n"
+     "                specify SMBIOS type 11 fields\n"
+     "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"

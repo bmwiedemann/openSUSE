@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywlroots
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/flacjacket/pywlroots
 Source0:        https://files.pythonhosted.org/packages/source/p/pywlroots/pywlroots-%{version}.tar.gz
 Source1:        python-pywlroots-rpmlintrc
-Patch0:         fix-include-paths.patch
+# Patch0:         fix-include-paths.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module distutils-extra}
@@ -54,15 +54,15 @@ Python binding to the wlroots library using cffi.
 
 %prep
 %setup -q -n pywlroots-%{version}
-%patch0 -p1
+#%%patch0 -p1
 
 %build
-export CFLAGS="-I/usr/include/wayland -I/usr/include/libdrm -I/usr/include/libxkbcommon -I/usr/include/pixman-1 -I/usr/include/libinput $CFLAGS"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client xkbcommon pixman-1 libinput libdrm)"
 %python_exec wlroots/ffi_build.py
 %pyproject_wheel
 
 %install
-export CFLAGS="-I/usr/include/wayland -I/usr/include/libdrm -I/usr/include/libxkbcommon -I/usr/include/pixman-1 -I/usr/include/libinput $CFLAGS"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client xkbcommon pixman-1 libinput libdrm)"
 %python_exec wlroots/ffi_build.py
 %pyproject_install
 
@@ -70,7 +70,7 @@ export CFLAGS="-I/usr/include/wayland -I/usr/include/libdrm -I/usr/include/libxk
 
 %if %{with test}
 %check
-export CFLAGS="-I/usr/include/wayland -I/usr/include/libdrm -I/usr/include/libxkbcommon -I/usr/include/pixman-1 -I/usr/include/libinput $CFLAGS"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client xkbcommon pixman-1 libinput libdrm)"
 %pytest -vv
 %endif
 

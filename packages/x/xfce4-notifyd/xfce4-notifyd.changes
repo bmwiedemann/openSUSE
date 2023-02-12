@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Feb 11 08:50:33 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.8.0:
+  * Notification windows don't need to be override-redirect
+  * Reposition notifications when workarea changes
+  * Add setting to allow ignoring app-specified expire timeout
+  * Add setting to never expire notifications
+  * Update log viewer in settings when log changes on disk
+  * Fix one more unnecessary full count of unread messages
+  * Update log entry icons when marking all read
+  * Remove unused var
+  * Use new unread emblem for icons in log
+  * Stop checking if there are unread notifications as often
+  * Improve the panel icon when there are unread notifications
+  * Make the log max size a little friendlier
+  * Remove warning about high log size limit
+  * Add ability to mark individual log entries read
+  * Add emblem to icon of unread messages in log
+  * Make migrating the old log file more robust
+  * Remove bool returns from the log write functions
+  * Improve unread handling
+  * Make max-log-size option work again
+  * Add missing finalize for 'delete all' sqlite statement
+  * Implement progressive loading for log viewer
+  * Move log viewer to its own widget/file
+  * Add options for what to do when opening the plugin menu
+  * Add option to only show unread notifications in plugin menu
+  * Reduce some error-checking boilerplate
+  * Glade-ify the plugin settings dialog
+  * Queue writes to sqlite database
+  * settings: don't bail if libnotify init fails
+  * Fix deprecated unitless font-size in ZOMG-PONIES! theme
+  * Rearrange settings dialog
+  * Add ability to delete individual log entries
+  * Update my copyright & email
+  * Add timestamp formatting options
+  * Clean up extraneous things in settings glade file
+  * Add "Mark All Read" button to settings and panel plugin
+  * Move notification log to sqlite
+  * Set default debug based on git/not-git
+  * Remove configure.ac from gitignore
+  * Eliminate need for pre-processed configure.ac.in
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Feb  2 08:55:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.7.3:

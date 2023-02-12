@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-power-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.66
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.2
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.100

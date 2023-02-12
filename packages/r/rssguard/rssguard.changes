@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Feb  8 20:35:40 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.3.2:
+  + Added:
+    - Display total number of underlying feeds/categories in account's tooltip
+      in feed list. (gh#martinrotter/rssguard#881)
+    - Press "CTRL+F" when article script textbox is highlighted in "Article
+      filters" dialog to allow for text searching. (gh#martinrotter/rssguard#889)
+    - Filtering option in article list toolbar are now inclusive with checkbox
+      like appearance. You can now thus select multiple filtering conditions
+      and if article meets atleast one of them, it is displayed. (gh#martinrotter/rssguard#468)
+    - WebEngine disk cache now can be disabled in settings. If it is "disabled"
+      then RSS Guard will use memory-based cache which is automatically
+      destroyed when RSS Guard exits. (gh#martinrotter/rssguard#725)
+    - Help spoilers now can display HTML help with clickable hyperlinks.
+    - Skins are now able to load custom TTF and OTF fonts and also skins now
+      are able to specify application-wide font. You can see sample usage of
+      this feature in sample skin.
+  + Fixed:
+    - Fixed crash when importing OPML files.
+    - Fixed looooong-standing hidden bug which could cause that labels
+      DEassigned from filters were not synchronized back to feed service if
+      supported.
+    - Enhanced information about "resources" in "About" dialog.
+- Update to version 4.3.1:
+  + Fixed:
+    - Reverted to Qt 6.3 for Windows 10+ builds due to some regressions AGAIN.
+    - Fixed TT-RSS icons downloading when obtaining list of feeds/folders.
+    - RSS Guard now converts all placeholders (for example "%data%") to native
+      path folder separators.
+- Update to version 4.3.0:
+  + Added:
+    - Massive update for feed fetching mechanism. It is now very parallelized
+      and performance gain should be brutal. On my development PC with 4 cores
+      (Intel i5) I observed 800 % performance boost. Note that this feature
+      required huge number of changes on source code so there could be some
+      corner case regressions or not so polished situations. File bug report
+      when that happens. Also, number of threads used by this feature is
+      configurable via --threads command line switch. This parallelization
+      approach will also be applied to some other parts of application in the
+      future, particularly for some massive batched network operations in some
+      plugin - TT-RSS, Greader or Gmail - which will result in massive
+      performance boost too.
+    - RSS Guard is now available on Flathub in two distinct variants - "full"
+      and "lite" (same as "nonwebengine").
+    - Suffix ".xml" is also accepted for OPML 2.0 files.
+    - Brutal speed enhancements when importing OPML 2.0 files. Whole
+      functionality is now properly parallelized and performance boost is
+      potentially massive, depending on number of your CPU cores/threads.
+    - Qt 6 bumped to 6.4.2 version - this fixes some regressions.
+  + Fixed:
+    - Some random Mac OS X crash. (gh#martinrotter/rssguard#866)
+- Update to version 4.2.6:
+  + Added:
+    - Bunch of premade sample article filters added to "Article filters" window.
+    - Placeholders in external tools definitions can be now arbitrarily placed.
+    - Article RSS enclosures can now be added from within article filters.
+    - Added customizable skin color for feeds with NEW articles. So now it is
+      possible to distinguish between NEW and UNREAD (but old) articles. (gh#martinrotter/rssguard#850)
+    - Added application debug log dialog. See "Help" menu for more.
+    - Too big fetched feed icons are now automatically scaled down to fixed
+      size (48x48).
+    - Now it is possible to run post-process script when importing OPML. (gh#martinrotter/rssguard#848)
+    - Now it is possible to change "User-Agent" HTTP header. (gh#martinrotter/rssguard#835)
+    - Added now column into article list which shows labels for each article. (gh#martinrotter/rssguard#768)
+    - Now it is possible to "suppress" feed. Suppressed feeds do not trigger
+      notifications. (gh#martinrotter/rssguard#745)
+  + Fixed:
+    - HTML detection on the QTextBrowser viewer is now more precise. (gh#martinrotter/rssguard#813)
+    - Article decoding for Nextcloud News works better. (gh#martinrotter/rssguard#814)
+    - Inoreader built-in API tokens are removed, because they were abused.
+    - Default AdBlock lists now have corrected URL addresses.
+    - Fixed full-article scraper "scrape-full-articles.py".
+    - Do some preparations and code cleanups for adding "lite" RSS Guard
+      variant to Flathub.
+    - Nextcloud News plugin processes "mediaThumbnail" and "mediaDescription"
+      when parsing articles. (gh#martinrotter/rssguard#831)
+    - Avoid appending empty RSS enclosures to articles. (gh#martinrotter/rssguard#832)
+    - AppImage reverted to Qt 5 as Qt 6 support in AppImage generator is very
+      very buggy.
+    - All dialogs where icons/images are selected now load their "formats"
+      dynamically to support all possible image formats correctly. (gh#martinrotter/rssguard#834) This
+      effectivelly adds "webp" and other formats on systems where it is
+      supported.
+    - Fixed crash. (gh#martinrotter/rssguard#849)
+    - Enable smooth-scrolling by default. (gh#martinrotter/rssguard#793)
+
+-------------------------------------------------------------------
 Mon Nov 21 13:15:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.2.5:

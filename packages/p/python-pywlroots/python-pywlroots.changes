@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 12 00:14:15 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove fix-include-paths.patch
+
+-------------------------------------------------------------------
+Sat Feb  4 15:21:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use pkg-config and %optflags for CFLAGS.
+
+-------------------------------------------------------------------
 Mon Dec 12 08:24:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Fix build: pick up a compatible verison of wlroots boo#1206305

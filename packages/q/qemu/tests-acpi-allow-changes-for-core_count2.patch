@@ -1,0 +1,38 @@
+From: Julia Suvorova <jusual@redhat.com>
+Date: Tue, 11 Oct 2022 13:17:29 +0200
+Subject: tests/acpi: allow changes for core_count2 test
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Message-Id: <20220731162141.178443-4-jusual@redhat.com>
+Message-Id: <20221011111731.101412-4-jusual@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+(cherry picked from commit 159a0da5b0bd660f8a70bca4e3c2bd4c863eaf1a)
+References: bsc#1202282, jsc#PED-2592
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ tests/data/acpi/q35/APIC.core-count2        | 0
+ tests/data/acpi/q35/DSDT.core-count2        | 0
+ tests/data/acpi/q35/FACP.core-count2        | 0
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 4 files changed, 3 insertions(+)
+
+diff --git a/tests/data/acpi/q35/APIC.core-count2 b/tests/data/acpi/q35/APIC.core-count2
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/tests/data/acpi/q35/DSDT.core-count2 b/tests/data/acpi/q35/DSDT.core-count2
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/tests/data/acpi/q35/FACP.core-count2 b/tests/data/acpi/q35/FACP.core-count2
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8bf457c471cea8d860ef..e81dc67a2e52bc6553494325d248 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,4 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/q35/APIC.core-count2",
++"tests/data/acpi/q35/DSDT.core-count2",
++"tests/data/acpi/q35/FACP.core-count2",

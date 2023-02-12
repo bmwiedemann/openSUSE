@@ -7,4 +7,12 @@
     <comment>I want to add qbe to openSUSE:Factory</comment>
     <requestid>1062561</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c88124ac2106976009c58a2f3bcd0d4</srcmd5>
+    <version>1.1</version>
+    <time>1676225667</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064443</requestid>
+  </revision>
 </revisionlist>

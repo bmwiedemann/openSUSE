@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  8 18:31:43 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.6.3:
+  * Fix Artist removal from axes_grid1 Axes classes
+  * Fix inset_locator in subfigures
+  * Fix scatter on masked arrays with units
+  * Fix colorbar ticks with log norm contours
+  * Fix deprecation warnings in GTK4 backend
+  * Fix using relative paths in HTMLWriter
+  * Improve failure message from rcParams string validation for tuple
+    inputs
+  * Improve performance of QtAgg backends
+  * No longer modify pil_kwargs argument to imsave and savefig
+
+-------------------------------------------------------------------
 Thu Dec 22 15:40:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.6.2

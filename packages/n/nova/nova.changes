@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 12 06:33:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.2:
+  * Update alpine (#197)
+- change _service file, as latest release is v3.6.2 (with a leading
+  "v"), not sure if this will stay this way...
+
+-------------------------------------------------------------------
 Fri Feb 10 06:13:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.1:

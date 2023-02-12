@@ -1,7 +1,7 @@
 #
 # spec file for package glab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,14 +27,14 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           glab
-Version:        1.22.0
+Version:        1.25.3
 Release:        0
 Summary:        An open-source GitLab command line tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/profclems/glab
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16

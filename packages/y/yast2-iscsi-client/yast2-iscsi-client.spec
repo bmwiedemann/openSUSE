@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-iscsi-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-iscsi-client
-Version:        4.5.6
+Version:        4.5.7
 Release:        0
 Summary:        YaST2 - iSCSI Client Configuration
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ BuildRequires:  update-desktop-files
 # Yast2::Systemd::Socket
 BuildRequires:  yast2 >= 4.1.3
 # needed for test of finish client which include installation/misc
-BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-installation
+BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-packager
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)

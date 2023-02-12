@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-xfce
-Version:        20210209
+Version:        20230212
 Release:        0
 Summary:        Patterns for Installation (Xfce)
 License:        MIT
@@ -67,7 +67,7 @@ Recommends:     parole
 Recommends:     blueman
 Recommends:     thunar-sendto-blueman
 Recommends:     file-roller
-Recommends:     gnome-calculator
+Recommends:     galculator
 Recommends:     gnome-disk-utility
 Recommends:     gucharmap
 Recommends:     lightdm
@@ -94,8 +94,13 @@ Recommends:     gdb
 Recommends:     system-config-printer
 Recommends:     system-config-printer-applet
 # bnc#537362
+
+# Currently only Leap supports this update method via packagekit
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 Recommends:     gnome-packagekit
 Recommends:     package-update-indicator
+%endif
+
 # bnc#537365
 Recommends:     gnome-keyring
 Recommends:     gnome-keyring-pam

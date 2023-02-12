@@ -4271,8 +4271,6 @@ unsorted:
   - gajim-lang 
   - gajim-plugin-omemo 
   - galaxis 
-  - galculator 
-  - galculator-lang 
   - galene 
   - galera-4 
   - galera-4-wsrep-provider 
@@ -14321,7 +14319,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_2_5 
+  - librssguard-4_3_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -19386,6 +19384,8 @@ unsorted:
   - packETH 
   - packETH-cli 
   - package-translations 
+  - package-update-indicator 
+  - package-update-indicator-lang 
   - packagekitqt5-devel 
   - packagekitqt6-devel 
   - packit 

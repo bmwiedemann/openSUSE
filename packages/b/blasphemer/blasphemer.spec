@@ -1,7 +1,7 @@
 #
 # spec file for package blasphemer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           blasphemer
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Replacement game files for Heretic game engines
 License:        BSD-3-Clause
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/Blasphemer
-#Old Url:       https://code.google.com/archive/p/blasphemer/
 Source:         https://github.com/Blasphemer/blasphemer/releases/download/v%{version}/blasphem-%{version}.zip
+Source2:        https://github.com/Blasphemer/blasphemer/releases/download/v%{version}/blasphdm-%{version}.zip
 BuildArch:      noarch
 BuildRequires:  unzip
 
@@ -33,16 +33,16 @@ Blasphemer aims to create a free content package for the Heretic engine,
 with a theme of metal-inspired dark fantasy.
 
 %prep
-%setup -q -c %{name}-%{version}
+%setup -Tcq -a0 -a2
 
 %build
 # Game data files. Nothing to build!
 
 %install
-install -Dpm0644 blasphem-%{version}.wad %{buildroot}%{_datadir}/doom/blasphem.wad
+mkdir -p "%{buildroot}/%{_datadir}/doom"
+cp -av *.wad "%{buildroot}/%{_datadir}/doom/"
 
 %files
-%dir %{_datadir}/doom/
-%{_datadir}/doom/blasphem.wad
+%{_datadir}/doom/
 
 %changelog

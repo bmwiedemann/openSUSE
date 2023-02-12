@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_2_5
+%define libver  4_3_2
 Name:           rssguard
-Version:        4.2.5
+Version:        4.3.2
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        AGPL-3.0-or-later AND GPL-3.0-only
@@ -68,7 +68,6 @@ Shared library for %{name} to be used by external plugins.
 %prep
 %autosetup -p1
 # remove executable bit
-chmod -x resources/desktop/com.github.rssguard.appdata.xml
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
@@ -79,7 +78,6 @@ find src/librssguard -name "*.h" -exec chmod -x {} \;
 %cmake_install
 # install autostart
 mkdir -pv %{buildroot}%{_datadir}/autostart
-install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
 
 %post -n lib%{name}-%{libver} -p /sbin/ldconfig
@@ -91,10 +89,9 @@ install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{build
 %dir %{_datadir}/autostart
 %dir %{_datadir}/metainfo
 %{_bindir}/%{name}
-%{_datadir}/applications/com.github.%{name}.desktop
-%{_datadir}/autostart/com.github.%{name}.desktop.autostart
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/metainfo/com.github.%{name}.appdata.xml
+%{_datadir}/applications/io.github.martinrotter.%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/io.github.martinrotter.%{name}.png
+%{_datadir}/metainfo/io.github.martinrotter.%{name}.metainfo.xml
 
 %files -n librssguard-devel
 %{_includedir}/lib%{name}

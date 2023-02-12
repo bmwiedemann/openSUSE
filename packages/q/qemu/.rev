@@ -3260,4 +3260,37 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>1061672</requestid>
   </revision>
+  <revision rev="245" vrev="10">
+    <srcmd5>e74ca9496d5ce8ade743ad014c97a375</srcmd5>
+    <version>7.1.0</version>
+    <time>1676225639</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed: bsc#1205847 (CVE-2022-4172), bsc#1203788 (CVE-2022-3165),
+  bsc#1205808 (CVE-2022-4144), bsc#1206527, bsc#1208139
+- Improved handling of: bsc#1202282 (jsc#PED-2592)
+* Patches dropped:
+  pc-q35-Bump-max_cpus-to-1024.patch
+* Patches added:
+  accel-abort-if-we-fail-to-load-the-accel.patch
+  bios-tables-test-add-test-for-number-of-.patch
+  bios-tables-test-teach-test-to-use-smbio.patch
+  dmg-warn-when-opening-dmg-images-contain.patch
+  hw-acpi-erst.c-Fix-memory-handling-issue.patch
+  hw-display-qxl-Avoid-buffer-overrun-in-q.patch
+  hw-display-qxl-Document-qxl_phys2virt.patch
+  hw-display-qxl-Have-qxl_log_command-Retu.patch
+  hw-display-qxl-Pass-requested-buffer-siz.patch
+  hw-smbios-add-core_count2-to-smbios-tabl.patch
+  hw-smbios-support-for-type-8-port-connec.patch
+  module-add-Error-arguments-to-module_loa.patch
+  module-removed-unused-function-argument-.patch
+  module-rename-module_load_one-to-module_.patch
+  openSUSE-pc-q35-Bump-max_cpus-to-1024.patch
+  s390x-tod-kvm-don-t-save-restore-the-TOD.patch
+  tests-acpi-allow-changes-for-core_count2.patch
+  tests-acpi-update-tables-for-new-core-co.patch
+  ui-vnc-clipboard-fix-integer-underflow-i.patch
+</comment>
+    <requestid>1064332</requestid>
+  </revision>
 </revisionlist>

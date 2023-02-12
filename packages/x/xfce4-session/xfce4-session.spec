@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2020-2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
@@ -28,11 +28,9 @@ Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.18/%{name}-%{v
 %if %{with git}
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts-git.patch bnc#789057 maurizio.galli@gmail.com-- Adapt upstream sessions script to openSUSE.
 Patch0:         xfce4-session-adapt-session-scripts-git.patch
-# PATCH-FIX-OPENSUSE add-light-locker-support.patch  maurizio.galli@gmail.com -- add light-locker to xflock4 script.
 %else
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts.patch bnc#789057 gber@opensuse.org -- Adapt upstream sessions script to openSUSE.
 Patch1:         xfce4-session-adapt-session-scripts.patch
-# PATCH-FIX-OPENSUSE add-light-locker-support.patch  -- add light-locker to xflock4 script.
 %endif
 BuildRequires:  fdupes
 BuildRequires:  iceauth
@@ -49,7 +47,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.10
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.1
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.2
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
@@ -62,14 +60,14 @@ Requires:       xfconf
 # bnc#845264
 Requires:       iceauth
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-lang = %{version}
 # minimal packages for an Xfce session
 Recommends:     xfwm4
-Recommends:     xfdesktop
 Recommends:     thunar
 Recommends:     xfce4-panel
+Recommends:     xfdesktop
 # xfce4-about needs to be dragged at a low level
 Recommends:     libxfce4ui-tools
 Obsoletes:      libxfsm-4_6-0 < %{version}
