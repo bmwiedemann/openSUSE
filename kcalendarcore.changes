@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Add Q_PROPERTY for IncidenceBase::url as well
+  * Avoid calling twice update() in setAttendees().
+  * Unbreak static build consumers
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0
