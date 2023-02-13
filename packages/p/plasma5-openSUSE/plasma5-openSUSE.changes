@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+
+-------------------------------------------------------------------
+Tue Jan 31 18:32:28 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Remove compatibility with KDE4
+
+-------------------------------------------------------------------
+Tue Jan 31 12:25:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 84.87~git20230131T131056~433af24:
+  * desktoptheme: Enable `AdaptiveTransparency`
+  * Use logo provided by distribution-logos-openSUSE-icons
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
-%define tar_version 04.02.02
+%define tar_version 04.02.03
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -92,6 +92,7 @@ make DESTDIR=%{buildroot} install
 /usr/share/remind/seasons.rem
 /usr/share/remind/holidays/ca.rem
 /usr/share/remind/holidays/fr.rem
+/usr/share/remind/holidays/gr.rem
 /usr/share/remind/holidays/jewish.rem
 /usr/share/remind/holidays/us.rem
 /usr/share/remind/lang/auto.rem
@@ -101,6 +102,7 @@ make DESTDIR=%{buildroot} install
 %lang(es) /usr/share/remind/lang/es.rem
 %lang(fi) /usr/share/remind/lang/fi.rem
 %lang(fr) /usr/share/remind/lang/fr.rem
+%lang(fr) /usr/share/remind/lang/gr.rem
 %lang(is) /usr/share/remind/lang/is.rem
 %lang(it) /usr/share/remind/lang/it.rem
 %lang(nl) /usr/share/remind/lang/nl.rem

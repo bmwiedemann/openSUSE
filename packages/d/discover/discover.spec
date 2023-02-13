@@ -21,15 +21,15 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -67,15 +67,15 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  cmake(Qt5WebView)
-%endif
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 %if %{have_fwupd}
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
 %endif
+# It can only build on the same platforms as Qt WebEngine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports
@@ -153,15 +153,11 @@ user to install them using Discover.
   # Even without the snap backend, this is installed...
   rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.desktop
 
-%if %{with released}
-  %find_lang libdiscover %{name}.lang
-  %find_lang plasma-discover %{name}.lang
+%find_lang libdiscover %{name}.lang
+%find_lang plasma-discover %{name}.lang
 
-  %find_lang plasma-discover-notifier notifier.lang
-  %find_lang kcm_updates notifier.lang
-%else
-  touch notifier.lang
-%endif
+%find_lang plasma-discover-notifier notifier.lang
+%find_lang kcm_updates notifier.lang
 
 %files
 %license LICENSES/*
@@ -179,12 +175,8 @@ user to install them using Discover.
 %{_kf5_plugindir}/discover/kns-backend.so
 %dir %{_kf5_sharedir}/libdiscover
 %dir %{_kf5_sharedir}/libdiscover/categories
-%dir %{_kf5_libexecdir}/discover
-%{_kf5_libexecdir}/discover/runservice
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files backend-packagekit
 %license LICENSES/*

@@ -27,7 +27,7 @@
 
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
-Version:        0.23.1
+Version:        0.24.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -58,6 +58,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio}
 # testing requires it for all flavors
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module importlib-metadata}
 # /SECITON
 %endif
 %python_subpackages
@@ -84,7 +85,15 @@ building high performance asyncio services.
 sed -i "s|--strict-config||" setup.cfg
 sed -i "s|--strict-markers||" setup.cfg
 sed -i "s| error$||" setup.cfg
-%pytest --asyncio-mode=strict
+
+# The following tests don't work in some archs because time_t cannot
+# hold the values the test expect, as they go beyond the maximum
+# value in i586 and armv7l. As we are using Buildarch: noarch, we
+# cannot just use ifarch conditionals here...
+ignored_tests="test_set_cookie"
+ignored_tests="$ignored_tests or test_expires_on_set_cookie"
+%pytest --asyncio-mode=strict -k "not ($ignored_tests)"
+
 %endif
 
 %if ! %{with test}

@@ -97,4 +97,51 @@
     <comment></comment>
     <requestid>1058067</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>90e5b5aac542c3fb3826acffbd01a8f5</srcmd5>
+    <version>0.91.0</version>
+    <time>1676302763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.91.0:
+  * Upgrades
+    - Upgrade Starlette version to 0.24.0 and refactor internals for
+      compatibility. This can solve nuanced errors when using 
+      middlewares. Before Starlette 0.24.0, a new instance of each
+      middleware class would be created when a new middleware was
+      added. That normally was not a problem, unless the middleware
+      class expected to be created only once, with only one 
+      instance, that happened in some cases. This upgrade would 
+      solve those cases. Now the middleware class instances are 
+      created once, right before the first request (the first time 
+      the app is called). If you depended on that previous behavior,
+      you might need to update your code. As always, make sure your
+      tests pass before merging the upgrade.
+- Update to 0.90.1:
+  * Upgrades
+    - Upgrade Starlette range to allow 0.23.1.
+  * Docs
+    - Tweak wording to clarify docs/en/docs/project-generation.md.
+    - Update Pydantic GitHub URLs.
+    - Add opinion from Cisco. 
+  * Translations
+    - Add Russian translation for docs/ru/docs/tutorial/cookie-params.md
+- Update to 0.90.0:
+  * Upgrades
+    - Bump Starlette from 0.22.0 to 0.23.0.
+  * Docs
+    - Add article &quot;Tortoise ORM / FastAPI 整合快速筆記&quot; to External 
+      Links. 
+    - Update FastAPI People.
+    - Micro-tweak help docs.
+    - Update new issue chooser to direct to GitHub Discussions.
+    - Recommend GitHub Discussions for questions.
+  * Translations
+    - Add Russian translation for docs/ru/docs/tutorial/body-fields.md.
+    - Add Russian translation for docs/ru/docs/help-fastapi.md.
+    - Add Portuguese translation for docs/pt/docs/tutorial/static-files.md.
+    - Add Portuguese translation for docs/pt/docs/tutorial/encoder.md.
+    - Add Russian translation for docs/ru/docs/contributing.md.
+</comment>
+    <requestid>1064387</requestid>
+  </revision>
 </revisionlist>

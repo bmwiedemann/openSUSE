@@ -548,4 +548,41 @@
     <comment>Sync changes with sle</comment>
     <requestid>979221</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bfc2c9597b48f3367e42b35d65bc74fc</srcmd5>
+    <version>2.8</version>
+    <time>1676302758</time>
+    <user>dimstar_suse</user>
+    <comment>- version 2.8
+  * Changes:
+    + FOP-2839: Links to pdf files with no scheme should open in pdf
+      viewer
+    + FOP-2860: Add light weight line breaking option
+    + FOP-2861: Allow resource loading from jar
+    + FOP-2865: Stroke-opacity is not honored on svg:text while
+      conveting svg to pdf
+    + FOP-2897: Skip OOM during font OS scanning
+    + FOP-2910: Remove cidset for PDF/A-2
+    + FOP-2969: Reorder glyphs with no width
+    + FOP-2977: Array index out of bounds with glyph position
+      adjustments and surrogate pairs
+    + FOP-3015: Set text color for simulate-style
+    + FOP-3023: Simulated bold error in Adobe Reader
+    + FOP-3048: Resolve links across IF files
+    + FOP-3049: Align AFP SVG text in the middle
+    + FOP-3051: Upgrade to Commons IO 2.11
+    + FOP-3053: Remove Xerces
+    + FOP-3055: Use a event for a draw image error
+    + FOP-3057: Allow fallback to non svg glyphs
+    + FOP-3061: AFP invoke-medium-map missing when using
+      page-group=false
+    + FOP-3062: AssertionError with SFArabic.ttf
+    + FOP-3067: README file still refers to bugzilla
+    + FOP-3068: NPE when reading a invalid TTC file
+    + FOP-3070: Batik is setting load-external-dtd to false so this
+      example doesnt work
+    + FOP-3071: Write mediummap before pagegroup
+    + FOP-3072: Empty link url gives NPE</comment>
+    <requestid>1061912</requestid>
+  </revision>
 </revisionlist>

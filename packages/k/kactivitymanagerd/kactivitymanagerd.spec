@@ -1,7 +1,7 @@
 #
 # spec file for package kactivitymanagerd
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,48 +12,45 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global kf5_version 5.98.0
 %global qt5_version 5.15.0
 
 %bcond_without released
 Name:           kactivitymanagerd
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Url:            http://projects.kde.org/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
+URL:            https://projects.kde.org/kactivitymanagerd
+Source:         kactivitymanagerd-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
-%endif
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.49.0
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
+BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_headers-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
-BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
@@ -62,7 +59,6 @@ BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Sql) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-Recommends:     %{name}-lang
 # for kactivitymanagerd_plugin_sqlite.so
 Requires:       libQt5Sql5-sqlite
 Provides:       kactivities4 = %{version}
@@ -87,16 +83,15 @@ Provides translations to the package %{name}.
 %setup -q -n kactivitymanagerd-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
 
-%if %{with released}
+%fdupes %{buildroot}
+
 %find_lang kactivities5
-%endif
 
 %post 
 /sbin/ldconfig
@@ -109,9 +104,7 @@ Provides translations to the package %{name}.
 /sbin/ldconfig
 %{systemd_user_postun plasma-kactivitymanagerd.service}
 
-%if %{with released}
 %files -n %name-lang -f kactivities5.lang
-%endif
 
 %files
 %license LICENSES/*

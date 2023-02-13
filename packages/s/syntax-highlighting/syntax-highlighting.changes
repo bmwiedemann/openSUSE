@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:13:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Log: fix slow search regex ; add Critical section ; some improvement in Log File (advanced) (kde#464424)
+  * Cobol: add extensions ; add exec sql block ; picture clause more permissive
+  * Cobol: replace tab with 2 spaces
+  * Add Zig language
+  * Add Cabal syntax
+  * Add Log File syntax
+  * avoid copies of Theme and QString in functions that manipulate themes
+  * FormatPrivate now contains a definition name rather than a reference to a definition
+  * add noexcept
+  * Theme::m_data is now always initialized with a valid pointer
+  * optimize ThemeData::textStyleOverride
+  * Replace DefinitionRef in StateData with a definition id
+  * Add COBOL syntax
+  * Indexer: suggest more minimal=1 or other rule for RegExpr with lookhaed=1 and .*
+  * Indexer: check xml validity
+  * feat: Add new syntax for `Earthfile`
+
+-------------------------------------------------------------------
 Thu Jan 12 08:19:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

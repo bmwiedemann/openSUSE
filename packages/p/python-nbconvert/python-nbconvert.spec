@@ -29,9 +29,8 @@
 %else
 %bcond_with libalternatives
 %endif
-
 Name:           python-nbconvert%{psuffix}
-Version:        7.2.8
+Version:        7.2.9
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -60,9 +59,6 @@ Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-tinycss2
 Requires:       python-traitlets >= 5.0
 Requires:       (python-mistune >= 2.0.3 with python-mistune < 3)
-%if 0%{python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 3.6
-%endif
 Recommends:     pandoc
 Recommends:     python-tornado >= 6.1
 Suggests:       %{name}-latex
@@ -70,6 +66,9 @@ Suggests:       python-qtwebengine-qt5 >= 5.15
 Provides:       python-jupyter_nbconvert = %{version}
 Obsoletes:      python-jupyter_nbconvert < %{version}
 BuildArch:      noarch
+%if 0%{python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6
+%endif
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

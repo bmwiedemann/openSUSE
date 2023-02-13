@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           baloo5
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -158,15 +158,13 @@ grep -E '/(kio5_baloosearch|kio5_tags|kio5_timeline).mo$' %{name}.lang >> %{name
 
 rm %{name}.lang
 
-%post -n libKF5Baloo5 -p /sbin/ldconfig
-%postun -n libKF5Baloo5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5Baloo5
 
 %post file %{systemd_user_post kde-baloo.service}
 %preun file %{systemd_user_preun kde-baloo.service}
 %postun file %{systemd_user_postun kde-baloo.service}
 
-%post -n libKF5BalooEngine5 -p /sbin/ldconfig
-%postun -n libKF5BalooEngine5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5BalooEngine5
 
 %files -n libKF5Baloo5
 %license LICENSES/*

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Tue Jan 31 08:36:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to actually disable sentry:
+  * 0001-Handle-WITH_SENTRY-correctly.patch
+- Add patch to avoid unnecessary dependencies of the gdb script:
+  * 0002-Make-python-distro-and-psutil-modules-in-the-gdb-pre.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * pass the bug id not the attachment id to the gui (kde#462432)
+  * remove pointless todo
+  * check telemetrymode
+  * Use qdbus to query for the hostname
+  * allow using debuginfod for symbol resolution with gdb12 (kde#454063)
+  * add some a11y annotations
+  * do not submit to sentry when the bugzilla url is overridden
+  * Install po folder
+  * Port away from deprecated KDeclarative::setupEngine
+- Avoid try-restarting a template unit in %postun
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

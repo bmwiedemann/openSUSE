@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jan 26 06:54:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Package and distribute the new ant-jakartamail
+
+-------------------------------------------------------------------
+Wed Jan 18 09:18:50 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update ant keyring with new developer keys.
+
+- Update to 1.10.13:
+  * Breaking changes:
+    - <get> has a new attribute authenticateOnRedirect that can be 
+      used to prevent Ant from sending the configured credentials 
+      when following a redirect. It is false by default, which means
+      builds that rely on credentials being used on the redirected 
+      URI may break.
+  * Fixed bugs:
+    - the PropertyEnumerator change introduced in 1.10.9 proved to 
+      be not fully backwards compatible when combined with certain 
+      custom PropertyHelper implementations - for example when using
+      AntXtras.
+    - legacy-xml reporter of the junitlauncher task now escapes ]]>
+      when writing CDATA.
+    - <scp> may leak connections when trying to preserve the last 
+      modified timestamps of files transferred recursively from a 
+      server.
+    - tstamp task would in certain cases parse the SOURCE_DATE_EPOCH
+      environment variable value to an incorrect date. This has now 
+      been fixed.
+    - fetch.xml didn't set up non-default repositories propery and 
+      thus failed to download JAI.
+    - When building and installing Ant distribution from source, the
+      build script would change permissions on unrelated files in 
+      the destination directory. This is now fixed and such 
+      unrelated files in the destination directory will be left 
+      untouched.
+    - parsing tar entries with multiple NUL bytes in their name 
+      would include garbage bytes as the name included all bytes up
+      to the last NUL rather than the first.
+    - loadresource might log warnings even though quiet was set to 
+      true
+    - javac task would add paths constructs containing wildcards to
+      the internally created argument file where wildcards are not
+      allowed
+  * Other changes:
+    - added an implementation of the MIME Mail sender based on the
+      repackaged Jakarta Mail package rather than javax Mail.  
+    - The "listener" element in the junitlauncher task now supports
+      an "extension" attribute to control the filename extension
+      of the generated output file from the listener.
+    - <ftp> now supports FTPs.
+    - DirectoryScanner avoids listing directory contents when it
+      known it will never use the information retrieved. This may
+      improve performance in some special cases.
+    - <manifest> will now create the parent directory of the
+      manifestFile attribute if it doesn't exist.
+    - org.apache.tools.ant.BuildLogger now has a new method 
+      getMessageOutputLevel() which returns the currently set 
+      message output level.
+
+-------------------------------------------------------------------
 Mon May  9 09:33:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Disable a test failing to compile with junit5 5.8.x

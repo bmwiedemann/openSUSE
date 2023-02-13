@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Remove winsami2 from codecs list
+  * Replace jis7 with ISO-2022-JP in offered codecs
+  * Fix name for CP 949 in KCharsets::encodingsByScript
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

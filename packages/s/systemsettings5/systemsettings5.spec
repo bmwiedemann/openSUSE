@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           systemsettings5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -59,8 +59,10 @@ BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(Qt5QuickWidgets) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 Requires:       kirigami2 >= 2.1
-Recommends:     %{name}-lang
 Provides:       qt5qmlimport(org.kde.systemsettings.1) = 0
+# Existed in KDE:Unstable:Frameworks for a short time
+Provides:       %{name}-zsh-completion = %{version}
+Obsoletes:      %{name}-zsh-completion < %{version}
 
 %description
 This package provides modules to control settings of Plasma and other
@@ -72,19 +74,17 @@ applications by KDE.
 %autosetup -p1 -n systemsettings-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
-  %suse_update_desktop_file  kdesystemsettings X-SuSE-core
+%kf5_makeinstall -C build
+%kf5_find_lang
+%kf5_find_htmldocs
+
+%suse_update_desktop_file  kdesystemsettings X-SuSE-core
 
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -105,9 +105,10 @@ applications by KDE.
 %{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_sharedir}/systemsettings/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_systemsettings
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

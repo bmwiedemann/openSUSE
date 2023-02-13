@@ -1,27 +1,50 @@
-commit 70e5094212b112ce63399a3beda0e1cbffa0e9b3
-Author: Atri Bhattacharya <badshah400@gmail.com>
-Date:   Thu Jan 19 13:38:48 2023 +0530
-
-    Save high scores to user config dir.
-    
-    Previously high scores were being saved to a common (i.e. not specific
-    to each user account) file in localstatedir, which needed to be
-    world-writable to allow any user to save data. This patch uses the user
-    specific config dir to store the high score file instead, thus avoiding
-    creating global world-writable files with obvious security implications.
-    An added benefit of doing this is that one user's hiscores will not be
-    over-written by another's.
-
-diff --git a/src/hiscores.cpp b/src/hiscores.cpp
-index 3938181..110d05a 100644
 --- a/src/hiscores.cpp
 +++ b/src/hiscores.cpp
-@@ -100,7 +100,7 @@ Hiscores::Hiscores()
+@@ -100,11 +100,20 @@
  	int l, s;
  	string prefix;
  
--	fname = string(HISCOREDIR) + "/lbreakouthd.hscr";
-+	fname = getHomeDir() + "/" + CONFIGDIR + "/lbreakouthd.hscr";
++	/* set path to highscores file */
+ 	fname = string(HISCOREDIR) + "/lbreakouthd.hscr";
++	if (!fileIsWriteable(fname)) {
++		/* if not found or permission denied we can't use global
++		 * highscores file so fallback to home directory */
++		_loginfo("No permission to access global highscores\n");
++		fname = getHomeDir() + "/" + CONFIGDIR + "/lbreakouthd.hscr";
++		_loginfo("Falling back to %s\n",fname.c_str());
++	}
  	if (!fileExists(fname)) {
- 		_loginfo("No hiscores file yet.\n");
+-		_loginfo("No hiscores file yet.\n");
++		_loginfo("No hiscores file yet\n");
  		return; /* no hiscores yet */
+ 	}
++
+ 	_loginfo("Loading hiscores %s\n",fname.c_str());
+ 
+ 	FileParser fp(fname);
+--- a/src/tools.cpp
++++ b/src/tools.cpp
+@@ -151,6 +151,13 @@
+ 	}
+ 	return false;
+ }
++bool fileIsWriteable(const string& name) {
++	if (FILE *file = fopen(name.c_str(), "r+")) {
++		fclose(file);
++		return true;
++	}
++	return false;
++}
+ 
+ /** Not the nicest but hands down most efficient way to do it. */
+ void strprintf(string& str, const char *fmt, ... )
+--- a/src/tools.h
++++ b/src/tools.h
+@@ -107,6 +107,7 @@
+ bool dirExists(const string& name);
+ bool makeDir(const string &name);
+ bool fileExists(const string& name);
++bool fileIsWriteable(const string& name);
+ 
+ /** Count continuously from start to end. Delay is in milliseconds for
+  * changing counter by one (e.g. delay=1000 means it takes one second per step. */

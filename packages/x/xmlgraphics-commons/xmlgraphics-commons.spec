@@ -18,13 +18,13 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.6
+Version:        2.8
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://xmlgraphics.apache.org/
-Source0:        http://archive.apache.org/dist/xmlgraphics/commons/source/xmlgraphics-commons-%{version}-src.tar.gz
+URL:            https://xmlgraphics.apache.org/commons/
+Source0:        https://archive.apache.org/dist/xmlgraphics/commons/source/xmlgraphics-commons-%{version}-src.tar.gz
 Patch0:         xmlgraphics-commons-build_xml.patch
 Patch1:         xmlgraphics-commons-jdk10.patch
 BuildRequires:  ant >= 1.6.5

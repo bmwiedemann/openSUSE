@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * ScrollView: Enable clip
+  * DialogButtonBox: Remove separator to be consistent with desktop style Applications are drawing their own separators since they assume none is drawn, so we end up with lots of double separators.
+  * remove unused ecm_qt_declare_logging_categories() code
+  * Use ecm_add_qml_module() from ECM
+  * Add Qt 6 Android CI
+  * ScrollBar & ScrollIndicator: Show over content even if it loaded after
+  * Simplify StyleSingleton
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

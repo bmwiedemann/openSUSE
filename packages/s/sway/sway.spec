@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.8
+Version:        1.8.1
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT

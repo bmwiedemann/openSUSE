@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 12 08:03:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire rich, otherwise the %checks fail on SLES15 with
+  the python3-module (rich is not being installed automatically)
+
+-------------------------------------------------------------------
 Tue Jan 31 15:15:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.4.1:

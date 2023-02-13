@@ -20,15 +20,15 @@
 
 %bcond_without released
 Name:           kscreenlocker
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Screen)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wayland)
@@ -93,16 +94,15 @@ Development files for Library and components for secure lock screen architecture
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kde -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kde -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  # Ship our own file to not depend on a display manager being installed (boo#1108329)
-  install -D -m0644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/kde
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+# Ship our own file to not depend on a display manager being installed (boo#1108329)
+install -D -m0644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/kde
+%kf5_makeinstall -C build
+
+%kf5_find_lang
 
 %pre
 # TODO: Add a check for kscreenlocker_greet version, once available.
@@ -124,10 +124,7 @@ exit 0
 
 %postun -n libKScreenLocker5 -p /sbin/ldconfig
 
-%if %{with released}
 %files lang -f %{name}.lang
-%license COPYING*
-%endif
 
 %files
 %license COPYING*

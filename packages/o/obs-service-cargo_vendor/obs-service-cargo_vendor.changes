@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 13 04:56:41 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.4.4~1:
+  * Remove the dirs exist ok option that blocked running on 3.6
+
+-------------------------------------------------------------------
 Wed Feb 08 00:46:57 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.4~0:

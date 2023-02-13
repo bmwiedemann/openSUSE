@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * homescreen/halcyon: Fix direction of arrow and add drop shadow to placeholder message Fixes https://invent.kde.org/plasma/plasma-mobile/-/issues/235
+  * Record quicksettings: Move metadata.json to right location
+- Drop patches, now upstream:
+  * 0001-Record-quicksettings-Move-metadata.json-to-right-loc.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+- Add patch to fix the record quicksetting:
+  * 0001-Record-quicksettings-Move-metadata.json-to-right-loc.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

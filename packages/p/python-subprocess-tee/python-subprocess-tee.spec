@@ -26,6 +26,7 @@ URL:            https://github.com/pycontribs/subprocess-tee
 Source:         https://files.pythonhosted.org/packages/source/s/subprocess-tee/subprocess-tee-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

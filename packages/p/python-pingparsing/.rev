@@ -93,4 +93,13 @@
     <comment></comment>
     <requestid>927365</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>02967660fb4e3ea80d55db6ac195134f</srcmd5>
+    <version>1.4.0</version>
+    <time>1676302856</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fix-requirements.patch:
+  * Fix invalid version number.</comment>
+    <requestid>1064751</requestid>
+  </revision>
 </revisionlist>

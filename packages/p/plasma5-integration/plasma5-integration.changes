@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * Compile with Qt 6 as well
+  * Use ecm_set_disabled_deprecation_versions
+  * correctly use x11 wid as hex, not decimal
+  * Fix crash when selecting "Open with other application" on download notification (kde#461529)
+  * create a window handle before trying to export windows (kde#462108)
+  * Port away from deprecated KStandardGuiItem::yes/no
+  * Port away from deprecated KDirLister::showingDotFiles
+  * extend kio with portal-based open-with implementation
+  * Use CamelCase includes
+  * Port away from deprecated KIO API
+  * Fix QtQuickRenderSettings from loading (kde#455575)
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

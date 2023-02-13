@@ -95,9 +95,11 @@ Recommends:     system-config-printer
 Recommends:     system-config-printer-applet
 # bnc#537362
 
+# This is needed so that openQA does not fail (poo#124364) but also in preparation for offline updates method
+Recommends:     gnome-packagekit
+
 # Currently only Leap supports this update method via packagekit
 %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-Recommends:     gnome-packagekit
 Recommends:     package-update-indicator
 %endif
 

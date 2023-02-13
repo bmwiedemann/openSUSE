@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb 12 18:05:17 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.1
+  New features:
+  * Re-allow to use icons from system theme 
+  Bug fixes:
+  * Fix Speed limit icon size 
+  * Revise and fix some text colors 
+  * Correctly load folder based UI theme 
+  * Fix crash due to invalid encoding of tracker URLs 
+  * Don't drop !qB extension when renaming incomplete file 
+  * Correctly count the number of torrents in subcategories 
+  * Use "additional trackers" when metadata retrieving 
+  * Apply correct tab order to Category options dialog 
+  * Add all torrents passed via the command line 
+  * Fix startup performance on Qt5 
+  * Automatic move will now overwrite existing files 
+  * Some fixes for loading Chinese locales 
+  * New Pause icon color for toolbar/menu 
+  * Adjust env variable for PDB discovery 
+  Web UI:
+  * Fix missing "queued" icon 
+  * Return paths using platform-independent separator format 
+  * Change order of accepted types of file input 
+  * Add missing icons 
+  * Add "Resume data storage type" option 
+  * Make rename file dialog resizable 
+  * Prevent incorrect line breaking 
+  * Improve hotkeys 
+  * Remove suggestions while searching for torrents 
+  * Expose "IS PRIVATE" flag 
+  * Return name/hash/infohash_v1/infohash_v2 torrent properties 
+  Other:
+  * Fix tray icon issues 
+
+-------------------------------------------------------------------
 Sun Nov 27 16:49:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.0

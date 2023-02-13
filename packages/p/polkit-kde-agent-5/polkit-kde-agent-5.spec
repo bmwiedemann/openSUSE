@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           polkit-kde-agent-5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz
+Source:         polkit-kde-agent-1-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz.sig
+Source1:        polkit-kde-agent-1-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -45,7 +45,6 @@ BuildRequires:  cmake(PolkitQt5-1) >= 0.103.0
 BuildRequires:  cmake(Qt5Core) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-Recommends:     %{name}-lang
 
 %description
 Provides Policy Kit Authentication Agent that nicely fits to KDE.
@@ -62,9 +61,7 @@ Provides Policy Kit Authentication Agent that nicely fits to KDE.
 %install
   %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang polkit-kde-authentication-agent-1 %{name}.lang
-%endif
+%find_lang polkit-kde-authentication-agent-1 %{name}.lang
 
 %post
 %{systemd_user_post plasma-polkit-agent.service}
@@ -75,9 +72,7 @@ Provides Policy Kit Authentication Agent that nicely fits to KDE.
 %postun
 %{systemd_user_postun plasma-polkit-agent.service}
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files
 %license LICENSES/*

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 10 18:28:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Disable broken tests for i586 and armv7l.
+
+- Update to 0.24.0
+  * Added
+    - Allow StaticFiles to follow symlinks
+    - Allow Request.form() as a context manager
+    - Add size attribute to UploadFile
+    - Add env_prefix argument to Config
+    - Add template context processors
+    - Support str and datetime on expires parameter on the Response.set_cookie method
+  * Changed
+    - Lazily build the middleware stack
+    - Make the file argument required on UploadFile
+    - Use debug extension instead of custom response template extension
+  * Fixed
+    - Fix url parsing of ipv6 urls on URL.replace
+
+-------------------------------------------------------------------
 Wed Jan  4 21:03:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Clean up test dependencies: fastapi pulls this into Staging

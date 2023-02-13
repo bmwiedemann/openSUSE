@@ -21,15 +21,15 @@
 %bcond_with browser_extension
 %bcond_without released
 Name:           plasma-browser-integration
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            https://cgit.kde.org/plasma-browser-integration.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz
+Source:         plasma-browser-integration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz.sig
+Source1:        plasma-browser-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -48,7 +48,6 @@ BuildRequires:  cmake(LibTaskManager)
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-Recommends:     %{name}-lang
 Supplements:    packageand(plasma5-workspace:MozillaFirefox)
 Supplements:    packageand(plasma5-workspace:chromium)
 Supplements:    packageand(plasma5-workspace:GoogleChrome)
@@ -88,9 +87,8 @@ if [ "%{_libdir}" != "%{_prefix}/lib" ]; then
 	# Move mozilla native messaging file to correct location
 	mv %{buildroot}%{_prefix}/lib/mozilla %{buildroot}%{_libdir}
 fi
-  %if %{with released}
-    %find_lang %{name} --all-name
-  %endif
+
+%find_lang %{name} --all-name
 
 %files
 %license COPYING*
@@ -121,9 +119,6 @@ fi
 %{_datadir}/google-chrome/extensions/cimiefiiaegbelhefglklhhakcgmhkai.json
 %endif
 
-%if %{with released}
 %files lang -f %{name}.lang
-%license COPYING*
-%endif
 
 %changelog

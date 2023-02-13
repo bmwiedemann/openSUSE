@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 %bcond_without ffmpeg
 %bcond_without released
 Name:           kfilemetadata5
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -81,8 +81,7 @@ A library for extracting file metadata. Development files
 
 %{kf5_find_lang}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

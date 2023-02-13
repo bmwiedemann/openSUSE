@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * fix streams not being ended correctly (kde#465302)
+  * Fix segfault crash: capture QStringList variable by value
+  * notifications: Do not crash as notifications get removed (kde#464549)
+  * Fix condition for cmake feature
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

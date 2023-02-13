@@ -19,15 +19,15 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           plasma5-systemmonitor
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/plasma-systemmonitor-%{version}.tar.xz
+Source0:        plasma-systemmonitor-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-systemmonitor-%{version}.tar.xz.sig
+Source1:        plasma-systemmonitor-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -73,11 +73,10 @@ process information and other system resources.
 %install
 %make_install -C build
 %suse_update_desktop_file org.kde.plasma-systemmonitor System Monitor
+
 %fdupes %{buildroot}/%{_kf5_sharedir}
 
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+%find_lang %{name} --with-man --all-name
 
 %files
 %license LICENSES/*
@@ -98,8 +97,6 @@ process information and other system resources.
 %{_kf5_sharedir}/plasma/kinfocenter/externalmodules/kcm_external_plasma-systemmonitor.desktop
 %{_kf5_appstreamdir}/org.kde.plasma-systemmonitor.metainfo.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

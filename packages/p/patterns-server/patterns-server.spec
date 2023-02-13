@@ -53,8 +53,6 @@ Recommends:     bind-chrootenv
 Recommends:     bind-doc
 Recommends:     dhcp
 Recommends:     dhcp-relay
-Recommends:     yast2-dhcp-server
-Recommends:     yast2-dns-server
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-dhcp_dns_server = %{version}
 Obsoletes:      patterns-openSUSE-dhcp_dns_server < %{version}
@@ -292,7 +290,6 @@ Recommends:     libapr-util1
 Recommends:     libapr1
 Recommends:     mariadb
 Recommends:     perl
-Recommends:     yast2-http-server
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-lamp_server = %{version}
 Obsoletes:      patterns-openSUSE-lamp_server < %{version}

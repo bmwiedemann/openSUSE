@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Port away from deprecated KCoreConfigSkeleton::ItemEnum::Choice2 typedef
+  * [kcodecaction] Deprecate QTextCodec and mib-based API (kde#463421)
+  * [kcodecaction] Add name-based trigger signal
+  * kcommandbar: Fix positioning when no mainwindow parent
+  * kcommandbar: Fix no central widget crashes app (kde#463251)
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

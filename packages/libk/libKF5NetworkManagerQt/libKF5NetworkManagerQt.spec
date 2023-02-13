@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           libKF5NetworkManagerQt
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -83,8 +83,7 @@ settings which are used in DBus communication.
 %install
 %kf5_makeinstall -C build
 
-%post -n libKF5NetworkManagerQt%{soversion} -p /sbin/ldconfig
-%postun -n libKF5NetworkManagerQt%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5NetworkManagerQt%{soversion}
 
 %files -n libKF5NetworkManagerQt%{soversion}
 %license LICENSES/*

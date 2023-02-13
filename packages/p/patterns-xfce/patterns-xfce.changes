@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 13 11:48:32 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Restore previously removed gnome-packagekit as it is needed so that 
+  openQA does not fail graphical update test (poo#124364). This is
+  also useful in preparation for offline updates method planned at some
+  point in the future.
+
+-------------------------------------------------------------------
 Sat Feb 11 17:59:44 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Replaced gnome-calculator with galculator since it better integrates

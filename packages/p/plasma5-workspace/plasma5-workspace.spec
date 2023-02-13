@@ -25,20 +25,19 @@
 
 %bcond_without released
 Name:           plasma5-workspace
-%global _plasma5_bugfix 5.26.4
 # Full Plasma 5 version (e.g. 5.9.1)
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop
@@ -131,6 +130,7 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libqalculate)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
@@ -192,7 +192,6 @@ Requires:       xprop
 # hardcode versions of plasma-framework-components and plasma-framework-private packages, as upstream doesn't keep backwards compability there
 %requires_ge    plasma-framework-components
 %requires_ge    plasma-framework
-Recommends:     %{name}-lang
 Recommends:     kio-extras5
 # The lockscreen has a button to open a virtual keyboard
 Recommends:     libqt5-qtvirtualkeyboard
@@ -213,6 +212,9 @@ Provides:       qt5qmlimport(org.kde.plasma.shell.2) = 0
 Provides:       kde-user-manager = %{version}
 Obsoletes:      kde-user-manager < %{version}
 Obsoletes:      kde-user-manager-lang < %{version}
+# Existed in KDE:Unstable:Frameworks for a short time
+Provides:       %{name}-zsh-completion = %{version}
+Obsoletes:      %{name}-zsh-completion < %{version}
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -328,41 +330,39 @@ Plasma 5 session with Wayland from a display manager.
 %autosetup -p1 -n plasma-workspace-%{version}
 
 %build
-  %if 0%{?suse_version} < 1550
-    export CXX=g++-10
-  %endif
-  %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DGLIBC_LOCALE_GENERATED=TRUE -DGLIBC_LOCALE_GEN=OFF
-  %cmake_build
+%if 0%{?suse_version} < 1550
+  export CXX=g++-10
+%endif
+%cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DGLIBC_LOCALE_GENERATED=TRUE -DGLIBC_LOCALE_GEN=OFF
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-  %if %{with released}
-    %{kf5_find_lang}
-    %{kf5_find_htmldocs}
-  %endif
+%{kf5_find_lang}
+%{kf5_find_htmldocs}
 
-  %suse_update_desktop_file -r %{buildroot}%{_kf5_applicationsdir}/org.kde.klipper.desktop System TrayIcon
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
-  cp %{_kf5_iconsdir}/breeze/apps/48/klipper.svg %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
+%suse_update_desktop_file -r %{buildroot}%{_kf5_applicationsdir}/org.kde.klipper.desktop System TrayIcon
+mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
+cp %{_kf5_iconsdir}/breeze/apps/48/klipper.svg %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
 
-  # Copy the icon for org.kde.kcolorschemeeditor.desktop
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
-  cp %{_kf5_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
+# Copy the icon for org.kde.kcolorschemeeditor.desktop
+mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
+cp %{_kf5_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
 
-  # Rename upstream session file to oS location
-  mv %{buildroot}%{_kf5_sharedir}/xsessions/{plasma,plasma5}.desktop
+# Rename upstream session file to oS location
+mv %{buildroot}%{_kf5_sharedir}/xsessions/{plasma,plasma5}.desktop
 
-  # Install compatibility symlink
-  ln -s %{_kf5_sharedir}/xsessions/plasma5.desktop %{buildroot}%{_kf5_sharedir}/xsessions/kde-plasma.desktop
+# Install compatibility symlink
+ln -s %{_kf5_sharedir}/xsessions/plasma5.desktop %{buildroot}%{_kf5_sharedir}/xsessions/kde-plasma.desktop
 
-  mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-  touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
-  ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
+ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-  install -m0644 %{SOURCE3} %{buildroot}%{_kf5_configdir}/autostart/xprop-kde-full-session.desktop
+install -m0644 %{SOURCE3} %{buildroot}%{_kf5_configdir}/autostart/xprop-kde-full-session.desktop
 
-  %fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}/%{_prefix}
 
 %post
 /sbin/ldconfig
@@ -484,6 +484,7 @@ fi
 %{_libexecdir}/plasma-dbus-run-session-if-needed
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
+%{_kf5_libdir}/kconf_update_bin/plasmashell-5.27-use-panel-thickness-in-default-group
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
@@ -518,6 +519,10 @@ fi
 %doc %lang(en) %{_kf5_htmldir}/en/klipper/
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/
 %doc %lang(en) %{_kf5_htmldir}/en/PolicyKit-kde/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_plasmashell
+
 %{_kf5_notifydir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
@@ -613,8 +618,6 @@ fi
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasmawayland.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

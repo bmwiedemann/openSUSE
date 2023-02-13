@@ -313,4 +313,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.102.0 (forwarded request 1058155 from krop)</comment>
     <requestid>1058519</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ed26ecc6ee6e439ae23a5a14a2643bab</srcmd5>
+    <version>5.103.0</version>
+    <time>1676302722</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.103.0 (forwarded request 1063796 from krop)</comment>
+    <requestid>1064611</requestid>
+  </revision>
 </revisionlist>

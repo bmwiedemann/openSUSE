@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 12 08:08:19 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.10.4
+  * Fixed crashes related to multiple effects being active at once
+  * Fixed multiple mission_done hooks not passing parameter correctly
+  * Fixed plugin strings not being initialized with mismatched saves
+  * ec06: made the final battle work much better
+  * Full changelog: https://github.com/naev/naev/releases/tag/v0.10.4
+- Run spec-cleaner
+- Add source URL
+- Use meson macros for building and install
+- Use pkgconfig for more BuildRequires
+- Add BuildRequires cmake, pcre2-devel and libenet
+- Add _constraints to fix running out of disk space
+- Fix file-not-in-%lang rpmlint warning
+
+-------------------------------------------------------------------
 Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - BuildRequre sdl2 stuff via pkgconfig(*).

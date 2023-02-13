@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kirigami2
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -91,8 +91,7 @@ export CXX=g++-10
 
 %find_lang libkirigami2plugin --with-qt --without-mo
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %dir %{_kf5_sharedir}/kdevappwizard/

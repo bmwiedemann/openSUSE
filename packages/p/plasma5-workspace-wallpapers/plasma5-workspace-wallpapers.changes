@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:52 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * Moved old wallpaper, added new one, updated previews
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * Add Dark Flow version from the original author of the light version
+  * SafeLanding: add vertical wallpaper
+  * Revert "Remove Safe Landing"
+  * Update dark Patak image
+  * Add dark variant of Patak
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

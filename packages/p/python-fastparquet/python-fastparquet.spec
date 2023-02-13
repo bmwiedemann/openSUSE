@@ -17,16 +17,14 @@
 
 
 Name:           python-fastparquet
-Version:        2022.12.0
+Version:        2023.2.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 # Use GitHub archive, because it containts the test modules and data, requires setting version manuall for setuptools_scm
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fastparquet-pr835.patch gh#dask/fastparquet#835
-Patch2:         fastparquet-pr835.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 0.29.23}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
 # version requirement not declared for runtime, but necessary for tests.

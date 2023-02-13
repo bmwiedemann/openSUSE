@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 12 20:39:46 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 1.8.1:
+  * Apply new adaptive sync value from wlr-output-management
+  * warp_to_constraint_cursor_hint: Handle NULL view
+  * Use correct length for strncmp comparison
+  * Allow setting the font size to 0
+  * input/tablet: handle focusing NULL surface
+  * man: fix typo in output disable docs
+  * Send wl_surface.enter for ext-session-lock surfaces
+  * Fix pointer events for ext-session-lock surfaces
+  * build: bump version to 1.8.1
+  * focus_on_window_activation: raise if floating
+  * Correct window_rect.y with hide_edge_borders
+  * Clarify documentation for window_rect
+
+-------------------------------------------------------------------
 Fri Jan  6 14:58:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - For portals to work, this requires xdg-desktop-portal-wlr.

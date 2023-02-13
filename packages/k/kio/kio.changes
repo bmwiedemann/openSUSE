@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * CommandLauncher: Emit error when command was not found
+  * Add KUrlNavigator::supportedSchemes, to replace customProtocols
+  * Add missing copyFromFile entries to http.json for webdav and webdavs (kde#464450)
+  * Mark WorkerBase::needSubUrlData as deprecated
+  * [commandlauncherjob] Deprecate setIcon
+  * job_error: add missing space between sentences for one string (kde#464631)
+  * Correct setDesktopName() docs regarding optionality of .desktop suffix
+  * Drop outdated docs for mailto kioslave
+  * Add deprecation warnings for KDirOperator::setView(KFile::FileView)
+  * Deprecate unused Scheduler::connect/disconnects methods
+  * Deprecate Slave::isConnected/setConnected
+  * Restore old behavior for KFileFilterCombo::setFilter (kde#463309)
+  * KCoreDirListerCache: Remove unnecessary assert
+  * KFilePlacesView: Set transientParent on context menu (kde#453532)
+  * KURISearchFilterEngine: Use DuckDuckGo as a default shortcut
+  * widgets/renamefiledialog: remove bulk rename number limit
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

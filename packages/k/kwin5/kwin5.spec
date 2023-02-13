@@ -17,15 +17,14 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview|org\\.kde.kwin\\.private\\.desktopgrid|org\\.kde\\.KWin\\.Effect\\.WindowView).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview|org\\.kde.kwin\\.private\\.desktopgrid|org\\.kde\\.KWin\\.Effect\\.WindowView|org\\.kde\\.kwin\\.kwinxwaylandsettings).*
 
 %global kf5_version 5.98.0
 %global qt5_version 5.15.0
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.26.5
-%define _plasma5_bugfix 5.26.2
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -35,9 +34,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -158,7 +157,6 @@ Requires(verify):permissions
 %requires_ge Mesa-libEGL1
 %requires_ge libKF5WindowSystem5
 %requires_ge plasma-framework
-Recommends:     %{name}-lang
 # For displaying full monitor vendor names
 Recommends:     hwdata
 Provides:       qt5qmlimport(org.kde.kwin.2) = 0
@@ -188,21 +186,22 @@ This package provides development files.
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
 %endif
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 %if !%{wayland}
-  rm -f %{buildroot}%{_kf5_bindir}/kwin_wayland
+  rm %{buildroot}%{_kf5_bindir}/kwin_wayland
 %endif
-  sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_kf5_sharedir}/kconf_update/*.py
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
-  %fdupes %{buildroot}%{_kf5_libdir}
-  %fdupes %{buildroot}%{_datadir}
+
+sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_kf5_sharedir}/kconf_update/*.py
+
+%kf5_find_lang
+%kf5_find_htmldocs
+
+%fdupes %{buildroot}%{_kf5_libdir}
+%fdupes %{buildroot}%{_datadir}
 
 %preun
 %{systemd_user_preun plasma-kwin_x11.service plasma-kwin_wayland.service}
@@ -238,6 +237,7 @@ This package provides development files.
 %{_kf5_applicationsdir}/kcm_kwindecoration.desktop
 %{_kf5_applicationsdir}/kcm_kwinoptions.desktop
 %{_kf5_applicationsdir}/kcm_kwintabbox.desktop
+%{_kf5_applicationsdir}/kcm_kwinxwayland.desktop
 %{_kf5_applicationsdir}/kwincompositing.desktop
 %{_kf5_bindir}/kwin_x11
 %{_kf5_debugdir}/org_kde_kwin.categories
@@ -264,6 +264,7 @@ This package provides development files.
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_windowswitcher.so
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_scripts/
+%{_kf5_sharedir}/kpackage/kcms/kcm_kwinxwayland/
 %dir %{_kf5_plugindir}/kwin/
 %dir %{_kf5_plugindir}/kwin/effects/
 %dir %{_kf5_plugindir}/kwin/effects/configs/
@@ -293,6 +294,7 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_zoom_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_overview_config.so
+%{_kf5_plugindir}/kwin/effects/configs/kwin_tileseditor_config.so
 %dir %{_kf5_plugindir}/org.kde.kdecoration2/
 %{_kf5_plugindir}/org.kde.kdecoration2/kwin5_aurorae.so
 
@@ -307,7 +309,6 @@ This package provides development files.
 %{_kf5_sharedir}/config.kcfg/
 %{_kf5_sharedir}/icons/hicolor/*/apps/kwin.png
 %{_kf5_sharedir}/icons/hicolor/scalable/apps/kwin.svgz
-%{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kwin/
 %{_kf5_sharedir}/kconf_update/
@@ -335,9 +336,6 @@ This package provides development files.
 %{_kf5_sharedir}/dbus-1/interfaces/
 %{_kf5_cmakedir}/KWinEffects/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%license LICENSES/*
-%endif
 
 %changelog

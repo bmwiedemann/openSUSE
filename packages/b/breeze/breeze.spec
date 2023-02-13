@@ -22,16 +22,15 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.26.5
-%global _plasma5_bugfix 5.26.3
+Version:        5.27.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -126,18 +125,14 @@ Library containing support code for the Breeze Qt5 style.
 # The migration overrides the look and feel, don't migrate for now
 rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 
-%if %{with released}
-  %{kf5_find_lang}
-%endif
+%{kf5_find_lang}
+
 %fdupes %{buildroot}/%{_prefix}
 
 %post   -p /sbin/ldconfig -n libbreezecommon5-5
 %postun -p /sbin/ldconfig -n libbreezecommon5-5
 
-%if %{with released}
 %files -n breeze5-style-lang -f %{name}.lang
-%license LICENSES/*
-%endif
 
 %files -n breeze5-cursors
 %license LICENSES/*
@@ -146,6 +141,7 @@ rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 
 %files -n breeze5-style
 %license LICENSES/*
+%{_kf5_applicationsdir}/breezestyleconfig.desktop
 %{_kf5_bindir}/breeze-settings5
 %dir %{_kf5_iconsdir}/hicolor/scalable
 %dir %{_kf5_iconsdir}/hicolor/scalable/apps
@@ -155,11 +151,12 @@ rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_sharedir}/kconf_update/
 %dir %{_kf5_plugindir}
-%{_kf5_plugindir}/kstyle_breeze_config.so
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/breezestyleconfig.so
 %{_kf5_plugindir}/styles/
 %{_kf5_sharedir}/kstyle/
-%dir %{_kf5_servicesdir}
-%{_kf5_servicesdir}/breezestyleconfig.desktop
 %{_kf5_libdir}/cmake/Breeze/
 
 %files -n breeze5-wallpapers
@@ -169,10 +166,13 @@ rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 
 %files -n breeze5-decoration
 %license LICENSES/*
+%{_kf5_applicationsdir}/kcm_breezedecoration.desktop
 %dir %{_kf5_plugindir}
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/breeze
 %{_kf5_plugindir}/org.kde.kdecoration2/
-%dir %{_kf5_servicesdir}
-%{_kf5_servicesdir}/breezedecorationconfig.desktop
+%{_kf5_plugindir}/plasma/kcms/breeze/kcm_breezedecoration.so
 
 %files
 %license LICENSES/*

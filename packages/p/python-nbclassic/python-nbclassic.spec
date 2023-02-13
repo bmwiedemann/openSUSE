@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
 Name:           python-nbclassic%{psuffix}
-Version:        0.4.8
+Version:        0.5.1
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause

@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,38 @@
 
 
 Name:           naev
-Version:        0.9.4
+Version:        0.10.4
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
-URL:            http://naev.org/
-Source:         %{name}-%{version}-source.tar.xz
+URL:            https://naev.org/
+Source:         https://github.com/naev/naev/releases/download/v%{version}/%{name}-%{version}-source.tar.xz
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  freetype2-devel
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(SDL2_image)
-BuildRequires:  pkgconfig(SDL2_mixer)
-BuildRequires:  libphysfs-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libunibreak-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  libwebp-devel
-BuildRequires:  libxml2-devel
 BuildRequires:  luajit-devel
 BuildRequires:  meson
 BuildRequires:  openal-soft-devel
+BuildRequires:  pcre2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-pyaml
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libenet)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libunibreak)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(physfs)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 Naev is a 2D space trading and combat game, in a similar vein to Escape Velocity.
@@ -55,36 +60,49 @@ open-ended, letting you proceed at your own pace.
 %prep
 %setup -q -n naev-%{version}
 
+# Remove third part libraries so we're guaranteed to use system libraries
+rm -rf subprojects/packagefiles
+
 %build
-meson setup -Dprefix=%{_prefix} build .
-cd build
-meson compile
+# Disabling C and LUA docs since those are only required if you're hacking on Naev
+# Disabling debug because it would need BuildRequires backtrace which is only in available in repo network:cryptocurrencies
+%meson \
+    -Ddocs_c=disabled \
+    -Ddocs_lua=disabled \
+    -Ddebug=false
+%meson_build
 
 %install
-cd build
-DESTDIR="%{buildroot}" meson install
+%meson_install
 
-# Already handle doc files
+# Remove already handled doc files
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
-# Clean up some scripts
+# Clean up some unneeded scripts and other development files
 find %{buildroot}%{_datadir}/%{name} -name '*.sh' -exec rm {} \;
+rm -rf %{buildroot}%{_datadir}/%{name}/dat/lua-repl
+rm -rf %{buildroot}%{_datadir}/%{name}/dat/.pre-commit-config.yaml
 
 %suse_update_desktop_file org.naev.Naev
 
 %fdupes %{buildroot}%{_datadir}/%{name}
 
-%files
-%doc LICENSE Readme.md CHANGELOG dat/AUTHORS
-%doc %{_mandir}/man6/*
+# find_lang only finds one type of filename, this one all .mo files.
+for dir in %{buildroot}/%{_datadir}/naev/dat/gettext/*; do
+    for file in "$dir/LC_MESSAGES/"*.mo; do
+        echo "%%lang($(basename "$dir")) /$(realpath --relative-to %{buildroot} "$file")" >> %{name}.lang
+    done
+done
+
+%files -f %{name}.lang
+%license LICENSE
+%doc Readme.md CHANGELOG dat/AUTHORS
+%{_mandir}/man6/*
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/*.xml
 %{_datadir}/icons/hicolor/*x*/apps/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%lang(de) %{_datadir}/%{name}/dat/gettext/de/LC_MESSAGES/naev.mo
-%lang(ja) %{_datadir}/%{name}/dat/gettext/ja/LC_MESSAGES/naev.mo
-%lang(ko) %{_datadir}/%{name}/dat/gettext/ko/LC_MESSAGES/naev.mo
 
 %changelog

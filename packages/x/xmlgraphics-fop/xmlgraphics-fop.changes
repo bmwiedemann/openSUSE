@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:27:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- version 2.8
+  * Changes:
+    + FOP-2839: Links to pdf files with no scheme should open in pdf
+      viewer
+    + FOP-2860: Add light weight line breaking option
+    + FOP-2861: Allow resource loading from jar
+    + FOP-2865: Stroke-opacity is not honored on svg:text while
+      conveting svg to pdf
+    + FOP-2897: Skip OOM during font OS scanning
+    + FOP-2910: Remove cidset for PDF/A-2
+    + FOP-2969: Reorder glyphs with no width
+    + FOP-2977: Array index out of bounds with glyph position
+      adjustments and surrogate pairs
+    + FOP-3015: Set text color for simulate-style
+    + FOP-3023: Simulated bold error in Adobe Reader
+    + FOP-3048: Resolve links across IF files
+    + FOP-3049: Align AFP SVG text in the middle
+    + FOP-3051: Upgrade to Commons IO 2.11
+    + FOP-3053: Remove Xerces
+    + FOP-3055: Use a event for a draw image error
+    + FOP-3057: Allow fallback to non svg glyphs
+    + FOP-3061: AFP invoke-medium-map missing when using
+      page-group=false
+    + FOP-3062: AssertionError with SFArabic.ttf
+    + FOP-3067: README file still refers to bugzilla
+    + FOP-3068: NPE when reading a invalid TTC file
+    + FOP-3070: Batik is setting load-external-dtd to false so this
+      example doesnt work
+    + FOP-3071: Write mediummap before pagegroup
+    + FOP-3072: Empty link url gives NPE
+    + FOP-3074: Reorder glyphs based on gpa value
+    + FOP-3077: Use all rulesets for glyph substitution
+    + FOP-3078: Fix position of macron glyph
+    + FOP-3080: Allow removing empty table elements from structure
+      tree
+    + FOP-3081: Fix change ipd for linefeed-treatment=preserve
+    + FOP-3082: NPE when using a link in a span with accessibility
+    + FOP-3085: Remove Xalan
+    + FOP-3091: Add transparency color support
+    + FOP-3092: PDF/UA NPE when using external pdf
+    + FOP-3093: Stop reading ttf if we hit last offset
+    + FOP-3094: Allow bookmarks before declarations
+    + FOP-3101: Don't break with hangul syllables
+    + FOP-3102: Move composite glyphs to the end
+    + FOP-3103: NPE when using a footnote on redo of layout
+    + FOP-3105: Infinite loop when using page break with changing
+      ipd
+    + XGC-130: Allow subproperties in XMP
+    + XGC-132: Fallback to raw png if ImageIO cannot read image
+- Removed patch:
+  * update-2.7.patch
+
+-------------------------------------------------------------------
 Fri Jan 28 12:52:15 UTC 2022 - Quang Tran <quang.tran@suse.com>
 
 - version 2.7

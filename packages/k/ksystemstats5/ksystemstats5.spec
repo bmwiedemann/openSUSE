@@ -19,7 +19,7 @@
 
 %bcond_without released
 Name:           ksystemstats5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,17 +30,17 @@ Summary:        Plugin based system monitoring daemon
 License:        BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz
+Source:         ksystemstats-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz.sig
+Source1:        ksystemstats-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 # TODO: This is now a hard requirement
-#%ifnarch s390 s390x
+#%%ifnarch s390 s390x
 BuildRequires:  libsensors4-devel
-#%endif
+#%%endif
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
@@ -73,14 +73,13 @@ KSystemStats is a daemon that collects statistics about the running system.
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
 %endif
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang ksystemstats_plugins %{name}.lang
-%endif
+%kf5_makeinstall -C build
+
+%find_lang ksystemstats_plugins %{name}.lang
 
 %check
 export CTEST_OUTPUT_ON_FAILURE=1
@@ -104,8 +103,6 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_userunitdir}/plasma-ksystemstats.service
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

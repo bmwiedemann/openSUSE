@@ -33,4 +33,5 @@ anywhere and everywhere. If you really need to execute a shell command,
 Ant has an &lt;exec&gt; task that allows different commands to be executed
 based on the OS used.</description>
   <devel project="openSUSE:Factory" package="ant"/>
+  <bcntsynctag>ant</bcntsynctag>
 </package>

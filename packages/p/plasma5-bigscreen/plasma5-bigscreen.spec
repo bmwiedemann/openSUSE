@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           plasma5-bigscreen
-Version:        5.26.5
+Version:        5.26.90
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Plasma Bigscreen
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz
+Source:         https://download.kde.org/unstable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/unstable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -76,9 +76,9 @@ Plasma shell for TVs.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
+
 %kf5_find_lang
-%endif
+
 # Not referenced by anything and not executable
 rm %{buildroot}%{_kf5_bindir}/mycroft-skill-launcher.py
 
@@ -107,10 +107,6 @@ rm %{buildroot}%{_kf5_bindir}/mycroft-skill-launcher.py
 %{_kf5_sharedir}/kpackage/kcms/kcm_mediacenter_bigscreen_settings/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mediacenter_kdeconnect/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mediacenter_wifi/
-%{_kf5_servicesdir}/bigscreensettings.desktop
-%{_kf5_servicesdir}/kcm_mediacenter_audiodevice.desktop
-%{_kf5_servicesdir}/mediacenter_kdeconnect.desktop
-%{_kf5_servicesdir}/mediacenter_wifi.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.mycroft.bigscreen.homescreen.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.mycroft.bigscreen.desktop
 %{_kf5_servicesdir}/plasma-lookandfeel-org.kde.plasma.mycroft.bigscreen.desktop
@@ -128,8 +124,6 @@ rm %{buildroot}%{_kf5_bindir}/mycroft-skill-launcher.py
 %{_kf5_sharedir}/wayland-sessions/plasma-bigscreen-wayland.desktop
 %{_kf5_sharedir}/xsessions/plasma-bigscreen-x11.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           milou5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/milou
-Source:         https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz
+Source:         milou-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz.sig
+Source1:        milou-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.98.0
@@ -55,15 +55,15 @@ A dedicated search application built on top of Baloo
 %autosetup -p1 -n milou-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
-  %fdupes -s %{buildroot}%{_kf5_localedir}/
+%kf5_makeinstall -C build
+
+%kf5_find_lang
+
+%fdupes -s %{buildroot}%{_kf5_localedir}/
 
 %post
 /sbin/ldconfig
@@ -79,8 +79,6 @@ A dedicated search application built on top of Baloo
 %{_kf5_appstreamdir}/
 %{_kf5_servicesdir}/plasma-applet-org.kde.milou.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

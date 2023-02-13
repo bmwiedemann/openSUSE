@@ -21,15 +21,15 @@
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 %bcond_without released
 Name:           kpipewire
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kpipewire-%{version}.tar.xz
+Source:         kpipewire-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kpipewire-%{version}.tar.xz.sig
+Source1:        kpipewire-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -74,9 +74,18 @@ Summary:        PipeWire integration for KDE Plasma - recording support
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
 This package contains the library needed for video and audio capture.
 
+%package -n libKPipeWireDmaBuf%{_sover}
+Summary:        PipeWire integration for KDE Plasma - DMA-BUF support
+%requires_eq    libQt5Gui
+
+%description -n libKPipeWireDmaBuf%{_sover}
+KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
+This package provides a helper for downloading DMA-BUF textures for CPU processing.
+
 %package imports
 Summary:        QtQuick bindings for kpipewire
 Requires:       libKPipeWire%{_sover} = %{version}
+Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
 
 %description imports
@@ -88,6 +97,7 @@ Summary:        Development files for kpipewire
 Group:          Development/Libraries/KDE
 Requires:       %{name}-imports = %{version}
 Requires:       libKPipeWire%{_sover} = %{version}
+Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
 Requires:       pkgconfig(libpipewire-0.3)
 
@@ -102,14 +112,13 @@ which use KPipeWire.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang kpipewire%{_sover}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang kpipewire%{_sover}
 
 %check
 %ctest
@@ -118,6 +127,8 @@ which use KPipeWire.
 %postun -n libKPipeWire%{_sover} -p /sbin/ldconfig
 %post -n libKPipeWireRecord%{_sover} -p /sbin/ldconfig
 %postun -n libKPipeWireRecord%{_sover} -p /sbin/ldconfig
+%post -n libKPipeWireDmaBuf%{_sover} -p /sbin/ldconfig
+%postun -n libKPipeWireDmaBuf%{_sover} -p /sbin/ldconfig
 
 %files -n libKPipeWire%{_sover}
 %license LICENSES/*
@@ -130,6 +141,10 @@ which use KPipeWire.
 %{_kf5_libdir}/libKPipeWireRecord.so.%{_sover}.*
 %{_kf5_debugdir}/kpipewirerecord.categories
 
+%files -n libKPipeWireDmaBuf%{_sover}
+%{_kf5_libdir}/libKPipeWireDmaBuf.so.%{_sover}
+%{_kf5_libdir}/libKPipeWireDmaBuf.so.%{_sover}.*
+
 %files imports
 %dir %{_kf5_qmldir}/org
 %dir %{_kf5_qmldir}/org/kde
@@ -140,6 +155,7 @@ which use KPipeWire.
 %{_kf5_cmakedir}/KPipeWire/
 %{_kf5_libdir}/libKPipeWire.so
 %{_kf5_libdir}/libKPipeWireRecord.so
+%{_kf5_libdir}/libKPipeWireDmaBuf.so
 
 %files -n libKPipeWire%{_sover}-lang -f kpipewire%{_sover}.lang
 

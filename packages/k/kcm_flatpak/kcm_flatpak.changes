@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Feb  9 14:19:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * Keep Advanced Permissions section collapsed by default
+  * Copy gitignore from systemsettings
+  * Fix memory management for graph of cross-referenced objects
+  * Fix signatures of overridden methods in model to match super-class
+  * Generate desktop file for KCM
+  * Use QStandardPaths::GenericDataLocation instead of hardcoding .local/share (kde#465339)
+  * Fix rows height, including partially hidden text field at the bottom
+  * Add "=" label between environment variable name and value in dialog
+  * Add workaround for broken ListView layout (rows drifting down on scroll)
+  * Clean up QML/JavaScript, simplify some code
+  * Specify translation domain (kde#464573)
+  * flatpakpermission: Make sure editPerm() cannot access out of bounds
+  * Add installed user apps to list of installed apps
+  * Find icons by using the deploy dir of the installed flatpak
+  * Initialise default index
+  * Make views frameless
+
+-------------------------------------------------------------------
+Thu Jan 19 19:11:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial package

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Feb  9 14:19:49 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * config: Store last seen version for initial release
+  * Note mandatory KNewStuff dependency (kde#465072)
+  * Do not run on other desktop environments
+  * Embed source in URLs
+  * Specify desktop file for knewstuff-dialog (kde#464668)
+  * Adjust runCommandAPI to optionally take a desktop file
+  * Fix multiline translated text (kde#464630)
+  * Fix launch feedback for KCMs
+  * Make text on buttons translatable
+  * Look for custom pages in /usr/share/, not /var/lib/
+  * Make the fake panel clock look more like the real one
+  * Fix kaccounts dep on the CI
+- Drop patches, now upstream:
+  * 0001-Make-the-fake-panel-clock-look-more-like-the-real-on.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 19:26:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial package

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 13 10:46:35 UTC 2023 - christophe@krop.fr
+
+- Update to version 2.5.3:
+  * Bump version to 2.5.3
+  * Ignore LTO in CI builds, takes too long
+  * Support the more verbose LV2 MIDI CC definitions
+  * Always set time frame information for JUCE hosted plugins
+  * Use SDL driver by default on Haiku
+  * Fix canvaspreview out-of-bounds panning for patchbay
+  * Allow to receive LV2 atoms of any size up to max-length
+  * missing </li> code
+  * Update CI rules
+  * Fix carla_findMaxNormalizedFloat call
+
+-------------------------------------------------------------------
 Sat Jan 07 12:07:19 UTC 2023 - mia@0x0.st
 
 - Update to version 2.5.2:

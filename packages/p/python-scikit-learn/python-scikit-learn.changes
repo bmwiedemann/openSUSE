@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Feb  8 18:34:17 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.2.1:
+  * Changed models
+    + The following estimators and functions, when fit with the same
+      data and parameters, may produce different models from the
+      previous version. This often occurs due to changes in the
+      modelling logic (bug fixes or enhancements), or in random
+      sampling procedures.
+    + Fix The fitted components in MiniBatchDictionaryLearning might
+      differ. The online updates of the sufficient statistics now
+      properly take the sizes of the batches into account. #25354 by
+      Jérémie du Boisberranger.
+    + Fix The categories_ attribute of preprocessing.OneHotEncoder now
+      always contains an array of object`s when using predefined
+      categories that are strings. Predefined categories encoded as
+      bytes will no longer work with `X encoded as strings. #25174 by
+      Tim Head.
+  * Changes impacting all modules
+    + Fix Support pandas.Int64 dtyped y for classifiers and
+      regressors. #25089 by Tim Head.
+    + Fix Remove spurious warnings for estimators internally using
+      neighbors search methods. #25129 by Julien Jerphanion.
+    + Fix Fix a bug where the current configuration was ignored in
+      estimators using n_jobs > 1. This bug was triggered for tasks
+      dispatched by the auxillary thread of joblib as
+      sklearn.get_config used to access an empty thread local
+      configuration instead of the configuration visible from the
+      thread where joblib.Parallel was first called. #25363 by
+      Guillaume Lemaitre.
+  * Changelog
+    o sklearn.base
+    + Fix Fix a regression in BaseEstimator.__getstate__ that would
+      prevent certain estimators to be pickled when using Python
+      3.11. #25188 by Benjamin Bossan.
+    + Fix Inheriting from base.TransformerMixin will only wrap the
+      transform method if the class defines transform itself. #25295
+      by Thomas Fan.
+
+    o sklearn.datasets
+    + Fix Fix an inconsistency in datasets.fetch_openml between
+      liac-arff and pandas parser when a leading space is introduced
+      after the delimiter. The ARFF specs requires to ignore the
+      leading space. #25312 by Guillaume Lemaitre.
+
+    o sklearn.decomposition
+    + Fix Fixed a bug in decomposition.MiniBatchDictionaryLearning
+      where the online updates of the sufficient statistics where not
+      correct when calling partial_fit on batches of different
+      sizes. #25354 by Jérémie du Boisberranger.
+    + Fix decomposition.DictionaryLearning better supports readonly
+      NumPy arrays. In particular, it better supports large datasets
+      which are memory-mapped when it is used with coordinate descent
+      algorithms (i.e. when fit_algorithm='cd'). #25172 by Julien
+      Jerphanion.
+
+    o sklearn.ensemble
+    + Fix ensemble.RandomForestClassifier,
+      ensemble.RandomForestRegressor ensemble.ExtraTreesClassifier and
+      ensemble.ExtraTreesRegressor now support sparse readonly
+      datasets. #25341 by Julien Jerphanion
+    + sklearn.feature_extraction
+    + Fix feature_extraction.FeatureHasher raises an informative error
+      when the input is a list of strings. #25094 by Thomas Fan.
+
+    o sklearn.linear_model
+    + Fix Fix a regression in linear_model.SGDClassifier and
+      linear_model.SGDRegressor that makes them unusable with the
+      verbose parameter set to a value greater than 0. #25250 by
+      Jérémie Du Boisberranger.
+
+    o sklearn.manifold
+    + Fix manifold.TSNE now works correctly when output type is set to
+      pandas #25370 by Tim Head.
+
+    o sklearn.model_selection
+    + Fix model_selection.cross_validate with multimetric scoring in
+      case of some failing scorers the non-failing scorers now returns
+      proper scores instead of error_score values. #23101 by András
+      Simon and Thomas Fan.
+
+    o sklearn.neural_network
+    + Fix neural_network.MLPClassifier and neural_network.MLPRegressor
+      no longer raise warnings when fitting data with feature
+      names. #24873 by Tim Head.
+
+    o sklearn.preprocessing
+    + Fix preprocessing.FunctionTransformer.inverse_transform
+      correctly supports DataFrames that are all numerical when
+      check_inverse=True. #25274 by Thomas Fan.
+    + Fix preprocessing.SplineTransformer.get_feature_names_out
+      correctly returns feature names when
+      extrapolations="periodic". #25296 by Thomas Fan.
+
+    o sklearn.tree
+    + Fix tree.DecisionTreeClassifier, tree.DecisionTreeRegressor
+      tree.ExtraTreeClassifier and tree.ExtraTreeRegressor now support
+      sparse readonly datasets. #25341 by Julien Jerphanion
+
+    o sklearn.utils
+    + Fix Restore utils.check_array’s behaviour for pandas Series of
+      type boolean. The type is maintained, instead of converting to
+      float64. #25147 by Tim Head.
+  * API Change utils.fixes.delayed is deprecated in 1.2.1 and will be
+    removed in 1.5. Instead, import utils.parallel.delayed and use it
+    in conjunction with the newly introduced utils.parallel.Parallel
+    to ensure proper propagation of the scikit-learn configuration to
+    the workers. #25363 by Guillaume Lemaitre.
+
+-------------------------------------------------------------------
 Sun Jan 15 13:04:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.2.0

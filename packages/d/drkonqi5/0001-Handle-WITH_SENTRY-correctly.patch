@@ -1,0 +1,50 @@
+From 2e3e56c5ec62a817409d3c47bc0ccd716e288d9a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 23 Nov 2022 10:22:22 +0100
+Subject: [PATCH 1/2] Handle WITH_SENTRY correctly
+
+cmakedefine01 always defines the macro, so #ifdef is always true.
+Use #if instead.
+---
+ src/backtracegenerator.cpp                  | 2 +-
+ src/bugzillaintegration/reportinterface.cpp | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/backtracegenerator.cpp b/src/backtracegenerator.cpp
+index 0fd38646..4101f00c 100644
+--- a/src/backtracegenerator.cpp
++++ b/src/backtracegenerator.cpp
+@@ -190,7 +190,7 @@ void BacktraceGenerator::setBackendPrepared()
+     if (!m_tempDirectory->isValid()) {
+         qCWarning(DRKONQI_LOG) << "Failed to create temporary directory for generator!";
+     } else {
+-#ifdef WITH_SENTRY
++#if WITH_SENTRY
+         m_proc->setEnv(QStringLiteral("DRKONQI_WITH_SENTRY"), QStringLiteral("1"));
+ #endif
+         m_proc->setEnv(QStringLiteral("DRKONQI_TMP_DIR"), m_tempDirectory->path());
+diff --git a/src/bugzillaintegration/reportinterface.cpp b/src/bugzillaintegration/reportinterface.cpp
+index 6951a75b..c4ce4ea6 100644
+--- a/src/bugzillaintegration/reportinterface.cpp
++++ b/src/bugzillaintegration/reportinterface.cpp
+@@ -330,7 +330,7 @@ Bugzilla::NewBug ReportInterface::newBugReportTemplate() const
+ 
+ void ReportInterface::sendCrashEvent()
+ {
+-#ifdef WITH_SENTRY
++#if WITH_SENTRY
+     if (DrKonqi::debuggerManager()->backtraceGenerator()->state() == BacktraceGenerator::Loaded) {
+         m_sentryBeacon.sendEvent();
+         return;
+@@ -350,7 +350,7 @@ void ReportInterface::sendCrashEvent()
+ 
+ void ReportInterface::sendCrashComment()
+ {
+-#ifdef WITH_SENTRY
++#if WITH_SENTRY
+     m_sentryBeacon.sendUserFeedback(m_reportTitle + QLatin1Char('\n') + m_reportDetailText + QLatin1Char('\n') + DrKonqi::kdeBugzillaURL()
+                                     + QLatin1String("show_bug.cgi?id=%1").arg(QString::number(m_sentReport)));
+ #endif
+-- 
+2.39.1
+

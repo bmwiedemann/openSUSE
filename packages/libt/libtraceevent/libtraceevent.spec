@@ -70,6 +70,9 @@ The package provides header and other needed development files for the library %
 %prep
 %autosetup -p1
 
+%build
+export LDFLAGS="-ldl"
+
 %meson \
     --default-library=shared \
     -Dhtmldir=%{_docdir}/%{name} \

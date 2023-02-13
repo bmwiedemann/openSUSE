@@ -1,7 +1,7 @@
 #
 # spec file for package python-pingparsing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/pingparsing
 Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar.gz#/pingparsing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#thombashi/pingparsing#47
+Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +57,7 @@ BuildRequires:  %{python_module typepy >= 1.1.0}
 pingparsing is a CLI-tool/Python-library for parsing ping command output.
 
 %prep
-%setup -q -n pingparsing-%{version}
+%autosetup -p1 -n pingparsing-%{version}
 sed -i -e '/^#!\//, 1d' pingparsing/__main__.py
 
 %build

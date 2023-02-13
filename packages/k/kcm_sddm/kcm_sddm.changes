@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * Add missing break statement to switch-case
+  * Smooth wallpaper preview image
+  * Re-add drop shadow to wallpaper image
+  * Remove unnecessary multiplication by Screen.devicePixelRatio
+  * Use ecm_set_disabled_deprecation_versions
+  * Install po folder
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

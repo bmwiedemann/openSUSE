@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kscreen5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz
+Source:         kscreen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz.sig
+Source1:        kscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig(xi)
 Requires:       kded
 Requires:       libkscreen2-plugin >= %{_plasma5_version}
 Requires:       xrdb
-Recommends:     %{name}-lang
 Recommends:     %{name}-plasmoid
 Supplements:    packageand(libkscreen2-plugin:plasma5-workspace)
 Provides:       kscreen = %{version}
@@ -84,14 +83,13 @@ Requires:       %{name} = %{version}
 This package provides a Plasma widget to control common screen configuration options.
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
 
 %post
 %systemd_user_post plasma-kscreen-osd.service
@@ -109,9 +107,6 @@ This package provides a Plasma widget to control common screen configuration opt
 %{_kf5_bindir}/kscreen-console
 %{_kf5_plugindir}/
 %{_kf5_sharedir}/kpackage/kcms/kcm_kscreen/
-%dir %{_kf5_sharedir}/kded_kscreen/
-%dir %{_kf5_sharedir}/kded_kscreen/qml
-%{_kf5_sharedir}/kded_kscreen/qml/*.qml
 %{_kf5_sharedir}/dbus-1/services/org.kde.kscreen.osdService.service
 %{_libexecdir}/kscreen_osd_service
 %{_kf5_servicesdir}/
@@ -126,8 +121,6 @@ This package provides a Plasma widget to control common screen configuration opt
 %dir %{_kf5_plasmadir}/plasmoids/org.kde.kscreen
 %{_kf5_plasmadir}/plasmoids/org.kde.kscreen/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

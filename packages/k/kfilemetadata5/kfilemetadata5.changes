@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Also add external extractors to vector of all plugins (kde#463598)
+  * Fix loading of external extractors and writers (kde#463598)
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

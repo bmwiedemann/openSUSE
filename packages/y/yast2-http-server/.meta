@@ -1,6 +1,0 @@
-<package name="yast2-http-server" project="openSUSE:Factory">
-  <title>YaST2 - HTTP Server Configuration</title>
-  <description>This package contains the YaST2 component for HTTP server (Apache2)
-configuration.</description>
-  <devel project="YaST:Head" package="yast2-http-server"/>
-</package>

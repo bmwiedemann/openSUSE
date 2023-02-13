@@ -1,7 +1,7 @@
 #
 # spec file for package privoxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define chroot %{_localstatedir}/lib/privoxy
 Name:           privoxy
-Version:        3.0.33
+Version:        3.0.34
 Release:        0
 Summary:        The Internet Junkbuster - HTTP Proxy Server
 License:        GPL-3.0-or-later

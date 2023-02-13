@@ -551,4 +551,29 @@
 - INTERNAL CHANGE: Add &quot;SPDX-License-Identifier&quot; tags to most files.</comment>
     <requestid>1046107</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ecf8973eda70416d0b7438556683d2b3</srcmd5>
+    <version>4.2.3</version>
+    <time>1676302849</time>
+    <user>dimstar_suse</user>
+    <comment>- VERSION 4.2 Patch 3 - 2023-02-10
+- NEW FEATURE: Remind: add the orthodoxeaster() function to return the
+  date of Orthodox Easter.
+- IMPROVEMENT: Add Greek language support courtesy of JeiEl.
+- IMPROVEMENT: Add Greek holiday file courtesy of JeiEl.
+- IMPROVEMENT: Fix the Perl code (rem2pdf, rem2html) to silence Perl::Critic
+  warnings
+- IMPROVEMENT: Many internal code tweaks to eliminate many cppcheck
+  static analysis warnings.
+- DOCUMENTATION IMPROVEMENT: Clarify the distinction between a &quot;time&quot;
+  and a &quot;duration&quot; as suggested by Ian! D. Allen.
+- BUG FIX: Remind: Fix incorrect interaction between sortbanner() and
+  MSF-type reminders.  Bug found by Tim Chase.
+- BUG FIX: examples/defs.rem: Fix the calculation of US Tax Day as per
+  Tavis Ormandy and Tim Chase.  Also fixed in include/holidays/us.rem
+- BUG FIX: Remind: Add missing #include &lt;fcntl.h&gt; to funcs.c
+- BUG FIX: Remind: Fix undefined integer-overflow behavior in built-in abs()
+  function.  Pointed out on IRC by &quot;ubitux&quot;.</comment>
+    <requestid>1064709</requestid>
+  </revision>
 </revisionlist>

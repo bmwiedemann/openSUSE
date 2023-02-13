@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 13 14:18:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.30.1:
+  * Add deleteValueAtPath and pruneEmptyDicts template functions
+  * feat: Extend toPrettyJson template function to take indent
+  * fix: Fix chezmoi target-path when using .chezmoiroot
+  * chore: Use strings.Cut{Prefix,Suffix}
+
+-------------------------------------------------------------------
 Tue Feb  7 16:50:11 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.30.0:

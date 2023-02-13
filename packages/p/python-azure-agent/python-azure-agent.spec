@@ -84,11 +84,7 @@ Summary:        Unit tests
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Requires:       openssl
-# We are only building against Python 3 for SLE15+, and we don't need mock.
-%if 0%{?suse_version} && 0%{?suse_version} > 1315 && 0%{?suse_version} < 1500
-Requires:       python3-mock
-%endif
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 Requires:       python3-pytest
 %else
 Requires:       python-mock

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:16:06 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.5.1:
+  * Bugs fixed
+    + Add packages and package_data back in the setup_args #206
+      (@echarles)
+    + Add static and templates as artifact for hatch build #205
+      (@echarles)
+
+- changes from version 0.5.0:
+  * Enhancements made
+    + Upgrade to marked 4.0.10 #201 (@echarles)
+  * Bugs fixed
+    + Ci test fixes round1 #202 (@ericsnekbytes)
+    + fix loading of static and template path config #192 (@minrk)
+    + Add pytest_jupyter to the list of test deps #190 (@echarles)
+    + Align setup.py and setup.cfg #181 (@echarles)
+  * Maintenance and upkeep improvements
+    + Ci test fixes round1 #202 (@ericsnekbytes)
+    + Remove duplicate notebook_shim from setup.cfg #197
+      (@frenzymadness)
+    + Upgrade moment javascript package #186 (@echarles)
+    + Add dependabot config #175 (@blink1073)
+  * Documentation improvements
+    + Update documentation #196 (@RRosio)
+    + Update the project URL #194 (@jtpio)
+  * Other merged PRs
+    + Fix the jupyter server base.handlers import #187 (@echarles)
+    + Revert pull request 168 #184 (@echarles)
+
+-------------------------------------------------------------------
 Sat Dec 31 13:05:25 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Add pytest-jupyter to test requirenents. Testing with

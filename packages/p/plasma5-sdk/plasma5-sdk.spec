@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           plasma5-sdk
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://cgit.kde.org/plasma-sdk.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
+Source:         plasma-sdk-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
+Source1:        plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
@@ -65,6 +65,9 @@ Requires:       kirigami2
 Requires:       plasmaengineexplorer5
 Conflicts:      plasmate
 Recommends:     %{name}-lang
+# Existed in KDE:Unstable:Frameworks for a short time
+Provides:       %{name}-zsh-completion = %{version}
+Obsoletes:      %{name}-zsh-completion < %{version}
 
 %description
 Plasma SDK taylored for development of Plasma components,
@@ -83,37 +86,33 @@ test Plasma data engines without writing a Plasma applet.
 %lang_package
 
 %prep
-%setup -q -n plasma-sdk-%{version}
+%autosetup -p1 -n plasma-sdk-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-  cp -L %{_kf5_iconsdir}/breeze/apps/22/plasma.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-  cp -L %{_kf5_iconsdir}/breeze/apps/48/cuttlefish.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-  cp -L %{_kf5_iconsdir}/breeze/actions/24/tools-wizard.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+cp -L %{_kf5_iconsdir}/breeze/apps/22/plasma.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+cp -L %{_kf5_iconsdir}/breeze/apps/48/cuttlefish.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+cp -L %{_kf5_iconsdir}/breeze/actions/24/tools-wizard.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
 
-  # Workaround for kde#382275, "The following applications are going to be removed: Cuttlefish".
-  # The package contains two appdata files with the same Name, which libzypp can't handle (boo#1038368)
-  rm %{buildroot}%{_kf5_appstreamdir}/org.kde.plasma.cuttlefish.appdata.xml
+# Workaround for kde#382275, "The following applications are going to be removed: Cuttlefish".
+# The package contains two appdata files with the same Name, which libzypp can't handle (boo#1038368)
+rm %{buildroot}%{_kf5_appstreamdir}/org.kde.plasma.cuttlefish.appdata.xml
 
-%if %{with released}
 %find_lang cuttlefish %{name}.lang
 %find_lang plasma_shell_org.kde.plasmoidviewershell %{name}.lang
 %find_lang org.kde.plasma.themeexplorer %{name}.lang
 %find_lang org.kde.plasma.lookandfeelexplorer %{name}.lang
-%find_lang plasmoidviewer %{name}.lang
-%find_lang plasmaengineexplorer %{name}.lang
+%find_lang plasmoidviewer --with-man %{name}.lang
+%find_lang plasmaengineexplorer --with-man %{name}.lang
 %find_lang cuttlefish_editorplugin %{name}.lang
-%endif
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files
 %license LICENSES/*
@@ -137,6 +136,9 @@ test Plasma data engines without writing a Plasma applet.
 %{_kf5_appstreamdir}/org.kde.plasma.themeexplorer.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.lookandfeelexplorer.appdata.xml
 %{_kf5_servicesdir}/plasma-shell-org.kde.plasma.plasmoidviewershell.desktop
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_plasmoidviewer
 
 %files -n plasmaengineexplorer5
 %license LICENSES/*

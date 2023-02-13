@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 Name:           python-pandas%{psuffix}
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -49,8 +48,6 @@ Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
 # SourceRepository: https://github.com/pandas-dev/pandas
-# PATCH-FIX-UPSTREAM pandas-pr49886-fix-numpy-deprecations.patch gh#pandas-dev/pandas#49886, gh#pandas-dev/pandas#49887
-Patch1:         pandas-pr49886-fix-numpy-deprecations.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.20.3}
@@ -63,56 +60,56 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.20.3
 Requires:       python-python-dateutil >= 2.8.1
 Requires:       python-pytz >= 2020.1
+Obsoletes:      python-pandas-doc < %{version}
+Provides:       python-pandas-doc = %{version}
 # SECTION Optional dependencies
 # https://pandas.pydata.org/docs/getting_started/install.html#optional-dependencies
 Recommends:     python-Bottleneck >= 1.3.2
 Recommends:     python-numexpr >= 2.7.3
+# Compression
+Suggests:       python-Brotli >= 0.7.0
+Suggests:       python-Jinja2 >= 3.0.0
+# SQL databases
+Suggests:       python-PyMySQL >= 1.0.2
+Suggests:       python-QtPy
+Suggests:       python-SQLAlchemy >= 1.4.16
+Suggests:       python-XlsxWriter >= 1.2.2
+# HTML
+Suggests:       python-beautifulsoup4 >= 4.9.3
+Suggests:       python-blosc >= 1.21.0
+Suggests:       python-fastparquet >= 0.4.0
+# Access data in the cloud
+Suggests:       python-fsspec >= 2021.7.0
+Suggests:       python-gcsfs >= 2021.7.0
+Suggests:       python-html5lib >= 1.1
+Suggests:       python-lxml >= 4.6.3
 # Visualization
 Suggests:       python-matplotlib >= 3.3.2
-Suggests:       python-Jinja2 >= 3.0.0
-Suggests:       python-tabulate >= 0.8.9
+Suggests:       python-numba >= 0.53.1
+Suggests:       python-openpyxl >= 3.0.7
+Suggests:       python-pandas-gbq >= 0.15.0
+Suggests:       python-psycopg2 >= 2.8.6
+Suggests:       python-pyarrow >= 1.0.1
+Suggests:       python-pyreadstat >= 1.1.2
+Suggests:       python-python-snappy >= 0.6.0
+Suggests:       python-pyxlb >= 1.0.8
+# Clipboard
+Suggests:       python-qt5
+Suggests:       python-s3fs >= 2021.08.0
 # Computation
 Suggests:       python-scipy >= 1.7.1
-Suggests:       python-numba >= 0.53.1
+# Other data sources
+Suggests:       python-tables >= 3.6.1
+Suggests:       python-tabulate >= 0.8.9
 Suggests:       python-xarray >= 0.19.0
 # Excel files
 Suggests:       python-xlrd >= 2.0.1
 Suggests:       python-xlwt >= 1.3.0
-Suggests:       python-XlsxWriter >= 1.2.2
-Suggests:       python-openpyxl >= 3.0.7
-Suggests:       python-pyxlb >= 1.0.8
-# HTML
-Suggests:       python-beautifulsoup4 >= 4.9.3
-Suggests:       python-html5lib >= 1.1
-Suggests:       python-lxml >= 4.6.3
-# SQL databases
-Suggests:       python-PyMySQL >= 1.0.2
-Suggests:       python-SQLAlchemy >= 1.4.16
-Suggests:       python-psycopg2 >= 2.8.6
-# Other data sources
-Suggests:       python-tables >= 3.6.1
-Suggests:       python-blosc >= 1.21.0
 Suggests:       python-zlib
-Suggests:       python-fastparquet >= 0.4.0
-Suggests:       python-pyarrow >= 1.0.1
-Suggests:       python-pyreadstat >= 1.1.2
-# Access data in the cloud
-Suggests:       python-fsspec >= 2021.7.0
-Suggests:       python-gcsfs >= 2021.7.0
-Suggests:       python-pandas-gbq >= 0.15.0
-Suggests:       python-s3fs >= 2021.08.0
-# Clipboard
-Suggests:       python-qt5
-Suggests:       python-QtPy
+Suggests:       python-zstandard >= 0.15.2
 Suggests:       xclip
 Suggests:       xsel
-# Compression
-Suggests:       python-Brotli >= 0.7.0
-Suggests:       python-python-snappy >= 0.6.0
-Suggests:       python-zstandard >= 0.15.2
 # /SECTION
-Obsoletes:      python-pandas-doc < %{version}
-Provides:       python-pandas-doc = %{version}
 %if %{with test}
 BuildRequires:  %{python_module Bottleneck >= 1.3.2}
 BuildRequires:  %{python_module Jinja2 >= 3}

@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Parts5
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kparts
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Plugin framework for user interface components
 License:        LGPL-2.1-or-later
@@ -96,8 +96,7 @@ elaborate widgets with a user-interface defined in terms of actions
 
 %find_lang kparts5
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}-lang -f kparts5.lang
 

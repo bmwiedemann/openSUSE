@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 12 17:15:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch: gphoto2: Add
+  missing cheader attributes of delegate symbols.
+
+-------------------------------------------------------------------
 Thu Dec 15 07:07:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.31.7:

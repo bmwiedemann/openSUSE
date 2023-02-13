@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           kgamma5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz
+Source:         kgamma5-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz.sig
+Source1:        kgamma5-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.98.0
@@ -41,9 +41,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xxf86vm)
-%if %{with released}
-Recommends:     %{name}-lang
-%endif
 %if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       kgamma = %{version}
 Obsoletes:      kgamma < %{version}
@@ -59,15 +56,14 @@ gamma.
 %setup -q -n %{name}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
+%kf5_find_htmldocs
 
 %files
 %license LICENSES/*
@@ -77,8 +73,6 @@ gamma.
 %dir %{_kf5_htmldir}/en
 %doc %{_kf5_htmldir}/en/*/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

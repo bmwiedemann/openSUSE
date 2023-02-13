@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 13 08:21:08 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.4.0
+  - Improvements
+    - The graphview no longer renders content outside the visible area and uses
+      less CPU drawing, which should improve performance greatly.
+    - The graphview can now be zoomed. Zooming is possible via
+      two-finger-gesture, CTRL+Scrolling, and a zoom widget in the header bar.
+    - The graphview now has a fixed size, and the view is initially centered in
+      middle.
+    - Labels on nodes and ports now may use multiple lines when too long, and
+      very long labels will be ellipsized. A new tooltip is displayed when
+      hovering a label, which displays the full name and is never ellipsized.
+    - The label for a node now prefers displaying the node.description property
+      over the node.nick property of a pipewire node, which is usually more
+      human-readable and helpful, and also matches the behaviour of other tools.
+  - Fixes
+    - Helvum should build again with pipewire versions 0.3.64 and 0.3.65 due to
+      an updated pipewire dependency.
+
+-------------------------------------------------------------------
 Wed Feb  2 13:04:21 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 0.3.4

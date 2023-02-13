@@ -8,33 +8,33 @@ Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.cpp
 Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.cpp.txt
 Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.h
 Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.h.txt
-Index: sqlmap-1.6.7/extra/shutils/autocompletion.sh
+Index: sqlmap-1.7.2/extra/shutils/autocompletion.sh
 ===================================================================
---- sqlmap-1.6.7.orig/extra/shutils/autocompletion.sh
-+++ sqlmap-1.6.7/extra/shutils/autocompletion.sh
+--- sqlmap-1.7.2.orig/extra/shutils/autocompletion.sh
++++ sqlmap-1.7.2/extra/shutils/autocompletion.sh
 @@ -1,4 +1,4 @@
 -#/usr/bin/env bash
 +#!/usr/bin/bash
  
  # source ./extra/shutils/autocompletion.sh
  
-Index: sqlmap-1.6.7/sqlmapapi.py
+Index: sqlmap-1.7.2/sqlmapapi.py
 ===================================================================
---- sqlmap-1.6.7.orig/sqlmapapi.py
-+++ sqlmap-1.6.7/sqlmapapi.py
+--- sqlmap-1.7.2.orig/sqlmapapi.py
++++ sqlmap-1.7.2/sqlmapapi.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  """
- Copyright (c) 2006-2022 sqlmap developers (https://sqlmap.org/)
-Index: sqlmap-1.6.7/sqlmap.py
+ Copyright (c) 2006-2023 sqlmap developers (https://sqlmap.org/)
+Index: sqlmap-1.7.2/sqlmap.py
 ===================================================================
---- sqlmap-1.6.7.orig/sqlmap.py
-+++ sqlmap-1.6.7/sqlmap.py
+--- sqlmap-1.7.2.orig/sqlmap.py
++++ sqlmap-1.7.2/sqlmap.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  """
- Copyright (c) 2006-2022 sqlmap developers (https://sqlmap.org/)
+ Copyright (c) 2006-2023 sqlmap developers (https://sqlmap.org/)

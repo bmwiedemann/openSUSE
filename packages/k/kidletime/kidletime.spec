@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5IdleTime5
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kidletime
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
@@ -87,8 +87,7 @@ idle time events, such as custom timeouts, or user activity.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license LICENSES/*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 13 06:20:28 UTC 2023 - munix9@googlemail.com
+
+- Pre-create diff-pdf.1 with help2man to work around GTK+ DISPLAY
+  errors (boo#1180471)
+
+-------------------------------------------------------------------
 Wed Apr 28 07:54:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5:

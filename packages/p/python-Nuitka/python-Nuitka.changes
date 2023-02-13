@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 13 02:30:56 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Recommends: python-ordered-set
+- Re-enable many tests when using clang, and one when using gcc
+- Update to v1.4.5
+  See https://github.com/Nuitka/Nuitka/blob/main/Changelog.rst
+
+
+-------------------------------------------------------------------
 Fri Jan 27 04:18:50 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary dependency on boltons

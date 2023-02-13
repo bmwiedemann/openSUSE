@@ -1,7 +1,7 @@
 #
 # spec file for package words
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
 Name:           words
 Version:        2020.12.07
 Release:        0
@@ -31,7 +27,6 @@ Source0:        https://prdownloads.sourceforge.net/wordlist/scowl-%{version}.ta
 Source1:        sysconfig.words
 Source2:        SuSEconfig.words
 BuildRequires:  glibc-locale
-BuildRequires:  sysvinit-tools
 PreReq:         %fillup_prereq
 Provides:       scowl = %{version}-%{release}
 BuildArch:      noarch
@@ -106,9 +101,8 @@ for s in $spellings
 do
     while test -e result/${s}.todo
     do
-	usleep 50000
+	sleep 0.05s
     done
-    fsync result/${s}
 done
 
 %install

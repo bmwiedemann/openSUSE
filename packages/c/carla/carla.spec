@@ -27,7 +27,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause

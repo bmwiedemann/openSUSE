@@ -17,20 +17,20 @@
 
 
 %global sover 5
-%global private_sover 9
+%global private_sover 10
 %define lname           libkdecorations2-%{sover}
 %define lname_private   libkdecorations2private%{private_sover}
 %bcond_without released
 Name:           libkdecoration2
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz
+Source:         kdecoration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz.sig
+Source1:        kdecoration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -76,17 +76,16 @@ Plugin based library to create window decorations.
 %lang_package -n %{lname}
 
 %prep
-%setup -q -n kdecoration-%{version}
+%autosetup -p1 -n kdecoration-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --all-name
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -111,9 +110,7 @@ Plugin based library to create window decorations.
 %{_kf5_prefix}/include/KDecoration2/
 %{_kf5_includedir}/
 
-%if %{with released}
 %files -n %{lname}-lang -f %{name}.lang
 %license LICENSES/*
-%endif
 
 %changelog

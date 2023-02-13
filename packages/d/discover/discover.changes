@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * Workaround visibly empty changelog
+  * PackageKit: PackageState takes the packageName not the appstreamId (kde#464357)
+  * ui: Fix plural calculation of app list page heading (kde#464882)
+  * flatpak: Use the recommended URL for flathub's flatpakrepo
+  * flatpak: Make sure we are reading the correct metadata (kde#464128)
+  * flatpak: Don't filter twice the componentsByFlatpakId result for its bundle id
+  * flatpak: Make test run a bit faster
+  * flatpak: Address install package look-up
+  * flatpak: Properly read .flatpakrepo names
+  * flatpak: Fix test on the CI
+  * Specify the domain in libdiscover's QML i18n calls
+  * DiscoverObject: Also show C++ errors in the messages sheet
+  * flatpak: Fix loading flatpakref files (kde#464206)
+  * Add network timeouts by default
+  * ReviewsPage: Fix clipping under scroll bar
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

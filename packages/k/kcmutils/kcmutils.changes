@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * KCModuleQml: Specify URL for root component's QML context
+  * Fix comment: use punctuation for readability for sentences.
+  * Set systemsettings as alias when generating desktop files
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

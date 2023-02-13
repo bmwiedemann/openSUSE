@@ -1,7 +1,7 @@
 #
 # spec file for package river
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           river
-Version:        0.2.0+g24
+Version:        0.2.4
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
@@ -27,6 +27,9 @@ Source1:        river-run.sh
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc >= 1.9.2
+BuildRequires:  zig
+BuildRequires:  zig-rpm-macros
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -43,9 +46,6 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
 BuildRequires:  pkgconfig(wlroots) >= 0.15.0
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig
-BuildRequires:  zig-rpm-macros
 Recommends:     xorg-x11-server-wayland
 # To make Qt apps work somewhat okay on Wayland and auto use it
 # Otherwise, it will try to run under XWayland
@@ -82,7 +82,7 @@ The initial state may be configured with various options passed on startup. Some
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
+Group:          Development/Libraries/Other
 Requires:       %{name}
 BuildArch:      noarch
 

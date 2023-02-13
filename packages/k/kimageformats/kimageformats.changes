@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * psd: conversion speed improvements (kf5)
+  * Fix writing TGA alpha depth flag
+  * HDR support removed from RAW plugin
+  * heif: reject invalid files with zero size
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

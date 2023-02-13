@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:13:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Update README with new json metadata
+  * Show deprecation message about the desktop to json conversion being removed
+
+-------------------------------------------------------------------
 Thu Jan 12 08:19:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

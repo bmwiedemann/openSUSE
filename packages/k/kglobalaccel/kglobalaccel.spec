@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kglobalaccel
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
@@ -122,10 +122,8 @@ does not need focus for them to be activated.
 %postun -n kglobalaccel5
 %{systemd_user_postun}
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
-%post -n libKF5GlobalAccelPrivate5 -p /sbin/ldconfig
-%postun -n libKF5GlobalAccelPrivate5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
+%ldconfig_scriptlets -n libKF5GlobalAccelPrivate5
 
 %files -n %{lname}-lang -f kglobalaccel5.lang
 

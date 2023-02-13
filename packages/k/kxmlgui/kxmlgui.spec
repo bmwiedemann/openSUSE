@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5XmlGui5
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kxmlgui
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -108,8 +108,7 @@ mkdir -p %{buildroot}%{_kf5_sharedir}/kxmlgui5/
 
 %find_lang kxmlgui5
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}-lang -f kxmlgui5.lang
 

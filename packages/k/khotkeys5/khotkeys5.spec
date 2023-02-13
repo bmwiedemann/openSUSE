@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           khotkeys5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE's hotkey daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz
+Source:         khotkeys-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
+Source1:        khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -52,7 +52,6 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 Requires:       libqt5-qdbus
-Recommends:     %{name}-lang
 
 %description
 KDE's hotkey daemon module. It allows you to configure custom
@@ -81,14 +80,12 @@ Files to develop with KDE's hotkey daemon module.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
+%kf5_find_htmldocs
 
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -105,8 +102,6 @@ Files to develop with KDE's hotkey daemon module.
 %{_kf5_libdir}/cmake/KHotKeysDBusInterface/
 %{_kf5_sharedir}/dbus-1/interfaces/org.kde.khotkeys.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

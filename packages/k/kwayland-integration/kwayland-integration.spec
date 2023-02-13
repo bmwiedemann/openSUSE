@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kwayland-integration
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Integration plugins for various KDE frameworks for wayland windo
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz
+Source:         kwayland-integration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz.sig
+Source1:        kwayland-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16

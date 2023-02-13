@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        73.0.0
+Version:        74.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -31,7 +31,9 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  libboost_filesystem-devel >= 1.66.0
 BuildRequires:  libboost_headers-devel >= 1.66.0
+BuildRequires:  libboost_system-devel >= 1.66.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(gmp)

@@ -792,4 +792,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Disable a test failing to compile with junit5 5.8.x</comment>
     <requestid>975889</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>52204131681aebb24f1ed092b0276e2c</srcmd5>
+    <version>1.10.13</version>
+    <time>1676302760</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in Staging:L</comment>
+    <requestid>1064370</requestid>
+  </revision>
 </revisionlist>

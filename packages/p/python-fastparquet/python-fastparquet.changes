@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb  9 15:55:08 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 2023.2.0:
+  * revert one-level set of filters (#852)
+  * full size dict for decoding V2 pages (#850)
+  * infer_object_encoding fix (#847)
+  * row filtering with V2 pages (#845)
+
+-------------------------------------------------------------------
+Wed Feb  8 18:25:03 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove fastparquet-pr835.patch, implemented upstream
+
+- update to version 2023.1.0:
+  * big improvement to write speed
+  * paging support for bigger row-groups
+  * pandas 2.0 support
+  * delta for big-endian architecture
+
+-------------------------------------------------------------------
 Mon Jan  2 20:38:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.12.0

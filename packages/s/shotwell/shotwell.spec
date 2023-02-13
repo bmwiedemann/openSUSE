@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Shotwell
 
 Source0:        https://download.gnome.org/sources/shotwell/0.31/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
+# PATCH-FIX-UPSTREAM cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch -- gphoto2: Add missing cheader attributes of delegate symbols
+Patch0:         https://gitlab.gnome.org/GNOME/shotwell/-/commit/cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes

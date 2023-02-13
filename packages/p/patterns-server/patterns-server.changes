@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 13 09:31:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop recommends on yast2-{dns,dhcp,http}-server: yast modules are
+  no longer maintained.
+
+-------------------------------------------------------------------
 Wed Nov 30 12:15:19 UTC 2022 - pgajdos@suse.com
 
 - recommend apache2-mod_php8 instead of apache2-mod_php7

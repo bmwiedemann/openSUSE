@@ -1,7 +1,7 @@
 #
 # spec file for package ant
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %bcond_with junit5
 %bcond_with antlr
 Name:           ant
-Version:        1.10.12
+Version:        1.10.13
 Release:        0
 Summary:        Java-based build tool
 License:        Apache-2.0
@@ -302,6 +302,19 @@ Requires:       javamail >= 1.2-5jpp
 Apache Ant is a Java-based build tool.
 
 This package contains optional javamail tasks for Apache Ant.
+
+%package -n ant-jakartamail
+Summary:        Optional jakartamail tasks for ant
+License:        Apache-2.0
+Group:          Development/Tools/Building
+BuildRequires:  jakarta-mail
+Requires:       jakarta-mail
+%requires_eq    ant
+
+%description -n ant-jakartamail
+Apache Ant is a Java-based build tool.
+
+This package contains optional jakartamail tasks for Apache Ant.
 
 %package -n ant-jdepend
 Summary:        Optional jdepend tasks for ant
@@ -586,6 +599,7 @@ echo "regexp ant/ant-apache-regexp" > %{buildroot}%{_sysconfdir}/ant.d/apache-re
 echo "xalan-j2 ant/ant-apache-xalan2" > %{buildroot}%{_sysconfdir}/ant.d/apache-xalan2
 echo "ant/ant-imageio" > %{buildroot}%{_sysconfdir}/ant.d/imageio
 echo "javamail jaf ant/ant-javamail" > %{buildroot}%{_sysconfdir}/ant.d/javamail
+echo "jakartamail jaf ant/ant-jakartamail" > %{buildroot}%{_sysconfdir}/ant.d/jakartamail
 echo "jdepend ant/ant-jdepend" > %{buildroot}%{_sysconfdir}/ant.d/jdepend
 echo "jsch ant/ant-jsch" > %{buildroot}%{_sysconfdir}/ant.d/jsch
 echo "xz-java ant/ant-xz" > %{buildroot}%{_sysconfdir}/ant.d/xz
@@ -725,6 +739,10 @@ popd
 %files -n ant-javamail -f .mfiles-ant-javamail
 %{ant_home}/lib/ant-javamail.jar
 %config(noreplace) %{_sysconfdir}/ant.d/javamail
+
+%files -n ant-jakartamail -f .mfiles-ant-jakartamail
+%{ant_home}/lib/ant-jakartamail.jar
+%config(noreplace) %{_sysconfdir}/ant.d/jakartamail
 
 %files -n ant-jdepend -f .mfiles-ant-jdepend
 %{ant_home}/lib/ant-jdepend.jar

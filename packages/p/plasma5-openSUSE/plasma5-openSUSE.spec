@@ -16,9 +16,9 @@
 #
 
 
-%define plasma_version 5.26.5
+%define plasma_version 5.27.0
 Name:           plasma5-openSUSE
-Version:        84.87~git20220602T134713~22403ba
+Version:        84.87~git20230131T131056~433af24
 Release:        0
 Summary:        openSUSE KDE Extension
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
@@ -59,21 +59,8 @@ Group:          System/GUI/KDE
 Requires:       plasma5-defaults-openSUSE
 Requires:       plasma5-workspace >= %{plasma_version}
 Requires:       wallpaper-branding-openSUSE
-Supplements:    packageand(plasma5-workspace:branding-openSUSE)
+Supplements:    (plasma5-workspace and branding-openSUSE)
 Provides:       plasma5-workspace-branding = %{plasma_version}
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} != 1320
-Provides:       kdebase4-openSUSE = 43
-Provides:       kdebase4-openSUSE-lang = 43
-Provides:       kdebase4-runtime-branding-openSUSE = 43
-Provides:       kdebase4-workspace-branding-openSUSE = 43
-Obsoletes:      kdebase4-openSUSE < 43
-Obsoletes:      kdebase4-openSUSE-lang < 43
-Obsoletes:      kdebase4-runtime-branding-openSUSE < 43
-Obsoletes:      kdebase4-workspace-branding-openSUSE < 43
-%else
-Conflicts:      kdebase4-openSUSE
-Conflicts:      kdebase4-workspace-branding-openSUSE
-%endif
 
 %description -n plasma5-workspace-branding-openSUSE
 This package does not contain anything by itself, but pulls in
@@ -93,8 +80,6 @@ Summary:        Plasma 5 theme for openSUSE
 Group:          System/GUI/KDE
 Requires:       wallpaper-branding-openSUSE
 Requires(pre):  coreutils
-Conflicts:      kdebase4-openSUSE < 43
-Conflicts:      kdebase4-workspace-branding-openSUSE < 43
 Provides:       plasma5-desktop-branding-openSUSE = 43
 Obsoletes:      plasma5-desktop-branding-openSUSE < 43
 
@@ -122,11 +107,6 @@ for openSUSE.
 # Defaults
 cp -a config-files/* %{buildroot}
 %fdupes %{buildroot}/%{_kf5_plasmadir}/desktoptheme
-
-# copy kdeglobals to /etc/kde4/share/config/, to make Firefox the default browser for KDE4 as well (boo#997199)
-# necessary at least until mozilla-kde4-integration has been ported to KF5, as Firefox currently checks the KDE4 settings whether it is the default browser
-mkdir -p %{buildroot}/%{_sysconfdir}/kde4/share/config/
-cp %{buildroot}/%{_kf5_configdir}/kdeglobals %{buildroot}/%{_sysconfdir}/kde4/share/config/
 
 # Look-and-feel package (copy over everything that is not already in the .tar, then apply patch)
 rsync -av --ignore-existing %{_kf5_plasmadir}/look-and-feel/org.kde.breeze.desktop/ %{buildroot}%{_kf5_plasmadir}/look-and-feel/org.openSUSE.desktop/
@@ -167,7 +147,6 @@ fi
 %license COPYING
 %config %{_kf5_configdir}/*rc
 %config %{_kf5_configdir}/kdeglobals
-%config %{_sysconfdir}/kde4/
 
 %files -n sddm-theme-openSUSE
 %license COPYING

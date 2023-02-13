@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.102
+%define _tar_path 5.103
 %bcond_without released
 Name:           ktexteditor
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -91,8 +91,7 @@ This subpackage provides the header files.
 
 %find_lang ktexteditor5
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files -n %{name}-lang -f ktexteditor5.lang
 

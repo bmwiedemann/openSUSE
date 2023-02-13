@@ -19,15 +19,15 @@
 
 %define _name   breeze
 Name:           breeze-gtk
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/breeze-gtk
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz
+Source:         breeze-gtk-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
+Source1:        breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-style
@@ -48,6 +48,7 @@ Group:          System/GUI/KDE
 Recommends:     breeze5-cursors
 Suggests:       gtk2-metatheme-%{_name}
 Suggests:       gtk3-metatheme-%{_name}
+Suggests:       gtk4-metatheme-%{_name}
 Provides:       %{_name}-gtk = %{version}
 Obsoletes:      %{_name}-gtk < %{version}
 
@@ -76,6 +77,17 @@ BuildArch:      noarch
 %description -n gtk3-metatheme-%{_name}
 A GTK+ theme created to match with the new Plasma 5 Breeze theme.
 
+%package -n gtk4-metatheme-%{_name}
+Summary:        GTK+ theme matching KDE's Breeze -- GTK+ 4 Support
+Group:          System/GUI/KDE
+Requires:       metatheme-%{_name}-common = %{version}
+Supplements:    (breeze4-style and gtk4)
+Supplements:    (breeze5-style and gtk4)
+BuildArch:      noarch
+
+%description -n gtk4-metatheme-%{_name}
+A GTK+ theme created to match with the new Plasma 5 Breeze theme.
+
 %prep
 %autosetup -p1
 
@@ -99,5 +111,8 @@ A GTK+ theme created to match with the new Plasma 5 Breeze theme.
 
 %files -n gtk3-metatheme-%{_name}
 %{_datadir}/themes/Breeze*/gtk-3.*/
+
+%files -n gtk4-metatheme-%{_name}
+%{_datadir}/themes/Breeze*/gtk-4.*/
 
 %changelog

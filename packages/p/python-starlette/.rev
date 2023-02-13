@@ -201,4 +201,27 @@
     Ring1, we don't want to pull in more than we want.</comment>
     <requestid>1056202</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>68b971c753f9ffb356be9fc97a1801bb</srcmd5>
+    <version>0.24.0</version>
+    <time>1676302765</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests for i586 and armv7l.
+- Update to 0.24.0
+  * Added
+    - Allow StaticFiles to follow symlinks
+    - Allow Request.form() as a context manager
+    - Add size attribute to UploadFile
+    - Add env_prefix argument to Config
+    - Add template context processors
+    - Support str and datetime on expires parameter on the Response.set_cookie method
+  * Changed
+    - Lazily build the middleware stack
+    - Make the file argument required on UploadFile
+    - Use debug extension instead of custom response template extension
+  * Fixed
+    - Fix url parsing of ipv6 urls on URL.replace
+</comment>
+    <requestid>1064388</requestid>
+  </revision>
 </revisionlist>

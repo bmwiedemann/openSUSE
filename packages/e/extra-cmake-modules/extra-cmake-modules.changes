@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * ECMAddQtDesignerPlugin: use correct plugin IID
+  * ECMAddQch: support doc linking also against Qt6 docs
+  * KDEPackageAppTemplates: add "_kapptemplate" postfix to target names
+  * Fix compatibility with newer Gradle provided with Qt 5.15.8
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

@@ -19,15 +19,15 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           kde-cli-tools5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz
+Source:         kde-cli-tools-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz.sig
+Source1:        kde-cli-tools-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE kdesu-add-some-i18n-love.patch -- boo#852256
@@ -70,16 +70,16 @@ Additional CLI tools for KDE applications and workspaces.
 %autosetup -p1 -n kde-cli-tools-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %kf5_find_htmldocs
-%endif
-  ln -s %{_kf5_libexecdir}/kdesu %{buildroot}%{_kf5_bindir}/kdesu
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%kf5_find_htmldocs
+
+ln -s %{_kf5_libexecdir}/kdesu %{buildroot}%{_kf5_bindir}/kdesu
 
 %pre
 # Remove old update-alternatives entry
@@ -116,8 +116,6 @@ fi
 %doc %{_kf5_htmldir}/en
 %{_kf5_mandir}/man1/kdesu*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

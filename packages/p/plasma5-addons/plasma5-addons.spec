@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-addons
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Additional Plasma5 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
+Source:         kdeplasma-addons-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz.sig
+Source1:        kdeplasma-addons-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf5-filesystem
@@ -102,17 +102,15 @@ the Plasma desktop.
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
 %endif
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -138,9 +136,6 @@ the Plasma desktop.
 %{_kf5_libdir}/libplasmapotdprovidercore.so
 %{_kf5_sharedir}/kdevappwizard/templates/plasmapotdprovider.tar.bz2
 
-%if %{with released}
 %files lang -f %{name}.lang
-%license LICENSES/*
-%endif
 
 %changelog

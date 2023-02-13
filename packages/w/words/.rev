@@ -227,4 +227,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>974416</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>0f8feb2211401ae867661cfbbe5f71bc</srcmd5>
+    <version>2020.12.07</version>
+    <time>1676302884</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid the build requires for sysvinit-tools (forwarded request 1065510 from kukuk)</comment>
+    <requestid>1065512</requestid>
+  </revision>
 </revisionlist>

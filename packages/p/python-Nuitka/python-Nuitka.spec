@@ -131,7 +131,7 @@ ExclusiveArch:  do-not-build
 %define skip_python311 1
 # For Python 3.11 support status see https://github.com/Nuitka/Nuitka/issues/1856
 Name:           python-Nuitka%{?psuffix}
-Version:        1.4
+Version:        1.4.5
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -162,6 +162,7 @@ Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
 Recommends:     patchelf
+Recommends:     python-ordered-set
 Recommends:     python-tqdm
 Recommends:     strace
 Suggests:       execstack
@@ -188,6 +189,7 @@ BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module ordered-set}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module pmw}
@@ -268,11 +270,6 @@ rmdir nuitka/build/inline_copy/lib/
 
 rmdir nuitka/build/inline_copy/ || (ls nuitka/build/inline_copy/ && exit 1)
 
-# De-vendor backwards compatibility https://github.com/Nuitka/Nuitka/issues/967
-# Not working; causes AttributeError: 'str' object has no attribute 'get'
-# echo 'from collections import OrderedDict' > nuitka/containers/OrderedDicts.py
-# echo 'from boltons.setutils import IndexedSet as OrderedSet' > nuitka/containers/OrderedSetsFallback.py
-
 sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_report/__main__.py
 
 # Allow these tests to run
@@ -345,14 +342,6 @@ cp -r %{_bindir}/scons* build/testbin/
 export SCONS_LIB_DIR=$PWD/my-scons
 export PATH=$PWD/build/testbin:$PATH
 
-# Seems run-tests is broken, because it explictly adds numpy plugin, which results in
-# +Nuitka-Plugins:WARNING: numpy: This plugin has been deprecated, do not enable it anymore.
-sed -i '/if filename == "GlfwUsing.py"/d' tests/standalone/run_all.py
-sed -i '/plugin_enable:numpy/d' tests/standalone/run_all.py
-
-# https://github.com/Nuitka/Nuitka/issues/1972
-rm tests/standalone/PyQt5*.py
-
 %{python_expand #
 
 %if %{with test_clang}
@@ -367,16 +356,14 @@ rm tests/standalone/PyQt5*.py
 # Also numpy causes the opengl tests to OOM
 if [[ "$python" != "python2" ]]; then
   mv tests/standalone/FlaskUsing.py /tmp
-  mv tests/standalone/MatplotlibUsing.py /tmp
-  mv tests/standalone/OpenGLUsing.py /tmp
-  mv tests/standalone/PandasUsing.py /tmp || true
-  mv tests/standalone/PendulumUsing.py /tmp
-  # NumpyUsing.py can OOM on ppc64 & ppc64le
-  mv tests/standalone/NumpyUsing.py /tmp
-fi
 
-# OOM (last checked 02-01-2023)
-mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
+  # MatplotlibUsing can OOM on ppc64 & ppc64le & i586
+  mv tests/standalone/MatplotlibUsing.py /tmp
+  mv tests/standalone/PendulumUsing.py /tmp
+
+  # OOM on i586 (last checked 2023-02-12)
+  mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
+fi
 
 export NUITKA_EXTRA_OPTIONS="--debug"
 
@@ -404,9 +391,6 @@ if [[ "$python" == "python2" || "$python" == "python3" ]]; then
   mv tests/standalone/OpenGLUsing.py /tmp
 fi
 
-# OOM (last checked 02-01-2023)
-mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
-
 export NUITKA_EXTRA_OPTIONS=""
 
 CC=clang xvfb-run $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
@@ -430,10 +414,7 @@ rm -r /tmp/* ||:
 # have been found with/without this flag.
 
 # https://github.com/Nuitka/Nuitka/issues/1338 is a current failure with ``
-export NUITKA_EXTRA_OPTIONS="--debug"
-
-# OOM
-mv tests/standalone/MatplotlibUsing.py /tmp
+export NUITKA_EXTRA_OPTIONS=""
 
 CC=gcc xvfb-run $python ./tests/run-tests --no-other-python --skip-reflection-test
 

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-attica-kde-Use-the-correct-location-for-determining-.patch
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+- Add patch to fix attica cache corruption (kde#464517):
+  * 0001-attica-kde-Use-the-correct-location-for-determining-.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

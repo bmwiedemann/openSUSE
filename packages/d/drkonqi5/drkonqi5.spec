@@ -23,19 +23,20 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
+Source:         drkonqi-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source1:        drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCHES 100-199 are from upstream 5.16 branch
-# PATCHES 200-299 and above are from upstream master/5.17+ branch
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/drkonqi/-/merge_requests/84
+Patch1:         0001-Handle-WITH_SENTRY-correctly.patch
+Patch2:         0002-Make-python-distro-and-psutil-modules-in-the-gdb-pre.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -89,24 +90,30 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %lang_package
 
 %prep
-%setup -q -n drkonqi-%{version}
+%autosetup -p1 -n drkonqi-%{version}
 
 %build
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
 %endif
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  # Turn off sentry unconditionally. It needs qdbus -> -qt5 fixing
+  # before it can be used.
+  %{cmake_kf5 -d build -- \
+%if 0%{?suse_version} >= 1550
+  -DWITH_GDB12=ON \
+%endif
+  -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} \
+  -DWITH_SENTRY=OFF}
+
   %cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-  %if %{with released}
-    %{kf5_find_lang}
-  %endif
+%{kf5_find_lang}
 
-  install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
-  %{buildroot}%{_kf5_bindir}/installdbgsymbols.sh
+install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
+%{buildroot}%{_kf5_bindir}/installdbgsymbols.sh
 
 %pre
 %service_add_pre drkonqi-coredump-processor@.service
@@ -121,7 +128,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 
 %postun
 %{systemd_user_postun drkonqi-coredump-cleanup.service drkonqi-coredump-cleanup.timer drkonqi-coredump-launcher.socket}
-%service_del_postun drkonqi-coredump-processor@.service
+%service_del_postun -n drkonqi-coredump-processor@.service
 
 %files
 %license LICENSES/*
@@ -144,8 +151,6 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %{_libexecdir}/drkonqi-coredump-processor
 %{_kf5_applicationsdir}/org.kde.drkonqi.coredump.gui.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

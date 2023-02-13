@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 13 13:32:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Avoid the build requires for sysvinit-tools
+
+-------------------------------------------------------------------
 Mon Apr 25 11:05:37 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Version 2019.10.06 to 2020.12.07

@@ -43,7 +43,7 @@
 # enable pytest color output for local debugging: osc --with pytestcolor
 %bcond_with pytestcolor
 Name:           python-scikit-learn%{psuffix}
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause

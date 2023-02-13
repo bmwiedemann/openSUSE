@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
+Source:         sddm-kcm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
+Source1:        sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -55,7 +55,6 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Supplements:    packageand(sddm:plasma5-workspace)
-Recommends:     %{name}-lang
 
 %description
 SDDM control module for KDE. It provides a graphical frontend for the
@@ -67,19 +66,15 @@ sddm.
 %autosetup -p1 -n sddm-kcm-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
   %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang %{name} %{name}.lang
-%endif
+%find_lang %{name} %{name}.lang
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files
 %doc README.md

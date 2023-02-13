@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 13 05:49:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * Release v0.11.0
+  * Add check for pods that are managed by multiple pdbs
+  * Update README.md
+  * invalid value for --force-exit-zero
+  * add a non-root user in docker image
+  * optimize README documents
+  * 📦 Add arm64 Darwin releases to krew-index
+  * Add go install option to readme
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.2
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.1. Reverting from 1.12.2
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.2
+  * Add check for pods that are managed by multiple pdbs
+  * fix RBAC rules in README.md
+
+-------------------------------------------------------------------
 Tue Jun 28 14:59:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.10.1:

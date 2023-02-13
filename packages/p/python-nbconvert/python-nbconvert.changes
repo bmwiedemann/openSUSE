@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:19:54 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.2.9:
+  * Bugs fixed
+    + Fix handling of css sanitizer #1940 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Jan 22 13:03:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.8

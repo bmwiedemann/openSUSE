@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           plasma5-nano
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Plasma Nano
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nano-%{version}.tar.xz
+Source:         plasma-nano-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nano-%{version}.tar.xz.sig
+Source1:        plasma-nano-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -62,14 +62,13 @@ A minimal plasma shell package intended for embedded devices
 %autosetup -p1 -n plasma-nano-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
 
 %files
 %license LICENSES/*
@@ -86,8 +85,6 @@ A minimal plasma shell package intended for embedded devices
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.nano.desktop
 %{_kf5_servicesdir}/plasma-package-org.kde.plasma.nano.desktoptoolbox.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

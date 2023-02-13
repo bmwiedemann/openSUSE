@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 11 09:53:05 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
+
+- Let's build this package in %build, not %prep, as usual
+- Link explicitly with -ldl allows building with older toolchains
+
+-------------------------------------------------------------------
 Tue Feb  7 13:05:10 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Sync meson build patch with latest upstream version

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * waylandinhibition singleton pattern for ShortcutsInhibitManager
+  * waylandclipboard: roundtrip to get accurate focus state (kde#463199)
+  * KColorSchemeWatcherMac: do not use new NSAppearance API on older macOS versions (kde#463752)
+
+-------------------------------------------------------------------
 Thu Jan 12 08:18:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

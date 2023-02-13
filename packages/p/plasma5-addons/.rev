@@ -1176,4 +1176,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.26.5 - untested (forwarded request 1055974 from Vogtinator)</comment>
     <requestid>1056036</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>41f91d9eca22247271d7b0b824bd0440</srcmd5>
+    <version>5.27.0</version>
+    <time>1676302798</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.0, preliminary tarballs</comment>
+    <requestid>1064526</requestid>
+  </revision>
 </revisionlist>

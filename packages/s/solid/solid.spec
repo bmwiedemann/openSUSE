@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.102
+%define _tar_path 5.103
 %bcond_without released
 Name:           solid
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -111,8 +111,7 @@ Development files.
 
 %find_lang solid5 --with-qt --without-mo
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}-lang -f solid5.lang
 

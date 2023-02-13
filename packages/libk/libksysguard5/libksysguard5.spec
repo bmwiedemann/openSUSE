@@ -19,7 +19,7 @@
 %bcond_without released
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,9 +29,9 @@ Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        %{name}-rpmlintrc
@@ -78,7 +78,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-imports
-Recommends:     %{name}-lang
 Recommends:     %{name}-plugins
 
 %description
@@ -150,14 +149,13 @@ QML applications.
 %if 0%{?suse_version} <= 1500
     export CC=gcc-10 CXX=g++-10
 %endif
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
 
 %post plugins
 %if %{pkg_vcmp kf5-filesystem >= 20220307}
@@ -254,8 +252,6 @@ QML applications.
 %{_kf5_libdir}/libprocesscore.so
 %{_kf5_libdir}/libprocessui.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

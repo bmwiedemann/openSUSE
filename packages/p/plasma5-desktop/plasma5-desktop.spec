@@ -17,18 +17,17 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.shell\\.panel).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.shell\\.panel|org\\.kde\\.plasma\\.touchscreen\\.kcm).*
 # Optional PulseAudio integration, needs plasma5-pa
 %global __requires_exclude_from org\\.kde\\.plasma\\.taskmanager/contents/ui/PulseAudio\\.qml
 
 %define kf5_version 5.98.0
 
-%global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
 %global have_kaccounts (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -38,9 +37,9 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -200,9 +199,6 @@ Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 # Other color fonts don't really work that well
 Recommends:     noto-coloremoji-fonts
-%if %{have_ibus_dict_emoji_pkg}
-Requires:       ibus-dict-emoji
-%endif
 
 %description emojier
 Press Meta+. to open an emoji selection window.
@@ -213,31 +209,18 @@ Press Meta+. to open an emoji selection window.
 %autosetup -p1 -n plasma-desktop-%{version}
 
 %build
-%if !%{have_ibus_dict_emoji_pkg}
-  # Reference the local copy (see the comment in the install section)
-  sed -i"" 's#ibus/dicts/#plasma/ibus-emoji-dicts/#g' applets/kimpanel/backend/ibus/emojier/emojier.cpp
-%endif
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
+%kf5_makeinstall -C build
 
-%if !%{have_ibus_dict_emoji_pkg}
-  # The emojier needs .dict files from ibus, which are part of the ibus package.
-  # That's a huge dep tree and is also known to break things such as keyboard layout selection.
-  # So until that is fixed (boo#1161584) install the files as part of the package.
-  mkdir -p %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
-  cp %{_datadir}/ibus/dicts/emoji-*.dict %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
-%endif
+%kf5_find_lang
+%kf5_find_htmldocs
 
-  # no devel files needed here
-  rm -rfv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
-  %fdupes %{buildroot}/%{_prefix}
+# no devel files needed here
+rm -rv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
+%fdupes %{buildroot}/%{_prefix}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -256,7 +239,6 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_applicationsdir}/kcm_keys.desktop
 %{_kf5_applicationsdir}/kcm_krunnersettings.desktop
 %{_kf5_applicationsdir}/kcm_landingpage.desktop
-%{_kf5_applicationsdir}/kcm_launchfeedback.desktop
 %{_kf5_applicationsdir}/kcm_plasmasearch.desktop
 %{_kf5_applicationsdir}/kcm_qtquicksettings.desktop
 %{_kf5_applicationsdir}/kcm_recentFiles.desktop
@@ -267,6 +249,8 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_applicationsdir}/kcm_workspace.desktop
 %{_kf5_applicationsdir}/kcmspellchecking.desktop
 %{_kf5_applicationsdir}/org.kde.knetattach.desktop
+%{_kf5_applicationsdir}/kcm_touchscreen.desktop
+
 %{_kf5_bindir}/kaccess
 %{_kf5_bindir}/knetattach
 %{_kf5_bindir}/krunner-plugininstaller
@@ -293,12 +277,13 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_keyboard.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_keys.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_landingpage.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_launchfeedback.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_plasmasearch.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_smserver.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_splashscreen.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_tablet.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_workspace.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_touchscreen.so
+
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_activities.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_clock.so
@@ -328,7 +313,6 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_datadir}/
 %{_kf5_notifydir}/
 %{_kf5_plasmadir}/
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %{_kf5_qmldir}/org/kde/plasma/private/kimpanel/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kcmkeys/
@@ -343,17 +327,14 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_sharedir}/kpackage/kcms/kcm_keys/
 %{_kf5_sharedir}/kpackage/kcms/kcm_krunnersettings/
 %{_kf5_sharedir}/kpackage/kcms/kcm_landingpage/
-%{_kf5_sharedir}/kpackage/kcms/kcm_launchfeedback/
 %{_kf5_sharedir}/kpackage/kcms/kcm_plasmasearch/
 %{_kf5_sharedir}/kpackage/kcms/kcm_smserver/
 %{_kf5_sharedir}/kpackage/kcms/kcm_splashscreen/
 %{_kf5_sharedir}/kpackage/kcms/kcm_tablet/
 %{_kf5_sharedir}/kpackage/kcms/kcm_workspace/
+%{_kf5_sharedir}/kpackage/kcms/kcm_touchscreen/
 %{_kf5_sharedir}/solid/
-%{_libexecdir}/kimpanel-ibus-panel
-%if !%{have_ibus_dict_emoji_pkg}
-%exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
-%endif
+%exclude %{_kf5_plasmadir}/emoji/
 %ifnarch s390 s390x
 %{_kf5_applicationsdir}/kcm_mouse.desktop
 %{_kf5_applicationsdir}/kcm_touchpad.desktop
@@ -376,16 +357,12 @@ Press Meta+. to open an emoji selection window.
 %{_libexecdir}/kimpanel-ibus-panel-launcher
 
 %files emojier
-%{_kf5_bindir}/ibus-ui-emojier-plasma
+%{_kf5_bindir}/plasma-emojier
 %{_kf5_applicationsdir}/org.kde.plasma.emojier.desktop
 %dir %{_kf5_sharedir}/kglobalaccel
 %{_kf5_sharedir}/kglobalaccel/org.kde.plasma.emojier.desktop
-%if !%{have_ibus_dict_emoji_pkg}
-%{_kf5_plasmadir}/ibus-emoji-dicts/
-%endif
+%{_kf5_plasmadir}/emoji/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

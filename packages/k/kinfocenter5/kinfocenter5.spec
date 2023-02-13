@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kinfocenter5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -94,15 +94,14 @@ KDE Utility that provides information about a computer system.
 %autosetup -p1 -n kinfocenter-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
+%kf5_makeinstall -C build
+
+%kf5_find_lang
+%kf5_find_htmldocs
 
 %files
 %license LICENSES/*.txt
@@ -122,6 +121,7 @@ KDE Utility that provides information about a computer system.
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_nic.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_opencl.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_pci.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_kwinsupportinfo.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_samba.so
@@ -148,8 +148,6 @@ KDE Utility that provides information about a computer system.
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/kinfocenter/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

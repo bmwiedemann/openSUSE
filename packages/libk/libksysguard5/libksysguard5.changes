@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * Faces: Specify the domain in Choices.qml i18n calls
+  * Add an autotest for UnitBootTimestamp
+  * formatter: Add ticks as time unit and use it for user/system time columns
+  * Un-deprecate UnitBootTimestamp and use it for the "start time" column (kde#458277)
+  * formatter: Use KFormat::formatDuration for formatting the Time unit
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * sensors: Account for base unit rather than starting unit in SensorUnitModel (kde#461143)
+  * Formatter: Format plain numbers (kde#450947)
+  * Add CMake option to build WITH_X11
+  * add missing check for HeadingVmPSS
+  * Port away from deprecated KWindowSystem API
+  * Fix updating placeholder text
+  * QML error: digist -> digits
+  * Add ColorGrid face which uses rectangle opacity to denote sensor value
+  * Install po folder
+  * Allow to extract messages from processui/processdetails
+  * Perform initialization in initialization list
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

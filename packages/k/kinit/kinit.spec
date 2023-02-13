@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.102
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kinit
-Version:        5.102.0
+Version:        5.103.0
 Release:        0
 Summary:        Helper library to speed up start of applications on KDE workspaces
 License:        LGPL-2.1-or-later
@@ -85,8 +85,7 @@ booting UNIX. Development files.
 
 %find_lang %{name} --with-man --all-name
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files lang -f %{name}.lang
 

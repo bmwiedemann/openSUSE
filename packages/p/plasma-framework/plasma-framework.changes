@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:13:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Dialog: Fix calculation of distance between dialog and parent applet (kde#464201)
+  * Refactor glowbar SVG
+  * QMenuProxy & Plasma::Types::PopupPlacement: Reverse direction for RTL
+  * QMenuProxy: Fix relative positioning with embedded/off-screen parent windows
+  * IconItemTest: Wait for rendering before capturing an image of IconItem
+  * iconitem: Use InOutCubic for the animation's easing curve
+  * iconitem: Adjust fade animation to not flicker as much (kde#463061)
+
+-------------------------------------------------------------------
 Thu Jan 12 08:19:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0

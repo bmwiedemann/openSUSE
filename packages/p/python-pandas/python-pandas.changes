@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Feb  8 18:28:19 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove pandas-pr49886-fix-numpy-deprecations.patch, implemented upstreams
+
+- update to version 1.5.3:
+  * Fixed regressions
+    + Fixed performance regression in Series.isin() when values is
+      empty (GH49839)
+    + Fixed regression in DataFrame.memory_usage() showing unnecessary
+      FutureWarning when DataFrame is empty (GH50066)
+    + Fixed regression in DataFrameGroupBy.transform() when used with
+      as_index=False (GH49834)
+    + Enforced reversion of color as an alias for c and size as an
+      alias for s in function DataFrame.plot.scatter() (GH49732)
+    + Fixed regression in SeriesGroupBy.apply() setting a name
+      attribute on the result if the result was a DataFrame (GH49907)
+    + Fixed performance regression in setting with the at() indexer
+      (GH49771)
+    + Fixed regression in the methods apply, agg, and transform when
+      used with NumPy functions that informed users to supply
+      numeric_only=True if the operation failed on non-numeric dtypes;
+      such columns must be dropped prior to using these methods
+      (GH50538)
+    + Fixed regression in to_datetime() raising ValueError when
+      parsing array of float containing np.nan (GH50237)
+  * Bug fixes
+    + Bug in the Copy-on-Write implementation losing track of views
+      when indexing a DataFrame with another DataFrame (GH50630)
+    + Bug in Styler.to_excel() leading to error when unrecognized
+      border-style (e.g. "hair") provided to Excel writers (GH48649)
+    + Bug in Series.quantile() emitting warning from NumPy when Series
+      has only NA values (GH50681)
+    + Bug when chaining several Styler.concat() calls, only the last
+      styler was concatenated (GH49207)
+    + Fixed bug when instantiating a DataFrame subclass inheriting
+      from typing.Generic that triggered a UserWarning on python 3.11
+      (GH49649)
+    + Bug in pivot_table() with NumPy 1.24 or greater when the
+      DataFrame columns has nested elements (GH50342)
+    + Bug in pandas.testing.assert_series_equal() (and equivalent
+      assert_ functions) when having nested data and using numpy >=
+      1.25 (GH50360)
+  * Other
+    + Note: If you are using DataFrame.to_sql(), read_sql(),
+      read_sql_table(), or read_sql_query() with SQLAlchemy 1.4.46 or
+      greater, you may see a sqlalchemy.exc.RemovedIn20Warning. These
+      warnings can be safely ignored for the SQLAlchemy 1.4.x releases
+      as pandas works toward compatibility with SQLAlchemy 2.0.
+    + Reverted deprecation (GH45324) of behavior of
+      Series.__getitem__() and Series.__setitem__() slicing with an
+      integer Index; this will remain positional (GH49612)
+    + A FutureWarning raised when attempting to set values inplace
+      with DataFrame.loc() or DataFrame.iloc() has been changed to a
+      DeprecationWarning (GH48673)
+
+-------------------------------------------------------------------
 Fri Dec 23 16:22:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.5.2

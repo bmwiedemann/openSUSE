@@ -9,4 +9,46 @@
 Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <requestid>1062647</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60d2b24592684fa5b0162d7b251cc71d</srcmd5>
+    <version>0.2.4</version>
+    <time>1676302853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.4:
+  * build: bump version to 0.2.4
+  * Seat: guard setFocusRaw() usage while locked
+  * docs: remove repology badge from readme
+  * docs: fix typos in riverctl man page
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: apply adaptive sync state
+  * build: bump version to 0.2.4-dev
+  * build: bump version to 0.2.3
+  * idle-inhibit: fix use-after-free
+  * session-lock: properly handle disabled outputs
+  * View: fix pointer comparison in notifyTitle()
+  * Cursor: fix incorrect lock manager state assertion
+  * command/layout: fix a memory leak
+  * Seat: rework Xwayland Override Redirect focus
+  * Seat: keep parent Xwayland view of a focused OR surface activated
+  * deps: update zig-wayland to fix build on aarch64
+  * build: bump version to 0.2.3-dev
+  * build: bump version to 0.2.2
+  * flags: further cleanup after Zig 0.10
+  * deps: update to Zig 0.10
+  * build: bump version to 0.2.2-dev
+  * build: bump version to 0.2.1
+  * render: fix rounding for fractional scaling
+  * session-lock: fix assertion failure on abnormal client behavior
+  * session-lock: fix assertion failure due to race
+  * session-lock: wait for present before locking
+  * rivertile: fix code to disallow 0 main count
+  * render: premultiply alpha for user-provided colors
+  * completions: add keyboard-layout
+  * ci: Use meson setup command
+  * river: fix bug in snap down / right
+  * build: bump version to 0.2.1-dev
+- Fix group name of river-devel as &quot;Development/Libraries/Other&quot;
+</comment>
+    <requestid>1064745</requestid>
+  </revision>
 </revisionlist>

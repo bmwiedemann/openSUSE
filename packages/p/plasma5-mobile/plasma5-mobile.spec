@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           plasma5-mobile
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz
+Source:         plasma-mobile-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz.sig
+Source1:        plasma-mobile-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5ModemManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5NetworkManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
@@ -92,19 +93,18 @@ Plasma shell and components targeted for phones.
 %autosetup -p1 -n plasma-mobile-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
 
-  # Wut?
-  sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/startplasmamobile
+%kf5_find_lang
 
-  %fdupes %{buildroot}
+# Wut?
+sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/startplasmamobile
+
+%fdupes %{buildroot}
 
 %files
 %license LICENSES/*
@@ -119,6 +119,7 @@ Plasma shell and components targeted for phones.
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/nightcolor/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/powermenu/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/flashlight/
+%{_kf5_qmldir}/org/kde/plasma/quicksetting/record/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/screenrotation/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/screenshot/
 %{_kf5_bindir}/startplasmamobile
@@ -142,15 +143,14 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.donotdisturb/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.flashlight/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.keyboardtoggle/
-%{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.location/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.mobiledata/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.nightcolor/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.powermenu/
+%{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.screenrotation/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.screenshot/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.settingsapp/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.wifi/
-%{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %{_kf5_notifydir}/plasma_phone_components.notifyrc
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/applets/
@@ -162,7 +162,6 @@ Plasma shell and components targeted for phones.
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mobileshell.so
 %{_kf5_appstreamdir}/org.kde.plasma.phone.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.phoneshell.appdata.xml
-%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.record.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.homescreen.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.homescreen.halcyon.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.panel.appdata.xml
@@ -175,10 +174,10 @@ Plasma shell and components targeted for phones.
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.donotdisturb.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.flashlight.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.keyboardtoggle.appdata.xml
-%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.location.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.mobiledata.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.nightcolor.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.powermenu.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.record.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.screenrotation.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.screenshot.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.quicksetting.settingsapp.appdata.xml
@@ -188,8 +187,6 @@ Plasma shell and components targeted for phones.
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobileshell/
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

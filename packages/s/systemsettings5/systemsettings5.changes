@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:19:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * sidebar: Use a proper checked state for the menu button (kde#464536)
+  * Make external apps clickable in search results (kde#464491)
+  * Sidebar: Move final trailing separator out of main layout
+  * Remove unused KF5ActivitiesStats dependency
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed Jan  4 14:06:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.5

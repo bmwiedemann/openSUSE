@@ -19,15 +19,15 @@
 %bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
@@ -70,7 +70,6 @@ Requires:       kded
 Requires:       kirigami2
 Requires:       kwalletd5
 Requires:       prison-qt5-imports
-Recommends:     %{name}-lang
 Recommends:     mobile-broadband-provider-info
 Provides:       NetworkManager-client
 Provides:       plasma-nm-kf5 = %{version}
@@ -256,16 +255,15 @@ wireless connectivity on Plasma Mobile.
 %autosetup -p1 -n plasma-nm-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DBUILD_MOBILE=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DBUILD_MOBILE=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
+%kf5_makeinstall -C build
 
-  %fdupes %{buildroot}
+%kf5_find_lang
+
+%fdupes %{buildroot}
 
 %files
 %license LICENSES/*
@@ -348,8 +346,6 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_hotspot/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_wifi/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

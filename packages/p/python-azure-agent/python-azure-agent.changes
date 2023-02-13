@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  9 11:37:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up conditions in spec file:
+  + There is no maintained distro > 1315 (SLE12) AND < 1500
+    (SLE15). Only openSUSE 13.2 and 13.3 lived in that space, but
+    they are clearly not the target of this spec file.
+  + if 0%{?Suse_version} && 0{?suse_version} > 1315: no need to
+    first validate suse_version being defined: whenever it
+    is > 1315, must be defined.
+
+-------------------------------------------------------------------
 Wed Jan 25 04:34:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
   * Use unittest.mock first, falling back to mock if required.
-- Tighten Requires against python3-mock. 
+- Tighten Requires against python3-mock.
 
 -------------------------------------------------------------------
 Thu Sep 29 20:40:07 UTC 2022 - Robert Schweikert <rjschwei@suse.com>

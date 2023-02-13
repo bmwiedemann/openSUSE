@@ -24,15 +24,15 @@
 
 %define kf5_version 5.98.0
 Name:           xdg-desktop-portal-kde
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz
+Source:         xdg-desktop-portal-kde-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz.sig
+Source1:        xdg-desktop-portal-kde-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -40,6 +40,8 @@ BuildRequires:  libQt5PrintSupport-private-headers-devel
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
@@ -57,7 +59,11 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5XkbCommonSupport)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xcb-keysyms)
+BuildRequires:  pkgconfig(xkbcommon)
 %if %{with screencast}
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
@@ -67,18 +73,15 @@ BuildRequires:  pipewire-devel
 Recommends:     pipewire
 %endif
 Requires:       xdg-desktop-portal
-Recommends:     %{name}-lang
 Supplements:    packageand(xdg-desktop-portal:plasma5-desktop)
 
 %description
 A Qt/KF5 backend implementation for xdg-desktop-portal
 
-%if %{with released}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -86,9 +89,8 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 
 %install
 %make_install -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post
 %{systemd_user_post plasma-xdg-desktop-portal-kde.service}
@@ -104,15 +106,13 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 %dir %{_kf5_sharedir}/xdg-desktop-portal
 %dir %{_kf5_sharedir}/xdg-desktop-portal/portals
 %{_kf5_applicationsdir}/org.freedesktop.impl.portal.desktop.kde.desktop
+%{_kf5_debugdir}/xdp-kde.categories
 %{_kf5_notifydir}/xdg-desktop-portal-kde.notifyrc
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
 %{_kf5_sharedir}/xdg-desktop-portal/portals/kde.portal
 %{_libexecdir}/xdg-desktop-portal-kde
 %{_userunitdir}/plasma-xdg-desktop-portal-kde.service
 
-%if %{with released}
 %files lang -f %{name}.lang
-%license LICENSES/*
-%endif
 
 %changelog

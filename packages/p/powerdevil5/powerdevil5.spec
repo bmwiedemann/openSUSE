@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           powerdevil5
-Version:        5.26.5
+Version:        5.27.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
+Source:         powerdevil-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -83,17 +83,16 @@ DBus helper and KCM for configuring Power settings.
 %autosetup -p1 -n powerdevil-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-  %kf5_find_htmldocs
-%endif
+%kf5_makeinstall -C build
 
-  rm -rfv %{buildroot}%{_kf5_libdir}/libpowerdevil{ui,core,configcommonprivate}.so
+%kf5_find_lang
+%kf5_find_htmldocs
+
+rm -rv %{buildroot}%{_kf5_libdir}/libpowerdevil{ui,core,configcommonprivate}.so
 
 %post
 /sbin/ldconfig
@@ -161,8 +160,6 @@ DBus helper and KCM for configuring Power settings.
 
 %{_kf5_configdir}/autostart/powerdevil.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

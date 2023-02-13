@@ -94,4 +94,12 @@
     <comment>- recommend apache2-mod_php8 instead of apache2-mod_php7</comment>
     <requestid>1039129</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0d9f312d50687fe5a8afb12e932da04b</srcmd5>
+    <version>20210330</version>
+    <time>1676302705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065506</requestid>
+  </revision>
 </revisionlist>
