@@ -71,7 +71,7 @@ sub process($) {
     mkdir $d;
     mkdir "$d/$n"
   } else {
-    if($n =~ $binaryre) {
+    if($n =~ $binaryre or (-s $path > 15000000)) {
       make_ipfs_link($path, "$d/$n");
     } else {
       link($path, "$d/$n")
