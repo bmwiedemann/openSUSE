@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  8 09:12:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Fix crash in QQuickQuestionListener (kde#464624)
+  * Install desktop file for knewstuff-dialog
+
+-------------------------------------------------------------------
 Thu Jan 12 08:19:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.102.0
