@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Feb 13 17:22:09 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1307, fixes the following problems
+  * Crash when using search stat in narrow screen.
+  * Using sizeof() and subtract array size is tricky.
+  * Typo in pattern for filetype detection.
+  * "1v" may select block with wrong size. (Evgeni Chasnovski)
+  * FIRRTL files are not recognized.
+  * The code for setting options is too complicated.
+  * Some mappings with Meta and Shift do not work.
+  * Cursor may move with autocmd in Visual mode.
+  * go.work.sum files are not recognized.
+  * Display shows lines scrolled down erroneously. (Yishai Lerner)
+  * Inssufficient testing for what 9.0.1265 fixes.
+  * Cadence files are not recognized.
+  * Ron files are not recognized.
+  * The code for setting options is too complicated.
+  * Compiler warnings for uninitialized variables. (Tony Mechelynck)
+  * Various small problems.
+  * Coverity warns for using a NULL pointer.
+  * With the Kitty key protocl Esc with NumLock cannot be mapped.
+  * FunC files are not recognized.
+  * A newer version of clang can be used for CI.
+  * CTRL-N and -P on cmdline don't trigger CmdlineChanged.
+  * Move language files are not recognized.
+  * :defer may call the wrong method for an object. (Ernie Rael)
+  * The set_num_option() is too long.
+  * The set_bool_option() function is too long.
+  * The option initialization function is too long.
+  * Calling an object method with arguments does not work. (Ernie Rael)
+  * Wrong value for $LC_CTYPE makes the environ test fail.
+  * Inserting a register on the command line does not trigger incsearch or
+  update hlsearch.
+  * Change for triggering incsearch not sufficiently tested.
+  * 'statusline' only supports one "%=" item.
+  * Virtual text below empty line not displayed.
+  * On a Belgian keyboard CTRL-] does not work.
+  * Motif: scrollbar width/height wrong when maximized.
+  * "$" for 'list' option displayed in wrong position when there are text
+  properties.
+  * Cursor in wrong line with virtual text above.
+  * No regression test for solved problem of #11959.
+  * Setting 'formatoptions' with :let doesn't check for errors.
+
+-------------------------------------------------------------------
 Wed Feb  1 10:54:56 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1270, fixes the following problems

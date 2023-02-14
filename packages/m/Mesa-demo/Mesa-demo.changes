@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 13 12:12:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- added baselibs.conf as source to specfile 
+
+-------------------------------------------------------------------
+Fri Feb 10 17:59:03 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add Mesa-demo-{egl,es,x}-32bit. This is useful as the 64- and 32-bit
+  OpenGL environments are separate and need separate diagnostic programs.
+
+-------------------------------------------------------------------
 Mon May 30 18:29:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 8.5.0

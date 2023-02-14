@@ -498,4 +498,12 @@ to Staging:F with it</comment>
 </comment>
     <requestid>1064081</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>172b20dccd91ee5d547b00bcb3c2f999</srcmd5>
+    <version>22.2.1</version>
+    <time>1676389632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065565</requestid>
+  </revision>
 </revisionlist>

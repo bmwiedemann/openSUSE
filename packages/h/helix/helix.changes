@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 14 01:39:46 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Sat Feb 11 00:20:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Automatic update of vendored dependencies.
+
+-------------------------------------------------------------------
 Sun Jan  1 00:21:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove Requires on all shell completions. This seems to break

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 13 12:25:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove fix_test_compiled_signature_annotation_string.patch
+  All tests pass without it
+
+-------------------------------------------------------------------
+Sun Feb 12 23:52:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add supported_pythons_310_311.patch which includes '3.11' among
+  _SUPPORTED_PYTHONS (gh#davidhalter/jedi#1914).
+
+-------------------------------------------------------------------
+Sat Feb 11 00:28:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_test_compiled_signature_annotation_string.patch to make
+  test passing with Python 3.10+ (gh#davidhalter/jedi#1732).
+
+-------------------------------------------------------------------
 Tue Jan 10 04:01:51 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-311-typing.patch:

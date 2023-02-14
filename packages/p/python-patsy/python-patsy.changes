@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  9 15:59:05 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.5.3:
+  * Officially add support for Python 3.10 and 3.11, and extend test
+    coverage to include these releases.
+  * Fix handling of future interpreter features that no longer have a
+    mandatory release version, as for the `annotations` feature (See
+    `#187 <https://github.com/pydata/patsy/pull/187>`__ for details.)
+
+-------------------------------------------------------------------
 Mon Nov  8 03:57:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.2:

@@ -5,13 +5,12 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">maurizio.galli@gmail.com</param>
+    <param name="changesauthor">maurizio.galli@suse.com</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="filename">dracula-gtk-theme</param>
   </service>
   <service name="set_version" mode="localonly"/>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="localonly"/>
+  <service name="recompress" mode="localonly">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>

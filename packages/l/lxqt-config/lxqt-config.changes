@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:51:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- boo#1208217: Include kscreen mode header
+  See also: gh/lxqt/lxqt-config#903
+  Add lxqt-config-1.2.0-include.patch
+
+-------------------------------------------------------------------
 Sat Nov  5 20:54:52 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

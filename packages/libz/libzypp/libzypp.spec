@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2005-2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400 || (0%{?is_opensuse} && 0%{?sle_version} >= 150100)
 %bcond_without zchunk
@@ -43,10 +42,10 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.7
+Version:        17.31.8
 Release:        0
-License:        GPL-2.0-or-later
-URL:            https://github.com/openSUSE/libzypp
+License:        GPL-2.0+
+Url:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
 Group:          System/Packages
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -59,10 +58,10 @@ Obsoletes:      yast2-packagemanager
 Provides:       libzypp(plugin) = 0.1
 Provides:       libzypp(plugin:appdata) = 0
 Provides:       libzypp(plugin:commit) = 1
-Provides:       libzypp(plugin:repoverification) = 0
 Provides:       libzypp(plugin:services) = 1
 Provides:       libzypp(plugin:system) = 1
 Provides:       libzypp(plugin:urlresolver) = 0
+Provides:       libzypp(plugin:repoverification) = 0
 Provides:       libzypp(repovarexpand) = 1.1
 
 %if 0%{?suse_version}
@@ -71,8 +70,8 @@ Recommends:     logrotate
 Recommends:     lsof
 %endif
 BuildRequires:  cmake >= 3.1
-BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
@@ -83,17 +82,17 @@ BuildRequires:  boost-devel
 %endif
 BuildRequires:  dejagnu
 BuildRequires:  doxygen
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-xcolor
+BuildRequires:  texlive-newunicodechar
+BuildRequires:  texlive-dvips
+BuildRequires:  ghostscript
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
-BuildRequires:  ghostscript
 BuildRequires:  graphviz
-BuildRequires:  libproxy-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-newunicodechar
-BuildRequires:  texlive-xcolor
 BuildRequires:  yaml-cpp-devel
+BuildRequires:  libproxy-devel
 
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  pkgconfig
@@ -144,7 +143,7 @@ BuildRequires:  FastCGI-devel
 BuildRequires:  gpgme-devel
 #testsuite
 %if %{with mediabackend_tests}
-BuildRequires:  fcgi-devel
+BuildRequires:	fcgi-devel
 %endif
 %endif
 
@@ -212,13 +211,13 @@ Requires:       boost-devel
 Requires:       bzip2
 Requires:       glibc-devel
 Requires:       libstdc++-devel
-Requires:       libudev-devel
 Requires:       libxml2-devel
 Requires:       libzypp = %{version}
+Requires:       pkgconfig(openssl)
 Requires:       popt-devel
 Requires:       rpm-devel > 4.4
 Requires:       zlib-devel
-Requires:       pkgconfig(openssl)
+Requires:       libudev-devel
 %if 0%{?suse_version}
 %if 0%{?suse_version} >= 1100
 # Code11+

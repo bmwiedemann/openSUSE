@@ -307,6 +307,7 @@ Patch2033:       node-upgrade-llhttp-to-8.patch
 Source2033:      node-upgrade-llhttp-to-8.patch
 %endif
 Patch2034:      swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch
+Patch2035:      RenderFrameHostImpl-use-after-free.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch

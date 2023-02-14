@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 13 13:19:38 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add RenderFrameHostImpl-use-after-free.patch to fix a crash reported by an user.
+- Fix unnecessary libz dependency added for downstream node modules on Fedora.
+
+-------------------------------------------------------------------
 Wed Feb  8 21:17:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.2.1
   * Fixed audio worklet scripts failing to run when nodeIntegrationInWorker: true.

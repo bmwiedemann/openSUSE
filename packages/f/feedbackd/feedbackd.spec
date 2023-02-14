@@ -1,7 +1,7 @@
 #
 # spec file for package feedbackd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -97,6 +97,7 @@ exit 0
 
 %files
 %{_bindir}/fbcli
+%{_bindir}/fbd-theme-validate
 %{_libexecdir}/feedbackd
 %{_libexecdir}/fbd-ledctrl
 %{_datadir}/dbus-1/interfaces/org.sigxcpu.Feedback.xml

@@ -1,0 +1,5 @@
+<package name="indi" project="openSUSE:Factory">
+  <title>INDI 1.x</title>
+  <description>This package brings back INDI 1.x, which allows PHD2 and Stellarium to be compiled again.</description>
+  <devel project="Application:Astrophotography" package="indi"/>
+</package>

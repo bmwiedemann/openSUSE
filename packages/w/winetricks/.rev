@@ -127,4 +127,14 @@
   - lots of adjustments</comment>
     <requestid>969185</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f13d97782e24e46356c7867981f9464</srcmd5>
+    <version>20230212</version>
+    <time>1676389664</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20230212
+  - match current wine versions
+  - again lots of adjustments (forwarded request 1065773 from msmeissn)</comment>
+    <requestid>1065774</requestid>
+  </revision>
 </revisionlist>

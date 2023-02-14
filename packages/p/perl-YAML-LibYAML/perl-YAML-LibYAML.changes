@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 27 03:08:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.86
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.86 Wed Jan 25 09:34:14 PM EST 2023
+   - Fix YAML::XS pod in cpanminus
+
+-------------------------------------------------------------------
 Tue Sep 13 03:07:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.85

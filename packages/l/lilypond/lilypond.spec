@@ -30,6 +30,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            http://www.lilypond.org
 Source0:        https://gitlab.com/%{name}/%{name}/-/archive/v%{version}/lilypond-v%{version}.tar.bz2
+Source1:        https://gitlab.com/lilypond/lilypond/-/releases/v%{version}/downloads/lilypond-%{version}-documentation.tar.xz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
@@ -43,6 +44,7 @@ BuildRequires:  bison
 BuildRequires:  dblatex
 BuildRequires:  dejavu-fonts
 BuildRequires:  extractpdfmark
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  fontforge
 BuildRequires:  freetype2-devel
@@ -93,18 +95,98 @@ LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
 
-%if 1 == 0
-%package texgy-fonts
-Summary:        Lilypond Century Schoolbook L fonts
-Group:          System/X11/Fonts
+%package doc
+Summary:        Documentation for the LilyPond Typesetter
+License:        GFDL-1.3-only
+Group:          Documentation/HTML
+Provides:       lilypond-documentation = %{version}
+Obsoletes:      lilypond-documentation < %{version}
 BuildArch:      noarch
 
-%description texgy-fonts
-LilyPond is an automated music engraving system. It formats music
-beautifully and automatically, and has a friendly syntax for its input
-files.
-These are the lilypond Texgy fonts.
-%endif
+%description doc
+Common and english documentation files for the
+GNU LilyPond music typesetter.
+
+%package doc-cs
+Summary:        Documentation for the LilyPond Typesetter (cs)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-cs
+Czech documentation files for the GNU LilyPond music typesetter.
+
+%package doc-de
+Summary:        Documentation for the LilyPond Typesetter (de)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-de
+German documentation files for the GNU LilyPond music typesetter.
+
+%package doc-es
+Summary:        Documentation for the LilyPond Typesetter (es)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-es
+Spanish documentation files for the GNU LilyPond music typesetter.
+
+%package doc-fr
+Summary:        Documentation for the LilyPond Typesetter (fr)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-fr
+French documentation files for the GNU LilyPond music typesetter.
+
+%package doc-hu
+Summary:        Documentation for the LilyPond Typesetter (hu)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-hu
+Hungary documentation files for the GNU LilyPond music typesetter.
+
+%package doc-it
+Summary:        Documentation for the LilyPond Typesetter (it)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-it
+Italian documentation files for the GNU LilyPond music typesetter.
+
+%package doc-ja
+Summary:        Documentation for the LilyPond Typesetter (ja)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-ja
+Japanese documentation files for the GNU LilyPond music typesetter.
+
+%package doc-nl
+Summary:        Documentation for the LilyPond Typesetter (nl)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-nl
+Dutch documentation files for the GNU LilyPond music typesetter.
+
+%package doc-zh
+Summary:        Documentation for the LilyPond Typesetter (zh)
+Group:          Documentation/HTML
+Requires:       %{name}-doc = %{version}
+BuildArch:      noarch
+
+%description doc-zh
+Chinese documentation files for the GNU LilyPond music typesetter.
 
 %package emmentaler-fonts
 Summary:        Lilypond emmentaler fonts
@@ -180,6 +262,42 @@ mv %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf/*.otf %{buildroot}%{ttf
 rmdir %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
+# Documentation section
+tar -xf %{SOURCE1}
+mkdir -p %{buildroot}%{_docdir}/%{name}
+# lilypond main package provides info and man pages
+rm -rf share/info
+rm -rf share/man
+cp -vr share/doc/lilypond/html %{buildroot}%{_docdir}/%{name}/
+rm -f files-*
+# create file lists for individual subpackages
+for f in `find %{buildroot}%{_docdir}`; do
+  for l in cs de es fr hu it ja nl zh; do
+    if [[ $f =~ \.$l\. ]]; then
+      if [ -d $f ]; then
+        f="%%dir $f"
+      fi
+      echo "$f" | sed "s:%{buildroot}::" >> files-$l
+      f=""
+      break
+    fi
+  done
+
+  if [ -z $f ]; then
+    continue
+  fi
+
+  if [ -d $f ]; then
+    f="%%dir $f"
+  fi
+  echo "$f" | sed "s:%{buildroot}::" >> files-en
+done
+for d in '.usr.share' '.usr.share.doc' '.usr.share.info' '.usr.share.doc.packages'; do
+  sed -i "/^%%dir $d$/d" files-en
+done
+%fdupes -s share/doc/lilypond/html/Documentation
+# End of Documentation section
+
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc README.md DEDICATION
@@ -191,11 +309,51 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 %{_infodir}/*%{ext_info}
 %{_mandir}/man1/*
 
-%if 1 == 0
-%files texgy-fonts
-%defattr(-,root,root,-)
-%{ttfdir}/texgy*otf
-%endif
+%post doc
+ln -sf %{_docdir}/lilypond-doc/html/Documentation %{_infodir}/lilypond
+
+%postun doc
+rm -f %{_infodir}/lilypond
+
+%files doc-cs -f files-cs
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-de -f files-de
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-es -f files-es
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-fr -f files-fr
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-hu -f files-hu
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-it -f files-it
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-ja -f files-ja
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-nl -f files-nl
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc-zh -f files-zh
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
+
+%files doc -f files-en
+%defattr(-,root,root)
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files emmentaler-fonts
 %defattr(-,root,root,-)

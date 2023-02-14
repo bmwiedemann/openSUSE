@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 14:54:35 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add module for boot loader interface. Needed for load Unified Kernel
+  Image (UKI)
+  * grub2-add-module-for-boot-loader-interface.patch 
+
+-------------------------------------------------------------------
 Thu Feb  9 08:42:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Amend the TPM2 stack and add authorized policy mode to

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Thu Feb  9 14:11:01 MST 2023 - carnold@suse.com
+
+- Initial creation of the ocaml-augeas package. This code was
+  originally bundled in libguestfs.
+- Initial version 0.6
+  caml_named_value-returns-const-value-pointer-in-OCam.patch
+

@@ -1334,4 +1334,12 @@
 - Remove /etc/sysconfig/network hierachy, not used by default anymore</comment>
     <requestid>1058014</requestid>
   </revision>
+  <revision rev="169" vrev="12">
+    <srcmd5>840f9c6f8ea7e00c8c346eeb96e73695</srcmd5>
+    <version>84.87</version>
+    <time>1676389490</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /etc/sysconfig/network hierachy again, YaST got fixed (forwarded request 1064298 from kukuk)</comment>
+    <requestid>1064299</requestid>
+  </revision>
 </revisionlist>

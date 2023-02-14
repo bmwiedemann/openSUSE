@@ -37,4 +37,14 @@
 </comment>
     <requestid>1034977</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e7710e6f6e6158c1cc31c2323d78a07</srcmd5>
+    <version>2.2.0</version>
+    <time>1676389640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0
+  * The custom setuptools command classes can now be imported directly from the versioningit.cmdclass module as an alternative to calling get_cmdclasses()
+</comment>
+    <requestid>1065548</requestid>
+  </revision>
 </revisionlist>

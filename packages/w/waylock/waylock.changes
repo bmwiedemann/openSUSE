@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  7 04:16:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions. Trim boastful language
+
+-------------------------------------------------------------------
+Tue Feb  7 04:11:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.6.2:
+  * ci: update Zig to 0.10.0 to fix build
+  * deps: update zig-wayland to fix aarch64 build
+  * Lock: ignore password submission before locked event
+  * auth: fix getting username on FreeBSD
+- Remove 0000-ignore-password-submission-before-locked-event.patch as
+  it is already part of 0.6.2
+
+-------------------------------------------------------------------
 Fri Feb  3 12:39:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for waylock 0.6.1

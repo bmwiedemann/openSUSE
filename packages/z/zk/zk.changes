@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 13 11:57:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.13.0:
+  * zk.new now returns the created note's content in its output (content), and has two new options:
+  * dryRun will prevent zk.new from creating the note on the file system.
+  * insertContentAtLocation can be used to insert the created note's content into an arbitrary location.
+  * A new zk.link command to insert a link to a given note
+
+-------------------------------------------------------------------
 Thu Jan  5 06:30:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix specfile.

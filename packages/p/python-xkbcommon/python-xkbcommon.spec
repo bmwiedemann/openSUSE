@@ -1,7 +1,7 @@
 #
-# spec file for python3-xkbcommon
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,22 @@
 %bcond_without  test
 %define pyname  xkbcommon
 Name:           python-%{pyname}
-Version:        0.4
+Version:        0.8
 Release:        0
 Summary:        Python bindings for libxkbcommon using cffi
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/sde1000/python-xkbcommon
-Source0:        https://files.pythonhosted.org/packages/source/x/xkbcommon/%{pyname}-0.4.tar.gz
-Patch0:         fix-xkbcommon-paths.patch
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/x/xkbcommon/%{pyname}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Patch0:         fix-xkbcommon-paths.patch
 BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(xkbcommon)
 %python_subpackages
 
@@ -42,7 +43,7 @@ Python bindings for libxkbcommon using cffi
 
 %prep
 %setup -q -n %{pyname}-%{version}
-%patch0 -p1
+#%%patch0 -p1
 
 %build
 export CFLAGS="-I/usr/include/libxkbcommon ${CFLAGS}"
@@ -50,14 +51,14 @@ export CFLAGS="-I/usr/include/libxkbcommon ${CFLAGS}"
 %python_build
 
 %install
-export CFLAGS="-I/usr/include/libxkbcommon ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags xkbcommon)"
 %python_install
 
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}}
 
 %if %{with test}
 %check
-export CFLAGS="-I/usr/include/libxkbcommon ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags xkbcommon)"
 export LC_TYPE=en_US.UTF-8
 export PYTHONPATH="%{buildroot}%{python3_sitearch}/%{pyname}:${PYTHONPATH}"
 export PYTHONDONTWRITEBYTECODE=1

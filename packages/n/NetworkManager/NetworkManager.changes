@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:45:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.0:
+  + Added support for source load balancing for Ethernet Bonds.
+  + Allow specifying vhost name (SNI) for a manually DNS-over-TLS
+    server. Only works with systemd-resolved plugin.
+  + Connections can now be activated on a loopback interface.
+  + Added support of IPv4 ECMP routes. The ECMP routes will get
+    merged.
+
+-------------------------------------------------------------------
 Fri Jan 27 18:39:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.40.12:

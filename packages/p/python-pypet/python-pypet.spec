@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 %bcond_without  test
 Name:           python-pypet
 Version:        0.6.0
 Release:        0
 Summary:        Parameter exploration and storage of results for numerical simulations
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/SmokinCaterpillar/pypet
 Source:         https://files.pythonhosted.org/packages/source/p/pypet/pypet-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#SmokinCaterpillar/pypet#65
+Patch0:         support-numpy-1.20.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -60,7 +58,7 @@ a data container which gives access to all parameters and results
 from a single source.
 
 %prep
-%setup -q -n pypet-%{version}
+%autosetup -p1 -n pypet-%{version}
 
 %build
 export LANG=en_US.UTF-8

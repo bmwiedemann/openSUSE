@@ -1,7 +1,7 @@
 #
 # spec file for package jhead
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch1:         jhead-CVE-2022-41751-2.patch
 # PATCH FIX UPSTREAM heap-buffer-overflow of exif.c in function Put16u
 # https://github.com/Matthias-Wandel/jhead/commit/f0a884210cc46830b176f71fd61569adc8f230a7
 Patch2:         jhead-CVE-2021-34055.patch
+# [bsc#1207150], https://github.com/Matthias-Wandel/jhead/commit/2a237d866581b3774ebe63d6c312e76459bd0866
+Patch3:         jhead-CVE-2022-41751-3.patch
 Requires:       %{_bindir}/jpegtran
 Requires:       %{_bindir}/mogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_image
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib

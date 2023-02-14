@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:31:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.4:
+  + Sanitize headers in debug log also for level 1
+  + Bugs fixed:
+    - Calendar:
+      . Cover possible ID conversion for Online meetings
+      . Ensure TimeZone info in SOAP-header request
+      . Convert floating time to user's timezone on save
+    - Disabled sources auto-re-enabled the next start
+    - Subscribed free/busy calendar does not show all events
+
+-------------------------------------------------------------------
 Fri Jan  6 19:30:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.3:

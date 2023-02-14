@@ -1,7 +1,7 @@
 #
 # spec file for package waylock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waylock
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
@@ -26,7 +26,6 @@ Source0:        https://github.com/ifreund/waylock/releases/download/v%{version}
 Source1:        waylock.pamd
 Source2:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
 Source3:        https://github.com/ifreund/waylock/releases/download/v%{version}/waylock-%{version}.tar.gz.sig
-Patch0:         0000-ignore-password-submission-before-locked-event.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  zig
@@ -39,9 +38,9 @@ BuildRequires:  pkgconfig(xkbcommon)
 ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
 
 %description
-Small screenlocker for Wayland compositors implementing ext-session-lock-v1. 
-The ext-session-lock-v1 protocol is significantly more robust than previous client-side Wayland screen locking approaches.
-Importantly, the screenlocker crashing does not cause the session to be unlocked.
+Screenlocker for Wayland compositors implementing ext-session-lock-v1.
+(The v1 protocol is robust in that a crashing locker does not
+cause the session to be unlocked.)
 
 %prep
 %autosetup -n %{name}-%{version} -p1

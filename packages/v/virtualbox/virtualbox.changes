@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 13 12:03:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove requires for unused sysvinit-tools
+
+-------------------------------------------------------------------
 Wed Feb  1 21:46:49 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 -  Fix a few places that did not get updated for the transition from

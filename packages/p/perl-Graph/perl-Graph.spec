@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Graph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Graph
 Name:           perl-Graph
-Version:        0.9725
+Version:        0.9726
 Release:        0
-Summary:        Graph data structures and algorithms
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Graph data structures and algorithms
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -42,6 +42,7 @@ graph data structures and algorithms
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

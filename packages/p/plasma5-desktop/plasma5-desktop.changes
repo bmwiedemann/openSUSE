@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 13 17:38:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Tarball got respun. Changes:
+  * applets/taskmanager: Only activate the triangle filter when a tooltip is open (kde#465595)
+  * kcms/landingPage: Remove double definition of onClickHandler
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0

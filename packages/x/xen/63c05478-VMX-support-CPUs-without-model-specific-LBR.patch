@@ -1,0 +1,73 @@
+# Commit 3edca52ce736297d7fcf293860cd94ef62638052
+# Date 2023-01-12 18:42:00 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/vmx: Support for CPUs without model-specific LBR
+
+Ice Lake (server at least) has both architectural LBR and model-specific LBR.
+Sapphire Rapids does not have model-specific LBR at all.  I.e. On SPR and
+later, model_specific_lbr will always be NULL, so we must make changes to
+avoid reliably hitting the domain_crash().
+
+The Arch LBR spec states that CPUs without model-specific LBR implement
+MSR_DBG_CTL.LBR by discarding writes and always returning 0.
+
+Do this for any CPU for which we lack model-specific LBR information.
+
+Adjust the now-stale comment, now that the Arch LBR spec has created a way to
+signal "no model specific LBR" to guests.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -3546,17 +3546,25 @@ static int cf_check vmx_msr_write_interc
+             goto gp_fault;
+ 
+         /*
++         * The Arch LBR spec (new in Ice Lake) states that CPUs with no
++         * model-specific LBRs implement MSR_DBG_CTL.LBR by discarding writes
++         * and always returning 0.
++         *
++         * Use this property in all cases where we don't know any
++         * model-specific LBR information, as it matches real hardware
++         * behaviour on post-Ice Lake systems.
++         */
++        if ( !model_specific_lbr )
++            msr_content &= ~IA32_DEBUGCTLMSR_LBR;
++
++        /*
+          * When a guest first enables LBR, arrange to save and restore the LBR
+          * MSRs and allow the guest direct access.
+          *
+-         * MSR_DEBUGCTL and LBR has existed almost as long as MSRs have
+-         * existed, and there is no architectural way to hide the feature, or
+-         * fail the attempt to enable LBR.
+-         *
+-         * Unknown host LBR MSRs or hitting -ENOSPC with the guest load/save
+-         * list are definitely hypervisor bugs, whereas -ENOMEM for allocating
+-         * the load/save list is simply unlucky (and shouldn't occur with
+-         * sensible management by the toolstack).
++         * Hitting -ENOSPC with the guest load/save list is definitely a
++         * hypervisor bug, whereas -ENOMEM for allocating the load/save list
++         * is simply unlucky (and shouldn't occur with sensible management by
++         * the toolstack).
+          *
+          * Either way, there is nothing we can do right now to recover, and
+          * the guest won't execute correctly either.  Simply crash the domain
+@@ -3567,13 +3575,6 @@ static int cf_check vmx_msr_write_interc
+         {
+             const struct lbr_info *lbr = model_specific_lbr;
+ 
+-            if ( unlikely(!lbr) )
+-            {
+-                gprintk(XENLOG_ERR, "Unknown Host LBR MSRs\n");
+-                domain_crash(v->domain);
+-                return X86EMUL_OKAY;
+-            }
+-
+             for ( ; lbr->count; lbr++ )
+             {
+                 unsigned int i;

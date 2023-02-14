@@ -4,7 +4,7 @@ Wed Feb  8 07:23:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 - Update to 5.2.1
   This is a security and bufix release.
   * Security
-    - Fix (PMASA-2023-01, CWE-661) 
+    - Fix (PMASA-2023-01, CWE-661, boo#1208186, CVE-2023-25727) 
       Fix an XSS attack through the drag-and-drop upload feature.
   * Bugfix
     - issue #17522 Fix case where the routes cache file is invalid

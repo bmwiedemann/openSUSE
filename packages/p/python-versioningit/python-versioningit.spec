@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioningit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-versioningit
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT

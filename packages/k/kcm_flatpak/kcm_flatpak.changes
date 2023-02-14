@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 13 17:38:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Tarball got respun. Changes:
+  * Avoid creating empty fs permission entry from overrides
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0

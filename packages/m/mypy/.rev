@@ -398,4 +398,14 @@
 </comment>
     <requestid>1063669</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>4a73680bdcf7ae7eb5c31cbb429df35f</srcmd5>
+    <version>1.0.0</version>
+    <time>1676389641</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't skipp the test, add testI64Cast-fix.patch to make it
+  working (gh#python/mypy#14691).
+</comment>
+    <requestid>1065667</requestid>
+  </revision>
 </revisionlist>

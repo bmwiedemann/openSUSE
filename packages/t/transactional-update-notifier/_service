@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">transactional-update-notifier</param>
     <param name="revision">main</param>
-    <param name="version">1.1.0</param>
+    <param name="version">1.1.0.2</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

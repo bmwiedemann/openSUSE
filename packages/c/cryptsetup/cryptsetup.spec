@@ -16,18 +16,17 @@
 #
 
 
-%define tar_version 2.6.0
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{tar_version}.tar.xz
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{tar_version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 Source4:        %{name}-rpmlintrc
@@ -121,7 +120,7 @@ includes support for automatically setting up encrypted volumes at boot
 time via the config file %{_sysconfdir}/crypttab.
 
 %prep
-%autosetup -n cryptsetup-%{tar_version}
+%autosetup -p1
 
 %build
 %configure \

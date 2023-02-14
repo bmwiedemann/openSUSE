@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  4 18:39:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.67:
+  * Replace use of fgrep with grep -F (POSIX grep flags preferred by
+    GNU grep) - patch from David Seifert.
+  * Added SPDX identifiers to License file(s). Hopefully this will
+    help the various robots out there correctly identify the
+    longstanding licenses for libcap and friends. (Bug: 216609
+    reported by Günther Noack)
+  * Started down the rabbit hole of trying to address (Bug: 216610
+    reported by Günther Noack on behalf of Michael Stapelberg)
+  * The basic issue is how to link C code with Go psx without using
+    CGo. This is all a low level hackery. If you are interested,
+    browse the source.
+  * Correct for bad whatis entries in man pages (this was throwing a
+    Debian build test, detail)
+  * Also reviewed man pages and addressed cross linkage issues (Bug:
+  * Cleaned up some README.md files (made a github mirror now just so
+    I can automatically render them).
+  * Changed meaning of DYNAMIC=no builds.
+    This now builds everything with static linking except for libc.
+    The reason for this exception is explained in the commit message.
+  * Inserted demonstration exploit code in capso.so to support
+    article.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:49:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.66:
@@ -36,7 +62,8 @@ Tue Apr 12 19:46:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix memory leak in libpsx at program exit.
   * Be more resilient to CGo configuration with Go compiler when building tests.
   * Fix cap_*prctl() return code/errno handling.
-  * Minor clarification to cap_get_pid() man page concerning pid value within namespaces.
+  * Minor clarification to cap_get_pid() man page concerning pid
+    value within namespaces.
 
 -------------------------------------------------------------------
 Fri Feb 25 09:05:58 UTC 2022 - Marcus Meissner <meissner@suse.com>

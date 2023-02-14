@@ -1,4 +1,214 @@
 -------------------------------------------------------------------
+Tue Feb 14 01:19:35 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Fri Feb 10 01:49:35 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g221:
+  * x11/wayland: restore mouse copying to both clipboard and primary selection
+  * ssh: do our own proxycommand handling
+  * window: negative caching for xdg-portal
+  * Add Solus build dependencies
+  * cargo update
+  * config: allow config_builder to work with set_config_overrides
+  * window: use a shorter timeout for xdg portal reads
+  * palette: add CTRL-p / CTRL-n key bindings to move up/down
+  * docs: command palette
+  * palette: add full doc and enum name to text to match
+  * macos: make initial position consistent with window:set_position
+  * docs: webgpu
+  * ci: remove ubuntu 18
+  * mux: only resize zoomed pane when resizing a tab
+  * defer loading background until after rescaling in config reload
+  * reduce macos locale warning to debug
+  * docs: link to dark mode example from appearance section
+  * x11: avoid "Unhandled" log line for focus events
+  * wgpu: ensure that the srgb format is available before using it
+  * fixup test for nerd font symbol update
+  * deps: wgpu -> 0.15
+  * fonts: update Symbols Nerd Font Mono
+  * rust 1.67 is the minimum required version
+  * Change to the command to upgrade wezterm-nightly
+  * macos: fixup open_untitled_file handling
+  * cargo update
+  * mux: pass gui window position through from new mux window
+  * remove some debug prints
+  * macos: spawn new window when clicking on dock icon
+  * Add quit_when_all_windows_are_closed config option
+  * docs: expand wezterm.format examples
+  * docs: changelog for https://github.com/wez/wezterm/pull/2887
+  * wayland: set scale factor without wegl_surface (for WebGpu)
+  * docs: changelog for https://github.com/wez/wezterm/pull/3054
+  * macos: Add "New Window" to the dock menu
+  * docs: changelog for https://github.com/wez/wezterm/pull/2762
+  * update derived files
+  * Add bindings for Home and End in copy_mode (#2762)
+  * add `wezterm cli get-text` command
+  * cargo fmt
+  * deps: http_req -> 0.9
+  * docs: changelog for #2955
+  * fix(wezterm-gui): Move word able to jump next line
+  * finish test
+  * fix: correctly set WHEEL_POSITIVE
+  * wip: horizontal scroll support
+  * ci: reduce frequency of thread locking
+  * deps: sctk -> 0.16
+  * wayland: improve error when no seats have pointers
+  * docs: changelog for https://github.com/wez/wezterm/pull/3053
+  * Detect ALT key for mouse events on Windows
+  * docs: link (In|De)creaseFontSize <-> adjust_window_size_when_changing_font_size
+  * workflows: add auto-locking of inactive closed issues
+  * docs: changelog for #2959
+  * x11: simplify focus event matching
+  * x11: ignore pointer focus events
+  * docs: clarify that you want window_decorations=RESIZE
+  * allow window_decorations to work with config_builder
+  * ci: use freebsd 13
+  * window_decorations: add MACOS_FORCE_(EN|DIS)ABLE_SHADOW
+  * Add wezterm.plugin module, allows loading modules from git
+  * deps: update toml -> 0.7, cargo update
+  * macos: don't include LEADER based key assignments in menubar
+  * fix crash bug uncovered by rust 1.67
+  * fix command output not being displayed for short lived commands
+  * Add wezterm start --domain DOMAIN --attach + gui-attached event
+  * macos: maybe fix window positioning for multi-monitor systems
+  * docs: add a bit explaining what a terminal is
+  * docs: add version info to newer copy mode shortcuts
+  * wezterm.GLOBAL now returns references to stored data
+  * config: capture warnings and show them in config error window
+  * shell integration: check existence of `hostname` command before calling
+  * cargo fmt
+  * config: add wezterm.config_builder
+  * ci: unpin rust and mdbook versions in pages workflow
+  * docs: use new gelatyx `file-list` option
+  * fix typo in logging
+  * ci: try a bit harder to make doc builds work on PRs
+  * docs: shell-integration: cover the new built-in user-vars
+  * shell integration: set some handy user vars by default
+  * docs: add a brief bit about workspaces
+  * docs: start recipes section
+  * docs: add note about multiplexing and color schemes
+  * cargo update
+  * x11: always update selection ownership
+  * cargo fmt
+  * bleh, fix unix build
+  * mention that wayland doesn't allow --position
+  * fix build on windows
+  * reduce latency when heavily using foreground process info
+  * ci: try harder to successfully build the docs on PRs
+  * cargo update
+  * lua: add some more tab methods
+  * modals: invalidate window after assignment
+  * window:active_key_table now includes per-pane stacks
+  * add window activation items to palette and menubar
+  * docs: change log and docs for https://github.com/wez/wezterm/pull/2908
+  * chore(wezterm-gui): Create move_to_end_of_word
+  * docs(wezterm-gui): Update docs
+  * feat(wezterm-gui): Support move to word end
+  * docs: add troubleshooting section
+  * add explicit SHIFT key caps to copymode docs
+  * docs: css for https://github.com/wez/wezterm/pull/2911
+  * fmt docs
+  * Improve Copy Mode key documentation
+  * cargo fmt
+  * mux: try harder to use default_workspace from config
+  * macos: implement window:focus()
+  * windows: implement focus method
+  * add WindowOps::focus, ActivateWindow, window:focus()
+  * docs: changelog for https://github.com/wez/wezterm/pull/2977
+  * wayland: hide mouse cursor when typing
+  * docs: changelog for https://github.com/wez/wezterm/pull/2978
+  * Use dpi from configuration while resizing
+  * lua: add some pane methods for working with zones
+  * cargo update
+  * macos: ensure menubar is visible when switching away from a fullscreen window
+  * palette: ensure reverse background block spans full width
+  * macos: enable opacity for webgpu
+  * macos: retain menu menu when retrieving it from NSApp
+  * macos: fixup application termination
+  * docs: changelog for https://github.com/wez/wezterm/pull/2946
+  * docs: add version info to hide_mouse_cursor_when_typing
+  * docs: document new config option
+  * feat: hide_mouse_cursor_when_typing config option
+  * sync color schemes
+  * docs: clarify native macos full screen mode
+  * docs: changelog for https://github.com/wez/wezterm/pull/2928
+  * x11: determine active screen by using max intersecting area with active window
+  * x11: use TranslateCoordinates to get the root coordinates of focused window
+  * x11: clean up active screen detection
+  * x11: implement active screen detection
+  * macos: add version info to system name
+  * config: fix typo in error message
+  * gui: include x11 window manager in connection name
+  * gui: describe connection and show it in debug overlay
+  * gui: add target triple to debug overlay
+  * config: allow using bright but not bold text when brightening text
+  * expose some mux domain stuff to lua
+  * update base64, work around another batch of breaking API changes
+  * palette: fix min width
+  * cargo update
+  * Add Fedora 37 nightly builds
+  * ci: another pass at tumbleweed
+  * ci: make fix tumbleweed build
+  * windows: avoid panic when minimizing w/ WebGpu
+  * cargo update
+  * deps: update ntapi to 0.4
+  * ci: apparently GH_TOKEN is what it really should be
+  * Fix typo
+  * Tweak labels in the menubar/command palette
+  * ssh: respect AddressFamily for environments with broken ipv6
+  * cargo update
+  * docs: changelog for https://github.com/wez/wezterm/issues/2782
+  * Add the hidden alias `-e` for the `start` subcommand. (#2889)
+  * palette: add icons for a number of entries
+  * box model: improve max width constraint for more complex elements
+  * palette: adjust group prefix when menubar is empty
+  * macos: update menubar when the config reloads
+  * include key assignments in palette and menubar
+  * tidy up macos menubar key assignment
+  * menubar: re-categorize attach/detach
+  * command palette: tweak for empty doc case
+  * improve width constraints in box_model, center command palette
+  * synthesize commands from domains, workspaces
+  * command palette: first pass
+  * ci: potentially fixup flakey pages build
+  * removed deprecated Copy, Paste, PastePrimarySelection actions
+  * docs: changelog for https://github.com/wez/wezterm/issues/2819
+  * launcher: prefer to use human description of key assignment
+  * Re-organize default command list
+  * add descriptions for all keyassignment actions
+  * adjust default command list
+  * move OpenInBrowser -> KeyAssignment
+  * macos: allow running when there are no windows
+  * put quit at bottom of application menu
+  * macos: link to helpful resources from Help menu
+  * fixup tests
+  * macOS: add MenuBar
+  * macos: use interactive shell for .command scripts
+  * ci: refine error reporting in doc build
+  * mux: avoid deadlock in mux server
+  * deps: harfbuzz -> 6.0.0
+  * fix windows build
+  * x11: potential fix for hanging IME
+  * mux: rename Mux::get() -> try_get(), add "infallible" Mux::get()
+  * mux: Mux is now Send+Sync
+  * mux: require that Domain be Send + Sync
+  * mux: switch RefCell to RwLock internally
+  * Rc<Tab> -> Arc<Tab>
+  * mux: make Tab Send+Sync
+  * mux: reduce context switching when parsing output
+  * mux: add notify_from_any_thread helper
+  * mux: Pane is now required to be Send+Sync. Use Arc<dyn Pane>
+  * ci: add debug output when building docs
+  * withdraw DEC private SGR handling for super/subscript
+  * cargo update
+  * macos: allow association with .command file type
+  * disable window title reporting escape sequence by default
+  * docs: add aarch64 macos example to target_triple
+
+-------------------------------------------------------------------
 Wed Dec 21 12:49:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add shell completions for bash, zsh, and fish.

@@ -218,4 +218,15 @@
     <comment>CVE fix! Enjoy. (forwarded request 1034639 from jsikes)</comment>
     <requestid>1035276</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>abb7e475eb151478586747a55ee0ae92</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1676389656</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix [bsc#1207150]
+  https://github.com/Matthias-Wandel/jhead/commit/2a237d866581b3774ebe63d6c312e76459bd0866
+  + jhead-CVE-2022-41751-3.patch</comment>
+    <requestid>1065728</requestid>
+  </revision>
 </revisionlist>

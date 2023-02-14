@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 12 21:15:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cryptsetup 2.6.1
+  * bitlk: Fixes for BitLocker-compatible on-disk metadata parser
+  * Fix possible iteration overflow in OpenSSL2 PBKDF2 crypto
+    backend
+  * portability and compilation fixes
+  * verity: Fix possible hash offset setting overflow.
+  * bitlk: Fix use of startup BEK key on big-endian platforms.
+  * Do not initiate encryption (reencryption command) when the
+    header and data devices are the same. If data device reduction
+    is not requsted, this leads to data corruption since LUKS
+    metadata was written over the data device.
+  * Fix possible memory leak if crypt_load() fails.
+  * Always use passphrases with a minimal 8 chars length for
+    benchmarking, as used in some implementation of FIPS mode
+
+-------------------------------------------------------------------
 Tue Dec 27 10:30:22 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -67,15 +67,16 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
+# Only available on archs providing QtWebEngine
+%ifarch %{ix86} x86_64 %{arm} aarch64
 BuildRequires:  cmake(Qt5WebView)
+%endif
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 %if %{have_fwupd}
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
 %endif
-# It can only build on the same platforms as Qt WebEngine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports

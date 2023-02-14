@@ -7,4 +7,12 @@
     <comment>I want to add waylock to openSUSE:Factory.</comment>
     <requestid>1063138</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05faa4ad5569ceabdef86b63b8cfb46f</srcmd5>
+    <version>0.6.2</version>
+    <time>1676389582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1065647</requestid>
+  </revision>
 </revisionlist>

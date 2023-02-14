@@ -493,6 +493,8 @@ Patch966:       0010-tpm2-add-TPM2-commands-to-support-authorized-policy.patch
 Patch967:       0011-tpm2-make-the-file-reading-unmarshal-functions-gener.patch
 Patch968:       0012-tpm2-initialize-the-PCR-selection-list-early.patch
 Patch969:       0013-tpm2-support-unsealing-key-with-authorized-policy.patch
+# Set efi variables LoaderDevicePartUUID & LoaderInfo (needed for UKI)
+Patch970:       grub2-add-module-for-boot-loader-interface.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

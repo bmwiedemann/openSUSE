@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 12 01:30:01 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 2.2.0
+  * The custom setuptools command classes can now be imported directly from the versioningit.cmdclass
+    module as an alternative to calling get_cmdclasses()
+
+-------------------------------------------------------------------
 Wed Nov  9 19:36:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.1.0 

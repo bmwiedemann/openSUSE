@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define pkg_suffix -test
@@ -32,6 +31,7 @@ Summary:        A library for installing Python wheels
 License:        MIT
 URL:            https://github.com/pypa/installer
 Source:         https://files.pythonhosted.org/packages/source/i/installer/installer-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -70,7 +70,7 @@ export PYTHONPATH=src
 %doc README.md
 %license LICENSE
 %{python_sitelib}/installer
-%{python_sitelib}/installer*dist-info
+%{python_sitelib}/installer-%{version}.dist-info
 %endif
 
 %changelog

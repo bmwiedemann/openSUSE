@@ -9,11 +9,9 @@ Correct the parameters for both of those.
 
 Fixes #1858
 ---
- test/test_api/test_interpreter.py | 6 ++++--
+ test/test_api/test_interpreter.py |    6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/test/test_api/test_interpreter.py b/test/test_api/test_interpreter.py
-index 848bca746..8e69cafc9 100644
 --- a/test/test_api/test_interpreter.py
 +++ b/test/test_api/test_interpreter.py
 @@ -656,10 +656,12 @@ def bar():

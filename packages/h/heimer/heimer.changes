@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 14 04:23:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  New features:
+  * Add default settings for arrow size and edge width
+  * Add default settings for text size and font
+  * Add edit option to mirror the layout horizontally or vertically
+  * Animate edge deletion
+  * Animate node deletion
+  Bug fixes:
+  * Fix node left selected on canceled node/text color dialog
+
+-------------------------------------------------------------------
 Wed Dec 21 08:37:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.4:

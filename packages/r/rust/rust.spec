@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,15 @@
 #
 
 
-%global version_suffix 1.66
-%global version_current 1.66.0
+%global version_suffix 1.67
+%global version_current 1.67.1
 
 %define obsolete_rust_versioned() \
+Obsoletes:      %{1}1.66%{?2:-%{2}} \
 Obsoletes:      %{1}1.65%{?2:-%{2}} \
 Obsoletes:      %{1}1.64%{?2:-%{2}} \
 Obsoletes:      %{1}1.63%{?2:-%{2}} \
-Obsoletes:      %{1}1.62%{?2:-%{2}} \
-Obsoletes:      %{1}1.61%{?2:-%{2}}
+Obsoletes:      %{1}1.62%{?2:-%{2}}
 
 # === rust arch support tiers ===
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html

@@ -156,7 +156,10 @@ Source10183:    xen_maskcalc.py
 Source99:       baselibs.conf
 # Upstream patches
 Patch1:         63a03e28-x86-high-freq-TSC-overflow.patch
-Patch100:       xsa425.patch
+Patch2:         63c05478-VMX-calculate-model-specific-LBRs-once.patch
+Patch3:         63c05478-VMX-support-CPUs-without-model-specific-LBR.patch
+Patch4:         63d24e91-tools-xenstore-revert-simplify-loop-handling.patch
+Patch5:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

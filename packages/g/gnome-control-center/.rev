@@ -1876,4 +1876,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>1045460</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>d343a763dabba705a1574e1094327b13</srcmd5>
+    <version>43.4.1</version>
+    <time>1676389375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065574</requestid>
+  </revision>
 </revisionlist>

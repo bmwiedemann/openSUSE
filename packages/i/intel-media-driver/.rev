@@ -337,4 +337,18 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1056369</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>652cfdeb54e7340895a5fec5193f8978</srcmd5>
+    <version>23.1.1</version>
+    <time>1676389593</time>
+    <user>dimstar_suse</user>
+    <comment>- updated Supplements 
+
+- update to 23.1.1:
+  * Add VA HEVC block sizes and features caps
+  * Remove VP dependency for codec softlet lib on win/Linux
+
+  * Revert &quot;vaGetImage optimization on D-card.&quot;</comment>
+    <requestid>1065606</requestid>
+  </revision>
 </revisionlist>

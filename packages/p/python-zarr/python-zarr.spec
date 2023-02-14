@@ -17,10 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-zarr
-Version:        2.12.0
+Version:        2.13.3
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
@@ -31,7 +29,7 @@ BuildRequires:  %{python_module setuptools_scm > 1.5.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needs full python stdlib, base is not enough
-Requires:       python >= 3.7
+Requires:       python >= 3.8
 Requires:       python-asciitree
 Requires:       python-dbm
 Requires:       python-fasteners
@@ -52,7 +50,7 @@ BuildRequires:  %{python_module numcodecs >= 0.6.4}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pytest}
 # Needs full python stdlib, base is not enough
-BuildRequires:  %{pythons} >= 3.7
+BuildRequires:  %{pythons} >= 3.8
 # /SECTION
 %python_subpackages
 

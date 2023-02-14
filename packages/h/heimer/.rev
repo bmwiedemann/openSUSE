@@ -128,4 +128,20 @@
   * Update Italian translations</comment>
     <requestid>1044029</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1f88809910ea1a23853f6702f61c0b58</srcmd5>
+    <version>3.7.0</version>
+    <time>1676389556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.0:
+  New features:
+  * Add default settings for arrow size and edge width
+  * Add default settings for text size and font
+  * Add edit option to mirror the layout horizontally or vertically
+  * Animate edge deletion
+  * Animate node deletion
+  Bug fixes:
+  * Fix node left selected on canceled node/text color dialog</comment>
+    <requestid>1065644</requestid>
+  </revision>
 </revisionlist>

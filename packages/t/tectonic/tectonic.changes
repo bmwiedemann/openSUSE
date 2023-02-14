@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 14 01:38:12 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Sat Jan 28 10:58:04 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Lessen required memory to 8GB to enable arm builds.

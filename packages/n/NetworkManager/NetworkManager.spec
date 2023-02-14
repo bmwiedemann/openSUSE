@@ -64,13 +64,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.40.12
+Version:        1.42.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.42/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -158,7 +158,7 @@ Obsoletes:      libnm-util2 < 1.32
 # The dep chain is not really different and it causes too many
 # problems for users having that split. Not worth the pain
 Provides:       NetworkManager-wifi = %{version}
-Obsoletes:      NetworkManager-wifi <= %{version}
+Obsoletes:      NetworkManager-wifi < %{version}
 
 %{?systemd_ordering}
 

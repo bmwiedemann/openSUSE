@@ -1,0 +1,5 @@
+<package name="ocaml-augeas" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="ocaml-augeas"/>
+</package>

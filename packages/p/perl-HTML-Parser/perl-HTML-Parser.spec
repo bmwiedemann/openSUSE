@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name HTML-Parser
 Name:           perl-HTML-Parser
-Version:        3.80
+Version:        3.81
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML parser class
@@ -60,6 +60,7 @@ allows a more conventional program structure.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

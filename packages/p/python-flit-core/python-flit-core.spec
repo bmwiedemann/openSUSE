@@ -17,33 +17,39 @@
 
 
 %define modname flit-core
-%define mypython python
-# fallback if primary_python is not available from the project configuration
-%{?!primary_python:%define primary_python python3%{?!sle_version:10}}
 %global flavor @BUILD_FLAVOR@%{nil}
+%define plainpython python
+%if 0%{?suse_version} >= 1550
+# The primary python flavor is built in Factory Ring0
 %if "%{flavor}" == "primary"
-# this one is built in Ring0
 %define pprefix %{primary_python}
 %define pythons %{primary_python}
 %endif
+# Additional flavors are built in Factory Ring1
 %if "%{flavor}" == ""
-# The rest is in Ring1
 %define pprefix python
-%if 0%{?suse_version} >= 1550
-BuildRequires:  python3-base >= 3.6
 %{expand:%%define skip_%{primary_python} 1}
-%else
-%define python_module() no-build-without-multibuild-flavor
-# no non-primary python in <=15.5
+# ... unless the build set is empty. (We can't use shrink server-side and any skips here or on project level may have left spaces)
+%if "%{pythons}" == "" || "%{pythons}" == " " || "%{pythons}" == "  " || "%{pythons}" == "   " || "%{pythons}" == "    "
+# Exclude for local osc build: unresolvable
+%define python_module() empty-python-buildset
+# Exclude for obs server
 ExclusiveArch:  do-not-build
 %endif
 %endif
+%else
+# backport and option d projects for 15.X having one or more python in the buildset don't need the Ring split for bootstrap
+%if "%{flavor}" == "primary"
+%define python_module() invalid-multibuild-flavor-for-15.X
+ExclusiveArch:  do-not-build
+%else
+%define pprefix python
+%endif
+%endif
+# test everything in the buildset by standard python flavor expansion: primary and non-primary, if any.
 %if "%{flavor}" == "test"
 %define pprefix python
 %define psuffix -test
-%bcond_without test
-%else
-%bcond_with test
 %endif
 Name:           %{pprefix}-flit-core%{?psuffix}
 Version:        3.8.0
@@ -56,21 +62,23 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with test}
+%if "%{flavor}" == "test"
 BuildRequires:  %{python_module flit-core = %{version}}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-%else
-# SECTION boo#1186870: we are a transitive build dependency of python-packaging which is used by pythondistdeps.py normally creating this entry
+%endif
+# SECTION boo#1186870
+# We are a transitive build dependency of python-packaging
+# which is used by pythondistdeps.py normally creating these entries
 #!BuildIgnore:  %{primary_python}-packaging
 #!BuildIgnore:  python3-packaging
-%endif
-Provides:       %{mypython}%{python_version}dist(%{modname}) = %{version}
+Requires:       %{plainpython}(abi) = %{python_version}
+Provides:       %{plainpython}%{python_version}dist(%{modname}) = %{version}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       %{mypython}3-%{modname} = %{version}-%{release}
-Provides:       %{mypython}3dist(%{modname}) = %{version}
-Obsoletes:      %{mypython}3-%{modname} < %{version}-%{release}
+Provides:       %{plainpython}3-%{modname} = %{version}-%{release}
+Provides:       %{plainpython}3dist(%{modname}) = %{version}
+Obsoletes:      %{plainpython}3-%{modname} < %{version}-%{release}
 %endif
 # /SECTION
 %python_subpackages
@@ -82,10 +90,11 @@ The only public interface is the API specified by PEP 517, at flit_core.buildapi
 %prep
 %setup -q -n flit_core-%{version}
 
-%if !%{with test}
+%if "%{flavor}" != "test"
 %build
-# https://flit.readthedocs.io/en/latest/bootstrap.html
-python3 -m flit_core.wheel
+# https://flit.readthedocs.io/en/latest/bootstrap.html, take the first available python in the build set
+mypython=%{expand:%%__%(echo %{pythons} | cut -d " " -f 1)}
+$mypython -m flit_core.wheel
 
 %install
 %{python_expand #
@@ -98,14 +107,14 @@ rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-%if %{with test}
+%if "%{flavor}" == "test"
 %check
 # make sure we do not test the sources but the package
 rm flit_core/*.py pyproject.toml
 %pytest -rfEs
 %endif
 
-%if !%{with test}
+%if "%{flavor}" != "test"
 %files %{python_files}
 %{python_sitelib}/flit_core
 %{python_sitelib}/flit_core-%{version}*-info

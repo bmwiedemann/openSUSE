@@ -1,7 +1,7 @@
 #
 # spec file for package helix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,8 +72,8 @@ Zsh command-line completion support for %{name}.
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config.toml
 
-for shell in bash fish zsh 
-do 
+for shell in bash fish zsh
+do
   sed -i "s|\#\!\/usr\/bin\/env ${shell}||g" contrib/completion/hx.${shell}
 done
 
@@ -121,7 +121,6 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/logo.svg %{buildroot}%{_datadi
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-
 
 %files
 %license LICENSE

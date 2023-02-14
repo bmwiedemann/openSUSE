@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 10 15:25:11 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove /etc/sysconfig/network hierachy again, YaST got fixed
+
+-------------------------------------------------------------------
+Thu Jan 26 12:26:20 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Korean man pages directory used by xz
+
+-------------------------------------------------------------------
 Thu Jan 12 11:41:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Revert "Remove /etc/sysconfig/network hierachy" for now

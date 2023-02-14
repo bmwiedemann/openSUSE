@@ -569,4 +569,14 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment></comment>
     <requestid>1033797</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>59be139564feeb115937300aca4a2250</srcmd5>
+    <version>1.2.0</version>
+    <time>1676389661</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1208217: Include kscreen mode header
+  See also: gh/lxqt/lxqt-config#903
+  Add lxqt-config-1.2.0-include.patch</comment>
+    <requestid>1065747</requestid>
+  </revision>
 </revisionlist>

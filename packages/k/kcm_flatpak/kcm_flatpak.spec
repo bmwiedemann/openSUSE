@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Internal QML import
+
 %global __requires_exclude qmlimport\\(org\\.kde\\.plasma\\.kcm\\.flatpakpermissions
 
 %bcond_without released

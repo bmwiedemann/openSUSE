@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-demo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://www.mesa3d.org
 Source0:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2
 Source1:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  freeglut-devel

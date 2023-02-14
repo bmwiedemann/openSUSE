@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 12 03:06:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9726
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9726 2023-02-11
+  - fix subgraph of undirected (#28) - thanks @merkys for report
+
+-------------------------------------------------------------------
 Mon Oct 11 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9725

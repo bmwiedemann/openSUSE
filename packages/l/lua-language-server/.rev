@@ -162,4 +162,12 @@
 - Moved lua-language-server binary to /usr/libexec</comment>
     <requestid>1061574</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ef675e010a1af33b68f662d1a968349</srcmd5>
+    <version>3.6.11</version>
+    <time>1676389622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065615</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.67
-%global version_current 1.67.0
+%global version_current 1.67.1
 %global version_previous 1.66.0
 # This has to be kept lock step to the rust version.
 %global llvm_version 15
@@ -553,7 +553,6 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
 
 # We set deny warnings to false due to a problem where rust upstream didn't test building with
 # the same version (they did previous ver)
-
 
 %if %{without test}
 python3 ./x.py build

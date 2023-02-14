@@ -54,4 +54,13 @@
 </comment>
     <requestid>918513</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5038023b1a869b2509074e9fcf9f9b84</srcmd5>
+    <version>0.6.0</version>
+    <time>1676389645</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-numpy-1.20.patch:
+  * Support NumPy &gt;= 1.20.</comment>
+    <requestid>1065670</requestid>
+  </revision>
 </revisionlist>

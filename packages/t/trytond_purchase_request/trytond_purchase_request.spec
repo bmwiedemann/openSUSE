@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           trytond_purchase_request
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 
 URL:            http://www.tryton.org/

@@ -1,7 +1,7 @@
 #
 # spec file for package rygel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,13 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.0
+Version:        0.42.1
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
 Source0:        https://download.gnome.org/sources/rygel/0.42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM rygel-fix-rygel-pcfiles.patch -- Fix requires and linking in .pc files
-Patch0:         rygel-fix-rygel-pcfiles.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4

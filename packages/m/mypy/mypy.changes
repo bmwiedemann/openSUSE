@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 14 06:02:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't skipp the test, add testI64Cast-fix.patch to make it
+  working (gh#python/mypy#14691).
+
+-------------------------------------------------------------------
 Tue Feb  7 13:56:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing test testI64Cast (gh#python/mypy#14633).

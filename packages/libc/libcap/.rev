@@ -497,4 +497,12 @@
     about a sourcing error.</comment>
     <requestid>1007104</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8ffc77891f742ea80efce0ac8bf65635</srcmd5>
+    <version>2.67</version>
+    <time>1676389344</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064421</requestid>
+  </revision>
 </revisionlist>

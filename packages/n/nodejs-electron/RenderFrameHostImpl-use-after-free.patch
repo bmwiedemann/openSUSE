@@ -1,0 +1,24 @@
+--- src/content/browser/renderer_host/render_frame_host_impl.cc.orig	2023-02-08 21:38:09.974003318 +0100
++++ src/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-13 14:13:50.217792624 +0100
+@@ -5,6 +5,7 @@
+ #include "content/browser/renderer_host/render_frame_host_impl.h"
+ 
+ #include <memory>
++#include <new>
+ #include <tuple>
+ #include <unordered_map>
+ #include <utility>
+@@ -1876,7 +1877,12 @@
+   // completes. Among other things, this ensures that any `SafeRef`s from
+   // `DocumentService` and `RenderFrameHostUserData` subclasses are still valid
+   // when their destructors run.
+-  document_associated_data_.reset();
++  // HACK: Using .reset() here works on MSVC and LLVM libc++ because the std::optional
++  // is still valid while the destructor runs. This does not work on GNU libstdc++
++  // however which invalidates the optional before calling the destructor, causing a crash.
++  // Upstream bug: https://bugs.chromium.org/p/chromium/issues/detail?id=1415154
++    document_associated_data_->~DocumentAssociatedData();
++    new(&document_associated_data_) absl::optional<DocumentAssociatedData>(absl::nullopt);
+ 
+   // Ensure that the render process host has been notified that all audio
+   // streams from this frame have terminated. This is required to ensure the

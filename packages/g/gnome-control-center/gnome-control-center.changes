@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 13 08:32:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.4.1:
+  + Network: Fix possible race in tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec 23 15:30:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

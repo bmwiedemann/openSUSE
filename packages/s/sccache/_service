@@ -5,7 +5,7 @@
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <!-- <param name="revision">v0.3.0</param> -->
-    <param name="revision">20221213-suse-maint-v0.3.3</param>
+    <param name="revision">20230213-suse-maint-v0.4.0-pre.7</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -16,11 +16,11 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">sccache</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-Util
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name String-Util
 Name:           perl-String-Util
-Version:        1.32
+Version:        1.34
 Release:        0
-Summary:        String processing utility functions
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        String processing utility functions
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BA/BAKERSCOT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -33,8 +33,8 @@ BuildRequires:  perl(Test::More) >= 0.88
 %{perl_requires}
 
 %description
-String::Util provides a collection of small, handy functions for processing
-strings in various ways.
+*String::Util* provides a collection of small, handy functions for
+processing strings in various ways.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

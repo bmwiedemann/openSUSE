@@ -1,7 +1,7 @@
 #
 # spec file for package package-translations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           package-translations
-Version:        89.87.20220422.ad259799
+Version:        89.87.20230128.cd224a6
 Release:        0
 Summary:        Summary and Descriptions Translations
 License:        BSD-3-Clause

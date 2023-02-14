@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update-notifier
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Luciano Santos <luc14n0@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           transactional-update-notifier
-Version:        1.1.0
+Version:        1.1.0.2
 Release:        0
 Summary:        A notifier for systems using transactional updates
 License:        GPL-3.0-only
@@ -28,8 +28,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source9:        %{name}.rpmlintrc
 
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.18
 
 Requires:       dbus-1
 
@@ -37,7 +37,6 @@ Requires:       dbus-1
 Add notifications, via Desktop Bus (D-Bus), about transactional updates for
 all users currently logged in in a graphical session. Being even possible
 for it to be used as a reboot method through transactional-updates.conf(5).
-
 
 %prep
 %autosetup -p 1 -a 1
@@ -57,7 +56,6 @@ export GOFLAGS='-mod=vendor -buildmode=pie'
 
 %preun
 %systemd_user_preun   %{name}.service
-
 
 %files
 %license LICENSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 14 09:24:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Discover 5.27 can be built again on archs missing QtWebEngine
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0

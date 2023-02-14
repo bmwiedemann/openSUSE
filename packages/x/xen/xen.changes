@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  9 09:56:27 MST 2023 - carnold@suse.com
+
+- bsc#1205792 - Partner-L3: launch-xenstore error messages show in
+  SLES15 SP4 xen kernel. 
+  63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
+
+-------------------------------------------------------------------
+Mon Feb  6 12:17:00 CET 2023 - jbeulich@suse.com
+
+- bsc#1026236 - tidy/modernize patch
+  xen.bug1026236.suse_vtsc_tolerance.patch
+
+-------------------------------------------------------------------
+Mon Feb  6 12:15:00 CET 2023 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  63c05478-VMX-calculate-model-specific-LBRs-once.patch
+  63c05478-VMX-support-CPUs-without-model-specific-LBR.patch
+- bsc#1207544 - VUL-0: CVE-2022-42330: xen: Guests can cause
+  Xenstore crash via soft reset (XSA-425)
+  xsa425.patch ->
+  63d24e91-tools-xenstore-revert-simplify-loop-handling.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 10:39:54 MST 2023 - carnold@suse.com
 
 - bsc#1207544 - VUL-0: CVE-2022-42330: xen: Guests can cause

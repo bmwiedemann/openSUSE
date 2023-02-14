@@ -729,4 +729,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.66.0 - for details see the rust1.66 package</comment>
     <requestid>1043834</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9ea475593702de70fa06d3af3813dc51</srcmd5>
+    <version>1.67.1</version>
+    <time>1676389391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065624</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@ Thu Feb  2 15:51:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
   + Fix the build with GStreamer-based WebRTC enabled.
   + Fix the build with USE_GTK4 enabled.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2023-23517, CVE-2023-23518, CVE-2023-42826.
+  + Security fixes: CVE-2023-23517, CVE-2023-23518, CVE-2022-42826.
 
 -------------------------------------------------------------------
 Fri Jan 27 15:09:41 UTC 2023 - Michael Gorse <mgorse@suse.com>

@@ -2782,4 +2782,12 @@
     <comment>Security fix for bsc#1207544 - CVE-2022-42330</comment>
     <requestid>1061070</requestid>
   </revision>
+  <revision rev="326" vrev="2">
+    <srcmd5>a7a139f1fbd2f9bafb23dd55d9f76d56</srcmd5>
+    <version>4.17.0_04</version>
+    <time>1676389382</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream version of security fix for bsc#1207544. Other fixes included.</comment>
+    <requestid>1065597</requestid>
+  </revision>
 </revisionlist>

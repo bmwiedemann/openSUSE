@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-translations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           desktop-translations
-Version:        84.87.20220427.80cb897f
+Version:        84.87.20230128.350400f
 Release:        0
 Summary:        Desktop Files Translations
 License:        MIT

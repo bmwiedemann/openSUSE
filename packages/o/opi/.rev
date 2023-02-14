@@ -409,4 +409,14 @@
 - Enforce ffmpeg&gt;=5 on tumbleweed</comment>
     <requestid>1065419</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>16542f386ee88f36b127fac466d054eb</srcmd5>
+    <version>2.14.0</version>
+    <time>1676389652</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.14.0
+- Install openh264 according to arch
+- Use http instead of https for openh264 repo</comment>
+    <requestid>1065545</requestid>
+  </revision>
 </revisionlist>

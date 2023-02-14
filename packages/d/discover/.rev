@@ -1028,4 +1028,12 @@
     <comment>Plasma 5.27.0, preliminary tarballs</comment>
     <requestid>1064502</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>2c5b25768dbcfec7b60dea40355425ae</srcmd5>
+    <version>5.27.0</version>
+    <time>1676389468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065695</requestid>
+  </revision>
 </revisionlist>

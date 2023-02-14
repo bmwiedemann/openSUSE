@@ -6796,4 +6796,41 @@ always built-in because vim has direct perl dependencies anyway.
   * The did_set_string_option function is too long.</comment>
     <requestid>1062434</requestid>
   </revision>
+  <revision rev="338" vrev="1">
+    <srcmd5>6f44460e6522c98dab2e933dad39bd4e</srcmd5>
+    <version>9.0.1307</version>
+    <time>1676389361</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1307, fixes the following problems
+  * Crash when using search stat in narrow screen.
+  * Using sizeof() and subtract array size is tricky.
+  * Typo in pattern for filetype detection.
+  * &quot;1v&quot; may select block with wrong size. (Evgeni Chasnovski)
+  * FIRRTL files are not recognized.
+  * The code for setting options is too complicated.
+  * Some mappings with Meta and Shift do not work.
+  * Cursor may move with autocmd in Visual mode.
+  * go.work.sum files are not recognized.
+  * Display shows lines scrolled down erroneously. (Yishai Lerner)
+  * Inssufficient testing for what 9.0.1265 fixes.
+  * Cadence files are not recognized.
+  * Ron files are not recognized.
+  * The code for setting options is too complicated.
+  * Compiler warnings for uninitialized variables. (Tony Mechelynck)
+  * Various small problems.
+  * Coverity warns for using a NULL pointer.
+  * With the Kitty key protocl Esc with NumLock cannot be mapped.
+  * FunC files are not recognized.
+  * A newer version of clang can be used for CI.
+  * CTRL-N and -P on cmdline don't trigger CmdlineChanged.
+  * Move language files are not recognized.
+  * :defer may call the wrong method for an object. (Ernie Rael)
+  * The set_num_option() is too long.
+  * The set_bool_option() function is too long.
+  * The option initialization function is too long.
+  * Calling an object method with arguments does not work. (Ernie Rael)
+  * Wrong value for $LC_CTYPE makes the environ test fail.
+  * Inserting a register on the command line does not trigger incsearch or</comment>
+    <requestid>1065550</requestid>
+  </revision>
 </revisionlist>

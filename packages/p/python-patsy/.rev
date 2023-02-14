@@ -61,4 +61,19 @@ Needed by python-seaborn, see request 436927</comment>
 - Remove unneeded nose BuildRequires.</comment>
     <requestid>930035</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7f109a09af5106e47f8788ff15721ae1</srcmd5>
+    <version>0.5.3</version>
+    <time>1676389643</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+- update to version 0.5.3:
+  * Officially add support for Python 3.10 and 3.11, and extend test
+    coverage to include these releases.
+  * Fix handling of future interpreter features that no longer have a
+    mandatory release version, as for the `annotations` feature (See
+    `#187 &lt;https://github.com/pydata/patsy/pull/187&gt;`__ for details.)</comment>
+    <requestid>1065620</requestid>
+  </revision>
 </revisionlist>

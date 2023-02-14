@@ -272,4 +272,12 @@
   * Add openssl-Update-further-expiring-certificates.patch</comment>
     <requestid>1046230</requestid>
   </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>94c87562f4fd7e272f8440ce1d2e20f2</srcmd5>
+    <version>1.0.2u</version>
+    <time>1676389483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063738</requestid>
+  </revision>
 </revisionlist>

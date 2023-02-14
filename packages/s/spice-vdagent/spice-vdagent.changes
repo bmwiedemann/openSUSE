@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 08:31:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop allow-enable-on-boot-spice-vdagentd.service.patch. udev takes
+  care of this already.
+- Don't call systemctl enable in %post, that's what presets are for.
+- Add 0001-Switch-to-spice-vdagent.service-by-default.patch to allow
+  use of spice-vdagent.service
+
+-------------------------------------------------------------------
 Mon Oct 10 14:50:57 MDT 2022 - carnold@suse.com
 
 - bsc#1204085 - spice-vdagentd 0.22.1 doesn't work properly on

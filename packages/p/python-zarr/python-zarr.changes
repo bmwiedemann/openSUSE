@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Oct  9 19:15:50 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.3:
+  * Improve performance of slice selections with steps by omitting
+    chunks with no relevant data. By Richard Shaw #843.
+
+-------------------------------------------------------------------
+Wed Sep 28 13:11:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.2:
+  * Fix test failure on conda-forge builds (again). By :user:`Josh
+    Moore <joshmoore>`; see zarr-feedstock#65.
+
+-------------------------------------------------------------------
+Tue Sep 27 17:21:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.1:
+  * Fix test failure on conda-forge builds. By Josh Moore; see
+    zarr-feedstock#65.
+
+-------------------------------------------------------------------
+Sun Sep 25 20:17:30 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * requrie python >= 3.8
+
+- update to version 2.13.0:
+  * Major changes
+    + Support of alternative array classes by introducing a new
+      argument, meta_array, that specifies the type/class of the
+      underlying array. The meta_array argument can be any class
+      instance that can be used as the like argument in NumPy (see NEP
+      35). enabling support for CuPy through, for example, the
+      creation of a CuPy CPU compressor. By Mads R. B. Kristensen
+      #934.
+    + Remove support for Python 3.7 in concert with NumPy
+      dependency. By Davis Bennett #1067.
+    + Zarr v3: add support for the default root path rather than
+      requiring that all API users pass an explicit path. By Gregory
+      R. Lee #1085, #1142.
+  * Bug fixes
+    + Remove/relax erroneous “meta” path check (regression). By
+      Gregory R. Lee #1123.
+    + Cast all attribute keys to strings (and issue deprecation
+      warning). By Mattia Almansi #1066.
+    + Fix bug in N5 storage that prevented arrays located in the root
+      of the hierarchy from bearing the n5 keyword. Along with fixing
+      this bug, new tests were added for N5 routines that had
+      previously been excluded from testing, and type annotations were
+      added to the N5 codebase. By Davis Bennett #1092.
+    + Fix bug in LRUEStoreCache in which the current size wasn’t reset
+      on invalidation. By BGCMHou and Josh Moore #1076, #1077.
+    + Remove erroneous check that disallowed array keys starting with
+      “meta”. By Gregory R. Lee #1105.
+  * Documentation
+    + Typo fixes to close quotes. By Pavithra Eswaramoorthy
+    + Added copy button to documentation. By Altay Sansal #1124.
+  * Maintenance
+    + Simplify release docs. By Josh Moore #1119.
+    + Pin werkzeug to prevent test hangs. By Davis Bennett #1098.
+    + Fix a few DeepSource.io alerts By Dimitri Papadopoulos Orfanos
+      #1080.
+    + Fix URLs. By Dimitri Papadopoulos Orfanos, #1074.
+    + Fix spelling. By Dimitri Papadopoulos Orfanos, #1073.
+    + Update GitHub issue templates with YAML format. By Saransh
+      Chopra #1079.
+    + Remove option to return None from _ensure_store. By Greggory Lee
+      #1068.
+    + Fix a typo of “integers”. By Richard Scott #1056.
+
+-------------------------------------------------------------------
 Sun Aug 21 15:21:17 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

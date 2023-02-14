@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 12 12:13:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.2:
+  + AboutWindow: Prevent double clicks from opening troubleshooting
+    page.
+  + AdwLeaflet: Fix can-unfold=false.
+  + AdwSpringAnimation: Fix critical damping velocity.
+  + AdwSwipeable: Fix get_swipe_area() fallback.
+  + AdwToastOverlay:
+    - Don't focus buttons on click.
+    - Prevent toast labels from wrapping.
+  + Demo: Fix the switch on the avatar page.
+  + Stylesheet: Fix GtkLevelBar fill colors.
+  + Fix dependency names in docs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  6 19:16:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.1:

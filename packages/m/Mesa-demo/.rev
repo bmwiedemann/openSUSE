@@ -221,4 +221,15 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     including support for Meson build</comment>
     <requestid>979931</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>27108a17b54b3edaf51d41ae56b6dab8</srcmd5>
+    <version>8.5.0</version>
+    <time>1676389389</time>
+    <user>dimstar_suse</user>
+    <comment>- added baselibs.conf as source to specfile 
+
+- Add Mesa-demo-{egl,es,x}-32bit. This is useful as the 64- and 32-bit
+  OpenGL environments are separate and need separate diagnostic programs.</comment>
+    <requestid>1065608</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,10 @@ Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{ver
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM gh#davidhalter/jedi#1903
 Patch0:         support-python-311-typing.patch
+# PATCH-FIX-UPSTREAM supported_pythons_310_311.patch gh#davidhalter/jedi#1914 mcepl@suse.com
+# Add '3.11' among _SUPPORTED_PYTHONS
+Patch2:         supported_pythons_310_311.patch
+# The author of jedi and parso takes pinning very seriously, adhere to it!
 BuildRequires:  %{python_module parso >= 0.8.0 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
@@ -36,7 +40,7 @@ BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# The author of jedi and parso takes pinning very seriously, adhere to it!
+# See pinning note above
 Requires:       (python-parso >= 0.8.0 with python-parso < 0.9)
 BuildArch:      noarch
 %python_subpackages
@@ -84,7 +88,7 @@ skiptests+=" or test_get_default_environment_when_embedded"
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/jedi-%{version}.dist-info
-%{python_sitelib}/jedi/
+%{python_sitelib}/jedi-%{version}*-info
+%{python_sitelib}/jedi
 
 %changelog

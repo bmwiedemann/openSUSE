@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  1 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.81
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.81      2023-01-30
+      - Stop depending on "Test" (GH#34) (James Raspass)
+      - fix test scripts after conversion to Test::More (GH#35) (Graham Knop)
+
+-------------------------------------------------------------------
 Thu Nov  3 03:06:50 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.80

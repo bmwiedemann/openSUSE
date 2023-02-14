@@ -1,7 +1,7 @@
 #
 # spec file for package vala
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
 %define         vala_priority 56
 Name:           vala
-Version:        0.56.3
+Version:        0.56.4
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later

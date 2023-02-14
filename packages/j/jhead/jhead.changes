@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 11:13:09 UTC 2023 - pgajdos@suse.com
+
+- added patches
+  fix [bsc#1207150]
+  https://github.com/Matthias-Wandel/jhead/commit/2a237d866581b3774ebe63d6c312e76459bd0866
+  + jhead-CVE-2022-41751-3.patch
+
+-------------------------------------------------------------------
 Tue Nov  8 21:17:41 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Added jhead-CVE-2021-34055.patch

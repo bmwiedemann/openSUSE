@@ -20,12 +20,12 @@
 %define         _kf5_plasmadir      /usr/share/plasma
 
 Name:           dracula-gtk-theme
-Version:        3.0+git88.b64d36a
+Version:        3.0+git94.9840b6b
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
 URL:            https://github.com/dracula/gtk
-Source:         %{name}-%{version}.tar.xz
+Source:         gtk-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildArch:      noarch
 
@@ -142,7 +142,7 @@ Provides:       %{name} = %{version}-%{release}
 This package contains the Xfwm4 support for for Dracula theme.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n gtk-%{version}
 
 # Remove useless stuff
 rm -rf \

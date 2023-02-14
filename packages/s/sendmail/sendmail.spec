@@ -39,7 +39,9 @@ Name:           sendmail
 %if 0%{?suse_version} > 1315
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(icu-uc)
+%if 0%{?suse_version} < 1599
 BuildRequires:  pkgconfig(libnsl)
+%endif
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(openssl)
 %if 0%{?suse_version} > 1140

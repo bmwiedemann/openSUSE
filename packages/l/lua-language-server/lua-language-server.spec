@@ -18,15 +18,15 @@
 
 
 Name:           lua-language-server
-Version:        3.6.7
+Version:        3.6.11
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
-URL:            https://github.com/sumneko/lua-language-server
+URL:            https://github.com/LuaLS/lua-language-server
 # Checkout from git is required because of gh#sumneko/lua-language-server#878
 # Source0:        %%{name}-%%{version}.tar.gz
-Source0:        https://github.com/sumneko/%{name}/releases/download/%{version}/%{name}-%{version}-submodules.zip
-Source1:        https://github.com/sumneko/%{name}/archive/%{version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}-submodules.zip
+Source1:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source2:        lua-lsp-launcher.sh
 Source3:        README.suse-maint.md
 # PATCH-FIX-UPSTREAM time_includes.patch gh#sumneko/lua-language-server#1377 mcepl@suse.com

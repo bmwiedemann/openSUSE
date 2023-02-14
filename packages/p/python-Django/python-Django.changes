@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 14 09:59:42 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.1.7:
+  + CVE-2023-24580: Potential denial-of-service vulnerability in file
+    uploads (bsc#1208082)
+  + Fixed a bug in Django 4.1 that caused a crash of model validation
+    on ValidationError with no code
+
+-------------------------------------------------------------------
 Wed Feb  1 12:48:49 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1.6:

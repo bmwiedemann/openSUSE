@@ -7,4 +7,12 @@
     <comment>Plasma 5.27.0, preliminary tarballs</comment>
     <requestid>1064553</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8207b88235bfdeaa2f99d9e6903bdc2a</srcmd5>
+    <version>5.27.0</version>
+    <time>1676389565</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.0 respun tarballs (forwarded request 1065555 from Vogtinator)</comment>
+    <requestid>1065561</requestid>
+  </revision>
 </revisionlist>

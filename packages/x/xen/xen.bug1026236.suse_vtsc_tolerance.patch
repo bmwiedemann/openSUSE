@@ -8,46 +8,44 @@ at native speed. Otherwise TSC access will be emulated. It is up to
 the hostadmin to decide how much tolerance all running domUs can
 actually handle. The default is zero tolerance.
 
-Index: xen-4.17.0-testing/xen/arch/x86/time.c
-===================================================================
---- xen-4.17.0-testing.orig/xen/arch/x86/time.c
-+++ xen-4.17.0-testing/xen/arch/x86/time.c
+--- a/xen/arch/x86/time.c
++++ b/xen/arch/x86/time.c
 @@ -47,6 +47,9 @@
  static char __initdata opt_clocksource[10];
  string_param("clocksource", opt_clocksource);
  
-+static unsigned int __read_mostly opt_suse_vtsc_tolerance;
++static unsigned int __ro_after_init opt_suse_vtsc_tolerance;
 +integer_param("suse_vtsc_tolerance", opt_suse_vtsc_tolerance);
 +
  unsigned long __read_mostly cpu_khz;  /* CPU clock frequency in kHz. */
  DEFINE_SPINLOCK(rtc_lock);
  unsigned long pit0_ticks;
-@@ -2581,6 +2584,7 @@ int tsc_set_info(struct domain *d,
+@@ -2581,6 +2584,8 @@ int tsc_set_info(struct domain *d,
  
      switch ( tsc_mode )
      {
 +        bool disable_vtsc;
++
      case TSC_MODE_DEFAULT:
      case TSC_MODE_ALWAYS_EMULATE:
          d->arch.vtsc_offset = get_s_time() - elapsed_nsec;
-@@ -2594,8 +2598,26 @@ int tsc_set_info(struct domain *d,
+@@ -2594,8 +2599,25 @@ int tsc_set_info(struct domain *d,
           * When a guest is created, gtsc_khz is passed in as zero, making
           * d->arch.tsc_khz == cpu_khz. Thus no need to check incarnation.
           */
 +        disable_vtsc = d->arch.tsc_khz == cpu_khz;
 +
-+        if ( tsc_mode == TSC_MODE_DEFAULT && gtsc_khz &&
-+             is_hvm_domain(d) && opt_suse_vtsc_tolerance )
++        if ( tsc_mode == TSC_MODE_DEFAULT && !disable_vtsc &&
++             opt_suse_vtsc_tolerance && is_hvm_domain(d) )
 +        {
-+            long khz_diff;
++            long khz_diff = ABS((long)cpu_khz - gtsc_khz);
 +
-+            khz_diff = ABS(((long)cpu_khz - gtsc_khz));
 +            disable_vtsc = khz_diff <= opt_suse_vtsc_tolerance;
 +
-+            printk(XENLOG_G_INFO "d%d: host has %lu kHz,"
++            printk(XENLOG_G_INFO "%pd: host has %lu kHz,"
 +                   " domU expects %u kHz,"
 +                   " difference of %ld is %s tolerance of %u\n",
-+                   d->domain_id, cpu_khz, gtsc_khz, khz_diff,
++                   d, cpu_khz, gtsc_khz, khz_diff,
 +                   disable_vtsc ? "within" : "outside",
 +                   opt_suse_vtsc_tolerance);
 +        }

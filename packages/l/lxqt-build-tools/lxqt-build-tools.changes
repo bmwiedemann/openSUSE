@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:41:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- boo#1208217: Bump required C++ version
+  See also: gh/lxqt/lxqt-config#903
+  Add lxqt-build-tools-0.12.0-cpp17.patch
+
+-------------------------------------------------------------------
 Sat Nov  5 16:28:08 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 0.12.0

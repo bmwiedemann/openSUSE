@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6c8c0bd2092b957ec925ac2b469438b</srcmd5>
+    <version>0.6</version>
+    <time>1676389504</time>
+    <user>dimstar_suse</user>
+    <comment>New Package ocaml-augeas. The source to this package originally lived in libguestfs but is now moved into its own package. ocaml-augeas as a standalone package is required in order to update libguestfs to version 1.50.0</comment>
+    <requestid>1064297</requestid>
+  </revision>
+</revisionlist>

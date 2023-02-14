@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 14 10:17:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Drop NIS/NISPLUS support for Tumbleweed (boo#1208221) 
+
+-------------------------------------------------------------------
 Tue Jan 24 12:22:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix source URLs: ftp.sendmail.com was restructured and the

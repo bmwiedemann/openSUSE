@@ -1,7 +1,7 @@
 #
 # spec file for package cfengine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 %define with_sfw2 0
 %endif
 # Version of libntech needed (see git repo of core)
-%define libntech_hash 66274a1752c88922c2acd000e23b11b76b3bfc2a
+%define libntech_hash 522ec6b3240a332884d0f67059268edd8cf30cba
 # pass --with-bla to enable the build
 %bcond_with mysql
 %bcond_with postgresql
 %bcond_with libvirt
 Name:           cfengine
-Version:        3.19.0
+Version:        3.21.0
 Release:        0
 Summary:        Configuration management framework
 License:        GPL-3.0-only
@@ -241,11 +241,13 @@ install -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2
 # Ckeabyo dyoes
 %fdupes %{buildroot}%{_datadir}/cfengine
 
+%define cf_services cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cf-reactor.service cfengine3.service
+
 %pre
-%service_add_pre cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
+%service_add_pre %{cf_services}
 
 %post
-%service_add_post cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
+%service_add_post %{cf_services}
 if [ $1 -lt 2 ]; then
   # first install, generate key pair
   cf-key
@@ -255,10 +257,10 @@ fi
 %endif
 
 %preun
-%service_del_preun cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
+%service_del_preun %{cf_services}
 
 %postun
-%service_del_postun cf-execd.service cf-monitord.service cf-serverd.service cf-apache.service cf-hub.service cf-postgres.service cf-runalerts.service cfengine3.service
+%service_del_postun %{cf_services}
 if [ $1 -eq 0 ]; then
   # clean up inputs cache dir on removal
   rm -rf %{basedir}/inputs/*
@@ -282,12 +284,10 @@ fi
 %{_bindir}/cf-promises
 %{_bindir}/cf-secret
 %{_bindir}/cf-serverd
+%{_bindir}/cf-support
 %{_bindir}/cf-upgrade
 %{_bindir}/cf-runagent
 %{_bindir}/rpmvercmp
-%{_unitdir}/cf-execd.service
-%{_unitdir}/cf-monitord.service
-%{_unitdir}/cf-serverd.service
 %{_sbindir}/rccf-execd
 %{_sbindir}/rccf-monitord
 %{_sbindir}/rccf-serverd

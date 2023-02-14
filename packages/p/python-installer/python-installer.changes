@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 11 21:45:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't build for Python 3.6: It requires importlib.resources
+
+-------------------------------------------------------------------
 Tue Dec 13 15:40:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.6.0 

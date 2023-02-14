@@ -17,15 +17,16 @@
 
 
 Name:           zk
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause
 Group:          System/Shells
 URL:            https://github.com/mickael-menu/zk
 Source0:        https://github.com/mickael-menu/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zstd
 BuildRequires:  c_compiler
+BuildRequires:  zstd
 BuildRequires:  golang(API)
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(sqlite3)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 11 21:00:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Require python independent of python-rpm-packaging being there
+  to create the entry automatically
+
+-------------------------------------------------------------------
+Fri Feb 10 14:01:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't use :primary multibuild flavor for non-Tumbleweed
+  * accomodates special SLE15 projects defininig extra flavors but
+    not building for primary python3
+
+-------------------------------------------------------------------
 Fri Jan 27 15:43:53 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Exclude the regular build in SLE15 SP5 as in SP4 instead of

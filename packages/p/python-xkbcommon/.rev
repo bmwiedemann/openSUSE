@@ -7,4 +7,12 @@
     <comment>I want to maintain python-xkbcommon in openSUSE:Factory</comment>
     <requestid>989379</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0274835e98e2339e0f2d196214bea571</srcmd5>
+    <version>0.8</version>
+    <time>1676389509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065605</requestid>
+  </revision>
 </revisionlist>

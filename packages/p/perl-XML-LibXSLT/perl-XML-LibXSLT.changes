@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 11 03:08:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002001
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+
+  2.002001    2023-02-10
+      - Makefile.PL
+          - Corrections and refactorings
+
+-------------------------------------------------------------------
 Wed May 18 03:10:45 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002000

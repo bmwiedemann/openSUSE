@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 14 07:05:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-1.20.patch:
+  * Support NumPy >= 1.20. 
+
+-------------------------------------------------------------------
 Sat Sep 11 22:44:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.6.0:

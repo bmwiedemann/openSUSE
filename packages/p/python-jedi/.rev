@@ -342,4 +342,12 @@
   * Support typing changes for Python 3.11+</comment>
     <requestid>1057681</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>dd24f6f4b95201af2de43582d085c470</srcmd5>
+    <version>0.18.2</version>
+    <time>1676389355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065614</requestid>
+  </revision>
 </revisionlist>

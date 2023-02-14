@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 12 16:46:23 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.21.3
+- Update emoji annotations from CLDR
+- Translation update from Weblate (ka 100%)
+
+-------------------------------------------------------------------
+Sun Feb 12 10:50:50 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.21.2
+- Autoselect extremely likely candidates:
+  Allow only adding of accents, never removing accents
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/420)
+  
+-------------------------------------------------------------------
 Thu Feb 09 16:15:06 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.21.1

@@ -107,6 +107,17 @@ Patch88:        openssl-1_0_0-Fix-file-operations-in-c_rehash.patch
 Patch89:        openssl-1_0_0-paramgen-default_to_rfc7919.patch
 # PATCH-FIX-UPSTREAM bsc#1201627 Update further expiring certificates that affect tests
 Patch90:        openssl-Update-further-expiring-certificates.patch
+# PATCH-FIX-UPSTREAM bsc#1179491 CVE-2020-1971 EDIPARTYNAME NULL pointer de-reference
+Patch91:        openssl-CVE-2020-1971.patch
+#PATCH-FIX-UPSTREAM bsc#1207534 CVE-2022-4304 Timing Oracle in RSA Decryption
+Patch92:        openssl-CVE-2022-4304.patch
+#PATCH-FIX-UPSTREAM bsc#1207536 CVE-2023-0215 Use-after-free following BIO_new_NDEF()
+Patch93:        openssl-CVE-2023-0215-1of4.patch
+#Patch openssl-CVE-2023-0215-2of4.patch because this type of tests are not present
+Patch94:        openssl-CVE-2023-0215-3of4.patch
+Patch95:        openssl-CVE-2023-0215-4of4.patch
+#PATCH-FIX-UPSTREAM bsc#1207533 CVE-2023-0286 Address type confusion related to X.400 address processing
+Patch96:        openssl-CVE-2023-0286.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -275,6 +286,12 @@ testing framework and utilities.
 %patch88 -p1
 %patch89 -p1
 %patch90 -p1
+%patch91 -p1
+%patch92 -p1
+%patch93 -p1
+%patch94 -p1
+%patch95 -p1
+%patch96 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

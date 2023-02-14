@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 10 11:07:03 UTC 2023 - Markus Ebner <info@ebner-markus.de>
+
+- Add patch 0001-Bug62349-fix-missing-num_processors.patch
+  Fixes loading the package in newer Octave versions
+  From: https://savannah.gnu.org/bugs/?62349
+
+-------------------------------------------------------------------
 Mon Mar 22 16:44:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.1:

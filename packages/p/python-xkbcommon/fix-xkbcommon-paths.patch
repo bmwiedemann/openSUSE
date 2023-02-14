@@ -1,8 +1,0 @@
---- ./setup.py.orig	2021-07-18 23:34:22.000000000 +0800
-+++ ./setup.py	2022-07-12 22:40:53.438969616 +0800
-@@ -29,4 +29,5 @@
-       setup_requires=["cffi>=1.5.0"],
-       install_requires=["cffi>=1.5.0"],
-       cffi_modules=["xkbcommon/ffi_build.py:ffibuilder"],
-+      include_dirs=["/usr/include/libxkbcommon"],
- )

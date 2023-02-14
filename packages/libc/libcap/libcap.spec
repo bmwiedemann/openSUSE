@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           libcap
-Version:        2.66
+Version:        2.67
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sites.google.com/site/fullycapable/
 Source:         https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.xz
-Source2:        baselibs.conf
-Source3:        https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.sign
-Source4:        https://git.kernel.org/pub/scm/linux/kernel/git/morgan/libcap.git/plain/pgp.keys.asc#/%{name}.keyring
+Source1:        https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.sign
+Source2:        https://git.kernel.org/pub/scm/linux/kernel/git/morgan/libcap.git/plain/pgp.keys.asc#/%{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  pkgconfig

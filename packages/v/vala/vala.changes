@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Feb 12 12:05:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.4:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Add glib.h include for TRUE/FALSE literal
+      . Append VALA_EXTERN also when using fast-vapi
+      . Perform required casts for generic types of return-values
+        and in/out-parameters
+      . Correctly handle fixed-length array initialization of
+        fields in classes
+      . Perform required cast while assigning and passing function
+        pointers
+      . Cast return value of generic type accessor functions
+      . Cast vfunc of property accessors by using
+        cast_method_pointer()
+    - vala:
+      . Report error in real literal if exponent has no digits
+      . Improve compatibility type checks of array elements in
+        assignments
+      . Improve missing exponent check for real literals
+      . Better handling of [NoReturn] call inside finally clause
+    - Properly check for colored terminal output on Windows
+    - Fix output decoding error of non-ASCII character on Win32
+    - parser: Properly handle chained equality expressions
+    - manual: Update from wiki.gnome.org
+  + Bindings:
+    - cairo: Add missing Cairo.Pattern.get_rgba()
+    - glib-2.0: Add `double_hash` and `double_equal`
+    - gtk4: Make Gtk.show_uri_full() an instance method of
+      Gtk.Window
+    - gtk4: Update workaround for DropTarget.drop() signal conflict
+    - libgvc: Fix `cheader_filename` of the `Gvc` namespace
+    - pango: Fix a few binding errors
+    - pixman-1: Fix instance position of region copy methods
+    - webkit2gtk-*.*: Update to 2.37.91
+    - Add webkitgtk-6.0 bindings
+    - Update gnome-desktop-3.0 and gnome-desktop-4
+
+-------------------------------------------------------------------
 Sat Sep  3 14:13:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.3:

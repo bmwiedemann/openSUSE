@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Feb 13 16:38:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.1.0
+  * The library includes full support for EDID, partial support
+    for CTA-861-H, and very basic support for DisplayID 1.3.
+
+-------------------------------------------------------------------
+Mon Mar 28 08:00:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0) for build.opensuse.org

@@ -125,4 +125,12 @@
     <comment>New stable release (forwarded request 1056683 from iznogood)</comment>
     <requestid>1057044</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c9f09450fa60aedbafcfa5db4a1b876c</srcmd5>
+    <version>1.2.2</version>
+    <time>1676389376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065576</requestid>
+  </revision>
 </revisionlist>

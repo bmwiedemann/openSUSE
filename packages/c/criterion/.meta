@@ -1,0 +1,5 @@
+<package name="criterion" project="openSUSE:Factory">
+  <title>criterion</title>
+  <description>A dead-simple, yet extensible, C and C++ unit testing framework.</description>
+  <devel project="devel:libraries:c_c++" package="criterion"/>
+</package>

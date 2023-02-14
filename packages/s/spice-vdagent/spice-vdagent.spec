@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,8 +30,8 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Patch0:         harden_spice-vdagentd.service.patch
-Patch1:         allow-enable-on-boot-spice-vdagentd.service.patch
-
+# https://gitlab.freedesktop.org/spice/linux/vd_agent/-/merge_requests/47
+Patch1:         0001-Switch-to-spice-vdagent.service-by-default.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel
@@ -65,9 +65,7 @@ Features:
   and the client
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf
@@ -97,9 +95,6 @@ rm -fr %{buildroot}%{_datadir}/gdm/autostart
 
 %post
 %service_add_post spice-vdagentd.service
-if [ "$1" -eq 1 ]; then
-    systemctl -q enable spice-vdagentd.service || :
-fi
 %service_add_post spice-vdagentd.socket
 %tmpfiles_create %_tmpfilesdir/spice-vdagentd.conf
 
