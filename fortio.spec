@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fortio
-Version:        1.40.1
+Version:        1.50.0
 Release:        0
 Summary:        Load testing library, command line tool, advanced echo server and web UI
 License:        Apache-2.0

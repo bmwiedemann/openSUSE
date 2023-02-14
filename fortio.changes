@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 14 08:37:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.50.0:
+  * Bump docker/build-push-action from 3.3.0 to 4.0.0 (#702)
+  * Bump docker/setup-buildx-action from 2.4.0 to 2.4.1 (#703)
+  * Bump github/codeql-action from 2.2.1 to 2.2.4 (#707)
+  * moved logger to toplevel fortio.org/log, dflag and version - avoid flags in library modules (#706)
+
+-------------------------------------------------------------------
 Sat Feb 04 12:24:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.40.1:
