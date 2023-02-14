@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 13 08:10:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream leak fixes:
+  + 66b400d63b8d7b921b83250a8b9a09e9a1eb6732.patch:
+    gs-plugin-job-list-apps: Fix a leak of the GsAppQuery
+  + 1355554764815195aaf9f6e23acdd7a9c521ceaa.patch:
+    gs-plugin-job-manage-repository: Fix a minor leak
+
+-------------------------------------------------------------------
+Fri Feb 10 08:43:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.4:
+  + Stop cancelled search in appstream data early.
+  + Lookup for appstream-provided icons in more directories.
+
+-------------------------------------------------------------------
 Mon Jan 16 17:34:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also add download.opensuse.org-non-oss (NON-OSS repo)

@@ -1,0 +1,26 @@
+From 1355554764815195aaf9f6e23acdd7a9c521ceaa Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Fri, 10 Feb 2023 01:03:59 +0000
+Subject: [PATCH] gs-plugin-job-manage-repository: Fix a minor leak
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ lib/gs-plugin-job-manage-repository.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/gs-plugin-job-manage-repository.c b/lib/gs-plugin-job-manage-repository.c
+index 7ee444449..2b8ee668b 100644
+--- a/lib/gs-plugin-job-manage-repository.c
++++ b/lib/gs-plugin-job-manage-repository.c
+@@ -63,6 +63,8 @@ gs_plugin_job_manage_repository_dispose (GObject *object)
+ 	g_assert (self->saved_error == NULL);
+ 	g_assert (self->n_pending_ops == 0);
+ 
++	g_clear_object (&self->repository);
++
+ 	G_OBJECT_CLASS (gs_plugin_job_manage_repository_parent_class)->dispose (object);
+ }
+ 
+-- 
+GitLab
+
