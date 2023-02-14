@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 31 09:30:04 UTC 2023 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Released December 2022
+  * Support theme merging
+  * Support user themes (`theme` gsetting)
+  * Add theme validator
+
+-------------------------------------------------------------------
 Mon Dec  5 14:21:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.0.1:

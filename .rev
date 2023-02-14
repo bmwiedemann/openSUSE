@@ -15,4 +15,12 @@
     <comment>New stable release (forwarded request 1040312 from iznogood)</comment>
     <requestid>1040323</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7433c826b5c631f377d5c7362cd02d66</srcmd5>
+    <version>0.0.2</version>
+    <time>1676389659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065734</requestid>
+  </revision>
 </revisionlist>
