@@ -7,4 +7,41 @@
     <comment>himalaya</comment>
     <requestid>1010884</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6ff8fdc0d6eeef7c76783881aef8978</srcmd5>
+    <version>0.7.1~0</version>
+    <time>1676464875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  Added:
+  * Added command folders expunge that deletes all emails marked for
+    deletion.
+  Changed:
+  * Changed the location of the documentation.
+  Fixed:
+  * Fixed broken links in README.md.
+  Removed:
+  * Removed the maildir-backend cargo feature, it is now included by
+    default.
+  * Removed issues section on GitHub, now issues need to be opened by
+    sending an email at ~soywod/pimalaya@todo.sr.ht.
+
+- Update to 0.7.0:
+  Added:
+  * Added offline support with the account sync command to synchronize
+    a backend to a local Maildir backend [#342].
+  * Added the flag --disable-cache to not use the local Maildir backend.
+  * Added the email composer (from its own repository) [#341].
+  * Added Musl builds to releases [#356].
+  * Added himalaya man command to generate man page [#419].
+  Changed:
+  * Made commands read, attachments, flags, copy, move,
+    delete accept multiple ids.
+  * Flipped arguments ids and folder for commands copy and move
+    in order the folder not to be considered as an id.
+  Fixed:
+  * Fixed missing folder aliases [#430].
+  Removed:</comment>
+    <requestid>1065900</requestid>
+  </revision>
 </revisionlist>

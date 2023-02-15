@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Feb 14 20:07:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  Added:
+  * Added command folders expunge that deletes all emails marked for
+    deletion.
+  Changed:
+  * Changed the location of the documentation.
+  Fixed:
+  * Fixed broken links in README.md.
+  Removed:
+  * Removed the maildir-backend cargo feature, it is now included by
+    default.
+  * Removed issues section on GitHub, now issues need to be opened by
+    sending an email at ~soywod/pimalaya@todo.sr.ht.
+
+-------------------------------------------------------------------
+Wed Feb  8 15:41:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  Added:
+  * Added offline support with the account sync command to synchronize
+    a backend to a local Maildir backend [#342].
+  * Added the flag --disable-cache to not use the local Maildir backend.
+  * Added the email composer (from its own repository) [#341].
+  * Added Musl builds to releases [#356].
+  * Added himalaya man command to generate man page [#419].
+  Changed:
+  * Made commands read, attachments, flags, copy, move,
+    delete accept multiple ids.
+  * Flipped arguments ids and folder for commands copy and move
+    in order the folder not to be considered as an id.
+  Fixed:
+  * Fixed missing folder aliases [#430].
+  Removed:
+  * Removed the -a|--attachment argument from write, reply and
+    forward commands. Instead you can attach documents directly from
+    the template using the syntax <#part filename=/path/to/you/document.ext>.
+  * Removed the -e|--encrypt flag from write, reply and forward
+    commands. Instead you can encrypt and sign parts directly from the
+    template using the syntax <#part type=text/plain encrypt=command
+    sign=command>Hello!<#/part>.
+  * Removed the -l|--log-level option, use instead the RUST_LOG
+    environment variable (see the wiki)
+
+-------------------------------------------------------------------
 Wed Oct 12 15:17:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.1:
