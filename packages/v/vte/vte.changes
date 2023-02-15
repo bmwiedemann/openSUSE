@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 14 06:17:47 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.70.3:
+  + widget:
+    - Ensure the ringview is updated before converting coordinates
+    - gtk4: Translate control+key events when using multiple
+      layouts
+    - Use correct end row for getting the selected text
+- Drop ddb2c8a.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jan 19 10:21:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ddb2c8a.patch: widget: Use correct end row for getting the
