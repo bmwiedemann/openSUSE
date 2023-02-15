@@ -331,4 +331,12 @@
   * Add support for setting WMM parameter IE in AP mode.</comment>
     <requestid>1061799</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a1cda9748c06cd1979eeba0efbce043a</srcmd5>
+    <version>2.3</version>
+    <time>1676464867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065884</requestid>
+  </revision>
 </revisionlist>
