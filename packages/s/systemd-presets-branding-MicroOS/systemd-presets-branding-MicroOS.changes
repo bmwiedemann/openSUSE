@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:23:23 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Correct spelling of transactional-update-notifier.service in
+  50-default-MicroOS-user.preset
+- 20230214 
+
+-------------------------------------------------------------------
 Mon Jan 30 12:38:25 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Introduce 50-default-MicroOS-user.preset to allow Systemd user

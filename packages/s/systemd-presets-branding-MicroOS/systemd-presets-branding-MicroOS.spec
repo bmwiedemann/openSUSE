@@ -19,7 +19,7 @@
 %define generic_name systemd-presets-branding
 
 Name:           systemd-presets-branding-MicroOS
-Version:        20230130
+Version:        20230214
 Release:        0
 Summary:        Systemd default presets for openSUSE MicroOS
 License:        MIT

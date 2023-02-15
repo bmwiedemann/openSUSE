@@ -54,4 +54,14 @@
 - 20230130</comment>
     <requestid>1062049</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f7f3616225c098e7953dac31f80ac41</srcmd5>
+    <version>20230214</version>
+    <time>1676464802</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct spelling of transactional-update-notifier.service in
+  50-default-MicroOS-user.preset
+- 20230214</comment>
+    <requestid>1065741</requestid>
+  </revision>
 </revisionlist>
