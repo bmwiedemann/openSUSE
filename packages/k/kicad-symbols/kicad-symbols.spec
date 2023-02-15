@@ -16,12 +16,12 @@
 #
 
 
-# 6.x.y are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 6.0.0
+# 7.x.y are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 7.0.0
 
 Name:           kicad-symbols
-Version:        6.0.11
-%define file_version 6.0.11
+Version:        7.0.0
+%define file_version 7.0.0
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
