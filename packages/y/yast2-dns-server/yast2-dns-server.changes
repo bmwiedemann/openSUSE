@@ -1,0 +1,1757 @@
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
+Wed Feb  9 09:32:56 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bnc#1195714
+  - follow up of previous update - improved inclusive naming fix
+- 4.4.2
+
+-------------------------------------------------------------------
+Wed Feb  2 12:29:59 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- jsc#SLE-22015
+  - Master/Slave servers and zones renamed to conform to inclusive
+    naming. According to RFC8499 primary/secondary names are used
+    now.
+- 4.4.1
+
+-------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
+Wed Mar  3 15:29:24 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: allow using 'zone' instead of 'listentry' in the
+  list of zones (bsc#1181718).
+- 4.3.3
+
+-------------------------------------------------------------------
+Thu Feb 18 16:18:21 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 4.3.2
+
+-------------------------------------------------------------------
+Mon Aug 10 12:40:23 CEST 2020 - schubi@suse.de
+
+- AutoYaST: Added supplements: autoyast(dns-server) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.1
+
+-------------------------------------------------------------------
+Thu May  7 15:31:44 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
+Mon Sep 23 07:12:04 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Permit the user to force an netconfig update when netconfig was
+  not able to change the configuration. (bsc#1123985)
+- 4.2.4
+
+-------------------------------------------------------------------
+Fri Sep 20 14:12:10 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not modify the service when finishing the wizard dialog as
+  the configuration has not been written yet. (bsc#1123985)
+- 4.2.3
+
+-------------------------------------------------------------------
+Thu Aug 22 11:42:15 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Mon Jul  1 13:44:42 UTC 2019 - Knut Alejandro Anderssen González <knut.anderssen@suse.com>
+
+- Fixed failing old testsuite: do not depend on the environment,
+  skip bind absence in Mode.test() (bsc#1138668)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:28:57 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Sun Nov 25 02:10:40 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.2
+
+-------------------------------------------------------------------
+Tue Oct 16 15:11:54 CEST 2018 - schubi@suse.de
+
+- Added license file to spec.
+
+-------------------------------------------------------------------
+Mon Aug 20 09:08:17 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+
+-------------------------------------------------------------------
+Tue Aug 14 07:46:55 UTC 2018 - dgonzalez@suse.com
+
+- Manage the start mode and service status directly from Ruby.
+- 4.1.1 (related to fate#319428)
+
+-------------------------------------------------------------------
+Tue Aug  7 12:14:35 UTC 2018 - dgonzalez@suse.com
+
+- Use CWM::ServiceWidget to manage the service status
+  (part of fate#319428).
+- 4.1.0
+
+-------------------------------------------------------------------
+Wed Jul 25 18:20:26 UTC 2018 - knut.anderssen@suse.com
+
+- Reload the configuration only if the service is running but do
+  not restart the service. (bsc#1102235)
+- 4.0.4
+
+-------------------------------------------------------------------
+Tue Jun 26 16:51:49 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.3
+
+-------------------------------------------------------------------
+Wed May 30 09:45:34 CEST 2018 - schubi@suse.de
+
+- Reload named.service only if it is running, otherwise restart it.
+  (bnc#1093029)
+- 4.0.2
+
+-------------------------------------------------------------------
+Thu Jan 25 15:26:18 UTC 2018 - knut.anderssen@suse.com
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Nov  6 11:55:43 UTC 2017 - knut.anderssen@suse.com
+
+- Fix teststuite once SuSEFirewall2 is being replaced by Firewalld
+  (fate#323460)
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Nov 24 14:13:00 UTC 2016 - igonzalezsosa@suse.com
+
+- Remove dead code regarding help messages (bsc#1012048) 
+- 3.2.0
+
+-------------------------------------------------------------------
+Fri Aug  5 09:39:32 UTC 2016 - igonzalezsosa@suse.com
+
+- Prevent failures with dejagnu-1.6 (bsc#992333).
+- 3.1.24
+
+-------------------------------------------------------------------
+Thu Aug  4 11:53:40 UTC 2016 - igonzalezsosa@suse.com
+
+- Fix an Internal Error 'undefined method DnsSequence' in case
+  bind.rpm is not installed (bsc#990453)
+- 3.1.23
+
+-------------------------------------------------------------------
+Tue Jun  7 11:28:51 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.22
+
+-------------------------------------------------------------------
+Wed May 25 11:11:30 UTC 2016 - mvidner@suse.com
+
+- Keep non-ACL items in allow-transfer AKA Enable Zone Transport
+  (bsc#976643#c23)
+- Fix parsing 'keyword{value;};' (no spaces) in named.conf
+  (bsc#976643#c16).
+- 3.1.21
+
+-------------------------------------------------------------------
+Wed May  4 08:45:09 UTC 2016 - cwh@suse.com
+
+- Fix handling of trailing spaces in named.conf (bsc#976643)
+- 3.1.20
+
+-------------------------------------------------------------------
+Fri Nov 27 09:35:39 UTC 2015 - ancor@suse.com
+
+- Adapted to latest changes in UI::ServiceStatus API (fate#318771)
+- 3.1.19
+
+-------------------------------------------------------------------
+Thu Nov 26 08:56:08 UTC 2015 - ancor@suse.com
+
+- Use new version of the UI component for services handling
+  (fate#318771)
+- 3.1.18
+
+-------------------------------------------------------------------
+Fri Oct  2 11:09:19 UTC 2015 - ancor@suse.com
+
+- UI component for services handling moved from yast2-dns-server
+  to yast2 (fate#318771)
+- 3.1.17
+
+-------------------------------------------------------------------
+Fri Sep  4 11:49:22 UTC 2015 - mvidner@suse.com
+
+- Fix "Unescaped left brace in regex is deprecated" (boo#944490).
+- 3.1.16
+
+-------------------------------------------------------------------
+Tue Aug  4 08:49:23 UTC 2015 - ancor@suse.com
+
+- Added automated tests for some CLI commands (bnc#940466)
+- 3.1.15
+
+-------------------------------------------------------------------
+Mon Aug  3 15:59:19 UTC 2015 - ancor@suse.com
+
+- Remove duplicated code causing the CLI commands to be executed
+  twice (bnc#940466)
+
+-------------------------------------------------------------------
+Tue Jun 30 06:40:26 UTC 2015 - mfilka@suse.com
+
+- bnc#923990
+  - fixed TLD proposing
+- 3.1.14 
+
+-------------------------------------------------------------------
+Mon Jun 22 16:16:14 UTC 2015 - cwh@suse.com
+
+- bnc#922765
+  - changed default TLD from .site to .suse
+- 3.1.13
+
+-------------------------------------------------------------------
+Thu Jun 18 11:23:54 UTC 2015 - igonzalezsosa@suse.com
+
+- Avoid duplicated lines on /etc/named.conf file
+  (bsc#935129)
+- 3.1.12
+
+-------------------------------------------------------------------
+Fri Feb 13 11:18:34 UTC 2015 - ancor@suse.com
+
+- The unit tests are now compatible with RSpec 3
+- 3.1.11
+
+-------------------------------------------------------------------
+Tue Dec  9 16:35:24 CET 2014 - locilka@suse.com
+
+- Fixed handling of zones (bnc#898659)
+  - Checking for system zones was moved to separate function
+  - Extended list of zones marked as system (internal) ones with
+    (0\.)+ip6.arpa
+  - Not allowing to edit system zones (belong to bind package)
+  - Added check for 'bind' package to be installed before writing
+    the configuration
+  - Marking all imported zones as 'modified' to be written later
+  - Marking all imported non-system zones as 'is_new' to create
+    a zone file for them
+  - Flushing /etc/named.conf cache 'after' writing zones (instead
+    of 'before')
+  - Using "" as the default NETCONFIG_DNS_POLICY (instead of 0)
+  - Do not write system zones to LDAP (bnc#746401)
+  - If systems zones are marked as modified, they are written to
+    named configuration (if LDAP is not in use)
+- 3.1.10
+
+-------------------------------------------------------------------
+Fri Dec  5 16:44:27 CET 2014 - locilka@suse.com
+
+- Fixed Import() and Write() in AutoYast (bnc#898659)
+  - Imported zones were not written to the system as they were not
+    marked as 'modified'
+  - Directory /etc/named.d/ was used even if it didn't exist
+  - The whole named.conf was rewritten from scratch as Yast thought
+    that something has changed that file while Yast was running
+- 3.1.9
+
+-------------------------------------------------------------------
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+- 3.1.8
+
+-------------------------------------------------------------------
+Thu Sep  4 12:20:11 UTC 2014 - mvidner@suse.com
+
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.7
+
+-------------------------------------------------------------------
+Fri Mar 28 15:04:54 UTC 2014 - vmoravec@suse.com
+
+- Fix failing testsuite
+- 3.1.6
+
+-------------------------------------------------------------------
+Wed Mar 12 16:26:57 CET 2014 - locilka@suse.com
+
+- Fixed splitting/joining longer TXT and SPF records (bnc#867596)
+- 3.1.5
+
+-------------------------------------------------------------------
+Wed Feb  5 16:33:04 UTC 2014 - jreidinger@suse.com
+
+- Use new yast2-ldap instead of yast2-ldap-client
+- 3.1.4
+
+-------------------------------------------------------------------
+Tue Nov 26 15:10:30 CET 2013 - locilka@suse.com
+
+- Added possibility to set local DNS forwarder (FATE#309036)
+- 3.1.3
+
+-------------------------------------------------------------------
+Mon Nov 25 15:48:26 CET 2013 - locilka@suse.com
+
+- Switched to using Service library instead of calling init script
+  directly
+- 3.1.2
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+- 3.1.1
+
+-------------------------------------------------------------------
+Wed Sep 18 15:53:18 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Aug 13 14:29:08 CEST 2013 - locilka@suse.com
+
+- Added missing SPF record handling
+- 3.0.1
+
+-------------------------------------------------------------------
+Wed Jul 31 08:28:36 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+------------------------------------------------------------------
+Fri Nov 9 13:19:35 UTC 2012 - locilka@suse.com
+
+- Enhanced checking for errors while writing to LDAP (bnc#768708)
+- 2.23.4
+
+------------------------------------------------------------------
+Wed Aug 15 16:30:42 UTC 2012 - locilka@suse.com
+
+- Checking for return values while writing into LDAP and reporting
+  errors (bnc#768708).
+
+------------------------------------------------------------------
+Wed Jun 20 09:42:53 UTC 2012 - locilka@suse.com
+
+- Additional fix for (bnc#765445). No error reported to stdout
+  even while writing /etc/named.conf without having bind package
+  installed.
+
+------------------------------------------------------------------
+Tue Jun  5 09:04:05 UTC 2012 - locilka@suse.com
+
+- Handling missing /etc/named.conf (BNC #765445)
+- 2.23.3
+
+------------------------------------------------------------------
+Fri Jun  1 13:58:36 UTC 2012 - locilka@suse.com
+
+- Fixed setting up the LDAP (BNC #690237)
+
+------------------------------------------------------------------
+Tue Apr 24 10:38:54 CEST 2012 - locilka@suse.com
+
+- Fixed redrawing records settings UI entries when deleting
+  records (BNC#758745).
+- 2.23.2
+
+------------------------------------------------------------------
+Fri Apr 20 16:16:11 CEST 2012 - locilka@suse.com
+
+- Fixed removing RRs from LDAP when they share the same LDAP
+  object with another non-deleted RRs (BNC#755592).
+
+------------------------------------------------------------------
+Tue Apr 17 16:53:59 CEST 2012 - locilka@suse.com
+
+- Triggering the global "modified" flag while adding/modifying
+  a zone to be correctly stored later (BNC#753038).
+
+------------------------------------------------------------------
+Thu Apr 12 12:05:03 CEST 2012 - locilka@suse.com
+
+- Fixed zone-file agent to handle semicolons in TXT records
+  correctly instead of considering them to represent comments
+  (bnc#755766).
+- 2.23.1
+
+------------------------------------------------------------------
+Mon Feb 13 18:06:25 CET 2012 - locilka@suse.com
+
+- Checking for and adding required LDAP schemas (yast, dnszone)
+  while writing the configuration. Fixed handling if configuration
+  cannot be written to LDAP (bnc#690237).
+- 2.22.1
+
+------------------------------------------------------------------
+Fri Feb 10 13:13:43 CET 2012 - locilka@suse.com
+
+- Fixed transforming records from absolute to relative format
+  while they are listed in UI (bnc#746363).
+- Fixed saving the current status of all zones to LDAP/files while
+  switching from using files to LDAP and vice versa (bnc#746401).
+
+------------------------------------------------------------------
+Thu Feb  9 15:16:58 CET 2012 - locilka@suse.com
+
+- Fixed transforming records from relative to absolute format.
+  The final dot is added only to records including a zone name
+  (bnc#745560).
+
+-------------------------------------------------------------------
+Wed Nov 16 11:55:12 CET 2011 - jsuchome@suse.cz
+
+- merged texts from proofreading
+- 2.22.0 
+
+-------------------------------------------------------------------
+Mon Sep 12 12:21:22 UTC 2011 - lslezak@suse.cz
+
+- updated testsuite (systemd support)
+- 2.21.3
+
+-------------------------------------------------------------------
+Fri Aug  5 12:31:29 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+------------------------------------------------------------------
+Fri Jul  1 14:42:45 CEST 2011 - locilka@suse.cz
+
+- Fixed a typo (BNC #703099)
+- Texts changed to be easily translatable - not to confuse
+  translators with constant strings
+
+------------------------------------------------------------------
+Tue Jun 21 09:40:41 CEST 2011 - locilka@suse.cz
+
+- Fixed RPM requirements
+- Added testsuites
+- 2.21.2
+
+------------------------------------------------------------------
+Mon Jun 20 15:35:29 CEST 2011 - locilka@suse.cz
+
+- Automatically changing entered forwarder to a localhost IP if
+  the server would forward to itself (non-local IP) (BNC #676676).
+
+------------------------------------------------------------------
+Wed Mar 16 15:51:40 CET 2011 - locilka@suse.cz
+
+- Handling unknown error in LDAP initialization (BNC #679960).
+- 2.21.1
+
+------------------------------------------------------------------
+Fri Jan  7 10:31:22 CET 2011 - locilka@suse.cz
+
+- Fixed help text (BNC #620101)
+- Allowing wildcard '*' for some resource records (BNC #646895).
+- 2.20.2
+
+------------------------------------------------------------------
+Thu Jan  6 14:17:25 CET 2011 - locilka@suse.cz
+
+- Implemented less strict TXT record check (BNC #620480).
+- 2.20.1
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Thu Nov 26 14:00:19 CET 2009 - locilka@suse.cz
+
+- Fixed LDAP initialization (bnc #557090).
+
+-------------------------------------------------------------------
+Fri Mar 20 16:49:47 CET 2009 - locilka@suse.cz
+
+- Correcting the last change: forwarders.conf is always included.
+  Netconfig is called before starting named (bnc #484736).
+- Adjusted testsuites.
+- 2.18.3
+
+-------------------------------------------------------------------
+Tue Mar 17 12:37:46 CET 2009 - locilka@suse.cz
+
+- Fixed handling forwarders in netconfig, forwarders.conf have to
+  be included if some forwarders are defined (bnc #484736).
+- Adjusted testsuites.
+- 2.18.2
+
+-------------------------------------------------------------------
+Fri Jan 23 18:37:17 CET 2009 - locilka@suse.cz
+
+- Fixed displaying an error pop-up if 'Set Use LDAP' fails
+  (bnc #181241)
+- 2.18.1
+
+-------------------------------------------------------------------
+Tue Jan 20 16:08:40 CET 2009 - locilka@suse.cz
+
+- Allowing IPv6 address to be used as DNS Server forwarder
+  (bnc #463539)
+- 2.18.0
+
+-------------------------------------------------------------------
+Tue Nov 18 13:42:01 CET 2008 - locilka@suse.cz
+
+- Added missing help text (bnc #436456).
+- Storing the bascis zone dialog status before switching to NS
+  dialog because of missing NS server (bnc #436456).
+- 2.17.9
+
+-------------------------------------------------------------------
+Tue Nov  4 19:18:14 CET 2008 - locilka@suse.cz
+
+- However entries are stored in LDAP, .ldap.search returns them
+  in thisStrangeFormat. Moreover, DNS records entries are stored
+  in format tXTRecord for TXT record, cNAMERecord for CNAME, etc.
+  (bnc #433899)
+- 2.17.8
+
+-------------------------------------------------------------------
+Thu Aug 28 15:04:26 CEST 2008 - locilka@suse.cz
+
+- Dropped dead code (widgets.ycp).
+- 2.17.7
+
+-------------------------------------------------------------------
+Wed Aug 20 14:12:59 CEST 2008 - sschober@suse.de
+
+- fixed rnc file for autoyast 
+
+-------------------------------------------------------------------
+Mon Aug 11 11:49:45 CEST 2008 - locilka@suse.cz
+
+- Using netconfig to configure DNS forwarders (patch created by
+  sschober@suse.de) (FATE #303386).
+- Package sysconfig is newly required (because of /sbin/netconfig).
+- Adjusted testsuites.
+- 2.17.6
+
+-------------------------------------------------------------------
+Wed Aug  6 15:54:32 CEST 2008 - locilka@suse.cz
+
+- DNS zones need a FQDN hostname, using /etc/HOSTNAME as a fallback
+  when hostname --fqdn returns empty string (bnc #403468).
+- 2.17.5
+
+-------------------------------------------------------------------
+Tue Aug  5 10:53:13 CEST 2008 - locilka@suse.cz
+
+- Adjusted to the newest LDAP SCR agent (patch written by jsuchome)
+  (FATE #303596).
+- 2.17.4
+
+-------------------------------------------------------------------
+Wed Jul 23 12:33:54 CEST 2008 - locilka@suse.cz
+
+- Added support for dynamic updates initiated also out of the
+  dns-server module.
+- Added new module DnsServerHelperFunctions to make some more
+  functionality public.
+- Added support for IPv6 reverse zones (FATE #304401).
+- Added support for automatic generation of connected reverse zones
+  (FATE #304401).
+- Adapted testsuites.
+- 2.17.3
+
+-------------------------------------------------------------------
+Mon Jul 21 14:21:00 CEST 2008 - locilka@suse.cz
+
+- Added support for SRV and TXT RRs (FATE #206, #120040).
+- Added support for AAAA IPv6 RR (FATE #304401).
+- Added support for IPv6 reverse zones (WIP).
+- 2.17.2
+
+-------------------------------------------------------------------
+Wed Jul 16 15:17:50 CEST 2008 - locilka@suse.cz
+
+- Firewall service 'dns-server' replaced with 'service:bind'.
+
+-------------------------------------------------------------------
+Mon Jul 14 13:42:44 CEST 2008 - locilka@suse.cz
+
+- Removed unneeded dependency on DNS module (yast2-network).
+- InputFields instead of TextEntries.
+- [OK] instead of [Finish] in Single Step Dialogs.
+- [Cancel] instead of [Abort].
+- 2.17.1
+
+-------------------------------------------------------------------
+Mon Jun  9 17:03:19 CEST 2008 - mzugec@suse.cz
+
+- DnsServerApi.pm moved to yast2 (bnc#392606)
+- 2.17.0
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Fri May  9 10:50:13 CEST 2008 - locilka@suse.cz
+
+- Fixed "Records" handling (bnc #377029).
+- 2.16.4
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- 2.16.3
+
+-------------------------------------------------------------------
+Thu Jan 24 14:12:54 CET 2008 - mzugec@suse.cz
+
+- replace deprecated NetworkDevices by NetworkInterfaces (from yast2)
+- 2.16.2
+
+-------------------------------------------------------------------
+Fri Dec 14 18:12:54 CET 2007 - locilka@suse.cz
+
+- Fixed Perl-dependencies.
+- 2.16.1
+
+-------------------------------------------------------------------
+Tue Dec  4 15:20:21 CET 2007 - locilka@suse.cz
+
+- Merged texts back from proofreading.
+
+-------------------------------------------------------------------
+Wed Nov 14 14:04:36 CET 2007 - locilka@suse.cz
+
+- Fixed recognizing TSIG-keys definition in named.conf. Currently
+  they are ignored (not supported) instead of being broken when
+  rewriting the configuration (#339036).
+- Removed obsolete firewall-related functions.
+- Disabled expert/simple differentiation (all is expert).
+- Adapted testsuite (removed calling those obsolete functions).
+- 2.16.0
+
+-------------------------------------------------------------------
+Thu Apr 26 15:06:03 CEST 2007 - locilka@suse.cz
+
+- Enhanced agent for transforming user-defined named.conf to
+  understand zone definition without 'in' (#266717).
+- Enabled expert UI by default.
+- 2.15.3
+
+-------------------------------------------------------------------
+Thu Feb 22 16:29:39 CET 2007 - locilka@suse.cz
+
+- Fixed and unified icons-handling.
+- Changes format of required packages.
+- 2.15.2
+
+-------------------------------------------------------------------
+Mon Feb  5 16:42:37 CET 2007 - locilka@suse.cz
+
+- Reusing zone file when zone is removed and created again in one
+  module run (#199926).
+- 2.15.1
+
+-------------------------------------------------------------------
+Tue Jan 16 13:05:02 CET 2007 - locilka@suse.cz
+
+- Adding X-SuSE-YaST-AutoInstSchema entry into the application
+  desktop file (#235339).
+
+-------------------------------------------------------------------
+Thu Jan 11 15:14:43 CET 2007 - locilka@suse.cz
+
+- New possibility to add @ as a DNS record key that actually means
+  $zone_name. "@" is immediately transformed to the $zone_name.
+  Also reading the current zone files supports that transformation
+  (#189310).
+- 2.15.0 
+
+-------------------------------------------------------------------
+Tue Nov 14 13:44:55 CET 2006 - locilka@suse.cz
+
+- Added/Moved .rnc file from AutoYaST (#220747).
+- 2.14.2
+
+-------------------------------------------------------------------
+Tue Oct 31 11:30:02 CET 2006 - locilka@suse.cz
+
+- Replaced '!=' with 'ne' for textual comparsion (#216531).
+- 2.14.1
+
+-------------------------------------------------------------------
+Tue Oct 10 15:16:47 CEST 2006 - locilka@suse.cz
+
+- Merged SLES10 SP1 branch to openSUSE 10.2.
+- 2.14.0
+
+-------------------------------------------------------------------
+Mon Oct  2 16:56:41 CEST 2006 - locilka@suse.cz
+
+- Merged proofread texts
+- 2.13.20
+
+-------------------------------------------------------------------
+Mon Sep 25 09:55:46 CEST 2006 - locilka@suse.cz
+
+- Handling possible exception of hand-edited configuration of
+  forwarders (Enhancement related to bug #134692).
+- Adjusted testsuites.
+- 2.13.19
+
+-------------------------------------------------------------------
+Thu Sep  7 10:53:09 CEST 2006 - locilka@suse.cz
+
+- Fixed "Enable Zone Transfer" behavior. Transfers are enabled for
+  anybody by default if the allow-transfer options is not mentioned
+  at all. This led to a buggy behavior when YaST presented it as
+  disabled. By now, selecting the "Enable Transfer" check-box-only
+  explicitely writes allow-transfer for "all", disabling the
+  check-box writes allow-transfer for "none", using other ACLs is
+  not changed (#203910).
+- 2.13.18
+
+-------------------------------------------------------------------
+Wed Aug 30 15:32:35 CEST 2006 - locilka@suse.cz
+
+- DnsServerPunycode renamed to Punycode and moved to yast2-2.13.78.
+- 2.13.17
+
+-------------------------------------------------------------------
+Fri Aug  4 16:11:37 CEST 2006 - locilka@suse.cz
+
+- Added new function IsServiceConfigurableExternally() to the
+  DnsServerAPI module to be used from external modules like
+  DHCP or HTTP Servers.
+- 2.13.16
+
+-------------------------------------------------------------------
+Fri Aug  4 12:39:47 CEST 2006 - mvidner@suse.cz
+
+- Removed a Perl search path that is added elsewhere already
+  and here just breaks compilation in some cases (#197099).
+
+-------------------------------------------------------------------
+Thu Aug  3 10:57:42 CEST 2006 - locilka@suse.cz
+
+- New help texts (#195873).
+
+-------------------------------------------------------------------
+Fri Jul 28 08:47:05 CEST 2006 - locilka@suse.cz
+
+- Optimized PunycodeToUnicode translations using DocodeDomainNames
+  function from DnsServerPunycode module (speeding up).
+- Added forward zone handling into the Install-Wizard Sequence.
+- Added help for forward zone.
+- Adjusted full support for viewing, adding, removing and changing
+  all DNS records (NSs, MXs, other Records) in Master Zone dialogs.
+- Deleting the zone must be confirmed.
+- 2.13.15
+
+-------------------------------------------------------------------
+Thu Jul 27 15:15:34 CEST 2006 - locilka@suse.cz
+
+- Added cache of already converted strings unicode->punycode,
+  punycode->unicode. Cache size is limited.
+
+-------------------------------------------------------------------
+Thu Jul 27 09:14:08 CEST 2006 - locilka@suse.cz
+
+- Fixed testsuites because of changes in yast2-pam.
+- Adjusted master-zone dialog to show Punycode records in their
+  decoded form.
+- 2.13.14
+
+-------------------------------------------------------------------
+Wed Jul 26 16:27:03 CEST 2006 - locilka@suse.cz
+
+- Created new YCP module DnsServerPunycode that transforms strings
+  (relative zone names, or FQDNs) into the Punycode encoding
+  described in RFC 3492 (FaTE #300589, Bugzilla #162217).
+- DnsServerPunycode used for adding and editing DNS zones.
+
+-------------------------------------------------------------------
+Mon Jul 24 15:02:56 CEST 2006 - locilka@suse.cz
+
+- Added support for forward zones (FaTE #120041). The only option
+  thats is possible to set is a 'forwarders' option.
+- Added CommandLine support for forward zone.
+- Added more checking proceduures into the DnsServerAPI module.
+- Enhanced testsuited for DnsServerAPI module.
+- 2.13.13
+
+-------------------------------------------------------------------
+Mon May 15 09:47:02 CEST 2006 - locilka@suse.cz
+
+- Special file /etc/named.d/forwarders.conf is allways written and
+  included in the configuration of /etc/named.conf because of the
+  feature 'PPP daemon sets forwarders'. The file is allways written
+  even the list of forwarders is empty (#134692).
+- 2.13.12 
+
+-------------------------------------------------------------------
+Wed Apr 12 11:04:46 CEST 2006 - locilka@suse.cz
+
+- Convert the named.conf file to the format understandable for
+  IniAgent used for reading and writing configuration. Current
+  configuration is backed up as 'named.conf.YaST-backup' file.
+- Handling comments in zone file better (both #165133).
+- Fixed testsuites for added calls.
+- 2.13.11
+
+-------------------------------------------------------------------
+Tue Apr 11 14:21:48 CEST 2006 - locilka@suse.cz
+
+- After the LDAP storage was fixed and we could enable is, it was
+  impossible to disable it (#165189).
+- 2.13.10
+
+-------------------------------------------------------------------
+Mon Apr 10 12:07:25 CEST 2006 - locilka@suse.cz
+
+- Fixing call to LDAPInit()
+- 2.13.9
+
+-------------------------------------------------------------------
+Thu Apr  6 15:16:39 CEST 2006 - locilka@suse.cz
+
+- Fixing variable type sent to the LdapClient (#162871)
+
+-------------------------------------------------------------------
+Thu Mar 23 08:59:36 CET 2006 - locilka@suse.cz
+
+- Added checking for root permissions into the module startup
+  process (#158483)
+- 2.13.8
+
+-------------------------------------------------------------------
+Mon Mar  6 13:11:47 CET 2006 - locilka@suse.cz
+
+- Adjusting BuildRequires for package
+- 2.13.7
+
+-------------------------------------------------------------------
+Mon Jan 23 17:47:08 CET 2006 - locilka@suse.cz
+
+- Added checking whether the NetworkManager is enabled. In this
+  case user has to confirm continuance.
+- 2.13.6 
+
+-------------------------------------------------------------------
+Tue Jan 10 15:10:09 CET 2006 - locilka@suse.cz
+
+- Fixed SLES Dialogs not to be shrunk
+- Replaced 'rcnamed restart' with 'rcnamed reload' where possible
+- Adjusted testsuites
+- 2.13.5
+
+-------------------------------------------------------------------
+Mon Jan  9 17:32:59 CET 2006 - locilka@suse.cz
+
+- Teaching DNS-Server agent to understand multiline entries
+  bug/enhancement #64806
+  Currently supported known sections are (options|view|zone|logging)
+- 2.13.4
+
+-------------------------------------------------------------------
+Thu Jan  5 08:18:56 CET 2006 - locilka@suse.cz
+
+- Removed importing module 'Require' which already doesn't exist
+- 2.13.3
+
+-------------------------------------------------------------------
+Wed Jan  4 10:35:46 CET 2006 - locilka@suse.cz
+
+- Fixing bug #141211
+  DNS Server truncated the SOA times to 0 when the time was in
+  seconds without any suffix.
+- Fixing old testsuites
+- Creating new testsuites for BIND times
+- 2.13.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:17:23 CEST 2005 - locilka@suse.cz
+
+- Removing the DnsData unneded import in dns-server client
+- 2.13.1
+
+-------------------------------------------------------------------
+Fri Sep 23 12:52:11 CEST 2005 - locilka@suse.cz
+
+- Fixed bug #106179
+  Not translated server type in the table of configured zones
+- 2.13.0
+
+-------------------------------------------------------------------
+Tue Aug 16 11:22:43 CEST 2005 - locilka@suse.cz
+
+- Merged proofread texts (2nd round)
+- 2.12.6
+
+-------------------------------------------------------------------
+Thu Aug 11 16:46:56 CEST 2005 - locilka@suse.cz
+
+- Fixing bug #104072
+  Broken UI layout for slave zone
+- 2.12.5
+
+-------------------------------------------------------------------
+Thu Aug 11 13:31:27 CEST 2005 - locilka@suse.cz
+
+- Fixing bug #104072
+  UI layout was broken after the new core layout has been applied
+- 2.12.4
+
+-------------------------------------------------------------------
+Thu Jul 28 13:22:03 CEST 2005 - locilka@suse.cz
+
+- Merged proofread texts
+- 2.12.3 
+
+-------------------------------------------------------------------
+Mon Jul 18 10:47:07 CEST 2005 - locilka@suse.cz
+
+- Enhancing the helptext for 'Forwarders'
+
+-------------------------------------------------------------------
+Tue Jul 12 11:49:17 CEST 2005 - locilka@suse.cz
+
+- Changing texts and UI to be YaST Style Guide compatible
+- 2.12.2 
+
+-------------------------------------------------------------------
+Wed Jun 29 11:18:01 CEST 2005 - locilka@suse.cz
+
+- Ehancing POD help for the DnsServerAPI.pm
+  to get better formatted examples 
+
+-------------------------------------------------------------------
+Thu May 19 12:18:09 CEST 2005 - locilka@suse.cz
+
+- Changing texts to be YaST2 Style Guide Compatible
+- Changing the layout of buttons and frames
+
+-------------------------------------------------------------------
+Tue May 10 09:55:02 CEST 2005 - locilka@suse.cz
+
+- Falling back to the Zones dialog after editing some zone
+
+-------------------------------------------------------------------
+Tue Apr 26 12:45:23 CEST 2005 - locilka@suse.cz
+
+- Fixed testsuites
+  New feature in Autologin.ycp
+- 2.12.1
+
+-------------------------------------------------------------------
+Mon Apr 25 12:57:51 CEST 2005 - locilka@suse.cz
+
+- Added bugzilla feature #67036
+  Supporting temporary file for slave zones 
+
+-------------------------------------------------------------------
+Fri Apr 22 13:51:31 CEST 2005 - locilka@suse.cz
+
+- Fixed bug #78569
+  Mode::config() and Mode::autoins() don't call Ldap::Read() now
+
+-------------------------------------------------------------------
+Wed Apr 20 11:17:58 CEST 2005 - locilka@suse.cz
+
+- Fixed bug #78575
+  Added 'lan', 'ldap', 'ldap-server' and 'ldap-client' into the
+  AutoInstallation requirements to be configured before dns-server
+  Added <use_ldap /> tag into the AutoYaST profile
+
+-------------------------------------------------------------------
+Tue Apr 19 11:08:28 CEST 2005 - locilka@suse.cz
+
+- Applied new functional interface of ProductFeatures
+- 2.12.0
+
+-------------------------------------------------------------------
+Wed Mar  2 13:00:31 CET 2005 - locilka@suse.cz
+
+- merged proofed texts
+- 2.11.8
+
+-------------------------------------------------------------------
+Tue Mar  1 11:21:21 CET 2005 - locilka@suse.cz
+
+- fixing bug #67005, It was still possible to create slave zone
+  without any master server defined.
+
+-------------------------------------------------------------------
+Mon Feb 28 11:59:59 CET 2005 - locilka@suse.cz
+
+- fixing TTL initialization in zone editor
+- fixing initializing SuSEfirewall, turning Progress off
+- 2.11.7
+
+-------------------------------------------------------------------
+Thu Feb 24 08:31:34 CET 2005 - locilka@suse.cz
+
+- fixed testsuite because of new feature
+  INCOMPLETE_TRANSLATION_TRESHOLD
+- fixed bug #66421, chroot variable had been Exported wrong
+- logging setting in UI changed to use the same functions as CMDLn
+- added Perldoc documentation for DnsServerAPI module
+- fixed syntax of YCP, importing modules, <p></p> in helps and
+  shortcuts
+- 2.11.6
+
+-------------------------------------------------------------------
+Mon Feb 21 10:40:13 CET 2005 - locilka@suse.cz
+
+- added global functional DnsServerAPI Perl module
+- added full commandline support
+- 2.11.5
+
+-------------------------------------------------------------------
+Thu Feb 17 13:10:46 CET 2005 - locilka@suse.cz
+
+- Zone-Agent has been learned to understand all types of DNS time.
+  Such as 1W44M, 11h33S, 86399...
+
+-------------------------------------------------------------------
+Thu Feb 10 10:01:08 CET 2005 - locilka@suse.cz
+
+- merged proofed texts
+
+-------------------------------------------------------------------
+Fri Feb  4 09:48:46 CET 2005 - locilka@suse.cz
+
+- added informative comments for translators where were missing
+
+-------------------------------------------------------------------
+Mon Jan 24 09:22:21 CET 2005 - locilka@suse.cz
+
+- fixed testsuite (new PamSettings)
+- 2.11.4
+
+-------------------------------------------------------------------
+Wed Dec 15 15:19:36 CET 2004 - jsrain@suse.cz
+
+- clean-up of neededforbuild and requires
+- using Progress::set ()
+- fixed testsuite
+- 2.11.3
+
+-------------------------------------------------------------------
+Fri Nov  5 09:05:10 CET 2004 - locilka@suse.cz
+
+- Adjusted for changes in select command
+- Removed obsolete functions
+- 2.11.2
+
+-------------------------------------------------------------------
+Tue Nov  2 17:12:32 CET 2004 - visnov@suse.cz
+
+- added yast2-ldap-client and yast2-pam to NFB
+- 2.11.1
+
+-------------------------------------------------------------------
+Mon Nov  1 08:29:03 CET 2004 - locilka@suse.cz
+
+- Adjusted for changes in Mode.
+- 2.11.0
+
+-------------------------------------------------------------------
+Fri Oct 22 09:28:39 CEST 2004 - locilka@suse.cz
+
+- fixed checking for LDAP Support to show the messages about failed
+  test
+
+-------------------------------------------------------------------
+Thu Oct 21 12:05:24 CEST 2004 - locilka@suse.cz
+
+- used CWMTsigKeys module instead of own TSIG keys handling
+- changed logsize "0M" -> "0"
+- cleaning the code from old unused functions
+
+-------------------------------------------------------------------
+Wed Oct 20 14:07:55 CEST 2004 - locilka@suse.cz
+
+- added more options into the options-listbox
+- added checking for known unique options (to be set only once)
+- added checking for only 'yes' or 'no' values (case insensitive)
+- added checking for only-number values
+- added checking for used quoting
+- added checking for used brackets
+- added Confirm::DeleteSelected() for deleting records
+- added "-" for ACL names
+- unification of UI (buttons and spaces)
+
+-------------------------------------------------------------------
+Tue Oct 19 14:43:23 CEST 2004 - locilka@suse.cz
+
+- using global text-modules anywhere it is possible
+
+-------------------------------------------------------------------
+Fri Oct 15 09:30:19 CEST 2004 - locilka@suse.cz
+
+- fixed bug #40761, used ACLs were deleted without additional
+  warnings.
+
+-------------------------------------------------------------------
+Thu Sep 30 13:01:32 CEST 2004 - locilka@suse.cz
+
+- fixed bug #46121, Configuration was broken by ini agent when the
+  configuration file was changed externally during the
+  configuration in YaST. Unfortunatelly too often.
+- 2.10.12
+
+-------------------------------------------------------------------
+Mon Sep 20 17:21:57 CEST 2004 - jsrain@suse.cz
+
+- fixed Table/Popup's complains about unknown attributes (#45613)
+- 2.10.11
+
+-------------------------------------------------------------------
+Mon Sep 20 10:14:16 CEST 2004 - locilka@suse.cz
+
+- fixed bug #45581, "Save and Restart" the progress was kept instead
+  of returning to the main dialog
+- fixed bug #40610, forwarders file changed, added forwarders agent
+  into makefile and spec file
+- 2.10.10
+
+-------------------------------------------------------------------
+Mon Sep 13 17:12:33 CEST 2004 - locilka@suse.de
+
+- fixed testsuites
+- 2.10.9
+
+-------------------------------------------------------------------
+Fri Sep  3 13:20:31 CEST 2004 - locilka@suse.cz
+
+- added GetModified/SetModified support into the autoyast client
+- 2.10.8
+
+-------------------------------------------------------------------
+Tue Aug 31 08:55:10 CEST 2004 - locilka@suse.cz
+
+- added new firewall variables into Read() testsuite
+- repaired DNSServer::modified with DNSServer::WasModified()
+  in _auto client
+- 2.10.7
+
+-------------------------------------------------------------------
+Mon Aug 30 05:24:21 CEST 2004 - nashif@suse.de
+
+- Added GetModified function to _auto client
+
+-------------------------------------------------------------------
+Thu Aug 26 13:55:04 CEST 2004 - locilka@suse.cz
+
+- 2.10.6
+
+-------------------------------------------------------------------
+Thu Aug 26 11:39:22 CEST 2004 - locilka@suse.cz
+
+- removed dependency on yast2-ldap-server
+
+-------------------------------------------------------------------
+Mon Aug 23 15:20:20 CEST 2004 - locilka@suse.cz
+
+- forwarders moved into the single file
+  bugzilla #40610
+- 2.10.5
+
+-------------------------------------------------------------------
+Thu Aug 19 10:40:49 CEST 2004 - locilka@suse.de
+
+- added support for correct handling of TTL in zone file for any RR
+
+-------------------------------------------------------------------
+Wed Aug 18 14:13:51 CEST 2004 - locilka@suse.cz
+
+- added better handling around disabling DDNS
+- added support for $ORIGIN writing
+- added more checking for DDNS/nonDDNS zone files
+
+-------------------------------------------------------------------
+Tue Aug 17 14:35:27 CEST 2004 - locilka@suse.cz
+
+- added missing DDNS support
+- fixed function for converting DNS time (3W4D) to seconds
+- fixed zone reading to support $ORIGIN records
+- fixed some Perl warnings
+
+-------------------------------------------------------------------
+Mon Aug 16 12:45:33 CEST 2004 - locilka@suse.cz
+
+- fixed "modified" functionality when firewall is changed
+- 2.10.4 
+
+-------------------------------------------------------------------
+Tue Aug 10 10:27:21 CEST 2004 - locilka@suse.cz
+
+- merged proofread messages
+
+-------------------------------------------------------------------
+Mon Aug  9 09:28:15 CEST 2004 - locilka@suse.de
+
+- added missing package dependencies
+- 2.10.3 
+
+-------------------------------------------------------------------
+Fri Aug  6 11:19:16 CEST 2004 - locilka@suse.cz
+
+- added "open port in firewall" support
+- adapted for new CWM widgets
+- 2.10.2
+
+-------------------------------------------------------------------
+Wed Aug  4 16:50:19 CEST 2004 - locilka@suse.de
+
+- added expert/simple functionality
+
+-------------------------------------------------------------------
+Wed Jul 14 14:32:57 CEST 2004 - locilka@suse.de
+
+- Fixed Bugzilla bug #42991
+  Value of logging file size was saved in MBytes but without
+  "M" unit, what meant that the values was in fact in Bytes.
+
+-------------------------------------------------------------------
+Mon Jul 12 12:59:07 CEST 2004 - locilka@suse.de
+
+- fixed zone modifications in LDAP (#42792)
+
+-------------------------------------------------------------------
+Tue Jun 22 14:18:09 CEST 2004 - locilka@suse.de
+
+- moved TreeWidget handling to CWM
+
+-------------------------------------------------------------------
+Tue Jun 22 13:04:45 CEST 2004 - jsrain@suse.cz
+
+- fixed syntax in YaPI file (#42012)
+
+-------------------------------------------------------------------
+Fri Jun 18 16:59:05 CEST 2004 - locilka@suse.de
+
+- fixed testsuites
+- 2.10.1 
+
+-------------------------------------------------------------------
+Thu Jun 17 09:10:59 CEST 2004 - locilka@suse.cz
+
+- 2.10.0
+
+-------------------------------------------------------------------
+Mon May 31 10:17:20 CEST 2004 - jsrain@suse.cz
+
+- fixed errors in YaPI (typo in StartDnsService function name,
+  WriteZones wasn't working at all) (#41445)
+- added YaPI testsuites
+- 2.9.24
+
+-------------------------------------------------------------------
+Fri May 28 13:22:36 CEST 2004 - jsrain@suse.cz
+
+- add ldapdump script to sysconfig before restarting the DNS
+  server if switched to LDAP (#41360)
+- 2.9.23
+
+-------------------------------------------------------------------
+Fri May 28 08:18:54 CEST 2004 - jsrain@suse.cz
+
+- fixed removing a zone from LDAP (authenticate against LDAP server
+  earlier) (#41324)
+- 2.9.22
+
+-------------------------------------------------------------------
+Wed May 26 09:13:17 CEST 2004 - jsrain@suse.cz
+
+- add dots to the end of fields of zone resource records in order
+  to help users enter semantically correct data (#40688)
+- 2.9.21
+
+-------------------------------------------------------------------
+Tue May 25 15:06:03 CEST 2004 - jsrain@suse.cz
+
+- allow to enable zone transfer even if no custom ACL is defined
+  (only default ones are) (#41137)
+- value of PTR record can be only FQDN (#40688)
+- allow to set key of PTR record as FQDN (#41157)
+- fixed deleting zone from /etc/named.conf (#41159)
+
+-------------------------------------------------------------------
+Thu May 20 12:32:42 CEST 2004 - jsrain@suse.cz
+
+- highlight the selected entry of the left tree widget (#40782)
+- redirect to correct dialog page when main dialog reached from the
+  zone editation dialog (#40911)
+- disable the "Edit zone" button if no zone exists (#40907)
+- do not start if installation of required packages failed or
+  cancelled (#40908)
+- do not allow name server and mail server be specified as IP
+  address (#40688)
+- allow to specify priority of the MX resource record (#40914)
+- prevent from touching system when preparing autoinstallation
+  profile (#40479)
+- fixed quoting in YCP paths (#40867)
+- 2.9.20
+
+-------------------------------------------------------------------
+Wed May 19 08:21:24 CEST 2004 - jsrain@suse.cz
+
+- ensure that /etc/named.conf.include is recreated if at least one
+  include file is used (#40785)
+- ensure /etc/named.d exists before creating TSIG key (#40786)
+- added YaPI capabilities and version (#40796)
+- fixed checking for duplicate ACL entries (#40591)
+- add a dot to the end of NS and MX entry of a zone (#40688)
+
+-------------------------------------------------------------------
+Tue May 18 08:49:29 CEST 2004 - jsrain@suse.cz
+
+- display the left tree widget also in NCurses (#40569)
+- connecting to LDAP server using the Ldap module (in order to
+  prevent it from reconnecting) (#40577)
+- fixed behavior if recreating TSIG key (#40600)
+- limit allowed characters for ACL entry name (locilka) (#40694)
+- when deleting ACL entry remove it at all locations where it
+  is used (#40761)
+- fixed checking of values for NS and MX records (allow dot at the
+  end), automaticlaly add dot at the end of PTR records (#40688)
+
+-------------------------------------------------------------------
+Mon May 17 14:26:22 CEST 2004 - jsrain@suse.cz
+
+- display ACL data consistently (#40572)
+- made the combo box for options selection editable (#40689)
+- sort the basic options, added allow-ipv6 to the list (#40593)
+- added implicit ACLs to the list of displayed ALCs (#40592)
+- fixing syntax of ACL entries (#40698)
+- fixed adding new records to DNS zones when using LDAP (#40683)
+- correctly create ou=ldapconfig if called through YaPI (#40577)
+
+-------------------------------------------------------------------
+Fri May 14 13:40:04 CEST 2004 - visnov@suse.cz
+
+- ensure proper tab selection if validation failed (#40570)
+
+-------------------------------------------------------------------
+Thu May 13 13:21:04 CEST 2004 - jsrain@suse.cz
+
+- start new dialogs also during autoinstallation (#40488)
+- checking if perl-ldap is installed (if running with LDAP support
+  (#40510)
+- 2.9.19
+
+-------------------------------------------------------------------
+Wed May 12 15:12:45 CEST 2004 - jsrain@suse.cz
+
+- allow only a-zA-Z0-9_ for TSIG Key identifier (#40422)
+- creating ldapConfig in LDAP if missing (#40366)
+
+-------------------------------------------------------------------
+Tue May 11 13:25:44 CEST 2004 - visnov@suse.cz
+
+- use DumbTab, if available (#40250) 
+
+-------------------------------------------------------------------
+Tue May 11 11:31:35 CEST 2004 - jsrain@suse.cz
+
+- fixed syntax error (#40138)
+- create needed LDAP stuff when saving (and not during reading
+  process) (#39942)
+- do not discard changes when switching to/from LDAP (#40306)
+- added correct error reporting when switching to LDAP (#40321)
+
+-------------------------------------------------------------------
+Mon May 10 12:54:48 CEST 2004 - jsrain@suse.cz
+
+- merged texts from proofread
+- fixed calling of gettext from Perl modules (#40160)
+
+-------------------------------------------------------------------
+Thu May  6 12:39:09 CEST 2004 - jsrain@suse.cz
+
+- updated forwarders dialog (as requested by sigi) (#39983)
+- added basic checking for input data in the zone records editor
+  (thx locilka) (#39891)
+- added more helps for resource records editor (#39891)
+- added hints how to create a reverse zone to help (#40055)
+- 2.9.18
+
+-------------------------------------------------------------------
+Wed May  5 10:19:09 CEST 2004 - jsrain@suse.cz
+
+- fixed disabling of widgets if system log selected (#39923)
+- fixed valid characters for forwarders settings (locilka) (#39867)
+- fixed valid characters for name of new domain (locilka) (#39869)
+- fixed checking of valid characters of name server (locilka) (#39875)
+- fixed checking of input when generating a TSIG key (#39927)
+- check if a forwarder is alreadny included before adding it (#39866)
+- check if zone exists before creating it (#39868)
+- check if name server exists before adding it (#39873)
+- fixed valid characters of new mail server (locilka) (#39877)
+- fixed the range of mail relay priority (#39926)
+- check if the master name server is in correct form (locilka) (#39934)
+- check if mail server exists before adding it (#39873)
+- display TTL setting as IntField and combo box with units (#39880)
+- check the serial number of the zone (#39880)
+- warn if expiry time is shorter than refresh time (#39881)
+
+-------------------------------------------------------------------
+Tue May  4 09:00:24 CEST 2004 - jsrain@suse.cz
+
+- merged texts from proofread
+- fixed removing all scripts from NAMED_INITIALIZE_SCRIPTS
+  sysconfig variable (#39784)
+- fixed values in widgets when changing selected resource record
+  of a DNS zone (#39769)
+- properly put NS and MX resource records of the zone to correct
+  tabs if they begin with '@' (#39790)
+- fixed deleting of NS and MX records from zones if stored in LDAP
+  (#39790)
+- fixed allowing the zone transport (#39858)
+- start the installation wizard only once (#39859)
+
+-------------------------------------------------------------------
+Mon May  3 10:30:29 CEST 2004 - jsrain@suse.cz
+
+- check if dnszone.schema is included in /etc/openldap/slapd.conf
+  and add it if it is missing (#39589)
+
+-------------------------------------------------------------------
+Fri Apr 30 08:27:39 CEST 2004 - jsrain@suse.cz
+
+- fixed growing "logging" section of /etc/named.conf (#39650)
+- fixed crippling and losing system zones from /etc/named.conf
+- fixed saving of settings to LDAP (#39655)
+- fixed unfunctional buttons
+- added missing dialogs and helps
+- 2.9.17
+
+-------------------------------------------------------------------
+Thu Apr 29 13:39:20 CEST 2004 - jsrain@suse.cz
+
+- updated the user interface
+- fixed INI agent config file to prevent crash (#39597)
+- fixed hardcoded LDAP domain (#39605)
+- do not ask for LDAP password multiple times when started the
+  installation wizard
+- 2.9.16
+
+-------------------------------------------------------------------
+Mon Apr 26 10:53:35 CEST 2004 - jsrain@suse.cz
+
+- updated API to support LDAP
+
+-------------------------------------------------------------------
+Wed Apr 21 16:09:11 CEST 2004 - jsrain@suse.cz
+
+- first working version of LDAP support
+
+-------------------------------------------------------------------
+Fri Apr  2 16:04:04 CEST 2004 - jsrain@suse.de
+
+- changed license to GPL
+- 2.9.15
+
+-------------------------------------------------------------------
+Thu Apr  1 08:30:07 CEST 2004 - jsrain@suse.de
+
+- change zone serial number when zone is selected for editation
+  (so that it gets automatically increased, but user still can
+  override the increased serial with different one) (#37799)
+- 2.9.14
+
+-------------------------------------------------------------------
+Tue Mar 30 09:33:02 CEST 2004 - jsrain@suse.de
+
+- fixed deleting of DNS zones (zones weren't deleted)
+- fixed editing of multiple zones within one run of the module
+  (the later edited replaced settings of the previously edited)
+  (#37268)
+- putting zones that can be updated dynamically to
+  /var/lib/named/dyn (#37472)
+- 2.9.13
+
+-------------------------------------------------------------------
+Mon Mar 29 10:53:32 CEST 2004 - jsrain@suse.de
+
+- fixed log displaying (#37210)
+- fixed MX record editation (#37268)
+- fixed adding of new global option (#37268)
+- offer only relevant resource record types according to zone
+  direction (#37268)
+- disable adding resource record of unknown type (#37267)
+- 2.9.12
+
+-------------------------------------------------------------------
+Wed Mar 24 13:03:01 CET 2004 - jsrain@suse.cz
+
+- disabling possibility to change the settings if the DNS service
+  is disabled (#36799)
+- 2.9.11
+
+-------------------------------------------------------------------
+Mon Mar 22 14:21:36 CET 2004 - jsrain@suse.cz
+
+- updated .desktop file to provide autoinstallation support
+- 2.9.10
+
+-------------------------------------------------------------------
+Thu Mar 18 11:04:45 CET 2004 - jsrain@suse.cz
+
+- addapted to calling all perl and YCP functions as class methods
+  (added $self = shift; ,...)
+
+-------------------------------------------------------------------
+Wed Mar 17 09:57:28 CET 2004 - jsrain@suse.cz
+
+- added checking if some zone is selected for being edited or
+  deleted
+
+-------------------------------------------------------------------
+Thu Mar 11 13:12:48 CET 2004 - jsrain@suse.de
+
+- adapted to include files listed in syscofnig only
+- fixed saving of new zones in some situations
+- 2.9.9
+
+-------------------------------------------------------------------
+Wed Mar 10 17:24:11 CET 2004 - jsrain@suse.de
+
+- addapted to the new array context - a YCP list is always a
+  reference to a Perl array
+
+-------------------------------------------------------------------
+Wed Mar 10 10:09:33 CET 2004 - jsrain@suse.de
+
+- added missing import (#35519)
+- added more resistency against missign configuration files
+
+-------------------------------------------------------------------
+Wed Mar 10 02:08:34 CET 2004 - sh@suse.de
+
+- V 2.9.8
+- Migration to new wizard 
+
+-------------------------------------------------------------------
+Tue Mar  9 09:21:10 CET 2004 - jsrain@suse.de
+
+- Require -> Package
+- added AutoPackages suport
+
+-------------------------------------------------------------------
+Mon Mar  8 18:17:05 CET 2004 - jsrain@suse.de
+
+- setting icon
+- fixed autoinstallation (properly creating and closing dialog)
+- 2.9.7
+
+-------------------------------------------------------------------
+Fri Mar  5 14:28:09 CET 2004 - jsrain@suse.de
+
+- fixed data typing
+- 2.9.6
+
+-------------------------------------------------------------------
+Mon Mar  1 11:05:13 CET 2004 - jsrain@suse.de
+
+- fixed creating of TSIG keys
+- merged texts from proofread
+- more strict data types
+- 2.9.5
+
+-------------------------------------------------------------------
+Fri Feb 20 15:49:14 CET 2004 - jsrain@suse.de
+
+- fixed reading of zone files modified by nsupdate
+- not displaying zones that don't make sense to be edited
+- lowered default values for SOA record
+- fixed setting of NS and CNAME records for zones
+- updated the SOA dialog, proposing better primary server and
+  administrative contact
+- split to multiple perl modules
+- enhanced Dynamic DNS support
+- 2.9.4
+
+-------------------------------------------------------------------
+Thu Feb 19 13:28:23 CET 2004 - jsrain@suse.de
+
+- added Dynamic DNS support
+- updating zones via nsupdate if possbile
+- fixed zones handling agent
+- fixed neededforbuild and requires lists
+
+-------------------------------------------------------------------
+Tue Feb 17 17:18:28 CET 2004 - jsrain@suse.de
+
+- added possibility to adjust firewall settings for DNS service
+
+-------------------------------------------------------------------
+Fri Feb 13 11:23:48 CET 2004 - jsrain@suse.de
+
+- adapted user interface to new backend
+- other UI updates
+- updated helps
+- backend fixes
+- testsuite fixes
+- 2.9.3
+
+-------------------------------------------------------------------
+Tue Feb 10 16:25:57 CET 2004 - jsrain@suse.de
+
+- fixed testsuite
+- 2.9.2
+
+-------------------------------------------------------------------
+Mon Feb  9 14:16:17 CET 2004 - jsrain@suse.de
+
+- removed .y2cc file
+- backend part rewritten to Perl
+- 2.9.1
+
+-------------------------------------------------------------------
+Wed Oct 29 10:43:33 CET 2003 - jsrain@suse.de
+
+- adapted to Table/Popup stuff split off from CWM.ycp
+- 2.9.0
+
+-------------------------------------------------------------------
+Wed Sep 17 12:59:52 CEST 2003 - jsrain@suse.de
+
+- added possibility to adapt firewall settings when saving DNS
+  server configuration (#30783)
+- 2.8.11
+
+-------------------------------------------------------------------
+Wed Sep 10 15:24:31 CEST 2003 - jsrain@suse.de
+
+- fixed saving of slave zone (#30388)
+- 2.8.10
+
+-------------------------------------------------------------------
+Fri Sep  5 08:33:33 CEST 2003 - jsrain@suse.de
+
+- merged texts from proofread
+- 2.8.9
+
+-------------------------------------------------------------------
+Tue Sep  2 10:03:55 CEST 2003 - jsrain@suse.de
+
+- fixed deleting a DNS zone
+- ask user before deleting a DNS zone
+- fixed translation of exit without saving popup (was evaluated in
+  incorect textdomain)
+- using Popup::RealyAbort function
+- when creating new master zone, prefilling soa record (#29779)
+- fixed ag_dns_zone agent when reading incorrect files (#29779)
+
+-------------------------------------------------------------------
+Mon Sep  1 13:11:28 CEST 2003 - jsrain@suse.de
+
+- fixed double-click on table with master zone handling
+- 2.8.8
+
+-------------------------------------------------------------------
+Thu Aug 28 09:03:23 CEST 2003 - jsrain@suse.de
+
+- checkycp fixes
+- fixed progress labels containing DHCP instead of DNS
+- 2.8.7
+
+-------------------------------------------------------------------
+Mon Aug 25 15:01:52 CEST 2003 - jsrain@suse.de
+
+- removed support for bind8 (no more in distro)
+- 2.8.6
+
+-------------------------------------------------------------------
+Wed Aug 20 16:09:13 CEST 2003 - jsuchome@suse.de
+
+- removed redundant "initialization dialog" (#28779)
+- 2.8.5
+
+-------------------------------------------------------------------
+Mon Aug 11 09:58:48 CEST 2003 - jsrain@suse.de
+
+- merged texts from proofread
+- 2.8.4
+
+-------------------------------------------------------------------
+Wed Aug  6 16:06:21 CEST 2003 - jsrain@suse.de
+
+- fixed Abort button handling
+- fixed double-click on zones summary table handling
+- fixed configuration saving
+- minor improvement of summary
+- added better testsuite
+- added some documentation/functions specification
+- 2.8.3
+
+-------------------------------------------------------------------
+Mon Aug  4 14:09:17 CEST 2003 - jsrain@suse.de
+
+- fixed installation of bind packages, displaying error if failed
+- added desktop file
+- 2.8.2
+
+-------------------------------------------------------------------
+Tue Jul 29 14:49:30 CEST 2003 - jsrain@suse.de
+
+- adapted to udpated CWM interface
+- fixed zone files saving (sometimes failed)
+
+-------------------------------------------------------------------
+Fri Jul 11 14:24:00 CEST 2003 - jsrain@suse.de
+
+- several minor updates
+- updated checking of bind version installed
+- 2.8.1
+
+-------------------------------------------------------------------
+Mon Jun 23 17:36:36 CEST 2003 - jsrain@suse.de
+
+- initial version
+- 2.8.0
