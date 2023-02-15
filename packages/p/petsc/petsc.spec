@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package petsc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.14.5
-%define _vers 3_14_5
-%define so_ver 3_14
-%define so_major 3
+%define vers 3.18.4
+%define _vers 3_18_4
+%define so_ver 3_18
 %define openblas_vers 0.3.6
 
 ExcludeArch:    s390 s390x
@@ -32,11 +31,7 @@ ExcludeArch:    s390 s390x
 # Only available as openmpi flavor, and not in Factory
 %bcond_with pastix
 
-%if 0%{suse_version} < 1550
-%define python_ver 2
-%else
 %define python_ver 3
-%endif
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -50,12 +45,6 @@ ExcludeArch:    s390 s390x
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
-%endif
-
-%if "%flavor" == "doc"
-%define makedoc 1
-BuildArch:      noarch
-%{bcond_with hpc}
 %endif
 
 %if "%flavor" == "serial"
@@ -333,7 +322,7 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
-%if !0%{?is_opensuse} && !0%{?with_hpc:1} && !0%{?makedoc:1}
+%if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -381,17 +370,12 @@ Version:        %vers
 Release:        0
 
 Source:         ftp://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-%{version}.tar.gz
-Source99:       petsc-rpmlintrc
 Patch0:         petsc-3.3-p2-no-rpath.patch
 Patch1:         petsc-3.7-fix-pastix-detection.patch
 URL:            https://www.mcs.anl.gov/petsc/
-%if 0%{!?makedoc:1}
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
 BuildRequires:  pkg-config
-%if %{python_ver} == 2
-BuildRequires:  python2-base
-%endif
 BuildRequires:  python3-base
 
 %if %{without hpc}
@@ -434,8 +418,6 @@ BuildRequires:  suse-hpc
 BuildRequires:  valgrind-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
-%endif
-# !?makedoc
 
 %description
 PETSc is a suite of data structures and routines for the scalable
@@ -520,22 +502,15 @@ yet supported by %{?is_opensuse:open}SUSE.
 %autopatch -p1
 
 # Fix shebangs in packaged scripts
-find src lib config -type f -iname \*.py -exec sed -i \
+find src lib config share -type f -iname \*.py -exec sed -i \
   -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
   -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
   \{\} \;
 find lib/petsc/bin -type f -exec sed -i \
+  -e '1 s@#!.*env sh@#!/usr/bin/sh@' \
   -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
   -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
   \{\} \;
-
-%if 0%{?makedoc:1}
-%files doc
-%defattr(-,root,root,-)
-%doc docs/*
-
-%else
-# Everything below is for the non-makedoc case
 
 %if 0 && %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -574,9 +549,8 @@ python%{python_ver} ./config/configure.py \
 	--with-shared-libraries \
 	--with-batch=0 \
 %if %{without hpc}
-	--PETSC_DIR=$PETSC_DIR \
         --with-suitesparse=1 \
-        --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libsuitesparseconfig.so] \
+        --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
         --with-suitesparse-include=%{_includedir}/suitesparse \
  %if %{without mpi}
 	--with-mpi=0 \
@@ -618,7 +592,6 @@ python%{python_ver} ./config/configure.py \
 make
 
 %install
-
 %if %{without hpc}
 export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
 export PETSC_ARCH=%petsc_arch
@@ -626,23 +599,12 @@ export PETSC_ARCH=%petsc_arch
 
 make install DESTDIR=%{buildroot}
 
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/examples/*/output/*.out
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/examples/*/*/output/*.out
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/examples/*/output/*.out
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/examples/*/*/output/*.out
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/*/examples/*/output/*.out
-rm -f %{buildroot}%{p_prefix}/share/petsc/examples/src/*/*/*/examples/*/*/output/*.out
+find %{buildroot}%{p_prefix}/share/petsc/examples/src -type f -ipath '*/output/*out' -delete
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/*.log
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
 
-pushd %{buildroot}%{p_prefix}/lib
-ln -sf libpetsc.so.%{version} libpetsc.so
-ln -sf libpetsc.so.%{version} libpetsc.so.%{so_major}
-popd
-
 %if %{without hpc}
 
-rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.log
 rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.init
 rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.py
 rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/modules
@@ -780,17 +742,21 @@ sed -i \
 	%{buildroot}%{p_include}/petscconf.h
 
 # remove buildroot
-find %{buildroot}%{p_prefix}/lib/petsc/conf/ %{buildroot}%{p_prefix}/bin/ -type f -print0 | \
+find %{buildroot}%{p_prefix}/lib/petsc/{conf,bin}/ -type f -print0 | \
 while IFS= read -r -d $'\0' line ; do
   if file -e soft $line | grep -q "text" ; then
     sed -i -e 's!%{buildroot}!!g' $line
   fi
 done
 
-for i in $(find  %{buildroot}%{p_prefix}/share -perm /a+x -and -type f)
-do
-    head -1 $i | grep -q "#!" || chmod a-x $i
+for i in $(find %{buildroot}%{p_prefix}/share \( -perm /a+x -and -type f \) ) ; do
+    grep -m 1 -q "^#!" $i || chmod a-x $i
 done
+chmod a+x $i %{buildroot}%{p_prefix}/lib/petsc/bin/*
+
+# Remove CPU count from petscvariables, https://gitlab.com/petsc/petsc/-/issues/1315
+sed -i -e '/^MAKE_/ { /MAKE_NP/ d ; /MAKE_LOAD/ d ; /MAKE_TEST_NP/ d }; /^NPMAX/ d' \
+  %{buildroot}%{p_prefix}/lib/petsc/conf/petscvariables
 
 %fdupes %{buildroot}%{p_include}
 %fdupes %{buildroot}%{p_libdir}
@@ -804,8 +770,6 @@ done
 %{?with_hpc:%{hpc_module_delete_if_default}}
 
 %files -n %{libname %_vers}
-%doc docs/manual.pdf
-
 %dir %{p_prefix}
 %dir %{p_prefix}/lib
 %{p_libdir}/*.so.*
@@ -823,7 +787,6 @@ done
 %endif
 
 %files %{?n_pre}devel
-%{p_prefix}/lib/petsc/bin/
 %exclude %{p_prefix}/lib/petsc/bin/saws
 %{p_prefix}/include
 %{p_prefix}/lib/petsc
@@ -834,15 +797,12 @@ done
 %dir %{_datadir}/modules/%{name}-%{petsc_arch}
 %{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
   %endif
-%{p_prefix}/share/petsc/examples
+%doc %{p_prefix}/share/petsc/examples
 
 %if %{with hpc}
 %files saws
 %{p_prefix}/lib/petsc/bin/saws
 %{p_prefix}/share/petsc/saws
 %endif
-
-%endif
-# !?makedoc
 
 %changelog

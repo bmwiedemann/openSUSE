@@ -1,5 +1,4 @@
 <multibuild>
-  <package>doc</package>
   <package>serial</package>
   <package>openmpi2</package>
   <package>openmpi3</package>

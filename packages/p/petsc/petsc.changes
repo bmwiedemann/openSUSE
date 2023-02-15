@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 15 05:13:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove incorrect library symlink with major version only. 
+
+-------------------------------------------------------------------
+Mon Feb  6 07:16:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.18.4.
+  * Too many changes to list, for details see 
+    https://petsc.org/release/docs/changes/
+- Use Python3 also on Leap/SLE, Python 2.7 is no longer supported
+- Clean up spec file
+- Remove unreproducible build host core count from petscvariables
+  (NPMAX, MAKE_NP etc).
+- Remove doc subpackage, documentation is no longer included in
+  upstream tarball.
+
+-------------------------------------------------------------------
 Sat Jul 16 19:49:40 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix library package name for non-HPC flavors.

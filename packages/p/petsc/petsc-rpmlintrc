@@ -1,3 +1,0 @@
-# Ignore some empty files in the examples
-addFilter(".* zero-length .*/examples/.*.out")
-
