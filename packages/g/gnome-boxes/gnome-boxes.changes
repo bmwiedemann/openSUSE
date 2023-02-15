@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 17:34:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Add OVF to list of supported install media formats.
+  + Use mime-type when validating OVA file.
+
+-------------------------------------------------------------------
 Thu Dec 22 20:50:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

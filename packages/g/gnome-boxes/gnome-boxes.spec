@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-boxes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        43.2
+Version:        43.3
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later

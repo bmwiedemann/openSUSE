@@ -779,4 +779,12 @@
     <comment>New stable release (forwarded request 1044332 from iznogood)</comment>
     <requestid>1044370</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>46c89f99d68350a4f961d61776128ab2</srcmd5>
+    <version>43.3</version>
+    <time>1676464852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065877</requestid>
+  </revision>
 </revisionlist>
