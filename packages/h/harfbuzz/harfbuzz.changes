@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Feb 12 08:51:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.0.0:
+  + New hb-paint API that is designed mainly to paint COLRv1 glyphs,
+    but can be also used as a unified API to paint any of the glyph
+    representations supported by HarfBuzz (B/W outlines, color
+    layers, or color bitmaps).
+  + New hb-cairo API for integrating with cairo graphics library. 
+    This is provided as a separate harfbuzz-cairo library.
+  + Support for instancing CFF2 table
+  + Support font emboldening
+  + Support feature ranges with AAT shaping
+  + Experimental support to cubic curves in glyf table
+  + Various subsetter improvements
+  + Various documentation improvements
+  + Significantly reduced memory use during shaping
+  + Greatly reduced memory use during subsetting CFF table
+  + New command line utility, hb-info, for querying various font
+    information
+  + New hb-shape/hb-view options: --glyphs, --color-palette,
+    --font-bold, --font-grade, and --named-instance
+  + Miscellaneous fixes and improvements
+- harfbuzz-CVE-2023-25193.patch dropped in favor of upstream
+  consensus fix
+
+-------------------------------------------------------------------
 Mon Feb  6 17:11:49 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Add harfbuzz-CVE-2023-25193.patch: limit how far we skip when

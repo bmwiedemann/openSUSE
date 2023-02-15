@@ -17,15 +17,13 @@
 
 
 Name:           harfbuzz
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM harfbuzz-CVE-2023-25193.patch boo#1207922 mgorse@suse.com -- limit how far we skip when looking back.
-Patch0:         harfbuzz-CVE-2023-25193.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson
@@ -49,6 +47,13 @@ Summary:        An OpenType text shaping engine
 
 %description -n libharfbuzz0
 HarfBuzz is an OpenType text shaping engine.
+
+%package -n libharfbuzz-cairo0
+Summary:        Cairo integration into the HarfBuzz OpenType text shaping engine
+
+%description -n libharfbuzz-cairo0
+HarfBuzz is an OpenType text shaping engine.
+This package contains the Cairo library.
 
 %package -n libharfbuzz-icu0
 Summary:        ICU integration into the HarfBuzz OpenType text shaping engine
@@ -116,6 +121,7 @@ This package contains the development files.
 %meson_install
 
 %ldconfig_scriptlets -n libharfbuzz0
+%ldconfig_scriptlets -n libharfbuzz-cairo0
 %ldconfig_scriptlets -n libharfbuzz-icu0
 %ldconfig_scriptlets -n libharfbuzz-gobject0
 %ldconfig_scriptlets -n libharfbuzz-subset0
@@ -124,6 +130,9 @@ This package contains the development files.
 %license COPYING
 %doc NEWS
 %{_libdir}/libharfbuzz.so.0*
+
+%files -n libharfbuzz-cairo0
+%{_libdir}/libharfbuzz-cairo.so.0*
 
 %files -n libharfbuzz-icu0
 %{_libdir}/libharfbuzz-icu.so.0*
@@ -138,16 +147,18 @@ This package contains the development files.
 %{_libdir}/girepository-1.0/HarfBuzz-0.0.typelib
 
 %files tools
+%{_bindir}/hb-info
 %{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
-%{_bindir}/hb-view
 %{_bindir}/hb-subset
+%{_bindir}/hb-view
 
 %files devel
 %doc AUTHORS README THANKS
 %{_includedir}/harfbuzz/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/harfbuzz.pc
+%{_libdir}/pkgconfig/harfbuzz-cairo.pc
 %{_libdir}/pkgconfig/harfbuzz-icu.pc
 %{_libdir}/pkgconfig/harfbuzz-gobject.pc
 %{_libdir}/pkgconfig/harfbuzz-subset.pc

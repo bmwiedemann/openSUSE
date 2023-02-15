@@ -933,4 +933,12 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
     <comment></comment>
     <requestid>1063505</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c58cbf4cf48ad12c250c7830220e58d9</srcmd5>
+    <version>7.0.0</version>
+    <time>1676464794</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1065422 from luc14n0)</comment>
+    <requestid>1065735</requestid>
+  </revision>
 </revisionlist>
