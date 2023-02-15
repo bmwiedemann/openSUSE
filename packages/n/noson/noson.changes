@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 13 10:57:51 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.10.1. No changelog.
+  * fix skip of id3 extended header
+  * full fix for empty namespace
+  * handle null namespace
+  * add helper to create or destroy radio station
+
+-------------------------------------------------------------------
 Thu Aug 11 09:50:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add noson-include-time.h.patch: fix build with recent gcc12

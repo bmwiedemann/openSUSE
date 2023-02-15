@@ -8,13 +8,13 @@ Date:   Thu Aug 11 11:48:51 2022 +0200
     [   23s] /home/abuild/rpmbuild/BUILD/noson-2.8.6/noson/src/private/os/threads/timeout.h:58:5: error: 'clock_gettime' was not declared in this scope
     on most recent gcc 12 branch
 
-diff --git a/noson/src/private/os/threads/timeout.h b/noson/src/private/os/threads/timeout.h
-index f0c3453..d259ca6 100644
---- a/noson/src/private/os/threads/timeout.h
-+++ b/noson/src/private/os/threads/timeout.h
-@@ -25,6 +25,7 @@
- #if defined(__APPLE__)
- #include <mach/mach_time.h>
+Index: noson-2.10.1/noson/src/private/os/threads/timeout.h
+===================================================================
+--- noson-2.10.1.orig/noson/src/private/os/threads/timeout.h
++++ noson-2.10.1/noson/src/private/os/threads/timeout.h
+@@ -27,6 +27,7 @@
+ #elif defined(__linux__)
+ #include <time.h>
  #endif
 +#include <time.h>
  
