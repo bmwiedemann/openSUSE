@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 14 09:42:03 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 1.9.0:
+  * add installation instructions for Debian, Fedora, Gentoo, and OpenSUSE (#659)
+  * add `--line-reference-format` to switch file/line references in stack traces (#665)
+  * add `bats:focus` tag to run only focused tests (#679)
+  * add bats-support, bats-assert, bats-file and bats-detik to Dockerfile (#674)
+  * add `--help` text and `man` page content for `--filter-tags` (#679)
+  * explicitly check for GNU parallel (#691)
+  * wait for report-formatter to finish before ending `bats`' execution,
+    to fix empty files with `--report-fomatter junit` under Docker (#692)
+  * improved clarity of section about output in free code (#671)
+  * fixed typos (#673)
+  * clarify use cases of `run` (#366) 
+
+-------------------------------------------------------------------
 Tue Nov  8 09:29:03 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.8.2:

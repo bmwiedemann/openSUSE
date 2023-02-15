@@ -1,7 +1,7 @@
 #
 # spec file for package bats
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pname %{name}-core
 Name:           bats
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
