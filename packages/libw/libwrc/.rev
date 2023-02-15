@@ -150,4 +150,12 @@
     <comment>add missing libbfio-devel</comment>
     <requestid>1046614</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2a6fc6673a3cddf08e55462bb913f000</srcmd5>
+    <version>20230214</version>
+    <time>1676464851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to reelease 20230214</comment>
+    <requestid>1065865</requestid>
+  </revision>
 </revisionlist>
