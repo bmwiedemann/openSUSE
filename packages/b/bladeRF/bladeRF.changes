@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 13 21:53:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2023.02
+  * libbladeRF
+    + Add 8bit format mode support
+    + Add AD936x overclocking feature
+    + Fix bugs, including a locking bug
+  * FPGA:
+    + Add 8bit mode support to FIFO reader and writer
+- Add patch:
+  * bladeRF-doxygen-no-timestamp.patch
+
+-------------------------------------------------------------------
 Sat Jan 22 12:08:49 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Don't set VERSION_INFO_EXTRA to strip "-git-unknown" from the

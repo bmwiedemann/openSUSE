@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %define sover 2
 %define libname lib%{name}%{sover}
-%define libversion 2.4.1
-%define release_name 2021.10
+%define libversion 2.5.0
+%define release_name 2023.02
 %define bladerf_group bladerf
 %define use_syslog 0
 Name:           bladeRF
-Version:        2021.10
+Version:        2023.02
 Release:        0
 Summary:        SDR radio receiver
 License:        AGPL-3.0-or-later AND GPL-2.0-only
@@ -33,6 +33,7 @@ URL:            https://nuand.com/
 #Git-Clone:     https://github.com/Nuand/bladeRF.git
 Source0:        https://github.com/Nuand/bladeRF/archive/%{release_name}.tar.gz#/%{name}-%{release_name}.tar.xz
 Source1:        ad9361.tar.xz
+Patch0:         bladeRF-doxygen-no-timestamp.patch
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -86,6 +87,7 @@ use of libbladerf.
 
 %prep
 %setup -q -n %{name}-%{release_name}
+%patch0 -p1
 ls
 pushd thirdparty/analogdevicesinc/no-OS
 tar -xJf %{SOURCE1}
