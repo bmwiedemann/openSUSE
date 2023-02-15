@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 14 14:57:38 UTC 2023 - Dawid Respondek <nyslay@gmail.com>
+
+-Added
+  * Introducing Font Awesome Sharp Regular!
+  * 3,000+ icons in a new, modern style: Sharp Regular
+  * Sharp Solid is already done. Sharp Light, Thin, and Duotone are coming soon!
+  * Icons are all built on the same 16px grid as existing Font Awesome Classic icons.
+  * New sponsored pencil-mechanical icon.
+  * New sponsored billboard icon.
+  * New sponsored wreath-laurel icon.
+  * Calcified a new skeleton-ribs icon.
+  * Saved up for some new circle-euro, circle-sterling, and circle-yen icons.
+  * Added a new webhook icon.
+  * Swept up a new broom-wide icon.
+  * Shined the light on a new sparkle icon.
+  * New circle-quarters-stroke and circle-three-quarters-stroke icons to match the existing circle-half-stroke
+-Changed
+  * Every Classic Regular icon has been reviewed and redrawn where necessary to better compliment the new Sharp Regular style.
+  * Simplified our chess and chess piece icons for consistency.
+  * Updated the Algolia brand icon
+  * Brought back the search terms in the YAML and JSON metadata files
+-Fixed
+  * A number of fixes to Sharp Solid icons.
+
+-------------------------------------------------------------------
 Thu Nov 17 15:07:34 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
 
 - Added to 6.2.1:
