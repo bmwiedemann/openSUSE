@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:24:22 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.2
+  * Fixed a memory leak.
+  * Minor fixes.
+- Update to version 2.4.1
+  * Fixed a memory leak introduced in 2.1.0.
+- Update to version 2.4.0
+  * Use pkgconfig for UnitTest++ and libgcrypt support.
+  * residfp: correct 6581 volume gain based on schematics.
+  * residfp: fixed more PVS-Studio warnings.
+  * residfp: refactoring, changes and cleanup.
+  * residfp: updated the combined waveform model.
+  * Synced resid with upstream.
+  * Fixed a "comparison-with-wider-type" alert in the MUS loader.
+  * Other minor changes.
+
+-------------------------------------------------------------------
 Fri Feb 11 22:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
