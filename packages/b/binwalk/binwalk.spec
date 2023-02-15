@@ -17,14 +17,12 @@
 
 
 Name:           binwalk
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Firmware Analysis Tool
 License:        MIT
 URL:            https://github.com/devttys0/binwalk
 Source:         https://github.com/devttys0/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM CVE-2022-4510.patch CVE-2022-4510 fix from upstream
-Patch0:         CVE-2022-4510.patch
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
@@ -75,7 +73,6 @@ bootloaders, filesystems, etc.
 
 %prep
 %setup -q
-%patch0
 
 %build
 %python3_build
