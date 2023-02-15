@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 14 10:37:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Skip resize effects for tiled windows during user grabs
+  + Disable direct scanout during drag-n-drop operations
+  + Ignore unmapped subsurfaces in direct scanout check
+  + Fix cursor disappearing over windows during grabs
+  + Fix pointer constrains with subsurfaces
+  + Make wl_output mode independent of the orientation
+  + Improve focus handling on workspace switches
+  + Fix cursor position in window screencasts
+  + Do not require a physical device to update pointer visibility
+  + Fix initialization of keyboard accessibility
+  + Fix freeze when crossing monitors under some conditions
+  + Don't allow window activation to break global grabs
+  + Fixed crashes
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec 10 08:41:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

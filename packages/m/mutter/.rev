@@ -1694,4 +1694,28 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>1042339</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>1dd1deb35c3727bb9316f10ba219513f</srcmd5>
+    <version>43.3</version>
+    <time>1676464797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Skip resize effects for tiled windows during user grabs
+  + Disable direct scanout during drag-n-drop operations
+  + Ignore unmapped subsurfaces in direct scanout check
+  + Fix cursor disappearing over windows during grabs
+  + Fix pointer constrains with subsurfaces
+  + Make wl_output mode independent of the orientation
+  + Improve focus handling on workspace switches
+  + Fix cursor position in window screencasts
+  + Do not require a physical device to update pointer visibility
+  + Fix initialization of keyboard accessibility
+  + Fix freeze when crossing monitors under some conditions
+  + Don't allow window activation to break global grabs
+  + Fixed crashes
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1065709 from iznogood)</comment>
+    <requestid>1065737</requestid>
+  </revision>
 </revisionlist>
