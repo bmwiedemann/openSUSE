@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 15 08:39:40 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.37.3 (bsc#1208091, CVE-2023-25165):
+  * chore(helm): update Trivy from v0.36.1 to v0.37.2 (#3574)
+  * chore(deps): bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#3536)
+  * chore(deps): bump golang/x/mod to v0.8.0 (#3606)
+  * chore(deps): bump golang.org/x/crypto from 0.3.0 to 0.5.0 (#3529)
+  * chore(deps): bump helm.sh/helm/v3 from 3.10.3 to 3.11.1 (#3580)
+  * ci: quote pros in c++ for semantic pr (#3605)
+  * fix(image): check proxy settings from env for remote images (#3604)
+
+-------------------------------------------------------------------
 Fri Feb 10 06:19:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.37.2:

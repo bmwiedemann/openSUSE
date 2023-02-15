@@ -688,4 +688,19 @@
     <comment></comment>
     <requestid>1064170</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8842f183019312af18923e23bb4ddec0</srcmd5>
+    <version>0.37.3</version>
+    <time>1676464859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.3 (bsc#1208091, CVE-2023-25165):
+  * chore(helm): update Trivy from v0.36.1 to v0.37.2 (#3574)
+  * chore(deps): bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#3536)
+  * chore(deps): bump golang/x/mod to v0.8.0 (#3606)
+  * chore(deps): bump golang.org/x/crypto from 0.3.0 to 0.5.0 (#3529)
+  * chore(deps): bump helm.sh/helm/v3 from 3.10.3 to 3.11.1 (#3580)
+  * ci: quote pros in c++ for semantic pr (#3605)
+  * fix(image): check proxy settings from env for remote images (#3604)</comment>
+    <requestid>1065886</requestid>
+  </revision>
 </revisionlist>
