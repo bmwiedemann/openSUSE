@@ -103,4 +103,12 @@
     <comment>- Update to version 60.7.0.</comment>
     <requestid>971848</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>790e5b1d0763afc245bdfbea80a1efc5</srcmd5>
+    <version>61.2.0</version>
+    <time>1676464814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065828</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with qt6
 %endif
 Name:           tea
-Version:        60.7.0
+Version:        61.2.0
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
