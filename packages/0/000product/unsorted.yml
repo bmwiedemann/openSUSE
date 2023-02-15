@@ -8587,15 +8587,6 @@ unsorted:
   - kicad-doc-id 
   - kicad-doc-it 
   - kicad-doc-ja 
-  - kicad-doc-pdf-ca 
-  - kicad-doc-pdf-de 
-  - kicad-doc-pdf-en 
-  - kicad-doc-pdf-es 
-  - kicad-doc-pdf-fr 
-  - kicad-doc-pdf-id 
-  - kicad-doc-pdf-it 
-  - kicad-doc-pdf-ja 
-  - kicad-doc-pdf-zh 
   - kicad-doc-pl 
   - kicad-doc-ru 
   - kicad-doc-zh 
@@ -11968,6 +11959,7 @@ unsorted:
   - libhandy-devel 
   - libhangul-devel 
   - libhangul1-32bit: [x86_64] 
+  - libharfbuzz-cairo0 
   - libharfbuzz-gobject0-32bit: [x86_64] 
   - libharfbuzz-icu0-32bit: [x86_64] 
   - libharfbuzz-subset0-32bit: [x86_64] 
@@ -13618,16 +13610,16 @@ unsorted:
   - libpetsc-gnu-openmpi2-hpc 
   - libpetsc-gnu-openmpi3-hpc 
   - libpetsc-gnu-openmpi4-hpc 
-  - libpetsc3_14 
-  - libpetsc3_14-openmpi2 
-  - libpetsc3_14-openmpi3 
-  - libpetsc3_14-openmpi4 
-  - libpetsc_3_14_5-gnu-mpich-hpc 
-  - libpetsc_3_14_5-gnu-mvapich2-hpc 
-  - libpetsc_3_14_5-gnu-openmpi1-hpc 
-  - libpetsc_3_14_5-gnu-openmpi2-hpc 
-  - libpetsc_3_14_5-gnu-openmpi3-hpc 
-  - libpetsc_3_14_5-gnu-openmpi4-hpc 
+  - libpetsc3_18 
+  - libpetsc3_18-openmpi2 
+  - libpetsc3_18-openmpi3 
+  - libpetsc3_18-openmpi4 
+  - libpetsc_3_18_4-gnu-mpich-hpc 
+  - libpetsc_3_18_4-gnu-mvapich2-hpc 
+  - libpetsc_3_18_4-gnu-openmpi1-hpc 
+  - libpetsc_3_18_4-gnu-openmpi2-hpc 
+  - libpetsc_3_18_4-gnu-openmpi3-hpc 
+  - libpetsc_3_18_4-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -19624,6 +19616,7 @@ unsorted:
   - patterns-devel-tcl-devel_tcl 
   - patterns-devel-vulkan-devel_vulkan 
   - patterns-enlightenment-enlightenment 
+  - patterns-glibc-hwcaps-x86_64_v3: [x86_64] 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
   - patterns-hpc-compute_node: [x86_64] 
@@ -21196,7 +21189,6 @@ unsorted:
   - pesign 
   - pesign-obs-integration 
   - petsc-devel 
-  - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
   - petsc-gnu-mvapich2-hpc-devel 
   - petsc-gnu-openmpi1-hpc-devel 
@@ -21206,18 +21198,18 @@ unsorted:
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_14_5-gnu-mpich-hpc-devel 
-  - petsc_3_14_5-gnu-mpich-hpc-saws 
-  - petsc_3_14_5-gnu-mvapich2-hpc-devel 
-  - petsc_3_14_5-gnu-mvapich2-hpc-saws 
-  - petsc_3_14_5-gnu-openmpi1-hpc-devel 
-  - petsc_3_14_5-gnu-openmpi1-hpc-saws 
-  - petsc_3_14_5-gnu-openmpi2-hpc-devel 
-  - petsc_3_14_5-gnu-openmpi2-hpc-saws 
-  - petsc_3_14_5-gnu-openmpi3-hpc-devel 
-  - petsc_3_14_5-gnu-openmpi3-hpc-saws 
-  - petsc_3_14_5-gnu-openmpi4-hpc-devel 
-  - petsc_3_14_5-gnu-openmpi4-hpc-saws 
+  - petsc_3_18_4-gnu-mpich-hpc-devel 
+  - petsc_3_18_4-gnu-mpich-hpc-saws 
+  - petsc_3_18_4-gnu-mvapich2-hpc-devel 
+  - petsc_3_18_4-gnu-mvapich2-hpc-saws 
+  - petsc_3_18_4-gnu-openmpi1-hpc-devel 
+  - petsc_3_18_4-gnu-openmpi1-hpc-saws 
+  - petsc_3_18_4-gnu-openmpi2-hpc-devel 
+  - petsc_3_18_4-gnu-openmpi2-hpc-saws 
+  - petsc_3_18_4-gnu-openmpi3-hpc-devel 
+  - petsc_3_18_4-gnu-openmpi3-hpc-saws 
+  - petsc_3_18_4-gnu-openmpi4-hpc-devel 
+  - petsc_3_18_4-gnu-openmpi4-hpc-saws 
   - pfsalign 
   - pfsglview 
   - pfstools 
