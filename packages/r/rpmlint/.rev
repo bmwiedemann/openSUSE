@@ -4303,4 +4303,15 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1063445</requestid>
   </revision>
+  <revision rev="436" vrev="1">
+    <srcmd5>5a4de8c1ce9277f2837bf81d600bb6cb</srcmd5>
+    <version>2.4.0+git20230214.1bab129</version>
+    <time>1676464806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230214.1bab129:
+  * Add stopwatch counter for libmagic
+  * Support filtering of warnings/errors based on title
+  * openSUSE/users-groups: kismet (bsc#1207654)</comment>
+    <requestid>1065785</requestid>
+  </revision>
 </revisionlist>

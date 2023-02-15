@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 14 16:18:53 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230214.1bab129:
+  * Add stopwatch counter for libmagic
+  * Support filtering of warnings/errors based on title
+  * openSUSE/users-groups: kismet (bsc#1207654)
+
+-------------------------------------------------------------------
 Mon Feb 06 15:37:37 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230206.a2c4626:
