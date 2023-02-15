@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76100ffad0ac563b8fb6fa2cc3683fde</srcmd5>
+    <version>unknown</version>
+    <time>1676464882</time>
+    <user>dimstar_suse</user>
+    <comment>To be used by default by distrobox to dramatically speed up creation of default distroboxes (from minutes to seconds especially if folk are behind slower zypp mirrors)</comment>
+    <requestid>1065904</requestid>
+  </revision>
+</revisionlist>

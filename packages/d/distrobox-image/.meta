@@ -1,0 +1,5 @@
+<package name="distrobox-image" project="openSUSE:Factory">
+  <title>Base image for distrobox, based on Tumbleweed</title>
+  <description></description>
+  <devel project="devel:microos:containers" package="distrobox-image"/>
+</package>
