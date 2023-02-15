@@ -1,8 +1,8 @@
 #
 # spec file for package git-cola
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Marcin Bajor
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,11 +40,10 @@ BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       git-core
 Requires:       python3-QtPy
+Requires:       python3-qt5
 Recommends:     gitk
 Recommends:     python3-Send2Trash
 Recommends:     python3-pyinotify
-Recommends:     python3-qt5
-
 BuildArch:      noarch
 
 %description

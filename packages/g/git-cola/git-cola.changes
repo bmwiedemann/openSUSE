@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 15 06:57:08 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Added python3-qt5 to requires.
+
+-------------------------------------------------------------------
 Tue Dec 27 16:30:30 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.1.0
@@ -1826,4 +1831,3 @@ Thu Nov  3 00:07:07 UTC 2011 - marcin.bajor@gmail.com
 Sun Oct 23 06:10:32 UTC 2011 - marcin.bajor@gmail.com
 
 - Update to version 1.4.5.3
-
