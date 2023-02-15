@@ -16,23 +16,28 @@
 #
 
 
-# According to upstream, kicad 6.x.y can be used with the footprint and
-# symbol libraries from version 6.0.0
-%define compatversion 6.0.0
+# According to upstream, kicad 7.x.y can be used with the footprint and
+# symbol libraries from version 7.0.0
+%define compatversion 7.0.0
 Name:           kicad
-Version:        6.0.11
-%define file_version 6.0.11
+Version:        7.0.0
+%define file_version 7.0.0
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
-Patch0:         0001-Use-library-target-install-for-python-module-to-fix-.patch
 
-BuildRequires:  cmake >= 3.14
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+# Requires charconv from C++17
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc-c++ >= 8
+%else
+BuildRequires:  gcc11-PIE
+BuildRequires:  gcc11-c++ >= 8
+%endif
 BuildRequires:  gettext
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
@@ -50,6 +55,7 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3) >= 3.6
 BuildRequires:  pkgconfig(zlib)
@@ -69,6 +75,8 @@ Recommends:     kicad-templates = %{compatversion}
 Recommends:     python3-wxPython
 Obsoletes:      kicad = 20140120
 Provides:       kicad = %{compatversion}
+# Test suite fails, 32 bit archs no longer supported
+ExcludeArch:    %{arm}
 
 %description
 KiCad is an open source (GPL) software for the creation of electronic
@@ -116,8 +124,16 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup -p1 -n kicad-%{file_version}
+%if 0%{?suse_version} < 1550
+sed -i -e '/cmake_minimum_required/ s/3.21/3.16/' CMakeLists.txt
+sed -i -e '/SWIG/ s/4.0/3.0/' CMakeLists.txt
+sed -i -e '/SWIG_OPTS/ { s/ -O/ -py3/ ; s/ -fastdispatch//}' pcbnew/CMakeLists.txt
+%endif
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-11 CC=gcc-11
+%endif
 %cmake \
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
@@ -151,23 +167,11 @@ rm -rf %{buildroot}%{_libdir}/libkicad_3dsg.so
 # https://gitlab.com/kicad/code/kicad/-/issues/9944
 rm -rf %{buildroot}%{_libdir}/libkicad*.a
 
-# Delete packaging/maintenance scripts
-rm "%{buildroot}%{_docdir}/kicad/scripts/"{test_kicad_plugin.py,test_plugin.py}
-
-# Move remaining standalone scripts to kicad directory
-mv %{buildroot}%{_docdir}/kicad/scripts %{buildroot}%{_datadir}/kicad/
-sed -i '1s@^#!.*python.*@#!/usr/bin/python3@' %{buildroot}%{_datadir}/kicad/scripts/*.py
-chmod +x %{buildroot}%{_datadir}/kicad/scripts/*.py
-
-# Fix executable bits for scripts executed directly from kicad, remove she-bangs
+# Fix executable bits for scripts executed directly from kicad
 chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
-sed -i '1s@^#!.*@@' %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 
 %fdupes %{buildroot}%{_datadir}/kicad
 %fdupes %{buildroot}%{_datadir}/icons/hicolor
-# the pcbnew kiface and the python module are actually the same file
-cmp %{buildroot}%{_bindir}/_pcbnew.kiface %{buildroot}%{python3_sitearch}/_pcbnew.so && \
-  ln -sf  %{_bindir}/_pcbnew.kiface %{buildroot}%{python3_sitearch}/_pcbnew.so
 
 %find_lang %{name}
 
@@ -183,7 +187,7 @@ cmp %{buildroot}%{_bindir}/_pcbnew.kiface %{buildroot}%{python3_sitearch}/_pcbne
 %postun -p /sbin/ldconfig
 
 %files
-%doc README.md Documentation/changelogs
+%doc README.md
 %license LICENSE.*
 %{_bindir}/*
 %{_libdir}/kicad/
