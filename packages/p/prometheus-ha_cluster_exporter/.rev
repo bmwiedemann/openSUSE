@@ -109,4 +109,12 @@
     <comment></comment>
     <requestid>1064231</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2366a5df848271aca0f59b14c75b753</srcmd5>
+    <version>1.3.1+git.1676027782.ad3c0e9</version>
+    <time>1676464809</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmitted (again) with proper changelog references.</comment>
+    <requestid>1065934</requestid>
+  </revision>
 </revisionlist>
