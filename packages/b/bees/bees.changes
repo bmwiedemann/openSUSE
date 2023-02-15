@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 14 07:27:50 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 0.9.1:
+  * Fix the install target.
+  * Makefile: also drop fiemap and fiewalk from main Makefile
+
+- update to 0.9:
+  - Highlights:
+    * Work around a kernel bug which can be triggered by running the
+      LOGICAL_INO ioctl and dedupe on the same extent at the same time.
+    * Prevent worker threads from being blocked by extent and inode
+      locks.  Defer the blocked item and find something else for that
+      worker thread to do.
+    * Fix the labelling of threads so they aren't all "task_consumer".
+    * Speed up SIGTERM process termination to have a better chance of
+      flushing the hash table and crawl state to $BEESHOME before the
+      process is killed by a service timeout.
+    * Reduce the hash table writeback rate to 128K/s.
+    * Reduce the interval between crawl restarts to one transid.
+    * Add 'recent' scan mode, which dedupes new data in fully scanned
+      subvols instead of waiting for every old subvol to be scanned.
+    * Better behavior when there are write errors in $BEESHOME.
+    * Drop the unused and obsolete `fiemap` and `fiewalk` binaries.
+
+-------------------------------------------------------------------
 Mon Dec  5 12:42:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8:

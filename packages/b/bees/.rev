@@ -42,4 +42,12 @@
   * fs: make dedupe work again after a really unfortunate build fix</comment>
     <requestid>1040264</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b702d0bdd1de57d10f20a1205ff627a</srcmd5>
+    <version>0.9.1</version>
+    <time>1676464811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065809</requestid>
+  </revision>
 </revisionlist>
