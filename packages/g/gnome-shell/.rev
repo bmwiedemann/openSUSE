@@ -2070,4 +2070,19 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1042338</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>081e4219892c0f2432fc402552754dfd</srcmd5>
+    <version>43.3</version>
+    <time>1676464799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Ensure quick settings toggles align with the pixel grid
+  + Lower OOM score of gnome-shell process
+  + Fix incomplete device list in volume menus
+  + Fixed crash
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1065710 from iznogood)</comment>
+    <requestid>1065738</requestid>
+  </revision>
 </revisionlist>

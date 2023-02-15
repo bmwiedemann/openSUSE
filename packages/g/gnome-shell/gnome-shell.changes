@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 14 10:40:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Ensure quick settings toggles align with the pixel grid
+  + Lower OOM score of gnome-shell process
+  + Fix incomplete device list in volume menus
+  + Fixed crash
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec 10 09:03:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:
