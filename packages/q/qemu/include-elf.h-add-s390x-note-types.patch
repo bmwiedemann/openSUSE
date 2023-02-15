@@ -1,0 +1,30 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:20 +0000
+Subject: include/elf.h: add s390x note types
+
+Git-commit: 5433669c7a1884cc0394c360148965edf7519884
+References: jsc#PED-1716
+
+Adding two s390x note types
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20221017083822.43118-9-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ include/elf.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/elf.h b/include/elf.h
+index 3a4bcb646a18224c34e537416784..94fdcfd8dc942d61eb71b41cc96a 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -1649,6 +1649,8 @@ typedef struct elf64_shdr {
+ #define NT_TASKSTRUCT	4
+ #define NT_AUXV		6
+ #define NT_PRXFPREG     0x46e62b7f      /* copied from gdb5.1/include/elf/common.h */
++#define NT_S390_PV_CPU_DATA	0x30e	/* s390 protvirt cpu dump data */
++#define NT_S390_RI_CB	0x30d		/* s390 runtime instrumentation */
+ #define NT_S390_GS_CB   0x30b           /* s390 guarded storage registers */
+ #define NT_S390_VXRS_HIGH 0x30a         /* s390 vector registers 16-31 */
+ #define NT_S390_VXRS_LOW  0x309         /* s390 vector registers 0-15 (lower half) */

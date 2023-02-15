@@ -1,0 +1,102 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:18 +0000
+Subject: s390x: Add protected dump cap
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: ad3b2e693daac6ed92db7361236028851d37c77c
+References: jsc#PED-1716
+
+Add a protected dump capability for later feature checking.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Steffen Eiden <seiden@linux.ibm.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
+Message-Id: <20221017083822.43118-7-frankja@linux.ibm.com>
+[ Marc-André - Add missing stubs when !kvm ]
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ target/s390x/kvm/kvm.c       |  7 +++++++
+ target/s390x/kvm/kvm_s390x.h |  1 +
+ target/s390x/kvm/meson.build |  2 ++
+ target/s390x/kvm/stubs.c     | 12 ++++++++++++
+ 4 files changed, 22 insertions(+)
+
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 6a8dbadf7ed0f8a15a8c22e64a43..2ca0d46453a5bc12a51a7514f589 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -158,6 +158,7 @@ static int cap_hpage_1m;
+ static int cap_vcpu_resets;
+ static int cap_protected;
+ static int cap_zpci_op;
++static int cap_protected_dump;
+ 
+ static bool mem_op_storage_key_support;
+ 
+@@ -364,6 +365,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     cap_vcpu_resets = kvm_check_extension(s, KVM_CAP_S390_VCPU_RESETS);
+     cap_protected = kvm_check_extension(s, KVM_CAP_S390_PROTECTED);
+     cap_zpci_op = kvm_check_extension(s, KVM_CAP_S390_ZPCI_OP);
++    cap_protected_dump = kvm_check_extension(s, KVM_CAP_S390_PROTECTED_DUMP);
+ 
+     kvm_vm_enable_cap(s, KVM_CAP_S390_USER_SIGP, 0);
+     kvm_vm_enable_cap(s, KVM_CAP_S390_VECTOR_REGISTERS, 0);
+@@ -2045,6 +2047,11 @@ int kvm_s390_assign_subch_ioeventfd(EventNotifier *notifier, uint32_t sch,
+     return kvm_vm_ioctl(kvm_state, KVM_IOEVENTFD, &kick);
+ }
+ 
++int kvm_s390_get_protected_dump(void)
++{
++    return cap_protected_dump;
++}
++
+ int kvm_s390_get_ri(void)
+ {
+     return cap_ri;
+diff --git a/target/s390x/kvm/kvm_s390x.h b/target/s390x/kvm/kvm_s390x.h
+index aaae8570de5830512932b470eeaf..f9785564d0ba7e49eb29f289d207 100644
+--- a/target/s390x/kvm/kvm_s390x.h
++++ b/target/s390x/kvm/kvm_s390x.h
+@@ -26,6 +26,7 @@ int kvm_s390_set_cpu_state(S390CPU *cpu, uint8_t cpu_state);
+ void kvm_s390_vcpu_interrupt_pre_save(S390CPU *cpu);
+ int kvm_s390_vcpu_interrupt_post_load(S390CPU *cpu);
+ int kvm_s390_get_hpage_1m(void);
++int kvm_s390_get_protected_dump(void);
+ int kvm_s390_get_ri(void);
+ int kvm_s390_get_zpci_op(void);
+ int kvm_s390_get_clock(uint8_t *tod_high, uint64_t *tod_clock);
+diff --git a/target/s390x/kvm/meson.build b/target/s390x/kvm/meson.build
+index d1356356b1f62103e94507c8e6ff..aef52b6686b36c235b4fa659142d 100644
+--- a/target/s390x/kvm/meson.build
++++ b/target/s390x/kvm/meson.build
+@@ -1,6 +1,8 @@
+ 
+ s390x_ss.add(when: 'CONFIG_KVM', if_true: files(
+   'kvm.c'
++), if_false: files(
++  'stubs.c'
+ ))
+ 
+ # Newer kernels on s390 check for an S390_PGSTE program header and
+diff --git a/target/s390x/kvm/stubs.c b/target/s390x/kvm/stubs.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..5fd63b9a7e32fc4bd54cc24056afeda6f0a7b542
+--- /dev/null
++++ b/target/s390x/kvm/stubs.c
+@@ -0,0 +1,12 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++
++#include "kvm_s390x.h"
++
++int kvm_s390_get_protected_dump(void)
++{
++    return false;
++}

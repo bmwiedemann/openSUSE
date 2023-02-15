@@ -1,7 +1,7 @@
 #
 # spec file for package cfengine-masterfiles
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,24 +22,19 @@
 
 %define srcname masterfiles
 Name:           cfengine-masterfiles
-Version:        3.15.3
+Version:        3.21.0
 Release:        0
 Summary:        CFEngine promises master files
-License:        MIT AND LGPL-3.0-or-later
+License:        LGPL-3.0-or-later AND MIT
 Group:          Productivity/Networking/System
 URL:            https://cfengine.com/
 Source:         https://github.com/cfengine/masterfiles/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-# wtf? SLE_11 does not honor rpmlintrc
-Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cfengine
 BuildRequires:  findutils
 Requires:       cfengine
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1130
-BuildRequires:  -post-build-checks
-%endif
 %if 0%{?fedora_version} == 20 || 0%{?rhel_version} >= 700
 BuildRequires:  perl-Exporter
 %endif
@@ -66,6 +61,5 @@ autoreconf -fiv
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %{basedir}/masterfiles
-%{basedir}/modules/packages
 
 %changelog

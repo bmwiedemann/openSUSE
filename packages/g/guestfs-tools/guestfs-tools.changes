@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  9 15:23:16 MST 2023 - carnold@suse.com
+
+- Update to verion 1.50.0
+  * Drivers: Require guestfs_inspect_get_build_id API
+  * Drivers: Add support for scanning drivers in Windows guests
+  * New 'virt-drivers' tool
+      This tool can be pointed at a disk image which lacks metadata and in
+      some circumstances can determine useful information about it, such as
+      what bootloader it contains and what device emulation it needs to
+      boot. 
+  * Customize: Implement --inject-qemu-ga and --inject-virtio-win operations
+  * Customize: Run zypper dist-upgrade for --update operation
+  * Customize: rebase to the common/mlcustomize/Guest_packages interface
+  * Adopt inversion of SELinux relabeling in virt-customize
+  * Update common submodule. In particular, pick up the new Inject_virtio_win module:
+  * Inspector: Update coreos test for new <build_id> field
+  * Inspector: Display the new build ID field
+  * Sysprep: advise against cloning VMs with internal full disk encryption
+  * Sysprep: make an effort to cope with LUKS-on-LVM
+  * Fixes related to "--key ID:clevis"
+      sysprep: set networking for "--key ID:clevis"
+      customize: add reminder about "--key ID:clevis"
+      get-kernel, sparsify: set networking for "--key ID:clevis"
+      cat, log, ls, tail, diff, edit, insp.: set networking for "--key ID:clevis"
+  * Builder: templates: Account for UEFI when regenerating grub
+  * Ocaml-dep.sh.in: Remove reference to bundled/ocaml-augeas
+- Drop CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 16:20:36 MST 2023 - carnold@suse.com
 
 - Update to version 1.48.3 bug fix release

@@ -1642,4 +1642,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * xf86drm: add support for printing AMD GFX11 modifiers</comment>
     <requestid>1064020</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>8289e9af69316fe6ca73de610563709a</srcmd5>
+    <version>2.4.115</version>
+    <time>1676401674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065426</requestid>
+  </revision>
 </revisionlist>

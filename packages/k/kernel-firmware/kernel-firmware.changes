@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 13 12:59:21 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230210 (git commit bf4115c1aa2b):
+  * linux-firmware: Update AMD cpu microcode
+  * brcm: revert firmware files for Cypress devices
+  * brcm: restore previous firmware file for BCM4329 device
+  * rtw88: 8822c: Update normal firmware to v9.9.14
+  * i915: Add DMC v2.11 for MTL (jsc#PED-1225)
+  * linux-firmware: Add firmware for Cirrus CS35L41 on UM3402 ASUS Laptop
+  * linux-firmware: Add missing tuning files for HP Laptops using Cirrus Amps (bsc#1203699)
+  * i915: Add DMC v2.18 for ADLP (jsc#PED-1225)
+
+-------------------------------------------------------------------
 Mon Feb 06 07:56:54 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230125 (git commit 5c11a3742947):

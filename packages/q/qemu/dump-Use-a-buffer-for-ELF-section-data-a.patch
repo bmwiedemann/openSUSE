@@ -1,0 +1,140 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:13 +0000
+Subject: dump: Use a buffer for ELF section data and headers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: e41ed29bcee5cb16715317bcf290f6b5c196eb0a
+References: jsc#PED-1716
+
+Currently we're writing the NULL section header if we overflow the
+physical header number in the ELF header. But in the future we'll add
+custom section headers AND section data.
+
+To facilitate this we need to rearange section handling a bit. As with
+the other ELF headers we split the code into a prepare and a write
+step.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20221017083822.43118-2-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ dump/dump.c           | 75 +++++++++++++++++++++++++++++--------------
+ include/sysemu/dump.h |  2 ++
+ 2 files changed, 53 insertions(+), 24 deletions(-)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index a905316fe52ba59bfb66c94348f6..9d25a33ccd521c7c97d2fb97a9c6 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -380,31 +380,60 @@ static void write_elf_phdr_note(DumpState *s, Error **errp)
+     }
+ }
+ 
+-static void write_elf_section(DumpState *s, int type, Error **errp)
++static void prepare_elf_section_hdr_zero(DumpState *s)
+ {
+-    Elf32_Shdr shdr32;
+-    Elf64_Shdr shdr64;
+-    int shdr_size;
+-    void *shdr;
+-    int ret;
++    if (dump_is_64bit(s)) {
++        Elf64_Shdr *shdr64 = s->elf_section_hdrs;
+ 
+-    if (type == 0) {
+-        shdr_size = sizeof(Elf32_Shdr);
+-        memset(&shdr32, 0, shdr_size);
+-        shdr32.sh_info = cpu_to_dump32(s, s->phdr_num);
+-        shdr = &shdr32;
++        shdr64->sh_info = cpu_to_dump32(s, s->phdr_num);
+     } else {
+-        shdr_size = sizeof(Elf64_Shdr);
+-        memset(&shdr64, 0, shdr_size);
+-        shdr64.sh_info = cpu_to_dump32(s, s->phdr_num);
+-        shdr = &shdr64;
++        Elf32_Shdr *shdr32 = s->elf_section_hdrs;
++
++        shdr32->sh_info = cpu_to_dump32(s, s->phdr_num);
++    }
++}
++
++static void prepare_elf_section_hdrs(DumpState *s)
++{
++    size_t len, sizeof_shdr;
++
++    /*
++     * Section ordering:
++     * - HDR zero
++     */
++    sizeof_shdr = dump_is_64bit(s) ? sizeof(Elf64_Shdr) : sizeof(Elf32_Shdr);
++    len = sizeof_shdr * s->shdr_num;
++    s->elf_section_hdrs = g_malloc0(len);
++
++    /*
++     * The first section header is ALWAYS a special initial section
++     * header.
++     *
++     * The header should be 0 with one exception being that if
++     * phdr_num is PN_XNUM then the sh_info field contains the real
++     * number of segment entries.
++     *
++     * As we zero allocate the buffer we will only need to modify
++     * sh_info for the PN_XNUM case.
++     */
++    if (s->phdr_num >= PN_XNUM) {
++        prepare_elf_section_hdr_zero(s);
+     }
++}
+ 
+-    ret = fd_write_vmcore(shdr, shdr_size, s);
++static void write_elf_section_headers(DumpState *s, Error **errp)
++{
++    size_t sizeof_shdr = dump_is_64bit(s) ? sizeof(Elf64_Shdr) : sizeof(Elf32_Shdr);
++    int ret;
++
++    prepare_elf_section_hdrs(s);
++
++    ret = fd_write_vmcore(s->elf_section_hdrs, s->shdr_num * sizeof_shdr, s);
+     if (ret < 0) {
+-        error_setg_errno(errp, -ret,
+-                         "dump: failed to write section header table");
++        error_setg_errno(errp, -ret, "dump: failed to write section headers");
+     }
++
++    g_free(s->elf_section_hdrs);
+ }
+ 
+ static void write_data(DumpState *s, void *buf, int length, Error **errp)
+@@ -591,12 +620,10 @@ static void dump_begin(DumpState *s, Error **errp)
+         return;
+     }
+ 
+-    /* write section to vmcore */
+-    if (s->shdr_num) {
+-        write_elf_section(s, 1, errp);
+-        if (*errp) {
+-            return;
+-        }
++    /* write section headers to vmcore */
++    write_elf_section_headers(s, errp);
++    if (*errp) {
++        return;
+     }
+ 
+     /* write notes to vmcore */
+diff --git a/include/sysemu/dump.h b/include/sysemu/dump.h
+index b62513d87d669fb7e7650edf574e..9995f65dc8b18420292beb48ee82 100644
+--- a/include/sysemu/dump.h
++++ b/include/sysemu/dump.h
+@@ -177,6 +177,8 @@ typedef struct DumpState {
+     int64_t filter_area_begin;  /* Start address of partial guest memory area */
+     int64_t filter_area_length; /* Length of partial guest memory area */
+ 
++    void *elf_section_hdrs;     /* Pointer to section header buffer */
++
+     uint8_t *note_buf;          /* buffer for notes */
+     size_t note_buf_offset;     /* the writing place in note_buf */
+     uint32_t nr_cpus;           /* number of guest's cpu */

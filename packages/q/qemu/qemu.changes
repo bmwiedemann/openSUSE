@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 13 10:28:53 UTC 2023 - Li Zhang <li.zhang@suse.com>
+
+- Fixes: jsc#PED-1716  Add S390 features from IBM requirements
+* Patches added:
+  dump-Add-architecture-section-and-sectio.patch
+  dump-Refactor-dump_iterate-and-introduce.patch
+  dump-Reintroduce-memory_offset-and-secti.patch
+  dump-Rename-write_elf_loads-to-write_elf.patch
+  dump-Rename-write_elf-_phdr_note-to-prep.patch
+  dump-Reorder-struct-DumpState.patch
+  dump-Replace-opaque-DumpState-pointer-wi.patch
+  dump-Rework-dump_calculate_size-function.patch
+  dump-Rework-filter-area-variables.patch
+  dump-Rework-get_start_block.patch
+  dump-Split-elf-header-functions-into-pre.patch
+  dump-Use-a-buffer-for-ELF-section-data-a.patch
+  dump-Write-ELF-section-headers-right-aft.patch
+  include-elf.h-add-s390x-note-types.patch
+  s390x-Add-KVM-PV-dump-interface.patch
+  s390x-Add-protected-dump-cap.patch
+  s390x-Introduce-PV-query-interface.patch
+  s390x-pv-Add-dump-support.patch
+
+-------------------------------------------------------------------
 Fri Feb 10 12:12:28 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fixed: bsc#1205847 (CVE-2022-4172), bsc#1203788 (CVE-2022-3165),

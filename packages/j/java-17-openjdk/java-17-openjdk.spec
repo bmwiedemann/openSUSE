@@ -177,7 +177,6 @@ Patch20:        loadAssistiveTechnologies.patch
 # OpenJDK specific patches
 #
 Patch200:       ppc_stack_overflow_fix.patch
-Patch201:       fix_armv6_build.patch
 #
 Patch300:       JDK-8282944.patch
 Patch302:       disable-doclint-by-default.patch
@@ -444,10 +443,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch200 -p1
-
-%ifarch %{arm6}
-%patch201
-%endif
 
 %patch300 -p1
 %patch302 -p1

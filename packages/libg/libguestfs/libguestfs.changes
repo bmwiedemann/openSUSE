@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Feb  9 12:55:46 MST 2023 - carnold@suse.com
+
+- Update to version 1.50.0
+  * https://libguestfs.org/guestfs-release-notes-1.50.1.html
+  * Inspection
+    When listing the packages in RPM-based guests, the inspection
+    API no longer checks package signatures. This is because the
+    newer librpm used by libguestfs does not understand signatures
+    stored in older guests, such as SHA1 used by RHEL 6 (thanks
+    Panu Matilainen).
+    "guestfs_inspect_get_hostname" in guestfs(3) can now handle
+    /etc/hostname files containing comments (thanks Dawid Zamirski).
+    "guestfs_file_architecture" in guestfs(3) can now parse files
+    using zstd compression.
+    "guestfs_inspect_get_osinfo" in guestfs(3) now returns the
+    correct osinfo field for Windows 11. However because of
+    decisions made by Microsoft, these guests still return product
+    name and other strings identifying as Windows 10 (thanks Yaakov
+    Selkowitz, Yongkui Guo).
+  * New APIs
+    "guestfs_device_name" in guestfs(3) is a new API to read the
+    device name associated with a drive, for example calling this
+    with 0 will return /dev/sda.
+    "guestfs_clevis_luks_unlock" in guestfs(3) is a new API for
+    unlocking disks using the Clevis/Tang network-based full disk
+    encryption scheme. Furthermore implement this in guestfish and
+    guestmount (Laszlo Ersek).
+    "guestfs_inspect_get_build_id" in guestfs(3) is a new API for
+    reading the build ID from some Linux and Windows guests. It is
+    not widely used on Linux, but for Windows it is vital for
+    identifying Windows 11.
+  * Other API changes
+    In the "guestfs_add_drive" in guestfs(3) API, the name and
+    iface fields are not used. name has not been used since around
+    2017, but the documentation has only just been updated to reflect
+    this. iface was never allowed for the libvirt backend and
+    didn't work reliably with the direct backend (Laszlo Ersek).
+    "guestfs_readdir" in guestfs(3) is no longer limited to the
+    maximum message size but can read a directory of any size
+    (Laszlo Ersek).
+  * Numerous build changes, internal improvements, and bug fixes
+    Note that the Augeas bindings for libguestfs are no longer
+    bundled with libguestfs and must be built separately. 
+
+-------------------------------------------------------------------
 Fri Dec 16 09:08:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.18: rpm wants to do a proper cleanup, and

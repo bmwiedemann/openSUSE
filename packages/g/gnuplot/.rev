@@ -1112,4 +1112,41 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     octal (forwarded request 1043480 from dirkmueller)</comment>
     <requestid>1043703</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>054768a256d85f9e3d42df2524a4dbf3</srcmd5>
+    <version>5.4.6</version>
+    <time>1676401670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.6
+  * NEW    set key {columns &lt;exact no of columns&gt;}
+           set key {keywidth &lt;exact width&gt;}
+  * NEW    XDG support
+             startup file:      $XDG_CONFIG_HOME/gnuplot/gnuplotrc
+             history file:      $XDG_STATE_HOME/gnuplot_history
+             wxt configuration: $XDG_CONFIG_HOME/gnuplot/gnuplot-wxt.conf
+  * CHANGE remove &quot;alldoc&quot; build target
+  * CHANGE plot with polygons fillstyle empty really does mean empty
+  * FIX    windows: various problems mixing piped input and stdin        Bug #2491
+  * FIX    x11: bad interactions of lt nodraw, bgnd and dash pattern     Bug #2572
+  * FIX    wxt: export-to-file widget should preserve line properties
+  * FIX    svg: set initial default fill to &quot;none&quot;
+  * FIX    png: back-compatibility with very old versions of gdlib       Bug #2579
+  * FIX    variable pointtype, pointsize in plot style yerrorlines
+  * FIX    border color for polygons with variable fillcolor
+  * FIX    definition followed by iteration in a plot command            Bug #2580
+  * FIX    parametric plot with filledcurves y1=&lt;limit&gt;                  Bug #1797
+- Port patches
+  * Gnuplot_5_4.pdf
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-5.4.4-grep.patch
+  * gnuplot-PIE.patch
+  * gnuplot-gd.patch
+
+
+- Update to gnuplot 5.4.6
+  * NEW    set key {columns &lt;exact no of columns&gt;}</comment>
+    <requestid>1065409</requestid>
+  </revision>
 </revisionlist>

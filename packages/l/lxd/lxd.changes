@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 13 13:03:24 UTC 2023 - Jacob Hansen <me@jacobbaungard.com>
+
+- Update to LXD 5.10. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-10-has-been-released/16143
+
+ + Configurable network transmit queue length on NIC devices
+
+-------------------------------------------------------------------
 Sun Dec 25 19:01:56 UTC 2022 - Kostas Papadakis <papadakis.k@yandex.com>
 
 - Add stop entry to systemd service file so the lxc containers shutdown

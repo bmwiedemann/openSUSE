@@ -1,0 +1,131 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Thu, 11 Aug 2022 12:10:56 +0000
+Subject: dump: Refactor dump_iterate and introduce dump_filter_memblock_*()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 1e8113032f5b1efc5da66382470ce4809c76f8f2
+References: jsc#PED-1716
+
+The iteration over the memblocks in dump_iterate() is hard to
+understand so it's about time to clean it up. Instead of manually
+grabbing the next memblock we can use QTAILQ_FOREACH to iterate over
+all memblocks.
+
+Additionally we move the calculation of the offset and length out by
+introducing and using the dump_filter_memblock_*() functions. These
+functions will later be used to cleanup other parts of dump.c.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20220811121111.9878-4-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ dump/dump.c | 74 ++++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 42 insertions(+), 32 deletions(-)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index 0ed7cf9c7bba191f5a4dee5a796d..340de5a1e7a463573a14a0565682 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -591,31 +591,43 @@ static void dump_begin(DumpState *s, Error **errp)
+     write_elf_notes(s, errp);
+ }
+ 
+-static int get_next_block(DumpState *s, GuestPhysBlock *block)
++static int64_t dump_filtered_memblock_size(GuestPhysBlock *block,
++                                           int64_t filter_area_start,
++                                           int64_t filter_area_length)
+ {
+-    while (1) {
+-        block = QTAILQ_NEXT(block, next);
+-        if (!block) {
+-            /* no more block */
+-            return 1;
+-        }
++    int64_t size, left, right;
+ 
+-        s->start = 0;
+-        s->next_block = block;
+-        if (s->has_filter) {
+-            if (block->target_start >= s->begin + s->length ||
+-                block->target_end <= s->begin) {
+-                /* This block is out of the range */
+-                continue;
+-            }
++    /* No filter, return full size */
++    if (!filter_area_length) {
++        return block->target_end - block->target_start;
++    }
+ 
+-            if (s->begin > block->target_start) {
+-                s->start = s->begin - block->target_start;
+-            }
++    /* calculate the overlapped region. */
++    left = MAX(filter_area_start, block->target_start);
++    right = MIN(filter_area_start + filter_area_length, block->target_end);
++    size = right - left;
++    size = size > 0 ? size : 0;
++
++    return size;
++}
++
++static int64_t dump_filtered_memblock_start(GuestPhysBlock *block,
++                                            int64_t filter_area_start,
++                                            int64_t filter_area_length)
++{
++    if (filter_area_length) {
++        /* return -1 if the block is not within filter area */
++        if (block->target_start >= filter_area_start + filter_area_length ||
++            block->target_end <= filter_area_start) {
++            return -1;
+         }
+ 
+-        return 0;
++        if (filter_area_start > block->target_start) {
++            return filter_area_start - block->target_start;
++        }
+     }
++
++    return 0;
+ }
+ 
+ /* write all memory to vmcore */
+@@ -623,24 +635,22 @@ static void dump_iterate(DumpState *s, Error **errp)
+ {
+     ERRP_GUARD();
+     GuestPhysBlock *block;
+-    int64_t size;
+-
+-    do {
+-        block = s->next_block;
++    int64_t memblock_size, memblock_start;
+ 
+-        size = block->target_end - block->target_start;
+-        if (s->has_filter) {
+-            size -= s->start;
+-            if (s->begin + s->length < block->target_end) {
+-                size -= block->target_end - (s->begin + s->length);
+-            }
++    QTAILQ_FOREACH(block, &s->guest_phys_blocks.head, next) {
++        memblock_start = dump_filtered_memblock_start(block, s->begin, s->length);
++        if (memblock_start == -1) {
++            continue;
+         }
+-        write_memory(s, block, s->start, size, errp);
++
++        memblock_size = dump_filtered_memblock_size(block, s->begin, s->length);
++
++        /* Write the memory to file */
++        write_memory(s, block, memblock_start, memblock_size, errp);
+         if (*errp) {
+             return;
+         }
+-
+-    } while (!get_next_block(s, block));
++    }
+ }
+ 
+ static void create_vmcore(DumpState *s, Error **errp)

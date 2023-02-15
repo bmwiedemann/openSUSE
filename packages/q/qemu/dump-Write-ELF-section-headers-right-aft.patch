@@ -1,0 +1,94 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:14 +0000
+Subject: dump: Write ELF section headers right after ELF header
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: cb415fd61e48d52f81dcf38956e3f913651cff1c
+References: jsc#PED-1716
+
+Let's start bundling the writes of the headers and of the data so we
+have a clear ordering between them. Since the ELF header uses offsets
+to the headers we can freely order them.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20221017083822.43118-3-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ dump/dump.c | 31 ++++++++++++++-----------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index 9d25a33ccd521c7c97d2fb97a9c6..4a38daf35cf3c4d5dd7c2216677d 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -583,6 +583,8 @@ static void dump_begin(DumpState *s, Error **errp)
+      *   --------------
+      *   |  elf header |
+      *   --------------
++     *   |  sctn_hdr   |
++     *   --------------
+      *   |  PT_NOTE    |
+      *   --------------
+      *   |  PT_LOAD    |
+@@ -591,8 +593,6 @@ static void dump_begin(DumpState *s, Error **errp)
+      *   --------------
+      *   |  PT_LOAD    |
+      *   --------------
+-     *   |  sec_hdr    |
+-     *   --------------
+      *   |  elf note   |
+      *   --------------
+      *   |  memory     |
+@@ -608,20 +608,20 @@ static void dump_begin(DumpState *s, Error **errp)
+         return;
+     }
+ 
+-    /* write PT_NOTE to vmcore */
+-    write_elf_phdr_note(s, errp);
++    /* write section headers to vmcore */
++    write_elf_section_headers(s, errp);
+     if (*errp) {
+         return;
+     }
+ 
+-    /* write all PT_LOADs to vmcore */
+-    write_elf_phdr_loads(s, errp);
++    /* write PT_NOTE to vmcore */
++    write_elf_phdr_note(s, errp);
+     if (*errp) {
+         return;
+     }
+ 
+-    /* write section headers to vmcore */
+-    write_elf_section_headers(s, errp);
++    /* write all PT_LOADs to vmcore */
++    write_elf_phdr_loads(s, errp);
+     if (*errp) {
+         return;
+     }
+@@ -1840,16 +1840,13 @@ static void dump_init(DumpState *s, int fd, bool has_format,
+     }
+ 
+     if (dump_is_64bit(s)) {
+-        s->phdr_offset = sizeof(Elf64_Ehdr);
+-        s->shdr_offset = s->phdr_offset + sizeof(Elf64_Phdr) * s->phdr_num;
+-        s->note_offset = s->shdr_offset + sizeof(Elf64_Shdr) * s->shdr_num;
+-        s->memory_offset = s->note_offset + s->note_size;
++        s->shdr_offset = sizeof(Elf64_Ehdr);
++        s->phdr_offset = s->shdr_offset + sizeof(Elf64_Shdr) * s->shdr_num;
++        s->note_offset = s->phdr_offset + sizeof(Elf64_Phdr) * s->phdr_num;
+     } else {
+-
+-        s->phdr_offset = sizeof(Elf32_Ehdr);
+-        s->shdr_offset = s->phdr_offset + sizeof(Elf32_Phdr) * s->phdr_num;
+-        s->note_offset = s->shdr_offset + sizeof(Elf32_Shdr) * s->shdr_num;
+-        s->memory_offset = s->note_offset + s->note_size;
++        s->shdr_offset = sizeof(Elf32_Ehdr);
++        s->phdr_offset = s->shdr_offset + sizeof(Elf32_Shdr) * s->shdr_num;
++        s->note_offset = s->phdr_offset + sizeof(Elf32_Phdr) * s->phdr_num;
+     }
+ 
+     return;

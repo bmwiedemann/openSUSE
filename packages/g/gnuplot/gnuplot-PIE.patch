@@ -3,7 +3,7 @@ Index: gnuplot-5.4.1/src/Makefile.am
 --- gnuplot-5.4.1.orig/src/Makefile.am
 +++ gnuplot-5.4.1/src/Makefile.am
 @@ -61,6 +61,7 @@ util3d.c util3d.h variable.c variable.h
- voxelgrid.c voxelgrid.h vplot.c vplot.h marching_cubes.h
+ voxelgrid.c voxelgrid.h vplot.c vplot.h marching_cubes.h xdg.c xdg.h
  
  gnuplot_LDADD = $(GD_LIBS) $(TERMLIBS) $(TERMXLIBS) $(WX_LIBS) $(QT_LIBS)
 +gnuplot_LDFLAGS = -pie

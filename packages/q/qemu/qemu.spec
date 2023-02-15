@@ -224,6 +224,24 @@ Patch00057:     hw-display-qxl-Pass-requested-buffer-siz.patch
 Patch00058:     hw-display-qxl-Avoid-buffer-overrun-in-q.patch
 Patch00059:     ui-vnc-clipboard-fix-integer-underflow-i.patch
 Patch00060:     hw-acpi-erst.c-Fix-memory-handling-issue.patch
+Patch00061:     dump-Replace-opaque-DumpState-pointer-wi.patch
+Patch00062:     dump-Rename-write_elf_loads-to-write_elf.patch
+Patch00063:     dump-Refactor-dump_iterate-and-introduce.patch
+Patch00064:     dump-Rework-get_start_block.patch
+Patch00065:     dump-Rework-filter-area-variables.patch
+Patch00066:     dump-Rework-dump_calculate_size-function.patch
+Patch00067:     dump-Split-elf-header-functions-into-pre.patch
+Patch00068:     dump-Rename-write_elf-_phdr_note-to-prep.patch
+Patch00069:     dump-Use-a-buffer-for-ELF-section-data-a.patch
+Patch00070:     dump-Write-ELF-section-headers-right-aft.patch
+Patch00071:     dump-Reorder-struct-DumpState.patch
+Patch00072:     dump-Reintroduce-memory_offset-and-secti.patch
+Patch00073:     dump-Add-architecture-section-and-sectio.patch
+Patch00074:     s390x-Add-protected-dump-cap.patch
+Patch00075:     s390x-Introduce-PV-query-interface.patch
+Patch00076:     include-elf.h-add-s390x-note-types.patch
+Patch00077:     s390x-Add-KVM-PV-dump-interface.patch
+Patch00078:     s390x-pv-Add-dump-support.patch
 # Patches applied in roms/seabios/:
 Patch01000:     openSUSE-switch-to-python3-as-needed.patch
 Patch01001:     openSUSE-build-enable-cross-compilation-.patch

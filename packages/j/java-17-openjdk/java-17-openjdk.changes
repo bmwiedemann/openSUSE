@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 23:00:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fips.patch
+    + avoid calling C_GetInfo() too early, before cryptoki is
+      initialized (bsc#1205916)
+
+-------------------------------------------------------------------
 Tue Feb  7 07:25:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.6.0+10 (January 2023 CPU)
@@ -521,6 +529,10 @@ Tue Feb  7 07:25:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 - Modified patch:
   * fips.patch
     + update to newest level
+- Removed patch:
+  * fix_armv6_build.patch
+    + does not apply and at least a part of the fix is in this
+      version
 
 -------------------------------------------------------------------
 Thu Dec  8 13:19:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>

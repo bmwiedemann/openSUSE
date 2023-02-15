@@ -96,6 +96,9 @@ unsorted:
   - LibVNCServer-devel 
   - Mesa-32bit: [x86_64] 
   - Mesa-KHR-devel 
+  - Mesa-demo-egl-32bit: [x86_64] 
+  - Mesa-demo-es-32bit: [x86_64] 
+  - Mesa-demo-x-32bit: [x86_64] 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
   - Mesa-dri-devel 
@@ -2505,6 +2508,8 @@ unsorted:
   - cri-o: [x86_64] 
   - cri-o-kubeadm-criconfig: [x86_64] 
   - cri-tools 
+  - criterion 
+  - criterion-lang 
   - criu-devel: [x86_64] # devel package of opensuse_microos:criu 
   - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
@@ -7539,6 +7544,9 @@ unsorted:
   - include-what-you-use-tools 
   - indent 
   - indent-lang 
+  - indi 
+  - indi-devel 
+  - indi-plugins 
   - indicator-common 
   - indriya 
   - indriya-javadoc 
@@ -10883,6 +10891,8 @@ unsorted:
   - libcreg-devel 
   - libcreg-tools 
   - libcreg1 
+  - libcriterion3 
+  - libcriterion3-devel 
   - libcriu2: [x86_64] 
   - libcroco 
   - libcroco-devel 
@@ -11062,6 +11072,8 @@ unsorted:
   - libdisomaster1 
   - libdispatch-devel: [x86_64] 
   - libdispatch1_3: [x86_64] 
+  - libdisplay-info-devel 
+  - libdisplay-info1 
   - libdjvulibre-devel 
   - libdlm-devel 
   - libdmapsharing-3_0-2 
@@ -12255,14 +12267,19 @@ unsorted:
   - libindi 
   - libindi-devel 
   - libindi-plugins 
+  - libindiAlignmentDriver1 
   - libindiAlignmentDriver2 
   - libindicator-devel 
   - libindicator3-7 
   - libindicator3-devel 
   - libindicator7 
+  - libindiclient1 
   - libindiclient2 
+  - libindiclientqt1 
   - libindiclientqt2 
+  - libindidriver1 
   - libindidriver2 
+  - libindilx200-1 
   - libindilx200-2 
   - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
@@ -18530,6 +18547,8 @@ unsorted:
   - ocaml 
   - ocaml-astring 
   - ocaml-astring-devel 
+  - ocaml-augeas 
+  - ocaml-augeas-devel 
   - ocaml-base64 
   - ocaml-base64-devel 
   - ocaml-benchmark 
@@ -44613,6 +44632,7 @@ unsorted:
   - vulkan-devel 
   - vulkan-devel-32bit: [x86_64] 
   - vulkan-headers 
+  - vulkan-tools-32bit: [x86_64] 
   - vulkan-validationlayers 
   - vulkan-validationlayers-devel 
   - vym 
@@ -45398,7 +45418,6 @@ unsorted:
   - yast2-core-devel 
   - yast2-devtools 
   - yast2-dns-manager 
-  - yast2-dns-server 
   - yast2-docker: [x86_64] 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 

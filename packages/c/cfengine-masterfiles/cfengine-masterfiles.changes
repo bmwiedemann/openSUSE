@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 14 16:12:22 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 3.21.0
+  * https://github.com/cfengine/masterfiles/blob/3.21.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Apr 18 02:52:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC file: Replaced broken URL with current upstream

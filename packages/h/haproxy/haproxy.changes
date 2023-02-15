@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Tue Feb 14 16:32:41 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.3+git0.1065b1000: (boo#1208132 CVE-2023-25725)
+  * [RELEASE] Released version 2.7.3
+  * BUG/CRITICAL: http: properly reject empty http header field names
+  * BUG/MINOR: quic: Wrong datagram dispatch because of qc_check_dcid()
+  * DOC: proxy-protocol: fix wrong byte in provided example
+  * BUG/MEDIUM: quic: Buffer overflow when looking through QUIC CLI keyword list
+  * BUG/MINOR: clock/stats: also use start_time not start_date in HTML info
+  * BUG/MINOR: mworker: fix uptime for master process
+  * BUG/MINOR: quic: fix type bug on "show quic" for 32-bits arch
+  * BUG/MINOR: quic: fix filtering of closing connections on "show quic"
+  * MINOR: quic: filter closing conn on "show quic"
+  * MINOR: quic: display Tx stream info on "show quic"
+  * MINOR: quic: display infos about various encryption level on "show quic"
+  * MINOR: quic: display socket info on "show quic"
+  * MINOR: quic: display CIDs and state in "show quic"
+  * MINOR: quic: implement a basic "show quic" CLI handler
+  * BUG/MEDIUM: quic: fix crash when "option nolinger" is set in the frontend
+  * BUG/MEDIUM: stconn: Schedule a shutw on shutr if data must be sent first
+  * BUG/MINOR: server/add: ensure minconn/maxconn consistency when adding server
+  * MINOR: cfgparse/server: move (min/max)conn postparsing logic into dedicated function
+  * BUG/MINOR: h3: fix crash due to h3 traces
+  * DOC: config: 'http-send-name-header' option may be used in default section
+  * DOC: config: fix option spop-check proxy compatibility
+  * BUG/MEDIUM: cache: use the correct time reference when comparing dates
+  * BUG/MINOR: clock: do not mix wall-clock and monotonic time in uptime calculation
+  * BUG/MEDIUM: stick-table: do not leave entries in end of window during purge
+  * BUG/MINOR: ssl/crt-list: warn when a line is malformated
+  * MINOR: quic: Update version_information transport parameter to draft-14
+  * BUG/MEDIUM: quic: do not split STREAM frames if no space
+  * BUG/MINOR: quic: Unchecked source connection ID
+  * MEDIUM: quic: Remove qc_conn_finalize() from the ClientHello TLS callbacks
+  * BUG/MAJOR: quic: Possible crash when processing 1-RTT during 0-RTT session
+  * MINOR: quic: When probing Handshake packet number space, also probe the Initial one
+  * BUG/MINOR: quic: Do not ignore coalesced packets in qc_prep_fast_retrans()
+  * MINOR: quic: Add a trace about variable states in qc_prep_fast_retrans()
+  * BUG/MINOR: quic: Too big PTO during handshakes
+  * BUG/MINOR: quic: Possible stream truncations under heavy loss
+  * CLEANUP: quic: no need for atomics on packet refcnt
+  * MINOR: quic: add config for retransmit limit
+  * MEDIUM: quic: implement a retransmit limit per frame
+  * MINOR: quic: refactor frame deallocation
+  * MINOR: quic: define new functions for frame alloc
+  * MINOR: quic: ensure offset is properly set for STREAM frames
+  * MINOR: quic: remove fin from quic_stream frame type
+  * BUG/MINOR: stats: Prevent HTTP "other sessions" counter underflows
+  * MINOR: stats: add by HTTP version cumulated number of sessions and requests
+  * BUG/MINOR: stats: fix STAT_STARTED behavior with full htx
+  * BUG/MINOR: stats: fix show stats field ctx for servers
+  * BUG/MINOR: stats: fix ctx->field update in stats_dump_proxy_to_buffer()
+  * BUG/MEDIUM: stats: fix resolvers dump
+  * BUG/MINOR: stats: fix source buffer size for http dump
+  * BUG/MINOR: stats: use proper buffer size for http dump
+  * BUG/MINOR: h3: fix crash due to h3 traces
+  * BUG/MEDIUM: ssl: wrong eviction from the session cache tree
+  * MINOR: h3: add missing traces on closure
+  * BUG/MINOR: h3: reject RESET_STREAM received for control stream
+  * BUG/MEDIUM: h3: handle STOP_SENDING on control stream
+  * MINOR: mux-quic/h3: define stream close callback
+  * OPTIM: h3: skip buf realign if no trailer to encode
+  * BUG/MEDIUM: h3: do not crash if no buf space for trailers
+  * BUG/MINOR: fcgi-app: prevent 'use-fcgi-app' in default section
+  * MINOR: trace: add the long awaited TRACE_PRINTF()
+  * MINOR: trace: add a trace_no_cb() dummy callback for when to use no callback
+  * MINOR: trace: add a TRACE_ENABLED() macro to determine if a trace is active
+  * DEV: hpack: fix `trash` build regression
+  * BUG/MINOR: sink: free the forwarding task on exit
+  * BUG/MINOR: ring: release the backing store name on exit
+  * BUG/MINOR: log: release global log servers on exit
+  * BUG/MEDIUM: hpack: fix incorrect huffman decoding of some control chars
+  * BUG/MEDIUM: mux-quic: fix crash on H3 SETTINGS emission
+  * BUG/MINOR: h3: fix GOAWAY emission
+  * MINOR: mux-quic/h3: send SETTINGS as soon as transport is ready
+  * MINOR: connection: add a BUG_ON() to detect destroying connection in idle list
+  * DEV: haring: add a new option "-r" to automatically repair broken files
+  * BUG/MINOR: sink: make sure to always properly unmap a file-backed ring
+  * MEDIUM: quic-sock: fix udp source address for send on listener socket
+  * BUG/MINOR: quic: Do not request h3 clients to close its unidirection streams
+  * BUG/MINOR: jwt: Wrong return value checked
+
+-------------------------------------------------------------------
+Tue Feb 14 16:32:26 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.2+git0.7e295dd2c:
+  * [RELEASE] Released version 2.7.2
+  * BUILD: hpack: include global.h for the trash that is needed in debug mode
+  * BUG/MINOR: mux-h2: add missing traces on failed headers decoding
+  * BUG/MINOR: mux-h2: make sure to produce a log on invalid requests
+  * MINOR: h3: implement TRAILERS decoding
+  * MINOR: h3: implement TRAILERS encoding
+  * MINOR: h3: extend function for QUIC varint encoding
+  * BUG/MINOR: h3: properly handle connection headers
+  * BUG/MINOR: bwlim: Fix parameters check for set-bandwidth-limit actions
+  * BUG/MINOR: bwlim: Check scope for period expr for set-bandwitdh-limit actions
+  * BUG/MEDIUM: debug/thread: make the debug handler not wait for !rdv_requests
+  * MINOR: threads: add a thread_harmless_end() version that doesn't wait
+  * BUG/MINOR: thread: always reload threads_enabled in loops
+  * BUG/MEDIUM: fd/threads: fix again incorrect thread selection in wakeup broadcast
+  * BUG/MINOR: listener: close tiny race between resume_listener() and stopping
+  * BUG/MINOR: ssl: Fix compilation with OpenSSL 1.0.2 (missing ECDSA_SIG_set0)
+  * BUG/MEDIUM: jwt: Properly process ecdsa signatures (concatenated R and S params)
+  * DOC: config: fix "Address formats" chapter syntax
+  * BUG/MINOR: mux-fcgi: Correctly set pathinfo
+  * MINOR: quic: Replace v2 draft definitions by those of the final 2 version
+  * MINOR: sample: Add "quic_enabled" sample fetch
+  * MINOR: quic: Add "no-quic" global option
+  * MINOR: quic: Disable the active connection migrations
+  * MINOR: quic: Useless test about datagram destination addresses
+  * BUG/MEDIUM: stconn: also consider SE_FL_EOI to switch to SE_FL_ERROR
+  * CLEANUP: stconn: always use se_fl_set_error() to set the pending error
+  * MINOR: listener: also support "quic+" as an address prefix
+  * DOC: config: mention the missing "quic4@" and "quic6@" in protocol prefixes
+  * DOC: config: fix aliases for protocol prefixes "udp4@" and "udp6@"
+  * DOC: config: fix wrong section number for "protocol prefixes"
+  * BUG/MINOR: listeners: fix suspend/resume of inherited FDs
+  * BUG/MINOR: http-ana: make set-status also update txn->status
+  * BUG/MEDIUM: mux-h2: Don't send CANCEL on shutw when response length is unkown
+  * BUG/MINOR: http-fetch: Don't block HTTP sample fetch eval in HTTP_MSG_ERROR state
+  * BUG/MINOR: http-ana: Report SF_FINST_R flag on error waiting the request body
+  * BUG/MINOR: promex: Don't forget to consume the request on error
+  * BUG/MEDIUM: peers: make "show peers" more careful about partial initialization
+  * DEV: tcploop: add minimal support for unix sockets
+  * BUG/MINOR: resolvers: Wait the resolution execution for a do_resolv action
+  * BUG/MINOR: hlua: Fix Channel.line and Channel.data behavior regarding the doc
+  * BUG/MINOR: h1-htx: Remove flags about protocol upgrade on non-101 responses
+  * MINOR: mux-quic: use send-list for immediate sending retry
+  * MINOR: mux-quic: use send-list for STOP_SENDING/RESET_STREAM emission
+  * MEDIUM: h3: send SETTINGS before STREAM frames
+  * MAJOR: mux-quic: rework stream sending priorization
+  * MINOR: mux-quic: add traces for flow-control limit reach
+  * BUG/MINOR: mux-quic: fix transfer of empty HTTP response
+  * DOC: management: add details about @system-ca in "show ssl ca-file"
+  * DOC: management: add details on "Used" status
+  * DOC: config: added optional rst-ttl argument to silent-drop in action lists
+  * CLEANUP: htx: fix a typo in an error message of http_str_to_htx
+  * BUG/MINOR: http: Memory leak of http redirect rules' format string
+  * BUG/MINOR: fd: avoid bad tgid assertion in fd_delete() from deinit()
+  * REGTEST: fix the race conditions in hmac.vtc
+  * REGTEST: fix the race conditions in digest.vtc
+  * REGTEST: fix the race conditions in add_item.vtc
+  * REGTEST: fix the race conditions in json_query.vtc
+  * BUG/MINOR: proxy: free orgto_hdr_name in free_proxy()
+  * DOC: config: remove duplicated "http-response sc-set-gpt0" directive
+  * DOC: config: fix alphabetical ordering of http-after-response rules
+  * BUG/MAJOR: buf: Fix copy of wrapping output data when a buffer is realigned
+  * BUG/MINOR: http-fetch: Only fill txn status during prefetch if not already set
+  * MINOR: config: add environment variables for default log format
+  * CI: Reformat `matrix.py` using `black`
+  * CI: Explicitly check environment variable against `None` in matrix.py
+  * CI: Unify the `GITHUB_TOKEN` name across matrix.py and vtest.yml
+  * CI: Use proper `if` blocks instead of conditional expressions in matrix.py
+  * CI: Add in-memory cache for the latest OpenSSL/LibreSSL
+  * CI: Improve headline in matrix.py
+  * BUG/MINOR: stick-table: report the correct action name in error message
+  * MINOR: cfgparse-ssl: avoid a possible crash on OOM in ssl_bind_parse_npn()
+  * BUG/MINOR: debug: don't mask the TH_FL_STUCK flag before dumping threads
+  * BUILD: makefile: make sure to also ignore SSL_INC when using wolfssl
+  * BUILD: makefile: clean the wolfssl include and lib generation rules
+  * BUILD: makefile: sort the features list
+  * BUILD: makefile: build the features list dynamically
+  * CI: github: use the GITHUB_TOKEN instead of a manually generated token
+  * BUG/MINOR: mux-quic: ignore remote unidirectional stream close
+  * CI: github: enable github api authentication for OpenSSL tags read
+  * MINOR: h3: use stream error when needed instead of connection
+  * MEDIUM: mux-quic: implement STOP_SENDING emission
+  * MINOR: mux-quic: handle RESET_STREAM reception
+  * MINOR: mux-quic: do not count stream flow-control if already closed
+  * MEDIUM: mux-quic: implement shutw
+  * MINOR: httpclient: don't add body when istlen is empty
+  * BUG/MINOR: pool/stats: Use ullong to report total pool usage in bytes in stats
+  * BUG/MEDIUM: mux-h2: Refuse interim responses with end-stream flag set
+  * BUG/MINOR: quic: do not allocate more rxbufs than necessary
+  * BUG/MEDIUM: quic: properly take shards into account on bind lines
+  * BUG/MEDIUM: mux-quic: fix double delete from qcc.opening_list
+  * REGTESTS: ssl: enable the ssl_reuse.vtc test for WolfSSL
+  * OPTIM: pool: split the read_mostly from read_write parts in pool_head
+
+-------------------------------------------------------------------
 Sun Dec 25 06:01:14 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.7.1+git0.3e4af0ed7:

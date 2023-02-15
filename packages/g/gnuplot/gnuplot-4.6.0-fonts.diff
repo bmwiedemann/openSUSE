@@ -66,7 +66,7 @@
  		first_time = FALSE;
  	    }
  	    while (n_miss-- > 0)
-@@ -5897,6 +5906,18 @@ char *fontname;
+@@ -5896,6 +5905,18 @@ char *fontname;
      }
  
  #ifdef USE_X11_MULTIBYTE

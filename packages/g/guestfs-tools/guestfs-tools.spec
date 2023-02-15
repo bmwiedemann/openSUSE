@@ -20,7 +20,7 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-%global source_directory 1.48-stable
+%global source_directory 1.50-stable
 
 #
 %define guestfs_docdir %{_defaultdocdir}/%{name}
@@ -30,7 +30,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.48.3
+Version:        1.50.0
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -41,8 +41,6 @@ ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
-
-Patch1:         CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
 
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf
@@ -59,6 +57,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libguestfs-devel >= 1.45.3-1
 BuildRequires:  libguestfs-xfs
 BuildRequires:  libjansson-devel
+BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxcrypt-devel
 BuildRequires:  libxml2-devel
@@ -262,6 +261,7 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/virt-dib.1*
 %{_bindir}/virt-customize
 %{_bindir}/virt-df
 %{_bindir}/virt-diff
+%{_bindir}/virt-drivers
 %{_bindir}/virt-edit
 %{_bindir}/virt-filesystems
 %{_bindir}/virt-format
@@ -283,6 +283,7 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/virt-dib.1*
 %{_mandir}/man1/virt-customize.1*
 %{_mandir}/man1/virt-df.1*
 %{_mandir}/man1/virt-diff.1*
+%{_mandir}/man1/virt-drivers.1*
 %{_mandir}/man1/virt-edit.1*
 %{_mandir}/man1/virt-filesystems.1*
 %{_mandir}/man1/virt-format.1*

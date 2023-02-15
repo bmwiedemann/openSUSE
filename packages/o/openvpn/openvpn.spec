@@ -16,10 +16,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
@@ -55,7 +51,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
-Requires:       sysvinit-tools
 %systemd_ordering
 
 %description
@@ -182,40 +177,6 @@ find sample -name .gitignore -exec rm -f {} +
 %post
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post %{name}.target
-# try to migrate openvpn.service autostart to openvpn@<CONF>.service
-if test $1 -ge 1 -a \
-	-x /bin/systemctl -a \
-	-f %{_sysconfdir}/sysconfig/openvpn -a \
-	-f %{_fillupdir}/sysconfig.openvpn && \
-	/bin/systemctl --quiet is-enabled openvpn.service >/dev/null 2>/dev/null;
-then
-	. %{_sysconfdir}/sysconfig/openvpn
-	try_service_cgroup_join()
-	{
-		local p="%{_localstatedir}/run/openvpn/${1}.pid"
-		local t="/sys/fs/cgroup/systemd/system/openvpn@.service/${1}"
-		/sbin/checkproc -p "$p" "%{_sbindir}/openvpn" >/dev/null 2>/dev/null || return 0
-		test -d "$t" || mkdir -p "$t" 2>/dev/null || return 1
-		cat "$p" > "$t/tasks" 2>/dev/null || return 1
-	}
-	if test "X$OPENVPN_AUTOSTART" != "X" ; then
-		for conf in $OPENVPN_AUTOSTART ; do
-			test -f "%{_sysconfdir}/openvpn/${conf}.conf" && \
-			/bin/systemctl enable "openvpn@${conf}.service" && \
-			try_service_cgroup_join "$conf" || continue
-		done
-	else
-		shopt -s nullglob || :
-		for conf in %{_sysconfdir}/openvpn/*.conf ; do
-			conf=${conf##*/}
-			conf=${conf%.conf}
-			test -f "%{_sysconfdir}/openvpn/${conf}.conf" && \
-			/bin/systemctl enable "openvpn@${conf}.service" && \
-			try_service_cgroup_join "$conf" || continue
-		done
-	fi
-fi
-rm -f %{_sysconfdir}/sysconfig/openvpn || :
 
 %preun
 %service_del_preun %{name}.target

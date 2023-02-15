@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 13 11:26:45 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove migration from openvpn.service to openvpn@.service and
+  depending requires, this is from pre SLE12 times and not supported
+  anymore.
+
+-------------------------------------------------------------------
 Mon Jan  9 13:29:36 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1123557: --suppress-timestamps isn't needed by default.

@@ -1,6 +1,6 @@
 diff -urEbwBN jdk17.orig/make/autoconf/build-aux/pkg.m4 jdk17/make/autoconf/build-aux/pkg.m4
---- jdk17.orig/make/autoconf/build-aux/pkg.m4	2023-01-19 09:39:57.477535423 +0100
-+++ jdk17/make/autoconf/build-aux/pkg.m4	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/make/autoconf/build-aux/pkg.m4	2023-02-10 23:59:09.332981750 +0100
++++ jdk17/make/autoconf/build-aux/pkg.m4	2023-02-10 23:59:26.873089865 +0100
 @@ -179,3 +179,19 @@
  	ifelse([$3], , :, [$3])
  fi[]dnl
@@ -22,8 +22,8 @@ diff -urEbwBN jdk17.orig/make/autoconf/build-aux/pkg.m4 jdk17/make/autoconf/buil
 +AS_VAR_IF([$1], [""], [$5], [$4])dnl
 +])dnl PKG_CHECK_VAR
 diff -urEbwBN jdk17.orig/make/autoconf/libraries.m4 jdk17/make/autoconf/libraries.m4
---- jdk17.orig/make/autoconf/libraries.m4	2023-01-19 09:39:57.477535423 +0100
-+++ jdk17/make/autoconf/libraries.m4	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/make/autoconf/libraries.m4	2023-02-10 23:59:09.332981750 +0100
++++ jdk17/make/autoconf/libraries.m4	2023-02-10 23:59:26.885089940 +0100
 @@ -33,6 +33,7 @@
  m4_include([lib-x11.m4])
  m4_include([lib-fontconfig.m4])
@@ -42,7 +42,7 @@ diff -urEbwBN jdk17.orig/make/autoconf/libraries.m4 jdk17/make/autoconf/librarie
    if test "x$TOOLCHAIN_TYPE" != xmicrosoft; then
 diff -urEbwBN jdk17.orig/make/autoconf/lib-sysconf.m4 jdk17/make/autoconf/lib-sysconf.m4
 --- jdk17.orig/make/autoconf/lib-sysconf.m4	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/make/autoconf/lib-sysconf.m4	2023-01-19 09:40:14.493660654 +0100
++++ jdk17/make/autoconf/lib-sysconf.m4	2023-02-10 23:59:26.917090137 +0100
 @@ -0,0 +1,87 @@
 +#
 +# Copyright (c) 2021, Red Hat, Inc.
@@ -132,8 +132,8 @@ diff -urEbwBN jdk17.orig/make/autoconf/lib-sysconf.m4 jdk17/make/autoconf/lib-sy
 +  AC_SUBST(NSS_LIBDIR)
 +])
 diff -urEbwBN jdk17.orig/make/autoconf/spec.gmk.in jdk17/make/autoconf/spec.gmk.in
---- jdk17.orig/make/autoconf/spec.gmk.in	2023-01-19 09:39:57.477535423 +0100
-+++ jdk17/make/autoconf/spec.gmk.in	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/make/autoconf/spec.gmk.in	2023-02-10 23:59:09.332981750 +0100
++++ jdk17/make/autoconf/spec.gmk.in	2023-02-10 23:59:26.917090137 +0100
 @@ -841,6 +841,11 @@
  # Libraries
  #
@@ -147,8 +147,8 @@ diff -urEbwBN jdk17.orig/make/autoconf/spec.gmk.in jdk17/make/autoconf/spec.gmk.
  LCMS_CFLAGS:=@LCMS_CFLAGS@
  LCMS_LIBS:=@LCMS_LIBS@
 diff -urEbwBN jdk17.orig/make/modules/java.base/Gendata.gmk jdk17/make/modules/java.base/Gendata.gmk
---- jdk17.orig/make/modules/java.base/Gendata.gmk	2023-01-19 09:39:57.573536130 +0100
-+++ jdk17/make/modules/java.base/Gendata.gmk	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/make/modules/java.base/Gendata.gmk	2023-02-10 23:59:09.456982513 +0100
++++ jdk17/make/modules/java.base/Gendata.gmk	2023-02-10 23:59:27.157091617 +0100
 @@ -98,3 +98,17 @@
  TARGETS += $(GENDATA_JAVA_SECURITY)
  
@@ -168,8 +168,8 @@ diff -urEbwBN jdk17.orig/make/modules/java.base/Gendata.gmk jdk17/make/modules/j
 +
 +################################################################################
 diff -urEbwBN jdk17.orig/make/modules/java.base/Lib.gmk jdk17/make/modules/java.base/Lib.gmk
---- jdk17.orig/make/modules/java.base/Lib.gmk	2023-01-19 09:39:57.573536130 +0100
-+++ jdk17/make/modules/java.base/Lib.gmk	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/make/modules/java.base/Lib.gmk	2023-02-10 23:59:09.456982513 +0100
++++ jdk17/make/modules/java.base/Lib.gmk	2023-02-10 23:59:27.249092183 +0100
 @@ -168,6 +168,29 @@
  endif
  
@@ -201,8 +201,8 @@ diff -urEbwBN jdk17.orig/make/modules/java.base/Lib.gmk jdk17/make/modules/java.
  
  ifeq ($(STATIC_BUILD), true)
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java jdk17/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java
---- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2023-01-19 09:39:56.857530861 +0100
-+++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2023-02-10 23:59:10.836991019 +0100
++++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2023-02-10 23:59:27.249092183 +0100
 @@ -25,13 +25,12 @@
  
  package com.sun.crypto.provider;
@@ -306,8 +306,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/Hma
          SecretKey cipherKey = new SecretKeySpec(derivedKey, "HmacSHA1");
          super.engineInit(cipherKey, null);
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java jdk17/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java
---- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2023-01-19 09:39:56.857530861 +0100
-+++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2023-01-19 09:40:14.493660654 +0100
+--- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2023-02-10 23:59:10.836991019 +0100
++++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2023-02-10 23:59:27.249092183 +0100
 @@ -27,10 +27,11 @@
  
  import java.security.*;
@@ -503,8 +503,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/PBE
  
      protected byte[] engineUpdate(byte[] input, int inputOffset, int inputLen) {
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java jdk17/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java
---- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-01-19 09:39:56.861530891 +0100
-+++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-02-10 23:59:10.836991019 +0100
++++ jdk17/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2023-02-10 23:59:27.269092306 +0100
 @@ -31,6 +31,7 @@
  import java.security.PrivilegedAction;
  import java.util.HashMap;
@@ -573,8 +573,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/com/sun/crypto/provider/Sun
      // Return the instance of this class or create one if needed.
      static SunJCE getInstance() {
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/java/security/Security.java jdk17/src/java.base/share/classes/java/security/Security.java
---- jdk17.orig/src/java.base/share/classes/java/security/Security.java	2023-01-19 09:39:56.881531037 +0100
-+++ jdk17/src/java.base/share/classes/java/security/Security.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/java/security/Security.java	2023-02-10 23:59:10.860991168 +0100
++++ jdk17/src/java.base/share/classes/java/security/Security.java	2023-02-10 23:59:27.317092602 +0100
 @@ -32,6 +32,7 @@
  
  import jdk.internal.event.EventHelper;
@@ -704,7 +704,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/java/security/Security.java
      /*
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/java/security/SystemConfigurator.java jdk17/src/java.base/share/classes/java/security/SystemConfigurator.java
 --- jdk17.orig/src/java.base/share/classes/java/security/SystemConfigurator.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/java.base/share/classes/java/security/SystemConfigurator.java	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/java.base/share/classes/java/security/SystemConfigurator.java	2023-02-10 23:59:27.317092602 +0100
 @@ -0,0 +1,249 @@
 +/*
 + * Copyright (c) 2019, 2021, Red Hat, Inc.
@@ -957,7 +957,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/java/security/SystemConfigu
 +}
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java jdk17/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java
 --- jdk17.orig/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	2023-02-10 23:59:27.317092602 +0100
 @@ -0,0 +1,31 @@
 +/*
 + * Copyright (c) 2020, Red Hat, Inc.
@@ -991,8 +991,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/jdk/internal/access/JavaSec
 +    boolean isPlainKeySupportEnabled();
 +}
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java jdk17/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java
---- jdk17.orig/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-01-19 09:39:56.917531303 +0100
-+++ jdk17/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-02-10 23:59:10.888991341 +0100
++++ jdk17/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2023-02-10 23:59:27.317092602 +0100
 @@ -39,6 +39,7 @@
  import java.io.ObjectInputStream;
  import java.io.RandomAccessFile;
@@ -1026,8 +1026,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/jdk/internal/access/SharedS
 +    }
  }
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/module-info.java jdk17/src/java.base/share/classes/module-info.java
---- jdk17.orig/src/java.base/share/classes/module-info.java	2023-01-19 09:39:56.857530861 +0100
-+++ jdk17/src/java.base/share/classes/module-info.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/module-info.java	2023-02-10 23:59:10.836991019 +0100
++++ jdk17/src/java.base/share/classes/module-info.java	2023-02-10 23:59:27.365092899 +0100
 @@ -152,6 +152,8 @@
          java.naming,
          java.rmi,
@@ -1038,8 +1038,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/module-info.java jdk17/src/
          jdk.jlink,
          jdk.net,
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/provider/SunEntries.java jdk17/src/java.base/share/classes/sun/security/provider/SunEntries.java
---- jdk17.orig/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-01-19 09:39:56.945531509 +0100
-+++ jdk17/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-02-10 23:59:10.908991464 +0100
++++ jdk17/src/java.base/share/classes/sun/security/provider/SunEntries.java	2023-02-10 23:59:27.369092923 +0100
 @@ -30,6 +30,7 @@
  import java.util.*;
  import java.security.*;
@@ -1092,8 +1092,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/provider/SunEn
          /*
           * Certificates
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java jdk17/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java
---- jdk17.orig/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-01-19 09:39:56.949531537 +0100
-+++ jdk17/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-02-10 23:59:10.912991488 +0100
++++ jdk17/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2023-02-10 23:59:27.389093046 +0100
 @@ -27,6 +27,7 @@
  
  import java.util.*;
@@ -1152,7 +1152,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/rsa/SunRsaSign
      }
 diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/util/PBEUtil.java jdk17/src/java.base/share/classes/sun/security/util/PBEUtil.java
 --- jdk17.orig/src/java.base/share/classes/sun/security/util/PBEUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/java.base/share/classes/sun/security/util/PBEUtil.java	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/java.base/share/classes/sun/security/util/PBEUtil.java	2023-02-10 23:59:27.389093046 +0100
 @@ -0,0 +1,297 @@
 +/*
 + * Copyright (c) 2022, Red Hat, Inc.
@@ -1452,8 +1452,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/classes/sun/security/util/PBEUtil.j
 +    }
 +}
 diff -urEbwBN jdk17.orig/src/java.base/share/conf/security/java.security jdk17/src/java.base/share/conf/security/java.security
---- jdk17.orig/src/java.base/share/conf/security/java.security	2023-01-19 09:39:56.961531627 +0100
-+++ jdk17/src/java.base/share/conf/security/java.security	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/conf/security/java.security	2023-02-10 23:59:10.924991562 +0100
++++ jdk17/src/java.base/share/conf/security/java.security	2023-02-10 23:59:27.389093046 +0100
 @@ -80,6 +80,16 @@
  security.provider.tbd=SunPKCS11
  
@@ -1535,7 +1535,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/conf/security/java.security jdk17/s
  #
 diff -urEbwBN jdk17.orig/src/java.base/share/conf/security/nss.fips.cfg.in jdk17/src/java.base/share/conf/security/nss.fips.cfg.in
 --- jdk17.orig/src/java.base/share/conf/security/nss.fips.cfg.in	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/java.base/share/conf/security/nss.fips.cfg.in	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/java.base/share/conf/security/nss.fips.cfg.in	2023-02-10 23:59:27.409093169 +0100
 @@ -0,0 +1,8 @@
 +name = NSS-FIPS
 +nssLibraryDirectory = @NSS_LIBDIR@
@@ -1546,8 +1546,8 @@ diff -urEbwBN jdk17.orig/src/java.base/share/conf/security/nss.fips.cfg.in jdk17
 +attributes(*,CKO_SECRET_KEY,CKK_GENERIC_SECRET)={ CKA_SIGN=true }
 +
 diff -urEbwBN jdk17.orig/src/java.base/share/lib/security/default.policy jdk17/src/java.base/share/lib/security/default.policy
---- jdk17.orig/src/java.base/share/lib/security/default.policy	2023-01-19 09:39:56.961531627 +0100
-+++ jdk17/src/java.base/share/lib/security/default.policy	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/java.base/share/lib/security/default.policy	2023-02-10 23:59:10.924991562 +0100
++++ jdk17/src/java.base/share/lib/security/default.policy	2023-02-10 23:59:27.409093169 +0100
 @@ -121,6 +121,7 @@
  grant codeBase "jrt:/jdk.crypto.ec" {
      permission java.lang.RuntimePermission
@@ -1575,7 +1575,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/lib/security/default.policy jdk17/s
      permission java.security.SecurityPermission "removeProviderProperty.*";
 diff -urEbwBN jdk17.orig/src/java.base/share/native/libsystemconf/systemconf.c jdk17/src/java.base/share/native/libsystemconf/systemconf.c
 --- jdk17.orig/src/java.base/share/native/libsystemconf/systemconf.c	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/java.base/share/native/libsystemconf/systemconf.c	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/java.base/share/native/libsystemconf/systemconf.c	2023-02-10 23:59:27.409093169 +0100
 @@ -0,0 +1,236 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -1815,7 +1815,7 @@ diff -urEbwBN jdk17.orig/src/java.base/share/native/libsystemconf/systemconf.c j
 +#endif
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
 --- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2023-02-10 23:59:27.409093169 +0100
 @@ -0,0 +1,457 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -2276,7 +2276,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +}
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java
 --- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java	2023-01-19 09:40:14.497660683 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSTokenLoginHandler.java	2023-02-10 23:59:27.409093169 +0100
 @@ -0,0 +1,149 @@
 +/*
 + * Copyright (c) 2022, Red Hat, Inc.
@@ -2429,8 +2429,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +}
 \ No newline at end of file
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-01-19 09:40:14.497660683 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-02-10 23:59:11.216993362 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2023-02-10 23:59:27.409093169 +0100
 @@ -37,6 +37,8 @@
  import javax.crypto.interfaces.*;
  import javax.crypto.spec.*;
@@ -2483,8 +2483,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
              } else {
                  return "RAW";
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2023-02-10 23:59:11.216993362 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2023-02-10 23:59:27.413093195 +0100
 @@ -29,14 +29,17 @@
  
  import java.security.*;
@@ -2529,7 +2529,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
          } catch (PKCS11Exception e) {
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java
 --- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java	2023-01-19 09:40:14.501660713 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java	2023-02-10 23:59:27.413093195 +0100
 @@ -0,0 +1,200 @@
 +/*
 + * Copyright (c) 2022, Red Hat, Inc.
@@ -2732,8 +2732,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +
 +}
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2023-02-10 23:59:27.413093195 +0100
 @@ -31,6 +31,7 @@
  import java.security.spec.*;
  
@@ -2892,8 +2892,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
      }
  
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2023-02-10 23:59:27.413093195 +0100
 @@ -27,6 +27,10 @@
  
  import java.math.BigInteger;
@@ -3013,8 +3013,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
          Provider p = sun;
          if (p == null) {
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-02-10 23:59:27.453093441 +0100
 @@ -26,6 +26,9 @@
  package sun.security.pkcs11;
  
@@ -3446,8 +3446,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
                  debug.println("logout succeeded");
              }
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Token.java	2023-02-10 23:59:27.477093588 +0100
 @@ -33,6 +33,7 @@
  import java.security.*;
  import javax.security.auth.login.LoginException;
@@ -3493,8 +3493,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
      // return whether this token object is valid (i.e. token not removed)
      // returns value from last check, does not perform new check
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2023-02-10 23:59:27.501093737 +0100
 @@ -100,9 +100,9 @@
      }
  
@@ -3508,8 +3508,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
      public String toString() {
          StringBuilder sb = new StringBuilder();
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2023-02-10 23:59:27.525093884 +0100
 @@ -160,6 +160,18 @@
          init(mechanism, params);
      }
@@ -3530,8 +3530,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
      // CK_MECHANISM(long) constructor and setParameter(CK_RSA_PKCS_PSS_PARAMS)
      // methods instead of creating yet another constructor
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2023-02-10 23:59:27.553094058 +0100
 @@ -50,15 +50,15 @@
  
  
@@ -3600,7 +3600,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
       *
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java
 --- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java	2023-01-19 09:40:14.501660713 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java	2023-02-10 23:59:27.593094304 +0100
 @@ -0,0 +1,156 @@
 +/*
 + * Copyright (c) 2022, Red Hat, Inc.
@@ -3759,8 +3759,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +
 +}
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2023-02-10 23:59:27.593094304 +0100
 @@ -47,7 +47,7 @@
  
  package sun.security.pkcs11.wrapper;
@@ -3813,8 +3813,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
       *
       * @return the string representation of CK_PKCS5_PBKD2_PARAMS
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2023-02-10 23:59:27.593094304 +0100
 @@ -94,9 +94,9 @@
      public byte[] pPublicData;
  
@@ -3828,8 +3828,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
      public String toString() {
          StringBuilder sb = new StringBuilder();
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2023-02-10 23:59:27.593094304 +0100
 @@ -1104,17 +1104,6 @@
      public static final long  CKD_BLAKE2B_384_KDF      = 0x00000019L;
      public static final long  CKD_BLAKE2B_512_KDF      = 0x0000001aL;
@@ -3889,8 +3889,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +                                        /* (CKM_NSS + 32) */ = 0xCE534370L;
  }
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
---- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-02-11 00:00:01.017300312 +0100
 @@ -49,6 +49,9 @@
  
  import java.io.File;
@@ -3918,7 +3918,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +            throws IOException, PKCS11Exception {
          connect(pkcs11ModulePath, functionListName);
          this.pkcs11ModulePath = pkcs11ModulePath;
-+        pInfo = C_GetInfo();
++        pInfo = null;
      }
  
 +    /*
@@ -3962,7 +3962,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
              if (omitInitialize == false) {
                  try {
                      pkcs11.C_Initialize(pInitArgs);
-@@ -180,6 +211,14 @@
+@@ -180,6 +211,20 @@
      }
  
      /**
@@ -3970,6 +3970,12 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +     * C_GetInfo. This structure represent Cryptoki library information.
 +     */
 +    public CK_INFO getInfo() {
++        if (pInfo == null) {
++            try {
++                pInfo = C_GetInfo();
++            } catch (PKCS11Exception e) {
++            }
++        }
 +        return pInfo;
 +    }
 +
@@ -3977,7 +3983,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
       * Connects this object to the specified PKCS#11 library. This method is for
       * internal use only.
       * Declared private, because incorrect handling may result in errors in the
-@@ -1625,7 +1664,7 @@
+@@ -1625,7 +1670,7 @@
  static class SynchronizedPKCS11 extends PKCS11 {
  
      SynchronizedPKCS11(String pkcs11ModulePath, String functionListName)
@@ -3986,7 +3992,7 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
          super(pkcs11ModulePath, functionListName);
      }
  
-@@ -1911,4 +1950,194 @@
+@@ -1911,4 +1956,194 @@
          super.C_GenerateRandom(hSession, randomData);
      }
  }
@@ -4182,8 +4188,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs
 +}
  }
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
---- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2023-01-19 09:39:57.309534188 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2023-02-10 23:59:27.593094304 +0100
 @@ -1515,6 +1515,10 @@
          case CKM_PBE_SHA1_DES3_EDE_CBC:
          case CKM_PBE_SHA1_DES2_EDE_CBC:
@@ -4373,8 +4379,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_co
      return NULL;
  
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c
---- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2023-01-19 09:39:57.313534216 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2023-02-10 23:59:27.597094328 +0100
 @@ -410,11 +410,27 @@
                   case CKM_CAMELLIA_CTR:
                       // params do not contain pointers
@@ -4480,8 +4486,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_ut
      if (jTemp == NULL) {
          throwOutOfMemoryError(env, 0);
 diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h
---- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2023-01-19 09:39:57.313534216 +0100
-+++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2023-01-19 09:40:14.501660713 +0100
+--- jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2023-02-10 23:59:27.597094328 +0100
 @@ -68,6 +68,7 @@
  /* extra PKCS#11 constants not in the standard include files */
  
@@ -4553,8 +4559,8 @@ diff -urEbwBN jdk17.orig/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11
  
  void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, jobject jMechanism);
 diff -urEbwBN jdk17.orig/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java jdk17/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java
---- jdk17.orig/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-01-19 09:39:57.313534216 +0100
-+++ jdk17/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-01-19 09:40:14.505660742 +0100
+--- jdk17.orig/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-02-10 23:59:11.220993386 +0100
++++ jdk17/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2023-02-10 23:59:27.597094328 +0100
 @@ -38,6 +38,7 @@
  import java.util.Iterator;
  import java.util.List;

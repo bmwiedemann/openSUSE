@@ -1,7 +1,7 @@
 #
 # spec file for package dos2unix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dos2unix
-Version:        7.4.3
+Version:        7.4.4
 Release:        0
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause
@@ -48,8 +48,10 @@ export RPM_OPT_FLAGS
 %install
 %make_install docdir=%{_defaultdocdir}/%{name} HTMLEXT="html"
 %find_lang dos2unix --all-name --with-man
+rm %{buildroot}%{_defaultdocdir}/%{name}/COPYING.txt
 
 %files -f dos2unix.lang
+%license COPYING.txt
 %doc %{_defaultdocdir}/%{name}
 %{_bindir}/{%{name},mac2unix,unix2dos,unix2mac}
 %{_mandir}/man1/{%{name},mac2unix,unix2dos,unix2mac}.1%{?ext_man}

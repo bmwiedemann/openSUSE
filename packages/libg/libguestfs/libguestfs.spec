@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.48.6
+Version:        1.50.0
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  ocaml >= 4.04
+BuildRequires:  ocaml-augeas-devel
 BuildRequires:  ocaml-hivex-devel
 BuildRequires:  po4a
 BuildRequires:  readline-devel
@@ -259,7 +260,7 @@ libfuse2
 hwinfo
 EOF
 
-# do some cleanup so that rpm can properly empty directories without permission denie
+# Do some cleanup so that rpm can properly empty directories without permission denied
 # The winsupport directory has already been tar'ed up, so we don't care much
 find winsupport -type d -exec chmod 755 {} \;
 

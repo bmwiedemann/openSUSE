@@ -38,8 +38,8 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.4
 %global netaddr_version               0.8.0
-%global phonenumbers_version          8.13.4
-%global prometheus_client_version     0.15.0
+%global phonenumbers_version          8.13.5
+%global prometheus_client_version     0.16.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
 %global pyasn1_version                0.4.8
@@ -83,7 +83,7 @@
 %global cryptography_version          3.4.7
 %global frozendict_version            2.1.3
 %global idna_version                  2.5
-%global ijson_version                 3.1.4
+%global ijson_version                 3.2.0
 %global jsonschema_version            3.0.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
@@ -156,14 +156,14 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.76.0
+Version:        1.77.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/matrix-org/synapse
 Source0:        %{pkgname}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source47:       matrix-synapse-user.conf
 Source48:       README.SUSE

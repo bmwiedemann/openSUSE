@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1063524</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dbe1c5356f8486bbb2bb58f3819d1fa7</srcmd5>
+    <version>1.50.0</version>
+    <time>1676401699</time>
+    <user>dimstar_suse</user>
+    <comment>Update to guestfs-tools version 1.50.0</comment>
+    <requestid>1065782</requestid>
+  </revision>
 </revisionlist>

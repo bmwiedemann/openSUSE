@@ -28,7 +28,7 @@ diff --git a/docs/Makefile.am b/docs/Makefile.am
 index f94eea28b..2e867d0db 100644
 --- a/docs/Makefile.am
 +++ b/docs/Makefile.am
-@@ -135,7 +135,7 @@ LUA_HELP =
+@@ -121,7 +121,7 @@ LUA_HELP =
  endif
  
  allterm.h: $(CORETERM) $(LUA_HELP)
@@ -37,7 +37,7 @@ index f94eea28b..2e867d0db 100644
  	     LC_ALL=C sort -f -t':' -k2` ; do \
  	  f=`echo $$e |cut -d\: -f1` ; s=`echo $$e | cut -d\: -f2` ;\
  	  sed -n "/^[ 	]*$$s/,/^[ 	]*END_HELP/p" $$f ; \
-@@ -386,7 +386,7 @@ install-info: gnuplot.info
+@@ -333,7 +333,7 @@ install-info: gnuplot.info
  	$(AM_V_at) $(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
  	$(AM_V_at) $(INSTALL_DATA) gnuplot.info $(DESTDIR)$(infodir)/gnuplot.info
  	$(AM_V_at) if (install-info --version && \

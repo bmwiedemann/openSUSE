@@ -1,0 +1,63 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Thu, 11 Aug 2022 12:10:59 +0000
+Subject: dump: Rework dump_calculate_size function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: c370d5300f9ac1f90f8158082d22262b904fe30e
+References: jsc#PED-1716
+
+dump_calculate_size() sums up all the sizes of the guest memory
+blocks. Since we already have a function that calculates the size of a
+single memory block (dump_get_memblock_size()) we can simply iterate
+over the blocks and use the function instead of calculating the size
+ourselves.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Janis Schoetterl-Glausch <scgl@linux.ibm.com>
+Message-Id: <20220811121111.9878-7-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ dump/dump.c | 22 ++++++++--------------
+ 1 file changed, 8 insertions(+), 14 deletions(-)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index b043337bc73217730f7b38d46484..d82cc46d7d8fc5562057a26d8f7b 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -1548,25 +1548,19 @@ bool qemu_system_dump_in_progress(void)
+     return (qatomic_read(&state->status) == DUMP_STATUS_ACTIVE);
+ }
+ 
+-/* calculate total size of memory to be dumped (taking filter into
+- * acoount.) */
++/*
++ * calculate total size of memory to be dumped (taking filter into
++ * account.)
++ */
+ static int64_t dump_calculate_size(DumpState *s)
+ {
+     GuestPhysBlock *block;
+-    int64_t size = 0, total = 0, left = 0, right = 0;
++    int64_t total = 0;
+ 
+     QTAILQ_FOREACH(block, &s->guest_phys_blocks.head, next) {
+-        if (dump_has_filter(s)) {
+-            /* calculate the overlapped region. */
+-            left = MAX(s->filter_area_begin, block->target_start);
+-            right = MIN(s->filter_area_begin + s->filter_area_length, block->target_end);
+-            size = right - left;
+-            size = size > 0 ? size : 0;
+-        } else {
+-            /* count the whole region in */
+-            size = (block->target_end - block->target_start);
+-        }
+-        total += size;
++        total += dump_filtered_memblock_size(block,
++                                             s->filter_area_begin,
++                                             s->filter_area_length);
+     }
+ 
+     return total;

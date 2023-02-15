@@ -1,0 +1,58 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:15 +0000
+Subject: dump: Reorder struct DumpState
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 8384b73c46fd474847d7e74d121318e344edc3c4
+References: jsc#PED-1716
+
+Let's move ELF related members into one block and guest memory related
+ones into another to improve readability.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20221017083822.43118-4-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ include/sysemu/dump.h | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/include/sysemu/dump.h b/include/sysemu/dump.h
+index 9995f65dc8b18420292beb48ee82..9ed811b31331a4c56b7cb851bd02 100644
+--- a/include/sysemu/dump.h
++++ b/include/sysemu/dump.h
+@@ -154,15 +154,8 @@ typedef struct DumpState {
+     GuestPhysBlockList guest_phys_blocks;
+     ArchDumpInfo dump_info;
+     MemoryMappingList list;
+-    uint32_t phdr_num;
+-    uint32_t shdr_num;
+     bool resume;
+     bool detached;
+-    ssize_t note_size;
+-    hwaddr shdr_offset;
+-    hwaddr phdr_offset;
+-    hwaddr section_offset;
+-    hwaddr note_offset;
+     hwaddr memory_offset;
+     int fd;
+ 
+@@ -177,6 +170,15 @@ typedef struct DumpState {
+     int64_t filter_area_begin;  /* Start address of partial guest memory area */
+     int64_t filter_area_length; /* Length of partial guest memory area */
+ 
++    /* Elf dump related data */
++    uint32_t phdr_num;
++    uint32_t shdr_num;
++    ssize_t note_size;
++    hwaddr shdr_offset;
++    hwaddr phdr_offset;
++    hwaddr section_offset;
++    hwaddr note_offset;
++
+     void *elf_section_hdrs;     /* Pointer to section header buffer */
+ 
+     uint8_t *note_buf;          /* buffer for notes */

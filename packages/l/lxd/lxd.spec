@@ -1,7 +1,7 @@
 #
 # spec file for package lxd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        5.9
+Version:        5.10
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0

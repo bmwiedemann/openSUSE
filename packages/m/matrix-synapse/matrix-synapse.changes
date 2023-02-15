@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Feb 14 15:18:22 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.77.0
+  - Features
+    - Experimental support for MSC3952: intentional mentions.
+      (#14823, #14943, #14957, #14958)
+    - Experimental support to suppress notifications from message
+      edits (MSC3958). (#14960, #15016)
+    - Add profile information, devices and connections to the
+      command line user data export tool. (#14894)
+    - Improve performance when joining or sending an event in large
+      rooms. (#14962)
+    - Improve performance of joining and leaving large rooms with
+      many local users. (#14971)
+  - Bugfixes
+    - Fix bug where retried replication requests would return a
+      failure. Introduced in v1.76.0. (#15024)
+    - Fix a bug introduced in Synapse 1.53.0 where next_batch
+      tokens from /sync could not be used with the /relations
+      endpoint. (#14866)
+    - Fix a bug introduced in Synapse 1.35.0 where the module API's
+      send_local_online_presence_to would fail to send presence
+      updates over federation. (#14880)
+    - Fix a bug introduced in Synapse 1.70.0 where the background
+      updates to add non-thread unique indexes on receipts could
+      fail when upgrading from 1.67.0 or earlier. (#14915)
+    - Fix a regression introduced in Synapse 1.69.0 which can
+      result in database corruption when database migrations are
+      interrupted on sqlite. (#14926)
+    - Fix a bug introduced in Synapse 1.68.0 where we were unable
+      to service remote joins in rooms with @room notification
+      levels set to null in their (malformed) power levels.
+      (#14942)
+    - Fix a bug introduced in Synapse 1.64.0 where boolean power
+      levels were erroneously permitted in v10 rooms. (#14944)
+    - Fix a long-standing bug where sending messages on servers
+      with presence enabled would spam "Re-starting finished log
+      context" log lines. (#14947)
+    - Fix a bug introduced in Synapse 1.68.0 where logging from the
+      Rust module was not properly logged. (#14976)
+    - Fix various long-standing bugs in Synapse's config, event and
+      request handling where booleans were unintentionally accepted
+      where an integer was expected. (#14945)
+  - Internal Changes
+    - Prepare for future database schema changes. (#15036)
+    - Add missing type hints. (#14879, #14886, #14887, #14904,
+      #14927, #14956, #14983, #14984, #14985, #14987, #14988,
+      #14990, #14991, #14992, #15007)
+    - Use StrCollection to avoid potential bugs with
+      Collection[str]. (#14922)
+    - Allow running the complement tests suites with the asyncio
+      reactor enabled. (#14858)
+    - Improve performance of /sync in a few situations. (#14908,
+      #14970)
+    - Document how to handle Dependabot pull requests. (#14916)
+    - Fix typo in release script. (#14920)
+    - Update build system requirements to allow building with
+      poetry-core 1.5.0. (#14949, #15019)
+    - Add an lnav config file for Synapse logs to /contrib/lnav.
+      (#14953)
+    - Faster joins: Refactor internal handling of servers in room
+      to never store an empty list. (#14954)
+    - Faster joins: tag v2/send_join/ requests to indicate if they
+      served a partial join response. (#14950)
+    - Allow running cargo without the extension-module option.
+      (#14965)
+    - Preparatory work for adding a denormalised event stream
+      ordering column in the future. Contributed by Nick @ Beeper
+      (@Fizzadar). (#14979, 9cd7610, f10caa7; see #15014)
+    - Add tests for _flatten_dict. (#14981, #15002)
+
+-------------------------------------------------------------------
 Tue Jan 31 23:13:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.76.0

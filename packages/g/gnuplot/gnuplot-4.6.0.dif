@@ -26,7 +26,7 @@
  
  DISTFILES = $(DIST_COMMON) $(SOURCES) $(DOCHEADERS) $(EXTRA_DIST)
  
-@@ -265,17 +265,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
+@@ -262,17 +262,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
  doc2hlp_SOURCES = doc2hlp.c termdoc.c
  
  ### gnuplot interactive help format
@@ -52,7 +52,7 @@
  alldoc2gih_CPPFLAGS = -DALL_TERM_DOC $(AM_CPPFLAGS)
 --- gnuplot-5.4.0/src/gadgets.h
 +++ gnuplot-5.4.0/src/gadgets.h	2020-07-17 07:27:48.183763305 +0000
-@@ -515,7 +515,7 @@ extern TBOOLEAN	clip_lines2;
+@@ -522,7 +522,7 @@ extern TBOOLEAN	clip_lines2;
  extern TBOOLEAN	clip_points;
  extern TBOOLEAN	clip_radial;
  
@@ -81,7 +81,7 @@
  
 --- gnuplot-5.4.0/src/plot.c
 +++ gnuplot-5.4.0/src/plot.c	2020-07-17 07:28:52.762646614 +0000
-@@ -205,6 +205,7 @@ static int asked_privi = 0;
+@@ -206,6 +206,7 @@ static int asked_privi = 0;
  void
  drop_privilege()
  {
@@ -89,7 +89,7 @@
      if (!asked_privi) {
  	euid = geteuid();
  	egid = getegid();
-@@ -218,11 +219,13 @@ drop_privilege()
+@@ -219,11 +220,13 @@ drop_privilege()
      if (seteuid(ruid) == -1)
  	(void) fprintf(stderr, "seteuid(%d): %s\n",
  		       (int) ruid, strerror(errno));
@@ -103,7 +103,7 @@
      if (!asked_privi) {
  	euid = geteuid();
  	egid = getegid();
-@@ -236,6 +239,7 @@ take_privilege()
+@@ -237,6 +240,7 @@ take_privilege()
      if (seteuid(euid) == -1)
  	(void) fprintf(stderr, "seteuid(%d): %s\n",
  		       (int) euid, strerror(errno));
@@ -111,7 +111,7 @@
  }
  
  #endif /* LINUXVGA */
-@@ -271,8 +275,8 @@ main(int argc_orig, char **argv)
+@@ -272,8 +276,8 @@ main(int argc_orig, char **argv)
      argc = argc_orig;
  
  #ifdef LINUXVGA
@@ -121,7 +121,7 @@
  #endif
  /* make sure that we really have revoked root access, this might happen if
     gnuplot is compiled without vga support but is installed suid by mistake */
-@@ -345,6 +349,22 @@ main(int argc_orig, char **argv)
+@@ -346,6 +350,22 @@ main(int argc_orig, char **argv)
      rl_getc_function = getc_wrapper;
  #endif
  

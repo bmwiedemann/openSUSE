@@ -1006,4 +1006,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1063526</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>cabd93c799385cb1f07e183c7a407ac4</srcmd5>
+    <version>1.50.0</version>
+    <time>1676401698</time>
+    <user>dimstar_suse</user>
+    <comment>Update to libguestfs version 1.50.0</comment>
+    <requestid>1065781</requestid>
+  </revision>
 </revisionlist>

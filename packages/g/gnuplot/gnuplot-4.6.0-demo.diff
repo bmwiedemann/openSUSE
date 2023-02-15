@@ -71,7 +71,7 @@
  
 --- src/show.c
 +++ src/show.c	2020-07-17 07:25:00.022670914 +0000
-@@ -1076,6 +1076,15 @@ show_version(FILE *fp)
+@@ -1077,6 +1077,15 @@ show_version(FILE *fp)
  	    p 			/* type "help seeking-assistance" */
  	    );
  

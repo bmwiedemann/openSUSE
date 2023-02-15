@@ -1,0 +1,35 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Mon, 17 Oct 2022 08:38:16 +0000
+Subject: dump: Reintroduce memory_offset and section_offset
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 13fd417ddc81a1685c6a8f4e1c80bbfe7150f164
+References: jsc#PED-1716
+
+section_offset will later be used to store the offset to the section
+data which will be stored last. For now memory_offset is only needed
+to make section_offset look nicer.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-Id: <20221017083822.43118-5-frankja@linux.ibm.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ dump/dump.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dump/dump.c b/dump/dump.c
+index 4a38daf35cf3c4d5dd7c2216677d..a19d2420efe9575e97b8ba13d0ca 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -1848,6 +1848,8 @@ static void dump_init(DumpState *s, int fd, bool has_format,
+         s->phdr_offset = s->shdr_offset + sizeof(Elf32_Shdr) * s->shdr_num;
+         s->note_offset = s->phdr_offset + sizeof(Elf32_Phdr) * s->phdr_num;
+     }
++    s->memory_offset = s->note_offset + s->note_size;
++    s->section_offset = s->memory_offset + s->total_size;
+ 
+     return;
+ 
