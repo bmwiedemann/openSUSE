@@ -219,8 +219,11 @@ Press Meta+. to open an emoji selection window.
 %kf5_find_htmldocs
 
 # no devel files needed here
+%ifnarch s390 s390x
 rm -rv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
-%fdupes %{buildroot}/%{_prefix}
+%endif
+
+%fdupes %{buildroot}%{_prefix}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

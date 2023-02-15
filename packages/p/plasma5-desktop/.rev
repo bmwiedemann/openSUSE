@@ -1691,4 +1691,13 @@
     <comment>Plasma 5.27.0 respun tarballs (forwarded request 1065555 from Vogtinator)</comment>
     <requestid>1065562</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>9265514986a12ffd102b72aa18c2cb95</srcmd5>
+    <version>5.27.0</version>
+    <time>1676464805</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't try to delete the DBus interfaces folder on s390x.
+  There's nothing to delete on this arch.</comment>
+    <requestid>1065915</requestid>
+  </revision>
 </revisionlist>

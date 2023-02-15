@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 10:12:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Don't try to delete the DBus interfaces folder on s390x.
+  There's nothing to delete on this arch.
+
+-------------------------------------------------------------------
 Mon Feb 13 17:38:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Tarball got respun. Changes:
