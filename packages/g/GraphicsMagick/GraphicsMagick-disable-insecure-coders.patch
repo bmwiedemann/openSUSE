@@ -1,7 +1,7 @@
-Index: GraphicsMagick-1.3.38/coders/pdf.c
+Index: GraphicsMagick-1.3.40/coders/pdf.c
 ===================================================================
---- GraphicsMagick-1.3.38.orig/coders/pdf.c
-+++ GraphicsMagick-1.3.38/coders/pdf.c
+--- GraphicsMagick-1.3.40.orig/coders/pdf.c
++++ GraphicsMagick-1.3.40/coders/pdf.c
 @@ -499,7 +499,7 @@ ModuleExport void RegisterPDFImage(void)
    entry->seekable_stream=True;
    entry->description="Encapsulated Portable Document Format";
@@ -20,11 +20,11 @@ Index: GraphicsMagick-1.3.38/coders/pdf.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.38/coders/ps.c
+Index: GraphicsMagick-1.3.40/coders/ps.c
 ===================================================================
---- GraphicsMagick-1.3.38.orig/coders/ps.c
-+++ GraphicsMagick-1.3.38/coders/ps.c
-@@ -452,7 +452,7 @@ ModuleExport void RegisterPSImage(void)
+--- GraphicsMagick-1.3.40.orig/coders/ps.c
++++ GraphicsMagick-1.3.40/coders/ps.c
+@@ -456,7 +456,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript Interchange format";
    entry->module="PS";
@@ -33,7 +33,7 @@ Index: GraphicsMagick-1.3.38/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("EPS");
-@@ -464,7 +464,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -468,7 +468,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript";
    entry->module="PS";
@@ -42,7 +42,7 @@ Index: GraphicsMagick-1.3.38/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("EPSF");
-@@ -476,7 +476,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -480,7 +480,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript";
    entry->module="PS";
@@ -51,7 +51,7 @@ Index: GraphicsMagick-1.3.38/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("EPSI");
-@@ -488,7 +488,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -492,7 +492,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript Interchange format";
    entry->module="PS";
@@ -60,7 +60,7 @@ Index: GraphicsMagick-1.3.38/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("PS");
-@@ -499,7 +499,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -503,7 +503,7 @@ ModuleExport void RegisterPSImage(void)
    entry->magick=(MagickHandler) IsPS;
    entry->description="Adobe PostScript";
    entry->module="PS";
@@ -69,10 +69,10 @@ Index: GraphicsMagick-1.3.38/coders/ps.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.38/coders/ps2.c
+Index: GraphicsMagick-1.3.40/coders/ps2.c
 ===================================================================
---- GraphicsMagick-1.3.38.orig/coders/ps2.c
-+++ GraphicsMagick-1.3.38/coders/ps2.c
+--- GraphicsMagick-1.3.40.orig/coders/ps2.c
++++ GraphicsMagick-1.3.40/coders/ps2.c
 @@ -252,7 +252,7 @@ ModuleExport void RegisterPS2Image(void)
    entry->seekable_stream=True;
    entry->description="Adobe Level II Encapsulated PostScript";
@@ -91,10 +91,10 @@ Index: GraphicsMagick-1.3.38/coders/ps2.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.38/coders/ps3.c
+Index: GraphicsMagick-1.3.40/coders/ps3.c
 ===================================================================
---- GraphicsMagick-1.3.38.orig/coders/ps3.c
-+++ GraphicsMagick-1.3.38/coders/ps3.c
+--- GraphicsMagick-1.3.40.orig/coders/ps3.c
++++ GraphicsMagick-1.3.40/coders/ps3.c
 @@ -394,7 +394,7 @@ ModuleExport void RegisterPS3Image(void)
    entry->description="Adobe Level III Encapsulated PostScript";
    entry->seekable_stream=MagickTrue;
@@ -113,10 +113,10 @@ Index: GraphicsMagick-1.3.38/coders/ps3.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.38/config/delegates.mgk.in
+Index: GraphicsMagick-1.3.40/config/delegates.mgk.in
 ===================================================================
---- GraphicsMagick-1.3.38.orig/config/delegates.mgk.in
-+++ GraphicsMagick-1.3.38/config/delegates.mgk.in
+--- GraphicsMagick-1.3.40.orig/config/delegates.mgk.in
++++ GraphicsMagick-1.3.40/config/delegates.mgk.in
 @@ -76,27 +76,27 @@
    <delegate decode="dot" command='"@DOTDecodeDelegate@" -Tps "%i" -o "%o"' />
    <delegate decode="dvi" command='"@DVIDecodeDelegate@" -q -o "%o" "%i"' />
@@ -170,11 +170,11 @@ Index: GraphicsMagick-1.3.38/config/delegates.mgk.in
    <delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' />
    <!-- Read HTML file  -->
    <delegate decode="shtml" command='"@HTMLDecodeDelegate@" -U -o "%o" "%i"' />
-Index: GraphicsMagick-1.3.38/Makefile.in
+Index: GraphicsMagick-1.3.40/Makefile.in
 ===================================================================
---- GraphicsMagick-1.3.38.orig/Makefile.in
-+++ GraphicsMagick-1.3.38/Makefile.in
-@@ -4312,7 +4312,6 @@ TESTS_TESTS = \
+--- GraphicsMagick-1.3.40.orig/Makefile.in
++++ GraphicsMagick-1.3.40/Makefile.in
+@@ -4326,7 +4326,6 @@ TESTS_TESTS = \
  	tests/rwfile.tap \
  	tests/rwfile_sized.tap \
  	tests/rwfile_miff.tap \
@@ -182,10 +182,10 @@ Index: GraphicsMagick-1.3.38/Makefile.in
  	tests/rwfile_deep.tap
  
  TESTS_EXTRA_DIST = \
-Index: GraphicsMagick-1.3.38/tests/rwblob.tap
+Index: GraphicsMagick-1.3.40/tests/rwblob.tap
 ===================================================================
---- GraphicsMagick-1.3.38.orig/tests/rwblob.tap
-+++ GraphicsMagick-1.3.38/tests/rwblob.tap
+--- GraphicsMagick-1.3.40.orig/tests/rwblob.tap
++++ GraphicsMagick-1.3.40/tests/rwblob.tap
 @@ -10,7 +10,7 @@ rwblob=./rwblob
  check_types='bilevel gray pallette truecolor'
  
@@ -214,20 +214,20 @@ Index: GraphicsMagick-1.3.38/tests/rwblob.tap
  # FAX format
  for type in ${check_types}
  do
-Index: GraphicsMagick-1.3.38/tests/rwfile.tap
+Index: GraphicsMagick-1.3.40/tests/rwfile.tap
 ===================================================================
---- GraphicsMagick-1.3.38.orig/tests/rwfile.tap
-+++ GraphicsMagick-1.3.38/tests/rwfile.tap
-@@ -11,7 +11,7 @@ rwfile=./rwfile
- check_types='bilevel gray pallette truecolor'
+--- GraphicsMagick-1.3.40.orig/tests/rwfile.tap
++++ GraphicsMagick-1.3.40/tests/rwfile.tap
+@@ -12,7 +12,7 @@ check_types='bilevel gray pallette truec
+ check_types_noone='bilevel gray pallette truecolor'
  
  # Number of tests we plan to run
--test_plan_fn 656
-+test_plan_fn 616
+-test_plan_fn 818 # 820
++test_plan_fn 768 # 820
  
  # ART format
  for type in ${check_types}
-@@ -83,48 +83,6 @@ do
+@@ -84,48 +84,6 @@ do
    test_command_fn "DPX ${type} (stdio)" ${MEMCHECK} ${rwfile} -stdio -filespec "out_${type}_stdio_%d" "${SRCDIR}/input_${type}.miff" DPX
  done
  
@@ -276,7 +276,7 @@ Index: GraphicsMagick-1.3.38/tests/rwfile.tap
  # FAX format
  for type in ${check_types}
  do
-@@ -297,13 +255,6 @@ do
+@@ -298,13 +256,6 @@ do
    test_command_fn "PCX ${type} (stdio)" ${MEMCHECK} ${rwfile} -stdio -filespec "out_${type}_stdio_%d" "${SRCDIR}/input_${type}.miff" PCX
  done
  
@@ -290,7 +290,7 @@ Index: GraphicsMagick-1.3.38/tests/rwfile.tap
  # PGM format
  for type in ${check_types}
  do
-@@ -363,27 +314,6 @@ do
+@@ -364,27 +315,6 @@ do
    done
  done
  

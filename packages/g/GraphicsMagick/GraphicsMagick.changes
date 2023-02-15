@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb  7 12:36:21 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.3.40
+  * GetMagickGeometry(): Fix a scaling issue where dimensions could be
+    scaled down to zero.
+  * PCD: Handle writing image with a dimension of 1.
+  * PNG: When writing, use lower-case raw profile identifiers (e.g. 'Raw
+    profile type xmp') because exiftool expects that.
+  * SUN: The sense of monochrome images was inverted.  Fix scanline size
+    calculation.
+  * WPG: Fix 20-year old bug in WPG header reading.
+  New Features:
+  * JXL: Decode and log extra channel information.  This information is
+    not yet used.
+  * PCX and DCX: Support writing uncompressed format (use -compress none
+    for no compression).
+  * Added IM1, IM8, and IM24 magick aliases for the Sun Raster format
+    since those are the historically correct extensions.
+  API Updates:
+  * AppendImageToList() now updates the image list pointer to be the
+    image which was just added.  Use GetFirstImageInList() when the
+    pointer to the first image in the list is needed.
+
+-------------------------------------------------------------------
 Sun Jan  8 11:25:06 UTC 2023 - munix9@googlemail.com
 
 - version update to 1.3.39
