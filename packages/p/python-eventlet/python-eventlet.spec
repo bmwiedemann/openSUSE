@@ -16,14 +16,14 @@
 #
 
 
-%bcond_without python2
+%define skip_python2 1
 Name:           python-eventlet
 Version:        0.33.3
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://eventlet.net
+URL:            https://eventlet.net
 Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#eventlet/eventlet#638 mcepl@suse.com
 # Removes dependency on nose
@@ -35,32 +35,25 @@ Patch2:         python-eventlet-FTBFS2028.patch
 # PATCH-FIX-UPSTREAM fix-py3-rlock.patch gh#eventlet/eventlet#754
 Patch3:         fix-py3-rlock.patch
 BuildRequires:  %{python_module setuptools}
-%if %{with python2}
-BuildRequires:  python2-monotonic >= 1.4
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION TEST requirements
-# eventlet parses /etc/protocols which is not available in normal build envs
-BuildRequires:  netcfg
-BuildRequires:  %{python_module dnspython >= 1.15.0}
-BuildRequires:  %{python_module greenlet >= 0.3}
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module pyOpenSSL}
-%endif
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module testsuite}
-# /SECTION
 Requires:       netcfg
 Requires:       python-dnspython >= 1.15.0
 Requires:       python-greenlet >= 0.3
-%ifpython2
-Requires:       python-monotonic >= 1.4
-%endif
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
+# SECTION TEST requirements
+BuildRequires:  %{python_module dnspython >= 1.15.0}
+BuildRequires:  %{python_module greenlet >= 0.3}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module testsuite}
+# eventlet parses /etc/protocols which is not available in normal build envs
+BuildRequires:  netcfg
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module pyOpenSSL}
+%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -108,9 +101,7 @@ skiptests+=" or test_018b_http_10_keepalive_framing"
 # https://github.com/rthalley/dnspython/issues/559#issuecomment-675274960
 python36_skiptests+=" or test_connect_ssl or test_ssl_sending_messages or test_wrap_ssl"
 python36_skiptests+=" or ssl_test or wsgi_test"
-%if %python3_version_nodots == 36
 python3_skiptests+="$python36_skiptests"
-%endif
 # https://github.com/eventlet/eventlet/issues/730
 python310_skiptests+=" or test_patcher_existing_locks_locked"
 # https://github.com/eventlet/eventlet/issues/739
