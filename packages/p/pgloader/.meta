@@ -1,0 +1,11 @@
+<package name="pgloader" project="openSUSE:Factory">
+  <title>pgloader</title>
+  <description>pgloader is a data loading tool for PostgreSQL, using the COPY command.
+
+Its main advantage over just using COPY or \copy, and over using a Foreign Data Wrapper, is its transaction behaviour, where pgloader will keep a separate file of rejected data, but continue trying to copy good data in your database.
+
+The default PostgreSQL behaviour is transactional, which means that any erroneous line in the input data (file or remote database) will stop the entire bulk load for the table.
+
+pgloader also implements data reformatting.</description>
+  <devel project="server:database:postgresql" package="pgloader"/>
+</package>

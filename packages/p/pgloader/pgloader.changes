@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Tue Jan 31 15:25:03 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 3.6.9
+  + Add default support for MSSQL auto-incrementing bigint and smallint
+  + Improve pgloader docs
+- Changes from version 3.6.8
+  + Use the unix-namestring as the hash key for SQL queries
+  + Added support for sequences with minvalue defined
+  + Fix mapping mysql signed int with auto_incement to postgresql serial
+- Changes from version 3.6.7
+  + Set SBCL dynamic space size to 16 GB on 64 bit architectures
+  + Improve documentation with command lines and defaults
+  + SBCL compiler notes should not be fatal to pgloader
+- Update copyright year 
+
+-------------------------------------------------------------------
+Mon Jul  4 03:06:06 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.6.6
+  + Maintenance release fixing the bundle build process
+- Removed old merged patches: command-line-arguments.patch
+  82397a78.patch
+- Update copyright year
+
+-------------------------------------------------------------------
+Wed Aug 18 07:46:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce filesize of /usr/bin/pgloader by 19MB
+- Fix leap>=43 condition (there is no Leap 43 anywhere near).
+
+-------------------------------------------------------------------
+Mon Mar 15 17:24:24 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- fix compilation errors with sbcl 2.{1,2} by upgrading ironclad
+  included version (0.48 to 0.54)
+- fix CFLAGS and CXXFLAGS variable name
+
+-------------------------------------------------------------------
+Tue Oct 13 06:57:29 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- fix compilation errors with sbcl 2.0.9 by using upstream patch
+  for csv-cl component 82397a78.patch
+
+-------------------------------------------------------------------
+Sat Jul 18 21:16:29 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Add patch for a broken dependency gh#fare/command-line-arguments#6
+  + command-line-arguments.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 20:23:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.6.2
+  + Permit compilation with sbcl 2+ (module cffi updated to 0.21.0
+  + Big improvement in DBF module
+- Packaging
+  + Remove merged related fixes (cffi)
+
+-------------------------------------------------------------------
+Tue Mar  3 10:55:28 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add module cffi to version 0.21.0 in the bundle to fix compilation
+  error with newer sbcl 2+
+- cleanup spec minimal
+
+-------------------------------------------------------------------
+Mon Mar  4 16:14:06 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.6.1
+  This release contains three major themes: usual maintenance and
+  bug fixing, support for new database systems as sources and
+  targets, and support for Citus distribution.
+  https://github.com/dimitri/pgloader/releases/tag/v3.6.1
+- Packaging: update date
+
+-------------------------------------------------------------------
+Fri Sep  7 18:57:42 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.5.2
+  + A lot of changes details at
+  + https://github.com/dimitri/pgloader/compare/v3.4.1...v3.5.2
+- Packaging:
+  + spec-cleaner with pkgconfig (but keep Leap 42.3 building)
+  + Remove man1 there's no more available
+  + Use %license only remove obsolete if dist
+  + Remove Buildrequires python* not needed
+  + Add arm in the DYNSIZE=1024 4096 is too much
+
+-------------------------------------------------------------------
+Sun Dec  3 15:39:07 UTC 2017 - bruno@ioda-net.ch
+
+- Update to last 3.4.1 upstream version
+  + Have a look at readme and https://pgloader.io numerous changes
+    happened between previous 2.3.2 and 3.4.1
+- Packaging:
+  + spec-cleaner : Adding full header
+  + remove old pgloader-makefile.patch (Python makefile)
+  + Add and remove buildrequires (-python +lisp)
+  + Fix License pgloader is PostgreSQL licenced (still BSD)
+  + Fix URL and source
+  + Adapt description to upstream
+  + Bundle is used due to the lack of lisp packages
+  + Use DYNSIZE=1024 for 32bits
+- Binary is using gethostbyname(), and don't use -fpie due to sbcl
+
+-------------------------------------------------------------------
+Tue Dec 27 16:46:25 UTC 2011 - darin@darins.net
+
+- fixed non-standard usage of %doc
+
+-------------------------------------------------------------------
+Tue Dec 27 15:28:35 UTC 2011 - darin@darins.net
+
+- removed BuildArch
+- fixed non-standard group
+- added %build and python-base require
+
+-------------------------------------------------------------------
+Tue Dec 27 14:08:22 UTC 2011 - darin@darins.net
+
+- Adapted .spec for OpenSuSE
+- moved %changelog to .changes file
+- Added py_compile and fdupes
+  http://en.opensuse.org/openSUSE:Packaging_Python#Byte_Compiled_Files
+
+-------------------------------------------------------------------
+Tue Jul 28 2009 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.2-1
+- Update to 2.3.2
+
+-------------------------------------------------------------------
+Sun Jun 15 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.1-1
+- Update to 2.3.1
+
+-------------------------------------------------------------------
+Wed Apr 9 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.0-1
+- Update to 2.3.0
+- Various spec file fixes
+
+-------------------------------------------------------------------
+Fri Feb 1 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.6-1
+- Update to 2.2.6
+
+-------------------------------------------------------------------
+Sat Jan 19 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.5-1
+- Update to 2.2.5
+
+-------------------------------------------------------------------
+Thu Jun 21 2007 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.0-1
+- Initial packaging
