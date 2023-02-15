@@ -166,6 +166,10 @@ Macros:
 # 07:29 < adrianS> DimStar: the slsafiles get not correctly generated, please disable the prjconf setting for now
 #BuildFlags: slsaprovenance
 
+# Likely nobody really consumes the information - but as we can provide it: why not?
+BuildFlags: sbom:spdx
+BuildFlags: sbom:cyclonedx
+
 # switch to kiwi v8
 Prefer: python3-kiwi
 Conflict: python3-kiwi:libsystemd0-mini
@@ -634,6 +638,9 @@ Prefer: -patterns-microos-desktop-common
 
 #  unresolvable: have choice for libomp.so()(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel, have choice for libomp.so(VERSION)(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel 
 Prefer: -libomp11-devel -libomp12-devel -libomp13-devel -libomp14-devel
+
+# have choice for pkgconfig(libindi): indi-devel libindi-devel
+Prefer: -indi-devel
 
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit

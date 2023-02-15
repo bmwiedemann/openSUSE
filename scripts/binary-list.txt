@@ -31,6 +31,7 @@
 *.whl
 *.zip
 *.zst
+*.zstd
 *.ztar
 java-*.rpm
 aws-sdk-*-update.patch
