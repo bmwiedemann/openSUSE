@@ -265,4 +265,12 @@ License is closely related to the MIT license. Use SPDX format (forwarded reques
     <comment></comment>
     <requestid>1045462</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ff5f653dd4c53d9d283fd51a3c000949</srcmd5>
+    <version>5.3.3</version>
+    <time>1676464870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065896</requestid>
+  </revision>
 </revisionlist>

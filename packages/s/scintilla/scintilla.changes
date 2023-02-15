@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:21:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.3:
+  * Fix SCI_LINESJOIN bug where carriage returns were incorrectly
+    retained. Bug #2372.
+  * Fix SCI_VERTICALCENTRECARET to update the vertical scroll
+    position.
+  * When an autocompletion list is shown in response to
+    SCN_CHARADDED, do not process character as fill-up or stop.
+  * On GTK, support IME context. Feature #1476.
+  * On Qt, fix indicator drawing past left of text pane over
+    margin. Bug #2373, Bug #1956.
+  * On Qt, allow scrolling with mouse wheel when scroll bar hidden. 
+
+-------------------------------------------------------------------
 Mon Dec 26 06:48:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.2:
