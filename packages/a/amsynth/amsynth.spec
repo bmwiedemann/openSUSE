@@ -17,12 +17,12 @@
 
 
 Name:           amsynth
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
 URL:            https://amsynth.github.io/
-Source:         https://github.com/amsynth/amsynth/archive/refs/tags/release-%{version}.tar.gz
+Source:         https://github.com/amsynth/amsynth/archive/refs/tags/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
