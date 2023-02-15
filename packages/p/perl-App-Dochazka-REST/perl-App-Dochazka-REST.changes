@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 29 15:50:18 UTC 2022 - Nathan Cutler <ncutler@suse.com>
+
+- updated to 0.559
+   see /usr/share/doc/packages/perl-App-Dochazka-REST/Changes
+
+-------------------------------------------------------------------
 Fri Feb 14 12:13:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

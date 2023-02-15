@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-REST
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-App-Dochazka-REST
-Version:        0.558
-Release:        0
 %define cpan_name App-Dochazka-REST
+Name:           perl-App-Dochazka-REST
+Version:        0.559
+Release:        0
 Summary:        Dochazka REST server
 License:        BSD-3-Clause
-Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/App-Dochazka-REST/
-Source0:        App-Dochazka-REST-0.558.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        App-Dochazka-REST-0.559.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(App::CELL) >= 0.215
@@ -84,12 +82,12 @@ Requires:       perl(Web::MREST::CLI) >= 0.276
 Requires:       perl(Web::Machine) >= 0.15
 %{perl_requires}
 # MANUAL BEGIN
+BuildRequires:  systemd
 BuildRequires:  perl(Starman)
-BuildRequires:  pkgconfig(systemd)
 Requires:       perl(Starman)
 Requires(pre): /usr/sbin/groupadd
 Requires(pre): /usr/sbin/useradd
-%{?systemd_ordering}
+%{?systemd_requires}
 
 %pre
 getent group dochazka-rest >/dev/null || groupadd -r dochazka-rest
@@ -107,19 +105,18 @@ getent passwd dochazka-rest >/dev/null || useradd -r -g dochazka-rest -d %{_loca
 # MANUAL END
 
 %description
-This distribution, the App::Dochazka::REST manpage, including all the
-modules in 'lib/', the scripts in 'bin/', and the configuration files in
-'config/', constitutes the REST server (API) component of Dochazka, the
-open-source Attendance/Time Tracking (ATT) system.
+This distribution, App::Dochazka::REST, including all the modules in
+'lib/', the scripts in 'bin/', and the configuration files in 'config/',
+constitutes the REST server (API) component of Dochazka, the open-source
+Attendance/Time Tracking (ATT) system.
 
 Dochazka as a whole aims to be a convenient, open-source ATT solution.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -149,7 +146,7 @@ echo "%{_unitdir}/dochazka-rest.service" >> %{name}.files
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes config ext LICENSE README.rst run-tests.sh version.plx WISHLIST
+%doc Changes README.rst run-tests.sh version.plx WISHLIST
+%license LICENSE
 
 %changelog
