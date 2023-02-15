@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 14 19:18:01 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 39:
+  * New features:
+    + ngspice now offers simulation with Verilog-A models, using
+      its new OSDI interface and the OpenVAF model compiler. This
+      enhancement enables access to all modern compact models for
+      short channel MOS, FinFets, double gate transistors, SiGe
+      bipolars, and III-V HEMTs.
+    + ngspice now supports nearly all features of digital PSPICE
+      compatible U devices (instances). Therefore we now may
+      simulate a wealth of digital devices. These are translated
+      into internal XSPICE event models, with very fast simulation.
+    + For a list of additional new features please have a look at
+      the NEWS feature in the ngspice tarball.
+  * Patches: Many developer and user provided patches and bug
+    fixes have been applied.
+
+-------------------------------------------------------------------
+Fri Jan 27 02:04:09 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove noarch from scripts package, spinit contains absolute
+  paths to binary codemodels.
+- Update URL
+
+-------------------------------------------------------------------
 Sat Nov  5 22:51:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 38:

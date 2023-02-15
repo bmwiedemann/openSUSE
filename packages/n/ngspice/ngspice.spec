@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ngspice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        38
+Version:        39
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Electronics
-URL:            http://ngspice.sourceforge.net
-Source0:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
-Source1:        http://ngspice.sourceforge.net/docs/ngspice-%{version}-manual.pdf
+URL:            https://ngspice.sourceforge.io
+Source0:        https://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
+Source1:        https://ngspice.sourceforge.io/docs/ngspice-%{version}-manual.pdf
 BuildRequires:  bison
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -93,7 +93,8 @@ and Xspice. This package contains the Xspice code model plugins.
 %package scripts
 Summary:        Ngspice init scripts
 Group:          Productivity/Scientific/Electronics
-BuildArch:      noarch
+# https://sourceforge.net/p/ngspice/bugs/615/
+# BuildArch:      noarch
 
 %description scripts
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
