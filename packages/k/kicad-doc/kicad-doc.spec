@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kicad-doc
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -26,6 +26,9 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "pdf"
 %define pkg_suffix -pdf
 %bcond_without pdf
+# Disabled, fails to build, asciidoc+dblatex no longer supported by upstream
+# E.g. https://gitlab.com/kicad/services/kicad-doc/-/issues/808
+ExclusiveArch: do_not_build
 %endif
 
 %if "%flavor" == "html"
@@ -33,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        6.0.11
+Version:        7.0.0
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -194,8 +197,14 @@ This package contains Chinese documentation and tutorials for KiCad
 
 %prep
 %setup -q -n %{sname}-%{version}
-
 %patch0
+
+# asciidoc errors out if the `[code]` style is used with an unknown language
+# https://gitlab.com/kicad/services/kicad-doc/-/issues/851
+find . -iname \*adoc -exec sed -i -e 's/\[code/\[source/' '{}' \;
+# Fix incorrect column with specifiers
+# https://gitlab.com/kicad/services/kicad-doc/-/issues/852
+find . -iname \*adoc -exec sed -i -e '/\[.*cols=/ { :m s/\(cols=.*\)\([0-9]\)%/\1\2/g ; t m }' '{}' \;
 
 # These files are actually GIFs, https://gitlab.com/kicad/services/kicad-doc/-/issues/822
 mv src/gerbview/images/zh/gerbview_x2_attribute.{png,gif}

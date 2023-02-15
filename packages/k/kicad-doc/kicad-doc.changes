@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 14 18:34:09 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 7.0.0:
+  See https://www.kicad.org/blog/2023/02/Version-7.0.0-Released/ for details.
+- Disabled pdf generation, PDF generation using asciidoc+dblatex
+  is no longer supported by upstream and fails to build.
+
+-------------------------------------------------------------------
 Thu Jan 26 03:34:50 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 6.0.11:
