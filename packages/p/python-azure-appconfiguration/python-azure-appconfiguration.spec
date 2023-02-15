@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-appconfiguration
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-appconfiguration
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
@@ -35,9 +35,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.2.2
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.10
+Requires:       python-isodate >= 0.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
