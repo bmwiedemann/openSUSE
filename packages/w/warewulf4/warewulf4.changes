@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 16 10:54:19 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- added Fix-for-CVE-2022-41723.patch in order to fix CVE-2022-41723
+  Note: an updatedt vendor.tar.gz is also required
+
+-------------------------------------------------------------------
 Tue Feb  7 15:34:13 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - added CreateMt-Targets.patch 

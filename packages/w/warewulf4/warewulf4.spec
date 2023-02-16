@@ -33,6 +33,7 @@ Source3:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Patch1:         make-ipxe-binary-source-configureable.patch
 Patch2:         CreateMt-Targets.patch
+Patch10:        Fix-for-CVE-2022-41723.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -146,6 +147,7 @@ rm -f %{buildroot}/usr/share/doc/packages/warewulf/LICENSE.md
 rm -rf %{buildroot}%{_localstatedir}/lib/warewulf
 # use ipxe-bootimgs images
 yq e '
+  .dhcpd.template = "static" |
   .tftp.ipxe."00:00" = "undionly.kpxe" |
   .tftp.ipxe."00:07" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:09" = "ipxe-x86_64.efi" |
