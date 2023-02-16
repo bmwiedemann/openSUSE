@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk-Clock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Tk-Clock
 Name:           perl-Tk-Clock
-Version:        0.43
+Version:        0.44
 Release:        0
-Summary:        Clock widget with analog and digital display
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Clock widget with analog and digital display
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
@@ -40,7 +40,7 @@ Requires:       perl(Tk) >= 402.000
 Requires:       perl(Tk::Canvas)
 Requires:       perl(Tk::Derived)
 Requires:       perl(Tk::Widget)
-Recommends:     perl(Encode) >= 3.16
+Recommends:     perl(Encode) >= 3.19
 Recommends:     perl(Tk) >= 804.036
 %{perl_requires}
 
