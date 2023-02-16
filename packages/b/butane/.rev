@@ -20,4 +20,12 @@
 - Drop obsolete butane-0.11.0-fix-vcontext-report-copy.patch</comment>
     <requestid>962476</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87bd8afe375e0ca74ce770ffec65a8ed</srcmd5>
+    <version>0.17.0</version>
+    <time>1676567455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066213</requestid>
+  </revision>
 </revisionlist>

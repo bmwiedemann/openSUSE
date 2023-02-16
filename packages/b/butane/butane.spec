@@ -1,7 +1,7 @@
 #
 # spec file for package butane
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Neal Gompa.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           butane
-Version:        0.14.0
+Version:        0.17.0
 Release:        0
 Summary:        Tool to generate Ignition configs from Butane Configs
 Group:          System/Management
@@ -51,7 +51,7 @@ ln -s butane %{buildroot}%{_bindir}/fcct
 
 %files
 %license LICENSE
-%doc docs README.md NEWS
+%doc docs README.md NEWS.md
 %{_bindir}/butane
 %{_bindir}/ignition-config-transpiler
 %{_bindir}/fcct

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb 16 15:22:46 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 0.17.0
+  - Add RHEL for Edge (r4e) spec 1.0.0 and 1.1.0-experimental,
+    targeting
+  - Ignition spec 3.3.0 and 3.4.0-experimental respectively
+  - Fix version string in release container
+
+- Changes in version 0.16.0
+  - Stabilize OpenShift spec 4.12.0, targeting Ignition spec 3.2.0
+  - Add OpenShift spec 4.13.0-experimental, targeting Ignition
+    spec 3.4.0-experimental
+  - Ship aarch64 macOS binary in GitHub release artifacts
+  - Roll back to Ignition spec 3.2.0 (openshift 4.12.0)
+  - Require Go 1.17+
+  - test: Check docs on macOS and Windows if dependencies are available
+  - Document passwd.users.should_exist and passwd.groups.should_exist
+    fields (fcos 1.2.0+, flatcar, rhcos)
+  - Clarify spec docs for files/directories/links group fields
+  - Document that user/group fields aren't applied to hard links
+
+- Changes in version 0.15.0
+  - Return selected compression field value from MakeDataURL() (Go API)
+  - Add Flatcar spec 1.0.0 and 1.1.0-experimental, targeting Ignition
+    spec 3.3.0 and 3.4.0-experimental respectively
+  - Stabilize OpenShift spec 4.11.0, targeting Ignition spec 3.2.0
+  - Add OpenShift spec 4.12.0-experimental, targeting Ignition
+    spec 3.4.0-experimental
+  - Add arm64 support to container
+  - Add GRUB password support (fcos 1.5.0-exp, openshift 4.12.0-exp)
+  - Add TranslationSet AddFromCommonObject() and Map() methods (Go API)
+  - Set compression field for uncompressed inline/local resources, fixing
+    provisioning failure when merged with a compressed parent resource
+  - Fix local file inclusion on Windows
+  - Fix build script on Windows
+  - Derive container from Fedora image to support use in multi-stage builds
+  - Fail if setuid/setgid/sticky mode bits specified (openshift 4.10.0+)
+  - Update to Ignition 2.14.0
+  - Roll back to Ignition spec 3.2.0 (openshift 4.11.0)
+  - Support arn URL scheme (fcos 1.5.0-exp, openshift 4.12.0-exp)
+  - Document support status of setuid/setgid/sticky mode bits in each spec
+  - Document support for gs URLs (openshift 4.8.0+)
+  - Document support for compression field (openshift 4.8.0 - 4.9.0)
+  - Correctly document supported URL schemes (openshift 4.10.0)
+  - examples: Use containerized mkpasswd
+  - Convert NEWS to Markdown and move to docs site
+
+-------------------------------------------------------------------
 Thu Mar 17 13:45:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.14.0
