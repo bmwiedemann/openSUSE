@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Feb 15 11:20:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.71
+  * api-change:``appconfig``: [``botocore``] AWS AppConfig now offers the option to set a version
+    label on hosted configuration versions. Version labels allow you to identify specific hosted
+    configuration versions based on an alternate versioning scheme that you define.
+  * api-change:``datasync``: [``botocore``] With this launch, we are giving customers the ability to
+    use older SMB protocol versions, enabling them to use DataSync to copy data to and from their
+    legacy storage arrays.
+  * api-change:``ec2``: [``botocore``] With this release customers can turn host maintenance on or
+    off when allocating or modifying a supported dedicated host. Host maintenance is turned on by
+    default for supported hosts.
+- from version 1.26.70
+  * api-change:``account``: [``botocore``] This release of the Account Management API enables
+    customers to view and manage whether AWS Opt-In Regions are enabled or disabled for their Account.
+    For more information, see
+    https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html
+  * api-change:``appconfigdata``: [``botocore``] AWS AppConfig now offers the option to set a version
+    label on hosted configuration versions. If a labeled hosted configuration version is deployed, its
+    version label is available in the GetLatestConfiguration response.
+  * api-change:``snowball``: [``botocore``] Adds support for EKS Anywhere on Snowball. AWS Snow
+    Family customers can now install EKS Anywhere service on Snowball Edge Compute Optimized devices.
+- from version 1.26.69
+  * api-change:``autoscaling``: [``botocore``] You can now either terminate/replace, ignore, or wait
+    for EC2 Auto Scaling instances on standby or protected from scale in. Also, you can also roll back
+    changes from a failed instance refresh.
+  * api-change:``connect``: [``botocore``] This update provides the Wisdom session ARN for contacts
+    enabled for Wisdom in the chat channel.
+  * api-change:``ec2``: [``botocore``] Adds support for waiters that automatically poll for an
+    imported snapshot until it reaches the completed state.
+  * api-change:``polly``: [``botocore``] Amazon Polly adds two new neural Japanese voices - Kazuha,
+    Tomoko
+  * api-change:``sagemaker``: [``botocore``] Amazon SageMaker Autopilot adds support for selecting
+    algorithms in CreateAutoMLJob API.
+  * api-change:``sns``: [``botocore``] This release adds support for SNS X-Ray active tracing as well
+    as other updates.
+- from version 1.26.68
+  * api-change:``chime-sdk-meetings``: [``botocore``] Documentation updates for Chime Meetings SDK
+  * api-change:``emr-containers``: [``botocore``] EMR on EKS allows configuring retry policies for
+    job runs through the StartJobRun API. Using retry policies, a job cause a driver pod to be
+    restarted automatically if it fails or is deleted. The job's status can be seen in the
+    DescribeJobRun and ListJobRun APIs and monitored using CloudWatch events.
+  * api-change:``evidently``: [``botocore``] Updated entity overrides parameter to accept up to 2500
+    overrides or a total of 40KB.
+  * api-change:``lexv2-models``: [``botocore``] Update lexv2-models client to latest version
+  * api-change:``lexv2-runtime``: [``botocore``] Update lexv2-runtime client to latest version
+  * api-change:``lightsail``: [``botocore``] Documentation updates for Lightsail
+  * api-change:``migration-hub-refactor-spaces``: [``botocore``] This release adds support for
+    creating environments with a network fabric type of NONE
+  * api-change:``workdocs``: [``botocore``] Doc only update for the WorkDocs APIs.
+  * api-change:``workspaces``: [``botocore``] Removed Windows Server 2016 BYOL and made changes based
+    on IAM campaign.
+- from version 1.26.67
+  * api-change:``backup``: [``botocore``] This release added one attribute (resource name) in the
+    output model of our 9 existing APIs in AWS backup so that customers will see the resource name at
+    the output. No input required from Customers.
+  * api-change:``cloudfront``: [``botocore``] CloudFront Origin Access Control extends support to AWS
+    Elemental MediaStore origins.
+  * api-change:``glue``: [``botocore``] DirectJDBCSource + Glue 4.0 streaming options
+  * api-change:``lakeformation``: [``botocore``] This release removes the LFTagpolicyResource
+    expression limits.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Feb  8 13:05:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.66
