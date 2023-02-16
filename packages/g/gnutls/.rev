@@ -1612,4 +1612,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>1060038</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>1765c14727dbf72b5015997a829533cd</srcmd5>
+    <version>3.7.9</version>
+    <time>1676562919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065924</requestid>
+  </revision>
 </revisionlist>

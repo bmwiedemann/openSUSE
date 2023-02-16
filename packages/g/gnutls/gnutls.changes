@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 13:12:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.9: [bsc#1208143, CVE-2023-0361]
+  * libgnutls: Fix a Bleichenbacher oracle in the TLS RSA key
+    exchange. [GNUTLS-SA-2020-07-14, CVSS: medium][CVE-2023-0361]
+  * Rebase gnutls-FIPS-140-3-references.patch
+
+-------------------------------------------------------------------
 Fri Jan 20 09:58:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Change all the 140-2 references to FIPS 140-3 in order to
