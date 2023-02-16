@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb  9 03:12:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.003
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  5.003
+      * Production release of 5.002_001 and 5.002_002
+      * OpenBSD build fixes. Gracious thanks to Andrew Hewus Fresh
+        for providing guidance and access to an OpenBSD box to use to
+        debug and fix this.
+      * Update Miniz to 3.0.2, Zstd to 1.5.2 and Devel::CheckLib to 1.16
+      * Assorted build fixes related to these updates.
+  5.002_002
+      * OpenBSD build fixes. Gracious thanks to Andrew Hewus Fresh
+        for providing guidance and access to an OpenBSD box to use to
+        debug and fix this.
+  5.002_001
+      * Update Miniz to 3.0.2, Zstd to 1.5.2 and Devel::CheckLib to 1.16
+      * Assorted build fixes related to these updates.
+  5.002
+      * Fixup Decoder tests to run on perl 5.8 which has no defined-or.
+      - Consolidated changes from 5.001_00x:
+      * Ensure that Encoder depends on the correct version of the Decoder.
+        Gracious thanks to Slaven Rezic for being so patient in helping
+        me get this release working properly.
+      * Test compatibility fixes when no perl is already installed.
+      * Add t/195_backcompat.t to check if the latest decoder will
+        seamlessly handle reading output from older versions.
+      * Test compatibility fixes with version 3 and earlier.
+  5.001_003
+      * Ensure that Encoder depends on the correct version of the Decoder.
+        Gracious thanks to Slaven Rezic for being so patient in helping
+        me get 5.001_00x working properly.
+  5.001_002
+      * Test compatibility fixes when no perl is already installed.
+      * Add t/195_backcompat.t to check if the latest decoder will
+        seamlessly handle reading output from older versions.
+  5.001_001
+      * Test compatibility fixes with version 3 and earlier.
+
+-------------------------------------------------------------------
 Sun Sep  4 03:12:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.001
