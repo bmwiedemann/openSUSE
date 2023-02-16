@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Dump-Streamer
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Data-Dump-Streamer
-Version:        2.40
-Release:        0
 %define cpan_name Data-Dump-Streamer
+Name:           perl-Data-Dump-Streamer
+Version:        2.41
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Accurately serialize a data structure as Perl code
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Dump-Streamer/
-Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(B::Utils)
@@ -36,7 +34,7 @@ BuildRequires:  perl(Module::Build)
 Requires:       perl(B::Utils)
 Recommends:     perl(Algorithm::Diff)
 Recommends:     perl(Compress::Zlib)
-Recommends:     perl(JSON::XS)
+Recommends:     perl(Cpanel::JSON::XS)
 Recommends:     perl(PadWalker) >= 0.99
 %{perl_requires}
 
@@ -62,10 +60,10 @@ perform structural analysis, and then in depth first mode to actually
 produce the output, but obeying the depth relationships of the first pass.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -76,7 +74,6 @@ produce the output, but obeying the depth relationships of the first pass.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog
