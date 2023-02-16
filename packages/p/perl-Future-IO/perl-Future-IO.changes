@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb  1 03:06:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.12    2023-01-31
+          [CHANGES]
+           * Added `Future::IO::System`, containing a system()-like and a
+             qx()-like method
+           * Added `->sysread_until_eof` method
+           * Update to perl v5.14 `package NAME VERSION` syntax
+           * Use `await` notation in method minisynopsis lines
+
+          [BUGFIXES]
+           * Need to work harder to set LocalAddr during socket tests
+
+-------------------------------------------------------------------
 Tue Aug 16 14:33:12 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Initial submission
