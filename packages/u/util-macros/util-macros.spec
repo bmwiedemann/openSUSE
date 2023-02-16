@@ -1,7 +1,7 @@
 #
 # spec file for package util-macros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           util-macros
-Version:        1.19.3
+Version:        1.20.0
 Release:        0
 Summary:        The X Protocol
 #Source URL:    http://xorg.freedesktop.org/releases/individual/util/
@@ -27,7 +27,7 @@ Summary:        The X Protocol
 License:        HPND
 Group:          Development/Libraries/X11
 URL:            https://xorg.freedesktop.org/
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 
 %description

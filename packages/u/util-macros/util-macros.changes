@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 13 20:59:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.20.0
+  * This release fixes a deprecation warning when the macros are used with
+    autoconf 2.70 or later, and adds a new XORG_DEFAULT_NOCODE_OPTIONS
+    macro that can be used with packages that don't compile any code to
+    skip all the compiler checks done by XORG_DEFAULT_OPTIONS.  (Packages
+    will need to be updated to use this macro - that is in progress now.)
+
+-------------------------------------------------------------------
 Mon Jan 25 11:21:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to release 1.19.3

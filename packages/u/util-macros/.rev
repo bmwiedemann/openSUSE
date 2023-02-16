@@ -57,4 +57,17 @@
   * XORG_PROG_RAWCPP: Use AC_PATH_TOOL to find preprocessor</comment>
     <requestid>866561</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a99b4db7f0e52c92161f2fd1cbe6d5b7</srcmd5>
+    <version>1.20.0</version>
+    <time>1676578190</time>
+    <user>dimstar_suse</user>
+    <comment>- update to release 1.20.0
+  * This release fixes a deprecation warning when the macros are used with
+    autoconf 2.70 or later, and adds a new XORG_DEFAULT_NOCODE_OPTIONS
+    macro that can be used with packages that don't compile any code to
+    skip all the compiler checks done by XORG_DEFAULT_OPTIONS.  (Packages
+    will need to be updated to use this macro - that is in progress now.)</comment>
+    <requestid>1065590</requestid>
+  </revision>
 </revisionlist>
