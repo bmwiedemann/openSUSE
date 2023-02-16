@@ -47,4 +47,32 @@
     <comment></comment>
     <requestid>871601</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3983339b64e5a164b96e1abe6c777b01</srcmd5>
+    <version>0.13.1</version>
+    <time>1676563025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * fix typo by @MicaelJarniac in #345
+  * Additional platform support and removal of support for old setups by
+    @JeppeKlitgaard in #351
+- 0.13.0:
+  * add pyproject.toml (#226)
+  * Real-to-real transforms (#256)
+  * Drop testing on Python 2.7 and 3.5 (#285)
+  * Minor doc changes to README (#305)
+  * Document PYFFTW_INCLUDE and PYFFTW_LIB_DIR (#311)
+  * Build wheels on GitHub Actions via cibuildwheel (#318)
+  * Fixed setup.py and working CI builds (#323)
+  * Update NumPy and SciPy interfaces with new norm options (take 2) (#330)
+  * CI: Added the correct gh actions badge and tweaked the name of the workflow
+    (#331)
+  * CI: Improved badge to link to the actual workflow (#332)
+  * remove use of distutils (#333)
+  * Increase time allowed for cache clearance in test (#334)
+  * Increase timing in cache tests (#336)
+  * Fix miscellaneous typos (#337)
+</comment>
+    <requestid>1066140</requestid>
+  </revision>
 </revisionlist>
