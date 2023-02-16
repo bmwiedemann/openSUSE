@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 15 17:26:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.13.0:
+  * Minor Changes
+    - Removed experimental flag from multiple rules (#3037) @ssbarnea
+    - Allow only use of quoted octals (#3030) @ssbarnea
+    - Load rule ignores from external text file (#3004) @ssbarnea
+  * Bugfixes
+    - Improve jinja error line number identification (#3044) @ssbarnea
+    - profiles: include all rules when listing all rules or tags (#3043) @ziegenberg
+    - Improve documentation on var-naming (#3042) @ssbarnea
+    - Improve loop-var-prefix checking (#3041) @ssbarnea
+    - Ignore known problematic modules from args rule (#3040) @ssbarnea
+    - Improve jinja2 rule error handling (#3039) @ssbarnea
+    - Enable syntax-check on roles (#3035) @ssbarnea
+    - Recognize role-name[path] also inside roles block (#3034) @ssbarnea
+    - Allow {% in schema full-jinja check (#3029) @ssbarnea
+    - Update ansible-compat (#3025) @ssbarnea
+    - Recognize systemctl kill as a valid command (#3024) @konstruktoid
+    - Mark syntax-check as unskippable (#3020) @ssbarnea
+    - Fixes no-tabs issue with fqcn actions (#3021) @ssbarnea
+    - Move empty-playbook to syntax-check (#3019) @ssbarnea
+    - Ensure that rule import failures are not ignored (#2983) @ssbarnea
+    - Increase the test coverage (#3014) @ssbarnea
+
+-------------------------------------------------------------------
 Sun Feb 12 07:15:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.12.2:

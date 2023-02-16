@@ -31,7 +31,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.12.2
+Version:        6.13.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -44,7 +44,6 @@ BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
 
-# https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L98
 # SECTION tests
 BuildRequires:  %{ansible_python}-flaky >= 3.7.0
 BuildRequires:  %{ansible_python}-pytest
@@ -59,7 +58,6 @@ BuildRequires:  %{ansible_python}-flake8
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
-# https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L64
 BuildRequires:  ansible-core >= 2.12
 BuildRequires:  %{ansible_python}-ansible-compat >= 2.2.5
 BuildRequires:  %{ansible_python}-enrich >= 1.2.6
@@ -75,7 +73,7 @@ BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.3.2
 BuildRequires:  %{ansible_python}-yamllint >= 1.26.3
 
-# https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L69
+#
 Requires:       ansible-core >= 2.12
 Requires:       %{ansible_python}-ansible-compat >= 2.2.5
 Requires:       %{ansible_python}-black >= 22.8.0
