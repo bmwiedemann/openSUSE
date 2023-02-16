@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-backgrounds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-backgrounds
-Version:        43
+Version:        43.1
 Release:        0
 Summary:        GNOME Backgrounds
 License:        CC-BY-SA-3.0
