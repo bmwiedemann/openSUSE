@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 14 20:06:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.39.2:
+  * CVE-2023-22490: Using a specially-crafted repository, Git can
+    be tricked into using its local clone optimization even when
+    using a non-local transport boo#1208027
+  * CVE-2023-23946: a path outside the working tree can be
+    overwritten as the user who is running "git apply" boo#1208028
+
+-------------------------------------------------------------------
 Tue Jan 17 19:13:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.39.1, fixing two security issues that could allow remote

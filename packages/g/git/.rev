@@ -2583,4 +2583,17 @@ git 2.12.3
     boo#1207032</comment>
     <requestid>1059326</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>f3dff9574ef4f32e56aef6c02853d135</srcmd5>
+    <version>2.39.2</version>
+    <time>1676562895</time>
+    <user>dimstar_suse</user>
+    <comment>- git 2.39.2:
+  * CVE-2023-22490: Using a specially-crafted repository, Git can
+    be tricked into using its local clone optimization even when
+    using a non-local transport boo#1208027
+  * CVE-2023-23946: a path outside the working tree can be
+    overwritten as the user who is running &quot;git apply&quot; boo#1208028</comment>
+    <requestid>1065811</requestid>
+  </revision>
 </revisionlist>
