@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.86
+%global nss_softokn_fips_version 3.87
 %define NSPR_min_version 4.35
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.86
+Version:        3.87
 Release:        0
-%define underscore_version 3_86
+%define underscore_version 3_87
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -347,6 +347,9 @@ cp -L  bin/certutil \
        bin/signver \
        bin/ssltap \
        %{buildroot}%{_bindir}
+# copy man-pages
+mkdir -p %{buildroot}%{_mandir}/man1/
+cp -L  %{_builddir}/nss-%{version}/nss/doc/nroff/* %{buildroot}%{_mandir}/man1/
 # copy unsupported tools
 cp -L  bin/atob \
        bin/btoa \
@@ -461,6 +464,7 @@ fi
 %{_bindir}/*
 %exclude %{_sbindir}/setup-nsssysinit.sh
 %{_libexecdir}/nss/
+%{_mandir}/*/*
 %exclude %{_bindir}/nss-config
 %exclude %{_bindir}/nss-util-config
 

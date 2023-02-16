@@ -2830,4 +2830,26 @@
   * bmo#1783231 - Adding exponent blinding for RSA.</comment>
     <requestid>1059272</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>6edf0c968cafb80cf4df29b906b8f7ab</srcmd5>
+    <version>3.87</version>
+    <time>1676562898</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.87
+  * bmo#1803226 - NULL password encoding incorrect
+  * bmo#1804071 - Fix rng stub signature for fuzzing builds
+  * bmo#1803595 - Updating the compiler parsing for build
+  * bmo#1749030 - Modification of supported compilers
+  * bmo#1774654 - tstclnt crashes when accessing gnutls server
+                  without a user cert in the database.
+  * bmo#1751707 - Add configuration option to enable source-based
+                  coverage sanitizer
+  * bmo#1751705 - Update ECCKiila generated files.
+  * bmo#1730353 - Add support for the LoongArch 64-bit architecture
+  * bmo#1798823 - add checks for zero-length RSA modulus to avoid
+                  memory errors and failed assertions later
+  * bmo#1798823 - Additional zero-length RSA modulus checks
+- add man-pages to the tools package (boo#1208242)</comment>
+    <requestid>1065822</requestid>
+  </revision>
 </revisionlist>

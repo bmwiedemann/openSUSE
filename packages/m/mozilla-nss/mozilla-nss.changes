@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 14 23:09:39 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.87
+  * bmo#1803226 - NULL password encoding incorrect
+  * bmo#1804071 - Fix rng stub signature for fuzzing builds
+  * bmo#1803595 - Updating the compiler parsing for build
+  * bmo#1749030 - Modification of supported compilers
+  * bmo#1774654 - tstclnt crashes when accessing gnutls server
+                  without a user cert in the database.
+  * bmo#1751707 - Add configuration option to enable source-based
+                  coverage sanitizer
+  * bmo#1751705 - Update ECCKiila generated files.
+  * bmo#1730353 - Add support for the LoongArch 64-bit architecture
+  * bmo#1798823 - add checks for zero-length RSA modulus to avoid
+                  memory errors and failed assertions later
+  * bmo#1798823 - Additional zero-length RSA modulus checks
+- add man-pages to the tools package (boo#1208242)
+
+-------------------------------------------------------------------
 Sun Jan 15 20:25:25 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.86
