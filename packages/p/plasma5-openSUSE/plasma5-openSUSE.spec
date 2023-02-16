@@ -70,6 +70,7 @@ desktop.
 %package -n plasma5-defaults-openSUSE
 Summary:        Default settings for KDE Plasma 5
 Group:          System/GUI/KDE
+Requires:       distribution-logos-openSUSE-icons
 Requires:       plasma5-theme-openSUSE
 
 %description -n plasma5-defaults-openSUSE
