@@ -22,7 +22,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-biopython
-Version:        1.80
+Version:        1.81
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        BSD-3-Clause AND MIT

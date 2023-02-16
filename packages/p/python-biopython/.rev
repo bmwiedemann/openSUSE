@@ -102,4 +102,18 @@
     refactored ``qcprot.QCPSuperimposer`` class has small changes to its API, to better</comment>
     <requestid>1055870</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c6e0053b5a25f0c9e5734a0c118c20d3</srcmd5>
+    <version>1.81</version>
+    <time>1676562946</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.81:
+  * The API documentation and the `Biopython Tutorial and
+    Cookbook` have been updated to better annotate use and
+    application of the ``Bio.PDB.internal_coords`` module.
+  * ``Bio.Phylo`` now supports ``Alignment`` and
+    ``MultipleSeqAlignment`` objects as input.
+  * Several improvements and bug fixes to the snapgene parser</comment>
+    <requestid>1065974</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 14:03:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.81:
+  * The API documentation and the `Biopython Tutorial and
+    Cookbook` have been updated to better annotate use and
+    application of the ``Bio.PDB.internal_coords`` module.
+  * ``Bio.Phylo`` now supports ``Alignment`` and
+    ``MultipleSeqAlignment`` objects as input.
+  * Several improvements and bug fixes to the snapgene parser
+
+-------------------------------------------------------------------
 Wed Jan  4 14:19:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.80:
