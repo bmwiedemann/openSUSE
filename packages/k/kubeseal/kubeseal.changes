@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 15 16:42:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.5:
+  * Release version v0.19.5 (#1109)
+  * Bump golang.org/x/crypto from 0.5.0 to 0.6.0 (#1108)
+  * Include OpenShift VIB (#1107)
+  * Add workflow for Carvel package release (#1104)
+  * Bump k8s.io/code-generator from 0.26.0 to 0.26.1 (#1102)
+  * Bump github.com/onsi/gomega from 1.25.0 to 1.26.0 (#1103)
+  * Bump github.com/onsi/ginkgo/v2 from 2.7.0 to 2.8.0 (#1101)
+  * Add carvel package (#1100)
+  * Generate values table (#1099)
+  * Bump k8s.io/client-go from 0.26.0 to 0.26.1 (#1096)
+  * Bump github.com/onsi/gomega from 1.24.2 to 1.25.0 (#1095)
+  * Bump k8s.io/klog/v2 from 2.80.1 to 2.90.0 (#1094)
+  * Bump k8s.io/apimachinery from 0.26.0 to 0.26.1 (#1093)
+  * Release Helm Chart 2.7.3 to use release 0.19.4 (#1089)
+
+-------------------------------------------------------------------
 Tue Jan 17 05:46:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.19.4:
