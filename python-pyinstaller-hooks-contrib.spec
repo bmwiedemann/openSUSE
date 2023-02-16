@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -26,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2022.14
+Version:        2023.0
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only
@@ -44,7 +43,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  timezone
 # SECTION optional, the depending tests would be skipped without these
 # most of the libraries enable only two tests, so adding just scikit-learn to run at least any tests
-BuildRequires:  %{python_module scikit-learn}
+#
+# Disabled because it's broken with the latest release 1.2.1
+# gh#pyinstaller/pyinstaller-hooks-contrib#547
+# BuildRequires:  %{python_module scikit-learn}
 # /SECTION
 %endif
 %python_subpackages
@@ -53,7 +55,7 @@ BuildRequires:  %{python_module scikit-learn}
 Community maintained hooks for PyInstaller
 
 %prep
-%setup -q -n pyinstaller-hooks-contrib-%{version}
+%autosetup -p1 -n pyinstaller-hooks-contrib-%{version}
 
 %build
 %python_build
@@ -73,7 +75,8 @@ Community maintained hooks for PyInstaller
 %files %{python_files}
 %doc README.md
 %license LICENSE LICENSE.APL.txt LICENSE.GPL.txt
-%{python_sitelib}/*
+%{python_sitelib}/_pyinstaller_hooks_contrib
+%{python_sitelib}/pyinstaller_hooks_contrib-%{version}*-info
 %endif
 
 %changelog

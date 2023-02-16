@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 15 11:35:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken sklearn tests gh#pyinstaller/pyinstaller-hooks-contrib#547
+- Update to version 2023.0
+  * Add hook for minecraft-launcher-lib (#536)
+  * Add hook for nbt (#537)
+  * Have fiona hook collect the package's data files (e.g., the projections
+    database). (#541)
+  * Update fiona hook for compatibility with fiona 1.9.0. (#541)
+- Update to version 2022.15
+  * Add a hook for easyocr, which imports recognition backends via
+    imporlib.import_module() and has a number of datafiles for different
+    languages.
+  * Users can set which languages to include datafiles for with a hook option.
+    (#530)
+  * Add hook for charset-normalizer to fix ModuleNotFoundError: No module
+    named 'charset_normalizer.md__mypyc'. (#534)
+  * Update shapely hook for compatibility with shapely >= 2.0.0. (#527)
+  * Added hooks-config.rst document which documents hook options. It is
+    referred to from README.md. (#530)
+
+-------------------------------------------------------------------
 Tue Dec 13 16:33:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2022.14 
