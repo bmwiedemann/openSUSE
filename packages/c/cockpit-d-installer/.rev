@@ -15,4 +15,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1044289</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cac346ffbc17fd77c9bd0900b3b9e379</srcmd5>
+    <version>0</version>
+    <time>1676563005</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.7
+- Do not use a proxy to get the errors lists
+  (gh#yast/d-installer#424).
+
+- Add live reloading feature for easing the front-end development
+  process (gh#yast/d-installer#419).
+
+- Fix storage section crashing when proposal is not ready
+  (gh#yast/d-installer#418).
+
+- Better handling of software repositories
+  (gh#yast/d-installer#414):
+  * Report issues when reading the software repositories.
+  * Inform the user about the software proposal progress.
+  * Add a button to reload the repositories
+    (gh#yast/d-installer#388).
+
+- Added a button for displaying the YaST logs
+  (related to gh#yast/d-installer#379)
+
+- UI fixes (gh#yast/d-installer#401):
+  * Add a fallback height for the layout
+  * Fix some miss-alignments
+  * Add missing icon
+  * Ensure tooling serving and loading fonts
+
+- Update aliases for using &quot;~/&quot; instead of &quot;@&quot;
+  (gh#yast/d-installer#400).
+
+- Allow user downloading logs (gh#yast/d-installer#379)</comment>
+    <requestid>1066106</requestid>
+  </revision>
 </revisionlist>
