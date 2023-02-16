@@ -25,6 +25,7 @@ Group:          System/Base
 URL:            https://github.com/google/fscrypt
 Source:         https://github.com/google/fscrypt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        %name.pam
 BuildRequires:  golang-packaging
 BuildRequires:  m4
 BuildRequires:  pam-devel
@@ -60,18 +61,19 @@ This package holds the pam module for fscrypt.
 
 %install
 %make_install %{make_args}
-chmod a-x %{buildroot}%{_datadir}/pam-configs/fscrypt
+# not needed on SUSE
+rm -rvf %{buildroot}%{_datadir}/pam-configs
+install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/%{name}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/fscrypt
-%dir %{_datadir}/pam-configs/
-%{_datadir}/pam-configs/fscrypt
 %{_datadir}/bash-completion/completions/fscrypt
 
 %files -n pam-fscrypt
 %license LICENSE
 %{_pam_moduledir}/pam_fscrypt.so
+%{_sysconfdir}/pam.d/%{name}
 
 %changelog
