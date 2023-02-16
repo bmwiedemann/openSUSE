@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:58:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.9.0:
+  * Remove unnecessary setting of locale::global. #1630
+  * Batch shading: Fix bug with masked wide glosure generation.
+  * Make sure ReParameter() has the same relaxed type checking
+    rules as Parameter(). Before, it was stricter about type
+    conversion.
+
+-------------------------------------------------------------------
 Mon Jan 16 07:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.8.0:
