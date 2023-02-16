@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 16 05:58:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.3:
+  * Changed: Distribution to wheels
+  * Changed: Statistics have a special class
+  * Changed: Statistics are now computed from all values (more options for
+    plot too)
+  * Fixed: Sometimes, dtypes were not properly used
+  * Added: A lot of typing hints
+  * Fixed: asciiplotlib does not exist anymore => don't use it
+  * Changed: Added pre-commit
+  * Changed: More thorough typing
+  * Support: Added Python 3.10, removed Python 3.6 and numpy<1.20
+  * Fixed: A few minor bugs
+  * Changed: Reworked pandas compatibility (.to_series, .to_dataframe methods)
+  * Added: .physt series/dataframe accessors (with h1, h2, histogram methods)
+  * Fixed: A lot of RuntimeError's changed to more specific exceptions
+  * Fixed: Typing annotations (again) passing mypy validation. 
+
+-------------------------------------------------------------------
 Fri Apr 23 02:52:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.0.1:

@@ -42,4 +42,27 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887907</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d3d3c866e72a706c748b62168f3cd35</srcmd5>
+    <version>0.5.3</version>
+    <time>1676563002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3:
+  * Changed: Distribution to wheels
+  * Changed: Statistics have a special class
+  * Changed: Statistics are now computed from all values (more options for
+    plot too)
+  * Fixed: Sometimes, dtypes were not properly used
+  * Added: A lot of typing hints
+  * Fixed: asciiplotlib does not exist anymore =&gt; don't use it
+  * Changed: Added pre-commit
+  * Changed: More thorough typing
+  * Support: Added Python 3.10, removed Python 3.6 and numpy&lt;1.20
+  * Fixed: A few minor bugs
+  * Changed: Reworked pandas compatibility (.to_series, .to_dataframe methods)
+  * Added: .physt series/dataframe accessors (with h1, h2, histogram methods)
+  * Fixed: A lot of RuntimeError's changed to more specific exceptions
+  * Fixed: Typing annotations (again) passing mypy validation.</comment>
+    <requestid>1066081</requestid>
+  </revision>
 </revisionlist>
