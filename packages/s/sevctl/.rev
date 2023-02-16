@@ -44,4 +44,12 @@
      ok: Show if Page flush MSR is enabled/disabled</comment>
     <requestid>1063528</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5716cce929b6a1a4781d6a1769ff0cfd</srcmd5>
+    <version>0.3.2+git.e37c4d6</version>
+    <time>1676562994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1066053</requestid>
+  </revision>
 </revisionlist>

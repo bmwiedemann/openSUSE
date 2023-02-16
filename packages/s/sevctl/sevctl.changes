@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  8 20:34:00 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Set cargo_vendor update param to false to bypass upstream semvar issues
+
+-------------------------------------------------------------------
 Tue Jan 31 22:08:30 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to v0.3.2 + git commit e37c4d6
