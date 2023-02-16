@@ -1,7 +1,7 @@
 #
 # spec file for package libvpx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         sover 7
+%define         sover 8
 Name:           libvpx
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -142,8 +142,7 @@ make %{?_smp_mflags} verbose=yes GEN_EXAMPLES= DESTDIR=%{buildroot} install
 # needs network to download >400MB data
 # make test
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n vpx-tools
 %{_bindir}/*

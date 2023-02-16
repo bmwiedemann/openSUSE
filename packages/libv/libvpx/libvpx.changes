@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 14 12:31:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.13.0:
+  * This release includes more Neon and AVX2 optimizations, adds a
+    new codec control to set per frame QP, upgrades GoogleTest to
+    v1.12.1, and includes numerous bug fixes.
+  * Upgrading:
+    - This release is ABI incompatible with the previous release.
+    - New codec control VP9E_SET_QUANTIZER_ONE_PASS to set per
+      frame QP.
+    - GoogleTest is upgraded to v1.12.1.
+    - .clang-format is upgraded to clang-format-11.
+    - VPX_EXT_RATECTRL_ABI_VERSION was bumped due to incompatible
+      changes to the feature of using external rate control models
+      for vp9.
+  * Enhancement:
+    - Numerous improvements on Neon optimizations.
+    - Numerous improvements on AVX2 optimizations.
+    - Additional ARM targets added for Visual Studio.
+  * Bug fixes:
+    - Fix to calculating internal stats when frame dropped.
+    - Fix to segfault for external resize test in vp9.
+    - Fix to build system with replacing egrep with grep -E.
+    - Fix to a few bugs with external RTC rate control library.
+    - Fix to make SVC work with VBR.
+    - Fix to key frame setting in VP9 external RC.
+    - Fix to -Wimplicit-int (Clang 16).
+    - Fix to VP8 external RC for buffer levels.
+    - Fix to VP8 external RC for dynamic update of layers.
+    - Fix to VP9 auto level.
+    - Fix to off-by-one error of max w/h in validate_config.
+    - Fix to make SVC work for Profile 1.
+- Bump sover define to 8 (and in baselibs.conf) following upstream
+  changes.
+
+-------------------------------------------------------------------
 Fri Jul 22 21:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:
