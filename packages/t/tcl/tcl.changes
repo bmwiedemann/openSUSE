@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  6 18:29:45 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1203982, tcl-interp-limit-time.patch: Fix a y2k38 problem
+  in [interp limit -time] .
+
+-------------------------------------------------------------------
 Tue Jan 17 11:21:29 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1206623: adopt upstream patch for an improved fix that does

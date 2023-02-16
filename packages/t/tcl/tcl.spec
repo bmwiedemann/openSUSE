@@ -50,6 +50,7 @@ Source2:        baselibs.conf
 Source3:        macros.tcl
 Patch0:         tcl-refchan-mode-needed.patch
 Patch1:         tcl-string-compare.patch
+Patch2:         tcl-interp-limit-time.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -95,6 +96,7 @@ if ! test -d pkgs/itcl%itclver; then
 fi
 %patch0
 %patch1
+%patch2
 
 # The SQLite extension is provided by the sqlite3 package,
 # so don't build it here.
