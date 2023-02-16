@@ -1,7 +1,7 @@
 #
 # spec file for package calc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define soname 2_14_1_2
+%define soname 2_14_1_3
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.14.1.2
+Version:        2.14.1.3
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 15 14:30:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.1.3:
+  * Fixed missing <string.h include in have_fpos_pos.c.
+  * Change calc version from 2.14.1.2 to 2.14.2.3 as part of a test to
+    build calc RPMs on a reference RHEL8.7 platform (formerly a RHEL7.9
+    platform).
+
+-------------------------------------------------------------------
 Thu Dec  1 09:31:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.1.2:
