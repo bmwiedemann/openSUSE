@@ -1571,4 +1571,15 @@ Changes:
 - Implement lua string macros</comment>
     <requestid>1063831</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>8828662b9edb96aa67b016524f113c52</srcmd5>
+    <version>20230215</version>
+    <time>1676578192</time>
+    <user>dimstar_suse</user>
+    <comment>- Support SBOM generation for KIWI VM images
+- CycloneDX SBOM support added
+
+- added support for generating VCS url information into rpms</comment>
+    <requestid>1065954</requestid>
+  </revision>
 </revisionlist>
