@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 16 10:05:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean up build and runtime requirements
+- Drop python-h5py-relax-dependency-versions.patch -- it has become
+  a noop at the last refresh.
+- Only build for supported pythons (>= 3.7)
+- PEP517 build
+
+-------------------------------------------------------------------
 Wed Feb  8 18:59:18 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - specfile:

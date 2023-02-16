@@ -18,9 +18,6 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %define pname python-h5py
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 # SECTION MPI DEFINITIONS
 %if "%{flavor}" == "openmpi1"
 %global mpi_flavor openmpi
@@ -70,40 +67,25 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE python-h5py-relax-dependency-versions.patch badshah400@gmail.com -- Build against newer version of numpy
-Patch0:         python-h5py-relax-dependency-versions.patch
 BuildRequires:  %{python_module Cython >= 0.29}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.12}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module numpy-devel >= 1.14.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module Cython >= 0.29.14 if (%python-base >= 3.8)}
-BuildRequires:  %{python_module Cython >= 0.29.15 if (%python-base >= 3.9)}
-BuildRequires:  %{python_module cached-property if (%python-base < 3.8)}
-BuildRequires:  %{python_module numpy-devel >= 1.17.5 if (%python-base >= 3.8)}
-BuildRequires:  %{python_module numpy-devel >= 1.19.3 if (%python-base >= 3.9)}
 %requires_eq    hdf5%{?my_suffix}
 %requires_eq    libhdf5%{?my_suffix}
-%if 0%{python_version_nodots} >= 39
-Requires:       python-numpy >= 1.19.3
-%else
-%if 0%{python_version_nodots} >= 38
-Requires:       python-numpy >= 1.17.5
-%else
-Requires:       python-numpy >= 1.12
-%endif
-%endif
-%if %{python_version_nodots} < 38
-Requires:       python-cached-property
-%endif
+Requires:       python-numpy >= 1.14.5
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
-BuildRequires:  %{python_module mpi4py}
+BuildRequires:  %{python_module mpi4py >= 3.0.2}
 BuildRequires:  %{python_module pytest-mpi}
+Requires:       python-mpi4py >= 3.0.2
 %endif
 %python_subpackages
 
@@ -126,13 +108,13 @@ export HDF5_LIBDIR=%{my_libdir}
 export HDF5_INCLUDEDIR=%{my_incdir}
 %endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
 %if %{with mpi}
-%python_exec setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{my_prefix}
+%pyproject_install --prefix %{my_prefix}
 %else
-%python_install
+%pyproject_install
 %endif
 %python_expand %fdupes %{buildroot}%{my_sitearch_in_expand}/h5py/
 
