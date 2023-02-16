@@ -15,5 +15,4 @@
   <service name="set_version" mode="disabled">
     <param name="basename">grafana</param>
   </service>
-  <service name="go_modules" mode="disabled"/>
 </services>

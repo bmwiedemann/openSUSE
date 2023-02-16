@@ -36,11 +36,13 @@ Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
+# CVE-2022-46146 bsc#1208065
+Patch0:         0002-Update-exporter-toolkit-to-version-0.7.3.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  wire
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.19
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
@@ -61,6 +63,7 @@ dashboards and data with teams.
 %prep
 %setup -q -n grafana-%{version}
 %setup -q -T -D -a 1 -n grafana-%{version}
+%patch0 -p1
 
 %build
 %goprep github.com/grafana/grafana

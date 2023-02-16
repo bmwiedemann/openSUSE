@@ -24,7 +24,12 @@ tar:
 	cd $$basename && \
 	# Patches for the JS frontend go after here \
 	patch --no-backup-if-mismatch -p1 -i ../../0001-Add-source-code-reference.patch && \
+	patch --no-backup-if-mismatch -p1 -i ../../0002-Update-exporter-toolkit-to-version-0.7.3.patch && \
 	# End patches section \
+	go mod download && \
+	go mod verify && \
+	go mod vendor && \
+	tar --format=posix -cf ../../vendor.tar vendor && \
 	# avoid ".git can't be found" \
 	git init && \
 	# avoid "FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory" \
@@ -36,4 +41,5 @@ tar:
 	tar -rf ../$$tar $$basename/public && \
 	cd .. && \
 	gzip $$tar && \
+	gzip -f vendor.tar && \
 	rm -rf $$tmpdir
