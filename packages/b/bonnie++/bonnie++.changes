@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 15:34:39 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to 2.00a:
+  * Fixed an error in assigning colors in bon_csv2html.
+
+-------------------------------------------------------------------
 Fri Jun 25 23:37:25 UTC 2021 - Fernando Mattioli <mattioli.fernando@gmail.com>
 
 - Add patch:
