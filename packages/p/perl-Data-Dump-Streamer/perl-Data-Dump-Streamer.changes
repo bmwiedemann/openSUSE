@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 28 03:06:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.41
+   see /usr/share/doc/packages/perl-Data-Dump-Streamer/Changes
+
+  2.41
+  Merged in all the open PR's. Some MUCH much later than I originally
+  intended to. Humble apologies to those who contributed fixes for that.
+  Switch from JSON::XS to Cpanel::JSON::XS as an optional test prereq.
+  Thanks to Karen Etheridge, Kent Frederic and Michael Schwern.
+
+-------------------------------------------------------------------
 Wed Aug 31 05:29:05 UTC 2016 - coolo@suse.com
 
 - updated to 2.40
