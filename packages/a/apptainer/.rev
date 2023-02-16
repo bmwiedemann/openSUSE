@@ -147,4 +147,36 @@
     <comment></comment>
     <requestid>1058009</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c98e41674a4c4126ad9adeb5ab57ac26</srcmd5>
+    <version>1.1.6</version>
+    <time>1676562975</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.6 with following changes:
+  * Included a fix for CVE-2022-23538 which potentially leaked user credentials
+    to a third-party S3 storage service when using the library:// protocol. See
+    the https://github.com/sylabs/scs-library-client/security/advisories/GHSA-7p8m-22h4-9pj7  
+    for details.
+  * Make PS1 environment variable changeable via %environment section on
+    definition file that used to be only changeable via APPTAINERENV_PS1
+    outside of container. This makes the container's prompt customizable.
+  * Fix the passing of nested bind mounts when there are multiple binds
+    separated by commas and some of them have colons separating sources and
+    destinations.
+  * Hide messages about SINGULARITY variables if corresponding APPTAINER
+    variables are defined. Fixes a regression introduced in 1.1.4.
+  * Print a warning if extra arguments are given to a shell action, and show in
+    the run action usage that arguments may be passed.
+  * Check for the existence of the runtime executable prefix, to avoid issues
+    when running under Slurm's srun. If it doesn't exist, fall back to the
+    compile-time prefix.
+  * Increase the timeout on image driver (that is, FUSE) mounts from 2 seconds
+    to 10 seconds. Instead, print an INFO message if it takes more than 2
+    seconds.
+  * If a remote is defined both globally (i.e. system-wide) and individually,
+    change apptainer remote commands to print an info message instead of
+    exiting with a fatal error and to give precedence to the individual
+    configuration. (forwarded request 1065996 from mslacken)</comment>
+    <requestid>1065997</requestid>
+  </revision>
 </revisionlist>
