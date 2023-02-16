@@ -1,0 +1,5 @@
+<package name="aardvark-dns" project="openSUSE:Factory">
+  <title>aardvark-dns</title>
+  <description>Authoritative dns server for A/AAAA container records. Forwards other request to host's /etc/resolv.conf </description>
+  <devel project="devel:microos" package="aardvark-dns"/>
+</package>
