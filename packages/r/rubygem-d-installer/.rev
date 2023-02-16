@@ -15,4 +15,39 @@
     <comment>submit new version 0.6.2</comment>
     <requestid>1044303</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c01ab3edb9eddd027f9fe1a5a1646aa3</srcmd5>
+    <version>0.7</version>
+    <time>1676563003</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.7
+- Update the list of patterns to install for Leap Micro 5.3
+  (gh#yast/d-installer#427).
+
+- Better handling of software repositories
+  (gh#yast/d-installer#414):
+  * Report issues when reading the software repositories.
+  * Inform the user about the software proposal progress.
+  * Do not try to calculate a proposal if there are no
+    repositories.
+
+- Use the upstream version of D-Bus ObjectManager
+  (gh#yast/d-installer#245)
+
+- Save logs and provide the path to the file
+  (gh#yast/d-installer#379)
+
+- Implement validation of software proposal
+  (gh#yast/d-installer#381)
+
+- Check for installed packages in the target system, instead of the
+  installation medium (gh#yast/d-installer#393).
+
+- Simplify the network configuration to just copying the
+  NetworkManager connections and enabling the service
+  (gh#yast/d-installer#397).
+
+- Use a dedicated D-Bus server (gh#yast/d-installer#384).</comment>
+    <requestid>1066104</requestid>
+  </revision>
 </revisionlist>

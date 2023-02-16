@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-d-installer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-d-installer
-Version:        0.6.2
+Version:        0.7
 Release:        0
 %define mod_name d-installer
 %define mod_full_name %{mod_name}-%{version}
@@ -68,9 +68,9 @@ System service for D-Installer, an experimental YaST-based installer.
   --symlink-binaries \
   -f
 # MANUAL
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/dbus.conf %{buildroot}%{_datadir}/dbus-1/system.d/org.opensuse.DInstaller.conf
-install --directory %{buildroot}%{_datadir}/dbus-1/system-services
-install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/system-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.DInstaller*.service
+install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/dbus.conf %{buildroot}%{_datadir}/dbus-1/d-installer.conf
+install --directory %{buildroot}%{_datadir}/dbus-1/d-installer-services
+install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/d-installer-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.DInstaller*.service
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/systemd.service %{buildroot}%{_unitdir}/d-installer.service
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/etc/d-installer.yaml %{buildroot}%{_sysconfdir}/d-installer.yaml
 # /MANUAL
