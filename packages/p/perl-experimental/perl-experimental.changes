@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  1 03:09:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.031     2023-01-31 22:46:02+01:00 Europe/Amsterdam
+            - Fix the name of the extra_paired_delimiters feature (previously
+              mis-documented as extra_paired_delims)
+            - Added "stable.pm", which acts like experimental.pm only for
+              features which have been marked non-experimental in their current
+              form, in later version of perl.
+
+-------------------------------------------------------------------
 Sun Dec 11 03:07:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.030
