@@ -29,24 +29,29 @@
 %define ulsubset core
 %define core %nil
 %endif
+# flavor == ""
 
 %if "%{flavor}" == "systemd"
 %define ulbuild base
 %define ulsubset systemd
 %define core %exclude
 %endif
+# flavor == systemd
 
 # All python flavors are build separately. No module can be built together with base.
 # This is a limitation of %%python_subpackages.
 %if "%{flavor}" == "python"
 %define ulbuild python
 %endif
+# flavor == python
 
 %if 0%{?suse_version} < 1550
 %define ul_extra_bin_sbin 1
 %else
 %define ul_extra_bin_sbin 0
 %endif
+# suse_version < 1550
+
 %define ul_suid 4755
 
 %define _name   util-linux
@@ -56,22 +61,30 @@
 %else
 %define no_config 1
 %endif
+# ! _distconfdir
 
-%if "%ulbuild" == "base"
 %if "%ulsubset" == "core"
 Name:           util-linux
 Summary:        A collection of basic system utilities (core part)
-%else
+Group:          System/Base
+%endif
+# ulsubset == core
+
+%if "%ulsubset" == "systemd"
 Name:           util-linux-systemd
 Summary:        A collection of basic system utilities (systemd dependent part)
-%endif
 Group:          System/Base
-%else
+%endif
+# ulsubset == systemd
+
+%if "%ulbuild" == "python"
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libmount
 Summary:        Python bindings for the libmount library
 Group:          Development/Languages/Python
 %endif
+# ulbuild == python
+
 Version:        2.38.1
 Release:        0
 License:        GPL-2.0-or-later
@@ -116,12 +129,16 @@ BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  utempter-devel
 BuildRequires:  zlib-devel
+PreReq:         permissions
 # util-linux is part of VMInstall, but we can well build without it
 # Helps shorten a cycle and eliminate a bootstrap issue
 #!BuildIgnore:  util-linux
+
 %ifarch ppc ppc64 ppc64le
 BuildRequires:  librtas-devel
 %endif
+#arch ppc
+
 %if "%ulsubset" == "systemd"
 BuildRequires:  bash-completion
 BuildRequires:  libudev-devel
@@ -129,16 +146,12 @@ BuildRequires:  socat
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(asciidoctor)
-PreReq:         permissions
-Requires:       adjtimex
-Requires:       time
-Requires:       which
-PreReq:         %install_info_prereq
 # man pages were moved to -systemd subpackage with 2.38.x (SLE15 SP6, Leap 15.6)
 Conflicts:      util-linux < 2.38
 %systemd_requires
 %endif
-%if "%ulbuild" == "base"
+# ulsubset == systemd
+
 %if "%ulsubset" == "core"
 Provides:       fsck-with-dev-lock = %{version}
 # bnc#651598:
@@ -157,33 +170,54 @@ Obsoletes:      rfkill <= 0.5
 Provides:       hardlink = 1.1
 Obsoletes:      hardlink < 1.1
 # bnc#805684:
+
 %ifarch s390x
 Obsoletes:      s390-32
 Provides:       s390-32
 %endif
+# arch s390x
+
 Supplements:    filesystem(minix)
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 Recommends:     login_defs-support-for-util-linux >= 2.37
 %endif
+# ulsubset == core
+
+%if "%ulbuild" == "base"
 Requires(pre):  group(tty)
 # The problem with inconsistent /proc/self/mountinfo read is fixed in kernel 5.8.
 # util-linux >= 2.37 no more contain work-around.
 Conflicts:      kernel < 5.8
 %endif
+# ulbuild == base
+
 %if "%ulbuild" == "python"
 BuildRequires:  %{python_module devel}
 BuildRequires:  rubygem(asciidoctor)
 %python_subpackages
 %endif
+# ulbuild == python
+
+%if "%ulbuild" == "python"
+%description
+This package contains the Python bindings for util-linux libmount
+library.
+%endif
+# ulbuild == python
 
 %if "%ulbuild" == "base"
 %description
 This package contains a large variety of low-level system utilities
 that are necessary for a Linux system to function. It contains the
 mount program, the fdisk configuration tool, and more.
+%endif
+# ulbuild == base
 
+#################
+# Core packages #
+#################
 %if "%ulsubset" == "core"
 %package -n libblkid1
 Summary:        Filesystem detection library
@@ -327,6 +361,11 @@ unique IDs (UUIDs).
 
 %lang_package
 %endif
+# ulsubset == core
+
+####################
+# Systemd packages #
+####################
 %if "%ulsubset" == "systemd"
 %package -n uuidd
 Summary:        Helper daemon to guarantee uniqueness of time-based UUIDs
@@ -349,15 +388,8 @@ Requires:       user(uuidd)
 The uuidd package contains a userspace daemon (uuidd) which guarantees
 uniqueness of time-based UUID generation even at very high rates on
 SMP systems.
-
 %endif
-%endif
-
-%if "%ulbuild" == "python"
-%description
-This package contains the Python bindings for util-linux libmount
-library.
-%endif
+# ulsubset == systemd
 
 %prep
 %setup -q -n %{_name}-%{version}
@@ -373,13 +405,40 @@ export SUID_LDFLAGS="-pie"
 export LDFLAGS="-Wl,-z,relro,-z,now"
 export CFLAGS="%{optflags} -D_GNU_SOURCE"
 export CXXFLAGS="%{optflags} -D_GNU_SOURCE"
+
 # Here we define a build function. For the base build, we use it as it
 # is. For python build, we use it repeatedly for all flavors.
 function configure_and_build() {
+
+# configure options depending on ulbuild and ulsubset values
+configure_options=""
+
 %if "%ulbuild" == "python"
 %define _configure ../configure
+configure_options+="--disable-all-programs "
+configure_options+="--with-python "
+configure_options+="--enable-pylibmount "
+configure_options+="--enable-libmount "
+configure_options+="--enable-libblkid "
 %endif
-#
+# ulbuild == python
+
+%if "%ulbuild" == "base"
+configure_options+="--enable-all-programs "
+configure_options+="--without-python "
+%endif
+# ulbuild == base
+
+%if "%ulsubset" == "core"
+configure_options+="--without-systemd "
+%endif
+# ulsubset == core
+
+%if "%ulsubset" == "systemd"
+configure_options+="--with-systemd "
+%endif
+# ulsubset == systemd
+
 #AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 # All dirs needs to be specified, as %%configure does not derive them
 # from %%_prefix, and bootstrap build will fall back to /usr.
@@ -418,26 +477,32 @@ function configure_and_build() {
 	--disable-pg\
 	--enable-fs-paths-default="/sbin:/usr/sbin"\
 	--enable-static\
-%if "%ulbuild" == "python"
-	--disable-all-programs\
-	--with-python\
-	--enable-pylibmount\
-	--enable-libmount\
-	--enable-libblkid\
-%else
-	--enable-all-programs\
-%if "%ulsubset" == "core"
-	--without-systemd\
-%else
-	--with-systemd\
-%endif
-	--without-python\
-%endif
-	--with-vendordir=%{_distconfdir}
+	--with-vendordir=%{_distconfdir} \
+	$configure_options
 make %{?_smp_mflags}
 }
+
+################
+# Python build #
+################
+%if "%ulbuild" == "python"
+%{python_expand export PYTHON=$python
+mkdir -p build.$python
+cd build.$python
+configure_and_build
+cd ..
+}
+%endif
+# ulbuild == python
+
+##############
+# Base build #
+##############
 %if "%ulbuild" == "base"
 configure_and_build
+%endif
+# ulbuild == base
+
 %if "%ulsubset" == "core"
 bash ./util-linux-login_defs-check.sh
 #BEGIN SYSTEMD SAFETY CHECK
@@ -457,17 +522,12 @@ UTIL_LINUX_KNOWN_SYSTEMD_DEPS='$UTIL_LINUX_FOUND_SYSTEMD_DEPS'"
 fi
 #END SYSTEMD SAFETY CHECK
 %endif
-%endif
-%if "%ulbuild" == "python"
-%{python_expand export PYTHON=$python
-mkdir -p build.$python
-cd build.$python
-configure_and_build
-cd ..
-}
-%endif
+# ulsubset == core
 
 %install
+################
+# Base install #
+################
 %if "%ulbuild" == "base"
 %make_install
 mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_sysconfdir}/issue.d}
@@ -486,7 +546,9 @@ rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
+
 # arch dependent
+
 %ifarch s390 s390x
 rm -f %{buildroot}%{_sysconfdir}/fdprm
 rm -f %{buildroot}%{_bindir}/setterm
@@ -497,16 +559,22 @@ rm -f %{buildroot}%{_mandir}/man8/fdformat.8*
 rm -f %{buildroot}%{_mandir}/man8/hwclock.8*
 rm -f %{buildroot}%{_mandir}/man8/tunelp.8*
 %endif
+# arch s390
+
 %ifarch ia64 %sparc m68k
 rm -f %{buildroot}%{_mandir}/man8/cfdisk.8*
 rm -f %{buildroot}%{_mandir}/man8/sfdisk.8*
 rm -f %{buildroot}%{_sbindir}/cfdisk
 rm -f %{buildroot}%{_sbindir}/sfdisk
 %endif
+# arch ia64 sparc m68k
+
 %ifarch ia64 m68k
 rm -f %{buildroot}%{_sbindir}/fdisk
 rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 %endif
+# arch ia64 m68k
+
 # create list of setarch(8) symlinks
 find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
   -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
@@ -515,6 +583,7 @@ find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
   -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
   -printf "%{_bindir}/%f\n" >> %{name}.files
 mkdir -p %{buildroot}/run/uuidd
+
 %if "%ulsubset" == "systemd"
 # clock.txt from uuidd is a ghost file
 # FIXME: This could also be used by libuuid, but for now we only
@@ -522,6 +591,8 @@ mkdir -p %{buildroot}/run/uuidd
 mkdir -p %{buildroot}%{_sharedstatedir}/libuuid/
 touch %{buildroot}%{_sharedstatedir}/libuuid/clock.txt
 %endif
+# ulsubset == systemd, ulbuild == base
+
 %if %{ul_extra_bin_sbin}
 mkdir -p %{buildroot}{/bin,/sbin}
 for i in dmesg findmnt kill logger lsblk more mount su umount; do
@@ -540,14 +611,24 @@ done
 # login is always and only in /bin
 mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
 %endif
+# ul_extra_bin_sbin, ulbuild == base
+
 %if "%ulsubset" == "core"
 %find_lang %{_name} %{name}.lang
 %else
+# ulsubset != core, ulbuild == base
 echo -n "" >%{name}.lang
 ln -sf /sbin/service %{buildroot}%{_sbindir}/rcuuidd
 ln -sf /sbin/service %{buildroot}%{_sbindir}/rcfstrim
 %endif
+# ulsubset == core, ulbuild == base
+
 %endif
+# ulbuild == base
+
+##################
+# Python install #
+##################
 %if "%ulbuild" == "python"
 %{python_expand cd build.$python
 %make_install
@@ -557,11 +638,16 @@ cd ..
 # There is a limitation: python module needs to build much more, and install even more. Delete it.
 rm -r %{buildroot}{%{_bindir},%{_mandir},%{_datadir},%{_includedir},%{_libdir}/{lib,pkg}*}
 %endif
+# ulbuild == python
+
+# fdupes for all multibuild flavors
 # Link duplicate manpages or python bindings.
 %fdupes -s %{buildroot}%{_prefix}
 
+##############
+# Base check #
+##############
 %if "%ulbuild" == "base"
-%if "%ulbuild" != "python"
 %check
 # Perform testsuite with the standard build only.
 # mark some tests "known_fail"
@@ -584,6 +670,8 @@ export TS_OPT_script_known_fail="yes"
 # may segfault on qemu-user-space
 export TS_OPT_misc_setarch_known_fail="yes"
 %endif
+# qemu_user_space_build
+
 # Succeeds in local build, fails in OBS.
 export TS_OPT_hardlink_options_known_fail="yes"
 export TS_OPT_lsfd_mkfds_rw_character_device_known_fail="yes"
@@ -607,26 +695,27 @@ exit "$result"
 %verifyscript
 %verify_permissions -e %{_bindir}/wall -e %{_bindir}/write -e %{_bindir}/mount -e %{_bindir}/umount
 %verify_permissions -e %{_bindir}/su
+%endif
+# ulsubset == core, ulbuild == base
 
 %endif
+# ulbuild == base
 
-%pre
+###################
+# Core pre & post #
+###################
 %if "%ulsubset" == "core"
+%pre
 # move outdated pam.d/*.rpmsave files away
 for i in login remote runuser runuser-l su su-l ; do
     test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
 done
-%endif
-%if "%ulsubset" == "systemd"
-%service_add_pre fstrim.service fstrim.timer
-%endif
 
 %post
-%if "%ulsubset" == "core"
 %set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
+
 %if ! %{defined no_config}
-#
 # If outdated PAM file is detected, issue a warning.
 for PAM_FILE in login remote runuser runuser-l su su-l ; do
 	if test -f %{_pam_vendordir}/$PAM_FILE.rpmnew ; then
@@ -651,17 +740,8 @@ if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; the
 	fi
 fi
 %endif
-%if "%ulsubset" == "systemd"
-%service_add_post fstrim.service fstrim.timer
+# !defined no_config
 
-%preun
-%service_del_preun fstrim.service fstrim.timer
-
-%postun
-%service_del_postun fstrim.service fstrim.timer
-%endif
-
-%if "%ulsubset" == "core"
 %if %{defined no_config}
 %posttrans
 # Migration to /usr/etc.
@@ -669,6 +749,7 @@ for i in  login remote runuser runuser-l su su-l; do
   test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
 done
 %endif
+# defined no_config
 
 %post -n libblkid1 -p /sbin/ldconfig
 
@@ -691,14 +772,34 @@ done
 %postun -n libfdisk1 -p /sbin/ldconfig
 
 %endif
+# ulsubset == core, pre & post
+
+######################
+# Systemd pre & post #
+######################
 %if "%ulsubset" == "systemd"
+%pre
+%service_add_pre fstrim.service fstrim.timer
+
+%post
+%service_add_post fstrim.service fstrim.timer
+
+%preun
+%service_del_preun fstrim.service fstrim.timer
+
+%postun
+%service_del_postun fstrim.service fstrim.timer
+
 %pre -n uuidd
+
 %if 0%{?suse_version} < 1330
 getent group uuidd >/dev/null || /usr/sbin/groupadd -r uuidd
 getent passwd uuidd >/dev/null || \
 	/usr/sbin/useradd -r -g uuidd -c "User for uuidd" \
 	-d %{_localstatedir}/run/uuidd uuidd
 %endif
+# suse_version < 1330
+
 %{service_add_pre uuidd.socket uuidd.service}
 
 %post -n uuidd
@@ -714,22 +815,17 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %postun -n uuidd
 %{service_del_postun uuidd.socket uuidd.service}
-%endif
 
 %endif
+# ulsubset == systemd, pre & post
 
+##############
+# Base files #
+##############
+%if "%ulbuild" == "base"
 %files -n %{name} -f %{name}.files
 %defattr(-,root,root)
-#
-%if "%ulsubset" == "core"
-# Common files for all archs
-%doc AUTHORS ChangeLog README NEWS
-%license README.licensing
-%license COPYING
-%license Documentation/licenses/*
-%config(noreplace) %{_sysconfdir}/filesystems
-%config(noreplace) %{_sysconfdir}/blkid.conf
-%endif
+
 %if %{defined no_config}
 %{_pam_vendordir}/login
 %{_pam_vendordir}/remote
@@ -737,12 +833,18 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_pam_vendordir}/runuser-l
 %{_pam_vendordir}/su
 %{_pam_vendordir}/su-l
+
 %if 0%{?suse_version} <= 1520
 %dir %{_distconfdir}/default
 %endif
+# suse_version <= 1520
+
 %{_distconfdir}/default/runuser
 %{_distconfdir}/default/su
+
 %else
+# ! defined no_config
+
 %config(noreplace) %{_pam_vendordir}/login
 %config(noreplace) %{_pam_vendordir}/remote
 %config(noreplace) %{_pam_vendordir}/runuser
@@ -752,7 +854,10 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/default/runuser
 %config(noreplace) %{_sysconfdir}/default/su
 %endif
+# defined no_config
+
 %config %dir %{_sysconfdir}/issue.d
+
 %if %{ul_extra_bin_sbin}
 %exclude /bin/findmnt
 /bin/kill
@@ -789,6 +894,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /sbin/fstrim
 /sbin/chcpu
 %endif
+# ul_extra_bin_sbin
+
 %{_bindir}/kill
 %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
 %{_bindir}/eject
@@ -803,13 +910,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/dmesg
 %{_bindir}/fallocate
 %{_bindir}/fincore
-%if "%ulsubset" == "core"
-%exclude %{_bindir}/findmnt
-%exclude %{_bindir}/logger
-%exclude %{_bindir}/lsblk
-%exclude %{_bindir}/lslogins
-%exclude %{_mandir}/man*/*
-%endif
+
 %{_bindir}/flock
 %{_bindir}/getopt
 %{_bindir}/hardlink
@@ -824,9 +925,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/lastb
 %{_bindir}/line
 %{_bindir}/look
+
 %if !%{ul_extra_bin_sbin}
 %{_bindir}/login
 %endif
+# ul_extra_bin_sbin
+
 %{_bindir}/lscpu
 %{_bindir}/lsfd
 %{_bindir}/lsipc
@@ -866,9 +970,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_sbindir}/blkid
 %{_sbindir}/blkdiscard
 # blkzone depends on linux/blkzoned.h
+
 %if 0%{?suse_version} >= 1330
 %{_sbindir}/blkzone
 %endif
+# suse_version >= 1330
+
 %{_sbindir}/blockdev
 %{_sbindir}/chcpu
 %{_sbindir}/ctrlaltdel
@@ -925,10 +1032,81 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %doc Documentation/pg.txt
 %{_docdir}/%{name}/getopt-example.*
 %exclude %{_sbindir}/uuidd
+
+#
+# Files not common for all architectures
+%ifnarch ia64 m68k
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/fdisk
 %endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/fdisk
+%core %{_mandir}/man8/fdisk.8.gz
+%endif
+# narch ia64 m68k
+
+%ifnarch %sparc ia64 m68k
+%core %{_mandir}/man8/cfdisk.8.gz
+%core %{_mandir}/man8/sfdisk.8.gz
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/cfdisk
+%core /sbin/sfdisk
+%endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/cfdisk
+%core %{_sbindir}/sfdisk
+%endif
+# narch sparc ia64 m68k
+
+%ifnarch s390 s390x
+%core %{_sbindir}/fdformat
+
+%if %{ul_extra_bin_sbin}
+%core /sbin/hwclock
+%endif
+# ul_extra_bin_sbin
+
+%core %{_sbindir}/hwclock
+%core %{_bindir}/setterm
+%core %{_sbindir}/tunelp
+%core %{_mandir}/man8/fdformat.8.gz
+%core %{_mandir}/man8/hwclock.8.gz
+%core %{_mandir}/man8/tunelp.8.gz
+%endif
+# narch s390
+
+##############
+# Core files #
+##############
+
+%if "%ulsubset" == "core"
+# Common files for all archs
+%doc AUTHORS ChangeLog README NEWS
+%license README.licensing
+%license COPYING
+%license Documentation/licenses/*
+%config(noreplace) %{_sysconfdir}/filesystems
+%config(noreplace) %{_sysconfdir}/blkid.conf
+
+%exclude %{_bindir}/findmnt
+%exclude %{_bindir}/logger
+%exclude %{_bindir}/lsblk
+%exclude %{_bindir}/lslogins
+%exclude %{_mandir}/man*/*
+%endif
+# ulsubset == core, ulbuild == base
+
+#################
+# Systemd files #
+#################
 %if "%ulsubset" == "systemd"
 %exclude %config(noreplace) %{_sysconfdir}/filesystems
 %exclude %config(noreplace) %{_sysconfdir}/blkid.conf
+
 %if %{defined no_config}
 %exclude %{_pam_vendordir}/login
 %exclude %{_pam_vendordir}/remote
@@ -936,12 +1114,16 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_pam_vendordir}/runuser-l
 %exclude %{_pam_vendordir}/su
 %exclude %{_pam_vendordir}/su-l
+
 %if 0%{?suse_version} <= 1520
 %exclude %dir %{_distconfdir}/default
 %endif
+# suse_version <= 1520
+
 %exclude %{_distconfdir}/default/runuser
 %exclude %{_distconfdir}/default/su
 %else
+# ! defined no_config
 %exclude %config(noreplace) %{_pam_vendordir}/login
 %exclude %config(noreplace) %{_pam_vendordir}/remote
 %exclude %config(noreplace) %{_pam_vendordir}/runuser
@@ -951,7 +1133,10 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %config(noreplace) %{_sysconfdir}/default/runuser
 %exclude %config(noreplace) %{_sysconfdir}/default/su
 %endif
+# defined no_config
+
 %exclude %config %dir %{_sysconfdir}/issue.d
+
 %if %{ul_extra_bin_sbin}
 %exclude /bin/findmnt
 %exclude /bin/kill
@@ -988,6 +1173,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude /sbin/fstrim
 %exclude /sbin/chcpu
 %endif
+# ul_extra_bin_sbin
+
 %exclude %{_bindir}/kill
 %exclude %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
 %exclude %{_bindir}/eject
@@ -1018,9 +1205,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_bindir}/line
 %{_bindir}/logger
 %exclude %{_bindir}/look
+
 %if !%{ul_extra_bin_sbin}
 %exclude %{_bindir}/login
 %endif
+# ul_extra_bin_sbin
+
 %{_bindir}/lsblk
 %exclude %{_bindir}/lscpu
 %exclude %{_bindir}/lsfd
@@ -1062,9 +1252,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_sbindir}/blkid
 %exclude %{_sbindir}/blkdiscard
 # blkzone depends on linux/blkzoned.h
+
 %if 0%{?suse_version} >= 1330
 %exclude %{_sbindir}/blkzone
 %endif
+# suse_version >= 1330
+
 %exclude %{_sbindir}/blockdev
 %exclude %{_sbindir}/chcpu
 %exclude %{_sbindir}/ctrlaltdel
@@ -1185,15 +1378,21 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man5/terminal-colors.d.5.gz
 %{_mandir}/man8/addpart.8.gz
 %{_mandir}/man8/agetty.8.gz
+
 %if 0%{?suse_version} >= 1330
 %{_mandir}/man8/blkzone.8.gz
 %endif
+# suse_version >= 1330
+
 %{_mandir}/man8/blockdev.8.gz
 %{_mandir}/man8/chmem.8.gz
 %{_mandir}/man8/ctrlaltdel.8.gz
 %{_mandir}/man8/delpart.8.gz
 %{_mandir}/man8/blkid.8.gz
 %{_mandir}/man8/blkdiscard.8.gz
+%ifnarch s390 s390x
+%{_mandir}/man8/hwclock.8.gz
+%endif
 %{_mandir}/man8/switch_root.8.gz
 %{_mandir}/man8/mkfs.bfs.8.gz
 %{_mandir}/man8/mkfs.minix.8.gz
@@ -1235,38 +1434,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_unitdir}/fstrim.service
 %{_unitdir}/fstrim.timer
 %endif
-#
-# Files not common for all architectures
-%ifnarch ia64 m68k
-%if %{ul_extra_bin_sbin}
-%core /sbin/fdisk
-%endif
-%core %{_sbindir}/fdisk
-%core %{_mandir}/man8/fdisk.8.gz
-%endif
-%ifnarch %sparc ia64 m68k
-%core %{_mandir}/man8/cfdisk.8.gz
-%core %{_mandir}/man8/sfdisk.8.gz
-%if %{ul_extra_bin_sbin}
-%core /sbin/cfdisk
-%core /sbin/sfdisk
-%endif
-%core %{_sbindir}/cfdisk
-%core %{_sbindir}/sfdisk
-%endif
-%ifnarch s390 s390x
-%core %{_sbindir}/fdformat
-%if %{ul_extra_bin_sbin}
-%core /sbin/hwclock
-%endif
-%core %{_sbindir}/hwclock
-%core %{_bindir}/setterm
-%core %{_sbindir}/tunelp
-%core %{_mandir}/man8/fdformat.8.gz
-%core %{_mandir}/man8/hwclock.8.gz
-%core %{_mandir}/man8/tunelp.8.gz
-%endif
+# ulsubset systemd
 
+#######################
+# Core packages files #
+#######################
 %if "%ulsubset" == "core"
 %files -n libblkid1
 %{_libdir}/libblkid.so.1
@@ -1288,15 +1460,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_libdir}/libuuid.so.1
 %{_libdir}/libuuid.so.1.*
 
-#
 # devel, lang and uuidd files are not packaged in staging mode
 # and packaged separately in full mode
 # FIXME: Is it needed?
 # HACK: We have to use "%%files -n" here, otherwise python lua code will
 # issue an error, even if it is inside a false condition.
-%if "%ulsubset" == "core"
 %files -n %{name}-lang -f %{name}.lang
-%endif
 
 %files -n libblkid-devel
 %{_libdir}/libblkid.so
@@ -1345,7 +1514,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %files -n libuuid-devel-static
 %{_libdir}/libuuid.*a
 %endif
+# ulsubset == core
 
+##########################
+# Systemd packages files #
+##########################
 %if "%ulsubset" == "systemd"
 %files -n uuidd
 %{_sbindir}/uuidd
@@ -1358,11 +1531,18 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket
 %endif
-%endif
+# ulsubset == systemd
 
+%endif
+# ulbuild == base
+
+################
+# Python files #
+################
 %if "%ulbuild" == "python"
 %files %{python_files}
 %{python_sitearch}/libmount
 %endif
+# ulbuild == python
 
 %changelog
