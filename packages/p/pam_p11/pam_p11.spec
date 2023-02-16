@@ -1,7 +1,7 @@
 #
 # spec file for package pam_p11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ security implications, see README.SUSE.
 %setup -q
 
 %build
+CFLAGS="%optflags -Wno-error=deprecated-declarations"
 %configure\
 	--with-pamdir=/%{_pam_moduledir} \
 	--disable-static \
