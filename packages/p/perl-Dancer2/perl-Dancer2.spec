@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        0.400000
+Version:        0.400001
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight yet powerful web application framework
@@ -120,6 +120,7 @@ Recommends:     perl(Pod::Simple::SimpleTree)
 Recommends:     perl(Scope::Upper)
 Recommends:     perl(Type::Tiny::XS)
 Recommends:     perl(URL::Encode::XS)
+Recommends:     perl(Unicode::UTF8)
 Recommends:     perl(YAML::XS)
 %{perl_requires}
 
@@ -142,6 +143,7 @@ creating a new Dancer2 application.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

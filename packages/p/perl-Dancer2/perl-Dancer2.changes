@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  6 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.400001
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  0.400001  2023-02-05 18:41:48-05:00 America/New_York
+      [ BUG FIXES ]
+      * PR #1247: Fix edge case in plugin compat (Sawyer X)
+      * GH #1621: Fix recursion error in TT after longjump (Andy Beverley,
+        Russell @veryrusty Jenkins)
+      * PR #1667: Remove failing module from GitHub Actions
+        config (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * GH #769, PR #829, #1662: Rename show_errors as show_stacktrace
+        (Nuno Ramos Carvalho, Sawyer X)
+      * GH #1594: Use Unicode::UTF8 if available (Sawyer X)
+      [ DOCUMENTATION ]
+      * GH #1657: Fix the Dancer2::DeprecationPolicy abstract (Jason A. Crome)
+      * GH #1661: Add 'gen' command to 'dancer2' runs (Steve Bertrand)
+      * PR #1671: Fix broken links in POD; avoid passive voice (Tom Hukins)
+
+-------------------------------------------------------------------
 Tue Mar 15 03:06:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.400000
