@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Feb 15 18:53:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.13:
+  * Prepare for v0.12.13 release
+  * vendor: Pick up github.com/cilium/cilium v1.13.0
+  * install: fix support for multi-object files
+  * uninstall: remove cilium-config-agent role/rolebinding
+  * feat: add json output for status and clustermesh status
+  * go.mod, vendor: bump github.com/cilium/workerpool from 1.1.3 to 1.2.0
+  * go.mod, vendor: bump golang.org/x/mod from 0.7.0 to 0.8.0
+  * go.mod, vendor: bump helm.sh/helm/v3 from 3.11.0 to 3.11.1  (bsc#1208090, CVE-2023-25165)
+  * go.mod, vendor: bump google.golang.org/grpc from 1.52.3 to 1.53.0
+  * ci: bump docker/setup-buildx-action from 2.4.0 to 2.4.1
+  * ci, make: update golangci-lint to v1.51.1
+  * k8s: don't append to non-zero slice with zero entries in (*Client).ListAPIResources
+  * ci: bump google-github-actions/setup-gcloud from 1.0.1 to 1.1.0
+  * ci: use cloud provider specific external target for pod-to-world tests
+  * go.mod, vendor: update github.com/cilium/hubble to v0.11.1
+  * Update Go to 1.20
+  * ci, make: update golangci-lint to v1.51.0
+  * Dockerfile: Bump library/golang
+  * connectivity: drop pre-1.11 allow-except-world test
+  * clustermesh: adapt global service annotations
+  * clustermesh: Add missing brackets of etcd option
+  * Check if context is cancelled before next iteration
+  * ci: bump docker/setup-buildx-action from 2.2.1 to 2.4.0
+  * ci: bump docker/build-push-action from 3.3.0 to 4.0.0
+  * ci: update Cilium version to v1.12.6
+  * defaults: update default Cilium version to v1.12.6
+  * go.mod, vendor: pull in latest cilium charts for v1.10.19, v1.11.13, v1.12.6
+  * status: rename Hubble status to Hubble Relay
+  * [connectivity] add container name for health tests
+  * go.mod, vendor: bump google.golang.org/grpc from 1.52.0 to 1.52.3
+  * dependabot: bump open pull request limit for Go module updates
+  * dependabot: label dependabot PRs as release blocker
+  * dependabot: add custom prefixes to dependabot commit subjects
+  * sysdump: Collect new CR introduced as part of 1.13
+  * vendor: Bump cilium to v1.13.x version
+  * sysdump: always log used namespaces
+  * Honor global namespace flag in sysdump command
+  * fix(connectivity): Add node-local-dns entitiy match for local ip usage case
+  * build(deps): bump golangci/golangci-lint-action from 3.3.1 to 3.4.0
+  * build(deps): bump helm.sh/helm/v3 from 3.10.3 to 3.11.0
+  * connectivity: Make pod to world test more configurable
+  * connectivity: Set PreferDualStack for test services
+  * build(deps): bump docker/build-push-action from 3.2.0 to 3.3.0
+  * install: Do not enable BPF masq if ipv6 is enabled
+  * Update cilium vendoring
+  * install: Auto-enable BPF masquerade
+  * Update Go to 1.19.5
+  * build(deps): bump google.golang.org/grpc from 1.51.0 to 1.52.0
+  * build(deps): bump library/golang
+  * RELEASE.md: check and merge PRs before the release
+  * connectivity: Display last error after waiting k8s resources timeouts
+  * Update stable release to v0.12.12
+
+-------------------------------------------------------------------
 Wed Jan 11 11:53:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.12.12:
