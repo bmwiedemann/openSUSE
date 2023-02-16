@@ -25,15 +25,15 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.9.8+git20230124.d9e9468
+Version:        0.10.1+git20230213.9cd68ff
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://gstreamer.freedesktop.org/
+URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
 Source0:        %{_name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        gstreamer-plugins-rs.appdata.xml
 
@@ -49,6 +49,7 @@ BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-tomli
 BuildRequires:  rust >= 1.51
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -72,6 +73,8 @@ anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new
 plug-ins.
+
+This package provides various plugins written in Rust.
 
 %package devel
 Summary:        GStreamer Streaming-Media Framework Plug-Ins development files
