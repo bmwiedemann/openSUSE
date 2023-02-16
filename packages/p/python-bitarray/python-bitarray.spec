@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitarray
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0

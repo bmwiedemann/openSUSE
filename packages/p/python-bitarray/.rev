@@ -181,4 +181,17 @@
   * optimize ``util.sc_encode()``</comment>
     <requestid>1064329</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6c3e4fd1cb4b0d447176a0ad99577d09</srcmd5>
+    <version>2.7.2</version>
+    <time>1676562944</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.2:
+  * speedup all count functionality by using
+    ``__builtin_popcountll`` when available
+  * add ``popcount64()`` to ``bitarray.h`` - we assume now that
+    ``uint64_t`` is always available
+  * improve testing</comment>
+    <requestid>1065971</requestid>
+  </revision>
 </revisionlist>

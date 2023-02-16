@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 15 13:59:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.2:
+  * speedup all count functionality by using
+    ``__builtin_popcountll`` when available
+  * add ``popcount64()`` to ``bitarray.h`` - we assume now that
+    ``uint64_t`` is always available
+  * improve testing
+
+-------------------------------------------------------------------
 Fri Feb 10 17:42:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
