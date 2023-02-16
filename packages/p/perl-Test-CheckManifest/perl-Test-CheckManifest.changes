@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  2 03:10:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Test-CheckManifest/Changes
+
+  1.43    2023-02-01 08:32:00
+
+        * $home is usually given without trailing slash,
+          the $files_in_skip is taken from MANIFEST.SKIP which usually contain regexes
+          for files relative the $home. Therefore the remaining leading slashes in $localfile (thanks to bschmalhofer)
+        * Fix home removal on Win32 (thanks to E. Choroba)
+        * Replace string eval with block eval (thanks to Paul Cochrane)
+        * various "infrastructure" changes (thanks to Paul Cochrane)
+
+-------------------------------------------------------------------
 Wed Mar 13 16:43:30 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.42

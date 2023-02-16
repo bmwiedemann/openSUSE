@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-CheckManifest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Test-CheckManifest
-Version:        1.42
-Release:        0
 %define cpan_name Test-CheckManifest
-Summary:        Check if your Manifest matches your distro
+Name:           perl-Test-CheckManifest
+Version:        1.43
+Release:        0
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Check if your Manifest matches your distro
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RE/RENEEB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::YAML)
@@ -40,11 +38,11 @@ Requires:       perl(Cwd) >= 3.75
 Check if your Manifest matches your distro
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 touch dummy.list
@@ -58,7 +56,6 @@ mv ../*.files ../*.list .
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md CONTRIBUTORS README
 %license LICENSE
 
