@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 31 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.2.0   Sun Jan 29 20:23:59 CST 2023
+          [ENHANCEMENTS]
+          Added assert_cmp( $x, $op, $y [, $msg] ), analogous to cmp_ok in Test::More, so you can do
+              assert_cmp( $n, '>', 10 );
+          which will give better diagnostics than just
+              assert( $n > 10 );
+          Operators supported are: lt le gt ge == != > >= < <=
+
+          assert_all_keys_in() now lists all key failures in the message, not just the first one.
+
+          assert_keys_are() now lists all key failures in the message, not just the first one.
+
+-------------------------------------------------------------------
 Wed Aug 17 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.1.0

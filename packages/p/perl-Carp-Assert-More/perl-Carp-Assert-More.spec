@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Carp-Assert-More
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Carp-Assert-More
 Name:           perl-Carp-Assert-More
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 License:        Artistic-2.0
 Summary:        Convenience assertions for common situations
