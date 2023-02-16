@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-d-installer-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-d-installer-cli
-Version:        0.6
+Version:        0.7
 Release:        0
 %define mod_name d-installer-cli
 %define mod_full_name %{mod_name}-%{version}
