@@ -60,7 +60,6 @@ Requires:       python-lark
 Requires:       python-psutil
 Requires:       python-pyzmq
 Requires:       python-requests
-Requires:       python-simplejson
 Requires:       python-tornado
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
