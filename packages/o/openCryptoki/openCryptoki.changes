@@ -1,9 +1,53 @@
 -------------------------------------------------------------------
+Thu Feb 16 13:22:45 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated package to openCryptoki 3.20 (jsc#PED-2870)
+- Removed the following obsolite patches:
+        * ocki-3.19.0-0001-EP11-Unify-key-pair-generation-functions.patch
+        * ocki-3.19.0-0002-EP11-Do-not-report-DSA-DH-parameter-generation-as-be.patch
+        * ocki-3.19.0-0003-EP11-Do-not-pass-empty-CKA_PUBLIC_KEY_INFO-to-EP11-h.patch
+        * ocki-3.19.0-0004-Mechtable-CKM_IBM_DILITHIUM-can-also-be-used-for-key.patch
+        * ocki-3.19.0-0005-EP11-Remove-DSA-DH-parameter-generation-mechanisms-f.patch
+        * ocki-3.19.0-0006-EP11-Pass-back-chain-code-for-CKM_IBM_BTC_DERIVE.patch
+        * ocki-3.19.0-0007-EP11-Supply-CKA_PUBLIC_KEY_INFO-with-CKM_IBM_BTC_DER.patch
+        * ocki-3.19.0-0008-EP11-Supply-CKA_PUBLIC_KEY_INFO-when-importing-priva.patch
+        * ocki-3.19.0-0009-EP11-Fix-memory-leak-introduced-with-recent-commit.patch
+        * ocki-3.19.0-0010-p11sak-Fix-segfault-when-dilithium-version-is-not-sp.patch
+        * ocki-3.19.0-0011-EP11-remove-dead-code-and-unused-variables.patch
+        * ocki-3.19.0-0012-EP11-Update-EP11-host-library-header-files.patch
+        * ocki-3.19.0-0013-EP11-Support-EP11-host-library-version-4.patch
+        * ocki-3.19.0-0014-EP11-Add-new-control-points.patch
+        * ocki-3.19.0-0015-EP11-Default-unknown-CPs-to-ON.patch
+        * ocki-3.19.0-0016-COMMON-Add-defines-for-Dilithium-round-2-and-3-varia.patch
+        * ocki-3.19.0-0017-COMMON-Add-defines-for-Kyber.patch
+        * ocki-3.19.0-0018-COMMON-Add-post-quantum-algorithm-OIDs.patch
+        * ocki-3.19.0-0019-COMMON-Dilithium-key-BER-encoding-decoding-allow-dif.patch
+        * ocki-3.19.0-0020-COMMON-EP11-Add-CKA_VALUE-holding-SPKI-PKCS-8-of-key.patch
+        * ocki-3.19.0-0021-COMMON-EP11-Allow-to-select-Dilithium-variant-via-mo.patch
+        * ocki-3.19.0-0022-EP11-Query-supported-PQC-variants-and-restrict-usage.patch
+        * ocki-3.19.0-0023-POLICY-Dilithium-strength-and-signature-size-depends.patch
+        * ocki-3.19.0-0024-TESTCASES-Test-Dilithium-variants.patch
+        * ocki-3.19.0-0025-COMMON-EP11-Add-Kyber-key-type-and-mechanism.patch
+        * ocki-3.19.0-0026-EP11-Add-support-for-generating-and-importing-Kyber-.patch
+        * ocki-3.19.0-0027-EP11-Add-support-for-encrypt-decrypt-and-KEM-operati.patch
+        * ocki-3.19.0-0028-POLICY-STATISTICS-Check-for-Kyber-KEM-KDFs-and-count.patch
+        * ocki-3.19.0-0029-TESTCASES-Add-tests-for-CKM_IBM_KYBER.patch
+        * ocki-3.19.0-0030-p11sak-Support-additional-Dilithium-variants.patch
+        * ocki-3.19.0-0031-p11sak-Add-support-for-IBM-Kyber-key-type.patch
+        * ocki-3.19.0-0032-testcase-Enhance-p11sak-testcase-to-generate-IBM-Kyb.patch
+        * ocki-3.19.0-0033-EP11-Supply-CKA_PUBLIC_KEY_INFO-with-CKM_IBM_BTC_DER.patch
+        * ocki-3.19.0-0034-EP11-Fix-setting-unknown-CPs-to-ON.patch
+        * ocki-3.19.0-0035-Fix-compile-error-error-initializer-element-is-not-c.patch
+- Reworked ocki-3.19-remove-make-install-chgrp.patch to fit the current version of 
+  the package and renamed it to  ocki-3.20-remove-make-install-chgrp.patch.
+  
+-------------------------------------------------------------------
 Tue Feb  7 10:08:45 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Added patch for compile errors
 	* ocki-3.19.0-0035-Fix-compile-error-error-initializer-element-is-not-c.patch 
-- Changed spec file to use %autosetup instead of %setup.
+-- Changed spec file to use %autosetup instead of %setup.
+
 
 -------------------------------------------------------------------
 Mon Feb  6 15:43:47 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>

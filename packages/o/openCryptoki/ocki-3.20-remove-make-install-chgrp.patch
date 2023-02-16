@@ -1,6 +1,14 @@
---- opencryptoki-3.19.0/Makefile.am	2022-09-30 03:45:52.000000000 -0400
-+++ opencryptoki-3.19.0/Makefile.am	2022-09-30 15:28:53.032877773 -0400
-@@ -61,12 +61,9 @@
+--- opencryptoki-3.20.0/Makefile.am	2023-02-13 03:22:42.000000000 -0500
++++ opencryptoki-3.20.0/Makefile.am	2023-02-13 10:40:14.561790695 -0500
+@@ -39,7 +39,6 @@
+ include doc/doc.mk
+ 
+ install-data-hook:
+-	getent group pkcs11 > /dev/null || $(GROUPADD) -r pkcs11
+ if ENABLE_LIBRARY
+ 	$(MKDIR_P) $(DESTDIR)$(libdir)/opencryptoki/stdll
+ 	$(MKDIR_P) $(DESTDIR)$(libdir)/pkcs11
+@@ -60,12 +59,9 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_cca.so PKCS11_CCA.so
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/ccatok/TOK_OBJ
@@ -13,7 +21,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/ccatok
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/ccatok.conf || $(INSTALL) -m 644 $(srcdir)/usr/lib/cca_stdll/ccatok.conf $(DESTDIR)$(sysconfdir)/opencryptoki/ccatok.conf || true
-@@ -75,12 +72,9 @@
+@@ -74,12 +70,9 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_ep11.so PKCS11_EP11.so
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/ep11tok/TOK_OBJ
@@ -26,7 +34,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/ep11tok
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || $(INSTALL) -m 644 $(srcdir)/usr/lib/ep11_stdll/ep11tok.conf $(DESTDIR)$(sysconfdir)/opencryptoki/ep11tok.conf || true
-@@ -88,30 +82,24 @@
+@@ -87,30 +80,24 @@
  endif
  if ENABLE_P11SAK
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
@@ -58,7 +66,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/swtok
  endif
  if ENABLE_TPMTOK
-@@ -119,10 +107,8 @@
+@@ -118,10 +105,8 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_tpm.so PKCS11_TPM.so
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/tpm
@@ -69,7 +77,7 @@
  	$(CHMOD) 0770 $(DESTDIR)$(lockdir)/tpm
  endif
  if ENABLE_ICSFTOK
-@@ -130,16 +116,14 @@
+@@ -129,16 +114,14 @@
  	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
  		ln -fs libpkcs11_icsf.so PKCS11_ICSF.so
  	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/opencryptoki/icsf
@@ -84,10 +92,10 @@
  	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || $(INSTALL) -m 644 $(srcdir)/usr/sbin/pkcsslotd/opencryptoki.conf $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || true
 -	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -g pkcs11 -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
 +	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
- if ENABLE_SYSTEMD
- 	mkdir -p $(DESTDIR)/usr/lib/tmpfiles.d
- 	cp $(srcdir)/misc/tmpfiles.conf $(DESTDIR)/usr/lib/tmpfiles.d/opencryptoki.conf
-@@ -156,7 +140,6 @@
+ endif
+ 	$(MKDIR_P) $(DESTDIR)/etc/ld.so.conf.d
+ 	echo "$(libdir)/opencryptoki" >\
+@@ -149,7 +132,6 @@
  	@echo "Remember you must run ldconfig before using the above settings"
  	@echo "--------------------------------------------------------------"
  	$(MKDIR_P) $(DESTDIR)$(lockdir) $(DESTDIR)$(logdir)
