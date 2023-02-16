@@ -17,16 +17,16 @@
 
 
 %define _kf5_version 5.88.0
-%bcond_without  lang
+%bcond_without  released
 Name:           neochat
-Version:        22.11
+Version:        23.01.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        GPL-3.0-or-later AND GPL-3.0-only AND BSD-2-Clause
 Group:          Productivity/Networking/Instant Messenger
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/neochat/
 Source0:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
@@ -36,6 +36,7 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -92,33 +93,30 @@ messaging.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with lang}
-    %find_lang %{name} --all-name
-%endif
+%find_lang %{name} --all-name
 
 %files
-%attr(0644, root, root) %license LICENSES/*
+%license LICENSES/*
 %doc README*
 %doc %lang(en) %{_kf5_mandir}/man1/neochat.1%{?ext_man}
 %doc %lang(ca) %{_kf5_mandir}/ca/man1/neochat.1%{?ext_man}
 %doc %lang(es) %{_kf5_mandir}/es/man1/neochat.1%{?ext_man}
+%doc %lang(it) %{_kf5_mandir}/it/man1/neochat.1%{?ext_man}
 %doc %lang(nl) %{_kf5_mandir}/nl/man1/neochat.1%{?ext_man}
 %doc %lang(uk) %{_kf5_mandir}/uk/man1/neochat.1%{?ext_man}
-%{_kf5_bindir}/neochat
-%{_kf5_applicationsdir}/org.kde.neochat.desktop
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
-%{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.svg
+%{_kf5_applicationsdir}/org.kde.neochat.desktop
+%{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
+%{_kf5_bindir}/neochat
 %{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
-%{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
 %{_kf5_notifydir}/neochat.notifyrc
+%{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
