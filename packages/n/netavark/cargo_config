@@ -1,0 +1,9 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/containers/netavark-dhcp-proxy"]
+git = "https://github.com/containers/netavark-dhcp-proxy"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
