@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.17.2
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0

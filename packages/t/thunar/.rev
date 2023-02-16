@@ -1726,4 +1726,12 @@
   Backport upstream fix for gxo#xfce/thunar#832 (forwarded request 1060414 from tux93)</comment>
     <requestid>1060420</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>cc7e7581859c7a2eeb9259268ddb76ee</srcmd5>
+    <version>4.18.3</version>
+    <time>1676563001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066077</requestid>
+  </revision>
 </revisionlist>

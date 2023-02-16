@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:44:53 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Explicitly require the newer libpcre2 instead of libpcre; this
+  fixes boo#1208260
+
+-------------------------------------------------------------------
 Mon Jan 23 12:54:38 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add switch_pane_shortcut.patch
