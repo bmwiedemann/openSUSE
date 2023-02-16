@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 15 14:01:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4.post2:
+  * Prevent unclean repo from being built (Closes #365)
+  * Reduce chance of not-ready-for-release packages from being
+    uploaded
+  * No longer expect an implicit creation of the event loop
+    through ``get_event_loop()`` (Closes #353)
+
+-------------------------------------------------------------------
 Wed Jan  4 16:48:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

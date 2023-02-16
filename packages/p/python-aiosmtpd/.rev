@@ -83,4 +83,17 @@
   * Some documentation fixes</comment>
     <requestid>1055964</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a6172b48759b6c85200ff435ea88adc</srcmd5>
+    <version>1.4.4.post2</version>
+    <time>1676562945</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4.post2:
+  * Prevent unclean repo from being built (Closes #365)
+  * Reduce chance of not-ready-for-release packages from being
+    uploaded
+  * No longer expect an implicit creation of the event loop
+    through ``get_event_loop()`` (Closes #353)</comment>
+    <requestid>1065973</requestid>
+  </revision>
 </revisionlist>

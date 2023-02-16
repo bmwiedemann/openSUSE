@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-aiosmtpd
-Version:        1.4.3
+Version:        1.4.4.post2
 Release:        0
 Summary:        SMTP server based on asyncio
 License:        Apache-2.0
