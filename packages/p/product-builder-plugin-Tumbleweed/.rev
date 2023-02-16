@@ -189,4 +189,13 @@
   * make use of SPDX SBOM generation tool</comment>
     <requestid>1063829</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1baf0c35e64cc2bd0b4b5bb35078b25b</srcmd5>
+    <version>1.8.2</version>
+    <time>1676578196</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.8.2
+  * CycloneDX SBOM generation added</comment>
+    <requestid>1065966</requestid>
+  </revision>
 </revisionlist>
