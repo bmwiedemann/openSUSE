@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>1064325</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8eb4ffaa0d1671060c9dd144bf35cb4a</srcmd5>
+    <version>20230214</version>
+    <time>1676562901</time>
+    <user>dimstar_suse</user>
+    <comment>- Reverted prior commit, will investigate alternate method.
+  * https://build.opensuse.org/request/show/1065543
+- 20230214
+
+- Added kcm-about-distrorc (boo#1207873)
+  * Changes kinfocenter &quot;About&quot; to display MicroOS logo and Link to
+  MicroOS Desktop wiki, rather than Geeko and the main website.
+- 20230202
+
+- 20230126
+- Add Conflicts: gnome-branding-MicroOS
+- Removed kwrite from the flatpak installations.  Kate is already in the base image.</comment>
+    <requestid>1065824</requestid>
+  </revision>
 </revisionlist>

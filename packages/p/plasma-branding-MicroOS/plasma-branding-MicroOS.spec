@@ -28,12 +28,13 @@ BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  transactional-update
 Requires:       flatpak
-Requires:       libqt5-qdbus
 Requires:       kdialog
-Requires:       transactional-update
+Requires:       kdialog
+Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
+Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20230126
+Version:        20230214
 Release:        0
 
 %description

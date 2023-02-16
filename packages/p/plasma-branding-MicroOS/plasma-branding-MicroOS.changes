@@ -1,15 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 14 18:07:18 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Reverted prior commit, will investigate alternate method.
+  * https://build.opensuse.org/request/show/1065543
+- 20230214
+
+-------------------------------------------------------------------
+Thu Feb  2 22:24:51 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added kcm-about-distrorc (boo#1207873)
+  * Changes kinfocenter "About" to display MicroOS logo and Link to
+  MicroOS Desktop wiki, rather than Geeko and the main website.
+- 20230202
+
+-------------------------------------------------------------------
 Thu Jan 26 12:24:00 UTC 2023 - Syds Bearda <opensuse@syds.eu>
 
 - Correct the transactional-update reboot method for KDE Desktop
-- 20230126 
+- 20230126
 
 -------------------------------------------------------------------
 Thu Aug  4 17:25:55 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
-- Add Conflicts: gnome-branding-MicroOS 
+- Add Conflicts: gnome-branding-MicroOS
 
 -------------------------------------------------------------------
 Mon Jul 11 22:09:22 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
-- Removed kwrite from the flatpak installations.  Kate is already in the base image. 
+- Removed kwrite from the flatpak installations.  Kate is already in the base image.
