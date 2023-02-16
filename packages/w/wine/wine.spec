@@ -1,5 +1,5 @@
 #
-# spec file for package wine
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.0
-Version:        8.0
+%define realver 8.1
+Version:        8.1
 Release:        0
 
 %if "%{flavor}" != ""
@@ -80,6 +80,8 @@ BuildRequires:  libxslt-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  mpg123-devel
 BuildRequires:  vulkan-devel
+Requires:       libvulkan_intel
+Requires:       libvulkan_radeon
 Provides:       wine-mp3 = %version
 Obsoletes:      wine-mp3 < %version
 %else
@@ -134,9 +136,9 @@ Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            http://www.winehq.org/
-Source0:        https://dl.winehq.org/wine/source/8.0/%{projectname}-%{realver}.tar.xz
+Source0:        https://dl.winehq.org/wine/source/8.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
-Source42:       https://dl.winehq.org/wine/source/8.0/%{projectname}-%{realver}.tar.xz.sign
+Source42:       https://dl.winehq.org/wine/source/8.x/%{projectname}-%{realver}.tar.xz.sign
 Source2:        http://kegel.com/wine/wisotool
 Source3:        README.SUSE
 Source4:        wine.desktop
@@ -164,7 +166,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.0
+%define staging_version 8.1
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -309,6 +311,10 @@ echo " recommends \"alsa-plugins-pulse-32bit\""	>> %SOURCE7
 echo " recommends \"alsa-plugins-32bit\""	>> %SOURCE7
 echo " recommends \"Mesa-libGL1-32bit\""	>> %SOURCE7
 %if 0%{?suse_version} >= 1330
+# indirect deps of libvulkan
+echo " requires \"libvulkan_intel-32bit\""		>> %SOURCE7
+echo " requires \"libvulkan_radeon-32bit\""		>> %SOURCE7
+# now included
 echo " obsoletes \"wine-mp3-32bit\""		>> %SOURCE7
 %else
 echo " recommends \"wine-mp3-32bit\""		>> %SOURCE7

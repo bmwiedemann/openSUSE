@@ -4684,4 +4684,12 @@
 - update staging to 8.0 release</comment>
     <requestid>1060796</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>9d0a041f4e20053247525c774f75df2a</srcmd5>
+    <version>8.1</version>
+    <time>1676563015</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1066116</requestid>
+  </revision>
 </revisionlist>

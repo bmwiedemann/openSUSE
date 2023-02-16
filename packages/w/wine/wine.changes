@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  9 08:02:33 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- require libvulkan_intel and libvulkan_radeon during installation, 
+  also in 32bit flavors. bsc#1206421
+
+-------------------------------------------------------------------
+Fri Feb  3 11:22:55 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.1 release
+  - Windows version set to Windows 10 for new prefixes.
+  - Many code cleanups that were deferred during code freeze.
+  - Various bug fixes.
+- update staging to 8.1 release
+
+-------------------------------------------------------------------
 Tue Jan 24 16:08:58 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.0 release
