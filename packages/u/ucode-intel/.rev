@@ -904,4 +904,41 @@
   | CML-S62        | G1       | 06-a5-03/22 | 000000f0 | 000000f4 | Core Gen10 (forwarded request 1037140 from msmeissn)</comment>
     <requestid>1037167</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6b1d5d43d2f00c144e375e40e19fe3e2</srcmd5>
+    <version>20230214</version>
+    <time>1676562917</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20230214 release.
+  Security issues fixed:
+  - CVE-2022-38090: Security updates for [INTEL-SA-00767](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00767.html) (bsc#1208275)
+  - CVE-2022-33196: Security updates for [INTEL-SA-00738](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00738.html) (bsc#1208276)
+  - CVE-2022-21216: Security updates for [INTEL-SA-00700](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00700.html) (bsc#1208277)
+  New Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | SPR-SP         | E2       | 06-8f-05/87 |          | 2b000181 | Xeon Scalable Gen4
+  | SPR-SP         | E3       | 06-8f-06/87 |          | 2b000181 | Xeon Scalable Gen4
+  | SPR-SP         | E4       | 06-8f-07/87 |          | 2b000181 | Xeon Scalable Gen4
+  | SPR-SP         | E5       | 06-8f-08/87 |          | 2b000181 | Xeon Scalable Gen4
+  | SPR-HBM        | B3       | 06-8f-08/10 |          | 2c000170 | Xeon Max
+  | RPL-P 6+8      | J0       | 06-ba-02/07 |          | 0000410e | Core Gen13
+  | RPL-H 6+8      | J0       | 06-ba-02/07 |          | 0000410e | Core Gen13
+  | RPL-U 2+8      | Q0       | 06-ba-02/07 |          | 0000410e | Core Gen13
+  Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | ADL            | C0       | 06-97-02/07 | 00000026 | 0000002c | Core Gen12
+  | ADL            | C0       | 06-97-05/07 | 00000026 | 0000002c | Core Gen12
+  | ADL            | C0       | 06-bf-02/07 | 00000026 | 0000002c | Core Gen12
+  | ADL            | C0       | 06-bf-05/07 | 00000026 | 0000002c | Core Gen12
+  | ADL            | L0       | 06-9a-03/80 | 00000424 | 00000429 | Core Gen12
+  | ADL            | L0       | 06-9a-04/80 | 00000424 | 00000429 | Core Gen12
+  | CLX-SP         | B0       | 06-55-06/bf | 04003302 | 04003303 | Xeon Scalable Gen2
+  | CLX-SP         | B1       | 06-55-07/bf | 05003302 | 05003303 | Xeon Scalable Gen2
+  | CPX-SP         | A1       | 06-55-0b/bf | 07002501 | 07002503 | Xeon Scalable Gen3
+  | GLK            | B0       | 06-7a-01/01 | 0000003c | 0000003e | Pentium Silver N/J5xxx, Celeron N/J4xxx
+  | GLK-R          | R0       | 06-7a-08/01 | 00000020 | 00000022 | Pentium J5040/N5030, Celeron J4125/J4025/N4020/N4120 (forwarded request 1065905 from msmeissn)</comment>
+    <requestid>1065907</requestid>
+  </revision>
 </revisionlist>

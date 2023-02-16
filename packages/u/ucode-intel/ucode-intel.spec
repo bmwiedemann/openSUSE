@@ -1,7 +1,7 @@
 #
 # spec file for package ucode-intel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _firmwaredir /lib/firmware
 %endif
 Name:           ucode-intel
-Version:        20221108
+Version:        20230214
 Release:        0
 Summary:        Microcode Updates for Intel x86/x86-64 CPUs
 License:        SUSE-Firmware
@@ -35,7 +35,7 @@ Supplements:    modalias(x86cpu:vendor%3A0000%3Afamily%3A*%3Amodel%3A*%3Afeature
 Supplements:    modalias(cpu:type%3Ax86*ven0000*)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 ExclusiveArch:  %ix86 x86_64
 
 %description
