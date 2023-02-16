@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 15 09:00:17 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1676451610.d3d76e5:
+  * testapi: Fix 'snd2png' call arguments introduced in 264fcd83
+  * Introduce VNC_EXTRA_VARS variable
+  * Allow debugging JSON RPC per job
+  * Fix retry logic for git clone
+  * Use proper perl "signatures" in testapi
+  * t: Remove unnecessary uncovered mocking in 03-testapi.t
+  * t: Cleanup temporary file from 03-testapi.t at end of test
+  * testapi: Add signatures for various, now test-covered functions
+
+-------------------------------------------------------------------
 Sat Feb 11 02:12:42 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1675977373.865ccf1:
