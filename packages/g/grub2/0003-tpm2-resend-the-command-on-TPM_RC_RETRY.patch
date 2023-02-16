@@ -1,4 +1,4 @@
-From 14a8c03f1a3b09250ea933f1a072dfdfef8c4a48 Mon Sep 17 00:00:00 2001
+From dcfb996d872a750fc42cb627627a5ac3f6d89a23 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Thu, 9 Feb 2023 14:56:05 +0800
 Subject: [PATCH 03/13] tpm2: resend the command on TPM_RC_RETRY
@@ -13,7 +13,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
  1 file changed, 28 insertions(+), 5 deletions(-)
 
 diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
-index 5377ad2c7..1176d968b 100644
+index 5377ad2c7..083d59d02 100644
 --- a/grub-core/tpm2/tpm2.c
 +++ b/grub-core/tpm2/tpm2.c
 @@ -25,11 +25,11 @@
@@ -51,7 +51,7 @@ index 5377ad2c7..1176d968b 100644
 +  do {
 +    err = grub_tpm2_submit_command_real (tag, commandCode, responseCode,
 +                                         in, out);
-+    if (err != TPM_RC_RETRY)
++    if (*responseCode != TPM_RC_RETRY)
 +      break;
 +
 +    retry_cnt++;

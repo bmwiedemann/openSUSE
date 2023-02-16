@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 07:09:39 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Refresh 0003-tpm2-resend-the-command-on-TPM_RC_RETRY.patch to
+  handle the TPM2 responseCode correctly.
+
+-------------------------------------------------------------------
 Fri Feb 10 14:54:35 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Add module for boot loader interface. Needed for load Unified Kernel
