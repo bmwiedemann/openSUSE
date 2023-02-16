@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb 09 09:41:42 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.056:
+  * Improve symlink handling when remote root references another remote root (#353)
+  * ui: add content-disposition inline to render_file (#355)
+  * Don't send users to Bugzilla by @AdamMajer (#357)
+  * Add leap 15.5 to project list (#358)
+  * Add GNOME iso to Current pattern (#356)
+
+-------------------------------------------------------------------
+Thu Feb 02 12:01:48 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.055:
+  * Handle redirects with RootRemote (#351)
+  * Add sha512 to hash (#352)
+  * Do not urlencode plus character (#352)
+
+-------------------------------------------------------------------
+Fri Jan 27 13:16:17 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.054:
+  * Optimise sql for erasing folder_diff_server (#347)
+  * Fix huge files rendered from REDIRECT_HUGE only for metalink (#348)
+
+-------------------------------------------------------------------
+Thu Jan 26 07:23:04 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.053:
+  * Add MIRROR_PROVIDER to share mirror list (#343)
+  * Fix REDIRECT_HUGE with local files (#345)
+  * ui: Dont encode colon character in file names (#346)
+
+-------------------------------------------------------------------
 Thu Jan 12 08:43:17 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.052:
