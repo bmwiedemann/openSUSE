@@ -94,4 +94,16 @@
 - Update Requires from setup.py (forwarded request 987807 from glaubitz)</comment>
     <requestid>987926</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d6c5c3bfeb116199608d363cf3972ff9</srcmd5>
+    <version>1.4.0</version>
+    <time>1676563033</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1066145 from glaubitz)</comment>
+    <requestid>1066158</requestid>
+  </revision>
 </revisionlist>
