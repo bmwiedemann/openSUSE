@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 12 03:09:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Struct-Dumb/Changes
+
+  0.14    2023-02-11
+          [CHANGES]
+           * Updates to `feature 'class'` support, using `:param` instead of
+             `ADJUST` blocks
+           * Swap all unit tests from `Test::More` to `Test2::V0`
+           * Drop test-time dependence on `Test::Fatal`
+
+-------------------------------------------------------------------
 Sun Aug 28 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13

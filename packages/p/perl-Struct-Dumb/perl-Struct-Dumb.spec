@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Struct-Dumb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Struct-Dumb
 Name:           perl-Struct-Dumb
-Version:        0.13
+Version:        0.14
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Make simple lightweight record-like structures
@@ -29,8 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::Fatal)
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test2::V0)
 %{perl_requires}
 
 %description
