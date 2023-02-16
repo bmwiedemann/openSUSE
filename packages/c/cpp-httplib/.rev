@@ -7,4 +7,15 @@
     <comment>Migrate from obscpio to classical tar.gz sources archive for properly debugsource package building</comment>
     <requestid>1060703</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d90cb7e9c13b724f60f9321aded4ac3e</srcmd5>
+    <version>0.12.0</version>
+    <time>1676563018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0
+- Drop headers-only flavor  (gh#yhirose/cpp-httplib#1491)
+- Add examples to devel subpackage
+- Enable tests</comment>
+    <requestid>1066113</requestid>
+  </revision>
 </revisionlist>

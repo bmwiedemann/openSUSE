@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 16 07:01:16 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Move examples to devel subpackage
+- Drop headers-only flavor and remove aliases for pkg-config files
+  (gh#yhirose/cpp-httplib#1491)
+
+-------------------------------------------------------------------
+Thu Feb 09 12:34:29 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to version 0.12.0:
+  * Removed is_writable() from DataSink (Resolve #1478, too) (#1483)
+  * Fix #1479
+  * Removed incorrect comment
+  * Support CTest (#1468)
+  * Issue 52666: cpp-httplib:server_fuzzer: Timeout in server_fuzzer
+  * add to_human_string (#1467)
+
+-------------------------------------------------------------------
+Wed Feb  8 14:55:18 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Switch to meson tests
+- Add examples to headers package
+
+-------------------------------------------------------------------
+Mon Feb  6 14:55:29 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- For an explicit choice when buildtime dependencies resolving
+  added an unique pkgconfig files aliases for both shipped library
+  flavors: cpp-httplib-headers.pc and cpp-httplib-shared.pc
+- Enable tests performing for compiled flavor
+
+-------------------------------------------------------------------
 Tue Jan 24 20:14:49 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
 
 - Migrate from obscpio to classical tar.gz sources archive for properly

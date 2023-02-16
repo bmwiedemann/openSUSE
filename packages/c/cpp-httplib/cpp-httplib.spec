@@ -16,17 +16,18 @@
 #
 
 
-%define sover 0.11
-%define libver 0_11
+%define sover 0.12
+%define libver 0_12
 Name:           cpp-httplib
-Version:        0.11.4
+Version:        0.12.0
 Release:        0
 Summary:        A C++11 HTTP/HTTPS library
 License:        MIT
 URL:            https://github.com/yhirose/cpp-httplib
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://codeload.github.com/yhirose/cpp-httplib/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47.0
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
@@ -57,13 +58,21 @@ interfaces and any available port.
 
 %prep
 %setup -q
+chmod -x example/uploader.sh
 
 %build
-%meson -Dcpp-httplib_compile=true --buildtype=release
+%meson -Dcpp-httplib_compile=true -Dcpp-httplib_test=true \
+       --buildtype=release
 %meson_build
 
 %install
 %meson_install
+
+%check
+# OBS and chroot build environments does not provide internet
+# connectivity, skip online tests to avoid failures
+export GTEST_FILTER='-*.*_Online'
+%meson_test
 
 %post   -n lib%{name}%{libver} -p /sbin/ldconfig
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
@@ -77,6 +86,6 @@ interfaces and any available port.
 %{_libdir}/lib%{name}.so
 %{_includedir}/httplib.h
 %{_libdir}/pkgconfig/%{name}.pc
-%doc README.md
+%doc README.md example
 
 %changelog
