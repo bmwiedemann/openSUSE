@@ -644,6 +644,9 @@ Requires:       kdegraphics-thumbnailers
 # For being able to change SDDM settings
 Requires:       kcm_sddm
 
+# Add kcm_flatpak for managing flatpak permissions (boo#1208256)
+Requires:       kcm_flatpak
+
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma
 
