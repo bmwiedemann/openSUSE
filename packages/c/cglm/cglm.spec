@@ -1,7 +1,7 @@
 #
 # spec file for package cglm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           cglm
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        OpenGL mathematics (glm) for C
 License:        MIT
