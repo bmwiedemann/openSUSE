@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  5 03:09:40 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.122
+   see /usr/share/doc/packages/perl-System-Command/Changes
+
+  1.122 2023-02-04 BOOK
+      [TESTS]
+      - Use $^X in Perl tests, instead of 'perl' (RT #141674 by SREZIC)
+      - Fix t/30-exit.t to pass on Windows (RT #133230 by Lisa Hansen)
+      - Drop some author developement modules from BuildRequires (GH #30 by OALDERS)
+
+-------------------------------------------------------------------
 Thu Jun  4 03:12:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.121
