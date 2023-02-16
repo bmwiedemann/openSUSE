@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Feb 14 11:50:46 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.20.15:
+  * Release commit for Kubernetes v1.20.15
+  * Add guard against nil/error/panic for topologies.go
+  * fix: do not delete the lb that does not exist
+  * Fix header mutation race in timeout filter
+  * Don't set sysctl net.ipv4.vs.conn_reuse_mode for kernels >=5.9
+  * kubeadm: remove the restriction that the ca.crt can only contain one certificate
+  * Fix the leak of vSphere client sessions
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.14
+  * Release commit for Kubernetes v1.20.15-rc.0
+  * Release commit for Kubernetes v1.20.14
+  * kubeadm: avoid requiring a CA key during kubeconfig expiration checks
+  * kubeadm: print the CA of kubeconfig files in "check expiration"
+  * kubeadm: validate local etcd certficates during expiration checks
+  * Ensure deletion of pods in queues and cache
+  * kube-scheduler: Increase the duration to expire an assumed pod
+  * Skip check for all topology labels when using system default spreading
+  * workqueue: fix leak in queue preventing objects from being GCed
+  * Fix workqueue memory leak
+  * Update mounter interface in volume manager
+  * node: e2e: add test for the checkpoint recovery
+  * e2e: node: release-1.20: backport findKubeletServiceName
+  * e2e: node: backport SRIOV utilities
+  * devicemanager: checkpoint: support pre-1.20 data
+  * Reduce calls to docker from dockershim for stats
+  * Fix concurrent map writes error in kube-apiserver
+  * fix: remove VMSS and VMSS instances from SLB backend pool only when necessary
+  * fix: leave the probe path empty for TCP probes
+
+-------------------------------------------------------------------
 Mon Feb  7 16:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in client-common postinstall script (bsc#1195391)
