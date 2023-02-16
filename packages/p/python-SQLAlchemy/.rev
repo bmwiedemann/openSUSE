@@ -1021,4 +1021,17 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1057161</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>bc38ccbb9a7f7b13c1a933d1538b0205</srcmd5>
+    <version>1.4.46</version>
+    <time>1676562925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.46:
+  * A new deprecation “uber warning” is now emitted at runtime the
+    first time any SQLAlchemy 2.0 deprecation warning would
+    normally be emitted, but the SQLALCHEMY_WARN_20 environment
+    variable is not set.
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.46</comment>
+    <requestid>1065977</requestid>
+  </revision>
 </revisionlist>

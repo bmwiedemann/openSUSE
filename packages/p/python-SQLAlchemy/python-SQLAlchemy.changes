@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:34:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.46:
+  * A new deprecation “uber warning” is now emitted at runtime the
+    first time any SQLAlchemy 2.0 deprecation warning would
+    normally be emitted, but the SQLALCHEMY_WARN_20 environment
+    variable is not set.
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.46 
+
+-------------------------------------------------------------------
 Mon Jan  2 19:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.45:
