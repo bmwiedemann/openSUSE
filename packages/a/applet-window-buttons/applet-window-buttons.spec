@@ -1,7 +1,7 @@
 #
 # spec file for package applet-window-buttons
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/psifidotos/applet-window-buttons
 Source:         https://github.com/psifidotos/applet-window-buttons/archive/%{version}/%{name}-%{version}.tar.gz
+# Fix for building with 5.27, taken from: ;https://github.com/psifidotos/applet-window-buttons/pull/191
+Patch0:         kdecoration-5.27.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kconfig-devel >= %{kf5_version}
@@ -39,8 +41,8 @@ BuildRequires:  kwindowsystem-devel >= %{kf5_version}
 BuildRequires:  kxmlgui-devel >= %{kf5_version}
 BuildRequires:  libSM-devel
 BuildRequires:  plasma-framework-devel >= %{kf5_version}
-BuildRequires:  plasma5-workspace-devel >= 5.24
-BuildRequires:  cmake(KDecoration2) >= 5.24
+BuildRequires:  plasma5-workspace-devel >= 5.27
+BuildRequires:  cmake(KDecoration2) >= 5.27
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
@@ -54,7 +56,7 @@ one's panels. This plasmoid is coming from Latte land, but it can also
 support Plasma panels.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

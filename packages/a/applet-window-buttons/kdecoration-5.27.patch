@@ -1,0 +1,52 @@
+From 924994e10402921bf22fefc099bca2914989081c Mon Sep 17 00:00:00 2001
+From: Dmitry Chermnykh <76gh6rvso@relay.firefox.com>
+Date: Mon, 23 Jan 2023 21:21:47 +0500
+Subject: [PATCH] Support building on plasma 5.26.90+
+
+---
+ CMakeLists.txt                        | 2 +-
+ libappletdecoration/previewclient.cpp | 5 +++++
+ libappletdecoration/previewclient.h   | 1 +
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ecec88..43adaef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(EMAIL "mvourlakos@gmail.com")
+ 
+ set(QT_MIN_VERSION "5.15.0")
+ set(KF5_MIN_VERSION "5.81.0")
+-set(KDECORATION2_MIN_VERSION "5.24.0")
++set(KDECORATION2_MIN_VERSION "5.26.90")
+ 
+ set(KF5_LOCALE_PREFIX "")
+ 
+diff --git a/libappletdecoration/previewclient.cpp b/libappletdecoration/previewclient.cpp
+index 2cf184b..3ffe358 100644
+--- a/libappletdecoration/previewclient.cpp
++++ b/libappletdecoration/previewclient.cpp
+@@ -263,6 +263,11 @@ WId PreviewClient::windowId() const
+     return 0;
+ }
+ 
++QString PreviewClient::windowClass() const
++{
++    return QString("kwin_preview");
++}
++
+ QPalette PreviewClient::palette() const
+ {
+     return m_palette->palette();
+diff --git a/libappletdecoration/previewclient.h b/libappletdecoration/previewclient.h
+index c479acc..e5fbe7a 100644
+--- a/libappletdecoration/previewclient.h
++++ b/libappletdecoration/previewclient.h
+@@ -74,6 +74,7 @@ class PreviewClient : public QObject, public KDecoration2::ApplicationMenuEnable
+     QString caption() const override;
+     WId decorationId() const override;
+     WId windowId() const override;
++    QString windowClass() const override;
+     int desktop() const override;
+     QIcon icon() const override;
+     bool isActive() const override;

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 18:27:00 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Add kdecoration-5.27.patch to fix build with Plasma 5.27
+- Increase version requirement for plasma and kdecoration to 5.27
+
+-------------------------------------------------------------------
 Sat Feb 12 16:43:41 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 0.11.1:

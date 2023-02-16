@@ -172,4 +172,13 @@ _ Remove fix-build-plasma-5.21.patch (part of release now)</comment>
   * hide when preserveemptyspace is selected</comment>
     <requestid>953931</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>378aec8c0077ef296790ece65df85b90</srcmd5>
+    <version>0.11.1</version>
+    <time>1676562977</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kdecoration-5.27.patch to fix build with Plasma 5.27
+- Increase version requirement for plasma and kdecoration to 5.27</comment>
+    <requestid>1066030</requestid>
+  </revision>
 </revisionlist>
