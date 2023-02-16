@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moose
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define cpan_name Moose
 Name:           perl-Moose
-Version:        2.2201
+Version:        2.2203
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Postmodern object system for Perl 5
-License:        GPL-1.0-or-later OR Artistic-1.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -54,7 +54,7 @@ BuildRequires:  perl(Sub::Util) >= 1.40
 BuildRequires:  perl(Test::CleanNamespaces) >= 0.13
 BuildRequires:  perl(Test::Fatal) >= 0.001
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Requires) >= 0.05
+BuildRequires:  perl(Test::Needs) >= 0.002010
 BuildRequires:  perl(Try::Tiny) >= 0.17
 BuildRequires:  perl(parent) >= 0.223
 Requires:       perl(Carp) >= 1.22
@@ -100,6 +100,7 @@ as well.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
