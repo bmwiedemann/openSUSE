@@ -1,7 +1,7 @@
 #
 # spec file for package telegraf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.25.1
+Version:        1.25.2
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
