@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Feb 15 10:48:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Adapt license changes from upstream
+  * LGPL-3.0-or-later -> ISC
+- Upstream moved to github
+- Update to version 1.2.0
+  * Implement gss_set_cred_option.
+  * Allow to gss_wrap even if NEGOTIATE_SEAL is not negotiated.
+  * Move HMAC code to OpenSSL EVP API.
+  * Fix crash bug when acceptor credentials are NULL.
+  * Translations update from Fedora Weblate.
+  Fix CVE:
+  * CVE-2023-25563 (boo#1208278): multiple out-of-bounds read
+    when decoding NTLM fields.
+  * CVE-2023-25564 (boo#1208279): memory corruption when decoding
+    UTF16 strings.
+  * CVE-2023-25565 (boo#1208280): incorrect free when decoding
+    target information.
+  * CVE-2023-25566 (boo#1208281): memory leak when parsing
+    usernames.
+  * CVE-2023-25567 (boo#1208282): out-of-bounds read when
+    decoding target information.
+- Update to version 1.1
+  * various build fixes and better compatibility when a MIC is
+    requested.
+- Update to version 1.0
+  * Fix test_gssapi_rfc5587.
+  * Actually run tests with make check.
+  * Add two tests around NTLMSSP_NEGOTIATE_LMKEY.
+  * Refine LM compatibility level logic.
+  * Refactor the gssntlm_required_security function.
+  * Implement reading LM/NT hashes.
+  * Add test for smpasswd-like user files.
+  * Return confidentiality status.
+  * Fix segfault in sign/seal functions.
+  * Fix dummy signature generation.
+  * Use UCS16LE instead of UCS-2LE.
+  * Provide a zero lm key if the password is too long.
+  * Completely omit CBs AV pairs when no CB provided.
+  * Change license to the more permissive ISC.
+  * Do not require cached users with winbind.
+  * Add ability to pass keyfile via cred store.
+  * Remove unused parts of Makefile.am.
+  * Move attribute names to allocated strings.
+  * Adjust serialization for name attributes.
+  * Fix crash in acquiring credentials.
+  * Fix fallback to external_creds interface.
+  * Introduce parse_user_name() function.
+  * Add test for parse_user_name.
+  * Change how we assemble user names in ASC.
+  * Use thread local storage for winbind context.
+  * Make per thread winbind context optional.
+  * Fixed memleak of usr_cred.
+  * Support get_sids request via name attributes.
+  * Fixed memory leaks found by valgrind.
+- Update to version 0.9
+  * add support for getting session key.
+  * Add gss_inquire_attrs_for_mech().
+  * Return actual data for RFC5587 API.
+  * Add new Windows version flags.
+  * Add Key exchange also when wanting integrity only.
+  * Drop support for GSS_C_MA_NOT_DFLT_MECH.
+
+-------------------------------------------------------------------
 Thu Feb 27 12:54:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile cleanup

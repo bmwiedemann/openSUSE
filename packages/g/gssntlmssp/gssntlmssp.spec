@@ -1,7 +1,7 @@
 #
 # spec file for package gssntlmssp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gssntlmssp
-Version:        0.8.0
+Version:        1.2.0
 Release:        0
 Summary:        GSSAPI NTLMSSP Mechanism
-License:        LGPL-3.0-or-later
+License:        ISC
 Group:          Development/Languages/C and C++
-URL:            https://pagure.io/gssntlmssp
-Source:         https://pagure.io/gssntlmssp/archive/v%{version}/%{name}-v%{version}.tar.gz
+URL:            https://github.com/gssapi/gss-ntlmssp
+Source:         https://github.com/gssapi/gss-ntlmssp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -53,7 +53,7 @@ Requires:       %{name} = %{version}
 A header file with definitions for custom GSSAPI extensions for NTLMSSP.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q -n gss-ntlmssp-%{version}
 
 %build
 autoreconf -fiv
@@ -66,8 +66,7 @@ autoreconf -fiv
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/gssntlmssp/gssntlmssp.la
-rm -rf %{buildroot}%{_datadir}/doc/gssntlmssp/
+rm %{buildroot}%{_libdir}/gssntlmssp/gssntlmssp.la
 install -D -p -m0644 examples/mech.ntlmssp %{buildroot}%{_sysconfdir}/gss/mech.d/ntlmssp.conf
 %find_lang %{name}
 
