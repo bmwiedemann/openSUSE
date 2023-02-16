@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-CheckOS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-CheckOS
 Name:           perl-Devel-CheckOS
-Version:        1.95
+Version:        1.96
 Release:        0
 #Upstream:  This software is free-as-in-speech software, and may be used, distributed, and modified under the terms of either the GNU General Public Licence version 2 or the Artistic Licence. It's up to you which one you use. The full text of the licences can be found in the files GPL2.txt and ARTISTIC.txt, respectively.
 License:        Artistic-1.0 OR GPL-2.0-only
@@ -54,6 +54,7 @@ covering them with a splendid Fedora.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  5 03:08:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.96    2023-02-04
+
+  - Add Devel::AssertOS::MacOSX::v13
+
+  - Add Devel::AssertOS::OSFeatures::Systemd
+
+-------------------------------------------------------------------
 Sun Oct 30 03:07:45 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.95
