@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Feb 14 16:18:30 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#628
+- add patch to initrd
+- remove license files from installation system
+- 17.76
+
+--------------------------------------------------------------------
 Thu Feb 9 15:56:20 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#627
