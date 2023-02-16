@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 19:53:44 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add pregenerated example crt+key files
+  to make builds reproducible
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

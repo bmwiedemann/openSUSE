@@ -29,6 +29,10 @@ Source2:        http://prosody.im/downloads/source/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.service
 Source5:        prosody.tmpfile
+Source6:        example.com.key
+Source7:        example.com.crt
+Source8:        localhost.key
+Source9:        localhost.crt
 # Make prosody work on systems that have lua 5.1 AND 5.2 installed
 Patch0:         prosody-lua51coexist.patch
 Patch1:         prosody-configure.patch
@@ -81,6 +85,8 @@ sed -i 's|@@PIDDIR@@|%{_piddir}|g;' prosody.cfg.lua.dist
     --libdir=%{_libdir}
 
 make %{?_make_output_sync} %{?_smp_mflags}
+# use pre-generated example certs for reproducible builds
+cp -af %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} certs/
 
 %install
 %make_install
