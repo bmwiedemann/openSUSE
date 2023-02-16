@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with	clammspack
 %bcond_with	valgrind
 Name:           clamav
-Version:        0.103.7
+Version:        0.103.8
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -90,6 +90,15 @@ provides numerous file format detection mechanisms, file unpacking
 support, archive support, and multiple signature languages for
 detecting threats.
 
+%package docs-html
+Summary:        Documentation for ClamAV in HTML format
+Group:          Productivity/Security
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description docs-html
+Optional HTML documentation for ClamAV antivirus engine
+
 %package milter
 Summary:        ClamAV Milter compatible mail scanner
 Group:          Productivity/Security
@@ -148,6 +157,7 @@ that want to make use of libclamav.
 %patch6
 %patch12
 %patch14 -p1
+chmod -x docs/html/images/flamegraph.svg
 
 %build
 %if 0%{?suse_version} <= 1500
@@ -272,7 +282,6 @@ fi
 
 %files
 %license COPYING*
-%doc docs/html/*
 %config(noreplace) %{_sysconfdir}/clamd.conf
 %config(noreplace) %{_sysconfdir}/freshclam.conf
 %{_bindir}/clamav-config
@@ -310,6 +319,9 @@ fi
 %dir %attr(750,vscan,vscan) %{_localstatedir}/spool/amavis
 %endif
 %ghost %attr(755,vscan,vscan) /run/clamav
+
+%files docs-html
+%doc docs/html/*
 
 %files milter
 %config(noreplace) %{_sysconfdir}/clamav-milter.conf

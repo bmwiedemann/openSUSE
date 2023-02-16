@@ -1177,4 +1177,21 @@
     <comment></comment>
     <requestid>993801</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>d5b1644693999a34f0bd170e07cd3901</srcmd5>
+    <version>0.103.8</version>
+    <time>1676563029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.103.8
+  * CVE-2023-20032: Fixed a possible remote code execution vulnerability
+    in the HFS+ file parser. Issue affects versions 1.0.0 and earlier,
+    0.105.1 and earlier, and 0.103.7 and earlier. (bsc#1208363)
+  * CVE-2023-20052: Fixed a possible remote information leak
+    vulnerability in the DMG file parser. Issue affects versions 1.0.0
+    and earlier, 0.105.1 and earlier, and 0.103.7 and earlier.
+    (bsc#1208365)
+  * Update vendored libmspack library to version 0.11alpha.
+- Package huge .html documentation in a separate subpackage.</comment>
+    <requestid>1066149</requestid>
+  </revision>
 </revisionlist>

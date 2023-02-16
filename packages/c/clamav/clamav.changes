@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 15 17:26:43 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.8
+  * CVE-2023-20032: Fixed a possible remote code execution vulnerability
+    in the HFS+ file parser. Issue affects versions 1.0.0 and earlier,
+    0.105.1 and earlier, and 0.103.7 and earlier. (bsc#1208363)
+  * CVE-2023-20052: Fixed a possible remote information leak
+    vulnerability in the DMG file parser. Issue affects versions 1.0.0
+    and earlier, 0.105.1 and earlier, and 0.103.7 and earlier.
+    (bsc#1208365)
+  * Update vendored libmspack library to version 0.11alpha.
+- Package huge .html documentation in a separate subpackage.
+
+-------------------------------------------------------------------
 Fri Aug  5 06:42:21 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.103.7
