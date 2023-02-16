@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 15 15:21:35 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1676474487.945e502:
+  * Remove noarch from openQA.spec
+  * Dependency cron 2023-02-15
+  * Update documentation of bug references and labels to meanwhile changes
+  * Fix investigation git log
+  * Render bugrefs as clickable links within labels
+  * Use signatures in Markdown module
+  * Ensure consistent openQA version when installing openQA-local-db
+
+-------------------------------------------------------------------
 Sat Feb 11 02:09:30 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676033243.8d9ce6f:

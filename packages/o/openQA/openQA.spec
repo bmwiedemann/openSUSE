@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1676033243.8d9ce6f
+Version:        4.6.1676474487.945e502
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -114,7 +114,12 @@ Recommends:     perl(Mojolicious::Plugin::OAuth2)
 Recommends:     perl(IO::Uncompress::UnXz)
 # server needs to run an rsync server if worker caching is used
 Recommends:     rsync
-BuildArch:      noarch
+# We cannot use noarch because of the strict perl-Mojolicious-Plugin-AssetPack
+# requirement. With noarch it can happen that the rpm built on aarch64 gets
+# uploaded to download.opensuse.org, and aarch for some reason has an older
+# version of that module. Then when we install on Tumbleweed, it doesn't
+# have that older version anymore
+#BuildArch:      noarch
 ExcludeArch:    i586
 %{?systemd_requires}
 %if %{with tests}
@@ -221,7 +226,7 @@ Additional scripts for the use of openQA in the python programming language.
 %package local-db
 Summary:        Helper package to ease setup of postgresql DB
 Group:          Development/Tools/Other
-Requires:       %name
+Requires:       %{name} = %{version}
 Requires:       postgresql-server
 BuildRequires:  postgresql-server
 Supplements:    packageand(%name:postgresql-server)
