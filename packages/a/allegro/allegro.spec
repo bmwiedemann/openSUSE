@@ -1,7 +1,7 @@
 #
 # spec file for package allegro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.7.0
+Version:        5.2.8.0
 Release:        0
 Summary:        A game programming library
 License:        BSD-3-Clause AND Zlib
@@ -278,10 +278,12 @@ Allegro HTML documentation and man pages.
 %setup -q
 
 %build
+# Tests require a graphics card
 %cmake \
-      -DCMAKE_C_FLAGS="%{optflags} -fPIC" \
+      -DCMAKE_C_FLAGS="%{optflags} -fPIC -D_FILE_OFFSET_BITS=64" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DWANT_EXAMPLES=NO \
+      -DWANT_TESTS=NO \
       -DWANT_DEMO=NO ..
 %make_build
 

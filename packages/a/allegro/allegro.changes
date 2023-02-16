@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:58:26 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.2.8.0
+  * Allow configuring bitmap wrapping via al_set_new_bitmap_wrap.
+  * Graphics:
+    * Reject creating bitmaps with negative width or height
+    * Add a minimal shader implementation for GLSL. Minimal shader
+      supports fewer features, but is faster.
+  * Emscripten: Fix usage of SDL_Init for emscripten
+  * SDL:
+    * Ignore touch events from indirect touch devices.
+    * Use SDL_PeepEvents for event handling, to improve performance.
+    * Improve joysticks support
+    * Fix mouse axis setter
+  * Use clock_gettime with CLOCK_MONOTONIC instead of gettimeofday
+  * Add al_play_audio_stream, a 'simple' API endpoint for audio stream playback.
+  * Allow identifying and listing audio devices via new API:
+    al_get_num_audio_output_devices, al_get_audio_output_device,
+    al_get_audio_device_name
+  * Color addon: Add linear and oklab color spaces to the color addon.
+  * Fixed TTF rendering when using transforms
+  * Allow identifying video files via a magic number, exposed via
+    al_identify_video
+  * Many other bugfixes
+
+-------------------------------------------------------------------
 Thu Sep  9 11:35:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing dependencies to allegro-devel
