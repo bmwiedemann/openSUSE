@@ -1,7 +1,7 @@
 #
 # spec file for package lsvpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         lsvpd-Add-NVME-f1h-log-page-VPD-information-parsing-.patch
+Patch2:         lsvpd-Update-nvme_template-with-logpage-format-for-0.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
@@ -54,7 +56,7 @@ export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/hwdata/pci.ids\"' 
 export CXXFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/hwdata/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/hwdata/usb.ids\"'"
 sh bootstrap.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 chmod 644 README* COPYING NEWS
 
 %install

@@ -1,0 +1,172 @@
+From 1ca39cf877d0a74bc3f420205a672aea146982a5 Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Fri, 23 Dec 2022 14:19:38 +0530
+Subject: [PATCH] lsvpd: Add NVME f1h log page VPD information parsing logic in
+ fillByBus()
+
+This patch adds NVME f1h log page VPD information parsing logic
+in fillByBus(). If bus is pci, then fill PCI device information
+for this nvme device by reading and interpreting NVME f1h log
+page.
+
+Without this patch:
+=====
+
+  # lscfg -vl 0185:a0:00.0
+  0185:a0:00.0 nvme1 pci1014,680 U78DA.ND0.WZS004R-P1-C5
+                                         3.2TB NVMe Gen4 U.2 SSD (1014a824)
+        Manufacturer Name.........IBM
+        Machine Type-Model........NVMe SSD Controller PM173X
+        Device Specific.(YC)......0
+        Location Code.(YL)........U78DA.ND0.WZS004R-P1-C5
+
+=====
+
+With this patch:
+=====
+
+  # ./lscfg -vl 0185:a0:00.0
+  0185:a0:00.0 nvme1 pci1014,680 U78DA.ND0.WZS004R-P1-C5
+                                         3.2TB NVMe Gen4 U.2 SSD (1014a824)
+        Manufacturer Name.........IBM
+        Machine Type-Model........NVMe SSD Controller PM173X
+        Engineering Change Level..P65459
+        Field Replaceable Unit Number
+        ..........................01LU968
+        Manufacturer ID...........S5H0NE0MC00161
+        Part Number of assembly...01CM529
+        Serial Number.............CEYD404W
+        Device Specific.(ID)......3.2TB NVMe Gen4 U.2 SSD
+        Final Assembly PN.(AN)....01LU965
+        Customer Card ID Number.(CC)
+        ..........................59B9
+        Device Specific.(Z0)......10140680
+        Device Specific.(Z1)......3.0
+        Device Specific.(Z2)......3200
+        Device Specific.(Z3)......17.52
+        Device Specific.(Z4)......0
+        Device Specific.(Z5)......00
+        Device Specific.(Z6)......A180010C
+        Device Specific.(Z7)......0YA
+        Device Specific.(Z8)......2902
+        Device Specific.(Z9)......08
+        Device Specific.(ZA)......0008
+        Device Specific.(ZB)......0040
+        Device Specific.(ZC)......00
+        Device Specific.(FR)......REV.ST45
+        Device Specific.(YC)......0
+        Location Code.(YL)........U78DA.ND0.WZS004R-P1-C5
+
+=====
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+---
+ src/include/sysfstreecollector.hpp            | 11 ++++++++++-
+ .../sys_interface/sysfs_SCSI_Fill.cpp         | 16 ++++++++++++++++
+ .../sys_interface/sysfstreecollector.cpp      | 19 +++++++++++++++++++
+ 3 files changed, 45 insertions(+), 1 deletion(-)
+
+diff --git a/src/include/sysfstreecollector.hpp b/src/include/sysfstreecollector.hpp
+index e2af3ab..29f1d20 100644
+--- a/src/include/sysfstreecollector.hpp
++++ b/src/include/sysfstreecollector.hpp
+@@ -139,6 +139,7 @@ namespace lsvpd
+ 			void process_template(Component *fillMe, string *deviceType,
+ 									char *data, int dataSize, string *format,
+ 									int pageCode);
++			int collectNvmeVpd(Component *fillMe, int device_fd);
+ 
+ 			int collectVpd(Component *fillMe, int device_fd, bool limitSCSISize);
+ 			void fillSCSIComponent( Component* fillMe, bool limitSCSISize);
+@@ -224,7 +225,6 @@ namespace lsvpd
+ 			 */
+ 			void fillUSBDev( Component* fillMe, const string& sysDir );
+ 
+-
+ 			/**
+ 			 * Fill a NVMe device.
+ 			 *
+@@ -259,6 +259,15 @@ namespace lsvpd
+ 			 */
+ 			void fillIDEDev( Component* fillMe );
+ 
++			/**
++			 * Fill a NVME device by reading and interpreting f1h log page
++			 * information
++			 *
++			 * @param fillMe
++			 *   The Component to fill
++			 */
++			void fillPciNvmeVpd( Component* fillMe);
++
+ 			/**
+ 			 * Gather PCI device specific vpd info.
+ 			 *
+diff --git a/src/internal/sys_interface/sysfs_SCSI_Fill.cpp b/src/internal/sys_interface/sysfs_SCSI_Fill.cpp
+index b14bc3a..bdd6a30 100644
+--- a/src/internal/sys_interface/sysfs_SCSI_Fill.cpp
++++ b/src/internal/sys_interface/sysfs_SCSI_Fill.cpp
+@@ -1225,6 +1225,22 @@ namespace lsvpd
+ 		return ret;
+ 	}
+ 
++	int SysFSTreeCollector::collectNvmeVpd(Component *fillMe, int device_fd)
++	{
++		int rc;
++		char data[NVME_VPD_INFO_SIZE];
++
++		rc = nvme_read_vpd(device_fd, data);
++		if (rc)
++			return rc;
++
++		rc = interpretNVMEf1hLogPage(fillMe, data);
++		if (rc)
++			return rc;
++
++		return 0;
++	}
++
+ 	/********************************************************************
+ 	 * @brief: High-level data collection call, using ioctl and doSGQuery
+ 	 * 	to collect relevant data which is returned for interpretation.
+diff --git a/src/internal/sys_interface/sysfstreecollector.cpp b/src/internal/sys_interface/sysfstreecollector.cpp
+index 8ac0ea5..c5eb71d 100644
+--- a/src/internal/sys_interface/sysfstreecollector.cpp
++++ b/src/internal/sys_interface/sysfstreecollector.cpp
+@@ -1407,6 +1407,22 @@ ERROR:
+ 		return 0;
+ 	}
+ 
++	void SysFSTreeCollector::fillPciNvmeVpd( Component* fillMe )
++	{
++		int device_fd;
++		struct stat myDir;
++		string path;
++		path = fillMe->sysFsNode.getValue() + "/nvme";
++		if (stat(path.c_str(), &myDir) < 0)
++			return;
++		device_fd = device_open(fillMe);
++		if (device_fd < 0)
++			return;
++		collectNvmeVpd(fillMe, device_fd);
++		close(device_fd);
++		return;
++	}
++
+ 	/* Parse VPD file */
+ 	void SysFSTreeCollector::fillPciDevVpd( Component* fillMe )
+ 	{
+@@ -1520,6 +1536,9 @@ ERROR:
+ 		/* Fill PCI device VPD info */
+ 		fillPciDevVpd(fillMe);
+ 
++		/* Fill NVME device VPD info using f1h log page */
++		fillPciNvmeVpd(fillMe);
++
+ 		// Read the pci config file for Device Specific (YC)
+ 		os.str( "" );
+ 		os << fillMe->sysFsNode.dataValue << "/config";
+-- 
+2.39.1
+

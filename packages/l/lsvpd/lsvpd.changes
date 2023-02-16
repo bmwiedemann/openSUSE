@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 15:05:58 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix NVMe information parsing for some devices (bsc#1208122 ltc#200118)
+   + lsvpd-Add-NVME-f1h-log-page-VPD-information-parsing-.patch
+   + lsvpd-Update-nvme_template-with-logpage-format-for-0.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 13:07:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
