@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 15 18:26:15 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.1.0
+  * New features:
+    * CRuby3.0 compatible keyword arguments are introduced.
+    * Keyword arguments are basically separated from ordinal arguments.
+    * Implement endless-def
+    * Replace `R-assignment` by `single-line pattern matching`
+    * Support squiggly heredocs.
+    * Hash value omission
+  * New library methods
+  * New supported directives for `mrbgems/mruby-pack`
+  * Breaking Changes
+    * `Kernel#printf` (`mruby-sprintf`) Format specifiers `%a` and `%A` are removed.
+    * `Kernel#puts` (`mruby-print`) Now expand Array arguments.
+    * mruby binaries are no longer backward compatible.
+    * Upgrade mruby VM version `RITE_VM_VER` to `0300` (means mruby 3.0 or after).
+    * Upgrade mruby binary version `RITE_BINARY_FORMAT_VER` to `0300`.
+    * `mruby3.0` removed `OP_EXT1`, `OP_EXT2`, `OP_EXT3` for operand extension.
+      But the operand size limitations was too tight for real-world application.
+      `mruby3.1` reintroduces those extension instructions.
+  * Some instructions are removed and some new are added,
+    see full changelog https://github.com/mruby/mruby/blob/3.1.0/doc/mruby3.1.md
+  * Fixed CVEs:
+    CVE-2021-4110, CVE-2021-4188, CVE-2022-0080, CVE-2022-0240,
+    CVE-2022-0326, CVE-2022-0481, CVE-2022-0631, CVE-2022-0632,
+    CVE-2022-0890, CVE-2022-1071, CVE-2022-1106, CVE-2022-1201,
+    CVE-2022-1427
+- Drop upstream fixed:
+  * CVE-2021-4110.patch
+  * CVE-2022-0240.patch
+  * CVE-2022-0080.patch
+  * CVE-2022-0481.patch
+- Replaced b1d0296a.patch with CVE-2022-1286.patch
+
+-------------------------------------------------------------------
 Tue Apr 26 18:57:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add b1d0296a.patch: fixing CVE-2022-1286 / boo#1198289

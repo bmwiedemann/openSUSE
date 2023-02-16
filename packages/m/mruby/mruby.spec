@@ -2,7 +2,7 @@
 #
 # spec file for package mruby
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%define sover 3_0_0
+%define sover 3_1_0
 Name:           mruby
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Lightweight Ruby
 License:        MIT
@@ -30,18 +30,10 @@ URL:            https://github.com/mruby/mruby/
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM link-with-soname.patch -- Add SONAME to library
 Patch0:         link-with-soname.patch
-# PATCH-FIX-UPSTREAM CVE-2021-4110.patch -- https://github.com/mruby/mruby/commit/f5e10c5a79a17939af763b1dcf5232ce47e24a34
-Patch1:         CVE-2021-4110.patch
-# PATCH-FIX-UPSTREAM CVE-2022-0240.patch -- https://github.com/mruby/mruby/commit/31fa3304049fc406a201a72293cce140f0557dca
-Patch2:         CVE-2022-0240.patch
-# PATCH-FIX-UPSTREAM CVE-2022-0080.patch -- https://github.com/mruby/mruby/commit/28ccc664e5dcd3f9d55173e9afde77c4705a9ab6
-Patch3:         CVE-2022-0080.patch
-# PATCH-FIX-UPSTREAM CVE-2022-0481.patch -- https://github.com/mruby/mruby/commit/ae3c99767a27f5c6c584162e2adc6a5d0eb2c54e
-Patch4:         CVE-2022-0481.patch
-# PATCH-FIX-UPSTREAM b1d0296a.patch -- CVE-2022-1286 boo#1198289 
-Patch5:         https://github.com/mruby/mruby/commit/b1d0296a.patch
+# PATCH-FIX-UPSTREAM CVE-2022-1286.patch -- boo#1198289 https://github.com/mruby/mruby/commit/b1d0296a
+Patch2:         CVE-2022-1286.patch
 # PATCH-FIX-UPSTREAM CVE-2022-1212.patch -- https://github.com/mruby/mruby/commit/3cf291f72224715942beaf8553e42ba8891ab3c6
-Patch6:         CVE-2022-1212.patch
+Patch3:         CVE-2022-1212.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

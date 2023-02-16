@@ -1,6 +1,6 @@
-diff -Nur mruby-3.0.0/build_config/host-shared.rb new/build_config/host-shared.rb
---- mruby-3.0.0/build_config/host-shared.rb	2021-03-05 09:07:35.000000000 +0100
-+++ new/build_config/host-shared.rb	2022-02-21 12:59:46.926385435 +0100
+diff -Nur mruby-3.1.0/build_config/host-shared.rb new/build_config/host-shared.rb
+--- mruby-3.1.0/build_config/host-shared.rb	2022-05-12 05:19:10.000000000 +0200
++++ new/build_config/host-shared.rb	2023-02-15 19:40:18.649494310 +0100
 @@ -18,12 +18,12 @@
  
    conf.archiver do |archiver|
@@ -11,14 +11,14 @@ diff -Nur mruby-3.0.0/build_config/host-shared.rb new/build_config/host-shared.r
  
    # file extensions
    conf.exts do |exts|
--     exts.library = '.so'
-+     exts.library = '.so.%{version}'
+-    exts.library = '.so'
++    exts.library = '.so.%{version}'
    end
  
    # file separator
-diff -Nur mruby-3.0.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
---- mruby-3.0.0/lib/mruby/build/command.rb	2021-03-05 09:07:35.000000000 +0100
-+++ new/lib/mruby/build/command.rb	2022-02-21 13:10:29.627639126 +0100
+diff -Nur mruby-3.1.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
+--- mruby-3.1.0/lib/mruby/build/command.rb	2022-05-12 05:19:10.000000000 +0200
++++ new/lib/mruby/build/command.rb	2023-02-15 19:39:00.763898579 +0100
 @@ -4,7 +4,7 @@
    class Command
      include Rake::DSL
@@ -37,9 +37,9 @@ diff -Nur mruby-3.0.0/lib/mruby/build/command.rb new/lib/mruby/build/command.rb
      end
    end
  
-diff -Nur mruby-3.0.0/lib/mruby/build.rb new/lib/mruby/build.rb
---- mruby-3.0.0/lib/mruby/build.rb	2021-03-05 09:07:35.000000000 +0100
-+++ new/lib/mruby/build.rb	2022-02-21 12:59:29.906251522 +0100
+diff -Nur mruby-3.1.0/lib/mruby/build.rb new/lib/mruby/build.rb
+--- mruby-3.1.0/lib/mruby/build.rb	2022-05-12 05:19:10.000000000 +0200
++++ new/lib/mruby/build.rb	2023-02-15 19:39:00.763898579 +0100
 @@ -6,6 +6,7 @@
    autoload :Gem, "mruby/gem"
    autoload :Lockfile, "mruby/lockfile"
@@ -48,7 +48,7 @@ diff -Nur mruby-3.0.0/lib/mruby/build.rb new/lib/mruby/build.rb
  
    class << self
      def targets
-@@ -380,6 +381,10 @@
+@@ -382,6 +383,10 @@
        end
      end
  
@@ -59,7 +59,7 @@ diff -Nur mruby-3.0.0/lib/mruby/build.rb new/lib/mruby/build.rb
      def exefile(name)
        if name.is_a?(Array)
          name.flatten.map { |n| exefile(n) }
-@@ -403,7 +408,7 @@
+@@ -405,7 +410,7 @@
        if name.is_a?(Array)
          name.flatten.map { |n| libfile(n) }
        else
