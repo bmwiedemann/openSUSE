@@ -117,4 +117,15 @@
 - Update Requires from setup.py (forwarded request 1039509 from glaubitz)</comment>
     <requestid>1039605</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eca19447c4e47c643fab3e3a683252e5</srcmd5>
+    <version>2.3.0</version>
+    <time>1676563032</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1066124 from glaubitz)</comment>
+    <requestid>1066154</requestid>
+  </revision>
 </revisionlist>
