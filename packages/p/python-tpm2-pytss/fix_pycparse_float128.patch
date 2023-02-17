@@ -1,0 +1,35 @@
+From 9bcd83905e5b7e718fe3787600f3ecf957c66430 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 17 Feb 2023 13:58:18 +0100
+Subject: [PATCH] setup: define __float128 for pycparse
+
+When compiling in 32bit stddef.h makes use of the __float128 type, that
+pycparse cannot recognize.
+
+This patch define the type as "long double", fixing the issue in 32bits
+platforms.
+
+Fix #497
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ setup.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 17736597..4554db0b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -204,7 +204,11 @@ def get_mappings(self):
+             if policy_header_path:
+                 pdata = preprocess_file(
+                     policy_header_path,
+-                    cpp_args=["-D__extension__=", "-D__attribute__(x)="],
++                    cpp_args=[
++                        "-D__extension__=",
++                        "-D__attribute__(x)=",
++                        "-D__float128=long double",
++                    ],
+                 )
+                 parser = c_parser.CParser()
+                 past = parser.parse(pdata, "tss2_policy.h")

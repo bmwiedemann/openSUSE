@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 17 13:17:22 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_pycparse_float128.patch to fix issue in 32bits platforms
+
+-------------------------------------------------------------------
 Thu Feb 16 15:30:10 UTC 2023 - aplanas@suse.com
 
 - Update to version 2.1.0:

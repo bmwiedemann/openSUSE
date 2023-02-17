@@ -27,6 +27,8 @@ Summary:        Python bindings for TSS
 License:        BSD-2-Clause
 URL:            https://github.com/tpm2-software/tpm2-pkcs11
 Source:         %{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_pycparse_float128.patch gh#tpm2-software/tpm2-pytss#497
+Patch0:         fix_pycparse_float128.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cffi}
