@@ -59,7 +59,7 @@ Requires:       tftp
 Recommends:     ipmitool
 Recommends:     nfs-kernel-server
 
-%{go_nostrip}
+%{?go_nostrip}
 
 %description
 Warewulf v4 combines ultra scalability, flexibility, and simplicity with being

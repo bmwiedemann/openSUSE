@@ -142,4 +142,12 @@
     <comment></comment>
     <requestid>1066185</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>8a5934ba15bd3aba635f306b372da169</srcmd5>
+    <version>4.4.0</version>
+    <time>1676648733</time>
+    <user>dimstar_suse</user>
+    <comment>Note: an updated vendor.tar.gz is also required (forwarded request 1066349 from mslacken)</comment>
+    <requestid>1066350</requestid>
+  </revision>
 </revisionlist>
