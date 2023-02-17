@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 12 03:07:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.11      2023-02-11 11:49:19Z
+      - Perl::Tidy-ed the entire codebase (GH#42) (Julien Fiegehenn)
+      - Split extra packages inside HTML::Form into their own module files
+        and consolidate documentation (GH#43) (Julien Fiegehenn)
+      - Added test to check unrecognized options to parse(). (GH#46) (Mohammad S Anwar)
+
+-------------------------------------------------------------------
 Tue Aug 23 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.10

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Form
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name HTML-Form
 Name:           perl-HTML-Form
-Version:        6.10
+Version:        6.11
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Class that represents an HTML form element
@@ -33,12 +33,15 @@ BuildRequires:  perl(HTTP::Request) >= 6
 BuildRequires:  perl(HTTP::Request::Common) >= 6.03
 BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(URI) >= 1.10
+BuildRequires:  perl(parent)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTTP::Request) >= 6
 Requires:       perl(HTTP::Request::Common) >= 6.03
 Requires:       perl(Test::More) >= 0.96
 Requires:       perl(URI) >= 1.10
+Requires:       perl(parent)
 %{perl_requires}
 
 %description
