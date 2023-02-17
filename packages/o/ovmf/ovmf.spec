@@ -64,6 +64,8 @@ Patch13:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch14:        %{name}-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch
 # Bug 1207095
 Patch15:        fix-aarch64.patch
+# Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
+Patch16:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -190,6 +192,7 @@ rm -rf $PKG_TO_REMOVE
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

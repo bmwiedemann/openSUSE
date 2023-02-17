@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 15:01:46 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch to revert
+  71cdb91f313380152d7bf38cfeebe76f5b2d39ac patch (bsc#1205613)
+    - 71cdb91f313380152d7bf38cfeebe76f5b2d39ac OvmfPkg/OvmfXen: Set PcdFSBClock
+    - We are waiting better upsteam patch, revert the issue patch first.
+      Then PcdFSBClock will back to fixed variable.
+    - Reference: https://edk2.groups.io/g/devel/topic/94891128#96077
+	         https://bugzilla.tianocore.org/show_bug.cgi?id=4340    
+
+-------------------------------------------------------------------
 Thu Jan 19 08:01:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-aarch64.patch: this fixes https://bugzilla.suse.com/show_bug.cgi?id=1207095

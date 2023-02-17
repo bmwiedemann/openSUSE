@@ -1,0 +1,60 @@
+From b8324bc3d5d44e5b1644a66f1b6e07b6e4ad9350 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Feb 2023 14:39:37 +0800
+Subject: [PATCH] Revert "OvmfPkg/OvmfXen: Set PcdFSBClock"
+
+This reverts commit 71cdb91f313380152d7bf38cfeebe76f5b2d39ac.
+---
+ OvmfPkg/OvmfXen.dsc                       | 4 +++-
+ OvmfPkg/XenPlatformPei/Xen.c              | 4 ----
+ OvmfPkg/XenPlatformPei/XenPlatformPei.inf | 1 -
+ 3 files changed, 3 insertions(+), 6 deletions(-)
+
+Index: edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
+===================================================================
+--- edk2-edk2-stable202208.orig/OvmfPkg/OvmfXen.dsc
++++ edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
+@@ -455,6 +455,9 @@
+   # Point to the MdeModulePkg/Application/UiApp/UiApp.inf
+   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x21, 0xaa, 0x2c, 0x46, 0x14, 0x76, 0x03, 0x45, 0x83, 0x6e, 0x8a, 0xb6, 0xf4, 0x66, 0x23, 0x31 }
+ 
++  ## Xen vlapic's frequence is 100 MHz
++  gEfiMdePkgTokenSpaceGuid.PcdFSBClock|100000000
++
+   # We populate DXE IPL tables with 1G pages preferably on Xen
+   gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable|TRUE
+ 
+@@ -485,7 +488,6 @@
+   gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Base|0x0
+   gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Size|0x800000000
+ 
+-  gEfiMdePkgTokenSpaceGuid.PcdFSBClock|100000000
+   gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|0
+ 
+   # Set video resolution for text setup.
+Index: edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/Xen.c
+===================================================================
+--- edk2-edk2-stable202208.orig/OvmfPkg/XenPlatformPei/Xen.c
++++ edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/Xen.c
+@@ -634,9 +634,5 @@ CalibrateLapicTimer (
+   Freq = DivU64x64Remainder (Dividend, TscTick2 - TscTick, NULL);
+   DEBUG ((DEBUG_INFO, "APIC Freq % 8lu Hz\n", Freq));
+ 
+-  ASSERT (Freq <= MAX_UINT32);
+-  Status = PcdSet32S (PcdFSBClock, (UINT32)Freq);
+-  ASSERT_EFI_ERROR (Status);
+-
+   UnmapXenPage (SharedInfo);
+ }
+Index: edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+===================================================================
+--- edk2-edk2-stable202208.orig/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
++++ edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+@@ -86,7 +86,6 @@
+   gEfiMdeModulePkgTokenSpaceGuid.PcdDxeIplSwitchToLongMode
+   gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable
+   gEfiMdeModulePkgTokenSpaceGuid.PcdPteMemoryEncryptionAddressOrMask
+-  gEfiMdePkgTokenSpaceGuid.PcdFSBClock
+   gEfiSecurityPkgTokenSpaceGuid.PcdOptionRomImageVerificationPolicy
+   gUefiCpuPkgTokenSpaceGuid.PcdCpuLocalApicBaseAddress
+ 
