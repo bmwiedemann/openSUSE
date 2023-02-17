@@ -87,7 +87,6 @@ BuildRequires:  cracklib-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  keyutils-devel
 BuildRequires:  libnscd-devel
-BuildRequires:  libnsl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
 BuildRequires:  libtirpc-devel
@@ -159,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.4+git.314.7b07e3c51a6
+Version:        4.17.5+git.320.c38ca0f84a
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
