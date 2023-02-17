@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-tables2
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause

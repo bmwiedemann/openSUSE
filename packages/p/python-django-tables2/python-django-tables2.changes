@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 21:11:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Assign `request` to table before anything else in
+    `RequestConfig.configure()` (#888) fixes: #865
+
+-------------------------------------------------------------------
 Sun Jan  8 06:02:30 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove python-django-tables2-no-mock.patch merged upstream

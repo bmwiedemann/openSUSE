@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1056859</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc4c437404f562964e315f7a0b6a8f47</srcmd5>
+    <version>2.5.2</version>
+    <time>1676648716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.2:
+  * Assign `request` to table before anything else in
+    `RequestConfig.configure()` (#888) fixes: #865</comment>
+    <requestid>1066274</requestid>
+  </revision>
 </revisionlist>
