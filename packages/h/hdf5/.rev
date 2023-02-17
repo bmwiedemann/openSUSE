@@ -795,4 +795,17 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>1035905</requestid>
   </revision>
+  <revision rev="81" vrev="4">
+    <srcmd5>186a5ae390ac75e0b090c0ff09a446ef</srcmd5>
+    <version>1.12.2</version>
+    <time>1676648657</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2021-37501 - overflow in calculation of data buffer due to bogus
+  input file (bsc#1207973).
+  https://github.com/HDFGroup/hdf5/issues/2458
+  https://github.com/HDFGroup/hdf5/pull/2459
+  Check-for-overflow-when-calculating-on-disk-attribute-data-size-2459.patch
+  Remove-duplicate-code.patch (forwarded request 1066178 from eeich)</comment>
+    <requestid>1066251</requestid>
+  </revision>
 </revisionlist>

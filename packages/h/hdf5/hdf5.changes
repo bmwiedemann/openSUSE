@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 13 09:18:05 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix CVE-2021-37501 - overflow in calculation of data buffer due to bogus
+  input file (bsc#1207973).
+  https://github.com/HDFGroup/hdf5/issues/2458
+  https://github.com/HDFGroup/hdf5/pull/2459
+  Check-for-overflow-when-calculating-on-disk-attribute-data-size-2459.patch
+  Remove-duplicate-code.patch
+
+-------------------------------------------------------------------
 Tue Nov 15 04:52:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add to specfile missing patch:

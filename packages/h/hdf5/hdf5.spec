@@ -1,7 +1,7 @@
 #
-# spec file for package hdf5
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -450,6 +450,8 @@ Patch108:       Make-sure-info-block-for-external-links-has-at-least-3-bytes.pat
 Patch109:       Hot-fix-for-CVE-2020-10812.patch
 Patch110:       Compound-datatypes-may-not-have-members-of-size-0.patch
 Patch111:       H5IMget_image_info-H5Sget_simple_extent_dims-does-not-exceed-array-size.patch
+Patch112:       Check-for-overflow-when-calculating-on-disk-attribute-data-size-2459.patch
+Patch113:       Remove-duplicate-code.patch
 
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
@@ -704,6 +706,8 @@ library packages.
 %patch109 -p1
 %patch110 -p1
 %patch111 -p1
+%patch112 -p1
+%patch113 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly
