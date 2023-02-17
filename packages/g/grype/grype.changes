@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Feb 17 10:07:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.57.1:
+  * Update Syft to v0.72.0 (#1136)
+
+-------------------------------------------------------------------
+Thu Feb 16 17:32:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.57.0:
+  * chore: bump quality gate (#1133)
+  * fix: ignore some false-positives for ruby gems (#1132)
+  * chore(deps): bump github/codeql-action from 2.2.3 to 2.2.4 (#1131)
+  * fix: exclude OS packages from CPE target filtering (#1130)
+  * chore(deps): bump actions/cache from 3.2.4 to 3.2.5 (#1129)
+  * chore(deps): bump github.com/docker/docker (#1128)
+  * Update Syft to v0.71.0 (#1126)
+  * chore(deps): bump github/codeql-action from 2.2.1 to 2.2.3 (#1125)
+  * Update grype bootstrap tools to latest versions. (#1124)
+  * chore(deps): bump golang.org/x/term from 0.4.0 to 0.5.0 (#1123)
+  * Update grype bootstrap tools to latest versions. (#1122)
+  * Update grype bootstrap tools to latest versions. (#1116)
+  * Update Syft to v0.70.0 (#1117)
+  * chore(deps): bump github.com/docker/docker (#1114)
+  * Update grype bootstrap tools to latest versions. (#1112)
+  * Update Syft to v0.69.1 (#1111)
+  * chore: prune cosign dependency for grype builds (#1100)
+  * Update grype bootstrap tools to latest versions. (#1108)
+  * Update Syft to v0.69.0 (#1109)
+  * chore(deps): bump actions/cache from 3.2.3 to 3.2.4 (#1107)
+  * chore: add new images to quality gate (#1106)
+  * chore: bump yardstick for better quality gate filtering (#1101)
+  * chore(deps): bump actions/cache from 3.0.11 to 3.2.3 (#1096)
+  * chore(deps): bump github/codeql-action from 2.1.39 to 2.2.1 (#1097)
+  * chore(deps): bump anchore/sbom-action from 0.13.2 to 0.13.3 (#1098)
+  * chore(deps): bump tibdex/github-app-token from 1.7.0 to 1.8.0 (#1099)
+  * bump yardstick to 2d30ea7429d0a59020e0176bba1b3b6b8b01b08a (#1095)
+  * chore(deps): bump actions/checkout from 3.1.0 to 3.3.0 (#1090)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.6.1 to 1.6.2 (#1087)
+  * chore(deps): bump 8398a7/action-slack from 3.14.0 to 3.15.0 (#1088)
+  * chore(deps): bump peter-evans/create-pull-request from 4.2.0 to 4.2.3 (#1089)
+  * chore(deps): bump actions/setup-go from 3.3.1 to 3.5.0 (#1091)
+  * chore(deps): bump github/codeql-action from 2.1.31 to 2.1.39 (#1092)
+
+-------------------------------------------------------------------
 Fri Jan 27 06:09:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.56.0:
