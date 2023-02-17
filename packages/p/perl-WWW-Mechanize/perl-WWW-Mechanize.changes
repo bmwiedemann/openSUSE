@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 14 03:08:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.16
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.16      2023-02-11 12:09:16Z
+      [FIXED]
+      - Raise minimum Perl to 5.8 to match what we test, what dependencies
+        depend on, etc. (GH#352) (James Raspass)
+      [ENHANCEMENTS]
+      - New method delete() that allows DELETE requests with Mechanize::Link
+        objects (GH#361) (Stuart A Johnston)
+      [DOCUMENTATION]
+      - Clarify documentation for select() (GH#77) (Julien Fiegehenn)
+      - Various POD fixes (Julien Fiegehenn)
+      - Explain that :content-file does not decode content (GH#363) (bscan)
+      [TESTS]
+      - Test that follow_link(n=> 'all') warns (Kueppo Tcheukam)
+      - Drop Test::Warn prerequisite and only use Test::Warnings (GH#360) (Graham Knop)
+
+-------------------------------------------------------------------
 Mon Aug 22 03:08:47 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.15

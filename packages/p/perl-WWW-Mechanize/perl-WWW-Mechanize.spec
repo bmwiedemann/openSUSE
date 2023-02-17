@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Mechanize
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.15
+Version:        2.16
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
@@ -89,6 +89,7 @@ content and use that as input to a test call.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
