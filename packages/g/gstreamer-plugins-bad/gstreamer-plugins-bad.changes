@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 16 12:16:42 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove sys/decklink since that contains a non-standard license
+  and disable the decklink plugin
+
+-------------------------------------------------------------------
 Tue Feb  7 13:02:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop building openh264 by default even on 3'rd party

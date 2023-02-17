@@ -718,6 +718,10 @@ making use of the GStreamer Transcoding API.
 
 %prep
 %setup -q -n %{_name}-%{version}
+%if ! 0%{?BUILD_ORIG}
+rm -Rf sys/decklink
+sed -ie "/subdir('decklink')/d" sys/meson.build
+%endif
 
 %if %{pkg_vcmp srt < 1.4.0}
 %patch0 -p1
@@ -734,6 +738,7 @@ export PYTHON=%{_bindir}/python3
 %if ! 0%{?BUILD_ORIG}
 	-Dpackage-name='openSUSE GStreamer-plugins-bad package' \
 	-Dpackage-origin='http://download.opensuse.org' \
+	-Ddecklink=disabled \
 	-Ddts=disabled \
 	-Dlibde265=disabled \
 	-Dmodplug=disabled \
@@ -898,7 +903,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdash.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdc1394.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdebugutilsbad.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstdecklink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtls.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvbsubenc.so
@@ -1170,6 +1174,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoaacenc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdecklink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
 %if %{with faac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaac.so
