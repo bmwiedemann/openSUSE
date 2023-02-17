@@ -148,4 +148,12 @@
 </comment>
     <requestid>1037023</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1addf7201ccc64f92f3e6b2bf27b7ddf</srcmd5>
+    <version>0.3.6</version>
+    <time>1676648720</time>
+    <user>dimstar_suse</user>
+    <comment>- restore installation of dbm module on SLE15 and older</comment>
+    <requestid>1066285</requestid>
+  </revision>
 </revisionlist>

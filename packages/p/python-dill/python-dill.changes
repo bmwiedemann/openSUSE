@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 16 23:13:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restore installation of dbm module on SLE15 and older
+
+-------------------------------------------------------------------
 Mon Nov 21 06:58:20 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update the source from github and use the correct folder for setup and tests

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python2 1
 Name:           python-dill
 Version:        0.3.6
 Release:        0
@@ -24,16 +25,12 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
 Source:         https://github.com/uqfoundation/dill/archive/dill-%{version}.tar.gz#/dill-%{version}.tar.gz
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module dbm}
-%else
-BuildRequires:  python3-dbm
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-objgraph >= 1.7.2
