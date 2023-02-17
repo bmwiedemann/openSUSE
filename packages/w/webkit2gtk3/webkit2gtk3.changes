@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 14:30:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.38.5 (boo#1208328):
+  + Fix large memory allocation when uploading content.
+  + Fix scrolling after a history navigation with PSON enabled.
+  + Always update the active uri of WebKitFrame.
+  + Fix the build on Ubuntu 20.04.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2023-23529.
+
+-------------------------------------------------------------------
 Thu Feb  2 15:51:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.38.4 (boo#1207997):
