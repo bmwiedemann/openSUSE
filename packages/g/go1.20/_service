@@ -1,0 +1,16 @@
+<services>
+  <service name="download_files" mode="disabled"/>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/llvm/llvm-project.git</param>
+    <param name="scm">git</param>
+    <param name="include">compiler-rt</param>
+    <!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
+    <param name="revision">74c2d4f6024c8f160871a2baa928d0b42415f183</param>
+    <param name="versionformat">%H</param>
+    <param name="filename">llvm</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">llvm-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

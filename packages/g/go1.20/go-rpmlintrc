@@ -1,0 +1,9 @@
+addFilter("binaryinfo-readelf-failed")  # go binaries are suposedly ELF-compliant
+addFilter("statically-linked-binary")   # go doesn't yet support dynamic linking
+
+# .syso files are special. Note that while they are architecture-dependent,
+# they are named to avoid conflicts (and we make sure of that in the RPM
+# through go_arch).
+addFilter("unstripped-binary-or-object.*\.syso$")
+addFilter("arch-dependent-file-in-usr-share.*\.syso$")
+addFilter("W: position-independent-executable-suggested")
