@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  9 20:13:42 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- SELinux: postfix denied to access /var/spool/postfix/pid/master.pid
+  (bsc#1207177) Apply proposed changes in postfix.service
+- remove patch included into the source:
+    harden_postfix.service.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 13:30:52 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable NIS support on Factory (deprecated and will be removed)

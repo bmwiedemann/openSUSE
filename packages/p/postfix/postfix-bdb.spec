@@ -85,7 +85,6 @@ Patch7:         postfix-ssl-release-buffers.patch
 Patch8:         postfix-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        postfix-avoid-infinit-loop-if-no-permission.patch
-Patch12:	harden_postfix.service.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -169,7 +168,6 @@ lmdb.
 %patch8
 %patch9
 %patch10
-%patch12
 
 # ---------------------------------------------------------------------------
 
@@ -544,6 +542,7 @@ fi
 %exclude %{_mandir}/man5/pgsql_table.5*
 %{_mandir}/man?/*%{?ext_man}
 %dir %attr(0755,root,root) /%{pf_queue_directory}
+%dir %attr(0755,root,root) /%{pf_queue_directory}/pid
 %dir %attr(0700,postfix,root) /%{pf_queue_directory}/active
 %dir %attr(0700,postfix,root) /%{pf_queue_directory}/bounce
 %dir %attr(0700,postfix,root) /%{pf_queue_directory}/corrupt
