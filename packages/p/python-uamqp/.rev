@@ -176,4 +176,17 @@
     HISTORY.rst file provided with this package (forwarded request 1035175 from glaubitz)</comment>
     <requestid>1035303</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d232b14587c884702e7573331b3305ec</srcmd5>
+    <version>1.6.4</version>
+    <time>1676648724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * Updated OpenSSL dependency to 1.1.1t
+  * Updated submodules to support OpenSSL 3.0 compilation
+  * Removed dependency on six
+  * Fixed a bug that caused the wrong port to selected for websockets
+    when a port was not passed in</comment>
+    <requestid>1066296</requestid>
+  </revision>
 </revisionlist>

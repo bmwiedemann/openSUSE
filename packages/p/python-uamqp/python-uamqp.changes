@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 17 04:48:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.4:
+  * Updated OpenSSL dependency to 1.1.1t
+  * Updated submodules to support OpenSSL 3.0 compilation
+  * Removed dependency on six
+  * Fixed a bug that caused the wrong port to selected for websockets
+    when a port was not passed in
+
+-------------------------------------------------------------------
 Fri Nov 11 08:39:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
