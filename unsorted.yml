@@ -330,6 +330,7 @@ unsorted:
   - aalib 
   - aalib-devel 
   - aalib-devel-32bit: [x86_64] 
+  - aardvark-dns: [x86_64] 
   - abcm2ps 
   - abi-compliance-checker 
   - abi-dumper 
@@ -415,6 +416,7 @@ unsorted:
   - adios_1_13_1-gnu-openmpi4-hpc 
   - adios_1_13_1-gnu-openmpi4-hpc-devel 
   - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
+  - adjtimex 
   - adlmidi 
   - adlmidi-tools 
   - adminer 
@@ -546,6 +548,8 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
+  - ancient 
+  - ancient-devel 
   - android-tools 
   - android-tools-bash-completion 
   - android-tools-mkbootimg 
@@ -2074,6 +2078,7 @@ unsorted:
   - clFFT-devel: [x86_64] 
   - clack 
   - clamav-devel 
+  - clamav-docs-html 
   - clamav-milter 
   - clamtk 
   - clamtk-lang 
@@ -2453,7 +2458,6 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
-  - cpp-httplib-headers-devel 
   - cpp11 
   - cpp13 
   - cpp7 
@@ -10148,6 +10152,7 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libaml0 
+  - libancient2 
   - libangelscript2_35_1 
   - libangelscript_addons2_35_1 
   - libanjuta-3-0 
@@ -10618,7 +10623,7 @@ unsorted:
   - libcairomm-1_16-1 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_1_2 
+  - libcalc2_14_1_3 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -10865,7 +10870,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_11 
+  - libcpp-httplib0_12 
   - libcpprest2_10 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit: [x86_64] 
@@ -12944,8 +12949,8 @@ unsorted:
   - libmrss-devel 
   - libmrss0 
   - libmrss0-32bit: [x86_64] 
-  - libmruby3_0_0 
-  - libmruby_core3_0_0 
+  - libmruby3_1_0 
+  - libmruby_core3_1_0 
   - libmsgpackc2 
   - libmsi0 
   - libmsiecf-devel 
@@ -15300,7 +15305,7 @@ unsorted:
   - libvpl-samples 
   - libvpl2 
   - libvpx-devel 
-  - libvpx7-32bit: [x86_64] 
+  - libvpx8-32bit: [x86_64] 
   - libvsapm-devel 
   - libvsapm-tools 
   - libvsapm1 
@@ -17976,6 +17981,7 @@ unsorted:
   - net6 
   - net6-devel 
   - net6-lang 
+  - netavark: [x86_64] 
   - netbeans-javaparser 
   - netbeans-resolver 
   - netbeans-svnclientadapter 
@@ -33766,8 +33772,6 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
-  - ruby3.1-rubygem-d-installer 
-  - ruby3.1-rubygem-d-installer-cli 
   - ruby3.1-rubygem-grpc 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 

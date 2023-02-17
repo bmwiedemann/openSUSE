@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230215" schemaversion="4.1">
+<image name="OBS__MicroOS___20230216" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230215</productvar>
+      <productvar name="VERSION">20230216</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230215,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230216,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230215/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230216/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -61,7 +61,6 @@
       <repopackage name="accountsservice-lang" arch="x86_64"/>
       <repopackage name="acl" arch="x86_64"/>
       <repopackage name="acpica" arch="x86_64"/>
-      <repopackage name="adjtimex"/>
       <repopackage name="adobe-sourcecodepro-fonts"/>
       <repopackage name="adobe-sourcehansans-cn-fonts"/>
       <repopackage name="adobe-sourcehansans-tw-fonts"/>
@@ -1793,7 +1792,7 @@
       <repopackage name="libvorbis0"/>
       <repopackage name="libvorbisenc2"/>
       <repopackage name="libvorbisfile3"/>
-      <repopackage name="libvpx7"/>
+      <repopackage name="libvpx8"/>
       <repopackage name="libvte-2_91-0" arch="x86_64"/>
       <repopackage name="libvulkan1"/>
       <repopackage name="libwacom-data"/>
@@ -2594,7 +2593,7 @@
       <repopackage name="thin-provisioning-tools"/>
       <repopackage name="thryomanes-fonts"/>
       <repopackage name="tigervnc" arch="x86_64"/>
-      <repopackage name="time"/>
+      <repopackage name="time" arch="x86_64"/>
       <repopackage name="timezone"/>
       <repopackage name="timezone-java"/>
       <repopackage name="tnftp" arch="x86_64"/>
@@ -2715,7 +2714,7 @@
       <repopackage name="webkit2gtk-5_0-injected-bundles" arch="x86_64"/>
       <repopackage name="wget" arch="x86_64"/>
       <repopackage name="wget-lang" arch="x86_64"/>
-      <repopackage name="which"/>
+      <repopackage name="which" arch="x86_64"/>
       <repopackage name="wicked" arch="x86_64"/>
       <repopackage name="wicked-service" arch="x86_64"/>
       <repopackage name="wireless-regdb"/>

@@ -70,7 +70,6 @@
     <package name="acpica" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="acpid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="adaptec-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="adjtimex" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="adobe-sourcecodepro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="adobe-sourcehansans-cn-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="adobe-sourcehansans-tw-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2636,7 +2635,7 @@
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbisenc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libvpx7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvpx8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3660,6 +3659,8 @@
     <package name="ruby3.1-rubygem-cri" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-css_parser" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-csv" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-d-installer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-d-installer-cli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-debase-ruby_core_source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-debug_inspector" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-delayed_job" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4196,7 +4197,7 @@
     <package name="thunar-volman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tiff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="timezone-java" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4389,7 +4390,7 @@
     <package name="webkit2gtk-4_1-injected-bundles" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="wget" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
