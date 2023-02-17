@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 13:40:12 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Ruby 3.2: Change a test to treat dir:///foo equal to dir:/foo
+  (bsc#1207239)
+- 4.5.15
+
+-------------------------------------------------------------------
 Wed Feb  8 17:29:25 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Prevent crash if nil dependencies instead of [] (bsc#1208068)
