@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 21:07:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Middleware to underscorize query params #123
+  * ORJSONRenderer #124
+
+-------------------------------------------------------------------
 Fri Feb 10 12:27:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

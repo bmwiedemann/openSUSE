@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-djangorestframework-camel-case
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        Camel case JSON support for Django REST framework
 License:        BSD-3-Clause
