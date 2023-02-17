@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 12:30:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.4:
+  * release(1.13.4): easier installation
+  * Delayed numpy import during setup
+  * fix: handle all LP64 platforms generically
+
+-------------------------------------------------------------------
 Sun Jan  8 20:32:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.3:
