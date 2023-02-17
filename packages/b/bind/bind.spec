@@ -56,14 +56,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.11
+Version:        9.18.12
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.isc.org/bind/
 Source:         https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
-Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
+Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.asc
 Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source3:        %{name}.keyring

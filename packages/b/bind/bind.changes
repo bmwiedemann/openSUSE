@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 16 14:36:14 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.12
+  Removed Features:
+  * Specifying a port when configuring source addresses (i.e., as
+    an argument to query-source, query-source-v6, transfer-source,
+    transfer-source-v6, notify-source, notify-source-v6,
+    parental-source, or parental-source-v6, or in the source or
+    source-v6 arguments to primaries, parental-agents, also-notify,
+    or catalog-zones) has been deprecated. In addition, the
+    use-v4-udp-ports, use-v6-udp-ports, avoid-v4-udp-ports, and
+    avoid-v6-udp-ports options have also been deprecated.
+    Warnings are now logged when any of these options are
+    encountered in named.conf. In a future release, they will be
+    made nonfunctional.
+
+  Bug Fixes:
+  * A constant stream of zone additions and deletions via rndc
+    reconfig could cause increased memory consumption due to
+    delayed cleaning of view memory. This has been fixed. 
+  * The speed of the message digest algorithms (MD5, SHA-1, SHA-2),
+    and of NSEC3 hashing, has been improved.
+  * Pointing parental-agents to a resolver did not work because the
+    RD bit was not set on DS requests. This has been fixed. 
+  * Building BIND 9 failed when the --enable-dnsrps switch for
+    ./configure was used. This has been fixed.
+
+- Updated keyring and signature
+
+-------------------------------------------------------------------
 Tue Jan 24 13:39:10 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.11
