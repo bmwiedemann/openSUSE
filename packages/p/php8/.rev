@@ -368,4 +368,15 @@
   * https://www.php.net/ChangeLog-8.php#8.1.15</comment>
     <requestid>1063063</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5d6bbb37ea459a09f10f0f6c2392e31d</srcmd5>
+    <version>8.1.16</version>
+    <time>1676648634</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.16
+  * This is a security release that addresses CVE-2023-0567,
+    CVE-2023-0568, and CVE-2023-0662.
+  * https://www.php.net/ChangeLog-8.php#8.1.16</comment>
+    <requestid>1066139</requestid>
+  </revision>
 </revisionlist>

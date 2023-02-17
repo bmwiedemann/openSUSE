@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 16 09:00:52 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.1.16
+  * This is a security release that addresses CVE-2023-0567,
+    CVE-2023-0568, and CVE-2023-0662.
+  * https://www.php.net/ChangeLog-8.php#8.1.16
+
+-------------------------------------------------------------------
 Fri Feb  3 15:04:35 UTC 2023 - pgajdos@suse.com
 
 - version update to 8.1.15
