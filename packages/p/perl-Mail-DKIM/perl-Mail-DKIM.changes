@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 13 03:06:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20230212
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20230212 2023-02-12 UTC
+    + Fix typo in ARC signer example code.
+      Thanks to @dev-aaront-org
+
+-------------------------------------------------------------------
 Fri May 20 03:06:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20220520
