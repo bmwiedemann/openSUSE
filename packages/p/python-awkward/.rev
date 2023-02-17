@@ -136,4 +136,40 @@
     <comment></comment>
     <requestid>1061725</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a574cf6430555b4c8e2c878a333260d8</srcmd5>
+    <version>2.0.7</version>
+    <time>1676648730</time>
+    <user>dimstar_suse</user>
+    <comment>- awkward 2.0.7 actually requires awkward-cpp 8. 
+
+- update to 2.0.7
+  * feat: add ability to forget length of typetracer created with
+    typetracer_from_report
+  * feat: start hardening nplike signatures
+  * feat: implement all ufuncs on TypeTracer.
+  * feat: use None for unknown lengths (1 of 2)
+  * feat: coerce backends to same zero-copy type (2 of 2)
+  * feat: growable buffer move_to method
+  * feat: add ak.merge_union_of_records
+  * feat: add support for histogram module
+  * feat: add ak.approx_equal
+  * fix: re-order cases to handle NumPy scalar types properly
+  * fix: specify dtype for buffers in from_rdataframe.
+  * fix: unify typestr with _repr
+  * fix: update type_to_name for Layout builder cxx_14 target
+  * fix: Layout builders clean and length bug fixes
+  * fix: support mask_identity=True for axis=None in ptp, std, etc.
+  * fix: preserve dimensions for keepdims=True, axis=None
+    reductions
+  * fix: some usages of len(layout) under typetracer
+  * fix: rdataframe memory check
+  * fix: rework parameter merging rules
+  * fix: don't raise NotImplementedError when reading empty array
+    from Parquet
+  * fix: ignore object arrays
+  * fix: ak.values_astype now turns 'unknown' type into the
+    requested type.</comment>
+    <requestid>1066313</requestid>
+  </revision>
 </revisionlist>

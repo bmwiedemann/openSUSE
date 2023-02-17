@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb 13 02:01:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- awkward 2.0.7 actually requires awkward-cpp 8. 
+
+-------------------------------------------------------------------
+Fri Feb 10 12:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7
+  * feat: add ability to forget length of typetracer created with
+    typetracer_from_report
+  * feat: start hardening nplike signatures
+  * feat: implement all ufuncs on TypeTracer.
+  * feat: use None for unknown lengths (1 of 2)
+  * feat: coerce backends to same zero-copy type (2 of 2)
+  * feat: growable buffer move_to method
+  * feat: add ak.merge_union_of_records
+  * feat: add support for histogram module
+  * feat: add ak.approx_equal
+  * fix: re-order cases to handle NumPy scalar types properly
+  * fix: specify dtype for buffers in from_rdataframe.
+  * fix: unify typestr with _repr
+  * fix: update type_to_name for Layout builder cxx_14 target
+  * fix: Layout builders clean and length bug fixes
+  * fix: support mask_identity=True for axis=None in ptp, std, etc.
+  * fix: preserve dimensions for keepdims=True, axis=None
+    reductions
+  * fix: some usages of len(layout) under typetracer
+  * fix: rdataframe memory check
+  * fix: rework parameter merging rules
+  * fix: don't raise NotImplementedError when reading empty array
+    from Parquet
+  * fix: ignore object arrays
+  * fix: ak.values_astype now turns 'unknown' type into the
+    requested type.
+
+-------------------------------------------------------------------
 Fri Jan 27 21:34:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.6
