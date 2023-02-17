@@ -881,4 +881,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment></comment>
     <requestid>1063496</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>07d676ce3105fa09ef2f77c29baa69a3</srcmd5>
+    <version>2.89</version>
+    <time>1676648637</time>
+    <user>dimstar_suse</user>
+    <comment>Added bug reference</comment>
+    <requestid>1066370</requestid>
+  </revision>
 </revisionlist>
