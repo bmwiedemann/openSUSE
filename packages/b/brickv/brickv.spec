@@ -18,7 +18,7 @@
 
 
 Name:           brickv
-Version:        2.4.23
+Version:        2.4.25
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only

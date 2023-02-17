@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 15 16:18:51 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to new upstream version 2.4.25
+  - Fix Python dev-mode default handling
+  - Do not touch /usr/lib/python3/dist-packages on Debian Linux
+  - Convert Debian Linux package build to debhelper
+  - Disable ADC calibration for 7p Bricks
+  - Add missing pkg_resources dependency on Linux
+  - Update all temperature readings with 10 Hz
+  - Stop callback emulator from delivering results to destroyed plugins
+  - Avoid crash while loading the 3D model in all IMU plugins
+  - Avoid PyQt5 import problem with the Qt module
+  - Fix accidental dependency on newer PyQt5 version on Linux 
+
+-------------------------------------------------------------------
 Wed Jan 25 21:58:05 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.23
