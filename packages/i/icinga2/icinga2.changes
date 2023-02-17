@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 16 17:38:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.7
+  * Security
+    - Windows: update bundled OpenSSL to v1.1.1t. #9672
+  * Bugfixes
+    - SELinux: fix user and domain creation by explicitly setting the role. #9690
+    - Signal handlers: don't interrupt and break plugins spawning. #9682
+    - Icinga DB: take check\_period into account during overdue calculation. #9679
+    - Avoid corrupted files: use fsync(2)/FlushFileBuffers() everywhere. #9681
+    - Solaris: fix compile error. #9680
+  * Enhancements
+    - Windows: update bundled Boost to v1.81. #9678
+    - Documentation: several fixes and improvements. #9671
+- Drop icinga2-boost.patch because now in upstream.
+
+-------------------------------------------------------------------
 Fri Feb  3 07:46:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add icinga2-boost.patch to make compilable on Boost v1.81 

@@ -99,7 +99,7 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.13.6
+Version:        2.13.7
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -110,8 +110,6 @@ Source1:        icinga2-rpmlintrc
 Patch0:         icinga2-graphite.patch
 # PATCH-FIX-OPENSUSE lrupp -- fixing the syntax file for vim >= 8.x
 Patch1:         icinga2-vim_syntax.patch
-# PATCH-UPSTREAM -- Fix build error with boost 1.81 - See: https://github.com/Icinga/icinga2/issues/9618 and https://github.com/Icinga/icinga2/pull/9624
-Patch2:         icinga2-boost.patch
 %endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -328,7 +326,6 @@ Provides Nano syntax highlighting for icinga2.
 find . -type f -name '*.sh' -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} \;
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %endif
 
 %build
