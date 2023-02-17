@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 20:30:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 110.0.5481.100
+  * fix regression on SAP Business Objects web UI
+  * fix date formatting behavior change from ICU 72
+
+-------------------------------------------------------------------
 Wed Feb  8 20:16:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 110.0.5481.77 (boo#1208029):
