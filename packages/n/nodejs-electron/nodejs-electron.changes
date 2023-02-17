@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 16 20:32:34 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.0
+  * Fixed a crash when BrowserViews are present and a user
+    attempts to prevent beforeunload in the renderer process.
+  * Fixed an incorrect result returned when using secure as a cookies filter.
+  * Fix printing of wasm-to-js frames (CVE-2023-0696)
+
+-------------------------------------------------------------------
 Mon Feb 13 13:19:38 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Add RenderFrameHostImpl-use-after-free.patch to fix a crash reported by an user.
 - Fix unnecessary libz dependency added for downstream node modules on Fedora.
