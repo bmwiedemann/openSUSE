@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlalchemy-migrate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@ sed -i "s/, 'sphinxcontrib.issuetracker'//g" doc/source/conf.py # No internet ac
 
 %build
 %python_build
-python3 setup.py build_sphinx && rm doc/build/html/.buildinfo # Build HTML documentation
+sphinx-build -b html doc/source doc/build/html && rm doc/build/html/.buildinfo # Build HTML documentation
 
 %install
 %python_install
