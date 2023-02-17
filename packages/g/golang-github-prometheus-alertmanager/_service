@@ -4,7 +4,7 @@
     <param name="url">https://github.com/prometheus/alertmanager</param>
     <param name="exclude">.git</param>
     <param name="exclude">.github</param>
-    <param name="revision">refs/tags/v0.23.0</param>
+    <param name="revision">refs/tags/v0.25.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">^\D*([\d.]+)$</param>
     <param name="changesgenerate">enable</param>
@@ -17,6 +17,6 @@
     <param name="basename">alertmanager</param>
   </service>
     <service name="go_modules" mode="disabled">
-    <param name="archive">alertmanager-0.23.0.tar.gz</param>
+    <param name="archive">alertmanager-0.25.0.tar.gz</param>
   </service>
 </services>

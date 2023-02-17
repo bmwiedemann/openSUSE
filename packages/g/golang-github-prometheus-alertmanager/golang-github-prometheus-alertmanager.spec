@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-alertmanager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,21 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.23.0
+Version:        0.25.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
 URL:            https://prometheus.io/
 Source:         alertmanager-%{version}.tar.gz
-# generated after applying 0002-Update-prometheus-client-to-version-1.11.1.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
-# This patch has been applied before generating vendor tarball
-Patch2:         0002-Update-prometheus-client-to-version-1.11.1.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.19
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}

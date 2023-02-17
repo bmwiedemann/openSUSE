@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:39:10 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.25.0:
+  * New notifier: Webex
+  * telegram: use HTML template with HTML parse mode
+  * Add support for reading VictorOps API key from file
+  * Add support for reading PagerDuty secrets from files
+  * Add timezone support to time intervals.
+  * Allow first day of week to be Sunday or Monday
+  * Enable HTTP 2 again
+  * Secure cluster traffic via mutual TLS
+  * EmailConfig: Use CanonicalMIMEHeaderKey instead of TitleCasing for headers
+  * Reduce memory utilization in downstream projects creating
+    multiple Alertmanager instances
+  * Correcting the condition for updating a silence
+    Earlier was checking upto nanosecond precision but reduced to second
+    as the UI only sends upto millisecond
+  * Remove the dedicated field to APIURL in favour of the configuration one
+  * Remove the `bot_token`
+  * Fix casing in victorops log message
+  * Fix one last log level that I missed
+  * Fix email template for resolved notifications
+  * Update documentation
+  * Update dependencies
+- Update required Go version to 1.19
+- Rebased 0001-Default-settings.patch
+- Drop 0002-Update-prometheus-client-to-version-1.11.1.patch
+  fixed upstream (now uses v1.14.0)
+
+-------------------------------------------------------------------
 Tue Jul 19 08:10:44 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not include sources (bsc#1200725)
