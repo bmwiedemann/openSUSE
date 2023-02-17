@@ -185,4 +185,15 @@
   * Prevent ReDoS in Spanish sentence splitting regex</comment>
     <requestid>1058176</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>04e47877ffb35dbba8d4b8cbd599fe0d</srcmd5>
+    <version>1.1.7</version>
+    <time>1676648624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7:
+  * Add an “ago” synonym for Arabic
+  * Improved date parsing for Czech
+  * Improved date parsing for Indonesian</comment>
+    <requestid>1066042</requestid>
+  </revision>
 </revisionlist>
