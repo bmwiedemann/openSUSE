@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-fastremap
-Version:        1.13.3
+Version:        1.13.4
 Release:        0
 Summary:        Module to Remap, mask, renumber, and in-place transpose numpy arrays
 License:        LGPL-3.0-only

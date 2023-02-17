@@ -85,4 +85,15 @@
   * fix(renumber): preserve\_zero=False w/ arrays starting with 0</comment>
     <requestid>1056941</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>900f5c794a665611154dbafc4d47ade3</srcmd5>
+    <version>1.13.4</version>
+    <time>1676648717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.4:
+  * release(1.13.4): easier installation
+  * Delayed numpy import during setup
+  * fix: handle all LP64 platforms generically</comment>
+    <requestid>1066271</requestid>
+  </revision>
 </revisionlist>
