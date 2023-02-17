@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 15 16:41:57 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- A little cleanup of specfile
+
+-------------------------------------------------------------------
+Wed Feb 15 15:01:13 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Update to tigervnc 1.13.0
+  * The servers and native viewer now support RealVNC's RSA-AES authentication methods and encryption
+  * The native viewer is now translated to Romanian and Georgian
+  * The native viewer now (optionally) supports PiKVM's H.264 encoding
+  * The display settings for the native viewer have been overhauled to make them easier to understand
+  * The native viewer now supports adding exceptions for expired certificates
+  * Resolved an issue where full-screen mode didn't work in the native viewer on macOS 13
+  * Lock key synchronization has been re-enabled in the native viewer after being accidentally disabled in 1.11.0
+  * Xvnc/libvnc.so can now be built with Xorg 1.21
+  * x0vncserver is a bit better at handling differing server and client keyboard layout
+  * x0vncserver now correctly handles zaphod mode
+- Removed patches (no longer needed):
+  * tigervnc-newfbsize.patch (https://github.com/TigerVNC/tigervnc/pull/13)
+  * n_utilize-system-crypto-policies.patch (https://github.com/TigerVNC/tigervnc/pull/1262)
+  * xserver211.patch & u_tigervnc-211.patch (https://github.com/TigerVNC/tigervnc/pull/1383)
+- Refreshed patches:
+  * n_tigervnc-date-time.patch
+  * n_vncserver.patch
+  * u_change-button-layout-in-ServerDialog.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 09:32:50 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

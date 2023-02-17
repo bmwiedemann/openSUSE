@@ -1,48 +1,48 @@
-Index: tigervnc-1.12.0/unix/xserver/hw/vnc/buildtime.c
+Index: tigervnc-1.13.0/unix/xserver/hw/vnc/buildtime.c
 ===================================================================
---- tigervnc-1.12.0.orig/unix/xserver/hw/vnc/buildtime.c
-+++ tigervnc-1.12.0/unix/xserver/hw/vnc/buildtime.c
+--- tigervnc-1.13.0.orig/unix/xserver/hw/vnc/buildtime.c
++++ tigervnc-1.13.0/unix/xserver/hw/vnc/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.12.0/unix/vncconfig/buildtime.c
+Index: tigervnc-1.13.0/unix/vncconfig/buildtime.c
 ===================================================================
---- tigervnc-1.12.0.orig/unix/vncconfig/buildtime.c
-+++ tigervnc-1.12.0/unix/vncconfig/buildtime.c
+--- tigervnc-1.13.0.orig/unix/vncconfig/buildtime.c
++++ tigervnc-1.13.0/unix/vncconfig/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.12.0/unix/x0vncserver/buildtime.c
+Index: tigervnc-1.13.0/unix/x0vncserver/buildtime.c
 ===================================================================
---- tigervnc-1.12.0.orig/unix/x0vncserver/buildtime.c
-+++ tigervnc-1.12.0/unix/x0vncserver/buildtime.c
+--- tigervnc-1.13.0.orig/unix/x0vncserver/buildtime.c
++++ tigervnc-1.13.0/unix/x0vncserver/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: tigervnc-1.12.0/win/winvnc/buildTime.cxx
+Index: tigervnc-1.13.0/win/winvnc/buildTime.cxx
 ===================================================================
---- tigervnc-1.12.0.orig/win/winvnc/buildTime.cxx
-+++ tigervnc-1.12.0/win/winvnc/buildTime.cxx
+--- tigervnc-1.13.0.orig/win/winvnc/buildTime.cxx
++++ tigervnc-1.13.0/win/winvnc/buildTime.cxx
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -const char* buildTime = "Built on " __DATE__ " at " __TIME__;
 +const char* buildTime = "Built on ??? ?? ???? at ??:??:??";
-Index: tigervnc-1.12.0/CMakeLists.txt
+Index: tigervnc-1.13.0/CMakeLists.txt
 ===================================================================
---- tigervnc-1.12.0.orig/CMakeLists.txt
-+++ tigervnc-1.12.0/CMakeLists.txt
-@@ -44,10 +44,6 @@ if(MSVC)
+--- tigervnc-1.13.0.orig/CMakeLists.txt
++++ tigervnc-1.13.0/CMakeLists.txt
+@@ -40,10 +40,6 @@ if(MSVC)
    message(FATAL_ERROR "TigerVNC cannot be built with Visual Studio.  Please use MinGW")
  endif()
  
@@ -53,20 +53,19 @@ Index: tigervnc-1.12.0/CMakeLists.txt
  # Default to optimised builds instead of debug ones. Our code has no bugs ;)
  # (CMake makes it fairly easy to toggle this back to Debug if needed)
  if(NOT CMAKE_BUILD_TYPE)
-Index: tigervnc-1.12.0/vncviewer/vncviewer.cxx
+Index: tigervnc-1.13.0/vncviewer/vncviewer.cxx
 ===================================================================
---- tigervnc-1.12.0.orig/vncviewer/vncviewer.cxx
-+++ tigervnc-1.12.0/vncviewer/vncviewer.cxx
-@@ -104,11 +104,9 @@ static const char *about_text()
+--- tigervnc-1.13.0.orig/vncviewer/vncviewer.cxx
++++ tigervnc-1.13.0/vncviewer/vncviewer.cxx
+@@ -105,10 +105,9 @@ static const char *about_text()
    // time.
    snprintf(buffer, sizeof(buffer),
-            _("TigerVNC Viewer %d-bit v%s\n"
+            _("TigerVNC Viewer v%s\n"
 -             "Built on: %s\n"
               "Copyright (C) 1999-%d TigerVNC Team and many others (see README.rst)\n"
               "See https://www.tigervnc.org for information on TigerVNC."),
--           (int)sizeof(size_t)*8, PACKAGE_VERSION,
--           BUILD_TIMESTAMP, 2021);
-+           (int)sizeof(size_t)*8, PACKAGE_VERSION, 2021);
+-           PACKAGE_VERSION, BUILD_TIMESTAMP, 2022);
++           PACKAGE_VERSION, 2022);
  
    return buffer;
  }
