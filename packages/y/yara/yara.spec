@@ -1,7 +1,7 @@
 #
 # spec file for package yara
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          System/Filesystems
 URL:            https://virustotal.github.io/yara/
 Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- backport upstream fixes for file magic tests
+Patch:          fix-test-magic.patch
 BuildRequires:  file-devel
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -80,7 +82,7 @@ Each description consists of a set of strings and a Boolean expression which
 determines its logic.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fvi

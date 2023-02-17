@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  6 18:32:53 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- backport upstream fixes for file magic tests: fix-test-magic.patch
+
+-------------------------------------------------------------------
 Tue Aug  9 20:24:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.3: 

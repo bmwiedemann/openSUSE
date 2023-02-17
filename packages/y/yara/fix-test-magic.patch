@@ -1,0 +1,16 @@
+--- yara-4.2.3/tests/test-magic.c~	2022-08-08 13:29:28.000000000 +0200
++++ yara-4.2.3/tests/test-magic.c	2023-02-06 19:30:13.743779898 +0100
+@@ -23,8 +23,11 @@ int main(int argc, char** argv)
+ 
+   assert_true_rule_blob(
+       "import \"magic\" rule test { condition: \
+-      magic.type() contains \"MS-DOS executable\" and \
+-      magic.mime_type() == \"application/x-dosexec\" }",
++      ( magic.type() contains \"MS-DOS executable\" or \
++        magic.type() contains \"PE32+ executable\" or \
++        magic.type() contains \"PE32 executable\" ) and \
++      ( magic.mime_type() == \"application/x-dosexec\" or \
++        magic.mime_type() == \"application/vnd.microsoft.portable-executable\" ) }",
+       PE32_FILE);
+ 
+   // Test case for https://github.com/VirusTotal/yara/issues/1663
