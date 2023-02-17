@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 17 11:29:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.02.0:
+  * https://carlschwan.eu/2023/02/17/tokodon-23.02.0-release/
+  * Post composer revamp
+  * The models for timelines has been completely refactored
+  * The search field introduced during the last released got a
+    nice visual refresh
+  * It is now possible to configure the color scheme used by
+    Tokodon independently from the Plasma color scheme
+
+-------------------------------------------------------------------
 Mon Jan  2 08:51:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.01.0

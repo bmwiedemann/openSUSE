@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        23.01.0
+Version:        23.02.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -82,7 +82,6 @@ community.
 %{_kf5_appstreamdir}/org.kde.tokodon.appdata.xml
 %{_kf5_bindir}/tokodon
 %{_kf5_debugdir}/tokodon.categories
-%{_kf5_iconsdir}/hicolor/scalable/actions/tokodon-chat-reply.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.tokodon.svg
 %{_kf5_notifydir}/tokodon.notifyrc
 
