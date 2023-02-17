@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 16 17:31:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.72.0:
+  * Update Stereoscope to 4b5ebf8c7f4b81ca79c4c3f0af1d0723eab87d42 (#1576)
+  * chore(deps): bump golang.org/x/net from 0.6.0 to 0.7.0 (#1574)
+  * chore: update bug issue template (#1571)
+  * allow convert to take stdin (#1570)
+  * fix: improve CPE and upstream generation logic for Alpine packages (#1567)
+  * fix: missing APK node vulnerabilities (#1565)
+  * fix: python CPE generation for alpine (#1564)
+  * chore(deps): bump github.com/docker/docker (#1563)
+
+-------------------------------------------------------------------
 Fri Feb 10 06:19:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.71.0:
