@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  3 03:07:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302192
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302192  2023-02-02 07:34:08-08:00 America/Los_Angeles
+
+      - Silence deprecation warning when testing smartmatch
+
+-------------------------------------------------------------------
 Sun Jul 10 03:08:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302191
