@@ -6387,6 +6387,9 @@ unsorted:
   - go1.19 
   - go1.19-doc 
   - go1.19-race: [x86_64] 
+  - go1.20 
+  - go1.20-doc 
+  - go1.20-race: [x86_64] 
   - go1.9 
   - go1.9-doc 
   - go1.9-race: [x86_64] 
@@ -9923,7 +9926,6 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_239_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -15014,6 +15016,8 @@ unsorted:
   - libtss2-fapi1: [i586] 
   - libtss2-fapi1-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
+  - libtss2-policy0 
+  - libtss2-policy0-32bit: [x86_64] 
   - libtss2-rc0-32bit: [x86_64] 
   - libtss2-sys1-32bit: [x86_64] 
   - libtss2-tcti-cmd0 
@@ -15023,6 +15027,8 @@ unsorted:
   - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
   - libtss2-tcti-pcap0 
+  - libtss2-tcti-spi-helper0 
+  - libtss2-tcti-spi-helper0-32bit: [x86_64] 
   - libtss2-tcti-swtpm0 
   - libtss2-tcti-swtpm0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0: [i586] 
@@ -19241,8 +19247,6 @@ unsorted:
   - openxcom 
   - opera-uget-integrator 
   - opi 
-  - opie 
-  - opie-32bit: [x86_64] 
   - oping 
   - opmsg 
   - oprofile 
@@ -44630,7 +44634,6 @@ unsorted:
   - vulkan-headers 
   - vulkan-tools-32bit: [x86_64] 
   - vulkan-validationlayers 
-  - vulkan-validationlayers-devel 
   - vym 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
