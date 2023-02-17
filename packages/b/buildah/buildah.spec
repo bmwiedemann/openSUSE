@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.29.0
+Version:        1.29.1
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 17 04:41:55 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 1.29.1:
+  * [release-1.29] Bump to Buildah v1.29.1
+  * Update to c/image 5.24.1
+
+-------------------------------------------------------------------
 Thu Jan 26 15:20:28 UTC 2023 - dcermak@suse.com
 
 - Update to version 1.29.0:
