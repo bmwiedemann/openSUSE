@@ -29,7 +29,7 @@
 %define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
 Name:           tigervnc
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
@@ -53,17 +53,13 @@ Source18:       tigervnc-https.firewalld
 Source19:       xvnc.target
 Source21:       xvnc-novnc.service.in
 Source22:       vnc.sysusers
-Patch1:         tigervnc-newfbsize.patch
-Patch3:         u_tigervnc-ignore-epipe-on-write.patch
-Patch4:         n_tigervnc-date-time.patch
-Patch5:         u_build_libXvnc_as_separate_library.patch
-Patch6:         u_tigervnc-add-autoaccept-parameter.patch
-Patch7:         u_change-button-layout-in-ServerDialog.patch
-Patch8:         n_correct_path_in_desktop_file.patch
-Patch9:         n_utilize-system-crypto-policies.patch
-Patch10:        u_tigervnc-211.patch
-Patch11:        xserver211.patch
-Patch12:        n_vncserver.patch
+Patch1:         u_tigervnc-ignore-epipe-on-write.patch
+Patch2:         u_build_libXvnc_as_separate_library.patch
+Patch3:         u_tigervnc-add-autoaccept-parameter.patch
+Patch4:         u_change-button-layout-in-ServerDialog.patch
+Patch5:         n_tigervnc-date-time.patch
+Patch6:         n_correct_path_in_desktop_file.patch
+Patch7:         n_vncserver.patch
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc
@@ -71,7 +67,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  fltk-devel >= 1.3.3
-BuildRequires:  gcc-c++
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.8.0
 BuildRequires:  jpackage-utils
@@ -133,6 +128,7 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.14
 BuildRequires:  pkgconfig(xproto)  >= 7.0.17
 BuildRequires:  pkgconfig(xtrans) >= 1.2.2
+BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -238,22 +234,17 @@ It maps common x11vnc arguments to x0vncserver arguments.
 
 %prep
 %setup -T -b1 -q -n tigervnc-%{version}
-%patch1 -p1
-%patch3 -p0
+%patch1 -p0
+%patch2 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%patch9 -p1
-%endif
-%patch10 -p0
-%patch12 -p0
+%patch7 -p0
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
-%patch11 -p1
+patch -p1 < ../xserver21.1.1.patch
 popd
 
 %build
@@ -273,7 +264,7 @@ cmake -DCMAKE_VERBOSE_MAKEFILE=ON \
 pushd unix/xserver
 autoreconf -fi
 %configure \
-        --disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
+        --disable-xorg --disable-xnest --disable-xvfb \
         --disable-xwin --disable-xephyr --disable-kdrive \
         --disable-static --disable-xinerama \
         --with-xkb-path="%{_datadir}/X11/xkb" \
@@ -282,7 +273,6 @@ autoreconf -fi
 %ifnarch s390 s390x
 	--enable-dri2 \
 %endif
-        --disable-config-dbus \
         --disable-config-hal \
         --disable-config-udev \
         --without-dtrace \
@@ -378,7 +368,7 @@ fi
 %endif
 
 %pre -n xorg-x11-Xvnc -f xorg-x11-Xvnc.pre
-%service_add_pre xvnc.socket
+%service_add_pre xvnc.socket xvnc.target
 %if 0%{?suse_version} >= 1550
 # Prepare for migration to /usr/lib; save any old .rpmsave
 for i in pam.d/vnc pam.d/tigervnc ; do
@@ -393,7 +383,7 @@ done
 %endif
 
 %post -n xorg-x11-Xvnc
-%service_add_post xvnc.socket
+%service_add_post xvnc.socket xvnc.target
 
 %if %{use_firewalld}
 %{firewalld_reload}
@@ -414,10 +404,10 @@ then
 fi
 
 %preun -n xorg-x11-Xvnc
-%service_del_preun xvnc.socket
+%service_del_preun xvnc.socket xvnc.target
 
 %postun -n xorg-x11-Xvnc
-%service_del_postun xvnc.socket
+%service_del_postun xvnc.socket xvnc.target
 
 %pre -n xorg-x11-Xvnc-novnc
 %service_add_pre xvnc-novnc.service xvnc-novnc.socket
@@ -456,6 +446,10 @@ fi
 %dir %{_datadir}/icons/hicolor/32x32/apps
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/64x64
+%dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 
@@ -463,6 +457,7 @@ fi
 %{_datadir}/icons/hicolor/scalable/apps/tigervnc.svg
 
 %{_datadir}/applications/vncviewer.desktop
+%{_datadir}/metainfo/org.tigervnc.vncviewer.metainfo.xml
 
 %files -n xorg-x11-Xvnc
 %license LICENCE.TXT

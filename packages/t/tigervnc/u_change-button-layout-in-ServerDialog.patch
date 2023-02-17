@@ -8,20 +8,20 @@ To fit strings in languages with longer words...
  vncviewer/ServerDialog.cxx | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Index: tigervnc-1.12.0/vncviewer/ServerDialog.cxx
+Index: tigervnc-1.13.0/vncviewer/ServerDialog.cxx
 ===================================================================
---- tigervnc-1.12.0.orig/vncviewer/ServerDialog.cxx
-+++ tigervnc-1.12.0/vncviewer/ServerDialog.cxx
-@@ -68,7 +68,7 @@ ServerDialog::ServerDialog()
-   
+--- tigervnc-1.13.0.orig/vncviewer/ServerDialog.cxx
++++ tigervnc-1.13.0/vncviewer/ServerDialog.cxx
+@@ -70,7 +70,7 @@ ServerDialog::ServerDialog()
    serverName = new Fl_Input_Choice(x, y, w() - margin*2 - server_label_width, INPUT_HEIGHT, _("VNC server:"));
+   usedDir = NULL;
  
 -  int adjust = (w() - 20) / 4;
 +  int adjust = (w() - 20) / 3;
    int button_width = adjust - margin/2;
  
    x = margin;
-@@ -91,6 +91,8 @@ ServerDialog::ServerDialog()
+@@ -93,6 +93,8 @@ ServerDialog::ServerDialog()
    
    x = 0;
    y += margin/2 + BUTTON_HEIGHT;
