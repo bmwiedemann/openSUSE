@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 17 09:28:33 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230217.7fe11a5c:
+  * Dev: report: Enable crm report for sudoer user
+
+-------------------------------------------------------------------
+Fri Feb 17 08:53:21 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230217.0dc54cef:
+  * Fix: utils: use parallax_run instead of parallax_call in ServiceManager
+  * Dev: uinttest: adjust unit test for previous change
+  * Fix: behave: fix a regression for bsc#1183654
+  * fix qdevice
+  * fix: utils: check hostname alias in user_of
+  * fix: utils: make ServiceManager to work with new remote calling utils
+  * Dev: bootstrap: guess and ask whether to operate in non-root mode (jsc#PED-290)
+  * Dev: bootstrap: allow the cluster to operate with ssh session under non-root sudoer (jsc#PED-290)
+
+-------------------------------------------------------------------
 Fri Feb 10 03:09:26 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230210.df3b7a92:
