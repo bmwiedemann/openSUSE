@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-Regexp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.086
+Version:        0.087
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse regular expressions
@@ -73,6 +73,7 @@ gain.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

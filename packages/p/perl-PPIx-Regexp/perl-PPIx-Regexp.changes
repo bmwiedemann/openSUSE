@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 29 03:08:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.087
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.087		2023-01-28	T. R. Wyant
+      Add support for code in optimized regex, a.k.a. (*{...}).  This
+      involved making the recognition of backtracking control more
+      specific, since it also uses (?*...).
+
+      If (*{...}) and (**{...}) are removed from Perl before Perl 5.38.0,
+      support for them will be removed from this package.
+
+-------------------------------------------------------------------
 Wed Dec 14 03:06:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.086
