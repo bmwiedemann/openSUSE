@@ -166,4 +166,27 @@
   * go#56154 net/http: bad handling of HEAD requests with a body (forwarded request 1057692 from jfkw)</comment>
     <requestid>1057694</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>94e491a46d820ee0e7cb11d8a309c1c8</srcmd5>
+    <version>1.19.6</version>
+    <time>1676648629</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.6 (released 2023-02-14) includes security fixes to the
+  crypto/tls, mime/multipart, net/http, and path/filepath packages,
+  as well as bug fixes to the go command, the linker, the runtime,
+  and the crypto/x509, net/http, and time packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-41722 CVE-2022-41723 CVE-2022-41724 CVE-2022-41725
+  * go#57275 boo#1208269 security: fix CVE-2022-41722
+  * go#58355 boo#1208270 security: fix CVE-2022-41723
+  * go#58358 boo#1208271 security: fix CVE-2022-41724
+  * go#58362 boo#1208272 security: fix CVE-2022-41725
+  * go#56154 net/http: bad handling of HEAD requests with a body
+  * go#57635 crypto/x509: TestBoringAllowCert failures
+  * go#57812 runtime: performance regression due to bad instruction used in morestack_noctxt for ppc64 in CL 425396
+  * go#58118 time: update zoneinfo_abbrs on Windows
+  * go#58223 cmd/link: .go.buildinfo is gc'ed by --gc-sections
+  * go#58449 cmd/go/internal/modfetch: TestCodeRepo/gopkg.in_natefinch_lumberjack.v2/latest failing (forwarded request 1066110 from jfkw)</comment>
+    <requestid>1066111</requestid>
+  </revision>
 </revisionlist>

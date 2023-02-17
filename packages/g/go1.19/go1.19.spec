@@ -136,7 +136,7 @@
 %endif
 
 Name:           go1.19
-Version:        1.19.5
+Version:        1.19.6
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -223,8 +223,8 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %else
 %setup -q -T -b 101 -n llvm-%{tsan_commit}
 %endif
-
 %endif
+
 # go
 %setup -q -n go
 %patch7 -p1
