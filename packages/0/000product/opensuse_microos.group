@@ -13,7 +13,6 @@
     <package name="WebKit2GTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="aaa_base-extras" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="adjtimex" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="adobe-sourcecodepro-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="adobe-sourcehansans-cn-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="adobe-sourcehansans-tw-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -796,7 +795,7 @@
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libvorbisenc2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libvpx7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libvpx8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libwacom9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -980,7 +979,6 @@
     <package name="thessalonica-theano-otf-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="thin-provisioning-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="thryomanes-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="time" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="timezone-java" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -998,7 +996,6 @@
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="vlgothic-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="webkit2gtk-4_1-injected-bundles" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wireplumber-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1150,7 +1147,7 @@
     <package name="busybox-hostname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
+    <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="cabextract" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2588,6 +2585,7 @@
     <package name="texlive-lm-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="tftpboot-installation-openSUSE-MicroOS-x86_64" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="time" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="tnftp" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="toolbox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-container_runtime -->
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
@@ -2689,6 +2687,7 @@
     <package name="webkit2gtk-5_0-injected-bundles" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="wget" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
