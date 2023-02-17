@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 16 11:03:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2022-37705.patch to fix privilege scalation
+  (boo#1208032, gh#zmanda/amanda#194)
+
+-------------------------------------------------------------------
 Fri Oct  7 12:43:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - %_docdir/amanda should be mode 755 and not 644

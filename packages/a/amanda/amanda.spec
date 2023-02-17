@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch7:         amanda-libnsl.patch
 Patch8:         amanda-3.5.1-GCC10_extern.patch
 # PATCH-FIX-UPSTREAM amanda-3.5.2-fix-tests.patch -- gh#zmanda/amanda#167
 Patch9:         amanda-3.5.2-fix-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2022-37705.patch -- boo#1208032, gh#zmanda/amanda#194
+Patch10:        CVE-2022-37705.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -95,6 +97,7 @@ running multiple versions of Linux or Unix.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 ./autogen
