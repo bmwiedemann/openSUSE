@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 16 08:27:44 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.21.1:
+  * release: watchexec-cli v1.21.1 (#499)
+  * release: watchexec v2.1.1 (#498)
+  * Exit explicitly when we're PID 1 (#497)
+  * Reset process sigmask for Rust 1.66 (#494)
+  * Bump tokio from 1.23.1 to 1.24.2 (#491)
+  * Avoid looping in demo (#486)
+  * Add #449 to lib changelog (#481)
+  * Lock CI for msrv checks (#482)
+  * Update git-config requirement from 0.14.0 to 0.15.0 in /crates/ignore-files (#480)
+
+-------------------------------------------------------------------
 Thu Jan 12 11:00:39 UTC 2023 - david.anes@suse.com
 
 - Update to version 1.21.0:
