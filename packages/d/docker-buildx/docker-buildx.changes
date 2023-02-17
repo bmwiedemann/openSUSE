@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 16 15:32:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.3:
+  * ci: update buildx and buildkit to latest
+  * Remove git warning: buildx/1633
+  * imagetools: process com.docker.reference.* annotations
+  * bake: avoid nesting error diagnostics
+  * build: check reachable git commits
+  * gitutil: override the locale to ensure consistent output
+  * bake: avoid early-exit for resolution failures
+  * build: add docs for boolean attestation flags
+  * builder: fix docker context not validated
+  * bake: fix loop references
+
+-------------------------------------------------------------------
 Tue Jan 31 14:59:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.2:
