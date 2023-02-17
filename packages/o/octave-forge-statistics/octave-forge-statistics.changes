@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Feb 12 17:19:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.5.3:
+  * New functions:
+    + adtest (fully Matlab compatible)
+    + hotelling_t2test (new functionality, replacing old
+      hotelling_test)
+    + hotelling_t2test2 (new functionality, replacing old
+      hotelling_test_2)
+    + regression_ftest (new functionality, replacing old
+      f_test_regression)
+    + regression_ttest (replacing old t_test_regression)
+    + vmcdf (von Mises cummulative distribution function)
+  * Improvements:
+    + betacdf: added "upper" option
+    + binocdf: added "upper" option
+    + expcdf: added "upper" option and confidence bounds
+    + geocdf: added "upper" option
+    + gevcdf: added "upper" option
+    + hygecdf: added "upper" option
+    + laplace_cdf: updated functionality
+    + laplace_inv: updated functionality
+    + laplace_pdf: updated functionality
+    + laplace_rnd: updated functionality
+    + logistic_cdf: updated functionality
+    + logistic_inv: updated functionality
+    + logistic_pdf: updated functionality
+    + logistic_rnd: updated functionality
+    + logncdf: added "upper" option and confidence bounds
+    + mean: fixed MATLAB compatibility
+    + median: fixed MATLAB compatibility
+    + multcompare: print PostHoc Test table
+    + nbincdf: added "upper" option
+    + poisscdf: added "upper" option
+    + raylcdf: added "upper" option
+    + std: fixed MATLAB compatibility
+    + unidcdf: added "upper" option
+    + unifcdf: added "upper" option
+    + var: fixed MATLAB compatibility
+    + vmpdf: updated functionality
+    + vmrnd: updated functionality
+    + wblcdf: added "upper" option and confidence bounds
+  * Removed Functions:
+    + anderson_darling_cdf (replaced by adtest)
+    + anderson_darling_test (replaced by adtest)
+    + hotelling_test (replaced by hotelling_t2test)
+    + hotelling_test_2 (replaced by hotelling_t2test2)
+    + f_test_regression (replaced by regression_ftest)
+    + t_test_regression (replaced by regression_ttest)
+
+-------------------------------------------------------------------
 Wed Dec 28 10:29:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5.2:
