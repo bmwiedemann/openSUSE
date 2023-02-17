@@ -439,4 +439,12 @@ This should be handled together with sr#769061</comment>
   This patch is not yet part of any upstream git tag.</comment>
     <requestid>1059943</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b680ea2c79b8570fc45f365d00f6610f</srcmd5>
+    <version>4.0.1</version>
+    <time>1676648637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066193</requestid>
+  </revision>
 </revisionlist>

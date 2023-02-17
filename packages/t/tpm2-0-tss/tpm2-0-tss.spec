@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        3.2.0
+Version:        4.0.1
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -25,10 +25,9 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tss
 Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz.asc
-# curl https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xd6b4d8bac7e0cc97dcd4ac7272e88b53f7a95d84 > tpm2-tss.keyring
+# curl https://github.com/williamcroberts.gpg > tpm2-tss.keyring
 Source2:        tpm2-tss.keyring
 Source3:        baselibs.conf
-Patch0:         0001-tss2_rc-ensure-layer-number-is-in-bounds.patch
 BuildRequires:  /usr/sbin/groupadd
 BuildRequires:  acl
 BuildRequires:  doxygen
@@ -39,6 +38,7 @@ BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(uuid)
 # The same user is employed by trousers (and was employed by the old
 # resourcemgr shipped with the tpm2-0-tss package):
 #
@@ -69,12 +69,14 @@ Requires:       glibc-devel
 Requires:       libtss2-esys0 = %{version}
 Requires:       libtss2-fapi1 = %{version}
 Requires:       libtss2-mu0 = %{version}
+Requires:       libtss2-policy0 = %{version}
 Requires:       libtss2-rc0 = %{version}
 Requires:       libtss2-sys1 = %{version}
 Requires:       libtss2-tcti-cmd0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
 Requires:       libtss2-tcti-pcap0 = %{version}
+Requires:       libtss2-tcti-spi-helper0 = %{version}
 Requires:       libtss2-tcti-swtpm0 = %{version}
 Requires:       libtss2-tctildr0 = %{version}
 Requires:       tpm2-0-tss = %{version}
@@ -158,6 +160,17 @@ This is the tpm2 Feature API (FAPI) library. This API is designed to be very
 high-level API, intended to make programming with the TPM as simple as
 possible.
 
+%package -n libtss2-policy0
+Summary:        TPM2 FAPI policy library
+Group:          System/Libraries
+
+%description -n libtss2-policy0
+Library that exposes the internal FAPI policy engine as a consumable
+library and stable API. Users can take arbitrary JSON policy strings
+and implement the callbacks required to produce calculated policies
+without a TPM as well as execute policies on an ESYS TR session for
+satisfying access policies on an object.
+
 %package -n     libtss2-tcti-cmd0
 Summary:        TCTI cmd interface library
 Group:          System/Libraries
@@ -185,8 +198,18 @@ A TCTI which prints TPM commands and responses to a file in pcap-ng format. It a
 details of direct communication with the interface and protocol exposed by the
 daemon hosting the TPM2 reference implementation.
 
+%package -n     libtss2-tcti-spi-helper0
+Summary:        TCTI spi interface library
+Group:          System/Libraries
+
+%description -n libtss2-tcti-spi-helper0
+A TCTI module for communication via SPI TPM device driver. Abstracts
+the details of communication with a TPM via SPI protocol. It uses user
+supplied methods for SPI and timing operations in order to be platform
+independent.
+
 %prep
-%autosetup -p1 -n tpm2-tss-%{version}
+%autosetup -n tpm2-tss-%{version}
 
 %build
 # configure looks for groupadd on PATH
@@ -230,12 +253,16 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %tmpfiles_create %{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
 
 %postun -n libtss2-fapi1 -p /sbin/ldconfig
+%post -n libtss2-policy0 -p /sbin/ldconfig
+%postun -n libtss2-policy0 -p /sbin/ldconfig
 %post -n libtss2-tcti-cmd0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-cmd0 -p /sbin/ldconfig
 %post -n libtss2-tcti-swtpm0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-swtpm0 -p /sbin/ldconfig
 %post -n libtss2-tcti-pcap0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-pcap0 -p /sbin/ldconfig
+%post -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
 
 %files
 %doc *.md
@@ -291,6 +318,9 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 # %%ghost %%{_sharedstatedir}/%%{name}/system/keystore
 # %%ghost %%{_rundir}/%%{name}/eventlog
 
+%files -n libtss2-policy0
+%{_libdir}/libtss2-policy.so.*
+
 %files -n libtss2-tcti-cmd0
 %{_libdir}/libtss2-tcti-cmd.so.*
 
@@ -299,5 +329,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %files -n libtss2-tcti-pcap0
 %{_libdir}/libtss2-tcti-pcap.so.*
+
+%files -n libtss2-tcti-spi-helper0
+%{_libdir}/libtss2-tcti-spi-helper.so.*
 
 %changelog
