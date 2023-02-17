@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 16 14:28:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 5.5
+  + Added:
+    * tpm2_createek: SM2 EK Support
+    * misc: SM2 support to internal OSSL format key routines. Fixes
+      --format flags for conversions.
+  + Fixed:
+    * echo_tcti.py: set to use python3 named executable in shebang.
+- Drop already merged patches
+  + fix_bogus_warning.patch
+  + echo_tcti_call_python3_binary.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 12:56:09 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Re-disable tests in PPC, PPC64 and S390X and reference issues about
