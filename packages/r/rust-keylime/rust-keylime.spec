@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1672681780.762cec8
+Version:        0.1.0+git.1676549716.5382ed9
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -38,10 +38,6 @@ Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
-# PATCH-FIX-UPSTREAM 0001-keylime-agent-remove-const_err-deny.patch gh#keylime/rust-keylime#501
-Patch2:         0001-keylime-agent-remove-const_err-deny.patch
-# PATCH-FIX-UPSTREAM 0001-Cargo.toml-tss-esapi-bindings.patch gh#keylime/rust-keylime#502
-Patch3:         0001-Cargo.toml-tss-esapi-bindings.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros
@@ -49,7 +45,6 @@ BuildRequires:  libarchive-devel
 BuildRequires:  rust
 BuildRequires:  sysuser-tools
 BuildRequires:  tpm2-0-tss-devel
-BuildRequires:  zeromq-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
@@ -70,7 +65,7 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build} --no-default-features --features "with-zmq"
+%{cargo_build} --no-default-features
 %sysusers_generate_pre %{SOURCE4} keylime keylime-user.conf
 
 %install

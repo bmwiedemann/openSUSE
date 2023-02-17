@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 16 12:51:38 UTC 2023 - aplanas@suse.com
+
+- Drop zmq from the feature set
+- Remove already merged patches:
+  * 0001-keylime-agent-remove-const_err-deny.patch
+  * 0001-Cargo.toml-tss-esapi-bindings.patch
+- Update to version 0.1.0+git.1676549716.5382ed9:
+  * Cargo: Update clap minimum version to 3.2
+  * Cargo: Update uuid minimum version to 1.3
+  * Cargo: Update tokio minimum version to 1.24 and reduce features
+  * build(deps): bump tss-esapi from 7.1.0 to 7.2.0
+  * cargo deb: include shim.py in packaging
+  * build(deps): bump thiserror from 1.0.36 to 1.0.38
+  * keylime-agent.conf: Add comments on how to override options
+  * config: Fix overriding options with env vars
+  * Add missing e2e tests and reordering tests based on alphabetical order
+  * e2e tests: Fix test name
+  * Store associated U keys, auth tags, and payloads together
+  * Refactor ZeroMQ revocation listener to not block
+  * keylime-agent: Gracefully shutdown on SIGINT
+  * Refactor async code for keys and payloads
+  * main: Move payload related functions to payloads module
+  * main: Run ZeroMQ service in a separate task
+  * Remove unused option "openstack" for obtaining uuid
+  * algorithms: fix typo
+  * clippy: fix uninlined_format_args warnings
+  * clippy: fix needless_borrow warnings
+  * crypto, mTLS: allow certificate chain for trusted_client_ca
+  * build(deps): bump base64 from 0.13.0 to 0.13.1
+  * build(deps): bump serde_json from 1.0.85 to 1.0.91
+  * build(deps): bump libc from 0.2.133 to 0.2.139
+  * build(deps): bump bumpalo from 3.11.0 to 3.12.0
+  * build(deps): bump futures from 0.3.24 to 0.3.25
+  * Cargo.toml: tss-esapi bindings
+  * packit-ci: Disable Rawhide due to agent compilation issues
+  * packit-ci: Add hotfix for tpm2-tss Fedora BZ#2158598
+  * keylime-agent: remove const_err deny
+  * build(deps): bump tokio from 1.23.0 to 1.24.2
+
+-------------------------------------------------------------------
 Mon Jan 16 14:02:08 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.1.0+git.1672681780.762cec8:
