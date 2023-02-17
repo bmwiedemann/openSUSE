@@ -32,7 +32,9 @@ ExclusiveArch:  x86_64
 This is an internal package that is used to create the pattern for glibc
 hwcaps. Installation of this package does not make sense.
 
+
 ################################################################################
+
 %package x86_64_v3
 %pattern_desktopfunctions
 Summary:        Install x86-64-v3 optimized software
@@ -40,7 +42,7 @@ Group:          Metapackages
 Provides:       pattern() = x86_64_v3
 Provides:       pattern-icon() = pattern-generic
 Requires:       glibc
-Supplements:    modalias(cpu:type%%3Ax86*%%3Afeature%%3A*0080*0089*008C*008D*0093*0094*0096*0097*009B*009C*009D*00C0*0123*0125*0128*)
+Supplements:    modalias(glibc:cpu:type%%3Ax86*%%3Afeature%%3A*0080*0089*008C*008D*0093*0094*0096*0097*009B*009C*009D*00C0*0123*0125*0128*)
 # typo workaround :/
 Provides:       patterns-glibc-hwcaps-x86_64-v3 = %{version}
 

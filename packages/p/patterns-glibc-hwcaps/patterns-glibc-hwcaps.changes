@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 17 10:46:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit supplements to glibc usecase
+
+-------------------------------------------------------------------
 Thu Feb  2 14:38:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix matching for supplement
