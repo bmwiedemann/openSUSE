@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 15:35:12 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Remove hunk that enables -fsanitize=address (bsc#1208386), note it's
+  already removed in the upstream project:
+  https://github.com/Matthias-Wandel/jhead/commit/34f61c3f1408e6b00f6f65dd3d7832f4f8e9318b
+
+-------------------------------------------------------------------
 Fri Feb 10 11:13:09 UTC 2023 - pgajdos@suse.com
 
 - added patches

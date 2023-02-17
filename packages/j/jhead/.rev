@@ -229,4 +229,14 @@
   + jhead-CVE-2022-41751-3.patch</comment>
     <requestid>1065728</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>3e94b3e985bbd44695432cee0950f647</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1676648735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove hunk that enables -fsanitize=address (bsc#1208386), note it's
+  already removed in the upstream project:
+  https://github.com/Matthias-Wandel/jhead/commit/34f61c3f1408e6b00f6f65dd3d7832f4f8e9318b (forwarded request 1066207 from marxin)</comment>
+    <requestid>1066328</requestid>
+  </revision>
 </revisionlist>
