@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 18 14:02:37 UTC 2022 - thod_@gmx.de
+
+- Update to version 1.2.2:
+  + 4 crash fixes, over 25 bug fixes, 5 fixes for extension bugs
+    and 13 improved user interface translations
+  + 2f3101417.patch merged upstream
+  + See the full release notes for Inkscape 1.2.2 at
+    https://media.inkscape.org/media/doc/release_notes/1.2.2/Inkscape_1.2.2.html
+
+-------------------------------------------------------------------
 Wed Dec  7 15:25:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Retain RUNPATH also on Leap 15.4.

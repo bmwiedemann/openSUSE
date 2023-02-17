@@ -16,23 +16,21 @@
 #
 
 
-%define _version 1.2.1_2022-07-14_9c6d41e410
+%define _version 1.2.2_2022-12-01_b0a8486541
 
 Name:           inkscape
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/34673/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/37360/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
-# PATCH-FIX-UPSTREAM 2f3101417.patch -- Fix build with Poppler 22.09.0
-Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/2f3101417.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -59,7 +57,7 @@ BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(2geom)
+BuildRequires:  pkgconfig(2geom) >= 1.2.2
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)

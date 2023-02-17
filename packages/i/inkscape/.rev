@@ -979,4 +979,18 @@
     <comment></comment>
     <requestid>1041327</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>ccd4b04edb33e1656b5826b7d650979a</srcmd5>
+    <version>1.2.2</version>
+    <time>1676648611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2:
+  + 4 crash fixes, over 25 bug fixes, 5 fixes for extension bugs
+    and 13 improved user interface translations
+  + 2f3101417.patch merged upstream
+  + See the full release notes for Inkscape 1.2.2 at
+    https://media.inkscape.org/media/doc/release_notes/1.2.2/Inkscape_1.2.2.html
+</comment>
+    <requestid>1065989</requestid>
+  </revision>
 </revisionlist>
