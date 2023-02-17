@@ -18,7 +18,7 @@
 
 Name:           pam_saslauthd
 #               This will be set by osc services, that will run after this.
-Version:        0.1.0~2
+Version:        0.1.0~3
 Release:        0
 Summary:        A pam module to authenticated saslauthd as a provider
 #               If you know the license, put it's SPDX string here.

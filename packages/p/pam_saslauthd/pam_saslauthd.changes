@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 14 01:40:46 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue Feb 14 00:58:52 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.0~3:
+  * Change to allow empty realm
+
+-------------------------------------------------------------------
 Fri Jan 06 01:42:42 UTC 2023 - william.brown@suse.com
 
 - Remove tier1 limit
