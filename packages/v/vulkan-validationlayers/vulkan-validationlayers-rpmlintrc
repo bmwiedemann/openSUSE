@@ -1,2 +1,0 @@
-# for 15.3's rpmlint which is a bit dumber
-addFilter("vulkan-validationlayers.x86_64: E: shlib-policy-name-error .* libVkLayer_khronos_validation")

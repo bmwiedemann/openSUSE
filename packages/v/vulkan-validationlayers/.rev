@@ -319,4 +319,14 @@
     <comment>- Update to release SDK-1.3.239.0</comment>
     <requestid>1061903</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>79f424fa472fd6020ab3f7c8f674d0c1</srcmd5>
+    <version>1.3.239.0</version>
+    <time>1676648647</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework xxhash.diff, remove ver.diff,
+  cure unresolved symbols [boo#1208172].
+- Delete vulkan-validationlayers-devel</comment>
+    <requestid>1066257</requestid>
+  </revision>
 </revisionlist>

@@ -25,8 +25,6 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/sdk-%version.tar.gz
-Source9:        %name-rpmlintrc
-Patch1:         ver.diff
 Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.7.12
 BuildRequires:  gcc-c++ >= 4.8
@@ -48,26 +46,6 @@ Obsoletes:      vulkan < 1.1
 Vulkan is a 3D graphics and compute API.
 
 This package contains the Khronos official Vulkan validation layers.
-
-%package -n %lname
-Summary:        Vulkan validation layer utility library
-Group:          System/Libraries
-
-%description -n %lname
-Vulkan is a 3D graphics and compute API.
-
-This package contains a utility library.
-
-%package devel
-Summary:        Vulkan validation layer support files
-Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
-Requires:       xxhash-devel
-
-%description devel
-Vulkan is a 3D graphics and compute API.
-
-This package contains support files for the VkLayer utility library.
 
 %prep
 %autosetup -n Vulkan-ValidationLayers-sdk-%version -p1
@@ -94,22 +72,11 @@ export CXX="$PWD/gxx"
 %install
 %cmake_install
 b="%buildroot"
-ln -sv "libVkLayer_utils-%version.so" "$b/%_libdir/libVkLayer_utils.so"
-rm -f "$b/%_includedir"/xxhash.*
-
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+rm -Rfv "$b/%_includedir" "$b/%_libdir"/*.a
 
 %files
 %license LICENSE.txt
 %_libdir/libVkLayer_khr*.so
 %_datadir/vulkan/
-
-%files -n %lname
-%_libdir/libVkLayer_utils-%version.so
-
-%files devel
-%_includedir/*
-%_libdir/libVkLayer_utils.so
 
 %changelog
