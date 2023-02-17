@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 17 14:26:22 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.31.0:
+  * feat: Print a warning when chezmoi add is called with an ignored entry
+  * feat: Cache GitHub API results by default to stay under rate limit
+  * feat: Display progress bars by default when stdout is a TTY
+  * feat(bitwarden): Grab attachment by object name
+  * fix: Eliminate [DEFAULT] section for fromIni map
+  * feat: Add --with-stdin flag to execute-template command
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Feb 13 14:18:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.30.1:
