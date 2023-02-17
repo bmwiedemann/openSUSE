@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb  15 23:00:00 UTC 2023 - Andy Alt <arch_stanton5995@proton.me>
+
+- rmw 0.9.0:
+
+  - When purging, '-ff' is no longer needed to confirm removal of
+    non-writable expired directories and files
+  * replace function used to remove directories with rm from FreeBSD;
+    Thanks to @DiegoMagdaleno and @dcantrell
+  * change message displayed to user when a file being rmw'ed is on a
+    filesystem that doesn't haven't a WASTE folder defined
+  + Ignore requests to ReMove top-level files, add --top-level-bypass option
+    to bypass the protection
+  + Ignore requests to ReMove user's home directory
+  * bugfix: buffer underflow when calling trim_char() with empty
+    string (Thanks to Christopher Wellons)
+  * replace valgrind test setup with asan (-fsanitize)
+  * the 'ESC' key can now be used to quit the restore file selection menu
+
+-------------------------------------------------------------------
 Tue Oct 25 12:50:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - disable tests

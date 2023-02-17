@@ -1,7 +1,7 @@
 #
 # spec file for package rmw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rmw
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://remove-to-waste.info/
-Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)
@@ -46,7 +46,8 @@ after x number of days.
 %meson \
 	-Ddocdir=%{_docdir}/%{name} \
 	--buildtype=release \
-	-Dstrip=true
+	-Dstrip=true \
+    -Db_sanitize=none
 %meson_build
 
 %install
