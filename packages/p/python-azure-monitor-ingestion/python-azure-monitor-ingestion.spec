@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-monitor-ingestion
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-monitor-ingestion
-Version:        1.0.0b1
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Monitor Ingestion Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-ingestion/azure-monitor-ingestion-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-ingestion/azure-monitor-ingestion-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-monitor-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -39,7 +41,8 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-monitor-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.19
+Requires:       python-isodate >= 0.6.0
+Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -54,10 +57,10 @@ or to custom tables that you create in Log Analytics workspace. You can even ext
 of built-in tables with custom columns.
 
 %prep
-%setup -q -n azure-monitor-ingestion-%{version}
+%setup -q -n azure-monitor-ingestion-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-ingestion-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-ingestion-%{realversion}
 %python_build
 
 %install
