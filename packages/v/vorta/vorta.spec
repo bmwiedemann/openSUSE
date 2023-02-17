@@ -72,6 +72,7 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %python3_install
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
+install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.svg"
 %suse_update_desktop_file -i vorta
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -80,6 +81,7 @@ install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 %doc README.md
 %{_bindir}/vorta
 %{_datadir}/applications/vorta.desktop
+%{_datadir}/icons/hicolor/256x256/apps/vorta.svg
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
 
