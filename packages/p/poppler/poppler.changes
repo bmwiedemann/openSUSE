@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 15 22:40:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 23.02.0:
+  + core:
+    * CairoOutputDev:
+      . Fix rendering of color type 3 fonts
+      . Add handling matte entry
+    * Fix segfault on wrong nssdir
+    * Fix "NSS could not shutdown"
+  + utils: pdfsig: Point out supports PKCS#11 URIs as nickname
+
+-------------------------------------------------------------------
 Thu Jan 12 17:55:53 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to reduce the boost dependencies (which isn't really

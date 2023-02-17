@@ -1960,4 +1960,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1058134</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>d830435b1c5d25229aef75cb7ae081a2</srcmd5>
+    <version>23.02.0</version>
+    <time>1676648626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066073</requestid>
+  </revision>
 </revisionlist>
