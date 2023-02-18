@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 18 02:36:48 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1676641030.f996c8e:
+  * Disable test for OCR feature on archs where we lack dependencies
+  * testapi: Fix 'snd2png' call arguments introduced in 264fcd83
+  * Introduce VNC_EXTRA_VARS variable
+  * Fix retry logic for git clone
+  * Turn off commit signing in git tests
+  * Use proper perl "signatures" in testapi
+  * t: Remove unnecessary uncovered mocking in 03-testapi.t
+  * t: Cleanup temporary file from 03-testapi.t at end of test
+  * testapi: Add signatures for various, now test-covered functions
+
+-------------------------------------------------------------------
 Wed Feb 15 09:00:17 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676451610.d3d76e5:
