@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 17 13:29:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable LTO
+- Replace unused RPM_OPT_FLAGS
+- Update to version 0.38.0:
+  * New actions
+    - become(...) - Replace the current fzf process with the specified command using execve(2) system call.
+      See https://github.com/junegunn/fzf#turning-into-a-different-process for more information.
+        # Open selected files in Vim
+        fzf --multi --bind 'enter:become(vim {+})'
+
+        # Open the file in Vim and go to the line
+        git grep --line-number . |
+        fzf --delimiter : --nth 3.. --bind 'enter:become(vim {1} +{2})'
+      >> this action is not supported on Windows
+    - show-preview
+    - hide-preview
+  * Bug fixes
+    - --preview-window 0,hidden should not execute the preview command until toggle-preview action is triggered
+
+-------------------------------------------------------------------
 Mon Feb  6 11:01:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.37.0:

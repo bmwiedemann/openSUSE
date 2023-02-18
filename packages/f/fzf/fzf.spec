@@ -16,8 +16,9 @@
 #
 
 
+%global _lto_cflags %nil
 Name:           fzf
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -137,7 +138,9 @@ BUILDMOD=""
 %else
 BUILDMOD="-buildmode=pie"
 %endif
-export RPM_OPT_FLAGS="%{optflags}"
+export CGO_CFLAGS="%{optflags}"
+export CGO_CXXFLAGS="%{optflags}"
+export CGO_CPPFLAGS="%{optflags}"
 go test -v -x -mod=vendor ${BUILDMOD} -a \
     -ldflags "-X main.revision=%{version}" \
     github.com/junegunn/fzf/src \
