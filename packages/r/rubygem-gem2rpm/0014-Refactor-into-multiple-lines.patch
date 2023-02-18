@@ -1,7 +1,7 @@
 From 5bb494a7d6911754e485f6b729861771181bf2a0 Mon Sep 17 00:00:00 2001
 From: Dirk Mueller <dmueller@suse.com>
 Date: Mon, 12 Jan 2015 15:51:08 +0100
-Subject: [PATCH 14/32] Refactor into multiple lines
+Subject: [PATCH 14/33] Refactor into multiple lines
 
 Makes this easier to extend/read imho.
 ---
@@ -54,5 +54,5 @@ index 8eb7fee..88e7356 100644
        #$stderr.puts "PATH #{path} #{bpath} #{file}"
        docdirfiles << path if bpath == file
 -- 
-2.20.1
+2.26.2
 

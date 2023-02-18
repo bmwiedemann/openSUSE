@@ -88,6 +88,7 @@ Patch29:        0029-Use-or-for-the-conditions-instead-of-and.patch
 Patch30:        0030-gem_package.spec.erb-sync-with-ruby-common.patch
 Patch31:        0031-use-template-opensuse-on-openSUSE-Tumbleweed-where-e.patch
 Patch32:        0032-Replace-no-rdoc-no-ri-with-no-document.patch
+Patch33:        0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
 Patch128:       template_loader.patch
 Summary:        Generate rpm specfiles from gems
 License:        GPL-2.0-or-later
@@ -133,6 +134,7 @@ The spec file tries to follow the gem as closely as possible
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
 %patch128 -p1
 
 %build
@@ -140,7 +142,7 @@ perl -p -i -e 's|("templates/opensuse.spec.erb".freeze)|$1, "templates/gem_packa
 %gem_build
 
 %install
-%gem_install -f --no-rdoc --no-ri --symlink-binaries --doc-files="AUTHORS LICENSE README"
+%gem_install -f -N --symlink-binaries --doc-files="AUTHORS LICENSE README"
 for i in %{buildroot}%{_docdir}/*rubygem-gem2rpm*/ ; do
   install -m 0644 %{S:1} $i/gem2rpm.yml
 done
@@ -889,14 +891,14 @@ fi
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.2
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
 # cache file
-%{_libdir}/ruby/gems/3.2.0+3/cache/gem2rpm-%{version}.gem
-%{_libdir}/ruby/gems/3.2.0+3/gems/gem2rpm-%{version}
-%{_libdir}/ruby/gems/3.2.0+3/specifications/gem2rpm-%{version}.gemspec
+%{_libdir}/ruby/gems/3.2.0/cache/gem2rpm-%{version}.gem
+%{_libdir}/ruby/gems/3.2.0/gems/gem2rpm-%{version}
+%{_libdir}/ruby/gems/3.2.0/specifications/gem2rpm-%{version}.gemspec
 
 %if %{with docs}
 %files -n ruby3.2-rubygem-gem2rpm-doc
 %defattr(-,root,root,-)
-%doc %{_libdir}/ruby/gems/3.2.0+3/doc/gem2rpm-%{version}
+%doc %{_libdir}/ruby/gems/3.2.0/doc/gem2rpm-%{version}
 %endif
 %endif
 

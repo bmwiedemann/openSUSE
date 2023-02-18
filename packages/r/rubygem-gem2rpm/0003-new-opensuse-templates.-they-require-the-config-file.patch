@@ -1,7 +1,7 @@
 From 5e1e30e5addc99825b3bf873983ca48732493060 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 24 Jul 2014 16:55:57 +0200
-Subject: [PATCH 03/32] new opensuse templates. they require the config file
+Subject: [PATCH 03/33] new opensuse templates. they require the config file
  support.
 
 ---
@@ -503,5 +503,5 @@ index 37de592..25fdec3 100644
  
  %changelog
 -- 
-2.20.1
+2.26.2
 

@@ -1,7 +1,7 @@
 From 1742038eb7ec8fcb25009ce8b270b420183875bc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 24 Jul 2014 16:54:45 +0200
-Subject: [PATCH 02/32] added basic config file support to gem2rpm in yaml
+Subject: [PATCH 02/33] added basic config file support to gem2rpm in yaml
  format.
 
 There is no validation as it is basically a hash where certain keys are
@@ -89,5 +89,5 @@ index 017ecd1..e5e2693 100644
      unless local
        begin
 -- 
-2.20.1
+2.26.2
 

@@ -1,7 +1,7 @@
 From 953ff66677490c78ceff14afc0365f832079333a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Tue, 21 Oct 2014 17:55:23 +0200
-Subject: [PATCH 10/32] Try to load rbconfigpackagingsupport and fail
+Subject: [PATCH 10/33] Try to load rbconfigpackagingsupport and fail
  gracefully if not available
 
 The file will patch ruby_install_name on unversioned ruby installations.
@@ -24,5 +24,5 @@ index 29873e5..a6ab58b 100644
      path.gsub(/\/-/, "/#{mod_full_name}")
    end
 -- 
-2.20.1
+2.26.2
 

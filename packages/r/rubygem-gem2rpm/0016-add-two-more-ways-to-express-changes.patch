@@ -1,7 +1,7 @@
 From 814a7133ce8ab7271cf0bf31ad6d4de94fec8863 Mon Sep 17 00:00:00 2001
 From: Stephan Kulow <coolo@suse.de>
 Date: Wed, 11 Feb 2015 02:05:31 +0100
-Subject: [PATCH 16/32] add two more ways to express changes
+Subject: [PATCH 16/33] add two more ways to express changes
 
 ---
  templates/gem_packages.spec.erb | 2 ++
@@ -35,5 +35,5 @@ index 8d14e38..b1251c5 100644
         ).each { |file|
        bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
 -- 
-2.20.1
+2.26.2
 

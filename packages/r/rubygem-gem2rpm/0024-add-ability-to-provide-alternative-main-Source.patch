@@ -1,7 +1,7 @@
 From 3888b107af6ce5721ff40abe2bedcede1893732b Mon Sep 17 00:00:00 2001
 From: Theo Chatzimichos <tampakrap@gmail.com>
 Date: Tue, 23 Aug 2016 23:49:40 +0200
-Subject: [PATCH 24/32] add ability to provide alternative main Source
+Subject: [PATCH 24/33] add ability to provide alternative main Source
 
 this is useful in cases where the gem is not taken from rubygems.org
 ---
@@ -25,5 +25,5 @@ index 5b62b26..ae2d458 100644
       config[:sources].each_with_index do |src, i| -%>
  Source<%= i+1 %>:        <%= src %>
 -- 
-2.20.1
+2.26.2
 

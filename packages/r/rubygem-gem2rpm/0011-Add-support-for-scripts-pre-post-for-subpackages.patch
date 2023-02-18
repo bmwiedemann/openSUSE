@@ -1,7 +1,7 @@
 From 0ee368bc6c4ea35d233dadbe1f2c7048a99d3dc4 Mon Sep 17 00:00:00 2001
 From: Theo chatzimichos <tampakrap@opensuse.org>
 Date: Fri, 5 Dec 2014 17:11:47 +0200
-Subject: [PATCH 11/32] Add support for :scripts: (pre/post) for subpackages
+Subject: [PATCH 11/33] Add support for :scripts: (pre/post) for subpackages
 
 With this commit we can add pre/post/(etc) scripts in gem2rpm.yml for
 subpackages, as in the example below:
@@ -40,5 +40,5 @@ index 8bc281c..af04eaf 100644
     end
  -%>
 -- 
-2.20.1
+2.26.2
 

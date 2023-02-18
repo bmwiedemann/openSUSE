@@ -1,7 +1,7 @@
 From fdf7e5ceb4c165babfb7486fe6640faa21ab5e12 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Wed, 6 Jun 2018 16:15:39 +0200
-Subject: [PATCH 28/32] add binary_map support
+Subject: [PATCH 28/33] add binary_map support
 
 ---
  gem2rpm.yml.documentation       |  2 ++
@@ -85,5 +85,5 @@ index 6add6a7..4861bbd 100644
  %ghost <%= rb_sysconfdir %>/alternatives/<%= "#{executable}-#{spec.version}" %>
  <% end -%>
 -- 
-2.20.1
+2.26.2
 

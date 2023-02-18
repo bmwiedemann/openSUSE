@@ -1,7 +1,7 @@
 From c4557ce4aa7e0f67e5c249c255fe0c0c5df8f793 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Wed, 6 Jun 2018 17:15:35 +0200
-Subject: [PATCH 30/32] gem_package.spec.erb: sync with ruby-common
+Subject: [PATCH 30/33] gem_package.spec.erb: sync with ruby-common
 
 Also drop the Enhances change that sneaked in by accident
 ---
@@ -73,5 +73,5 @@ index b704b91..257c719 100644
  <% if data[:description] and data[:description] != '' -%>
  <%= data[:description] %>
 -- 
-2.20.1
+2.26.2
 

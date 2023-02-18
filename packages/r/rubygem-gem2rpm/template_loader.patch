@@ -10,5 +10,5 @@ index 45ed21c..c613c12
  template = nil
 +template_file ||= 'opensuse'
  if template_file.nil?
-   f = open("/etc/os-release", "r") if File.exists?("/etc/os-release")
+   f = open("/etc/os-release", "r") if File.exist?("/etc/os-release")
    if f

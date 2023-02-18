@@ -1,7 +1,7 @@
 From 092f7ca4ff1f954dd8982acf7199cd15636e87f3 Mon Sep 17 00:00:00 2001
 From: Theo Chatzimichos <tampakrap@opensuse.org>
 Date: Fri, 5 Dec 2014 17:16:41 +0200
-Subject: [PATCH 12/32] typo in gem2rpm.yml.documentation: :custom_pkgs:
+Subject: [PATCH 12/33] typo in gem2rpm.yml.documentation: :custom_pkgs:
  instead of :custom:
 
 ---
@@ -22,5 +22,5 @@ index 5e444eb..376eacd 100644
  #     :preamble: |-
  #       Requires: .....
 -- 
-2.20.1
+2.26.2
 

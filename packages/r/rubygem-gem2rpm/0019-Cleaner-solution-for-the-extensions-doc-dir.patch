@@ -1,7 +1,7 @@
 From 672a0405c2c191280887b4427a759490aa2ce5ad Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Fri, 13 Mar 2015 14:53:04 +0100
-Subject: [PATCH 19/32] Cleaner solution for the extensions doc dir
+Subject: [PATCH 19/33] Cleaner solution for the extensions doc dir
 
 The other solution was also failing on 1.8
 ---
@@ -26,5 +26,5 @@ index 80e552e..661539a 100644
        return File.join(rp[1], 'doc', rp[2]) 
      end
 -- 
-2.20.1
+2.26.2
 

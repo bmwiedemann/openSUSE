@@ -1,7 +1,7 @@
 From b10341f5c13d71271e195101e46213026f628048 Mon Sep 17 00:00:00 2001
 From: Dirk Mueller <dmueller@suse.com>
 Date: Mon, 12 Jan 2015 15:52:34 +0100
-Subject: [PATCH 15/32] Add 'licence' to the list of license files as well
+Subject: [PATCH 15/33] Add 'licence' to the list of license files as well
 
 This is a misspelling, but seems to be common enough still
 ---
@@ -34,5 +34,5 @@ index 88e7356..8d14e38 100644
          license-mit
          mit-license
 -- 
-2.20.1
+2.26.2
 

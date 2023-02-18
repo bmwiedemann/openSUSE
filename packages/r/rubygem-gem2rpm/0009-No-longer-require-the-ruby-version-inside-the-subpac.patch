@@ -1,7 +1,7 @@
 From 13b02a1596a744ed70687dae0ffb465e1979221e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Tue, 21 Oct 2014 15:13:31 +0200
-Subject: [PATCH 09/32] No longer require the ruby version inside the
+Subject: [PATCH 09/33] No longer require the ruby version inside the
  subpackage
 
 With the buildrequires we already make sure that the package is only
@@ -28,5 +28,5 @@ index 94d4005..29873e5 100644
  <% if config[:main] && config[:main][:preamble] -%>
  <%= config[:main][:preamble] %>
 -- 
-2.20.1
+2.26.2
 

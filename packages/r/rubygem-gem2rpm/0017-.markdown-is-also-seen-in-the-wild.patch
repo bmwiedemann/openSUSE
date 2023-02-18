@@ -1,7 +1,7 @@
 From 660fa598f3a78f94f35e1edf10d143dae5db62bb Mon Sep 17 00:00:00 2001
 From: Stephan Kulow <coolo@suse.de>
 Date: Wed, 11 Feb 2015 02:30:14 +0100
-Subject: [PATCH 17/32] .markdown is also seen in the wild
+Subject: [PATCH 17/33] .markdown is also seen in the wild
 
 ---
  templates/gem_packages.spec.erb | 2 +-
@@ -35,5 +35,5 @@ index b1251c5..a5f34c6 100644
        docdirfiles << path if bpath == file
       }
 -- 
-2.20.1
+2.26.2
 

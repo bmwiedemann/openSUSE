@@ -1,7 +1,7 @@
 From da07cd470611c3c6b70fc863e2d82a2862a068e4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 24 Jul 2014 17:09:35 +0200
-Subject: [PATCH 05/32] properly shorten description and summary
+Subject: [PATCH 05/33] properly shorten description and summary
 
 This also includes the description if we reuse the summary.
 ---
@@ -54,5 +54,5 @@ index 9a8d5a1..2e4f7b2 100644
      def development_dependencies
        super.map {|d| Gem2Rpm::Dependency.new d}
 -- 
-2.20.1
+2.26.2
 

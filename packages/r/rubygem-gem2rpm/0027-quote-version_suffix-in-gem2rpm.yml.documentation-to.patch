@@ -1,7 +1,7 @@
 From 5ed4ebe4fce32e32c75019aa4ac01b78e22c2e44 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Fri, 3 Nov 2017 14:46:39 +0100
-Subject: [PATCH 27/32] quote version_suffix in gem2rpm.yml.documentation to
+Subject: [PATCH 27/33] quote version_suffix in gem2rpm.yml.documentation to
  avoid wrong package names
 
 ---
@@ -22,5 +22,5 @@ index fbed82e..bb4893d 100644
  # :disable_docs: true
  # ## used by gem2rpm
 -- 
-2.20.1
+2.26.2
 

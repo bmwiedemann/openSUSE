@@ -1,7 +1,7 @@
 From 91bc63e3fbba24a5f90c4fce4f74b371c4694657 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 24 Jul 2014 16:46:19 +0200
-Subject: [PATCH 01/32] - use the ID from os-release to use the proper template
+Subject: [PATCH 01/33] - use the ID from os-release to use the proper template
 
 ---
  bin/gem2rpm | 10 ++++++++++
@@ -29,5 +29,5 @@ index 736a645..fa7ce6b 100755
    template = Gem2Rpm::TEMPLATE
  else
 -- 
-2.20.1
+2.26.2
 

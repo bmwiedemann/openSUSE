@@ -1,7 +1,7 @@
 From 04d2ef0c24748dd4120d1cc3a7b08d5c963dc100 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Wed, 6 Jun 2018 16:40:15 +0200
-Subject: [PATCH 29/32] Use "or" for the conditions instead of and
+Subject: [PATCH 29/33] Use "or" for the conditions instead of and
 
 ---
  templates/gem_packages.spec.erb | 3 ++-
@@ -22,5 +22,5 @@ index 4861bbd..b704b91 100644
      end
      executable
 -- 
-2.20.1
+2.26.2
 

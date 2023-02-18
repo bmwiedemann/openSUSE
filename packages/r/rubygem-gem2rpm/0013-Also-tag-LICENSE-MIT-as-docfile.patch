@@ -1,7 +1,7 @@
 From dad615aa35cbbe0d7351ea66af44a8548853a2da Mon Sep 17 00:00:00 2001
 From: Dirk Mueller <dmueller@suse.com>
 Date: Mon, 12 Jan 2015 15:34:26 +0100
-Subject: [PATCH 13/32] Also tag LICENSE-MIT as docfile
+Subject: [PATCH 13/33] Also tag LICENSE-MIT as docfile
 
 Some packages (e.g. rubygem-http_parser) name it that way
 ---
@@ -36,5 +36,5 @@ index af04eaf..8eb7fee 100644
        #$stderr.puts "PATH #{path} #{bpath} #{file}"
        docdirfiles << path if bpath == file
 -- 
-2.20.1
+2.26.2
 

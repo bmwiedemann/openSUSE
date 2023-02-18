@@ -1,7 +1,7 @@
 From f8c0600c659f26d1ec6c9d890a63dd642f741003 Mon Sep 17 00:00:00 2001
 From: Stephan Kulow <coolo@suse.de>
 Date: Wed, 6 Apr 2016 08:00:27 +0200
-Subject: [PATCH 22/32] add the touch for build-compare to the template
+Subject: [PATCH 22/33] add the touch for build-compare to the template
 
 ---
  templates/opensuse.spec.erb | 1 +
@@ -20,5 +20,5 @@ index 57bf9ff..22c4647 100644
  <% end -%>
  
 -- 
-2.20.1
+2.26.2
 

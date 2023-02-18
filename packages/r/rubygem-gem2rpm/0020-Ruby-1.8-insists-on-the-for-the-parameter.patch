@@ -1,7 +1,7 @@
 From f6ace6130df3a2ea6ca8e987e9675d652940510e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Fri, 13 Mar 2015 15:06:01 +0100
-Subject: [PATCH 20/32] Ruby 1.8 insists on the () for the parameter
+Subject: [PATCH 20/33] Ruby 1.8 insists on the () for the parameter
 
 ---
  templates/gem_packages.spec.erb | 2 +-
@@ -21,5 +21,5 @@ index 661539a..6add6a7 100644
        rp = gem_spec.extensions_dir.rpartition(gem_spec.base_dir)
        return File.join(rp[1], 'doc', rp[2]) 
 -- 
-2.20.1
+2.26.2
 

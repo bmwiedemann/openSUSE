@@ -1,8 +1,10 @@
 From f408e57b282cd55d59c1317240ee9e0dc679373c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 24 Jul 2014 17:02:56 +0200
-Subject: [PATCH 04/32] added example gem2rpm.yml
+Subject: [PATCH 04/33] added example gem2rpm.yml
 
+This patch is edited to remove the Rakefile hunk. Rakefile is not part
+of the *.gem
 ---
  Rakefile                  |  2 +-
  gem2rpm.yml.documentation | 70 +++++++++++++++++++++++++++++++++++++++
@@ -86,5 +88,5 @@ index 0000000..5e444eb
 +#       /bin/echo foo
 +#
 -- 
-2.20.1
+2.26.2
 

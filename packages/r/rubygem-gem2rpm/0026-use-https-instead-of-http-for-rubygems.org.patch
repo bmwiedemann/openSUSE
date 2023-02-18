@@ -1,7 +1,7 @@
 From 304e55ea06e789e41683351c3eca7e8f20619201 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 10 Nov 2016 18:16:23 +0100
-Subject: [PATCH 26/32] use https instead of http for rubygems.org
+Subject: [PATCH 26/33] use https instead of http for rubygems.org
 
 ---
  bin/gem2rpm                 | 2 +-
@@ -35,5 +35,5 @@ index e6e9a1a..b070745 100644
  <% if config[:sources]
       config[:sources].each_with_index do |src, i| -%>
 -- 
-2.20.1
+2.26.2
 

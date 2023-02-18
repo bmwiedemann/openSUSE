@@ -1,7 +1,7 @@
 From ee81c7f09669db9e6898df5bf36ac6c102d0d615 Mon Sep 17 00:00:00 2001
 From: Thomas Bechtold <tbechtold@suse.com>
 Date: Mon, 18 Jul 2016 10:12:29 +0200
-Subject: [PATCH 23/32] Also tag APACHE-LICENSE-2.0 as docfile
+Subject: [PATCH 23/33] Also tag APACHE-LICENSE-2.0 as docfile
 
 Some packages (e.g. rubygem-apipie-rails) name it that way
 ---
@@ -22,5 +22,5 @@ index 22c4647..5b62b26 100644
          news
          release_notes
 -- 
-2.20.1
+2.26.2
 

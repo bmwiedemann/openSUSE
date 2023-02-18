@@ -1,7 +1,7 @@
 From ba7932c7d7bc6a70a45ac6ebb841a9e1bf8bb86b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Tue, 21 Oct 2014 14:54:55 +0200
-Subject: [PATCH 08/32] do not use not(). not supported on 1.8 e.g.
+Subject: [PATCH 08/33] do not use not(). not supported on 1.8 e.g.
 
 ---
  templates/gem_packages.spec.erb | 4 ++--
@@ -30,5 +30,5 @@ index 058660b..94d4005 100644
  %defattr(-,root,root,-)
  %doc <%= gem_doc_dir %>
 -- 
-2.20.1
+2.26.2
 

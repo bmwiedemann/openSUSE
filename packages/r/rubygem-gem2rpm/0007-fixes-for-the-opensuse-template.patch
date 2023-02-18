@@ -1,7 +1,7 @@
 From eed51b54253c303c593d9466ed8ed17523bda3d1 Mon Sep 17 00:00:00 2001
 From: Stephan Kulow <coolo@suse.de>
 Date: Wed, 15 Oct 2014 10:38:29 +0200
-Subject: [PATCH 07/32] fixes for the opensuse template:
+Subject: [PATCH 07/33] fixes for the opensuse template:
 
 - add one more space for sources
 - add empty lines in front of the warning preamble - otherwise format_spec_file
@@ -52,5 +52,5 @@ index 25fdec3..8bc281c 100644
   end -%>
  <% if config[:patches] -%>
 -- 
-2.20.1
+2.26.2
 

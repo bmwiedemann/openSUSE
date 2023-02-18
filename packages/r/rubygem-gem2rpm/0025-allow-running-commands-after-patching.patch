@@ -1,7 +1,7 @@
 From e9601db421071203202ddb0122e8826859238e73 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
 Date: Thu, 10 Nov 2016 15:46:22 +0100
-Subject: [PATCH 25/32] allow running commands after patching
+Subject: [PATCH 25/33] allow running commands after patching
 
 but before we actually rebuild the gem.
 needed for libv8 gem.
@@ -40,5 +40,5 @@ index ae2d458..e6e9a1a 100644
  %gem_build
  <% end -%>
 -- 
-2.20.1
+2.26.2
 

@@ -1,7 +1,7 @@
 From 7a45c828d05304d90b3a202e55acbbcaab5cdac2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <darix@nordisch.org>
 Date: Fri, 13 Mar 2015 03:24:25 +0100
-Subject: [PATCH 18/32] Only use the extensions doc dir on MRI 2.1.x
+Subject: [PATCH 18/33] Only use the extensions doc dir on MRI 2.1.x
 
 ---
  templates/gem_packages.spec.erb | 3 +++
@@ -22,5 +22,5 @@ index 9e2e877..80e552e 100644
        rp = gem_spec.extensions_dir.rpartition(gem_spec.base_dir)
        return File.join(rp[1], 'doc', rp[2]) 
 -- 
-2.20.1
+2.26.2
 
