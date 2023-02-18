@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec-mocks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,27 @@
 #
 
 
+%define mod_name rspec-mocks
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-rspec-mocks
-Version:        3.12.0
+Version:        3.12.3
 Release:        0
-%define mod_name rspec-mocks
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        RSpec's 'test double' framework, with support for stubbing and mocking
+License:        MIT
+Group:          Development/Languages/Ruby
+URL:            https://github.com/rspec/rspec-mocks
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/rspec/rspec-mocks
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
-Summary:        RSpec's 'test double' framework, with support for stubbing and mocking
-License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 RSpec's 'test double' framework, with support for stubbing and mocking.
