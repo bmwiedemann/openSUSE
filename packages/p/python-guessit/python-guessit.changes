@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb 18 13:23:05 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.7.0
+  Feature:
+  * week: Add week property
+  Fix:
+  * episode: Fix invalid episode range when a weak episode is 
+    present before the match
+  * expected: Build output from input string for 
+    expected_title/expected_group
+  * release_group: Properly extract group name from format "Title
+  * edition: Improve remastered/restored detection
+  * container: Add m2ts to container extensions
+  Documentation:
+  * contributing: Update branch name
+
+-------------------------------------------------------------------
+Sat Feb 18 10:31:32 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6.0
+  Feature:
+  * audio_codec: Detect "DTS:X"
+
+-------------------------------------------------------------------
 Wed Nov  2 09:07:26 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.5.0

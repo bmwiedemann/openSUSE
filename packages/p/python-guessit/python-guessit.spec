@@ -1,7 +1,7 @@
 #
 # spec file for package python-guessit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-guessit
-Version:        3.5.0
+Version:        3.7.0
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module babelfish >= 0.6.0}
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-mock >= 3.3.1}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rebulk >= 3.1.0}
 BuildRequires:  %{python_module setuptools}

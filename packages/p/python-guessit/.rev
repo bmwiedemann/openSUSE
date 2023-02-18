@@ -231,4 +231,28 @@
     <comment></comment>
     <requestid>1032803</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b20378237077273e7efd00c461d0c136</srcmd5>
+    <version>3.7.0</version>
+    <time>1676736779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0
+  Feature:
+  * week: Add week property
+  Fix:
+  * episode: Fix invalid episode range when a weak episode is 
+    present before the match
+  * expected: Build output from input string for 
+    expected_title/expected_group
+  * release_group: Properly extract group name from format &quot;Title
+  * edition: Improve remastered/restored detection
+  * container: Add m2ts to container extensions
+  Documentation:
+  * contributing: Update branch name
+- Update to version 3.6.0
+  Feature:
+  * audio_codec: Detect &quot;DTS:X&quot;
+</comment>
+    <requestid>1066542</requestid>
+  </revision>
 </revisionlist>
