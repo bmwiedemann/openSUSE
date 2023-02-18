@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 17 07:43:20 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 0.5.1
+ * Removed special treatment of mono files.
+ * Updated GPL header in all source files.
+
+- skipped version 0.4.3
+ * Changed peak level unit to 'dBTP'
+
+- remove fix-build.patch (now upstream)
+
+-------------------------------------------------------------------
 Sun Feb 13 03:14:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Pass prefix also to the build as the path to the assets is

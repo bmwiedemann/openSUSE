@@ -18,14 +18,13 @@
 
 
 Name:           ebumeter
-Version:        0.4.2
+Version:        0.5.1
 Release:        0
 Summary:        Loudness measurement according to EBU-R128
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://kokkinizita.linuxaudio.org/linuxaudio/ebumeter-doc/quickguide.html
-Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.bz2
-Patch0:         fix-build.patch
+Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.xz
 BuildRequires:  clxclient-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,7 +47,6 @@ provided as well.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CXXFLAGS="%{optflags}"
