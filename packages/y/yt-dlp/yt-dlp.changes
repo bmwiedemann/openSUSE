@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Feb 18 06:08:22 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to release 2023.02.17 
+  * Merge youtube-dl: Upto commit/2dd6c6e (Feb 17 2023)
+  * Fix --concat-playlist
+  * Imply --no-progress when --print
+  * Improve default subtitle language selection
+  * Make title completely non-fatal
+  * Sanitize formats before sorting
+  * [hls] Allow extractors to provide AES key
+  * [extractor/generic] Avoid catastrophic backtracking in KVS regex
+  * [jsinterp] Support if statements
+  * [plugins] Fix zip search paths
+  * [utils] Don't use Content-length with encoding
+  * [utils] Fix time_seconds to use the provided TZ
+  * [utils] Fix race condition in make_dir
+  * [extractor/anchorfm] Add episode
+  * [extractor/boxcast] Add extractor
+  * [extractor/ebay] Add extractor
+  * [extractor/hypergryph] Add extractor
+  * [extractor/NZOnScreen] Add extractor
+  * [extractor/rozhlas] Add extractor
+  * [extractor/tempo] Add IVXPlayer extractor
+  * [extractor/txxx] Add extractors
+  * [extractor/vocaroo] Add extractor
+  * [extractor/wrestleuniverse] Add extractors
+  * [extractor/yappy] Add extractor
+  * [extractor/youtube] Fix uploader_id extraction
+  * [extractor/youtube] Add hyperpipe instances
+  * [extractor/youtube] Handle consent.youtube
+  * [extractor/youtube] Support /live/ URL
+  * [extractor/youtube] Update invidious and piped instances
+  * [extractor/91porn] Fix title and comment extraction
+  * [extractor/AbemaTV] Cache user token whenever appropriate
+  * [extractor/bfmtv] Support rmc prefix
+  * [extractor/biliintl] Add intro and ending chapters
+  * [extractor/clyp] Support wav
+  * [extractor/crunchyroll] Add intro chapter
+  * [extractor/crunchyroll] Better message for premium videos
+  * [extractor/crunchyroll] Fix incorrect premium-only error
+  * [extractor/DouyuTV] Use new API
+  * [extractor/embedly] Embedded links may be for other extractors
+  * [extractor/freesound] Workaround invalid URL in webpage
+  * [extractor/GoPlay] Use new API
+  * [extractor/Hidive] Fix subtitles and age-restriction
+  * [extractor/huya] Support HD streams
+  * [extractor/moviepilot] Fix extractor
+  * [extractor/nbc] Fix NBC and NBCStations extractors
+  * [extractor/nbc] Fix XML parsing
+  * [extractor/nebula] Remove broken cookie support
+  * [extractor/nfl] Add NFLPlus extractor
+  * [extractor/niconico] Add support for like history
+  * [extractor/nitter] Update instance list by OIRNOIR
+  * [extractor/npo] Fix extractor and add HD support
+  * [extractor/odkmedia] Add OnDemandChinaEpisodeIE
+  * [extractor/pornez] Handle relative URLs in iframe
+  * [extractor/radiko] Fix format sorting for Time Free
+  * [extractor/rcs] Fix extractors
+  * [extractor/reddit] Support user posts
+  * [extractor/rumble] Fix format sorting
+  * [extractor/servus] Rewrite extractor
+  * [extractor/slideslive] Fix slides and chapters/duration
+  * [extractor/SportDeutschland] Fix extractor
+  * [extractor/Stripchat] Fix extractor
+  * [extractor/tnaflix] Fix extractor
+  * [extractor/tvp] Support stream.tvp.pl
+  * [extractor/twitter] Fix --no-playlist and add media
+    view_count when using GraphQL
+  * [extractor/twitter] Fix graphql extraction on some tweets
+  * [extractor/vimeo] Fix playerConfig extraction
+  * [extractor/viu] Add ViuOTTIndonesiaIE extractor
+  * [extractor/vk] Fix playlists for new API
+  * [extractor/vlive] Replace with VLiveWebArchiveIE
+  * [extractor/ximalaya] Update album _VALID_URL
+  * [extractor/zdf] Use android API endpoint for UHD downloads
+
+-------------------------------------------------------------------
 Fri Jan  6 21:49:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.01.06
