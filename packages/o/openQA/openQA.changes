@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 18 02:09:38 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1676652271.14173e7:
+  * Revert "Retry asset downloads automatically"
+  * Enable build for PowerPC after openQA packages are no longer noarch
+  * Retry asset downloads automatically
+  * Add pagination for GET /api/v1/workers
+  * Remove unused 'backend_info'
+  * Track coverage of test server spawned by `t/25-downloader.t`
+  * Avoid caveats of `Archive::Extract` using `bsdtar` instead
+
+-------------------------------------------------------------------
 Wed Feb 15 15:21:35 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676474487.945e502:
