@@ -1,0 +1,421 @@
+From 5c718f123517ce02fced64677825d1ff3a4684c5 Mon Sep 17 00:00:00 2001
+From: Giorgio Salluzzo <giorgio.salluzzo@gmail.com>
+Date: Wed, 28 Dec 2022 09:43:58 +0100
+Subject: [PATCH 14/15] Refactoring using `tempfile` as a context manager.
+
+---
+ tests/main/test_http.py         |  96 ++++++++++++-----------
+ tests/main/test_http_aiohttp.py | 130 +++++++++++++++-----------------
+ tests/main/test_https.py        |  31 ++++----
+ tests/main/test_mocket.py       |   6 +-
+ tests/tests37/test_asyncio.py   |  52 ++++++-------
+ 5 files changed, 154 insertions(+), 161 deletions(-)
+
+diff --git a/tests/main/test_http.py b/tests/main/test_http.py
+index f1893be..60a54fb 100644
+--- a/tests/main/test_http.py
++++ b/tests/main/test_http.py
+@@ -13,11 +13,9 @@ from urllib.request import urlopen
+ import pytest
+ import requests
+ 
+-from mocket import Mocket, mocketize
++from mocket import Mocket, Mocketizer, mocketize
+ from mocket.mockhttp import Entry, Response
+ 
+-recording_directory = tempfile.mkdtemp()
+-
+ 
+ class HttpTestCase(TestCase):
+     def assertEqualHeaders(self, first, second, msg=None):
+@@ -36,57 +34,63 @@ class TrueHttpEntryTestCase(HttpTestCase):
+         resp = requests.get(url)
+         self.assertEqual(resp.status_code, 200)
+ 
+-    @mocketize(truesocket_recording_dir=recording_directory)
+     def test_truesendall_with_recording(self):
+-        url = "http://httpbin.org/ip"
+-
+-        urlopen(url)
+-        requests.get(url)
+-        resp = urlopen(url)
+-        self.assertEqual(resp.code, 200)
+-        resp = requests.get(url)
+-        self.assertEqual(resp.status_code, 200)
+-        assert "origin" in resp.json()
+-
+-        dump_filename = os.path.join(
+-            Mocket.get_truesocket_recording_dir(), Mocket.get_namespace() + ".json"
+-        )
+-        with io.open(dump_filename) as f:
+-            responses = json.load(f)
++        with tempfile.TemporaryDirectory() as temp_dir:
++            with Mocketizer(truesocket_recording_dir=temp_dir):
++                url = "http://httpbin.org/ip"
++
++                urlopen(url)
++                requests.get(url)
++                resp = urlopen(url)
++                self.assertEqual(resp.code, 200)
++                resp = requests.get(url)
++                self.assertEqual(resp.status_code, 200)
++                assert "origin" in resp.json()
++
++                dump_filename = os.path.join(
++                    Mocket.get_truesocket_recording_dir(),
++                    Mocket.get_namespace() + ".json",
++                )
++                with io.open(dump_filename) as f:
++                    responses = json.load(f)
++
++                self.assertEqual(len(responses["httpbin.org"]["80"].keys()), 2)
+ 
+-        self.assertEqual(len(responses["httpbin.org"]["80"].keys()), 2)
+-
+-    @mocketize(truesocket_recording_dir=recording_directory)
+     def test_truesendall_with_gzip_recording(self):
+-        url = "http://httpbin.org/gzip"
++        with tempfile.TemporaryDirectory() as temp_dir:
++            with Mocketizer(truesocket_recording_dir=temp_dir):
++                url = "http://httpbin.org/gzip"
+ 
+-        requests.get(url)
+-        resp = requests.get(url)
+-        self.assertEqual(resp.status_code, 200)
++                requests.get(url)
++                resp = requests.get(url)
++                self.assertEqual(resp.status_code, 200)
+ 
+-        dump_filename = os.path.join(
+-            Mocket.get_truesocket_recording_dir(), Mocket.get_namespace() + ".json"
+-        )
+-        with io.open(dump_filename) as f:
+-            responses = json.load(f)
++                dump_filename = os.path.join(
++                    Mocket.get_truesocket_recording_dir(),
++                    Mocket.get_namespace() + ".json",
++                )
++                with io.open(dump_filename) as f:
++                    responses = json.load(f)
+ 
+-        assert len(responses["httpbin.org"]["80"].keys()) == 1
++                assert len(responses["httpbin.org"]["80"].keys()) == 1
+ 
+-    @mocketize(truesocket_recording_dir=recording_directory)
+     def test_truesendall_with_chunk_recording(self):
+-        url = "http://httpbin.org/range/70000?chunk_size=65536"
+-
+-        requests.get(url)
+-        resp = requests.get(url)
+-        self.assertEqual(resp.status_code, 200)
+-
+-        dump_filename = os.path.join(
+-            Mocket.get_truesocket_recording_dir(), Mocket.get_namespace() + ".json"
+-        )
+-        with io.open(dump_filename) as f:
+-            responses = json.load(f)
+-
+-        assert len(responses["httpbin.org"]["80"].keys()) == 1
++        with tempfile.TemporaryDirectory() as temp_dir:
++            with Mocketizer(truesocket_recording_dir=temp_dir):
++                url = "http://httpbin.org/range/70000?chunk_size=65536"
++
++                requests.get(url)
++                resp = requests.get(url)
++                self.assertEqual(resp.status_code, 200)
++
++                dump_filename = os.path.join(
++                    Mocket.get_truesocket_recording_dir(),
++                    Mocket.get_namespace() + ".json",
++                )
++                with io.open(dump_filename) as f:
++                    responses = json.load(f)
++
++                assert len(responses["httpbin.org"]["80"].keys()) == 1
+ 
+     @mocketize
+     def test_wrongpath_truesendall(self):
+diff --git a/tests/main/test_http_aiohttp.py b/tests/main/test_http_aiohttp.py
+index ab72397..b8539eb 100644
+--- a/tests/main/test_http_aiohttp.py
++++ b/tests/main/test_http_aiohttp.py
+@@ -1,5 +1,4 @@
+ import json
+-from unittest import TestCase
+ 
+ import aiohttp
+ 
+@@ -7,71 +6,66 @@ from mocket.mocket import Mocket, mocketize
+ from mocket.mockhttp import Entry
+ from mocket.plugins.httpretty import HTTPretty, httprettified
+ 
++timeout = aiohttp.ClientTimeout(total=3)
+ 
+-class AioHttpEntryTestCase(TestCase):
+-    timeout = aiohttp.ClientTimeout(total=3)
+-
+-    @mocketize
+-    def test_http_session(self, event_loop):
+-        url = "http://httpbin.org/ip"
+-        body = "asd" * 100
+-        Entry.single_register(Entry.GET, url, body=body, status=404)
+-        Entry.single_register(Entry.POST, url, body=body * 2, status=201)
+-
+-        async def main(_loop):
+-            async with aiohttp.ClientSession(
+-                loop=_loop, timeout=self.timeout
+-            ) as session:
+-                async with session.get(url) as get_response:
+-                    assert get_response.status == 404
+-                    assert await get_response.text() == body
+-
+-                async with session.post(url, data=body * 6) as post_response:
+-                    assert post_response.status == 201
+-                    assert await post_response.text() == body * 2
+-                    assert Mocket.last_request().method == "POST"
+-                    assert Mocket.last_request().body == body * 6
+-
+-        event_loop.run_until_complete(main(event_loop))
+-        self.assertEqual(len(Mocket.request_list()), 2)
+-
+-    @mocketize
+-    def test_https_session(self, event_loop):
+-        url = "https://httpbin.org/ip"
+-        body = "asd" * 100
+-        Entry.single_register(Entry.GET, url, body=body, status=404)
+-        Entry.single_register(Entry.POST, url, body=body * 2, status=201)
+-
+-        async def main(_loop):
+-            async with aiohttp.ClientSession(
+-                loop=_loop, timeout=self.timeout
+-            ) as session:
+-                async with session.get(url) as get_response:
+-                    assert get_response.status == 404
+-                    assert await get_response.text() == body
+-
+-                async with session.post(url, data=body * 6) as post_response:
+-                    assert post_response.status == 201
+-                    assert await post_response.text() == body * 2
+-
+-        event_loop.run_until_complete(main(event_loop))
+-        self.assertEqual(len(Mocket.request_list()), 2)
+-
+-    @httprettified
+-    def test_httprettish_session(self, event_loop):
+-        url = "https://httpbin.org/ip"
+-        HTTPretty.register_uri(
+-            HTTPretty.GET,
+-            url,
+-            body=json.dumps(dict(origin="127.0.0.1")),
+-        )
+-
+-        async def main(_loop):
+-            async with aiohttp.ClientSession(
+-                loop=_loop, timeout=self.timeout
+-            ) as session:
+-                async with session.get(url) as get_response:
+-                    assert get_response.status == 200
+-                    assert await get_response.text() == '{"origin": "127.0.0.1"}'
+-
+-        event_loop.run_until_complete(main(event_loop))
++
++@mocketize
++def test_http_session(event_loop):
++    url = "http://httpbin.org/ip"
++    body = "asd" * 100
++    Entry.single_register(Entry.GET, url, body=body, status=404)
++    Entry.single_register(Entry.POST, url, body=body * 2, status=201)
++
++    async def main(_loop):
++        async with aiohttp.ClientSession(loop=_loop, timeout=timeout) as session:
++            async with session.get(url) as get_response:
++                assert get_response.status == 404
++                assert await get_response.text() == body
++
++            async with session.post(url, data=body * 6) as post_response:
++                assert post_response.status == 201
++                assert await post_response.text() == body * 2
++                assert Mocket.last_request().method == "POST"
++                assert Mocket.last_request().body == body * 6
++
++    event_loop.run_until_complete(main(event_loop))
++    assert len(Mocket.request_list()) == 2
++
++
++@mocketize
++def test_https_session(event_loop):
++    url = "https://httpbin.org/ip"
++    body = "asd" * 100
++    Entry.single_register(Entry.GET, url, body=body, status=404)
++    Entry.single_register(Entry.POST, url, body=body * 2, status=201)
++
++    async def main(_loop):
++        async with aiohttp.ClientSession(loop=_loop, timeout=timeout) as session:
++            async with session.get(url) as get_response:
++                assert get_response.status == 404
++                assert await get_response.text() == body
++
++            async with session.post(url, data=body * 6) as post_response:
++                assert post_response.status == 201
++                assert await post_response.text() == body * 2
++
++    event_loop.run_until_complete(main(event_loop))
++    assert len(Mocket.request_list()) == 2
++
++
++@httprettified
++def test_httprettish_session(event_loop):
++    url = "https://httpbin.org/ip"
++    HTTPretty.register_uri(
++        HTTPretty.GET,
++        url,
++        body=json.dumps(dict(origin="127.0.0.1")),
++    )
++
++    async def main(_loop):
++        async with aiohttp.ClientSession(loop=_loop, timeout=timeout) as session:
++            async with session.get(url) as get_response:
++                assert get_response.status == 200
++                assert await get_response.text() == '{"origin": "127.0.0.1"}'
++
++    event_loop.run_until_complete(main(event_loop))
+diff --git a/tests/main/test_https.py b/tests/main/test_https.py
+index 0a54e32..10652b5 100644
+--- a/tests/main/test_https.py
++++ b/tests/main/test_https.py
+@@ -42,22 +42,23 @@ recording_directory = tempfile.mkdtemp()
+ 
+ 
+ @pytest.mark.skipif('os.getenv("SKIP_TRUE_HTTP", False)')
+-@mocketize(truesocket_recording_dir=recording_directory)
+ def test_truesendall_with_recording_https():
+-    url = "https://httpbin.org/ip"
+-
+-    requests.get(url, headers={"Accept": "application/json"})
+-    resp = requests.get(url, headers={"Accept": "application/json"})
+-    assert resp.status_code == 200
+-
+-    dump_filename = os.path.join(
+-        Mocket.get_truesocket_recording_dir(),
+-        Mocket.get_namespace() + ".json",
+-    )
+-    with io.open(dump_filename) as f:
+-        responses = json.load(f)
+-
+-    assert len(responses["httpbin.org"]["443"].keys()) == 1
++    with tempfile.TemporaryDirectory() as temp_dir:
++        with Mocketizer(truesocket_recording_dir=temp_dir):
++            url = "https://httpbin.org/ip"
++
++            requests.get(url, headers={"Accept": "application/json"})
++            resp = requests.get(url, headers={"Accept": "application/json"})
++            assert resp.status_code == 200
++
++            dump_filename = os.path.join(
++                Mocket.get_truesocket_recording_dir(),
++                Mocket.get_namespace() + ".json",
++            )
++            with io.open(dump_filename) as f:
++                responses = json.load(f)
++
++            assert len(responses["httpbin.org"]["443"].keys()) == 1
+ 
+ 
+ @pytest.mark.skipif('os.getenv("SKIP_TRUE_HTTP", False)')
+diff --git a/tests/main/test_mocket.py b/tests/main/test_mocket.py
+index 67ad337..14057b1 100644
+--- a/tests/main/test_mocket.py
++++ b/tests/main/test_mocket.py
+@@ -174,13 +174,13 @@ def test_mocketize_outside_a_test_class():
+ 
+ 
+ @pytest.fixture
+-def fixture():
++def two():
+     return 2
+ 
+ 
+ @mocketize
+-def test_mocketize_with_fixture(fixture):
+-    assert 2 == fixture
++def test_mocketize_with_fixture(two):
++    assert 2 == two
+ 
+ 
+ @mocketize
+diff --git a/tests/tests37/test_asyncio.py b/tests/tests37/test_asyncio.py
+index 72b3a0e..c90bcb8 100644
+--- a/tests/tests37/test_asyncio.py
++++ b/tests/tests37/test_asyncio.py
+@@ -2,45 +2,39 @@ import asyncio
+ import glob
+ import io
+ import json
+-import shutil
+ import socket
+ import tempfile
+-from unittest import TestCase
+ 
+-from mocket.mocket import mocketize
++from mocket import Mocketizer
+ 
+ 
+-class AsyncIoRecordTestCase(TestCase):
+-    temp_dir = tempfile.mkdtemp()
++def test_asyncio_record_replay(event_loop):
++    async def test_asyncio_connection():
++        reader, writer = await asyncio.open_connection(
++            host="google.com",
++            port=80,
++            family=socket.AF_INET,
++            proto=socket.IPPROTO_TCP,
++            ssl=None,
++            server_hostname=None,
++        )
+ 
+-    @mocketize(truesocket_recording_dir=temp_dir)
+-    def test_asyncio_record_replay(self, event_loop):
+-        async def test_asyncio_connection():
+-            reader, writer = await asyncio.open_connection(
+-                host="google.com",
+-                port=80,
+-                family=socket.AF_INET,
+-                proto=socket.IPPROTO_TCP,
+-                ssl=None,
+-                server_hostname=None,
+-            )
++        buf = "GET / HTTP/1.1\r\nHost: google.com\r\n\r\n"
++        writer.write(buf.encode())
++        await writer.drain()
+ 
+-            buf = "GET / HTTP/1.1\r\nHost: google.com\r\n\r\n"
+-            writer.write(buf.encode())
+-            await writer.drain()
++        await reader.readline()
++        writer.close()
++        await writer.wait_closed()
+ 
+-            await reader.readline()
+-            writer.close()
+-            await writer.wait_closed()
++    with tempfile.TemporaryDirectory() as temp_dir:
++        with Mocketizer(truesocket_recording_dir=temp_dir):
++            event_loop.run_until_complete(test_asyncio_connection())
+ 
+-        event_loop.run_until_complete(test_asyncio_connection())
+-
+-        files = glob.glob(f"{self.temp_dir}/*.json")
+-        self.assertEqual(len(files), 1)
++        files = glob.glob(f"{temp_dir}/*.json")
++        assert len(files) == 1
+ 
+         with io.open(files[0]) as f:
+             responses = json.load(f)
+ 
+-        self.assertEqual(len(responses["google.com"]["80"].keys()), 1)
+-
+-        shutil.rmtree(self.temp_dir)
++        assert len(responses["google.com"]["80"].keys()) == 1
+-- 
+2.39.1
+

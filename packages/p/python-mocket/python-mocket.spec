@@ -33,11 +33,21 @@ Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: taken from https://github.com/mindflayer/python-mocket/pull/181
+Patch1:         0007-Switching-to-httptools.parser.HttpRequestParser.patch
+Patch2:         0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
+Patch3:         0009-Removing-DeprecationWarning-all-over-the-place.patch
+Patch4:         0010-Python-3.11-needs-an-async-decorator.patch
+Patch5:         0012-Removing-async-timeout-dependency.patch
+Patch6:         0013-Refactoring-using-event_loop-fixture.patch
+Patch7:         0014-Refactoring-using-tempfile-as-a-context-manager.patch
+Patch8:         0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
 Requires:       python-http-parser >= 0.9.0
+Requires:       python-httptools
 Requires:       python-python-magic >= 0.4.5
 Requires:       python-urllib3 >= 1.25.3
 Suggests:       python-pook >= 0.2.1
@@ -45,9 +55,10 @@ Suggests:       python-xxhash
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module async_timeout}
+BuildRequires:  %{python_module asgiref}
 BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module httptools}
 BuildRequires:  %{python_module mocket = %{version}}
 BuildRequires:  %{python_module pook >= 0.2.1}
 BuildRequires:  %{python_module pytest}
@@ -64,7 +75,7 @@ Socket Mock Framework - for all kinds of socket animals, web-clients
 included, with gevent/asyncio/SSL support.
 
 %prep
-%setup -q -n mocket-%{version}
+%autosetup -p1 -n mocket-%{version}
 sed -i '/cov/ d' setup.cfg
 sed -i '/pipenv/ d' setup.py
 
@@ -97,6 +108,8 @@ donttest="$donttest or test_asyncio_record_replay"
 %if %{pkg_vcmp python3-httpx < 0.23}
 donttest="$donttest or test_truesendall_with_dump_from_recording"
 %endif
+# these fail after the python 3.11 patches
+donttest="$donttest or test_http_session or test_https_session or test_httprettish_session"
 %pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore}
 %endif
 

@@ -1,0 +1,238 @@
+From 5e0d8a8b75280372536bc85ea44b82e0acc841c4 Mon Sep 17 00:00:00 2001
+From: Giorgio Salluzzo <giorgio.salluzzo@gmail.com>
+Date: Mon, 5 Dec 2022 01:08:23 +0100
+Subject: [PATCH 08/15] Disabling tests for `pook` when testing Python 3.11
+
+---
+ mocket/plugins/pook_mock_engine.py | 147 +++++++++++++++--------------
+ setup.py                           |   1 +
+ tests/main/test_pook.py            |  47 ++++-----
+ 3 files changed, 102 insertions(+), 93 deletions(-)
+
+diff --git a/mocket/plugins/pook_mock_engine.py b/mocket/plugins/pook_mock_engine.py
+index 5b1d207..8df8776 100644
+--- a/mocket/plugins/pook_mock_engine.py
++++ b/mocket/plugins/pook_mock_engine.py
+@@ -1,71 +1,76 @@
+-from pook.engine import MockEngine
+-from pook.interceptors.base import BaseInterceptor
+-
+-from mocket.mocket import Mocket
+-from mocket.mockhttp import Entry, Response
+-
+-
+-class MocketPookEntry(Entry):
+-    pook_request = None
+-    pook_engine = None
+-
+-    def can_handle(self, data):
+-        can_handle = super(MocketPookEntry, self).can_handle(data)
+-
+-        if can_handle:
+-            self.pook_engine.match(self.pook_request)
+-        return can_handle
+-
+-    @classmethod
+-    def single_register(cls, method, uri, body='', status=200, headers=None, match_querystring=True):
+-        entry = cls(
+-            uri, method, Response(
+-                body=body, status=status, headers=headers
+-            ), match_querystring=match_querystring
+-        )
+-        Mocket.register(entry)
+-        return entry
+-
+-
+-class MocketInterceptor(BaseInterceptor):
+-    @staticmethod
+-    def activate():
+-        Mocket.disable()
+-        Mocket.enable()
+-
+-    @staticmethod
+-    def disable():
+-        Mocket.disable()
+-
+-
+-class MocketEngine(MockEngine):
+-
+-    def __init__(self, engine):
+-        def mocket_mock_fun(*args, **kwargs):
+-            mock = self.pook_mock_fun(*args, **kwargs)
+-
+-            request = mock._request
+-            method = request.method
+-            url = request.rawurl
+-
+-            response = mock._response
+-            body = response._body
+-            status = response._status
+-            headers = response._headers
+-
+-            entry = MocketPookEntry.single_register(method, url, body, status, headers)
+-            entry.pook_engine = self.engine
+-            entry.pook_request = request
+-
+-            return mock
+-
+-        # Store plugins engine
+-        self.engine = engine
+-        # Store HTTP client interceptors
+-        self.interceptors = []
+-        # Self-register MocketInterceptor
+-        self.add_interceptor(MocketInterceptor)
+-
+-        # mocking pook.mock()
+-        self.pook_mock_fun = self.engine.mock
+-        self.engine.mock = mocket_mock_fun
++import platform
++
++if not platform.python_version().startswith("3.11."):
++    # it looks like `pook` is not compatible with Python 3.11
++    from pook.engine import MockEngine
++    from pook.interceptors.base import BaseInterceptor
++
++    from mocket.mocket import Mocket
++    from mocket.mockhttp import Entry, Response
++
++    class MocketPookEntry(Entry):
++        pook_request = None
++        pook_engine = None
++
++        def can_handle(self, data):
++            can_handle = super(MocketPookEntry, self).can_handle(data)
++
++            if can_handle:
++                self.pook_engine.match(self.pook_request)
++            return can_handle
++
++        @classmethod
++        def single_register(
++            cls, method, uri, body="", status=200, headers=None, match_querystring=True
++        ):
++            entry = cls(
++                uri,
++                method,
++                Response(body=body, status=status, headers=headers),
++                match_querystring=match_querystring,
++            )
++            Mocket.register(entry)
++            return entry
++
++    class MocketInterceptor(BaseInterceptor):
++        @staticmethod
++        def activate():
++            Mocket.disable()
++            Mocket.enable()
++
++        @staticmethod
++        def disable():
++            Mocket.disable()
++
++    class MocketEngine(MockEngine):
++        def __init__(self, engine):
++            def mocket_mock_fun(*args, **kwargs):
++                mock = self.pook_mock_fun(*args, **kwargs)
++
++                request = mock._request
++                method = request.method
++                url = request.rawurl
++
++                response = mock._response
++                body = response._body
++                status = response._status
++                headers = response._headers
++
++                entry = MocketPookEntry.single_register(
++                    method, url, body, status, headers
++                )
++                entry.pook_engine = self.engine
++                entry.pook_request = request
++
++                return mock
++
++            # Store plugins engine
++            self.engine = engine
++            # Store HTTP client interceptors
++            self.interceptors = []
++            # Self-register MocketInterceptor
++            self.add_interceptor(MocketInterceptor)
++
++            # mocking pook.mock()
++            self.pook_mock_fun = self.engine.mock
++            self.engine.mock = mocket_mock_fun
+diff --git a/setup.py b/setup.py
+index 544e624..145fced 100644
+--- a/setup.py
++++ b/setup.py
+@@ -57,6 +57,7 @@ setup(
+         "Programming Language :: Python :: 3.8",
+         "Programming Language :: Python :: 3.9",
+         "Programming Language :: Python :: 3.10",
++        "Programming Language :: Python :: 3.11",
+         "Programming Language :: Python :: Implementation :: CPython",
+         "Programming Language :: Python :: Implementation :: PyPy",
+         "Topic :: Software Development",
+diff --git a/tests/main/test_pook.py b/tests/main/test_pook.py
+index 2d95d3d..2207e8f 100644
+--- a/tests/main/test_pook.py
++++ b/tests/main/test_pook.py
+@@ -1,30 +1,33 @@
+-import pook
+-import requests
++import platform
+ 
+-from mocket.plugins.pook_mock_engine import MocketEngine
++if not platform.python_version().startswith("3.11."):
++    # it looks like `pook` is not compatible with Python 3.11
++    import pook
++    import requests
+ 
+-pook.set_mock_engine(MocketEngine)
++    from mocket.plugins.pook_mock_engine import MocketEngine
+ 
++    pook.set_mock_engine(MocketEngine)
+ 
+-@pook.on
+-def test_pook_engine():
++    @pook.on
++    def test_pook_engine():
+ 
+-    url = "http://twitter.com/api/1/foobar"
+-    status = 404
+-    response_json = {"error": "foo"}
++        url = "http://twitter.com/api/1/foobar"
++        status = 404
++        response_json = {"error": "foo"}
+ 
+-    mock = pook.get(
+-        url,
+-        headers={"content-type": "application/json"},
+-        reply=status,
+-        response_json=response_json,
+-    )
+-    mock.persist()
++        mock = pook.get(
++            url,
++            headers={"content-type": "application/json"},
++            reply=status,
++            response_json=response_json,
++        )
++        mock.persist()
+ 
+-    requests.get(url)
+-    assert mock.calls == 1
++        requests.get(url)
++        assert mock.calls == 1
+ 
+-    resp = requests.get(url)
+-    assert resp.status_code == status
+-    assert resp.json() == response_json
+-    assert mock.calls == 2
++        resp = requests.get(url)
++        assert resp.status_code == status
++        assert resp.json() == response_json
++        assert mock.calls == 2
+-- 
+2.39.1
+

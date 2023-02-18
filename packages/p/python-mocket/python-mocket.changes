@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  2 11:44:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add these commits as patches from the upstream PR:
+    0007-Switching-to-httptools.parser.HttpRequestParser.patch
+    0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
+    0009-Removing-DeprecationWarning-all-over-the-place.patch
+    0010-Python-3.11-needs-an-async-decorator.patch
+    0012-Removing-async-timeout-dependency.patch
+    0013-Refactoring-using-event_loop-fixture.patch
+    0014-Refactoring-using-tempfile-as-a-context-manager.patch
+    0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
+- skip now failing tests, update buildrequires for tests on py 3.11
+
+-------------------------------------------------------------------
 Sun Jan  1 18:43:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.10.9

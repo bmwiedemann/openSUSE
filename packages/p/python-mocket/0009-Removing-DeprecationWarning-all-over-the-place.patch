@@ -1,0 +1,188 @@
+From 10cf45b071776cd36f9c7070f5d47a26ea010d7d Mon Sep 17 00:00:00 2001
+From: Giorgio Salluzzo <giorgio.salluzzo@gmail.com>
+Date: Sat, 17 Dec 2022 12:09:48 +0100
+Subject: [PATCH 09/15] Removing DeprecationWarning all over the place.
+
+---
+ README.rst                         | 14 +++++++-------
+ tests/main/test_http_aiohttp.py    | 16 ++++++++--------
+ tests/tests37/test_asyncio.py      |  2 +-
+ tests/tests38/test_http_aiohttp.py | 10 +++++-----
+ 4 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 67cc956..a810dc1 100644
+--- a/README.rst
++++ b/README.rst
+@@ -249,12 +249,12 @@ Example:
+ 
+             async def main(l):
+                 async with aiohttp.ClientSession(loop=l) as session:
+-                    with async_timeout.timeout(3):
++                    async with async_timeout.timeout(3):
+                         async with session.get(url) as get_response:
+                             assert get_response.status == 200
+                             assert await get_response.text() == '{"origin": "127.0.0.1"}'
+ 
+-            loop = asyncio.get_event_loop()
++            loop = asyncio.new_event_loop()
+             loop.set_debug(True)
+             loop.run_until_complete(main(loop))
+ 
+@@ -278,17 +278,17 @@ Example:
+ 
+             async def main(l):
+                 async with aiohttp.ClientSession(loop=l) as session:
+-                    with async_timeout.timeout(3):
++                    async with async_timeout.timeout(3):
+                         async with session.get(url) as get_response:
+                             assert get_response.status == 404
+                             assert await get_response.text() == body
+ 
+-                    with async_timeout.timeout(3):
++                    async with async_timeout.timeout(3):
+                         async with session.post(url, data=body * 6) as post_response:
+                             assert post_response.status == 201
+                             assert await post_response.text() == body * 2
+ 
+-            loop = asyncio.get_event_loop()
++            loop = asyncio.new_event_loop()
+             loop.run_until_complete(main(loop))
+ 
+     # or again with a unittest.IsolatedAsyncioTestCase
+@@ -303,12 +303,12 @@ Example:
+             Entry.single_register(Entry.POST, url, body=body * 2, status=201)
+ 
+             async with aiohttp.ClientSession() as session:
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.get(url) as get_response:
+                         assert get_response.status == 404
+                         assert await get_response.text() == body
+ 
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.post(url, data=body * 6) as post_response:
+                         assert post_response.status == 201
+                         assert await post_response.text() == body * 2
+diff --git a/tests/main/test_http_aiohttp.py b/tests/main/test_http_aiohttp.py
+index 076fc93..6cfd2d8 100644
+--- a/tests/main/test_http_aiohttp.py
++++ b/tests/main/test_http_aiohttp.py
+@@ -20,19 +20,19 @@ class AioHttpEntryTestCase(TestCase):
+ 
+         async def main(_loop):
+             async with aiohttp.ClientSession(loop=_loop) as session:
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.get(url) as get_response:
+                         assert get_response.status == 404
+                         assert await get_response.text() == body
+ 
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.post(url, data=body * 6) as post_response:
+                         assert post_response.status == 201
+                         assert await post_response.text() == body * 2
+                         assert Mocket.last_request().method == "POST"
+                         assert Mocket.last_request().body == body * 6
+ 
+-        loop = asyncio.get_event_loop()
++        loop = asyncio.new_event_loop()
+         loop.set_debug(True)
+         loop.run_until_complete(main(loop))
+         self.assertEqual(len(Mocket.request_list()), 2)
+@@ -46,17 +46,17 @@ class AioHttpEntryTestCase(TestCase):
+ 
+         async def main(_loop):
+             async with aiohttp.ClientSession(loop=_loop) as session:
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.get(url) as get_response:
+                         assert get_response.status == 404
+                         assert await get_response.text() == body
+ 
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.post(url, data=body * 6) as post_response:
+                         assert post_response.status == 201
+                         assert await post_response.text() == body * 2
+ 
+-        loop = asyncio.get_event_loop()
++        loop = asyncio.new_event_loop()
+         loop.set_debug(True)
+         loop.run_until_complete(main(loop))
+         self.assertEqual(len(Mocket.request_list()), 2)
+@@ -72,11 +72,11 @@ class AioHttpEntryTestCase(TestCase):
+ 
+         async def main(_loop):
+             async with aiohttp.ClientSession(loop=_loop) as session:
+-                with async_timeout.timeout(3):
++                async with async_timeout.timeout(3):
+                     async with session.get(url) as get_response:
+                         assert get_response.status == 200
+                         assert await get_response.text() == '{"origin": "127.0.0.1"}'
+ 
+-        loop = asyncio.get_event_loop()
++        loop = asyncio.new_event_loop()
+         loop.set_debug(True)
+         loop.run_until_complete(main(loop))
+diff --git a/tests/tests37/test_asyncio.py b/tests/tests37/test_asyncio.py
+index 9e6e0d4..66f8cc9 100644
+--- a/tests/tests37/test_asyncio.py
++++ b/tests/tests37/test_asyncio.py
+@@ -33,7 +33,7 @@ class AsyncIoRecordTestCase(TestCase):
+             writer.close()
+             await writer.wait_closed()
+ 
+-        loop = asyncio.get_event_loop()
++        loop = asyncio.new_event_loop()
+         loop.set_debug(True)
+         loop.run_until_complete(test_asyncio_connection())
+ 
+diff --git a/tests/tests38/test_http_aiohttp.py b/tests/tests38/test_http_aiohttp.py
+index fe3817f..348a7a0 100644
+--- a/tests/tests38/test_http_aiohttp.py
++++ b/tests/tests38/test_http_aiohttp.py
+@@ -19,12 +19,12 @@ class AioHttpEntryTestCase(IsolatedAsyncioTestCase):
+         Entry.single_register(Entry.POST, url, body=body * 2, status=201)
+ 
+         async with aiohttp.ClientSession() as session:
+-            with async_timeout.timeout(3):
++            async with async_timeout.timeout(3):
+                 async with session.get(url) as get_response:
+                     assert get_response.status == 404
+                     assert await get_response.text() == body
+ 
+-            with async_timeout.timeout(3):
++            async with async_timeout.timeout(3):
+                 async with session.post(url, data=body * 6) as post_response:
+                     assert post_response.status == 201
+                     assert await post_response.text() == body * 2
+@@ -41,12 +41,12 @@ class AioHttpEntryTestCase(IsolatedAsyncioTestCase):
+         Entry.single_register(Entry.POST, url, body=body * 2, status=201)
+ 
+         async with aiohttp.ClientSession() as session:
+-            with async_timeout.timeout(3):
++            async with async_timeout.timeout(3):
+                 async with session.get(url) as get_response:
+                     assert get_response.status == 404
+                     assert await get_response.text() == body
+ 
+-            with async_timeout.timeout(3):
++            async with async_timeout.timeout(3):
+                 async with session.post(url, data=body * 6) as post_response:
+                     assert post_response.status == 201
+                     assert await post_response.text() == body * 2
+@@ -63,7 +63,7 @@ class AioHttpEntryTestCase(IsolatedAsyncioTestCase):
+         )
+ 
+         async with aiohttp.ClientSession() as session:
+-            with async_timeout.timeout(3):
++            async with async_timeout.timeout(3):
+                 async with session.get(url) as get_response:
+                     assert get_response.status == 200
+                     assert await get_response.text() == '{"origin": "127.0.0.1"}'
+-- 
+2.39.1
+

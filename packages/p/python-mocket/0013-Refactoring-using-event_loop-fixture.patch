@@ -1,0 +1,95 @@
+From 63120c44526e31e22c16c9d8029a715eef38e145 Mon Sep 17 00:00:00 2001
+From: Giorgio Salluzzo <giorgio.salluzzo@gmail.com>
+Date: Tue, 27 Dec 2022 15:38:02 +0100
+Subject: [PATCH 13/15] Refactoring using `event_loop` fixture.
+
+---
+ tests/main/test_http_aiohttp.py | 19 ++++++-------------
+ tests/tests37/test_asyncio.py   |  6 ++----
+ 2 files changed, 8 insertions(+), 17 deletions(-)
+
+diff --git a/tests/main/test_http_aiohttp.py b/tests/main/test_http_aiohttp.py
+index a98cb37..ab72397 100644
+--- a/tests/main/test_http_aiohttp.py
++++ b/tests/main/test_http_aiohttp.py
+@@ -1,4 +1,3 @@
+-import asyncio
+ import json
+ from unittest import TestCase
+ 
+@@ -13,7 +12,7 @@ class AioHttpEntryTestCase(TestCase):
+     timeout = aiohttp.ClientTimeout(total=3)
+ 
+     @mocketize
+-    def test_http_session(self):
++    def test_http_session(self, event_loop):
+         url = "http://httpbin.org/ip"
+         body = "asd" * 100
+         Entry.single_register(Entry.GET, url, body=body, status=404)
+@@ -33,13 +32,11 @@ class AioHttpEntryTestCase(TestCase):
+                     assert Mocket.last_request().method == "POST"
+                     assert Mocket.last_request().body == body * 6
+ 
+-        loop = asyncio.new_event_loop()
+-        loop.set_debug(True)
+-        loop.run_until_complete(main(loop))
++        event_loop.run_until_complete(main(event_loop))
+         self.assertEqual(len(Mocket.request_list()), 2)
+ 
+     @mocketize
+-    def test_https_session(self):
++    def test_https_session(self, event_loop):
+         url = "https://httpbin.org/ip"
+         body = "asd" * 100
+         Entry.single_register(Entry.GET, url, body=body, status=404)
+@@ -57,13 +54,11 @@ class AioHttpEntryTestCase(TestCase):
+                     assert post_response.status == 201
+                     assert await post_response.text() == body * 2
+ 
+-        loop = asyncio.new_event_loop()
+-        loop.set_debug(True)
+-        loop.run_until_complete(main(loop))
++        event_loop.run_until_complete(main(event_loop))
+         self.assertEqual(len(Mocket.request_list()), 2)
+ 
+     @httprettified
+-    def test_httprettish_session(self):
++    def test_httprettish_session(self, event_loop):
+         url = "https://httpbin.org/ip"
+         HTTPretty.register_uri(
+             HTTPretty.GET,
+@@ -79,6 +74,4 @@ class AioHttpEntryTestCase(TestCase):
+                     assert get_response.status == 200
+                     assert await get_response.text() == '{"origin": "127.0.0.1"}'
+ 
+-        loop = asyncio.new_event_loop()
+-        loop.set_debug(True)
+-        loop.run_until_complete(main(loop))
++        event_loop.run_until_complete(main(event_loop))
+diff --git a/tests/tests37/test_asyncio.py b/tests/tests37/test_asyncio.py
+index 66f8cc9..72b3a0e 100644
+--- a/tests/tests37/test_asyncio.py
++++ b/tests/tests37/test_asyncio.py
+@@ -14,7 +14,7 @@ class AsyncIoRecordTestCase(TestCase):
+     temp_dir = tempfile.mkdtemp()
+ 
+     @mocketize(truesocket_recording_dir=temp_dir)
+-    def test_asyncio_record_replay(self):
++    def test_asyncio_record_replay(self, event_loop):
+         async def test_asyncio_connection():
+             reader, writer = await asyncio.open_connection(
+                 host="google.com",
+@@ -33,9 +33,7 @@ class AsyncIoRecordTestCase(TestCase):
+             writer.close()
+             await writer.wait_closed()
+ 
+-        loop = asyncio.new_event_loop()
+-        loop.set_debug(True)
+-        loop.run_until_complete(test_asyncio_connection())
++        event_loop.run_until_complete(test_asyncio_connection())
+ 
+         files = glob.glob(f"{self.temp_dir}/*.json")
+         self.assertEqual(len(files), 1)
+-- 
+2.39.1
+
