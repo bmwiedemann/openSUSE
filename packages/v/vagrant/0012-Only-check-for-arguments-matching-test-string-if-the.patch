@@ -1,0 +1,43 @@
+From 1d3054c09b44c25608c073c225f63808b104f2b0 Mon Sep 17 00:00:00 2001
+From: sophia <scastellarin95@gmail.com>
+Date: Tue, 3 Jan 2023 13:20:14 -0800
+Subject: [PATCH 12/12] Only check for arguments matching test string if the
+ argument is a string
+
+This issue surfaced in the tests after updating to Ruby 3.2.0 where
+the =~ operator has been removed.
+
+ref: https://github.com/ruby/ruby/blob/cca54c8b1b71072bb07850c9d3f20b261d3b312c/NEWS.md?plain=1#L498
+(cherry picked from commit 9743c857481556838ee417a0033efdee3fb0c7fc)
+---
+ test/unit/plugins/provisioners/ansible/provisioner_test.rb | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/unit/plugins/provisioners/ansible/provisioner_test.rb b/test/unit/plugins/provisioners/ansible/provisioner_test.rb
+index f5828f143..fdf9aa67e 100644
+--- a/test/unit/plugins/provisioners/ansible/provisioner_test.rb
++++ b/test/unit/plugins/provisioners/ansible/provisioner_test.rb
+@@ -91,7 +91,7 @@ VF
+         expect(args[1]).to eq("--connection=ssh")
+         expect(args[2]).to eq("--timeout=30")
+ 
+-        inventory_count = args.count { |x| x =~ /^--inventory-file=.+$/ }
++        inventory_count = args.count { |x| x.match(/^--inventory-file=.+$/) if x.is_a?(String) }
+         expect(inventory_count).to be > 0
+ 
+         expect(args[args.length-2]).to eq("playbook.yml")
+@@ -100,9 +100,9 @@ VF
+ 
+     it "sets --limit argument" do
+       expect(Vagrant::Util::Subprocess).to receive(:execute).with('ansible-playbook', any_args) { |*args|
+-        all_limits = args.select { |x| x =~ /^(--limit=|-l)/ }
++        all_limits = args.select { |x| x.match(/^(--limit=|-l)/) if x.is_a?(String) }
+         if config.raw_arguments
+-          raw_limits = config.raw_arguments.select { |x| x =~ /^(--limit=|-l)/ }
++          raw_limits = config.raw_arguments.select { |x| x.match(/^(--limit=|-l)/) if x.is_a?(String) }
+           expect(all_limits.length - raw_limits.length).to eq(1)
+           expect(all_limits.last).to eq(raw_limits.last)
+         else
+-- 
+2.39.0
+

@@ -1,7 +1,7 @@
 From 591ec0a8f1f65a836cc893f403afa3c971ed05dd Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Mon, 4 Jun 2018 09:18:23 +0200
-Subject: [PATCH 05/11] do not depend on wdm
+Subject: [PATCH 05/12] do not depend on wdm
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---

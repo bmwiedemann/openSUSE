@@ -59,6 +59,7 @@ Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
 Patch11:        0011-Bump-Ruby-version-to-3.x.patch
+Patch12:        0012-Only-check-for-arguments-matching-test-string-if-the.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which

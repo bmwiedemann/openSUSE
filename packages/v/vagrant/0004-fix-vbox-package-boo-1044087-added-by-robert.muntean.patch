@@ -1,7 +1,7 @@
 From 8ecfa63a112f0b83dc29c226dc0b2ad91953d602 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Fri, 16 Nov 2018 21:12:43 +0100
-Subject: [PATCH 04/11] fix vbox package boo#1044087, added by
+Subject: [PATCH 04/12] fix vbox package boo#1044087, added by
  robert.munteanu@gmail.com on Sun Aug 13 19:07:06 UTC 2017
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
