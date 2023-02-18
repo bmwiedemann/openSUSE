@@ -23,4 +23,12 @@
     <comment>January 2023 CPU fixes</comment>
     <requestid>1063630</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>76b9782b11204eb5ace69d6538c3f3ef</srcmd5>
+    <version>19.0.2.0</version>
+    <time>1676736706</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1066519</requestid>
+  </revision>
 </revisionlist>
