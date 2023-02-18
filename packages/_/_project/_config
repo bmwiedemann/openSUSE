@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20230119
+ExpandFlags: macroserial:20230218
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1352,26 +1352,28 @@ Macros:
 
 ### Things to define default ruby stuff for the distro
 
-%rb_default_ruby        ruby31
-%rb_default_ruby_suffix ruby3.1
-%rb_default_ruby_abi    ruby:3.1.0
+%rb_default_ruby        ruby32
+%rb_default_ruby_suffix ruby3.2
+%rb_default_ruby_abi    ruby:3.2.0
 
-%rb_build_ruby_abis     ruby:3.1.0
-%rb_build_versions      ruby31
+%rb_build_ruby_abis     ruby:3.2.0 ruby:3.1.0
+%rb_build_versions      ruby32 ruby31
 :Macros
 
 Macros:
 %_with_ruby31               1
+%_with_ruby32               1
 :Macros
 
 %define _with_ruby31         1
+%define _with_ruby32         1
 
-%define rb_default_ruby        ruby31
-%define rb_default_ruby_suffix ruby3.1
-%define rb_default_ruby_abi    ruby:3.1.0
+%define rb_default_ruby        ruby32
+%define rb_default_ruby_suffix ruby3.2
+%define rb_default_ruby_abi    ruby:3.2.0
 
-%define rb_build_ruby_abis     ruby:3.1.0
-%define rb_build_versions      ruby31
+%define rb_build_ruby_abis     ruby:3.2.0 ruby:3.1.0
+%define rb_build_versions      ruby32 ruby31
 
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
@@ -1401,7 +1403,7 @@ Macros:
 ## PYTHON MACROS BEGIN
 # order of %pythons is important: The last flavor overrides any operation on conflicting files and definitions during expansions,
 # making it the "default" in many cases --> keep the primary python3 provider at the end.
-%pythons %{?!skip_python3:%{?!skip_python38:python38} %{?!skip_python39:python39} %{?!skip_python310:python310}}
+%pythons %{?!skip_python3:%{?!skip_python38:python38} %{?!skip_python39:python39} %{?!skip_python311:python311} %{?!skip_python310:python310}}
 %add_python() %{expand:%%define pythons %1 %pythons}
 
 %_without_python2 1
