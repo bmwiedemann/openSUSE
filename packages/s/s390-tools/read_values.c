@@ -37,9 +37,9 @@ enum datatypes {
 #define	WITHOUT_KEY	0
 #define	WITH_KEY	1
 
-static char *versionstring	= "Version 1.0.2 2020-03-30 23:30";
+static char *versionstring	= "Version 1.0.3 2023-02-16 17:00";
 
-static char *version	   	= "1.0.2";
+static char *version	   	= "1.0.3";
 
 void	*configuration_handle	= NULL;
 int	layers			= -1;
@@ -339,12 +339,47 @@ return;
 /*									      */
 /*	print out the uuid for this machine				      */
 /*									      */
-/*	TODO!								      */
+/*									      */
 /*									      */
 /******************************************************************************/
-void print_uuid()
+int print_uuid()
 {
-return;
+	const char	*result_string = NULL;
+	int erg;
+
+	erg = qc_get_attribute_string(configuration_handle, qc_sequence_code, 0, &result_string);
+	if (erg != 1)
+	{
+		puts("Error reading the Serial Number");
+		return 1;
+	}
+	printf("%s", result_string);
+
+	result_string = NULL;
+
+	erg = qc_get_attribute_string(configuration_handle, qc_layer_name, 1, &result_string);
+	if (erg != 1)
+	{
+		puts("Error reading the LPAR Name");
+		return 1;
+	}
+	printf("-%s", result_string);
+
+	result_string = NULL;
+	if (layers  > 2) {
+
+		erg = qc_get_attribute_string(configuration_handle, qc_layer_name, 3, &result_string);
+		if (erg != 1)
+		{
+			puts("Error Reading the VM Name");
+			return 1;
+		}
+		printf("-%s", result_string);
+
+		result_string = NULL;
+	}
+	printf("\n", result_string);
+	return 0;
 } /* print_uuid */
 
 /******************************************************************************/
@@ -501,7 +536,7 @@ void	*configuration_handle_tmp = NULL;
 		return 1;
 	   } /* endif */
 	   /* still not im[plemented thatfore set to zero */
-	   create_uuid = list_attr = print_attr = 0;
+	   list_attr = print_attr = 0;
 	   if (print_attr != 0) {
 	   	print_user_attribute(NULL, print_attribute_param, layers);
 		goto main_exit;
@@ -523,7 +558,9 @@ void	*configuration_handle_tmp = NULL;
 		goto main_exit;
 	   } /* endif */
 	   if (create_uuid != 0) {
-	   	print_uuid();
+	   	if(print_uuid() == 1){
+	   		goto main_exit_error;
+	   	}
 		goto main_exit;
 	   } /* endif */
 	   help();
@@ -535,5 +572,9 @@ main_exit:
 		setenv("QC_AUTODUMP", "0", 1);
 		qc_close(configuration_handle_tmp);
 	} /* endif */
+
 return 0;
+
+main_exit_error:
+return 1;
 } /* end main */

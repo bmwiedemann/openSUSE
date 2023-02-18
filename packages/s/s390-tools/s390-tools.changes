@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 16 16:24:33 UTC 2023 - José Gómez <jose.gomez@suse.com>
+
+- Implemented read_values -u. The result of -u is a unique identifier composed of:
+  * Machine Serial Number.
+  * LPAR Name.
+  * VM Name (can be optional).
+
+-------------------------------------------------------------------
 Mon Feb  6 17:00:40 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Added patch (bsc#1207947) 
