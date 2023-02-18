@@ -109,4 +109,12 @@
 - Update rb_arch_short macro</comment>
     <requestid>1040656</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>edde45e9e3ba818d9b353029d84ea1e0</srcmd5>
+    <version>3.1.3</version>
+    <time>1676736604</time>
+    <user>dimstar_suse</user>
+    <comment>- also skip readline tests because they rely on system ruby</comment>
+    <requestid>1045280</requestid>
+  </revision>
 </revisionlist>

@@ -405,13 +405,13 @@ fi
 
 %if "%{flavor}" == "testsuite"
 %check
-DISABLE_TESTS=""
+DISABLE_TESTS="-x test_rinda -x test_address_resolve -x test_tcp -x test_gem_installer -x test_readline"
 # Allow MD5 in OpenSSL.
 # https://bugs.ruby-lang.org/issues/9154
 export OPENSSL_ENABLE_MD5_VERIFY=1
 export LD_LIBRARY_PATH="$PWD"
 export PATH=%{buildroot}%{_bindir}:$PATH
-make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp -x test_gem_installer "
+make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no" TESTS="${DISABLE_TESTS}"
 
 %else
 
