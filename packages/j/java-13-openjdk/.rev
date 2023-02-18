@@ -63,4 +63,12 @@
     <comment>October 2022 CPU</comment>
     <requestid>1030661</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1a6a73f52a9c9135811e69c5483ef0ff</srcmd5>
+    <version>13.0.13.0</version>
+    <time>1676736678</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1066515</requestid>
+  </revision>
 </revisionlist>

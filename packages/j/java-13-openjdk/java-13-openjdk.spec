@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@
 %global openjdk_repo    jdk13u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
-%global java_atk_wrapper_version 0.33.2
 # priority must be 6 digits in total
 # % global priority        2305
 %global priority        0
@@ -131,8 +130,6 @@ Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
-# Accessibility support
-Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
 Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapated from IcedTea.
@@ -179,10 +176,6 @@ Patch201:       fix_armv6_build.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
 #
-Patch400:       jaw-misc.patch
-Patch401:       jaw-jdk10.patch
-Patch402:       jaw-nogtk.patch
-#
 Patch600:       riscv64-zero.patch
 #
 BuildRequires:  alsa-lib-devel
@@ -216,13 +209,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xprop
 BuildRequires:  zip
-BuildRequires:  pkgconfig(atk) >= 2.14.0
-BuildRequires:  pkgconfig(atk-bridge-2.0)
-BuildRequires:  pkgconfig(atspi-2) >= 2.14.0
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
 # Requires rest of java
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
@@ -299,6 +285,7 @@ Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
+Obsoletes:      %{name}-accessibility
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -383,25 +370,8 @@ BuildArch:      noarch
 %description javadoc
 The OpenJDK %{featurever} API documentation.
 
-%package accessibility
-Summary:        OpenJDK %{featurever} accessibility connector
-Group:          Development/Languages/Java
-Requires:       %{name} = %{version}-%{release}
-Requires:       xprop
-
-%description accessibility
-Enables accessibility support in OpenJDK %{featurever} by using java-atk-wrapper. This allows
-compatible at-spi2 based accessibility programs to work for AWT and Swing-based
-programs.
-
-Please note, the java-atk-wrapper is still in beta, and OpenJDK itself is still
-being tuned to be working with accessibility features. There are known issues
-with accessibility on, so please do not install this package unless you really
-need to.
-
 %prep
 %setup -q -n %{openjdk_dir}
-%setup -q -D -n %{openjdk_dir} -T -a 8
 
 # Replace config.sub and config.guess with fresh versions
 cp %{SOURCE100} make/autoconf/build-aux/
@@ -446,10 +416,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch302 -p1
 %patch303 -p1
-
-%patch400
-%patch401
-%patch402
 
 %patch600 -p1
 
@@ -577,24 +543,6 @@ export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
-
-# Build the accessibility plugin
-pushd java-atk-wrapper-%{java_atk_wrapper_version}
-autoreconf --force --install
-rm wrapper/org/GNOME/Accessibility/AtkWrapper.java
-%configure \
-    --without-jdk-auto-detect \
-    JDK_SRC=$JAVA_HOME
-rm wrapper/org/GNOME/Accessibility/AtkWrapper.java
-make %{?_smp_mflags}
-cp wrapper/java-atk-wrapper.jar $JAVA_HOME/../jmods/
-cp jni/src/.libs/libatk-wrapper.so $JAVA_HOME/lib/
-popd
-# Merge the java-atk-wrapper into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "atk.wrapper,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts ]; then
@@ -732,14 +680,6 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
   | sed 's|'%{buildroot}'||' \
   | sed 's|^|%doc |' \
   >> %{name}-demo.files
-
-# Create a config file to  enable java-atk-wrapper
-pushd %{buildroot}/%{_jvmdir}/%{sdkdir}/conf/
-  echo "#Config file to  enable java-atk-wrapper" > accessibility.properties
-  echo "" >> accessibility.properties
-  echo "assistive_technologies=org.GNOME.Accessibility.AtkWrapper" >> accessibility.properties
-  echo "" >> accessibility.properties
-popd
 
 # fdupes links the files from JDK to JRE, so it breaks a JRE
 # use it carefully :))
@@ -1174,7 +1114,6 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/jmods
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/jmods/*.jmod
-%{_jvmdir}/%{sdkdir}/jmods/java-atk-wrapper.jar
 
 %files demo -f %{name}-demo.files
 
@@ -1185,9 +1124,5 @@ fi
 %dir %{_javadocdir}
 %dir %{_javadocdir}/%{sdklnk}
 %{_javadocdir}/%{sdklnk}/*
-
-%files accessibility
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/accessibility.properties
-%{_jvmdir}/%{sdkdir}/lib/libatk-wrapper.so
 
 %changelog
