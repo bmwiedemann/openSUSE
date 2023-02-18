@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1034684</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7b40eeeb49d2fd3089bb871b5461553e</srcmd5>
+    <version>18.0.2.0</version>
+    <time>1676736694</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1066518</requestid>
+  </revision>
 </revisionlist>
