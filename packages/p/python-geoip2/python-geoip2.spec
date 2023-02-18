@@ -66,7 +66,7 @@ The API also works with MaxMind's free GeoLite2 databases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-python38_tests="tests/webservice_test.py tests/models_test.py tests/database_test.py"
+python38_tests="tests/models_test.py tests/database_test.py"
 python39_tests=$python38_tests
 python310_tests=$python38_tests
 # mocket currently does not work with 3.11. See these issues:

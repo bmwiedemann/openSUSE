@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 19:57:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix tests on python 3.8 as well with newer python-mocket by skipping
+  the tests/test_webservice which need porting to new python-mocket 
+
+-------------------------------------------------------------------
 Mon Jan 23 16:42:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests for python 3.11. python-mocket currently does not work
