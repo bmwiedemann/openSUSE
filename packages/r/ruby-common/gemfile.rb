@@ -38,5 +38,7 @@ if ruby_abi.nil? then
 end
 
 Bundler.definition.specs.each do |dep|
+  # this skips local deps
+  next if dep.source and dep.source.path?
   puts "rubygem(#{ruby_abi}:#{dep.name}) = #{dep.version}"
 end

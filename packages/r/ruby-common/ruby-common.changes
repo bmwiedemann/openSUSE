@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:50:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- do not rely on file dependencies for getopt
+
+-------------------------------------------------------------------
 Thu Nov 17 12:01:35 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - actually bump the version so we can require the newer version for
@@ -9,6 +14,12 @@ Thu Nov 17 11:49:44 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - replace `File.exists?` with `File.exist?` as the `File.exists?`
   is no longer supported in 3.2
+
+-------------------------------------------------------------------
+Sat Aug 20 11:19:16 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- in the dependency generator for Gemfile.lock we now skip vendored
+  deps
 
 -------------------------------------------------------------------
 Mon Jun 13 11:43:30 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>

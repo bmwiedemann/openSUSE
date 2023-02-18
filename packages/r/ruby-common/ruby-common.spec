@@ -61,6 +61,8 @@ Provides:       ruby-macros = %{rpm_macros_version}
 # we need a patched rpm
 Requires:       rpm-with-ruby-provide-hook
 %endif
+# for getopt
+Requires:       util-linux
 
 %description
 This package is needed for (generated) ruby gems. It provides hooks for
