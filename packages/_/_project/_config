@@ -491,6 +491,7 @@ Prefer: cmake-mini
 Ignore: python38-pip:ca-certificates
 Ignore: python39-pip:ca-certificates
 Ignore: python310-pip:ca-certificates
+Ignore: python311-pip:ca-certificates
 
 Prefer: -suse-build-key
 # Set postfix as the 'default' smtp_daemon (virtual symbol provided by all MTAs)
