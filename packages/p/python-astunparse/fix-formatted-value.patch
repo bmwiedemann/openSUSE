@@ -1,0 +1,23 @@
+From 3c661cb35b62268a553dd548a73178b5d7f708c7 Mon Sep 17 00:00:00 2001
+From: Vincent Hellendoorn <vhellendoorn@live.nl>
+Date: Tue, 29 Sep 2020 14:11:11 -0400
+Subject: [PATCH] Use correct write call for FormattedValue
+
+The unparser for formatted values incorrectly referred to `_fstring_JoinedStr`, which expects a `values` property that `FormattedValue`s don't have. This PR updates to the correct call.
+---
+ lib/astunparse/unparser.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/astunparse/unparser.py b/lib/astunparse/unparser.py
+index 0ef6fd8..7e8c1ca 100644
+--- a/lib/astunparse/unparser.py
++++ b/lib/astunparse/unparser.py
+@@ -482,7 +482,7 @@ def _FormattedValue(self, t):
+         # FormattedValue(expr value, int? conversion, expr? format_spec)
+         self.write("f")
+         string = StringIO()
+-        self._fstring_JoinedStr(t, string.write)
++        self._fstring_FormattedValue(t, string.write)
+         self.write(repr(string.getvalue()))
+ 
+     def _fstring_JoinedStr(self, t, write):

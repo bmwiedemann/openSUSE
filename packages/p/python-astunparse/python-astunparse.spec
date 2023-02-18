@@ -1,7 +1,7 @@
 #
 # spec file for package python-astunparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/simonpercivall/astunparse
 Source:         https://files.pythonhosted.org/packages/source/a/astunparse/astunparse-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM astunparse-pr57-py39.patch -- gh#simonpercivall/astunparse#57
 Patch0:         astunparse-pr57-py39.patch
+# https://github.com/simonpercivall/astunparse/pull/59
+Patch1:         fix-formatted-value.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module wheel >= 0.23.0}
@@ -34,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.6.1
 Requires:       python-wheel >= 0.23.0
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -60,8 +61,11 @@ Added to this is a pretty-printing dump utility function.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# fails to parse the 32bit stdlib
+%if "%_lib" == "lib64"
 %check
 %pyunittest discover -v
+%endif
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst HISTORY.rst
