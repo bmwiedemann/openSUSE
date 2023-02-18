@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 17 12:09:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.13.1:
+  * Bugfixes
+    - Improve no-changed-when rule (#3050) @ssbarnea
+    - Fix ignore file generation (#3046) @jcgruenhag
+
+-------------------------------------------------------------------
 Wed Feb 15 17:26:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.13.0:
