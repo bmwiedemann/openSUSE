@@ -20,7 +20,7 @@
 %define libname lib%{name}%{sover}
 %define hackrf_group  hackrf
 Name:           hackrf
-Version:        2022.09.1
+Version:        2023.01.1
 Release:        0
 Summary:        Support programs for the open source SDR hardware
 License:        GPL-2.0-only

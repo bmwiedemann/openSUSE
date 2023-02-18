@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 22:01:37 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2023.01.1
+  Note: You must also update firmware on your HackRF !
+  * This release includes the hardware design and software support
+   for HackRF One r9. The firmware in this release is compatible
+   with all manufactured HackRF One hardware revisions from r1
+   through r9. Firmware from prior releases is incompatible with
+   HackRF One r9.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:45:18 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2022.09.1
