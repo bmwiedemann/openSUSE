@@ -518,12 +518,13 @@ Prefer: -python38-magic -python39-magic -python310-magic
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
-Prefer: -python310-Cython3 python39-Cython3 -python38-Cython3
+Prefer: -python310-Cython3 python39-Cython3 -python38-Cython3 -python311-Cython3
 
 Prefer: -procps4
 
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
 Prefer: -python310-PyQt6 -python39-PyQt6 -python38-PyQt6 -python3-pyside2
+Prefer: -python311-PyQt6
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
 
@@ -537,7 +538,7 @@ Prefer: kernel-default-base
 Prefer: -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
 
 # have choice for html2text
-Prefer: -python38-html2text -python39-html2text -python310-html2text
+Prefer: -python38-html2text -python39-html2text -python310-html2text -python311-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
@@ -573,7 +574,8 @@ Prefer: -pipewire-libjack-0_3-devel libjack0
 Prefer: -python310-softlayer-zeep
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python39-prompt_toolkit python38-prompt_toolkit python310-prompt_toolkit
+Prefer: -python39-prompt_toolkit1 -python38-prompt_toolkit1 -python310-prompt_toolkit1
+Prefer: -python311-prompt_toolkit1
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -953,6 +955,7 @@ Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby3.1-rubygem-fast_gettext
+Prefer: ruby3.2-rubygem-fast_gettext
 Prefer: -ruby3.1-rubygem-public_suffix-3.1
 Prefer: -ruby3.2-rubygem-public_suffix-3.1
 
