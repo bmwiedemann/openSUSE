@@ -55,4 +55,38 @@
     <comment></comment>
     <requestid>993302</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d7edbdc64772b7c65fcc5abf8af68e73</srcmd5>
+    <version>0.20.0</version>
+    <time>1676827130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.0:
+  * Check if handshake is completed before sending frame on `wsproto` shutdown (#1737)
+  * Add default headers to WebSockets implementations (#1606 &amp; #1747) 28/10/22
+  * Warn user when `reload` and `workers` flag are used together (#1731) 31/10/22
+  * Use correct `WebSocket` error codes on `close` (#1753) 20/11/22
+  * Send disconnect event on connection lost for `wsproto` (#996) 29/10/22
+  * Add `SIGQUIT` handler to `UvicornWorker` (#1710) 01/11/22
+  * Fix crash on exist with &quot;--uds&quot; if socket doesn't exist (#1725) 27/10/22
+  * Annotate `CONFIG_KWARGS` in `UvicornWorker` class (#1746) 31/10/22
+  * Remove conditional on `RemoteProtocolError.event_hint` on `wsproto` (#1486) 31/10/22
+  * Remove unused `handle_no_connect` on `wsproto` implementation (#1759) 17/11/22
+- version 0.19.0
+  * Support Python 3.11 (#1652) 16/09/22
+  * Bump minimal `httptools` version to `0.5.0` (#1645) 13/09/22
+  * Ignore HTTP/2 upgrade and optionally ignore WebSocket upgrade (#1661) 19/10/22
+  * Add `py.typed` to comply with PEP 561 (#1687) 07/10/22
+  * Set `propagate` to `False` on &quot;uvicorn&quot; logger (#1288) 08/10/22
+  * USR1 signal is now handled correctly on `UvicornWorker`. (#1565) 26/08/22
+  * Use path with query string on `WebSockets` logs (#1385) 11/09/22
+  * Fix behavior on which &quot;Date&quot; headers were not updated on the same connection (#1706) 19/10/22
+  * Remove the `--debug` flag (#1640) 14/09/22
+  * Remove the `DebugMiddleware` (#1697) 07/10/22
+- version 0.18.3
+  * Remove cyclic references on HTTP implementations. (#1604) 24/08/22
+  * `reload_delay` default changed from `None` to `0.25` on `uvicorn.run()` and `Config`.
+    `None` is not an acceptable value anymore. (#1545) 02/07/22
+- Remove upstreamed patch uvicorn-pr1537-no-watchgod-tests.patch</comment>
+    <requestid>1066284</requestid>
+  </revision>
 </revisionlist>

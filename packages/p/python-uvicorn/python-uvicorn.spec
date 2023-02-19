@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           python-uvicorn
-Version:        0.18.2
+Version:        0.20.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM uvicorn-pr1537-no-watchgod-tests.patch gh#encode/uvicorn#1537
-Patch1:         https://github.com/encode/uvicorn/pull/1537.patch#/uvicorn-pr1537-no-watchgod-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
@@ -39,7 +40,7 @@ Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
 Suggests:       python-uvloop >= 0.14.0
 Suggests:       python-watchfiles >= 0.13
-Suggests:       python-wsproto >= 0.15.0
+Suggests:       python-wsproto >= 1.2.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -59,7 +60,7 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module uvloop >= 0.14.0}
 BuildRequires:  %{python_module websockets >= 8.0}
-BuildRequires:  %{python_module wsproto >= 0.15.0}
+BuildRequires:  %{python_module wsproto >= 1.2.0}
 # We don't want watchfiles in Ring1
 #BuildRequires:  #{python_module watchfiles >= 0.13}
 # /SECTION
@@ -74,10 +75,10 @@ It supports HTTP/1.1 and WebSockets only.
 rm setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/uvicorn
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
