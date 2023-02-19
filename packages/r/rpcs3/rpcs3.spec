@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.26~git20230205
+Version:        0.0.26~git20230210
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only

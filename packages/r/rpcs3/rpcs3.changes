@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 10 15:07:22 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.26~git20230210:
+  * Fix displaying of audio device when it's disconnected
+  * Update hidapi from 0.13.0 to 0.13.1
+  * Update SDL from 2.26.2 to 2.26.3
+  * overlays: review fixes
+  * overlays: Fix linux compilation
+  * overlays: fix home menu date format
+  * overlays: fix home menu entry center alignment
+  * overlays: add message box to home menu
+  * overlays: add pages to home menu
+  * evdev: allow more buttons on sony guitar
+  * evdev: optimize get_next_button_press pad id check
+  * rsx_debugger: replace malloc with buffer cache
+  * cli: Add option to boot a game with a specific pad profile
+  * cli: allow to start games in fullscreen
+  * cellGame: Truncate excess of characters in TITLE_ID
+  * Fix openGl overlay colors
+  * rsx: Don't accept garbage shader input
+  * FAudio cmake fix
+  * Disable 3rdparty FAudio if the SDL version is not available
+  * Update SDL download link
+  * Qt: add copy context menu entry to log viewer
+
+-------------------------------------------------------------------
 Mon Feb 06 16:38:15 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.26~git20230205:
