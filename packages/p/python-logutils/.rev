@@ -53,4 +53,12 @@
     <comment></comment>
     <requestid>915532</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>25844d2e10b13fbfd85fc81ac23916b0</srcmd5>
+    <version>0.3.5</version>
+    <time>1676827137</time>
+    <user>dimstar_suse</user>
+    <comment>- update path for SLE15</comment>
+    <requestid>1066376</requestid>
+  </revision>
 </revisionlist>

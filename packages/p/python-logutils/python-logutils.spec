@@ -1,7 +1,7 @@
 #
 # spec file for package python-logutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ cd doc && make html
 %python_install
 
 %check
-export PATH="$PATH:/sbin"
+export PATH="$PATH:/sbin:/usr/sbin"
 %pyunittest discover -v tests
 
 %files %{python_files}
