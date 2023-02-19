@@ -36790,359 +36790,359 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
-  - ruby3.1-rubygem-Ascii85: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-abstract_method: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-actioncable-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-actionmailbox-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-actionmailer-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-actiontext-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-activerecord-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-activestorage-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-addressable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-aes_key_wrap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-afm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-airbrussh: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-amq-protocol: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-arel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-asciidoctor: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ast: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-attr_required: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-autoprefixer-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-axiom-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-backport: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-base32: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-bcrypt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-bcrypt_pbkdf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-benchmark: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-bindata: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-binding_of_caller: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-bundler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-bundler-audit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-byebug: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-capistrano: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-celluloid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-cfa: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-cfa_grub2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-changelog_generator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-cheetah: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-chef-utils: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-childprocess: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-coderay: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-coercible: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-coffee-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-coffee-script: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-coffee-script-source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-colorator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-commander: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-cool.io: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-crack: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-cri: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-css_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-csv: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-d-installer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-d-installer-cli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-debase-ruby_core_source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-debug_inspector: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-delayed_job: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-delayed_job_active_record: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-descendants_tracker: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-devise: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-devise-i18n: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-devise_ldap_authenticatable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-diff-lcs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-diffy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-docile: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-docker-api: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-domain_name: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-down: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-configurable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-container: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-equalizer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-inflector: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-logic: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-dry-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ed25519: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-em-websocket: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-equalizer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-erubis: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-eventmachine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-exception_notification: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-excon: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-execjs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fake_ftp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fake_ftp-0_1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-faraday: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-faraday-follow_redirects: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-faraday-net_http: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fast_gettext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fast_gettext-1.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ffi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ffi-compiler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-flog: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fluentd: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fog-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fog-json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fog-libvirt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-fog-xml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-font-awesome-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-formatador: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-forwardable-extended: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-Ascii85 
+  - ruby3.1-rubygem-abstract_method 
+  - ruby3.1-rubygem-actioncable-7.0 
+  - ruby3.1-rubygem-actionmailbox-7.0 
+  - ruby3.1-rubygem-actionmailer-7.0 
+  - ruby3.1-rubygem-actiontext-7.0 
+  - ruby3.1-rubygem-activerecord-7.0 
+  - ruby3.1-rubygem-activestorage-7.0 
+  - ruby3.1-rubygem-addressable 
+  - ruby3.1-rubygem-aes_key_wrap 
+  - ruby3.1-rubygem-afm 
+  - ruby3.1-rubygem-airbrussh 
+  - ruby3.1-rubygem-amq-protocol 
+  - ruby3.1-rubygem-arel 
+  - ruby3.1-rubygem-asciidoctor 
+  - ruby3.1-rubygem-ast 
+  - ruby3.1-rubygem-attr_required 
+  - ruby3.1-rubygem-autoprefixer-rails 
+  - ruby3.1-rubygem-axiom-types 
+  - ruby3.1-rubygem-backport 
+  - ruby3.1-rubygem-base32 
+  - ruby3.1-rubygem-bcrypt 
+  - ruby3.1-rubygem-bcrypt_pbkdf 
+  - ruby3.1-rubygem-benchmark 
+  - ruby3.1-rubygem-bindata 
+  - ruby3.1-rubygem-binding_of_caller 
+  - ruby3.1-rubygem-bundler 
+  - ruby3.1-rubygem-bundler-audit 
+  - ruby3.1-rubygem-byebug 
+  - ruby3.1-rubygem-capistrano 
+  - ruby3.1-rubygem-celluloid 
+  - ruby3.1-rubygem-cfa 
+  - ruby3.1-rubygem-cfa_grub2 
+  - ruby3.1-rubygem-changelog_generator 
+  - ruby3.1-rubygem-cheetah 
+  - ruby3.1-rubygem-chef-utils 
+  - ruby3.1-rubygem-childprocess 
+  - ruby3.1-rubygem-coderay 
+  - ruby3.1-rubygem-coercible 
+  - ruby3.1-rubygem-coffee-rails 
+  - ruby3.1-rubygem-coffee-script 
+  - ruby3.1-rubygem-coffee-script-source 
+  - ruby3.1-rubygem-colorator 
+  - ruby3.1-rubygem-commander 
+  - ruby3.1-rubygem-cool.io 
+  - ruby3.1-rubygem-crack 
+  - ruby3.1-rubygem-cri 
+  - ruby3.1-rubygem-css_parser 
+  - ruby3.1-rubygem-csv 
+  - ruby3.1-rubygem-d-installer 
+  - ruby3.1-rubygem-d-installer-cli 
+  - ruby3.1-rubygem-debase-ruby_core_source 
+  - ruby3.1-rubygem-debug_inspector 
+  - ruby3.1-rubygem-delayed_job 
+  - ruby3.1-rubygem-delayed_job_active_record 
+  - ruby3.1-rubygem-descendants_tracker 
+  - ruby3.1-rubygem-devise 
+  - ruby3.1-rubygem-devise-i18n 
+  - ruby3.1-rubygem-devise_ldap_authenticatable 
+  - ruby3.1-rubygem-diff-lcs 
+  - ruby3.1-rubygem-diffy 
+  - ruby3.1-rubygem-docile 
+  - ruby3.1-rubygem-docker-api 
+  - ruby3.1-rubygem-domain_name 
+  - ruby3.1-rubygem-down 
+  - ruby3.1-rubygem-dry-configurable 
+  - ruby3.1-rubygem-dry-container 
+  - ruby3.1-rubygem-dry-core 
+  - ruby3.1-rubygem-dry-equalizer 
+  - ruby3.1-rubygem-dry-inflector 
+  - ruby3.1-rubygem-dry-logic 
+  - ruby3.1-rubygem-dry-types 
+  - ruby3.1-rubygem-ed25519 
+  - ruby3.1-rubygem-em-websocket 
+  - ruby3.1-rubygem-equalizer 
+  - ruby3.1-rubygem-erubis 
+  - ruby3.1-rubygem-eventmachine 
+  - ruby3.1-rubygem-exception_notification 
+  - ruby3.1-rubygem-excon 
+  - ruby3.1-rubygem-execjs 
+  - ruby3.1-rubygem-fake_ftp 
+  - ruby3.1-rubygem-fake_ftp-0_1 
+  - ruby3.1-rubygem-faraday 
+  - ruby3.1-rubygem-faraday-follow_redirects 
+  - ruby3.1-rubygem-faraday-net_http 
+  - ruby3.1-rubygem-fast_gettext 
+  - ruby3.1-rubygem-fast_gettext-1.1 
+  - ruby3.1-rubygem-ffi 
+  - ruby3.1-rubygem-ffi-compiler 
+  - ruby3.1-rubygem-flog 
+  - ruby3.1-rubygem-fluentd 
+  - ruby3.1-rubygem-fog-core 
+  - ruby3.1-rubygem-fog-json 
+  - ruby3.1-rubygem-fog-libvirt 
+  - ruby3.1-rubygem-fog-xml 
+  - ruby3.1-rubygem-font-awesome-rails 
+  - ruby3.1-rubygem-formatador 
+  - ruby3.1-rubygem-forwardable-extended 
   - ruby3.1-rubygem-gem2rpm 
-  - ruby3.1-rubygem-get_process_mem: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gettext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gettext_i18n_rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gettext_i18n_rails_js: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-google-protobuf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-googleapis-common-protos-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gpgme: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-grape: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-get_process_mem 
+  - ruby3.1-rubygem-gettext 
+  - ruby3.1-rubygem-gettext_i18n_rails 
+  - ruby3.1-rubygem-gettext_i18n_rails_js 
+  - ruby3.1-rubygem-gli 
+  - ruby3.1-rubygem-google-protobuf 
+  - ruby3.1-rubygem-googleapis-common-protos-types 
+  - ruby3.1-rubygem-gpgme 
+  - ruby3.1-rubygem-grape 
   - ruby3.1-rubygem-grpc 
-  - ruby3.1-rubygem-gssapi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-gyoku: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-haml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-haml-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hashdiff: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hashery: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hashicorp-checkpoint: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hashie: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-highline: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hitimes: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hoe: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-hpricot: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-html2haml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-http: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-http-cookie: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-http-form_data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-http_parser.rb: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-httpclient: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ice_nine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-inifile: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jaro_winkler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jekyll: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jekyll-sass-converter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jekyll-watch: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jquery-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-js-routes: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-json-jwt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-json-schema: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-json_pure: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-jwt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-kgio: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-kramdown: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-kramdown-parser-gfm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-launchy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-libyui-rake: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-lightbox2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-liquid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-liquid-4: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-listen: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-little-plugger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-llhttp-ffi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-locale: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-log4r: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-logging: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-lolcat: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mail: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-manpages: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-marcel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mercenary: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-micromachine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mime-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mime-types-data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mimemagic: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mini_magick: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mini_mime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mini_portile2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-minitar: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mixlib-authentication: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mixlib-cli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mixlib-config: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mixlib-log: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mixlib-shellout: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mocha: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-moneta: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-multi_json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-multi_xml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-multipart-post: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mustache: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mustermann: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mustermann-grape: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-mysql2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-net-ldap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-net-scp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-net-sftp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-net-ssh: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-net-ssh-6.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-netrc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-nori: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-omniauth: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-omniauth-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-openid_connect: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-optimist: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-orm_adapter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-os: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-packaging_rake_tasks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-paint: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pairing_heap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-parallel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-parallel_tests: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-passenger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-path_expander: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pathutil: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pdf-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pdf-reader: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pkg-config: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-po_to_json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-polyglot: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn-icon: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn-svg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn-table: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-prawn-templates: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pry: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pry-doc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-public_suffix: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-public_suffix-3.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-puma: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-puma_worker_killer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-pundit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rack: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rack-accept: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rack-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rack-protection: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rack-proxy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rails-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rails-i18n: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rainbow: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-raindrops: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rake-compiler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rb-fsevent: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rb-inotify: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rb-kqueue: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rdiscount: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-red-datasets: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-regexp_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-responders: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-reverse_markdown: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rgl: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rice: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ronn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rouge: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rpm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-core-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-expectations: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-expectations-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-its: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-mocks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-mocks-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-rails-4.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-support: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rspec-support-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rubocop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rubocop-ast: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-augeas: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-dbus: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-libvirt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-openid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-progressbar: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby-rc4: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby2_keywords: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ruby_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rubyntlm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-rubyzip: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-safe_yaml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sass: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sass-listen: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sass-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sass-rails-5.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sassc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sassc-2.2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sassc-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sdoc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-semantic_range: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-serverengine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sexp_processor: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sigdump: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-simplecov: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-simplecov-html: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-simplecov_json_formatter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-simpleidn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-slim: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-slop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-snaky_hash: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-spring: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sprockets-3.7: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sprockets-helpers: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sshkit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-stomp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-stream: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-strptime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-swd: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-sync: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-temple: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-terminal-table: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-terminal-table-2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-text: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-thread_safe: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-tilt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-timers: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-tmuxinator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-tomlrb: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-treetop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-trollop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-ttfunk: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-turbolinks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-turbolinks-source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-tzinfo-1.2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-tzinfo-data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-uglifier: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-unf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-unf_ext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-unicode-display_width: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-unicode-display_width-1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-vagrant-spec: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-vagrant_cloud: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-validate_email: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-validate_url: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-version_gem: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-virtus: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-warden: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-webfinger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-webpacker: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-webrick: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-websocket: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-websocket-driver: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-websocket-extensions: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-winrm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-winrm-elevated: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-winrm-fs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-xdg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-xdg-2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-xml-simple: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-xmlhash: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-xmlrpc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-yajl-ruby: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
-  - ruby3.1-rubygem-yard: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gssapi 
+  - ruby3.1-rubygem-gyoku 
+  - ruby3.1-rubygem-haml 
+  - ruby3.1-rubygem-haml-rails 
+  - ruby3.1-rubygem-hashdiff 
+  - ruby3.1-rubygem-hashery 
+  - ruby3.1-rubygem-hashicorp-checkpoint 
+  - ruby3.1-rubygem-hashie 
+  - ruby3.1-rubygem-highline 
+  - ruby3.1-rubygem-hitimes 
+  - ruby3.1-rubygem-hoe 
+  - ruby3.1-rubygem-hpricot 
+  - ruby3.1-rubygem-html2haml 
+  - ruby3.1-rubygem-http 
+  - ruby3.1-rubygem-http-cookie 
+  - ruby3.1-rubygem-http-form_data 
+  - ruby3.1-rubygem-http_parser.rb 
+  - ruby3.1-rubygem-httpclient 
+  - ruby3.1-rubygem-ice_nine 
+  - ruby3.1-rubygem-inifile 
+  - ruby3.1-rubygem-jaro_winkler 
+  - ruby3.1-rubygem-jekyll 
+  - ruby3.1-rubygem-jekyll-sass-converter 
+  - ruby3.1-rubygem-jekyll-watch 
+  - ruby3.1-rubygem-jquery-rails 
+  - ruby3.1-rubygem-js-routes 
+  - ruby3.1-rubygem-json 
+  - ruby3.1-rubygem-json-jwt 
+  - ruby3.1-rubygem-json-schema 
+  - ruby3.1-rubygem-json_pure 
+  - ruby3.1-rubygem-jwt 
+  - ruby3.1-rubygem-kgio 
+  - ruby3.1-rubygem-kramdown 
+  - ruby3.1-rubygem-kramdown-parser-gfm 
+  - ruby3.1-rubygem-launchy 
+  - ruby3.1-rubygem-libyui-rake 
+  - ruby3.1-rubygem-lightbox2 
+  - ruby3.1-rubygem-liquid 
+  - ruby3.1-rubygem-liquid-4 
+  - ruby3.1-rubygem-listen 
+  - ruby3.1-rubygem-little-plugger 
+  - ruby3.1-rubygem-llhttp-ffi 
+  - ruby3.1-rubygem-locale 
+  - ruby3.1-rubygem-log4r 
+  - ruby3.1-rubygem-logging 
+  - ruby3.1-rubygem-lolcat 
+  - ruby3.1-rubygem-mail 
+  - ruby3.1-rubygem-manpages 
+  - ruby3.1-rubygem-marcel 
+  - ruby3.1-rubygem-mercenary 
+  - ruby3.1-rubygem-micromachine 
+  - ruby3.1-rubygem-mime 
+  - ruby3.1-rubygem-mime-types 
+  - ruby3.1-rubygem-mime-types-data 
+  - ruby3.1-rubygem-mimemagic 
+  - ruby3.1-rubygem-mini_magick 
+  - ruby3.1-rubygem-mini_mime 
+  - ruby3.1-rubygem-mini_portile2 
+  - ruby3.1-rubygem-minitar 
+  - ruby3.1-rubygem-mixlib-authentication 
+  - ruby3.1-rubygem-mixlib-cli 
+  - ruby3.1-rubygem-mixlib-config 
+  - ruby3.1-rubygem-mixlib-log 
+  - ruby3.1-rubygem-mixlib-shellout 
+  - ruby3.1-rubygem-mocha 
+  - ruby3.1-rubygem-moneta 
+  - ruby3.1-rubygem-multi_json 
+  - ruby3.1-rubygem-multi_xml 
+  - ruby3.1-rubygem-multipart-post 
+  - ruby3.1-rubygem-mustache 
+  - ruby3.1-rubygem-mustermann 
+  - ruby3.1-rubygem-mustermann-grape 
+  - ruby3.1-rubygem-mysql2 
+  - ruby3.1-rubygem-net-ldap 
+  - ruby3.1-rubygem-net-scp 
+  - ruby3.1-rubygem-net-sftp 
+  - ruby3.1-rubygem-net-ssh 
+  - ruby3.1-rubygem-net-ssh-6.1 
+  - ruby3.1-rubygem-netrc 
+  - ruby3.1-rubygem-nori 
+  - ruby3.1-rubygem-oauth2 
+  - ruby3.1-rubygem-omniauth 
+  - ruby3.1-rubygem-omniauth-oauth2 
+  - ruby3.1-rubygem-openid_connect 
+  - ruby3.1-rubygem-optimist 
+  - ruby3.1-rubygem-orm_adapter 
+  - ruby3.1-rubygem-os 
+  - ruby3.1-rubygem-packaging_rake_tasks 
+  - ruby3.1-rubygem-paint 
+  - ruby3.1-rubygem-pairing_heap 
+  - ruby3.1-rubygem-parallel 
+  - ruby3.1-rubygem-parallel_tests 
+  - ruby3.1-rubygem-parser 
+  - ruby3.1-rubygem-passenger 
+  - ruby3.1-rubygem-path_expander 
+  - ruby3.1-rubygem-pathutil 
+  - ruby3.1-rubygem-pdf-core 
+  - ruby3.1-rubygem-pdf-reader 
+  - ruby3.1-rubygem-pg 
+  - ruby3.1-rubygem-pkg-config 
+  - ruby3.1-rubygem-po_to_json 
+  - ruby3.1-rubygem-polyglot 
+  - ruby3.1-rubygem-prawn 
+  - ruby3.1-rubygem-prawn-core 
+  - ruby3.1-rubygem-prawn-icon 
+  - ruby3.1-rubygem-prawn-svg 
+  - ruby3.1-rubygem-prawn-table 
+  - ruby3.1-rubygem-prawn-templates 
+  - ruby3.1-rubygem-pry 
+  - ruby3.1-rubygem-pry-doc 
+  - ruby3.1-rubygem-public_suffix 
+  - ruby3.1-rubygem-public_suffix-3.1 
+  - ruby3.1-rubygem-puma 
+  - ruby3.1-rubygem-puma_worker_killer 
+  - ruby3.1-rubygem-pundit 
+  - ruby3.1-rubygem-rack 
+  - ruby3.1-rubygem-rack-accept 
+  - ruby3.1-rubygem-rack-oauth2 
+  - ruby3.1-rubygem-rack-protection 
+  - ruby3.1-rubygem-rack-proxy 
+  - ruby3.1-rubygem-rails-7.0 
+  - ruby3.1-rubygem-rails-i18n 
+  - ruby3.1-rubygem-rainbow 
+  - ruby3.1-rubygem-raindrops 
+  - ruby3.1-rubygem-rake-compiler 
+  - ruby3.1-rubygem-rb-fsevent 
+  - ruby3.1-rubygem-rb-inotify 
+  - ruby3.1-rubygem-rb-kqueue 
+  - ruby3.1-rubygem-rdiscount 
+  - ruby3.1-rubygem-red-datasets 
+  - ruby3.1-rubygem-regexp_parser 
+  - ruby3.1-rubygem-responders 
+  - ruby3.1-rubygem-reverse_markdown 
+  - ruby3.1-rubygem-rgl 
+  - ruby3.1-rubygem-rice 
+  - ruby3.1-rubygem-ronn 
+  - ruby3.1-rubygem-rouge 
+  - ruby3.1-rubygem-rpm 
+  - ruby3.1-rubygem-rspec 
+  - ruby3.1-rubygem-rspec-3_5 
+  - ruby3.1-rubygem-rspec-core 
+  - ruby3.1-rubygem-rspec-core-3_5 
+  - ruby3.1-rubygem-rspec-expectations 
+  - ruby3.1-rubygem-rspec-expectations-3_5 
+  - ruby3.1-rubygem-rspec-its 
+  - ruby3.1-rubygem-rspec-mocks 
+  - ruby3.1-rubygem-rspec-mocks-3_5 
+  - ruby3.1-rubygem-rspec-rails 
+  - ruby3.1-rubygem-rspec-rails-4.0 
+  - ruby3.1-rubygem-rspec-support 
+  - ruby3.1-rubygem-rspec-support-3_5 
+  - ruby3.1-rubygem-rubocop 
+  - ruby3.1-rubygem-rubocop-ast 
+  - ruby3.1-rubygem-ruby-augeas 
+  - ruby3.1-rubygem-ruby-dbus 
+  - ruby3.1-rubygem-ruby-libvirt 
+  - ruby3.1-rubygem-ruby-openid 
+  - ruby3.1-rubygem-ruby-progressbar 
+  - ruby3.1-rubygem-ruby-rc4 
+  - ruby3.1-rubygem-ruby2_keywords 
+  - ruby3.1-rubygem-ruby_parser 
+  - ruby3.1-rubygem-rubyntlm 
+  - ruby3.1-rubygem-rubyzip 
+  - ruby3.1-rubygem-safe_yaml 
+  - ruby3.1-rubygem-sass 
+  - ruby3.1-rubygem-sass-listen 
+  - ruby3.1-rubygem-sass-rails 
+  - ruby3.1-rubygem-sass-rails-5.1 
+  - ruby3.1-rubygem-sassc 
+  - ruby3.1-rubygem-sassc-2.2 
+  - ruby3.1-rubygem-sassc-rails 
+  - ruby3.1-rubygem-sdoc 
+  - ruby3.1-rubygem-semantic_range 
+  - ruby3.1-rubygem-serverengine 
+  - ruby3.1-rubygem-sexp_processor 
+  - ruby3.1-rubygem-sigdump 
+  - ruby3.1-rubygem-simplecov 
+  - ruby3.1-rubygem-simplecov-html 
+  - ruby3.1-rubygem-simplecov_json_formatter 
+  - ruby3.1-rubygem-simpleidn 
+  - ruby3.1-rubygem-slim 
+  - ruby3.1-rubygem-slop 
+  - ruby3.1-rubygem-snaky_hash 
+  - ruby3.1-rubygem-spring 
+  - ruby3.1-rubygem-sprockets-3.7 
+  - ruby3.1-rubygem-sprockets-helpers 
+  - ruby3.1-rubygem-sshkit 
+  - ruby3.1-rubygem-stomp 
+  - ruby3.1-rubygem-stream 
+  - ruby3.1-rubygem-strptime 
+  - ruby3.1-rubygem-swd 
+  - ruby3.1-rubygem-sync 
+  - ruby3.1-rubygem-temple 
+  - ruby3.1-rubygem-terminal-table 
+  - ruby3.1-rubygem-terminal-table-2 
+  - ruby3.1-rubygem-text 
+  - ruby3.1-rubygem-thread_safe 
+  - ruby3.1-rubygem-tilt 
+  - ruby3.1-rubygem-timers 
+  - ruby3.1-rubygem-tmuxinator 
+  - ruby3.1-rubygem-tomlrb 
+  - ruby3.1-rubygem-treetop 
+  - ruby3.1-rubygem-trollop 
+  - ruby3.1-rubygem-ttfunk 
+  - ruby3.1-rubygem-turbolinks 
+  - ruby3.1-rubygem-turbolinks-source 
+  - ruby3.1-rubygem-tzinfo-1.2 
+  - ruby3.1-rubygem-tzinfo-data 
+  - ruby3.1-rubygem-uglifier 
+  - ruby3.1-rubygem-unf 
+  - ruby3.1-rubygem-unf_ext 
+  - ruby3.1-rubygem-unicode-display_width 
+  - ruby3.1-rubygem-unicode-display_width-1 
+  - ruby3.1-rubygem-vagrant-spec 
+  - ruby3.1-rubygem-vagrant_cloud 
+  - ruby3.1-rubygem-validate_email 
+  - ruby3.1-rubygem-validate_url 
+  - ruby3.1-rubygem-version_gem 
+  - ruby3.1-rubygem-virtus 
+  - ruby3.1-rubygem-warden 
+  - ruby3.1-rubygem-webfinger 
+  - ruby3.1-rubygem-webpacker 
+  - ruby3.1-rubygem-webrick 
+  - ruby3.1-rubygem-websocket 
+  - ruby3.1-rubygem-websocket-driver 
+  - ruby3.1-rubygem-websocket-extensions 
+  - ruby3.1-rubygem-winrm 
+  - ruby3.1-rubygem-winrm-elevated 
+  - ruby3.1-rubygem-winrm-fs 
+  - ruby3.1-rubygem-xdg 
+  - ruby3.1-rubygem-xdg-2 
+  - ruby3.1-rubygem-xml-simple 
+  - ruby3.1-rubygem-xmlhash 
+  - ruby3.1-rubygem-xmlrpc 
+  - ruby3.1-rubygem-yajl-ruby 
+  - ruby3.1-rubygem-yard 
   - ruby3.2-devel 
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
   - ruby3.2-rubygem-d-installer-cli 
   - rubygem-libguestfs: [x86_64] 
-  - rubygem-passenger: [i586] 
-  - rubygem-passenger-apache2: [i586] 
+  - rubygem-passenger 
+  - rubygem-passenger-apache2 
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 

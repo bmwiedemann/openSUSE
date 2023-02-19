@@ -1664,7 +1664,6 @@
       <repopackage name="librpmbuild9" arch="x86_64"/>
       <repopackage name="librscg1_0" arch="x86_64"/>
       <repopackage name="librsvg-2-2"/>
-      <repopackage name="libruby3_1-3_1" arch="x86_64"/>
       <repopackage name="libruby3_2-3_2" arch="x86_64"/>
       <repopackage name="libsamba-policy0-python3" arch="x86_64"/>
       <repopackage name="libsamplerate0" arch="x86_64"/>
@@ -2447,8 +2446,6 @@
       <repopackage name="ruby" arch="x86_64"/>
       <repopackage name="ruby-common" arch="x86_64"/>
       <repopackage name="ruby-solv" arch="x86_64"/>
-      <repopackage name="ruby3.1" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-ruby-dbus" arch="x86_64"/>
       <repopackage name="ruby3.2" arch="x86_64"/>
       <repopackage name="ruby3.2-rubygem-abstract_method" arch="x86_64"/>
       <repopackage name="ruby3.2-rubygem-cfa" arch="x86_64"/>
