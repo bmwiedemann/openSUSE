@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 17 08:10:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.0:
+  * Don't save password and show prompt instead for (S)FTP
+  * Fast path check failure on access errors
+  * Support PuTTY private key file version 3
+  * Respect timeout during SFTP connect
+  * Removed 20-sec timeout while checking directory existence
+  * Avoid hitting (S)FTP connection limit for non-uniform configs
+  * Fixed middle grid tooltip icon not always showing (Linux)
+  * Optimized file accesses when checking file path existence
+  * Fixed overview navigation marker not always showing on main grid
+  * Clear all grid selections after view filter toggle
+  * Fixed mouse selection starting on folder group
+  * Don't require sudo during non-root installation (Linux)
+  * Stricter type checking when deleting file/folder/symlinks
+  * Succinct error messages when path component is not existing
+
+-------------------------------------------------------------------
 Sat Feb 11 14:48:04 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
 
 - Drop FreeFileSync-openssl-1.1.1.patch as it is no longer needed

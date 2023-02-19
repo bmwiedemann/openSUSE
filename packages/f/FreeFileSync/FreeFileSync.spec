@@ -17,13 +17,13 @@
 
 
 Name:           FreeFileSync
-Version:        11.29
+Version:        12.0
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.freefilesync.org/
-Source0:        %{name}_%{version}_Source.zip
+Source0:        https://freefilesync.org/download/FreeFileSync_%{version}_Source.zip
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        RealTimeSync.desktop
@@ -33,14 +33,20 @@ Patch1:         FreeFileSync-resources.patch
 Patch2:         FreeFileSync-icon-loader.patch
 Patch3:         FreeFileSync-disable-in-app-updates.patch
 BuildRequires:  boost-devel >= 1.54
+# FFS requires C++23, so we need, at least, GCC and libstdc++6 >= 12
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc12-c++
+BuildRequires:  libstdc++6 >= 12
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libstdc++6 >= 10.0.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-3_2-devel >= 3.1.4
+BuildRequires:  wxGTK3-3_2-devel >= 3.1.6
 
 %description
 FreeFileSync is a software that helps synchronizing files
@@ -66,9 +72,13 @@ mkdir FreeFileSync/Build/Bin
 %build
 export TMPDIR=/tmp # necessary since 11.0
 export CXXFLAGS="%{optflags}"
-export CC="gcc"
-export CXX="g++"
-
+%if 0%{?suse_version} < 1590
+  export CC="gcc-12"
+  export CXX="g++-12"
+%else
+  export CC="gcc"
+  export CXX="g++"
+%endif
 %make_build -C %{name}/Source exeName=FreeFileSync
 %make_build -C %{name}/Source/RealTimeSync exeName=RealTimeSync
 
