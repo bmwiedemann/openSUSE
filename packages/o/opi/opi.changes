@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 18 22:42:42 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.15.0
+- Fix repo name encoding when asking for new key addition
+
+-------------------------------------------------------------------
 Mon Feb 13 16:35:38 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.14.0

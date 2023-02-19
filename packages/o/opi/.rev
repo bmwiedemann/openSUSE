@@ -419,4 +419,13 @@
 - Use http instead of https for openh264 repo</comment>
     <requestid>1065545</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7b42de5dd4477423f02509816d9e93af</srcmd5>
+    <version>2.15.0</version>
+    <time>1676827154</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.15.0
+- Fix repo name encoding when asking for new key addition</comment>
+    <requestid>1066575</requestid>
+  </revision>
 </revisionlist>
