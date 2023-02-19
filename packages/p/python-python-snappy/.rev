@@ -41,4 +41,15 @@ Used by a bunch of python numeric packages.</comment>
     <comment></comment>
     <requestid>944564</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb95052d66bad8ddfce32a68807b20b2</srcmd5>
+    <version>0.6.1</version>
+    <time>1676827171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * apple silicon enablement
+  * python 3.10+ testing
+  * Port to python 3.11: use Py_SET_SIZE()</comment>
+    <requestid>1066617</requestid>
+  </revision>
 </revisionlist>

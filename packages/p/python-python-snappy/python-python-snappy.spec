@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-snappy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-snappy
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python library for the snappy compression library
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ Python library for the snappy compression library from Google.
 
 %prep
 %setup -q -n python-snappy-%{version}
-sed -i -e '/^#!\//, 1d' snappy/snappy.py
+sed -i -e '/^#!\//, 1d' src/snappy/snappy.py
 
 %build
 export CFLAGS="%{optflags}"
