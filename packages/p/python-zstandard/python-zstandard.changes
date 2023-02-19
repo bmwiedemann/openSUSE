@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 17 12:46:17 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable --system-zstd so that we depend of a system shared library
+  of zstd.
+- Add feature-detection.patch as feature detection test does not support
+  --system-zstd (gh#indygreg/python-zstandard#191).
+
+-------------------------------------------------------------------
 Mon Dec  5 18:21:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 -  Fixed spec file to include exceptiongroup 

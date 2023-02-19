@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstandard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/indygreg/python-zstandard
 Source:         https://files.pythonhosted.org/packages/source/z/zstandard/zstandard-%{version}.tar.gz
+Patch0:         feature-detection.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,10 +49,11 @@ Zstandard bindings for Python
 
 %prep
 %setup -q -n zstandard-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%python_build --system-zstd
 
 %install
 %python_install

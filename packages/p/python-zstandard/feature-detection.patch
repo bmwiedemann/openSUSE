@@ -1,0 +1,58 @@
+diff --git a/c-ext/backend_c.c b/c-ext/backend_c.c
+index e31dd15..a5d9dee 100644
+--- a/c-ext/backend_c.c
++++ b/c-ext/backend_c.c
+@@ -210,6 +210,20 @@ void zstd_module_init(PyObject *m) {
+     Py_DECREF(feature);
+ #endif
+ 
++#ifdef SYSTEM_ZSTD
++    feature = PyUnicode_FromString("system_zstd");
++    if (NULL == feature) {
++        PyErr_SetString(PyExc_ImportError, "could not create feature string");
++        return;
++    }
++
++    if (PySet_Add(features, feature) == -1) {
++        return;
++    }
++
++    Py_DECREF(feature);
++#endif
++
+     if (PyObject_SetAttrString(m, "backend_features", features) == -1) {
+         return;
+     }
+diff --git a/setup_zstd.py b/setup_zstd.py
+index 399b129..d940c80 100644
+--- a/setup_zstd.py
++++ b/setup_zstd.py
+@@ -78,6 +78,7 @@ def get_c_extension(
+ 
+     if system_zstd:
+         extra_args.append("-DZSTD_MULTITHREAD")
++        extra_args.append("-DSYSTEM_ZSTD")
+     else:
+         extra_args.append("-DZSTD_SINGLE_FILE")
+         extra_args.append("-DZSTDLIB_VISIBILITY=")
+diff --git a/tests/test_module_attributes.py b/tests/test_module_attributes.py
+index d487aa8..15cda73 100644
+--- a/tests/test_module_attributes.py
++++ b/tests/test_module_attributes.py
+@@ -26,7 +26,15 @@ class TestModuleAttributes(unittest.TestCase):
+             },
+         }[zstd.backend]
+ 
+-        self.assertEqual(zstd.backend_features, expected)
++        # The following features are available only with
++        # statically linked version of the module.
++        available_features = set(zstd.backend_features)
++        if 'system_zstd' in available_features:
++            available_features.remove('system_zstd')
++            expected.discard('multi_compress_to_buffer')
++            expected.discard('multi_decompress_to_buffer')
++
++        self.assertEqual(available_features, expected)
+ 
+     def test_constants(self):
+         self.assertEqual(zstd.MAX_COMPRESSION_LEVEL, 22)
