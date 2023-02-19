@@ -144,4 +144,19 @@
 </comment>
     <requestid>1064387</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2084435f0146beb20c6a1b3cce05838</srcmd5>
+    <version>0.92.0</version>
+    <time>1676827126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.92.0:
+  * Upgrades
+    - Upgrade Starlette to 0.25.0. This solves a vulnerability that
+      could allow denial of service attacks by using many small 
+      multipart fields/files (parts), consuming high CPU and memory.
+      Only applications using forms (e.g. file uploads) could be 
+      affected. For most cases, upgrading won't have any breaking 
+      changes.</comment>
+    <requestid>1066272</requestid>
+  </revision>
 </revisionlist>
