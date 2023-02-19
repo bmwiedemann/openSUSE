@@ -237,4 +237,13 @@
 </comment>
     <requestid>1040253</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>3d0e4ab4fdd6c3cee253c6d40f5bb054</srcmd5>
+    <version>2.2.0</version>
+    <time>1676827128</time>
+    <user>dimstar_suse</user>
+    <comment>- restore testing against scipy/numpy on tumbleweed, all 
+  versions exist there again</comment>
+    <requestid>1066282</requestid>
+  </revision>
 </revisionlist>
