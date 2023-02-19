@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        11.12
+Version:        12.1
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -39,9 +39,9 @@ BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-qtlocation-devel
 BuildRequires:  qt5-qtsvg-devel
+BuildRequires:  qt5-qtserialport-devel
 BuildRequires:  qt5-linguist
 Recommends: qt5-qtimageformats
-Recommends: qt5-qtserialport
 Recommends: qt5-qtpbfimageformat
 %else
 %if 0%{?suse_version}
@@ -55,10 +55,10 @@ BuildRequires:  libQt5PrintSupport-devel
 BuildRequires:  libQt5OpenGL-devel
 BuildRequires:  libQt5Sql-devel
 BuildRequires:  libQt5Svg-devel
+BuildRequires:  libQt5SerialPort-devel
 BuildRequires:  libqt5-qtlocation-devel
 BuildRequires:  libqt5-linguist
 Recommends: libQt5Sql5-sqlite
-Recommends: libQt5SerialPort5
 Recommends: libqt5-qtimageformats
 Recommends: libqt5-qtpbfimageformat
 %else
@@ -73,9 +73,9 @@ BuildRequires:  libqt5opengl-devel
 BuildRequires:  libqt5sql-devel
 BuildRequires:  libqt5svg-devel
 BuildRequires:  libqt5location-devel
+BuildRequires:  libqt5serialport-devel
 BuildRequires:  qttools5
 Recommends: qtimageformats5
-Recommends: libqt5-qtserialport
 Recommends: libqt5-database-plugin-sqlite
 Recommends: libqt5-qtpbfimageformat
 %endif

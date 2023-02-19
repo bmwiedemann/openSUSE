@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 18 14:11:19 CET 2023 - tumic@cbox.cz
+
+- Update to version 12.1
+  * Fixed areas rendering.
+  * Fixed GeoJSON parser.
+  * Fixed NMEA parser.
+
+-------------------------------------------------------------------
+Fri Feb 10 00:46:51 CET 2023 - tumic@cbox.cz
+
+- Update to version 12.0
+  * Android "desktop" integration.
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Thu Jan 26 23:43:07 CET 2023 - tumic@cbox.cz
 
 - Update to version 11.12
