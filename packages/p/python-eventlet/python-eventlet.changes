@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 16 22:15:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update newdnspython.patch to not patch non-testsuite as
+  it breaks the functionality (bsc#1208126)
+
+-------------------------------------------------------------------
 Tue Feb 14 11:33:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary obsolete dependency on pyzmq.

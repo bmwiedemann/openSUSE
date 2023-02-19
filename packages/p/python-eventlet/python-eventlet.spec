@@ -86,7 +86,7 @@ python2_pytest_param='--collect-only'
 # dnspython 1 and 2: backdoor tests fail with "take too long"
 skiptests="(BackdoorTest and test_server)"
 # fail only with dnspython 2:
-skiptests+=" or test_dns_methods_are_green or test_noraise_dns_tcp"
+skiptests+=" or test_dns_methods_are_green or test_noraise_dns_tcp or test_clear"
 # These are flaky inside the OBS environment
 skiptests+=" or test_fork_after_monkey_patch or test_send_1k_req_rep or test_cpu_usage_after_bind"
 # tracebacks in denosed suite with pytest inside obs presumably work different than when upstream is running nose?

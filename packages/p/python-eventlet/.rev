@@ -506,4 +506,13 @@
 - Clean up the SPEC file. (forwarded request 1065748 from mcepl)</comment>
     <requestid>1065749</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>7dc59b6cfc21ca40bfece8ddb3401a7d</srcmd5>
+    <version>0.33.3</version>
+    <time>1676827127</time>
+    <user>dimstar_suse</user>
+    <comment>- update newdnspython.patch to not patch non-testsuite as
+  it breaks the functionality (bsc#1208126)</comment>
+    <requestid>1066280</requestid>
+  </revision>
 </revisionlist>
