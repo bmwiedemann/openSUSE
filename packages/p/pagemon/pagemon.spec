@@ -18,7 +18,7 @@
 
 
 Name:           pagemon
-Version:        0.02.00
+Version:        0.02.01
 Release:        0
 Summary:        Interactive memory/page monitoring tool
 License:        GPL-2.0-or-later
