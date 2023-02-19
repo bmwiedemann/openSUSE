@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,11 @@ Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch1:         harden_debuginfod.service.patch
 Patch2:         0005-backends-Add-RISC-V-object-attribute-printing.patch
+Patch3:         support-DW_TAG_unspecified_type.patch
+#PATCH-FIX-UPSTREAM Patches to fix deprecated curl options
+Patch4:         elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
+Patch5:         elfutils-0.188-CURL_AT_LEAST_VERSION.patch
+Patch6:         elfutils-0.188-deprecated-CURLINFO.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

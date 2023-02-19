@@ -1040,4 +1040,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1041812</requestid>
   </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>33d36e75e8f6c1fb98d6ae76b63f63fa</srcmd5>
+    <version>0.188</version>
+    <time>1676827117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066183</requestid>
+  </revision>
 </revisionlist>

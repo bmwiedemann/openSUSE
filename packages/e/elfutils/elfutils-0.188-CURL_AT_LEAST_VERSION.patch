@@ -1,0 +1,36 @@
+From 304741e11018c29e7ff17751e05dcc5c786a3fd9 Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Wed, 21 Dec 2022 18:21:08 +0100
+Subject: [PATCH 2/8] debuginfod: Define CURL_AT_LEAST_VERSION if necessary
+
+Older curl.h don't define CURL_AT_LEAST_VERSION, so define it
+ourselves because it is nicer than doing hex encoded version
+comparisons.
+
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+---
+ debuginfod/ChangeLog           | 4 ++++
+ debuginfod/debuginfod-client.c | 7 +++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/debuginfod/debuginfod-client.c b/debuginfod/debuginfod-client.c
+index 692aecce..a16165bd 100644
+--- a/debuginfod/debuginfod-client.c
++++ b/debuginfod/debuginfod-client.c
+@@ -105,6 +105,13 @@ void debuginfod_end (debuginfod_client *c) { }
+   #include <fts.h>
+ #endif
+ 
++/* Older curl.h don't define CURL_AT_LEAST_VERSION.  */
++#ifndef CURL_AT_LEAST_VERSION
++  #define CURL_VERSION_BITS(x,y,z) ((x)<<16|(y)<<8|(z))
++  #define CURL_AT_LEAST_VERSION(x,y,z) \
++    (LIBCURL_VERSION_NUM >= CURL_VERSION_BITS(x, y, z))
++#endif
++
+ #include <pthread.h>
+ 
+ static pthread_once_t init_control = PTHREAD_ONCE_INIT;
+-- 
+2.39.1
+

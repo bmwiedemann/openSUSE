@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 16 13:00:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with libcurl version 7.88.0 for various deprecated
+  constants. Add patches:
+  * elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
+  * elfutils-0.188-CURL_AT_LEAST_VERSION.patch
+  * elfutils-0.188-deprecated-CURLINFO.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 09:46:19 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add support-DW_TAG_unspecified_type.patch that fixes PR30047.
+
+-------------------------------------------------------------------
 Fri Dec  9 08:34:19 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove dependency to not used sysconfig package
