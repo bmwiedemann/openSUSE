@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 18 16:25:33 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.1
+  * Added 802.1Q VLAN tagged packet injection support (experimental).
+  * Removed repeated calls to AM_INIT_AUTOMAKE.
+
+- removed no more needed packit-1.7-fix_automake_1.16.5_build.patch
+
+-------------------------------------------------------------------
 Sat Jan 15 18:37:07 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add packit-1.7-fix_automake_1.16.5_build.patch
