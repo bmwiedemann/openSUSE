@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 17 16:07:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Limit dependencies for tests on older distributions
+  (particularly do not depend on Django, Pandas, and fakeredis
+  and Redis).
+
+-------------------------------------------------------------------
 Sat Jan  7 21:27:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.61.2

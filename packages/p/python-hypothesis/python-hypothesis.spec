@@ -30,6 +30,11 @@ ExclusiveArch:  do_not_build
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} <= 1550
+%bcond_with complete_tests
+%else
+%bcond_without complete_tests
+%endif
 Name:           python-hypothesis%{psuffix}
 Version:        6.61.2
 Release:        0
@@ -42,6 +47,7 @@ URL:            https://github.com/HypothesisWorks/hypothesis
 Source:         hypothesis-python-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -72,20 +78,24 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis = %{version}}
 # SECTION test requirements
+%if %{with complete_tests}
 BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module fakeredis}
+BuildRequires:  %{python_module pandas >= 1.0}
+%endif
 BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
+BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
-BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.3.16}
 BuildRequires:  %{python_module numpy >= 1.9.0}
-BuildRequires:  %{python_module pandas >= 1.0}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %endif
 %python_subpackages
@@ -161,6 +171,9 @@ filterwarnings =
     default:`np\.complex` is a deprecated alias for the builtin `complex`:DeprecationWarning
     default:`np\.object` is a deprecated alias for the builtin `object`:DeprecationWarning
 ' > pytest.ini
+%if %{without complete_tests}
+export PYTEST_ADDOPTS="--ignore=tests/pandas/ --ignore=tests/redis/test_redis_exampledatabase.py"
+%endif
 %pytest -c pytest.ini -k "not ($donttest)" tests
 %endif
 
