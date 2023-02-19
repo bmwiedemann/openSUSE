@@ -295,4 +295,12 @@
     <comment>Update to 3.2.0</comment>
     <requestid>1058691</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>695cd96d59745fba473b8471946fe0a9</srcmd5>
+    <version>3.2.1</version>
+    <time>1676831560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1. No changelog.</comment>
+    <requestid>1066640</requestid>
+  </revision>
 </revisionlist>
