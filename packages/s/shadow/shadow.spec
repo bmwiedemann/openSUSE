@@ -28,39 +28,32 @@ Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/shadow-maint/shadow
-Source:         https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz
+Source0:        https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz
 Source1:        pamd.tar.bz2
-Source3:        useradd.local
-Source4:        userdel-pre.local
-Source5:        userdel-post.local
-Source6:        shadow.service
-Source7:        shadow.timer
-Source42:       https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz.asc
-Source43:       %{name}.keyring
+Source2:        https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz.asc
+Source3:        %{name}.keyring
+Source4:        shadow.service
+Source5:        shadow.timer
 # SOURCE-FEATURE-SUSE shadow-login_defs-check.sh sbrabec@suse.com -- Supplementary script that verifies coverage of variables in shadow-login_defs-unused-by-pam.patch and other patches.
-Source44:       shadow-login_defs-check.sh
+Source40:       shadow-login_defs-check.sh
 # PATCH-FIX-SUSE shadow-login_defs-unused-by-pam.patch kukuk@suse.com -- Remove variables that have no use with PAM.
 Patch0:         shadow-login_defs-unused-by-pam.patch
-# PATCH-FEATURE-SUSE userdel-script.patch kukuk@suse.com -- Add support for USERDEL_PRECMD and USERDEL_POSTCMD.
-Patch1:         userdel-script.patch
-# PATCH-FEATURE-SUSE useradd-script.patch kukuk@suse.com -- Add support for USERADD_CMD.
-Patch2:         useradd-script.patch
 # PATCH-FEATURE-SUSE useradd-default.patch kukuk@suse.com -- Change useradd defaults group to 1000.
-Patch3:         useradd-default.patch
+Patch1:         useradd-default.patch
 # PATCH-FEATURE-SUSE shadow-util-linux.patch sbrabec@suse.com -- Add support for util-linux specific variables, delete shadow login, su runuser specific.
-Patch4:         shadow-util-linux.patch
+Patch2:         shadow-util-linux.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-comments.patch kukuk@suse.com -- Adjust login.defs comments.
-Patch5:         shadow-login_defs-comments.patch
+Patch3:         shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
-Patch6:         shadow-login_defs-suse.patch
+Patch4:         shadow-login_defs-suse.patch
 # PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321) (gh/shadow-maint/shadow#591)
-Patch7:         useradd-userkeleton.patch
+Patch5:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
-Patch8:         disable_new_audit_function.patch
+Patch6:         disable_new_audit_function.patch
 # PATCH-FIX-UPSTREAM shadow-audit-no-id.patch mvetter@suse.com -- Fix useradd audit event logging of ID field (bsc#1205502) (gh/shadow-maint/shadow#606)
-Patch9:         shadow-audit-no-id.patch
+Patch7:         shadow-audit-no-id.patch
 # PATCH-FIX-UPSTREAM shadow-fix-print-login-timeout.patch mvetter@suse.com -- Fix print full login timeout message (gh/shadow-maint/shadow#621)
-Patch10:        https://github.com/shadow-maint/shadow/commit/670cae834827a8f794e6f7464fa57790d911b63c.patch#/shadow-fix-print-login-timeout.patch
+Patch8:         shadow-fix-print-login-timeout.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -125,13 +118,11 @@ Development files for libsubid4.
 %patch3
 %patch4
 %patch5
-%patch6
-%patch7
 %if 0%{?suse_version} < 1330
-%patch8 -p1
+%patch6 -p1
 %endif
-%patch9 -p1
-%patch10 -p1
+%patch7 -p1
+%patch8 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -162,12 +153,8 @@ autoreconf -fvi
 # Separate call to install man pages. See https://github.com/shadow-maint/shadow/issues/389
 %make_install -C man install-man
 
-# install useradd.local, userdel.local, ...
-install -m 0755 %{SOURCE3} %{buildroot}/%{_sbindir}/
-install -m 0755 %{SOURCE4} %{buildroot}/%{_sbindir}/
-install -m 0755 %{SOURCE5} %{buildroot}/%{_sbindir}/
-install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/shadow.service
-install -Dm644 %{SOURCE7} %{buildroot}%{_unitdir}/shadow.timer
+install -Dm644 %{SOURCE4} %{buildroot}%{_unitdir}/shadow.service
+install -Dm644 %{SOURCE5} %{buildroot}%{_unitdir}/shadow.timer
 
 # add empty /etc/sub{u,g}id files
 touch %{buildroot}/%{_sysconfdir}/subuid
@@ -356,9 +343,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %attr(0755,root,root) %{_sbindir}/newusers
 %{_sbindir}/vipw
 %{_sbindir}/vigr
-%verify(not md5 size mtime) %config(noreplace) %{_sbindir}/useradd.local
-%verify(not md5 size mtime) %config(noreplace) %{_sbindir}/userdel-pre.local
-%verify(not md5 size mtime) %config(noreplace) %{_sbindir}/userdel-post.local
 %{_mandir}/man1/chage.1%{?ext_man}
 %{_mandir}/man1/chfn.1%{?ext_man}
 %{_mandir}/man1/chsh.1%{?ext_man}

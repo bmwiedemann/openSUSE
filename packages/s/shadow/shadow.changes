@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 16 11:31:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update shadow-fix-print-login-timeout.patch
+- Reorder source files and patches
+
+-------------------------------------------------------------------
+Wed Feb 15 10:49:33 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove scripts that claim to be config but are in /usr (boo#1191578)
+  * userdel-script.patch
+  * useradd-script.patch
+  * useradd.local
+  * userdel-post.local
+  * userdel-pre.local
+
+-------------------------------------------------------------------
 Fri Jan 13 08:21:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Add shadow-fix-print-login-timeout.patch:

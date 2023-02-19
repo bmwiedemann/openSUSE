@@ -846,4 +846,20 @@
   See gh/shadow-maint/shadow#606</comment>
     <requestid>1058151</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>3d8c2a2c6a8367274c55c9c6611ddd2a</srcmd5>
+    <version>4.13</version>
+    <time>1676827118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update shadow-fix-print-login-timeout.patch
+- Reorder source files and patches
+
+- Remove scripts that claim to be config but are in /usr (boo#1191578)
+  * userdel-script.patch
+  * useradd-script.patch
+  * useradd.local
+  * userdel-post.local
+  * userdel-pre.local</comment>
+    <requestid>1066319</requestid>
+  </revision>
 </revisionlist>

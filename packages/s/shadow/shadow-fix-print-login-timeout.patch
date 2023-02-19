@@ -10,7 +10,7 @@ Calling exit from new handler provides enough time to display full message.
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/src/login.c b/src/login.c
-index 116e2cb3..c55f4de0 100644
+index 116e2cb36..c55f4de0a 100644
 --- a/src/login.c
 +++ b/src/login.c
 @@ -120,6 +120,7 @@ static void get_pam_user (char **ptr_pam_user);
