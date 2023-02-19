@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 17 22:03:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.11.1
+  * Many small code improvements, improved consistency and typo
+    fixes. Thanks to Dimitri Papadopoulos Orfanos.
+  * Support for Python 3.11. Support for Python 3.7 has been
+    dropped. Thanks to Dimitri Papadopoulos Orfanos.
+  * Several other fixes, mainly related with the building process,
+    which should be more solid now in different situations.
+- Release 1.10.6
+  * Add a missed cmake folder to distributed files. See #253.
+    Thanks to Ben Greiner.
+- Release 1.10.5
+  * Re-enable the possibility to use an already installed C-Blosc
+    library. See #244. Thanks to Ben Greiner.
+- Release 1.10.4
+  * Update blosc.nthreads when blosc.set_nthreads() is called.
+    Fixes #246
+- Drop use-system-blosc.patch
+- PEP517 build
+
+-------------------------------------------------------------------
 Sat Feb 13 13:40:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.10.2
