@@ -2790,4 +2790,12 @@
     <comment>Upstream version of security fix for bsc#1207544. Other fixes included.</comment>
     <requestid>1065597</requestid>
   </revision>
+  <revision rev="327" vrev="3">
+    <srcmd5>dfb1ff9d85712c896926082b897485f8</srcmd5>
+    <version>4.17.0_04</version>
+    <time>1676827121</time>
+    <user>dimstar_suse</user>
+    <comment>Security fix for bsc#1208286 - VUL-0: CVE-2022-27672: xen: Cross-Thread Return Address Predictions (XSA-426)</comment>
+    <requestid>1066241</requestid>
+  </revision>
 </revisionlist>

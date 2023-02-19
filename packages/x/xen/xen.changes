@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 15 11:07:08 MST 2023 - carnold@suse.com
+
+- bsc#1208286 - VUL-0: CVE-2022-27672: xen: Cross-Thread Return
+  Address Predictions (XSA-426)
+  63ebca9c-x86-spec-ctrl-Mitigate-Cross-Thread-Return-Address-Predictions.patch
+
+-------------------------------------------------------------------
 Thu Feb  9 09:56:27 MST 2023 - carnold@suse.com
 
 - bsc#1205792 - Partner-L3: launch-xenstore error messages show in

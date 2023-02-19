@@ -160,6 +160,7 @@ Patch2:         63c05478-VMX-calculate-model-specific-LBRs-once.patch
 Patch3:         63c05478-VMX-support-CPUs-without-model-specific-LBR.patch
 Patch4:         63d24e91-tools-xenstore-revert-simplify-loop-handling.patch
 Patch5:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
+Patch6:         63ebca9c-x86-spec-ctrl-Mitigate-Cross-Thread-Return-Address-Predictions.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
