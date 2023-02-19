@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,10 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
+%if 0%{?suse_version} > 1550
 # Django 4.0 dropped support for Python < 3.8
 BuildRequires:  %{python_module Django >= 1.11 if (%python-base without python36-base)}
+%endif
 %endif
 %python_subpackages
 
