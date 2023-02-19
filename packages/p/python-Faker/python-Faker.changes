@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 21:06:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.0.0:
+  * Remove deprecated placeimg image provider. Thanks @Wonskcalb.
+  * Add `truth_probability` argument to `pybool` generator.
+
+-------------------------------------------------------------------
 Fri Feb 10 10:01:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 16.8.1:

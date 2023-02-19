@@ -413,4 +413,14 @@
   * Fix amount and layout of sample data.</comment>
     <requestid>1064201</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0edf7b96a4a2d14a0ba5bb27c282fd88</srcmd5>
+    <version>17.0.0</version>
+    <time>1676827125</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.0.0:
+  * Remove deprecated placeimg image provider. Thanks @Wonskcalb.
+  * Add `truth_probability` argument to `pybool` generator.</comment>
+    <requestid>1066268</requestid>
+  </revision>
 </revisionlist>
