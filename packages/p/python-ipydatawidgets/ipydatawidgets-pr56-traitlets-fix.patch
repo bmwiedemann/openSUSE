@@ -1,0 +1,44 @@
+From 584036b7f1b2cf86ccc7261ac50ed5015b143fe1 Mon Sep 17 00:00:00 2001
+From: Vidar Tonaas Fauske <510760+vidartf@users.noreply.github.com>
+Date: Fri, 17 Feb 2023 23:03:19 +0000
+Subject: [PATCH] Fix tests + instance_init for DataUnion
+
+---
+ ipydatawidgets/ndarray/union.py      | 4 ++++
+ ipydatawidgets/tests/test_widgets.py | 8 ++++++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/ipydatawidgets/ndarray/union.py b/ipydatawidgets/ndarray/union.py
+index b7f0a3f..9c6a2d3 100644
+--- a/ipydatawidgets/ndarray/union.py
++++ b/ipydatawidgets/ndarray/union.py
+@@ -55,6 +55,10 @@ def set(self, obj, value):
+             # comparison above returns something other than True/False
+             obj._notify_trait(self.name, old_value, new_value)
+ 
++    def subclass_init(self, cls):
++        cls._instance_inits.append(self.instance_init)
++        return super().subclass_init(cls)
++
+     def instance_init(self, inst):
+         inst.observe(self._on_instance_value_change, self.name)
+ 
+diff --git a/ipydatawidgets/tests/test_widgets.py b/ipydatawidgets/tests/test_widgets.py
+index c6cd813..4fd1127 100644
+--- a/ipydatawidgets/tests/test_widgets.py
++++ b/ipydatawidgets/tests/test_widgets.py
+@@ -24,8 +24,12 @@ def test_datawidget_creation_blank():
+ def test_datawidget_creation_blank_comm(mock_comm):
+     # The mock comm delays serialization, so error is avoided
+     # (the array serialization of undefined cause error)
+-    w = NDArrayWidget(comm=mock_comm)
+-    assert w.array is Undefined
++    try:
++        w = NDArrayWidget(comm=mock_comm)
++    except TraitError as e:
++        assert 'Cannot serialize undefined array' in str(e)
++    else:
++        assert w.array is Undefined
+ 
+ 
+ def test_datawidget_creation():

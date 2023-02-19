@@ -103,4 +103,14 @@
   * typing changes</comment>
     <requestid>999712</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>348ecb12b5722f0b59f1a4b2823a8213</srcmd5>
+    <version>unknown</version>
+    <time>1676831607</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ipydatawidgets-pr56-traitlets-fix.patch
+  * gh#ipydatawidgets/pull#56
+  * Fixes gh#ipydatawidgets/pull#52</comment>
+    <requestid>1066643</requestid>
+  </revision>
 </revisionlist>

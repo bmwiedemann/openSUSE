@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipydatawidgets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Summary:        Jupyter widgets to help facilitate reuse of large datasets
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vidartf/ipydatawidgets
-Source:         https://files.pythonhosted.org/packages/py2.py3/i/ipydatawidgets/ipydatawidgets-%{mainver}-py2.py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipydatawidgets/ipydatawidgets-%{mainver}-py2.py3-none-any.whl
+# PATCH-FIX-UPSTREAM ipydatawidgets-pr56-traitlets-fix.patch gh#ipydatawidgets/pull#56
+Patch0:         ipydatawidgets-pr56-traitlets-fix.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module numpy}
@@ -90,14 +92,19 @@ This package provides the JupyterLab extension.
 %setup -q -T -c
 
 %build
-# Not Needed
+# Not needed: we must use the prebundled jsfiles from the published wheel
 
 %install
 %pyproject_install %{SOURCE0}
 %{jupyter_move_config}
-%python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
-%python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand pushd %{buildroot}%{$python_sitelib}
+find ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+find ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
+patch --no-backup-if-mismatch -p1 < %{PATCH0}
+%{$python_compile}
+%fdupes %{buildroot}%{$python_sitelib}
+popd
+}
 %fdupes %{buildroot}%{_jupyter_prefix}
 cp %{buildroot}%{python3_sitelib}/ipydatawidgets-%{mainver}.dist-info/LICENSE.txt .
 
