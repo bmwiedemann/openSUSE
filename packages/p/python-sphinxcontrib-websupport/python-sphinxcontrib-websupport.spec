@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib-websupport
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -33,7 +32,8 @@ Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-doc/sphinxcontrib-websupport
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-websupport/sphinxcontrib-websupport-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -49,7 +49,6 @@ BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= %{version}}
-BuildRequires:  %{python_module xapian}
 %endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-Sphinx
@@ -64,14 +63,14 @@ sphinxcontrib-webuspport provides a Python API to integrate Sphinx
 documentation into your Web application.
 
 %prep
-%setup -q -n sphinxcontrib-websupport-%{version}
+%autosetup -p1 -n sphinxcontrib-websupport-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -85,9 +84,9 @@ documentation into your Web application.
 %license LICENSE
 %doc CHANGES README.rst
 %dir %{python_sitelib}/sphinxcontrib/
-%{python_sitelib}/sphinxcontrib/websupport/
-%{python_sitelib}/sphinxcontrib_websupport-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_websupport-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib/websupport
+%{python_sitelib}/sphinxcontrib_websupport-%{version}*-nspkg.pth
+%{python_sitelib}/sphinxcontrib_websupport-%{version}*-info
 %endif
 
 %changelog

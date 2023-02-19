@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 16 18:15:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove test dependency on xapian, which has large dependencies
+  itself, and it is not required for testing (the test suite can
+  skip tests which require it).
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:07:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.4:

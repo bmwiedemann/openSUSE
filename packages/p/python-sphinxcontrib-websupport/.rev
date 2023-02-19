@@ -93,4 +93,12 @@
   * Import PickleHTMLBuilder from sphinxcontrib-serializinghtml package</comment>
     <requestid>830709</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>50dd4caaff5de340a91a4dc6468152c4</srcmd5>
+    <version>1.2.4</version>
+    <time>1676827129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066283</requestid>
+  </revision>
 </revisionlist>
