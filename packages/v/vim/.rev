@@ -6833,4 +6833,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Inserting a register on the command line does not trigger incsearch or</comment>
     <requestid>1065550</requestid>
   </revision>
+  <revision rev="339" vrev="2">
+    <srcmd5>1d82130bce92aada923494b5013022e1</srcmd5>
+    <version>9.0.1307</version>
+    <time>1676827136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066374</requestid>
+  </revision>
 </revisionlist>

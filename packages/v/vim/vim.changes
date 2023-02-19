@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 17 11:45:06 UTC 2023 - Petr Vorel <pvorel@suse.cz>
+
+- Add patch vim-fix-sh-syntax.patch which fixes broken sh syntax.
+
+-------------------------------------------------------------------
 Mon Feb 13 17:22:09 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1307, fixes the following problems

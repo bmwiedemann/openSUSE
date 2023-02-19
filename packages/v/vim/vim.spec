@@ -78,6 +78,7 @@ Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
 Patch102:       vim-8.1.0297-dump3.patch
 Patch104:       vim-8.2.2411-globalvimrc.patch
+Patch105:       vim-fix-sh-syntax.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -216,6 +217,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch101 -p1
 %patch102 -p1
 %patch104 -p1
+%patch105 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 # Unreliable tests
