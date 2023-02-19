@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 17 11:12:44 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 20230217:
+  * shadow: newgidmap,newuidmap: use capabilities (bsc#1208309)
+  * profiles: whitelist kismet capabilities (bsc#1200954) (#171)
+
+-------------------------------------------------------------------
 Tue Dec 20 10:04:33 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 20221220:

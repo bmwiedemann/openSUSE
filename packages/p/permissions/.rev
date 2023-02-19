@@ -1443,4 +1443,14 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: remove outdated kdesud, apptainer entries</comment>
     <requestid>1043915</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>69d516e66d96a66537f7d72b9309fbb3</srcmd5>
+    <version>1599_20230217</version>
+    <time>1676827120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230217:
+  * shadow: newgidmap,newuidmap: use capabilities (bsc#1208309)
+  * profiles: whitelist kismet capabilities (bsc#1200954) (#171)</comment>
+    <requestid>1066365</requestid>
+  </revision>
 </revisionlist>
