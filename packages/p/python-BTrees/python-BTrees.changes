@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 16 21:05:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * Build Linux binary wheels for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+
+-------------------------------------------------------------------
 Mon Jan  2 14:27:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.3:

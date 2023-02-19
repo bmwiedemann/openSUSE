@@ -139,4 +139,14 @@
   * We no longer provide 32bit wheels for the Windows platform, only x86_64.</comment>
     <requestid>1046210</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>67e943efe82d221dcac9762162174e32</srcmd5>
+    <version>5.0</version>
+    <time>1676827124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0:
+  * Build Linux binary wheels for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1066267</requestid>
+  </revision>
 </revisionlist>
