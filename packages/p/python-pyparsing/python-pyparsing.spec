@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,31 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %global flavor @BUILD_FLAVOR@%{nil}
+%if 0%{?suse_version} >= 1550
+# The primary python flavor is built in Factory Ring0
 %if "%{flavor}" == "primary"
-# this one is built in Ring0
 %define pprefix %{primary_python}
 %define pythons %{primary_python}
 %endif
+# Additional flavors are built in Factory Ring1
 %if "%{flavor}" == ""
-# The rest is in Ring1
 %define pprefix python
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} == 150500
-BuildRequires:  python3-base >= 3.6
 %{expand:%%define skip_%{primary_python} 1}
-%else
-%define python_module() no-build-without-multibuild-flavor
-# no non-primary python in <=15.4
+# ... unless the build set is empty. (We can't use shrink server-side and any skips here or on project level may have left spaces)
+%if "%{pythons}" == "" || "%{pythons}" == " " || "%{pythons}" == "  " || "%{pythons}" == "   " || "%{pythons}" == "    "
+# Exclude for local osc build: unresolvable
+%define python_module() empty-python-buildset
+# Exclude for obs server
 ExclusiveArch:  do-not-build
+%endif
+%endif
+%else
+# backport and option d projects for 15.X having one or more python in the buildset don't need the Ring split for bootstrap
+%if "%{flavor}" == "primary"
+%define python_module() invalid-multibuild-flavor-for-15.X
+ExclusiveArch:  do-not-build
+%else
+%define pprefix python
 %endif
 %endif
 %if "%{flavor}" == "test"
@@ -44,7 +54,6 @@ ExclusiveArch:  do-not-build
 %else
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           %{pprefix}-pyparsing%{?psuffix}
 Version:        3.0.9
 Release:        0
