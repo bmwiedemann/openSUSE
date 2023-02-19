@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230217" schemaversion="4.1">
+<image name="OBS__openSUSE___20230218" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230217</productvar>
+      <productvar name="VERSION">20230218</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230217,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230218,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230217/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230218/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -252,7 +252,6 @@
       <repopackage name="busybox-sendmail"/>
       <repopackage name="busybox-static"/>
       <repopackage name="busybox-tar"/>
-      <repopackage name="busybox-util-linux"/>
       <repopackage name="busybox-which"/>
       <repopackage name="busybox-xz"/>
       <repopackage name="bzip2"/>
@@ -2534,6 +2533,7 @@
       <repopackage name="librsvg-2-2"/>
       <repopackage name="librubberband2" arch="x86_64"/>
       <repopackage name="libruby3_1-3_1"/>
+      <repopackage name="libruby3_2-3_2"/>
       <repopackage name="libsamba-policy0-python3"/>
       <repopackage name="libsamplerate0"/>
       <repopackage name="libsane1"/>
@@ -3877,388 +3877,764 @@
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
       <repopackage name="ruby3.1"/>
-      <repopackage name="ruby3.1-rubygem-abstract_method"/>
-      <repopackage name="ruby3.1-rubygem-actioncable-7.0"/>
-      <repopackage name="ruby3.1-rubygem-actionmailbox-7.0"/>
-      <repopackage name="ruby3.1-rubygem-actionmailer-7.0"/>
+      <repopackage name="ruby3.1-rubygem-abstract_method" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-actioncable-7.0" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-actionmailbox-7.0" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-actionmailer-7.0" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-actionpack-7.0"/>
-      <repopackage name="ruby3.1-rubygem-actiontext-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actiontext-7.0" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-actionview-7.0"/>
       <repopackage name="ruby3.1-rubygem-activejob-7.0"/>
       <repopackage name="ruby3.1-rubygem-activemodel-7.0"/>
-      <repopackage name="ruby3.1-rubygem-activerecord-7.0"/>
-      <repopackage name="ruby3.1-rubygem-activestorage-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activerecord-7.0" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-activestorage-7.0" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-activesupport-7.0"/>
-      <repopackage name="ruby3.1-rubygem-addressable"/>
-      <repopackage name="ruby3.1-rubygem-aes_key_wrap"/>
-      <repopackage name="ruby3.1-rubygem-afm"/>
-      <repopackage name="ruby3.1-rubygem-airbrussh"/>
-      <repopackage name="ruby3.1-rubygem-amq-protocol"/>
-      <repopackage name="ruby3.1-rubygem-arel"/>
-      <repopackage name="ruby3.1-rubygem-Ascii85"/>
-      <repopackage name="ruby3.1-rubygem-asciidoctor"/>
-      <repopackage name="ruby3.1-rubygem-ast"/>
-      <repopackage name="ruby3.1-rubygem-attr_required"/>
-      <repopackage name="ruby3.1-rubygem-autoprefixer-rails"/>
-      <repopackage name="ruby3.1-rubygem-axiom-types"/>
-      <repopackage name="ruby3.1-rubygem-backport"/>
-      <repopackage name="ruby3.1-rubygem-base32"/>
-      <repopackage name="ruby3.1-rubygem-bcrypt"/>
-      <repopackage name="ruby3.1-rubygem-bcrypt_pbkdf"/>
-      <repopackage name="ruby3.1-rubygem-benchmark"/>
-      <repopackage name="ruby3.1-rubygem-bindata"/>
+      <repopackage name="ruby3.1-rubygem-addressable" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-aes_key_wrap" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-afm" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-airbrussh" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-amq-protocol" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-arel" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-Ascii85" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-asciidoctor" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ast" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-attr_required" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-autoprefixer-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-axiom-types" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-backport" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-base32" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-bcrypt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-bcrypt_pbkdf" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-benchmark" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-bindata" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-bindex"/>
-      <repopackage name="ruby3.1-rubygem-binding_of_caller"/>
+      <repopackage name="ruby3.1-rubygem-binding_of_caller" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-bootsnap"/>
       <repopackage name="ruby3.1-rubygem-builder"/>
-      <repopackage name="ruby3.1-rubygem-bundler"/>
-      <repopackage name="ruby3.1-rubygem-bundler-audit"/>
-      <repopackage name="ruby3.1-rubygem-byebug"/>
-      <repopackage name="ruby3.1-rubygem-capistrano"/>
-      <repopackage name="ruby3.1-rubygem-celluloid"/>
-      <repopackage name="ruby3.1-rubygem-cfa"/>
-      <repopackage name="ruby3.1-rubygem-cfa_grub2"/>
-      <repopackage name="ruby3.1-rubygem-changelog_generator"/>
-      <repopackage name="ruby3.1-rubygem-cheetah"/>
-      <repopackage name="ruby3.1-rubygem-chef-utils"/>
-      <repopackage name="ruby3.1-rubygem-childprocess"/>
-      <repopackage name="ruby3.1-rubygem-coderay"/>
-      <repopackage name="ruby3.1-rubygem-coercible"/>
-      <repopackage name="ruby3.1-rubygem-coffee-rails"/>
-      <repopackage name="ruby3.1-rubygem-coffee-script"/>
-      <repopackage name="ruby3.1-rubygem-coffee-script-source"/>
-      <repopackage name="ruby3.1-rubygem-colorator"/>
-      <repopackage name="ruby3.1-rubygem-commander"/>
+      <repopackage name="ruby3.1-rubygem-bundler" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-bundler-audit" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-byebug" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-capistrano" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-celluloid" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-cfa" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-cfa_grub2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-changelog_generator" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-cheetah" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-chef-utils" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-childprocess" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-coderay" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-coercible" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-coffee-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-coffee-script" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-coffee-script-source" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-colorator" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-commander" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-concurrent-ruby"/>
-      <repopackage name="ruby3.1-rubygem-cool.io"/>
-      <repopackage name="ruby3.1-rubygem-crack"/>
+      <repopackage name="ruby3.1-rubygem-cool.io" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-crack" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-crass"/>
-      <repopackage name="ruby3.1-rubygem-cri"/>
-      <repopackage name="ruby3.1-rubygem-css_parser"/>
-      <repopackage name="ruby3.1-rubygem-csv"/>
-      <repopackage name="ruby3.1-rubygem-d-installer"/>
-      <repopackage name="ruby3.1-rubygem-d-installer-cli"/>
-      <repopackage name="ruby3.1-rubygem-debase-ruby_core_source"/>
-      <repopackage name="ruby3.1-rubygem-debug_inspector"/>
-      <repopackage name="ruby3.1-rubygem-delayed_job"/>
-      <repopackage name="ruby3.1-rubygem-delayed_job_active_record"/>
-      <repopackage name="ruby3.1-rubygem-descendants_tracker"/>
-      <repopackage name="ruby3.1-rubygem-devise"/>
-      <repopackage name="ruby3.1-rubygem-devise-i18n"/>
-      <repopackage name="ruby3.1-rubygem-devise_ldap_authenticatable"/>
-      <repopackage name="ruby3.1-rubygem-diff-lcs"/>
-      <repopackage name="ruby3.1-rubygem-diffy"/>
-      <repopackage name="ruby3.1-rubygem-docile"/>
-      <repopackage name="ruby3.1-rubygem-docker-api"/>
-      <repopackage name="ruby3.1-rubygem-domain_name"/>
-      <repopackage name="ruby3.1-rubygem-down"/>
-      <repopackage name="ruby3.1-rubygem-dry-configurable"/>
-      <repopackage name="ruby3.1-rubygem-dry-container"/>
-      <repopackage name="ruby3.1-rubygem-dry-core"/>
-      <repopackage name="ruby3.1-rubygem-dry-equalizer"/>
-      <repopackage name="ruby3.1-rubygem-dry-inflector"/>
-      <repopackage name="ruby3.1-rubygem-dry-logic"/>
-      <repopackage name="ruby3.1-rubygem-dry-types"/>
-      <repopackage name="ruby3.1-rubygem-ed25519"/>
-      <repopackage name="ruby3.1-rubygem-em-websocket"/>
-      <repopackage name="ruby3.1-rubygem-equalizer"/>
+      <repopackage name="ruby3.1-rubygem-cri" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-css_parser" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-csv" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-d-installer" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-d-installer-cli" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-debase-ruby_core_source" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-debug_inspector" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-delayed_job" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-delayed_job_active_record" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-descendants_tracker" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-devise" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-devise-i18n" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-devise_ldap_authenticatable" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-diff-lcs" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-diffy" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-docile" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-docker-api" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-domain_name" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-down" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-configurable" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-container" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-core" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-equalizer" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-inflector" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-logic" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-dry-types" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ed25519" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-em-websocket" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-equalizer" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-erubi"/>
-      <repopackage name="ruby3.1-rubygem-erubis"/>
-      <repopackage name="ruby3.1-rubygem-eventmachine"/>
-      <repopackage name="ruby3.1-rubygem-exception_notification"/>
-      <repopackage name="ruby3.1-rubygem-excon"/>
-      <repopackage name="ruby3.1-rubygem-execjs"/>
-      <repopackage name="ruby3.1-rubygem-fake_ftp"/>
-      <repopackage name="ruby3.1-rubygem-fake_ftp-0_1"/>
-      <repopackage name="ruby3.1-rubygem-faraday"/>
-      <repopackage name="ruby3.1-rubygem-faraday-follow_redirects"/>
-      <repopackage name="ruby3.1-rubygem-faraday-net_http"/>
-      <repopackage name="ruby3.1-rubygem-fast_gettext"/>
-      <repopackage name="ruby3.1-rubygem-fast_gettext-1.1"/>
-      <repopackage name="ruby3.1-rubygem-ffi"/>
-      <repopackage name="ruby3.1-rubygem-ffi-compiler"/>
-      <repopackage name="ruby3.1-rubygem-flog"/>
-      <repopackage name="ruby3.1-rubygem-fluentd"/>
-      <repopackage name="ruby3.1-rubygem-fog-core"/>
-      <repopackage name="ruby3.1-rubygem-fog-json"/>
-      <repopackage name="ruby3.1-rubygem-fog-libvirt"/>
-      <repopackage name="ruby3.1-rubygem-fog-xml"/>
-      <repopackage name="ruby3.1-rubygem-font-awesome-rails"/>
-      <repopackage name="ruby3.1-rubygem-formatador"/>
-      <repopackage name="ruby3.1-rubygem-forwardable-extended"/>
-      <repopackage name="ruby3.1-rubygem-gem2rpm"/>
-      <repopackage name="ruby3.1-rubygem-get_process_mem"/>
-      <repopackage name="ruby3.1-rubygem-gettext"/>
-      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails"/>
-      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails_js"/>
-      <repopackage name="ruby3.1-rubygem-gli"/>
+      <repopackage name="ruby3.1-rubygem-erubis" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-eventmachine" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-exception_notification" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-excon" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-execjs" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fake_ftp" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fake_ftp-0_1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-faraday" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-faraday-follow_redirects" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-faraday-net_http" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fast_gettext" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fast_gettext-1.1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ffi" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ffi-compiler" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-flog" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fluentd" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fog-core" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fog-json" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fog-libvirt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-fog-xml" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-font-awesome-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-formatador" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-forwardable-extended" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-get_process_mem" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gettext" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails_js" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gli" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-globalid"/>
-      <repopackage name="ruby3.1-rubygem-google-protobuf"/>
-      <repopackage name="ruby3.1-rubygem-googleapis-common-protos-types"/>
-      <repopackage name="ruby3.1-rubygem-gpgme"/>
-      <repopackage name="ruby3.1-rubygem-grape"/>
-      <repopackage name="ruby3.1-rubygem-gssapi"/>
-      <repopackage name="ruby3.1-rubygem-gyoku"/>
-      <repopackage name="ruby3.1-rubygem-haml"/>
-      <repopackage name="ruby3.1-rubygem-haml-rails"/>
-      <repopackage name="ruby3.1-rubygem-hashdiff"/>
-      <repopackage name="ruby3.1-rubygem-hashery"/>
-      <repopackage name="ruby3.1-rubygem-hashicorp-checkpoint"/>
-      <repopackage name="ruby3.1-rubygem-hashie"/>
-      <repopackage name="ruby3.1-rubygem-highline"/>
-      <repopackage name="ruby3.1-rubygem-hitimes"/>
-      <repopackage name="ruby3.1-rubygem-hoe"/>
-      <repopackage name="ruby3.1-rubygem-hpricot"/>
-      <repopackage name="ruby3.1-rubygem-html2haml"/>
-      <repopackage name="ruby3.1-rubygem-http"/>
-      <repopackage name="ruby3.1-rubygem-http-cookie"/>
-      <repopackage name="ruby3.1-rubygem-http-form_data"/>
-      <repopackage name="ruby3.1-rubygem-http_parser.rb"/>
-      <repopackage name="ruby3.1-rubygem-httpclient"/>
+      <repopackage name="ruby3.1-rubygem-google-protobuf" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-googleapis-common-protos-types" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gpgme" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-grape" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gssapi" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-gyoku" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-haml" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-haml-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hashdiff" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hashery" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hashicorp-checkpoint" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hashie" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-highline" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hitimes" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hoe" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-hpricot" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-html2haml" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-http" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-http-cookie" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-http-form_data" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-http_parser.rb" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-httpclient" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-i18n"/>
-      <repopackage name="ruby3.1-rubygem-ice_nine"/>
+      <repopackage name="ruby3.1-rubygem-ice_nine" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-importmap-rails"/>
-      <repopackage name="ruby3.1-rubygem-inifile"/>
-      <repopackage name="ruby3.1-rubygem-jaro_winkler"/>
+      <repopackage name="ruby3.1-rubygem-inifile" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-jaro_winkler" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-jbuilder"/>
-      <repopackage name="ruby3.1-rubygem-jekyll"/>
-      <repopackage name="ruby3.1-rubygem-jekyll-sass-converter"/>
-      <repopackage name="ruby3.1-rubygem-jekyll-watch"/>
-      <repopackage name="ruby3.1-rubygem-jquery-rails"/>
-      <repopackage name="ruby3.1-rubygem-js-routes"/>
-      <repopackage name="ruby3.1-rubygem-json"/>
-      <repopackage name="ruby3.1-rubygem-json-jwt"/>
-      <repopackage name="ruby3.1-rubygem-json-schema"/>
-      <repopackage name="ruby3.1-rubygem-json_pure"/>
-      <repopackage name="ruby3.1-rubygem-jwt"/>
-      <repopackage name="ruby3.1-rubygem-kgio"/>
-      <repopackage name="ruby3.1-rubygem-kramdown"/>
-      <repopackage name="ruby3.1-rubygem-kramdown-parser-gfm"/>
-      <repopackage name="ruby3.1-rubygem-launchy"/>
-      <repopackage name="ruby3.1-rubygem-libyui-rake"/>
-      <repopackage name="ruby3.1-rubygem-lightbox2"/>
-      <repopackage name="ruby3.1-rubygem-liquid"/>
-      <repopackage name="ruby3.1-rubygem-liquid-4"/>
-      <repopackage name="ruby3.1-rubygem-listen"/>
-      <repopackage name="ruby3.1-rubygem-little-plugger"/>
-      <repopackage name="ruby3.1-rubygem-llhttp-ffi"/>
-      <repopackage name="ruby3.1-rubygem-locale"/>
-      <repopackage name="ruby3.1-rubygem-log4r"/>
-      <repopackage name="ruby3.1-rubygem-logging"/>
-      <repopackage name="ruby3.1-rubygem-lolcat"/>
+      <repopackage name="ruby3.1-rubygem-jekyll" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-jekyll-sass-converter" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-jekyll-watch" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-jquery-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-js-routes" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-json" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-json-jwt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-json-schema" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-json_pure" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-jwt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-kgio" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-kramdown" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-kramdown-parser-gfm" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-launchy" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-libyui-rake" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-lightbox2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-liquid" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-liquid-4" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-listen" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-little-plugger" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-llhttp-ffi" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-locale" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-log4r" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-logging" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-lolcat" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-loofah"/>
-      <repopackage name="ruby3.1-rubygem-mail"/>
-      <repopackage name="ruby3.1-rubygem-manpages"/>
-      <repopackage name="ruby3.1-rubygem-marcel"/>
-      <repopackage name="ruby3.1-rubygem-mercenary"/>
+      <repopackage name="ruby3.1-rubygem-mail" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-manpages" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-marcel" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mercenary" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-method_source"/>
-      <repopackage name="ruby3.1-rubygem-micromachine"/>
-      <repopackage name="ruby3.1-rubygem-mime"/>
-      <repopackage name="ruby3.1-rubygem-mime-types"/>
-      <repopackage name="ruby3.1-rubygem-mime-types-data"/>
-      <repopackage name="ruby3.1-rubygem-mimemagic"/>
-      <repopackage name="ruby3.1-rubygem-mini_magick"/>
-      <repopackage name="ruby3.1-rubygem-mini_mime"/>
-      <repopackage name="ruby3.1-rubygem-mini_portile2"/>
-      <repopackage name="ruby3.1-rubygem-minitar"/>
-      <repopackage name="ruby3.1-rubygem-mixlib-authentication"/>
-      <repopackage name="ruby3.1-rubygem-mixlib-cli"/>
-      <repopackage name="ruby3.1-rubygem-mixlib-config"/>
-      <repopackage name="ruby3.1-rubygem-mixlib-log"/>
-      <repopackage name="ruby3.1-rubygem-mixlib-shellout"/>
-      <repopackage name="ruby3.1-rubygem-mocha"/>
-      <repopackage name="ruby3.1-rubygem-moneta"/>
+      <repopackage name="ruby3.1-rubygem-micromachine" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mime" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mime-types" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mime-types-data" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mimemagic" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mini_magick" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mini_mime" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mini_portile2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-minitar" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mixlib-authentication" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mixlib-cli" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mixlib-config" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mixlib-log" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mixlib-shellout" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mocha" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-moneta" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-msgpack"/>
-      <repopackage name="ruby3.1-rubygem-multi_json"/>
-      <repopackage name="ruby3.1-rubygem-multi_xml"/>
-      <repopackage name="ruby3.1-rubygem-multipart-post"/>
-      <repopackage name="ruby3.1-rubygem-mustache"/>
-      <repopackage name="ruby3.1-rubygem-mustermann"/>
-      <repopackage name="ruby3.1-rubygem-mustermann-grape"/>
-      <repopackage name="ruby3.1-rubygem-mysql2"/>
-      <repopackage name="ruby3.1-rubygem-net-ldap"/>
-      <repopackage name="ruby3.1-rubygem-net-scp"/>
-      <repopackage name="ruby3.1-rubygem-net-sftp"/>
-      <repopackage name="ruby3.1-rubygem-net-ssh"/>
-      <repopackage name="ruby3.1-rubygem-net-ssh-6.1"/>
-      <repopackage name="ruby3.1-rubygem-netrc"/>
+      <repopackage name="ruby3.1-rubygem-multi_json" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-multi_xml" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-multipart-post" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mustache" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mustermann" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mustermann-grape" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-mysql2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-net-ldap" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-net-scp" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-net-sftp" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-net-ssh" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-net-ssh-6.1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-netrc" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-nio4r"/>
       <repopackage name="ruby3.1-rubygem-nokogiri"/>
-      <repopackage name="ruby3.1-rubygem-nori"/>
-      <repopackage name="ruby3.1-rubygem-oauth2"/>
-      <repopackage name="ruby3.1-rubygem-omniauth"/>
-      <repopackage name="ruby3.1-rubygem-omniauth-oauth2"/>
-      <repopackage name="ruby3.1-rubygem-openid_connect"/>
-      <repopackage name="ruby3.1-rubygem-optimist"/>
-      <repopackage name="ruby3.1-rubygem-orm_adapter"/>
-      <repopackage name="ruby3.1-rubygem-os"/>
-      <repopackage name="ruby3.1-rubygem-packaging_rake_tasks"/>
-      <repopackage name="ruby3.1-rubygem-paint"/>
-      <repopackage name="ruby3.1-rubygem-pairing_heap"/>
-      <repopackage name="ruby3.1-rubygem-parallel"/>
-      <repopackage name="ruby3.1-rubygem-parallel_tests"/>
-      <repopackage name="ruby3.1-rubygem-parser"/>
-      <repopackage name="ruby3.1-rubygem-passenger"/>
-      <repopackage name="ruby3.1-rubygem-path_expander"/>
-      <repopackage name="ruby3.1-rubygem-pathutil"/>
-      <repopackage name="ruby3.1-rubygem-pdf-core"/>
-      <repopackage name="ruby3.1-rubygem-pdf-reader"/>
-      <repopackage name="ruby3.1-rubygem-pg"/>
-      <repopackage name="ruby3.1-rubygem-pkg-config"/>
-      <repopackage name="ruby3.1-rubygem-po_to_json"/>
-      <repopackage name="ruby3.1-rubygem-polyglot"/>
-      <repopackage name="ruby3.1-rubygem-prawn"/>
-      <repopackage name="ruby3.1-rubygem-prawn-core"/>
-      <repopackage name="ruby3.1-rubygem-prawn-icon"/>
-      <repopackage name="ruby3.1-rubygem-prawn-svg"/>
-      <repopackage name="ruby3.1-rubygem-prawn-table"/>
-      <repopackage name="ruby3.1-rubygem-prawn-templates"/>
-      <repopackage name="ruby3.1-rubygem-pry"/>
-      <repopackage name="ruby3.1-rubygem-pry-doc"/>
-      <repopackage name="ruby3.1-rubygem-public_suffix"/>
-      <repopackage name="ruby3.1-rubygem-public_suffix-3.1"/>
-      <repopackage name="ruby3.1-rubygem-puma"/>
+      <repopackage name="ruby3.1-rubygem-nori" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-oauth2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-omniauth" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-omniauth-oauth2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-openid_connect" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-optimist" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-orm_adapter" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-os" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-packaging_rake_tasks" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-paint" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pairing_heap" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-parallel" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-parallel_tests" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-parser" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-passenger" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-path_expander" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pathutil" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pdf-core" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pdf-reader" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pg" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pkg-config" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-po_to_json" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-polyglot" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn-core" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn-icon" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn-svg" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn-table" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-prawn-templates" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pry" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pry-doc" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-public_suffix" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-public_suffix-3.1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-puma" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-puma-5"/>
-      <repopackage name="ruby3.1-rubygem-puma_worker_killer"/>
-      <repopackage name="ruby3.1-rubygem-pundit"/>
-      <repopackage name="ruby3.1-rubygem-rack"/>
+      <repopackage name="ruby3.1-rubygem-puma_worker_killer" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-pundit" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rack" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-rack-2.2"/>
-      <repopackage name="ruby3.1-rubygem-rack-accept"/>
-      <repopackage name="ruby3.1-rubygem-rack-oauth2"/>
-      <repopackage name="ruby3.1-rubygem-rack-protection"/>
-      <repopackage name="ruby3.1-rubygem-rack-proxy"/>
+      <repopackage name="ruby3.1-rubygem-rack-accept" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rack-oauth2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rack-protection" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rack-proxy" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby3.1-rubygem-rails-7.0"/>
+      <repopackage name="ruby3.1-rubygem-rails-7.0" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.1-rubygem-rails-html-sanitizer"/>
-      <repopackage name="ruby3.1-rubygem-rails-i18n"/>
+      <repopackage name="ruby3.1-rubygem-rails-i18n" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-railties-7.0"/>
-      <repopackage name="ruby3.1-rubygem-rainbow"/>
-      <repopackage name="ruby3.1-rubygem-raindrops"/>
-      <repopackage name="ruby3.1-rubygem-rake-compiler"/>
-      <repopackage name="ruby3.1-rubygem-rb-fsevent"/>
-      <repopackage name="ruby3.1-rubygem-rb-inotify"/>
-      <repopackage name="ruby3.1-rubygem-rb-kqueue"/>
-      <repopackage name="ruby3.1-rubygem-rdiscount"/>
-      <repopackage name="ruby3.1-rubygem-red-datasets"/>
-      <repopackage name="ruby3.1-rubygem-regexp_parser"/>
-      <repopackage name="ruby3.1-rubygem-responders"/>
-      <repopackage name="ruby3.1-rubygem-reverse_markdown"/>
-      <repopackage name="ruby3.1-rubygem-rgl"/>
-      <repopackage name="ruby3.1-rubygem-rice"/>
-      <repopackage name="ruby3.1-rubygem-ronn"/>
-      <repopackage name="ruby3.1-rubygem-rouge"/>
-      <repopackage name="ruby3.1-rubygem-rpm"/>
-      <repopackage name="ruby3.1-rubygem-rspec"/>
-      <repopackage name="ruby3.1-rubygem-rspec-3_5"/>
-      <repopackage name="ruby3.1-rubygem-rspec-core"/>
-      <repopackage name="ruby3.1-rubygem-rspec-core-3_5"/>
-      <repopackage name="ruby3.1-rubygem-rspec-expectations"/>
-      <repopackage name="ruby3.1-rubygem-rspec-expectations-3_5"/>
-      <repopackage name="ruby3.1-rubygem-rspec-its"/>
-      <repopackage name="ruby3.1-rubygem-rspec-mocks"/>
-      <repopackage name="ruby3.1-rubygem-rspec-mocks-3_5"/>
-      <repopackage name="ruby3.1-rubygem-rspec-rails"/>
-      <repopackage name="ruby3.1-rubygem-rspec-rails-4.0"/>
-      <repopackage name="ruby3.1-rubygem-rspec-support"/>
-      <repopackage name="ruby3.1-rubygem-rspec-support-3_5"/>
-      <repopackage name="ruby3.1-rubygem-rubocop"/>
-      <repopackage name="ruby3.1-rubygem-rubocop-ast"/>
-      <repopackage name="ruby3.1-rubygem-ruby-augeas"/>
-      <repopackage name="ruby3.1-rubygem-ruby-dbus"/>
-      <repopackage name="ruby3.1-rubygem-ruby-libvirt"/>
-      <repopackage name="ruby3.1-rubygem-ruby-openid"/>
-      <repopackage name="ruby3.1-rubygem-ruby-progressbar"/>
-      <repopackage name="ruby3.1-rubygem-ruby-rc4"/>
-      <repopackage name="ruby3.1-rubygem-ruby2_keywords"/>
-      <repopackage name="ruby3.1-rubygem-ruby_parser"/>
-      <repopackage name="ruby3.1-rubygem-rubyntlm"/>
-      <repopackage name="ruby3.1-rubygem-rubyzip"/>
-      <repopackage name="ruby3.1-rubygem-safe_yaml"/>
-      <repopackage name="ruby3.1-rubygem-sass"/>
-      <repopackage name="ruby3.1-rubygem-sass-listen"/>
-      <repopackage name="ruby3.1-rubygem-sass-rails"/>
-      <repopackage name="ruby3.1-rubygem-sass-rails-5.1"/>
-      <repopackage name="ruby3.1-rubygem-sassc"/>
-      <repopackage name="ruby3.1-rubygem-sassc-2.2"/>
-      <repopackage name="ruby3.1-rubygem-sassc-rails"/>
-      <repopackage name="ruby3.1-rubygem-sdoc"/>
-      <repopackage name="ruby3.1-rubygem-semantic_range"/>
-      <repopackage name="ruby3.1-rubygem-serverengine"/>
-      <repopackage name="ruby3.1-rubygem-sexp_processor"/>
-      <repopackage name="ruby3.1-rubygem-sigdump"/>
-      <repopackage name="ruby3.1-rubygem-simplecov"/>
-      <repopackage name="ruby3.1-rubygem-simplecov-html"/>
-      <repopackage name="ruby3.1-rubygem-simplecov_json_formatter"/>
-      <repopackage name="ruby3.1-rubygem-simpleidn"/>
-      <repopackage name="ruby3.1-rubygem-slim"/>
-      <repopackage name="ruby3.1-rubygem-slop"/>
-      <repopackage name="ruby3.1-rubygem-snaky_hash"/>
-      <repopackage name="ruby3.1-rubygem-spring"/>
+      <repopackage name="ruby3.1-rubygem-rainbow" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-raindrops" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rake-compiler" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rb-fsevent" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rb-inotify" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rb-kqueue" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rdiscount" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-red-datasets" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-regexp_parser" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-responders" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-reverse_markdown" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rgl" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rice" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ronn" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rouge" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rpm" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-3_5" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-core" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-core-3_5" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-expectations" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-expectations-3_5" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-its" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-mocks" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-mocks-3_5" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-rails-4.0" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-support" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rspec-support-3_5" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rubocop" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rubocop-ast" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-augeas" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-dbus" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-libvirt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-openid" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-progressbar" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby-rc4" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby2_keywords" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ruby_parser" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rubyntlm" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-rubyzip" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-safe_yaml" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sass" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sass-listen" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sass-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sass-rails-5.1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sassc" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sassc-2.2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sassc-rails" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sdoc" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-semantic_range" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-serverengine" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sexp_processor" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sigdump" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-simplecov" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-simplecov-html" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-simplecov_json_formatter" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-simpleidn" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-slim" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-slop" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-snaky_hash" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-spring" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-sprockets"/>
-      <repopackage name="ruby3.1-rubygem-sprockets-3.7"/>
-      <repopackage name="ruby3.1-rubygem-sprockets-helpers"/>
+      <repopackage name="ruby3.1-rubygem-sprockets-3.7" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sprockets-helpers" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-sprockets-rails"/>
       <repopackage name="ruby3.1-rubygem-sqlite3"/>
-      <repopackage name="ruby3.1-rubygem-sshkit"/>
+      <repopackage name="ruby3.1-rubygem-sshkit" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-stimulus-rails"/>
-      <repopackage name="ruby3.1-rubygem-stomp"/>
-      <repopackage name="ruby3.1-rubygem-stream"/>
-      <repopackage name="ruby3.1-rubygem-strptime"/>
-      <repopackage name="ruby3.1-rubygem-swd"/>
-      <repopackage name="ruby3.1-rubygem-sync"/>
-      <repopackage name="ruby3.1-rubygem-temple"/>
-      <repopackage name="ruby3.1-rubygem-terminal-table"/>
-      <repopackage name="ruby3.1-rubygem-terminal-table-2"/>
-      <repopackage name="ruby3.1-rubygem-text"/>
+      <repopackage name="ruby3.1-rubygem-stomp" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-stream" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-strptime" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-swd" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-sync" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-temple" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-terminal-table" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-terminal-table-2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-text" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-thor"/>
-      <repopackage name="ruby3.1-rubygem-thread_safe"/>
-      <repopackage name="ruby3.1-rubygem-tilt"/>
-      <repopackage name="ruby3.1-rubygem-timers"/>
-      <repopackage name="ruby3.1-rubygem-tmuxinator"/>
-      <repopackage name="ruby3.1-rubygem-tomlrb"/>
-      <repopackage name="ruby3.1-rubygem-treetop"/>
-      <repopackage name="ruby3.1-rubygem-trollop"/>
-      <repopackage name="ruby3.1-rubygem-ttfunk"/>
+      <repopackage name="ruby3.1-rubygem-thread_safe" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-tilt" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-timers" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-tmuxinator" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-tomlrb" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-treetop" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-trollop" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-ttfunk" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-turbo-rails"/>
-      <repopackage name="ruby3.1-rubygem-turbolinks"/>
-      <repopackage name="ruby3.1-rubygem-turbolinks-source"/>
+      <repopackage name="ruby3.1-rubygem-turbolinks" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-turbolinks-source" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-tzinfo"/>
-      <repopackage name="ruby3.1-rubygem-tzinfo-1.2"/>
-      <repopackage name="ruby3.1-rubygem-tzinfo-data"/>
-      <repopackage name="ruby3.1-rubygem-uglifier"/>
-      <repopackage name="ruby3.1-rubygem-unf"/>
-      <repopackage name="ruby3.1-rubygem-unf_ext"/>
-      <repopackage name="ruby3.1-rubygem-unicode-display_width"/>
-      <repopackage name="ruby3.1-rubygem-unicode-display_width-1"/>
-      <repopackage name="ruby3.1-rubygem-vagrant-spec"/>
-      <repopackage name="ruby3.1-rubygem-vagrant_cloud"/>
-      <repopackage name="ruby3.1-rubygem-validate_email"/>
-      <repopackage name="ruby3.1-rubygem-validate_url"/>
-      <repopackage name="ruby3.1-rubygem-version_gem"/>
-      <repopackage name="ruby3.1-rubygem-virtus"/>
-      <repopackage name="ruby3.1-rubygem-warden"/>
+      <repopackage name="ruby3.1-rubygem-tzinfo-1.2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-tzinfo-data" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-uglifier" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-unf" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-unf_ext" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-unicode-display_width" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-unicode-display_width-1" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-vagrant-spec" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-vagrant_cloud" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-validate_email" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-validate_url" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-version_gem" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-virtus" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-warden" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-web-console"/>
-      <repopackage name="ruby3.1-rubygem-webfinger"/>
-      <repopackage name="ruby3.1-rubygem-webpacker"/>
-      <repopackage name="ruby3.1-rubygem-webrick"/>
-      <repopackage name="ruby3.1-rubygem-websocket"/>
-      <repopackage name="ruby3.1-rubygem-websocket-driver"/>
-      <repopackage name="ruby3.1-rubygem-websocket-extensions"/>
-      <repopackage name="ruby3.1-rubygem-winrm"/>
-      <repopackage name="ruby3.1-rubygem-winrm-elevated"/>
-      <repopackage name="ruby3.1-rubygem-winrm-fs"/>
-      <repopackage name="ruby3.1-rubygem-xdg"/>
-      <repopackage name="ruby3.1-rubygem-xdg-2"/>
-      <repopackage name="ruby3.1-rubygem-xml-simple"/>
-      <repopackage name="ruby3.1-rubygem-xmlhash"/>
-      <repopackage name="ruby3.1-rubygem-xmlrpc"/>
-      <repopackage name="ruby3.1-rubygem-yajl-ruby"/>
-      <repopackage name="ruby3.1-rubygem-yard"/>
-      <repopackage name="ruby3.1-rubygem-yast-rake"/>
+      <repopackage name="ruby3.1-rubygem-webfinger" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-webpacker" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-webrick" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-websocket" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-websocket-driver" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-websocket-extensions" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-winrm" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-winrm-elevated" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-winrm-fs" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-xdg" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-xdg-2" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-xml-simple" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-xmlhash" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-xmlrpc" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-yajl-ruby" arch="x86_64"/>
+      <repopackage name="ruby3.1-rubygem-yard" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-zeitwerk"/>
-      <repopackage name="rubygem-passenger"/>
-      <repopackage name="rubygem-passenger-apache2"/>
+      <repopackage name="ruby3.2"/>
+      <repopackage name="ruby3.2-rubygem-abstract_method"/>
+      <repopackage name="ruby3.2-rubygem-actioncable-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actionmailbox-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actionmailer-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actionpack-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actiontext-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actionview-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activejob-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activemodel-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activerecord-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activestorage-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activesupport-7.0"/>
+      <repopackage name="ruby3.2-rubygem-addressable"/>
+      <repopackage name="ruby3.2-rubygem-aes_key_wrap"/>
+      <repopackage name="ruby3.2-rubygem-afm"/>
+      <repopackage name="ruby3.2-rubygem-airbrussh"/>
+      <repopackage name="ruby3.2-rubygem-amq-protocol"/>
+      <repopackage name="ruby3.2-rubygem-arel"/>
+      <repopackage name="ruby3.2-rubygem-Ascii85"/>
+      <repopackage name="ruby3.2-rubygem-asciidoctor"/>
+      <repopackage name="ruby3.2-rubygem-ast"/>
+      <repopackage name="ruby3.2-rubygem-attr_required"/>
+      <repopackage name="ruby3.2-rubygem-autoprefixer-rails"/>
+      <repopackage name="ruby3.2-rubygem-axiom-types"/>
+      <repopackage name="ruby3.2-rubygem-backport"/>
+      <repopackage name="ruby3.2-rubygem-base32"/>
+      <repopackage name="ruby3.2-rubygem-bcrypt"/>
+      <repopackage name="ruby3.2-rubygem-bcrypt_pbkdf"/>
+      <repopackage name="ruby3.2-rubygem-benchmark"/>
+      <repopackage name="ruby3.2-rubygem-bindata"/>
+      <repopackage name="ruby3.2-rubygem-bindex"/>
+      <repopackage name="ruby3.2-rubygem-binding_of_caller"/>
+      <repopackage name="ruby3.2-rubygem-bootsnap"/>
+      <repopackage name="ruby3.2-rubygem-builder"/>
+      <repopackage name="ruby3.2-rubygem-bundler"/>
+      <repopackage name="ruby3.2-rubygem-bundler-audit"/>
+      <repopackage name="ruby3.2-rubygem-byebug"/>
+      <repopackage name="ruby3.2-rubygem-capistrano"/>
+      <repopackage name="ruby3.2-rubygem-celluloid"/>
+      <repopackage name="ruby3.2-rubygem-cfa"/>
+      <repopackage name="ruby3.2-rubygem-cfa_grub2"/>
+      <repopackage name="ruby3.2-rubygem-changelog_generator"/>
+      <repopackage name="ruby3.2-rubygem-cheetah"/>
+      <repopackage name="ruby3.2-rubygem-chef-utils"/>
+      <repopackage name="ruby3.2-rubygem-childprocess"/>
+      <repopackage name="ruby3.2-rubygem-coderay"/>
+      <repopackage name="ruby3.2-rubygem-coercible"/>
+      <repopackage name="ruby3.2-rubygem-coffee-rails"/>
+      <repopackage name="ruby3.2-rubygem-coffee-script"/>
+      <repopackage name="ruby3.2-rubygem-coffee-script-source"/>
+      <repopackage name="ruby3.2-rubygem-colorator"/>
+      <repopackage name="ruby3.2-rubygem-commander"/>
+      <repopackage name="ruby3.2-rubygem-concurrent-ruby"/>
+      <repopackage name="ruby3.2-rubygem-cool.io"/>
+      <repopackage name="ruby3.2-rubygem-crack"/>
+      <repopackage name="ruby3.2-rubygem-crass"/>
+      <repopackage name="ruby3.2-rubygem-cri"/>
+      <repopackage name="ruby3.2-rubygem-css_parser"/>
+      <repopackage name="ruby3.2-rubygem-csv"/>
+      <repopackage name="ruby3.2-rubygem-debase-ruby_core_source"/>
+      <repopackage name="ruby3.2-rubygem-debug_inspector"/>
+      <repopackage name="ruby3.2-rubygem-delayed_job"/>
+      <repopackage name="ruby3.2-rubygem-delayed_job_active_record"/>
+      <repopackage name="ruby3.2-rubygem-descendants_tracker"/>
+      <repopackage name="ruby3.2-rubygem-devise"/>
+      <repopackage name="ruby3.2-rubygem-devise-i18n"/>
+      <repopackage name="ruby3.2-rubygem-devise_ldap_authenticatable"/>
+      <repopackage name="ruby3.2-rubygem-diff-lcs"/>
+      <repopackage name="ruby3.2-rubygem-diffy"/>
+      <repopackage name="ruby3.2-rubygem-docile"/>
+      <repopackage name="ruby3.2-rubygem-docker-api"/>
+      <repopackage name="ruby3.2-rubygem-domain_name"/>
+      <repopackage name="ruby3.2-rubygem-down"/>
+      <repopackage name="ruby3.2-rubygem-dry-configurable"/>
+      <repopackage name="ruby3.2-rubygem-dry-container"/>
+      <repopackage name="ruby3.2-rubygem-dry-core"/>
+      <repopackage name="ruby3.2-rubygem-dry-equalizer"/>
+      <repopackage name="ruby3.2-rubygem-dry-inflector"/>
+      <repopackage name="ruby3.2-rubygem-dry-logic"/>
+      <repopackage name="ruby3.2-rubygem-dry-types"/>
+      <repopackage name="ruby3.2-rubygem-ed25519"/>
+      <repopackage name="ruby3.2-rubygem-em-websocket"/>
+      <repopackage name="ruby3.2-rubygem-equalizer"/>
+      <repopackage name="ruby3.2-rubygem-erubi"/>
+      <repopackage name="ruby3.2-rubygem-erubis"/>
+      <repopackage name="ruby3.2-rubygem-eventmachine"/>
+      <repopackage name="ruby3.2-rubygem-exception_notification"/>
+      <repopackage name="ruby3.2-rubygem-excon"/>
+      <repopackage name="ruby3.2-rubygem-execjs"/>
+      <repopackage name="ruby3.2-rubygem-fake_ftp"/>
+      <repopackage name="ruby3.2-rubygem-fake_ftp-0_1"/>
+      <repopackage name="ruby3.2-rubygem-faraday"/>
+      <repopackage name="ruby3.2-rubygem-faraday-follow_redirects"/>
+      <repopackage name="ruby3.2-rubygem-faraday-net_http"/>
+      <repopackage name="ruby3.2-rubygem-fast_gettext"/>
+      <repopackage name="ruby3.2-rubygem-fast_gettext-1.1"/>
+      <repopackage name="ruby3.2-rubygem-ffi"/>
+      <repopackage name="ruby3.2-rubygem-ffi-compiler"/>
+      <repopackage name="ruby3.2-rubygem-flog"/>
+      <repopackage name="ruby3.2-rubygem-fluentd"/>
+      <repopackage name="ruby3.2-rubygem-fog-core"/>
+      <repopackage name="ruby3.2-rubygem-fog-json"/>
+      <repopackage name="ruby3.2-rubygem-fog-libvirt"/>
+      <repopackage name="ruby3.2-rubygem-fog-xml"/>
+      <repopackage name="ruby3.2-rubygem-font-awesome-rails"/>
+      <repopackage name="ruby3.2-rubygem-formatador"/>
+      <repopackage name="ruby3.2-rubygem-forwardable-extended"/>
+      <repopackage name="ruby3.2-rubygem-gem2rpm"/>
+      <repopackage name="ruby3.2-rubygem-get_process_mem"/>
+      <repopackage name="ruby3.2-rubygem-gettext"/>
+      <repopackage name="ruby3.2-rubygem-gettext_i18n_rails"/>
+      <repopackage name="ruby3.2-rubygem-gettext_i18n_rails_js"/>
+      <repopackage name="ruby3.2-rubygem-gli"/>
+      <repopackage name="ruby3.2-rubygem-globalid"/>
+      <repopackage name="ruby3.2-rubygem-google-protobuf"/>
+      <repopackage name="ruby3.2-rubygem-googleapis-common-protos-types"/>
+      <repopackage name="ruby3.2-rubygem-gpgme"/>
+      <repopackage name="ruby3.2-rubygem-grape"/>
+      <repopackage name="ruby3.2-rubygem-grpc"/>
+      <repopackage name="ruby3.2-rubygem-gssapi"/>
+      <repopackage name="ruby3.2-rubygem-gyoku"/>
+      <repopackage name="ruby3.2-rubygem-haml"/>
+      <repopackage name="ruby3.2-rubygem-haml-rails"/>
+      <repopackage name="ruby3.2-rubygem-hashdiff"/>
+      <repopackage name="ruby3.2-rubygem-hashery"/>
+      <repopackage name="ruby3.2-rubygem-hashicorp-checkpoint"/>
+      <repopackage name="ruby3.2-rubygem-hashie"/>
+      <repopackage name="ruby3.2-rubygem-highline"/>
+      <repopackage name="ruby3.2-rubygem-hitimes"/>
+      <repopackage name="ruby3.2-rubygem-hoe"/>
+      <repopackage name="ruby3.2-rubygem-hpricot"/>
+      <repopackage name="ruby3.2-rubygem-html2haml"/>
+      <repopackage name="ruby3.2-rubygem-http"/>
+      <repopackage name="ruby3.2-rubygem-http-cookie"/>
+      <repopackage name="ruby3.2-rubygem-http-form_data"/>
+      <repopackage name="ruby3.2-rubygem-http_parser.rb"/>
+      <repopackage name="ruby3.2-rubygem-httpclient"/>
+      <repopackage name="ruby3.2-rubygem-i18n"/>
+      <repopackage name="ruby3.2-rubygem-ice_nine"/>
+      <repopackage name="ruby3.2-rubygem-importmap-rails"/>
+      <repopackage name="ruby3.2-rubygem-inifile"/>
+      <repopackage name="ruby3.2-rubygem-jaro_winkler"/>
+      <repopackage name="ruby3.2-rubygem-jbuilder"/>
+      <repopackage name="ruby3.2-rubygem-jekyll"/>
+      <repopackage name="ruby3.2-rubygem-jekyll-sass-converter"/>
+      <repopackage name="ruby3.2-rubygem-jekyll-watch"/>
+      <repopackage name="ruby3.2-rubygem-jquery-rails"/>
+      <repopackage name="ruby3.2-rubygem-js-routes"/>
+      <repopackage name="ruby3.2-rubygem-json"/>
+      <repopackage name="ruby3.2-rubygem-json-jwt"/>
+      <repopackage name="ruby3.2-rubygem-json-schema"/>
+      <repopackage name="ruby3.2-rubygem-json_pure"/>
+      <repopackage name="ruby3.2-rubygem-jwt"/>
+      <repopackage name="ruby3.2-rubygem-kgio"/>
+      <repopackage name="ruby3.2-rubygem-kramdown"/>
+      <repopackage name="ruby3.2-rubygem-kramdown-parser-gfm"/>
+      <repopackage name="ruby3.2-rubygem-launchy"/>
+      <repopackage name="ruby3.2-rubygem-libyui-rake"/>
+      <repopackage name="ruby3.2-rubygem-lightbox2"/>
+      <repopackage name="ruby3.2-rubygem-liquid"/>
+      <repopackage name="ruby3.2-rubygem-liquid-4"/>
+      <repopackage name="ruby3.2-rubygem-listen"/>
+      <repopackage name="ruby3.2-rubygem-little-plugger"/>
+      <repopackage name="ruby3.2-rubygem-llhttp-ffi"/>
+      <repopackage name="ruby3.2-rubygem-locale"/>
+      <repopackage name="ruby3.2-rubygem-log4r"/>
+      <repopackage name="ruby3.2-rubygem-logging"/>
+      <repopackage name="ruby3.2-rubygem-lolcat"/>
+      <repopackage name="ruby3.2-rubygem-loofah"/>
+      <repopackage name="ruby3.2-rubygem-mail"/>
+      <repopackage name="ruby3.2-rubygem-manpages"/>
+      <repopackage name="ruby3.2-rubygem-marcel"/>
+      <repopackage name="ruby3.2-rubygem-mercenary"/>
+      <repopackage name="ruby3.2-rubygem-method_source"/>
+      <repopackage name="ruby3.2-rubygem-micromachine"/>
+      <repopackage name="ruby3.2-rubygem-mime"/>
+      <repopackage name="ruby3.2-rubygem-mime-types"/>
+      <repopackage name="ruby3.2-rubygem-mime-types-data"/>
+      <repopackage name="ruby3.2-rubygem-mimemagic"/>
+      <repopackage name="ruby3.2-rubygem-mini_magick"/>
+      <repopackage name="ruby3.2-rubygem-mini_mime"/>
+      <repopackage name="ruby3.2-rubygem-mini_portile2"/>
+      <repopackage name="ruby3.2-rubygem-minitar"/>
+      <repopackage name="ruby3.2-rubygem-mixlib-authentication"/>
+      <repopackage name="ruby3.2-rubygem-mixlib-cli"/>
+      <repopackage name="ruby3.2-rubygem-mixlib-config"/>
+      <repopackage name="ruby3.2-rubygem-mixlib-log"/>
+      <repopackage name="ruby3.2-rubygem-mixlib-shellout"/>
+      <repopackage name="ruby3.2-rubygem-mocha"/>
+      <repopackage name="ruby3.2-rubygem-moneta"/>
+      <repopackage name="ruby3.2-rubygem-msgpack"/>
+      <repopackage name="ruby3.2-rubygem-multi_json"/>
+      <repopackage name="ruby3.2-rubygem-multi_xml"/>
+      <repopackage name="ruby3.2-rubygem-multipart-post"/>
+      <repopackage name="ruby3.2-rubygem-mustache"/>
+      <repopackage name="ruby3.2-rubygem-mustermann"/>
+      <repopackage name="ruby3.2-rubygem-mustermann-grape"/>
+      <repopackage name="ruby3.2-rubygem-mysql2"/>
+      <repopackage name="ruby3.2-rubygem-net-ldap"/>
+      <repopackage name="ruby3.2-rubygem-net-scp"/>
+      <repopackage name="ruby3.2-rubygem-net-sftp"/>
+      <repopackage name="ruby3.2-rubygem-net-ssh"/>
+      <repopackage name="ruby3.2-rubygem-net-ssh-6.1"/>
+      <repopackage name="ruby3.2-rubygem-netrc"/>
+      <repopackage name="ruby3.2-rubygem-nio4r"/>
+      <repopackage name="ruby3.2-rubygem-nokogiri"/>
+      <repopackage name="ruby3.2-rubygem-nori"/>
+      <repopackage name="ruby3.2-rubygem-oauth2"/>
+      <repopackage name="ruby3.2-rubygem-omniauth"/>
+      <repopackage name="ruby3.2-rubygem-omniauth-oauth2"/>
+      <repopackage name="ruby3.2-rubygem-openid_connect"/>
+      <repopackage name="ruby3.2-rubygem-optimist"/>
+      <repopackage name="ruby3.2-rubygem-orm_adapter"/>
+      <repopackage name="ruby3.2-rubygem-os"/>
+      <repopackage name="ruby3.2-rubygem-packaging_rake_tasks"/>
+      <repopackage name="ruby3.2-rubygem-paint"/>
+      <repopackage name="ruby3.2-rubygem-pairing_heap"/>
+      <repopackage name="ruby3.2-rubygem-parallel"/>
+      <repopackage name="ruby3.2-rubygem-parallel_tests"/>
+      <repopackage name="ruby3.2-rubygem-parser"/>
+      <repopackage name="ruby3.2-rubygem-path_expander"/>
+      <repopackage name="ruby3.2-rubygem-pathutil"/>
+      <repopackage name="ruby3.2-rubygem-pdf-core"/>
+      <repopackage name="ruby3.2-rubygem-pdf-reader"/>
+      <repopackage name="ruby3.2-rubygem-pg"/>
+      <repopackage name="ruby3.2-rubygem-pkg-config"/>
+      <repopackage name="ruby3.2-rubygem-po_to_json"/>
+      <repopackage name="ruby3.2-rubygem-polyglot"/>
+      <repopackage name="ruby3.2-rubygem-prawn"/>
+      <repopackage name="ruby3.2-rubygem-prawn-core"/>
+      <repopackage name="ruby3.2-rubygem-prawn-icon"/>
+      <repopackage name="ruby3.2-rubygem-prawn-svg"/>
+      <repopackage name="ruby3.2-rubygem-prawn-table"/>
+      <repopackage name="ruby3.2-rubygem-prawn-templates"/>
+      <repopackage name="ruby3.2-rubygem-pry"/>
+      <repopackage name="ruby3.2-rubygem-pry-doc"/>
+      <repopackage name="ruby3.2-rubygem-public_suffix"/>
+      <repopackage name="ruby3.2-rubygem-public_suffix-3.1"/>
+      <repopackage name="ruby3.2-rubygem-puma"/>
+      <repopackage name="ruby3.2-rubygem-puma-5"/>
+      <repopackage name="ruby3.2-rubygem-puma_worker_killer"/>
+      <repopackage name="ruby3.2-rubygem-pundit"/>
+      <repopackage name="ruby3.2-rubygem-rack"/>
+      <repopackage name="ruby3.2-rubygem-rack-2.2"/>
+      <repopackage name="ruby3.2-rubygem-rack-accept"/>
+      <repopackage name="ruby3.2-rubygem-rack-oauth2"/>
+      <repopackage name="ruby3.2-rubygem-rack-protection"/>
+      <repopackage name="ruby3.2-rubygem-rack-proxy"/>
+      <repopackage name="ruby3.2-rubygem-rack-test-0_6"/>
+      <repopackage name="ruby3.2-rubygem-rails-7.0"/>
+      <repopackage name="ruby3.2-rubygem-rails-dom-testing"/>
+      <repopackage name="ruby3.2-rubygem-rails-html-sanitizer"/>
+      <repopackage name="ruby3.2-rubygem-rails-i18n"/>
+      <repopackage name="ruby3.2-rubygem-railties-7.0"/>
+      <repopackage name="ruby3.2-rubygem-rainbow"/>
+      <repopackage name="ruby3.2-rubygem-raindrops"/>
+      <repopackage name="ruby3.2-rubygem-rake-compiler"/>
+      <repopackage name="ruby3.2-rubygem-rb-fsevent"/>
+      <repopackage name="ruby3.2-rubygem-rb-inotify"/>
+      <repopackage name="ruby3.2-rubygem-rb-kqueue"/>
+      <repopackage name="ruby3.2-rubygem-rdiscount"/>
+      <repopackage name="ruby3.2-rubygem-red-datasets"/>
+      <repopackage name="ruby3.2-rubygem-regexp_parser"/>
+      <repopackage name="ruby3.2-rubygem-responders"/>
+      <repopackage name="ruby3.2-rubygem-reverse_markdown"/>
+      <repopackage name="ruby3.2-rubygem-rgl"/>
+      <repopackage name="ruby3.2-rubygem-rice"/>
+      <repopackage name="ruby3.2-rubygem-ronn"/>
+      <repopackage name="ruby3.2-rubygem-rouge"/>
+      <repopackage name="ruby3.2-rubygem-rpm"/>
+      <repopackage name="ruby3.2-rubygem-rspec"/>
+      <repopackage name="ruby3.2-rubygem-rspec-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rspec-core"/>
+      <repopackage name="ruby3.2-rubygem-rspec-core-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rspec-expectations"/>
+      <repopackage name="ruby3.2-rubygem-rspec-expectations-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rspec-its"/>
+      <repopackage name="ruby3.2-rubygem-rspec-mocks"/>
+      <repopackage name="ruby3.2-rubygem-rspec-mocks-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rspec-rails"/>
+      <repopackage name="ruby3.2-rubygem-rspec-rails-4.0"/>
+      <repopackage name="ruby3.2-rubygem-rspec-support"/>
+      <repopackage name="ruby3.2-rubygem-rspec-support-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rubocop"/>
+      <repopackage name="ruby3.2-rubygem-rubocop-ast"/>
+      <repopackage name="ruby3.2-rubygem-ruby-augeas"/>
+      <repopackage name="ruby3.2-rubygem-ruby-dbus"/>
+      <repopackage name="ruby3.2-rubygem-ruby-libvirt"/>
+      <repopackage name="ruby3.2-rubygem-ruby-openid"/>
+      <repopackage name="ruby3.2-rubygem-ruby-progressbar"/>
+      <repopackage name="ruby3.2-rubygem-ruby-rc4"/>
+      <repopackage name="ruby3.2-rubygem-ruby2_keywords"/>
+      <repopackage name="ruby3.2-rubygem-ruby_parser"/>
+      <repopackage name="ruby3.2-rubygem-rubyntlm"/>
+      <repopackage name="ruby3.2-rubygem-rubyzip"/>
+      <repopackage name="ruby3.2-rubygem-safe_yaml"/>
+      <repopackage name="ruby3.2-rubygem-sass"/>
+      <repopackage name="ruby3.2-rubygem-sass-listen"/>
+      <repopackage name="ruby3.2-rubygem-sass-rails"/>
+      <repopackage name="ruby3.2-rubygem-sass-rails-5.1"/>
+      <repopackage name="ruby3.2-rubygem-sassc"/>
+      <repopackage name="ruby3.2-rubygem-sassc-2.2"/>
+      <repopackage name="ruby3.2-rubygem-sassc-rails"/>
+      <repopackage name="ruby3.2-rubygem-sdoc"/>
+      <repopackage name="ruby3.2-rubygem-semantic_range"/>
+      <repopackage name="ruby3.2-rubygem-serverengine"/>
+      <repopackage name="ruby3.2-rubygem-sexp_processor"/>
+      <repopackage name="ruby3.2-rubygem-sigdump"/>
+      <repopackage name="ruby3.2-rubygem-simplecov"/>
+      <repopackage name="ruby3.2-rubygem-simplecov-html"/>
+      <repopackage name="ruby3.2-rubygem-simplecov_json_formatter"/>
+      <repopackage name="ruby3.2-rubygem-simpleidn"/>
+      <repopackage name="ruby3.2-rubygem-slim"/>
+      <repopackage name="ruby3.2-rubygem-slop"/>
+      <repopackage name="ruby3.2-rubygem-snaky_hash"/>
+      <repopackage name="ruby3.2-rubygem-spring"/>
+      <repopackage name="ruby3.2-rubygem-sprockets"/>
+      <repopackage name="ruby3.2-rubygem-sprockets-3.7"/>
+      <repopackage name="ruby3.2-rubygem-sprockets-helpers"/>
+      <repopackage name="ruby3.2-rubygem-sprockets-rails"/>
+      <repopackage name="ruby3.2-rubygem-sqlite3"/>
+      <repopackage name="ruby3.2-rubygem-sshkit"/>
+      <repopackage name="ruby3.2-rubygem-stimulus-rails"/>
+      <repopackage name="ruby3.2-rubygem-stomp"/>
+      <repopackage name="ruby3.2-rubygem-stream"/>
+      <repopackage name="ruby3.2-rubygem-strptime"/>
+      <repopackage name="ruby3.2-rubygem-swd"/>
+      <repopackage name="ruby3.2-rubygem-sync"/>
+      <repopackage name="ruby3.2-rubygem-temple"/>
+      <repopackage name="ruby3.2-rubygem-terminal-table"/>
+      <repopackage name="ruby3.2-rubygem-terminal-table-2"/>
+      <repopackage name="ruby3.2-rubygem-text"/>
+      <repopackage name="ruby3.2-rubygem-thor"/>
+      <repopackage name="ruby3.2-rubygem-thread_safe"/>
+      <repopackage name="ruby3.2-rubygem-tilt"/>
+      <repopackage name="ruby3.2-rubygem-timers"/>
+      <repopackage name="ruby3.2-rubygem-tmuxinator"/>
+      <repopackage name="ruby3.2-rubygem-tomlrb"/>
+      <repopackage name="ruby3.2-rubygem-treetop"/>
+      <repopackage name="ruby3.2-rubygem-trollop"/>
+      <repopackage name="ruby3.2-rubygem-ttfunk"/>
+      <repopackage name="ruby3.2-rubygem-turbo-rails"/>
+      <repopackage name="ruby3.2-rubygem-turbolinks"/>
+      <repopackage name="ruby3.2-rubygem-turbolinks-source"/>
+      <repopackage name="ruby3.2-rubygem-tzinfo"/>
+      <repopackage name="ruby3.2-rubygem-tzinfo-1.2"/>
+      <repopackage name="ruby3.2-rubygem-tzinfo-data"/>
+      <repopackage name="ruby3.2-rubygem-uglifier"/>
+      <repopackage name="ruby3.2-rubygem-unf"/>
+      <repopackage name="ruby3.2-rubygem-unf_ext"/>
+      <repopackage name="ruby3.2-rubygem-unicode-display_width"/>
+      <repopackage name="ruby3.2-rubygem-unicode-display_width-1"/>
+      <repopackage name="ruby3.2-rubygem-vagrant-spec"/>
+      <repopackage name="ruby3.2-rubygem-vagrant_cloud"/>
+      <repopackage name="ruby3.2-rubygem-validate_email"/>
+      <repopackage name="ruby3.2-rubygem-validate_url"/>
+      <repopackage name="ruby3.2-rubygem-version_gem"/>
+      <repopackage name="ruby3.2-rubygem-virtus"/>
+      <repopackage name="ruby3.2-rubygem-warden"/>
+      <repopackage name="ruby3.2-rubygem-web-console"/>
+      <repopackage name="ruby3.2-rubygem-webfinger"/>
+      <repopackage name="ruby3.2-rubygem-webpacker"/>
+      <repopackage name="ruby3.2-rubygem-webrick"/>
+      <repopackage name="ruby3.2-rubygem-websocket"/>
+      <repopackage name="ruby3.2-rubygem-websocket-driver"/>
+      <repopackage name="ruby3.2-rubygem-websocket-extensions"/>
+      <repopackage name="ruby3.2-rubygem-winrm"/>
+      <repopackage name="ruby3.2-rubygem-winrm-elevated"/>
+      <repopackage name="ruby3.2-rubygem-winrm-fs"/>
+      <repopackage name="ruby3.2-rubygem-xdg-2"/>
+      <repopackage name="ruby3.2-rubygem-xml-simple"/>
+      <repopackage name="ruby3.2-rubygem-xmlhash"/>
+      <repopackage name="ruby3.2-rubygem-xmlrpc"/>
+      <repopackage name="ruby3.2-rubygem-yajl-ruby"/>
+      <repopackage name="ruby3.2-rubygem-yard"/>
+      <repopackage name="ruby3.2-rubygem-yast-rake"/>
+      <repopackage name="ruby3.2-rubygem-zeitwerk"/>
+      <repopackage name="rubygem-passenger" arch="x86_64"/>
+      <repopackage name="rubygem-passenger-apache2" arch="x86_64"/>
       <repopackage name="rzip"/>
       <repopackage name="sac"/>
       <repopackage name="salt"/>

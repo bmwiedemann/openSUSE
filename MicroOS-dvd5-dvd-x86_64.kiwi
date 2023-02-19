@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230217" schemaversion="4.1">
+<image name="OBS__MicroOS___20230218" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230217</productvar>
+      <productvar name="VERSION">20230218</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230217,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230218,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230217/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230218/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1665,6 +1665,7 @@
       <repopackage name="librscg1_0" arch="x86_64"/>
       <repopackage name="librsvg-2-2"/>
       <repopackage name="libruby3_1-3_1" arch="x86_64"/>
+      <repopackage name="libruby3_2-3_2" arch="x86_64"/>
       <repopackage name="libsamba-policy0-python3" arch="x86_64"/>
       <repopackage name="libsamplerate0" arch="x86_64"/>
       <repopackage name="libsasl2-3"/>
@@ -2447,18 +2448,20 @@
       <repopackage name="ruby-common" arch="x86_64"/>
       <repopackage name="ruby-solv" arch="x86_64"/>
       <repopackage name="ruby3.1" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-abstract_method" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-cfa" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-cfa_grub2" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-cheetah" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-fast_gettext" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-gem2rpm" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-nokogiri" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-ruby-augeas" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-ruby-dbus" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-simpleidn" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-unf" arch="x86_64"/>
-      <repopackage name="ruby3.1-rubygem-unf_ext" arch="x86_64"/>
+      <repopackage name="ruby3.2" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-abstract_method" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-cfa" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-cfa_grub2" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-cheetah" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-fast_gettext" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-gem2rpm" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-nokogiri" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-ruby-augeas" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-ruby-dbus" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-simpleidn" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-unf" arch="x86_64"/>
+      <repopackage name="ruby3.2-rubygem-unf_ext" arch="x86_64"/>
       <repopackage name="runc" arch="x86_64"/>
       <repopackage name="rust-keylime" arch="x86_64"/>
       <repopackage name="sac"/>

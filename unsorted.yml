@@ -1701,6 +1701,7 @@ unsorted:
   - busybox-traceroute 
   - busybox-tunctl 
   - busybox-unzip 
+  - busybox-util-linux 
   - busybox-vi 
   - busybox-vlan 
   - busybox-warewulf3 
@@ -7865,7 +7866,6 @@ unsorted:
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
   - java-13-openjdk 
-  - java-13-openjdk-accessibility 
   - java-13-openjdk-demo 
   - java-13-openjdk-devel 
   - java-13-openjdk-headless 
@@ -7873,7 +7873,6 @@ unsorted:
   - java-13-openjdk-jmods 
   - java-13-openjdk-src 
   - java-15-openjdk 
-  - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
   - java-15-openjdk-headless 
@@ -7897,14 +7896,12 @@ unsorted:
   - java-17-openjdk-jmods 
   - java-17-openjdk-src 
   - java-18-openjdk 
-  - java-18-openjdk-accessibility 
   - java-18-openjdk-demo 
   - java-18-openjdk-devel 
   - java-18-openjdk-headless 
   - java-18-openjdk-javadoc 
   - java-18-openjdk-jmods 
   - java-18-openjdk-src 
-  - java-19-openjdk-accessibility 
   - java-19-openjdk-demo 
   - java-19-openjdk-devel 
   - java-19-openjdk-javadoc 
@@ -15652,13 +15649,11 @@ unsorted:
   - libxml++-2_6-2 
   - libxml++-3_0-1 
   - libxml++-3_0-1-32bit: [x86_64] 
-  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-5_0-1-32bit: [x86_64] 
   - libxml++-devel 
   - libxml++26-devel 
   - libxml++30-devel 
-  - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
   - libxml2-devel 
@@ -25894,19 +25889,3038 @@ unsorted:
   - python310-zxcvbn 
   - python311 
   - python311-32bit: [x86_64] 
+  - python311-APScheduler 
+  - python311-AnyQt 
+  - python311-Arpeggio 
+  - python311-Authlib 
+  - python311-Automat 
+  - python311-BTrees 
+  - python311-BTrees-devel 
+  - python311-Babel 
+  - python311-Beaker 
+  - python311-BitVector 
+  - python311-Bottleneck 
+  - python311-Brotli 
+  - python311-CCColUtils 
+  - python311-CacheControl 
+  - python311-CairoSVG 
+  - python311-Cerberus 
+  - python311-Chameleon 
+  - python311-Cheetah3 
+  - python311-CherryPy 
+  - python311-CommonMark 
+  - python311-ConfigArgParse 
+  - python311-ConfigUpdater 
+  - python311-Cycler 
+  - python311-Cython 
+  - python311-Cython3 
+  - python311-DataProperty 
+  - python311-DataShape 
+  - python311-DateTime 
+  - python311-Delorean 
+  - python311-Deprecated 
+  - python311-Django 
+  - python311-Dumper 
+  - python311-Durus 
+  - python311-EasyProcess 
+  - python311-EditorConfig 
+  - python311-ExifRead 
+  - python311-Fabric 
+  - python311-Faker 
+  - python311-Flask 
+  - python311-Flask-Admin 
+  - python311-Flask-Babel 
+  - python311-Flask-BabelEx 
+  - python311-Flask-Bootstrap 
+  - python311-Flask-Caching 
+  - python311-Flask-Compress 
+  - python311-Flask-Cors 
+  - python311-Flask-Gravatar 
+  - python311-Flask-HTMLmin 
+  - python311-Flask-HTTPAuth 
+  - python311-Flask-Login 
+  - python311-Flask-Mail 
+  - python311-Flask-Mailman 
+  - python311-Flask-Migrate 
+  - python311-Flask-Paranoid 
+  - python311-Flask-Principal 
+  - python311-Flask-RESTful 
+  - python311-Flask-RSTPages 
+  - python311-Flask-SQLAlchemy 
+  - python311-Flask-Testing 
+  - python311-Flask-WTF 
+  - python311-Flask-doc 
+  - python311-FontTools 
+  - python311-FormEncode 
+  - python311-Genshi 
+  - python311-GitPython 
+  - python311-Glances 
+  - python311-Gloo 
+  - python311-GooCalendar 
+  - python311-GooseMPL 
+  - python311-GridDataFormats 
+  - python311-HTTPolice 
+  - python311-HeapDict 
+  - python311-IMAPClient 
+  - python311-IMDbPY 
+  - python311-Jinja2 
+  - python311-Js2Py 
+  - python311-Kivy 
+  - python311-Kivy-devel 
+  - python311-LTTL 
+  - python311-Lektor 
+  - python311-Levenshtein 
+  - python311-Logbook 
+  - python311-M2Crypto 
+  - python311-Mako 
+  - python311-Markdown 
+  - python311-MarkupPy 
+  - python311-MarkupSafe 
+  - python311-Markups 
+  - python311-Mathics 
+  - python311-Mathics-Scanner 
+  - python311-MechanicalSoup 
+  - python311-MiniMock 
+  - python311-Morfessor 
+  - python311-MouseInfo 
+  - python311-MulticoreTSNE 
+  - python311-OSMPythonTools 
+  - python311-OWSLib 
+  - python311-PGet 
+  - python311-PTable 
+  - python311-Pallets-Sphinx-Themes 
+  - python311-Parsley 
+  - python311-Paste 
+  - python311-PasteDeploy 
+  - python311-PeakUtils 
+  - python311-Pebble 
+  - python311-Pillow 
+  - python311-Pillow-tk 
+  - python311-Pint 
+  - python311-Protego 
+  - python311-PsyLab 
+  - python311-PubChemPy 
+  - python311-Pweave 
+  - python311-PyAudio 
+  - python311-PyAutoGUI 
+  - python311-PyBindGen 
+  - python311-PyBrowserID 
+  - python311-PyCBC: [x86_64] 
+  - python311-PyChart 
+  - python311-PyChromecast 
+  - python311-PyCondor 
+  - python311-PyDispatcher 
+  - python311-PyECLib 
+  - python311-PyFxA 
+  - python311-PyGithub 
+  - python311-PyHamcrest 
+  - python311-PyICU 
+  - python311-PyInstaller 
+  - python311-PyJWT 
+  - python311-PyLaTeX 
+  - python311-PyMeeus 
+  - python311-PyMeta3 
+  - python311-PyMsgBox 
+  - python311-PyMuPDF 
+  - python311-PyMySQL 
+  - python311-PyNaCl 
+  - python311-PyNamecheap 
+  - python311-PyOgg 
+  - python311-PyOpenAL 
+  - python311-PyPDF2 
+  - python311-PyPDF3 
+  - python311-PyPrind 
+  - python311-PyQRCode 
+  - python311-PyQt6 
+  - python311-PyQt6-3D 
+  - python311-PyQt6-3D-devel 
+  - python311-PyQt6-Charts 
+  - python311-PyQt6-Charts-devel 
+  - python311-PyQt6-DataVisualization 
+  - python311-PyQt6-DataVisualization-devel 
+  - python311-PyQt6-NetworkAuth 
+  - python311-PyQt6-NetworkAuth-devel 
+  - python311-PyQt6-WebEngine: [x86_64] 
+  - python311-PyQt6-WebEngine-devel: [x86_64] 
+  - python311-PyQt6-devel 
+  - python311-PyQt6-doc 
+  - python311-PyQt6-sip 
+  - python311-PyRIC 
+  - python311-PyRSS2Gen 
+  - python311-PySDL2 
+  - python311-PyScreeze 
+  - python311-PySocks 
+  - python311-PyTrie 
+  - python311-PyTweening 
+  - python311-PyVirtualDisplay 
+  - python311-PyWavelets 
+  - python311-PyWebDAV3 
+  - python311-PyWebDAV3-GNUHealth 
+  - python311-PyX 
+  - python311-PyYAML 
+  - python311-Pygments 
+  - python311-Pympler 
+  - python311-Pyphen 
+  - python311-QDarkStyle 
+  - python311-QtAwesome 
+  - python311-QtPy 
+  - python311-QtPy-test 
+  - python311-RegexOrder 
+  - python311-Routes 
+  - python311-Rtree 
+  - python311-SPARQLWrapper 
+  - python311-SQLAlchemy 
+  - python311-SQLAlchemy-Utils 
+  - python311-Scrapy 
+  - python311-SecretStorage 
+  - python311-Send2Trash 
+  - python311-Shapely 
+  - python311-SimpleWebSocketServer 
+  - python311-SoundCard 
+  - python311-SoundFile 
+  - python311-SpeechRecognition 
+  - python311-Sphinx 
+  - python311-Sphinx-latex 
+  - python311-TagStats 
+  - python311-Telethon 
+  - python311-Tempita 
+  - python311-TermRecord 
+  - python311-Theano 
+  - python311-Transplant 
+  - python311-Trolly 
+  - python311-Trololio 
+  - python311-Twisted 
+  - python311-Twisted-all_non_platform 
+  - python311-Twisted-conch 
+  - python311-Twisted-conch_nacl 
+  - python311-Twisted-contextvars 
+  - python311-Twisted-http2 
+  - python311-Twisted-serial 
+  - python311-Twisted-tls 
+  - python311-TxSNI 
+  - python311-URLObject 
+  - python311-UkPostcodeParser 
+  - python311-Unidecode 
+  - python311-WSGIProxy2 
+  - python311-WSME 
+  - python311-WTForms 
+  - python311-WTForms-lang 
+  - python311-Wand 
+  - python311-WebOb 
+  - python311-WebTest 
+  - python311-Werkzeug 
+  - python311-Whoosh 
+  - python311-XStatic 
+  - python311-XStatic-Angular-Schema-Form 
+  - python311-XStatic-jQuery 
+  - python311-XStatic-jquery-ui 
+  - python311-XStatic-objectpath 
+  - python311-XStatic-term.js 
+  - python311-XStatic-tv4 
+  - python311-XlsxWriter 
+  - python311-Yapsy 
+  - python311-abimap 
+  - python311-abimap-doc 
+  - python311-abseil 
+  - python311-acefile 
+  - python311-acitoolkit 
+  - python311-acme 
+  - python311-actdiag 
+  - python311-adal 
+  - python311-adapt-parser 
+  - python311-adblock 
+  - python311-addict 
+  - python311-aenum 
+  - python311-aexpect 
+  - python311-afdko 
+  - python311-affine 
+  - python311-agate 
+  - python311-agate-dbf 
+  - python311-agate-excel 
+  - python311-agate-lookup 
+  - python311-agate-remote 
+  - python311-agate-sql 
+  - python311-agate-stats 
+  - python311-aina 
+  - python311-aiodataloader 
+  - python311-aiodns 
+  - python311-aioeventlet 
+  - python311-aiofiles 
+  - python311-aioftp 
+  - python311-aiohttp 
+  - python311-aiohttp-jinja2 
+  - python311-aiohttp-socks 
+  - python311-aiohttp-theme 
+  - python311-aiohttp_cors 
+  - python311-aioitertools 
+  - python311-aioquic 
+  - python311-aioresponses 
+  - python311-aiorpcX 
+  - python311-aiosignal 
+  - python311-aiosmtpd 
+  - python311-aiosmtplib 
+  - python311-aiosqlite 
+  - python311-aiostream 
+  - python311-aiounittest 
+  - python311-ajsonrpc 
+  - python311-akismet 
+  - python311-alabaster 
+  - python311-aldjemy 
+  - python311-alembic 
+  - python311-allpairspy 
+  - python311-alsa 
+  - python311-altair 
+  - python311-altair-widgets 
+  - python311-altgraph 
+  - python311-amqp 
+  - python311-amqpstorm 
+  - python311-ana 
+  - python311-aniso8601 
+  - python311-annoy 
+  - python311-ansel 
+  - python311-ansi2html 
+  - python311-ansicolor 
+  - python311-ansicolors 
+  - python311-antlr4-python3-runtime 
+  - python311-anyascii 
+  - python311-anyio 
+  - python311-anyjson 
+  - python311-anymarkup-core 
+  - python311-apache-libcloud 
+  - python311-apipkg 
+  - python311-apiron 
+  - python311-apns2 
+  - python311-appdirs 
+  - python311-application 
+  - python311-applicationinsights 
+  - python311-apsw 
+  - python311-arabic-reshaper 
+  - python311-arf 
+  - python311-argcomplete 
+  - python311-argh 
+  - python311-argon2-cffi 
+  - python311-argon2-cffi-bindings 
+  - python311-argparse-manpage 
+  - python311-args 
+  - python311-arrow 
+  - python311-asciimatics 
+  - python311-asciitree 
+  - python311-asdf 
+  - python311-asdf-astropy 
+  - python311-asdf-coordinates-schemas 
+  - python311-asdf-standard 
+  - python311-asdf-transform-schemas 
+  - python311-asdf-wcs-schemas 
+  - python311-ase 
+  - python311-asgiref 
+  - python311-asn1crypto 
+  - python311-aspectlib 
+  - python311-aspy.yaml 
+  - python311-ast-decompiler 
+  - python311-asteval 
+  - python311-astor 
+  - python311-astral 
+  - python311-astroid 
+  - python311-astropy 
+  - python311-astropy-healpix 
+  - python311-asttokens 
+  - python311-astunparse 
+  - python311-asv 
+  - python311-async_generator 
+  - python311-async_timeout 
+  - python311-asyncpg 
+  - python311-asyncssh 
+  - python311-atlassian-python-api 
+  - python311-atom 
+  - python311-atomicwrites 
+  - python311-atpublic 
+  - python311-atspi 
+  - python311-attr 
+  - python311-attrs 
+  - python311-aubio 
+  - python311-audio-degrader 
+  - python311-audiogrep 
+  - python311-audiomate 
+  - python311-audioread 
+  - python311-augeas 
+  - python311-authheaders 
+  - python311-authres 
+  - python311-autocommand 
+  - python311-autodocsumm 
+  - python311-autoflake 
+  - python311-autopage 
+  - python311-autopep8 
+  - python311-autoray 
+  - python311-autoupgrade-ng 
+  - python311-avro 
+  - python311-awkward: [x86_64] 
+  - python311-awkward-cpp 
+  - python311-awpa 
+  - python311-aws-sam-translator 
+  - python311-aws-xray-sdk 
+  - python311-aws-xray-sdk-Django 
+  - python311-aws-xray-sdk-Flask-SQLAlchemy 
+  - python311-aws-xray-sdk-SQLAlchemy 
+  - python311-aws-xray-sdk-aiohttp 
+  - python311-aws-xray-sdk-all 
+  - python311-aws-xray-sdk-bottle 
+  - python311-aws-xray-sdk-mysql-connector 
+  - python311-aws-xray-sdk-psycopg2 
+  - python311-aws-xray-sdk-pymongo 
+  - python311-aws-xray-sdk-pynamodb 
+  - python311-aws-xray-sdk-requests 
+  - python311-axolotl 
+  - python311-axolotl-curve25519 
+  - python311-azure-agrifood-farming 
+  - python311-azure-agrifood-nspkg 
+  - python311-azure-ai-anomalydetector 
+  - python311-azure-ai-formrecognizer 
+  - python311-azure-ai-language-conversations 
+  - python311-azure-ai-language-nspkg 
+  - python311-azure-ai-language-questionanswering 
+  - python311-azure-ai-metricsadvisor 
+  - python311-azure-ai-ml 
+  - python311-azure-ai-nspkg 
+  - python311-azure-ai-textanalytics 
+  - python311-azure-ai-translation-document 
+  - python311-azure-ai-translation-nspkg 
+  - python311-azure-appconfiguration 
+  - python311-azure-applicationinsights 
+  - python311-azure-batch 
+  - python311-azure-cognitiveservices-anomalydetector 
+  - python311-azure-cognitiveservices-formrecognizer 
+  - python311-azure-cognitiveservices-inkrecognizer 
+  - python311-azure-cognitiveservices-knowledge-nspkg 
+  - python311-azure-cognitiveservices-knowledge-qnamaker 
+  - python311-azure-cognitiveservices-language-luis 
+  - python311-azure-cognitiveservices-language-nspkg 
+  - python311-azure-cognitiveservices-language-spellcheck 
+  - python311-azure-cognitiveservices-language-textanalytics 
+  - python311-azure-cognitiveservices-nspkg 
+  - python311-azure-cognitiveservices-personalizer 
+  - python311-azure-cognitiveservices-search-autosuggest 
+  - python311-azure-cognitiveservices-search-customimagesearch 
+  - python311-azure-cognitiveservices-search-customsearch 
+  - python311-azure-cognitiveservices-search-entitysearch 
+  - python311-azure-cognitiveservices-search-imagesearch 
+  - python311-azure-cognitiveservices-search-newssearch 
+  - python311-azure-cognitiveservices-search-nspkg 
+  - python311-azure-cognitiveservices-search-videosearch 
+  - python311-azure-cognitiveservices-search-visualsearch 
+  - python311-azure-cognitiveservices-search-websearch 
+  - python311-azure-cognitiveservices-vision-computervision 
+  - python311-azure-cognitiveservices-vision-contentmoderator 
+  - python311-azure-cognitiveservices-vision-customvision 
+  - python311-azure-cognitiveservices-vision-face 
+  - python311-azure-cognitiveservices-vision-nspkg 
+  - python311-azure-common 
+  - python311-azure-communication-administration 
+  - python311-azure-communication-chat 
+  - python311-azure-communication-email 
+  - python311-azure-communication-identity 
+  - python311-azure-communication-nspkg 
+  - python311-azure-communication-phonenumbers 
+  - python311-azure-communication-sms 
+  - python311-azure-confidentialledger 
+  - python311-azure-containerregistry 
+  - python311-azure-core 
+  - python311-azure-core-tracing-opencensus 
+  - python311-azure-core-tracing-opentelemetry 
+  - python311-azure-cosmos 
+  - python311-azure-data-nspkg 
+  - python311-azure-data-tables 
+  - python311-azure-datalake-store 
+  - python311-azure-developer-loadtesting 
+  - python311-azure-digitaltwins-core 
+  - python311-azure-digitaltwins-nspkg 
+  - python311-azure-eventgrid 
+  - python311-azure-eventhub 
+  - python311-azure-eventhub-checkpointstoreblob 
+  - python311-azure-eventhub-checkpointstoreblob-aio 
+  - python311-azure-functions-devops-build 
+  - python311-azure-graphrbac 
+  - python311-azure-identity 
+  - python311-azure-iot-deviceupdate 
+  - python311-azure-iot-nspkg 
+  - python311-azure-keyvault 
+  - python311-azure-keyvault-administration 
+  - python311-azure-keyvault-certificates 
+  - python311-azure-keyvault-keys 
+  - python311-azure-keyvault-nspkg 
+  - python311-azure-keyvault-secrets 
+  - python311-azure-loganalytics 
+  - python311-azure-maps-route 
+  - python311-azure-media-nspkg 
+  - python311-azure-media-videoanalyzer-edge 
+  - python311-azure-messaging-nspkg 
+  - python311-azure-messaging-webpubsubservice 
+  - python311-azure-mgmt 
+  - python311-azure-mgmt-advisor 
+  - python311-azure-mgmt-agfood 
+  - python311-azure-mgmt-agrifood 
+  - python311-azure-mgmt-alertsmanagement 
+  - python311-azure-mgmt-apimanagement 
+  - python311-azure-mgmt-app 
+  - python311-azure-mgmt-appcomplianceautomation 
+  - python311-azure-mgmt-appconfiguration 
+  - python311-azure-mgmt-appcontainers 
+  - python311-azure-mgmt-applicationinsights 
+  - python311-azure-mgmt-appplatform 
+  - python311-azure-mgmt-attestation 
+  - python311-azure-mgmt-authorization 
+  - python311-azure-mgmt-automanage 
+  - python311-azure-mgmt-automation 
+  - python311-azure-mgmt-avs 
+  - python311-azure-mgmt-azureadb2c 
+  - python311-azure-mgmt-azurearcdata 
+  - python311-azure-mgmt-azurestack 
+  - python311-azure-mgmt-azurestackhci 
+  - python311-azure-mgmt-baremetalinfrastructure 
+  - python311-azure-mgmt-batch 
+  - python311-azure-mgmt-batchai 
+  - python311-azure-mgmt-billing 
+  - python311-azure-mgmt-botservice 
+  - python311-azure-mgmt-cdn 
+  - python311-azure-mgmt-chaos 
+  - python311-azure-mgmt-cognitiveservices 
+  - python311-azure-mgmt-commerce 
+  - python311-azure-mgmt-communication 
+  - python311-azure-mgmt-compute 
+  - python311-azure-mgmt-confidentialledger 
+  - python311-azure-mgmt-confluent 
+  - python311-azure-mgmt-connectedvmware 
+  - python311-azure-mgmt-consumption 
+  - python311-azure-mgmt-containerinstance 
+  - python311-azure-mgmt-containerregistry 
+  - python311-azure-mgmt-containerservice 
+  - python311-azure-mgmt-core 
+  - python311-azure-mgmt-cosmosdb 
+  - python311-azure-mgmt-costmanagement 
+  - python311-azure-mgmt-customproviders 
+  - python311-azure-mgmt-dashboard 
+  - python311-azure-mgmt-databox 
+  - python311-azure-mgmt-databoxedge 
+  - python311-azure-mgmt-databricks 
+  - python311-azure-mgmt-datadog 
+  - python311-azure-mgmt-datafactory 
+  - python311-azure-mgmt-datalake-analytics 
+  - python311-azure-mgmt-datalake-nspkg 
+  - python311-azure-mgmt-datalake-store 
+  - python311-azure-mgmt-datamigration 
+  - python311-azure-mgmt-dataprotection 
+  - python311-azure-mgmt-datashare 
+  - python311-azure-mgmt-deploymentmanager 
+  - python311-azure-mgmt-devcenter 
+  - python311-azure-mgmt-deviceupdate 
+  - python311-azure-mgmt-devspaces 
+  - python311-azure-mgmt-devtestlabs 
+  - python311-azure-mgmt-digitaltwins 
+  - python311-azure-mgmt-dns 
+  - python311-azure-mgmt-dnsresolver 
+  - python311-azure-mgmt-documentdb 
+  - python311-azure-mgmt-dynatrace 
+  - python311-azure-mgmt-edgegateway 
+  - python311-azure-mgmt-edgeorder 
+  - python311-azure-mgmt-education 
+  - python311-azure-mgmt-elastic 
+  - python311-azure-mgmt-elasticsan 
+  - python311-azure-mgmt-eventgrid 
+  - python311-azure-mgmt-eventhub 
+  - python311-azure-mgmt-extendedlocation 
+  - python311-azure-mgmt-fluidrelay 
+  - python311-azure-mgmt-frontdoor 
+  - python311-azure-mgmt-guestconfig 
+  - python311-azure-mgmt-hanaonazure 
+  - python311-azure-mgmt-hdinsight 
+  - python311-azure-mgmt-healthcareapis 
+  - python311-azure-mgmt-hybridcompute 
+  - python311-azure-mgmt-hybridkubernetes 
+  - python311-azure-mgmt-hybridnetwork 
+  - python311-azure-mgmt-imagebuilder 
+  - python311-azure-mgmt-iotcentral 
+  - python311-azure-mgmt-iothub 
+  - python311-azure-mgmt-iothubprovisioningservices 
+  - python311-azure-mgmt-keyvault 
+  - python311-azure-mgmt-kubernetesconfiguration 
+  - python311-azure-mgmt-kusto 
+  - python311-azure-mgmt-labservices 
+  - python311-azure-mgmt-loadtesting 
+  - python311-azure-mgmt-loadtestservice 
+  - python311-azure-mgmt-loganalytics 
+  - python311-azure-mgmt-logic 
+  - python311-azure-mgmt-logz 
+  - python311-azure-mgmt-machinelearningcompute 
+  - python311-azure-mgmt-machinelearningservices 
+  - python311-azure-mgmt-maintenance 
+  - python311-azure-mgmt-managedservices 
+  - python311-azure-mgmt-managementgroups 
+  - python311-azure-mgmt-managementpartner 
+  - python311-azure-mgmt-maps 
+  - python311-azure-mgmt-marketplaceordering 
+  - python311-azure-mgmt-media 
+  - python311-azure-mgmt-mixedreality 
+  - python311-azure-mgmt-mobilenetwork 
+  - python311-azure-mgmt-monitor 
+  - python311-azure-mgmt-msi 
+  - python311-azure-mgmt-netapp 
+  - python311-azure-mgmt-network 
+  - python311-azure-mgmt-networkfunction 
+  - python311-azure-mgmt-nginx 
+  - python311-azure-mgmt-notificationhubs 
+  - python311-azure-mgmt-nspkg 
+  - python311-azure-mgmt-oep 
+  - python311-azure-mgmt-orbital 
+  - python311-azure-mgmt-peering 
+  - python311-azure-mgmt-policyinsights 
+  - python311-azure-mgmt-portal 
+  - python311-azure-mgmt-powerbidedicated 
+  - python311-azure-mgmt-powerbiembedded 
+  - python311-azure-mgmt-privatedns 
+  - python311-azure-mgmt-purview 
+  - python311-azure-mgmt-quantum 
+  - python311-azure-mgmt-quota 
+  - python311-azure-mgmt-rdbms 
+  - python311-azure-mgmt-recoveryservices 
+  - python311-azure-mgmt-recoveryservicesbackup 
+  - python311-azure-mgmt-redhatopenshift 
+  - python311-azure-mgmt-redis 
+  - python311-azure-mgmt-redisenterprise 
+  - python311-azure-mgmt-regionmove 
+  - python311-azure-mgmt-relay 
+  - python311-azure-mgmt-reservations 
+  - python311-azure-mgmt-resource 
+  - python311-azure-mgmt-resourceconnector 
+  - python311-azure-mgmt-resourcegraph 
+  - python311-azure-mgmt-resourcehealth 
+  - python311-azure-mgmt-resourcemover 
+  - python311-azure-mgmt-scheduler 
+  - python311-azure-mgmt-scvmm 
+  - python311-azure-mgmt-search 
+  - python311-azure-mgmt-security 
+  - python311-azure-mgmt-securitydevops 
+  - python311-azure-mgmt-securityinsight 
+  - python311-azure-mgmt-serialconsole 
+  - python311-azure-mgmt-servermanager 
+  - python311-azure-mgmt-servicebus 
+  - python311-azure-mgmt-servicefabric 
+  - python311-azure-mgmt-servicelinker 
+  - python311-azure-mgmt-servicenetworking 
+  - python311-azure-mgmt-signalr 
+  - python311-azure-mgmt-sql 
+  - python311-azure-mgmt-sqlvirtualmachine 
+  - python311-azure-mgmt-storage 
+  - python311-azure-mgmt-storagecache 
+  - python311-azure-mgmt-storageimportexport 
+  - python311-azure-mgmt-storagepool 
+  - python311-azure-mgmt-storagesync 
+  - python311-azure-mgmt-streamanalytics 
+  - python311-azure-mgmt-subscription 
+  - python311-azure-mgmt-support 
+  - python311-azure-mgmt-synapse 
+  - python311-azure-mgmt-testbase 
+  - python311-azure-mgmt-timeseriesinsights 
+  - python311-azure-mgmt-trafficmanager 
+  - python311-azure-mgmt-videoanalyzer 
+  - python311-azure-mgmt-vmwarecloudsimple 
+  - python311-azure-mgmt-web 
+  - python311-azure-mgmt-webpubsub 
+  - python311-azure-mgmt-workloads 
+  - python311-azure-mixedreality-authentication 
+  - python311-azure-mixedreality-nspkg 
+  - python311-azure-monitor 
+  - python311-azure-monitor-ingestion 
+  - python311-azure-monitor-nspkg 
+  - python311-azure-monitor-query 
+  - python311-azure-nspkg 
+  - python311-azure-purview-account 
+  - python311-azure-purview-administration 
+  - python311-azure-purview-catalog 
+  - python311-azure-purview-nspkg 
+  - python311-azure-purview-scanning 
+  - python311-azure-schemaregistry 
+  - python311-azure-schemaregistry-avroencoder 
+  - python311-azure-schemaregistry-avroserializer 
+  - python311-azure-sdk 
+  - python311-azure-search-documents 
+  - python311-azure-search-nspkg 
+  - python311-azure-security-attestation 
+  - python311-azure-security-nspkg 
+  - python311-azure-servicebus 
+  - python311-azure-servicefabric 
+  - python311-azure-servicemanagement-legacy 
+  - python311-azure-storage 
+  - python311-azure-storage-blob 
+  - python311-azure-storage-common 
+  - python311-azure-storage-file 
+  - python311-azure-storage-file-datalake 
+  - python311-azure-storage-file-share 
+  - python311-azure-storage-nspkg 
+  - python311-azure-storage-queue 
+  - python311-azure-synapse-accesscontrol 
+  - python311-azure-synapse-artifacts 
+  - python311-azure-synapse-managedprivateendpoints 
+  - python311-azure-synapse-monitoring 
+  - python311-azure-synapse-nspkg 
+  - python311-azure-synapse-spark 
+  - python311-azure-template 
+  - python311-babelfish 
+  - python311-backcall 
+  - python311-backoff 
+  - python311-backports.entry_points_selectable 
+  - python311-baron 
   - python311-base 
   - python311-base-32bit: [x86_64] 
   - python311-base-x86-64-v3: [x86_64] 
+  - python311-base58 
+  - python311-bashate 
+  - python311-bcrypt 
+  - python311-beautifulsoup4 
+  - python311-before-after 
+  - python311-behave 
+  - python311-bencode 
+  - python311-beniget 
+  - python311-beren 
+  - python311-betamax 
+  - python311-betamax-matchers 
+  - python311-bibtexparser 
+  - python311-bidict 
+  - python311-billiard 
+  - python311-binary 
+  - python311-binaryornot 
+  - python311-biopython 
+  - python311-biplist 
+  - python311-bitarray 
+  - python311-bitstring 
+  - python311-bitstruct 
+  - python311-bjoern 
+  - python311-black 
+  - python311-bleach 
+  - python311-blessed 
+  - python311-blessings 
+  - python311-blinker 
+  - python311-blockdiag 
+  - python311-blosc 
+  - python311-bloscpack 
+  - python311-blue 
+  - python311-blurb 
+  - python311-bobo 
+  - python311-bobodoctestumentation 
+  - python311-bokcolmaps 
+  - python311-bokeh2 
+  - python311-boltons 
+  - python311-boolean.py 
+  - python311-booleanOperations 
+  - python311-boost-histogram 
+  - python311-boto3 
+  - python311-botocore 
+  - python311-bottle 
+  - python311-bowler 
+  - python311-bpython 
+  - python311-bqplot 
+  - python311-bracex 
+  - python311-branca 
+  - python311-breathe 
+  - python311-brotlicffi 
+  - python311-brotlipy 
+  - python311-bsddb3 
+  - python311-bsddb3-devel 
+  - python311-bson 
+  - python311-bugzilla 
+  - python311-bugzillatools 
+  - python311-build 
+  - python311-buttplug 
+  - python311-bytecode 
+  - python311-cPyparsing 
+  - python311-cached-property 
+  - python311-cachelib 
+  - python311-cachetools 
+  - python311-cachey 
+  - python311-cachy 
+  - python311-cairocffi 
+  - python311-cairocffi-pixbuf 
+  - python311-caldav 
+  - python311-calmjs.parse 
+  - python311-calmjs.types 
+  - python311-calver 
+  - python311-calysto 
+  - python311-cangjie 
+  - python311-capturer 
+  - python311-case 
+  - python311-cassowary 
+  - python311-casttube 
+  - python311-catkin-pkg 
+  - python311-cattrs 
+  - python311-cbor 
+  - python311-cbor2 
+  - python311-cdflib 
+  - python311-celery 
+  - python311-certbot 
+  - python311-certbot-apache 
+  - python311-certbot-dns-cloudflare 
+  - python311-certbot-dns-digitalocean 
+  - python311-certbot-dns-google 
+  - python311-certbot-dns-rfc2136 
+  - python311-certbot-dns-route53 
+  - python311-certbot-nginx 
+  - python311-certifi 
+  - python311-certipy 
+  - python311-certstream 
+  - python311-cffi 
+  - python311-cfgdiff 
+  - python311-cfgv 
+  - python311-cfn-lint 
+  - python311-cfscrape 
+  - python311-cftime 
+  - python311-chai 
+  - python311-chardet 
+  - python311-charset-normalizer 
+  - python311-chartify 
+  - python311-check-manifest 
+  - python311-checkdmarc 
+  - python311-cheroot 
+  - python311-chest 
+  - python311-circuitbreaker 
+  - python311-ciscoconfparse 
+  - python311-cl 
+  - python311-cleo 
+  - python311-cli-helpers 
+  - python311-click 
+  - python311-click-aliases 
+  - python311-click-completion 
+  - python311-click-default-group 
+  - python311-click-didyoumean 
+  - python311-click-help-colors 
+  - python311-click-log 
+  - python311-click-man 
+  - python311-click-plugins 
+  - python311-click-repl 
+  - python311-click-spinner 
+  - python311-click-threading 
+  - python311-cligj 
+  - python311-clikit 
+  - python311-clint 
+  - python311-cloud-init-seed 
+  - python311-cloud-sptheme 
+  - python311-cloudflare 
+  - python311-cloudpickle 
+  - python311-cloudscraper 
+  - python311-cloup 
+  - python311-cluster 
+  - python311-cma 
+  - python311-cmarkgfm 
+  - python311-cmd2 
+  - python311-cmdln 
+  - python311-coards 
+  - python311-codecov 
+  - python311-cogapp 
+  - python311-colander 
+  - python311-colorama 
+  - python311-colorclass 
+  - python311-coloredlogs 
+  - python311-colorful 
+  - python311-colorlog 
+  - python311-colorlover 
+  - python311-colorspacious 
+  - python311-colour 
+  - python311-columnize 
+  - python311-comm 
+  - python311-commentjson 
+  - python311-compat-patcher-core 
+  - python311-compileall2 
+  - python311-compizconfig 
+  - python311-compressed_rtf 
+  - python311-concurrentloghandler 
+  - python311-configobj 
+  - python311-configshell-fb 
+  - python311-confluent-kafka 
+  - python311-confpy 
+  - python311-confusable-homoglyphs 
+  - python311-confuse 
+  - python311-constantly 
+  - python311-construct 
+  - python311-contexter 
+  - python311-contextvars 
+  - python311-contourpy 
+  - python311-control 
+  - python311-conu 
+  - python311-convertdate 
+  - python311-cookies 
+  - python311-cooldict 
+  - python311-copr 
+  - python311-copr-cli 
+  - python311-coreapi 
+  - python311-coreapi-cli 
+  - python311-coreschema 
+  - python311-cov-core 
+  - python311-covdefaults 
+  - python311-coverage 
+  - python311-coveralls-check 
+  - python311-cppclean 
+  - python311-cppy 
+  - python311-cracklib 
+  - python311-cramjam 
+  - python311-crashtest 
+  - python311-crayons 
+  - python311-crcmod 
+  - python311-crochet 
+  - python311-cron-descriptor 
+  - python311-croniter 
+  - python311-crontab 
+  - python311-crumbs 
+  - python311-cryptography 
+  - python311-cryptography-vectors 
+  - python311-css-html-js-minify 
+  - python311-css-parser 
+  - python311-csscompressor 
+  - python311-cssmin 
+  - python311-cssselect 
+  - python311-cssselect2 
+  - python311-cssutils 
+  - python311-cstruct 
+  - python311-csv23 
+  - python311-csvkit 
+  - python311-cu2qu 
+  - python311-curio 
+  - python311-curlylint 
   - python311-curses 
+  - python311-curtsies 
+  - python311-cwcwidth 
+  - python311-cymruwhois 
+  - python311-d2to1 
+  - python311-daemonize 
+  - python311-daiquiri 
+  - python311-dasbus 
+  - python311-dash-core-components 
+  - python311-dash-html-components 
+  - python311-dash-renderer 
+  - python311-dash-table 
+  - python311-dask 
+  - python311-dask-array 
+  - python311-dask-bag 
+  - python311-dask-complete 
+  - python311-dask-dataframe 
+  - python311-dask-delayed 
+  - python311-dask-diagnostics 
+  - python311-dask-distributed 
+  - python311-dask-dot 
+  - python311-dask-test 
+  - python311-databases 
+  - python311-dateparser 
+  - python311-dateutils 
+  - python311-datrie 
+  - python311-dbf 
+  - python311-dbfread 
   - python311-dbm 
+  - python311-dbus-deviation 
+  - python311-dbus-python 
+  - python311-dbus-python-devel 
+  - python311-dbus_next 
+  - python311-ddg3 
+  - python311-ddt 
+  - python311-deap 
+  - python311-debugpy 
+  - python311-decorator 
+  - python311-deepmerge 
+  - python311-defcon 
+  - python311-defusedxml 
+  - python311-delegator 
+  - python311-delegator.py 
+  - python311-dennis 
+  - python311-deprecation 
+  - python311-derpconf 
   - python311-devel 
+  - python311-dfdatetime 
+  - python311-dialite 
+  - python311-dictdiffer 
+  - python311-dictknife 
+  - python311-dictpath 
+  - python311-dicttoxml 
+  - python311-diff-match-patch 
+  - python311-diffimg 
+  - python311-digitalocean 
+  - python311-dill 
+  - python311-dirty-equals 
+  - python311-dirtyjson 
+  - python311-discid 
+  - python311-discogs-client 
+  - python311-diskcache 
+  - python311-dist 
+  - python311-distlib 
+  - python311-distob 
+  - python311-distorm3 
+  - python311-distributed 
+  - python311-distro 
+  - python311-distroinfo 
+  - python311-distutils-extra 
+  - python311-dj-database-url 
+  - python311-django-allauth 
+  - python311-django-appconf 
+  - python311-django-attachments 
+  - python311-django-auth-ldap 
+  - python311-django-avatar 
+  - python311-django-bootstrap3 
+  - python311-django-bootstrap4 
+  - python311-django-braces 
+  - python311-django-ckeditor 
+  - python311-django-classy-tags 
+  - python311-django-codemod 
+  - python311-django-collectd-rest 
+  - python311-django-contrib-comments 
+  - python311-django-cors-headers 
+  - python311-django-coverage-plugin 
+  - python311-django-crispy-forms 
+  - python311-django-debreach 
+  - python311-django-debug-toolbar 
+  - python311-django-dj-inmemorystorage 
+  - python311-django-environ 
+  - python311-django-eremaea2 
+  - python311-django-extensions 
+  - python311-django-extra-views 
+  - python311-django-filter 
+  - python311-django-formtools 
+  - python311-django-geoposition 
+  - python311-django-grappelli 
+  - python311-django-gravatar2 
+  - python311-django-guardian 
+  - python311-django-haystack 
+  - python311-django-import-export 
+  - python311-django-invitations 
+  - python311-django-ipware 
+  - python311-django-jinja 
+  - python311-django-js-asset 
+  - python311-django-json-widget 
+  - python311-django-jsonfield 
+  - python311-django-localflavor 
+  - python311-django-mailer 
+  - python311-django-mailman3 
+  - python311-django-mathfilters 
+  - python311-django-minio-storage 
+  - python311-django-model-utils 
+  - python311-django-mptt 
+  - python311-django-nine 
+  - python311-django-oauth-toolkit 
+  - python311-django-oidc-provider 
+  - python311-django-oscar 
+  - python311-django-pandas 
+  - python311-django-parler 
+  - python311-django-perf-rec 
+  - python311-django-pglocks 
+  - python311-django-phonenumber-field 
+  - python311-django-picklefield 
+  - python311-django-pipeline 
+  - python311-django-polymorphic 
+  - python311-django-q 
+  - python311-django-qsessions 
+  - python311-django-redis 
+  - python311-django-registration 
+  - python311-django-request 
+  - python311-django-requests-debug-toolbar 
+  - python311-django-rest-framework-braces 
+  - python311-django-rest-framework-client 
+  - python311-django-rest-framework-social-oauth2 
+  - python311-django-rest-invitations 
+  - python311-django-rest-knox 
+  - python311-django-reversion 
+  - python311-django-rosetta 
+  - python311-django-rq 
+  - python311-django-seed 
+  - python311-django-sekizai 
+  - python311-django-settings-toml 
+  - python311-django-silk 
+  - python311-django-sortedm2m 
+  - python311-django-storages 
+  - python311-django-tables2 
+  - python311-django-taggit 
+  - python311-django-tagulous 
+  - python311-django-tastypie 
+  - python311-django-timezone-field 
+  - python311-django-treebeard 
+  - python311-django-upgrade 
+  - python311-django-user-agents 
+  - python311-django-utils-six 
+  - python311-django-webpack-loader 
+  - python311-django-webtest 
+  - python311-django-widget-tweaks 
+  - python311-djangorestframework 
+  - python311-djangorestframework-camel-case 
+  - python311-djangorestframework-simplejwt 
+  - python311-djet 
+  - python311-djvulibre 
+  - python311-dkimpy 
+  - python311-dnslib 
+  - python311-dnspython 
   - python311-doc 
   - python311-doc-devhelp 
+  - python311-docformatter 
+  - python311-docker 
+  - python311-docker-compose 
+  - python311-docker-pycreds 
+  - python311-dockerpty 
+  - python311-docopt 
+  - python311-docrepr 
+  - python311-docstring-to-markdown 
+  - python311-docutils 
+  - python311-docutils-ast-writer 
+  - python311-dogslow 
+  - python311-dominate 
+  - python311-dotmap 
+  - python311-dparse 
+  - python311-dpcontracts 
+  - python311-dpkt 
+  - python311-dqsegdb2: [i586] 
+  - python311-dragonmapper 
+  - python311-drgn 
+  - python311-drms 
+  - python311-dropbox 
+  - python311-dtaidistance 
+  - python311-dtfabric 
+  - python311-duckduckgo2 
+  - python311-duet 
+  - python311-dukpy 
+  - python311-dukpy-kovidgoyal 
+  - python311-dulwich 
+  - python311-easy-thumbnails 
+  - python311-easygui 
+  - python311-easypysmb 
+  - python311-easywatch 
+  - python311-ebcdic 
+  - python311-ecdsa 
+  - python311-ed25519 
+  - python311-edgegrid-python 
+  - python311-editables 
+  - python311-edk2toolext 
+  - python311-edk2toollib 
+  - python311-elastic-transport 
+  - python311-elasticsearch 
+  - python311-elasticsearch-dsl 
+  - python311-elementpath 
+  - python311-email-reply-parser 
+  - python311-email-validator 
+  - python311-emcee 
+  - python311-emoji 
+  - python311-empy 
+  - python311-encore 
+  - python311-enrich 
+  - python311-entrypoint2 
+  - python311-entrypoints 
+  - python311-environ-config 
+  - python311-environmental-override 
+  - python311-enzyme 
+  - python311-ephem 
+  - python311-ephemeral-port-reserve 
+  - python311-epubmerge 
+  - python311-eradicate 
+  - python311-espeak 
+  - python311-esptool 
+  - python311-et_xmlfile 
+  - python311-etcd: [x86_64] 
+  - python311-ethtool 
+  - python311-evdev 
+  - python311-eventlet 
+  - python311-evilunit 
+  - python311-evtx 
+  - python311-exam 
+  - python311-exceptiongroup 
+  - python311-execnet 
+  - python311-executing 
+  - python311-exiv2 
+  - python311-expects 
+  - python311-expiringdict 
+  - python311-extension-helpers 
+  - python311-extras 
+  - python311-extratools 
+  - python311-ez_setup 
+  - python311-fabio: [x86_64] 
+  - python311-factory_boy 
+  - python311-fake-useragent 
+  - python311-fakeredis 
+  - python311-falcon 
+  - python311-fanficfare 
+  - python311-fann2 
+  - python311-fastapi 
+  - python311-fastbencode 
+  - python311-fastcluster 
+  - python311-fasteners 
+  - python311-fastimport 
+  - python311-fastjsonschema 
+  - python311-fastnumbers 
+  - python311-fastparquet 
+  - python311-fastremap 
+  - python311-fasttext 
+  - python311-fb-re2 
+  - python311-fedora-messaging 
+  - python311-feedgen 
+  - python311-feedgenerator 
+  - python311-feedparser 
+  - python311-ffmpeg-python 
+  - python311-fido2 
+  - python311-fields 
+  - python311-filelock 
+  - python311-filetype 
+  - python311-finance_enums 
+  - python311-findpython 
+  - python311-fire 
+  - python311-first 
+  - python311-fissix 
+  - python311-fixtures 
+  - python311-flake8 
+  - python311-flake8-blind-except 
+  - python311-flake8-bugbear 
+  - python311-flake8-builtins 
+  - python311-flake8-class-newline 
+  - python311-flake8-comprehensions 
+  - python311-flake8-debugger 
+  - python311-flake8-deprecated 
+  - python311-flake8-docstrings 
+  - python311-flake8-imports 
+  - python311-flake8-isort 
+  - python311-flake8-pep3101 
+  - python311-flake8-polyfill 
+  - python311-flake8-quotes 
+  - python311-flaky 
+  - python311-flasgger 
+  - python311-flask-jwt-extended 
+  - python311-flask-oidc 
+  - python311-flask-peewee 
+  - python311-flask-restx 
+  - python311-flatbuffers 
+  - python311-flatdict 
+  - python311-fleming 
+  - python311-flex 
+  - python311-flexmock 
+  - python311-flexx 
+  - python311-flickrapi 
+  - python311-flit 
+  - python311-flit-core 
+  - python311-flit-scm 
+  - python311-fluent 
+  - python311-flufl.bounce 
+  - python311-flufl.i18n 
+  - python311-flufl.lock 
+  - python311-flufl.testing 
+  - python311-fluidity-sm 
+  - python311-flup 
+  - python311-flynt 
+  - python311-fontMath 
+  - python311-fontParts 
+  - python311-fontPens 
+  - python311-forbiddenfruit 
+  - python311-formats 
+  - python311-fqdn 
+  - python311-freeipa 
+  - python311-freetype-py 
+  - python311-freezegun 
+  - python311-frozenlist 
+  - python311-fs 
+  - python311-fsspec 
+  - python311-ftfy 
+  - python311-ftputil 
+  - python311-fudge 
+  - python311-funcparserlib 
+  - python311-furl 
+  - python311-fuse 
+  - python311-fusepy 
+  - python311-future 
+  - python311-fuzzywuzzy 
+  - python311-fvs 
+  - python311-gTTS 
+  - python311-gTTS-token 
+  - python311-gast 
+  - python311-gcsfs 
+  - python311-gcsfs-fuse 
+  - python311-ged4py 
+  - python311-genfire 
+  - python311-genson 
+  - python311-genty 
+  - python311-geographiclib 
+  - python311-geoip2 
+  - python311-geojson 
+  - python311-geolib 
+  - python311-geolinks 
+  - python311-geomet 
+  - python311-geopy 
+  - python311-getmac 
+  - python311-gevent 
+  - python311-gevent-websocket 
+  - python311-geventhttpclient 
+  - python311-ghp-import 
+  - python311-girder-client 
+  - python311-git-pw 
+  - python311-git-url-parse 
+  - python311-gitdb 
+  - python311-github3.py 
+  - python311-glad2 
+  - python311-glean 
+  - python311-glean-parser 
+  - python311-glfw 
+  - python311-glob2 
+  - python311-gmpy2 
+  - python311-gns3fy 
+  - python311-gobject 
+  - python311-gobject-Gdk 
+  - python311-gobject-cairo 
+  - python311-gobject-devel 
+  - python311-google-api-core 
+  - python311-google-api-python-client 
+  - python311-google-auth 
+  - python311-google-auth-httplib2 
+  - python311-google-auth-oauthlib 
+  - python311-google-cloud-core 
+  - python311-google-cloud-kms 
+  - python311-google-cloud-speech 
+  - python311-google-cloud-storage 
+  - python311-google-cloud-translate 
+  - python311-google-crc32c 
+  - python311-google-resumable-media 
+  - python311-googleapis-common-protos 
+  - python311-googlemaps 
+  - python311-gpg 
+  - python311-gphoto2 
+  - python311-gprof2dot 
+  - python311-gps3 
+  - python311-gpxpy 
+  - python311-graphql-core 
+  - python311-graphviz 
+  - python311-greenlet 
+  - python311-greenlet-devel 
+  - python311-grpc-google-iam-v1 
+  - python311-grpcio 
+  - python311-grpcio-gcp 
+  - python311-grpcio-status 
+  - python311-grpcio-tools 
+  - python311-gscholar 
+  - python311-gsm0338 
+  - python311-gspread 
+  - python311-gssapi 
+  - python311-gst 
+  - python311-gsw 
+  - python311-guessit 
+  - python311-gunicorn 
+  - python311-guzzle_sphinx_theme 
+  - python311-gvm-tools 
+  - python311-gwcs 
+  - python311-gwdatafind: [i586] 
+  - python311-gwosc 
+  - python311-gwyfile 
+  - python311-h11 
+  - python311-h2 
+  - python311-h5netcdf 
+  - python311-h5py 
+  - python311-habanero 
+  - python311-hammett 
+  - python311-hankel 
+  - python311-hanzidentifier 
+  - python311-haproxyctl 
+  - python311-hashids 
+  - python311-hatch 
+  - python311-hatch-fancy-pypi-readme 
+  - python311-hatch-jupyter-builder 
+  - python311-hatch_nodejs_version 
+  - python311-hatch_vcs 
+  - python311-hatchling 
+  - python311-hawkauthlib 
+  - python311-hcloud 
+  - python311-hdf5storage: [x86_64] 
+  - python311-healpy 
+  - python311-helpdev 
+  - python311-hepunits 
+  - python311-hetzner 
+  - python311-hetznercloud 
+  - python311-hexdump 
+  - python311-hid-parser 
+  - python311-hijri-converter 
+  - python311-hiredis 
+  - python311-hkdf 
+  - python311-hl7apy 
+  - python311-hotdoc 
+  - python311-hpack 
+  - python311-hstspreload 
+  - python311-html2text 
+  - python311-html5-parser 
+  - python311-html5lib 
+  - python311-htmlmin 
+  - python311-httmock 
+  - python311-http-parser 
+  - python311-httpbin 
+  - python311-httpcore 
+  - python311-httplib2 
+  - python311-httpretty 
+  - python311-httpsig_cffi 
+  - python311-httptools 
+  - python311-httpx 
+  - python311-humanfriendly 
+  - python311-humanhash3 
+  - python311-humanize 
+  - python311-humanreadable 
+  - python311-hunter 
+  - python311-hupper 
+  - python311-husl 
+  - python311-hvac 
+  - python311-hyperframe 
+  - python311-hyperlink 
+  - python311-hypothesis 
+  - python311-hypothesis-fspaths 
+  - python311-hypothesmith 
+  - python311-i3ipc 
+  - python311-icalendar 
+  - python311-icoextract 
   - python311-idle 
+  - python311-idna 
+  - python311-idna_ssl 
+  - python311-ifaddr 
+  - python311-ifconfig-parser 
+  - python311-igwn-auth-utils 
+  - python311-ijson 
+  - python311-imagecodecs 
+  - python311-imageio 
+  - python311-imageio-ffmpeg 
+  - python311-imagesize 
+  - python311-imbox 
+  - python311-img2pdf 
+  - python311-immutables 
+  - python311-impacket 
+  - python311-importlab 
+  - python311-importlib-metadata 
+  - python311-importlib-resources 
+  - python311-imread 
+  - python311-imreg 
+  - python311-incremental 
+  - python311-infinity 
+  - python311-inflate64 
+  - python311-inflect 
+  - python311-inflection 
+  - python311-influxdb: [x86_64] 
+  - python311-ini2toml 
+  - python311-ini2toml-all 
+  - python311-ini2toml-full 
+  - python311-ini2toml-lite 
+  - python311-iniconfig 
+  - python311-inifile 
+  - python311-iniparse 
+  - python311-injector 
+  - python311-installer 
+  - python311-interrogate 
+  - python311-intervals 
+  - python311-intervaltree 
+  - python311-invocations 
+  - python311-invoke 
+  - python311-iocapture 
+  - python311-ipaddr 
+  - python311-ipdb 
+  - python311-iptables 
+  - python311-ipy 
+  - python311-ipyevents 
+  - python311-ipyfilechooser 
+  - python311-ipykernel 
+  - python311-ipyleaflet 
+  - python311-ipympl 
+  - python311-ipyparallel 
+  - python311-ipysheet 
+  - python311-ipython 
+  - python311-ipython_genutils 
+  - python311-ipyvue 
+  - python311-ipyvuetify 
+  - python311-ipywebrtc 
+  - python311-ipywidgets 
+  - python311-irc 
+  - python311-isbnlib 
+  - python311-isc_dhcp_leases 
+  - python311-iso3166 
+  - python311-iso8601 
+  - python311-isodate 
+  - python311-isoduration 
+  - python311-isort 
+  - python311-itemadapter 
+  - python311-itemloaders 
+  - python311-itsdangerous 
+  - python311-itypes 
+  - python311-iwlib 
+  - python311-j2gen 
+  - python311-jaraco.classes 
+  - python311-jaraco.collections 
+  - python311-jaraco.context 
+  - python311-jaraco.envs 
+  - python311-jaraco.functools 
+  - python311-jaraco.itertools 
+  - python311-jaraco.logging 
+  - python311-jaraco.packaging 
+  - python311-jaraco.path 
+  - python311-jaraco.stream 
+  - python311-jaraco.text 
+  - python311-jaraco.tidelift 
+  - python311-javaproperties 
+  - python311-jdatetime 
+  - python311-jdcal 
+  - python311-jedi 
+  - python311-jedihttp 
+  - python311-jeepney 
+  - python311-jellyfish 
+  - python311-jenkinsapi 
+  - python311-jfscripts 
+  - python311-jinja2-fsloader 
+  - python311-jinja2-pluralize 
+  - python311-jinja2-time 
+  - python311-jira 
+  - python311-jirafs 
+  - python311-jmespath 
+  - python311-joblib 
+  - python311-josepy 
+  - python311-jplephem 
+  - python311-jsbeautifier 
+  - python311-jschema-to-python 
+  - python311-jsmin 
+  - python311-json-rpc 
+  - python311-json5 
+  - python311-json_tricks 
+  - python311-jsondiff 
+  - python311-jsonlines 
+  - python311-jsonpatch 
+  - python311-jsonpath-ng 
+  - python311-jsonpath-rw 
+  - python311-jsonpickle 
+  - python311-jsonpointer 
+  - python311-jsonref 
+  - python311-jsonrpclib-pelix 
+  - python311-jsonschema 
+  - python311-jsonschema-format 
+  - python311-jsonschema-format-nongpl 
+  - python311-jsonschema-spec 
+  - python311-jsonslicer 
+  - python311-jsonxs 
+  - python311-junit-xml 
+  - python311-junitxml 
+  - python311-jupyter-client 
+  - python311-jupyter-core 
+  - python311-jupyter-events 
+  - python311-jupyter-kernel-test 
+  - python311-jupyter-packaging 
+  - python311-jupyter-server 
+  - python311-jupyter-server-mathjax 
+  - python311-jupyter-server-terminals 
+  - python311-jupyter-server-test 
+  - python311-jupyter-sphinx 
+  - python311-jupyter-telemetry 
+  - python311-jupyter_console 
+  - python311-jupyter_contrib_core 
+  - python311-jupyter_highlight_selected_word 
+  - python311-jupyter_latex_envs 
+  - python311-jupyter_nbextensions_configurator 
+  - python311-jupyterlab 
+  - python311-jupyterlab-pygments 
+  - python311-jupyterlab-server 
+  - python311-jupyterlab-server-openapi 
+  - python311-jupyterlab-server-test 
+  - python311-jupyterlab-templates 
+  - python311-jupyterlab-widgets 
+  - python311-jwcrypto 
+  - python311-k5test 
+  - python311-kaitaistruct 
+  - python311-kasa 
+  - python311-kazoo 
+  - python311-kerberos 
+  - python311-keyring 
+  - python311-keyring-keyutils 
+  - python311-keyring-pass 
+  - python311-keyrings.alt 
+  - python311-kismet-rest 
+  - python311-kismetdb 
+  - python311-kiss-headers 
+  - python311-kitchen 
+  - python311-kiwisolver 
+  - python311-kmatch 
+  - python311-kmod 
+  - python311-knack 
+  - python311-korean-lunar-calendar 
+  - python311-kubernetes 
+  - python311-kwant: [x86_64] 
+  - python311-l20n 
+  - python311-labels 
+  - python311-lancet-ioam 
+  - python311-langdetect 
+  - python311-langtable 
+  - python311-language-check 
+  - python311-lark 
+  - python311-latexcodec 
+  - python311-lazr.config 
+  - python311-lazr.delegates 
+  - python311-lazr.uri 
+  - python311-lazy 
+  - python311-lazy-object-proxy 
+  - python311-lazyarray 
+  - python311-ldap 
+  - python311-ldap3 
+  - python311-ldapdomaindump 
+  - python311-ldappool 
+  - python311-ldaptor 
+  - python311-leather 
+  - python311-leglight 
+  - python311-lesscpy 
+  - python311-leveldb 
+  - python311-lexicon 
+  - python311-lhafile 
+  - python311-lib3to6 
+  - python311-libarchive 
+  - python311-libarchive-c 
+  - python311-libcst 
+  - python311-libevdev 
+  - python311-liblarch 
+  - python311-liblarch-gtk 
+  - python311-libmount 
+  - python311-libnacl 
+  - python311-librouteros 
+  - python311-libsass 
+  - python311-libusb1 
+  - python311-libvirt-python 
+  - python311-license-expression 
+  - python311-ligo-lw: [x86_64] 
+  - python311-ligo-segments: [i586] 
+  - python311-ligotimegps 
+  - python311-limnoria 
+  - python311-linecache2 
+  - python311-lineup-widget 
+  - python311-link-traits 
+  - python311-linkify-it-py 
+  - python311-linstor 
+  - python311-linux-procfs 
+  - python311-littleutils 
+  - python311-livereload 
+  - python311-llfuse 
+  - python311-lmdb 
+  - python311-lmfit 
+  - python311-lml 
+  - python311-localzone 
+  - python311-locket 
+  - python311-lockfile 
+  - python311-logilab-common 
+  - python311-loguru 
+  - python311-logutils 
+  - python311-logzero 
+  - python311-lupa 
+  - python311-lxml 
+  - python311-lxml-devel 
+  - python311-lz4 
+  - python311-macholib 
+  - python311-magic 
+  - python311-magic-wormhole-transit-relay 
+  - python311-magicalimport 
+  - python311-mailman3-fedmsg-plugin 
+  - python311-mailmanclient 
+  - python311-main-wrapper 
+  - python311-makefun 
+  - python311-managesieve 
+  - python311-mando 
+  - python311-manuel 
+  - python311-manuel-doc 
+  - python311-marathon 
+  - python311-markdown-it-py 
+  - python311-markdown-math 
+  - python311-markdown2 
+  - python311-marshmallow 
+  - python311-marshmallow-enum 
+  - python311-material-color-utilities-python 
+  - python311-mathics-pygments 
+  - python311-matplotlib 
+  - python311-matplotlib-cairo 
+  - python311-matplotlib-gtk-common 
+  - python311-matplotlib-gtk3 
+  - python311-matplotlib-gtk4 
+  - python311-matplotlib-inline 
+  - python311-matplotlib-latex 
+  - python311-matplotlib-qt5 
+  - python311-matplotlib-testdata 
+  - python311-matplotlib-tk 
+  - python311-matplotlib-web 
+  - python311-matplotlib-wx 
+  - python311-matrix-nio 
+  - python311-matrix_common 
+  - python311-maturin 
+  - python311-maxminddb 
+  - python311-mbstrdecoder 
+  - python311-mccabe 
+  - python311-md2workflow 
+  - python311-md2workflow-plugins-jira 
+  - python311-md2workflow-plugins-redmine 
+  - python311-mdit-py-plugins 
+  - python311-mdurl 
+  - python311-mediafile 
+  - python311-meld3 
+  - python311-memory_profiler 
+  - python311-mercantile 
+  - python311-merge3 
+  - python311-mergedeep 
+  - python311-meson-python 
+  - python311-metaextract 
+  - python311-metakernel 
+  - python311-metamagic.json 
+  - python311-micropipenv 
+  - python311-mimesis 
+  - python311-minidb 
+  - python311-minio 
+  - python311-misaka 
+  - python311-mistune 
+  - python311-mitmproxy-wireguard 
+  - python311-mkdocs 
+  - python311-mkdocs-bootstrap 
+  - python311-moban 
+  - python311-moban-ansible 
+  - python311-mobi 
+  - python311-mock-open 
+  - python311-mocket 
+  - python311-mockito 
+  - python311-model-bakery 
+  - python311-modernize 
+  - python311-mohawk 
+  - python311-mongoengine 
+  - python311-monotonic 
+  - python311-more-itertools 
+  - python311-moreorless 
+  - python311-moto 
+  - python311-moto-all 
+  - python311-moto-server 
+  - python311-mpi4py 
+  - python311-mpi4py-devel 
+  - python311-mpl-animators 
+  - python311-mplcursors 
+  - python311-mpld3 
+  - python311-mpmath 
+  - python311-mrcz 
+  - python311-msal 
+  - python311-msal-extensions 
+  - python311-msgpack 
+  - python311-msgpack-numpy 
+  - python311-msk 
+  - python311-msm 
+  - python311-msoffcrypto-tool 
+  - python311-msrest 
+  - python311-msrestazure 
+  - python311-mss 
+  - python311-mujson 
+  - python311-mulpyplexer 
+  - python311-multi_key_dict 
+  - python311-multidict 
+  - python311-multipledispatch 
+  - python311-multivolumefile 
+  - python311-munch 
+  - python311-munkres 
+  - python311-musicbrainzngs 
+  - python311-mutagen 
+  - python311-mutatorMath 
+  - python311-mutt-ics 
+  - python311-mwclient 
+  - python311-mycli 
+  - python311-mygpoclient 
+  - python311-mypy_extensions 
+  - python311-mysql-connector-python 
+  - python311-mysql-to-sqlite3 
+  - python311-mysqlclient 
+  - python311-myst-parser 
+  - python311-nagiosplugin 
+  - python311-natsort 
+  - python311-nautilus 
+  - python311-nautilus-devel 
+  - python311-nbclassic 
+  - python311-nbclient 
+  - python311-nbconvert 
+  - python311-nbdime 
+  - python311-nbdime-git 
+  - python311-nbdime-hg 
+  - python311-nbformat 
+  - python311-nbsmoke 
+  - python311-nbsphinx 
+  - python311-nbval 
+  - python311-nbxmpp 
+  - python311-ncclient 
+  - python311-ndg-httpsclient 
+  - python311-ndjson 
+  - python311-neovim 
+  - python311-nest-asyncio 
+  - python311-nested-lookup 
+  - python311-netCDF4 
+  - python311-netaddr 
+  - python311-netifaces 
+  - python311-netmiko 
+  - python311-netpbmfile 
+  - python311-netutils 
+  - python311-networkx 
+  - python311-nibabel 
+  - python311-nilearn: [i586] 
+  - python311-nine 
+  - python311-nocasedict 
+  - python311-nocaselist 
+  - python311-node-semver 
+  - python311-nodeenv 
+  - python311-nornir 
+  - python311-nose2 
+  - python311-notebook 
+  - python311-notebook-lang 
+  - python311-notebook-shim 
+  - python311-notify2 
+  - python311-nox 
+  - python311-npTDMS 
+  - python311-nss 
+  - python311-ntc-templates 
+  - python311-ntfy 
+  - python311-ntplib 
+  - python311-num2words 
+  - python311-numcodecs 
+  - python311-numericalunits 
+  - python311-numexpr 
+  - python311-numpy 
+  - python311-numpy-devel 
+  - python311-numpydoc 
+  - python311-nwdiag 
+  - python311-nxapi-plumbing 
+  - python311-o2sclpy 
+  - python311-oauth2 
+  - python311-oauthlib 
+  - python311-objgraph 
+  - python311-oci-sdk 
+  - python311-oct2py 
+  - python311-octave-kernel 
+  - python311-odfpy 
+  - python311-odorik 
+  - python311-ogr 
+  - python311-oic 
+  - python311-oktaloginwrapper 
+  - python311-olefile 
+  - python311-oletools 
+  - python311-onnx 
+  - python311-onnxconverter-common 
+  - python311-opcodes 
+  - python311-openTSNE 
+  - python311-openai 
+  - python311-openapi-codec 
+  - python311-openapi-core 
+  - python311-openapi-schema-validator 
+  - python311-openapi-spec-validator 
+  - python311-opencensus 
+  - python311-opencensus-context 
+  - python311-opencensus-ext-azure 
+  - python311-opencensus-ext-threading 
+  - python311-opengl 
+  - python311-opengl-accelerate 
+  - python311-openidc-client 
+  - python311-openpyxl 
+  - python311-openqa_client 
+  - python311-opentelemetry-api 
+  - python311-opt-einsum 
+  - python311-orange-canvas-core 
+  - python311-orange-widget-base 
+  - python311-orangebox 
+  - python311-ordered-namespace 
+  - python311-ordered-set 
+  - python311-orderedmultidict 
+  - python311-orjson 
+  - python311-osc-tiny 
+  - python311-oscrypto 
+  - python311-osmviz 
+  - python311-ospd-openvas 
+  - python311-outcome 
+  - python311-ovirt-engine-sdk 
+  - python311-pa-ringbuffer 
+  - python311-packaging 
+  - python311-padaos 
+  - python311-padatious 
+  - python311-paho-mqtt 
+  - python311-pako 
+  - python311-palettable 
+  - python311-pamela 
+  - python311-pamqp 
+  - python311-pan-python 
+  - python311-pandas 
+  - python311-pandas-datareader 
+  - python311-pandocfilters 
+  - python311-panflute 
+  - python311-parallax 
+  - python311-param 
+  - python311-parameterized 
+  - python311-paramiko 
+  - python311-paramiko-expect 
+  - python311-parfive 
+  - python311-parse 
+  - python311-parse_type 
+  - python311-parsedatetime 
+  - python311-parsel 
+  - python311-parso 
+  - python311-parsy 
+  - python311-partd 
+  - python311-parted 
+  - python311-particle 
+  - python311-parver 
+  - python311-pass-git-helper 
+  - python311-passivetotal 
+  - python311-passlib 
+  - python311-pastel 
+  - python311-pastream 
+  - python311-patatt 
+  - python311-patchy 
+  - python311-path 
+  - python311-pathable 
+  - python311-pathspec 
+  - python311-pathtools 
+  - python311-patiencediff 
+  - python311-patsy 
+  - python311-pbkdf2 
+  - python311-pbr 
+  - python311-pcodedmp 
+  - python311-pdd 
+  - python311-pdfminer.six 
+  - python311-pdfrw 
+  - python311-pdm 
+  - python311-pdm-pep517 
+  - python311-pecan 
+  - python311-peewee 
+  - python311-pefile 
+  - python311-pegasus-wms.api 
+  - python311-pegasus-wms.common 
+  - python311-pem 
+  - python311-pendulum 
+  - python311-pep440 
+  - python311-pep517 
+  - python311-pep8-naming 
+  - python311-peppercorn 
+  - python311-percy 
+  - python311-perky 
+  - python311-persistent 
+  - python311-persistent-devel 
+  - python311-petact 
+  - python311-pexpect 
+  - python311-pgmagick 
+  - python311-phabricator 
+  - python311-phonenumbers 
+  - python311-phply 
+  - python311-phue 
+  - python311-pick 
+  - python311-pickleshare 
+  - python311-pifpaf 
+  - python311-pika 
+  - python311-pika-pool 
+  - python311-pikepdf 
+  - python311-pilkit 
+  - python311-pingparsing 
+  - python311-pip 
+  - python311-pip-api 
+  - python311-pip-licenses 
+  - python311-pip-run 
+  - python311-pip-shims 
+  - python311-pipdeptree 
+  - python311-pipreqs 
+  - python311-pipx 
+  - python311-pivy 
+  - python311-pkgconfig 
+  - python311-pkginfo 
+  - python311-pkgutil-resolve-name 
+  - python311-plaster 
+  - python311-plaster-pastedeploy 
+  - python311-platformdirs 
+  - python311-platformio 
+  - python311-plette 
+  - python311-pluggy 
+  - python311-pluginbase 
+  - python311-plumbum 
+  - python311-ply 
+  - python311-plyvel 
+  - python311-pmw 
+  - python311-pname 
+  - python311-podcastparser 
+  - python311-podman 
+  - python311-podman-compose 
+  - python311-poetry 
+  - python311-poetry-core 
+  - python311-poetry-plugin-export 
+  - python311-polib 
+  - python311-pomegranate 
+  - python311-pomegranate-devel 
+  - python311-pooch 
+  - python311-pook 
+  - python311-poppler-qt5 
+  - python311-poppler-qt5-devel 
+  - python311-port-for 
+  - python311-portalocker 
+  - python311-portend 
+  - python311-portpicker 
+  - python311-power 
+  - python311-poyo 
+  - python311-pproxy 
+  - python311-praatio 
+  - python311-precis-i18n 
+  - python311-precise-runner 
+  - python311-preggy 
+  - python311-premailer 
+  - python311-prestring 
+  - python311-pretend 
+  - python311-prettytable 
+  - python311-priority 
+  - python311-process-tests 
+  - python311-proglog 
+  - python311-progress 
+  - python311-progressbar 
+  - python311-progressbar2 
+  - python311-prometheus-client 
+  - python311-prompt_toolkit 
+  - python311-prompt_toolkit1 
+  - python311-proselint 
+  - python311-proto-plus 
+  - python311-protobuf 
+  - python311-proton-client 
+  - python311-protonvpn-nm-lib 
+  - python311-proxy.py 
+  - python311-psautohint 
+  - python311-pscript 
+  - python311-psutil 
+  - python311-psychtoolbox 
+  - python311-psycopg2 
+  - python311-psycopg2cffi 
+  - python311-ptpython 
+  - python311-ptpython-ptipython 
+  - python311-ptr 
+  - python311-ptyprocess 
+  - python311-publicsuffix 
+  - python311-publicsuffix2 
+  - python311-publicsuffixlist 
+  - python311-pure-eval 
+  - python311-pure-sasl 
+  - python311-purl 
+  - python311-py 
+  - python311-py-cpuinfo 
+  - python311-py-espeak-ng 
+  - python311-py-multihash 
+  - python311-py-radix 
+  - python311-py-ubjson 
+  - python311-py-vapid 
+  - python311-py2pack 
+  - python311-py3c 
+  - python311-py3dns 
+  - python311-py3status 
+  - python311-py7zr 
+  - python311-pyDOE2 
+  - python311-pyFFTW 
+  - python311-pyLibravatar 
+  - python311-pyModis 
+  - python311-pyOCD 
+  - python311-pyOpenSSL 
+  - python311-pyPEG2 
+  - python311-pyRFC3339 
+  - python311-pyRXP 
+  - python311-pyVows 
+  - python311-pyacoustid 
+  - python311-pyaes 
+  - python311-pyahocorasick 
+  - python311-pyalsaaudio 
+  - python311-pyaml 
+  - python311-pyannotate 
+  - python311-pyasn1 
+  - python311-pyasn1-modules 
+  - python311-pybars3 
+  - python311-pybcj 
+  - python311-pybeam 
+  - python311-pybind11 
+  - python311-pybind11-devel 
+  - python311-pybind11-stubgen 
+  - python311-pybluez 
+  - python311-pybtex 
+  - python311-pycairo 
+  - python311-pycairo-devel 
+  - python311-pycapnp 
+  - python311-pycares 
+  - python311-pycdio 
+  - python311-pycdlib 
+  - python311-pycha 
+  - python311-pychm 
+  - python311-pyclipper 
+  - python311-pycocotools 
+  - python311-pycodestyle 
+  - python311-pycountry 
+  - python311-pycparser 
+  - python311-pycryptodome 
+  - python311-pycryptodomex 
+  - python311-pycsw 
+  - python311-pycups 
+  - python311-pycurl 
+  - python311-pycxx 
+  - python311-pycxx-devel 
+  - python311-pydantic 
+  - python311-pydash 
+  - python311-pydata-google-auth 
+  - python311-pydbus 
+  - python311-pydenticon 
+  - python311-pydicom 
+  - python311-pydicom-data 
+  - python311-pydocstyle 
+  - python311-pydocumentdb 
+  - python311-pydot 
+  - python311-pydot3 
+  - python311-pydotplus 
+  - python311-pydrive2 
+  - python311-pydub 
+  - python311-pydyf 
+  - python311-pyeapi 
+  - python311-pyee 
+  - python311-pyelftools 
+  - python311-pyenchant 
+  - python311-pyerfa 
+  - python311-pyface 
+  - python311-pyfakefs 
+  - python311-pyfeyn 
+  - python311-pyfiglet 
+  - python311-pyflakes 
+  - python311-pyftpdlib 
+  - python311-pyfuse3 
+  - python311-pygal 
+  - python311-pygaljs 
+  - python311-pygeos 
+  - python311-pygerrit2 
+  - python311-pygit2 
+  - python311-pygments-ansi-color 
+  - python311-pygments-pytest 
+  - python311-pygments-style-railscasts 
+  - python311-pygn 
+  - python311-pygraphviz 
+  - python311-pyhcl 
+  - python311-pyheif 
+  - python311-pyhibp 
+  - python311-pyicumessageformat 
+  - python311-pyinotify 
+  - python311-pyinstaller-hooks-contrib 
+  - python311-pyipp 
+  - python311-pyjavaproperties 
+  - python311-pyjnius 
+  - python311-pyjokes 
+  - python311-pyjsparser 
+  - python311-pyjwkest 
+  - python311-pykafka 
+  - python311-pykeepass 
+  - python311-pykerberos 
+  - python311-pykickstart 
+  - python311-pykka 
+  - python311-pykwalify 
+  - python311-pylast 
+  - python311-pyleri 
+  - python311-pylev 
+  - python311-pylibacl 
+  - python311-pylibfdt 
+  - python311-pyliblo 
+  - python311-pyliblo-doc 
+  - python311-pylibmc 
+  - python311-pylineclip 
+  - python311-pylint 
+  - python311-pylint-ignore 
+  - python311-pylint-venv 
+  - python311-pylons-sphinx-themes 
+  - python311-pylru 
+  - python311-pyls-spyder 
+  - python311-pylsp-rope 
+  - python311-pylsqpack 
+  - python311-pylzma 
+  - python311-pymacaroons 
+  - python311-pymacaroons-pynacl 
+  - python311-pymad 
+  - python311-pymarc 
+  - python311-pymavlink 
+  - python311-pymediainfo 
+  - python311-pymemcache 
+  - python311-pymetar 
+  - python311-pymilter 
+  - python311-pymisp 
+  - python311-pymol 
+  - python311-pymongo 
+  - python311-pymssql 
+  - python311-pynamodb 
+  - python311-pynetbox 
+  - python311-pynxos 
+  - python311-pyo 
+  - python311-pyocr 
+  - python311-pyodbc 
+  - python311-pyosf 
+  - python311-pyotp 
+  - python311-pyowm 
+  - python311-pypandoc: [x86_64] 
+  - python311-pyparallel 
+  - python311-pyparsing 
+  - python311-pyperclip 
+  - python311-pyperf 
+  - python311-pypi-search 
+  - python311-pypiserver 
+  - python311-pypng 
+  - python311-pyppmd 
+  - python311-pyprel 
+  - python311-pyprimes 
+  - python311-pyproj 
+  - python311-pyproject-hooks 
+  - python311-pyproject-metadata 
+  - python311-pypsexec 
+  - python311-pypubsub 
+  - python311-pypuppetdb 
+  - python311-pyqt-builder 
+  - python311-pyqtgraph 
+  - python311-pyquery 
+  - python311-pyquil: [x86_64] 
+  - python311-pyrad 
+  - python311-pyroma 
+  - python311-pyroomacoustics 
+  - python311-pyroute2 
+  - python311-pyrsistent 
+  - python311-pysaml2 
+  - python311-pyscard 
+  - python311-pyscreenshot 
+  - python311-pysendfile 
+  - python311-pyserial 
+  - python311-pyshark: [x86_64] 
+  - python311-pyshould 
+  - python311-pyshp 
+  - python311-pysmb 
+  - python311-pysmbc 
+  - python311-pysmi 
+  - python311-pysndfile 
+  - python311-pysnmp 
+  - python311-pysofaconventions 
+  - python311-pysolr 
+  - python311-pyspnego 
+  - python311-pysrt 
+  - python311-pystache 
+  - python311-pysvn 
+  - python311-pytaglib 
+  - python311-pyte 
+  - python311-pytesseract 
+  - python311-pytest 
+  - python311-pytest-aiohttp 
+  - python311-pytest-arraydiff 
+  - python311-pytest-astropy 
+  - python311-pytest-astropy-header 
+  - python311-pytest-asyncio 
+  - python311-pytest-attrib 
+  - python311-pytest-base-url 
+  - python311-pytest-bdd 
+  - python311-pytest-benchmark 
+  - python311-pytest-black 
+  - python311-pytest-check 
+  - python311-pytest-check-links 
+  - python311-pytest-click 
+  - python311-pytest-console-scripts 
+  - python311-pytest-cov 
+  - python311-pytest-curio 
+  - python311-pytest-datadir 
+  - python311-pytest-dependency 
+  - python311-pytest-describe 
+  - python311-pytest-django 
+  - python311-pytest-djangoapp 
+  - python311-pytest-doctestplus 
+  - python311-pytest-dotenv 
+  - python311-pytest-echo 
+  - python311-pytest-env 
+  - python311-pytest-error-for-skips 
+  - python311-pytest-expect 
+  - python311-pytest-filter-subpackage 
+  - python311-pytest-fixture-config 
+  - python311-pytest-flake8dir 
+  - python311-pytest-flakes 
+  - python311-pytest-flask 
+  - python311-pytest-forked 
+  - python311-pytest-freezegun 
+  - python311-pytest-git 
+  - python311-pytest-helpers-namespace 
+  - python311-pytest-html 
+  - python311-pytest-httpbin 
+  - python311-pytest-httpserver 
+  - python311-pytest-httpx 
+  - python311-pytest-instafail 
+  - python311-pytest-isort 
+  - python311-pytest-json-report 
+  - python311-pytest-jupyter 
+  - python311-pytest-jupyter-client 
+  - python311-pytest-jupyter-server 
+  - python311-pytest-lazy-fixture 
+  - python311-pytest-listener 
+  - python311-pytest-localserver 
+  - python311-pytest-metadata 
+  - python311-pytest-mock 
+  - python311-pytest-mockito 
+  - python311-pytest-mpi 
+  - python311-pytest-mpl 
+  - python311-pytest-openfiles 
+  - python311-pytest-order 
+  - python311-pytest-percent 
+  - python311-pytest-plus 
+  - python311-pytest-profiling 
+  - python311-pytest-pycodestyle 
+  - python311-pytest-qt 
+  - python311-pytest-random-order 
+  - python311-pytest-randomly 
+  - python311-pytest-regressions 
+  - python311-pytest-relaxed 
+  - python311-pytest-remotedata 
+  - python311-pytest-repeat 
+  - python311-pytest-rerunfailures 
+  - python311-pytest-responsemock 
+  - python311-pytest-server-fixtures 
+  - python311-pytest-services 
+  - python311-pytest-shutil 
+  - python311-pytest-socket 
+  - python311-pytest-spec 
+  - python311-pytest-sphinx 
+  - python311-pytest-subprocess 
+  - python311-pytest-subtesthack 
+  - python311-pytest-subtests 
+  - python311-pytest-sugar 
+  - python311-pytest-super-check 
+  - python311-pytest-svn 
+  - python311-pytest-testconfig 
+  - python311-pytest-timeout 
+  - python311-pytest-tldr 
+  - python311-pytest-toolbox 
+  - python311-pytest-tornado 
+  - python311-pytest-tornasync 
+  - python311-pytest-translations 
+  - python311-pytest-trio 
+  - python311-pytest-twisted 
+  - python311-pytest-vcr 
+  - python311-pytest-verbose-parametrize 
+  - python311-pytest-virtualenv 
+  - python311-pytest-xdist 
+  - python311-pytest-xprocess 
+  - python311-pytest-xvfb 
+  - python311-python-afl 
+  - python311-python-aiml 
+  - python311-python-akismet 
+  - python311-python-args 
+  - python311-python-barcode 
+  - python311-python-bidi 
+  - python311-python-binary-memcached 
+  - python311-python-box 
+  - python311-python-cjson 
+  - python311-python-consul 
+  - python311-python-coveralls 
+  - python311-python-crontab 
+  - python311-python-daemon 
+  - python311-python-datamatrix: [i586] 
+  - python311-python-dateutil 
+  - python311-python-dbusmock 
+  - python311-python-debian 
+  - python311-python-docs-theme 
+  - python311-python-doi 
+  - python311-python-dotenv 
+  - python311-python-editor 
+  - python311-python-fedora 
+  - python311-python-for-android 
+  - python311-python-gammu 
+  - python311-python-gflags 
+  - python311-python-gitlab 
+  - python311-python-gnupg 
+  - python311-python-gvm 
+  - python311-python-jenkins 
+  - python311-python-jose 
+  - python311-python-jose-cryptography 
+  - python311-python-json-logger 
+  - python311-python-jsonschema-objects 
+  - python311-python-keycloak 
+  - python311-python-louvain 
+  - python311-python-lsp-black 
+  - python311-python-lsp-jsonrpc 
+  - python311-python-lsp-server 
+  - python311-python-lzo 
+  - python311-python-magic 
+  - python311-python-memcached 
+  - python311-python-mimeparse 
+  - python311-python-mpd2 
+  - python311-python-mpv 
+  - python311-python-multipart 
+  - python311-python-nmap 
+  - python311-python-openid-cla 
+  - python311-python-openid-teams 
+  - python311-python-pam 
+  - python311-python-poppler 
+  - python311-python-pptx 
+  - python311-python-prctl 
+  - python311-python-pseudorandom: [i586] 
+  - python311-python-ptrace 
+  - python311-python-qdatamatrix: [i586] 
+  - python311-python-rapidjson 
+  - python311-python-redis-lock 
+  - python311-python-redmine 
+  - python311-python-rpm-spec 
+  - python311-python-slugify 
+  - python311-python-socks 
+  - python311-python-sofa 
+  - python311-python-sql 
+  - python311-python-stdnum 
+  - python311-python-ternary 
+  - python311-python-twitter 
+  - python311-python-utils 
+  - python311-python-vlc 
+  - python311-python-whois 
+  - python311-python-xlib 
+  - python311-python-yubico 
+  - python311-python3-openid 
+  - python311-python3-saml 
+  - python311-pythondialog 
+  - python311-pythonfinder 
+  - python311-pythonwhois 
+  - python311-pythran 
+  - python311-pytidylib 
+  - python311-pytimeparse 
+  - python311-pytlv 
+  - python311-pytoml 
+  - python311-pytoolconfig 
+  - python311-pytoolconfig-global 
+  - python311-pytoolconfig-validation 
+  - python311-pytricia 
+  - python311-pytz 
+  - python311-pytz-deprecation-shim 
+  - python311-pytzdata 
+  - python311-pyu2f 
+  - python311-pyuca 
+  - python311-pyudev 
+  - python311-pyupgrade 
+  - python311-pyusb 
+  - python311-pyux 
+  - python311-pyvdr 
+  - python311-pyvips 
+  - python311-pyviz-comms 
+  - python311-pyvmomi 
+  - python311-pywal 
+  - python311-pywayland 
+  - python311-pywbem 
+  - python311-pywbemtools 
+  - python311-pywlroots 
+  - python311-pyxattr 
+  - python311-pyxdg 
+  - python311-pyyaml_env_tag 
+  - python311-pyzmq 
+  - python311-pyzmq-devel 
+  - python311-pyzo 
+  - python311-pyzstd 
+  - python311-q 
+  - python311-qcs-api-client 
+  - python311-qet_tb_generator 
+  - python311-qgrid 
+  - python311-qpageview 
+  - python311-qrcode 
+  - python311-qstylizer 
+  - python311-qsymm 
+  - python311-qt3d-qt5 
+  - python311-qt3d-qt5-devel 
+  - python311-qt3d-qt5-doc 
+  - python311-qt5 
+  - python311-qt5-devel 
+  - python311-qt5-doc 
+  - python311-qt5-sip 
+  - python311-qtcharts-qt5 
+  - python311-qtcharts-qt5-api 
+  - python311-qtcharts-qt5-doc 
+  - python311-qtcharts-qt5-sip 
+  - python311-qtconsole 
+  - python311-qtdatavis3d-qt5 
+  - python311-qtdatavis3d-qt5-devel 
+  - python311-qtdatavis3d-qt5-doc 
+  - python311-qtnetworkauth-qt5 
+  - python311-qtnetworkauth-qt5-devel 
+  - python311-qtwebengine-qt5 
+  - python311-qtwebengine-qt5-devel 
+  - python311-quantities 
+  - python311-queuelib 
+  - python311-radexreader 
+  - python311-radon 
+  - python311-railroad-diagrams 
+  - python311-random2 
+  - python311-rapidfuzz 
+  - python311-rarfile 
+  - python311-rarfile-doc 
+  - python311-rawkit 
+  - python311-rcssmin 
+  - python311-rdflib 
+  - python311-re-assert 
+  - python311-readme_renderer 
+  - python311-readthedocs-sphinx-ext 
+  - python311-rebulk 
+  - python311-recommonmark 
+  - python311-reconfigure 
+  - python311-recordclass 
+  - python311-redbaron 
+  - python311-redfish 
+  - python311-redis 
+  - python311-reedsolo 
+  - python311-regex 
+  - python311-relatorio 
+  - python311-releases 
+  - python311-remoto 
+  - python311-rencode 
+  - python311-reportlab 
+  - python311-repoze.lru 
+  - python311-repoze.sphinx.autointerface 
+  - python311-repoze.who 
+  - python311-reproject 
+  - python311-requestbuilder 
+  - python311-requests 
+  - python311-requests-aws 
+  - python311-requests-cache 
+  - python311-requests-download 
+  - python311-requests-file 
+  - python311-requests-ftp 
+  - python311-requests-futures 
+  - python311-requests-gssapi 
+  - python311-requests-hawk 
+  - python311-requests-kerberos 
+  - python311-requests-mock 
+  - python311-requests-oauthlib 
+  - python311-requests-toolbelt 
+  - python311-requests-unixsocket 
+  - python311-requests-wsgi-adapter 
+  - python311-requestsexceptions 
+  - python311-requirements-detector 
+  - python311-requirements-parser 
+  - python311-requre 
+  - python311-resolvelib 
+  - python311-responses 
+  - python311-respx 
+  - python311-restructuredtext_lint 
+  - python311-restview 
+  - python311-resultsdb_api 
+  - python311-rethinkdb 
+  - python311-retry 
+  - python311-retry_decorator 
+  - python311-retrying 
+  - python311-retryrequests 
+  - python311-rfc3339-validator 
+  - python311-rfc3986 
+  - python311-rfc3986-validator 
+  - python311-rfc3987 
+  - python311-rfc6555 
+  - python311-rich 
+  - python311-rich-click 
+  - python311-rjsmin 
+  - python311-rnc2rng 
+  - python311-rnginline 
+  - python311-robot-detection 
+  - python311-robotframework 
+  - python311-roman 
+  - python311-rope 
+  - python311-rpcq: [x86_64] 
+  - python311-rply 
+  - python311-rpm 
+  - python311-rpmfile 
+  - python311-rpmlb 
+  - python311-rpy2 
+  - python311-rpyc 
+  - python311-rq 
+  - python311-rsa 
+  - python311-rst.linker 
+  - python311-rstcheck 
+  - python311-rt 
+  - python311-rtslib-fb 
+  - python311-ruamel.base 
+  - python311-ruamel.std.pathlib 
+  - python311-ruamel.yaml 
+  - python311-ruamel.yaml.clib 
+  - python311-ruamel.yaml.convert 
+  - python311-ruffus 
+  - python311-runthis-sphinxext 
+  - python311-s3transfer 
+  - python311-sadisplay 
+  - python311-safe-netrc 
+  - python311-sambacc 
+  - python311-samplerate 
+  - python311-sane 
+  - python311-sarge 
+  - python311-sarif-om 
+  - python311-sas7bdat 
+  - python311-sat-search 
+  - python311-sat-stac 
+  - python311-scales 
+  - python311-scandir 
+  - python311-schedule 
+  - python311-schema 
+  - python311-scikit-build 
+  - python311-scikit-build-core 
+  - python311-scikit-build-core-pyproject 
+  - python311-scikit-dsp-comm 
+  - python311-scikit-hep-testdata 
+  - python311-scikit-image 
+  - python311-scikit-learn 
+  - python311-scikit-sparse: [x86_64] 
+  - python311-scikit-umfpack: [x86_64] 
+  - python311-scipy 
+  - python311-scitokens 
+  - python311-scour 
+  - python311-scp 
+  - python311-screeninfo 
+  - python311-screenplain 
+  - python311-scripttest 
+  - python311-scrypt 
+  - python311-scspell3k 
+  - python311-sdnotify 
+  - python311-seaborn 
+  - python311-selenium 
+  - python311-semanage 
+  - python311-semantic_version 
+  - python311-semver 
+  - python311-seqdiag 
+  - python311-serpent 
+  - python311-serpy 
+  - python311-serverfiles 
+  - python311-service_identity 
+  - python311-setproctitle 
+  - python311-setuptools 
+  - python311-setuptools-declarative-requirements 
+  - python311-setuptools-gettext 
+  - python311-setuptools-git 
+  - python311-setuptools-rust 
+  - python311-setuptools-version-command 
+  - python311-setuptools_scm 
+  - python311-setuptools_scm_git_archive 
+  - python311-sfs 
+  - python311-sge-pygame 
+  - python311-sgmllib3k 
+  - python311-sgp4 
+  - python311-sh 
+  - python311-shaptools 
+  - python311-shellingham 
+  - python311-shijian 
+  - python311-shinyutils 
+  - python311-shodan 
+  - python311-shortuuid 
+  - python311-show-in-file-manager 
+  - python311-sidecar 
+  - python311-sievelib 
+  - python311-sigal 
+  - python311-simpleaudio 
+  - python311-simplebayes 
+  - python311-simpleeval 
+  - python311-simplegeneric 
+  - python311-simplejson 
+  - python311-simplekml 
+  - python311-single-version 
+  - python311-siosocks 
+  - python311-sip-devel 
+  - python311-sip6-devel 
+  - python311-siphashc 
+  - python311-six 
+  - python311-sklearn-pandas 
+  - python311-slack-sdk 
+  - python311-slimit 
+  - python311-slip 
+  - python311-slip-dbus 
+  - python311-slixmpp 
+  - python311-slycot 
+  - python311-smart-open 
+  - python311-smartypants 
+  - python311-smbprotocol 
+  - python311-smmap 
+  - python311-smpplib 
+  - python311-sniffio 
+  - python311-snimpy 
+  - python311-snowballstemmer 
+  - python311-snuggs 
+  - python311-social-auth-app-django 
+  - python311-social-auth-core 
+  - python311-socketpool 
+  - python311-softlayer-zeep 
+  - python311-sorl-thumbnail 
+  - python311-sortedcollections 
+  - python311-sortedcontainers 
+  - python311-sortinghat 
+  - python311-sounddevice 
+  - python311-soupsieve 
+  - python311-sox 
+  - python311-spake2 
+  - python311-spark_parser 
+  - python311-speaklater 
+  - python311-specfile 
+  - python311-sphinx-argparse 
+  - python311-sphinx-autodoc-typehints 
+  - python311-sphinx-bootstrap-theme 
+  - python311-sphinx-click 
+  - python311-sphinx-feature-classification 
+  - python311-sphinx-inline-tabs 
+  - python311-sphinx-issues 
+  - python311-sphinx-jsonschema 
+  - python311-sphinx-removed-in 
+  - python311-sphinx-tabs 
+  - python311-sphinx-version-warning 
+  - python311-sphinx_mdinclude 
+  - python311-sphinx_press_theme 
+  - python311-sphinx_rtd_theme 
+  - python311-sphinxcontrib-apidoc 
+  - python311-sphinxcontrib-applehelp 
+  - python311-sphinxcontrib-asyncio 
+  - python311-sphinxcontrib-autoprogram 
+  - python311-sphinxcontrib-blockdiag 
+  - python311-sphinxcontrib-copybutton 
+  - python311-sphinxcontrib-devhelp 
+  - python311-sphinxcontrib-documentedlist 
+  - python311-sphinxcontrib-fulltoc 
+  - python311-sphinxcontrib-github-alt 
+  - python311-sphinxcontrib-htmlhelp 
+  - python311-sphinxcontrib-httpdomain 
+  - python311-sphinxcontrib-issuetracker 
+  - python311-sphinxcontrib-jsmath 
+  - python311-sphinxcontrib-newsfeed 
+  - python311-sphinxcontrib-nwdiag 
+  - python311-sphinxcontrib-pecanwsme 
+  - python311-sphinxcontrib-plantuml 
+  - python311-sphinxcontrib-programoutput 
+  - python311-sphinxcontrib-qthelp 
+  - python311-sphinxcontrib-seqdiag 
+  - python311-sphinxcontrib-serializinghtml 
+  - python311-sphinxcontrib-svg2pdfconverter 
+  - python311-sphinxcontrib-towncrier 
+  - python311-sphinxcontrib-trio 
+  - python311-sphinxcontrib-websupport 
+  - python311-sphinxext-opengraph 
+  - python311-sphobjinv 
+  - python311-spidev 
+  - python311-spotipy 
+  - python311-spur 
+  - python311-spyder-kernels 
+  - python311-sqlalchemy-migrate 
+  - python311-sqlglot 
+  - python311-sqlite-fts4 
+  - python311-sqlite-utils 
+  - python311-sqlite3-to-mysql 
+  - python311-sqlitedict 
+  - python311-sqlparse 
+  - python311-srcinfo 
+  - python311-ssdeep 
+  - python311-sshpubkeys 
+  - python311-sshtunnel 
+  - python311-stack-data 
+  - python311-starlette 
+  - python311-statsd 
+  - python311-statsmodels 
+  - python311-stdeb 
+  - python311-stestr 
+  - python311-stomp.py 
+  - python311-stomper 
+  - python311-straight-plugin 
+  - python311-streamz 
+  - python311-strict-rfc3339 
+  - python311-strictyaml 
+  - python311-stripe 
+  - python311-structlog 
+  - python311-subgrab 
+  - python311-subprocess-tee 
+  - python311-subprocrunner 
+  - python311-subscene-api 
+  - python311-subst 
+  - python311-suds 
+  - python311-suntime 
+  - python311-sure 
+  - python311-surer 
+  - python311-svglib 
+  - python311-svgpathtools 
+  - python311-svgwrite 
+  - python311-svneverever 
+  - python311-swagger-spec-validator 
+  - python311-swapper 
+  - python311-swifter 
+  - python311-sybil 
+  - python311-sympy 
+  - python311-synr 
+  - python311-system-hotkey310 
+  - python311-system_hotkey 
+  - python311-systemd 
+  - python311-tableauserverclient 
+  - python311-tableprint 
+  - python311-tablib 
+  - python311-tabulate 
+  - python311-tap.py 
+  - python311-tasklib 
+  - python311-taskw 
+  - python311-tblib 
+  - python311-tcolorpy 
+  - python311-technicolor 
+  - python311-telepot 
+  - python311-telethon-session-sqlalchemy 
+  - python311-template-remover 
+  - python311-tempora 
+  - python311-tenacity 
+  - python311-tensorpac 
+  - python311-term-background 
+  - python311-termcolor 
+  - python311-terminado 
+  - python311-terminaltables 
+  - python311-termstyle 
+  - python311-testfixtures 
+  - python311-testflo 
+  - python311-testpath 
+  - python311-testresources 
+  - python311-testscenarios 
   - python311-testsuite 
+  - python311-testtools 
+  - python311-text-unidecode 
+  - python311-textX 
+  - python311-textdistance 
+  - python311-textfsm 
+  - python311-textile 
+  - python311-texttable 
+  - python311-textwrap3 
+  - python311-thespian 
+  - python311-threadpoolctl 
+  - python311-three-merge 
+  - python311-time-machine 
+  - python311-time-travel 
+  - python311-timeout-decorator 
+  - python311-tinyarray 
+  - python311-tinycss2 
+  - python311-tinydb 
+  - python311-tinyrecord 
+  - python311-tinyrpc 
+  - python311-titlecase 
   - python311-tk 
+  - python311-tkreadonly 
+  - python311-tld 
+  - python311-tldextract 
+  - python311-tmx 
+  - python311-tokenize-rt 
+  - python311-toml 
+  - python311-tomli 
+  - python311-tomli-w 
+  - python311-tomlkit 
   - python311-tools 
+  - python311-toolz 
+  - python311-toposort 
+  - python311-topy 
+  - python311-tornado6 
+  - python311-tortilla 
+  - python311-towncrier 
+  - python311-tox 
+  - python311-tox-no-internet 
+  - python311-tox-wheel 
+  - python311-tpfd 
+  - python311-tqdm 
+  - python311-traceback2 
+  - python311-traitlets 
+  - python311-traits 
+  - python311-traitsui 
+  - python311-traittypes 
+  - python311-transaction 
+  - python311-transip 
+  - python311-transitions 
+  - python311-translationstring 
+  - python311-translitcodec 
+  - python311-treq 
+  - python311-tri.declarative 
+  - python311-tri.struct 
+  - python311-trio 
+  - python311-trove-classifiers 
+  - python311-trustme 
+  - python311-truststore 
+  - python311-tsk 
+  - python311-ttp 
+  - python311-ttp-templates 
+  - python311-tweepy 
+  - python311-twine 
+  - python311-twitter 
+  - python311-twitter.common.finagle-thrift 
+  - python311-twitter.common.lang 
+  - python311-twitter.common.rpc 
+  - python311-twython 
+  - python311-txWS 
+  - python311-txZMQ 
+  - python311-txtorcon 
+  - python311-typed-ast 
+  - python311-typedload 
+  - python311-typeguard 
+  - python311-typepy 
+  - python311-typer 
+  - python311-typing-inspect 
+  - python311-typing_extensions 
+  - python311-typogrify 
+  - python311-tzlocal 
+  - python311-u-msgpack-python 
+  - python311-ua-parser 
+  - python311-uamqp 
+  - python311-uc-micro-py 
+  - python311-ufoLib2 
+  - python311-ufoProcessor 
+  - python311-ufonormalizer 
+  - python311-uhashring 
+  - python311-ujson 
+  - python311-uncertainties 
+  - python311-unearth 
+  - python311-unicodecsv 
+  - python311-unicodedata2 
+  - python311-unidiff 
+  - python311-unify 
+  - python311-uniseg 
+  - python311-unittest-mixins 
+  - python311-unittest2pytest 
+  - python311-unpaddedbase64 
+  - python311-unsync 
+  - python311-untokenize 
+  - python311-unyt 
+  - python311-uri-template 
+  - python311-uritemplate 
+  - python311-uritools 
+  - python311-url-normalize 
+  - python311-urlextract 
+  - python311-urlgrabber 
+  - python311-urllib3 
+  - python311-usbsdmux 
+  - python311-user-agents 
+  - python311-user_agent 
+  - python311-userpath 
+  - python311-usfm2osis 
+  - python311-uvicorn 
+  - python311-uvloop 
+  - python311-validate-pyproject 
+  - python311-validate_email 
+  - python311-validators 
+  - python311-varint 
+  - python311-varlink 
+  - python311-vatnumber 
+  - python311-vcrpy 
+  - python311-vcver 
+  - python311-vcversioner 
+  - python311-vdirsyncer 
+  - python311-vega 
+  - python311-vega_datasets 
+  - python311-venusian 
+  - python311-venusian-doc 
+  - python311-verboselogs 
+  - python311-versioneer 
+  - python311-versioningit 
+  - python311-versiontag 
+  - python311-versiontools 
+  - python311-veusz: [x86_64] 
+  - python311-vim-vint 
+  - python311-vine 
+  - python311-virtkey 
+  - python311-virtualenv 
+  - python311-virtualenv-clone 
+  - python311-visitor 
+  - python311-vistir 
+  - python311-vncdotool 
+  - python311-vobject 
+  - python311-volatile 
+  - python311-voluptuous 
+  - python311-voluptuous-serialize 
+  - python311-vsts 
+  - python311-vsts-cd-manager 
+  - python311-vulkan 
+  - python311-vulture 
+  - python311-w3lib 
+  - python311-wadllib 
+  - python311-waitress 
+  - python311-wakeonlan 
+  - python311-warlock 
+  - python311-watchdog 
+  - python311-watchdog-doc 
+  - python311-watchfiles 
+  - python311-watermark 
+  - python311-wcag-contrast-ratio 
+  - python311-wcmatch 
+  - python311-wcwidth 
+  - python311-weasyprint 
+  - python311-web.py 
+  - python311-web_cache 
+  - python311-webassets 
+  - python311-webcolors 
+  - python311-webencodings 
+  - python311-weblate-schemas 
+  - python311-webruntime 
+  - python311-websocket-client 
+  - python311-websockets 
+  - python311-websockify 
+  - python311-whatthepatch 
+  - python311-wheel 
+  - python311-wheezy.template 
+  - python311-whichcraft 
+  - python311-whitenoise 
+  - python311-widgetsnbextension 
+  - python311-wikipedia 
+  - python311-wiring 
+  - python311-wmctrl 
+  - python311-wolframalpha 
+  - python311-wptools 
+  - python311-wrapt 
+  - python311-ws4py 
+  - python311-wsaccel 
+  - python311-wsgi_intercept 
+  - python311-wsproto 
+  - python311-wstools 
+  - python311-wtf-peewee 
+  - python311-wurlitzer 
+  - python311-wxPython 
   - python311-x86-64-v3: [x86_64] 
+  - python311-xapian 
+  - python311-xapian-haystack 
+  - python311-xapp 
+  - python311-xarray 
+  - python311-xattr 
+  - python311-xcffib 
+  - python311-xdg 
+  - python311-xdoctest 
+  - python311-xerox 
+  - python311-xhtml2pdf 
+  - python311-xkbcommon 
+  - python311-xkbgroup 
+  - python311-xlrd 
+  - python311-xlwt 
+  - python311-xmldiff 
+  - python311-xmlschema 
+  - python311-xmlsec 
+  - python311-xmltodict 
+  - python311-xpybutil 
+  - python311-xsge_gui 
+  - python311-xsge_lighting 
+  - python311-xsge_particle 
+  - python311-xsge_path 
+  - python311-xsge_physics 
+  - python311-xsge_tiled 
+  - python311-xvfbwrapper 
+  - python311-xxhash 
+  - python311-xyzservices 
+  - python311-yafe 
+  - python311-yamldoc 
+  - python311-yamllint 
+  - python311-yamlloader 
+  - python311-yapf 
+  - python311-yappi 
+  - python311-yara 
+  - python311-yarg 
+  - python311-yarl 
+  - python311-yaspin 
+  - python311-yaswfp 
+  - python311-yg.lockfile 
+  - python311-youtube-dl 
+  - python311-yq 
+  - python311-yt 
+  - python311-zake 
+  - python311-zarr 
+  - python311-zc.buildout 
+  - python311-zc.customdoctests 
+  - python311-zc.lockfile 
+  - python311-zeep 
+  - python311-zeroconf 
+  - python311-zhon 
+  - python311-zict 
+  - python311-zignal 
+  - python311-zipp 
+  - python311-zipstream 
+  - python311-zodbpickle 
+  - python311-zope.cachedescriptors 
+  - python311-zope.component 
+  - python311-zope.configuration 
+  - python311-zope.copy 
+  - python311-zope.deferredimport 
+  - python311-zope.deprecation 
+  - python311-zope.event 
+  - python311-zope.exceptions 
+  - python311-zope.hookable 
+  - python311-zope.i18nmessageid 
+  - python311-zope.interface 
+  - python311-zope.location 
+  - python311-zope.proxy 
+  - python311-zope.proxy-devel 
+  - python311-zope.schema 
+  - python311-zope.security 
+  - python311-zope.testbrowser 
+  - python311-zope.testing 
+  - python311-zope.testrunner 
+  - python311-zopfli 
+  - python311-zstandard 
+  - python311-zstd 
+  - python311-zxcvbn 
   - python38 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
@@ -33776,8 +36790,359 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-Ascii85: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-abstract_method: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-actioncable-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-actionmailbox-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-actionmailer-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-actiontext-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-activerecord-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-activestorage-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-addressable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-aes_key_wrap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-afm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-airbrussh: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-amq-protocol: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-arel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-asciidoctor: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ast: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-attr_required: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-autoprefixer-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-axiom-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-backport: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-base32: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-bcrypt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-bcrypt_pbkdf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-benchmark: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-bindata: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-binding_of_caller: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-bundler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-bundler-audit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-byebug: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-capistrano: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-celluloid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-cfa: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-cfa_grub2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-changelog_generator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-cheetah: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-chef-utils: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-childprocess: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-coderay: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-coercible: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-coffee-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-coffee-script: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-coffee-script-source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-colorator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-commander: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-cool.io: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-crack: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-cri: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-css_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-csv: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-d-installer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-d-installer-cli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-debase-ruby_core_source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-debug_inspector: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-delayed_job: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-delayed_job_active_record: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-descendants_tracker: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-devise: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-devise-i18n: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-devise_ldap_authenticatable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-diff-lcs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-diffy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-docile: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-docker-api: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-domain_name: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-down: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-configurable: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-container: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-equalizer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-inflector: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-logic: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-dry-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ed25519: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-em-websocket: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-equalizer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-erubis: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-eventmachine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-exception_notification: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-excon: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-execjs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fake_ftp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fake_ftp-0_1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-faraday: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-faraday-follow_redirects: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-faraday-net_http: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fast_gettext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fast_gettext-1.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ffi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ffi-compiler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-flog: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fluentd: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fog-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fog-json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fog-libvirt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-fog-xml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-font-awesome-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-formatador: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-forwardable-extended: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gem2rpm 
+  - ruby3.1-rubygem-get_process_mem: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gettext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gettext_i18n_rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gettext_i18n_rails_js: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-google-protobuf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-googleapis-common-protos-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gpgme: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-grape: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
   - ruby3.1-rubygem-grpc 
+  - ruby3.1-rubygem-gssapi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-gyoku: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-haml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-haml-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hashdiff: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hashery: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hashicorp-checkpoint: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hashie: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-highline: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hitimes: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hoe: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-hpricot: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-html2haml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-http: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-http-cookie: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-http-form_data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-http_parser.rb: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-httpclient: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ice_nine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-inifile: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jaro_winkler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jekyll: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jekyll-sass-converter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jekyll-watch: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jquery-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-js-routes: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-json-jwt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-json-schema: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-json_pure: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-jwt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-kgio: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-kramdown: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-kramdown-parser-gfm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-launchy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-libyui-rake: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-lightbox2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-liquid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-liquid-4: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-listen: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-little-plugger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-llhttp-ffi: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-locale: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-log4r: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-logging: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-lolcat: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mail: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-manpages: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-marcel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mercenary: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-micromachine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mime-types: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mime-types-data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mimemagic: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mini_magick: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mini_mime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mini_portile2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-minitar: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mixlib-authentication: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mixlib-cli: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mixlib-config: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mixlib-log: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mixlib-shellout: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mocha: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-moneta: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-multi_json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-multi_xml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-multipart-post: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mustache: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mustermann: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mustermann-grape: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-mysql2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-net-ldap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-net-scp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-net-sftp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-net-ssh: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-net-ssh-6.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-netrc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-nori: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-omniauth: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-omniauth-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-openid_connect: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-optimist: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-orm_adapter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-os: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-packaging_rake_tasks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-paint: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pairing_heap: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-parallel: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-parallel_tests: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-passenger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-path_expander: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pathutil: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pdf-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pdf-reader: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pkg-config: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-po_to_json: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-polyglot: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn-icon: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn-svg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn-table: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-prawn-templates: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pry: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pry-doc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-public_suffix: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-public_suffix-3.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-puma: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-puma_worker_killer: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-pundit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rack: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rack-accept: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rack-oauth2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rack-protection: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rack-proxy: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rails-7.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rails-i18n: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rainbow: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-raindrops: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rake-compiler: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rb-fsevent: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rb-inotify: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rb-kqueue: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rdiscount: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-red-datasets: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-regexp_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-responders: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-reverse_markdown: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rgl: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rice: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ronn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rouge: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rpm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-core: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-core-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-expectations: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-expectations-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-its: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-mocks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-mocks-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-rails-4.0: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-support: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rspec-support-3_5: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rubocop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rubocop-ast: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-augeas: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-dbus: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-libvirt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-openid: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-progressbar: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby-rc4: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby2_keywords: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ruby_parser: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rubyntlm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-rubyzip: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-safe_yaml: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sass: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sass-listen: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sass-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sass-rails-5.1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sassc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sassc-2.2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sassc-rails: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sdoc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-semantic_range: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-serverengine: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sexp_processor: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sigdump: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-simplecov: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-simplecov-html: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-simplecov_json_formatter: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-simpleidn: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-slim: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-slop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-snaky_hash: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-spring: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sprockets-3.7: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sprockets-helpers: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sshkit: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-stomp: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-stream: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-strptime: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-swd: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-sync: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-temple: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-terminal-table: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-terminal-table-2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-text: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-thread_safe: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-tilt: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-timers: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-tmuxinator: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-tomlrb: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-treetop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-trollop: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-ttfunk: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-turbolinks: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-turbolinks-source: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-tzinfo-1.2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-tzinfo-data: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-uglifier: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-unf: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-unf_ext: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-unicode-display_width: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-unicode-display_width-1: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-vagrant-spec: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-vagrant_cloud: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-validate_email: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-validate_url: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-version_gem: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-virtus: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-warden: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-webfinger: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-webpacker: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-webrick: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-websocket: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-websocket-driver: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-websocket-extensions: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-winrm: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-winrm-elevated: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-winrm-fs: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-xdg: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-xdg-2: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-xml-simple: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-xmlhash: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-xmlrpc: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-yajl-ruby: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.1-rubygem-yard: [i586] # suggested by dvd:suggested:patterns-base-enhanced_base 
+  - ruby3.2-devel 
+  - ruby3.2-devel-extra 
+  - ruby3.2-doc 
+  - ruby3.2-doc-ri 
+  - ruby3.2-rubygem-d-installer-cli 
   - rubygem-libguestfs: [x86_64] 
+  - rubygem-passenger: [i586] 
+  - rubygem-passenger-apache2: [i586] 
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 
