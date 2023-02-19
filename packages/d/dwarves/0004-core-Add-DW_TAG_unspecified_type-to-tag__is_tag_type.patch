@@ -1,0 +1,32 @@
+From e2a15e14e74224f7fdd909aeec0b5ec52731bfeb Mon Sep 17 00:00:00 2001
+From: Arnaldo Carvalho de Melo <acme@redhat.com>
+Date: Mon, 10 Oct 2022 16:59:53 -0300
+Subject: [PATCH 4/7] core: Add DW_TAG_unspecified_type to tag__is_tag_type()
+ set
+
+It is a type, so make tag__is_tag_type() return true for it.
+
+Backport notes:
+
+We aren't backporting the DW_TAG_atomic_type, so cope with that.
+
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ dwarves.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dwarves.h b/dwarves.h
+index bec9f08ce879806d..2d0f51ab39df1fbd 100644
+--- a/dwarves.h
++++ b/dwarves.h
+@@ -540,6 +540,7 @@ static inline int tag__is_tag_type(const struct tag *tag)
+ 	       tag->tag == DW_TAG_subroutine_type ||
+ 	       tag->tag == DW_TAG_unspecified_type ||
+ 	       tag->tag == DW_TAG_volatile_type ||
++	       tag->tag == DW_TAG_unspecified_type ||
+ 	       tag->tag == DW_TAG_LLVM_annotation;
+ }
+ 
+-- 
+2.39.1
+

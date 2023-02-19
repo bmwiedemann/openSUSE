@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 17 14:36:32 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add 0001-pahole-Support-lang-lang_exclude-asm.patch,
+  0002-btf_encoder-Add-extra-debug-info-for-unsupported-DWA.patch,
+  0003-btf_encoder-Store-the-CU-being-processed-to-avoid-ch.patch,
+  0004-core-Add-DW_TAG_unspecified_type-to-tag__is_tag_type.patch,
+  0005-core-Record-if-a-CU-has-a-DW_TAG_unspecified_type.patch,
+  0006-btf_encoder-Encode-DW_TAG_unspecified_type-returning.patch,
+  0007-dwarves-Zero-initialize-struct-cu-in-cu__new-to-prev.patch
+  as in order to support DW_TAG_unspecified_type that is newly
+  emitted by binutils 2.40+.
+
+-------------------------------------------------------------------
 Tue Oct  4 17:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24:

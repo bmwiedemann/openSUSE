@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,13 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source8:        dwarves.keyring
 Source9:        baselibs.conf
+Patch0:         0001-pahole-Support-lang-lang_exclude-asm.patch
+Patch1:         0002-btf_encoder-Add-extra-debug-info-for-unsupported-DWA.patch
+Patch2:         0003-btf_encoder-Store-the-CU-being-processed-to-avoid-ch.patch
+Patch3:         0004-core-Add-DW_TAG_unspecified_type-to-tag__is_tag_type.patch
+Patch4:         0005-core-Record-if-a-CU-has-a-DW_TAG_unspecified_type.patch
+Patch5:         0006-btf_encoder-Encode-DW_TAG_unspecified_type-returning.patch
+Patch6:         0007-dwarves-Zero-initialize-struct-cu-in-cu__new-to-prev.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
 BuildRequires:  libelf-devel
@@ -97,7 +104,7 @@ This package contains the development files for libdwarves, a library
 for processing DWARF, a debugging data format for ELF files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 sv="$PWD/lib.v"
