@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -34,6 +33,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pyquery
 Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE make_webtest_optional.patch mcepl@suse.com
+# Make it possible to run test suite (albeit partial) without WebTest module
+Patch0:         make_webtest_optional.patch
 BuildRequires:  %{python_module cssselect > 0.7.9}
 BuildRequires:  %{python_module lxml >= 2.1}
 BuildRequires:  %{python_module setuptools}
@@ -44,9 +46,11 @@ Requires:       python-lxml >= 2.1
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module WebOb > 1.1.9}
-BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+%if 0%{?suse_version} > 1550
+BuildRequires:  %{python_module WebTest}
+%endif
 %endif
 %python_subpackages
 
@@ -56,7 +60,7 @@ as much as possible the similar to jQuery. Pyquery uses lxml for fast
 XML and HTML manipulation.
 
 %prep
-%setup -q -n pyquery-%{version}
+%autosetup -p1 -n pyquery-%{version}
 
 %build
 %python_build

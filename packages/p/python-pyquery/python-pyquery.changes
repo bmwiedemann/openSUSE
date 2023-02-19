@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 17 16:46:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add make_webtest_optional.patch to allow testing without
+  WebTest module.
+
+-------------------------------------------------------------------
 Fri Aug 19 11:41:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove coverage from build requirements -- not relevant for rpm

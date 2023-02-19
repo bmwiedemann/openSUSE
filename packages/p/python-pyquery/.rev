@@ -178,4 +178,12 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
     <comment></comment>
     <requestid>998228</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>85c6954a8d30cb8a4616ea83626f5f36</srcmd5>
+    <version>1.4.3</version>
+    <time>1676827108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066414</requestid>
+  </revision>
 </revisionlist>
