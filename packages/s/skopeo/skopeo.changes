@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Feb 17 04:51:04 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.11.1:
+  * [release-1.11] Bump to v1.11.1
+  * Update to c/image 5.24.1
+  * Move to v1.11.1-dev
+  * Bump to v1.11.0
+  * [CI:DOCS] Format manual page documents
+  * Update module github.com/containers/common to v0.51.0
+  * Update module github.com/containers/image/v5 to v5.24.0
+  * Add (skopeo generate-sigstore-key)
+  * Update c/image after https://github.com/containers/image/pull/1810
+  * Touch up conscious language issues
+  * Partially fix removal of temporary data in (make test-system)
+  * Don't affect $XDG_RUNTIME_DIR of Podman starting the registry
+  * Update module github.com/containers/storage to v1.45.3
+  * Fix storage.conf setup in test-system
+  * Fix (test-integration), in a container without CI
+  * Cirrus: Fix c/image CI testing
+  * Bump github.com/containers/ocicrypt from 1.1.6 to 1.1.7
+  * Cirrus: Add a common intra-test reset function
+  * Fix unnecessary use of podman in CI test
+  * Cirrus: Update to F37 CI VM Images
+  * Cirrus: Remove redundant package install attempt
+  * fix(deps): update module github.com/containers/storage to v1.45.1
+  * Add support for Fulcio and Rekor, and --sign-by-sigstore=param-file
+  * Update c/image after https://github.com/containers/image/pull/1787
+  * fix(deps): update module github.com/containers/storage to v1.45.0
+  * Cirrus: Skip OSX CI on release-branches
+  * Correctly use the stdout parameter in some places
+  * fix(deps): update module golang.org/x/term to v0.4.0
+  * [skip-ci] Update actions/stale action to v7
+  * proxy: Fix leak of blobs from containers-storage
+  * vendor: Bump golang.org/x/net to 4.0
+  * proxy: Ensure images are closed when proxy is shutting down
+  * Add an example for creating a docker-archive file
+  * proxy: Add GetLayerInfo API
+  * fix(deps): update module golang.org/x/term to v0.3.0
+  * [skip-ci] GHA/Cirrus-cron: Fix execution order
+  * Update skopeo-inspect man page example
+  * README: Update example to show newly exposed LayerData
+  * [CI:BUILD] Cirrus: Migrate OSX task to M1
+  * Adds sync with tag suffix example
+  * GHA: Add cirrus-cron auto-rerun job
+  * Adds `--append-suffix` flag to sync
+  * fix(deps): update module github.com/containers/storage to v1.44.0
+  * Cirrus: Add reverse-deps. test to verify proxy ext
+  * [skip-ci] Update actions/stale action to v6
+  * fix(deps): update module golang.org/x/term to v0.2.0
+  * Renovate: Override global no-rebase option
+  * chore(deps): update actions/stale to v3
+  * fix(deps): update module github.com/spf13/cobra to v1.6.1
+  * Close a HTTP response body
+  * fix(deps): update module golang.org/x/term to v0.1.0
+  * fix(deps): update module github.com/stretchr/testify to v1.8.1
+  * Update to c/image main branch
+  * bump to v1.11.0-dev
+  * chore(deps): add renovate.json
+  * proxy: Bump semver for OpenImageOptional
+  * proxy: Add `OpenImageOptional`
+  * Add a workaround for public.ecr.aws not implementing tag list at all
+  * Update AWS workaround to use Golang types
+  * Reorganize the "list tags failed" logic in inspect.go a bit
+  * Remove a (skopeo inspect) workaround for IBM Bluemix
+  * Fix an error message to refer to repo, not a single image
+  * Remove a special case for failing to list tags in (skopeo sync)
+  * Update tests for changed error texts
+  * Include c/image after https://github.com/containers/image/pull/1299
+  * Fold a long line.
+  * Remove single-use "wanted" variables
+  * Bump github.com/spf13/cobra from 1.5.0 to 1.6.0
+  * Bump github.com/containers/ocicrypt from 1.1.5 to 1.1.6
+  * Bump github.com/opencontainers/image-spec from 1.1.0-rc1 to 1.1.0-rc2
+  * Bump to v1.10.1-dev
+
+-------------------------------------------------------------------
 Wed Jan 25 09:27:02 UTC 2023 - dcermak@suse.com
 
 - stop building with libostree, this has been disabled upstream three years ago

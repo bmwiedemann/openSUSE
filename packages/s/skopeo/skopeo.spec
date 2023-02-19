@@ -1,7 +1,7 @@
 #
 # spec file for package skopeo
 #
-# Copyright (c) SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define project        github.com/containers/skopeo
 
 Name:           skopeo
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -47,7 +47,7 @@ storage mechanisms.
 
 %package bash-completion
 Summary:        Bash completion for skopeo
-Buildarch:      noarch
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -57,7 +57,7 @@ This package contains the bash completion for skopeo.
 
 %package fish-completion
 Summary:        Fish completion for skopeo
-Buildarch:      noarch
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
@@ -67,7 +67,7 @@ This package contains the fish completion for skopeo.
 
 %package zsh-completion
 Summary:        Zsh completion for skopeo
-Buildarch:      noarch
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
