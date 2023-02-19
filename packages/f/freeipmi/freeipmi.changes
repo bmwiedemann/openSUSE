@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 17 09:26:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeipmi 1.6.10
+  * Support IPv6 Lan configuration in ipmi-config
+    IPv6 configuration is supported in the new Lan6_Conf section
+- add upstream signing key and source signature
+
+-------------------------------------------------------------------
 Mon Jan 16 09:43:43 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Remove obsolete ExclusiveArch
