@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-pdm-pep517%{psuffix}
-Version:        1.0.6
+Version:        1.1.2
 Release:        0
 Summary:        Python Development Master
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 17 16:44:23 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.1.2
+  * fix: raise an error if dynamic version config is missing 
+  * feat: support specifying zipinfo date via env var 
+  * updated vendored packaging
+
+-------------------------------------------------------------------
 Tue Dec  6 04:14:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.0.6 
