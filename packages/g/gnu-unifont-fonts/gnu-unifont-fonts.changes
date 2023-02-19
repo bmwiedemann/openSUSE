@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Feb 13 15:38:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Rename package
+  * gnu-unifont-ttf-fonts -> gnu-unifont-fonts
+- Package otf fonts. Introduce new subpackages
+  * gnu-unifont-otf-fonts
+  * gnu-unifont-jp-otf-fonts
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Tue Sep 20 19:08:49 UTC 2022 - Андрей Алыпов <and.november@opensuse.org>
+
+- update to version 15.0.01
+
+-------------------------------------------------------------------
+Tue Jul 27 16:36:08 UTC 2021 - Андрей Алыпов <and.november@opensuse.org>
+
+- update to version 13.0.06
+
+-------------------------------------------------------------------
+Mon Apr 13 10:22:15 UTC 2020 - Андрей Алыпов <and.november@opensuse.org>
+
+- added fonts
+- added new package gnu-unifont-jp-ttf-fonts
+
+-------------------------------------------------------------------
+Sun Apr 12 19:18:55 UTC 2020 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 13.0.01) for openSUSE
