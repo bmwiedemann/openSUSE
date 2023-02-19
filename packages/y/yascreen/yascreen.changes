@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 18 14:03:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- yascreen 1.97:
+  * add yascreen_willto - allows to optimize polling in external
+    event loops
+
+-------------------------------------------------------------------
 Sun Feb  5 17:04:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - yascreen 1.96: 

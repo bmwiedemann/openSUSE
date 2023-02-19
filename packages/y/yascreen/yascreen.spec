@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           yascreen
-Version:        1.96
+Version:        1.97
 Release:        0
 Summary:        A terminal control library (ncurses alternative)
 License:        LGPL-3.0-or-later
