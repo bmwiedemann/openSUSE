@@ -56,8 +56,9 @@ sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,test
 export CFLAGS="%{optflags}"
 %python_build --no-download-t1-files
 
+mypython=%{expand:%%__%(pythons="%{pythons}"; echo ${pythons##python* })}
 PYTHONPATH=$(readlink -f build/lib.linux-*/) \
-    python3 docs/genAll.py
+    $mypython docs/genAll.py
 
 %install
 %python_install

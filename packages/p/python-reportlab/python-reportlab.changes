@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 16 23:33:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- pick the primary interpreter for doc generation even if it is not "python3" 
+
+-------------------------------------------------------------------
 Tue Jan 10 08:19:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.6.12:
