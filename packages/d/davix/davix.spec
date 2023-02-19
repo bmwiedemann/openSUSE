@@ -1,7 +1,7 @@
 #
 # spec file for package davix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define shlib lib%{name}0
 Name:           davix
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
-Source:         https://github.com/cern-fts/davix/releases/download/R_0_8_3/davix-%{version}.tar.gz
+Source:         https://github.com/cern-fts/davix/releases/download/R_0_8_4/davix-%{version}.tar.gz
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
+BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libxml-2.0)
