@@ -267,4 +267,12 @@
     <comment></comment>
     <requestid>988488</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1ccce49f865f1be8a19dc0ff276f5993</srcmd5>
+    <version>2.2.0</version>
+    <time>1676827172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2.0 [boo#1208447]</comment>
+    <requestid>1066616</requestid>
+  </revision>
 </revisionlist>

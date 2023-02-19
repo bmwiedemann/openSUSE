@@ -1,7 +1,7 @@
 #
 # spec file for package librecad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define tar_version 2.2.0-rc4
+%define tar_version 2.2.0
 
 Name:           librecad
-Version:        2.2.0~rc4
+Version:        2.2.0
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -27,7 +27,7 @@ Group:          Productivity/Graphics/CAD
 URL:            http://librecad.org/
 
 #Git-Web:       https://github.com/LibreCAD/LibreCAD
-Source:         https://github.com/LibreCAD/LibreCAD/archive/%{tar_version}.tar.gz#/librecad-%{tar_version}.tar.gz
+Source:         https://github.com/LibreCAD/LibreCAD/archive/%tar_version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
 Source2:        https://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
@@ -77,7 +77,7 @@ Collection of parts for LibreCAD, a Qt application to design 2D
 CAD drawings.
 
 %prep
-%setup -qn LibreCAD-%{tar_version} -a2 -a3 -a4
+%setup -qn LibreCAD-%tar_version -a2 -a3 -a4
 %autopatch -p1
 
 pc="libdxfrw"
@@ -117,7 +117,6 @@ export BUILDDIR="$b/%_datadir/%name"
 sh scripts/postprocess-unix.sh
 
 install -Dpm0755 "unix/%name" "$b/%_bindir/%name"
-install -Dpm0644 "unix/appdata/%name.appdata.xml" "$b/%_datadir/appdata/%name.appdata.xml"
 install -Dpm0755 "unix/ttf2lff" "$b/%_bindir/ttf2lff"
 install -Dpm0644 "desktop/%name.1" "$b/%_mandir/man1/%name.1"
 p="$b/%_libdir/%name/plugins"
@@ -162,7 +161,6 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 %_libdir/%name
 %_mandir/man1/librecad.1*
 %_mandir/man1/ttf2lff.1*
-%_datadir/appdata/%name.appdata.xml
 %_datadir/applications/librecad.desktop
 %_datadir/mime/packages/%name.xml
 %_datadir/pixmaps/librecad.png

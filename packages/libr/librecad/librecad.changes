@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 19 12:10:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0 [boo#1208447]
+  * many causes of crashes have been eliminated
+  * eliminated DWG issues in libdxfrw, which caused several crashes
+  * the performance of panning and zooming in large files has
+    been significantly improved
+  * the undo/redo engine has been completely revised due to
+    several problems
+  * adjustments for new compiler and Qt versions were required
+  * extension of the command line, multi-line commands, paste and
+    open command files
+  * improvement of the print preview, with tiled printing and
+    line widths adjustment
+  * multiple selection and bulk actions in block and layer lists
+
+-------------------------------------------------------------------
 Mon Jul 11 18:48:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0 rc4:
