@@ -11,13 +11,15 @@ SUSE since we lack the ability to use a custom stop/restart
  init.d/auditd.service |    1 -
  1 file changed, 1 deletion(-)
 
---- a/init.d/auditd.service
-+++ b/init.d/auditd.service
-@@ -11,7 +11,6 @@
+Index: audit-3.0.9/init.d/auditd.service
+===================================================================
+--- audit-3.0.9.orig/init.d/auditd.service
++++ audit-3.0.9/init.d/auditd.service
+@@ -11,7 +11,6 @@ After=local-fs.target systemd-tmpfiles-s
  Before=sysinit.target shutdown.target
  ##Before=shutdown.target
  Conflicts=shutdown.target
 -RefuseManualStop=yes
  ConditionKernelCommandLine=!audit=0
- Documentation=man:auditd(8) https://github.com/linux-audit/audit-documentation
+ ConditionKernelCommandLine=!audit=off
  

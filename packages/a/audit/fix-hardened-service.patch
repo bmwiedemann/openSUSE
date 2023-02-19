@@ -12,9 +12,11 @@ Also remove PrivateDevices=true so /dev/* are exposed to auditd.
 
 Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
 
---- a/init.d/auditd.service
-+++ b/init.d/auditd.service
-@@ -37,12 +37,12 @@ RestrictRealtime=true
+Index: audit-3.0.9/init.d/auditd.service
+===================================================================
+--- audit-3.0.9.orig/init.d/auditd.service
++++ audit-3.0.9/init.d/auditd.service
+@@ -41,12 +41,12 @@ RestrictRealtime=true
  # added automatically, for details please see
  # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
  ProtectSystem=full

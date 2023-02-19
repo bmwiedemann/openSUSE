@@ -1,8 +1,10 @@
---- a/init.d/auditd.service
-+++ b/init.d/auditd.service
-@@ -34,6 +34,15 @@ ProtectControlGroups=true
+Index: audit-3.0.9/init.d/auditd.service
+===================================================================
+--- audit-3.0.9.orig/init.d/auditd.service
++++ audit-3.0.9/init.d/auditd.service
+@@ -38,6 +38,15 @@ LockPersonality=true
+ ProtectControlGroups=true
  ProtectKernelModules=true
- ProtectHome=true
  RestrictRealtime=true
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort

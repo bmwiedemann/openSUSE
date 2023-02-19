@@ -9,8 +9,10 @@ but need manual removal here.
  init.d/auditd.conf |    3 ---
  1 file changed, 3 deletions(-)
 
---- a/init.d/auditd.conf
-+++ b/init.d/auditd.conf
+Index: audit-3.0.9/init.d/auditd.conf
+===================================================================
+--- audit-3.0.9.orig/init.d/auditd.conf
++++ audit-3.0.9/init.d/auditd.conf
 @@ -30,8 +30,6 @@ tcp_max_per_addr = 1
  ##tcp_client_ports = 1024-65535
  tcp_client_max_idle = 0
@@ -18,5 +20,5 @@ but need manual removal here.
 -krb5_principal = auditd
 -##krb5_key_file = /etc/audit/audit.key
  distribute_network = no
- q_depth = 1200
+ q_depth = 2000
  overflow_action = SYSLOG

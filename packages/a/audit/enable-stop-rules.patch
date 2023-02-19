@@ -11,11 +11,11 @@ Disable audit when auditd.service stops, so kauditd stops logging/running.
 
 Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
 
-Index: audit-3.0.6/init.d/auditd.service
+Index: audit-3.0.9/init.d/auditd.service
 ===================================================================
---- audit-3.0.6.orig/init.d/auditd.service
-+++ audit-3.0.6/init.d/auditd.service
-@@ -23,9 +23,9 @@ ExecStart=/sbin/auditd
+--- audit-3.0.9.orig/init.d/auditd.service
++++ audit-3.0.9/init.d/auditd.service
+@@ -25,9 +25,9 @@ ExecStart=/sbin/auditd
  ## NOTE: augenrules expect any rules to be added to /etc/audit/rules.d/
  ExecStartPost=-/sbin/augenrules --load
  #ExecStartPost=-/sbin/auditctl -R /etc/audit/audit.rules

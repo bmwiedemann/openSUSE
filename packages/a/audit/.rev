@@ -880,4 +880,12 @@ Fix bz#1160384</comment>
     <comment></comment>
     <requestid>969466</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b45ec063c4e7856d1bf1ea7fa6a46c44</srcmd5>
+    <version>3.0.9</version>
+    <time>1676827115</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro</comment>
+    <requestid>1066163</requestid>
+  </revision>
 </revisionlist>

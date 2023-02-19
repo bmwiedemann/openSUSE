@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        3.0.6
+Version:        3.0.9
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -42,8 +42,6 @@ Patch9:         fix-hardened-service.patch
 Patch10:        enable-stop-rules.patch
 Patch11:        create-augenrules-service.patch
 Patch12:        audit-userspace-517-compat.patch
-Patch13:        audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
-Patch14:        libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  kernel-headers >= 2.6.30
@@ -147,6 +145,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %ifarch aarch64
 	--with-aarch64 \
 %endif
+%ifarch arm
+	--with-arm \
+%endif
 	--enable-systemd \
 	--libexecdir=%{_libexecdir}/%{_name} \
 	--with-apparmor \
@@ -198,7 +199,7 @@ rm -f %{buildroot}/%{_mandir}/man5/libaudit.conf.5
 rm -rf %{buildroot}/%{_mandir}/man3
 # Cleanup plugins
 #USR-MERGE
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin/
 for prog in auditctl auditd ausearch autrace aureport augenrules; do
   ln -s %{_sbindir}/$prog %{buildroot}/sbin/$prog
@@ -257,7 +258,7 @@ fi
 %attr(644,root,root) %{_mandir}/man5/ausearch-expression.5.gz
 %attr(644,root,root) %{_mandir}/man8/auvirt.8.gz
 %attr(644,root,root) %{_mandir}/man8/augenrules.8.gz
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/auditctl
 /sbin/auditd
 /sbin/ausearch

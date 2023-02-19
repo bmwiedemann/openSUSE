@@ -1,7 +1,7 @@
 #
 # spec file for package audit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           audit
-Version:        3.0.6
+Version:        3.0.9
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -85,6 +85,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %configure \
 %ifarch aarch64
 	--with-aarch64 \
+%endif
+%ifarch arm
+	--with-arm \
 %endif
 	--enable-systemd \
 	--libexecdir=%{_libexecdir}/%{name} \

@@ -9,9 +9,11 @@ Signed-off-by: Tony Jones <tonyj@suse.de>
  src/ausearch-parse.c |   18 ++++++++----------
  1 file changed, 8 insertions(+), 10 deletions(-)
 
---- a/src/ausearch-parse.c
-+++ b/src/ausearch-parse.c
-@@ -2061,17 +2061,15 @@ other_avc:
+Index: audit-3.0.9/src/ausearch-parse.c
+===================================================================
+--- audit-3.0.9.orig/src/ausearch-parse.c
++++ audit-3.0.9/src/ausearch-parse.c
+@@ -2062,17 +2062,15 @@ other_avc:
  
  	// Now get the class...its at the end, so we do things different
  	str = strstr(term, "tclass=");

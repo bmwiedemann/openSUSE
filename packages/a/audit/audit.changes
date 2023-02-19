@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Dec 15 19:17:35 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Enable build for ARM (32-bit)
+- Update to version 3.0.9:
+  * In auditd, release the async flush lock on stop
+  * Don't allow auditd to log directly into /var/log when log_group is non-zero
+  * Cleanup krb5 memory leaks on error paths
+  * Update auditd.cron to use auditctl --signal
+  * In auparse, if too many fields, realloc array bigger (Paul Wolneykien)
+  * In auparse, special case kernel module name interpretation
+  * If overflow_action is ignore, don't treat as an error
+  (3.0.8)
+  * Add gcc function attributes for access and allocation
+  * Add some more man pages (MIZUTA Takeshi)
+  * In auditd, change the reinitializing of the plugin queue
+  * Fix path normalization in auparse (Sergio Correia)
+  * In libaudit, handle ECONNREFUSED for network uid/gid lookups (Enzo Matsumiya)
+  * In audisp-remote, fix hang with disk_low_action=suspend (Enzo Matsumiya)
+  * Drop ProtectHome from auditd.service as it interferes with rules
+  (3.0.7)
+  * Add support for the OPENAT2 record type (Richard Guy Briggs)
+  * In auditd, close the logging file descriptor when logging is suspended
+  * Update the capabilities lookup table to match 5.16 kernel
+  * Improve interpretation of renamat & faccessat family of syscalls
+  * Update syscall table for the 5.16 kernel
+  * Reduce dependency from initscripts to initscripts-service
+- Refresh patches (context adjusment):
+  * audit-allow-manual-stop.patch
+  * audit-ausearch-do-not-require-tclass.patch
+  * audit-no-gss.patch
+  * enable-stop-rules.patch
+  * fix-hardened-service.patch
+  * harden_auditd.service.patch
+- Remove patches (fixed by version update):
+  * libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
+  * audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
+
+-------------------------------------------------------------------
 Mon Apr 11 20:45:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.
@@ -1013,8 +1051,8 @@ Mon May 11 17:20:28 CEST 2009 - tonyj@suse.de
   - Add --exit search option to ausearch
   - Fix parsing config file when kerberos is disabled
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Tue Apr 14 14:52:39 CEST 2009 - dmueller@suse.de
 
 - refresh patches
