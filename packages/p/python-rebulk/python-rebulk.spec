@@ -1,7 +1,7 @@
 #
 # spec file for package python-rebulk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-rebulk
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
@@ -42,9 +42,6 @@ allow building a custom and complex string matcher.
 
 %prep
 %autosetup -n rebulk-%{version}
-# https://github.com/Toilal/rebulk/issues/26
-sed -i 's:.pytest-runner.::' setup.py
-
 # Remove shebang from non-executable files
 for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
   sed -i -e "1d" "rebulk/$i.py"

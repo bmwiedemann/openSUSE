@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 18 09:30:28 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.2.0
+  Features:
+  * dependencies: Add python 3.11 support and drop python 3.6
+    support.
+  Fixes:
+  * Remove pytest-runner from setup_requires.
+
+-------------------------------------------------------------------
 Tue Dec  7 19:42:56 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed
