@@ -1,7 +1,7 @@
 #
 # spec file for package python-cchardet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Name:           python-cchardet
 Version:        2.1.7
 Release:        0
 Summary:        CChardet is high speed universal character encoding detector
-License:        MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later
+License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/PyYoshi/cChardet
 Source:         https://files.pythonhosted.org/packages/source/c/cchardet/cchardet-%{version}.tar.gz
+BuildRequires:  %{python_module cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(uchardet)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

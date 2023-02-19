@@ -34,4 +34,12 @@
     <comment></comment>
     <requestid>875285</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f9ad8bbcc990daec8b66c437423f654c</srcmd5>
+    <version>2.1.7</version>
+    <time>1676827196</time>
+    <user>dimstar_suse</user>
+    <comment>- build with cythonize to have working code for python 3.11</comment>
+    <requestid>1066619</requestid>
+  </revision>
 </revisionlist>
