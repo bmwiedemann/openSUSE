@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 17 10:14:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.14
+  * Split config.h into private and public config
+- Delete 0001-Split-config.h-into-private-and-public-config.patch
+  (merged).
+
+-------------------------------------------------------------------
 Mon Feb  6 19:46:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.13.1

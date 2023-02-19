@@ -206,4 +206,12 @@
     <comment>- Update to release 3.13.1</comment>
     <requestid>1064198</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a835225d68b1e860e6623a882ef5579b</srcmd5>
+    <version>3.14.0</version>
+    <time>1676827133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.14</comment>
+    <requestid>1066352</requestid>
+  </revision>
 </revisionlist>
