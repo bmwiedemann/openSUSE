@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:43:21 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.56 → 9.24.57
+
+-------------------------------------------------------------------
+Sat Jan 28 22:33:06 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow squashfscompression for plain squashfs
+
+  The schematron rule to limit the squashfscompression attribute
+  to certain image types did not allow it for a plain squashfs
+  filesystem build. This commit fixes that limitation.
+  This Fixes #2241
+
+-------------------------------------------------------------------
+Wed Jan 18 07:09:05 CET 2023 - David Cassany <dcassany@suse.com>
+
+- Use rsync defaults to sync the initrd root-tree
+
+  This commits makes use of rsync default options to sync
+  the root-tree of the boot image for custom initrds.
+
+  Fixes bsc#1207128 where it was noted hardlinks
+  were not preserved inside the initrd.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Jan 17 16:23:37 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed wrong test assertions
+
+  Former versions of pytest did ignore invalid assertions.
+  Now they are reported as an error and show the mistakes
+  of the past
+
+-------------------------------------------------------------------
+Tue Jan 17 15:25:38 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added 90-brd.conf for test-image-disk-ramdisk
+
+  By default the brd ramdisk module is no longer added to the
+  initrd. For ramdisk deployments this is required though.
+  This Fixes #2230
+
+-------------------------------------------------------------------
+Sun Jan 15 19:21:22 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete CentOS v7 build tests
+
+  CentOS v7 is EOL for kiwi image build tests
+
+-------------------------------------------------------------------
+Thu Jan 05 12:56:38 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to specify fixed size for the root partition
+
+  So far the last partition (typically root) in the partition table
+  takes all the rest space of the partition table in the image file.
+  At deployment/boot time users had several options to let that
+  partition grow to a custom size. However, during build time of the
+  image it was not possible to specify a specific fixed size for the
+  root partition as we don't wanted to produce gaps of unpartitioned
+  space in the image file. It has turned out that there is hardware
+  available which requires a partition to be an exact multiple of
+  some blocksize. As kiwi supports size constraints for all other
+  partitions but not for root this commit now allows for it. The
+  oem-systemsize element is now also taken into account at build
+  time of the image if the oem-resize which would do that at
+  deployment/boot time is switched off like the following example
+  shows:
+
+  ```xml
+  <oemconfig>
+  <!-- set root partition to 2048MB -->
+  <oem-systemsize>2048</oem-systemsize>
+  <oem-resize>false</oem-resize>
+  </oemconfig>
+  ```
+
+  This Fixes #2203
+
+-------------------------------------------------------------------
+Wed Jan 04 20:56:25 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete ppc:fedora from testing report
+
+-------------------------------------------------------------------
+Wed Jan 04 12:47:40 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Remove Fedora PPC build test from index
+
+  The integration test unfortunately never got tested anywhere
+  is outdated and I have no PPC hardware here to run any tests.
+  Let's add a real test if there is demand for it
+
+-------------------------------------------------------------------
+Wed Jan 04 12:29:46 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added kiwi-settings for Fedora arm build tests
+
+-------------------------------------------------------------------
+Thu Dec 22 16:14:09 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow fat16/fat32 as filesystem in partitions
+
+  The partitions element allows to specify the filesystem for
+  the individual partition. In the schema fat16 and fat32 were
+  missing
+
+-------------------------------------------------------------------
+Tue Dec 20 18:58:10 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Stick with tox v3.28.0 for unit testing
+
+  tox >= 3.0.15 together with virtualenv >= 20.17.1 raises
+  strange incompatibilities and prevents the unit test run
+  because tox calls virtualenv in a wrong way leading to
+  strange error messages like:
+  ---
+  usage: virtualenv ...
+  virtualenv: error: argument dest: destination '{check,devel,packagedoc,doc,doc_gh_pages,doc_suse,doc_man,scripts,}: /home/runner/work/kiwi/kiwi/.tox/3\n/home/runner/work/kiwi/kiwi/.tox/3.8' must not contain the path separator (:) as this would break the activation scripts
+  ---
+  All this doesn't make sense to me at all and worked
+  without any issues before.
+
+-------------------------------------------------------------------
+Tue Dec 20 18:29:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.55 → 9.24.56
+
+-------------------------------------------------------------------
+Tue Dec 20 18:28:51 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix gh-pages publish
+
+-------------------------------------------------------------------
+Sun Dec 18 21:51:09 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed systemd boot integration test for rawhide
+
+  systemd-boot was splitted in preparation for secure
+  boot. The unsigned version of the EFI binary is used
+  in the test so far
+
+-------------------------------------------------------------------
+Sun Dec 18 21:05:59 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added device mapper setting for s390 on TW
+
+  Use kpartx as partx fails
+
+-------------------------------------------------------------------
+Sun Dec 18 21:04:18 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added device mapper setting for s390
+
+  Use kpartx as partx fails
+
+-------------------------------------------------------------------
 Sun Dec 18 20:33:54 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.54 → 9.24.55
