@@ -17,7 +17,7 @@
 
 
 Name:           Catch2
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0

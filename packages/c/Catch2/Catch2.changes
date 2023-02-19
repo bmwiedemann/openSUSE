@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 14 05:37:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.1:
+  * Reduced allocations and improved performance, mainly from
+    smarter handling of `SECTION`s, especially sibling `SECTION`s.
+
+-------------------------------------------------------------------
 Mon Jan 23 18:51:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3.0:
