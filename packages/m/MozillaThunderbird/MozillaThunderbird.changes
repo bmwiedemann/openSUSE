@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Feb 15 07:46:58 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.8.0
+  * https://www.thunderbird.net/en-US/thunderbird/102.8.0/releasenotes
+  MFSA 2023-07 (bsc#1208144)
+  * CVE-2023-0616 (bmo#1806507)
+    User Interface lockup with messages combining S/MIME and OpenPGP
+  * CVE-2023-25728 (bmo#1790345)
+    Content security policy leak in violation reports using iframes
+  * CVE-2023-25730 (bmo#1794622)
+    Screen hijack via browser fullscreen mode
+  * CVE-2023-0767 (bmo#1804640)
+    Arbitrary memory write via PKCS 12 in NSS
+  * CVE-2023-25735 (bmo#1810711)
+    Potential use-after-free from compartment mismatch in SpiderMonkey
+  * CVE-2023-25737 (bmo#1811464)
+    Invalid downcast in SVGUtils::SetupStrokeGeometry
+  * CVE-2023-25738 (bmo#1811852)
+    Printing on Windows could potentially crash Thunderbird with
+    some device drivers
+  * CVE-2023-25739 (bmo#1811939)
+    Use-after-free in mozilla::dom::ScriptLoadContext::~ScriptLoadContext
+  * CVE-2023-25729 (bmo#1792138)
+    Extensions could have opened external schemes without user knowledge
+  * CVE-2023-25732 (bmo#1804564)
+    Out of bounds memory write from EncodeInputStream
+  * CVE-2023-25734 (bmo#1784451, bmo#1809923, bmo#1810143, bmo#1812338)
+    Opening local .url files could cause unexpected network loads
+  * CVE-2023-25742 (bmo#1813424)
+    Web Crypto ImportKey crashes tab
+  * CVE-2023-25746 (bmo#1544127, bmo#1762368, bmo#1789449, bmo#1803628,
+    bmo#1810536)
+    Memory safety bugs fixed in Thunderbird 102.8
+- requires
+  NSPR >= 4.34.1
+  NSS  >= 3.79.4
+
+-------------------------------------------------------------------
 Wed Feb  8 07:59:46 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.7.2

@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          102
-%define mainver        %major.7.2
-%define orig_version   102.7.2
+%define mainver        %major.8.0
+%define orig_version   102.8.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -108,8 +108,8 @@ BuildRequires:  ccache
 %endif
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  mozilla-nspr-devel >= 4.34
-BuildRequires:  mozilla-nss-devel >= 3.79
+BuildRequires:  mozilla-nspr-devel >= 4.34.1
+BuildRequires:  mozilla-nss-devel >= 3.79.4
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
