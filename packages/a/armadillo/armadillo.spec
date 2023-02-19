@@ -18,7 +18,7 @@
 
 %define soname libarmadillo11
 Name:           armadillo
-Version:        11.4.3
+Version:        11.4.4
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -119,9 +119,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/*.so.*
 
 %files doc
-%doc armadillo_nicta_2010.pdf
-%doc rcpp_armadillo_csda_2014.pdf
-%doc armadillo_joss_2016.pdf
+%doc armadillo_*.pdf
 %doc NOTICE.txt README.md index.html examples/ docs.html
 %license LICENSE.txt
 
