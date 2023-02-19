@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 16 16:06:59 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- allow to switch off Apparmor support via bcond
+
+-------------------------------------------------------------------
 Tue Dec 27 13:15:30 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

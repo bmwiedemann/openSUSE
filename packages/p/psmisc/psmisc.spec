@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without apparmor
+
 Name:           psmisc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -27,7 +29,9 @@ BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
 BuildRequires:  netcat-openbsd
+%if %{with apparmor}
 BuildRequires:  pkgconfig(libapparmor)
+%endif
 URL:            https://gitlab.com/psmisc/psmisc/
 Version:        23.6
 Release:        0
@@ -74,7 +78,7 @@ CC=gcc
 export CFLAGS CXXFLAGS LDFLAGS CC
 %configure	--disable-rpath \
 	--with-gnu-ld		\
-	--enable-apparmor       \
+	%{?with_apparmor:--enable-apparmor} \
 	--enable-selinux
 make %{?_smp_mflags} CFLAGS="$CFLAGS" "CC=$CC"
 

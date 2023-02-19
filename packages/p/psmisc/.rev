@@ -848,4 +848,12 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055724 from lnussel)</comment>
     <requestid>1057026</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>74b38a5ff36fafb9a1443fef7ebcb74a</srcmd5>
+    <version>23.6</version>
+    <time>1676827133</time>
+    <user>dimstar_suse</user>
+    <comment>- allow to switch off Apparmor support via bcond (forwarded request 1066220 from lnussel)</comment>
+    <requestid>1066338</requestid>
+  </revision>
 </revisionlist>
