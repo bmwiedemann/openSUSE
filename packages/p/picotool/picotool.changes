@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 13:02:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Add --update option to `load` command to skip unchanged flash
+    sectors (speed improvement).
+  * A number of minor bug fixes and documentation improvements.
+  * Support non contiguous flash ELF/UF2 which were written
+    incorrectly before (and yet still passed verify due to
+    another bug).
+
+-------------------------------------------------------------------
 Fri Dec 10 14:30:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.1.0:
