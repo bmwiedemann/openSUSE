@@ -1,7 +1,7 @@
 #
 # spec file for package blueprint-compiler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           blueprint-compiler
-Version:        0.4.0
+Version:        0.6.0
 Release:        0
 Summary:        A markup language for GTK user interfaces
 License:        LGPL-3.0-or-later
@@ -29,10 +29,10 @@ BuildRequires:  python3-gobject
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
-Requires:       python3-gobject
 Requires:       gobject-introspection-devel
 Requires:       gtk4-devel
 Requires:       libadwaita-devel
+Requires:       python3-gobject
 BuildArch:      noarch
 
 %description

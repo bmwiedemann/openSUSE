@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 16 05:38:38 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 0.6.0:
+  + Quoted and numeric literals are no longer interchangeable (e.g.
+    `"800"` is no longer an accepted value for an integer type).
+  + Boxed types are now type checked.
+  + Added: There is now syntax for `GType` literals: the `typeof()`
+    pseudo-function. For example, list stores have an `item-type`
+    property which is now specifiable like this:
+    `item-type: typeof(.MyDataModel)`.
+  + The language server now logs to stderr.
+  + Fix the build on Windows, where backslashes in paths were not
+    escaped. (William Roy)
+  + Remove the syntax for specifying menu objects inline,
+    since it does not work.
+  + Fix a crash in the language server that was triggered in files
+    with incomplete `using Gtk 4.0;` statements.
+  + Fixed compilation on big-endian systems.
+  + Fix an issue in the interactive port tool that would lead to
+    missed files. (Frank Dana)
+  + Fix an issue for documentation contributors where changing the
+    documentation files would not trigger a rebuild.
+  + Document the missing support for Gtk.Label `<attributes>`,
+    which is intentional, and recommend alternatives. (Sonny Piers)
+  + Add a prominent warning that Blueprint is still experimental
+
+-------------------------------------------------------------------
 Sat Sep 24 11:01:01 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Create initial package.

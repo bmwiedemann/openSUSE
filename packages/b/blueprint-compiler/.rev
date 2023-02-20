@@ -7,4 +7,34 @@
     <comment></comment>
     <requestid>1044167</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26e4ef768c184b254426a599707bfd73</srcmd5>
+    <version>0.6.0</version>
+    <time>1676911611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  + Quoted and numeric literals are no longer interchangeable (e.g.
+    `&quot;800&quot;` is no longer an accepted value for an integer type).
+  + Boxed types are now type checked.
+  + Added: There is now syntax for `GType` literals: the `typeof()`
+    pseudo-function. For example, list stores have an `item-type`
+    property which is now specifiable like this:
+    `item-type: typeof(.MyDataModel)`.
+  + The language server now logs to stderr.
+  + Fix the build on Windows, where backslashes in paths were not
+    escaped. (William Roy)
+  + Remove the syntax for specifying menu objects inline,
+    since it does not work.
+  + Fix a crash in the language server that was triggered in files
+    with incomplete `using Gtk 4.0;` statements.
+  + Fixed compilation on big-endian systems.
+  + Fix an issue in the interactive port tool that would lead to
+    missed files. (Frank Dana)
+  + Fix an issue for documentation contributors where changing the
+    documentation files would not trigger a rebuild.
+  + Document the missing support for Gtk.Label `&lt;attributes&gt;`,
+    which is intentional, and recommend alternatives. (Sonny Piers)
+  + Add a prominent warning that Blueprint is still experimental (forwarded request 1066406 from akumar)</comment>
+    <requestid>1066817</requestid>
+  </revision>
 </revisionlist>
