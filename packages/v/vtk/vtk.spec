@@ -33,19 +33,21 @@
 # pugixml in Leap 15.x is too old
 # fmt in Leap 15.x is too old
 # Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
+# PEGTL >= 3.0 not supported, https://gitlab.kitware.com/vtk/vtk/-/issues/18151
 %if 0%{?suse_version} <= 1500
 %bcond_with    fmt
 %bcond_with    haru
+%bcond_without pegtl
 %bcond_with    pugixml
 %else
 %bcond_without fmt
 %bcond_without haru
+%bcond_with    pegtl
 %bcond_without pugixml
 %endif
 
 %bcond_without gl2ps
 %bcond_without java
-%bcond_without pegtl
 
 %if "%{flavor}" == ""
 %define my_suffix %{nil}
@@ -90,7 +92,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.2.5
+Version:        9.2.6
 Release:        0
 %define series  9.2
 Summary:        The Visualization Toolkit - A high level 3D visualization library
@@ -192,7 +194,7 @@ BuildRequires:  python3-mpi4py-devel
 BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
 %if %{with pegtl}
-BuildRequires:  pegtl-devel >= 2.0.0
+BuildRequires:  (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with testing}
 BuildRequires:  cli11-devel
@@ -266,7 +268,7 @@ Requires:       pkgconfig(netcdf)
 Requires:       pkgconfig(theora)
 Requires:       pkgconfig(zlib)
 %if %{with pegtl}
-Requires:       pegtl-devel
+Requires:       (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with pugixml}
 Requires:       pkgconfig(pugixml) >= 1.11

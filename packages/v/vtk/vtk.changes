@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 18 02:07:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.2.6, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.2.md
+- Use bundled pegtl on TW, version 3.x is API incompatible with
+  required pegtl 2.x.
+
+-------------------------------------------------------------------
 Fri Jan 27 03:50:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.2.5, see:
