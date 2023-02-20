@@ -106,7 +106,7 @@ ExclusiveArch:  do_not_build
 # /3
 
 Name:           %{pkgname}
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Fortran77 subroutines for solving large scale eigenvalue problems
 License:        BSD-3-Clause
@@ -115,17 +115,11 @@ URL:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz#/arpack-ng-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE arpack-ng-python-module-installdir.patch badshah400@gmail.com -- Install python module to standard python sitearch instead of libdir
 Patch0:         arpack-ng-python-module-installdir.patch
-# PATCH-FIX-UPSTREAM -- Fix mixup of relative and absolute libdir in pkgconfig files
-Patch1:         Use-CMAKE_INSTALL_FULL_-dir.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         fix_tautological_compare_321.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         https://github.com/opencollab/arpack-ng/commit/4002c2733c6a.patch#/replace_deprecated_np-complex.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
 BuildRequires:  blas-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
@@ -267,13 +261,13 @@ source %{my_prefix}/bin/mpivars.sh
 %doc examples
 %doc CHANGES README.md
 %{my_libdir}/*.so
-%{my_incdir}/arpack
+%{my_incdir}/arpack-ng
 %if %{without mpi}
 %{_libdir}/pkgconfig/*.pc
 %else
 %dir %{my_libdir}/cmake
 %endif
-%{my_libdir}/cmake/arpack-ng/
+%{my_libdir}/cmake/arpackng
 
 %if %{with pyarpack}
 %files -n python3-%{name}

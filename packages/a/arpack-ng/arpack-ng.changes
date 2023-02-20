@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 15 13:33:04 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.9.0
+  * parpack.h and parpack.hpp: type of rwork should be real instead
+    of complex.
+  * Allow ritz_option {"LR", "SR", "LI", "SI"} for complex eigenvalue
+    problems in ICB.
+  * Replace deprecated NP complex
+  * Include location of header files changed to arpack-ng
+  * Many smaller bugfixes
+- Drop upsteam fixed and merged patches
+  * fix_tautological_compare_321.patch
+  * replace_deprecated_np-complex.patch
+  * Use-CMAKE_INSTALL_FULL_-dir.patch
+- Rebased arpack-ng-python-module-installdir.patch
+
+-------------------------------------------------------------------
 Thu Jan 26 01:11:36 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build after numpy 1.24 API changes, add
