@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.4.1
+%define sover 9.4.2
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -84,7 +84,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.4.1
+Version:        9.4.2
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later

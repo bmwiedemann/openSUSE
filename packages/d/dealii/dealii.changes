@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 14 05:46:39 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.4.2:
+  * A compilation issue with step-70 has been resolved.
+  * CMake: prefer -pthread for posix thread support.
+  * A type mismatch for suitesparse has been fixed that lead to
+    compilation failures on certain platforms.
+
+-------------------------------------------------------------------
 Sun Dec  4 19:51:14 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.4.1:
