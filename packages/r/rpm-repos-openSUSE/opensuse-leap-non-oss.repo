@@ -5,6 +5,7 @@ baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/non-oss
 enabled=0
 enabled_metadata=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-non-oss-update]
@@ -14,6 +15,7 @@ baseurl=https://download.opensuse.org/update/leap/$releasever/non-oss/
 enabled=0
 enabled_metadata=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-non-oss-source]
@@ -22,5 +24,6 @@ baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/src-non
 #metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/src-non-oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 

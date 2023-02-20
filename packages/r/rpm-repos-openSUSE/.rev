@@ -67,4 +67,12 @@
   reliability</comment>
     <requestid>968036</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d1a67521b1df1c37924e5102cff6fdbf</srcmd5>
+    <version>unknown</version>
+    <time>1676911610</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh GPG key link for Tumbleweed and add 2022 key for Leap (boo#1199184)</comment>
+    <requestid>1066811</requestid>
+  </revision>
 </revisionlist>

@@ -3,6 +3,6 @@ name=openSUSE Tumbleweed - Updates - @DIST_ARCH@
 baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/update/tumbleweed/
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/update/tumbleweed/repodata/repomd.xml.metalink
 enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 skip_if_unavailable=True

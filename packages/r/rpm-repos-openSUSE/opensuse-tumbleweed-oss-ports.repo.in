@@ -3,7 +3,7 @@ name=openSUSE Tumbleweed - OSS - @DIST_ARCH@
 baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/tumbleweed/repo/oss/
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/tumbleweed/repo/oss/repodata/repomd.xml.metalink
 enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-tumbleweed-oss-debuginfo]
@@ -11,7 +11,7 @@ name=openSUSE Tumbleweed - OSS - @DIST_ARCH@ - Debug
 baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/debug/tumbleweed/repo/oss/
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/debug/tumbleweed/repo/oss/repodata/repomd.xml.metalink
 enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-tumbleweed-oss-source]
@@ -19,6 +19,6 @@ name=openSUSE Tumbleweed - OSS - @DIST_ARCH@ - Source
 baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/source/tumbleweed/repo/oss/
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/source/tumbleweed/repo/oss/repodata/repomd.xml.metalink
 enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 

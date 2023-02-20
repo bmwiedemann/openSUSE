@@ -4,6 +4,7 @@ baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/oss/
 #metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1
@@ -14,6 +15,7 @@ baseurl=https://download.opensuse.org/update/leap/$releasever/oss/
 #metalink=https://download.opensuse.org/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-debuginfo]
@@ -22,6 +24,7 @@ baseurl=https://download.opensuse.org/debug/distribution/leap/$releasever/repo/o
 #metalink=https://download.opensuse.org/debug/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1
@@ -32,6 +35,7 @@ baseurl=https://download.opensuse.org/debug/update/leap/$releasever/oss/
 #metalink=https://download.opensuse.org/debug/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-source]
@@ -40,6 +44,7 @@ baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/src-oss
 #metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/src-oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
         file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
 gpgcheck=1

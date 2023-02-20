@@ -4,6 +4,7 @@ baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/distribution/leap/$relea
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-update]
@@ -12,6 +13,7 @@ baseurl=https://download.opensuse.org/ports/update/leap/$releasever/oss/
 #metalink=https://download.opensuse.org/ports/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-debuginfo]
@@ -20,6 +22,7 @@ baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/debug/distribution/leap/
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/debug/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-update-debuginfo]
@@ -28,6 +31,7 @@ baseurl=https://download.opensuse.org/ports/debug/update/leap/$releasever/oss/
 #metalink=https://download.opensuse.org/ports/debug/update/leap/$releasever/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
 [opensuse-leap-oss-source]
@@ -36,5 +40,6 @@ baseurl=https://download.opensuse.org/ports/@DIST_ARCH@/source/distribution/leap
 #metalink=https://download.opensuse.org/ports/@DIST_ARCH@/source/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
 gpgcheck=1
 
