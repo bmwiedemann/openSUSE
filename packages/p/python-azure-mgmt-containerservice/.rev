@@ -360,4 +360,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1046094 from glaubitz)</comment>
     <requestid>1046164</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7c3dba6fa1d3e5165b0dbe8711fc7761</srcmd5>
+    <version>21.2.0</version>
+    <time>1676911603</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 21.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1066785 from glaubitz)</comment>
+    <requestid>1066802</requestid>
+  </revision>
 </revisionlist>
