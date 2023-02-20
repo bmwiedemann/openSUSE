@@ -2,7 +2,7 @@
 # spec file for package blender
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2019-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,9 @@
 
 %if 0%{?suse_version} >= 1550
 #global force_gcc_version 10
+%bcond_without system_audaspace
+%else
+%bcond_with system_audaspace
 %endif
 
 # Set this to 1 for fixing bugs.
@@ -68,8 +71,6 @@
 %bcond_without opensubdiv
 %bcond_without openvdb
 %bcond_without osl
-# https://github.com/audaspace/audaspace/issues/13
-%bcond_with    system_audaspace
 %bcond_without system_glew
 # TBD: contributions welcome
 %bcond_with usd
@@ -249,7 +250,8 @@ BuildRequires:  OpenShadingLanguage-devel
 %endif
 %if %{with system_audaspace}
 BuildRequires:  pkgconfig(audaspace) >= 1.3
-Requires:       audaspace-plugins
+Requires:       audaspace-deviceplugin
+Requires:       audaspace-fileplugin
 %endif
 %ifarch x86_64
 Obsoletes:      %{name}-cycles-devel = %{version}
