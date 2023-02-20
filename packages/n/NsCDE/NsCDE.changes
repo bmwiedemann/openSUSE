@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 10 01:58:28 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Remove doc files because contain scripts etc that cause OBS to fail
+- Fix duplicate filews causing OBS to fail
+- Fix .desktop file to use X-NsCDE instead of NsCDE
+- Fix Python scripts shebangs
+
+-------------------------------------------------------------------
 Thu Aug 11 07:17:13 UTC 2022 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add xscreensaver as NsCDE treats it as a default screensaver.
