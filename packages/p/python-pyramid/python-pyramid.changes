@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 20 05:45:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Add support for Python 3.10 and 3.11.
+  * Copy __name__ from decorated attribute when using pyramid.decorator.reify.
+  * Fix method signatures in docs for
+    pyramid.config.Configurator.add_static_view and
+    pyramid.config.Configurator.override_asset.
+  * Remove obsolete stackframe hack used in Python 3.5.0 when showing
+    configurator conflict errors.
+  * Fix an error when injecting certain objects into the pshell env due to
+    the use of !=.
+  * Pyramid drops support for l*gettext() methods in the i18n module. These
+    have been deprecated in Python's gettext module since 3.8, and removed
+    in Python 3.11.
+  * Avoid setDaemon(True) deprecation warning by updating threading API
+    usage to .daemon = True. 
+
+-------------------------------------------------------------------
 Mon Aug  2 11:21:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.0
