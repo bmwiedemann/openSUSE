@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 20 08:45:07 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.7.1
+  Fix:
+  * episode: Ignore absolute_episode guess when SxxExx match is
+    available in filepart
+  + title: Fix title guessing for Show Name/Season XX/episode.mkv
+    directories pattern
+
+-------------------------------------------------------------------
 Sat Feb 18 13:23:05 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.7.0

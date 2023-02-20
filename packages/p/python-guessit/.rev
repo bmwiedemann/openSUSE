@@ -255,4 +255,18 @@
 </comment>
     <requestid>1066542</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>74febb53da044bd33759f0e4defa9a62</srcmd5>
+    <version>3.7.1</version>
+    <time>1676911577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.1
+  Fix:
+  * episode: Ignore absolute_episode guess when SxxExx match is
+    available in filepart
+  + title: Fix title guessing for Show Name/Season XX/episode.mkv
+    directories pattern
+</comment>
+    <requestid>1066739</requestid>
+  </revision>
 </revisionlist>
