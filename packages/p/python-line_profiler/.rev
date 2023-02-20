@@ -72,4 +72,29 @@
     <comment></comment>
     <requestid>1007071</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9d036614a4259fd738d39dcf8ee9e1e</srcmd5>
+    <version>4.0.2</version>
+    <time>1676911567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * FIX: AttributeError on certain methods. #191
+  * FIX: Profiling classmethods works again. #183
+  * ENH: Python 3.11 is now supported.
+  * ENH: Profiling overhead is now drastically smaller, thanks to
+    reimplementing almost all of the tracing callback in C++.
+  * ENH: Added the ``-i &lt;# of seconds&gt;`` option to the ``kernprof`` script.
+  * CHANGE: Cython's native cythonize function is now used to compile the
+    project, instead of scikit-build's convoluted process.
+  * CHANGE: Due to optimizations done while reimplementing the callback in
+    C++, the profiler's code_map and last_time attributes now are indexed by
+    a hash of the code block's bytecode and its line number.
+  * FIX: filepath test in is_ipython_kernel_cell for Windows #161
+  * ADD: setup.py now checks LINE_PROFILER_BUILD_METHOD to determine how
+    to build binaries
+  * ADD: LineProfiler.add_function warns if an added function has a
+    __wrapped__ attribute
+- Due to build system change, massively simplify %build.</comment>
+    <requestid>1066713</requestid>
+  </revision>
 </revisionlist>

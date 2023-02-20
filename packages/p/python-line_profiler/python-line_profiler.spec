@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-line_profiler
-Version:        3.5.1
+Version:        4.0.2
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -54,13 +52,9 @@ function-level profiling tools in the Python standard library.
 %setup -q -n line_profiler-%{version}
 
 %build
-# regenarate cython files
-find . -name '*.pyx' -exec cython {} \;
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 # remove shebangs
 sed -i '1{/env python/d}' line_profiler/line_profiler.py kernprof.py
-# fix for skbuild not specifying the platlib
-sed -i 's/setup(\*\*setupkw)/setup(**setupkw, ext_modules=[setuptools.Extension(name="line_profiler._line_profiler",sources=[])])/' setup.py
 %python_build
 
 %install
