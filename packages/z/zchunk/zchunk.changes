@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 19 14:12:46 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 1.2.4:
+  * Update tests to handle zstd 1.5.4
+
+-------------------------------------------------------------------
 Mon Oct 24 13:06:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:
