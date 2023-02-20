@@ -210,4 +210,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1062081 from glaubitz)</comment>
     <requestid>1062244</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>38be51019a1f3a9d94cb66ab8ab36c4e</srcmd5>
+    <version>4.0.0b8</version>
+    <time>1676911607</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b8
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1066795 from glaubitz)</comment>
+    <requestid>1066806</requestid>
+  </revision>
 </revisionlist>
