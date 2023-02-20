@@ -350,4 +350,12 @@
     <comment>removing 5.0 series files</comment>
     <requestid>1064663</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6095fcda00d5a168fc7be26b0bd86bf2</srcmd5>
+    <version>6.0.15</version>
+    <time>1676911572</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1066722</requestid>
+  </revision>
 </revisionlist>
