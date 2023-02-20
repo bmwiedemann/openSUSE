@@ -417,4 +417,38 @@
     <comment></comment>
     <requestid>1064406</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>44d13cb67437ba0f6774a5d3fc9b2bc7</srcmd5>
+    <version>0.8.1</version>
+    <time>1676911620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Set 1.5s timeouts for the log dbus proxy
+  * Move log dbus server to its own object/file
+  * Wrap queue item struct creation with a function
+  * Improve old log migration error reporting
+  * Delete old log file if it was empty
+  * Clean up old log action parsing loop
+  * Print a message if log db is busy or locked
+  * Plug memleak when not sending log changed signal
+  * Use GStrvBuilder instead of constructing one manually
+  * Handle empty strings from DBus
+  * Limit notification body to 2 lines in plugin menu
+  * Remove old legacy support options from configure
+  * Ensure gdbus-codegen doesn't generate too-new code
+  * Clean up generate code and deprecate Quit method
+  * Make all notification log access go through dbus
+  * Drop old gtk 3.0 themes (3.20 themes are always used)
+  * Clean up build system
+  * Add hidden setting to restore override-redirect behavior
+  * Remove ChangeLog make target
+  * Markdownify and update the readme
+  * Disconnect from GtkIconTheme::changed when plugin destroyed
+  * Load main panel icon with _load_symbolic() variant
+  * Restore log viewer's scrolled window shadow-type
+  * Update icon when icon-theme changes
+  * Fix incorrect signal handler connections in settings dialog
+  * Translation Updates (forwarded request 1066326 from manfred-h)</comment>
+    <requestid>1066848</requestid>
+  </revision>
 </revisionlist>
