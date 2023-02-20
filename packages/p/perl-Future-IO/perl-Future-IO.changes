@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 20 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.13    2023-02-19
+          [CHANGES]
+           * Swap all unit tests from `Test::More` to `Test2::V0`
+           * Reomved test-time dependency on `Test::Identity`
+
+          [BUGFIXES]
+           * t/30system.t should check that the impl actually provides a
+             `->waitpid` method before using it
+           * Insert a hacky "sleep 1" into the connect tests on MSWin32 in case
+             that helps fix the test failures
+
+-------------------------------------------------------------------
 Wed Feb  1 03:06:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.12
