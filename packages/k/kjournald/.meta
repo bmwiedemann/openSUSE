@@ -1,0 +1,14 @@
+<package name="kjournald" project="openSUSE:Factory">
+  <title>Qt browser for journald database</title>
+  <description>This project aims to provide an abstraction of the systemd’s journald API in
+terms of QAbstractItemModel classes. The main purpose is to ease the
+integration of journald into Qt based applications (both QML and QtWidget).
+Additional to the library, the project provides a reference implementation of
+the API, called kjournaldbrowser. Even though that application provides a
+powerful journal database reader, we aim to do a clear split between 
+reuseable library and application logic.
+
+</description>
+  <devel project="KDE:Extra" package="kjournald"/>
+  <url>https://invent.kde.org/system/kjournald</url>
+</package>
