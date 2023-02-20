@@ -57,4 +57,12 @@
   by setuptools 60+</comment>
     <requestid>994183</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7eea744583f5a12bb4cb539d38b7835e</srcmd5>
+    <version>4.19.25</version>
+    <time>1676911520</time>
+    <user>dimstar_suse</user>
+    <comment>not compatible with python311</comment>
+    <requestid>1066654</requestid>
+  </revision>
 </revisionlist>

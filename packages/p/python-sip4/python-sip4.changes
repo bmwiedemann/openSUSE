@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 19 20:29:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't build for python311: not supported
+
+-------------------------------------------------------------------
 Tue Aug  9 19:06:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Override install location to platformdir for distutils hijacked
