@@ -143,4 +143,12 @@
     <comment>Follow-up fixes</comment>
     <requestid>1065429</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>3e404863d7aa840480278d70ddd3e03a</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1676911513</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205916</comment>
+    <requestid>1066517</requestid>
+  </revision>
 </revisionlist>
