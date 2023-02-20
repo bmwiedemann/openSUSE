@@ -7,7 +7,7 @@
 
 --- man/free.1
 +++ man/free.1	2022-03-28 11:53:32.173182702 +0000
-@@ -100,6 +100,12 @@ Switch to the wide mode. The wide mode p
+@@ -110,6 +110,12 @@ Switch to the wide mode. The wide mode p
  than 80 characters. In this mode \fBbuffers\fR and \fBcache\fR
  are reported in two separate columns.
  .TP
@@ -22,7 +22,7 @@
  .I count
 --- src/free.c
 +++ src/free.c	2022-03-28 12:05:01.544663755 +0000
-@@ -93,6 +93,7 @@ static void __attribute__ ((__noreturn__
+@@ -90,6 +90,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -v, --committed     show committed memory and commit limit\n"), out);
  	fputs(_(" -s N, --seconds N   repeat printing every N seconds\n"), out);
  	fputs(_(" -c N, --count N     repeat printing N times, then exit\n"), out);
@@ -30,7 +30,7 @@
  	fputs(_(" -w, --wide          wide output\n"), out);
  	fputs(USAGE_SEPARATOR, out);
  	fputs(_("     --help     display this help and exit\n"), out);
-@@ -244,6 +245,7 @@ int main(int argc, char **argv)
+@@ -241,6 +242,7 @@ int main(int argc, char **argv)
  		{  "committed",	no_argument,	    NULL,  'v'		},
  		{  "seconds",	required_argument,  NULL,  's'		},
  		{  "count",	required_argument,  NULL,  'c'		},
@@ -38,7 +38,7 @@
  		{  "wide",	no_argument,	    NULL,  'w'		},
  		{  "help",	no_argument,	    NULL,  HELP_OPTION	},
  		{  "version",	no_argument,	    NULL,  'V'		},
-@@ -263,7 +265,7 @@ int main(int argc, char **argv)
+@@ -260,7 +262,7 @@ int main(int argc, char **argv)
  	textdomain(PACKAGE);
  	atexit(close_stdout);
  
@@ -47,7 +47,7 @@
  		switch (c) {
  		case 'b':
  		        check_unit_set(&unit_set);
-@@ -349,6 +351,9 @@ int main(int argc, char **argv)
+@@ -346,6 +348,9 @@ int main(int argc, char **argv)
  		case 'w':
  			flags |= FREE_WIDE;
  			break;
@@ -61,9 +61,9 @@
 +++ library/meminfo.c	2022-03-28 12:39:29.291205555 +0000
 @@ -3,6 +3,7 @@
   *
-  * Copyright (C) 2015 Craig Small <csmall@dropbear.xyz>
-  * Copyright (C) 2016-2022 Jim Warner <james.warner@comcast.net>
-+ * Copyright (c) 2008 Bart Van Assche.
+  * Copyright © 2015-2023 Jim Warner <james.warner@comcast.net>
+  * Copyright © 2015-2023 Craig Small <csmall@dropbear.xyz>
++ * Copyright © 2008 Bart Van Assche.
   *
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -89,7 +89,7 @@
         overflows, that's symptomatic of running within a lxc container where
 --- src/vmstat.c
 +++ src/vmstat.c	2022-03-28 12:41:52.744612074 +0000
-@@ -234,6 +234,7 @@ static void __attribute__ ((__noreturn__
+@@ -230,6 +230,7 @@ static void __attribute__ ((__noreturn__
      fputs(_(" -p, --partition <dev>  partition specific statistics\n"), out);
      fputs(_(" -S, --unit <char>      define display unit\n"), out);
      fputs(_(" -w, --wide             wide output\n"), out);
@@ -97,7 +97,7 @@
      fputs(_(" -t, --timestamp        show timestamp\n"), out);
      fputs(_(" -y, --no-first         skips first line of output\n"), out);
      fputs(USAGE_SEPARATOR, out);
-@@ -948,6 +949,7 @@ int main(int argc, char *argv[])
+@@ -952,6 +953,7 @@ int main(int argc, char *argv[])
          {"partition", required_argument, NULL, 'p'},
          {"unit", required_argument, NULL, 'S'},
          {"wide", no_argument, NULL, 'w'},
@@ -105,7 +105,7 @@
          {"timestamp", no_argument, NULL, 't'},
          {"help", no_argument, NULL, 'h'},
          {"version", no_argument, NULL, 'V'},
-@@ -964,7 +966,7 @@ int main(int argc, char *argv[])
+@@ -968,7 +970,7 @@ int main(int argc, char *argv[])
      atexit(close_stdout);
  
      while ((c =
@@ -114,7 +114,7 @@
          switch (c) {
          case 'V':
              printf(PROCPS_NG_VERSION);
-@@ -1031,6 +1033,9 @@ int main(int argc, char *argv[])
+@@ -1035,6 +1037,9 @@ int main(int argc, char *argv[])
          case 't':
              t_option = 1;
              break;

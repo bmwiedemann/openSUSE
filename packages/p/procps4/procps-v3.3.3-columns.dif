@@ -4,7 +4,7 @@
 
 --- src/ps/global.c
 +++ src/ps/global.c	2022-03-29 09:31:24.242140877 +0000
-@@ -258,8 +258,11 @@ static void set_screen_size(void){
+@@ -262,8 +262,11 @@ static void set_screen_size(void){
    screen_cols = ws.ws_col;  // hmmm, NetBSD subtracts 1
    screen_rows = ws.ws_row;
  
@@ -18,7 +18,7 @@
  
    columns = getenv("COLUMNS");
    if(columns && *columns){
-@@ -401,6 +404,7 @@ static const char *set_personality(void)
+@@ -405,6 +408,7 @@ static const char *set_personality(void)
      return NULL;
  
    case_aix:
@@ -26,7 +26,7 @@
      bsd_j_format = "FB_j";
      bsd_l_format = "FB_l";
      /* bsd_s_format not used */
-@@ -428,6 +432,7 @@ static const char *set_personality(void)
+@@ -432,6 +436,7 @@ static const char *set_personality(void)
  
    case_sunos4:
      personality = PER_NO_DEFAULT_g;
@@ -34,7 +34,7 @@
      prefer_bsd_defaults = 1;
      bsd_j_format = "FB_j";
      bsd_l_format = "FB_l";
-@@ -453,12 +458,14 @@ static const char *set_personality(void)
+@@ -457,12 +462,14 @@ static const char *set_personality(void)
    case_hp:
    case_hpux:
      personality = PER_HPUX_x;
@@ -49,7 +49,7 @@
      return NULL;
  
    case_posix:
-@@ -499,8 +506,8 @@ void reset_global(void){
+@@ -503,8 +510,8 @@ void reset_global(void){
    }
  // --- <pids> interface --------------------------------------------------
  

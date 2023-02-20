@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Feb 20 12:12:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.3
+  * library
+    Only changes were in copyright headers and tests
+  * docs: Don't install English manpages twice
+  * pgrep: Add -H match on userspace signal handler        merge #165
+  * pgrep: make --terminal respect other criteria
+  * ps: c flag shows command name again                    Debian #1026326
+  * ps.1: Match drs description from top.1                 merge #156
+  * skill: Match on -p again                               Debian #1025915
+  * top: E/P-core toggle ('5' key) added to help
+  * vmstat: Referesh memory statistics                     Debian #1027963
+  * vmstat: Fix initial si,so,bi,bo,in & cs values         issue #15
+                                                           Debian #668580
+  * vmstat: Fix conversion errors due to precision         merge #75
+  * w: Add --pids option                                   merge #159
+  * watch: Pass through beep                               issue #104
+  * watch: -r option to not re-exec on SIGWINCH            merge #125
+  * watch: find eol with --no-linewrap                     merge #157
+- Drop patches now upstream
+  * linguas.patch
+  * 82d8e3fa.patch
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-ia64.diff
+  * procps-v3.3.3-pwdx.patch
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
 Tue Dec 27 13:15:13 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

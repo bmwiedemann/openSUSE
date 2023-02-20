@@ -4,7 +4,7 @@
 
 --- library/readproc.c
 +++ library/readproc.c	2022-03-28 11:51:04.751862744 +0000
-@@ -731,7 +731,7 @@ static int file2str(const char *director
+@@ -735,7 +735,7 @@ static int file2str(const char *director
      }
      len = snprintf(path, sizeof path, "%s/%s", directory, what);
      if (len <= 0 || (size_t)len >= sizeof path) return -1;
@@ -13,7 +13,7 @@
      while (0 < (num = read(fd, ub->buf + tot_read, ub->siz - tot_read))) {
          tot_read += num;
          if (tot_read < ub->siz) break;
-@@ -755,25 +755,25 @@ static int file2str(const char *director
+@@ -759,25 +759,25 @@ static int file2str(const char *director
  static char **file2strvec(const char *directory, const char *what) {
      char buf[2048];     /* read buf bytes at a time */
      char *p, *rbuf = 0, *endbuf, **q, **ret, *strp;
@@ -46,7 +46,7 @@
              end_of_file = 1;       /* integer overflow: null-terminate and break */
              n = 0;                 /* but tot > 0 */
          }
-@@ -807,7 +807,7 @@ static char **file2strvec(const char *di
+@@ -811,7 +811,7 @@ static char **file2strvec(const char *di
      c = sizeof(char*);             /* one extra for NULL term */
      for (p = rbuf; p < endbuf; p++) {
          if (!*p || *p == '\n') {
@@ -55,7 +55,7 @@
              c += sizeof(char*);
          }
          if (*p == '\n')
-@@ -820,7 +820,7 @@ static char **file2strvec(const char *di
+@@ -824,7 +824,7 @@ static char **file2strvec(const char *di
      q = ret = (char**) (endbuf+align);          /* ==> free(*ret) to dealloc */
      for (strp = p = rbuf; p < endbuf; p++) {
          if (!*p) {                              /* NUL char implies that */

@@ -11,7 +11,7 @@ and this causes a problem later on (bsc#908516)
 
 --- src/free.c
 +++ src/free.c	2022-10-20 13:33:28.880818112 +0000
-@@ -209,6 +209,7 @@ int main(int argc, char **argv)
+@@ -206,6 +206,7 @@ int main(int argc, char **argv)
  	int c, flags = 0, unit_set = 0, rc = 0;
  	struct commandline_arguments args;
  	struct meminfo_info *mem_info = NULL;
@@ -19,7 +19,7 @@ and this causes a problem later on (bsc#908516)
  
  	/*
  	 * For long options that have no equivalent short option, use a
-@@ -260,10 +261,12 @@ int main(int argc, char **argv)
+@@ -257,10 +258,12 @@ int main(int argc, char **argv)
  #ifdef HAVE_PROGRAM_INVOCATION_NAME
  	program_invocation_name = program_invocation_short_name;
  #endif
@@ -32,7 +32,7 @@ and this causes a problem later on (bsc#908516)
  
  	while ((c = getopt_long(argc, argv, "bkmghltvCc:ws:V", longopts, NULL)) != -1)
  		switch (c) {
-@@ -333,11 +336,13 @@ int main(int argc, char **argv)
+@@ -330,11 +333,13 @@ int main(int argc, char **argv)
  			break;
  		case 's':
  			flags |= FREE_REPEAT;

@@ -1,7 +1,7 @@
 #
 # spec file for package procps4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,14 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps4
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            https://sf.net/projects/procps-ng/
 Source:         https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
-# Not a detached signature but a signed tar ball
-#Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz.asc
+Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz.asc
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
 Source2:        procps-rpmlintrc
 Source3:        procps4.keyring
@@ -59,9 +58,6 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
 Patch37:        procps-ng-4.0.0-floats.dif
-Patch38:        linguas.patch
-# PATCH-FIX-UPSTREAM -- tests: Fix type for check_fatal_proc_unmounted
-Patch39:        82d8e3fa.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -150,13 +146,15 @@ the process information pseudo-file system.
 %patch32
 %patch33 -b .pmap4us
 %patch37
-%patch38
-%patch39
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version
-#./autogen.sh
-autoreconf -fiv
+if test -f po/Makefile.in.in
+then
+    autoreconf -fiv
+else
+    sh ./autogen.sh
+fi
 major=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
 export NCURSESW_CFLAGS="$(ncursesw${major}-config --cflags)"
 export NCURSESW_LIBS="$(ncursesw${major}-config --libs)"

@@ -5,7 +5,7 @@
 
 --- src/pmap.c
 +++ src/pmap.c	2022-10-20 13:35:47.074351812 +0000
-@@ -55,7 +55,9 @@ const char *nls_Address,
+@@ -59,7 +59,9 @@ const char *nls_Address,
  	   *nls_Kbytes,
  	   *nls_Mode,
  	   *nls_RSS,
@@ -16,7 +16,7 @@
  
  static void nls_initialize(void)
  {
-@@ -79,7 +81,9 @@ static void nls_initialize(void)
+@@ -83,7 +85,9 @@ static void nls_initialize(void)
  	nls_Kbytes  = _("Kbytes");
  	nls_Mode    = _("Mode");
  	nls_RSS     = _("RSS");
@@ -26,7 +26,7 @@
  }
  
  static int justify_print(const char *str, int width, int right)
-@@ -146,10 +150,10 @@ static int d_option = 0;
+@@ -150,10 +154,10 @@ static int d_option = 0;
  static int n_option = 0;
  static int N_option = 0;
  static int q_option = 0;
@@ -39,7 +39,7 @@
  
  static unsigned shm_minor = ~0u;
  
-@@ -538,12 +542,17 @@ static int one_proc (struct pids_stack *
+@@ -542,12 +546,17 @@ static int one_proc (struct pids_stack *
  	char perms[32] = "";
  	const char *cp2 = NULL;
  	unsigned long long rss = 0ull;
@@ -57,7 +57,7 @@
  
  	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p, Pids_info), PIDS_VAL(cmdline, str, p, Pids_info));
  
-@@ -566,13 +575,15 @@ static int one_proc (struct pids_stack *
+@@ -570,13 +579,15 @@ static int one_proc (struct pids_stack *
  	if (x_option) {
  		maxw1 = 16;
  		if (sizeof(long) == 4) maxw1 = 8;
@@ -74,7 +74,7 @@
  			maxw5 = justify_print(nls_Mode, maxw5, 0);
  			justify_print(nls_Mapping, 0, 0);
  		}
-@@ -612,6 +623,11 @@ static int one_proc (struct pids_stack *
+@@ -616,6 +627,11 @@ static int one_proc (struct pids_stack *
  					total_rss += smap_value;
  					continue;
  				}
@@ -86,7 +86,7 @@
  				if (strcmp("Shared_Dirty", smap_key) == 0) {
  					shared_dirty = smap_value;
  					total_shared_dirty += smap_value;
-@@ -624,16 +640,20 @@ static int one_proc (struct pids_stack *
+@@ -628,16 +644,20 @@ static int one_proc (struct pids_stack *
  				}
  				if (strcmp("Swap", smap_key) == 0) {
  					/* doesn't matter as long as last */
@@ -109,7 +109,7 @@
                      diff = end = 0;
                      perms[0] = '\0';
                      cp2 = NULL;
-@@ -667,7 +687,6 @@ static int one_proc (struct pids_stack *
+@@ -671,7 +691,6 @@ static int one_proc (struct pids_stack *
  		if (perms[3] == 's')
  			total_shared += diff;
  		if (perms[3] == 'p') {
@@ -117,7 +117,7 @@
  			if (perms[1] == 'w')
  				total_private_writeable += diff;
  			else
-@@ -719,17 +738,21 @@ static int one_proc (struct pids_stack *
+@@ -723,17 +742,21 @@ static int one_proc (struct pids_stack *
  				justify_print("----------------", maxw1, 0);
  			justify_print("-------", maxw2, 1);
  			justify_print("-------", maxw3, 1);
@@ -141,7 +141,7 @@
  		}
  		if (d_option) {
  			printf
-@@ -1042,16 +1065,18 @@ int main(int argc, char **argv)
+@@ -1046,16 +1069,18 @@ int main(int argc, char **argv)
  	while ((c = getopt_long(argc, argv, "xXrdqA:hVcC:nN:p", longopts, NULL)) != -1)
  		switch (c) {
  		case 'x':

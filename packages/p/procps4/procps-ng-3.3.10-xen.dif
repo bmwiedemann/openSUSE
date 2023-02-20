@@ -4,7 +4,7 @@
 
 --- src/vmstat.c
 +++ src/vmstat.c	2022-03-29 09:21:41.156855432 +0000
-@@ -362,7 +362,7 @@ static void new_format(void)
+@@ -358,7 +358,7 @@ static void new_format(void)
      unsigned long pgpgin[2], pgpgout[2], pswpin[2] = {0,0}, pswpout[2];
      unsigned int sleep_half;
      unsigned long kb_per_page = sysconf(_SC_PAGESIZE) / 1024ul;
@@ -13,7 +13,7 @@
      struct tm *tm_ptr;
      time_t the_time;
      char timebuf[32];
-@@ -481,12 +481,12 @@ static void new_format(void)
+@@ -485,12 +485,12 @@ static void new_format(void)
  
          /* idle can run backwards for a moment -- kernel "feature" */
          if (debt) {

@@ -4,7 +4,7 @@
 
 --- src/top/top.c
 +++ src/top/top.c	2022-03-29 10:24:43.327490984 +0000
-@@ -1672,9 +1672,9 @@ static inline const char *make_str_utf8
+@@ -1673,9 +1673,9 @@ static inline const char *make_str_utf8
  static const char *scale_mem (int target, float num, int width, int justr) {
     //                               SK_Kb   SK_Mb      SK_Gb      SK_Tb      SK_Pb      SK_Eb
  #ifdef BOOST_MEMORY
@@ -16,7 +16,7 @@
  #endif
     static char buf[SMLBUFSIZ];
     char *psfx;
-@@ -1684,7 +1684,7 @@ static const char *scale_mem (int target
+@@ -1685,7 +1685,7 @@ static const char *scale_mem (int target
     if (Rc.zero_suppress && 0 >= num)
        goto end_justifies;
  
