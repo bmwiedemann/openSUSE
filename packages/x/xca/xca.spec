@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,11 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%if 0%{suse_version} < 1550
 BuildRequires:  pkgconfig(openssl)
+%else
+BuildRequires:  libopenssl-1_1-devel
+%endif
 #Requires:       libQt5Sql5-sqlite
 
 %description

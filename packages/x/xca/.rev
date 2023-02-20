@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>893795</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>99588d399be5a4cd03fbace975780003</srcmd5>
+    <version>2.4.0</version>
+    <time>1676911590</time>
+    <user>dimstar_suse</user>
+    <comment>- change buildrequires for openssl on factory to use openssl-1.1
+  openSSL 3 is not supported in xca-2.4.0 yet (forwarded request 1066756 from oertel)</comment>
+    <requestid>1066758</requestid>
+  </revision>
 </revisionlist>
