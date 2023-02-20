@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5NetworkAuth)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5Widgets)

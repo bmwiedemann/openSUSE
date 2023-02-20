@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 20 10:31:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.1
+  * Correcting the year 
+  * Add QuickControls2 dependency to Meson and Qmake, and enable ahead-of-time compilation of QMLs
+  * Make Video Button Available to Non-Admins 
+  * Use random bind port to avoid client collision 
+  * Attempt to fix a couple of memory leaks 
+  * Reorganize Audio Setup and Settings Screens 
+  * Bugfix/plcBigFPP 
+  * Bugfix Manage Button Crashes App in Browse View 
+  * Remove beta1 name 
+  * Add refresh button back to settings 
+
+-------------------------------------------------------------------
 Fri Jan 27 09:23:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.0
