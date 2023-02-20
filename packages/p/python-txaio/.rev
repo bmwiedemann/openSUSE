@@ -117,4 +117,13 @@
 - remove-mock.patch: upstream</comment>
     <requestid>980776</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>271389411bc3c0e3b66ddef3d3f49ebe</srcmd5>
+    <version>23.1.1</version>
+    <time>1676911562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.1.1:
+  * fix: support for Python up to v3.11</comment>
+    <requestid>1066674</requestid>
+  </revision>
 </revisionlist>
