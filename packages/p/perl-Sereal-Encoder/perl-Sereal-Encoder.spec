@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal-Encoder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Sereal-Encoder
 Name:           perl-Sereal-Encoder
-Version:        5.001
+Version:        5.003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (encoder part)
@@ -29,12 +29,13 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
-BuildRequires:  perl(Sereal::Decoder) >= 5.000
+BuildRequires:  perl(Sereal::Decoder) >= 5.003
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
+Requires:       perl(Sereal::Decoder) >= 5.003
 %{perl_requires}
 
 %description
@@ -60,6 +61,7 @@ the "PERFORMANCE" section below.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
