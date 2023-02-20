@@ -5,20 +5,18 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
 
 (was openssl-1.1.1-system-cipherlist.patch)
 ---
- Configurations/unix-Makefile.tmpl |  5 ++
- Configure                         | 10 +++-
- doc/man1/openssl-ciphers.pod.in   |  9 ++++
- include/openssl/ssl.h.in          |  5 ++
- ssl/ssl_ciph.c                    | 88 +++++++++++++++++++++++++++----
- ssl/ssl_lib.c                     |  4 +-
- test/cipherlist_test.c            |  2 +
- util/libcrypto.num                |  1 +
+ Configurations/unix-Makefile.tmpl |    5 ++
+ Configure                         |   11 ++++
+ doc/man1/openssl-ciphers.pod.in   |    9 +++
+ include/openssl/ssl.h.in          |    5 ++
+ ssl/ssl_ciph.c                    |   87 +++++++++++++++++++++++++++++++++-----
+ ssl/ssl_lib.c                     |    4 -
+ test/cipherlist_test.c            |    2 
+ util/libcrypto.num                |    1 
  8 files changed, 110 insertions(+), 14 deletions(-)
 
-Index: openssl-3.0.7/Configurations/unix-Makefile.tmpl
-===================================================================
---- openssl-3.0.7.orig/Configurations/unix-Makefile.tmpl
-+++ openssl-3.0.7/Configurations/unix-Makefile.tmpl
+--- a/Configurations/unix-Makefile.tmpl
++++ b/Configurations/unix-Makefile.tmpl
 @@ -315,6 +315,10 @@ MANDIR=$(INSTALLTOP)/share/man
  DOCDIR=$(INSTALLTOP)/share/doc/$(BASENAME)
  HTMLDIR=$(DOCDIR)/html
@@ -38,10 +36,49 @@ Index: openssl-3.0.7/Configurations/unix-Makefile.tmpl
                                    (map { "-I".$_} @{$config{CPPINCLUDES}}),
                                    @{$config{CPPFLAGS}}) -}
  CFLAGS={- join(' ', @{$config{CFLAGS}}) -}
-Index: openssl-3.0.7/doc/man1/openssl-ciphers.pod.in
-===================================================================
---- openssl-3.0.7.orig/doc/man1/openssl-ciphers.pod.in
-+++ openssl-3.0.7/doc/man1/openssl-ciphers.pod.in
+--- a/Configure
++++ b/Configure
+@@ -27,7 +27,7 @@ use OpenSSL::config;
+ my $orig_death_handler = $SIG{__DIE__};
+ $SIG{__DIE__} = \&death_handler;
+ 
+-my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
++my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--system-ciphers-file=SYSTEMCIPHERFILE] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
+ 
+ my $banner = <<"EOF";
+ 
+@@ -61,6 +61,10 @@ EOF
+ #               given with --prefix.
+ #               This becomes the value of OPENSSLDIR in Makefile and in C.
+ #               (Default: PREFIX/ssl)
++#
++# --system-ciphers-file  A file to read cipher string from when the PROFILE=SYSTEM
++#		cipher is specified (default).
++#
+ # --banner=".." Output specified text instead of default completion banner
+ #
+ # -w            Don't wait after showing a Configure warning
+@@ -387,6 +391,7 @@ $config{prefix}="";
+ $config{openssldir}="";
+ $config{processor}="";
+ $config{libdir}="";
++$config{system_ciphers_file}="";
+ my $auto_threads=1;    # enable threads automatically? true by default
+ my $default_ranlib;
+ 
+@@ -989,6 +994,10 @@ while (@argvcopy)
+                         die "FIPS key too long (64 bytes max)\n"
+                            if length $1 > 64;
+                         }
++                elsif (/^--system-ciphers-file=(.*)$/)
++                        {
++                        $config{system_ciphers_file}=$1;
++                        }
+                 elsif (/^--banner=(.*)$/)
+                         {
+                         $banner = $1 . "\n";
+--- a/doc/man1/openssl-ciphers.pod.in
++++ b/doc/man1/openssl-ciphers.pod.in
 @@ -186,6 +186,15 @@ As of OpenSSL 1.0.0, the B<ALL> cipher s
  
  The cipher suites not enabled by B<ALL>, currently B<eNULL>.
@@ -58,10 +95,8 @@ Index: openssl-3.0.7/doc/man1/openssl-ciphers.pod.in
  =item B<HIGH>
  
  "High" encryption cipher suites. This currently means those with key lengths
-Index: openssl-3.0.7/include/openssl/ssl.h.in
-===================================================================
---- openssl-3.0.7.orig/include/openssl/ssl.h.in
-+++ openssl-3.0.7/include/openssl/ssl.h.in
+--- a/include/openssl/ssl.h.in
++++ b/include/openssl/ssl.h.in
 @@ -210,6 +210,11 @@ extern "C" {
   * throwing out anonymous and unencrypted ciphersuites! (The latter are not
   * actually enabled by ALL, but "ALL:RSA" would enable some of them.)
@@ -74,10 +109,8 @@ Index: openssl-3.0.7/include/openssl/ssl.h.in
  
  /* Used in SSL_set_shutdown()/SSL_get_shutdown(); */
  # define SSL_SENT_SHUTDOWN       1
-Index: openssl-3.0.7/ssl/ssl_ciph.c
-===================================================================
---- openssl-3.0.7.orig/ssl/ssl_ciph.c
-+++ openssl-3.0.7/ssl/ssl_ciph.c
+--- a/ssl/ssl_ciph.c
++++ b/ssl/ssl_ciph.c
 @@ -1438,6 +1438,53 @@ int SSL_set_ciphersuites(SSL *s, const c
      return ret;
  }
@@ -231,10 +264,8 @@ Index: openssl-3.0.7/ssl/ssl_ciph.c
  }
  
  char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
-Index: openssl-3.0.7/ssl/ssl_lib.c
-===================================================================
---- openssl-3.0.7.orig/ssl/ssl_lib.c
-+++ openssl-3.0.7/ssl/ssl_lib.c
+--- a/ssl/ssl_lib.c
++++ b/ssl/ssl_lib.c
 @@ -660,7 +660,7 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx
                                  ctx->tls13_ciphersuites,
                                  &(ctx->cipher_list),
@@ -253,10 +284,8 @@ Index: openssl-3.0.7/ssl/ssl_lib.c
          || sk_SSL_CIPHER_num(ret->cipher_list) <= 0) {
          ERR_raise(ERR_LIB_SSL, SSL_R_LIBRARY_HAS_NO_CIPHERS);
          goto err2;
-Index: openssl-3.0.7/test/cipherlist_test.c
-===================================================================
---- openssl-3.0.7.orig/test/cipherlist_test.c
-+++ openssl-3.0.7/test/cipherlist_test.c
+--- a/test/cipherlist_test.c
++++ b/test/cipherlist_test.c
 @@ -246,7 +246,9 @@ end:
  
  int setup_tests(void)
@@ -267,55 +296,10 @@ Index: openssl-3.0.7/test/cipherlist_test.c
      ADD_TEST(test_default_cipherlist_explicit);
      ADD_TEST(test_default_cipherlist_clear);
      return 1;
-Index: openssl-3.0.7/util/libcrypto.num
-===================================================================
---- openssl-3.0.7.orig/util/libcrypto.num
-+++ openssl-3.0.7/util/libcrypto.num
-@@ -5427,3 +5427,4 @@ EVP_PKEY_get0_provider
- EVP_PKEY_CTX_get0_provider              5555	3_0_0	EXIST::FUNCTION:
+--- a/util/libcrypto.num
++++ b/util/libcrypto.num
+@@ -5428,3 +5428,4 @@ EVP_PKEY_CTX_get0_provider
  OPENSSL_strcasecmp                      5556	3_0_3	EXIST::FUNCTION:
  OPENSSL_strncasecmp                     5557	3_0_3	EXIST::FUNCTION:
+ OSSL_CMP_CTX_reset_geninfo_ITAVs        5558	3_0_8	EXIST::FUNCTION:CMP
 +ossl_safe_getenv                        ?	3_0_0   EXIST::FUNCTION:
-Index: openssl-3.0.7/Configure
-===================================================================
---- openssl-3.0.7.orig/Configure
-+++ openssl-3.0.7/Configure
-@@ -27,7 +27,7 @@ use OpenSSL::config;
- my $orig_death_handler = $SIG{__DIE__};
- $SIG{__DIE__} = \&death_handler;
- 
--my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
-+my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--system-ciphers-file=SYSTEMCIPHERFILE] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
- 
- my $banner = <<"EOF";
- 
-@@ -61,6 +61,10 @@ EOF
- #               given with --prefix.
- #               This becomes the value of OPENSSLDIR in Makefile and in C.
- #               (Default: PREFIX/ssl)
-+#
-+# --system-ciphers-file  A file to read cipher string from when the PROFILE=SYSTEM
-+#		cipher is specified (default).
-+#
- # --banner=".." Output specified text instead of default completion banner
- #
- # -w            Don't wait after showing a Configure warning
-@@ -387,6 +391,7 @@ $config{prefix}="";
- $config{openssldir}="";
- $config{processor}="";
- $config{libdir}="";
-+$config{system_ciphers_file}="";
- my $auto_threads=1;    # enable threads automatically? true by default
- my $default_ranlib;
- 
-@@ -989,6 +994,10 @@ while (@argvcopy)
-                         die "FIPS key too long (64 bytes max)\n"
-                            if length $1 > 64;
-                         }
-+                elsif (/^--system-ciphers-file=(.*)$/)
-+                        {
-+                        $config{system_ciphers_file}=$1;
-+                        }
-                 elsif (/^--banner=(.*)$/)
-                         {
-                         $banner = $1 . "\n";

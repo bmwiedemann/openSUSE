@@ -22,7 +22,7 @@
 %define man_suffix 3ssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -46,8 +46,7 @@ Patch6:         openssl-no-date.patch
 # Add crypto-policies support
 Patch7:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
 Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
-# PATCH-FIX-UPSTREAM bsc#1206374 CVE-2022-3996 X.509 Policy Constraints Double Locking
-Patch9:         openssl-3-Fix-double-locking-problem.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
@@ -71,6 +70,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl3
 Summary:        Secure Sockets and Transport Layer Security
+License:        Apache-2.0
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
@@ -89,6 +89,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-3-devel
 Summary:        Development files for OpenSSL
+License:        Apache-2.0
 Requires:       libopenssl3 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
@@ -106,6 +107,7 @@ that want to make use of the OpenSSL C API.
 
 %package doc
 Summary:        Additional Package Documentation
+License:        Apache-2.0
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
 Obsoletes:      openssl-doc < %{version}
