@@ -312,4 +312,12 @@ research-grade positions for planets and Earth satellites.</comment>
     University of Strasbourg from u-strasbg.fr to unistra.fr. (forwarded request 1060130 from bnavigator)</comment>
     <requestid>1060131</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0d5252ca0e9ceb65a98b99f3687ef22a</srcmd5>
+    <version>1.45</version>
+    <time>1676911523</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build for python311: gh#brandon-rhodes/assay#15</comment>
+    <requestid>1066657</requestid>
+  </revision>
 </revisionlist>

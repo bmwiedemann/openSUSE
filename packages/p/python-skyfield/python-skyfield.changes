@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 19 20:45:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't build for python311: gh#brandon-rhodes/assay#15
+
+-------------------------------------------------------------------
 Sat Jan 21 11:25:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.45

@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define assaycommit bb62d1f7d51d798b05a88045fff3a2ff92c299c3
 %define assayver    264.bb62d1f
-%define skip_python2 1
+# gh#brandon-rhodes/assay#15
+%define skip_python311 1
 Name:           python-skyfield
 Version:        1.45
 Release:        0
