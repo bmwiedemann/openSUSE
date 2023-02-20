@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Feb 20 05:00:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.1.4:
+  * Remove default filter on subnet list and fix the subnet detail
+  * fixing issues with the auto build for releases
+  * Improve subnet list
+  * add a limit and sortby on data time on ticket list command on result
+  * slcli vs upgrade --resize-disk is resizing another disk and not the
+    selected one
+  * Improve subnet detail by @caberos
+  * Added example to slcli call-api
+  * subnet route and subnet clear-route
+  * slcli vs notifications is displaying a hardware description
+  * Added script to list all commands in slcli
+  * New Command: slcli user grant-access
+  * Fixes firewall cancel so it can properly do multiVlan firewalls
+  * user remove-access is not displaying all removed device access and
+    its help command displaying error message
+  * feature search
+  * Added flag to command slcli account events --date-min
+  * slcli vs capture uses a deprecated API
+  * Updated command slcli block replica-order
+  * unexpected error when using vlan list with --limit 0 or 999
+  * New Command: slcli virtual host-list
+  * update volume-refresh command
+  * vs os-available command
+  * New Command: slcli virtual host-create
+  * slcli block access, updated some descriptions, change flag -h to -d,
+    sort flags
+  * slcli vlan list only returns 100 results
+  * New Command: Hardware notifications
+  * New Command: virtual notifications
+  * Change regex in rich text in simple option in help text
+  * add more information to vs credentials
+  * Fixed maxint issue
+  * Added csv output format
+  * add more information on hw credentials
+  * Delete twitter link in documentation
+  * new command hw create-credential
+  * fix the hw credential error
+  * Added test suite for py311
+  * New feature to change theme in slcli like dark, light o maintain in default
+  * Match virtual detail --prices option with hardware detail --prices option
+  * Fixing preset-list pricing table
+  * fix the call api cannot handle empty results
+  * Debug output changed to a valid JSON
+  * slcli hw add-notifications crashes with a bad user
+  * del-notification commands, rename the commands to notifications-add
+  * Add --extras to slcli order quote
+  * An error is displaying for volume with replica in slcli
+- Drop patch fix-maint-issue.patch, included upstream.
+
+-------------------------------------------------------------------
 Mon Oct 17 18:04:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add fix-maint-issue.patch (fixes bsc#1203311).

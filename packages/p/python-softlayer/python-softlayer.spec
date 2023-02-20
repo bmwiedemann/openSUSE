@@ -1,7 +1,7 @@
 #
 # spec file for package python-softlayer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,13 @@
 #
 
 
-%define skip_python2 1
 Name:           python-softlayer
-Version:        6.1.2
+Version:        6.1.4
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-maint-issue.patch bsc#1203311 mcepl@suse.com
-# xmlrpc y2038 problem
-Patch0:         fix-maint-issue.patch
 BuildRequires:  %{python_module click >= 8.0.4}
 BuildRequires:  %{python_module prettytable >= 2.5.0}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
