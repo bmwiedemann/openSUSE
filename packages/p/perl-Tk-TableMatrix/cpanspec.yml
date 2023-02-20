@@ -36,7 +36,7 @@ license: (Artistic-1.0 OR GPL-1.0-or-later) AND TCL
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
-skip_doc: debug.* myConfig
+skip_doc: debug.* myConfig Makefile
 add_doc: demos license.terms.pTk license.terms.mTk
 misc: |-
  %exclude %{perl_vendorarch}/auto/Tk/pTk

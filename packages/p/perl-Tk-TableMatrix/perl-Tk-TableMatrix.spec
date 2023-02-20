@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk-TableMatrix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %define cpan_name Tk-TableMatrix
 Name:           perl-Tk-TableMatrix
-Version:        1.26
+Version:        1.29
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND TCL
 Summary:        Table/Matrix Widget Extension to perl/tk
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CA/CAC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
 BuildRequires:  perl(Tk) >= 800.022
-BuildRequires:  perl(Tk::MMtry)
 BuildRequires:  perl(Tk::MMutil)
 Requires:       perl(Tk) >= 800.022
 %{perl_requires}
@@ -45,6 +44,7 @@ for displaying data in a table (or spreadsheet) format.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 if test "%{_lib}" = "lib64" ; then
