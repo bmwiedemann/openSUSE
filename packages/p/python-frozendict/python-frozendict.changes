@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 20 05:10:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable python 3.11 until it is supported by the C extension
+
+-------------------------------------------------------------------
+Mon Feb 20 05:09:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.5
+  - C Extension is now optional by default
+  - Pure py package will be no more pubished on Pypi
+  - Fixed incompatibility with pyinstaller
+  - Fixed little bug with mypy
+
+-------------------------------------------------------------------
 Sun Jul 31 10:03:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 2.3.4 
+- Update to 2.3.4
   - fixed various memory leaks
   - Implemented a memory leak tracer
   - Fixed memory leaks in repr() and in costruction of an empty
