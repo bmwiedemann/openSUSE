@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 18 21:48:41 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Update copyright year
+  * Update bug report address
+  * player: Prevent infinite cycle when setting volume (#119)
+  * Update some icon names (!17)
+  * Reduce hiding controls to 2 seconds (Fixes #80, !12)
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * build: Replace DATADIRNAME no longer set by xfce4-dev-tools >= 4.17.0
+  * build: Bump GLib minimum required to 2.38
+  * autoconf: Use AC_CONFIG_MACRO_DIRS (!14)
+  * Fix memory leak when loading cover image (#98)
+  * Fix compilation warnings (!11)
+  * Makefile.am: INCLUDES -> AM_CPPFLAGS
+  * autoconf: Some updates
+  * Remove the deprecated keys from desktop file (!9)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan 11 10:38:02 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.0
