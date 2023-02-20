@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Feb 20 09:59:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.151.0:
+  New features:
+  * Add --skip-charts for destroy for disable prepare charts (#637)
+  * Add missingFileHandlerConfig.ignoreMissingGitBranch (#645)
+  * Disable double-rendering in V1 (#647)
+  * Add gotmpl file ext when using helmfile.d feature (#649)
+  * Add chinese readme (#664)
+  * Add post-renderer flag for diff and template subcommand (#691)
+  * Support helm 3.11.1
+
+  What's Changed:
+  * feat: add paths-ignore to ci.yaml and lint.yaml by @gaius-qi in #631
+  * build(deps): bump github.com/containerd/containerd from 1.6.6 to
+    1.6.12 by @dependabot in #632
+  * fix inherit chart empty check issue by @yxxhero in #635
+  * build(deps): bump k8s.io/apimachinery from 0.26.0 to 0.26.1 by
+    @dependabot in #641
+  * add --skip-charts for destroy for disable prepare charts by
+    @yxxhero in #637
+  * bump helm to v3.11.0 by @yxxhero in #639
+  * Remove unused go-getter driver funcs by @mumoshu in #643
+  * Fix a minor typo in the v1 proposal by @mumoshu in #646
+  * feat: Add missingFileHandlerConfig.ignoreMissingGitBranch by
+    @mumoshu in #645
+  * remove helm v2 code in tests by @yxxhero in #648
+  * Do not load the legacy default charts.yaml in v1 by @mumoshu
+    in #651
+  * Disable double-rendering in V1 by @mumoshu in #647
+  * use latest helm previous minor version for helmfile init by
+    @yxxhero in #652
+  * feat: add gotmpl file ext when using helmfile.d feature by
+    @yxxhero in #649
+  * fix(docs): transfer issue link for Docs site by @ChetanGoti
+    in #655
+  * update examples info by @yxxhero in #658
+  * update hooks docs by @yxxhero in #657
+  * Bring up the init command in readme #661 by @AmazingTurtle
+    in #662
+  * docs: Running helmfile withought an internet connection by
+    --skip-deps option by @toyamagu-2021 in #659
+  * Reformat v1 proposal by @mumoshu in #663
+  * add build-in objects docs by @yxxhero in #667
+  * Add chinese readme by @xiaomudk in #664
+  * fix typo by @yxxhero in #670
+  * Bump Go to 1.20 by @yxxhero in #672
+  * Use goccy/go-yaml fork to not break dynamic values on helmfile
+    v1 by @mumoshu in #675
+  * Improve readme readability by @xiaomudk in #678
+  * Sync Chinese readme by @xiaomudk in #676
+  * breaking: Fix the inherit feature to support multi-inheritance
+    by @mumoshu in #674
+  * fix: Make the forbid-env-with-releases policy strict on v1 by
+    @mumoshu in #683
+  * Remove references to .tpl from v1 proposal by @mumoshu in #685
+  * build(deps): bump golang.org/x/term from 0.4.0 to 0.5.0 by
+    @dependabot in #686
+  * Relax the forbid-env-with-releases policy for plain helmfile.yaml
+    on v1 by @mumoshu in #684
+  * build(deps): bump helm.sh/helm/v3 from 3.11.0 to 3.11.1 by
+    @dependabot in #689
+  * Fix a typo in the v1 proposal by @mumoshu in #688
+  * fix panic issue by @yxxhero in #690
+  * bump helm to 3.11.1 by @yxxhero in #695
+  * Fix post-renderer flag not working in diff and template
+    subcommand by @xiaomudk in #691
+  * fix: repos command help message by @yamagai in #698
+  * build(deps): bump github.com/hashicorp/go-getter from 1.6.2 to
+    1.7.0 by @dependabot in #697
+  * build(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.6.18 by @dependabot in #701
+  * bump chartify to v0.13.0 by @yxxhero in #702
+  * bump vals to v0.22.0 by @yxxhero in #703
+
+-------------------------------------------------------------------
 Thu Feb  9 09:53:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - CVE-2023-25165: Require helm >= 3.11.1
