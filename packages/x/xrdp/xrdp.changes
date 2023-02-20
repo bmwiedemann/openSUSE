@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 13 09:18:44 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add xrdp-fix-search-pam-vendor-dir.patch: Search pam
+  configuration file in the vendor directory /usr/lib/pam.d/
+  (bsc#1208121). 
+
+-------------------------------------------------------------------
 Mon Jan 16 14:49:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.
