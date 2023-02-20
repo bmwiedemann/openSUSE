@@ -188,4 +188,16 @@
     CHANGELOG.md file provided with this package (forwarded request 979451 from glaubitz)</comment>
     <requestid>979476</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cb5ff1a3bbbda26a7310ff33c51d3bfb</srcmd5>
+    <version>10.1.0</version>
+    <time>1676911608</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1066784 from glaubitz)</comment>
+    <requestid>1066809</requestid>
+  </revision>
 </revisionlist>
