@@ -122,7 +122,8 @@
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
-%define pythons python3
+# only switch this back to python3 when frozendict supports the current default python version
+%define pythons python310
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 # missing deps

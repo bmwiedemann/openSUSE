@@ -683,4 +683,13 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.77.0</comment>
     <requestid>1065776</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>92738b0de4e0d7d84cc2d473d3c5b8bd</srcmd5>
+    <version>1.77.0</version>
+    <time>1676911613</time>
+    <user>dimstar_suse</user>
+    <comment>- lock matrix-synapse until frozendict can enable python 3.11
+  support</comment>
+    <requestid>1066823</requestid>
+  </revision>
 </revisionlist>
