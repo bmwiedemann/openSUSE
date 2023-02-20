@@ -647,4 +647,12 @@
 </comment>
     <requestid>1064693</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>dd7c14d883aa32aa711c04047aafc591</srcmd5>
+    <version>6.0.28</version>
+    <time>1676911573</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1066723</requestid>
+  </revision>
 </revisionlist>
