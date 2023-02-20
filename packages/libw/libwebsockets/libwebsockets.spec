@@ -1,7 +1,7 @@
 #
 # spec file for package libwebsockets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,11 @@ URL:            https://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libuv-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libuv)
 
 %description
 Libwebsockets covers some features for people making embedded
@@ -71,18 +73,18 @@ applications that want to make use of the WebSockets library.
 %build
 %cmake \
     -DWITHOUT_TESTAPPS=1 \
-    -DLWS_USE_LIBEV=OFF \
+    -DLWS_USE_LIBUV=ON \
     -DLWS_WITHOUT_BUILTIN_GETIFADDRS=ON \
     -DLWS_USE_BUNDLED_ZLIB=OFF \
     -DLWS_WITHOUT_BUILTIN_SHA1=ON \
     -DLWS_WITH_STATIC=OFF \
-    -DLWS_WITHOUT_TESTAPPS=ON
-make %{?_smp_mflags}
+    -DLWS_WITHOUT_TESTAPPS=ON \
+    -DLWS_WITH_LIBUV=ON
+%make_build
 
 %install
 %cmake_install
-rm -f %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
-rm -rf %{buildroot}%{_datadir}/libwebsockets-test-server/
+rm %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
 
 %post -n libwebsockets%{sover} -p /sbin/ldconfig
 %postun -n libwebsockets%{sover} -p /sbin/ldconfig
@@ -95,6 +97,7 @@ rm -rf %{buildroot}%{_datadir}/libwebsockets-test-server/
 %doc README.* changelog
 %{_includedir}/*
 %{_libdir}/libwebsockets.so
+%{_libdir}/libwebsockets-evlib_uv.so
 %{_libdir}/pkgconfig/libwebsockets.pc
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake

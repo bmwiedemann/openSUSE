@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 19 20:24:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- package libwebsockets-evlib_uv.so
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Feb 17 09:52:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable build with libuv.
+
+-------------------------------------------------------------------
+Fri Oct 21 11:26:38 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for libuv
+
+-------------------------------------------------------------------
 Mon Jul 18 13:38:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:
