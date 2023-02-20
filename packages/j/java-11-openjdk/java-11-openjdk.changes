@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 17 13:19:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the accessibility sub-package, since it was never really
+  working and creates another problems (bsc#1205916). It can
+  eventually be built as standalone if needed
+- Removed patches:
+  * jaw-jdk10.patch
+  * jaw-misc.patch
+  * jaw-nogtk.patch
+    + not needed after the removal of the accessibility sub-package
+
+-------------------------------------------------------------------
 Tue Feb  7 07:00:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.18+10 (January 2023 CPU)
