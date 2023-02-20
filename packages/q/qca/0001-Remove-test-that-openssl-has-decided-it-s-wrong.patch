@@ -1,0 +1,33 @@
+From 714073747c4a3ccff7a8c85c72872bdf6bd3db4a Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 20 Feb 2023 00:19:19 +0100
+Subject: [PATCH] Remove test that openssl has decided it's wrong
+
+---
+ unittest/pkits/pkits.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/unittest/pkits/pkits.cpp b/unittest/pkits/pkits.cpp
+index 8f4af29f..7a41121c 100644
+--- a/unittest/pkits/pkits.cpp
++++ b/unittest/pkits/pkits.cpp
+@@ -256,6 +256,9 @@ void Pkits::pkits4_1_4()
+ 
+ void Pkits::pkits4_1_5()
+ {
++    // openssl has decided that they don't want to support this ¯\_(ツ)_/¯
++    // https://github.com/openssl/openssl/issues/20233
++#if 0
+     QStringList providersToTest;
+     providersToTest.append(QStringLiteral("qca-ossl"));
+ 
+@@ -298,6 +301,7 @@ void Pkits::pkits4_1_5()
+             QCOMPARE(cert.validate(trusted, untrusted), QCA::ValidityGood);
+         }
+     }
++#endif
+ }
+ 
+ void Pkits::pkits4_1_6()
+-- 
+2.39.1
