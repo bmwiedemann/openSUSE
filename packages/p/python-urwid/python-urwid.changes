@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 20 08:41:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to fix tests for python 3.11
+  gh#urwid/urwid#517
+
+-------------------------------------------------------------------
 Mon Nov  8 12:13:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add dependency for python 2 builds 

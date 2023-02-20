@@ -178,4 +178,14 @@ Should fix problem with non-downloadable source file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931523</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>57b4f31a98a41cf1e66d39572c775b37</srcmd5>
+    <version>2.1.2</version>
+    <time>1676911576</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to fix tests for python 3.11
+  gh#urwid/urwid#517
+</comment>
+    <requestid>1066735</requestid>
+  </revision>
 </revisionlist>

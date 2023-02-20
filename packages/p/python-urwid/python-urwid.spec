@@ -1,7 +1,7 @@
 #
 # spec file for package python-urwid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-urwid
 Version:        2.1.2
@@ -25,6 +24,8 @@ Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
 URL:            http://urwid.org
 Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch gh#urwid/urwid#517
+Patch0:         python-311.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,7 +51,7 @@ useful for text console application developers including:
 - Python 3.2 support
 
 %prep
-%setup -q -n "urwid-%{version}"
+%autosetup -p1 -n "urwid-%{version}"
 # remove unwanted shebang
 find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
