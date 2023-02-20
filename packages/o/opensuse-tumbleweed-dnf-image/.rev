@@ -7,4 +7,12 @@
     <comment>New Tumbleweed images with (micro)dnf instead of zypper</comment>
     <requestid>856678</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13181a4046d66b6140591c099c5c56ab</srcmd5>
+    <version>1.0.0</version>
+    <time>1676911612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add curl, tar, gzip, bzip2, xz, and zstd to make useful for GitHub Actions pipelines</comment>
+    <requestid>1066820</requestid>
+  </revision>
 </revisionlist>
