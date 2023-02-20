@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 14 04:44:09 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.2.0:
+  * Fix XML generation of wxmx documents
+    (gh#wxMaxima-developers/wxmaxima#1556).
+  * A faster font cache.
+  * Faster communication between wxMaxima and maxima.
+  * Dropped the dependency on an [internal] ww898 library.
+  * More consistent text style handling.
+  * A separate style for operators
+    (gh#wxMaxima-developers/wxmaxima#1002).
+  * A nicer ChangeLog.
+
+-------------------------------------------------------------------
 Wed Jan  4 22:37:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.12.0:
