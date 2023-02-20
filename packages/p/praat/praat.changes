@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 14 04:47:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.08:
+  * Corrected a bug introduced in 6.3.04 by which word and
+    sentence would not work in new-style script forms.
+- Changes from version 6.3.01 to 6.3.07:
+  * Corrected an old bug that caused Matrix: Draw as squares to
+    crash on a 1×1 matrix.
+  * NoulliGrid window: “NoulliGrid” menu.
+  * Scripting: faster vectors in arguments to runScript().
+  * Corrected a bug introduced in 6.3.04 by which optionmenu would
+    not work in new-style script forms.
+  * Scripting: min(), max(), imin() and imax() for vectors.
+  * Corrected a bug introduced in 6.3.04 by which some old-style
+    forms could not be read.
+  * Repaired an old bug by which chooseReadString() could crash on
+    Linux.
+  * Playing multiple sounds with Play now concatenates them without
+    breaks, and is interruptable by the Escape key.
+  * Renamed the remaining occurrences of “Preferences” with
+    “Settings” (old scripts will continue to work).
+  * Create Polygon from values...
+  * Sound: To Sound (derivative)...
+  * Scripting: forms now look more like other commands.
+  * Scripting: forms can contain infile, outfile, folder,
+    realvector, positivevector, integervector and naturalvector
+    fields.
+  * Scripting: in forms and pause forms, you can now set the number
+    of lines in text, infile, outfile, folder, and vector fields.
+
+-------------------------------------------------------------------
 Sat Jan  7 14:36:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v6.3.03:

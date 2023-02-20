@@ -17,14 +17,13 @@
 
 
 Name:           praat
-Version:        6.3.03
+Version:        6.3.08
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            http://www.praat.org
 Source0:        https://github.com/praat/praat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source3:        %{name}.changes
 # PATCH-FIX-OPENSUSE praat-use_system_libs.patch -- replace some embedded libs with system ones
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
