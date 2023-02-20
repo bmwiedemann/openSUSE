@@ -6315,7 +6315,9 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
+  - gnu-unifont-jp-otf-fonts 
   - gnu-unifont-legacy-bitmap-fonts 
+  - gnu-unifont-otf-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
   - gnu_parallel-bash-completion 
@@ -26652,6 +26654,7 @@ unsorted:
   - python311-cattrs 
   - python311-cbor 
   - python311-cbor2 
+  - python311-cchardet 
   - python311-cdflib 
   - python311-celery 
   - python311-certbot 
@@ -27309,12 +27312,14 @@ unsorted:
   - python311-ipdb 
   - python311-iptables 
   - python311-ipy 
+  - python311-ipydatawidgets 
   - python311-ipyevents 
   - python311-ipyfilechooser 
   - python311-ipykernel 
   - python311-ipyleaflet 
   - python311-ipympl 
   - python311-ipyparallel 
+  - python311-ipyscales 
   - python311-ipysheet 
   - python311-ipython 
   - python311-ipython_genutils 
@@ -28054,7 +28059,7 @@ unsorted:
   - python311-pyqt-builder 
   - python311-pyqtgraph 
   - python311-pyquery 
-  - python311-pyquil: [x86_64] 
+  - python311-pyquil 
   - python311-pyrad 
   - python311-pyroma 
   - python311-pyroomacoustics 
@@ -28065,7 +28070,7 @@ unsorted:
   - python311-pyscreenshot 
   - python311-pysendfile 
   - python311-pyserial 
-  - python311-pyshark: [x86_64] 
+  - python311-pyshark 
   - python311-pyshould 
   - python311-pyshp 
   - python311-pysmb 
@@ -28239,6 +28244,7 @@ unsorted:
   - python311-python-redmine 
   - python311-python-rpm-spec 
   - python311-python-slugify 
+  - python311-python-snappy 
   - python311-python-socks 
   - python311-python-sofa 
   - python311-python-sql 
@@ -28394,7 +28400,7 @@ unsorted:
   - python311-robotframework 
   - python311-roman 
   - python311-rope 
-  - python311-rpcq: [x86_64] 
+  - python311-rpcq 
   - python311-rply 
   - python311-rpm 
   - python311-rpmfile 
