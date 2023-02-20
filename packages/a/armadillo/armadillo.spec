@@ -23,8 +23,8 @@ Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://arma.sourceforge.net/
-Source:         http://sourceforge.net/projects/arma/files/%{name}-%{version}.tar.xz
+URL:            https://arma.sourceforge.net/
+Source:         https://sourceforge.net/projects/arma/files/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
