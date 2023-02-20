@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 17 11:08:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.1 (jsc#PED-2872)
+  - [PATCH] fix regression opening shared memory
+
+-------------------------------------------------------------------
 Mon Jan 16 13:00:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Upgrade to version 4.2.0 (jsc#PED-581, bsc#1202365).

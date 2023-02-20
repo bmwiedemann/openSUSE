@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018-2023 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %endif
 
 Name:           libica
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/libica
-Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/opencryptoki/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        sysconfig.z90crypt
 Source3:        z90crypt
