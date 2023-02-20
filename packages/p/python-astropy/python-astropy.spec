@@ -147,7 +147,7 @@ BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module sgp4 >= 2.3}
-BuildRequires:  %{python_module skyfield >= 1.20}
+BuildRequires:  %{python_module skyfield >= 1.20 if %python-base < 3.11}
 # /SECTION
 %endif
 %python_subpackages

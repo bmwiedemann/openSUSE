@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 19 20:49:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with skyfield on python311: gh#brandon-rhodes/assay#15
+
+-------------------------------------------------------------------
 Fri Jan 13 16:19:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.2.1
