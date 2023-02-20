@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 20 09:17:32 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not build with -march=native to
+  avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Fri Feb 17 07:43:20 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 0.5.1

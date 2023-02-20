@@ -47,6 +47,7 @@ provided as well.
 
 %prep
 %setup -q
+sed -i 's/-march=native//' source/Makefile
 
 %build
 export CXXFLAGS="%{optflags}"
