@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 15 21:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.8:
+  * The dependent contract form, ->i, supports a #:param element that specifies
+    dependencies for parameter values that are set during the dynamic extent of
+    the function call. 
+
+  * The copy-file library function supports permission-management arguments. 
+
+  * Pressing <SHIFT>-return in DrRacket’s interactions window makes it easier to
+    edit and enter expressions without sending them to be evaluated.
+
+  * The numeric comparison operators (=, etc.) require at least two arguments in
+    the “How To Design Programs” teaching languages.
+
+  * Redex has improved typesetting when customized renders are used in certain
+    multi-line situations.
+
+  * We have fixed many bugs, and written lots of documentation.
+
+-------------------------------------------------------------------
 Wed Dec 14 09:55:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update config.sub from upstream 
