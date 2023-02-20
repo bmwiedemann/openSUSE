@@ -4692,4 +4692,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1066116</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>cac47a7b4892b201fa9a24b7faac6556</srcmd5>
+    <version>8.2</version>
+    <time>1676911595</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.2 release
+  - Better debug information in Wow64 mode.                                                                                                   
+  - Wow64 thunks in the WPCAP library.                                                                                                        
+  - Indeo IV50 codec support.                                                                                                                 
+  - Monitor names set from EDID data.                                                                                                         
+  - Various bug fixes.                                                                                                                        
+- update staging to 8.2 release</comment>
+    <requestid>1066788</requestid>
+  </revision>
 </revisionlist>

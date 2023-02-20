@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.1
-Version:        8.1
+%define realver 8.2
+Version:        8.2
 Release:        0
 
 %if "%{flavor}" != ""
@@ -166,11 +166,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.1
+%define staging_version 8.2
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
 BuildRequires:  libva-devel
+BuildRequires:  python3
 %endif
 %if %{nine}
 # upstream patch target version
@@ -246,7 +247,7 @@ cp %{S:3} .
 %if %{staging}
 # apply wine staging patch set on top of the wine release.
 tar xf %{SOURCE100}
-bash ./wine-staging-%staging_version/patches/patchinstall.sh --all
+python3 ./wine-staging-%staging_version/staging/patchinstall.py --all
 %endif
 
 %if %{nine}
