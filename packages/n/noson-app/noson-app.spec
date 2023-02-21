@@ -17,7 +17,7 @@
 
 
 Name:           noson-app
-Version:        5.2.2
+Version:        5.4.0
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
@@ -39,9 +39,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(noson) = 2.8.6
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
+BuildRequires:  pkgconfig(noson) >= 2.10.0
 
 %description
 A controller for SONOS devices. It allows for browsing the music

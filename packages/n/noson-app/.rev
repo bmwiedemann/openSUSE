@@ -294,4 +294,12 @@
     <comment>update to 5.2.2 to fix build error, i.e. dependency on noson</comment>
     <requestid>986434</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dc247de729e9c0e6d36b9e747607fc69</srcmd5>
+    <version>5.4.0</version>
+    <time>1676990207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066999</requestid>
+  </revision>
 </revisionlist>

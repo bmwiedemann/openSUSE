@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 18 16:06:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 5.4.0
+  * BugFix: empty namespace wasn't expected
+
+-------------------------------------------------------------------
 Sun Jul  3 08:36:48 UTC 2022 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 5.2.2, no upstream changelog provided
