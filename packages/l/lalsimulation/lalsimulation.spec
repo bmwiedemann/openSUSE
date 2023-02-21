@@ -1,7 +1,7 @@
 #
 # spec file for package lalsimulation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
+# python-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
+BuildRequires:  %{python_module py}
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  pkgconfig

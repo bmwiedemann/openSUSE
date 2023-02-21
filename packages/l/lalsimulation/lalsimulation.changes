@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 12 05:53:50 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-py BuildRequires to fix tests that fail due to "No
+  module named 'py._path'" errors.
+
+-------------------------------------------------------------------
 Mon Nov 28 05:49:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add swig_4_1_compat.patch: Ensure compatibility with swig 4.1;
