@@ -1,0 +1,75 @@
+---
+ crypto/bn/bn_lib.c   |   13 +++++--------
+ crypto/dh/dh_ameth.c |   19 ++++++++++++-------
+ crypto/dh/dh_gen.c   |    3 +--
+ 3 files changed, 18 insertions(+), 17 deletions(-)
+
+--- a/crypto/bn/bn_lib.c
++++ b/crypto/bn/bn_lib.c
+@@ -244,20 +244,17 @@ int BN_num_bits(const BIGNUM *a)
+ 
+ void BN_clear_free(BIGNUM *a)
+ {
+-    int i;
+-
+     if (a == NULL)
+         return;
+     bn_check_top(a);
+-    if (a->d != NULL) {
++    if (a->d != NULL && !BN_get_flags(a, BN_FLG_STATIC_DATA)) {
+         OPENSSL_cleanse(a->d, a->dmax * sizeof(a->d[0]));
+-        if (!(BN_get_flags(a, BN_FLG_STATIC_DATA)))
+-            OPENSSL_free(a->d);
++        OPENSSL_free(a->d);
+     }
+-    i = BN_get_flags(a, BN_FLG_MALLOCED);
+-    OPENSSL_cleanse(a, sizeof(BIGNUM));
+-    if (i)
++    if (BN_get_flags(a, BN_FLG_MALLOCED)) {
++        OPENSSL_cleanse(a, sizeof(BIGNUM));
+         OPENSSL_free(a);
++    }
+ }
+ 
+ void BN_free(BIGNUM *a)
+--- a/crypto/dh/dh_ameth.c
++++ b/crypto/dh/dh_ameth.c
+@@ -457,14 +457,19 @@ static int dh_cmp_parameters(const EVP_P
+ static int int_dh_bn_cpy(BIGNUM **dst, const BIGNUM *src)
+ {
+     BIGNUM *a;
+-    if (src) {
+-        a = BN_dup(src);
+-        if (!a)
+-            return 0;
+-    } else
++
++    /*
++     * If source is read only just copy the pointer, so
++     * we don't have to reallocate it.
++     */
++    if (src == NULL)
+         a = NULL;
+-    if (*dst)
+-        BN_free(*dst);
++    else if (BN_get_flags(src, BN_FLG_STATIC_DATA)
++                && !BN_get_flags(src, BN_FLG_MALLOCED))
++        a = (BIGNUM *)src;
++    else if ((a = BN_dup(src)) == NULL)
++        return 0;
++    BN_clear_free(*dst);
+     *dst = a;
+     return 1;
+ }
+--- a/crypto/dh/dh_gen.c
++++ b/crypto/dh/dh_gen.c
+@@ -77,8 +77,7 @@ int DH_generate_parameters_ex(DH *ret, i
+                               BN_GENCB *cb)
+ {
+ #ifdef OPENSSL_FIPS
+-    if (FIPS_mode() && !(ret->meth->flags & DH_FLAG_FIPS_METHOD)
+-	&& !(ret->flags & DH_FLAG_NON_FIPS_ALLOW)) {
++    if (FIPS_mode()) {
+         DHerr(DH_F_DH_GENERATE_PARAMETERS_EX, DH_R_NON_FIPS_METHOD);
+         return 0;
+     }

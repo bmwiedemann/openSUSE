@@ -118,6 +118,8 @@ Patch94:        openssl-CVE-2023-0215-3of4.patch
 Patch95:        openssl-CVE-2023-0215-4of4.patch
 #PATCH-FIX-UPSTREAM bsc#1207533 CVE-2023-0286 Address type confusion related to X.400 address processing
 Patch96:        openssl-CVE-2023-0286.patch
+# PATCH-FIX-SUSE bsc#1202062 FIPS: Fix DH key generation in FIPS mode
+Patch97:        openssl-fips_fix_DH_key_generation.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -292,6 +294,7 @@ testing framework and utilities.
 %patch94 -p1
 %patch95 -p1
 %patch96 -p1
+%patch97 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

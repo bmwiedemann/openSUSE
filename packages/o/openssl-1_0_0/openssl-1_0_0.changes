@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 17 14:05:07 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix DH key generation in FIPS mode, add support for constant BN for
+  DH parameters [bsc#1202062]
+  * Add patch: openssl-fips_fix_DH_key_generation.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 09:54:43 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security Fix: [bsc#1207533, CVE-2023-0286]
