@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  7 03:52:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Excluded arm because lots of failures.
+
+-------------------------------------------------------------------
+Sat Feb  4 15:49:02 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Set wlroots less than 0.16.0
+- Set required memory to 8GB to enable other architectures.
+- Use %optflags macro and pkg-config as values for CFLAGs.
+
+-------------------------------------------------------------------
 Tue Oct 18 08:58:46 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

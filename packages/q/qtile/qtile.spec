@@ -1,7 +1,7 @@
 #
 # spec file for package qtile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  librsvg
 BuildRequires:  pango-devel
+BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairocffi >= 0.9.0
 BuildRequires:  python3-cffi >= 1.1.0
@@ -44,7 +45,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(wlroots)
+BuildRequires:  pkgconfig(wlroots) < 0.16.1
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       python3-cairocffi >= 0.9.0
@@ -66,7 +67,7 @@ Suggests:       python3-jupyter_console
 Suggests:       python3-jupyter_ipykernel
 Suggests:       python3-tk
 # v0.21.0 has lots of additional failures on i586
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %arm %arm64
 
 %if %{with test}
 BuildRequires:  ImageMagick
@@ -115,11 +116,11 @@ sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
 
 %build
 # wlr headers try to import wayland-server-core.h , which is in wayland/wayland-server-core.h
-export CFLAGS="-I/usr/include/wayland -I/usr/include/libinput -I/usr/include/libxkbcommon ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
 %python3_build
 
 %install
-export CFLAGS="-I/usr/include/wayland -I/usr/include/libinput -I/usr/include/libxkbcommon ${CFLAGS}"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 ./scripts/ffibuild
 %python3_install
@@ -137,6 +138,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
 mkdir -vp ${PWD}/bin
 ln -svf %{buildroot}%{_bindir}/qtile ${PWD}/bin/qtile
 export LC_TYPE=en_US.UTF-8
