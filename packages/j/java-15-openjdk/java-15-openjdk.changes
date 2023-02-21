@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Feb 21 06:09:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upsteam tag jdk-15.0.10+5 (January 2023 CPU)
+  * Likely the last release of Java 15 ever
+  * CVEs
+    + CVE-2023-21835, bsc#1207246
+    + CVE-2023-21843, bsc#1207248
+  * Security fixes:
+    + JDK-8293598: Enhance InetAddress address handling
+    + JDK-8286070: Improve UTF8 representation
+    + JDK-8286496: Improve Thread labels
+    + JDK-8288516: Enhance font creation
+    + JDK-8287411: Enhance DTLS performance
+    + JDK-8289350: Better media supports
+    + JDK-8293717: Objective view of ObjectView
+    + JDK-8293554: Enhanced DH Key Exchanges
+    + JDK-8295723: security/infra/wycheproof/RunWycheproof.java
+      fails
+    + JDK-8293734: Improve BMP image handling
+    + JDK-8293742: Better Banking of Sounds
+    + JDK-8295687: Better BMP bounds
+  * Other changes:
+    + JDK-8299439: java/text/Format/NumberFormat/CurrencyFormat.java
+      fails for hr_HR
+    + JDK-8297804: (tz) Update Timezone Data to 2022g
+    + JDK-8283323: libharfbuzz optimization level results in
+      extreme build times
+    + JDK-8273894: ConcurrentModificationException raised every
+      time ReferralsCache drops referral
+    + JDK-8297530: java.lang.IllegalArgumentException: Negative
+      length on strings concatenation
+    + JDK-8287076: Document.normalizeDocument() produces different
+      results
+    + JDK-8261279: sun/util/resources/cldr/TimeZoneNamesTest.java
+      timed out
+    + JDK-8287180: Update IANA Language Subtag Registry to Version
+      2022-08-08
+    + JDK-8267038: Update IANA Language Subtag Registry to Version
+      2022-03-02
+    + JDK-8290451: Incorrect result when switching to C2 OSR
+      compilation from C1
+    + JDK-8296957: One more cast in SAFE_SIZE_NEW_ARRAY2
+    + JDK-8296496: Overzealous check in sizecalc.h prevents large
+      memory allocation
+    + JDK-8296480: java/security/cert/pkix/policyChanges/
+      /TestPolicy.java is failing
+    + JDK-8296715: CLDR v42 update for tzdata 2022f
+    + JDK-8297027: Fix broken aarch64 build of 13u/15u after bad
+      backport of 8293044
+    + JDK-8296239: ISO 4217 Amendment 174 Update
+    + JDK-8294307: ISO 4217 Amendment 173 Update
+    + JDK-8296108: (tz) Update Timezone Data to 2022f
+    + JDK-8295554: Move the "sizecalc.h" to the correct location
+    + JDK-8293816: CI: ciBytecodeStream::get_klass() is not
+      consistent
+    + JDK-8293044: C1: Missing access check on non-accessible class
+    + JDK-8293701: jdeps InverseDepsAnalyzer runs into
+      NoSuchElementException: No value present
+    + JDK-8277881: Missing SessionID in TLS1.3 resumption in
+      compatibility mode
+    + JDK-8270344: Session resumption errors
+    + JDK-8293672: Update freetype md file
+    + JDK-8284690: [macos] VoiceOver : Getting
+      java.lang.IllegalArgumentException: Invalid location on
+      Editable JComboBox
+    + JDK-8295530: Update Zlib Data Compression Library to Version
+      1.2.13
+    + JDK-8295429: Update harfbuzz md file
+    + JDK-8295211: Fix autoconf 2.71 warning "AC_CHECK_HEADERS: you
+      should use literals"
+    + JDK-8292158: AES-CTR cipher state corruption with AVX-512
+    + JDK-8273553: sun.security.ssl.SSLEngineImpl.closeInbound also
+      has similar error of JDK-8253368
+    + JDK-8253368: TLS connection always receives close_notify
+      exception
+    + JDK-8295173: (tz) Update Timezone Data to 2022e
+    + JDK-8294357: (tz) Update Timezone Data to 2022d
+    + JDK-8283059: Uninitialized warning in check_code.c with GCC
+      11.2
+    + JDK-8266171: -Warray-bounds happens in imageioJPEG.c
+    + JDK-8266174: -Wmisleading-indentation happens in
+      libmlib_image sources
+
+-------------------------------------------------------------------
 Fri Feb 17 13:19:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the accessibility sub-package, since it was never really

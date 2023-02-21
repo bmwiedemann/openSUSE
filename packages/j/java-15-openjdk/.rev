@@ -95,4 +95,12 @@
     <comment>bsc#1205916</comment>
     <requestid>1066516</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7377211666d23f68382b7b446937a15d</srcmd5>
+    <version>15.0.10.0</version>
+    <time>1676990175</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU</comment>
+    <requestid>1066923</requestid>
+  </revision>
 </revisionlist>
