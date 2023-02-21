@@ -1853,4 +1853,35 @@ Fixed
     This is now fixed.</comment>
     <requestid>987485</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cfe6900c22c658ff454432a0e488364d</srcmd5>
+    <version>2.5.3</version>
+    <time>1676990194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.3
+Added
+  * New array_at quirk, polyfilling the Array.at method, which is
+    needed by various websites, but only natively available with
+    Qt 6.2.
+Fixed
+  * Crash when the adblock filter file can't be read.
+  * Inconsistent behavior when using :config-{dict,list}-* commands
+    with an invalid value. Before the fix, using the same command
+    again would complain that the value was already present,
+    despite the error and the value not being actually changed.
+  * Incomplete error handling when mutating a dict/list in
+    config.py and setting an invalid value. Before the fix, this
+    would result in either a message in the terminal rather than
+    GUI (startup), or in a crash (:config-source).
+  * Wrong type handling when using :config-{dict,list}-* commands
+    with a config option with non-string values. The only affected
+    option is bindings.commands, which is probably rarely used with
+    those commands.
+  * The readability userscript now correctly passes the source URL
+    to Breadability, to make relative links work.
+  * Update dictcli.py to use the main branch, fixing a 404 error.
+  * Crash with some notification servers when the server did quit.
+  * Minor documentation fixes</comment>
+    <requestid>1066958</requestid>
+  </revision>
 </revisionlist>
