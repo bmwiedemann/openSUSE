@@ -16,4 +16,15 @@
     <comment></comment>
     <requestid>885881</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2e4f56bee50990f64289a6f61177f06</srcmd5>
+    <version>0.3.1</version>
+    <time>1676990188</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11, gh#cloudera/python-sasl#31
+- Delete regenerate-cpp-wrappers.patch
+- Update to 0.3.1, there's no release notes upstream.
+</comment>
+    <requestid>1066949</requestid>
+  </revision>
 </revisionlist>

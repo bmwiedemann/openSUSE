@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 21 07:54:56 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11, gh#cloudera/python-sasl#31
+- Delete regenerate-cpp-wrappers.patch
+- Update to 0.3.1, there's no release notes upstream.
+
+-------------------------------------------------------------------
 Fri Apr 16 08:23:37 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add regenerate-cpp-wrappers.patch to fix build with Python 3.9
