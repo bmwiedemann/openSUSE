@@ -8,12 +8,16 @@ warns about their use). Besides, they do not add any noticable value
 because packages may get recompiled at practically any time.
                                                  -<jengelh@inai.de>
 
-Index: libewf-20120813/ewftools/info_handle.c
+---
+ ewftools/info_handle.c |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: libewf-20230212/ewftools/info_handle.c
 ===================================================================
---- libewf-20120813.orig/ewftools/info_handle.c
-+++ libewf-20120813/ewftools/info_handle.c
-@@ -4193,10 +4193,6 @@ int dfxml_build_environment_fprint(
- #endif		
+--- libewf-20230212.orig/ewftools/info_handle.c
++++ libewf-20230212/ewftools/info_handle.c
+@@ -7522,10 +7522,6 @@ int info_handle_dfxml_build_environment_
+ #endif
  	fprintf(
  	 stream,
 -	 "\t\t\t<compilation_date>" __DATE__ " " __TIME__ "</compilation_date>\n" );
