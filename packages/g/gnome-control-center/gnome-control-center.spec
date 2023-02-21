@@ -104,7 +104,6 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi) >= 1.2
 ## CONDITIONAL BUILD REQUIREMENTS
 %if %{with wacom}
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.11.3
 BuildRequires:  pkgconfig(libwacom) >= 0.7
 %endif
 %if %{with ibus}
