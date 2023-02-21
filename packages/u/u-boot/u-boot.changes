@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 20 07:54:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
+Use new upstream solution to fix boo#1207562
+* Patches dropped:
+  0017-Backport-https-patchwork.ozlabs.org.patch
+* Patches added:
+  0017-Bump-LMB_MAX_REGIONS-default-to-16.patch
+  0018-lmb-Treat-a-region-which-is-a-subse.patch
+
+-------------------------------------------------------------------
 Fri Jan 27 14:10:12 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
