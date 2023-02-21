@@ -1,0 +1,31 @@
+From a839395e302989d1d5557d206c7df1b54c9e8767 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Thu, 16 Feb 2023 23:39:54 +0100
+Subject: [PATCH] dispatcher: fix constructing the IPv4 nameserver variable
+
+Use the value of the address instead of its pointer.
+
+Fixes: c68e148b027e ('core: extend NML3ConfigData:nameserver to track DNS as string')
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1217
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/1539
+---
+ src/core/nm-dispatcher.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/nm-dispatcher.c b/src/core/nm-dispatcher.c
+index 01a6382609..cdc07dd60e 100644
+--- a/src/core/nm-dispatcher.c
++++ b/src/core/nm-dispatcher.c
+@@ -231,7 +231,7 @@ dump_ip_to_props(const NML3ConfigData *l3cd, int addr_family, GVariantBuilder *b
+             continue;
+ 
+         if (IS_IPv4)
+-            g_variant_builder_add(&int_builder, "u", &a);
++            g_variant_builder_add(&int_builder, "u", a.addr4);
+         else
+             g_variant_builder_add(&int_builder, "@ay", nm_g_variant_new_ay_in6addr(&a.addr6));
+     }
+-- 
+GitLab
+

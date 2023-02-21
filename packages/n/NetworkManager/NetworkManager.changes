@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 20 13:42:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1539.patch: Fix constructing the IPv4 nameserver variable
+  (boo#1208371).
+
+-------------------------------------------------------------------
+Mon Feb 13 21:34:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass session_tracking=systemd and
+  session_tracking_consolekit=false to meson, no longer build
+  support for consolekit as session tracker.
+
+-------------------------------------------------------------------
 Fri Feb 10 08:45:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.42.0:

@@ -90,6 +90,8 @@ Patch5:         NetworkManager-1.10.6-netconfig.patch
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 # PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
+# PATCH-FIX-UPSTREAM 1539.patch boo#1208371 dimstar@opensuse.org -- dispatcher: fix constructing the IPv4 nameserver variable
+Patch8:         https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/1539.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -298,6 +300,7 @@ This tool is still experimental.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -337,6 +340,8 @@ export PYTHON=%{_bindir}/python3
     -Dmore_logging=false \
     -Dqt=false \
     -Db_lto=true \
+    -Dsession_tracking=systemd \
+    -Dsession_tracking_consolekit=false \
     %{nil}
 %meson_build
 
