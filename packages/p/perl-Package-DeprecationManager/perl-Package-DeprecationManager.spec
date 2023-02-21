@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Package-DeprecationManager
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Package-DeprecationManager
-Version:        0.17
-Release:        0
 %define cpan_name Package-DeprecationManager
-Summary:        Manage deprecation warnings for your distribution
+Name:           perl-Package-DeprecationManager
+Version:        0.18
+Release:        0
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Package-DeprecationManager/
-Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Summary:        Manage deprecation warnings for your distribution
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Package::Stash)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Sub::Install)
-BuildRequires:  perl(Sub::Name)
+BuildRequires:  perl(Sub::Util)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings)
@@ -42,7 +40,7 @@ Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Package::Stash)
 Requires:       perl(Params::Util)
 Requires:       perl(Sub::Install)
-Requires:       perl(Sub::Name)
+Requires:       perl(Sub::Util)
 %{perl_requires}
 
 %description
@@ -96,14 +94,16 @@ itself. This means that if you provide several different error messages for
 the same feature, all of those errors will appear.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -111,7 +111,7 @@ the same feature, all of those errors will appear.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md LICENSE README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%license LICENSE
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 20 03:07:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Package-DeprecationManager/Changes
+
+  0.18     2023-02-19
+
+  - Use Sub::Util instead of Sub::Name, which is part of Scalar-List-Utils,
+    which itself is a dependency already. Implemented by Aristotle Pagaltzis. GH
+    #3.
+
+-------------------------------------------------------------------
 Thu Jun 23 06:50:18 UTC 2016 - coolo@suse.com
 
 - updated to 0.17
