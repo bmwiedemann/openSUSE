@@ -1,7 +1,7 @@
 #
 # spec file for package python-editdistance
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-editdistance
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        An implementation of the edit distance (Levenshtein distance)
 License:        MIT
 URL:            https://www.github.com/aflc/editdistance
-Source:         https://files.pythonhosted.org/packages/source/e/editdistance/editdistance-%{version}.tar.gz
+# Switch to github tarball until gh#roy-ht/editdistance#102 is merged
+Source:         https://github.com/roy-ht/editdistance/archive/refs/tags/v%{version}.tar.gz#/editdistance-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -45,8 +45,8 @@ matching algorithm of Myers", (2001).
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
+Requires:       python-base
 
 %description devel
 This package contains the files needed for binding the %{name} C module.
@@ -68,7 +68,8 @@ This package contains the files needed for binding the %{name} C module.
 %license LICENSE
 %doc README.rst
 %exclude %{python_sitearch}/editdistance/*.h
-%{python_sitearch}/
+%{python_sitearch}/editdistance
+%{python_sitearch}/editdistance-%{version}*info
 
 %files %{python_files devel}
 %{python_sitearch}/editdistance/*.h

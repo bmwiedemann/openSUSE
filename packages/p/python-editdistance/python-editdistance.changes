@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 21 04:59:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.2:
+  * Support cimport usage
+- Add missing Requires on python-base for the devel package.
+
+-------------------------------------------------------------------
 Wed Nov  3 03:52:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.0:
