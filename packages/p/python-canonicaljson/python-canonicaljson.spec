@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         github_user matrix-org
 %define         short_name canonicaljson
 Name:           python-%{short_name}%{psuffix}
@@ -80,18 +79,14 @@ RFC 7159.
 
 %check
 %if %{with test}
-# exclude tests on older SLE+Leap due to
-# ImportError: cannot import name inf
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %pyunittest discover -v
-%endif
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/%{short_name}/
+%{python_sitelib}/%{short_name}
 %{python_sitelib}/%{short_name}-%{version}*-info
 %endif
 

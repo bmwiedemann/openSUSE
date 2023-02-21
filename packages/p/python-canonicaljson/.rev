@@ -109,4 +109,17 @@
     <comment></comment>
     <requestid>1037402</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3fdf30e8a7422de5bc4435345a6bb515</srcmd5>
+    <version>1.6.4</version>
+    <time>1676990211</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES sr#1067009
+
+- Don't switch off tests completely just skip the failing ones.
+- And frozendict works on 3.11 (just slower).
+- disable python 3.11 until frozendict supports it
+</comment>
+    <requestid>1067013</requestid>
+  </revision>
 </revisionlist>

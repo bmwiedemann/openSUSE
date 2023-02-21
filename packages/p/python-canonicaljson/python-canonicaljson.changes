@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:31:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't switch off tests completely just skip the failing ones.
+- And frozendict works on 3.11 (just slower).
+
+-------------------------------------------------------------------
+Mon Feb 20 05:18:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable python 3.11 until frozendict supports it
+
+-------------------------------------------------------------------
 Tue Nov 22 13:31:34 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.6.4
