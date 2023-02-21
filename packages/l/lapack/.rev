@@ -455,4 +455,25 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>1064180</requestid>
   </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>9e502fd1f07f5d79d2d4a60c0a5d3e9a</srcmd5>
+    <version>3.9.0</version>
+    <time>1676990129</time>
+    <user>dimstar_suse</user>
+    <comment>- As a configurable option add tmglib code to the LAPACK librarly
+  and enable TMG in LAPACKE as the header files provide its API
+  (boo#1207989 &amp; bsc#1087426).
+- Restore generic link for update-alternatives. This is usually
+  set by the update-alternatives and it is '%ghost'ed but rpmlint
+  complains.
+- Move update-alternatives --remove to %%postun to stop rpmlint
+  from complaining.
+- Removed useless - because never executed - %%postrans scriptlets.
+- Added missing _%%{_arch} to update-alternative names.
+- rpmlint complains anyway - this time about alternative-link-missing
+  - as it does not understand the _%%{_arch} endings: muffle with
+  rpmlintrc.
+- Make arch-dependent generic names conditional. (forwarded request 1066221 from eeich)</comment>
+    <requestid>1066236</requestid>
+  </revision>
 </revisionlist>

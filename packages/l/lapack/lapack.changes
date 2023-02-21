@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 15 08:51:06 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- As a configurable option add tmglib code to the LAPACK librarly
+  and enable TMG in LAPACKE as the header files provide its API
+  (boo#1207989 & bsc#1087426).
+- Restore generic link for update-alternatives. This is usually
+  set by the update-alternatives and it is '%ghost'ed but rpmlint
+  complains.
+- Move update-alternatives --remove to %%postun to stop rpmlint
+  from complaining.
+- Removed useless - because never executed - %%postrans scriptlets.
+- Added missing _%%{_arch} to update-alternative names.
+- rpmlint complains anyway - this time about alternative-link-missing
+  - as it does not understand the _%%{_arch} endings: muffle with
+  rpmlintrc.
+- Make arch-dependent generic names conditional.
+
+-------------------------------------------------------------------
 Fri Feb 10 00:32:30 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix missing symbols for deprecated functions in LAPACK, add

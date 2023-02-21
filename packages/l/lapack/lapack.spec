@@ -16,6 +16,12 @@
 #
 
 
+%bcond_without tmg
+
+%if 0%{?suse_version} > 1500
+%define a_x _%{_arch}
+%endif
+
 Name:           lapack
 Version:        3.9.0
 Release:        0
@@ -24,6 +30,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://www.netlib.org/lapack/
 Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/lapack-%{version}.tar.gz
+Source98:       lapack.rpmlintrc
 Source99:       baselibs.conf
 Patch1:         lapack-3.2.2.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/489a2884c22e.patch
@@ -143,6 +150,7 @@ blas-man package.
 %package     -n liblapacke3
 Summary:        LAPACKE development files
 Group:          Development/Libraries/C and C++
+Requires(pre):  update-alternatives
 
 %description -n liblapacke3
 This library provides a native C interface to LAPACK routines available
@@ -220,6 +228,7 @@ sed -i -e '1 s@env python@python3@' lapack_testing.py
 cp make.inc.example make.inc
 # for ABI compatibility we need to build the deprecated interfaces
 echo 'BUILD_DEPRECATED = Yes' >> make.inc
+%{?with_tmg:echo 'LAPACKE_WITH_TMG = Yes' >> make.inc}
 
 %make_build cleanlib
 %make_build blaslib \
@@ -238,10 +247,13 @@ gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} -Wl,--no-un
 ln -s libcblas.so.%{version} libcblas.so
 rm -rf tmp
 
+# May need to be included in liblapack
+%make_build -C TESTING/MATGEN FFLAGS="%{optflags_f} %{?test_precflags} %{?with_tmg:-fPIC}"
+
 %make_build lapacklib \
   FFLAGS="%{optflags_f} -fPIC"
 mkdir tmp
-( cd tmp; ar x ../liblapack.a )
+( cd tmp; ar x ../liblapack.a; %{?with_tmg: ar x ../libtmglib.a; ar cr ../liblapack.a *.o; ranlib ../liblapack.a })
 gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
 ln -s liblapack.so.%{version} liblapack.so
 rm -rf tmp
@@ -259,7 +271,6 @@ rm -rf tmp
 # Build test binaries - cblas
 %make_build -C CBLAS/testing FFLAGS="%{optflags_f} %{?test_precflags}"
 # Build test binaries - lapack
-%make_build -C TESTING/MATGEN FFLAGS="%{optflags_f} %{?test_precflags}"
 %make_build -C TESTING/LIN FFLAGS="%{optflags_f} %{?test_precflags}"
 %make_build -C TESTING/EIG FFLAGS="%{optflags_f} %{?test_precflags}"
 
@@ -296,99 +307,71 @@ install -m 644 librefblas.a %{buildroot}/%{_libdir}/libblas.a
 install -m 755 libblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libblas.so.%{version} %{buildroot}/%{_libdir}/blas/libblas.so.3
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
+ln -s %{_sysconfdir}/alternatives/libblas.so.3%{?a_x} %{buildroot}/%{_libdir}/libblas.so.3
 ## CBLAS
 install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
 install -m 644 libcblas.a %{buildroot}/%{_libdir}
 install -m 755 libcblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
 ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
+ln -s %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x} %{buildroot}/%{_libdir}/libcblas.so.3
 ## LAPACK
 install -d %{buildroot}/%{_libdir}/lapack
 install -m 644 liblapack.a %{buildroot}/%{_libdir}
 install -m 755 liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack
 ln -s liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapack.so.3
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
+ln -s %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x} %{buildroot}/%{_libdir}/liblapack.so.3
 ## LAPACKE
 install -m 644 LAPACKE/include/*.h %{buildroot}/%{_includedir}
 install -m 644 liblapacke.a %{buildroot}/%{_libdir}
 install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack
 ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapacke.so.3
 ln -s lapack/liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
+ln -s %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x} %{buildroot}/%{_libdir}/liblapacke.so.3
 
 %post -n libblas3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libblas.so.3 libblas.so.3_%{_arch} %{_libdir}/blas/libblas.so.3  50
+   %{_libdir}/libblas.so.3 libblas.so.3%{?a_x} %{_libdir}/blas/libblas.so.3  50
 /sbin/ldconfig
 
-%preun -n libblas3
-if [ "$1" = 0 ] ; then
-   %{_sbindir}/update-alternatives --remove libblas.so.3  %{_libdir}/blas/libblas.so.3
-fi
-
-%postun -n libblas3 -p /sbin/ldconfig
-
-%posttrans -n libblas3
-if [ "$1" = 0 ] ; then
-  if ! [ -f %{_libdir}/libblas.so.3 ] ; then
-      "%{_sbindir}/update-alternatives" --auto libblas.so.3
-  fi
+%postun -n libblas3
+/sbin/ldconfig
+if [ ! %{_libdir}/blas/libblas.so.3 ] ; then
+   %{_sbindir}/update-alternatives --remove libblas.so.3%{?a_x}  %{_libdir}/blas/libblas.so.3
 fi
 
 %post -n liblapack3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapack.so.3 liblapack.so.3_%{_arch} %{_libdir}/lapack/liblapack.so.3  50
+   %{_libdir}/liblapack.so.3 liblapack.so.3%{?a_x} %{_libdir}/lapack/liblapack.so.3  50
 /sbin/ldconfig
 
-%preun -n liblapack3
-if [ "$1" = 0 ] ; then
-   %{_sbindir}/update-alternatives --remove liblapack.so.3 %{_libdir}/lapack/liblapack.so.3
-fi
-
-%postun -n liblapack3 -p /sbin/ldconfig
-
-%posttrans -n liblapack3
-if [ "$1" = 0 ] ; then
-  if ! [ -f %{_libdir}/liblapack.so.3 ] ; then
-      "%{_sbindir}/update-alternatives" --auto liblapack.so.3
-  fi
+%postun -n liblapack3
+/sbin/ldconfig
+if [ ! -f  %{_libdir}/lapack/liblapack.so.3 ] ; then
+   %{_sbindir}/update-alternatives --remove liblapack.so.3%{?a_x} %{_libdir}/lapack/liblapack.so.3
 fi
 
 %post -n libcblas3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libcblas.so.3 libcblas.so.3_%{_arch} %{_libdir}/blas/libcblas.so.3  50
+   %{_libdir}/libcblas.so.3 libcblas.so.3%{?a_x} %{_libdir}/blas/libcblas.so.3  50
 /sbin/ldconfig
 
-%preun -n libcblas3
-if [ "$1" = 0 ] ; then
-   %{_sbindir}/update-alternatives --remove libcblas.so.3  %{_libdir}/blas/libcblas.so.3
-fi
-
-%postun -n libcblas3 -p /sbin/ldconfig
-
-%posttrans -n libcblas3
-if [ "$1" = 0 ] ; then
-  if ! [ -f %{_libdir}/libcblas.so.3 ] ; then
-      "%{_sbindir}/update-alternatives" --auto libcblas.so.3
-  fi
+%postun -n libcblas3
+/sbin/ldconfig
+if [ ! -f %{_libdir}/blas/libcblas.so.3 ] ; then
+   %{_sbindir}/update-alternatives --remove libcblas.so.3%{?a_x}  %{_libdir}/blas/libcblas.so.3
 fi
 
 %post -n liblapacke3
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapacke.so.3 liblapacke.so.3_%{_arch} %{_libdir}/lapack/liblapacke.so.3  50
+   %{_libdir}/liblapacke.so.3 liblapacke.so.3%{?a_x} %{_libdir}/lapack/liblapacke.so.3  50
 /sbin/ldconfig
 
-%preun -n liblapacke3
-if [ "$1" = 0 ] ; then
-   %{_sbindir}/update-alternatives --remove liblapacke.so.3 %{_libdir}/lapack/liblapacke.so.3
-fi
-
-%postun -n liblapacke3 -p /sbin/ldconfig
-
-%posttrans -n liblapacke3
-if [ "$1" = 0 ] ; then
-  if ! [ -f %{_libdir}/liblapacke.so.3 ] ; then
-      "%{_sbindir}/update-alternatives" --auto liblapacke.so.3
-  fi
+%postun -n liblapacke3
+/sbin/ldconfig
+if [ ! -f %{_libdir}/lapack/liblapacke.so.3 ] ; then
+   %{_sbindir}/update-alternatives --remove liblapacke.so.3%{?a_x} %{_libdir}/lapack/liblapacke.so.3
 fi
 
 %files -n liblapack3
@@ -398,7 +381,7 @@ fi
 %{_libdir}/lapack/liblapack.so.%{version}
 %{_libdir}/lapack/liblapack.so.3
 %ghost %{_libdir}/liblapack.so.3
-%ghost %{_sysconfdir}/alternatives/liblapack.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x}
 
 %files -n libblas3
 %doc README.md
@@ -407,7 +390,7 @@ fi
 %{_libdir}/blas/libblas.so.%{version}
 %{_libdir}/blas/libblas.so.3
 %ghost %{_libdir}/libblas.so.3
-%ghost %{_sysconfdir}/alternatives/libblas.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/libblas.so.3%{?a_x}
 
 %files devel
 %{_libdir}/liblapack.so
@@ -425,7 +408,7 @@ fi
 %{_libdir}/lapack/liblapacke.so.%{version}
 %{_libdir}/lapack/liblapacke.so.3
 %ghost %{_libdir}/liblapacke.so.3
-%ghost %{_sysconfdir}/alternatives/liblapacke.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x}
 
 %files -n lapacke-devel
 %doc LAPACKE/README
@@ -443,7 +426,7 @@ fi
 %{_libdir}/blas/libcblas.so.%{version}
 %{_libdir}/blas/libcblas.so.3
 %ghost %{_libdir}/libcblas.so.3
-%ghost %{_sysconfdir}/alternatives/libcblas.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x}
 
 %files -n cblas-devel
 %doc CBLAS/README

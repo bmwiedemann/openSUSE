@@ -1,0 +1,3 @@
+# rpmlint get update-alternatives generic names wrong consistently
+# as it doesn't understand the _%{_arch} extensions.
+addFilter(".* alternative-link-missing.*")
