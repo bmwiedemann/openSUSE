@@ -1,7 +1,7 @@
 #
 # spec file for package subunit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,35 @@
 #
 
 
-%bcond_with python2
 %define skip_python2 1
-# %%global majver  %%(cut -d. -f-2 <<< %%{version})
-%global majver  1.4
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1550
+# TW: generate subpackages for every python3 flavor
+%define python_subpackage_only 1
+%else
+%define python_sitelib %{python3_sitelib}
+%define python_files() -n python3-%{**}
+%endif
+%bcond_with python2
 Name:           subunit
-Version:        1.4.0+git.1643134405.a629de4
+Version:        1.4.2
+%global majver  %(awk 'BEGIN { OFS="."; FS="[\\.\\+]+" } {print $1, $2, $3}' <<< %{version})
+# %%global majver  1.4
 Release:        0
 Summary:        C library for the subunit testing protocol
 License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/testing-cabal/subunit
-Source0:        %{name}-%{version}.tar.xz
-Source99:       subunit-rpmlintrc
-# PATCH-FIX-UPSTREAM python38-failing-tests.patch mcepl@suse.com
-# skip tests failing with Python 3.8+
-Patch0:         python38-failing-tests.patch
+# Source0:        %%{name}-%%{version}.tar.xz
+Source0:        https://github.com/testing-cabal/%{name}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module iso8601}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools >= 1.8.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  check-devel
 BuildRequires:  cppunit-devel
 BuildRequires:  fdupes
@@ -49,14 +53,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
-%if 0%{?suse_version} >= 1550
-# TW: generate subpackages for every python3 flavor
-%define python_subpackage_only 1
 %python_subpackages
-%else
-%define python_sitelib %python3_sitelib
-%define python_files() -n python3-%{**}
-%endif
 
 %description
 Subunit C bindings.  See the python-subunit package for test processing
@@ -74,6 +71,7 @@ Binary libraries for %{name}
 Summary:        Header files for developing C applications that use subunit
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       libsubunit0 = %{version}-%{release}
 
 %description devel
 Header files and libraries for developing C applications that use subunit.
@@ -190,8 +188,7 @@ BuildArch:      noarch
 Command line filters for processing subunit streams.
 
 %prep
-%setup
-%autopatch -p1
+%autosetup -p1
 
 fixtimestamp() {
   touch -r $1.orig $1
@@ -199,25 +196,10 @@ fixtimestamp() {
 }
 
 # Help the dependency generator
-for filt in filters/*; do
-  sed -e 's,%{_bindir}/env ,%{_bindir}/,' -e 's/python$/python3/' $filt > ${filt}.new
-  chmod 0755 ${filt}.new
-  touch -r $filt ${filt}.new
-  mv -f ${filt}.new $filt
-done
-
-# Fix underlinked library
-sed "/^tests_LDADD/ilibcppunit_subunit_la_LIBADD = -lcppunit libsubunit.la\n" \
-    -i Makefile.am
-
-# Depend on python3, not just python
-sed -i.orig -e 's,\(%{_bindir}/python\)\s*$,\13,' python/subunit/run.py
-fixtimestamp python/subunit/run.py
-
-# Do not use env
-for fil in $(grep -Frl "%{_bindir}/env python"); do
-  sed -i.orig 's,%{_bindir}/env python,%{_bindir}/python2,' $fil
-  fixtimestamp $fil
+for filt in python/subunit/filter_scripts/*; do
+  sed -i.orig '1{\@^#! */usr/bin/env python@d}' $filt
+  touch -r $filt.orig ${filt}
+  rm ${filt}.orig
 done
 
 %build
@@ -229,11 +211,11 @@ export INSTALLDIRS=perl
   --enable-shared \
   --disable-static
 
-make %{?_smp_mflags}
-%python_build
+%make_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand chmod 0755 %{buildroot}%{$python_sitelib}/%{name}/run.py
 
@@ -255,8 +237,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # Fix perl installation
 mkdir -p %{buildroot}%{perl_vendorlib}
-mv %{buildroot}%{perl_privlib}/Subunit* %{buildroot}%{perl_vendorlib}
-rm -fr %{buildroot}%{perl_archlib}
+mv %{buildroot}%{perl_sitelib}/Subunit* %{buildroot}%{perl_vendorlib}
+rm -fr %{buildroot}%{perl_archlib} %{buildroot}%{perl_sitearch}
 
 # Fix permissions
 chmod 0755 %{buildroot}%{_bindir}/subunit-diff
@@ -266,16 +248,12 @@ touch -r c/include/%{name}/child.h %{buildroot}%{_includedir}/%{name}/child.h
 touch -r c++/SubunitTestProgressListener.h \
       %{buildroot}%{_includedir}/%{name}/SubunitTestProgressListener.h
 touch -r perl/subunit-diff %{buildroot}%{_bindir}/subunit-diff
-for fil in filters/*; do
-  touch -r $fil %{buildroot}%{_bindir}/$(basename $fil)
-done
 
 %check
-
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTHON=%{$python}
 # https://bugs.launchpad.net/subunit/+bug/1323410
 find . -name sample\*.py -exec chmod +x '{}' \;
-make %{?_smp_mflags} check
+%make_build check
 }
 
 %post -n libsubunit0 -p /sbin/ldconfig
@@ -321,7 +299,7 @@ make %{?_smp_mflags} check
 %files %{python_files python-%{name}}
 %license Apache-2.0 BSD COPYING
 %{python_sitelib}/%{name}/
-%{python_sitelib}/python_%{name}-*.egg-info
+%{python_sitelib}/python_%{name}-%{majver}*-info
 
 %files filters
 %{_bindir}/*

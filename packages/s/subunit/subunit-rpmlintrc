@@ -1,2 +1,0 @@
-addFilter("python-bytecode-without-source /usr/lib/python.*/site-packages/subunit/iso8601.py[co]")
-addFilter("python-bytecode-without-source /usr/lib/python.*/site-packages/subunit/__pycache__/iso8601.*\.pyc")

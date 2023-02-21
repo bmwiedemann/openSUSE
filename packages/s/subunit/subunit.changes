@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 20 08:56:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.4.2:
+  - IMPROVEMENTS
+    * Drop various compatibility wrappers for Python < 3.6.
+    * Add support for Python 3.9
+    * Add support for Python 3.10
+    * Drop support for Python 2.7, 3.4, and 3.5
+    * Convert python scripts to entry_points.
+    * Migrate CI from travis to GitHub actions.
+    * Add options to output filter to set timestamps.
+    * Remove dependency on unittest2.
+  - BUGFIXES
+    * Fix "subunit-filter --fixup-expected-failures"
+      on Python 3.
+    * Fix tests with testtools >= 2.5.0.
+    * Mark rawstrings as such, fixing warnings.
+- Remove upstreamed patch python38-failing-tests.patch
+
+-------------------------------------------------------------------
 Mon May 09 06:19:54 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 1.4.0+git.1643134405.a629de4:

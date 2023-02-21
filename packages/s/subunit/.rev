@@ -128,4 +128,12 @@
   * Drop support for Python 2.7, 3.5</comment>
     <requestid>975704</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>735bd2561e3bc84223dbc9c8988162b3</srcmd5>
+    <version>1.4.2</version>
+    <time>1676990147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066851</requestid>
+  </revision>
 </revisionlist>
