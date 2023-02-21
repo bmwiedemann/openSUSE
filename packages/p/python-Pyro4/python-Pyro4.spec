@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Do not support pyhon 3.11, and will never support it, it recommends
+# to use Pyro5, gh#irmen/Pyro4#246
+%define skip_python311 1
 %bcond_without python2
 Name:           python-Pyro4
-Version:        4.81
+Version:        4.82
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
 URL:            https://github.com/irmen/Pyro4
 Source:         https://files.pythonhosted.org/packages/source/P/Pyro4/Pyro4-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-# PATCH-FIX-UPSTREAM Pyro4-pr238-py310-cmethod-smethod.patch gh#irmen/Pyro4#238
-Patch0:         Pyro4-pr238-py310-cmethod-smethod.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-serpent >= 1.27

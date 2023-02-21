@@ -94,4 +94,19 @@
     <comment></comment>
     <requestid>942010</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c114374d9470228ef9cf865d24311b84</srcmd5>
+    <version>4.82</version>
+    <time>1676990204</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete Pyro4-pr238-py310-cmethod-smethod.patch
+- Skip python 3.11, it's not supported and won't be supported. It's
+  recommended to use Pyro5, gh#irmen/Pyro4#246
+- Update to v4.82
+  * fixed @expose issue on static method/classmethod due to API change in Python 3.10
+  * switched from travis to using github actions for CI builds and tests
+  * Python 3.10 is now included in the unit test runs
+</comment>
+    <requestid>1066990</requestid>
+  </revision>
 </revisionlist>

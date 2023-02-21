@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 21 11:43:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete Pyro4-pr238-py310-cmethod-smethod.patch
+- Skip python 3.11, it's not supported and won't be supported. It's
+  recommended to use Pyro5, gh#irmen/Pyro4#246
+- Update to v4.82
+  * fixed @expose issue on static method/classmethod due to API change in Python 3.10
+  * switched from travis to using github actions for CI builds and tests
+  * Python 3.10 is now included in the unit test runs
+
+-------------------------------------------------------------------
 Tue Dec 21 18:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.81
