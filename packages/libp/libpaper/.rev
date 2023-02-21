@@ -32,4 +32,17 @@
     <comment></comment>
     <requestid>1041796</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6d19066e6b21875537ffe34cbfc31f0</srcmd5>
+    <version>2.0.9</version>
+    <time>1676990141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.9:
+  * Tweak the documentation of how paper sizes are set to make it
+    easier to find and more accurate.
+  * Removes the requirement for help2man at build time
+  * Various fixes.
+</comment>
+    <requestid>1066839</requestid>
+  </revision>
 </revisionlist>

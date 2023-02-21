@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 20 13:58:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.0.9:
+  * Tweak the documentation of how paper sizes are set to make it
+    easier to find and more accurate.
+  * Removes the requirement for help2man at build time
+  * Various fixes.
+
+-------------------------------------------------------------------
 Thu Dec  8 20:33:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.4:
