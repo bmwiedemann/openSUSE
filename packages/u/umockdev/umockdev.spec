@@ -1,7 +1,7 @@
 #
 # spec file for package umockdev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.17.15
+Version:        0.17.16
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
