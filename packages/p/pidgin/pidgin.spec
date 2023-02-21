@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define _name   Pidgin
 %define sover   0
 Name:           pidgin
-Version:        2.14.10
+Version:        2.14.12
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
 URL:            https://pidgin.im/
-Source:         http://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
-Source1:        http://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2.asc
+Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2.asc
 Source2:        pidgin.keyring
 Source3:        pidgin-prefs.xml
 # PATCH-FIX-OPENSUSE pidgin-nonblock-common.patch

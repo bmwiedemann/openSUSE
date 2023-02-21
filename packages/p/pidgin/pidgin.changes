@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 19 10:05:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.12:
+  * Remove a string from the Romanian translation that's breaks
+    the creation of the Windows installer.
+  * Add Markus "ivanhoe" Fischer to the Crazy Patch Writers!
+  * Fix a crash when closing a group chat with spellchk plugin
+    enabled.
+  * Fix network interface detection on Windows to fix broken file
+    transfers.
+  * Update the about box to point people to Discourse instead of
+    the mailing lists.
+
+-------------------------------------------------------------------
 Sat Jun 11 10:14:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.14.10:
