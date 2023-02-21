@@ -32,8 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.22.0
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.14.0
-BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.4.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 17 14:36:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused nor needed pkgconfig(clutter-1.0) and
+  pkgconfig(clutter-gtk-1.0) BuildRequires.
+
+-------------------------------------------------------------------
 Mon Mar 22 07:54:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0.1:
