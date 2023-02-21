@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:39:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.15.1:
+  * add: set replacement-available-in to existing version. (#457)
+
+-------------------------------------------------------------------
+Thu Feb 23 10:37:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.15.0:
+  * Add a `detect-all-in-cluster` command to run both `detect-helm` and `detect-api-resources` (#455)
+
+-------------------------------------------------------------------
+Wed Feb 22 17:26:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.14.0:
+  * add replacement-available-in (#452)
+
+-------------------------------------------------------------------
 Tue Feb 21 09:26:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.13.4:
