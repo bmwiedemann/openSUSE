@@ -1,7 +1,7 @@
 #
 # spec file for package python-svgpathtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-svgpathtools
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Tools for manipulating and analyzing SVG Path objects and Bézier curves
 License:        MIT

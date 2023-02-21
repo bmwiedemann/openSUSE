@@ -85,4 +85,12 @@
 </comment>
     <requestid>990460</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>11a81777e68778cfd68fe1202874db32</srcmd5>
+    <version>1.6.0</version>
+    <time>1676990190</time>
+    <user>dimstar_suse</user>
+    <comment>- Updote to 1.6.0</comment>
+    <requestid>1066955</requestid>
+  </revision>
 </revisionlist>
