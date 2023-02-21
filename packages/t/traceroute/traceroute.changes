@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 14 10:09:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 2.1.2:
+  *  Fix unprivileged ICMP tracerouting with Linux kernel >= 6.1
+
+-------------------------------------------------------------------
 Wed Dec 28 12:29:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 2.1.1:
