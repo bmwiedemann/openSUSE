@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 09:48:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11
+  gh#last-partizan/pytils#50
+
+-------------------------------------------------------------------
 Thu Oct  6 22:59:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version pytils (0.4dev)

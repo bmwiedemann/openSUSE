@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1008703</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>630db6888cbd4b55dd63213b1c3e230c</srcmd5>
+    <version>0.4.1</version>
+    <time>1676990189</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#last-partizan/pytils#50
+</comment>
+    <requestid>1066953</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytils
 Version:        0.4.1
 Release:        0
@@ -25,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/y10h/pytils
 Source:         https://files.pythonhosted.org/packages/source/p/pytils/pytils-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch, gh#last-partizan/pytils#50
+Patch0:         python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +38,7 @@ in-words representation of numerals, dates in Russian without locales,
 transliteration, etc.)
 
 %prep
-%setup -q -n pytils-%{version}
+%autosetup -p1 -n pytils-%{version}
 
 %build
 %python_build
@@ -53,6 +54,7 @@ rm -r pytils/test/templatetags
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytils
+%{python_sitelib}/pytils-%{version}*-info
 
 %changelog

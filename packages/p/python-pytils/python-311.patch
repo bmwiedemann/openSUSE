@@ -1,0 +1,34 @@
+From 527e42f582849b3c1f73d5d525ae11d9ef21e0df Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Tue, 13 Dec 2022 15:44:05 +0300
+Subject: [PATCH] Remove redundant (?u) inline flags
+
+They are not needed because we pass re.UNICODE anyway.
+Also, inline flags not at the start of the expression are invalid
+starting with Python 3.11.
+---
+ pytils/typo.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: pytils-0.4.1/pytils/typo.py
+===================================================================
+--- pytils-0.4.1.orig/pytils/typo.py
++++ pytils-0.4.1/pytils/typo.py
+@@ -149,13 +149,13 @@ def rl_quotes(x):
+         # открывающие кавычки ставятся обычно вплотную к слову слева
+         # а закрывающие -- вплотную справа
+         # открывающие русские кавычки-ёлочки
+-        (re.compile(r'((?:^|\s))(")((?u))', re.UNICODE), '\\1\xab\\3'),
++        (re.compile(r'((?:^|\s))(")', re.UNICODE), '\\1\xab'),
+         # закрывающие русские кавычки-ёлочки
+-        (re.compile(r'(\S)(")((?u))', re.UNICODE), '\\1\xbb\\3'),
++        (re.compile(r'(\S)(")', re.UNICODE), '\\1\xbb'),
+         # открывающие кавычки-лапки, вместо одинарных кавычек
+-        (re.compile(r'((?:^|\s))(\')((?u))', re.UNICODE), '\\1\u201c\\3'),
++        (re.compile(r'((?:^|\s))(\')', re.UNICODE), '\\1\u201c'),
+         # закрывающие кавычки-лапки
+-	(re.compile(r'(\S)(\')((?u))', re.UNICODE), '\\1\u201d\\3'),
++	(re.compile(r'(\S)(\')', re.UNICODE), '\\1\u201d'),
+     )
+     return _sub_patterns(patterns, x)
+     
