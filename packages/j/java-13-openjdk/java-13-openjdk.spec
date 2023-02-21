@@ -32,7 +32,7 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       13
+%global updatever       14
 %global buildver        5
 %global openjdk_repo    jdk13u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -1060,7 +1060,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
-%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %if ! %{with zero}
