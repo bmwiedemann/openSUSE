@@ -53,7 +53,10 @@ class TestEce(unittest.TestCase):
 
     def setUp(self):
         self.private_key = make_key()
-        self.dh = self.private_key.public_key().public_numbers().encode_point()
+        self.dh = self.private_key.public_key().public_bytes(
+            Encoding.X962,
+            PublicFormat.UncompressedPoint
+        )
         self.m_key = os.urandom(16)
         self.m_salt = os.urandom(16)
 

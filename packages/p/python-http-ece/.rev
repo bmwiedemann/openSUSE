@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>964378</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>63c4e6c35087dd0d96098e9f1a2dd2f2</srcmd5>
+    <version>1.1.0</version>
+    <time>1676990181</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop test_ece.py using removed cryptography methods.</comment>
+    <requestid>1066900</requestid>
+  </revision>
 </revisionlist>

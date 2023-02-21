@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 04:21:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop test_ece.py using removed cryptography methods. 
+
+-------------------------------------------------------------------
 Wed Mar 23 10:13:27 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
