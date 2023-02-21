@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 08:50:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip python 3.11, it's not supported yet
+  gh#scoder/quicktions#6
+
+-------------------------------------------------------------------
 Fri Mar 20 08:37:42 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.11
