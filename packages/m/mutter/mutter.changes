@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 20 14:38:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.3+2:
+  + wayland: Don't overwrite surface offsets.
+  + x11: Avoid updating focus on wayland compositor (boo#1208494).
+
+-------------------------------------------------------------------
 Tue Feb 14 10:37:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:

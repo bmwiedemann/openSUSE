@@ -1718,4 +1718,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   + Updated translations. (forwarded request 1065709 from iznogood)</comment>
     <requestid>1065737</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>725dd628a600edf37dcfc108524fb270</srcmd5>
+    <version>43.3+2</version>
+    <time>1676990150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066855</requestid>
+  </revision>
 </revisionlist>
