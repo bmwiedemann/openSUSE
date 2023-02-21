@@ -1,7 +1,7 @@
 #
 # spec file for package subnetcalc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           subnetcalc
-Version:        2.4.19
+Version:        2.4.21
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Routing
-URL:            https://www.uni-due.de/~be0001/subnetcalc/
-Source:         https://www.uni-due.de/~be0001/subnetcalc/download/%{name}-%{version}.tar.xz
+URL:            https://www.nntb.no/~dreibh/subnetcalc/
+Source:         https://github.com/dreibh/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -35,8 +35,18 @@ addresses in binary format for better understandability. Furthermore, it
 prints information on specific address types (e.g. type, scope,
 interface ID, etc.).
 
+%package doc
+Summary:        Documentation for %{name}
+Group:          Documentation/HTML
+Recommends:     %{name} = %{version}
+BuildArch:      noarch
+
+%description doc
+SubNetCalc is an IPv4/IPv6 subnet address calculator.
+This packages provides documentation and help files for subnetcalc.
+
 %prep
-%setup -q
+%autosetup -n %{name}-%{name}-%{version}
 
 %build
 %cmake
@@ -49,9 +59,11 @@ interface ID, etc.).
 %{buildroot}%{_bindir}/%{name} 192.168.1.0/255.255.0.0
 
 %files
-%doc AUTHORS ChangeLog README
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files doc
+%doc AUTHORS ChangeLog README.md
 
 %changelog

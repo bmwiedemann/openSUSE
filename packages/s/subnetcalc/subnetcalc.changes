@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:04:05 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- split documentation in a separate package
+
+-------------------------------------------------------------------
+Tue Feb 21 12:48:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.21:
+  * project URL change from UDE to NNTB.
+  * Updated build scripts
+  * Updated README.md 
+
+-------------------------------------------------------------------
 Mon Nov 15 19:21:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Dependency update.
