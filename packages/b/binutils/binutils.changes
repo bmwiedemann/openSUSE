@@ -1,7 +1,85 @@
 -------------------------------------------------------------------
+Mon Jan 30 09:18:59 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Pack libgprofng only for supported platforms.
+
+-------------------------------------------------------------------
+Fri Jan 27 19:06:39 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Remove upstreamed patch binutils-maxpagesize.diff.
+
+-------------------------------------------------------------------
+Fri Jan 27 09:56:13 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Rebase binutils-2.40-branch.diff.gz as it includes fix for PR30043.
+- Move libgprofng-related libraries to the proper locations (packages).
+- Add --without=bootstrap for skipping of bootstrap (faster testing
+  of the package).
+
+-------------------------------------------------------------------
 Tue Jan 24 12:52:49 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Remove broken arm32-avoid-copyreloc.patch to fix [gcc#108515]
+
+-------------------------------------------------------------------
+Mon Jan 16 08:34:07 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 2.40:
+* Objdump has a new command line option --show-all-symbols which will make it
+  display all symbols that match a given address when disassembling.  (Normally
+  only the first symbol that matches an address is shown).
+* Add --enable-colored-disassembly configure time option to enable colored
+  disassembly output by default, if the output device is a terminal.  Note,
+  this configure option is disabled by default.
+* DCO signed contributions are now accepted.
+* objcopy --decompress-debug-sections now supports zstd compressed debug
+  sections.  The new option --compress-debug-sections=zstd compresses debug
+  sections with zstd.
+* addr2line and objdump --dwarf now support zstd compressed debug sections.
+* The dlltool program now accepts --deterministic-libraries and
+  --non-deterministic-libraries as command line options to control whether or
+  not it generates deterministic output libraries.  If neither of these options
+  are used the default is whatever was set when the binutils were configured.
+* readelf and objdump now have a newly added option --sframe which dumps the
+  SFrame section.
+* Add support for Intel RAO-INT instructions.
+* Add support for Intel AVX-NE-CONVERT instructions.
+* Add support for Intel MSRLIST instructions.
+* Add support for Intel WRMSRNS instructions.
+* Add support for Intel CMPccXADD instructions.
+* Add support for Intel AVX-VNNI-INT8 instructions.
+* Add support for Intel AVX-IFMA instructions.
+* Add support for Intel PREFETCHI instructions.
+* Add support for Intel AMX-FP16 instructions.
+* gas now supports --compress-debug-sections=zstd to compress
+  debug sections with zstd.
+* Add --enable-default-compressed-debug-sections-algorithm={zlib,zstd}
+  that selects the default compression algorithm
+  for --enable-compressed-debug-sections.
+* Add support for various T-Head extensions (XTheadBa, XTheadBb, XTheadBs,
+  XTheadCmo, XTheadCondMov, XTheadFMemIdx, XTheadFmv, XTheadInt, XTheadMemIdx,
+  XTheadMemPair, XTheadMac, and XTheadSync) from version 2.0 of the T-Head
+  ISA manual, which are implemented in the Allwinner D1.
+* Add support for the RISC-V Zawrs extension, version 1.0-rc4.
+* Add support for Cortex-X1C for Arm.
+* New command line option --gsframe to generate SFrame unwind information
+  on x86_64 and aarch64 targets.
+* The linker has a new command line option to suppress the generation of any
+  warning or error messages.  This can be useful when there is a need to create
+  a known non-working binary.  The option is -w or --no-warnings.
+* ld now supports zstd compressed debug sections.  The new option
+  --compress-debug-sections=zstd compresses debug sections with zstd.
+* Add --enable-default-compressed-debug-sections-algorithm={zlib,zstd}
+  that selects the default compression algorithm
+  for --enable-compressed-debug-sections.
+* Remove support for -z bndplt (MPX prefix instructions).
+- Rebased patches: add-ulp-section.diff, ld-relro.diff, binutils-revert-plt32-in-branches.diff,
+  cross-avr-size.patch.
+- Removed patch: binutils-pr29482.diff.
+- New patch: extensa-gcc-4_3-fix.diff.
+- Includes fixes for these CVEs:
+  * bnc#1206080 aka CVE-2022-4285 aka PR29699
+- Enable by default: --enable-colored-disassembly.
 
 -------------------------------------------------------------------
 Sat Dec 10 10:00:56 UTC 2022 - Dirk Müller <dmueller@suse.com>

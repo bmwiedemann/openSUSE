@@ -1,5 +1,5 @@
 diff --git a/binutils/size.c b/binutils/size.c
-index 479a464887..971156ccbe 100644
+index 8e9adcd1caa..a10d6f49601 100644
 --- a/binutils/size.c
 +++ b/binutils/size.c
 @@ -51,6 +51,7 @@ enum output_format
@@ -266,8 +266,8 @@ index 479a464887..971156ccbe 100644
 +            --mcu=<avrmcu>            MCU name for AVR format only\n\
    -o|-d|-x  --radix={8|10|16}         Display numbers in octal, decimal or hex\n\
    -t        --totals                  Display the total sizes (Berkeley only)\n\
-             --common                  Display total size for *COM* syms\n\
-@@ -113,6 +355,7 @@ usage (FILE *stream, int status)
+   -f                                  Ignored.\n\
+@@ -114,6 +356,7 @@ usage (FILE *stream, int status)
  #define OPTION_FORMAT (200)
  #define OPTION_RADIX (OPTION_FORMAT + 1)
  #define OPTION_TARGET (OPTION_RADIX + 1)
@@ -275,7 +275,7 @@ index 479a464887..971156ccbe 100644
  
  static struct option long_options[] =
  {
-@@ -120,6 +363,7 @@ static struct option long_options[] =
+@@ -121,6 +364,7 @@ static struct option long_options[] =
    {"format", required_argument, 0, OPTION_FORMAT},
    {"radix", required_argument, 0, OPTION_RADIX},
    {"target", required_argument, 0, OPTION_TARGET},
@@ -283,7 +283,7 @@ index 479a464887..971156ccbe 100644
    {"totals", no_argument, &show_totals, 1},
    {"version", no_argument, &show_version, 1},
    {"help", no_argument, &show_help, 1},
-@@ -153,13 +397,17 @@ main (int argc, char **argv)
+@@ -152,13 +396,17 @@ main (int argc, char **argv)
      fatal (_("fatal error: libbfd ABI mismatch"));
    set_default_bfd_target ();
  
@@ -302,7 +302,7 @@ index 479a464887..971156ccbe 100644
  	  case 'B':
  	  case 'b':
  	    selected_output_format = FORMAT_BERKLEY;
-@@ -178,6 +426,10 @@ main (int argc, char **argv)
+@@ -177,6 +425,10 @@ main (int argc, char **argv)
  	  }
  	break;
  
@@ -313,7 +313,7 @@ index 479a464887..971156ccbe 100644
        case OPTION_TARGET:
  	target = optarg;
  	break;
-@@ -211,6 +463,9 @@ main (int argc, char **argv)
+@@ -210,6 +462,9 @@ main (int argc, char **argv)
        case 'B':
  	selected_output_format = FORMAT_BERKLEY;
  	break;
@@ -323,7 +323,7 @@ index 479a464887..971156ccbe 100644
        case 'G':
  	selected_output_format = FORMAT_GNU;
  	break;
-@@ -648,13 +903,115 @@ print_sysv_format (bfd *file)
+@@ -649,13 +904,115 @@ print_sysv_format (bfd *file)
    printf ("\n\n");
  }
  

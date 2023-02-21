@@ -61,7 +61,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.39
+Version:        2.40
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -71,6 +71,8 @@ Release:        0
 %else
 %bcond_with libalternatives
 %endif
+
+%bcond_without bootstrap
 
 #
 # RUN_TESTS
@@ -100,6 +102,15 @@ Release:        0
 %define build_multitarget 0
 %endif
 %define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr pru epiphany hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
+
+%define build_gprofng 0
+
+%if %{suse_version} > 1500
+%ifarch aarch64 %ix86 x86_64 %x86_64
+%define build_gprofng 1
+%endif
+%endif
+
 #
 #
 #
@@ -117,7 +128,7 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.39-branch.diff.gz
+Patch1:         binutils-2.40-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -139,8 +150,7 @@ Patch41:        binutils-fix-relax.diff
 Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
-Patch45:        binutils-pr29482.diff
-Patch46:        binutils-maxpagesize.diff
+Patch45:        extensa-gcc-4_3-fix.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -263,9 +273,8 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
-%endif
 %patch45 -p1
-%patch46 -p1
+%endif
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -364,9 +373,12 @@ cd build-dir
 %endif
 	--enable-shared \
 %if %{suse_version} > 1500
+%if %{with bootstrap}
 	--enable-pgo-build=lto \
 %endif
-%if %{suse_version} <= 1500
+	--enable-colored-disassembly \
+%endif
+%if ! %build_gprofng
 	--disable-gprofng \
 %endif
 	--enable-obsolete \
@@ -521,6 +533,7 @@ chmod a+x %{buildroot}%{_libdir}/libopcodes-*
 # No shared linking outside binutils
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes}.so
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes,ctf,ctf-nobfd}.la
+rm -f %{buildroot}%{_libdir}/gprofng/lib*.{l,}a
 # Remove unwanted files to shut up rpm
 rm -f %{buildroot}%{_infodir}/configure* $RPM_BUILD_ROOT%{_infodir}/standards.info*
 rm -f %{buildroot}%{_mandir}/man1/dlltool.1 $RPM_BUILD_ROOT%{_mandir}/man1/windres.1 $RPM_BUILD_ROOT%{_mandir}/man1/windmc.1
@@ -644,6 +657,10 @@ fi;
 %{_prefix}/%{HOST}/bin/*
 %{_prefix}/%{HOST}/lib/ldscripts
 %{_libdir}/ldscripts
+%{_libdir}/libsframe.so.*
+%if %build_gprofng
+%{_libdir}/libgprofng.so.*
+%endif
 %dir %{_libdir}/bfd-plugins
 %{_libdir}/bfd-plugins/libdep.so
 %{_bindir}/*
@@ -686,6 +703,10 @@ fi;
 %{_libdir}/lib*.*a
 %{_libdir}/libctf.so
 %{_libdir}/libctf-nobfd.so
+%{_libdir}/libsframe.so
+%if %build_gprofng
+%{_libdir}/libgprofng.so
+%endif
 
 %files -n libctf0
 %defattr(-,root,root)
@@ -701,7 +722,6 @@ fi;
 %defattr(-,root,root)
 %dir %{_libdir}/gprofng/
 %{_libdir}/gprofng/lib*.so
-%{_libdir}/gprofng/lib*.so.*
 %{_distconfdir}/gprofng.rc
 %endif
 %endif

@@ -67,7 +67,7 @@ diff --git a/bfd/elfxx-x86.c b/bfd/elfxx-x86.c
 index 62d516aab8d..c0fb718d85c 100644
 --- a/bfd/elfxx-x86.c
 +++ b/bfd/elfxx-x86.c
-@@ -31,6 +31,8 @@
+@@ -29,6 +29,8 @@
  #define ELF64_DYNAMIC_INTERPRETER "/lib/ld64.so.1"
  #define ELFX32_DYNAMIC_INTERPRETER "/lib/ldx32.so.1"
  
@@ -173,14 +173,14 @@ diff --git a/bfd/elfxx-x86.h b/bfd/elfxx-x86.h
 index db11327e96f..89f51382216 100644
 --- a/bfd/elfxx-x86.h
 +++ b/bfd/elfxx-x86.h
-@@ -456,6 +456,7 @@ struct elf_x86_link_hash_table
+@@ -607,6 +607,7 @@ struct elf_x86_link_hash_table
    asection *plt_second_eh_frame;
    asection *plt_got;
    asection *plt_got_eh_frame;
 +  asection *ulp;
  
-   /* Parameters describing PLT generation, lazy or non-lazy.  */
-   struct elf_x86_plt_layout plt;
+   sframe_encoder_ctx *plt_cfe_ctx;
+   asection *plt_sframe;
 @@ -694,6 +695,12 @@ extern void _bfd_x86_elf_link_report_relative_reloc
    (struct bfd_link_info *, asection *, struct elf_link_hash_entry *,
     Elf_Internal_Sym *, const char *, const void *);

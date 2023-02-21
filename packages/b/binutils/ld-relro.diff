@@ -25,15 +25,15 @@ Index: ld/testsuite/config/default.exp
  }
  
  if ![info exists as] then {
-@@ -60,7 +60,7 @@ if {![file isdirectory tmpdir/ld]} then
-     catch "exec ln -s ld tmpdir/ld/collect-ld" status
-     catch "exec ln -s ../../../gas/as-new tmpdir/ld/as" status
+@@ -70,7 +70,7 @@ if {[info exists ld_testsuite_bindir]} {
+ 	catch "exec ln -s ld tmpdir/ld/collect-ld" status
+ 	catch "exec ln -s ../../../gas/as-new tmpdir/ld/as" status
+     }
+-    set gcc_B_opt "-B[pwd]/tmpdir/ld/"
++    set gcc_B_opt "-B[pwd]/tmpdir/ld/ -Wl,-z,norelro"
  }
--set gcc_B_opt "-B[pwd]/tmpdir/ld/"
-+set gcc_B_opt "-B[pwd]/tmpdir/ld/ -Wl,-z,norelro"
  
  # load the linker path
- set ld_L_opt ""
 @@ -272,7 +272,7 @@ if ![info exists READELFFLAGS] then {
  }
  
@@ -47,17 +47,17 @@ Index: ld/testsuite/ld-bootstrap/bootstrap.exp
 ===================================================================
 --- ld/testsuite/ld-bootstrap/bootstrap.exp.orig	2014-10-14 17:43:07.000000000 +0200
 +++ ld/testsuite/ld-bootstrap/bootstrap.exp	2014-10-14 17:43:26.000000000 +0200
-@@ -78,7 +78,12 @@ foreach flags $test_flags {
+@@ -106,7 +106,12 @@ foreach flags $test_flags {
  
      # This test can only be run if we have the ld build directory,
      # since we need the object files.
--    if {$ld != "$objdir/ld-new"} {
+-    if {[file normalize $ld] != [file normalize $objdir/ld-new]} {
 +    set ldexe $ld
 +    set ldparm [string first " " $ld]
 +    if { $ldparm > 0 } then {
 +	set ldexe [string range $ld 0 $ldparm]
 +    }
-+    if {$ldexe != "$objdir/ld-new"} {
++    if {[file normalize $ldexe] != [file normalize $objdir/ld-new]} {
  	untested $testname
  	continue
      }

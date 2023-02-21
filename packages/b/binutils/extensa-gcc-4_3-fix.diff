@@ -1,0 +1,20 @@
+# This fixes:
+#
+# [  146s] In file included from ../../bfd/xtensa-isa.c:26:
+# [  146s] ../../bfd/../include/xtensa-dynconfig.h:107: error: redefinition of typedef 'xtensa_isa_internal'
+# [  146s] ../../bfd/../include/xtensa-isa-internal.h:227: error: previous declaration of 'xtensa_isa_internal' was here
+#
+# which is a strange issue with GCC 4.3
+
+diff --git a/include/xtensa-dynconfig.h b/include/xtensa-dynconfig.h
+index bb72d6ab22d..9c66ac4416d 100644
+--- a/include/xtensa-dynconfig.h
++++ b/include/xtensa-dynconfig.h
+@@ -104,7 +104,6 @@ struct xtensa_config_v2
+   int xtensa_march_earliest;
+ };
+ 
+-typedef struct xtensa_isa_internal_struct xtensa_isa_internal;
+ 
+ extern const void *xtensa_load_config (const char *name,
+ 				       const void *no_plugin_def,

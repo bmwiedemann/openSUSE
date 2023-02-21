@@ -336,23 +336,6 @@ index 7d2c994ce26..58ad424badb 100644
  [ 	]*[a-f0-9]+:	ff 14 25 00 00 00 00 	call   \*0x0	3d: R_X86_64_32S	xxx
  [ 	]*[a-f0-9]+:	ff d7                	call   \*%rdi
  [ 	]*[a-f0-9]+:	ff 17                	call   \*\(%rdi\)
-diff --git a/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d b/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
-index 795f3fdacc4..1d692e8f04d 100644
---- a/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
-+++ b/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
-@@ -23,9 +23,9 @@ Disassembly of section .text:
- [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd call 34 <foo2>
- 
- 0+34 <foo2>:
--[ 	]*[a-f0-9]+:	f2 e9 00 00 00 00    	bnd jmp 3a <foo2\+0x6>	36: R_X86_64_PLT32	foo-0x4
--[ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 41 <foo2\+0xd>	3d: R_X86_64_PLT32	foo-0x4
--[ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd call 47 <foo2\+0x13>	43: R_X86_64_PLT32	foo-0x4
-+[ 	]*[a-f0-9]+:	f2 e9 00 00 00 00    	bnd jmp 3a <foo2\+0x6>	36: R_X86_64_PC32	foo-0x4
-+[ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 41 <foo2\+0xd>	3d: R_X86_64_PC32	foo-0x4
-+[ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd call 47 <foo2\+0x13>	43: R_X86_64_PC32	foo-0x4
- [ 	]*[a-f0-9]+:	f2 e9 00 00 00 00    	bnd jmp 4d <foo2\+0x19>	49: R_X86_64_PLT32	foo-0x4
- [ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 54 <foo2\+0x20>	50: R_X86_64_PLT32	foo-0x4
- [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd call 5a <foo2\+0x26>	56: R_X86_64_PLT32	foo-0x4
 diff --git a/gas/testsuite/gas/i386/x86-64-nop-3.d b/gas/testsuite/gas/i386/x86-64-nop-3.d
 index 1975481cc59..436487b5a99 100644
 --- a/gas/testsuite/gas/i386/x86-64-nop-3.d
@@ -427,15 +410,6 @@ index 01df9ef340e..d16e6a55395 100644
  
  0+1f <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	ret
-diff --git a/ld/testsuite/ld-x86-64/mpx1c.rd b/ld/testsuite/ld-x86-64/mpx1c.rd
-index d66524c8834..d3b292cbdc1 100644
---- a/ld/testsuite/ld-x86-64/mpx1c.rd
-+++ b/ld/testsuite/ld-x86-64/mpx1c.rd
-@@ -1,3 +1,3 @@
- #...
--[0-9a-f ]+R_X86_64_PLT32 +0+ +.*
-+[0-9a-f ]+R_X86_64_PC32 +0+ +.*
- #...
 diff --git a/ld/testsuite/ld-x86-64/pr22791-1.err b/ld/testsuite/ld-x86-64/pr22791-1.err
 deleted file mode 100644
 index 8c5565992e7..00000000000
