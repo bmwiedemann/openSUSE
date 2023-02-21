@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 15 09:11:12 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add binutils-2.40.patch where we need to explicitly link against
+  -lsframe. It's a workaround for an existing issue:
+  https://github.com/libbpf/bpftool/issues/73.
+
+-------------------------------------------------------------------
 Fri Oct  7 16:22:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move bash-completion to subpackage so it isn't installed when
