@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS-Resolver-Mock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-DNS-Resolver-Mock
 Name:           perl-Net-DNS-Resolver-Mock
-Version:        1.20220817
+Version:        1.20230216
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mock a DNS Resolver object for testing
