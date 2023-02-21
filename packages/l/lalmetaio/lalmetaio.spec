@@ -1,7 +1,7 @@
 #
 # spec file for package lalmetaio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
+BuildRequires:  %{python_module py}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
