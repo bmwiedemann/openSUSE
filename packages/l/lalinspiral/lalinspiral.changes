@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 12 06:26:09 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-py BuildRequires to fix tests that fail due to "No
+  module named 'py._path'" errors.
+
+-------------------------------------------------------------------
 Tue Aug 23 23:45:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix multibuild package names.
