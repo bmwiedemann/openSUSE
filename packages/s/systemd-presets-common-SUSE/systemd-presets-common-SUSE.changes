@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  7 07:46:45 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Enable spice-vdagent.service and xdg-user-dirs.service by default
+  (boo#1201728)
+
+-------------------------------------------------------------------
 Thu Dec 15 14:47:15 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Enable systemd-pstore.service by default (jsc#PED-2663) 

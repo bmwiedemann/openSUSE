@@ -222,4 +222,13 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1046098</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>5e34ce7d88373ceeced572eb9e48d80c</srcmd5>
+    <version>15</version>
+    <time>1676990148</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable spice-vdagent.service and xdg-user-dirs.service by default
+  (boo#1201728)</comment>
+    <requestid>1066853</requestid>
+  </revision>
 </revisionlist>
