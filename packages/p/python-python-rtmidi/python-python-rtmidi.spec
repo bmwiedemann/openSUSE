@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rtmidi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Do not support python 3.11 yet, gh#SpotlightKid/python-rtmidi#115
+%define skip_python311 1
 Name:           python-python-rtmidi
 Version:        1.4.9
 Release:        0
@@ -84,7 +85,8 @@ rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/rtmidi
+%{python_sitearch}/python_rtmidi-%{version}*-info
 
 %files %{python_files doc}
 %doc docs/_build/html examples

@@ -81,4 +81,13 @@ Changes:
     instances can run concurently.</comment>
     <requestid>901576</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bce020f59eb3ade9a7b8e191733ecfbe</srcmd5>
+    <version>1.4.9</version>
+    <time>1676990195</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python 3.11, not supported yet gh#SpotlightKid/python-rtmidi#115
+</comment>
+    <requestid>1066960</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 09:57:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip python 3.11, not supported yet gh#SpotlightKid/python-rtmidi#115
+
+-------------------------------------------------------------------
 Wed Jun 23 17:28:07 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.9
