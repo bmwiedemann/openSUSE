@@ -1,0 +1,42 @@
+From 2a4aba966e944210b13d3ae75e24109e092ec760 Mon Sep 17 00:00:00 2001
+From: David Mulder <dmulder@samba.org>
+Date: Thu, 16 Feb 2023 13:58:22 -0700
+Subject: [PATCH] 'Everyone' represented by WKS 'World' S-1-1-0
+
+The SID S-1-1-0 is a group that includes all
+users. `net usershare` expects a SID, not a
+name.
+
+Signed-off-by: David Mulder <dmulder@samba.org>
+---
+ src/shares.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/shares.c b/src/shares.c
+index 47ee7c5..9b549a0 100644
+--- a/src/shares.c
++++ b/src/shares.c
+@@ -358,9 +358,9 @@ add_key_group_to_hashes (GKeyFile *key_file, const char *group)
+ 
+ 	acl = get_string_from_key_file (key_file, group, KEY_ACL);
+ 	if (acl) {
+-		if (strstr (acl, "Everyone:R"))
++		if (strstr (acl, "S-1-1-0:R"))
+ 			is_writable = FALSE;
+-		else if (strstr (acl, "Everyone:F"))
++		else if (strstr (acl, "S-1-1-0:F"))
+ 			is_writable = TRUE;
+ 		else {
+ 			g_message ("unknown format for key '%s/%s' as it contains '%s'.  Assuming that the share is read-only",
+@@ -627,7 +627,7 @@ add_share (ShareInfo *info, GError **error)
+ 	argv[2] = info->share_name;
+ 	argv[3] = info->path;
+ 	argv[4] = info->comment;
+-	argv[5] = info->is_writable ? "Everyone:F" : g_strdup_printf ("Everyone:R,%s:F", g_get_user_name ());
++	argv[5] = info->is_writable ? "S-1-1-0:F" : g_strdup_printf ("S-1-1-0:R,%s:F", g_get_user_name ());
+ 
+ 	if (supports_guest_ok) {
+ 		argv[6] = info->guest_ok ? "guest_ok=y" : "guest_ok=n";
+-- 
+GitLab
+

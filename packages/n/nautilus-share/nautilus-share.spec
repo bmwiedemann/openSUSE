@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-share
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://git.gnome.org/nautilus-share
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM nautilus-share-lang-fix.patch -- Add LINGUAS file to po dir
 Patch:          nautilus-share-lang-fix.patch
+# PATCH-FIX-UPSTREAM 5.patch dmulder@suse.com bsc#1208375 -- 'Everyone' represented by WKS 'World' S-1-1-0
+Patch2:         https://gitlab.gnome.org/coreyberla/nautilus-share/-/merge_requests/5.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

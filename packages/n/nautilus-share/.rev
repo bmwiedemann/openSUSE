@@ -238,4 +238,13 @@
     <comment></comment>
     <requestid>1003779</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>872021a0fe363574c0727f7fa1c5600f</srcmd5>
+    <version>0.7.5</version>
+    <time>1676990140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5.patch: Fix `'net usershare' returned error 255`
+  (bsc#1208375).</comment>
+    <requestid>1066838</requestid>
+  </revision>
 </revisionlist>
