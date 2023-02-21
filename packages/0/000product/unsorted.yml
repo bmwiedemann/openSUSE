@@ -7861,7 +7861,6 @@ unsorted:
   - java-11-openj9-javadoc: [x86_64] 
   - java-11-openj9-jmods: [x86_64] 
   - java-11-openj9-src: [x86_64] 
-  - java-11-openjdk-accessibility 
   - java-11-openjdk-demo 
   - java-11-openjdk-devel 
   - java-11-openjdk-javadoc 
@@ -7890,7 +7889,6 @@ unsorted:
   - java-17-openj9-jmods: [x86_64] 
   - java-17-openj9-src: [x86_64] 
   - java-17-openjdk 
-  - java-17-openjdk-accessibility 
   - java-17-openjdk-demo 
   - java-17-openjdk-devel 
   - java-17-openjdk-headless 
@@ -8685,6 +8683,8 @@ unsorted:
   - kjobwidgets-devel 
   - kjots 
   - kjots-lang 
+  - kjournald 
+  - kjournald-lang 
   - kjs-devel 
   - kjs-devel-lang 
   - kjsembed-devel 
@@ -11026,10 +11026,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_4_1: [x86_64] 
-  - libdeal_II9_4_1-openmpi2: [x86_64] 
-  - libdeal_II9_4_1-openmpi3: [x86_64] 
-  - libdeal_II9_4_1-openmpi4: [x86_64] 
+  - libdeal_II9_4_2: [x86_64] 
+  - libdeal_II9_4_2-openmpi2: [x86_64] 
+  - libdeal_II9_4_2-openmpi3: [x86_64] 
+  - libdeal_II9_4_2-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -23241,6 +23241,7 @@ unsorted:
   - python310-azure-mgmt-storage 
   - python310-azure-mgmt-storagecache 
   - python310-azure-mgmt-storageimportexport 
+  - python310-azure-mgmt-storagemover 
   - python310-azure-mgmt-storagepool 
   - python310-azure-mgmt-storagesync 
   - python310-azure-mgmt-streamanalytics 
@@ -26247,6 +26248,7 @@ unsorted:
   - python311-augeas 
   - python311-authheaders 
   - python311-authres 
+  - python311-autobahn 
   - python311-autocommand 
   - python311-autodocsumm 
   - python311-autoflake 
@@ -26513,6 +26515,7 @@ unsorted:
   - python311-azure-mgmt-storage 
   - python311-azure-mgmt-storagecache 
   - python311-azure-mgmt-storageimportexport 
+  - python311-azure-mgmt-storagemover 
   - python311-azure-mgmt-storagepool 
   - python311-azure-mgmt-storagesync 
   - python311-azure-mgmt-streamanalytics 
@@ -26660,8 +26663,14 @@ unsorted:
   - python311-certbot 
   - python311-certbot-apache 
   - python311-certbot-dns-cloudflare 
+  - python311-certbot-dns-cloudxns 
   - python311-certbot-dns-digitalocean 
+  - python311-certbot-dns-dnsimple 
+  - python311-certbot-dns-dnsmadeeasy 
   - python311-certbot-dns-google 
+  - python311-certbot-dns-linode 
+  - python311-certbot-dns-luadns 
+  - python311-certbot-dns-nsone 
   - python311-certbot-dns-rfc2136 
   - python311-certbot-dns-route53 
   - python311-certbot-nginx 
@@ -26723,6 +26732,7 @@ unsorted:
   - python311-colorful 
   - python311-colorlog 
   - python311-colorlover 
+  - python311-colormap 
   - python311-colorspacious 
   - python311-colour 
   - python311-columnize 
@@ -26754,6 +26764,7 @@ unsorted:
   - python311-coreapi 
   - python311-coreapi-cli 
   - python311-coreschema 
+  - python311-cornice 
   - python311-cov-core 
   - python311-covdefaults 
   - python311-coverage 
@@ -26950,6 +26961,7 @@ unsorted:
   - python311-djet 
   - python311-djvulibre 
   - python311-dkimpy 
+  - python311-dns-lexicon 
   - python311-dnslib 
   - python311-dnspython 
   - python311-doc 
@@ -26970,7 +26982,8 @@ unsorted:
   - python311-dparse 
   - python311-dpcontracts 
   - python311-dpkt 
-  - python311-dqsegdb2: [i586] 
+  - python311-dqsegdb: [x86_64] 
+  - python311-dqsegdb2 
   - python311-dragonmapper 
   - python311-drgn 
   - python311-drms 
@@ -26983,6 +26996,7 @@ unsorted:
   - python311-dukpy-kovidgoyal 
   - python311-dulwich 
   - python311-easy-thumbnails 
+  - python311-easydev 
   - python311-easygui 
   - python311-easypysmb 
   - python311-easywatch 
@@ -27202,7 +27216,7 @@ unsorted:
   - python311-guzzle_sphinx_theme 
   - python311-gvm-tools 
   - python311-gwcs 
-  - python311-gwdatafind: [i586] 
+  - python311-gwdatafind 
   - python311-gwosc 
   - python311-gwyfile 
   - python311-h11 
@@ -27427,6 +27441,7 @@ unsorted:
   - python311-keyring-keyutils 
   - python311-keyring-pass 
   - python311-keyrings.alt 
+  - python311-khal 
   - python311-kismet-rest 
   - python311-kismetdb 
   - python311-kiss-headers 
@@ -27440,6 +27455,7 @@ unsorted:
   - python311-kwant: [x86_64] 
   - python311-l20n 
   - python311-labels 
+  - python311-lal: [x86_64] 
   - python311-lancet-ioam 
   - python311-langdetect 
   - python311-langtable 
@@ -27478,9 +27494,10 @@ unsorted:
   - python311-libvirt-python 
   - python311-license-expression 
   - python311-ligo-lw: [x86_64] 
-  - python311-ligo-segments: [i586] 
+  - python311-ligo-segments 
   - python311-ligotimegps 
   - python311-limnoria 
+  - python311-line_profiler 
   - python311-linecache2 
   - python311-lineup-widget 
   - python311-link-traits 
@@ -27506,6 +27523,8 @@ unsorted:
   - python311-lz4 
   - python311-macholib 
   - python311-magic 
+  - python311-magic-wormhole 
+  - python311-magic-wormhole-mailbox-server 
   - python311-magic-wormhole-transit-relay 
   - python311-magicalimport 
   - python311-mailman3-fedmsg-plugin 
@@ -27563,6 +27582,7 @@ unsorted:
   - python311-minio 
   - python311-misaka 
   - python311-mistune 
+  - python311-mitmproxy 
   - python311-mitmproxy-wireguard 
   - python311-mkdocs 
   - python311-mkdocs-bootstrap 
@@ -27883,6 +27903,7 @@ unsorted:
   - python311-publicsuffix 
   - python311-publicsuffix2 
   - python311-publicsuffixlist 
+  - python311-pudb 
   - python311-pure-eval 
   - python311-pure-sasl 
   - python311-purl 
@@ -28061,6 +28082,10 @@ unsorted:
   - python311-pyquery 
   - python311-pyquil 
   - python311-pyrad 
+  - python311-pyramid 
+  - python311-pyramid-chameleon 
+  - python311-pyramid-mako 
+  - python311-pyreadstat 
   - python311-pyroma 
   - python311-pyroomacoustics 
   - python311-pyroute2 
@@ -28519,6 +28544,7 @@ unsorted:
   - python311-social-auth-app-django 
   - python311-social-auth-core 
   - python311-socketpool 
+  - python311-softlayer 
   - python311-softlayer-zeep 
   - python311-sorl-thumbnail 
   - python311-sortedcollections 
@@ -28722,6 +28748,7 @@ unsorted:
   - python311-twython 
   - python311-txWS 
   - python311-txZMQ 
+  - python311-txaio 
   - python311-txtorcon 
   - python311-typed-ast 
   - python311-typedload 
@@ -28761,6 +28788,7 @@ unsorted:
   - python311-urlextract 
   - python311-urlgrabber 
   - python311-urllib3 
+  - python311-urwid 
   - python311-usbsdmux 
   - python311-user-agents 
   - python311-user_agent 
@@ -29586,6 +29614,7 @@ unsorted:
   - python38-azure-mgmt-storage 
   - python38-azure-mgmt-storagecache 
   - python38-azure-mgmt-storageimportexport 
+  - python38-azure-mgmt-storagemover 
   - python38-azure-mgmt-storagepool 
   - python38-azure-mgmt-storagesync 
   - python38-azure-mgmt-streamanalytics 
@@ -33000,6 +33029,7 @@ unsorted:
   - python39-azure-mgmt-storage 
   - python39-azure-mgmt-storagecache 
   - python39-azure-mgmt-storageimportexport 
+  - python39-azure-mgmt-storagemover 
   - python39-azure-mgmt-storagepool 
   - python39-azure-mgmt-storagesync 
   - python39-azure-mgmt-streamanalytics 
