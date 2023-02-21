@@ -1,7 +1,7 @@
 #
 # spec file for package libcontainers-common
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,45 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.50.1
+%define commonver 0.51.0
 # storagever - version from containers/storage
-%define storagever 1.44.0
+%define storagever 1.45.3
 # imagever - version from containers/image
-%define imagever 5.23.1
+%define imagever 5.24.1
+# skopeover - version from containers/skopeo
+%define skopeover 1.11.1
+# https://github.com/containers/shortnames
+%define shortnamesver 2023.02.20
 Name:           libcontainers-common
-Version:        20221122
+Version:        20230214
 Release:        0
 Summary:        Configuration files common to github.com/containers
-License:        Apache-2.0 AND GPL-3.0-or-later
+License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containers
 Source0:        image-%{imagever}.tar.xz
 Source1:        storage-%{storagever}.tar.xz
 Source2:        LICENSE
-Source3:        policy.json
+# https://raw.githubusercontent.com/containers/skopeo/main/default-policy.json
+Source3:        https://raw.githubusercontent.com/containers/skopeo/v%{skopeover}/default-policy.json#./policy.json
+# https://github.com/containers/storage/blob/main/storage.conf + custom changes
 Source4:        storage.conf
+# heavily modified version of https://github.com/containers/common/blob/main/pkg/subscriptions/mounts.conf
 Source5:        mounts.conf
+# https://raw.githubusercontent.com/containers/image/main/registries.conf with our own registries inserted
 Source6:        registries.conf
+# https://github.com/containers/skopeo/blob/main/default.yaml but heavily modified
 Source7:        default.yaml
 Source8:        common-%{commonver}.tar.xz
+# https://github.com/containers/common/blob/main/pkg/config/containers.conf with custom settings
 Source9:        containers.conf
 Source10:       %{name}.rpmlintrc
-Source11:       shortnames.conf
+Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
 Source12:       container-storage-driver.sh
 BuildRequires:  go-go-md2man
+Requires:       util-linux-systemd
 Requires(post): %{_bindir}/grep
 Requires(post): %{_bindir}/sed
-Requires:       util-linux-systemd
 Requires(post): util-linux-systemd
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}

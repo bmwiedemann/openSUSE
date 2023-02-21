@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 14 13:28:21 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 20230214
+- bump c/storage to 1.45.3
+- bump c/image to 5.24.1
+- bump c/common to 0.51.0
+- containers.conf:
+  * add commented out options containers.read_only,
+    engine.platform_to_oci_runtime, engine.events_container_create_inspect_data,
+    network.volume_plugin_timeout, engine.runtimes.youki, machine.provider
+  * remove deprecated setting containers.userns_size
+  * add youki to engine.runtime_supports_json
+- shortnames.conf: pull in latest upstream version
+- storage.conf: add commented out option storage.transient_store
+- correct license to APACHE-2.0 only (there's no GPLv3 code to be found)
+- add source URLs to spec
+- drop pointless copyright year
+
+-------------------------------------------------------------------
 Wed Jan 25 10:01:49 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Reverts https://build.opensuse.org/request/show/1060361
