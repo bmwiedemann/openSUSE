@@ -16,6 +16,10 @@
 #
 
 
+%global rb_build_versions %{rb_default_ruby}
+%global rb_build_abi %{rb_default_ruby_abi}
+%global rb_ruby_suffix %{rb_default_ruby_suffix}
+%global vagrant_plugin_name vagrant-vbguest
 %define mod_name vagrant-vbguest
 %define mod_full_name %{mod_name}-%{version}
 Name:           vagrant-vbguest

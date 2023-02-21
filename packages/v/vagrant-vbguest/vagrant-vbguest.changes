@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 11:28:48 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Added %global macros for correctly determine the version of ruby.
+
+-------------------------------------------------------------------
 Sat Dec  3 12:38:39 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Update to 0.31.0

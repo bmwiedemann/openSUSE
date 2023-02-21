@@ -7,4 +7,12 @@
     <comment>Update to 0.31.0</comment>
     <requestid>1057137</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e90d4dea7cedf3cf1651176f2cda8f5</srcmd5>
+    <version>0.31.0</version>
+    <time>1676990202</time>
+    <user>dimstar_suse</user>
+    <comment>- Added %global macros for correctly determine the version of ruby.</comment>
+    <requestid>1066982</requestid>
+  </revision>
 </revisionlist>
