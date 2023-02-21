@@ -220,8 +220,6 @@
     <package name="ibus-gtk3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="ibus-gtk4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="ibus-libpinyin" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="ibus-libzhuyin" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -651,7 +649,7 @@
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpinyin-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libpinyin13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libpinyin15" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpipewire-0_3-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -739,10 +737,10 @@
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsoftokn3-hmac" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libsoup-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsoup-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libspandsp3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libspeex1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsqlite3-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -848,7 +846,7 @@
     <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libzhuyin13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libzhuyin15" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libzmf-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
