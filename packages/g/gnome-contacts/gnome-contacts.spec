@@ -32,7 +32,6 @@ BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.40.10
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(clutter-gtk-1.0)
 BuildRequires:  pkgconfig(folks) >= 0.14
 BuildRequires:  pkgconfig(folks-eds) >= 0.11.4
 BuildRequires:  pkgconfig(gee-0.8)

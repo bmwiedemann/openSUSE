@@ -565,4 +565,12 @@
     <comment>New stable release (forwarded request 1064099 from iznogood)</comment>
     <requestid>1064285</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>fb9abde3bf33c4d6f170c45116fcb4b0</srcmd5>
+    <version>43.1</version>
+    <time>1676990136</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1066371 from iznogood)</comment>
+    <requestid>1066814</requestid>
+  </revision>
 </revisionlist>
