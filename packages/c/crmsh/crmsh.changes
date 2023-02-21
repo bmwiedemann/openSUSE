@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 03:11:17 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230221.eb38cb6e:
+  * Dev: utils: Change the way to get pacemaker's version (bsc#1208216)
+
+-------------------------------------------------------------------
 Fri Feb 17 09:28:33 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230217.7fe11a5c:
