@@ -1,7 +1,7 @@
 #
 # spec file for package ardour
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define dirbase ardour7
 Name:           ardour
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -144,6 +144,11 @@ chmod -x ./doc/*.txt
 find . -name wscript -o -name waf -o -name '*.py' \
   | xargs sed -i -e '1{s|^#!.*python$|#!/usr/bin/python3|}'
 
+# Also search vst3 plugins from /usr/lib64 on relevant archs
+%ifnarch %{ix86} %{arm}
+sed -i 's#/usr/local/lib/vst3:/usr/lib/vst3#/usr/local/lib64/vst3:/usr/local/lib/vst3:/usr/lib64/vst3:/usr/lib/vst3#' libs/ardour/plugin_manager.cc
+sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vst:/usr/lib64/vst:/usr/lib/vst#' libs/ardour/search_paths.cc
+%endif
 
 %build
 ./waf configure \
