@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:00:00 UTC 2023 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202302:
+  * pcm-accel: support monitoring of Intel QuickAssist Technology (QAT) performance metrics
+  * grafana: support grafana dashboards with multiple hosts (with host selector) and fix UPI charts
+  * grafana: added dram pmem bandwidth and their ratio to grafana charts
+  * added python script to automate the generation of summary reports from pcm csv
+  * added backtrace info with signal SEGV for better debugability
+  * pcm-pcie: fix issues with delay parameter
+  * pcm-raw: validate counter event restrictions
+  * pcm-raw: initial support of hybrid cpus
+  * added LLCRDMISSLAT metric support for SPR
+  * added support for Gemini Lake
+  * added support memory bandwidth metrics for more ADL&TGL CPU models
+  * added systemd unit for Linux systems
+  * pcm-sensor-server: enhanced error handling in close, setSocket and sync calls
+  * avoid using errata events on older processors
+  * pcm-sensor-server: implement -force-rtm-abort-mode option
+
+-------------------------------------------------------------------
 Fri Dec 23 11:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202212:
