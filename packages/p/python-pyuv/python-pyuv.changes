@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 09:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip build for python 3.11, not supported yet
+
+-------------------------------------------------------------------
 Wed Jun 22 14:31:39 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Fix build with Python 3.10

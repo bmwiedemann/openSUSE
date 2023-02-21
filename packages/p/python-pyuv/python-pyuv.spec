@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyuv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python311 1
 Name:           python-pyuv
 Version:        1.4.0
 Release:        0
@@ -80,6 +80,7 @@ mv .pyuv pyuv
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyuv
+%{python_sitearch}/pyuv-%{version}*-info
 
 %changelog

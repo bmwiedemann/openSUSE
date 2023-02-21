@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>984614</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1cb7e9fcb0400e485627fe6d74b3c353</srcmd5>
+    <version>1.4.0</version>
+    <time>1676990187</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip build for python 3.11, not supported yet
+</comment>
+    <requestid>1066943</requestid>
+  </revision>
 </revisionlist>
