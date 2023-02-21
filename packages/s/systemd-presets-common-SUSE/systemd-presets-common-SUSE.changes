@@ -42,7 +42,7 @@ Tue Feb  1 19:07:53 UTC 2022 - Kirk Allan <kallan@suse.com>
 Fri Nov  5 10:54:01 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace the pipewire-media-session preset with a wireplumber
-  user service preset to enable it by default.
+  user service preset to enable it by default (bsc#1200485).
 
 -------------------------------------------------------------------
 Thu Oct  7 22:42:44 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>

@@ -231,4 +231,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
   (boo#1201728)</comment>
     <requestid>1066853</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>f067e6e9a0556618597dc68bea15f5bb</srcmd5>
+    <version>15</version>
+    <time>1677166110</time>
+    <user>dimstar_suse</user>
+    <comment>user service preset to enable it by default (bsc#1200485). (forwarded request 1067317 from favogt)</comment>
+    <requestid>1067318</requestid>
+  </revision>
 </revisionlist>
