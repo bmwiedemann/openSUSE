@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 18 03:06:34 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-OLE-Storage_Lite/Changes
+
+
+  0.21 Fri Feb 17 2020
+      + Fix for Spreadsheet::ParseExcel break due to the previous change in
+        v0.20.  https://github.com/jmcnamara/ole-storage-lite/pull/4
+  0.20 Wed Feb 15 2020
+      + Added performance improvement of 95+ percent on certain complex
+        messages. Patch from Todd Richmond.
+        https://github.com/jmcnamara/ole-storage-lite/pull/4
+
+-------------------------------------------------------------------
 Tue Jan  7 15:34:51 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Add manual license to cpanspec.yml.
