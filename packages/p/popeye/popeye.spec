@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           popeye
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        A Kubernetes cluster resource sanitizer
 License:        Apache-2.0
