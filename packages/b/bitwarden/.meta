@@ -1,0 +1,7 @@
+<package name="bitwarden" project="openSUSE:Factory">
+  <title>Bitwarden</title>
+  <description>Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault.  Bitwarden offers a cloud-hosted service as well as the ability to deploy the solution on-premises. This package provides the GUI client.
+</description>
+  <devel project="devel:languages:nodejs" package="bitwarden"/>
+  <url>https://bitwarden.com/</url>
+</package>

@@ -1,0 +1,167 @@
+Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscripten to compile and does not have source included in the tarball, while the first allows use to use the already installed system libargon2
+
+--- bitwarden/apps/desktop/webpack.main.js.old	2023-02-15 19:02:44.000000000 +0100
++++ bitwarden/apps/desktop/webpack.main.js	2023-02-18 18:42:54.917063925 +0100
+@@ -73,7 +73,6 @@
+         "./src/package.json",
+         { from: "./src/images", to: "images" },
+         { from: "./src/locales", to: "locales" },
+-        "../../node_modules/argon2-browser/dist/argon2.wasm",
+       ],
+     }),
+     new EnvironmentPlugin({
+@@ -84,6 +83,8 @@
+   externals: {
+     "electron-reload": "commonjs2 electron-reload",
+     "@bitwarden/desktop-native": "commonjs2 @bitwarden/desktop-native",
++    "argon2": "commonjs2 argon2",
++    "@phc/format": "commonjs2 @phc/format",
+   },
+ };
+ 
+--- bitwarden/apps/desktop/webpack.renderer.js.old	2023-02-15 19:02:44.000000000 +0100
++++ bitwarden/apps/desktop/webpack.renderer.js	2023-02-18 18:41:53.074156675 +0100
+@@ -40,11 +40,6 @@
+         },
+         type: "asset/resource",
+       },
+-      {
+-        test: /\.wasm$/,
+-        loader: "base64-loader",
+-        type: "javascript/auto",
+-      },
+     ],
+   },
+   plugins: [],
+@@ -127,11 +122,6 @@
+         test: /[\/\\]@angular[\/\\].+\.js$/,
+         parser: { system: true },
+       },
+-      {
+-        test: /\.wasm$/,
+-        loader: "base64-loader",
+-        type: "javascript/auto",
+-      },
+     ],
+   },
+   plugins: [
+@@ -162,6 +152,10 @@
+       DEV_FLAGS: NODE_ENV === "development" ? envConfig.devFlags : {},
+     }),
+   ],
++  externals: {
++    "argon2": "commonjs2 argon2",
++    "@phc/format": "commonjs2 @phc/format",
++  },
+ };
+ 
+ module.exports = merge(common, renderer);
+--- bitwarden/apps/desktop/src/package.json.old	2023-02-15 19:02:44.000000000 +0100
++++ bitwarden/apps/desktop/src/package.json	2023-02-18 18:54:55.213046618 +0100
+@@ -12,6 +12,7 @@
+     "url": "git+https://github.com/bitwarden/clients.git"
+   },
+   "dependencies": {
++    "argon2": "^0.30.3",
+     "@bitwarden/desktop-native": "file:../desktop_native"
+   }
+ }
+--- bitwarden/libs/common/src/services/webCryptoFunction.service.ts.old	2023-02-15 19:02:44.000000000 +0100
++++ bitwarden/libs/common/src/services/webCryptoFunction.service.ts	2023-02-18 18:52:00.173567051 +0100
+@@ -1,4 +1,4 @@
+-import * as argon2 from "argon2-browser";
++import * as argon2 from "argon2";
+ import * as forge from "node-forge";
+ 
+ import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
+@@ -9,13 +9,11 @@
+ export class WebCryptoFunctionService implements CryptoFunctionService {
+   private crypto: Crypto;
+   private subtle: SubtleCrypto;
+-  private wasmSupported: boolean;
+ 
+   constructor(win: Window | typeof global) {
+     this.crypto = typeof win.crypto !== "undefined" ? win.crypto : null;
+     this.subtle =
+       !!this.crypto && typeof win.crypto.subtle !== "undefined" ? win.crypto.subtle : null;
+-    this.wasmSupported = this.checkIfWasmSupported();
+   }
+ 
+   async pbkdf2(
+@@ -52,23 +50,19 @@
+     memory: number,
+     parallelism: number
+   ): Promise<ArrayBuffer> {
+-    if (!this.wasmSupported) {
+-      throw "Webassembly support is required for the Argon2 KDF feature.";
+-    }
+-
+-    const passwordArr = new Uint8Array(this.toBuf(password));
+-    const saltArr = new Uint8Array(this.toBuf(salt));
++    const nodePassword = this.toNodeValue(password);
++    const nodeSalt = this.toNodeBuffer(this.toArrayBuffer(salt));
+ 
+-    const result = await argon2.hash({
+-      pass: passwordArr,
+-      salt: saltArr,
+-      time: iterations,
+-      mem: memory,
++    const hash = await argon2.hash(nodePassword, {
++      salt: nodeSalt,
++      raw: true,
++      hashLength: 32,
++      timeCost: iterations,
++      memoryCost: memory,
+       parallelism: parallelism,
+-      hashLen: 32,
+-      type: argon2.ArgonType.Argon2id,
++      type: argon2.argon2id,
+     });
+-    return result.hash;
++    return this.toArrayBuffer(hash);
+   }
+ 
+   async hkdf(
+@@ -383,20 +377,28 @@
+     return algorithm === "sha1" ? "SHA-1" : algorithm === "sha256" ? "SHA-256" : "SHA-512";
+   }
+ 
+-  // ref: https://stackoverflow.com/a/47880734/1090359
+-  private checkIfWasmSupported(): boolean {
+-    try {
+-      if (typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function") {
+-        const module = new WebAssembly.Module(
+-          Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00)
+-        );
+-        if (module instanceof WebAssembly.Module) {
+-          return new WebAssembly.Instance(module) instanceof WebAssembly.Instance;
+-        }
+-      }
+-    } catch {
+-      return false;
++// from libs/node/src/services/node-crypto-function.service.ts
++  private toNodeValue(value: string | ArrayBuffer): string | Buffer {
++    let nodeValue: string | Buffer;
++    if (typeof value === "string") {
++      nodeValue = value;
++    } else {
++      nodeValue = this.toNodeBuffer(value);
++    }
++    return nodeValue;
++  }
++
++  private toNodeBuffer(value: ArrayBuffer): Buffer {
++    return Buffer.from(new Uint8Array(value) as any);
++  }
++
++  private toArrayBuffer(value: Buffer | string | ArrayBuffer): ArrayBuffer {
++    let buf: ArrayBuffer;
++    if (typeof value === "string") {
++      buf = Utils.fromUtf8ToArray(value).buffer;
++    } else {
++      buf = new Uint8Array(value).buffer;
+     }
+-    return false;
++    return buf;
+   }
+ }

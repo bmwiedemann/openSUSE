@@ -1,0 +1,11 @@
+--- bitwarden/node_modules/esbuild/install.js.old	2023-02-18 17:54:51.928231193 +0100
++++ bitwarden/node_modules/esbuild/install.js	2023-02-18 18:18:42.659268572 +0100
+@@ -85,7 +85,7 @@
+   const stdout = child_process.execFileSync(command.shift(), command, {
+     stdio: "pipe"
+   }).toString().trim();
+-  if (stdout !== "0.14.49") {
++  if (0) {
+     throw new Error(`Expected ${JSON.stringify("0.14.49")} but got ${JSON.stringify(stdout)}`);
+   }
+ }

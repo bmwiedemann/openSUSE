@@ -1,0 +1,21 @@
+Fonts in general-purpose formats such as Type1, OpenType TT (TTF) or OpenType CFF (OTF) are subject to specific openSUSE:Packaging_Fonts, and should never be packaged in a private application directory instead of the system-wide font repositories.
+
+--- a/libs/angular/src/scss/bwicons/styles/style.scss
++++ b/libs/angular/src/scss/bwicons/styles/style.scss
+@@ -2,16 +2,6 @@
+ $icomoon-font-path: "~@bitwarden/angular/src/scss/bwicons/fonts/" !default;
+ 
+ // New font sheet? Update the font-face information below
+-@font-face {
+-  font-family: "#{$icomoon-font-family}";
+-  src: url($icomoon-font-path + "bwi-font.svg") format("svg"),
+-    url($icomoon-font-path + "bwi-font.ttf") format("truetype"),
+-    url($icomoon-font-path + "bwi-font.woff") format("woff"),
+-    url($icomoon-font-path + "bwi-font.woff2") format("woff2");
+-  font-weight: normal;
+-  font-style: normal;
+-  font-display: block;
+-}
+ 
+ // Base Class
+ .bwi {

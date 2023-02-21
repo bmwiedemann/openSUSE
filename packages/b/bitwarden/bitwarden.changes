@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Sat Feb 18 21:37:59 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Remove use of local-npm-proxy and cleanup tarball from prebuilt blobs
+  * remove-esbuild-version-check.patch
+- Replace argon2-browser which was not built from source with node-argon2
+  * use-node-argon2.patch
+  * argon2-binary-path.patch
+  * system-libargon2.patch
+- Do not use napi-rs, instead run cargo manually.
+  * this gets us past the current build error on riscv, but there are further problems
+- Use electron-node for building again as we ship a C module now (still ABI-stable tho)
+- Replace bug reporting menu option with a link to openSUSE's bugzilla.
+  * bug-reporting-url.patch
+
+-------------------------------------------------------------------
+Fri Feb 17 16:37:23 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.2.0
+  * Expand passwordless login support to desktop and add login with device option
+  * Add login request notifications
+  * When creating a master password at account creation, users will now be able to check if their selected master password has been in any data breeches via the Have I Been Pwned? API
+  * Expand title with “Mx“ option on an identity item
+  * Bug fix for cloning organizational items
+
+-------------------------------------------------------------------
+Wed Jan 11 16:23:02 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.1.0
+  * Bug fix for password generator not updating after settings change
+  * Re-order settings for browser integrations
+  * Change forwarded email providers to dropdown
+  * Add hidden password character count toggle to item modal
+  * Manage zoom factor when opening / closing the application
+  * Tweak disclosure widget design
+  * Accessibility: tweak left-hand filters
+  * Fix inconsistent line height in cipher box footer
+  * Accessibility: Make username regenerator button same as password one
+- Do not Require: electron(abi), as the Rust plugin
+  only uses stable ABIs and its build process does not even look at Electron headers.
+
+-------------------------------------------------------------------
+Wed Jan  4 23:57:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Fix npm crash causing broken RPMs (missing files) getting built
+- Correct wrong cpu tuning for rust code on ix86
+- Remove hardcoded list of architectures from desktop_native-rust-arch.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 20:57:18 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2022.12.0
+  * no changelog given by upstream
+
+-------------------------------------------------------------------
+Tue Nov 29 19:59:27 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2022.11.0
+  * Updated login flow that splits username and master password into separate pages
+  * Updated styles for selects and form groups for accessibility
+  * Add folder to item view
+  * explicitly define themed text ::selection styles
+  * Add Duckduckgo’s email forwarding service
+  * Display creation date in vault item history
+
+-------------------------------------------------------------------
+Mon Oct 24 17:15:24 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2022.10.1
+  * Correct a visual bug involving truncation of ciphers.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:25:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2022.10.0
+  * DuckDuckGo browser integration
+  * Added DuckDuckGo to forwarded email providers list
+  * Updated error message for missing master password
+  * Enable Arabic support
+  * Make all item fields (except linked fields) draggable
+  * Don’t prevent whitespace wrapping in links/buttons, widen desktop pages
+
+
+-------------------------------------------------------------------
+Mon Oct  3 05:14:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Fix unsatisfiable requirment on Fedora
+
+-------------------------------------------------------------------
+Thu Sep 15 17:14:43 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.9.1
+- New upstream release 2022.9.1
+  * no user-visible changes
+
+-------------------------------------------------------------------
+Wed Sep  7 18:48:17 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.9.0
+- New upstream release 2022.9.0
+  * Major rewrite of the application in Rust.
+
+-------------------------------------------------------------------
+Fri Aug 12 21:42:04 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.8.1
+- New upstream release 2022.8.1
+  * Add ability to delete user account
+- New upstream release 2022.8.0
+  * Names and descriptions of some app settings and preferences have been updated to be more intuitive.
+  * Updates to Captcha styling
+  * Suppress user-select for most interface elements
+  * Bug fix to allow search with one letter
+- Use electron instead of node to run NPM to fix build on Rawhide
+
+-------------------------------------------------------------------
+Tue Jul 12 05:04:31 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.6.2
+- New upstream release 2022.6.2
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Wed Jun 29 17:31:20 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.6.0
+- New upstream release 2022.6.0
+  * Vault timeout fix that requires a minimum of 1 min lockout
+
+-------------------------------------------------------------------
+Sat Jun  4 14:43:35 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Do not use electron-builder, instead install dependencies manually
+- Replace remove-postinstallscript.patch with more comprehensive remove-unnecessary-deps.patch to trim down unnecessary vendored deps
+
+-------------------------------------------------------------------
+Thu Jun  2 09:39:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.05.0
+- New upstream URL and changed tarball structure (upstream migrated to monorepo)
+- New upstream release
+  * no changelog provided
+- Remove patches applied upstream
+  * Fix-incompatible-keytar-versions.patch
+  * Security-upgrade-keytar.patch
+- Regenerate package-lock.json
+  * async: 0.9.2 -> 3.2.3
+  * caniuse-lite: 1.0.30001325 -> 1.0.30001327
+  * ejs: 3.1.6 -> 3.1.7
+  * filelist: 1.0.2 -> 1.0.3
+  * jake: 10.8.4 -> 10.8.5
+  * keytar: 7.8.0 -> 7.9.0
+  * Added deps: brace-expansion 2.0.1, minimatch 5.0.1
+  * Lots of removed deps
+
+-------------------------------------------------------------------
+Sun May 29 16:16:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Remove spurious `prebuild-install` copy and other dev files from the package.
+
+-------------------------------------------------------------------
+Mon May  2 14:14:41 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- [LEGAL] Do not use vendored app-builder binary which has no corresponding source
+- Patch electron-rebuild to remove unused lzma-native dependency
+
+-------------------------------------------------------------------
+Mon Apr 25 20:44:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.33.0
+- New upstream release
+  * Accessibility update on “Generator” to announce slider element when clicked with assistive technologies
+- Update jslib
+- Regenerate package-lock.json
+  * too many changes to list
+
+-------------------------------------------------------------------
+Fri Apr  8 16:14:13 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Remove remove-windows-security-credentials.patch and replace it with a proper fix
+
+-------------------------------------------------------------------
+Thu Apr  7 17:47:46 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Use woff font instead of woff2 because woff2 support removed in Electron 18
+- Mark package as binary compatible with Electron 17.0 – 18.x
+
+-------------------------------------------------------------------
+Thu Mar 17 12:00:59 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Disallow installing on earlier electron version than the one the RPM was built with.
+
+-------------------------------------------------------------------
+Wed Mar 16 19:54:35 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.32.0
+- New upstream release
+  * Introduce captcha upon 5 failed login attempts
+- Update jslib
+- Regenerate package-lock.json
+  * tslint has been replaced by eslint
+
+-------------------------------------------------------------------
+Tue Feb 15 16:28:44 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.3
+- New upstream release
+  * No user visible changes.
+- Update jslib
+- Regenerate package-lock.json:
+  * keytar/node_modules/detect-libc 2.0.0 -> 2.0.1
+- Add URL scheme handler to desktop file to follow upstream packages.
+
+-------------------------------------------------------------------
+Sun Feb 13 15:42:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.2
+- Add Security-upgrade-keytar.patch
+  * SNYK-JS-SIMPLEGET-2361683 / CVE-2022-0355
+    Exposure of Sensitive Information to an Unauthorized Actor in NPM simple-get prior to 4.0.1.
+- Add Fix-incompatible-keytar-versions.patch because snyk bot is stupid
+- Regenerate package-lock.json:
+  * keytar                               7.7.0  -> 7.8.0
+  * keytar/node_modules/detect-libc      (none) -> 2.0.0
+  * keytar/node_modules/node_abi         2.30.1 -> (none)
+  * keytar/node_modules/node_addon_api   3.2.1  -> 4.3.0
+  * keytar/node_modules/prebuild-install 6.1.4  -> 7.0.1
+  * keytar/node_modules/semver           5.7.1  -> (none)
+  * keytar/node_modules/simple-get       (none) -> 4.0.1
+
+-------------------------------------------------------------------
+Sat Feb 12 11:42:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.2
+- New upstream release
+  * No user visible changes.
+- Update jslib
+
+-------------------------------------------------------------------
+Fri Feb 11 20:43:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.1
+- New upstream release
+  * No user visible changes.
+- Update jslib
+- Regenerate package-lock.json
+  * No changes in dependencies.
+
+-------------------------------------------------------------------
+Fri Feb 11 14:47:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.0
+- New upstream release
+  * Account switching!
+  * Icon updates
+  * UX improvements
+  * Various security and bug fixes
+- Update jslib
+- Remove patches applied upstream:
+  * bump-node-to-16.patch
+  * bump-node-to-16-jslib.patch
+- Adjust patches to upstream changes:
+  * fix-desktop-file.patch
+  * remove-windows-security-credentials.patch
+- Remove patch which no longer applies:
+  * remove-bundled-fontawesome.patch
+- Remove dependency on fontawesome (not used anymore)
+- Add do-not-install-font-privately.patch
+- Regenerate package-lock.json
+  * Too many changes to list, mainly because upstream bumped recommended Node and Electron versions.
+
+-------------------------------------------------------------------
+Fri Jan 28 15:25:25 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30.0
+- Clean up spec file
+- Adjust bump-node-to-16.patch to more closely match upstream and avoid dependency mismatch
+- Use nodejs-electron-devel instead of providing vendored headers
+- Regenerate package-lock.json:
+  * @types/node                                       16.11.17 -> 16.11.21
+  * jslib/{common,electron}/node_modules/@types/node  14.18.2  -> (none)
+  * electron/node_modules/@types/node                 14.18.2  -> 14.18.9
+  * @nodert-win10-rs4/windows.security.credentials.ui 0.4.4    -> (none)
+
+-------------------------------------------------------------------
+Tue Dec 28 00:00:00 UTC 2021 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30.0
+- Initial version
+- Inspired by the Arch Linux package by prozum
+- Bump node version to 16 per upstream commit https://github.com/bitwarden/desktop/commit/5865f08b37d688ee057e82dd7acf90641b1978f5

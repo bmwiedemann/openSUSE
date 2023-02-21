@@ -1,0 +1,62 @@
+--- bitwarden/node_modules/argon2/binding.gyp.old	2023-02-18 10:39:01.221224062 +0100
++++ bitwarden/node_modules/argon2/binding.gyp	2023-02-18 10:54:05.873323234 +0100
+@@ -13,7 +13,7 @@
+       "Release": {
+         "target_conditions": [
+           ["OS != 'win'", {
+-            "cflags+": ["-fdata-sections", "-ffunction-sections", "-fvisibility=hidden"],
++            "cflags+": ["-fvisibility=hidden"],
+             "ldflags+": ["-Wl,--gc-sections"]
+           }]
+         ],
+@@ -22,26 +22,7 @@
+     }
+   },
+   "targets": [
+-    {
+-      "target_name": "libargon2",
+-      "sources": [
+-        "argon2/src/argon2.c",
+-        "argon2/src/core.c",
+-        "argon2/src/blake2/blake2b.c",
+-        "argon2/src/thread.c",
+-        "argon2/src/encoding.c",
+-      ],
+-      "cflags+": ["-Wno-type-limits"],
+-      "conditions": [
+-        ["target_arch == 'ia32' or target_arch == 'x64'", {
+-          "cflags+": ["-msse", "-msse2"],
+-          "sources+": ["argon2/src/opt.c"]
+-        }, {
+-          "sources+": ["argon2/src/ref.c"]
+-        }]
+-      ],
+-      "type": "static_library"
+-    }, {
++{
+       "target_name": "<(module_name)",
+       "xcode_settings": {
+         "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
+@@ -57,7 +38,12 @@
+       ],
+       "cflags_cc!": ["-fno-exceptions"],
+       "include_dirs": ["<!@(node -p \"require('node-addon-api').include\")"],
+-      "dependencies": ["libargon2"],
++      "cflags": [
++        "<!@(pkg-config libargon2 --cflags)",
++      ],
++      "libraries": [
++        "<!@(pkg-config libargon2 --libs)",
++      ],
+       "configurations": {
+         "Debug": {
+           "conditions": [
+--- bitwarden/node_modules/argon2/argon2.cpp.old	2023-02-18 10:39:00.524876063 +0100
++++ bitwarden/node_modules/argon2/argon2.cpp	2023-02-18 10:58:23.321982987 +0100
+@@ -1,5 +1,5 @@
+ 
+-#include "argon2/include/argon2.h"
++#include <argon2.h>
+ #include <cassert>
+ #include <cstdint>
+ #include <napi.h>

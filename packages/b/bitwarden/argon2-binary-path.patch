@@ -1,0 +1,25 @@
+Remove dependency on node-pre-gyp which brings a lot of garbage
+
+--- bitwarden/node_modules/argon2/argon2.js.old	2023-02-18 17:54:54.041287237 +0100
++++ bitwarden/node_modules/argon2/argon2.js	2023-02-18 19:49:49.145206908 +0100
+@@ -3,9 +3,8 @@
+ const { randomBytes, timingSafeEqual } = require("crypto");
+ const path = require("path");
+ const { promisify } = require("util");
+-const binary = require("@mapbox/node-pre-gyp");
+ 
+-const bindingPath = binary.find(path.resolve(__dirname, "./package.json"));
++const bindingPath = "./lib/binding/napi-v3/argon2.node"
+ const { hash: _hash } = require(bindingPath);
+ 
+ const { deserialize, serialize } = require("@phc/format");
+--- bitwarden/node_modules/argon2/package.json.old	2023-02-18 17:54:54.141337239 +0100
++++ bitwarden/node_modules/argon2/package.json	2023-02-18 19:51:32.473209049 +0100
+@@ -46,7 +46,6 @@
+   },
+   "homepage": "https://github.com/ranisalt/node-argon2#readme",
+   "dependencies": {
+-    "@mapbox/node-pre-gyp": "^1.0.10",
+     "@phc/format": "^1.0.0",
+     "node-addon-api": "^5.0.0"
+   },
