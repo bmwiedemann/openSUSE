@@ -4250,4 +4250,14 @@ Other Notable Changes
     <comment></comment>
     <requestid>1042232</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a19edc043010316bffa6ed13af5b8b75</srcmd5>
+    <version>1.38.1</version>
+    <time>1676990192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.38.1 (go.d.plugin 0.51.0)
+  See https://github.com/netdata/netdata/releases/tag/v1.38.0
+  and https://github.com/netdata/netdata/releases/tag/v1.38.1</comment>
+    <requestid>1066952</requestid>
+  </revision>
 </revisionlist>
