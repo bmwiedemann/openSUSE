@@ -118,4 +118,14 @@
     <comment></comment>
     <requestid>1066715</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>97ba52e718dd86a9adfc47d1b2d360ae</srcmd5>
+    <version>2.3.5</version>
+    <time>1676990211</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't disable whole 3.11 build, just skip tests. Package builds
+  and works, it is just slower.
+</comment>
+    <requestid>1067009</requestid>
+  </revision>
 </revisionlist>

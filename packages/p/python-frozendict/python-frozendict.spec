@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# as of 2.3.5: if you want to enable 3.11 you would need to disable the C extension test for 3.11 otherwise the build will fails in %check
-%define skip_python311 1
 # Do not enable multibuild unless seriously necessary, it in
 # combination with arch is a right mess!
 Name:           python-frozendict
@@ -53,12 +50,13 @@ dictionaries where immutability is desired.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch
+# Temporary measure until gh#Marco-Sulla/python-frozendict#68
+%pytest_arch -k 'not test_c_extension'
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitearch}/frozendict-%{version}-py*.egg-info/
+%{python_sitearch}/frozendict-%{version}*-info
 %{python_sitearch}/frozendict
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:26:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't disable whole 3.11 build, just skip tests. Package builds
+  and works, it is just slower.
+
+-------------------------------------------------------------------
 Mon Feb 20 05:10:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable python 3.11 until it is supported by the C extension
