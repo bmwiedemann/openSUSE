@@ -701,7 +701,6 @@
     <package name="gpg2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gpgme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="gprofng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="gptfdisk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grantleetheme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -853,8 +852,6 @@
     <package name="ibus-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-gtk4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="ibus-libpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="ibus-libzhuyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2281,7 +2278,7 @@
     <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libphonon4qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpinyin-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpinyin13" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpinyin15" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpipeline1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libpipewire-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2488,10 +2485,10 @@
     <package name="libsoftokn3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libsoup-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoup-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libsource-highlight4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsoxr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libspandsp3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2736,7 +2733,7 @@
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzhuyin13" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libzhuyin15" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzio1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzip5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libzmf-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
