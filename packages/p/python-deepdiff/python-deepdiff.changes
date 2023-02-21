@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 21 02:29:55 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v6.2.3
+  * Switching to Orjson for serialization to improve the performance.
+  * Setting equal_nan=ignore_nan_inequality in the call for np.array_equal
+  * Using Pytest's tmp_path fixture instead of /tmp/
+- from 6.2.2
+  * Enum test fix for python 3.11
+  * Adding support for dateutils rrules
+- from v6.2.1
+  * Removed the print statements.
+- from v6.2.0
+  * Major improvement in the diff report for lists when items are all
+    hashable and the order of items is important.
+- from v6.1.0
+  * DeepDiff.affected_paths can be used to get the list of all paths
+    where a change, addition, or deletion was reported for.
+  * DeepDiff.affected_root_keys can be used to get the list of all
+    paths where a change, addition, or deletion was reported for.
+  * Bugfix: ValueError when using Decimal 0.x
+  * Serialization of UUID
+- from v6.0.0
+  * Exclude obj callback strict parameter is added to DeepDiff
+    A fix for diffing using iterable_compare_func with nested objects
+
+-------------------------------------------------------------------
 Thu Sep  8 08:48:08 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update minimum dependency ordered-set >= 4.1.0

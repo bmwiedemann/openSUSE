@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepdiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-deepdiff
-Version:        5.8.1
+Version:        6.2.3
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
@@ -29,21 +29,24 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module ordered-set >= 4.1.0 with %python-ordered-set < 4.2}
+BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 #BuildRequires:  %%{python_module clevercsv} # not available
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       (python-ordered-set >= 4.1.0 with python-ordered-set < 4.2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires:       (python-ordered-set >= 4.1.0 with python-ordered-set < 4.2)
-Recommends:     python-clevercsv
+Recommends:     python-PyYAML
 Recommends:     python-click
 Recommends:     python-jsonpickle
 Recommends:     python-numpy
-Recommends:     python-pyyaml
+Recommends:     python-orjson
 Recommends:     python-toml
+#Suggests:     python-clevercsv
 BuildArch:      noarch
 %python_subpackages
 
