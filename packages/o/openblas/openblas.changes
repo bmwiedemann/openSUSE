@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 14 18:14:06 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Make sure pre-existing (arch-independent) update-alternatives
+  are wiped before registering new ones.
+  Since update-alternatives has no reliable way to check if
+  a certain 'generic name' exists, brute-force it and ignore
+  any error (boo#1208248).
+- Remove totally pointless - ie. never executed - %%posttrans
+  script.
+- Restore generic link for update-alternatives. This is usually
+  set by the update-alternatives and it is '%ghost'ed but rpmlint
+  complains.
+- Add rpmlintrc rules to avoid false positives from consistently
+  guessing the update-alternatives generic name wrong.
+- Make arch dependent generic names conditional.
+
+-------------------------------------------------------------------
 Fri Feb  3 07:52:04 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Do not set LIBNAMESUFFIX to mark different flavors as this causes

@@ -632,4 +632,24 @@
   Create remaining links %post scripts properly %ghost-ing the files. (forwarded request 1063627 from eeich)</comment>
     <requestid>1063744</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>c127293fff41103a961d244977659192</srcmd5>
+    <version>0.3.21</version>
+    <time>1676990132</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure pre-existing (arch-independent) update-alternatives
+  are wiped before registering new ones.
+  Since update-alternatives has no reliable way to check if
+  a certain 'generic name' exists, brute-force it and ignore
+  any error (boo#1208248).
+- Remove totally pointless - ie. never executed - %%posttrans
+  script.
+- Restore generic link for update-alternatives. This is usually
+  set by the update-alternatives and it is '%ghost'ed but rpmlint
+  complains.
+- Add rpmlintrc rules to avoid false positives from consistently
+  guessing the update-alternatives generic name wrong.
+- Make arch dependent generic names conditional.</comment>
+    <requestid>1066744</requestid>
+  </revision>
 </revisionlist>

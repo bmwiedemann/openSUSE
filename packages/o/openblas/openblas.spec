@@ -25,6 +25,10 @@
 
 %bcond_with ringdisabled
 
+%if 0%{?suse_version} > 1500
+%define a_x _%{_arch}
+%endif
+
 %if "%flavor" == ""
 %define package_name %{pname}
 ExclusiveArch:  do_not_build
@@ -186,6 +190,7 @@ URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
+Source3:        openblas.rpmlintrc
 Patch1:         Use-blasint-for-INTERFACE64-compatibility.patch
 Patch2:         remove-spurious-loops.patch
 Patch101:       Link-library-with-z-noexecstack.patch
@@ -451,12 +456,15 @@ find -name \*.f -exec chmod 644 {} +
 #  /usr/lib64/libopenblas.so -> libopenblas.so.<so_v>
 
 install -d %{buildroot}/%{_sysconfdir}/alternatives
+for link in openblas-default libblas.so.3 liblapack.so.3 libcblas.so.3 liblapacke.so.3; do
+    ln -s %{_sysconfdir}/alternatives/${link}%{?a_x} %{buildroot}/%{_libdir}/${link}
+done
 
 %if 0%{?build_devel}
 install -d %{buildroot}%{_libdir}/pkgconfig/
-ln -s %{_sysconfdir}/alternatives/openblas-default_%{_arch}/pkgconfig/openblas.pc %{buildroot}%{_libdir}/pkgconfig/
+ln -s %{_sysconfdir}/alternatives/openblas-default%{?a_x}/pkgconfig/openblas.pc %{buildroot}%{_libdir}/pkgconfig/
 install -d %{buildroot}/%{_libdir}/cmake
-ln -s %{_sysconfdir}/alternatives/openblas-default_%{_arch}/cmake/openblas %{buildroot}/%{_libdir}/cmake/
+ln -s %{_sysconfdir}/alternatives/openblas-default%{?a_x}/cmake/openblas %{buildroot}/%{_libdir}/cmake/
 %endif
 
 %else # with hpc
@@ -513,13 +521,16 @@ d=%{_libdir}/cmake/openblas
     && { n=$(mktemp -d $(dirname $d)/tmpd-XXXXX); mv $d $n; rm -rf $n; } || true
 
 %post -n lib%{name}%{so_v}
+# There's no way to determine if a setting exists, so just remove it and ignore errors
+%{?a_x:%{_sbindir}/update-alternatives --remove-all openblas-default 2>/dev/null || true}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/openblas-default openblas-default_%{_arch} %{p_libdir} %openblas_so_prio
+   %{_libdir}/openblas-default openblas-default%{?a_x} %{p_libdir} %openblas_so_prio
 # Cannot package this link - brp-25-symlink doesn't recognize links created by update-alternatives
 ln -sf openblas-default/lib%{pname}.so.%{so_v} %{_libdir}/lib%{pname}.so.%{so_v}
 for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
+    %{?a_x:%{_sbindir}/update-alternatives --remove-all ${lib} 2>/dev/null || true}
     %{_sbindir}/update-alternatives --install \
-     %{_libdir}/${lib} ${lib}_%{_arch} %{p_libdir}/lib%{pname}.so.%{so_v}  20
+     %{_libdir}/${lib} ${lib}%{?a_x} %{p_libdir}/lib%{pname}.so.%{so_v}  20
 done
 /sbin/ldconfig
 
@@ -529,25 +540,13 @@ ln -sf lib%{pname}.so.%{so_v} %{_libdir}/lib%{pname}.so
 %postun -n lib%{name}%{so_v}
 if [ ! -f %{p_libdir}/lib%{pname}.so.%{so_v} ]; then
     for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
-	%{_sbindir}/update-alternatives --remove ${lib}_%{_arch} %{_libdir}/lib%{pname}.so.%{so_v}
+	%{_sbindir}/update-alternatives --remove ${lib}%{?a_x} %{_libdir}/lib%{pname}.so.%{so_v}
     done
 fi
 if [ ! -d %{p_libdir} ]; then
-    %{_sbindir}/update-alternatives --remove openblas-default_%{_arch} %{p_libdir}
+    %{_sbindir}/update-alternatives --remove openblas-default%{?a_x} %{p_libdir}
 fi
 /sbin/ldconfig
-
-%posttrans -n lib%{name}%{so_v}
-if [ "$1" = 0 ] ; then
-  if  [ ! -d %{_libdir}/openblas-default ] ; then
-      %{_sbindir}/update-alternatives --auto openblas-default
-  fi
-  for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
-      if ! [ -f %{_libdir}/${lib} ] ; then
-	  %{_sbindir}/update-alternatives --auto ${lib}
-      fi
-  done
-fi
 
 %else
 
@@ -568,11 +567,11 @@ fi
 %ghost %{_libdir}/libcblas.so.3
 %ghost %{_libdir}/liblapack.so.3
 %ghost %{_libdir}/liblapacke.so.3
-%ghost %{_sysconfdir}/alternatives/openblas-default_%{_arch}
-%ghost %{_sysconfdir}/alternatives/libblas.so.3_%{_arch}
-%ghost %{_sysconfdir}/alternatives/libcblas.so.3_%{_arch}
-%ghost %{_sysconfdir}/alternatives/liblapack.so.3_%{_arch}
-%ghost %{_sysconfdir}/alternatives/liblapacke.so.3_%{_arch}
+%ghost %{_sysconfdir}/alternatives/openblas-default%{?a_x}
+%ghost %{_sysconfdir}/alternatives/libblas.so.3%{?a_x}
+%ghost %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x}
+%ghost %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x}
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x}
 %else
 %hpc_dirs
 %{p_libdir}/libopenblas*r*.so
