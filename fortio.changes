@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 21 09:25:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.51.0:
+  * refactor to use fortio.org/cli and scli (#713)
+  * Bump fortio.org/dflag from 1.4.1 to 1.4.2 (#712)
+  * use Deprecated: for log and dflag
+
+-------------------------------------------------------------------
 Sat Feb 18 08:06:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.50.1:
