@@ -1,6 +1,0 @@
-<package name="gnu-unifont-bitmap-fonts" project="openSUSE:Factory">
-  <title>The GNU Unicode Bitmap font</title>
-  <description>The GNU Unicode Bitmap font
-</description>
-  <devel project="M17N:fonts" package="gnu-unifont-bitmap-fonts"/>
-</package>
