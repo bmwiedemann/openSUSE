@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  9 14:40:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.8:
+  * Added Ceph rbd devices
+  * Added missing network interface names (Reported by Martin A)
+
+-------------------------------------------------------------------
 Sun Jan 29 21:41:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.7:

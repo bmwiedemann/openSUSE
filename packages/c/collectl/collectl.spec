@@ -20,7 +20,7 @@
 %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           collectl
-Version:        4.3.7
+Version:        4.3.8
 Release:        0
 Summary:        System status data collection utility
 License:        Artistic-1.0 AND GPL-2.0-or-later
