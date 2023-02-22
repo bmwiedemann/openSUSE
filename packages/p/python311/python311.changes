@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 11:34:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add provides for readline and sqlite3 to the main Python
+  package.
+
+-------------------------------------------------------------------
 Thu Jan 26 13:28:24 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable NIS for new products, it's deprecated and gets removed

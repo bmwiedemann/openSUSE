@@ -710,4 +710,14 @@ C API
     <comment></comment>
     <requestid>1061556</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>c58c6153d52a84debd4129477e0f3e61</srcmd5>
+    <version>3.11.1</version>
+    <time>1677075674</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides for readline and sqlite3 to the main Python
+  package.
+</comment>
+    <requestid>1067032</requestid>
+  </revision>
 </revisionlist>
