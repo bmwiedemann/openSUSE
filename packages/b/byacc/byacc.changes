@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 17 12:43:24 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 20230201:
+  * configure.in: initialize $ac_includes_default
+  * aclocal.m4: resync with my-autoconf 
+
+-------------------------------------------------------------------
 Mon Jan  2 10:24:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221229:
