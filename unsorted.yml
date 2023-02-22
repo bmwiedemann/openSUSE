@@ -456,6 +456,7 @@ unsorted:
   - agrep 
   - aho-corasick-double-array-trie 
   - aho-corasick-double-array-trie-javadoc 
+  - ahx2play 
   - aide 
   - aide-test 
   - aircrack-ng 
@@ -4221,7 +4222,9 @@ unsorted:
   - fstrm-devel 
   - fsvs 
   - fswebcam 
+  - ft2-clone 
   - ft2demos 
+  - ft2play 
   - ftbench 
   - ftdiff 
   - ftdump 
@@ -7228,6 +7231,7 @@ unsorted:
   - hiredis-devel 
   - hitori 
   - hitori-lang 
+  - hivelytracker 
   - hivex 
   - hivex-devel 
   - hivex-lang 
@@ -7749,6 +7753,7 @@ unsorted:
   - istack-commons-test 
   - istack-commons-tools 
   - isync 
+  - it2play 
   - itext-parent 
   - itextpdf 
   - itextpdf-javadoc 
@@ -21843,6 +21848,7 @@ unsorted:
   - pplite-devel 
   - ppp-devel 
   - ppp-modem 
+  - ppplay 
   - pprof 
   - pps-tools 
   - pps-tools-devel 
@@ -22033,6 +22039,7 @@ unsorted:
   - pssh 
   - pstoedit 
   - pstoedit-devel 
+  - pt2-clone 
   - pthread-stubs-devel 
   - ptl-devel 
   - ptlib-devel 
@@ -25965,6 +25972,7 @@ unsorted:
   - python311-GitPython 
   - python311-Glances 
   - python311-Gloo 
+  - python311-Glymur 
   - python311-GooCalendar 
   - python311-GooseMPL 
   - python311-GridDataFormats 
@@ -26728,6 +26736,7 @@ unsorted:
   - python311-cloup 
   - python311-cluster 
   - python311-cma 
+  - python311-cmapfile 
   - python311-cmarkgfm 
   - python311-cmd2 
   - python311-cmdln 
@@ -26736,6 +26745,7 @@ unsorted:
   - python311-cogapp 
   - python311-colander 
   - python311-colorama 
+  - python311-colorcet 
   - python311-colorclass 
   - python311-coloredlogs 
   - python311-colorful 
@@ -26809,6 +26819,7 @@ unsorted:
   - python311-curtsies 
   - python311-cwcwidth 
   - python311-cymruwhois 
+  - python311-czifile 
   - python311-d2to1 
   - python311-daemonize 
   - python311-daiquiri 
@@ -26828,6 +26839,7 @@ unsorted:
   - python311-dask-dot 
   - python311-dask-test 
   - python311-databases 
+  - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
   - python311-datrie 
@@ -26879,6 +26891,7 @@ unsorted:
   - python311-dj-database-url 
   - python311-django-allauth 
   - python311-django-appconf 
+  - python311-django-assets 
   - python311-django-attachments 
   - python311-django-auth-ldap 
   - python311-django-avatar 
@@ -27358,6 +27371,7 @@ unsorted:
   - python311-ipysheet 
   - python311-ipython 
   - python311-ipython_genutils 
+  - python311-ipyvolume 
   - python311-ipyvue 
   - python311-ipyvuetify 
   - python311-ipywebrtc 
@@ -27507,6 +27521,7 @@ unsorted:
   - python311-lesscpy 
   - python311-leveldb 
   - python311-lexicon 
+  - python311-lfdfiles 
   - python311-lhafile 
   - python311-lib3to6 
   - python311-libarchive 
@@ -27741,6 +27756,7 @@ unsorted:
   - python311-odorik 
   - python311-ogr 
   - python311-oic 
+  - python311-oiffile 
   - python311-oktaloginwrapper 
   - python311-olefile 
   - python311-oletools 
@@ -27790,6 +27806,7 @@ unsorted:
   - python311-pandas 
   - python311-pandas-datareader 
   - python311-pandocfilters 
+  - python311-panel 
   - python311-panflute 
   - python311-parallax 
   - python311-param 
@@ -27848,6 +27865,7 @@ unsorted:
   - python311-pgmagick 
   - python311-phabricator 
   - python311-phonenumbers 
+  - python311-photutils 
   - python311-phply 
   - python311-phue 
   - python311-pick 
@@ -27998,6 +28016,7 @@ unsorted:
   - python311-pycryptodome 
   - python311-pycryptodomex 
   - python311-pycsw 
+  - python311-pyct 
   - python311-pycups 
   - python311-pycurl 
   - python311-pycxx 
@@ -28328,6 +28347,7 @@ unsorted:
   - python311-pythonfinder 
   - python311-pythonwhois 
   - python311-pythran 
+  - python311-pythreejs 
   - python311-pytidylib 
   - python311-pytils 
   - python311-pytimeparse 
@@ -28466,6 +28486,7 @@ unsorted:
   - python311-rnginline 
   - python311-robot-detection 
   - python311-robotframework 
+  - python311-roifile 
   - python311-roman 
   - python311-rope 
   - python311-rpcq 
@@ -28732,9 +28753,11 @@ unsorted:
   - python311-textile 
   - python311-texttable 
   - python311-textwrap3 
+  - python311-thLib 
   - python311-thespian 
   - python311-threadpoolctl 
   - python311-three-merge 
+  - python311-tifffile 
   - python311-time-machine 
   - python311-time-travel 
   - python311-timeout-decorator 
@@ -28870,6 +28893,7 @@ unsorted:
   - python311-virtualenv-clone 
   - python311-visitor 
   - python311-vistir 
+  - python311-visvis 
   - python311-vncdotool 
   - python311-vobject 
   - python311-volatile 
@@ -37618,6 +37642,7 @@ unsorted:
   - showfoto 
   - shp 
   - shunit2 
+  - sidplayfp 
   - siege 
   - sierra-gtk-theme 
   - sigil 
