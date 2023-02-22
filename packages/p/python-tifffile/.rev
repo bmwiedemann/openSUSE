@@ -81,4 +81,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1060309</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2f14ce8ca858955119fac551f194104a</srcmd5>
+    <version>2022.10.10</version>
+    <time>1677075675</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to fix a bootstrapping issue.</comment>
+    <requestid>1066888</requestid>
+  </revision>
 </revisionlist>

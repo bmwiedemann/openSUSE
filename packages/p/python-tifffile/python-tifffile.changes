@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 01:18:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to fix a bootstrapping issue. 
+
+-------------------------------------------------------------------
 Sat Jan 21 13:23:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.10.10.

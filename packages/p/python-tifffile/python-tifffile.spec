@@ -1,5 +1,5 @@
 #
-# spec file for package python-tifffile
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,7 +16,15 @@
 #
 
 
-Name:           python-tifffile
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-tifffile%{psuffix}
 Version:        2022.10.10
 Release:        0
 Summary:        Read and write TIFF(r) files
@@ -39,11 +47,12 @@ Recommends:     python-lxml
 Recommends:     python-matplotlib >= 3.3
 Recommends:     python-zarr
 # SECTION test
-BuildRequires:  %{python_module imagecodecs >= 2022.2.22}
+%if %{with test}
 BuildRequires:  %{python_module cmapfile}
 BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module fsspec}
+BuildRequires:  %{python_module imagecodecs >= 2022.2.22}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib >= 3.3}
@@ -53,6 +62,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module roifile}
 BuildRequires:  %{python_module xarray}
 BuildRequires:  %{python_module zarr}
+%endif
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -73,6 +83,7 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tifffile
 %python_clone -a %{buildroot}%{_bindir}/lsm2bin
@@ -83,6 +94,7 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 %prepare_alternative tifffile
 %prepare_alternative lsm2bin
 %prepare_alternative tiffcomment
+%endif
 
 %post
 %python_install_alternative tifffile
@@ -97,6 +109,7 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 %python_uninstall_alternative tiff2fsspec
 
 %check
+%if %{with test}
 # Crashes Out-Of-Memory
 donttest="test_write_ome"
 donttest="$donttest or test_write_imagej_raw"
@@ -108,7 +121,9 @@ donttest="$donttest or test_write_compression_lerc"
 # can't connect to external server
 donttest="$donttest or test_class_omexml"
 %pytest -n auto -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
@@ -118,5 +133,6 @@ donttest="$donttest or test_class_omexml"
 %python_alternative %{_bindir}/tiff2fsspec
 %{python_sitelib}/tifffile-%{version}.dist-info/
 %{python_sitelib}/tifffile
+%endif
 
 %changelog
