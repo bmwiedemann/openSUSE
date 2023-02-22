@@ -1,7 +1,7 @@
 #
 # spec file for package sd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Release:        0
 Summary:        Intuitive find & replace CLI
 URL:            https://github.com/chmln/sd
 License:        (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND BSD-3-Clause AND MIT AND (MIT OR Unlicense)
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  zstd
 
 %description
 sd uses regex syntax that you already know from JavaScript and Python.
