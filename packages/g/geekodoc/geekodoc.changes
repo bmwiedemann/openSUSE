@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 15 10:53:50 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.2
+
+- Release 2.2.2
+  Fix #114: Create additional links
+  * Create geekodoc-latest-flat.rn{c,g}
+  * Add catalog entries to point to latest URIs
+
+-------------------------------------------------------------------
+Wed Feb 15 08:31:49 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.1
+
+- Release 2.2.1
+  - Introduce "latest" link (#114)
+
+-------------------------------------------------------------------
 Thu Feb  9 13:22:47 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.0
 
 - Release 2.2.0

@@ -19,7 +19,7 @@
 %bcond_without  tests
 #
 Name:           geekodoc
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
 License:        GPL-3.0-only
@@ -66,7 +66,7 @@ Conflicts:      suse-xsl-stylesheets < 2.0.6
 NovDoc is a DTD/RELAX NG schema used for older SUSE documentation.
 
 %prep
-%setup -q
+%autosetup
 tar -xf %{SOURCE10}
 mv novdoc-20190201/novdoc .
 mv novdoc-20190201/catalog.d/novdoc.xml catalog.d/
@@ -93,10 +93,7 @@ sed -i "s#<include href=\"docbookxi.rng\">#<include href=\"$docbookxi_rng\">#" \
     build/geekodoc/rng/1_5.1/geekodoc-v1.rng
 
 #### Install flat GeekoDoc:
-install -v -m 0644 build/geekodoc/rng/1_5.1/geekodoc-v1-flat.rn[cg] \
-        %{buildroot}%{_datadir}/xml/geekodoc/rng/1_5.1/
-install -v -m 0644 build/geekodoc/rng/2_5.2/geekodoc-v2-flat.rn[cg] \
-        %{buildroot}%{_datadir}/xml/geekodoc/rng/2_5.2/
+cp -a  build/geekodoc/rng/ %{buildroot}%{_datadir}/xml/geekodoc/
 
 pushd %{buildroot}%{_datadir}/xml/geekodoc/rng
 # For compatibility reasons:
@@ -168,6 +165,15 @@ done
 %config %{_sysconfdir}/xml/catalog.d/geekodoc*.xml
 %dir %{_datadir}/xml/geekodoc
 %{_datadir}/xml/geekodoc/*
+# These files are just build artifacts that need to be excluded:
+%exclude %{_datadir}/xml/geekodoc/rng/*/docbook*
+%exclude %{_datadir}/xml/geekodoc/rng/*/db*
+%exclude %{_datadir}/xml/geekodoc/rng/*/its*
+%exclude %{_datadir}/xml/geekodoc/rng/*/trans*
+%exclude %{_datadir}/xml/geekodoc/rng/*/xinclude*
+%exclude %{_datadir}/xml/geekodoc/rng/*/*.rni
+%exclude %{_datadir}/xml/geekodoc/rng/*/geekodoc-v[12].rn[cg]
+%exclude %{_datadir}/xml/geekodoc/rng/*/geekodoc5.rnc
 
 %files -n novdoc
 %license LICENSE
