@@ -1,7 +1,7 @@
 #
 # spec file for package babelstone-marchen-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           babelstone-marchen-fonts
-Version:        1.01
+Version:        9.003
 Release:        0
-Summary:        Tibetan sMar-chen Font
+Summary:        BabelStone Font for Marchen script
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.babelstone.co.uk/Fonts/
-Source0:        http://www.babelstone.co.uk/Fonts/BabelStoneTibetansMarchen.ttf
-Source1:        OFL.txt
+URL:            http://www.babelstone.co.uk/Fonts/
+Source0:        https://www.babelstone.co.uk/Fonts/Download/BabelStoneMarchen.ttf
+Source1:        https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-BabelStone Tibetan sMar-chen is an experimental font for the sMar-chen script,
-mapped to the Tibetan script
+BabelStone Marchen is a font for the sMar-chen script, which is based
+on the deprecated experimental BabelStone Tibetan sMar-chen font. This
+font uses the encoding specified by Unicode for Marchen script.
 
 %prep
-%setup -q -c -T 
+%autosetup -c -T
 cp -a %{SOURCE0} .
 
 %build
@@ -48,8 +50,8 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-,root,root)
-%doc OFL.txt
-%{_ttfontsdir}
+%license BabelStoneOFL.txt
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/BabelStoneMarchen.ttf
 
 %changelog
-
