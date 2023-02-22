@@ -1,0 +1,9 @@
+<package name="ahx2play" project="openSUSE:Factory">
+  <title>Bit-accurate C port of the Amiga AHX replayer</title>
+  <description>Bit-accurate C port of the Amiga AHX replayer.
+This is a direct port of the original tracker source codes.
+
+</description>
+  <devel project="multimedia:apps" package="ahx2play"/>
+  <url>https://github.com/8bitbubsy/ahx2play</url>
+</package>

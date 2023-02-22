@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Feb 15 12:12:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0~git20230215:
+  * Added CMakeLists.txt by roox
+- Drop not longer needed patch:
+  * 0001-Create-CMakeLists.txt.patch 
+
+-------------------------------------------------------------------
+Tue Feb 14 22:49:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0~git20221101
