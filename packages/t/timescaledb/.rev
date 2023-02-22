@@ -153,4 +153,13 @@
 - drop ab6b90caf.patch: included upstream</comment>
     <requestid>1064023</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d8a048e2e8dbda22a2f614bd1720c1f5</srcmd5>
+    <version>2.10.0</version>
+    <time>1677075689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0
+  https://github.com/timescale/timescaledb/releases/tag/2.10.0</comment>
+    <requestid>1067045</requestid>
+  </revision>
 </revisionlist>
