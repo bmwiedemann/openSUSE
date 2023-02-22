@@ -1,0 +1,162 @@
+---
+ .gitignore         |    1 +
+ common.mak         |    4 ++--
+ zipl/boot/Makefile |   16 ++++++----------
+ zipl/src/Makefile  |   14 +++++---------
+ zipl/src/boot.c    |   41 ++++++++++++++++++++++++++++++++++++++---
+ 5 files changed, 52 insertions(+), 24 deletions(-)
+
+--- a/.gitignore
++++ b/.gitignore
+@@ -110,6 +110,7 @@ ziomon/ziorep_traffic
+ ziomon/ziorep_utilization
+ zipl/boot/*.bin
+ zipl/boot/*.exec
++zipl/boot/.loaders
+ zipl/boot/data.h
+ zipl/src/chreipl_helper.device-mapper
+ zdev/src/zdev_id
+--- a/common.mak
++++ b/common.mak
+@@ -410,8 +410,8 @@ $(rootdir)/libpv/libpv.a: $(rootdir)/lib
+ 	$(MAKE) -C $(rootdir)/libpv libpv.a
+ .PHONY: $(rootdir)/libpv
+ 
+-$(rootdir)/zipl/boot/data.o:
+-	$(MAKE) -C $(rootdir)/zipl/boot/ data.o
++$(rootdir)/zipl/boot/.loaders:
++	$(MAKE) -C $(rootdir)/zipl/boot/ .loaders
+ 
+ install_dirs:
+ 	for dir in $(INSTDIRS); do \
+--- a/zipl/boot/Makefile
++++ b/zipl/boot/Makefile
+@@ -20,7 +20,10 @@ FILES	= fba0.bin fba1b.bin fba2.bin \
+ 	  tape0.bin \
+ 	  eckd2dump_sv.bin tape2dump.bin fba2dump.bin eckd2dump_mv.bin
+ 
+-all: data.o data.h tape0.bin stage3.bin
++all: .loaders tape0.bin stage3.bin
++
++.loaders: $(FILES)
++	touch .loaders
+ 
+ # Prevent make from using some default rules...
+ %:	%.S
+@@ -76,16 +79,9 @@ stage3.exec: head.o stage3.o kdump3.o li
+ %.bin:	%.exec
+ 	$(OBJCOPY) -O binary $< $@
+ 
+-data.o: $(FILES)
+-	$(LINK) $(NO_PIE_LDFLAGS) -static -nostdlib -Wl,--relocatable -Wl,--format,binary -o data.o $(FILES)
+-
+-data.h: data.o
+-	rm -f data.h
+-	$(NM) data.o | while read ADDR TYPE SYMBOL ; do \
+-				echo "extern char $$SYMBOL;" >>data.h; done
+ 
+ clean:
+-	rm -f -- *.o *.exec *.bin $(FILES) data.o data.h tape0.bin *.xxx *.yyy \
+-	      stage3.bin *.lds .*.lds.d
++	rm -f -- *.o *.exec *.bin $(FILES) tape0.bin *.xxx *.yyy \
++	      stage3.bin *.lds .*.lds.d .loaders
+ 
+ .PHONY: all clean
+--- a/zipl/src/Makefile
++++ b/zipl/src/Makefile
+@@ -4,14 +4,14 @@ include ../../common.mak
+ ALL_CPPFLAGS += -I../include -I../boot \
+ 	    -DZFCPDUMP_IMAGE="STRINGIFY($(ZFCPDUMP_DIR)/$(ZFCPDUMP_IMAGE))" \
+ 	    -DZFCPDUMP_INITRD="STRINGIFY($(ZFCPDUMP_DIR)/$(ZFCPDUMP_INITRD))" \
+-	    -D_FILE_OFFSET_BITS=64 $(NO_PIE_CFLAGS)
++	    -D_FILE_OFFSET_BITS=64 $(NO_PIE_CFLAGS) -DBUILD_PATH="../boot"
+ ALL_LDFLAGS += -Wl,-z,noexecstack $(NO_PIE_LDFLAGS)
+ 
+ libs =  $(rootdir)/libutil/libutil.a \
+ 	$(rootdir)/libvtoc/libvtoc.a \
+ 
+ objects = misc.o error.o scan.o job.o boot.o bootmap.o fs-map.o disk.o \
+-	  bootmap_header.o envblk.o install.o zipl.o $(rootdir)/zipl/boot/data.o
++	  bootmap_header.o envblk.o install.o zipl.o
+ 
+ zipl_helpers = $(basename $(wildcard zipl_helper.*.c))
+ chreipl_helpers = $(subst zipl_,chreipl_, $(zipl_helpers))
+@@ -19,6 +19,7 @@ zipl_stage3 = ../boot/stage3.bin
+ 
+ all: zipl zipl-editenv $(chreipl_helpers) $(zipl_stage3)
+ 
++boot.o: ../boot/.loaders
+ zipl: $(objects) $(libs)
+ 
+ zipl_helper.device-mapper: $(rootdir)/libdasd/libdasd.a \
+@@ -47,13 +48,8 @@ clean:
+ 
+ # Additional manual dependencies
+ 
+-.boot.o.d boot.o: ../boot/data.h
+-
+-../boot/data.h:
+-	$(MAKE) -C ../boot data.h
+-
+-../boot/data.o:
+-	$(MAKE) -C ../boot data.o
++../boot/.loaders:
++	$(MAKE) -C ../boot .loaders
+ 
+ ../boot/stage3.bin:
+ 	$(MAKE) -C ../boot stage3.bin
+--- a/zipl/src/boot.c
++++ b/zipl/src/boot.c
+@@ -21,14 +21,49 @@
+ 
+ #include "stage3.h"
+ 
+-#include "../boot/data.h"
+ #include "boot.h"
+ #include "bootmap.h"
+ #include "error.h"
+ #include "misc.h"
+ 
+-#define DATA_SIZE(x)	((size_t) (&_binary_##x##_bin_end - &_binary_##x##_bin_start))
+-#define DATA_ADDR(x)	(&_binary_##x##_bin_start)
++/* Import a binary file */
++/* clang-format off */
++#define DATA_NAME(SYM, SUFFIX) _binary_##SYM##_bin##SUFFIX
++#define DATA_SIZE(SYM)	       ((size_t)(&DATA_NAME(SYM, _end) - &DATA_NAME(SYM, _start)))
++#define DATA_ADDR(SYM)	       (&DATA_NAME(SYM, _start))
++#define BIN_FILE_PATH(FILE_NAME) STRINGIFY(BUILD_PATH) "/" STRINGIFY(FILE_NAME) ".bin"
++#define IMPORT_DATA(SYM)						\
++	extern const uint8_t DATA_NAME(SYM, _start);			\
++	extern const uint8_t DATA_NAME(SYM, _end);			\
++	asm(".section \".rodata\", \"a\", @progbits\n"			\
++	    ".balign 4\n"						\
++	    ".global " STRINGIFY(DATA_NAME(SYM, _start)) "\n"		\
++	    STRINGIFY(DATA_NAME(SYM, _start)) ":\n"			\
++	    ".incbin \"" BIN_FILE_PATH(SYM) "\"\n"			\
++	    ".global " STRINGIFY(DATA_NAME(SYM, _end)) "\n"		\
++	    STRINGIFY(DATA_NAME(SYM, _end)) ":\n"			\
++	    ".balign 4\n"						\
++	    ".previous\n")
++/* clang-format on */
++
++/* Stage 0 Loader */
++IMPORT_DATA(eckd0_cdl);
++IMPORT_DATA(eckd0_ldl);
++IMPORT_DATA(fba0);
++IMPORT_DATA(tape0);
++/* Stage 1 Loader */
++IMPORT_DATA(eckd1);
++/* Stage 1b Loader */
++IMPORT_DATA(eckd1b);
++IMPORT_DATA(fba1b);
++/* Stage 2 Loader */
++IMPORT_DATA(eckd2);
++IMPORT_DATA(fba2);
++/* Stage 2 Dump Loader */
++IMPORT_DATA(eckd2dump_mv);
++IMPORT_DATA(eckd2dump_sv);
++IMPORT_DATA(fba2dump);
++IMPORT_DATA(tape2dump);
+ 
+ #define CCW_FLAG_CC		0x40
+ #define CCW_FLAG_SLI		0x20

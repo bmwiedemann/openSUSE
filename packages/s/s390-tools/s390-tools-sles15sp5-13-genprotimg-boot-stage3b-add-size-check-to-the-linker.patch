@@ -1,0 +1,15 @@
+---
+ genprotimg/boot/stage3b.lds.S |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/genprotimg/boot/stage3b.lds.S
++++ b/genprotimg/boot/stage3b.lds.S
+@@ -72,6 +72,8 @@ SECTIONS
+ 	}
+ 	__stack_end = .;
+ 
++  	ASSERT(. <= IMAGE_ENTRY, "stage3b size must be smaller than 0x10000 bytes")
++
+ 	/* Sections to be discarded */
+ 	/DISCARD/ : {
+ 		*(.eh_frame)

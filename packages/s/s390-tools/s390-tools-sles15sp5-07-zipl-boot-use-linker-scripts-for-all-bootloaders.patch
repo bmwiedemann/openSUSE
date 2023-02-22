@@ -1,0 +1,123 @@
+---
+ include/boot/loaders_layout.h |    3 +++
+ zipl/boot/Makefile            |   24 ++++++++++--------------
+ zipl/boot/stage0.lds.S        |   18 ++++++++++++++++++
+ zipl/boot/stage1.lds.S        |   18 ++++++++++++++++++
+ zipl/boot/stage1b.lds.S       |   18 ++++++++++++++++++
+ 5 files changed, 67 insertions(+), 14 deletions(-)
+
+--- a/include/boot/loaders_layout.h
++++ b/include/boot/loaders_layout.h
+@@ -14,6 +14,9 @@
+ #include "lib/zt_common.h"
+ #include "linux_layout.h"
+ 
++#define STAGE0_LOAD_ADDRESS		_AC(0x0, UL)
++
++#define STAGE1_LOAD_ADDRESS		_AC(0x18, UL)
+ #define STAGE1B_LOAD_ADDRESS		_AC(0xe000, UL)
+ 
+ #define STAGE2_DESC			_AC(0x78, UL)
+--- a/zipl/boot/Makefile
++++ b/zipl/boot/Makefile
+@@ -42,6 +42,15 @@ endif
+ %.lds: %.lds.S
+ 	$(CPP) -Wp,-MD,.$@.d,-MT,$@ $(INCLUDE_PARMS) -P -C -o $@ $<
+ 
++fba0.exec eckd0_ldl.exec eckd0_cdl.exec tape0.exec: \
++	stage0.lds
++
++eckd1.exec: \
++	stage1.lds
++
++eckd1b.exec fba1b.exec: \
++	stage1b.lds
++
+ eckd2dump_sv.exec: \
+ 	head.o stage2dump.o cio.o eckd2dump.o eckd2dump_sv.o \
+ 	libc.o ebcdic.o sclp.o entry.o stage2.lds
+@@ -62,20 +71,7 @@ stage3.exec: head.o stage3.o kdump3.o li
+ 	     sclp_stage3.o kdump.o entry.o stage3.lds
+ 
+ %.exec:	%.o
+-	STAGE=$$( \
+-		echo $@ | awk ' \
+-			match($$0,/[0-9]+b*/){ \
+-				print substr($$0,RSTART,RLENGTH) \
+-			}' \
+-	); \
+-	case $$STAGE in \
+-		0) SFLAGS="-Wl,-Ttext,0";; \
+-		1) SFLAGS="-Wl,-Ttext,0x18";; \
+-		1b) SFLAGS="-Wl,-Ttext,0xE000";; \
+-		2) SFLAGS="-Wl,-T,stage2.lds";; \
+-		3) SFLAGS="-Wl,-T,stage3.lds";; \
+-	esac; \
+-	$(LINK) $$SFLAGS $(NO_PIE_LDFLAGS) $(NO_WARN_RWX_SEGMENTS_LDFLAGS) -Wl,--build-id=none -m64 -static -nostdlib $(filter %.o, $^) -o $@
++	$(LINK) -Wl,-T,$(filter %.lds,$^) $(NO_PIE_LDFLAGS) $(NO_WARN_RWX_SEGMENTS_LDFLAGS) -Wl,--build-id=none -m64 -static -nostdlib $(filter %.o, $^) -o $@
+ 
+ %.bin:	%.exec
+ 	$(OBJCOPY) -O binary $< $@
+--- /dev/null
++++ b/zipl/boot/stage0.lds.S
+@@ -0,0 +1,18 @@
++#include "boot/loaders_layout.h"
++
++ENTRY(_start)
++
++SECTIONS
++{
++  . = STAGE0_LOAD_ADDRESS;
++  .text : {
++    *(.text .text.*)
++  }
++
++  /* Sections to be discarded */
++  /DISCARD/ : {
++    *(.eh_frame)
++    *(.interp)
++    *(.note.GNU-stack)
++  }
++}
+--- /dev/null
++++ b/zipl/boot/stage1.lds.S
+@@ -0,0 +1,18 @@
++#include "boot/loaders_layout.h"
++
++ENTRY(_start)
++
++SECTIONS
++{
++  . = STAGE1_LOAD_ADDRESS;
++  .text : {
++    *(.text .text.*)
++  }
++
++  /* Sections to be discarded */
++  /DISCARD/ : {
++    *(.eh_frame)
++    *(.interp)
++    *(.note.GNU-stack)
++  }
++}
+--- /dev/null
++++ b/zipl/boot/stage1b.lds.S
+@@ -0,0 +1,18 @@
++#include "boot/loaders_layout.h"
++
++ENTRY(_start)
++
++SECTIONS
++{
++  . = STAGE1B_LOAD_ADDRESS;
++  .text : {
++    *(.text .text.*)
++  }
++
++  /* Sections to be discarded */
++  /DISCARD/ : {
++    *(.eh_frame)
++    *(.interp)
++    *(.note.GNU-stack)
++ }
++}

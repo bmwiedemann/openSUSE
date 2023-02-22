@@ -1,0 +1,59 @@
+---
+ genprotimg/boot/head.S          |    5 +++++
+ genprotimg/boot/stage3a.lds.S   |    1 +
+ genprotimg/boot/stage3a_init.S  |    5 +++++
+ genprotimg/boot/stage3b.lds.S   |    1 +
+ genprotimg/boot/stage3b_reloc.S |    5 +++++
+ 5 files changed, 17 insertions(+)
+
+--- a/genprotimg/boot/head.S
++++ b/genprotimg/boot/head.S
+@@ -29,3 +29,8 @@ _start:
+ 	brasl	%r14, initialize
+ .Lstack: .long STACK_ADDRESS + STACK_SIZE - STACK_FRAME_OVERHEAD
+ .previous
++
++/* The code doesn't require an executable stack */
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- a/genprotimg/boot/stage3a.lds.S
++++ b/genprotimg/boot/stage3a.lds.S
+@@ -99,5 +99,6 @@ SECTIONS
+ 	/* Sections to be discarded */
+ 	/DISCARD/ : {
+ 		*(.eh_frame)
++		*(.note.GNU-stack)
+ 	}
+ }
+--- a/genprotimg/boot/stage3a_init.S
++++ b/genprotimg/boot/stage3a_init.S
+@@ -26,3 +26,8 @@ _init:
+ 	br	%r1
+ .Lstage3a_entry: .long STAGE3A_ENTRY
+ .previous
++
++/* The code doesn't require an executable stack */
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- a/genprotimg/boot/stage3b.lds.S
++++ b/genprotimg/boot/stage3b.lds.S
+@@ -83,5 +83,6 @@ SECTIONS
+ 	/* Sections to be discarded */
+ 	/DISCARD/ : {
+ 		*(.eh_frame)
++		*(.note.GNU-stack)
+ 	}
+ }
+--- a/genprotimg/boot/stage3b_reloc.S
++++ b/genprotimg/boot/stage3b_reloc.S
+@@ -53,3 +53,8 @@ stage3b_start:
+ 	.incbin	"stage3b.bin"
+ stage3b_end:
+ .previous
++
++/* The code doesn't require an executable stack */
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

@@ -1,0 +1,47 @@
+---
+ genprotimg/boot/Makefile      |    2 +-
+ genprotimg/boot/stage3a.lds.S |    6 ------
+ genprotimg/boot/stage3b.lds.S |    6 ------
+ 3 files changed, 1 insertion(+), 13 deletions(-)
+
+--- a/genprotimg/boot/Makefile
++++ b/genprotimg/boot/Makefile
+@@ -79,7 +79,7 @@ stage3b_reloc.elf:
+ 		stage3b) SFLAGS="-Wl,-T,stage3b.lds";; \
+ 		stage3b_reloc) SFLAGS="-Wl,-estage3b_reloc_start,-Ttext,0";; \
+ 	esac; \
+-	$(LINK) $$SFLAGS $(NO_PIE_LDFLAGS) $(NO_WARN_RWX_SEGMENTS_LDFLAGS) -m64 -static -nostdlib $(filter %.o, $^) -o $@
++	$(LINK) $$SFLAGS $(NO_PIE_LDFLAGS) $(NO_WARN_RWX_SEGMENTS_LDFLAGS) -Wl,--build-id=none -m64 -static -nostdlib $(filter %.o, $^) -o $@
+ 	@chmod a-x $@
+ 
+ %.bin:	%.elf
+--- a/genprotimg/boot/stage3a.lds.S
++++ b/genprotimg/boot/stage3a.lds.S
+@@ -90,12 +90,6 @@ SECTIONS
+ 		ASSERT(ABSOLUTE(.) < 0x13000, "Data section doesn't conform to the described memory layout");
+ 	}
+ 
+-	/* List this explicitly as otherwise .note.gnu.build-id will be
+-	 * put at 0x0 */
+-	.notes : {
+-		*(.note.*)
+-	}
+-
+ 	/* Sections to be discarded */
+ 	/DISCARD/ : {
+ 		*(.eh_frame)
+--- a/genprotimg/boot/stage3b.lds.S
++++ b/genprotimg/boot/stage3b.lds.S
+@@ -74,12 +74,6 @@ SECTIONS
+ 	}
+ 	__stack_end = .;
+ 
+-	/* List this explicitly as otherwise .note.gnu.build-id will be
+-	 * put at 0x0 */
+-	.notes : {
+-		*(.note.*)
+-	}
+-
+ 	/* Sections to be discarded */
+ 	/DISCARD/ : {
+ 		*(.eh_frame)

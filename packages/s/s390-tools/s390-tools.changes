@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:49:29 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Apllied the following patches (bsc#1208527, bsc#1206173) 
+  * s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
+  * s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
+  * s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch
+  * s390-tools-sles15sp5-04-zipl-boot-disable-build-id.patch
+  * s390-tools-sles15sp5-05-zipl-boot-simplify-objcopy-commands.patch
+  * s390-tools-sles15sp5-06-zipl-move-STAGE2_MAX_SIZE-and-STAGE1B_LOAD_ADDR-to-l.patch
+  * s390-tools-sles15sp5-07-zipl-boot-use-linker-scripts-for-all-bootloaders.patch
+  * s390-tools-sles15sp5-08-genprotimg-boot-declare-that-no-executable-stack-is-.patch
+  * s390-tools-sles15sp5-09-genprotimg-boot-use-no-warn-rwx-segments-linker-flag.patch
+  * s390-tools-sles15sp5-10-genprotimg-boot-disable-build-id.patch
+  * s390-tools-sles15sp5-11-genprotimg-boot-Makefile-simplify-objcopy-command.patch
+  * s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.patch
+  * s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
+  * s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
+  * s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
+
+-------------------------------------------------------------------
 Thu Feb 16 16:24:33 UTC 2023 - José Gómez <jose.gomez@suse.com>
 
 - Implemented read_values -u. The result of -u is a unique identifier composed of:

@@ -1,0 +1,41 @@
+---
+ zipl/boot/stage2.lds.S |    7 ++++++-
+ zipl/boot/stage3.lds.S |    7 ++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+--- a/zipl/boot/stage2.lds.S
++++ b/zipl/boot/stage2.lds.S
+@@ -88,6 +88,11 @@ SECTIONS
+   }
+   __stack_end = .;
+ 
+-  .eh_frame : { *(.eh_frame) }
+   .note.gnu.build-id : { *(.note.gnu.build-id) }
++
++  /* Sections to be discarded */
++  /DISCARD/ : {
++    *(.eh_frame)
++    *(.interp)
++  }
+ }
+--- a/zipl/boot/stage3.lds.S
++++ b/zipl/boot/stage3.lds.S
+@@ -39,7 +39,6 @@ SECTIONS
+   __ex_table_start = .;
+   .ex_table : { *(.ex_table) }
+   __ex_table_stop = .;
+-  .eh_frame : { *(.eh_frame) }
+ 
+   __bss_start = .;
+   .bss : { *(.bss) }
+@@ -75,4 +74,10 @@ SECTIONS
+   .notes : {
+   *(.note.*)
+   }
++
++  /* Sections to be discarded */
++  /DISCARD/ : {
++    *(.eh_frame)
++    *(.interp)
++  }
+ }
