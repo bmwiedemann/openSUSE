@@ -817,4 +817,14 @@
     <comment></comment>
     <requestid>1061593</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>3779d259379418d55f7a8c442388f425</srcmd5>
+    <version>3.9.16</version>
+    <time>1677075672</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides for readline and sqlite3 to the main Python
+  package.
+</comment>
+    <requestid>1067030</requestid>
+  </revision>
 </revisionlist>
