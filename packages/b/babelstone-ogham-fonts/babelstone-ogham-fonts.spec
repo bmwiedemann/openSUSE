@@ -1,7 +1,7 @@
 #
 # spec file for package babelstone-ogham-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           babelstone-ogham-fonts
-Version:        20131112
+Version:        20220314
 Release:        0
-Summary:        Font for Ogham Script
+Summary:        BabelStone Font for Ogham Script
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.babelstone.co.uk/Fonts/
-Source0:        http://www.babelstone.co.uk/Fonts/BabelStoneOgham.zip
-Source1:        OFL.txt
+URL:            http://www.babelstone.co.uk/Fonts/
+Source0:        https://www.babelstone.co.uk/Fonts/Download/BabelStoneOghamFonts.zip
+Source1:        https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
@@ -31,12 +32,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-A set of twelve Unicode Ogham fonts in seven font families, representing 
-a variety of different styles of Ogham letters found in manuscripts and 
+A set of twelve Unicode Ogham fonts in seven font families, representing
+a variety of different styles of Ogham letters found in manuscripts and
 on Ogham stone inscriptions.
 
 %prep
-%setup -q -c -T -a0
+%autosetup -c -T -a0
 
 %build
 cp -a %{SOURCE1} .
@@ -49,8 +50,7 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-,root,root)
-%doc OFL.txt
+%license BabelStoneOFL.txt
 %{_ttfontsdir}
 
 %changelog
-
