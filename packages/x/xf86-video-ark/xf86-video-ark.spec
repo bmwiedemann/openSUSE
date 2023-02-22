@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-ark
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xf86-video-ark
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Ark Logic video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Patch0:         U_build_fix.diff
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
@@ -46,7 +45,6 @@ ark is an Xorg driver for Ark Logic video cards.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -58,7 +56,8 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README.md
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/ark_drv.so
 

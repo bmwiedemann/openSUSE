@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 22 03:11:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.6
+  * bringing the last decade worth of accumulated change, most
+    importantly the ability to build against xorg-server 1.14
+    and newer out of the box
+- supersedes U_build_fix.diff
+
+-------------------------------------------------------------------
 Wed Aug  7 15:02:40 CEST 2013 - ro@suse.de
 
 - add ExcludeArch for s390 and s390x 

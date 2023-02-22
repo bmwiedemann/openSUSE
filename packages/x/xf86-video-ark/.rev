@@ -85,4 +85,16 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cfb481420c3b6c927df3210d5eaec280</srcmd5>
+    <version>0.7.6</version>
+    <time>1677075693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.6
+  * bringing the last decade worth of accumulated change, most
+    importantly the ability to build against xorg-server 1.14
+    and newer out of the box
+- supersedes U_build_fix.diff</comment>
+    <requestid>1067081</requestid>
+  </revision>
 </revisionlist>
