@@ -1,7 +1,7 @@
 #
 # spec file for package osc-plugin-collab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 Vincent Untz <vuntz@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define oscplugindir %{_localstatedir}/lib/osc-plugins
 %endif
 Name:           osc-plugin-collab
-Version:        0.104+20
+Version:        0.104+26
 Release:        0
 Summary:        Plugin to make collaboration easier with osc
 License:        BSD-3-Clause

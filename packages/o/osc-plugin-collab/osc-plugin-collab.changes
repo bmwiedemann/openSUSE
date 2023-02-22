@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 22 11:31:59 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 0.104+26:
+  * Re-implement filedir_to_pac as this was dropped in osc 1.0
+
+-------------------------------------------------------------------
+Tue Feb 21 22:54:48 UTC 2023 - mcepl@suse.com
+
+- Update to version 0.104+24:
+  * No longer support being calles as 'osc gnome'
+  * Track GNOME 41 for Leap 15.4 and SLE15SP4
+
+-------------------------------------------------------------------
 Tue Jan 11 17:57:23 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 0.104+20:
