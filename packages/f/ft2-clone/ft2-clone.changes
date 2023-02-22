@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Feb 14 21:42:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.63
+- Build with system-wide flac
+- Use pkg-config style dependencies
+
+-------------------------------------------------------------------
+Sat Oct  9 14:04:02 UTC 2021 - Arachnos
+
+- Initial package with Fasttracker II clone v1.47
+
