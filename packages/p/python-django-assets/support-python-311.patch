@@ -1,0 +1,23 @@
+From e57c5c3c02d84069600916fed74f165819393487 Mon Sep 17 00:00:00 2001
+From: Jonatan Heyman <jonatan@heyman.info>
+Date: Thu, 10 Nov 2022 23:26:07 +0100
+Subject: [PATCH] Global regex flags must be at the start of regex in Python
+ 3.11
+
+---
+ django_assets/glob.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/django_assets/glob.py b/django_assets/glob.py
+index 66a9531..73d961c 100644
+--- a/django_assets/glob.py
++++ b/django_assets/glob.py
+@@ -121,7 +121,7 @@ def translate(pat):
+                 res = '%s([%s])' % (res, stuff)
+         else:
+             res = res + re.escape(c)
+-    return res + '\Z(?ms)'
++    return '(?ms)' + res + '\Z'
+ 
+ 
+ """Filename globbing utility."""

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 22 03:10:45 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-311.patch:
+  * Support Python 3.11. 
+
+-------------------------------------------------------------------
 Sun Sep 18 01:32:15 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - SKip two tests incompatible with Django 4.1

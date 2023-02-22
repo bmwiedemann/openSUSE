@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-assets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-assets
 Version:        2.0
 Release:        0
 Summary:        Django asset management to compress and merge CSS and Javascript files
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/miracle2k/django-assets
 Source:         https://files.pythonhosted.org/packages/source/d/django-assets/django-assets-%{version}.tar.gz
 Patch0:         remove-nose.patch
+# PATCH-FIX-UPSTREAM gh#miracle2k/django-assets#104
+Patch1:         support-python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -46,9 +44,8 @@ BuildRequires:  %{python_module webassets >= 2.0}
 Asset management for Django, to compress and merge CSS and Javascript files.
 
 %prep
-%setup -q -n django-assets-%{version}
+%autosetup -p1 -n django-assets-%{version}
 dos2unix README.rst
-%autopatch -p1
 
 %build
 %python_build
