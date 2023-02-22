@@ -7,4 +7,12 @@
     <comment>I want to maintain gnu-unifont-fonts in Factory</comment>
     <requestid>1066570</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2399da15535715c47ccf22cfda32627b</srcmd5>
+    <version>15.0.01</version>
+    <time>1677075726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pcf font to SRPM (forwarded request 1066118 from jengelh)</comment>
+    <requestid>1067164</requestid>
+  </revision>
 </revisionlist>

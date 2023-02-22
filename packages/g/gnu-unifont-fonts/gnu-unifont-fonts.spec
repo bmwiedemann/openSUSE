@@ -30,6 +30,8 @@ Source12:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont_jp-%{
 Source13:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont_jp-%{version}.otf.sig
 Source14:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont_upper-%{version}.otf
 Source15:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont_upper-%{version}.otf.sig
+Source16:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont-%{version}.pcf.gz
+Source17:       https://ftp.gnu.org/gnu/unifont/unifont-%{version}/unifont-%{version}.pcf.gz.sig
 Source98:       http://unifoundry.com/LICENSE.txt
 Source99:       %{name}.keyring
 BuildRequires:  fontpackages-devel
@@ -41,6 +43,17 @@ The GNU Unifont by Roman Czyborra.
 The Standard Unifont OTF.
 Glyphs above the Unicode Basic Multilingual Plane.
 Unicode ConScript Unicode Registry (CSUR) PUA Glyphs.
+
+%package -n gnu-unifont-bitmap-fonts
+Summary:        GNU Unifont (X11 portable compiled format)
+Group:          System/X11/Fonts
+
+%description -n gnu-unifont-bitmap-fonts
+The GNU Unifont by Roman Czyborra.
+Glyphs above the Unicode Basic Multilingual Plane.
+Unicode ConScript Unicode Registry (CSUR) PUA Glyphs.
+
+This package contains the font in .pcf format.
 
 %package -n gnu-unifont-otf-fonts
 Summary:        GNU Unifont (OpenType Format)
@@ -71,9 +84,14 @@ install -Dm 0644 %{SOURCE8}  %{buildroot}%{_ttfontsdir}/Unifont.otf
 install -Dm 0644 %{SOURCE10} %{buildroot}%{_ttfontsdir}/Unifont_CSUR.otf
 install -Dm 0644 %{SOURCE12} %{buildroot}%{_ttfontsdir}/Unifont_JP.otf
 install -Dm 0644 %{SOURCE14} %{buildroot}%{_ttfontsdir}/Unifont_Upper.otf
+install -Dm 0644 %{SOURCE16} %{buildroot}/%{_fontsdir}/misc/unifont.pcf.gz
 
+%reconfigure_fonts_scriptlets -n gnu-unifont-bitmap-fonts
 %reconfigure_fonts_scriptlets -n gnu-unifont-otf-fonts
 %reconfigure_fonts_scriptlets -n gnu-unifont-jp-otf-fonts
+
+%files -n gnu-unifont-bitmap-fonts
+%{_fontsdir}/misc/
 
 %files -n gnu-unifont-otf-fonts
 %license COPYING
