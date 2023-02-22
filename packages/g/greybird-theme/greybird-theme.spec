@@ -26,7 +26,7 @@ Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
 License:        CC-BY-SA-3.0 OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4
+# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4 and 15.5
 Patch0:         link-selected-is-optional.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
@@ -85,7 +85,7 @@ This package provides the GTK+ 4 support of Greybird
 
 %prep
 %setup -q -n %{_name}-%{version}
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 %patch0 -p1
 %endif
 

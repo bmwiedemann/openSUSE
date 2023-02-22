@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:38:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Make "*:link:selected" optional to work around too old gtk4 libs
+  on Leap 15.5, too.
+
+-------------------------------------------------------------------
 Mon Jan 16 01:59:06 UTC 2023 - maurizio.galli@suse.com
 
 - Update to version 3.23.2+git0.25f312f:
