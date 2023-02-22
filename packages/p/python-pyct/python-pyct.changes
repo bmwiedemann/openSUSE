@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 22 07:03:54 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0:
+  * Minor release that drops support of Python 2.7 and 3.7 and adds
+    support to Python 3.11.  
+
+-------------------------------------------------------------------
 Sun Aug 21 15:27:06 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

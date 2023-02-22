@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyct
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyct
-Version:        0.4.8
+Version:        0.5.0
 Release:        0
 Summary:        Python package for common tasks for users
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/pyct
 Source0:        https://files.pythonhosted.org/packages/source/p/pyct/pyct-%{version}.tar.gz
 Source100:      python-pyct-rpmlintrc
@@ -36,6 +34,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param >= 1.7.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}

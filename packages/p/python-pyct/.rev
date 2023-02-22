@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>998565</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e49a20f66d4bbed1d0b4d2b91e8ca7d2</srcmd5>
+    <version>0.5.0</version>
+    <time>1677075698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Minor release that drops support of Python 2.7 and 3.7 and adds
+    support to Python 3.11.</comment>
+    <requestid>1067094</requestid>
+  </revision>
 </revisionlist>
