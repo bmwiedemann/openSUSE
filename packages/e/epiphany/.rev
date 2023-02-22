@@ -1616,4 +1616,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
 </comment>
     <requestid>1004773</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>df62a74819c5469792f95d908e71ed3b</srcmd5>
+    <version>43.1</version>
+    <time>1677075720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067152</requestid>
+  </revision>
 </revisionlist>

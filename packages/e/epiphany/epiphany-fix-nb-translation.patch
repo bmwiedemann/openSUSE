@@ -1,12 +1,13 @@
---- orig-epiphany-42.4/po/nb.po	2022-08-05 21:45:01.000000000 +0200
-+++ epiphany-42.4/po/nb.po	2022-08-26 13:40:31.687935716 +0200
-@@ -1507,7 +1507,7 @@
+Index: epiphany-43.1/po/nb.po
+===================================================================
+--- epiphany-43.1.orig/po/nb.po
++++ epiphany-43.1/po/nb.po
+@@ -1515,7 +1515,7 @@ msgstr "Siden «%s» svarer ikke"
  
- #: embed/ephy-web-view.c:897
+ #: embed/ephy-web-view.c:895
  msgid "_Wait"
 -msgstr "_Veng"
 +msgstr "_Vent"
  
- #: embed/ephy-web-view.c:898
+ #: embed/ephy-web-view.c:896
  msgid "_Kill"
-
