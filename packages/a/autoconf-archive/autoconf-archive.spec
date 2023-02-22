@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf-archive
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           autoconf-archive
-Version:        2022.09.03
+Version:        2023.02.20
 Release:        0
 Summary:        A Collection of macros for GNU autoconf
 License:        GPL-3.0-or-later WITH Autoconf-exception-3.0

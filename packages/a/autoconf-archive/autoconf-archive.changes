@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 21 07:02:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2023.02.20:
+  * This release contains fixes for multiple macros. In preparation
+    for Clang 16 it contains multiple compatibility changes. 
+
+-------------------------------------------------------------------
 Mon Sep  5 20:07:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2022.09.03:
