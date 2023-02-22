@@ -1,0 +1,9 @@
+<package name="pt2-clone" project="openSUSE:Factory">
+  <title>ProTracker 2 clone</title>
+  <description>Multi-platform clone of the classic music making software
+ProTracker 2.3D.
+
+</description>
+  <devel project="multimedia:apps" package="pt2-clone"/>
+  <url>https://16-bits.org/pt2.php</url>
+</package>
