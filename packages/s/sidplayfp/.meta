@@ -1,0 +1,9 @@
+<package name="sidplayfp" project="openSUSE:Factory">
+  <title>SID chip music module player</title>
+  <description>A player for playing SID music modules originally created on the Commodore 64
+and compatibles.
+
+</description>
+  <devel project="multimedia:apps" package="sidplayfp"/>
+  <url>https://sourceforge.net/projects/sidplay-residfp/</url>
+</package>
