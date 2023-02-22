@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice-voikko
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(libvoikko)
 Requires:       python3-libvoikko
 Provides:       locale(libreoffice:fi)
-ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le riscv64
 
 %description
 LibreOffice spellchecker/hyphenator for finnish language, which uses

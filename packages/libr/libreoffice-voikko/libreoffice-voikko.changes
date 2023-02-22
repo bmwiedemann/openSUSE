@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  8 10:33:54 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Mon Apr 11 14:28:29 UTC 2022 - Marina Latini <marina.latini@suse.com>
 
 - Build also for ppc64le where LibreOffice is also available
