@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 15:27:21 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-gnome: ignore sushi on Leap, deps too big. Hopefully temporary.
+
+-------------------------------------------------------------------
 Wed Nov 23 07:44:58 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Explicitly list 'checkmedia' to be added to the live images

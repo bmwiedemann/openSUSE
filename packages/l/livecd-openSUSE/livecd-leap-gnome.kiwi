@@ -595,6 +595,8 @@
     <ignore name="opensuse-welcome"/>
     <package name="aaa_base" replaces="yelp"/>
     <ignore name="yelp"/>
+    <package name="aaa_base" replaces="sushi"/>
+    <ignore name="sushi"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
