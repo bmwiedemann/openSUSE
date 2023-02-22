@@ -2,7 +2,7 @@ Index: sddm-0.18.0/services/sddm-autologin.pam
 ===================================================================
 --- sddm-0.18.0.orig/services/sddm-autologin.pam
 +++ sddm-0.18.0/services/sddm-autologin.pam
-@@ -1,13 +1,7 @@
+@@ -1,13 +1,8 @@
  #%PAM-1.0
 -auth        required    pam_env.so
 -auth        required    pam_tally2.so file=/var/log/tallylog onerr=succeed
@@ -16,6 +16,7 @@ Index: sddm-0.18.0/services/sddm-autologin.pam
 -session     include     system-local-login
 --session    optional    pam_gnome_keyring.so auto_start
 --session    optional    pam_kwallet5.so auto_start
++auth     requisite      pam_nologin.so
 +auth     required       pam_permit.so
 +account  include        common-account
 +password include        common-password
@@ -26,7 +27,7 @@ Index: sddm-0.18.0/services/sddm.pam
 ===================================================================
 --- sddm-0.18.0.orig/services/sddm.pam
 +++ sddm-0.18.0/services/sddm.pam
-@@ -1,15 +1,7 @@
+@@ -1,15 +1,8 @@
  #%PAM-1.0
 -
 -auth		include		system-login
@@ -42,6 +43,7 @@ Index: sddm-0.18.0/services/sddm.pam
 -session		include		system-login
 --session		optional	pam_gnome_keyring.so auto_start
 --session  optional  pam_kwallet5.so auto_start
++auth     requisite      pam_nologin.so
 +auth     include        common-auth
 +account  include        common-account
 +password include        common-password

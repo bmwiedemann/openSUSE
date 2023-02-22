@@ -694,4 +694,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment>- Move dbus-1 system.d conf file to /usr (bsc#1206348) (forwarded request 1042516 from gmbr3)</comment>
     <requestid>1044091</requestid>
   </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>6247c6169ac64df99e92a87505cd9af8</srcmd5>
+    <version>0.19.0</version>
+    <time>1677075662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066881</requestid>
+  </revision>
 </revisionlist>
