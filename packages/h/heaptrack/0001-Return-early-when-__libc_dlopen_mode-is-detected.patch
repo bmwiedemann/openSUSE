@@ -1,0 +1,24 @@
+From 161bd9f7f352cbc24f36e37f9686d18f5d40c268 Mon Sep 17 00:00:00 2001
+From: Milian Wolff <mail@milianw.de>
+Date: Mon, 11 Jul 2022 15:54:56 +0200
+Subject: [PATCH] Return early when __libc_dlopen_mode is detected
+
+---
+ src/track/heaptrack_env.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/track/heaptrack_env.cpp b/src/track/heaptrack_env.cpp
+index b48e384..36da2ff 100644
+--- a/src/track/heaptrack_env.cpp
++++ b/src/track/heaptrack_env.cpp
+@@ -26,6 +26,7 @@ void dlopenLine(const char* lib)
+     if (&__libc_dlopen_mode) {
+         // __libc_dlopen_mode was available directly in glibc before libdl got merged into it
+         fprintf(stdout, "__libc_dlopen_mode(\"%s\", 0x80000000 | 0x002)\n", lib);
++        return;
+     }
+ 
+ #ifdef __USE_GNU
+-- 
+2.39.2
+

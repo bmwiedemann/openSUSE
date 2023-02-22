@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 22 10:57:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
+- Define _filter_GLIBC_PRIVATE to fix installation on Leap
+
+-------------------------------------------------------------------
 Tue Feb  7 23:22:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add GCC 13 and boost 1.81 compatibility patches:

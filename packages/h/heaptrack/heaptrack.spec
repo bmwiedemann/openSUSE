@@ -17,6 +17,8 @@
 
 
 %define kf5_version 5.26.0
+# Needed for Leap see boo#468748
+%define _filter_GLIBC_PRIVATE 1
 %bcond_without released
 Name:           heaptrack
 Version:        1.4.0
@@ -33,6 +35,8 @@ Source2:        heaptrack.keyring
 Patch0:         0001-Fix-build-with-gcc-13-by-including-cstdint.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Add-missing-include.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_container-devel

@@ -97,4 +97,14 @@
   * 0001-Add-missing-include.patch</comment>
     <requestid>1063700</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8d275b8dff49e2be5162ab9c7def33eb</srcmd5>
+    <version>1.4.0</version>
+    <time>1677075713</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
+- Define _filter_GLIBC_PRIVATE to fix installation on Leap</comment>
+    <requestid>1067140</requestid>
+  </revision>
 </revisionlist>
