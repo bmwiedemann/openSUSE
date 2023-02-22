@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 21 16:28:39 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove container_image from .conf, obsoleted by
+  container_image_default
+- use official distrobox:latest container instead of vanilla
+  tumbleweed to speedup start times, still call it tumbleweed
+  because it is
+
+-------------------------------------------------------------------
 Tue Jan 24 19:46:13 UTC 2023 - Predrag Ivanović <predivan@mts.rs>
 
 - Use tubleweed:latest as the default image
