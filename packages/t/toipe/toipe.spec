@@ -1,7 +1,7 @@
 #
 # spec file for package toipe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           toipe
-Version:        0.4.1
+Version:        0.4.1+g12
 Release:        0
 Summary:        Yet another typing test, but crab flavoured
 License:        (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND MIT
 URL:            https://github.com/Samyak2/toipe
-Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.46
+BuildRequires:  zstd
 ExclusiveArch:  %{rust_arches}
 
 %description

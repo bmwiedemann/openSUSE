@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 15 07:55:58 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.1+g12:
+  * fix the z thing
+  * Add .deepsource.toml
+  * Remove redundant code
+  * Compress bundled wordlists
+  * docs: correct comment
+  * doc: correct comments
+  * doc: resolve and remove documentation TODOs
+  * fix: ensure correct command line arguments
+
+-------------------------------------------------------------------
 Sat Jul 16 02:39:09 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 0.4.1:
