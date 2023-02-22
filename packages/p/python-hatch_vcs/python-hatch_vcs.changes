@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 21 08:48:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to _multibuild to avoid a build cycle with pytest.
+
+-------------------------------------------------------------------
 Sat Dec 10 17:00:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.3.0:

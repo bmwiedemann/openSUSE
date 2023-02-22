@@ -1,7 +1,7 @@
 #
-# spec file for package python-hatch_vcs
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-Name:           python-hatch_vcs
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-hatch_vcs%{psuffix}
 Version:        0.3.0
 Release:        0
 Summary:        Hatch plugin for versioning with your preferred VCS
@@ -36,11 +42,13 @@ BuildArch:      noarch
 BuildRequires:  %{python_module hatchling >= 0.21.0}
 BuildRequires:  %{python_module pip}
 # /SECTION
+%if %{with test}
 # SECTION test
 BuildRequires:  %{python_module setuptools_scm >= 6.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -57,12 +65,17 @@ This provides a plugin for Hatch that uses your preferred version control system
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if %{with test}
 %pytest tests
+rm -rf %{buildroot}
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/hatch_vcs
 %{python_sitelib}/hatch_vcs-%{version}*-info
+%endif
 
 %changelog
