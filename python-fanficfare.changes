@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 15 06:46:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.20.0:
+  - Fixes for adapter_fictionlive story URLs-normalize & skip
+    unsub URL
+  - adapter_deviantartcom date changes #910, thanks bugmaschine
+  - Revamp retries for browser cache with open_pages_in_browser
+  - Fix for & in chapter title.
+  - Add r_anthmax/n_anthmax options for custom_columns_settings
+  - Fixed the Deviantart adapter not detecting that a Deviation
+    is Marked as needing a login, thanks bugmaschine
+  - Skip day of week for localization in browsercache_firefox2
+  - Move makeDate to dateutils to call from browsercache_firefox2
+  - adapter_mediaminerorg: Updates for site changes
+  - adapter_fastnovelsnet: Fixes for site changes -- tested with
+    use_flaresolverr_proxy
+  - Update language->langcode mapping for updated AO3 list
+  - Browser Cache Refactor & open_pages_in_browser feature
+  - See PR #905 and this MR post.
+  - Fixes for config base_xenforo options, closes #902
+  - Fix for adapter_quotevcom status
+  - Equalize ok/cancel buttons on user/pass & email pass dialogs
+  - adapter_ficbooknet: Site change for status + remove debug
+  - Tweak for adapter_storiesonlinenet description parsing
+- Add adapter_dwiggiecom.patch (gh#JimmXinu/FanFicFare#903)
+  for openSUSE-only (reasons are in the patch) support for
+  dwiggie.com.
+
+-------------------------------------------------------------------
 Mon Jan  2 07:40:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.19.0:
