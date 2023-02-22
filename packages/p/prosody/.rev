@@ -604,4 +604,32 @@
     <comment></comment>
     <requestid>1066054</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5faf79657fddd04a63b81a02e5986a4f</srcmd5>
+    <version>0.12.3</version>
+    <time>1677075699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.3:
+  Fixes and improvements:
+  * mod_storage_sql: Don’t avoid initialization under prosodyctl
+    (fix #1787: mod_storage_sql changes (d580e6a57cbb) breaks prosodyctl)
+  * mod_storage_sql: Fix for breaking change in certain MySQL versions (#1639)
+  * prosodyctl check dns: Check for Direct TLS SRV records even if not configured (#1793)
+  Minor changes:
+  * mod_websocket: Fire pre-session-close event (fixes #1800: mod_websocket:
+    cleanly-closed sessions are hibernated by mod_smacks)
+  * sessionmanager: Mark session as destroyed to prevent reentry (fixes #1781)
+  * mod_admin_socket: Return error on unhandled input to prevent apparent freeze
+  * configure: Fix quoting of $LUA_SUFFIX (thanks shellcheck/Zash)
+  * net.http.parser: Improve handling of responses without content-length
+  * net.http.parser: Fix off-by-one error in chunk parser
+  * net.http.server: Add new API to get HTTP request from a connection
+  * net.http.server: Fix double close of file handle in chunked mode with opportunistic writes (#1789)
+  * util.prosodyctl.shell: Close state on exit to fix saving shell history
+  * mod_invites: Prefer landing page over xmpp URI in shell command
+  * mod_muc_mam: Add mam#extended form fields #1796
+  * mod_muc_mam: Copy “include total” behavior from mod_mam
+  * util.startup: Close state on exit to ensure GC finalizers are called</comment>
+    <requestid>1067095</requestid>
+  </revision>
 </revisionlist>
