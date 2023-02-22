@@ -3981,4 +3981,25 @@
     <comment>- Fix use of run_cmd.sh (forwarded request 1063975 from Andreas_Schwab)</comment>
     <requestid>1063980</requestid>
   </revision>
+  <revision rev="233" vrev="6">
+    <srcmd5>4b970e5f7d5b50839a872749efebd2fd</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1677075661</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20230218
+  + configure-script improvements:
+    + recent msys2 headers work with _DEFAULT_SOURCE; amend check
+    + use $ac_includes_default in most cases where stdlib.h should work
+    + use #error consistently vs &quot;make an error&quot;
+    + add configure macro for gettimeofday vs inline check
+- Correct offsets of patch ncurses-6.4.dif
+
+- Add ncurses patch 20230211
+  + set dwShareMode in calls to CreateConsoleScreenBuffer() (patch by
+    Hannes Domani).
+  + use CreateFile with &quot;CONIN$&quot;, &quot;CONOUT$&quot; rather than GetStdHandle to
+    obtain a handle on the actual console, avoiding redirection in the
+    MinGW/Win32 configurations (adapted from patch by LIU Hao).</comment>
+    <requestid>1066746</requestid>
+  </revision>
 </revisionlist>

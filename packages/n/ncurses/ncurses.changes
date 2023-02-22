@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 20 07:28:49 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230218
+  + configure-script improvements:
+    + recent msys2 headers work with _DEFAULT_SOURCE; amend check
+    + use $ac_includes_default in most cases where stdlib.h should work
+    + use #error consistently vs "make an error"
+    + add configure macro for gettimeofday vs inline check
+- Correct offsets of patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
+Mon Feb 13 07:29:59 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230211
+  + set dwShareMode in calls to CreateConsoleScreenBuffer() (patch by
+    Hannes Domani).
+  + use CreateFile with "CONIN$", "CONOUT$" rather than GetStdHandle to
+    obtain a handle on the actual console, avoiding redirection in the
+    MinGW/Win32 configurations (adapted from patch by LIU Hao).
+
+-------------------------------------------------------------------
 Wed Feb  8 21:03:01 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Fix use of run_cmd.sh
