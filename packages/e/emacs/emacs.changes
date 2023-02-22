@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 21 08:28:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit/patches
+  * 01a4035c.patch
+    Fix etags local command injection vulnerability (CVE-2022-48337, bsc#1208515)
+  * CVE-2022-48338.patch
+    Fix ruby-mode.el local command injection vulnerability (CVE-2022-48338, bsc#1208514)
+  * CVE-2022-48339.patch
+    Fix htmlfontify.el command injection vulnerability (CVE-2022-48339 bsc#1208512)
+- Require libwebp at build time for automatically enable support
+  for libwebp if given
+
+-------------------------------------------------------------------
 Tue Nov 29 10:41:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to GNU Emacs version 28.2

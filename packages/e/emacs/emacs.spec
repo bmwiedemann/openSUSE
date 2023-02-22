@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,6 +93,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(valgrind)
 %if %{with tex4pdf}
 BuildRequires:  tex(babel.sty)
@@ -168,7 +169,7 @@ Source6:        https://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz.sig
 # https://ftp.gnu.org/gnu/gnu-keyring.gpg
 Source7:        %{name}.keyring
 Source8:        emacs-%{version}-pdf.tar.xz
-Patch:          emacs-28.1.dif
+Patch0:         emacs-28.1.dif
 # Currently disabled
 Patch2:         emacs-24.4-glibc.patch
 Patch4:         emacs-24.3-asian-print.patch
@@ -188,7 +189,9 @@ Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
 Patch30:        d48bb487.patch
-
+Patch31:        01a4035c.patch
+Patch32:        CVE-2022-48338.patch
+Patch33:        CVE-2022-48339.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
@@ -335,7 +338,10 @@ and most assembler-like syntaxes.
 %patch26 -p0 -b .fmt
 %patch29 -p0 -b .xauth
 %patch30 -p0 -b .cve202245939
-%patch   -p0 -b .0
+%patch31 -p0 -b .cve2022XXXXX
+%patch32 -p0 -b .cve202248338
+%patch33 -p0 -b .cve202248339
+%patch0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
     tar --use-compress-program=xz -xf %{S:8}
@@ -647,6 +653,8 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/epg.el.gnupg
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/mouse.el.prime
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/dynamic-setting.el.custfnt
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/htmlfontify.el.cve202248339
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/ruby-mode.el.cve202248338
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/bindings.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/cus-start.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/generic-x.elc

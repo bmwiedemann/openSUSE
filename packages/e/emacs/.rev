@@ -1743,4 +1743,20 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * emacs-28.1.dif</comment>
     <requestid>1038881</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>4129ac240a205cdba9f227705b23fe16</srcmd5>
+    <version>28.2</version>
+    <time>1677075664</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream commit/patches
+  * 01a4035c.patch
+    Fix etags local command injection vulnerability (CVE-2022-48337, bsc#1208515)
+  * CVE-2022-48338.patch
+    Fix ruby-mode.el local command injection vulnerability (CVE-2022-48338, bsc#1208514)
+  * CVE-2022-48339.patch
+    Fix htmlfontify.el command injection vulnerability (CVE-2022-48339 bsc#1208512)
+- Require libwebp at build time for automatically enable support
+  for libwebp if given</comment>
+    <requestid>1066988</requestid>
+  </revision>
 </revisionlist>
