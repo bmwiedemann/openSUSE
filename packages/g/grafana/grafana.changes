@@ -1,4 +1,1272 @@
 -------------------------------------------------------------------
+Mon Feb 16 16:45:00 UTC 2023 - marius.kittler@suse.com
+
+- Update to 9.3.6 (2023-01-26)
+  * Bug fixes
+    - **QueryEditorRow:** Fixes issue loading query editor when
+      data source variable selected.
+
+- Update to 9.3.4 (2023-01-25)
+  * Features and enhancements
+    - **Prometheus:** Add default editor configuration.
+    - **TextPanel:** Refactor to functional component.
+  * Bug fixes
+    - **Alerting:** Fix webhook to use correct key for decrypting
+      token.
+    - **Alerting:** Set error annotation on EvaluationError
+      regardless of underlying error type.
+    - **Datasources:** Fix Proxy by UID Failing for UIDs with a
+      Hyphen.
+    - **Elasticsearch:** Fix creating of span link with no tags.
+    - **Elasticsearch:** Fix failing requests when using SigV4.
+    - **Elasticsearch:** Fix toggle-settings are not shown
+      correctly.
+    - **Explore:** Be sure time range key bindings are mounted
+      after clear.
+    - **Explore:** Unsync time ranges when a pane is closed.
+    - **Logs:** Lines with long words do not break properly.
+    - **Loki:** Fix misaligned derived fields settings.
+    - **Query Builder:** Fix max width of input component to
+      prevent overflows.
+    - **Search:** Auto focus input elements.
+    - **Search:** Fix empty folder message showing when by starred
+      dashboards.
+    - **Table Panel:** Fix image of image cell overflowing table
+      cell and cells ignoring text alignment setting when a data
+      link is added.
+
+- Update to 9.3.2 (2023-12-13)
+  * Features and enhancements
+    - **Graphite:** Process multiple queries to Graphite plugin.
+  * Bug fixes
+    - **API:** Fix delete user failure due to quota not enabled.
+    - **Accessibility:** Improved keyboard accessibility in
+      BarGauge.
+    - **Accessibility:** Improved keyboard accessibility in
+      BigValue.
+    - **Alerting:** Use the QuotaTargetSrv instead of the
+      QuotaTarget in quota check.
+    - **AzureMonitor:** Automate location retrieval.
+    - **AzureMonitor:** Fix bad request when setting dimensions.
+    - **BarChart:** Fix value mappings.
+    - **Build:** Streamline and sync dockerfiles.
+    - **Build:** Unified dockerfile for all builds.
+    - **CloudWatch:** Fix - make sure dimensions are propagated to
+      alert query editor.
+    - **Cloudwatch:** Fix deeplink with default region.
+    - **Command Palette:** Fix not being able to type if triggered
+      whilst another modal is open.
+    - **Command Palette:** Maintain page state when changing theme.
+    - **Dashboards:** Fix 'Make Editable' button not working in
+      Dashboard Settings.
+    - **Dashboards:** Show error when data source is missing.
+    - **Datasource:** Fix - apply default query also to queries in
+      new panels.
+    - **Dropdown:** Menu now closes correctly when selecting
+      options on touch devices.
+    - **Influx:** Query segment menus now position correctly near
+      the bottom of the screen.
+    - **Login:** Fix failure to login a new user via an external
+      provider if quota are enabled.
+    - **Loki/Prometheus:** Fix wrong queries executed in split
+      view.
+    - **Loki:** Fix wrongly escaped label values when using
+      LabelFilter.
+    - **Navigation:** Prevent app crash when importing a dashboard
+      with a uid of `home`.
+    - **Panel Edit:** Fix data links edit icons being off screen
+      when provided title is too long.
+    - **Prometheus:** Fix exemplar fill color to match series color
+      in time series.
+    - **Prometheus:** Fix exemplars not respecting corresponding
+      series display status.
+    - **StateTimeline:** Fix negative infinity legend/tooltip from
+      thresholds.
+    - **Table:** Fixes row border style not showing and colored
+      rows blending together.
+    - **Tempo:** Fix TraceQL autocomplete issues.
+    - **TimePicker:** Prevent TimePicker overflowing viewport on
+      small screens.
+    - **TimeRangePicker:** Fix recently ranges only not showing all
+      recent ranges.
+    - **TimeZonePicker:** Scroll menu correctly when using keyboard
+      controls.
+
+- Update to 9.3.1 (2022-11-30)
+  * Features and enhancements
+    - **Connections:** Update "Your connections/Data sources" page.
+  * Bug fixes
+    - **Accessibility:** Increase badge constrast to be WCAG AA
+      compliant.
+
+- Update to 9.3.0 (2022-11-30)
+  * Features and enhancements
+    - **Alerting:** Enable interpolation for notification policies
+      in file provisioning.
+    - **Azure Monitor Logs:** Avoid warning when the response is
+      empty.
+    - **Azure Monitor:** Add support to customized routes.
+    - **Canvas:** Add icon value mapping.
+    - **CloudWatch:** Cross-account querying support.
+    - **Docs:** Update `merge-pull-request.md` regarding backport
+      policies.
+    - **GaugePanel:** Setting the neutral-point of a gauge.
+    - **Geomap:** Improve location editor.
+    - **Internationalization:** Enable internationalization by
+      default.
+    - **Logs:** Add `Download logs` button to log log-browser.
+    - **Loki:** Add `gzip` compression to resource calls.
+    - **Loki:** Add improvements to loki label browser.
+    - **Loki:** Make label browser accessible in query builder.
+    - **Loki:** Remove raw query toggle.
+    - **Middleware:** Add CSP Report Only support.
+    - **Navigation:** Prevent viewer role accessing dashboard
+      creation, import and folder creation.
+    - **OAuth:** Refactor OAuth parameters handling to support
+      obtaining refresh tokens for Google OAuth.
+    - **Oauth:** Display friendly error message when
+      role_attribute_strict=true and no valid role found.
+    - **Preferences:** Add confirmation modal when saving org
+      preferences.
+    - **PublicDashboards:** Orphaned public dashboard deletion
+      script added.
+    - **Query Editor:** Hide overflow for long query names.
+    - **Reports:** Configurable timezone. (Enterprise)
+    - **Solo Panel:** Configurable timezone.
+    - **TablePanel:** Add support for Count calculation per column
+      or per entire dataset.
+    - **Tempo:** Send the correct start time when making a TraceQL
+      query.
+    - **Various Panels:** Remove beta label from Bar Chart,
+      Candlestick, Histogram, State Timeline, & Status History
+      Panels.
+  * Bug fixes
+    - **Access Control:** Clear user's permission cache after
+      resource creation.
+    - **Access Control:** Clear user's permission cache after
+      resource creation.
+    - **Accessibility:** Improve keyboard accessibility in
+      `AnnoListPanel`.
+    - **Accessibility:** Improve keyboard accessibility in
+      `Collapse`.
+    - **Accessibility:** Improve keyboard accessibility in
+      `GettingStarted` panel.
+    - **Accessibility:** Improve keyboard accessibility of
+      `FilterPill`.
+    - **Admin:** Fix broken links to image assets in email
+      templates.
+    - **Azure Monitor:** Fix namespace selection for
+      storageaccounts.
+    - **Calcs:** Fix difference percent in legend.
+    - **DataLinks:** Improve Data-Links AutoComplete Logic.
+    - **Explore:** Fix a11y issue with logs navigation buttons.
+    - **Heatmap:** Fix blurry text & rendering.
+    - **Heatmap:** Fix tooltip y range of top and bottom buckets in
+      calculated heatmaps.
+    - **Logs:** Fix misalignment of LogRows.
+    - **Navigation:** Stop clearing search state when opening a
+      result in a new tab.
+    - **OptionsUI:** SliderValueEditor does not get auto focused on
+      slider change.
+    - **PanelEdit:** Fixes bug with not remembering panel options
+      pane collapse/expand state.
+    - **Query Caching:** Skip 207 status codes. (Enterprise)
+    - **Quota:** Fix failure in store due to missing scope
+      parameters.
+    - **Quota:** Fix failure when checking session limits.
+    - **Reports:** Fix time preview. (Enterprise)
+    - **StateTimeline:** Prevent label text from overflowing state
+      rects.
+    - **Tempo:** Fix search table duration unit.
+    - **TraceView:** Fix broken rendering when scrolling in
+      Dashboard panel in Firefox.
+  * Plugin development fixes & changes
+    - **GrafanaUI:** Add disabled option for menu items.
+
+- Update to 9.2.4 (2022-11-07)
+  * Features and enhancements
+    - **Access Control:** Add an endpoint for setting several
+      managed resource permissions.
+    - **Accessibility:** Increase `Select` placeholder contrast to
+      be WCAG AA compliant.
+    - **Alerting:** Append org ID to alert notification URLs.
+    - **Alerting:** Make the Grouped view the default one for
+      Rules.
+    - **Build:** Remove unnecessary alpine package updates.
+    - **Chore:** Upgrade Go to 1.19.3.
+    - **Google Cloud Monitoring:** Set frame interval to draw null
+      values.
+    - **Instrumentation:** Expose when the binary was built as a
+      gauge.
+    - **Loki:** Preserve `X-ID-Token` header.
+    - **Search:** Reduce requests in folder view.
+    - **TimeSeries:** More thorough detection of negative values
+      for auto-stacking direction.
+  * Bug fixes
+    - **Alerting:** Attempt to preserve UID from migrated legacy
+      channel.
+    - **Alerting:** Fix response is not returned for invalid
+      Duration in Provisioning API.
+    - **Alerting:** Fix screenshot is not taken for stale series.
+    - **Auth:** Fix admins not seeing pending invites.
+    - **MSSQL/Postgres:** Fix visual query editor filter
+      disappearing.
+    - **Tempo:** Fix dropdown issue on tag field focus.
+    - **Timeseries:** Fix null pointer when matching fill below to
+      field.
+  * Plugin development fixes & changes
+    - **Toolkit:** Fix Webpack less-loader config.
+
+- Update to 9.2.3 (2022-10-31)
+  * Features and enhancements
+    - **Docs:** Add information about DB version support to upgrade
+      guide.
+    - **Footer:** Update footer release notes link to Github
+      changelog.
+    - **Prometheus:** Do not drop errors in streaming parser.
+    - **Prometheus:** Flavor/version configuration.
+    - **Prometheus:** Provide label values match parameter API when
+      supported prometheus instance is configured.
+    - **Security:** Upgrade x/text to version unaffected by
+      CVE-2022-32149.
+  * Bug fixes
+    - **Access control:** Fix a bug with argument order for data
+      source managed permission updates. (Enterprise)
+    - **Auth:** Fix GF_AUTH_JWT_URL_LOGIN env variable doesn't
+      work.
+    - **Live:** Explicitly reply with http 200.
+    - **Prometheus:** Fix builder operation mode changing
+      multiselect to single select behaviour.
+    - **Prometheus:** Fix builder operation mode changing
+      multiselect to single select behaviour.
+    - **Security:** Fix vulnerabilities in webpack loader-utils.
+
+- Update to 9.2.2 (2022-10-25)
+  * Features and enhancements
+    - **Alerting:** Add support for wecom apiapp.
+    - **Canvas:** Improve resource picker initialization.
+    - **Canvas:** Improve text element readability.
+    - **CloudWatch:** Make sure adoption tracking is done on valid,
+      migrated queries.
+    - **Dashboard:** Alerts user to incorrect tag format for JSON
+      import.
+    - **MSSQL:** Support tables from all schemas.
+    - **Opentsdb:** Allow template variables for filter keys.
+    - **Prometheus:** Provide label values match parameter API when
+      supported prometheus instance is configured.
+    - **QueryEditor:** Revert components from grafana-ui.
+    - **TeamSync:** Allow team sync when external organization
+      mapping returns no organization role. (Enterprise)
+  * Bug fixes
+    - **Browse:** Fix General folder not showing in FolderPicker.
+    - **Elasticsearch:** Fix calculation of trimEdges in alert
+      mode.
+    - **Elasticsearch:** Fix trimEdges delete logic in alert mode.
+    - **GoogleOAuth:** Unlock User Admin UI.
+    - **LogContext:** Fix wrong color of `show context` icon in
+      light theme.
+    - **Loki:** Fix adding of adhoc filters to stream selector when
+      query with empty stream selector.
+    - **Loki:** Fix double stringified log-lines when copied via
+      Copy button.
+    - **Loki:** Fix explain section about $\_\_interval variable.
+    - **Loki:** Remove already selected options from next label
+      filter options in builder.
+    - **NodeGraph:** Fix rendering issues when values of arc are
+      over 1.
+    - **PublicDashboards:** Fix hidden queries execution.
+    - **PublicDashboards:** Fix hidden queries execution.
+    - **Tempo:** Fix Node Graph visualization type in dashboard.
+    - **TimeSeries:** Fix stacking when first value is negative
+      zero.
+    - **TimeseriesPanel:** Fix variables in data links.
+    - **User:** Fix externalUserId not being populated.
+  * Breaking changes
+    We added some components a bit too early to @grafana/ui in 9.2
+    so we are moving them back to @grafana/experimental. If you
+    used any of these components
+    - AccessoryButton
+    - EditorFieldGroup
+    - EditorHeader
+    - EditorField
+    - EditorRow
+    - EditorList
+    - EditorRows
+    - EditorSwitch
+    - FlexItem
+    - Stack
+    - InlineSelect
+    - InputGroup
+    - Space
+    Please use them from grafana/experimental from now on.
+
+- Update to 9.2.1 (2022-10-18)
+  * Features and enhancements
+    - **Alerting:** Improve notification policies created during
+      migration.
+    - **AzureAD:** Add option to force fetch the groups from the
+      Graph API.
+    - **AzureAD:** Add option to force fetch the groups from the
+      Graph API.
+    - **Docs:** Note end of release notes publication.
+    - **Inspect:** Handle JSON tab crash when the provided object
+      is too big to stringify.
+    - **TablePanel:** Footer now updates values on column
+      filtering.
+  * Bug fixes
+    - **Alerting:** Fix email image embedding on Windows.
+    - **Alerting:** Fix mathexp.NoData for ConditionsCmd.
+    - **Legacy Alerting:** Fix duration calculation when testing a
+      rule.
+    - **Loki:** Propagate additional headers from Grafana to Loki
+      when querying data.
+    - **Search:** Sort alphabetically in the folder view, increase
+      the limit of the folder search from 50 to 1000.
+    - **TablePanel:** Fix last table column to be centered.
+  * Plugin development fixes & changes
+    - **Grafana UI:** Export prop types for queryfield, modal and
+      field components.
+    - **Toolkit:** Fix `Cannot use import statement outside...`
+      error in tests.
+
+- Update to 9.2.0 (2022-10-11)
+  * Features and enhancements
+    - **Alerting:** Add Notification error feedback on contact
+      points view.
+    - **Alerting:** Allow created by to be manually set when
+      there's no creator for silences.
+    - **Alerting:** Expose info about notification delivery errors
+      in a new /receivers endpoint.
+    - **Alerting:** Update imported prometheus alertmanager
+      version.
+    - **Alerting:** Update imported prometheus alertmanager
+      version. Backport.
+    - **Alerting:** Write and Delete multiple alert instances.
+    - **Core:** Implement aria attributes for query rows, improve
+      a11y.
+    - **Custom Branding:** Remove custom branding service.
+      (Enterprise)
+    - **Custom branding:** Remove UI. (Enterprise)
+    - **DevEnv:** Adds docker block for clickhouse.
+    - **Docker:** removes unneccesary use of edge repo.
+    - **Explore:** Revert split pane resize feature.
+    - **Frontend:** Make local storage items propagate to different
+      tabs immediately.
+    - **PublicDashboards:** Allow disabling an existent public
+      dashboard if it ….
+    - **QueryEditorRow:** Only pass error to query editor if panel
+      is not in a loading state.
+    - **Reports:** Refresh query variables on time range change.
+      (Enterprise)
+    - **XYChart:** Beta release.
+    - **[9.2.x] Alerting:** Start ticker only when scheduler
+      starts.
+  * Bug fixes
+    - **Alerting:** Fix pq: missing FROM-clause for table "a".
+    - **AzureMonitor:** Correctly update subscriptions value in ARG
+      editor.
+    - **Chore:** Fix swagger validation failures. (Enterprise)
+    - **Chore:** Regenerate swagger specification and fix
+      validation failures.
+    - **Correlations:** Only return correlation for which both
+      source and target datasources exist.
+    - **Explore:** Prevent panes from disappearing when resizing
+      window in split view.
+    - **Links:** Fix opening links from different orgs on the same
+      tab.
+    - **LogContext:** Fix scroll position in upper context group.
+    - **Logs:** Show copy button independently from context.
+    - **Loki/Prometheus:** Fix adding of ad hoc filters when
+      jumping from dashboard to explore.
+    - **Loki:** Add support for range aggregations with by
+      grouping.
+    - **Loki:** Fix label-value escaping in context query.
+    - **Loki:** Fix redundant escaping in adhoc filter with regex
+      match.
+    - **PanelEdit:** Fixes resize pane border and spacing issues.
+    - **PublicDashboards:** Fix dashboard insights query when
+      Public Dashboard feature is enabled. (Enterprise)
+    - **PublicDashboards:** Fix dashboard insights query when
+      Public Dashboard feature is enabled. (Enterprise)
+    - **RBAC:** Redirect to /login when forceLogin is set.
+    - **SAML:** Fix RelayState generation function. (Enterprise)
+    - **Security:** Fix CVE-2022-27664.
+    - **StateTimeline:** Fix tooltip showing erroneously in shared
+      crosshair dashboards.
+    - **Tempo:** Fix unexpected trimming of leading zeroes in
+      traceID.
+    - **Tracing:** Fix bug where errors are not reported to
+      OpenTelemetry.
+
+- Update to 9.1.8 (2022-10-11)
+  * Features and enhancements
+    - **Alerting:** Update imported prometheus alertmanager
+      version. Backport.
+    - **Chore:** Upgrade Go to 1.19.2.
+  * Bug fixes
+    - **Alerting:** Fix evaluation interval validation.
+    - **Alerting:** Fix migration to create rules with group index
+      1.
+    - **Alerting:** Fix migration to not add label "alertname".
+    - **Azure Monitor:** Fix empty Logs response for Alerting.
+    - **Azure Monitor:** Fix subscription selector when changing
+      data sources.
+    - **Caching:** Fix wrong memcached setting name in defaults.
+      (Enterprise)
+    - **Google Cloud Monitoring:** Fix bucket bound for
+      distributions.
+
+- Update to 9.1.7 (2022-10-04)
+  * Features and enhancements
+    - **Chore:** Upgrade Go version to 1.19.1 (backport).
+    - **CloudWatch:** Add missing AWS/Prometheus metrics.
+    - **Explore:** Add feature tracking events.
+    - **Graphite:** Add error information to graphite queries
+      tracing.
+    - **Prometheus:** Restore FromAlert header.
+    - **SAML:** Account for all orgs in org_mapping. (Enterprise)
+    - **Search:** Add search index configuration options.
+    - **Thresholds:** Add option for dashed line style.
+  * Bug fixes
+    - **Alerting:** Fix default query's data source when no default
+      datasource specified.
+    - **Alerting:** Fix mathexp.NoData cannot be reduced.
+    - **Alerting:** Skip unsupported file types on provisioning.
+    - **AzureMonitor:** Ensure resourceURI template variable is
+      migrated.
+    - **Dashboard:** Fix plugin dashboard save as button.
+    - **Docs:** Fix decimals: auto docs for panel edit.
+    - **Fix:** RBAC handle `error no resolver` found.
+    - **Fix:** RBAC handle `error no resolver` found. (Enterprise)
+    - **LibraryPanelSearch:** Refactor and fix hyphen issue.
+    - **Live:** Fix live streaming with `live-service-web-worker`
+      feature flag enabled.
+    - **QueryField:** Fix wrong cursor position on autocomplete.
+
+- Update to 9.1.6 (2022-09-20)
+  * Features and enhancements
+    - **Auth:** Trigger auth token cleanup job. (Enterprise)
+    - **DataSource:** Adding possibility to hide queries from the
+      inspector.
+    - **Inspect:** Hide Actions tab when it is empty.
+    - **PanelMenu:** Remove hide legend action as it was showing on
+      all panel types.
+    - **Provisioning Contact points:** Support
+      disableResolveMessage via YAML.
+    - **PublicDashboards:** Support subpaths when generating
+      pubdash url.
+  * Bug fixes
+    - **Alerting:** Fix legacy migration crash when rule name is
+      too long.
+    - **Alerting:** Fix send resolved notifications.
+    - **Azure Monitor:** Fix migration issue with
+      MetricDefinitionsQuery template variable query types.
+    - **Browse:** Hide dashboard actions if user does not have
+      enough permission.
+    - **ElasticSearch:** Fix dispatching queries at a wrong time.
+    - **Panel:** Disable legends when showLegend is false prior to
+      schema v37.
+    - **Prometheus:** Fix metadata requests for browser access
+      mode.
+    - **Search:** Avoid requesting all dashboards when in Folder
+      View.
+    - **TablePanel/StatPanel:** Fix values not being visible when
+      background transparent.
+
+- Update to 9.1.5 (2022-09-12)
+  * Features and enhancements
+    - **Alerting:** Sanitize invalid label/annotation names for
+      external alertmanagers.
+    - **Alerting:** Telegram: Truncate long messages to avoid send
+      error.
+    - **DisplayProcessor:** Handle reverse-ordered data when
+      auto-showing millis.
+    - **Heatmap:** Add option to reverse color scheme.
+    - **PluginLoader:** Alias slate-react as @grafana/slate-react.
+    - **Search:** Add substring matcher, to bring back the old
+      dashboard search behavior.
+    - **Traces:** More visible span colors.
+  * Bug fixes
+    - **Alerting:** Fix incorrect propagation of org ID and other
+      fields in rule provisioning endpoints.
+    - **Alerting:** Resetting the notification policy tree to the
+      default policy will also restore default contact points.
+    - **AzureMonitor:** Fix custom namespaces.
+    - **AzureMonitor:** Fix issue where custom metric namespaces
+      are not included in the metric namespace list.
+    - **CloudWatch:** Fix display name of metric and namespace.
+    - **Cloudwatch:** Fix annotation query serialization issue.
+    - **Dashboard:** Fix issue where unsaved changes warning would
+      appear even after save, and not being able to change library
+      panels.
+    - **Dashboard:** Hide overflow content for single left pane.
+    - **Loki:** Fix a bug where adding adhoc filters was not
+      possible.
+    - **Reports:** Fix handling expired state. (Enterprise)
+
+- Update to 9.1.4 (2022-09-09)
+  * Bug fixes
+    - **GrafanaUI:** Fixes Chrome issue for various query fields.
+
+- Update to 9.1.3 (2022-09-05)
+  * Features and enhancements
+    - **API:** Do not expose user input in datasource error
+      responses.
+    - **Alerting:** Write and Delete multiple alert instances.
+    - **Library Panel:** Allow to delete them when deprecated.
+    - **Plugins Catalog:** Allow to filter plugins using special
+      characters.
+  * Bug fixes
+    - **Alerting:** Fix UI bug when setting custom notification
+      policy group by.
+    - **AppRootPage:** Fix issue navigating between two app plugin
+      pages.
+    - **Correlations:** Use correct fallback handlers.
+    - **FIX:** RBAC prevents deleting empty snapshots.
+    - **LibraryElements:** Fix inability to delete library panels
+      under MySQL.
+    - **Metrics:** fix `grafana_database_conn_*` metrics, and add
+      new `go_sql_stats_*` metrics as eventual replacement.
+    - **TestData DB:** Fix node graph not showing when the
+      `Data type` field is set to `random`.
+  * Deprecations
+    The `grafana_database_conn_*` metrics are deprecated, and will
+    be removed in a future version of Grafana. Use the
+    `go_sql_stats_*` metrics instead.
+
+- Update to 9.1.2 (2022-08-30)
+  * Features and enhancements
+    - **AdHoc variable:** Correctly preselect datasource when
+      provisioning.
+    - **AzureMonitor:** Added ARG query function for template
+      variables.
+    - **Dashboard save:** Persist details message when navigating
+      through dashboard save drawer's tabs.
+    - **Dashboards:** Correctly migrate mixed data source targets.
+    - **Elasticsearch:** Use millisecond intervals for alerting.
+    - **Elasticsearch:** Use millisecond intervals in frontend.
+    - **Geomap:** Local color range.
+    - **Plugins Catalog:** Use appSubUrl to generate plugins
+      catalog urls.
+    - **Rendering:** Add support for renderer token.
+  * Bug fixes
+    - **Alerting:** Fix saving of screenshots uploaded with a
+      signed url.
+    - **AngularPanels:** Fixing changing angular panel options not
+      taking having affect when coming back from panel edit.
+    - **Explore:** Improve a11y of query row collapse button.
+    - **Geomap:** Fix tooltip display.
+    - **QueryEditorRow:** Filter data on mount.
+    - **Search:** Show all dashboards in the folder view.
+    - **Tracing:** Fix the event attributes in opentelemetry
+      tracing.
+  * Plugin development fixes & changes
+    - **GrafanaUI:** Fix styles for invalid selects &
+      DataSourcePicker.
+
+- Update to 9.1.1 (2022-08-23)
+  * Features and enhancements
+    - **Cloud Monitoring:** Support SLO burn rate.
+    - **Schema:** Restore "hidden" in LegendDisplayMode.
+    - **Timeseries:** Revert the timezone(s) property name change
+      back to singular.
+  * Bug fixes
+    - **Alerting:** Fix links in Microsoft Teams notifications.
+    - **Alerting:** Fix notifications for Microsoft Teams.
+    - **Alerting:** Fix width of Adaptive Cards in Teams
+      notifications.
+    - **ColorPickerInput:** Fix popover in disabled state.
+    - **Decimals:** Fixes auto decimals to behave the same for
+      positive and negative values.
+    - **Loki:** Fix unique log row id generation.
+    - **Plugins:** Fix file extension in development authentication
+      guide.
+    - **TimeSeries:** Fix jumping legend issue.
+    - **TimeSeries:** Fix memory leak on viz re-init caused by
+      KeyboardPlugin.
+  * Plugin development fixes & changes
+    - **TimePicker:** Fixes relative timerange of less than a day
+      not displaying.
+    - **GrafanaUI:** Fixes ClipboardButton to always keep multi
+      line content.
+
+- Update to 9.1.0 (2022-08-16)
+  * Features and enhancements
+    - **API:** Allow creating teams with a user defined identifier.
+    - **Alerting:** Adds interval and For to alert rule details.
+    - **Alerting:** Extend PUT rule-group route to write the entire
+      rule group rather than top-level fields only.
+    - **Alerting:** Use Adaptive Cards in Teams notifications.
+    - **Azure Monitor:** Add Network Insights Dashboard.
+    - **Chore:** Improve logging of unrecoverable errors.
+    - **Correlations:** Add UpdateCorrelation HTTP API.
+    - **Dashboard:** Reverted the changes of hiding multi-select
+      and all variable in the datasource picker.
+    - **Geomap:** Add alpha day/night layer.
+    - **Geomap:** Add measuring tools.
+    - **GrafanaUI:** Add success state to ClipboardButton.
+    - **Heatmap:** Replace the heatmap panel with new
+      implementation.
+    - **KVStore:** Allow empty value in kv_store.
+    - **Prometheus:** Promote Azure auth flag to configuration.
+    - **Reports:** Save and update in reports should be
+      transactional. (Enterprise)
+    - **Reports:** Set uid when we don't receive it in the query.
+      (Enterprise)
+    - **Search:** Display only dashboards in General folder of
+      Search Folder View.
+    - **Status history/State timeline:** Support datalinks.
+    - **Transform:** Add a limit transform.
+    - **Transformations:** Add standard deviation and variance
+      reducers.
+  * Bug fixes
+    - **API:** Fix snapshot responses.
+    - **Access Control:** Fix permission error during dashboard
+      creation flow.
+    - **Access Control:** Set permissions for Grafana's test data
+      source.
+    - **Alerting:** Fix migration failure.
+    - **BarGauge:** Show empty bar when value, minValue and
+      maxValue are all equal.
+    - **Dashboard:** Fix color of bold and italics text in panel
+      description tooltip.
+    - **Loki:** Fix passing of query with defaults to code mode.
+    - **Loki:** Fix producing correct log volume query for query
+      with comments.
+    - **Loki:** Fix showing of unusable labels field in detected
+      fields.
+    - **Reports:** Fix inconsistency reports. (Enterprise)
+    - **Tracing:** Fix OpenTelemetry Jaeger context propagation.
+    - **Tracing:** Fix OpenTelemetry Jaeger context propagation.
+    - **[9.1.x] Alerting:** AlertingProxy to elevate permissions
+      for request forwarded to data proxy when RBAC enabled.
+  * Plugin development fixes & changes
+    - **Plugins:** Only pass `rootUrls` field in request when not
+      empty.
+  * Breaking changes
+    - Alert notifications to Microsoft Teams now use Adaptive Cards
+      instead of Office 365 Connector Cards.
+    - Starting at 9.1.0, existing heatmap panels will start using a
+      new implementation. This can be disabled by setting the
+      `useLegacyHeatmapPanel` feature flag to true. It can be
+      tested on a single dashbobard by adding
+      `?__feature.useLegacyHeatmapPanel=true` to any dashboard URL.
+      The most notable changes are:
+      - Significantly improved rendering performance
+      - When calculating heatmaps, the buckets are now placed on
+        reasonable borders (1m, 5m, 30s etc)
+      - Round cells are no longer supported
+
+- Update to 9.0.9 (2022-09-20)
+  * Bug fixes
+    - **AngularPanels:** Fixing changing angular panel options not
+      taking having affect when coming back from panel edit.
+    - **AuthNZ:** Security fixes for CVE-2022-35957 and
+      CVE-2022-36062.
+    - **FIX:** RBAC prevents deleting empty snapshots.
+
+- Update to 9.0.8 (2022-08-30)
+  * Features and enhancements
+    - **Alerting:** Hide "no rules" message when we are fetching
+      from data sources.
+    - **Rendering:** Add support for renderer token.
+    - **Reports:** Title is showing under panels. (Enterprise)
+    - **Alerting:** AlertingProxy to elevate permissions for
+      request forwarded to data proxy when RBAC enabled.
+
+- Update to 9.0.7 (2022-08-10)
+  * Features and enhancements
+    - **CloudMonitoring:** Remove link setting for SLO queries.
+  * Bug fixes
+    - **GrafanaUI:** Render PageToolbar's leftItems regardless of
+      title's presence.
+
+- Update to 9.0.6 (2022-08-01)
+  * Features and enhancements
+    - **Access Control:** Allow org admins to invite new users to
+      their organization.
+  * Bug fixes
+    - **Grafana/toolkit:** Fix incorrect image and font generation
+      for plugin builds.
+    - **Prometheus:** Fix adding of multiple values for regex
+      operator.
+    - **UI/Card:** Fix card items always having pointer cursor.
+
+- Update to 9.0.5 (2022-07-26)
+  * Features and enhancements
+    - **Access control:** Show dashboard settings to users who can
+      edit dashboard.
+    - **Alerting:** Allow the webhook notifier to support a custom
+      Authorization header.
+    - **Chore:** Upgrade to Go version 1.17.12.
+    - **Plugins:** Add signature wildcard globbing for dedicated
+      private plugin type.
+    - **Prometheus:** Don't show errors from unsuccessful API
+      checks like rules or exemplar checks.
+  * Bug fixes
+    - **Access control:** Allow organisation admins to add existing
+      users to org (#51668).
+    - **Alerting:** Fix alert panel instance-based rules filtering.
+    - **Apps:** Fixes navigation between different app plugin
+      pages.
+    - **Cloudwatch:** Upgrade grafana-aws-sdk to fix auth issue
+      with secret keys.
+    - **Grafana/toolkit:** Fix incorrect image and font generation
+      for plugin builds.
+    - **Loki:** Fix `show context` not working in some occasions.
+    - **RBAC:** Fix permissions on dashboards and folders created
+      by anonymous users.
+
+- Update to 9.0.4 (2022-07-20)
+  * Features and enhancements
+    - **Browse/Search:** Make browser back work properly when
+      visiting Browse or search.
+    - **Logs:** Improve getLogRowContext API.
+    - **Loki:** Improve handling of empty responses.
+    - **Plugins:** Always validate root URL if specified in
+      signature manfiest.
+    - **Preferences:** Get home dashboard from teams.
+    - **SQLStore:** Support Upserting multiple rows.
+    - **Traces:** Add more template variables in Tempo & Zipkin.
+    - **Traces:** Remove serviceMap feature flag.
+  * Bug fixes
+    - **Access Control:** Fix missing folder permissions.
+    - **Access control:** Fix org user removal for OSS users.
+    - **Alerting:** Fix Slack notification preview.
+    - **Alerting:** Fix Slack push notifications.
+    - **Alerting:** Fixes slack push notifications.
+    - **Alerting:** Preserve new-lines from custom email templates
+      in rendered email.
+    - **Insights:** Fix dashboard and data source insights pages.
+      (Enterprise)
+    - **Log:** Fix text logging for unsupported types.
+    - **Loki:** Fix incorrect TopK value type in query builder.
+
+- Update to 9.0.3 (2022-07-14)
+  * Features and enhancements
+    - **Access Control:** Allow dashboard admins to query org
+      users.
+    - **Access control:** Allow organisation admins to add existing
+      users to org.
+    - **Alerting:** Add method to provisioning API for obtaining a
+      group and its rules.
+    - **Alerting:** Add method to provisioning API for obtaining a
+      group and its rules.
+    - **Alerting:** Allow filtering of contact points by name.
+    - **Alerting:** Disable /api/admin/pause-all-alerts with
+      Unified Alerting.
+    - **Analytics:** Add total queries and cached queries in usage
+      insights logs. (Enterprise)
+    - **Annotations:** Use point marker for short time range
+      annotations.
+    - **AzureMonitor:** Update UI to experimental package.
+    - **AzureMonitor:** Update resource and namespace metadata.
+    - **CloudWatch:** Remove simplejson in favor of
+      'encoding/json'.
+    - **DashboardRow:** Collapse shortcut prevent to move the
+      collapsed rows.
+    - **Insights:** Add dashboard UID to exported logs.
+      (Enterprise)
+    - **Navigation:** Highlight active nav item when Grafana is
+      served from subpath.
+    - **Plugins:** InfluxDB datasource - set epoch query param
+      value as "ms".
+    - **Plugins:** InfluxDB update time range query.
+    - **StateTimeline:** Try to sort time field.
+  * Bug fixes
+    - **API:** Do not validate/save legacy alerts when saving a
+      dashboard if legacy alerting is disabled.
+    - **Access Control:** Fix missing folder permissions.
+    - **Alerting:** Add method to reset notification policy tree
+      back to the default.
+    - **Alerting:** Fix Teams notifier not failing on 200 response
+      with error.
+    - **Alerting:** Fix bug where state did not change between
+      Alerting and Error.
+    - **Alerting:** Fix consistency errors in OpenAPI
+      documentation.
+    - **Alerting:** Fix normalization of alert states for panel
+      annotations.
+    - **Alerting:** Provisioning API respects global rule quota.
+    - **CSRF:** Fix additional headers option.
+    - **Chore:** Bump parse-url to 6.0.2 to fix security
+      vulnerabilities.
+    - **Chore:** Fix CVE-2020-7753.
+    - **Chore:** Fix CVE-2021-3807.
+    - **Chore:** Fix CVE-2021-3918.
+    - **Chore:** Fix CVE-2021-43138.
+    - **Chore:** Fix CVE-2022-0155.
+    - **Custom Branding:** Fix login logo size. (Enterprise)
+    - **Dashboard:** Fixes tooltip issue with TimePicker and
+      Setting buttons.
+    - **Dashboard:** Prevent unnecessary scrollbar when viewing
+      single panel.
+    - **Logs:** Fixed wrapping log lines from detected fields.
+    - **Loki:** Add missing operators in label filter expression.
+    - **Loki:** Fix error when changing operations with different
+      parameters.
+    - **Loki:** Fix suggesting of correct operations in query
+      builder.
+    - **Plugins:** InfluxDB variable interpolation fix.
+    - **Plugins:** InfluxDB variable interpolation fix for
+      influxdbBackendMigration feature flag.
+    - **Reports:** Fix line breaks in message. (Enterprise)
+    - **Reports:** Fix saving report formats. (Enterprise)
+    - **SQLstore:** Fix fetching an inexistent playlist.
+    - **Security:** Fixes for CVE-2022-31107 and CVE-2022-31097.
+    - **Snapshots:** Fix deleting external snapshots when using
+      RBAC.
+    - **Table:** Fix scrollbar being hidden by pagination.
+    - **Templating:** Changing between variables with the same name
+      now correctly triggers a dashboard refresh.
+    - **Time series panel:** Fix an issue with stacks being not
+      complete due to the incorrect data frame length.
+    - **[v9.0.x] Snapshots:** Fix deleting external snapshots when
+      using RBAC.
+
+- Update to 9.0.2 (2022-06-28)
+  * Features and enhancements
+    - **Alerting:** Add support for images in Pushover alerts.
+    - **Alerting:** Don't stop the migration when alert rule tags
+      are invalid.
+    - **Alerting:** Don't stop the migration when alert rule tags
+      are invalid.
+    - **Alerting:** Skip the default data source if incompatible.
+    - **AzureMonitor:** Parse non-fatal errors for Logs.
+    - **OAuth:** Restore debug log behavior.
+    - **Plugins:** Improved handling of symlinks.
+  * Bug fixes
+    - **Alerting:** Code-gen parsing of URL parameters and fix
+      related bugs.
+    - **Alerting:** Code-gen parsing of URL parameters and fix
+      related bugs.
+    - **Annotations:** Fix annotation autocomplete causing panels
+      to crash.
+    - **Barchart:** Fix warning not showing.
+    - **CloudWatch:** Enable custom session duration in AWS plugin
+      auth.
+    - **Dashboards:** Fixes issue with the initial panel layout
+      counting as an unsaved change.
+    - **Plugins:** Use a Grafana specific SDK logger implementation
+      for core plugins.
+    - **Search:** Fix pagination in the new search page.
+
+- Update to 9.0.1 (2022-06-21)
+  * Features and enhancements
+    - **Alerting:** Add support for image annotation in
+      Alertmanager alerts.
+    - **Alerting:** Add support for images in SensuGo alerts.
+    - **Alerting:** Add support for images in Threema alerts.
+    - **Alerting:** Adds Mimir to Alertmanager data source
+      implementation.
+    - **Alerting:** Invalid setting of enabled for unified alerting
+      should return error.
+    - **AzureMonitor:** Clean namespace when changing the resource.
+    - **AzureMonitor:** Update supported namespaces and filter
+      resources by the right type.
+    - **CLI:** Allow relative symlinks in zip archives when
+      installing plugins.
+    - **Dashboard:** Don't show unsaved changes modal for automatic
+      schema changes.
+    - **Dashboard:** Unsaved changes warning should not trigger
+      when only pluginVersion has changed.
+    - **Expression:** Execute hidden expressions.
+    - **Geomap:** Support showing tooltip content on click (not
+      just hover).
+    - **Heatmap:** Remove alpha flag from new heatmap panel.
+    - **Instrumentation:** Define handlers for requests that are
+      not handled with named handlers.
+    - **Log Panel:** Improve log row hover contrast and visibility.
+    - **Logs:** Handle backend-mode errors in histogram.
+    - **Loki:** Do not show histogram for instant queries.
+    - **Loki:** Handle data source configs with path in the url.
+    - **Loki:** Handle invalid query type values.
+    - **OAuth:** Redirect to login if no oauth module is found or
+      if module is not configured.
+    - **OptionsUI:** Move internal options editors out of
+      @grafana/ui.
+    - **Prometheus:** Don't show undefined for step in collapsed
+      options in query editor when value is "auto".
+    - **Prometheus:** Show query patterns in all editor modes for
+      Prometheus and Loki.
+    - **Tempo:** Add link to Tempo Search with node service
+      selected.
+    - **Time Series Panel:** Add Null Filling and "No Value"
+      Support.
+    - **TimeSeries:** Add an option to set legend width.
+    - **Timeseries:** Improve cursor Y sync behavior.
+    - **Traces:** Do not use red in span colors as this looks like
+      an error.
+  * Bug fixes
+    - **Alerting:** Fix AM config overwrite when SQLite db is
+      locked during sync.
+    - **Alerting:** Fix alert instances filtering for prom rules.
+    - **Alerting:** Fix alert rule page crashing when datasource
+      contained URL unsafe characters.
+    - **Alerting:** Fix automatically select newly created folder
+      option.
+    - **Alerting:** Fix removal of notification policy without
+      labels matchers.
+    - **CloudWatch:** Allow hidden queries to be executed in case
+      an ID is provided.
+    - **Dashboard:** Prevent non-repeating panels being dropped
+      from repeated rows when collapsed/expanded.
+    - **Dashboards:** Fix folder picker not showing correct results
+      when typing too fast.
+    - **Datasource:** Prevent panic when proxying for non-existing
+      data source.
+    - **Explore:** Fix log context scroll to bottom.
+    - **Explore:** Revert "Remove support for compact format URLs".
+    - **Expressions:** Fixes dashboard schema migration issue that
+      casued Expression datasource to be set on panel level.
+    - **Formatting:** Fixes valueFormats for a value of 0.
+    - **GrafanaData:** Fix week start for non-English browsers.
+    - **LibraryPanel:** Resizing a library panel to 6x3 no longer
+      crashes the dashboard on startup.
+    - **LogRow:** Fix placement of icon.
+    - **Loki:** Fix bug in labels framing.
+    - **Loki:** Fix issues with using query patterns.
+    - **Loki:** Fix showing of duplicated label values in dropdown
+      in query builder.
+    - **MSSQL:** Fix ParseFloat error.
+    - **Panels:** Fixes issue with showing 'Cannot visualize data'
+      when query returned 0 rows.
+    - **Playlists:** Disable Create Playlist buttons for users with
+      viewer role.
+    - **Plugins:** Fix typo in plugin data frames documentation.
+    - **Prometheus:** Fix body not being included in resource calls
+      if they are POST.
+    - **RolePicker:** Fix submenu position on horizontal space
+      overflow.
+    - **Tracing:** Fix trace links in traces panel.
+  * Deprecations
+    - Support for compact Explore URLs is deprecated and will be
+      removed in a future release. Until then, when navigating to
+      Explore using the deprecated format the URLs are
+      automatically converted. If you have existing links pointing
+      to Explore update them using the format generated by Explore
+      upon navigation. You can identify a compact URL by its
+      format. Compact URLs have the left (and optionally right) url
+      parameter as an array of strings, for example
+      `&left=["now-1h","now"...]`. The standard explore URLs follow
+      a key/value pattern, for example
+      `&left={"datasource":"test"...}`. Please be sure to check
+      your dashboards for any hardcoded links to Explore and update
+      them to the standard URL pattern.
+
+- Update to 9.0.0 (2022-06-10)
+  * Features and enhancements
+    - **API:** Add GET /api/annotations/:annotationId endpoint.
+    - **API:** Add endpoint for updating a data source by its UID.
+    - **AccessControl:** Add enterprise only setting for rbac
+      permission cache.
+    - **AccessControl:** Document basic roles changes and
+      provisioning V2.
+    - **AccessControl:** Enable RBAC by default.
+    - **AddDataSourceConfig:** Remove deprecated checkHealth prop.
+    - **Alerting:** Add Image URLs to Microsoft Teams notifier.
+    - **Alerting:** Add RBAC actions and role for provisioning API
+      routes.
+    - **Alerting:** Add Screenshot URLs to Pagerduty Notifier.
+    - **Alerting:** Add a "Reason" to Alert Instances to show
+      underlying cause of state.
+    - **Alerting:** Add a general screenshot service and
+      alerting-specific image service.
+    - **Alerting:** Add image url or file attachment to email
+      notifications.
+    - **Alerting:** Add image_urls to OpsGenie notification
+      details.
+    - **Alerting:** Add notification policy flow chart.
+    - **Alerting:** Attach image URL to alerts in Webhook notifier
+      format.
+    - **Alerting:** Attach image URLs or upload files to Discord
+      notifications.
+    - **Alerting:** Attach image URLs to Google Chat notifications.
+    - **Alerting:** Attach screenshot data to Unified Alerting
+      notifications.
+    - **Alerting:** Create folder for alerting when start from the
+      scratch.
+    - **Alerting:** Modify alertmanager endpoints for proxying
+      using the datasource UID.
+    - **Alerting:** Modify endpoint for testing a datasource rule
+      using the UID.
+    - **Alerting:** Modify prometheus endpoints for proxying using
+      the datasource UID.
+    - **Alerting:** State Manager takes screenshots.
+    - **Alerting:** Use UID scope for folders authorization.
+    - **Alerting:** modify ruler endpoints for proxying using the
+      datasource UID.
+    - **Angular:** Adds back two angular directives that are still
+      used by remaining angular bits and plugins.
+    - **Azure Monitor:** Add Resource Picker to Metrics Queries.
+    - **Azure Monitor:** Add search feature to resource picker.
+    - **AzureMonitor:** Add support for selecting multiple options
+      when using the equals and not equals dimension filters.
+    - **AzureMonitor:** Remove deprecated code.
+    - **Build:** Change names to PascalCase to match.
+    - **Chore:** Remove deprecated DataSourceAPI methods.
+    - **Chore:** Upgrade typescript to 4.6.4.
+    - **Cloud Monitoring:** Use new annotation API.
+    - **CloudMonitoring:** Allow to set a custom value or disable
+      graph_period.
+    - **CloudWatch:** Add generic filter component to variable
+      editor.
+    - **CloudWatch:** Added missing AWS/AppRunner metrics.
+    - **CloudWatch:** Enable support for dynamic labels with
+      migrated alias patterns.
+    - **Cloudwatch:** Pass label in deep link.
+    - **Cloudwatch:** Use new annotation API.
+    - **Dashboard:** Validate dashboards against schema on save.
+    - **DashboardPickerByID:** Add option to exclude dashboards.
+    - **DashboardPickerById:** Add optionLabel prop.
+    - **Dashboards:** Display values of 0 with the configured
+      decimal places.
+    - **Data:** Remove deprecated types and functions from
+      valueMappings.
+    - **Elasticsearch:** Remove browser access mode.
+    - **Elasticsearch:** Remove support for versions after their
+      end of the life (<7.10.0).
+    - **Encryption:** Add support for multiple data keys per day.
+    - **Encryption:** Enable envelope encryption by default.
+    - **Explore:** Remove support for legacy, compact format URLs.
+    - **Explore:** Skip Angular error handling when Angular support
+      is disabled.
+    - **Explore:** simplify support for multiple query editors.
+    - **FeatureToggles:** Support changing feature toggles with URL
+      parameters.
+    - **FileUpload:** Make component accessible by keyboard
+      navigation.
+    - **Formatting:** Make SI number formats more robust.
+    - **Graph:** Deprecate Graph (old) and make it no longer a
+      visualization option for new panels.
+    - **IconButton:** IconButtons are now correctly aligned in
+      Safari.
+    - **Logger:** Enable new logging format by default.
+    - **Loki:** Add more query patterns.
+    - **Loki:** Enable new visual query builder by default.
+    - **Loki:** use the same dataframe-format for both live and
+      normal queries.
+    - **OAuth:** Make allowed email domain case insensitive.
+    - **Panels:** Use the No value option when showing the no data
+      message.
+    - **Plugins:** Remove plugin list panel.
+    - **Query History:** Enable new query history by default.
+    - **QueryEditorRow:** Show query errors next to query in a
+      consistent way across Grafana.
+    - **SAML:** Implement Name Templates for
+      assertion_attribute_name option.
+    - **Service accounts:** Do not display service accounts
+      assigned to team.
+    - **Settings:** Use Grafana Azure SDK to pass Azure env vars
+      for external plugins.
+    - **Shortcuts:** Add shortcut to show shortcuts to the list of
+      shortcuts.
+    - **Traces Panel:** Add new Traces Panel visualization.
+    - **Traces:** Filter by service/span name and operation in
+      Tempo and Jaeger.
+    - **Transformations:** Allow more complex regex expressions
+      in `Rename by regex`.
+    - **grafana/ui:** Add default type="button" to <Button>.
+  * Bug fixes
+    - **Alerting:** Fix database unavailable removes rules from
+      scheduler.
+    - **AzureMonitor:** Fix auto-selection of time-grain for
+      metrics.
+    - **DataSources:** Fixes issue with expressions not being
+      queried.
+    - **GraphNG:** Fix thresholds by color not following data
+      update.
+    - **Jaeger:** Update operations dropdown.
+    - **Login:** Fix mismatching label on auth_module in user list.
+    - **Playlists:** Save button now correctly creates a new
+      playlist.
+    - **RBAC:** Fix migrations running in the wrong order causing
+      inheritance problem in enterprise.
+    - **RBAC:** Fix migrations running into the wrong order.
+      (Enterprise)
+    - **ServiceAccounts:** Add identifiable token prefix to service
+      account tokens.
+    - **Traces:** Fix missing CopyButton on KeyValueTables and
+      overlapping of panels.
+  * Deprecations
+    `setExploreQueryField`, `setExploreMetricsQueryField` and
+      `setExploreLogsQueryField` are now deprecated and will be
+      removed in a future release. If you need to set a different
+      query editor for Explore, conditionally render based on
+      `props.app` in your regular query editor.
+  * Plugin development fixes & changes
+    - **Chore:** Remove react-testing-lib from bundles.
+    - **Select:** Portal menu by default.
+  * Breaking changes
+    - The `@grafana/ui` package helper function
+      `selectOptionInTest` used in frontend tests has been removed
+      as it caused testing libraries to be bundled in the
+      production code of Grafana. If you were using this helper
+      function in your tests please update your code accordingly:
+      ```js
+      // before
+      import { selectOptionInTest } from '@grafana/ui';
+      // ...test usage
+      await selectOptionInTest(selectEl, 'Option 2');
+
+      // after
+      import { select } from 'react-select-event';
+      // ...test usage
+      await select(selectEl, 'Option 2',
+        { container: document.body });
+      ```
+    - Removed deprecated `checkHealth` prop from the `@grafana/e2e`
+      `addDataSource` config. Previously this value defaulted to
+      `false`, and has not been used in end-to-end tests since
+      Grafana 8.0.3.
+    - Removes the deprecated `LegacyBaseMap`, `LegacyValueMapping`,
+      `LegacyValueMap`, and `LegacyRangeMap` types, and
+      `getMappedValue` function from grafana-data. Migration is as
+      follows:
+      | Old                  | New                     |
+      | -------------------- | ----------------------- |
+      | `LegacyBaseMap`      | `MappingType`           |
+      | `LegacyValueMapping` | `ValueMapping`          |
+      | `LegacyValueMap`     | `ValueMap`              |
+      | `LegacyRangeMap`     | `RangeMap`              |
+      | `getMappedValue`     | `getValueMappingResult` |
+      This change fixes a bug in Grafana where intermittent failure
+      of database, network between Grafana and the database, or
+      error in querying the database would cause all alert rules to
+      be unscheduled in Grafana. Following this change scheduled
+      alert rules are not updated unless the query is successful.
+    - The `get_alert_rules_duration_seconds` metric has been
+      renamed to `schedule_query_alert_rules_duration_seconds`.
+    - Any secret (data sources credential, alert manager
+      credential, etc, etc) created or modified with Grafana v9.0
+      won't be decryptable from any previous version (by default)
+      because the way encrypted secrets are stored into the
+      database has changed. Although secrets created or modified
+      with previous versions will still be decryptable by Grafana
+      v9.0.
+    - If required, although generally discouraged, the
+      `disableEnvelopeEncryption` feature toggle can be enabled to
+      keep envelope encryption disabled once updating to Grafana
+      v9.0.
+    - In case of need to rollback to an earlier version of Grafana
+      (i.e. Grafana v8.x) for any reason, after being created or
+      modified any secret with Grafana v9.0, the
+      `envelopeEncryption` feature toggle will need to be enabled
+      to keep backwards compatibility (only from `v8.3.x` a bit
+      unstable, from `8.5.x` stable).
+    - As a final attempt to deal with issues related with the
+      aforementioned situations, the `grafana-cli admin
+      secrets-migration rollback` command has been designed to
+      move back all the Grafana secrets encrypted with envelope
+      encryption to legacy encryption. So, after running that
+      command it should be safe to disable envelope encryption
+      and/or roll back to a previous version of Grafana.
+    - Alternatively or complementarily to all the points above,
+      backing up the Grafana database before updating could be a
+      good idea to prevent disasters (although the risk of getting
+      some secrets corrupted only applies to those updates/created
+      with after updating to Grafana v9.0).
+    - According to the dynamic labels documentation, you can use up
+      to five dynamic values per label. There’s currently no such
+      restriction in the alias pattern system, so if more than 5
+      patterns are being used the GetMetricData API will return an
+      error.
+    - Dynamic labels only allow \${LABEL} to be used once per
+      query. There’s no such restriction in the alias pattern
+      system, so in case more than 1 is being used the
+      GetMetricData API will return an error.
+    - When no alias is provided by the user, Grafana will no longer
+      fallback with custom rules for naming the legend.
+    - In case a search expression is being used and no data is
+      returned, Grafana will no longer expand dimension values, for
+      instance when using a multi-valued template variable or star
+      wildcard `*` in the dimension value field.
+    - Time series might be displayed in a different order. Using
+      for example the dynamic label `${PROP('MetricName')}`, might
+      have the consequence that the time series are returned in a
+      different order compared to when the alias pattern
+      `{{metric}}` is used
+    - In Elasticsearch, browser access mode was deprecated in
+      grafana 7.4.0 and removed in 9.0.0. If you used this mode,
+      please switch to server access mode on the datasource
+      configuration page.
+    - Environment variables passed from Grafana to external Azure
+      plugins have been renamed:
+      - `AZURE_CLOUD` renamed to `GFAZPL_AZURE_CLOUD`
+      - `AZURE_MANAGED_IDENTITY_ENABLED` renamed to
+        `GFAZPL_MANAGED_IDENTITY_ENABLED`
+      - `AZURE_MANAGED_IDENTITY_CLIENT_ID` renamed to
+        `GFAZPL_MANAGED_IDENTITY_CLIENT_ID`
+    - There are no known plugins which were relying on these
+      variables. Moving forward plugins should read Azure settings
+      only via Grafana Azure SDK which properly handles old and new
+      environment variables.
+    - Removes support for for ElasticSearch versions after their
+      end-of-life, currently versions < 7.10.0. To continue to use
+      ElasticSearch data source, upgrade ElasticSearch to version
+      7.10.0+.
+    - Application Insights and Insight Analytics queries in Azure
+      Monitor were deprecated in Grafana 8.0 and finally removed in
+      9.0. Deprecated queries will no longer be executed.
+    - **grafana/ui: Button now specifies a default type="button"**
+      The `Button` component provided by @grafana/ui now specifies
+      a default `type="button"` when no type is provided.
+      In previous versions, if the attribute was not specified for
+      buttons associated with a `<form>` the default value was
+      `submit` per the specification. You can preserve the old
+      behavior by explicitly setting the type attribute:
+      `<Button type="submit" />`
+    - The `Rename by regex` transformation has been improved to
+      allow global patterns of the form `/<stringToReplace>/g`.
+      Depending on the regex match used, this may cause some
+      transformations to behave slightly differently. You can
+      guarantee the same behaviour as before by wrapping the
+      `match` string in forward slashes (`/`), e.g. `(.*)` would
+      become `/(.*)/`
+    - `<Select />` menus will now portal to the document body by
+      default. This is to give more consistent behaviour when
+      positioning and overlaying. If you were setting
+      `menuShouldPortal={true}` before you can safely remove that
+      prop and behaviour will be the same. If you weren't
+      explicitly setting that prop, there should be no visible
+      changes in behaviour but your tests may need updating. If you
+      were setting `menuShouldPortal={false}` this will continue to
+      prevent the menu from portalling.
+    - Grafana alerting endpoint prefixed with `api/v1/rule/test`
+      that tests a rule against a Corte/Loki data source now
+      expects the data source UID as a path parameter instead of
+      the data source numeric identifier.
+    - Grafana alerting endpoints prefixed with `api/prometheus/`
+      that proxy requests to a Cortex/Loki data source now expect
+      the data source UID as a path parameter instead of the data
+      source numeric identifier.
+    - Grafana alerting endpoints prefixed with `api/ruler/` that
+      proxy requests to a Cortex/Loki data source now expect the
+      data source UID as a path parameter instead of the data
+      source numeric identifier.
+    - Grafana alerting endpoints prefixed with `api/alertmanager/`
+      that proxy requests to an Alertmanager now expect the data
+      source UID as a path parameter instead of the data source
+      numeric identifier.
+    - The format of log messages have been updated, `lvl` is now
+      `level` and `eror`and `dbug` has been replaced with `error`
+      and `debug`. The precision of timestamps has been increased.
+      To smooth the transition, it is possible to opt-out of the
+      new log format by enabling the feature toggle `oldlog`.
+      This option will be removed in a future minor release.
+    - In the Loki data source, the dataframe format used to
+      represent Loki logs-data has been changed to a more efficient
+      format. The query-result is represented by a single dataframe
+      with a "labels" column, instead of the separate dataframes
+      for every labels-value. When displaying such data in explore,
+      or in a logs-panel in the dashboard will continue to work
+      without changes, but if the data was loaded into a different
+      dashboard-panel, or Transforms were used, adjustments may be
+      necessary. For example, if you used the "labels to fields"
+      transformation with the logs data, please switch to the
+      "extract fields" transformation.
+
+-------------------------------------------------------------------
 Wed Feb 15 08:35:28 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add 0002-Update-exporter-toolkit-to-version-0.7.3.patch

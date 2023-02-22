@@ -1,38 +1,39 @@
-From 6fb703952cbbdf7c0c2b629061db1e0aaae6f984 Mon Sep 17 00:00:00 2001
-From: Witek Bedyk <witold.bedyk@suse.com>
-Date: Thu, 20 Jan 2022 15:16:54 +0100
+From 3dd318d8ddc8db3f84020c448e283620cc5d09ac Mon Sep 17 00:00:00 2001
+From: Marius Kittler <mkittler@suse.de>
+Date: Mon, 6 Feb 2023 13:51:31 +0100
 Subject: [PATCH] Add source code reference
 
 ---
- public/app/core/components/Footer/Footer.tsx | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ public/app/core/components/Footer/Footer.tsx | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
 
 diff --git a/public/app/core/components/Footer/Footer.tsx b/public/app/core/components/Footer/Footer.tsx
-index 9096de3910..8bed2ef5a2 100644
+index c73c2ea53..829700096 100644
 --- a/public/app/core/components/Footer/Footer.tsx
 +++ b/public/app/core/components/Footer/Footer.tsx
-@@ -46,15 +46,12 @@ export let getVersionLinks = (): FooterLink[] => {
- 
-   links.push({ text: `v${buildInfo.version} (${buildInfo.commit})` });
+@@ -73,15 +73,13 @@ export let getVersionLinks = (): FooterLink[] => {
+     url: hasReleaseNotes ? `https://github.com/grafana/grafana/blob/main/CHANGELOG.md` : undefined,
+   });
  
 -  if (buildInfo.hasUpdate) {
 -    links.push({
+-      target: '_blank',
 -      id: 'updateVersion',
 -      text: `New version available!`,
 -      icon: 'download-alt',
 -      url: 'https://grafana.com/grafana/download?utm_source=grafana_footer',
--      target: '_blank',
 -    });
 -  }
 +  links.push({
++    target: '_blank',
++    id: 'updateVersion',
 +    text: `Source code`,
 +    icon: 'download-alt',
 +    url: 'https://build.opensuse.org/package/show/openSUSE:Factory/grafana',
-+    target: '_blank',
 +  });
  
    return links;
  };
 -- 
-2.31.1
+2.39.1
 

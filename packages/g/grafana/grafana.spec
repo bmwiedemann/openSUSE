@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        8.5.20
+Version:        9.3.6
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
