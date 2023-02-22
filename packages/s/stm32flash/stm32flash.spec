@@ -1,7 +1,7 @@
 #
 # spec file for package stm32flash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           stm32flash
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Flash Program for the STM32 Bootloader
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://sourceforge.net/p/stm32flash/wiki/Home
-Source:         https://download.sourceforge.net/stm32flash/stm32flash-0.6.tar.gz
-# PATCH-FIX-OPENSUSE stm32flash-i2c-tools-headers-clash.patch sbrabec@suse.cz -- Prevent clash between i2c.h and i2c-dev.h defining the same.
-Patch3:         stm32flash-i2c-tools-headers-clash.patch
-BuildRequires:  i2c-tools
+Source:         https://download.sourceforge.net/stm32flash/stm32flash-%{version}.tar.gz
 
 %description
 Open source flash program for the STM32 ARM processors using the ST
@@ -49,9 +46,6 @@ Features:
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1315 || 0%{?suse_version} == 1320
-%patch3 -p1
-%endif
 
 %build
 %make_build CFLAGS="-O2 %{optflags}" PREFIX=%{_prefix}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 13 08:04:29 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 0.7
+  * Fix I2C page-by-page erase (Yann Sionneau)
+  * Fix hex file base address not used, extraneous base padding (Renaud Fivet)
+  * Fix truncated read from stdin (Renaud Fivet)
+  * Fix input buffer flush on Windows (Jan Belohoubek)
+  * More baud rates available, up to 4000000
+  * Allow skipping serial port setup with -b 0
+  * Support STM32L412xx/422xx (Andy Little)
+  * Support STM32G05xxx/061xx (Luca Amati), STM32G0B0/B1/C1xx, STM32G491xx/A1xx
+- drop stm32flash-i2c-tools-headers-clash.patch
+
+-------------------------------------------------------------------
 Wed May 12 21:33:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6:
