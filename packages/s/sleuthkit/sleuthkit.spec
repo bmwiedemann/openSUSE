@@ -1,7 +1,7 @@
 #
 # spec file for package sleuthkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,23 @@
 
 %define sosuffix 19
 Name:           sleuthkit
-Version:        4.10.2
+Version:        4.12.0
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://www.sleuthkit.org/
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM upsteam_tarball_left_a_file_out gh#sleuthkit/sleuthkit#642
+Patch1:         0001-build-support-libewf-V3.patch
+# PATCH-FIX-UPSTREAM upsteam_tarball_left_a_file_out gh#sleuthkit/sleuthkit#2812
+Patch2:         sleuthkit-4.12.0_add-missing-include-file.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libtool
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
-BuildRequires:  libewf-devel = 20140811
+#BuildRequires:  libewf-devel = 20140811
+BuildRequires:  libewf-devel
+BuildRequires:  libbfio-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
 Requires:       file
@@ -63,7 +69,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export LIBS=' -lpthread -ldl'
@@ -168,6 +174,7 @@ cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 %{_bindir}/tsk_gettimes
 %{_bindir}/tsk_loaddb
 %{_bindir}/tsk_recover
+%{_bindir}/tsk_imageinfo
 %{_mandir}/man1/tsk_comparedir.1%{?ext_man}
 %{_mandir}/man1/tsk_gettimes.1%{?ext_man}
 %{_mandir}/man1/tsk_loaddb.1%{?ext_man}
@@ -181,6 +188,7 @@ cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 # CPL and IBM
 %{_includedir}/tsk/
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/tsk.pc
 %{_datadir}/sleuthkit
 
 %changelog

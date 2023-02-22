@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Feb 17 22:36:16 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 4.12.0 
+  *      Add Linux LVM support
+  *      Logical File System support (a folder structure is parsed by TSK libraries) 
+  *      Many small fixes
+- update to 4.11.1
+  *     C/C++:
+  *         Several fixes from @joachimmetz
+  *         NTFS Decompression bug fix from @kastonework and @uckelman-sf
+  *     Java:
+  *         Fixed connection leak when making OS Accounts in bridge
+  *         OsAccount updates for instance types and special Windows SIDs
+            Fixed issue with duplicate value in Japanese timeline translation
+- update to 4.11.0
+  *     C/C++:
+  *         Added checks at various layers to detect encrypted file systems and disks to give more useful error messages.
+  *         Added checks to detect file formats that are not supported (such as AD1, ZIP, etc.) to give more useful error messages.
+  *         Added tsk_imageinfo tool that detects if an image is supported by TSK and if it is encrypted.
+  *         Add numerous bound checks from @joachimmetz
+  *         Clarified licenses as pointed out by @joachimmetz
+  *     Java:
+  *         Updated from Schema 8.6 to 9.1.
+  *         Added tables and classes for OS Accounts and Realms (Domains).
+  *         Added tables and classes for Host Addresses (IP, MAC, etc.).
+  *         Added tables and classes for Analysis Results vs Data Artifacts by adding onto BlackboardArtifacts.
+  *         Added tables and classes for Host and Person to make it easier to group data sources.
+  *         Added static types for standard artifact types.
+  *         Added File Attribute table to allow custom information to be stored for each file.
+  *         Made ordering of getting lock and connection consistent.
+  *         Made the findFile methods more efficient by using extension (which is indexed).
+
+- add 0001-build-support-libewf-V3.patch to support the experimental release branch of libewf
+- add sleuthkit-4.12.0_add-missing-include-file.patch
+
+-------------------------------------------------------------------
 Sat Jun 26 20:52:56 UTC 2021 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 4.10.2:
