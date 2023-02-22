@@ -649,4 +649,14 @@ Core and Builtins
     <comment></comment>
     <requestid>1061592</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>18587a026f5b0099837639c808197ebc</srcmd5>
+    <version>3.8.16</version>
+    <time>1677075670</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides for readline and sqlite3 to the main Python
+  package.
+</comment>
+    <requestid>1067029</requestid>
+  </revision>
 </revisionlist>

@@ -223,11 +223,15 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{python_pkg_name}-base = %{version}
+Provides:       %{python_pkg_name}-readline
+Provides:       %{python_pkg_name}-sqlite3
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
+Provides:       python3-readline
+Provides:       python3-sqlite3
 %endif
 %endif
 
