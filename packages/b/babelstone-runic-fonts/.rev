@@ -14,4 +14,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b9bb2ef4f4cc06d515f038fc239fd085</srcmd5>
+    <version>20131112</version>
+    <time>1677075726</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1067160 from hillwood)</comment>
+    <requestid>1067163</requestid>
+  </revision>
 </revisionlist>

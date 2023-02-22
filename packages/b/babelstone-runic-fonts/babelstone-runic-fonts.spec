@@ -1,7 +1,7 @@
 #
 # spec file for package babelstone-runic-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           babelstone-runic-fonts
 Version:        20131112
@@ -21,9 +22,9 @@ Release:        0
 Summary:        Font for Runic Script
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://www.babelstone.co.uk/Fonts/
-Source0:        http://www.babelstone.co.uk/Fonts/BabelStoneAngloSaxon.zip
-Source1:        OFL.txt
+URL:            http://www.babelstone.co.uk/Fonts/
+Source0:        https://www.babelstone.co.uk/Fonts/Download/BabelStoneAngloSaxon.zip
+Source1:        https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
@@ -31,8 +32,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-A set of six Runic fonts that each cover the subset of 34 characters 
-in the Unicode Runic block that are used in Frisian and Anglo-Saxon 
+A set of six Runic fonts that each cover the subset of 34 characters
+in the Unicode Runic block that are used in Frisian and Anglo-Saxon
 inscriptions from the 5th to 11th centuries.
 
 %prep
@@ -49,8 +50,7 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-,root,root)
-%doc OFL.txt
+%license BabelStoneOFL.txt
 %{_ttfontsdir}
 
 %changelog
-
