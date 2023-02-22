@@ -261,4 +261,14 @@
   * https://github.com/ibus/ibus-m17n/issues/51</comment>
     <requestid>1004408</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>86b46953c43a7dac3c0358ce600106d4</srcmd5>
+    <version>1.4.19</version>
+    <time>1677075685</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.4.17 -&gt; 1.4.19
+- Added weblate translations to Sinhala
+- Add parrot icon emoji</comment>
+    <requestid>1067033</requestid>
+  </revision>
 </revisionlist>
