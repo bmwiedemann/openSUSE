@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec81f86..8b96c5b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -232,9 +232,9 @@ target_link_libraries( ppplay ppplay_input_it ppplay_input_hsc ppplay_input_s3m
+ install( TARGETS ppplay DESTINATION bin COMPONENT application )
+ cpack_add_component( application DISPLAY_NAME PPPlay REQUIRED )
+ if( LINUX OR UNIX )
+-    install( FILES data/ppplay-hsc.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/mime/packages )
+-    install( CODE "execute_process( COMMAND update-mime-database ${CMAKE_INSTALL_FULL_DATAROOTDIR}/mime )" )
+-    install( FILES ppplay.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
++    install( FILES data/ppplay-hsc.xml DESTINATION share/mime/packages )
++    install( CODE "execute_process( COMMAND update-mime-database share/mime )" )
++    install( FILES ppplay.desktop DESTINATION share/applications )
+     install( CODE "execute_process( COMMAND update-desktop-database -q )" )
+ endif()
+ 
+diff --git a/src/adplug/bankgen/CMakeLists.txt b/src/adplug/bankgen/CMakeLists.txt
+index 27ee7d5..cb2b4f4 100644
+--- a/src/adplug/bankgen/CMakeLists.txt
++++ b/src/adplug/bankgen/CMakeLists.txt
+@@ -4,14 +4,14 @@ target_link_libraries(ppplay_bankdb PUBLIC ${Boost_SERIALIZATION_LIBRARIES} pppl
+ add_executable(ppplay_bankgen loader.h bankgen.cpp loader.cpp)
+ target_link_libraries(ppplay_bankgen ppplay_stream ppplay_bankdb)
+ 
+-set(BANKDB_FILE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_DATAROOTDIR}/ppplay/bankdb.xml CACHE FILEPATH "Bank database filename." FORCE)
++set(BANKDB_FILE ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_DATAROOTDIR}/bank/bankdb.xml CACHE FILEPATH "Bank database filename." FORCE)
+ 
+ add_custom_command(
+     TARGET ppplay_bankgen POST_BUILD
+-    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_DATAROOTDIR}/ppplay
++    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_DATAROOTDIR}/bank
+     COMMAND ppplay_bankgen ${BANKDB_FILE}
+     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/data/oplbanks
+     COMMENT "Generating MIDI bank database..."
+ )
+ 
+-install(FILES ${BANKDB_FILE} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/ppplay)
++install(FILES ${BANKDB_FILE} DESTINATION share/ppplay)

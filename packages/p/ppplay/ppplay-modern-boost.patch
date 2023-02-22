@@ -1,0 +1,121 @@
+diff --git a/src/adplug/mid/almidi.cpp b/src/adplug/mid/almidi.cpp
+index 2ef59eb..0425489 100644
+--- a/src/adplug/mid/almidi.cpp
++++ b/src/adplug/mid/almidi.cpp
+@@ -4,6 +4,9 @@
+ 
+ #include <cstring>
+ 
++#include <stdexcept>
++#include <limits>
++
+ namespace ppp
+ {
+ constexpr auto NUM_MIDI_CHANNELS = 16;
+@@ -1132,4 +1135,4 @@ void EMidi::initEmidi()
+ 
+     resetTracks();
+ }
+-}
+\ No newline at end of file
++}
+diff --git a/src/adplug/psi.cpp b/src/adplug/psi.cpp
+index 5c0f4b6..c0c47bf 100644
+--- a/src/adplug/psi.cpp
++++ b/src/adplug/psi.cpp
+@@ -36,6 +36,7 @@
+ */
+ 
+ #include "psi.h"
++#include <algorithm>
+ 
+ namespace
+ {
+@@ -165,4 +166,4 @@ std::string PsiPlayer::type() const
+ size_t PsiPlayer::instrumentCount() const
+ {
+     return 8;
+-}
+\ No newline at end of file
++}
+diff --git a/src/adplug/rat.cpp b/src/adplug/rat.cpp
+index c0b434b..a5158ec 100644
+--- a/src/adplug/rat.cpp
++++ b/src/adplug/rat.cpp
+@@ -32,6 +32,7 @@
+ 
+ #include <cstring>
+ #include "rat.h"
++#include <algorithm>
+ 
+ namespace
+ {
+diff --git a/src/light4cxx/location.h b/src/light4cxx/location.h
+index 24f55c0..3c39ebf 100644
+--- a/src/light4cxx/location.h
++++ b/src/light4cxx/location.h
+@@ -23,6 +23,7 @@
+ 
+ #include <thread>
+ #include <utility>
++#include <string>
+ 
+ namespace light4cxx
+ {
+diff --git a/src/output/fftobserver.cpp b/src/output/fftobserver.cpp
+index 324998c..a8f136c 100644
+--- a/src/output/fftobserver.cpp
++++ b/src/output/fftobserver.cpp
+@@ -4,13 +4,14 @@
+ #include "fft.h"
+ 
+ #include <boost/assert.hpp>
++#include <boost/bind/bind.hpp>
+ 
+ FftObserver::FftObserver(AudioFifo* fifo)
+     : m_fifo(fifo), m_buffer(std::make_shared<AudioFrameBuffer>(ppp::FFT::InputLength)), m_filled(0)
+     , m_left(ppp::FFT::InputLength, 0), m_right(ppp::FFT::InputLength, 0), m_dataPushedConnection()
+ {
+     BOOST_ASSERT(fifo != nullptr);
+-    m_dataPushedConnection = m_fifo->dataPushed.connect(boost::bind(&FftObserver::dataPushed, this, _1));
++    m_dataPushedConnection = m_fifo->dataPushed.connect(boost::bind(&FftObserver::dataPushed, this, boost::placeholders::_1));
+ }
+ 
+ void FftObserver::dataPushed(const AudioFrameBufferPtr& buffer)
+@@ -27,4 +28,4 @@ void FftObserver::dataPushed(const AudioFrameBufferPtr& buffer)
+         m_filled = 0;
+         ppp::FFT::doFFT(m_buffer, &m_left, &m_right);
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/src/output/volumeobserver.cpp b/src/output/volumeobserver.cpp
+index ad548b1..5e01059 100644
+--- a/src/output/volumeobserver.cpp
++++ b/src/output/volumeobserver.cpp
+@@ -4,6 +4,7 @@
+ 
+ #include <boost/assert.hpp>
+ #include <functional>
++#include <boost/bind/bind.hpp>
+ 
+ namespace
+ {
+@@ -47,8 +48,8 @@ VolumeObserver::VolumeObserver(AudioFifo* fifo)
+     , m_dataPushedConnection(), m_dataPulledConnection()
+ {
+     BOOST_ASSERT(fifo != nullptr);
+-    m_dataPushedConnection = m_fifo->dataPushed.connect(boost::bind(&VolumeObserver::dataPushed, this, _1));
+-    m_dataPulledConnection = m_fifo->dataPulled.connect(boost::bind(&VolumeObserver::dataPulled, this, _1));
++    m_dataPushedConnection = m_fifo->dataPushed.connect(boost::bind(&VolumeObserver::dataPushed, this, boost::placeholders::_1));
++    m_dataPulledConnection = m_fifo->dataPulled.connect(boost::bind(&VolumeObserver::dataPulled, this, boost::placeholders::_1));
+ }
+ 
+ void VolumeObserver::dataPulled(const AudioFrameBufferPtr& buffer)
+@@ -83,4 +84,4 @@ void VolumeObserver::dataPushed(const AudioFrameBufferPtr& buffer)
+         m_volLeftLog = logify(m_volLeftSum / (m_fifo->queuedLength() >> 2));
+         m_volRightLog = logify(m_volRightSum / (m_fifo->queuedLength() >> 2));
+     }
+-}
+\ No newline at end of file
++}
