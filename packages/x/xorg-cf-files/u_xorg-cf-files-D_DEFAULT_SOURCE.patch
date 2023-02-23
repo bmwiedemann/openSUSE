@@ -1,7 +1,7 @@
-Index: xorg-cf-files-1.0.7/gnu.cf
+Index: xorg-cf-files-1.0.8/gnu.cf
 ===================================================================
---- xorg-cf-files-1.0.7.orig/gnu.cf
-+++ xorg-cf-files-1.0.7/gnu.cf
+--- xorg-cf-files-1.0.8.orig/gnu.cf
++++ xorg-cf-files-1.0.8/gnu.cf
 @@ -21,7 +21,7 @@ XCOMM operating system:  OSName (OSMajor
  
  #define GNUSourceDefines      -D_POSIX_C_SOURCE=199309L \
@@ -11,11 +11,11 @@ Index: xorg-cf-files-1.0.7/gnu.cf
  
  XCOMM XXXMB: What about _GNU_SOURCE, see Linux/UseInstalled?
  
-Index: xorg-cf-files-1.0.7/linux.cf
+Index: xorg-cf-files-1.0.8/linux.cf
 ===================================================================
---- xorg-cf-files-1.0.7.orig/linux.cf
-+++ xorg-cf-files-1.0.7/linux.cf
-@@ -238,7 +238,7 @@ InstallNamedTargetNoClobber(install,file
+--- xorg-cf-files-1.0.8.orig/linux.cf
++++ xorg-cf-files-1.0.8/linux.cf
+@@ -242,7 +242,7 @@ InstallNamedTargetNoClobber(install,file
  #if LinuxCLibMajorVersion >= 6
  # define LinuxSourceDefines	-D_POSIX_C_SOURCE=199309L \
  				-D_POSIX_SOURCE -D_XOPEN_SOURCE \
@@ -24,7 +24,7 @@ Index: xorg-cf-files-1.0.7/linux.cf
                                  -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 \
  				LinuxAdditionalIncludes LinuxGnuSourceDefines \
  				LinuxLocaleDefines
-@@ -257,7 +257,7 @@ InstallNamedTargetNoClobber(install,file
+@@ -261,7 +261,7 @@ InstallNamedTargetNoClobber(install,file
  # endif
  #else
  # define LinuxSourceDefines	-D_POSIX_SOURCE -D_POSIX_C_SOURCE=2 \

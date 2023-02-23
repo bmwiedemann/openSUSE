@@ -123,4 +123,19 @@
 - refreshed u_riscv.patch, u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
     <requestid>909747</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5dec4574703f8a3f3af98bef35d37983</srcmd5>
+    <version>1.0.8</version>
+    <time>1677166084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+  * This is a minor update to ship the contributed support for Linux
+    on RISC-V &amp; LoongArch, and AArch64 on Darwin (MacOS), as well as
+    to fix incompatibility when using GNU binutils 2.36 and later on
+    FreeBSD, and to correct the setting of the rarely (never?) used
+    ENCODINGSDIR in site.def.
+- supersedes u_riscv.patch
+- refreshed u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
+    <requestid>1067082</requestid>
+  </revision>
 </revisionlist>

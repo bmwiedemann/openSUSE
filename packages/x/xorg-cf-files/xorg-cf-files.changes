@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 22 03:25:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8
+  * This is a minor update to ship the contributed support for Linux
+    on RISC-V & LoongArch, and AArch64 on Darwin (MacOS), as well as
+    to fix incompatibility when using GNU binutils 2.36 and later on
+    FreeBSD, and to correct the setting of the rarely (never?) used
+    ENCODINGSDIR in site.def.
+- supersedes u_riscv.patch
+- refreshed u_xorg-cf-files-D_DEFAULT_SOURCE.patch
+
+-------------------------------------------------------------------
 Mon Aug  2 10:36:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.7

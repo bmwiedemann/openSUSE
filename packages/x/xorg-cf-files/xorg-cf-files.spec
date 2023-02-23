@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-cf-files
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           xorg-cf-files
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Data files for the imake utility
 License:        MIT
 Group:          Development/Tools/Building
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
-Patch0:         u_riscv.patch
+Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
 Patch1:         u_xorg-cf-files-D_DEFAULT_SOURCE.patch
 BuildRequires:  font-util >= 1.1
 BuildRequires:  pkgconfig(xorg-macros) >= 1.4
@@ -53,7 +52,6 @@ converted.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 cat > host.def << EOF
@@ -123,7 +121,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %dir %{_datadir}/X11
 %{_datadir}/X11/config/
 
