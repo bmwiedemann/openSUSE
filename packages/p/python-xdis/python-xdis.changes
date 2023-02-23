@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 21 07:36:59 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip python 3.11, not yet supported, gh#rocky/python-xdis#98
+- Update to version 6.0.5
+  * Detect versions pypy3.8.15, pypy-3.9.15
+  * Dectect Python 3.{7,8,9}.14 3.10.{5,6,7}
+  * correct 3.10+ pydisasm -F xasm label
+  * Revise marshal error handling (Issue #97)
+  * Improve PyPy 3.7 CALL_FUNCTION arg interpretation
+  * Fix 1.5-2.x bugs in line number encoding
+  * Fix showing MAKE_FUNCTION operand
+  * Miscellaneous lint, black, and isort changes
+
+-------------------------------------------------------------------
 Tue Oct 11 17:24:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 6.0.4 

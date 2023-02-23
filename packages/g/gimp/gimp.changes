@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Feb 22 10:13:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.10.34:
+  - Core:
+    - Check for updates now works on macOS (backported from 2.99.14).
+    - Update help IDs for better integration with the documentation website.
+    - Symmetry dockable contents is now shown, yet deactivated, when no images are
+      opened, improving discoverability (backported from 2.99.14).
+    - DBus fully disabled on macOS (in some case, it could even freeze GIMP
+      process when dbus is present yet not responding). Open With feature (e.g.
+      from file browsers) still work fine as it uses a different code path on
+      macOS. Other features using dbus (opening files or running batch commands
+      from a separate GIMP process) won't work, but they probably never did on
+      macOS anyway.
+    - "Canvas Size" dialog took too much vertical space and now better uses the
+      horizontal space by moving the preview and offset fiels to the right side,
+      and the "Center" button just below (backported from 2.99.8).
+    - Template selector (backported from 2.99.6) in resize dialog.
+    - Color scale preferences (0..255/0..100 and LCh/HSV settings in Colors
+      selection dialogs) are now remembered across sessions.
+    - Eye icon header added to the item tree views to make it more obvious where
+      to click for item visibility and links (backported from 2.99.10)
+    - Revert color proofing behavior changed in 2.10.32 which resulted in
+      inconsistent past workflows.
+    - "Lock path strokes" tooltip for the dockable icon was renamed "Lock path".
+  - Plug-ins:
+    - DDS: make GUI translatable.
+    - file-raw: added high bit depth precision export (partial backport from
+      2.99.12).
+    - TIFF:
+      * Various bug fixes;
+      * better check for invalid resolutions on import;
+      * do not generated warnings for incorrect RichTIFFIPTC tags produced by
+        Adobe products (only output a message to stderr, for not completely
+        ignoring these);
+      * Loading "reduced" image or not is now an option. We use a heuristic for
+        the default value of said option (trying to guess if it's a thumbnail by
+        using common usage), but final decision is now up to one knowing the image
+        you load (backported from 2.99.14);
+      * Default TIFF export format is "normal" TIFF, not BigTIFF (making it
+        default was definitely an error in 2.10.32).
+    - PSD:
+      * Various bug fixes;
+      * Useless physical unit conversion removed;
+      * Backported improvement (2.99.10) for importing layers with clipping set
+        (leading to color bleeding);
+      * Backported improvements (2.99.10) for importing clipping layers;
+      * Paths are now exported (backported from 2.99.14).
+    - WebP: more informative error messages in some cases.
+    - Flame: various bug fixes.
+    - JPEG-XL:
+      * metadata import backported from 2.99.14 - (requires libjxl 0.7.0)
+      * Partial backport (2.99.8) of JPEG-XL export; export is always in 8bit
+        lossless.
+    - HEIF: various bug fixes.
+    - Dicom: various bug fixes.
+    - help:
+      * macOS: https support now working fine for help files (bypassing
+        lack of support in GIO for macOS platform).
+    - animation-play: fixed on macOS.
+    - PDF:
+      * Import: new option "Fill transparent areas with white" to fill the
+        background in white (ON by default as most office PDF writers seem to rely
+        on readers filling the background with white), allowing importing
+        transparent PDF files.
+      * Export: new option "Fill transparent areas with background color" allowing
+        to decide whether to export a PDF with transparent background.
+    - TGA:
+      * Added a workaround to load wrongful TGA files exported by Krita (which
+        they fixed on their side too now, see Krita bug 464484).
+    - ICO and CUR:
+      * Magics detection for these formats has been removed (now using only using
+        filename extension) because it was interfering with the detection of
+        certain types of TGA images (which are likely more common than ICO and CUR
+        files, and extension for these should be reliable enough).
+  - Libgimpbase:
+    - GimpMetadata API (in particular the gimp_metadata_set_from_*() functions)
+      are now much less memory-hungry (backported from the main dev branch) when
+      using GExiv 0.12.2 or over. With some huge metadata, it could cause long
+      freeze or even crashes of plug-ins.
+  - Libgimpwidgets:
+    - Color-picking with X11 is now the default when compiled with X11, even if a
+      color-picking portal also exists, because it is always right, whereas
+      portals return color in display space without the space information itself
+      (i.e. without profiles).
+    - New dedicated GimpPickButton implementation for Windows (backported from
+      2.99.14).
+  - Libgimp:
+    - New wrapper functions around GEGL ops, which also map to items in our Color
+      menu:
+      * gimp_drawable_shadows_highlights()
+      * gimp_drawable_extract_component()
+
+-------------------------------------------------------------------
 Wed Jun 15 20:47:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.10.32: (boo#1199653 CVE-2022-30067)

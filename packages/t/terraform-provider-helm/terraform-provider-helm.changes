@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Feb 22 09:03:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.9.0
+  * FEATURES:
+    + provider: Add a new attribute burst_limit for client-side
+      throttling limit configuration. [GH-1012]
+  * ENHANCEMENT:
+    + data_source/helm_template: Add a new attribute crds which when include_crds
+      is set to true will be populated with a list of the manifests from the crds/
+      folder of the chart. [GH-1050]
+  * BUG FIXES:
+    + resource/helm_release: Fix an issue when the provider crashes with the error
+      message Provider produced inconsistent final plan after upgrading from v2.5.1
+      to v2.6.0 and higher. That happened due to changes in the provider schema and
+      the introduction of a new attribute pass_credentials that was not properly
+      handled. [GH-982]
+  * DOCS:
+    + data_source/helm_template: Add a new attribute crds [GH-1050]
+    + data_source/helm_template: Correct some errors in examples. [GH-1027]
+    + provider: Add a new attribute burst_limit. [GH-1012]
+    + provider: Add a note regarding the KUBECONFIG environment variable. [GH-1051]
+    + resource/helm_release: Add usage example for OCI repositories. [GH-1030]
+    + resource/helm_release: Add usage examples for GCS and S3 plugins. [GH-1026]
+  * DEPENDENCIES:
+    + Bump github.com/containerd/containerd from 1.6.6 to 1.6.12 [GH-1029]
+    + Bump golang.org/x/crypto from 0.5.0 to 0.6.0 [GH-1055]
+    + Bump helm.sh/helm/v3 from 3.9.4 to 3.11.1 [GH-1036] [GH-1054] (bsc#1208086, CVE-2023-25165)
+    + Bump k8s.io/client-go from 0.24.2 to 0.26.1 [GH-1037]
+  * NOTES:
+    + provider: kubernetes.exec.api_version no longer supports client.authentication.k8s.io/v1alpha1.
+      Please, switch to client.authentication.k8s.io/v1beta1 or client.authentication.k8s.io/v1. [GH-1037]
+- from version 2.8.0
+  * FEATURES:
+    + Add support for configuring OCI registries inside provider block [GH-862]
+    + Add support for setting kube version on helm_template data source [GH-994]
+  * BUG FIXES:
+    + Fix larger diff than expected when updating helm_release "set" block value [GH-915]
+- from version 2.7.1
+  * BUG FIXES:
+    + Crash Fix: Fix Unknown Value in Manifest Diff [GH-966]
+- from version 2.7.0
+  * FEATURES:
+    + Update helm package to 3.9.4 (#945)
+    + Show Manifest when creating release [GH-903]
+  * BUG FIXES:
+    + Do dependency update in resourceDiff #771 (#855)
+    + Crash: Fix show_only crash when string is empty [GH-950]
+- from version 2.6.0
+  * IMPROVEMENTS:
+    + Upgrade helm dependency to 3.9.0 (#867)
+    + Add args attribute in post_render block in (#869)
+    + Add pass_credentials attribute (#841)
+    + Add proxy_url attribute to provider block (#843)
+  * BUG FIXES:
+    + Don't persist state when update causes an error (#857)
+- from version 2.5.1
+  * FIX:
+    + Only run OCI login on create and update (#846)
+    + OCI login concurrency issue (#848)
+- from version 2.5.0
+  * IMPROVEMENTS:
+    + Upgrade helm dependency to v3.8.1
+  * FEATURES:
+    + Add support for OCI registries
+- from version 2.4.1
+  * HOTFIX:
+    + Fix exec plugin interactive mode regression (#798)
+- from version 2.4.0
+  * IMPROVEMENTS:
+    + Update helm dependency to v3.7.1
+  * FEATURES:
+    + Add wait support to helm_release delete operation
+- Fix terraform architecture mapping for aarch64
+
+-------------------------------------------------------------------
 Wed Mar 30 06:55:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - exclude build for 32bit targets 

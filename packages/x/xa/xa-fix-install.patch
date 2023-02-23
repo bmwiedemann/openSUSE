@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index ae0ccf3..82743ef 100644
+--- a/Makefile
++++ b/Makefile
+@@ -61,8 +61,8 @@ clean:
+ install: xa uncpk
+ 	$(MKDIR) $(BINDIR)
+ 	$(MKDIR) $(MANDIR)
+-	$(INSTALL) xa reloc65 ldo65 file65 printcbm uncpk $(BINDIR)
+-	$(INSTALL) man/file65.1 man/ldo65.1 man/printcbm.1 man/reloc65.1 man/uncpk.1 man/xa.1 $(MANDIR)
++	$(INSTALL) -m 755 xa reloc65 ldo65 file65 printcbm uncpk $(BINDIR)
++	$(INSTALL) -m 644 man/file65.1 man/ldo65.1 man/printcbm.1 man/reloc65.1 man/uncpk.1 man/xa.1 $(MANDIR)
+ 	#$(MKDIR) $(DOCDIR)/xa65
+ 
+ dist: clean

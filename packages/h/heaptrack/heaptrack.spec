@@ -17,8 +17,8 @@
 
 
 %define kf5_version 5.26.0
-# Needed for Leap see boo#468748
-%define _filter_GLIBC_PRIVATE 1
+# Needed for Leap, see boo#468748
+%global __requires_exclude GLIBC_PRIVATE
 %bcond_without released
 Name:           heaptrack
 Version:        1.4.0

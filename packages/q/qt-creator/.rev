@@ -136,4 +136,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
 </comment>
     <requestid>1059844</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5b05aac5ebc6fd785932e44e1c7fbbac</srcmd5>
+    <version>9.0.2</version>
+    <time>1677166141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067205</requestid>
+  </revision>
 </revisionlist>

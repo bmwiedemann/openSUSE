@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 21 16:11:19 UTC 2023 - andy great <andythe_great@pm.me>
+
+- Update to version 4.7.5.
+  * Core:
+    * ComputerControlInterface: poll computer states if new interval
+      property is set
+    * Logger: improve log message handling performance by caching
+      internal configuration key
+  * Plugins:
+    * Demo: fix thread affinity issue when receiving feature control
+      commands
+    * LDAP: relicense under LGPL 2
+    * WebAPI: fix deadlock when controlling features
+  * Linux:
+    * Add support for libproc2
+    * Add Fedora 37 packages
+    * Add openSUSE Leap 15.4 packages
+    * Drop Fedora 35 packages
+    * Drop openSUSE Leap 15.3 packages
+    * Improve UID/GID resolving
+    * Improve user impersonation to not fail if running with lower
+      privileges already
+
+-------------------------------------------------------------------
 Tue Dec  6 14:36:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.4:
@@ -276,15 +300,15 @@ Tue Apr 20 15:50:47 UTC 2021 - andy great <andythe_great@pm.me>
 - Update to version 4.5.5.
   * Core: set OpenGL context sharing flag for proper functionality
     of the Qt WebEngine WebTabs backend
-  * Demo: fix freezing/stopping screen broadcasting when Veyon 
-    Master is configured to enforce selected mode for client 
+  * Demo: fix freezing/stopping screen broadcasting when Veyon
+    Master is configured to enforce selected mode for client
     computers
-  * Demo: fix context menu for computers to properly show 
+  * Demo: fix context menu for computers to properly show
     "Stop demo" for any active screen sharing mode
   * Service: Windows: fix memory leak
-  * Linux: make minimum session lifetime before server start 
+  * Linux: make minimum session lifetime before server start
     configurable
-  * Linux: only consider graphically logged in users for access 
+  * Linux: only consider graphically logged in users for access
     control rule condition "No user logged in"
 
 -------------------------------------------------------------------
@@ -301,19 +325,19 @@ Sat Mar 13 19:19:57 UTC 2021 - andy great <andythe_great@pm.me>
   * Demo: refactor demo server control for better reliability
     (demo server is now restarted automatically when crashed)
   * Linux: ignore missing DPMS for xrdp sessions
-  * Linux: make key sequence for user login via display manager 
+  * Linux: make key sequence for user login via display manager
     fully configurable
   * Linux: use session path as session ID to avoid missing updates
     on closed sessions
   * Linux: x11vnc: disable SHM for xrdp sessions
   * Master: improve save/restore of checked locations/computers to
-    better handle dynamic changes when using the NetworkDiscovery 
+    better handle dynamic changes when using the NetworkDiscovery
     add-on
-  * Service: always close sessions internally properly so session 
+  * Service: always close sessions internally properly so session
     IDs are reused correctly
-  * Service: Linux: prevent service from killing itself in some 
+  * Service: Linux: prevent service from killing itself in some
     cases
-  * Service: Linux: send SIGINT/SIGTERM/SIGKILL recursively to 
+  * Service: Linux: send SIGINT/SIGTERM/SIGKILL recursively to
     terminate server instances and child processes more reliably
   * Service: Linux: decrease grace period for server processes
   * Service: Linux: actively stop server for closing sessions
@@ -329,20 +353,20 @@ Sat Feb 27 10:27:39 UTC 2021 - andy great <andythe_great@pm.me>
   * Core: improve hostname resolution reliability
   * Core: update active features after every feature status change
   * Core: improve parsing port number for IPv6
-  * Configurator: add scrollbars to configuration pages if they 
+  * Configurator: add scrollbars to configuration pages if they
     don't fit on the screen
   * Demo: fix memory leak on connection error
-  * Demo: fix VNC server port detection to properly work with 
+  * Demo: fix VNC server port detection to properly work with
     external VNC servers
-  * Demo: fix broadcasting of individual screens if placed out of 
+  * Demo: fix broadcasting of individual screens if placed out of
     order
   * Demo: fix stopping demo mode via context menu
-  * Master: fix automatic reload of screenshot list on filesystem 
+  * Master: fix automatic reload of screenshot list on filesystem
     changes
   * Master: fix minor issues in Linux manpage
   * Linux: drop kdesudo/gksudo support
   * WebAPI: qthttpserver: switch to master branch
-  * WebAPI: refactor to multithreaded implementation supporting 
+  * WebAPI: refactor to multithreaded implementation supporting
     asynchronous requests
   * WebAPI: increase default connection limit to 32
   * WebAPI: add status fields to feature list
@@ -360,9 +384,9 @@ Fri Dec 11 17:02:21 UTC 2020 - andy great <andythe_great@pm.me>
   * Linux: update 3rdparty component x11vnc to fix CVE-2020-29074
   * Linux: debug server crashes using catchsegv
   * Linux: forward server log messages to system journal
-  * RemoteAccess: add option to show window on the same screen as 
+  * RemoteAccess: add option to show window on the same screen as
     the master window
-  * RemoteAccess: use non-deprecated API call to fix build with 
+  * RemoteAccess: use non-deprecated API call to fix build with
     Qt >= 5.15.2
   * WebAPI: add Python client implementation + tests
 
@@ -370,20 +394,20 @@ Fri Dec 11 17:02:21 UTC 2020 - andy great <andythe_great@pm.me>
 Wed Nov 25 14:20:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.5.1.
-  * Core: fix key name conversion for arguments when invoking 
+  * Core: fix key name conversion for arguments when invoking
     features
-  * Master: properly reload screenshot list also when using 
+  * Master: properly reload screenshot list also when using
     screenshot directories on network shares
   * Master: add support for deleting multiple screenshots
   * Master: fix bug with initial computer icon layout
-  * Master: update icon sizes and their aspect ratios dynamically 
+  * Master: update icon sizes and their aspect ratios dynamically
     whenever a computer is added, connected or removed
-  * Master: improve icon size auto adjust functionality when 
+  * Master: improve icon size auto adjust functionality when
     adding/removing multiple computers
-  * Master: add dedicated icon for computers not running the Veyon 
+  * Master: add dedicated icon for computers not running the Veyon
     Server
   * Master: only show connected computers in slideshow panel
-  * Master: fix issue with icons overlapping user name and/or 
+  * Master: fix issue with icons overlapping user name and/or
     computer name
   * Screenshot: fix non-working feature invocation
   * Server: notify first successful access control pass only
@@ -395,13 +419,13 @@ Wed Nov 18 08:10:36 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 4.5.0.
   * Core: improve invocation of worker processes for better
     reliability
-  * Core: improve message exchange with worker processes 
+  * Core: improve message exchange with worker processes
     (fixes demo mode not starting properly in some cases)
-  * Core: implement session ID management to reuse a session ID 
-    after a session has been closed - RDP session IDs (which are 
-    increased continuously) are no longer used for calculating 
+  * Core: implement session ID management to reuse a session ID
+    after a session has been closed - RDP session IDs (which are
+    increased continuously) are no longer used for calculating
     server port numbers
-  * Core: rename configuration key Service/PrimaryServicePort to 
+  * Core: rename configuration key Service/PrimaryServicePort to
     Service/VeyonServerPort
   * Core: refactor feature plugin API
   * Configurator: Service: improve session mode configuration UI
@@ -409,31 +433,31 @@ Wed Nov 18 08:10:36 UTC 2020 - andy great <andythe_great@pm.me>
   * Configurator: Master: add option to hide own session
   * Configurator: Master: add computer icon spacing setting
   * Configurator: Master: add computer icon aspect ratio setting
-  * Demo: refactor server to be multithreaded which greatly 
-    improves performance and responsiveness especially with many 
+  * Demo: refactor server to be multithreaded which greatly
+    improves performance and responsiveness especially with many
     clients
-  * Demo: add feature to share a user's screen instead of the own 
+  * Demo: add feature to share a user's screen instead of the own
     one
   * Demo: reset access token after stopping server
-  * Demo: refactor modes (window/fullscreen) as subfeatures 
+  * Demo: refactor modes (window/fullscreen) as subfeatures
     displayed in a drop down menu
   * Demo: add feature to share only one of multiple (own) screens
-  * FileTransfer: add configuration page allowing to configure 
+  * FileTransfer: add configuration page allowing to configure
     source and destination folders
   * Linux: ignore SIGPIPE and continue running normally if a socket
     is closed unexpectedly
   * Linux: fix missing dependencies in Ubuntu 20.04 package
   * Linux: fix and prefer reboot/poweroff via systemd-logind
-  * Linux: fix reboot/poweroff if e.g. /sbin or /usr/sbin is not 
+  * Linux: fix reboot/poweroff if e.g. /sbin or /usr/sbin is not
     in PATH
   * Linux: don't show output of internal systemctl calls
-  * Linux: add Debian-gdm as display manager user to properly 
+  * Linux: add Debian-gdm as display manager user to properly
     detect that no user is being logged in
-  * Linux: Service: retry server start for sessions in opening 
+  * Linux: Service: retry server start for sessions in opening
     state
-  * Linux: Service: manually set environment variable 
+  * Linux: Service: manually set environment variable
     XDG_SESSION_ID if pam-systemd is not used
-  * Linux: Service: start server instances for active/online 
+  * Linux: Service: start server instances for active/online
     sessions only - fixes various issues regarding server start on
     user login
   * Master: add Slideshow panel
@@ -441,10 +465,10 @@ Wed Nov 18 08:10:36 UTC 2020 - andy great <andythe_great@pm.me>
   * Master: always adjust the size of computer icons automatically
     when enabled
   * Master: save and restore states and sizes of panels
-  * Master: automatically adjust aspect ratio of computer icons to 
+  * Master: automatically adjust aspect ratio of computer icons to
     the original screen sizes
   * Master: update already visible tooltips for computer icons
-  * Master: make computer icon spacing configurable and decrease 
+  * Master: make computer icon spacing configurable and decrease
     its default value
   * RemoteAccess: show username in window title
   * RemoteAccess: hide toolbar on focus loss
@@ -452,10 +476,10 @@ Wed Nov 18 08:10:36 UTC 2020 - andy great <andythe_great@pm.me>
     being locked on some Linux desktops
   * Server: also notify about authentication failure on incomplete
     authentication attempts
-  * Server: add support for external VNC servers without any 
+  * Server: add support for external VNC servers without any
     authentication/password configured
   * Server: improve error handling for VNC server plugins
-  * WebAPI: add new plugin offering a RESTful API for accessing 
+  * WebAPI: add new plugin offering a RESTful API for accessing
     Veyon Server instances
 
 -------------------------------------------------------------------
@@ -471,16 +495,16 @@ Sat Jul 18 14:09:07 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.4.1.
   * Core: improve multi session support
-  * Core: improve worker execution and fix tray icon not being 
+  * Core: improve worker execution and fix tray icon not being
     shown on startup
-  * Demo: broadcast actual teacher session instead of console 
+  * Demo: broadcast actual teacher session instead of console
     session when running Master within RDP session
   * LDAP: fix computer query on host name lookup error
   * Linux: don't use functions marked deprecated in Qt 5.15
   * Linux: provide package for openSUSE 15.2
-  * NetworkObjects: update existing objects instead of adding 
+  * NetworkObjects: update existing objects instead of adding
     duplicate objects when importing CSV / text file
-  * NetworkObjects: output proper line endings when exporting to 
+  * NetworkObjects: output proper line endings when exporting to
     CSV / text file on Windows
   * Server: fix crash on connection accept error
   * Update translations
@@ -497,7 +521,7 @@ Fri Jun 12 22:53:11 UTC 2020 - andy great <andythe_great@pm.me>
   * Core: drop log messages exceeding size limit
   * DesktopServices: improve URL handler invocation (fixes opening
     URLs with characters such as "=")
-  * RemoteAccess: honor feature configuration (hide view only 
+  * RemoteAccess: honor feature configuration (hide view only
     button when corresponding feature is disabled)
   * Fix possible symlink attacks on log files
   * Update translations
@@ -510,7 +534,7 @@ Mon Jun  8 13:52:15 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 -------------------------------------------------------------------
 Wed May 27 16:00:22 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Fix veyon not starting: error while loading shared libraries. 
+- Fix veyon not starting: error while loading shared libraries.
 
 -------------------------------------------------------------------
 Tue May 12 19:12:41 UTC 2020 - andy great <andythe_great@pm.me>
@@ -518,12 +542,12 @@ Tue May 12 19:12:41 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 4.3.5.
   * Fix: LDAP: make SSL/LDAPS connections work properls (previously
     broken due to improper certificate verifications)
-  * Fix: LDAP: enable additional low-level debug messages at the 
+  * Fix: LDAP: enable additional low-level debug messages at the
     command line via environment variable VEYON_DEBUG_LDAP_LIBRARY
-  * Update 3rdparty component libvncserver to latest 0.9.13 
-    snapshot (including new unified connection timeout handling 
+  * Update 3rdparty component libvncserver to latest 0.9.13
+    snapshot (including new unified connection timeout handling
     support)
-  * Master: limit update interval to 10 seconds to prevent server 
+  * Master: limit update interval to 10 seconds to prevent server
     timeouts
   * Fix build with Qt >= 5.14
   * Minor code modernizations

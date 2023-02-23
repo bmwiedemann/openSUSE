@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZConfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ZConfig
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Structured Configuration Library
 License:        ZPL-2.1
@@ -65,7 +64,7 @@ This package contains documentation files for %{name}.
 %prep
 %setup -q -n ZConfig-%{version}
 rm -rf ZConfig.egg-info
-rm doc/make.bat
+rm docs/make.bat
 # test works only in git repo
 rm -f ZConfig/tests/test_readme.py
 
@@ -93,9 +92,10 @@ export LANG=en_US.UTF8
 %doc CHANGES.rst COPYRIGHT.txt PKG-INFO README.rst
 %python_alternative %{_bindir}/zconfig
 %python_alternative %{_bindir}/zconfig_schema2html
-%{python_sitelib}/*
+%{python_sitelib}/ZConfig
+%{python_sitelib}/ZConfig-%{version}*-info
 
 %files %{python_files doc}
-%doc doc/
+%doc docs/
 
 %changelog

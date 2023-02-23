@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>1034610</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ed4fa7d3e68de644012d7f83d8654b5</srcmd5>
+    <version>1.13.1</version>
+    <time>1677166158</time>
+    <user>dimstar_suse</user>
+    <comment>- Updater to 1.13.1
+  * Build and publish sdist package again
+  * Allow to install package from .tar.gz without --no-build-isolation flag
+  * Get rid of deprecated package dependency
+  * Publish development releases to Test PyPI
+  * Use pypa/gh-action-pypi-publish Github action to publish releases to PyPI
+  * Remove local part of version because it is not allowed in PyPI
+- Update to 1.13.0
+  * Make all internal functions private
+  * Add tag_filter option. Special thanks to @vortechs2000
+  * For Python 3.11 use built-in tomllib instead of toml package
+  * Add documentation about fetching package version in runtime
+  * Add description for some functions</comment>
+    <requestid>1067284</requestid>
+  </revision>
 </revisionlist>

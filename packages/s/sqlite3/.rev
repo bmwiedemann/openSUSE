@@ -1465,4 +1465,27 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>1056142</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>da7d3af98e0464fc62cb0d043414fb62</srcmd5>
+    <version>3.41.0</version>
+    <time>1677166093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.41.0:
+  * https://www.sqlite.org/releaselog/3_41_0.html
+  * Various query planner improvements.
+  * Add the built-in unhex() SQL function.
+  * Add the base64 and base85 application-defined functions as an
+    extension and include that extension in the CLI.
+  * In-memory databases created using sqlite3_deserialize() now
+    report their filename as an empty string, not as 'x'.
+  * The &quot;.scanstats est&quot; command provides query planner estimates
+    in profiles.
+  * Enhance the --safe command-line option to disallow dangerous
+    SQL functions.
+  * The double-quoted string misfeature is now disabled by default
+    for CLI builds.
+  * Various other improvements and performance enhancements.
+- The new version obsoletes sqlite-src-3390000-func7-pg-181.patch</comment>
+    <requestid>1067149</requestid>
+  </revision>
 </revisionlist>

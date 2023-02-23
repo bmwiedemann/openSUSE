@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatever
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-whatever
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Module to make anonymous functions by partial application of operators
 License:        BSD-3-Clause
@@ -52,6 +51,8 @@ It is inspired by the Perl 6 one, see http://perlcabal.org/syn/S02.html#The_What
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/whatever.py
+%{python_sitelib}/whatever-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

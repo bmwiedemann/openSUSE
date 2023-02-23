@@ -1,7 +1,7 @@
 #
 # spec file for package youtube-dl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,10 @@ Patch0:         30713-new-ceskatelevize.patch
 # PATCH-FEATURE-OPENSUSE no-pandoc-32bit.patch mcepl@suse.com
 # 32bit architectures don't have pandoc
 Patch1:         no-pandoc-32bit.patch
+# PATCH-FIX-UPSTREAM fix-uploader-id-extraction.patch gh#ytdl-org/youtube-dl#31530 mcepl@suse.com
+# Patch from gh#yt-dlp/yt-dlp@149eb0bbf34f
+# Fix uploader_id extraction regexp
+Patch2:         fix-uploader-id-extraction.patch
 BuildRequires:  make >= 4
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml

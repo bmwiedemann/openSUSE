@@ -164,4 +164,38 @@ flaky_test_rerun.patch nodejs-libpath.patch  sle12_python3_compat.patch</comment
 ------------------------------------------------------------------</comment>
     <requestid>1062438</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>087a66375edbac3f0cdc9aa01ce72db2</srcmd5>
+    <version>18.14.2</version>
+    <time>1677166109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to NodeJS 18.14.2 LTS:
+  * deps: upgrade npm to 9.5.0
+  * deps: update undici to 5.20.0
+- Changes in version 18.14.1:
+  * fixes permissions policies can be bypassed via process.mainModule
+    (bsc#1208481, CVE-2023-23918)
+  * fixes insecure loading of ICU data through ICU_DATA environment
+    variable (bsc#1208487, CVE-2023-23920)
+  * fixes OpenSSL error handling issues in nodejs crypto library
+    (bsc#1208483, CVE-2023-23919)
+  * updates undici to v5.19.1
+    + Fetch API in Node.js did not protect against CRLF injection in host headers
+    + Regular Expression Denial of Service in Headers in Node.js fetch API
+    (bsc#1208413, bsc#1208485, CVE-2023-24807, CVE-2023-23936)
+- versioned.patch: refreshed
+- sysctl.patch: unit test fixes
+
+- Update to NodeJS 18.14.0 LTS:
+  * deps:
+    + update npm to 9.2.0
+  * http:
+    + join authorization headers
+    + improved timeout defaults handling
+  * stream:
+    + implement finished() for ReadableStream and WritableStream
+- refreshed patches: linker_lto_jobs.patch, npm_search_paths.patch,
+  versioned.patch</comment>
+    <requestid>1067187</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %global abiver 4
 %global apiver 2.0
-%global gegl_version 0.4.36
+%global gegl_version 0.4.38
 
 %if 0%{?suse_version} >= 1550
 %bcond_without libheif
@@ -32,7 +32,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.32
+Version:        2.10.34
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -61,6 +61,7 @@ BuildRequires:  intltool >= 0.40.1
 BuildRequires:  libtiff-devel
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  libxslt-tools
+BuildRequires:  libjxl-devel >= 0.7.0
 BuildRequires:  pkgconfig
 %if %{with python_plugin}
 BuildRequires:  python-gtk-devel >= 2.10.4

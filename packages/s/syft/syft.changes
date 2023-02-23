@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:37:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.0:
+  * Update Stereoscope to fab1c9638abc2c21cd53dca1f205f37d71148ee0 (#1604)
+  * chore: fix cataloger_test (#1603)
+  * fix: merging of binary packages (#1583)
+  * fix: issue when matching format versions (#1585)
+  * chore: update syft bootstrap tools to latest versions. (#1593)
+  * feat: add perl binary classifier (#1592)
+  * Update Stereoscope to 529924d6d5aa6c708cceffc651883b6e1e27f5df (#1602)
+  * Update SPDX license list to 3.20 (#1600)
+  * chore: update SPDX license list (#1599)
+  * fix cataloger selection to be more specific (#1582)
+  * add workaround for macos github actions cache issue (#1584)
+
+-------------------------------------------------------------------
 Thu Feb 16 17:31:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.72.0:

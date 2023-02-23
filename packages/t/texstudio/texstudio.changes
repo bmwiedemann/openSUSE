@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 22 13:31:38 UTC 2023 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 4.5.1
+  * Provide online template repository
+  * change preview target in IDEFIX menu (#2760)
+  * use QtMultimedia instead of phonon to show movies in pdf (non-default)
+  * regex in search panel is syntax checked and marked if wrong
+  * latex menu for horizontal spacing (#2687)
+  * config dialog with resizable splitter (#2707)
+  * insert inline math mode as $$ (#2719)
+  * add editor action “Move all (others) to other view” (#2713)
+  * show macro name in completer list (#2679)
+  * show macro trigger and shortcut in configuration window (#2635)
+  * fix wrong side panel title when changing grid size in config (#2743)
+  * preview/clear preview now use position of context menu as reference (#2794)
+  * add a Package Tab to the QuickStart Wizard (#2831)
+  * Editor option ‘Show Only Monospaced Fonts’ is now persistent (#788)
+  * fix size of config dialog on low res screens (#995)
+  * add script command loadManagedMenu, s. new section “Menu Definitions” in the manual (#2816)
+  * switch to pointer cursor over bookmark column of editors (#2220)
+  * add shadow option for rectangular magnifier in pdf viewer config (#2885)
+  * in split view mode add editor to split view where current editor is (#2838)
+
+-------------------------------------------------------------------
 Sun Nov 27 11:17:35 UTC 2022 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Update to version 4.4.1

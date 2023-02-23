@@ -3,19 +3,19 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v18.4.0/node.gyp
+Index: node-v18.14.0/node.gyp
 ===================================================================
---- node-v18.4.0.orig/node.gyp
-+++ node-v18.4.0/node.gyp
-@@ -1145,6 +1145,7 @@
+--- node-v18.14.0.orig/node.gyp
++++ node-v18.14.0/node.gyp
+@@ -1166,6 +1166,7 @@
          'node_dtrace_header',
          'node_dtrace_ustack',
          'node_dtrace_provider',
-+        'fuzz_url',
++        'cctest',
        ],
        'includes': [
          'node.gypi'
-@@ -1190,6 +1191,7 @@
+@@ -1312,6 +1313,7 @@
          'node_dtrace_header',
          'node_dtrace_ustack',
          'node_dtrace_provider',
@@ -23,15 +23,7 @@ Index: node-v18.4.0/node.gyp
        ],
  
        'includes': [
-@@ -1288,6 +1290,7 @@
-         'node_dtrace_header',
-         'node_dtrace_ustack',
-         'node_dtrace_provider',
-+        'cctest',
-       ],
- 
-       'includes': [
-@@ -1357,6 +1360,7 @@
+@@ -1381,6 +1383,7 @@
          '<(node_lib_target_name)',
          'deps/histogram/histogram.gyp:histogram',
          'deps/uvwasi/uvwasi.gyp:uvwasi',

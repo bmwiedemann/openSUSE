@@ -841,4 +841,14 @@
   * SQS: Fix message arg in backoff policy</comment>
     <requestid>963484</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>6294fb0ae147e1ad22f1562dccb12a46</srcmd5>
+    <version>5.2.4</version>
+    <time>1677166114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-pyro-5.patch:
+  * Use Pyro5's compatability layer.
+- Switch BuildRequires to Pyro5.</comment>
+    <requestid>1067310</requestid>
+  </revision>
 </revisionlist>

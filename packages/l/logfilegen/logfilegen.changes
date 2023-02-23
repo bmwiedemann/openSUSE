@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 22 18:42:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.0.0:
+  * exposes metrics in Prometheus format at 
+    http://localhost:8080/metrics and a self-hosted statistics page
+    at http://localhost:8080
+  * can write final statistics to the file or stdout in a
+    configurable format
+    
+-------------------------------------------------------------------
 Wed Feb  8 15:50:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - logfilegen 1.2.0:

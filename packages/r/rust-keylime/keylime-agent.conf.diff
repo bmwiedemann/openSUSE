@@ -1,7 +1,7 @@
-Index: rust-keylime-0.1.0+git.1676549716.5382ed9/keylime-agent.conf
+Index: rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
 ===================================================================
---- rust-keylime-0.1.0+git.1676549716.5382ed9.orig/keylime-agent.conf
-+++ rust-keylime-0.1.0+git.1676549716.5382ed9/keylime-agent.conf
+--- rust-keylime-0.2.0+git.1677002906.cf6c4f0.orig/keylime-agent.conf
++++ rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
 @@ -19,13 +19,15 @@ version = "2.0"
  # of 'SHA256(public EK in PEM format)'.
  #
@@ -30,17 +30,7 @@ Index: rust-keylime-0.1.0+git.1676549716.5382ed9/keylime-agent.conf
  registrar_port = 8890
  
  # Enable mTLS communication between agent, verifier and tenant.
-@@ -133,7 +136,8 @@ extract_payload_zip = true
- #
- # To override enable_revocation_notifications, set
- # KEYLIME_AGENT_ENABLE_REVOCATION_NOTIFICATIONS environment variable.
--enable_revocation_notifications = true
-+# enable_revocation_notifications = true
-+enable_revocation_notifications = false
- 
- # The path to the directory containing the pre-installed revocation action
- # scripts.  Ideally should point to an fixed/immutable location subject to
-@@ -151,7 +155,8 @@ revocation_actions_dir = "/usr/libexec/k
+@@ -151,7 +154,8 @@ revocation_actions_dir = "/usr/libexec/k
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_IP environment variable.
  # To override revocation_notification_port, set
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_PORT environment variable.

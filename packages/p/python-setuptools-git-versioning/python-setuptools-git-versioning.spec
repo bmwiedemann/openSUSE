@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-git-versioning
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-setuptools-git-versioning
-Version:        1.12.1
+Version:        1.13.1
 Release:        0
 Summary:        Use git repo data for building a version number according PEP-440
 License:        MIT
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml if %python-base < 3.11}
+BuildRequires:  %{python_module toml}
 BuildRequires:  git-core
 # /SECTION
 %python_subpackages

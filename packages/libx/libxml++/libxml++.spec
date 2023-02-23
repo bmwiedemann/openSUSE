@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.55.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
@@ -54,7 +54,6 @@ libxml2 to access the XML files.
 %package devel
 Summary:        C++ Interface for XML Files -- Development Files
 Group:          Development/Libraries/C and C++
-Requires:       glibmm2-devel
 Requires:       libxml++-%{so_ver} = %{version}
 
 %description devel
@@ -78,10 +77,10 @@ chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %files -n libxml++-%{so_ver}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so.*
 
 %files devel
+%doc AUTHORS ChangeLog NEWS README
 %{_includedir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}/include

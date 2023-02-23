@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 15 19:44:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.2.13:
+  * B906: Add visit_Bytes, visit_Num and visit_Str to
+    the list of visit_* functions that are ignored by the B906
+    check.
+  * B016: Warn when raising f-strings.
+  * Add B028: Check for an explicit stacklevel keyword argument
+    on the warn method from the warnings module.
+  * Add B029: Check when trying to use ``except`` with an empty
+    tuple i.e. ``except: ()``.
+  * Add B032: Check for possible unintentional type annotations
+    instead of assignments.
+  * B024: now ignores classes without any methods. (#336)
+  * B017: Don't warn when ``pytest.raises()`` has a ``match``
+    argument. (#334)
+  * B906: Ignore ``visit_`` functions with a ``_fields``
+    attribute that can't contain ast.AST subnodes. (#330)
+  * Rename B028 to B907, making it optional/opinionated.
+  * Add B906: ``visit_`` function with no further calls to a
+    ``visit`` function. (#313)
+  * Add B028: Suggest ``!r`` when formatted value in f-string is
+    surrounded by quotes. (#319)
+
+-------------------------------------------------------------------
 Thu Dec 15 20:59:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.12.6 (bsc#1206225):

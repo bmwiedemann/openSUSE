@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Feb 22 15:26:13 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 19.7.0:
+  * deps:
+    + upgrade npm to 9.5.0
+    + update undici to v5.20.0
+  * stream: add abort signal for ReadableStream and WritableStream
+  * url: replace url-parser with ada (not language)
+
+- Changes in version 19.6.1:
+  * fixes permissions policies can be bypassed via process.mainModule
+    (bsc#1208481, CVE-2023-23918)
+  * fixes insecure loading of ICU data through ICU_DATA environment
+    variable (bsc#1208487, CVE-2023-23920)
+  * fixes OpenSSL error handling issues in nodejs crypto library
+    (bsc#1208483, CVE-2023-23919)
+  * updates undici to v5.19.1
+    + Fetch API in Node.js did not protect against CRLF injection in host headers
+    + Regular Expression Denial of Service in Headers in Node.js fetch API
+    (bsc#1208413, bsc#1208485, CVE-2023-24807, CVE-2023-23936)
+
+- linker_lto_jobs.patch: refreshed
+
+-------------------------------------------------------------------
+Tue Feb 21 15:40:11 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- node-gyp_7.1.2.tar.xz: added dependencies
+- node-gyp-config.patch: allows gyp 7.1.2 to run with node 19.x
+
+-------------------------------------------------------------------
 Fri Feb  3 11:44:55 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 19.6.0:

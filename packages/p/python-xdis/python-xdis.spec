@@ -1,7 +1,7 @@
 #
 # spec file for package python-xdis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python311 1
 Name:           python-xdis
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Python cross-version byte-code disassembler and marshal routines
 License:        GPL-2.0-only
@@ -71,6 +71,7 @@ rm pytest/test_disasm.py
 %license COPYING
 %doc NEWS.md README.rst
 %python_alternative %{_bindir}/pydisasm
-%{python_sitelib}/*
+%{python_sitelib}/xdis
+%{python_sitelib}/xdis-%{version}*-info
 
 %changelog

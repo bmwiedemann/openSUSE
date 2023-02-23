@@ -1157,4 +1157,12 @@
     <comment>- Update to version 1.50.12: (forwarded request 1039176 from dimstar)</comment>
     <requestid>1039364</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>81006d76b523363542de0073afc0d8d0</srcmd5>
+    <version>1.50.13</version>
+    <time>1677166098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067153</requestid>
+  </revision>
 </revisionlist>

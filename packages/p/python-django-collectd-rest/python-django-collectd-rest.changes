@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 13:56:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * use prefetch_related to decrease queries
+
+-------------------------------------------------------------------
 Wed Apr 20 13:31:59 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not require mock

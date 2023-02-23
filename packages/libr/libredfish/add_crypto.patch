@@ -1,0 +1,27 @@
+Index: libredfish/CMakeLists.txt
+===================================================================
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,6 +67,7 @@ endif()
+ if(OPENSSL_FOUND)
+   add_definitions(-DHAVE_OPENSSL)
+   target_link_libraries(redfish ${OPENSSL_SSL_LIBRARY})
++  target_link_libraries(redfish crypto)
+ endif()
+ 
+ 
+@@ -92,10 +93,10 @@ if(CZMQ_FOUND)
+ endif()
+ 
+ install(TARGETS redfishtest redfish
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib)
+-install(FILES ${REDFISH_HDR_PUBLIC_RED} DESTINATION include)
+-install(FILES ${REDFISH_HDR_PUBLIC_ENTITIES} DESTINATION include/entities)
++        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
++        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++install(FILES ${REDFISH_HDR_PUBLIC_RED} DESTINATION "${INCLUDE_INSTALL_DIR}")
++install(FILES ${REDFISH_HDR_PUBLIC_ENTITIES} DESTINATION "${INCLUDE_INSTALL_DIR}/entities")
+ 
+ ENABLE_TESTING()
+ 

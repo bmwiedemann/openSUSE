@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 22 12:33:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230216T192011Z:
+  * support unix-pipes with bigger buffers for performance (#4472)
+  * add more debugging tools to 'mc' container (#4475)
+  * Update madmin-go library (#4471)
+  * fix: do not print empty logs on screen (#4470)
+  * Implement 'mc admin user sts info' command (#4377)
+  * Remove `mc admin bucket remote bandwidth` command and introduce (#4430)
+  * Added code to print the copy resume information (#4454)
+  * mc rm: disallow --purge with flags other than --force (#4467)
+  * Fix parsing --response-duration in trace command (#4466)
+  * remove replace flag for go-ieproxy to allow go install
+  * update to newer libraries (#4464)
+  * mc admin user list --json output doesn't include user groups (#4433) (#4463)
+  * locks: Use timestamp when elapsed is zero (#4462)
+  * Improve `replicate ls` output (#4460)
+  * Fix replicate add/update cmds to allow prefix in rule (#4459)
+
+-------------------------------------------------------------------
 Thu Feb 02 07:22:08 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230128T202938Z:

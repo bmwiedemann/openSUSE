@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 22 09:07:12 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1677002906.cf6c4f0:
+  * Bump version to 0.2.0
+  * packit: Remove workaround for Fedora BZ#2158598
+  * ima-emulator: Implement graceful shutdown
+  * Update tss-esapi in Cargo.toml
+  * packit: Re-enable tests on Fedora Rawhide
+  * Deprecate `with-zmq` and `legacy-python-actions` features
+
+-------------------------------------------------------------------
 Thu Feb 16 12:51:38 UTC 2023 - aplanas@suse.com
 
 - Drop zmq from the feature set

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 20 07:30:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.6.1:
+  * Add support for Python 3.11.
+  * Drop support for Python 3.4.
+
+-------------------------------------------------------------------
 Sun Jul 11 19:18:44 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 3.6.0

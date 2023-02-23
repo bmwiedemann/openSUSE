@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 15 15:09:27 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 2.5.4
+  * Fixed extra.plugin-optional support in PluginInstaller when doing pre-install checks (#11318)
+- Update to version 2.5.3
+  * Added extra.plugin-optional support for allow auto-disabling unknown plugins which are not critical when running non-interactive (#11315)
+
+-------------------------------------------------------------------
 Sat Feb  4 14:10:18 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 2.5.2

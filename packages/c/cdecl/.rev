@@ -490,4 +490,12 @@
     <comment>- Update to release 13.2</comment>
     <requestid>1061882</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1788a092b8ea24a063b9361e5ae25090</srcmd5>
+    <version>14.0</version>
+    <time>1677166155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 14.0</comment>
+    <requestid>1067274</requestid>
+  </revision>
 </revisionlist>

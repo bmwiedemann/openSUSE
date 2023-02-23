@@ -1,0 +1,5 @@
+<package name="squilt" project="openSUSE:Factory">
+  <title>quilt wrapper using nsjail</title>
+  <description>Wrapper to confine quilt with nsjail</description>
+  <devel project="security" package="squilt"/>
+</package>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 23 09:08:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-uploader-id-extraction.patch to fix uploader_id
+  extraction regexp (gh#ytdl-org/youtube-dl#31530, patch from
+  gh#yt-dlp/yt-dlp@149eb0bbf34f).
+
+-------------------------------------------------------------------
 Wed Apr  6 07:11:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 30713-new-ceskatelevize.patch fixing download

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 22 15:57:11 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add missing Requires(pre): shadow
+
+-------------------------------------------------------------------
 Tue Jan 17 12:52:05 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add 0012-Only-check-for-arguments-matching-test-string-if-the.patch to fix

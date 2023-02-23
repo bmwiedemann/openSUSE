@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-helm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global providername    helm
 
 %ifarch aarch64
-%define terraformarch   amd64
+%define terraformarch   arm64
 %endif
 %ifarch ppc64
 %define terraformarch   ppc64
@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-helm
-Version:        2.2.0
+Version:        2.9.0
 Release:        0
 Summary:        Terraform Helm provider
 License:        MPL-2.0

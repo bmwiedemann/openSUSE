@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-collectd-rest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-collectd-rest
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        A simple Django application to demonstrate RRD plots
 License:        BSD-2-Clause

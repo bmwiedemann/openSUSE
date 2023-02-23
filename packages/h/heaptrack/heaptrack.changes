@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:21:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Try another way to ignore the GLIBC_PRIVATE requirement
+
+-------------------------------------------------------------------
 Wed Feb 22 10:57:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

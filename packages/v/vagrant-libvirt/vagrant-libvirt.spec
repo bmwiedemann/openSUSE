@@ -87,6 +87,7 @@ BuildRequires:  kmod
 
 URL:            https://github.com/%{name}/%{name}
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Patch:          https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1709.patch#./bundle-exec-rspec-fix-for-ruby3.2.patch
 
 Summary:        Vagrant provider for libvirt
 License:        MIT

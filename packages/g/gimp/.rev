@@ -2064,4 +2064,12 @@ General:
     <comment>- Update to 2.10.32: (boo#1199653 CVE-2022-30067)</comment>
     <requestid>982890</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>c40ac7ddec0bac44c142833b5f68d532</srcmd5>
+    <version>2.10.34</version>
+    <time>1677166091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067131</requestid>
+  </revision>
 </revisionlist>

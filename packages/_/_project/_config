@@ -86,14 +86,14 @@ Macros:
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:LegacyX86"
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict
-Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict skope umoci
+Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict skopeo umoci
 %else
 # That ignore seems not to make sense - we only inject -strict based on specific projects already
 Ignore: container-build-checks-strict
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE
-Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE skopeo umoci
+Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE skopeo umoci
 %endif
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:zSystems" || "%_project" == "openSUSE:Factory:LegacyX86"

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 21 22:54:42 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.4.1
+  Bugfixes:
+  * fix random char value of UTF-8.
+  * bypass logical combination flag in hs_expression_info().
+  * fix build error due to libc symbol parsing.
+  * add empty string check for pure literal API.
+  * fix unknown instruction error in pure literal API.
+  * avoid memory leak in stream close stage.
+  * fix assertion failure in DFA construction.
+  * fix aligned allocator segment faults.
+  * add quick validity check for scratch.
+  * fix glibc-2.34 stack size issue.
+  * fix SKIP flag issue in chimera.
+  * fix one cotec check corner issue in UTF-8 validation.
+  * Fix other compile issues.
+
+-------------------------------------------------------------------
 Fri Oct 14 06:54:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - BuildRequire python3-base instead of python(2), it used py3 already

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 20 11:10:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Updater to 1.13.1
+  * Build and publish sdist package again
+  * Allow to install package from .tar.gz without --no-build-isolation flag
+  * Get rid of deprecated package dependency
+  * Publish development releases to Test PyPI
+  * Use pypa/gh-action-pypi-publish Github action to publish releases to PyPI
+  * Remove local part of version because it is not allowed in PyPI
+- Update to 1.13.0
+  * Make all internal functions private
+  * Add tag_filter option. Special thanks to @vortechs2000
+  * For Python 3.11 use built-in tomllib instead of toml package
+  * Add documentation about fetching package version in runtime
+  * Add description for some functions
+
+-------------------------------------------------------------------
 Tue Nov  8 13:52:04 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Simplify dirty version workaround to avoid modifying repo history

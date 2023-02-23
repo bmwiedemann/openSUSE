@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 23 00:12:48 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230223:
+  * Assigned RUSTSEC-2022-0090 to libsqlite3-sys (#1607)
+  * Add sqlite advisory (#1599)
+  * Assigned RUSTSEC-2023-0014 to cortex-m-rt (#1606)
+  * Add soundness advisory for cortex-m-rt (#1601)
+  * Update RUSTSEC-2020-0097.md (#1600)
+  * Better docs (#1598)
+  * Assigned RUSTSEC-2020-0167 to pnet_packet (#1596)
+  * Fix some typos (#1593)
+  * Add advisory for pnet_packet (#1595)
+  * Update RUSTSEC-2020-0071.md (#1594)
+
+-------------------------------------------------------------------
 Tue Jan 17 03:29:22 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230117:

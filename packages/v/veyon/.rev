@@ -264,4 +264,468 @@ https://github.com/openSUSE/polkit-default-privs/pull/19</comment>
     <comment></comment>
     <requestid>1060376</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>452bc21a31d64a3824cb7c9ba56130eb</srcmd5>
+    <version>4.7.5</version>
+    <time>1677166229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.7.5.
+  * Core:
+    * ComputerControlInterface: poll computer states if new interval
+      property is set
+    * Logger: improve log message handling performance by caching
+      internal configuration key
+  * Plugins:
+    * Demo: fix thread affinity issue when receiving feature control
+      commands
+    * LDAP: relicense under LGPL 2
+    * WebAPI: fix deadlock when controlling features
+  * Linux:
+    * Add support for libproc2
+    * Add Fedora 37 packages
+    * Add openSUSE Leap 15.4 packages
+    * Drop Fedora 35 packages
+    * Drop openSUSE Leap 15.3 packages
+    * Improve UID/GID resolving
+    * Improve user impersonation to not fail if running with lower
+      privileges already
+- update to 4.7.4:
+  * Fix location detection with nested locations (e.g. when using LDAP Pro)
+  * Fix automatic location switching with nested locations (e.g. when using
+  * Fix location filtering (only show current location) with nested
+    locations (e.g. when using LDAP Pro)
+  * Fix broken authentication for Qt6-based builds (e.g. openSUSE
+    Tumbleweed)
+  * RemoteAccess: fix broken display when selecting a secondary screen which
+    is placed left of the primary screen
+  * ScreenLock: fix lock window position and size in multi monitor setups –
+    the lock window now covers all screens
+  * Add workaround for binutils/GCC/Qt PIE+LTO issue to fix crashes when
+    starting Veyon Configurator and Veyon Server on Ubuntu 22.04
+  * UserFunctions: also set GID when running programs as user – fixes access
+    to the user's tmpdir and potential security issues
+  * Add Fedora 36 packages
+  * Add Ubuntu 22.04 packages
+  * Drop Debian Stretch packages
+  * Drop Fedora 34 packages
+  * 3rdparty: x11vnc: update to 0.9.16-67-g4e18eee (LibreSSL build fixes)
+- Require /usr/bin/pkexec instead of pkexec: allow the package to
+  install with polkit with split pkexec of non-split.
+- require pkexec which is now a standalone package
+- Update to version 4.7.3
+  * Configuration: use remote view as default computer double click
+    feature
+  * Filesystem: expand %HOSTNAME% path variable
+  * Filesystem: add support for %DESKTOP%, %DOCUMENTS%, %DOWNLOADS%,
+    %PICTURES% and %VIDEOS% path variables
+  * VncClientProtocol: fix potential multiplication overflows
+  * Master
+    * Bundle implementations of required KItemModel classes to drop
+      dependency on 3rdparty sources
+  * AuthHelper: add account validity check
+  * Session: improve session path query mechanism to support systemd &lt; 243
+  * Session: detect unspecified session type explicitly
+  * Service: do not start server for sessions with unspecified type
+  * UserFunctions: determine the user name preferably via
+    systemd-logind (use $USER as fallback only)
+  * UserFunctions: always use qualified usernames for authentication
+    and user info queries
+  * BuiltinX11VncServer: fix potential multiplication overflow in SHM
+    support checking code
+- Use QT6 on Factory
+- Update to version 4.7.2.
+  * Core:
+    * VncView: limit preferred size to available desktop geometry
+    (i.e. all monitors)
+  * Plugins
+    * AuthKeys: use file name only to determine key name
+    * AuthKeys: fixed loading key specified through the
+      VEYON_AUTH_KEY_NAME environment variable
+    * Demo: in window mode, resize the window according to the
+      available desktop geometry
+    * PowerControl: don't allow aborting the shutdown countdown by pressing Alt+F4
+    * RemoteAccess: allow screen switching by tab/backtab (in view-only mode)
+    * RemoteAccess: fixed window being created twice
+    * RemoteAccess: only update clipboard if a remote access window is opened
+    * ScreenLock: resize to available desktop geometry
+  * Master
+    * Computer zoom: allow screen switching by pressing tab or backtab
+- Update to version 4.7.1.
+  * Core
+    * Improved CMake code to better support sanitizers.
+    * Added CMake option to disable the generation/update of
+      translations.
+    * The size of messages is now limited to 64 MB to prevent
+      potential out-of-memory situations.
+    * Added initial libfuzzer test set.
+    * Added data integrity checking code to the VariantStream class
+      to prevent out-of-memory situations and potential buffer
+      overflows when reading data from the network.
+    * Added support for displaying an overlay icon on the system
+      tray icon.
+  * Configurator:
+    * AccessControl: Abort group test when canceling username
+      input dialog.
+    * Master: Browsing of the user configuration directory has
+      been fixed.
+  * Plugins
+     * LDAP: Fixed build of 3rdparty component kldap with Qt 6
+     * LDAP: Made the query timeout configurable
+       (in advanced view only)
+     * RemoteAccess: open remote access window for all selected
+       computers – only ask for hostname/IP if no computer is
+       selected
+     * RemoteAccess: The clipboard content is now synchronized
+       whenever it changes locally or remotely.
+     * WebAPI: Use updated 3rdparty components
+       (qthttpserver, http-parser)
+  * Master
+    * The press and hold feature now properly works on Windows
+      (thanks to @SlrG).
+  * Linux
+    * Fixed non-installable DEB packages for Ubuntu 18.04 and
+      Debian Stretch caused by compatibility problems with older
+      versions of CMake/CPack.
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_veyon.service.patch
+- Update to version 4.7.0.
+  * Core
+    * Fixed binary compatibility issues between different versions
+      of LibVNCServer/LibVNCClient.
+    * Messages in log files (especially debug messages) are now
+      much more human readable.
+  * Plugins
+    * Demo: Screens in the Demo menu are now displayed with their
+      actual hardware name and connector type/index.
+    * LDAP: Fixed querying members of a group when the nested
+      groups option is enabled.
+    * TextMessage: Students can now select and copy the text
+      message or parts of it.
+    * TextMessage: Rich text
+      (i.e. formatted text including hyperlinks) can now be
+      entered and sent to students.
+    * RemoteAccess: For remote computers with multiple screens, a
+      button with a screen selection menu has been added.
+    * RemoteAccess: The login name of the remote user is shown in
+      the window title, if the full name is not available.
+    * WebAPI: The header field lookup (e.g. for the connection UID)
+      is now case insensitive.
+  * Linux
+    * The parameter order for the ping utility has been improved.
+    * Issues regarding the session identification have been fixed,
+      solving various issues when running veyon-server manually
+      e.g. via autostart entries.
+  * Master
+    * A regression in Veyon 4.6.0 has been fixed to make the
+      computer and user search case insensitive again.
+    * Control messages between computers are now sent asynchronously
+      which improves performance and responsiveness while reducing
+      the CPU load.
+    * When closing the program, it now stops all features on the
+      student computers and waits until all corresponding control
+      messages have been sent.
+    * A new filter button has been added to show computers with
+      logged on users only.
+    * The dialog for confirming actions such as powering off
+      computers only emphasizes ALL computers if all computers are
+      selected.
+    * If available, the full name of the user is now preferred in
+      the tooltip.
+  * Server
+    * Server-side framebuffer update rate control has been added
+      which improves performance and responsive.
+- Update to version 4.6.0.
+  * Core
+    * Protocol errors during the initial authentication phase are
+      handled more reliably. This fixes problems when connecting to
+      incompatible servers accidentally.
+  * CLI
+    * The plugin and feature modules have been added.
+    * The config and shell plugins have been integrated as static
+      modules.
+  * Plugins
+    * Demo: The visual feedback when (re-)connecting has been
+      redesigned.
+    * DesktopServices: The Run program feature has been renamed to
+      Start application.
+    * RemoteAccess: The visual feedback when (re-)connecting has
+      been redesigned.
+    * RemoteAccess: The computer connection of the main window is
+      reused if available resulting in immediate access to the remote
+      computer.
+    * RemoteAccess: The remote cursor is no longer used in view
+      only mode to prevent occasionally observed render artifacts.
+    * UserSessionControl: Non-user sessions (such as display
+      manager/login screen sessions) are no longer terminated by the
+      user logoff feature.
+    * WebAPI: An error code has been added to report protocol
+      errors occuring while connecting to the Veyon Server.
+    * WebAPI: The connection limit is enforced at the HTTP server
+      level already to properly report the connection limit reached
+      error instead of timing out.
+    * WebAPI: Skip ping for hosts which no connection could be
+      established to. This allows using a higher connection limit
+      on Linux when the number of open file descriptors is limited.
+  * Master
+    * In addition to the hostname, the computer display name is
+      shown in the tooltip of a computer.
+    * A computer's screen is shown in fullscreen and realtime while
+      pressing and holding the left mouse button on a computer.
+    * For Linux clients, [no user] is displayed as the user name
+      instead of the name of the display manager user.
+  * Server
+    * Hostnames of connected computers
+      (shown in the tooltip of the tray icon) are now reverse
+      resolved in background to keep connections responsive.
+  * Linux
+    * SHM support is being detected more reliably.
+    * Logging off users is now initiated properly through the
+      environment-specific session manager while systemd-logind
+      is used as fallback only. This fixes the display manager
+      (especially GDM3) not being shown again after logoff.
+    * Reboot and power down via systemd-logind has been improved
+      while the environment-specific session manager is used as
+      fallback only. The reboot and poweroff binaries are not usedany longer.
+- Update to version 4.5.7.
+  * Core: allow minus characters in authentication key name
+  * Linux: x11vnc: auto-detect SHM support – fixes server crashing
+    on start in case of lacking SHM support (no need to manually
+    configure -noshm as extra parameter any longer)
+  * Linux: fix Veyon session ID detection in case desktop session
+    path and ID do not match – fixes occasionally broken multi
+    session support
+  * WebAPI: improve TLS-related error messages
+- Update to version 4.5.6.
+  * AuthKeys: make import fail when passing a filename as first
+    argument
+  * Core: set up application parameters earlier to silence warning
+  * Core: fix loading Qt translations on Linux so file dialogs,
+    message boxes etc. are now localized properly
+  * Core: configure layout direction based on default locale
+  * Core: use uniform button layout for DesktopAccessDialog across
+    all platforms and desktop environments
+  * Demo: only start client inside user sessions
+  * LDAP: add support for nested user groups (AD only)
+  * Linux: fix login key sequence selection
+  * Linux: use libvnccserver provided by distribution if recent
+    enough
+  * Master: fix crash when activating computers with invalid/empty
+    hostname
+  * Master: indicate invalid/empty host address in tooltip
+  * PowerControl, UserSessionControl: improve confirmation dialog
+    when performing operations such as shutdown or reboot on all
+    computers
+  * ScreenLock: only lock screen inside user sessions
+- Update to version 4.5.5.
+  * Core: set OpenGL context sharing flag for proper functionality
+    of the Qt WebEngine WebTabs backend
+  * Demo: fix freezing/stopping screen broadcasting when Veyon
+    Master is configured to enforce selected mode for client
+    computers
+  * Demo: fix context menu for computers to properly show
+    &quot;Stop demo&quot; for any active screen sharing mode
+  * Service: Windows: fix memory leak
+  * Linux: make minimum session lifetime before server start
+    configurable
+  * Linux: only consider graphically logged in users for access
+    control rule condition &quot;No user logged in&quot;
+- Trim metadata redundancies from descriptions. Fixup grammar.
+- Update to version 4.5.4.
+  * Core: fix potential crash due to race condition on shutdown
+  * Demo: refactor server shutdown for better reliability
+  * Demo: refactor demo server control for better reliability
+    (demo server is now restarted automatically when crashed)
+  * Linux: ignore missing DPMS for xrdp sessions
+  * Linux: make key sequence for user login via display manager
+    fully configurable
+  * Linux: use session path as session ID to avoid missing updates
+    on closed sessions
+  * Linux: x11vnc: disable SHM for xrdp sessions
+  * Master: improve save/restore of checked locations/computers to
+    better handle dynamic changes when using the NetworkDiscovery
+    add-on
+  * Service: always close sessions internally properly so session
+    IDs are reused correctly
+  * Service: Linux: prevent service from killing itself in some
+    cases
+  * Service: Linux: send SIGINT/SIGTERM/SIGKILL recursively to
+    terminate server instances and child processes more reliably
+  * Service: Linux: decrease grace period for server processes
+  * Service: Linux: actively stop server for closing sessions
+  * Various PCH-related build system improvements
+  * Update translations
+- Update to version 4.5.3.
+  * BuiltinX11VncServer: add missing return value
+  * Core: fix hostname conversion if FQDN resolving fails
+  * Core: improve hostname resolution reliability
+  * Core: update active features after every feature status change
+  * Core: improve parsing port number for IPv6
+  * Configurator: add scrollbars to configuration pages if they
+    don't fit on the screen
+  * Demo: fix memory leak on connection error
+  * Demo: fix VNC server port detection to properly work with
+    external VNC servers
+  * Demo: fix broadcasting of individual screens if placed out of
+    order
+  * Demo: fix stopping demo mode via context menu
+  * Master: fix automatic reload of screenshot list on filesystem
+    changes
+  * Master: fix minor issues in Linux manpage
+  * Linux: drop kdesudo/gksudo support
+  * WebAPI: qthttpserver: switch to master branch
+  * WebAPI: refactor to multithreaded implementation supporting
+    asynchronous requests
+  * WebAPI: increase default connection limit to 32
+  * WebAPI: add status fields to feature list
+  * Internal build system improvements for shorter build times
+  * Update translations
+- Disable PCH build, cause build to fail.
+- Update to version 4.5.2.
+  * Core: add support for building with ninja
+  * LDAP: update 3rdparty component kldap
+  * LDAP: add warning on invalid location groups
+  * Linux: update 3rdparty component x11vnc to fix CVE-2020-29074
+  * Linux: debug server crashes using catchsegv
+  * Linux: forward server log messages to system journal
+  * RemoteAccess: add option to show window on the same screen as
+    the master window
+  * RemoteAccess: use non-deprecated API call to fix build with
+    Qt &gt;= 5.15.2
+  * WebAPI: add Python client implementation + tests
+- Update to version 4.5.1.
+  * Core: fix key name conversion for arguments when invoking
+    features
+  * Master: properly reload screenshot list also when using
+    screenshot directories on network shares
+  * Master: add support for deleting multiple screenshots
+  * Master: fix bug with initial computer icon layout
+  * Master: update icon sizes and their aspect ratios dynamically
+    whenever a computer is added, connected or removed
+  * Master: improve icon size auto adjust functionality when
+    adding/removing multiple computers
+  * Master: add dedicated icon for computers not running the Veyon
+    Server
+  * Master: only show connected computers in slideshow panel
+  * Master: fix issue with icons overlapping user name and/or
+    computer name
+  * Screenshot: fix non-working feature invocation
+  * Server: notify first successful access control pass only
+- Remove group tag.
+- Update to version 4.5.0.
+  * Core: improve invocation of worker processes for better
+    reliability
+  * Core: improve message exchange with worker processes
+    (fixes demo mode not starting properly in some cases)
+  * Core: implement session ID management to reuse a session ID
+    after a session has been closed - RDP session IDs (which are
+    increased continuously) are no longer used for calculating
+    server port numbers
+  * Core: rename configuration key Service/PrimaryServicePort to
+    Service/VeyonServerPort
+  * Core: refactor feature plugin API
+  * Configurator: Service: improve session mode configuration UI
+  * Configurator: Service: improve network configuration UI
+  * Configurator: Master: add option to hide own session
+  * Configurator: Master: add computer icon spacing setting
+  * Configurator: Master: add computer icon aspect ratio setting
+  * Demo: refactor server to be multithreaded which greatly
+    improves performance and responsiveness especially with many
+    clients
+  * Demo: add feature to share a user's screen instead of the own
+    one
+  * Demo: reset access token after stopping server
+  * Demo: refactor modes (window/fullscreen) as subfeatures
+    displayed in a drop down menu
+  * Demo: add feature to share only one of multiple (own) screens
+  * FileTransfer: add configuration page allowing to configure
+    source and destination folders
+  * Linux: ignore SIGPIPE and continue running normally if a socket
+    is closed unexpectedly
+  * Linux: fix missing dependencies in Ubuntu 20.04 package
+  * Linux: fix and prefer reboot/poweroff via systemd-logind
+  * Linux: fix reboot/poweroff if e.g. /sbin or /usr/sbin is not
+    in PATH
+  * Linux: don't show output of internal systemctl calls
+  * Linux: add Debian-gdm as display manager user to properly
+    detect that no user is being logged in
+  * Linux: Service: retry server start for sessions in opening
+    state
+  * Linux: Service: manually set environment variable
+    XDG_SESSION_ID if pam-systemd is not used
+  * Linux: Service: start server instances for active/online
+    sessions only - fixes various issues regarding server start on
+    user login
+  * Master: add Slideshow panel
+  * Master: add Spotlight panel
+  * Master: always adjust the size of computer icons automatically
+    when enabled
+  * Master: save and restore states and sizes of panels
+  * Master: automatically adjust aspect ratio of computer icons to
+    the original screen sizes
+  * Master: update already visible tooltips for computer icons
+  * Master: make computer icon spacing configurable and decrease
+    its default value
+  * RemoteAccess: show username in window title
+  * RemoteAccess: hide toolbar on focus loss
+  * ScreenLock: fix lock widget not being shown and thus screen not
+    being locked on some Linux desktops
+  * Server: also notify about authentication failure on incomplete
+    authentication attempts
+  * Server: add support for external VNC servers without any
+    authentication/password configured
+  * Server: improve error handling for VNC server plugins
+  * WebAPI: add new plugin offering a RESTful API for accessing
+    Veyon Server instances
+- Update to version 4.4.2.
+  * Core: extend NetworkObject API for future use by add-ons
+  * Core: prepare support for future WebAPI plugin
+  * Update translations
+- Update to version 4.4.1.
+  * Core: improve multi session support
+  * Core: improve worker execution and fix tray icon not being
+    shown on startup
+  * Demo: broadcast actual teacher session instead of console
+    session when running Master within RDP session
+  * LDAP: fix computer query on host name lookup error
+  * Linux: don't use functions marked deprecated in Qt 5.15
+  * Linux: provide package for openSUSE 15.2
+  * NetworkObjects: update existing objects instead of adding
+    duplicate objects when importing CSV / text file
+  * NetworkObjects: output proper line endings when exporting to
+    CSV / text file on Windows
+  * Server: fix crash on connection accept error
+  * Update translations
+- Update to version 4.4.0.
+  * Core: use updated VNC and network stack (libvncserver 0.9.13.)
+  * Core: make VNC connection parameters configurable internally
+  * Core: improve VNC connection reliability
+  * Core: add safe mechanism for opening files preventing symlink
+    attacks
+  * Core: drop log messages exceeding size limit
+  * DesktopServices: improve URL handler invocation (fixes opening
+    URLs with characters such as &quot;=&quot;)
+  * RemoteAccess: honor feature configuration (hide view only
+    button when corresponding feature is disabled)
+  * Fix possible symlink attacks on log files
+  * Update translations
+- make all executables correctly position-independent.
+- Fix veyon not starting: error while loading shared libraries.
+- Update to version 4.3.5.
+  * Fix: LDAP: make SSL/LDAPS connections work properls (previously
+    broken due to improper certificate verifications)
+  * Fix: LDAP: enable additional low-level debug messages at the
+    command line via environment variable VEYON_DEBUG_LDAP_LIBRARY
+  * Update 3rdparty component libvncserver to latest 0.9.13
+    snapshot (including new unified connection timeout handling
+    support)
+  * Master: limit update interval to 10 seconds to prevent server
+    timeouts
+  * Fix build with Qt &gt;= 5.14
+  * Minor code modernizations
+  * Update translations
+- Clean up building.
+- initial version 4.0.3
+</comment>
+    <requestid>1067381</requestid>
+  </revision>
 </revisionlist>

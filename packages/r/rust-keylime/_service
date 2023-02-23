@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">0.1.0+git.%ct.%h</param>
+    <param name="versionformat">0.2.0+git.%ct.%h</param>
     <param name="revision">master</param>
     <param name="url">https://github.com/keylime/rust-keylime.git</param>
     <param name="scm">git</param>

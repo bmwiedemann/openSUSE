@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:37:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.44.0:
+  * isRetryable also checks the stdout (#2464)
+
+-------------------------------------------------------------------
+Wed Feb 22 17:26:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.3:
+  * #2450 Improved loading of TFLint configuration (#2456)
+  * #2417 Add handling of intermittent errors in fixture-stack tests (#2439)
+
+-------------------------------------------------------------------
 Sat Feb 04 12:23:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.43.2:

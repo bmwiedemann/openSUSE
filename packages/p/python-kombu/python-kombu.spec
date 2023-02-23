@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-kombu
 Version:        5.2.4
 Release:        0
@@ -25,9 +23,12 @@ Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
 URL:            https://github.com/celery/kombu
 Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use Pyro4 compatibility for now, upstream should switch
+# for 5.3
+Patch0:         support-pyro-5.patch
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module Pyro4}
+BuildRequires:  %{python_module Pyro5}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module amqp >= 5.0.9}
 BuildRequires:  %{python_module boto3 >= 1.9.12}
@@ -67,7 +68,7 @@ providing an idiomatic high-level interface for the AMQP protocol, and also
 provide proven and tested solutions to common messaging problems.
 
 %prep
-%setup -q -n kombu-%{version}
+%autosetup -p1 -n kombu-%{version}
 # pinned dependencies are bad
 sed -i -e 's:==:>=:g' requirements/*.txt requirements/extras/*.txt
 # we don't want to pull in the whole azure stack because of few tests of a non-essential feature

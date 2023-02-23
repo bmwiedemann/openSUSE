@@ -78,7 +78,7 @@ sed -i "s/, 'sphinxcontrib.issuetracker'//g" doc/source/conf.py # No internet ac
 
 %build
 %python_build
-sphinx-build -b html doc/source doc/build/html && rm doc/build/html/.buildinfo # Build HTML documentation
+sphinx-build -b html doc/source doc/build/html && rm doc/build/html/.buildinfo && rm -r doc/build/html/.doctrees # Build HTML documentation
 
 %install
 %python_install

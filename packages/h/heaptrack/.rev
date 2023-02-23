@@ -107,4 +107,12 @@
 - Define _filter_GLIBC_PRIVATE to fix installation on Leap</comment>
     <requestid>1067140</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2fa40e60c991ffae9880649cbcd8add0</srcmd5>
+    <version>1.4.0</version>
+    <time>1677166228</time>
+    <user>dimstar_suse</user>
+    <comment>- Try another way to ignore the GLIBC_PRIVATE requirement</comment>
+    <requestid>1067357</requestid>
+  </revision>
 </revisionlist>

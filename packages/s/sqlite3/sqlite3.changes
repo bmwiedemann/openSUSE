@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 22 09:42:51 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 3.41.0:
+  * https://www.sqlite.org/releaselog/3_41_0.html
+  * Various query planner improvements.
+  * Add the built-in unhex() SQL function.
+  * Add the base64 and base85 application-defined functions as an
+    extension and include that extension in the CLI.
+  * In-memory databases created using sqlite3_deserialize() now
+    report their filename as an empty string, not as 'x'.
+  * The ".scanstats est" command provides query planner estimates
+    in profiles.
+  * Enhance the --safe command-line option to disallow dangerous
+    SQL functions.
+  * The double-quoted string misfeature is now disabled by default
+    for CLI builds.
+  * Various other improvements and performance enhancements.
+- The new version obsoletes sqlite-src-3390000-func7-pg-181.patch
+
+-------------------------------------------------------------------
 Wed Dec 28 21:37:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.40.1:

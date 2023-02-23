@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agrifood-farming
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-agrifood-farming
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure AgriFood Farming client library
 License:        MIT
@@ -35,9 +35,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.14.0
 Requires:       python-azure-agrifood-nspkg >= 1.0.0
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
 Requires:       python-six >= 1.11.0

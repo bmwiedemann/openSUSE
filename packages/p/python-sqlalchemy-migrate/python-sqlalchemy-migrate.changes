@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 22 10:31:58 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Remove leftover Sphinx files for reproducible builds
+
+-------------------------------------------------------------------
 Thu Feb 16 23:42:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix documentation invocation

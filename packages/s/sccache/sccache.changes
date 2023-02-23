@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 00:18:54 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1208553 - CVE-2022-31394 - header list size may allow denial of service
+
+-------------------------------------------------------------------
 Mon Feb 13 03:58:07 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.0-pre.7

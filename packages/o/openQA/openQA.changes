@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 22 18:09:49 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1676994766.f6873b5:
+  * Replace fragile awk script with AssetPack config file
+  * Add basic test for re-routing
+  * Cover remaining places in code that need adjustment for re-routing
+  * Refactor re-routing; move the code into a separate function
+  * Allow re-routing via `Mojolicious::Plugin::RequestBase`
+  * Mention GITHUB_TOKEN in the usage
+  * Note the format for NEEDLES_DIR
+  * Allow escaping percentage signs in job settings to avoid substitution
+  * Make generate-packed-assets return non zero in case of errors
+  * Fix regex to get AssetPack plugins
+  * Revert "Revert "Retry asset downloads automatically""
+  * OBS: Do not test builds on EOL Leap 15.3
+
+-------------------------------------------------------------------
 Mon Feb 20 10:09:42 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676689467.218fd47:

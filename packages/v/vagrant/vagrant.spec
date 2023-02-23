@@ -237,6 +237,8 @@ Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.5}
 Requires:       bsdtar
 Requires:       curl
 Requires:       openssh
+# for groupadd
+Requires(pre):  shadow
 
 %description
 Vagrant is a tool for building and distributing virtualized development

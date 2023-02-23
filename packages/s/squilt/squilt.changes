@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Feb 22 16:18:43 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix spec file: remove noarch, add ExclusiveArch in line with dependencies
+
+-------------------------------------------------------------------
+Tue Feb 21 19:01:51 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Package version 20220617.c1a5044:
+  * Sort and comment config entries
+  * squilt: add ld.so.cache for libraries in non-standard locations
+  * allow working directory to be beneath /tmp
+  * squilt: also map /etc/rpm for local RPM macros to be available
+  * squilt: improve support for non-SUSE systems
+  * Initial release of squilt

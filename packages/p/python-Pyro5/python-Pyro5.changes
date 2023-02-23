@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Thu Feb 23 05:44:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- New package, in a sense, based on Pyro4.
+- Update to 5.14:
+  * http gateway now also has OPTION call with CORS
+  * fixed deprecation warning about setting threads in daemon mode
+  * fixed more threading module deprecation warnings
+  * proxy now correctly exposes remote __len__, __iter__ and __getitem__ etc
+  * improved type hint for expose()
+  * added Proxy._pyroLocalSocket property that is the local socket address
+    used in the proxy.
+  * serve() no longer defaults host parameter to empty string, but None.
+  * fixed a Python 3.11 serialization issue
+  * fixed @expose issue on static method/classmethod due to API change
+    in Python 3.10
+  * introduced SERPENT_BYTES_REPR config item (and updated serpent library
+    version requirement for this)
+  * flush nameserver output to console before entering request loop
+  * added optional boolean “weak” parameter to Daemon.register(), to register
+    a weak reference to the server object that will be unregistered
+     automatically when the server object gets deleted.
+  * fixed error when import Pyro5.server
+  * documented SSL_CACERTS config item
+  * reworked the timezones example.
+  * httpgateway message data bytearray type fix
+  * fixed regex lookup index error in nameserver
+  * the 4 custom class (un)register methods on the SerializerBase class are
+    now also directly available in the api module
+  * fixed a silent error in the server when doing error handling
+  * fixed empty nameserver host lookup issue
+  * added privilege-separation example
+  * added methodcall_error_handler to Daemon that allows you to provide a
+    custom error handler
+  * fix possible race condition when creating instances with instancemode
+    “single”
+  * fixed possible attribute error in proxy del method at interpreter shutdown
+  * gave the serialization example a clearer name ‘custom-serialization’
+  * URIs now accept spaces in the location part.
+  * made msgpack serializer optional
+  * NATPORT behavior fix when 0
+  * serialization improvements/fixes
+- Add patch add-network-marker.patch:
+  * Mark tests that require the network as such, so we can skip them.
+
+-------------------------------------------------------------------
+Tue Dec 21 18:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.81
+  * fix some typo's in docs
+  * corrected some minor other things in docs
+  * Python 3.9 is now included in the unit test runs
+  * No actual code changes.
+- (update just to satisfy the weekly report on d:l:python* scripts)
+- Add patch Pyro4-pr238-py310-cmethod-smethod.patch
+  * gh#irmen/Pyro4#238
+
+-------------------------------------------------------------------
+Fri Feb 26 05:42:18 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.80
+  * fix possible race condition when creating instances with
+    instancemode "single"
+
+-------------------------------------------------------------------
+Fri Mar 20 10:53:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.79:
+  * cython compatibility fix
+  * removed explicit version checks of dependencies such as serpent
+
+-------------------------------------------------------------------
+Fri Jan 10 14:54:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Properly conditionalize python2 build for older openSUSE
+
+-------------------------------------------------------------------
+Thu Jan  9 17:59:58 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.77
+  * dropped support for Python 3.4 (which has reached end-of-life
+    status). Supported Python versions are now 2.7, and 3.5 or
+    newer.
+  * URIs now allow spaces in the location part. Useful for unix
+    domain sockets.
+- Dropped python2 subpackage due to dropping backports dependency.
+
+-------------------------------------------------------------------
+Tue Sep 24 09:56:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.76:
+  * corrected bogus space in worker thread name
+  * thread server can now be cleanly stopped with SIGINT / Ctrl-C on Windows
+  * the behavior of the NATPORT config item has been corrected to be in line with the API behavior of the Daemon
+  * certs are now included in sdist archive so the ssl unit tests also run as intended
+  * now correctly checks for write access to the correct logfile location, instead of assuming the current directory
+
+-------------------------------------------------------------------
+Wed Mar  6 09:29:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.75:
+  * include LICENSE file in distribution
+  * avoid decode error when dealing with memoryview annotations
+  * serpent 1.27 required to avoid regression in previous version
+  * fixed marshal serializer problem that prevented it to even call register() in the name server.
+  * msgpack, json and marshal serializers now understand how to serialize array.array the same way serpent already did
+  * fixed distributed-mandelbrot example to actually run multiple concurrent calculations.
+  * missing API method doc added on NameServer.count()
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:46 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 12:51:07 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu May 24 17:39:16 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Pyro 4.72
+  * (source files: normalized line endings to LF)
+  * the -k command line option to supply a HMAC encryption key on the command line for the name server, nsc,
+    echoserver, flameserver and httpgateway tools is now deprecated (and will print a warning if used).
+    It is a security issue because the key used is plainly visible.
+    If you require proper security, use Pyro's 2-way SSL feature. Alternatively, set the HMAC key in the (new) environment
+    variable PYRO_HMAC_KEY if you still have to use it before launching the aforementioned tools.
+- Update to Pyro 4.71
+  * updated ``msgpack`` dependency (was ``msgpack-python`` but that name is now deprecated)
+  * fixed restart and force reload commands of the contrib/init.d/pyro4-nsd script, and changed its port binding
+    from 9999 back to 9090 which is Pyro's default.
+  * serpent 1.24 library now required to fix some api deprecation warnings when using Python 3.7 or newer.
+  * updated sphinx documentation theme
+- Update to Pyro 4.70
+  * **incompatible API change** for python 3.7 compatibility: renaming of ``async`` function and keyword arguments in the API:
+    Renamed ``Pyro4.core.async`` to ``Pyro4.core.asyncproxy`` (and its occurrence in ``Pyro4``)
+    and the ``async`` keyword argument in some methods to ``asynchronous``.
+    This had to be done because ``async`` (and ``await``) are now parsed as keywords in Python 3.7 and using them otherwise will result
+    in a SyntaxError when loading the module.
+    It is suggested you stop using the ``asyncproxy`` function and instead create asynchronous proxies using the ``_pyroAsync``
+    method on the regular proxy.
+  * For existing code running on Python *older than 3.7*, a backwards compatibility feature is present to still provide the
+    ``async`` function and keyword arguments as they were supported on previous Pyro versions.
+    But also for that older environments, it's advised to migrate away from them and start using the new names.
+  * Proxy and Daemon have a new 'connected_socket' parameter. You can set it to a user-supplied connected socket that must
+    be used by them instead of creating a new socket for you. Connected sockets can be created using the socket.socketpair()
+    function for instance, and allow for easy and efficient communication over an internal socket between
+    parent-child processes or threads, using Pyro.  Also see the new 'socketpair' example.
+  * dropped support for Python 3.3 (which has reached end-of-life status). Supported Python versions are now 2.7, and 3.4 or newer.
+    (the life cycle status of the Python versions can be seen here https://devguide.python.org/#status-of-python-branches)
+- spec file cleanups
+
+-------------------------------------------------------------------
+Wed Nov  8 20:42:14 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

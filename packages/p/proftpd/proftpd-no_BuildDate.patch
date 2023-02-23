@@ -99,5 +99,5 @@ Index: include/version.h
 -#include "buildstamp.h"
 -
  /* Application version (in various forms) */
- #define PROFTPD_VERSION_NUMBER		0x0001030710
- #define PROFTPD_VERSION_TEXT		"1.3.7e"
+ #define PROFTPD_VERSION_NUMBER		0x0001030711
+ #define PROFTPD_VERSION_TEXT		"1.3.7f"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 23 06:08:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pyro-5.patch:
+  * Use Pyro5's compatability layer.
+- Switch BuildRequires to Pyro5. 
+
+-------------------------------------------------------------------
 Mon Mar 21 08:16:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.4:

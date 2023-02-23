@@ -4438,4 +4438,22 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>1066266</requestid>
   </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>cac1d474aa6c3ad6e11eace6d2ad7977</srcmd5>
+    <version>110.0.5481.177</version>
+    <time>1677166171</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 110.0.5481.177 (boo#1208589)
+  * CVE-2023-0927: Use after free in Web Payments API
+  * CVE-2023-0928: Use after free in SwiftShader
+  * CVE-2023-0929: Use after free in Vulkan
+  * CVE-2023-0930: Heap buffer overflow in Video
+  * CVE-2023-0931: Use after free in Video
+  * CVE-2023-0932: Use after free in WebRTC
+  * CVE-2023-0933: Integer overflow in PDF
+  * CVE-2023-0941: Use after free in Prompts
+  * Various fixes from internal audits, fuzzing and other initiatives
+</comment>
+    <requestid>1067322</requestid>
+  </revision>
 </revisionlist>

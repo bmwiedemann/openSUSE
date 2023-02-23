@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 23 00:04:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.0
+  * Casting to arrays did not fully work, was repaired
+  * Support for C++ lambdas
+
+-------------------------------------------------------------------
 Sun Jan 29 13:21:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13.2

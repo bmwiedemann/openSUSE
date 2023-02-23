@@ -3,39 +3,23 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v19.5.0/node.gyp
+Index: node-v19.7.0/node.gyp
 ===================================================================
---- node-v19.5.0.orig/node.gyp
-+++ node-v19.5.0/node.gyp
-@@ -931,6 +931,7 @@
-         '<(node_lib_target_name)',
-         'deps/histogram/histogram.gyp:histogram',
-         'deps/uvwasi/uvwasi.gyp:uvwasi',
-+        'fuzz_url',
-       ],
-       'includes': [
-         'node.gypi'
-@@ -975,6 +976,7 @@
-         'deps/histogram/histogram.gyp:histogram',
+--- node-v19.7.0.orig/node.gyp
++++ node-v19.7.0/node.gyp
+@@ -951,6 +951,7 @@
          'deps/uvwasi/uvwasi.gyp:uvwasi',
          'deps/simdutf/simdutf.gyp:simdutf',
-+        'embedtest'
+         'deps/ada/ada.gyp:ada',
++        'fuzz_env'
        ],
  
        'includes': [
-@@ -1071,6 +1073,7 @@
-         '<(node_lib_target_name)',
+@@ -1047,6 +1048,7 @@
          'deps/histogram/histogram.gyp:histogram',
          'deps/uvwasi/uvwasi.gyp:uvwasi',
-+        'fuzz_env',
-       ],
- 
-       'includes': [
-@@ -1140,6 +1143,7 @@
-         '<(node_lib_target_name)',
-         'deps/histogram/histogram.gyp:histogram',
-         'deps/uvwasi/uvwasi.gyp:uvwasi',
-+        'cctest',
+         'deps/ada/ada.gyp:ada',
++        'cctest'
        ],
  
        'includes': [

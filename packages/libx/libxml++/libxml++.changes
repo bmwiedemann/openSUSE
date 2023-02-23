@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 22 17:45:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop hard glibmm2-devel Requires in devel sub-package.
+- Move documentation to -devel subpackage.
+
+-------------------------------------------------------------------
 Sun Sep 11 09:29:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.0.2:
@@ -11,10 +17,9 @@ Sun Sep 11 09:29:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
       . Specify 'check' option in run_command(). Will be necessary
         with future versions of Meson.
       . Avoid configuration warnings
-* Meson build: Enable static building on windows
-  (Andrew Potter) Pull request #29
-* Meson build: Require meson >= 0.60.0
-* Meson build: libxml2 can be built as a subproject
+      . Enable static building on windows
+      . Require meson >= 0.60.0
+      . libxml2 can be built as a subproject
     - Win32: Don't include afxres.h in resources
     - Support Visual Studio 2022
     - docs/manual: Sort example file lists. See

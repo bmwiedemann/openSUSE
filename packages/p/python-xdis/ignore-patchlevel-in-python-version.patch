@@ -1,22 +1,9 @@
 Remove power from the folks who brought you linux2
-Index: python-xdis-6.0.3/xdis/version_info.py
+Index: python-xdis-6.0.5/xdis/disasm.py
 ===================================================================
---- python-xdis-6.0.3.orig/xdis/version_info.py
-+++ python-xdis-6.0.3/xdis/version_info.py
-@@ -36,7 +36,7 @@ PYTHON_VERSION_STR = "%s.%s" % (sys.vers
- 
- IS_PYPY = "__pypy__" in sys.builtin_module_names
- 
--def version_tuple_to_str(version_tuple=PYTHON_VERSION_TRIPLE, start=0, end=3, delimiter=".") -> str:
-+def version_tuple_to_str(version_tuple=PYTHON_VERSION_TRIPLE, start=0, end=2, delimiter=".") -> str:
-     """
-     Turn a version tuple, e.g. (3,2,6), into a dotted string, e.g. "3.2.6".
- 
-Index: python-xdis-6.0.3/xdis/disasm.py
-===================================================================
---- python-xdis-6.0.3.orig/xdis/disasm.py
-+++ python-xdis-6.0.3/xdis/disasm.py
-@@ -39,6 +39,7 @@ from xdis.op_imports import op_imports,
+--- python-xdis-6.0.5.orig/xdis/disasm.py
++++ python-xdis-6.0.5/xdis/disasm.py
+@@ -42,6 +42,7 @@ from xdis.version_info import IS_PYPY, P
  def get_opcode(version_tuple, is_pypy, alternate_opmap=None):
      # Set up disassembler with the right opcodes
      lookup = ".".join((str(i) for i in version_tuple))
@@ -24,7 +11,7 @@ Index: python-xdis-6.0.3/xdis/disasm.py
      if is_pypy:
          lookup += "pypy"
      if lookup in op_imports.keys():
-@@ -46,6 +47,10 @@ def get_opcode(version_tuple, is_pypy, a
+@@ -49,6 +50,10 @@ def get_opcode(version_tuple, is_pypy, a
              # TODO: change bytecode version number comment line to indicate altered
              return remap_opcodes(op_imports[lookup], alternate_opmap)
          return op_imports[lookup]
@@ -35,3 +22,16 @@ Index: python-xdis-6.0.3/xdis/disasm.py
      if is_pypy:
          pypy_str = " for pypy"
      else:
+Index: python-xdis-6.0.5/xdis/version_info.py
+===================================================================
+--- python-xdis-6.0.5.orig/xdis/version_info.py
++++ python-xdis-6.0.5/xdis/version_info.py
+@@ -35,7 +35,7 @@ IS_PYPY = "__pypy__" in sys.builtin_modu
+ 
+ 
+ def version_tuple_to_str(
+-    version_tuple=PYTHON_VERSION_TRIPLE, start=0, end=3, delimiter="."
++    version_tuple=PYTHON_VERSION_TRIPLE, start=0, end=2, delimiter="."
+ ) -> str:
+     """
+     Turn a version tuple, e.g. (3,2,6), into a dotted string, e.g. "3.2.6".

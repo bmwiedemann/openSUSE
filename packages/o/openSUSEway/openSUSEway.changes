@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 22 15:04:17 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.15.1:
+  * Fix greetd grey screen delay
+- Add set_version manual service
+
+-------------------------------------------------------------------
 Fri Feb  3 10:43:28 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Automatically format the spec file after extracting it.

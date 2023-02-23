@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 22 16:50:22 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add patch to fix test failures with Ruby 3.2
+
+  Added patch:
+  * bundle-exec-rspec-fix-for-ruby3.2.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 09:48:39 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.11.2

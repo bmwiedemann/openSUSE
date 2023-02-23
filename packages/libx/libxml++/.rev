@@ -390,4 +390,13 @@
 - Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 1002496 from iznogood)</comment>
     <requestid>1003128</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>24e8b9d7cb2bad40d6ac6e58613d95e3</srcmd5>
+    <version>5.0.2</version>
+    <time>1677166224</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop hard glibmm2-devel Requires in devel sub-package.
+- Move documentation to -devel subpackage.</comment>
+    <requestid>1067350</requestid>
+  </revision>
 </revisionlist>

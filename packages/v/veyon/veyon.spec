@@ -1,7 +1,7 @@
 #
 # spec file for package veyon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           veyon
-Version:        4.7.4
+Version:        4.7.5
 Release:        0
 Summary:        Computer monitoring and classroom management
 License:        GPL-2.0-or-later
