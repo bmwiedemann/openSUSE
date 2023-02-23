@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 15:09:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with Cython to get python 3.11 compatible cythonized files 
+
+-------------------------------------------------------------------
 Fri Jan 27 16:27:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file

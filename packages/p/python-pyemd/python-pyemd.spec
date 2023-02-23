@@ -29,6 +29,7 @@ URL:            https://github.com/wmayner/pyemd
 Source:         https://files.pythonhosted.org/packages/source/p/pyemd/pyemd-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/wmayner/pyemd/commit/34631658ae0cc555001b692623c23c02ed8d5611 Mark uses of ragged nested sequences in NumPy arrays as intented
 Patch0:         numpy-arrays.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9.0}
 BuildRequires:  %{python_module setuptools}
