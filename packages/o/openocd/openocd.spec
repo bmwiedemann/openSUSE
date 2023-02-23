@@ -1,7 +1,7 @@
 #
 # spec file for package openocd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           openocd
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Debugging, in-system programming and boundary-scan testing for embedded devices
 License:        GPL-2.0-only
@@ -34,7 +34,7 @@ Group:          Development/Tools/Debuggers
 URL:            http://openocd.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sig
-Source2:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sha1
+Source2:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sha256
 Source3:        %name.keyring
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
