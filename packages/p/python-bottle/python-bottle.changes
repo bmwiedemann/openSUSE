@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 21 18:22:20 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.24: bugfix release
+  * Fix fapws3 link
+  * fix: Route.get_config typo
+  * fix #1111: Unicode multipart/form-data values in python3
+
+-------------------------------------------------------------------
 Wed Aug  3 20:24:55 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.23: bugfix release
