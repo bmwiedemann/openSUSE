@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:24:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.74.2:
+  + Various fixes ported from the development branch.
+  + Closed bugs and merge requests:
+    - Build error with clang
+    - Can't compile current version with mozjs 102
+    - Enabling window-list extension causes gnome-shell to crash
+      when running "dconf update" as root
+    - log: Fix an off-by-one buffer overflow
+
+-------------------------------------------------------------------
 Mon Oct 31 08:34:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.74.1:

@@ -1716,4 +1716,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>New stable release (forwarded request 1032394 from iznogood)</comment>
     <requestid>1032401</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ac0b34a05bd1875be7e1cb0a496f4a61</srcmd5>
+    <version>1.74.2</version>
+    <time>1677166079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067039</requestid>
+  </revision>
 </revisionlist>
