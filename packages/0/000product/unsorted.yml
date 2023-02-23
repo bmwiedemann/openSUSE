@@ -14167,6 +14167,9 @@ unsorted:
   - librecad 
   - librecad-parts 
   - librecode3 
+  - libredfish 
+  - libredfish-devel 
+  - libredfish1 
   - libredis++1 
   - libredland-devel 
   - libredwg-devel 
@@ -22789,6 +22792,7 @@ unsorted:
   - python310-Pympler 
   - python310-Pyphen 
   - python310-Pyro4 
+  - python310-Pyro5 
   - python310-QDarkStyle 
   - python310-QR-Code-generator 
   - python310-QtAwesome 
@@ -23266,6 +23270,7 @@ unsorted:
   - python310-azure-mgmt-trafficmanager 
   - python310-azure-mgmt-videoanalyzer 
   - python310-azure-mgmt-vmwarecloudsimple 
+  - python310-azure-mgmt-voiceservices 
   - python310-azure-mgmt-web 
   - python310-azure-mgmt-webpubsub 
   - python310-azure-mgmt-workloads 
@@ -24747,7 +24752,6 @@ unsorted:
   - python310-portalocker 
   - python310-portend 
   - python310-portpicker 
-  - python310-positional 
   - python310-power 
   - python310-poyo 
   - python310-pprintpp 
@@ -24776,6 +24780,7 @@ unsorted:
   - python310-protobuf: [i586] 
   - python310-proton-client 
   - python310-protonvpn-nm-lib 
+  - python310-proxmoxer 
   - python310-proxy.py 
   - python310-psautohint 
   - python310-pscript 
@@ -25486,6 +25491,7 @@ unsorted:
   - python310-sphinx-inline-tabs 
   - python310-sphinx-issues 
   - python310-sphinx-jsonschema 
+  - python310-sphinx-qt-documentation 
   - python310-sphinx-removed-in 
   - python310-sphinx-tabs 
   - python310-sphinx-testing 
@@ -26079,6 +26085,7 @@ unsorted:
   - python311-Pygments 
   - python311-Pympler 
   - python311-Pyphen 
+  - python311-Pyro5 
   - python311-QDarkStyle 
   - python311-QtAwesome 
   - python311-QtPy 
@@ -26137,6 +26144,10 @@ unsorted:
   - python311-XStatic-tv4 
   - python311-XlsxWriter 
   - python311-Yapsy 
+  - python311-ZConfig 
+  - python311-ZConfig-doc 
+  - python311-ZEO 
+  - python311-ZODB 
   - python311-abimap 
   - python311-abimap-doc 
   - python311-abseil 
@@ -26542,6 +26553,7 @@ unsorted:
   - python311-azure-mgmt-trafficmanager 
   - python311-azure-mgmt-videoanalyzer 
   - python311-azure-mgmt-vmwarecloudsimple 
+  - python311-azure-mgmt-voiceservices 
   - python311-azure-mgmt-web 
   - python311-azure-mgmt-webpubsub 
   - python311-azure-mgmt-workloads 
@@ -26641,6 +26653,7 @@ unsorted:
   - python311-bracex 
   - python311-branca 
   - python311-breathe 
+  - python311-brewer2mpl 
   - python311-brotlicffi 
   - python311-brotlipy 
   - python311-bsddb3 
@@ -26677,6 +26690,7 @@ unsorted:
   - python311-cchardet 
   - python311-cdflib 
   - python311-celery 
+  - python311-celery-batches 
   - python311-certbot 
   - python311-certbot-apache 
   - python311-certbot-dns-cloudflare 
@@ -26898,6 +26912,7 @@ unsorted:
   - python311-django-bootstrap3 
   - python311-django-bootstrap4 
   - python311-django-braces 
+  - python311-django-cacheops 
   - python311-django-ckeditor 
   - python311-django-classy-tags 
   - python311-django-codemod 
@@ -26920,6 +26935,7 @@ unsorted:
   - python311-django-gravatar2 
   - python311-django-guardian 
   - python311-django-haystack 
+  - python311-django-health-check 
   - python311-django-import-export 
   - python311-django-invitations 
   - python311-django-ipware 
@@ -27139,6 +27155,7 @@ unsorted:
   - python311-flit 
   - python311-flit-core 
   - python311-flit-scm 
+  - python311-flower 
   - python311-fluent 
   - python311-flufl.bounce 
   - python311-flufl.i18n 
@@ -27164,6 +27181,7 @@ unsorted:
   - python311-ftputil 
   - python311-fudge 
   - python311-funcparserlib 
+  - python311-funcy 
   - python311-furl 
   - python311-fuse 
   - python311-fusepy 
@@ -27191,6 +27209,7 @@ unsorted:
   - python311-gevent 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
+  - python311-ggplot 
   - python311-ghp-import 
   - python311-girder-client 
   - python311-git-pw 
@@ -27485,6 +27504,7 @@ unsorted:
   - python311-kmatch 
   - python311-kmod 
   - python311-knack 
+  - python311-kombu 
   - python311-korean-lunar-calendar 
   - python311-kubernetes 
   - python311-kwant: [x86_64] 
@@ -27553,6 +27573,7 @@ unsorted:
   - python311-littleutils 
   - python311-livereload 
   - python311-llfuse 
+  - python311-llvmlite 
   - python311-lmdb 
   - python311-lmfit 
   - python311-lml 
@@ -27943,6 +27964,7 @@ unsorted:
   - python311-protobuf 
   - python311-proton-client 
   - python311-protonvpn-nm-lib 
+  - python311-proxmoxer 
   - python311-proxy.py 
   - python311-psautohint 
   - python311-pscript 
@@ -28039,6 +28061,7 @@ unsorted:
   - python311-pyeapi 
   - python311-pyee 
   - python311-pyelftools 
+  - python311-pyemd 
   - python311-pyenchant 
   - python311-pyerfa 
   - python311-pyface 
@@ -28550,6 +28573,7 @@ unsorted:
   - python311-semanage 
   - python311-semantic_version 
   - python311-semver 
+  - python311-sentry-sdk 
   - python311-seqdiag 
   - python311-serpent 
   - python311-serpy 
@@ -28632,6 +28656,7 @@ unsorted:
   - python311-sphinx-inline-tabs 
   - python311-sphinx-issues 
   - python311-sphinx-jsonschema 
+  - python311-sphinx-qt-documentation 
   - python311-sphinx-removed-in 
   - python311-sphinx-tabs 
   - python311-sphinx-version-warning 
@@ -28927,6 +28952,7 @@ unsorted:
   - python311-websocket-client 
   - python311-websockets 
   - python311-websockify 
+  - python311-whatever 
   - python311-whatthepatch 
   - python311-wheel 
   - python311-wheezy.template 
@@ -28976,6 +29002,7 @@ unsorted:
   - python311-xvfbwrapper 
   - python311-xxhash 
   - python311-xyzservices 
+  - python311-yacron 
   - python311-yafe 
   - python311-yamldoc 
   - python311-yamllint 
@@ -28996,6 +29023,7 @@ unsorted:
   - python311-zc.buildout 
   - python311-zc.customdoctests 
   - python311-zc.lockfile 
+  - python311-zdaemon 
   - python311-zeep 
   - python311-zeroconf 
   - python311-zhon 
@@ -29215,6 +29243,7 @@ unsorted:
   - python38-Pympler 
   - python38-Pyphen 
   - python38-Pyro4 
+  - python38-Pyro5 
   - python38-QDarkStyle 
   - python38-QR-Code-generator 
   - python38-QtAwesome 
@@ -29698,6 +29727,7 @@ unsorted:
   - python38-azure-mgmt-trafficmanager 
   - python38-azure-mgmt-videoanalyzer 
   - python38-azure-mgmt-vmwarecloudsimple 
+  - python38-azure-mgmt-voiceservices 
   - python38-azure-mgmt-web 
   - python38-azure-mgmt-webpubsub 
   - python38-azure-mgmt-workloads 
@@ -31237,7 +31267,6 @@ unsorted:
   - python38-portalocker 
   - python38-portend 
   - python38-portpicker 
-  - python38-positional 
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
@@ -31266,6 +31295,7 @@ unsorted:
   - python38-protobuf 
   - python38-proton-client 
   - python38-protonvpn-nm-lib 
+  - python38-proxmoxer 
   - python38-proxy.py 
   - python38-psautohint 
   - python38-pscript 
@@ -32012,6 +32042,7 @@ unsorted:
   - python38-sphinx-inline-tabs 
   - python38-sphinx-issues 
   - python38-sphinx-jsonschema 
+  - python38-sphinx-qt-documentation 
   - python38-sphinx-removed-in 
   - python38-sphinx-tabs 
   - python38-sphinx-testing 
@@ -32630,6 +32661,7 @@ unsorted:
   - python39-Pympler 
   - python39-Pyphen 
   - python39-Pyro4 
+  - python39-Pyro5 
   - python39-QDarkStyle 
   - python39-QR-Code-generator 
   - python39-QtAwesome 
@@ -33113,6 +33145,7 @@ unsorted:
   - python39-azure-mgmt-trafficmanager 
   - python39-azure-mgmt-videoanalyzer 
   - python39-azure-mgmt-vmwarecloudsimple 
+  - python39-azure-mgmt-voiceservices 
   - python39-azure-mgmt-web 
   - python39-azure-mgmt-webpubsub 
   - python39-azure-mgmt-workloads 
@@ -34652,7 +34685,6 @@ unsorted:
   - python39-portalocker 
   - python39-portend 
   - python39-portpicker 
-  - python39-positional 
   - python39-power 
   - python39-poyo 
   - python39-pprintpp 
@@ -34681,6 +34713,7 @@ unsorted:
   - python39-protobuf 
   - python39-proton-client 
   - python39-protonvpn-nm-lib 
+  - python39-proxmoxer 
   - python39-proxy.py 
   - python39-psautohint 
   - python39-pscript 
@@ -35427,6 +35460,7 @@ unsorted:
   - python39-sphinx-inline-tabs 
   - python39-sphinx-issues 
   - python39-sphinx-jsonschema 
+  - python39-sphinx-qt-documentation 
   - python39-sphinx-removed-in 
   - python39-sphinx-tabs 
   - python39-sphinx-testing 
@@ -37996,6 +38030,7 @@ unsorted:
   - squidGuard 
   - squidGuard-doc 
   - squidview 
+  - squilt: [x86_64] 
   - squirrel 
   - squirrel-devel 
   - squirrel-devel-static 
@@ -48364,6 +48399,7 @@ unsorted:
   - x2x 
   - x3270 
   - x86info 
+  - xa 
   - xalan-c 
   - xalan-j2 
   - xalan-j2-demo 
