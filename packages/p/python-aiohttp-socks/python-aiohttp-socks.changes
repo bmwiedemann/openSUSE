@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:34:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Added `proxy_ssl` parameter
+
+-------------------------------------------------------------------
 Sat Jan 15 17:22:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:
