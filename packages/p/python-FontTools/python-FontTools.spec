@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Recommends:     python-Brotli >= 1.0.1
 # some packages should require fonttools[ufo] but expect fs to be pulled in by default.
 Requires:       python-fs >= 2.2.0
 Recommends:     python-lxml >= 4.0
-Recommends:     python-scipy >= 1.5.1
+Recommends:     python-munkres >= 1.1.4
 Recommends:     python-sympy
 Recommends:     python-unicodedata2 >= 14.0.0
 Recommends:     python-zopfli >= 0.1.6
@@ -55,10 +55,8 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.1}
 BuildRequires:  %{python_module fs >= 2.2.0}
+BuildRequires:  %{python_module munkres >= 1.1.4}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.5.1}
-BuildRequires:  %{python_module sympy}
-BuildRequires:  %{python_module ufoLib2 >= 0.6.2}
 BuildRequires:  %{python_module zopfli >= 0.1.6}
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
@@ -77,7 +75,8 @@ Type 1 fonts, and more. It contains two command line programs to
 convert TrueType fonts to an XML based format (called TTX) and back.
 
 %prep
-%setup -q -n fonttools-%{version}
+%autosetup -p1 -n fonttools-%{version}
+
 # Remove shebang
 sed -i -e '/^#!\//, 1d' Lib/fontTools/mtiLib/__init__.py
 
@@ -85,7 +84,6 @@ sed -i -e '/^#!\//, 1d' Lib/fontTools/mtiLib/__init__.py
 %python_build
 
 %install
-%if "%{flavor}" != "test"
 %python_install
 %python_clone -a %{buildroot}%{_mandir}/man1/ttx.1
 %python_clone -a %{buildroot}%{_bindir}/ttx
@@ -93,15 +91,20 @@ sed -i -e '/^#!\//, 1d' Lib/fontTools/mtiLib/__init__.py
 %python_clone -a %{buildroot}%{_bindir}/pyftmerge
 %python_clone -a %{buildroot}%{_bindir}/fonttools
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
 %pytest -ra
+# We need these files to be installed for tests, but now we need them removed
+# not to confuse %%files checks
+%python_expand rm -r %{buildroot}%{$python_sitelib}
+rm -r %{buildroot}%{_sysconfdir}/alternatives
+rm -r %{buildroot}%{_bindir}
+rm -r %{buildroot}%{_mandir}
 %endif
 
-%if "%{flavor}" != "test"
+%if %{without test}
 %post
 %python_install_alternative ttx ttx.1
 %python_install_alternative pyftsubset

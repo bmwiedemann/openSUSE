@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 16 17:55:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Dependencies for testing on sympy and ufoLib2 are actually not
+  necessary (the test suite automatically skips affected tests),
+  and scipy could be replaced by much less demanding munkres
+  package.
+
+-------------------------------------------------------------------
 Tue Nov 22 06:56:23 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - Update to 4.38.0
