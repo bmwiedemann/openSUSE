@@ -30,7 +30,7 @@ Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE disable-unity_v3.23.1.patch maurizio.galli@gmail.com -- remove unity desktop
 Patch0:         disable-unity_v3.23.1.patch
-# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4
+# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4 and 15.5
 Patch1:         link-selected-is-optional.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
@@ -91,7 +91,7 @@ This package provides the GTK+ 4 support of Greybird-geeko.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 %patch1
 %endif
 
