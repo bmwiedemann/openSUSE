@@ -1,7 +1,7 @@
 #
 # spec file for package xmlsec1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ Requires:       %{libname} = %{version}
 Requires:       libxml2-devel >= 2.6.0
 Requires:       libxslt-devel >= 1.1.0
 Requires:       openssl-devel >= 0.9.6
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 
 %description devel
 Libraries, includes, etc. you can use to develop applications with XML Digital
