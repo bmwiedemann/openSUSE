@@ -1,7 +1,7 @@
 #
 # spec file for package python-llvmlite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            https://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
+# taken from https://github.com/numba/llvmlite/pull/869
+Patch1:         python311.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
@@ -57,7 +59,7 @@ following approach:
   need for Numba.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 export CPPFLAGS="%{optflags} -fPIC"

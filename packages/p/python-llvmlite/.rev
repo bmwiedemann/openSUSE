@@ -228,4 +228,12 @@ This version works with llvm 4.</comment>
     <comment></comment>
     <requestid>1006737</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>64ec7d79cc5ff2254d90ba90a8360705</srcmd5>
+    <version>0.39.1</version>
+    <time>1677168374</time>
+    <user>dimstar_suse</user>
+    <comment>- add python311.patch to build with python 3.11 as well</comment>
+    <requestid>1067434</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 15:07:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to build with python 3.11 as well 
+
+-------------------------------------------------------------------
 Wed Sep 28 14:02:23 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.39.1:
