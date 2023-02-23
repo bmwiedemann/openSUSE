@@ -214,4 +214,15 @@
     <comment></comment>
     <requestid>1039550</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0fd42c55fc46d518e28e7e94c02df7c</srcmd5>
+    <version>3.10.0</version>
+    <time>1677171632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.0:
+  * Fixed compatibility with SQLAlchemy 2.0 and bumped minimum
+    supported version to 1.4
+  * Dropped support for Python versions older than 3.6</comment>
+    <requestid>1067422</requestid>
+  </revision>
 </revisionlist>

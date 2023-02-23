@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-APScheduler
-Version:        3.9.1.post1
+Version:        3.10.0
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
 URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-%{version}.tar.gz
-BuildRequires:  %{python_module SQLAlchemy >= 0.8}
+BuildRequires:  %{python_module SQLAlchemy >= 1.4}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -42,7 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pytz
 Requires:       python-six >= 1.4.0
 Requires:       python-tzlocal >= 2.0
-Recommends:     python-SQLAlchemy >= 0.8
+Recommends:     python-SQLAlchemy >= 1.4
 Recommends:     python-Twisted
 Recommends:     python-gevent
 Suggests:       python-kazoo

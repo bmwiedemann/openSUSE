@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:31:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.0:
+  * Fixed compatibility with SQLAlchemy 2.0 and bumped minimum
+    supported version to 1.4
+  * Dropped support for Python versions older than 3.6 
+
+-------------------------------------------------------------------
 Thu Dec  1 17:48:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 3.9.1.post1 
