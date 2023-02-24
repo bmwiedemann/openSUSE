@@ -176,4 +176,20 @@
 </comment>
     <requestid>1032914</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>afb5262fd9ba4238893a062d84606893</srcmd5>
+    <version>1.0.1</version>
+    <time>1677258501</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete python-pydle-poetry-syntax.patch
+- Skip python 310 and python 311, pydle doesn't python 3.10
+  gh#Shizmob/pydle#162, There's a WIP PR but looks like it's not good
+  enough yet to be applied gh#Shizmob/pydle#180
+- Update to version 1.0.1
+  * [Docs] Document Dropping of 3.5 by @Rixxan in #179
+  * Adjust python version inequality string for Poetry by @txtsd in #182
+  * bump version to 1.0.1 by @theunkn0wn1 in #183
+</comment>
+    <requestid>1067570</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,21 @@
 
 
 %define skip_python2 1
+# pydle doesn't python 3.10 gh#Shizmob/pydle#162
+# There's a WIP PR but looks like it's not good enough yet to be
+# applied gh#Shizmob/pydle#180
+%define skip_python310 1
+%define skip_python311 1
+
 %bcond_without test
 Name:           python-pydle
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Modular, callback-based IRCv3 library for Python 3
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
 Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
-Source1:        LICENSE.md
-Patch0:         python-pydle-poetry-syntax.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
@@ -55,7 +59,6 @@ Features include:
 %autosetup -p1 -n pydle-%{version}
 dos2unix pydle/utils/irccat.py
 sed -i 's,^#!%{_bindir}/env ,#!%{_bindir}/,' pydle/utils/irccat.py
-cp %{SOURCE1} .
 
 %build
 %pyproject_wheel

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 24 09:58:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete python-pydle-poetry-syntax.patch
+- Skip python 310 and python 311, pydle doesn't python 3.10
+  gh#Shizmob/pydle#162, There's a WIP PR but looks like it's not good
+  enough yet to be applied gh#Shizmob/pydle#180
+- Update to version 1.0.1
+  * [Docs] Document Dropping of 3.5 by @Rixxan in #179
+  * Adjust python version inequality string for Poetry by @txtsd in #182
+  * bump version to 1.0.1 by @theunkn0wn1 in #183
+
+-------------------------------------------------------------------
 Wed Nov  2 12:11:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add python-pydle-poetry-syntax.patch: Fix version limiation in
