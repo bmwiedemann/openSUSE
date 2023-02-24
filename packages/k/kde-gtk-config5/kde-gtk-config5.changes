@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * xsettings: restrict `pidof` to own processes
+  * Add support for XWayland client scaling (kde#465733)
+  * Remove unnecessary `canConvert` check
+  * Unset `Gdk/UnscaledDPI` and `Gdk/WindowScalingFactor` on Wayland (kde#465733)
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
