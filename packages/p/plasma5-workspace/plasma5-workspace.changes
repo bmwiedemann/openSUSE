@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * sddm-wayland-session: Disable global shortcuts
+  * kcms/users: Port Connections to modern syntax
+  * Better screen removal handling (kde#465892)
+  * applets/digital-clock: fix logic error in tooltip (kde#465873)
+  * Fix search for DWD weather data engine
+  * applets/mediacontroller: add test for interacting with MPRIS2 interface
+  * kcms/region_language: Down highlight delegate on press
+  * If the desktopview is not deleted, don'r emit screenRemoved (kde#465536)
+  * set LANG if we have language to glibc locale mapping (kde#464983)
+  * plasmacalendarintegration: Omit astronomical events from Holidays data (kde#465539)
+  * shell: read thickness from default group
+  * use KDE_INSTALL_LIBEXECDIR
+
+-------------------------------------------------------------------
 Mon Feb 13 17:38:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Tarball got respun. Changes:

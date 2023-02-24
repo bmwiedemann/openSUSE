@@ -2039,4 +2039,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.27.0 respun tarballs (forwarded request 1065555 from Vogtinator)</comment>
     <requestid>1065563</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>70579f96175d8e984b9808e756d3df92</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258443</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.27.1</comment>
+    <requestid>1067404</requestid>
+  </revision>
 </revisionlist>
