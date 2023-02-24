@@ -20,15 +20,15 @@
 
 %bcond_without released
 Name:           kscreenlocker
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         kscreenlocker-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
 %if %{with released}
-Source1:        kscreenlocker-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
@@ -130,6 +130,7 @@ exit 0
 %license COPYING*
 %{_pam_vendordir}/kde
 %{_kf5_applicationsdir}/kcm_screenlocker.desktop
+%{_kf5_debugdir}/kscreenlocker.categories
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_plugindir}/
 %{_kf5_notifydir}/

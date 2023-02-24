@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * Install logging categories, to make them configurable via KDebugSettings
+  * CMake: Clean up whitespace
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
