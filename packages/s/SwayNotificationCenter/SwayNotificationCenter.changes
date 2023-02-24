@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 24 08:22:07 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.8.0:
+  * a bunch of typo fixes
+  * Action scripts
+  * Add Override urgency to config
+  * Bump minimal meson version to 0.59.0, replace 'get_pkgconfig_variable'
+  * Add ControllsWidget
+  * Audio slider
+  * Add Notification placeholder in Control Center
+  * Add ControlCenter positioning config option
+  * Add Notification Action to copy body security codes to clipboard
+  * Add "desktop-entry" as option to scripts
+  * Add Brightness slider widget
+  * [Feature] Add ability to inhibit notifications through DBus
+- Add new dependencies: libgee, libpulse
+- Remove changesgenerate service as upstream publishes a better changelog
+
+-------------------------------------------------------------------
 Mon Nov 28 19:10:41 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.7.3:

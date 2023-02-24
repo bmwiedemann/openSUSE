@@ -1,7 +1,7 @@
 #
 # spec file for package SwayNotificationCenter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           SwayNotificationCenter
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only
@@ -29,10 +29,12 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  vala
+BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(systemd)
 
 %description
