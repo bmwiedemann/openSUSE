@@ -19,7 +19,7 @@
 
 %bcond_without released
 Name:           ksystemstats5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Plugin based system monitoring daemon
 License:        BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         ksystemstats-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz
 %if %{with released}
-Source1:        ksystemstats-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
