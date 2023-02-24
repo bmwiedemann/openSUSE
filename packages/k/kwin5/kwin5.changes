@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * effects/glide: Fix transform (kde#465849)
+  * Aurorae: Add dummy window for working device pixel ratio (kde#452730,kde#465790)
+  * tiling: Make child tiles inherit padding from parent tile (kde#465842)
+  * effects/contrast: Round device coordinates when creating geometry (kde#464526)
+  * cursorsource: fix scaling with Xwayland (kde#466094)
+  * cursordelgate: round cursor position when rendering
+  * outputchangeset: Round passed scale (kde#465850)
+  * Mark Window as damaged when decoration or shadow changes (kde#464417)
+  * Add missing cerrno include.
+  * effects/tileseditor: Set translation domain in QML files (kde#464572)
+  * wayland: Remove SeatInterfacePrivate::accumulatedCapabilities
+  * Match pointer/keyboard/touch lifespan to Seat lifespan
+  * add support for Lima, V3D, VC4 (based on https://github.com/OpenMandrivaAssociation/kwin/blob/master/kwin-5.21.4-add-support-for-panfrost-driver.patch made by  Bernhard Rosenkraenzer) and update list of supported devices for Panfrost
+  * x11: Drop xv-related workaround
+  * XWayland: Don't dispatch xwayland events in QAbstractEventDispatcher sleeps
+  * tiling: Evacuate tiled windows from custom & quick tiling on output removal (kde#465522)
+  * wayland: Fix a typo in DataControlDeviceV1Interface::sendPrimarySelection()
+  * wayland: Version check before send_primary_selection calls (kde#465657)
+  * Set CXX standard for crossbuilding utility
+  * Include missing header for std::round
+  * Fix button to Qt::MouseButton mapping (kde#465463)
+  * backends/drm: set cursor again after it was hidden (kde#461181)
+  * screencast: Fix region screencasts top coordinate
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
