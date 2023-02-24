@@ -210,6 +210,8 @@ unsorted:
   - PackageKit-devel 
   - PgTcl 
   - Photini 
+  - PlatformFolders 
+  - PlatformFolders-devel 
   - PlayOnLinux 
   - Printrun 
   - Printrun-common 
@@ -11379,7 +11381,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla34 
+  - libfilezilla35 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -14309,6 +14311,8 @@ unsorted:
   - librepo-devel 
   - librepo0: [i586] 
   - librepository-javadoc 
+  - libreproc++14 
+  - libreproc14 
   - librepute1 
   - libresprite 
   - libressl 
@@ -14451,8 +14455,10 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi4-hpc 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
+  - libscamperctrl-devel 
+  - libscamperctrl1 
   - libscamperfile-devel 
-  - libscamperfile3 
+  - libscamperfile4 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -18711,6 +18717,7 @@ unsorted:
   - ocl-icd-devel-32bit: [x86_64] 
   - ocli 
   - oclock 
+  - ocp 
   - ocr-gnu-hpc 
   - ocr-gnu-hpc-devel 
   - ocr-gnu-hpc-doc 
@@ -23273,6 +23280,7 @@ unsorted:
   - python310-azure-mgmt-voiceservices 
   - python310-azure-mgmt-web 
   - python310-azure-mgmt-webpubsub 
+  - python310-azure-mgmt-workloadmonitor 
   - python310-azure-mgmt-workloads 
   - python310-azure-mixedreality-authentication 
   - python310-azure-mixedreality-nspkg 
@@ -24861,7 +24869,6 @@ unsorted:
   - python310-pydenticon 
   - python310-pydicom 
   - python310-pydicom-data 
-  - python310-pydle 
   - python310-pydocstyle 
   - python310-pydocumentdb 
   - python310-pydot 
@@ -26556,6 +26563,7 @@ unsorted:
   - python311-azure-mgmt-voiceservices 
   - python311-azure-mgmt-web 
   - python311-azure-mgmt-webpubsub 
+  - python311-azure-mgmt-workloadmonitor 
   - python311-azure-mgmt-workloads 
   - python311-azure-mixedreality-authentication 
   - python311-azure-mixedreality-nspkg 
@@ -27698,6 +27706,7 @@ unsorted:
   - python311-musicbrainzngs 
   - python311-mutagen 
   - python311-mutatorMath 
+  - python311-mutmut 
   - python311-mutt-ics 
   - python311-mwclient 
   - python311-mycli 
@@ -27930,6 +27939,7 @@ unsorted:
   - python311-polib 
   - python311-pomegranate 
   - python311-pomegranate-devel 
+  - python311-pony 
   - python311-pooch 
   - python311-pook 
   - python311-poppler-qt5 
@@ -27980,6 +27990,7 @@ unsorted:
   - python311-publicsuffix2 
   - python311-publicsuffixlist 
   - python311-pudb 
+  - python311-pulsectl 
   - python311-pure-eval 
   - python311-pure-sasl 
   - python311-purl 
@@ -29730,6 +29741,7 @@ unsorted:
   - python38-azure-mgmt-voiceservices 
   - python38-azure-mgmt-web 
   - python38-azure-mgmt-webpubsub 
+  - python38-azure-mgmt-workloadmonitor 
   - python38-azure-mgmt-workloads 
   - python38-azure-mixedreality-authentication 
   - python38-azure-mixedreality-nspkg 
@@ -33148,6 +33160,7 @@ unsorted:
   - python39-azure-mgmt-voiceservices 
   - python39-azure-mgmt-web 
   - python39-azure-mgmt-webpubsub 
+  - python39-azure-mgmt-workloadmonitor 
   - python39-azure-mgmt-workloads 
   - python39-azure-mixedreality-authentication 
   - python39-azure-mixedreality-nspkg 
@@ -36685,6 +36698,7 @@ unsorted:
   - replacer-javadoc 
   - replay-sorcery 
   - reprepro 
+  - reproc-devel 
   - reptyr 
   - resample 
   - rescue 
