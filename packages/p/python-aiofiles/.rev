@@ -39,4 +39,18 @@
     <comment></comment>
     <requestid>1005520</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07d7f94392645fe427ecba0601342594</srcmd5>
+    <version>23.1.0</version>
+    <time>1677258463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.1.0:
+  * Added ``aiofiles.os.access``.
+  * Removed ``aiofiles.tempfile.temptypes.AsyncSpooledTemporaryFile.softspace``.
+  * Added ``aiofiles.stdin``, ``aiofiles.stdin_bytes``, and
+    other stdio streams.
+  * Transition to ``asyncio.get_running_loop``
+    (vs ``asyncio.get_event_loop``) internally.</comment>
+    <requestid>1067414</requestid>
+  </revision>
 </revisionlist>

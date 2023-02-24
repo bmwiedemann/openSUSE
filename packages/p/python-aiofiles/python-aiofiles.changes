@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:10:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1.0:
+  * Added ``aiofiles.os.access``.
+  * Removed ``aiofiles.tempfile.temptypes.AsyncSpooledTemporaryFile.softspace``.
+  * Added ``aiofiles.stdin``, ``aiofiles.stdin_bytes``, and
+    other stdio streams.
+  * Transition to ``asyncio.get_running_loop``
+    (vs ``asyncio.get_event_loop``) internally. 
+
+-------------------------------------------------------------------
 Thu Sep 22 22:41:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 22.1.0
