@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           plasma5-welcome
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/plasma/plasma-welcome
-Source:         plasma-welcome-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-welcome-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-welcome-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-welcome-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -36,8 +36,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KAccounts)
-BuildRequires:  cmake(KF5CoreAddons) >= 5.98
 BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons) >= 5.98
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
@@ -72,7 +72,7 @@ Welcome Center is the perfect introduction to KDE Plasma! It can help you learn 
 %kf5_makeinstall -C build
 %find_lang plasma-welcome
 
-%files 
+%files
 %license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.plasma-welcome.desktop
 %{_kf5_appstreamdir}/org.kde.plasma-welcome.appdata.xml
