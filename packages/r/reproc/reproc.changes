@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Feb 24 08:58:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.2.4:
+  * Bugfix: Fix a memory leak in `reproc_start()` on Windows
+  * Bugfix: Fix a memory leak in reproc++ `array` class move
+    constructor.
+  * Allow passing zero-sized array's to reproc's `input` option
+  * Bugfix: Fix sign of EWOULDBLOCK error returned from
+    `reproc_read`.
+  * Bugfix: Disallow using `fork` option when using `reproc_run`.
+  * Bugfix: `reproc_run` now handles forked child processes
+    correctly.
+  * Bugfix: Sinks of different types can now be passed to
+    `reproc::drain`.
+  * Bugfix: Processes on Windows returning negative exit codes
+    don't cause asserts anymore.
+  * Bugfix: Dependency on librt on POSIX (except osx) systems is
+    now explicit in CMake.
+  * Bugfix: Added missing stdout redirect option to reproc++.
+  * Added `reproc_pid`/`process::pid` to get the pid of the
+    process
+  * Fixed compilation error when including reproc/drain.h in C++
+    code
+  * Added missing extern "C" block to reproc/run.h
+- run tests
+
+-------------------------------------------------------------------
+Mon Aug 31 15:00:45 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 14.1.0 
+
+-------------------------------------------------------------------
+Fri Jul 31 00:32:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial
