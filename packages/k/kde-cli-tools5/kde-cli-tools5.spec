@@ -19,15 +19,15 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           kde-cli-tools5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         kde-cli-tools-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz
 %if %{with released}
-Source1:        kde-cli-tools-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE kdesu-add-some-i18n-love.patch -- boo#852256
