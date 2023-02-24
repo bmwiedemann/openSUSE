@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.30.0
+Version:        1.31.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -29,8 +29,10 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source99:       revendor_source.sh
-# PATCH-FIX-OPENSUSE - Disable LTO
-Patch1:         deno-disbale-lto.patch
+# PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
+%ifarch %{arm} aarch64
+Patch1:         deno-disable-lto.patch
+%endif
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
 BuildRequires:  cargo-packaging

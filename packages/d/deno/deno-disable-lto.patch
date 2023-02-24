@@ -1,0 +1,18 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -146,7 +146,6 @@ winapi = "=0.3.9"
+ [profile.release]
+ codegen-units = 1
+ incremental = true
+-lto = true
+ opt-level = 'z' # Optimize for size
+ 
+ # Build release with debug symbols: cargo build --profile=release-with-debug
+@@ -158,7 +157,6 @@ debug = true
+ [profile.bench]
+ codegen-units = 1
+ incremental = true
+-lto = true
+ opt-level = 'z' # Optimize for size
+ 
+ # Key generation is too slow on `debug`

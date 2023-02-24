@@ -13,8 +13,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/deno</param>
-    <param name="revision">v1.30.0</param>
-    <param name="version">1.30.0</param>
+    <param name="revision">c26fbe38d5a1f485a0960357c22080dd23e03ffb</param>
+    <param name="version">1.31.0</param>
 
     <!-- remove large docs -->
     <param name="exclude">docs</param>
@@ -37,8 +37,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/rusty_v8</param>
-    <param name="revision">v0.60.1</param>
-    <param name="version">0.60.1</param>
+    <param name="revision">v0.63.0</param>
+    <param name="version">0.63.0</param>
     <param name="exclude">.github</param>
 
     <!--
