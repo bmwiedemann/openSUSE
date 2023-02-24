@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 24 10:56:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 22.3.2
+  * 21.10.4: Add channel_list_enum to compare channel_list values with
+    something in a typo-free way, expose channel_list_raw with C enum
+    values [#66].
+  * 21.5.0: Fix PA_VOLUME_MAX and PA_VOLUME_UI_MAX values, both were
+    incorrect [#53].
+
+-------------------------------------------------------------------
 Fri Apr 16 13:32:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 21.3.4

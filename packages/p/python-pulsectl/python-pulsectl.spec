@@ -1,7 +1,7 @@
 #
 # spec file for package python-pulsectl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pulsectl
-Version:        21.3.4
+Version:        22.3.2
 Release:        0
 Summary:        Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)
 License:        MIT
@@ -61,12 +60,13 @@ play, player-like client).
 
 %if %{with test}
 %check
-%pyunittest pulsectl.tests.all
+%pyunittest discover
 %endif
 
 %files %{python_files}
 %license COPYING
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pulsectl
+%{python_sitelib}/pulsectl-%{version}*-info
 
 %changelog

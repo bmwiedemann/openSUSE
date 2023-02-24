@@ -57,4 +57,18 @@
     <comment></comment>
     <requestid>886021</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>362002dcada084521852a3ce6187d3e5</srcmd5>
+    <version>22.3.2</version>
+    <time>1677258502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.3.2
+  * 21.10.4: Add channel_list_enum to compare channel_list values with
+    something in a typo-free way, expose channel_list_raw with C enum
+    values [#66].
+  * 21.5.0: Fix PA_VOLUME_MAX and PA_VOLUME_UI_MAX values, both were
+    incorrect [#53].
+</comment>
+    <requestid>1067583</requestid>
+  </revision>
 </revisionlist>
