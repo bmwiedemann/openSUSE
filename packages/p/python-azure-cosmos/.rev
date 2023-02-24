@@ -52,4 +52,15 @@
 - Update Requires from setup.py (forwarded request 978895 from glaubitz)</comment>
     <requestid>978948</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c26132592956b6f804a9289b2d006ed5</srcmd5>
+    <version>4.3.1</version>
+    <time>1677258516</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1067532 from glaubitz)</comment>
+    <requestid>1067597</requestid>
+  </revision>
 </revisionlist>
