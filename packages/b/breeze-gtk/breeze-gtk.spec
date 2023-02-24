@@ -19,15 +19,15 @@
 
 %define _name   breeze
 Name:           breeze-gtk
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/breeze-gtk
-Source:         breeze-gtk-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz
 %if %{with released}
-Source1:        breeze-gtk-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-style
