@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 24 09:36:48 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230224.498677ab:
+  * Dev: utils: Suppress the output of ssh-copy-id
+
+-------------------------------------------------------------------
+Fri Feb 24 02:32:31 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230224.83dcde63:
+  * Dev: unittest: remove test_healthcheck.py since the new implementation is trivial
+  * Fix: bootstrap: fail to join a cluster initialized by previous version
+  * Dev: healthcheck: refine the implementation to fix ssh key problems by calling function init_ssh instead of calling command `cluster init ssh`
+  * Dev: upgradeutil: do upgrade silently (bsc#1208327)
+  * Fix: bootstrap: `crm cluster join ssh` raises TypeError (bsc#1208327)
+
+-------------------------------------------------------------------
 Tue Feb 21 03:11:17 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230221.eb38cb6e:
