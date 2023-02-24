@@ -19,15 +19,15 @@
 %bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         plasma-nm-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-nm-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4

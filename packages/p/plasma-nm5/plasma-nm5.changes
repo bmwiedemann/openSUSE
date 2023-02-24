@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * Guard against double instantiation or double-free of PlasmaNM.NetworkModel (kde#465805)
+  * Filter out the loopback device (kde#465655)
+  * Revert "Use QWindow instead of KWindowSystem to set KeepAbove" (kde#465751)
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:52 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
