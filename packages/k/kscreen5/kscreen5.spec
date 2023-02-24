@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kscreen5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,11 +30,13 @@ Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         kscreen-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz
 %if %{with released}
-Source1:        kscreen-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-kcm-use-onRejected-to-handle-reject-button-click.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes
@@ -71,9 +73,6 @@ KScreen handles screen management for both X11 and Wayland sessions, including r
 
 %lang_package
 
-%prep
-%setup -q -n kscreen-%{version}
-
 %package plasmoid
 Summary:        Plasma widget to control screen configuration
 Group:          System/GUI/KDE
@@ -81,6 +80,9 @@ Requires:       %{name} = %{version}
 
 %description plasmoid
 This package provides a Plasma widget to control common screen configuration options.
+
+%prep
+%autosetup -p1 -n kscreen-%{version}
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

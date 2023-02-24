@@ -1,0 +1,39 @@
+From b65ae40b7d7fe4a5e56f3510f92fbd197ab369ab Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Tue, 21 Feb 2023 23:10:55 +0800
+Subject: [PATCH] kcm: use onRejected to handle reject button click
+
+The role of the reject button is RejectRole, so onRejected should be
+used instead of onReset.
+
+
+(cherry picked from commit e2807998ea15c6f34981cc318d055c24497006e5)
+---
+ kcm/package/contents/ui/main.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcm/package/contents/ui/main.qml b/kcm/package/contents/ui/main.qml
+index 39ab6c9..7cb1636 100644
+--- a/kcm/package/contents/ui/main.qml
++++ b/kcm/package/contents/ui/main.qml
+@@ -90,7 +90,7 @@ KCM.SimpleKCM {
+             onAccepted: {
+                 confirmMsg.close();
+             }
+-            onReset: {
++            onRejected: {
+                 revertTimer.stop();
+                 kcm.setStopUpdatesFromBackend(false);
+                 kcm.revertSettings();
+@@ -379,7 +379,7 @@ KCM.SimpleKCM {
+             onTriggered: {
+                 revertCountdown -= 1;
+                 if (revertCountdown < 1) {
+-                    confirmDialogButtonBox.reset();
++                    confirmDialogButtonBox.rejected();
+                 }
+             }
+         }
+-- 
+2.39.2
+

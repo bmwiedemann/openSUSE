@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * kcm: notify scale factor change through DBus
+  * kcm: Use correct role for revert button (kde#465788)
+- Add patch to fix the revert button:
+  * 0001-kcm-use-onRejected-to-handle-reject-button-click.patch
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
