@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 24 15:36:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.1.0:
+  * fix console overflow
+  * ENV variables now in the UPPER CASE only
+
+-------------------------------------------------------------------
 Wed Feb 22 18:42:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - logfilegen 2.0.0:

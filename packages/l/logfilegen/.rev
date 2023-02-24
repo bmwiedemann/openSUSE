@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>1067207</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>318e83b19565b5b72010ec913693e750</srcmd5>
+    <version>2.1.0</version>
+    <time>1677258524</time>
+    <user>dimstar_suse</user>
+    <comment> logfilegen 2.1.0</comment>
+    <requestid>1067624</requestid>
+  </revision>
 </revisionlist>
