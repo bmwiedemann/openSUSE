@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>796584</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6e080a408931e82f2e7718b3b2f487f0</srcmd5>
+    <version>1.0.7</version>
+    <time>1677258467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7 
+  * This release primarily makes the configure process more efficient.</comment>
+    <requestid>1067467</requestid>
+  </revision>
 </revisionlist>
