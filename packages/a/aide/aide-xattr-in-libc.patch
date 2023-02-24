@@ -1,33 +1,208 @@
-diff -ru old/configure.ac new/configure.ac
---- old/configure.ac	2021-02-10 22:01:14.000000000 +0100
-+++ new/configure.ac	2021-02-24 13:17:31.287619804 +0100
-@@ -483,7 +483,7 @@
- 	
- AS_IF([test "x$with_xattr_support" != xno],
- 	[AC_DEFINE(WITH_XATTR,1,[use xattr])
--	ATTRLIB=-lattr
-+	ATTRLIB=
- 	compoptionstring="${compoptionstring}WITH_XATTR\\n"
- 	AC_MSG_RESULT(yes)],
- 	[AC_MSG_RESULT(no)]
-diff -ru old/include/db_config.h new/include/db_config.h
---- old/include/db_config.h	2021-02-10 22:01:14.000000000 +0100
-+++ new/include/db_config.h	2021-02-24 13:49:16.813840910 +0100
-@@ -23,7 +23,6 @@
+diff --color -ruN aide-0.18.ori/configure.ac aide-0.18/configure.ac
+--- aide-0.18.ori/configure.ac	2023-02-06 22:06:50.000000000 +0100
++++ aide-0.18/configure.ac	2023-02-23 18:38:19.703630012 +0100
+@@ -59,7 +59,7 @@
+ AIDE_DEFS="-D_GNU_SOURCE"
+ 
+ dnl This is borrowed from libtool
+-    
++
+ if test $ac_cv_c_compiler_gnu = yes; then
+     LD_STATIC_FLAG='-static'
+ 
+@@ -101,54 +101,54 @@
+ 	# All AIX code is PIC.
+ 	LD_STATIC_FLAG='-bnso -bI:/lib/syscalls.exp'
+ 	;;
+-	
++
+     hpux9* | hpux10* | hpux11*)
+ 	# Is there a better LD_STATIC_FLAG that works with the bundled CC?
+ 	## wl='-Wl,'
+ 	LD_STATIC_FLAG="${wl}-a ${wl}archive"
+ 	## pic_flag='+Z'
+ 	;;
+-	
++
+     irix5* | irix6*)
+ 	## wl='-Wl,'
+ 	LD_STATIC_FLAG='-non_shared'
+ 	# PIC (with -KPIC) is the default.
+ 	;;
+-	
++
+     cygwin* | mingw* | os2*)
+ 	# We can build DLLs from non-PIC.
+ 	;;
+-	
++
+     osf3* | osf4* | osf5*)
+ 	# All OSF/1 code is PIC.
+ 	## wl='-Wl,'
+ 	LD_STATIC_FLAG='-non_shared'
+ 	;;
+-	
++
+     sco3.2v5*)
+ 	## pic_flag='-Kpic'
+ 	LD_STATIC_FLAG='-dn'
+ 	## special_shlib_compile_flags='-belf'
+ 	;;
+-	
++
+     solaris*)
+ 	## pic_flag='-KPIC'
+ 	LD_STATIC_FLAG='-Bstatic'
+ 	## wl='-Wl,'
+ 	;;
+-	
++
+     sunos4*)
+ 	## pic_flag='-PIC'
+ 	LD_STATIC_FLAG='-Bstatic'
+ 	## wl='-Qoption ld '
+ 	;;
+-	
++
+     sysv4 | sysv4.2uw2* | sysv4.3* | sysv5*)
+ 	## pic_flag='-KPIC'
+ 	LD_STATIC_FLAG='-Bstatic'
+ 	## wl='-Wl,'
+ 	;;
+-	
++
+     uts4*)
+ 	## pic_flag='-pic'
+ 	LD_STATIC_FLAG='-Bstatic'
+@@ -338,8 +338,6 @@
+ 
+ AIDE_PKG_CHECK(selinux, SELinux, no, SELINUX, libselinux, selinux)
+ 
+-AIDE_PKG_CHECK(xattr, xattr, no, XATTR, libattr, xattrs)
+-
+ AIDE_PKG_CHECK(capabilities, POSIX 1003.1e capabilities, no, CAPABILITIES, libcap, caps)
+ 
+ AIDE_PKG_CHECK(e2fsattrs, e2fsattrs, no, E2FSATTRS, e2p, e2fsattrs)
+diff --color -ruN aide-0.18.ori/include/db_config.h aide-0.18/include/db_config.h
+--- aide-0.18.ori/include/db_config.h	2023-02-06 22:06:50.000000000 +0100
++++ aide-0.18/include/db_config.h	2023-02-23 18:29:04.202036763 +0100
+@@ -19,7 +19,7 @@
+  * with this program; if not, write to the Free Software Foundation, Inc.,
+  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+- 
++
  #ifndef _DB_CONFIG_H_INCLUDED
  #define _DB_CONFIG_H_INCLUDED
- #include "config.h"
--#include "attributes.h"
- #include "report.h"
- #include "types.h"
- #include <unistd.h>
-@@ -48,7 +47,6 @@
  
- #ifdef WITH_XATTR /* Do generic user Xattrs. */
+@@ -32,7 +32,6 @@
+ #ifdef WITH_ZLIB
+ #include <zlib.h>
+ #endif
+-#include "attributes.h"
+ #include "hashsum.h"
+ #include "db_line.h"
+ #include "list.h"
+@@ -75,7 +74,7 @@
+ /*    int (*close)(_db_config*); */
+ /*    int db_size; */
+ /*    DB_FIELD* db_order; */
+-/*    void* local; */  
++/*    void* local; */
+ /*  }_db_config ; */
+ 
+ typedef struct database {
+@@ -111,14 +110,14 @@
+ #ifdef WITH_ZLIB
+   /* Is dbout gzipped or not */
+   int gzip_dbout;
+-  
++
+ #endif
+ 
+   DB_ATTR_TYPE db_out_attrs;
+ 
+   char *check_path;
+   RESTRICTION_TYPE check_file_type;
+-  
++
+   char* config_file;
+   char* config_version;
+   bool config_check_warn_unrestricted_rules;
+@@ -160,7 +159,7 @@
+   int symlinks_found;
+   DB_ATTR_TYPE attr;
+ 
+-#ifdef WITH_ACL  
++#ifdef WITH_ACL
+   int no_acl_on_symlinks;
+ #endif
+   int warn_dead_symlinks;
+diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
+--- aide-0.18.ori/src/do_md.c	2023-02-06 22:06:50.000000000 +0100
++++ aide-0.18/src/do_md.c	2023-02-23 18:29:31.706313697 +0100
+@@ -45,7 +45,6 @@
+ 
+ #ifdef WITH_XATTR
  #include <sys/xattr.h>
 -#include <attr/attributes.h>
  #ifndef ENOATTR
  # define ENOATTR ENODATA
  #endif
-Only in new/include: md.h.orig
-Only in new/src: md.c.orig
+@@ -327,7 +326,7 @@
+ }
+ 
+ void fs2db_line(struct stat* fs,db_line* line) {
+-  
++
+   line->inode=fs->st_ino;
+ 
+   if(ATTR(attr_uid)&line->attr) {
+@@ -349,7 +348,7 @@
+   }else{
+     line->size=0;
+   }
+-  
++
+   if(ATTR(attr_linkcount)&line->attr){
+     line->nlink=fs->st_nlink;
+   }else {
+@@ -367,7 +366,7 @@
+   }else{
+     line->ctime=0;
+   }
+-  
++
+   if(ATTR(attr_atime)&line->attr){
+     line->atime=fs->st_atime;
+   }else{
+@@ -379,13 +378,13 @@
+   } else {
+     line->bcount=0;
+   }
+-  
++
+ }
+ 
+ #ifdef WITH_ACL
+ void acl2line(db_line* line) {
+   acl_type *ret = NULL;
+-  
++
+ #ifdef WITH_POSIX_ACL
+   if(ATTR(attr_acl)&line->attr) {
+     acl_t acl_a;
+@@ -434,7 +433,7 @@
+     acl_free(acl_d);
+   }
+   line->acl = ret;
+-#endif  
++#endif
+ }
+ #endif
+ 
+@@ -596,4 +595,3 @@
+ void no_hash(db_line* line) {
+   line->attr&=~get_hashes(true);
+ }
+-

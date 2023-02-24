@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 23 16:50:23 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Update to 0.18
+- Rename aide-0.17.3-as-needed.patch to and rebase aide-0.18-as-needed.patch
+- Added autoconf and autoconf-archive as building dependencies due to an error
+  when reconfiguring the source
+- Rebase aide-xattr-in-libc.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 09:19:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.17.4:
@@ -19,12 +28,12 @@ Fri Apr  2 07:03:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Wed Feb 24 13:45:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update default config file to match v0.17 
+- Update default config file to match v0.17
 
 -------------------------------------------------------------------
 Wed Feb 24 11:01:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 0.17.3: 
+- Update to 0.17.3:
   * BACKWARDS INCOMPATIBLE CHANGES
     - '--verbose' command line option and 'verbose' config option are no
       longer supported, use 'log_level' and 'report_level' options instead
@@ -142,7 +151,7 @@ Sun Mar 17 21:20:12 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 Wed Jan 18 13:38:03 UTC 2017 - meissner@suse.com
 
 - Updated to 0.16
-  - lots of bugfixes 
+  - lots of bugfixes
   - including regexp matching within subdirectories of expressions
 - aide-0.16-as-needed.patch: replaces aide-0.15.1-as-needed.patch
 - aide-no_m4_dir.patch: upstream
@@ -183,7 +192,7 @@ Fri Apr 26 11:26:37 UTC 2013 - mmeister@suse.com
 -------------------------------------------------------------------
 Wed Jan  4 13:34:11 UTC 2012 - crrodriguez@opensuse.org
 
-- libmhash development was abandoned in 2007, so it is time 
+- libmhash development was abandoned in 2007, so it is time
   for it to go into the library heaven, use libgcrypt instead.
 
 -------------------------------------------------------------------
@@ -215,8 +224,8 @@ Tue Aug 10 17:12:56 CEST 2010 - meissner@suse.de
 -------------------------------------------------------------------
 Fri Apr 30 00:40:34 CEST 2010 - ro@suse.de
 
-- make aide check verbose to get started 
-- add sleep and sync to fix build 
+- make aide check verbose to get started
+- add sleep and sync to fix build
 
 -------------------------------------------------------------------
 Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
@@ -226,7 +235,7 @@ Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
 -------------------------------------------------------------------
 Wed Jun 17 19:43:10 CEST 2009 - crrodriguez@suse.de
 
-- fix build when as-needed is a default liker option 
+- fix build when as-needed is a default liker option
 
 -------------------------------------------------------------------
 Mon Jan  5 14:19:26 CET 2009 - meissner@suse.de
@@ -291,13 +300,13 @@ Sat Jan 14 22:08:31 CET 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Mar 18 15:46:21 CET 2005 - mge@suse.de
 
-- fixes #71272 - aide-0.10-47 config files not yet converted to utf8 
+- fixes #71272 - aide-0.10-47 config files not yet converted to utf8
 
 -------------------------------------------------------------------
 Mon Jan 26 11:16:41 CET 2004 - mge@suse.de
 
 - upgrade to 0.10
-- #33600: more usable default aide.conf 
+- #33600: more usable default aide.conf
   (thanks to Dirk Mueller <dmuell@gmx.net>)
 - example-cron-job
 
@@ -309,7 +318,7 @@ Sat Jan 10 22:05:03 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Wed Nov 13 01:36:35 CET 2002 - ro@suse.de
 
-- fix build for current bison 
+- fix build for current bison
 
 -------------------------------------------------------------------
 Thu Aug 15 16:11:22 CEST 2002 - mge@suse.de
@@ -320,7 +329,7 @@ Thu Aug 15 16:11:22 CEST 2002 - mge@suse.de
 Mon Apr  9 11:30:55 CEST 2001 - ro@suse.de
 
 - don't use macro for version
-- remove obsolete macros 
+- remove obsolete macros
 
 -------------------------------------------------------------------
 Wed Nov 22 13:00:27 MET 2000 - mge@suse.de
@@ -347,4 +356,3 @@ Sun Sep 12 00:00:00 MEST 1999 - Rami Lehti <rammer@cs.tut.fi>
 Sat Sep 11 00:00:00 MEST 1999 - Zach Brown <zab@redhat.com>
 
 - First go
-

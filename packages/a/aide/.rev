@@ -285,4 +285,16 @@
   * fix CVE-2021-45417: precalculate buffer size in base64 functions (bsc#1194735)</comment>
     <requestid>965618</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0922eea50a8e7ec55345a1983a96200a</srcmd5>
+    <version>0.18</version>
+    <time>1677258494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18
+- Rename aide-0.17.3-as-needed.patch to and rebase aide-0.18-as-needed.patch
+- Added autoconf and autoconf-archive as building dependencies due to an error
+  when reconfiguring the source
+- Rebase aide-xattr-in-libc.patch (forwarded request 1067470 from pperego)</comment>
+    <requestid>1067533</requestid>
+  </revision>
 </revisionlist>

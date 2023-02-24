@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aide
-Version:        0.17.4
+Version:        0.18
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
@@ -33,9 +33,11 @@ Source7:        aide.timer.8
 Source8:        aide_service.conf
 Source42:       https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source43:       aide.keyring
-Patch1:         aide-0.17.3-as-needed.patch
+Patch1:         aide-0.18-as-needed.patch
 Patch2:         aide-xattr-in-libc.patch
 Patch3:         aide-systemd.patch
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  curl-devel
