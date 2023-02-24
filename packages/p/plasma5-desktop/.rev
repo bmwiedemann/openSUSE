@@ -1700,4 +1700,12 @@
   There's nothing to delete on this arch.</comment>
     <requestid>1065915</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>41199a9ce5980790a3103b1dc2e05287</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258433</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067247</requestid>
+  </revision>
 </revisionlist>

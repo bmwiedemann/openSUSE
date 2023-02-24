@@ -27,7 +27,7 @@
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -37,9 +37,9 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         plasma-desktop-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-desktop-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
