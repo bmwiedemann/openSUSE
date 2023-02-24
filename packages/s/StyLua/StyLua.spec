@@ -18,16 +18,17 @@
 
 %define _bin_name stylua
 Name:           StyLua
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Opinionated Lua code formatter
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND MIT AND MPL-2.0 AND MPL-2.0
 URL:            https://github.com/JohnnyMorganz/StyLua
 Source0:        https://github.com/JohnnyMorganz/StyLua/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
+BuildRequires:  zstd
 
 %description
 StyLua is an opinonated code formatter for Lua 5.1, 5.2, 5.3, 5.4 and Luau

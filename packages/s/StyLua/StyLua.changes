@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 17 10:33:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.16.1:
+  * General
+    - Fixed mistransformation of a function argument in a multilined function call when the argument
+      contains a comment, causing a syntax error. We now attempt to hang the expression (#648)
+  * Luau
+    - Fixed verify AST flagging a false positive for parentheses removed around a Luau type (#643)
+
+-------------------------------------------------------------------
 Tue Feb 14 01:25:57 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
