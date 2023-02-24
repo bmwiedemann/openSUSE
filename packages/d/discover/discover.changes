@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * [notifier] Fix KAboutData component name
+  * Fix parsing of the <Categories> tag.
+  * Extend CategoriesTest with checking of <Categories> tag parsing.
+  * flatpak: fix build with appstream<0.16
+  * flatpak: Allow using newer appstream API to look up by bundle id
+
+-------------------------------------------------------------------
 Tue Feb 14 09:24:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Discover 5.27 can be built again on archs missing QtWebEngine
