@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           polkit-kde-agent-5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            http://www.kde.org/
-Source:         polkit-kde-agent-1-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz
 %if %{with released}
-Source1:        polkit-kde-agent-1-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
