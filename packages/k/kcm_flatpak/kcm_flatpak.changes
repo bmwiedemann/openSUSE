@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * DRY the code a bit
+  * use range based for loops where possible
+  * make clazy happy
+  * typo--
+  * always use frontend strings but convert to backend strings when saving (kde#465818)
+  * add a test case to cover BUG 465818
+  * don't needlessly define a default constructor
+  * don't else after return
+  * initialize variables where possible
+  * don't declare multiple variables in a single line
+  * don't const primitives
+  * pass qstrings by reference where appropriate
+  * refresh git-blame-ignore-revs for latest clang-format run
+  * automatic clang-format run (clang 15)
+  * enable clang-format
+  * print a cmake feature summary
+  * don't needlessly define default dtors
+  * mark constructors explicit where appropriate
+  * don't declare getters as slots
+  * sort includes
+  * Avoid creating empty fs permission entry from overrides
+
+-------------------------------------------------------------------
 Mon Feb 13 17:38:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Tarball got respun. Changes:

@@ -15,4 +15,12 @@
     <comment>Plasma 5.27.0 respun tarballs (forwarded request 1065555 from Vogtinator)</comment>
     <requestid>1065561</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83dc0182f30c2758e677fe214e9c2361</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258406</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067218</requestid>
+  </revision>
 </revisionlist>

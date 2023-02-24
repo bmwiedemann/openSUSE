@@ -20,15 +20,15 @@
 
 %bcond_without released
 Name:           kcm_flatpak
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/plasma/flatpak-kcm
-Source:         flatpak-kcm-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/flatpak-kcm-%{version}.tar.xz
 %if %{with released}
-Source1:        flatpak-kcm-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/flatpak-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.98.0
