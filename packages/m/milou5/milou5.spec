@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           milou5
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/milou
-Source:         milou-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz
 %if %{with released}
-Source1:        milou-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.98.0
