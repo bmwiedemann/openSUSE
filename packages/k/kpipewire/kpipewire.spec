@@ -21,15 +21,15 @@
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 %bcond_without released
 Name:           kpipewire
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         kpipewire-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kpipewire-%{version}.tar.xz
 %if %{with released}
-Source1:        kpipewire-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kpipewire-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
