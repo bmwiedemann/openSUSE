@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * homescreens/halcyon: Remove drop shadow for placeholder message It's extremely slow on the PinePhone, remove it from release for now.
+  * Revert "lockscreen: Refactor and lazy load notifications"
+  * components: Remove splash screen close button support, due to crashing problems
+  * homescreens/halcyon: Fix configure screen showing up in task switcher
+  * quicksettings/screenrotation: Make available dbus call async
+  * quicksettings/screenrotation: hide when not available
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0
