@@ -919,4 +919,12 @@
     <comment>Plasma 5.27.0, preliminary tarballs</comment>
     <requestid>1064539</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>0bc555bfa79e8ecf440aa5e557dda092</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258445</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067216</requestid>
+  </revision>
 </revisionlist>
