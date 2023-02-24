@@ -33,4 +33,20 @@
     <comment>logfilegen 1.2.0</comment>
     <requestid>1063871</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f69ef6d409c01458fd17652e58f1a37d</srcmd5>
+    <version>2.0.0</version>
+    <time>1677166149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>318e83b19565b5b72010ec913693e750</srcmd5>
+    <version>2.1.0</version>
+    <time>1677258524</time>
+    <user>dimstar_suse</user>
+    <comment> logfilegen 2.1.0</comment>
+    <requestid>1067624</requestid>
+  </revision>
 </revisionlist>
