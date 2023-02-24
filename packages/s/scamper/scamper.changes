@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:32:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20230224:
+ - scamper:
+  - allow multiple parallel measurements to the same destination,
+ -   provided the measurements have probe signatures that scamper can
+ -   distinguish.
+  - return the associated task ID with each DATA blob in control socket.
+ -   this task ID matches the ID returned in an OK when scamper accepted
+ -   the task.
+  - in ping, only compute delay statistics on responses from destination.
+  - in ping, allow timeout to be expressed in fractions of a second.
+ - libscamperfile:
+  - support reading gz-compressed warts files.
+ - libscamperctrl:
+  - add libscamperctrl, a library to interact with a collection of
+ -   scamper instances.
+  - modify sc_ally, sc_filterpolicy, sc_prefixscan, sc_speedtrap, and
+ -   sc_pinger to use this library.
+  - this library is likely to evolve.  current behaviour is documented
+ -   in libscamperctrl manual page.
+ - misc:
+  - improve sc_wartsfilter manual page with examples.
+  - add remote control socket support to sc_pinger.
+  - fix kqueue/epoll loop in sc_remoted.
+  - consistently use size_t throughout when counting number of items.
+  - build without warnings using -Wextra -Wno-unused-parameter.
+  - improvements through adding function attributes to printf-like
+ -   functions.
+  - deorbit some unused functions from utils.c.
+
+-------------------------------------------------------------------
 Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 20211212e:

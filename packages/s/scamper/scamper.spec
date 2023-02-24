@@ -1,7 +1,7 @@
 #
 # spec file for package scamper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20211212e
+Version:        20230224
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -42,13 +42,14 @@ fragmentation required message is not returned to establish the PMTU
 to the next point in the network, followed by a TTL limited search to
 infer where the failure appears to occur.
 
-%package -n libscamperfile3
+%package -n libscamperfile4
 Summary:        File access library for scamper's binary dump format
-Group:          System/Libraries]
+Group:          System/Libraries
 Obsoletes:      libscamperfile1 < %{version}
 Obsoletes:      libscamperfile2 < %{version}
+Obsoletes:      libscamperfile3 < %{version}
 
-%description -n libscamperfile3
+%description -n libscamperfile4
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -61,7 +62,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile3 = %{version}-%{release}
+Requires:       libscamperfile4 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -73,19 +74,50 @@ alias resolution, some parts of tbit, sting, and neighbour discovery.
 This package contains development headers and other ancillary files for the
 libscamperfile library.
 
+%package -n libscamperctrl1
+Summary:        Control library for scamper
+Group:          System/Libraries
+
+%description -n libscamperctrl1
+Scamper is a program that is able to conduct Internet measurement
+tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
+fill a specified packets-per-second rate. Currently, it supports the
+well-known ping and traceroute techniques, as well as MDA traceroute,
+alias resolution, some parts of tbit, sting, and neighbour discovery.
+
+This package contains thee library that provides functions to interact
+with a collection of scamper instances.
+
+%package -n libscamperctrl-devel
+Summary:        Development headers for scamper's control library
+Group:          Development/Libraries/Other
+Requires:       libscamperctrl1 = %{version}-%{release}
+
+%description -n libscamperctrl-devel
+Scamper is a program that is able to conduct Internet measurement
+tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
+fill a specified packets-per-second rate. Currently, it supports the
+well-known ping and traceroute techniques, as well as MDA traceroute,
+alias resolution, some parts of tbit, sting, and neighbour discovery.
+
+This package contains development headers and other ancillary files for the
+libscamperctrl library.
+
 %prep
 %setup -q -n %{name}-cvs-%{version}
 
 %build
-%configure --disable-static
+%configure --disable-static --without-debugfile
 make %{?_smp_mflags}
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile3 -p /sbin/ldconfig
-%postun -n libscamperfile3 -p /sbin/ldconfig
+%post   -n libscamperfile4 -p /sbin/ldconfig
+%post   -n libscamperctrl1 -p /sbin/ldconfig
+%postun -n libscamperfile4 -p /sbin/ldconfig
+%postun -n libscamperctrl1 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -94,12 +126,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
-%files -n libscamperfile3
+%files -n libscamperfile4
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel
 %{_includedir}/scamper_*
 %{_libdir}/libscamperfile.so
 %{_mandir}/man3/*
+
+%files -n libscamperctrl1
+%{_libdir}/libscamperctrl.so.*
+
+%files -n libscamperctrl-devel
+%{_includedir}/libscamperctrl.h
+%{_libdir}/libscamperctrl.so
 
 %changelog
