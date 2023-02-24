@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:11:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.0:
+  * Prepare for v0.13.0 release
+  * connectivity: Use InternalIP for NodePort requests on GKE
+  * connectivity: Disable IPsec NodePort from outside via IPv6
+  * connectivity: Disable IPv6 with EP feat when netpols exist
+  * connectivity: Add IPv6 tests
+  * connectivity: Extend IPCache check to search for all addrs
+  * connectivity: Store Cilium nodes
+  * connectivity: Add v4/v6 and endpoint-routes features
+  * connectivity: Add IPFamily
+  * ci: update Cilium version to v1.13.0
+  * defaults: install Cilium v1.13.0 by default
+  * sysdump: distil events in to a nice filterable HTML table
+  * go.mod, vendor: bump github.com/google/gops from 0.3.26 to 0.3.27
+  * status: detect when DaemonSets and Deployments are rolling out
+  * test: Wait for policy change if any policy changed
+  * defaults: Lower connectivity timeouts
+  * Wait for deletion of agent DaemonSet before deleting other resources.
+  * ingress: Create Ingress Service if required
+  * ingress: Correct Ingress Class name
+  * connectivity: skip nodeport tests with clustermesh if KPR is disabled
+  * Dockerfile: Bump library/golang
+  * connectivity tests: support IPv6 in ICMP-related netpols
+  * Update stable release to v0.12.13
+
+-------------------------------------------------------------------
 Wed Feb 15 18:53:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.12.13:
