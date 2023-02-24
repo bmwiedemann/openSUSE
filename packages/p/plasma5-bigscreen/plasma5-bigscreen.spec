@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           plasma5-bigscreen
-Version:        5.26.90
+Version:        5.27.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Plasma Bigscreen
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/unstable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/unstable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-bigscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules

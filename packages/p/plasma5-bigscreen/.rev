@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1060808</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ea402631bd6ec9bfe4b78ee41be71fa</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258449</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067246</requestid>
+  </revision>
 </revisionlist>
