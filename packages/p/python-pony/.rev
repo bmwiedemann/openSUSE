@@ -74,4 +74,14 @@
 - remove b6599465524c4b5c9624dfa30dd3c8a5624b515d.patch (upstream)</comment>
     <requestid>955715</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e4cd225ec47501c7c46d59d3af01d648</srcmd5>
+    <version>0.7.16</version>
+    <time>1677258506</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11,
+  gh#ponyorm/pony#671
+</comment>
+    <requestid>1067591</requestid>
+  </revision>
 </revisionlist>

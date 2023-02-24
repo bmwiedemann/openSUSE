@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() ython3-%{**}}
 %global skip_python2 1
 Name:           python-pony
 Version:        0.7.16
@@ -25,6 +24,8 @@ Summary:        Pony Object-Relational Mapper
 License:        Apache-2.0
 URL:            https://ponyorm.com
 Source:         https://files.pythonhosted.org/packages/source/p/pony/pony-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch gh#ponyorm/pony#671
+Patch0:         python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  dos2unix
