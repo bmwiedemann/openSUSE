@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           kactivitymanagerd
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kactivitymanagerd
-Source:         kactivitymanagerd-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
 %if %{with released}
-Source1:        kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
