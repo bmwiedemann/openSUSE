@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         sddm-kcm-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
 %if %{with released}
-Source1:        sddm-kcm-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
