@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           plasma5-sdk
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://cgit.kde.org/plasma-sdk.git
-Source:         plasma-sdk-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-sdk-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
