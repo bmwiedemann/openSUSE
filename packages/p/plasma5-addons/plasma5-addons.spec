@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-addons
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Additional Plasma5 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         kdeplasma-addons-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
 %if %{with released}
-Source1:        kdeplasma-addons-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf5-filesystem
