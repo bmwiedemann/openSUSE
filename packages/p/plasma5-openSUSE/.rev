@@ -1328,4 +1328,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment></comment>
     <requestid>1065955</requestid>
   </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>66794151763ae17b4bf8fc783ef25c71</srcmd5>
+    <version>84.87~git20230131T131056~433af24</version>
+    <time>1677258436</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067253</requestid>
+  </revision>
 </revisionlist>
