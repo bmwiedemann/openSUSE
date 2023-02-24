@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 23 20:50:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.28:
+  * docs: add tomeichlersmith as a contributor for data
+  * feat: Add file for scikit-hep/uproot5#816
+  * add 10-event LHE file with non-standard PDG particle
+
+-------------------------------------------------------------------
 Tue Jan 10 09:27:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to versin 0.14.26

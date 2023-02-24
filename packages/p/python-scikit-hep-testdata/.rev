@@ -122,4 +122,15 @@
     <comment></comment>
     <requestid>1057620</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d4f5f339ebbcbb35e0a00ffa6f50e74</srcmd5>
+    <version>0.4.28</version>
+    <time>1677258470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.28:
+  * docs: add tomeichlersmith as a contributor for data
+  * feat: Add file for scikit-hep/uproot5#816
+  * add 10-event LHE file with non-standard PDG particle</comment>
+    <requestid>1067478</requestid>
+  </revision>
 </revisionlist>
