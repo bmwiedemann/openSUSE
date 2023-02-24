@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Fri Feb 24 15:38:14 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Precompile python bytecode (boo#1208151)
+
+-------------------------------------------------------------------
 Sat Oct 15 19:53:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.17:

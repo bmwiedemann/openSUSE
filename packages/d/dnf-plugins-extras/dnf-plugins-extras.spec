@@ -43,6 +43,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 # Backports from upstream
 
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
@@ -234,6 +235,9 @@ rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/tracer.*
 rm -rf %{buildroot}%{_mandir}/man8/dnf-tracer.*
 %endif
 
+%python_compileall
+%fdupes %{buildroot}%{python3_sitelib}
+
 %if %{with tests}
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -248,15 +252,21 @@ pytest-%{python3_version} -v -s tests/
 
 %files -n python3-dnf-plugin-kickstart
 %{python3_sitelib}/dnf-plugins/kickstart.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
 %{_mandir}/man8/dnf-kickstart.*
 
 %files -n python3-dnf-plugin-rpmconf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/rpmconf.conf
 %{python3_sitelib}/dnf-plugins/rpm_conf.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
 %{_mandir}/man8/dnf-rpmconf.*
 
 %files -n python3-dnf-plugin-snapper
 %{python3_sitelib}/dnf-plugins/snapper.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
 %{_mandir}/man8/dnf-snapper.*
 
 %files -n python3-dnf-plugin-system-upgrade
@@ -265,6 +275,8 @@ pytest-%{python3_version} -v -s tests/
 %dir %{_unitdir}/system-update.target.wants
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
 %{_mandir}/man8/dnf-system-upgrade.*
 %{_mandir}/man8/dnf-offline-upgrade.*
 %{_mandir}/man8/dnf-offline-distrosync.*
@@ -272,16 +284,22 @@ pytest-%{python3_version} -v -s tests/
 %if %{with tracer}
 %files -n python3-dnf-plugin-tracer
 %{python3_sitelib}/dnf-plugins/tracer.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
 %{_mandir}/man8/dnf-tracer.*
 %endif
 
 %files -n python3-dnf-plugin-torproxy
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/torproxy.*
 %{_mandir}/man8/dnf-torproxy.*
 
 %files -n python3-dnf-plugin-showvars
 %{python3_sitelib}/dnf-plugins/showvars.*
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
+%{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
 %{_mandir}/man8/dnf-showvars.*
 
 %changelog
