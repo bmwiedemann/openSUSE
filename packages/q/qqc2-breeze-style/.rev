@@ -303,4 +303,12 @@
     <comment>Plasma 5.27.0, preliminary tarballs</comment>
     <requestid>1064549</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5ece056585ecaab27c70342aa73a343c</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258461</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067264</requestid>
+  </revision>
 </revisionlist>
