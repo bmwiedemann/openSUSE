@@ -1,7 +1,7 @@
 #
 # spec file for package kphotoalbum
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           kphotoalbum
-Version:        5.8.1
+Version:        5.9.1
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kphotoalbum.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.3.0
+BuildRequires:  QtAV-devel
+BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
@@ -49,8 +50,10 @@ BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libvlc)
 Requires:       sqlite3
 Recommends:     marble
 
@@ -89,6 +92,7 @@ an image from a special place, or even both.
 %{_kf5_configdir}/kphotoalbumrc
 %{_kf5_htmldir}/en/kphotoalbum/
 %{_kf5_iconsdir}/hicolor/*/*/*.png
+%{_kf5_iconsdir}/hicolor/scalable/apps/kphotoalbum.svg
 %{_kf5_kxmlguidir}/kphotoalbum/
 %{_kf5_libdir}/libkpabase.so
 %{_kf5_libdir}/libkpaexif.so

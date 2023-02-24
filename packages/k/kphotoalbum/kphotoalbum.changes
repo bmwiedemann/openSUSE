@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 23 17:15:22 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.9.1
+  * Hotfix: Due to a problem with the tarme.rb releasme script,
+    the 5.9.0 tarball lacked all l10n data.
+    We thus had to withdraw the release and tag a new one.
+- Changes in 5.9.0
+  * Bugfix: Fix crash when forgetting to select images upon import
+  * Bugfix: Fix faulty assertion when video thumbnail files cannot
+    be written
+  * Bugfix: Remove incomplete URL encoding of non-ASCII characters
+    in HTML export
+  * Bugfix: Fix crash when reimporting deleted files from
+    a .kim file
+  * Bugfix: Fix multiple issues identified by code analysis tools.
+  * Deprecation: Tip of the day feature was removed because it is
+    no longer supported by KDE Frameworks.
+  * Enhancement: Generic file metadata can now be viewed via the
+    Exif metadata dialog.
+  * Enhancement: Support other video backends (libVLC, QtAV)
+    in addition to Phonon.
+  * Enhancement: Add volume controls to video player.
+- Update minimum cmake version
+- Add BuildRequires QtAV-devel and pkgconfig(libvlc)
+
+-------------------------------------------------------------------
 Sun Jun 27 11:01:13 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.8.1
