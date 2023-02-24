@@ -295,4 +295,12 @@
     <comment>Plasma 5.27.0, preliminary tarballs</comment>
     <requestid>1064548</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1cc9dd1e64d242b91dd7c69a7bdd4249</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258451</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067249</requestid>
+  </revision>
 </revisionlist>
