@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 21 14:09:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * Make python distro and psutil modules in the gdb preable optional
+  * Handle WITH_SENTRY correctly
+  * login on field accepting (kde#466109)
+- Drop patches, now upstream:
+  * 0001-Handle-WITH_SENTRY-correctly.patch
+  * 0002-Make-python-distro-and-psutil-modules-in-the-gdb-pre.patch
+
+-------------------------------------------------------------------
 Thu Feb  9 14:19:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.0

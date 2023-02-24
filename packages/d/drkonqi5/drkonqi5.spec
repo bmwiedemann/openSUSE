@@ -23,20 +23,17 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         drkonqi-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
 %if %{with released}
-Source1:        drkonqi-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/drkonqi/-/merge_requests/84
-Patch1:         0001-Handle-WITH_SENTRY-correctly.patch
-Patch2:         0002-Make-python-distro-and-psutil-modules-in-the-gdb-pre.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
