@@ -19,15 +19,15 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           plasma-vault
-Version:        5.27.0
+Version:        5.27.1
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         plasma-vault-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-vault-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
