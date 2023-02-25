@@ -48,7 +48,7 @@
 %define oldpython python
 
 Name:           libkdumpfile
-Version:        0.5.1
+Version:        0.5.1+git3.g97c716a
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library
@@ -60,7 +60,10 @@ License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Languages/Python
 %endif
 URL:            https://github.com/ptesarik/libkdumpfile
-Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -174,10 +177,9 @@ to develop applications that require libaddrxlat.
 %setup -q
 %autopatch -p1
 
-# Avoid autotools recheck after patching config*
-touch aclocal.m4 Makefile.in config.h.in configure
-
 %build
+aclocal
+autoreconf -fvi
 %configure --disable-static --without-python
 make %{?_smp_mflags}
 cd python

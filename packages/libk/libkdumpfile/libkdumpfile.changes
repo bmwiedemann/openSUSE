@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 25 13:58:20 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Build from git using an OBS service file.
+
+-------------------------------------------------------------------
 Sat Jan 21 11:53:07 UTC 2023 - Petr Tesařík <ptesarik@suse.com>
 
 - Upgrade to libkdumpfile version 0.5.1

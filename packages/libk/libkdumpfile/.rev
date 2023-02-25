@@ -192,4 +192,13 @@
 </comment>
     <requestid>1060134</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e8510c3a56d5fa450cef04c9fad37a98</srcmd5>
+    <version>0.5.1+git3.g97c716a</version>
+    <time>1677351335</time>
+    <user>dimstar_suse</user>
+    <comment>- Build from git using an OBS service file.
+</comment>
+    <requestid>1067718</requestid>
+  </revision>
 </revisionlist>
