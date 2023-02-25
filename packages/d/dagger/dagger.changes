@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Feb 25 08:31:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.13:
+  * docs: fixes docs code examples in the quickstart (#4632)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.31.6 to
+    1.34.0 (#4639)
+  * Additive caching support for S3 backend (#4577)
+  * chore: Add graphql example for pipeline (#4467)
+  * docs: point to new version of GHA (#4595)
+  * docs: Added instructions for playground embeds (#4609)
+  * feat: scrub secrets (#4518)
+  * fix python linter (#4638)
+  * Services, a.k.a. container-to-container networking (#4505)
+  * Update buildkit to commit w/ cache exporter fix + nil panic
+    fix (#4630)
+  * Get sha of the image after Container.From (#4600)
+  * Refactor NodeJS codegen (#4360)
+  * docs: improve GraphQL with example and better format (#4367)
+  * fix Directory.WithTimestamps with subdir (#4606)
+  * Create a test for nested arguments (#4599)
+  * Fix the buildargs regex (#4597)
+  * build(deps): bump typedoc from 0.23.24 to 0.23.25 in /website
+    (#4593)
+  * Pull engine image from registry.dagger.io (#4517)
+  * docs: Added GitLab + Google Cloud tutorial (#4552)
+  * chore(python): Explicitly add dependencies used directly in
+    codebase (#4578)
+  * Create `with()` method to chain objects (#4332)
+  * Disable logrus output only in CLI main. (#4572)
+  * chore(deps): Update python linter (#4565)
+  * fix: Enhance synchronous error message call. (#4485)
+  * Use comma instead of semicolon for cache config separator.
+    (#4563)
+  * Remove import dependency of CLI on containerd packages.
+    (#4562)
+  * fix: remove workdir & configPath default values. (#4465)
+  * ci: simplify step to run workflows for bump PR (#4560)
+  * Download runc binary instead of building it.  (#4559)
+  * Initial support for remote cache config. (#4543)
+  * sdk: Bump engine dependency to v0.3.12 (#4554)
+  * Update RELEASING.md instructions on testing (#4461)
+
+-------------------------------------------------------------------
 Fri Feb 10 06:25:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.12:
