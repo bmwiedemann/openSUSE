@@ -12,11 +12,11 @@ Fixes #138
  src/devices/nm-device.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: NetworkManager-1.40.0/src/core/devices/nm-device.c
+Index: NetworkManager-1.42.2/src/core/devices/nm-device.c
 ===================================================================
---- NetworkManager-1.40.0.orig/src/core/devices/nm-device.c
-+++ NetworkManager-1.40.0/src/core/devices/nm-device.c
-@@ -5727,7 +5727,8 @@ concheck_update_state(NMDevice
+--- NetworkManager-1.42.2.orig/src/core/devices/nm-device.c
++++ NetworkManager-1.42.2/src/core/devices/nm-device.c
+@@ -5758,7 +5758,8 @@ concheck_update_state(NMDevice
                  state = NM_CONNECTIVITY_LIMITED;
          } else
              state = NM_CONNECTIVITY_NONE;
