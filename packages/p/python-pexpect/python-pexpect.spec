@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pexpect
 Version:        4.8.0
 Release:        0
@@ -55,6 +54,9 @@ find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {}
 find examples -type f -name "*.cgi" -exec sed -i "s|##!%{_bindir}/env python|##!%{_bindir}/python|" {} \;
 # Mark example *.py as non-executable (we already patch the shebang out, so they can't be started anyway)
 find examples -type f -name "*.py" -exec chmod 644 {} \;
+
+# Remove shebang
+sed -i '1 {/^#!/d}' pexpect/FSM.py
 
 %build
 %python_build

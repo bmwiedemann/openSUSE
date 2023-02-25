@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 08:37:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
 Fri Jan  6 20:51:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 684.patch, 715.patch: Python 3.11 support 
