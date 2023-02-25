@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 22 20:00:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add no-python3.patch replacing call of the
+  string literal 'python3' with sys.executable
+  (gh#googleapis/google-auth-library-python!1233).
+
+-------------------------------------------------------------------
 Fri Dec  2 10:25:44 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.0

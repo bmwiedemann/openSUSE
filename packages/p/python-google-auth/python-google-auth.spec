@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-auth/goo
 Patch0:         ga_python-executable-name.patch
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
+# PATCH-FIX-UPSTREAM no-python3.patch gh#googleapis/google-auth-library-python!1233 mcepl@suse.com
+# don't use 'python3' literal when you mean sys.executable
+Patch2:         no-python3.patch
 BuildRequires:  %{python_module Flask}
 # START TESTING SECTION
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
