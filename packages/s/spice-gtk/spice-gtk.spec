@@ -1,7 +1,7 @@
 #
 # spec file for package spice-gtk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spice-gtk
-Version:        0.41
+Version:        0.42
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

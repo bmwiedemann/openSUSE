@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 22 15:39:46 MST 2023 - carnold@suse.com
+
+- Update to version 0.42. Features and Issues addressed:
+  * !115 - Fix compilation on win32 with EGL
+  * !114 - spice-widget: fix hotspot position on Wayland/HiDPI
+  * !112 - meson: Allow building on a Wayland-only environment
+  * !110 - usb-backend: Fix devices not being enumerated
+  * !108 - spicy: Add keyboard shortcuts for copy/paste sync
+  * Require meson >= 0.56
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
