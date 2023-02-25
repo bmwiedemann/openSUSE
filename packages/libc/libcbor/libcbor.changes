@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 22 09:27:59 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Merge change from SLE15 SP4 made by pgajdos@suse.com on
+  Tue Apr  5 14:36:56 UTC 2022:
+- do not build manual page for 15sp4, it does not succeed
+  [bsc#1197743]
+- added sources
+  + libcbor.3
+
+-------------------------------------------------------------------
 Mon Jan 16 15:32:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.10.1: 
@@ -53,6 +63,9 @@ Mon May 25 08:15:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.7.0
   * Too many changes to list, see included CHANGELOG.md file
+- 0.6.0 includes patch by bwiedemann@suse.com to not build shared
+  lib twice and make package build reproducible (boo#1102408,
+  gh#PJK/libcbor#72)
 
 -------------------------------------------------------------------
 Thu Jan  2 22:06:08 UTC 2020 - Torsten Gruner <t.gruner@katodev.de>

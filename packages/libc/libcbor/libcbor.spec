@@ -21,6 +21,18 @@
 %define soage      1
 %define lname   libcbor%{socurrent}_%{sorevision}
 %global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "doc"
+# in 15sp4/sp5, the doc fails to build with an assert in sphinx
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 150500
+%define build_man 0
+%else
+%define build_man 1
+%endif
+%else
+%define build_man 0
+%endif
+
 %if "%{flavor}" == "doc"
 Name:           libcbor-doc
 %else
@@ -33,7 +45,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/PJK/libcbor
 Source0:        https://github.com/PJK/libcbor/archive/v%{version}.tar.gz
-%if "%{flavor}" == "doc"
+Source1:        libcbor.3
+%if %{build_man}
 BuildRequires:  doxygen
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-breathe
@@ -78,7 +91,7 @@ sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig|${CMAKE_INST
 %build
 export CFLAGS="%(echo %{optflags}) -Wno-return-type"
 export CXXFLAGS="$CFLAGS"
-%if "%{flavor}" == "doc"
+%if %{build_man}
 %make_build -C doc man
 %else
 
@@ -89,8 +102,13 @@ export CXXFLAGS="$CFLAGS"
 
 %install
 %if "%{flavor}" == "doc"
+
 mkdir -p %{buildroot}%{_mandir}/man3
+%if %{build_man}
 cp doc/build/man/*.3 %{buildroot}%{_mandir}/man3
+%else
+cp %{SOURCE1} %{buildroot}%{_mandir}/man3
+%endif
 
 %else
 
