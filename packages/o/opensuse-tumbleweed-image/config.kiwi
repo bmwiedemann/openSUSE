@@ -81,6 +81,7 @@
     <package name="curl"/>
     <package name="filesystem"/>
     <package name="glibc-locale-base"/>
+    <package name="gzip"/>
     <!-- Only used in config.sh and then removed again -->
     <package name="live-add-yast-repos"/>
     <package name="netcfg"/>
@@ -88,6 +89,7 @@
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-docker"/>
     <package name="patterns-base-fips"/>
+    <package name="tar"/>
     <package name="timezone"/>
     <package name="zypper"/>
   </packages>

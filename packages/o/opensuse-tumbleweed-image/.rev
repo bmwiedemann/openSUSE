@@ -171,4 +171,13 @@
     <comment>- Add curl (jsc#SLE-23748) and timezone (bsc#1201537)</comment>
     <requestid>990400</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>1160bef2ac9292de21bd10e27a7c11d2</srcmd5>
+    <version>1.0.4</version>
+    <time>1677351289</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tar and gzip for simpler use in GitHub actions and similar
+  environments (jsc#PED-3548)</comment>
+    <requestid>1067598</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 15:36:39 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add tar and gzip for simpler use in GitHub actions and similar
+  environments (jsc#PED-3548)
+
+-------------------------------------------------------------------
 Wed Jul 20 12:41:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add curl (jsc#SLE-23748) and timezone (bsc#1201537)
