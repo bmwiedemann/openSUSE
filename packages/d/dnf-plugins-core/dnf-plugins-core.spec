@@ -67,6 +67,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gettext
 Requires:       python3-dnf-plugins-core = %{version}-%{release}
 Recommends:     %{name}-lang >= %{version}
@@ -349,6 +350,9 @@ rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/copr.d
 rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/copr.conf
 %endif
 
+%python_compileall
+%fdupes %{buildroot}%{python3_sitelib}
+
 %if %{with tests}
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -390,25 +394,42 @@ export PYTHONPATH=./plugins
 %files -n python3-dnf-plugins-core
 %license COPYING
 %doc AUTHORS README.rst
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/builddep.py
+%{python3_sitelib}/dnf-plugins/__pycache__/builddep.*
 %{python3_sitelib}/dnf-plugins/changelog.py
+%{python3_sitelib}/dnf-plugins/__pycache__/changelog.*
 %{python3_sitelib}/dnf-plugins/config_manager.py
+%{python3_sitelib}/dnf-plugins/__pycache__/config_manager.*
 %if %{with copr_plugin}
 %{python3_sitelib}/dnf-plugins/copr.py
+%{python3_sitelib}/dnf-plugins/__pycache__/copr.*
 %else
 %exclude %{python3_sitelib}/dnf-plugins/copr.*
+%{python3_sitelib}/dnf-plugins/__pycache__/copr.*
 %endif
 %{python3_sitelib}/dnf-plugins/debug.py
+%{python3_sitelib}/dnf-plugins/__pycache__/debug.*
 %{python3_sitelib}/dnf-plugins/debuginfo-install.py
+%{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
 %{python3_sitelib}/dnf-plugins/download.py
+%{python3_sitelib}/dnf-plugins/__pycache__/download.*
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
+%{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/groups_manager.py
+%{python3_sitelib}/dnf-plugins/__pycache__/groups_manager.*
 %{python3_sitelib}/dnf-plugins/needs_restarting.py
+%{python3_sitelib}/dnf-plugins/__pycache__/needs_restarting.*
 %{python3_sitelib}/dnf-plugins/repoclosure.py
+%{python3_sitelib}/dnf-plugins/__pycache__/repoclosure.*
 %{python3_sitelib}/dnf-plugins/repograph.py
+%{python3_sitelib}/dnf-plugins/__pycache__/repograph.*
 %{python3_sitelib}/dnf-plugins/repomanage.py
+%{python3_sitelib}/dnf-plugins/__pycache__/repomanage.*
 %{python3_sitelib}/dnf-plugins/reposync.py
+%{python3_sitelib}/dnf-plugins/__pycache__/reposync.*
 %{python3_sitelib}/dnf-plugins/repodiff.py
+%{python3_sitelib}/dnf-plugins/__pycache__/repodiff.*
 %{python3_sitelib}/dnfpluginscore/
 
 %files -n %{yum_utils_subpackage_name}
@@ -452,32 +473,44 @@ export PYTHONPATH=./plugins
 %{_mandir}/man8/yum-versionlock.8*
 
 %files -n python3-dnf-plugin-leaves
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/leaves.*
+%{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
 %{_mandir}/man8/dnf-leaves.*
 
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/local.*
+%{python3_sitelib}/dnf-plugins/__pycache__/local.*
 %{_mandir}/man8/dnf-local.*
 
 %files -n python3-dnf-plugin-post-transaction-actions
 %config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
 %dir %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/post-transaction-actions.*
+%{python3_sitelib}/dnf-plugins/__pycache__/post-transaction-actions.*
 %{_mandir}/man8/dnf-post-transaction-actions.*
 
 %files -n python3-dnf-plugin-show-leaves
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/show_leaves.*
+%{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
 %{_mandir}/man8/dnf-show-leaves.*
 
 %files -n python3-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/versionlock.*
+%{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
 %{_mandir}/man8/dnf-versionlock.*
 
 %files -n python3-dnf-plugin-modulesync
+%dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/modulesync.*
+%{python3_sitelib}/dnf-plugins/__pycache__/modulesync.*
 %{_mandir}/man8/dnf-modulesync.*
 
 %changelog
