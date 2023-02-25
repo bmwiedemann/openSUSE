@@ -102,4 +102,15 @@
       running wayland #230</comment>
     <requestid>1063453</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4d19fa789482adda3ea3db5dc40130f</srcmd5>
+    <version>1.6.1</version>
+    <time>1677351337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * Implemented enhancements:
+    + Implement Ctrl+/- and Ctrl+scroll Zoom In/Out shortcuts #276
+    + WhatsApp Web: Pass [ALT] key as [CMD] #280</comment>
+    <requestid>1067719</requestid>
+  </revision>
 </revisionlist>
