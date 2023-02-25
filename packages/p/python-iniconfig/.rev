@@ -34,4 +34,16 @@
 </comment>
     <requestid>1040267</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c851314a7089d47eca94244531fa88fa</srcmd5>
+    <version>2.0.0</version>
+    <time>1677351282</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Drop Python 3.6
+  * Add Python 3.11 support
+  * type hints added
+- use gh tarball for tests</comment>
+    <requestid>1061934</requestid>
+  </revision>
 </revisionlist>

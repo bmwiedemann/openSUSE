@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,19 @@
 %bcond_with test
 %endif
 Name:           python-iniconfig%{psuffix}
-Version:        1.1.1
+Version:        2.0.0
 Release:        0
 Summary:        iniconfig: brain-dead simple config-ini parsing
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/RonnyPfannschmidt/iniconfig
 Source:         https://files.pythonhosted.org/packages/source/i/iniconfig/iniconfig-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source1:        https://github.com/pytest-dev/iniconfig/archive/refs/tags/v%{version}.tar.gz#/iniconfig-%{version}-tests.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -57,14 +62,14 @@ having a unique set of features:
 * iniconfig raises an Error if two sections have the same name.
 
 %prep
-%setup -q -n iniconfig-%{version}
+%setup -q -n iniconfig-%{version} -a1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -76,7 +81,7 @@ having a unique set of features:
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.txt
+%doc README.rst
 %{python_sitelib}/*
 %endif
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 29 18:27:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop Python 3.6
+  * Add Python 3.11 support
+  * type hints added
+- use gh tarball for tests
+
+-------------------------------------------------------------------
 Mon Dec  5 12:45:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-py as test dependency
