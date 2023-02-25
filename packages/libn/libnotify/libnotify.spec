@@ -1,7 +1,7 @@
 #
 # spec file for package libnotify
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnotify
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
@@ -28,10 +28,11 @@ Source99:       baselibs.conf
 
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 
@@ -86,6 +87,7 @@ D-BUS notifications library.
 	-Dintrospection=enabled \
 	-Dgtk_doc=true \
 	-Ddocbook_docs=disabled \
+	-Dman=true \
 	%{nil}
 %meson_build
 
@@ -96,7 +98,6 @@ D-BUS notifications library.
 
 %files -n libnotify4
 %license COPYING
-%doc AUTHORS NEWS README.md
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Notify-0_7
@@ -107,10 +108,11 @@ D-BUS notifications library.
 %{_mandir}/man1/notify-send.1%{?ext_man}
 
 %files devel
+%doc AUTHORS NEWS README.md
+%doc %{_datadir}/doc/libnotify-0/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/libnotify
 
 %changelog

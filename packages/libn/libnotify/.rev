@@ -341,4 +341,23 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment>New upstream release (forwarded request 991757 from iznogood)</comment>
     <requestid>992698</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9699e47c09b5f523c462292a963b0506</srcmd5>
+    <version>0.8.2</version>
+    <time>1677351279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2:
+  + Set new summary for library.
+  + Docs:
+    - Port to gi-docgen.
+    - Fix URL to Desktop Notification Spec.
+  + meson:
+    - Replace deprecated meson.source_root() calls.
+    - Bump minimum meson version to 0.58.
+  + Introspection docs fixes.
+- Following upstreams port to gi-docgen, drop gtk-doc and add
+  meson, xsltproc and pkgconfig(gi-docgen) BuildRequires. Also pass
+  explicit man=true to meson, ensure we are building manpages. (forwarded request 1067430 from iznogood)</comment>
+    <requestid>1067450</requestid>
+  </revision>
 </revisionlist>
