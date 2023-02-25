@@ -2104,4 +2104,17 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>1060499</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>133882985edc50d85740fd5a789bac5d</srcmd5>
+    <version>2.74.6</version>
+    <time>1677351278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.6:
+  + Bugs fixed: glgo#GNOME/GLib!3239 Backport glgo#GNOME/GLib!3237
+    “Fix safe_wspawnve #define” to glib-2-74.
+  + Updated translations.
+
+Extra note: I see glib2 in G:N is missing its link - manual merge needed after ack of this. (forwarded request 1067421 from iznogood)</comment>
+    <requestid>1067449</requestid>
+  </revision>
 </revisionlist>
