@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 21 11:33:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.20.0
+  * This will likely be the last release officially supporting Python 3.6.
+    Python 3.6 is end of life as of 2021-12-23.
+  * Bundled zstd library upgraded from 1.5.2 to 1.5.4.
+  * Use of the deprecated ZSTD_copyDCtx() was removed from the C and
+    Rust backends.
+
+-------------------------------------------------------------------
 Fri Feb 17 12:46:17 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable --system-zstd so that we depend of a system shared library
