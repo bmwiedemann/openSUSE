@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 16 16:22:35 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.25.0:
+  * Fixed
+    - Limit the number of fields and files when parsing 
+    multipart/form-data on the MultipartParser.
+
+- Fixed upstream: reenable tests for tests for i586 and armv7l.
+
+-------------------------------------------------------------------
 Fri Feb 10 18:28:13 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Disable broken tests for i586 and armv7l.

@@ -27,7 +27,7 @@
 
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
