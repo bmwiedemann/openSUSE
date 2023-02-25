@@ -18,7 +18,7 @@
 
 %define socurrent  0
 %define sorevision 10
-%define soage      1
+%define soage      2
 %define lname   libcbor%{socurrent}_%{sorevision}
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -38,7 +38,7 @@ Name:           libcbor-doc
 %else
 Name:           libcbor
 %endif
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 License:        MIT
