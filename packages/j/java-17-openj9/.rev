@@ -23,4 +23,12 @@
     <comment>Security fixes</comment>
     <requestid>1032471</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0b209e5bbee93a0f25cf35f0fda38c32</srcmd5>
+    <version>17.0.5.0</version>
+    <time>1677351316</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067656</requestid>
+  </revision>
 </revisionlist>
