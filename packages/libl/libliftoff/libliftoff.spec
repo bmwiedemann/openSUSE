@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname libliftoff0
 
 Name:           libliftoff
@@ -25,6 +26,7 @@ Group:          Development/Libraries/C and C++
 License:        MIT
 URL:            https://gitlab.freedesktop.org/emersion/libliftoff
 Source0:        https://gitlab.freedesktop.org/emersion/libliftoff/-/archive/v%{version}/libliftoff-v%{version}.tar.gz
+Patch0:         fix-sign-conversion-32bit.patch
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 
@@ -52,12 +54,9 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version} -p1
 
 %build
-# Needed to build on 32-bit, remove after it's fixed upstream
-# https://gitlab.freedesktop.org/emersion/libliftoff/-/issues/75
-export CFLAGS="%{optflags} -Wno-error=sign-conversion -Wno-error=sign-compare"
 %meson
 %meson_build
 

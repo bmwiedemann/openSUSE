@@ -7,4 +7,13 @@
     <comment>Required by gamescope, and wlroots in the future</comment>
     <requestid>1066967</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01b34918eb54087c5e45d8075c98da60</srcmd5>
+    <version>0.4.0</version>
+    <time>1677351326</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch with upstream fix for i586 builds: fix-sign-conversion-32bit.patch
+</comment>
+    <requestid>1067654</requestid>
+  </revision>
 </revisionlist>

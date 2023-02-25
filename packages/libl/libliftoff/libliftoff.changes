@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 24 21:58:05 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Add patch with upstream fix for i586 builds: fix-sign-conversion-32bit.patch
+
+-------------------------------------------------------------------
 Tue Feb 21 10:09:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
