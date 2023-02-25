@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 25 02:09:55 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1677163264.aee8d8c:
+  * Do not restart user-cancelled job with RETRY
+
+-------------------------------------------------------------------
 Wed Feb 22 18:09:49 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676994766.f6873b5:
