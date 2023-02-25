@@ -203,4 +203,14 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1059892</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bb884057acc03b645e5cb4aa71738a62</srcmd5>
+    <version>1.4.0</version>
+    <time>1677351274</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with cmocka &gt;= 1.1.6
+  * Added socket_wrapper-fix-cmocka-1.1.6+-support.patch
+</comment>
+    <requestid>1067431</requestid>
+  </revision>
 </revisionlist>

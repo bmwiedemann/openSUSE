@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:24:07 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with cmocka >= 1.1.6
+  * Added socket_wrapper-fix-cmocka-1.1.6+-support.patch
+
+-------------------------------------------------------------------
 Wed Jan 18 09:39:24 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.4.0
