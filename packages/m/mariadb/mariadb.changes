@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 20 16:32:57 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.10.3:
+    https://mariadb.com/kb/en/mariadb-10-10-3-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-10-3-changelog/
+- Update mariadb.keyring
+
+-------------------------------------------------------------------
 Wed Jan  4 13:46:58 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update list of skipped tests
