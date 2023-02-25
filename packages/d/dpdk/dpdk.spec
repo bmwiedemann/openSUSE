@@ -236,6 +236,7 @@ mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
 # Fix documentation
 mkdir -p %{buildroot}%docdir
 mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
+find %{buildroot}%docdir -name .doctrees | xargs rm -r # cleanup Sphinx leftovers
 
 %if ! %{with tools}
 # Remove tools if not needed

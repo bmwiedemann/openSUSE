@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 22 08:58:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Cleanup Sphinx build leftovers for reproducible builds
+
+-------------------------------------------------------------------
 Tue Jun 21 13:20:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - also strip meson generated runpaths when installing examples

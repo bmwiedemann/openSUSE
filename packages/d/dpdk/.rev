@@ -561,4 +561,12 @@
   manually (bsc#1200620)</comment>
     <requestid>984183</requestid>
   </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>47e32dee1294f27dc056be9f1c37d52b</srcmd5>
+    <version>21.11.1</version>
+    <time>1677351273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067415</requestid>
+  </revision>
 </revisionlist>
