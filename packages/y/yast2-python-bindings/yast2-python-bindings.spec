@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-python-bindings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with python2
 %endif
 Name:           yast2-python-bindings
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Python bindings for the YaST platform
 License:        GPL-2.0-only

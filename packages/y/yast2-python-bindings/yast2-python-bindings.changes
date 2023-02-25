@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  8 15:57:19 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Misc fixes to examples; (bsc#1199343).
+- Fix python2 utf8 handling (python2 code wasn't displaying unicode
+  strings); (bsc#1199348).
+- Change conversion of Py_None to YCP_Void instead of YCP_Null;
+  (bsc#1199344).
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed Jun 22 12:44:19 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Fix core with python3.10 when calling yast2 samba-client;
