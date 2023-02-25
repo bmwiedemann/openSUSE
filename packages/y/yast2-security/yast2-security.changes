@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 22 17:28:54 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1208492
+  - do not store empty values in CFA login.defs empty value to
+    avoid crash when parsing according to login.defs lens
+- 4.5.6
+
+-------------------------------------------------------------------
 Tue Dec 20 10:21:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: export security policy settings (related to
