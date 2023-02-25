@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 13 08:12:01 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- spec: Run python_compileall macro to generate bytecode
+
+-------------------------------------------------------------------
 Sat Oct 15 19:26:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.14.0:

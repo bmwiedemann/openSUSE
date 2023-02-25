@@ -1,7 +1,7 @@
 #
 # spec file for package dnf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,6 +69,7 @@ Patch1002:      dnf-4.6_vendor_change_doc.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-bugzilla
@@ -211,6 +212,8 @@ make doc-man
 %install
 pushd ./build
 %make_install
+%python_compileall
+%fdupes %{buildroot}%{python3_sitelib}
 popd
 
 %find_lang %{name}
