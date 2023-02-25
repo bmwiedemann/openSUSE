@@ -57,6 +57,7 @@ Patch1002:      libdnf-0.55.0-Switch-allow_vendor_change-off.patch
 Patch1003:      libdnf-0.58.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
 
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gpgme-devel
@@ -201,6 +202,9 @@ popd
 # For repo-config-zypp subpackage
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/repos.d
 ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro.repos.d
+
+%python_compileall
+%fdupes %{buildroot}%{python3_sitearch}
 
 %ldconfig_scriptlets -n %{libname}
 
