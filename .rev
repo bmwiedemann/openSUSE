@@ -59,4 +59,12 @@ provides from elf metadata of vendored deps
   * Improve support for bundle metadata in rpm provides</comment>
     <requestid>1034398</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>687d7f6ad9d4237ae8c37a34c503e0ba</srcmd5>
+    <version>1.2.0+0</version>
+    <time>1677351260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067277</requestid>
+  </revision>
 </revisionlist>
