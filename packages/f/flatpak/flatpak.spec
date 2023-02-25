@@ -45,6 +45,8 @@ Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
 Source3:        https://flathub.org/repo/flathub.flatpakrepo
 Patch0:         polkit_rules_usability.patch
+# PATCH-FIX-UPSTREAM flatpak-fix-gpg-agent-double-free.patch bsc#1207434 alynx.zhou@suse.com -- Fix double free in in handling gpg-agent sockets
+Patch1:         flatpak-fix-gpg-agent-double-free.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
 BuildRequires:  docbook-xsl-stylesheets
@@ -148,6 +150,7 @@ more information.
 
 %package remote-flathub
 Summary:        Add Flathub repository to system flatpak
+Group:          System/Packages
 Requires:       flatpak
 Requires(postun):flatpak
 Requires(postun):sed

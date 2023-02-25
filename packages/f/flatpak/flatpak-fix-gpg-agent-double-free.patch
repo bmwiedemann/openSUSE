@@ -1,0 +1,28 @@
+From d7fb31b54077c676be50a6903090d4627b02b994 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@collabora.com>
+Date: Mon, 6 Feb 2023 16:09:29 +0000
+Subject: [PATCH] run: Avoid double-free of gpgconf stdout stream
+
+g_subprocess_get_stdout_pipe() does not transfer ownership, so the
+stream still belongs to the GSubprocess and we must not unref it.
+
+Fixes: 764e5a4d "Add --socket=gpg-agent"
+Resolves: https://github.com/flatpak/flatpak/issues/5095
+Signed-off-by: Simon McVittie <smcv@collabora.com>
+---
+ common/flatpak-run.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/flatpak-run.c b/common/flatpak-run.c
+index 8d613165e1..3c85f9223f 100644
+--- a/common/flatpak-run.c
++++ b/common/flatpak-run.c
+@@ -608,7 +608,7 @@ flatpak_run_add_gpg_agent_args (FlatpakBwrap *bwrap)
+   g_autofree char * sandbox_agent_socket = NULL;
+   g_autoptr(GError) gpgconf_error = NULL;
+   g_autoptr(GSubprocess) process = NULL;
+-  g_autoptr(GInputStream) base_stream = NULL;
++  GInputStream *base_stream = NULL;
+   g_autoptr(GDataInputStream) data_stream = NULL;
+ 
+   process = g_subprocess_new (G_SUBPROCESS_FLAGS_STDOUT_PIPE,

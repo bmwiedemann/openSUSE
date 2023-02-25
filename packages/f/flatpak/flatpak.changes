@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 23 08:41:51 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add flatpak-fix-gpg-agent-double-free.patch: stdout stream of a
+  subprocess is owned by the subprocess, not the caller, so don't
+  use g_autoptr for it to prevent double free (bsc#1207434).
+
+-------------------------------------------------------------------
 Mon Feb  6 18:22:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.2:
