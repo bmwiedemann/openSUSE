@@ -25,7 +25,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        75
+Version:        76
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
@@ -33,7 +33,9 @@ Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        ndctl-rpmlintrc
-Patch14:        harden_ndctl-monitor.service.patch
+Patch:          harden_ndctl-monitor.service.patch
+Patch1:         cxl-monitor-fix-include-paths-for-tracefs-and-tracee.patch
+Patch2:         cxl-event-trace-use-the-wrapped-util_json_new_u64.patch
 BuildRequires:  keyutils-devel
 BuildRequires:  libiniparser-devel
 BuildRequires:  libtool
@@ -45,6 +47,8 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libkmod)
+BuildRequires:  pkgconfig(libtraceevent)
+BuildRequires:  pkgconfig(libtracefs)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -150,10 +154,10 @@ if [ -f /var/run/ndctl-monitor.conf-migration ] ; then
 fi
 
 %preun
-%service_del_preun ndctl-monitor.service
+%service_del_preun ndctl-monitor.service cxl-monitor.service
 
 %postun
-%service_del_postun ndctl-monitor.service
+%service_del_postun ndctl-monitor.service cxl-monitor.service
 
 %posttrans
 # Migration of modprobe.conf files to _modprobedir
@@ -182,6 +186,7 @@ done
 %config(noreplace) %{_sysconfdir}/ndctl.conf.d/ndctl.conf
 %dir %{_modprobedir}
 %{_modprobedir}/nvdimm-security.conf
+%{_unitdir}/cxl-monitor.service
 %{_unitdir}/ndctl-monitor.service
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/

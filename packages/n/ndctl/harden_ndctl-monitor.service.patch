@@ -1,7 +1,7 @@
-Index: ndctl-71.1/ndctl/ndctl-monitor.service
+Index: ndctl-76/ndctl/ndctl-monitor.service
 ===================================================================
---- ndctl-71.1.orig/ndctl/ndctl-monitor.service
-+++ ndctl-71.1/ndctl/ndctl-monitor.service
+--- ndctl-76.orig/ndctl/ndctl-monitor.service
++++ ndctl-76/ndctl/ndctl-monitor.service
 @@ -2,6 +2,17 @@
  Description=Ndctl Monitor Daemon
  
@@ -16,7 +16,29 @@ Index: ndctl-71.1/ndctl/ndctl-monitor.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=simple
  ExecStart=/usr/bin/ndctl monitor
+ 
+Index: ndctl-76/cxl/cxl-monitor.service
+===================================================================
+--- ndctl-76.orig/cxl/cxl-monitor.service
++++ ndctl-76/cxl/cxl-monitor.service
+@@ -2,6 +2,17 @@
+ Description=CXL Monitor Daemon
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
+ Type=simple
+ ExecStart=/usr/bin/cxl monitor
  

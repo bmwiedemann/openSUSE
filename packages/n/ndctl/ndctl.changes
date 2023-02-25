@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 23 09:40:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 76
+  * daxctl-online-memory: fix a memblock enumeration off-by-one
+  * daxctl-online-memory: tolerate non-memblock sysfs attrs that start with 'memory_'
+  * cxl-monitor: new command to monitor CXL events
+- Add build fixes for TW and Leap
+  + cxl-monitor-fix-include-paths-for-tracefs-and-tracee.patch
+  + cxl-event-trace-use-the-wrapped-util_json_new_u64.patch
+
+-------------------------------------------------------------------
 Fri Jan 13 11:54:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 75 (jsc#PED-1080):
