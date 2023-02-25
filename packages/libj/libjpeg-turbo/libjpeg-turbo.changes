@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 21 08:22:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.1.5.1:
+  * Fixed a regression introduced by 2.0 beta1[15] that caused a buffer
+    overrun in the progressive Huffman encoder when attempting to transform
+    a specially-crafted malformed 12-bit-per-component JPEG image into a
+    progressive 12-bit-per-component JPEG image using a 12-bit-per-component
+    build of libjpeg-turbo.
+  * Fixed an issue whereby, when using a 12-bit-per-component build of
+    libjpeg-turbo (-DWITH_12BIT=1), passing samples with values greater than 4095
+    or less than 0 to jpeg_write_scanlines() caused a buffer overrun or
+    underrun in the RGB-to-YCbCr color converter.
+  * Fixed a floating point exception that occurred when attempting to use
+    the jpegtran -drop and -trim options to losslessly transform a
+    specially-crafted malformed JPEG image.
+  * Fixed an issue in tjBufSizeYUV2() whereby it returned a bogus result,
+    rather than throwing an error, if the align parameter was not a power of 2.
+  * Fixed a similar issue in tjCompressFromYUV() whereby it generated a corrupt
+    JPEG image in certain cases, rather than throwing an error,
+    if the align parameter was not a power of 2.
+  * Fixed an issue whereby tjDecompressToYUV2(), which is a wrapper for
+    tjDecompressToYUVPlanes(), used the desired YUV image dimensions
+    rather than the actual scaled image dimensions when computing the plane
+    pointers and strides to pass to tjDecompressToYUVPlanes().
+    This caused a buffer overrun and subsequent segfault if the desired
+    image dimensions exceeded the scaled image dimensions.
+  * Fixed an issue whereby, when decompressing a 12-bit-per-component JPEG
+    image (-DWITH_12BIT=1) using an alpha-enabled output color space such as
+    JCS_EXT_RGBA, the alpha channel was set to 255 rather than 4095.
+  * Fixed an issue whereby the Java version of TJBench did not accept a range
+    of quality values.
+  * Fixed an issue whereby, when -progressive was passed to TJBench,
+    the JPEG input image was not transformed into a progressive JPEG image
+    prior to decompression.
+
+-------------------------------------------------------------------
 Sat Dec 24 12:04:53 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Add explicit provides for jpegtran, so it can be installed easier

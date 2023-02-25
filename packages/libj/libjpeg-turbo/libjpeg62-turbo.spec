@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg62-turbo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define minor   3
 %define micro   0
 %define libver  %{major}.%{minor}.%{micro}
-%define srcver  2.1.4
+%define srcver  2.1.5.1
 Name:           libjpeg62-turbo
 Version:        %{srcver}
 Release:        0
