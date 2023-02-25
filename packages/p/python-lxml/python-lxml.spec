@@ -34,7 +34,12 @@ BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500
+# Assume the best that the old libxml2 in SLE15 is patched for  https://gitlab.gnome.org/GNOME/libxml2/-/issues/378 (CVE-2022-2309)
+BuildRequires:  libxml2-devel
+%else
 BuildRequires:  libxml2-devel >= 2.10.2
+%endif
 BuildRequires:  libxslt-devel >= 1.1.27
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9.1

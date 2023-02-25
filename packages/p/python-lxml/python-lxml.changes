@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 16 20:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- allow building against any libxml2 version in sle15 
+
+-------------------------------------------------------------------
 Fri Jan 20 16:00:15 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add close_file_before_test.patch, to make sure the testing data

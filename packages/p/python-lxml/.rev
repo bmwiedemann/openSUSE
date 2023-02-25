@@ -922,4 +922,12 @@ Send to Staging:E.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061830</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>8e8b9149a0a61562ad208066e792bd0a</srcmd5>
+    <version>4.9.2</version>
+    <time>1677351296</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067479</requestid>
+  </revision>
 </revisionlist>
