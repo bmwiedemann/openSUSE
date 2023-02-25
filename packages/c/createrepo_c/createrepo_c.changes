@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 24 16:13:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Precompile the python bytecode to avoid lingering files on package removal.
+
+-------------------------------------------------------------------
+Wed Feb 22 10:09:43 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add upstream patches (already merged) to publish IMA metadata in
+  repomd repositories
+  + 0001-Add-optional-filelists_ext-metadata.patch
+  + 0002-Rename-filelists_ext-to-filelists-ext-to-be-consiste.patch
+  + 0003-Rename-filelists_ext.xml-metadata-to-filelists-ext.x.patch
+  + 0004-Add-missing-ext-to-filelists-ext-repomd-record.patch
+- Add upstream patches (under review) to rename filelists-ext
+  + 0005-Complete-renaming-to-filelists-ext.patch
+- Use git for merging in %autosetup
+
+-------------------------------------------------------------------
 Wed Jul 27 19:34:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.20.1:

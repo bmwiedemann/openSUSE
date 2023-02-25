@@ -1,0 +1,3739 @@
+From f382b4a1ac7ceb2b3b47732b9e7332ce3cb514c4 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 17 Mar 2022 17:01:16 +0100
+Subject: [PATCH 1/5] Add optional filelists_ext metadata
+
+Using the parameter '--filelists_ext', a new metadata file
+(filelists_ext) will be created.  This new metadata is a copy of
+filelists, but will include a new attribute for the 'file' element,
+named 'hash', that contain the registered hash (SHA256 for example)
+for this file.
+
+Fix #313
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/cmd_parser.c                              |   2 +
+ src/cmd_parser.h                              |   1 +
+ src/createrepo_c.c                            | 302 ++++++++++++++++--
+ src/dumper_thread.c                           |  68 +++-
+ src/dumper_thread.h                           |  25 +-
+ src/load_metadata.c                           |   4 +-
+ src/locate_metadata.c                         |   5 +
+ src/locate_metadata.h                         |   1 +
+ src/mergerepo_c.c                             | 254 ++++++++++++++-
+ src/mergerepo_c.h                             |   1 +
+ src/package.c                                 |   8 +-
+ src/package.h                                 |   5 +-
+ src/parsehdr.c                                |  60 +++-
+ src/parsepkg.c                                |  43 ++-
+ src/parsepkg.h                                |  20 ++
+ src/python/createrepo_c/__init__.py           |  30 +-
+ src/python/createrepo_cmodule.c               |   4 +
+ src/python/package-py.c                       |   6 +-
+ src/python/parsepkg-py.c                      |  30 +-
+ src/python/parsepkg-py.h                      |   2 +-
+ src/python/typeconversion.c                   |   6 +-
+ src/python/xml_dump-py.c                      |  54 +++-
+ src/python/xml_dump-py.h                      |  10 +-
+ src/python/xml_parser-py.h                    |  10 +
+ src/sqlite.h                                  |   9 +-
+ src/threads.c                                 |   3 +
+ src/xml_dump.c                                |  43 ++-
+ src/xml_dump.h                                |  25 +-
+ src/xml_dump_filelists.c                      |  28 +-
+ src/xml_dump_internal.h                       |   3 +-
+ src/xml_dump_primary.c                        |   2 +-
+ src/xml_file.c                                |  54 ++--
+ src/xml_file.h                                |  32 +-
+ src/xml_parser.h                              |  10 +-
+ src/xml_parser_filelists.c                    |  43 ++-
+ src/xml_parser_internal.h                     |   7 +-
+ tests/fixtures.h                              |  15 +-
+ tests/python/tests/fixtures.py                |  18 ++
+ tests/python/tests/test_load_metadata.py      |  24 ++
+ tests/python/tests/test_package.py            |  13 +-
+ tests/python/tests/test_xml_parser.py         |  36 ++-
+ tests/test_xml_parser_filelists.c             |  75 +++++
+ .../test_xml_parser_main_metadata_together.c  |  25 ++
+ ...3a59c1e2644d749afbd97-filelists_ext.xml.gz | Bin 0 -> 409 bytes
+ ...3b61b9a34bde2af89dc1df112a1-primary.xml.gz | Bin 0 -> 987 bytes
+ ...ddaace9e1d148c5eb138de9f71c17-other.xml.gz | Bin 0 -> 397 bytes
+ ...de0ebe212ab6f536695b5ce84-filelists.xml.gz | Bin 0 -> 336 bytes
+ tests/testdata/repo_04/repodata/repomd.xml    |  36 +++
+ .../filelists_ext_snippet_01.xml              |   6 +
+ .../filelists_ext_snippet_02.xml              |  12 +
+ 50 files changed, 1280 insertions(+), 190 deletions(-)
+ create mode 100644 tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz
+ create mode 100644 tests/testdata/repo_04/repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz
+ create mode 100644 tests/testdata/repo_04/repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz
+ create mode 100644 tests/testdata/repo_04/repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz
+ create mode 100644 tests/testdata/repo_04/repodata/repomd.xml
+ create mode 100644 tests/testdata/repodata_snippets/filelists_ext_snippet_01.xml
+ create mode 100644 tests/testdata/repodata_snippets/filelists_ext_snippet_02.xml
+
+diff --git a/src/cmd_parser.c b/src/cmd_parser.c
+index 0e79b40..722cf28 100644
+--- a/src/cmd_parser.c
++++ b/src/cmd_parser.c
+@@ -99,6 +99,8 @@ static GOptionEntry cmd_entries[] =
+       "Generate sqlite databases for use with yum.", NULL },
+     { "no-database", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.no_database),
+       "Do not generate sqlite databases in the repository.", NULL },
++    { "filelists_ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
++      "Create filelists_ext metadata with file hashes.", NULL },
+     { "update", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.update),
+       "If metadata already exists in the outputdir and an rpm is unchanged "
+       "(based on file size and mtime) since the metadata was generated, reuse "
+diff --git a/src/cmd_parser.h b/src/cmd_parser.h
+index 03cfcf0..475dfff 100644
+--- a/src/cmd_parser.h
++++ b/src/cmd_parser.h
+@@ -52,6 +52,7 @@ struct CmdOptions {
+     gboolean version;           /*!< print program version */
+     gboolean database;          /*!< create sqlite database metadata */
+     gboolean no_database;       /*!< do not create database */
++    gboolean filelists_ext;     /*!< create filelists_ext metadata with file hashes */
+     char *checksum;             /*!< type of checksum */
+     char *compress_type;        /*!< which compression type to use */
+     char *general_compress_type;/*!< which compression type to use (even for
+diff --git a/src/createrepo_c.c b/src/createrepo_c.c
+index ad99ff6..21207ed 100644
+--- a/src/createrepo_c.c
++++ b/src/createrepo_c.c
+@@ -980,23 +980,28 @@ main(int argc, char **argv)
+     }
+ 
+     // Create and open new compressed files
+-    cr_XmlFile *pri_cr_file;
+-    cr_XmlFile *fil_cr_file;
+-    cr_XmlFile *oth_cr_file;
++    cr_XmlFile *pri_cr_file = NULL;
++    cr_XmlFile *fil_cr_file = NULL;
++    cr_XmlFile *fex_cr_file = NULL;
++    cr_XmlFile *oth_cr_file = NULL;
+ 
+-    cr_ContentStat *pri_stat;
+-    cr_ContentStat *fil_stat;
+-    cr_ContentStat *oth_stat;
++    cr_ContentStat *pri_stat = NULL;
++    cr_ContentStat *fil_stat = NULL;
++    cr_ContentStat *fex_stat = NULL;
++    cr_ContentStat *oth_stat = NULL;
+ 
+-    gchar *pri_xml_filename;
+-    gchar *fil_xml_filename;
+-    gchar *oth_xml_filename;
++    gchar *pri_xml_filename = NULL;
++    gchar *fil_xml_filename = NULL;
++    gchar *fex_xml_filename = NULL;
++    gchar *oth_xml_filename = NULL;
+ 
+     g_message("Temporary output repo path: %s", tmp_out_repo);
+     g_debug("Creating .xml.gz files");
+ 
+     pri_xml_filename = g_strconcat(tmp_out_repo, "/primary.xml", xml_compression_suffix, NULL);
+     fil_xml_filename = g_strconcat(tmp_out_repo, "/filelists.xml", xml_compression_suffix, NULL);
++    if (cmd_options->filelists_ext)
++        fex_xml_filename = g_strconcat(tmp_out_repo, "/filelists_ext.xml", xml_compression_suffix, NULL);
+     oth_xml_filename = g_strconcat(tmp_out_repo, "/other.xml", xml_compression_suffix, NULL);
+ 
+     pri_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+@@ -1012,6 +1017,7 @@ main(int argc, char **argv)
+         cr_contentstat_free(pri_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
+         exit(EXIT_FAILURE);
+     }
+@@ -1030,11 +1036,36 @@ main(int argc, char **argv)
+         cr_contentstat_free(fil_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
+         cr_xmlfile_close(pri_cr_file, NULL);
+         exit(EXIT_FAILURE);
+     }
+ 
++    if (cmd_options->filelists_ext) {
++        fex_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
++        fex_cr_file = cr_xmlfile_sopen_filelists_ext(fex_xml_filename,
++                                                    xml_compression,
++                                                    fex_stat,
++                                                    &tmp_err);
++        assert(fex_cr_file || tmp_err);
++        if (!fex_cr_file) {
++            g_critical("Cannot open file %s: %s",
++                       fex_xml_filename, tmp_err->message);
++            g_clear_error(&tmp_err);
++            cr_contentstat_free(pri_stat, NULL);
++            cr_contentstat_free(fil_stat, NULL);
++            cr_contentstat_free(fex_stat, NULL);
++            g_free(pri_xml_filename);
++            g_free(fil_xml_filename);
++            g_free(fex_xml_filename);
++            g_free(oth_xml_filename);
++            cr_xmlfile_close(fil_cr_file, NULL);
++            cr_xmlfile_close(pri_cr_file, NULL);
++            exit(EXIT_FAILURE);
++        }
++    }
++
+     oth_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+     oth_cr_file = cr_xmlfile_sopen_other(oth_xml_filename,
+                                         xml_compression,
+@@ -1047,10 +1078,13 @@ main(int argc, char **argv)
+         g_clear_error(&tmp_err);
+         cr_contentstat_free(pri_stat, NULL);
+         cr_contentstat_free(fil_stat, NULL);
++        cr_contentstat_free(fex_stat, NULL);
+         cr_contentstat_free(oth_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
++        cr_xmlfile_close(fex_cr_file, NULL);
+         cr_xmlfile_close(fil_cr_file, NULL);
+         cr_xmlfile_close(pri_cr_file, NULL);
+         exit(EXIT_FAILURE);
+@@ -1061,18 +1095,23 @@ main(int argc, char **argv)
+     cr_xmlfile_set_num_of_pkgs(pri_cr_file, task_count, NULL);
+     cr_xmlfile_set_num_of_pkgs(fil_cr_file, task_count, NULL);
+     cr_xmlfile_set_num_of_pkgs(oth_cr_file, task_count, NULL);
++    if (cmd_options->filelists_ext)
++        cr_xmlfile_set_num_of_pkgs(fex_cr_file, task_count, NULL);
+ 
+     // Open sqlite databases
+     gchar *pri_db_filename = NULL;
+     gchar *fil_db_filename = NULL;
++    gchar *fex_db_filename = NULL;
+     gchar *oth_db_filename = NULL;
+     cr_SqliteDb *pri_db = NULL;
+     cr_SqliteDb *fil_db = NULL;
++    cr_SqliteDb *fex_db = NULL;
+     cr_SqliteDb *oth_db = NULL;
+ 
+     if (!cmd_options->no_database) {
+         _cleanup_file_close_ int pri_db_fd = -1;
+         _cleanup_file_close_ int fil_db_fd = -1;
++        _cleanup_file_close_ int fex_db_fd = -1;
+         _cleanup_file_close_ int oth_db_fd = -1;
+ 
+         g_message("Preparing sqlite DBs");
+@@ -1080,12 +1119,16 @@ main(int argc, char **argv)
+             g_debug("Creating databases");
+             pri_db_filename = g_strconcat(tmp_out_repo, "/primary.sqlite", NULL);
+             fil_db_filename = g_strconcat(tmp_out_repo, "/filelists.sqlite", NULL);
++	    if (cmd_options->filelists_ext)
++                fex_db_filename = g_strconcat(tmp_out_repo, "/filelists_ext.sqlite", NULL);
+             oth_db_filename = g_strconcat(tmp_out_repo, "/other.sqlite", NULL);
+         } else {
+             g_debug("Creating databases localy");
+             const gchar *tmpdir = g_get_tmp_dir();
+             pri_db_filename = g_build_filename(tmpdir, "primary.XXXXXX.sqlite", NULL);
+             fil_db_filename = g_build_filename(tmpdir, "filelists.XXXXXX.sqlite", NULL);
++	    if (cmd_options->filelists_ext)
++                fex_db_filename = g_build_filename(tmpdir, "filelists_ext.XXXXXX.sqlite", NULL);
+             oth_db_filename = g_build_filename(tmpdir, "other.XXXXXXX.sqlite", NULL);
+             pri_db_fd = g_mkstemp(pri_db_filename);
+             g_debug("%s", pri_db_filename);
+@@ -1099,6 +1142,14 @@ main(int argc, char **argv)
+                 g_critical("Cannot open %s: %s", fil_db_filename, g_strerror(errno));
+                 exit(EXIT_FAILURE);
+             }
++            if (cmd_options->filelists_ext) {
++                fex_db_fd = g_mkstemp(fex_db_filename);
++                 g_debug("%s", fex_db_filename);
++                if (fex_db_fd == -1) {
++                    g_critical("Cannot open %s: %s", fex_db_filename, g_strerror(errno));
++                    exit(EXIT_FAILURE);
++                }
++            }
+             oth_db_fd = g_mkstemp(oth_db_filename);
+             g_debug("%s", oth_db_filename);
+             if (oth_db_fd == -1) {
+@@ -1125,6 +1176,21 @@ main(int argc, char **argv)
+             exit(EXIT_FAILURE);
+         }
+ 
++        if (cmd_options->filelists_ext) {
++            // TODO(aplanas): For now, the SQListe database for
++            // filenames_ext will be the same that for filenames,
++            // until we decide how will be the schema change.
++            // fex_db = cr_db_open_filelists_ext(fex_db_filename, &tmp_err);
++            fex_db = cr_db_open_filelists(fex_db_filename, &tmp_err);
++            assert(fex_db || tmp_err);
++            if (!fex_db) {
++                g_critical("Cannot open %s: %s",
++                           fex_db_filename, tmp_err->message);
++                g_clear_error(&tmp_err);
++                exit(EXIT_FAILURE);
++            }
++        }
++
+         oth_db = cr_db_open_other(oth_db_filename, &tmp_err);
+         assert(oth_db || tmp_err);
+         if (!oth_db) {
+@@ -1137,21 +1203,27 @@ main(int argc, char **argv)
+ 
+     gchar *pri_zck_filename = NULL;
+     gchar *fil_zck_filename = NULL;
++    gchar *fex_zck_filename = NULL;
+     gchar *oth_zck_filename = NULL;
+     cr_XmlFile *pri_cr_zck = NULL;
+     cr_XmlFile *fil_cr_zck = NULL;
++    cr_XmlFile *fex_cr_zck = NULL;
+     cr_XmlFile *oth_cr_zck = NULL;
+     cr_ContentStat *pri_zck_stat = NULL;
+     cr_ContentStat *fil_zck_stat = NULL;
++    cr_ContentStat *fex_zck_stat = NULL;
+     cr_ContentStat *oth_zck_stat = NULL;
+     gchar *pri_dict = NULL;
+     gchar *fil_dict = NULL;
++    gchar *fex_dict = NULL;
+     gchar *oth_dict = NULL;
+     size_t pri_dict_size = 0;
+     size_t fil_dict_size = 0;
++    size_t fex_dict_size = 0;
+     size_t oth_dict_size = 0;
+     gchar *pri_dict_file = NULL;
+     gchar *fil_dict_file = NULL;
++    gchar *fex_dict_file = NULL;
+     gchar *oth_dict_file = NULL;
+ 
+     if (cmd_options->zck_dict_dir) {
+@@ -1159,6 +1231,9 @@ main(int argc, char **argv)
+                                          "primary.xml");
+         fil_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "filelists.xml");
++	if (cmd_options->filelists_ext)
++            fex_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
++                                             "filelists_ext.xml");
+         oth_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "other.xml");
+         if (pri_dict_file && !g_file_get_contents(pri_dict_file, &pri_dict,
+@@ -1175,6 +1250,13 @@ main(int argc, char **argv)
+             g_clear_error(&tmp_err);
+             exit(EXIT_FAILURE);
+         }
++        if (fex_dict_file && !g_file_get_contents(fex_dict_file, &fex_dict,
++                                                 &fex_dict_size, &tmp_err)) {
++            g_critical("Error reading zchunk filelists dict %s: %s",
++                       fex_dict_file, tmp_err->message);
++            g_clear_error(&tmp_err);
++            exit(EXIT_FAILURE);
++	}
+         if (oth_dict_file && !g_file_get_contents(oth_dict_file, &oth_dict,
+                                                  &oth_dict_size, &tmp_err)) {
+             g_critical("Error reading zchunk other dict %s: %s",
+@@ -1188,6 +1270,8 @@ main(int argc, char **argv)
+ 
+         pri_zck_filename = g_strconcat(tmp_out_repo, "/primary.xml.zck", NULL);
+         fil_zck_filename = g_strconcat(tmp_out_repo, "/filelists.xml.zck", NULL);
++	if (cmd_options->filelists_ext)
++            fex_zck_filename = g_strconcat(tmp_out_repo, "/filelists_ext.xml.zck", NULL);
+         oth_zck_filename = g_strconcat(tmp_out_repo, "/other.xml.zck", NULL);
+ 
+         pri_zck_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+@@ -1203,6 +1287,7 @@ main(int argc, char **argv)
+             cr_contentstat_free(pri_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
++            g_free(fex_zck_filename);
+             g_free(oth_zck_filename);
+             exit(EXIT_FAILURE);
+         }
+@@ -1229,6 +1314,7 @@ main(int argc, char **argv)
+             cr_contentstat_free(fil_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
++            g_free(fex_zck_filename);
+             g_free(oth_zck_filename);
+             cr_xmlfile_close(pri_cr_zck, NULL);
+             exit(EXIT_FAILURE);
+@@ -1242,6 +1328,37 @@ main(int argc, char **argv)
+         }
+         g_free(fil_dict);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_zck_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
++            fex_cr_zck = cr_xmlfile_sopen_filelists_ext(fex_zck_filename,
++                                                        CR_CW_ZCK_COMPRESSION,
++                                                        fex_zck_stat,
++                                                        &tmp_err);
++            assert(fex_cr_zck || tmp_err);
++            if (!fex_cr_zck) {
++                g_critical("Cannot open file %s: %s",
++                           fex_zck_filename, tmp_err->message);
++                g_clear_error(&tmp_err);
++                cr_contentstat_free(pri_zck_stat, NULL);
++                cr_contentstat_free(fil_zck_stat, NULL);
++                cr_contentstat_free(fex_zck_stat, NULL);
++                g_free(pri_zck_filename);
++                g_free(fil_zck_filename);
++                g_free(fex_zck_filename);
++                g_free(oth_zck_filename);
++                cr_xmlfile_close(pri_cr_zck, NULL);
++                exit(EXIT_FAILURE);
++            }
++            cr_set_dict(fex_cr_zck->f, fex_dict, fex_dict_size, &tmp_err);
++            if (tmp_err) {
++                g_critical("Error reading setting filelists_ext dict %s: %s",
++                           fex_dict_file, tmp_err->message);
++                g_clear_error(&tmp_err);
++                exit(EXIT_FAILURE);
++            }
++            g_free(fex_dict);
++        }
++
+         oth_zck_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+         oth_cr_zck = cr_xmlfile_sopen_other(oth_zck_filename,
+                                             CR_CW_ZCK_COMPRESSION,
+@@ -1254,10 +1371,13 @@ main(int argc, char **argv)
+             g_clear_error(&tmp_err);
+             cr_contentstat_free(pri_zck_stat, NULL);
+             cr_contentstat_free(fil_zck_stat, NULL);
++            cr_contentstat_free(fex_zck_stat, NULL);
+             cr_contentstat_free(oth_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
++            g_free(fex_zck_filename);
+             g_free(oth_zck_filename);
++            cr_xmlfile_close(fex_cr_zck, NULL);
+             cr_xmlfile_close(fil_cr_zck, NULL);
+             cr_xmlfile_close(pri_cr_zck, NULL);
+             exit(EXIT_FAILURE);
+@@ -1276,28 +1396,34 @@ main(int argc, char **argv)
+         cr_xmlfile_set_num_of_pkgs(pri_cr_zck, task_count, NULL);
+         cr_xmlfile_set_num_of_pkgs(fil_cr_zck, task_count, NULL);
+         cr_xmlfile_set_num_of_pkgs(oth_cr_zck, task_count, NULL);
++        if (cmd_options->filelists_ext)
++            cr_xmlfile_set_num_of_pkgs(fex_cr_zck, task_count, NULL);
+     }
+ 
+     // Thread pool - User data initialization
+     user_data.pri_f             = pri_cr_file;
+     user_data.fil_f             = fil_cr_file;
++    user_data.fex_f             = fex_cr_file;
+     user_data.oth_f             = oth_cr_file;
+     user_data.pri_db            = pri_db;
+     user_data.fil_db            = fil_db;
++    user_data.fex_db            = fex_db;
+     user_data.oth_db            = oth_db;
+     user_data.pri_zck           = pri_cr_zck;
+     user_data.fil_zck           = fil_cr_zck;
++    user_data.fex_zck           = fex_cr_zck;
+     user_data.oth_zck           = oth_cr_zck;
+     if (cmd_options->compatibility && cmd_options->changelog_limit == DEFAULT_CHANGELOG_LIMIT ) {
+-      user_data.changelog_limit   = -1;
++      user_data.changelog_limit = -1;
+     } else {
+-      user_data.changelog_limit   = cmd_options->changelog_limit;
++      user_data.changelog_limit = cmd_options->changelog_limit;
+     }
+     user_data.location_base     = cmd_options->location_base;
+     user_data.checksum_type_str = cr_checksum_name_str(cmd_options->checksum_type);
+     user_data.checksum_type     = cmd_options->checksum_type;
+     user_data.checksum_cachedir = cmd_options->checksum_cachedir;
+     user_data.skip_symlinks     = cmd_options->skip_symlinks;
++    user_data.filelists_ext     = cmd_options->filelists_ext;
+     user_data.repodir_name_len  = strlen(in_dir);
+     user_data.task_count        = task_count;
+     user_data.package_count     = 0;
+@@ -1306,6 +1432,7 @@ main(int argc, char **argv)
+     user_data.old_metadata      = old_metadata;
+     user_data.id_pri            = 0;
+     user_data.id_fil            = 0;
++    user_data.id_fex            = 0;
+     user_data.id_oth            = 0;
+     user_data.buffer            = g_queue_new();
+     user_data.deltas            = cmd_options->deltas;
+@@ -1320,9 +1447,11 @@ main(int argc, char **argv)
+     g_mutex_init(&(user_data.mutex_output_pkg_list));
+     g_mutex_init(&(user_data.mutex_pri));
+     g_mutex_init(&(user_data.mutex_fil));
++    g_mutex_init(&(user_data.mutex_fex));
+     g_mutex_init(&(user_data.mutex_oth));
+     g_cond_init(&(user_data.cond_pri));
+     g_cond_init(&(user_data.cond_fil));
++    g_cond_init(&(user_data.cond_fex));
+     g_cond_init(&(user_data.cond_oth));
+     g_mutex_init(&(user_data.mutex_buffer));
+     g_mutex_init(&(user_data.mutex_old_md));
+@@ -1379,6 +1508,8 @@ main(int argc, char **argv)
+     cr_xmlfile_close(pri_cr_file, &tmp_err);
+     if (!tmp_err)
+         cr_xmlfile_close(fil_cr_file, &tmp_err);
++    if (!tmp_err)
++        cr_xmlfile_close(fex_cr_file, &tmp_err);
+     if (!tmp_err)
+         cr_xmlfile_close(oth_cr_file, &tmp_err);
+     if (tmp_err) {
+@@ -1401,6 +1532,13 @@ main(int argc, char **argv)
+         g_clear_error(&tmp_err);
+         exit(EXIT_FAILURE);
+     }
++    cr_xmlfile_close(fex_cr_zck, &tmp_err);
++    if (tmp_err) {
++        g_critical("%s: %s",
++                   fex_zck_filename, tmp_err->message);
++        g_clear_error(&tmp_err);
++        exit(EXIT_FAILURE);
++    }
+     cr_xmlfile_close(oth_cr_zck, &tmp_err);
+     if (tmp_err) {
+         g_critical("%s: %s",
+@@ -1424,9 +1562,11 @@ main(int argc, char **argv)
+ 
+         cr_CompressionTask *pri_rewrite_pkg_count_task     = NULL;
+         cr_CompressionTask *fil_rewrite_pkg_count_task     = NULL;
++        cr_CompressionTask *fex_rewrite_pkg_count_task     = NULL;
+         cr_CompressionTask *oth_rewrite_pkg_count_task     = NULL;
+         cr_CompressionTask *pri_zck_rewrite_pkg_count_task = NULL;
+         cr_CompressionTask *fil_zck_rewrite_pkg_count_task = NULL;
++        cr_CompressionTask *fex_zck_rewrite_pkg_count_task = NULL;
+         cr_CompressionTask *oth_zck_rewrite_pkg_count_task = NULL;
+ 
+         pri_rewrite_pkg_count_task = cr_compressiontask_new(pri_xml_filename,
+@@ -1445,6 +1585,16 @@ main(int argc, char **argv)
+                                                             &tmp_err);
+         g_thread_pool_push(rewrite_pkg_count_pool, fil_rewrite_pkg_count_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_rewrite_pkg_count_task = cr_compressiontask_new(fex_xml_filename,
++                                                                NULL,
++                                                                xml_compression,
++                                                                cmd_options->repomd_checksum_type,
++                                                                NULL, FALSE, 1,
++                                                                &tmp_err);
++            g_thread_pool_push(rewrite_pkg_count_pool, fex_rewrite_pkg_count_task, NULL);
++        }
++
+         oth_rewrite_pkg_count_task = cr_compressiontask_new(oth_xml_filename,
+                                                             NULL,
+                                                             xml_compression,
+@@ -1470,6 +1620,16 @@ main(int argc, char **argv)
+                                                                 FALSE, 1, &tmp_err);
+             g_thread_pool_push(rewrite_pkg_count_pool, fil_zck_rewrite_pkg_count_task, NULL);
+ 
++            if (cmd_options->filelists_ext) {
++                fex_zck_rewrite_pkg_count_task = cr_compressiontask_new(fex_zck_filename,
++                                                                    NULL,
++                                                                    CR_CW_ZCK_COMPRESSION,
++                                                                    cmd_options->repomd_checksum_type,
++                                                                    fex_dict_file,
++                                                                    FALSE, 1, &tmp_err);
++                g_thread_pool_push(rewrite_pkg_count_pool, fex_zck_rewrite_pkg_count_task, NULL);
++	    }
++
+             oth_zck_rewrite_pkg_count_task = cr_compressiontask_new(oth_zck_filename,
+                                                                 NULL,
+                                                                 CR_CW_ZCK_COMPRESSION,
+@@ -1483,19 +1643,25 @@ main(int argc, char **argv)
+ 
+         error_check_and_set_content_stat(pri_rewrite_pkg_count_task, pri_xml_filename, &exit_val, &pri_stat);
+         error_check_and_set_content_stat(fil_rewrite_pkg_count_task, fil_xml_filename, &exit_val, &fil_stat);
++        if (cmd_options->filelists_ext)
++            error_check_and_set_content_stat(fex_rewrite_pkg_count_task, fex_xml_filename, &exit_val, &fex_stat);
+         error_check_and_set_content_stat(oth_rewrite_pkg_count_task, oth_xml_filename, &exit_val, &oth_stat);
+ 
+         cr_compressiontask_free(pri_rewrite_pkg_count_task, NULL);
+         cr_compressiontask_free(fil_rewrite_pkg_count_task, NULL);
++        cr_compressiontask_free(fex_rewrite_pkg_count_task, NULL);
+         cr_compressiontask_free(oth_rewrite_pkg_count_task, NULL);
+ 
+         if (cmd_options->zck_compression){
+             error_check_and_set_content_stat(pri_zck_rewrite_pkg_count_task, pri_zck_filename, &exit_val, &pri_zck_stat);
+             error_check_and_set_content_stat(fil_zck_rewrite_pkg_count_task, fil_zck_filename, &exit_val, &fil_zck_stat);
++            if (cmd_options->filelists_ext)
++                error_check_and_set_content_stat(fex_zck_rewrite_pkg_count_task, fex_zck_filename, &exit_val, &fex_zck_stat);
+             error_check_and_set_content_stat(oth_zck_rewrite_pkg_count_task, oth_zck_filename, &exit_val, &oth_zck_stat);
+ 
+             cr_compressiontask_free(pri_zck_rewrite_pkg_count_task, NULL);
+             cr_compressiontask_free(fil_zck_rewrite_pkg_count_task, NULL);
++            cr_compressiontask_free(fex_zck_rewrite_pkg_count_task, NULL);
+             cr_compressiontask_free(oth_zck_rewrite_pkg_count_task, NULL);
+         }
+ 
+@@ -1503,6 +1669,7 @@ main(int argc, char **argv)
+     if (cmd_options->zck_compression){
+         g_free(pri_dict_file);
+         g_free(fil_dict_file);
++        g_free(fex_dict_file);
+         g_free(oth_dict_file);
+     }
+ 
+@@ -1511,9 +1678,11 @@ main(int argc, char **argv)
+     g_mutex_clear(&(user_data.mutex_output_pkg_list));
+     g_mutex_clear(&(user_data.mutex_pri));
+     g_mutex_clear(&(user_data.mutex_fil));
++    g_mutex_clear(&(user_data.mutex_fex));
+     g_mutex_clear(&(user_data.mutex_oth));
+     g_cond_clear(&(user_data.cond_pri));
+     g_cond_clear(&(user_data.cond_fil));
++    g_cond_clear(&(user_data.cond_fex));
+     g_cond_clear(&(user_data.cond_oth));
+     g_mutex_clear(&(user_data.mutex_buffer));
+     g_mutex_clear(&(user_data.mutex_old_md));
+@@ -1526,12 +1695,17 @@ main(int argc, char **argv)
+ 
+     cr_RepomdRecord *pri_xml_rec = cr_repomd_record_new("primary", pri_xml_filename);
+     cr_RepomdRecord *fil_xml_rec = cr_repomd_record_new("filelists", fil_xml_filename);
++    cr_RepomdRecord *fex_xml_rec              = NULL;
++    if (cmd_options->filelists_ext)
++        fex_xml_rec = cr_repomd_record_new("filelists_ext", fex_xml_filename);
+     cr_RepomdRecord *oth_xml_rec = cr_repomd_record_new("other", oth_xml_filename);
+     cr_RepomdRecord *pri_db_rec               = NULL;
+     cr_RepomdRecord *fil_db_rec               = NULL;
++    cr_RepomdRecord *fex_db_rec               = NULL;
+     cr_RepomdRecord *oth_db_rec               = NULL;
+     cr_RepomdRecord *pri_zck_rec              = NULL;
+     cr_RepomdRecord *fil_zck_rec              = NULL;
++    cr_RepomdRecord *fex_zck_rec              = NULL;
+     cr_RepomdRecord *oth_zck_rec              = NULL;
+     cr_RepomdRecord *prestodelta_rec          = NULL;
+     cr_RepomdRecord *prestodelta_zck_rec      = NULL;
+@@ -1542,18 +1716,22 @@ main(int argc, char **argv)
+     // XML
+     cr_repomd_record_load_contentstat(pri_xml_rec, pri_stat);
+     cr_repomd_record_load_contentstat(fil_xml_rec, fil_stat);
++    if (cmd_options->filelists_ext)
++        cr_repomd_record_load_contentstat(fex_xml_rec, fex_stat);
+     cr_repomd_record_load_contentstat(oth_xml_rec, oth_stat);
+ 
+     cr_contentstat_free(pri_stat, NULL);
+     cr_contentstat_free(fil_stat, NULL);
++    cr_contentstat_free(fex_stat, NULL);
+     cr_contentstat_free(oth_stat, NULL);
+ 
+     GThreadPool *fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                                NULL, 3, FALSE, NULL);
+ 
+-    cr_RepomdRecordFillTask *pri_fill_task;
+-    cr_RepomdRecordFillTask *fil_fill_task;
+-    cr_RepomdRecordFillTask *oth_fill_task;
++    cr_RepomdRecordFillTask *pri_fill_task = NULL;
++    cr_RepomdRecordFillTask *fil_fill_task = NULL;
++    cr_RepomdRecordFillTask *fex_fill_task = NULL;
++    cr_RepomdRecordFillTask *oth_fill_task = NULL;
+ 
+     pri_fill_task = cr_repomdrecordfilltask_new(pri_xml_rec,
+                                                 cmd_options->repomd_checksum_type,
+@@ -1565,6 +1743,13 @@ main(int argc, char **argv)
+                                                 NULL);
+     g_thread_pool_push(fill_pool, fil_fill_task, NULL);
+ 
++    if (cmd_options->filelists_ext) {
++        fex_fill_task = cr_repomdrecordfilltask_new(fex_xml_rec,
++                                                    cmd_options->repomd_checksum_type,
++                                                    NULL);
++        g_thread_pool_push(fill_pool, fex_fill_task, NULL);
++    }
++
+     oth_fill_task = cr_repomdrecordfilltask_new(oth_xml_rec,
+                                                 cmd_options->repomd_checksum_type,
+                                                 NULL);
+@@ -1593,6 +1778,7 @@ main(int argc, char **argv)
+ 
+     cr_repomdrecordfilltask_free(pri_fill_task, NULL);
+     cr_repomdrecordfilltask_free(fil_fill_task, NULL);
++    cr_repomdrecordfilltask_free(fex_fill_task, NULL);
+     cr_repomdrecordfilltask_free(oth_fill_task, NULL);
+ 
+     // Sqlite db
+@@ -1602,12 +1788,18 @@ main(int argc, char **argv)
+                                          sqlite_compression_suffix, NULL);
+         gchar *fil_db_name = g_strconcat(tmp_out_repo, "/filelists.sqlite",
+                                          sqlite_compression_suffix, NULL);
++        gchar *fex_db_name = NULL;
++        if (cmd_options->filelists_ext)
++            fex_db_name = g_strconcat(tmp_out_repo, "/filelists_ext.sqlite",
++                                      sqlite_compression_suffix, NULL);
+         gchar *oth_db_name = g_strconcat(tmp_out_repo, "/other.sqlite",
+                                          sqlite_compression_suffix, NULL);
+ 
+         cr_db_dbinfo_update(pri_db, pri_xml_rec->checksum, &tmp_err);
+         if (!tmp_err)
+             cr_db_dbinfo_update(fil_db, fil_xml_rec->checksum, &tmp_err);
++        if (!tmp_err && cmd_options->filelists_ext)
++            cr_db_dbinfo_update(fex_db, fex_xml_rec->checksum, &tmp_err);
+         if (!tmp_err)
+             cr_db_dbinfo_update(oth_db, oth_xml_rec->checksum, &tmp_err);
+         if (tmp_err) {
+@@ -1619,6 +1811,8 @@ main(int argc, char **argv)
+         cr_db_close(pri_db, &tmp_err);
+         if (!tmp_err)
+             cr_db_close(fil_db, &tmp_err);
++        if (!tmp_err)
++            cr_db_close(fex_db, &tmp_err);
+         if (!tmp_err)
+             cr_db_close(oth_db, &tmp_err);
+         if (tmp_err) {
+@@ -1632,9 +1826,10 @@ main(int argc, char **argv)
+         GThreadPool *compress_pool =  g_thread_pool_new(cr_compressing_thread,
+                                                         NULL, 3, FALSE, NULL);
+ 
+-        cr_CompressionTask *pri_db_task;
+-        cr_CompressionTask *fil_db_task;
+-        cr_CompressionTask *oth_db_task;
++        cr_CompressionTask *pri_db_task = NULL;
++        cr_CompressionTask *fil_db_task = NULL;
++        cr_CompressionTask *fex_db_task = NULL;
++        cr_CompressionTask *oth_db_task = NULL;
+ 
+         pri_db_task = cr_compressiontask_new(pri_db_filename,
+                                              pri_db_name,
+@@ -1650,6 +1845,15 @@ main(int argc, char **argv)
+                                              NULL, FALSE, 1, NULL);
+         g_thread_pool_push(compress_pool, fil_db_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_db_task = cr_compressiontask_new(fex_db_filename,
++                                                 fex_db_name,
++                                                 sqlite_compression,
++                                                 cmd_options->repomd_checksum_type,
++                                                 NULL, FALSE, 1, NULL);
++            g_thread_pool_push(compress_pool, fex_db_task, NULL);
++        }
++
+         oth_db_task = cr_compressiontask_new(oth_db_filename,
+                                              oth_db_name,
+                                              sqlite_compression,
+@@ -1662,37 +1866,48 @@ main(int argc, char **argv)
+         if (!cmd_options->local_sqlite) {
+             cr_rm(pri_db_filename, CR_RM_FORCE, NULL, NULL);
+             cr_rm(fil_db_filename, CR_RM_FORCE, NULL, NULL);
++            if (cmd_options->filelists_ext)
++                cr_rm(fex_db_filename, CR_RM_FORCE, NULL, NULL);
+             cr_rm(oth_db_filename, CR_RM_FORCE, NULL, NULL);
+         }
+ 
+         // Prepare repomd records
+         pri_db_rec = cr_repomd_record_new("primary_db", pri_db_name);
+         fil_db_rec = cr_repomd_record_new("filelists_db", fil_db_name);
++        if (cmd_options->filelists_ext)
++            fex_db_rec = cr_repomd_record_new("filelists_db", fex_db_name);
+         oth_db_rec = cr_repomd_record_new("other_db", oth_db_name);
+ 
+         // Set db version
+         pri_db_rec->db_ver = DEFAULT_DATABASE_VERSION;
+         fil_db_rec->db_ver = DEFAULT_DATABASE_VERSION;
++        if (cmd_options->filelists_ext)
++            fex_db_rec->db_ver = DEFAULT_DATABASE_VERSION;
+         oth_db_rec->db_ver = DEFAULT_DATABASE_VERSION;
+ 
+         g_free(pri_db_name);
+         g_free(fil_db_name);
++        g_free(fex_db_name);
+         g_free(oth_db_name);
+ 
+         cr_repomd_record_load_contentstat(pri_db_rec, pri_db_task->stat);
+         cr_repomd_record_load_contentstat(fil_db_rec, fil_db_task->stat);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_load_contentstat(fex_db_rec, fex_db_task->stat);
+         cr_repomd_record_load_contentstat(oth_db_rec, oth_db_task->stat);
+ 
+         cr_compressiontask_free(pri_db_task, NULL);
+         cr_compressiontask_free(fil_db_task, NULL);
++        cr_compressiontask_free(fex_db_task, NULL);
+         cr_compressiontask_free(oth_db_task, NULL);
+ 
+         fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                       NULL, 3, FALSE, NULL);
+ 
+-        cr_RepomdRecordFillTask *pri_db_fill_task;
+-        cr_RepomdRecordFillTask *fil_db_fill_task;
+-        cr_RepomdRecordFillTask *oth_db_fill_task;
++        cr_RepomdRecordFillTask *pri_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *fil_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *fex_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *oth_db_fill_task = NULL;
+ 
+         pri_db_fill_task = cr_repomdrecordfilltask_new(pri_db_rec,
+                                                        cmd_options->repomd_checksum_type,
+@@ -1704,6 +1919,13 @@ main(int argc, char **argv)
+                                                        NULL);
+         g_thread_pool_push(fill_pool, fil_db_fill_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_db_fill_task = cr_repomdrecordfilltask_new(fex_db_rec,
++                                                           cmd_options->repomd_checksum_type,
++                                                           NULL);
++            g_thread_pool_push(fill_pool, fex_db_fill_task, NULL);
++        }
++
+         oth_db_fill_task = cr_repomdrecordfilltask_new(oth_db_rec,
+                                                        cmd_options->repomd_checksum_type,
+                                                        NULL);
+@@ -1713,6 +1935,7 @@ main(int argc, char **argv)
+ 
+         cr_repomdrecordfilltask_free(pri_db_fill_task, NULL);
+         cr_repomdrecordfilltask_free(fil_db_fill_task, NULL);
++        cr_repomdrecordfilltask_free(fex_db_fill_task, NULL);
+         cr_repomdrecordfilltask_free(oth_db_fill_task, NULL);
+     }
+ 
+@@ -1721,18 +1944,23 @@ main(int argc, char **argv)
+         // Prepare repomd records
+         pri_zck_rec = cr_repomd_record_new("primary_zck", pri_zck_filename);
+         fil_zck_rec = cr_repomd_record_new("filelists_zck", fil_zck_filename);
++        if (cmd_options->filelists_ext)
++            fex_zck_rec = cr_repomd_record_new("filelists_ext_zck", fex_zck_filename);
+         oth_zck_rec = cr_repomd_record_new("other_zck", oth_zck_filename);
+ 
+         cr_repomd_record_load_zck_contentstat(pri_zck_rec, pri_zck_stat);
+         cr_repomd_record_load_zck_contentstat(fil_zck_rec, fil_zck_stat);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_load_zck_contentstat(fex_zck_rec, fex_zck_stat);
+         cr_repomd_record_load_zck_contentstat(oth_zck_rec, oth_zck_stat);
+ 
+         fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                       NULL, 3, FALSE, NULL);
+ 
+-        cr_RepomdRecordFillTask *pri_zck_fill_task;
+-        cr_RepomdRecordFillTask *fil_zck_fill_task;
+-        cr_RepomdRecordFillTask *oth_zck_fill_task;
++        cr_RepomdRecordFillTask *pri_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *fil_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *fex_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *oth_zck_fill_task = NULL;
+ 
+         pri_zck_fill_task = cr_repomdrecordfilltask_new(pri_zck_rec,
+                                                        cmd_options->repomd_checksum_type,
+@@ -1744,6 +1972,13 @@ main(int argc, char **argv)
+                                                        NULL);
+         g_thread_pool_push(fill_pool, fil_zck_fill_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_zck_fill_task = cr_repomdrecordfilltask_new(fex_zck_rec,
++                                                           cmd_options->repomd_checksum_type,
++                                                           NULL);
++            g_thread_pool_push(fill_pool, fex_zck_fill_task, NULL);
++        }
++
+         oth_zck_fill_task = cr_repomdrecordfilltask_new(oth_zck_rec,
+                                                        cmd_options->repomd_checksum_type,
+                                                        NULL);
+@@ -1753,6 +1988,7 @@ main(int argc, char **argv)
+ 
+         cr_repomdrecordfilltask_free(pri_zck_fill_task, NULL);
+         cr_repomdrecordfilltask_free(fil_zck_fill_task, NULL);
++        cr_repomdrecordfilltask_free(fex_zck_fill_task, NULL);
+         cr_repomdrecordfilltask_free(oth_zck_fill_task, NULL);
+ 
+         //ZCK for additional metadata
+@@ -1824,6 +2060,7 @@ main(int argc, char **argv)
+ 
+     cr_contentstat_free(pri_zck_stat, NULL);
+     cr_contentstat_free(fil_zck_stat, NULL);
++    cr_contentstat_free(fex_zck_stat, NULL);
+     cr_contentstat_free(oth_zck_stat, NULL);
+ 
+ #ifdef CR_DELTA_RPM_SUPPORT
+@@ -1967,12 +2204,18 @@ deltaerror:
+     if (cmd_options->unique_md_filenames) {
+         cr_repomd_record_rename_file(pri_xml_rec, NULL);
+         cr_repomd_record_rename_file(fil_xml_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_xml_rec, NULL);
+         cr_repomd_record_rename_file(oth_xml_rec, NULL);
+         cr_repomd_record_rename_file(pri_db_rec, NULL);
+         cr_repomd_record_rename_file(fil_db_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_db_rec, NULL);
+         cr_repomd_record_rename_file(oth_db_rec, NULL);
+         cr_repomd_record_rename_file(pri_zck_rec, NULL);
+         cr_repomd_record_rename_file(fil_zck_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_zck_rec, NULL);
+         cr_repomd_record_rename_file(oth_zck_rec, NULL);
+         cr_repomd_record_rename_file(prestodelta_rec, NULL);
+         cr_repomd_record_rename_file(prestodelta_zck_rec, NULL);
+@@ -1987,9 +2230,13 @@ deltaerror:
+         gint64 revision = strtoll(cmd_options->revision, NULL, 0);
+         cr_repomd_record_set_timestamp(pri_xml_rec, revision);
+         cr_repomd_record_set_timestamp(fil_xml_rec, revision);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_set_timestamp(fex_xml_rec, revision);
+         cr_repomd_record_set_timestamp(oth_xml_rec, revision);
+         cr_repomd_record_set_timestamp(pri_db_rec, revision);
+         cr_repomd_record_set_timestamp(fil_db_rec, revision);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_set_timestamp(fex_db_rec, revision);
+         cr_repomd_record_set_timestamp(oth_db_rec, revision);
+         cr_repomd_record_set_timestamp(prestodelta_rec, revision);
+         GSList *element = additional_metadata_rec;
+@@ -2001,12 +2248,18 @@ deltaerror:
+     // Gen xml
+     cr_repomd_set_record(repomd_obj, pri_xml_rec);
+     cr_repomd_set_record(repomd_obj, fil_xml_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_xml_rec);
+     cr_repomd_set_record(repomd_obj, oth_xml_rec);
+     cr_repomd_set_record(repomd_obj, pri_db_rec);
+     cr_repomd_set_record(repomd_obj, fil_db_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_db_rec);
+     cr_repomd_set_record(repomd_obj, oth_db_rec);
+     cr_repomd_set_record(repomd_obj, pri_zck_rec);
+     cr_repomd_set_record(repomd_obj, fil_zck_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_zck_rec);
+     cr_repomd_set_record(repomd_obj, oth_zck_rec);
+     cr_repomd_set_record(repomd_obj, prestodelta_rec);
+     cr_repomd_set_record(repomd_obj, prestodelta_zck_rec);
+@@ -2179,12 +2432,15 @@ cleanup:
+     g_free(lock_dir);
+     g_free(pri_xml_filename);
+     g_free(fil_xml_filename);
++    g_free(fex_xml_filename);
+     g_free(oth_xml_filename);
+     g_free(pri_db_filename);
+     g_free(fil_db_filename);
++    g_free(fex_db_filename);
+     g_free(oth_db_filename);
+     g_free(pri_zck_filename);
+     g_free(fil_zck_filename);
++    g_free(fex_zck_filename);
+     g_free(oth_zck_filename);
+     g_slist_free_full(additional_metadata, (GDestroyNotify) cr_metadatum_free);
+     g_slist_free(additional_metadata_rec);
+diff --git a/src/dumper_thread.c b/src/dumper_thread.c
+index b949ffb..4cc9a4e 100644
+--- a/src/dumper_thread.c
++++ b/src/dumper_thread.c
+@@ -166,6 +166,51 @@ write_pkg(long id,
+     g_cond_broadcast(&(udata->cond_fil));
+     g_mutex_unlock(&(udata->mutex_fil));
+ 
++    // Write filelist_ext data
++    if (udata->filelists_ext) {
++        g_mutex_lock(&(udata->mutex_fex));
++        while (udata->id_fex != id)
++            g_cond_wait (&(udata->cond_fex), &(udata->mutex_fex));
++        ++udata->id_fex;
++        cr_xmlfile_add_chunk(udata->fex_f, (const char *) res.filelists_ext, &tmp_err);
++        if (tmp_err) {
++            g_critical("Cannot add filelists_ext chunk:\n%s\nError: %s",
++                       res.filelists_ext, tmp_err->message);
++            udata->had_errors = TRUE;
++            g_clear_error(&tmp_err);
++        }
++
++        if (udata->fex_db) {
++            cr_db_add_pkg(udata->fex_db, pkg, &tmp_err);
++            if (tmp_err) {
++                g_critical("Cannot add record of %s (%s) to filelists_ext db: %s",
++                           pkg->name, pkg->pkgId, tmp_err->message);
++                udata->had_errors = TRUE;
++                g_clear_error(&tmp_err);
++            }
++        }
++        if (udata->fex_zck) {
++            if (new_pkg) {
++                cr_end_chunk(udata->fex_zck->f, &tmp_err);
++                if (tmp_err) {
++                    g_critical("Unable to end filelists_ext zchunk: %s", tmp_err->message);
++                    udata->had_errors = TRUE;
++                    g_clear_error(&tmp_err);
++                }
++            }
++            cr_xmlfile_add_chunk(udata->fex_zck, (const char *) res.filelists_ext, &tmp_err);
++            if (tmp_err) {
++                g_critical("Cannot add filelists_ext zchunk:\n%s\nError: %s",
++                           res.filelists_ext, tmp_err->message);
++                udata->had_errors = TRUE;
++                g_clear_error(&tmp_err);
++            }
++        }
++
++        g_cond_broadcast(&(udata->cond_fex));
++        g_mutex_unlock(&(udata->mutex_fex));
++    }
++
+     // Write other data
+     g_mutex_lock(&(udata->mutex_oth));
+     while (udata->id_oth != id)
+@@ -501,7 +546,11 @@ cr_dumper_thread(gpointer data, gpointer user_data)
+             goto task_cleanup;
+         }
+ 
+-        res = cr_xml_dump(pkg, &tmp_err);
++        if (udata->filelists_ext) {
++            res = cr_xml_dump_ext(pkg,  &tmp_err);
++        } else {
++            res = cr_xml_dump(pkg, &tmp_err);
++        }
+         if (tmp_err) {
+             g_critical("Cannot dump XML for %s (%s): %s",
+                        pkg->name, pkg->pkgId, tmp_err->message);
+@@ -518,7 +567,11 @@ cr_dumper_thread(gpointer data, gpointer user_data)
+     } else {
+         // Just gen XML from old loaded metadata
+         pkg = md;
+-        res = cr_xml_dump(md, &tmp_err);
++        if (udata->filelists_ext) {
++            res = cr_xml_dump_ext(pkg,  &tmp_err);
++        } else {
++            res = cr_xml_dump(pkg, &tmp_err);
++        }
+         if (tmp_err) {
+             g_critical("Cannot dump XML for %s (%s): %s",
+                        md->name, md->pkgId, tmp_err->message);
+@@ -614,6 +667,7 @@ cr_dumper_thread(gpointer data, gpointer user_data)
+     cr_package_free(pkg);
+     g_free(res.primary);
+     g_free(res.filelists);
++    g_free(res.filelists_ext);
+     g_free(res.other);
+ 
+ task_cleanup:
+@@ -633,6 +687,15 @@ task_cleanup:
+         g_cond_broadcast(&(udata->cond_fil));
+         g_mutex_unlock(&(udata->mutex_fil));
+ 
++	if (udata->filelists_ext) {
++	    g_mutex_lock(&(udata->mutex_fex));
++	    while (udata->id_fex != task->id)
++	        g_cond_wait (&(udata->cond_fex), &(udata->mutex_fex));
++	    ++udata->id_fex;
++	    g_cond_broadcast(&(udata->cond_fex));
++	    g_mutex_unlock(&(udata->mutex_fex));
++	}
++
+         g_mutex_lock(&(udata->mutex_oth));
+         while (udata->id_oth != task->id)
+             g_cond_wait (&(udata->cond_oth), &(udata->mutex_oth));
+@@ -660,6 +723,7 @@ task_cleanup:
+             cr_package_free(buf_task->pkg);
+             g_free(buf_task->res.primary);
+             g_free(buf_task->res.filelists);
++            g_free(buf_task->res.filelists_ext);
+             g_free(buf_task->res.other);
+             g_free(buf_task->location_href);
+             g_free(buf_task->location_base);
+diff --git a/src/dumper_thread.h b/src/dumper_thread.h
+index fb815cb..6306998 100644
+--- a/src/dumper_thread.h
++++ b/src/dumper_thread.h
+@@ -49,12 +49,15 @@ struct PoolTask {
+ struct UserData {
+     cr_XmlFile *pri_f;              // Opened compressed primary.xml.*
+     cr_XmlFile *fil_f;              // Opened compressed filelists.xml.*
++    cr_XmlFile *fex_f;              // Opened compressed filelists_ext.xml.*
+     cr_XmlFile *oth_f;              // Opened compressed other.xml.*
+     cr_SqliteDb *pri_db;            // Primary db
+     cr_SqliteDb *fil_db;            // Filelists db
++    cr_SqliteDb *fex_db;            // Filelists_ext db
+     cr_SqliteDb *oth_db;            // Other db
+     cr_XmlFile *pri_zck;            // Opened compressed primary.xml.zck
+     cr_XmlFile *fil_zck;            // Opened compressed filelists.xml.zck
++    cr_XmlFile *fex_zck;            // Opened compressed filelists_ext.xml.zck
+     cr_XmlFile *oth_zck;            // Opened compressed other.xml.zck
+     char *prev_srpm;                // Previous srpm
+     char *cur_srpm;                 // Current srpm
+@@ -66,7 +69,8 @@ struct UserData {
+     cr_ChecksumType checksum_type;  // Constant representing selected checksum
+     const char *checksum_cachedir;  // Dir with cached checksums
+     gboolean skip_symlinks;         // Skip symlinks
+-    long task_count;                // Total number of task to process
++    gboolean filelists_ext;         // Include hashes (and create filelist_ext.*)
++    long task_count;                // Total number of tasks to process
+     long package_count;             // Total number of packages processed
+ 
+     // Duplicate package error checking
+@@ -76,22 +80,25 @@ struct UserData {
+     // Update stuff
+     gboolean skip_stat;             // Skip stat() while updating
+     cr_Metadata *old_metadata;      // Loaded metadata
+-    GMutex mutex_old_md;           // Mutex for accessing old metadata
++    GMutex mutex_old_md;            // Mutex for accessing old metadata
+ 
+     // Thread serialization
+-    GMutex mutex_pri;              // Mutex for primary metadata
+-    GMutex mutex_fil;              // Mutex for filelists metadata
+-    GMutex mutex_oth;              // Mutex for other metadata
+-    GCond cond_pri;                // Condition for primary metadata
+-    GCond cond_fil;                // Condition for filelists metadata
+-    GCond cond_oth;                // Condition for other metadata
++    GMutex mutex_pri;               // Mutex for primary metadata
++    GMutex mutex_fil;               // Mutex for filelists metadata
++    GMutex mutex_fex;               // Mutex for filelists_ext metadata
++    GMutex mutex_oth;               // Mutex for other metadata
++    GCond cond_pri;                 // Condition for primary metadata
++    GCond cond_fil;                 // Condition for filelists metadata
++    GCond cond_fex;                 // Condition for filelists_ext metadata
++    GCond cond_oth;                 // Condition for other metadata
+     volatile long id_pri;           // ID of task on turn (write primary metadata)
+     volatile long id_fil;           // ID of task on turn (write filelists metadata)
++    volatile long id_fex;           // ID of task on turn (write filelists_ext metadata)
+     volatile long id_oth;           // ID of task on turn (write other metadata)
+ 
+     // Buffering
+     GQueue *buffer;                 // Buffer for done tasks
+-    GMutex mutex_buffer;           // Mutex for accessing the buffer
++    GMutex mutex_buffer;            // Mutex for accessing the buffer
+ 
+     // Delta generation
+     gboolean deltas;                // Are deltas enabled?
+diff --git a/src/load_metadata.c b/src/load_metadata.c
+index fa3b08d..3de0040 100644
+--- a/src/load_metadata.c
++++ b/src/load_metadata.c
+@@ -177,7 +177,7 @@ typedef struct {
+         (they have different basenames, mtimes or sizes),
+         then we want to ignore these packages during
+         loading. It's because the pkgId is used to pair metadata from
+-        primary.xml with metadata from filelists.xml and other.xml and
++        primary.xml with metadata from filelists[_ext].xml and other.xml and
+         we want the pkgId to be unique.
+         Key is pkgId and value is NULL. */
+     cr_ParsingState state;
+@@ -553,7 +553,7 @@ cr_metadata_load_xml(cr_Metadata *md,
+     intern_hashtable = cr_new_metadata_hashtable();
+     result = cr_load_xml_files(intern_hashtable,
+                                ml->pri_xml_href,
+-                               ml->fil_xml_href,
++                               ml->fex_xml_href ? ml->fex_xml_href : ml->fil_xml_href,
+                                ml->oth_xml_href,
+                                md->chunk,
+                                md->pkglist_ht,
+diff --git a/src/locate_metadata.c b/src/locate_metadata.c
+index 03e2630..3f45f75 100644
+--- a/src/locate_metadata.c
++++ b/src/locate_metadata.c
+@@ -66,6 +66,7 @@ cr_metadatalocation_free(struct cr_MetadataLocation *ml)
+ 
+     g_free(ml->pri_xml_href);
+     g_free(ml->fil_xml_href);
++    g_free(ml->fex_xml_href);
+     g_free(ml->oth_xml_href);
+     g_free(ml->pri_sqlite_href);
+     g_free(ml->fil_sqlite_href);
+@@ -166,6 +167,8 @@ cr_parse_repomd(const char *repomd_path,
+             mdloc->pri_sqlite_href = full_location_href;
+         else if (!g_strcmp0(record->type, "filelists"))
+             mdloc->fil_xml_href = full_location_href;
++        else if (!g_strcmp0(record->type, "filelists_ext"))
++            mdloc->fex_xml_href = full_location_href;
+         else if (!g_strcmp0(record->type, "filelists_db") && !ignore_sqlite)
+             mdloc->fil_sqlite_href = full_location_href;
+         else if (!g_strcmp0(record->type, "other"))
+@@ -295,6 +298,8 @@ cr_get_remote_metadata(const char *repopath, gboolean ignore_sqlite)
+         cr_download(handle, r_location->pri_xml_href, tmp_repodata, &tmp_err);
+     if (!tmp_err && r_location->fil_xml_href)
+         cr_download(handle, r_location->fil_xml_href, tmp_repodata, &tmp_err);
++    if (!tmp_err && r_location->fex_xml_href)
++        cr_download(handle, r_location->fex_xml_href, tmp_repodata, &tmp_err);
+     if (!tmp_err && r_location->oth_xml_href)
+         cr_download(handle, r_location->oth_xml_href, tmp_repodata, &tmp_err);
+     if (!tmp_err && r_location->pri_sqlite_href)
+diff --git a/src/locate_metadata.h b/src/locate_metadata.h
+index 738e743..c712259 100644
+--- a/src/locate_metadata.h
++++ b/src/locate_metadata.h
+@@ -37,6 +37,7 @@ extern "C" {
+ struct cr_MetadataLocation {
+     char *pri_xml_href;         /*!< path to primary.xml */
+     char *fil_xml_href;         /*!< path to filelists.xml */
++    char *fex_xml_href;         /*!< path to filelists_ext.xml */
+     char *oth_xml_href;         /*!< path to other.xml */
+     char *pri_sqlite_href;      /*!< path to primary.sqlite */
+     char *fil_sqlite_href;      /*!< path to filelists.sqlite */
+diff --git a/src/mergerepo_c.c b/src/mergerepo_c.c
+index 34f21c9..c4f2f07 100644
+--- a/src/mergerepo_c.c
++++ b/src/mergerepo_c.c
+@@ -79,6 +79,8 @@ static GOptionEntry cmd_entries[] =
+       "", NULL },
+     { "no-database", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.no_database),
+       "", NULL },
++    { "filelists_ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
++      "Create filelists_ext metadata with file hashes.", NULL },
+     { "verbose", 'v', 0, G_OPTION_ARG_NONE, &(_cmd_options.verbose),
+       "", NULL },
+     { "outputdir", 'o', 0, G_OPTION_ARG_FILENAME, &(_cmd_options.outputdir),
+@@ -877,29 +879,41 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_ContentStat *pri_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+     cr_ContentStat *fil_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
++    cr_ContentStat *fex_stat = NULL;
++    if (cmd_options->filelists_ext)
++        fex_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+     cr_ContentStat *oth_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+ 
+-    cr_XmlFile *pri_f;
+-    cr_XmlFile *fil_f;
+-    cr_XmlFile *oth_f;
++    cr_XmlFile *pri_f = NULL;
++    cr_XmlFile *fil_f = NULL;
++    cr_XmlFile *fex_f = NULL;
++    cr_XmlFile *oth_f = NULL;
+ 
+     gchar *pri_zck_filename = NULL;
+     gchar *fil_zck_filename = NULL;
++    gchar *fex_zck_filename = NULL;
+     gchar *oth_zck_filename = NULL;
+     cr_XmlFile *pri_cr_zck = NULL;
+     cr_XmlFile *fil_cr_zck = NULL;
++    cr_XmlFile *fex_cr_zck = NULL;
+     cr_XmlFile *oth_cr_zck = NULL;
+     cr_ContentStat *pri_zck_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+     cr_ContentStat *fil_zck_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
++    cr_ContentStat *fex_zck_stat = NULL;
++    if (cmd_options->filelists_ext)
++        fex_zck_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+     cr_ContentStat *oth_zck_stat = cr_contentstat_new(CR_CHECKSUM_SHA256, NULL);
+     gchar *pri_dict = NULL;
+     gchar *fil_dict = NULL;
++    gchar *fex_dict = NULL;
+     gchar *oth_dict = NULL;
+     size_t pri_dict_size = 0;
+     size_t fil_dict_size = 0;
++    size_t fex_dict_size = 0;
+     size_t oth_dict_size = 0;
+     gchar *pri_dict_file = NULL;
+     gchar *fil_dict_file = NULL;
++    gchar *fex_dict_file = NULL;
+     gchar *oth_dict_file = NULL;
+ 
+     if (cmd_options->zck_dict_dir) {
+@@ -907,6 +921,9 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                          "primary.xml");
+         fil_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "filelists.xml");
++	if (cmd_options->filelists_ext)
++            fex_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
++                                             "filelists_ext.xml");
+         oth_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "other.xml");
+         if (pri_dict_file && !g_file_get_contents(pri_dict_file, &pri_dict,
+@@ -923,6 +940,13 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             g_clear_error(&tmp_err);
+             exit(EXIT_FAILURE);
+         }
++        if (fex_dict_file && !g_file_get_contents(fex_dict_file, &fex_dict,
++                                                 &fex_dict_size, &tmp_err)) {
++            g_critical("Error reading zchunk filelists_ext dict %s: %s",
++                       fex_dict_file, tmp_err->message);
++            g_clear_error(&tmp_err);
++            exit(EXIT_FAILURE);
++        }
+         if (oth_dict_file && !g_file_get_contents(oth_dict_file, &oth_dict,
+                                                  &oth_dict_size, &tmp_err)) {
+             g_critical("Error reading zchunk other dict %s: %s",
+@@ -939,6 +963,10 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                           "/primary.xml.gz", NULL);
+     gchar *fil_xml_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                           "/filelists.xml.gz", NULL);
++    gchar *fex_xml_filename = NULL;
++    if (cmd_options->filelists_ext)
++        fex_xml_filename = g_strconcat(cmd_options->tmp_out_repo,
++                                       "/filelists_ext.xml.gz", NULL);
+     gchar *oth_xml_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                           "/other.xml.gz", NULL);
+ 
+@@ -956,17 +984,21 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         g_critical("Cannot open %s: %s", pri_xml_filename, tmp_err->message);
+         cr_contentstat_free(pri_stat, NULL);
+         cr_contentstat_free(fil_stat, NULL);
++        cr_contentstat_free(fex_stat, NULL);
+         cr_contentstat_free(oth_stat, NULL);
+         cr_contentstat_free(pri_zck_stat, NULL);
+         cr_contentstat_free(fil_zck_stat, NULL);
++        cr_contentstat_free(fex_zck_stat, NULL);
+         cr_contentstat_free(oth_zck_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
+         g_free(update_info_filename);
+         g_error_free(tmp_err);
+         g_free(pri_dict);
+         g_free(fil_dict);
++        g_free(fex_dict);
+         g_free(oth_dict);
+         cr_xmlfile_close(pri_f, NULL);
+         return 0;
+@@ -980,12 +1012,14 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         g_critical("Cannot open %s: %s", fil_xml_filename, tmp_err->message);
+         cr_contentstat_free(pri_stat, NULL);
+         cr_contentstat_free(fil_stat, NULL);
++        cr_contentstat_free(fex_stat, NULL);
+         cr_contentstat_free(oth_stat, NULL);
+         cr_contentstat_free(pri_zck_stat, NULL);
+         cr_contentstat_free(fil_zck_stat, NULL);
+         cr_contentstat_free(oth_zck_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
+         g_free(update_info_filename);
+         cr_xmlfile_close(fil_f, NULL);
+@@ -993,10 +1027,42 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         g_error_free(tmp_err);
+         g_free(pri_dict);
+         g_free(fil_dict);
++        g_free(fex_dict);
+         g_free(oth_dict);
+         return 0;
+     }
+ 
++    if (cmd_options->filelists_ext) {
++        fex_f = cr_xmlfile_sopen_filelists(fex_xml_filename,
++                                           CR_CW_GZ_COMPRESSION,
++                                           fex_stat,
++                                           &tmp_err);
++        if (tmp_err) {
++            g_critical("Cannot open %s: %s", fil_xml_filename, tmp_err->message);
++            cr_contentstat_free(pri_stat, NULL);
++            cr_contentstat_free(fil_stat, NULL);
++            cr_contentstat_free(fex_stat, NULL);
++            cr_contentstat_free(oth_stat, NULL);
++            cr_contentstat_free(pri_zck_stat, NULL);
++            cr_contentstat_free(fil_zck_stat, NULL);
++            cr_contentstat_free(oth_zck_stat, NULL);
++            g_free(pri_xml_filename);
++            g_free(fil_xml_filename);
++            g_free(fex_xml_filename);
++            g_free(oth_xml_filename);
++            g_free(update_info_filename);
++            cr_xmlfile_close(fex_f, NULL);
++            cr_xmlfile_close(fil_f, NULL);
++            cr_xmlfile_close(pri_f, NULL);
++            g_error_free(tmp_err);
++            g_free(pri_dict);
++            g_free(fil_dict);
++            g_free(fex_dict);
++            g_free(oth_dict);
++            return 0;
++        }
++    }
++
+     oth_f = cr_xmlfile_sopen_other(oth_xml_filename,
+                                    CR_CW_GZ_COMPRESSION,
+                                    oth_stat,
+@@ -1005,15 +1071,19 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         g_critical("Cannot open %s: %s", oth_xml_filename, tmp_err->message);
+         cr_contentstat_free(pri_stat, NULL);
+         cr_contentstat_free(fil_stat, NULL);
++        cr_contentstat_free(fex_stat, NULL);
+         cr_contentstat_free(oth_stat, NULL);
+         cr_contentstat_free(pri_zck_stat, NULL);
+         cr_contentstat_free(fil_zck_stat, NULL);
++        cr_contentstat_free(fex_zck_stat, NULL);
+         cr_contentstat_free(oth_zck_stat, NULL);
+         g_free(pri_xml_filename);
+         g_free(fil_xml_filename);
++        g_free(fex_xml_filename);
+         g_free(oth_xml_filename);
+         g_free(update_info_filename);
+         cr_xmlfile_close(oth_f, NULL);
++        cr_xmlfile_close(fex_f, NULL);
+         cr_xmlfile_close(fil_f, NULL);
+         cr_xmlfile_close(pri_f, NULL);
+         g_error_free(tmp_err);
+@@ -1026,6 +1096,8 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_xmlfile_set_num_of_pkgs(pri_f, packages, NULL);
+     cr_xmlfile_set_num_of_pkgs(fil_f, packages, NULL);
++    if (cmd_options->filelists_ext)
++        cr_xmlfile_set_num_of_pkgs(fex_f, packages, NULL);
+     cr_xmlfile_set_num_of_pkgs(oth_f, packages, NULL);
+ 
+     if (cmd_options->zck_compression) {
+@@ -1035,6 +1107,9 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                        "/primary.xml.zck", NULL);
+         fil_zck_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                        "/filelists.xml.zck", NULL);
++	if (cmd_options->filelists_ext)
++            fex_zck_filename = g_strconcat(cmd_options->tmp_out_repo,
++                                           "/filelists_ext.xml.zck", NULL);
+         oth_zck_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                        "/other.xml.zck", NULL);
+ 
+@@ -1050,6 +1125,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             cr_contentstat_free(pri_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
++            g_free(fex_zck_filename);
+             g_free(oth_zck_filename);
+             exit(EXIT_FAILURE);
+         }
+@@ -1075,6 +1151,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             cr_contentstat_free(fil_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
++            g_free(fex_zck_filename);
+             g_free(oth_zck_filename);
+             cr_xmlfile_close(pri_cr_zck, NULL);
+             exit(EXIT_FAILURE);
+@@ -1088,6 +1165,37 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         }
+         g_free(fil_dict);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_cr_zck = cr_xmlfile_sopen_filelists(fex_zck_filename,
++                                                    CR_CW_ZCK_COMPRESSION,
++                                                    fex_zck_stat,
++                                                    &tmp_err);
++            assert(fex_cr_zck || tmp_err);
++            if (!fex_cr_zck) {
++                g_critical("Cannot open file %s: %s",
++                           fex_zck_filename, tmp_err->message);
++                g_clear_error(&tmp_err);
++                cr_contentstat_free(pri_zck_stat, NULL);
++                cr_contentstat_free(fil_zck_stat, NULL);
++                cr_contentstat_free(fex_zck_stat, NULL);
++                g_free(pri_zck_filename);
++                g_free(fil_zck_filename);
++                g_free(fex_zck_filename);
++                g_free(oth_zck_filename);
++                cr_xmlfile_close(fil_cr_zck, NULL);
++                cr_xmlfile_close(pri_cr_zck, NULL);
++                exit(EXIT_FAILURE);
++            }
++            cr_set_dict(fex_cr_zck->f, fex_dict, fex_dict_size, &tmp_err);
++            if (tmp_err) {
++                g_critical("Error reading setting filelists_ext dict %s: %s",
++                           fex_dict_file, tmp_err->message);
++                g_clear_error(&tmp_err);
++                exit(EXIT_FAILURE);
++            }
++            g_free(fex_dict);
++        }
++
+         oth_cr_zck = cr_xmlfile_sopen_other(oth_zck_filename,
+                                             CR_CW_ZCK_COMPRESSION,
+                                             oth_zck_stat,
+@@ -1099,10 +1207,12 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             g_clear_error(&tmp_err);
+             cr_contentstat_free(pri_zck_stat, NULL);
+             cr_contentstat_free(fil_zck_stat, NULL);
++            cr_contentstat_free(fex_zck_stat, NULL);
+             cr_contentstat_free(oth_zck_stat, NULL);
+             g_free(pri_zck_filename);
+             g_free(fil_zck_filename);
+             g_free(oth_zck_filename);
++            cr_xmlfile_close(fex_cr_zck, NULL);
+             cr_xmlfile_close(fil_cr_zck, NULL);
+             cr_xmlfile_close(pri_cr_zck, NULL);
+             exit(EXIT_FAILURE);
+@@ -1120,6 +1230,8 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         g_debug("Setting number of packages");
+         cr_xmlfile_set_num_of_pkgs(pri_cr_zck, packages, NULL);
+         cr_xmlfile_set_num_of_pkgs(fil_cr_zck, packages, NULL);
++        if (cmd_options->filelists_ext)
++            cr_xmlfile_set_num_of_pkgs(fil_cr_zck, packages, NULL);
+         cr_xmlfile_set_num_of_pkgs(oth_cr_zck, packages, NULL);
+     }
+ 
+@@ -1127,26 +1239,38 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_SqliteDb *pri_db = NULL;
+     cr_SqliteDb *fil_db = NULL;
++    cr_SqliteDb *fex_db = NULL;
+     cr_SqliteDb *oth_db = NULL;
+ 
+     if (!cmd_options->no_database) {
+         gchar *pri_db_filename = NULL;
+         gchar *fil_db_filename = NULL;
++        gchar *fex_db_filename = NULL;
+         gchar *oth_db_filename = NULL;
+ 
+         pri_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                       "/primary.sqlite", NULL);
+         fil_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                       "/filelists.sqlite", NULL);
++	if (cmd_options->filelists_ext)
++            fex_db_filename = g_strconcat(cmd_options->tmp_out_repo,
++                                          "/filelists_ext.sqlite", NULL);
+         oth_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                       "/other.sqlite", NULL);
+ 
+         pri_db = cr_db_open_primary(pri_db_filename, NULL);
+         fil_db = cr_db_open_filelists(fil_db_filename, NULL);
++        if (cmd_options->filelists_ext)
++            // TODO(aplanas): For now, the SQListe database for
++            // filenames_ext will be the same that for filenames,
++            // until we decide how will be the schema change.
++            // fex_db = cr_db_open_filelists_ext(fex_db_filename, NULL);
++            fex_db = cr_db_open_filelists(fex_db_filename, NULL);
+         oth_db = cr_db_open_other(oth_db_filename, NULL);
+ 
+         g_free(pri_db_filename);
+         g_free(fil_db_filename);
++        g_free(fex_db_filename);
+         g_free(oth_db_filename);
+     }
+ 
+@@ -1168,7 +1292,11 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             cr_Package *pkg;
+ 
+             pkg = (cr_Package *) element->data;
+-            res = cr_xml_dump(pkg, NULL);
++            if (cmd_options->filelists_ext) {
++                res = cr_xml_dump_ext(pkg, NULL);
++            } else {
++                res = cr_xml_dump(pkg, NULL);
++            }
+ 
+             g_debug("Writing metadata for %s (%s-%s.%s)",
+                     pkg->name, pkg->version, pkg->release, pkg->arch);
+@@ -1179,6 +1307,8 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                 strncmp(pkg->rpm_sourcerpm, prev_srpm, strlen(prev_srpm)) != 0)) {
+                 cr_end_chunk(pri_cr_zck->f, NULL);
+                 cr_end_chunk(fil_cr_zck->f, NULL);
++                if (cmd_options->filelists_ext)
++                    cr_end_chunk(fex_cr_zck->f, NULL);
+                 cr_end_chunk(oth_cr_zck->f, NULL);
+                 g_free(prev_srpm);
+                 if (pkg->rpm_sourcerpm)
+@@ -1188,21 +1318,28 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             }
+             cr_xmlfile_add_chunk(pri_f, (const char *) res.primary, NULL);
+             cr_xmlfile_add_chunk(fil_f, (const char *) res.filelists, NULL);
++            if (cmd_options->filelists_ext)
++                cr_xmlfile_add_chunk(fex_f, (const char *) res.filelists_ext, NULL);
+             cr_xmlfile_add_chunk(oth_f, (const char *) res.other, NULL);
+             if (cmd_options->zck_compression) {
+                 cr_xmlfile_add_chunk(pri_cr_zck, (const char *) res.primary, NULL);
+                 cr_xmlfile_add_chunk(fil_cr_zck, (const char *) res.filelists, NULL);
++                if (cmd_options->filelists_ext)
++                    cr_xmlfile_add_chunk(fex_cr_zck, (const char *) res.filelists_ext, NULL);
+                 cr_xmlfile_add_chunk(oth_cr_zck, (const char *) res.other, NULL);
+             }
+ 
+             if (!cmd_options->no_database) {
+                 cr_db_add_pkg(pri_db, pkg, NULL);
+                 cr_db_add_pkg(fil_db, pkg, NULL);
++                if (cmd_options->filelists_ext)
++                    cr_db_add_pkg(fex_db, pkg, NULL);
+                 cr_db_add_pkg(oth_db, pkg, NULL);
+             }
+ 
+             free(res.primary);
+             free(res.filelists);
++            free(res.filelists_ext);
+             free(res.other);
+         }
+     }
+@@ -1214,10 +1351,12 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_xmlfile_close(pri_f, NULL);
+     cr_xmlfile_close(fil_f, NULL);
++    cr_xmlfile_close(fex_f, NULL);
+     cr_xmlfile_close(oth_f, NULL);
+     if (cmd_options->zck_compression) {
+         cr_xmlfile_close(pri_cr_zck, NULL);
+         cr_xmlfile_close(fil_cr_zck, NULL);
++        cr_xmlfile_close(fex_cr_zck, NULL);
+         cr_xmlfile_close(oth_cr_zck, NULL);
+     }
+ 
+@@ -1281,12 +1420,17 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_RepomdRecord *pri_xml_rec = cr_repomd_record_new("primary", pri_xml_filename);
+     cr_RepomdRecord *fil_xml_rec = cr_repomd_record_new("filelists", fil_xml_filename);
++    cr_RepomdRecord *fex_xml_rec              = NULL;
++    if (cmd_options->filelists_ext)
++        fex_xml_rec = cr_repomd_record_new("filelists_ext", fil_xml_filename);
+     cr_RepomdRecord *oth_xml_rec = cr_repomd_record_new("other", oth_xml_filename);
+     cr_RepomdRecord *pri_db_rec               = NULL;
+     cr_RepomdRecord *fil_db_rec               = NULL;
++    cr_RepomdRecord *fex_db_rec               = NULL;
+     cr_RepomdRecord *oth_db_rec               = NULL;
+     cr_RepomdRecord *pri_zck_rec              = NULL;
+     cr_RepomdRecord *fil_zck_rec              = NULL;
++    cr_RepomdRecord *fex_zck_rec              = NULL;
+     cr_RepomdRecord *oth_zck_rec              = NULL;
+     cr_RepomdRecord *groupfile_rec            = NULL;
+     cr_RepomdRecord *compressed_groupfile_rec = NULL;
+@@ -1311,18 +1455,22 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_repomd_record_load_contentstat(pri_xml_rec, pri_stat);
+     cr_repomd_record_load_contentstat(fil_xml_rec, fil_stat);
++    if (cmd_options->filelists_ext)
++        cr_repomd_record_load_contentstat(fex_xml_rec, fex_stat);
+     cr_repomd_record_load_contentstat(oth_xml_rec, oth_stat);
+ 
+     cr_contentstat_free(pri_stat, NULL);
+     cr_contentstat_free(fil_stat, NULL);
++    cr_contentstat_free(fex_stat, NULL);
+     cr_contentstat_free(oth_stat, NULL);
+ 
+     GThreadPool *fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                                NULL, 3, FALSE, NULL);
+ 
+-    cr_RepomdRecordFillTask *pri_fill_task;
+-    cr_RepomdRecordFillTask *fil_fill_task;
+-    cr_RepomdRecordFillTask *oth_fill_task;
++    cr_RepomdRecordFillTask *pri_fill_task = NULL;
++    cr_RepomdRecordFillTask *fil_fill_task = NULL;
++    cr_RepomdRecordFillTask *fex_fill_task = NULL;
++    cr_RepomdRecordFillTask *oth_fill_task = NULL;
+ 
+     pri_fill_task = cr_repomdrecordfilltask_new(pri_xml_rec,
+                                                 CR_CHECKSUM_SHA256,
+@@ -1334,6 +1482,13 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                                 NULL);
+     g_thread_pool_push(fill_pool, fil_fill_task, NULL);
+ 
++    if (cmd_options->filelists_ext) {
++        fex_fill_task = cr_repomdrecordfilltask_new(fex_xml_rec,
++                                                    CR_CHECKSUM_SHA256,
++                                                    NULL);
++        g_thread_pool_push(fill_pool, fex_fill_task, NULL);
++    }
++
+     oth_fill_task = cr_repomdrecordfilltask_new(oth_xml_rec,
+                                                 CR_CHECKSUM_SHA256,
+                                                 NULL);
+@@ -1419,6 +1574,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     cr_repomdrecordfilltask_free(pri_fill_task, NULL);
+     cr_repomdrecordfilltask_free(fil_fill_task, NULL);
++    cr_repomdrecordfilltask_free(fex_fill_task, NULL);
+     cr_repomdrecordfilltask_free(oth_fill_task, NULL);
+ #ifdef WITH_LIBMODULEMD
+     if (module_index) {
+@@ -1435,10 +1591,13 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         // Insert XML checksums into the dbs
+         cr_db_dbinfo_update(pri_db, pri_xml_rec->checksum, NULL);
+         cr_db_dbinfo_update(fil_db, fil_xml_rec->checksum, NULL);
++        if (cmd_options->filelists_ext)
++            cr_db_dbinfo_update(fex_db, fil_xml_rec->checksum, NULL);
+         cr_db_dbinfo_update(oth_db, oth_xml_rec->checksum, NULL);
+ 
+         cr_db_close(pri_db, NULL);
+         cr_db_close(fil_db, NULL);
++        cr_db_close(fex_db, NULL);
+         cr_db_close(oth_db, NULL);
+ 
+         // Compress dbs
+@@ -1446,19 +1605,27 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                              "/primary.sqlite", NULL);
+         gchar *fil_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                              "/filelists.sqlite", NULL);
++        gchar *fex_db_filename = NULL;
++        if (cmd_options->filelists_ext)
++            fex_db_filename = g_strconcat(cmd_options->tmp_out_repo,
++                                          "/filelists_ext.sqlite", NULL);
+         gchar *oth_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                              "/other.sqlite", NULL);
+ 
+         gchar *pri_db_c_filename = g_strconcat(pri_db_filename, db_suffix, NULL);
+         gchar *fil_db_c_filename = g_strconcat(fil_db_filename, db_suffix, NULL);
++        gchar *fex_db_c_filename = NULL;
++        if (cmd_options->filelists_ext)
++            fex_db_c_filename = g_strconcat(fex_db_filename, db_suffix, NULL);
+         gchar *oth_db_c_filename = g_strconcat(oth_db_filename, db_suffix, NULL);
+ 
+         GThreadPool *compress_pool =  g_thread_pool_new(cr_compressing_thread,
+                                                         NULL, 3, FALSE, NULL);
+ 
+-        cr_CompressionTask *pri_db_task;
+-        cr_CompressionTask *fil_db_task;
+-        cr_CompressionTask *oth_db_task;
++        cr_CompressionTask *pri_db_task = NULL;
++        cr_CompressionTask *fil_db_task = NULL;
++        cr_CompressionTask *fex_db_task = NULL;
++        cr_CompressionTask *oth_db_task = NULL;
+ 
+         pri_db_task = cr_compressiontask_new(pri_db_filename,
+                                              pri_db_c_filename,
+@@ -1474,6 +1641,15 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                              NULL, FALSE, 1, NULL);
+         g_thread_pool_push(compress_pool, fil_db_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_db_task = cr_compressiontask_new(fex_db_filename,
++                                                 fex_db_c_filename,
++                                                 cmd_options->db_compression_type,
++                                                 CR_CHECKSUM_SHA256,
++                                                 NULL, FALSE, 1, NULL);
++            g_thread_pool_push(compress_pool, fex_db_task, NULL);
++        }
++
+         oth_db_task = cr_compressiontask_new(oth_db_filename,
+                                              oth_db_c_filename,
+                                              cmd_options->db_compression_type,
+@@ -1486,30 +1662,38 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         // Prepare repomd records
+         pri_db_rec = cr_repomd_record_new("primary_db", pri_db_c_filename);
+         fil_db_rec = cr_repomd_record_new("filelists_db", fil_db_c_filename);
++        if (cmd_options->filelists_ext)
++            fex_db_rec = cr_repomd_record_new("filelists_ext_db", fil_db_c_filename);
+         oth_db_rec = cr_repomd_record_new("other_db", oth_db_c_filename);
+ 
+         g_free(pri_db_filename);
+         g_free(fil_db_filename);
++        g_free(fex_db_filename);
+         g_free(oth_db_filename);
+ 
+         g_free(pri_db_c_filename);
+         g_free(fil_db_c_filename);
++        g_free(fex_db_c_filename);
+         g_free(oth_db_c_filename);
+ 
+         cr_repomd_record_load_contentstat(pri_db_rec, pri_db_task->stat);
+         cr_repomd_record_load_contentstat(fil_db_rec, fil_db_task->stat);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_load_contentstat(fex_db_rec, fex_db_task->stat);
+         cr_repomd_record_load_contentstat(oth_db_rec, oth_db_task->stat);
+ 
+         cr_compressiontask_free(pri_db_task, NULL);
+         cr_compressiontask_free(fil_db_task, NULL);
++        cr_compressiontask_free(fex_db_task, NULL);
+         cr_compressiontask_free(oth_db_task, NULL);
+ 
+         fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                       NULL, 3, FALSE, NULL);
+ 
+-        cr_RepomdRecordFillTask *pri_db_fill_task;
+-        cr_RepomdRecordFillTask *fil_db_fill_task;
+-        cr_RepomdRecordFillTask *oth_db_fill_task;
++        cr_RepomdRecordFillTask *pri_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *fil_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *fex_db_fill_task = NULL;
++        cr_RepomdRecordFillTask *oth_db_fill_task = NULL;
+ 
+         pri_db_fill_task = cr_repomdrecordfilltask_new(pri_db_rec,
+                                                        CR_CHECKSUM_SHA256,
+@@ -1521,6 +1705,13 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                                        NULL);
+         g_thread_pool_push(fill_pool, fil_db_fill_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_db_fill_task = cr_repomdrecordfilltask_new(fex_db_rec,
++                                                           CR_CHECKSUM_SHA256,
++                                                           NULL);
++            g_thread_pool_push(fill_pool, fex_db_fill_task, NULL);
++        }
++
+         oth_db_fill_task = cr_repomdrecordfilltask_new(oth_db_rec,
+                                                        CR_CHECKSUM_SHA256,
+                                                        NULL);
+@@ -1530,6 +1721,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+         cr_repomdrecordfilltask_free(pri_db_fill_task, NULL);
+         cr_repomdrecordfilltask_free(fil_db_fill_task, NULL);
++        cr_repomdrecordfilltask_free(fex_db_fill_task, NULL);
+         cr_repomdrecordfilltask_free(oth_db_fill_task, NULL);
+ 
+     }
+@@ -1539,22 +1731,28 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         // Prepare repomd records
+         pri_zck_rec = cr_repomd_record_new("primary_zck", pri_zck_filename);
+         fil_zck_rec = cr_repomd_record_new("filelists_zck", fil_zck_filename);
++        if (cmd_options->filelists_ext)
++            fex_zck_rec = cr_repomd_record_new("filelists_ext_zck", fex_zck_filename);
+         oth_zck_rec = cr_repomd_record_new("other_zck", oth_zck_filename);
+ 
+         g_free(pri_zck_filename);
+         g_free(fil_zck_filename);
++        g_free(fex_zck_filename);
+         g_free(oth_zck_filename);
+ 
+         cr_repomd_record_load_zck_contentstat(pri_zck_rec, pri_zck_stat);
+         cr_repomd_record_load_zck_contentstat(fil_zck_rec, fil_zck_stat);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_load_zck_contentstat(fex_zck_rec, fex_zck_stat);
+         cr_repomd_record_load_zck_contentstat(oth_zck_rec, oth_zck_stat);
+ 
+         fill_pool = g_thread_pool_new(cr_repomd_record_fill_thread,
+                                       NULL, 3, FALSE, NULL);
+ 
+-        cr_RepomdRecordFillTask *pri_zck_fill_task;
+-        cr_RepomdRecordFillTask *fil_zck_fill_task;
+-        cr_RepomdRecordFillTask *oth_zck_fill_task;
++        cr_RepomdRecordFillTask *pri_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *fil_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *fex_zck_fill_task = NULL;
++        cr_RepomdRecordFillTask *oth_zck_fill_task = NULL;
+ 
+         pri_zck_fill_task = cr_repomdrecordfilltask_new(pri_zck_rec,
+                                                         CR_CHECKSUM_SHA256,
+@@ -1566,6 +1764,13 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                                         NULL);
+         g_thread_pool_push(fill_pool, fil_zck_fill_task, NULL);
+ 
++        if (cmd_options->filelists_ext) {
++            fex_zck_fill_task = cr_repomdrecordfilltask_new(fex_zck_rec,
++                                                            CR_CHECKSUM_SHA256,
++                                                            NULL);
++            g_thread_pool_push(fill_pool, fex_zck_fill_task, NULL);
++        }
++
+         oth_zck_fill_task = cr_repomdrecordfilltask_new(oth_zck_rec,
+                                                         CR_CHECKSUM_SHA256,
+                                                         NULL);
+@@ -1575,10 +1780,12 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+         cr_repomdrecordfilltask_free(pri_zck_fill_task, NULL);
+         cr_repomdrecordfilltask_free(fil_zck_fill_task, NULL);
++        cr_repomdrecordfilltask_free(fex_zck_fill_task, NULL);
+         cr_repomdrecordfilltask_free(oth_zck_fill_task, NULL);
+     }
+     cr_contentstat_free(pri_zck_stat, NULL);
+     cr_contentstat_free(fil_zck_stat, NULL);
++    cr_contentstat_free(fex_zck_stat, NULL);
+     cr_contentstat_free(oth_zck_stat, NULL);
+ 
+     // Add checksums into files names
+@@ -1586,12 +1793,18 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+     if (cmd_options->unique_md_filenames) {
+         cr_repomd_record_rename_file(pri_xml_rec, NULL);
+         cr_repomd_record_rename_file(fil_xml_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_xml_rec, NULL);
+         cr_repomd_record_rename_file(oth_xml_rec, NULL);
+         cr_repomd_record_rename_file(pri_db_rec, NULL);
+         cr_repomd_record_rename_file(fil_db_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_db_rec, NULL);
+         cr_repomd_record_rename_file(oth_db_rec, NULL);
+         cr_repomd_record_rename_file(pri_zck_rec, NULL);
+         cr_repomd_record_rename_file(fil_zck_rec, NULL);
++        if (cmd_options->filelists_ext)
++            cr_repomd_record_rename_file(fex_zck_rec, NULL);
+         cr_repomd_record_rename_file(oth_zck_rec, NULL);
+         cr_repomd_record_rename_file(groupfile_rec, NULL);
+         cr_repomd_record_rename_file(compressed_groupfile_rec, NULL);
+@@ -1613,12 +1826,18 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+     cr_Repomd *repomd_obj = cr_repomd_new();
+     cr_repomd_set_record(repomd_obj, pri_xml_rec);
+     cr_repomd_set_record(repomd_obj, fil_xml_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_xml_rec);
+     cr_repomd_set_record(repomd_obj, oth_xml_rec);
+     cr_repomd_set_record(repomd_obj, pri_db_rec);
+     cr_repomd_set_record(repomd_obj, fil_db_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_db_rec);
+     cr_repomd_set_record(repomd_obj, oth_db_rec);
+     cr_repomd_set_record(repomd_obj, pri_zck_rec);
+     cr_repomd_set_record(repomd_obj, fil_zck_rec);
++    if (cmd_options->filelists_ext)
++        cr_repomd_set_record(repomd_obj, fex_zck_rec);
+     cr_repomd_set_record(repomd_obj, oth_zck_rec);
+     cr_repomd_set_record(repomd_obj, groupfile_rec);
+     cr_repomd_set_record(repomd_obj, compressed_groupfile_rec);
+@@ -1630,7 +1849,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+ #ifdef WITH_LIBMODULEMD
+     cr_repomd_set_record(repomd_obj, modulemd_rec);
+-        cr_repomd_set_record(repomd_obj, modulemd_zck_rec);
++    cr_repomd_set_record(repomd_obj, modulemd_zck_rec);
+ #endif /* WITH_LIBMODULEMD */
+ 
+     char *repomd_xml = cr_xml_dump_repomd(repomd_obj, NULL);
+@@ -1721,6 +1940,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+ 
+     g_free(pri_xml_filename);
+     g_free(fil_xml_filename);
++    g_free(fex_xml_filename);
+     g_free(oth_xml_filename);
+     g_free(update_info_filename);
+ 
+diff --git a/src/mergerepo_c.h b/src/mergerepo_c.h
+index 9000b8b..3ad523e 100644
+--- a/src/mergerepo_c.h
++++ b/src/mergerepo_c.h
+@@ -51,6 +51,7 @@ struct CmdOptions {
+     char *archlist;
+     gboolean database;
+     gboolean no_database;
++    gboolean filelists_ext;
+     gboolean verbose;
+     char *outputdir;
+     char *outputrepo;
+diff --git a/src/package.c b/src/package.c
+index 0b14cf7..e62c161 100644
+--- a/src/package.c
++++ b/src/package.c
+@@ -210,6 +210,7 @@ cr_package_copy_into(cr_Package *orig, cr_Package *pkg)
+     pkg->location_href    = cr_safe_string_chunk_insert(pkg->chunk, orig->location_href);
+     pkg->location_base    = cr_safe_string_chunk_insert(pkg->chunk, orig->location_base);
+     pkg->checksum_type    = cr_safe_string_chunk_insert(pkg->chunk, orig->checksum_type);
++    pkg->files_checksum_type = cr_safe_string_chunk_insert(pkg->chunk, orig->files_checksum_type);
+ 
+     pkg->requires    = cr_dependency_dup(pkg->chunk, orig->requires);
+     pkg->provides    = cr_dependency_dup(pkg->chunk, orig->provides);
+@@ -223,9 +224,10 @@ cr_package_copy_into(cr_Package *orig, cr_Package *pkg)
+     for (GSList *elem = orig->files; elem; elem = g_slist_next(elem)) {
+         cr_PackageFile *orig_file = elem->data;
+         cr_PackageFile *file = cr_package_file_new();
+-        file->type = cr_safe_string_chunk_insert(pkg->chunk, orig_file->type);
+-        file->path = cr_safe_string_chunk_insert(pkg->chunk, orig_file->path);
+-        file->name = cr_safe_string_chunk_insert(pkg->chunk, orig_file->name);
++        file->type   = cr_safe_string_chunk_insert(pkg->chunk, orig_file->type);
++        file->path   = cr_safe_string_chunk_insert(pkg->chunk, orig_file->path);
++        file->name   = cr_safe_string_chunk_insert(pkg->chunk, orig_file->name);
++        file->digest = cr_safe_string_chunk_insert(pkg->chunk, orig_file->digest);
+         pkg->files = g_slist_prepend(pkg->files, file);
+     }
+ 
+diff --git a/src/package.h b/src/package.h
+index be061ad..a9f492d 100644
+--- a/src/package.h
++++ b/src/package.h
+@@ -38,7 +38,7 @@ typedef enum {
+     CR_PACKAGE_FROM_XML     = (1<<2),   /*!< Metadata parsed xml */
+     /* Some values are reserved (for sqlite, solv, etc..) */
+     CR_PACKAGE_LOADED_PRI   = (1<<10),  /*!< Primary metadata was loaded */
+-    CR_PACKAGE_LOADED_FIL   = (1<<11),  /*!< Filelists metadata was loaded */
++    CR_PACKAGE_LOADED_FIL   = (1<<11),  /*!< Filelists[_ext] metadata was loaded */
+     CR_PACKAGE_LOADED_OTH   = (1<<12),  /*!< Other metadata was loaded */
+     CR_PACKAGE_SINGLE_CHUNK = (1<<13),  /*!< Package uses single chunk */
+ } cr_PackageLoadingFlags;
+@@ -61,6 +61,7 @@ typedef struct {
+     char *type;                 /*!< one of "" (regular file), "dir", "ghost" */
+     char *path;                 /*!< path to file */
+     char *name;                 /*!< filename */
++    char *digest;               /*!< file checksum */
+ } cr_PackageFile;
+ 
+ /** Changelog entry.
+@@ -111,6 +112,8 @@ typedef struct {
+     char *location_base;        /*!< location (url) of repository */
+     char *checksum_type;        /*!< type of checksum used ("sha1", "sha256",
+                                      "md5", ..) */
++    char *files_checksum_type;  /*!< type of checksum used for files ("sha1",
++                                     "sha256", "md5", ..) */
+ 
+     GSList *requires;           /*!< requires (list of cr_Dependency structs) */
+     GSList *provides;           /*!< provides (list of cr_Dependency structs) */
+diff --git a/src/parsehdr.c b/src/parsehdr.c
+index ec736f3..6f5fb55 100644
+--- a/src/parsehdr.c
++++ b/src/parsehdr.c
+@@ -20,6 +20,7 @@
+ #include <glib.h>
+ #include <assert.h>
+ #include <rpm/rpmfi.h>
++#include <rpm/rpmpgp.h>
+ #include <stdlib.h>
+ #include "parsehdr.h"
+ #include "xml_dump.h"
+@@ -78,6 +79,34 @@ static DepItem dep_items[] = {
+     { DEP_SENTINEL, 0, 0, 0 },
+ };
+ 
++static const char *
++cr_hash_algo_str(const pgpHashAlgo algo) {
++    switch (algo) {
++    case PGPHASHALGO_MD5:
++        return "md5";
++    case PGPHASHALGO_SHA1:
++        return "sha1";
++    case PGPHASHALGO_RIPEMD160:
++        return "ripemd160";
++    case PGPHASHALGO_MD2:
++        return "md2";
++    case PGPHASHALGO_TIGER192:
++        return "tiger192";
++    case PGPHASHALGO_HAVAL_5_160:
++        return "haval-5-160";
++    case PGPHASHALGO_SHA256:
++        return "sha256";
++    case PGPHASHALGO_SHA384:
++        return "sha384";
++    case PGPHASHALGO_SHA512:
++        return "sha512";
++    case PGPHASHALGO_SHA224:
++        return "sha224";
++    default:
++        return "unknown";
++    }
++}
++
+ static inline int
+ cr_compare_dependency(const char *dep1, const char *dep2)
+ {
+@@ -214,6 +243,8 @@ cr_package_from_header(Header hdr,
+     if (headerGet(hdr, RPMTAG_LONGSIZE, td, flags)) {
+         pkg->size_installed = rpmtdGetNumber(td);
+     }
++    pgpHashAlgo fda = headerGetNumber(hdr, RPMTAG_FILEDIGESTALGO);
++    pkg->files_checksum_type = cr_safe_string_chunk_insert(pkg->chunk, cr_hash_algo_str(fda));
+     rpmtdFreeData(td);
+     // RPMTAG_LONGARCHIVESIZE is allways present (is emulated for small packages because HEADERGET_EXT flag was used)
+     if (headerGet(hdr, RPMTAG_LONGARCHIVESIZE, td, flags)) {
+@@ -229,10 +260,11 @@ cr_package_from_header(Header hdr,
+     //
+ 
+     rpmtd full_filenames = rpmtdNew(); // Only for filenames_hashtable
+-    rpmtd indexes   = rpmtdNew();
+-    rpmtd filenames = rpmtdNew();
+-    rpmtd fileflags = rpmtdNew();
+-    rpmtd filemodes = rpmtdNew();
++    rpmtd indexes     = rpmtdNew();
++    rpmtd filenames   = rpmtdNew();
++    rpmtd fileflags   = rpmtdNew();
++    rpmtd filemodes   = rpmtdNew();
++    rpmtd filedigests = rpmtdNew();
+ 
+     GHashTable *filenames_hashtable = g_hash_table_new(g_str_hash, g_str_equal);
+ 
+@@ -253,22 +285,25 @@ cr_package_from_header(Header hdr,
+         assert(x == dir_count);
+     }
+ 
+-    if (headerGet(hdr, RPMTAG_FILENAMES,  full_filenames,  flags) &&
+-        headerGet(hdr, RPMTAG_DIRINDEXES, indexes,  flags) &&
+-        headerGet(hdr, RPMTAG_BASENAMES,  filenames, flags) &&
+-        headerGet(hdr, RPMTAG_FILEFLAGS,  fileflags, flags) &&
+-        headerGet(hdr, RPMTAG_FILEMODES,  filemodes, flags))
++    if (headerGet(hdr, RPMTAG_FILENAMES,   full_filenames,  flags) &&
++        headerGet(hdr, RPMTAG_DIRINDEXES,  indexes,     flags) &&
++        headerGet(hdr, RPMTAG_BASENAMES,   filenames,   flags) &&
++        headerGet(hdr, RPMTAG_FILEFLAGS,   fileflags,   flags) &&
++        headerGet(hdr, RPMTAG_FILEMODES,   filemodes,   flags) &&
++        headerGet(hdr, RPMTAG_FILEDIGESTS, filedigests, flags))
+     {
+         rpmtdInit(full_filenames);
+         rpmtdInit(indexes);
+         rpmtdInit(filenames);
+         rpmtdInit(fileflags);
+         rpmtdInit(filemodes);
++        rpmtdInit(filedigests);
+         while ((rpmtdNext(full_filenames) != -1)   &&
+                (rpmtdNext(indexes) != -1)   &&
+                (rpmtdNext(filenames) != -1) &&
+                (rpmtdNext(fileflags) != -1) &&
+-               (rpmtdNext(filemodes) != -1))
++               (rpmtdNext(filemodes) != -1) &&
++               (rpmtdNext(filedigests) != -1))
+         {
+             cr_PackageFile *packagefile = cr_package_file_new();
+             packagefile->name = cr_safe_string_chunk_insert(pkg->chunk,
+@@ -286,6 +321,9 @@ cr_package_from_header(Header hdr,
+                 packagefile->type = cr_safe_string_chunk_insert(pkg->chunk, "");
+             }
+ 
++            packagefile->digest = cr_safe_string_chunk_insert(pkg->chunk,
++                                                              rpmtdGetString(filedigests));
++
+             g_hash_table_replace(filenames_hashtable,
+                                  (gpointer) rpmtdGetString(full_filenames),
+                                  (gpointer) rpmtdGetString(full_filenames));
+@@ -298,11 +336,13 @@ cr_package_from_header(Header hdr,
+         rpmtdFreeData(filenames);
+         rpmtdFreeData(fileflags);
+         rpmtdFreeData(filemodes);
++        rpmtdFreeData(filedigests);
+     }
+ 
+     rpmtdFree(dirnames);
+     rpmtdFree(indexes);
+     rpmtdFree(filemodes);
++    rpmtdFree(filedigests);
+ 
+     if (dir_list) {
+         free((void *) dir_list);
+diff --git a/src/parsepkg.c b/src/parsepkg.c
+index e7bbee1..0ca735b 100644
+--- a/src/parsepkg.c
++++ b/src/parsepkg.c
+@@ -237,9 +237,10 @@ cr_xml_from_rpm(const char *filename,
+     assert(filename);
+     assert(!err || *err == NULL);
+ 
+-    result.primary   = NULL;
+-    result.filelists = NULL;
+-    result.other     = NULL;
++    result.primary       = NULL;
++    result.filelists     = NULL;
++    result.filelists_ext = NULL;
++    result.other         = NULL;
+ 
+     pkg = cr_package_from_rpm(filename,
+                               checksum_type,
+@@ -256,3 +257,39 @@ cr_xml_from_rpm(const char *filename,
+     cr_package_free(pkg);
+     return result;
+ }
++
++struct cr_XmlStruct
++cr_xml_from_rpm_ext(const char *filename,
++                    cr_ChecksumType checksum_type,
++                    const char *location_href,
++                    const char *location_base,
++                    int changelog_limit,
++                    struct stat *stat_buf,
++                    GError **err)
++{
++    cr_Package *pkg;
++    struct cr_XmlStruct result;
++
++    assert(filename);
++    assert(!err || *err == NULL);
++
++    result.primary       = NULL;
++    result.filelists     = NULL;
++    result.filelists_ext = NULL;
++    result.other         = NULL;
++
++    pkg = cr_package_from_rpm(filename,
++                              checksum_type,
++                              location_href,
++                              location_base,
++                              changelog_limit,
++                              stat_buf,
++                              CR_HDRR_NONE,
++                              err);
++    if (!pkg)
++        return result;
++
++    result = cr_xml_dump_ext(pkg, err);
++    cr_package_free(pkg);
++    return result;
++}
+diff --git a/src/parsepkg.h b/src/parsepkg.h
+index e11dc9d..fba3d8e 100644
+--- a/src/parsepkg.h
++++ b/src/parsepkg.h
+@@ -102,6 +102,26 @@ struct cr_XmlStruct cr_xml_from_rpm(const char *filename,
+                                     struct stat *stat_buf,
+                                     GError **err);
+ 
++/** Generate XML, including filelists_ext, for the specified package.
++ * @param filename              rpm filename
++ * @param checksum_type         type of checksum to be used
++ * @param location_href         package location inside repository
++ * @param location_base         location (url) of repository
++ * @param changelog_limit       number of changelog entries
++ * @param stat_buf              struct stat of the filename
++ *                              (optional - could be NULL)
++ * @param err                   GError **
++ * @return                      struct cr_XmlStruct with primary, filelists[_ext]
++ *                              and other xmls
++ */
++struct cr_XmlStruct cr_xml_from_rpm_ext(const char *filename,
++                                        cr_ChecksumType checksum_type,
++                                        const char *location_href,
++                                        const char *location_base,
++                                        int changelog_limit,
++                                        struct stat *stat_buf,
++                                        GError **err);
++
+ /** @} */
+ 
+ #ifdef __cplusplus
+diff --git a/src/python/createrepo_c/__init__.py b/src/python/createrepo_c/__init__.py
+index 440e559..8d7abf7 100644
+--- a/src/python/createrepo_c/__init__.py
++++ b/src/python/createrepo_c/__init__.py
+@@ -67,15 +67,17 @@ HT_KEY_FILENAME = _createrepo_c.HT_KEY_FILENAME #: Package filename as a key
+ HT_DUPACT_KEEPFIRST = _createrepo_c.HT_DUPACT_KEEPFIRST #: If an key is duplicated, keep only the first occurrence
+ HT_DUPACT_REMOVEALL = _createrepo_c.HT_DUPACT_REMOVEALL #: If an key is duplicated, discard all occurrences
+ 
+-DB_PRIMARY      = _createrepo_c.DB_PRIMARY   #: Primary database
+-DB_FILELISTS    = _createrepo_c.DB_FILELISTS #: Filelists database
+-DB_OTHER        = _createrepo_c.DB_OTHER     #: Other database
+-
+-XMLFILE_PRIMARY     = _createrepo_c.XMLFILE_PRIMARY     #: Primary xml file
+-XMLFILE_FILELISTS   = _createrepo_c.XMLFILE_FILELISTS   #: Filelists xml file
+-XMLFILE_OTHER       = _createrepo_c.XMLFILE_OTHER       #: Other xml file
+-XMLFILE_PRESTODELTA = _createrepo_c.XMLFILE_PRESTODELTA #: Prestodelta xml file
+-XMLFILE_UPDATEINFO  = _createrepo_c.XMLFILE_UPDATEINFO  #: Updateinfo xml file
++DB_PRIMARY       = _createrepo_c.DB_PRIMARY       #: Primary database
++DB_FILELISTS     = _createrepo_c.DB_FILELISTS     #: Filelists database
++DB_FILELISTS_EXT = _createrepo_c.DB_FILELISTS_EXT #: Filelists_ext database
++DB_OTHER         = _createrepo_c.DB_OTHER         #: Other database
++
++XMLFILE_PRIMARY       = _createrepo_c.XMLFILE_PRIMARY       #: Primary xml file
++XMLFILE_FILELISTS     = _createrepo_c.XMLFILE_FILELISTS     #: Filelists xml file
++XMLFILE_FILELISTS_EXT = _createrepo_c.XMLFILE_FILELISTS_EXT #: Filelists_ext xml file
++XMLFILE_OTHER         = _createrepo_c.XMLFILE_OTHER         #: Other xml file
++XMLFILE_PRESTODELTA   = _createrepo_c.XMLFILE_PRESTODELTA   #: Prestodelta xml file
++XMLFILE_UPDATEINFO    = _createrepo_c.XMLFILE_UPDATEINFO    #: Updateinfo xml file
+ 
+ #: XML warning - Unknown tag
+ XML_WARNING_UNKNOWNTAG  = _createrepo_c.XML_WARNING_UNKNOWNTAG
+@@ -270,9 +272,10 @@ class PrimaryXmlFile(XmlFile):
+ class FilelistsXmlFile(XmlFile):
+     def __init__(self, path, compressiontype=GZ_COMPRESSION,
+                  contentstat=None):
+-        """:arg path: Path to the filelists xml file
++        """:arg path: Path to the filelists[_ext] xml file
+         :arg compressiontype: Compression type
+         :arg contentstat: ContentStat object"""
++        # TODO(aplanas) Do I need to differentiate?
+         XmlFile.__init__(self, path, XMLFILE_FILELISTS,
+                          compressiontype, contentstat)
+ 
+@@ -310,7 +313,8 @@ def xml_from_rpm(filename, checksum_type=SHA256, location_href=None,
+ 
+ xml_dump_primary        = _createrepo_c.xml_dump_primary
+ xml_dump_filelists      = _createrepo_c.xml_dump_filelists
+-xml_dump_other          =  _createrepo_c.xml_dump_other
++xml_dump_filelists_ext  = _createrepo_c.xml_dump_filelists_ext
++xml_dump_other          = _createrepo_c.xml_dump_other
+ xml_dump_updaterecord   = _createrepo_c.xml_dump_updaterecord
+ xml_dump                = _createrepo_c.xml_dump
+ 
+@@ -321,7 +325,7 @@ def xml_parse_primary(path, newpkgcb=None, pkgcb=None,
+                                            warningcb, do_files)
+ 
+ def xml_parse_filelists(path, newpkgcb=None, pkgcb=None, warningcb=None):
+-    """Parse filelists.xml"""
++    """Parse filelists[_ext].xml"""
+     return _createrepo_c.xml_parse_filelists(path, newpkgcb, pkgcb, warningcb)
+ 
+ def xml_parse_other(path, newpkgcb=None, pkgcb=None, warningcb=None):
+@@ -336,7 +340,7 @@ def xml_parse_primary_snippet(xml_string, newpkgcb=None, pkgcb=None,
+ 
+ def xml_parse_filelists_snippet(xml_string, newpkgcb=None, pkgcb=None,
+                                 warningcb=None):
+-    """Parse the contents of filelists.xml from a string"""
++    """Parse the contents of filelists[_ext].xml from a string"""
+     return _createrepo_c.xml_parse_filelists_snippet(xml_string, newpkgcb, pkgcb,
+                                              warningcb)
+ 
+diff --git a/src/python/createrepo_cmodule.c b/src/python/createrepo_cmodule.c
+index ba6cad6..a8e4102 100644
+--- a/src/python/createrepo_cmodule.c
++++ b/src/python/createrepo_cmodule.c
+@@ -57,6 +57,8 @@ static struct PyMethodDef createrepo_c_methods[] = {
+         METH_VARARGS, xml_dump_primary__doc__},
+     {"xml_dump_filelists",      (PyCFunction)py_xml_dump_filelists,
+         METH_VARARGS, xml_dump_filelists__doc__},
++    {"xml_dump_filelists_ext",  (PyCFunction)py_xml_dump_filelists_ext,
++        METH_VARARGS, xml_dump_filelists_ext__doc__},
+     {"xml_dump_other",          (PyCFunction)py_xml_dump_other,
+         METH_VARARGS, xml_dump_other__doc__},
+     {"xml_dump_updaterecord",    (PyCFunction)py_xml_dump_updaterecord,
+@@ -285,11 +287,13 @@ PyInit__createrepo_c(void)
+     /* Sqlite DB types */
+     PyModule_AddIntConstant(m, "DB_PRIMARY", CR_DB_PRIMARY);
+     PyModule_AddIntConstant(m, "DB_FILELISTS", CR_DB_FILELISTS);
++    PyModule_AddIntConstant(m, "DB_FILELISTS_EXT", CR_DB_FILELISTS_EXT);
+     PyModule_AddIntConstant(m, "DB_OTHER", CR_DB_OTHER);
+ 
+     /* XmlFile types */
+     PyModule_AddIntConstant(m, "XMLFILE_PRIMARY", CR_XMLFILE_PRIMARY);
+     PyModule_AddIntConstant(m, "XMLFILE_FILELISTS", CR_XMLFILE_FILELISTS);
++    PyModule_AddIntConstant(m, "XMLFILE_FILELISTS_EXT", CR_XMLFILE_FILELISTS_EXT);
+     PyModule_AddIntConstant(m, "XMLFILE_OTHER", CR_XMLFILE_OTHER);
+     PyModule_AddIntConstant(m, "XMLFILE_PRESTODELTA", CR_XMLFILE_PRESTODELTA);
+     PyModule_AddIntConstant(m, "XMLFILE_UPDATEINFO", CR_XMLFILE_UPDATEINFO);
+diff --git a/src/python/package-py.c b/src/python/package-py.c
+index 316f3cc..7916e6b 100644
+--- a/src/python/package-py.c
++++ b/src/python/package-py.c
+@@ -431,8 +431,8 @@ CheckPyDependency(PyObject *dep)
+ static int
+ CheckPyPackageFile(PyObject *dep)
+ {
+-    if (!PyTuple_Check(dep) || PyTuple_Size(dep) != 3) {
+-        PyErr_SetString(PyExc_TypeError, "Element of list has to be a tuple with 3 items.");
++    if (!PyTuple_Check(dep) || PyTuple_Size(dep) != 4) {
++        PyErr_SetString(PyExc_TypeError, "Element of list has to be a tuple with 4 items.");
+         return 1;
+     }
+     return 0;
+@@ -548,6 +548,8 @@ static PyGetSetDef package_getsetters[] = {
+         "Base location of this package", OFFSET(location_base)},
+     {"checksum_type",    (getter)get_str, (setter)set_str,
+         "Type of checksum", OFFSET(checksum_type)},
++    {"files_checksum_type",    (getter)get_str, (setter)set_str,
++        "Type of checksum for files", OFFSET(files_checksum_type)},
+     {"requires",         (getter)get_list, (setter)set_list,
+         "Capabilities the package requires", &(list_convertors[0])},
+     {"provides",         (getter)get_list, (setter)set_list,
+diff --git a/src/python/parsepkg-py.c b/src/python/parsepkg-py.c
+index 1d8ad4a..88ae362 100644
+--- a/src/python/parsepkg-py.c
++++ b/src/python/parsepkg-py.c
+@@ -66,35 +66,49 @@ py_xml_from_rpm(G_GNUC_UNUSED PyObject *self, PyObject *args)
+     PyObject *tuple;
+     int checksum_type, changelog_limit;
+     char *filename, *location_href, *location_base;
++    gboolean filelists_ext = FALSE;
++    int tuple_index = 0, tuple_size = 3;
+     struct cr_XmlStruct xml_res;
+     GError *tmp_err = NULL;
+ 
+-    if (!PyArg_ParseTuple(args, "sizzi:py_xml_from_rpm",
++    if (!PyArg_ParseTuple(args, "sizzi|p:py_xml_from_rpm",
+                                          &filename,
+                                          &checksum_type,
+                                          &location_href,
+                                          &location_base,
+-                                         &changelog_limit)) {
++                                         &changelog_limit,
++                                         &filelists_ext)) {
+         return NULL;
+     }
+ 
+-    xml_res = cr_xml_from_rpm(filename, checksum_type, location_href,
+-                              location_base, changelog_limit, NULL, &tmp_err);
++    if (filelists_ext) {
++        xml_res = cr_xml_from_rpm_ext(filename, checksum_type, location_href,
++                                      location_base, changelog_limit, NULL, &tmp_err);
++    } else {
++        xml_res = cr_xml_from_rpm(filename, checksum_type, location_href,
++                                  location_base, changelog_limit, NULL, &tmp_err);
++    }
+     if (tmp_err) {
+         nice_exception(&tmp_err, "Cannot load %s: ", filename);
+         return NULL;
+     }
+ 
+-    if ((tuple = PyTuple_New(3)) == NULL)
++    if (filelists_ext)
++        tuple_size = 4;
++
++    if ((tuple = PyTuple_New(tuple_size)) == NULL)
+         goto py_xml_from_rpm_end; // Free xml_res and return NULL
+ 
+-    PyTuple_SetItem(tuple, 0, PyUnicodeOrNone_FromString(xml_res.primary));
+-    PyTuple_SetItem(tuple, 1, PyUnicodeOrNone_FromString(xml_res.filelists));
+-    PyTuple_SetItem(tuple, 2, PyUnicodeOrNone_FromString(xml_res.other));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.primary));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.filelists));
++    if (filelists_ext)
++        PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.filelists_ext));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.other));
+ 
+ py_xml_from_rpm_end:
+     free(xml_res.primary);
+     free(xml_res.filelists);
++    free(xml_res.filelists_ext);
+     free(xml_res.other);
+ 
+     return tuple;
+diff --git a/src/python/parsepkg-py.h b/src/python/parsepkg-py.h
+index 732ec17..7af338a 100644
+--- a/src/python/parsepkg-py.h
++++ b/src/python/parsepkg-py.h
+@@ -31,7 +31,7 @@ PyObject *py_package_from_rpm(PyObject *self, PyObject *args);
+ 
+ PyDoc_STRVAR(xml_from_rpm__doc__,
+ "xml_from_rpm(filename, checksum_type, location_href, "
+-"location_base, changelog_limit) -> (str, str, str)\n\n"
++"location_base, changelog_limit[, filelists_ext]) -> (str, str, str[, str])\n\n"
+ "XML for the package rpm package");
+ 
+ PyObject *py_xml_from_rpm(PyObject *self, PyObject *args);
+diff --git a/src/python/typeconversion.c b/src/python/typeconversion.c
+index 2cd02f7..a8c2219 100644
+--- a/src/python/typeconversion.c
++++ b/src/python/typeconversion.c
+@@ -169,12 +169,13 @@ PyObject_FromPackageFile(cr_PackageFile *file)
+ {
+     PyObject *tuple;
+ 
+-    if ((tuple = PyTuple_New(3)) == NULL)
++    if ((tuple = PyTuple_New(4)) == NULL)
+         return NULL;
+ 
+     PyTuple_SetItem(tuple, 0, PyUnicodeOrNone_FromString(file->type));
+     PyTuple_SetItem(tuple, 1, PyUnicodeOrNone_FromString(file->path));
+     PyTuple_SetItem(tuple, 2, PyUnicodeOrNone_FromString(file->name));
++    PyTuple_SetItem(tuple, 3, PyUnicodeOrNone_FromString(file->digest));
+ 
+     return tuple;
+ }
+@@ -194,6 +195,9 @@ PyObject_ToPackageFile(PyObject *tuple, GStringChunk *chunk)
+     pyobj = PyTuple_GetItem(tuple, 2);
+     file->name = PyObject_ToChunkedString(pyobj, chunk);
+ 
++    pyobj = PyTuple_GetItem(tuple, 3);
++    file->digest = PyObject_ToChunkedString(pyobj, chunk);
++
+     return file;
+ }
+ 
+diff --git a/src/python/xml_dump-py.c b/src/python/xml_dump-py.c
+index 408f14e..c32734d 100644
+--- a/src/python/xml_dump-py.c
++++ b/src/python/xml_dump-py.c
+@@ -72,6 +72,28 @@ py_xml_dump_filelists(G_GNUC_UNUSED PyObject *self, PyObject *args)
+     return py_str;
+ }
+ 
++PyObject *
++py_xml_dump_filelists_ext(G_GNUC_UNUSED PyObject *self, PyObject *args)
++{
++    PyObject *py_pkg, *py_str;
++    char *xml;
++    GError *err = NULL;
++
++    if (!PyArg_ParseTuple(args, "O!:py_xml_dump_filelists_ext", &Package_Type, &py_pkg))
++        return NULL;
++
++    xml = cr_xml_dump_filelists_ext(Package_FromPyObject(py_pkg), &err);
++    if (err) {
++        nice_exception(&err, NULL);
++        free(xml);
++        return NULL;
++    }
++
++    py_str = PyUnicodeOrNone_FromString(xml);
++    free(xml);
++    return py_str;
++}
++
+ PyObject *
+ py_xml_dump_other(G_GNUC_UNUSED PyObject *self, PyObject *args)
+ {
+@@ -98,32 +120,40 @@ PyObject *
+ py_xml_dump(G_GNUC_UNUSED PyObject *self, PyObject *args)
+ {
+     PyObject *py_pkg, *tuple;
++    gboolean filelists_ext = FALSE;
++    int tuple_index = 0, tuple_size = 3;
+     struct cr_XmlStruct xml_res;
+     GError *err = NULL;
+ 
+-    if (!PyArg_ParseTuple(args, "O!:py_xml_dump", &Package_Type, &py_pkg))
++    if (!PyArg_ParseTuple(args, "O!|p:py_xml_dump", &Package_Type, &py_pkg, &filelists_ext))
+         return NULL;
+ 
+-
+-    xml_res = cr_xml_dump(Package_FromPyObject(py_pkg), &err);
++    if (filelists_ext) {
++        xml_res = cr_xml_dump_ext(Package_FromPyObject(py_pkg), &err);
++    } else {
++        xml_res = cr_xml_dump(Package_FromPyObject(py_pkg), &err);
++    }
+     if (err) {
+         nice_exception(&err, NULL);
+         return NULL;
+     }
+ 
+-    if ((tuple = PyTuple_New(3)) == NULL) {
+-        free(xml_res.primary);
+-        free(xml_res.filelists);
+-        free(xml_res.other);
+-        return NULL;
+-    }
++    if (filelists_ext)
++        tuple_size = 4;
++
++    if ((tuple = PyTuple_New(tuple_size)) == NULL)
++        goto py_xml_dump_end; // Free xml_res and return NULL
+ 
+-    PyTuple_SetItem(tuple, 0, PyUnicodeOrNone_FromString(xml_res.primary));
+-    PyTuple_SetItem(tuple, 1, PyUnicodeOrNone_FromString(xml_res.filelists));
+-    PyTuple_SetItem(tuple, 2, PyUnicodeOrNone_FromString(xml_res.other));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.primary));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.filelists));
++    if (filelists_ext)
++        PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.filelists_ext));
++    PyTuple_SetItem(tuple, tuple_index++, PyUnicodeOrNone_FromString(xml_res.other));
+ 
++py_xml_dump_end:
+     free(xml_res.primary);
+     free(xml_res.filelists);
++    free(xml_res.filelists_ext);
+     free(xml_res.other);
+ 
+     return tuple;
+diff --git a/src/python/xml_dump-py.h b/src/python/xml_dump-py.h
+index 042c97b..6040d6d 100644
+--- a/src/python/xml_dump-py.h
++++ b/src/python/xml_dump-py.h
+@@ -34,6 +34,12 @@ PyDoc_STRVAR(xml_dump_filelists__doc__,
+ 
+ PyObject *py_xml_dump_filelists(PyObject *self, PyObject *args);
+ 
++PyDoc_STRVAR(xml_dump_filelists_ext__doc__,
++"xml_dump_filelists_ext(pkg) -> str\n\n"
++"Generate filelists_ext xml chunk from the package");
++
++PyObject *py_xml_dump_filelists_ext(PyObject *self, PyObject *args);
++
+ PyDoc_STRVAR(xml_dump_other__doc__,
+ "xml_dump_other(pkg) -> str\n\n"
+ "Generate other xml chunk from the package");
+@@ -41,8 +47,8 @@ PyDoc_STRVAR(xml_dump_other__doc__,
+ PyObject *py_xml_dump_other(PyObject *self, PyObject *args);
+ 
+ PyDoc_STRVAR(xml_dump__doc__,
+-"xml_dump(pkg) -> (str, str, str)\n\n"
+-"Generate primary, filelists and other xml chunks from the package");
++"xml_dump(pkg[, filelists_ext]) -> (str, str, str[, str])\n\n"
++"Generate primary, filelists, filelists_ext and other xml chunks from the package");
+ 
+ PyObject *py_xml_dump(PyObject *self, PyObject *args);
+ 
+diff --git a/src/python/xml_parser-py.h b/src/python/xml_parser-py.h
+index 444b32c..bde2b51 100644
+--- a/src/python/xml_parser-py.h
++++ b/src/python/xml_parser-py.h
+@@ -42,6 +42,16 @@ PyDoc_STRVAR(xml_parse_filelists_snippet__doc__,
+ PyObject *py_xml_parse_filelists(PyObject *self, PyObject *args);
+ PyObject *py_xml_parse_filelists_snippet(PyObject *self, PyObject *args);
+ 
++PyDoc_STRVAR(xml_parse_filelists_ext__doc__,
++"xml_parse_filelists_ext(filename, newpkgcb, pkgcb, warningcb) -> None\n\n"
++"Parse filelists_ext.xml");
++PyDoc_STRVAR(xml_parse_filelists_ext_snippet__doc__,
++"xml_parse_filelists_ext_snippet(snippet, newpkgcb, pkgcb, warningcb) -> None\n\n"
++"Parse filelists_ext xml snippet");
++
++PyObject *py_xml_parse_filelists_ext(PyObject *self, PyObject *args);
++PyObject *py_xml_parse_filelists_ext_snippet(PyObject *self, PyObject *args);
++
+ PyDoc_STRVAR(xml_parse_other__doc__,
+ "xml_parse_other(filename, newpkgcb, pkgcb, warningcb) -> None\n\n"
+ "Parse other.xml");
+diff --git a/src/sqlite.h b/src/sqlite.h
+index 998556e..4154f25 100644
+--- a/src/sqlite.h
++++ b/src/sqlite.h
+@@ -61,10 +61,11 @@ extern "C" {
+ /** Database type.
+  */
+ typedef enum {
+-    CR_DB_PRIMARY,      /*!< primary */
+-    CR_DB_FILELISTS,    /*!< filelists */
+-    CR_DB_OTHER,        /*!< other */
+-    CR_DB_SENTINEL,     /*!< sentinel of the list */
++    CR_DB_PRIMARY,       /*!< primary */
++    CR_DB_FILELISTS,     /*!< filelists */
++    CR_DB_FILELISTS_EXT, /*!< filelists_ext */
++    CR_DB_OTHER,         /*!< other */
++    CR_DB_SENTINEL,      /*!< sentinel of the list */
+ } cr_DatabaseType;
+ 
+ typedef struct _DbPrimaryStatements   * cr_DbPrimaryStatements; /*!<
+diff --git a/src/threads.c b/src/threads.c
+index f0c3f93..c828c7f 100644
+--- a/src/threads.c
++++ b/src/threads.c
+@@ -167,6 +167,9 @@ cr_repomdrecordfilltask_free(cr_RepomdRecordFillTask *task,
+ {
+     assert(!err || *err == NULL);
+ 
++    if (!task)
++        return;
++
+     if (task->err)
+         g_error_free(task->err);
+     g_free(task);
+diff --git a/src/xml_dump.c b/src/xml_dump.c
+index 0cf6314..aa05fb9 100644
+--- a/src/xml_dump.c
++++ b/src/xml_dump.c
+@@ -143,7 +143,7 @@ cr_xmlNewProp(xmlNodePtr node, const xmlChar *name, const xmlChar *orig_content)
+ }
+ 
+ void
+-cr_xml_dump_files(xmlNodePtr node, cr_Package *package, int primary)
++cr_xml_dump_files(xmlNodePtr node, cr_Package *package, int primary, gboolean filelists_ext)
+ {
+     if (!node || !package->files) {
+         return;
+@@ -195,6 +195,10 @@ cr_xml_dump_files(xmlNodePtr node, cr_Package *package, int primary)
+         if (entry->type && entry->type[0] != '\0' && strcmp(entry->type, "file")) {
+             cr_xmlNewProp(file_node, BAD_CAST "type", BAD_CAST entry->type);
+         }
++
++        if (filelists_ext && entry->digest && entry->digest[0] != '\0') {
++            cr_xmlNewProp(file_node, BAD_CAST "hash", BAD_CAST entry->digest);
++        }
+     }
+ }
+ 
+@@ -274,16 +278,17 @@ cr_Package_contains_forbidden_control_chars(cr_Package *pkg)
+ }
+ 
+ struct cr_XmlStruct
+-cr_xml_dump(cr_Package *pkg, GError **err)
++cr_xml_dump_int(cr_Package *pkg, gboolean filelists_ext, GError **err)
+ {
+     struct cr_XmlStruct result;
+     GError *tmp_err = NULL;
+ 
+     assert(!err || *err == NULL);
+ 
+-    result.primary   = NULL;
+-    result.filelists = NULL;
+-    result.other     = NULL;
++    result.primary       = NULL;
++    result.filelists     = NULL;
++    result.filelists_ext = NULL;
++    result.other         = NULL;
+ 
+     if (!pkg)
+         return result;
+@@ -308,6 +313,18 @@ cr_xml_dump(cr_Package *pkg, GError **err)
+         return result;
+     }
+ 
++    if (filelists_ext) {
++        result.filelists_ext = cr_xml_dump_filelists_ext(pkg, &tmp_err);
++        if (tmp_err) {
++            g_propagate_error(err, tmp_err);
++            g_free(result.primary);
++            result.primary = NULL;
++            g_free(result.filelists);
++            result.filelists = NULL;
++            return result;
++        }
++    }
++
+     result.other = cr_xml_dump_other(pkg, &tmp_err);
+     if (tmp_err) {
+         g_propagate_error(err, tmp_err);
+@@ -315,8 +332,24 @@ cr_xml_dump(cr_Package *pkg, GError **err)
+         result.primary = NULL;
+         g_free(result.filelists);
+         result.filelists = NULL;
++	if (filelists_ext) {
++            g_free(result.filelists_ext);
++            result.filelists_ext = NULL;
++	}
+         return result;
+     }
+ 
+     return result;
+ }
++
++struct cr_XmlStruct
++cr_xml_dump(cr_Package *pkg, GError **err)
++{
++    return cr_xml_dump_int(pkg, FALSE, err);
++}
++
++struct cr_XmlStruct
++cr_xml_dump_ext(cr_Package *pkg, GError **err)
++{
++    return cr_xml_dump_int(pkg, TRUE, err);
++}
+diff --git a/src/xml_dump.h b/src/xml_dump.h
+index 510ae37..49fca97 100644
+--- a/src/xml_dump.h
++++ b/src/xml_dump.h
+@@ -66,6 +66,8 @@ extern "C" {
+ #define CR_XML_COMMON_NS            "http://linux.duke.edu/metadata/common"
+ /** Default namespace for filelists.xml */
+ #define CR_XML_FILELISTS_NS         "http://linux.duke.edu/metadata/filelists"
++/** Default namespace for filelists_ext.xml */
++#define CR_XML_FILELISTS_EXT_NS         "http://linux.duke.edu/metadata/filelists_ext"
+ /** Default namespace for other.xml */
+ #define CR_XML_OTHER_NS             "http://linux.duke.edu/metadata/other"
+ /** Default namespace for repomd.xml */
+@@ -74,12 +76,13 @@ extern "C" {
+ #define CR_XML_RPM_NS               "http://linux.duke.edu/metadata/rpm"
+ 
+ 
+-/** Xml chunks for primary.xml, filelists.xml and other.xml.
++/** Xml chunks for primary.xml, filelists[_ext].xml and other.xml.
+  */
+ struct cr_XmlStruct {
+-    char *primary;      /*!< XML chunk for primary.xml */
+-    char *filelists;    /*!< XML chunk for filelists.xml */
+-    char *other;        /*!< XML chunk for other.xml */
++    char *primary;          /*!< XML chunk for primary.xml */
++    char *filelists;        /*!< XML chunk for filelists.xml */
++    char *filelists_ext;    /*!< XML chunk for filelists_ext.xml */
++    char *other;            /*!< XML chunk for other.xml */
+ };
+ 
+ /** Initialize dumping part of library (Initialize libxml2).
+@@ -104,6 +107,13 @@ char *cr_xml_dump_primary(cr_Package *package, GError **err);
+  */
+ char *cr_xml_dump_filelists(cr_Package *package, GError **err);
+ 
++/** Generate filelists_ext xml chunk from cr_Package.
++ * @param package       cr_Package
++ * @param err           **GError
++ * @return              xml chunk string or NULL on error
++ */
++char *cr_xml_dump_filelists_ext(cr_Package *package, GError **err);
++
+ /** Generate other xml chunk from cr_Package.
+  * @param package       cr_Package
+  * @param err           **GError
+@@ -118,6 +128,13 @@ char *cr_xml_dump_other(cr_Package *package, GError **err);
+  */
+ struct cr_XmlStruct cr_xml_dump(cr_Package *package, GError **err);
+ 
++/** Generate all four xml chunks (primary, filelists[_ext], other) from cr_Package.
++ * @param package       cr_Package
++ * @param err           **GError
++ * @return              cr_XmlStruct
++ */
++struct cr_XmlStruct cr_xml_dump_ext(cr_Package *package, GError **err);
++
+ /** Generate xml representation of cr_Repomd.
+  * @param repomd        cr_Repomd
+  * @param err           **GError
+diff --git a/src/xml_dump_filelists.c b/src/xml_dump_filelists.c
+index 4e8140c..423f0f3 100644
+--- a/src/xml_dump_filelists.c
++++ b/src/xml_dump_filelists.c
+@@ -32,7 +32,7 @@
+ 
+ 
+ void
+-cr_xml_dump_filelists_items(xmlNodePtr root, cr_Package *package)
++cr_xml_dump_filelists_items(xmlNodePtr root, cr_Package *package, gboolean filelists_ext)
+ {
+     /***********************************
+      Element: package
+@@ -66,15 +66,19 @@ cr_xml_dump_filelists_items(xmlNodePtr root, cr_Package *package)
+     // Write version attribute rel
+     cr_xmlNewProp(version, BAD_CAST "rel", BAD_CAST package->release);
+ 
++    if (filelists_ext) {
++        // Add checksum files type
++        xmlNodePtr checksum = xmlNewChild(root, NULL, BAD_CAST "checksum", NULL);
++        cr_xmlNewProp(checksum, BAD_CAST "type", BAD_CAST package->files_checksum_type);
++    }
+ 
+     // Files dump
+-
+-    cr_xml_dump_files(root, package, 0);
++    cr_xml_dump_files(root, package, 0, filelists_ext);
+ }
+ 
+ 
+ char *
+-cr_xml_dump_filelists(cr_Package *package, GError **err)
++cr_xml_dump_filelists_chunk(cr_Package *package, gboolean filelists_ext, GError **err)
+ {
+     xmlNodePtr root;
+     char *result;
+@@ -99,7 +103,7 @@ cr_xml_dump_filelists(cr_Package *package, GError **err)
+     }
+ 
+     root = xmlNewNode(NULL, BAD_CAST "package");
+-    cr_xml_dump_filelists_items(root, package);
++    cr_xml_dump_filelists_items(root, package, filelists_ext);
+     // xmlNodeDump seems to be a little bit faster than xmlDocDumpFormatMemory
+     xmlNodeDump(buf, NULL, root, FORMAT_LEVEL, FORMAT_XML);
+     assert(buf->content);
+@@ -115,3 +119,17 @@ cr_xml_dump_filelists(cr_Package *package, GError **err)
+ 
+     return result;
+ }
++
++
++char *
++cr_xml_dump_filelists(cr_Package *package, GError **err)
++{
++    return cr_xml_dump_filelists_chunk(package, FALSE, err);
++}
++
++
++char *
++cr_xml_dump_filelists_ext(cr_Package *package, GError **err)
++{
++    return cr_xml_dump_filelists_chunk(package, TRUE, err);
++}
+diff --git a/src/xml_dump_internal.h b/src/xml_dump_internal.h
+index 750fc4e..2dc206b 100644
+--- a/src/xml_dump_internal.h
++++ b/src/xml_dump_internal.h
+@@ -47,8 +47,9 @@ extern "C" {
+  * @param package       cr_Package
+  * @param primary       process only primary files (see cr_is_primary() function
+  *                      in the misc module)
++ * @param filelists_ext includes the optional hash attribute for each file
+  */
+-void cr_xml_dump_files(xmlNodePtr node, cr_Package *package, int primary);
++void cr_xml_dump_files(xmlNodePtr node, cr_Package *package, int primary, gboolean filelists_ext);
+ 
+ /** Createrepo_c wrapper over libxml xmlNewTextChild.
+  * It allows content to be NULL and non UTF-8 (if content is no UTF8
+diff --git a/src/xml_dump_primary.c b/src/xml_dump_primary.c
+index 1f0292b..c4d518d 100644
+--- a/src/xml_dump_primary.c
++++ b/src/xml_dump_primary.c
+@@ -372,7 +372,7 @@ cr_xml_dump_primary_base_items(xmlNodePtr root, cr_Package *package)
+     cr_xml_dump_primary_dump_pco(format,   package, PCO_TYPE_ENHANCES);
+     cr_xml_dump_primary_dump_pco(format,   package, PCO_TYPE_RECOMMENDS);
+     cr_xml_dump_primary_dump_pco(format,   package, PCO_TYPE_SUPPLEMENTS);
+-    cr_xml_dump_files(format, package, 1);
++    cr_xml_dump_files(format, package, 1, FALSE);
+ }
+ 
+ 
+diff --git a/src/xml_file.c b/src/xml_file.c
+index e369f51..dfbeccc 100644
+--- a/src/xml_file.c
++++ b/src/xml_file.c
+@@ -28,29 +28,32 @@
+ #include "xml_dump_internal.h"
+ #include "misc.h"
+ 
+-#define ERR_DOMAIN              CREATEREPO_C_ERROR
+-
+-#define XML_HEADER              "<?xml version=\""XML_DOC_VERSION \
+-                                "\" encoding=\""XML_ENCODING"\"?>\n"
+-
+-#define XML_PRIMARY_HEADER      XML_HEADER"<metadata xmlns=\"" \
+-                                CR_XML_COMMON_NS"\" xmlns:rpm=\"" \
+-                                CR_XML_RPM_NS"\" packages=\"%d\">\n"
+-#define XML_FILELISTS_HEADER    XML_HEADER"<filelists xmlns=\"" \
+-                                CR_XML_FILELISTS_NS"\" packages=\"%d\">\n"
+-#define XML_OTHER_HEADER        XML_HEADER"<otherdata xmlns=\"" \
+-                                CR_XML_OTHER_NS"\" packages=\"%d\">\n"
+-#define XML_PRESTODELTA_HEADER  XML_HEADER"<prestodelta>\n"
+-#define XML_UPDATEINFO_HEADER   XML_HEADER"<updates>\n"
+-
+-#define XML_MAX_HEADER_SIZE     300
++#define ERR_DOMAIN               CREATEREPO_C_ERROR
++
++#define XML_HEADER               "<?xml version=\""XML_DOC_VERSION \
++                                 "\" encoding=\""XML_ENCODING"\"?>\n"
++
++#define XML_PRIMARY_HEADER       XML_HEADER"<metadata xmlns=\"" \
++                                 CR_XML_COMMON_NS"\" xmlns:rpm=\"" \
++                                 CR_XML_RPM_NS"\" packages=\"%d\">\n"
++#define XML_FILELISTS_HEADER     XML_HEADER"<filelists xmlns=\"" \
++                                 CR_XML_FILELISTS_NS"\" packages=\"%d\">\n"
++#define XML_FILELISTS_EXT_HEADER XML_HEADER"<filelists_ext xmlns=\"" \
++                                 CR_XML_FILELISTS_EXT_NS"\" packages=\"%d\">\n"
++#define XML_OTHER_HEADER         XML_HEADER"<otherdata xmlns=\"" \
++                                 CR_XML_OTHER_NS"\" packages=\"%d\">\n"
++#define XML_PRESTODELTA_HEADER   XML_HEADER"<prestodelta>\n"
++#define XML_UPDATEINFO_HEADER    XML_HEADER"<updates>\n"
++
++#define XML_MAX_HEADER_SIZE      300
+ #define XML_RECOMPRESS_BUFFER_SIZE   8192
+ 
+-#define XML_PRIMARY_FOOTER      "</metadata>"
+-#define XML_FILELISTS_FOOTER    "</filelists>"
+-#define XML_OTHER_FOOTER        "</otherdata>"
+-#define XML_PRESTODELTA_FOOTER  "</prestodelta>"
+-#define XML_UPDATEINFO_FOOTER   "</updates>"
++#define XML_PRIMARY_FOOTER       "</metadata>"
++#define XML_FILELISTS_FOOTER     "</filelists>"
++#define XML_FILELISTS_EXT_FOOTER "</filelists_ext>"
++#define XML_OTHER_FOOTER         "</otherdata>"
++#define XML_PRESTODELTA_FOOTER   "</prestodelta>"
++#define XML_UPDATEINFO_FOOTER    "</updates>"
+ 
+ cr_XmlFile *
+ cr_xmlfile_sopen(const char *filename,
+@@ -132,6 +135,9 @@ cr_xmlfile_write_xml_header(cr_XmlFile *f, GError **err)
+     case CR_XMLFILE_FILELISTS:
+         xml_header = XML_FILELISTS_HEADER;
+         break;
++    case CR_XMLFILE_FILELISTS_EXT:
++        xml_header = XML_FILELISTS_EXT_HEADER;
++        break;
+     case CR_XMLFILE_OTHER:
+         xml_header = XML_OTHER_HEADER;
+         break;
+@@ -176,6 +182,9 @@ cr_xmlfile_write_xml_footer(cr_XmlFile *f, GError **err)
+     case CR_XMLFILE_FILELISTS:
+         xml_footer = XML_FILELISTS_FOOTER;
+         break;
++    case CR_XMLFILE_FILELISTS_EXT:
++        xml_footer = XML_FILELISTS_EXT_FOOTER;
++        break;
+     case CR_XMLFILE_OTHER:
+         xml_footer = XML_OTHER_FOOTER;
+         break;
+@@ -222,6 +231,9 @@ cr_xmlfile_add_pkg(cr_XmlFile *f, cr_Package *pkg, GError **err)
+     case CR_XMLFILE_FILELISTS:
+         xml = cr_xml_dump_filelists(pkg, &tmp_err);
+         break;
++    case CR_XMLFILE_FILELISTS_EXT:
++        xml = cr_xml_dump_filelists_ext(pkg, &tmp_err);
++        break;
+     case CR_XMLFILE_OTHER:
+         xml = cr_xml_dump_other(pkg, &tmp_err);
+         break;
+diff --git a/src/xml_file.h b/src/xml_file.h
+index a69d9a5..ac6cd3d 100644
+--- a/src/xml_file.h
++++ b/src/xml_file.h
+@@ -36,12 +36,13 @@ extern "C" {
+ /** Supported types of xml files
+  */
+ typedef enum {
+-    CR_XMLFILE_PRIMARY,     /*!< primary.xml */
+-    CR_XMLFILE_FILELISTS,   /*!< filelists.xml */
+-    CR_XMLFILE_OTHER,       /*!< other.xml */
+-    CR_XMLFILE_PRESTODELTA, /*!< prestodelta.xml */
+-    CR_XMLFILE_UPDATEINFO,  /*!< updateinfo.xml */
+-    CR_XMLFILE_SENTINEL,    /*!< sentinel of the list */
++    CR_XMLFILE_PRIMARY,       /*!< primary.xml */
++    CR_XMLFILE_FILELISTS,     /*!< filelists.xml */
++    CR_XMLFILE_FILELISTS_EXT, /*!< filelists_ext.xml */
++    CR_XMLFILE_OTHER,         /*!< other.xml */
++    CR_XMLFILE_PRESTODELTA,   /*!< prestodelta.xml */
++    CR_XMLFILE_UPDATEINFO,    /*!< updateinfo.xml */
++    CR_XMLFILE_SENTINEL,      /*!< sentinel of the list */
+ } cr_XmlFileType;
+ 
+ /** cr_XmlFile structure.
+@@ -87,6 +88,15 @@ typedef struct {
+ #define cr_xmlfile_open_filelists(FILENAME, COMTYPE, ERR) \
+             cr_xmlfile_open(FILENAME, CR_XMLFILE_FILELISTS, COMTYPE, ERR)
+ 
++/** Open a new filelists_ext XML file.
++ * @param FILENAME      Filename.
++ * @param COMTYPE       Type of used compression.
++ * @param ERR           GError **
++ * @return              Opened cr_XmlFile or NULL on error
++ */
++#define cr_xmlfile_open_filelists_ext(FILENAME, COMTYPE, ERR) \
++            cr_xmlfile_open(FILENAME, CR_XMLFILE_FILELISTS_EXT, COMTYPE, ERR)
++
+ /** Open a new filelists XML file.
+  * @param FILENAME      Filename.
+  * @param COMTYPE       Type of compression.
+@@ -97,6 +107,16 @@ typedef struct {
+ #define cr_xmlfile_sopen_filelists(FILENAME, COMTYPE, STAT, ERR) \
+             cr_xmlfile_sopen(FILENAME, CR_XMLFILE_FILELISTS, COMTYPE, STAT, ERR)
+ 
++/** Open a new filelists_ext XML file.
++ * @param FILENAME      Filename.
++ * @param COMTYPE       Type of compression.
++ * @param STAT          cr_ContentStat object or NULL.
++ * @param ERR           GError **
++ * @return              Opened cr_XmlFile or NULL on error
++ */
++#define cr_xmlfile_sopen_filelists_ext(FILENAME, COMTYPE, STAT, ERR) \
++            cr_xmlfile_sopen(FILENAME, CR_XMLFILE_FILELISTS_EXT, COMTYPE, STAT, ERR)
++
+ /** Open a new other XML file.
+  * @param FILENAME      Filename.
+  * @param COMTYPE       Type of used compression.
+diff --git a/src/xml_parser.h b/src/xml_parser.h
+index 26bd06c..ab630f9 100644
+--- a/src/xml_parser.h
++++ b/src/xml_parser.h
+@@ -150,8 +150,8 @@ int cr_xml_parse_primary_snippet(const char *xml_string,
+                                  int do_files,
+                                  GError **err);
+ 
+-/** Parse filelists.xml. File could be compressed.
+- * @param path           Path to filelists.xml
++/** Parse filelists[_ext].xml. File could be compressed.
++ * @param path           Path to filelists[_ext].xml
+  * @param newpkgcb       Callback for new package (Called when new package
+  *                       xml chunk is found and package object to store
+  *                       the data is needed). If NULL cr_newpkgcb is used.
+@@ -174,9 +174,9 @@ int cr_xml_parse_filelists(const char *path,
+                            void *warningcb_data,
+                            GError **err);
+ 
+-/** Parse string snippet of filelists xml repodata. Snippet cannot contain
+- * root xml element <filelists>. It contains only <package> elemetns.
+- * @param xml_string     String containg filelists xml data
++/** Parse string snippet of filelists[_ext] xml repodata. Snippet cannot contain
++ * root xml element <filelists[_ext]>. It contains only <package> elemetns.
++ * @param xml_string     String containg filelists[_ext] xml data
+  * @param newpkgcb       Callback for new package (Called when new package
+  *                       xml chunk is found and package object to store
+  *                       the data is needed). If NULL cr_newpkgcb is used.
+diff --git a/src/xml_parser_filelists.c b/src/xml_parser_filelists.c
+index 1885850..716c2b6 100644
+--- a/src/xml_parser_filelists.c
++++ b/src/xml_parser_filelists.c
+@@ -35,8 +35,10 @@
+ typedef enum {
+     STATE_START,
+     STATE_FILELISTS,
++    STATE_FILELISTS_EXT,
+     STATE_PACKAGE,
+     STATE_VERSION,
++    STATE_CHECKSUM,
+     STATE_FILE,
+     NUMSTATES,
+ } cr_FilState;
+@@ -47,11 +49,14 @@ typedef enum {
+  * has a "file" element listed first, because it is more frequent
+  * than a "version" element). */
+ static cr_StatesSwitch stateswitches[] = {
+-    { STATE_START,      "filelists",    STATE_FILELISTS,    0 },
+-    { STATE_FILELISTS,  "package",      STATE_PACKAGE,      0 },
+-    { STATE_PACKAGE,    "file",         STATE_FILE,         1 },
+-    { STATE_PACKAGE,    "version",      STATE_VERSION,      0 },
+-    { NUMSTATES,        NULL,           NUMSTATES,          0 },
++    { STATE_START,         "filelists",     STATE_FILELISTS,     0 },
++    { STATE_START,         "filelists_ext", STATE_FILELISTS_EXT, 0 },
++    { STATE_FILELISTS,     "package",       STATE_PACKAGE,       0 },
++    { STATE_FILELISTS_EXT, "package",       STATE_PACKAGE,       0 },
++    { STATE_PACKAGE,       "file",          STATE_FILE,          1 },
++    { STATE_PACKAGE,       "version",       STATE_VERSION,       0 },
++    { STATE_PACKAGE,       "checksum",      STATE_CHECKSUM,      0 },
++    { NUMSTATES,           NULL,            NUMSTATES,           0 },
+ };
+ 
+ static void XMLCALL
+@@ -76,7 +81,8 @@ cr_start_handler(void *pdata, const xmlChar *element, const xmlChar **attr)
+         return;
+     }
+ 
+-    if (!pd->pkg && pd->state != STATE_FILELISTS && pd->state != STATE_START)
++    if (!pd->pkg && pd->state != STATE_FILELISTS && pd->state != STATE_FILELISTS_EXT
++        && pd->state != STATE_START)
+         return;  // Do not parse current package tag and its content
+ 
+     // Find current state by its name
+@@ -107,6 +113,7 @@ cr_start_handler(void *pdata, const xmlChar *element, const xmlChar **attr)
+         break;
+ 
+     case STATE_FILELISTS:
++    case STATE_FILELISTS_EXT:
+         pd->main_tag_found = TRUE;
+         break;
+ 
+@@ -181,6 +188,14 @@ cr_start_handler(void *pdata, const xmlChar *element, const xmlChar **attr)
+                                             cr_find_attr("rel", attr));
+         break;
+ 
++    case STATE_CHECKSUM:
++        assert(pd->pkg);
++
++        if (!pd->pkg->files_checksum_type)
++            pd->pkg->files_checksum_type = cr_safe_string_chunk_insert(pd->pkg->chunk,
++                                                           cr_find_attr("type", attr));
++        break;
++
+     case STATE_FILE:
+         assert(pd->pkg);
+ 
+@@ -195,6 +210,10 @@ cr_start_handler(void *pdata, const xmlChar *element, const xmlChar **attr)
+                 cr_xml_parser_warning(pd, CR_XML_WARNING_UNKNOWNVAL,
+                                       "Unknown file type \"%s\"", val);
+         }
++
++        val = cr_find_attr("cpeid", attr);
++        if (val)
++            pd->last_digest = g_strdup(val);
+         break;
+ 
+     default:
+@@ -230,7 +249,9 @@ cr_end_handler(void *pdata, G_GNUC_UNUSED const xmlChar *element)
+     switch (state) {
+     case STATE_START:
+     case STATE_FILELISTS:
++    case STATE_FILELISTS_EXT:
+     case STATE_VERSION:
++    case STATE_CHECKSUM:
+         break;
+ 
+     case STATE_PACKAGE:
+@@ -282,6 +303,12 @@ cr_end_handler(void *pdata, G_GNUC_UNUSED const xmlChar *element)
+             default: assert(0);  // Should not happend
+         }
+ 
++	pkg_file->digest = cr_safe_string_chunk_insert(pd->pkg->chunk, pd->last_digest);
++        if (pd->last_digest) {
++            g_free(pd->last_digest);
++            pd->last_digest = NULL;
++        }
++
+         pd->pkg->files = g_slist_prepend(pd->pkg->files, pkg_file);
+         break;
+     }
+@@ -407,6 +434,10 @@ cr_xml_parse_filelists_snippet(const char *xml_string,
+                                void *warningcb_data,
+                                GError **err)
+ {
++    // This function can parse filelists and filelists_ext.  The state
++    // machine do not track if the wrapped XML is one or another, so
++    // is safe for a filelists_ext snipped to be surrounded by
++    // <filelists>
+     gchar* wrapped_xml_string = g_strconcat("<filelists>", xml_string, "</filelists>", NULL);
+     int ret = cr_xml_parse_filelists_internal(wrapped_xml_string, newpkgcb, newpkgcb_data, pkgcb, pkgcb_data,
+                                               warningcb, warningcb_data, &cr_xml_parser_generic_from_string, err);
+diff --git a/src/xml_parser_internal.h b/src/xml_parser_internal.h
+index 0a33578..510e392 100644
+--- a/src/xml_parser_internal.h
++++ b/src/xml_parser_internal.h
+@@ -35,7 +35,7 @@ extern "C" {
+ #define XML_BUFFER_SIZE         8192
+ #define CONTENT_REALLOC_STEP    256
+ 
+-/* Some notes about XML parsing (primary, filelists, other)
++/* Some notes about XML parsing (primary, filelists[_ext], other)
+  * ========================================================
+  * - Error during parsing is indicated via cr_ParserData->err member.
+  * - User specified callback have to be sanitized! User callbacks
+@@ -44,7 +44,7 @@ extern "C" {
+  *   of the callback has to set the GError by himself.
+  */
+ 
+-/** File types in filelists.xml
++/** File types in filelists[_ext].xml
+  */
+ typedef enum {
+     FILE_FILE,
+@@ -88,6 +88,7 @@ typedef struct _cr_ParserData {
+         Was the main tag present? E.g.:
+         For primary.xml <metadata>
+         For filelists.xml <filelists>
++        For filelists_ext.xml <filelists_ext>
+         For other.xml <otherdata>
+         For repomd.xml <repomd>
+         For updateinfo.xml <updates>
+@@ -128,6 +129,8 @@ typedef struct _cr_ParserData {
+ 
+     cr_FileType last_file_type; /*!<
+         Type of file in a currently parsed element */
++    char *last_digest; /*!<
++        Disgest of the current parsed element */
+ 
+     /* Other related stuff */
+ 
+diff --git a/tests/fixtures.h b/tests/fixtures.h
+index 39e48c0..719105a 100644
+--- a/tests/fixtures.h
++++ b/tests/fixtures.h
+@@ -31,6 +31,7 @@
+ #define TEST_REPO_01                    TEST_DATA_PATH"repo_01/"
+ #define TEST_REPO_02                    TEST_DATA_PATH"repo_02/"
+ #define TEST_REPO_03                    TEST_DATA_PATH"repo_03/"
++#define TEST_REPO_04                    TEST_DATA_PATH"repo_04/"
+ #define TEST_REPO_KOJI_01               TEST_DATA_PATH"repo_koji_01/"
+ #define TEST_REPO_KOJI_02               TEST_DATA_PATH"repo_koji_02/"
+ #define TEST_FILES_PATH                 TEST_DATA_PATH"test_files/"
+@@ -62,6 +63,14 @@
+ #define TEST_REPO_03_OTHER      TEST_REPO_03"repodata/ef3e20691954c3d1318ec3071a982da339f4ed76967ded668b795c9e070aaab6-other.xml.gz"
+ #define TEST_REPO_03_MODULEMD   TEST_REPO_03"repodata/a850093e240506c728d6ce26a6fc51d6a7fe10730c67988d13afa7dd82df82d5-modules.yaml.xz"
+ 
++// REPO_04 is a copy of REPO_02 with filelists_ext metadata
++#define TEST_REPO_04_REPOMD        TEST_REPO_04"repodata/repomd.xml"
++#define TEST_REPO_04_PRIMARY       TEST_REPO_04"repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz"
++#define TEST_REPO_04_FILELISTS     TEST_REPO_04"repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz"
++#define TEST_REPO_04_FILELISTS_EXT TEST_REPO_04"repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz"
++#define TEST_REPO_04_OTHER         TEST_REPO_04"repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz"
++
++
+ #define TEST_REPO_WITH_ADDITIONAL_METADATA_REPOMD                TEST_REPO_WITH_ADDITIONAL_METADATA"repodata/repomd.xml"
+ #define TEST_REPO_WITH_ADDITIONAL_METADATA_PRIMARY_XML_GZ        TEST_REPO_WITH_ADDITIONAL_METADATA"repodata/490a2a494a3827b8a356f728ac36bc02fb009b0eaea173c890e727bb54219037-primary.xml.gz"
+ #define TEST_REPO_WITH_ADDITIONAL_METADATA_PRIMARY_SQLITE_BZ2    TEST_REPO_WITH_ADDITIONAL_METADATA"repodata/1e12239bf5cb07ec73c74482c35e80dabe30dbe2fdd57bd9e557d987cbacc8c2-primary.sqlite.bz2"
+@@ -103,8 +112,10 @@
+ 
+ // Repodata snippets
+ 
+-#define TEST_FILELISTS_SNIPPET_01   TEST_REPODATA_SNIPPETS"filelists_snippet_01.xml"
+-#define TEST_FILELISTS_SNIPPET_02   TEST_REPODATA_SNIPPETS"filelists_snippet_02.xml"
++#define TEST_FILELISTS_SNIPPET_01     TEST_REPODATA_SNIPPETS"filelists_snippet_01.xml"
++#define TEST_FILELISTS_SNIPPET_02     TEST_REPODATA_SNIPPETS"filelists_snippet_02.xml"
++#define TEST_FILELISTS_EXT_SNIPPET_01 TEST_REPODATA_SNIPPETS"filelists_ext_snippet_01.xml"
++#define TEST_FILELISTS_EXT_SNIPPET_02 TEST_REPODATA_SNIPPETS"filelists_ext_snippet_02.xml"
+ 
+ // Other
+ 
+diff --git a/tests/python/tests/fixtures.py b/tests/python/tests/fixtures.py
+index 93cd2da..5fbaf98 100644
+--- a/tests/python/tests/fixtures.py
++++ b/tests/python/tests/fixtures.py
+@@ -22,6 +22,11 @@ FILELISTS_ERROR_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
+ FILELISTS_MULTI_WARN_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
+                                "multiple_warnings_00-filelists.xml")
+ 
++FILELISTS_EXT_ERROR_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
++                              "error_00-filelists_ext.xml")
++FILELISTS_EXT_MULTI_WARN_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
++                                   "multiple_warnings_00-filelists_ext.xml")
++
+ OTHER_ERROR_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
+                       "error_00-other.xml")
+ OTHER_MULTI_WARN_00_PATH = os.path.join(MODIFIED_REPO_FILES_PATH,
+@@ -97,6 +102,17 @@ REPO_02_FILXML = os.path.join(REPO_02_PATH, "repodata/",
+ REPO_02_OTHXML = os.path.join(REPO_02_PATH, "repodata/",
+     "ab5d3edeea50f9b4ec5ee13e4d25c147e318e3a433dbabc94d3461f58ac28255-other.xml.gz")
+ 
++REPO_04_PATH = os.path.join(REPOS_PATH, "repo_04")
++REPO_04_REPOMD = os.path.join(REPO_04_PATH, "repodata/repomd.xml")
++REPO_04_PRIXML = os.path.join(REPO_04_PATH, "repodata/",
++    "6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz")
++REPO_04_FILXML = os.path.join(REPO_04_PATH, "repodata/",
++    "d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz")
++REPO_04_FEXXML = os.path.join(REPO_04_PATH, "repodata/",
++    "5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz")
++REPO_04_OTHXML = os.path.join(REPO_04_PATH, "repodata/",
++    "6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz")
++
+ REPO_WITH_ADDITIONAL_METADATA = os.path.join(REPOS_PATH, "repo_with_additional_metadata")
+ 
+ REPO_WITH_DUPLICATE_PACKAGES = os.path.join(REPOS_PATH, "repo_with_duplicate_packages")
+@@ -121,6 +137,8 @@ PRIMARY_SNIPPET_01 = os.path.join(REPODATA_SNIPPETS, "primary_snippet_01.xml")
+ PRIMARY_SNIPPET_02 = os.path.join(REPODATA_SNIPPETS, "primary_snippet_02.xml")
+ FILELISTS_SNIPPET_01 = os.path.join(REPODATA_SNIPPETS, "filelists_snippet_01.xml")
+ FILELISTS_SNIPPET_02 = os.path.join(REPODATA_SNIPPETS, "filelists_snippet_02.xml")
++FILELISTS_EXT_SNIPPET_01 = os.path.join(REPODATA_SNIPPETS, "filelists_ext_snippet_01.xml")
++FILELISTS_EXT_SNIPPET_02 = os.path.join(REPODATA_SNIPPETS, "filelists_extXS_snippet_02.xml")
+ OTHER_SNIPPET_01 = os.path.join(REPODATA_SNIPPETS, "other_snippet_01.xml")
+ OTHER_SNIPPET_02 = os.path.join(REPODATA_SNIPPETS, "other_snippet_02.xml")
+ 
+diff --git a/tests/python/tests/test_load_metadata.py b/tests/python/tests/test_load_metadata.py
+index 744ddb2..8aa0fed 100644
+--- a/tests/python/tests/test_load_metadata.py
++++ b/tests/python/tests/test_load_metadata.py
+@@ -35,6 +35,7 @@ class TestCaseLoadMetadata(unittest.TestCase):
+         self.assertTrue(pkg)
+ 
+         self.assertEqual(pkg.name, "super_kernel")
++        self.assertEqual(pkg.files_checksum_type, None)
+ 
+     def test_load_metadata_repo02(self):
+         md = cr.Metadata()
+@@ -56,6 +57,29 @@ class TestCaseLoadMetadata(unittest.TestCase):
+ 
+         pkg = md.get('90f61e546938a11449b710160ad294618a5bd3062e46f8cf851fd0088af184b7')
+         self.assertEqual(pkg.name, "fake_bash")
++        self.assertEqual(pkg.files_checksum_type, None)
++
++    def test_load_metadata_repo04(self):
++        md = cr.Metadata()
++        md.locate_and_load_xml(REPO_04_PATH)
++        self.assertTrue(md)
++
++        self.assertEqual(md.key, cr.HT_KEY_DEFAULT)
++
++        self.assertEqual(md.len(), 2)
++        self.assertEqual(md.keys(),
++            ['6d43a638af70ef899933b1fd86a866f18f65b0e0e17dcbf2e42bfd0cdd7c63c3',
++             '90f61e546938a11449b710160ad294618a5bd3062e46f8cf851fd0088af184b7'])
++        self.assertFalse(md.has_key("foo"))
++        self.assertFalse(md.has_key(""))
++        self.assertFalse(md.remove("foo"))
++
++        pkg = md.get('152824bff2aa6d54f429d43e87a3ff3a0286505c6d93ec87692b5e3a9e3b97bf')
++        self.assertEqual(pkg, None)
++
++        pkg = md.get('90f61e546938a11449b710160ad294618a5bd3062e46f8cf851fd0088af184b7')
++        self.assertEqual(pkg.name, "fake_bash")
++        self.assertEqual(pkg.files_checksum_type, "sha256")
+ 
+     def test_load_metadata_repo02_destructor(self):
+         md = cr.Metadata(use_single_chunk=True)
+diff --git a/tests/python/tests/test_package.py b/tests/python/tests/test_package.py
+index 62c8fbe..e02845a 100644
+--- a/tests/python/tests/test_package.py
++++ b/tests/python/tests/test_package.py
+@@ -32,6 +32,7 @@ class TestCasePackage(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, "sha256")
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [
+             ('empty', 'EQ', '0', '0', '0', False),
+@@ -77,6 +78,7 @@ class TestCasePackage(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, "sha256")
+         self.assertEqual(pkg.requires, [
+             ('fooa', 'LE', '0', '2', None, False),
+             ('foob', 'GE', '0', '1.0.0', '1', False),
+@@ -113,9 +115,9 @@ class TestCasePackage(unittest.TestCase):
+         self.assertEqual(pkg.recommends, [])
+         self.assertEqual(pkg.supplements, [])
+         self.assertEqual(pkg.files, [
+-            ('', '/usr/bin/', 'complex_a'),
+-            ('dir', '/usr/share/doc/', 'Archer-3.4.5'),
+-            ('', '/usr/share/doc/Archer-3.4.5/', 'README')
++            ('', '/usr/bin/', 'complex_a', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
++            ('dir', '/usr/share/doc/', 'Archer-3.4.5', ''),
++            ('', '/usr/share/doc/Archer-3.4.5/', 'README', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+             ])
+         self.assertEqual(pkg.changelogs, [
+             ('Tomas Mlcoch <tmlcoch@redhat.com> - 1.1.1-1', 1334664000,
+@@ -200,8 +202,8 @@ class TestCasePackage(unittest.TestCase):
+         self.assertEqual(pkg.recommends, [('foo_rec', 'GE', '0', '1.1.0', None, False)])
+         pkg.supplements = [('foo_sup', 'GE', '0', '1.1.0', None, False)]
+         self.assertEqual(pkg.supplements, [('foo_sup', 'GE', '0', '1.1.0', None, False)])
+-        pkg.files = [(None, '/foo/', 'bar')]
+-        self.assertEqual(pkg.files, [(None, '/foo/', 'bar')])
++        pkg.files = [(None, '/foo/', 'bar', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')]
++        self.assertEqual(pkg.files, [(None, '/foo/', 'bar', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')])
+         pkg.changelogs = [('me', 123456, 'first commit')]
+         self.assertEqual(pkg.changelogs, [('me', 123456, 'first commit')])
+ 
+@@ -228,4 +230,3 @@ class TestCasePackage(unittest.TestCase):
+         del(pkg_c)
+         self.assertEqual(pkg_d.name, "FooPackage")
+         del(pkg_d)
+-
+diff --git a/tests/python/tests/test_xml_parser.py b/tests/python/tests/test_xml_parser.py
+index 0240a9b..81acba9 100644
+--- a/tests/python/tests/test_xml_parser.py
++++ b/tests/python/tests/test_xml_parser.py
+@@ -57,6 +57,7 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+         self.assertEqual(pkg.location_href, "super_kernel-6.0.1-2.x86_64.rpm")
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires,
+                 [('bzip2', 'GE', '0', '1.0.0', None, True),
+                  ('expat', None, None, None, None, True),
+@@ -75,7 +76,7 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+                 [('kernel', None, None, None, None, False),
+                  ('super_kernel', 'EQ', '0', '5.9.0', None, False)])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin/', 'super_kernel')])
++                [(None, '/usr/bin/', 'super_kernel', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_primary_repo01_ampersand(self):
+@@ -130,6 +131,7 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+         self.assertEqual(pkg.location_href, "super_kernel&-6.0.1-2.x86_64.rpm")
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires,
+                 [('bzip2', 'GE', '0', '1.0.0', None, True),
+                  ('expat', None, None, None, None, True),
+@@ -148,9 +150,9 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+                 [('kernel', None, None, None, None, False),
+                  ('super_kernel', 'EQ', '0', '5.9.0', None, False)])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin&/', 'super_kernel'),
+-                 (None, '/usr/bin/', 'supe&&r_kernel'),
+-                 (None, '/usr/bin/', 'super_kernel')])
++                [(None, '/usr/bin&/', 'super_kernel', None),
++                 (None, '/usr/bin/', 'supe&&r_kernel', None),
++                 (None, '/usr/bin/', 'super_kernel', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_primary_snippet01(self):
+@@ -206,6 +208,7 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+         self.assertEqual(pkg.location_href, "super_kernel-6.0.1-2.x86_64.rpm")
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires,
+                 [('bzip2', 'GE', '0', '1.0.0', None, True),
+                  ('expat', None, None, None, None, True),
+@@ -224,7 +227,7 @@ class TestCaseXmlParserPrimary(unittest.TestCase):
+                 [('kernel', None, None, None, None, False),
+                  ('super_kernel', 'EQ', '0', '5.9.0', None, False)])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin/', 'super_kernel')])
++                [(None, '/usr/bin/', 'super_kernel', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_primary_repo02(self):
+@@ -423,13 +426,14 @@ class TestCaseXmlParserFilelists(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+         self.assertEqual(pkg.obsoletes, [])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin/', 'super_kernel'),
+-                 (None, '/usr/share/man/', 'super_kernel.8.gz')])
++                [(None, '/usr/bin/', 'super_kernel', None),
++                 (None, '/usr/share/man/', 'super_kernel.8.gz', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_filelists_repo01_ampersand(self):
+@@ -484,13 +488,14 @@ class TestCaseXmlParserFilelists(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+         self.assertEqual(pkg.obsoletes, [])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/&&bin/', 'super_kernel'),
+-                 (None, '/usr/share/man/', 'super_kernel.8.gz')])
++                [(None, '/usr/&&bin/', 'super_kernel', None),
++                 (None, '/usr/share/man/', 'super_kernel.8.gz', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_filelists_snippet01(self):
+@@ -546,13 +551,14 @@ class TestCaseXmlParserFilelists(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+         self.assertEqual(pkg.obsoletes, [])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin/', 'super_kernel'),
+-                 (None, '/usr/share/man/', 'super_kernel.8.gz')])
++                [(None, '/usr/bin/', 'super_kernel', None),
++                 (None, '/usr/share/man/', 'super_kernel.8.gz', None)])
+         self.assertEqual(pkg.changelogs, [])
+ 
+     def test_xml_parser_filelists_repo02(self):
+@@ -784,6 +790,7 @@ class TestCaseXmlParserOther(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+@@ -849,6 +856,7 @@ class TestCaseXmlParserOther(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+@@ -915,6 +923,7 @@ class TestCaseXmlParserOther(unittest.TestCase):
+         self.assertEqual(pkg.location_href, None)
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, None)
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires, [])
+         self.assertEqual(pkg.provides, [])
+         self.assertEqual(pkg.conflicts, [])
+@@ -1187,6 +1196,7 @@ class TestCaseXmlParserPkgIterator(unittest.TestCase):
+         self.assertEqual(pkg.location_href, "super_kernel-6.0.1-2.x86_64.rpm")
+         self.assertEqual(pkg.location_base, None)
+         self.assertEqual(pkg.checksum_type, "sha256")
++        self.assertEqual(pkg.files_checksum_type, None)
+         self.assertEqual(pkg.requires,
+                 [('bzip2', 'GE', '0', '1.0.0', None, True),
+                  ('expat', None, None, None, None, True),
+@@ -1205,8 +1215,8 @@ class TestCaseXmlParserPkgIterator(unittest.TestCase):
+                 [('kernel', None, None, None, None, False),
+                  ('super_kernel', 'EQ', '0', '5.9.0', None, False)])
+         self.assertEqual(pkg.files,
+-                [(None, '/usr/bin/', 'super_kernel'),
+-                 (None, '/usr/share/man/', 'super_kernel.8.gz')])
++                [(None, '/usr/bin/', 'super_kernel', None),
++                 (None, '/usr/share/man/', 'super_kernel.8.gz', None)])
+         self.assertEqual(pkg.changelogs,
+                 [('Tomas Mlcoch <tmlcoch@redhat.com> - 6.0.1-1',
+                    1334664000,
+diff --git a/tests/test_xml_parser_filelists.c b/tests/test_xml_parser_filelists.c
+index 5c569e3..4f65b6b 100644
+--- a/tests/test_xml_parser_filelists.c
++++ b/tests/test_xml_parser_filelists.c
+@@ -171,6 +171,18 @@ test_cr_xml_parse_filelists_02(void)
+     g_assert_cmpint(parsed, ==, 2);
+ }
+ 
++static void
++test_cr_xml_parse_filelists_ext_04(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    int ret = cr_xml_parse_filelists(TEST_REPO_04_FILELISTS_EXT, NULL, NULL,
++                                     pkgcb, &parsed, NULL, NULL, &tmp_err);
++    g_assert(tmp_err == NULL);
++    g_assert_cmpint(ret, ==, CRE_OK);
++    g_assert_cmpint(parsed, ==, 2);
++}
++
+ static void
+ test_cr_xml_parse_filelists_unknown_element_00(void)
+ {
+@@ -258,6 +270,19 @@ test_cr_xml_parse_filelists_pkgcb_interrupt(void)
+     g_assert_cmpint(parsed, ==, 1);
+ }
+ 
++static void
++test_cr_xml_parse_filelists_ext_pkgcb_interrupt(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    int ret = cr_xml_parse_filelists(TEST_REPO_04_FILELISTS_EXT, NULL, NULL,
++                            pkgcb_interrupt, &parsed, NULL, NULL, &tmp_err);
++    g_assert(tmp_err != NULL);
++    g_error_free(tmp_err);
++    g_assert_cmpint(ret, ==, CRE_CBINTERRUPTED);
++    g_assert_cmpint(parsed, ==, 1);
++}
++
+ static void
+ test_cr_xml_parse_filelists_newpkgcb_interrupt(void)
+ {
+@@ -272,6 +297,20 @@ test_cr_xml_parse_filelists_newpkgcb_interrupt(void)
+     g_assert_cmpint(parsed, ==, 0);
+ }
+ 
++static void
++test_cr_xml_parse_filelists_ext_newpkgcb_interrupt(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    int ret = cr_xml_parse_filelists(TEST_REPO_04_FILELISTS_EXT,
++                                     newpkgcb_interrupt, NULL,
++                                     pkgcb, &parsed,  NULL, NULL, &tmp_err);
++    g_assert(tmp_err != NULL);
++    g_error_free(tmp_err);
++    g_assert_cmpint(ret, ==, CRE_CBINTERRUPTED);
++    g_assert_cmpint(parsed, ==, 0);
++}
++
+ static void
+ test_cr_xml_parse_filelists_warningcb_interrupt(void)
+ {
+@@ -364,6 +403,32 @@ test_cr_xml_parse_filelists_snippet_snippet_02(void)
+     g_assert_cmpint(parsed, ==, 2);
+ }
+ 
++static void
++test_cr_xml_parse_filelists_ext_snippet_snippet_01(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    char buf[600];
++    read_file(TEST_FILELISTS_EXT_SNIPPET_01, CR_CW_AUTO_DETECT_COMPRESSION, buf, 600);
++    int ret = cr_xml_parse_filelists_snippet(buf, NULL, NULL, pkgcb, &parsed, NULL, NULL, &tmp_err);
++    g_assert(tmp_err == NULL);
++    g_assert_cmpint(ret, ==, CRE_OK);
++    g_assert_cmpint(parsed, ==, 1);
++}
++
++static void
++test_cr_xml_parse_filelists_ext_snippet_snippet_02(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    char buf[800];
++    read_file(TEST_FILELISTS_EXT_SNIPPET_02, CR_CW_AUTO_DETECT_COMPRESSION, buf, 800);
++    int ret = cr_xml_parse_filelists_snippet(buf, NULL, NULL, pkgcb, &parsed, NULL, NULL, &tmp_err);
++    g_assert(tmp_err == NULL);
++    g_assert_cmpint(ret, ==, CRE_OK);
++    g_assert_cmpint(parsed, ==, 2);
++}
++
+ int
+ main(int argc, char *argv[])
+ {
+@@ -375,6 +440,8 @@ main(int argc, char *argv[])
+                     test_cr_xml_parse_filelists_01);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_02",
+                     test_cr_xml_parse_filelists_02);
++    g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_ext_04",
++                    test_cr_xml_parse_filelists_ext_04);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_unknown_element_00",
+                     test_cr_xml_parse_filelists_unknown_element_00);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_unknown_element_01",
+@@ -389,8 +456,12 @@ main(int argc, char *argv[])
+                     test_cr_xml_parse_filelists_skip_fake_bash_01);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_pkgcb_interrupt",
+                     test_cr_xml_parse_filelists_pkgcb_interrupt);
++    g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_ext_pkgcb_interrupt",
++                    test_cr_xml_parse_filelists_ext_pkgcb_interrupt);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_newpkgcb_interrupt",
+                     test_cr_xml_parse_filelists_newpkgcb_interrupt);
++    g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_ext_newpkgcb_interrupt",
++                    test_cr_xml_parse_filelists_ext_newpkgcb_interrupt);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_warningcb_interrupt",
+                     test_cr_xml_parse_filelists_warningcb_interrupt);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_bad_file_type_00",
+@@ -403,5 +474,9 @@ main(int argc, char *argv[])
+                     test_cr_xml_parse_filelists_snippet_snippet_01);
+     g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_snippet_snippet_02",
+                     test_cr_xml_parse_filelists_snippet_snippet_02);
++    g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_ext_snippet_snippet_01",
++                    test_cr_xml_parse_filelists_ext_snippet_snippet_01);
++    g_test_add_func("/xml_parser_filelists/test_cr_xml_parse_filelists_ext_snippet_snippet_02",
++                    test_cr_xml_parse_filelists_ext_snippet_snippet_02);
+     return g_test_run();
+ }
+diff --git a/tests/test_xml_parser_main_metadata_together.c b/tests/test_xml_parser_main_metadata_together.c
+index 09a53dd..7b4cde3 100644
+--- a/tests/test_xml_parser_main_metadata_together.c
++++ b/tests/test_xml_parser_main_metadata_together.c
+@@ -120,6 +120,28 @@ test_cr_xml_package_iterator_00(void)
+     g_assert_cmpint(parsed, ==, 2);
+ }
+ 
++static void
++test_cr_xml_package_iterator_filelists_ext_00(void)
++{
++    int parsed = 0;
++    GError *tmp_err = NULL;
++    cr_Package *package = NULL;
++
++    cr_PkgIterator *pkg_iterator = cr_PkgIterator_new(
++        TEST_REPO_04_PRIMARY, TEST_REPO_04_FILELISTS_EXT, TEST_REPO_04_OTHER, NULL, NULL, NULL, NULL, &tmp_err);
++
++    while ((package = cr_PkgIterator_parse_next(pkg_iterator, &tmp_err))) {
++        parsed++;
++        cr_package_free(package);
++    }
++
++    g_assert(cr_PkgIterator_is_finished(pkg_iterator));
++    cr_PkgIterator_free(pkg_iterator, &tmp_err);
++
++    g_assert(tmp_err == NULL);
++    g_assert_cmpint(parsed, ==, 2);
++}
++
+ 
+ static void
+ test_cr_xml_package_iterator_01_warningcb_interrupt(void)
+@@ -295,6 +317,9 @@ main(int argc, char *argv[])
+     g_test_add_func("/xml_parser_main_metadata/test_cr_xml_package_iterator_00",
+                     test_cr_xml_package_iterator_00);
+ 
++    g_test_add_func("/xml_parser_main_metadata/test_cr_xml_package_iterator_filelists_ext_00",
++                    test_cr_xml_package_iterator_filelists_ext_00);
++
+     g_test_add_func("/xml_parser_main_metadata/test_cr_xml_package_iterator_01_warningcb_interrupt",
+                     test_cr_xml_package_iterator_01_warningcb_interrupt);
+ 
+diff --git a/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz b/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz
+new file mode 100644
+index 0000000000000000000000000000000000000000..e036d7e2f4adb0c10844882534c43bec4f8ca3b9
+GIT binary patch
+literal 409
+zcmV;K0cQRmiwFP!000001I3cdZrd;rMfd#*g8PaOQ50EN&aPk3u8ko%v;;jY=ux=&
+z`iui7sF7^CC<<=K8P43fhdex8$ASIAW$i9g!&M<U!zo@;H=P^)^T+qEjz1m09CA0{
+z(5>5g!t2JUW?CEGZrl7#h@qSIYmxRI3rxEhaf1XKh=&@^W{5qUk?J(3j`t&*`*W8X
+z?q#+LD`S1>Kq+H<sFhS!Lekz?<)8|wlvbm$*~RQCm6MdtK~~O$nzIQ;Y<PwqPXX4J
+zGgxBV@T;>YYe<o?!`&yt`EpB<SBl(R)8cHwf%aUyUX3lre%(j5{hq1q+Jdg^J$Ez4
+zTGD7ZmO(~iw0AkGsEmgkvWd=nn}gRz*MLUR%;d+HCW7&m_bSw`(!o^~KZ<=_MCc~*
+zKKbF593c{SMjvU}WJ<6^D%TP-srj-D1jJcz))J9ys~}OLs#6S^py@!kVoG(iWh~!l
+zt^172smEo);V*#MLcRmj{|(rm!@n{6Ct~DfK{3LkWZ{bQ^Jj1M`0<Y~#l-oDV*>yH
+Dr|i-K
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/testdata/repo_04/repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz b/tests/testdata/repo_04/repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz
+new file mode 100644
+index 0000000000000000000000000000000000000000..1a10f5f5a609dcc1e4f25f24237f742320ca22df
+GIT binary patch
+literal 987
+zcmV<110?((iwFP!000001GQI6Z{s!)zVELfbZUXMsF!IukhSO`yO$hVBzx$|prnyS
+zSQ1rIa^w8^4kcT59NT$qVIU^wJ>QTYo#@+RRgw)TEo8m0T-&h-)Tzuwy;@j5AHGjQ
+z>s$OKs-Wc=Z#hBpS}&}kZJQfPOHp@^cGj)IhODD|E1JrxlC?Eh->9Z~)dOuT((rW6
+zSAg+73zP1)q}?{Ku#83gg^;M`6~sAT!!qHzh-kkz3a-*3ehk@?1rhBxM!IW`KqJ#)
+zVPS(PF|FdqA__`eTeLS#3rN?xt9BW6!M!QNveqk+Ev&z9@2z<5<jjR>z~+9)T{j5k
+z$;@?J=J3p$2h0umG|7C2c@VHXO!IK+=9%M!A<x|~NM;e;C+Rcdcg58<{*LXCp`E?R
+zs58*15>1QsA58WzMf6y0%y$YEM|4~od8f*FhyRG%QWsE`HcpC0)EF4UR#ZT8QDXBh
+z3&NS}J8o!^q!T3q;QD^RW=<G*JG``bf_*hOGtZw{MAW+FWeHgiwV8t07$pKZIF&Nx
+zreabk$QRaF(4?OT{v9T0n|Ti&xl|Qz%@Q{#z9~ftwTAe|pLY>G7931AP-oHrakM#T
+zS4wtGe81H#ROGha2qo(Z>XzOcQ1sw67#*B?6bh-^*tAfZmEEs0S#ePhP6wldqn4dY
+z0ax+MX0=L9r-Sps@Zekk&p=HSukj`zw5mlg!~U8g#GW&q4Jhr*8znaa&&43x39&P^
+zCFY(iER%ijaYj8>Xpy|+E4+%ge_3z1JJ*B#hBKY8;P-b29dLQxRG&t{Kb=rl`qW(m
+zYPkkgL-{<~bJxfm_n3BC(L~hrh*x@rIe&D20LN?f3OOC;{wO~&+Zo~T-p)@f3w+Ly
+zoAQ|hc{rcXeLq183K<U>Lk`N>G;zQIcb26|jx^;ZNKk2(%~Iy4{sn$|0NoyV=MqId
+z6hiN<NWpQv8{Aj22mLFNiIyd_W|_)5$E(|FBKrW^{t%~WxjaU^=QPnSg<kT1LCXs0
+z7MdkW6d*HgQE`>=y!lJU^UpJ07)&oRUf=}h8Sl8(Nk8U^_YTs#L)P1PpW(efng$*F
+zk~AGi@PA{xv(0{%^qBun(yL{=JUJyJ72Q3&prWZA;t!$AymmIu8A>z#{;D`9T<~hV
+zw@~icxF4t7<ViH%nD58!8HzV}AS=N2cLN?9-oC+ZRf^<VKF{{p)d4)20M{M|BN|!i
+zVwmTz%qIpt{m6kibAW^6I74G6UG$+xD*gq9&#xAK?j1hKe)14Me?zao#pAyb@qfk2
+J8a&Vp0019d;Q;^u
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/testdata/repo_04/repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz b/tests/testdata/repo_04/repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz
+new file mode 100644
+index 0000000000000000000000000000000000000000..6ef3c2e2049ccb94c0a7f6df10dfc3893a807808
+GIT binary patch
+literal 397
+zcmV;80doEyiwFP!000001Fe$1ZtNfsh5I}OqDZ$k*eu33>&>mwrAltS8pB{){*{fR
+zef*5Az1yUSB1JR<9L`}rI6Ytcj(y;~G~-Zk841pCu%l~+s^I_LUk-*ppC3+RsBv}>
+zfRTP!3SNgW{fXnQ8P;p$))pglYusaiO%?BY&L*%eR7m=Slgn+&rnYKa!E@oY#G}%A
+zYCuY*@-mY`Y5^|Em6isMrAviQP-$<hH%IB65XOL)MwJ<71N2yM4=r9wSZdB-wspa;
+zMqjj|M8;0H-WX2fwnhEX%GN0j&SvbW=J77IH4GJYW5r+%^+>Asv4@4dc9zbv$1XgD
+zey{(|=xPX&9s9>BJh21Y{SM?v?bDTHnkuc85Q3i%?4_BPuw@}Ec#7{ige1N(`ASDS
+zm4YTRJ`?Cop66*=5&)yYXiWsXK9&Ln%FNl)6QrahJl46)>eQzH=`8Dn^QFak!0rct
+rbR_P8l3xI{`~4iyucRhlQstKVhISm>x9<|)KmYj?@HjSRF9QGo*LcO1
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/testdata/repo_04/repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz b/tests/testdata/repo_04/repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz
+new file mode 100644
+index 0000000000000000000000000000000000000000..acfb03cabc60224ce26414f6e7b93dfb9015fe0e
+GIT binary patch
+literal 336
+zcmV-W0k8faiwFP!000001C`O=Zi65c2Jrhm1>t@IiinH0cYA{Ex;el>jY^GwmS#^s
+z+O*x8?PlRd@bmEfVzobw1Np#t>5ieMBH@%^ut(R0rl#+2ug{w9cTbh?1{}I&T}aG_
+zrKat=PA`lNUD!^E+j>mUZEVC99IU|Zc}ga*Jv11<NokyP-IA$qI#<(@dnGWJs?0P9
+zA!TU_!G+@B(o!m+AvZ4LDn+ThwqEDLJI=KRFSIlTB>_gPsfQj929}l*m~C6rlU4^M
+z<Bfz=S0BOYczzX)@#L(Hi;@|K_)OU)dM>_W+cGoL1$LiWT|}`yyY~MrQBG!{qQVy(
+zy)Mf#%S<e*6=<bmTd#7%k)tS_H9mq;6DiiY!m7+>H_5V1I3IeP0}lVdsD$4!>7SUN
+igKwUP(9*(;Y=p;XqLb$HFaP&X-hBab{I0P_0ssJNZltsT
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/testdata/repo_04/repodata/repomd.xml b/tests/testdata/repo_04/repodata/repomd.xml
+new file mode 100644
+index 0000000..16ab36b
+--- /dev/null
++++ b/tests/testdata/repo_04/repodata/repomd.xml
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<repomd xmlns="http://linux.duke.edu/metadata/repo" xmlns:rpm="http://linux.duke.edu/metadata/rpm">
++  <revision>1648713099</revision>
++  <data type="primary">
++    <checksum type="sha256">6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1</checksum>
++    <open-checksum type="sha256">1bba2a9c15c538c0c75311727f70a08ca11170ea2add44871c4d273e828454a2</open-checksum>
++    <location href="repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz"/>
++    <timestamp>1648713099</timestamp>
++    <size>987</size>
++    <open-size>3280</open-size>
++  </data>
++  <data type="filelists">
++    <checksum type="sha256">d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84</checksum>
++    <open-checksum type="sha256">9c41a54fe07b5d6c762d7262f68aea1af9c7736f8e06f1841a0dc03ed21a7a88</open-checksum>
++    <location href="repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz"/>
++    <timestamp>1648713099</timestamp>
++    <size>336</size>
++    <open-size>583</open-size>
++  </data>
++  <data type="other">
++    <checksum type="sha256">6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17</checksum>
++    <open-checksum type="sha256">e14aa58fbdec752786f303ce30ccaee0b7457172dfb26b0820fa8bcf3f3ddb40</open-checksum>
++    <location href="repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz"/>
++    <timestamp>1648713099</timestamp>
++    <size>397</size>
++    <open-size>815</open-size>
++  </data>
++  <data type="filelists_ext">
++    <checksum type="sha256">5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97</checksum>
++    <open-checksum type="sha256">1d71bbe08947468f20e0b3b062e177add2db77adc673045cfa9e199487210b05</open-checksum>
++    <location href="repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz"/>
++    <timestamp>1648713099</timestamp>
++    <size>409</size>
++    <open-size>867</open-size>
++  </data>
++</repomd>
+diff --git a/tests/testdata/repodata_snippets/filelists_ext_snippet_01.xml b/tests/testdata/repodata_snippets/filelists_ext_snippet_01.xml
+new file mode 100644
+index 0000000..ada0ba2
+--- /dev/null
++++ b/tests/testdata/repodata_snippets/filelists_ext_snippet_01.xml
+@@ -0,0 +1,6 @@
++<package pkgid="152824bff2aa6d54f429d43e87a3ff3a0286505c6d93ec87692b5e3a9e3b97bf" name="super_kernel" arch="x86_64">
++    <version epoch="0" ver="6.0.1" rel="2"/>
++    <checksum type="sha256"/>
++    <file hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">/usr/bin/super_kernel</file>
++    <file hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">/usr/share/man/super_kernel.8.gz</file>
++</package>
+diff --git a/tests/testdata/repodata_snippets/filelists_ext_snippet_02.xml b/tests/testdata/repodata_snippets/filelists_ext_snippet_02.xml
+new file mode 100644
+index 0000000..2152f46
+--- /dev/null
++++ b/tests/testdata/repodata_snippets/filelists_ext_snippet_02.xml
+@@ -0,0 +1,12 @@
++<package pkgid="90f61e546938a11449b710160ad294618a5bd3062e46f8cf851fd0088af184b7" name="fake_bash" arch="x86_64">
++    <version epoch="0" ver="1.1.1" rel="1"/>
++    <checksum type="sha256"/>
++    <file hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">/usr/bin/fake_bash</file>
++</package>
++
++<package pkgid="6d43a638af70ef899933b1fd86a866f18f65b0e0e17dcbf2e42bfd0cdd7c63c3" name="super_kernel" arch="x86_64">
++    <version epoch="0" ver="6.0.1" rel="2"/>
++    <checksum type="sha256"/>
++    <file hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">/usr/bin/super_kernel</file>
++    <file hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">/usr/share/man/super_kernel.8.gz</file>
++</package>
+-- 
+2.39.2
+

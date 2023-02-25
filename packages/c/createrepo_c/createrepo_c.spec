@@ -1,7 +1,7 @@
 #
 # spec file for package createrepo_c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,6 +61,14 @@ License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#rpm-software-management/createrepo_c!316
+Patch1:         0001-Add-optional-filelists_ext-metadata.patch
+# PATCH-FIX-UPSTREAM gh#rpm-software-management/createrepo_c!348
+Patch2:         0002-Rename-filelists_ext-to-filelists-ext-to-be-consiste.patch
+Patch3:         0003-Rename-filelists_ext.xml-metadata-to-filelists-ext.x.patch
+Patch4:         0004-Add-missing-ext-to-filelists-ext-repomd-record.patch
+# PATCH-FIX-UPSTREAM gh#rpm-software-management/createrepo_c!349
+Patch5:         0005-Complete-renaming-to-filelists-ext.patch
 
 %if %{with python3}
 BuildRequires:  python3-devel
@@ -73,6 +81,7 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  git-core
 BuildRequires:  glib2-devel >= 2.22.0
 BuildRequires:  libbz2-devel
 BuildRequires:  libcurl-devel
@@ -154,7 +163,7 @@ Obsoletes:      python2-%{name} < 0.12.0
 The Python 3 bindings for the createrepo_c library.
 
 %prep
-%autosetup -p1
+%autosetup -S git_am
 
 # do not hardcode date in the docs
 sed -i -e '/HTML_TIMESTAMP/d' doc/Doxyfile.in.in
@@ -198,6 +207,11 @@ done
 
 %fdupes %{buildroot}%{_prefix}
 %fdupes build/doc/html
+
+%if %{with python3}
+%python_compileall
+%fdupes %{buildroot}%{python3_sitearch}
+%endif
 
 %if %{with as_createrepo}
 %pre

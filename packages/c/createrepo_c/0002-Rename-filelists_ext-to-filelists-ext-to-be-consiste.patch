@@ -1,0 +1,28 @@
+From e7b7526a84a9ff71056d4223d4e25294f528168d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Thu, 16 Feb 2023 09:51:23 +0100
+Subject: [PATCH 2/5] Rename `--filelists_ext` to `--filelists-ext` to be
+ consistent
+
+---
+ src/cmd_parser.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cmd_parser.c b/src/cmd_parser.c
+index 722cf28..cee6a93 100644
+--- a/src/cmd_parser.c
++++ b/src/cmd_parser.c
+@@ -99,8 +99,8 @@ static GOptionEntry cmd_entries[] =
+       "Generate sqlite databases for use with yum.", NULL },
+     { "no-database", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.no_database),
+       "Do not generate sqlite databases in the repository.", NULL },
+-    { "filelists_ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
+-      "Create filelists_ext metadata with file hashes.", NULL },
++    { "filelists-ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
++      "Create filelists-ext metadata with file hashes.", NULL },
+     { "update", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.update),
+       "If metadata already exists in the outputdir and an rpm is unchanged "
+       "(based on file size and mtime) since the metadata was generated, reuse "
+-- 
+2.39.2
+

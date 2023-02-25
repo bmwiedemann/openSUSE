@@ -1,0 +1,26 @@
+From 43e70819558539771b35b2c92fbd8186567e7393 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Thu, 16 Feb 2023 10:01:58 +0100
+Subject: [PATCH 4/5] Add missing ext to filelists-ext repomd record
+
+Otherwise the db is overwritten.
+---
+ src/createrepo_c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/createrepo_c.c b/src/createrepo_c.c
+index bc9fd8c..4070bd9 100644
+--- a/src/createrepo_c.c
++++ b/src/createrepo_c.c
+@@ -1875,7 +1875,7 @@ main(int argc, char **argv)
+         pri_db_rec = cr_repomd_record_new("primary_db", pri_db_name);
+         fil_db_rec = cr_repomd_record_new("filelists_db", fil_db_name);
+         if (cmd_options->filelists_ext)
+-            fex_db_rec = cr_repomd_record_new("filelists_db", fex_db_name);
++            fex_db_rec = cr_repomd_record_new("filelists_ext_db", fex_db_name);
+         oth_db_rec = cr_repomd_record_new("other_db", oth_db_name);
+ 
+         // Set db version
+-- 
+2.39.2
+

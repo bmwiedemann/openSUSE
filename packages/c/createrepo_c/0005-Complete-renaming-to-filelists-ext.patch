@@ -1,0 +1,528 @@
+From cb8ec30ea71cc2a4740f3a60aeb429b6a623ab65 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 22 Feb 2023 11:37:42 +0100
+Subject: [PATCH 5/5] Complete renaming to filelists-ext
+
+This commit rename filelists_ext to filelists-ext in all the remaining
+scenarios, including the XML tags, comments, error messages and command
+line parameters.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/cmd_parser.h                                  |   2 +-
+ src/createrepo_c.c                                |   8 ++++----
+ src/dumper_thread.c                               |  10 +++++-----
+ src/dumper_thread.h                               |   8 ++++----
+ src/locate_metadata.c                             |   7 +++++--
+ src/locate_metadata.h                             |   1 +
+ src/mergerepo_c.c                                 |  14 +++++++-------
+ src/parsepkg.h                                    |   4 ++--
+ src/python/xml_dump-py.h                          |   4 ++--
+ src/sqlite.h                                      |   2 +-
+ src/xml_dump.h                                    |   8 ++++----
+ src/xml_file.c                                    |   4 ++--
+ src/xml_file.h                                    |   6 +++---
+ src/xml_parser_filelists.c                        |   6 +++---
+ src/xml_parser_internal.h                         |   2 +-
+ tests/fixtures.h                                  |   2 +-
+ ...0ea03a59c1e2644d749afbd97-filelists-ext.xml.gz | Bin 409 -> 0 bytes
+ ...1380a88bed86771d39fb19538-filelists-ext.xml.gz | Bin 0 -> 429 bytes
+ tests/testdata/repo_04/repodata/repomd.xml        |  12 ++++++------
+ 19 files changed, 52 insertions(+), 48 deletions(-)
+ delete mode 100644 tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz
+ create mode 100644 tests/testdata/repo_04/repodata/d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538-filelists-ext.xml.gz
+
+diff --git a/src/cmd_parser.h b/src/cmd_parser.h
+index 475dfff..81b8464 100644
+--- a/src/cmd_parser.h
++++ b/src/cmd_parser.h
+@@ -52,7 +52,7 @@ struct CmdOptions {
+     gboolean version;           /*!< print program version */
+     gboolean database;          /*!< create sqlite database metadata */
+     gboolean no_database;       /*!< do not create database */
+-    gboolean filelists_ext;     /*!< create filelists_ext metadata with file hashes */
++    gboolean filelists_ext;     /*!< create filelists-ext metadata with file hashes */
+     char *checksum;             /*!< type of checksum */
+     char *compress_type;        /*!< which compression type to use */
+     char *general_compress_type;/*!< which compression type to use (even for
+diff --git a/src/createrepo_c.c b/src/createrepo_c.c
+index 4070bd9..14f9cca 100644
+--- a/src/createrepo_c.c
++++ b/src/createrepo_c.c
+@@ -1351,7 +1351,7 @@ main(int argc, char **argv)
+             }
+             cr_set_dict(fex_cr_zck->f, fex_dict, fex_dict_size, &tmp_err);
+             if (tmp_err) {
+-                g_critical("Error reading setting filelists_ext dict %s: %s",
++                g_critical("Error reading setting filelists-ext dict %s: %s",
+                            fex_dict_file, tmp_err->message);
+                 g_clear_error(&tmp_err);
+                 exit(EXIT_FAILURE);
+@@ -1697,7 +1697,7 @@ main(int argc, char **argv)
+     cr_RepomdRecord *fil_xml_rec = cr_repomd_record_new("filelists", fil_xml_filename);
+     cr_RepomdRecord *fex_xml_rec              = NULL;
+     if (cmd_options->filelists_ext)
+-        fex_xml_rec = cr_repomd_record_new("filelists_ext", fex_xml_filename);
++        fex_xml_rec = cr_repomd_record_new("filelists-ext", fex_xml_filename);
+     cr_RepomdRecord *oth_xml_rec = cr_repomd_record_new("other", oth_xml_filename);
+     cr_RepomdRecord *pri_db_rec               = NULL;
+     cr_RepomdRecord *fil_db_rec               = NULL;
+@@ -1875,7 +1875,7 @@ main(int argc, char **argv)
+         pri_db_rec = cr_repomd_record_new("primary_db", pri_db_name);
+         fil_db_rec = cr_repomd_record_new("filelists_db", fil_db_name);
+         if (cmd_options->filelists_ext)
+-            fex_db_rec = cr_repomd_record_new("filelists_ext_db", fex_db_name);
++            fex_db_rec = cr_repomd_record_new("filelists-ext_db", fex_db_name);
+         oth_db_rec = cr_repomd_record_new("other_db", oth_db_name);
+ 
+         // Set db version
+@@ -1945,7 +1945,7 @@ main(int argc, char **argv)
+         pri_zck_rec = cr_repomd_record_new("primary_zck", pri_zck_filename);
+         fil_zck_rec = cr_repomd_record_new("filelists_zck", fil_zck_filename);
+         if (cmd_options->filelists_ext)
+-            fex_zck_rec = cr_repomd_record_new("filelists_ext_zck", fex_zck_filename);
++            fex_zck_rec = cr_repomd_record_new("filelists-ext_zck", fex_zck_filename);
+         oth_zck_rec = cr_repomd_record_new("other_zck", oth_zck_filename);
+ 
+         cr_repomd_record_load_zck_contentstat(pri_zck_rec, pri_zck_stat);
+diff --git a/src/dumper_thread.c b/src/dumper_thread.c
+index 4cc9a4e..839589c 100644
+--- a/src/dumper_thread.c
++++ b/src/dumper_thread.c
+@@ -166,7 +166,7 @@ write_pkg(long id,
+     g_cond_broadcast(&(udata->cond_fil));
+     g_mutex_unlock(&(udata->mutex_fil));
+ 
+-    // Write filelist_ext data
++    // Write filelists-ext data
+     if (udata->filelists_ext) {
+         g_mutex_lock(&(udata->mutex_fex));
+         while (udata->id_fex != id)
+@@ -174,7 +174,7 @@ write_pkg(long id,
+         ++udata->id_fex;
+         cr_xmlfile_add_chunk(udata->fex_f, (const char *) res.filelists_ext, &tmp_err);
+         if (tmp_err) {
+-            g_critical("Cannot add filelists_ext chunk:\n%s\nError: %s",
++            g_critical("Cannot add filelists-ext chunk:\n%s\nError: %s",
+                        res.filelists_ext, tmp_err->message);
+             udata->had_errors = TRUE;
+             g_clear_error(&tmp_err);
+@@ -183,7 +183,7 @@ write_pkg(long id,
+         if (udata->fex_db) {
+             cr_db_add_pkg(udata->fex_db, pkg, &tmp_err);
+             if (tmp_err) {
+-                g_critical("Cannot add record of %s (%s) to filelists_ext db: %s",
++                g_critical("Cannot add record of %s (%s) to filelists-ext db: %s",
+                            pkg->name, pkg->pkgId, tmp_err->message);
+                 udata->had_errors = TRUE;
+                 g_clear_error(&tmp_err);
+@@ -193,14 +193,14 @@ write_pkg(long id,
+             if (new_pkg) {
+                 cr_end_chunk(udata->fex_zck->f, &tmp_err);
+                 if (tmp_err) {
+-                    g_critical("Unable to end filelists_ext zchunk: %s", tmp_err->message);
++                    g_critical("Unable to end filelists-ext zchunk: %s", tmp_err->message);
+                     udata->had_errors = TRUE;
+                     g_clear_error(&tmp_err);
+                 }
+             }
+             cr_xmlfile_add_chunk(udata->fex_zck, (const char *) res.filelists_ext, &tmp_err);
+             if (tmp_err) {
+-                g_critical("Cannot add filelists_ext zchunk:\n%s\nError: %s",
++                g_critical("Cannot add filelists-ext zchunk:\n%s\nError: %s",
+                            res.filelists_ext, tmp_err->message);
+                 udata->had_errors = TRUE;
+                 g_clear_error(&tmp_err);
+diff --git a/src/dumper_thread.h b/src/dumper_thread.h
+index 281d0cd..c2abc6e 100644
+--- a/src/dumper_thread.h
++++ b/src/dumper_thread.h
+@@ -69,7 +69,7 @@ struct UserData {
+     cr_ChecksumType checksum_type;  // Constant representing selected checksum
+     const char *checksum_cachedir;  // Dir with cached checksums
+     gboolean skip_symlinks;         // Skip symlinks
+-    gboolean filelists_ext;         // Include hashes (and create filelist_ext.*)
++    gboolean filelists_ext;         // Include hashes (and create filelists-ext.*)
+     long task_count;                // Total number of tasks to process
+     long package_count;             // Total number of packages processed
+ 
+@@ -85,15 +85,15 @@ struct UserData {
+     // Thread serialization
+     GMutex mutex_pri;               // Mutex for primary metadata
+     GMutex mutex_fil;               // Mutex for filelists metadata
+-    GMutex mutex_fex;               // Mutex for filelists_ext metadata
++    GMutex mutex_fex;               // Mutex for filelists-ext metadata
+     GMutex mutex_oth;               // Mutex for other metadata
+     GCond cond_pri;                 // Condition for primary metadata
+     GCond cond_fil;                 // Condition for filelists metadata
+-    GCond cond_fex;                 // Condition for filelists_ext metadata
++    GCond cond_fex;                 // Condition for filelists-ext metadata
+     GCond cond_oth;                 // Condition for other metadata
+     volatile long id_pri;           // ID of task on turn (write primary metadata)
+     volatile long id_fil;           // ID of task on turn (write filelists metadata)
+-    volatile long id_fex;           // ID of task on turn (write filelists_ext metadata)
++    volatile long id_fex;           // ID of task on turn (write filelists-ext metadata)
+     volatile long id_oth;           // ID of task on turn (write other metadata)
+ 
+     // Buffering
+diff --git a/src/locate_metadata.c b/src/locate_metadata.c
+index 3f45f75..1d91907 100644
+--- a/src/locate_metadata.c
++++ b/src/locate_metadata.c
+@@ -167,16 +167,19 @@ cr_parse_repomd(const char *repomd_path,
+             mdloc->pri_sqlite_href = full_location_href;
+         else if (!g_strcmp0(record->type, "filelists"))
+             mdloc->fil_xml_href = full_location_href;
+-        else if (!g_strcmp0(record->type, "filelists_ext"))
+-            mdloc->fex_xml_href = full_location_href;
+         else if (!g_strcmp0(record->type, "filelists_db") && !ignore_sqlite)
+             mdloc->fil_sqlite_href = full_location_href;
++        else if (!g_strcmp0(record->type, "filelists-ext"))
++            mdloc->fex_xml_href = full_location_href;
++        else if (!g_strcmp0(record->type, "filelists-ext_db") && !ignore_sqlite)
++            mdloc->fex_sqlite_href = full_location_href;
+         else if (!g_strcmp0(record->type, "other"))
+             mdloc->oth_xml_href = full_location_href;
+         else if (!g_strcmp0(record->type, "other_db") && !ignore_sqlite)
+             mdloc->oth_sqlite_href = full_location_href;
+         else if ( !g_str_has_prefix(record->type, "primary_"   ) &&
+                   !g_str_has_prefix(record->type, "filelists_" ) && 
++                  !g_str_has_prefix(record->type, "filelists-ext_" ) && 
+                   !g_str_has_prefix(record->type, "other_"     ) ) 
+         {
+             mdloc->additional_metadata = cr_insert_additional_metadatum(full_location_href,
+diff --git a/src/locate_metadata.h b/src/locate_metadata.h
+index e916770..0c051ce 100644
+--- a/src/locate_metadata.h
++++ b/src/locate_metadata.h
+@@ -41,6 +41,7 @@ struct cr_MetadataLocation {
+     char *oth_xml_href;         /*!< path to other.xml */
+     char *pri_sqlite_href;      /*!< path to primary.sqlite */
+     char *fil_sqlite_href;      /*!< path to filelists.sqlite */
++    char *fex_sqlite_href;      /*!< path to filelists-ext.sqlite */
+     char *oth_sqlite_href;      /*!< path to other.sqlite */
+     GSList *additional_metadata; /*!< list of cr_Metadatum: paths 
+                                       to additional metadata such 
+diff --git a/src/mergerepo_c.c b/src/mergerepo_c.c
+index eaf18f0..f9720ad 100644
+--- a/src/mergerepo_c.c
++++ b/src/mergerepo_c.c
+@@ -79,7 +79,7 @@ static GOptionEntry cmd_entries[] =
+       "", NULL },
+     { "no-database", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.no_database),
+       "", NULL },
+-    { "filelists_ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
++    { "filelists-ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
+       "Create filelists-ext metadata with file hashes.", NULL },
+     { "verbose", 'v', 0, G_OPTION_ARG_NONE, &(_cmd_options.verbose),
+       "", NULL },
+@@ -942,7 +942,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         }
+         if (fex_dict_file && !g_file_get_contents(fex_dict_file, &fex_dict,
+                                                  &fex_dict_size, &tmp_err)) {
+-            g_critical("Error reading zchunk filelists_ext dict %s: %s",
++            g_critical("Error reading zchunk filelists-ext dict %s: %s",
+                        fex_dict_file, tmp_err->message);
+             g_clear_error(&tmp_err);
+             exit(EXIT_FAILURE);
+@@ -1188,7 +1188,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+             }
+             cr_set_dict(fex_cr_zck->f, fex_dict, fex_dict_size, &tmp_err);
+             if (tmp_err) {
+-                g_critical("Error reading setting filelists_ext dict %s: %s",
++                g_critical("Error reading setting filelists-ext dict %s: %s",
+                            fex_dict_file, tmp_err->message);
+                 g_clear_error(&tmp_err);
+                 exit(EXIT_FAILURE);
+@@ -1262,7 +1262,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         fil_db = cr_db_open_filelists(fil_db_filename, NULL);
+         if (cmd_options->filelists_ext)
+             // TODO(aplanas): For now, the SQListe database for
+-            // filenames_ext will be the same that for filenames,
++            // filenames-ext will be the same that for filenames,
+             // until we decide how will be the schema change.
+             // fex_db = cr_db_open_filelists_ext(fex_db_filename, NULL);
+             fex_db = cr_db_open_filelists(fex_db_filename, NULL);
+@@ -1422,7 +1422,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+     cr_RepomdRecord *fil_xml_rec = cr_repomd_record_new("filelists", fil_xml_filename);
+     cr_RepomdRecord *fex_xml_rec              = NULL;
+     if (cmd_options->filelists_ext)
+-        fex_xml_rec = cr_repomd_record_new("filelists_ext", fil_xml_filename);
++        fex_xml_rec = cr_repomd_record_new("filelists-ext", fil_xml_filename);
+     cr_RepomdRecord *oth_xml_rec = cr_repomd_record_new("other", oth_xml_filename);
+     cr_RepomdRecord *pri_db_rec               = NULL;
+     cr_RepomdRecord *fil_db_rec               = NULL;
+@@ -1663,7 +1663,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         pri_db_rec = cr_repomd_record_new("primary_db", pri_db_c_filename);
+         fil_db_rec = cr_repomd_record_new("filelists_db", fil_db_c_filename);
+         if (cmd_options->filelists_ext)
+-            fex_db_rec = cr_repomd_record_new("filelists_ext_db", fil_db_c_filename);
++            fex_db_rec = cr_repomd_record_new("filelists-ext_db", fil_db_c_filename);
+         oth_db_rec = cr_repomd_record_new("other_db", oth_db_c_filename);
+ 
+         g_free(pri_db_filename);
+@@ -1732,7 +1732,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         pri_zck_rec = cr_repomd_record_new("primary_zck", pri_zck_filename);
+         fil_zck_rec = cr_repomd_record_new("filelists_zck", fil_zck_filename);
+         if (cmd_options->filelists_ext)
+-            fex_zck_rec = cr_repomd_record_new("filelists_ext_zck", fex_zck_filename);
++            fex_zck_rec = cr_repomd_record_new("filelists-ext_zck", fex_zck_filename);
+         oth_zck_rec = cr_repomd_record_new("other_zck", oth_zck_filename);
+ 
+         g_free(pri_zck_filename);
+diff --git a/src/parsepkg.h b/src/parsepkg.h
+index fba3d8e..1d3d8b8 100644
+--- a/src/parsepkg.h
++++ b/src/parsepkg.h
+@@ -102,7 +102,7 @@ struct cr_XmlStruct cr_xml_from_rpm(const char *filename,
+                                     struct stat *stat_buf,
+                                     GError **err);
+ 
+-/** Generate XML, including filelists_ext, for the specified package.
++/** Generate XML, including filelists-ext, for the specified package.
+  * @param filename              rpm filename
+  * @param checksum_type         type of checksum to be used
+  * @param location_href         package location inside repository
+@@ -111,7 +111,7 @@ struct cr_XmlStruct cr_xml_from_rpm(const char *filename,
+  * @param stat_buf              struct stat of the filename
+  *                              (optional - could be NULL)
+  * @param err                   GError **
+- * @return                      struct cr_XmlStruct with primary, filelists[_ext]
++ * @return                      struct cr_XmlStruct with primary, filelists[-ext]
+  *                              and other xmls
+  */
+ struct cr_XmlStruct cr_xml_from_rpm_ext(const char *filename,
+diff --git a/src/python/xml_dump-py.h b/src/python/xml_dump-py.h
+index 6040d6d..be67942 100644
+--- a/src/python/xml_dump-py.h
++++ b/src/python/xml_dump-py.h
+@@ -36,7 +36,7 @@ PyObject *py_xml_dump_filelists(PyObject *self, PyObject *args);
+ 
+ PyDoc_STRVAR(xml_dump_filelists_ext__doc__,
+ "xml_dump_filelists_ext(pkg) -> str\n\n"
+-"Generate filelists_ext xml chunk from the package");
++"Generate filelists-ext xml chunk from the package");
+ 
+ PyObject *py_xml_dump_filelists_ext(PyObject *self, PyObject *args);
+ 
+@@ -48,7 +48,7 @@ PyObject *py_xml_dump_other(PyObject *self, PyObject *args);
+ 
+ PyDoc_STRVAR(xml_dump__doc__,
+ "xml_dump(pkg[, filelists_ext]) -> (str, str, str[, str])\n\n"
+-"Generate primary, filelists, filelists_ext and other xml chunks from the package");
++"Generate primary, filelists, filelists-ext and other xml chunks from the package");
+ 
+ PyObject *py_xml_dump(PyObject *self, PyObject *args);
+ 
+diff --git a/src/sqlite.h b/src/sqlite.h
+index 4154f25..24b3f06 100644
+--- a/src/sqlite.h
++++ b/src/sqlite.h
+@@ -63,7 +63,7 @@ extern "C" {
+ typedef enum {
+     CR_DB_PRIMARY,       /*!< primary */
+     CR_DB_FILELISTS,     /*!< filelists */
+-    CR_DB_FILELISTS_EXT, /*!< filelists_ext */
++    CR_DB_FILELISTS_EXT, /*!< filelists-ext */
+     CR_DB_OTHER,         /*!< other */
+     CR_DB_SENTINEL,      /*!< sentinel of the list */
+ } cr_DatabaseType;
+diff --git a/src/xml_dump.h b/src/xml_dump.h
+index 49fca97..fe19d27 100644
+--- a/src/xml_dump.h
++++ b/src/xml_dump.h
+@@ -66,8 +66,8 @@ extern "C" {
+ #define CR_XML_COMMON_NS            "http://linux.duke.edu/metadata/common"
+ /** Default namespace for filelists.xml */
+ #define CR_XML_FILELISTS_NS         "http://linux.duke.edu/metadata/filelists"
+-/** Default namespace for filelists_ext.xml */
+-#define CR_XML_FILELISTS_EXT_NS         "http://linux.duke.edu/metadata/filelists_ext"
++/** Default namespace for filelists-ext.xml */
++#define CR_XML_FILELISTS_EXT_NS         "http://linux.duke.edu/metadata/filelists-ext"
+ /** Default namespace for other.xml */
+ #define CR_XML_OTHER_NS             "http://linux.duke.edu/metadata/other"
+ /** Default namespace for repomd.xml */
+@@ -81,7 +81,7 @@ extern "C" {
+ struct cr_XmlStruct {
+     char *primary;          /*!< XML chunk for primary.xml */
+     char *filelists;        /*!< XML chunk for filelists.xml */
+-    char *filelists_ext;    /*!< XML chunk for filelists_ext.xml */
++    char *filelists_ext;    /*!< XML chunk for filelists-ext.xml */
+     char *other;            /*!< XML chunk for other.xml */
+ };
+ 
+@@ -107,7 +107,7 @@ char *cr_xml_dump_primary(cr_Package *package, GError **err);
+  */
+ char *cr_xml_dump_filelists(cr_Package *package, GError **err);
+ 
+-/** Generate filelists_ext xml chunk from cr_Package.
++/** Generate filelists-ext xml chunk from cr_Package.
+  * @param package       cr_Package
+  * @param err           **GError
+  * @return              xml chunk string or NULL on error
+diff --git a/src/xml_file.c b/src/xml_file.c
+index dfbeccc..4a91dff 100644
+--- a/src/xml_file.c
++++ b/src/xml_file.c
+@@ -38,7 +38,7 @@
+                                  CR_XML_RPM_NS"\" packages=\"%d\">\n"
+ #define XML_FILELISTS_HEADER     XML_HEADER"<filelists xmlns=\"" \
+                                  CR_XML_FILELISTS_NS"\" packages=\"%d\">\n"
+-#define XML_FILELISTS_EXT_HEADER XML_HEADER"<filelists_ext xmlns=\"" \
++#define XML_FILELISTS_EXT_HEADER XML_HEADER"<filelists-ext xmlns=\"" \
+                                  CR_XML_FILELISTS_EXT_NS"\" packages=\"%d\">\n"
+ #define XML_OTHER_HEADER         XML_HEADER"<otherdata xmlns=\"" \
+                                  CR_XML_OTHER_NS"\" packages=\"%d\">\n"
+@@ -50,7 +50,7 @@
+ 
+ #define XML_PRIMARY_FOOTER       "</metadata>"
+ #define XML_FILELISTS_FOOTER     "</filelists>"
+-#define XML_FILELISTS_EXT_FOOTER "</filelists_ext>"
++#define XML_FILELISTS_EXT_FOOTER "</filelists-ext>"
+ #define XML_OTHER_FOOTER         "</otherdata>"
+ #define XML_PRESTODELTA_FOOTER   "</prestodelta>"
+ #define XML_UPDATEINFO_FOOTER    "</updates>"
+diff --git a/src/xml_file.h b/src/xml_file.h
+index ac6cd3d..89d8e29 100644
+--- a/src/xml_file.h
++++ b/src/xml_file.h
+@@ -38,7 +38,7 @@ extern "C" {
+ typedef enum {
+     CR_XMLFILE_PRIMARY,       /*!< primary.xml */
+     CR_XMLFILE_FILELISTS,     /*!< filelists.xml */
+-    CR_XMLFILE_FILELISTS_EXT, /*!< filelists_ext.xml */
++    CR_XMLFILE_FILELISTS_EXT, /*!< filelists-ext.xml */
+     CR_XMLFILE_OTHER,         /*!< other.xml */
+     CR_XMLFILE_PRESTODELTA,   /*!< prestodelta.xml */
+     CR_XMLFILE_UPDATEINFO,    /*!< updateinfo.xml */
+@@ -88,7 +88,7 @@ typedef struct {
+ #define cr_xmlfile_open_filelists(FILENAME, COMTYPE, ERR) \
+             cr_xmlfile_open(FILENAME, CR_XMLFILE_FILELISTS, COMTYPE, ERR)
+ 
+-/** Open a new filelists_ext XML file.
++/** Open a new filelists-ext XML file.
+  * @param FILENAME      Filename.
+  * @param COMTYPE       Type of used compression.
+  * @param ERR           GError **
+@@ -107,7 +107,7 @@ typedef struct {
+ #define cr_xmlfile_sopen_filelists(FILENAME, COMTYPE, STAT, ERR) \
+             cr_xmlfile_sopen(FILENAME, CR_XMLFILE_FILELISTS, COMTYPE, STAT, ERR)
+ 
+-/** Open a new filelists_ext XML file.
++/** Open a new filelists-ext XML file.
+  * @param FILENAME      Filename.
+  * @param COMTYPE       Type of compression.
+  * @param STAT          cr_ContentStat object or NULL.
+diff --git a/src/xml_parser_filelists.c b/src/xml_parser_filelists.c
+index 716c2b6..41baf6f 100644
+--- a/src/xml_parser_filelists.c
++++ b/src/xml_parser_filelists.c
+@@ -50,7 +50,7 @@ typedef enum {
+  * than a "version" element). */
+ static cr_StatesSwitch stateswitches[] = {
+     { STATE_START,         "filelists",     STATE_FILELISTS,     0 },
+-    { STATE_START,         "filelists_ext", STATE_FILELISTS_EXT, 0 },
++    { STATE_START,         "filelists-ext", STATE_FILELISTS_EXT, 0 },
+     { STATE_FILELISTS,     "package",       STATE_PACKAGE,       0 },
+     { STATE_FILELISTS_EXT, "package",       STATE_PACKAGE,       0 },
+     { STATE_PACKAGE,       "file",          STATE_FILE,          1 },
+@@ -434,9 +434,9 @@ cr_xml_parse_filelists_snippet(const char *xml_string,
+                                void *warningcb_data,
+                                GError **err)
+ {
+-    // This function can parse filelists and filelists_ext.  The state
++    // This function can parse filelists and filelists-ext.  The state
+     // machine do not track if the wrapped XML is one or another, so
+-    // is safe for a filelists_ext snipped to be surrounded by
++    // is safe for a filelists-ext snipped to be surrounded by
+     // <filelists>
+     gchar* wrapped_xml_string = g_strconcat("<filelists>", xml_string, "</filelists>", NULL);
+     int ret = cr_xml_parse_filelists_internal(wrapped_xml_string, newpkgcb, newpkgcb_data, pkgcb, pkgcb_data,
+diff --git a/src/xml_parser_internal.h b/src/xml_parser_internal.h
+index 6e055e3..272b81d 100644
+--- a/src/xml_parser_internal.h
++++ b/src/xml_parser_internal.h
+@@ -88,7 +88,7 @@ typedef struct _cr_ParserData {
+         Was the main tag present? E.g.:
+         For primary.xml <metadata>
+         For filelists.xml <filelists>
+-        For filelists-ext.xml <filelists_ext>
++        For filelists-ext.xml <filelists-ext>
+         For other.xml <otherdata>
+         For repomd.xml <repomd>
+         For updateinfo.xml <updates>
+diff --git a/tests/fixtures.h b/tests/fixtures.h
+index ba39887..885cae9 100644
+--- a/tests/fixtures.h
++++ b/tests/fixtures.h
+@@ -67,7 +67,7 @@
+ #define TEST_REPO_04_REPOMD        TEST_REPO_04"repodata/repomd.xml"
+ #define TEST_REPO_04_PRIMARY       TEST_REPO_04"repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz"
+ #define TEST_REPO_04_FILELISTS     TEST_REPO_04"repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz"
+-#define TEST_REPO_04_FILELISTS_EXT TEST_REPO_04"repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz"
++#define TEST_REPO_04_FILELISTS_EXT TEST_REPO_04"repodata/d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538-filelists-ext.xml.gz"
+ #define TEST_REPO_04_OTHER         TEST_REPO_04"repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz"
+ 
+ 
+diff --git a/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz b/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz
+deleted file mode 100644
+index e036d7e2f4adb0c10844882534c43bec4f8ca3b9..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 409
+zcmV;K0cQRmiwFP!000001I3cdZrd;rMfd#*g8PaOQ50EN&aPk3u8ko%v;;jY=ux=&
+z`iui7sF7^CC<<=K8P43fhdex8$ASIAW$i9g!&M<U!zo@;H=P^)^T+qEjz1m09CA0{
+z(5>5g!t2JUW?CEGZrl7#h@qSIYmxRI3rxEhaf1XKh=&@^W{5qUk?J(3j`t&*`*W8X
+z?q#+LD`S1>Kq+H<sFhS!Lekz?<)8|wlvbm$*~RQCm6MdtK~~O$nzIQ;Y<PwqPXX4J
+zGgxBV@T;>YYe<o?!`&yt`EpB<SBl(R)8cHwf%aUyUX3lre%(j5{hq1q+Jdg^J$Ez4
+zTGD7ZmO(~iw0AkGsEmgkvWd=nn}gRz*MLUR%;d+HCW7&m_bSw`(!o^~KZ<=_MCc~*
+zKKbF593c{SMjvU}WJ<6^D%TP-srj-D1jJcz))J9ys~}OLs#6S^py@!kVoG(iWh~!l
+zt^172smEo);V*#MLcRmj{|(rm!@n{6Ct~DfK{3LkWZ{bQ^Jj1M`0<Y~#l-oDV*>yH
+Dr|i-K
+
+diff --git a/tests/testdata/repo_04/repodata/d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538-filelists-ext.xml.gz b/tests/testdata/repo_04/repodata/d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538-filelists-ext.xml.gz
+new file mode 100644
+index 0000000000000000000000000000000000000000..9795431535d879cb62493599e4ec63c54c2c1f0c
+GIT binary patch
+literal 429
+zcmV;e0aE@SiwFpgIQC-z17>M#Wo&74baO3bcyum!ZEOI=lFM$}Fc3xe`3i#jh!0T|
+zSy;|4U(l|NAvv@JJuK)^IQ{yL11G4_Zn`K6ZpazV+_{H5yj;hDeaB_(E>pu*Avwb-
+zUQ#!m8~*L<>$Br8$EQQ?1{}I|Tc7c|F{+u?hPT@`e-UEnru|x^y~hI6E=JrS!3N@?
+zhO-%B4`-x0&8g%4$magsrG|T%t-{J!Upi3A7$0gSm6edRH&!{QLMo-zXl!;dyGrFG
+zrE`##Goj{ef)N{@p~q8zwdD+!*f#v??8zEZWbAPF$#A~hQsk8)H`lZ{TX3K~7w=bN
+zi?Lt#k!^1?wOw1#mA&U~##l=l4aYLbXpHtQM-`RvkV7`nd2e&@+UOe4D4Lo4_|il$
+zzVcp$+EqHZs^UknuZsxXBt9oUyptnD;?C%IS~i&yERo8!#7t_wECT^?7M!(2B-<)T
+zl&I<yLndfC5U!X~9c>xQ4_fO!<8tb8nQ-_EV78E-!1R9u_UrH;%>IcOd09}5@F-ch
+X;{4-JZ}s@`k54}VaC!yJWCH*Ir~1}Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/testdata/repo_04/repodata/repomd.xml b/tests/testdata/repo_04/repodata/repomd.xml
+index 7e155b5..c267947 100644
+--- a/tests/testdata/repo_04/repodata/repomd.xml
++++ b/tests/testdata/repo_04/repodata/repomd.xml
+@@ -25,12 +25,12 @@
+     <size>397</size>
+     <open-size>815</open-size>
+   </data>
+-  <data type="filelists_ext">
+-    <checksum type="sha256">5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97</checksum>
+-    <open-checksum type="sha256">1d71bbe08947468f20e0b3b062e177add2db77adc673045cfa9e199487210b05</open-checksum>
+-    <location href="repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz"/>
++  <data type="filelists-ext">
++    <checksum type="sha256">d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538</checksum>
++    <open-checksum type="sha256">5fb360be6e4e5d62f25db2fc7068a76a6df6912843e28af9aabc06498a06fc10</open-checksum>
++    <location href="repodata/d1c632d489f1c72b68b5c0d5de38ed1cb5c7a521380a88bed86771d39fb19538-filelists-ext.xml.gz"/>
+     <timestamp>1648713099</timestamp>
+-    <size>409</size>
+-    <open-size>867</open-size>
++    <size>429</size>
++    <open-size>868</open-size>
+   </data>
+ </repomd>
+-- 
+2.39.2
+

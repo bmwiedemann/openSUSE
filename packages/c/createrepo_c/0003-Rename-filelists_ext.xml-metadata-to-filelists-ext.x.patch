@@ -1,0 +1,248 @@
+From 865c320c28bc09905067966185d35c1b7713b2d6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Thu, 16 Feb 2023 09:52:29 +0100
+Subject: [PATCH 3/5] Rename filelists_ext.xml metadata to filelists-ext.xml
+
+For better naming consistency.
+---
+ src/createrepo_c.c                                  |  12 ++++++------
+ src/dumper_thread.h                                 |   6 +++---
+ src/locate_metadata.h                               |   2 +-
+ src/mergerepo_c.c                                   |  12 ++++++------
+ src/python/xml_parser-py.h                          |   4 ++--
+ src/xml_parser_internal.h                           |   2 +-
+ tests/fixtures.h                                    |   2 +-
+ tests/python/tests/fixtures.py                      |   2 +-
+ ...50ea03a59c1e2644d749afbd97-filelists-ext.xml.gz} | Bin
+ tests/testdata/repo_04/repodata/repomd.xml          |   2 +-
+ 10 files changed, 22 insertions(+), 22 deletions(-)
+ rename tests/testdata/repo_04/repodata/{5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz => 5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz} (100%)
+
+diff --git a/src/createrepo_c.c b/src/createrepo_c.c
+index 21207ed..bc9fd8c 100644
+--- a/src/createrepo_c.c
++++ b/src/createrepo_c.c
+@@ -1001,7 +1001,7 @@ main(int argc, char **argv)
+     pri_xml_filename = g_strconcat(tmp_out_repo, "/primary.xml", xml_compression_suffix, NULL);
+     fil_xml_filename = g_strconcat(tmp_out_repo, "/filelists.xml", xml_compression_suffix, NULL);
+     if (cmd_options->filelists_ext)
+-        fex_xml_filename = g_strconcat(tmp_out_repo, "/filelists_ext.xml", xml_compression_suffix, NULL);
++        fex_xml_filename = g_strconcat(tmp_out_repo, "/filelists-ext.xml", xml_compression_suffix, NULL);
+     oth_xml_filename = g_strconcat(tmp_out_repo, "/other.xml", xml_compression_suffix, NULL);
+ 
+     pri_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+@@ -1120,7 +1120,7 @@ main(int argc, char **argv)
+             pri_db_filename = g_strconcat(tmp_out_repo, "/primary.sqlite", NULL);
+             fil_db_filename = g_strconcat(tmp_out_repo, "/filelists.sqlite", NULL);
+ 	    if (cmd_options->filelists_ext)
+-                fex_db_filename = g_strconcat(tmp_out_repo, "/filelists_ext.sqlite", NULL);
++                fex_db_filename = g_strconcat(tmp_out_repo, "/filelists-ext.sqlite", NULL);
+             oth_db_filename = g_strconcat(tmp_out_repo, "/other.sqlite", NULL);
+         } else {
+             g_debug("Creating databases localy");
+@@ -1128,7 +1128,7 @@ main(int argc, char **argv)
+             pri_db_filename = g_build_filename(tmpdir, "primary.XXXXXX.sqlite", NULL);
+             fil_db_filename = g_build_filename(tmpdir, "filelists.XXXXXX.sqlite", NULL);
+ 	    if (cmd_options->filelists_ext)
+-                fex_db_filename = g_build_filename(tmpdir, "filelists_ext.XXXXXX.sqlite", NULL);
++                fex_db_filename = g_build_filename(tmpdir, "filelists-ext.XXXXXX.sqlite", NULL);
+             oth_db_filename = g_build_filename(tmpdir, "other.XXXXXXX.sqlite", NULL);
+             pri_db_fd = g_mkstemp(pri_db_filename);
+             g_debug("%s", pri_db_filename);
+@@ -1233,7 +1233,7 @@ main(int argc, char **argv)
+                                          "filelists.xml");
+ 	if (cmd_options->filelists_ext)
+             fex_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+-                                             "filelists_ext.xml");
++                                             "filelists-ext.xml");
+         oth_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "other.xml");
+         if (pri_dict_file && !g_file_get_contents(pri_dict_file, &pri_dict,
+@@ -1271,7 +1271,7 @@ main(int argc, char **argv)
+         pri_zck_filename = g_strconcat(tmp_out_repo, "/primary.xml.zck", NULL);
+         fil_zck_filename = g_strconcat(tmp_out_repo, "/filelists.xml.zck", NULL);
+ 	if (cmd_options->filelists_ext)
+-            fex_zck_filename = g_strconcat(tmp_out_repo, "/filelists_ext.xml.zck", NULL);
++            fex_zck_filename = g_strconcat(tmp_out_repo, "/filelists-ext.xml.zck", NULL);
+         oth_zck_filename = g_strconcat(tmp_out_repo, "/other.xml.zck", NULL);
+ 
+         pri_zck_stat = cr_contentstat_new(cmd_options->repomd_checksum_type, NULL);
+@@ -1790,7 +1790,7 @@ main(int argc, char **argv)
+                                          sqlite_compression_suffix, NULL);
+         gchar *fex_db_name = NULL;
+         if (cmd_options->filelists_ext)
+-            fex_db_name = g_strconcat(tmp_out_repo, "/filelists_ext.sqlite",
++            fex_db_name = g_strconcat(tmp_out_repo, "/filelists-ext.sqlite",
+                                       sqlite_compression_suffix, NULL);
+         gchar *oth_db_name = g_strconcat(tmp_out_repo, "/other.sqlite",
+                                          sqlite_compression_suffix, NULL);
+diff --git a/src/dumper_thread.h b/src/dumper_thread.h
+index 6306998..281d0cd 100644
+--- a/src/dumper_thread.h
++++ b/src/dumper_thread.h
+@@ -49,15 +49,15 @@ struct PoolTask {
+ struct UserData {
+     cr_XmlFile *pri_f;              // Opened compressed primary.xml.*
+     cr_XmlFile *fil_f;              // Opened compressed filelists.xml.*
+-    cr_XmlFile *fex_f;              // Opened compressed filelists_ext.xml.*
++    cr_XmlFile *fex_f;              // Opened compressed filelists-ext.xml.*
+     cr_XmlFile *oth_f;              // Opened compressed other.xml.*
+     cr_SqliteDb *pri_db;            // Primary db
+     cr_SqliteDb *fil_db;            // Filelists db
+-    cr_SqliteDb *fex_db;            // Filelists_ext db
++    cr_SqliteDb *fex_db;            // Filelists-ext db
+     cr_SqliteDb *oth_db;            // Other db
+     cr_XmlFile *pri_zck;            // Opened compressed primary.xml.zck
+     cr_XmlFile *fil_zck;            // Opened compressed filelists.xml.zck
+-    cr_XmlFile *fex_zck;            // Opened compressed filelists_ext.xml.zck
++    cr_XmlFile *fex_zck;            // Opened compressed filelists-ext.xml.zck
+     cr_XmlFile *oth_zck;            // Opened compressed other.xml.zck
+     char *prev_srpm;                // Previous srpm
+     char *cur_srpm;                 // Current srpm
+diff --git a/src/locate_metadata.h b/src/locate_metadata.h
+index c712259..e916770 100644
+--- a/src/locate_metadata.h
++++ b/src/locate_metadata.h
+@@ -37,7 +37,7 @@ extern "C" {
+ struct cr_MetadataLocation {
+     char *pri_xml_href;         /*!< path to primary.xml */
+     char *fil_xml_href;         /*!< path to filelists.xml */
+-    char *fex_xml_href;         /*!< path to filelists_ext.xml */
++    char *fex_xml_href;         /*!< path to filelists-ext.xml */
+     char *oth_xml_href;         /*!< path to other.xml */
+     char *pri_sqlite_href;      /*!< path to primary.sqlite */
+     char *fil_sqlite_href;      /*!< path to filelists.sqlite */
+diff --git a/src/mergerepo_c.c b/src/mergerepo_c.c
+index c4f2f07..eaf18f0 100644
+--- a/src/mergerepo_c.c
++++ b/src/mergerepo_c.c
+@@ -80,7 +80,7 @@ static GOptionEntry cmd_entries[] =
+     { "no-database", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.no_database),
+       "", NULL },
+     { "filelists_ext", 0, 0, G_OPTION_ARG_NONE, &(_cmd_options.filelists_ext),
+-      "Create filelists_ext metadata with file hashes.", NULL },
++      "Create filelists-ext metadata with file hashes.", NULL },
+     { "verbose", 'v', 0, G_OPTION_ARG_NONE, &(_cmd_options.verbose),
+       "", NULL },
+     { "outputdir", 'o', 0, G_OPTION_ARG_FILENAME, &(_cmd_options.outputdir),
+@@ -923,7 +923,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                          "filelists.xml");
+ 	if (cmd_options->filelists_ext)
+             fex_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+-                                             "filelists_ext.xml");
++                                             "filelists-ext.xml");
+         oth_dict_file = cr_get_dict_file(cmd_options->zck_dict_dir,
+                                          "other.xml");
+         if (pri_dict_file && !g_file_get_contents(pri_dict_file, &pri_dict,
+@@ -966,7 +966,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+     gchar *fex_xml_filename = NULL;
+     if (cmd_options->filelists_ext)
+         fex_xml_filename = g_strconcat(cmd_options->tmp_out_repo,
+-                                       "/filelists_ext.xml.gz", NULL);
++                                       "/filelists-ext.xml.gz", NULL);
+     gchar *oth_xml_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                           "/other.xml.gz", NULL);
+ 
+@@ -1109,7 +1109,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                        "/filelists.xml.zck", NULL);
+ 	if (cmd_options->filelists_ext)
+             fex_zck_filename = g_strconcat(cmd_options->tmp_out_repo,
+-                                           "/filelists_ext.xml.zck", NULL);
++                                           "/filelists-ext.xml.zck", NULL);
+         oth_zck_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                        "/other.xml.zck", NULL);
+ 
+@@ -1254,7 +1254,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+                                       "/filelists.sqlite", NULL);
+ 	if (cmd_options->filelists_ext)
+             fex_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+-                                          "/filelists_ext.sqlite", NULL);
++                                          "/filelists-ext.sqlite", NULL);
+         oth_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                       "/other.sqlite", NULL);
+ 
+@@ -1608,7 +1608,7 @@ dump_merged_metadata(GHashTable *merged_hashtable,
+         gchar *fex_db_filename = NULL;
+         if (cmd_options->filelists_ext)
+             fex_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+-                                          "/filelists_ext.sqlite", NULL);
++                                          "/filelists-ext.sqlite", NULL);
+         gchar *oth_db_filename = g_strconcat(cmd_options->tmp_out_repo,
+                                              "/other.sqlite", NULL);
+ 
+diff --git a/src/python/xml_parser-py.h b/src/python/xml_parser-py.h
+index bde2b51..0a64d4b 100644
+--- a/src/python/xml_parser-py.h
++++ b/src/python/xml_parser-py.h
+@@ -44,10 +44,10 @@ PyObject *py_xml_parse_filelists_snippet(PyObject *self, PyObject *args);
+ 
+ PyDoc_STRVAR(xml_parse_filelists_ext__doc__,
+ "xml_parse_filelists_ext(filename, newpkgcb, pkgcb, warningcb) -> None\n\n"
+-"Parse filelists_ext.xml");
++"Parse filelists-ext.xml");
+ PyDoc_STRVAR(xml_parse_filelists_ext_snippet__doc__,
+ "xml_parse_filelists_ext_snippet(snippet, newpkgcb, pkgcb, warningcb) -> None\n\n"
+-"Parse filelists_ext xml snippet");
++"Parse filelists-ext xml snippet");
+ 
+ PyObject *py_xml_parse_filelists_ext(PyObject *self, PyObject *args);
+ PyObject *py_xml_parse_filelists_ext_snippet(PyObject *self, PyObject *args);
+diff --git a/src/xml_parser_internal.h b/src/xml_parser_internal.h
+index 510e392..6e055e3 100644
+--- a/src/xml_parser_internal.h
++++ b/src/xml_parser_internal.h
+@@ -88,7 +88,7 @@ typedef struct _cr_ParserData {
+         Was the main tag present? E.g.:
+         For primary.xml <metadata>
+         For filelists.xml <filelists>
+-        For filelists_ext.xml <filelists_ext>
++        For filelists-ext.xml <filelists_ext>
+         For other.xml <otherdata>
+         For repomd.xml <repomd>
+         For updateinfo.xml <updates>
+diff --git a/tests/fixtures.h b/tests/fixtures.h
+index 719105a..ba39887 100644
+--- a/tests/fixtures.h
++++ b/tests/fixtures.h
+@@ -67,7 +67,7 @@
+ #define TEST_REPO_04_REPOMD        TEST_REPO_04"repodata/repomd.xml"
+ #define TEST_REPO_04_PRIMARY       TEST_REPO_04"repodata/6a5f64dd82a126a161657764fe8f4b4092c0a3b61b9a34bde2af89dc1df112a1-primary.xml.gz"
+ #define TEST_REPO_04_FILELISTS     TEST_REPO_04"repodata/d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz"
+-#define TEST_REPO_04_FILELISTS_EXT TEST_REPO_04"repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz"
++#define TEST_REPO_04_FILELISTS_EXT TEST_REPO_04"repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz"
+ #define TEST_REPO_04_OTHER         TEST_REPO_04"repodata/6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz"
+ 
+ 
+diff --git a/tests/python/tests/fixtures.py b/tests/python/tests/fixtures.py
+index 5fbaf98..a051ba6 100644
+--- a/tests/python/tests/fixtures.py
++++ b/tests/python/tests/fixtures.py
+@@ -109,7 +109,7 @@ REPO_04_PRIXML = os.path.join(REPO_04_PATH, "repodata/",
+ REPO_04_FILXML = os.path.join(REPO_04_PATH, "repodata/",
+     "d7b8b1b6caa124aa17e4c6a1867e50e6893791ade0ebe212ab6f536695b5ce84-filelists.xml.gz")
+ REPO_04_FEXXML = os.path.join(REPO_04_PATH, "repodata/",
+-    "5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz")
++    "5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz")
+ REPO_04_OTHXML = os.path.join(REPO_04_PATH, "repodata/",
+     "6d0101044d9b4683e4ddc76491b3eb2228cddaace9e1d148c5eb138de9f71c17-other.xml.gz")
+ 
+diff --git a/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz b/tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz
+similarity index 100%
+rename from tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz
+rename to tests/testdata/repo_04/repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz
+diff --git a/tests/testdata/repo_04/repodata/repomd.xml b/tests/testdata/repo_04/repodata/repomd.xml
+index 16ab36b..7e155b5 100644
+--- a/tests/testdata/repo_04/repodata/repomd.xml
++++ b/tests/testdata/repo_04/repodata/repomd.xml
+@@ -28,7 +28,7 @@
+   <data type="filelists_ext">
+     <checksum type="sha256">5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97</checksum>
+     <open-checksum type="sha256">1d71bbe08947468f20e0b3b062e177add2db77adc673045cfa9e199487210b05</open-checksum>
+-    <location href="repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists_ext.xml.gz"/>
++    <location href="repodata/5675d4a5265eacfd0af1f366057cf2e29d02a350ea03a59c1e2644d749afbd97-filelists-ext.xml.gz"/>
+     <timestamp>1648713099</timestamp>
+     <size>409</size>
+     <open-size>867</open-size>
+-- 
+2.39.2
+
