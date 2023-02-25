@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 25 00:14:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- enable build for all architectures, there is no assembly
+  or other architecture dependent issue here 
+
+-------------------------------------------------------------------
 Tue Apr 13 04:34:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 131.1.0

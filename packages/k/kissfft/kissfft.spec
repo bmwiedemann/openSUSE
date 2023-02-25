@@ -1,7 +1,7 @@
 #
 # spec file for package kissfft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Packman Team <packman@links2linux.de>
 # Copyright (c) 2017-2020 Fedora Release Engineering <releng@fedoraproject.org>
 # Copyright (c) 2016 František Dvořák <valtri@civ.zcu.cz>
@@ -29,15 +29,15 @@ License:        BSD-3-Clause AND Unlicense
 URL:            https://github.com/mborgerding/kissfft
 Source0:        https://github.com/mborgerding/kissfft/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  pkgconfig(libpng)
 # TESTS
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3
 BuildRequires:  python3-numpy
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(libpng)
 # /TESTS
-ExclusiveArch:  x86_64
 
 %description
 A Fast Fourier Transform based up on the principle, "Keep It Simple, Stupid".
