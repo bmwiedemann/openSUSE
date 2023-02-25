@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,12 @@
 %endif
 
 Name:           python-typing_extensions%{psuffix}
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 3.7+
 License:        Python-2.0
 URL:            https://github.com/python/typing/
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/typing_extensions-%{version}.tar.gz
-# See https://github.com/python/typing_extensions/issues/61
-Source1:        https://raw.githubusercontent.com/python/typing_extensions/%{version}/src/_typed_dict_test_helper.py
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core >= 3.4 with %python-flit-core < 4}
 BuildRequires:  %{python_module pip}
@@ -74,8 +72,6 @@ after that version reaches end of life.
 
 %prep
 %setup -q -n typing_extensions-%{version}
-# This should not be necessary in the next release
-[ ! -f src/_typed_dict_test_helper.py ] && cp %{SOURCE1} src/ || exit 1
 
 %if !%{with test}
 %build
