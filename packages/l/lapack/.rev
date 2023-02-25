@@ -476,4 +476,20 @@ An alternative would be to use the older manpages or to pre-generate them.
 - Make arch-dependent generic names conditional. (forwarded request 1066221 from eeich)</comment>
     <requestid>1066236</requestid>
   </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>0dcfd48ec84125c3ed4992cf2b531b98</srcmd5>
+    <version>3.9.0</version>
+    <time>1677351300</time>
+    <user>dimstar_suse</user>
+    <comment>- Set -mfpmath=sse for the entire build for ix86 platforms
+  on SLE/Leap. Since we build for x86_64, we know that sse
+  is available.
+  This helps to avoid effects from excess precision that
+  can be seen in the test suite.
+  On Factory we leave -ffloat-store for the test suite
+  only as this option comes at a performance penalty.
+  We may see precision related issues in the test suite
+  with future compilers regardless.</comment>
+    <requestid>1067609</requestid>
+  </revision>
 </revisionlist>

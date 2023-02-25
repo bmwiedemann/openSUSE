@@ -213,6 +213,15 @@ The cblas-devel-static package contains the CBLAS static libraries
 for -static linking. You do not need these, unless you link
 statically, which is highly discouraged.
 
+%ifarch %{ix86}
+%if 0%{?sle_version:%sle_version} >= 150000
+%global precflags "-mfpmath=sse"
+%global test_precflags %precflags
+%else
+%global test_precflags "-ffloat-store"
+%endif
+%endif
+
 %prep
 %setup -q
 %autopatch -p1
@@ -221,9 +230,6 @@ sed -i -e '1 s@env python@python3@' lapack_testing.py
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %global optflags_f %{optflags}
-%ifarch %{ix86}
-%global test_precflags "-ffloat-store"
-%endif
 
 cp make.inc.example make.inc
 # for ABI compatibility we need to build the deprecated interfaces
@@ -232,7 +238,7 @@ echo 'BUILD_DEPRECATED = Yes' >> make.inc
 
 %make_build cleanlib
 %make_build blaslib \
-  FFLAGS="%{optflags_f} -fPIC"
+  FFLAGS="%{optflags_f} %{?precflags} -fPIC"
 mkdir tmp
 ( cd tmp; ar x ../librefblas.a )
 gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} -Wl,--no-undefined tmp/*.o
@@ -240,7 +246,7 @@ ln -s libblas.so.%{version} libblas.so
 rm -rf tmp
 
 %make_build cblaslib \
-  CFLAGS="%{optflags} -fPIC -DADD_ "
+  CFLAGS="%{optflags} %{?precflags} -fPIC -DADD_ "
 mkdir tmp
 ( cd tmp; ar x ../libcblas.a )
 gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
@@ -251,7 +257,7 @@ rm -rf tmp
 %make_build -C TESTING/MATGEN FFLAGS="%{optflags_f} %{?test_precflags} %{?with_tmg:-fPIC}"
 
 %make_build lapacklib \
-  FFLAGS="%{optflags_f} -fPIC"
+  FFLAGS="%{optflags_f} %{?precflags} -fPIC"
 mkdir tmp
 ( cd tmp; ar x ../liblapack.a; %{?with_tmg: ar x ../libtmglib.a; ar cr ../liblapack.a *.o; ranlib ../liblapack.a })
 gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
@@ -259,7 +265,7 @@ ln -s liblapack.so.%{version} liblapack.so
 rm -rf tmp
 
 make %{?_smp_mflags} lapackelib \
-  CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
+  CFLAGS="%{optflags}  %{?precflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
 mkdir tmp
 ( cd tmp; ar x ../liblapacke.a )
 gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} -Wl,--no-undefined tmp/*.o -L. -llapack

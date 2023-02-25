@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 23 16:58:25 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Set -mfpmath=sse for the entire build for ix86 platforms
+  on SLE/Leap. Since we build for x86_64, we know that sse
+  is available.
+  This helps to avoid effects from excess precision that
+  can be seen in the test suite.
+  On Factory we leave -ffloat-store for the test suite
+  only as this option comes at a performance penalty.
+  We may see precision related issues in the test suite
+  with future compilers regardless.
+
+-------------------------------------------------------------------
 Wed Feb 15 08:51:06 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - As a configurable option add tmglib code to the LAPACK librarly
