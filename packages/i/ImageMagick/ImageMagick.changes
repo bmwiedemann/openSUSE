@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:37:01 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.0.62
+   https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+
+-------------------------------------------------------------------
+Fri Feb 24 11:30:44 UTC 2023 - pgajdos@suse.com
+
+- add %bcond_without djvulibre
+
+-------------------------------------------------------------------
 Tue Feb  7 12:49:34 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.0.61

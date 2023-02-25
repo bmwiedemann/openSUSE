@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   61
+%define mfr_revision   62
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -31,6 +31,9 @@
 %define config_spec    config-7
 # bsc#1088463
 %define urw_base35_fonts 0
+
+# do/don't pull djvulibre dependency
+%bcond_without djvulibre
 
 Name:           ImageMagick
 Version:        %{mfr_version}.%{mfr_revision}
@@ -124,7 +127,9 @@ BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-library
 BuildRequires:  libbz2-devel
+%if %{with djvulibre}
 BuildRequires:  libdjvulibre-devel
+%endif
 BuildRequires:  libexif-devel
 BuildRequires:  libheif-devel
 BuildRequires:  librsvg-devel
@@ -379,7 +384,9 @@ export CXXFLAGS="%{optflags} -O0"
   --with-perl-options="INSTALLDIRS=vendor %{?perl_prefix} CC='gcc -L$PWD/magick/.libs' LDDLFLAGS='-shared -L$PWD/magick/.libs'" \
   --disable-static \
   --with-gvc \
+%if %{with djvulibre}
   --with-djvu \
+%endif
   --with-fftw \
   --with-lcms \
   --with-jbig \
@@ -531,7 +538,9 @@ fi
 %if 0%{?suse_version} > 1315
 %exclude %{_libdir}/ImageMagick*/modules*/*/jp2.*
 %endif
+%if %{with djvulibre}
 %exclude %{_libdir}/ImageMagick*/modules*/*/djvu.*
+%endif
 %{_libdir}/ImageMagick*/modules*/*/*.so
 # don't remove la files, see bnc#579798
 %{_libdir}/ImageMagick*/modules*/*/*.la
@@ -549,8 +558,10 @@ fi
 %{_libdir}/ImageMagick*/modules*/*/jp2.so
 %{_libdir}/ImageMagick*/modules*/*/jp2.la
 %endif
+%if %{with djvulibre}
 %{_libdir}/ImageMagick*/modules*/*/djvu.so
 %{_libdir}/ImageMagick*/modules*/*/djvu.la
+%endif
 %endif
 
 %files devel
