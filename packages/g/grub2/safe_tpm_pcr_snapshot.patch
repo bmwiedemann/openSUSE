@@ -55,7 +55,7 @@
    if (argc == 0)
      pcr_bitmask = GRUB2_PCR_BITMASK_DEFAULT;
    else
-@@ -287,13 +295,28 @@
+@@ -287,6 +295,18 @@
    return rv;
  }
  
@@ -74,32 +74,6 @@
  static grub_extcmd_t cmd;
  
  GRUB_MOD_INIT (tpm)
- {
--  if (!grub_tpm_present())
--    return;
-+#ifdef GRUB_MACHINE_EFI
-+  if (grub_tpm_present())
-+    grub_verifier_register (&grub_tpm_verifier);
-+#else
-   grub_verifier_register (&grub_tpm_verifier);
-+#endif
- 
-   cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
- 			      N_("LIST_OF_PCRS"),
-@@ -303,8 +326,11 @@
- 
- GRUB_MOD_FINI (tpm)
- {
--  if (!grub_tpm_present())
--    return;
-+#ifdef GRUB_MACHINE_EFI
-+  if (grub_tpm_present())
-+    grub_verifier_unregister (&grub_tpm_verifier);
-+#else
-   grub_verifier_unregister (&grub_tpm_verifier);
-+#endif
-   grub_unregister_extcmd (cmd);
- }
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -1457,8 +1457,9 @@

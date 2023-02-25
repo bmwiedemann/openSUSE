@@ -1,28 +1,34 @@
-From 12378be5243c1c02ce28de2e5703e87197c69157 Mon Sep 17 00:00:00 2001
+From e5bba1012e34597215684aa948bbc30093faa750 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
-Date: Mon, 29 Aug 2022 11:28:28 +0800
-Subject: [PATCH] tpm: Disable tpm verifier if tpm is not present
+Date: Fri, 7 Oct 2022 13:37:10 +0800
+Subject: [PATCH 2/2] tpm: Disable tpm verifier if tpm is not present
 
-This helps to prevent out of memory error when reading large files via disablig
-tpm device as verifier has to read all content into memory in one chunk to
-measure the hash and extend to tpm.
+This helps to prevent out of memory error when reading large files via
+disabling tpm device as verifier has to read all content into memory in
+one chunk to measure the hash and extend to tpm.
+
+For ibmvtpm driver support this change here would be needed. It helps to
+prevent much memory consuming tpm subsystem from being activated when no
+vtpm device present.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
- grub-core/commands/efi/tpm.c |   37 +++++++++++++++++++++++++++++++++++++
- grub-core/commands/tpm.c     |    4 ++++
- include/grub/tpm.h           |    1 +
- 3 files changed, 42 insertions(+)
+ grub-core/commands/efi/tpm.c          | 37 +++++++++++++++++++++++++++
+ grub-core/commands/ieee1275/ibmvtpm.c | 16 +++++++-----
+ grub-core/commands/tpm.c              |  4 +++
+ include/grub/tpm.h                    |  1 +
+ 4 files changed, 52 insertions(+), 6 deletions(-)
 
 --- a/grub-core/commands/efi/tpm.c
 +++ b/grub-core/commands/efi/tpm.c
-@@ -349,3 +349,40 @@
+@@ -397,3 +397,40 @@
  
    return result;
  }
 +
 +int
-+grub_tpm_present ()
++grub_tpm_present (void)
 +{
 +  grub_efi_handle_t tpm_handle;
 +  grub_efi_uint8_t protocol_version;
@@ -57,9 +63,38 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +      return grub_tpm2_present (tpm);
 +    }
 +}
+--- a/grub-core/commands/ieee1275/ibmvtpm.c
++++ b/grub-core/commands/ieee1275/ibmvtpm.c
+@@ -136,12 +136,6 @@
+ grub_tpm_measure (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+ 		  const char *description)
+ {
+-  grub_err_t err = tpm_init();
+-
+-  /* Absence of a TPM isn't a failure. */
+-  if (err != GRUB_ERR_NONE)
+-    return GRUB_ERR_NONE;
+-
+   grub_dprintf ("tpm", "log_event, pcr = %d, size = 0x%" PRIxGRUB_SIZE ", %s\n",
+ 		pcr, size, description);
+ 
+@@ -150,3 +144,13 @@
+ 
+   return GRUB_ERR_NONE;
+ }
++
++int
++grub_tpm_present (void)
++{
++  /*
++   * Call tpm_init() 'late' rather than from GRUB_MOD_INIT() so that device nodes
++   * can be found.
++   */
++  return tpm_init() == GRUB_ERR_NONE;
++}
 --- a/grub-core/commands/tpm.c
 +++ b/grub-core/commands/tpm.c
-@@ -291,6 +291,8 @@
+@@ -311,6 +311,8 @@
  
  GRUB_MOD_INIT (tpm)
  {
@@ -68,7 +103,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    grub_verifier_register (&grub_tpm_verifier);
  
    cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
-@@ -301,6 +303,8 @@
+@@ -321,6 +323,8 @@
  
  GRUB_MOD_FINI (tpm)
  {

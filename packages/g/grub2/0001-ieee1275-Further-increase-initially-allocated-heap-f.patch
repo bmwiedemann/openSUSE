@@ -1,0 +1,46 @@
+From d44e0a892621a744e9a64e17ed5676470ef4f023 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Mon, 20 Feb 2023 15:58:14 -0500
+Subject: [PATCH 1/2] ieee1275: Further increase initially allocated heap from
+ 1/3 to 1/2
+
+The memory increase to 1/3 of 391MB (~127MB) was still insufficient
+to boot the kernel and initrd of the SuSE distribution:
+
+initrd        2023-Jan-18 04:27    114.9M
+linux         2023-Jan-17 05:23     45.9M
+
+Therefore, further increase the initially allocated heap to 1/2
+of 391MB to ~191MB, which now allows to boot the system from an
+ISO.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ grub-core/kern/ieee1275/init.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index 2a2409d45..e1dbff86a 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -47,7 +47,7 @@
+ #include <grub/lockdown.h>
+ 
+ /* The maximum heap size we're going to claim. Not used by sparc.
+-   We allocate 1/3 of the available memory under 4G, up to this limit. */
++   We allocate 1/2 of the available memory under 4G, up to this limit. */
+ #ifdef __i386__
+ #define HEAP_MAX_SIZE		(unsigned long) (64 * 1024 * 1024)
+ #else // __powerpc__
+@@ -417,7 +417,7 @@ grub_claim_heap (void)
+ 
+   grub_machine_mmap_iterate (heap_size, &total);
+ 
+-  total = total / 3;
++  total = total / 2;
+   if (total > HEAP_MAX_SIZE)
+     total = HEAP_MAX_SIZE;
+ 
+-- 
+2.39.1
+

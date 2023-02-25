@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 22 07:08:44 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix out of memory error on lpar installation from virtual cdrom (bsc#1208024)
+  * 0001-ieee1275-Further-increase-initially-allocated-heap-f.patch
+  * 0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
+- Fix lpar got hung at grub after inactive migration (bsc#1207684)
+  * 0002-ieee1275-implement-vec5-for-cas-negotiation.patch
+- Rediff
+  * safe_tpm_pcr_snapshot.patch
+- Patch supersceded
+  * 0001-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
+
+-------------------------------------------------------------------
 Wed Feb 15 07:09:39 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Refresh 0003-tpm2-resend-the-command-on-TPM_RC_RETRY.patch to
