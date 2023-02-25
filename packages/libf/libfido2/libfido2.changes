@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 24 10:08:21 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Version 1.13.0 (2023-02-20)
+    * Support for linking against OpenSSL on Windows; gh#668.
+    * New API calls:
+      + fido_assert_empty_allow_list;
+      + fido_cred_empty_exclude_list.
+    * fido2-token: fix issue when listing large blobs.
+    * Improved support for different fuzzing engines.
+
+-------------------------------------------------------------------
 Wed Oct  5 20:40:55 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Version 1.12.0 (2022-09-22)
