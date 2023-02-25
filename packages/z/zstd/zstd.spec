@@ -18,7 +18,7 @@
 
 %define libname libzstd1
 Name:           zstd
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -47,11 +47,6 @@ At roughly the same ratio, zstd (v1.4.0) achieves ~870%% faster
 compression than gzip. For roughly the same time, zstd achives a
 ~12%% better ratio than gzip. LZMA outperforms zstd by ~10%% faster
 compression for same ratio, or ~1–4%% size reduction for same time.
-
-
-
-
-# This compression summary is based on https://lists.opensuse.org/opensuse-factory/2019-05/msg00344.html
 
 %package -n %{libname}
 Summary:        Zstd compression library

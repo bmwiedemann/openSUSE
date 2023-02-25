@@ -313,4 +313,43 @@
     <comment></comment>
     <requestid>1046687</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>27b9890d910b7a5ed1f12f2d117b4142</srcmd5>
+    <version>1.5.4</version>
+    <time>1677351253</time>
+    <user>dimstar_suse</user>
+    <comment>zchunk is already updated to work with zstd-1.5.4
+
+- update to 1.5.4:
+  * perf: +20% faster huffman decompression for targets that
+    can't compile x64 assembly
+  * perf: up to +10% faster streaming compression at levels 1-2
+  * perf: +4-13% for levels 5-12 by optimizing function
+    generation
+  * pref: +3-11% compression speed for `arm` target
+  * perf: +5-30% faster dictionary compression at levels 1-4
+  * perf: +10-20% cold dict compression speed by prefetching
+    CDict tables
+  * perf: +1% faster compression by removing a branch in
+    ZSTD_fast_noDict
+  * perf: Small compression ratio improvements in high
+    compression mode
+  * perf: small speed improvement by better detecting
+    `STATIC_BMI2` for `clang`
+  * perf: Improved streaming performance when
+    `ZSTD_c_stableInBuffer` is set
+  * cli: Asynchronous I/O for improved cli speed
+  * cli: Change `zstdless` behavior to align with `zless`
+  * cli: Keep original file if `-c` or `--stdout` is given
+  * cli: Keep original files when result is concatenated into a
+    single output with `-o`
+  * cli: Preserve Permissions and Ownership of regular files
+  * cli: Print zlib/lz4/lzma library versions with `-vv`
+  * cli: Print checksum value for single frame files with `-lv`
+  * cli: Print `dictID` when present with `-lv`
+  * cli: when `stderr` is *not* the console, disable status
+    updates, but preserve final summary
+  * cli: support `--best` and `--no-name` in `gzip` compatibility</comment>
+    <requestid>1067313</requestid>
+  </revision>
 </revisionlist>

@@ -1,17 +1,17 @@
-Index: zstd-1.5.2/programs/zstd.1
+Index: zstd-1.5.4/programs/zstd.1
 ===================================================================
---- zstd-1.5.2.orig/programs/zstd.1
-+++ zstd-1.5.2/programs/zstd.1
-@@ -217,6 +217,12 @@ If input directory contains "\.\.", the
- .
- .IP "" 0
- .
+--- zstd-1.5.4.orig/programs/zstd.1
++++ zstd-1.5.4/programs/zstd.1
+@@ -171,6 +171,12 @@ do not store the original filename and t
+ .TP
+ \fB\-\-best\fR
+ alias to the option \fB\-9\fR\.
 +.SS Parallel Zstd OPTIONS
 +Additional options for the pzstd utility
 +.TP
 +\fB\-p\fR, \fB\-\-processes\fR
 + number of threads to use for (de)compression (default:4)
 +.
- .SS "Restricted usage of Environment Variables"
- Using environment variables to set parameters has security implications\. Therefore, this avenue is intentionally restricted\. Only \fBZSTD_CLEVEL\fR and \fBZSTD_NBTHREADS\fR are currently supported\. They set the compression level and number of threads to use during compression, respectively\.
- .
+ .SS "Environment Variables"
+ Employing environment variables to set parameters has security implications\. Therefore, this avenue is intentionally limited\. Only \fBZSTD_CLEVEL\fR and \fBZSTD_NBTHREADS\fR are currently supported\. They set the compression level and number of threads to use during compression, respectively\.
+ .P

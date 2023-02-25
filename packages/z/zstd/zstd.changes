@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Feb 10 08:22:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 1.5.4:
+  * perf: +20% faster huffman decompression for targets that
+    can't compile x64 assembly
+  * perf: up to +10% faster streaming compression at levels 1-2
+  * perf: +4-13% for levels 5-12 by optimizing function
+    generation
+  * pref: +3-11% compression speed for `arm` target
+  * perf: +5-30% faster dictionary compression at levels 1-4
+  * perf: +10-20% cold dict compression speed by prefetching
+    CDict tables
+  * perf: +1% faster compression by removing a branch in
+    ZSTD_fast_noDict
+  * perf: Small compression ratio improvements in high
+    compression mode
+  * perf: small speed improvement by better detecting
+    `STATIC_BMI2` for `clang`
+  * perf: Improved streaming performance when
+    `ZSTD_c_stableInBuffer` is set
+  * cli: Asynchronous I/O for improved cli speed
+  * cli: Change `zstdless` behavior to align with `zless`
+  * cli: Keep original file if `-c` or `--stdout` is given
+  * cli: Keep original files when result is concatenated into a
+    single output with `-o`
+  * cli: Preserve Permissions and Ownership of regular files
+  * cli: Print zlib/lz4/lzma library versions with `-vv`
+  * cli: Print checksum value for single frame files with `-lv`
+  * cli: Print `dictID` when present with `-lv`
+  * cli: when `stderr` is *not* the console, disable status
+    updates, but preserve final summary
+  * cli: support `--best` and `--no-name` in `gzip` compatibility
+    mode
+  * cli: support for `posix` high resolution timer
+    `clock_gettime()`, for improved benchmark accuracy
+  * cli: improved help/usage (`-h`,  `-H`) formatting
+  * cli: Fix better handling of bogus numeric values
+  * cli: Fix input consists of multiple files _and_ `stdin`
+  * cli: Fix tiny files passthrough
+  * cli: Fix for `-r` on empty directory
+  * cli: Fix empty string as argument for `--output-dir-*`
+  * cli: Fix decompression memory usage reported by `-vv --long`
+  * cli: Fix infinite loop when empty input is passed to trainer
+  * cli: Fix `--adapt` doesn't work when `--no-progress` is also
+    set
+  * api: Support for Block-Level Sequence Producer
+  * api: Support for in-place decompression
+  * api: New  `ZSTD_CCtx_setCParams()`  function, set all
+    parameters defined in a  `ZSTD_compressionParameters`
+    structure
+  * api: Streaming decompression detects incorrect header ID
+    sooner
+  * api: Window size resizing optimization for edge case
+  * api: More accurate error codes for busy-loop scenarios
+  * api: Fix limit overflow in `compressBound` and
+    `decompressBound` (#3362, #3373, Cyan4973) reported by
+    @nigeltao
+  * api: Deprecate several advanced experimental functions:
+    streaming (#3408, @embg), copy
+  * bug: Fix corruption that rarely occurs in 32-bit mode with
+    wlog=25
+  * bug: Fix for block-splitter
+  * bug: Fixes for Sequence Compression API
+  * bug: Fix leaking thread handles on Windows
+  * bug: Fix timing issues with cmake/meson builds
+  * build: Allow user to select legacy level for cmake
+  * build: Enable legacy support by default in cmake
+  * build: Meson build script improvements
+  * build: Add aarch64 to supported architectures for zstd_trace
+  * build: support AIX architecture
+  * build: Fix `ZSTD_LIB_MINIFY` build macro, which now reduces
+    static library size by half
+  * build: Fix Windows issues with Multithreading translation
+    layer (#3364, #3380, @yoniko) and ARM64 target
+  * build: Fix `cmake` script
+  * doc: Updated man page, providing more details for `--train`
+    mode
+  * doc: Add decompressor errata document
+  * misc: Enable Intel CET
+  * misc: Fix `contrib/` seekable format
+  * misc: Improve speed of the one-file library generator
+- rebase pzstd.1.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 09:03:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add zcat in zstd-gzip (needed by for example the kernel scripts)
