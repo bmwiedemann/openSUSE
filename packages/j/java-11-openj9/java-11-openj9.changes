@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 17 13:19:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the accessibility sub-package, since it was never really
+  working and creates another problems (bsc#1205916). It can
+  eventually be built as standalone if needed
+- Removed patches:
+  * jaw-jdk10.patch
+  * jaw-misc.patch
+  * jaw-nogtk.patch
+    + not needed after the removal of the accessibility sub-package
+
+-------------------------------------------------------------------
 Mon Oct 31 11:57:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.17 with OpenJ9 0.35.0 virtual machine
