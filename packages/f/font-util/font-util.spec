@@ -1,7 +1,7 @@
 #
 # spec file for package font-util
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           font-util
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        X.Org font package creation/installation utilities
 License:        MIT

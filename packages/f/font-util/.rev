@@ -115,4 +115,20 @@
   * Fix spelling/wording issues</comment>
     <requestid>988771</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>72647ee3baf03b2748d84eaf48767392</srcmd5>
+    <version>1.4.0</version>
+    <time>1677351268</time>
+    <user>dimstar_suse</user>
+    <comment>- Updage to version 1.4.0
+  * This release updates the XORG_FONT_CHECK_COMPRESSION autoconf macro to
+    also set a COMPRESS_FLAGS variable.
+    By default, COMPRESS_FLAGS will be set to -n for gzip to stop recording
+    timestamps to improve build reproducibility, and to empty for all other
+    compression methods (compress, bzip2, or none).
+    This will not be effective until the bdf font packages we produce are
+    updated to add COMPRESS_FLAGS to Makefile.am, which will be occuring
+    shortly.</comment>
+    <requestid>1067356</requestid>
+  </revision>
 </revisionlist>
