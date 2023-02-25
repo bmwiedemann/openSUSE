@@ -7865,7 +7865,6 @@ unsorted:
   - jatl 
   - jatl-javadoc 
   - java-11-openj9: [x86_64] 
-  - java-11-openj9-accessibility: [x86_64] 
   - java-11-openj9-demo: [x86_64] 
   - java-11-openj9-devel: [x86_64] 
   - java-11-openj9-headless: [x86_64] 
@@ -7892,7 +7891,6 @@ unsorted:
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
   - java-17-openj9: [x86_64] 
-  - java-17-openj9-accessibility: [x86_64] 
   - java-17-openj9-demo: [x86_64] 
   - java-17-openj9-devel: [x86_64] 
   - java-17-openj9-headless: [x86_64] 
@@ -8673,8 +8671,8 @@ unsorted:
   - kismet-capture-ti-cc2540 
   - kismet-devel 
   - kismet-logtools 
-  - kissfft: [x86_64] 
-  - kissfft-devel: [x86_64] 
+  - kissfft 
+  - kissfft-devel 
   - kitemmodels-devel 
   - kitemviews-devel 
   - kiten-devel 
@@ -12471,7 +12469,7 @@ unsorted:
   - libkim-api2 
   - libkioarchive-devel 
   - libkipi-devel 
-  - libkissfft-float131: [x86_64] 
+  - libkissfft-float131 
   - libkkc-devel 
   - libkkc2 
   - libkkc2-32bit: [x86_64] 
@@ -27557,6 +27555,7 @@ unsorted:
   - python311-libcst 
   - python311-libevdev 
   - python311-libewf 
+  - python311-libkdumpfile 
   - python311-liblarch 
   - python311-liblarch-gtk 
   - python311-libmount 
@@ -47364,6 +47363,7 @@ unsorted:
   - tsung 
   - ttf-converter 
   - ttf2pt1 
+  - ttyd 
   - ttynvt 
   - tudu 
   - tuigreet 
