@@ -533,4 +533,12 @@ Features
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1032866</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b7fa3ded54a10d730280be791cf95663</srcmd5>
+    <version>1.17.1</version>
+    <time>1677351270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.1:</comment>
+    <requestid>1067361</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Feb 23 09:15:48 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.17.1:
+  * Features:
+    - Expose 'statistics-inhibit-zero' as a configuration option;
+      the default value retains Unbound's behavior.
+    - Expose 'max-sent-count' as a configuration option; the default
+      value retains Unbound's behavior.
+    - Merge #461 from Christian Allred: Add max-query-restarts option.
+      Exposes an internal configuration but the default value retains
+      Unbound's behavior.
+    - Merge #569 from JINMEI Tatuya: add keep-cache option to
+      'unbound-control reload' to keep caches.
+  * Bug Fixes:
+    - Merge #768 from fobser: Arithmetic on a pointer to void is a
+      GNU extension.
+    - In unit test, print python script name list correctly.
+    - testcode/dohclient sets log identity to its name.
+    - Clarify the use of MAX_SENT_COUNT in the iterator code.
+    - Fix that cachedb does not store failures in the external cache.
+    - Merge #767 from jonathangray: consistently use IPv4/IPv6 in
+      unbound.conf.5.
+    - Fix to ignore tcp events for closed comm points.
+    - Fix to make sure to not read again after a tcp comm point is
+      closed.
+    - Fix #775: libunbound: subprocess reap causes parent process
+      reap to hang.
+    - iana portlist update.
+    - Complementary fix for distutils.sysconfig deprecation in
+      Python 3.10 to commit 62c5039ab9da42713e006e840b7578e01d66e7f2.
+    - Fix #779: [doc] Missing documention in ub_resolve_event() for
+      callback parameter was_ratelimited.
+    - Ignore expired error responses.
+    - Merge #720 from jonathangray: fix use after free when
+      WSACreateEvent() fails.
+    - Fix for the ignore of tcp events for closed comm points,
+      preserve the use after free protection features.
+    - Fix #782: Segmentation fault in stats.c:404.
+    - Add SVCB and HTTPS to the types removed by 'unbound-control flush'.
+    - Clear documentation for interactivity between the subnet module
+      and the serve-expired and prefetch configuration options.
+    - Fix #773: When used with systemd-networkd, unbound does not start
+      until systemd-networkd-wait-online.service times out.
+    - Merge #808: Wrap Makefile script's directory variables in quotes.
+    - Fix to wrap Makefile scripts directory in quotes for uninstall.
+    - Fix windows compile for libunbound subprocess reap comm point closes.
+    - Update github workflows to use checkout v3.
+    - Fix wildcard in hyperlocal zone service degradation, reported
+      by Sergey Kacheev.
+  * Add signature and keyring files
+
+-------------------------------------------------------------------
+Thu Dec 29 18:10:37 UTC 2022 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Tighten permissions (boo#1173619)
+- Add missing dependency: unbound-control-setup needs /usr/bin/openssl.
+
+-------------------------------------------------------------------
 Thu Oct 13 17:08:56 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.17.0

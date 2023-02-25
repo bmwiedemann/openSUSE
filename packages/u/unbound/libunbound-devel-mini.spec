@@ -1,7 +1,7 @@
 #
 # spec file for package libunbound-devel-mini
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without hardened_build
 #
 Name:           libunbound-devel-mini
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Just a devel package for build loops
 License:        BSD-3-Clause
@@ -30,6 +30,8 @@ Group:          Productivity/Networking/DNS/Servers
 #
 URL:            https://www.unbound.net/
 Source:         https://www.unbound.net/downloads/unbound-%{version}.tar.gz
+Source100:      https://www.unbound.net/downloads/unbound-%{version}.tar.gz.asc
+Source101:      unbound.keyring
 Source1:        libunbound-devel-mini-rpmlintrc
 Source5:        root.key
 Source6:        dlv.isc.org.key

@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
@@ -57,12 +57,16 @@ BuildRequires:  pkgconfig(libnghttp2)
 Requires:       ldns >= %{ldns_version}
 # until we figured something else out for the unbound-anchor part in the systemd unit file
 Requires:       sudo
+# unbound-control-setup depends on /usr/bin/openssl
+Requires:       openssl
 %if %{with systemd}
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 URL:            https://www.unbound.net/
 Source:         https://www.unbound.net/downloads/unbound-%{version}.tar.gz
+Source100:      https://www.unbound.net/downloads/unbound-%{version}.tar.gz.asc
+Source101:      unbound.keyring
 Source1:        unbound.service
 Source2:        unbound.conf
 Source3:        unbound.munin
@@ -351,11 +355,11 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %attr(0755,unbound,unbound) %ghost %dir %{piddir}/%{name}
 %attr(0640,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/unbound.conf
 %dir %attr(-,root,unbound)                     %{_sysconfdir}/%{name}/keys.d
-%attr(0660,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/keys.d/*.key
+%attr(0640,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/keys.d/*.key
 %dir %attr(-,root,unbound)                     %{_sysconfdir}/%{name}/conf.d
-%attr(0660,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/conf.d/*.conf
+%attr(0640,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/conf.d/*.conf
 %dir %attr(-,root,unbound)                     %{_sysconfdir}/%{name}/local.d
-%attr(0660,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/local.d/*.conf
+%attr(0640,root,unbound)    %config(noreplace) %{_sysconfdir}/%{name}/local.d/*.conf
 %{_sbindir}/unbound
 %{_sbindir}/unbound-checkconf
 %{_sbindir}/unbound-host
