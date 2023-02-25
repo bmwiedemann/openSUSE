@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 18 02:02:31 UTC 2023 - william.brown@suse.com
+
+- Update to version 1.2.0+0:
+  * marcos.cargo: add path parameter in cargo_install (#3)
+
+-------------------------------------------------------------------
 Thu Nov 03 22:47:05 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.1.0

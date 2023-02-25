@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-packaging
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cargo-packaging
-Version:        1.1.0+0
+Version:        1.2.0+0
 Release:        0
 Summary:        Macros and tools to assist with cargo and rust packaging
 License:        MPL-2.0
