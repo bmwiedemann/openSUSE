@@ -119,6 +119,9 @@ mkdir -p %{buildroot}%{_datadir}/doc/python-libcomps/
 rm build/src/python/docs/html/.doctrees/environment.pickle
 cp -a build/src/python/docs/html %{buildroot}%{_datadir}/doc/python-libcomps/
 
+%python_compileall
+%fdupes %{buildroot}%{python3_sitearch}
+
 %fdupes %{buildroot}%{_datadir}/doc/libcomps
 %fdupes %{buildroot}%{_datadir}/doc/python-libcomps
 
