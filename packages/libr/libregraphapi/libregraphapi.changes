@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Feb 23 09:58:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Rename package
+
+-------------------------------------------------------------------
+Mon Feb  6 20:29:16 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove stale spec file content 
+
+-------------------------------------------------------------------
+Mon Feb  6 20:25:26 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix name of the devel package to libLibreGraphAPI-devel 
+
+-------------------------------------------------------------------
+Thu Jan 26 16:50:27 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Rename package to this name to fulfill naming conventions 
+
+-------------------------------------------------------------------
+Thu Jan 26 09:40:58 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add patch 0001-cmake_fixes.patch to fix the CMakefile.
+- Update to version 1.0.1
+
+-------------------------------------------------------------------
+Fri Dec 30 12:59:26 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Initial version 0.13.2 

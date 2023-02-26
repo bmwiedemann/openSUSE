@@ -1,0 +1,8 @@
+<package name="libregraphapi" project="openSUSE:Factory">
+  <title>A client library for the LibreGraphAPI library</title>
+  <description>Libregraphapi is a MS Graph API influenced API for cloud collaboration.
+
+</description>
+  <devel project="KDE:Extra" package="libregraphapi"/>
+  <url>https://github.com/owncloud/libre-graph-api-cpp-qt-client</url>
+</package>

@@ -1,0 +1,226 @@
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index cd1e8ee..144cbf3 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -1,6 +1,7 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.4)
+ string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]" APP_VERSION "v1.0.1")
+-string(REGEX REPLACE " " "" TARGET_NAME "Libre Graph API")
++
++set(TARGET_NAME "LibreGraphAPI")
+ 
+ project("Libre Graph API" VERSION ${APP_VERSION} LANGUAGES CXX)
+ 
+@@ -17,13 +18,13 @@ endif ()
+ find_package(Qt5Core REQUIRED)
+ find_package(Qt5Network REQUIRED)
+ 
+-add_library(client STATIC
++add_library(client
+     OAIClass_Member_Reference.cpp
+     OAIClass_Reference.cpp
+     OAICollection_of_class.cpp
+     OAICollection_of_driveItems.cpp
+-    OAICollection_of_drives.cpp
+     OAICollection_of_drives_1.cpp
++    OAICollection_of_drives.cpp
+     OAICollection_of_educationUser.cpp
+     OAICollection_of_group.cpp
+     OAICollection_of_schools.cpp
+@@ -33,60 +34,61 @@ add_library(client STATIC
+     OAIDirectoryObject.cpp
+     OAIDrive.cpp
+     OAIDriveItem.cpp
++    OAIDrivesApi.cpp
++    OAIDrivesGetDrivesApi.cpp
++    OAIDrivesRootApi.cpp
++    OAIEducationClassApi.cpp
+     OAIEducationClass.cpp
+     OAIEducationOrganization.cpp
++    OAIEducationSchoolApi.cpp
+     OAIEducationSchool.cpp
++    OAIEducationUserApi.cpp
+     OAIEducationUser.cpp
+     OAIEducationUser_Reference.cpp
+     OAIEntity.cpp
+     OAIFileSystemInfo.cpp
+     OAIFolder.cpp
+     OAIFolderView.cpp
++    OAIGroupApi.cpp
+     OAIGroup.cpp
++    OAIGroupsApi.cpp
+     OAIHashes.cpp
++    OAIHelpers.cpp
++    OAIHttpFileElement.cpp
++    OAIHttpRequest.cpp
+     OAIIdentity.cpp
+     OAIIdentitySet.cpp
+     OAIImage.cpp
+     OAIItemReference.cpp
++    OAIMeChangepasswordApi.cpp
++    OAIMeDriveApi.cpp
++    OAIMeDriveRootApi.cpp
++    OAIMeDriveRootChildrenApi.cpp
++    OAIMeDrivesApi.cpp
+     OAIMember_Reference.cpp
++    OAIMeUserApi.cpp
++    OAIOauth.cpp
+     OAIObjectIdentity.cpp
+     OAIOdata_error.cpp
+     OAIOdata_error_detail.cpp
+     OAIOdata_error_main.cpp
+     OAIOpenGraphFile.cpp
+-    OAIPasswordProfile.cpp
+     OAIPassword_change.cpp
++    OAIPasswordProfile.cpp
+     OAIPermission.cpp
+     OAIQuota.cpp
+     OAIRemoteItem.cpp
+     OAIShared.cpp
+     OAISpecialFolder.cpp
+     OAITagAssignment.cpp
++    OAITagsApi.cpp
+     OAITagUnassignment.cpp
+     OAITrash.cpp
+-    OAIUser.cpp
+-    OAIDrivesApi.cpp
+-    OAIDrivesGetDrivesApi.cpp
+-    OAIDrivesRootApi.cpp
+-    OAIEducationClassApi.cpp
+-    OAIEducationSchoolApi.cpp
+-    OAIEducationUserApi.cpp
+-    OAIGroupApi.cpp
+-    OAIGroupsApi.cpp
+-    OAIMeChangepasswordApi.cpp
+-    OAIMeDriveApi.cpp
+-    OAIMeDriveRootApi.cpp
+-    OAIMeDriveRootChildrenApi.cpp
+-    OAIMeDrivesApi.cpp
+-    OAIMeUserApi.cpp
+-    OAITagsApi.cpp
+     OAIUserApi.cpp
++    OAIUser.cpp
+     OAIUsersApi.cpp
+-    OAIHelpers.cpp
+-    OAIHttpRequest.cpp
+-    OAIHttpFileElement.cpp
+-    OAIOauth.cpp
+ )
++
+ target_include_directories(client PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<INSTALL_INTERFACE:include/OpenAPI/${TARGET_NAME}>
+@@ -96,6 +98,10 @@ add_library(OpenAPI::${TARGET_NAME} ALIAS client)
+ 
+ target_link_libraries(client PRIVATE Qt5::Core Qt5::Network)
+ 
++if (NOT WIN32)
++    set_target_properties(client PROPERTIES VERSION ${APP_VERSION})
++    set_target_properties(client PROPERTIES SOVERSION 1)
++endif ()
+ 
+ set_target_properties(client PROPERTIES
+                 CXX_STANDARD 14
+@@ -109,8 +115,8 @@ set(HEADER
+     OAIClass_Reference.h
+     OAICollection_of_class.h
+     OAICollection_of_driveItems.h
+-    OAICollection_of_drives.h
+     OAICollection_of_drives_1.h
++    OAICollection_of_drives.h
+     OAICollection_of_educationUser.h
+     OAICollection_of_group.h
+     OAICollection_of_schools.h
+@@ -120,62 +126,65 @@ set(HEADER
+     OAIDirectoryObject.h
+     OAIDrive.h
+     OAIDriveItem.h
++    OAIDrivesApi.h
++    OAIDrivesGetDrivesApi.h
++    OAIDrivesRootApi.h
++    OAIEducationClassApi.h
+     OAIEducationClass.h
+     OAIEducationOrganization.h
++    OAIEducationSchoolApi.h
+     OAIEducationSchool.h
++    OAIEducationUserApi.h
+     OAIEducationUser.h
+     OAIEducationUser_Reference.h
+     OAIEntity.h
++    OAIEnum.h
+     OAIFileSystemInfo.h
+     OAIFolder.h
+     OAIFolderView.h
++    OAIGroupApi.h
+     OAIGroup.h
++    OAIGroupsApi.h
+     OAIHashes.h
++    OAIHelpers.h
++    OAIHttpFileElement.h
++    OAIHttpRequest.h
+     OAIIdentity.h
+     OAIIdentitySet.h
+     OAIImage.h
+     OAIItemReference.h
++    OAIMeChangepasswordApi.h
++    OAIMeDriveApi.h
++    OAIMeDriveRootApi.h
++    OAIMeDriveRootChildrenApi.h
++    OAIMeDrivesApi.h
+     OAIMember_Reference.h
++    OAIMeUserApi.h
++    OAIOauth.h
++    OAIObject.h
+     OAIObjectIdentity.h
+-    OAIOdata_error.h
+     OAIOdata_error_detail.h
++    OAIOdata_error.h
+     OAIOdata_error_main.h
+     OAIOpenGraphFile.h
+-    OAIPasswordProfile.h
+     OAIPassword_change.h
++    OAIPasswordProfile.h
+     OAIPermission.h
+     OAIQuota.h
+     OAIRemoteItem.h
++    OAIServerConfiguration.h
++    OAIServerVariable.h
+     OAIShared.h
+     OAISpecialFolder.h
+     OAITagAssignment.h
++    OAITagsApi.h
+     OAITagUnassignment.h
+     OAITrash.h
+-    OAIUser.h
+-    OAIDrivesApi.h
+-    OAIDrivesGetDrivesApi.h
+-    OAIDrivesRootApi.h
+-    OAIEducationClassApi.h
+-    OAIEducationSchoolApi.h
+-    OAIEducationUserApi.h
+-    OAIGroupApi.h
+-    OAIGroupsApi.h
+-    OAIMeChangepasswordApi.h
+-    OAIMeDriveApi.h
+-    OAIMeDriveRootApi.h
+-    OAIMeDriveRootChildrenApi.h
+-    OAIMeDrivesApi.h
+-    OAIMeUserApi.h
+-    OAITagsApi.h
+     OAIUserApi.h
++    OAIUser.h
+     OAIUsersApi.h
+-    OAIEnum.h
+-    OAIHelpers.h
+-    OAIHttpRequest.h
+-    OAIHttpFileElement.h
+-    OAIOauth.h
+-    OAIObject.h
+ )
++
+ install(FILES ${HEADER} DESTINATION include/OpenAPI/${TARGET_NAME})
+-install(TARGETS client EXPORT ${TARGET_NAME}Config RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+-install(EXPORT ${TARGET_NAME}Config DESTINATION lib/cmake/${TARGET_NAME} NAMESPACE OpenAPI::)
++install(TARGETS client EXPORT ${TARGET_NAME}Config RUNTIME DESTINATION bin LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(EXPORT ${TARGET_NAME}Config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET_NAME} NAMESPACE OpenAPI::)

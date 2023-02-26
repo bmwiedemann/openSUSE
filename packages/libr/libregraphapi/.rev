@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8037f3d3ee94e72c91a9bb38551a1cd</srcmd5>
+    <version>1.0.1</version>
+    <time>1677419461</time>
+    <user>dimstar_suse</user>
+    <comment>Add libregraphapi to openSUSE:Factory, needed by owncloud-client</comment>
+    <requestid>1067728</requestid>
+  </revision>
+</revisionlist>
