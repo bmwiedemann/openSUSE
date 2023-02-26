@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 26 10:33:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * Remove auto return type from first_unused_letter
+  * Properly initialise RepOrc
+
+-------------------------------------------------------------------
 Mon Feb  6 19:41:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0

@@ -211,4 +211,12 @@
     <comment>- Update to release 2.6.0</comment>
     <requestid>1063517</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b20db64ad1a163e99881b29dfd20fe9a</srcmd5>
+    <version>2.6.1</version>
+    <time>1677419486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6.1</comment>
+    <requestid>1067799</requestid>
+  </revision>
 </revisionlist>
