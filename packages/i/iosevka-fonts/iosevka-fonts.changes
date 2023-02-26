@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 19 07:03:12 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v19.0.1
+  * Changes of version 19.0.1
+    = Fix shape artifacts in inequality symbols with negated
+      under-bars (#1548).
+    = Use a better shape for 0 under SS08 (#1549).
+
+-------------------------------------------------------------------
+Sun Feb 12 14:01:28 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v19.0.0
+  * Changes of version 19.0.0
+    = [Breaking] Reordered variant selectors' name and OT tag.
+    = Fixed ligations that forming triple-line ligatures.
+    = Made the shape of less and greater sign wider (#1542).
+
+-------------------------------------------------------------------
 Sat Feb  4 03:40:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update tp v18.0.0
