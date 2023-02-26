@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 25 17:43:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Feb 23 10:26:43 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 3.2.0 and use of liblibregaphapi
+  Changelog https://github.com/owncloud/client/releases/tag/v3.2.0 
+
+-------------------------------------------------------------------
+Thu Feb  2 16:54:21 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- remove patch fix-systray-menu-pos.patch as it is not longer needed 
+
+-------------------------------------------------------------------
+Thu Jan 19 11:20:22 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- move 69-sync-inotify.conf sysctl.d drop-in configuration to /usr, where it
+  belongs (bsc#1174722).
+
+-------------------------------------------------------------------
 Fri Sep  2 08:55:56 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 2.11.1 - quick bugfix release.
