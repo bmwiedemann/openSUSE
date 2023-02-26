@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Feb 25 08:53:42 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.25
+- Update to version 4.1.24
+  * CTY.dat: create separate configuration tab 
+  * transfer changes in flrig cwio speed to tx wpm vice rx wpm
+  * update FreqControl for compatability with fltk-1.4
+  * Improved reliability of freq control from fldigi when using
+    N3FJP for rig control
+  * Greek po file update: Haris Andrianos <sv1grb@...>
+  * Polish po file update: Roman Bagiński <sp4jeu@...>
+  * allow user selectable vumeter scale
+    + original audio level scale
+    + wsjtx emulation
+  * add right click to FSQ QTC/QTH buttons to access edit controls
+  * replicate the QTH control on the FSQ config panel
+  * Rx audio gain parameter corrected
+  * Tx audio fixed, fixed at last ring buffer too small for some
+    modem types
+  * expand mode state to index both by-mode and by-band
+  * correct rtty squelch estimation for zero signal, zero noise
+  * Add Audio Filter bandwidth lines to waterfall display
+  * change CAT keying to allow up to 100 WPM on K4.
+  * stub out audio alert and rx monitor functions if Portaudio
+    library not present
+  * Made Frequency Control behavior consistent across flapps
+  * Fixed County combo box crash to desktop
+  * Fixed 30 meter CW shortcut in frequencies2.txt
+  * Fixed grid locator spec in pskreporter query
+  * Fixed crash-to-desktop upon Activity (pskreporter) query.
+
+-------------------------------------------------------------------
 Thu Jun 30 19:43:37 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.23
