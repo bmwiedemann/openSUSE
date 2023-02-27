@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 27 11:14:23 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Disable update check by default since updates are handled in OBS
+
+-------------------------------------------------------------------
+Sun Feb 26 22:58:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 13.0.0:
+  * Improvements
+    - Better error messages
+    - Nix install files + instructions
+    - Exit when pushing the down arrow from the most recent entry
+    - Refactor to support generic server-side databases
+    - Make it easier to disable the ctrl-r and/or up arrow bindings
+    - Update to axum6
+  * Fixes
+    - Fish now handles multi-line commands properly
+    - Listing history for the current session now works
+    - Fix atuin init for Fish
+  * New features
+    - Pretty stats
+    - Custom history list format
+    - History filter
+    - Mnemonic key
+  * Crossterm as the new TUI backend
+
+-------------------------------------------------------------------
 Thu Nov 17 02:16:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix installation of shell completions.

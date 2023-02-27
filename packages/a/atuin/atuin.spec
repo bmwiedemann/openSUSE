@@ -1,7 +1,7 @@
 #
 # spec file for package atuin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           atuin
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/ellie/atuin
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        https://github.com/ellie/atuin/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
+Source3:        0000-disable_update_check.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -63,7 +64,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
