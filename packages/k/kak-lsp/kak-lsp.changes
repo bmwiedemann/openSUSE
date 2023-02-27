@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 19 10:48:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Updates to version 14.2.0:
+  * Additions:
+      - Default configuration for CMake.
+      - If there are no code actions in the main selection, lsp-code-actions will show code actions from anywhere on a selected line, to make it easier to perform quick-fixes.
+      - If requested by the language server, kak-lsp will recursively watch the entire root directory for file changes and forward them to the server via workspace/didChangeWatchedFiles (#649).
+      - kak-lsp now asks the server to cancel stale requests (#666).
+      - lsp-did-change is async again, which can improve performance (#667).
+      - kak-lsp is published to crates.io for easy installation (#660).
+  * Fixes:
+      - Fix race conditions when spinning up a new server in "kak-lsp --request" (#654), and in "lsp-hover-buffer" (#664).
+      - Send inlay hints and semantic tokens only after buffer changes (#663).
+- Use zstd compression for vendored dep tarball
+
+-------------------------------------------------------------------
 Sat Nov 12 00:27:08 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 14.1.0:
