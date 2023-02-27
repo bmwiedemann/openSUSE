@@ -1,7 +1,7 @@
 #
 # spec file for package peazip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 9.0.0
+%define         _helpver 9.1.0
 Name:           peazip
-Version:        9.0.0
+Version:        9.1.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only

@@ -1019,4 +1019,19 @@
 </comment>
     <requestid>1043702</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>462cbd723550cac658100ddae896f274</srcmd5>
+    <version>9.1.0</version>
+    <time>1677498927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.1.0:
+  * Major restyle in application's look &amp; feel and themes, and many
+    usability improvements for the file manager, and archiving / extraction screens.
+  * The scripting engine was refined, with the ability to adapt the syntax
+    for a specific 7z version at runtime, and to export archive conversion tasks as scripts.
+  * Support for TAR, Brotli, and Zstandard formats was improved.
+  * Pea was updated to 1.12, fixing for CVE-2023-24785 (this fixes bsc#1208468)
+</comment>
+    <requestid>1067896</requestid>
+  </revision>
 </revisionlist>

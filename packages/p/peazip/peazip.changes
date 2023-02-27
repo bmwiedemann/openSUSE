@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 27 07:05:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.1.0:
+  * Major restyle in application's look & feel and themes, and many
+    usability improvements for the file manager, and archiving / extraction screens.
+  * The scripting engine was refined, with the ability to adapt the syntax
+    for a specific 7z version at runtime, and to export archive conversion tasks as scripts.
+  * Support for TAR, Brotli, and Zstandard formats was improved.
+  * Pea was updated to 1.12, fixing for CVE-2023-24785 (this fixes bsc#1208468)
+
+-------------------------------------------------------------------
 Mon Dec 19 07:05:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.0:
