@@ -60,4 +60,19 @@
 </comment>
     <requestid>927531</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>572784708b8d98a5aa4432c774a42c7f</srcmd5>
+    <version>0.4.16</version>
+    <time>1677498958</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove .c and .h devel files from python package distribution.
+- Update to 0.4.16:
+  * Fix unexpected binary type id in TBinaryTransport serialization
+- versuib 0.4.15:
+  * Support Apache JSON protocol and binary type
+  * Replace &quot;yield from&quot; syntax to &quot;await&quot;
+  * Fix some socket leaking cases in aio support
+</comment>
+    <requestid>1067913</requestid>
+  </revision>
 </revisionlist>

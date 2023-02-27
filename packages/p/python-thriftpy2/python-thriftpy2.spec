@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thriftpy2
-Version:        0.4.14
+Version:        0.4.16
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
@@ -33,11 +32,13 @@ BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest-asyncio
 Requires:       python-ply >= 3.4
+Requires:       python-six
 Recommends:     python-tornado >= 5.0
 Recommends:     python-toro >= 0.6
 %python_subpackages
@@ -58,6 +59,10 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand # remove devel files
+find %{buildroot}%{$python_sitearch} -name '*.h' -exec rm {} \;
+find %{buildroot}%{$python_sitearch} -name '*.c' -exec rm {} \;
+}
 
 %check
 cd tests
@@ -68,6 +73,7 @@ cd tests
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/thriftpy2
+%{python_sitearch}/thriftpy2-%{version}*-info
 
 %changelog

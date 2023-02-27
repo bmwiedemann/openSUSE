@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 20 10:09:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove .c and .h devel files from python package distribution.
+- Update to 0.4.16:
+  * Fix unexpected binary type id in TBinaryTransport serialization
+- versuib 0.4.15:
+  * Support Apache JSON protocol and binary type
+  * Replace "yield from" syntax to "await"
+  * Fix some socket leaking cases in aio support
+
+-------------------------------------------------------------------
 Tue Oct 26 11:02:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.4.14:
