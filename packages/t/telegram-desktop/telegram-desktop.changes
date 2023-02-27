@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 26 05:54:51 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Update to 4.6.5:
+  * Fix payment card input field validation.
+- Update from version 4.4.1 to 4.6.4:
+  * Allow media viewer to exit fullscreen and become a normal window.
+  * Fix polls forwarding to private chats.
+  * Bug fixes and other minor improvements.
+- Update tg_owt-master.zip
+
+-------------------------------------------------------------------
 Tue Dec 20 23:13:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gtk+-2.0) BuildRequires: No longer needed, nor
