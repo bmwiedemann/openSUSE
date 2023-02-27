@@ -1,7 +1,7 @@
 #
 # spec file for package kidletime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,11 +38,15 @@ Source2:        frameworks.keyring
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xext)
@@ -97,6 +101,7 @@ idle time events, such as custom timeouts, or user activity.
 %{_kf5_debugdir}/kidletime.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5IdleTime.so.*
+%{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeWaylandPlugin.so
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin0.so
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeXcbPlugin1.so
 
