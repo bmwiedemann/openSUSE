@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Feb 26 06:56:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.9.1:
+  The 1.9.0 release revealed a few bugs. Here are the ones we
+  felt should be squished immediately.
+  - Log a warning message when identically named fields are
+    encountered (#1201).
+  - Avoid dependence on listdir order in tests (#1193).
+  - Prevent empty geometries arrays from appearing in
+    __geo_interface__ (#1197).
+  - setuptools added to pyproject.toml. Its pkg_resources module
+    is used by the CLI (#1191).
+- Update to 1.9.0:
+  - Deprecations
+    - The precision keyword argument of
+      fiona.transform.transform_geom is deprecated and will be
+      removed in version 2.0.
+    - The fiona.drivers() function has been deprecated and
+      will be removed in version 2.0. It should be replaced by
+      fiona.Env().
+    - The new fiona.meta module will be renamed to fiona.drivers
+      in version 2.0.
+  - The major new features are:
+    - A new CRS class identical to Rasterio's.
+    - New Feature and Geometry classes. These are returned
+      instead of dicts but are compatible with version 1.8's
+      dicts.
+    - Access to format driver metadata.
+   Please see the change log entries for 1.9 pre-releases at
+   https://github.com/Toblerity/Fiona/releases to see a complete
+   list of new features and bug fixes.
+
+-------------------------------------------------------------------
 Thu Dec  1 22:15:35 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip two failing tests

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fiona
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-Fiona
-Version:        1.8.21
+Version:        1.9.1
 Release:        0
 Summary:        Module for reading and writing spatial data files
 License:        BSD-3-Clause
@@ -28,7 +27,8 @@ URL:            https://github.com/Toblerity/Fiona
 Source:         https://files.pythonhosted.org/packages/source/F/Fiona/Fiona-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdal
@@ -44,6 +44,7 @@ Requires:       python-munch
 Requires:       python-six >= 1.7
 Recommends:     python-Shapely
 Recommends:     python-boto3
+Recommends:     python-certifi
 # SECTION test requirements
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module attrs >= 17}
@@ -57,7 +58,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six >= 1.7}
 # /SECTION
-Recommends:     python-certifi
 %ifpython3
 Recommends:     fiona-fio
 %endif
@@ -78,13 +78,13 @@ Command-line interface for reading and writing spatial data
 using OGR's Fiona package.
 
 %prep
-%setup -q -n Fiona-%{version}
+%autosetup -p1 -n Fiona-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -105,7 +105,8 @@ mv fiona_temp fiona
 %files %{python_files}
 %doc CHANGES.txt CREDITS.txt README.rst
 %license LICENSE.txt
-%{python_sitearch}/[Ff]iona*/
+%{python_sitearch}/fiona
+%{python_sitearch}/Fiona-%{version}*-info
 
 %files -n fiona-fio
 %license LICENSE.txt
