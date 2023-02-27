@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkcdpass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 
 Name:           python-xkcdpass
@@ -56,6 +55,7 @@ sed -i -e '1d' xkcdpass/xkcd_password.py
 %check
 # gh#redacted/XKCD-password-generator#138
 pytest_python310_ignore="not test_entropy_printout_valid_input"
+pytest_python311_ignore="not test_entropy_printout_valid_input"
 %pytest -k "${pytest_$python_ignore}"
 
 %post

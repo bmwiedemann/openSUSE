@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 20 07:54:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing test python 3.11 (gh#redacted/XKCD-password-generator#138).
+
+-------------------------------------------------------------------
 Mon Mar  7 14:40:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.3:

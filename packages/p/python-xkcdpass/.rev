@@ -63,4 +63,12 @@
   * Restore a randomly sampled version of eff_large_de wordlist</comment>
     <requestid>959998</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ce64eb6e3e5d73f0d78c44f59db267da</srcmd5>
+    <version>1.19.3</version>
+    <time>1677498933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067897</requestid>
+  </revision>
 </revisionlist>
