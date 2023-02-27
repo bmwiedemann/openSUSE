@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 27 08:46:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove stupid copy&paste error.
+
+-------------------------------------------------------------------
+Sat Feb 25 22:21:59 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild to avoid a build cycle
+  (bsc#1207791).
+
+-------------------------------------------------------------------
 Sat Dec 31 14:14:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14

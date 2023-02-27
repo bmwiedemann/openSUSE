@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>1045963</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d004fc8fbe94ba1400545018b4ccea95</srcmd5>
+    <version>0.14.0</version>
+    <time>1677498911</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove stupid copy&amp;paste error.
+
+- Split package into multibuild to avoid a build cycle
+  (bsc#1207791).</comment>
+    <requestid>1067907</requestid>
+  </revision>
 </revisionlist>

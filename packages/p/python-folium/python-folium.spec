@@ -1,7 +1,7 @@
 #
-# spec file for package python-folium
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,16 @@
 #
 
 
-%define skip_python2 1
 %define modname folium
-Name:           python-folium
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-folium%{psuffix}
 Version:        0.14.0
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
@@ -32,10 +39,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module branca >= 0.6.0}
+BuildRequires:  %{python_module folium = %{version}}
 BuildRequires:  %{python_module geopandas}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -45,7 +53,7 @@ BuildRequires:  %{python_module xyzservices}
 # No working chromedriver
 #BuildRequires:  %%{python_module selenium}
 #BuildRequires:  %%{python_module nbconvert}
-# /SECTION
+%endif
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-branca >= 0.6.0
 Requires:       python-numpy
@@ -67,11 +75,14 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
+%if !%{with test}
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # no working chromedriver for selenium
 ignoretests="--ignore tests/selenium"
 # requires network access
@@ -81,11 +92,14 @@ donttest="$donttest or test__repr_png_is_bytes or test_valid_png or test_valid_p
 # no proj database backend running
 donttest="$donttest or test_choropleth_geopandas"
 %pytest -k "not ($donttest)" $ignoretests
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}*-info/
+%endif
 
 %changelog
