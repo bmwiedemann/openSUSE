@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           glusterfs
-Version:        10.2
+Version:        11.0
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://www.gluster.org/
 
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/10/%version/glusterfs-%version.tar.gz
+Source:         https://download.gluster.org/pub/gluster/glusterfs/11/%version/glusterfs-%version.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -56,7 +56,6 @@ Requires:       libgfapi0 = %version
 Requires:       libgfchangelog0 = %version
 Requires:       libgfrpc0 = %version
 Requires:       libgfxdr0 = %version
-Requires:       libglusterd0 = %version
 Requires:       libglusterfs0 = %version
 %{?systemd_ordering}
 
@@ -107,14 +106,6 @@ Group:          System/Libraries
 GlusterFS is a clustered file-system capable of scaling to several
 petabytes.
 
-%package -n libglusterd0
-Summary:        GlusterFS core daemon library
-Group:          System/Libraries
-
-%description -n libglusterd0
-GlusterFS is a clustered file-system capable of scaling to several
-petabytes.
-
 %package -n libglusterfs0
 Summary:        GlusterFS's core library
 Group:          System/Libraries
@@ -143,7 +134,6 @@ Requires:       libgfapi0 = %version
 Requires:       libgfchangelog0 = %version
 Requires:       libgfrpc0 = %version
 Requires:       libgfxdr0 = %version
-Requires:       libglusterd0 = %version
 Requires:       libglusterfs0 = %version
 
 %description devel
@@ -178,6 +168,7 @@ cp -av ChangeLog NEWS README.md "$b/%_docdir/%name/"
 
 chmod -v u-s "%buildroot/%_bindir/fusermount-glusterfs"
 rm -fv "%buildroot/%_sbindir/conf.py"
+rm -f "%buildroot/etc/bash_completion.d/gluster.bash"
 %fdupes %buildroot/%_prefix
 
 %pre
@@ -200,8 +191,6 @@ rm -fv "%buildroot/%_sbindir/conf.py"
 %postun -n libgfrpc0 -p /sbin/ldconfig
 %post   -n libgfxdr0 -p /sbin/ldconfig
 %postun -n libgfxdr0 -p /sbin/ldconfig
-%post   -n libglusterd0 -p /sbin/ldconfig
-%postun -n libglusterd0 -p /sbin/ldconfig
 %post   -n libglusterfs0 -p /sbin/ldconfig
 %postun -n libglusterfs0 -p /sbin/ldconfig
 
@@ -256,9 +245,6 @@ rm -fv "%buildroot/%_sbindir/conf.py"
 
 %files -n libgfxdr0
 %_libdir/libgfxdr.so.0*
-
-%files -n libglusterd0
-%_libdir/libglusterd.so.0*
 
 %files -n libglusterfs0
 %_libdir/libglusterfs.so.0*

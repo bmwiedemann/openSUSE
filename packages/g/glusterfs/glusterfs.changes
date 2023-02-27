@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:20:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11 [boo#1208517] [boo#1208519]
+  * Major performance impovement of ~36% with rmdir operations
+  * Extension of ZFS support for snapshots
+  * Qouta implimentation based on namespace
+  * Major cleanups and readdir/readdirp improvements
+
+-------------------------------------------------------------------
 Thu Jul 14 11:13:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add explicit Requires for the dependencies, so we make sure 
