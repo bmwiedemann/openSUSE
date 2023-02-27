@@ -1,7 +1,7 @@
 #
 # spec file for package girara
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.7
+Version:        0.3.9
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(pango) >= 1.14
 

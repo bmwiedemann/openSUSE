@@ -133,4 +133,14 @@
     <comment></comment>
     <requestid>958254</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3562edfe505c75fc40e1802ffcb4708b</srcmd5>
+    <version>0.3.9</version>
+    <time>1677498922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.9
+ * Switch to json-glib
+ * Add support for non-ASCII keys (forwarded request 1067852 from mimi_vx)</comment>
+    <requestid>1067853</requestid>
+  </revision>
 </revisionlist>
