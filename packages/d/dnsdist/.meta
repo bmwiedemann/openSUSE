@@ -1,0 +1,13 @@
+<package name="dnsdist" project="openSUSE:Factory">
+  <title>A highly DNS-, DoS- and abuse-aware loadbalancer</title>
+  <description>dnsdist is a highly DNS-, DoS- and abuse-aware loadbalancer. Its goal in life
+is to route traffic to the best server, delivering top performance to
+legitimate users while shunting or blocking abusive traffic.
+
+dnsdist is dynamic, in the sense that its configuration can be changed at
+runtime, and that its statistics can be queried from a console-like interface.
+
+</description>
+  <devel project="server:dns" package="dnsdist"/>
+  <url>http://www.powerdns.com/</url>
+</package>

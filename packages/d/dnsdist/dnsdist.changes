@@ -1,0 +1,505 @@
+-------------------------------------------------------------------
+Mon Feb 27 09:20:22 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.8.0~rc1
+  https://dnsdist.org/changelog.html#change-1.8.0-rc1
+- no_doh_protobuf.patch: fix compilation when no DoH enabled
+- f44a8a8f19aff191fb1dc0631e37ec30ff087c25.patch: fixes compiler
+  feature detection
+
+-------------------------------------------------------------------
+Fri Feb 24 16:26:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Refresh keyring: redownload
+  https://dnsdist.org/_static/dnsdist-keyblock.asc as
+  dnsdist.keyring.
+
+-------------------------------------------------------------------
+Mon Feb 20 13:22:22 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Use sysusers* macros to generate and install daemon user
+
+-------------------------------------------------------------------
+Fri Feb 10 12:02:43 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Remove some build dependencies, like GNUTLS
+- Remove DoH since it requires another http server that is not
+  even in Factory. It's enabled by project config
+- Build on 32bit arches by using 64bit time_t there
+
+-------------------------------------------------------------------
+Wed Nov  2 15:13:30 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.7.3
+  https://dnsdist.org/changelog.html#change-1.7.3
+  https://blog.powerdns.com/2022/11/02/dnsdist-1-7-3-released/
+
+-------------------------------------------------------------------
+Fri Jun 17 11:46:44 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.7.2
+  https://dnsdist.org/changelog.html#change-1.7.2
+  https://blog.powerdns.com/2022/06/14/dnsdist-1-7-2-released/
+
+-------------------------------------------------------------------
+Mon Apr 25 11:21:05 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.7.1
+  https://dnsdist.org/changelog.html#change-1.7.1
+  https://blog.powerdns.com/2022/04/25/dnsdist-1-7-1-released/
+
+-------------------------------------------------------------------
+Mon Jan 17 16:52:52 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- make re2 conditional again to fix build on sle15
+
+-------------------------------------------------------------------
+Mon Jan 17 16:20:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- exclude all 32bit architectures as dnsdist wants to run on
+  systems where time_t is larger than 4 bytes
+
+-------------------------------------------------------------------
+Mon Jan 17 16:17:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup all conditionals for pre 15.x distros 
+
+-------------------------------------------------------------------
+Mon Jan 17 15:58:38 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.7.0
+  https://dnsdist.org/changelog.html#change-1.7.0
+  https://blog.powerdns.com/2022/01/17/dnsdist-1-7-0-released/
+
+-------------------------------------------------------------------
+Wed Sep 15 09:45:15 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.6.1
+  https://dnsdist.org/changelog.html#change-1.6.0
+  https://dnsdist.org/changelog.html#change-1.6.1
+- drop dnsdist_bindir.patch
+  we didn't install and load the env file anyway
+
+-------------------------------------------------------------------
+Thu Oct  1 11:04:28 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.5.1
+  https://dnsdist.org/changelog.html#change-1.5.1
+
+-------------------------------------------------------------------
+Thu Jul 30 12:53:28 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh patch dnsdist_bindir.patch:
+  user is now handled via service directly
+
+-------------------------------------------------------------------
+Thu Jul 30 12:50:17 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.5.0
+  https://dnsdist.org/changelog.html#change-1.5.0
+  https://blog.powerdns.com/2020/07/30/dnsdist-1-5-0-released/
+
+-------------------------------------------------------------------
+Sun Apr  5 22:05:54 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable luajit on 15.1 and up 
+
+-------------------------------------------------------------------
+Sun Apr  5 21:31:27 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add instantiated services to the systemd macros 
+
+-------------------------------------------------------------------
+Sun Apr  5 21:29:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable DNS over HTTP support on 15.1 and up
+
+-------------------------------------------------------------------
+Sun Apr  5 20:48:30 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix cmdline option for re2 
+
+-------------------------------------------------------------------
+Sun Apr  5 20:45:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable lmdb support on Tumbleweed 
+
+-------------------------------------------------------------------
+Thu Nov 21 09:20:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.4.0
+  https://dnsdist.org/changelog.html#change-1.4.0
+
+-------------------------------------------------------------------
+Fri Nov  1 06:37:06 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BuildRequires for doh build conditional
+- make sure we build with epf and dnstap
+- enable libcap support (new BR: libcap-devel)
+- for luajit support if we build with luajit build conditional
+- prepare lmdb support: fails atm as we do not ship the pkgconfig
+  files
+
+-------------------------------------------------------------------
+Wed Oct 30 16:03:23 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.4.0~rc5
+  https://dnsdist.org/changelog.html#change-1.4.0-rc5
+
+-------------------------------------------------------------------
+Fri Oct 25 12:50:24 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.4.0~rc4
+  https://dnsdist.org/changelog.html#change-1.4.0-rc4
+
+-------------------------------------------------------------------
+Fri Oct  4 15:56:51 UTC 2019 - Adam Majer <amajer@suse.com>
+
+- update to 1.4.0~rc3
+  https://dnsdist.org/changelog.html#change-1.4.0-rc3
+
+- break up long long in specfile configure to make them more
+  readable to regular humans
+
+-------------------------------------------------------------------
+Wed Aug 14 08:28:55 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.4.0~rc1
+  https://dnsdist.org/changelog.html#change-1.4.0-rc1
+
+- dont_return_garbage.patch: dropped, no longer needed
+- dnsdist_bindir.patch: refreshed
+
+-------------------------------------------------------------------
+Thu Nov  8 14:26:28 UTC 2018 - adam.majer@suse.de
+
+- update to 1.3.3
+   https://blog.powerdns.com/2018/11/08/dnsdist-1-3-3-released/
+
+  - Security fix: fixes a possible record smugging with a crafted
+    DNS query with trailing data (CVE-2018-14663, bsc#1114511)
+
+  - New Features
+    - Add consistent hash builtin policy
+    - Add EDNSOptionRule
+    - Add DSTPortRule
+    - Make getOutstanding usable from both lua and console
+    - Added :excludeRange and :includeRange methods to
+      DynBPFFilter class
+    - Add Prometheus stats support
+    - Name threads in the programs
+    - Support the NXDomain action with dynamic blocks
+    - Add security polling
+    - Add a PoolAvailableRule to easily add backup pools
+
+  - Improvements
+    - Get rid of some allocs/copies in DNS parsing
+    - Set a correct EDNS OPT RR for self-generated answers
+    - Fix a sign-comparison warning in isEDNSOptionInOPT()
+    - Add warning rates to DynBlockRulesGroup rules
+    - Add support for exporting a server id in protobuf
+    - dnsdist did not set TCP_NODELAY, causing needless latency
+    - Add a setting to control the number of stored sessions
+    - Wrap GnuTLS and OpenSSL pointers in smart pointers
+    - Add a ‘creationOrder’ field to rules
+    - Fix return-type detection with boost 1.69’s tribool
+    - Fix format string issue on 32bits ARM
+    - Wrap TCP connection objects in smart pointers
+    - Add the setConsoleOutputMaxMsgSize function
+    - Add the ability to update webserver credentials
+
+  - Bug Fixes
+    - Display dynblocks’ default action, None, as the global one
+    - Fix compilation when SO_REUSEPORT is not defined
+    - Release memory on DNS over TLS handshake failure
+    - Handle trailing data correctly when adding OPT or ECS info
+
+- dont_return_garbage.patch: return a value from function that
+  wants a return.
+
+-------------------------------------------------------------------
+Tue Jul 10 16:38:19 UTC 2018 - mrueckert@suse.de
+
+- Comment out the control socket statement and add a commented out
+  line for setKey as it is in the upstream configuration. The old
+  default configuration did not work anymore anyway and this makes
+  it clearer that you need both lines.
+
+-------------------------------------------------------------------
+Tue Jul 10 14:26:03 UTC 2018 - mrueckert@suse.de
+
+- update to 1.3.2
+  https://blog.powerdns.com/2018/07/10/dnsdist-1-3-2-released/
+
+   Breaking changes
+  ==================
+
+  After discussing with several users, we noticed that quite a lot
+  of them were not aware that enabling the dnsdist’s console
+  without a key, even restricted to the local host, could be a
+  security issue and allow privilege escalation by allowing an
+  unprivileged user to connect to the console and execute Lua code
+  as the dnsdist user. We therefore decided to refuse any
+  connection to the console until a key has been set, so please
+  check that you do set a key before upgrading if you use the
+  console.
+
+   New features
+  ==================
+
+  The DNS over TLS feature introduced in 1.3.0 was missing the
+  ability to support both an RSA and an ECDSA certificate at the
+  same time, and it was not possible to switch to a new certificate
+  without restarting dnsdist. This has now been fixed.
+
+  The packet cache has also been improved in this release, with the
+  addition of a negative TTL option to be able to specify how long
+  NODATA and NXDOMAIN answers should be cache, as well as a way to
+  dump the content of the cache. We also made the detection of ECS
+  collisions more robust, preventing two queries for the same name,
+  type and class but a different ECS subnet from colliding even if
+  they did hash to the same value.
+
+  This version gained the ability to insert dynamic rules that do
+  nothing, and do not stop the processing of subsequent rules,
+  which is very useful for testing purposes. The optimized
+  DynblockRulesGroup introduced in 1.3.0 also gained the ability to
+  whitelist and blacklist ranges from dynamic rules, for example to
+  prevent some clients from ever being blocked by a rate-limiting
+  rule.
+
+  Finally, we introduced the new SetECSAction directive to be able
+  to force the ECS value sent to a downstream server for some or
+  all queries.
+
+   Bug fixes
+  ===========
+
+  In addition to various documentation and cosmetics fixes, a few
+  annoying bugs have been fixed in this release:
+
+  - If the first connection attempt to a given backend failed,
+    dnsdist didn’t properly reconnect even when the backend became
+    available ;
+  - Dynamic blocks were sometimes created with the wrong duration ;
+  - The ability to iterate over the results of the Lua exceed*()
+    functions was broken in 1.3.0, preventing manual whitelisting
+    from Lua ;
+  - Some statistics were displayed with too many decimals in the
+    web interface ;
+  - A backend outstanding queries counter could become wrong if it
+    dropped a lot of queries for a while.
+
+-------------------------------------------------------------------
+Sun Apr  1 23:56:33 UTC 2018 - mrueckert@suse.de
+
+- enable dns over tls support: new BR for gnutls
+- enable dnstap support: new BR for libfstrm
+
+-------------------------------------------------------------------
+Sun Apr  1 23:40:36 UTC 2018 - mrueckert@suse.de
+
+- update to 1.3.0
+  https://blog.powerdns.com/2018/03/30/dnsdist-1-3-0-released/
+  - New Features
+    - Add an optional status parameter to Server:setAuto().
+      References: pull request 5625
+    - Add inClientStartup() function. References: pull request 6072
+    - Add tag-based routing of queries. References: pull request
+      6037
+    - Add experimental DNS-over-TLS support.  References: pull
+      request 6176, pull request 6177, pull request 6117, pull
+      request 6175, pull request 6189
+    - Add simple dnstap support (Justin Valentini, Chris
+      Hofstaedtler). References: pull request 5201, pull request
+      6170
+    - Add experimental XPF support based on
+      draft-bellis-dnsop-xpf-04. References: #5654, #5079, pull
+      request 6220, pull request 5594
+    - Add ERCodeRule() to match on extended RCodes (Chris
+      Hofstaedtler). References: pull request 6147
+    - Add TempFailureCacheTTLAction() (Chris Hofstaedtler).
+      References: pull request 6003
+    - Add DynBlockRulesGroup to improve processing speed of the
+      maintenance() function by reducing memory usage and not
+      walking the ringbuffers multiple times. References: pull
+      request 6391
+    - Add console ACL functions.  References: #4654, pull request
+      6399
+    - Allow adding EDNS Client Subnet information to a query before
+      looking in the cache. This allows serving ECS enabled answers
+      from the cache when all servers in a pool are down.
+      References: #6098, pull request 6400
+  - Improvements
+    - Add cache sharding, recvmmsg and CPU pinning support. With
+      these, the scalability of dnsdist is drastically improved.
+      References: #5202, #5859, pull request 5576, pull request
+      5860
+    - Add burst option to MaxQPSIPRule() (42wim).  References: pull
+      request 5970
+    - Add Pools, cacheHitResponseRules to the API.  References:
+      pull request 6022
+    - Add a class option to health checks.  References: #5748, pull
+      request 5929
+    - Add UUIDs to rules, this allows tracking rules through
+      modifications and moving them around.  References: pull
+      request 6030
+    - Apply ResponseRules to locally generated answers (Chris
+      Hofstaedtler).  References: #6182, pull request 6185
+    - Report LuaAction() and LuaResponseAction() failures in the
+      log and send SERVFAIL instead of not answering the query
+      (Chris Hofstaedtler).  References: pull request 6283
+    - Unify global statistics accounting (Chris Hofstaedtler).
+      References: pull request 6289
+    - Speed up the processing of large ring buffers. This change
+      will make dnsdist more scalable with a large number of
+      different clients.  References: pull request 6366, pull
+      request 6350
+    - Make custom addLuaAction() and addLuaResponseAction()
+      callback’s second return value optional.  References: #6346,
+      pull request 6363
+    - Add “server-up” metric count to Carbon Reporting (Lowell
+      Mower).  References: pull request 6327
+    - Add xchacha20 support for DNSCrypt.  References: pull request
+      6045, pull request 6382
+    - Scalability improvement: Add an option to use several source
+      ports towards a backend.  References: pull request 6317
+    - Add ‘?’ and ‘help’ for providing help() output on dnsdist -c
+      (Kirill Ponomarev, Chris Hofstaedtler).  References: #4845,
+      pull request 5866, pull request 6375
+    - Replace the Lua mutex with a rw lock to limit contention.
+      This improves the processing speed and parallelism of the
+      policies.  References: pull request 6190, pull request 6381
+    - Ensure dnsdist compiles on NetBSD (Tom Ivar Helbekkmo).
+      References: pull request 6146
+    - Also log eBPF dynamic blocks, as regular dynamic block
+      already are.  References: #5845, pull request 5845
+    - Ensure large numbers are shown correctly in the API.
+      References: #6211, pull request 6401
+    - Add option to showRules() to truncate the output length.
+      References: #5763, pull request 6402
+    - Fix several warnings reported by clang’s analyzer and
+      cppcheck, should lead to small performance increases.
+      References: pull request 6407
+  - Bug Fixes
+    - Handle SNMP alarms so we can reconnect to the master.
+      References: #5327, pull request 5328
+    - Fix signed/unsigned comparison warnings on ARM.  References:
+      #5489, pull request 5597
+    - Keep trying if the first connection to the remote logger
+      failed References: pull request 5770
+    - Fix escaping unusual DNS label octets in DNSName is off by
+      one (Kees Monshouwer). References: pull request 6018
+    - Avoid assertion errors in NewServer() (Chris Hofstaedtler).
+      References: pull request 6403
+  - Removals
+    - Remove the --daemon option from dnsdist. References: #6329,
+      pull request 6394
+
+-------------------------------------------------------------------
+Fri Feb 16 10:30:23 UTC 2018 - adam.majer@suse.de
+
+- fix user creation code
+- update to 1.2.1
+  * Make dnsdist dynamic truncate do right thing on TCP/IP.
+  * Add missing QPSAction.
+  * Don't create a Remote Logger in client mode.
+  * Keep the TCP connection open on cache hit, generated answers.
+  * Add the missing <sys/time.h> include to mplexer.hh for struct timeval.
+  * Sort the servers based on their 'order' after it has been set.
+  * Fix the outstanding counter when an exception is raised.
+  * Do not connect the snmpAgent from a dnsdist client.
+
+-------------------------------------------------------------------
+Mon Aug 21 16:29:41 UTC 2017 - mrueckert@suse.de
+
+- enable snmp support (new BR: net-snmp-devel)
+
+-------------------------------------------------------------------
+Mon Aug 21 16:15:43 UTC 2017 - mrueckert@suse.de
+
+- update to 1.2.0 (boo#1054799, boo#1054802)
+  This release also addresses two security issues of low severity,
+  CVE-2016-7069 and CVE-2017-7557. The first issue can lead to a
+  denial of service on 32-bit if a backend sends crafted answers,
+  and the second to an alteration of dnsdist’s ACL if the API is
+  enabled, writable and an authenticated user is tricked into
+  visiting a crafted website. More information can be found in our
+  security advisories 2017-01 and 2017-02.
+
+  - applying rules on cache hits
+  - addition of runtime changeable rules that matches IP address for a
+  - certain time: TimedIPSetRule
+  - SNMP support, exporting statistics and sending traps
+  - preventing the packet cache from ageing responses when deployed in
+  - front of authoritative servers
+  - TTL alteration capabilities
+  - consistent hash results over multiple deployments
+  - exporting CNAME records over protobuf
+  - tuning the size of the ringbuffers used to keep track of recent
+  - queries and responses
+  - various DNSCrypt-related fixes and improvements, including
+  - automatic key rotation
+
+  Users upgrading from a previous version should be aware that:
+
+  - the truncateTC option is now off by default, to follow the
+    principle of least astonishment
+  - the signature of the addLocal() and setLocal() functions has
+    been changed, to make it easier to add new parameters without
+    breaking existing configurations
+  - the packet cache does not cache answers without any TTL
+    anymore, to prevent them from being cached forever
+  - blockfilter has been removed, since it was completely redundant
+
+  This release also deprecates a number of functions, which will be
+  removed in 1.3.0. Those functions had the drawback of making
+  dnsdist’s configuration less consistent by hiding the fact that
+  each rule is composed of a selector and an action. They are still
+  supported in 1.2.0 but a warning is displayed whenever they are
+  used, and a replacement suggested.
+
+  https://dnsdist.org/changelog.html
+
+-------------------------------------------------------------------
+Sun Feb 19 18:39:54 UTC 2017 - mrueckert@suse.de
+
+- fix build on TW:
+  - no longer look for libsystemd-daemon
+- enable re2
+
+-------------------------------------------------------------------
+Fri Dec 30 01:43:23 UTC 2016 - mrueckert@suse.de
+
+- update to 1.1.0
+  dnsdist 1.1.0 has seen a significant amount of development,
+  mostly based on feedback from they many 1.0 deployments. The
+  majority of the new features have already been taken into
+  production by pre-release and beta users.
+
+  Highlights include:
+
+  - TeeAction: send responses to a second nameserver, but ignore
+    responses. Used to test new installations on existing traffic.
+    Also used by the Yeti rootserver project.
+  - Response rules which act on received responses
+  - AXFR/IXFR support, including filtering options
+  - Linux kernel based query type and query name filtering (eBPF),
+    for very high speed packet rejection. Includes counters and
+    statistics
+  - Query counting infrastructure (contributed by TransIP’s Reinier
+    Schoof)
+
+  For the many other new features, improvements and bug fixes,
+  please see the dnsdist website for the more complete changelog
+  and the current documentation.
+
+  http://dnsdist.org/changelog/#dnsdist-110
+  http://dnsdist.org/README/
+- refresh dnsdist_bindir.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Mon Jul 11 15:32:09 UTC 2016 - mrueckert@suse.de
+
+- initial package (1.0.0)
+

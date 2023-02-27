@@ -1,0 +1,70 @@
+From f44a8a8f19aff191fb1dc0631e37ec30ff087c25 Mon Sep 17 00:00:00 2001
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Fri, 24 Feb 2023 17:35:53 +0100
+Subject: [PATCH] yahttp: Better detection of whether C++11 features are
+ available
+
+The previous version relied on having `HAVE_CXX11` defined, which
+is not true when you are compiling with C++17, for example, even
+though the C++11 features are available (`HAVE_CXX17` is defined
+but that does not help).
+---
+ ext/yahttp/yahttp/reqresp.hpp | 4 ++--
+ ext/yahttp/yahttp/router.cpp  | 4 ++--
+ ext/yahttp/yahttp/router.hpp  | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/ext/yahttp/yahttp/reqresp.hpp b/ext/yahttp/yahttp/reqresp.hpp
+index 00ba545032b..4db53bec85a 100644
+--- a/ext/yahttp/yahttp/reqresp.hpp
++++ b/ext/yahttp/yahttp/reqresp.hpp
+@@ -1,4 +1,4 @@
+-#ifdef HAVE_CXX11
++#if __cplusplus >= 201103L
+ #include <functional>
+ #define HAVE_CPP_FUNC_PTR
+ namespace funcptr = std;
+@@ -72,7 +72,7 @@ namespace YaHTTP {
+       size_t operator()(const HTTPBase *doc __attribute__((unused)), std::ostream& os, bool chunked) const {
+         char buf[4096];
+         size_t n,k;
+-#ifdef HAVE_CXX11
++#if __cplusplus >= 201103L
+         std::ifstream ifs(path, std::ifstream::binary);
+ #else
+         std::ifstream ifs(path.c_str(), std::ifstream::binary);
+diff --git a/ext/yahttp/yahttp/router.cpp b/ext/yahttp/yahttp/router.cpp
+index 489f8cff1f9..18ea9b6fcff 100644
+--- a/ext/yahttp/yahttp/router.cpp
++++ b/ext/yahttp/yahttp/router.cpp
+@@ -98,7 +98,7 @@ namespace YaHTTP {
+ 
+   void Router::printRoutes(std::ostream &os) {
+     for(TRouteList::iterator i = routes.begin(); i != routes.end(); i++) {
+-#ifdef HAVE_CXX11
++#if __cplusplus >= 201103L
+       std::streamsize ss = os.width();
+       std::ios::fmtflags ff = os.setf(std::ios::left);
+       os.width(10);
+@@ -122,7 +122,7 @@ namespace YaHTTP {
+ 
+     bool found = false;
+     for(TRouteList::iterator i = routes.begin(); !found && i != routes.end(); i++) {
+-#ifdef HAVE_CXX11
++#if __cplusplus >= 201103L
+       if (std::get<3>(*i) == name) { mask = std::get<1>(*i); method = std::get<0>(*i); found = true; }
+ #else
+       if (i->get<3>() == name) { mask = i->get<1>(); method = i->get<0>(); found = true; }
+diff --git a/ext/yahttp/yahttp/router.hpp b/ext/yahttp/yahttp/router.hpp
+index a0dbd1380e6..205119c7d41 100644
+--- a/ext/yahttp/yahttp/router.hpp
++++ b/ext/yahttp/yahttp/router.hpp
+@@ -2,7 +2,7 @@
+ /* @file 
+  * @brief Defines router class and support structures
+  */
+-#ifdef HAVE_CXX11
++#if __cplusplus >= 201103L
+ #include <functional>
+ #include <tuple>
+ #define HAVE_CPP_FUNC_PTR

@@ -1,0 +1,18 @@
+#include <tunables/global>
+
+/usr/sbin/dnsdist {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_bind_service,
+  capability setgid,
+  capability setuid,
+
+  network tcp,
+  network udp,
+
+  /etc/dnsdist/* r,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.sbin.dnsdist>
+}
