@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-configs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20220211.00
+Version:        20230217.01
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0

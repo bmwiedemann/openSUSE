@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:37:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230217.01
+  * Support multiple local SSD controllers (#39)
+- from version 20230217.00
+  * Update OWNERS (#45)
+- from version 20230215.00
+  * DHCP hostname: don't reset hostname if
+    the hostname hasn't changed (#44)
+- from version 20230202.00
+  * Update OWNERS file (#43)
+- from version 20230123.00
+  * Fix a repository URL in packaging specs (#41)
+
+-------------------------------------------------------------------
 Tue Oct 11 11:37:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add nvme-cli to Requires (bsc#1204068, bsc#1204091)
