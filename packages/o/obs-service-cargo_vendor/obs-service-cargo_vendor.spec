@@ -22,7 +22,7 @@ Summary:        An OBS source service: Download, verify and vendor Rust crates (
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Version:        0.4.4~1
+Version:        0.4.4~2
 Release:        0
 Source:         %{name}-%{version}.tar.zst
 BuildRequires:  python3 >= 3.6
