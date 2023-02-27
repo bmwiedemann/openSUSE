@@ -129,4 +129,13 @@
 </comment>
     <requestid>1010026</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>14f567732e52b582653c699edbb2d711</srcmd5>
+    <version>6.0.17</version>
+    <time>1677498967</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 6.0.17
+ see installed CHANGELOG</comment>
+    <requestid>1067946</requestid>
+  </revision>
 </revisionlist>

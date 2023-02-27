@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-passenger
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-passenger
-Version:        6.0.15
+Version:        6.0.17
 Release:        0
 %define mod_name passenger
 %define mod_full_name %{mod_name}-%{version}
@@ -212,7 +212,7 @@ Summary:        Passenger apache module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(apache2:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.15
+# Requires:      rubygem-passenger = 6.0.17
 %description apache2
 
 A modern web server and application server for Ruby, Python and Node.js,
@@ -233,7 +233,7 @@ Summary:        Passenger Nginx module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(nginx:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.15
+# Requires:      rubygem-passenger = 6.0.17
 %description nginx
 
 A modern web server and application server for Ruby, Python and Node.js,
