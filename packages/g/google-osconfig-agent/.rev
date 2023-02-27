@@ -259,4 +259,21 @@
   * Close clients that are not passed anywhere (#450) (forwarded request 1059325 from glaubitz)</comment>
     <requestid>1059353</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f46617bca869e4a5ea7fc6a3ffb518fb</srcmd5>
+    <version>20230222.00</version>
+    <time>1677502503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230222.00
+  * Remove Debian 9 from e2e tests image list (#460)
+- from version 20230217.00
+  * Update OWNERS (#458)
+- from version 20230208.00
+  * Fix the error in the `copy_file_from_bucket.yaml` example. (#456)
+- from version 20230202.00
+  * Update owners file. (#455)
+- from version 20230123.00
+  * Call FQDN (#454) (forwarded request 1067953 from glaubitz)</comment>
+    <requestid>1067975</requestid>
+  </revision>
 </revisionlist>
