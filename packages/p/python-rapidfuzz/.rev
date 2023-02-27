@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1043764</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a95428d1c579cc6148557613612b5446</srcmd5>
+    <version>2.13.7</version>
+    <time>1677503987</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- update to version 2.13.7
+  * fix function signature of get_requires_for_build_wheel
+</comment>
+    <requestid>1067986</requestid>
+  </revision>
 </revisionlist>

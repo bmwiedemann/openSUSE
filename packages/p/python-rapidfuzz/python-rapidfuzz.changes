@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 27 12:26:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Fri Feb 24 12:52:39 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to version 2.13.7
+  * fix function signature of get_requires_for_build_wheel
+
+-------------------------------------------------------------------
 Sat Dec 17 22:35:21 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to version 2.13.6

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rapidfuzz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rapidfuzz
-Version:        2.13.6
+Version:        2.13.7
 Release:        0
 Summary:        Rapid fuzzy string matching
 License:        MIT
@@ -35,19 +34,26 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Suggests:       python-numpy
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc11-c++ >= 8
+%else
+BuildRequires:  gcc-c++
+%endif
 %python_subpackages
 
 %description
 RapidFuzz is a fast string matching library for Python and C++, which is using the string similarity calculations from FuzzyWuzzy.
 
 %prep
-%setup -q -n rapidfuzz-%{version}
+%autosetup -p1 -n rapidfuzz-%{version}
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-11 CC=gcc-11
+%endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 
