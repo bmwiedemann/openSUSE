@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 26 13:40:30 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-sqlite-3_41_0-support.patch, fix build on sqlite 3.41.0
+
+-------------------------------------------------------------------
+Tue Feb 21 12:17:14 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.15.1
+  * Require libpinyin 2.7.91
+  * Improve suggestion candidates
+  * Improve English candidates
+  * Support longer candidates
+  * Support Legacy mode
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Dec  6 20:15:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.1:

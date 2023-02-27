@@ -303,4 +303,12 @@
     <comment></comment>
     <requestid>1041105</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3d4b6562ea71de245b13bf3731c65227</srcmd5>
+    <version>1.15.1</version>
+    <time>1677498904</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-sqlite-3_41_0-support.patch, fix build on sqlite 3.41.0 (forwarded request 1067810 from hillwood)</comment>
+    <requestid>1067811</requestid>
+  </revision>
 </revisionlist>
