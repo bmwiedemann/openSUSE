@@ -453,4 +453,12 @@ The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0 (forwarded request 
   Building with Python provides &quot;libpyCmpiProvider.so&quot;</comment>
     <requestid>799542</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>779c3b78645831557ad462136a67ac00</srcmd5>
+    <version>1.0.4</version>
+    <time>1677498915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067812</requestid>
+  </revision>
 </revisionlist>

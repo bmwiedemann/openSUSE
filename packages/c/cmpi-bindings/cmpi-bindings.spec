@@ -1,7 +1,7 @@
 #
 # spec file for package cmpi-bindings
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 # nodebuginfo
 
 
-# 1 for python3, 0 for python2
 %if 0%{?suse_version} >= 1500
 %define python3 1
 %else
@@ -32,7 +31,7 @@
 URL:            http://github.com/kkaempf/cmpi-bindings
 
 Name:           cmpi-bindings
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Adapter to write and run CMPI-type CIM providers
 License:        BSD-3-Clause AND CPL-1.0
@@ -115,7 +114,7 @@ Source:         %{name}-%{version}.tar.bz2
 -
 
 %prep
-%setup -q 
+%setup -q
 
 %build
 
@@ -154,8 +153,8 @@ cp -a swig/ruby/html %{buildroot}/%{_docdir}/cmpi-bindings-ruby-docs
 
 %package -n cmpi-bindings-ruby
 Summary:        Adapter to write and run CMPI-type CIM providers in Ruby
-# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Group:          Development/Languages/Ruby
+# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Provides:       %{name} = %{version}-%{release}
 %if 0%{?ruby_sitelib} == 0
 %{!?ruby_sitelib: %global ruby_sitelib %(ruby -r rbconfig -e 'vd = RbConfig::CONFIG["vendorlibdir"]; print(vd ? vd : RbConfig::CONFIG["sitelibdir"])')}
@@ -190,23 +189,26 @@ RDoc-style documentation for cmpi-bindings-ruby
 %endif
 
 %package -n %{pywbemname}
-Summary:        Adapter to write and run CMPI-type CIM providers in Python3
-# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
+%if %{python3}
+Summary:        Adapter to write and run CMPI-type CIM providers in Python 3
+%else
+Summary:        Adapter to write and run CMPI-type CIM providers in Python 2
+%endif
 Group:          Development/Languages/Python
+# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Provides:       %{name} = %{version}-%{release}
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %if %{python3}
-%{!?py_requires: %define py_requires Requires: python3}
+%{!?py3_requires: %define py3_requires Requires: python3}
+%{py3_requires}
 %else
 %{!?py_requires: %define py_requires Requires: python}
-%endif
 %{py_requires}
+%endif
 
 %description -n %{pywbemname}
 -
-
-
 
 %files -n %{pywbemname}
 %defattr(-,root,root,-)
@@ -226,8 +228,8 @@ Provides:       %{name} = %{version}-%{release}
 %package -n cmpi-bindings-perl
 Requires:       perl = %{perl_version}
 Summary:        Adapter to write and run CMPI-type CIM providers in Perl
-# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Group:          Development/Languages/Perl
+# for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Provides:       %{name} = %{version}-%{release}
 
 %description -n cmpi-bindings-perl

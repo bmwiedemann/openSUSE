@@ -1,6 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 19 13:12:59 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.0.4
+  - let CMake determine the Python library name
+
+-------------------------------------------------------------------
 Fri May  1 09:52:14 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
+- Update to 1.0.3
 - build with python3 on openSUSE Leap 15 and later.
 
 -------------------------------------------------------------------
