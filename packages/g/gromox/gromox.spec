@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  gcc-c++
 %if 0%{?suse_version}
 BuildRequires:  libmysqlclient-devel >= 5.6
 %else
-BuildRequires:  mysql-devel >= 5.6
+BuildRequires:  mariadb-devel >= 5.6
 %endif
 BuildRequires:  libtool >= 2
 BuildRequires:  make
@@ -52,7 +52,7 @@ BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
 BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
-BuildRequires:  pkgconfig(libHX) >= 4.3
+BuildRequires:  pkgconfig(libHX) >= 4.9
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libolecf)
@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tinyxml2) >= 8
-BuildRequires:  pkgconfig(vmime) >= 0.9.2
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  user(grommunio)
 BuildRequires:  user(gromox)
@@ -71,7 +70,12 @@ Requires:       glibc-locale-base
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 # Require php-cli/fpm (and modules) that have a chance of loading mapi.so
 # which means same generation as the one we built with.
-Requires:       php8-cli php8-fpm php8-mysql php8-posix php8-soap
+Requires:       php8-cli
+Requires:       php8-fpm
+Requires:       php8-mysql
+Requires:       php8-posix
+Requires:       php8-soap
+Conflicts:      php8-opcache
 %endif
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
 Requires:       php-cli
@@ -79,13 +83,15 @@ Requires:       php7-fpm
 Requires:       php7-mysql
 Requires:       php7-posix
 Requires:       php7-soap
+Conflicts:      php7-opcache
 %endif
-%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?redhat_version}
+%if 0%{?rhel} || 0%{?fedora_version}
 Requires:       php-cli
 Requires:       php-fpm
 Requires:       php-mysqlnd
 Requires:       php-posix
 Requires:       php-soap
+Conflicts:      php-opcache
 %endif
 Requires:       w3m
 Requires(pre):  user(grommunio)
@@ -142,7 +148,7 @@ find "$b" -type f -name "*.la" -delete
 rm -fv "$b/%_libdir"/*.so
 
 mkdir -p "$b/%_sysconfdir/%name" "$b/%_datadir/%name"
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 mkdir -p "$b/etc/php8/fpm/php-fpm.d"
 cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php8/fpm/php-fpm.d/gromox.conf"
 %endif
@@ -150,35 +156,16 @@ cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php8/fpm/php-fpm.d/gr
 mkdir -p "$b/etc/php7/fpm/php-fpm.d"
 cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php7/fpm/php-fpm.d/gromox.conf"
 %endif
+%if 0%{?rhel} || 0%{?fedora_version}
+mkdir -p "$b/etc/php-fpm.d"
+cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php-fpm.d/gromox.conf"
+%endif
 perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.service
 %fdupes %buildroot/%_prefix
 
 %global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-timer.service gromox-zcore.service
 
 %pre
-if test -f /usr/share/gromox/http/php/config/config.ini; then
-	x=$(md5sum /usr/share/gromox/http/php/config/config.ini 2>/dev/null)
-	if test "${x:0:32}" = cac0cd7adb4c9e84474bd23721397b7e; then
-		:
-	elif test -e /usr/share/gromox/http/php/config/config.ini && test ! -e /etc/gromox/autodiscover.ini; then
-		echo "It appears you modified /usr/share/gromox/http/php/config/config.ini; moving it to /etc/gromox/"
-		mkdir -pv /etc/gromox
-		mv -v /usr/share/gromox/http/php/config/config.ini /etc/gromox/autodiscover.ini
-	elif test -e /usr/share/gromox/http/php/config/config.ini && test ! -e /etc/gromox/autodiscover.ini.conflict; then
-		echo "It appears you modified /usr/share/gromox/http/php/config/config.ini; saving it to /etc/gromox/ (check it)"
-		mv -v /usr/share/gromox/http/php/config/config.ini /etc/gromox/autodiscover.ini.conflict
-	fi
-fi
-# service is now out of use or entirely gone from this package,
-# stop any old instances because the
-# systemd macros don't do so when using rpm -U (only on rpm -e).
-for i in alock amidb amysql asensor asession smtp adaptor; do
-	if systemctl is-active "gromox-$i" >/dev/null 2>/dev/null || \
-	   systemctl is-enabled "gromox-$i" >/dev/null 2>/dev/null; then
-		echo "INFO: Deleting obsolete service gromox-$i. There may be warnings about its absence later in the upgrade, this is normal and can be ignored."
-		systemctl disable --now "gromox-$i.service" 2>/dev/null || :
-	fi
-done
 # User addition done a priori by system-user-gromox(!)
 %if 0%{?service_add_pre:1}
 %service_add_pre %services

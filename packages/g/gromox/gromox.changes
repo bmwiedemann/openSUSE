@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 26 18:24:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4
+  * mbop: emptyfld/delmsg support folder names now
+  * dscli: added an --eas option
+  * oxdisco: support autodiscover.json requests
+
+-------------------------------------------------------------------
 Fri Feb  3 16:16:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3
