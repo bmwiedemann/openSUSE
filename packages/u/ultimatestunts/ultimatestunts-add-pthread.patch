@@ -1,0 +1,17 @@
+From: Carsten Ziepke <kieltux@gmail.com>
+Date: Sun Feb 26 19:48:30 UTC 2023
+
+add pthread linking in stuntserver
+
+diff -Nur ultimatestunts-srcdata-0771-orig/stuntsserver/Makefile.in ultimatestunts-srcdata-0771/stuntsserver/Makefile.in
+--- ultimatestunts-srcdata-0771-orig/stuntsserver/Makefile.in	2012-08-25 12:06:22.000000000 +0200
++++ ultimatestunts-srcdata-0771/stuntsserver/Makefile.in	2023-02-26 20:43:46.248387252 +0100
+@@ -241,7 +241,7 @@
+ 
+ 
+ # the library search path.
+-ustuntsserver_LDFLAGS = $(all_libraries) 
++ustuntsserver_LDFLAGS = $(all_libraries) -pthread
+ all: all-am
+ 
+ .SUFFIXES:

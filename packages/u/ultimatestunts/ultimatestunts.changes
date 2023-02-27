@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 26 19:48:30 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add ultimatestunts-add-pthread.patch, fix building for openSUSE Leap
+
+-------------------------------------------------------------------
 Fri Aug 23 16:37:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile. Switch to original source tarball.

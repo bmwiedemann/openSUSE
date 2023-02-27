@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>725659</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c031d4e95ee981038b08d1abd4c12be8</srcmd5>
+    <version>0.7.7.1</version>
+    <time>1677498938</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ultimatestunts-add-pthread.patch, fix building for openSUSE Leap</comment>
+    <requestid>1067854</requestid>
+  </revision>
 </revisionlist>

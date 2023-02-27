@@ -1,7 +1,7 @@
 #
 # spec file for package ultimatestunts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@ Summary:        A racing game in the style of "Stunts"
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Race
 URL:            http://ultimatestunts.nl/
-
 Source:         http://downloads.sf.net/ultimatestunts/ultimatestunts-srcdata-0771.tar.gz
 Patch1:         01-fix-missing-includes.diff
 Patch2:         02-fix-type-puns.diff
 Patch3:         03-fix-format-mismatches.diff
 Patch4:         04-fix-parallel-build-issue.diff
 Patch5:         05-fix-destdir.diff
+Patch6:         ultimatestunts-add-pthread.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(freealut)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(sdl) >= 1.1.0
-BuildRequires:  pkgconfig(vorbisfile) >= 1.0.0
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %name-data
 
 %description
@@ -81,7 +81,7 @@ your own tracks.
 %build
 find . -type d -name .svn -exec rm -Rf "{}" "+"
 %configure
-make %{?_smp_mflags} -j1
+%make_build -j1
 
 %install
 %make_install usdatadir="%buildroot/%_datadir/ultimatestunts"
