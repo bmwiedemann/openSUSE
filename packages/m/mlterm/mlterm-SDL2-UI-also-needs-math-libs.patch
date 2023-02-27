@@ -1,0 +1,26 @@
+From 5350ebd0a23f4af93fa14e3fc93fa45e09e71a5e Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sun, 26 Feb 2023 19:07:33 +0100
+Subject: [PATCH 1/2] SDL2 UI also needs math libs
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ main/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main/Makefile.in b/main/Makefile.in
+index e44d24a7b..6144de1f7 100644
+--- a/main/Makefile.in
++++ b/main/Makefile.in
+@@ -68,7 +68,7 @@ LIBS2_wayland = @FT_LIBS@ @MATH_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @SOCK_LIBS@ \
+ 
+ LIBS2_sdl2_win32 = ../uitoolkit/winrs.o
+ 
+-LIBS2_sdl2 = @SDL2_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @FT_LIBS@ @SOCK_LIBS@ $(LIBS2_@GUI@_@SDL2GUI@)
++LIBS2_sdl2 = @SDL2_LIBS@ @MATH_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @FT_LIBS@ @SOCK_LIBS@ $(LIBS2_@GUI@_@SDL2GUI@)
+ 
+ LIBS = $(LIBS1) $(LIBS2_@GUI@)
+ 
+-- 
+2.39.2
+

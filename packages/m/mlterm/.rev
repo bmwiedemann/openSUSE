@@ -765,4 +765,20 @@
     <comment></comment>
     <requestid>993848</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>1ff3520597bd00203de4fb30390f9ca6</srcmd5>
+    <version>3.9.2</version>
+    <time>1677498951</time>
+    <user>dimstar_suse</user>
+    <comment>- Build Wayland and SDL backends.
+- Enable fcitx support
+- Fix some crashes
+  + CVE-2022-24130-c_sixel.c-Fix-segmentation-fault-when-the-repeat-cou.patch
+  + mlterm-Fix-buffer-overflow-with-long-plugin-suffix.patch
+  + mlfc-Fix-crash-with-more-than-1024-font-faces-installed.patch
+- Fix some build problems
+  + mlterm-SDL2-UI-also-needs-math-libs.patch
+  + mlterm-wayland-Detect-compiler-flags.patch (forwarded request 1067838 from michals)</comment>
+    <requestid>1067901</requestid>
+  </revision>
 </revisionlist>

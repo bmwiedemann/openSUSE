@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 24 18:48:32 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Build Wayland and SDL backends.
+- Enable fcitx support
+- Fix some crashes
+  + CVE-2022-24130-c_sixel.c-Fix-segmentation-fault-when-the-repeat-cou.patch
+  + mlterm-Fix-buffer-overflow-with-long-plugin-suffix.patch
+  + mlfc-Fix-crash-with-more-than-1024-font-faces-installed.patch
+- Fix some build problems
+  + mlterm-SDL2-UI-also-needs-math-libs.patch
+  + mlterm-wayland-Detect-compiler-flags.patch
+
+-------------------------------------------------------------------
 Mon Aug  8 15:36:49 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop canna support: canna has not been maintained for a long time

@@ -1,0 +1,347 @@
+From 0f89f902fc57ea66e724103ed13600b077db9f99 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sun, 26 Feb 2023 19:36:16 +0100
+Subject: [PATCH 2/2] wayland: Detect compiler flags
+
+Use pkgconfig to detect include path required for building wayland
+backend. Do not hardcode wayland libraries, use pkgconfig to detect
+them.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ configure                       | 103 +++++++++++++++++++++++++++++++-
+ configure.in                    |   5 +-
+ inputmethod/canna/Makefile.in   |   1 +
+ inputmethod/fcitx/Makefile.in   |   1 +
+ inputmethod/ibus/Makefile.in    |   1 +
+ inputmethod/iiimf/Makefile.in   |   1 +
+ inputmethod/kbd/Makefile.in     |   1 +
+ inputmethod/m17nlib/Makefile.in |   1 +
+ inputmethod/scim/Makefile.in    |   1 +
+ inputmethod/skk/Makefile.in     |   1 +
+ inputmethod/uim/Makefile.in     |   1 +
+ inputmethod/wnn/Makefile.in     |   1 +
+ main/Makefile.in                |   5 +-
+ uitoolkit/Makefile.in           |   2 +-
+ 14 files changed, 119 insertions(+), 6 deletions(-)
+
+Index: mlterm-3.9.2/configure
+===================================================================
+--- mlterm-3.9.2.orig/configure
++++ mlterm-3.9.2/configure
+@@ -785,6 +785,8 @@ SDL2GUI
+ sdl2_config
+ SDL2_LIBS
+ SDL2_CFLAGS
++WAYLAND_LIBS
++WAYLAND_CFLAGS
+ SIXEL_LIBS
+ SIXEL_CFLAGS
+ VT_NORM_CFLAGS
+@@ -1008,6 +1010,8 @@ GIO_CFLAGS
+ GIO_LIBS
+ FT_CFLAGS
+ FT_LIBS
++WAYLAND_CFLAGS
++WAYLAND_LIBS
+ SDL2_CFLAGS
+ SDL2_LIBS
+ FRIBIDI_CFLAGS
+@@ -1769,6 +1773,10 @@ Some influential environment variables:
+   GIO_LIBS    linker flags for GIO, overriding pkg-config
+   FT_CFLAGS   C compiler flags for FT, overriding pkg-config
+   FT_LIBS     linker flags for FT, overriding pkg-config
++  WAYLAND_CFLAGS
++              C compiler flags for WAYLAND, overriding pkg-config
++  WAYLAND_LIBS
++              linker flags for WAYLAND, overriding pkg-config
+   SDL2_CFLAGS C compiler flags for SDL2, overriding pkg-config
+   SDL2_LIBS   linker flags for SDL2, overriding pkg-config
+   FRIBIDI_CFLAGS
+@@ -18057,8 +18065,101 @@ elif test "$gui" = "beos" ; then
+ 	GUI="beos"
+ 	GUI_CFLAGS="-DUSE_BEOS"
+ elif test "$gui" = "wayland" ; then
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for WAYLAND" >&5
++$as_echo_n "checking for WAYLAND... " >&6; }
++
++if test -n "$WAYLAND_CFLAGS"; then
++    pkg_cv_WAYLAND_CFLAGS="$WAYLAND_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"wayland-client wayland-cursor xkbcommon\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "wayland-client wayland-cursor xkbcommon") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_WAYLAND_CFLAGS=`$PKG_CONFIG --cflags "wayland-client wayland-cursor xkbcommon" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$WAYLAND_LIBS"; then
++    pkg_cv_WAYLAND_LIBS="$WAYLAND_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"wayland-client wayland-cursor xkbcommon\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "wayland-client wayland-cursor xkbcommon") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_WAYLAND_LIBS=`$PKG_CONFIG --libs "wayland-client wayland-cursor xkbcommon" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        WAYLAND_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "wayland-client wayland-cursor xkbcommon" 2>&1`
++        else
++	        WAYLAND_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "wayland-client wayland-cursor xkbcommon" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$WAYLAND_PKG_ERRORS" >&5
++
++	as_fn_error $? "Package requirements (wayland-client wayland-cursor xkbcommon) were not met:
++
++$WAYLAND_PKG_ERRORS
++
++Consider adjusting the PKG_CONFIG_PATH environment variable if you
++installed software in a non-standard prefix.
++
++Alternatively, you may set the environment variables WAYLAND_CFLAGS
++and WAYLAND_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details." "$LINENO" 5
++elif test $pkg_failed = untried; then
++     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
++is in your PATH or set the PKG_CONFIG environment variable to the full
++path to pkg-config.
++
++Alternatively, you may set the environment variables WAYLAND_CFLAGS
++and WAYLAND_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details.
++
++To get pkg-config, see <http://pkg-config.freedesktop.org/>.
++See \`config.log' for more details" "$LINENO" 5; }
++else
++	WAYLAND_CFLAGS=$pkg_cv_WAYLAND_CFLAGS
++	WAYLAND_LIBS=$pkg_cv_WAYLAND_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++fi
+ 	GUI="wayland"
+ 	GUI_CFLAGS="-DUSE_WAYLAND"
++
++
+ elif test "$gui" = "sdl2" ; then
+ 
+ pkg_failed=no
+@@ -18131,7 +18232,7 @@ else
+ $as_echo "yes" >&6; }
+ 	have_sdl2=yes
+ fi
+- 	if test "$have_sdl2" != "yes" ; then
++	if test "$have_sdl2" != "yes" ; then
+ 		# Extract the first word of "sdl2-config", so it can be a program name with args.
+ set dummy sdl2-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+Index: mlterm-3.9.2/configure.in
+===================================================================
+--- mlterm-3.9.2.orig/configure.in
++++ mlterm-3.9.2/configure.in
+@@ -539,11 +539,14 @@ elif test "$gui" = "beos" ; then
+ 	GUI="beos"
+ 	GUI_CFLAGS="-DUSE_BEOS"
+ elif test "$gui" = "wayland" ; then
++	PKG_CHECK_MODULES(WAYLAND, [wayland-client wayland-cursor xkbcommon])
+ 	GUI="wayland"
+ 	GUI_CFLAGS="-DUSE_WAYLAND"
++	AC_SUBST(WAYLAND_CFLAGS)
++	AC_SUBST(WAYLAND_LIBS)
+ elif test "$gui" = "sdl2" ; then
+ 	PKG_CHECK_MODULES(SDL2, sdl2, have_sdl2=yes, have_sdl2=no)
+- 	if test "$have_sdl2" != "yes" ; then
++	if test "$have_sdl2" != "yes" ; then
+ 		AC_CHECK_PROG(sdl2_config, sdl2-config, yes)
+ 		if test "$sdl2_config" = "yes"; then
+ 			SDL2_CFLAGS="`sdl2-config --cflags`"
+Index: mlterm-3.9.2/inputmethod/canna/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/canna/Makefile.in
++++ mlterm-3.9.2/inputmethod/canna/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/fcitx/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/fcitx/Makefile.in
++++ mlterm-3.9.2/inputmethod/fcitx/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/ibus/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/ibus/Makefile.in
++++ mlterm-3.9.2/inputmethod/ibus/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/iiimf/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/iiimf/Makefile.in
++++ mlterm-3.9.2/inputmethod/iiimf/Makefile.in
+@@ -18,6 +18,7 @@ CFLAGS = $(CFLAGS_LOCAL)		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@		\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @TYPE_CFLAGS@			\
+ 	 @CFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/kbd/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/kbd/Makefile.in
++++ mlterm-3.9.2/inputmethod/kbd/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/m17nlib/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/m17nlib/Makefile.in
++++ mlterm-3.9.2/inputmethod/m17nlib/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/scim/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/scim/Makefile.in
++++ mlterm-3.9.2/inputmethod/scim/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @MEF_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/skk/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/skk/Makefile.in
++++ mlterm-3.9.2/inputmethod/skk/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/uim/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/uim/Makefile.in
++++ mlterm-3.9.2/inputmethod/uim/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/inputmethod/wnn/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/inputmethod/wnn/Makefile.in
++++ mlterm-3.9.2/inputmethod/wnn/Makefile.in
+@@ -16,6 +16,7 @@ CFLAGS = $(CFLAGS_LOCAL) 		\
+ 	 @DEB_CFLAGS@			\
+ 	 @X_CFLAGS@			\
+ 	 @GUI_CFLAGS@			\
++	 @WAYLAND_CFLAGS@		\
+ 	 @SDL2_CFLAGS@		\
+ 	 @CFLAGS@			\
+ 	 @CPPFLAGS@			\
+Index: mlterm-3.9.2/main/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/main/Makefile.in
++++ mlterm-3.9.2/main/Makefile.in
+@@ -38,7 +38,7 @@ LMEF_DEB = -lmef_deb
+ 
+ # XDATADIR is to avoid conflicting with DATADIR structure in w32api/objidl.h.
+ CFLAGS = $(CFLAGS_LOCAL) @POBL_CFLAGS@ @MEF_CFLAGS@ @DEB_CFLAGS@ @BRLAPI_CFLAGS@ \
+-	@X_CFLAGS@ @GUI_CFLAGS@ @SSH2_CFLAGS@ @TYPE_CFLAGS@ @FT_CFLAGS@ @SDL2_CFLAGS@ \
++	@X_CFLAGS@ @GUI_CFLAGS@ @SSH2_CFLAGS@ @TYPE_CFLAGS@ @FT_CFLAGS@ @WAYLAND_CFLAGS@ @SDL2_CFLAGS@ \
+ 	@DAEMON_CFLAGS@ @SPLIT_CFLAGS@ @DND_CFLAGS@ @TRANSFER_CFLAGS@ @IMAGE_CFLAGS@ \
+ 	@CFLAGS@ @CPPFLAGS@ -DSYSCONFDIR=\"$(sysconfdir)\" -I$(top_srcdir)/vtemu \
+ 	-I${top_srcdir}/uitoolkit -I${top_builddir}/main -I/usr/local/include
+@@ -62,8 +62,7 @@ LIBS2_beos = -lbe -ltranslation -lsocket
+ 
+ LIBS2_console = @SIXEL_LIBS@ @MATH_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @SOCK_LIBS@
+ 
+-LIBS2_wayland = @FT_LIBS@ @MATH_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @SOCK_LIBS@ \
+-	-lwayland-client -lwayland-cursor -lxkbcommon
++LIBS2_wayland = @WAYLAND_LIBS@ @FT_LIBS@ @MATH_LIBS@ @DL_LIBS_IM@ @DL_LIBS_SB@ @SOCK_LIBS@
+ 
+ LIBS2_sdl2_win32 = ../uitoolkit/winrs.o
+ 
+Index: mlterm-3.9.2/uitoolkit/Makefile.in
+===================================================================
+--- mlterm-3.9.2.orig/uitoolkit/Makefile.in
++++ mlterm-3.9.2/uitoolkit/Makefile.in
+@@ -59,7 +59,7 @@ CFLAGS = $(CFLAGS_LOCAL) @POBL_CFLAGS@ @
+ 	@IMAGELIB_CFLAGS@ @X_CFLAGS@ @GUI_CFLAGS@ @SSH2_CFLAGS@ @XUTF8_CFLAGS@ @DND_CFLAGS@ \
+ 	@IM_CFLAGS@ @SB_CFLAGS@ @REGEX_CFLAGS@ @CTL_CFLAGS@ @TYPE_CFLAGS@ @FT_CFLAGS@ \
+ 	@IMAGE_CFLAGS@ @TOOLS_CFLAGS@ @OT_LAYOUT_CFLAGS@ @SIXEL_CFLAGS@ @BRLAPI_CFLAGS@ \
+-	@SDL2_CFLAGS@ @SPLIT_CFLAGS@ @CFLAGS@ @CPPFLAGS@ \
++	@WAYLAND_CFLAGS@ @SDL2_CFLAGS@ @SPLIT_CFLAGS@ @CFLAGS@ @CPPFLAGS@ \
+ 	-DBINDIR=\"$(bindir)\" -DLIBDIR=\"$(libdir)\" -DLIBEXECDIR=\"$(libexecdir)\" \
+ 	-DXDATADIR=\"$(datadir)\" \
+ 	-I$(top_srcdir)/vtemu -I$(top_srcdir)/uitoolkit/libotl -I/usr/local/include
