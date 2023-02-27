@@ -16,18 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define modname faust-cchardet
 Name:           python-cchardet
-Version:        2.1.7
+Version:        2.1.18
 Release:        0
 Summary:        CChardet is high speed universal character encoding detector
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1
-URL:            https://github.com/PyYoshi/cChardet
-Source:         https://files.pythonhosted.org/packages/source/c/cchardet/cchardet-%{version}.tar.gz
-BuildRequires:  %{python_module cython}
+URL:            https://github.com/faust-streaming/cChardet
+Source:         https://files.pythonhosted.org/packages/source/f/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -41,15 +43,18 @@ Requires(postun):update-alternatives
 cChardet is high speed universal character encoding detector. - binding to `uchardet`_.
 
 %prep
-%setup -q -n cchardet-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cchardetect
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch src/tests
 
 %post
 %python_install_alternative cchardetect
@@ -61,6 +66,7 @@ cChardet is high speed universal character encoding detector. - binding to `ucha
 %license COPYING
 %doc README.rst
 %python_alternative %{_bindir}/cchardetect
-%{python_sitearch}/*
+%{python_sitearch}/cchardet
+%{python_sitearch}/%(echo %{modname}|tr '-' '_')-%{version}*-info
 
 %changelog
