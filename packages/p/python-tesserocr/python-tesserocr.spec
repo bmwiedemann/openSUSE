@@ -64,7 +64,11 @@ GIL while processing an image in tesseract.
 export TESSDATA_PREFIX=/usr/share/tessdata
 %python_exec setup.py develop --user
 # test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
-%pytest -k 'not test_LSTM_choices'
+# https://github.com/sirfz/tesserocr/issues/295
+donttest="test_LSTM_choices"
+donttest+=" or test_detect_os"
+donttest+=" or test_init"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

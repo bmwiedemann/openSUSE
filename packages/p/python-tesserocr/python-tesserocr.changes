@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:22:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable current broken tests, test_LSTM_choices, test_detect_os and
+  or test_init, gh#sirfz/tesserocr#295
+
+-------------------------------------------------------------------
 Sat Jan 14 21:46:21 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply 1441bec703cf68161acce5e85907ddd71c47fdc3.patch from upstream

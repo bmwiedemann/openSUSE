@@ -128,4 +128,14 @@
     <comment></comment>
     <requestid>1058773</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b8e1b4a4f32448e67fbc59bb29d0a8a3</srcmd5>
+    <version>2.5.2</version>
+    <time>1677498965</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable current broken tests, test_LSTM_choices, test_detect_os and
+  or test_init, gh#sirfz/tesserocr#295
+</comment>
+    <requestid>1067957</requestid>
+  </revision>
 </revisionlist>
