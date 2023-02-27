@@ -1,7 +1,7 @@
 #
 # spec file for package priv_wrapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Andreas Schneider
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,7 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        priv_wrapper.keyring
+Patch0:         priv_wrapper-fix-cmocka-1.1.6+-support.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf
