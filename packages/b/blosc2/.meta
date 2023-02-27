@@ -1,0 +1,20 @@
+<package name="blosc2" project="openSUSE:Factory">
+  <title>A blocking, shuffling and lossless compression library</title>
+  <description>Blosc is a compressor for binary data, designed to transmit data to
+the processor cache faster than the traditional, non-compressed,
+direct memory fetch approach via a memcpy() call. Blosc is not only a
+compressor for data size reduction, but also for accelerating
+memory-bound computations.
+
+It uses the blocking technique to reduce activity on the memory bus,
+which works by dividing datasets in blocks that are small enough to
+fit in caches of processors and perform (de)compression there. SIMD
+and multi-threading capabilities are leveraged if available.
+
+Blosc is a metacompressor; it can use different compression
+algorithms, such as BloscLZ, LZ4, LZ4HC, Snappy and Zlib.
+
+</description>
+  <devel project="Archiving" package="blosc2"/>
+  <url>http://www.blosc.org/</url>
+</package>
