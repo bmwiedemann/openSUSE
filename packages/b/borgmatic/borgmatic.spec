@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.7.5
+Version:        1.7.7
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
