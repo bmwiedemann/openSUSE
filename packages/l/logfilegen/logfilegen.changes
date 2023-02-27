@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 26 21:31:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.2.0:
+  * C++11 compatibility fixes (down from C++17)
+
+-------------------------------------------------------------------
 Fri Feb 24 15:36:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - logfilegen 2.1.0:
