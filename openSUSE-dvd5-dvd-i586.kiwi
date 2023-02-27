@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230226" schemaversion="4.1">
+<image name="OBS__openSUSE___20230227" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230226</productvar>
+      <productvar name="VERSION">20230227</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230226,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230227,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230226/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230227/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -846,6 +846,7 @@
       <repopackage name="ibus-gtk3"/>
       <repopackage name="ibus-gtk4"/>
       <repopackage name="ibus-lang"/>
+      <repopackage name="ibus-libpinyin"/>
       <repopackage name="ibus-m17n"/>
       <repopackage name="ibus-table"/>
       <repopackage name="ibus-table-chinese-array"/>
@@ -1475,6 +1476,7 @@
       <repopackage name="libfcitx-core0"/>
       <repopackage name="libfcitx-gclient1"/>
       <repopackage name="libfcitx-utils0"/>
+      <repopackage name="libFcitx5GClient2"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdk-aac2"/>
       <repopackage name="libfdt1"/>
@@ -2847,9 +2849,11 @@
       <repopackage name="mkisofs"/>
       <repopackage name="mlocate"/>
       <repopackage name="mlocate-lang"/>
-      <repopackage name="mlterm"/>
+      <repopackage name="mlterm-common"/>
+      <repopackage name="mlterm-fcitx"/>
       <repopackage name="mlterm-ibus"/>
       <repopackage name="mlterm-scim"/>
+      <repopackage name="mlterm-sdl2"/>
       <repopackage name="mlterm-wnn"/>
       <repopackage name="mobile-broadband-provider-info"/>
       <repopackage name="mobipocket"/>
@@ -3906,6 +3910,7 @@
       <repopackage name="ruby3.2-rubygem-parallel"/>
       <repopackage name="ruby3.2-rubygem-parallel_tests"/>
       <repopackage name="ruby3.2-rubygem-parser"/>
+      <repopackage name="ruby3.2-rubygem-passenger"/>
       <repopackage name="ruby3.2-rubygem-path_expander"/>
       <repopackage name="ruby3.2-rubygem-pathutil"/>
       <repopackage name="ruby3.2-rubygem-pdf-core"/>
@@ -4063,6 +4068,8 @@
       <repopackage name="ruby3.2-rubygem-yard"/>
       <repopackage name="ruby3.2-rubygem-yast-rake"/>
       <repopackage name="ruby3.2-rubygem-zeitwerk"/>
+      <repopackage name="rubygem-passenger"/>
+      <repopackage name="rubygem-passenger-apache2"/>
       <repopackage name="rzip"/>
       <repopackage name="sac"/>
       <repopackage name="salt"/>

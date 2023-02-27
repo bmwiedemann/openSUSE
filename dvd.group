@@ -852,6 +852,7 @@
     <package name="ibus-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-gtk4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="ibus-libpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1198,6 +1199,7 @@
     <package name="libAppStreamQt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libBasicUsageEnvironment2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libFLAC12" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libFcitx5GClient2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libGraphicsMagick++-Q16-12" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libGraphicsMagick-Q16-3" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -1438,7 +1440,7 @@
     <package name="libQt5XmlPatterns5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQtQuick5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSDL-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSDL_gfx15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSPIRV-Tools-2023_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
@@ -2485,10 +2487,10 @@
     <package name="libsoftokn3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoup-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoup-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libsoup2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsource-highlight4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsoxr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libspandsp3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2505,7 +2507,7 @@
     <package name="libsrt1_5" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libsrtp2-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2835,9 +2837,11 @@
     <package name="mkisofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mlocate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="mlocate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="mlterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="mlterm-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="mlterm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-ibus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="mlterm-scim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="mlterm-sdl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-wnn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="mobile-broadband-provider-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mobipocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3853,6 +3857,7 @@
     <package name="ruby3.2-rubygem-parallel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-parallel_tests" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-parser" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-passenger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-path_expander" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-pathutil" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-pdf-core" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4010,6 +4015,8 @@
     <package name="ruby3.2-rubygem-yard" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rzip" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="sac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
