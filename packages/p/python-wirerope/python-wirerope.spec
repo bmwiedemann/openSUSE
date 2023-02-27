@@ -1,7 +1,7 @@
 #
 # spec file for package python-wirerope
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-wirerope
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        The Way to Handle Bound Methods
 License:        BSD-2-Clause
@@ -64,6 +63,7 @@ sed -i -e '/addopts/d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/wirerope
+%{python_sitelib}/wirerope-%{version}*-info
 
 %changelog
