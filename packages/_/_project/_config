@@ -418,6 +418,8 @@ Prefer: udev-mini
 Ignore: cmake-mini:this-is-only-for-build-envs
 Ignore: dummy-release:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
+Ignore: ffmpeg-5-mini-devel:this-is-only-for-build-envs
+Ignore: ffmpeg-5-mini-libs:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs
 Ignore: ghc-bootstrap:this-is-only-for-build-envs
 Ignore: ghostscript-mini:this-is-only-for-build-envs
@@ -430,8 +432,8 @@ Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql13-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql14-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql15-devel-mini:this-is-only-for-build-envs
-Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: systemd-mini-container:this-is-only-for-build-envs
+Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
 
 # Ring0 packages should not pull in 'info' - making the base VM smaller
