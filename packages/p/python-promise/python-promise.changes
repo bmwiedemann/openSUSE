@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:14:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11
+  gh#syrusakbary/promise#99
+
+-------------------------------------------------------------------
 Mon Jun 20 02:53:04 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove now broken bconds for python2/python3.

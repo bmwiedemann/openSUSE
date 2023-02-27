@@ -35,4 +35,14 @@
   * Support pytest 7.0+ changes.</comment>
     <requestid>983793</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e8d7709c17e68324c24f47ceaa8a3f09</srcmd5>
+    <version>2.3.0</version>
+    <time>1677498930</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#syrusakbary/promise#99
+</comment>
+    <requestid>1067864</requestid>
+  </revision>
 </revisionlist>
