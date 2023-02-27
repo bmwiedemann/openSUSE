@@ -1371,6 +1371,7 @@ unsorted:
   - blogbench 
   - blogc 
   - blosc-devel 
+  - blosc2-devel 
   - bluefish 
   - bluemoon 
   - blueprint-compiler 
@@ -3173,6 +3174,7 @@ unsorted:
   - dns24-update 
   - dnscrypt-proxy 
   - dnsdiag 
+  - dnsdist 
   - dnsmasq-utils 
   - dnsmeter 
   - dnstracer 
@@ -7402,7 +7404,6 @@ unsorted:
   - ibus-hangul 
   - ibus-input-pad 
   - ibus-kkc 
-  - ibus-libpinyin 
   - ibus-libzhuyin 
   - ibus-rime 
   - ibus-skk 
@@ -9389,7 +9390,6 @@ unsorted:
   - libFcitx5Config6 
   - libFcitx5Core7 
   - libFcitx5GClient-devel 
-  - libFcitx5GClient2 
   - libFcitx5Qt5DBusAddons1 
   - libFcitx5Qt5WidgetsAddons2 
   - libFcitx5Qt6DBusAddons1 
@@ -10432,6 +10432,7 @@ unsorted:
   - libblkid-devel-static 
   - libblockdev-devel 
   - libblosc1 
+  - libblosc2-2 
   - libbluetooth3-32bit: [x86_64] 
   - libbluray-bdj 
   - libbluray-devel 
@@ -11714,7 +11715,6 @@ unsorted:
   - libglslang12-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
-  - libglusterd0 
   - libglusterfs0 
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
@@ -17188,6 +17188,7 @@ unsorted:
   - mkvtoolnix 
   - mkvtoolnix-gui 
   - mkvtoolnix-tools 
+  - mlterm 
   - mlterm-m17n 
   - mlterm-uim 
   - mm-common 
@@ -22305,7 +22306,6 @@ unsorted:
   - python-stevedore-doc 
   - python-sushy-doc 
   - python-swiftclient-doc 
-  - python-tables-doc 
   - python-tk 
   - python-tooz-doc 
   - python-tqdm-bash-completion 
@@ -23359,6 +23359,7 @@ unsorted:
   - python310-blinker: [i586] 
   - python310-blockdiag 
   - python310-blosc 
+  - python310-blosc2 
   - python310-bloscpack 
   - python310-blue 
   - python310-blurb 
@@ -25957,6 +25958,7 @@ unsorted:
   - python311-ExifRead 
   - python311-Fabric 
   - python311-Faker 
+  - python311-Fiona 
   - python311-Flask 
   - python311-Flask-Admin 
   - python311-Flask-Babel 
@@ -26614,6 +26616,7 @@ unsorted:
   - python311-base-x86-64-v3: [x86_64] 
   - python311-base58 
   - python311-bashate 
+  - python311-basictracer 
   - python311-bcrypt 
   - python311-beartype 
   - python311-beautifulsoup4 
@@ -26642,6 +26645,7 @@ unsorted:
   - python311-blinker 
   - python311-blockdiag 
   - python311-blosc 
+  - python311-blosc2 
   - python311-bloscpack 
   - python311-blue 
   - python311-blurb 
@@ -26928,6 +26932,7 @@ unsorted:
   - python311-django-collectd-rest 
   - python311-django-contrib-comments 
   - python311-django-cors-headers 
+  - python311-django-countries 
   - python311-django-coverage-plugin 
   - python311-django-crispy-forms 
   - python311-django-debreach 
@@ -26963,6 +26968,7 @@ unsorted:
   - python311-django-nine 
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
+  - python311-django-opentracing 
   - python311-django-oscar 
   - python311-django-pandas 
   - python311-django-parler 
@@ -27173,6 +27179,7 @@ unsorted:
   - python311-fluidity-sm 
   - python311-flup 
   - python311-flynt 
+  - python311-folium 
   - python311-fontMath 
   - python311-fontParts 
   - python311-fontPens 
@@ -27213,6 +27220,7 @@ unsorted:
   - python311-geolib 
   - python311-geolinks 
   - python311-geomet 
+  - python311-geopandas 
   - python311-geopy 
   - python311-getmac 
   - python311-gevent 
@@ -27256,7 +27264,10 @@ unsorted:
   - python311-gps3 
   - python311-gpxpy 
   - python311-grab 
+  - python311-graphene 
+  - python311-graphene-django 
   - python311-graphql-core 
+  - python311-graphql-relay 
   - python311-graphviz 
   - python311-greenlet 
   - python311-greenlet-devel 
@@ -27287,6 +27298,7 @@ unsorted:
   - python311-hammett 
   - python311-hankel 
   - python311-hanzidentifier 
+  - python311-happybase 
   - python311-haproxyctl 
   - python311-hashids 
   - python311-hatch 
@@ -27654,6 +27666,7 @@ unsorted:
   - python311-metaextract 
   - python311-metakernel 
   - python311-metamagic.json 
+  - python311-methodtools 
   - python311-micropipenv 
   - python311-mimesis 
   - python311-minidb 
@@ -27811,6 +27824,7 @@ unsorted:
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
+  - python311-opentracing 
   - python311-opt-einsum 
   - python311-orange-canvas-core 
   - python311-orange-widget-base 
@@ -27969,6 +27983,7 @@ unsorted:
   - python311-progressbar 
   - python311-progressbar2 
   - python311-prometheus-client 
+  - python311-promise 
   - python311-prompt_toolkit 
   - python311-prompt_toolkit1 
   - python311-proselint 
@@ -28158,6 +28173,7 @@ unsorted:
   - python311-pyparsing 
   - python311-pyperclip 
   - python311-pyperf 
+  - python311-pypet 
   - python311-pypi-search 
   - python311-pypiserver 
   - python311-pypng 
@@ -28757,6 +28773,7 @@ unsorted:
   - python311-systemd 
   - python311-tableauserverclient 
   - python311-tableprint 
+  - python311-tables 
   - python311-tablib 
   - python311-tabulate 
   - python311-tap.py 
@@ -28776,6 +28793,7 @@ unsorted:
   - python311-terminado 
   - python311-terminaltables 
   - python311-termstyle 
+  - python311-tesserocr 
   - python311-testfixtures 
   - python311-testflo 
   - python311-testpath 
@@ -28795,6 +28813,7 @@ unsorted:
   - python311-thespian 
   - python311-threadpoolctl 
   - python311-three-merge 
+  - python311-thriftpy2 
   - python311-tifffile 
   - python311-time-machine 
   - python311-time-travel 
@@ -28884,6 +28903,7 @@ unsorted:
   - python311-unify 
   - python311-uniseg 
   - python311-unittest-mixins 
+  - python311-unittest-xml-reporting 
   - python311-unittest2pytest 
   - python311-unpaddedbase64 
   - python311-unsync 
@@ -28971,8 +28991,10 @@ unsorted:
   - python311-wheezy.template 
   - python311-whichcraft 
   - python311-whitenoise 
+  - python311-whois_similarity_distance 
   - python311-widgetsnbextension 
   - python311-wikipedia 
+  - python311-wirerope 
   - python311-wiring 
   - python311-wmctrl 
   - python311-wolframalpha 
@@ -28999,6 +29021,7 @@ unsorted:
   - python311-xhtml2pdf 
   - python311-xkbcommon 
   - python311-xkbgroup 
+  - python311-xkcdpass 
   - python311-xlrd 
   - python311-xlwt 
   - python311-xmldiff 
@@ -29823,6 +29846,7 @@ unsorted:
   - python38-blinker 
   - python38-blockdiag 
   - python38-blosc 
+  - python38-blosc2 
   - python38-bloscpack 
   - python38-blue 
   - python38-blurb 
@@ -33241,6 +33265,7 @@ unsorted:
   - python39-blinker 
   - python39-blockdiag 
   - python39-blosc 
+  - python39-blosc2 
   - python39-bloscpack 
   - python39-blue 
   - python39-blurb 
@@ -37299,8 +37324,6 @@ unsorted:
   - ruby3.2-doc-ri 
   - ruby3.2-rubygem-d-installer-cli 
   - rubygem-libguestfs: [x86_64] 
-  - rubygem-passenger 
-  - rubygem-passenger-apache2 
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 
