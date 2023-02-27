@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:55:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix _service version rewrite to not have TAG+0 versions.
+
+-------------------------------------------------------------------
+Sun Feb 26 18:10:10 UTC 2023 - Andrey Gankov <gav@qsolution.ru>
+
+- Update to version 43.1:
+  + Respect --use-index when displaying history
+  + Open GPaste UI where the mouse pointer is
+  + Internal preparation for gtk4 port
+  + Translations updates
+- Disable gcr3 default Meson build option to keep using GCR
+  version 4.
+
+-------------------------------------------------------------------
 Sun Sep 11 07:28:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1+29:

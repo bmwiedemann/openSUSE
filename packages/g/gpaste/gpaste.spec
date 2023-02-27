@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        42.1+29
+Version:        43.1
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -171,7 +171,7 @@ This package provides zsh tab-completion for %{name}.
 %autosetup -p1 -n %{alt_name}-%{version}
 
 %build
-%meson
+%meson -Dgcr3=false
 %meson_build
 
 %install
