@@ -13,8 +13,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/deno</param>
-    <param name="revision">c26fbe38d5a1f485a0960357c22080dd23e03ffb</param>
-    <param name="version">1.31.0</param>
+    <param name="revision">v1.31.1</param>
+    <param name="version">1.31.1</param>
 
     <!-- remove large docs -->
     <param name="exclude">docs</param>
