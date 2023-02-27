@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 20 08:23:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Reduce Summary text to less than 80 characters.
+
+-------------------------------------------------------------------
 Fri Aug 27 11:52:37 UTC 2021 - pgajdos@suse.com
 
 - %check: declare there's no uptream tests
