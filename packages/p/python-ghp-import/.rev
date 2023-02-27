@@ -23,4 +23,13 @@
 </comment>
     <requestid>1006934</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a55d0bee3e7de8fd1cc53ecab0558097</srcmd5>
+    <version>2.1.0</version>
+    <time>1677502470</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use fdupes -s, it hurts.
+</comment>
+    <requestid>1067943</requestid>
+  </revision>
 </revisionlist>

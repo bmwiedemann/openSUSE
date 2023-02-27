@@ -1,7 +1,7 @@
 #
 # spec file for package python-ghp-import
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ghp-import
 Version:        2.1.0
@@ -54,7 +53,7 @@ sed -i '1d' ghp_import.py
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/ghp-import
 
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative ghp-import
@@ -66,7 +65,8 @@ sed -i '1d' ghp_import.py
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/ghp-import
-%{python_sitelib}/ghp_import*
-%{python_sitelib}/__pycache__/*
+%{python_sitelib}/ghp_import.py
+%{python_sitelib}/__pycache__/ghp_import*.pyc
+%{python_sitelib}/ghp_import-%{version}*-info
 
 %changelog
