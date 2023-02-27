@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 27 02:55:56 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.13.1:
+  * Features:
+    - config: Adds support for --profile <custom profile name>.
+    - env_var: Add support for env_var.VAR in format.
+    - fennel: add fennel module.
+    - add pijul_channel module.
+    - fossil_branch: add fossil_branch module.
+    - gradle: add gradle module.
+    - hg_branch: Add support for mercurial topics and find hg 
+      root dir.
+    - java: Add .sdkmanrc for Java.
+    - logger: delete old logs & avoid more dup logs.
+  * Bug Fixes:
+    - 'to to' -> 'to'.
+    - container: reduce docker, podman and systemd confusion.
+    - fish: enable transient prompt when in vi mode.
+    - git_commit: fix potential test failure.
+    - Improve regex for extracting gradle package version from 
+      gradle.properties.
+    - let-env warning when using nushell.
+    - nodejs: apply style even if node version is unavailable
+    - package: Improve regex for extracting gradle version 
+      from gradle.properties.
+
+-------------------------------------------------------------------
 Sun Dec 18 09:54:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.12.0:

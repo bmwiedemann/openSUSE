@@ -1,7 +1,7 @@
 #
 # spec file for package starship
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           starship
-Version:        1.12.0
+Version:        1.13.1
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
 URL:            https://starship.rs/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
