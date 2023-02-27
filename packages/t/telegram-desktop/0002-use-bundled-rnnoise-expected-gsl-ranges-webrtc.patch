@@ -50,7 +50,7 @@
 -if (DESKTOP_APP_USE_PACKAGED)
 +if (NOT DESKTOP_APP_USE_PACKAGED)
      if (DESKTOP_APP_USE_PACKAGED_LAZY)
-         find_package(Microsoft.GSL QUIET)
+         find_package(Microsoft.GSL 4.0.0 QUIET)
      else()
 --- a/cmake/external/ranges/CMakeLists.txt
 +++ b/cmake/external/ranges/CMakeLists.txt
