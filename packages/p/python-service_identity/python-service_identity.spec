@@ -1,7 +1,7 @@
 #
 # spec file for package python-service_identity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oname   service_identity
 Name:           python-service_identity
 Version:        21.1.0
@@ -30,12 +29,13 @@ Source:         https://github.com/pyca/service_identity/archive/%{version}.tar.
 BuildRequires:  %{python_module attrs >= 19.1.0}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module pyasn1-modules}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.1.0
@@ -63,10 +63,10 @@ relevant RFCs too.
 %setup -q -n service-identity-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +76,6 @@ relevant RFCs too.
 %license LICENSE
 %doc AUTHORS.rst README.rst
 %{python_sitelib}/%{oname}
-%{python_sitelib}/%{oname}-%{version}-py*.egg-info
+%{python_sitelib}/%{oname}-%{version}*-info
 
 %changelog
