@@ -1,7 +1,7 @@
 #
-# spec file for package python-geopandas
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-Name:           python-geopandas
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-geopandas%{psuffix}
 Version:        0.11.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Geographic pandas extensions
-Url:            http://geopandas.org
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://geopandas.org
 Source:         https://files.pythonhosted.org/packages/source/g/geopandas/geopandas-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module Fiona}
-BuildRequires:  %{python_module folium}
-# mapclassify not yet available
-#BuildRequires: %%{python_module mapclassify}
-BuildRequires:  %{python_module pandas >= 0.23.0}
-BuildRequires:  %{python_module pygeos}
-BuildRequires:  %{python_module pyproj}
-BuildRequires:  %{python_module shapely}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module geopy}
-BuildRequires:  %{python_module Rtree}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  libgdal-devel
-BuildRequires:  proj
-BuildRequires:  proj-devel
-# /SECTION
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Fiona
 Requires:       python-pandas >= 0.23.0
 Requires:       python-pyproj
@@ -53,7 +43,24 @@ Requires:       python-shapely
 Recommends:     python-geopy
 Recommends:     python-matplotlib
 BuildArch:      noarch
-
+%if %{with test}
+BuildRequires:  %{python_module Fiona}
+BuildRequires:  %{python_module Rtree}
+BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module geopy}
+BuildRequires:  %{python_module matplotlib}
+# mapclassify not yet available
+#BuildRequires: %%{python_module mapclassify}
+BuildRequires:  %{python_module pandas >= 0.23.0}
+BuildRequires:  %{python_module pygeos}
+BuildRequires:  %{python_module pyproj}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module shapely}
+BuildRequires:  libgdal-devel
+BuildRequires:  proj
+BuildRequires:  proj-devel
+%endif
 %python_subpackages
 
 %description
@@ -63,21 +70,29 @@ GeoPandas enables you to easily do operations in python that would otherwise
 require a spatial database such as PostGIS.
 
 %prep
-%setup -q -n geopandas-%{version}
+%autosetup -p1 -n geopandas-%{version}
 
 %build
-%python_build
+%if ! %{with wheel}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest -rs -k 'not test_overlay'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/geopandas*/
+%endif
 
 %changelog

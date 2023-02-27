@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 25 22:30:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild to avoid a build cycle
+  (bsc#1207791).
+
+-------------------------------------------------------------------
 Fri Sep 16 01:58:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.11.1
