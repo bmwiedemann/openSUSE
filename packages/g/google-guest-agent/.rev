@@ -223,4 +223,19 @@
   * Windows: retry adding MDS route (#194) (forwarded request 1059309 from glaubitz)</comment>
     <requestid>1059351</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>61168cfd6bde474892603f174880ab73</srcmd5>
+    <version>20230221.00</version>
+    <time>1677502502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230221.00
+  * Allow a comment part of a pub ssh key to have an arbitrary format (#198)
+    + Split GetUserKey() into two functions: get and validate
+    + Correct the name of ValidateUser func as it validates only users
+    + Update tests
+  * Update OWNERS (#201)
+- from version  20230207.00
+  * Update OWNERS file (#199)</comment>
+    <requestid>1067974</requestid>
+  </revision>
 </revisionlist>

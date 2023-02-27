@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:30:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230221.00
+  * Allow a comment part of a pub ssh key to have an arbitrary format (#198)
+    + Split GetUserKey() into two functions: get and validate
+    + Correct the name of ValidateUser func as it validates only users
+    + Update tests
+  * Update OWNERS (#201)
+- from version  20230207.00
+  * Update OWNERS file (#199)
+
+-------------------------------------------------------------------
 Wed Jan 18 09:37:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230112.00
