@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
@@ -27,6 +27,7 @@ Source0:        http://downloads.sourceforge.net/project/gparted/gparted/gparted
 Source1:        http://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz.sig
 Source98:       %{name}.policy
 Source99:       %{name}.keyring
+BuildRequires:  polkit-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -83,8 +84,8 @@ translation-update-upstream
 %build
 export GKSUPROG="pkexec"
 %configure \
-        --enable-libparted-dmraid \
-	--enable-xhost-root
+  --enable-libparted-dmraid \
+  --enable-xhost-root
 %make_build
 
 %install
@@ -110,7 +111,6 @@ rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 %{_datadir}/icons/hicolor/*x*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/polkit-1/actions/org.opensuse.policykit.%{name}.policy
-#{_datadir}/polkit-1/actions/org.gnome.%%{name}.policy
 %{_datadir}/help/C/%{name}/index.docbook
 %{_datadir}/help/C/%{name}/figures/gparted_window.png
 %dir %{_datadir}/help/C/%{name}
