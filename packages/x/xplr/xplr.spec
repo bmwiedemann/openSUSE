@@ -23,14 +23,15 @@ Summary:        TUI file explorer
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/sayanarijit/xplr
-Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
-Source3:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc
+Source3:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source4:        https://arijitbasu.in/gpg.txt#/%{name}.keyring
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rust+cargo
+BuildRequires:  zstd
 
 %description
 xplr is a terminal UI based file explorer for command-line utilities

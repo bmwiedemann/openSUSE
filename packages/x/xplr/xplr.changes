@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 20 01:31:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+- Use zstd compression for vendored deps.
+
+-------------------------------------------------------------------
 Fri Jan 13 11:12:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.20.2:
