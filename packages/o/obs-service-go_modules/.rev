@@ -44,4 +44,19 @@
 - Drop Require: gzip (forwarded request 982161 from jfkw)</comment>
     <requestid>982163</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d35f9db0282850ce3404f886e760865</srcmd5>
+    <version>0.6.0</version>
+    <time>1677498963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * Make service arg subdir optional
+  * exit(1) immediately in extract() exception handler after recording error
+  * Use subprocess.run() options 'capture_output' &amp; 'text' only when supported
+  * Add '--subdir' option: all to specify the directory to search go.mod in
+  * Use temporary directory to extract archive to
+  * Give the user the opprtunity to specify the name of the topmost directory
+  * Attempt to obtain name of top directory in archive from archive content (forwarded request 1067955 from jfkw)</comment>
+    <requestid>1067956</requestid>
+  </revision>
 </revisionlist>

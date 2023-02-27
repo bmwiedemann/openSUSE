@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define use_test   test
 %endif
 Name:           obs-service-%{service}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        An OBS source service: Download, verify and vendor Go module dependencies
 License:        GPL-2.0-or-later

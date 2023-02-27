@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:51:08 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.6.0:
+  * Make service arg subdir optional
+  * exit(1) immediately in extract() exception handler after recording error
+  * Use subprocess.run() options 'capture_output' & 'text' only when supported
+  * Add '--subdir' option: all to specify the directory to search go.mod in
+  * Use temporary directory to extract archive to
+  * Give the user the opprtunity to specify the name of the topmost directory
+  * Attempt to obtain name of top directory in archive from archive content
+
+-------------------------------------------------------------------
 Sat Jun 11 01:56:21 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.5.0:
