@@ -1,0 +1,39 @@
+From 5edbfd5b38811099d960387b829de349a111c41c Mon Sep 17 00:00:00 2001
+From: Bruno Pagani <bruno.n.pagani@gmail.com>
+Date: Mon, 9 Jan 2023 19:44:37 +0000
+Subject: [PATCH] Fix os_release_pretty_name when os-release does not exists
+
+Fixes GH-81.
+---
+ blosc2/core.py | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/blosc2/core.py b/blosc2/core.py
+index 4f69ba5f..579ca858 100644
+--- a/blosc2/core.py
++++ b/blosc2/core.py
+@@ -1012,17 +1012,15 @@ def detect_number_of_cores():
+ def os_release_pretty_name():
+     for p in ("/etc/os-release", "/usr/lib/os-release"):
+         try:
+-            f = open(p)
+-            for line in f:
+-                name, _, value = line.rstrip().partition("=")
+-                if name == "PRETTY_NAME":
+-                    if len(value) >= 2 and value[0] in "\"'" and value[0] == value[-1]:
+-                        value = value[1:-1]
+-                    return value
++            with open(p) as f:
++                for line in f:
++                    name, _, value = line.rstrip().partition("=")
++                    if name == "PRETTY_NAME":
++                        if len(value) >= 2 and value[0] in "\"'" and value[0] == value[-1]:
++                            value = value[1:-1]
++                        return value
+         except OSError:
+             pass
+-        finally:
+-            f.close()
+     return None
+ 
+ 

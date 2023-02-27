@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Feb 24 05:50:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip incompatible tests on 32bit
+
+-------------------------------------------------------------------
+Fri Feb 17 10:37:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v2.0.0
+- Add python-blosc2-pr92-debundle.patch
+  * gh#Blosc/python-blosc2#92
+  * Fixes gh#Blosc/python-blosc2#15
+- Required by python-tables (PyTables)
