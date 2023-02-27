@@ -1,7 +1,7 @@
 #
-# spec file for package python-tables
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,79 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-Name:           python-tables
-Version:        3.7.0
+%define psuffix %{nil}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%define skip_python311 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%define skip_python311 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python311 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py311"
+%define psuffix -test-py311
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%bcond_with test
+%endif
+
+Name:           python-tables%{psuffix}
+Version:        3.8.0
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+# PATCH-FIX-UPSTREAM tables-pr1000-debundled-blosc2.patch gh#PyTables/PyTables#1000
+Patch0:         tables-pr1000-debundled-blosc2.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  python-rpm-macros
+%if ! %{with test}
+BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  blosc-devel >= 1.21.1
+BuildRequires:  blosc2-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  lzo-devel
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx >= 1.1
-BuildRequires:  python3-jupyter_ipython
-BuildRequires:  python3-numpydoc
-BuildRequires:  python3-sphinx_rtd_theme
+%else
+# with test
+BuildRequires:  %{python_module tables = %{version}}
+# usage of pkg_resources in tests
+BuildRequires:  %{python_module setuptools}
+%endif
+Requires:       python-Cython >= 0.29.21
 Requires:       python-numexpr >= 2.6.2
 Requires:       python-numpy >= 1.19
 Requires:       python-packaging
+Requires:       python-py-cpuinfo
 # boo#1196682
 %requires_eq    hdf5
 Requires(post): update-alternatives
@@ -62,56 +106,37 @@ that, combined with C-code generated from Pyrex sources,
 makes of it a fast, yet extremely easy to use tool for
 interactively save and retrieve large amounts of data.
 
-%package -n %{name}-doc
-Summary:        Documentation for %{name}
-Provides:       %{python_module tables-doc = %{version}}
-
-%description -n %{name}-doc
-Documentation and help files for %{name}
-
 %prep
 %autosetup -p1 -n tables-%{version}
 # make sure we use the system blosc
 rm -r c-blosc
+# https://github.com/PyTables/PyTables/issues/1001
+rm tables/libblosc2.so
 
+%if !%{with test}
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-# Never use SSE2 and AVX2 because obs buildbots might support it
-# but the target does not
-export DISABLE_SSE2=1
-export DISABLE_AVX2=1
-%python_build
+export PYTABLES_NO_EMBEDDED_LIBS=1
+%pyproject_wheel
+%endif
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pttree
 %python_clone -a %{buildroot}%{_bindir}/ptrepack
 %python_clone -a %{buildroot}%{_bindir}/ptdump
 %python_clone -a %{buildroot}%{_bindir}/pt2to3
-%{python_expand #
-rm %{buildroot}%{$python_sitearch}/tables/*.c
-rm %{buildroot}%{$python_sitearch}/tables/tests/*.c
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
-pushd doc
-export PYTHONPATH=%{buildroot}%{python3_sitearch}
-make html
-rm build/html/.buildinfo
-popd
-# manual copy to buildroot so we can deduplicate
-mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
-cp -r doc/build/html %{buildroot}%{_docdir}/%{name}-doc/
-cp -r examples %{buildroot}%{_docdir}/%{name}-doc/
-%fdupes %{buildroot}%{_docdir}/%{name}-doc/
-
+%if %{with test}
 %check
 pushd LICENSES
 export VERBOSE=TRUE
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B -m tables.tests.test_all
-}
+%python_exec -B -m tables.tests.test_all
 popd
+%endif
 
 %post
 %python_install_alternative pttree
@@ -125,6 +150,7 @@ popd
 %python_uninstall_alternative ptdump
 %python_uninstall_alternative pt2to3
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst ANNOUNCE.txt THANKS
 %license LICENSE.txt
@@ -134,11 +160,7 @@ popd
 %python_alternative %{_bindir}/ptrepack
 %python_alternative %{_bindir}/pttree
 %{python_sitearch}/tables/
-%{python_sitearch}/tables-%{version}*-info
-
-%files -n %{name}-doc
-%license LICENSE.txt
-%license LICENSES/*
-%doc %{_docdir}/%{name}-doc/
+%{python_sitearch}/tables-%{version}.dist-info
+%endif
 
 %changelog
