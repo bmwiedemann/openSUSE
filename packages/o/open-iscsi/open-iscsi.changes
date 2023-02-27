@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 25 01:32:02 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Build system: meson builds were ignoring optflags, and other
+  passed in compiler options.
+
+-------------------------------------------------------------------
 Wed Dec 21 22:47:05 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Update iscsid.service so it starts iscsid.socket, if needed
