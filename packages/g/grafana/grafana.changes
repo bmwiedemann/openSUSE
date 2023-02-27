@@ -1269,9 +1269,11 @@ Mon Feb 16 16:45:00 UTC 2023 - marius.kittler@suse.com
 -------------------------------------------------------------------
 Wed Feb 15 08:35:28 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
-- Add 0002-Update-exporter-toolkit-to-version-0.7.3.patch
-  (bsc#1208065, CVE-2022-46146)
-- Require Go 1.19 or newer
+- Fix basic authentication bypass by updating the exporter toolkit
+  to version 0.7.3 (bsc#1208065, CVE-2022-46146).
+- Add:
+  * 0002-Update-exporter-toolkit-to-version-0.7.3.patch
+- Require Go 1.19 or newer (bsc#1208293, CVE-2022-41723)
 
 -------------------------------------------------------------------
 Mon Feb 06 09:12:33 UTC 2023 - witold.bedyk@suse.com
