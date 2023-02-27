@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 03:01:54 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_159.patch for testing under Python 3.11
+- Add BR python-six needed for Leap 13.4 tests
+
+-------------------------------------------------------------------
 Thu Mar 24 11:07:38 UTC 2022 - pgajdos@suse.com
 
 - do not use python-mock for build
