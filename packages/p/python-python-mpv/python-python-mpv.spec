@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           python-python-mpv
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Python interface to the mpv media player
-License:        AGPL-3.0-or-later
+License:        GPL-2.0-or-later OR LGPL-2.1-or-later
 URL:            https://github.com/jaseg/python-mpv
 Source0:        https://files.pythonhosted.org/packages/source/p/python-mpv/python-mpv-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needed to be able to set the proper dependency to the library
 BuildRequires:  mpv-devel
@@ -43,13 +45,17 @@ just like the lua interface does.
 %setup -q -n python-mpv-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%license LICENSE.GPL LICENSE.LGPL
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/mpv.py
+%{python_sitelib}/__pycache__/mpv.cpython*
+%{python_sitelib}/python_mpv-%{version}.dist-info
 
 %changelog

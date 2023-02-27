@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Feb 26 14:44:26 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version v1.0.2
+  * Update license header with dual-license information
+  * Update package metadata
+  * Migrate away from setup.py and use PEP 612-style 
+    pyproject.toml 
+  * Update setup.cfg for new syntax 
+  * Fix typo in repr format string
+  * tests: Add strategic sleeps to reduce likelihood of race 
+    condition during test teardown
+  * Fix package upgrade
+  * Cleanup pipeline
+  * Skip Python 3.7
+  * Add Windows test
+  * Run on Python 3.7 - 3.10
+  * Rename job
+  * Use newer actions
+  * Skip unreliable test in CI
+  * Use xvfb-run to run tests
+  * Upgrade pip
+  * Remove starter
+  * Remove unused variables
+  * Use two blank lines between classes and functions
+  * Comment error prone test
+  * Fix environment variable
+  * Start Xvfb before running tests
+  * Add test workflow
+  * Add requirements file
+  * Remove unused imports
+  * Fix show_text level default parameter
+  * Fix observe_property() docstring 
+  * Fix external subtitles example
+  * Fix typo in function name
+  * Update branch name references
+  * Error for known-incompatible libmpv
+  * Fix license field in setup.py
+- Switch to new license
+
+-------------------------------------------------------------------
 Sun Apr 24 16:53:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.1
