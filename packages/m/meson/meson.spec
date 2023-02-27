@@ -24,13 +24,12 @@
 %define name_ext %{nil}
 %bcond_with test
 %endif
-
-%bcond_with     setuptools
-%bcond_without  mono
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
+%bcond_with     setuptools
+%bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -53,12 +52,12 @@ BuildRequires:  python3-setuptools
 Requires:       python3-setuptools
 %endif
 %if "%{flavor}" != "test"
-BuildArch:      noarch
 Requires:       ninja >= 1.8.2
 Requires:       python3-base >= 3.7
 # meson-gui was last used in openSUSE Leap 42.1.
 Provides:       meson-gui = %{version}
 Obsoletes:      meson-gui < %{version}
+BuildArch:      noarch
 %else
 BuildRequires:  bison
 BuildRequires:  clang
@@ -110,9 +109,9 @@ BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} < 1550
+BuildRequires:  libboost_python-devel
 # Leap / SLE 15.x
 BuildRequires:  python2-PyYAML
-BuildRequires:  libboost_python-devel
 BuildRequires:  python2-devel
 %endif
 %if %{with mono}

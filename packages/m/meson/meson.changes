@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 25 16:14:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- meson 1.0.1:
+  + clang-cl (13) now accepts cpp_std=c++20
+  + a sizable collection of bug fixes
+
+-------------------------------------------------------------------
 Thu Jan  5 04:43:00 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 1.0.0:
