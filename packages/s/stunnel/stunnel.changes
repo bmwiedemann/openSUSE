@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 24 09:09:03 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.68:
+  * Security bugfixes
+    - OpenSSL DLLs updated to version 3.0.8.
+  * New features
+    - Added the new 'CAengine' service-level option
+      to load a trusted CA certificate from an engine.
+    - Added requesting client certificates in server
+      mode with 'CApath' besides 'CAfile'.
+  * Bugfixes
+    - Fixed EWOULDBLOCK errors in protocol negotiation.
+    - Fixed handling TLS errors in protocol negotiation.
+    - Prevented following fatal TLS alerts with TCP resets.
+    - Improved OpenSSL initialization on WIN32.
+    - Improved testing suite stability.
+    - Improved file read performance.
+    - Improved logging performance.
+
+-------------------------------------------------------------------
 Tue Nov  1 19:41:16 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 5.67
