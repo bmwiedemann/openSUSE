@@ -1,7 +1,7 @@
 #
 # spec file for package zola
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           zola
-Version:        0.16.1
+Version:        0.17.1
 Release:        0
 Summary:        Fast static site generator
 License:        MIT
 URL:            https://github.com/getzola/zola
-Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  libgcc_s1
 BuildRequires:  pkg-config
+BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -85,9 +86,10 @@ export RUSTC_BOOTSTRAP=1
 %endif
 
 %{cargo_install}
-install -Dm 0644 completions/%{name}.bash -t %{buildroot}%{_datadir}/bash-completion/completions/
-install -Dm 0644 completions/%{name}.fish -t %{buildroot}%{_datadir}/fish/vendor_completions.d/
-install -Dm 0644 completions/_%{name} -t %{buildroot}%{_datadir}/zsh/site-functions/
+export PATH=$PATH:%{buildroot}%{_bindir}
+%{name} completion bash | install -Dm 0644 /dev/stdin %{buildroot}%{_datadir}/bash-completion/completions/%{name}.bash
+%{name} completion fish | install -Dm 0644 /dev/stdin %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+%{name} completion zsh  | install -Dm 0644 /dev/stdin %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
@@ -114,22 +116,5 @@ export RUSTC_BOOTSTRAP=1
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_zola
-
-%files bash-completion
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/zola.bash
-
-%files fish-completion
-%dir %{_datadir}/fish
-%dir %{_datadir}/fish/vendor_completions.d
-%{_datadir}/fish/vendor_completions.d/zola.fish
-
-%files zsh-completion
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_zola
-
-%doc README.md
 
 %changelog

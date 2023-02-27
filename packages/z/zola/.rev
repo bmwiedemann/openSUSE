@@ -42,4 +42,118 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1010932</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0d40b8c3f13adcd6bce451a66b93185</srcmd5>
+    <version>0.17.1</version>
+    <time>1677502466</time>
+    <user>dimstar_suse</user>
+    <comment>I apologize for the confusion. Here is the new changelog.
+
+- Increase memory size to fix &quot;Out of memory error&quot; during builds
+- Increase disk size to fix &quot;No space left on device&quot; during builds
+- Update to version 0.17.1:
+  * fix `zola serve` not  respecting `preserve_dotfiles_in_output` (#2113)
+  * Pass section.generate_feed
+  * Fix colocated assets in content directory
+  * Fix typo in pages-sections.md (#2115)
+- Generate shell completions through zola binary in specfile.
+- Update to version 0.17.0:
+  * Update changelog &amp; test-case
+  * Allow external links to start with &quot;www.*&quot; (#2100)
+  * Remove println
+  * cargo fmt
+  * Add test for #1566
+  * Downgrade mockito to not raise MSRV
+  * Update changelog &amp; mockito
+  * feat: External URL redirect (#2080)
+  * Page and config authors (#2024) (#2092)
+  * Try to disable uninlined format lint
+  * Update toml lib
+  * Bump Rust CI version
+  * clippy
+  * Procimage refactor (#2086)
+  * Removed faulty Windows-specific path check/conversion. Fixes #2076. (#2088)
+  * Errors on empty taxonomies term
+  * Filter out temp files or with no extensions from colocated assets
+  * Handle pages named index.md in sections
+  * Revert &quot;Use reqwest rustls-tls&quot;
+  * Remove built-in shortcodes
+  * Use reqwest rustls-tls
+  * Add plain text syntax alias to text
+  * fmt + changelog + updates
+  * Reduced cachebust fingerprint to be more reasonable (#2074)
+  * Remove code blocks from search index
+  * Update changelog
+  * Use macro for LanguageOptions::merge
+  * Merge default language data with section language data (#2039)
+  * Update base64
+  * Update changelog
+  * Add upgrade guide for Sass
+  * libsass -&gt; grass is a breaking change
+  * Clippy + 1.63
+  * Fmt + change min version
+  * Replace libsass by grass
+  * Update some deps
+  * Expose `markdown` config property to templates (#2052)
+  * Add details in the doc on CommonMark extension (#2034)
+  * Small update to the docs for get_url (#2033)
+  * add preserve_dotfiles_in_output configuration option (#1985)
+  * Fix needless_borrow warnings
+  * Add clippy to CI
+  * markdown: Fix clippy warnings
+  * imageproc: Fix clippy warning
+  * content: Fix clippy warnings
+  * templates: Fix clippy warning
+  * Site: fix clippy warnings
+  * Fix clippy::manual_retain
+  * Fix clippy::derive_partial_eq_without_eq
+  * Cargo fmt (#2009)
+  * Filter more than 1 footnote in summary (#2017)
+  * Search json index (#1998)
+  * Do not overfilter HTML when removing footnotes (#2008)
+  * Fix no-port-append default
+  * Add new flag 'port_append' to give the ability to remove port from base url (#2003)
+  * Fix current_url in taxonomy term (#2000)
+  * Fix test
+  * Minify embedded css and js with additional lib flags (#1922)
+  * Update changelog
+  * add get_hash function (#1962)
+  * Use BufWriter in imageproc (#1996)
+  * Handle colocated links to assets
+  * Update deps
+  * Add flag to override prompt for existing dir (#1986)
+  * Tera date-locale feature (#1978)
+  * Add sorting by slug (#1926)
+  * Simplify taxonomy term struct
+  * Get term fn (#1964)
+  * Add slugify.paths_keep_dates option. Update docs.
+  * Add completion subcommand (#1968)
+  * Imporved is_colocated_asset_links (#1972)
+  * Metainfo: Add 0.16.1
+  * Next version
+  * Update `zola-deploy-action` version on docs (#2098)
+  * Fix typo
+  * document installing via github actions (#2097)
+  * Document the render field on taxonomies (#2094)
+  * Fix erroring suggestion in docs (#2087)
+  * Best way to install Zola on Fedora now is COPR (#2070)
+  * Update themes gallery (#2047)
+  * docs: rebrand Layer0 to Edgio (#2068)
+  * Moved source uwe-arzt.de from github to codeberg (#2062)
+  * Fix typos (#2056)
+  * documentation: Add pkgsrc. (#1812)
+  * Update creating-a-theme.md (#2045)
+  * add: more example websites (#2023)
+  * Update themes gallery (#2038)
+  * Fixed default_language typo (#2040)
+  * Update Shortcodes doc to add details on Macros for templates (#2035)
+  * Update themes gallery (#2014)
+  * update version of zola-deploy-action (#2012)
+  * Quotation mark bug fix (#2005)
+  * Update themes gallery (#1999)
+  * docs: github action version updates (#1977)
+  * Update themes gallery (#1971)
+</comment>
+    <requestid>1067934</requestid>
+  </revision>
 </revisionlist>
