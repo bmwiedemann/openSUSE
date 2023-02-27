@@ -1,7 +1,7 @@
 #
 # spec file for package konkretcmpi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,20 +115,19 @@ Group:          Development/Libraries/Python
 %if 0%{?suse_version}
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
-%{!?py_requires: %define py_requires Requires: python}
 %if %{python3}
-%{!?py_requires: %define py_requires Requires: python3}
+%{!?py3_requires: %define py3_requires Requires: python3}
+%{py3_requires}
 %else
 %{!?py_requires: %define py_requires Requires: python}
-%endif
 %{py_requires}
+%endif
 %else
 Requires:       python2
 %endif
 
 %description %{pythonpackagename}
 This package contains python binding for konkretcmpi.
-
 
 %prep
 # Untar the sources.
@@ -195,8 +194,8 @@ rm -rf $RPM_BUILD_ROOT/usr/lib*/libkonkret.la
 
 %files devel
 %defattr(-,root,root)
-%dir %{_includedir}/konkret  
-%{_includedir}/konkret/*.h  
+%dir %{_includedir}/konkret
+%{_includedir}/konkret/*.h
 %{_libdir}/libkonkret.so
 %{_libdir}/libkonkretmof.so
 %{_bindir}/konkret

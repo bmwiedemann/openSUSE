@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 19 13:48:53 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Fix build for 15.4, define py3_requires in .spec
+
+-------------------------------------------------------------------
 Fri May  1 10:23:49 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - build -python3 subpackage for openSUSE Leap 15 and later.
