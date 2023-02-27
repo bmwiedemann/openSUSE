@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mkdocs
 Version:        1.3.1
 Release:        0
@@ -25,6 +24,7 @@ Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
 URL:            https://www.mkdocs.org
 Source:         https://github.com/mkdocs/mkdocs/archive/%{version}.tar.gz#/mkdocs-%{version}.tar.gz
+BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module MarkupSafe}
@@ -96,14 +96,13 @@ for filetype in eot svg ttf woff woff2; do
 done
 
 # inconsistent permissions prohibited fdupes from being effective
-find "%{buildroot}" -type f "(" -name "*.eot" -o -name "*.ttf" -o \
+find %{buildroot} -type f "(" -name "*.eot" -o -name "*.ttf" -o \
 	-name "*.woff" ")" -exec chmod a-x {} +
 
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tries to download stuff at runtime
-#tox
+%pyunittest discover -p '*tests.py' -v mkdocs
 
 %post
 %python_install_alternative mkdocs
@@ -115,6 +114,7 @@ find "%{buildroot}" -type f "(" -name "*.eot" -o -name "*.ttf" -o \
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/mkdocs
-%{python_sitelib}/*
+%{python_sitelib}/mkdocs
+%{python_sitelib}/mkdocs-%{version}*-info
 
 %changelog

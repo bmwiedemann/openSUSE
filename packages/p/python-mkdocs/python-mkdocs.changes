@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:13:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Enable tests
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Sun Sep  4 15:03:14 UTC 2022 - Elisei Roca <eroca@mailbox.org>
 
 - fix fontawesome unbundling for Leap
