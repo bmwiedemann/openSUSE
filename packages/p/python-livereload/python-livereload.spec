@@ -1,7 +1,7 @@
 #
 # spec file for package python-livereload
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-livereload
 Version:        2.6.3
 Release:        0
@@ -25,10 +24,11 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://livereload.readthedocs.io/en/latest/
 Source:         https://github.com/lepture/python-livereload/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
@@ -42,16 +42,16 @@ BuildArch:      noarch
 Reload webpages on changes, without hitting refresh in your browser.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/livereload
 
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # https://github.com/lepture/python-livereload/issues/200
@@ -68,6 +68,6 @@ Reload webpages on changes, without hitting refresh in your browser.
 %license LICENSE
 %python_alternative %{_bindir}/livereload
 %{python_sitelib}/livereload/
-%{python_sitelib}/livereload-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/livereload-%{version}*-info
 
 %changelog

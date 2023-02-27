@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:45:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Mon Nov  8 11:38:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six dependency for tests 
