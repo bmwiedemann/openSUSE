@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:44:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add ``Requires: this-is-only-for-build-envs`` [boo#1208652]
+
+-------------------------------------------------------------------
 Tue Jan 31 16:03:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-vk-video-decoding.patch to resolve build failure

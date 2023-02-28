@@ -342,4 +342,41 @@
     <comment></comment>
     <requestid>1029810</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d0d340ba598e0f5496ab0fd050d5b82</srcmd5>
+    <version>2.0.0</version>
+    <time>1677584919</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0 (jsc#SLE-23879)
+  Breaking Changes:
+  * insecure-skip-tlog-verify: rename and adapt the cert expiration check (#2620)
+  * Deprecate --certificate-email flag. Make --certificate-identity and -… (#2411)
+  Enhancements:
+  * Change go module name to github.com/sigstore/cosign/v2 for Cosign 2.0 (#2544)
+  * Allow users to pass in a path for the --identity-token flag (#2538)
+  * Breaking change: Respect tlog-upload=false, default to true (#2505)
+  * Support outputing a certificate without uploading to the tlog (#2506)
+  * Attestation/Blob signing and verification using a RFC3161 time-stamping server (#2464)
+  * respect tlog-upload flag with TSA (#2474)
+  * Better feedback if specifying incompatible argument on cosign sign --attachment (#2449)
+  * Support TSA and Rekor verifications (#2463)
+  * add support for tsa signing and verification of images (#2460)
+  * cosign policy sign: remove experimental flag and make keyless signing default (#2459)
+  * Remove experimental mode from cosign attest and verify-attestation (#2458)
+  * Remove experimental mode from sign-blob and verify-blob (#2457)
+  * Add --offline flag to force offline verification (#2427)
+  * Air gap support (#2299)
+  * Breaking change: Change SCT verification behavior to default to enforcement (#2400)
+  * Breaking change: remove --force flag from sign and attest and rely on --yes flag to skip confirmation (#2399)
+  * Breaking change: replace --no-tlog-upload flag with --tlog-upload flag (#2397)
+  * Remove experimental flag from cosign sign and cosign verify (#2387)
+  * verify: remove SIGSTORE_TRUST_REKOR_API_PUBLIC_KEY test env var for using a key from rekor's API (#2362)
+  * Add warning to use digest instead of tags to other cosign commands (#2650)
+  * Fix up UI messages (#2629)
+  * Remove hardcoded Fulcio from output (#2621)
+  * Fix missing privacy statement, print in multiple locations (#2622)
+  * feat: allows custom key names for import-key-pair (#2587)
+  * feat: support keyless verification for verify-blob-attestation (#2525) (forwarded request 1067997 from msmeissn)</comment>
+    <requestid>1067999</requestid>
+  </revision>
 </revisionlist>

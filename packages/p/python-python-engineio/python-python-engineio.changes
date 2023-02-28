@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:05:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11,
+  gh#miguelgrinberg/python-engineio@ac3911356fbe
+
+-------------------------------------------------------------------
 Thu Oct  6 22:22:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 4.3.4 

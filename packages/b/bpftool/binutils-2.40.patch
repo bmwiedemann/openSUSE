@@ -1,13 +1,13 @@
 diff --git a/tools/bpf/bpftool/Makefile b/tools/bpf/bpftool/Makefile
-index 4a95c017ad4c..9a4851df3276 100644
+index f610e184ce02..afef9c65614e 100644
 --- a/tools/bpf/bpftool/Makefile
 +++ b/tools/bpf/bpftool/Makefile
-@@ -139,6 +139,8 @@ SRCS = $(filter-out $(BFD_SRCS),$(wildcard *.c))
- 
- ifeq ($(feature-libbfd),1)
-   LIBS += -lbfd -ldl -lopcodes
-+else ifeq ($(feature-libbfd-liberty-sframe),1)
-+  LIBS += -lbfd -ldl -lopcodes -liberty -lsframe
- else ifeq ($(feature-libbfd-liberty),1)
-   LIBS += -lbfd -ldl -lopcodes -liberty
- else ifeq ($(feature-libbfd-liberty-z),1)
+@@ -154,6 +154,8 @@ else
+   # Fall back on libbfd
+   ifeq ($(feature-libbfd),1)
+     LIBS += -lbfd -ldl -lopcodes
++  else ifeq ($(feature-libbfd-liberty-sframe),1)
++    LIBS += -lbfd -ldl -lopcodes -liberty -lsframe
+   else ifeq ($(feature-libbfd-liberty),1)
+     LIBS += -lbfd -ldl -lopcodes -liberty
+   else ifeq ($(feature-libbfd-liberty-z),1)

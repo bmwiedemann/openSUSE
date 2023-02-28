@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 24 12:12:42 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix build issue with Linux 6.2's headers (bsc#1208657) by dropping
+  linux-user-add-more-compat-ioctl-definit.patch and adding
+  Revert-linux-user-fix-compat-with-glibc-.patch
+- Patches meson-enforce-a-minimum-Linux-kernel-hea.patch and
+  linux-user-drop-conditionals-for-obsolet.patch were added
+  as downstream patches as they were part of a series, but
+  they never made it upstream, so we don't want them here
+  either
+* Patches dropped:
+  linux-user-add-more-compat-ioctl-definit.patch
+  linux-user-drop-conditionals-for-obsolet.patch
+  meson-enforce-a-minimum-Linux-kernel-hea.patch
+* Patches added:
+  Revert-linux-user-fix-compat-with-glibc-.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 11:09:14 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fixes bsc#1197653, CVE-2022-1050
+* Patches added:
+  block-Handle-curl-7.55.0-7.85.0-version-.patch
+  hw-pvrdma-Protect-against-buggy-or-malic.patch
+
+-------------------------------------------------------------------
 Mon Feb 13 10:28:53 UTC 2023 - Li Zhang <li.zhang@suse.com>
 
 - Fixes: jsc#PED-1716  Add S390 features from IBM requirements

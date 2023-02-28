@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 25 20:36:50 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- change to %bcond conditional build dependencies
+
+-------------------------------------------------------------------
 Thu Feb 16 09:00:52 UTC 2023 - pgajdos@suse.com
 
 - version update to 8.1.16
   * This is a security release that addresses CVE-2023-0567,
     CVE-2023-0568, and CVE-2023-0662.
+    ([bsc#1208366], [bsc#1208367], [bsc#1208388])
   * https://www.php.net/ChangeLog-8.php#8.1.16
 
 -------------------------------------------------------------------

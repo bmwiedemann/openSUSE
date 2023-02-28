@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 22:47:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.24
+  * Fix: Unable to import Local Linux Machine template
+  * Fix multiple charting and display issues
+  * Compatibility changes for SNMP under PHP 8.2, and other PHP
+    compatibility updates
+  * Fix multiple issues editing settings
+  * timeout fixes for Basic Auth
+  * multiple data poller bug fixes
+  
+-------------------------------------------------------------------
 Mon Jan  2 17:48:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.23, providing security fixes, feature improvements and

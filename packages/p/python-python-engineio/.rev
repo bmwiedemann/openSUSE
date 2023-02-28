@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1008713</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2617f851293f75753635d85b5290e946</srcmd5>
+    <version>4.3.4</version>
+    <time>1677584915</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11,
+  gh#miguelgrinberg/python-engineio@ac3911356fbe
+</comment>
+    <requestid>1067992</requestid>
+  </revision>
 </revisionlist>

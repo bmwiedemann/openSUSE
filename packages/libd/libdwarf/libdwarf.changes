@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 27 21:29:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  Fixes for Denial Of Service (possible libdwarf crash):
+  * The dealloc required for dwarf_offset_list() was incorrect, 
+    possibly leading to a crash.
+  * The function prototype for dwarf_dietype_offset() changed so
+    it can work correctly on DWARF4 objects.
+  * A memory leak from dwarf_load_loclists() has been fixed.
+  * The function dwarf_get_pubtypes() changed, Dwarf_Type no longer
+    exists, correcting a library design mistake made in 1993.
+    The function applied to DWARF3 and DWARF4 objects.
+  * The set of functions using Dwarf_Type are gone, use Dwarf_Global
+    instead.  An object with DW_FORM_strx3 (DWARF5) could result in
+    the library either crashing or returning an inappropriate error.
+    DW_FORM_strx3 is now handled
+  * https://newreleases.io/github/davea42/libdwarf-code?version=v0.6.0
+
+-------------------------------------------------------------------
 Fri Dec  2 19:23:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:

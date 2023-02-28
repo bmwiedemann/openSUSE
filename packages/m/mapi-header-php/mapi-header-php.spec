@@ -19,7 +19,7 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        1.0.13.f8f3255
+Version:        1.1.0.70e984f
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later
@@ -39,9 +39,7 @@ applications from the groupware suite.
 %build
 
 %install
-b=%buildroot
-mkdir -p "$b/%_datadir/php-mapi"
-cp -av *.php "$b/%_datadir/php-mapi/"
+%make_install
 
 %files
 %_datadir/php-mapi/

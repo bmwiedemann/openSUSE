@@ -1,7 +1,7 @@
 #
 # spec file for package brotli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Buschmann <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:28:13 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 8.7.0:
+  * Bump dependencies
+  * Add flag --no-require-git to always respect gitignore files
+  * Skip an executable test if running as root
+  * updates for windows platform
+  * Fix logic for when to read global ignore file
+  * Add Upcoming release to changelog
+
+-------------------------------------------------------------------
 Sat Jan 14 17:09:47 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 8.6.0:

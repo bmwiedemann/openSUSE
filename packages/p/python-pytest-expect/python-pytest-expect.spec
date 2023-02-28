@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-expect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-expect
 Version:        1.1.0
 Release:        0
@@ -54,12 +53,12 @@ cp %{SOURCE1} .
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pytest_expect
-%{python_sitelib}/pytest_expect-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pytest_expect-%{version}*-info
 
 %changelog

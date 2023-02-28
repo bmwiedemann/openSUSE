@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 13:10:33 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-Do-not-always-expect-multishot-recv-to-stop-posting-.patch
+  fixes tests with kernel 6.2
+
+-------------------------------------------------------------------
 Sat Jan 21 09:19:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-test-helpers-fix-socket-length-type.patch 

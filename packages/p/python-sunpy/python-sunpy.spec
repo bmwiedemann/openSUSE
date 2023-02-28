@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-sunpy
-Version:        4.1.0
+Version:        4.1.3
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -26,8 +26,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{v
 Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
-# PATCH-FIX-UPSTREAM sunpy-pr6662-np1.24.patch gh#sunpy/sunpy#6662
-Patch2:         sunpy-pr6662-np1.24.patch
+# PATCH-FIX-UPSTREAM python-311.patch gh#sunpy/sunpy#6512
+Patch2:         python-311.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 4.2.1}
 BuildRequires:  %{python_module base => 3.8}

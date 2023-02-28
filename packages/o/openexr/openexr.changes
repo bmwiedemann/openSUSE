@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 12:22:47 UTC 2023 - pgajdos@suse.com
+
+- fltk not needed (openexr-3.1.5/ASWF/tsc-meetings/2021-01-14.md)
+
+-------------------------------------------------------------------
 Thu Dec  8 14:07:02 UTC 2022 - pgajdos@suse.com
 
 - skip testMultiTiledPartThreading for ppc64le [bsc#1205885]

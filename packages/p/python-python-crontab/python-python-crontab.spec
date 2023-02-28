@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crontab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-python-crontab
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        Python Crontab API
 License:        LGPL-3.0-only
@@ -41,9 +39,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module testsuite if %python-base >= 3}
 BuildRequires:  cronie
-%if %{with python2}
-BuildRequires:  python2-devel
-%endif
 # /SECTION
 %python_subpackages
 
@@ -73,6 +68,10 @@ export PATH=$PWD/build/bin:$PATH
 %files %{python_files}
 %doc README.rst
 %license COPYING AUTHORS
-%{python_sitelib}/*
+%{python_sitelib}/cronlog.py
+%{python_sitelib}/crontab.py
+%{python_sitelib}/crontabs.py
+%{python_sitelib}/python_crontab-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

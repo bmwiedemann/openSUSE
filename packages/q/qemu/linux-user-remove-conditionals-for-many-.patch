@@ -5,9 +5,6 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Git-commit: 0000000000000000000000000000000000000000
-Refereces: bsc#1204001
-
 These ioctls have been defined in linux/fs.h for a long time
 
   * BLKGETSIZE64 - <2.6.12 (linux.git epoch)
@@ -27,7 +24,9 @@ and when building with latest glibc, we'll see compat definitions
 in syscall.c anyway thanks to the previous patch. Thus we can
 assume they always exist and remove the conditional checks.
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com
+(cherry picked from commit ed98cdecf8dabce137f693641777503112d884b3)
+Resolves: bsc#1204001
 Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
  linux-user/ioctls.h | 24 ------------------------

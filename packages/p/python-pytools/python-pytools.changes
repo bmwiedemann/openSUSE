@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Feb 21 09:32:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 2022.1.14:
+  * add get_graph_dot_code and show_dot (#151)
+  * Make GraphT a parametric type alias
+  * graph: create GraphT (#166)
+  * graph: add is_connected (#163)
+  * graph-doc: change CycleError to autoexception
+  * add pytest_raises_on_rank (#162)
+- v2022.1.13
+  * Move Py compat target to 3.8 (closes gh-160)
+  * graph: more mypy annotations
+  * graph: small fixes
+  * convergence: small mypy fixes (#157)
+  * Add validate_graph (#155)
+  * Add reverse_graph
+  * Stop using Self type for the moment
+  * add strtobool() (#150)
+  * Bump versions of various github actions components
+  * UniqueNameGenerator: add documentation (#102)
+- v2022.1.12
+  * Fix type annotation of Record-ish.__slots__; it's a ClassVar
+  * pdict: When building dataclass hash, include type
+- v2022.1.11
+  * pdict: Test support for enums and dataclasses
+  * pdict: Support dataclasses
+  * pdict: allow caching key on frozen instances
+  * persistent_dict: simplify logic using getattr()
+- v2022.1.10
+  * Support Enum values in PersistentDict
+  * use ParamSpec to annotate memoization decorators
+  * Install numpy for pylint runs after hard numpy dep drop
+- v2022.1.9
+  * Drop deprecated memoize_method_with_uncached, fix test
+  * Remove deprecated use of Taggable.copy in test_tag
+  * Make numpy dependency optional
+  * Fix deprecated reference to np.float
+  * Include CITATION.cff in releases
+  * Fix CITATION.cff, add validation CI
+- v2022.1.8
+  * add IgnoredForEqualityTag (#134)
+  * Complete author list in CITATION.cff
+  * Add Zenodo badge, citation info
+- v2022.1.7
+  * UniqueNameGenerator.add_name(s?): new argument `existing_ok`
+- v2022.1.6
+  * Record.__eq__: early exit for identical instances
+- v2022.1.5
+  * Tighten typing_extensions version requirement
+  * ImmutableRecordWithoutPickling.__hash__: tolerate _cached_hash attr disappearing
+- v2022.1.4
+  * Fix type annotation of Taggable.tags_of_type
+  * use math.perm and math.comb if available
+- v2022.1.3
+  * Fix type names in pytools.tag
+  * Placate flake8-bugbear B020
+  * Drop curl insecure (-k) flags from CI, switch ci-support URLs
+  * Downstream CI: use ci-support, add Gitlab
+- v2022.1.2
+  * PersistentDict: add generic KeyBuilder.update_for_type
+- v2022.1.1
+  * Taggable: Do not force copy for tag setting
+  * restrucurte lock file timeout
+
+-------------------------------------------------------------------
 Tue Feb 15 09:04:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.1:

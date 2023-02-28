@@ -692,4 +692,12 @@
     <comment>- Update to kernel headers 6.1 (forwarded request 1042444 from Andreas_Schwab)</comment>
     <requestid>1042445</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>b4cd781329a76a450a557092c4d06554</srcmd5>
+    <version>6.2</version>
+    <time>1677584864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 6.2 (forwarded request 1066862 from Andreas_Schwab)</comment>
+    <requestid>1066863</requestid>
+  </revision>
 </revisionlist>

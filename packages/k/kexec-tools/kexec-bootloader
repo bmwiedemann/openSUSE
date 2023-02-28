@@ -193,7 +193,7 @@ if ($initrd && ! -f $initrd) {
 my $cmd = "kexec";
 
 # append image
-$cmd .= " -l '" . $image . "'";
+$cmd .= " -a -l '" . $image . "'";
 
 # append initrd if available
 if ($initrd) {

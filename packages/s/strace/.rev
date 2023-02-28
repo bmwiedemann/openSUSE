@@ -1407,4 +1407,19 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.1. (forwarded request 1042510 from AndreasSchwab)</comment>
     <requestid>1042511</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>1448915d1153cd88004ede5e4ef8c532</srcmd5>
+    <version>6.2</version>
+    <time>1677584890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 6.2
+  * Implemented collision resolution for overlapping ioctl commands
+    from tty and snd subsystems.
+  * Implemented decoding of IFLA_BRPORT_MAB and IFLA_DEVLINK_PORT
+    netlink attributes.
+  * Updated lists of ALG_*, BPF_*, IFLA_*, KEY_*, KVM_*, LANDLOCK_*,
+    MEMBARRIER_*, NFT_*, NTF_*, and V4L2_* constants.
+  * Updated lists of ioctl commands from Linux 6.2. (forwarded request 1067932 from Andreas_Schwab)</comment>
+    <requestid>1067933</requestid>
+  </revision>
 </revisionlist>

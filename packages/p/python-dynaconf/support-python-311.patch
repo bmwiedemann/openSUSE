@@ -1,0 +1,158 @@
+From 6ff2192ef2dfd0e29c6889cc248353a57e3293dc Mon Sep 17 00:00:00 2001
+From: Bruno Rocha <rochacbruno@gmail.com>
+Date: Mon, 7 Nov 2022 18:36:05 +0000
+Subject: [PATCH] Add Python 3.11 to CI
+
+Thanks @Riverfount
+---
+ .github/workflows/main.yml | 16 ++++++++--------
+ dynaconf/base.py           |  4 ++--
+ setup.py                   |  5 ++---
+ tests/test_base.py         | 10 ++++------
+ 4 files changed, 16 insertions(+), 19 deletions(-)
+
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index d512c15f..fe399891 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -36,7 +36,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.9", "3.10"]
++        python-version: ["3.8", "3.9", "3.10", "3.11"]
+         os: [ubuntu-latest, macos-latest, windows-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -61,7 +61,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [ubuntu-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -104,7 +104,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [macos-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -126,7 +126,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [ubuntu-latest, macos-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -146,7 +146,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [windows-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -167,7 +167,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [windows-latest]
+     runs-on: ${{ matrix.os }}
+     steps:
+@@ -188,7 +188,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [ubuntu-latest]
+     runs-on: ${{ matrix.os }}
+     services:
+@@ -213,7 +213,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.8", "3.10"]
++        python-version: ["3.8", "3.10", "3.11"]
+         os: [ubuntu-latest]
+     runs-on: ${{ matrix.os }}
+     services:
+diff --git a/dynaconf/base.py b/dynaconf/base.py
+index 2858b549..15f3df46 100644
+--- a/dynaconf/base.py
++++ b/dynaconf/base.py
+@@ -753,8 +753,8 @@ def setenv(self, env=None, clean=True, silent=True, filename=None):
+         """
+         env = env or self.ENV_FOR_DYNACONF
+ 
+-        if not isinstance(env, str):
+-            raise AttributeError("env should be a string")
++        if not isinstance(env, str) or "_" in env or " " in env:
++            raise ValueError("env should be a string without _ or spaces")
+ 
+         env = env.upper()
+ 
+diff --git a/setup.py b/setup.py
+index af82a877..223653b5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,8 +1,6 @@
+ from __future__ import annotations
+ 
+-import io
+ import os
+-import sys
+ 
+ from setuptools import find_packages
+ from setuptools import setup
+@@ -83,7 +81,7 @@ def read(*names, **kwargs):
+         "all": ["redis", "ruamel.yaml", "configobj", "hvac"],
+         "test": test_requirements,
+     },
+-    python_requires=">=3.7",
++    python_requires=">=3.8",
+     entry_points={"console_scripts": ["dynaconf=dynaconf.cli:main"]},
+     setup_requires=["setuptools>=38.6.0"],
+     classifiers=[
+@@ -100,6 +98,7 @@ def read(*names, **kwargs):
+         "Programming Language :: Python :: 3.8",
+         "Programming Language :: Python :: 3.9",
+         "Programming Language :: Python :: 3.10",
++        "Programming Language :: Python :: 3.11",
+         "Topic :: Utilities",
+         "Topic :: Software Development :: Libraries",
+         "Topic :: Software Development :: Libraries :: Python Modules",
+diff --git a/tests/test_base.py b/tests/test_base.py
+index ae1fe9b9..18363ba6 100644
+--- a/tests/test_base.py
++++ b/tests/test_base.py
+@@ -204,15 +204,13 @@ def test_as_json(settings):
+ 
+ 
+ def test_env_should_be_string(settings):
+-    with pytest.raises(AttributeError):
+-        with settings.setenv(123456):
+-            pass
++    with pytest.raises(ValueError):
++        settings.setenv(123456)
+ 
+ 
+ def test_env_should_not_have_underline(settings):
+-    with pytest.raises(AttributeError):
+-        with settings.setenv("COOL_env"):
+-            pass
++    with pytest.raises(ValueError):
++        settings.setenv("COOL_env")
+ 
+ 
+ def test_path_for(settings):

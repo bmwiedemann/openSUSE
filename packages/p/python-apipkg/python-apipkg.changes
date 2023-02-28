@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:20:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Wed Nov 30 17:05:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Generate the _version.py file in %prep to remove completely hatch-vcs from

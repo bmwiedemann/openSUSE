@@ -22,27 +22,39 @@
 %define psuffix -test-py38
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
 %define skip_python38 1
 %define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
+%define skip_python311 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py311"
+%define psuffix -test-py311
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python310 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
+# Numba is not ready for python 3.11 yet gh#numba/numba#8304
+%define skip_python311 1
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.1.1
+Version:        2023.2.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -361,8 +373,8 @@ mv dask dask.moved
 donttest="(test_datasets and test_deterministic)"
 # upstreams test if their ci is up to date, irrelevant for obs
 donttest+=" or test_development_guidelines_matches_ci"
-# requires otherwise optional pyarrow (not available on TW)
-donttest+=" or (test_parquet and (test_chunksize or test_extra_file))"
+# requires otherwise optional pyarrow (not available on TW) --  https://github.com/dask/dask/issues/9975
+donttest+=" or (test_parquet and (test_chunksize or test_extra_file or (test_select_filtered_column and fastparquet)))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8620
   donttest+=" or test_query_with_meta"
@@ -375,9 +387,6 @@ donttest+=" or (test_threaded and test_interrupt)"
 donttest+=" or test_select_from_select"
 # tries to get an IP address
 donttest+=" or test_map_partitions_df_input"
-# more nullcast pandas warnings since numpy 1.24 (see also gh#dask/dask#9793)
-donttest+=" or (test_array_core and test_setitem_extended_API_2d_mask)"
-donttest+=" or (test_arithmetics_reduction and test_datetime_std)"
 %pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 

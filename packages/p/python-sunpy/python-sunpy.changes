@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Feb 27 12:48:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove patch sunpy-pr6662-np1.24.patch
+- Add patch python-311.patch to support python 3.11, gh#sunpy/sunpy#6512
+- Update to v4.1.3
+  * Backport PR #6740 on branch 4.1 (Exclude scipy==1.10.0 in deps) by
+    @meeseeksmachine in #6746
+  * Backport PR #6749 on branch 4.1 (Unpin and update database for
+    SQLA 2.0) by @meeseeksmachine in #6750
+  * Backport PR #6731 on branch 4.1 (fig-devdeps : Have to add a unit
+    to lon.coord_wrap) by @meeseeksmachine in #6753
+  * Backport PR #6711 on branch 4.1 (Raise error if downloader for
+    cache fails) by @meeseeksmachine in #6755
+  * Backport PR #6725 on branch 4.1 (add unit detection for XRT data)
+    by @meeseeksmachine in #6761
+  * Backport PR #6737 on branch 4.1 (Updating the GOES-XRS baseurl
+    following change on noaa side) by @meeseeksmachine in #6762
+  * Backport PR #6710 on branch 4.1 (Fix init issue for JP2 HMI images
+    from helioveiwer) by @meeseeksmachine in #6765
+  * Backport PR #6648 on branch 4.1 (Fix draw_quadrangle() so that it
+    accepts frames with data) by @meeseeksmachine in #6777
+- v4.1.2
+  * Backport PR #6694 on branch 4.1 (pin sqlalchemy<2.0 and ignore
+    warning for now) by @meeseeksmachine in #6697
+  * Backport PR #6693 on branch 4.1 (detect gzipped-FITS files by
+    magic-bytes) by @meeseeksmachine in #6700
+  * Backport PR #6702 on branch 4.1 (fix the extremely minor issue in
+    Fido docs) by @meeseeksmachine in #6704
+  * Backport PR #6712 on branch 4.1 (Add changelog entry for
+    sqlalchemy pin) by @meeseeksmachine in #6714
+  * Backport PR #6728 on branch 4.1 (Fix HISTORY key in test maps
+    created from header files) by @meeseeksmachine in #6730
+- v4.1.1
+  * Added three tutorials which replicate ~sunpy.map.CompositeMap
+    functionality
+    (sphx_glr_generated_gallery_plotting_AIA_HMI_composite.py,
+    sphx_glr_generated_gallery_plotting_masked_composite_plot.py,
+    sphx_glr_generated_gallery_plotting_three_map_composite.py). A
+    fourth tutorial
+    (sphx_glr_generated_gallery_plotting_rgb_composite.py)
+    demonstrates how to create an RGB image with three different maps.
+    (#6459)
+  * Fixed the incorrect calculation in
+    ~sunpy.map.header_helper.make_fitswcs_header of the rotation
+    matrix from a rotation angle when the pixels are non-square.
+    (#6597)
+  * Fixed an issue with loading old EIT fits files with sunpy.map.Map
+    where the date could not be parsed. (#6605)
+  * Added sunpy.map.PixelPair to the reference documentation. (#6620)
+
+-------------------------------------------------------------------
 Sat Dec 24 10:50:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add sunpy-pr6662-np1.24.patch gh#sunpy/sunpy#6662

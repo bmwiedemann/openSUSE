@@ -21,18 +21,17 @@
 %define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
 %endif
 Name:           xf86-video-amdgpu
-Version:        22.0.0
+Version:        23.0.0
 Release:        0
 Summary:        AMDGPU video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source:         https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.gz
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.gz.sig
+Source:         https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
-Patch2:         U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -65,7 +64,6 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

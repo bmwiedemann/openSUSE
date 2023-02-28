@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-crfsuite
-Version:        0.9.7
+Version:        0.9.9
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
 Source:         https://files.pythonhosted.org/packages/source/p/python-crfsuite/python-crfsuite-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#scrapinghub/python-crfsuite#c4c8b879fdf0cea493aedcc494321e35746417d1
-Patch0:         rebuild-extension.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -57,6 +54,7 @@ mv bak pycrfsuite
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pycrfsuite
+%{python_sitearch}/python_crfsuite-%{version}*-info
 
 %changelog

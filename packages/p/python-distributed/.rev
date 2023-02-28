@@ -767,4 +767,21 @@
     <comment></comment>
     <requestid>1063411</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c78bd4a37734f6c26f374ecea9b6ccdf</srcmd5>
+    <version>2023.2.0</version>
+    <time>1677584977</time>
+    <user>dimstar_suse</user>
+    <comment>HAS TO TOGETHER WITH SR#1068132!
+
+- Prepare test multiflavors for python311, but skip python311
+  * Numba is not ready for python 3.11 yet gh#numba/numba#8304
+- Update to 2023.2.0
+  ## Enhancements
+  * Rate limit the worker memory logs (GH#7529) Florian Jetter
+  * Move P2P barrier logic to scheduler extension (GH#7519) Hendrik
+    Makait
+</comment>
+    <requestid>1068133</requestid>
+  </revision>
 </revisionlist>

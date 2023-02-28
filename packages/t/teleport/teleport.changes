@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Tue Feb 28 07:52:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.0.4:
+  * Release 12.0.4 (#22321)
+  * Terminate the local shell when a session closes (#22222)
+  * Ignore all node_module paths when running shellcheck lint.
+    (#22233)
+  * [v12] Enable xterm links and clean up MFA modal (#22278)
+  * [v12] Web: Fix regression for not able to create or reset
+    users (#22267)
+  * Mark Proxy Peering as in Preview (#22209)
+  * [v12] helm: allow to set security contexts in
+    `teleport-kube-agent` (#21535)
+  * Format collected data in the device tctl resource nicely
+    (#22198) (#22258)
+  * Fix `disconnect_expired_cert` and `client_idle_timeout`
+    description (#22255)
+  * spell fix kubernetes resource doc (#22259)
+
+-------------------------------------------------------------------
+Tue Feb 28 06:52:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.0.3:
+  * Release 12.0.3 (#22250)
+  * [v12] Fix Kube impersonation header overwrite when dealing
+    with remote clusters (#22244)
+  * Fix an issue Redis protocol not handling nil response
+    (#22200) (#22228)
+  * preserve explicit local auth disable
+  * Create a generic local backend service. (#22236)
+  * [v12] Adds `kubernetes_resources` references (#22217)
+  * User group API and cache. (#21956) (#22147)
+  * [v12] Provide flag to only display tsh binary version (#22167)
+  * [v12] Extend security context to proxy init container
+    wait-auth-update. (#22064)
+  * createPtyProcess: Return early on error (#22190)
+  * ClustersService: Remove internal logins when syncing root
+    clusters (#22187)
+  * [v12] Implement tctl resource commands for Device Trust
+    (#22157)
+  * Added 02/23 Upcoming Releases Update
+  * [v12] Add docs for Device Trust tctl commands (#22201)
+  * Inherit `kubernetes_resources` from roles when using access
+    requests to kube_cluster
+  * [v12] Add service for "plugin" resources (#21210) (#22185)
+  * [v12] Add Security-Kerberos Event Log for Desktop
+    Troubleshooting (#22170)
+  * add MFA type and Login flow to register challenge event
+    (#22112) (#22159)
+  * add bypassses for UI GHA's (#22105) (#22141)
+  * Add expire time to SAML session creation. (#22135)
+  * [v12] Add Plugin resource schema, methods (#20990) (#22177)
+  * [v12] Connect: Enable font configuration (#22122)
+  * Update e (#22156)
+  * Spell fix previews page (#22152)
+  * Add in WrapContextWithUserFromTLSConnState. (#22136)
+  * [v12] Bump cloud version to 11.3.4 (#22114)
+  * disable MFA TTL limit for local proxy tunnel (#21661)
+  * [v12] Document silent install of Connect on Windows (#22119)
+  * Clarifications in Okta SSO doc (#22036)
+  * [v12] Docs: update fluentd guide (#22077)
+  * Remove usage of lodash methods  (#21567) (#22102)
+  * Discover: install ent image when cluster is enterprise
+    (#22109)
+  * [v12] Install deb/yum repos when using node-join script
+    (#22108)
+  * Ensure UpdateRemoteCluster updates all fields (#22024) (#22088)
+  * fix: improve tsh logs when skipping auto Access Request
+    (#22094)
+  * Add DatabaseService KeepAlive type (#22042) (#22087)
+  * SAML IdP sessions added to the API and cache. (#22098)
+  * Correctly handle LOCAL command of PROXY protocol v2 in
+    multiplexer (#22092)
+  * Import jest-canvas-mock in teleport tests which import xterm
+    paths (#22074)
+  * Refresh Introduction Page (#21261) (#22032)
+  * [v12] Add non-HA Teleport cluster to Deploy with Helm links
+    (#22039)
+  * Emit usage events for `port`, `kube.request`, `sftp`
+    (#21740) (#22016)
+  * Relay child exit code in g-build (#21898)
+  * [v12] [Web:Discover] Add missing checks (#22029)
+  * Align AWS assume-role request duration with cert expiration
+    (#21670) (#21994)
+  * Support assumed roles for "tsh proxy aws" (#20568) (#21990)
+  * [doc] Update app access reserved headers X-Teleport-*
+    (#21000) (#21993)
+  * [v12] Change init logger to include timestamp for debug level
+    (#21996)
+  * Add minor improvements to `lib/kube/proxy` (#21917)
+  * [v12] Support proxy reading of SAML IdP CA. (#22030)
+  * Mention --mfa-mode in the `tsh mfa add` flow (#22018) (#22034)
+  * [docs] add a note on `rds:DescribeDBClusters` (#22007) (#22025)
+  * Improve formatting for TLS cert requests (#22013)
+  * CI: bypass OS compatibility check for some changes
+    (#21989) (#22021)
+  * [v12] Updates to windows getting started (#22019)
+  * [v12] SAML IdP access checker. (#21955)
+  * Expose access point in web handler. (#21957)
+  * Include Enterprise in output of tctl version for commercial
+    pre-req (#22004)
+  * [v12] Fix Moderated session on leave pause action. (#21974)
+  * [v12] [Web] Fix missing --request-id= flag in UI for Kubernetes
+    login instructions (#21445)
+  * [v12] Connect: Use SSH server UUID instead of hostname for file
+    transfer (#21962)
+  * [v12] Fix uncaught errors in Desktop's Discover flow (#21756)
+  * Added 02/16 Upcoming Releases Update
+  * Add metrics to track connection ingress (#19734) (#21771)
+  * Switch CodeQL to scheduled (#21942)
+  * Refer to tsh apps subcommand (#21857)
+  * Adjust clientIP/pinnedIP fields according to IP pinning RFD
+    (#21906)
+  * Update Go toolchain to 1.20.1 (#21931)
+  * [v12] Docs/TF: Identity as b64 (#21933)
+  * Docs: Remove Jira Custom Field reference (#21908)
+  * Update role > lock and add missing word." (#21897)
+  * Reduce etcd requests performed by a KeepAlive (#21926)
+  * Update Teleport Enterprise Cloud compare description (#21922)
+  * [v12] Update teleterm README (#21879)
+  * Disable instance heartbeats by default (#21901) (#21905)
+  * [v12] Add docs references to `tsh request search --kind=pod`
+    (#21887)
+  * [v12] Add more info re: AWS credentials to the docs (#21776)
+  * [v12] Include enterprise in tctl prereqs for ent  and cloud
+    (#21890)
+  * Initial user group object. (#21657)
+  * [v12] Add SAML query functions to auth preferences. (#21825)
+  * SAML IdP session objects. (#21758)
+  * [v12] Update troubleshooting docs (#21762)
+  * [v12] Change error response formatting for "/version" endpoint
+    (#21846)
+  * Update download link (#21674)
+  * use Enterprise over Commercial (#21370)
+  * Improve webpack "exclude" expressions (#21663) (#21725)
+  * [doc] allow either role name or full ARN for AWS IAM role
+    db_users (#21240) (#21837)
+  * helm: fix proxy and auth config referring to the same subdict
+    (#21768)
+  * Fixup teleport db configure create (#20968) (#21690)
+  * spell fixes (#21855)
+  * Bump Buf to v1.14.0 (#21842)
+  * Run reviewers check on (un)labeled PR events (#21814) (#21819)
+  * [v12] docs: login rule docs (#21829)
+  * Remove deprecated warning when proxy starts (#21817)
+  * [v12] Move CentOS 7 assets to GitHub repo (#21784)
+  * feat: early feedback for successful security key taps (#21780)
+  * set SessionExpires on new sessions (#21688) (#21733)
+  * [v12] Skip deleting server heartbeats during in-process restart
+    (#21807)
+  * Remove code related to restarting lib/teleterm gateways (#21533)
+  * AWS IAM role matching for database users (#20610) (#21251)
+  * Add device lock support (#21667) (#21751)
+  * [v12] Turn off parallelization of teleterm's integration tests
+    (#21737)
+  * [v12] Remove support for DEBUG_ASSETS_PATH  (#21473)
+  * Remove required cluster name when using `tsh kube login --all`
+    (#21765)
+  * [v12] Moderated sessions request is not forwarded into the leaf
+    cluster (#21612)
+  * Role access requests available for all scopes (#21752)
+  * Update docs link to master db access rfd (#21736)
+  * Cache etcd lease ttl (#21496)
+  * Fix linter issues (#21748)
+  * [v12] Update Go toolchain to 1.20 (#21680)
+  * Add Pod resource search web API (#21595)
+  * Update docs version (#21744)
+  * [v12] Make UsageSessionStart report TCP app access separately
+    (#21711)
+  * [v12] Connect: Link to docs in `UsageData` dialog  (#21730)
+  * Delete assets/aws/cloudformation directory (#21696)
+  * lib/utils/fs.go: Do not remove lockfiles on Windows
+  * Update SQL Server library (#21065) (#21638)
+  * Update database config samples (#21480) (#21543)
+  * Change debug commands during discover flow (#21557)
+  * [v12] Ask for job role on the second launch (#21640)
+  * Correct namespace name in k8s doc (#21589)
+  * Remove version warnings for EOL Teleport versions (#21665)
+
+-------------------------------------------------------------------
 Mon Feb 13 15:53:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.0.2:

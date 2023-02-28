@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 27 01:47:06 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patch work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
+  * Some mail servers do not send a close notification
+    (SSL_shutdown()) before closing the TCP socket. This workaround
+    makes isync handles the situation more gracefully (boo#1208166).
+
+-------------------------------------------------------------------
 Wed Jan  5 09:19:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4 (bsc#1193376, bsc#1192985, CVE-2021-3657, CVE-2021-44143):

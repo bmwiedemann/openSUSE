@@ -1,0 +1,47 @@
+From: Dylan Yudaken <dylany@meta.com>
+Date: Mon, 7 Nov 2022 05:04:04 -0800
+Subject: Do not always expect multishot recv to stop posting events
+Patch-mainline: yes
+Git-commit: 0d4fdb416718a70a4a90c5c4722b38cf44849195
+References: kernel 6.2
+
+Later kernels can have a fix that does not stop multishot from posting
+events, and would just continue in overflow mode.
+
+Signed-off-by: Dylan Yudaken <dylany@meta.com>
+Link: https://lore.kernel.org/r/20221107130404.360691-1-dylany@meta.com
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ test/recv-multishot.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/test/recv-multishot.c b/test/recv-multishot.c
+index 2cfe6898..ed26a5f7 100644
+--- a/test/recv-multishot.c
++++ b/test/recv-multishot.c
+@@ -264,11 +264,19 @@ static int test(struct args *args)
+ 
+ 		bool const is_last = i == recv_cqes - 1;
+ 
++		/*
++		 * Older kernels could terminate multishot early due to overflow,
++		 * but later ones will not. So discriminate based on the MORE flag.
++		 */
++		bool const early_last = args->early_error == ERROR_EARLY_OVERFLOW &&
++					!args->wait_each &&
++					i == N_CQE_OVERFLOW &&
++					!(cqe->flags & IORING_CQE_F_MORE);
++
+ 		bool const should_be_last =
+ 			(cqe->res <= 0) ||
+ 			(args->stream && is_last) ||
+-			(args->early_error == ERROR_EARLY_OVERFLOW &&
+-			 !args->wait_each && i == N_CQE_OVERFLOW);
++			early_last;
+ 		int *this_recv;
+ 		int orig_payload_size = cqe->res;
+ 
+-- 
+2.35.3
+

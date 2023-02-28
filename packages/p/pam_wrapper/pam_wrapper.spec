@@ -1,7 +1,7 @@
 #
 # spec file for package pam_wrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}-rpmlintrc
+Patch0:         pam_wrapper-fix-cmocka-1.1.6+-support.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libcmocka-devel

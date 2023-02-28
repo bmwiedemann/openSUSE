@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:39:58 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 6.2
+  * Implemented collision resolution for overlapping ioctl commands
+    from tty and snd subsystems.
+  * Implemented decoding of IFLA_BRPORT_MAB and IFLA_DEVLINK_PORT
+    netlink attributes.
+  * Updated lists of ALG_*, BPF_*, IFLA_*, KEY_*, KVM_*, LANDLOCK_*,
+    MEMBARRIER_*, NFT_*, NTF_*, and V4L2_* constants.
+  * Updated lists of ioctl commands from Linux 6.2.
+
+-------------------------------------------------------------------
 Mon Dec 12 20:52:29 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.1

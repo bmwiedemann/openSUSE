@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Feb  5 03:07:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.16  2023-02-04  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.15_03  2023-02-03  <schubiger@cpan.org>
+   - Drop generating compat Makefile.PL.
+  1.15_02  2023-02-02  <schubiger@cpan.org>
+   - Remove implicit m/d format; adjust tests.
+     [github #11]
+  1.15_01  2023-01-27  <schubiger@cpan.org>
+   - Move further testing modules to test_requires.
+     [inspired by github #10 - Karen Etheridge]
+  1.15  2023-01-12  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.14_03  2023-01-10  <schubiger@cpan.org>
+   - Minor whitespace tweak.
+  1.14_02  2023-01-09  <schubiger@cpan.org>
+   - Move testing modules to test_requires.
+     [github #20 - Olaf Alders]
+   - List Jim Avera in credits.
+  1.14_01  2023-01-08  <schubiger@cpan.org>
+   - Fix extract_datetime fails with newly-created parser.
+     [rt #144219 - Jim Avera]
+  1.14  2022-12-30  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.13_02  2022-12-29  <schubiger@cpan.org>
+   - Distinguish between truncated/unaltered when testing.
+  1.13_01  2022-08-06  <schubiger@cpan.org>
+   - Add support for millisecond(s) as parsable unit.
+
+-------------------------------------------------------------------
 Mon Jan 24 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.13

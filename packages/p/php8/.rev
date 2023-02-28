@@ -379,4 +379,12 @@
   * https://www.php.net/ChangeLog-8.php#8.1.16</comment>
     <requestid>1066139</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>6371a5509ad65fb17031a4383b6678e4</srcmd5>
+    <version>8.1.16</version>
+    <time>1677584882</time>
+    <user>dimstar_suse</user>
+    <comment>- change to %bcond conditional build dependencies (forwarded request 1067746 from adkorte)</comment>
+    <requestid>1067902</requestid>
+  </revision>
 </revisionlist>

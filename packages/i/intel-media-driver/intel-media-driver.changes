@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 27 21:04:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated Supplements 
+
+-------------------------------------------------------------------
+Mon Feb 27 20:26:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- updaet to 23.1.2:
+  * Fix Decode Encryption Types Missing in APO 
+  * Fallback to doubleBufferCopy when lock external resource failed
+  * Enhance robustness of Decode SubPacket Manager
+  * FP16 Enable on APOes
+  * Refine mos gpu hang interface to use correct ctx id 
+  * Move rowstore cache regkey report to new location
+  * optimize vebox resource 
+  * Fix Output out of scaling when using SR with Rotation
+
+-------------------------------------------------------------------
 Mon Feb 13 22:14:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated Supplements 

@@ -140,4 +140,14 @@
 </comment>
     <requestid>927924</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c964abf168fffdd4fc87a3335a4d542b</srcmd5>
+    <version>1.1.4</version>
+    <time>1677584889</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with cmocka &gt;= 1.1.6
+  * Added pam_wrapper-fix-cmocka-1.1.6+-support.patch
+</comment>
+    <requestid>1067924</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,8 @@
 %else
 %bcond_with nuspell
 %endif
+%bcond_without aspell
+
 Name:           enchant
 Version:        2.2.15
 Release:        0
@@ -29,7 +31,9 @@ License:        LGPL-2.1-or-later
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+%if %{with aspell}
 BuildRequires:  aspell-devel
+%endif
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -64,6 +68,7 @@ with different spell checking libraries.
 
 This package provides data/configuration files for libenchant.
 
+%if %{with aspell}
 %package -n enchant-2-backend-aspell
 Summary:        Aspell backend for the Enchant spell checking library
 Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libaspell.so)))
@@ -73,6 +78,7 @@ Provides:       enchant-2-backend
 Aspell plugin for enchant, a library providing an efficient
 extensible abstraction for dealing with different spell checking
 libraries.
+%endif
 
 %package -n enchant-2-backend-hunspell
 Summary:        Hunspell backend for the Enchant spell checking library
@@ -130,8 +136,10 @@ to develop applications that require these.
 
 %build
 %configure \
-    --disable-static \
-    --with-aspell
+%if %{with aspell}
+    --with-aspell \
+%endif
+    --disable-static
 %make_build
 
 %install
@@ -153,9 +161,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 %dir %{_libdir}/enchant-2
 
+%if %{with aspell}
 %files -n enchant-2-backend-aspell
 %dir %{_libdir}/enchant-2
 %{_libdir}/enchant-2/enchant_aspell.so
+%endif
 
 %files -n enchant-2-backend-hunspell
 %dir %{_libdir}/enchant-2

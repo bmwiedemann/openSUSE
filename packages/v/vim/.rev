@@ -6841,4 +6841,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1066374</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>27bed00a20207b9212b9d41b08b15ec9</srcmd5>
+    <version>9.0.1357</version>
+    <time>1677584878</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1357, fixes the following problems
+  * Setting 'formatoptions' with :let doesn't check for errors.
+  * The code for setting options is too complicated.
+  * Scrolling two lines with even line count and 'scrolloff' set.
+  * 'splitkeep' test has failures.
+  * Coverity warns for using a NULL pointer.
+  * Cursor position wrong when splitting window in insert mode.
+  * Some settings use the current codepage instead of 'encoding'.
+  * :messages behavior depends on 'fileformat' of current buffer.
+  * Escaping for completion of map command not properly tested.
+  * Crash when using an unset object variable.
+  * Code style test fails.
+  * PRQL files are not recognized.
+  * Checking the type of a null object causes a crash.
+  * vimscript test fails where using {expr} syntax.
+  * Crash when indexing &quot;any&quot; which is an object.
+  * Build failure with +eval feature.
+  * &quot;gj&quot; and &quot;gk&quot; do not move correctly over a closed fold.
+  * 'colorcolumn' highlight wrong with virtual text above.
+  * Relative line number not updated with virtual text above.
+  * Cursor in wrong position below line with virtual text below ending in
+  multi-byte character.
+  * Error when using &quot;none&quot; for GUI color is confusing.
+  * Completion of map includes simplified ones.
+  * Handling new value of an option has a long &quot;else if&quot; chain.
+  * Illegal memory access when using :ball in Visual mode.
+  * Crash when using buffer-local user command in cmdline window. (Karl
+  Yngve Lervåg)
+  * When redo'ing twice &lt;ScriptCmd&gt; may not get the script ID.
+  * Using tt_member for the class leads to mistakes.</comment>
+    <requestid>1067840</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 27 12:17:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.1 (70e984f)
+  * Add a prefix to the CAL_DEFAULT and CAL_GREGORIAN constants to
+    avoid runtime conflict with php-calendar
+  * Remove mapi_strerror since it was moved to Gromox/PHP-MAPI
+
+-------------------------------------------------------------------
 Fri Jan 13 23:39:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add license.txt

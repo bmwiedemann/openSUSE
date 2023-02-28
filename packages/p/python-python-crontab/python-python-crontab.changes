@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:13:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.7.1:
+  * Fix #104, confirm removal of python2.7 support
+- 2.7.0:
+  * Add feature to insert new commands in the middle of the cron. Fix #101
+  * Do not log invalid comments as errors
+
+-------------------------------------------------------------------
 Thu Oct  6 22:15:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.6.0

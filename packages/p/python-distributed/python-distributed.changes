@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 26 00:09:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Prepare test multiflavors for python311, but skip python311
+  * Numba is not ready for python 3.11 yet gh#numba/numba#8304
+
+-------------------------------------------------------------------
+Fri Feb 17 09:05:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.2.0
+  ## Enhancements
+  * Rate limit the worker memory logs (GH#7529) Florian Jetter
+  * Move P2P barrier logic to scheduler extension (GH#7519) Hendrik
+    Makait
+
+-------------------------------------------------------------------
 Sun Feb  5 13:22:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.1.1

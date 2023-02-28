@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 26 18:01:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.0.0
+  * bugfix release, see also for more details here:
+    https://lists.x.org/archives/dri-devel/2023-February/392659.html
+- supersedes U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch
+
+-------------------------------------------------------------------
 Mon Jan 23 11:12:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch

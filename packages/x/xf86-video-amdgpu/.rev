@@ -371,4 +371,15 @@
     RDNA3 cards like Navi31/RX 7900 Series cards. (boo#1207388)</comment>
     <requestid>1060388</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8430cdac6934fb7f7fb6ccd39651e571</srcmd5>
+    <version>23.0.0</version>
+    <time>1677584876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.0.0
+  * bugfix release, see also for more details here:
+    https://lists.x.org/archives/dri-devel/2023-February/392659.html
+- supersedes U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch</comment>
+    <requestid>1067832</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  asio-devel
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -47,7 +48,6 @@ BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(asio)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)

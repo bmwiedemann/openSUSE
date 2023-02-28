@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 28 07:42:31 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.2
+  Bug fixes:
+  * Don't unexpectedly activate queued torrents when prefetching
+    metadata for added magnets
+  * Update the cached torrent state once recheck is started
+  * Be more likely to allow the system to use power saving modes
+  Web UI:
+  * Migrate away from unsafe function
+  * Blacklist bad ciphers for TLS in the server
+  * Allow only TLS 1.2+ in the server
+  * Allow to set read-only directory as torrent location
+  * Reject requests that contain backslash in path
+  RSS:
+  * Prevent RSS folder from being moved into itself
+
+-------------------------------------------------------------------
 Sun Feb 12 18:05:17 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.1

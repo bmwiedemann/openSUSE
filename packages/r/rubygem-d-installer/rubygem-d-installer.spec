@@ -29,6 +29,8 @@ Release:        0
 %define mod_name d-installer
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
+# Override build.rpm, see also https://github.com/openSUSE/obs-build/blob/master/configs/
+%global rb_build_versions %{rb_default_ruby}
 BuildRequires:  dbus-1-common
 Requires:       dbus-1-common
 Requires:       snapper
@@ -36,6 +38,7 @@ Requires:       yast2-bootloader
 Requires:       yast2-country
 Requires:       yast2-hardware-detection
 Requires:       yast2-installation
+Requires:       yast2-iscsi-client >= 4.5.7
 Requires:       yast2-network
 Requires:       yast2-proxy
 Requires:       yast2-storage-ng

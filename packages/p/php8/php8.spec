@@ -40,18 +40,22 @@
 %define psuffix %{nil}
 %endif
 
-%define debug_build       0
-%define asan_build        0
 %global apiver            20210902
 %global zendver           20210902
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
-%define build_firebird 0
-%define build_sodium 1
-%define build_argon2 0
+
+%bcond_without	apparmor
 %if 0%{?suse_version} >= 1500
-%define build_argon2 1
+%bcond_without	argon2
+%else
+%bcond_with	argon2
 %endif
+%bcond_with	asan
+%bcond_with	debug
+%bcond_with	firebird
+%bcond_without	sodium
+
 Name:           %{pprefix}%{php_name}%{psuffix}
 Version:        8.1.16
 Release:        0
@@ -106,7 +110,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gpg2
 BuildRequires:  libacl-devel
-BuildRequires:  libapparmor-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  libtiff-devel
@@ -146,15 +149,18 @@ BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(openssl) >= 1.0.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.7
 BuildRequires:  pkgconfig(zlib) >= 1.2.0.4
-%if %{build_firebird}
+%if %{with apparmor}
+BuildRequires:  pkgconfig(libapparmor)
+%endif
+%if %{with firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3
 BuildRequires:  firebird-devel
 BuildRequires:  libfbclient2-devel
 %endif
-%if %{build_sodium}
+%if %{with sodium}
 BuildRequires:  pkgconfig(libsodium) >= 1.0.8
 %endif
-%if %{build_argon2}
+%if %{with argon2}
 BuildRequires:  pkgconfig(libargon2)
 %endif
 %if "%{flavor}" == "test"
@@ -606,7 +612,7 @@ Obsoletes:      php-mysql < %{version}
 %description mysql
 PHP functions for access to MySQL database servers.
 
-%if %{build_firebird}
+%if %{with firebird}
 %package firebird
 Summary:        Firebird database client for PHP
 Group:          Development/Libraries/PHP
@@ -795,7 +801,7 @@ The socket extension implements a low-level interface to the socket
 communication functions based on the BSD sockets API, providing the
 possibility to act as a socket server as well as a client.
 
-%if %{build_sodium}
+%if %{with sodium}
 %package sodium
 Summary:        Cryptographic Extension Based on Libsodium
 Group:          Development/Libraries/PHP
@@ -986,11 +992,11 @@ fi
 # export flags
 CFLAGS="%{optflags} -O3 -fPIE -fPIC -DPIC -D_GNU_SOURCE -fno-strict-aliasing"
 CXXFLAGS="%{optflags} -O3 -fPIE -fPIC -DPIC -D_GNU_SOURCE -fno-strict-aliasing"
-%if %{build_firebird}
+%if %{with firebird}
 CFLAGS="$CFLAGS -I/usr/include/firebird"
 CXXFLAGS="$CXXFLAGS -I/usr/include/firebird"
 %endif
-%if %{debug_build}
+%if %{with debug}
 CFLAGS="$CFLAGS -Og"
 CXXFLAGS="$CXXFLAGS -Og"
 %endif
@@ -1036,7 +1042,7 @@ Build()
         --with-system-tzdata=%{_datadir}/zoneinfo \
         --with-mhash \
         --disable-phpdbg \
-%if %{build_argon2}
+%if %{with argon2}
         --with-password-argon2=%{_usr} \
 %endif
         "$@" || { cat config.log; exit 1; }
@@ -1056,7 +1062,7 @@ Build()
     if [ $sapi == apache2 ]; then
         sed -i 's/libphp/mod_%{php_name}/g' Makefile
     fi
-%if %{asan_build}
+%if %{with asan}
     sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \
            -e 's/\(^EXTRA_LIBS =.*\)/\1 -lasan/' \
            Makefile
@@ -1084,7 +1090,9 @@ Build fastcgi \
 Build fpm \
     --enable-fpm \
     --with-fpm-acl \
+%if %{with apparmor}
     --with-fpm-apparmor \
+%endif
     --with-fpm-systemd \
     --with-fpm-user=%{apache_user} \
     --with-fpm-group=%{apache_group} \
@@ -1160,12 +1168,12 @@ Build cli \
     --with-pdo-sqlite=shared \
     --with-sqlite3=shared \
     --with-pdo-mysql=shared,mysqlnd \
-%if %{build_firebird}
+%if %{with firebird}
     --with-pdo-firebird=shared \
 %endif
     --with-pdo-pgsql=shared,%{_usr} \
     --with-pdo-odbc=shared,unixODBC,%{_usr} \
-%if %{build_sodium}
+%if %{with sodium}
     --with-sodium=shared \
 %endif
     --enable-opcache=shared \
@@ -1175,7 +1183,7 @@ Build cli \
 %endif
 
 %check
-%if %{asan_build}
+%if %{with asan}
 # no need for ASAN build
 exit 0
 %endif
@@ -1558,7 +1566,7 @@ fi
 %{extension_dir}/pdo_mysql.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_mysql.ini
 
-%if %{build_firebird}
+%if %{with firebird}
 %files firebird
 %defattr(-, root, root)
 %{extension_dir}/pdo_firebird.so
@@ -1633,7 +1641,7 @@ fi
 %{extension_dir}/soap.so
 %config(noreplace) %{php_sysconf}/conf.d/soap.ini
 
-%if %{build_sodium}
+%if %{with sodium}
 %files sodium
 %defattr(-, root, root)
 %{extension_dir}/sodium.so

@@ -86,4 +86,19 @@
 - Refresh python-rollbar-no-unittest2.patch</comment>
     <requestid>948303</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce2b5fc34e548639f48fa76c9a6e8be6</srcmd5>
+    <version>0.16.3</version>
+    <time>1677584913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.3:
+  * Pinned Python 2 CI tests to legacy version of dependencies. See #408
+  * Add PyPI badge for supported Python versions. See #408
+  * Add Django 4.0+ compatibility. See #408
+  * Update PR template. See #408
+  * SC-95272: Remove support for Python 3.3. See #408
+- Disable broken tests in python 3.11, test_encode_empty_tuple
+</comment>
+    <requestid>1067989</requestid>
+  </revision>
 </revisionlist>

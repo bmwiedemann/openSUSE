@@ -1,7 +1,7 @@
 #
 # spec file for package python-exrex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define revision fd1e21ffc7c16fd5637a5c440224766417e840f9
 %define skip_python2 1
 Name:           python-exrex
@@ -30,12 +29,14 @@ URL:            https://github.com/asciimoo/exrex
 Source:         https://github.com/asciimoo/exrex/archive/%{revision}.tar.gz#/exrex-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-setup-encoding.patch
 Patch0:         https://github.com/asciimoo/exrex/pull/53.patch#/fix-setup-encoding.patch
+# PATCH-FIX-UPSTREAM fix-python-3.11.patch
+Patch1:         https://github.com/asciimoo/exrex/pull/65.patch#/fix-python-3.11.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,6 +47,7 @@ A command line tool and python module that generates all or random matching stri
 %setup -q -n exrex-%{revision}
 sed -i '1s/^#!.*//' exrex.py
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -67,7 +69,9 @@ LANG=C.UTF-8 PYTHONPATH=%{buildroot}%{$python_sitelib} $python ./tests.py}
 %python_uninstall_alternative exrex
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/exrex*
+%{python_sitelib}/__pycache__/exrex.*
+%{python_sitelib}/exrex-0.10.6*-info
 %license COPYING
 %doc README.md doc/
 %python_alternative %{_bindir}/exrex

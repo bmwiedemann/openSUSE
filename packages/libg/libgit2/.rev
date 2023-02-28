@@ -520,4 +520,12 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment></comment>
     <requestid>1060380</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>21dc89347b43c5e6f9b442fb5c51f630</srcmd5>
+    <version>1.5.2</version>
+    <time>1677584899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067979</requestid>
+  </revision>
 </revisionlist>

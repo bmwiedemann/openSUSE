@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:05:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- The test build branch MUST BR the package itself.
+
+-------------------------------------------------------------------
 Tue Feb 21 08:48:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch to _multibuild to avoid a build cycle with pytest.

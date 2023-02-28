@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 16 18:49:09 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.15.1
+  * fix compilation without plugins
+
+- update to 1.15.0
+  * codec plugin system now also works with Windows
+  * heif_convert: manually choose which decoder should be used
+  * support for CLLI (content light level box), MDCV (mastering
+    display colour volume), PASP (pixel aspect) information
+  * ICC profile support in gdk-pixbuf loader
+  * various fixes
+
+- build with plugins enabled on Tumbleweed
+- remove upstreamed patches
+  - 2ca02a128b2f76f7f293aa86a2ce1e04a8306c65.patch
+  - b6812284a2d70f29a5121ec3dbe652da07fdbbb7.patch
+
+-------------------------------------------------------------------
 Thu Feb  2 19:25:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use chrpath during build to delete otherwise illegal runtime

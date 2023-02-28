@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 20 12:16:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.16.3:
+  * Pinned Python 2 CI tests to legacy version of dependencies. See #408
+  * Add PyPI badge for supported Python versions. See #408
+  * Add Django 4.0+ compatibility. See #408
+  * Update PR template. See #408
+  * SC-95272: Remove support for Python 3.3. See #408
+- Disable broken tests in python 3.11, test_encode_empty_tuple
+
+-------------------------------------------------------------------
 Mon Jan 24 01:54:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.16.2:

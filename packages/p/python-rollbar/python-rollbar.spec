@@ -1,7 +1,7 @@
 #
 # spec file for package python-rollbar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-rollbar
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        Report exceptions, errors, and log messages to Rollbar
 License:        MIT
@@ -64,7 +63,7 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_shorten_array'
+%pytest -k 'not (test_shorten_array or test_encode_empty_tuple)'
 
 %post
 %python_install_alternative rollbar
@@ -76,6 +75,7 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/rollbar
-%{python_sitelib}/*
+%{python_sitelib}/rollbar
+%{python_sitelib}/rollbar-%{version}*-info
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 25 10:48:18 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add 32bit devel package for Wine development.
+
+-------------------------------------------------------------------
 Tue Sep  1 13:56:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch

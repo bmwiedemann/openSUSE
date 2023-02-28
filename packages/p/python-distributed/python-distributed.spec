@@ -22,29 +22,41 @@
 %define psuffix -test-py38
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
 %define skip_python38 1
 %define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
+%define skip_python311 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py311"
+%define psuffix -test-py311
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python310 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
+# Numba is not ready for python 3.11 yet gh#numba/numba#8304
+%define skip_python311 1
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.1.1
+Version:        2023.2.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause

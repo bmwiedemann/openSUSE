@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 11:07:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 675-nb-subproc-runner.patch (gh#martanne/vis!675) with
+  support for the non-blocking subprocess runner.
+
+-------------------------------------------------------------------
 Tue Nov  1 15:07:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.8:

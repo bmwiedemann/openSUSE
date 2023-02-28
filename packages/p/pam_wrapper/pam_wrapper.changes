@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:38:30 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with cmocka >= 1.1.6
+  * Added pam_wrapper-fix-cmocka-1.1.6+-support.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 08:40:28 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.4

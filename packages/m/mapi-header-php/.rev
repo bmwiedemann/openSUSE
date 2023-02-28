@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1060068</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b955ab8d86d242ea0ce74ba10fbaa2e</srcmd5>
+    <version>1.1.0.70e984f</version>
+    <time>1677584911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag 1.1 (70e984f)</comment>
+    <requestid>1067987</requestid>
+  </revision>
 </revisionlist>

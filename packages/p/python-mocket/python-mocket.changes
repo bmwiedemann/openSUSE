@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 19 21:05:20 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.11:
+ - Migrating the HTTP[S] mock from relying on http-parser to httptools.
+ - Never discovered the root cause for the failing tests with aiohttp/Python 3.11 (first time ever I added @pytest.mark.xfail to a few tests). Same test works with httpx, so I suspect it's related to a client issue. I'll probably migrate to httpx as the reference client for testing async/await code.
+- remove patches merged upstream:
+    0007-Switching-to-httptools.parser.HttpRequestParser.patch
+    0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
+    0009-Removing-DeprecationWarning-all-over-the-place.patch
+    0010-Python-3.11-needs-an-async-decorator.patch
+    0012-Removing-async-timeout-dependency.patch
+    0013-Refactoring-using-event_loop-fixture.patch
+    0014-Refactoring-using-tempfile-as-a-context-manager.patch
+    0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
+
+-------------------------------------------------------------------
 Thu Feb  2 11:44:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add these commits as patches from the upstream PR:

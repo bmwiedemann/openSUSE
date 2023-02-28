@@ -1,0 +1,6 @@
+<package name="perl-DateTime-HiRes" project="openSUSE:Factory">
+  <title>Create DateTime objects with sub-second current time resolution</title>
+  <description>This module enables you to generate DateTime objects that represent the current time with sub-second resolution.</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-HiRes"/>
+  <url>https://metacpan.org/dist/DateTime-HiRes</url>
+</package>

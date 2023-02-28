@@ -1,0 +1,425 @@
+From 25713f5bf36f6a33333793e963142abe3753c9ab Mon Sep 17 00:00:00 2001
+From: xomachine <xomachiner@gmail.com>
+Date: Sun, 25 Feb 2018 01:55:48 +0300
+Subject: [PATCH 01/19] Subprocess lua API extension
+
+---
+ Makefile         |    1 
+ lua/vis.lua      |    2 
+ vis-lua.c        |   82 +++++++++++++++++++++++++
+ vis-lua.h        |    4 -
+ vis-subprocess.c |  176 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ vis-subprocess.h |   23 +++++++
+ vis.c            |    5 +
+ 7 files changed, 291 insertions(+), 2 deletions(-)
+ create mode 100644 vis-subprocess.c
+ create mode 100644 vis-subprocess.h
+
+--- a/Makefile
++++ b/Makefile
+@@ -26,6 +26,7 @@ SRC = array.c \
+ 	vis-prompt.c \
+ 	vis-registers.c \
+ 	vis-text-objects.c \
++	vis-subprocess.c \
+ 	$(REGEX_SRC)
+ 
+ ELF = vis vis-menu vis-digraph
+--- a/lua/vis.lua
++++ b/lua/vis.lua
+@@ -152,6 +152,7 @@ local events = {
+ 	WIN_OPEN = "Event::WIN_OPEN", -- see @{win_open}
+ 	WIN_STATUS = "Event::WIN_STATUS", -- see @{win_status}
+ 	TERM_CSI = "Event::TERM_CSI", -- see @{term_csi}
++	PROCESS_RESPONSE = "Event::PROCESS_RESPONSE", -- see @{process_response}
+ }
+ 
+ events.file_close = function(...) events.emit(events.FILE_CLOSE, ...) end
+@@ -167,6 +168,7 @@ events.win_highlight = function(...) eve
+ events.win_open = function(...) events.emit(events.WIN_OPEN, ...) end
+ events.win_status = function(...) events.emit(events.WIN_STATUS, ...) end
+ events.term_csi = function(...) events.emit(events.TERM_CSI, ...) end
++events.process_response = function(...) events.emit(events.PROCESS_RESPONSE, ...) end
+ 
+ local handlers = {}
+ 
+--- a/vis-lua.c
++++ b/vis-lua.c
+@@ -23,6 +23,7 @@
+ 
+ #include "vis-lua.h"
+ #include "vis-core.h"
++#include "vis-subprocess.h"
+ #include "text-motions.h"
+ #include "util.h"
+ 
+@@ -52,6 +53,13 @@
+ #define debug(...) do { } while (0)
+ #endif
+ 
++typedef struct {
++	/* Lua stream structure for the process input stream */
++	FILE *f;
++	lua_CFunction closef;
++	Process *handler;
++} ProcessStream;
++
+ static void window_status_update(Vis *vis, Win *win) {
+ 	char left_parts[4][255] = { "", "", "", "" };
+ 	char right_parts[4][32] = { "", "", "", "" };
+@@ -162,6 +170,9 @@ void vis_lua_win_close(Vis *vis, Win *wi
+ void vis_lua_win_highlight(Vis *vis, Win *win) { }
+ void vis_lua_win_status(Vis *vis, Win *win) { window_status_update(vis, win); }
+ void vis_lua_term_csi(Vis *vis, const long *csi) { }
++void vis_lua_process_response(Vis *vis, const char *name,
++                              char *buffer, size_t len, ResponseType rtype) { }
++
+ 
+ #else
+ 
+@@ -1368,6 +1379,47 @@ static int redraw(lua_State *L) {
+ 	return 0;
+ }
+ /***
++ * Closes a stream returned by @{Vis.communicate}.
++ *
++ * @function close
++ * @tparam io.file inputfd the stream to be closed
++ * @treturn bool the same with @{io.close}
++ */
++static int close_subprocess(lua_State *L) {
++	luaL_Stream *file = luaL_checkudata(L, -1, "FILE*");
++	int result = fclose(file->f);
++	if (result == 0) {
++		file->f = NULL;
++		file->closef = NULL;
++	}
++	return luaL_fileresult(L, result == 0, NULL);
++}
++/***
++ * Open new process and return its input handler.
++ * When the process will quit or will output anything to stdout or stderr,
++ * the @{process_response} event will be fired.
++ *
++ * The editor core won't be blocked while the external process is running.
++ *
++ * @function communicate
++ * @tparam string name the name of subprocess (to distinguish processes in the @{process_response} event)
++ * @tparam string command the command to execute
++ * @return the file handle to write data to the process, in case of error the return values are equivalent to @{io.open} error values.
++ */
++static int communicate_func(lua_State *L) {
++	Vis *vis = obj_ref_check(L, 1, "vis");
++	const char *name = luaL_checkstring(L, 2);
++	const char *cmd = luaL_checkstring(L, 3);
++	ProcessStream *inputfd = (ProcessStream *)lua_newuserdata(L, sizeof(ProcessStream));
++	luaL_setmetatable(L, LUA_FILEHANDLE);
++	inputfd->handler = vis_process_communicate(vis, name, cmd, (void **)(&(inputfd->closef)));
++	if (inputfd->handler) {
++		inputfd->f = fdopen(inputfd->handler->inpfd, "w");
++		inputfd->closef = &close_subprocess;
++	}
++	return inputfd->f ? 1 : luaL_fileresult(L, inputfd->f != NULL, name);
++}
++/***
+  * Currently active window.
+  * @tfield Window win
+  * @see windows
+@@ -1524,6 +1576,7 @@ static const struct luaL_Reg vis_lua[] =
+ 	{ "exit", exit_func },
+ 	{ "pipe", pipe_func },
+ 	{ "redraw", redraw },
++	{ "communicate", communicate_func },
+ 	{ "__index", vis_index },
+ 	{ "__newindex", vis_newindex },
+ 	{ NULL, NULL },
+@@ -3135,5 +3188,34 @@ void vis_lua_term_csi(Vis *vis, const lo
+ 	}
+ 	lua_pop(L, 1);
+ }
++/***
++ * The response received from the process started via @{Vis:communicate}.
++ * @function process_response
++ * @tparam string name the name of process given to @{Vis:communicate}
++ * @tparam string response_type can be "STDOUT" or "STDERR" if new output was received in corresponding channel, "SIGNAL" if the process was terminated by a signal or "EXIT" when the process terminated normally
++ * @tparam string|int buffer the available content sent by process; it becomes the exit code number if response\_type is "EXIT", or the signal number if response\_type is "SIGNAL"
++ */
++void vis_lua_process_response(Vis *vis, const char *name,
++                              char *buffer, size_t len, ResponseType rtype) {
++	lua_State *L = vis->lua;
++	if (!L)
++		return;
++	vis_lua_event_get(L, "process_response");
++	if (lua_isfunction(L, -1)) {
++		lua_pushstring(L, name);
++		if (rtype == EXIT || rtype == SIGNAL)
++			lua_pushinteger(L, len);
++		else
++			lua_pushlstring(L, buffer, len);
++		switch (rtype){
++		case STDOUT: lua_pushstring(L, "STDOUT"); break;
++		case STDERR: lua_pushstring(L, "STDERR"); break;
++		case SIGNAL: lua_pushstring(L, "SIGNAL"); break;
++		case EXIT: lua_pushstring(L, "EXIT"); break;
++		}
++		pcall(vis, L, 3, 0);
++	}
++	lua_pop(L, 1);
++}
+ 
+ #endif
+--- a/vis-lua.h
++++ b/vis-lua.h
+@@ -7,10 +7,11 @@
+ #include <lauxlib.h>
+ #else
+ typedef struct lua_State lua_State;
++typedef void* lua_CFunction;
+ #endif
+ 
+ #include "vis.h"
+-
++#include "vis-subprocess.h"
+ /* add a directory to consider when loading lua files */
+ bool vis_lua_path_add(Vis*, const char *path);
+ /* get semicolon separated list of paths to load lua files
+@@ -38,5 +39,6 @@ void vis_lua_win_close(Vis*, Win*);
+ void vis_lua_win_highlight(Vis*, Win*);
+ void vis_lua_win_status(Vis*, Win*);
+ void vis_lua_term_csi(Vis*, const long *);
++void vis_lua_process_response(Vis *, const char *, char *, size_t, ResponseType);
+ 
+ #endif
+--- /dev/null
++++ b/vis-subprocess.c
+@@ -0,0 +1,176 @@
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdbool.h>
++#include <errno.h>
++#include <string.h>
++#include <sys/wait.h>
++#include "vis-lua.h"
++#include "vis-subprocess.h"
++
++/* Maximum amount of data what can be read from IPC pipe per event */
++#define MAXBUFFER 1024
++
++/* Pool of information about currently running subprocesses */
++static Process *process_pool;
++
++Process *new_in_pool() {
++	/* Adds new empty process information structure to the process pool and
++	 * returns it */
++	Process *newprocess = (Process *)malloc(sizeof(Process));
++	if (!newprocess) return NULL;
++	newprocess->next = process_pool;
++	process_pool = newprocess;
++	return newprocess;
++}
++
++void destroy(Process **pointer) {
++	/* Removes the subprocess information from the pool, sets invalidator to NULL
++	 * and frees resources. */
++	Process *target = *pointer;
++	if (target->outfd != -1) close(target->outfd);
++	if (target->errfd != -1) close(target->errfd);
++	if (target->inpfd != -1) close(target->inpfd);
++	/* marking stream as closed for lua */
++	if (target->invalidator) *(target->invalidator) = NULL;
++	if (target->name) free(target->name);
++	*pointer = target->next;
++	free(target);
++}
++
++Process *vis_process_communicate(Vis *vis, const char *name,
++                                 const char *command, void **invalidator) {
++	/* Starts new subprocess by passing the `command` to the shell and
++	 * returns the subprocess information structure, containing file descriptors
++	 * of the process.
++	 * Also stores the subprocess information to the internal pool to track
++	 * its status and responses.
++	 * `name` - the string than should contain an unique name of the subprocess.
++	 * This name will be passed to the PROCESS_RESPONSE event handler
++	 * to distinguish running subprocesses.
++	 * `invalidator` - a pointer to the pointer which shows that the subprocess
++	 * is invalid when set to NULL. When subprocess dies, it is being set to NULL.
++	 * If the pointer is set to NULL by an external code, the subprocess will be
++	 * killed on the next main loop iteration. */
++	int pin[2], pout[2], perr[2];
++	pid_t pid = (pid_t)-1;
++	if (pipe(perr) == -1) goto closeerr;
++	if (pipe(pout) == -1) goto closeouterr;
++	if (pipe(pin) == -1) goto closeall;
++	pid = fork();
++	if (pid == -1)
++		vis_info_show(vis, "fork failed: %s", strerror(errno));
++	else if (pid == 0){ /* child process */
++		sigset_t sigterm_mask;
++		sigemptyset(&sigterm_mask);
++		sigaddset(&sigterm_mask, SIGTERM);
++		if (sigprocmask(SIG_UNBLOCK, &sigterm_mask, NULL) == -1) {
++			fprintf(stderr, "failed to reset signal mask");
++			exit(EXIT_FAILURE);
++		}
++		dup2(pin[0], STDIN_FILENO);
++		dup2(pout[1], STDOUT_FILENO);
++		dup2(perr[1], STDERR_FILENO);
++	}
++	else { /* main process */
++		Process *new = new_in_pool();
++		if (!new) {
++			vis_info_show(vis, "Can not create process: %s", strerror(errno));
++			goto closeall;
++		}
++		new->name = strdup(name);
++		if (!new->name) {
++			vis_info_show(vis, "Can not copy process name: %s", strerror(errno));
++			/* pop top element (which is `new`) from the pool */
++			destroy(&process_pool);
++			goto closeall;
++		}
++		new->outfd = pout[0];
++		new->errfd = perr[0];
++		new->inpfd = pin[1];
++		new->pid = pid;
++		new->invalidator = invalidator;
++		close(pin[0]);
++		close(pout[1]);
++		close(perr[1]);
++		return new;
++	}
++closeall:
++	close(pin[0]);
++	close(pin[1]);
++closeouterr:
++	close(pout[0]);
++	close(pout[1]);
++closeerr:
++	close(perr[0]);
++	close(perr[1]);
++	if (pid == 0) { /* start command in child process */
++		execlp(vis->shell, vis->shell, "-c", command, (char*)NULL);
++		fprintf(stderr, "exec failed: %s(%d)\n", strerror(errno), errno);
++		exit(1);
++	}
++	else
++		vis_info_show(vis, "process creation failed: %s", strerror(errno));
++	return NULL;
++}
++
++int vis_process_before_tick(fd_set *readfds) {
++	/* Adds file descriptors of currently running subprocesses to the `readfds`
++	 * to track their readiness and returns maximum file descriptor value
++	 * to pass it to the `pselect` call */
++	Process **pointer = &process_pool;
++	int maxfd = 0;
++	while (*pointer) {
++		Process *current = *pointer;
++		if (current->outfd != -1) {
++			FD_SET(current->outfd, readfds);
++			maxfd = maxfd < current->outfd ? current->outfd : maxfd;
++		}
++		if (current->errfd != -1) {
++			FD_SET(current->errfd, readfds);
++			maxfd = maxfd < current->errfd ? current->errfd : maxfd;
++		}
++		pointer = &current->next;
++	}
++	return maxfd;
++}
++
++void read_and_fire(Vis* vis, int fd, const char *name, ResponseType rtype) {
++	/* Reads data from the given subprocess file descriptor `fd` and fires
++	 * the PROCESS_RESPONSE event in Lua with given subprocess `name`,
++	 * `rtype` and the read data as arguments. */
++	static char buffer[MAXBUFFER];
++	size_t obtained = read(fd, &buffer, MAXBUFFER-1);
++	if (obtained > 0)
++		vis_lua_process_response(vis, name, buffer, obtained, rtype);
++}
++
++void vis_process_tick(Vis *vis, fd_set *readfds) {
++	/* Checks if `readfds` contains file discriptors of subprocesses from
++	 * the pool. If so, reads the data from them and fires corresponding events.
++	 * Also checks if subprocesses from pool is dead or need to be killed then
++	 * raises event or kills it if necessary. */
++	Process **pointer = &process_pool;
++	while (*pointer) {
++		Process *current = *pointer;
++		if (current->outfd != -1 && FD_ISSET(current->outfd, readfds))
++			read_and_fire(vis, current->outfd, current->name, STDOUT);
++		if (current->errfd != -1 && FD_ISSET(current->errfd, readfds))
++			read_and_fire(vis, current->errfd, current->name, STDERR);
++		int status;
++		pid_t wpid = waitpid(current->pid, &status, WNOHANG);
++		if (wpid == -1)	vis_message_show(vis, strerror(errno));
++		else if (wpid == current->pid) goto just_destroy;
++		else if(!*(current->invalidator)) goto kill_and_destroy;
++		pointer = &current->next;
++		continue;
++kill_and_destroy:
++		kill(current->pid, SIGTERM);
++		waitpid(current->pid, &status, 0);
++just_destroy:
++		if (WIFSIGNALED(status))
++			vis_lua_process_response(vis, current->name, NULL, WTERMSIG(status), SIGNAL);
++		else
++			vis_lua_process_response(vis, current->name, NULL, WEXITSTATUS(status), EXIT);
++		destroy(pointer);
++	}
++}
+--- /dev/null
++++ b/vis-subprocess.h
+@@ -0,0 +1,23 @@
++#ifndef VIS_SUBPROCESS_H
++#define VIS_SUBPROCESS_H
++#include "vis-core.h"
++#include <sys/select.h>
++
++struct Process {
++	char *name;
++	int outfd;
++	int errfd;
++	int inpfd;
++	pid_t pid;
++	void **invalidator;
++	struct Process *next;
++};
++
++typedef struct Process Process;
++typedef enum { STDOUT, STDERR, SIGNAL, EXIT } ResponseType;
++
++Process *vis_process_communicate(Vis *, const char *command, const char *name,
++                                 void **invalidator);
++int vis_process_before_tick(fd_set *);
++void vis_process_tick(Vis *, fd_set *);
++#endif
+--- a/vis.c
++++ b/vis.c
+@@ -28,6 +28,7 @@
+ #include "vis-core.h"
+ #include "sam.h"
+ #include "ui.h"
++#include "vis-subprocess.h"
+ 
+ 
+ static void macro_replay(Vis *vis, const Macro *macro);
+@@ -1412,7 +1413,8 @@ int vis_run(Vis *vis) {
+ 
+ 		vis_update(vis);
+ 		idle.tv_sec = vis->mode->idle_timeout;
+-		int r = pselect(1, &fds, NULL, NULL, timeout, &emptyset);
++		int r = pselect(vis_process_before_tick(&fds) + 1, &fds, NULL, NULL,
++		                timeout, &emptyset);
+ 		if (r == -1 && errno == EINTR)
+ 			continue;
+ 
+@@ -1420,6 +1422,7 @@ int vis_run(Vis *vis) {
+ 			/* TODO save all pending changes to a ~suffixed file */
+ 			vis_die(vis, "Error in mainloop: %s\n", strerror(errno));
+ 		}
++		vis_process_tick(vis, &fds);
+ 
+ 		if (!FD_ISSET(STDIN_FILENO, &fds)) {
+ 			if (vis->mode->idle)

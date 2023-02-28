@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 27 15:41:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0:
+  Features:
+  * Add GLSL language support #490 #824
+  Bug fixes:
+  * Fix Markdown / Jupyter markup not getting counted #937
+  * upgrade gix to 0.36.1 to avoid breakage. #965
+
+-------------------------------------------------------------------
 Fri Jan 20 07:48:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.15.1:

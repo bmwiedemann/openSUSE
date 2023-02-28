@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 28 09:20:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230228T001259Z:
+  * tier-add:  --force flag to ignore in use check (#4481)
+  * subnet: Avoid general hard timeout for requests (#4478)
+  * inspect: Avoid memory usage in subnet upload (#4477)
+  * Print custom info in trace (#4476)
+
+-------------------------------------------------------------------
 Wed Feb 22 12:33:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230216T192011Z:

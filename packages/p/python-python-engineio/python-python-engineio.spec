@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-engineio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-engineio
 Version:        4.3.4
@@ -25,6 +24,8 @@ Summary:        EngineIO server
 License:        MIT
 URL:            http://github.com/miguelgrinberg/python-engineio/
 Source:         https://github.com/miguelgrinberg/python-engineio/archive/v%{version}.tar.gz#/python-engineio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch gh#miguelgrinberg/python-engineio@ac3911356fbe
+Patch0:         python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +48,7 @@ BuildRequires:  %{python_module websocket-client >= 0.54.0}
 Python implementation of the Engine.IO realtime server.
 
 %prep
-%setup -q -n python-engineio-%{version}
+%autosetup -p1 -n python-engineio-%{version}
 
 %build
 %python_build

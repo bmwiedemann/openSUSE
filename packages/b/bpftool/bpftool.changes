@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 22 08:21:22 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Rebase binutils-2.40.patch for v6.2.
+
+-------------------------------------------------------------------
 Wed Feb 15 09:11:12 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add binutils-2.40.patch where we need to explicitly link against

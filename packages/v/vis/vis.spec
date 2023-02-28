@@ -1,7 +1,7 @@
 #
 # spec file for package vis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ Group:          Productivity/Text/Editors
 URL:            https://github.com/martanne/vis
 Source0:        https://github.com/martanne/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/martanne/vis-test/releases/download/v%{test_version}/vis-test-%{test_version}.tar.gz
+# PATCH-FEATURE-UPSTREAM 675-nb-subproc-runner.patch gh#martanne/vis!675 mcepl@suse.com
+# adds support for the non-blocking subprocess runner
+Patch0:         675-nb-subproc-runner.patch
 BuildRequires:  libselinux-devel
 BuildRequires:  libtermkey-devel
 BuildRequires:  lua-devel
@@ -35,6 +38,7 @@ BuildRequires:  tar
 BuildRequires:  tre-devel
 Requires:       lua
 ExclusiveArch:  x86_64 %{ix86}
+Suggests:       par_text
 
 %description
 Vis aims to be a modern, legacy free, simple yet efficient editor combining the strengths of both vi(m) and sam.
@@ -42,7 +46,8 @@ Vis aims to be a modern, legacy free, simple yet efficient editor combining the 
 It extends vi's modal editing with built-in support for multiple cursors/selections and combines it with sam's structural regular expression based command language.
 
 %prep
-%setup -q
+%autosetup -p1
+
 tar -xC test/ --strip-components 1 -f %{SOURCE1}
 
 %build

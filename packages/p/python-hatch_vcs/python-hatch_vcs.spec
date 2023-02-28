@@ -33,10 +33,10 @@ URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-hatchling >= 0.21.0
 # https://github.com/ofek/hatch-vcs/issues/8
 Requires:       (python-setuptools_scm >= 6.4.0)
-Provides:       python-hatch-vcs = %{version}-%{info}
+Requires:       python-hatchling >= 0.21.0
+Provides:       python-hatch-vcs = %{version}-%{release}
 BuildArch:      noarch
 # SECTION build
 BuildRequires:  %{python_module hatchling >= 0.21.0}
@@ -44,8 +44,9 @@ BuildRequires:  %{python_module pip}
 # /SECTION
 %if %{with test}
 # SECTION test
-BuildRequires:  %{python_module setuptools_scm >= 6.4.0}
+BuildRequires:  %{python_module hatch_vcs = %{version}}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm >= 6.4.0}
 BuildRequires:  git
 # /SECTION
 %endif
@@ -61,13 +62,14 @@ This provides a plugin for Hatch that uses your preferred version control system
 %pyproject_wheel
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
 %if %{with test}
 %pytest tests
-rm -rf %{buildroot}
 %endif
 
 %if %{without test}

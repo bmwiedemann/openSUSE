@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 23 18:58:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.9.1
+  * bugfix in Checkpoint Management-Status
+- Update to version 10.9.0
+  * bugfix in Versa Peersubsystem
+- Update to version 10.8.0.3
+  * prepare some cisco sdwan stuff
+  tweak huawei Entity-Table snmp parameters
+- Update to version 10.8.0.2
+  * force interface-vlan-count-macs to cache vlans
+- Update to version 10.8.0.1
+  * fix an undef in interface-vlan-count-macs
+- Update to version 10.8
+  * add mode interface-vlan-count-macs
+- Update to version 10.7.1
+  * tune snmp maxreps for bgp
+- Update to version 10.7
+  * rewrite detection of Juniper
+- Update to version 10.6.1
+  * improves ios hardware checks
+- Update to version 10.6
+  * add support for Viptela
+
+-------------------------------------------------------------------
 Sun Dec 18 22:20:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.5

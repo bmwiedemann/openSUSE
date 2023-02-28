@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 22:55:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.24:
+  * Fix segfault when ignoring older OIDs
+
+-------------------------------------------------------------------
 Mon Jan  2 17:43:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.23:

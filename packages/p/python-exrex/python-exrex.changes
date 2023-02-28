@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 19:06:55 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- add fix-python-3.11.patch from upstream PR #65 to fix the build on Python 3.11.
+
+-------------------------------------------------------------------
 Thu Feb 25 19:25:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add fix-setup-encoding.patch to fix encoding issues in setup.py

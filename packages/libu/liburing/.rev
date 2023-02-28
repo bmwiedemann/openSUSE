@@ -121,4 +121,12 @@
 - drop handle-eintr.patch, test-xattr-don-t-rely-on-NUL-termination.patch: upstream</comment>
     <requestid>1060106</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>82dab56ae53eb5b441fe3f0a15d426f1</srcmd5>
+    <version>2.3</version>
+    <time>1677584866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067010</requestid>
+  </revision>
 </revisionlist>

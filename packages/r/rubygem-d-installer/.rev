@@ -50,4 +50,14 @@
 - Use a dedicated D-Bus server (gh#yast/d-installer#384).</comment>
     <requestid>1066104</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1a4169469d1b0fb3d3c66ba8f513fe4f</srcmd5>
+    <version>0.7</version>
+    <time>1677584910</time>
+    <user>dimstar_suse</user>
+    <comment>- Add D-Bus API for iSCSI.
+- Fix the building process.
+</comment>
+    <requestid>1067904</requestid>
+  </revision>
 </revisionlist>

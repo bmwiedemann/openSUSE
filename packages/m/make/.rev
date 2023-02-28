@@ -431,4 +431,25 @@ now with changed patch tag, even though the patch might be accepted by upstream 
 - sigpipe-fatal.patch: Handle SIGPIPE as a fatal signal (forwarded request 1037051 from Andreas_Schwab)</comment>
     <requestid>1037052</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3e2b3b13416326c74312791411f59c9b</srcmd5>
+    <version>4.4.1</version>
+    <time>1677584873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to make 4.4.1
+  * WARNING: Backward-incompatibility!
+    In previous releases it was not well-defined when updates to MAKEFLAGS made
+    inside a makefile would be visible.  This release ensures they are visible
+    immediately, even when invoking $(shell ...) functions.
+  * New feature: Parallel builds of archives
+    Previously it was not possible to use parallel builds with archives.  It is
+    still not possible using the built-in rules, however you can now override
+    the built-in rules with a slightly different set of rules and use parallel
+    builds with archive creation.
+  * Previously target-specific variables would inherit their &quot;export&quot; capability
+    from parent target-specific variables even if they were marked private.  Now
+    private parent target-specific variables have no affect.
+- sigpipe-fatal.patch: removed (forwarded request 1067929 from Andreas_Schwab)</comment>
+    <requestid>1067930</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Feb 26 00:08:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Prepare test multiflavors for python311, but skip python311
+  * Numba is not ready for python 3.11 yet gh#numba/numba#8304
+
+-------------------------------------------------------------------
+Fri Feb 17 09:06:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.2.0
+  ## Enhancements
+  * Update numeric_only default in quantile for pandas 2.0
+    (GH#9854) Irina Truong
+  * Make repartition a no-op when divisions match (GH#9924) James
+    Bourbeau
+  * Update datetime_is_numeric behavior in describe for pandas 2.0
+    (GH#9868) Irina Truong
+  * Update value_counts to return correct name in pandas 2.0
+    (GH#9919) Irina Truong
+  * Support new axis=None behavior in pandas 2.0 for certain
+    reductions (GH#9867) James Bourbeau
+  * Filter out all-nan RuntimeWarning at the chunk level for nanmin
+    and nanmax (GH#9916) Julia Signell
+  * Fix numeric meta_nonempty index creation for pandas 2.0
+    (GH#9908) James Bourbeau
+  * Fix DataFrame.info() tests for pandas 2.0 (GH#9909) James
+    Bourbeau
+  ## Bug Fixes
+  * Fix GroupBy.value_counts handling for multiple groupby columns
+    (GH#9905) Charles Blackmon-Luca
+
+-------------------------------------------------------------------
 Sun Feb  5 13:29:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.1.1

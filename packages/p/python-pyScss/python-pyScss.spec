@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyScss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyScss
 Version:        1.4.0
@@ -27,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Kronuz/pyScss
 Source:         https://github.com/Kronuz/pyScss/archive/refs/tags/v%{version}.tar.gz#/pyScss-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch gh#Kronuz/pyScss#426
+Patch0:         python-311.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -55,7 +56,7 @@ The canonical syntax reference is part of the Ruby Sass documentation:
 http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
 
 %prep
-%setup -q -n pyScss-%{version}
+%autosetup -p1 -n pyScss-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -81,7 +82,8 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/scss
+%{python_sitearch}/pyScss-%{version}*-info
 %python_alternative %{_bindir}/pyscss
 %python_alternative %{_bindir}/less2scss
 

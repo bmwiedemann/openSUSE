@@ -27,21 +27,12 @@
 
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.10.9
+Version:        3.11.0
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: taken from https://github.com/mindflayer/python-mocket/pull/181
-Patch1:         0007-Switching-to-httptools.parser.HttpRequestParser.patch
-Patch2:         0008-Disabling-tests-for-pook-when-testing-Python-3.11.patch
-Patch3:         0009-Removing-DeprecationWarning-all-over-the-place.patch
-Patch4:         0010-Python-3.11-needs-an-async-decorator.patch
-Patch5:         0012-Removing-async-timeout-dependency.patch
-Patch6:         0013-Refactoring-using-event_loop-fixture.patch
-Patch7:         0014-Refactoring-using-tempfile-as-a-context-manager.patch
-Patch8:         0015-Skip-those-tests-and-see-what-happens-to-the-rest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -109,7 +100,7 @@ donttest="$donttest or test_asyncio_record_replay"
 donttest="$donttest or test_truesendall_with_dump_from_recording"
 %endif
 # these fail after the python 3.11 patches
-donttest="$donttest or test_http_session or test_https_session or test_httprettish_session"
+#donttest="$donttest or test_http_session or test_https_session or test_httprettish_session"
 %pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore}
 %endif
 

@@ -1,0 +1,46 @@
+From 44712bfb1350a509581a5834d9fa8aebcd9434db Mon Sep 17 00:00:00 2001
+From: Michael Souza <119819695+sumslogs@users.noreply.github.com>
+Date: Sat, 10 Dec 2022 21:52:13 -0800
+Subject: [PATCH] Fix: Import error sre_parse
+
+sre_parse module was moved in py3.11
+---
+ exrex.py | 6 +++++-
+ tests.py | 6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/exrex.py b/exrex.py
+index 24c0de9..be74f92 100644
+--- a/exrex.py
++++ b/exrex.py
+@@ -22,7 +22,11 @@
+     from future_builtins import map, range
+ except:
+     pass
+-from re import match, sre_parse, U
++from re import match, U
++try:
++    import re._parser as sre_parse
++except ImportError: # Python < 3.11
++    from re import sre_parse
+ from itertools import tee
+ from random import choice, randint
+ from types import GeneratorType
+diff --git a/tests.py b/tests.py
+index 8a8a63e..ef0d42c 100644
+--- a/tests.py
++++ b/tests.py
+@@ -20,8 +20,12 @@
+ 
+ from exrex import generate, count, getone, CATEGORIES, simplify
+ import re
+-import sre_parse
++try: 
++    import re._parser as sre_parse
++except ImportError: # Python < 3.11
++    from re import sre_parse
+ from sys import exit, version_info
++
+ IS_PY3 = version_info[0] == 3
+ 
+ RS = {

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 10 07:49:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- /run/radvd/ is owned by the radvd group, not daemon
+- Drop redundant directory creation in %post
+
+-------------------------------------------------------------------
 Sun Jul 18 15:40:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator

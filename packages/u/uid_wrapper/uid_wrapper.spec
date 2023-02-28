@@ -33,6 +33,7 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        uid_wrapper.keyring
+Patch0:         uid_wrapper-fix-cmocka-1.1.6+-support.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf

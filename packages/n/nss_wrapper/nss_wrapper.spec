@@ -33,6 +33,7 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        https://cryptomilk.org/gpgkey-8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D.gpg#/%{name}.keyring
 Source3:        %{name}-rpmlintrc
+Patch0:         nss_wrapper-fix-cmocka-1.1.6+-support.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  netcfg

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-dynaconf
-Version:        3.1.4
+Version:        3.1.11
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/rochacbruno/dynaconf
 Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#dynaconf/dynaconf#830
+Patch0:         support-python-311.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,8 +67,6 @@ The dynamic configurator for your Python Project
 # require running docker with the server
 rm tests/test_vault.py
 
-rm -r dynaconf/vendor_src/
-
 %build
 %python_build
 
@@ -78,11 +76,8 @@ rm -r dynaconf/vendor_src/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-mkdir -p ~/bin
-%python_expand cp -p %{buildroot}%{_bindir}/dynaconf-%{$python_bin_suffix} ~/bin/dynaconf
-export PATH=~/bin:$PATH
 export LANG=en_US.UTF-8
-/usr/sbin/redis-server &
+/usr/sbin/redis-server --stop-writes-on-bgsave-error no &
 export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
 %pytest tests/
 

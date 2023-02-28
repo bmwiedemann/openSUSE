@@ -309,4 +309,17 @@
   * Parse multi-byte unicode chars correctly + docs #936</comment>
     <requestid>1059900</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f65805edfac6efe560355ae6f4b7082</srcmd5>
+    <version>2.16.0~0</version>
+    <time>1677584929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.0:
+  Features:
+  * Add GLSL language support #490 #824
+  Bug fixes:
+  * Fix Markdown / Jupyter markup not getting counted #937
+  * upgrade gix to 0.36.1 to avoid breakage. #965</comment>
+    <requestid>1068034</requestid>
+  </revision>
 </revisionlist>

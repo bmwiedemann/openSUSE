@@ -1,7 +1,7 @@
 #
 # spec file for package cosign
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           cosign
-Version:        1.13.1
+Version:        2.0.0
 Release:        0
-%define revision d1c6336475b4be26bb7fb52d97f56ea0a1767f9f
+%define revision 69c9b37f2a021326c67b2aa9552c790e12ae5fb8
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign

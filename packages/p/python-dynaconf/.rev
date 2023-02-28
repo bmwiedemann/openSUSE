@@ -133,4 +133,41 @@
   * Read all secrets under a vault path. [Peng Yin]</comment>
     <requestid>987787</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed3ea27277ba534e6e12e677d0188d44</srcmd5>
+    <version>3.1.11</version>
+    <time>1677584949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.11:
+  * New data key casing must adapt to existing key casing (#795)
+  * Parse negative numbers from envvar Fix #799 and Fix #585 (#802)
+  * Fix get command with Django (#804)
+  * Allow merge_unique on lists when merge_enabled=True (#810)
+  * Rebind current env when forced for Pytest Fix #728 (#809)
+  * AUTO_CAST can be enabled on instance (#811)
+  * Fix #807 Use client.auth.approle.login instead of client.auth_approle (#808)
+  * Fix #768 of kv property depreciation from client object (#769)
+  * Feature/detect casting comb token from converters (#784)
+  * Using filter_strategy in env_loader to fix #760 (#767)
+  * Fix cli init command for flask (#705) (#774)
+  * Add unique label when merging lists to fix issue #653 (#661)
+  * Add new validation to fix issue #585 (#667)
+  * Add support for Python 3.10 (#665)
+  * Added `dynaconf get` command to cli (#730)
+  * Fix FlaskConfig.setdefault (#706)
+  * Force PYTHONIOENCODING to utf-8 to fix #664 (#672)
+  * Fix Issue 662 Lazy validation (#675)
+  * Load vault secrets from environment less stores or which are not
+    written by dynaconf (#725)
+  * Added validate_only_current_env to validator (issue #734) (#736)
+  * Makes Django/Flask kwargs case insensitive (#721)
+  * Fix #595 namedtuples are no more converted to BoxList (#623)
+  * description and type annotation for validator (#634)
+  * Add support for Python 3.9 (#618)
+  * Add type annotations for dynaconf.utils (#450)
+  * feat: add filter strategy with PrefixFilter (#625)
+  * Add a warning if `--env` is passed to `init` (#629)
+- Add patch support-python-311.patch:</comment>
+    <requestid>1068107</requestid>
+  </revision>
 </revisionlist>

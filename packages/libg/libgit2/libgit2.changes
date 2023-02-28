@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 26 17:14:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5.2:
+  * Improve SSH key handling functionality: examine all keys in
+    known_hosts files for matches, to support remote hosts with
+    multiple key types
+
+-------------------------------------------------------------------
 Sat Jan 21 09:32:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:

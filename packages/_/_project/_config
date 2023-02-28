@@ -786,6 +786,7 @@ Prefer: -libavc1394-devel-32bit
 Prefer: -libbasicobjects-devel-32bit
 Prefer: -libblkid-devel-32bit
 Prefer: -libbotan-devel-32bit
+Prefer: -libbrotli-devel-32bit
 Prefer: -libbz2-devel-32bit
 Prefer: -libcelt-devel-32bit
 Prefer: -libcmocka-devel-32bit

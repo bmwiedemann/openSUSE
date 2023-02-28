@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 24 12:40:55 UTC 2023 - pgajdos@suse.com
+
+- Use %bcond_without aspell, ref ALP push for as few mandatory
+  dependencies as possible/ability to turn off dependencies.
+
+-------------------------------------------------------------------
 Fri Jan  7 13:32:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add missing closing parentheses for packageand Supplements.

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:35:45 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to make 4.4.1
+  * WARNING: Backward-incompatibility!
+    In previous releases it was not well-defined when updates to MAKEFLAGS made
+    inside a makefile would be visible.  This release ensures they are visible
+    immediately, even when invoking $(shell ...) functions.
+  * New feature: Parallel builds of archives
+    Previously it was not possible to use parallel builds with archives.  It is
+    still not possible using the built-in rules, however you can now override
+    the built-in rules with a slightly different set of rules and use parallel
+    builds with archive creation.
+  * Previously target-specific variables would inherit their "export" capability
+    from parent target-specific variables even if they were marked private.  Now
+    private parent target-specific variables have no affect.
+- sigpipe-fatal.patch: removed
+
+-------------------------------------------------------------------
 Mon Nov 21 09:39:53 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - reset-sigpipe.patch: Removed

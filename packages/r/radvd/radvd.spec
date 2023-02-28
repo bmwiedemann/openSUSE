@@ -1,7 +1,7 @@
 #
 # spec file for package radvd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,8 +124,6 @@ interface eth0
 EOF
 	echo "created %{_sysconfdir}/radvd.conf with ULA prefix $prefix"
 fi
-#
-install -d -m 755 -o radvd /run/radvd
 %tmpfiles_create %{_tmpfilesdir}/%name.conf
 
 %service_add_post %{name}.service
@@ -137,8 +135,7 @@ install -d -m 755 -o radvd /run/radvd
 %service_del_preun %{name}.service
 
 %files
-%defattr(-,root,root)
-%ghost %dir %attr(0755,radvd,daemon) /run/radvd/
+%ghost %dir %attr(0755,radvd,radvd) /run/radvd/
 %ghost %config(noreplace) %{_sysconfdir}/radvd.conf
 %{_fillupdir}/sysconfig.radvd
 %{_sbindir}/radvd

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 03:35:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.16.0:
+  * Added support for wlroots 0.16.x
+
+-------------------------------------------------------------------
 Sun Feb 12 00:14:15 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove fix-include-paths.patch

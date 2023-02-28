@@ -848,6 +848,7 @@ Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        no-vk-video-decoding.patch
 BuildRequires:  c_compiler
+Requires:       this-is-only-for-build-envs
 
 %description
 FFmpeg is a multimedia framework.
@@ -865,6 +866,7 @@ Conflicts:      libavutil57
 Conflicts:      libpostproc56
 Conflicts:      libswresample4
 Conflicts:      libswscale6
+Requires:       this-is-only-for-build-envs
 
 %description libs
 FFmpeg is a multimedia framework.
@@ -889,6 +891,7 @@ Conflicts:      libswresample-devel
 Provides:       libswscale-devel = %version-%release
 Conflicts:      libswscale-devel
 Requires:       %name-libs = %version-%release
+Requires:       this-is-only-for-build-envs
 
 %description devel
 FFmpeg is a multimedia framework.

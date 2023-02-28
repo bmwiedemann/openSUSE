@@ -350,4 +350,14 @@
     <comment></comment>
     <requestid>944751</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>b544086563fcccf84272d31469317f75</srcmd5>
+    <version>2.2.15</version>
+    <time>1677584875</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %bcond_without aspell, ref ALP push for as few mandatory
+  dependencies as possible/ability to turn off dependencies.
+</comment>
+    <requestid>1067820</requestid>
+  </revision>
 </revisionlist>

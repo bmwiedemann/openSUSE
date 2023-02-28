@@ -107,4 +107,14 @@
 - drop merged_pr_408.patch, pr_411.patch (upstream)</comment>
     <requestid>1007522</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4d469717ca045aa09eda8f5cfdf555bb</srcmd5>
+    <version>1.4.0</version>
+    <time>1677584917</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#Kronuz/pyScss#426
+</comment>
+    <requestid>1068000</requestid>
+  </revision>
 </revisionlist>

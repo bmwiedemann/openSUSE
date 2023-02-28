@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:27:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete rebuild-extension.patch
+- Update to 0.9.9
+  * Support for CPython 3.11
+- 0.9.8
+  * Support for 3.10 added
+
+-------------------------------------------------------------------
 Mon Feb 21 02:48:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch rebuild-extension.patch:

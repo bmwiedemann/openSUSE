@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Feb 27 12:31:33 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.0.0 (jsc#SLE-23879)
+  Breaking Changes:
+
+  * insecure-skip-tlog-verify: rename and adapt the cert expiration check (#2620)
+  * Deprecate --certificate-email flag. Make --certificate-identity and -… (#2411)
+
+  Enhancements:
+
+  * Change go module name to github.com/sigstore/cosign/v2 for Cosign 2.0 (#2544)
+  * Allow users to pass in a path for the --identity-token flag (#2538)
+  * Breaking change: Respect tlog-upload=false, default to true (#2505)
+  * Support outputing a certificate without uploading to the tlog (#2506)
+  * Attestation/Blob signing and verification using a RFC3161 time-stamping server (#2464)
+  * respect tlog-upload flag with TSA (#2474)
+  * Better feedback if specifying incompatible argument on cosign sign --attachment (#2449)
+  * Support TSA and Rekor verifications (#2463)
+  * add support for tsa signing and verification of images (#2460)
+  * cosign policy sign: remove experimental flag and make keyless signing default (#2459)
+  * Remove experimental mode from cosign attest and verify-attestation (#2458)
+  * Remove experimental mode from sign-blob and verify-blob (#2457)
+  * Add --offline flag to force offline verification (#2427)
+  * Air gap support (#2299)
+  * Breaking change: Change SCT verification behavior to default to enforcement (#2400)
+  * Breaking change: remove --force flag from sign and attest and rely on --yes flag to skip confirmation (#2399)
+  * Breaking change: replace --no-tlog-upload flag with --tlog-upload flag (#2397)
+  * Remove experimental flag from cosign sign and cosign verify (#2387)
+  * verify: remove SIGSTORE_TRUST_REKOR_API_PUBLIC_KEY test env var for using a key from rekor's API (#2362)
+  * Add warning to use digest instead of tags to other cosign commands (#2650)
+  * Fix up UI messages (#2629)
+  * Remove hardcoded Fulcio from output (#2621)
+  * Fix missing privacy statement, print in multiple locations (#2622)
+  * feat: allows custom key names for import-key-pair (#2587)
+  * feat: support keyless verification for verify-blob-attestation (#2525)
+  * attest-blob: add functionality for keyless signing (#2515)
+  * Rego: add support for custom error/warning messages when evaluating rego rules (#2577)
+  * feat: add debug information to cert validation error (#2579)
+  * Support non-Sigstore TSA requests (#2708)
+  * Add COSIGN_OCI_EXPERIMENTAL, push .sig/.sbom using OCI 1.1+ digest tag (#2684)
+  * Output certificate in bundle when entry is not uploaded to Rekor (#2715)
+  * attach signature and attach sbom must use STDIN to upload raw string (#2637)
+  * add generate-key-pair GitHub Enterprise server support (#2676)
+  * add in format string for warning (#2699)
+  * Support for fetching Fulcio certs with self-managed key (#2532)
+  * 2476 predicate type download (#2484)
+
+  Bug Fixes:
+
+  * Fix the file existence check. (#2552)
+  * Fix timestamp verification, add verify-blob tests (#2527)
+  * Fix(verify): Consolidate certificate expiry logic (#2504)
+  * Updates to Timestamp signing and verification (#2499)
+  * Fix: removes attestation payload from attest-blob's output & no base64 encoding (#2498)
+  * Fix path for e2e-tests badge (#2490)
+  * Fix spdx json media type (#2479)
+  * Fix sct verificaction (#2426)
+  * Fix: panic with unsigned local image (#2656)
+  * Make sure a cert passed in via --cert matches the bundle cert (#2652)
+  * Fix: fix github oidc post submit test (#2594)
+  * Fix: add enhanced error messages for failing verification with TUF targets (#2589)
+  * Fix: Add missing schemes to cosign predicate types. (#2717)
+  * Fix: Drop the CosignPredicate wrapper around SBOM attestations. (#2718)
+  * Fix prompts with Windows line endings (#2674)
+
+-------------------------------------------------------------------
 Tue Oct 18 12:37:41 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - update to 1.13.1:

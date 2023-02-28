@@ -114,6 +114,9 @@ fi
 if ! pkg-config --variable=supported_protocols libcurl|grep -qw SCP; then
     test_flags="$test_flags or ssh"
 fi
+if ! pkg-config --variable=supported_protocols libcurl|grep -qw HTTP3; then
+    test_flags="$test_flags or http_version_3"
+fi
 # test_getinfo are failing with new bottle
 %pytest_arch -s -k "not ($test_flags or test_getinfo)"
 rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*

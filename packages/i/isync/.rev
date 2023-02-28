@@ -86,4 +86,15 @@ this time with COPYING, ChangeLog, AUTHORS and README</comment>
     <comment></comment>
     <requestid>949393</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>01690962485ebbd1029201e89cbdfc02</srcmd5>
+    <version>1.4.4</version>
+    <time>1677584979</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
+  * Some mail servers do not send a close notification
+    (SSL_shutdown()) before closing the TCP socket. This workaround
+    makes isync handles the situation more gracefully (boo#1208166).</comment>
+    <requestid>1068135</requestid>
+  </revision>
 </revisionlist>

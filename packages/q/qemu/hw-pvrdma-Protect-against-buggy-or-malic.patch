@@ -1,0 +1,40 @@
+From: Yuval Shaia <yuval.shaia.ml@gmail.com>
+Date: Sun, 3 Apr 2022 12:52:34 +0300
+Subject: hw/pvrdma: Protect against buggy or malicious guest driver
+
+Guest driver might execute HW commands when shared buffers are not yet
+allocated.
+This could happen on purpose (malicious guest) or because of some other
+guest/host address mapping error.
+We need to protect againts such case.
+
+Fixes: CVE-2022-1050
+
+Reported-by: Raven <wxhusst@gmail.com>
+Signed-off-by: Yuval Shaia <yuval.shaia.ml@gmail.com>
+Message-Id: <20220403095234.2210-1-yuval.shaia.ml@gmail.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+(cherry picked from commit 31c4b6fb0293e359f9ef8a61892667e76eea4c99)
+Resolves: bsc#1197653
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/rdma/vmw/pvrdma_cmd.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
+index da7ddfa548ffb349dd3d695a6766..89db963c4683909242f3a7c68c03 100644
+--- a/hw/rdma/vmw/pvrdma_cmd.c
++++ b/hw/rdma/vmw/pvrdma_cmd.c
+@@ -796,6 +796,12 @@ int pvrdma_exec_cmd(PVRDMADev *dev)
+ 
+     dsr_info = &dev->dsr_info;
+ 
++    if (!dsr_info->dsr) {
++            /* Buggy or malicious guest driver */
++            rdma_error_report("Exec command without dsr, req or rsp buffers");
++            goto out;
++    }
++
+     if (dsr_info->req->hdr.cmd >= sizeof(cmd_handlers) /
+                       sizeof(struct cmd_handler)) {
+         rdma_error_report("Unsupported command");

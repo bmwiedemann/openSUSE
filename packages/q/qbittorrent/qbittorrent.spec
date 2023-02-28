@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later

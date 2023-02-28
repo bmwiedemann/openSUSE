@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-pytools
-Version:        2022.1
+Version:        2022.1.14
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
@@ -31,14 +30,13 @@ BuildRequires:  %{python_module numpy >= 1.6.0}
 BuildRequires:  %{python_module platformdirs >= 2.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  ( python3-dataclasses >= 0.7 if python3-base <= 3.6 )
-BuildRequires:  ( python36-dataclasses >= 0.7 if python36-base )
 Requires:       python-numpy >= 1.6.0
 Requires:       python-platformdirs
-%if %{python_version_nodots} <= 36
-Requires:       python-dataclasses >= 0.7
+%if %{python_version_nodots} < 311
+Requires:       python-typing_extensions
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -72,6 +70,7 @@ nonetheless, here's what's on offer:
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytools
+%{python_sitelib}/pytools-%{version}*-info
 
 %changelog
