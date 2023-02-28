@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-recoveryservicessiterecovery
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 Name:           python-azure-mgmt-recoveryservicessiterecovery
 Version:        1.0.0.0
 Release:        0
-Summary:        Microsoft Azure Recoveryservicessiterecovery Management Client Library for Python
+Summary:        MS Azure Recoveryservicessiterecovery Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python

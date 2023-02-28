@@ -32,4 +32,12 @@
   proper upgrade from previous version 1.0.0b2 (forwarded request 1043815 from glaubitz)</comment>
     <requestid>1043897</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f2dce2428940c6841d69564b8c3cd2f6</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1677590825</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068150 from glaubitz)</comment>
+    <requestid>1068179</requestid>
+  </revision>
 </revisionlist>
