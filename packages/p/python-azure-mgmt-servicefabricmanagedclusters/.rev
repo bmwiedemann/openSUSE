@@ -8,4 +8,12 @@
   + Version 1.0.0</comment>
     <requestid>892430</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a75dda06278ee8b679227b416521bf73</srcmd5>
+    <version>1.0.0</version>
+    <time>1677590826</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068153 from glaubitz)</comment>
+    <requestid>1068180</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 28 10:27:53 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Trim Summary to not exceed 79 characters
+
+-------------------------------------------------------------------
 Mon May 10 09:43:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
