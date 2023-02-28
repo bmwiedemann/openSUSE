@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 28 10:10:39 UTC 2023 - nyslay@gmail.com
+
+- Update to version 0.30.3:
+  * v0.30.3
+  * make pomodoro usable again
+  * Update NEWS.md
+  * Update NEWS.md
+  * readme: list all possible `button` values
+  * setting a click handler without action disables default action
+  * net: do not panic if ip addr has wrong length
+  * Fix typos (#1738)
+  * music: fix typo for 'play' and 'preferred' (#1754)
+  * net: select first available local ip
+
+-------------------------------------------------------------------
+Tue Feb 28 10:07:48 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.30.3
+  * New service_status block: monitor the state of a (systemd) service.
+  * New tea_timer block: a simple timer.
+  * When blocks error they no longer take down the entire bar. Instead, they now enter error mode: "X" will be shown and on left click the full error message will be shown in the bar.
+  * apt block has new ignore_phased_updates option. (#1717)
+  * battery now supports empty_threshold to specify below which percentage the battery is considered empty, and empty_format to use a custom format when the battery is empty.
+  * battery now supports not_charging_format config option. (#1685)
+  * custom_dbus block can now be used more than once in your config.
+  * custom block has new config option persistent which runs a command in the background and updates the block text for each received output line.
+  * focused_window block now supports most wlroots-based compositors.
+  * music block now supports controlling and displaying the volume for individual players (#1722)
+  * music block now has interface_name_exclude and improved playerctld support (#1710)
+  * net block now supports regex for device (#1601)
+  * notify block now has support for SwayNotificationCenter via driver = "swaync" (#1662)
+  * weather block now supports using met.no as an info source (#1577)
+  * More blocks now support format option (custom, custom_dbus, hueshift, maildir, notmuch, pomodoro, time, uptime)
+  * Some blocks now have debug logs which can be enabled like so: RUST_LOG=block=debug i3status-rs where "block" is the block name.
+  * Default click actions for blocks can now be remapped (#1686)
+
+-------------------------------------------------------------------
 Thu Nov 24 00:52:34 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
 
 - Update to 0.22.0
