@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstd
-Version:        1.5.2.6
+Version:        1.5.4.0
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause
@@ -39,8 +38,8 @@ BuildRequires:  pkgconfig(libzstd) >= 1.4.4
 ZSTD Bindings for Python.
 
 %prep
-%setup -q -n zstd-%{version}
-%patch0 -p1
+%autosetup -p1 -n zstd-%{version}
+
 rm -rf zstd/
 # do not test the version matching, we don't really need exact version of
 # zstd here
@@ -61,6 +60,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/zstd*.so
+%{python_sitearch}/zstd-%{version}*-info
 
 %changelog

@@ -133,4 +133,14 @@
     <comment></comment>
     <requestid>1010360</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a9e86becc8a75cc9e5be8eed16143a17</srcmd5>
+    <version>1.5.4.0</version>
+    <time>1677593711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.4.0:
+  - Update libzstd to 1.5.4
+</comment>
+    <requestid>1068190</requestid>
+  </revision>
 </revisionlist>
