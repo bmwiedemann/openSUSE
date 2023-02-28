@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230227" schemaversion="4.1">
+<image name="OBS__MicroOS___20230228" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230227</productvar>
+      <productvar name="VERSION">20230228</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230227,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230228,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230227/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230228/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -330,7 +330,6 @@
       <repopackage name="fcitx-zhuyin"/>
       <repopackage name="fcoe-utils" arch="x86_64"/>
       <repopackage name="fdupes" arch="x86_64"/>
-      <repopackage name="ffmpeg-5-mini-libs"/>
       <repopackage name="ffmpegthumbs" arch="x86_64"/>
       <repopackage name="file"/>
       <repopackage name="file-magic"/>
@@ -865,8 +864,12 @@
       <repopackage name="libavahi-common3"/>
       <repopackage name="libavahi-core7" arch="x86_64"/>
       <repopackage name="libavahi-glib1"/>
+      <repopackage name="libavcodec59"/>
+      <repopackage name="libavfilter8" arch="x86_64"/>
+      <repopackage name="libavformat59"/>
       <repopackage name="libavif15"/>
       <repopackage name="libavtp0"/>
+      <repopackage name="libavutil57"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
       <repopackage name="libbd_btrfs2"/>
@@ -936,6 +939,7 @@
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
       <repopackage name="libclucene-shared1"/>
+      <repopackage name="libcodec2-1_0"/>
       <repopackage name="libcollection4" arch="x86_64"/>
       <repopackage name="libcolord-gtk4-1" arch="x86_64"/>
       <repopackage name="libcolord2"/>
@@ -1080,6 +1084,7 @@
       <repopackage name="libgjs0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1" arch="x86_64"/>
+      <repopackage name="libglslang12" arch="x86_64"/>
       <repopackage name="libGLU1" arch="x86_64"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libgme0"/>
@@ -1104,7 +1109,7 @@
       <repopackage name="libgoa-1_0-0"/>
       <repopackage name="libgoa-backend-1_0-1"/>
       <repopackage name="libgobject-2_0-0"/>
-      <repopackage name="libgomp1" arch="x86_64"/>
+      <repopackage name="libgomp1"/>
       <repopackage name="libgooglepinyin0"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11"/>
@@ -1430,6 +1435,7 @@
       <repopackage name="libmtp-udev"/>
       <repopackage name="libmtp9"/>
       <repopackage name="libmwaw-0_3-3"/>
+      <repopackage name="libmysofa1" arch="x86_64"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension4" arch="x86_64"/>
       <repopackage name="libncurses6"/>
@@ -1511,7 +1517,7 @@
       <repopackage name="libpeas-gtk-1_0-0" arch="x86_64"/>
       <repopackage name="libpeas-lang" arch="x86_64"/>
       <repopackage name="libpeas-loader-python3" arch="x86_64"/>
-      <repopackage name="libpgm-5_2-0" arch="x86_64"/>
+      <repopackage name="libpgm-5_2-0"/>
       <repopackage name="libphonenumber8" arch="x86_64"/>
       <repopackage name="libphonon4qt5" arch="x86_64"/>
       <repopackage name="libpinyin-data"/>
@@ -1538,6 +1544,7 @@
       <repopackage name="libportal-gtk3-1" arch="x86_64"/>
       <repopackage name="libportal-gtk4-1" arch="x86_64"/>
       <repopackage name="libportaudio2"/>
+      <repopackage name="libpostproc56" arch="x86_64"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libproc2-0" arch="x86_64"/>
       <repopackage name="libprocps8" arch="x86_64"/>
@@ -1660,10 +1667,12 @@
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
+      <repopackage name="librist4"/>
       <repopackage name="librmt1_0" arch="x86_64"/>
       <repopackage name="librpmbuild9" arch="x86_64"/>
       <repopackage name="librscg1_0" arch="x86_64"/>
       <repopackage name="librsvg-2-2"/>
+      <repopackage name="librubberband2" arch="x86_64"/>
       <repopackage name="libruby3_2-3_2" arch="x86_64"/>
       <repopackage name="libsamba-policy0-python3" arch="x86_64"/>
       <repopackage name="libsamplerate0" arch="x86_64"/>
@@ -1685,6 +1694,7 @@
       <repopackage name="libserializer"/>
       <repopackage name="libsgutils2-1_48-2" arch="x86_64"/>
       <repopackage name="libsha1detectcoll1" arch="x86_64"/>
+      <repopackage name="libshaderc_shared1" arch="x86_64"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
       <repopackage name="libsignon-qt5-1" arch="x86_64"/>
       <repopackage name="libslang2" arch="x86_64"/>
@@ -1699,7 +1709,7 @@
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
       <repopackage name="libsnmp40" arch="x86_64"/>
-      <repopackage name="libsodium23" arch="x86_64"/>
+      <repopackage name="libsodium23"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsoftokn3-hmac"/>
       <repopackage name="libsolv-tools" arch="x86_64"/>
@@ -1710,9 +1720,11 @@
       <repopackage name="libsoup-lang"/>
       <repopackage name="libsoup2-lang"/>
       <repopackage name="libsource-highlight4" arch="x86_64"/>
+      <repopackage name="libsoxr0"/>
       <repopackage name="libspandsp3"/>
       <repopackage name="libspeechd2" arch="x86_64"/>
       <repopackage name="libspeex1"/>
+      <repopackage name="libSPIRV-Tools-2023_1" arch="x86_64"/>
       <repopackage name="libsqlite3-0"/>
       <repopackage name="libsratom-0-0"/>
       <repopackage name="libsrt1_5"/>
@@ -1734,6 +1746,8 @@
       <repopackage name="libsubid4"/>
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libSvtAv1Enc1" arch="x86_64"/>
+      <repopackage name="libswresample4"/>
+      <repopackage name="libswscale6" arch="x86_64"/>
       <repopackage name="libsynctex2" arch="x86_64"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1"/>
@@ -1787,9 +1801,12 @@
       <repopackage name="libva-glx2"/>
       <repopackage name="libva-x11-2"/>
       <repopackage name="libva2"/>
+      <repopackage name="libvdpau1"/>
       <repopackage name="libverto1"/>
+      <repopackage name="libvidstab1_1" arch="x86_64"/>
       <repopackage name="libvisio-0_1-1"/>
       <repopackage name="libvisual-0_4-0"/>
+      <repopackage name="libvmaf1" arch="x86_64"/>
       <repopackage name="libvmtools0" arch="x86_64"/>
       <repopackage name="libvorbis0"/>
       <repopackage name="libvorbisenc2"/>
@@ -1912,10 +1929,11 @@
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1" arch="x86_64"/>
       <repopackage name="libzhuyin15"/>
+      <repopackage name="libzimg2" arch="x86_64"/>
       <repopackage name="libzio1" arch="x86_64"/>
       <repopackage name="libzip5" arch="x86_64"/>
       <repopackage name="libzmf-0_0-0"/>
-      <repopackage name="libzmq5" arch="x86_64"/>
+      <repopackage name="libzmq5"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzvbi0"/>
       <repopackage name="libZXing3"/>
@@ -2877,7 +2895,7 @@
       <repopackage name="yelp-xsl" arch="x86_64"/>
       <repopackage name="zenity" arch="x86_64"/>
       <repopackage name="zenity-lang" arch="x86_64"/>
-      <repopackage name="zeromq-tools" arch="x86_64"/>
+      <repopackage name="zeromq-tools"/>
       <repopackage name="zip" arch="x86_64"/>
       <repopackage name="zisofs-tools" arch="x86_64"/>
       <repopackage name="zstd"/>
