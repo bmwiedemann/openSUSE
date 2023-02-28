@@ -1,7 +1,0 @@
-<package name="mangler" project="openSUSE:Factory">
-  <title>Ventrilo Compatible Client for Linux</title>
-  <description>Mangler is an open source VOIP client capable of connecting to
-Ventrilo 3.x servers. It is capable of performing almost all standard
-user functionality found in a Windows Ventrilo client.</description>
-  <devel project="GNOME:Apps" package="mangler"/>
-</package>
