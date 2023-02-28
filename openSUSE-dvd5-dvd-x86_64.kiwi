@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230227" schemaversion="4.1">
+<image name="OBS__openSUSE___20230228" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230227</productvar>
+      <productvar name="VERSION">20230228</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230227,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230228,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230227/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230228/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -386,7 +386,6 @@
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -479,7 +478,6 @@
       <repopackage name="fetchmail"/>
       <repopackage name="fetchmailconf"/>
       <repopackage name="ffmpeg-5" arch="x86_64"/>
-      <repopackage name="ffmpeg-5-mini-libs"/>
       <repopackage name="ffmpegthumbnailer"/>
       <repopackage name="ffmpegthumbs"/>
       <repopackage name="file"/>
@@ -1177,7 +1175,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
       <repopackage name="kross"/>
@@ -1294,15 +1292,15 @@
       <repopackage name="libavahi-ui-gtk3-0"/>
       <repopackage name="libavc1394-0"/>
       <repopackage name="libavcodec58_134"/>
-      <repopackage name="libavcodec59" arch="x86_64"/>
+      <repopackage name="libavcodec59"/>
       <repopackage name="libavdevice59" arch="x86_64"/>
-      <repopackage name="libavfilter8" arch="x86_64"/>
+      <repopackage name="libavfilter8"/>
       <repopackage name="libavformat58_76"/>
-      <repopackage name="libavformat59" arch="x86_64"/>
+      <repopackage name="libavformat59"/>
       <repopackage name="libavif15"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
-      <repopackage name="libavutil57" arch="x86_64"/>
+      <repopackage name="libavutil57"/>
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
@@ -2202,7 +2200,7 @@
       <repopackage name="libmygpo-qt5-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmypaint0"/>
-      <repopackage name="libmysofa1" arch="x86_64"/>
+      <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension4"/>
       <repopackage name="libnbd0" arch="x86_64"/>
@@ -2347,7 +2345,7 @@
       <repopackage name="libportaudio2"/>
       <repopackage name="libportmidi2" arch="x86_64"/>
       <repopackage name="libpostproc55_9"/>
-      <repopackage name="libpostproc56" arch="x86_64"/>
+      <repopackage name="libpostproc56"/>
       <repopackage name="libpotrace0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
@@ -2525,12 +2523,12 @@
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
       <repopackage name="librevenge-stream-0_0-0"/>
-      <repopackage name="librist4" arch="x86_64"/>
+      <repopackage name="librist4"/>
       <repopackage name="librmt1_0"/>
       <repopackage name="librpmbuild9"/>
       <repopackage name="librscg1_0"/>
       <repopackage name="librsvg-2-2"/>
-      <repopackage name="librubberband2" arch="x86_64"/>
+      <repopackage name="librubberband2"/>
       <repopackage name="libruby3_1-3_1"/>
       <repopackage name="libruby3_2-3_2"/>
       <repopackage name="libsamba-policy0-python3"/>
@@ -2637,9 +2635,9 @@
       <repopackage name="libsvrcore0" arch="x86_64"/>
       <repopackage name="libSvtAv1Enc1" arch="x86_64"/>
       <repopackage name="libswresample3_9"/>
-      <repopackage name="libswresample4" arch="x86_64"/>
+      <repopackage name="libswresample4"/>
       <repopackage name="libswscale5_9"/>
-      <repopackage name="libswscale6" arch="x86_64"/>
+      <repopackage name="libswscale6"/>
       <repopackage name="libsynctex2"/>
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
@@ -2727,7 +2725,7 @@
       <repopackage name="libvdpau1"/>
       <repopackage name="libverto1"/>
       <repopackage name="libverto1-32bit" arch="x86_64"/>
-      <repopackage name="libvidstab1_1" arch="x86_64"/>
+      <repopackage name="libvidstab1_1"/>
       <repopackage name="libvirglrenderer1"/>
       <repopackage name="libvirt-client"/>
       <repopackage name="libvirt-daemon"/>
@@ -2756,7 +2754,7 @@
       <repopackage name="libvisual-0_4-0"/>
       <repopackage name="libvlc5"/>
       <repopackage name="libvlccore9"/>
-      <repopackage name="libvmaf1" arch="x86_64"/>
+      <repopackage name="libvmaf1"/>
       <repopackage name="libvmtools0"/>
       <repopackage name="libvncclient1"/>
       <repopackage name="libvncserver1"/>
@@ -2927,7 +2925,7 @@
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzhuyin15"/>
-      <repopackage name="libzimg2" arch="x86_64"/>
+      <repopackage name="libzimg2"/>
       <repopackage name="libzio1"/>
       <repopackage name="libzip5"/>
       <repopackage name="libzmf-0_0-0"/>
@@ -3228,9 +3226,6 @@
       <repopackage name="open-isns"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3973,6 +3968,8 @@
       <repopackage name="ruby3.2-rubygem-cri"/>
       <repopackage name="ruby3.2-rubygem-css_parser"/>
       <repopackage name="ruby3.2-rubygem-csv"/>
+      <repopackage name="ruby3.2-rubygem-d-installer"/>
+      <repopackage name="ruby3.2-rubygem-d-installer-cli"/>
       <repopackage name="ruby3.2-rubygem-debase-ruby_core_source"/>
       <repopackage name="ruby3.2-rubygem-debug_inspector"/>
       <repopackage name="ruby3.2-rubygem-delayed_job"/>

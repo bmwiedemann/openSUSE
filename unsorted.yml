@@ -287,7 +287,7 @@ unsorted:
   - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
-  - SVT-AV1-devel: [x86_64] # devel package of dvd:libSvtAv1Enc1 
+  - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc1 
   - SampleICC 
   - SecLists 
   - ServiceReport 
@@ -303,6 +303,7 @@ unsorted:
   - ThePEG-devel: [x86_64] 
   - ThePEG-libs: [x86_64] 
   - UEFITool 
+  - UltimateDailyWallpaper 
   - VFlib3 
   - VFlib3-devel 
   - Vc-devel 
@@ -3277,6 +3278,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3917,6 +3919,7 @@ unsorted:
   - ffmpeg-5-libswresample-devel 
   - ffmpeg-5-libswscale-devel 
   - ffmpeg-5-mini-devel 
+  - ffmpeg-5-mini-libs 
   - ffmpeg-5-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
@@ -8810,6 +8813,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -10298,7 +10302,6 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134-32bit: [x86_64] 
-  - libavcodec59: [i586] 
   - libavcodec59-32bit: [x86_64] 
   - libavdevice58_13 
   - libavdevice58_13-32bit: [x86_64] 
@@ -10306,10 +10309,8 @@ unsorted:
   - libavdevice59-32bit: [x86_64] 
   - libavfilter7_110 
   - libavfilter7_110-32bit: [x86_64] 
-  - libavfilter8: [i586] 
   - libavfilter8-32bit: [x86_64] 
   - libavformat58_76-32bit: [x86_64] 
-  - libavformat59: [i586] 
   - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
@@ -10320,7 +10321,6 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit: [x86_64] 
   - libavutil56_70-32bit: [x86_64] 
-  - libavutil57: [i586] 
   - libavutil57-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
@@ -10586,6 +10586,7 @@ unsorted:
   - libbrasero-utils3-1 
   - libbrial3 
   - libbrotli-devel 
+  - libbrotli-devel-32bit: [x86_64] 
   - libbrotlienc1-32bit: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
@@ -13033,7 +13034,6 @@ unsorted:
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
   - libmysofa-devel 
-  - libmysofa1: [i586] 
   - libmysofa1-32bit: [x86_64] 
   - libmysqlcppconn-devel 
   - libmysqlcppconn8-2 
@@ -13765,7 +13765,6 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2: [i586] 
   - libpostproc55_9-32bit: [x86_64] 
-  - libpostproc56: [i586] 
   - libpostproc56-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
@@ -14337,7 +14336,6 @@ unsorted:
   - librime-private-devel 
   - librime1 
   - librist-devel 
-  - librist4: [i586] 
   - librist4-32bit: [x86_64] 
   - librk0 
   - librlog-devel 
@@ -14370,7 +14368,6 @@ unsorted:
   - librttopo1 
   - librttr_core0_9_6 
   - librubberband-devel 
-  - librubberband2: [i586] 
   - librubberband2-32bit: [x86_64] 
   - librvngabw-0_0-0 
   - librvngabw-devel 
@@ -14832,10 +14829,8 @@ unsorted:
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
-  - libswresample4: [i586] 
   - libswresample4-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
-  - libswscale6: [i586] 
   - libswscale6-32bit: [x86_64] 
   - libsybdb5 
   - libsybdb5-32bit: [x86_64] 
@@ -15243,8 +15238,6 @@ unsorted:
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libvdpau_virtio_gpu 
   - libvdpau_virtio_gpu-32bit: [x86_64] 
-  - libventrilo3-0 
-  - libventrilo3-devel 
   - libverdict1_4 
   - libverto-devel 
   - libverto-devel-32bit: [x86_64] 
@@ -15258,7 +15251,6 @@ unsorted:
   - libvhdi-tools 
   - libvhdi1 
   - libvidstab-devel 
-  - libvidstab1_1: [i586] 
   - libvidstab1_1-32bit: [x86_64] 
   - libvigraimpex11 
   - libvips-devel 
@@ -15296,7 +15288,6 @@ unsorted:
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
   - libvma9: [x86_64] 
-  - libvmaf1: [i586] 
   - libvmaf1-32bit: [x86_64] 
   - libvmdk-devel 
   - libvmdk-tools 
@@ -15799,7 +15790,6 @@ unsorted:
   - libzen0-32bit: [x86_64] 
   - libzfp1 
   - libzhuyin15-32bit: [x86_64] 
-  - libzimg2: [i586] 
   - libzimg2-32bit: [x86_64] 
   - libzinnia0 
   - libzio-devel 
@@ -16513,7 +16503,6 @@ unsorted:
   - mandoc 
   - mandoc-bin 
   - mandown 
-  - mangler 
   - mangohud 
   - mangohud-32bit: [x86_64] 
   - manpageeditor 
@@ -18993,11 +18982,14 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -20156,6 +20148,7 @@ unsorted:
   - perl-DateTime-Format-SQLite 
   - perl-DateTime-Format-Strptime 
   - perl-DateTime-Format-W3CDTF 
+  - perl-DateTime-HiRes 
   - perl-DateTime-Locale 
   - perl-DateTime-TimeZone 
   - perl-DateTime-Tiny 
@@ -20979,6 +20972,7 @@ unsorted:
   - perl-Test-MockObject 
   - perl-Test-MockRandom 
   - perl-Test-MockTime 
+  - perl-Test-MockTime-HiRes 
   - perl-Test-Modern 
   - perl-Test-Mojo-Pg 
   - perl-Test-More-UTF8 
@@ -25979,6 +25973,7 @@ unsorted:
   - python311-Flask-RESTful 
   - python311-Flask-RSTPages 
   - python311-Flask-SQLAlchemy 
+  - python311-Flask-SocketIO 
   - python311-Flask-Testing 
   - python311-Flask-WTF 
   - python311-Flask-doc 
@@ -26169,6 +26164,7 @@ unsorted:
   - python311-adapt-parser 
   - python311-adblock 
   - python311-addict 
+  - python311-aeidon 
   - python311-aenum 
   - python311-aexpect 
   - python311-afdko 
@@ -26358,6 +26354,7 @@ unsorted:
   - python311-azure-communication-chat 
   - python311-azure-communication-email 
   - python311-azure-communication-identity 
+  - python311-azure-communication-networktraversal 
   - python311-azure-communication-nspkg 
   - python311-azure-communication-phonenumbers 
   - python311-azure-communication-sms 
@@ -26522,6 +26519,7 @@ unsorted:
   - python311-azure-mgmt-rdbms 
   - python311-azure-mgmt-recoveryservices 
   - python311-azure-mgmt-recoveryservicesbackup 
+  - python311-azure-mgmt-recoveryservicessiterecovery 
   - python311-azure-mgmt-redhatopenshift 
   - python311-azure-mgmt-redis 
   - python311-azure-mgmt-redisenterprise 
@@ -26543,6 +26541,7 @@ unsorted:
   - python311-azure-mgmt-servermanager 
   - python311-azure-mgmt-servicebus 
   - python311-azure-mgmt-servicefabric 
+  - python311-azure-mgmt-servicefabricmanagedclusters 
   - python311-azure-mgmt-servicelinker 
   - python311-azure-mgmt-servicenetworking 
   - python311-azure-mgmt-signalr 
@@ -26574,6 +26573,7 @@ unsorted:
   - python311-azure-monitor-ingestion 
   - python311-azure-monitor-nspkg 
   - python311-azure-monitor-query 
+  - python311-azure-multiapi-storage 
   - python311-azure-nspkg 
   - python311-azure-purview-account 
   - python311-azure-purview-administration 
@@ -26855,16 +26855,6 @@ unsorted:
   - python311-dash-html-components 
   - python311-dash-renderer 
   - python311-dash-table 
-  - python311-dask 
-  - python311-dask-array 
-  - python311-dask-bag 
-  - python311-dask-complete 
-  - python311-dask-dataframe 
-  - python311-dask-delayed 
-  - python311-dask-diagnostics 
-  - python311-dask-distributed 
-  - python311-dask-dot 
-  - python311-dask-test 
   - python311-databases 
   - python311-datashader 
   - python311-dateparser 
@@ -26911,7 +26901,6 @@ unsorted:
   - python311-distlib 
   - python311-distob 
   - python311-distorm3 
-  - python311-distributed 
   - python311-distro 
   - python311-distroinfo 
   - python311-distutils-extra 
@@ -27052,6 +27041,7 @@ unsorted:
   - python311-dukpy 
   - python311-dukpy-kovidgoyal 
   - python311-dulwich 
+  - python311-dynaconf 
   - python311-easy-thumbnails 
   - python311-easydev 
   - python311-easygui 
@@ -27102,6 +27092,7 @@ unsorted:
   - python311-exiv2 
   - python311-expects 
   - python311-expiringdict 
+  - python311-exrex 
   - python311-extension-helpers 
   - python311-extras 
   - python311-extratools 
@@ -27764,6 +27755,7 @@ unsorted:
   - python311-nibabel 
   - python311-nilearn: [i586] 
   - python311-nine 
+  - python311-nltk 
   - python311-nocasedict 
   - python311-nocaselist 
   - python311-node-semver 
@@ -28033,6 +28025,7 @@ unsorted:
   - python311-pyPEG2 
   - python311-pyRFC3339 
   - python311-pyRXP 
+  - python311-pyScss 
   - python311-pyVows 
   - python311-pyacoustid 
   - python311-pyaes 
@@ -28193,6 +28186,7 @@ unsorted:
   - python311-pyrad 
   - python311-pyramid 
   - python311-pyramid-chameleon 
+  - python311-pyramid-debugtoolbar 
   - python311-pyramid-mako 
   - python311-pyreadstat 
   - python311-pyroma 
@@ -28283,6 +28277,7 @@ unsorted:
   - python311-pytest-plus 
   - python311-pytest-profiling 
   - python311-pytest-pycodestyle 
+  - python311-pytest-pyramid-server 
   - python311-pytest-qt 
   - python311-pytest-random-order 
   - python311-pytest-randomly 
@@ -28331,6 +28326,7 @@ unsorted:
   - python311-python-cjson 
   - python311-python-consul 
   - python311-python-coveralls 
+  - python311-python-crfsuite 
   - python311-python-crontab 
   - python311-python-daemon 
   - python311-python-datamatrix: [i586] 
@@ -28341,6 +28337,7 @@ unsorted:
   - python311-python-doi 
   - python311-python-dotenv 
   - python311-python-editor 
+  - python311-python-engineio 
   - python311-python-fedora 
   - python311-python-for-android 
   - python311-python-gammu 
@@ -28381,6 +28378,7 @@ unsorted:
   - python311-python-rpm-spec 
   - python311-python-slugify 
   - python311-python-snappy 
+  - python311-python-socketio 
   - python311-python-socks 
   - python311-python-sofa 
   - python311-python-sql 
@@ -28408,6 +28406,7 @@ unsorted:
   - python311-pytoolconfig 
   - python311-pytoolconfig-global 
   - python311-pytoolconfig-validation 
+  - python311-pytools 
   - python311-pytricia 
   - python311-pytz 
   - python311-pytz-deprecation-shim 
@@ -28539,6 +28538,7 @@ unsorted:
   - python311-robot-detection 
   - python311-robotframework 
   - python311-roifile 
+  - python311-rollbar 
   - python311-roman 
   - python311-rope 
   - python311-rpcq 
@@ -28775,6 +28775,7 @@ unsorted:
   - python311-tableprint 
   - python311-tables 
   - python311-tablib 
+  - python311-tabpy 
   - python311-tabulate 
   - python311-tap.py 
   - python311-tasklib 
@@ -28854,6 +28855,8 @@ unsorted:
   - python311-transaction 
   - python311-transip 
   - python311-transitions 
+  - python311-translate-toolkit 
+  - python311-translation-finder 
   - python311-translationstring 
   - python311-translitcodec 
   - python311-treq 
@@ -28979,6 +28982,7 @@ unsorted:
   - python311-webassets 
   - python311-webcolors 
   - python311-webencodings 
+  - python311-weblate-language-data 
   - python311-weblate-schemas 
   - python311-weblib 
   - python311-webruntime 
@@ -37321,7 +37325,6 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
-  - ruby3.2-rubygem-d-installer-cli 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
