@@ -1,7 +1,7 @@
 #
 # spec file for package resolv_wrapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        resolv_wrapper.keyring
 Source3:        %{name}-rpmlintrc
+
+Patch0:         resolv_wrapper-fix-cmocka-1.1.6+-support.patch
 
 BuildRequires:  cmake
 BuildRequires:  glibc-devel
