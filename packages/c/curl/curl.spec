@@ -1,7 +1,7 @@
 #
 # spec file for package curl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.87.0
+Version:        7.88.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl

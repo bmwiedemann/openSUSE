@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Feb 20 10:35:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 7.88.1:
+  * Bugfix release
+- Drop upstreamed patch:
+  * curl-fix-uninitialized-value-in-tests.patch
+
+-------------------------------------------------------------------
+Wed Feb 15 08:39:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.88.0: [bsc#1207990, CVE-2023-23914]
+  [bsc#1207991, CVE-2023-23915] [bsc#1207992, CVE-2023-23916]
+  * Security fixes:
+    - CVE-2023-23914: HSTS ignored on multiple requests
+    - CVE-2023-23915: HSTS amnesia with --parallel
+    - CVE-2023-23916: HTTP multi-header compression denial of service
+  * Changes:
+    - curl.h: add CURL_HTTP_VERSION_3ONLY
+    - share: add sharing of HSTS cache among handles
+    - src: add --http3-only
+    - tool_operate: share HSTS between handles
+    - urlapi: add CURLU_PUNYCODE
+    - writeout: add %{certs} and %{num_certs}
+  * Bugfixes:
+    - cf-socket: keep sockaddr local in the socket filters
+    - cfilters:Curl_conn_get_select_socks: use the first non-connected filter
+    - curl.h: allow up to 10M buffer size
+    - curl.h: mark CURLSSLBACKEND_MESALINK as deprecated
+    - curl/websockets.h: extend the websocket frame struct
+    - curl: output warning at --verbose output for debug-enabled version
+    - curl_free.3: fix return type of `curl_free`
+    - curl_log: for failf/infof and debug logging implementations
+    - dict: URL decode the entire path always
+    - docs/DEPRECATE.md: deprecate gskit
+    - easyoptions: fix header printing in generation script
+    - haxproxy: send before TLS handhshake
+    - hsts.d: explain hsts more
+    - hsts: handle adding the same host name again
+    - HTTP/[23]: continue upload when state.drain is set
+    - http: decode transfer encoding first
+    - http_aws_sigv4: remove typecasts from HMAC_SHA256 macro
+    - http_proxy: do not assign data->req.p.http use local copy
+    - lib: connect/h2/h3 refactor
+    - libssh2: try sha2 algos for hostkey methods
+    - md4: fix build with GnuTLS + OpenSSL v1
+    - ngtcp2: replace removed define and stop using removed function
+    - noproxy: support for space-separated names is deprecated
+    - nss: implement data_pending method
+    - openldap: fix missing sasl symbols at build in specific configs
+    - openssl: adapt to boringssl's error code type
+    - openssl: don't ignore CA paths when using Windows CA store (redux)
+    - openssl: don't log raw record headers
+    - openssl: make the BIO_METHOD a local variable in the connection filter
+    - openssl: only use CA_BLOB if verifying peer
+    - openssl: remove attached easy handles from SSL instances
+    - openssl: store the CA after first send (ClientHello)
+    - setopt: use >, not >=, when checking if uarg is larger than uint-max
+    - smb: return error on upload without size
+    - socketpair: allow localhost MITM sniffers
+    - strdup: name it Curl_strdup
+    - tool_getparam: fix hiding of command line secrets
+    - tool_operate: fix error codes on bad URL & OOM
+    - tool_operate: repair --rate
+    - transfer: break the read loop when RECV is cleared
+    - typecheck: accept expressions for option/info parameters
+    - urlapi: avoid Curl_dyn_addf() for hex outputs
+    - urlapi: skip path checks if path is just "/"
+    - urlapi: skip the extra dedotdot alloc if no dot in path
+    - urldata: cease storing TLS auth type
+    - urldata: make 'ftp_create_missing_dirs' depend on FTP || SFTP
+    - urldata: make set.http200aliases conditional on HTTP being present
+    - urldata: move the cookefilelist to the 'set' struct
+    - urldata: remove unused struct fields, made more conditional
+    - vquic: stabilization and improvements
+    - vtls: fix hostname handling in filters
+    - vtls: manage current easy handle in nested cfilter calls
+    - vtls: use ALPN HTTP/1.0 when HTTP/1.0 is used
+  * Rebase libcurl-ocloexec.patch
+  * Fix regression tests: f1d09231adfc695d15995b9ef2c8c6e568c28091
+    - runtests: fix "uninitialized value $port"
+    - Add curl-fix-uninitialized-value-in-tests.patch
+
+-------------------------------------------------------------------
 Wed Dec 21 08:19:23 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 7.87.0: 
