@@ -1081,4 +1081,20 @@ Tue Jan  10 15:30:05 UTC 2017 - maiku.fabian@gmail.com
     <comment></comment>
     <requestid>1066877</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>2acbfd6a5cedc6d62434c2897db7717e</srcmd5>
+    <version>2.22.0</version>
+    <time>1677584935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068049</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>534ac6cf22b039134b6b759b6a0ed871</srcmd5>
+    <version>2.22.1</version>
+    <time>1677597634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068207</requestid>
+  </revision>
 </revisionlist>
