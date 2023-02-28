@@ -152,4 +152,12 @@
     README.rst file provided with this package (forwarded request 1055787 from glaubitz)</comment>
     <requestid>1055791</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5c84ff861a7e56760cf1102f28a0b56e</srcmd5>
+    <version>1.0.0</version>
+    <time>1677590653</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068158 from glaubitz)</comment>
+    <requestid>1068174</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 Name:           python-azure-multiapi-storage
 Version:        1.0.0
 Release:        0
-Summary:        Microsoft Azure Storage Client Library for Python - with Multi API version Support
+Summary:        MS Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
