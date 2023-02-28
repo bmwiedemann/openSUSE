@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 24 21:42:37 UTC 2023 - Eugene Popov <popov895@ukr.net>
+
+- Add 104-playback-bar.patch: Backport fix for the playback bar (commit 60771fe7)
+
+-------------------------------------------------------------------
 Mon Dec 12 11:00:12 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Do not apply vlc.a52.patch if liba52 is < 0.8.0
