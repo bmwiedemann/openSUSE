@@ -39,4 +39,12 @@
     <comment>- Remove py2 dependency as we build only py3 package</comment>
     <requestid>795764</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c6ea3f191c40a0728e803f25879c78fa</srcmd5>
+    <version>4.10</version>
+    <time>1677591591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068183</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-debugtoolbar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,33 +17,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # nothing provides python2-pyramid needed by python2-pyramid-mako
 %define skip_python2 1
 Name:           python-pyramid-debugtoolbar
-Version:        4.6.1
+Version:        4.10
 Release:        0
 Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://docs.pylonsproject.org
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_debugtoolbar/pyramid_debugtoolbar-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hupper}
-BuildRequires:  %{python_module plaster-pastedeploy}
-BuildRequires:  %{python_module plaster}
-BuildRequires:  %{python_module pyramid >= 1.2}
+BuildRequires:  %{python_module pyramid >= 1.4}
 BuildRequires:  %{python_module pyramid-mako >= 0.3.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sqlalchemy}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
-Requires:       python-pyramid >= 1.2
+Requires:       python-pyramid >= 1.4
 Requires:       python-pyramid-mako >= 0.3.1
-Requires:       python-repoze.lru
 BuildArch:      noarch
 %python_subpackages
 
