@@ -740,4 +740,21 @@
   * feat(python): add dependency locations for Pipfile.lock (#3614)</comment>
     <requestid>1068414</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>38ef23fcf54777bd9ad0ac8af1e4a176</srcmd5>
+    <version>0.38.1</version>
+    <time>1677794682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.1:
+  * feat(misconf): Add support to show policy bundle version (#3743)
+  * fix(python): fix error with optional dependencies in pyproject.toml (#3741)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.210 to 1.44.212 (#3740)
+  * add id for package.json files (#3750)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.18 to 1.6.19 (#3738)
+  * chore(deps): bump actions/cache from 3.2.4 to 3.2.6 (#3725)
+  * chore(deps): bump github.com/google/go-containerregistry (#3731)
+  * chore(deps): bump go.etcd.io/bbolt from 1.3.6 to 1.3.7 (#3732)
+  * chore(deps): bump alpine from 3.17.1 to 3.17.2 (#3723)</comment>
+    <requestid>1069011</requestid>
+  </revision>
 </revisionlist>
