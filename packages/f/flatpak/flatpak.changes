@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb 27 14:07:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.3:
+  + When splitting an upgrade into two steps (download without
+    installing, and then upgrade without allowing further
+    downloads) like GNOME Software does, if an app is marked EOL
+    and superseded by a replacement, don't remove the superseded
+    app in the first step, which would result in the replacement
+    incorrectly not being installed.
+  + Fix a crash when --socket=gpg-agent is used.
+  + Fix a crash when listing apps if one of them is broken or
+    misconfigured.
+  + If an app has invalid syntax in its overrides or metadata,
+    mention the filename in the error message.
+  + Unset $GDK_BACKEND for apps, ensuring GTK apps with
+    --socket=fallback-x11 can work.
+  + Never try to export a parent of reserved directories as a
+    --filesystem, for example /run, which would prevent the app
+    from starting.
+  + Never try to export a --filesystem below /run/flatpak or
+    /run/host, which could similarly prevent the app from starting.
+  + The above change also fixes apps not starting if a --filesystem
+    is a symlink to the root directory.
+  + Show a warning when the --filesystem exists but cannot be
+    shared with the sandbox.
+- Drop flatpak-fix-gpg-agent-double-free.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Feb 23 08:41:51 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add flatpak-fix-gpg-agent-double-free.patch: stdout stream of a

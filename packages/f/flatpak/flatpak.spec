@@ -34,7 +34,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -44,9 +44,9 @@ Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/
 Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
 Source3:        https://flathub.org/repo/flathub.flatpakrepo
+# PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
-# PATCH-FIX-UPSTREAM flatpak-fix-gpg-agent-double-free.patch bsc#1207434 alynx.zhou@suse.com -- Fix double free in in handling gpg-agent sockets
-Patch1:         flatpak-fix-gpg-agent-double-free.patch
+
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
 BuildRequires:  docbook-xsl-stylesheets
