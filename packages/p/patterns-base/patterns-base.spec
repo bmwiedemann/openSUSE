@@ -425,7 +425,7 @@ Recommends:     sed
 Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
-Recommends:     systemd-sysvinit
+Recommends:     systemd-coredump
 Recommends:     time
 Recommends:     timezone
 # autoconfig new printers - bnc#808014

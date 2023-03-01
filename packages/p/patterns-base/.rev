@@ -804,4 +804,20 @@
     <comment></comment>
     <requestid>1002306</requestid>
   </revision>
+  <revision rev="93" vrev="39">
+    <srcmd5>44f9e395583da4f5d76aceea76797b49</srcmd5>
+    <version>20200505</version>
+    <time>1677683619</time>
+    <user>dimstar_suse</user>
+    <comment>- enhanced_base:
+  + Drop systemd-sysvinit recommends: that package has been renamed
+    to systemd-sysvcompat, but should not be needed on modern
+    systems anymore.
+  + Add systemd-coredump recommends: if already we see crashes,
+    it'd be good if users can report usable bugs (boo#1208713).
+
+  of reboot-needed updates)
+- Have the base pattern recommend service(network)</comment>
+    <requestid>1068127</requestid>
+  </revision>
 </revisionlist>

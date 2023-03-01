@@ -1,10 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 28 09:09:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- enhanced_base:
+  + Drop systemd-sysvinit recommends: that package has been renamed
+    to systemd-sysvcompat, but should not be needed on modern
+    systems anymore.
+  + Add systemd-coredump recommends: if already we see crashes,
+    it'd be good if users can report usable bugs (boo#1208713).
+
+-------------------------------------------------------------------
 Fri Sep  9 11:00:03 CEST 2022 - ro@suse.de
 
 - drop recommends for ucode-intel and ucode-amd, these packages
   have supplements to be pulled in on the respective cpus and
   there is no point having both installed (doubling the number
-  of reboot-needed updates) 
+  of reboot-needed updates)
 
 -------------------------------------------------------------------
 Mon Sep  5 10:56:58 UTC 2022 - Fabian Vogt <fvogt@suse.com>
@@ -20,7 +30,7 @@ Sun Sep  4 16:25:54 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 -------------------------------------------------------------------
 Thu Jul 14 15:18:00 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
-- Have the base pattern recommend service(network) 
+- Have the base pattern recommend service(network)
 
 -------------------------------------------------------------------
 Thu Jul  7 14:14:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
