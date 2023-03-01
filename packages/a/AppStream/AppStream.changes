@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 28 14:57:58 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.16.1:
+  Specification:
+   * docs: Clarify the locations where catalog icons should be placed
+   * spec: Expand documentation for <issue> elements
+   * spec: Mention that <issues> is not part of the description
+   * spec: Give some guidance about tone in release descriptions
+  Bugfixes:
+   * Fix binding helper macro to behave correctly if a function is passed directly
+   * Override-merge icons and provided items correctly
+   * tests: Ensure locale is C.UTF-8 in pool tests
+  Miscellaneous:
+   * release: Add sanity checks at beginning of each function
+- Add ldconfig_scriptlets for libappstream-compose
+
+-------------------------------------------------------------------
 Sat Feb  4 03:14:38 UTC 2023 - Luna D Dragon <luna.dragon@suse.com>
 
 - Update to version 0.16.0:

@@ -367,4 +367,12 @@ Features:
     <comment>Update to appstream 16, build with compose support (forwarded request 1063573 from ldragon)</comment>
     <requestid>1063768</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d17c14be6b1d0d3b6c6401bca3723907</srcmd5>
+    <version>0.16.1</version>
+    <time>1677683625</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ldconfig_scriptlets for libappstream-compose (forwarded request 1068217 from favogt)</comment>
+    <requestid>1068218</requestid>
+  </revision>
 </revisionlist>

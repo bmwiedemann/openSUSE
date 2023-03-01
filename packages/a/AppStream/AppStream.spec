@@ -23,7 +23,7 @@
 %bcond_without vala
 %endif
 Name:           AppStream
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -195,6 +195,7 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 
 %ldconfig_scriptlets -n libappstream%{libappstream_sover}
 %ldconfig_scriptlets -n libAppStreamQt%{libAppStreamQt_sover}
+%ldconfig_scriptlets -n libappstream-compose%{libappstream_compose_sover}
 
 %files lang -f %{name}.lang
 
@@ -254,6 +255,5 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 
 %files -n typelib-1_0-AppStream-compose-1.0
 %{_libdir}/girepository-1.0/AppStreamCompose-1.0.typelib
-
 
 %changelog
