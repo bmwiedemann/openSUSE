@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-socks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-socks
-Version:        2.0.3
+Version:        2.1.1
 Release:        0
 Summary:        Core proxy client functionality for Python
 License:        Apache-2.0
