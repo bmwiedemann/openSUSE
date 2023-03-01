@@ -973,4 +973,16 @@
     <comment></comment>
     <requestid>1062030</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>2d0bd0d2bec3d6b3d0f5557efa77c0f7</srcmd5>
+    <version>5.9</version>
+    <time>1677683625</time>
+    <user>dimstar_suse</user>
+    <comment>- Disabled zsh-sh subpackage generation for Leap 15.4 to prevent an error when
+  building the package.
+- don't require yodl for build, doc is not regenerated anyway
+
+</comment>
+    <requestid>1068241</requestid>
+  </revision>
 </revisionlist>

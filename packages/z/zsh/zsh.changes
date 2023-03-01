@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 28 16:40:02 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Disabled zsh-sh subpackage generation for Leap 15.4 to prevent an error when
+  building the package.
+
+-------------------------------------------------------------------
+Tue Feb 28 10:41:17 UTC 2023 - pgajdos@suse.com
+
+- don't require yodl for build, doc is not regenerated anyway
+
+-------------------------------------------------------------------
 Tue Dec 27 13:27:44 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
@@ -18,7 +29,7 @@ Sat Oct 22 05:22:28 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 -------------------------------------------------------------------
 Mon Sep 12 13:03:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add egrep-deprecation.patch (bsc#1203241) 
+- add egrep-deprecation.patch (bsc#1203241)
 
 -------------------------------------------------------------------
 Sun May 15 17:44:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -151,7 +162,7 @@ Sun Mar 20 20:03:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
       binaries may apply the partial work-around described in the file
       Etc/CVE-2021-45444-VCS_Info-workaround.patch included with the shell
       source. [ Reported by RyotaK <security@ryotak.me>. Additional thanks to
-      Marc Cornellà <hello@mcornella.com>. ] 
+      Marc Cornellà <hello@mcornella.com>. ]
 
 -------------------------------------------------------------------
 Fri Oct 16 10:27:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
@@ -264,7 +275,7 @@ Fri Jan 25 10:50:59 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Fri Sep 21 09:29:03 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
 
-- Unbreak Leap 42.3 compilation 
+- Unbreak Leap 42.3 compilation
 
 -------------------------------------------------------------------
 Sun Sep 16 20:13:34 UTC 2018 - Karol Babioch <kbabioch@suse.com>
@@ -390,7 +401,7 @@ Wed Dec 14 09:37:40 UTC 2016 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Sep  8 13:25:28 UTC 2016 - idonmez@suse.com
 
-- Read /etc/profile as zsh again. 
+- Read /etc/profile as zsh again.
 
 -------------------------------------------------------------------
 Tue Aug 30 14:13:40 UTC 2016 - mmanno@suse.com
@@ -426,7 +437,7 @@ Thu Dec  3 07:36:33 UTC 2015 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Nov  5 15:51:37 UTC 2015 - idonmez@suse.com
 
-- Remove -Wl,-z,now it breaks module loading rh#1277996 
+- Remove -Wl,-z,now it breaks module loading rh#1277996
 
 -------------------------------------------------------------------
 Sat Sep 12 07:47:27 UTC 2015 - idonmez@suse.com
@@ -438,7 +449,7 @@ Sat Sep 12 07:47:27 UTC 2015 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue Sep  1 18:57:20 UTC 2015 - idonmez@suse.com
 
-- Add read1char_signals.patch to fix workers/36373 
+- Add read1char_signals.patch to fix workers/36373
 
 -------------------------------------------------------------------
 Tue Sep  1 06:36:57 UTC 2015 - idonmez@suse.com
@@ -463,13 +474,13 @@ Tue Sep  1 06:36:57 UTC 2015 - idonmez@suse.com
   * Many changes to child-process and signal handling to eliminate race
     conditions and avoid deadlocks on descriptor and memory management.
   * New builtin sysopen in zsh/system module for detailed control of
-    file descriptor modes. 
+    file descriptor modes.
 - Remove printf-regress.patch, upstream.
 
 -------------------------------------------------------------------
 Sun Jun 14 12:55:42 UTC 2015 - idonmez@suse.com
 
-- Add printf-regress.patch to fix a printf regression boo#934175 
+- Add printf-regress.patch to fix a printf regression boo#934175
 
 -------------------------------------------------------------------
 Sun May 31 19:15:36 UTC 2015 - idonmez@suse.com
@@ -510,13 +521,13 @@ Sun May  3 07:36:02 UTC 2015 - dmitry_r@opensuse.org
 -------------------------------------------------------------------
 Wed Apr 29 08:30:49 UTC 2015 - idonmez@suse.com
 
-- Add gcc5-fix.patch to fix signames.c generation with gcc5 
+- Add gcc5-fix.patch to fix signames.c generation with gcc5
 
 -------------------------------------------------------------------
 Wed Apr 22 12:45:53 UTC 2015 - hvogel@opensuse.org
 
 - Nowadays more and more terminals set $TERM to xterm-256color
-  
+
 -------------------------------------------------------------------
 Tue Feb 10 08:27:53 UTC 2015 - dimstar@opensuse.org
 
@@ -526,12 +537,12 @@ Tue Feb 10 08:27:53 UTC 2015 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Wed Jan 28 17:53:20 UTC 2015 - idonmez@suse.com
 
-- Add back rpm completion file (bnc#900424) 
+- Add back rpm completion file (bnc#900424)
 
 -------------------------------------------------------------------
 Wed Jan 14 09:57:47 UTC 2015 - idonmez@suse.com
 
-- Harden CFLAGS/LDFLAGS 
+- Harden CFLAGS/LDFLAGS
 
 -------------------------------------------------------------------
 Thu Oct  9 08:24:20 UTC 2014 - idonmez@suse.com
@@ -545,7 +556,7 @@ Thu Oct  9 08:24:20 UTC 2014 - idonmez@suse.com
 -------------------------------------------------------------------
 Sun Sep  7 20:05:41 UTC 2014 - idonmez@suse.com
 
-- Add zsh-fix-pcre-n.patch to fix pcre_match() -n option 
+- Add zsh-fix-pcre-n.patch to fix pcre_match() -n option
 
 -------------------------------------------------------------------
 Thu Aug 28 19:14:23 UTC 2014 - idonmez@suse.com
@@ -591,7 +602,7 @@ Wed Dec 25 12:25:03 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Apr 22 09:22:02 UTC 2013 - idonmez@suse.com
 
-- Don't set globdots it might lead to unexpected problems (bnc#815556) 
+- Don't set globdots it might lead to unexpected problems (bnc#815556)
 
 -------------------------------------------------------------------
 Thu Mar 21 10:17:56 UTC 2013 - idonmez@suse.com
@@ -620,7 +631,7 @@ Mon Dec 24 15:53:42 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Nov 16 03:49:21 UTC 2012 - crrodriguez@opensuse.org
 
-- Test suite runs flaky in qemu-arm, disable it for now. 
+- Test suite runs flaky in qemu-arm, disable it for now.
 
 -------------------------------------------------------------------
 Fri Oct 26 14:58:46 UTC 2012 - coolo@suse.com
@@ -647,9 +658,9 @@ Thu Jul 19 07:58:15 UTC 2012 - coolo@suse.com
 Mon Feb 27 09:11:27 UTC 2012 - idonmez@suse.com
 
 - Update to version 4.3.17
-  * Contains fixes for possible speed regression introduced 
+  * Contains fixes for possible speed regression introduced
     in 4.3.15 (new option HASH_EXECUTABLES_ONLY)
-  * Improvements to (bash) completion and shell emulation mode 
+  * Improvements to (bash) completion and shell emulation mode
 - Drop all the patches, all upstream
 
 -------------------------------------------------------------------
@@ -661,7 +672,7 @@ Tue Feb  7 14:27:18 CET 2012 - hmacht@suse.de
 -------------------------------------------------------------------
 Tue Jan 31 11:08:53 UTC 2012 - idonmez@suse.com
 
-- Update _osc completion 
+- Update _osc completion
 
 -------------------------------------------------------------------
 Sat Dec 31 10:44:15 UTC 2011 - idonmez@suse.com
@@ -698,10 +709,10 @@ Mon Dec  5 09:40:23 UTC 2011 - idoenmez@suse.de
 Wed Nov 30 21:49:26 UTC 2011 - idoenmez@suse.de
 
 - Update to zsh 4.3.13
-  * There are no significant feature changes to the shell itself, 
+  * There are no significant feature changes to the shell itself,
     although many bug fixes and improvements to functions.
   * See included ChangeLog for details
-- Drop zsh-4.3.12-ksh-emulation-syntax-checking.patch, 
+- Drop zsh-4.3.12-ksh-emulation-syntax-checking.patch,
   fixed upstream
 
 -------------------------------------------------------------------
@@ -721,13 +732,13 @@ Mon Nov 28 08:36:51 UTC 2011 - idoenmez@suse.de
 -------------------------------------------------------------------
 Thu Nov 24 09:00:37 UTC 2011 - idoenmez@suse.de
 
-- Add custom completion support via /etc/zsh_completion.d 
+- Add custom completion support via /etc/zsh_completion.d
 - Fix build with new ncurses library
 
 -------------------------------------------------------------------
 Mon Aug  1 23:17:10 UTC 2011 - crrodriguez@opensuse.org
 
-- Enable pcre module 
+- Enable pcre module
 - Build against ncurses6w instead of plain old ncurses5
 
 -------------------------------------------------------------------
@@ -745,35 +756,35 @@ Wed Jun 29 12:35:50 UTC 2011 - chris@computersalat.de
 -------------------------------------------------------------------
 Fri Jun 17 13:35:56 UTC 2011 - idonmez@novell.com
 
-- Add zsh-kill-suspended-job.patch: fix killing suspended jobs 
+- Add zsh-kill-suspended-job.patch: fix killing suspended jobs
 - Add zsh-findproc.patch: fix findproc() to find stopped jobs
 
 -------------------------------------------------------------------
 Wed Jun  1 13:17:38 UTC 2011 - idonmez@novell.com
 
-- Update to zsh 4.3.12 
+- Update to zsh 4.3.12
 - Dropped openSUSE specific completions, all are upstreamed now
 
 -------------------------------------------------------------------
 Tue Apr 26 15:43:10 UTC 2011 - idoenmez@novell.com
 
-- Enable make check 
+- Enable make check
 
 -------------------------------------------------------------------
 Thu Apr 21 09:19:55 UTC 2011 - idoenmez@novell.com
 
 - Disable zsh debug
-- Enable strict aliasing again 
+- Enable strict aliasing again
 
 -------------------------------------------------------------------
 Wed Apr 20 12:07:36 UTC 2011 - idoenmez@novell.com
 
-- Update to 4.3.11-dev-2, many crash fixes 
+- Update to 4.3.11-dev-2, many crash fixes
 
 -------------------------------------------------------------------
 Tue Mar 15 13:40:24 UTC 2011 - ismail@namtrac.org
 
-- Fix crash with ${foo:0:} 
+- Fix crash with ${foo:0:}
 
 -------------------------------------------------------------------
 Wed Dec 29 02:07:58 UTC 2010 - cristian.rodriguez@opensuse.org
@@ -823,7 +834,7 @@ Wed Aug  5 16:58:50 CEST 2009 - hvogel@suse.de
     zero-width combining characters (typically accents) correctly
     as modifications to the base character, and will act accordingly.
   o The option HIST_FCNTL_LOCK has been added to provide locking of
-    history files 
+    history files
   o The syntax ~[...] provides a dynamic form of directory naming,
     supplementing the existing static ~name syntax.
   o Patterns can now be used in incremental searches with new widgets
@@ -912,7 +923,7 @@ Mon Dec  3 15:40:31 CET 2007 - hvogel@suse.de
   * Instead source profile from zprofile so we dont loose the features
     and its easy to get rid of it.
   * Source bash.bashrc from zshrc to keep the features and make it
-    possible to get rid of it easier. 
+    possible to get rid of it easier.
 
 -------------------------------------------------------------------
 Wed Jul  4 16:14:30 CEST 2007 - hvogel@suse.de
@@ -989,7 +1000,7 @@ Thu Feb  3 13:28:24 CET 2005 - mmj@suse.de
 -------------------------------------------------------------------
 Mon Jan 31 15:40:16 CET 2005 - ro@suse.de
 
-- adapt to texi2html changes 
+- adapt to texi2html changes
 
 -------------------------------------------------------------------
 Wed Jan 26 13:45:16 CET 2005 - uli@suse.de

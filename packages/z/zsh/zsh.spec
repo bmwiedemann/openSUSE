@@ -56,7 +56,6 @@ Source16:       dotzshrc.rh
 %endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
-BuildRequires:  yodl
 Requires(pre):  %{install_info_prereq}
 %if 0%{?suse_version} >= 1210
 BuildRequires:  makeinfo
@@ -95,6 +94,7 @@ mechanism, and more.
 
 This package contains the Zsh manual in HTML format.
 
+%if 0%{?suse_version} >= 1550
 %package sh
 Summary:        Handle behaviour of /bin/sh
 Group:          System/Shells
@@ -105,6 +105,7 @@ BuildArch:      noarch
 
 %description sh
 Use zsh as /bin/sh implementation.
+%endif
 
 %prep
 %setup -q
@@ -206,7 +207,7 @@ rm -f %{buildroot}/%{_infodir}/dir
 #
 # Create the symlink required for zsh-sh to handle /bin/sh
 #
-%if 0%{?suse_version}
+%if 0%{?suse_version} >= 1550
   ln -s %{_bindir}/zsh %{buildroot}%{_bindir}/sh
 %endif
 
@@ -292,7 +293,9 @@ mv Test/E01options.ztst Test/E01options.ztst.mvd
 %files htmldoc
 %doc Doc/htmldoc/*
 
+%if 0%{?suse_version} >= 1550
 %files sh
 %{_bindir}/sh
+%endif
 
 %changelog
