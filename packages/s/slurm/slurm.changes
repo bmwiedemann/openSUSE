@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  1 17:18:41 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add missing Provides: and Obsoletes: to slurm-cray, slurm-hdf5
+  and slurm-testsuite to avoid package conflicts.
+- Add dependency for the general plugin package to the
+  AcctGatherProfile HDF5 plugin.
+- Adjust node RealMemory in slurm.conf of test suite for 8G test
+  nodes.
+
+-------------------------------------------------------------------
 Mon Feb 20 20:45:59 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - updated to 23.02.0

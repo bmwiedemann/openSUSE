@@ -426,6 +426,7 @@ Summary:        SLURM ext_sensors/rrd Plugin (loadable shared objects)
 Group:          Productivity/Clustering/Computing
 %{?upgrade:Provides: %{pname}-plugin-ext-sensors-rrd = %{version}}
 %{?upgrade:Conflicts: %{pname}-plugin-ext-sensors-rrd}
+Conflicts:      %{pname}-plugins < %version
 Requires:       %{name}-plugins = %{version}
 
 %description plugin-ext-sensors-rrd
@@ -581,6 +582,9 @@ Man pages for the SLURM cluster managment software config files.
 %package hdf5
 Summary:        Store accounting data in hdf5
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Obsoletes:      %{pname}-hdf5 < %{version}}
+%{?upgrade:Provides:       %{pname}-hdf5 = %{version}}
+Requires:       %{name}-plugins = %version
 
 %description hdf5
 Plugin to store accounting in the hdf5 file format. This plugin has to be
@@ -590,6 +594,8 @@ sh5utils to merge this hdf5 files or extract data from them.
 %package cray
 Summary:        Cray specific plugins
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Obsoletes:      %{pname}-cray < %{version}}
+%{?upgrade:Provides:       %{pname}-cray = %{version}}
 
 %description cray
 Plugins for specific cray hardware, includes power and knl node management.
@@ -601,6 +607,8 @@ Contains also cray specific documentation.
 %package testsuite
 Summary:        Regression tests from Slurm sources
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Obsoletes:      %{pname}-testsuite < %{version}}
+%{?upgrade:Provides:       %{pname}-testsuite = %{version}}
 Requires:       %{name} = %version
 Requires:       %{name}-auth-none = %version
 Requires:       %{name}-cray = %version

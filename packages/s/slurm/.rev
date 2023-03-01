@@ -1057,4 +1057,17 @@
       from slurmcriptd to Syslog logging. Previously was only happening when</comment>
     <requestid>1068320</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>38a7e6c08d161156888731dc5e2f31ac</srcmd5>
+    <version>23.02.0</version>
+    <time>1677794614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Provides: and Obsoletes: to slurm-cray, slurm-hdf5
+  and slurm-testsuite to avoid package conflicts.
+- Add dependency for the general plugin package to the
+  AcctGatherProfile HDF5 plugin.
+- Adjust node RealMemory in slurm.conf of test suite for 8G test
+  nodes. (forwarded request 1068522 from eeich)</comment>
+    <requestid>1068523</requestid>
+  </revision>
 </revisionlist>
