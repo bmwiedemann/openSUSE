@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 27 18:10:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libdnf 0.70.0:
+  * Allow change of architecture for packages during security
+    updates with noarch involved
+  * "dnf_keyring_add_public_keys": reset localError to NULL after
+    free
+  * context: Get RPM db path from RPM
+  * Fix memory leak of SolvUserdata
+
+-------------------------------------------------------------------
 Fri Feb 24 15:38:14 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Precompile python bytecode (boo#1208151)
 

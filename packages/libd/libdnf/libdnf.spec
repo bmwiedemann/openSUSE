@@ -1,7 +1,7 @@
 #
 # spec file for package libdnf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.69.0
+Version:        0.70.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
