@@ -11445,7 +11445,7 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
-  - libfolly-v2022_08_29_00 
+  - libfolly-v2023_02_27_00 
   - libfoma0 
   - libfont-specimen0 
   - libfontenc-devel 
@@ -15705,7 +15705,6 @@ unsorted:
   - libxmltooling10 
   - libxmp-devel 
   - libxmp4 
-  - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser-mini18-32bit: [x86_64] 
   - libxplayer-plparser18 
@@ -17639,6 +17638,7 @@ unsorted:
   - muparser-devel 
   - muparser-devel-32bit: [x86_64] 
   - muparserx-devel 
+  - muparserx-devel-doc 
   - mupdf 
   - mupdf-devel-static 
   - mupen64plus-plugin-audio-sdl 
@@ -17651,7 +17651,6 @@ unsorted:
   - musepack 
   - musepack-devel 
   - musescore 
-  - musescore-devel 
   - musescore-fonts 
   - musique 
   - musique-lang 
@@ -25325,7 +25324,7 @@ unsorted:
   - python310-requre 
   - python310-resampy 
   - python310-resolvelib 
-  - python310-responses 
+  - python310-responses: [i586] 
   - python310-respx 
   - python310-restructuredtext_lint 
   - python310-restview 
@@ -26050,6 +26049,7 @@ unsorted:
   - python311-PyICU 
   - python311-PyInstaller 
   - python311-PyJWT 
+  - python311-PyKMIP 
   - python311-PyLaTeX 
   - python311-PyMeeus 
   - python311-PyMeta3 
@@ -26233,6 +26233,7 @@ unsorted:
   - python311-appdirs 
   - python311-application 
   - python311-applicationinsights 
+  - python311-apptools 
   - python311-apsw 
   - python311-arabic-reshaper 
   - python311-arf 
@@ -26691,6 +26692,7 @@ unsorted:
   - python311-cairocffi 
   - python311-cairocffi-pixbuf 
   - python311-caldav 
+  - python311-calmjs 
   - python311-calmjs.parse 
   - python311-calmjs.types 
   - python311-calver 
@@ -26925,6 +26927,7 @@ unsorted:
   - python311-django-classy-tags 
   - python311-django-codemod 
   - python311-django-collectd-rest 
+  - python311-django-compressor 
   - python311-django-contrib-comments 
   - python311-django-cors-headers 
   - python311-django-countries 
@@ -27480,6 +27483,7 @@ unsorted:
   - python311-jsonxs 
   - python311-junit-xml 
   - python311-junitxml 
+  - python311-junos-eznc 
   - python311-jupyter-client 
   - python311-jupyter-core 
   - python311-jupyter-events 
@@ -27731,6 +27735,11 @@ unsorted:
   - python311-mysqlclient 
   - python311-myst-parser 
   - python311-nagiosplugin 
+  - python311-napalm 
+  - python311-napalm-arubaos-switch 
+  - python311-napalm-asa 
+  - python311-napalm-digineo-procurve 
+  - python311-napalm-procurve 
   - python311-natsort 
   - python311-nautilus 
   - python311-nautilus-devel 
@@ -48824,8 +48833,6 @@ unsorted:
   - xorgxrdp 
   - xorriso-tcltk 
   - xortool 
-  - xosd 
-  - xosd-devel 
   - xosview 
   - xournalpp 
   - xournalpp-lang 
@@ -49058,7 +49065,6 @@ unsorted:
   - yishu-lang 
   - ykclient 
   - ykpers 
-  - yodl 
   - yomi-formula 
   - you-get 
   - you-get-bash-completion 
