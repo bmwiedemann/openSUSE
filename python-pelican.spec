@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
 Version:        4.8.0
 Release:        0
@@ -28,6 +27,8 @@ URL:            https://getpelican.com/
 # Use the source instead of the pypi release for the tests
 # Source:         https://github.com/getpelican/pelican/archive/%%{version}.tar.gz
 Source:         pelican-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-311.patch gh#getpelican/pelican#3055
+Patch0:         python-311.patch
 BuildRequires:  %{python_module Jinja2 >= 2.11}
 BuildRequires:  %{python_module Markdown >= 3.1.1}
 BuildRequires:  %{python_module Pygments}
