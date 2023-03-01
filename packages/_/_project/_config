@@ -118,13 +118,13 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # Podman based image building
-Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # To build ISO images
-Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
+Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
