@@ -45,8 +45,6 @@ BuildRequires:  the_silver_searcher
 #BuildRequires:  sendmail-devel
 %if "%{name}" == "%{_lib_name}"
 BuildRequires:  icmake
-# BuildRequires for man:
-BuildRequires:  yodl
 %endif
 BuildRequires:  gcc-c++
 
@@ -106,24 +104,21 @@ sed -i 's/^#define CXXFLAGS/\/\/ #define CXXFLAGS/g' %{_name}/INSTALL.im
 sed -i 's/^#define DOC/\/\/ #define DOC/g' %{_name}/INSTALL.im
 sed -i 's/^#define HDR/\/\/ #define HDR/g' %{_name}/INSTALL.im
 sed -i 's/^#define LIB/\/\/ #define LIB/g' %{_name}/INSTALL.im
-sed -i 's/^#define MAN/\/\/ #define MAN/g' %{_name}/INSTALL.im
 echo "/* created during rpmbuild */"                            >> %{_name}/INSTALL.im
 echo "#define CXX         \"${CXX}\""                           >> %{_name}/INSTALL.im
 echo "#define CXXFLAGS    \"${CXXFLAGS}\""                      >> %{_name}/INSTALL.im
 echo "#define DOC         \"%{_docdir}/%{_lib_name}%{_lib_version}-devel\""   >> %{_name}/INSTALL.im
 echo "#define HDR         \"%{_includedir}/%{_name}\""          >> %{_name}/INSTALL.im
 echo "#define LIB         \"%{_libdir}\""                       >> %{_name}/INSTALL.im
-echo "#define MAN         \"%{_mandir}\""                       >> %{_name}/INSTALL.im
 pushd %{_name}
 ./build dep
 ./build light
 #echo -e "y\nn\ny\ny\n" | ./build libraries
-./build man
 popd
 
 %install
 pushd %{_name}
-./build install x %{buildroot}
+./build install hl %{buildroot}
 popd
 
 %post -n %{_lib_name}%{_lib_version} -p /sbin/ldconfig
@@ -136,11 +131,7 @@ popd
 
 %files devel
 %{_libdir}/%{_lib_name}.so
-%doc %{_docdir}/%{_lib_name}%{_lib_version}-devel/
 %{_includedir}/%{_name}/
-%{_mandir}/man3/*.3%{_name}.gz
-%{_mandir}/man7/*.7%{_name}.gz
-%{_mandir}/man7/%{_name}.7.gz
 
 %files devel-static
 

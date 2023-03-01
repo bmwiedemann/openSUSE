@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 11:22:22 UTC 2023 - pgajdos@suse.com
+
+- do not build documentation with yodl, it can be reached here:
+  https://fbb-git.gitlab.io/bobcat/manhtml/bobcat.7.html
+
+-------------------------------------------------------------------
 Wed Feb  1 00:11:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.02.02:

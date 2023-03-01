@@ -23,4 +23,12 @@
   * Repaired the linking option specifications in the ReadLine* man-pages.</comment>
     <requestid>1062357</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7e0f08bf32405459cc2cdd11e3d57839</srcmd5>
+    <version>6.02.02</version>
+    <time>1677683621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068185</requestid>
+  </revision>
 </revisionlist>
