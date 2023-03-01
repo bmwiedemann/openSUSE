@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 28 15:04:29 UTC 2023 - pgajdos@suse.com
+
+- add %bcond for avif
+
+-------------------------------------------------------------------
+Mon Feb 27 09:14:03 UTC 2023 - pgajdos@suse.com
+
+- fix dejavu fonts package name in BR
+
+-------------------------------------------------------------------
 Thu Sep 30 09:05:44 UTC 2021 - pgajdos@suse.com
 
 - reenable gd/gd2 legacy formats, was disabled by upstream by

@@ -1,7 +1,7 @@
 #
 # spec file for package gd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_without avif
 
 %define prjname libgd
 %define lname libgd3
@@ -33,14 +35,16 @@ Patch2:         gd-format.patch
 # could be upstreamed
 Patch3:         gd-aliasing.patch
 # needed for tests
-BuildRequires:  dejavu
+BuildRequires:  dejavu-fonts
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+%if %{with avif}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  pkgconfig(libavif)
+%endif
 %endif
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
@@ -108,8 +112,10 @@ export CFLAGS="%{optflags} -ffp-contract=off"
 	--with-xpm \
         --enable-gd-formats=yes \
 	--with-webp \
+%if %{with avif}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 	--with-avif \
+%endif
 %endif
 	--with-zlib \
 	--disable-static
