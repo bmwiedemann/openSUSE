@@ -88,7 +88,7 @@ Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
 Recommends:     ghostscript-fonts-other
 # noto-sans and noto-sans-cjk pulls in too much (>500MiB!)
-Recommends:     efont-unicode-bitmap-fonts
+Recommends:     babelstone-han-fonts
 Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
 Recommends:     texlive-lm-fonts

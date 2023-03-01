@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 27 02:31:04 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Switch efont-unicode-bitmap-fonts with babelstone-han-fonts
+ * The efonts have not been updated since 2004
+ * Babelstone Han fonts just got another update on Jan 1 2023
+
+-------------------------------------------------------------------
 Wed Jul 13 22:01:34 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 fix: reintroduce efont-unicode-bitmap-fonts so that there is a fallback
