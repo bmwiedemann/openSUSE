@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -117,7 +117,6 @@ BuildRequires:  pkgconfig(libplacebo)
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
-BuildRequires:  xosd-devel
 BuildRequires:  (pkgconfig(libavcodec) >= 57.37.100 with pkgconfig(libavcodec) < 59)
 BuildRequires:  (pkgconfig(libavformat) >= 53.21.0 with pkgconfig(libavformat) < 59)
 BuildRequires:  (pkgconfig(libavutil) >= 52.4.0 with pkgconfig(libavutil) < 57)
