@@ -21,14 +21,14 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.12
+Version:        1.99.13
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Base
 URL:            http://www.garloff.de/kurt/linux/ddrescue/
 Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
-Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
+# Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
@@ -127,10 +127,7 @@ autoconf
 # avoid running dependency generation step
 touch .dep
 
-# GCC 13 newly detects a violation of the strict aliasing rule:
-# https://sourceforge.net/p/ddrescue/tickets/6/
-OPT_FLAGS="%{optflags} -fno-strict-aliasing"
-%make_build RPM_OPT_FLAGS="$OPT_FLAGS" LIBDIR=%{_libdir} LIB=%{_lib}
+%make_build RPM_OPT_FLAGS="%{optflags}" LIBDIR=%{_libdir} LIB=%{_lib}
 
 %install
 %make_install RPM_OPT_FLAGS="%{optflags}" INSTALLDIR=%{buildroot}/%{_bindir} LIB=%{_lib} LIBDIR=%{_libdir} \

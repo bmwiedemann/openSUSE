@@ -539,4 +539,24 @@
     <comment></comment>
     <requestid>1064255</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>333f10ea22bf550ca68529cd268dcf9c</srcmd5>
+    <version>1.99.13</version>
+    <time>1677683620</time>
+    <user>dimstar_suse</user>
+    <comment>- temporarily remove not-really-detached-signature
+
+- Update to 1.99.13:
+  * Drop fuzz-lzo-* patches, as they have been merged upstream.
+  * Allow overriding strip binary (not used in this build).
+  * Make -fanalyzer more happy: abort() and assert()ions to ensure
+    we always react to failed memory allocations.
+  * ddr_hash: Support reading/writing checksums from stdin/out &quot;-&quot;.
+  * Fix aliasing issue with XORN function (in aes.h), spotted by
+    gcc-13: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108695
+    Drop workaround from Martin Liška again. 
+  * Higher optimization level for aes.c driver is beneficial for
+    key setup speed.</comment>
+    <requestid>1068136</requestid>
+  </revision>
 </revisionlist>
