@@ -1401,4 +1401,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1067912</requestid>
   </revision>
+  <revision rev="135" vrev="6">
+    <srcmd5>22e794cf20e67a8e7bb96475ebe9046d</srcmd5>
+    <version>3.0.18</version>
+    <time>1677683622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068191</requestid>
+  </revision>
 </revisionlist>
