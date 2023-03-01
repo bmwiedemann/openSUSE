@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230228" schemaversion="4.1">
+<image name="OBS__MicroOS___20230301" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230228</productvar>
+      <productvar name="VERSION">20230301</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230228,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230301,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230228/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230301/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -109,6 +109,7 @@
       <repopackage name="autoyast2-installation" arch="x86_64"/>
       <repopackage name="avahi" arch="x86_64"/>
       <repopackage name="avahi-lang" arch="x86_64"/>
+      <repopackage name="babelstone-han-fonts" arch="x86_64"/>
       <repopackage name="babeltrace" arch="x86_64"/>
       <repopackage name="baloo5-file" arch="x86_64"/>
       <repopackage name="baloo5-file-lang" arch="x86_64"/>
@@ -290,7 +291,6 @@
       <repopackage name="ed" arch="x86_64"/>
       <repopackage name="edict2"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
-      <repopackage name="efont-unicode-bitmap-fonts" arch="x86_64"/>
       <repopackage name="elfutils"/>
       <repopackage name="elfutils-lang"/>
       <repopackage name="enchant-1-backends"/>
@@ -2586,6 +2586,7 @@
       <repopackage name="system-user-tftp" arch="x86_64"/>
       <repopackage name="system-user-tss" arch="x86_64"/>
       <repopackage name="systemd"/>
+      <repopackage name="systemd-coredump" arch="x86_64"/>
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE" arch="x86_64"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>

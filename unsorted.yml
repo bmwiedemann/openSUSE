@@ -1167,7 +1167,6 @@ unsorted:
   - azure-storage-cpp-devel 
   - b4 
   - babe 
-  - babelstone-han-fonts 
   - babelstone-marchen-fonts 
   - babelstone-modern-fonts 
   - babelstone-ogham-fonts 
@@ -3450,6 +3449,7 @@ unsorted:
   - efl-lang 
   - efl-testsuite 
   - efont-serif-fonts 
+  - efont-unicode-bitmap-fonts 
   - eglexternalplatform-devel 
   - eiciel 
   - eiciel-lang 
@@ -3606,6 +3606,7 @@ unsorted:
   - eric 
   - eric-api 
   - erlang 
+  - erlang-cf 
   - erlang-debugger 
   - erlang-debugger-src 
   - erlang-dialyzer 
@@ -3614,15 +3615,22 @@ unsorted:
   - erlang-diameter-src 
   - erlang-doc 
   - erlang-epmd 
+  - erlang-erlware_commons 
   - erlang-et 
   - erlang-et-src 
+  - erlang-getopt 
   - erlang-jinterface 
   - erlang-jinterface-src 
   - erlang-observer 
   - erlang-observer-src 
+  - erlang-providers 
   - erlang-rabbitmq-client 
   - erlang-rebar 
   - erlang-rebar-src 
+  - erlang-rebar3 
+  - erlang-rebar3-bash-completion 
+  - erlang-rebar3-fish-completion 
+  - erlang-rebar3-zsh-completion 
   - erlang-reltool 
   - erlang-reltool-src 
   - erlang-retest 
@@ -13321,13 +13329,9 @@ unsorted:
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
   - libopenblas-pthreads_0_3_21-gnu-hpc 
-  - libopenblas-pthreads_0_3_21-gnu-hpc-32bit: [x86_64] 
   - libopenblas-pthreads_0_3_21-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_21-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_0_3_21-gnu-hpc 
-  - libopenblas_0_3_21-gnu-hpc-32bit: [x86_64] 
   - libopenblas_0_3_21-gnu-hpc-devel 
-  - libopenblas_0_3_21-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_openmp-devel 
   - libopenblas_openmp-devel-32bit: [x86_64] 
   - libopenblas_openmp0-32bit: [x86_64] 
@@ -14562,7 +14566,7 @@ unsorted:
   - libsliplu1 
   - libslirp-devel 
   - libslopy7_6 
-  - libslurm38: [x86_64] 
+  - libslurm39: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit: [x86_64] 
   - libsmartcols-devel-static 
@@ -26076,6 +26080,7 @@ unsorted:
   - python311-PyQt6-sip 
   - python311-PyRIC 
   - python311-PyRSS2Gen 
+  - python311-PyRect 
   - python311-PySDL2 
   - python311-PyScreeze 
   - python311-PySocks 
@@ -26846,6 +26851,7 @@ unsorted:
   - python311-curtsies 
   - python311-cwcwidth 
   - python311-cymruwhois 
+  - python311-cytoolz 
   - python311-czifile 
   - python311-d2to1 
   - python311-daemonize 
@@ -27813,6 +27819,7 @@ unsorted:
   - python311-opengl 
   - python311-opengl-accelerate 
   - python311-openidc-client 
+  - python311-openmesh 
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
@@ -27888,6 +27895,7 @@ unsorted:
   - python311-pefile 
   - python311-pegasus-wms.api 
   - python311-pegasus-wms.common 
+  - python311-pelican: [x86_64] 
   - python311-pem 
   - python311-pendulum 
   - python311-pep440 
@@ -28094,9 +28102,12 @@ unsorted:
   - python311-pyfuse3 
   - python311-pygal 
   - python311-pygaljs 
+  - python311-pygame 
+  - python311-pygame-devel 
   - python311-pygeos 
   - python311-pygerrit2 
   - python311-pygit2 
+  - python311-pyglet 
   - python311-pygments-ansi-color 
   - python311-pygments-pytest 
   - python311-pygments-style-railscasts 
@@ -28161,6 +28172,7 @@ unsorted:
   - python311-pyosf 
   - python311-pyotp 
   - python311-pyowm 
+  - python311-pyp 
   - python311-pypandoc: [x86_64] 
   - python311-pyparallel 
   - python311-pyparsing 
@@ -28301,6 +28313,7 @@ unsorted:
   - python311-pytest-super-check 
   - python311-pytest-svn 
   - python311-pytest-testconfig 
+  - python311-pytest-testinfra 
   - python311-pytest-timeout 
   - python311-pytest-tldr 
   - python311-pytest-toolbox 
@@ -28426,6 +28439,7 @@ unsorted:
   - python311-pywbem 
   - python311-pywbemtools 
   - python311-pywebpush 
+  - python311-pywinrm 
   - python311-pywlroots 
   - python311-pyxattr 
   - python311-pyxdg 
@@ -28510,6 +28524,7 @@ unsorted:
   - python311-requests-toolbelt 
   - python311-requests-unixsocket 
   - python311-requests-wsgi-adapter 
+  - python311-requests_ntlm 
   - python311-requestsexceptions 
   - python311-requirements-detector 
   - python311-requirements-parser 
@@ -28584,6 +28599,7 @@ unsorted:
   - python311-scikit-hep-testdata 
   - python311-scikit-image 
   - python311-scikit-learn 
+  - python311-scikit-sound 
   - python311-scikit-sparse: [x86_64] 
   - python311-scikit-umfpack: [x86_64] 
   - python311-scipy 
@@ -28953,6 +28969,7 @@ unsorted:
   - python311-virtualenv 
   - python311-virtualenv-clone 
   - python311-visitor 
+  - python311-vispy 
   - python311-vistir 
   - python311-visvis 
   - python311-vncdotool 
@@ -37956,6 +37973,7 @@ unsorted:
   - something-for-reddit 
   - sonatype-oss-parent 
   - sonatype-plugins-parent 
+  - sonic-pi 
   - sonic-visualiser 
   - sonivox-devel 
   - sonnet-devel 
@@ -38229,6 +38247,12 @@ unsorted:
   - sunxi-tools 
   - super-csv 
   - super-csv-javadoc 
+  - supercollider 
+  - supercollider-devel 
+  - supercollider-emacs 
+  - supercollider-gedit 
+  - supercollider-sc3-plugins 
+  - supercollider-vim 
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
@@ -38362,7 +38386,6 @@ unsorted:
   - system-user-osc-collab 
   - system-user-prometheus 
   - system-user-uuidd 
-  - systemd-coredump 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
