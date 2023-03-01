@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 02:07:16 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
+
+- add a patch to fix bsc#1208613
+  * 0003-ipmi-avoid-error-messages-on-non-dell-platforms-112.patch
+
+-------------------------------------------------------------------
 Mon Jul 18 15:09:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - Update to version 0.96: (PED-85)

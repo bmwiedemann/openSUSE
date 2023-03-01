@@ -1,0 +1,9 @@
+diff -Nru rebar3-3.6.1.orig/rebar3 rebar3-3.6.1/rebar3
+--- rebar3-3.6.1.orig/rebar3	1970-01-01 01:00:00.000000000 +0100
++++ rebar3-3.6.1/rebar3	2018-10-12 11:27:36.787689371 +0200
+@@ -0,0 +1,5 @@
++#!/usr/bin/escript
++%%! -noshell -noinput
++
++main (Args) ->
++  rebar3:main(Args).

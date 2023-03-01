@@ -271,4 +271,233 @@
 </comment>
     <requestid>1042426</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ffbe29ec3d9cf95bc400e3a6dd72d902</srcmd5>
+    <version>2.1.3</version>
+    <time>1677683684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.3:
+  * 2.1.2 by @illume in #2957
+  * Fix path dependencies by @SergioArnaud in #2975
+  * Add test for pygame.locals by @ankith26 in #2958
+  * Fix Pygame imported class typehints by @MightyJosip in #2965
+  * Fix some bugs in camera.py by @ankith26 in #2961
+  * Clean modinit C code, fix bugs, use recommended API by @ankith26 in #2952
+  * Python2 to Python3 code modernization by @novialriptide in #2984
+  * SDL 2.0.20 by @illume in #2983
+  * Update the image doc, delineate bytes and str by @Starbuck5 in #2959
+  * Add pixel format name into display info by @MyreMylar in #2964
+  * Add missing copy test for Vector3 by @JovialKnoll in #3000
+  * New black formatting by @novialriptide in #3013
+  * Misc fixes: Fix UCS_4 UCS4 typo, incorrect color methods export and display.c error handling bugs by @ankith26 in #2987
+  * Snake casify _sdl2.video.Image.flipX and .flipY by @avaxar in #2978
+  * Removed unused imports by @novialriptide in #3016
+  * Fix warnings, make warnings error on CI by @ankith26 in #2919
+  * Added Rect typing and docs that it is iterable by @novialriptide in #2969
+  * Fix there typo in tests.rst by @eoghanriley in #3022
+  * C code cleanups + cdrom/overlay removal by @Starbuck5 in #3014
+  * Make sure surfaces start as opaque black. (MacOS) by @Starbuck5 in #2973
+  * Add transform.scale_by, transform.smoothscale_by functions by @Starbuck5 in #2723
+  * Fix typo in C_api display docs by @gresm in #3027
+  * Font rwops by @Starbuck5 in #2911
+  * transform.average_color: Add optional parameter 'consider_alpha' to remove black artifacts if alpha present by @dr0id in #2968
+  * pygame.docs: remove warning in docs generation due to a reference to… by @dr0id in #3029
+  * Add __new__ and __init__ functions for some types by @zoldalma999 in #3001
+  * Regenerate cython files by @ankith26 in #3032
+  * 2.1.3.dev2 by @illume in #3039
+  * Add .move_towards() for Vector2 and Vector3 by @novialriptide in #2929
+  * Save Surfaces with palettes as indexed 8P PNG by @ThanhChinhBK in #3028
+  * Rect collidelistall unittests added and updated docs to document different argument types by @dr0id in #2989
+  * Add some more events by @ankith26 in #2953
+  * Fix bufferproxy doc typo by @gresm in #3044
+  * VideoInfo string missing closing parenthesis by @GregoryMorse in #3053
+  * Fix stubtest warnings, run stubtest on CI by @ankith26 in #2999
+  * Cursors example improvements - including showing new system, color, and image cursors by @thanice in #3037
+  * Improve example textinput by @blankRiot96 in #3050
+  * Use github downloads for windows prebuilts downloads by @illume in #3059
+  * 2.1.3.dev4 and 2.1.3dev5 by @illume in #3060
+  * Fix more typestub warnings with dunders by @ankith26 in #3075
+  * Fix APPMOUSEFOCUS naming, update const values by @ankith26 in #3043
+  * Pkgdata import in init for PyInstaller by @Starbuck5 in #3082
+  * Fix logos page by @Grimmys in #2977
+  * Fix segfault in resource loading function by @ankith26 in #3089
+  * Fix pygame logo image in README.rst by @novialriptide in #3090
+  * Add black badge by @novialriptide in #3091
+  * Use static dot declarations for type objects by @ankith26 in #3067
+  * Windows prebuilts updates with freetype and SDL_ttf 2.0.18 by @Starbuck5 in #3086
+  * Get rid of sprintf calls in the codebase by @ankith26 in #3041
+  * Fix and normalize function pointer calls for METH_NOARGS by @pmp-p in #3080
+  * Update list of datafiles in generated docs by @wxh06 in #3073
+  * Improve draw doc accuracy and example style by @Starbuck5 in #3074
+  * Check SDL version earlier, report known incompat (closes #2657) by @SnoopJ in #2661
+  * Lint/format examples/*.py by @Starbuck5 in #3093
+  * Fix missing pointer cast fix by @pmp-p in #3104
+  * Add a .clamp_magnitude() to Vector2 and Vector3 by @novialriptide in #2990
+  * examples/mask.py change default image to one with alpha channel by @brccabral in #3111
+  * Fix mouse_get_pos takes no argument by @pmp-p in #3115
+  * Small fixes to the documentation header by @hnrkcode in #3094
+  * Rect and Color support collections.abc.Container, add tests and stubs by @ankith26 in #3066
+  * Don't raise python errors in v4l2_read_frame by @ankith26 in #3052
+  * Fix name/definition conflict for pgSurface_New by @pmp-p in #3106
+  * Add pygame.font.get_sdl_ttf_version() for getting version of SDL_ttf library by @mariospapaz in #3095
+  * Math's Vectors have not documented methods by @gresm in #3122
+  * Event tests and types improvements (Minor event refactor part 3) by @ankith26 in #3063
+  * Cleanup old compatibility code in windows sysfont by @Starbuck5 in #3126
+  * Fix display.set_mode docs for DOUBLEBUF by @Starbuck5 in #3129
+  * Make pgBuffer_Release retain previously set errors by @ankith26 in #3127
+  * Change renderer names to strings in get_drivers by @zoldalma999 in #3132
+  * Takeover of Newbie guide PR #2718 by @davidpendergast by @MyreMylar in #3118
+  * Fixed Vector.clamp_magnitude() parameters by @novialriptide in #3133
+  * SIMD version of BLEND_RGBA_MULT for 32bit surfaces by @MyreMylar in #2988
+  * Update constants.c to clang-format version 14.0 by @MyreMylar in #3137
+  * Add pygame.context module by @Starbuck5 in #3100
+  * Add pygame.get_pref_locales by @ankith26 in #3038
+  * Use more optimal line functions in polygon by @Starbuck5 in #3141
+  * Proposal: add Rect.collidelistallobjects that returns the colliding objects by @dr0id in #3026
+  * Remove Solaris compatibility code to re-enable SIGALARM by @MyreMylar in #3142
+  * Fix Vector subclass methods to return the correct subtype instance by @novialriptide in #3088
+  * Raise only pygame.error when mixer loading fails by @ankith26 in #3148
+  * Fix typo in SpriteIntro.rst tutorial by @JoshuaDRose in #3154
+  * Fixed windows version parsing in Camera that errored on versions like 8.1 by @Matiiss in #3158
+  * Fix &quot;-auto&quot; setup.py argument not being used properly in buildconfig by @robertpfeiffer in #3157
+  * Updates to moveit.py example by @dbrown3562 in #3146
+  * Update to SDL 2.0.22 on Windows by @Starbuck5 in #3162
+  * Typo fix, ball -&gt; bat by @elgcodes in #3164
+  * Typo fix or -&gt; for by @elgcodes in #3165
+  * Fix sysfont.get_fonts stop returning None, warn fc-list issues by @ankith26 in #3159
+  * Fix _sdl2.controller for static build, pygame.h is in _sdl2 parent directory by @pmp-p in #3105
+  * Add SIMD versions of RGB_MUL blitter by @MyreMylar in #3136
+  * Fix typo in korean document by @EunhoKang in #3176
+  * Add evfilter guard mutex, fix pymalloc without GIL (Minor event refactor part 2.1) by @ankith26 in #3177
+  * Add test for fullscreen toggle by @PurityLake in #3171
+  * SIMD versions of RGB_ADD, RGBA_ADD, RGB_MUL &amp; RGBA_MUL by @MyreMylar in #3170
+  * Static build support for WebAssembly by @pmp-p in #3108
+  * Correction of a comment by @Yvant2000 in #3182
+  * Regenerate cython files by @Starbuck5 in #3183
+  * Simplify some boolean handling by @Starbuck5 in #3192
+  * Fix DLL loading problems on Windows Store Python installations by @Starbuck5 in #3196
+  * wasm: fence simd/avx by @pmp-p in #3191
+  * Removed Python 2 nonzero by @blankRiot96 in #3194
+  * Use CircleCI for manylinux aarch64 builds by @ankith26 in #3188
+  * Remove custom JPEG saver by @Starbuck5 in #3180
+  * Update build-emsdk.yml by @pmp-p in #3185
+  * Improve clang format source file detection by @zoldalma999 in #3140
+  * Clang format touch.c to fix failing lint tests by @ankith26 in #3201
+  * Fix Chimp tutorial code to use the correct module name alias by @kharissa in #3205
+  * Fix a few pylint issues by @ankith26 in #3206
+  * pyupgrade --py36-plus **/*.py by @cclauss in #3208
+  * Fix print () --&gt; print() by @cclauss in #3213
+  * Make latest pypy wheels on mac/linux, cibuildwheel on manylinux and other minor updates by @ankith26 in #3187
+  * Remove more code for legacy Python by @cclauss in #3207
+  * More Python f-strings with flynt by @cclauss in #3212
+  * Add SIMD versions of RGB &amp; RGBA BLEND_MAX, BLEND_MIN blit modes by @MyreMylar in #3181
+  * Use custom SDL2_ttf on Windows by @Starbuck5 in #3193
+  * Typos: get em out of here! by @Starbuck5 in #3216
+  * setup.cfg: Sort pylint disables to simplify future edits by @cclauss in #3220
+  * sysfont.py: check for emscripten platform by @pmp-p in #3225
+  * Fix undefined name: get_python_inc() by @cclauss in #3219
+  * Added strikethrough option to Font by @MightyJosip in #2991
+  * Fixed window not staying centered on second call of display.set_mode by @PurityLake in #3172
+  * Fix Vector memory leak by @MightyJosip in #3236
+  * wasm disable mutex usage, wasm CI updates by @ankith26 in #3203
+  * wasm: pygame.surfarray could load on 3.10.5 backport by @pmp-p in #3246
+  * Refactor font.render by @Starbuck5 in #3186
+  * Fix Controller.rumble returning wrong bool on error by @ankith26 in #3248
+  * wasm: wrong logic masks pgExc_SDLError by @pmp-p in #3247
+  * Make textinput show a candidate list by @Starbuck5 in #3244
+  * Cleaned up test/README.TXT by @novialriptide in #3254
+  * Fix typos in sprite docs by @StarDexterity in #3263
+  * Fix Surf.set_palette to be usable without an initialized display by @Starbuck5 in #3259
+  * Replaced some truth testing with is not None checks in sprite module by @Matiiss in #3271
+  * Include user fonts for pygame.font.match_font() on Windows by @novialriptide in #3184
+  * Add SysFont pygame.font.get_fonts() verification test by @SSS-Says-Snek in #3266
+  * Fix wasm build when no PREFIX variable is defined by @ryanking13 in #3280
+  * Remove deprecated blend argument from test and docs by @kevin-pease in #3281
+  * Fix controller build on SDL &lt; 2.0.9 by @Starbuck5 in #3272
+  * Add unit test for display.gl_set_attribute() by @MyreMylar in #3256
+  * Fix docs and types for math.Vector2.cross() return to float by @Vicky-Vicky27 in #3286
+  * Prettify joystick documentation + add Nintendo Switch mapping by @novialriptide in #3290
+  * Sprite typestub updates, use generics and protocols by @ankith26 in #3138
+  * Adjusted examples and rewrote documentation accordingly by @dbrown3562 in #3092
+  * More efficiently track pixels in AVX blitters by @Starbuck5 in #3294
+  * Fix sprite docs DrawPlain ---&gt; RenderPlain by @fQ7N in #3298
+  * Fix new static analyzer (VS 2022) warnings by @ankith26 in #3295
+  * Cleaned up draw.aaline() code for small speedup by @itzpr3d4t0r in #3300
+  * wasm: add pygame.gfxdraw to static preloader by @pmp-p in #3304
+  * Raise minimum SDL to 2.0.4, patch so it can build on that by @Starbuck5 in #3239
+  * Update SDL_ttf 2.20.0, SDL_mixer 2.6.0 on Windows by @Starbuck5 in #3287
+  * Restore correct checksum for SDL_ttf windows dep download by @itzpr3d4t0r in #3329
+  * setup.py: fix user+deprecation warnings on 3.11+ by @pmp-p in #3228
+  * Add FASTCALL compat macros, update Color.update to use the same by @ankith26 in #3325
+  * Fix latest stubtest issues by @ankith26 in #3332
+  * Fix wrong relative imports in _sdl2 cython code by @pmp-p in #3313
+  * Add use_compat to key.name, fix key_code compat issues by @ankith26 in #3312
+  * Add srcrect NULL check to pgSurface_Blit by @MyreMylar in #3284
+  * Add BGRA format for pycairo compatibility by @rlatowicz in #3338
+  * Move alphabit.c SSE2 blitters to main SSE2 file by @Starbuck5 in #3296
+  * Surface.blits() speedups and code cleanup by @itzpr3d4t0r in #3314
+  * Optimized _vector_distance_helper by @itzpr3d4t0r in #3335
+  * Use macos-12 for all Mac CI builds by @ankith26 in #3347
+  * Added tobytes/frombytes aliases for pygame.image.(to|from)string by @Emc2356 in #3321
+  * Remove constants repetition and duplicate define by @Starbuck5 in #3344
+  * Add clamp(val, min, max) function to pygame.math by @JamesC01 in #3326
+  * BGRA format added to fromstring &amp; tostring by @rlatowicz in #3342
+  * Use memcpy and memset when appropriate by @Starbuck5 in #3364
+  * SDL_UCS4ToUTF8 may exist from SDL_keyboard.c by @pmp-p in #3349
+  * edited docs for pygame.Vector2.angle_to by @oddbookworm in #3359
+  * Deprecate Color.set_length by @blankRiot96 in #3352
+  * Vendor in SDL PNG save function, fix new 2.1.3 regression by @ankith26 in #3376
+  * Merge 32/64bit SSE blitter codepaths by @Starbuck5 in #3375
+  * Document pygame.math.Vector epsilon attribute by @oddbookworm in #3373
+  * test.test_utils.run_tests.py: Fix exit using RuntimeError for better message by @Vazno in #3382
+  * Cleanup sysfont.py to use f-strings by @lebedevhhh in #3391
+  * setup.py | io module no longer used. by @Vazno in #3388
+  * Update DisplayModes.rst - PEP Changes by @JoshuaDRose in #3385
+  * Fix some METH_NOARGS usage, use METH_O where possible by @ankith26 in #3366
+  * Make pygame.math.clamp only take numbers by @JamesC01 in #3361
+  * Add _GenericVector to math typestubs, fixes by @ankith26 in #3150
+  * Fix tests that had overshadowed names by @ankith26 in #3384
+  * Replaced more expressions to f strings by @Vazno in #3392
+  * scale(), scale_by(), smoothscale(), smoothscale_by() reorganization and speed up by @itzpr3d4t0r in #3319
+  * config_unix: Removed unused sys import by @Vazno in #3397
+  * Fix edge case bug in Vector.move_towards, add more tests by @ankith26 in #3400
+  * Go back to old memcpy strategy for non-flip flip by @Starbuck5 in #3416
+  * Fix incref issue in PixelArray context manager API by @ankith26 in #3414
+  * Update some deps in manylinux scripts by @ankith26 in #3042
+  * Fix freetype compilation flags when building with clang instead of gcc by @pmp-p in #3381
+  * Relax SDL minor version exact match check by @ankith26 in #3428
+  * Clean bash-completion file in macdeps builds by @ankith26 in #3431
+  * Optimized rect getters by @itzpr3d4t0r in #3401
+  * Delete rect subscripts should error not segfault by @ankith26 in #3440
+  * Vector clamp shouldn't allow kwargs, improve error reporting and unit tests by @ankith26 in #3396
+  * Make sure set_mode always returns a cleared window by @ankith26 in #3317
+  * Improved mixer.set_reserved() documentation by @Vicky-Vicky27 in #3434
+  * SSE alpha blitter optimization by @Starbuck5 in #3378
+  * Add Spanish translation of chimp tutorial by @stefpivser in #3421
+  * Update and sync SDL_mixer and SDL_ttf to 2.6.2 and 2.20.1 respectively by @ankith26 in #3433
+  * Compile freetype with harfbuzz, reduce manylinux wheelsize by @ankith26 in #3445
+  * Freshen up arraydemo.py by @Starbuck5 in #3453
+  * Refactor examples/mask.py by @pycoinfu in #3455
+  * Fix new mypy-0.981 fails by @ankith26 in #3470
+  * 2.1.3.dev6 and 2.1.3.dev7 by @illume in #3471
+  * Fix pypy rect freelist issue, unskip tests by @ankith26 in #3452
+  * Fix es folder location and fix some sphinx issues in ChimpanceLineaporLinea.rst by @illume in #3473
+  * Fixed typo in aliens example by @muelletm in #3485
+  * overview.rst -&gt; 개요.rst by @novialriptide in #3474
+  * Add 3.11.0.rc2 to Appveyor by @Starbuck5 in #3486
+  * Cleanup of symbian code and references to bitbucket/motherhamster bugzilla by @ankith26 in #3490
+  * Fixed segault in subclass of Sound by @PurityLake in #3492
+  * Relax strict pixel match tests in test_src_alpha_sdl2_blitter by allowing a small delta by @Temmie3754 in #3494
+  * manylinux: Upgrade to SDL2-2.0.22 by @illume in #3475
+  * Internalize &quot;SDL&quot;_UCS4ToUTF8 by @Starbuck5 in #3487
+  * blitters fix compile error when no SIMD by @ankith26 in #3498
+  * Python 3.11 on mac/manylinux (with updated cibuildwheel) by @ankith26 in #3484
+  * v2.1.3.dev8 by @illume in #3503
+  * Remove pygame.context for later renaming by @illume in #3508
+  * Correct typo in tom_games3.rst by @cvionis in #3504
+  * Add debian s390x and ppc64le tests to CI by @ankith26 in #3496
+  * docs: Add experimental feedback links to new APIs by @illume in #3511
+</comment>
+    <requestid>1068405</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 28 05:39:54 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.2.1:
+  * update containerd (1.6.19)
+  * update Kubo (0.18.1)
+  * update Nydus (2.1.4)
+  * update BuildKit (0.11.3)
+  * build(deps): bump github.com/klauspost/compress from 1.15.15 to 1.16.0
+  * build(deps): bump github.com/containerd/containerd
+
+- Add _service file
+
+-------------------------------------------------------------------
+Sat Dec 17 13:38:00 UTC 2022 - contact@marknefedov.dev
+- Update to version 1.1.0:
+  * nerdctl compose:
+    * New commands: nerdctl compose (stop|restart|rm|images|exec|pause|unpause|top|port)
+    * New flags: nerdctl compose ps --format=json
+    * New YAML properties: x-nerdctl-{verify,cosign-public-key,sign,cosign-private-key}
+  * nerdctl image convert:
+    * New estargz flags: --estargz-min-chunk-size=<SIZE>, --estargz-external-toc, --estargz-keep-diff-id 
+    * New zstd flags: --zstdchunked-record-in, --zstdchunked-compression-level, --zstdchunked-chunk-size 
+    * Support OverlayBD (--overlaybd, --overlaybd-fs-type, --overlaybd-dbstr
+  * nerdctl network rm:
+    * Support removing a network by ID
+  * nerdctl-full:
+    * Update containerd (1.6.12), fuse-overlayfs (1.10), RootlessKit (1.1.0), Kubo (0.17.0), Stargz Snapshotter (0.13.0), BuildKit (0.10.6)
+
+-------------------------------------------------------------------
 Sat Nov 12 20:24:02 UTC 2022 - contact@marknefedov.dev
 - Update to version 1.0.0:
   * nerdctl run

@@ -54,7 +54,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -87,15 +87,6 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
-
-# allow reading /sys/devices/system/cpu/possible in dnsmasc//libvirt-leaseshelper (boo#1202849, submitted upstream 2022-08-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/917)
-Patch12:        dnsmasq-cpu-possible.diff
-
-# allow nscd to read systemd userdb (boo#1207698, submitted upstream 2023-01-30 https://gitlab.com/apparmor/apparmor/-/merge_requests/977)
-Patch13:        nscd-systemd-userdb.diff
-
-# abstractions/openssl: allow to read /etc/ssl/openssl-1_1.cnf (boo#1207911, upstreaming TODO)
-Patch14:        abstractions-openssl-1_1.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -361,9 +352,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch4
 %patch5
 %patch6
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
 
 %build
 export SUSE_ASNEEDED=0

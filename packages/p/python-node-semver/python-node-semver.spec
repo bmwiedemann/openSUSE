@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-node-semver
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Port of node-semver
 License:        MIT
@@ -55,6 +55,7 @@ python version of node-semver (https://github.com/isaacs/node-semver)
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/node_semver-%{version}-py*.egg-info
+%{python_sitelib}/nodesemver
 
 %changelog

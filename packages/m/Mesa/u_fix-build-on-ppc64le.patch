@@ -1,7 +1,8 @@
-diff -u -r mesa-21.2.3.orig/include/CL/cl_platform.h mesa-21.2.3/include/CL/cl_platform.h
---- mesa-21.2.3.orig/include/CL/cl_platform.h	2021-10-14 12:26:03.866376943 +0200
-+++ mesa-21.2.3/include/CL/cl_platform.h	2021-10-14 20:37:44.557384820 +0200
-@@ -356,7 +356,9 @@
+Index: mesa-23.0.0/include/CL/cl_platform.h
+===================================================================
+--- mesa-23.0.0.orig/include/CL/cl_platform.h
++++ mesa-23.0.0/include/CL/cl_platform.h
+@@ -385,7 +385,9 @@ typedef unsigned int cl_GLenum;
  /* Define basic vector types */
  #if defined( __VEC__ )
    #if !defined(__clang__)
@@ -11,10 +12,11 @@ diff -u -r mesa-21.2.3.orig/include/CL/cl_platform.h mesa-21.2.3/include/CL/cl_p
    #endif
     typedef __vector unsigned char     __cl_uchar16;
     typedef __vector signed char       __cl_char16;
-diff -u -r mesa-21.2.3.orig/src/gallium/drivers/llvmpipe/lp_rast_tri.c mesa-21.2.3/src/gallium/drivers/llvmpipe/lp_rast_tri.c
---- mesa-21.2.3.orig/src/gallium/drivers/llvmpipe/lp_rast_tri.c	2021-10-14 12:26:04.058380655 +0200
-+++ mesa-21.2.3/src/gallium/drivers/llvmpipe/lp_rast_tri.c	2021-10-14 20:38:55.478734888 +0200
-@@ -465,7 +465,9 @@
+Index: mesa-23.0.0/src/gallium/drivers/llvmpipe/lp_rast_tri.c
+===================================================================
+--- mesa-23.0.0.orig/src/gallium/drivers/llvmpipe/lp_rast_tri.c
++++ mesa-23.0.0/src/gallium/drivers/llvmpipe/lp_rast_tri.c
+@@ -488,7 +488,9 @@ lp_rast_triangle_32_3_4(struct lp_raster
  
  #if defined(_ARCH_PWR8) && UTIL_ARCH_LITTLE_ENDIAN
  
@@ -24,11 +26,12 @@ diff -u -r mesa-21.2.3.orig/src/gallium/drivers/llvmpipe/lp_rast_tri.c mesa-21.2
  #include "util/u_pwr8.h"
  
  static inline void
-diff -u -r mesa-21.2.3.orig/src/gallium/drivers/llvmpipe/lp_setup_tri.c mesa-21.2.3/src/gallium/drivers/llvmpipe/lp_setup_tri.c
---- mesa-21.2.3.orig/src/gallium/drivers/llvmpipe/lp_setup_tri.c	2021-10-14 12:26:04.058380655 +0200
-+++ mesa-21.2.3/src/gallium/drivers/llvmpipe/lp_setup_tri.c	2021-10-14 20:38:24.766150222 +0200
-@@ -47,7 +47,9 @@
- #if defined(PIPE_ARCH_SSE)
+Index: mesa-23.0.0/src/gallium/drivers/llvmpipe/lp_setup_tri.c
+===================================================================
+--- mesa-23.0.0.orig/src/gallium/drivers/llvmpipe/lp_setup_tri.c
++++ mesa-23.0.0/src/gallium/drivers/llvmpipe/lp_setup_tri.c
+@@ -46,7 +46,9 @@
+ #if DETECT_ARCH_SSE
  #include <emmintrin.h>
  #elif defined(_ARCH_PWR8) && UTIL_ARCH_LITTLE_ENDIAN
 +#ifndef __cplusplus

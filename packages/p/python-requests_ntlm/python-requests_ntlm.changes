@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 11:53:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.2.0
+  * Migrate to GHA for CI by @jborean93 in #129
+  * Migrate to PySPNEGO by @clubby789 in #126
+  * Add pyproject.toml for PEP518 compliance by @jborean93 in #131
+
+-------------------------------------------------------------------
 Tue Dec 18 23:42:59 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Trim filler wording from description.

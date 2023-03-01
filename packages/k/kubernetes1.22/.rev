@@ -124,4 +124,12 @@
   * Update GCE manifest to use konnectivity 0.0.27</comment>
     <requestid>962177</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64374432602289735e95ab87e8e10997</srcmd5>
+    <version>1.22.17</version>
+    <time>1677683692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068438</requestid>
+  </revision>
 </revisionlist>

@@ -4,11 +4,11 @@ Date:   Tue May 24 14:47:53 2022 -0400
 
     Adjusting 'iris_batch.c' per 'https://gitlab.freedesktop.org/mesa/mesa/-/issues/5731'.
 
-diff --git a/src/gallium/drivers/iris/iris_batch.c b/src/gallium/drivers/iris/iris_batch.c
-index 71cb2096ad1..0a72d2a07c3 100644
---- a/src/gallium/drivers/iris/iris_batch.c
-+++ b/src/gallium/drivers/iris/iris_batch.c
-@@ -926,8 +926,7 @@ submit_batch(struct iris_batch *batch)
+Index: mesa-23.0.0/src/gallium/drivers/iris/iris_batch.c
+===================================================================
+--- mesa-23.0.0.orig/src/gallium/drivers/iris/iris_batch.c
++++ mesa-23.0.0/src/gallium/drivers/iris/iris_batch.c
+@@ -923,8 +923,7 @@ submit_batch(struct iris_batch *batch)
              (struct drm_i915_gem_exec_object2) {
                 .handle = bo->gem_handle,
                 .offset = bo->address,

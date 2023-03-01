@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 07:18:52 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- appstream-util is too old on Leap 15.4 - don't call it at the end
+  of installation
+
+-------------------------------------------------------------------
 Mon Feb 27 11:37:21 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Refresh 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cytoolz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-cytoolz
-Version:        0.11.2
+Version:        0.12.1
 Release:        0
 Summary:        High performance python functional utilities in Cython
 License:        BSD-3-Clause
 URL:            https://github.com/pytoolz/cytoolz
 Source:         https://files.pythonhosted.org/packages/source/c/cytoolz/cytoolz-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 28 09:49:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix GLX with indirect rendering:
+  * n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 10:26:30 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.0.0
+  * first stable release of 2023
+- refreshed patches
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * n_stop-iris-flicker.patch
+  * u_dep_xcb.patch
+  * u_fix-build-on-ppc64le.patch
+- adjusted n_no-sse2-on-ix86-except-for-intel-drivers.patch
+- meson: added -Dxmlconfig=enabled to fix link errors
+  (missing "-lexpat")
+
+-------------------------------------------------------------------
 Fri Feb 10 14:06:56 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_ReturnME.patch

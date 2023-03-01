@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 28 21:54:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU moe 1.13:
+  * 'moerc' has been renamed to 'moe.conf', it is read form
+    $XDG_CONFIG_HOME/moe.conf instead of $HOME/.moerc.
+    (XDG_CONFIG_HOME defaults to $HOME/.config).
+  * Multiple user interface fixes
+  * Speed improvements,including start-up improvements
+  * Some commands recognize additional inputsand options
+  * Now accepts the escape sequences '\uhhhh' and '\Uhhhhhhhh'
+    (universal-character-name) to either search or insert in the
+    buffer the corresponding ISO 10646 character coded in UTF-8.
+  * Now accepts the escape sequence '\dddd' (decimal code 'ddd')
+    like GNU sed to either search or insert in the buffer the
+    corresponding ISO-8859-15 character.
+  * Recursive load now ignores file names with extensions
+    ".lzma", ".pnm", ".tiff", ".zst", ".tzst".
+
+-------------------------------------------------------------------
 Tue Sep 13 11:33:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Use distribution CFLAGS

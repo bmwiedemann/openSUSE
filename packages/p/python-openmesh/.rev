@@ -15,4 +15,13 @@
     <comment>- skip python 3.6 (no numpy)</comment>
     <requestid>873581</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2f49a08b69223acf80d6c0ba81c94ea</srcmd5>
+    <version>1.2.1</version>
+    <time>1677683686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1, no release notes found
+</comment>
+    <requestid>1068384</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Sat Feb 25 00:20:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Numerous UGens have been fixes so that they calculate their
+    initial value as originally intended. Please note that in
+    some cases this may create a different result than previously
+  * A universal Intel x86_64 and Apple arm64 macOS build is now
+    provided
+  * This version reverses changes made to MIDI implementation on
+    macOS introduced in 3.12.0, which turned out to introduce
+    other issues with MIDI.
+  * The 3.12.1 release fixes compatibility with older macOS
+    systems (10.13 and below). For the list of previous changes,
+    see CHANGELOG.md.
+  * Supernova is now available on Windows
+  * Supercollider is officially supported on Bela platform
+  * macOS Big Sur is now fully supported
+  * On macOS output signal won't go over the system volume level
+  * The `method not found` error in sclang now provides
+    suggestions, using fuzzy array comparisons
+  * Oppressive terminology has been updated throughout the
+    project
+  * CI has been updated to use GitHub Actions and now also runs
+    our test suite
+  * in the help browser, Shift-Enter now evaluates code again!
+  * fixed a bug in Pfindur where the last event of the pattern
+    could become "Rest-less" (PR 5113).
+  * ProxySpace:copy also rebuilds the ProxySpace to copy
+    referenced objects (PR 5192).
+  * supernova now correctly handles `/s_getn` with a control name
+    instead of index (PR 5182).
+  * __New feature__ - Ableton Link support. See _sclang: added_
+  * Minimum supported Boost version is now 1.66.0 (#4611). Boost
+    1.71 is also now supported (#4612).
+  * supernova would sometimes return malformed `/done` OSC
+    messages over TCP due to a concurrency issue. This has been
+    fixed (#4435).
+  * Some sequences of IDE actions involving editor splits (such
+    as removing a split and then recompiling the class library)
+    can lead to an eventual IDE crash. These have been fixed
+  * On macOS, Cmd+Q used to quit both the IDE and interpreter,
+    but it regressed and only the interpreter would quit. This
+    has been fixed (#4300).
+  * **Breaking change:** scsynth had a security issue where it
+    listens to 0.0.0.0 by default. For most users, this is
+    undesirable behavior since it allows anyone on your local
+    network to send messages to scsynth! This default has been
+    changed to 127.0.0.1 (#4516). To change it back (e.g. for
+    networked server/client setups), use `-B 0.0.0.0` at the
+    command line or `server.options.bindAddress = "0.0.0.0"`.
+  * Fixed crashes trying to run multiple IDEs at once, and a
+    related error when attempting to run `HelpBrowser:instance`
+    in sclang while an IDE help browser is open (#4267).
+  * Fix issues when using a regular `Buffer` (that is, not a
+    `LocalBuf`) for FFT (#4050).
+  * Fixed class library compilation issues on Qt-less sclang
+    installations (#4219).
+  * MainMenu consumes less resources and no longer causes a
+    gradual memory leak (#3870).
+  * Fix SCIDE missing an icon on some Linux desktop environments
+    (#4269).
+  * Fixed incorrect parsing of strings containing `\"` and
+    single-quote symbols containing `\'` in class library files
+    (#4255).
+  * Fixed language-side issues when using FFT UGens on a regular
+    Buffer rather than a LocalBuf (#4050).
+  * Added `TempoClock:isRunning` method (#4254).
+  * Fixed some compiler warnings (#4275, #4274).
+  * Fixed an infinite hang in `SerialPort.devices` affecting
+    macOS (#4180).
+  * Fixed `ServerOptions` producing eight channels instead of two
+    channels when explicitly setting `numOutputBusChannels` or
+    `numInputBusChannels` (#4251).
+  * Fixed a build issue on OpenBSD (#4203).
+  * Fixed `/b_fill`, which was broken in supernova (#4188).
+  * Fixed incorrect latency compensation in PortAudio driver
+  * The `CheckBadValues` UGen incorrectly recognized zero as a
+    bad value on Windows. This has been fixed (#4240).
+  * Fixed `crtscts` flag in `SerialPort.new`, which broke in 3.10
+  * Fixed lack of `backgroundImage` support for `Slider2D`
+  * Fixed incorrect behavior of `String:asSecs` (#3819).
+  * `0X0` is an illegal hexadecimal literal in sclang, but SCIDE
+    and SCDoc highlighted such strings as if they were correct.
+    They have been updated (#4170).
+  * Fixed weird colors in SCIDE when changing from other themes
+    to the "classic" theme (#4161).
+  * sclang and scide now require Qt 5.7+ instead of Qt 5.5. If
+    you are building with Qt 5.5, you should upgrade to the
+    latest Qt version (5.11 as of this writing). SC can now be
+    built on modern versions of Visual Studio and UserView
+    supports Retina/HiDPI display.
+  * Menus are now supported in the Qt GUI. See help files for
+    Menu, MenuAction, ToolBar, and MainMenu.
+  * Added wrappers for over 100 special mathematical functions
+    (gamma function, Bessel functions, elliptic integrals, etc.)
+    from the Boost library.
+  * SerialPort now works on Windows.
+  * Fixed CPU hog when sclang is built without Qt.
+  * Fixed some stray issues on Windows with paths containing non-
+    ASCII characters.
+- add gpg validation 
+- drop patch fix-desktop.patch, x64-libdir.patch, supercollider.patch: obsolete
+
+-------------------------------------------------------------------
+Fri Mar  3 13:45:59 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 3.8.0
+- Fixed build on openSUSE Tumbleweed (boost int128 and c++11)
+  * https://svn.boost.org/trac/boost/ticket/9240
+- Replaced supercollider.patch with fix-cmake-link-threads.patch
+- Dropped unneeded and overzealous "stripchars"
+- Added fix-desktop.patch to fix desktop file and install mime info
+  properly
+- Added x64-libdir.patch to fix installation- and search-directories
+  on 64bit architectures.
+
+-------------------------------------------------------------------
+Thu Apr 28 19:05:01 UTC 2016 - vogre.z@gmail.com
+
+- switched spec to point release instead of git snapshot
+- updated to 3.7.1
+  this patch release includes small enhancements and bug fixes.
+  full project changelog is available at:
+  https://github.com/supercollider/supercollider/blob/Version-3.7.1/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Dec 18 18:07:43 UTC 2015 - olaf@aepfle.de
+
+- Fix build in Leap and Tumbleweed
+
+-------------------------------------------------------------------
+Thu Sep 17 16:13:58 UTC 2015 - prusnak@opensuse.org
+
+- updated to 3.7.0 snapshot
+
+-------------------------------------------------------------------
+Mon Oct 27 21:37:51 UTC 2014 - prusnak@opensuse.org
+
+- updated package to be based on Fedora CCRMA package
+  by Fernando Lopez-Lezcano
+
+-------------------------------------------------------------------
+Sun Apr 27 13:11:44 UTC 2014 - prusnak@opensuse.org
+
+- updated to 3.6.6
+
+-------------------------------------------------------------------
+Thu Jun 13 10:57:24 UTC 2013 - prusnak@opensuse.org
+
+- updated to 3.6.5
+
+-------------------------------------------------------------------
+Fri Jan 25 00:49:28 UTC 2013 - toddrme2178@gmail.com
+
+- Updated to 3.6.2
+- Split editors
+
+-------------------------------------------------------------------
+Thu Mar 22 16:29:52 UTC 2012 - prusnak@opensuse.org
+
+- updated to 3.5.0
+
+-------------------------------------------------------------------
+Wed Jan 11 15:16:23 UTC 2012 - prusnak@opensuse.org
+
+- spec cleanup
+
+-------------------------------------------------------------------
+Fri Nov  4 00:00:00 UTC 2011 - d.pashov@gmail.com
+
+- initial package
+

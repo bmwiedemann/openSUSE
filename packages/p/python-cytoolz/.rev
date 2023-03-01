@@ -39,4 +39,26 @@
     <comment></comment>
     <requestid>945464</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>abe18701f2db0902a64df0cb5c614568</srcmd5>
+    <version>0.12.1</version>
+    <time>1677683683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1
+  * Support Python 3.11 (including wheels)
+  * Drop Python 3.5 support
+- 0.12.0
+  * Update to toolz 0.12.0 (#170)
+    * See toolz release notes:
+      https://github.com/pytoolz/toolz/releases/tag/0.12.0
+  * Build wheels automatically with cibuildwheel! (#167, #168, #169, #170)
+  * Support newer Python versions (#165, don't use inspect.getargspec
+    in tests)
+  * Improve import times
+  * Use versioneer.py to manage versions
+    * __version__ and __toolz_version__ are no longer available from
+      cytoolz._version--use cython.__toolz_version__ instead.
+</comment>
+    <requestid>1068403</requestid>
+  </revision>
 </revisionlist>

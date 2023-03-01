@@ -181,4 +181,30 @@
     non-Unix OSes (#935)</comment>
     <requestid>1046133</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a1866a363168ace56a4064add106cb0f</srcmd5>
+    <version>2.3.1</version>
+    <time>1677683653</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Run ``black`` on the entire source code
+  * Bundle the ``requirements-tests.txt`` file in the source
+    distribution
+  * [watchmedo] Exclude ``FileOpenedEvent`` events from
+    ``AutoRestartTrick``, and ``ShellCommandTrick``, to restore
+    watchdog &lt; 2.3.0 behavior. A better solution should be found
+    in the future. 
+  * [watchmedo] Log ``FileOpenedEvent``, and ``FileClosedEvent``,
+    events in ``LoggerTrick``
+  * [inotify] Add support for ``IN_OPEN`` events: a
+    ``FileOpenedEvent`` event will be fired
+  * [watchmedo] Add optional event debouncing for ``auto-
+    restart``, only restarting once if many events happen in
+    quick succession (``--debounce-interval``)
+  * [watchmedo] Exit gracefully on ``KeyboardInterrupt``
+    exception (Ctrl+C)
+  * [watchmedo] Add option to not auto-restart the command after
+    it exits (``--no-restart-on-command-exit``)</comment>
+    <requestid>1068309</requestid>
+  </revision>
 </revisionlist>

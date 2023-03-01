@@ -369,4 +369,14 @@
     <comment></comment>
     <requestid>989481</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>cd1ee412f788dbc244ba4615bf5f6fe0</srcmd5>
+    <version>4.8.0</version>
+    <time>1677683665</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#getpelican/pelican#3055
+</comment>
+    <requestid>1068351</requestid>
+  </revision>
 </revisionlist>

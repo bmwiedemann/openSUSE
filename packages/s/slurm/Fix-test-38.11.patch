@@ -1,9 +1,8 @@
 From: Egbert Eich <eich@suse.com>
-Date: Wed Jun 15 08:41:45 2022 +0200
+Date: Mon Feb 20 21:35:37 2023 +0100
 Subject: Fix test 38.11
 Patch-mainline: Not yet
-Git-repo: https://github.com/SchedMD/slurm
-Git-commit: 235768790cb2e9cf011e6d08116a468ebec71582
+Git-commit: 80c7c8b897fde0c025f695b8301f4cbbc605581d
 References: 
 
 Signed-off-by: Egbert Eich <eich@suse.com>
@@ -12,19 +11,19 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  testsuite/expect/test38.11 | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 diff --git a/testsuite/expect/test38.11 b/testsuite/expect/test38.11
-index d2c07d60c7..bf5d10ecc9 100755
+index 3d2954f..89e5333 100755
 --- a/testsuite/expect/test38.11
 +++ b/testsuite/expect/test38.11
-@@ -99,9 +99,9 @@ make_bash_script $script "
- $srun -N1 -n1 --het-group=0 mkdir -p $tmp_dir/$node1
- $srun -N1 -n1 --het-group=1 mkdir -p $tmp_dir/$node2
+@@ -83,9 +83,9 @@ if {$het_job_id == 0} {
+ run_command -fail "$srun -N1 -n1 --het-group=0 mkdir -p $tmp_dir"
+ run_command -fail "$srun -N1 -n1 --het-group=1 mkdir -p $tmp_dir"
  
--$sbcast -f -j$het_job_id $srun $tmp_dir/file
--$sbcast -f -j${het_job_id}+0 $srun $tmp_dir/$node1/file_comp0
--$sbcast -f -j${het_job_id}+1 $srun $tmp_dir/$node2/file_comp1
-+$sbcast -f -j\$SLURM_JOBID $srun $tmp_dir/file
-+$sbcast -f -j\$SLURM_JOBID $srun $tmp_dir/$node1/file_comp0
-+$sbcast -f -j\$((SLURM_JOBID+1)) $srun $tmp_dir/$node2/file_comp1
+-run_command -fail "$sbcast -f --jobid=$het_job_id $srun $tmp_dir/file"
+-run_command -fail "$sbcast -f --jobid=${het_job_id}+0 $srun $tmp_dir/file_comp0"
+-run_command -fail "$sbcast -f --jobid=${het_job_id}+1 $srun $tmp_dir/file_comp1"
++run_command -fail "$sbcast -f --jobid=\$SLURM_JOBID $srun $tmp_dir/file"
++run_command -fail "$sbcast -f --jobid=\$SLURM_JOBID $srun $tmp_dir/file_comp0"
++run_command -fail "$sbcast -f --jobid=\$((SLURM_JOBID+1)) $srun $tmp_dir/file_comp1"
  
- echo -n \"\nChecking node 1: \"
- $srun -Q -N1 -n1 --het-group=1 ls $tmp_dir/file
+ subtest {![run_command_status "$srun -N1 -n1 --het-group=0 ls $tmp_dir/file"]} "Verify main file is in node of component 0"
+ subtest {![run_command_status "$srun -N1 -n1 --het-group=1 ls $tmp_dir/file"]} "Verify main file is in node of component 1"

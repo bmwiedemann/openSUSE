@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 24 15:35:17 UTC 2023 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Add patch add_list-persisted_command-ec102481.patch:
+  * driverctl: add list-persisted command
+  * Fix device driver binding issue after re-enumeration
+  * driverctl: fix list_devices() when `driver_override` is not set
+  * driverctl: fix --help to return success.
+  * Makefile: drop extra '/'
+  * improve help text
+  * bash-completion: suggest pci addresses instead of driver.
+  * bash-completion: add support for options.
+  * bash-completion: simplify and autocomplete cmds.
+  * bash-completion: add support for list- commands.
+
+
+-------------------------------------------------------------------
 Mon Aug 17 12:30:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.111

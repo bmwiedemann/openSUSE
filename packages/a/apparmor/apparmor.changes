@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 28 19:35:17 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.1.3
+  - add support for more audit.log formats in libapparmor
+  - add abstractions/groff (boo#1065388)
+  - various additions in abstractions and profiles
+  - several bug fixes in parser and utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.3
+    for the detailed upstream changelog
+- drop upstreamed patches:
+  - abstractions-openssl-1_1.diff
+  - dnsmasq-cpu-possible.diff
+  - nscd-systemd-userdb.diff
+
+-------------------------------------------------------------------
 Mon Feb  6 19:27:40 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - add abstractions-openssl-1_1.diff: allow to read

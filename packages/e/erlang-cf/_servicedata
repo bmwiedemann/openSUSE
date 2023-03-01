@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/project-fifo/cf.git</param>
+              <param name="changesrevision">2bcf00402db9ca5a4790de7f82c8139baaf8856c</param></service></servicedata>

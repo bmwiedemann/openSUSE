@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -24,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-tempora
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -77,7 +76,9 @@ sed -i '/--mypy/d' pytest.ini
 
 %check
 sed -i -e 's:--black::' -e 's:--cov::' -e 's/--flake8//g' pytest.ini
-%pytest
+# https://github.com/jaraco/tempora/issues/22
+donttest="tempora.parse_timedelta"
+%pytest -k "not $donttest"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

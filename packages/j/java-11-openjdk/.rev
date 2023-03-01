@@ -479,4 +479,12 @@
     <comment>bsc#1205916</comment>
     <requestid>1066514</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>cd30774c62fb0204819238cffb2ceda9</srcmd5>
+    <version>11.0.18.0</version>
+    <time>1677683632</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068363</requestid>
+  </revision>
 </revisionlist>

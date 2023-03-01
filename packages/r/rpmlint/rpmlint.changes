@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 27 14:52:57 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230227.db0110c:
+  * DbusPolicyCheck: use existing dbus-policy-missing-allow
+  * DbusPolicyCheck: use existing dbus-policy-missing-allow
+
+-------------------------------------------------------------------
+Mon Feb 27 11:18:41 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230227.0faf846:
+  * Disallow a space in rpmlint issue name
+  * Unify D-Bus check name
+  * FilesCheck: fix typo and shorten setuid/setgid check
+  * Revert "Disable Mageia CI builds due to system problem"
+  * Disable Mageia CI builds due to system problem
+  * Revert "disable opensuse-tumbleweed-aarch64 due to system crash"
+
+-------------------------------------------------------------------
 Tue Feb 14 16:18:53 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230214.1bab129:

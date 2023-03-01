@@ -7,10 +7,10 @@ Subject: [PATCH] Patch openSUSE revert coredns image renaming
  cmd/kubeadm/app/images/images.go | 5 -----
  1 file changed, 5 deletions(-)
 
-diff --git a/cmd/kubeadm/app/images/images.go b/cmd/kubeadm/app/images/images.go
-index 7e97dbc9421..187c71894cb 100644
---- a/cmd/kubeadm/app/images/images.go
-+++ b/cmd/kubeadm/app/images/images.go
+Index: kubernetes-1.22.17/cmd/kubeadm/app/images/images.go
+===================================================================
+--- kubernetes-1.22.17.orig/cmd/kubeadm/app/images/images.go
++++ kubernetes-1.22.17/cmd/kubeadm/app/images/images.go
 @@ -20,7 +20,6 @@ import (
  	"fmt"
  
@@ -19,17 +19,14 @@ index 7e97dbc9421..187c71894cb 100644
  	"k8s.io/kubernetes/cmd/kubeadm/app/constants"
  	kubeadmutil "k8s.io/kubernetes/cmd/kubeadm/app/util"
  
-@@ -48,10 +47,6 @@ func GetDNSImage(cfg *kubeadmapi.ClusterConfiguration) string {
+@@ -48,10 +47,6 @@ func GetDNSImage(cfg *kubeadmapi.Cluster
  	if cfg.DNS.ImageRepository != "" {
  		dnsImageRepository = cfg.DNS.ImageRepository
  	}
--	// Handle the renaming of the official image from "k8s.gcr.io/coredns" to "k8s.gcr.io/coredns/coredns
+-	// Handle the renaming of the official image from "registry.k8s.io/coredns" to "registry.k8s.io/coredns/coredns
 -	if dnsImageRepository == kubeadmapiv1beta2.DefaultImageRepository {
 -		dnsImageRepository = fmt.Sprintf("%s/coredns", dnsImageRepository)
 -	}
  	// DNS uses an imageTag that corresponds to the DNS version matching the Kubernetes version
  	dnsImageTag := constants.CoreDNSVersion
  
--- 
-2.32.0
-

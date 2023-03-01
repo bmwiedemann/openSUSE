@@ -724,4 +724,19 @@
   * Updated Swedish i18n.</comment>
     <requestid>1046178</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e41e860b47c34b7f9c5da91c40d6a59c</srcmd5>
+    <version>1.7.1</version>
+    <time>1677683677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Added 'inlang' for easy localization (i18n) updates.
+  * Added nanosecond parsing option via the '%n' specifier.
+    Great for parsing 'Traefik' JSON logs duration field.
+  * Changed Docker workflow to build a docker image on different
+    architectures {'arm64' &amp; 'amd64'}.
+  * Fixed issue with '--unknowns-as-crawlers' where it did not
+    process them as such.</comment>
+    <requestid>1068373</requestid>
+  </revision>
 </revisionlist>

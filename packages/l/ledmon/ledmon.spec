@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{nam
 Patch0:         harden_ledmon.service.patch
 Patch1:         0001-Ledctl-slots-management-94.patch
 Patch2:         0002-add-Dell-15G-servers.patch
+Patch3:         0003-ipmi-avoid-error-messages-on-non-dell-platforms-112.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel

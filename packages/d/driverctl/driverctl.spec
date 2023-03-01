@@ -1,7 +1,7 @@
 #
 # spec file for package driverctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,8 @@ Release:        0
 Summary:        Device driver control utility
 License:        LGPL-2.0-only
 URL:            https://gitlab.com/driverctl/driverctl
-Source0:        https://gitlab.com/driverctl/driverctl/-/archive/%{version}/driverctl-%{version}.tar.gz
+Source0:        https://gitlab.com/driverctl/driverctl/-/archive/%{version}/driverctl-%{version}.tar.bz2
+Patch0:         add_list-persisted_command-ec102481.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -51,6 +52,7 @@ by default.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %make_build

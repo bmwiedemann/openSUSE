@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 16:36:27 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Correct BR from python3-jinja2 to python3-Jinja2, fixes
+  dependency resolving on older distros
+
+-------------------------------------------------------------------
 Sat Oct 29 00:02:49 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXCFS 5.0.2. The full upstream changelog is available from:

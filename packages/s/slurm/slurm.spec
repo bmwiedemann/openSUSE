@@ -17,10 +17,12 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 38
-%define ver 22.05.5
-%define _ver _22_05
+%define so_version 39
+%define ver 23.02.0
+%define _ver _23_02
+#%%define rc_v 0rc1
 %define dl_ver %{ver}
+#%%define dl_ver 23-02-0%{?rc_v:-%rc_v}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
 %define nss_so 2
@@ -53,6 +55,9 @@ ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400
 %define base_ver 2011
+%endif
+%if 0%{?sle_version} == 150500
+%define base_ver 2302
 %endif
 
 %if 0%{?suse_version} >= 1500
@@ -148,6 +153,7 @@ License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
+#Source:         https://github.com/SchedMD/slurm/archive/refs/tags/%{pname}-%{dl_ver}.tar.gz
 Source1:        slurm-rpmlintrc
 Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmd.xml
 Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
@@ -226,6 +232,7 @@ BuildRequires:  rrdtool-devel
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_ordering}
 BuildRequires:  dejagnu
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(systemd)
 %else
@@ -638,9 +645,7 @@ Do not run test suite and file bug reports for each failed test!
 %prep
 %setup -q -n %{pname}-%{dl_ver}
 %patch0 -p1
-#%%patch1 -p1
 %patch2 -p1
-#%%patch3 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
@@ -1209,8 +1214,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 
 %files doc
 %{?comp_at}
-%dir %{_datadir}/doc/%{pname}-%{dl_ver}
-%{_datadir}/doc/%{pname}-%{dl_ver}/*
+%dir %{_datadir}/doc/%{pname}-%{version}%{?rc_v:-%rc_v}
+%{_datadir}/doc/%{pname}-%{version}%{?rc_v:-%rc_v}/*
 
 %files webdoc
 %{?comp_at}
@@ -1302,6 +1307,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_profile_none.so
 %{_libdir}/slurm/burst_buffer_lua.so
 %{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
+%{_libdir}/slurm/data_parser_v0_0_39.so
 %{_libdir}/slurm/cgroup_v1.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/slurm/cgroup_v2.so
@@ -1335,7 +1341,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/job_submit_partition.so
 %{_libdir}/slurm/job_submit_require_timelimit.so
 %{_libdir}/slurm/job_submit_throttle.so
-%{_libdir}/slurm/launch_slurm.so
 %{_libdir}/slurm/libslurm_pmi.so
 %{_libdir}/slurm/mcs_account.so
 %{_libdir}/slurm/mcs_group.so
@@ -1369,7 +1374,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/serializer_url_encoded.so
 %{_libdir}/slurm/serializer_yaml.so
 %{_libdir}/slurm/site_factor_none.so
-%{_libdir}/slurm/slurmctld_nonstop.so
 %{_libdir}/slurm/switch_none.so
 %{_libdir}/slurm/task_affinity.so
 %{_libdir}/slurm/task_cgroup.so
@@ -1428,13 +1432,12 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{?comp_at}
 %{_sbindir}/slurmrestd
 %{_mandir}/man8/slurmrestd.*
+%{_libdir}/slurm/openapi_dbv0_0_39.so
+%{_libdir}/slurm/openapi_v0_0_39.so
 %{_libdir}/slurm/openapi_dbv0_0_38.so
 %{_libdir}/slurm/openapi_v0_0_38.so
 %{_libdir}/slurm/openapi_dbv0_0_37.so
 %{_libdir}/slurm/openapi_v0_0_37.so
-%{_libdir}/slurm/openapi_dbv0_0_36.so
-#%{_libdir}/slurm/openapi_v0_0_35.so
-%{_libdir}/slurm/openapi_v0_0_36.so
 #%{_libdir}/slurm/rest_auth_jwt.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
@@ -1445,7 +1448,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_sbindir}/slurmstepd
 # bsc#1153095
 %{_bindir}/srun
+%{_bindir}/scrun
 %{_mandir}/man1/srun.1*
+%{_mandir}/man1/scrun.1*
 %{_mandir}/man8/slurmd.*
 %{_mandir}/man8/slurmstepd*
 %if 0%{?with_systemd}
@@ -1506,6 +1511,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/select_cray_aries.so
 %{_libdir}/slurm/switch_cray_aries.so
 %{_libdir}/slurm/task_cray_aries.so
+%{_libdir}/slurm/proctrack_cray_aries.so
 %{_libdir}/slurm/mpi_cray_shasta.so
 %if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
@@ -1518,7 +1524,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %dir %attr(-, %slurm_u, %slurm_u) /srv/slurm-testsuite
 %attr(-, root, root) %{_datadir}/%{name}
 %if 0%{?sle_version} == 120200 || 0%{?suse_version} >= 1550
-%dir %{_pam_secconfdir}/limits.d
+%dir %attr(-, root, root) %{_pam_secconfdir}/limits.d
 %endif
 %doc testsuite/expect/README
 %doc %{basename: %{S:21}}

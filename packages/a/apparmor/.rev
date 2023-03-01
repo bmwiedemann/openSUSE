@@ -2533,4 +2533,22 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   /etc/ssl/openssl-1_1.cnf in abstractions/openssl (boo#1207911) (forwarded request 1063513 from cboltz)</comment>
     <requestid>1063514</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>0a12f5bce8eb78c9586ce72e560dab2a</srcmd5>
+    <version>3.1.3</version>
+    <time>1677683628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.1.3
+  - add support for more audit.log formats in libapparmor
+  - add abstractions/groff (boo#1065388)
+  - various additions in abstractions and profiles
+  - several bug fixes in parser and utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.3
+    for the detailed upstream changelog
+- drop upstreamed patches:
+  - abstractions-openssl-1_1.diff
+  - dnsmasq-cpu-possible.diff
+  - nscd-systemd-userdb.diff (forwarded request 1068311 from cboltz)</comment>
+    <requestid>1068312</requestid>
+  </revision>
 </revisionlist>

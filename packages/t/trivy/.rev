@@ -703,4 +703,41 @@
   * fix(image): check proxy settings from env for remote images (#3604)</comment>
     <requestid>1065886</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8989163e818d9e88189783e7555755e7</srcmd5>
+    <version>0.38.0</version>
+    <time>1677683681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.0:
+  * fix(cli): pass integer to exit-on-eol (#3716)
+  * feat: add kubernetes pss compliance (#3498)
+  * feat: Adding --module-dir and --enable-modules (#3677)
+  * feat: add special IDs for filtering secrets (#3702)
+  * chore(deps): Update defsec (#3713)
+  * docs(misconf): Add guide on input schema (#3692)
+  * feat(go): support dependency graph and show only direct dependencies in the tree (#3691)
+  * feat: docker multi credential support (#3631)
+  * feat: summarize vulnerabilities in compliance reports (#3651)
+  * feat(python): parse pyproject.toml alongside poetry.lock (#3695)
+  * feat(python): add dependency tree for poetry lock file (#3665)
+  * fix(cyclonedx): incompliant affect ref (#3679)
+  * chore(helm): update skip-db-update environment variable (#3657)
+  * fix(spdx): change CreationInfo timestamp format RFC3336Nano to RFC3336 (#3675)
+  * fix(sbom): export empty dependencies in CycloneDX (#3664)
+  * docs: java-db air-gap doc tweaks (#3561)
+  * feat(go): license support (#3683)
+  * feat(ruby): add dependency tree/location support for Gemfile.lock (#3669)
+  * fix(k8s): k8s label size (#3678)
+  * fix(cyclondx): fix array empty value, null to [] (#3676)
+  * refactor: rewrite gomod analyzer as post-analyzer (#3674)
+  * feat: config outdated-api result filtered by k8s version (#3578)
+  * fix: Update to Alpine 3.17.2 (#3655)
+  * feat: add support for virtual files (#3654)
+  * feat: add post-analyzers (#3640)
+  * chore(deps): updates wazero to 1.0.0-pre.9 (#3653)
+  * chore(deps): bump github.com/go-openapi/runtime from 0.24.2 to 0.25.0 (#3528)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.6.18 (#3633)
+  * feat(python): add dependency locations for Pipfile.lock (#3614)</comment>
+    <requestid>1068414</requestid>
+  </revision>
 </revisionlist>

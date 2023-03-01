@@ -38,7 +38,7 @@ BuildRequires:  meson >= 0.50
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3
-BuildRequires:  python3-jinja2
+BuildRequires:  python3-Jinja2
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}

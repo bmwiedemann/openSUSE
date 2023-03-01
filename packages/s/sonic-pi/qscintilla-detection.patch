@@ -1,0 +1,20 @@
+--- sonic-pi-4.3.0/app/gui/qt/cmake/FindQScintilla.cmake
++++ sonic-pi-4.3.0/app/gui/qt/cmake/FindQScintilla.cmake
+@@ -3,7 +3,7 @@
+ endif()
+ 
+ find_path(QSCINTILLA_INCLUDE_DIR Qsci/qsciscintilla.h
+-  HINTS ${QSCINTILLA_ROOT} ${QSCINTILLA_ROOT}/include)
++  HINTS ${QSCINTILLA_ROOT} ${QSCINTILLA_ROOT}/include /usr/include/qt6 /usr/include/qt5)
+ 
+ find_library(QSCINTILLA_LIBRARY
+   NAMES
+@@ -13,7 +13,7 @@
+     libqscintilla2
+     libqscintilla2_qt6
+     libqscintilla2_qt5
+-  HINTS ${QSCINTILLA_ROOT} ${QSCINTILLA_ROOT}/lib)
++  HINTS ${QSCINTILLA_ROOT} ${QSCINTILLA_ROOT}/lib64 ${QSCINTILLA_ROOT}/lib)
+ 
+ if(QSCINTILLA_INCLUDE_DIR AND EXISTS "${QSCINTILLA_INCLUDE_DIR}/Qsci/qsciglobal.h")
+   file(STRINGS "${QSCINTILLA_INCLUDE_DIR}/Qsci/qsciglobal.h" qscintilla_version_str REGEX "^#define[\t ]+QSCINTILLA_VERSION_STR[\t ]+\".*\"")

@@ -1,0 +1,10 @@
+<package name="erlang-erlware_commons" project="openSUSE:Factory">
+  <title>erlang-erlware_commons</title>
+  <description>
+Erlware Commons is an Erlware project focused on all aspects of reusable Erlang components.
+
+See also: 
+</description>
+  <devel project="devel:languages:erlang" package="erlang-erlware_commons"/>
+  <url>https://github.com/erlware/erlware_commons </url>
+</package>

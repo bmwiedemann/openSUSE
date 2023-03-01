@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Wed Mar  1 06:45:10 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update patch files to reflect upstream registry changes from k8s.gcr.io to registry.k8s.io
+  * kubeadm-opensuse-registry.patch
+  * revert-coredns-image-renaming.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 08:57:30 UTC 2023 - priyanka.saggu@suse.com
+
+- Update to version 1.22.17:
+  * Release commit for Kubernetes v1.22.17
+  * backport change all k8s.gcr.io to registry.k8s.io on release-1.22
+  * Fix endpoint reconciler failing to delete masterlease
+  * use etcd 3.5.6-0 after promotion
+  * changelog: CVE-2022-3294 and CVE-2022-3162 were fixed in v1.23.14
+  * hack/scripts: use registry.k8s.io
+  * kubeadm: mutate ClusterConfiguration.imageRepository to "registry.k8s.io"
+  * kubeadm: use registry.k8s.io instead of k8s.gcr.io
+  * kubeadm: allow RSA and ECDSA format keys in preflight check
+  * Limit redirect proxy handling to redirected responses
+  * Reduce default gzip compression level from 4 to 1 in apiserver
+  * client-go: make retry in Request thread safe
+  * exec auth: support TLS config caching
+  * client-go exec: make sure round tripper can be unwrapped
+  * Automated cherry pick of #111009: Windows: ensure runAsNonRoot does case-insensitive comparison (#112213)
+  * Fix problem in updating VolumeAttached in node status
+  * Add etcd initialization in openapi tests
+  * Tolerate sub-microsecond eventTime changes on update
+  * fix a memory leak problem when calling DryRunPreemption
+  * Fix kubelet panic when accessing metrics/resource endpoint
+  * Fixing logic for kubelet permissions check on windows
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * Bump cAdvisor to v0.39.4
+  * Fix: filter out unsatisfied nodes when calling AddPod in PodTopologySpread
+  * kubeadm: fix the bug that configurable KubernetesVersion not respected during kubeadm join
+  * GIT-110239: fix activeDeadlineSeconds enforcement bug
+  * fix: --chunk-size with selector returns missing result
+  * Fixed winkernel proxy failing to query v1 endpoints created by dockershim CNIs
+  * Winkernel proxier cache HNS data to improve syncProxyRules performance
+  * apiserver: printers should use int64
+  * Revert "Automated cherry pick of #109124: Winkernel proxier cache HNS data to improve syncProxyRules"
+  * Prune defaults for CRD serving
+  * fix image pulling failure when IMDS is unavailalbe in kubelet startup
+  * test: update graceful node shutdown e2e with watch
+  * Ignore EndpointSlices that are already marked for deletion
+  * kubelet: Mark ready condition as false explicitly for terminal pods
+  * agnhost: bump version 2.39
+  * kubelet: add e2e test to verify probe readiness
+  * kubelet: only shutdown probes for pods that are terminated
+  * kubelet: Pod probes should be handled by pod worker
+  * Reject proxy requests to 0.0.0.0 as well
+  * etcd-client starts retrying transient errors from the etcd cluster
+  * ipvs: fix prevent concurrent map read and map write
+  * restore endpoints topology fallback in kube-proxy, fix issue 110208
+  * fix audit union loop variables in closures
+  * Updating e2e test to check EndpointSlices and Endpoints as well
+  * e2e: services with evicted pods doesn't have endpoints
+  * e2e test for evicted pods
+  * endpoints controller: don't consider terminal endpoints
+  * endpointslices: terminal pods doesn't receive enpoints
+  * add pod util to verify pod is terminal
+  * untangled HNS caching fix with healthCheck feature
+  * Fix requests scope classification
+  * authn: fix cache mutation by AuthenticatedGroupAdder
+  * Winkernel proxier cache HNS data to improve syncProxyRules performance
+  * fix: exclude non-ready nodes and deleted nodes from azure load balancers
+  * Fix OpenAPI loading error caused by empty APIService
+  * tests: Updates the should delete a collection of pods test
+  * component-base: replace url in rest client metrics
+  * Fix name for Pods of NonIndexed Jobs
+  * Correct event registration for multiple scheduler plugins.
+  * Avoid updating Services with stale specs Fix the bug that service specs in servicesToUpdate may have been updated by clients.
+  * Fix: abort nominating a pod that was already scheduled to a node
+  * cpu manager policy set to none, no one remove container id from container map, lead memory leak
+  * kubeadm: add etcd flag for member data consistency
+  * Copy request in timeout handler
+  * kube-up: use registry.k8s.io for containerd-related jobs
+  * Skip updating Endpoints and EndpointSlice if no relevant fields change
+  * ipvs: remove port opener
+  * iptables: remove port opener
+  * kubelet: If the container status is created, we are waiting
+  * rootcacertpublisher: drop the namespace label from metrics to reduce its cardinality
+  * Include pod UID in secret/configmap cache key
+  * Move kubelet secret and configmap manager calls to sync_Pod functions
+  * Extract containerID from systemd-style cgroupPath in cri_stats_provider And fix test to generate UUID without dash
+  * test: Add E2E for job completions with cpu reservation
+  * test: Add E2E for init container pod deletion
+  * kubelet: Delay writing a terminal phase until the pod is terminated
+  * azure_file: try to get secret namespace from ClaimRef
+  * azure_file: add namespace tests for InTree to CSI conversion
+  * Update Go to 1.16.15
+  * cluster/gce: update konnectivity image tags to v0.0.30
+  * wrap error from RunCordonOrUncordon
+  * bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client@v0.0.30
+  * fix dryrun when ca file exists
+  * fix regression introduced by PR 100320
+  * Fix nodes volumesAttached status not updated
+  * remove InitFlags for pod_workers test
+  * cronjob_controllerv2: do not filter jobs to be reconciled by labels
+  * kubelet: Clean up a static pod that has been terminated before starting
+  * Add an e2e test for updating a static pod while it restarts
+  * kubelet: fix podstatus not containing pod full name
+  * increase Azure ACR credential provider timeout
+  * Updating EndpointSlice strategy to retain node name in topology until field is set
+  * Ignore container notfound error while getPodstatuses
+  * fix: do not return early in the node informer when there is no change of the topology label.
+  * Add PDB selector patch integration test
+  * Revert v1beta1 PodDisruptionBudget select patchStrategy
+  * kubeadm: fix the bug that 'kubeadm init --dry-run --upload-certs' command failed with 'secret not found' error
+  * tests: Wait for pod collection to enter a Running state
+
+-------------------------------------------------------------------
 Wed Mar 16 12:35:07 UTC 2022 - rbrown@suse.com
 
 - Update to version 1.22.7:

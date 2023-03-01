@@ -1,7 +1,7 @@
 #
 # spec file for package moe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           moe
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        A Text Editor
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Productivity/Text/Editors
 URL:            https://www.gnu.org/software/moe/moe.html
 Source:         https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.lz
 Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.lz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=moe&download=1#/%{name}.keyring
+Source2:        http://savannah.gnu.org/people/viewgpg.php?user_id=12809#/%{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libstdc++-devel
@@ -55,7 +55,7 @@ UTF-8 and romanization.
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%config(noreplace) %{_sysconfdir}/moerc
+%config(noreplace) %{_sysconfdir}/moe.conf
 %{_bindir}/moe
 %{_infodir}/moe.info%{?ext_info}
 %{_mandir}/man1/moe.1%{?ext_man}

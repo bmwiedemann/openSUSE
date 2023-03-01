@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyglet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define         X_display         :98
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch %{arm} aarch64 x86_64 %{ix86} ppc64le
 %bcond_without  gtk2
 %bcond_without  test
@@ -32,16 +31,14 @@
 %define skip_python2 1
 %bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        1.5.27
+Version:        2.0.4
 Release:        0
 Summary:        Windowing and multimedia library
 License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
-URL:            https://bitbucket.org/pyglet/pyglet
+URL:            https://github.com/pyglet/pyglet
 Source0:        https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-%{version}.zip
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE pyglet-1.2.4-fix-image-import.patch -- fix "import Image"
-Patch0:         pyglet-1.2.4-fix-image-import.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -94,8 +91,7 @@ Pyglet provides an object-oriented programming interface for
 developing games and other visually-rich applications.
 
 %prep
-%setup -q -n pyglet-%{version}
-%patch0
+%autosetup -p1 -n pyglet-%{version}
 
 # Windows only, and is a vendored module
 rm pyglet/font/win32*.py
@@ -110,7 +106,6 @@ sed -i 's/import pyglet.extlibs.png as pypng/import png as pypng/' pyglet/image/
 rm -r \
   pyglet/gl/lib_agl.py pyglet/gl/lib_wgl.py pyglet/gl/wgl*.py \
   pyglet/*/cocoa.py pyglet/*/quartz.py pyglet/*/win32.py \
-  pyglet/input/darwin_hid.py pyglet/input/directinput.py pyglet/input/wintab.py \
   pyglet/image/codecs/quartz.py pyglet/image/codecs/gdiplus.py \
   pyglet/window/cocoa/ pyglet/window/win32/ \
   pyglet/libs/darwin/ pyglet/libs/win32/ \
@@ -147,10 +142,6 @@ sed -i 's/arial/freeserif/g;s/Arial/FreeSerif/g' \
 sed -i "s/@unittest.skip('Requires changes to events from fork by Leif')/@pytest.mark.leif_fork/" tests/unit/test_events.py
 sed -i 's/import unittest/import unittest, pytest/' tests/unit/test_events.py
 
-# https://bitbucket.org/pyglet/pyglet/issues/223/clock-test-failures
-# Occasional errors on all platforms, and test_clock.py fails on Python 2 only
-rm tests/unit/test_clock_fps.py
-
 ## Integration tests
 
 # Test fails on all platforms
@@ -178,9 +169,6 @@ sed -i '/interactive_test_base/d' tests/interactive/__init__.py
 rm tests/base/test_interactive_test_base.py
 
 # Final tidy up
-
-# Only useful to creates Windows or MacOS apps
-rm examples/astraea/setup.py
 
 # Convert to unix line endings
 find pyglet -name "*.py" -exec dos2unix "{}" "+"
@@ -219,6 +207,8 @@ pytest_k_list="test_openal or test_pulse or test_arb or \
   test_multitexture or test_clock or test_get_animation_no_video or \
   leif_fork or test_load_privatefont or test_load_privatefont_from_list or test_directsound_listener or \
   test_gdiplus_loading or test_quartz_loading or test_quicktime_loading or test_multiple_start_stop or test_pause_resume"
+# Disable beause broken in python 3.11, gh#pyglet/pyglet#606
+pytest_k_list+=" or test_push_handlers_instance"
 
 %if %{without gtk2}
 pytest_k_list="$pytest_k_list or test_gdkpixbuf2 or test_gdkpixbuf2_loading"
@@ -229,6 +219,7 @@ pytest_addopts="--instafail --error-for-skips --timeout=30 "
 %endif
 
 pytest_addopts="$pytest_addopts tests/unit tests/integration"
+pytest_image_loading="test_resource_image_loading"
 
 %{python_expand  #
 # These are only problematic on Python 2, and are restored after Python 2 tests
@@ -237,7 +228,11 @@ if [ $python = python2 ]; then
   mv tests/unit/test_clock.py tests/unit/.test_clock.py
 fi
 
-$python -m pytest $pytest_addopts -k "not ($pytest_k_list)"
+$python -m pytest $pytest_addopts -k "not ($pytest_k_list or $pytest_image_loading)"
+# Run test_resource_image_loading tests in a second steps, this fails
+# if run with the other tests, possible because a test not cleaning
+# correctly
+$python -m pytest $pytest_addopts -k "$pytest_image_loading"
 
 if [ -x tests/unit/.test_clock.py ]; then
   mv tests/unit/.test_clock.py tests/unit/test_clock.py
@@ -249,7 +244,7 @@ fi
 
 %files %{python_files}
 %license LICENSE
-%doc NOTICE README.md RELEASE_NOTES examples
+%doc README.md RELEASE_NOTES examples
 %{python_sitelib}/pyglet
 %{python_sitelib}/pyglet-%{version}-py*.egg-info
 

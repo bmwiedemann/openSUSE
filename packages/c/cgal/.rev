@@ -266,4 +266,13 @@
     <comment></comment>
     <requestid>1039313</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>416d4cb9c7eb99e69538b66bf6fcc67a</srcmd5>
+    <version>5.5.2</version>
+    <time>1677683667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.5.2:
+  * https://github.com/CGAL/cgal/issues?q=sort%3Aupdated-desc+label%3AMerged_in_5.5.2+-label%3AMerged_in_5.5.1</comment>
+    <requestid>1068355</requestid>
+  </revision>
 </revisionlist>

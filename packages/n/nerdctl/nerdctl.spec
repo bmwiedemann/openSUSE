@@ -1,7 +1,7 @@
 #
 # spec file for package nerdctl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,18 @@
 %global import_path     %{provider_prefix}
 
 Name:           nerdctl
-Version:        1.0.0
+Version:        1.2.1
 Release:        0
 Summary:        Docker-compatible CLI for containerd
 License:        Apache-2.0
 URL:            https://github.com/containerd/nerdctl
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  golang(API) >= 1.18
 Requires:       buildkit
 Requires:       cni-plugins
 Requires:       containerd
+Requires:       iptables
 Requires:       rootlesskit >= 1.0.0
 Requires:       slirp4netns >= 0.4.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

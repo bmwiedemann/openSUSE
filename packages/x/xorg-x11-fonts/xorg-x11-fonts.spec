@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,42 +33,42 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        X.Org fonts
 License:        MIT
 Group:          System/X11/Fonts
-Source0:        http://xorg.freedesktop.org/archive/individual/font/font-adobe-100dpi-1.0.3.tar.bz2
-Source1:        http://xorg.freedesktop.org/archive/individual/font/font-adobe-75dpi-1.0.3.tar.bz2
-Source2:        http://xorg.freedesktop.org/archive/individual/font/font-arabic-misc-1.0.3.tar.bz2
-Source3:        http://xorg.freedesktop.org/archive/individual/font/font-bh-100dpi-1.0.3.tar.bz2
-Source4:        http://xorg.freedesktop.org/archive/individual/font/font-bh-75dpi-1.0.3.tar.bz2
-Source5:        http://xorg.freedesktop.org/archive/individual/font/font-bh-lucidatypewriter-100dpi-1.0.3.tar.bz2
-Source6:        http://xorg.freedesktop.org/archive/individual/font/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2
-Source7:        http://xorg.freedesktop.org/archive/individual/font/font-bh-ttf-1.0.3.tar.bz2
-Source8:        http://xorg.freedesktop.org/archive/individual/font/font-bh-type1-1.0.3.tar.bz2
-Source9:        http://xorg.freedesktop.org/archive/individual/font/font-bitstream-100dpi-1.0.3.tar.bz2
-Source10:       http://xorg.freedesktop.org/archive/individual/font/font-bitstream-75dpi-1.0.3.tar.bz2
-Source12:       http://xorg.freedesktop.org/archive/individual/font/font-bitstream-type1-1.0.3.tar.bz2
-Source13:       http://xorg.freedesktop.org/archive/individual/font/font-cronyx-cyrillic-1.0.3.tar.bz2
-Source14:       http://xorg.freedesktop.org/archive/individual/font/font-cursor-misc-1.0.3.tar.bz2
-Source15:       http://xorg.freedesktop.org/archive/individual/font/font-daewoo-misc-1.0.3.tar.bz2
-Source16:       http://xorg.freedesktop.org/archive/individual/font/font-dec-misc-1.0.3.tar.bz2
-Source17:       http://xorg.freedesktop.org/archive/individual/font/font-ibm-type1-1.0.3.tar.bz2
-Source18:       http://xorg.freedesktop.org/archive/individual/font/font-isas-misc-1.0.3.tar.bz2
-Source19:       http://xorg.freedesktop.org/archive/individual/font/font-jis-misc-1.0.3.tar.bz2
-Source20:       http://xorg.freedesktop.org/archive/individual/font/font-micro-misc-1.0.3.tar.bz2
-Source21:       http://xorg.freedesktop.org/archive/individual/font/font-misc-cyrillic-1.0.3.tar.bz2
-Source22:       http://xorg.freedesktop.org/archive/individual/font/font-misc-ethiopic-1.0.4.tar.bz2
-Source23:       http://xorg.freedesktop.org/archive/individual/font/font-misc-meltho-1.0.3.tar.bz2
-Source24:       http://xorg.freedesktop.org/archive/individual/font/font-misc-misc-1.1.2.tar.bz2
-Source25:       http://xorg.freedesktop.org/archive/individual/font/font-mutt-misc-1.0.3.tar.bz2
-Source26:       http://xorg.freedesktop.org/archive/individual/font/font-schumacher-misc-1.1.2.tar.bz2
-Source27:       http://xorg.freedesktop.org/archive/individual/font/font-screen-cyrillic-1.0.4.tar.bz2
-Source28:       http://xorg.freedesktop.org/archive/individual/font/font-sony-misc-1.0.3.tar.bz2
-Source29:       http://xorg.freedesktop.org/archive/individual/font/font-sun-misc-1.0.3.tar.bz2
-Source30:       http://xorg.freedesktop.org/archive/individual/font/font-winitzki-cyrillic-1.0.3.tar.bz2
-Source31:       http://xorg.freedesktop.org/archive/individual/font/font-xfree86-type1-1.0.4.tar.bz2
-Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.0.6.tar.xz
-Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.4.tar.bz2
-Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
-Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
-Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.4.tar.bz2
+Source0:        http://xorg.freedesktop.org/archive/individual/font/font-adobe-100dpi-1.0.4.tar.xz
+Source1:        http://xorg.freedesktop.org/archive/individual/font/font-adobe-75dpi-1.0.4.tar.xz
+Source2:        http://xorg.freedesktop.org/archive/individual/font/font-arabic-misc-1.0.4.tar.xz
+Source3:        http://xorg.freedesktop.org/archive/individual/font/font-bh-100dpi-1.0.4.tar.xz
+Source4:        http://xorg.freedesktop.org/archive/individual/font/font-bh-75dpi-1.0.4.tar.xz
+Source5:        http://xorg.freedesktop.org/archive/individual/font/font-bh-lucidatypewriter-100dpi-1.0.4.tar.xz
+Source6:        http://xorg.freedesktop.org/archive/individual/font/font-bh-lucidatypewriter-75dpi-1.0.4.tar.xz
+Source7:        http://xorg.freedesktop.org/archive/individual/font/font-bh-ttf-1.0.4.tar.xz
+Source8:        http://xorg.freedesktop.org/archive/individual/font/font-bh-type1-1.0.4.tar.xz
+Source9:        http://xorg.freedesktop.org/archive/individual/font/font-bitstream-100dpi-1.0.4.tar.xz
+Source10:       http://xorg.freedesktop.org/archive/individual/font/font-bitstream-75dpi-1.0.4.tar.xz
+Source12:       http://xorg.freedesktop.org/archive/individual/font/font-bitstream-type1-1.0.4.tar.xz
+Source13:       http://xorg.freedesktop.org/archive/individual/font/font-cronyx-cyrillic-1.0.4.tar.xz
+Source14:       http://xorg.freedesktop.org/archive/individual/font/font-cursor-misc-1.0.4.tar.xz
+Source15:       http://xorg.freedesktop.org/archive/individual/font/font-daewoo-misc-1.0.4.tar.xz
+Source16:       http://xorg.freedesktop.org/archive/individual/font/font-dec-misc-1.0.4.tar.xz
+Source17:       http://xorg.freedesktop.org/archive/individual/font/font-ibm-type1-1.0.4.tar.xz
+Source18:       http://xorg.freedesktop.org/archive/individual/font/font-isas-misc-1.0.4.tar.xz
+Source19:       http://xorg.freedesktop.org/archive/individual/font/font-jis-misc-1.0.4.tar.xz
+Source20:       http://xorg.freedesktop.org/archive/individual/font/font-micro-misc-1.0.4.tar.xz
+Source21:       http://xorg.freedesktop.org/archive/individual/font/font-misc-cyrillic-1.0.4.tar.xz
+Source22:       http://xorg.freedesktop.org/archive/individual/font/font-misc-ethiopic-1.0.5.tar.xz
+Source23:       http://xorg.freedesktop.org/archive/individual/font/font-misc-meltho-1.0.4.tar.xz
+Source24:       http://xorg.freedesktop.org/archive/individual/font/font-misc-misc-1.1.3.tar.xz
+Source25:       http://xorg.freedesktop.org/archive/individual/font/font-mutt-misc-1.0.4.tar.xz
+Source26:       http://xorg.freedesktop.org/archive/individual/font/font-schumacher-misc-1.1.3.tar.xz
+Source27:       http://xorg.freedesktop.org/archive/individual/font/font-screen-cyrillic-1.0.5.tar.xz
+Source28:       http://xorg.freedesktop.org/archive/individual/font/font-sony-misc-1.0.4.tar.xz
+Source29:       http://xorg.freedesktop.org/archive/individual/font/font-sun-misc-1.0.4.tar.xz
+Source30:       http://xorg.freedesktop.org/archive/individual/font/font-winitzki-cyrillic-1.0.4.tar.xz
+Source31:       http://xorg.freedesktop.org/archive/individual/font/font-xfree86-type1-1.0.5.tar.xz
+Source32:       http://xorg.freedesktop.org/archive/individual/font/encodings-1.0.7.tar.xz
+Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-100dpi-1.0.5.tar.xz
+Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.5.tar.xz
+Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.5.tar.xz
+Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.5.tar.xz
 Source100:      README.converted
 %if "%{flavor}" == "converted"
 Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py
@@ -140,11 +140,11 @@ to truetype format in the xorg-x11-fonts-converted package
 %prep
 %setup -T -D -c
 %if "%{flavor}" != "converted"
-for i in $RPM_SOURCE_DIR/*.tar.{bz2,xz}; do tar xf $i; done
+for i in $RPM_SOURCE_DIR/*.tar.xz; do tar xf $i; done
 %else
 cp %{SOURCE100} .
-tar xjf %{SOURCE0}
-tar xjf %{SOURCE1}
+tar xf %{SOURCE0}
+tar xf %{SOURCE1}
 %endif
 
 %build

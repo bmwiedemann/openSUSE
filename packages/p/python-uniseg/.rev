@@ -47,4 +47,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>961709</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9074442810375aa67473c04a3d44d5bc</srcmd5>
+    <version>0.7.2</version>
+    <time>1677683663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2
+  * Improve performance of Unicode lookups.
+- Drop uniseg-dbpath</comment>
+    <requestid>1068328</requestid>
+  </revision>
 </revisionlist>

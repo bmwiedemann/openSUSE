@@ -4314,4 +4314,22 @@ oddjob-gpupdate isn't blocked)</comment>
   * openSUSE/users-groups: kismet (bsc#1207654)</comment>
     <requestid>1065785</requestid>
   </revision>
+  <revision rev="437" vrev="1">
+    <srcmd5>d0083e47ccb20e14ce10d9393985b834</srcmd5>
+    <version>2.4.0+git20230227.db0110c</version>
+    <time>1677683632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230227.db0110c:
+  * DbusPolicyCheck: use existing dbus-policy-missing-allow
+  * DbusPolicyCheck: use existing dbus-policy-missing-allow
+
+- Update to version 2.4.0+git20230227.0faf846:
+  * Disallow a space in rpmlint issue name
+  * Unify D-Bus check name
+  * FilesCheck: fix typo and shorten setuid/setgid check
+  * Revert &quot;Disable Mageia CI builds due to system problem&quot;
+  * Disable Mageia CI builds due to system problem
+  * Revert &quot;disable opensuse-tumbleweed-aarch64 due to system crash&quot;</comment>
+    <requestid>1068021</requestid>
+  </revision>
 </revisionlist>

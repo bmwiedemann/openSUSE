@@ -1,0 +1,8 @@
+addFilter("env-script-interpreter")
+addFilter("non-executable-script")
+addFilter("pybeam-failed")
+addFilter("script-without-shebang")
+addFilter("shared-library-without-dependency-information")
+addFilter("version-control-internal-file")
+addFilter("wrong-script-end-of-line-encoding")
+addFilter("zero-length")

@@ -172,4 +172,36 @@
     requested type.</comment>
     <requestid>1066313</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>021c54d695c78877196ca8c29acbf1ac</srcmd5>
+    <version>2.0.8</version>
+    <time>1677683697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.8:
+  * allow awkward type arrays filtering based on rdfentry
+  * feat!: re-introduce unknown-length
+  * fix: keep EmptyArray in remove_structure
+  * fix: add is_c_contiguous method to Cupy
+  * fix: boolean indexing with non-zero starting offsets
+  * fix: add license to _backends
+  * fix: use of size in to_RegularArray
+  * fix: indexing into RegularArray with typetracer
+  * fix: support length-zero outer arrays in almost_equal
+  * fix: support options in ak.merge_union_of_records
+  * fix: don't merge non-union parameters
+  * fix: boolean slicing with non-packed arrays
+  * refactor: add type hints for Content._getitem_XXX
+  * refactor: drop NumpyLike.known_shape
+  * refactor: change Content._getitem_range to use explicit indices
+  * docs: fix example for merge_union_of_records
+  * docs: add 1.10 legacy docs to switcher.json
+  * docs: reintroduce Content documentation from v1 reST files.
+  * docs: add how-to-examine-type.md
+  * docs: improve ragged indexing docs
+  * chore: include cuda kernel tests in sdist
+  * chore(deps): bump amannn/action-semantic-pull-request
+    from 5.0.2 to 5.1.0
+  * chore: update pre-commit hooks</comment>
+    <requestid>1068476</requestid>
+  </revision>
 </revisionlist>

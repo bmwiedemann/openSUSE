@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Feb 26 16:42:48 UTC 2023 - dmueller@suse.com
+
+- use disabled services to be compatible with factory policy
+
+-------------------------------------------------------------------
+Thu Mar 31 11:51:45 UTC 2022 - mvetter@suse.com
+
+- Update to version 1.6.0:
+  * Support Unicode string formatting
+  * Tweak CI versions (add 24.0, move 23.2 to 23.3)
+  * Keep symlinks in copies
+  * Improve on license-related information
+  * Solve dialyzer warnings while approaching expected behaviour
+  * gitignore test-generated elements
+  * Have CI working with extra checks
+  * Remove dead code
+
+-------------------------------------------------------------------
+Sat Jan 16 09:57:37 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix running unit test
+
+-------------------------------------------------------------------
+Wed Jan 13 10:42:51 UTC 2021 - matwey.kornilov@gmail.com
+
+- Update to version 1.4.0:
+  * set TERM os var to xterm to get cf to not drop color in logs
+  * update readme status badge and CI branch
+  * move to github actions for CI
+  * Better comment wording as suggested by @ferd
+  * Avoid a warning on Erlang/OTP 24
+  * Replace ericbmerritt links in README
+  * Fix spelling/grammar in signatures.md
+  * Allow for extra hyphens in pre-release build version
+  * fix ec_semver:pes test to not ignore alpha versions
+
+-------------------------------------------------------------------
+Tue Jun 17 07:29:38 UTC 2014 - matwey.kornilov@gmail.com
+
+- Fix build for 17.0
+
+-------------------------------------------------------------------
+Wed Apr 16 13:21:46 UTC 2014 - matwey.kornilov@gmail.com
+
+- Version 0.11.0
+
+-------------------------------------------------------------------
+Mon Apr 29 11:41:40 UTC 2013 - nkrinner@suse.com
+
+- Initial package 
+

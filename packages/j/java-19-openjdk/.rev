@@ -31,4 +31,12 @@
     <comment>bsc#1205916</comment>
     <requestid>1066519</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d46cc54678e3ce20da7bb3d6a66a68a0</srcmd5>
+    <version>19.0.2.0</version>
+    <time>1677683652</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068368</requestid>
+  </revision>
 </revisionlist>

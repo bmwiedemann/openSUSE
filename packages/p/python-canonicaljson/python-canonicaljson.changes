@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 22:46:43 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.6.5
+  - Use a property to define JsonLibrary by @DMRobertson in #57
+
+-------------------------------------------------------------------
 Tue Feb 21 13:31:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't switch off tests completely just skip the failing ones.

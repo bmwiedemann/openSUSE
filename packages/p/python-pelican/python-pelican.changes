@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:17:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11
+  gh#getpelican/pelican#3055
+
+-------------------------------------------------------------------
 Fri Jul 15 12:36:30 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.8.0:

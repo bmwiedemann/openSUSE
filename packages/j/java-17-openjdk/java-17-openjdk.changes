@@ -2,7 +2,7 @@
 Fri Feb 17 13:19:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the accessibility sub-package, since it was never really
-  working and creates another problems (bsc#1205916). It can
+  working and creates another problems (bsc#1206549). It can
   eventually be built as standalone if needed
 - Removed patches:
   * jaw-jdk10.patch

@@ -1,0 +1,26 @@
+From bd78c563daa6df17ad442d10127526f5450fd06b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kinga=20Ta=C5=84ska?= <kinga.tanska@intel.com>
+Date: Thu, 17 Nov 2022 15:55:06 +0100
+Subject: [PATCH] ipmi: avoid error messages on non-dell platforms (#112)
+
+Signed-off-by: Kinga Tanska <kinga.tanska@intel.com>
+---
+ src/ipmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ipmi.c b/src/ipmi.c
+index 3862840..d7d9e89 100644
+--- a/src/ipmi.c
++++ b/src/ipmi.c
+@@ -126,7 +126,7 @@ int ipmicmd(int sa, int lun, int netfn, int cmd, int datalen, void *data,
+ 		goto end;
+ 	}
+ 	if (rcv.msg.data[0])
+-		log_info("IPMI Error: %.2x\n", rcv.msg.data[0]);
++		log_debug("IPMI Error: %.2x\n", rcv.msg.data[0]);
+ 	rc = 0;
+ 	*rlen = rcv.msg.data_len - 1;
+ 	memcpy(resp, rcv.msg.data + 1, *rlen);
+-- 
+2.39.2
+

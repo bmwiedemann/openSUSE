@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 28 20:07:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * RENAME MODULE semver -> nodesemver
+  * pre release range fix
+
+-------------------------------------------------------------------
 Mon Jan  2 15:45:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

@@ -286,7 +286,9 @@ cd %{_builddir}/tdesktop-%{version}-full
 %install
 %cmake_install
 
+%if 0%{?suse_version} > 01500
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
+%endif
 
 %files
 %license LICENSE LEGAL

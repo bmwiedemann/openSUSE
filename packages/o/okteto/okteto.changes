@@ -1,8 +1,50 @@
 -------------------------------------------------------------------
+Wed Mar 01 11:37:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.0:
+  * fixes remote feature (#3412) (#3414)
+  * fix issues from manual testing and remote deploy
+    (#3411) (#3413)
+  * feat: merge remote deploy branch (#3400)
+  * Support for divert with Istio (#3384)
+  * Revert "feat: update to golang to 1.19.5 (#3397)" (#3399)
+  * Fix vulnerabilities (#3396)
+  * feat: update to golang to 1.19.5 (#3397)
+  * log a warning instead of prompting to ignore .git (#3370)
+  * trigger a new context store write (#3390)
+  * Don't delete volume snapshot on DestroyWithLabel if -v flag is
+    not set (#3375)
+  * Fixed bug of memory requests/reservations (#3385)
+  * Jlopezbarb/upgrade syncthing to 1.23.1 (#3386)
+  * fix: omit auth error on build (#3374)
+  * Make okteto up wait until original resource is awaken before
+    starting dev container (#3368)
+  * switch to personal namespace if previous namespace is missing
+    (#3365)
+  * chore: rename NamespaceInterface SleepNamespace (#3371)
+  * Adding error handling (#3278)
+  * Added HasRevese property on the metadata we send to metrics on
+    okteto up command (#3369)
+  * add external url to okteto env file (#3354)
+  * Removed dependency from github.com/rancher/wrangler library. It
+    was being only used to create a noop rate limiter in a specific
+    case and the library was reporting a vulnerability, so I
+    created a local noop rate limiter satisfying the needed
+    interface to be able to remove that dep (#3361)
+  * build(deps): Bump github.com/opencontainers/runc from 1.0.2 to
+    1.1.2 (#3345)
+  * fix zero value for external icon field (#3356)
+  * add possible values for icon for external resource (#3350)
+  * Wait for cronjobs to finish the execution of their jobs (#3351)
+  * build(deps): Bump github.com/containerd/containerd from 1.5.8
+    to 1.5.16 (#3346)
+
+-------------------------------------------------------------------
 Sun Feb 12 06:31:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.12.1:
-  * Wait for cronjobs to finish the execution of their jobs (#3351) (#3352)
+  * Wait for cronjobs to finish the execution of their jobs
+    (#3351) (#3352)
 
 -------------------------------------------------------------------
 Tue Jan 31 15:04:26 UTC 2023 - kastl@b1-systems.de

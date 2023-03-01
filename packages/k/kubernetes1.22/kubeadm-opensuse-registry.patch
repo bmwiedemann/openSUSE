@@ -1,25 +1,25 @@
-diff --git a/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go b/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
-index 2611da7be9c..9875fad32b9 100644
---- a/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
-+++ b/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
-@@ -40,7 +40,7 @@ const (
- 	// DefaultCertificatesDir defines default certificate directory
+Index: kubernetes-1.22.17/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
+===================================================================
+--- kubernetes-1.22.17.orig/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
++++ kubernetes-1.22.17/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
+@@ -41,7 +41,7 @@ const (
  	DefaultCertificatesDir = "/etc/kubernetes/pki"
  	// DefaultImageRepository defines default image registry
--	DefaultImageRepository = "k8s.gcr.io"
+ 	// (previously this defaulted to k8s.gcr.io)
+-	DefaultImageRepository = "registry.k8s.io"
 +	DefaultImageRepository = "registry.opensuse.org/kubic"
  	// DefaultManifestsDir defines default manifests directory
  	DefaultManifestsDir = "/etc/kubernetes/manifests"
  	// DefaultClusterName defines the default cluster name
-diff --git a/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go b/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
-index feb72d7807e..c04d6a5973a 100644
---- a/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
-+++ b/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
-@@ -42,7 +42,7 @@ const (
- 	// DefaultCertificatesDir defines default certificate directory
+Index: kubernetes-1.22.17/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
+===================================================================
+--- kubernetes-1.22.17.orig/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
++++ kubernetes-1.22.17/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
+@@ -43,7 +43,7 @@ const (
  	DefaultCertificatesDir = "/etc/kubernetes/pki"
  	// DefaultImageRepository defines default image registry
--	DefaultImageRepository = "k8s.gcr.io"
+ 	// (previously this defaulted to k8s.gcr.io)
+-	DefaultImageRepository = "registry.k8s.io"
 +	DefaultImageRepository = "registry.opensuse.org/kubic"
  	// DefaultManifestsDir defines default manifests directory
  	DefaultManifestsDir = "/etc/kubernetes/manifests"

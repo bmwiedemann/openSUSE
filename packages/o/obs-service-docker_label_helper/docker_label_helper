@@ -22,6 +22,6 @@ fi
 # Note: Avoid assigning to $1 etc. as that converts whitespace (field separators) to single spaces.
 gawk -i inplace '
     match($0, /^# labelprefix=(.*)$/, m) { labelprefix=m[1]; next }
-    labelprefix != "" && match($0, /^(PREFIXED)?LABEL .*\.([^.]*)=(.*)$/, m) { printf "LABEL %s.%s=%s\n", labelprefix, m[2], m[3]; gsub(/^PREFIXEDLABEL/, "LABEL") }
+    labelprefix != "" && match($0, /^(PREFIXED)?LABEL[[:space:]]+[^=]*\.([^.=]*)=(.*)$/, m) { printf "LABEL %s.%s=%s\n", labelprefix, m[2], m[3]; gsub(/^PREFIXEDLABEL/, "LABEL") }
     match($0, /^# endlabelprefix/) { labelprefix=""; next }
     1' Dockerfile

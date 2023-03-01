@@ -65,4 +65,33 @@
     <comment></comment>
     <requestid>1043284</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eb8245f770416b6f7ceb25a61aeac227</srcmd5>
+    <version>0.9.0</version>
+    <time>1677683696</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * fix the generation of Subclass from type annotations PR #193
+  * move getstate and setstate implementation to C and allow to
+    customize the condition under which a member value is
+    pickled. PR #182
+  * Customization is used to only pickle member value whose
+    state can be restored (for example Constant is not
+    pickled). Whether a member is pickled can be customized
+    using a method prefixed with ``_getstate_`` on an Atom
+    subclass.
+  * use the Typed member when a type annotation resolve to a
+    single type whose metaclass does not implement a custom
+    ``__instancecheck__`` PR #185
+  * generate Tuple member for tuple[] annotations.
+    The content of the tuple is typed check only if it is a
+    1-tuple or variable-length tuple. PR #184
+  * fix the resolution order of members in the presence of
+    multiple inheritance with a common base class PR
+  * Due to the above changes, adding a member after the class
+    definition requires more work than before. As a
+    consequence a new helper function ``add_member`` has
+    been added.</comment>
+    <requestid>1068464</requestid>
+  </revision>
 </revisionlist>

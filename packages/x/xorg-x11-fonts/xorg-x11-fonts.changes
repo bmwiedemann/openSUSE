@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Feb 28 18:19:38 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- encodings-1.0.7
+  font-adobe-75dpi-1.0.4
+  font-adobe-utopia-100dpi-1.0.5
+  font-adobe-utopia-75dpi-1.0.5
+  font-adobe-utopia-type1-1.0.5
+  font-alias-1.0.5
+  font-arabic-misc-1.0.4
+  font-bh-100dpi-1.0.4
+  font-bh-75dpi-1.0.4
+  font-bh-lucidatypewriter-100dpi-1.0.4
+  font-bh-lucidatypewriter-75dpi-1.0.4
+  font-bh-ttf-1.0.4
+  font-bh-type1-1.0.4
+  font-bitstream-100dpi-1.0.4
+  font-bitstream-75dpi-1.0.4
+  font-bitstream-type1-1.0.4
+  font-cronyx-cyrillic-1.0.4
+  font-cursor-misc-1.0.4
+  font-daewoo-misc-1.0.4
+  font-dec-misc-1.0.4
+  font-ibm-type1-1.0.4
+  font-isas-misc-1.0.4
+  font-jis-misc-1.0.4
+  font-micro-misc-1.0.4
+  font-misc-cyrillic-1.0.4
+  font-misc-ethiopic-1.0.5
+  font-misc-meltho-1.0.4
+  font-misc-misc-1.1.3
+  font-mutt-misc-1.0.4
+  font-schumacher-misc-1.1.3
+  font-screen-cyrillic-1.0.5
+  font-sony-misc-1.0.4
+  font-sun-misc-1.0.4
+  font-winitzki-cyrillic-1.0.4
+  font-xfree86-type1-1.0.5
+  * These releases bundle up the last twelve years worth of build
+    system improvements, including making the configure script
+    more efficient and using the -n flag to gzip to improve build
+    reproducibility.
+
+-------------------------------------------------------------------
+Mon Feb 27 20:51:32 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- font-adobe-100dpi 1.0.4 
+  * This release bundles up the last twelve years worth of build
+    system improvements, including making the configure script
+    more efficient and using the -n flag to gzip to improve build
+    reproducibility.
+
+-------------------------------------------------------------------
 Wed Dec  7 09:20:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and

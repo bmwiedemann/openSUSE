@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb 28 19:49:15 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.23.3:
+  * chore: fix naming again
+
+-------------------------------------------------------------------
+Tue Feb 28 19:29:31 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.23.2:
+  * fix: asset naming scheme
+
+-------------------------------------------------------------------
+Tue Feb 28 19:29:05 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.23.1:
+  * chore: remove `id`
+  * chore: remove `--clean`
+  * chore: fix `name_template`
+  * chore: remove `archives.replacements`
+  * chore: fix GoReleaser
+  * chore: clean up workflows
+  * fix: CLI test isn't deterministic
+  * fix: include `.vale.ini` in action tests
+  * chore: bring back `chocolateys`
+  * test: start action cases
+  * refactor: remove old TODO
+  * refactor: remove `pkg`
+  * fix: handle trailing commas in listing block
+  * Add PowerShell as a supported code language (#579)
+  * feat: support Typescript, TSX and JSX files (#564)
+  * fix: use `determinePath` in `Transform`
+  * fix: ignore empty tokens
+  * fix: trim leading newlines from sentences
+
+-------------------------------------------------------------------
 Sat Feb 11 19:41:44 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.23.0:

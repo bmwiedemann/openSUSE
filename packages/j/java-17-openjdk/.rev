@@ -151,4 +151,12 @@
     <comment>bsc#1205916</comment>
     <requestid>1066517</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>918440b2af9971a58cb49b846a560326</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1677683644</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068366</requestid>
+  </revision>
 </revisionlist>

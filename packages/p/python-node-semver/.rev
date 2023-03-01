@@ -74,4 +74,14 @@
   * fix erroneous parsing of $ component version numbers</comment>
     <requestid>1046224</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59dd4a92c63e5d6c35e38e9281b283f1</srcmd5>
+    <version>0.9.0</version>
+    <time>1677683654</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * RENAME MODULE semver -&gt; nodesemver
+  * pre release range fix</comment>
+    <requestid>1068310</requestid>
+  </revision>
 </revisionlist>

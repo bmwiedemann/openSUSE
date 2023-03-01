@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Feb 27 21:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * We are pleased to share the 3.13.0 release of sc3-plugins!
+  * This version is compatible with SuperCollider 3.13.x, 3.12.x,
+    and possibly a couple of earlier releases.
+  * ATK: fix speed of sound
+  * Documentation updates
+  * Add option to turn off LADSPA plugins, which cause scsynth to
+    segfault on some Linux systems (#260)
+  * Documentation improvements (#298, #299)
+- add license and README
+
+-------------------------------------------------------------------
+Tue Mar  8 07:35:28 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- A note that all patches from 3.6 where removed:
+  stk not needed anymore
+  other things seems to be fixed in upstream 
+
+-------------------------------------------------------------------
+Tue Mar  8 01:42:21 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- toggle services off
+
+-------------------------------------------------------------------
+Tue Mar 08 01:33:58 UTC 2022 - kv@kott.no-ip.biz
+
+- Update to version 3.11.1+git.48.4416f95:
+  * Bump nokogiri from 1.12.5 to 1.13.3
+  * GHA: run on **.txt file changes
+  * CMakeLists: fix LIB_SUFFIX
+  * cmake:lib_suffix Fix indentation. Add note in README.md.
+  * Add option for LIB_SUFFIX
+  * gha CI: ignore changes to the webstie
+  * Bump nokogiri from 1.11.7 to 1.12.5
+  * ATK refactor: speed of sound, maintain backwards compatability
+  * Dfsm: remove flag, too
+  * Dfsm: don't need to ever post, remove flag
+  * Dfsm shouldn't always post
+  * gha: add ccache for linux
+  * gha: move cmake flags to the matrix
+  * gha: rename windows builds
+  * gha: correct macos env variables
+  * ATK refactor: add user settable speed of sound
+  * update: ATK README sc3-plugins v3.12.0
+  * ATK fix: FoaProximity, FoaNFC conform FOA speed of sound to HOA
+
+-------------------------------------------------------------------
+Wed Sep 01 06:03:01 UTC 2021 - kv@kott.no-ip.biz
+
+- Update to version 3.12.0+git0.dca5c0b:
+  * gha: specify xcode and deployment target for macOS
+  * Remove Travis
+  * Remove AppVeyor
+  * add github actions CI
+  * CMake: add search paths for finding FFTW on Windows
+  * website: update jekyll etc
+  * website: update cayman theme source
+  * Bump addressable from 2.5.2 to 2.8.0
+  * Bump nokogiri from 1.10.8 to 1.11.4
+  * docs: if you don't want SUPERNOVA you actually have to explicitly disable it
+
+-------------------------------------------------------------------
+Sat Oct 31 05:05:59 UTC 2015 - rpm@fthiessen.de
+
+- Fixed build:
+  * Added fix-ldl.patch (missing libdl)
+  * Added fix-returns-random-data.patch for rpmlint errors
+  * Added fdupes in spec file
+
+-------------------------------------------------------------------
+Wed Sep 16 23:41:18 UTC 2015 - prusnak@opensuse.org
+
+- update to latest git for 3.7.0 alpha1
+
+-------------------------------------------------------------------
+Mon Oct 27 21:37:51 UTC 2014 - prusnak@opensuse.org
+
+- created package
+- based on Fedora CCRMA package by Fernando Lopez-Lezcano
+

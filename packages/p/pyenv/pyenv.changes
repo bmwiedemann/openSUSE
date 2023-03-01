@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 24 15:42:58 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.13
+
+- Update to 2.3.13  
+  - Fix pyenv-latest to ignore virtualenvs by @native-api in #2608
+  - Show symlink contents in non-bare `pyenv versions' by @native-api in #2609
+  - Ignore virtualenvs in `pyenv latest' in a clean way by @native-api in #2610
+  - Fix link resolving in pyenv-versions by @laggardkernel in #2612
+  - Add CPython 3.11.2 by @edgarrmondragon in #2615
+  - Add CPython 3.10.10 by @edgarrmondragon in #2616
+  - Add CPython 3.12.0a5 by @Afront in #2614
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.12...v2.3.13
+
+-------------------------------------------------------------------
 Mon Feb  6 15:27:58 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.12
 
 - Update to 2.3.12

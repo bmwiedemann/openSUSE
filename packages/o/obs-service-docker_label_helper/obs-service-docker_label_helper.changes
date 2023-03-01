@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:54:19 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Handle LABEL statements with any whitespace
+- Handle LABEL values containing "=" properly
+
+-------------------------------------------------------------------
 Wed Dec  7 09:48:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and

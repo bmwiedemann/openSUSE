@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
+Patch0:         reduce-required-meson.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygame
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-pygame
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        LGPL-2.1-or-later
@@ -93,7 +93,6 @@ This package contains documentation and example programs for Pygame.
 %autosetup -p1 -n pygame-%{version}
 
 sed -i 's/\r$//' docs/reST/ref/code_examples/draw_module_example.py
-sed -i 's/\r$//' docs/reST/ref/code_examples/joystick_calls.py
 sed -i 's/\r$//' docs/licenses/LICENSE*.txt
 # Fix wrong-script-interpreter
 find examples -name '*.py' -exec sed -i "s|^#!.*env python.*$|#!%{_bindir}/python3|" {} \;

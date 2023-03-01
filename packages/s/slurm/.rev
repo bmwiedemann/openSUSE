@@ -1020,4 +1020,41 @@
   /etc/security/limits.d. (forwarded request 1063954 from eeich)</comment>
     <requestid>1063957</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>0ada831384246d26a3069b433914bf8e</srcmd5>
+    <version>23.02.0</version>
+    <time>1677683657</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 23.02.0
+  * Highlights
+    + slurmctld - Add new RPC rate limiting feature. This is enabled through
+      SlurmctldParameters=rl_enable, otherwise disabled by default.
+    + Make scontrol reconfigure and sending a SIGHUP to the slurmctld behave
+      the same. If you were using SIGHUP as a 'lighter' scontrol reconfigure
+      to rotate logs please update your scripts to use SIGUSR2 instead.
+    + Change cloud nodes to show by default. PrivateData=cloud is no longer
+      needed.
+    + sreport - Count planned (FKA reserved) time for jobs running in
+      IGNORE_JOBS reservations. Previously was lumped into IDLE time.
+    + job_container/tmpfs - Support running with an arbitrary list of private
+      mount points (/tmp and /dev/shm are the default, but not required).
+    + job_container/tmpfs - Set more environment variables in InitScript.
+    + Make all cgroup directories created by Slurm owned by root. This was the
+      behavior in cgroup/v2 but not in cgroup/v1 where by default the step
+      directories ownership were set to the user and group of the job.
+    + accounting_storage/mysql - change purge/archive to calculate record ages
+      based on end time, rather than start or submission times.
+    + job_submit/lua - add support for log_user() from slurm_job_modify().
+    + Run the following scripts in slurmscriptd instead of slurmctld:
+      ResumeProgram, ResumeFailProgram, SuspendProgram, ResvProlog, ResvEpilog,
+      and RebootProgram (only with SlurmctldParameters=reboot_from_controller).
+    + Only permit changing log levels with 'srun --slurmd-debug' by root
+      or SlurmUser.
+    + slurmctld will fatal() when reconfiguring the job_submit plugin fails.
+    + Add PowerDownOnIdle partition option to power down nodes after nodes
+      become idle.
+    + Add &quot;[jobid.stepid]&quot; prefix from slurmstepd and &quot;slurmscriptd&quot; prefix
+      from slurmcriptd to Syslog logging. Previously was only happening when</comment>
+    <requestid>1068320</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 28 20:21:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.1:
+  * Added shuffle command #1503
+  * Added ability to sort by multiple fields #1541
+  * Added @sh encoder #1526
+  * Added @uri/@urid encoder/decoder #1529
+  * Fixed date comparison with string date #1537
+  * Added from_unix/to_unix Operators
+  * Bumped dependency versions
+
+-------------------------------------------------------------------
 Mon Jan 16 09:05:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v4.30.8:

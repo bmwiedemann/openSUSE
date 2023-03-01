@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Feb 26 13:35:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add desktop file
+- recommend supercollider-sc3-plugins which is actually heavily
+  relied on by sonic pi 
+
+-------------------------------------------------------------------
+Fri Feb 24 23:58:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * too many changes to list here, see 
+    https://github.com/sonic-pi-net/sonic-pi/releases
+    for a summary
+
+-------------------------------------------------------------------
+Tue Mar  1 09:59:07 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Updated to latest version from fork 
+https://github.com/lilyinstarlight/sonic-pi/ with support for
+offline building and the Elixir pipeline
+
+-------------------------------------------------------------------
+Sun Jan  6 01:30:55 UTC 2019 - bwiedemann@suse.com
+
+- add fix-rugged-ruby25.patch to make it compile on Tumbleweed
+
+-------------------------------------------------------------------
+Sun Jan  3 20:31:19 UTC 2016 - bwiedemann@suse.com
+
+- add fix-arm-build.patch
+
+-------------------------------------------------------------------
+Thu Dec 31 10:11:21 UTC 2015 - bwiedemann@suse.com
+
+- initial package version 2.9.0
+

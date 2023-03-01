@@ -1,0 +1,834 @@
+Index: sonic-pi-4.3.0/app/server/ruby/util.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/util.rb
++++ sonic-pi-4.3.0/app/server/ruby/util.rb
+@@ -36,14 +36,14 @@ def jackd_pidfile()
+ end
+ 
+ def jackd_pid()
+-  if File.exists?(scsynth_pidfile)
++  if File.exist?(scsynth_pidfile)
+     pid = File.readlines(jackd_pidfile).first.to_i
+     pid == 0 ? nil : pid
+   end
+ end
+ 
+ def scsynth_pid()
+-  if File.exists?(scsynth_pidfile)
++  if File.exist?(scsynth_pidfile)
+     pid = File.readlines(scsynth_pidfile).first.to_i
+     pid == 0 ? nil : pid
+   end
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/rugged-1.3.0/ext/rugged/extconf.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/rugged-1.3.0/ext/rugged/extconf.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/rugged-1.3.0/ext/rugged/extconf.rb
+@@ -98,7 +98,7 @@ else
+   end
+ 
+   Dir.chdir(LIBGIT2_DIR) do
+-    Dir.mkdir("build") if !Dir.exists?("build")
++    Dir.mkdir("build") if !Dir.exist?("build")
+ 
+     Dir.chdir("build") do
+       # On Windows, Ruby-DevKit is MSYS-based, so ensure to use MSYS Makefiles.
+Index: sonic-pi-4.3.0/app/server/ruby/bin/clear-logs.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/clear-logs.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/clear-logs.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/sonic-pi-net/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/compile-extensions.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/compile-extensions.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/compile-extensions.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/daemon.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/daemon.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/daemon.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/sonic-pi-net/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/doc.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/doc.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/doc.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/fetch-url.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/fetch-url.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/fetch-url.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/i18n-tool.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/i18n-tool.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/i18n-tool.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/qt-doc.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/qt-doc.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/qt-doc.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/bin/spider-server.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/bin/spider-server.rb
++++ sonic-pi-4.3.0/app/server/ruby/bin/spider-server.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+@@ -64,8 +64,8 @@ File.delete(old_settings_file_path) if F
+ 
+ 
+ begin
+-  if File.exists?(SonicPi::Paths.original_init_path)
+-    if (File.exists?(SonicPi::Paths.init_path))
++  if File.exist?(SonicPi::Paths.original_init_path)
++    if (File.exist?(SonicPi::Paths.init_path))
+       STDOUT.puts "Warning, you have an older init.rb file in #{SonicPi::Paths.original_init_path} which is now being ignored as your newer config/init.rb file is being used instead. Consider deleting your old init.rb (perhaps copying anything useful across first)."
+     else
+       STDOUT.puts "Found init.rb in old location #{SonicPi::Paths.original_init_path}. Moving it to the new config directory #{SonicPi::Paths.init_path}."
+@@ -245,7 +245,7 @@ begin
+   STDOUT.puts "Spider - Runtime Server Initialised"
+   STDOUT.flush
+   # read in init.rb if exists
+-  if File.exists?(SonicPi::Paths.init_path)
++  if File.exist?(SonicPi::Paths.init_path)
+     sp.__spider_eval(File.read(SonicPi::Paths.init_path), silent: true)
+   else
+     STDOUT.puts "Spider - Could not find init.rb file: #{SonicPi::Paths.init_path} "
+Index: sonic-pi-4.3.0/app/server/ruby/core.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/core.rb
++++ sonic-pi-4.3.0/app/server/ruby/core.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/samaaron/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/paths.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/paths.rb
++++ sonic-pi-4.3.0/app/server/ruby/paths.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # This file is part of Sonic Pi: http://sonic-pi.net
+ # Full project source: https://github.com/sonic-pi-net/sonic-pi
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/activesupport/bin/generate_tables
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/activesupport/bin/generate_tables
++++ sonic-pi-4.3.0/app/server/ruby/vendor/activesupport/bin/generate_tables
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ begin
+   $:.unshift(File.expand_path(File.dirname(__FILE__) + '/../lib'))
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/atomic/examples/bench_atomic_1.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/atomic/examples/bench_atomic_1.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/atomic/examples/bench_atomic_1.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/atomic/examples/graph_atomic_bench.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/atomic/examples/graph_atomic_bench.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/atomic/examples/graph_atomic_bench.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/benchmark-ips-2.3.0/examples/simple.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/benchmark-ips-2.3.0/examples/simple.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/benchmark-ips-2.3.0/examples/simple.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'benchmark/ips'
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/blankslate/lib/blankslate.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/blankslate/lib/blankslate.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/blankslate/lib/blankslate.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #--
+ # Copyright 2004, 2006 by Jim Weirich (jim@weirichhouse.org).
+ # All rights reserved.
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/ext/ffi_c/extconf.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ffi-1.11.3/ext/ffi_c/extconf.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/ext/ffi_c/extconf.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ if !defined?(RUBY_ENGINE) || RUBY_ENGINE == 'ruby' || RUBY_ENGINE == 'rbx'
+   require 'mkmf'
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/embed-test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/embed-test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/embed-test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #
+ # This file is part of ruby-ffi.
+ # For licensing, see LICENSE.SPECS
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/ext/extconf.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/ext/extconf.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ffi-1.11.3/spec/ffi/embed-test/ext/extconf.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #
+ # This file is part of ruby-ffi.
+ # For licensing, see LICENSE.SPECS
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/cookie.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/cookie.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/cookie.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   cookie.cgi - Set a selected locale to the cookie of WWW Browser.
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb1.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb1.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb1.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   helloerb1.cgi - Sample script for CGI/ERB
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb2.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb2.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/helloerb2.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   helloerb2.cgi - Sample script for CGI/ERB
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/index.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/index.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/cgi/index.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   hello.cgi - Sample script for CGI
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/hello_glade2.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/hello_glade2.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/hello_glade2.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # hello_glade2.rb - sample for Ruby/Libglade2
+ #
+ # Copyright (C) 2004-2008 Masao Mutoh
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/hello_gtk_builder.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/samples/hello_gtk_builder.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/samples/hello_gtk_builder.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # hello_gtk_builder.rb - sample for Gtk::Builder in Ruby/GTK3
+ #
+ # Copyright (C) 2013 Kouhei Sutou <kou@clear-code.com>
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/test/run-test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/gettext-3.4.0/test/run-test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/gettext-3.4.0/test/run-test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ #
+ # Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
+ #
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/kramdown-2.1.0/bin/kramdown
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/kramdown-2.1.0/bin/kramdown
++++ sonic-pi-4.3.0/app/server/ruby/vendor/kramdown-2.1.0/bin/kramdown
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # -*- coding: utf-8 -*-
+ #
+ #--
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/locale-2.1.2/samples/cgi/cookie.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/locale-2.1.2/samples/cgi/cookie.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/locale-2.1.2/samples/cgi/cookie.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   cookie.cgi - Set a selected locale to the cookie of WWW Browser.
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/locale-2.1.2/samples/cgi/index.cgi
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/locale-2.1.2/samples/cgi/index.cgi
++++ sonic-pi-4.3.0/app/server/ruby/vendor/locale-2.1.2/samples/cgi/index.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ =begin
+   index.cgi - Sample script for CGI
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/mocha-1.1.0/bin/build-matrix
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/mocha-1.1.0/bin/build-matrix
++++ sonic-pi-4.3.0/app/server/ruby/vendor/mocha-1.1.0/bin/build-matrix
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'yaml'
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/polyglot-0.3.5/script/txt2html
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/polyglot-0.3.5/script/txt2html
++++ sonic-pi-4.3.0/app/server/ruby/vendor/polyglot-0.3.5/script/txt2html
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'rubygems'
+ begin
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/rake-compiler-1.1.0/bin/rake-compiler
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/rake-compiler-1.1.0/bin/rake-compiler
++++ sonic-pi-4.3.0/app/server/ruby/vendor/rake-compiler-1.1.0/bin/rake-compiler
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ #--
+ # Copyright (c) 2008 Luis Lavena
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/rouge/bin/rougify
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/rouge/bin/rougify
++++ sonic-pi-4.3.0/app/server/ruby/vendor/rouge/bin/rougify
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'pathname'
+ ROOT_DIR = Pathname.new(__FILE__).dirname.parent
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-beautify/lib/beautifier.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-beautify/lib/beautifier.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-beautify/lib/beautifier.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ # Ruby beautifier, version 2.1, 09/11/2006
+ # Copyright (c) 2006, P. Lutus
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-coreaudio-0.0.12-patched/examples/convert_wav_to_m4a.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-coreaudio-0.0.12-patched/examples/convert_wav_to_m4a.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-coreaudio-0.0.12-patched/examples/convert_wav_to_m4a.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require "coreaudio"
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/bin/ruby-prof-check-trace
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/bin/ruby-prof-check-trace
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/bin/ruby-prof-check-trace
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ stacks = Hash.new{|h,k| h[k] = Hash.new{|h,k| h[k] = []}}
+ i = 0
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/lib/ruby-prof/task.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/lib/ruby-prof/task.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/lib/ruby-prof/task.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: utf-8
+ 
+ require 'rake'
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/aggregate_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/aggregate_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/aggregate_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/basic_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/basic_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/basic_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/block_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/block_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/block_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path("../test_helper", __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_visitor_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_visitor_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/call_info_visitor_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/duplicate_names_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/duplicate_names_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/duplicate_names_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/dynamic_method_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/dynamic_method_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/dynamic_method_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path("../test_helper", __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/enumerable_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/enumerable_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/enumerable_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/exceptions_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/exceptions_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/exceptions_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/exclude_threads_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/exclude_threads_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/exclude_threads_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/fiber_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/fiber_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/fiber_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/line_number_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/line_number_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/line_number_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_allocations_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_allocations_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_allocations_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_cpu_time_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_cpu_time_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_cpu_time_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_runs_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_runs_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_runs_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_time_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_time_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_gc_time_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_memory_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_memory_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_memory_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_process_time_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_process_time_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_process_time_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_wall_time_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_wall_time_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/measure_wall_time_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/method_elimination_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/method_elimination_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/method_elimination_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/module_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/module_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/module_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/multi_printer_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/multi_printer_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/multi_printer_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/no_method_class_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/no_method_class_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/no_method_class_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/pause_resume_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/pause_resume_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/pause_resume_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/printers_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/printers_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/printers_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/rack_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/rack_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/rack_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/recursive_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/recursive_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/recursive_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/singleton_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/singleton_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/singleton_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_printer_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_printer_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_printer_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/stack_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/start_stop_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/start_stop_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/start_stop_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/thread_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/thread_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/thread_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/unique_call_path_test.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/ruby-prof-0.15.8/test/unique_call_path_test.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/ruby-prof-0.15.8/test/unique_call_path_test.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ # encoding: UTF-8
+ 
+ require File.expand_path('../test_helper', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/sys-proctable-sys-proctable-1.2.6/benchmarks/bench_ips_ps.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/sys-proctable-sys-proctable-1.2.6/benchmarks/bench_ips_ps.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/sys-proctable-sys-proctable-1.2.6/benchmarks/bench_ips_ps.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'json'
+ require 'optparse'
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/thread_safe/examples/bench_cache.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/thread_safe/examples/bench_cache.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/thread_safe/examples/bench_cache.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby -wKU
++#!/usr/bin/ruby -wKU
+ 
+ require "benchmark"
+ require "thread_safe"
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/tomlrb-2.0.0/benchmarks/bench.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/tomlrb-2.0.0/benchmarks/bench.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/tomlrb-2.0.0/benchmarks/bench.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ require 'benchmark/ips'
+ require_relative '../lib/tomlrb'
+ begin
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/tomlrb-2.0.0/bin/console
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/tomlrb-2.0.0/bin/console
++++ sonic-pi-4.3.0/app/server/ruby/vendor/tomlrb-2.0.0/bin/console
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require "bundler/setup"
+ require "tomlrb"
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/treetop/bin/tt
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/treetop/bin/tt
++++ sonic-pi-4.3.0/app/server/ruby/vendor/treetop/bin/tt
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ require 'optparse'
+ require 'rubygems'
+ 
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/generate_metagrammar.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/treetop/script/generate_metagrammar.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/generate_metagrammar.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ 
+ require 'rubygems'
+ require File.expand_path('../../lib/treetop/bootstrap_gen_1_metagrammar', __FILE__)
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/svnadd
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/treetop/script/svnadd
++++ sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/svnadd
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby -w
++#!/usr/bin/ruby -w
+ 
+ def unversioned_files
+   `svn status`.
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/svnrm
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/treetop/script/svnrm
++++ sonic-pi-4.3.0/app/server/ruby/vendor/treetop/script/svnrm
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby -w
++#!/usr/bin/ruby -w
+ 
+ def missing_files
+   `svn status`.
+Index: sonic-pi-4.3.0/app/server/ruby/vendor/treetop/Treetop.tmbundle/Support/syntax_tree_viewer.rb
+===================================================================
+--- sonic-pi-4.3.0.orig/app/server/ruby/vendor/treetop/Treetop.tmbundle/Support/syntax_tree_viewer.rb
++++ sonic-pi-4.3.0/app/server/ruby/vendor/treetop/Treetop.tmbundle/Support/syntax_tree_viewer.rb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/ruby
+ require 'rubygems'
+ require 'treetop'
+ require "#{ENV["TM_SUPPORT_PATH"]}/lib/ui"

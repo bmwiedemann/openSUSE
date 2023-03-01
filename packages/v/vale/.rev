@@ -154,4 +154,12 @@
   * chore: set version for Docker (forwarded request 1064423 from jfkw)</comment>
     <requestid>1064425</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>54c4c68c9129ef8dfbfd891e6bc6f4e7</srcmd5>
+    <version>2.23.3</version>
+    <time>1677683661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.23.3: (forwarded request 1068324 from jfkw)</comment>
+    <requestid>1068326</requestid>
+  </revision>
 </revisionlist>

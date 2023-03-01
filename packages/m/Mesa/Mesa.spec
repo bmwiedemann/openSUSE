@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.3.5
+%define _version 23.0.0
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.3.5
+Version:        23.0.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -138,6 +138,8 @@ Source4:        manual-pages.tar.bz2
 Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
+# To address https://gitlab.freedesktop.org/mesa/mesa/-/issues/8393
+Patch3:         n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -780,6 +782,7 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %patch2 -p1
+%patch3 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch54 -p1
@@ -820,6 +823,7 @@ egl_platforms=x11,wayland
             -Degl=enabled \
             -Dglx=disabled \
             -Dosmesa=false \
+            -Dxmlconfig=enabled \
 %else
             -Dglvnd=true \
             -Dgles1=enabled \

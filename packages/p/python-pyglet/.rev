@@ -139,4 +139,77 @@
     <comment></comment>
     <requestid>1033453</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4edfae2ac567f4415e60632eebfc4582</srcmd5>
+    <version>2.0.4</version>
+    <time>1677683676</time>
+    <user>dimstar_suse</user>
+    <comment>- delete pyglet-1.2.4-fix-image-import.patch
+- Update to 2.0.4
+  - input.win32: ControlManager now supports both DirectInput and
+    XInput devices.
+  - input: Many cleanups and reorganization.
+  - math: Add Vec2.reflect method.
+  - shapes: Add new BezierCurve shape.
+  - gl: Add support for GL sync functions.
+  - gui: Prevent two TextEntry widgets from being active at the same
+    time. #747
+  - win32: Fix broken lib debug, and multiple related bugs due to
+    depreacted functions.
+  - input: Controller mappings now indexed correctly on macOS and
+    Windows.
+- pyglet 2.0.3
+  - shapes: Batch and Group can now be changed on shapes after
+    instantiation, similar to Sprites.
+  - font: DirectWrite &amp; Freetype fonts now expose a `filename`
+    attribute. macOS not yet implemented.
+  - Windows: DirectWrite fonts parse font names in a more correct
+    manner. Setting `pyglet.options['dw_legacy_naming']` to True will
+    restore the old behavior, but this may be removed at a later date.
+  - math: Vec types can now be updated with slices (`velocity[:] = 1,
+    2`)
+  - math: Matrix operations now behave more like GLSL.
+  - macOS: fix crash when supplying OpenGL Config without explicit
+    major/minor versions #739
+  - To prevent crashing on many OpenGL drivers, Textures are no longer
+    initialized with empty data.
+  - fixed `font_comparison.py` example.
+- pyglet 2.0.2
+  - Fix Config.opengl_api being always set to None.
+  - Windows: fix Display.get_default_screen() always returning the
+    first index.
+  - Remove legacy Xlib backend code.
+  - Add initial support for Compute Shaders.
+  - Windows: a high performance event timer is requested by the
+    PlatformEventLoop.
+- pyglet 2.0.1
+  - Windows: only enable DirectWrite color font for supported OSes.
+  - gui: don't unset TextEntry widget focus on mouse motion.
+  - image: Prevent BufferManager crash when stencil buffer query fails
+    #703
+  - macOS input: fix broken get_guid link for Controllers.
+  - math: fix Mat4.look_at. #708
+  - shader: fix vertex_list passing id instead of self to
+    Batch.get_domain
+  - shapes: fix crash when setting Arc.visible = False
+  - shapes: add Arc.start_angle setter
+  - graphics: Various default Group changes to help improve Group
+    consolidation
+- pyglet 2.0.0
+  - pyglet has been upgraded to use use OpenGL 3.3+ core
+    functionality.
+  - All high level modules have been internally updated to use modern
+    OpenGL.
+  - A large number of cleanups and optimizations.
+  - New `pyglet.math` module including common Matrix and Vector
+    operations.
+  - New `pyglet.graphics.shader` module for easily managing Shader
+    objects.
+  - New OpenGL bindings, and binding tools.
+  - New Game Controller API for modern game controllers, including
+    rumble and automapping.
+  - New Framebuffer classes.
+</comment>
+    <requestid>1068376</requestid>
+  </revision>
 </revisionlist>

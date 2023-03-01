@@ -19,4 +19,12 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>827342</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55e2ed4dab250e06f78164c4aec0bd2e</srcmd5>
+    <version>0.111</version>
+    <time>1677683656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068306</requestid>
+  </revision>
 </revisionlist>

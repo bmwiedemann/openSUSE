@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyp
-Version:        0.3.4
+Version:        1.1.0
 Release:        0
 Summary:        Python at the shell
 License:        MIT
@@ -29,17 +28,19 @@ URL:            https://github.com/hauntsaninja/pyp
 Source0:        https://github.com/hauntsaninja/pyp/archive/v%{version}.tar.gz#/pyp-%{version}.tar.gz
 BuildRequires:  %{python_module astunparse}
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # testing requirements
 BuildRequires:  bc
-BuildRequires:  jq
 BuildRequires:  %{python_module pytest}
+BuildRequires:  jq
 Requires:       python-astunparse
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -48,14 +49,14 @@ Easily run Python at the shell! Magical, but never mysterious.
 See README.md or https://github.com/hauntsaninja/pyp for examples.
 
 %prep
-%setup -q -n pyp-%{version}
+%autosetup -p1 -n pyp-%{version}
 sed -i '/^#!\//, 1d' pyp.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,7 +75,9 @@ PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv #k '
 %files %{python_files}
 %license LICENSE
 %doc *.md
-%{python_sitelib}/
+%{python_sitelib}/pyp.py
+%{python_sitelib}/pypyp-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__
 %python_alternative %{_bindir}/pyp
 
 %changelog

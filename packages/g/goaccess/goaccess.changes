@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  1 08:21:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Added 'inlang' for easy localization (i18n) updates.
+  * Added nanosecond parsing option via the '%n' specifier.
+    Great for parsing 'Traefik' JSON logs duration field.
+  * Changed Docker workflow to build a docker image on different
+    architectures {'arm64' & 'amd64'}.
+  * Fixed issue with '--unknowns-as-crawlers' where it did not
+    process them as such.
+
+-------------------------------------------------------------------
 Mon Jan  2 13:11:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7:

@@ -79,4 +79,12 @@
     <comment>January 2023 CPU</comment>
     <requestid>1066921</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>72793e7b59c148e5e1b96d18b23c1bde</srcmd5>
+    <version>13.0.14.0</version>
+    <time>1677683636</time>
+    <user>dimstar_suse</user>
+    <comment>Mess-up with bug number</comment>
+    <requestid>1068364</requestid>
+  </revision>
 </revisionlist>

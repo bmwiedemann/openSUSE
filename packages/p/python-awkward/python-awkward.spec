@@ -18,7 +18,7 @@
 
 %define awkward_cpp_version 8
 Name:           python-awkward
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause

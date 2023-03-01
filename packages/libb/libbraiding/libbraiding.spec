@@ -1,7 +1,7 @@
 #
 # spec file for package libbraiding
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libbraiding
 %define lname	libbraiding0
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Library for computations on braid groups
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/miguelmarco/libbraiding
-Source:         https://github.com/miguelmarco/libbraiding/releases/download/1.1/%name-%version.tar.gz
+Source:         https://github.com/miguelmarco/libbraiding/releases/download/%version/%name-%version.tar.gz
 BuildRequires:  gcc-c++
 
 %description
