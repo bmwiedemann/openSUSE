@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 13:57:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.12
+  * Plug a memory leak in HX_inet_listen
+
+-------------------------------------------------------------------
+Mon Feb 27 09:30:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.11
+  * Four new socket utility functions
+
+-------------------------------------------------------------------
 Sun Jan 29 13:30:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.10
