@@ -27,7 +27,9 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source:         %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gst-devtools-fix-hicolor-dir.patch -- Install icon file in correct folder
-Patch:          gst-devtools-fix-hicolor-dir.patch
+Patch0:         gst-devtools-fix-hicolor-dir.patch
+# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
+Patch1:         reduce-required-meson.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
