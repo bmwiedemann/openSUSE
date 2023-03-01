@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 14:53:16 UTC 2023 - pgajdos@suse.com
+
+- add %bcond option to disable fltk backend
+
+-------------------------------------------------------------------
 Thu Aug 25 07:51:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@
 %define nsuffix -%{flavor}
 %endif
 
+%bcond_without fltk
+
 Name:           pinentry%{?nsuffix}
 Version:        1.2.1
 Release:        0
@@ -37,7 +39,6 @@ Source1:        https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-%{version}.ta
 Source2:        pinentry.keyring
 Source3:        pinentry
 Patch1:         pinentry-0.7.2-gtk+-2.4.diff
-BuildRequires:  fltk-devel >= 1.3
 BuildRequires:  libassuan-devel >= 2.1.0
 BuildRequires:  libgpg-error-devel >= 1.16
 BuildRequires:  ncurses-devel
@@ -45,6 +46,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Provides:       pinentry-dialog
 %if "%{flavor}" == "gui"
+%if %{with fltk}
+BuildRequires:  fltk-devel >= 1.3
+%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -112,6 +116,7 @@ Provides:       pinentry:%{_bindir}/pinentry-gnome3
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using GNOME libraries.
 
+%if %{with fltk}
 %package -n pinentry-fltk
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 Group:          Productivity/Other
@@ -123,6 +128,7 @@ Provides:       pinentry:%{_bindir}/pinentry-fltk
 %description -n pinentry-fltk
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using FLTK libraries.
+%endif
 
 %package -n pinentry-qt5
 Summary:        Simple PIN or Passphrase Entry Dialog for QT5
@@ -168,7 +174,11 @@ cd gui
 	--enable-pinentry-gnome3 \
 	--enable-pinentry-emacs \
 	--enable-inside-emacs \
+%if %{with fltk}
 	--enable-pinentry-fltk \
+%else
+        --disable-pinentry-fltk \
+%endif
 	--enable-pinentry-efl \
 	--without-ncurses-include-dir
 %make_build
@@ -239,9 +249,11 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gnome3
 
+%if %{with fltk}
 %files -n pinentry-fltk
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-fltk
+%endif
 
 %files -n pinentry-qt5
 %license COPYING
