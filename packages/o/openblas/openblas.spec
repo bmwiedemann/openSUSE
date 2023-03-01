@@ -135,7 +135,35 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%ifarch ppc64le x86_64 s390x
+%if "%flavor" == "gnu11-hpc"
+%define compiler_family gnu
+%define c_f_ver 11
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu11-hpc-pthreads"
+%define compiler_family gnu
+%define c_f_ver 11
+%define ext pthreads
+%define build_flags USE_THREAD=1 USE_OPENMP=0
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu12-hpc"
+%define compiler_family gnu
+%define c_f_ver 12
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu12-hpc-pthreads"
+%define compiler_family gnu
+%define c_f_ver 12
+%define ext pthreads
+%define build_flags USE_THREAD=1 USE_OPENMP=0
+%{bcond_without hpc}
+%endif
+
+%ifarch ppc64le
 %if 0%{?c_f_ver} > 9
 %else
 %if 0%{?sle_version} == 150500
@@ -148,6 +176,11 @@ ExclusiveArch:  do_not_build
 %define cc_v 10
 %endif
 %endif
+%endif
+%ifarch x86_64
+ %if 0%{?sle_version} && 0%{?c_f_ver} < 11
+  %define dynamic_list DYNAMIC_LIST="PRESCOTT CORE2 NEHALEM BARCELONA SANDYBRIDGE BULLDOZER PILEDRIVER STEAMROLLER EXCAVATOR HASWELL ZEN SKYLAKEX"
+ %endif
 %endif
 
 %if %{without hpc}
@@ -308,6 +341,7 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 %endif
 
+%if %{without hpc}
 # create baselibs.conf based on flavor
 cat >  %{_sourcedir}/baselibs.conf <<EOF
 lib%{name}%{so_a}
@@ -315,8 +349,9 @@ lib%{name}%{so_a}
 lib%{name}-devel
     +%{p_libdir}/libopenblas\.so
     requires -%{name}-<targettype>
-    requires "lib%{name}%{?so_v}-<targettype> = <version>"
+    requires "lib%{name}%{?so_a}-<targettype> = <version>"
 EOF
+%endif
 
 %build
 
@@ -386,8 +421,11 @@ EOF
 [[ -z $jobs ]] && jobs=1
 # NEVER use %%_smp_mflags with top level make:
 # set MAKE_NB_JOBS instead and let the build do the work!
-# Do not use LIBNAMESUFFIX as it will not allow the different flavors to
-# be plugin replacements of each other
+# Do not use LIBNAMESUFFIX for new builds as it will not allow
+# the different flavors to be plugin replacements of each other
+%if 0%{?suse_version} <= 1500 && %{without hpc}
+%define libnamesuffix LIBNAMESUFFIX=%flavor
+%endif
 make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      %{?openblas_opt} \
      COMMON_OPT="%{optflags} %{?addopt}" \
@@ -396,7 +434,8 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      OPENBLAS_INCLUDE_DIR=%{p_includedir} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
-     %{!?with_hpc:FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+     %{?dynamic_list} \
+     %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
      %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
      %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} CEXTRALIB=""}}
 
@@ -410,6 +449,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
+    %{?libnamesuffix} \
     PREFIX=%{p_prefix}
 
 # Delete info about OBS host cpu
@@ -431,18 +471,21 @@ sed -i 's|_%{flavor}||g' %{buildroot}%{p_cmakedir}/*.cmake
 
 # Remove library type specific so. This is solved differently.
 # Needed when not using LIBNAMESUFFIX.
+%if 0%{!?libnamesuffix:1}
 rm -f %{buildroot}%{p_libdir}/lib%{pname}*-r%{version}.so
 rm -f %{buildroot}%{p_libdir}/lib%{pname}*-r%{version}.a
 rm -f %{buildroot}%{p_libdir}/lib%{pname}.so
+%endif
 # Instead set up new 'devel'-link for flavor:
 ln -s lib%{pname}.so.%{so_v} %{buildroot}%{p_libdir}/lib%{pname}.so
 
 # Put libraries in correct location
 rm -rf %{buildroot}%{p_libdir}/lib%{name}*
 
-# Install the serial library
-install -D -p -m 755 lib%{pname}.so %{buildroot}%{p_libdir}/lib%{pname}.so.%{so_v}
-install -D -p -m 644 lib%{pname}.a %{buildroot}%{p_libdir}/lib%{pname}.a
+# Install library
+%define orgname %{?libnamesuffix:%{name}}%{!?libnamesuffix:%{pname}}
+install -D -p -m 755 lib%{orgname}.so %{buildroot}%{p_libdir}/lib%{pname}.so.%{so_v}
+install -D -p -m 644 lib%{orgname}.a %{buildroot}%{p_libdir}/lib%{pname}.a
 
 # Fix source permissions (also applies to LAPACK)
 find -name \*.f -exec chmod 644 {} +
@@ -467,6 +510,11 @@ install -d %{buildroot}/%{_libdir}/cmake
 ln -s %{_sysconfdir}/alternatives/openblas-default%{?a_x}/cmake/openblas %{buildroot}/%{_libdir}/cmake/
 %endif
 
+# Compatibility Links
+%if 0%{?libnamesuffix:1}
+ln -s openblas-%{flavor}/lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{name}.so.%{so_v}
+ln -s openblas-%{flavor}/lib%{pname}.so %{buildroot}%{_libdir}/lib%{name}.so
+%endif
 %else # with hpc
 
 # HPC module file
@@ -560,6 +608,7 @@ fi
 %{p_libdir}/lib%{pname}.so.%{so_v}
 %if %{without hpc}
 %dir %{p_libdir}
+%{?libnamesuffix:%{_libdir}/lib%{name}.so.%{so_v}}
 # Created by %%post
 %ghost %{_libdir}/lib%{pname}.so.%{so_v}
 %ghost %{_libdir}/openblas-default
@@ -580,6 +629,7 @@ fi
 
 %files -n lib%{name}-devel
 %{p_libdir}/lib%{pname}.so
+%{?libnamesuffix:%{_libdir}/lib%{name}.so}
 %{p_cmakedir}/
 %if %{with hpc}
 %license LICENSE

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 24 09:57:34 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Recreate old library scheme for existing products:
+  It turned out the new scheme on existing systems has
+  been causing package breakages.
+- Do not generate baselibs.conf for HPC builds.
+- Add support for gcc11 & 12.
+- For SLE/Leap on x86_64 and s390x do not mix compiler versions
+  as this will make the gfortran ABI version inconsistent. Instead
+  use the stock compiler and set the list of kernels for x86_64
+  cores explicitly as Cooperlake requires compiler intrinsics
+  which are not provided by gcc 7.
+- Require at least 7G of disk space for building.
+
+-------------------------------------------------------------------
 Tue Feb 14 18:14:06 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Make sure pre-existing (arch-independent) update-alternatives

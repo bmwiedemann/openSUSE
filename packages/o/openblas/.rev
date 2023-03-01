@@ -652,4 +652,22 @@
 - Make arch dependent generic names conditional.</comment>
     <requestid>1066744</requestid>
   </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>abd1a0e1b2ecad4ed4af442f6823db75</srcmd5>
+    <version>0.3.21</version>
+    <time>1677683617</time>
+    <user>dimstar_suse</user>
+    <comment>- Recreate old library scheme for existing products:
+  It turned out the new scheme on existing systems has
+  been causing package breakages.
+- Do not generate baselibs.conf for HPC builds.
+- Add support for gcc11 &amp; 12.
+- For SLE/Leap on x86_64 and s390x do not mix compiler versions
+  as this will make the gfortran ABI version inconsistent. Instead
+  use the stock compiler and set the list of kernels for x86_64
+  cores explicitly as Cooperlake requires compiler intrinsics
+  which are not provided by gcc 7.
+- Require at least 7G of disk space for building. (forwarded request 1068121 from eeich)</comment>
+    <requestid>1068124</requestid>
+  </revision>
 </revisionlist>
