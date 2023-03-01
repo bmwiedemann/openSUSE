@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  2 08:03:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.2:
+  * Fixed merged anchor reference problem #1482
+  * Fixed xml encoding of ProcInst #1563, improved XML
+    comment handling
+  * Allow build without json and xml support (#1556) Thanks
+  * Bumped dependencies
+
+-------------------------------------------------------------------
 Tue Feb 28 20:21:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.31.1:
