@@ -1,6 +1,7 @@
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cfgtable.py py-junos-eznc-2.6.3/tests/unit/factory/test_cfgtable.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cfgtable.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_cfgtable.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_cfgtable.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_cfgtable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_cfgtable.py
 @@ -13,7 +13,7 @@ from jnpr.junos import Device
  from ncclient.manager import Manager, make_device_handler
  from ncclient.transport import SSHSession
@@ -10,9 +11,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cfgtable.py py-junos-
  
  from jnpr.junos.factory import loadyaml
  from jnpr.junos.factory.factory_loader import FactoryLoader
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cmdtable.py py-junos-eznc-2.6.3/tests/unit/factory/test_cmdtable.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cmdtable.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_cmdtable.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_cmdtable.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_cmdtable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_cmdtable.py
 @@ -10,7 +10,7 @@ from jnpr.junos.exception import RpcErro
  
  from ncclient.manager import Manager, make_device_handler
@@ -22,9 +24,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_cmdtable.py py-junos-
  import yamlloader
  from jnpr.junos.factory.factory_loader import FactoryLoader
  import yaml
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_factory_loader.py py-junos-eznc-2.6.3/tests/unit/factory/test_factory_loader.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_factory_loader.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_factory_loader.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_factory_loader.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_factory_loader.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_factory_loader.py
 @@ -4,7 +4,7 @@ __credits__ = "Jeremy Schulman"
  import unittest
  import pytest
@@ -34,9 +37,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_factory_loader.py py-
  
  
  @pytest.mark.unit
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_optable.py py-junos-eznc-2.6.3/tests/unit/factory/test_optable.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_optable.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_optable.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_optable.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_optable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_optable.py
 @@ -19,7 +19,7 @@ from ncclient.operations.rpc import RPCR
  
  from lxml import etree
@@ -46,9 +50,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_optable.py py-junos-e
  
  
  @pytest.mark.unit
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_table.py py-junos-eznc-2.6.3/tests/unit/factory/test_table.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_table.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_table.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_table.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_table.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_table.py
 @@ -8,7 +8,7 @@ import os
  from jnpr.junos import Device
  from jnpr.junos.factory.table import Table
@@ -58,9 +63,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_table.py py-junos-ezn
  from lxml import etree
  from jnpr.junos.op.phyport import PhyPortTable
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_to_json.py py-junos-eznc-2.6.3/tests/unit/factory/test_to_json.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_to_json.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_to_json.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_to_json.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_to_json.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_to_json.py
 @@ -5,7 +5,7 @@ try:
  except ImportError:
      import unittest
@@ -70,9 +76,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_to_json.py py-junos-e
  import os
  import json
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_view.py py-junos-eznc-2.6.3/tests/unit/factory/test_view.py
---- py-junos-eznc-2.6.3.orig/tests/unit/factory/test_view.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/factory/test_view.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_view.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_view.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_view.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -82,9 +89,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/factory/test_view.py py-junos-eznc
  from jnpr.junos import Device
  from jnpr.junos.factory.view import View
  from jnpr.junos.op.phyport import PhyPortStatsTable, PhyPortStatsView
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_current_re.py py-junos-eznc-2.6.3/tests/unit/facts/test_current_re.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_current_re.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_current_re.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_current_re.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_current_re.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_current_re.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -94,9 +102,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_current_re.py py-junos-
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_domain.py py-junos-eznc-2.6.3/tests/unit/facts/test_domain.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_domain.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_domain.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_domain.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_domain.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_domain.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -106,9 +115,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_domain.py py-junos-eznc
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ethernet_mac_table.py py-junos-eznc-2.6.3/tests/unit/facts/test_ethernet_mac_table.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ethernet_mac_table.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_ethernet_mac_table.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_ethernet_mac_table.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_ethernet_mac_table.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_ethernet_mac_table.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -118,9 +128,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ethernet_mac_table.py p
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_file_list.py py-junos-eznc-2.6.3/tests/unit/facts/test_file_list.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_file_list.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_file_list.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_file_list.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_file_list.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_file_list.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -130,9 +141,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_file_list.py py-junos-e
  import os
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_cluster_status.py py-junos-eznc-2.6.3/tests/unit/facts/test_get_chassis_cluster_status.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_cluster_status.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_get_chassis_cluster_status.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_cluster_status.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_chassis_cluster_status.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_cluster_status.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -142,9 +154,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_cluster_sta
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_inventory.py py-junos-eznc-2.6.3/tests/unit/facts/test_get_chassis_inventory.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_inventory.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_get_chassis_inventory.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_inventory.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_chassis_inventory.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_inventory.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -154,9 +167,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_chassis_inventory.p
  import os
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_route_engine_information.py py-junos-eznc-2.6.3/tests/unit/facts/test_get_route_engine_information.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_route_engine_information.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_get_route_engine_information.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_route_engine_information.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_route_engine_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_route_engine_information.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -166,9 +180,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_route_engine_inform
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_software_information.py py-junos-eznc-2.6.3/tests/unit/facts/test_get_software_information.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_software_information.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_get_software_information.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_software_information.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_software_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_software_information.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -178,9 +193,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_software_informatio
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_virtual_chassis_information.py py-junos-eznc-2.6.3/tests/unit/facts/test_get_virtual_chassis_information.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_virtual_chassis_information.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_get_virtual_chassis_information.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_virtual_chassis_information.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_virtual_chassis_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_virtual_chassis_information.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -190,9 +206,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_get_virtual_chassis_inf
  import os
  import sys
  from lxml import etree
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ifd_style.py py-junos-eznc-2.6.3/tests/unit/facts/test_ifd_style.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ifd_style.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_ifd_style.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_ifd_style.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_ifd_style.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_ifd_style.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -202,9 +219,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_ifd_style.py py-junos-e
  import os
  from lxml import etree
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_iri_mapping.py py-junos-eznc-2.6.3/tests/unit/facts/test_iri_mapping.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_iri_mapping.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_iri_mapping.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_iri_mapping.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_iri_mapping.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_iri_mapping.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -214,9 +232,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_iri_mapping.py py-junos
  import os
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_personality.py py-junos-eznc-2.6.3/tests/unit/facts/test_personality.py
---- py-junos-eznc-2.6.3.orig/tests/unit/facts/test_personality.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/facts/test_personality.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_personality.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_personality.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_personality.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman, Nitin Ku
  
  import unittest
@@ -226,9 +245,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/facts/test_personality.py py-junos
  import os
  from jnpr.junos.exception import RpcError
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/__init__.py py-junos-eznc-2.6.3/tests/unit/__init__.py
---- py-junos-eznc-2.6.3.orig/tests/unit/__init__.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/__init__.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/__init__.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/__init__.py
++++ py-junos-eznc-2.6.7/tests/unit/__init__.py
 @@ -2,7 +2,7 @@ import unittest
  import sys
  
@@ -238,9 +258,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/__init__.py py-junos-eznc-2.6.3/te
  
  __author__ = "Nitin Kumar"
  __credits__ = "Jeremy Schulman"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_chassis.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_chassis.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_chassis.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_chassis.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_chassis.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_chassis.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_chassis.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -250,9 +271,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_chassis.py py-junos-ez
  from lxml import etree
  import os
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_domain.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_domain.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_domain.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_domain.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_domain.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_domain.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_domain.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -262,9 +284,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_domain.py py-junos-ezn
  from lxml import etree
  
  from jnpr.junos.ofacts.domain import facts_domain
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_ifd_style.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_ifd_style.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_ifd_style.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_ifd_style.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_ifd_style.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_ifd_style.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_ifd_style.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -274,9 +297,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_ifd_style.py py-junos-
  import pytest
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_personality.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_personality.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_personality.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_personality.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_personality.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_personality.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_personality.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -286,9 +310,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_personality.py py-juno
  import pytest
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_routing_engines.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_routing_engines.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_routing_engines.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_routing_engines.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_routing_engines.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_routing_engines.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_routing_engines.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -298,9 +323,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_routing_engines.py py-
  import os
  import sys
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_srx_cluster.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_srx_cluster.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_srx_cluster.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_srx_cluster.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_srx_cluster.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_srx_cluster.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_srx_cluster.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -310,9 +336,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_srx_cluster.py py-juno
  import os
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_switch_style.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_switch_style.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_switch_style.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_switch_style.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_switch_style.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_switch_style.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_switch_style.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -322,9 +349,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_switch_style.py py-jun
  import pytest
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_swver.py py-junos-eznc-2.6.3/tests/unit/ofacts/test_swver.py
---- py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_swver.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/ofacts/test_swver.py	2022-05-03 13:49:10.491645348 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_swver.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_swver.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_swver.py
 @@ -6,7 +6,7 @@ try:
  except ImportError:
      import unittest
@@ -334,9 +362,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/ofacts/test_swver.py py-junos-eznc
  import os
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_console.py py-junos-eznc-2.6.3/tests/unit/test_console.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_console.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_console.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_console.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_console.py
++++ py-junos-eznc-2.6.7/tests/unit/test_console.py
 @@ -4,7 +4,7 @@ except ImportError:
      import unittest
  from jnpr.junos.utils.config import Config
@@ -346,9 +375,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_console.py py-junos-eznc-2.6.
  import re
  import sys
  import os
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_decorators.py py-junos-eznc-2.6.3/tests/unit/test_decorators.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_decorators.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_decorators.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_decorators.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_decorators.py
++++ py-junos-eznc-2.6.7/tests/unit/test_decorators.py
 @@ -12,7 +12,7 @@ from jnpr.junos.exception import RpcErro
  from jnpr.junos.decorators import timeoutDecorator, normalizeDecorator
  from jnpr.junos.decorators import ignoreWarnDecorator
@@ -358,9 +388,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_decorators.py py-junos-eznc-2
  
  from ncclient.operations.rpc import RPCError
  from ncclient.manager import Manager, make_device_handler
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_device.py py-junos-eznc-2.6.3/tests/unit/test_device.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_device.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_device.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_device.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_device.py
++++ py-junos-eznc-2.6.7/tests/unit/test_device.py
 @@ -3,7 +3,7 @@ try:
  except ImportError:
      import unittest
@@ -370,9 +401,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_device.py py-junos-eznc-2.6.3
  import os
  from lxml import etree
  import sys
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_factcache.py py-junos-eznc-2.6.3/tests/unit/test_factcache.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_factcache.py	2022-05-03 13:49:10.451645097 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_factcache.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_factcache.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_factcache.py
++++ py-junos-eznc-2.6.7/tests/unit/test_factcache.py
 @@ -3,7 +3,7 @@ try:
  except ImportError:
      import unittest
@@ -382,9 +414,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_factcache.py py-junos-eznc-2.
  from jnpr.junos.exception import FactLoopError
  
  from jnpr.junos import Device
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_junos.py py-junos-eznc-2.6.3/tests/unit/test_junos.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_junos.py	2022-05-03 13:49:10.451645097 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_junos.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_junos.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_junos.py
++++ py-junos-eznc-2.6.7/tests/unit/test_junos.py
 @@ -4,7 +4,7 @@ import unittest
  import sys
  
@@ -394,9 +427,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_junos.py py-junos-eznc-2.6.3/
  
  __author__ = "Nitin Kumar"
  __credits__ = "Jeremy Schulman"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_jxml.py py-junos-eznc-2.6.3/tests/unit/test_jxml.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_jxml.py	2022-05-03 13:49:10.451645097 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_jxml.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_jxml.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_jxml.py
++++ py-junos-eznc-2.6.7/tests/unit/test_jxml.py
 @@ -2,7 +2,7 @@ import os
  import unittest
  from io import StringIO
@@ -406,9 +440,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_jxml.py py-junos-eznc-2.6.3/t
  from jnpr.junos.jxml import (
      NAME,
      INSERT,
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_rpcmeta.py py-junos-eznc-2.6.3/tests/unit/test_rpcmeta.py
---- py-junos-eznc-2.6.3.orig/tests/unit/test_rpcmeta.py	2022-05-03 13:49:10.451645097 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/test_rpcmeta.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/test_rpcmeta.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_rpcmeta.py
++++ py-junos-eznc-2.6.7/tests/unit/test_rpcmeta.py
 @@ -10,7 +10,7 @@ from ncclient.manager import Manager, ma
  from ncclient.transport import SSHSession
  from jnpr.junos.exception import JSONLoadError
@@ -418,9 +453,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/test_rpcmeta.py py-junos-eznc-2.6.
  from lxml import etree
  
  __author__ = "Nitin Kumar, Rick Sherman"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_serial.py py-junos-eznc-2.6.3/tests/unit/transport/test_serial.py
---- py-junos-eznc-2.6.3.orig/tests/unit/transport/test_serial.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/transport/test_serial.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_serial.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_serial.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_serial.py
 @@ -3,7 +3,7 @@ try:
  except ImportError:
      import unittest
@@ -430,9 +466,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_serial.py py-junos-
  import sys
  import six
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_netconf.py py-junos-eznc-2.6.3/tests/unit/transport/test_tty_netconf.py
---- py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_netconf.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/transport/test_tty_netconf.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_netconf.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_netconf.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_netconf.py
 @@ -3,7 +3,7 @@ try:
  except ImportError:
      import unittest
@@ -442,9 +479,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_netconf.py py-j
  from jnpr.junos.transport.tty_netconf import tty_netconf
  import six
  import os
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty.py py-junos-eznc-2.6.3/tests/unit/transport/test_tty.py
---- py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/transport/test_tty.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty.py
 @@ -6,7 +6,7 @@ except ImportError:
      import unittest
  
@@ -454,9 +492,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty.py py-junos-ezn
  
  from jnpr.junos.transport.tty import Terminal
  from jnpr.junos import exception as EzErrors
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_ssh.py py-junos-eznc-2.6.3/tests/unit/transport/test_tty_ssh.py
---- py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_ssh.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/transport/test_tty_ssh.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_ssh.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_ssh.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_ssh.py
 @@ -6,7 +6,7 @@ try:
  except ImportError:
      import unittest
@@ -466,9 +505,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_ssh.py py-junos
  from jnpr.junos.transport.tty_ssh import SSH
  
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_telnet.py py-junos-eznc-2.6.3/tests/unit/transport/test_tty_telnet.py
---- py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_telnet.py	2022-05-03 13:49:10.455645122 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/transport/test_tty_telnet.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_telnet.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_telnet.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_telnet.py
 @@ -5,7 +5,7 @@ try:
  except ImportError:
      import unittest
@@ -478,9 +518,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/transport/test_tty_telnet.py py-ju
  from jnpr.junos.transport.tty_telnet import Telnet
  import six
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_config.py py-junos-eznc-2.6.3/tests/unit/utils/test_config.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_config.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_config.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_config.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_config.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_config.py
 @@ -19,7 +19,7 @@ from ncclient.manager import Manager, ma
  from ncclient.transport import SSHSession
  from ncclient.operations import RPCError, RPCReply
@@ -490,9 +531,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_config.py py-junos-eznc
  from lxml import etree
  import os
  
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_fs.py py-junos-eznc-2.6.3/tests/unit/utils/test_fs.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_fs.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_fs.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_fs.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_fs.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_fs.py
 @@ -9,7 +9,7 @@ from jnpr.junos import Device
  from jnpr.junos.utils.fs import FS
  from jnpr.junos.exception import RpcError
@@ -502,9 +544,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_fs.py py-junos-eznc-2.6
  from lxml import etree
  
  __author__ = "Nitin Kumar, Rick Sherman"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_ftp.py py-junos-eznc-2.6.3/tests/unit/utils/test_ftp.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_ftp.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_ftp.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_ftp.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_ftp.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_ftp.py
 @@ -7,7 +7,7 @@ import os
  from jnpr.junos import Device
  import jnpr.junos.utils.ftp
@@ -514,9 +557,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_ftp.py py-junos-eznc-2.
  
  if sys.version < "3":
      builtin_string = "__builtin__"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_scp.py py-junos-eznc-2.6.3/tests/unit/utils/test_scp.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_scp.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_scp.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_scp.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_scp.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_scp.py
 @@ -8,7 +8,7 @@ import pytest
  from jnpr.junos import Device
  from jnpr.junos.utils.scp import SCP
@@ -526,9 +570,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_scp.py py-junos-eznc-2.
  
  __author__ = "Rick Sherman, Nitin Kumar"
  __credits__ = "Jeremy Schulman"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_start_shell.py py-junos-eznc-2.6.3/tests/unit/utils/test_start_shell.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_start_shell.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_start_shell.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_start_shell.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_start_shell.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_start_shell.py
 @@ -4,7 +4,7 @@ import pytest
  from jnpr.junos import Device
  from jnpr.junos.utils.start_shell import StartShell
@@ -538,9 +583,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_start_shell.py py-junos
  
  __author__ = "Rick Sherman"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_sw.py py-junos-eznc-2.6.3/tests/unit/utils/test_sw.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_sw.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_sw.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_sw.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_sw.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_sw.py
 @@ -16,7 +16,7 @@ from jnpr.junos.facts.swver import versi
  from ncclient.manager import Manager, make_device_handler
  from ncclient.transport import SSHSession
@@ -550,9 +596,10 @@ diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_sw.py py-junos-eznc-2.6
  
  if sys.version < "3":
      builtin_string = "__builtin__"
-diff -upr py-junos-eznc-2.6.3.orig/tests/unit/utils/test_util.py py-junos-eznc-2.6.3/tests/unit/utils/test_util.py
---- py-junos-eznc-2.6.3.orig/tests/unit/utils/test_util.py	2022-05-03 13:49:10.463645172 +0200
-+++ py-junos-eznc-2.6.3/tests/unit/utils/test_util.py	2022-05-03 13:49:10.495645373 +0200
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_util.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_util.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_util.py
 @@ -7,7 +7,7 @@ import pytest
  from jnpr.junos import Device
  from jnpr.junos.utils.util import Util
