@@ -6194,4 +6194,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2</comment>
     <requestid>1066810</requestid>
   </revision>
+  <revision rev="680" vrev="1">
+    <srcmd5>e128f4458ac225548504aaa62dff9732</srcmd5>
+    <version>6.2.1</version>
+    <time>1677794498</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.1 &amp; lockdown patches &amp; gfx drivers cleanup</comment>
+    <requestid>1068171</requestid>
+  </revision>
 </revisionlist>
