@@ -8,9 +8,9 @@ for p in $pkgs ; do
   fi
   if ! test -d packages/$f*/$p/.git ; then
      echo "missing git $p"
-     if [ -n $FIX ] ; then
-        ( cd /data/openSUSE-test && git fetch prod && git reset --hard prod/master && scripts/splitone2 $p )
-     fi
+     #if [ -n $FIX ] ; then
+     #   ( cd /data/openSUSE-test && git fetch prod && git reset --hard prod/master && scripts/splitone2 $p )
+     #fi
      continue
   fi
   if ! ( cd packages/$f*/$p && [[ $(git rev-list HEAD --count 2>/dev/null) -ge 1 ]] ) ; then
