@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 23 09:11:50 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Disable ZSTD debug section compress by default.
+
+-------------------------------------------------------------------
+Tue Feb 21 15:32:02 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable zstd compression algorithm (instead of zlib)
+  for debug info sections by default.
+
+-------------------------------------------------------------------
 Mon Jan 30 09:18:59 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Pack libgprofng only for supported platforms.

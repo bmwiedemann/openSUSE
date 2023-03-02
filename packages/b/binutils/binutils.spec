@@ -61,6 +61,9 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
+%if %{suse_version} > 1500
+BuildRequires:  libzstd-devel
+%endif
 Version:        2.40
 Release:        0
 
@@ -384,6 +387,11 @@ cd build-dir
 	--enable-obsolete \
 	--enable-warn-execstack=yes \
 	--enable-warn-rwx-segments=yes
+
+#FIXME: enable in the future
+#%if %{suse_version} > 1550
+#  --enable-default-compressed-debug-sections-algorithm=zstd \
+#%endif
 
 # we patch headers (bfd-in.h) that are input to other headers
 # which are generated only with --enable-maintainer-mode (which we
