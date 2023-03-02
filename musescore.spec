@@ -53,9 +53,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
+%ifarch ppc64 ppc64le
+# PPC builds often have memory issues, limit the number of parallel jobs
+BuildRequires:  memory-constraints
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  strip-nondeterminism
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Designer)
@@ -111,14 +114,6 @@ BuildArch:      noarch
 %description fonts
 Additional fonts for use by the MuseScore music notation program.
 
-%package devel
-Summary:        MuseScore development files
-License:        GPL-3.0-or-later WITH Font-exception-2.0 AND OFL-1.1
-Group:          Development/Libraries/C and C++
-
-%description devel
-MuseScore files, used for plugin development.
-
 %prep
 %autosetup -p1 -n MuseScore-%{version}
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} share/sound/
@@ -141,6 +136,11 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
 
 %build
+# Limit memory / threads on PowerPC to avoid memory issues
+%ifarch ppc64 ppc64le
+%limit_build -m 2000
+%endif
+
 %define __builddir build.release
 # TODO:
 # find out what those do:
@@ -157,13 +157,15 @@ sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src
        -DBUILD_UPDATE_MODULE:BOOL=ON \
        -DBUILD_CRASHPAD_CLIENT=OFF \
        -DMUSESCORE_REVISION=%{revision}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-# don't package staic libs
+# don't package kddockwidgets. It should not be installed
 rm %{buildroot}%{_libdir}/*.a
+rm -r %{buildroot}%{_includedir}/kddockwidgets
+rm -r %{buildroot}%{_libdir}/cmake/KDDockWidgets
 
 # install fonts
 mkdir -p %{buildroot}%{fontdir}
@@ -188,9 +190,9 @@ mkdir -p %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 
 # Remove opus devel files, they are provided by system
-rm -rf %{buildroot}%{_includedir}/opus
+rm -r %{buildroot}%{_includedir}/opus
 # Delete crashpad binary
-rm -rf %{buildroot}%{_bindir}/crashpad_handler
+rm %{buildroot}%{_bindir}/crashpad_handler
 
 # collect doc files
 install -d -m 755 %{buildroot}%docdir
@@ -216,21 +218,7 @@ install -p -m 644 share/sound/README.md               %{buildroot}%docdir/README
 install -p -m 644 share/instruments/README.md         %{buildroot}%docdir/README.md.instruments
 install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYING.wallpaper
 
-%fdupes %{buildroot}/%{_prefix}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-%endif
-
-%if 0%{?suse_version} < 1500
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%endif
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license LICENSE.GPL
@@ -262,10 +250,5 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %license fonts/edwin/LICENSE.txt.edwin
 %doc fonts/leland/README.md.leland
 %license fonts/leland/LICENSE.txt.leland
-
-%files devel
-%license LICENSE.GPL
-%{_includedir}/kddockwidgets
-%{_libdir}/cmake
 
 %changelog
