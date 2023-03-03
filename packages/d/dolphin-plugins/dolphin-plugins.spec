@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin-plugins
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
@@ -70,8 +70,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %find_lang %{name} --with-man --all-name
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*
