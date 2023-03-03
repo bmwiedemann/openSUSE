@@ -52,4 +52,19 @@
   See https://dino.im/blog/2023/02/dino-0.4-release/</comment>
     <requestid>1063735</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9e5ebcc846cfc5a83940dfa0f375061</srcmd5>
+    <version>0.4.1</version>
+    <time>1677878911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1 bugfix release:
+  * Consider stream readable when EOS is reached
+  * Fix critical warnings after DTLS-SRTP calls without OMEMO verification
+  * Fix typing notifications in groupchats
+  * Fix some memory leaks
+  * Stop regenerating message menu buttons
+  * Clear chat input after /command 
+  * Remove spell check setting</comment>
+    <requestid>1069116</requestid>
+  </revision>
 </revisionlist>
