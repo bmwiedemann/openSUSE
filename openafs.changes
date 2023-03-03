@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  2 14:01:53 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- apply patch from upstream for kernel 6.2:
+  * b885159.diff
+- change BuildArch for subpackage kernel-source to noarch
+
+-------------------------------------------------------------------
 Wed Jan  4 08:14:39 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to offical openafs-1.8.9
