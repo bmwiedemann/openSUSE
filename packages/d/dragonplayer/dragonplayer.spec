@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dragonplayer
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -75,8 +75,7 @@ Dragon Player is a simple video player.
 
 %suse_update_desktop_file org.kde.dragonplayer Video
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*
