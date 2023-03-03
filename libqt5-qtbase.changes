@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  2 11:52:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop the mechanism for supporting systems without SSE2. glibc removed
+  support for looking up libraries in sse2/ subdirectories and
+  qtdeclarative without SSE2 crashes Plasma (boo#1208188)
+
+-------------------------------------------------------------------
 Mon Jan  9 09:14:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde160, rebased upstream:

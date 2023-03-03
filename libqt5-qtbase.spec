@@ -850,11 +850,6 @@ sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 	-translationdir %{libqt5_translationdir} \
 	-verbose \
 	-no-reduce-relocations \
-%ifarch %ix86
-%if 0%{?sle_version} < 150000
-	-no-sse2 -no-pch \
-%endif
-%endif
 	-accessibility \
 	-no-strip \
 	-opensource \
@@ -908,20 +903,6 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
-
-%ifarch %ix86
-%if 0%{?sle_version} < 150000
-install -d %{buildroot}%{libqt5_libdir}/sse2/
-
-pushd src/corelib; make clean ; ../../bin/qmake -config sse2; make %{?_smp_mflags}
-cp -av ../../lib/libQt5Core.so.* %{buildroot}%{libqt5_libdir}/sse2/
-popd
-
-pushd src/gui; ../../bin/qmake -config sse2; make %{?_smp_mflags}
-cp -av ../../lib/libQt5Gui.so.* %{buildroot}%{libqt5_libdir}/sse2/
-popd
-%endif
-%endif
 
 install -D -m644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/macros.d/macros.qt5
 # argggh, qmake is such a piece of <censored>
@@ -1039,12 +1020,6 @@ install -Dm644 %{SOURCE4} %{buildroot}%{libqt5_datadir}/qtlogging.ini
 %license LICENSE.*
 %doc *.txt
 %{libqt5_libdir}/libQt5Core.so.*
-%ifarch %ix86
-%if 0%{?sle_version} < 150000
-%dir %{libqt5_libdir}/sse2
-%{libqt5_libdir}/sse2/libQt5Core.so.*
-%endif
-%endif
 %dir %{libqt5_datadir}
 %{libqt5_datadir}/qtlogging.ini
 
@@ -1193,11 +1168,6 @@ install -Dm644 %{SOURCE4} %{buildroot}%{libqt5_datadir}/qtlogging.ini
 %license LICENSE.*
 %doc *.txt
 %{libqt5_libdir}/libQt5Gui.so.*
-%ifarch %ix86
-%if 0%{?sle_version:%sle_version} < 150000
-%{libqt5_libdir}/sse2/libQt5Gui.so.*
-%endif
-%endif
 %{libqt5_libdir}/libQt5EglFSDeviceIntegration.so.*
 %{libqt5_libdir}/libQt5EglFsKmsSupport.so.*
 %{libqt5_libdir}/libQt5XcbQpa.so.*
