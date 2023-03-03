@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 02 08:35:10 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230302.ff4e51e:
+  * add -Wno-error=dangling-reference for GCC 13+
+  * LLVM 17: port DesignatedInitExpr::Designator
+  * Fix one more llvm::Optional leftover:
+  * port llvm::Optional to std::optional
+  * LLVM nightly: use llvm-17
+  * bump CMake minimal version
+
+-------------------------------------------------------------------
 Fri Dec 23 10:37:35 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.7.0+git.20221223.d9e4a50:

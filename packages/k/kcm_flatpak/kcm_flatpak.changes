@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:47:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Apply important fixes from the 5.27 branch:
+  * 0001-Expose-FlatpakReferencesModel-to-QML.patch
+  * 0002-Avoid-duplicating-connections-between-ref-and-its-re.patch
+  * 0003-Port-from-NULL-to-nullptr.patch
+  * 0004-Fix-GLib-memory-management-issue.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * Adjust popup modals for the footer padding in KCM
+  * UI: Adapt "Apply / Discard" dialog to narrow screens: turn row layout into column
+  * Plasma/5.27: Revert partially last commit due to string freeze
+  * UI: Add changed app's name & icon to the "Apply / Discard" dialog
+  * UI: Reparent app switching dialog, so that it is centered to the whole view
+  * Use standard QQC2 namespace for Dialog constants
+  * UI: Dynamically create "Apply / Discard" dialog when switching apps
+  * Move app changing logic out of delegate, fetch ref directly from model
+  * UI: Don't try to reload app when clicking on the current one
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

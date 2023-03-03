@@ -165,6 +165,7 @@
 %{_udevrulesdir}/60-drm.rules
 %{_udevrulesdir}/60-evdev.rules
 %{_udevrulesdir}/60-fido-id.rules
+%{_udevrulesdir}/60-infiniband.rules
 %{_udevrulesdir}/60-input-id.rules
 %{_udevrulesdir}/60-persistent-alsa.rules
 %{_udevrulesdir}/60-persistent-input.rules

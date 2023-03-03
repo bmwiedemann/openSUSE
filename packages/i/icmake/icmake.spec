@@ -1,7 +1,7 @@
 #
 # spec file for package icmake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/icmake
 Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
 Patch1:         prevent-double-slash.patch
+Patch2:         gcc-13-fix.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -38,8 +39,7 @@ offers various special operators as well as a set of support functions
 that have proven to be useful in program maintenance.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++20"

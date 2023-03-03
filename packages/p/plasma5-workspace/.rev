@@ -2047,4 +2047,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Update to 5.27.1</comment>
     <requestid>1067404</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>1b14f456b65a0a3ba9ff41bc24d21e5b</srcmd5>
+    <version>5.27.2</version>
+    <time>1677794560</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.2 (forwarded request 1068244 from Vogtinator)</comment>
+    <requestid>1068294</requestid>
+  </revision>
 </revisionlist>

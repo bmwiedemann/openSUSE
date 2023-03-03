@@ -1,0 +1,42 @@
+From 7315348966666340557f61bb0f25b3c9dc3a9f29 Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Tue, 7 Feb 2023 03:01:38 +0300
+Subject: [PATCH 1/4] Expose FlatpakReferencesModel to QML
+
+We'll be needing its enum values soon, to request model data by role.
+
+(cherry picked from commit fc64ff4b8cc2f285ca99dc9d311d299b66780a95)
+
+This was actually required for 03f195ea353f0ca522e49aacc76eb74612d2d653.
+---
+ flatpakreference.h | 1 +
+ kcm.cpp            | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/flatpakreference.h b/flatpakreference.h
+index cc5d5e7..3a78878 100644
+--- a/flatpakreference.h
++++ b/flatpakreference.h
+@@ -66,6 +66,7 @@ public:
+     explicit FlatpakReferencesModel(QObject *parent = nullptr);
+ 
+     enum Roles { Name = Qt::UserRole + 1, Version, Icon, Ref };
++    Q_ENUM(Roles)
+ 
+     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+diff --git a/kcm.cpp b/kcm.cpp
+index a98c9c5..0e2b16d 100644
+--- a/kcm.cpp
++++ b/kcm.cpp
+@@ -17,6 +17,7 @@ KCMFlatpak::KCMFlatpak(QObject *parent, const KPluginMetaData &data, const QVari
+ {
+     qmlRegisterUncreatableType<KCMFlatpak>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "KCMFlatpak", QString());
+     qmlRegisterType<FlatpakPermissionModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakPermissionModel");
++    qmlRegisterUncreatableType<FlatpakReferencesModel>("org.kde.plasma.kcm.flatpakpermissions", 1, 0, "FlatpakReferencesModel", QStringLiteral("For enum access only"));
+ 
+     connect(m_refsModel, &FlatpakReferencesModel::needsLoad, this, &KCMFlatpak::load);
+     connect(m_refsModel, &FlatpakReferencesModel::needsSaveChanged, this, &KCMFlatpak::refreshSaveNeeded);
+-- 
+2.39.2
+

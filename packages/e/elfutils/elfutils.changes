@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 23 09:29:20 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Disable a false-positive -Werror=use-after-free warning.
+
+-------------------------------------------------------------------
 Thu Feb 16 13:00:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with libcurl version 7.88.0 for various deprecated

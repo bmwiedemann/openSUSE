@@ -155,7 +155,7 @@ The package is dummy.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CFLAGS="%optflags -Werror=date-time"
+export CFLAGS="%optflags -Werror=date-time -Wno-use-after-free"
 CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient

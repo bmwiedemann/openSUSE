@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  1 16:22:14 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Require gcc9 on SLE. Otherwise defaults to gcc7 and fails to
+  build on ppc64le (boo#1208794).
+
+-------------------------------------------------------------------
 Tue Feb 14 21:26:23 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.0

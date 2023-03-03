@@ -510,4 +510,12 @@
   * tpl/diagrams: Move Goat to its own file (forwarded request 1059143 from jfkw)</comment>
     <requestid>1059144</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>16fe691c98c3f62a96dd6de86d5ffd92</srcmd5>
+    <version>0.111.0</version>
+    <time>1677794622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.111.0: (forwarded request 1068558 from jfkw)</comment>
+    <requestid>1068559</requestid>
+  </revision>
 </revisionlist>

@@ -145,4 +145,12 @@
   * libunicharset_training.so</comment>
     <requestid>1057918</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>40bc649c9f5046cdcc4f40eb07000fed</srcmd5>
+    <version>5.3.0</version>
+    <time>1677794673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068717</requestid>
+  </revision>
 </revisionlist>

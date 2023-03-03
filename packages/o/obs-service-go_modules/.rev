@@ -59,4 +59,12 @@
   * Attempt to obtain name of top directory in archive from archive content (forwarded request 1067955 from jfkw)</comment>
     <requestid>1067956</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>818e7cd7f5e9eb2e245ee44ba6db4e52</srcmd5>
+    <version>0.6.1</version>
+    <time>1677794654</time>
+    <user>dimstar_suse</user>
+    <comment>(CVE-2022-45155, bsc#1201138, bsc#1201140). (forwarded request 1068711 from eeich)</comment>
+    <requestid>1068974</requestid>
+  </revision>
 </revisionlist>

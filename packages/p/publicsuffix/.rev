@@ -1226,4 +1226,12 @@ Now with build cycle removed.</comment>
     <comment>Now no longer breaks libpsl with SR#1045599</comment>
     <requestid>1045608</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>9a59100bc735a8dbcb55f6028b32c9d1</srcmd5>
+    <version>20230226</version>
+    <time>1677794578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068236</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ BuildRequires:  binutils-devel
 BuildRequires:  docutils
 BuildRequires:  kernel-source
 BuildRequires:  libelf-devel
+BuildRequires:  libzstd-devel
 
 %description
 bpftool allows for inspection and simple modification of BPF objects (programs

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  1 19:42:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.10.0:
+  * This release adds the option --tree to output directory trees
+    of files for the options -l (--files-with-matches),
+    -L (--files-withou-match), and -c (--count)
+  * The option --pretty was updated to to enable --tree when output
+    is sent to  a terminal. This can be disabled with --no-tree.
+
+-------------------------------------------------------------------
 Wed Feb  1 07:32:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9.7:

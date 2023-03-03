@@ -6,10 +6,11 @@ Upstream: No
 Ignore .osc
 
 ---
-diff -Pdru ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm ack-v3.3.1/lib/App/Ack/ConfigDefault.pm
---- ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm	2020-01-13 20:18:17.000000000 +0100
-+++ ack-v3.3.1/lib/App/Ack/ConfigDefault.pm	2020-01-22 14:32:56.451135251 +0100
-@@ -70,6 +70,9 @@
+Index: ack-v3.7.0/lib/App/Ack/ConfigDefault.pm
+===================================================================
+--- ack-v3.7.0.orig/lib/App/Ack/ConfigDefault.pm
++++ ack-v3.7.0/lib/App/Ack/ConfigDefault.pm
+@@ -70,6 +70,9 @@ sub _options_block {
  # https://www.mercurial-scm.org/
  --ignore-directory=is:.hg
  
@@ -19,15 +20,16 @@ diff -Pdru ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm ack-v3.3.1/lib/App/Ack/C
  # Quilt
  # https://directory.fsf.org/wiki/Quilt
  --ignore-directory=is:.pc
-diff -Pdru ack-v3.3.1.orig/t/internals/ack-dump.t ack-v3.3.1/t/internals/ack-dump.t
---- ack-v3.3.1.orig/t/internals/ack-dump.t	2020-01-13 20:18:17.000000000 +0100
-+++ ack-v3.3.1/t/internals/ack-dump.t	2020-01-22 14:39:05.934290071 +0100
-@@ -29,7 +29,7 @@
+Index: ack-v3.7.0/t/ack-dump.t
+===================================================================
+--- ack-v3.7.0.orig/t/ack-dump.t
++++ ack-v3.7.0/t/ack-dump.t
+@@ -29,7 +29,7 @@ DUMP: {
      is( scalar @perl, 2, 'Two specs for Perl' );
  
      my @ignore_dir = grep { /ignore-dir/ } @results;
--    is( scalar @ignore_dir, 27, 'Twenty-seven specs for ignoring directories' );
-+    is( scalar @ignore_dir, 28, 'Twenty-eight specs for ignoring directories' );
+-    is( scalar @ignore_dir, 28, 'Twenty-eight specs for ignoring directories' );
++    is( scalar @ignore_dir, 29, 'Twenty-nine specs for ignoring directories' );
  }
  
  exit 0;

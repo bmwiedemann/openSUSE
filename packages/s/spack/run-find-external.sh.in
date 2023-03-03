@@ -30,7 +30,7 @@ mypath=/usr/lib/hpc/gnu?/mpi/mvapich2/2.*/bin:${mypath}
 getent passwd nobody &> /dev/null
 if [ "x$?" == "x0" ] ; then
 # drop all root rights, when calling external find
-  sudo -u nobody PATH=${mypath}:${PATH} spack external find --scope user #--exclude 'installdbgsymbols' 
+  sudo -u nobody PATH=${mypath}:${PATH} spack external find --all --scope user #--exclude 'installdbgsymbols' 
   if [ -e /var/lib/nobody/.spack/packages.yaml ] ; then
     mv -v /var/lib/nobody/.spack/packages.yaml /etc/spack/packages.yaml
     chown root:root /etc/spack/packages.yaml

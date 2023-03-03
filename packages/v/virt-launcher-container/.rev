@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>1044066</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>4606e50451da725c83106e0a2356baef</srcmd5>
+    <version>unknown</version>
+    <time>1677794641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the container image for KubeVirt v0.59.0</comment>
+    <requestid>1068967</requestid>
+  </revision>
 </revisionlist>

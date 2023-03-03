@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 28 20:14:52 UTC 2023 - Niels Abspoel <aboe76@gmail.com>
+
+- Update to 1.8.1
+  * linux: idmapped mounts expect the same configuration as 
+    the user namespace mappings. Before they were expecting the inverted
+    mapping. It is a breaking change, but the behavior was aligned 
+    to what runc will do as well.
+  * krun: always allow /dev/kvm in the cgroup configuration.
+  * handlers: disable exec for handlers that do not support it.
+  * selinux: allow setting fscontext using a custom annotation.
+  * cgroup: reset systemd unit if start fails.
+  * cgroup: rmdir the entire systemd scope. It fixes a leak on cgroupv1.
+  * cgroup: always delete the cgroup on errors. 
+    On some errors it could have been leaked before.
+
+- changes from 1.8
+  * linux: precreate devices on the host.
+  * cgroup: support cpuset mounted with noprefix.
+  * linux: mount the source cgroup if cgroupns=host.
+  * libcrun: don't clone self from read-only mount.
+  * build: fix build without dlfcn.h.
+  * linux: set PR_SET_DUMPABLE.
+  * utils: fix applying AppArmor profile.
+  * linux: write setgroups=deny when mapping a single uid/gid.
+  * cgroup: fix enter cgroupv1 mount on RHEL 7.
+
+-------------------------------------------------------------------
 Wed Dec  7 09:24:19 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 1.7.2:

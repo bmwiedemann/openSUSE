@@ -614,4 +614,20 @@
     <comment></comment>
     <requestid>1055858</requestid>
   </revision>
+  <revision rev="80" vrev="10">
+    <srcmd5>bdb28083752d707847be5b04c39ba835</srcmd5>
+    <version>1.34</version>
+    <time>1677794508</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2022-48303, tar has a one-byte out-of-bounds read that
+  results in use of uninitialized memory for a conditional jump
+  (CVE-2022-48303, bsc#1207753)
+  * fix-CVE-2022-48303.patch
+- Fix hang when unpacking test tarball, bsc#1202436
+  * bsc1202436.patch
+  * bsc1202436-1.patch
+  * bsc1202436-2.patch
+  * go-testsuite-test-hang.patch</comment>
+    <requestid>1068196</requestid>
+  </revision>
 </revisionlist>

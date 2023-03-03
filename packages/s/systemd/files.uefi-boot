@@ -31,7 +31,7 @@
 %{_prefix}/lib/kernel/install.conf
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
-# These are part of the very few exceptions where glob pattern is allowd.
+# These are the few exceptions where glob pattern is allowed.
 %{_systemd_util_dir}/boot/efi/linux*.efi.stub
 %{_systemd_util_dir}/boot/efi/linux*.elf.stub
 %{_systemd_util_dir}/boot/efi/systemd-boot*.efi

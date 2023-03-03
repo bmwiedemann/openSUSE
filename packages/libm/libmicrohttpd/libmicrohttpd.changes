@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 28 21:20:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.76
+  * CVE-2023-27371: Fix potential DoS vector in MHD_PostProcessor
+    (boo#1208745)
+
+-------------------------------------------------------------------
 Mon Dec 27 09:52:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmicrohttpd 0.9.75:

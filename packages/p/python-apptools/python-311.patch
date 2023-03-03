@@ -1,0 +1,27 @@
+Index: apptools-5.2.0/apptools/persistence/state_pickler.py
+===================================================================
+--- apptools-5.2.0.orig/apptools/persistence/state_pickler.py
++++ apptools-5.2.0/apptools/persistence/state_pickler.py
+@@ -393,11 +393,14 @@ class StatePickler:
+             args = value.__getinitargs__()
+ 
+         # Get the object state.
++        state = None
+         if hasattr(value, "__get_pure_state__"):
+             state = value.__get_pure_state__()
+         elif hasattr(value, "__getstate__"):
++            # Note that __getstate__() may return None in Python >= 3.11
+             state = value.__getstate__()
+-        else:
++
++        if state is None:
+             state = value.__dict__
+ 
+         state.pop("__traits_version__", None)
+Index: apptools-5.2.0/docs/releases/upcoming/328.bugfix.rst
+===================================================================
+--- /dev/null
++++ apptools-5.2.0/docs/releases/upcoming/328.bugfix.rst
+@@ -0,0 +1 @@
++Fix StatePickler for Python 3.11. (#328)
+\ No newline at end of file

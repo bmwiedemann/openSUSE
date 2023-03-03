@@ -70,6 +70,9 @@ developing applications that use %{name}.
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
+# fix VERSION in Makefile
+sed -i -e '/^VERSION/s/:= .*$/:= %{version}/' Makefile
+
 %build
 %{cargo_build}
 export CFLAGS='%{optflags}'

@@ -1494,4 +1494,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment>fix multibuild</comment>
     <requestid>1064302</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>01f0a581f6b2925baa8f85d88b671e8f</srcmd5>
+    <version>1.14.6</version>
+    <time>1677794520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067484</requestid>
+  </revision>
 </revisionlist>

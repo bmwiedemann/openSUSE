@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:48:12 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move %tmpfiles_create to %post otherwise the file won't exist
+  since it is now located in the correct package
+
+-------------------------------------------------------------------
+Sun Feb 19 13:57:54 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Packaging changes:
+  * Move missed scriptlets and links for dbus.socket to common
+  * Move sysusers and tmpfiles scriptlets, and ghost files to
+    common
+  * Move dbus-launch man page to correct package
+
+-------------------------------------------------------------------
 Fri Feb 10 15:24:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix multibuild: do not mention main flavor in multibuild, as it

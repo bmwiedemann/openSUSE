@@ -29,6 +29,8 @@ URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstrea
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gst-editing-services-fix-pc-name.patch -- Rename pc file that was renamed
 Patch0:         gst-editing-services-fix-pc-name.patch
+# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
+Patch1:         reduce-required-meson.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

@@ -1,0 +1,34 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Mar 2 12:14:47 2023 +0100
+Subject: Hack to work around a generic type name breakage introduced by latest Slurm.
+Patch-mainline: Not yet
+Git-commit: 4c04b469a7e201ee29a598c4238c287070cac2e6
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/modules/slurm.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+diff --git a/src/modules/slurm.c b/src/modules/slurm.c
+index 5594c4f..48e6dde 100644
+--- a/src/modules/slurm.c
++++ b/src/modules/slurm.c
+@@ -44,15 +44,11 @@
+ /*
+  * SLURM headers need to be included after pdsh header files to
+  *  avoid possibly conflicts with the definition of "bool"
+- *
+- * Also, Slurm inexplicably exports the "list.h" interface in slurm.h,
+- *  and we must define __list_datatypes_defined here to avoid conflict
+- *  with our internal List datatype.
+  */
+-#define __list_datatypes_defined 1
++#define List SlurmList
+ #include <slurm/slurm.h>
+ #include <slurm/slurm_errno.h>
+-
++#undef List
+ #if STATIC_MODULES
+ #  define pdsh_module_info slurm_module_info
+ #  define pdsh_module_priority slurm_module_priority

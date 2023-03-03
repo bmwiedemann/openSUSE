@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 08:10:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Don't package the KDDockWidgets development files. It's only
+  a third party library that cannot be used for anything.
+- Update build constraints
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Jan 16 07:44:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.1:

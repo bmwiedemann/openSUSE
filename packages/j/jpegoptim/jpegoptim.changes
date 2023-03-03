@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 27 11:59:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Add support for reading list of files to process from a file
+    (--files-from) or from standard input (--files-stdin)
+  * Improved JPEG marker reporting
+  * Fix -d, --dest option (thanks to Almas Kunapyanov),
+  * Other minor fixes
+
+-------------------------------------------------------------------
 Sat Jan 21 09:30:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.5.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package folly
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%define lname libfolly-v2022_08_29_00
+%define lname libfolly-v2023_02_27_00
 Name:           folly
-Version:        2022.08.29.00
+Version:        2023.02.27.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT
 URL:            https://github.com/facebook/folly
 Source:         https://github.com/facebook/folly/releases/download/v%version/folly-v%version.tar.gz
-Patch1:         0001-Fix-iouring-under-32-bit-linux.patch
 BuildRequires:  binutils-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  1 14:52:46 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixed a random build failure (introduced by the previous fix for
+  bsc#1207221) (bsc#1208796).
+- 4.5.17
+
+-------------------------------------------------------------------
 Thu Feb  9 21:19:33 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix calling method read on nil crash in bootloader caused by

@@ -1,8 +1,8 @@
 --- cloudinit/net/sysconfig.py.orig
 +++ cloudinit/net/sysconfig.py
-@@ -918,6 +918,11 @@ class Renderer(renderer.Renderer):
-             resolv_content = self._render_dns(network_state,
-                                               existing_dns_path=dns_path)
+@@ -998,6 +998,11 @@ class Renderer(renderer.Renderer):
+                 network_state, existing_dns_path=dns_path
+             )
              if resolv_content:
 +                # netconfig checks if /etc/resolv.conf is a symlink and if
 +                # that is true will write it's version of the file clobbering
@@ -11,4 +11,4 @@
 +                    os.unlink(dns_path)
                  util.write_file(dns_path, resolv_content, file_mode)
          if self.networkmanager_conf_path:
-             nm_conf_path = subp.target_path(target,
+             nm_conf_path = subp.target_path(

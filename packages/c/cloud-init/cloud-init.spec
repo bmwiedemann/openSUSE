@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-init
 #
-# Copyright (c) 2021 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %global configver 0.7
 
 Name:           cloud-init
-Version:        21.4
+Version:        23.1
 Release:        0
 License:        GPL-3.0
 Summary:        Cloud node initialization tool
@@ -27,17 +27,16 @@ Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
 Patch1:        datasourceLocalDisk.patch
-# FIXME (lp#1812117)
-Patch2:        cloud-init-write-routes.patch
 # FIXME (lp#1849296)
-Patch3:        cloud-init-break-resolv-symlink.patch
+Patch2:        cloud-init-break-resolv-symlink.patch
 # FIXME no proposed solution
-Patch4:        cloud-init-sysconf-path.patch
+Patch3:        cloud-init-sysconf-path.patch
 # FIXME (lp#1860164)
-Patch5:        cloud-init-no-tempnet-oci.patch
-# FIXME https://github.com/canonical/cloud-init/pull/1278
-Patch6:        cloud-init-sysctl-not-in-bin.patch
-Patch7:        cloud-init-vmware-test.patch
+Patch4:        cloud-init-no-tempnet-oci.patch
+# FIXME https://github.com/canonical/cloud-init/pull/2036
+Patch5:        cloud-init-fix-ca-test.patch
+# FIXME (lp#1812117)
+Patch6:        cloud-init-write-routes.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -53,10 +52,16 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-configobj >= 5.0.2
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
+BuildRequires:  python3-jsonschema
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-oauthlib
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-requests
+BuildRequires:  python3-responses
+BuildRequires:  python3-serial
+BuildRequires:  system-user-nobody
 %if 0%{?is_opensuse}
 BuildRequires:  openSUSE-release
 %else
@@ -79,13 +84,16 @@ Requires:       python3-oauthlib
 Requires:       python3-pyserial
 Requires:       python3-PyYAML
 Requires:       python3-requests
+Requires:       python3-responses
+Requires:       python3-serial
 Requires:       python3-setuptools
-Requires:       python3-six
 Requires:       python3-xml
 Requires:       sudo
 Requires:       util-linux
 Requires:       wget
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
 Requires:       wicked-service
+%endif
 Requires:       cloud-init-config = %configver
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define         docdir %{_defaultdocdir}/%{name}
@@ -134,7 +142,6 @@ Documentation and examples for cloud-init tools
 %patch4
 %patch5
 %patch6
-%patch7 -p1
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
@@ -146,8 +153,6 @@ sed -i "s,@@PACKAGED_VERSION@@,%{version}-%{release}," $version_pys
 python3 setup.py build
 
 %check
-## Ignore test failure currently not doing anything with opennebula
-rm -v tests/unittests/test_datasource/test_opennebula.py
 make unittest
 
 %install
@@ -201,6 +206,8 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %{_bindir}/cloud-init
 %{_bindir}/cloud-init-per
 %dir %{_sysconfdir}/cloud
+%dir %{_sysconfdir}/cloud/clean.d
+%{_sysconfdir}/cloud/clean.d/README
 %config(noreplace) %{_sysconfdir}/cloud/cloud.cfg.d
 %config(noreplace) %{_sysconfdir}/cloud/templates
 %{_sysconfdir}/dhcp/dhclient-exit-hooks.d/hook-dhclient
@@ -213,7 +220,7 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %endif
 %{_datadir}/bash-completion/completions/cloud-init
 %{python3_sitelib}/cloudinit
-%{python3_sitelib}/cloud_init-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/cloud_init-%{version}*.egg-info
 %{_prefix}/lib/cloud-init
 %{systemd_prefix}/systemd/system-generators/cloud-init-generator
 %{systemd_prefix}/systemd/system/cloud-config.service
@@ -236,6 +243,7 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %dir /etc/dhcp/dhclient-exit-hooks.d
 %dir /etc/systemd/system/sshd-keygen@.service.d
 
+
 %files config-suse
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/cloud/cloud.cfg
@@ -245,9 +253,5 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %{docdir}/examples/*
 %{docdir}/*.txt
 %dir %{docdir}/examples
-
-#%files test
-#%defattr(-,root,root)
-#%{python_sitelib}/tests
 
 %changelog

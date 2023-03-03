@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 1 15:50:17 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#632
+- messagebus user is now created in dbus-1-common (bsc#1208803)
+- 17.77
+
+--------------------------------------------------------------------
 Tue Feb 14 16:18:30 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#628

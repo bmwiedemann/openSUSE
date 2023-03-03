@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 08:56:55 MST 2023 - carnold@suse.com
+
+- bsc#1208736 - GCC 13: xen package fails
+  gcc13-fixes.patch
+
+-------------------------------------------------------------------
 Wed Feb 15 11:07:08 MST 2023 - carnold@suse.com
 
 - bsc#1208286 - VUL-0: CVE-2022-27672: xen: Cross-Thread Return

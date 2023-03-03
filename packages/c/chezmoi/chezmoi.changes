@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:40:59 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.31.1:
+  * feat: Add Dashlane password manager support
+  * feat: Add Dashlane secure notes support
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Fri Feb 17 14:26:22 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.31.0:

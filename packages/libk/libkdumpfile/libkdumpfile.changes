@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  1 14:15:19 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable zstd compression algorithm.
+
+-------------------------------------------------------------------
 Sat Feb 25 13:58:20 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Build from git using an OBS service file.

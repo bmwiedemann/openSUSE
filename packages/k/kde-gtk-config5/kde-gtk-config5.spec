@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kde-gtk-config5
-Version:        5.27.1
+Version:        5.27.2
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  2 18:50:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch, to support python3.11 gh#enthought/apptools#328
+- Remove python310.patch, not needed anymore
+- Update to version 5.2.0
+  * Replace some uses of on_trait_change and depends_on with observe.
+  * (#285, #289)
+  * Use importlib.resources in preference to importlib_resources
+  * on new enough Python versions. (#284)
+  * Replace eval with ast.literal_eval in apptools.preferences.
+  * (#299)
+  * Use context managers to handle locks in apptools.preferences. (#306)
+  * Fix test failures due to collections.abc changes in Python 3.10. (#313)
+  * Remove a redundant elif branch in preference_binding. (#298)
+
+-------------------------------------------------------------------
 Mon May  2 20:02:46 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.1.0

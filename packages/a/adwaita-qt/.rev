@@ -153,4 +153,20 @@
     <comment></comment>
     <requestid>1006648</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cd558b369d504bda180f6ee2f516134e</srcmd5>
+    <version>1.4.2</version>
+    <time>1677794557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068632</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>18aa0dec47981696ca32aa65aa567c09</srcmd5>
+    <version>1.4.2</version>
+    <time>1677794674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068723</requestid>
+  </revision>
 </revisionlist>

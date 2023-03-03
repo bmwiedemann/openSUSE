@@ -203,4 +203,12 @@ Comment: something is rotten with the license. I don't believe it's
 - Build packages as multibuild flavors: qt5, qt6</comment>
     <requestid>987164</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2f60b052c2d8c0a05f2cd214b604047b</srcmd5>
+    <version>1.1.0</version>
+    <time>1677794582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068443</requestid>
+  </revision>
 </revisionlist>

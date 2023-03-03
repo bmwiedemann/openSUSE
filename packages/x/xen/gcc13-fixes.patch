@@ -1,0 +1,53 @@
+References: bsc#1208736
+
+common/bunzip2.c: In function 'get_next_block':
+common/bunzip2.c:261:41: error: 'length' may be used uninitialized [-Werror=maybe-uninitialized]
+  261 |                 minLen = maxLen = length[0];
+      |                                   ~~~~~~^~~
+common/bunzip2.c:224:31: note: 'length' declared here
+  224 |                 unsigned char length[MAX_SYMBOLS], temp[MAX_HUFCODE_BITS+1];
+      |                               ^~~~~~
+
+
+In function 'atomic_dec',
+    inlined from 'vmx_vmexit_handler' at arch/x86/hvm/vmx/vmx.c:4069:13:
+./arch/x86/include/asm/atomic.h:182:5: error: array subscript 0 is outside array bounds of 'int[0]' [-Werror=array-bounds=]
+  182 |     asm volatile (
+      |     ^~~
+In function 'vmx_vmexit_handler':
+cc1: note: source object is likely at address zero
+In function 'atomic_dec',
+    inlined from 'p2m_switch_vcpu_altp2m_by_id' at arch/x86/mm/p2m.c:1792:13:
+./arch/x86/include/asm/atomic.h:182:5: error: array subscript 0 is outside array bounds of 'int[0]' [-Werror=array-bounds=]
+  182 |     asm volatile (
+      |     ^~~
+In function 'p2m_switch_vcpu_altp2m_by_id':
+cc1: note: source object is likely at address zero
+
+
+--- xen-4.17.0-testing/xen/common/bunzip2.c.orig	2023-02-28 08:51:03.301930999 -0700
++++ xen-4.17.0-testing/xen/common/bunzip2.c	2023-02-28 08:53:52.865925508 -0700
+@@ -142,6 +142,10 @@ static unsigned int __init get_bits(stru
+ 	return bits;
+ }
+ 
++#if __GNUC__ >= 13
++#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
++#endif
++
+ /* Unpacks the next block and sets up for the inverse burrows-wheeler step. */
+ 
+ static int __init get_next_block(struct bunzip_data *bd)
+--- xen-4.17.0-testing/xen/arch/x86/include/asm/atomic.h.orig	2023-02-28 09:22:51.037869226 -0700
++++ xen-4.17.0-testing/xen/arch/x86/include/asm/atomic.h	2023-02-28 09:23:26.261868085 -0700
+@@ -177,6 +177,10 @@ static inline int atomic_inc_and_test(at
+     return c;
+ }
+ 
++#if __GNUC__ >= 12
++#pragma GCC diagnostic ignored "-Warray-bounds"
++#endif
++
+ static inline void atomic_dec(atomic_t *v)
+ {
+     asm volatile (

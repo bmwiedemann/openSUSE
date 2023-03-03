@@ -60,6 +60,7 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+find %{buildroot}/usr/lib*/python* -name compilation.log -delete
 
 %check
 # Test are too slow in x86

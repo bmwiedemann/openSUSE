@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define major 1
 Name:           PackageKit%{?pkg_suffix}
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
@@ -42,8 +42,6 @@ URL:            https://github.com/hughsie/PackageKit-Qt
 Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/PackageKit-Qt-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM boo#1103678
 Patch0:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
-# PATCH-FIX-UPSTREAM -- Qt6 support
-Patch1:         0001-Add-build-system-support-for-Qt6.patch
 BuildRequires:  PackageKit-devel >= %{version}
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -116,8 +114,7 @@ suck less.
 %qt6_install
 %endif
 
-%post -n lib%{pkqt}-%{major} -p /sbin/ldconfig
-%postun -n lib%{pkqt}-%{major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{pkqt}-%{major}
 
 %files -n lib%{pkqt}-%{major}
 %license COPYING

@@ -97,4 +97,12 @@
     <comment>- Fix container build due to symlink issues with SP4/SP5 base images</comment>
     <requestid>1005518</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>c093c363ae7d1cd49d0590ae10ceda6a</srcmd5>
+    <version>unknown</version>
+    <time>1677794641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068628</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 21 15:00:27 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.2
+  * Feature: link down event statistics (no option)
+  * Feature: JSON output for coalesce (-c)
+  * Feature: new link modes (no option)
+  * Feature: JSON output for ring (-g)
+  * Feature: netlink handler for RSS get (-x)
+  * Fix: fix boolean value output in JSON output
+- enforce "-std=c11" on SLE <= 12 where the default is older
+
+-------------------------------------------------------------------
 Mon Dec 19 22:33:34 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.1

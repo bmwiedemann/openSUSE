@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           layer-shell-qt
-Version:        5.27.1
+Version:        5.27.2
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later

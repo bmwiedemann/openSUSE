@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * x11: Fix client area lookup with pending move resize
+  * wayland: Fix xdg-toplevel and xdg-popup window initialization (kde#466530)
+  * screencasting: Choose the correct GL type to download into an image (kde#466299)
+  * screencasting: Close streams when the output is disabled
+  * wayland: Setup compositing for internal window when it's mapped (kde#466313)
+  * Remove no longer relevant case in Workspace::replaceInStack()
+  * effects/zoom: Fix crash on X11 (kde#466376)
+  * Fix edid serial parsing (kde#466136)
+  * effects/zoom: Fix rendering with mixed scale factors
+  * effects/magnifier: Reduce the number of heap allocations
+  * effects/magnifier: Fix rendering on multi screen setups
+  * backends/drm: Make sure attributes are always initialized
+  * backends/wayland: fall back to qpainter when there's no render node (kde#466302)
+  * backends/x11: explicitly free the outputs (kde#466183)
+  * backends/libinput: Fix crash upon receiving motion absolute events (kde#449317,kde#465456)
+  * pointer input: always confine pointer to screens (kde#461911)
+  * effects: Fix selecting hidden windows using keyboard (kde#466120)
+  * feat: allow VT switching even with global shortcuts disabled
+  * scene: Ensure there's current opengl context when DecorationItem is repainted for last time (kde#466186)
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

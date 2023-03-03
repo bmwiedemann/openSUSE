@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.xz.sig
 # http://wwwkeys.pgp.net:11371/pks/lookup?op=get&search=0x3602B07F55D0C732
 Source2:        %{name}.keyring
+Source3:        pax-global-records.tar
 Patch0:         %{name}-wildcards.patch
 Patch1:         %{name}-backup-spec-fix-paths.patch
 Patch2:         paxutils-rtapelib_mtget.patch
@@ -47,6 +48,16 @@ Patch8:         tar-fix-race-condition.patch
 Patch9:         tar-avoid-overflow-in-symlinks-tests.patch
 Patch10:        bsc1200657.patch
 Patch11:        tar-fix-extract-unlink.patch
+# PATCH-FIX-SUSE danilo.spinella@suse.com bsc#1202436
+Patch12:        go-testsuite-test-hang.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1202436
+Patch13:        bsc1202436.patch
+Patch14:        bsc1202436-1.patch
+Patch15:        bsc1202436-2.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1207753
+# tar has a one-byte out-of-bounds read that results in use of
+# uninitialized memory for a conditional jump
+Patch16:        fix-CVE-2022-48303.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -109,6 +120,7 @@ it may as well access remote devices or files.
 %lang_package
 
 %prep
+# TODO: Use autosetup
 %setup -q
 %patch0 -p1
 %patch1 -p1
@@ -121,6 +133,12 @@ it may as well access remote devices or files.
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+cp %{S:3} tests
 
 %build
 %define my_cflags -W -Wall -Wpointer-arith -Wstrict-prototypes -Wformat-security -Wno-unused-parameter -fPIE

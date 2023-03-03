@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  1 08:00:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.5.0:
+  * Added support for Qt version 6 while keeping compatibility with
+    Qt version 4 and 5 intact.
+  * Changed required language version from C++98 to C++11.
+  * Added context menu item to add selected text to bookmark comment.
+  * Imported various new and updated translations from Launchpad. 
+- Remove qpdfview-qt5.15.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 12:11:46 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Add qpdfview-qt5.15.patch: fix build with Qt 5.15.

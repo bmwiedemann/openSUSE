@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  2 11:21:56 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
+  Schedmd did it again! Slurm 23.02 broke the pdsh-internal
+  List type by exposing it thru it's public API. The way to
+  protect from it no longer works as types are actually used
+  in the header.
+  This is a hot fix on the pdsh side, that is hopefully sufficiently
+  generic. (boo#1208846).
+
+-------------------------------------------------------------------
 Tue Jan  3 07:41:31 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Backport a number of features and fixes from the git master branch

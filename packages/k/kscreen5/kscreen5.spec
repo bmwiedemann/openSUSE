@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kscreen5
-Version:        5.27.1
+Version:        5.27.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -35,8 +35,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kscreen-%{vers
 Source1:        https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-kcm-use-onRejected-to-handle-reject-button-click.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes

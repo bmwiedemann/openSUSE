@@ -64,6 +64,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  libzstd-devel
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel

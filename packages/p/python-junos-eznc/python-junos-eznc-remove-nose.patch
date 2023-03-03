@@ -1,7 +1,7 @@
-Index: py-junos-eznc-2.5.3/tests/functional/test_core.py
+Index: py-junos-eznc-2.6.7/tests/functional/test_core.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/functional/test_core.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/functional/test_core.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/functional/test_core.py
++++ py-junos-eznc-2.6.7/tests/functional/test_core.py
 @@ -4,11 +4,11 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -16,10 +16,10 @@ Index: py-junos-eznc-2.5.3/tests/functional/test_core.py
  class TestCore(unittest.TestCase):
      @classmethod
      def setUpClass(self):
-Index: py-junos-eznc-2.5.3/tests/functional/test_device_ssh.py
+Index: py-junos-eznc-2.6.7/tests/functional/test_device_ssh.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/functional/test_device_ssh.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/functional/test_device_ssh.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/functional/test_device_ssh.py
++++ py-junos-eznc-2.6.7/tests/functional/test_device_ssh.py
 @@ -1,12 +1,12 @@
  __author__ = "rsherman, vnitinv"
  
@@ -35,10 +35,10 @@ Index: py-junos-eznc-2.5.3/tests/functional/test_device_ssh.py
  class TestDeviceSsh(unittest.TestCase):
      def tearDown(self):
          self.dev.close()
-Index: py-junos-eznc-2.5.3/tests/functional/test_outbound_ssh.py
+Index: py-junos-eznc-2.6.7/tests/functional/test_outbound_ssh.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/functional/test_outbound_ssh.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/functional/test_outbound_ssh.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/functional/test_outbound_ssh.py
++++ py-junos-eznc-2.6.7/tests/functional/test_outbound_ssh.py
 @@ -1,13 +1,13 @@
  __author__ = "mwiget"
  
@@ -55,10 +55,10 @@ Index: py-junos-eznc-2.5.3/tests/functional/test_outbound_ssh.py
  class TestDeviceSsh(unittest.TestCase):
      def tearDown(self):
          self.dev.close()
-Index: py-junos-eznc-2.5.3/tests/functional/test_table.py
+Index: py-junos-eznc-2.6.7/tests/functional/test_table.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/functional/test_table.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/functional/test_table.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/functional/test_table.py
++++ py-junos-eznc-2.6.7/tests/functional/test_table.py
 @@ -4,13 +4,13 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -75,10 +75,10 @@ Index: py-junos-eznc-2.5.3/tests/functional/test_table.py
  class TestTable(unittest.TestCase):
      @classmethod
      def setUpClass(self):
-Index: py-junos-eznc-2.5.3/tests/unit/__init__.py
+Index: py-junos-eznc-2.6.7/tests/unit/__init__.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/__init__.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/__init__.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/__init__.py
++++ py-junos-eznc-2.6.7/tests/unit/__init__.py
 @@ -1,14 +1,14 @@
  import unittest
  import sys
@@ -96,10 +96,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/__init__.py
  class TestJunosInit(unittest.TestCase):
      def test_warning(self):
          with patch.object(sys.modules["sys"], "version_info", (2, 6, 3)) as mock_sys:
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_cfgtable.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_cfgtable.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_cfgtable.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_cfgtable.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_cfgtable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_cfgtable.py
 @@ -5,7 +5,7 @@ import unittest
  import os
  import sys
@@ -118,10 +118,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_cfgtable.py
  @unittest.skipIf(sys.platform == "win32", "will work for windows in coming days")
  class TestFactoryCfgTable(unittest.TestCase):
      @patch("ncclient.manager.connect")
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_cmdtable.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_cmdtable.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_cmdtable.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_cmdtable.py	2020-09-18 10:58:14.163423506 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_cmdtable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_cmdtable.py
 @@ -3,7 +3,7 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -140,10 +140,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_cmdtable.py
  class TestFactoryCMDTable(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_factory_cls.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_factory_cls.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_factory_cls.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_factory_cls.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_factory_cls.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_factory_cls.py
 @@ -2,13 +2,13 @@ __author__ = "Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -160,10 +160,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_factory_cls.py
  class TestFactoryCls(unittest.TestCase):
      def test_factory_cls_cfgtable(self):
          t = FactoryCfgTable()
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_factory_loader.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_factory_loader.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_factory_loader.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_factory_loader.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_factory_loader.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_factory_loader.py
 @@ -2,12 +2,12 @@ __author__ = "Rick Sherman, Nitin Kumar"
  __credits__ = "Jeremy Schulman"
  
@@ -179,10 +179,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_factory_loader.py
  class TestFactoryLoader(unittest.TestCase):
      def setUp(self):
          self.fl = FactoryLoader()
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_optable.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_optable.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_optable.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_optable.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_optable.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_optable.py
 @@ -5,7 +5,7 @@ import unittest
  import os
  import yaml
@@ -201,10 +201,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_optable.py
  class TestFactoryOpTable(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_table.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_table.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_table.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_table.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_table.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_table.py
 @@ -2,7 +2,7 @@ __author__ = "Rick Sherman, Nitin Kumar"
  __credits__ = "Jeremy Schulman"
  
@@ -223,10 +223,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_table.py
  class TestFactoryTable(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_to_json.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_to_json.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_to_json.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_to_json.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_to_json.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_to_json.py
 @@ -4,7 +4,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -245,10 +245,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_to_json.py
  class TestToJson(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_view.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_view.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_view.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_view.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_view.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_view.py
 @@ -2,7 +2,7 @@ __author__ = "Rick Sherman, Nitin Kumar"
  __credits__ = "Jeremy Schulman"
  
@@ -267,10 +267,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_view.py
  class TestFactoryView(unittest.TestCase):
      def setUp(self):
          self.dev = Device(
-Index: py-junos-eznc-2.5.3/tests/unit/factory/test_view_fields.py
+Index: py-junos-eznc-2.6.7/tests/unit/factory/test_view_fields.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/factory/test_view_fields.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/factory/test_view_fields.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/factory/test_view_fields.py
++++ py-junos-eznc-2.6.7/tests/unit/factory/test_view_fields.py
 @@ -2,12 +2,12 @@ __author__ = "Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -286,10 +286,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/factory/test_view_fields.py
  class TestFactoryViewFields(unittest.TestCase):
      def setUp(self):
          self.vf = ViewFields()
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test__init__.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test__init__.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test__init__.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test__init__.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test__init__.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test__init__.py
 @@ -5,14 +5,14 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -307,10 +307,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test__init__.py
  class TestFactInitialization(unittest.TestCase):
      def test_duplicate_facts(self):
          module = importlib.import_module("tests.unit.facts.dupe_foo1")
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_current_re.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_current_re.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_current_re.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_current_re.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_current_re.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_current_re.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -329,10 +329,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_current_re.py
  class TestCurrentRe(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_domain.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_domain.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_domain.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_domain.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_domain.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_domain.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -351,10 +351,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_domain.py
  class TestDomain(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_ethernet_mac_table.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_ethernet_mac_table.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_ethernet_mac_table.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_ethernet_mac_table.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_ethernet_mac_table.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_ethernet_mac_table.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -373,10 +373,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_ethernet_mac_table.py
  class TestEthernetMacTable(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_file_list.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_file_list.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_file_list.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_file_list.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_file_list.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_file_list.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -395,10 +395,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_file_list.py
  class TestFileList(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_cluster_status.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_cluster_status.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_get_chassis_cluster_status.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_cluster_status.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_chassis_cluster_status.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_cluster_status.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -417,10 +417,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_cluster_status.py
  class TestGetChassisClusterStatus(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_inventory.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_inventory.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_get_chassis_inventory.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_inventory.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_chassis_inventory.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_chassis_inventory.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -439,10 +439,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_chassis_inventory.py
  class TestChassis(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_route_engine_information.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_route_engine_information.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_get_route_engine_information.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_get_route_engine_information.py	2020-09-18 10:55:50.666532679 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_route_engine_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_route_engine_information.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -461,10 +461,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_route_engine_information.py
  class TestGetRouteEngineInformation(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_software_information.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_software_information.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_get_software_information.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_get_software_information.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_software_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_software_information.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -483,10 +483,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_software_information.py
  class TestGetSoftwareInformation(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_virtual_chassis_information.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_get_virtual_chassis_information.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_get_virtual_chassis_information.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_get_virtual_chassis_information.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_get_virtual_chassis_information.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_get_virtual_chassis_information.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -505,10 +505,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_get_virtual_chassis_information
  class TestGetVirtualChassisInformation(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_ifd_style.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_ifd_style.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_ifd_style.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_ifd_style.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_ifd_style.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_ifd_style.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -527,10 +527,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_ifd_style.py
  class TestIfdStyle(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_iri_mapping.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_iri_mapping.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_iri_mapping.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_iri_mapping.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_iri_mapping.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_iri_mapping.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -549,10 +549,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_iri_mapping.py
  class TestIriMapping(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_personality.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_personality.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_personality.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_personality.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_personality.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_personality.py
 @@ -2,7 +2,7 @@ __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
  
@@ -571,10 +571,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_personality.py
  class TestPersonality(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/facts/test_swver.py
+Index: py-junos-eznc-2.6.7/tests/unit/facts/test_swver.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/facts/test_swver.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/facts/test_swver.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/facts/test_swver.py
++++ py-junos-eznc-2.6.7/tests/unit/facts/test_swver.py
 @@ -7,12 +7,12 @@ try:
      import unittest2 as unittest
  except:
@@ -590,10 +590,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/facts/test_swver.py
  class TestVersionInfo(unittest.TestCase):
      if six.PY2:
          assertCountEqual = unittest.TestCase.assertItemsEqual
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_chassis.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_chassis.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_chassis.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_chassis.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_chassis.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_chassis.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -612,10 +612,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_chassis.py
  class TestChassis(unittest.TestCase):
      @patch("ncclient.manager.connect")
      @patch("jnpr.junos.device.warnings")
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_domain.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_domain.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_domain.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_domain.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_domain.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_domain.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -634,10 +634,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_domain.py
  class TestDomain(unittest.TestCase):
      @patch("ncclient.manager.connect")
      @patch("jnpr.junos.device.warnings")
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_ifd_style.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_ifd_style.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_ifd_style.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_ifd_style.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_ifd_style.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_ifd_style.py
 @@ -3,13 +3,13 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -654,10 +654,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_ifd_style.py
  class TestIFDStyle(unittest.TestCase):
      @patch("jnpr.junos.device.warnings")
      def setUp(self, mock_warnings):
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_personality.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_personality.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_personality.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_personality.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_personality.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_personality.py
 @@ -3,13 +3,13 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -674,10 +674,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_personality.py
  class TestPersonality(unittest.TestCase):
      @patch("jnpr.junos.device.warnings")
      def setUp(self, mock_warnings):
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_routing_engines.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_routing_engines.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_routing_engines.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_routing_engines.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_routing_engines.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_routing_engines.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -696,10 +696,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_routing_engines.py
  class TestRoutingEngines(unittest.TestCase):
      @patch("ncclient.manager.connect")
      @patch("jnpr.junos.device.warnings")
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_srx_cluster.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_srx_cluster.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_srx_cluster.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_srx_cluster.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_srx_cluster.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_srx_cluster.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -718,10 +718,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_srx_cluster.py
  class TestSrxCluster(unittest.TestCase):
      @patch("ncclient.manager.connect")
      @patch("jnpr.junos.device.warnings")
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_switch_style.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_switch_style.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_switch_style.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_switch_style.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_switch_style.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_switch_style.py
 @@ -3,13 +3,13 @@ __credits__ = "Jeremy Schulman"
  
  import unittest
@@ -738,10 +738,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_switch_style.py
  class TestSwitchStyle(unittest.TestCase):
      @patch("jnpr.junos.device.warnings")
      def setUp(self, mock_warnings):
-Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_swver.py
+Index: py-junos-eznc-2.6.7/tests/unit/ofacts/test_swver.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/ofacts/test_swver.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/ofacts/test_swver.py	2020-09-18 10:55:50.670532704 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/ofacts/test_swver.py
++++ py-junos-eznc-2.6.7/tests/unit/ofacts/test_swver.py
 @@ -5,7 +5,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -760,10 +760,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/ofacts/test_swver.py
  class TestSwver(unittest.TestCase):
      @patch("ncclient.manager.connect")
      @patch("jnpr.junos.device.warnings")
-Index: py-junos-eznc-2.5.3/tests/unit/test_console.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_console.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_console.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_console.py	2020-09-18 10:55:50.702532904 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_console.py
++++ py-junos-eznc-2.6.7/tests/unit/test_console.py
 @@ -3,7 +3,7 @@ try:
  except ImportError:
      import unittest
@@ -782,10 +782,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_console.py
  class TestConsole(unittest.TestCase):
      @patch("jnpr.junos.transport.tty_telnet.Telnet._tty_open")
      @patch("jnpr.junos.transport.tty_telnet.telnetlib.Telnet.expect")
-Index: py-junos-eznc-2.5.3/tests/unit/test_decorators.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_decorators.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_decorators.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_decorators.py	2020-09-18 10:55:50.714532979 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_decorators.py
++++ py-junos-eznc-2.6.7/tests/unit/test_decorators.py
 @@ -2,7 +2,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -804,10 +804,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_decorators.py
  class Test_Decorators(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/test_device.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_device.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_device.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_device.py	2020-09-18 10:55:50.722533029 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_device.py
++++ py-junos-eznc-2.6.7/tests/unit/test_device.py
 @@ -2,7 +2,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -835,10 +835,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_device.py
  class TestDevice(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/test_exception.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_exception.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_exception.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_exception.py	2020-09-18 10:55:50.730533079 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_exception.py
++++ py-junos-eznc-2.6.7/tests/unit/test_exception.py
 @@ -1,5 +1,5 @@
  import unittest
 -from nose.plugins.attrib import attr
@@ -855,10 +855,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_exception.py
  class Test_RpcError(unittest.TestCase):
      def test_rpcerror_repr(self):
          rsp = etree.XML(rpc_xml)
-Index: py-junos-eznc-2.5.3/tests/unit/test_factcache.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_factcache.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_factcache.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_factcache.py	2020-09-18 10:55:50.738533129 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_factcache.py
++++ py-junos-eznc-2.6.7/tests/unit/test_factcache.py
 @@ -2,7 +2,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -877,10 +877,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_factcache.py
  class TestFactCache(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/test_junos.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_junos.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_junos.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_junos.py	2020-09-18 10:55:50.746533179 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_junos.py
++++ py-junos-eznc-2.6.7/tests/unit/test_junos.py
 @@ -3,14 +3,14 @@
  import unittest
  import sys
@@ -898,10 +898,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_junos.py
  class TestJunosInit(unittest.TestCase):
      def test_warning(self):
          with patch.object(sys.modules["sys"], "version_info", (2, 6, 3)) as mock_sys:
-Index: py-junos-eznc-2.5.3/tests/unit/test_jxml.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_jxml.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_jxml.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_jxml.py	2020-09-18 10:55:50.754533228 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_jxml.py
++++ py-junos-eznc-2.6.7/tests/unit/test_jxml.py
 @@ -1,7 +1,7 @@
  import os
  import unittest
@@ -920,10 +920,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_jxml.py
  class Test_JXML(unittest.TestCase):
      def test_name(self):
          op = NAME("test")
-Index: py-junos-eznc-2.5.3/tests/unit/test_rpcmeta.py
+Index: py-junos-eznc-2.6.7/tests/unit/test_rpcmeta.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/test_rpcmeta.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/test_rpcmeta.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/test_rpcmeta.py
++++ py-junos-eznc-2.6.7/tests/unit/test_rpcmeta.py
 @@ -1,7 +1,7 @@
  import unittest
  import os
@@ -942,10 +942,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/test_rpcmeta.py
  class Test_RpcMetaExec(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/transport/test_serial.py
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_serial.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/transport/test_serial.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/transport/test_serial.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_serial.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_serial.py
 @@ -2,7 +2,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -973,10 +973,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/transport/test_serial.py
  class TestSerialWin(unittest.TestCase):
      @patch("jnpr.junos.transport.tty_serial.serial.Serial.open")
      @patch("jnpr.junos.transport.tty_serial.serial.Serial.read")
-Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty.py
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/transport/test_tty.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/transport/test_tty.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty.py
 @@ -5,14 +5,14 @@ try:
  except ImportError:
      import unittest
@@ -994,10 +994,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty.py
  class TestTTY(unittest.TestCase):
      def setUp(self):
          logging.getLogger("jnpr.junos.tty")
-Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_netconf.py
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_netconf.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/transport/test_tty_netconf.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/transport/test_tty_netconf.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_netconf.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_netconf.py
 @@ -2,7 +2,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -1016,10 +1016,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_netconf.py
  class TestTTYNetconf(unittest.TestCase):
      def setUp(self):
          self.tty_net = tty_netconf(MagicMock())
-Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_ssh.py
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_ssh.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/transport/test_tty_ssh.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/transport/test_tty_ssh.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_ssh.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_ssh.py
 @@ -5,12 +5,12 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -1035,10 +1035,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_ssh.py
  class TestTTYSSH(unittest.TestCase):
      @patch("jnpr.junos.transport.tty_ssh.paramiko")
      def setUp(self, mock_paramiko):
-Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_telnet.py
+Index: py-junos-eznc-2.6.7/tests/unit/transport/test_tty_telnet.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/transport/test_tty_telnet.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/transport/test_tty_telnet.py	2020-09-18 10:55:50.762533278 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/transport/test_tty_telnet.py
++++ py-junos-eznc-2.6.7/tests/unit/transport/test_tty_telnet.py
 @@ -4,13 +4,13 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -1055,10 +1055,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/transport/test_tty_telnet.py
  class TestTTYTelnet(unittest.TestCase):
      @patch("jnpr.junos.transport.tty_telnet.telnetlib.Telnet")
      def setUp(self, mpock_telnet):
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_config.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_config.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_config.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_config.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_config.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_config.py
 @@ -1,6 +1,6 @@
  import unittest
  import sys
@@ -1076,10 +1076,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_config.py
  class TestConfig(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_fs.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_fs.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_fs.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_fs.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_fs.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_fs.py
 @@ -1,5 +1,5 @@
  import unittest
 -from nose.plugins.attrib import attr
@@ -1096,10 +1096,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_fs.py
  class TestFS(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_ftp.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_ftp.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_ftp.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_ftp.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_ftp.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_ftp.py
 @@ -1,5 +1,5 @@
  import unittest
 -from nose.plugins.attrib import attr
@@ -1116,10 +1116,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_ftp.py
  @unittest.skipIf(sys.platform == "win32", "will work for windows in coming days")
  class TestFtp(unittest.TestCase):
      @patch("ftplib.FTP.connect")
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_scp.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_scp.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_scp.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_scp.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_scp.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_scp.py
 @@ -3,7 +3,7 @@ from six import StringIO
  from contextlib import contextmanager
  
@@ -1138,10 +1138,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_scp.py
  class TestScp(unittest.TestCase):
      def setUp(self):
          self.dev = Device(host="1.1.1.1")
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_start_shell.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_start_shell.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_start_shell.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_start_shell.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_start_shell.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_start_shell.py
 @@ -1,5 +1,5 @@
  import unittest
 -from nose.plugins.attrib import attr
@@ -1158,10 +1158,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_start_shell.py
  class TestStartShell(unittest.TestCase):
      @patch("paramiko.SSHClient")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_sw.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_sw.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_sw.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_sw.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_sw.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_sw.py
 @@ -7,7 +7,7 @@ try:
      import unittest2 as unittest
  except ImportError:
@@ -1180,10 +1180,10 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_sw.py
  class TestSW(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/tests/unit/utils/test_util.py
+Index: py-junos-eznc-2.6.7/tests/unit/utils/test_util.py
 ===================================================================
---- py-junos-eznc-2.5.3.orig/tests/unit/utils/test_util.py	2020-08-25 11:35:29.000000000 +0200
-+++ py-junos-eznc-2.5.3/tests/unit/utils/test_util.py	2020-09-18 10:55:50.766533303 +0200
+--- py-junos-eznc-2.6.7.orig/tests/unit/utils/test_util.py
++++ py-junos-eznc-2.6.7/tests/unit/utils/test_util.py
 @@ -2,7 +2,7 @@ __author__ = "Nitin Kumar, Rick Sherman"
  __credits__ = "Jeremy Schulman"
  
@@ -1202,12 +1202,30 @@ Index: py-junos-eznc-2.5.3/tests/unit/utils/test_util.py
  class TestUtil(unittest.TestCase):
      @patch("ncclient.manager.connect")
      def setUp(self, mock_connect):
-Index: py-junos-eznc-2.5.3/pytest.ini
+Index: py-junos-eznc-2.6.7/pytest.ini
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ py-junos-eznc-2.5.3/pytest.ini	2020-09-18 11:02:32.057024480 +0200
+--- /dev/null
++++ py-junos-eznc-2.6.7/pytest.ini
 @@ -0,0 +1,4 @@
 +[pytest]
 +markers =
 +    unit
 +    functional
+Index: py-junos-eznc-2.6.7/tests/functional/test_shell.py
+===================================================================
+--- py-junos-eznc-2.6.7.orig/tests/functional/test_shell.py
++++ py-junos-eznc-2.6.7/tests/functional/test_shell.py
+@@ -5,11 +5,11 @@ try:
+ except ImportError:
+     import unittest
+ 
+-from nose.plugins.attrib import attr
++import pytest
+ import yaml
+ 
+ 
+-@attr('functional')
++@pytest.mark.functional
+ class test(unittest.TestCase):
+ 
+     @classmethod

@@ -1,7 +1,7 @@
 #
 # spec file for package ethtool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -42,6 +42,9 @@ network interfaces.  See the man page for more details.
 
 %build
 export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"
+%if 0%{?suse_version} < 1500
+CFLAGS="$CFLAGS -std=c11"
+%endif
 %configure
 make %{?_smp_mflags}
 

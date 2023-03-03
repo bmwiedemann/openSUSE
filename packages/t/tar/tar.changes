@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 14 11:07:40 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-48303, tar has a one-byte out-of-bounds read that
+  results in use of uninitialized memory for a conditional jump
+  (CVE-2022-48303, bsc#1207753)
+  * fix-CVE-2022-48303.patch
+- Fix hang when unpacking test tarball, bsc#1202436
+  * bsc1202436.patch
+  * bsc1202436-1.patch
+  * bsc1202436-2.patch
+  * go-testsuite-test-hang.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 13:22:21 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

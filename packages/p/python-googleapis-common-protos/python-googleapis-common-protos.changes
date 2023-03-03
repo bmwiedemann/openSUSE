@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:50:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.58.0
+  * Add google/rpc/context/audit_context.proto (41f1529)
+  * Add google/rpc/http.proto (41f1529)
+
+-------------------------------------------------------------------
 Thu Jan  5 20:36:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.57.1:

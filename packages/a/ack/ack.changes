@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  1 20:32:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.7.0
+  * Add a repeatable --not option to let user supply patterns that
+    should NOT match
+   * Add .Rmd to the list of extensions understood to be R
+   * Add file type for for Powershell (.ps1 and .psm1 files)
+
+-------------------------------------------------------------------
 Sat Sep 17 14:03:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.6.0:

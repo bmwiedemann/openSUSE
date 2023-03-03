@@ -1,7 +1,7 @@
 #
 # spec file for package muparserx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,11 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%nil
+%if "%flavor" == "doc"
+%define psuffix -doc-src
+%endif
+
 %define libbase 4_0_11
 Name:           muparserx
 Version:        4.0.11
@@ -24,73 +29,103 @@ Release:        0
 Summary:        A C++ Library for Parsing Expressions
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://muparserx.beltoforion.de
+URL:            https://beltoforion.de/en/muparserx/
 Source:         https://github.com/beltoforion/muparserx/archive/v%version.tar.gz
-BuildRequires:  cmake >= 2.8.0
-BuildRequires:  dos2unix
-BuildRequires:  doxygen
 BuildRequires:  fdupes
+%if "%flavor" != "doc"
+BuildRequires:  cmake >= 2.8.0
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  graphviz-gnome
 BuildRequires:  pkgconfig
+%else
+BuildRequires:  dos2unix
+BuildRequires:  doxygen
+BuildRequires:  graphviz
+BuildArch:      noarch
+%endif
 
 %description
 A C++ Library for Parsing Expressions with Strings, Complex Numbers,
 Vectors, Matrices and more.
 
 %package devel
-Summary:        Development files for muparserx
+Summary:        Development files for muParserX
 Group:          Development/Languages/C and C++
-Requires:       lib%{name}%{libbase} = %{version}
+Requires:       lib%name%libbase = %version
 
 %description devel
 The muparserx development files. A C++ Library for Parsing Expressions with
 Strings, Complex Numbers, Vectors, Matrices and more.
 
-%package -n lib%{name}%{libbase}
+%package devel-doc
+Summary:        Development files for muparserx
+Group:          Documentation/HTML
+
+%description devel-doc
+The API documentation for muParserX.
+
+%package -n lib%name%libbase
 Summary:        A C++ Library for Parsing Expressions
 Group:          System/Libraries
 
-%description -n lib%{name}%{libbase}
+%description -n lib%name%libbase
 The muparserx shared library. A C++ Library for Parsing Expressions with
 Strings, Complex Numbers, Vectors, Matrices and more.
 
 %prep
 %autosetup -p0
+# Use SVG images:
+# 1. significantly smaller than png
+# 2. graphviz-core suffices
+# 3. output is reproducible, instead of arch/CPU dependent via gnome/pango rasterizer
+echo -e "DOT_FONTNAME = sans\nDOT_IMAGEFORMAT = svg\nSVG_INTERACTIVE = yes" >> doc/doxyfile.dox
 
 %build
-%cmake  \
-  -DBUILD_SHARED_LIBS:BOOL=ON \
-  -DBUILD_SAMPLES:BOOL=OFF \
-  -DCMAKE_BUILD_TYPE:STRING=Release
-%cmake_build
-
-%install
-%cmake_install
-mv %{buildroot}/usr/share/cmake %{buildroot}%{_libdir}
+%if "%flavor" == "doc"
 dos2unix sample/*
 pushd doc
 doxygen doxyfile.dox
-mkdir -p %{buildroot}%{_docdir}/%{name}-devel
-cp -r html %{buildroot}%{_docdir}/%{name}-devel/
 popd
 
-%fdupes %{buildroot}/%{_prefix}
+%else
+%cmake  \
+  -DBUILD_SHARED_LIBS:BOOL=ON \
+  -DBUILD_EXAMPLES:BOOL=OFF \
+  %nil
+%cmake_build
+%endif
 
-%post -n lib%{name}%{libbase} -p /sbin/ldconfig
+%install
+%if "%flavor" != "doc"
+%cmake_install
+mv %buildroot%_datadir/cmake %buildroot%_libdir
 
-%postun -n lib%{name}%{libbase} -p /sbin/ldconfig
+%else
+mkdir -p %buildroot%_docdir/%name-devel-doc
+cp -r doc/html %buildroot%_docdir/%name-devel-doc/
+%endif
 
-%files -n lib%{name}%{libbase}
+%fdupes %buildroot/%_prefix
+
+%post -n lib%name%libbase -p /sbin/ldconfig
+%postun -n lib%name%libbase -p /sbin/ldconfig
+
+%if "%flavor" != "doc"
+%files -n lib%name%libbase
 %license LICENSE
-%{_libdir}/libmuparserx.so.*
+%_libdir/libmuparserx.so.*
 
 %files devel
-%doc Readme.md sample html
-%{_libdir}/libmuparserx.so
-%{_includedir}/*
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/cmake/%{name}
+%doc Readme.md
+%_libdir/libmuparserx.so
+%_includedir/*
+%_libdir/pkgconfig/%name.pc
+%_libdir/cmake/%name
+
+%else
+
+%files devel-doc
+%doc doc/html sample
+%endif
 
 %changelog

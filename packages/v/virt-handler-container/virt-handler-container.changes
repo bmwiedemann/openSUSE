@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  2 07:53:22 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update the container image for KubeVirt v0.59.0
+
+-------------------------------------------------------------------
 Thu Sep 22 18:44:39 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
 
 - Fix container build due to symlink issues with SP4/SP5 base images

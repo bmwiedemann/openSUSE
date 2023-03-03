@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  1 21:49:28 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10.0
+  * Support for POSIX.1e capabilities. Administrators can set
+    cap_net_raw+p on the arp-scan binaries to allow non-root users
+    to run arp scan if desired
+  * MAC/Vendor file layout changed. /etc/arp-scan/mac-vendor.txt
+    allows for local configuration
+- build with upstream tarball
+
+-------------------------------------------------------------------
 Mon Dec  5 09:51:41 UTC 2022 - Dirk Müller <dirk@matrix>
 
 - update to 1.9.8:

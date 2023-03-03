@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.46.gd87834a334
+%define archive_version +suse.48.g8e0a8094b8
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        252.5
+Version:        252.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -114,7 +114,6 @@ BuildRequires:  python3-jinja2
 BuildRequires:  suse-module-tools >= 12.4
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
-BuildRequires:  pkgconfig(libpci) >= 3
 
 %if %{with bootstrap}
 #!BuildIgnore:  dbus-1
@@ -213,7 +212,6 @@ Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed
 # quickly. But even in these cases, the patches are temporary and should be
 # removed as soon as a fix is merged by upstream.
-Patch5000:      5000-rules-add-missing-line-continuation.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -749,7 +747,7 @@ rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
 %if %{with sysvcompat}
-install -m0755 -D %{SOURCE4}  %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
+install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
@@ -780,21 +778,18 @@ ln -s ../usr/bin/systemctl %{buildroot}/sbin/poweroff
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/telinit
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
 %endif
+# kmod keeps insisting on using /lib/modprobe.d only.
+mkdir -p %{buildroot}%{_modprobedir}
+mv %{buildroot}/usr/lib/modprobe.d/* %{buildroot}%{_modprobedir}/
 %endif
 
 # Make sure we don't ship static enablement symlinks in /etc during
 # installation, presets should be honoured instead.
-rm -rf %{buildroot}/etc/systemd/system/*.target.{requires,wants}
-rm -f %{buildroot}/etc/systemd/system/default.target
+rm -rf %{buildroot}%{_sysconfdir}/systemd/system/*.target.{requires,wants}
+rm -f %{buildroot}%{_sysconfdir}/systemd/system/default.target
 
 # Replace upstream systemd-user with the openSUSE one.
 install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{SOURCE2}
-
-# kmod keeps insisting on using /lib on SLE.
-if [ "$(realpath %{_modprobedir})" != /usr/lib/modprobe.d ]; then
-        mkdir -p %{buildroot}%{_modprobedir}
-        mv %{buildroot}/usr/lib/modprobe.d/* %{buildroot}%{_modprobedir}/
-fi
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -812,9 +807,9 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/systemd-networkd.rules \
 %endif
 
 # Since v207 /etc/sysctl.conf is no longer parsed (commit 04bf3c1a60d82791),
-# however backward compatibility is provided by
-# /usr/lib/sysctl.d/99-sysctl.conf.
+# however backward compatibility is provided by the following symlink.
 ln -s ../../../etc/sysctl.conf %{buildroot}%{_sysctldir}/99-sysctl.conf
+touch %{buildroot}%{_sysconfdir}/sysctl.conf
 
 # The definitions of the basic users/groups are given by system-user package on
 # SUSE (bsc#1006978).
@@ -827,7 +822,7 @@ rm -f %{buildroot}%{_environmentdir}/99-environment.conf
 
 # Remove README file in init.d as (SUSE) rpm requires executable files in this
 # directory... oh well.
-rm -f %{buildroot}/etc/init.d/README
+rm -f %{buildroot}%{_sysconfdir}/init.d/README
 
 # This dir must be owned (and thus created) by systemd otherwise the build
 # system will complain. This is odd since we simply own a ghost file in it...
@@ -884,7 +879,7 @@ touch %{buildroot}%{_localstatedir}/lib/systemd/i18n-migrated
 
 %fdupes -s %{buildroot}%{_mandir}
 
-# Make sure to disable all services by default. The Suse branding presets
+# Make sure to disable all services by default. The SUSE branding presets
 # package takes care of defining the right policies.
 rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset

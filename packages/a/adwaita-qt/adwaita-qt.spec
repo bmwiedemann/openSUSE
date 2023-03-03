@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -135,18 +135,30 @@ developing applications that use libadwaita-%{flavor}-%{sover}.
 %autosetup -p1 -n adwaita-qt-%{version}
 
 %build
-%cmake \
+
 %if 0%{?qt5}
+%cmake \
   -DUSE_QT6=false \
 %endif
 %if 0%{?qt6}
+%cmake_qt6 \
   -DUSE_QT6=true \
 %endif
 
+%if 0%{?qt6}
+%{qt6_build}
+%else
 %cmake_build
+%endif
 
 %install
+
+%if 0%{?qt6}
+%{qt6_install}
+%else
 %cmake_install
+%endif
+
 # qt6 does not have a pc file, so the generated pc we have is invalid, nuke it.
 rm -rf %{buildroot}%{_libdir}/pkgconfig/adwaita-qt6.pc
 

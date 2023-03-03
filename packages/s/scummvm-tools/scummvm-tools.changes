@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 28 14:26:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.7.0
+ * Fixed MM Apple2 extraction.
+ * Fixed decompilation for SCUMM scripts with nested functions.
+ * Added tool for decoding hadesch image files.
+ * Fixed compatibility with wxWidgets 3.2
+ * Improved groovie scripts disassemler.
+ * MADS: A new tool to extract Rex nebular installer.
+ * Added tool for extracting SAGA resources.
+ * GOB: Adibou 2 scripts support in degob.
+ * Added tool to decompile lba1 scene scripts
+
+-------------------------------------------------------------------
 Sun Dec  4 12:24:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:

@@ -15,4 +15,12 @@
     <comment>- Update to release 4.0.11</comment>
     <requestid>933344</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4263f73a5d48f0be5fe87e187a91ed74</srcmd5>
+    <version>4.0.11</version>
+    <time>1677794646</time>
+    <user>dimstar_suse</user>
+    <comment>- Split fairly large API documentation from devel subpackage</comment>
+    <requestid>1068636</requestid>
+  </revision>
 </revisionlist>

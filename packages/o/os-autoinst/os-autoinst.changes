@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 01 19:22:20 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1677698531.3c837b1:
+  * Remove deprecated backends after one-year notice
+  * Fix generalhw cmd log: Show actual cmd and not "IPMI"
+  * xt: Mark non-git error as uncoverable
+  * Move isotovideo code for handling shutdown to runner and add tests
+  * Avoid setting misleading reason for handled errors
+
+-------------------------------------------------------------------
 Sat Feb 18 02:36:48 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1676641030.f996c8e:

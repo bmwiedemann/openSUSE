@@ -1,0 +1,27 @@
+Index: tar-1.34/tests/testsuite.at
+===================================================================
+--- tar-1.34.orig/tests/testsuite.at
++++ tar-1.34/tests/testsuite.at
+@@ -204,6 +204,8 @@ m4_include([version.at])
+ 
+ m4_include([pipe.at])
+ 
++m4_include([go-testsuite-test-hang.at])
++
+ AT_BANNER([Options])
+ m4_include([options.at])
+ m4_include([options02.at])
+Index: tar-1.34/suse-test.at
+===================================================================
+--- /dev/null
++++ tar-1.34/tests/go-testsuite-test-hang.at
+@@ -0,0 +1,9 @@
++AT_SETUP([try extracting archive without hanging])
++AT_KEYWORDS([suse])
++
++AT_TAR_CHECK([
++# This command will fail, just don't hang
++tar xf ../../../pax-global-records.tar || exit 0
++])
++
++AT_CLEANUP

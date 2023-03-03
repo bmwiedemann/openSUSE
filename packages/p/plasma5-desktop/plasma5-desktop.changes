@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * kcms/keys: Don't show visual feedback on press for sole delegates
+  * Folder View: fix scrollbar overlapping list view items (kde#465980)
+  * Add an ui to remove desktop containments
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

@@ -18,7 +18,7 @@
 
 
 Name:           logfilegen
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Log file generator for server log files and user-defined formats
 License:        Unlicense

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 13:48:10 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- stop_using_obsolete_standards.patch: stop forcing obsolete C++
+  standards, like C++11. Furthermore, do not override CXXFLAGS
+  from environment that basically prevents __FORTIFY_SOURCE and the
+  other security flags to be set for compilation.
+
+-------------------------------------------------------------------
 Wed Feb  9 12:02:53 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

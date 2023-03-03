@@ -1,0 +1,31 @@
+From f0bf57cdb8436f357d0eedd3a306b9c9487f11cb Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Wed, 1 Mar 2023 02:17:06 +0300
+Subject: [PATCH 4/4] Fix GLib memory management issue
+
+(process:81718): GLib-CRITICAL **: 03:12:47.357: g_atomic_ref_count_dec: assertion 'old_value > 0' failed
+
+(cherry picked from commit 44edeeb14685e34ba1a3d3793d6d09fcbc8f8041)
+---
+ flatpakreference.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/flatpakreference.cpp b/flatpakreference.cpp
+index 884a12f..958efc5 100644
+--- a/flatpakreference.cpp
++++ b/flatpakreference.cpp
+@@ -134,8 +134,10 @@ FlatpakReferencesModel::FlatpakReferencesModel(QObject *parent)
+     g_autoptr(FlatpakInstallation) installation = flatpak_installation_new_system(nullptr, nullptr);
+     g_autoptr(GPtrArray) installedApps = flatpak_installation_list_installed_refs_by_kind(installation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+     g_autoptr(FlatpakInstallation) userInstallation = flatpak_installation_new_user(nullptr, nullptr);
+-    g_autoptr(GPtrArray) installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
++    // it's the only pointer, so extend_and_steal will destroy it.
++    GPtrArray *installedUserApps = flatpak_installation_list_installed_refs_by_kind(userInstallation, FLATPAK_REF_KIND_APP, nullptr, nullptr);
+     g_ptr_array_extend_and_steal(installedApps, installedUserApps);
++    installedUserApps = nullptr;
+     QString path = FlatpakHelper::permDataFilePath();
+ 
+     for (uint i = 0; i < installedApps->len; ++i) {
+-- 
+2.39.2
+

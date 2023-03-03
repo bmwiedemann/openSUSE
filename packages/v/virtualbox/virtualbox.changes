@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  1 16:13:24 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add file "fixes_for_gcc13.patch" to fix builds with GCC13. 
+
+-------------------------------------------------------------------
 Mon Feb 13 12:03:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove requires for unused sysvinit-tools

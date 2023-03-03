@@ -1,0 +1,47 @@
+Index: VirtualBox-7.0.6/include/iprt/types.h
+===================================================================
+--- VirtualBox-7.0.6.orig/include/iprt/types.h
++++ VirtualBox-7.0.6/include/iprt/types.h
+@@ -170,6 +170,7 @@ RT_C_DECLS_END
+ #   undef __inline
+ #   define __inline __inline
+ #  endif
++#  include <csdint>
+ #  include <linux/types.h>
+ #  include <linux/stddef.h>
+     /*
+Index: VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_matrix.cpp
+===================================================================
+--- VirtualBox-7.0.6.orig/src/libs/dxvk-native-1.9.2a/src/util/util_matrix.cpp
++++ VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_matrix.cpp
+@@ -229,4 +229,4 @@ namespace dxvk {
+     return os;
+   }
+ 
+-}
+\ No newline at end of file
++}
+Index: VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
+===================================================================
+--- VirtualBox-7.0.6.orig/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
++++ VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
+@@ -13,6 +13,7 @@
+ #include <intrin.h>
+ #endif
+ 
++#include <cstdint>
+ #include "util_likely.h"
+ #include "util_math.h"
+ 
+Index: VirtualBox-7.0.6/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/c99_math.h
+===================================================================
+--- VirtualBox-7.0.6.orig/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/c99_math.h
++++ VirtualBox-7.0.6/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/c99_math.h
+@@ -34,6 +34,7 @@
+ #ifndef _C99_MATH_H_
+ #define _C99_MATH_H_
+ 
++#define _GLIBCXX_HOSTED 1
+ #include <math.h>
+ #include "c99_compat.h"
+ 

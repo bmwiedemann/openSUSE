@@ -24,7 +24,6 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-handler:%%PKG_VERS
 
 RUN zypper -n install \
               curl \
-              dbus-1 \
               iproute2 \
               iptables \
               kubevirt-container-disk \
@@ -37,9 +36,7 @@ RUN zypper -n install \
               util-linux-systemd && \
     zypper clean -a
 
-RUN mkdir -p /etc/nftables && \
-    ln -sf /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/ && \
-    ln -sf /usr/share/kube-virt/virt-handler/ipv4-nat.nft /etc/nftables/ && \
-    ln -sf /usr/share/kube-virt/virt-handler/ipv6-nat.nft /etc/nftables/
+RUN cp -f /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/ && \
+    cp -f /usr/share/kube-virt/virt-handler/virt_launcher.cil /
 
 ENTRYPOINT [ "/usr/bin/virt-handler" ]

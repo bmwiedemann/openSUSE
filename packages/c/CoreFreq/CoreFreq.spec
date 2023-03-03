@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      corefreqd.service
+Patch:          leap_compile_fix.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -39,7 +40,7 @@ and superiors, and AMD Families 0Fh–17h (Zen), 18h (Hygon
 Dhyana).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build

@@ -1,0 +1,20 @@
+--- CoreFreq-1.95.4/corefreqk.c.orig	2023-02-23 19:06:15.288494685 +0100
++++ CoreFreq-1.95.4/corefreqk.c	2023-02-23 19:07:00.256640840 +0100
+@@ -5194,7 +5194,7 @@
+ 	BIOS_DDR(mchmap);
+ 	TGL_SA(mchmap);
+     }
+-EXIT_TGL_IMC:
++EXIT_TGL_IMC: do { } while (0);
+ }
+ 
+ #define ADL_SA	TGL_SA
+@@ -5288,7 +5288,7 @@
+ 	BIOS_DDR(mchmap);
+ 	ADL_SA(mchmap);
+     }
+-EXIT_ADL_IMC:
++EXIT_ADL_IMC: do { } while (0);
+ }
+ 
+ void Query_GLK_IMC(void __iomem *mchmap, unsigned short mc)

@@ -1,7 +1,7 @@
 #
 # spec file for package qpdfview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
+%define pver 0.5
+
 Name:           qpdfview
-Version:        0.4.18
+Version:        0.5.0
 Release:        0
 Summary:        Tabbed document viewer in Qt
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://launchpad.net/qpdfview
-Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz.asc
+Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz
+Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM qpdfview-qt5.15.patch -- fix build with Qt 5.15
-Patch0:         qpdfview-qt5.15.patch
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -112,8 +112,7 @@ This plugin is required to read PostScript documents
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{pver}
 
 %build
 %global _libqt5_qmake %{_libqt5_qmake} -makefile %{name}.pro
@@ -144,9 +143,8 @@ This plugin is required to read PostScript documents
 %dir %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
+%{_datadir}/metainfo/qpdfview.appdata.xml
 
 %files plugin-djvu
 %{_libdir}/%{name}/libqpdfview_djvu.so
@@ -163,6 +161,11 @@ This plugin is required to read PostScript documents
 %files lang -f %{name}.lang
 %lang(ast) %{_datadir}/%{name}/%{name}_ast.qm
 %lang(nds) %{_datadir}/%{name}/%{name}_nds.qm
+%if 0%{?sle_version} < 159000
+%lang(ber) %{_datadir}/%{name}/%{name}_ber.qm
+%lang(rue) %{_datadir}/%{name}/%{name}_rue.qm
+%lang(zgh) %{_datadir}/%{name}/%{name}_zgh.qm
+%endif
 %doc %{_datadir}/%{name}/help*.html
 
 %changelog

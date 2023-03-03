@@ -1,0 +1,47 @@
+From 5e8a915b16c5f06d2a16d98cdc2af666199caabb Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Sat, 11 Feb 2023 14:21:05 +0200
+Subject: Changes in extended header decoder
+
+* src/xheader.c (decode_time): Fix error detection.
+(raw_path_decoder): Ignore empty paths.
+---
+ src/xheader.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/xheader.c b/src/xheader.c
+index 7ff216b..a195f3e 100644
+--- a/src/xheader.c
++++ b/src/xheader.c
+@@ -1059,6 +1059,12 @@ decode_time (struct timespec *ts, char const *arg, char const *keyword)
+ 		keyword, arg));
+       return false;
+     }
++  if (*arg_lim)
++    {
++      ERROR ((0, 0, _("Malformed extended header: invalid %s=%s"),
++	      keyword, arg));
++      return false;
++    }
+ 
+   *ts = t;
+   return true;
+@@ -1247,9 +1253,12 @@ path_coder (struct tar_stat_info const *st, char const *keyword,
+ static void
+ raw_path_decoder (struct tar_stat_info *st, char const *arg)
+ {
+-  decode_string (&st->orig_file_name, arg);
+-  decode_string (&st->file_name, arg);
+-  st->had_trailing_slash = strip_trailing_slashes (st->file_name);
++  if (*arg)
++    {
++      decode_string (&st->orig_file_name, arg);
++      decode_string (&st->file_name, arg);
++      st->had_trailing_slash = strip_trailing_slashes (st->file_name);
++    }
+ }
+ 
+ 
+-- 
+cgit v1.1
+

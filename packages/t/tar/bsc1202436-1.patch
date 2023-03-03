@@ -1,0 +1,65 @@
+From edf38d13a47becec81b2c3a2b74f54771e1cbee4 Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Sat, 11 Feb 2023 13:03:23 +0200
+Subject: Prevent dead loop in extract_file
+
+* src/extract.c (maybe_recoverable): If make_directories indicates
+success, suppose some intermediate directories have been made, even
+if in fact they have not.  That's necessary to avoid dead loops when
+maybe_recoverable is called with the same arguments again.
+---
+ src/extract.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/extract.c b/src/extract.c
+index 2d43947..aec5de6 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -682,7 +682,7 @@ fixup_delayed_set_stat (char const *src, char const *dst)
+    directories were created, nonzero (issuing a diagnostic) otherwise.
+    Set *INTERDIR_MADE if at least one directory was created.  */
+ static int
+-make_directories (char *file_name, bool *interdir_made)
++make_directories (char *file_name)
+ {
+   char *cursor0 = file_name + FILE_SYSTEM_PREFIX_LEN (file_name);
+   char *cursor;	        	/* points into the file name */
+@@ -726,7 +726,6 @@ make_directories (char *file_name, bool *interdir_made)
+ 			  desired_mode, AT_SYMLINK_NOFOLLOW);
+ 
+ 	  print_for_mkdir (file_name, cursor - file_name, desired_mode);
+-	  *interdir_made = true;
+ 	  parent_end = NULL;
+ 	}
+       else
+@@ -882,8 +881,11 @@ maybe_recoverable (char *file_name, bool regular, bool *interdir_made)
+ 
+     case ENOENT:
+       /* Attempt creating missing intermediate directories. */
+-      if (make_directories (file_name, interdir_made) == 0)
+-	return RECOVER_OK;
++      if (make_directories (file_name) == 0)
++	{
++	  *interdir_made = true;
++	  return RECOVER_OK;
++	}
+       break;
+ 
+     default:
+@@ -1985,12 +1987,11 @@ rename_directory (char *src, char *dst)
+   else
+     {
+       int e = errno;
+-      bool interdir_made;
+ 
+       switch (e)
+ 	{
+ 	case ENOENT:
+-	  if (make_directories (dst, &interdir_made) == 0)
++	  if (make_directories (dst) == 0)
+ 	    {
+ 	      if (renameat (chdir_fd, src, chdir_fd, dst) == 0)
+ 		return true;
+-- 
+cgit v1.1
+

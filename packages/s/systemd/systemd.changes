@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 27 08:43:27 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 8e0a8094b8bbc442d262795b85ac57a37264c5fe (merge of v252.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/d87834a33444b7163e741e1089e82b44af663808...8e0a8094b8bbc442d262795b85ac57a37264c5fe
+
+- Drop 5000-rules-add-missing-line-continuation.patch, it's part of v252.6.
+
+- aaa_base has stop providing /etc/sysctl.conf, cope with this change so the
+  compat symlink we provide is not dangling during the build.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:06:41 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop build requirement on libpci, it's not more needed since udev hwdb was
+  introduced 11 years ago.
+
+-------------------------------------------------------------------
+Tue Feb  7 08:44:32 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Conditionalize the use of /lib/modprobe.d only on systems with split usr
+  support enabled (i.e. SLE).
+
+-------------------------------------------------------------------
 Mon Jan 30 08:39:24 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit d87834a33444b7163e741e1089e82b44af663808 (merge of v252.5)

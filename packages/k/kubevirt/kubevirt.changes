@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  2 07:12:05 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.59.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.59.0
+- Drop upstreamed patches
+  0001-guestfs-flag-to-set-uid-and-gid.patch
+  0002-network-Use-JSON-syntax-for-slirp-device.patch
+
+-------------------------------------------------------------------
 Tue Dec 20 10:26:46 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use JSON syntax for slirp device

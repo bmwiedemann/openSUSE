@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:44:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken test, test_mac_with_cryptographic_failure,
+  gh#OpenKMIP/PyKMIP#690
+
+-------------------------------------------------------------------
 Thu Jan 26 12:36:34 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add crypto-39.patch to make it work with python-cryptography >= 39.0.0

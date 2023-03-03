@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-calmjs
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        A Python framework for working with the Node.js ecosystem
 License:        GPL-2.0-or-later
@@ -60,6 +60,8 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/calmjs
+# see https://github.com/calmjs/calmjs/issues/65 for maintainer feedback
+# regarding these two subpackages.
 # %%python_expand rm -r %%{buildroot}%%{$python_sitelib}/calmjs/testing
 # %%python_expand rm -r %%{buildroot}%%{$python_sitelib}/calmjs/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

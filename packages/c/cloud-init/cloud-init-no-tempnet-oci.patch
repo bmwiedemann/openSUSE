@@ -1,34 +1,17 @@
 --- cloudinit/sources/DataSourceOracle.py.orig
 +++ cloudinit/sources/DataSourceOracle.py
-@@ -134,14 +134,17 @@ class DataSourceOracle(sources.DataSourc
-             BUILTIN_DS_CONFIG["configure_secondary_nics"]
-         )
-         network_context = noop()
--        if not _is_iscsi_root():
--            network_context = dhcp.EphemeralDHCPv4(
--                iface=net.find_fallback_nic(),
--                connectivity_url_data={
--                    "url": METADATA_PATTERN.format(version=2, path="instance"),
--                    "headers": V2_HEADERS,
--                }
--            )
-+        # SUSE images are built with iSCSI setup. The detection of the
-+        # configured network for iscsi boot is distribution dependent.
-+        # There's no implementation for openSUSE/SLE yet.
-+        #if not _is_iscsi_root():
-+        #    network_context = dhcp.EphemeralDHCPv4(
-+        #        iface=net.find_fallback_nic(),
-+        #        connectivity_url_data={
-+        #            "url": METADATA_PATTERN.format(version=2, path="instance"),
-+        #            "headers": V2_HEADERS,
-+        #        }
-+        #    )
-         with network_context:
-             fetched_metadata = read_opc_metadata(
-                 fetch_vnics_data=fetch_vnics_data
---- cloudinit/sources/tests/test_oracle.py.orig
-+++ cloudinit/sources/tests/test_oracle.py
-@@ -666,6 +666,7 @@ class TestNonIscsiRoot_GetDataBehaviour:
+@@ -204,6 +204,8 @@ class DataSourceOracle(sources.DataSourc
+ 
+     def _is_iscsi_root(self) -> bool:
+         """Return whether we are on a iscsi machine."""
++        # SUSE images are built with iSCSI setup.
++        return True
+         return self._network_config_source.is_applicable()
+ 
+     def _get_iscsi_config(self) -> dict:
+--- tests/unittests/sources/test_oracle.py.orig
++++ tests/unittests/sources/test_oracle.py
+@@ -996,6 +996,7 @@ class TestNonIscsiRoot_GetDataBehaviour:
      def test_read_opc_metadata_called_with_ephemeral_dhcp(
          self, m_find_fallback_nic, m_EphemeralDHCPv4, oracle_ds
      ):

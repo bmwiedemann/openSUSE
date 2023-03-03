@@ -1,7 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.58.0
+Version:        0.59.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,14 +28,12 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch0:         0001-guestfs-flag-to-set-uid-and-gid.patch
-Patch1:         0002-network-Use-JSON-syntax-for-slirp-device.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.19
 BuildRequires:  pkgconfig(libvirt)
 ExclusiveArch:  x86_64 aarch64
 
@@ -248,14 +246,12 @@ install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}%{_bindir}/
 
-# virt-launcher SELinux policy needs to land in virt-handler container
-install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
-
 # Install network stuff
 mkdir -p %{buildroot}%{_datadir}/kube-virt/virt-handler
 install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-virt/virt-handler/
-install -p -m 0644 cmd/virt-handler/ipv4-nat.nft %{buildroot}%{_datadir}/kube-virt/virt-handler/
-install -p -m 0644 cmd/virt-handler/ipv6-nat.nft %{buildroot}%{_datadir}/kube-virt/virt-handler/
+
+# virt-launcher SELinux policy needs to land in virt-handler container
+install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}%{_datadir}/kube-virt/virt-handler/
 
 # Install release manifests
 mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/release
@@ -313,7 +309,6 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %{_bindir}/virt-handler
 %{_bindir}/virt-chroot
 %{_datadir}/kube-virt/virt-handler
-/virt_launcher.cil
 
 %files virt-launcher
 %license LICENSE

@@ -506,4 +506,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1043919</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>54c6f4be714274cea84acd70451be443</srcmd5>
+    <version>0.59.0</version>
+    <time>1677794639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068627</requestid>
+  </revision>
 </revisionlist>

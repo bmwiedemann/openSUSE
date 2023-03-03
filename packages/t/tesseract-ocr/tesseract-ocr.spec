@@ -75,7 +75,7 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 %autosetup -n tesseract-%{version} -p1
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} -DTESSDATA_PREFIX=%{_datadir}/%{name}
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} -DTESSDATA_PREFIX=%{_datadir}
 %cmake_build
 
 chrpath --delete src/training/libpango_training.so

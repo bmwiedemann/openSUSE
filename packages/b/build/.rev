@@ -1582,4 +1582,19 @@ Changes:
 - added support for generating VCS url information into rpms</comment>
     <requestid>1065954</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1df46551630c79a0d0a22e14577690b7</srcmd5>
+    <version>20230228</version>
+    <time>1677794567</time>
+    <user>dimstar_suse</user>
+    <comment>- Dockerfile support:
+  * export multibuild flavor as argument
+  * allow parameters in FROM .. scratch lines
+  * include OS name in build result if != linux
+- Workaround directory-&gt;symlink usrmerge problems for cross arch sysroot
+- multiple fixes for SBOM support
+
+- KIWI VM image SBOM support added</comment>
+    <requestid>1068160</requestid>
+  </revision>
 </revisionlist>

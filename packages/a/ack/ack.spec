@@ -1,7 +1,7 @@
 #
 # spec file for package ack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0

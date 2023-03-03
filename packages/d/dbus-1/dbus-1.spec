@@ -53,7 +53,6 @@ Requires(post): %{_libname} = %{version}
 Requires(post): diffutils
 Requires(pre):  permissions
 Provides:       dbus-launch = %{version}
-%sysusers_requires
 %if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
@@ -71,6 +70,7 @@ Requires:       dbus-1-common >= %{version}
 %package common
 Summary:        D-BUS message bus configuration
 BuildArch:      noarch
+%sysusers_requires
 
 %package daemon
 Summary:        D-Bus message bus daemon
@@ -199,14 +199,28 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 %post -n %{_libname} -p /sbin/ldconfig
 %postun -n %{_libname} -p /sbin/ldconfig
 
-%pre -f messagebus.pre
-%service_add_pre dbus.service dbus.socket
+%pre
+%service_add_pre dbus.service
 # removing old update-alternatives entries
 if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
     %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
 fi
 
 %post
+/sbin/ldconfig
+%set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
+%service_add_post dbus.service
+
+%preun
+%service_del_preun dbus.service
+
+%postun
+%service_del_postun_without_restart dbus.service
+
+%pre common -f messagebus.pre
+%service_add_pre dbus.socket
+
+%post common
 if [ -e %{_localstatedir}/lib/dbus/machine-id -a -e %{_sysconfdir}/machine-id ]; then
   cmp -s %{_localstatedir}/lib/dbus/machine-id %{_sysconfdir}/machine-id > /dev/null
   if [ $? ]; then
@@ -217,20 +231,16 @@ if [ ! -L %{_localstatedir}/lib/dbus/machine-id ]; then
   mkdir -p %{_localstatedir}/lib/dbus/
   ln -s %{_sysconfdir}/machine-id %{_localstatedir}/lib/dbus/machine-id
 fi
-
-/sbin/ldconfig
-%set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
-%service_add_post dbus.service dbus.socket
 %tmpfiles_create %{_prefix}/lib/tmpfiles.d/dbus.conf
+%service_add_post dbus.socket
 
-%preun
-%service_del_preun dbus.service dbus.socket
+%preun common
+%service_del_preun dbus.socket
 
-%postun
-%service_del_postun_without_restart dbus.service dbus.socket
+%postun common
+%service_del_postun_without_restart dbus.socket
 
 %files
-%dir %{_localstatedir}/lib/dbus
 %dir %{_libexecdir}/dbus-1/
 %license COPYING
 %doc AUTHORS NEWS README
@@ -238,24 +248,25 @@ fi
 # See doc/system-activation.txt in source tarball for the rationale
 # behind these permissions
 %attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
-%ghost /run/dbus
-%ghost %{_localstatedir}/lib/dbus/machine-id
 %{_unitdir}/dbus.service
+%{_sbindir}/rcdbus
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service
-%dir %{_unitdir}/sockets.target.wants
-%{_unitdir}/sockets.target.wants/dbus.socket
 %{_userunitdir}/dbus.service
 %dir %{_datadir}/libalternatives
 %dir %{_datadir}/libalternatives/dbus-launch
 %{_datadir}/libalternatives/dbus-launch/10.conf
 %{_bindir}/dbus-launch.nox11
 %{_bindir}/dbus-launch
+%{_mandir}/man1/dbus-launch.1%{?ext_man}
 
 %files -n %{_libname}
 %{_libdir}/libdbus-1.so.*
 
 %files common
+%dir %{_localstatedir}/lib/dbus
+%ghost /run/dbus
+%ghost %{_localstatedir}/lib/dbus/machine-id
 %config(noreplace) %{_sysconfdir}/dbus-1/session.conf
 %config(noreplace) %{_sysconfdir}/dbus-1/system.conf
 %dir %{_sysconfdir}/dbus-1
@@ -268,6 +279,8 @@ fi
 %dir %{_datadir}/dbus-1/system-services
 %dir %{_userunitdir}/sockets.target.wants
 %{_userunitdir}/sockets.target.wants/dbus.socket
+%dir %{_unitdir}/sockets.target.wants
+%{_unitdir}/sockets.target.wants/dbus.socket
 %{_prefix}/lib/sysusers.d/dbus.conf
 %{_prefix}/lib/tmpfiles.d/dbus.conf
 %{_datadir}/dbus-1/session.conf
@@ -284,8 +297,6 @@ fi
 %{_mandir}/man1/dbus-daemon.1%{?ext_man}
 %{_mandir}/man1/dbus-run-session.1%{?ext_man}
 %{_mandir}/man1/dbus-test-tool.1%{?ext_man}
-%{_mandir}/man1/dbus-launch.1%{?ext_man}
-%{_sbindir}/rcdbus
 
 %files devel
 %{_includedir}/*

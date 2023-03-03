@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  1 08:09:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.0:
+  * Make PackageKit-Qt depend on Qt 5.10
+  * Add build system support for Qt6
+  * Add support for plural signals
+  * Prefer invoking methods by pointer rather than by name
+  * Emit error if transaction is already done before watcher setup
+  * offline: Address issues with dbus connections
+  * Add the missing pkgconfig file for Qt 6 builds
+  * Replace 404 Link by working one in README
+- Drop patch, merged upstream:
+  * 0001-Add-build-system-support-for-Qt6.patch
+
+-------------------------------------------------------------------
 Sun Jul  3 06:29:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to add Qt 6 support:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 02 15:03:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.1.1:
+  * Thanos image update, some issue with upstream code
+  * Create codeql-analysis.yml (#84)
+  * Updated Logo as per LF trademark guidelines (#83)
+  * Updated the release version in install script (#82)
+
+-------------------------------------------------------------------
 Mon Feb 21 08:55:27 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package krius: A tool to setup Prometheus, Thanos & friends across multiple clusters easily for scale

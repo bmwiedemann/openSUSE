@@ -158,6 +158,8 @@ Patch33:        fixes_for_leap15.3.patch
 Patch34:        fix_kmp_build.patch
 # Fix for backports to 15.5
 Patch35:        fixes_for_leap15.5.patch
+# Fix for GCC13
+Patch36:        fixes_for_gcc13.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -299,7 +301,12 @@ the terms of the GNU Public License (GPL).
 
 
 
-##########################################
+
+
+
+
+#-#########################################
+
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -319,7 +326,12 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-#########################################
+
+
+
+
+#-########################################
+
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -332,8 +344,13 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
-###########################################
 
+
+
+
+
+
+#-##########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -357,7 +374,12 @@ VirtualBox guest addition tools.
 
 
 
-###########################################
+
+
+
+
+#-##########################################
+
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -378,7 +400,12 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-###########################################
+
+
+
+
+#-##########################################
+
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -394,7 +421,12 @@ Development file for %{name}
 
 
 
-###########################################
+
+
+
+
+#-##########################################
+
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -427,7 +459,12 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
-###########################################
+
+
+
+
+#-##########################################
+
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -441,7 +478,12 @@ This package contains icons for guest desktop files that were created on the des
 
 
 
-###########################################
+
+
+
+
+#-##########################################
+
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -505,6 +547,9 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch34 -p1
 %if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
 %patch35 -p1
+%endif
+%if 0%{gcc_version} >= 13
+%patch36 -p1
 %endif
 
 ### Documents for virtualbox main package ###

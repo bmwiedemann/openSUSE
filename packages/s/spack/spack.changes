@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  1 13:13:34 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- Udpate to 0.19.1 with following bug fixes:
+  * buildcache create: make "file exists" less verbose
+  * spack mirror create: don't change paths to urls
+  * Improve error message for requirements
+  * Fix libtool filter for Fujitsu compilers
+  * FileCache: delete the new cache file on exception
+- using `--all` flag for `spack external find` in the %triggrin 
+  section, as MPI packages were not recognized any more, fixing
+  (bsc#1208751)
+
+-------------------------------------------------------------------
 Tue Jan 31 08:29:00 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Make sure the spack environment is set up correctly in

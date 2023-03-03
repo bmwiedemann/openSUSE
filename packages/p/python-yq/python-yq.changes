@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  1 20:21:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  *  Handle TOML datetimes. Fixes #160
+  *  Test and documentation improvements
+
+-------------------------------------------------------------------
 Tue Jul 26 15:58:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.1.0:

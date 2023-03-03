@@ -1044,4 +1044,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976076</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>9ee2c35ca6a6444358ac1822a8b3a647</srcmd5>
+    <version>23.1</version>
+    <time>1677794511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.1
+  + Remove patches included upstream:
+    - cloud-init-btrfs-queue-resize.patch
+    - cloud-init-micro-is-suse.patch
+    - cloud-init-suse-afternm.patch
+    - cloud-init-prefer-nm.patch
+    - cloud-init-transact-up.patch
+  + Forward port
+    - cloud-init-write-routes.patch
+  + Added
+    - cloud-init-fix-ca-test.patch
+  + Support transactional-updates for SUSE based distros (#1997)
+    [Robert Schweikert]
+  + Set ownership for new folders in Write Files Module (#1980)
+    [Jack] (LP: #1990513)
+  + add OpenCloudOS and TencentOS support (#1964) [wynnfeng]
+  + lxd: Retry if the server isn't ready (#2025)
+  + test: switch pycloudlib source to pypi (#2024)
+  + test: Fix integration test deprecation message (#2023)
+  + Recognize opensuse-microos, dev tooling fixes [Robert Schweikert]
+  + sources/azure: refactor imds handler into own module (#1977)
+    [Chris Patterson]
+  + docs: deprecation generation support [1/2] (#2013)
+  + add function is_virtual to distro/FreeBSD (#1957) [Mina Galić]
+  + cc_ssh: support multiple hostcertificates (#2018) (LP: #1999164)
+  + Fix minor schema validation regression and fixup typing (#2017)
+  + doc: Reword user data debug section (#2019)
+  + Overhaul/rewrite of certificate handling as follows: (#1962)
+    [dermotbradley] (LP: #1931174)
+  + disk_setup: use byte string when purging the partition table (#2012)</comment>
+    <requestid>1068502</requestid>
+  </revision>
 </revisionlist>

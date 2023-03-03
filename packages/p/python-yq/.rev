@@ -102,4 +102,14 @@
 </comment>
     <requestid>991280</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9b77d9d57b896b0fe78a09390b99eca</srcmd5>
+    <version>3.1.1</version>
+    <time>1677794620</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  *  Handle TOML datetimes. Fixes #160
+  *  Test and documentation improvements</comment>
+    <requestid>1068548</requestid>
+  </revision>
 </revisionlist>

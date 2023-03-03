@@ -1048,4 +1048,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1066183</requestid>
   </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>7f78dcc8becbfc9adc7a9974cec984d1</srcmd5>
+    <version>0.188</version>
+    <time>1677794507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067346</requestid>
+  </revision>
 </revisionlist>

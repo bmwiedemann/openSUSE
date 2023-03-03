@@ -2798,4 +2798,12 @@
     <comment>Security fix for bsc#1208286 - VUL-0: CVE-2022-27672: xen: Cross-Thread Return Address Predictions (XSA-426)</comment>
     <requestid>1066241</requestid>
   </revision>
+  <revision rev="328" vrev="4">
+    <srcmd5>0746a644c190a6484a9974a6d48833c5</srcmd5>
+    <version>4.17.0_04</version>
+    <time>1677794573</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1208736 - GCC 13: xen package fails</comment>
+    <requestid>1068230</requestid>
+  </revision>
 </revisionlist>

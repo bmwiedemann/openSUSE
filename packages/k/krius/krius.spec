@@ -1,7 +1,7 @@
 #
 # spec file for package krius
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           krius
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Setup Prometheus, Thanos & friends across multiple clusters
 License:        Apache-2.0

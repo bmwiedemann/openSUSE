@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  1 09:46:16 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.3
+  - Fixed handling of redirects in the inline media player and file downloader.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Mon Feb 13 10:20:49 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.15.2

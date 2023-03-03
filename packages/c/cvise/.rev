@@ -983,4 +983,18 @@
   * Remove extra symlink in LLVM nightly build.</comment>
     <requestid>1044734</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>2b5ab51803435b1bd1514bfc5f0c5a53</srcmd5>
+    <version>2.7.0+git.20230302.ff4e51e</version>
+    <time>1677794643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20230302.ff4e51e:
+  * add -Wno-error=dangling-reference for GCC 13+
+  * LLVM 17: port DesignatedInitExpr::Designator
+  * Fix one more llvm::Optional leftover:
+  * port llvm::Optional to std::optional
+  * LLVM nightly: use llvm-17
+  * bump CMake minimal version</comment>
+    <requestid>1068630</requestid>
+  </revision>
 </revisionlist>

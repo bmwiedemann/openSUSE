@@ -108,4 +108,27 @@
     <comment></comment>
     <requestid>950213</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e3da9c517cea970f291e6775c0aa43d</srcmd5>
+    <version>1.7.1</version>
+    <time>1677794679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.1
+  * cmake: pass deps' cflags to the build
+  * gbm: fix crash when platform lacks modifier support
+  * gitlab-ci: stabilise CI runs under X
+  * gitlab-ci: add more warnings, make all warnings fatal
+  * gitlab-ci: update to bullseye
+  * meson: add override_* support, when using waffle as submodule
+  * meson: skip installing bash completion when custom prefix is used
+  * meson: silence deprecation warnings
+  * meson: generate cmake files only on Windows
+  * meson: find wayland.xml from wayland-scanner.pc
+  * misc: zsh completion
+  * misc: fix dozens of compiler warnings
+  * misc: update website references
+  * wayland: fix build against wayland 1.20
+- supersedes 106.patch</comment>
+    <requestid>1068965</requestid>
+  </revision>
 </revisionlist>

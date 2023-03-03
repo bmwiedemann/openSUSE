@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * applets/systemtray: add test for xembed tray icon
+  * libtaskmanager: consider current activity when computing first task index
+  * libtaskmanager: test invalid preferred launchers are filtered out
+  * libtaskmanager: use icon name directly when icon value does not contain period
+  * kcms/users: Fallback to show username in title when real name isn't set
+  * kcms/users: Limit connection scope to `this`
+  * Add an action to remove the containments of a screen
+  * libtaskmanager: filter out invalid preferred launcher tasks (kde#436667)
+  * shell: Have the DesktopView::title include which output it should be on
+  * kcms/color: Add highlight outline for color dots (kde#465800)
+  * Lock screen: Prevent Escape key from displaying UI if it's currently hidden (kde#465920)
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

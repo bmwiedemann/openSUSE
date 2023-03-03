@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * Fix crash when cutting an item that was dragged to the root (kde#466242)
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

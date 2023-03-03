@@ -28,6 +28,8 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
+# PATCH-FIX-OPENSUSE reduce-required-meson.patch alarrosa@suse.com -- build with meson 0.61
+Patch0:         reduce-required-meson.patch
 
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig

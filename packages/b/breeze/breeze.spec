@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.27.1
+Version:        5.27.2
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later

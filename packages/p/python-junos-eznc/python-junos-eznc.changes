@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar  2 07:14:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11, gh#Juniper/py-junos-eznc#1236
+- Remove python-junos-eznc-fix-unittests.patch, not needed anymore
+- Update to 2.6.7:
+  * Supported option to set look_for_keys with bool True/False #1234
+  * Fixed build failure against setuptools #1231
+- 2.6.6
+  * Fixed reboot failing on other RE #1199
+  * Fixed passing 'sleep' arg to StartShell run() #1202
+  * Fixed PyEZ get-facts support for ACX model #1209
+  * Fixed EthPortTable regex pattern #1215
+  * Fixed StartShell UnboundLocalError #1203 #1211
+- 2.6.5
+  * Supported multi-gig ports for EthPortTable.yml #1177
+  * Fixed on-box support for start shell types #1190 #1186
+  * Fixed conn_open_timeout value was getting set None , changed it to
+    default 30 seconds #1184
+- 2.6.4
+  * Supported start_shell options to choose the shell types (sh or csh) #995
+  * Supported for python 3.9
+  * Fixed Device facts current_re returns the SRX cluster node0 and
+    node1 details with cluster ID 16 #1135
+  * Fixed upgrade ncclient version 0.6.13, updated requirements.txt to
+    install ncclient==0.6.13 #1153
+  * Fixed deprecation warning due to invalid escape sequences #1034
+  * Fixed Unit tests test_sw_put_ftp failure #1165
+
+-------------------------------------------------------------------
 Tue May  3 11:54:14 UTC 2022 - pgajdos@suse.com
 
 - added patches

@@ -287,4 +287,20 @@
   Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch (forwarded request 1062187 from eeich)</comment>
     <requestid>1062188</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6f41337a30ec1a4cb6521eaa3764c80a</srcmd5>
+    <version>0.19.1</version>
+    <time>1677794604</time>
+    <user>dimstar_suse</user>
+    <comment>- Udpate to 0.19.1 with following bug fixes:
+  * buildcache create: make &quot;file exists&quot; less verbose
+  * spack mirror create: don't change paths to urls
+  * Improve error message for requirements
+  * Fix libtool filter for Fujitsu compilers
+  * FileCache: delete the new cache file on exception
+- using `--all` flag for `spack external find` in the %triggrin 
+  section, as MPI packages were not recognized any more, fixing
+  (bsc#1208751) (forwarded request 1068458 from mslacken)</comment>
+    <requestid>1068487</requestid>
+  </revision>
 </revisionlist>

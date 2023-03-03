@@ -32,4 +32,12 @@
 - Add 0001-Fix-iouring-under-32-bit-linux.patch</comment>
     <requestid>1000138</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca808e59f96a6ffe06143305d7dd5a4d</srcmd5>
+    <version>2023.02.27.00</version>
+    <time>1677794610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068508</requestid>
+  </revision>
 </revisionlist>

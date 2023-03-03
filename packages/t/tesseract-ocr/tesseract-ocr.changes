@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 26 22:09:01 UTC 2023 - malcolmlewis@opensuse.org
+
+- Define TESSDATA_PREFIX during build to point at /usr/share
+  (since it's the prefix) rather than package name, tessdata
+  suffix is automatically added.
+
+-------------------------------------------------------------------
 Thu Jan  5 09:00:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Move unversioned libraries to main package 

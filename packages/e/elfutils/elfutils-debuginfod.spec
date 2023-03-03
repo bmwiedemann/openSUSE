@@ -118,7 +118,7 @@ URL for a distribution.
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
-export CFLAGS="%optflags -Werror=date-time"
+export CFLAGS="%optflags -Werror=date-time -Wno-use-after-free"
 CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  2 04:28:45 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.4.3
+  * This is a maintenance release for Python 3.11
+  * The registration of subparser of the same name will now be blocked,
+    rather than cascade to result into a ArgumentError that cannot be
+    recovered from.
+
+-------------------------------------------------------------------
 Tue Dec 20 17:22:18 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use pytest to run tests in %check and disable logging tests that fails in

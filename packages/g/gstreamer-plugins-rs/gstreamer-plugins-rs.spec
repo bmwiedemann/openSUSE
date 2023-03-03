@@ -24,8 +24,14 @@
 # Disable csound for now, bring issue upstream
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
+%ifarch s390 s390x ppc ppc64
+%bcond_with aws
+%else
+%bcond_without aws
+%endif
+
 Name:           gstreamer-plugins-rs
-Version:        0.10.1+git20230213.9cd68ff
+Version:        0.10.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -112,6 +118,9 @@ export RUSTFLAGS=%{rustflags}
 	-Ddav1d=auto \
 	-Dsodium=enabled \
 	-Dcsound=disabled \
+%if %{without aws}
+	-Daws=disabled \
+%endif
 	%{nil}
 %meson_build
 
@@ -125,7 +134,9 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %license LICENSE-APACHE LICENSE-LGPLv2 LICENSE-MIT
 %doc README.md
 %dir %{_libdir}/gstreamer-%{gst_branch}
+%if %{with aws}
 %{_libdir}/gstreamer-%{gst_branch}/libgstaws.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdg.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstclaxon.so
 # Disable csound for now, bring issue upstream

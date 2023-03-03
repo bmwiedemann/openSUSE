@@ -114,4 +114,14 @@
   * Mark reference_docs_uri field in google/api/client.proto as deprecated</comment>
     <requestid>1056274</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c1351adbac11a56769c2a3ede92ed68a</srcmd5>
+    <version>1.58.0</version>
+    <time>1677794660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.58.0
+  * Add google/rpc/context/audit_context.proto (41f1529)
+  * Add google/rpc/http.proto (41f1529) (forwarded request 1068692 from glaubitz)</comment>
+    <requestid>1068699</requestid>
+  </revision>
 </revisionlist>

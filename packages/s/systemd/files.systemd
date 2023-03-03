@@ -82,6 +82,7 @@
 %doc %{_sysctldir}/README
 %doc %{_sysusersdir}/README
 %doc %{_tmpfilesdir}/README
+%exclude %{_sysconfdir}/sysctl.conf
 %ghost %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/machine-id
 %ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
 %ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
@@ -139,9 +140,11 @@
 %{_datadir}/bash-completion/completions/systemd-cgtop
 %{_datadir}/bash-completion/completions/systemd-delta
 %{_datadir}/bash-completion/completions/systemd-detect-virt
+%{_datadir}/bash-completion/completions/systemd-dissect
 %{_datadir}/bash-completion/completions/systemd-id128
 %{_datadir}/bash-completion/completions/systemd-path
 %{_datadir}/bash-completion/completions/systemd-run
+%{_datadir}/bash-completion/completions/systemd-sysext
 %{_datadir}/bash-completion/completions/timedatectl
 %endif
 # dbus introspection data for code generators: https://github.com/systemd/systemd/pull/20294
@@ -212,12 +215,17 @@
 %{_journalcatalogdir}/systemd.be@latin.catalog
 %{_journalcatalogdir}/systemd.bg.catalog
 %{_journalcatalogdir}/systemd.catalog
+%{_journalcatalogdir}/systemd.da.catalog
 %{_journalcatalogdir}/systemd.de.catalog
 %{_journalcatalogdir}/systemd.fr.catalog
+%{_journalcatalogdir}/systemd.hr.catalog
+%{_journalcatalogdir}/systemd.hu.catalog
 %{_journalcatalogdir}/systemd.it.catalog
+%{_journalcatalogdir}/systemd.ko.catalog
 %{_journalcatalogdir}/systemd.pl.catalog
 %{_journalcatalogdir}/systemd.pt_BR.catalog
 %{_journalcatalogdir}/systemd.ru.catalog
+%{_journalcatalogdir}/systemd.sr.catalog
 %{_journalcatalogdir}/systemd.zh_CN.catalog
 %{_journalcatalogdir}/systemd.zh_TW.catalog
 %if %{without bootstrap}

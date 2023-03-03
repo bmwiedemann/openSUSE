@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:59:52 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use the qt6 %cmake macros when building the qt6 flavor which
+  uses the right compiler in SLE/Leap instead of gcc7 (which fails
+  to build since it doesn't support C++17 headers used by Qt6).
+
+-------------------------------------------------------------------
 Tue Sep 27 00:59:08 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 1.4.2:
@@ -114,6 +121,8 @@ Mon Feb  3 13:22:05 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Update to 1.1.1
   * Stability fixes
+- Remove patch:
+  * adwaita-qt-upstream-fixes.patch
 
 -------------------------------------------------------------------
 Fri Oct  4 19:36:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>

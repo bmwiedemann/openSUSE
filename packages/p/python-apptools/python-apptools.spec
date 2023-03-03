@@ -1,7 +1,7 @@
 #
 # spec file for package python-apptools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         X_display         ":98"
 %define         skip_python2      1
 %ifarch ppc ppc64 ppc64le s390x
@@ -25,7 +24,7 @@
 %bcond_without  test
 %endif
 Name:           python-apptools
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Application tools in Python
 # Source code is under BSD but images are under different licenses
@@ -33,8 +32,8 @@ Summary:        Application tools in Python
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-3.0-only
 URL:            https://github.com/enthought/apptools
 Source:         https://files.pythonhosted.org/packages/source/a/apptools/apptools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python310.patch -- Add python3.10 support gh#enthought/apptools#303
-Patch0:         python310.patch
+# PATCH-FIX-UPSTREAM python-311.patch -- Add python3.11 support gh#enthought/apptools#328
+Patch0:         python-311.patch
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}

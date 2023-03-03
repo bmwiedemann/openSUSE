@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 13:55:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- VERSION string used in generating *.pc file
+  (among other things) has been hardcoded to 0.6.3
+  (gh#tree-sitter/tree-sitter#1608), we should at least fix it
+  using sed.
+
+-------------------------------------------------------------------
 Wed Jan 18 10:05:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2022-45299-update-webbrowser.patch (copied from

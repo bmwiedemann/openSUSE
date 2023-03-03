@@ -1,7 +1,7 @@
 #
 # spec file for package arp-scan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,26 @@
 #
 
 
+%bcond_without caps
 Name:           arp-scan
-Version:        1.9.8
+Version:        1.10.0
 Release:        0
 Summary:        ARP scanning and fingerprinting tool
 # strlcpy.c and strlcat.c have ISC header and embeded {getopt,obstack}.{c,h} has LGPL-2.1
 License:        GPL-3.0-only AND LGPL-2.1-only AND ISC
 Group:          Productivity/Networking/Security
 URL:            https://github.com/royhills/arp-scan
-Source:         https://github.com/royhills/arp-scan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libpcap-devel >= 1.5.0
+Source:         https://github.com/royhills/arp-scan/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  perl-macros
+BuildRequires:  pkgconfig
 BuildRequires:  perl(LWP::Simple)
+BuildRequires:  pkgconfig(libpcap) >= 1.5.0
 Requires:       perl(LWP::Simple)
 %{perl_requires}
+%if 0%{with caps}
+# pre-installed in build root, but make explicit anyway
+BuildRequires:  pkgconfig(libcap)
+%endif
 
 %description
 arp-scan is a command-line tool that uses the ARP protocol to discover and fingerprint IP hosts on the local network.
@@ -39,31 +43,35 @@ arp-scan is a command-line tool that uses the ARP protocol to discover and finge
 %define debug_package_requires %{name} = %{version}-%{release}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fiv
-%configure
+%configure \
+%if %{with caps}
+	--with-libcap=yes \
+%else
+# defaults to auto
+	--with-libcap=no \
+%endif
+	%{nil}
 %make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
+
 %make_install
 sed -i "s|env ||g" %{buildroot}%{_bindir}/*
 
 %files
+%license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
-%{_bindir}/arp-fingerprint
-%{_bindir}/arp-scan
-%{_bindir}/get-iab
-%{_bindir}/get-oui
+%{_bindir}/*
 %{_datadir}/arp-scan
-%{_mandir}/man1/arp-fingerprint.1%{?ext_man}
-%{_mandir}/man1/arp-scan.1%{?ext_man}
-%{_mandir}/man1/get-iab.1%{?ext_man}
-%{_mandir}/man1/get-oui.1%{?ext_man}
-%{_mandir}/man5/mac-vendor.5%{?ext_man}
+%dir %{_sysconfdir}/arp-scan
+%config(noreplace) %{_sysconfdir}/arp-scan/mac-vendor.txt
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
 
 %changelog

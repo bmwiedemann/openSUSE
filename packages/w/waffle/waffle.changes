@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar  2 15:01:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.7.1
+  * cmake: pass deps' cflags to the build
+  * gbm: fix crash when platform lacks modifier support
+  * gitlab-ci: stabilise CI runs under X
+  * gitlab-ci: add more warnings, make all warnings fatal
+  * gitlab-ci: update to bullseye
+  * meson: add override_* support, when using waffle as submodule
+  * meson: skip installing bash completion when custom prefix is used
+  * meson: silence deprecation warnings
+  * meson: generate cmake files only on Windows
+  * meson: find wayland.xml from wayland-scanner.pc
+  * misc: zsh completion
+  * misc: fix dozens of compiler warnings
+  * misc: update website references
+  * wayland: fix build against wayland 1.20
+- supersedes 106.patch 
+
+-------------------------------------------------------------------
 Fri Jan 21 11:14:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 106.patch: wayland: fix build against version 1.20.

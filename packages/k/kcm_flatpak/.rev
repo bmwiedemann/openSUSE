@@ -23,4 +23,16 @@
     <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
     <requestid>1067218</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90fb8ed1744548e464e1068236362d39</srcmd5>
+    <version>5.27.2</version>
+    <time>1677794566</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply important fixes from the 5.27 branch:
+  * 0001-Expose-FlatpakReferencesModel-to-QML.patch
+  * 0002-Avoid-duplicating-connections-between-ref-and-its-re.patch
+  * 0003-Port-from-NULL-to-nullptr.patch
+  * 0004-Fix-GLib-memory-management-issue.patch (forwarded request 1068360 from Vogtinator)</comment>
+    <requestid>1068413</requestid>
+  </revision>
 </revisionlist>

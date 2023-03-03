@@ -1,7 +1,7 @@
 #
 # spec file for package pdfmixtool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Publishing/PDF
 URL:            https://gitlab.com/scarpetta/pdfmixtool/
 Source0:        https://gitlab.com/scarpetta/pdfmixtool/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Patch1:         stop_using_obsolete_standards.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -41,7 +42,7 @@ BuildRequires:  pkgconfig(libqpdf)
 An application to split, merge, rotate, mix and create multipage PDF files.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake

@@ -290,4 +290,12 @@
     <comment>ugrep 3.9.7</comment>
     <requestid>1062391</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0aaca36d6ff3a85f624e22a955f9e31b</srcmd5>
+    <version>3.10.0</version>
+    <time>1677794619</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 3.10.0</comment>
+    <requestid>1068539</requestid>
+  </revision>
 </revisionlist>

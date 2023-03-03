@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * Don't claim 3rd-party repos are part of the OS on Debian derivatives
+  * Flatpak: correctly check for the appstream-qt version
+  * ApplicationPage: Improve narrow layout with lots of buttons
+  * pk: Properly check for AppStream versions
+  * fwupd: do fwupd_client_connect before setting user agent
+  * Fix rendering Missing Backends
+  * pk: Fix searching by state
+  * screenshots: Only use AnimatedImage if we think there's a chance
+  * Always show distro name for PackageKit apps (kde#465204)
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

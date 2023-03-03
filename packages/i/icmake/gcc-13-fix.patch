@@ -1,0 +1,12 @@
+diff --git a/icmake/comp/symtab/symtab.h b/icmake/comp/symtab/symtab.h
+index cea2df3..a57ea2c 100644
+--- a/icmake/comp/symtab/symtab.h
++++ b/icmake/comp/symtab/symtab.h
+@@ -3,6 +3,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "../exprtype/exprtype.h"
+ 

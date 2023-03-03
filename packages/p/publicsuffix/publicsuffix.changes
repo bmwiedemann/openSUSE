@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 27 20:40:10 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20230226:
+  * TLD and gTLD data updated
+  * add SAKURA Internet Inc. domains
+  * Add 3.azurestaticapps.net DNS suffix
+  * Add subset of Akamai domains to the PSL
+  * Add it.com
+  * Add Snowflake private domains
+  * add canva-apps.com and canva-apps.cn
+  * add fastly-edge.com
+  * Add Adobe Developer Platform domains
+  * Add autocode.dev
+  * update .bj
+
+-------------------------------------------------------------------
 Wed Nov 30 11:06:36 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20221129:

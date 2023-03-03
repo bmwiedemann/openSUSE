@@ -206,8 +206,6 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 
 %files -n heif-thumbnailer
 %{_bindir}/heif-thumbnailer
-%{_datadir}/mime/packages/avif.xml
-%{_datadir}/mime/packages/heif.xml
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/heif.thumbnailer
 %{_mandir}/man1/heif-thumbnailer.1%{?ext_man}

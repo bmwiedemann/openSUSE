@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  1 08:15:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add -lzstd as libbfd is linked against the compression library.
+
+-------------------------------------------------------------------
 Wed Feb 22 08:21:22 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Rebase binutils-2.40.patch for v6.2.

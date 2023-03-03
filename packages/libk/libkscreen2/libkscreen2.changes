@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 28 17:34:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * Revert "fix(randr): screen is dirty when switching display modes" (kde#462725)
+  * dpms/wayland: properly manage org_kde_kwin_dpms instances
+  * dpms/wayland: Explicitly set as unsupported if addRegistryListener didn't find the interface (kde#466181)
+
+-------------------------------------------------------------------
 Tue Feb 21 14:09:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.1

@@ -37,7 +37,7 @@
 %define use_test   test
 %endif
 Name:           obs-service-%{service}
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        An OBS source service: Download, verify and vendor Go module dependencies
 License:        GPL-2.0-or-later

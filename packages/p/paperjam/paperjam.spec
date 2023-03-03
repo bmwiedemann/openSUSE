@@ -1,7 +1,7 @@
 #
 # spec file for package paperjam
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 URL:            https://mj.ucw.cz/sw/paperjam/
 Source:         http://mj.ucw.cz/download/linux/paperjam-%{version}.tar.gz
 Patch0:         reproducible.patch
+Patch1:         stop_using_obsolete_standards.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libpaper-devel
@@ -38,6 +39,7 @@ adding cropmarks, and many other tricks.
 %autosetup -p1
 
 %build
+%set_build_flags
 %make_build
 
 %install

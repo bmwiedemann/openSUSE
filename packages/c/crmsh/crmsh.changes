@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 02 06:37:38 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230302.2b5310b9:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: bootstrap: Add sudo before crm_node under non-root user on remote node
+
+-------------------------------------------------------------------
+Thu Mar 02 02:23:26 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230302.fc282490:
+  * Dev: behave: Create user alice on qnetd node
+  * Dev: behave: don't build crmsh code on qnetd node
+
+-------------------------------------------------------------------
+Thu Mar 02 01:36:34 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230302.2ed0ab14:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: qdevice: Unable to setup qdevice under non-root user (bsc#1208770)
+
+-------------------------------------------------------------------
+Tue Feb 28 10:07:22 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230228.2f852310:
+  * Dev: utils: Suppress the output of ssh-copy-id for non-root user case
+
+-------------------------------------------------------------------
+Mon Feb 27 01:58:59 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230227.b420cbf5:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: utils: Avoid using magic number
+
+-------------------------------------------------------------------
 Fri Feb 24 09:36:48 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230224.498677ab:

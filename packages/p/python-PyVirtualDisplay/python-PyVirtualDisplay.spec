@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,8 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 %if %{with test}
 %check
 donttest="examples or smart"
+# This test fails sometimes because a race condition with threads
+donttest+=" or test_disp_var"
 %{python_expand #
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 xvfb-run --server-args "-screen 0 1920x1080x24" \

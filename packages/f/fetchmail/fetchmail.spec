@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.36
+Version:        6.4.37
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later

@@ -380,4 +380,18 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
      Release-a-lock-that-is-no-longer-used-in-dsh.patch (forwarded request 1046437 from eeich)</comment>
     <requestid>1046438</requestid>
   </revision>
+  <revision rev="47" vrev="9">
+    <srcmd5>877463a5611770c758c65c854297e164</srcmd5>
+    <version>2.34</version>
+    <time>1677794658</time>
+    <user>dimstar_suse</user>
+    <comment>- Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
+  Schedmd did it again! Slurm 23.02 broke the pdsh-internal
+  List type by exposing it thru it's public API. The way to
+  protect from it no longer works as types are actually used
+  in the header.
+  This is a hot fix on the pdsh side, that is hopefully sufficiently
+  generic. (boo#1208846). (forwarded request 1068673 from eeich)</comment>
+    <requestid>1068674</requestid>
+  </revision>
 </revisionlist>

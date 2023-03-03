@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 27 15:10:02 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.10.2:
+  * Fixed:
+    - hlssink3: Allow signal handlers to return `None`
+    - gtk4:
+      . Make GL context sharing more reliable in pipelines with
+        multiple `gtk4paintablesinks`
+      . Attach channel receiver to the main context from the
+        correct thread to make it possible to start the sink from a
+        different thread than the main thread without having
+        retrieved the paintable from the main thread before.
+    - fmp4mux/mp4mux: Ignore caps changes if only the framerate
+      changes.
+  * Changed: gtk4: Simplify and refactor GL context sharing. Apart
+    from being more reliable this reduces GL resource usage.
+- Stop using git date and commitid in version, we are using
+  upstream released tags now.
+
+-------------------------------------------------------------------
+Thu Feb 16 15:14:03 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the aws plugin in big endian architectures since it
+  requires the ring crate which doesn't support big endian systems
+  (see gh#briansmith/ring#1555)
+
+-------------------------------------------------------------------
 Thu Feb 16 09:42:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add BuildRequires: zstd so it build in SLE/Leap now that the

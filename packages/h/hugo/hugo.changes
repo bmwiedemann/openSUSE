@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Mar 01 21:16:35 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.111.0:
+  * Revert "build(deps): bump gocloud.dev from 0.24.0 to 0.28.0 (#10610)"
+  * build: Bump build images
+  * build: Update Linux ARM build image
+  * tpl/tplimpl: Remove the Google News internal template
+  * strings: fix Truncate behavior for formatted html
+  * tpl/strings: Adjust benchmark
+  * tpl/strings: Add BenchmarkTruncate
+  * cods: Regen docs helper
+  * Move the Related doc counter to prevent a race
+  * Misc ioutil deprecation adjustments
+  * Replace deprecated ioutil with io and os
+  * build(deps): bump github.com/tdewolff/parse/v2 from 2.6.4 to 2.6.5
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17
+  * build(deps): bump golang.org/x/image
+  * Remove unused temp directory
+  * exif: Return the proper exposure time value in some special cases
+  * Add a page template func
+  * dartsass: Import CSS without extension at compile time
+  * Split parse and render for Goldmark
+  * related: Add config option cardinalityThreshold
+  *  docs: Another fix related docs example
+  * docs: Fix related docs example
+  * build(deps): bump golang.org/x/net from 0.4.0 to 0.7.0
+  * Fix shortcode error when closing without .Inner
+  * Throw an error when shortcode is expected to be closed
+  * Add some shortcode testcases
+  * sass: Remove some unused leftover code
+  * resources/sass: Remove debug statements
+  * page: Move the cache double check right after the lock
+  * page: Add some concurrency to the building of the related page index
+  * related: Adjust benchmark
+  * create: Fix typo in error message
+  * tocss: Simplify the hugo:vars type handling
+  * resource_transformers/tocss: Fixed hugo:vars casting
+  * Adjust tests for GO 1.20
+  * tpl/internal: Sync Go template src to Go 1.20
+  * build: Update to Go 1.20
+  * Add page fragments support to Related
+  * related: Adjust benchmark
+  * related: Add benchmark
+  * tpl/collections: Improve error message in Index
+  * Make the HTML collector parsing more robust
+  * Revert "build(deps): bump github.com/getkin/kin-openapi from 0.110.0 to 0.114.0"
+  * deps: Upgrade github.com/yuin/goldmark v1.5.3 => v1.5.4
+  * tpl/strings: Add strings.ContainsNonSpace
+  * build(deps): bump github.com/getkin/kin-openapi from 0.110.0 to 0.114.0
+  * deps: Upgrade github.com/alecthomas/chroma v2.4.0 => v2.5.0
+  * markup: Fix linenos codeblock hl option case regression
+  * Fix slow HTML elements collector for the pre case
+  * publisher: Add benchmark
+  * snap: Install dart-sass-embedded for 32-bit ARM (armhf) too
+  * snap: Add read access for ~/.gitconfig.local and ~/.config/git/* too
+  * commands: Fix server url rewrites (http status 200)
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.10 to 2.2.11
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.28.0 (#10610)
+  * Fix description of collections.Uniq
+  * Update CONTRIBUTING.md
+  * Fix shortcode detection in RenderString
+  * Only invoke a given cached partial once
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Jan 17 17:45:57 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.110.0:
