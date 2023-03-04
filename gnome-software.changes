@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  3 11:56:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.5:
+  + Fix few memory leaks.
+- Drop patches fixed upstream:
+  + 66b400d63b8d7b921b83250a8b9a09e9a1eb6732.patch
+  + 1355554764815195aaf9f6e23acdd7a9c521ceaa.patch
+
+-------------------------------------------------------------------
 Mon Feb 13 08:10:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream leak fixes:
