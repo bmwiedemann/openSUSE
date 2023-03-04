@@ -23,7 +23,7 @@
 usage ()
 {
     echo "usage: $0 <1-5>"
-    echo "       $0 -local [ -sle12 | -factory ] <dir>"
+    echo "       $0 -local [ -sle11 | -sle12 | -factory | -aarch64 | -powerpc64le | -s390 | -s390x ] <dir>"
     echo
     echo "Verify remote results at:"
     echo "  ./binaries-testsuite.distro.arch/gdb-testresults"
@@ -46,12 +46,19 @@ fi
 n="$1"
 shift
 
+have_sle11=false
 have_sle12=false
 have_factory=false
 have_aarch64=false
+have_powerpc64le=false
+have_s390=false
+have_s390x=false
 if [ "$n" = "-local" ]; then
     while [ $# -gt 1 ]; do
 	case $1 in
+	    -sle11)
+		have_sle11=true
+		;;
 	    -sle12)
 		have_sle12=true
 		;;
@@ -60,6 +67,15 @@ if [ "$n" = "-local" ]; then
 		;;
 	    -aarch64)
 		have_aarch64=true
+		;;
+	    -powerpc64le|-ppc64le)
+		have_powerpc64le=true
+		;;
+	    -s390)
+		have_s390=true
+		;;
+	    -s390x)
+		have_s390x=true
 		;;
 	    *)
 		echo "Don't know how to handle arg: $1"
@@ -142,7 +158,10 @@ kfail=(
     "FAIL: gdb.threads/signal-while-stepping-over-bp-other-thread.exp: step \(pattern 3\)"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26915
     "FAIL: gdb.threads/schedlock.exp: schedlock=off: .*: other threads ran - unlocked"
-    "FAIL: gdb.threads/watchthreads-threaded.exp: watchpoint on args\[3\] hit in thread"
+    "FAIL: gdb.threads/watchthreads-threaded.exp: watchpoint on args\[[1-3]\] hit in thread"
+    "FAIL: gdb.threads/watchthreads-threaded.exp: watch args\[[1-3]\]"
+    "FAIL: gdb.threads/watchthreads-threaded.exp: threaded watch loop"
+    "FAIL: gdb.threads/watchthreads-threaded.exp: combination of threaded watchpoints = 30 \+ initial values"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28479
     "FAIL: gdb.mi/mi-nonstop.exp: wait for thread exit \(timeout\)"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26273
@@ -163,9 +182,9 @@ kfail=(
     "FAIL: gdb.base/info-os.exp: continue \(timeout\)"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26284
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28275
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28343
     "FAIL: gdb.threads/detach-step-over.exp: .*internal error"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26363
     "FAIL: gdb.xml/tdesc-reload.exp: .*internal error"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26761
@@ -222,9 +241,6 @@ kfail=(
     "FAIL: gdb.reverse/i386-sse-reverse.exp: verify xmm2 after reverse xorpd"
     "FAIL: gdb.reverse/i386-sse-reverse.exp: verify xmm2 after reverse xorps"
 
-    # Fedora test.  Fails because it doesn't handle ppc64le.
-    "FAIL: gdb.arch/powerpc-bcl-prologue.exp: powerpc arch test"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29419
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29409
     "FAIL: gdb.opt/inline-small-func.exp: info breakpoints"
@@ -254,7 +270,32 @@ kfail=(
     "FAIL: gdb.base/info-os.exp: get shared-memory regions"
     "FAIL: gdb.base/info-os.exp: get threads"
 
-    
+    #https://sourceware.org/bugzilla/show_bug.cgi?id=29790
+    "FAIL: gdb.arch/i386-pkru.exp: read value after setting value"
+    "FAIL: gdb.arch/i386-pkru.exp: variable after reading pkru"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=28478
+    "FAIL: gdb.gdb/selftest.exp: backtrace through signal handler"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29781
+    "FAIL: gdb.mi/mi-multi-commands.exp: args=: look for second command output, command length .* \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=27813
+    "FAIL: .*.exp: .*tab complete .* \(clearing input line\) \(timeout\)"
+    "FAIL: .*.exp: .*cmd complete .*"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=27027
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=28464
+    "FAIL: gdb.ada/mi_var_access.exp: Create varobj \(unexpected output\)"
+    "FAIL: gdb.ada/mi_var_access.exp: update at stop 2 \(unexpected output\)"
+
+    # Fragile test-case, requires glibc to fail in a certain way, ignore.
+    "FAIL: gdb.base/gdb-rhbz1156192-recursive-dlopen.exp:"
+
+    # GDB fails to print "Thread $x stopped" message for all threads, but
+    # subsequent info threads shows all threads stopped, and a previous
+    # info threads show all threads running.  Not harmful.
+    "FAIL: gdb.threads/interrupt-while-step-over.exp: displaced-stepping=off: iter=[0-9]*: wait for stops \(timeout\)"
 ) # kfail
 
 kfail_sle12=(
@@ -306,13 +347,85 @@ kfail_sle12=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29245
     # Python-2 related.
     "FAIL: gdb.python/py-mi-cmd.exp: -pycmd bk3 \(unexpected output\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=26967
+    "FAIL: gdb.base/longjmp.exp: next over call_longjmp \(2\)"
+    "FAIL: gdb.base/longjmp.exp: next over longjmp\(1\)"
+    "FAIL: gdb.base/longjmp.exp: next over patt3"
+    "FAIL: gdb.base/premature-dummy-frame-removal.exp: p some_func \(\)"
+    "FAIL: gdb.base/premature-dummy-frame-removal.exp: set debug frame on"
+
+    # Commit 2d77a94ff17 ("[gdb/testsuite] Require debug info for
+    # gdb.tui/tui-layout-asm-short-prog.exp")
+    "FAIL: gdb.tui/tui-layout-asm-short-prog.exp: check asm box contents"
+    "FAIL: gdb.tui/tui-layout-asm-short-prog.exp: check asm box contents again"
+
+    # Test-cases that use -static but may turn out to be PIE when using
+    # unix/-fPIE/-fpie.
+    "FAIL: gdb.base/break-entry.exp: running to .* in runto"
+    "FAIL: gdb.base/catch-fork-static.exp: run to fork"
+    "FAIL: gdb.threads/staticthreads.exp: continue to main's call of sem_post"
+    "FAIL: gdb.threads/staticthreads.exp: handle SIG32 helps"
+    "FAIL: gdb.threads/staticthreads.exp: running to main in runto"
+    "FAIL: gdb.threads/staticthreads.exp: running to main in runto"
+    "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into _start"
+    "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into foo"
+    "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into bar"
+    "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into foo"
+
+    # Fails on both i586 and s390x/-m31 for SLE-12-SP3, but does not reproduce
+    # on s390x/-m31 for SLE-12-SP5 with trunk.
+    "FAIL: gdb.guile/scm-disasm.exp: disassemble via memory port"
+    "FAIL: gdb.guile/scm-disasm.exp: memory-port: disassemble"
 ) # kfail_sle12
 
+kfail_sle11=(
+    "${kfail_sle12[@]}"
+
+    # For SLE-11, libipt is not enabled, so on intel we can run into
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30073 affecting
+    # many test-cases.
+    "FAIL: gdb.btrace/"
+    "FAIL: gdb.python/py-record-btrace"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=26956
+    "FAIL: gdb.base/command-line-input.exp: print 1"
+
+    # Due to using old python, 2.6.
+    # For instance, "ValueError: zero length field name in format".
+    "FAIL: gdb.python/py-autoloaded-pretty-printers-in-newobjfile-event.exp: print test"
+    "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_address: python gdb.Breakpoint\("  *{}".format\(str\(main_addr\)\)\)"
+    "FAIL: gdb.python/py-framefilter.exp: info frame filter after disable frame filter"
+    "FAIL: gdb.python/py-framefilter.exp: info frame filter after reenabling frame filter"
+    "FAIL: gdb.python/py-framefilter.exp: info frame filter after setting priority"
+    "FAIL: gdb.python/py-framefilter.exp: info frame filter before disable frame filter"
+    "FAIL: gdb.python/py-framefilter.exp: info frame filter before setting priority"
+    "FAIL: gdb.python/py-mi.exp: check tsrvw expression value \(unexpected output\)"
+    "FAIL: gdb.python/py-mi.exp: check tsrvw varobj value \(unexpected output\)"
+    "FAIL: gdb.python/py-mi.exp: create tsrvw varobj \(unexpected output\)"
+    "FAIL: gdb.python/py-prettyprint.exp: c\+\+: print tsrvw"
+    "FAIL: gdb.python/py-prettyprint.exp: c: print tsrvw"
+    "FAIL: gdb.python/py-value.exp: attempt to construct large value with small buffer"
+    "FAIL: gdb.python/py-value.exp: construct array value from buffer"
+    "FAIL: gdb.python/py-value.exp: construct value from buffer"
+    "FAIL: gdb.python/py-value.exp: print array value"
+    "FAIL: gdb.python/py-value.exp: print first array element"
+    "FAIL: gdb.python/py-value.exp: print out of bounds array element"
+    "FAIL: gdb.python/py-value.exp: print second array element"
+    "FAIL: gdb.python/py-value.exp: print third array element"
+
+    # To be investigated.
+    "FAIL: gdb.base/compare-sections.exp: after run to main: compare-sections -r"
+    "FAIL: gdb.python/py-framefilter-thread.exp: bt no-filters"
+
+    # Gdb runs out of virtual memory, we can expect an internal error.
+    "FAIL: gdb.base/gcore-excessive-memory.exp: attach \(GDB internal error\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30154
+    "FAIL: gdb.multi/multi-target-no-resumed.exp: inf_A=.: inf_B=.: send_gdb control C \(timeout\)"
+)
+
 kfail_factory=(
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=27027
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28464
-    "FAIL: gdb.ada/mi_var_access.exp: Create varobj \(unexpected output\)"
-    "FAIL: gdb.ada/mi_var_access.exp: update at stop 2 \(unexpected output\)"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28463
     "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: print va.t\(1\) := 15"
     "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: continue to update_small for va.t"
@@ -333,8 +446,6 @@ kfail_factory=(
     "FAIL: gdb.threads/signal-command-handle-nopass.exp: step-over (yes|no): signal SIGUSR1"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28477
     "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: continue to marker \(clone\)"
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28478
-    "FAIL: gdb.gdb/selftest.exp: backtrace through signal handler"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26867
     "FAIL: gdb.threads/signal-sigtrap.exp: sigtrap thread 1: signal SIGTRAP reaches handler"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28510
@@ -366,6 +477,8 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29706
     "FAIL: gdb.base/eof-exit.exp: with non-dump terminal: with bracketed-paste-mode on: close GDB with eof \(missed the prompt\)"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29965
+    "FAIL: gdb.threads/process-exit-status-is-leader-exit-status.exp: iteration=.*: continue \(the program exited\)"
 ) # kfail_factory
 
 kfail_aarch64=(
@@ -390,6 +503,140 @@ kfail_aarch64=(
     "FAIL: gdb.base/watchpoint-unaligned.exp: size8twice write"
 ) # kfail_aarch64
 
+kfail_powerpc64le=(
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29420
+    "FAIL: gdb.ada/convvar_comp.exp: print \\\$item.started"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29814
+    "FAIL: gdb.base/msym-bp-shl.exp: debug=0: before run: info breakpoint"
+    "FAIL: gdb.base/msym-bp-shl.exp: debug=1: before run: info breakpoint"
+
+    # Commit a0eda3df5b7 ("PowerPC, fix support for printing the function
+    # return value for non-trivial values").
+    "FAIL: gdb.cp/non-trivial-retval.exp: finish from"
+    "FAIL: gdb.ada/array_return.exp: value printed by finish of Create_Small_Float_Vector"
+    "FAIL: gdb.base/gnu_vector.exp: call add_structvecs"
+
+    # Commit f68eca29d3b ("PowerPC, fix gdb.base/retval-large-struct.exp").
+    "FAIL: gdb.base/retval-large-struct.exp: finish from return_large_struct"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29793
+    "FAIL: gdb.cp/gdb2495.exp: call a function that raises an exception without a handler."
+    "FAIL: gdb.cp/gdb2495.exp: bt after returning from a popped frame"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29792
+    "FAIL: gdb.opt/solib-intra-step.exp: second-hit"
+    
+    # Carl Love mentioned he's working on these.
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29793#c2
+    "FAIL: gdb.reverse/finish-precsave.exp"
+    "FAIL: gdb.reverse/finish-reverse.exp"
+    
+    # Commit 29004660c94 ("PowerPC fix for gdb.server/sysroot.exp").
+    "FAIL: gdb.server/sysroot.exp: sysroot=local: continue to printf"
+    "FAIL: gdb.server/sysroot.exp: sysroot=remote: continue to printf"    
+
+    # Known to run into timeouts.
+    "FAIL: gdb.gdb/python-helper.exp"
+
+    # Fedora test.  Fails because it doesn't handle ppc64le.
+    "FAIL: gdb.arch/powerpc-bcl-prologue.exp: powerpc arch test"
+
+    # Commit 301fe55e9c4 ("PowerPC: bp-permanent.exp, kill-after-signal fix").
+    "FAIL: gdb.base/kill-after-signal.exp: stepi"
+    "FAIL: gdb.base/bp-permanent.exp: always_inserted=off, sw_watchpoint=0: stepi signal with handler: mainline pc points at permanent breakpoint"
+    "FAIL: gdb.base/bp-permanent.exp: always_inserted=off, sw_watchpoint=1: stepi signal with handler: mainline pc points at permanent breakpoint"
+    "FAIL: gdb.base/bp-permanent.exp: always_inserted=on, sw_watchpoint=0: stepi signal with handler: mainline pc points at permanent breakpoint"
+    "FAIL: gdb.base/bp-permanent.exp: always_inserted=on, sw_watchpoint=1: stepi signal with handler: mainline pc points at permanent breakpoint"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29813
+    "FAIL: gdb.base/vla-optimized-out.exp: o1: printed size of optimized out vla"
+
+    # Commit 4d88ae0c7b5 ("[gdb/testsuite] Fix gdb.base/maint.exp on powerpc64le").
+    "FAIL: gdb.base/maint.exp: maint print objfiles: symtabs"
+
+    # Commit e7d69e72bfd ("gdb: always add the default register groups").
+    "FAIL: gdb.xml/tdesc-regs.exp: maintenance print reggroups"
+
+    # Commit 91836f41e20 ("Powerpc fix for gdb.base/unwind-on-each-insn.exp").
+    "FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level [0-9]*: backtrace when the unwind is broken at frame [0-9]*"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29815
+    "FAIL: gdb.reverse/finish-reverse-bkpt.exp: reverse-finish from void_func trips breakpoint at entry"
+    "FAIL: gdb.reverse/finish-reverse-bkpt.exp: no spurious proceed after breakpoint stop"
+    "FAIL: gdb.reverse/next-reverse-bkpt-over-sr.exp: reverse-next over call trips user breakpoint at function entry"
+    "FAIL: gdb.reverse/next-reverse-bkpt-over-sr.exp: stopped at the right callee call"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29816
+    "FAIL: gdb.ada/float-bits.exp: print 16llf#4000921fb54442d18469898cc51701b8#"
+    "FAIL: gdb.ada/float-bits.exp: print \\\$foo:=16llf#4000921fb54442d18469898cc51701b8#"
+    "FAIL: gdb.ada/float-bits.exp: print internal long double variable after assignment"
+
+    # Commit 8b272d7671f ("[gdb/testsuite] Fix gdb.guile/scm-symtab.exp for
+    # ppc64le").
+    "FAIL: gdb.guile/scm-symtab.exp: test find-pc-line with resume address"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29897
+    "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=start: start \(GDB internal error\)"
+    "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run \(GDB internal error\)"
+)
+
+kfail_powerpc64le_sle12=(
+    # Commit 85819864f7c ("[gdb/testsuite] Fix gdb.arch/altivec-regs.exp with
+    # gcc 4.8.5").
+    "FAIL: gdb.arch/altivec-regs.exp: down to vector_fun"
+    "FAIL: gdb.arch/altivec-regs.exp: finish returned correct value"
+    "FAIL: gdb.arch/altivec-regs.exp: print vector parameter a"
+    "FAIL: gdb.arch/altivec-regs.exp: print vector parameter b"
+)
+
+kfail_s390x_s390=(
+    # Commit 167f3beb655 ("[gdb/testsuite] Fix gdb.base/write_mem.exp for big
+    # endian")
+    "FAIL: gdb.base/write_mem.exp: x /xh main"
+)
+
+# Plain s390 or s390x/-m31.
+kfail_s390=(
+    "${kfail_s390x_s390[@]}"
+    
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29841
+    "FAIL: gdb.reverse/.*.exp:"
+
+    # Doesn't reproduce with trunk on SLE-12SP5.
+    "FAIL: gdb.guile/scm-ports.exp: buffered: test byte at sp, before flush"
+    
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29867
+    "FAIL: gdb.guile/scm-lazy-string.exp: ptr: lazy string length 2 value"
+    "FAIL: gdb.guile/scm-lazy-string.exp: ptr: lazy string value"
+    "FAIL: gdb.guile/scm-lazy-string.exp: ptr: print ptr"
+    "FAIL: gdb.base/sym-file.exp: add-symbol-file sym-file-lib.so addr"
+    "FAIL: gdb.base/sym-file.exp: continue to breakpoint: gdb_add_symbol_file"
+    "FAIL: gdb.python/py-lazy-string.exp: ptr: lazy string length 2 value"
+    "FAIL: gdb.python/py-lazy-string.exp: ptr: lazy string value"
+    "FAIL: gdb.python/py-lazy-string.exp: ptr: print ptr"
+    "FAIL: gdb.python/py-nested-maps.exp: headers=on: pretty=off: exp='\*mm': depth=1: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: headers=on: pretty=off: exp='\*mm': depth=2: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: headers=on: pretty=off: exp='\*mm': depth=3: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: headers=on: pretty=off: exp='\*mm': depth=unlimited: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=off: exp='\*mm': depth=1: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=off: exp='\*mm': depth=2: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=off: exp='\*mm': depth=3: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=off: exp='\*mm': depth=unlimited: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=on: exp='\*mm': depth=1: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=on: exp='\*mm': depth=2: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=on: exp='\*mm': depth=3: p \*mm"
+    "FAIL: gdb.python/py-nested-maps.exp: pretty=on: exp='\*mm': depth=unlimited: p \*mm"
+    "FAIL: gdb.base/info-shared.exp:"
+    "FAIL: gdb.python/py-strfns.exp: p /d {char\[4\]} arg"
+    "FAIL: gdb.python/py-strfns.exp: p arg"
+)
+
+# s390x/-m64.
+kfail_s390x=(
+    "${kfail_s390x_s390[@]}"
+)
+
 case $n in
     1)
 	# 'FAIL: .* internal error' in gdb.sum.
@@ -398,6 +645,8 @@ case $n in
 	# Todo: apply kfail_factory/kfail_sle12 only when appropriate.
 	kfail+=("${kfail_factory[@]}")
 	kfail+=("${kfail_sle12[@]}")
+	kfail+=("${kfail_s390[@]}")
+	kfail+=("${kfail_powerpc64le[@]}")
 	kfail_re=$(join "|" "${kfail[@]}")
 	grep "^FAIL:.*internal error" binaries-testsuite*/gdb-testresults/*.sum \
 	     | grep -E -v "$kfail_re"
@@ -425,7 +674,7 @@ case $n in
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26284
 	    "infrun.c:[0-9]*: internal-error: finish_step_over: Assertion \`ecs->event_thread->control.trap_expected' failed."
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26363
-	    ".i586.*i386-linux-nat.c:[0-9]*: internal-error: Got request for bad register number 41."
+	    ".i586.*i386-linux-nat.c:[0-9]*: internal-error: Got request for bad register number [0-9]*."
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26761
 	    "thread.c:[0-9]*: internal-error: inferior_thread: Assertion \`current_thread_ \!= nullptr' failed."
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=19675
@@ -441,6 +690,15 @@ case $n in
 	    "record-full.c:[0-9]*: internal-error: ptid_t record_full_wait_1\(target_ops\*, ptid_t, target_waitstatus\*, target_wait_flags\): Assertion \`\(options & TARGET_WNOHANG\) != 0' failed."
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26873
 	    "infrun.c:[0-9]*: internal-error: resume_1: Assertion \`!\(thread_has_single_step_breakpoints_set \(tp\) && step\)' failed."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=29783
+	    "frame.c:[0-9]*: internal-error: get_selected_frame: Assertion \`selected_frame != NULL' failed."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=29841
+	    "regcache.c:[0-9]*: internal-error: raw_read: Assertion \`buf != NULL' failed."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=29897
+	    "displaced-stepping.c:[0-9]*: internal-error: prepare: Assertion \`buf.current_thread != thread' failed."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -539,6 +797,21 @@ case $n in
 	    done
 	)
 
+	(
+	    kfail+=("${kfail_powerpc64le[@]}")
+
+	    # Known clean config: SLE 15 / openSUSE 15.4 powerpc64le.
+	    for config in SLE-15.ppc64le/gdb-testresults openSUSE_Leap_15.4.ppc64le/gdb-testresults; do
+		sums=("$config/gdb-ppc64le-suse-linux-m64.-fno-PIE.-no-pie.sum"
+		      "$config/gdb-ppc64le-suse-linux-m64.sum")
+	    done
+	    
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
+
 	;;
 
     5)
@@ -546,12 +819,16 @@ case $n in
 		     | grep -v SLE-11)
 	nolibrpm=$(ls -1 binaries-testsuite*/gdb-testresults/*.sum \
 		     | grep SLE-11)
-	grep -c "PASS: gdb.suse/zypper-hint.exp: zypper hint printed (librpm)" \
-	     $librpm \
-	    | grep -E -v ":1"
-	grep -c "PASS: gdb.suse/zypper-hint.exp: zypper hint printed (no librpm)" \
-	     $nolibrpm \
-	    | grep -E -v ":1"
+	if [ "$librpm" != "" ]; then
+	    grep -c "PASS: gdb.suse/zypper-hint.exp: zypper hint printed (librpm)" \
+		 $librpm \
+		| grep -E -v ":1"
+	fi
+	if [ "$nolibrpm" != "" ]; then
+	    grep -c "PASS: gdb.suse/zypper-hint.exp: zypper hint printed (no librpm)" \
+		 $nolibrpm \
+		| grep -E -v ":1"
+	fi
 	;;
 
     -local)
@@ -570,11 +847,27 @@ case $n in
 	if $have_factory; then
 	    kfail+=("${kfail_factory[@]}")
 	fi
+	if $have_sle11; then
+	    kfail+=("${kfail_sle11[@]}")
+	fi
 	if $have_sle12; then
 	    kfail+=("${kfail_sle12[@]}")
 	fi
 	if $have_aarch64; then
 	    kfail+=("${kfail_aarch64[@]}")
+	fi
+	if $have_powerpc64le; then
+	    kfail+=("${kfail_powerpc64le[@]}")
+	fi
+	if $have_powerpc64le && $have_sl12; then
+	    kfail+=("${kfail_powerpc64le_sle12[@]}")
+	fi
+	if $have_s390; then
+	    kfail+=("${kfail_s390[@]}")
+	fi
+
+	if $have_s390x; then
+	    kfail+=("${kfail_s390x[@]}")
 	fi
 
 	for sum in "${sums[@]}"; do

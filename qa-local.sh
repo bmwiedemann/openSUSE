@@ -12,6 +12,7 @@ openSUSE_Leap_15.3
 openSUSE_Factory
 SLE-15
 SLE-12
+SLE-11
 "
 
 usage ()
@@ -75,9 +76,9 @@ have_combo ()
 
     if [ "$arch" = "i586" ]; then
 	case $c in
-	    SLE-*)
+            SLE-12|SLE-15)
 		return 1
-	    ;;
+		;;
 	esac
     fi
     return 0
@@ -101,6 +102,7 @@ case "$n" in
 		fi
 		osc build \
 		    --clean \
+		    --no-verify \
 		    --trust-all-projects \
 		    --no-service \
 		    $c $arch \
@@ -132,6 +134,7 @@ case "$n" in
 		mkdir -p $pkgs/$c.$arch
 		osc build \
 		    --clean \
+		    --no-verify \
 		    --trust-all-projects \
 		    --no-service \
 		    -k $pkgs/$c.$arch \
@@ -183,6 +186,9 @@ case "$n" in
 			;;
 		    SLE-12)
 			bash qa.sh -local -sle12 $pkgs/gdb-testresults.$c.$arch
+			;;
+		    SLE-11)
+			bash qa.sh -local -sle11 $pkgs/gdb-testresults.$c.$arch
 			;;
 		    *)
 			bash qa.sh -local $pkgs/gdb-testresults.$c.$arch

@@ -1,0 +1,1288 @@
+From 5a700ee4aabd1a2ed3530cab0b172c65b574ca41 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 23 Feb 2023 15:14:12 +0100
+Subject: [PATCH 2/2] binutils, gdb: support zstd compressed debug section
+
+---
+ bfd/Makefile.am    |   4 +-
+ bfd/Makefile.in    |  13 ++-
+ bfd/aclocal.m4     |   2 +
+ bfd/bfd-in.h       |   3 +-
+ bfd/bfd-in2.h      |  12 +-
+ bfd/bfd.c          |  26 +++--
+ bfd/compress.c     |  72 +++++++++---
+ bfd/config.in      |   3 +
+ bfd/configure      | 268 ++++++++++++++++++++++++++++++++++++++++++++-
+ bfd/configure.ac   |   3 +-
+ bfd/elf.c          |  12 ++
+ bfd/elfxx-target.h |   6 +-
+ bfd/section.c      |   3 +-
+ config/zstd.m4     |  23 ++++
+ configure          |  10 ++
+ configure.ac       |   3 +
+ gdb/Makefile.in    |   8 +-
+ gdb/NEWS           |   2 +
+ gdb/acinclude.m4   |   3 +-
+ gdb/config.in      |   3 +
+ gdb/configure      | 137 ++++++++++++++++++++++-
+ gdb/configure.ac   |   4 +-
+ 22 files changed, 570 insertions(+), 50 deletions(-)
+ create mode 100644 config/zstd.m4
+
+diff --git a/bfd/Makefile.am b/bfd/Makefile.am
+index b9a3f8207ac..e3fe1d34f6c 100644
+--- a/bfd/Makefile.am
++++ b/bfd/Makefile.am
+@@ -57,7 +57,7 @@ ZLIBINC = @zlibinc@
+ 
+ WARN_CFLAGS = @WARN_CFLAGS@
+ NO_WERROR = @NO_WERROR@
+-AM_CFLAGS = $(WARN_CFLAGS) $(ZLIBINC)
++AM_CFLAGS = $(WARN_CFLAGS) $(ZLIBINC) $(ZSTD_CFLAGS)
+ AM_CPPFLAGS = -DBINDIR='"$(bindir)"' -DLIBDIR='"$(libdir)"' @LARGEFILE_CPPFLAGS@
+ if PLUGINS
+ bfdinclude_HEADERS += $(INCDIR)/plugin-api.h
+@@ -779,7 +779,7 @@ ofiles: stamp-ofiles ; @true
+ libbfd_la_SOURCES = $(BFD32_LIBS_CFILES)
+ EXTRA_libbfd_la_SOURCES = $(CFILES)
+ libbfd_la_DEPENDENCIES = $(OFILES) ofiles
+-libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB)
++libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS)
+ libbfd_la_LDFLAGS += -release `cat libtool-soversion` @SHARED_LDFLAGS@
+ 
+ # libtool will build .libs/libbfd.a.  We create libbfd.a in the build
+diff --git a/bfd/Makefile.in b/bfd/Makefile.in
+index 934dd4bc066..23b3e171c85 100644
+--- a/bfd/Makefile.in
++++ b/bfd/Makefile.in
+@@ -122,10 +122,12 @@ am__aclocal_m4_deps = $(top_srcdir)/../config/acx.m4 \
+ 	$(top_srcdir)/../config/lead-dot.m4 \
+ 	$(top_srcdir)/../config/nls.m4 \
+ 	$(top_srcdir)/../config/override.m4 \
++	$(top_srcdir)/../config/pkg.m4 \
+ 	$(top_srcdir)/../config/plugins.m4 \
+ 	$(top_srcdir)/../config/po.m4 \
+ 	$(top_srcdir)/../config/progtest.m4 \
+-	$(top_srcdir)/../config/zlib.m4 $(top_srcdir)/../libtool.m4 \
++	$(top_srcdir)/../config/zlib.m4 \
++	$(top_srcdir)/../config/zstd.m4 $(top_srcdir)/../libtool.m4 \
+ 	$(top_srcdir)/../ltoptions.m4 $(top_srcdir)/../ltsugar.m4 \
+ 	$(top_srcdir)/../ltversion.m4 $(top_srcdir)/../lt~obsolete.m4 \
+ 	$(top_srcdir)/bfd.m4 $(top_srcdir)/warning.m4 \
+@@ -405,6 +407,9 @@ PACKAGE_URL = @PACKAGE_URL@
+ PACKAGE_VERSION = @PACKAGE_VERSION@
+ PATH_SEPARATOR = @PATH_SEPARATOR@
+ PKGVERSION = @PKGVERSION@
++PKG_CONFIG = @PKG_CONFIG@
++PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
++PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
+ POSUB = @POSUB@
+ RANLIB = @RANLIB@
+ REPORT_BUGS_TEXI = @REPORT_BUGS_TEXI@
+@@ -422,6 +427,8 @@ WARN_CFLAGS = @WARN_CFLAGS@
+ WARN_CFLAGS_FOR_BUILD = @WARN_CFLAGS_FOR_BUILD@
+ WARN_WRITE_STRINGS = @WARN_WRITE_STRINGS@
+ XGETTEXT = @XGETTEXT@
++ZSTD_CFLAGS = @ZSTD_CFLAGS@
++ZSTD_LIBS = @ZSTD_LIBS@
+ abs_builddir = @abs_builddir@
+ abs_srcdir = @abs_srcdir@
+ abs_top_builddir = @abs_top_builddir@
+@@ -526,7 +533,7 @@ libbfd_la_LDFLAGS = $(am__append_1) -release `cat libtool-soversion` \
+ # case both are empty.
+ ZLIB = @zlibdir@ -lz
+ ZLIBINC = @zlibinc@
+-AM_CFLAGS = $(WARN_CFLAGS) $(ZLIBINC)
++AM_CFLAGS = $(WARN_CFLAGS) $(ZLIBINC) $(ZSTD_CFLAGS)
+ AM_CPPFLAGS = -DBINDIR='"$(bindir)"' -DLIBDIR='"$(libdir)"' \
+ 	@LARGEFILE_CPPFLAGS@ @HDEFINES@ @COREFLAG@ @TDEFINES@ \
+ 	$(CSEARCH) $(CSWITCHES) $(HAVEVECS) @INCINTL@
+@@ -1208,7 +1215,7 @@ OFILES = $(BFD_BACKENDS) $(BFD_MACHINES) @COREFILE@ @bfd64_libs@
+ libbfd_la_SOURCES = $(BFD32_LIBS_CFILES)
+ EXTRA_libbfd_la_SOURCES = $(CFILES)
+ libbfd_la_DEPENDENCIES = $(OFILES) ofiles
+-libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB)
++libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS)
+ 
+ # libtool will build .libs/libbfd.a.  We create libbfd.a in the build
+ # directory so that we don't have to convert all the programs that use
+diff --git a/bfd/aclocal.m4 b/bfd/aclocal.m4
+index 0f8aa1d4518..09b849dfc87 100644
+--- a/bfd/aclocal.m4
++++ b/bfd/aclocal.m4
+@@ -1176,10 +1176,12 @@ m4_include([../config/largefile.m4])
+ m4_include([../config/lead-dot.m4])
+ m4_include([../config/nls.m4])
+ m4_include([../config/override.m4])
++m4_include([../config/pkg.m4])
+ m4_include([../config/plugins.m4])
+ m4_include([../config/po.m4])
+ m4_include([../config/progtest.m4])
+ m4_include([../config/zlib.m4])
++m4_include([../config/zstd.m4])
+ m4_include([../libtool.m4])
+ m4_include([../ltoptions.m4])
+ m4_include([../ltsugar.m4])
+diff --git a/bfd/bfd-in.h b/bfd/bfd-in.h
+index a1c4bf139fc..76f841fe457 100644
+--- a/bfd/bfd-in.h
++++ b/bfd/bfd-in.h
+@@ -387,7 +387,8 @@ enum compressed_debug_section_type
+   COMPRESS_DEBUG_NONE = 0,
+   COMPRESS_DEBUG = 1 << 0,
+   COMPRESS_DEBUG_GNU_ZLIB = COMPRESS_DEBUG | 1 << 1,
+-  COMPRESS_DEBUG_GABI_ZLIB = COMPRESS_DEBUG | 1 << 2
++  COMPRESS_DEBUG_GABI_ZLIB = COMPRESS_DEBUG | 1 << 2,
++  COMPRESS_DEBUG_ZSTD = COMPRESS_DEBUG | 1 << 3
+ };
+ 
+ /* This structure is used to keep track of stabs in sections
+diff --git a/bfd/bfd-in2.h b/bfd/bfd-in2.h
+index c0b563aec02..85ab198d179 100644
+--- a/bfd/bfd-in2.h
++++ b/bfd/bfd-in2.h
+@@ -394,7 +394,8 @@ enum compressed_debug_section_type
+   COMPRESS_DEBUG_NONE = 0,
+   COMPRESS_DEBUG = 1 << 0,
+   COMPRESS_DEBUG_GNU_ZLIB = COMPRESS_DEBUG | 1 << 1,
+-  COMPRESS_DEBUG_GABI_ZLIB = COMPRESS_DEBUG | 1 << 2
++  COMPRESS_DEBUG_GABI_ZLIB = COMPRESS_DEBUG | 1 << 2,
++  COMPRESS_DEBUG_ZSTD = COMPRESS_DEBUG | 1 << 3
+ };
+ 
+ /* This structure is used to keep track of stabs in sections
+@@ -1007,7 +1008,8 @@ typedef struct bfd_section
+   unsigned int compress_status : 2;
+ #define COMPRESS_SECTION_NONE    0
+ #define COMPRESS_SECTION_DONE    1
+-#define DECOMPRESS_SECTION_SIZED 2
++#define DECOMPRESS_SECTION_ZLIB  2
++#define DECOMPRESS_SECTION_ZSTD  3
+ 
+   /* The following flags are used by the ELF linker. */
+ 
+@@ -6672,11 +6674,14 @@ struct bfd
+   /* Put pathnames into archives (non-POSIX).  */
+ #define BFD_ARCHIVE_FULL_PATH  0x100000
+ 
++  /* Compress sections in this BFD with SHF_COMPRESSED zstd.  */
++#define BFD_COMPRESS_ZSTD      0x400000
++
+   /* Flags bits to be saved in bfd_preserve_save.  */
+ #define BFD_FLAGS_SAVED \
+   (BFD_IN_MEMORY | BFD_COMPRESS | BFD_DECOMPRESS | BFD_LINKER_CREATED \
+    | BFD_PLUGIN | BFD_COMPRESS_GABI | BFD_CONVERT_ELF_COMMON \
+-   | BFD_USE_ELF_STT_COMMON)
++   | BFD_USE_ELF_STT_COMMON | BFD_COMPRESS_ZSTD)
+ 
+   /* Flags bits which are for BFD use only.  */
+ #define BFD_FLAGS_FOR_BFD_USE_MASK \
+@@ -7300,6 +7305,7 @@ void bfd_update_compression_header
+ 
+ bool bfd_check_compression_header
+    (bfd *abfd, bfd_byte *contents, asection *sec,
++    unsigned int *ch_type,
+     bfd_size_type *uncompressed_size,
+     unsigned int *uncompressed_alignment_power);
+ 
+diff --git a/bfd/bfd.c b/bfd/bfd.c
+index 913ce2d6abe..c5fca601ce8 100644
+--- a/bfd/bfd.c
++++ b/bfd/bfd.c
+@@ -176,11 +176,14 @@ CODE_FRAGMENT
+ .  {* Put pathnames into archives (non-POSIX).  *}
+ .#define BFD_ARCHIVE_FULL_PATH  0x100000
+ .
++.  {* Compress sections in this BFD with SHF_COMPRESSED zstd.  *}
++.#define BFD_COMPRESS_ZSTD      0x400000
++.
+ .  {* Flags bits to be saved in bfd_preserve_save.  *}
+ .#define BFD_FLAGS_SAVED \
+ .  (BFD_IN_MEMORY | BFD_COMPRESS | BFD_DECOMPRESS | BFD_LINKER_CREATED \
+ .   | BFD_PLUGIN | BFD_COMPRESS_GABI | BFD_CONVERT_ELF_COMMON \
+-.   | BFD_USE_ELF_STT_COMMON)
++.   | BFD_USE_ELF_STT_COMMON | BFD_COMPRESS_ZSTD)
+ .
+ .  {* Flags bits which are for BFD use only.  *}
+ .#define BFD_FLAGS_FOR_BFD_USE_MASK \
+@@ -2492,6 +2495,9 @@ bfd_update_compression_header (bfd *abfd, bfd_byte *contents,
+ 	{
+ 	  const struct elf_backend_data *bed = get_elf_backend_data (abfd);
+ 	  struct bfd_elf_section_data * esd = elf_section_data (sec);
++	  const unsigned int ch_type = abfd->flags & BFD_COMPRESS_ZSTD
++					   ? ELFCOMPRESS_ZSTD
++					   : ELFCOMPRESS_ZLIB;
+ 
+ 	  /* Set the SHF_COMPRESSED bit.  */
+ 	  elf_section_flags (sec) |= SHF_COMPRESSED;
+@@ -2499,7 +2505,7 @@ bfd_update_compression_header (bfd *abfd, bfd_byte *contents,
+ 	  if (bed->s->elfclass == ELFCLASS32)
+ 	    {
+ 	      Elf32_External_Chdr *echdr = (Elf32_External_Chdr *) contents;
+-	      bfd_put_32 (abfd, ELFCOMPRESS_ZLIB, &echdr->ch_type);
++	      bfd_put_32 (abfd, ch_type, &echdr->ch_type);
+ 	      bfd_put_32 (abfd, sec->size, &echdr->ch_size);
+ 	      bfd_put_32 (abfd, 1u << sec->alignment_power,
+ 			  &echdr->ch_addralign);
+@@ -2510,7 +2516,7 @@ bfd_update_compression_header (bfd *abfd, bfd_byte *contents,
+ 	  else
+ 	    {
+ 	      Elf64_External_Chdr *echdr = (Elf64_External_Chdr *) contents;
+-	      bfd_put_32 (abfd, ELFCOMPRESS_ZLIB, &echdr->ch_type);
++	      bfd_put_32 (abfd, ch_type, &echdr->ch_type);
+ 	      bfd_put_32 (abfd, 0, &echdr->ch_reserved);
+ 	      bfd_put_64 (abfd, sec->size, &echdr->ch_size);
+ 	      bfd_put_64 (abfd, UINT64_C (1) << sec->alignment_power,
+@@ -2545,14 +2551,15 @@ bfd_update_compression_header (bfd *abfd, bfd_byte *contents,
+    SYNOPSIS
+ 	bool bfd_check_compression_header
+ 	  (bfd *abfd, bfd_byte *contents, asection *sec,
++	  unsigned int *ch_type,
+ 	  bfd_size_type *uncompressed_size,
+ 	  unsigned int *uncompressed_alignment_power);
+ 
+ DESCRIPTION
+-	Check the compression header at CONTENTS of SEC in ABFD and
+-	store the uncompressed size in UNCOMPRESSED_SIZE and the
+-	uncompressed data alignment in UNCOMPRESSED_ALIGNMENT_POWER
+-	if the compression header is valid.
++	Check the compression header at CONTENTS of SEC in ABFD and store the
++	ch_type in CH_TYPE, uncompressed size in UNCOMPRESSED_SIZE, and the
++	uncompressed data alignment in UNCOMPRESSED_ALIGNMENT_POWER if the
++	compression header is valid.
+ 
+ RETURNS
+ 	Return TRUE if the compression header is valid.
+@@ -2561,6 +2568,7 @@ RETURNS
+ bool
+ bfd_check_compression_header (bfd *abfd, bfd_byte *contents,
+ 			      asection *sec,
++			      unsigned int *ch_type,
+ 			      bfd_size_type *uncompressed_size,
+ 			      unsigned int *uncompressed_alignment_power)
+ {
+@@ -2583,7 +2591,9 @@ bfd_check_compression_header (bfd *abfd, bfd_byte *contents,
+ 	  chdr.ch_size = bfd_get_64 (abfd, &echdr->ch_size);
+ 	  chdr.ch_addralign = bfd_get_64 (abfd, &echdr->ch_addralign);
+ 	}
+-      if (chdr.ch_type == ELFCOMPRESS_ZLIB
++      *ch_type = chdr.ch_type;
++      if ((chdr.ch_type == ELFCOMPRESS_ZLIB
++	   || chdr.ch_type == ELFCOMPRESS_ZSTD)
+ 	  && chdr.ch_addralign == (chdr.ch_addralign & -chdr.ch_addralign))
+ 	{
+ 	  *uncompressed_size = chdr.ch_size;
+diff --git a/bfd/compress.c b/bfd/compress.c
+index b2e39826e38..0e75b687013 100644
+--- a/bfd/compress.c
++++ b/bfd/compress.c
+@@ -20,18 +20,31 @@
+ 
+ #include "sysdep.h"
+ #include <zlib.h>
++#ifdef HAVE_ZSTD
++#include <zstd.h>
++#endif
+ #include "bfd.h"
++#include "elf-bfd.h"
+ #include "libbfd.h"
+ #include "safe-ctype.h"
+ 
+ #define MAX_COMPRESSION_HEADER_SIZE 24
+ 
+ static bool
+-decompress_contents (bfd_byte *compressed_buffer,
++decompress_contents (bool is_zstd, bfd_byte *compressed_buffer,
+ 		     bfd_size_type compressed_size,
+ 		     bfd_byte *uncompressed_buffer,
+ 		     bfd_size_type uncompressed_size)
+ {
++  if (is_zstd)
++    {
++#ifdef HAVE_ZSTD
++      size_t ret = ZSTD_decompress (uncompressed_buffer, uncompressed_size,
++				    compressed_buffer, compressed_size);
++      return !ZSTD_isError (ret);
++#endif
++    }
++
+   z_stream strm;
+   int rc;
+ 
+@@ -69,7 +82,7 @@ decompress_contents (bfd_byte *compressed_buffer,
+ }
+ 
+ /* Compress data of the size specified in @var{uncompressed_size}
+-   and pointed to by @var{uncompressed_buffer} using zlib and store
++   and pointed to by @var{uncompressed_buffer} using zlib/zstd and store
+    as the contents field.  This function assumes the contents
+    field was allocated using bfd_malloc() or equivalent.
+ 
+@@ -150,9 +163,10 @@ bfd_compress_section_contents (bfd *abfd, sec_ptr sec,
+       sec->size = orig_uncompressed_size;
+       if (decompress)
+ 	{
+-	  if (!decompress_contents (uncompressed_buffer
+-				    + orig_compression_header_size,
+-				    zlib_size, buffer, buffer_size))
++	  if (!decompress_contents (
++		  sec->compress_status == DECOMPRESS_SECTION_ZSTD,
++		  uncompressed_buffer + orig_compression_header_size,
++		  zlib_size, buffer, buffer_size))
+ 	    {
+ 	      bfd_set_error (bfd_error_bad_value);
+ 	      bfd_release (abfd, buffer);
+@@ -175,10 +189,23 @@ bfd_compress_section_contents (bfd *abfd, sec_ptr sec,
+     }
+   else
+     {
+-      if (compress ((Bytef*) buffer + header_size,
+-		    &compressed_size,
+-		    (const Bytef*) uncompressed_buffer,
+-		    uncompressed_size) != Z_OK)
++      if (abfd->flags & BFD_COMPRESS_ZSTD)
++	{
++#if HAVE_ZSTD
++	  compressed_size = ZSTD_compress (
++		  buffer + header_size, compressed_size, uncompressed_buffer,
++		  uncompressed_size, ZSTD_CLEVEL_DEFAULT);
++	  if (ZSTD_isError (compressed_size))
++	    {
++	      bfd_release (abfd, buffer);
++	      bfd_set_error (bfd_error_bad_value);
++	      return 0;
++	    }
++#endif
++	}
++      else if (compress ((Bytef *)buffer + header_size, &compressed_size,
++			 (const Bytef *)uncompressed_buffer, uncompressed_size)
++	       != Z_OK)
+ 	{
+ 	  bfd_release (abfd, buffer);
+ 	  bfd_set_error (bfd_error_bad_value);
+@@ -237,6 +264,7 @@ bfd_get_full_section_contents (bfd *abfd, sec_ptr sec, bfd_byte **ptr)
+   bfd_size_type save_rawsize;
+   bfd_byte *compressed_buffer;
+   unsigned int compression_header_size;
++  const unsigned int compress_status = sec->compress_status;
+ 
+   if (abfd->direction != write_direction && sec->rawsize != 0)
+     sz = sec->rawsize;
+@@ -248,7 +276,7 @@ bfd_get_full_section_contents (bfd *abfd, sec_ptr sec, bfd_byte **ptr)
+       return true;
+     }
+ 
+-  switch (sec->compress_status)
++  switch (compress_status)
+     {
+     case COMPRESS_SECTION_NONE:
+       if (p == NULL)
+@@ -298,7 +326,8 @@ bfd_get_full_section_contents (bfd *abfd, sec_ptr sec, bfd_byte **ptr)
+       *ptr = p;
+       return true;
+ 
+-    case DECOMPRESS_SECTION_SIZED:
++    case DECOMPRESS_SECTION_ZLIB:
++    case DECOMPRESS_SECTION_ZSTD:
+       /* Read in the full compressed section contents.  */
+       compressed_buffer = (bfd_byte *) bfd_malloc (sec->compressed_size);
+       if (compressed_buffer == NULL)
+@@ -316,7 +345,7 @@ bfd_get_full_section_contents (bfd *abfd, sec_ptr sec, bfd_byte **ptr)
+       /* Restore rawsize and size.  */
+       sec->rawsize = save_rawsize;
+       sec->size = save_size;
+-      sec->compress_status = DECOMPRESS_SECTION_SIZED;
++      sec->compress_status = compress_status;
+       if (!ret)
+ 	goto fail_compressed;
+ 
+@@ -330,8 +359,10 @@ bfd_get_full_section_contents (bfd *abfd, sec_ptr sec, bfd_byte **ptr)
+ 	/* Set header size to the zlib header size if it is a
+ 	   SHF_COMPRESSED section.  */
+ 	compression_header_size = 12;
+-      if (!decompress_contents (compressed_buffer + compression_header_size,
+-				sec->compressed_size - compression_header_size, p, sz))
++      bool is_zstd = compress_status == DECOMPRESS_SECTION_ZSTD;
++      if (!decompress_contents (
++	      is_zstd, compressed_buffer + compression_header_size,
++	      sec->compressed_size - compression_header_size, p, sz))
+ 	{
+ 	  bfd_set_error (bfd_error_bad_value);
+ 	  if (p != *ptr)
+@@ -381,7 +412,8 @@ DESCRIPTION
+ void
+ bfd_cache_section_contents (asection *sec, void *contents)
+ {
+-  if (sec->compress_status == DECOMPRESS_SECTION_SIZED)
++  if (sec->compress_status == DECOMPRESS_SECTION_ZLIB
++      || sec->compress_status == DECOMPRESS_SECTION_ZSTD)
+     sec->compress_status = COMPRESS_SECTION_DONE;
+   sec->contents = contents;
+   sec->flags |= SEC_IN_MEMORY;
+@@ -418,6 +450,7 @@ bfd_is_section_compressed_with_header (bfd *abfd, sec_ptr sec,
+   int compression_header_size;
+   int header_size;
+   unsigned int saved = sec->compress_status;
++  unsigned int ch_type;
+   bool compressed;
+ 
+   *uncompressed_align_pow_p = 0;
+@@ -448,7 +481,7 @@ bfd_is_section_compressed_with_header (bfd *abfd, sec_ptr sec,
+     {
+       if (compression_header_size != 0)
+ 	{
+-	  if (!bfd_check_compression_header (abfd, header, sec,
++	  if (!bfd_check_compression_header (abfd, header, sec, &ch_type,
+ 					     uncompressed_size_p,
+ 					     uncompressed_align_pow_p))
+ 	    compression_header_size = -1;
+@@ -507,7 +540,7 @@ SYNOPSIS
+ DESCRIPTION
+ 	Record compressed section size, update section size with
+ 	decompressed size and set compress_status to
+-	DECOMPRESS_SECTION_SIZED.
++	DECOMPRESS_SECTION_{ZLIB,ZSTD}.
+ 
+ 	Return @code{FALSE} if the section is not a valid compressed
+ 	section.  Otherwise, return @code{TRUE}.
+@@ -521,6 +554,7 @@ bfd_init_section_decompress_status (bfd *abfd, sec_ptr sec)
+   int header_size;
+   bfd_size_type uncompressed_size;
+   unsigned int uncompressed_alignment_power = 0;
++  unsigned int ch_type;
+   z_stream strm;
+ 
+   compression_header_size = bfd_get_compression_header_size (abfd, sec);
+@@ -550,6 +584,7 @@ bfd_init_section_decompress_status (bfd *abfd, sec_ptr sec)
+       uncompressed_size = bfd_getb64 (header + 4);
+     }
+   else if (!bfd_check_compression_header (abfd, header, sec,
++					  &ch_type,
+ 					  &uncompressed_size,
+ 					  &uncompressed_alignment_power))
+     {
+@@ -569,7 +604,8 @@ bfd_init_section_decompress_status (bfd *abfd, sec_ptr sec)
+   sec->compressed_size = sec->size;
+   sec->size = uncompressed_size;
+   bfd_set_section_alignment (sec, uncompressed_alignment_power);
+-  sec->compress_status = DECOMPRESS_SECTION_SIZED;
++  sec->compress_status = (ch_type == ELFCOMPRESS_ZSTD
++			  ? DECOMPRESS_SECTION_ZSTD : DECOMPRESS_SECTION_ZLIB);
+ 
+   return true;
+ }
+diff --git a/bfd/config.in b/bfd/config.in
+index f54a3cacbea..a59304e0a66 100644
+--- a/bfd/config.in
++++ b/bfd/config.in
+@@ -232,6 +232,9 @@
+ /* Define to 1 if you have the <windows.h> header file. */
+ #undef HAVE_WINDOWS_H
+ 
++/* Define to 1 if zstd is enabled. */
++#undef HAVE_ZSTD
++
+ /* Define to the sub-directory in which libtool stores uninstalled libraries.
+    */
+ #undef LT_OBJDIR
+diff --git a/bfd/configure b/bfd/configure
+index 0ef4c206fb0..04004f9d3eb 100755
+--- a/bfd/configure
++++ b/bfd/configure
+@@ -652,6 +652,11 @@ TDEFINES
+ SHARED_LIBADD
+ SHARED_LDFLAGS
+ LIBM
++ZSTD_LIBS
++ZSTD_CFLAGS
++PKG_CONFIG_LIBDIR
++PKG_CONFIG_PATH
++PKG_CONFIG
+ zlibinc
+ zlibdir
+ EXEEXT_FOR_BUILD
+@@ -845,6 +850,7 @@ enable_maintainer_mode
+ enable_install_libbfd
+ enable_nls
+ with_system_zlib
++with_zstd
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -854,7 +860,12 @@ CFLAGS
+ LDFLAGS
+ LIBS
+ CPPFLAGS
+-CPP'
++CPP
++PKG_CONFIG
++PKG_CONFIG_PATH
++PKG_CONFIG_LIBDIR
++ZSTD_CFLAGS
++ZSTD_LIBS'
+ 
+ 
+ # Initialize some variables set by options.
+@@ -1517,6 +1528,8 @@ Optional Packages:
+                           Binutils"
+   --with-bugurl=URL       Direct users to URL to report a bug
+   --with-system-zlib      use installed libz
++  --with-zstd             support zstd compressed debug sections
++                          (default=auto)
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -1527,6 +1540,13 @@ Some influential environment variables:
+   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+               you have headers in a nonstandard directory <include dir>
+   CPP         C preprocessor
++  PKG_CONFIG  path to pkg-config utility
++  PKG_CONFIG_PATH
++              directories to add to pkg-config's search path
++  PKG_CONFIG_LIBDIR
++              path overriding pkg-config's built-in search path
++  ZSTD_CFLAGS C compiler flags for ZSTD, overriding pkg-config
++  ZSTD_LIBS   linker flags for ZSTD, overriding pkg-config
+ 
+ Use these variables to override the choices made by `configure' or to help
+ it to find libraries and programs with nonstandard names/locations.
+@@ -11086,7 +11106,7 @@ else
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 11089 "configure"
++#line 11109 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -11192,7 +11212,7 @@ else
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<_LT_EOF
+-#line 11195 "configure"
++#line 11215 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -13010,7 +13030,7 @@ $as_echo "#define USE_BINARY_FOPEN 1" >>confdefs.h
+  ;;
+ esac
+ 
+-# Link in zlib if we can.  This allows us to read compressed debug sections.
++# Link in zlib/zstd if we can.  This allows us to read compressed debug sections.
+ # This is used only by compress.c.
+ 
+   # Use the system's zlib library.
+@@ -13030,6 +13050,246 @@ fi
+ 
+ 
+ 
++
++
++
++
++
++
++if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
++	if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}pkg-config", so it can be a program name with args.
++set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_path_PKG_CONFIG+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  case $PKG_CONFIG in
++  [\\/]* | ?:[\\/]*)
++  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
++  ;;
++  *)
++  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++  ;;
++esac
++fi
++PKG_CONFIG=$ac_cv_path_PKG_CONFIG
++if test -n "$PKG_CONFIG"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PKG_CONFIG" >&5
++$as_echo "$PKG_CONFIG" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++
++fi
++if test -z "$ac_cv_path_PKG_CONFIG"; then
++  ac_pt_PKG_CONFIG=$PKG_CONFIG
++  # Extract the first word of "pkg-config", so it can be a program name with args.
++set dummy pkg-config; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_path_ac_pt_PKG_CONFIG+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  case $ac_pt_PKG_CONFIG in
++  [\\/]* | ?:[\\/]*)
++  ac_cv_path_ac_pt_PKG_CONFIG="$ac_pt_PKG_CONFIG" # Let the user override the test with a path.
++  ;;
++  *)
++  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_path_ac_pt_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++  ;;
++esac
++fi
++ac_pt_PKG_CONFIG=$ac_cv_path_ac_pt_PKG_CONFIG
++if test -n "$ac_pt_PKG_CONFIG"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_pt_PKG_CONFIG" >&5
++$as_echo "$ac_pt_PKG_CONFIG" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++  if test "x$ac_pt_PKG_CONFIG" = x; then
++    PKG_CONFIG=""
++  else
++    case $cross_compiling:$ac_tool_warned in
++yes:)
++{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
++$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
++ac_tool_warned=yes ;;
++esac
++    PKG_CONFIG=$ac_pt_PKG_CONFIG
++  fi
++else
++  PKG_CONFIG="$ac_cv_path_PKG_CONFIG"
++fi
++
++fi
++if test -n "$PKG_CONFIG"; then
++	_pkg_min_version=0.9.0
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking pkg-config is at least version $_pkg_min_version" >&5
++$as_echo_n "checking pkg-config is at least version $_pkg_min_version... " >&6; }
++	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++	else
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++		PKG_CONFIG=""
++	fi
++fi
++
++
++# Check whether --with-zstd was given.
++if test "${with_zstd+set}" = set; then :
++  withval=$with_zstd;
++else
++  with_zstd=auto
++fi
++
++
++if test "$with_zstd" != no; then
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libzstd" >&5
++$as_echo_n "checking for libzstd... " >&6; }
++
++if test -n "$ZSTD_CFLAGS"; then
++    pkg_cv_ZSTD_CFLAGS="$ZSTD_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libzstd\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libzstd") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ZSTD_CFLAGS=`$PKG_CONFIG --cflags "libzstd" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$ZSTD_LIBS"; then
++    pkg_cv_ZSTD_LIBS="$ZSTD_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libzstd\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libzstd") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ZSTD_LIBS=`$PKG_CONFIG --libs "libzstd" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++if test $pkg_failed = no; then
++  pkg_save_LDFLAGS="$LDFLAGS"
++  LDFLAGS="$LDFLAGS $pkg_cv_ZSTD_LIBS"
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++
++else
++  pkg_failed=yes
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++  LDFLAGS=$pkg_save_LDFLAGS
++fi
++
++
++
++if test $pkg_failed = yes; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        ZSTD_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libzstd" 2>&1`
++        else
++	        ZSTD_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libzstd" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$ZSTD_PKG_ERRORS" >&5
++
++
++    if test "$with_zstd" = yes; then
++      as_fn_error $? "--with-zstd was given, but pkgconfig/libzstd.pc is not found" "$LINENO" 5
++    fi
++
++elif test $pkg_failed = untried; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++    if test "$with_zstd" = yes; then
++      as_fn_error $? "--with-zstd was given, but pkgconfig/libzstd.pc is not found" "$LINENO" 5
++    fi
++
++else
++	ZSTD_CFLAGS=$pkg_cv_ZSTD_CFLAGS
++	ZSTD_LIBS=$pkg_cv_ZSTD_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++
++$as_echo "#define HAVE_ZSTD 1" >>confdefs.h
++
++
++fi
++fi
++
++
+ save_CFLAGS="$CFLAGS"
+ CFLAGS="$CFLAGS -Werror"
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking compiler support for hidden visibility" >&5
+diff --git a/bfd/configure.ac b/bfd/configure.ac
+index 9e873736792..62145b81063 100644
+--- a/bfd/configure.ac
++++ b/bfd/configure.ac
+@@ -263,9 +263,10 @@ AC_CHECK_DECLS([basename, ffs, stpcpy, asprintf, vasprintf, strnlen])
+ 
+ BFD_BINARY_FOPEN
+ 
+-# Link in zlib if we can.  This allows us to read compressed debug sections.
++# Link in zlib/zstd if we can.  This allows us to read compressed debug sections.
+ # This is used only by compress.c.
+ AM_ZLIB
++AC_ZSTD
+ 
+ save_CFLAGS="$CFLAGS"
+ CFLAGS="$CFLAGS -Werror"
+diff --git a/bfd/elf.c b/bfd/elf.c
+index 82b53be99f9..ffdd2f507e5 100644
+--- a/bfd/elf.c
++++ b/bfd/elf.c
+@@ -1252,6 +1252,18 @@ _bfd_elf_make_section_from_shdr (bfd *abfd,
+ 		 abfd, name);
+ 	      return false;
+ 	    }
++#ifndef HAVE_ZSTD
++	  if (newsect->compress_status == DECOMPRESS_SECTION_ZSTD)
++	    {
++	      _bfd_error_handler
++		  /* xgettext:c-format */
++		  (_ ("%pB: section %s is compressed with zstd, but BFD "
++		      "is not built with zstd support"),
++		   abfd, name);
++	      newsect->compress_status = COMPRESS_SECTION_NONE;
++	      return false;
++	    }
++#endif
+ 	}
+ 
+       if (abfd->is_linker_input)
+diff --git a/bfd/elfxx-target.h b/bfd/elfxx-target.h
+index 0579f64d1a0..4c03660f782 100644
+--- a/bfd/elfxx-target.h
++++ b/bfd/elfxx-target.h
+@@ -985,7 +985,8 @@ const bfd_target TARGET_BIG_SYM =
+   /* object_flags: mask of all file flags */
+   (HAS_RELOC | EXEC_P | HAS_LINENO | HAS_DEBUG | HAS_SYMS | HAS_LOCALS
+    | DYNAMIC | WP_TEXT | D_PAGED | BFD_COMPRESS | BFD_DECOMPRESS
+-   | BFD_COMPRESS_GABI | BFD_CONVERT_ELF_COMMON | BFD_USE_ELF_STT_COMMON),
++   | BFD_COMPRESS_GABI | BFD_COMPRESS_ZSTD | BFD_CONVERT_ELF_COMMON
++   | BFD_USE_ELF_STT_COMMON),
+ 
+   /* section_flags: mask of all section flags */
+   (SEC_HAS_CONTENTS | SEC_ALLOC | SEC_LOAD | SEC_RELOC | SEC_READONLY
+@@ -1089,7 +1090,8 @@ const bfd_target TARGET_LITTLE_SYM =
+   /* object_flags: mask of all file flags */
+   (HAS_RELOC | EXEC_P | HAS_LINENO | HAS_DEBUG | HAS_SYMS | HAS_LOCALS
+    | DYNAMIC | WP_TEXT | D_PAGED | BFD_COMPRESS | BFD_DECOMPRESS
+-   | BFD_COMPRESS_GABI | BFD_CONVERT_ELF_COMMON | BFD_USE_ELF_STT_COMMON),
++   | BFD_COMPRESS_GABI | BFD_COMPRESS_ZSTD | BFD_CONVERT_ELF_COMMON
++   | BFD_USE_ELF_STT_COMMON),
+ 
+   /* section_flags: mask of all section flags */
+   (SEC_HAS_CONTENTS | SEC_ALLOC | SEC_LOAD | SEC_RELOC | SEC_READONLY
+diff --git a/bfd/section.c b/bfd/section.c
+index 9a1071454f5..bca3c1340c2 100644
+--- a/bfd/section.c
++++ b/bfd/section.c
+@@ -392,7 +392,8 @@ CODE_FRAGMENT
+ .  unsigned int compress_status : 2;
+ .#define COMPRESS_SECTION_NONE    0
+ .#define COMPRESS_SECTION_DONE    1
+-.#define DECOMPRESS_SECTION_SIZED 2
++.#define DECOMPRESS_SECTION_ZLIB  2
++.#define DECOMPRESS_SECTION_ZSTD  3
+ .
+ .  {* The following flags are used by the ELF linker. *}
+ .
+diff --git a/config/zstd.m4 b/config/zstd.m4
+new file mode 100644
+index 00000000000..6da4db68c58
+--- /dev/null
++++ b/config/zstd.m4
+@@ -0,0 +1,23 @@
++dnl Copyright (C) 2022 Free Software Foundation, Inc.
++dnl This file is free software, distributed under the terms of the GNU
++dnl General Public License.  As a special exception to the GNU General
++dnl Public License, this file may be distributed as part of a program
++dnl that contains a configuration script generated by Autoconf, under
++dnl the same distribution terms as the rest of that program.
++
++dnl Enable features using the zstd library.
++AC_DEFUN([AC_ZSTD], [
++AC_ARG_WITH(zstd,
++  [AS_HELP_STRING([--with-zstd], [support zstd compressed debug sections (default=auto)])],
++  [], [with_zstd=auto])
++
++AS_IF([test "$with_zstd" != no],
++  [PKG_CHECK_MODULES(ZSTD, [libzstd], [
++    AC_DEFINE(HAVE_ZSTD, 1, [Define to 1 if zstd is enabled.])
++  ], [
++    if test "$with_zstd" = yes; then
++      AC_MSG_ERROR([--with-zstd was given, but pkgconfig/libzstd.pc is not found])
++    fi
++  ])
++  ])
++])
+diff --git a/configure b/configure
+index 26935ebda24..9149d7be19a 100755
+--- a/configure
++++ b/configure
+@@ -783,6 +783,7 @@ ac_user_opts='
+ enable_option_checking
+ with_build_libsubdir
+ with_system_zlib
++with_zstd
+ enable_as_accelerator_for
+ enable_offload_targets
+ enable_gold
+@@ -1563,6 +1564,8 @@ Optional Packages:
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+   --with-build-libsubdir=DIR  Directory where to find libraries for build system
+   --with-system-zlib      use installed libz
++  --with-zstd             Support zstd compressed debug sections
++                          (default=auto)
+   --with-mpc=PATH         specify prefix directory for installed MPC package.
+                           Equivalent to --with-mpc-include=PATH/include plus
+                           --with-mpc-lib=PATH/lib
+@@ -2921,6 +2924,13 @@ if test x$with_system_zlib = xyes ; then
+   noconfigdirs="$noconfigdirs zlib"
+ fi
+ 
++
++# Check whether --with-zstd was given.
++if test "${with_zstd+set}" = set; then :
++  withval=$with_zstd;
++fi
++
++
+ # Don't compile the bundled readline/libreadline.a if --with-system-readline
+ # is provided.
+ if test x$with_system_readline = xyes ; then
+diff --git a/configure.ac b/configure.ac
+index bb8bdfb6ec0..388247fd87a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -246,6 +246,9 @@ if test x$with_system_zlib = xyes ; then
+   noconfigdirs="$noconfigdirs zlib"
+ fi
+ 
++AC_ARG_WITH(zstd,
++[AS_HELP_STRING([--with-zstd], [Support zstd compressed debug sections (default=auto)])])
++
+ # Don't compile the bundled readline/libreadline.a if --with-system-readline
+ # is provided.
+ if test x$with_system_readline = xyes ; then
+diff --git a/gdb/Makefile.in b/gdb/Makefile.in
+index b66ed380a79..39a3aa16936 100644
+--- a/gdb/Makefile.in
++++ b/gdb/Makefile.in
+@@ -173,6 +173,9 @@ BFD_CFLAGS = -I$(BFD_DIR) -I$(BFD_SRC)
+ ZLIB = @zlibdir@ -lz
+ ZLIBINC = @zlibinc@
+ 
++ZSTD_CFLAGS = @ZSTD_CFLAGS@
++ZSTD_LIBS = @ZSTD_LIBS@
++
+ # Where is the decnumber library?  Typically in ../libdecnumber.
+ LIBDECNUMBER_DIR = ../libdecnumber
+ LIBDECNUMBER = $(LIBDECNUMBER_DIR)/libdecnumber.a
+@@ -622,7 +625,7 @@ INTERNAL_CPPFLAGS = $(CPPFLAGS) @GUILE_CPPFLAGS@ @PYTHON_CPPFLAGS@ \
+ INTERNAL_CFLAGS_BASE = \
+ 	$(GLOBAL_CFLAGS) $(PROFILE_CFLAGS) \
+ 	$(GDB_CFLAGS) $(OPCODES_CFLAGS) $(READLINE_CFLAGS) $(ZLIBINC) \
+-	$(BFD_CFLAGS) $(INCLUDE_CFLAGS) $(LIBDECNUMBER_CFLAGS) \
++	$(ZSTD_CFLAGS) $(BFD_CFLAGS) $(INCLUDE_CFLAGS) $(LIBDECNUMBER_CFLAGS) \
+ 	$(INTL_CFLAGS) $(INCGNU) $(INCSUPPORT) $(LIBBACKTRACE_INC) \
+ 	$(ENABLE_CFLAGS) $(INTERNAL_CPPFLAGS) $(SRCHIGH_CFLAGS) \
+ 	$(TOP_CFLAGS) $(PTHREAD_CFLAGS) $(DEBUGINFOD_CFLAGS)
+@@ -644,7 +647,7 @@ INTERNAL_LDFLAGS = \
+ # Libraries and corresponding dependencies for compiling gdb.
+ # XM_CLIBS, defined in *config files, have host-dependent libs.
+ # LIBIBERTY appears twice on purpose.
+-CLIBS = $(SIM) $(READLINE) $(OPCODES) $(LIBCTF) $(BFD) $(ZLIB) \
++CLIBS = $(SIM) $(READLINE) $(OPCODES) $(LIBCTF) $(BFD) $(ZLIB) $(ZSTD_LIBS) \
+         $(LIBSUPPORT) $(INTL) $(LIBIBERTY) $(LIBDECNUMBER) \
+ 	$(XM_CLIBS) $(GDBTKLIBS)  $(LIBBACKTRACE_LIB) \
+ 	@LIBS@ @GUILE_LIBS@ @PYTHON_LIBS@ \
+@@ -2090,6 +2093,7 @@ aclocal_m4_deps = \
+ 	../config/lcmessage.m4 \
+ 	../config/codeset.m4 \
+ 	../config/zlib.m4 \
++	../config/zstd.m4 \
+ 	../config/ax_pthread.m4
+ 
+ $(srcdir)/aclocal.m4: @MAINTAINER_MODE_TRUE@ $(aclocal_m4_deps)
+diff --git a/gdb/NEWS b/gdb/NEWS
+index 501ace1872e..51baf910761 100644
+--- a/gdb/NEWS
++++ b/gdb/NEWS
+@@ -36,6 +36,8 @@
+   Disabling this can cause a performance penalty when there are a lot of
+   symbols to load, but is useful for debugging purposes.
+ 
++* gdb now supports zstd compressed debug sections (ELFCOMPRESS_ZSTD) for ELF.
++
+ * New commands
+ 
+ maint set backtrace-on-fatal-signal on|off
+diff --git a/gdb/acinclude.m4 b/gdb/acinclude.m4
+index 95ff2b6f35e..28846119dcb 100644
+--- a/gdb/acinclude.m4
++++ b/gdb/acinclude.m4
+@@ -43,6 +43,7 @@ m4_include([../config/lib-link.m4])
+ m4_include([../config/iconv.m4])
+ 
+ m4_include([../config/zlib.m4])
++m4_include([../config/zstd.m4])
+ 
+ m4_include([../gdbsupport/common.m4])
+ 
+@@ -233,7 +234,7 @@ AC_DEFUN([GDB_AC_CHECK_BFD], [
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+   LIBS="-lbfd -liberty -lz $intl $LIBS"
+   AC_CACHE_CHECK(
+diff --git a/gdb/config.in b/gdb/config.in
+index 422ccdde171..3ba0a5b5ceb 100644
+--- a/gdb/config.in
++++ b/gdb/config.in
+@@ -598,6 +598,9 @@
+ /* Define to 1 if you have the `XML_StopParser' function. */
+ #undef HAVE_XML_STOPPARSER
+ 
++/* Define to 1 if zstd is enabled. */
++#undef HAVE_ZSTD
++
+ /* Define to 1 if your system has the _etext variable. */
+ #undef HAVE__ETEXT
+ 
+diff --git a/gdb/configure b/gdb/configure
+index ac372e3b65c..2fcba76b5e8 100755
+--- a/gdb/configure
++++ b/gdb/configure
+@@ -747,6 +747,8 @@ READLINE_DEPS
+ READLINE
+ LTLIBICONV
+ LIBICONV
++ZSTD_LIBS
++ZSTD_CFLAGS
+ zlibinc
+ zlibdir
+ MIG
+@@ -899,6 +901,7 @@ enable_codesign
+ with_pkgversion
+ with_bugurl
+ with_system_zlib
++with_zstd
+ with_gnu_ld
+ enable_rpath
+ with_libiconv_prefix
+@@ -969,6 +972,8 @@ RPM_CFLAGS
+ RPM_LIBS
+ YACC
+ YFLAGS
++ZSTD_CFLAGS
++ZSTD_LIBS
+ XMKMF'
+ ac_subdirs_all='testsuite
+ gdbtk'
+@@ -1651,6 +1656,8 @@ Optional Packages:
+   --with-pkgversion=PKG   Use PKG in the version string in place of "GDB"
+   --with-bugurl=URL       Direct users to URL to report a bug
+   --with-system-zlib      use installed libz
++  --with-zstd             support zstd compressed debug sections
++                          (default=auto)
+   --with-gnu-ld           assume the C compiler uses GNU ld default=no
+   --with-libiconv-prefix[=DIR]  search for libiconv in DIR/include and DIR/lib
+   --without-libiconv-prefix     don't search for libiconv in includedir and libdir
+@@ -1733,6 +1740,8 @@ Some influential environment variables:
+   YFLAGS      The list of arguments that will be passed by default to $YACC.
+               This script will default YFLAGS to the empty string to avoid a
+               default value of `-d' given by some make applications.
++  ZSTD_CFLAGS C compiler flags for ZSTD, overriding pkg-config
++  ZSTD_LIBS   linker flags for ZSTD, overriding pkg-config
+   XMKMF       Path to xmkmf, Makefile generator for X Window System
+ 
+ Use these variables to override the choices made by `configure' or to help
+@@ -8730,7 +8739,8 @@ if test "$ac_res" != no; then :
+ fi
+ 
+ 
+-# Link in zlib if we can.  This allows us to read compressed debug sections.
++# Link in zlib/zstd if we can.  This allows us to read compressed debug
++# sections.
+ 
+   # Use the system's zlib library.
+   zlibdir="-L\$(top_builddir)/../zlib"
+@@ -8750,6 +8760,127 @@ fi
+ 
+ 
+ 
++# Check whether --with-zstd was given.
++if test "${with_zstd+set}" = set; then :
++  withval=$with_zstd;
++else
++  with_zstd=auto
++fi
++
++
++if test "$with_zstd" != no; then :
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libzstd" >&5
++$as_echo_n "checking for libzstd... " >&6; }
++
++if test -n "$ZSTD_CFLAGS"; then
++    pkg_cv_ZSTD_CFLAGS="$ZSTD_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libzstd\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libzstd") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ZSTD_CFLAGS=`$PKG_CONFIG --cflags "libzstd" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$ZSTD_LIBS"; then
++    pkg_cv_ZSTD_LIBS="$ZSTD_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libzstd\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libzstd") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_ZSTD_LIBS=`$PKG_CONFIG --libs "libzstd" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++if test $pkg_failed = no; then
++  pkg_save_LDFLAGS="$LDFLAGS"
++  LDFLAGS="$LDFLAGS $pkg_cv_ZSTD_LIBS"
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++
++else
++  pkg_failed=yes
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++  LDFLAGS=$pkg_save_LDFLAGS
++fi
++
++
++
++if test $pkg_failed = yes; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        ZSTD_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libzstd" 2>&1`
++        else
++	        ZSTD_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libzstd" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$ZSTD_PKG_ERRORS" >&5
++
++
++    if test "$with_zstd" = yes; then
++      as_fn_error $? "--with-zstd was given, but pkgconfig/libzstd.pc is not found" "$LINENO" 5
++    fi
++
++elif test $pkg_failed = untried; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++    if test "$with_zstd" = yes; then
++      as_fn_error $? "--with-zstd was given, but pkgconfig/libzstd.pc is not found" "$LINENO" 5
++    fi
++
++else
++	ZSTD_CFLAGS=$pkg_cv_ZSTD_CFLAGS
++	ZSTD_LIBS=$pkg_cv_ZSTD_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++
++$as_echo "#define HAVE_ZSTD 1" >>confdefs.h
++
++
++fi
++
++fi
++
++
++
+       if test "X$prefix" = "XNONE"; then
+     acl_final_prefix="$ac_default_prefix"
+   else
+@@ -17832,7 +17963,7 @@ WIN32LIBS="$WIN32LIBS $WIN32APILIBS"
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+   LIBS="-lbfd -liberty -lz $intl $LIBS"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ELF support in BFD" >&5
+@@ -17947,7 +18078,7 @@ fi
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+   LIBS="-lbfd -liberty -lz $intl $LIBS"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Mach-O support in BFD" >&5
+diff --git a/gdb/configure.ac b/gdb/configure.ac
+index f7d6c6180c3..0c27b6accbc 100644
+--- a/gdb/configure.ac
++++ b/gdb/configure.ac
+@@ -671,8 +671,10 @@ AC_SEARCH_LIBS(gethostbyname, nsl)
+ # Some systems (e.g. Solaris) have `socketpair' in libsocket.
+ AC_SEARCH_LIBS(socketpair, socket)
+ 
+-# Link in zlib if we can.  This allows us to read compressed debug sections.
++# Link in zlib/zstd if we can.  This allows us to read compressed debug
++# sections.
+ AM_ZLIB
++AC_ZSTD
+ 
+ AM_ICONV
+ 
+-- 
+2.35.3
+

@@ -2336,4 +2336,107 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1031179</requestid>
   </revision>
+  <revision rev="168" vrev="6">
+    <srcmd5>496e53e953eb5a820837e5f4df42a9fa</srcmd5>
+    <version>12.1</version>
+    <time>1677966142</time>
+    <user>dimstar_suse</user>
+    <comment>- Maintenance script qa.sh:
+  * Expand kfail pattern for PR29897.
+  * Add PR29965 kfail.
+- Re-enable testing all test-cases, undoing accidental change in
+  previous commit.
+- Add --with=for_chroot.
+- Patches dropped (bsc#1207712):
+  * gdb-container-rh-pkg.patch
+- Patches added (bsc#1207712):
+  * gdb-testsuite-add-gdb.suse-debranding.exp.patch
+- Patches added (test-case fix):
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-dir-file-name.exp-w.patch
+- Patches added (fedora patch fixup):
+  * fixup-gdb-test-dw2-aranges.patch
+- Patches added (master backports):
+  * gdb-testsuite-add-xfail-in-gdb.arch-i386-pkru.exp.patch
+  * gdb-testsuite-add-xfail-in-gdb.python-py-record-btra.patch
+  * gdb-testsuite-factor-out-proc-linux_kernel_version.patch
+  * gdb-testsuite-fix-gdb.base-infoline-reloc-main-from-.patch
+  * gdb-testsuite-fix-gdb.base-nested-subp-2-3-.exp-with.patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-on-fast-.patch
+  * gdb-testsuite-handle-missing-.note.gnu-stack.patch
+  * gdb-testsuite-simplify-gdb.arch-amd64-disp-step-avx..patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-for-gcc-.patch
+  * gdb-testsuite-add-xfail-case-in-gdb.python-py-record.patch
+  * add-elfcompress_zstd.patch
+  * binutils-gdb-support-zstd-compressed-debug-section.patch
+  * fix-gdb-build-elf-support-check-lzstd.patch
+- Patches removed (dropped by fedora):
+  * gdb-test-ivy-bridge.patch
+- Disable &quot;BuildRequires: %{gcc}-fortran&quot; for SLE-11.
+- Maintenance script qa-local.sh:
+  * Add SLE-11 to configs.
+  * Build with --no-verify.
+- Maintenance script qa.sh:
+  * Add -sle11.
+- Maintenance script qa.sh:
+  * Re-enable PR26284 kfails.
+  * Remove mention of PR28275.
+  * Add PR29897 kfail.
+- Mention CVE-2018-7208 and CVE-2017-16829.
+- Mention SLE-21561, bnc#1081527, and bnc#1068950.
+- Patches added (gdb 12 release branch backports):
+  * gdb-disable-commit-resumed-in-target_kill.patch
+  * gdb-fix-assert-when-quitting-gdb-while-a-thread-is-stepping.patch
+  * gdb-testsuite-add-new-gdb_attach-to-check-attach-command.patch
+  * gdb-testsuite-refactor-gdb.threads-detach-step-over.exp.patch
+  * gdb-testsuite-remove-global-declarations-in-gdb.threads-detach-step-over.exp.patch
+  * gdbserver-switch-to-right-process-in-find_one_thread.patch  
+- Patches removed:
+  * gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
+- Maintenance script qa.sh:
+  * Disable PR26284 kfails.
+  * Add PR29841 kfails.
+  * Add kfail_powerpc64le_sle12, kfail_s390 and kfail_s390x.
+  * Add -s390 and -s390x.
+  * Add gdb.base/gdb-rhbz1156192-recursive-dlopen.exp kfail.
+  * Add PR26967 kfails.
+  * Move PR27027 kfails from kfail_factory to kfail.
+  * Add -ppc64le alias for -powerpc64le.
+  * Add gdb.threads/interrupt-while-step-over.exp kfail.
+  * Add gdb.tui/tui-layout-asm-short-prog.exp kfail.
+  * Add unix/-fPIE/-fpie overrides -static kfails.
+  * Add gdb.guile/scm-disasm.exp kfail.
+  * Add gdb.base/gnu_vector.exp to existing kfail.
+  * Add gdb.guile/scm-symtab.exp kfail.
+  * Add gdb.base/write_mem.exp kfail.
+- Maintenance script qa.sh:
+  - Add openSUSE Leap 15.4 ppc64le to known clean configs.
+- Maintenance script qa.sh:
+  - Update PR26363 internal error pattern.
+  - Add PR29790 kfail.
+  - Add -powerpc64le option.
+  - Generalize PR26915 kfail patterns.
+  - Move PR28478 patterns from kfail_factory to kfail.
+  - Add PR29781 and PR27813 kfails.
+  - Add SLE-15 ppc64le to known clean configs.
+- Maintenance script qa-remote.sh:
+  * Use qa.sh alongside qa-remote.sh.
+- Maintenance script qa.sh:
+  * Add PR29783 internal error.
+- Patch removed (intended effect not observed):
+  * gdb-fix-watchpoints-triggered.patch
+- Maintenance script qa.sh:
+  * Handle librpm == &quot;&quot; and nolibrpm == &quot;&quot;.
+- Maintenance script qa-remote.sh:
+  * Make &quot;Get remote testsuite results&quot; even more verbose.
+  * Make hardcoded pattern gdb-testresults-12.1-*.*.rpm more
+    generic.
+  * Add missing setting of rpm variable in &quot;Getting rpms&quot; case.
+- Patches added (backport from trunk):
+  * gdb-testsuite-fix-gdb.base-break-idempotent.exp-on-ppc.patch
+  * powerpc-fix-gdb.base-watchpoint.exp-on-power-9.patch
+- Maintenance script qa-remote.sh:
+  * Make &quot;Get remote testsuite results&quot; more verbose.
+</comment>
+    <requestid>1069165</requestid>
+  </revision>
 </revisionlist>

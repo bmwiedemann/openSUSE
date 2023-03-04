@@ -1,0 +1,26 @@
+From 7ba9d8dda33a985a97c9ab922b84b894ffb2e288 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 16 Feb 2023 13:56:07 +0100
+Subject: [PATCH 11/11] [gdb/testsuite] Fix gdb.dwarf2/dw2-dir-file-name.exp
+ with recent ld
+
+---
+ gdb/testsuite/gdb.dwarf2/dw2-dir-file-name.exp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-dir-file-name.exp b/gdb/testsuite/gdb.dwarf2/dw2-dir-file-name.exp
+index 4d3f767f597..1fc34ef387b 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-dir-file-name.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-dir-file-name.exp
+@@ -317,6 +317,8 @@ puts -nonewline $f "\
+ 	.byte		0x0			/* Terminator */
+ "
+ 
++puts -nonewline $f "\t.section\t.note.GNU-stack,\"\",@progbits"
++
+ close $f
+ 
+ set opts {}
+-- 
+2.35.3
+

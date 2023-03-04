@@ -1,0 +1,81 @@
+From bbf4e4ba2a9bd73384268b0160d54e36edc92a12 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 14 Feb 2023 11:53:54 +0100
+Subject: [PATCH 03/11] [gdb/testsuite] Factor out proc linux_kernel_version
+
+Factor out new proc linux_kernel_version from test-case
+gdb.arch/i386-pkru.exp.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.arch/i386-pkru.exp | 20 ++++++--------------
+ gdb/testsuite/lib/gdb.exp            | 23 +++++++++++++++++++++++
+ 2 files changed, 29 insertions(+), 14 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/i386-pkru.exp b/gdb/testsuite/gdb.arch/i386-pkru.exp
+index 5fe93db9b4b..9bc9f9735e5 100644
+--- a/gdb/testsuite/gdb.arch/i386-pkru.exp
++++ b/gdb/testsuite/gdb.arch/i386-pkru.exp
+@@ -62,20 +62,12 @@ if { !$supports_pkru } {
+ # the PKRU using ptrace, see commit 4a804c4f8356 ("x86/fpu: Allow PKRU to be
+ # (once again) written by ptrace.").
+ set have_xfail 0
+-if { [istarget *-*-linux*] } {
+-    set res [remote_exec target "uname -r"]
+-    set status [lindex $res 0]
+-    set output [lindex $res 1]
+-
+-    set re ^($decimal)\\.($decimal)\\.($decimal)
+-    if { $status == 0
+-	 && [regexp $re $output dummy v1 v2 v3] == 1 } {
+-	set v [list $v1 $v2 $v3]
+-	set have_xfail \
+-	    [expr \
+-		 [version_compare [list 5 14 0] <= $v] \
+-		 && [version_compare $v < [list 6 2 0]]]
+-    }
++set v [linux_kernel_version]
++if { $v != {} } {
++    set have_xfail \
++	[expr \
++	     [version_compare [list 5 14 0] <= $v] \
++	     && [version_compare $v < [list 6 2 0]]]
+ }
+ 
+ # Test pkru register at startup
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 5104835a2a9..069a61038e6 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -8551,5 +8551,28 @@ gdb_caching_proc has_hw_wp_support {
+     return $has_hw_wp_support
+ }
+ 
++# Detect linux kernel version and return as list of 3 numbers: major, minor,
++# and patchlevel.  On failure, return an empty list.
++
++gdb_caching_proc linux_kernel_version {
++    if { ![istarget *-*-linux*] } {
++	return {}
++    }
++
++    set res [remote_exec target "uname -r"]
++    set status [lindex $res 0]
++    set output [lindex $res 1]
++    if { $status != 0 } {
++	return {}
++    }
++
++    set re ^($::decimal)\\.($::decimal)\\.($::decimal)
++    if { [regexp $re $output dummy v1 v2 v3] != 1 } {
++	return {}
++    }
++
++    return [list $v1 $v2 $v3]
++}
++
+ # Always load compatibility stuff.
+ load_lib future.exp
+-- 
+2.35.3
+

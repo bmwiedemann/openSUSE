@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,6 +20,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 
 %bcond_with ringdisabled
+%bcond_with for_chroot
 
 %if "%flavor" == "testsuite"
 %if %{with ringdisabled}
@@ -210,7 +211,6 @@ Patch47:        gdb-test-dw2-aranges.patch
 Patch48:        gdb-test-expr-cumulative-archer.patch
 Patch49:        gdb-physname-pr11734-test.patch
 Patch50:        gdb-physname-pr12273-test.patch
-Patch51:        gdb-test-ivy-bridge.patch
 Patch52:        gdb-runtest-pie-override.patch
 Patch53:        gdb-glibc-strstr-workaround.patch
 Patch54:        gdb-rhel5.9-testcase-xlf-var-inside-mod.patch
@@ -227,7 +227,6 @@ Patch65:        gdb-fedora-libncursesw.patch
 Patch66:        gdb-opcodes-clflushopt-test.patch
 Patch67:        gdb-6.6-buildid-locate-rpm-scl.patch
 Patch68:        gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
-Patch69:        gdb-container-rh-pkg.patch
 Patch70:        gdb-rhbz1325795-framefilters-test.patch
 Patch71:        gdb-linux_perf-bundle.patch
 Patch73:        gdb-rhbz1398387-tab-crash-test.patch
@@ -241,6 +240,7 @@ Patch74:        gdb-rhbz1553104-s390x-arch12-test.patch
 # - gdb-6.3-rh-testversion-20041202.patch
 # - gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
 # - gdb-6.8-bz466901-backtrace-full-prelinked.patch
+# - gdb-container-rh-pkg.patch
 #
 # Broken:
 # - gdb-6.5-BEA-testsuite.patch
@@ -251,6 +251,7 @@ Patch74:        gdb-rhbz1553104-s390x-arch12-test.patch
 # Obsolete:
 # - gdb-6.7-charsign-test.patch
 # - gdb-6.7-ppc-clobbered-registers-O2-test.patch
+# - gdb-test-ivy-bridge.patch (dropped by fedora)
 
 # Fedora patches fixup
 
@@ -261,6 +262,7 @@ Patch503:       fixup-gdb-glibc-strstr-workaround.patch
 Patch504:       fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
 Patch505:       fixup-gdb-test-bt-cfi-without-die.patch
 Patch506:       fixup-2-gdb-rhbz1553104-s390x-arch12-test.patch
+Patch507:       fixup-gdb-test-dw2-aranges.patch
 
 # openSUSE specific
 
@@ -283,6 +285,8 @@ Patch1101:      gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
 Patch1102:      gdb-testsuite-fix-gdb-server-ext-run-exp-for-obs.patch
 # Tests the zypper install hints.
 Patch1103:      gdb-testsuite-add-gdb.suse-zypper-hint.exp.patch
+# Tests that no branding is leaked from sourcing the fedora package.
+Patch1104:      gdb-testsuite-add-gdb.suse-debranding.exp.patch
 
 # Patches to upstream
 
@@ -299,15 +303,16 @@ Patch1504:      fix-gdb.mi-new-ui-mi-sync.exp.patch
 # FAIL: gdb.base/step-over-syscall.exp: fork: displaced=off: \
 # pc after stepi matches insn addr after syscall
 Patch1505:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-case.patch
-# Fixes:
-# FAIL: gdb.threads/detach-step-over.exp: \
-#   breakpoint-condition-evaluation=host: target-non-stop=off: non-stop=off: \
-#   displaced=off: iter 1: all threads running
-Patch1506:      gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
 
 # Backports from release branch
 
 Patch1700:      fix-core-file-detach-crash-corefiles-29275.patch
+Patch1701:      gdb-testsuite-add-new-gdb_attach-to-check-attach-command.patch
+Patch1702:      gdb-testsuite-remove-global-declarations-in-gdb.threads-detach-step-over.exp.patch
+Patch1703:      gdb-testsuite-refactor-gdb.threads-detach-step-over.exp.patch
+Patch1704:      gdb-fix-assert-when-quitting-gdb-while-a-thread-is-stepping.patch
+Patch1705:      gdbserver-switch-to-right-process-in-find_one_thread.patch
+Patch1706:      gdb-disable-commit-resumed-in-target_kill.patch
 
 # Backports from master, available in next release.
 
@@ -348,10 +353,24 @@ Patch2033:      gdb-testsuite-fix-have_mpx-test.patch
 Patch2034:      gdb-testsuite-fix-gdb.dwarf2-dw2-unspecified-type-foo.c-with-m32.patch
 Patch2035:      gdb-add-support-for-readline-8.2.patch
 Patch2036:      gdb-fix-assert-in-handle_jit_event.patch
+Patch2037:      gdb-testsuite-fix-gdb.base-break-idempotent.exp-on-ppc.patch
+Patch2038:      powerpc-fix-gdb.base-watchpoint.exp-on-power-9.patch
+Patch2039:      gdb-testsuite-handle-missing-.note.gnu-stack.patch
+Patch2040:      gdb-testsuite-fix-gdb.base-infoline-reloc-main-from-.patch
+Patch2041:      gdb-testsuite-fix-gdb.base-nested-subp-2-3-.exp-with.patch
+Patch2042:      add-elfcompress_zstd.patch
+Patch2043:      binutils-gdb-support-zstd-compressed-debug-section.patch
+Patch2044:      fix-gdb-build-elf-support-check-lzstd.patch
 
 # Backports from master, not yet available in next release.
 
-#
+Patch2075:      gdb-testsuite-add-xfail-in-gdb.arch-i386-pkru.exp.patch
+Patch2076:      gdb-testsuite-factor-out-proc-linux_kernel_version.patch
+Patch2077:      gdb-testsuite-add-xfail-in-gdb.python-py-record-btra.patch
+Patch2078:      gdb-testsuite-fix-gdb.threads-schedlock.exp-on-fast-.patch
+Patch2079:      gdb-testsuite-simplify-gdb.arch-amd64-disp-step-avx..patch
+Patch2080:      gdb-testsuite-fix-gdb.threads-schedlock.exp-for-gcc-.patch
+Patch2081:      gdb-testsuite-add-xfail-case-in-gdb.python-py-record.patch
 
 # Backport from gdb-patches
 
@@ -383,14 +402,18 @@ Patch2111:      gdb-testsuite-enable-some-test-cases-for-x86_64-m32.patch
 Patch2112:      gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
 # https://sourceware.org/pipermail/gdb-patches/2022-July/191107.html
 Patch2113:      gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
-# https://sourceware.org/bugzilla/show_bug.cgi?id=29423#c8
-Patch2114:      gdb-fix-watchpoints-triggered.patch
 # https://sourceware.org/pipermail/gdb-patches/2022-September/192172.html
 Patch2115:      gdb-testsuite-fix-gdb.mi-mi-sym-info.exp-on-opensuse-tumbleweed.patch
 
 # Debug patches.
 
 #
+
+# Other.  Needs comment for each patch.
+
+# Not a backport, but no need to upstream either.  Should be able to drop
+# it in next release.
+Patch3000:      gdb-testsuite-fix-gdb.dwarf2-dw2-dir-file-name.exp-w.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -471,6 +494,10 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libsource-highlight-devel
 %endif
 
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libzstd-devel
+%endif
+
 %if %{build_testsuite}
 
 # Copied from gcc9/gcc.spec.in
@@ -506,7 +533,15 @@ BuildRequires:  libsource-highlight-devel
 BuildRequires:  dejagnu
 BuildRequires:  sharutils
 # gcc-objc++ is not covered by the GDB testsuite.
+
+%if 0%{?suse_version} >= 1200
+# Skip for SLE-11 due to:
+#   unresolvable: conflict for providers of libquadmath0
+#   needed by libgfortran3
+#   (provider libquadmath0-gcc5 is in conflict with libquadmath0)
 BuildRequires:  %{gcc}-fortran
+%endif
+
 BuildRequires:  %{gcc}-objc
 %ifarch %ada_arch
 BuildRequires:  %{gcc}-ada
@@ -699,7 +734,6 @@ find -name "*.info*"|xargs rm -f
 %patch48 -p1
 %patch49 -p1
 %patch50 -p1
-%patch51 -p1
 %patch52 -p1
 %patch53 -p1
 %patch54 -p1
@@ -716,7 +750,6 @@ find -name "*.info*"|xargs rm -f
 %patch66 -p1
 %patch67 -p1
 %patch68 -p1
-%patch69 -p1
 %patch70 -p1
 %patch71 -p1
 %patch73 -p1
@@ -730,6 +763,7 @@ find -name "*.info*"|xargs rm -f
 %patch504 -p1
 %patch505 -p1
 %patch506 -p1
+%patch507 -p1
 
 %patch1000 -p1
 %patch1001 -p1
@@ -738,15 +772,21 @@ find -name "*.info*"|xargs rm -f
 %patch1101 -p1
 %patch1102 -p1
 %patch1103 -p1
+%patch1104 -p1
 
 %patch1500 -p1
 %patch1501 -p1
 %patch1503 -p1
 %patch1504 -p1
 %patch1505 -p1
-%patch1506 -p1
 
 %patch1700 -p1
+%patch1701 -p1
+%patch1702 -p1
+%patch1703 -p1
+%patch1704 -p1
+%patch1705 -p1
+%patch1706 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -785,6 +825,22 @@ find -name "*.info*"|xargs rm -f
 %patch2034 -p1
 %patch2035 -p1
 %patch2036 -p1
+%patch2037 -p1
+%patch2038 -p1
+%patch2039 -p1
+%patch2040 -p1
+%patch2041 -p1
+%patch2042 -p1
+%patch2043 -p1
+%patch2044 -p1
+
+%patch2075 -p1
+%patch2076 -p1
+%patch2077 -p1
+%patch2078 -p1
+%patch2079 -p1
+%patch2080 -p1
+%patch2081 -p1
 
 %patch2100 -p1
 %patch2101 -p1
@@ -800,8 +856,9 @@ find -name "*.info*"|xargs rm -f
 %patch2111 -p1
 %patch2112 -p1
 %patch2113 -p1
-%patch2114 -p1
 %patch2115 -p1
+
+%patch3000 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -1145,7 +1202,15 @@ $CC -o ./orphanripper %{SOURCE2} -Wall -lutil -ggdb2
       CHECK="$(echo $CHECK | sed 's#check//unix/[^ ]*#& &/-fPIE/-pie#g')"
   fi
 
+%if %{with for_chroot}
+  # When we want to chroot into a local osc build and run a test-case, we
+  # need -M testsuite to add all the buildrequires, but there's no need
+  # to run the testsuite.  Instead, fail %check to make sure %clean doesn't
+  # remove buildroot.
+  false
+%else
   ./orphanripper make %{?_smp_mflags} -k $CHECK || :
+%endif
 )
 for t in sum log
 do

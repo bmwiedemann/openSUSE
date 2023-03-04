@@ -1,0 +1,29 @@
+From f41928feb3e44fb27776afa062a1cd06263b7d1d Mon Sep 17 00:00:00 2001
+From: Cary Coutant <ccoutant@gmail.com>
+Date: Tue, 2 Aug 2022 16:19:43 -0700
+Subject: [PATCH 1/2] Add ELFCOMPRESS_ZSTD.
+
+include/elf/
+	* common.h: Add ELFCOMPRESS_ZSTD.
+---
+ include/elf/common.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/elf/common.h b/include/elf/common.h
+index 70d63e3299c..c409da2bd16 100644
+--- a/include/elf/common.h
++++ b/include/elf/common.h
+@@ -588,6 +588,8 @@
+ 
+ /* Compression types.  */
+ #define ELFCOMPRESS_ZLIB   1		/* Compressed with zlib.  */
++#define ELFCOMPRESS_ZSTD   2		/* Compressed with zstd  */
++					/* (see http://www.zstandard.org). */
+ #define ELFCOMPRESS_LOOS   0x60000000	/* OS-specific semantics, lo */
+ #define ELFCOMPRESS_HIOS   0x6FFFFFFF	/* OS-specific semantics, hi */
+ #define ELFCOMPRESS_LOPROC 0x70000000	/* Processor-specific semantics, lo */
+
+base-commit: 835a10f8541c7c4150098c82e097c4f606475cfa
+-- 
+2.35.3
+

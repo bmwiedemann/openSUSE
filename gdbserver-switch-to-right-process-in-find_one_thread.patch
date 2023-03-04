@@ -1,0 +1,255 @@
+gdbserver: switch to right process in find_one_thread
+
+New in this version: add a dedicated test.
+
+When I do this:
+
+    $ ./gdb -nx --data-directory=data-directory -q \
+        /bin/sleep \
+	-ex "maint set target-non-stop on" \
+	-ex "tar ext :1234" \
+	-ex "set remote exec-file /bin/sleep" \
+	-ex "run 1231 &" \
+	-ex add-inferior \
+	-ex "inferior 2"
+    Reading symbols from /bin/sleep...
+    (No debugging symbols found in /bin/sleep)
+    Remote debugging using :1234
+    Starting program: /bin/sleep 1231
+    Reading /lib64/ld-linux-x86-64.so.2 from remote target...
+    warning: File transfers from remote targets can be slow. Use "set sysroot" to access files locally instead.
+    Reading /lib64/ld-linux-x86-64.so.2 from remote target...
+    Reading /usr/lib/debug/.build-id/a6/7a1408f18db3576757eea210d07ba3fc560dff.debug from remote target...
+    [New inferior 2]
+    Added inferior 2 on connection 1 (extended-remote :1234)
+    [Switching to inferior 2 [<null>] (<noexec>)]
+    (gdb) Reading /lib/x86_64-linux-gnu/libc.so.6 from remote target...
+    attach 3659848
+    Attaching to process 3659848
+    /home/smarchi/src/binutils-gdb/gdb/thread.c:85: internal-error: inferior_thread: Assertion `current_thread_ != nullptr' failed.
+
+Note the "attach" command just above.  When doing it on the command-line
+with a -ex switch, the bug doesn't trigger.
+
+The internal error of GDB is actually caused by GDBserver crashing, and
+the error recovery of GDB is not on point.  This patch aims to fix just
+the GDBserver crash, not the GDB problem.
+
+GDBserver crashes with a segfault here:
+
+    (gdb) bt
+    #0  0x00005555557fb3f4 in find_one_thread (ptid=...) at /home/smarchi/src/binutils-gdb/gdbserver/thread-db.cc:177
+    #1  0x00005555557fd5cf in thread_db_thread_handle (ptid=<error reading variable: Cannot access memory at address 0xffffffffffffffa0>, handle=0x7fffffffc400, handle_len=0x7fffffffc3f0)
+        at /home/smarchi/src/binutils-gdb/gdbserver/thread-db.cc:461
+    #2  0x000055555578a0b6 in linux_process_target::thread_handle (this=0x5555558a64c0 <the_x86_target>, ptid=<error reading variable: Cannot access memory at address 0xffffffffffffffa0>, handle=0x7fffffffc400,
+        handle_len=0x7fffffffc3f0) at /home/smarchi/src/binutils-gdb/gdbserver/linux-low.cc:6905
+    #3  0x00005555556dfcc6 in handle_qxfer_threads_worker (thread=0x60b000000510, buffer=0x7fffffffc8a0) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:1645
+    #4  0x00005555556e00e6 in operator() (__closure=0x7fffffffc5e0, thread=0x60b000000510) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:1696
+    #5  0x00005555556f54be in for_each_thread<handle_qxfer_threads_proper(buffer*)::<lambda(thread_info*)> >(struct {...}) (func=...) at /home/smarchi/src/binutils-gdb/gdbserver/gdbthread.h:159
+    #6  0x00005555556e0242 in handle_qxfer_threads_proper (buffer=0x7fffffffc8a0) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:1694
+    #7  0x00005555556e04ba in handle_qxfer_threads (annex=0x629000000213 "", readbuf=0x621000019100 '\276' <repeats 200 times>..., writebuf=0x0, offset=0, len=4097)
+        at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:1732
+    #8  0x00005555556e1989 in handle_qxfer (own_buf=0x629000000200 "qXfer:threads", packet_len=26, new_packet_len_p=0x7fffffffd630) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:2045
+    #9  0x00005555556e720a in handle_query (own_buf=0x629000000200 "qXfer:threads", packet_len=26, new_packet_len_p=0x7fffffffd630) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:2685
+    #10 0x00005555556f1a01 in process_serial_event () at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:4176
+    #11 0x00005555556f4457 in handle_serial_event (err=0, client_data=0x0) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:4514
+    #12 0x0000555555820f56 in handle_file_event (file_ptr=0x607000000250, ready_mask=1) at /home/smarchi/src/binutils-gdb/gdbsupport/event-loop.cc:573
+    #13 0x0000555555821895 in gdb_wait_for_event (block=1) at /home/smarchi/src/binutils-gdb/gdbsupport/event-loop.cc:694
+    #14 0x000055555581f533 in gdb_do_one_event (mstimeout=-1) at /home/smarchi/src/binutils-gdb/gdbsupport/event-loop.cc:264
+    #15 0x00005555556ec9fb in start_event_loop () at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:3512
+    #16 0x00005555556f0769 in captured_main (argc=4, argv=0x7fffffffe0d8) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:3992
+    #17 0x00005555556f0e3f in main (argc=4, argv=0x7fffffffe0d8) at /home/smarchi/src/binutils-gdb/gdbserver/server.cc:4078
+
+The reason is a wrong current process when find_one_thread is called.
+The current process is the 2nd one, which was just attached.  It does
+not yet have thread_db data (proc->priv->thread_db is nullptr).  As we
+iterate on all threads of all process to fulfull the qxfer:threads:read
+request, we get to a thread of process 1 for which we haven't read
+thread_db information yet (lwp_info::thread_known is false), so we get
+into find_one_thread.  find_one_thread uses
+`current_processÂ ()->priv->thread_db`, assuming the current process
+matches the ptid passed as a parameter, which is wrong.  A segfault
+happens when trying to dereference that thread_db pointer.
+
+Fix this by making find_one_thread not assume what the current process /
+current thread is.  If it needs to call into libthread_db, which we know
+will try to read memory from the current process, then temporarily set
+the current process.
+
+In the case where the thread is already know and we return early, we
+don't need to switch process.
+
+Add a test to reproduce this specific situation.
+
+Change-Id: I09b00883e8b73b7e5f89d0f47cb4e9c0f3d6caaa
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+---
+ gdb/testsuite/gdb.multi/attach-while-running.c   | 26 +++++++++
+ gdb/testsuite/gdb.multi/attach-while-running.exp | 73 ++++++++++++++++++++++++
+ gdbserver/thread-db.cc                           | 29 ++++++----
+ 3 files changed, 116 insertions(+), 12 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.multi/attach-while-running.c b/gdb/testsuite/gdb.multi/attach-while-running.c
+new file mode 100644
+index 00000000000..dd321dfe007
+--- /dev/null
++++ b/gdb/testsuite/gdb.multi/attach-while-running.c
+@@ -0,0 +1,26 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2022 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++
++int global_var = 123;
++
++int
++main (void)
++{
++  sleep (30);
++}
+diff --git a/gdb/testsuite/gdb.multi/attach-while-running.exp b/gdb/testsuite/gdb.multi/attach-while-running.exp
+new file mode 100644
+index 00000000000..125273d0524
+--- /dev/null
++++ b/gdb/testsuite/gdb.multi/attach-while-running.exp
+@@ -0,0 +1,73 @@
++# Copyright 2022 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# This test was introduced to reproduce a specific bug in GDBserver, where
++# attaching an inferior while another one was running would trigger a segfault
++# in GDBserver.  Reproducing the bug required specific circumstances:
++#
++#  - The first process must be far enough to have loaded its libc or
++#    libpthread (whatever triggers the loading of libthread_db), such that
++#    its proc->priv->thread_db is not nullptr
++#
++#  - However, its lwp must still be in the `!lwp->thread_known` state,
++#    meaning GDBserver hasn't asked libthread_db to compute the thread
++#    handle yet.  That means, GDB must not have refreshed the thread list
++#    yet, since that would cause the thread handles to be computed.  That
++#    means, no stopping on a breakpoint, since that causes a thread list
++#    update.  That's why the first inferior needs to be started with "run
++#    &".
++#
++#  - Attaching the second process would segfault GDBserver.
++#
++# All of this to say, if modifying this test, please keep in mind the original
++# intent.
++
++standard_testfile
++
++if [use_gdb_stub] {
++    unsupported "test requires running"
++    return
++}
++
++if { [build_executable "failed to prepare" ${testfile} ${srcfile}] } {
++    return
++}
++
++proc do_test {} {
++    save_vars { $::GDBFLAGS } {
++	append ::GDBFLAGS " -ex \"maint set target-non-stop on\""
++	clean_restart $::binfile
++    }
++
++    gdb_test_multiple "run &" "" {
++	-re ".*$::gdb_prompt " {
++	    pass $gdb_test_name
++	}
++    }
++    gdb_test "add-inferior" "Added inferior 2 on connection 1 .*"
++    gdb_test "inferior 2" "Switching to inferior 2 .*"
++
++    set spawn_id [spawn_wait_for_attach $::binfile]
++    set pid [spawn_id_get_pid $spawn_id]
++
++    # This call would crash GDBserver.
++    gdb_attach $pid
++
++    # Read a variable from the inferior, just to make sure the attach worked
++    # fine.
++    gdb_test "print global_var" " = 123"
++}
++
++do_test
+diff --git a/gdbserver/thread-db.cc b/gdbserver/thread-db.cc
+index 6e0e2228a5f..bf98ca9557a 100644
+--- a/gdbserver/thread-db.cc
++++ b/gdbserver/thread-db.cc
+@@ -155,30 +155,35 @@ thread_db_state_str (td_thr_state_e state)
+ }
+ #endif
+ 
+-/* Get thread info about PTID, accessing memory via the current
+-   thread.  */
++/* Get thread info about PTID.  */
+ 
+ static int
+ find_one_thread (ptid_t ptid)
+ {
+-  td_thrhandle_t th;
+-  td_thrinfo_t ti;
+-  td_err_e err;
+-  struct lwp_info *lwp;
+-  struct thread_db *thread_db = current_process ()->priv->thread_db;
+-  int lwpid = ptid.lwp ();
+-
+   thread_info *thread = find_thread_ptid (ptid);
+-  lwp = get_thread_lwp (thread);
++  lwp_info *lwp = get_thread_lwp (thread);
+   if (lwp->thread_known)
+     return 1;
+ 
+-  /* Get information about this thread.  */
+-  err = thread_db->td_ta_map_lwp2thr_p (thread_db->thread_agent, lwpid, &th);
++  /* Get information about this thread.  libthread_db will need to read some
++     memory, which will be done on the current process, so make PTID's process
++     the current one.  */
++  process_info *proc = find_process_pid (ptid.pid ());
++  gdb_assert (proc != nullptr);
++
++  scoped_restore_current_thread restore_thread;
++  switch_to_process (proc);
++
++  thread_db *thread_db = proc->priv->thread_db;
++  td_thrhandle_t th;
++  int lwpid = ptid.lwp ();
++  td_err_e err = thread_db->td_ta_map_lwp2thr_p (thread_db->thread_agent, lwpid,
++						 &th);
+   if (err != TD_OK)
+     error ("Cannot get thread handle for LWP %d: %s",
+ 	   lwpid, thread_db_err_str (err));
+ 
++  td_thrinfo_t ti;
+   err = thread_db->td_thr_get_info_p (&th, &ti);
+   if (err != TD_OK)
+     error ("Cannot get thread info for LWP %d: %s",

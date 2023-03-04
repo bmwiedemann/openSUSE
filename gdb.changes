@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Fri Mar  3 12:41:21 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Expand kfail pattern for PR29897.
+  * Add PR29965 kfail.
+
+-------------------------------------------------------------------
+Thu Mar  2 08:28:32 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Re-enable testing all test-cases, undoing accidental change in
+  previous commit.
+- Add --with=for_chroot.
+
+-------------------------------------------------------------------
+Thu Feb 16 10:57:10 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Patches dropped (bsc#1207712):
+  * gdb-container-rh-pkg.patch
+- Patches added (bsc#1207712):
+  * gdb-testsuite-add-gdb.suse-debranding.exp.patch
+- Patches added (test-case fix):
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-dir-file-name.exp-w.patch
+- Patches added (fedora patch fixup):
+  * fixup-gdb-test-dw2-aranges.patch
+- Patches added (master backports):
+  * gdb-testsuite-add-xfail-in-gdb.arch-i386-pkru.exp.patch
+  * gdb-testsuite-add-xfail-in-gdb.python-py-record-btra.patch
+  * gdb-testsuite-factor-out-proc-linux_kernel_version.patch
+  * gdb-testsuite-fix-gdb.base-infoline-reloc-main-from-.patch
+  * gdb-testsuite-fix-gdb.base-nested-subp-2-3-.exp-with.patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-on-fast-.patch
+  * gdb-testsuite-handle-missing-.note.gnu-stack.patch
+  * gdb-testsuite-simplify-gdb.arch-amd64-disp-step-avx..patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-for-gcc-.patch
+  * gdb-testsuite-add-xfail-case-in-gdb.python-py-record.patch
+  * add-elfcompress_zstd.patch
+  * binutils-gdb-support-zstd-compressed-debug-section.patch
+  * fix-gdb-build-elf-support-check-lzstd.patch
+- Patches removed (dropped by fedora):
+  * gdb-test-ivy-bridge.patch
+- Disable "BuildRequires: %{gcc}-fortran" for SLE-11.
+- Maintenance script qa-local.sh:
+  * Add SLE-11 to configs.
+  * Build with --no-verify.
+- Maintenance script qa.sh:
+  * Add -sle11.
+
+-------------------------------------------------------------------
+Tue Dec 13 10:39:19 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Re-enable PR26284 kfails.
+  * Remove mention of PR28275.
+  * Add PR29897 kfail.
+- Mention CVE-2018-7208 and CVE-2017-16829.
+
+-------------------------------------------------------------------
+Tue Dec 13 09:52:56 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Mention SLE-21561, bnc#1081527, and bnc#1068950.
+
+-------------------------------------------------------------------
+Thu Dec  1 15:20:21 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (gdb 12 release branch backports):
+  * gdb-disable-commit-resumed-in-target_kill.patch
+  * gdb-fix-assert-when-quitting-gdb-while-a-thread-is-stepping.patch
+  * gdb-testsuite-add-new-gdb_attach-to-check-attach-command.patch
+  * gdb-testsuite-refactor-gdb.threads-detach-step-over.exp.patch
+  * gdb-testsuite-remove-global-declarations-in-gdb.threads-detach-step-over.exp.patch
+  * gdbserver-switch-to-right-process-in-find_one_thread.patch  
+- Patches removed:
+  * gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
+- Maintenance script qa.sh:
+  * Disable PR26284 kfails.
+  * Add PR29841 kfails.
+  * Add kfail_powerpc64le_sle12, kfail_s390 and kfail_s390x.
+  * Add -s390 and -s390x.
+  * Add gdb.base/gdb-rhbz1156192-recursive-dlopen.exp kfail.
+  * Add PR26967 kfails.
+  * Move PR27027 kfails from kfail_factory to kfail.
+  * Add -ppc64le alias for -powerpc64le.
+  * Add gdb.threads/interrupt-while-step-over.exp kfail.
+  * Add gdb.tui/tui-layout-asm-short-prog.exp kfail.
+  * Add unix/-fPIE/-fpie overrides -static kfails.
+  * Add gdb.guile/scm-disasm.exp kfail.
+  * Add gdb.base/gnu_vector.exp to existing kfail.
+  * Add gdb.guile/scm-symtab.exp kfail.
+  * Add gdb.base/write_mem.exp kfail.
+
+-------------------------------------------------------------------
+Tue Nov 22 15:03:04 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  - Add openSUSE Leap 15.4 ppc64le to known clean configs.
+
+-------------------------------------------------------------------
+Wed Nov 16 13:49:01 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  - Update PR26363 internal error pattern.
+  - Add PR29790 kfail.
+  - Add -powerpc64le option.
+  - Generalize PR26915 kfail patterns.
+  - Move PR28478 patterns from kfail_factory to kfail.
+  - Add PR29781 and PR27813 kfails.
+  - Add SLE-15 ppc64le to known clean configs.
+
+-------------------------------------------------------------------
+Tue Nov 15 08:14:11 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-remote.sh:
+  * Use qa.sh alongside qa-remote.sh.
+- Maintenance script qa.sh:
+  * Add PR29783 internal error.
+- Patch removed (intended effect not observed):
+  * gdb-fix-watchpoints-triggered.patch
+
+-------------------------------------------------------------------
+Fri Nov 11 12:06:44 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Handle librpm == "" and nolibrpm == "".
+- Maintenance script qa-remote.sh:
+  * Make "Get remote testsuite results" even more verbose.
+  * Make hardcoded pattern gdb-testresults-12.1-*.*.rpm more
+    generic.
+  * Add missing setting of rpm variable in "Getting rpms" case.
+- Patches added (backport from trunk):
+  * gdb-testsuite-fix-gdb.base-break-idempotent.exp-on-ppc.patch
+  * powerpc-fix-gdb.base-watchpoint.exp-on-power-9.patch
+
+-------------------------------------------------------------------
+Fri Oct 21 08:03:27 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-remote.sh:
+  * Make "Get remote testsuite results" more verbose.
+
+-------------------------------------------------------------------
 Wed Oct 19 16:35:34 UTC 2022 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (swo#29277):
@@ -891,6 +1030,7 @@ Tue Oct 19 08:00:06 UTC 2021 - Tom de Vries <tdevries@suse.com>
 Mon Oct 18 17:46:06 UTC 2021 - Tom de Vries <tdevries@suse.com> - 11.1
 
 - Rebase to 11.1 release (as in fedora 35 @ 9cd9368):
+  * Implements SLE-21561.
   * GDB now supports general memory tagging functionality if the
     underlying architecture supports the proper primitives and hooks.
     Currently this is enabled only for AArch64 MTE.
@@ -1986,6 +2126,7 @@ Wed Nov  7 15:04:28 UTC 2018 - tdevries@suse.com
 Tue Sep 11 15:01:59 UTC 2018 - matz@suse.com
 
 - Rebase to 8.2 release (as in fedora 29 @ c720d998):
+  * Contains fix for bnc#1081527, CVE-2018-7208.
   * 'symbol-file' and 'add-symbol-file' accept -o to add relative
     offset to all sections
   * pager accepts 'c' response to disable it for rest of command
@@ -2044,6 +2185,7 @@ Tue Mar 27 14:01:27 UTC 2018 - matz@suse.com
 Fri Mar  9 16:27:10 UTC 2018 - matz@suse.com
 
 - Rebase to 8.1 release:
+  * Contains fix for bnc#1068950, CVE-2017-16829.
   * ptype/o prints offsets and sizes of members (like pahole)
   * tab-completion improved: quoting function names is not generally
     necessary anymore, completion offers for breakpoint don't include
