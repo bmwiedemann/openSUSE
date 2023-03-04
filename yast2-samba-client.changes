@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Thu Jan 26 16:57:13 UTC 2023 - David Mulder <dmulder@suse.com>
 
 - Add join option for enabling group policy; (bsc#1207604).
