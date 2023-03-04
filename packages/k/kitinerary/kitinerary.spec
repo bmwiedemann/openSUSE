@@ -1,7 +1,7 @@
 #
 # spec file for package kitinerary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kitinerary
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -28,6 +28,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-asn1-Fix-build-with-GCC-13-add-missing-cstdint-inclu.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 %if 0%{?suse_version} == 1500
@@ -100,8 +102,7 @@ export CXX=g++-10
 %check
 %ctest
 
-%post -n libKPimItinerary5 -p /sbin/ldconfig
-%postun -n libKPimItinerary5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPimItinerary5
 
 %files
 %{_kf5_libexecdir}/kitinerary-extractor

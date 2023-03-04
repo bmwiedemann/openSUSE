@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  3 09:15:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.21.0:
+  * adapter_fictionlive: fix #922 -- call utf8fromSoup exactly
+    once - Thanks, HazelSh!
+  * adapter_royalroadcom: Fixes for site changes. #923
+  * AO3: Re-soup full_work on every chapter to avoid problems
+    with soup changes. Found with
+    always_reload_first_chapter:true
+  * adapter_thesietchcom: Fix for site more closely following
+    XenForo2
+  * FlareSolverr: novelfull.com sometimes w/o expires of any kind
+  * adapter_fictionlive: Soup chapter text to fix up HTML
+  * Add style attr by default to fiction.live
+
+-------------------------------------------------------------------
 Wed Feb 15 06:46:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.20.0:

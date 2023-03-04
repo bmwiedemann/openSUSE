@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Mar 02 11:38:56 UTC 2023 - schubi@suse.com
+
+- Update to version 1.1.4+git20221209.c8ef757:
+  * Readme update (#210)
+  * Updating the readme with openssl 1.1.1s (#209)
+  * Fix TO when IP/RV is empty string (#208)
+  * * Replaced unsafe string function (#207)
+  * Increase max message buffer size to 64000 (#205)
+  * Update Curl version as 7.86 in Readme (#206)
+  * Readme updates (#204)
+  * Minimal logs by default (compile time) (#203)
+  * Revert openssl3 (#201)
+  * Update HTTPS connection to use TLS 1.2 (#196)
+  * Openssl 3 porting (#194)
+  * Add curl support for HTTP connection (#195)
+  * Update NOTICE file (#192)
+  * Add CURL support for HTTPS connection (#188)
+  * Readme update for installing safestringlib (#191)
+  * Updating the readme with openssl 1.1.1q (#187)
+  * switch to host.docker.internal (#185)
+  * Fix to enable compilation of CSDK in ubuntu 22 (#183)
+  * Fix TO when IP is NULL (#184)
+  * Update EAT-UEID value as per FIDO working draft specification (#180)
+  * Revert "Update EAT-UEID value as per FIDO working draft specification (#178)" (#179)
+  * Update EAT-UEID value as per FIDO working draft specification (#178)
+  * Updating comments in fdonet.c (#177)
+  * Upgrade OpenSSL toolkit version to 1.1.1n (#176)
+  * Documentation updates (#175)
+  * Add a note regarding fdosys issue (#174)
+  * Update Jenkinsfile to copy PRI artifacts from master (#173)
+  * Merging 1.1 dev branch to master. (#172)
+  * Fix multiple owner support for CSDK devices. (#167)
+  * Fix: fdo_sys:exec_cb/exec not working after initial fdo_sys:exec (#166)
+  * Add implementation for fdo_sys keep-alive (#165)
+  * Fix an issue with keeping in-memory Mfg PublicKey hash (#164)
+  * Update/Tweak Device Status and Cred management (#163)
+  * Updating EAT IANA numbers as per spec ERRATA (#160)
+  * Updating Device ServiceInfo framework to handle writes (#162)
+  * Add TPM support on RHEL (#161)
+  * Update README for RHEL support (#159)
+  * Remove disclaimer from README (#158)
+
+-------------------------------------------------------------------
+Thu Mar 02 11:37:36 UTC 2023 - schubi@suse.com
+
+- Update to version 1.0.0+git20171208.5da1bad:
+  * Use secure functions where appropriate
+  * Added extern definition
+  * Fix Klocwork Errors
+  * Fix output
+  * Fix Core Dump in Unit Test
+  * Add Makefile
+  * publish unit tests
+  * strpcpu_s: remove unsed redundant variable overlap_bumper
+  * Update LICENSE&COPYING.txt
+
+-------------------------------------------------------------------
 Fri Oct 15 17:39:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - This is the successor of sdo-client

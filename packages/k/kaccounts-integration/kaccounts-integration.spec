@@ -1,7 +1,7 @@
 #
 # spec file for package kaccounts-integration
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kaccounts-integration
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -96,8 +96,7 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 
 %find_lang %{name} --with-man --all-name
 
-%post   -n libkaccounts%{sover} -p /sbin/ldconfig
-%postun -n libkaccounts%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libkaccounts%{sover}
 
 %files
 %dir %{_kf5_sharedir}/kpackage

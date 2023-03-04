@@ -845,4 +845,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1058900</requestid>
   </revision>
+  <revision rev="90" vrev="14">
+    <srcmd5>d1f62e75535c5e0ecb729b24ae2eb1f2</srcmd5>
+    <version>9.0.43</version>
+    <time>1677878894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069054</requestid>
+  </revision>
 </revisionlist>

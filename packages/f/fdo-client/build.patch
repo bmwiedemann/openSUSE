@@ -1,6 +1,5 @@
-diff -u a/blob_path.cmake b/blob_path.cmake
---- a/cmake/blob_path.cmake	2021-10-14 22:02:06.855474972 +0200
-+++ b/cmake/blob_path.cmake	2021-10-14 22:19:21.969170219 +0200
+--- org/cmake/blob_path.cmake	2022-12-09 09:44:34.000000000 +0100
++++ patch/cmake/blob_path.cmake	2023-03-02 14:51:38.637622177 +0100
 @@ -7,17 +7,18 @@
  # Note all blobs and data will be made relative.
  # if absoulte is needed declare BLOB_PATH on CLI
@@ -8,12 +7,12 @@ diff -u a/blob_path.cmake b/blob_path.cmake
 +# RO_BLOB_PATH=<path> is for data which does not need write access
  
  if(TARGET_OS MATCHES linux)
-   
+ 
    client_sdk_compile_definitions(
 -    -DSERIAL_FILE=\"${BLOB_PATH}/data/manufacturer_sn.bin\"
 -    -DMODEL_FILE=\"${BLOB_PATH}/data/manufacturer_mod.bin\"
 +    -DSERIAL_FILE=\"${RO_BLOB_PATH}/data/manufacturer_sn.bin\"
-+    -DMODEL_FILE=\"${RO_BLOB_PATH}/data/manufacturer_mod.bin\"
++    -DMODEL_FILE=\"${RO_BLOB_PATH}/data/manufacturer_mod.bin\"    
      -DPLATFORM_IV=\"${BLOB_PATH}/data/platform_iv.bin\"
      -DPLATFORM_HMAC_KEY=\"${BLOB_PATH}/data/platform_hmac_key.bin\"
      -DPLATFORM_AES_KEY=\"${BLOB_PATH}/data/platform_aes_key.bin\"
@@ -99,7 +98,7 @@ diff -u a/blob_path.cmake b/blob_path.cmake
  	)
        if (${DA_FILE} MATCHES pem)
  	client_sdk_compile_definitions(
-@@ -164,10 +165,10 @@
+@@ -164,9 +165,9 @@
  # Configure if needed at a later point
  # configure_file(${BLOB_PATH}/data/Normal.blob NEWLINE_STYLE DOS)
  
@@ -109,19 +108,15 @@ diff -u a/blob_path.cmake b/blob_path.cmake
 -file(WRITE ${BLOB_PATH}/data/Normal.blob "")
 -file(WRITE ${BLOB_PATH}/data/Secure.blob "")
 -file(WRITE ${BLOB_PATH}/data/raw.blob "")
--file(WRITE ${BLOB_PATH}/data/max_serviceinfo_sz.bin "")
 +file(WRITE ./data/platform_iv.bin "")
 +file(WRITE ./data/platform_hmac_key.bin "")
 +file(WRITE ./data/platform_aes_key.bin "")
 +file(WRITE ./data/Normal.blob "")
 +file(WRITE ./data/Secure.blob "")
 +file(WRITE ./data/raw.blob "")
-+file(WRITE ./data/max_serviceinfo_sz.bin "")
-Nur in b: blob_path.cmake~.
-diff -u a/cli_input.cmake b/cli_input.cmake
---- a/cmake/cli_input.cmake	2021-10-14 22:24:53.078959088 +0200
-+++ b/cmake/cli_input.cmake	2021-10-14 22:26:36.187516122 +0200
-@@ -24,6 +24,7 @@
+--- org/cmake/cli_input.cmake	2022-12-09 09:44:34.000000000 +0100
++++ patch/cmake/cli_input.cmake	2023-03-02 14:56:02.036016802 +0100
+@@ -25,6 +25,7 @@
  set (STORAGE true)
  set (BOARD NUCLEO_F767ZI)
  set (BLOB_PATH .)
@@ -129,7 +124,7 @@ diff -u a/cli_input.cmake b/cli_input.cmake
  set (TPM2_TCTI_TYPE tabrmd)
  set (RESALE true)
  set (REUSE true)
-@@ -501,6 +502,36 @@
+@@ -530,6 +531,37 @@
  message("Selected BLOB_PATH ${BLOB_PATH}")
  
  ###########################################
@@ -162,8 +157,8 @@ diff -u a/cli_input.cmake b/cli_input.cmake
 +set(CACHED_RO_BLOB_PATH ${RO_BLOB_PATH} CACHE STRING "Selected RO_BLOB_PATH")
 +message("Selected RO_BLOB_PATH ${RO_BLOB_PATH}")
 +
++
 +###########################################
  # FOR WIFI_SSID
  get_property(cached_wifi_ssid_value CACHE WIFI_SSID PROPERTY VALUE)
  
-Nur in b: cli_input.cmake~.

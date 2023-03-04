@@ -7,4 +7,12 @@
     <comment>add to factory</comment>
     <requestid>969462</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a83534df14953b0dcbbd4126715c446</srcmd5>
+    <version>1.1.4+git20221209.c8ef757</version>
+    <time>1677878912</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.1.4 (forwarded request 1069040 from schubi2)</comment>
+    <requestid>1069081</requestid>
+  </revision>
 </revisionlist>

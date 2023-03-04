@@ -22,7 +22,7 @@
 %define suse_styles_dir   %{db_xml_dir}/stylesheet
 #
 Name:           suse-xsl-stylesheets
-Version:        2.88.3
+Version:        2.89.0
 Release:        0
 Summary:        SUSE-Branded Stylesheets for DocBook
 License:        GPL-2.0-only OR GPL-3.0-only

@@ -1,7 +1,7 @@
 #
 # spec file for package hitori
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           hitori
-Version:        3.38.4
+Version:        44.0
 Release:        0
 Summary:        Original puzzle of Nikoli
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://gitlab.gnome.org/GNOME/hitori
-Source0:        https://download.gnome.org/sources/hitori/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/hitori/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

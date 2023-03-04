@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="version">1.0.0</param>
     <param name="versionformat">1.0.0+git%cd.%h</param>
-    <param name="url">git://github.com/intel/safestringlib.git</param>
+    <param name="url">git@github.com:intel/safestringlib.git</param>
     <param name="revision">v1.0.0</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
@@ -16,10 +16,10 @@
     <param name="changesgenerate">enable</param>
   </service>  
   <service name="tar_scm" mode="disabled">
-    <param name="version">1.0.0</param>
-    <param name="versionformat">1.0.0+git%cd.%h</param>
+    <param name="version">1.1.4</param>
+    <param name="versionformat">1.1.4+git%cd.%h</param>
     <param name="url">git@github.com:secure-device-onboard/client-sdk-fidoiot.git</param>
-    <param name="revision">v1.0.0</param>
+    <param name="revision">v1.1.4</param>
     <param name="scm">git</param>
     <param name="filename">fdo-client</param>
     <param name="changesgenerate">enable</param>

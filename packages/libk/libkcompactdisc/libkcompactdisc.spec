@@ -1,7 +1,7 @@
 #
 # spec file for package libkcompactdisc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkcompactdisc
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
@@ -76,8 +76,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
 
 %find_lang %{name} --with-man --all-name
 
-%post  -n libKF5CompactDisc5 -p /sbin/ldconfig
-%postun -n libKF5CompactDisc5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5CompactDisc5
 
 %files -n libKF5CompactDisc5
 %license COPYING*

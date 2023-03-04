@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  3 19:11:39 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.1 (changes since 0.3.9):
+  * Node names now have the "media.name" property as a bracketed
+    suffix; when given and applicable.
+  * Node icons now reflecting their proper application/theme icons
+    or else, a bland and generic default taken from the
+    "client.api" property (eg. "pw", "jack" or "pulse").
+  * Introducing touch pinch-gesture for zooming.
+  * Attempt to make port labels as short as possible.
+  * Fix a possible crash when several PW objects (nodes and ports)
+    are created and destroyed in fast succession.
+
+-------------------------------------------------------------------
 Sat Jan 28 15:14:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.9:

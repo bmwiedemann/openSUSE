@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlgrabber
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname urlgrabber
 Name:           python-urlgrabber
 Version:        4.1.0
@@ -26,12 +25,14 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/rpm-software-management/urlgrabber
 Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-1-0/%{modname}-%{version}.tar.gz
-# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/32
+# PATCH-FIX_UPSTREAM gh#rpm-software-management/urlgrabber!32
 Patch0:         use-binary-mode-when-reopening-files.patch
-# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/35
+# PATCH-FIX_UPSTREAM gh#rpm-software-management/urlgrabber!35
 Patch1:         fix_find_proxy_logic_and_drop_six.patch
-# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/34
+# PATCH-FIX_UPSTREAM gh#rpm-software-management/urlgrabber!34
 Patch2:         avoid_crashing_when_urlgrabber_debug_enabled.patch
+# PATCH-FIX_UPSTREAM gh#rpm-software-management/urlgrabber!37
+Patch3:         fix-urlgrab-file-schema-comparison.patch
 
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
@@ -74,12 +75,16 @@ rm -rf %{buildroot}%{_datadir}/doc/urlgrabber-%{version} # Remove wrongly instal
 
 %postun
 %python_uninstall_alternative urlgrabber
+if [ ! -f %{_libexecdir}/urlgrabber-ext-down ] ; then
+   update-alternatives --remove urlgrabber-ext-down %{_libexecdir}/urlgrabber-ext-down
+fi
 
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README TODO
 %python_alternative %{_bindir}/urlgrabber
 %python_alternative %{_libexecdir}/urlgrabber-ext-down
-%{python_sitelib}/*
+%{python_sitelib}/urlgrabber
+%{python_sitelib}/urlgrabber-%{version}*-info
 
 %changelog

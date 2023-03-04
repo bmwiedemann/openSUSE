@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libktorrent
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -96,8 +96,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %find_lang libktorrent5 %{name}.lang
 
-%post -n libKF5Torrent%{sonum} -p /sbin/ldconfig
-%postun -n libKF5Torrent%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5Torrent%{sonum}
 
 %files devel
 %{_kf5_cmakedir}/KF5Torrent/

@@ -907,4 +907,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1065524</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>8956a686dcd082ba48769f1a9c402f14</srcmd5>
+    <version>2.5.9</version>
+    <time>1677878655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068620</requestid>
+  </revision>
 </revisionlist>

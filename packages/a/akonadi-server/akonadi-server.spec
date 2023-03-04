@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-server
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -177,19 +177,13 @@ This package contains AppArmor profiles for Akonadi.
 
 %find_lang %{name} --with-man --all-name
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
-%post -n libKF5AkonadiWidgets5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiWidgets5 -p /sbin/ldconfig
-%post -n libKF5AkonadiCore5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiCore5 -p /sbin/ldconfig
-%post -n libKF5AkonadiAgentBase5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiAgentBase5 -p /sbin/ldconfig
-%post -n libKF5AkonadiPrivate5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiPrivate5 -p /sbin/ldconfig
-%post -n libKF5AkonadiXml5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiXml5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5AkonadiWidgets5
+%ldconfig_scriptlets -n libKF5AkonadiCore5
+%ldconfig_scriptlets -n libKF5AkonadiAgentBase5
+%ldconfig_scriptlets -n libKF5AkonadiPrivate5
+%ldconfig_scriptlets -n libKF5AkonadiXml5
 
 %post apparmor
 %apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver

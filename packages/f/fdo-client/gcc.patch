@@ -1,171 +1,37 @@
---- org/lib/fdoprotctx.c	2021-10-18 21:51:23.914574062 +0200
-+++ patch/lib/fdoprotctx.c	2021-10-18 21:49:40.170002557 +0200
-@@ -118,8 +118,11 @@
+--- org/network/network_if_linux.c	2022-12-09 09:44:34.000000000 +0100
++++ patch/network/network_if_linux.c	2023-03-02 16:05:07.625074915 +0100
+@@ -246,7 +246,7 @@
+ 		goto err;
+ 	}
  
- 	switch (prot_ctx->protdata->state) {
- 	case FDO_STATE_DI_APP_START: /* type 10 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_DI_SET_CREDENTIALS: /* type 11 */
-+		{
- 		if (prot_ctx->host_dns) {
- 			if (prot_ctx->resolved_ip) {
- 				fdo_free(prot_ctx->resolved_ip);
-@@ -133,9 +136,12 @@
- 				break;
- 			}
+-	if (ip_addr->addr) {
++	if (ip_addr->length > 0) {
+ 		ip_ascii = fdo_alloc(IP_TAG_LEN);
+ 		if (!ip_ascii) {
+ 			goto err;
+@@ -331,7 +331,7 @@
  		}
--		ATTRIBUTE_FALLTHROUGH;
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_DI_SET_HMAC: /* type 12 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_DI_DONE: /* type 13 */
- 		ret = connect_to_manufacturer(
- 			      prot_ctx->resolved_ip ? prot_ctx->resolved_ip : prot_ctx->host_ip,
-@@ -144,24 +150,30 @@
- 			      (prot_ctx->tls ? &prot_ctx->ssl : NULL));
- 		break;
- 	case FDO_STATE_T01_SND_HELLO_FDO: /* type 30 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO1_RCV_HELLO_FDOACK: /* type 31 */
--		if (prot_ctx->host_dns) {
--			if (prot_ctx->resolved_ip) {
--				fdo_free(prot_ctx->resolved_ip);
--			}
--			if (!resolve_dn(prot_ctx->host_dns,
--					&prot_ctx->resolved_ip,
--					prot_ctx->host_port,
--					(prot_ctx->tls ? &prot_ctx->ssl : NULL),
--					is_rv_proxy_defined())) {
--				ret = false;
--				fdo_free(prot_ctx->resolved_ip);
-+		{
-+			if (prot_ctx->host_dns) {
-+				if (prot_ctx->resolved_ip) {
-+					fdo_free(prot_ctx->resolved_ip);
-+				}
-+				if (!resolve_dn(prot_ctx->host_dns,
-+						&prot_ctx->resolved_ip,
-+						prot_ctx->host_port,
-+						(prot_ctx->tls ? &prot_ctx->ssl : NULL),
-+						is_rv_proxy_defined())) {
-+					ret = false;
-+					fdo_free(prot_ctx->resolved_ip);
-+				}
- 			}
-+			ATTRIBUTE_FALLTHROUGH;
- 		}
--		ATTRIBUTE_FALLTHROUGH;
- 	case FDO_STATE_TO1_SND_PROVE_TO_FDO: /* type 32 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO1_RCV_FDO_REDIRECT: /* type 33 */
- 		// try DNS's resolved IP first, if it fails, try given IP address
- 		ret = connect_to_rendezvous(
-@@ -174,40 +186,62 @@
- 		}
- 		break;
- 	case FDO_STATE_T02_SND_HELLO_DEVICE: /* type 60 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{	
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_RCV_PROVE_OVHDR: /* type 61 */
--		if (prot_ctx->host_dns) {
--			if (prot_ctx->resolved_ip) {
--				fdo_free(prot_ctx->resolved_ip);
--			}
--			if (!resolve_dn(prot_ctx->host_dns,
--					&prot_ctx->resolved_ip,
--					prot_ctx->host_port,
--					(prot_ctx->tls ? &prot_ctx->ssl : NULL),
--					is_owner_proxy_defined())) {
--				ret = false;
--				fdo_free(prot_ctx->resolved_ip);
-+		{
-+			if (prot_ctx->host_dns) {
-+				if (prot_ctx->resolved_ip) {
-+					fdo_free(prot_ctx->resolved_ip);
-+				}
-+				if (!resolve_dn(prot_ctx->host_dns,
-+						&prot_ctx->resolved_ip,
-+						prot_ctx->host_port,
-+						(prot_ctx->tls ? &prot_ctx->ssl : NULL),
-+						is_owner_proxy_defined())) {
-+					ret = false;
-+					fdo_free(prot_ctx->resolved_ip);
-+				}
- 			}
-+			ATTRIBUTE_FALLTHROUGH;
- 		}
--		ATTRIBUTE_FALLTHROUGH;
- 	case FDO_STATE_TO2_SND_GET_OP_NEXT_ENTRY: /* type 62 */
--		ATTRIBUTE_FALLTHROUGH;
-+ 		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_T02_RCV_OP_NEXT_ENTRY: /* type 63 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_SND_PROVE_DEVICE: /* type 64 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_RCV_GET_NEXT_DEVICE_SERVICE_INFO: /* type 65 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_SND_NEXT_DEVICE_SERVICE_INFO: /* type 66 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_RCV_SETUP_DEVICE: /* type 67 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_T02_SND_GET_NEXT_OWNER_SERVICE_INFO: /* type 68 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_T02_RCV_NEXT_OWNER_SERVICE_INFO: /* type 69 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_SND_DONE: /* type 70 */
--		ATTRIBUTE_FALLTHROUGH;
-+		{
-+			ATTRIBUTE_FALLTHROUGH;
-+		}
- 	case FDO_STATE_TO2_RCV_DONE_2: /* type 71 */
- 		// try DNS's resolved IP first, if it fails, try given IP address
- 		ret = connect_to_owner(prot_ctx->resolved_ip, prot_ctx->host_port,
---- org/lib/credentials_from_file.c	2021-10-18 22:19:33.447783075 +0200
-+++ patch/lib/credentials_from_file.c	2021-10-18 22:19:20.143711330 +0200
-@@ -228,8 +228,6 @@
+ 	}
+ 
+-	if (ip_addr->addr) {
++	if (ip_addr->length > 0) {
+ 		ip_ascii = fdo_alloc(IP_TAG_LEN);
+ 		if (!ip_ascii) {
+ 			goto err;
+--- org/lib/credentials_from_file.c	2022-12-09 09:44:34.000000000 +0100
++++ patch/lib/credentials_from_file.c	2023-03-02 16:34:46.597314561 +0100
+@@ -231,7 +231,6 @@
  		return true;
  	}
  
 -	LOG(LOG_DEBUG, "Reading DeviceCredential blob of length %"PRIu64"\n", dev_cred_len);
--
+ 
  	fdor = fdo_alloc(sizeof(fdor_t));
  	if (!fdor || !fdor_init(fdor) || !fdo_block_alloc_with_size(&fdor->b, dev_cred_len)) {
- 		LOG(LOG_ERROR, "FDOR Initialization/Allocation failed!\n");
+@@ -531,4 +530,4 @@
+ 		return true;
+ 	}
+ 	return false;
+-}
+\ Kein Zeilenumbruch am Dateiende.
++}

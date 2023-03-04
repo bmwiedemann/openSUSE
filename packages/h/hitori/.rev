@@ -250,4 +250,12 @@
     <comment>Update to 3.38.4 (forwarded request 966948 from dimstar)</comment>
     <requestid>967852</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>43c80d2cd015ebf0ead07d640a6b1595</srcmd5>
+    <version>44.0</version>
+    <time>1677878942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069278</requestid>
+  </revision>
 </revisionlist>

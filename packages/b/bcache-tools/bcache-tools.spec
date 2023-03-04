@@ -1,7 +1,7 @@
 #
 # spec file for package bcache-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ Patch25:        0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
 Patch26:        0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
 Patch27:        0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
 Patch28:        0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
+Patch29:        0029-bcache-tools-improve-is_zoned_device.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)

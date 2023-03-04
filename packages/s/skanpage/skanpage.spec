@@ -1,7 +1,7 @@
 #
 # spec file for package skanpage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define kf5_version 5.94.0
 %bcond_without released
 Name:           skanpage
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later

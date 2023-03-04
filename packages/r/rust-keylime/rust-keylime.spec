@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.0+git.1677002906.cf6c4f0
+Version:        0.2.0+git.1677691779.f7edd9a
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -88,8 +88,8 @@ install -Dpm 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/keylime.conf
 install -d %{buildroot}%{_localstatedir}/log/keylime
 install -d %{buildroot}%{_libexecdir}/keylime
 
-# Create work directory
-mkdir -p %{buildroot}%{_sharedstatedir}/keylime
+# Create work directory and the certificate directory
+mkdir -p %{buildroot}%{_sharedstatedir}/keylime/cv_ca
 
 # %_check
 # %_{cargo_test}
@@ -129,5 +129,6 @@ mkdir -p %{buildroot}%{_sharedstatedir}/keylime
 %dir %attr(0750,keylime,tss) %{_localstatedir}/log/keylime
 %dir %attr(0750,keylime,tss) %{_libexecdir}/keylime
 %dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime/cv_ca
 
 %changelog

@@ -40,6 +40,10 @@ Source10:       https://raw.githubusercontent.com/redis/redis-hashes/master/READ
 Patch0:         %{name}-conf.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
+# PATCH-FIX-UPSTREAM -- based on commit 0825552 (bsc#1208790 CVE-2022-36021)
+Patch5:         String-pattern-matching-had-exponential-time-complex.patch
+# PATCH-FIX-UPSTREAM -- based on commit 2a2a582 (bsc#1208793 CVE-2023-25155)
+Patch6:         Integer-Overflow-in-RAND-commands-can-lead-to-assert.patch
 BuildRequires:  jemalloc-devel
 BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
@@ -67,6 +71,8 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 %patch0
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 export HOST=OBS # for reproducible builds

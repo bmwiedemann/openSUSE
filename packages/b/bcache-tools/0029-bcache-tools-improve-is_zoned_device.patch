@@ -1,0 +1,56 @@
+From a5e3753516bd39c431def86c8dfec8a9cea1ddd4 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Fri, 17 Feb 2023 21:08:10 +0800
+Subject: [PATCH] bcache-tools: improve is_zoned_device()
+Git-commit: a5e3753516bd39c431def86c8dfec8a9cea1ddd4
+References: bsc#1208425
+
+To check whether a block device is zoned or not, is_zoned_device()
+returns true when /sys/block/<device>/queue/chunk_sectors is not zero.
+
+Now there are devices which are not zoned devices but has non-zero
+chunk-sectors values. For such situation, the more accurate method is
+to read file /sys/block/<device>/queue/zoned. If the content is not
+string "none", this device is not a zoned device. Otherwise (e.g.
+"host-aware" or "host- managed"), it is a zoned device.
+
+For elder kernel if the above sysfs file doesn't exist, get_zone_size()
+is still called by is_zoned_device() for compatibility.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ zoned.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/zoned.c b/zoned.c
+index d078286..f214787 100644
+--- a/zoned.c
++++ b/zoned.c
+@@ -90,5 +90,24 @@ void check_data_offset_for_zoned_device(char *devname,
+ 
+ int is_zoned_device(char *devname)
+ {
++	char str[128];
++	FILE *file;
++	int res;
++
++	snprintf(str, sizeof(str),
++		"/sys/block/%s/queue/zoned",
++		basename(devname));
++	file = fopen(str, "r");
++	if (file) {
++		memset(str, 0, sizeof(str));
++		res = fscanf(file, "%s", str);
++		fclose(file);
++
++		/* "none" indicates non-zoned device */
++		if (res == 1)
++			return !(strcmp(str, "none") == 0);
++	}
++
++	/* Only used when "zoned" file doesn't exist */
+ 	return (get_zone_size(devname) != 0);
+ }
+-- 
+2.39.2
+

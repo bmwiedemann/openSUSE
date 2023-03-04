@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  2 15:56:04 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't use %elif which is not supported in SLE/Leap
+- Use qt6 macros when building the qt6 flavor so the correct
+  compiler is used to build the package in SLE/Leap
+- Add patch to fix an undefined reference to XSetTransientForHint
+  in SLE/Leap:
+  * fix-XSetTransientForHint.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 00:51:38 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 0.9.0:

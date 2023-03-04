@@ -128,4 +128,13 @@
     <comment></comment>
     <requestid>875788</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>f7a168cdb6006deb1f2817447d66425c</srcmd5>
+    <version>1.1</version>
+    <time>1677878656</time>
+    <user>dimstar_suse</user>
+    <comment>- bcache-tools: improve is_zoned_device() (bsc#1208425)
+  0029-bcache-tools-improve-is_zoned_device.patch (forwarded request 1068623 from colyli)</comment>
+    <requestid>1068637</requestid>
+  </revision>
 </revisionlist>

@@ -1557,4 +1557,12 @@
     <comment></comment>
     <requestid>1056895</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>e18c4231eb9dc562d69945bcc0c8b812</srcmd5>
+    <version>6.3.3</version>
+    <time>1677878678</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Mercurial 6.3.3 (forwarded request 1068971 from develop7)</comment>
+    <requestid>1068972</requestid>
+  </revision>
 </revisionlist>

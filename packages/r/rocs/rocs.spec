@@ -1,7 +1,7 @@
 #
 # spec file for package rocs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           rocs
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
@@ -107,8 +107,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %suse_update_desktop_file org.kde.%{name} Math
 %fdupes -s %{buildroot}
 
-%post -n librocsgraphtheory0 -p /sbin/ldconfig
-%postun -n librocsgraphtheory0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n librocsgraphtheory0
 
 %files
 %license LICENSES/*

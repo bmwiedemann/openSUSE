@@ -1,7 +1,7 @@
 #
 # spec file for package libkeduvocdocument
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkeduvocdocument
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Library for KDE Education Applications
 License:        GPL-2.0-or-later
@@ -81,8 +81,7 @@ develop KDE education applications.
 
 %fdupes -s %{buildroot}
 
-%post -n libKEduVocDocument5 -p /sbin/ldconfig
-%postun -n libKEduVocDocument5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKEduVocDocument5
 
 %files -n libKEduVocDocument5
 %license COPYING*

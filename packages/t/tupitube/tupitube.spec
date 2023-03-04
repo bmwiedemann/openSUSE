@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -93,6 +93,10 @@ This package contains plugins for %{name}.
 
 # Fix `require': cannot load such file -- os (LoadError)
 sed -i '/require .os/d' qonf/configure.rb
+
+# Newer rubies obviously removed this method: note the elaborated error message
+# Configure failed. error was: undefined method `exists?' for File:Class
+sed -i 's|File.exists|File.exist|' configure.rb qonf/test.rb
 
 # Fix 'E: spurious-executable-perm'
 chmod -x COPYING README* launcher/tupitube.xml

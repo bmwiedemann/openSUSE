@@ -1,7 +1,7 @@
 #
 # spec file for package kcalutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcalutils
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -88,8 +88,7 @@ to develop applications wanting to use kcalutils.
 
 %global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
-%post -n libKF5CalendarUtils5 -p /sbin/ldconfig
-%postun -n libKF5CalendarUtils5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5CalendarUtils5
 
 %files -n libKF5CalendarUtils5
 %license LICENSES/*

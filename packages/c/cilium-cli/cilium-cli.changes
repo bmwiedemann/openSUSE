@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 03 13:20:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.1:
+  * .github/workflows: use softprops/action-gh-release in release
+    workflow
+  * Dockerfile: Bump library/golang from `9266e89` to `bf83658`
+  * Prepare for v0.13.1 release
+  * Add profiling data(cpu/heap) of cilium agent to sysdump.
+  * go.mod, vendor: pull in latest cilium charts for
+    v1.14.0-snapshot.0
+  * hubble: Patch Cilium DaemonSet with hubble-metrics port
+  * clustermesh: update etcd version to v3.5.4
+  * enabled l7Proxy & removed err.log message for WireGuard
+  * Update stable release to v0.13.0
+  * connectivity: switch "waitForPodDNS" check to use any IP
+    address family
+  * connectivity: rename IPFamilyNone to IPFamilyAny
+  * go.mod, vendor: bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2
+
+-------------------------------------------------------------------
 Fri Feb 24 11:11:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.0:

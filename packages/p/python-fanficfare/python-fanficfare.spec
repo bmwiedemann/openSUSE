@@ -20,13 +20,13 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.20.0
+Version:        4.21.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
-Source:         https://github.com/JimmXinu/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Source:         https://github.com/JimmXinu/FanFicFare/archive/v%{version}/FanFicFare-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE adapter_dwiggiecom.patch gh#JimmXinu/FanFicFare#903 mcepl@suse.com
 # adapter for dwiggie.com, which is probably not for upstream
 Patch0:         adapter_dwiggiecom.patch

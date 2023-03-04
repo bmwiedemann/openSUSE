@@ -176,6 +176,10 @@ Patch37:        platlibdir-in-sys.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+# PATCH-FIX-UPSTREAM CVE-2023-24329-blank-URL-bypass.patch bsc#1208471 mcepl@suse.com
+# blocklist bypass via the urllib.parse component when supplying
+# a URL that starts with blank characters
+Patch39:        CVE-2023-24329-blank-URL-bypass.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -448,6 +452,7 @@ other applications.
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

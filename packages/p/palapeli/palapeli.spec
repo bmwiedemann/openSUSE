@@ -1,7 +1,7 @@
 #
 # spec file for package palapeli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           palapeli
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -90,8 +90,7 @@ This package contains the development files for Palapeli.
 
 %suse_update_desktop_file -r org.kde.palapeli Game BoardGame
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

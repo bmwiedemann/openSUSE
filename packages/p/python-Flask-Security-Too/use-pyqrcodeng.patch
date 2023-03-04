@@ -1,8 +1,8 @@
-Index: Flask-Security-Too-5.0.2/flask_security/core.py
+Index: Flask-Security-Too-5.1.1/flask_security/core.py
 ===================================================================
---- Flask-Security-Too-5.0.2.orig/flask_security/core.py
-+++ Flask-Security-Too-5.0.2/flask_security/core.py
-@@ -1523,7 +1523,7 @@ class Security:
+--- Flask-Security-Too-5.1.1.orig/flask_security/core.py
++++ Flask-Security-Too-5.1.1/flask_security/core.py
+@@ -1579,7 +1579,7 @@ class Security:
                  and "authenticator" in cv("TWO_FACTOR_ENABLED_METHODS", app=app)
              )
              if need_qrcode:
@@ -11,10 +11,10 @@ Index: Flask-Security-Too-5.0.2/flask_security/core.py
  
              need_sms = (
                  cv("UNIFIED_SIGNIN", app=app)
-Index: Flask-Security-Too-5.0.2/flask_security/totp.py
+Index: Flask-Security-Too-5.1.1/flask_security/totp.py
 ===================================================================
---- Flask-Security-Too-5.0.2.orig/flask_security/totp.py
-+++ Flask-Security-Too-5.0.2/flask_security/totp.py
+--- Flask-Security-Too-5.1.1.orig/flask_security/totp.py
++++ Flask-Security-Too-5.1.1/flask_security/totp.py
 @@ -140,15 +140,11 @@ class Totp:
          .. versionadded:: 4.0.0
          """

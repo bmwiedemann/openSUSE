@@ -79,4 +79,17 @@
     <comment></comment>
     <requestid>1006650</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e35ad96115a394edecf6edc9cc5590a7</srcmd5>
+    <version>0.9.0</version>
+    <time>1677878914</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %elif which is not supported in SLE/Leap
+- Use qt6 macros when building the qt6 flavor so the correct
+  compiler is used to build the package in SLE/Leap
+- Add patch to fix an undefined reference to XSetTransientForHint
+  in SLE/Leap:
+  * fix-XSetTransientForHint.patch</comment>
+    <requestid>1069132</requestid>
+  </revision>
 </revisionlist>

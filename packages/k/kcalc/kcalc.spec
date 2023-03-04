@@ -1,7 +1,7 @@
 #
 # spec file for package kcalc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcalc
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
@@ -67,8 +67,7 @@ KCalc is the KDE calculator tool.
 
 %suse_update_desktop_file org.kde.kcalc Utility Calculator
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

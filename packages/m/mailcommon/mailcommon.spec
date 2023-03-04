@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailcommon
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -95,8 +95,7 @@ Requires:       %{name}
 This package provides the mailcommon library, a base KDE PIM library
 to build email-handling applications.
 
-%post -n libKF5MailCommon5 -p /sbin/ldconfig
-%postun -n libKF5MailCommon5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5MailCommon5
 
 %package devel
 Summary:        Development package for mailcommon

@@ -141,6 +141,10 @@ Patch73:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 # PATCH-FIX-UPSTREAM skip_unverified_test.patch mcepl@suse.com
 # switching verification off on the old SLE doesn't work
 Patch74:        skip_unverified_test.patch
+# PATCH-FIX-UPSTREAM CVE-2023-24329-blank-URL-bypass.patch bsc#1208471 mcepl@suse.com
+# blocklist bypass via the urllib.parse component when supplying
+# a URL that starts with blank characters
+Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -224,6 +228,7 @@ Python, and Macintosh Module Reference in PDF format.
 %if 0%{?sle_version} && 0%{?sle_version} < 150000
 %patch74 -p1
 %endif
+%patch75 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

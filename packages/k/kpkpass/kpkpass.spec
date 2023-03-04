@@ -1,7 +1,7 @@
 #
 # spec file for package kpkpass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kpkpass
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -69,8 +69,7 @@ to build programs that use the kpkpass library.
 %install
   %kf5_makeinstall -C build
 
-%post -n libKPimPkPass5 -p /sbin/ldconfig
-%postun -n libKPimPkPass5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPimPkPass5
 
 %if %{pkg_vcmp shared-mime-info < 2.2}
 %files

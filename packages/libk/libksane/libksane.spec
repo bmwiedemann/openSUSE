@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksane
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -90,8 +90,7 @@ scanners and other imaging devices supported by SANE.
 
 %find_lang %{name} --with-man --all-name
 
-%post -n %{lname}%{_so} -p /sbin/ldconfig
-%postun -n %{lname}%{_so} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}%{_so}
 
 %files -n %{lname}%{_so}
 %license COPYING*

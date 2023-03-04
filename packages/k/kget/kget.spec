@@ -1,7 +1,7 @@
 #
 # spec file for package kget
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kget
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -84,8 +84,7 @@ An advanced download manager by KDE
 
 %suse_update_desktop_file -r org.kde.kget System TrayIcon
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING COPYING.DOC

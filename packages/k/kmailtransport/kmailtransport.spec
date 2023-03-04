@@ -1,7 +1,7 @@
 #
 # spec file for package kmailtransport
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmailtransport
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -64,10 +64,8 @@ Requires:       %{name} >= %{version}
 %description -n libKF5MailTransportAkonadi5
 The Mail Transport library for Akonadi related functions
 
-%post -n libKF5MailTransport5  -p /sbin/ldconfig
-%postun -n libKF5MailTransport5 -p /sbin/ldconfig
-%post -n libKF5MailTransportAkonadi5  -p /sbin/ldconfig
-%postun -n libKF5MailTransportAkonadi5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5MailTransport5
+%ldconfig_scriptlets -n libKF5MailTransportAkonadi5
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
@@ -96,8 +94,7 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --all-name
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %dir %{_kf5_plugindir}/pim5/

@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -91,6 +91,7 @@ Patch13:        tomcat-9.0.43-CVE-2021-43980.patch
 Patch14:        tomcat-9.0.43-CVE-2022-42252.patch
 Patch15:        tomcat-9.0-fix_catalina.patch
 Patch16:        tomcat-9.0-logrotate_everything.patch
+Patch17:        tomcat-9.0.43-CVE-2023-24998.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -273,6 +274,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
@@ -692,7 +694,6 @@ fi
 %post admin-webapps
 %{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/host-manager path=/host-manager contextXml=%{tomcatappdir}/host-manager/META-INF/context.xml
 %{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/manager path=/manager contextXml=%{tomcatappdir}/manager/META-INF/context.xml
-
 
 %postun admin-webapps
 if [ $1 -eq 0 ]; then # uninstall only

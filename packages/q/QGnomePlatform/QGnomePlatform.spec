@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018–2019 Markus S. <kamikazow@opensuse.org>
 # Copyright (c) 2016      Yuriy Gorodilin <yurg27@gmail.com>
 #
@@ -32,7 +32,8 @@ ExclusiveArch:  do_not_build
   %define qt_min_version 5.15.2
   %define _qt_plugindir %{_libqt5_plugindir}
   %define name_suffix -qt5
-%elif "%{flavor}" == "qt6"
+%endif
+%if "%{flavor}" == "qt6"
 #
 # Qt6 Flavor
 #
@@ -71,6 +72,7 @@ License:        (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only) AND LGPL-2.1-or-
 Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/QGnomePlatform-%{version}.tar.gz
+Patch0:         fix-XSetTransientForHint.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -96,7 +98,8 @@ BuildRequires:  cmake(Qt5XkbCommonSupport)
 Supplements:    (libQt5Gui5 and gnome-session)
 Obsoletes:      QGnomePlatform =< 0.8.4
 Provides:       QGnomePlatform = %{version}
-%elif 0%{?qt6}
+%endif
+%if 0%{?qt6}
 #
 # Qt6 Buildtime Dependencies
 #
@@ -125,15 +128,27 @@ to fit into the environment as well as possible.
 %autosetup -p1 -n QGnomePlatform-%{version}
 
 %build
+%if 0%{?qt6}
+%cmake_qt6                 \
+%else
 %cmake                     \
+%endif
     %{?qt5:-D USE_QT6=OFF} \
     %{?qt6:-D USE_QT6=ON}  \
     %{nil}
 
+%if 0%{?qt6}
+%qt6_build
+%else
 %cmake_build
+%endif
 
 %install
+%if 0%{?qt6}
+%{qt6_install}
+%else
 %cmake_install
+%endif
 
 %files
 %doc README.md

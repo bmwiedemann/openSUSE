@@ -1,7 +1,7 @@
 #
 # spec file for package ktp-accounts-kcm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-accounts-kcm
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
@@ -103,8 +103,7 @@ rm %{buildroot}%{_kf5_sharedir}/accounts/services/kde/ktp-haze-yahoo-im.service
 
 %fdupes %{buildroot}
 
-%post   -n libktpaccountskcminternal9 -p /sbin/ldconfig
-%postun -n libktpaccountskcminternal9 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libktpaccountskcminternal9
 
 %files -n libktpaccountskcminternal9
 %{_kf5_libdir}/libktpaccountskcminternal.so.*

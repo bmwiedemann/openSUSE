@@ -468,4 +468,36 @@
   * Updated app ids of RSS Guard</comment>
     <requestid>1056785</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>259a0632d20949effb97b81f85cfdc59</srcmd5>
+    <version>20230301</version>
+    <time>1677879375</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230301:
+  Added icons:
+  * Beneath a Steel Sky (Gentoo Portage) #3241
+  * BleachBit #2007
+  * Chatterino #3378
+  * Emby Theater (Flathub) #2007
+  * Exaile (Flathub) #2007
+  * Freeciv gtk+-3.22 client (Flathub) #2007
+  * gImageReader #2007
+  * Google Chrome (unstable) (Flathub) #2007
+  * Gummi (Flathub) #2007
+  * JD-GUI (Flathub) #2007
+  * LTris (Flathub) #2007
+  * Maelstrom (Flathub) #2007
+  * Magicka 2 #3387
+  * OpenArena (Quake3e) (Flathub) #2007
+  * Opera (Flathub) #2007
+  * Pd-extended (Flathub) #2007
+  * Pokete #3386
+  * puNES #2007
+  * SCID (Flathub) #2007
+  * Steam ROM Manager (Flathub) #2007
+  * TigerVNC Viewer (Flathub) #2007
+  * Touhou Luna Nights #3376
+  * Vroid Studio #3368</comment>
+    <requestid>1069310</requestid>
+  </revision>
 </revisionlist>

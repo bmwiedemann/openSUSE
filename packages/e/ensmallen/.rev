@@ -50,4 +50,13 @@
   * Fix MOEAD test stability</comment>
     <requestid>1040059</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e16d350661abad32697017f8f3d4b3d5</srcmd5>
+    <version>2.19.1</version>
+    <time>1677878908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19.1:
+  * Avoid deprecation warnings in Armadillo 11.2+</comment>
+    <requestid>1069112</requestid>
+  </revision>
 </revisionlist>

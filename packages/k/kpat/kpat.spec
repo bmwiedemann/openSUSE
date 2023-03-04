@@ -1,7 +1,7 @@
 #
 # spec file for package kpat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
-%bcond_without black-hole-solver
+%bcond_without bhsolver
 %endif
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpat
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
-%if %{with black-hole-solver}
+%if %{with bhsolver}
 BuildRequires:  pkgconfig(libblack-hole-solver)
 %endif
 BuildRequires:  update-desktop-files
@@ -79,7 +79,7 @@ more. The game has nice graphics and many different carddecks.
 %autosetup -p1
 
 %build
-%if %{with black-hole-solver}
+%if %{with bhsolver}
   %cmake_kf5 -d build
 %else
   %cmake_kf5 -d build -- -DWITH_BH_SOLVER=OFF

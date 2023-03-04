@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  3 08:01:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1 bugfix release:
+  * Consider stream readable when EOS is reached
+  * Fix critical warnings after DTLS-SRTP calls without OMEMO verification
+  * Fix typing notifications in groupchats
+  * Fix some memory leaks
+  * Stop regenerating message menu buttons
+  * Clear chat input after /command 
+  * Remove spell check setting 
+
+-------------------------------------------------------------------
 Wed Feb  8 07:59:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:

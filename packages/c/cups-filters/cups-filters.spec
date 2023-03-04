@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,7 @@ Patch0:         harden_cups-browsed.service.patch
 #   zypper vcmp '4.0.17.256' '4.0.17.256.1' -> 4.0.17.256 is older than 4.0.17.256.1
 #   zypper vcmp '4.0.17.257' '4.0.17.256.1' -> 4.0.17.257 is newer than 4.0.17.256.1
 %define foomatic_rip_version 4.0.17.256.1
+Patch1:         require_cxx17.patch
 # Support for cups154 in the SLE12 legacy module is abandoned (by default SLE12 has CUPS 1.7.5)
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:
@@ -216,8 +217,7 @@ Conflicts:      cups-devel < 1.6
 This package contains the development files for cups-filters.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Just do what is described in the upstream INSTALL file
@@ -237,8 +237,6 @@ This package contains the development files for cups-filters.
            --enable-shared \
            --enable-imagefilters \
            --enable-braille \
-           --enable-ijs \
-           --enable-opvp \
            --with-pdftops=pdftops \
            --with-browseremoteprotocols=DNSSD,CUPS \
            --without-php \

@@ -1,0 +1,55 @@
+From 1eab7e69e2ba84244f551f6901f4307a687a9504 Mon Sep 17 00:00:00 2001
+From: Illia Polishchuk <illia.a.polishchuk@globallogic.com>
+Date: Tue, 28 Feb 2023 16:07:59 +0200
+Subject: [PATCH] glx: fix indirect initialization crash
+
+Fixes: b090246a ("glx: Only compute client GL extensions for indirect contexts")
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8393
+
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+
+Signed-off-by: Illia Polishchuk <illia.a.polishchuk@globallogic.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/21591>
+---
+ src/glx/glxext.c       | 9 ++++++++-
+ src/glx/indirect_glx.c | 1 -
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/glx/glxext.c b/src/glx/glxext.c
+index 755a75ab568..4b3496b5a14 100644
+--- a/src/glx/glxext.c
++++ b/src/glx/glxext.c
+@@ -813,10 +813,17 @@ AllocAndFetchScreenConfigs(Display * dpy, struct glx_display * priv)
+       if (psc == NULL)
+          psc = applegl_create_screen(i, priv);
+ #else
++      bool indirect = false;
+       if (psc == NULL)
+-	 psc = indirect_create_screen(i, priv);
++      {
++         psc = indirect_create_screen(i, priv);
++         indirect = true;
++      }
+ #endif
+       priv->screens[i] = psc;
++
++      if(indirect) /* Load extensions required only for indirect glx */
++         glxSendClientInfo(priv, i);
+    }
+    SyncHandle();
+    return GL_TRUE;
+diff --git a/src/glx/indirect_glx.c b/src/glx/indirect_glx.c
+index dc3464fc99e..abe561f700b 100644
+--- a/src/glx/indirect_glx.c
++++ b/src/glx/indirect_glx.c
+@@ -365,7 +365,6 @@ indirect_create_screen(int screen, struct glx_display * priv)
+       return NULL;
+ 
+    glx_screen_init(psc, screen, priv);
+-   glxSendClientInfo(priv, screen);
+    psc->vtable = &indirect_screen_vtable;
+ 
+    return psc;
+-- 
+2.35.3
+

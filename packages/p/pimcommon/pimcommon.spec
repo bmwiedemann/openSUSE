@@ -1,7 +1,7 @@
 #
 # spec file for package pimcommon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pimcommon
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -129,12 +129,9 @@ The PimCommon Akonadi library
 
 %find_lang %{name} --with-man --all-name
 
-%post -n libKF5PimCommon5  -p /sbin/ldconfig
-%postun -n libKF5PimCommon5 -p /sbin/ldconfig
-%post -n libKF5PimCommonAutoCorrection5  -p /sbin/ldconfig
-%postun -n libKF5PimCommonAutoCorrection5 -p /sbin/ldconfig
-%post -n libKF5PimCommonAkonadi5  -p /sbin/ldconfig
-%postun -n libKF5PimCommonAkonadi5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5PimCommon5
+%ldconfig_scriptlets -n libKF5PimCommonAutoCorrection5
+%ldconfig_scriptlets -n libKF5PimCommonAkonadi5
 
 %files
 %{_kf5_debugdir}/pimcommon.categories

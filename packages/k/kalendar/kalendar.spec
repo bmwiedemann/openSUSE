@@ -1,7 +1,7 @@
 #
 # spec file for package kalendar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define kf5_version 5.96.0
 %bcond_without released
 Name:           kalendar
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only

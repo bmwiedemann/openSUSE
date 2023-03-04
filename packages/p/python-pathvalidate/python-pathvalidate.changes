@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 24 12:52:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.5.2
+  * Add support for Python 3.11: #22 (Thanks to @hegjon)
+- v2.5.1
+  * Add __all__ by @eggplants in #24
+  * Add DeprecationWarning to deprecated functions
+- v2.5.0
+  * Add support for Python 3.10
+  * Drop support for Python 3.5
+  * Add null_value_handler argument to
+    sanitize_filename/sanitize_filepath functions: #20 (Thanks to @
+    mkbloke)
+  * Add AbstractSanitizer/AbstractValidator classes to import path
+  * Add replace_ansi_escape function
+  * Add setup-ci target to Makefile
+  * Modify min_len/max_len to use default values when assigned minus values
+- v2.4.1
+  * Fix filename validations that include '\' (backslash) on other
+    than Windows: #18 (Thanks to @Traktormaster)
+
+-------------------------------------------------------------------
 Sun Mar 21 13:33:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

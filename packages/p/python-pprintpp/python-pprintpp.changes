@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:29:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11
+
+-------------------------------------------------------------------
 Wed Feb  9 18:02:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove nose BR, we really needn't it.

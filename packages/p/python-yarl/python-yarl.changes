@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 10:41:59 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refreshed support-python-311.patch: with fix
+  of CVE-2023-24329 (bsc#1208471), the test
+  test_url_parsing.TestScheme.test_not_a_scheme2 fails on all
+  openSUSE/SLE Python interpreters.
+
+-------------------------------------------------------------------
 Mon Jan  9 04:17:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-311.patch:

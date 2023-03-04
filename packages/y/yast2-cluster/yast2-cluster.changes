@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Fri Nov  4 15:20:47 UTC 2022 - XinLiang <XLiang@suse.com>
 
 - bsc#1204530, set crypto_hash as "sha1" and set crypto_cipher as "aes256",

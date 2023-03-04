@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>972878</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0b3d95cffecd25d9830aec729863b0ce</srcmd5>
+    <version>0.2.18</version>
+    <time>1677878937</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with newer rubies, that removed File:exists method
+</comment>
+    <requestid>1069216</requestid>
+  </revision>
 </revisionlist>

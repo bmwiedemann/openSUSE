@@ -196,4 +196,15 @@
   * Skip a test under Python 3.11.</comment>
     <requestid>1056959</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>2987b39fccac8bb736805b9e193401f9</srcmd5>
+    <version>1.8.2</version>
+    <time>1677878658</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed support-python-311.patch: with fix
+  of CVE-2023-24329 (bsc#1208471), the test
+  test_url_parsing.TestScheme.test_not_a_scheme2 fails on all
+  openSUSE/SLE Python interpreters.</comment>
+    <requestid>1068657</requestid>
+  </revision>
 </revisionlist>

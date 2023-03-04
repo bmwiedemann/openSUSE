@@ -2787,4 +2787,16 @@ However, upstream development now focuses on 3.x series.
     <comment></comment>
     <requestid>1061590</requestid>
   </revision>
+  <revision rev="178" vrev="29">
+    <srcmd5>2f3a4d0360bb4cd482213b644be8b2a0</srcmd5>
+    <version>2.7.18</version>
+    <time>1677878682</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable NIS for new products, it's deprecated and gets removed
+
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters</comment>
+    <requestid>1068978</requestid>
+  </revision>
 </revisionlist>

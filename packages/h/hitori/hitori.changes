@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  3 15:15:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Remove GNOME branding as it’s not an official GNOME game
+    anymore.
+  + Bugs fixed:
+    - Update (or drop) the Docker image used by Flatpak job.
+    - data: Remove GNOME branding.
+    - build: Post-branch version bump.
+    - flatpak: Fix the branch name for building the flatpaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr  5 07:44:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.4:

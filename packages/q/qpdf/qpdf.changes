@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:15:12 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use -fexcess-precision=fast as GCC 13 changes the default
+for C++ compiler and without the change some tests fail on i586.
+
+-------------------------------------------------------------------
+Wed Mar  1 07:53:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 11.3.0:
+  * When performing overlay or underlay operations, convert the
+    original page to a form XObject instead of simply isolating its
+    contents with q/Q operators. This prevents unbalanced q/Q
+    operators in any of the original pages from messing up the
+    graphics state of anything that is overlaid on top of it.
+
+-------------------------------------------------------------------
 Sat Dec  3 22:47:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.2.0:

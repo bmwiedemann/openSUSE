@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  3 13:01:05 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build with newer rubies, that removed File:exists method
+
+-------------------------------------------------------------------
 Tue Apr 26 12:25:31 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Future proof tupitube.quazip5.patch and fix Factory build

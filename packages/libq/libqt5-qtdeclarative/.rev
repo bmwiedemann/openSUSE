@@ -674,4 +674,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
     <requestid>1057224</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>93e6d7909fabf71ef32a83f9fdc8ef21</srcmd5>
+    <version>5.15.8+kde22</version>
+    <time>1677878674</time>
+    <user>dimstar_suse</user>
+    <comment>Drop support for systems without SSE2 to fix boo#1208188. RFC, not built yet (forwarded request 1068677 from favogt)</comment>
+    <requestid>1068722</requestid>
+  </revision>
 </revisionlist>

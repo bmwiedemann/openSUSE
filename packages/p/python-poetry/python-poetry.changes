@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 24 12:34:19 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-orjson test requirement, it's needed because
+  python-deepdiff > 6.2.3.
+  gh#python-poetry/poetry@68770a67ef7e#diff-50c86b7ed8ac2cf95bd48334961bf0530cdc77b5a56f852c5c61b89d735fd711R93
+
+-------------------------------------------------------------------
 Sun Jan 15 19:56:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.3.2

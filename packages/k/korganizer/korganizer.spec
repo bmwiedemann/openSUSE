@@ -1,7 +1,7 @@
 #
 # spec file for package korganizer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           korganizer
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -96,8 +96,7 @@ KOrganizer is a calendar application by KDE.
 rm %{buildroot}%{_kf5_libdir}/*.so
 %suse_update_desktop_file org.kde.korganizer Office Calendar
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

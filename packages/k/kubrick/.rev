@@ -1028,4 +1028,12 @@
     <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
     <requestid>1062881</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>d9e2686c6d4e2488d2565cab645c345d</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878866</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068909</requestid>
+  </revision>
 </revisionlist>

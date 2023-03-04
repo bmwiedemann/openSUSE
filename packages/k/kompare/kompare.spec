@@ -1,7 +1,7 @@
 #
 # spec file for package kompare
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kompare
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -81,8 +81,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %suse_update_desktop_file -r org.kde.kompare Utility TextEditor
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

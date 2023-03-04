@@ -1,7 +1,7 @@
 #
 # spec file for package kosmindoormap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kosmindoormap
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        OSM indoor map QML component
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -89,10 +89,8 @@ This package contains development files for the KOSM and KOSMIndoorMap libraries
 %ctest
 %endif
 
-%post -n libKOSM%{soversion} -p /sbin/ldconfig
-%postun -n libKOSM%{soversion} -p /sbin/ldconfig
-%post -n libKOSMIndoorMap%{soversion} -p /sbin/ldconfig
-%postun -n libKOSMIndoorMap%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKOSM%{soversion}
+%ldconfig_scriptlets -n libKOSMIndoorMap%{soversion}
 
 %files
 %license LICENSES/*

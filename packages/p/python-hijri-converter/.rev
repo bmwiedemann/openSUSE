@@ -7,4 +7,38 @@
     <comment>Missing reuquirement for python-holidays</comment>
     <requestid>879266</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f1a0887090f1a1ae47aa7f6ec9d8df4</srcmd5>
+    <version>2.2.4</version>
+    <time>1677878901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.4:
+  * Fixed location of type checking marker file. (#10 bt @dimbleby)
+  * Added some missing variable annotations to ummalqura module.
+  * Fixed an issue when generating documentation.
+  * Fixed some typos in docstrings and improved documentation.
+  * Other minor fixes and enhancements.
+  * Fixed calculation of month 12 of year 1354 AH.
+  * Fixed an issue when generating documentation without the package being
+    installed. (#7)
+  * Refactored internal helper functions.
+  * Added today() classmethod to Hijri class to get the Hijri Object of
+    today's date.
+  * Added separator and padding parameters to dmyformat() method to have more
+    control on formatting.
+  * Refactored locales for better management and testing.
+  * Updated main classes to be conveniently imported into the package
+    level e.g. from hijri_converter import Hijri, Gregorian.
+  * Removed deprecated method slashformat() from Hijri and Gregorian classes.
+  * Other minor fixes and internal enhancements.
+  * Changed Hijri rich comparison to return NotImplemented when the second
+    operand is not Hijri class.
+  * Updated packaging configuration files and local development workflow.
+  * Other minor fixes and documentation enhancements.
+  * Added dmyformat() to return dates in DD/MM/YYYY format.
+  * Deprecated slashformat() method to be replaced by dmyformat() method.
+  * Fixed PyPI package not including some required files. (#3)
+- Stop using python_sitelib/*</comment>
+    <requestid>1069085</requestid>
+  </revision>
 </revisionlist>

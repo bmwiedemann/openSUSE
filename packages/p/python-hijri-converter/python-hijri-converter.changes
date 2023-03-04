@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar  3 06:39:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.4:
+  * Fixed location of type checking marker file. (#10 bt @dimbleby)
+  * Added some missing variable annotations to ummalqura module.
+  * Fixed an issue when generating documentation.
+  * Fixed some typos in docstrings and improved documentation.
+  * Other minor fixes and enhancements.
+  * Fixed calculation of month 12 of year 1354 AH.
+  * Fixed an issue when generating documentation without the package being
+    installed. (#7)
+  * Refactored internal helper functions.
+  * Added today() classmethod to Hijri class to get the Hijri Object of
+    today's date.
+  * Added separator and padding parameters to dmyformat() method to have more
+    control on formatting.
+  * Refactored locales for better management and testing.
+  * Updated main classes to be conveniently imported into the package
+    level e.g. from hijri_converter import Hijri, Gregorian.
+  * Removed deprecated method slashformat() from Hijri and Gregorian classes.
+  * Other minor fixes and internal enhancements.
+  * Changed Hijri rich comparison to return NotImplemented when the second
+    operand is not Hijri class.
+  * Updated packaging configuration files and local development workflow.
+  * Other minor fixes and documentation enhancements.
+  * Added dmyformat() to return dates in DD/MM/YYYY format.
+  * Deprecated slashformat() method to be replaced by dmyformat() method.
+  * Fixed PyPI package not including some required files. (#3)
+- Stop using python_sitelib/*
+
+-------------------------------------------------------------------
 Mon Mar 15 14:33:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch to the proper upstream tarball.

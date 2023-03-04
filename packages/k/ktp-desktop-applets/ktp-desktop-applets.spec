@@ -1,7 +1,7 @@
 #
 # spec file for package ktp-desktop-applets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-desktop-applets
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Telepathy presence applet
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

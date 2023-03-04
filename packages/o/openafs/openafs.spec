@@ -103,6 +103,8 @@ Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
 
+# PATCH-FIX-UPSTREAM fix build with kernel 6.2
+Patch1:         b885159.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         4cf7a9a.diff
 
@@ -215,6 +217,7 @@ caching, disconnected operations, replication for higher availability
 and load balancing, and ACLs. This package contains the OpenAFS server.
 
 %package kernel-source
+BuildArch:      noarch
 Summary:        OpenAFS Kernel Module source tree
 Group:          System/Filesystems
 Requires:       bison
@@ -314,6 +317,7 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
+%patch1 -p1
 %patch4 -p1
 
 ./regen.sh

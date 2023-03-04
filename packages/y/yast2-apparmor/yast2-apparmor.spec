@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-apparmor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           yast2-apparmor
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Plugins for AppArmor Profile Management
+URL:            https://github.com/yast/yast-apparmor
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            https://github.com/yast/yast-apparmor
 
 Source0:        %{name}-%{version}.tar.bz2
 

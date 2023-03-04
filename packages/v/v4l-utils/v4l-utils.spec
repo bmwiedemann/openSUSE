@@ -1,7 +1,7 @@
 #
-# spec file for package v4l-utils
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.22.1
+Version:        1.24.1
 Release:        0
 Summary:        Utilities for video4linux
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -171,10 +171,6 @@ developing applications that use libv4l.
 Summary:        Video4linux test control and streaming test application
 License:        GPL-2.0-or-later
 Requires:       libv4l = %{version}
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 
 %description -n qv4l2
 qv4l2 is a test control and streaming test application for video4linux.
@@ -235,7 +231,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if "%{flavor}" == ""
 %files
 %license COPYING
-%doc ChangeLog README TODO
+%doc ChangeLog README.md TODO
 %dir %{_sysconfdir}/rc_keymaps/
 %config(noreplace) %{_sysconfdir}/rc_maps.cfg
 %{_udevdir}/rc_keymaps
@@ -263,7 +259,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel-tools
 %license COPYING
-%doc ChangeLog README TODO
+%doc ChangeLog README.md TODO
 %{_bindir}/decode_tm6000
 %{_bindir}/v4l2-compliance
 %{_sbindir}/v4l2-dbg
@@ -271,7 +267,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n dvb-utils
 %license COPYING
-%doc ChangeLog README TODO
+%doc ChangeLog README.md TODO
 %{_bindir}/dvb-*
 %{_bindir}/dvbv5-*
 %{_mandir}/man1/dvb-*1%{?ext_man}
@@ -289,7 +285,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libv4l
 %license COPYING.libv4l
-%doc ChangeLog README README.libv4l TODO
+%doc ChangeLog README.md README.libv4l TODO
 %{_libdir}/libv4l/
 
 %files -n libv4l1-%{so_ver}
@@ -315,7 +311,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if "%{flavor}" == "qv4l2"
 %files -n qv4l2
 %license COPYING
-%doc ChangeLog README TODO
+%doc ChangeLog README.md TODO
 %{_bindir}/qv4l2
 %{_datadir}/applications/qv4l2.desktop
 %dir %{_datadir}/icons/hicolor

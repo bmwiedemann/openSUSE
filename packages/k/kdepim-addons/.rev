@@ -707,4 +707,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
     <requestid>1062770</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fc73a9a92874ffa79ff4b0294210de61</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878715</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068797</requestid>
+  </revision>
 </revisionlist>

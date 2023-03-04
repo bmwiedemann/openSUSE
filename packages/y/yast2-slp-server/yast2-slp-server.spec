@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-slp-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 Name:           yast2-slp-server
 Summary:        YaST2 SLP Daemon Server Configuration
-License:        GPL-2.0-or-later
-Group:          System/YaST
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
+Group:          System/YaST
+License:        GPL-2.0-or-later
 URL:            https://github.com/yast/yast-slp-server
 
 Source0:        %{name}-%{version}.tar.bz2

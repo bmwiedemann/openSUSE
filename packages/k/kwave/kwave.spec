@@ -1,7 +1,7 @@
 #
 # spec file for package kwave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwave
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -98,8 +98,7 @@ perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
 
 %suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Audio Recorder AudioVideoEditing
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license GNU-LICENSE

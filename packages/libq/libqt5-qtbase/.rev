@@ -2495,4 +2495,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
     <requestid>1057220</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>4902b5f559f0dc084b651585a279098c</srcmd5>
+    <version>5.15.8+kde160</version>
+    <time>1677878673</time>
+    <user>dimstar_suse</user>
+    <comment>Drop support for systems without SSE2 to fix boo#1208188. RFC, not built yet (forwarded request 1068677 from favogt)</comment>
+    <requestid>1068721</requestid>
+  </revision>
 </revisionlist>

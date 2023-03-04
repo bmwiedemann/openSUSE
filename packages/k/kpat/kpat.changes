@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  3 08:48:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Don't use dashes with %bcond_without. The parser doesn't like
+  them
+
+-------------------------------------------------------------------
+Tue Feb 28 09:46:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
 Tue Jan 31 10:34:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.2

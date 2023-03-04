@@ -1,7 +1,7 @@
 #
 # spec file for package python-pprintpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pprintpp
 Version:        0.4.0
 Release:        0
@@ -29,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pprintpp/pprint
 Patch0:         3a35e815.patch
 # gh#wolever/pprintpp#28
 Patch1:         python-pprintpp-remove-nose.patch
+# PATCH-FIX-OPENSUSE python-311.patch small fix to support python 3.11
+Patch2:         python-311.patch
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -43,9 +44,7 @@ BuildArch:      noarch
 A drop-in replacement for pprint that is arguably prettier.
 
 %prep
-%setup -q -n pprintpp-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n pprintpp-%{version}
 
 %build
 export LANG=en_US.utf-8
@@ -71,6 +70,7 @@ export LANG=en_US.utf-8
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/pypprint
-%{python_sitelib}/*
+%{python_sitelib}/pprintpp
+%{python_sitelib}/pprintpp-%{version}*-info
 
 %changelog

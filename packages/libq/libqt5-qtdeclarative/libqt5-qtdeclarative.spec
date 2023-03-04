@@ -31,8 +31,6 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
-Patch100:       sse2_nojit.patch
 # https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/32
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes
@@ -143,48 +141,15 @@ mkdir .git
 
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-# Force-enable the JIT for 32-bit x86
-%ifarch %{ix86}
-qmake-qt5 .. -- -qml-jit
-%else
 qmake-qt5 ..
-%endif
 popd
 
 make %{?_smp_mflags} VERBOSE=1 -C %{_target_platform}
-
-%ifarch %{ix86}
-%if 0%{?sle_version:%sle_version} < 150000
-# build libQt5Qml with no_sse2
-mkdir -p %{_target_platform}-no_sse2
-pushd %{_target_platform}-no_sse2
-%qmake5 -config no_sse2 .. -- -no-qml-jit
-
-make %{?_smp_mflags} VERBOSE=1 sub-src-qmake_all
-# src/qml/Makefile has to be generated after qmltyperegistrar was built,
-# so we have to run qmake again after that. There is no explicit
-# dependency, it relies on CONFIG+=ordered...
-make %{?_smp_mflags} VERBOSE=1 -C src/qmltyperegistrar
-make %{?_smp_mflags} VERBOSE=1 sub-src-qmake_all
-make %{?_smp_mflags} VERBOSE=1 -C src/qml
-popd
-%endif
-%endif
 
 %install
 pushd %{_target_platform}
 %qmake5_install
 popd
-
-%ifarch %{ix86}
-%if 0%{?sle_version:%sle_version} < 150000
-mkdir -p %{buildroot}%{_libqt5_libdir}//sse2
-mv %{buildroot}%{_libqt5_libdir}/libQt5Qml.so.5* %{buildroot}%{_libqt5_libdir}/sse2/
-pushd %{_target_platform}-no_sse2/src/qml
-%qmake5_install
-popd
-%endif
-%endif
 
 find %{buildroot}/%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
 find %{buildroot}/%{_libdir}/pkgconfig -type f -name '*pc' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
@@ -214,11 +179,6 @@ popd
 %files -n %{libname}
 %license LICENSE.*
 %{_libqt5_libdir}/libQt5Q*.so.*
-%ifarch %{ix86}
-%if 0%{?sle_version:%sle_version} < 150000
-%{_libqt5_libdir}/sse2/libQt5Q*.so.*
-%endif
-%endif
 %dir %{_libqt5_archdatadir}/qml
 %dir %{_libqt5_archdatadir}/qml/Qt
 %{_libqt5_archdatadir}/qml/QtQuick

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-sudo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 Name:           yast2-sudo
 Summary:        YaST2 - Sudo configuration
-License:        GPL-2.0-only
-Group:          System/YaST
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 URL:            https://github.com/yast/yast-sudo
+Group:          System/YaST
+License:        GPL-2.0-only
 
 Source0:        %{name}-%{version}.tar.bz2
 

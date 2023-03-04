@@ -1,7 +1,7 @@
 #
 # spec file for package ensmallen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Markus Kolb <novell+ensmallen@tower-net.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ensmallen
-Version:        2.19.0
+Version:        2.19.1
 Release:        0
 Summary:        Math optimization C++ library
 License:        BSD-3-Clause AND MPL-2.0 AND BSL-1.0

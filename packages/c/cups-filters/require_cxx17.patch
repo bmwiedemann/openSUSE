@@ -1,0 +1,35 @@
+Index: cups-filters-1.28.15/configure.ac
+===================================================================
+--- cups-filters-1.28.15.orig/configure.ac
++++ cups-filters-1.28.15/configure.ac
+@@ -52,7 +52,7 @@ AH_BOTTOM([
+ # ===========================
+ AC_PROG_CC
+ AC_PROG_CXX
+-AX_CXX_COMPILE_STDCXX([11],[noext],[mandatory])
++AX_CXX_COMPILE_STDCXX([17],[noext],[mandatory])
+ AM_PROG_CC_C_O
+ AM_ICONV
+ AC_PROG_CPP
+@@ -807,7 +807,7 @@ AS_IF([test x"$enable_werror" = "xyes"],
+ ])
+ AS_IF([test x"$GCC" = "xyes"], [
+ 	# Be tough with warnings and produce less careless code
+-	CFLAGS="$CFLAGS -Wall -std=gnu11"
++	CFLAGS="$CFLAGS -Wall"
+ 	CXXFLAGS="$CXXFLAGS -Wall " # -Weffc++" # TODO: enable when it does not print 1MB of warnings
+ ])
+ CFLAGS="$CFLAGS -D_GNU_SOURCE"
+Index: cups-filters-1.28.15/Makefile.am
+===================================================================
+--- cups-filters-1.28.15.orig/Makefile.am
++++ cups-filters-1.28.15/Makefile.am
+@@ -526,7 +526,7 @@ pdftopdf_SOURCES = \
+ pdftopdf_CFLAGS = \
+ 	$(LIBQPDF_CFLAGS) \
+ 	$(CUPS_CFLAGS)
+-pdftopdf_CXXFLAGS = -std=c++0x $(pdftopdf_CFLAGS)   # -std=c++11
++pdftopdf_CXXFLAGS = $(pdftopdf_CFLAGS)
+ pdftopdf_LDADD = \
+ 	$(LIBQPDF_LIBS) \
+ 	$(CUPS_LIBS)

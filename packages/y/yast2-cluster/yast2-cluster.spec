@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-cluster
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           yast2-cluster
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        Configuration of cluster
 License:        GPL-2.0-only

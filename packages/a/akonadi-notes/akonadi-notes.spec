@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-notes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-notes
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
@@ -79,8 +79,7 @@ library in other applications.
 
 %find_lang %{name} --with-man --all-name
 
-%post -n libKF5AkonadiNotes5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiNotes5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5AkonadiNotes5
 
 %files -n libKF5AkonadiNotes5
 %license LICENSES/*

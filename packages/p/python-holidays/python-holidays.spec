@@ -1,7 +1,7 @@
 #
 # spec file for package python-holidays
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-holidays
-Version:        0.16
+Version:        0.20
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dr-prodigy/python-holidays
-Source:         https://files.pythonhosted.org/packages/source/h/holidays/holidays-%{version}.tar.gz
+Source:         https://github.com/dr-prodigy/python-holidays/archive/refs/tags/v.%{version}.tar.gz#/holidays-%{version}.tar.gz
 BuildRequires:  %{python_module convertdate}
-BuildRequires:  %{python_module hijri-converter}
+BuildRequires:  %{python_module hijri-converter >= 2.2}
 BuildRequires:  %{python_module korean-lunar-calendar}
 BuildRequires:  %{python_module pytest}
 #BuildRequires:  %%{python_module lag_baomer}
@@ -36,7 +34,7 @@ BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-convertdate
-Requires:       python-hijri-converter
+Requires:       python-hijri-converter >= 2.2
 Requires:       python-korean-lunar-calendar
 #Requires:       python-lag_baomer
 Requires:       python-python-dateutil
@@ -48,7 +46,7 @@ A Python library for generating country, province and state specific sets of hol
 It makes determining whether a specific date is a holiday possible.
 
 %prep
-%setup -q -n holidays-%{version}
+%setup -q -n python-holidays-v.%{version}
 
 %build
 %python_build

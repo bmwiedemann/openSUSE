@@ -1,7 +1,7 @@
 #
 # spec file for package libgravatar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libgravatar
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -54,8 +54,7 @@ Requires:       %{name}
 libgravatar adds support for downloading and displaying gravatars in
 applications.
 
-%post  -n libKF5Gravatar5 -p /sbin/ldconfig
-%postun -n libKF5Gravatar5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5Gravatar5
 
 %package devel
 Summary:        Development package for libgravatar

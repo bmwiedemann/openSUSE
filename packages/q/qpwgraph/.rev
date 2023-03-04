@@ -113,4 +113,13 @@
   user preference option (cf. View &gt; Connect Through Nodes).</comment>
     <requestid>1061753</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2921d0e7360bee6a3209e0ffce2fc161</srcmd5>
+    <version>0.4.1</version>
+    <time>1677878948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1.
+</comment>
+    <requestid>1069309</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -124,12 +124,9 @@ Provides translations for the "%{name}" package.
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
 %suse_update_desktop_file org.kde.dolphin System FileManager
 
-%post -n libdolphinvcs5 -p /sbin/ldconfig
-%post -p /sbin/ldconfig
-%post part -p /sbin/ldconfig
-%postun -n libdolphinvcs5 -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%postun part -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdolphinvcs5
+%ldconfig_scriptlets
+%ldconfig_scriptlets part
 
 %files
 %license COPYING*

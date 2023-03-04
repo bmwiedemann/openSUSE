@@ -164,4 +164,38 @@ This is a maintained fork of python-Flask-Security</comment>
   * Support Flask-SQLAlchemy &gt;= 3.0</comment>
     <requestid>1056308</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18af7ce398ba5d4b86e59013e96c18ad</srcmd5>
+    <version>5.1.1</version>
+    <time>1677878907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.1:
+  * Fix 2 Flask apps in same thread with USERNAME_ENABLE set. There was a
+    too aggressive config check.
+  * Fix json/flask backwards compatibility hack.
+  * Fix unified signup when two-factor not enabled. (sebdroid)
+  * Add dependency on setuptools (pkg_resources). (hroncok)
+  * Option to encrypt recovery codes.
+  * Support for authentication via 'social' oauth.
+  * Support for Python 3.11
+  * Fixes for Flask-SQLAlchemy 3.0.0. (jrast)
+  * Fixes for sqlalchemy 2.0.0 (jrast)
+  * Webauthn and Unified signin features now properly take into account
+    blueprint prefixes.
+  * Properly propagate ?next=/xx - the verify, webauthn, and unified signin
+    endpoints, that had multiple redirects, needed fixes.
+  * Two factor redirects ignored url_prefix. Added a
+    SECURITY_TWO_FACTOR_ERROR_VIEW configuration option.
+  * Add configurations for static folder/URL and make sure templates
+    reference blueprint relative static folder.
+  * Send entire context to MailUtil::send_mail (patrickyan)
+  * Support for Flask-Babel 3.0.0
+  * Add configuration option SECURITY_TWO_FACTOR_POST_SETUP_VIEW which is
+    redirected to upon successful change of a two factor method.
+  * The ability to pass in a LoginManager instance which was deprecated in
+    5.0 has been removed.
+- Drop patch support-Flask-SQLAlchemy-3.0.patch, now included upstream.
+- Refresh all other patches.</comment>
+    <requestid>1069082</requestid>
+  </revision>
 </revisionlist>

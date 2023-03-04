@@ -1,7 +1,7 @@
 #
 # spec file for package grantleetheme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           grantleetheme
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -80,8 +80,7 @@ The development package for the grantleetheme library
 
 %global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
-%post -n libKF5GrantleeTheme5  -p /sbin/ldconfig
-%postun -n libKF5GrantleeTheme5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5GrantleeTheme5
 
 %files devel
 %{_kf5_cmakedir}/KF5GrantleeTheme/

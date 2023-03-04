@@ -139,7 +139,7 @@ Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
 # To address https://gitlab.freedesktop.org/mesa/mesa/-/issues/8393
-Patch3:         n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch
+Patch3:         U_glx-fix-indirect-initialization-crash.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch

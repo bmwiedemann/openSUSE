@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:34:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.10
+  * Fixed a vulnerability related to certificate verification in
+    TLS-based EAP methods that leads to an authentication bypass
+    followed by an expired pointer dereference that results in a
+    denial of service but possibly even remote code execution.
+    [CVE-2023-26463]
+  * Added support for full packet hardware offload for IPsec SAs
+    and policies, which has been introduced with the Linux 6.2
+    kernel, to the kernel-netlink plugin. Bypass policies for the
+    IKE ports are automatically offloaded to devices that support
+    this type of offloading.
+  * TLS-based EAP methods use the key derivation specified in
+    draft-ietf-emu-tls-eap-types when used with TLS 1.3.
+  * Routes via XFRM interfaces can now optionally be installed
+    automatically by enabling the
+    charon.plugins.kernel-netlink.install_routes_xfrmi option.
+- If connections are missing in `ipsec status`, check that
+  strongswan-starter.service (rather than strongswan.service)
+  is active.
+- Remove CVE-2023-26463_tls_auth_bypass_exp_pointer.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 12:26:39 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- Added patch to fix a vulnerability in incorrectly accepted
+  untrusted public key with incorrect refcount
+  (CVE-2023-26463 boo#1208608)
+  [+ CVE-2023-26463_tls_auth_bypass_exp_pointer.patch]
+
+-------------------------------------------------------------------
 Tue Jan  3 13:22:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.9

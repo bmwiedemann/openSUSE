@@ -1,7 +1,7 @@
 #
 # spec file for package kapptemplate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kapptemplate
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -68,8 +68,7 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
 
 %suse_update_desktop_file org.kde.kapptemplate
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konqueror
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -119,10 +119,8 @@ Development package for the konqueror libraries.
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%post   -n konqueror-plugins -p /sbin/ldconfig
-%postun -n konqueror-plugins -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets -n konqueror-plugins
 
 %files
 %license LICENSES/*

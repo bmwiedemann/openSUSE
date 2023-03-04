@@ -19,9 +19,9 @@
 %define pythons python3
 
 Name:           pvirsh
-Version:        2.1
+Version:        2.2
 Release:        0
-Summary:        Parallel virsh command
+Summary:        Parallel virsh command to manage a selected group of Virtual Machine
 License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/pvirsh
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  fdupes
 Requires:       python3-libvirt-python
 Requires:       python3-PyYAML
+Requires:	python3-curses
 BuildArch:      noarch
 %python_subpackages
 

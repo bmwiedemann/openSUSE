@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to Mercurial 6.3.3
+  * tests: filter out PEP 657 error locations in tracebacks (issue6780)
+  * tests: optional PEP 657 error location in test-extension.t (issue6781)
+  * tests: optional PEP 657 error location 
+    in test-lfs-serve-access.t (issue6782)
+  * histedit: byteify the help for the multifold action
+  * sparse: fix a py2 based usage of `map()`
+  * convert: stop passing str to the dateutil API in darcs
+  * convert: turn the last str regex into bytes in cvs.py (issue6789)
+  * convert: change socket mode from b'r+' to 'rwb' in cvs.py (issue6789)
+  * convert: replace repr() by pycompat.byterepr() in cvsps.py (issue6789)
+  * tests: os module is frozen in Python 3.11 (issue6786)
+  * hgweb: unbyteify the 100-continue check
+  * resourceutil: start using importlib.resources.files() when possible
+  * revset: the `random` sort should not depend on sys.maxsize (issue6770)
+  * tests: make sure pygments can detect python script without extension
+  * convert: brz 3.3.0 moved NoSuchFile exception to breezy.transport
+  * tests: pygments 2.14+ highlight whitespace in python code
+  * hghave: make different has_pyoxidizer functions have different names
+  * hghave: refactor checks for pygments versions using checkvers()
+  * rust-narrow: fix loop that never loops
+  * scmutil: make checknewlabel() allow "_" in otherwise 
+    numeric names (issue6737)
+  * bundlerepo: enforce the requirements declared by the underlying repository
+  * setup: make the version computation process more resistant
+  * fix: add more information to the debug output
+  * tag: disallow tagging the working directory
+  * dirstate: handle missing backup file on restoration
+  * dirstate-v2: complain early on docket name collision
+  * rust: upgrade minimum `rayon` dependency
+  * setup: support building from an ongoing merge
+  * rust: add debug log about skipping dirstate update
+  * rust-dirstate: trace append/no append to help debugging
+  * dirstate-v2: don't mmap the data file when on NFS
+  * run-tests: make it possible to nest conditionals
+  * dirstate: add some debug output when writing the dirstate
+  * testing: introduce util function to synchronize concurrent 
+    commands on files
+  * dirstate: add a way to test races happening during status
+  * dirstate: use more than a bool to control append behavior
+  * dirstate-v2: add devel config option to control write behavior
+  * rhg: fix race when a fixup file is deleted on disk
+  * rhg: fix race when an ambiguous file is deleted on disk
+  * dirstate: deal with read-race for pure python code
+  * dirstate: deal with read-race for python code using rust object
+  * dirstate: deal with read-race for pure rust code path (rhg)
+  * dirstate: set identity whenever we read the dirstate's v2 docket
+  * rust-dirstate-v2: don't write dirstate if data file has changed
+  * rhg: remember the inode of .hg/dirstate
+
+-------------------------------------------------------------------
 Wed Jan  4 16:21:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.3.2

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:53:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.12.2
+  - Raise error if input and output filenames are matched (#1787).
+    Thanks @atugushev
+  - Add pyproject.toml as default input file format (#1780). Thanks
+    @berislavlopac
+  - Fix a regression with unsafe packages for --allow-unsafe (#1788).
+    Thanks @q0w
+- 6.12.1 (2022-12-16)
+  - Set explicitly packages for setuptools (#1782). Thanks @q0w
+- 6.12.0 (2022-12-13)
+  - Add --no-index flag to pip-compile (#1745). Thanks @atugushev
+  - Treat --upgrade-packages PKGSPECs as constraints (not just
+    minimums), consistently (#1578). Thanks @AndydeCleyre
+  - Filter out the user provided unsafe packages (#1766). Thanks @q0w
+  - Adopt PEP-621 for packaging (#1763). Thanks @ssbarnea
+- 6.11.0 (2022-11-30)
+  - Add pyproject.toml file (#1643). Thanks @otherJL0
+  - Support build isolation using setuptools/pyproject.toml
+    requirement files (#1727). Thanks @atugushev
+  - Improve punctuation/grammar with pip-compile header (#1547).
+    Thanks @blueyed
+  - Generate hashes for all available candidates (#1723). Thanks
+    @neykov
+  - Bump click minimum version to >= 8 (#1733). Thanks @atugushev
+  - Bump pip minimum version to >= 22.2 (#1729). Thanks @atugushev
+- 6.10.0 (2022-11-13)
+  - Deprecate pip-compile --resolver=legacy (#1724). Thanks @atugushev
+  - Prompt user to use the backtracking resolver on errors (#1719).
+    Thanks @maxfenv
+  - Add support for Python 3.11 final (#1708). Thanks @hugovk
+  - Add --newline=[LF|CRLF|native|preserve] option to pip-compile
+    (#1652). Thanks @AndydeCleyre
+  - Fix inconsistent handling of constraints comments with
+    backtracking resolver (#1713). Thanks @mkniewallner
+  - Fix some encoding warnings in Python 3.10 (PEP 597) (#1614).
+    Thanks @GalaxySnail
+  - Update pip-tools version in the README's pre-commit examples
+    (#1701). Thanks @Kludex
+  - Document use of the backtracking resolver (#1718). Thanks @maxfenv
+  - Use HTTPS in a readme link (#1716). Thanks @Arhell
+- 6.9.0 (2022-10-05)
+  - Add --all-extras flag to pip-compile (#1630). Thanks @apljungquist
+  - Support Exclude Package with custom unsafe packages (#1509).
+    Thanks @hmc-cs-mdrissi
+  - Fix compile cached vcs packages (#1649). Thanks @atugushev
+  - Include py.typed in wheel file (#1648). Thanks @FlorentJeannot
+  - Add pyproject.toml & modern packaging to introduction. (#1668).
+    Thanks @hynek
+- 6.8.0 (2022-06-30)
+  - Add support for pip's 2020 dependency resolver. Use pip-compile
+    --resolver backtracking to enable new resolver (#1539). Thanks
+    @atugushev
+- 6.7.0 (2022-06-27)
+  - Support for the importlib.metadata metadata implementation
+    (#1632). Thanks @richafrank
+  - Instantiate a new accumulator InstallRequirement for
+    combine_install_requirements output (#1519). Thanks @richafrank
+  - Replace direct usage of the pep517 module with the build module,
+    for loading project metadata (#1629). Thanks @AndydeCleyre
+- 6.6.2 (2022-05-23)
+  - Update PyPIRepository::resolve_reqs() for pip>=22.1.1 (#1624).
+    Thanks @m000
+
+-------------------------------------------------------------------
 Thu Oct 20 09:53:42 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

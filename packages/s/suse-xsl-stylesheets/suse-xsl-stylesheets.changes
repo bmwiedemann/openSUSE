@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 14:53:42 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.89.0
+
+- Update 2.89.0
+  - Fix #535: Let formal titles in abstract appear
+  - Fix #533: Let publication date appear after titles
+  - Handle abstract/para in article titlepage (#532)
+
+-------------------------------------------------------------------
 Thu Jan 26 08:25:39 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.3
 
 - Update 2.88.3:

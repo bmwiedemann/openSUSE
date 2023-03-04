@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.41.0
+Version:        2.42.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -35,12 +35,15 @@ Group:          System/Monitoring
 URL:            https://prometheus.io/
 # also includes web assets generated with `make assets`
 Source:         prometheus-%{version}.tar.gz
-# generated after applying 0003-Bump-client_golang-to-1.12.1.patch
 Source1:        vendor.tar.gz
-Source2:        prometheus.service
-Source3:        prometheus.yml
-Source4:        prometheus.sysconfig
-Source5:        prometheus.firewall.xml
+Source2:        web-ui-%{version}.tar.gz
+Source3:        prometheus.service
+Source4:        prometheus.yml
+Source5:        prometheus.sysconfig
+Source6:        prometheus.firewall.xml
+Source7:        npm_licenses.tar.bz2
+Source8:        Makefile
+Source9:        PACKAGING_README.md
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
@@ -78,7 +81,8 @@ Prometheus's main features are:
  - multiple modes of graphing and dashboarding support
 
 %prep
-%autosetup -a1 -p1 -n prometheus-%{version}
+%setup -q -a1 -n prometheus-%{version}
+%autosetup -D -a2 -p1 -n prometheus-%{version}
 
 %build
 %goprep github.com/prometheus/prometheus
@@ -87,9 +91,9 @@ GOPATH=%{_builddir}/go promu build -v
 %install
 install -D -m0755 %{_builddir}/prometheus-%{version}/prometheus %{buildroot}/%{_bindir}/prometheus
 install -D -m0755 %{_builddir}/prometheus-%{version}/promtool %{buildroot}/%{_bindir}/promtool
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus.service
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/prometheus.service
 
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/prometheus/prometheus.yml
 
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus
@@ -98,16 +102,18 @@ install -m 0755 -d %{buildroot}%{_datarootdir}/prometheus
 cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
 
 install -m 0755 -d %{buildroot}%{_fillupdir}
-install -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus
+install -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 install -m 0755 -d %{buildroot}%{_prefix}/lib/firewalld/services/
-install -m 0644 %{SOURCE5} %{buildroot}%{_prefix}/lib/firewalld/services/prometheus.xml
+install -m 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/prometheus.xml
 %endif
 
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
+
+install -D -m0644 %{SOURCE7} %{buildroot}/%{_defaultlicensedir}/%{name}/npm_licenses.tar.bz2
 %gofilelist
 
 %fdupes %{buildroot}/%{_prefix}
@@ -135,6 +141,7 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
+%license %{_defaultlicensedir}/%{name}
 %{_bindir}/prometheus
 %{_bindir}/promtool
 %{_unitdir}/prometheus.service

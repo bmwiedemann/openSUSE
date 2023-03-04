@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-contact
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-contact
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -126,10 +126,8 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --all-name
 
-%post -n libKF5AkonadiContact5 -p /sbin/ldconfig
-%postun -n libKF5AkonadiContact5 -p /sbin/ldconfig
-%post -n libKF5ContactEditor5 -p /sbin/ldconfig
-%postun -n libKF5ContactEditor5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5AkonadiContact5
+%ldconfig_scriptlets -n libKF5ContactEditor5
 
 %files
 %license LICENSES/*

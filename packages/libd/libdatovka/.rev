@@ -36,4 +36,22 @@
 </comment>
     <requestid>931484</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>592c73fdc9e17083cbcaada82c8eee2b</srcmd5>
+    <version>0.3.0</version>
+    <time>1677878910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+ * Added idLevel member into struct isds_envelope.
+ * Added function isds_GetMessageAuthor2() which implements the
+   GetMessageAuthor2 ISDS operation and corresponding data structures.
+ * Modified the interface of function isds_set_opt() because of an ambiguity or
+   undefined behaviour in variable argument handling in C.
+ * Function isds_check_func_timegm() also checks time conversion using
+   struct tm containing negative hour values.
+ * Added support for the new PFO_REQ data-box type
+   introduced in the version 2.36 of the XSD and WSDL definitions.
+ * Disabled fatal warnings by default.</comment>
+    <requestid>1069080</requestid>
+  </revision>
 </revisionlist>

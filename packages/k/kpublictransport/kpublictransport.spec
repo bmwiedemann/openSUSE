@@ -1,7 +1,7 @@
 #
 # spec file for package kpublictransport
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpublictransport
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -79,8 +79,7 @@ ransport journey queries.Development files.
 %check
 %ctest
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %dir %{_kf5_qmldir}/org/

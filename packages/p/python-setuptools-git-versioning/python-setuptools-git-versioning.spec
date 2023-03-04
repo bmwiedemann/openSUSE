@@ -17,7 +17,7 @@
 
 
 Name:           python-setuptools-git-versioning
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Use git repo data for building a version number according PEP-440
 License:        MIT
@@ -83,6 +83,8 @@ sed -i  '/assert get_version(repo, isolated=True)/d' tests/test_integration/test
 donttest="test_substitution_env"
 # short git hash has only 7 characters on i586
 donttest="$donttest or (test_version_file_count_commits and sha)"
+# broken under Python 3.11
+donttest="$donttest or test_substitution_timestamp"
 %pytest -k "not ($donttest)"
 
 %post

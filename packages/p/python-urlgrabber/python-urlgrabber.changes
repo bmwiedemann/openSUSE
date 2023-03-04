@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  3 08:07:59 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Wed Mar  1 16:29:38 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Raise proper exception from urlgrab() when local file is not found (bsc#1208288)
+
+- Added:
+  * fix-urlgrab-file-schema-comparison.patch
+
+-------------------------------------------------------------------
 Wed Aug  3 14:30:01 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Avoid crashing when setting URLGRABBER_DEBUG=1 environment variable

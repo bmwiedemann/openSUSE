@@ -1,7 +1,7 @@
 #
 # spec file for package libkmahjongg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkmahjongg
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
@@ -83,8 +83,7 @@ develop games that uses Mahjongg tiles.
 
 %fdupes -s %{buildroot}
 
-%post -n libKF5KMahjongglib5 -p /sbin/ldconfig
-%postun -n libKF5KMahjongglib5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5KMahjongglib5
 
 %files
 %doc README

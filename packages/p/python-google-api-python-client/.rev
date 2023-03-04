@@ -662,4 +662,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   workflowexecutions: update the api https://togithub.com/googleapis/google-api-python-client/commit/3ff77236759bf338f5f295ae0e7453184bfbd745 (1506e28) (forwarded request 1056261 from yarunachalam)</comment>
     <requestid>1056266</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>18e86960e6800dd6921900ccde196ee9</srcmd5>
+    <version>2.80.0</version>
+    <time>1677878928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.80.0
+  * **analyticsadmin:** Update the api
+  * **analyticshub:** Update the api
+  * **bigquery:** Update the api
+  * **chat:** Update the api
+  * **chromemanagement:** Update the api
+  * **chromepolicy:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudsearch:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **contentwarehouse:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **dialogflow:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **identitytoolkit:** Update the api
+  * **logging:** Update the api
+  * **monitoring:** Update the api
+  * **policysimulator:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **sasportal:** Update the api
+  * **servicedirectory:** Update the api
+  * **servicemanagement:** Update the api
+  * **tpu:** Update the api
+  * **transcoder:** Update the api (forwarded request 1069187 from glaubitz)</comment>
+    <requestid>1069189</requestid>
+  </revision>
 </revisionlist>

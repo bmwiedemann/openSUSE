@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 23 10:41:38 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- node-gyp_7.1.2.tar.xz: added dependencies so they don't conflict with
+  npm dependencies.
+
+-------------------------------------------------------------------
 Wed Feb 22 13:59:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to NodeJS 18.14.2 LTS:

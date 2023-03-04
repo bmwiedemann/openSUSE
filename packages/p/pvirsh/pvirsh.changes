@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  3 08:59:44 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.2:
+  * again some lint fixes
+  * remove unwanted shebang
+  * various typo fixes
+  * bug fixes
+  * add requires on python3-curses
+
+-------------------------------------------------------------------
 Thu Nov  3 14:43:05 UTC 2022 - Antoine Ginies <aginies@suse.com>
 
 - version 2.1:

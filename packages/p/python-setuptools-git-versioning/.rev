@@ -35,4 +35,14 @@
   * Add description for some functions</comment>
     <requestid>1067284</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e1645f8f8f4559a49af365b44a5d86da</srcmd5>
+    <version>1.13.2</version>
+    <time>1677878893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.2:
+  * Documentation changes only.
+- Skip broken test.</comment>
+    <requestid>1069050</requestid>
+  </revision>
 </revisionlist>

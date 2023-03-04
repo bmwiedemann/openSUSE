@@ -1,7 +1,7 @@
 #
 # spec file for package ksanecore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ksanecore
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -79,8 +79,7 @@ KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 
 %find_lang %{name} --with-man --all-name
 
-%post -n %{lname}%{_so} -p /sbin/ldconfig
-%postun -n %{lname}%{_so} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}%{_so}
 
 %files -n %{lname}%{_so}
 %license LICENSES/*

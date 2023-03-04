@@ -42,6 +42,7 @@ contexts, see the settings section.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 

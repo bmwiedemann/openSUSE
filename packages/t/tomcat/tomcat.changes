@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 28 11:14:24 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-24998: tomcat,tomcat6: FileUpload DoS with excessive parts (bsc#1208513)
+- Added patches:
+  * tomcat-9.0.43-CVE-2023-24998.patch
+
+-------------------------------------------------------------------
 Fri Dec 23 08:20:55 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - set logrotate for localhost.log, manager.log, host-manager.log and localhost_access_log.txt

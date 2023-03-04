@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-photos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,11 @@ URL:            https://wiki.gnome.org/Design/Apps/Photos
 Source0:        https://download.gnome.org/sources/gnome-photos/43/%{name}-%{version}.tar.xz
 # PATCH-NEEDS-REBASE gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up. WAS PATCH-FIX-UPSTREAM
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
+# PATCH-FIX-UPSTREAM 64c6f733a44bac5b7f08445a686c000681f93f5f.patch -- Use babl-0.1
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/64c6f733a44bac5b7f08445a686c000681f93f5f.patch
+# PATCH-FIX-UPSTREAM 9db32c3508a8c5d357a053d5f8278c34b4df18f3.patch -- build: accept both babl and babl-0.1
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/9db32c3508a8c5d357a053d5f8278c34b4df18f3.patch
+
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -36,7 +41,7 @@ BuildRequires:  itstool
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(babl)
+BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(exempi-2.0) >= 1.99.5
@@ -88,6 +93,8 @@ search results from GNOME Photos.
 
 %prep
 %autosetup -N
+%patch1 -p1
+%patch2 -p1
 
 %build
 %meson

@@ -871,4 +871,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
     <requestid>1062705</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>5c9e663477aa597fc7bec28b03c63c47</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878693</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068732</requestid>
+  </revision>
 </revisionlist>

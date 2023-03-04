@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 03 05:41:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.58.0:
+  * chore: Update Syft to v0.74.0 (#1151)
+  * fix(distro): Disable support for Arch Linux (#1152)
+  * chore: update progress monitor handling (#1149)
+  * Update Syft to v0.73.0 (#1140)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2 (#1144)
+  * chore(deps): bump github/codeql-action from 2.2.4 to 2.2.5
+    (#1145)
+  * Update grype bootstrap tools to latest versions. (#1137)
+  * chore(deps): bump github.com/spf13/afero from 1.9.3 to 1.9.4
+    (#1141)
+  * chore(deps): bump actions/cache from 3.2.5 to 3.2.6 (#1143)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.6.2
+    to 1.7.0 (#1134)
+
+-------------------------------------------------------------------
 Fri Feb 17 10:07:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.57.1:

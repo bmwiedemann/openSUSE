@@ -17,7 +17,7 @@
 
 
 Name:           fdo-client
-Version:        1.0.0+git20210816.baa09b5
+Version:        1.1.4+git20221209.c8ef757
 Release:        0
 Summary:        FIDO Device Onboard Client
 License:        Apache-2.0
@@ -32,11 +32,11 @@ Source5:        README
 Patch0:         build.patch
 Patch1:         gcc.patch
 Requires:       openssl
-Obsoletes:      sdo-client
 BuildRequires:  cmake
 BuildRequires:  vim
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
+BuildRequires:  libcurl-devel
 %{?systemd_ordering}
 
 %description

@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           marble
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -173,10 +173,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %fdupes %{buildroot}
 
-%post   -n libmarblewidget-qt5%{_so} -p /sbin/ldconfig
-%postun -n libmarblewidget-qt5%{_so} -p /sbin/ldconfig
-%post   -n libastro%{_so_astro} -p /sbin/ldconfig
-%postun -n libastro%{_so_astro} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmarblewidget-qt5%{_so}
+%ldconfig_scriptlets -n libastro%{_so_astro}
 
 %files
 %license COPYING* LICENSE*

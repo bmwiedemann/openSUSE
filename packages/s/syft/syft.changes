@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 03 05:40:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.74.0:
+  * fix: possible race condition (#1639)
+  * fix: remove APK OriginPackage cpe candidates (#1637)
+  * fix: rebar lock file decoding panic (#1628)
+  * fix: handle individual cataloger panics (#1636)
+  * fix: apk product/vendor generation for old metadata (#1635)
+  * feat: rust toolchain binary cataloger (#1601)
+  * feat: retain go package info when no module declared (#1632)
+  * fix: improved CPE-generation for several more APK packages
+    (#1631)
+  * chore: update deprecated release flag (#1629)
+  * chore(deps): bump actions/upload-artifact from 2 to 3 (#1627)
+  * feat: add support for SUPPORT_END in /etc/os-release (#1612)
+  * fix: further improvements to CPE generation for apk packages
+    (#1623)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2 (#1625)
+  * chore(deps): bump actions/checkout from 2 to 3 (#1626)
+  * feat: set cosign attest predicate type based on Syft output
+    type (#1598)
+  * chore(deps): bump github.com/spf13/afero from 1.9.3 to 1.9.4
+    (#1609)
+  * fix: correct apk purls for other distros (#1620)
+  * refactor: move apk upstream logic to apk metadata (#1619)
+  * fix: decoding null apk metadata pullDependencies (#1614)
+  * feat: haproxy binary matcher (#1591)
+  * fix: determine upstream for apk version streams (#1610)
+  * fix: improve CPE generation for curl APK (#1608)
+  * Revert "add workaround for macos github actions cache issue
+    (#1584)" (#1605)
+
+-------------------------------------------------------------------
 Thu Feb 23 10:37:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.73.0:

@@ -31,10 +31,8 @@
 %define config_spec    config-7
 # bsc#1088463
 %define urw_base35_fonts 0
-
 # do/don't pull djvulibre dependency
-%bcond_without djvulibre
-
+%bcond_without djvu
 Name:           ImageMagick
 Version:        %{mfr_version}.%{mfr_revision}
 Release:        0
@@ -58,90 +56,51 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
 #%%endif
 BuildRequires:  chrpath
+BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  libwmf-devel
+BuildRequires:  pkgconfig
 BuildRequires:  xdg-utils
 BuildRequires:  xz-devel
 BuildRequires:  zip
-%if 0%{?suse_version} >= 1315
-BuildRequires:  dejavu-fonts
-%endif
-%if 0%{?suse_version} >= 1315
-BuildRequires:  libjbig-devel
-%endif
-%if 0%{?suse_version} >= 1315
-%if 0%{?suse_version} > 1500
-BuildRequires:  p7zip-full
-%else
-BuildRequires:  p7zip
-%endif
-BuildRequires:  pkgconfig
-%endif
-%if 0%{?suse_version} >= 1315
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(ijs)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.3
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(lqr-1)
 BuildRequires:  pkgconfig(pango)
+%if 0%{?suse_version} > 1500
+BuildRequires:  p7zip-full
+%else
+BuildRequires:  p7zip
+%endif
+%if %{with djvu}
+BuildRequires:  pkgconfig(ddjvuapi)
+%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libjxl)
 %endif
-%if 0%{?suse_version} > 1315
-BuildRequires:  pkgconfig(ijs)
 # bsc#1088463
 %if %{urw_base35_fonts}
 BuildRequires:  urw-base35-fonts
 %else
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
-%endif
-%else
-BuildRequires:  ghostscript-fonts-other
-BuildRequires:  ghostscript-fonts-std
-BuildRequires:  ghostscript-library
-%endif
-%if 0%{?suse_version} > 1315
-BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
-%endif
-%if 0%{?suse_version} > 1315
-BuildRequires:  pkgconfig(lqr-1)
-%endif
-%else
-BuildRequires:  OpenEXR-devel
-BuildRequires:  fftw3-devel
-BuildRequires:  freetype2-devel
-BuildRequires:  ghostscript-fonts-other
-BuildRequires:  ghostscript-fonts-std
-BuildRequires:  ghostscript-library
-BuildRequires:  libbz2-devel
-%if %{with djvulibre}
-BuildRequires:  libdjvulibre-devel
-%endif
-BuildRequires:  libexif-devel
-BuildRequires:  libheif-devel
-BuildRequires:  librsvg-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml-devel
-BuildRequires:  perl-parent
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(zlib)
 %endif
 
 %package -n perl-PerlMagick
@@ -159,12 +118,7 @@ Requires:       glibc-devel
 Requires:       libMagickCore%{libspec}%{clibver} = %{version}
 Requires:       libMagickWand%{libspec}%{cwandver} = %{version}
 # bnc#741947:
-%if 0%{?suse_version} >= 1315
 Requires:       pkgconfig(bzip2)
-%else
-Requires:       libbz2-devel
-%endif
-
 %if !%{debug_build}
 %package extra
 Summary:        Extra codecs for the ImageMagick image viewer/converter
@@ -182,10 +136,10 @@ Recommends:     transfig
 %package -n libMagickCore%{libspec}%{clibver}
 Summary:        C runtime library for ImageMagick
 Group:          Productivity/Graphics/Other
-Recommends:     ghostscript
-Suggests:       %{name}-extra = %{version}
 Requires:       imagick-%{config_spec}
 Recommends:     %{config_spec}-SUSE
+Recommends:     ghostscript
+Suggests:       %{name}-extra = %{version}
 
 %package -n libMagickWand%{libspec}%{cwandver}
 Summary:        C runtime library for ImageMagick
@@ -201,32 +155,26 @@ Summary:        Development files for ImageMagick's C++ interface
 Group:          Development/Libraries/C and C++
 Requires:       libMagick++%{libspec}%{cxxlibver} = %{version}
 Requires:       libstdc++-devel
-%if 0%{?suse_version} >= 1315
 Requires:       pkgconfig(ImageMagick) = %{mfr_version}
-%else
-Requires:       %{name}-devel = %{version}
-%endif
 
 %package doc
 Summary:        Document Files for ImageMagick Library
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1315
 BuildArch:      noarch
-%endif
 
 %package %{config_spec}-upstream
 Summary:        Upstream Configuration Files
 Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Provides:       imagick-%{config_spec}
 
 %package %{config_spec}-SUSE
 Summary:        Upstream Configuration Files
 Group:          Development/Libraries/C and C++
-Provides:       imagick-%{config_spec}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Provides:       imagick-%{config_spec}
 
 %description
 ImageMagick is a robust collection of tools and libraries to read,
@@ -376,23 +324,21 @@ export CXXFLAGS="%{optflags} -O0"
 %endif
   --with-threads \
 %if %{urw_base35_fonts}
-  --with-urw-base35-font-dir=/usr/share/fonts/truetype \
+  --with-urw-base35-font-dir=%{_datadir}/fonts/truetype \
 %else
-  --with-gs-font-dir=/usr/share/fonts/ghostscript \
+  --with-gs-font-dir=%{_datadir}/fonts/ghostscript \
 %endif
   --with-perl \
   --with-perl-options="INSTALLDIRS=vendor %{?perl_prefix} CC='gcc -L$PWD/magick/.libs' LDDLFLAGS='-shared -L$PWD/magick/.libs'" \
   --disable-static \
   --with-gvc \
-%if %{with djvulibre}
+%if %{with ddjvuapi}
   --with-djvu \
 %endif
   --with-fftw \
   --with-lcms \
   --with-jbig \
-%if 0%{?suse_version} > 1315
   --with-openjp2 \
-%endif
   --with-openexr \
   --with-rsvg \
   --with-webp \
@@ -409,8 +355,8 @@ sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \
 %endif
 # don't build together, PerlMagick could be miscompiled when using parallel build[1]
 # [1] http://pkgs.fedoraproject.org/cgit/ImageMagick.git/tree/ImageMagick.spec
-make %{?_smp_mflags} all
-make -j1 perl-build
+%make_build all
+%make_build -j1 perl-build
 # mostly because */demo is used later with %check
 # polutting dir with .libs etc.
 cp -r Magick++/demo Magick++/examples
@@ -432,26 +378,16 @@ exit 0
 rm PerlMagick/t/montage.t
 sed -i -e 's:averageImages ::' -e 's:1..13:1..12:' Magick++/tests/tests.tap
 %endif
-make %{?_smp_mflags} check
+%make_build check
 export MAGICK_CODER_MODULE_PATH=$PWD/coders/.libs
 export MAGICK_CODER_FILTER_PATH=$PWD/filters/.libs
 export MAGICK_CONFIGURE_PATH=$PWD/config
 cd PerlMagick
-%if 0%{?suse_version} >= 1315
-make %{?_smp_mflags} test
-%else
-make test_dynamic
-%endif
+%make_build test
 cd ..
 
 %install
-%if 0%{?suse_version} >= 1315
 %make_install pkgdocdir=%{_defaultdocdir}/%{name}-%{maj}/
-%else
-make install \
-     DESTDIR=%{buildroot} \
-     pkgdocdir=%{_defaultdocdir}/%{name}-%{maj}/
-%endif
 # configuration magic
 mv -t %{buildroot}%{_sysconfdir}/%{name}* %{buildroot}%{_datadir}/%{name}*/*.xml
 mv %{buildroot}%{_sysconfdir}/%{config_dir}{,-upstream}
@@ -485,7 +421,6 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %postun -n libMagickWand%{libspec}%{cwandver} -p /sbin/ldconfig
 %post -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
 %postun -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
-
 %pretrans %{config_spec}-upstream -p <lua>
 -- this %pretrans to be removed soon [bug#1122033#c37]
 path = "%{_sysconfdir}/%{config_dir}"
@@ -535,10 +470,8 @@ fi
 %dir %{_libdir}/ImageMagick*/modules*
 %dir %{_libdir}/ImageMagick*/modules*/*
 %exclude %{_libdir}/ImageMagick*/modules*/*/wmf.*
-%if 0%{?suse_version} > 1315
 %exclude %{_libdir}/ImageMagick*/modules*/*/jp2.*
-%endif
-%if %{with djvulibre}
+%if %{with djvu}
 %exclude %{_libdir}/ImageMagick*/modules*/*/djvu.*
 %endif
 %{_libdir}/ImageMagick*/modules*/*/*.so
@@ -554,11 +487,9 @@ fi
 %files extra
 %{_libdir}/ImageMagick*/modules*/*/wmf.so
 # don't remove la files, see bnc#579798
-%if 0%{?suse_version} > 1315
 %{_libdir}/ImageMagick*/modules*/*/jp2.so
 %{_libdir}/ImageMagick*/modules*/*/jp2.la
-%endif
-%if %{with djvulibre}
+%if %{with djvu}
 %{_libdir}/ImageMagick*/modules*/*/djvu.so
 %{_libdir}/ImageMagick*/modules*/*/djvu.la
 %endif
@@ -577,7 +508,7 @@ fi
 %{_libdir}/pkgconfig/MagickCore*.pc
 %{_libdir}/pkgconfig/ImageMagick*.pc
 %{_libdir}/pkgconfig/MagickWand*.pc
-%{_mandir}/man1/*-config.1%{ext_man}
+%{_mandir}/man1/*-config.1%{?ext_man}
 %exclude %{_mandir}/man1/Magick++-config.1%{ext_man}
 
 %files -n perl-PerlMagick
@@ -598,7 +529,7 @@ fi
 %{_includedir}/ImageMagick*/Magick++
 %{_bindir}/Magick++-config
 %{_libdir}/pkgconfig/Magick++*.pc
-%{_mandir}/man1/Magick++-config.1%{ext_man}
+%{_mandir}/man1/Magick++-config.1%{?ext_man}
 
 %files doc
 %{_defaultdocdir}/%{name}-%{maj}

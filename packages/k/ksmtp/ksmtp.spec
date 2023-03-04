@@ -1,7 +1,7 @@
 #
 # spec file for package ksmtp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksmtp
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -76,8 +76,7 @@ to build programs that use the KSMTP library.
 
 %find_lang %{name} --with-man --with-qt --all-name
 
-%post -n libKPimSMTP5 -p /sbin/ldconfig
-%postun -n libKPimSMTP5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPimSMTP5
 
 %files -n libKPimSMTP5
 %license LICENSES/*

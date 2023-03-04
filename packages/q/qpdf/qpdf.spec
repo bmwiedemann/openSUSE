@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_version 29
 Name:           qpdf
-Version:        11.2.0
+Version:        11.3.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -84,6 +84,7 @@ package.
 %autosetup
 
 %build
+%global optflags %optflags -fexcess-precision=fast
 %cmake \
   -DBUILD_DOC=ON \
   -DBUILD_DOC_DIST=ON \

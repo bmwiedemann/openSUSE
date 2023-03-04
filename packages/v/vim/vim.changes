@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar  2 11:29:14 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1367, fixes the following problems
+- dropped vim-fix-sh-syntax.patch
+- fixes boo#1208828 - CVE-2023-1127 
+  * Using null_object results in an internal error. (Ernie Rael)
+  * Compilation error with some compilers.
+  * Too many "else if" statements in handling options.
+  * Cue files are not recognized.
+  * extendnew() not sufficiently tested.
+  * ml_get error when going to another tab. (Daniel J. Perry)
+  * Crash when :def function has :break in skipped block. (Ernie Rael)
+  * Build error with older Mac OS.
+  * Functions for setting options are in random order.
+  * Divide by zero in zero-width window.
+
+-------------------------------------------------------------------
 Sun Feb 26 19:30:47 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1357, fixes the following problems

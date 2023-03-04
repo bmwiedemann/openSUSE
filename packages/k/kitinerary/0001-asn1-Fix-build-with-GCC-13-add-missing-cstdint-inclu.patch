@@ -1,0 +1,30 @@
+From 0ef772c3e0ff8f049f299ad14b3c65327e4fe69e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Dec 2022 13:29:11 +0000
+Subject: [PATCH] asn1: Fix build with GCC 13 (add missing <cstdint> include)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> is no longer transitively included.
+
+Explicitly include <cstdint> for uint8_t.
+
+Bug: https://bugs.gentoo.org/885423
+---
+ src/lib/asn1/bitvectorview.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/asn1/bitvectorview.h b/src/lib/asn1/bitvectorview.h
+index 5a4da315..f924a1fe 100644
+--- a/src/lib/asn1/bitvectorview.h
++++ b/src/lib/asn1/bitvectorview.h
+@@ -8,6 +8,7 @@
+ 
+ #include <bitset>
+ #include <cassert>
++#include <cstdint>
+ #include <string_view>
+ #include <type_traits>
+ 
+-- 
+2.39.2
+

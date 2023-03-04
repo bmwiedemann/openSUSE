@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  1 14:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters
+
+-------------------------------------------------------------------
+Fri Jan 27 15:00:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
 Thu Jan 19 07:14:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_unverified_test.patch because apparently switching off

@@ -1,7 +1,7 @@
 #
 # spec file for package kde-dev-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-dev-utils
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -81,8 +81,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %suse_update_desktop_file org.kde.kuiviewer Development GUIDesigner
 
-%post -n kuiviewer -p /sbin/ldconfig
-%postun -n kuiviewer -p /sbin/ldconfig
+%ldconfig_scriptlets -n kuiviewer
 
 %files -n kuiviewer
 %license LICENSES/*
@@ -99,8 +98,7 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_appstreamdir}/org.kde.kuiviewer.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.kuiviewerpart.metainfo.xml
 
-%post -n kpartloader -p /sbin/ldconfig
-%postun -n kpartloader -p /sbin/ldconfig
+%ldconfig_scriptlets -n kpartloader
 
 %files -n kpartloader
 %license LICENSES/*

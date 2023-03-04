@@ -50,8 +50,8 @@ The first time that this container gets executed, the services will
 create a certificate that will be required later by the different
 agents.  We can extract the certificate with this command:
 
-    podman cp \
-      keylime-control-plane-container:/var/lib/keylime/cv_ca/cacert.crt .
+  podman cp \
+    keylime-control-plane-container:/var/lib/keylime/cv_ca/cacert.crt .
 
 Another possibility is to mount the "keylime-control-plane-volume" and
 copy it from there.
@@ -60,11 +60,11 @@ The tenant CLI tool is present in the container, and if the host
 firewall is properly configured, it can be executed using the same
 image.
 
-    podman run --rm \
-      -v keylime:/var/lib/keylime \
-      registry.opensuse.org/devel/microos/containers/containerfile/opensuse/keylime-control-plane:latest \
-      keylime_tenant -v 10.88.0.1 -r 10.88.0.1 --cert default -c reglist
+  podman run --rm \
+    -v keylime-control-plane-container:/var/lib/keylime \
+    keylime-control-plane:latest \
+    keylime_tenant -v 10.88.0.1 -r 10.88.0.1 --cert default -c reglist
 
 We can stop the services via the kill command.
 
-    podman kill keylime-control-plane-container
+  podman kill keylime-control-plane-container

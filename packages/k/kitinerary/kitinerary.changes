@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 28 09:46:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+- Add GCC 13 compatibility fix (boo#1201089):
+  * 0001-asn1-Fix-build-with-GCC-13-add-missing-cstdint-inclu.patch
+
+-------------------------------------------------------------------
 Tue Jan 31 10:33:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.2

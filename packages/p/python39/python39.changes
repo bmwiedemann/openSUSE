@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  1 14:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters
+
+-------------------------------------------------------------------
 Tue Feb 21 11:34:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add provides for readline and sqlite3 to the main Python

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  2 07:34:31 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.5.9:
+  * Optional ciphers in --data-ciphers Ciphers in --data-ciphers
+    can now be prefixed with a ? to mark those as optional and only
+    use them if the SSL library supports them.
+  * when compiling from a git checkout, put proper branch names into
+    windows builds
+  * do not include auth-token in pulled-option digest (interferes
+    with persist-tun when auth-token is in use, GH #200).
+  * fix corner case that might lead to leaked file descriptor
+  * fix parser bug (parse_line()) that can lead to buffer overflows
+    on malformed command line or server ccd file handling.
+    Not exploitable.
+  * pull-filter: ignore leading spaces in option names (work around
+    server side bug with erroneous extra spaces)
+  * push: do not add leading spaces to "out of renegotiations" pushed
+    auth-token fix NULL pointer crash on "openvpn --show-tls" with
+    mbedtls
+
+-------------------------------------------------------------------
 Mon Feb 13 11:26:45 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove migration from openvpn.service to openvpn@.service and

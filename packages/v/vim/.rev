@@ -6878,4 +6878,24 @@ always built-in because vim has direct perl dependencies anyway.
   * Using tt_member for the class leads to mistakes.</comment>
     <requestid>1067840</requestid>
   </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>e253a84584ac3b822596f6d2af2988f6</srcmd5>
+    <version>9.0.1367</version>
+    <time>1677878661</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1367, fixes the following problems
+- dropped vim-fix-sh-syntax.patch
+- fixes boo#1208828 - CVE-2023-1127 
+  * Using null_object results in an internal error. (Ernie Rael)
+  * Compilation error with some compilers.
+  * Too many &quot;else if&quot; statements in handling options.
+  * Cue files are not recognized.
+  * extendnew() not sufficiently tested.
+  * ml_get error when going to another tab. (Daniel J. Perry)
+  * Crash when :def function has :break in skipped block. (Ernie Rael)
+  * Build error with older Mac OS.
+  * Functions for setting options are in random order.
+  * Divide by zero in zero-width window.</comment>
+    <requestid>1068672</requestid>
+  </revision>
 </revisionlist>

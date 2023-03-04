@@ -1,7 +1,7 @@
 #
 # spec file for package kde-print-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 24.9.90 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-print-manager
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
@@ -85,8 +85,7 @@ kde-print-manager provides tools for managing print jobs and printers.
 %suse_update_desktop_file -r org.kde.PrintQueue Utility DesktopUtility
 %suse_update_desktop_file -r org.kde.kde-add-printer Utility DesktopUtility
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

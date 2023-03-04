@@ -18,15 +18,12 @@
 
 %define skip_python2 1
 Name:           python-google-api-python-client
-Version:        2.70.0
+Version:        2.80.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE opensuse-remove-oauth2client-tests.patch -- upstream wants to support and test deprecated oauth2client indefinitely, but
-# the distro has to remove it at some point
-Patch0:         opensuse-remove-oauth2client-tests.patch
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module google-auth >= 1.19.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}

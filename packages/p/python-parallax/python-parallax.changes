@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 07:13:28 UTC 2023 - XinLiang <XLiang@suse.com>
+
+- Fix: manager: writer thread can only be started once (bsc#1208817)
+  Add patch 0001-Fix-manager-writer-thread-can-only-be-started-once-b.patch 
+
+-------------------------------------------------------------------
 Mon Nov  7 02:18:35 UTC 2022 - XinLiang <XLiang@suse.com>
 
 - Fix: manager: file descriptor leakage

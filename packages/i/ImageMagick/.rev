@@ -3550,4 +3550,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - add %bcond_without djvulibre</comment>
     <requestid>1067586</requestid>
   </revision>
+  <revision rev="268" vrev="2">
+    <srcmd5>63379914a11ef19b55b6f86043d9a19d</srcmd5>
+    <version>7.1.0.62</version>
+    <time>1677878669</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup old conditional, really build without djvulibre if requested
+  (now %bcond_without djvu)</comment>
+    <requestid>1068700</requestid>
+  </revision>
 </revisionlist>

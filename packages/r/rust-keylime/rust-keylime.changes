@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 02 15:12:27 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1677691779.f7edd9a:
+  * Disable e2e on Rawhide due to RHBZ#2171376
+  * Change number of required uploaded files
+  * Coverage for rust agent as github action.
+  * config: Skip validation of keylime_dir during tests
+
+-------------------------------------------------------------------
+Thu Mar  2 15:11:47 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Create the certificiate directory
+
+-------------------------------------------------------------------
 Wed Feb 22 09:07:12 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.0+git.1677002906.cf6c4f0:

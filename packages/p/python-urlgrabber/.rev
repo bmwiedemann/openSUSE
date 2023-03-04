@@ -260,4 +260,16 @@
     <comment></comment>
     <requestid>992606</requestid>
   </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>affd9ad1b877ae2abc1991587a313e69</srcmd5>
+    <version>4.1.0</version>
+    <time>1677878906</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+- Raise proper exception from urlgrab() when local file is not found (bsc#1208288)
+- Added:
+  * fix-urlgrab-file-schema-comparison.patch
+</comment>
+    <requestid>1069119</requestid>
+  </revision>
 </revisionlist>

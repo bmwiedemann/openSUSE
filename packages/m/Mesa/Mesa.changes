@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  1 21:55:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_glx-fix-indirect-initialization-crash.patch 
+  * Fixes: b090246a ("glx: Only compute client GL extensions for
+    indirect contexts")
+  * Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8393
+- supersedes n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:49:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix GLX with indirect rendering:

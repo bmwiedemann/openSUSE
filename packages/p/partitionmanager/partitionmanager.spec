@@ -1,7 +1,7 @@
 #
 # spec file for package partitionmanager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           partitionmanager
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-or-later

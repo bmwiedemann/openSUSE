@@ -1,7 +1,7 @@
 #
 # spec file for package libkgapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkgapi
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -158,22 +158,14 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --with-qt --all-name
 
-%post -n libKPimGAPIBlogger5 -p /sbin/ldconfig
-%postun -n libKPimGAPIBlogger5 -p /sbin/ldconfig
-%post -n libKPimGAPICalendar5 -p /sbin/ldconfig
-%postun -n libKPimGAPICalendar5 -p /sbin/ldconfig
-%post -n libKPimGAPIContacts5 -p /sbin/ldconfig
-%postun -n libKPimGAPIContacts5 -p /sbin/ldconfig
-%post -n libKPimGAPICore5 -p /sbin/ldconfig
-%postun -n libKPimGAPICore5 -p /sbin/ldconfig
-%post -n libKPimGAPIDrive5 -p /sbin/ldconfig
-%postun -n libKPimGAPIDrive5 -p /sbin/ldconfig
-%post -n libKPimGAPILatitude5 -p /sbin/ldconfig
-%postun -n libKPimGAPILatitude5 -p /sbin/ldconfig
-%post -n libKPimGAPIMaps5 -p /sbin/ldconfig
-%postun -n libKPimGAPIMaps5 -p /sbin/ldconfig
-%post -n libKPimGAPITasks5 -p /sbin/ldconfig
-%postun -n libKPimGAPITasks5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPimGAPIBlogger5
+%ldconfig_scriptlets -n libKPimGAPICalendar5
+%ldconfig_scriptlets -n libKPimGAPIContacts5
+%ldconfig_scriptlets -n libKPimGAPICore5
+%ldconfig_scriptlets -n libKPimGAPIDrive5
+%ldconfig_scriptlets -n libKPimGAPILatitude5
+%ldconfig_scriptlets -n libKPimGAPIMaps5
+%ldconfig_scriptlets -n libKPimGAPITasks5
 
 %files -n libKPimGAPIBlogger5
 %{_kf5_libdir}/libKPimGAPIBlogger.so.*

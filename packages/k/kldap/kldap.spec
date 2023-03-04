@@ -1,7 +1,7 @@
 #
 # spec file for package kldap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kldap
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE PIM Libraries
 License:        LGPL-2.1-or-later
@@ -81,8 +81,7 @@ to develop KDE PIM applications.
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 
-%post -n libKF5Ldap5 -p /sbin/ldconfig
-%postun -n libKF5Ldap5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5Ldap5
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/

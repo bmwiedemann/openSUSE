@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
-%global skip_python36 1
-%global skip_python37 1
 %bcond_without tests
 Name:           python-pygraphviz
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
@@ -31,18 +28,20 @@ URL:            https://pygraphviz.github.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-%{version}.zip
 # PATCH-FIX-UPSTREAM docdir.patch
 Patch0:         docdir.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 # Needed even without tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  graphviz-devel >= 2.42
 BuildRequires:  libpng-devel
-BuildRequires:  pkgconf-pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  unzip
 Requires:       graphviz >= 2.42
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconf-pkg-config
+%endif
 %python_subpackages
 
 %description
@@ -74,7 +73,8 @@ export CFLAGS="%{optflags}"
 # export PYTEST_ADDOPTS="--doctest-modules --durations=10 --import-mode=importlib"
 export PYTEST_ADDOPTS="--import-mode=importlib"
 # skip tests because of gh#pygraphviz/pygraphviz#366
-%pytest_arch -k 'not (test_drawing_makes_file or test_drawing_makes_file1 or test_drawing_makes_file)'
+donttest="test_drawing_makes_file or test_drawing_makes_file1 or test_drawing_makes_file or test_drawing_png_output_with_NULL_smoketest"
+%pytest_arch -k "not ($donttest)"
 %endif
 
 %files %{python_files}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 24 11:03:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.22.2
+ * Add support for Python 3.11 (#329) (5cff3a0)
+ * Fix typo in index.rst (#342) (a66a378)
+
+-------------------------------------------------------------------
 Fri Sep  9 12:39:29 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.22.1

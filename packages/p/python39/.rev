@@ -827,4 +827,15 @@
 </comment>
     <requestid>1067030</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>ab258e7a40023620dfc6e0432b68b1d4</srcmd5>
+    <version>3.9.16</version>
+    <time>1677878651</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters
+</comment>
+    <requestid>1068564</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  1 12:41:16 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- require_cxx17.patch: qpdf dependency is using std::string_view
+  which is a c++17 feature... so we can't use c++11... Maybe it
+  made sense to force c++11 at some point when it was not default,
+  but with new compilers, we are actually downgrading features sets.
+- removed spec configure references to filter (ijs, opvp)
+  that were removed in version 1.25
+
+-------------------------------------------------------------------
 Fri Jun 24 14:06:36 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Spec file: Removed URL from source line 

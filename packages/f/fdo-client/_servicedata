@@ -9,6 +9,8 @@
  </service> 
   <service name="tar_scm">
     <param name="url">git@github.com:secure-device-onboard/client-sdk-fidoiot.git</param>
-    <param name="changesrevision">baa09b537ddbb4ce9fdf289ad55e885526d045ec</param>
+    <param name="changesrevision">c8ef7576afa1b250ff9460b519238f32711ef175</param>
  </service> 
-</servicedata>
+<service name="tar_scm">
+                <param name="url">git@github.com:intel/safestringlib.git</param>
+              <param name="changesrevision">5da1badd337e68c1334fb232c778166f46f6d9f9</param></service></servicedata>

@@ -77,6 +77,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module deepdiff >= 5.0}
 BuildRequires:  %{python_module flatdict >= 4.0.1}
 BuildRequires:  %{python_module httpretty >= 1.0}
+# Required because deepdiff > 6.2.3
+BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module poetry = %{version}}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 7.1}

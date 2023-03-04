@@ -1,7 +1,7 @@
 #
 # spec file for package python-parallax
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
+Patch1:         0001-Fix-manager-writer-thread-can-only-be-started-once-b.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,6 +50,7 @@ multiple nodes using SCP.
 
 %prep
 %setup -q -n parallax-%{version}
+%patch1 -p1
 
 %build
 %python_build

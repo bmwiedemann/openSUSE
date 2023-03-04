@@ -503,4 +503,12 @@
     <comment>KDE Release Gear 22.12.2 (forwarded request 1062341 from krop)</comment>
     <requestid>1062773</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c6ca726dd5e1ecea51131b8d34722795</srcmd5>
+    <version>22.12.3</version>
+    <time>1677878803</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
+    <requestid>1068800</requestid>
+  </revision>
 </revisionlist>

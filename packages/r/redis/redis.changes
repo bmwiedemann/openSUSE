@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 16:29:28 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix CVE-2022-36021 (bsc#1208790 CVE-2022-36021)
+  * String-pattern-matching-had-exponential-time-complex.patch
+- Fix CVE-2023-25155 (bsc#1208793 CVE-2023-25155)
+  * Integer-Overflow-in-RAND-commands-can-lead-to-assert.patch
+
+-------------------------------------------------------------------
 Mon Jan 16 21:00:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 7.0.8

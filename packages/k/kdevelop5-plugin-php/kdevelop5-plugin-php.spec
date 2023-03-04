@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-plugin-php
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define rname   kdev-php
 %bcond_without released
 Name:           kdevelop5-plugin-php
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
@@ -96,8 +96,7 @@ Provides translations to the package %{name}
 
 %find_lang kdevphp %{name}.lang
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSES/*

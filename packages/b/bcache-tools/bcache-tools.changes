@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  2 07:58:54 UTC 2023 - Coly Li <colyli@suse.com>
+
+- bcache-tools: improve is_zoned_device() (bsc#1208425)
+  0029-bcache-tools-improve-is_zoned_device.patch
+
+-------------------------------------------------------------------
 Wed Feb 24 14:00:08 UTC 2021 - Coly Li <colyli@suse.com>
 
 - bcache-tools: Update super block version in bch_set_feature_*

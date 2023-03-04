@@ -5218,4 +5218,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1068141</requestid>
   </revision>
+  <revision rev="473" vrev="345">
+    <srcmd5>3120b12ab8aac6cb6b1d095b4dc20ae0</srcmd5>
+    <version>unknown</version>
+    <time>1677878648</time>
+    <user>dimstar_suse</user>
+    <comment>- U_glx-fix-indirect-initialization-crash.patch 
+  * Fixes: b090246a (&quot;glx: Only compute client GL extensions for
+    indirect contexts&quot;)
+  * Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8393
+- supersedes n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch</comment>
+    <requestid>1068561</requestid>
+  </revision>
 </revisionlist>

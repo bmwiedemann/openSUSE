@@ -526,4 +526,31 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Comment and tidy the new extras_require.json handling.</comment>
     <requestid>1060127</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>acea7917845bdadabb60ac9ed0120637</srcmd5>
+    <version>238</version>
+    <time>1677878904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 238:
+  * autopkgtest: fix tool name in the skippable list.
+  * autopkgtest: only install aapt and dexdump on architectures
+    where they are available.
+  * Drop backward compatibility assignment.
+  * Fix flake warnings, potentially reinstating PyPDF 1.x
+    support (untested).
+  * Update code to match latest version of Black.
+  * Require at least Black version 23.1.0 to run the internal
+    Black tests.
+  * Update copyright years.
+  * Fix compatibility with PyPDF2.
+  * Fix compatibility with ImageMagick 7.1.
+  * Update from PyPDF2 to pypdf.
+  * Add support for Android resources.arsc files.
+  * Add support for dexdump.
+  * Improve DexFile's FILE_TYPE_RE and add
+    FILE_TYPE_HEADER_PREFIX, and remove
+    &quot;Dalvik dex file&quot; from ApkFile's FILE_TYPE_RE as well.
+  * Update external tool for isoinfo on guix.</comment>
+    <requestid>1069107</requestid>
+  </revision>
 </revisionlist>

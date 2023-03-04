@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 08:55:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 64c6f733a44bac5b7f08445a686c000681f93f5f.patch and
+  9db32c3508a8c5d357a053d5f8278c34b4df18f3.patch: build: accept
+  both babl and babl-0.1, and following this, add boolean
+  pkgconfig(babl-0.1) BuildRequires.
+
+-------------------------------------------------------------------
 Tue Sep 20 17:38:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

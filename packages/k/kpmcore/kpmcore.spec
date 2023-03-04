@@ -1,7 +1,7 @@
 #
 # spec file for package kpmcore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without released
 %global sover 12
 Name:           kpmcore
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-only
@@ -91,8 +91,7 @@ Main kpmcore library.
 
 %find_lang kpmcore --all-name
 
-%post -n libkpmcore%{sover} -p /sbin/ldconfig
-%postun -n libkpmcore%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libkpmcore%{sover}
 
 %files
 %{_kf5_dbuspolicydir}/org.kde.kpmcore.*.conf

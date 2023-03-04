@@ -1,7 +1,7 @@
 #
 # spec file for package libkdepim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkdepim
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -85,10 +85,8 @@ Requires:       %{name} >= %{version}
 %description -n libKF5LibkdepimAkonadi5
 The libkdepim library for Akonadi related functions
 
-%post -n libKF5Libkdepim5  -p /sbin/ldconfig
-%postun -n libKF5Libkdepim5 -p /sbin/ldconfig
-%post -n libKF5LibkdepimAkonadi5  -p /sbin/ldconfig
-%postun -n libKF5LibkdepimAkonadi5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5Libkdepim5
+%ldconfig_scriptlets -n libKF5LibkdepimAkonadi5
 
 %package devel
 Summary:        Development package for libkdepim

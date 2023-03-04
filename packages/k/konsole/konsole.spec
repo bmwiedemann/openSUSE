@@ -1,7 +1,7 @@
 #
 # spec file for package konsole
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konsole
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -129,10 +129,8 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf5_iconsdir}/hicolor/128x128/apps
 %suse_update_desktop_file org.kde.konsole TerminalEmulator
 %fdupes -s %{buildroot}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%post part -p /sbin/ldconfig
-%postun part -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets part
 
 %files
 %license COPYING

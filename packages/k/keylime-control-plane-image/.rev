@@ -7,4 +7,12 @@
     <comment>Keylime control plane container, based on openSUSE Factory image.</comment>
     <requestid>1030209</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe35fc3e11fe62795849ec17f069249d</srcmd5>
+    <version>unknown</version>
+    <time>1677878929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069191</requestid>
+  </revision>
 </revisionlist>

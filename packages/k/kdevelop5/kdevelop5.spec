@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libkdev_major 510
 %bcond_without released
 Name:           kdevelop5
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -195,12 +195,9 @@ done
 %find_lang kdevplatform kdevplatform.lang
 %{kf5_find_htmldocs}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%post -n kdevplatform -p /sbin/ldconfig
-%postun -n kdevplatform -p /sbin/ldconfig
-%post -n libkdevplatform%{libkdev_major} -p /sbin/ldconfig
-%postun -n libkdevplatform%{libkdev_major} -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets -n kdevplatform
+%ldconfig_scriptlets -n libkdevplatform%{libkdev_major}
 
 %files -n libkdevplatform%{libkdev_major}
 %license LICENSES/*

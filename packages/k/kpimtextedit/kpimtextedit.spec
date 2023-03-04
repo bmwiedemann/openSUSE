@@ -1,7 +1,7 @@
 #
 # spec file for package kpimtextedit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpimtextedit
-Version:        22.12.2
+Version:        22.12.3
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -86,8 +86,7 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --all-name
 
-%post -n libKF5PimTextEdit5 -p /sbin/ldconfig
-%postun -n libKF5PimTextEdit5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKF5PimTextEdit5
 
 %files
 %{_kf5_debugdir}/kpimtextedit.categories

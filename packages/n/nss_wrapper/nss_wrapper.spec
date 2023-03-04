@@ -64,7 +64,7 @@ This package does not have a devel package, because this project is for
 development/testing.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

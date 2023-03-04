@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:14:03 UTC 2023 - pgajdos@suse.com
+
+- cleanup old conditional, really build without djvulibre if requested
+  (now %bcond_without djvu)
+
+-------------------------------------------------------------------
 Fri Feb 24 11:37:01 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.0.62
