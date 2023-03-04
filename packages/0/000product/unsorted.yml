@@ -8821,7 +8821,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -10412,7 +10411,6 @@ unsorted:
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream2: [x86_64] 
-  - libblack_hole_solver1 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -10995,7 +10993,7 @@ unsorted:
   - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
-  - libdatovka2 
+  - libdatovka4 
   - libdatrie-devel 
   - libdav1d6-32bit: [x86_64] 
   - libdavix0 
@@ -18985,14 +18983,11 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -25976,6 +25971,7 @@ unsorted:
   - python311-Flask-RESTful 
   - python311-Flask-RSTPages 
   - python311-Flask-SQLAlchemy 
+  - python311-Flask-Security-Too 
   - python311-Flask-SocketIO 
   - python311-Flask-Testing 
   - python311-Flask-WTF 
@@ -26658,6 +26654,7 @@ unsorted:
   - python311-bobo 
   - python311-bobodoctestumentation 
   - python311-bokcolmaps 
+  - python311-bokeh: [x86_64] 
   - python311-bokeh2 
   - python311-boltons 
   - python311-boolean.py 
@@ -27080,6 +27077,7 @@ unsorted:
   - python311-entrypoints 
   - python311-environ-config 
   - python311-environmental-override 
+  - python311-envisage 
   - python311-enzyme 
   - python311-ephem 
   - python311-ephemeral-port-reserve 
@@ -27321,6 +27319,7 @@ unsorted:
   - python311-hiredis 
   - python311-hkdf 
   - python311-hl7apy 
+  - python311-holidays 
   - python311-hotdoc 
   - python311-hpack 
   - python311-hstspreload 
@@ -27889,6 +27888,7 @@ unsorted:
   - python311-pathable 
   - python311-pathspec 
   - python311-pathtools 
+  - python311-pathvalidate 
   - python311-patiencediff 
   - python311-patsy 
   - python311-pbkdf2 
@@ -27936,6 +27936,7 @@ unsorted:
   - python311-pip-licenses 
   - python311-pip-run 
   - python311-pip-shims 
+  - python311-pip-tools 
   - python311-pipdeptree 
   - python311-pipreqs 
   - python311-pipx 
@@ -27975,6 +27976,7 @@ unsorted:
   - python311-portpicker 
   - python311-power 
   - python311-poyo 
+  - python311-pprintpp 
   - python311-pproxy 
   - python311-praatio 
   - python311-pre-commit 
@@ -28638,6 +28640,7 @@ unsorted:
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
   - python311-setuptools-git 
+  - python311-setuptools-git-versioning: [x86_64] 
   - python311-setuptools-rust 
   - python311-setuptools-version-command 
   - python311-setuptools_scm 
