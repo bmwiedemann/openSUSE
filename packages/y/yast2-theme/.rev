@@ -1342,4 +1342,12 @@ Version:	3.1.0</comment>
     <comment>submit new version 4.5.0</comment>
     <requestid>969438</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>bba6df1680225ca3677c7b1ab195d3ef</srcmd5>
+    <version>4.6.0</version>
+    <time>1677966197</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.6.0</comment>
+    <requestid>1069285</requestid>
+  </revision>
 </revisionlist>

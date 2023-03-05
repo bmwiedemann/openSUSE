@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 11:19:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 13 (boo#1207470):
+  * 0001-Add-some-missing-cstdint-inclusions-872.patch
+
+-------------------------------------------------------------------
 Mon Jan  9 09:21:29 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde3, rebased upstream:

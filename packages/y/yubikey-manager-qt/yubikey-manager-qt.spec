@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager-qt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubikey-manager-qt/Releases
 Source0:        https://developers.yubico.com/yubikey-manager-qt/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubikey-manager-qt/Releases/%{name}-%{version}.tar.gz.sig
+Source2:        yubikey-manager-qt.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Network)

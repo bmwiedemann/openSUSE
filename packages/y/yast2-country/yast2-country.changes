@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Wed Jan 11 12:13:52 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Always read local timezone database (bsc#1207000).

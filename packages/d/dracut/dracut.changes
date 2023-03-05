@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 03 13:24:28 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.366.gf45bc67a:
+  * fix(fips): add libkcapi fipscheck also with the libexec location (bsc#1207892)
+  * feat(lvm): always include all drivers that LVM can use (bsc#1206195)
+  * chore(suse): update url in spec
+
+-------------------------------------------------------------------
 Wed Jan 25 15:58:58 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.360.g2e0ed5f7:

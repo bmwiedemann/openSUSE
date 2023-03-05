@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-# Optionally build with llvm-clang instead of gcc
-# because we are interested in the warnings it gives.
 %bcond_with clang
 
 # Optionally treat C/C++ warnings as errors.
@@ -27,7 +25,7 @@
 %bcond_with werror
 
 Name:           yast2-core
-Version:        4.5.4
+Version:        4.6.0
 Release:        0
 URL:            https://github.com/yast/yast-core
 
@@ -50,8 +48,8 @@ BuildRequires:  automake >= 1.12
 # needed for all yast packages
 BuildRequires:  yast2-devtools >= 3.1.10
 # testsuite
-BuildRequires:  dejagnu
 BuildRequires:  glibc-locale
+BuildRequires:  dejagnu
 
 Summary:        YaST2 - Core Libraries
 License:        GPL-2.0-or-later

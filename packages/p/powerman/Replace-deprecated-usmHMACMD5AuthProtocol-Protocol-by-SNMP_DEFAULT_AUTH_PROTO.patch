@@ -1,0 +1,28 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Mar 4 07:59:09 2023 +0100
+Subject: Replace deprecated usmHMACMD5AuthProtocol Protocol by SNMP_DEFAULT_AUTH_PROTO
+Patch-mainline: Not yet
+Git-commit: 01428c387fc149489536ba9a9ea17095f5a20bc5
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ snmppower/snmppower.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/snmppower/snmppower.c b/snmppower/snmppower.c
+index 652b806..eb30dc4 100644
+--- a/snmppower/snmppower.c
++++ b/snmppower/snmppower.c
+@@ -207,9 +207,9 @@ start_v3 (char **av, char *hostname, struct snmp_session **ssp)
+     session.securityNameLen = strlen (av[1]);
+ 
+     session.securityLevel = SNMP_SEC_LEVEL_AUTHNOPRIV;
+-    session.securityAuthProto = usmHMACMD5AuthProtocol;
++    session.securityAuthProto = SNMP_DEFAULT_AUTH_PROTO;
+     session.securityAuthProtoLen =
+-                              sizeof (usmHMACMD5AuthProtocol) / sizeof (oid);
++                              sizeof (SNMP_DEFAULT_AUTH_PROTO) / sizeof (oid);
+     session.securityAuthKeyLen = USM_AUTH_KU_LEN;
+ 
+     if (generate_Ku (session.securityAuthProto,

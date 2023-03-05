@@ -1,0 +1,46 @@
+From 52ce02f7e38ed00f9e42fe4f272787652540c863 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 12 Oct 2022 16:50:16 +0200
+Subject: [PATCH 08/11] [gdb/testsuite] Fix
+ gdb.base/infoline-reloc-main-from-zero.exp with recent ld
+
+On openSUSE Tumbleweed (with ld 2.39) and test-case
+gdb.base/infoline-reloc-main-from-zero.exp, I get:
+...
+gdb compile failed, ld: warning: infoline-reloc-main-from-zero has a LOAD \
+  segment with RWX permissions
+UNTESTED: gdb.base/infoline-reloc-main-from-zero.exp: \
+  infoline-reloc-main-from-zero.exp
+...
+
+Fix this by compiling with -Wl,--no-warn-rwx-segments.
+
+Tested on x86_64-linux.
+---
+ .../gdb.base/infoline-reloc-main-from-zero.exp         | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/infoline-reloc-main-from-zero.exp b/gdb/testsuite/gdb.base/infoline-reloc-main-from-zero.exp
+index ef5fe8c24bc..a29668c9712 100644
+--- a/gdb/testsuite/gdb.base/infoline-reloc-main-from-zero.exp
++++ b/gdb/testsuite/gdb.base/infoline-reloc-main-from-zero.exp
+@@ -29,7 +29,15 @@ if [get_compiler_info] {
+ 
+ # Build executable with stripped startup code and text section starting at zero
+ 
+-set opts {debug "additional_flags=-nostdlib -emain -Wl,-Ttext=0x00 -Wl,-N"}
++set opts {}
++lappend opts debug
++lappend opts "additional_flags=-nostdlib -emain -Wl,-Ttext=0x00 -Wl,-N"
++
++set ld_flags additional_flags=-Wl,--no-warn-rwx-segments
++if { [gdb_can_simple_compile ld-flags {int main () { return 0; }} executable \
++	  $ld_flags] } {
++    lappend opts $ld_flags
++}
+ 
+ if {[build_executable $testfile.exp $testfile $srcfile $opts] == -1} {
+     untested "failed to compile"
+-- 
+2.35.3
+

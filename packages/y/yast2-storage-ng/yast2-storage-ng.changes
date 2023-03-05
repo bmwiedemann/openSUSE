@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
+Thu Mar  2 10:13:14 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Fix comparing ProposalSettings in tests, avoid using Marshal
+  (bsc#1208259)
+- 4.5.17
+
+-------------------------------------------------------------------
 Tue Jan 17 14:32:36 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Extended regexp to identify Dell BOSS storage devices (bsc#1200975)

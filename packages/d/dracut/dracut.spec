@@ -25,12 +25,12 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.360.g2e0ed5f7
+Version:        059+suse.366.gf45bc67a
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
-URL:            https://dracut.wiki.kernel.org/
+URL:            https://github.com/dracutdevs/dracut/wiki
 Source0:        dracut-%{version}.tar.xz
 Source1:        dracut-rpmlintrc
 Source2:        README.susemaint

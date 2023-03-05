@@ -451,4 +451,12 @@
   * Translation Updates (forwarded request 1066326 from manfred-h)</comment>
     <requestid>1066848</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>353262477265744a48f7e9c1d5d2f14f</srcmd5>
+    <version>0.8.2</version>
+    <time>1677966224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069391</requestid>
+  </revision>
 </revisionlist>

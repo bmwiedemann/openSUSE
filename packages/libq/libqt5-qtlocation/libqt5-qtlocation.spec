@@ -34,6 +34,8 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://invent.kde.org/qt/qt/qtlocation-mapboxgl/-/merge_requests/1
+Patch1:         0001-Add-some-missing-cstdint-inclusions-872.patch
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}

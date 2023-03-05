@@ -16,6 +16,7 @@
 #
 
 
+# Adjust baselibs.conf if this changes
 %define major 2
 %define libname lib%{name}-%{major}
 Name:           blosc2
@@ -25,13 +26,14 @@ Summary:        A fast, compressed, persistent binary data store library for C
 License:        MIT AND BSD-3-Clause AND BSD-2-Clause
 URL:            https://www.blosc.org/c-blosc2/c-blosc2.html
 Source:         https://github.com/Blosc/c-blosc2/archive/refs/tags/v%{version}.tar.gz#/c-blosc2-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
-ExclusiveArch:  x86_64 %{ix86} aarch64
+%{?suse_build_hwcaps_libs}
 
 %description
 Blosc is a high performance compressor optimized for binary data
@@ -72,7 +74,9 @@ for %{libname}.
 
 %build
 %cmake \
+%ifnarch x86_64_v3
   -DDEACTIVATE_AVX2:BOOL=ON \
+%endif
   -DPREFER_EXTERNAL_ZLIB:BOOL=ON \
   -DPREFER_EXTERNAL_ZSTD:BOOL=ON \
   -DPREFER_EXTERNAL_LZ4:BOOL=ON \

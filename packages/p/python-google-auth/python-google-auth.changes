@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  2 11:21:16 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.16.1
+  * Add support for python 3.11 (#1212)
+  * Remove 3PI config url validation (#1220)
+  * Update the docs generator interpreter to unblock documentation build (#1218)
+- from version 2.16.0
+  * AwsCredentials should not call metadata server if security creds and region
+    are retrievable through the environment variables (#1195)
+  * Wrap all python built-in exceptions into library excpetions (#1191)
+  * Allow get_project_id to take a request (#1203)
+  * Make OAUTH2.0 client resistant to string type 'expires_in' responses from
+    non-compliant services (#1208)
+- Drop obsolete patches
+  * ga_python-executable-name.patch
+- Refresh patches for new version
+  * no-python3.patch
+
+-------------------------------------------------------------------
 Wed Feb 22 20:00:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add no-python3.patch replacing call of the

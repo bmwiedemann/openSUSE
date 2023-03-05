@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 04 02:09:59 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1677862140.c495768:
+  * Make --skip-deps and --skip-chained-deps work as described in the docs
+
+-------------------------------------------------------------------
 Wed Mar 01 18:09:59 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1677511074.f74fdc6:

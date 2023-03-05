@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-journal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           yast2-journal
-Version:        4.5.3
+Version:        4.6.0
 Release:        0
+Group:          System/YaST
+License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://github.com/yast/yast-journal
 Summary:        YaST2 - Reading of systemd journal
-License:        GPL-2.0-only OR GPL-3.0-only
-Group:          System/YaST
 
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
 # Yast::Builtins::strftime
+BuildRequires:  yast2-ruby-bindings >= 3.1.38
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-ruby-bindings >= 3.1.38
 #for install task
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # for tests

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-rdp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           yast2-rdp
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
-Summary:        Setup Remote Desktop Protocol service for remote administration
 License:        GPL-2.0-only
 Group:          System/YaST
+Summary:        Setup Remote Desktop Protocol service for remote administration
 URL:            https://github.com/yast/yast-rdp
 
 Source0:        %{name}-%{version}.tar.bz2
 
 # SuSEFirewall2 replaced by firewalld (fate#323460)
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 4.0.39
+BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 # for install task
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)

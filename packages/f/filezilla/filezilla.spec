@@ -16,8 +16,10 @@
 #
 
 
+%define libversion 3.63.2
+
 Name:           filezilla
-Version:        3.63.2
+Version:        3.63.2.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -164,8 +166,8 @@ autoreconf -fi
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_libdir}/libfzclient-commonui-private-%{version}.so
-%{_libdir}/libfzclient-private-%{version}.so
+%{_libdir}/libfzclient-commonui-private-%{libversion}.so
+%{_libdir}/libfzclient-private-%{libversion}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
 %{_mandir}/man1/fzputtygen.1%{?ext_man}
 %{_mandir}/man1/fzsftp.1%{?ext_man}

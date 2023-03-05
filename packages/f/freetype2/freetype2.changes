@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  2 19:28:12 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add devel requires to devel-32bit for brotli and bzip2 (indirect
+  for Wine)
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be

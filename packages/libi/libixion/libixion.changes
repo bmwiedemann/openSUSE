@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  2 10:52:36 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use -fexcess-precision=fast as GCC 13 changes the default
+for C++ compiler and without the change some tests fail on i586.
+
+-------------------------------------------------------------------
 Fri Mar  4 13:07:03 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build on SLE-12-SP5

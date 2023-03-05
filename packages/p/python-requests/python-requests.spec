@@ -33,9 +33,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
-# PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
+# PATCH-FIX-UPSTREAM: Allow charset normalizer >=2 and <4, and don't strict require httpbin===1.0.0
 Patch0:         requests-no-hardcoded-version.patch
-# PATCH-FIX-UPSTREAN: Allow charset normalizer >=2 and <4
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -91,8 +90,7 @@ Features of Requests:
    + URL + HTTP Auth Registry.
 
 %prep
-%setup -q -n requests-%{version}
-%autopatch -p1
+%autosetup -p1 -n requests-%{version}
 
 # drop shebang from certs.py
 sed -i '1s/^#!.*$//' requests/certs.py

@@ -23,7 +23,7 @@
 %global modprobe_d_files 50-rpi3.conf
 
 Name:           raspberrypi-firmware
-Version:        2023.01.18
+Version:        2023.02.22
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware

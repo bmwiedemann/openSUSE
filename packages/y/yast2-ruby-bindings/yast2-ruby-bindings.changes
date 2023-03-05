@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Mon Oct 24 12:51:30 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added "log.group" method for grouping the log messages

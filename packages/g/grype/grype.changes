@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 04 08:34:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.59.0:
+  * Grype Release Pipeline Update (#1147)
+  * Add the total types of vulnerabilities in Grype output (#946)
+  * chore(deps): bump gorm.io/gorm from 1.23.5 to 1.23.10 (#1157)
+  * chore: bump quality gate labels and syft version (#1156)
+
+-------------------------------------------------------------------
 Fri Mar 03 05:41:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.58.0:

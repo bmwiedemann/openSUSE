@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri May 06 16:54:21 UTC 2022 - lduncan@suse.com
 
-- Update to version v2.1.75:
+- Update to version v2.1.75: (bsc#1206720)
   * version 2.1.75
   * rtslib: fix missing ':' after else statement
   * dbroot: let the user change the dbroot directory freely.
@@ -18,7 +18,7 @@ Fri May 06 16:54:21 UTC 2022 - lduncan@suse.com
 Sun Jan 30 17:07:00 UTC 2022 - Mykola Golub <mgolub@suse.com>
 
 - Update parameters description in rbd-support.patch
-- Add rbd-support-disable_emulate_legacy_capacity.patch
+- Add rbd-support-disable_emulate_legacy_capacity.patch (bsc#1199090)
 
 -------------------------------------------------------------------
 Thu Sep 30 19:14:14 UTC 2021 - Stefan Schubert <schubi@suse.de>

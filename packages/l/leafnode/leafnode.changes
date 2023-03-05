@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 04 12:29:52 UTC 2023 - mcepl@suse.com
+
+- Update to version 2.0.0+git.1677927696.44d2783:
+  * configure.ac: add PCRE to LIBS not LDCONFIG
+  * Make C++17 compatible.
+  * Add a comment about rnews.
+  * Plug memory leak.
+  * Update NEWS and ChangeLog.
+  * store: cope with folded headers.
+  * Bump copyright.
+  * split_serverarg(): initialize char *s[3].
+  * log_fclose: fix use-after-free warning
+  * ugid.h: fix Linux features.h compiler warning
+  * configure.ac: update and bump version
+  * newsq: Plug memory leaks.
+
+-------------------------------------------------------------------
 Tue May 17 07:50:01 UTC 2022 - mcepl@suse.com
 
 - Update to version 2.0.0+git.1625851959.1275fbe:

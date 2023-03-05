@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-theme
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 
 Source0:        %{name}-%{version}.tar.bz2
@@ -39,8 +39,8 @@ Requires:       hicolor-icon-theme
 
 %if 0%{?is_opensuse}
 # bsc#1105792: firstboot wizard missing branding
-Requires:       google-poppins-fonts
 Requires:       yast2-qt-branding
+Requires:       google-poppins-fonts
 %else
 # on SLE the qt branding files are included in yast2-them so they
 # conflict with the separate package that exists on openSUSE
@@ -67,12 +67,12 @@ Obsoletes:      yast2-theme-openSUSE-Crystal < %{version}
 
 BuildArch:      noarch
 Summary:        YaST2 - Theme
-License:        GPL-2.0-only AND GPL-3.0-only AND CC-BY-SA-4.0
-Group:          System/YaST
 
 # icons/**/pattern-deepin.svg is GPL-3.0,
 # pattern-budgie.svg is licensed under CC-BY-SA-4.0
 # the rest is GPL-2.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-only AND GPL-3.0-only
+Group:          System/YaST
 URL:            http://github.com/yast/yast-theme
 
 %description

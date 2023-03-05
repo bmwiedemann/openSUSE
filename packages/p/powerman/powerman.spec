@@ -1,7 +1,7 @@
 #
 # spec file for package powerman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Source0:        https://github.com/chaos/%{name}/releases/download/%{version}/%{
 Patch1:         service-dynamic-user-autofiles.patch
 Patch2:         service-dynamic-user-configure.patch
 Patch3:         harden_powerman.service.patch
+Patch4:         Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -84,6 +85,7 @@ Header files, pkg-config file and man pages for developing applications using Po
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure \

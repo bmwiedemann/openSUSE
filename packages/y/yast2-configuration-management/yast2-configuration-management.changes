@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Tue Jan 24 12:43:58 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - Relax a unit test to work both with Ruby 3.1 and 3.2 (bsc#1207239)

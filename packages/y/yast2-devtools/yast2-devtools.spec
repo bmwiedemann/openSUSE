@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-devtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-devtools
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
@@ -42,7 +42,6 @@ Scripts and templates for developing YaST2 modules and components.
 %package -n yast2-buildtools
 Summary:        Minimal set of tools needed to build yast module
 # we install our .pc under $prefix/share
-Group:          System/YaST
 Requires:       autoconf
 Requires:       automake
 Requires:       gettext-tools

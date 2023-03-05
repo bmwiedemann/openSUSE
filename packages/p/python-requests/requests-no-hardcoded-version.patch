@@ -1,7 +1,22 @@
-diff -ur requests-2.28.1.orig/setup.py requests-2.28.1/setup.py
---- requests-2.28.1.orig/setup.py	2022-06-29 17:09:45.000000000 +0200
-+++ requests-2.28.1/setup.py	2022-06-29 21:15:48.428104387 +0200
-@@ -65,7 +65,7 @@
+---
+ requirements-dev.txt |    2 +-
+ setup.py             |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -1,7 +1,7 @@
+ -e .[socks]
+ pytest>=2.8.0,<=6.2.5
+ pytest-cov
+-pytest-httpbin==1.0.0
++pytest-httpbin>=1.0.0
+ pytest-mock==2.0.0
+ httpbin==0.7.0
+ trustme
+--- a/setup.py
++++ b/setup.py
+@@ -65,7 +65,7 @@ requires = [
      "certifi>=2017.4.17",
  ]
  test_requirements = [

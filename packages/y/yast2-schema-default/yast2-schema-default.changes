@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Tue Feb  7 14:11:39 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - drop yast2-dhcp-server and yast2-http-server schema from TW as

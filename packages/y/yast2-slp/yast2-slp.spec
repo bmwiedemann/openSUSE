@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-slp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           yast2-slp
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
+Group:          System/YaST
+License:        GPL-2.0-or-later
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -40,8 +42,6 @@ Requires:       yast2
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Summary:        YaST2 - SLP Agent and Library
-License:        GPL-2.0-or-later
-Group:          System/YaST
 URL:            https://github.com/yast/yast-slp
 
 %description

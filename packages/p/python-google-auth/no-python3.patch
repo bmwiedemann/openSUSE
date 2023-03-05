@@ -1,10 +1,7 @@
----
- tests/test__cloud_sdk.py |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
---- a/tests/test__cloud_sdk.py
-+++ b/tests/test__cloud_sdk.py
-@@ -16,6 +16,7 @@ import io
+diff -Nru google-auth-2.16.1.orig/tests/test__cloud_sdk.py google-auth-2.16.1/tests/test__cloud_sdk.py
+--- google-auth-2.16.1.orig/tests/test__cloud_sdk.py	2023-03-02 12:24:06.384913745 +0100
++++ google-auth-2.16.1/tests/test__cloud_sdk.py	2023-03-02 12:24:46.165672899 +0100
+@@ -16,6 +16,7 @@
  import json
  import os
  import subprocess
@@ -12,11 +9,11 @@
  
  from unittest import mock
  import pytest  # type: ignore
-@@ -73,7 +74,7 @@ def test_get_project_id_call_error(check
+@@ -73,7 +74,7 @@
  
  def test__run_subprocess_ignore_stderr():
      command = [
--        "python3",
+-        "python",
 +        sys.executable,
          "-c",
          "from __future__ import print_function;"

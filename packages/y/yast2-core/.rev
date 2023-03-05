@@ -1405,4 +1405,12 @@
     <comment>submit new version 4.5.4</comment>
     <requestid>1001890</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>a86a11d66a1003a1fad6cb1b4af89f15</srcmd5>
+    <version>4.6.0</version>
+    <time>1677966161</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.6.0</comment>
+    <requestid>1069208</requestid>
+  </revision>
 </revisionlist>

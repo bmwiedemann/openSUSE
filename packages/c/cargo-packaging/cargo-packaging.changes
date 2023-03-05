@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  3 00:48:59 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+- Add supporting sources for cargo metadata extraction
+* cargo-packaging-1.2.0+0.tar.xz
+* cargo_config
+* vendor.tar.xz
+
+-------------------------------------------------------------------
 Sat Feb 18 02:02:31 UTC 2023 - william.brown@suse.com
 
 - Update to version 1.2.0+0:

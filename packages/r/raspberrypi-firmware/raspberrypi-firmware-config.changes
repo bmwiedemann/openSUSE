@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  3 12:02:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 489d3e2d0 (2023-02-22):
+  * firmware: video_decode: Convert the active lines, not the padded buffer
+  * firmware: il isp: Correct histogram masks for updated group
+    2 regions
+
+-------------------------------------------------------------------
 Thu Jan 19 13:42:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2578acb89 (2023-01-18):

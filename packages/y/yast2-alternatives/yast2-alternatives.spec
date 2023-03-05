@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-alternatives
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-alternatives
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Manage Update-alternatives switching
 License:        GPL-2.0-only

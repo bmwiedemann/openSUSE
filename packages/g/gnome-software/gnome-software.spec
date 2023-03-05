@@ -19,7 +19,7 @@
 %define gs_plugin_api 19
 
 Name:           gnome-software
-Version:        43.4
+Version:        43.5
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -32,10 +32,6 @@ Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 # PATCH-FIX-OPENSUSE gnome-software-disable-offline-update.patch bsc#944832 sckang@suse.com -- Disable offline update in SLE and openSUSE Leap
 Patch1:         gnome-software-disable-offline-update.patch
 %endif
-# PATCH-FIX-UPSTREAM 66b400d63b8d7b921b83250a8b9a09e9a1eb6732.patch -- gs-plugin-job-list-apps: Fix a leak of the GsAppQuery
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-software/-/commit/66b400d63b8d7b921b83250a8b9a09e9a1eb6732.patch
-# PATCH-FIX-UPSTREAM 1355554764815195aaf9f6e23acdd7a9c521ceaa.patch -- gs-plugin-job-manage-repository: Fix a minor leak
-Patch3:         https://gitlab.gnome.org/GNOME/gnome-software/-/commit/1355554764815195aaf9f6e23acdd7a9c521ceaa.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.58.0

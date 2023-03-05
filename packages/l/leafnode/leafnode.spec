@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define admin_group newsadmin
 %define upname leafnode
 Name:           %{upname}
-Version:        2.0.0+git.1625851959.1275fbe
+Version:        2.0.0+git.1677927696.44d2783
 Release:        0
 Summary:        Leaf site NNTP server
 License:        MIT

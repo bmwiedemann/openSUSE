@@ -1,0 +1,1404 @@
+From dbcbd103d4cf39c2b7a87cf4caaf9c297580ec69 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 25 Oct 2022 14:14:34 +0200
+Subject: [PATCH 05/11] [gdb/testsuite] Handle missing .note.GNU-stack
+
+On openSUSE Tumbleweed I run into this for the dwarf assembly test-cases, and
+some hardcoded assembly test-cases:
+...
+ Running gdb.dwarf2/fission-absolute-dwo.exp ...
+ gdb compile failed, ld: warning: fission-absolute-dwo.o: \
+   missing .note.GNU-stack section implies executable stack
+ ld: NOTE: This behaviour is deprecated and will be removed in a future \
+   version of the linker
+
+                 === gdb Summary ===
+
+ # of untested testcases         1
+...
+
+Fix the dwarf assembly test-cases by adding the missing .note.GNU-stack in
+proc Dwarf::assemble.
+
+Fix the hard-coded test-cases using this command:
+...
+$ for f in $(find gdb/testsuite/gdb.* -name *.S); do
+    if ! grep -q note.GNU-stack $f; then
+      echo -e "\t.section\t.note.GNU-stack,\"\",@progbits" >> $f;
+    fi;
+  done
+...
+
+Likewise for .s files, and gdb/testsuite/lib/my-syscalls.S.
+
+The idiom for arm seems to be to use %progbits instead, see commit 9a5911c08be
+("gdb/testsuite/gdb.dwarf2: Replace @ with % for ARM compatability"), so
+hand-edit gdb/testsuite/gdb.arch/arm-disp-step.S to use %progbits instead.
+
+Note that dwarf assembly testcases use %progbits as decided by proc _section.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29674
+---
+ gdb/testsuite/gdb.arch/amd64-break-on-asm-line.S                | 1 +
+ gdb/testsuite/gdb.arch/amd64-disp-step-avx.S                    | 1 +
+ gdb/testsuite/gdb.arch/amd64-disp-step.S                        | 1 +
+ gdb/testsuite/gdb.arch/amd64-i386-address.S                     | 1 +
+ gdb/testsuite/gdb.arch/amd64-init-x87-values.S                  | 1 +
+ gdb/testsuite/gdb.arch/amd64-prologue-skip.S                    | 1 +
+ gdb/testsuite/gdb.arch/amd64-stap-expressions.S                 | 1 +
+ gdb/testsuite/gdb.arch/amd64-stap-optional-prefix.S             | 1 +
+ gdb/testsuite/gdb.arch/amd64-stap-wrong-subexp.S                | 1 +
+ gdb/testsuite/gdb.arch/amd64-tailcall-self.S                    | 1 +
+ gdb/testsuite/gdb.arch/arc-analyze-prologue.S                   | 1 +
+ gdb/testsuite/gdb.arch/arc-decode-insn.S                        | 1 +
+ gdb/testsuite/gdb.arch/arc-disassembler-options.s               | 1 +
+ gdb/testsuite/gdb.arch/arm-disp-step.S                          | 1 +
+ gdb/testsuite/gdb.arch/gdb1291.s                                | 1 +
+ gdb/testsuite/gdb.arch/gdb1431.s                                | 1 +
+ gdb/testsuite/gdb.arch/i386-cfi-notcurrent.S                    | 1 +
+ gdb/testsuite/gdb.arch/i386-disp-step.S                         | 1 +
+ gdb/testsuite/gdb.arch/i386-float.S                             | 1 +
+ gdb/testsuite/gdb.arch/i386-permbkpt.S                          | 1 +
+ gdb/testsuite/gdb.arch/mips-disassembler-options.s              | 1 +
+ gdb/testsuite/gdb.arch/pa-nullify.s                             | 1 +
+ gdb/testsuite/gdb.arch/pa64-nullify.s                           | 1 +
+ gdb/testsuite/gdb.arch/powerpc-addpcis.s                        | 1 +
+ gdb/testsuite/gdb.arch/powerpc-altivec.s                        | 1 +
+ gdb/testsuite/gdb.arch/powerpc-altivec2.s                       | 1 +
+ gdb/testsuite/gdb.arch/powerpc-altivec3.s                       | 1 +
+ gdb/testsuite/gdb.arch/powerpc-lnia.s                           | 1 +
+ gdb/testsuite/gdb.arch/powerpc-plxv-nonrel.s                    | 1 +
+ gdb/testsuite/gdb.arch/powerpc-power10.s                        | 2 ++
+ gdb/testsuite/gdb.arch/powerpc-power7.s                         | 1 +
+ gdb/testsuite/gdb.arch/powerpc-power8.s                         | 1 +
+ gdb/testsuite/gdb.arch/powerpc-power9.s                         | 1 +
+ gdb/testsuite/gdb.arch/powerpc-prologue-frame.S                 | 1 +
+ gdb/testsuite/gdb.arch/powerpc-stackless.S                      | 1 +
+ gdb/testsuite/gdb.arch/powerpc-trap.s                           | 1 +
+ gdb/testsuite/gdb.arch/powerpc-vsx.s                            | 1 +
+ gdb/testsuite/gdb.arch/powerpc-vsx2.s                           | 1 +
+ gdb/testsuite/gdb.arch/powerpc-vsx3.s                           | 1 +
+ gdb/testsuite/gdb.arch/powerpc64-trap.s                         | 1 +
+ gdb/testsuite/gdb.arch/ppc64-atomic-inst.S                      | 1 +
+ gdb/testsuite/gdb.arch/ppc64-isa207-atomic-inst.S               | 1 +
+ gdb/testsuite/gdb.arch/pr25124.S                                | 1 +
+ gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-ld-lw-foo.s | 1 +
+ gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-mv.s        | 1 +
+ gdb/testsuite/gdb.arch/s390-stackless.S                         | 1 +
+ gdb/testsuite/gdb.arch/sparc64-regs.S                           | 1 +
+ gdb/testsuite/gdb.arch/thumb-bx-pc.S                            | 1 +
+ gdb/testsuite/gdb.arch/thumb-singlestep.S                       | 1 +
+ gdb/testsuite/gdb.arch/thumb2-it.S                              | 1 +
+ gdb/testsuite/gdb.asm/asmsrc1.s                                 | 1 +
+ gdb/testsuite/gdb.asm/asmsrc2.s                                 | 1 +
+ gdb/testsuite/gdb.base/dup-sect.S                               | 1 +
+ gdb/testsuite/gdb.btrace/instruction_history.S                  | 1 +
+ gdb/testsuite/gdb.btrace/x86-tsx.S                              | 1 +
+ gdb/testsuite/gdb.compile/compile-constvar.S                    | 1 +
+ gdb/testsuite/gdb.disasm/am33.s                                 | 1 +
+ gdb/testsuite/gdb.disasm/h8300s.s                               | 1 +
+ gdb/testsuite/gdb.disasm/hppa.s                                 | 1 +
+ gdb/testsuite/gdb.disasm/mn10200.s                              | 1 +
+ gdb/testsuite/gdb.disasm/mn10300.s                              | 1 +
+ gdb/testsuite/gdb.disasm/sh3.s                                  | 1 +
+ gdb/testsuite/gdb.disasm/t01_mov.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t02_mova.s                             | 1 +
+ gdb/testsuite/gdb.disasm/t03_add.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t04_sub.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t05_cmp.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t06_ari2.s                             | 1 +
+ gdb/testsuite/gdb.disasm/t07_ari3.s                             | 1 +
+ gdb/testsuite/gdb.disasm/t08_or.s                               | 1 +
+ gdb/testsuite/gdb.disasm/t09_xor.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t10_and.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t11_logs.s                             | 1 +
+ gdb/testsuite/gdb.disasm/t12_bit.s                              | 1 +
+ gdb/testsuite/gdb.disasm/t13_otr.s                              | 1 +
+ gdb/testsuite/gdb.dwarf2/dup-psym.S                             | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S              | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S              | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S                     | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S                        | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S                    | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S               | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-basic.S                            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S                | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S           | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-compressed.S                       | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-const.S                            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-cu-size.S                          | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S                        | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S              | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S                         | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S                  | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-entry-value.S                      | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-filename.S                         | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S                       | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-icycle.S                           | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-inheritance.S                      | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-inline-param.S                     | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-intercu.S                          | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-intermix.S                         | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S               | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S                     | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S                | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-noloc.S                            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S            | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-op-call.S                          | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-op-out-param.S                     | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-param-error.S                      | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-producer.S                         | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S                | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-restore.S                          | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S                    | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S                   | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-strp.S                             | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-unresolved.S                       | 1 +
+ gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S                    | 1 +
+ gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S                  | 1 +
+ gdb/testsuite/gdb.dwarf2/fission-reread.S                       | 1 +
+ gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S         | 1 +
+ gdb/testsuite/gdb.dwarf2/mac-fileno.S                           | 1 +
+ gdb/testsuite/gdb.dwarf2/pr11465.S                              | 1 +
+ gdb/testsuite/gdb.dwarf2/pr13961.S                              | 1 +
+ gdb/testsuite/gdb.linespec/break-asm-file0.s                    | 1 +
+ gdb/testsuite/gdb.linespec/break-asm-file1.s                    | 1 +
+ gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S                    | 1 +
+ gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S               | 1 +
+ gdb/testsuite/lib/dwarf.exp                                     | 2 ++
+ gdb/testsuite/lib/my-syscalls.S                                 | 2 ++
+ 135 files changed, 138 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-break-on-asm-line.S b/gdb/testsuite/gdb.arch/amd64-break-on-asm-line.S
+index 99fa834adca..9af6c8ea5d0 100644
+--- a/gdb/testsuite/gdb.arch/amd64-break-on-asm-line.S
++++ b/gdb/testsuite/gdb.arch/amd64-break-on-asm-line.S
+@@ -33,3 +33,4 @@ test:
+ 	nop			/* Incorrect.  */
+ 	nop
+ 	nop
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-disp-step-avx.S b/gdb/testsuite/gdb.arch/amd64-disp-step-avx.S
+index 32e5fc77be8..924deef224f 100644
+--- a/gdb/testsuite/gdb.arch/amd64-disp-step-avx.S
++++ b/gdb/testsuite/gdb.arch/amd64-disp-step-avx.S
+@@ -75,3 +75,4 @@ done:
+ var128:
+ 	.8byte 0xaa55aa55aa55aa55
+ 	.8byte 0x55aa55aa55aa55aa
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-disp-step.S b/gdb/testsuite/gdb.arch/amd64-disp-step.S
+index c2249629a7a..cdf36cbc580 100644
+--- a/gdb/testsuite/gdb.arch/amd64-disp-step.S
++++ b/gdb/testsuite/gdb.arch/amd64-disp-step.S
+@@ -179,3 +179,4 @@ test_abs_jmp_end:
+ test_rep_ret:
+ 	repz
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-i386-address.S b/gdb/testsuite/gdb.arch/amd64-i386-address.S
+index cec9898a2f5..fbc7ceadf66 100644
+--- a/gdb/testsuite/gdb.arch/amd64-i386-address.S
++++ b/gdb/testsuite/gdb.arch/amd64-i386-address.S
+@@ -22,3 +22,4 @@ _start:	.globl	_start
+ 	int3
+ 	nop
+ 	nop
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-init-x87-values.S b/gdb/testsuite/gdb.arch/amd64-init-x87-values.S
+index 8b6dc02d005..de8607c84cf 100644
+--- a/gdb/testsuite/gdb.arch/amd64-init-x87-values.S
++++ b/gdb/testsuite/gdb.arch/amd64-init-x87-values.S
+@@ -29,3 +29,4 @@ main:
+         nop
+         fld1
+         nop
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-prologue-skip.S b/gdb/testsuite/gdb.arch/amd64-prologue-skip.S
+index 096745e3311..1e18150bdf7 100644
+--- a/gdb/testsuite/gdb.arch/amd64-prologue-skip.S
++++ b/gdb/testsuite/gdb.arch/amd64-prologue-skip.S
+@@ -26,3 +26,4 @@ pushrbp: .globl pushrbp
+ #define MINSYM nop; .globl minsym; minsym: nop
+ /*8*/	MINSYM
+ /*a*/	hlt
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-stap-expressions.S b/gdb/testsuite/gdb.arch/amd64-stap-expressions.S
+index 0f0dfee84d6..05ba8fc593a 100644
+--- a/gdb/testsuite/gdb.arch/amd64-stap-expressions.S
++++ b/gdb/testsuite/gdb.arch/amd64-stap-expressions.S
+@@ -41,3 +41,4 @@ main:
+ 
+ 	xor	%rax,%rax
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-stap-optional-prefix.S b/gdb/testsuite/gdb.arch/amd64-stap-optional-prefix.S
+index 5bc8858d3c2..592a875d0fd 100644
+--- a/gdb/testsuite/gdb.arch/amd64-stap-optional-prefix.S
++++ b/gdb/testsuite/gdb.arch/amd64-stap-optional-prefix.S
+@@ -40,3 +40,4 @@ main:
+ 	STAP_PROBE1(probe, fail2_probe, 23-@$16)
+ 	xor	%rax,%rax
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-stap-wrong-subexp.S b/gdb/testsuite/gdb.arch/amd64-stap-wrong-subexp.S
+index fcf0b73d6e1..1545ff9d673 100644
+--- a/gdb/testsuite/gdb.arch/amd64-stap-wrong-subexp.S
++++ b/gdb/testsuite/gdb.arch/amd64-stap-wrong-subexp.S
+@@ -25,3 +25,4 @@ main:
+ 	STAP_PROBE2(probe, bar, -4@-($4), -4@$-3+($22/$2)-$16)
+ 	xor	%rax,%rax
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/amd64-tailcall-self.S b/gdb/testsuite/gdb.arch/amd64-tailcall-self.S
+index f1a3404e865..676875288cd 100644
+--- a/gdb/testsuite/gdb.arch/amd64-tailcall-self.S
++++ b/gdb/testsuite/gdb.arch/amd64-tailcall-self.S
+@@ -612,3 +612,4 @@ die10a:
+ .LASF2:
+ 	.string	"argv"
+ 	.ident	"GCC: (GNU) 4.9.2 20150212 (Red Hat 4.9.2-6)"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/arc-analyze-prologue.S b/gdb/testsuite/gdb.arch/arc-analyze-prologue.S
+index de6973f905c..ae7b71e7572 100644
+--- a/gdb/testsuite/gdb.arch/arc-analyze-prologue.S
++++ b/gdb/testsuite/gdb.arch/arc-analyze-prologue.S
+@@ -901,3 +901,4 @@ main:
+ 	j_s     [blink]
+ 
+ .align 4
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/arc-decode-insn.S b/gdb/testsuite/gdb.arch/arc-decode-insn.S
+index 4228515684a..9f2ed9fb9df 100644
+--- a/gdb/testsuite/gdb.arch/arc-decode-insn.S
++++ b/gdb/testsuite/gdb.arch/arc-decode-insn.S
+@@ -1000,3 +1000,4 @@ start_branch_tests:
+ 
+ .Lend:
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/arc-disassembler-options.s b/gdb/testsuite/gdb.arch/arc-disassembler-options.s
+index cb226996360..5e063b957a4 100644
+--- a/gdb/testsuite/gdb.arch/arc-disassembler-options.s
++++ b/gdb/testsuite/gdb.arch/arc-disassembler-options.s
+@@ -19,3 +19,4 @@
+ foo:
+ 	lr	r0, [tlbpd0]
+ .end	foo
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/arm-disp-step.S b/gdb/testsuite/gdb.arch/arm-disp-step.S
+index b67e83e56e0..9f687cd6024 100644
+--- a/gdb/testsuite/gdb.arch/arm-disp-step.S
++++ b/gdb/testsuite/gdb.arch/arm-disp-step.S
+@@ -391,3 +391,4 @@ test_add_rn_pc_end:
+ 	bx lr
+ 	.size test_add_rn_pc, .-test_add_rn_pc
+ #endif
++	.section	.note.GNU-stack,"",%progbits
+diff --git a/gdb/testsuite/gdb.arch/gdb1291.s b/gdb/testsuite/gdb.arch/gdb1291.s
+index 5efe33be200..9ee2b452de9 100644
+--- a/gdb/testsuite/gdb.arch/gdb1291.s
++++ b/gdb/testsuite/gdb.arch/gdb1291.s
+@@ -126,3 +126,4 @@ _sub2:
+ 	.short	260
+ 	.size	_sub2, .-_sub2
+ 	.ident	"GCC: (GNU) 3.5.0 20040204 (experimental)"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/gdb1431.s b/gdb/testsuite/gdb.arch/gdb1431.s
+index 0b90f633c90..d373c47b14c 100644
+--- a/gdb/testsuite/gdb.arch/gdb1431.s
++++ b/gdb/testsuite/gdb.arch/gdb1431.s
+@@ -126,3 +126,4 @@ _sub2:
+ 	.short	260
+ 	.size	_sub2, .-_sub2
+ 	.ident	"GCC: (GNU) 3.5.0 20040204 (experimental)"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/i386-cfi-notcurrent.S b/gdb/testsuite/gdb.arch/i386-cfi-notcurrent.S
+index 3ed983c96d4..97640530dff 100644
+--- a/gdb/testsuite/gdb.arch/i386-cfi-notcurrent.S
++++ b/gdb/testsuite/gdb.arch/i386-cfi-notcurrent.S
+@@ -74,3 +74,4 @@ main:
+ 	.cfi_endproc
+ .LFE2:
+ 	.size	main, .-main
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/i386-disp-step.S b/gdb/testsuite/gdb.arch/i386-disp-step.S
+index af1ac54c9d1..e5f6a4c3669 100644
+--- a/gdb/testsuite/gdb.arch/i386-disp-step.S
++++ b/gdb/testsuite/gdb.arch/i386-disp-step.S
+@@ -121,3 +121,4 @@ test_call_end:
+ 	.global test_ret
+ test_ret:
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/i386-float.S b/gdb/testsuite/gdb.arch/i386-float.S
+index 82c7902d08a..13bd2c3d77b 100644
+--- a/gdb/testsuite/gdb.arch/i386-float.S
++++ b/gdb/testsuite/gdb.arch/i386-float.S
+@@ -36,3 +36,4 @@ SYMBOL(main):
+ 	val: .byte 0x00,0x00,0x45,0x07,0x11,0x19,0x22,0xe9,0xfe,0xbf
+ 	smallval: .byte 0xe9,0xd0,0xd7,0x65,0x81,0xb7,0x43,0xc6,0x5c,0x6a
+ 	bigval:   .byte 0x6a,0x45,0x90,0xdc,0x03,0xc1,0xf8,0xc6,0xe5,0x03
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/i386-permbkpt.S b/gdb/testsuite/gdb.arch/i386-permbkpt.S
+index 1a17b2216b3..bdacfbda4a5 100644
+--- a/gdb/testsuite/gdb.arch/i386-permbkpt.S
++++ b/gdb/testsuite/gdb.arch/i386-permbkpt.S
+@@ -28,3 +28,4 @@
+ SYMBOL(main):
+ 	int3
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/mips-disassembler-options.s b/gdb/testsuite/gdb.arch/mips-disassembler-options.s
+index bb7f95dd94c..7fc7cd5a8bd 100644
+--- a/gdb/testsuite/gdb.arch/mips-disassembler-options.s
++++ b/gdb/testsuite/gdb.arch/mips-disassembler-options.s
+@@ -28,3 +28,4 @@ foo:
+ bar:
+ 	move	$2, $8
+ 	.end	bar
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/pa-nullify.s b/gdb/testsuite/gdb.arch/pa-nullify.s
+index 8b756bd9836..384a5f58502 100644
+--- a/gdb/testsuite/gdb.arch/pa-nullify.s
++++ b/gdb/testsuite/gdb.arch/pa-nullify.s
+@@ -56,3 +56,4 @@ main:
+ 	bv,n %r0(%r2)
+ 	.EXIT
+ 	.PROCEND
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/pa64-nullify.s b/gdb/testsuite/gdb.arch/pa64-nullify.s
+index f297699ed7a..6d253828ce0 100644
+--- a/gdb/testsuite/gdb.arch/pa64-nullify.s
++++ b/gdb/testsuite/gdb.arch/pa64-nullify.s
+@@ -68,3 +68,4 @@ main:
+ 	bve,n (%r2)
+ 	.EXIT
+ 	.PROCEND
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-addpcis.s b/gdb/testsuite/gdb.arch/powerpc-addpcis.s
+index dfc922c27fb..84484ec6960 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-addpcis.s
++++ b/gdb/testsuite/gdb.arch/powerpc-addpcis.s
+@@ -33,3 +33,4 @@ main:
+ 	blr
+ 
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-altivec.s b/gdb/testsuite/gdb.arch/powerpc-altivec.s
+index 25400ddaf99..d9d66fd16df 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-altivec.s
++++ b/gdb/testsuite/gdb.arch/powerpc-altivec.s
+@@ -213,3 +213,4 @@ func:
+ 	.long  0x11e0e28e    /* vupklsb v15,v28            */
+ 	.long  0x110042ce    /* vupklsh v8,v8              */
+ 	.long  0x13201cc4    /* vxor    v25,v0,v3          */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-altivec2.s b/gdb/testsuite/gdb.arch/powerpc-altivec2.s
+index f01e9a02ad9..4e74044df45 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-altivec2.s
++++ b/gdb/testsuite/gdb.arch/powerpc-altivec2.s
+@@ -133,3 +133,4 @@ func:
+ 	.long  0x11e0f7c3    /* vpopcntd v15,v30           */
+ 	.long  0x105f36c7    /* vcmpgtud. v2,v31,v6        */
+ 	.long  0x128f17c7    /* vcmpgtsd. v20,v15,v2       */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-altivec3.s b/gdb/testsuite/gdb.arch/powerpc-altivec3.s
+index ae9571c7372..843a6e8c05f 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-altivec3.s
++++ b/gdb/testsuite/gdb.arch/powerpc-altivec3.s
+@@ -86,3 +86,4 @@ func:
+ 	.long  0x11e90f4d    /* vextuhrx r15,r9,v1         */
+ 	.long  0x12b1878d    /* vextuwrx r21,r17,v16       */
+ 	.long  0x1295b5e3    /* vmsumudm v20,v21,v22,v23   */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-lnia.s b/gdb/testsuite/gdb.arch/powerpc-lnia.s
+index d81607d1043..86fd319ccb2 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-lnia.s
++++ b/gdb/testsuite/gdb.arch/powerpc-lnia.s
+@@ -31,3 +31,4 @@ main:
+ 	lnia 9  # /* set r9 */
+ 	blr
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-plxv-nonrel.s b/gdb/testsuite/gdb.arch/powerpc-plxv-nonrel.s
+index d39ec23bffe..ede6dc936a4 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-plxv-nonrel.s
++++ b/gdb/testsuite/gdb.arch/powerpc-plxv-nonrel.s
+@@ -43,3 +43,4 @@ mydata:
+ 	.long 0xabbbcbdb	# <<- loaded into                vs7
+ 	.long 0xacbcccdc	# <<-
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-power10.s b/gdb/testsuite/gdb.arch/powerpc-power10.s
+index 67ccdb42182..9a933d083ff 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-power10.s
++++ b/gdb/testsuite/gdb.arch/powerpc-power10.s
+@@ -637,3 +637,5 @@ func:
+ 	.quad 0x8006000105000000	/* xxspltiw vs0,0 */
+ 	.quad 0x8006000305000000	/* xxspltiw vs0,3 */
+ 	.quad 0x8006000805000000	/* xxspltiw vs0,8 */
++	.section	.note.GNU-stack,"",@progbits
++
+diff --git a/gdb/testsuite/gdb.arch/powerpc-power7.s b/gdb/testsuite/gdb.arch/powerpc-power7.s
+index 92e9bc50eb8..329ed5e7a8a 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-power7.s
++++ b/gdb/testsuite/gdb.arch/powerpc-power7.s
+@@ -108,3 +108,4 @@ func:
+ 	.long  0x7d80e3a6    /* mtppr   r12                */
+ 	.long  0x7da2e3a6    /* mtppr32 r13                */
+ 	.long  0x7d605264    /* tlbie   r10,r11            */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-power8.s b/gdb/testsuite/gdb.arch/powerpc-power8.s
+index 4367a6f6e52..6a8dcc47a77 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-power8.s
++++ b/gdb/testsuite/gdb.arch/powerpc-power8.s
+@@ -185,3 +185,4 @@ func:
+ 	.long  0x7d81492d    /* stwcx.  r12,r1,r9          */
+ 	.long  0x7da051ad    /* stdcx.  r13,0,r10          */
+ 	.long  0x7da151ad    /* stdcx.  r13,r1,r10         */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-power9.s b/gdb/testsuite/gdb.arch/powerpc-power9.s
+index d15af59d279..09dcb38183a 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-power9.s
++++ b/gdb/testsuite/gdb.arch/powerpc-power9.s
+@@ -384,3 +384,4 @@ func:
+ 	.long  0xffd7048e    /* mffscrni f30,0             */
+ 	.long  0xffd71c8e    /* mffscrni f30,3             */
+ 	.long  0xfff8048e    /* mffsl   f31                */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-prologue-frame.S b/gdb/testsuite/gdb.arch/powerpc-prologue-frame.S
+index dd60fcac4e1..d7424ffc9b0 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-prologue-frame.S
++++ b/gdb/testsuite/gdb.arch/powerpc-prologue-frame.S
+@@ -33,3 +33,4 @@ FUNC_START(foo)
+ 	mr 1,11
+ 	blr
+ FUNC_END(foo)
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-stackless.S b/gdb/testsuite/gdb.arch/powerpc-stackless.S
+index 29c16c147dc..452c2b8247b 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-stackless.S
++++ b/gdb/testsuite/gdb.arch/powerpc-stackless.S
+@@ -22,3 +22,4 @@ FUNC_START(main)
+         mtlr    sp
+         blr
+ FUNC_END(main)
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-trap.s b/gdb/testsuite/gdb.arch/powerpc-trap.s
+index cc427911529..8e31c02a000 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-trap.s
++++ b/gdb/testsuite/gdb.arch/powerpc-trap.s
+@@ -29,3 +29,4 @@ main:
+   li  3, 0
+   blr
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-vsx.s b/gdb/testsuite/gdb.arch/powerpc-vsx.s
+index 7604b4a82a5..5ac2cace4fe 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-vsx.s
++++ b/gdb/testsuite/gdb.arch/powerpc-vsx.s
+@@ -170,3 +170,4 @@ func:
+ 	.long  0xf102e293    /* xxspltw vs40,vs60,2        */
+ 	.long  0x7d00a699    /* lxvd2x  vs40,0,r20         */
+ 	.long  0x7d00a799    /* stxvd2x vs40,0,r20         */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-vsx2.s b/gdb/testsuite/gdb.arch/powerpc-vsx2.s
+index aa3dff6b7dc..71d9cf7af8f 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-vsx2.s
++++ b/gdb/testsuite/gdb.arch/powerpc-vsx2.s
+@@ -63,3 +63,4 @@ func:
+ 	.long  0xf360d52d    /* xscvspdpn vs59,vs26        */
+ 	.long  0xff0e168c    /* fmrgow  f24,f14,f2         */
+ 	.long  0xfec72f8c    /* fmrgew  f22,f7,f5          */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc-vsx3.s b/gdb/testsuite/gdb.arch/powerpc-vsx3.s
+index 8dd344dd78f..1e66d21f431 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-vsx3.s
++++ b/gdb/testsuite/gdb.arch/powerpc-vsx3.s
+@@ -139,3 +139,4 @@ func:
+ 	.long  0xfe766688    /* xscvdpqp v19,v12           */
+ 	.long  0xfdb92688    /* xscvqpsdz v13,v4           */
+ 	.long  0xfcf83ec8    /* xsiexpqp v7,v24,v7         */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/powerpc64-trap.s b/gdb/testsuite/gdb.arch/powerpc64-trap.s
+index 6b20e7648aa..75c37afebe1 100644
+--- a/gdb/testsuite/gdb.arch/powerpc64-trap.s
++++ b/gdb/testsuite/gdb.arch/powerpc64-trap.s
+@@ -31,3 +31,4 @@ main:
+   li  3, 0
+   blr
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/ppc64-atomic-inst.S b/gdb/testsuite/gdb.arch/ppc64-atomic-inst.S
+index 0dbb25d84d3..9d6b4fed672 100644
+--- a/gdb/testsuite/gdb.arch/ppc64-atomic-inst.S
++++ b/gdb/testsuite/gdb.arch/ppc64-atomic-inst.S
+@@ -59,3 +59,4 @@ main:
+ #else
+ 	.size .main,.-.main
+ #endif
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/ppc64-isa207-atomic-inst.S b/gdb/testsuite/gdb.arch/ppc64-isa207-atomic-inst.S
+index 873a45af82a..db56803c3ff 100644
+--- a/gdb/testsuite/gdb.arch/ppc64-isa207-atomic-inst.S
++++ b/gdb/testsuite/gdb.arch/ppc64-isa207-atomic-inst.S
+@@ -98,3 +98,4 @@ test_atomic_sequences:
+ #else
+ 	.size .test_atomic_sequences,.-.test_atomic_sequences
+ #endif
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/pr25124.S b/gdb/testsuite/gdb.arch/pr25124.S
+index 1f54cfd585c..7ed0a62ce5c 100644
+--- a/gdb/testsuite/gdb.arch/pr25124.S
++++ b/gdb/testsuite/gdb.arch/pr25124.S
+@@ -33,3 +33,4 @@ main:
+ 	mov	r0, #0
+ 	bx	lr
+ 	.size	main, .-main
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-ld-lw-foo.s b/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-ld-lw-foo.s
+index e0c538f8c3e..c12c16eab89 100644
+--- a/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-ld-lw-foo.s
++++ b/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-ld-lw-foo.s
+@@ -72,3 +72,4 @@ foo:
+ 	addi	sp,sp,32
+ 	jr	ra
+ 	.size	foo, .-foo
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-mv.s b/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-mv.s
+index aead673f09a..dfb0f361f99 100644
+--- a/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-mv.s
++++ b/gdb/testsuite/gdb.arch/riscv64-unwind-prologue-with-mv.s
+@@ -45,3 +45,4 @@ foo:
+ 	addi	sp,sp,32
+ 	jr	ra
+ 	.size	foo, .-foo
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/s390-stackless.S b/gdb/testsuite/gdb.arch/s390-stackless.S
+index 9763e1fc8d5..7d2265dcb3a 100644
+--- a/gdb/testsuite/gdb.arch/s390-stackless.S
++++ b/gdb/testsuite/gdb.arch/s390-stackless.S
+@@ -31,3 +31,4 @@ main:	la	%r15,3(0,0)
+ 	.byte	0,1
+ 1:	st	%r15,0(%r15)
+ 	br	%r14
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/sparc64-regs.S b/gdb/testsuite/gdb.arch/sparc64-regs.S
+index cd9301baaa5..ff3c7411946 100644
+--- a/gdb/testsuite/gdb.arch/sparc64-regs.S
++++ b/gdb/testsuite/gdb.arch/sparc64-regs.S
+@@ -134,3 +134,4 @@ test_fsr:
+ .align 8
+ flags: .xword 0x0000000000000000
+ .size flags, .-flags
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/thumb-bx-pc.S b/gdb/testsuite/gdb.arch/thumb-bx-pc.S
+index d97c4bf865f..6d72265e4a7 100644
+--- a/gdb/testsuite/gdb.arch/thumb-bx-pc.S
++++ b/gdb/testsuite/gdb.arch/thumb-bx-pc.S
+@@ -32,3 +32,4 @@ main:
+ 	mov	r0, #0
+ 	bx	lr
+ 	.size	main, .-main
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/thumb-singlestep.S b/gdb/testsuite/gdb.arch/thumb-singlestep.S
+index 2a2e8e340e3..c0291a036f9 100644
+--- a/gdb/testsuite/gdb.arch/thumb-singlestep.S
++++ b/gdb/testsuite/gdb.arch/thumb-singlestep.S
+@@ -38,3 +38,4 @@ main:
+         pop	{r3, pc}
+ 	.size	main, .-main
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.arch/thumb2-it.S b/gdb/testsuite/gdb.arch/thumb2-it.S
+index 0b06c82f672..892c562d2eb 100644
+--- a/gdb/testsuite/gdb.arch/thumb2-it.S
++++ b/gdb/testsuite/gdb.arch/thumb2-it.S
+@@ -180,3 +180,4 @@ it_breakpoints:
+ 	bx	lr
+ 
+ #endif /* __thumb2__ */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.asm/asmsrc1.s b/gdb/testsuite/gdb.asm/asmsrc1.s
+index ddf87900842..35b39ca7e1a 100644
+--- a/gdb/testsuite/gdb.asm/asmsrc1.s
++++ b/gdb/testsuite/gdb.asm/asmsrc1.s
+@@ -85,3 +85,4 @@
+ 	gdbasm_datavar	staticvar	5
+ 
+ 	.include "note.inc"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.asm/asmsrc2.s b/gdb/testsuite/gdb.asm/asmsrc2.s
+index e585ee22c3a..288b708f1f7 100644
+--- a/gdb/testsuite/gdb.asm/asmsrc2.s
++++ b/gdb/testsuite/gdb.asm/asmsrc2.s
+@@ -19,3 +19,4 @@
+ 	comment "mark: foo2 leave"
+ 	gdbasm_leave
+ 	gdbasm_end foo2
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.base/dup-sect.S b/gdb/testsuite/gdb.base/dup-sect.S
+index b33378ec454..2af269fffdf 100644
+--- a/gdb/testsuite/gdb.base/dup-sect.S
++++ b/gdb/testsuite/gdb.base/dup-sect.S
+@@ -20,3 +20,4 @@ var1:	.byte	1
+ 
+ 	.section	sect2, "a"
+ var2:	.byte	2
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.btrace/instruction_history.S b/gdb/testsuite/gdb.btrace/instruction_history.S
+index 8f9b8343453..23901a34446 100644
+--- a/gdb/testsuite/gdb.btrace/instruction_history.S
++++ b/gdb/testsuite/gdb.btrace/instruction_history.S
+@@ -30,3 +30,4 @@ loop:
+ 	jmp .L1
+ .L2:
+ 	ret /* bp.2 */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.btrace/x86-tsx.S b/gdb/testsuite/gdb.btrace/x86-tsx.S
+index bc4009d0c23..0cfc329342e 100644
+--- a/gdb/testsuite/gdb.btrace/x86-tsx.S
++++ b/gdb/testsuite/gdb.btrace/x86-tsx.S
+@@ -27,3 +27,4 @@ test:
+ .Lhandler:
+ 	mov $1, %eax
+ 	ret
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.compile/compile-constvar.S b/gdb/testsuite/gdb.compile/compile-constvar.S
+index 83644cb4a5d..b2e178c952d 100644
+--- a/gdb/testsuite/gdb.compile/compile-constvar.S
++++ b/gdb/testsuite/gdb.compile/compile-constvar.S
+@@ -93,3 +93,4 @@
+ .LASF0:
+ 	.string	"GNU C 4.8.2 20131212 (Red Hat 4.8.2-7) -mtune=generic -march=x86-64 -g"
+ 	.ident	"GCC: (GNU) 4.8.2 20131212 (Red Hat 4.8.2-7)"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/am33.s b/gdb/testsuite/gdb.disasm/am33.s
+index a686cef2f74..e699bcffdeb 100644
+--- a/gdb/testsuite/gdb.disasm/am33.s
++++ b/gdb/testsuite/gdb.disasm/am33.s
+@@ -522,3 +522,4 @@ dsp_autoincrement_tests:
+ 	mov_leq (r1+,4),r2
+ 	mov_lne (r1+,4),r2
+ 	mov_lra (r1+,4),r2
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/h8300s.s b/gdb/testsuite/gdb.disasm/h8300s.s
+index 6510d40ef4e..0fd86564267 100644
+--- a/gdb/testsuite/gdb.disasm/h8300s.s
++++ b/gdb/testsuite/gdb.disasm/h8300s.s
+@@ -354,3 +354,4 @@ system_control_tests:
+ block_data_transfer_tests:
+ 	eepmov.b
+ 	eepmov.w
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/hppa.s b/gdb/testsuite/gdb.disasm/hppa.s
+index 593d8bfefee..12ace7d3f15 100644
+--- a/gdb/testsuite/gdb.disasm/hppa.s
++++ b/gdb/testsuite/gdb.disasm/hppa.s
+@@ -1736,3 +1736,4 @@ fmemLRbug_tests_4
+ 	bv,n 0(%r2)
+ 	.EXIT
+ 	.PROCEND
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/mn10200.s b/gdb/testsuite/gdb.disasm/mn10200.s
+index 32357b0401b..c48dd6431fd 100644
+--- a/gdb/testsuite/gdb.disasm/mn10200.s
++++ b/gdb/testsuite/gdb.disasm/mn10200.s
+@@ -215,3 +215,4 @@ sub_tests:
+ 	sub 32767,a2
+ 	sub 131071,a2
+ 	subc d1,d2
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/mn10300.s b/gdb/testsuite/gdb.disasm/mn10300.s
+index 3ad6c95e6a1..e7ab6e4cd85 100644
+--- a/gdb/testsuite/gdb.disasm/mn10300.s
++++ b/gdb/testsuite/gdb.disasm/mn10300.s
+@@ -298,3 +298,4 @@ sub_tests:
+ 	sub 131071,a1
+ 	subc d1,d2
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/sh3.s b/gdb/testsuite/gdb.disasm/sh3.s
+index e5969f5ea1a..ab70da38758 100644
+--- a/gdb/testsuite/gdb.disasm/sh3.s
++++ b/gdb/testsuite/gdb.disasm/sh3.s
+@@ -52,3 +52,4 @@ _fp_misc_tests:
+ 	sts	fpscr,r3
+ 	sts.l	fpscr,@-r3
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t01_mov.s b/gdb/testsuite/gdb.disasm/t01_mov.s
+index 6848304693f..d79d8aa70f7 100644
+--- a/gdb/testsuite/gdb.disasm/t01_mov.s
++++ b/gdb/testsuite/gdb.disasm/t01_mov.s
+@@ -1105,3 +1105,4 @@ label:
+ 
+ 	.end
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t02_mova.s b/gdb/testsuite/gdb.disasm/t02_mova.s
+index 4615bcc0e0b..b16da0233e4 100644
+--- a/gdb/testsuite/gdb.disasm/t02_mova.s
++++ b/gdb/testsuite/gdb.disasm/t02_mova.s
+@@ -236,3 +236,4 @@ _start:
+     mova/l.l @(0x12345678:32,@0x9ABCDEF0:32.w),er1         ;015F48D99ABCDEF012345678
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t03_add.s b/gdb/testsuite/gdb.disasm/t03_add.s
+index 2b832475ba7..024ae61a2b7 100644
+--- a/gdb/testsuite/gdb.disasm/t03_add.s
++++ b/gdb/testsuite/gdb.disasm/t03_add.s
+@@ -976,3 +976,4 @@ _start:
+     add.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848109abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t04_sub.s b/gdb/testsuite/gdb.disasm/t04_sub.s
+index d851760d8ae..066f0236436 100644
+--- a/gdb/testsuite/gdb.disasm/t04_sub.s
++++ b/gdb/testsuite/gdb.disasm/t04_sub.s
+@@ -975,3 +975,4 @@ _start:
+     sub.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848309abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t05_cmp.s b/gdb/testsuite/gdb.disasm/t05_cmp.s
+index ee034f097c4..8d5b393dcbd 100644
+--- a/gdb/testsuite/gdb.disasm/t05_cmp.s
++++ b/gdb/testsuite/gdb.disasm/t05_cmp.s
+@@ -919,3 +919,4 @@ _start:
+     cmp.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848209abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t06_ari2.s b/gdb/testsuite/gdb.disasm/t06_ari2.s
+index 75a919510b4..dd0e3145547 100644
+--- a/gdb/testsuite/gdb.disasm/t06_ari2.s
++++ b/gdb/testsuite/gdb.disasm/t06_ari2.s
+@@ -186,3 +186,4 @@ _start:
+     divs.l er3,er1            ;01d25331
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t07_ari3.s b/gdb/testsuite/gdb.disasm/t07_ari3.s
+index 6ad7128d3ff..a4afef438be 100644
+--- a/gdb/testsuite/gdb.disasm/t07_ari3.s
++++ b/gdb/testsuite/gdb.disasm/t07_ari3.s
+@@ -171,3 +171,4 @@ _start:
+     exts.l #2,@0x12345678:32         ;01046b281234567817e0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t08_or.s b/gdb/testsuite/gdb.disasm/t08_or.s
+index da4e216c58b..0fa35abb75e 100644
+--- a/gdb/testsuite/gdb.disasm/t08_or.s
++++ b/gdb/testsuite/gdb.disasm/t08_or.s
+@@ -970,3 +970,4 @@ _start:
+     or.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848409abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t09_xor.s b/gdb/testsuite/gdb.disasm/t09_xor.s
+index ccd479cb20a..05e75105f4d 100644
+--- a/gdb/testsuite/gdb.disasm/t09_xor.s
++++ b/gdb/testsuite/gdb.disasm/t09_xor.s
+@@ -970,3 +970,4 @@ _start:
+     xor.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848509abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t10_and.s b/gdb/testsuite/gdb.disasm/t10_and.s
+index 0459c109f5d..457b67e2483 100644
+--- a/gdb/testsuite/gdb.disasm/t10_and.s
++++ b/gdb/testsuite/gdb.disasm/t10_and.s
+@@ -970,3 +970,4 @@ _start:
+     and.l @0x12345678:32,@0x9abcdef0:32                    ;01046b2c1234567848609abcdef0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t11_logs.s b/gdb/testsuite/gdb.disasm/t11_logs.s
+index 4768591dd7e..228a6740c53 100644
+--- a/gdb/testsuite/gdb.disasm/t11_logs.s
++++ b/gdb/testsuite/gdb.disasm/t11_logs.s
+@@ -1175,3 +1175,4 @@ _start:
+     rotr.l #2,@0x12345678:32         ;01046b281234567813f0
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t12_bit.s b/gdb/testsuite/gdb.disasm/t12_bit.s
+index 4c45b2a02a1..2664a75ad6f 100644
+--- a/gdb/testsuite/gdb.disasm/t12_bit.s
++++ b/gdb/testsuite/gdb.disasm/t12_bit.s
+@@ -174,3 +174,4 @@ _start:
+     bfst r3h,#0x34:8,@0x12345678:32           ;6a3812345678f334
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.disasm/t13_otr.s b/gdb/testsuite/gdb.disasm/t13_otr.s
+index 69db411ac52..812cbcf3306 100644
+--- a/gdb/testsuite/gdb.disasm/t13_otr.s
++++ b/gdb/testsuite/gdb.disasm/t13_otr.s
+@@ -157,3 +157,4 @@ _start:
+     nop                        ;0000
+ 
+ 	.end
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dup-psym.S b/gdb/testsuite/gdb.dwarf2/dup-psym.S
+index 6bffeab9d3c..d8932673cb5 100644
+--- a/gdb/testsuite/gdb.dwarf2/dup-psym.S
++++ b/gdb/testsuite/gdb.dwarf2/dup-psym.S
+@@ -197,3 +197,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
+index 742bf5245cb..7a9e6168b12 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
+@@ -149,3 +149,4 @@ LELTP:
+         .uleb128 0x1
+         .byte   0x1
+ LELT:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
+index cb875da2c4c..1771593b7e5 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
+@@ -149,3 +149,4 @@ LELTP:
+         .uleb128 0x1
+         .byte   0x1
+ LELT:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S b/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
+index 5ce56921d4e..2a1d4b5bc28 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
+@@ -53,3 +53,4 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
+index 0b8e8ccada3..c79fd5c7cbc 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
+@@ -375,3 +375,4 @@
+ 
+ 	.section	.debug_line
+ .Ldebug_line0:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S b/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
+index 3aa369aa6a3..3833799d017 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
+@@ -246,3 +246,4 @@ func_cu2:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S b/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
+index 83d2147e8c3..3792e70a641 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
+@@ -27,3 +27,4 @@ some_func:
+ 	.size some_func,.-some_func
+ some_func_end:
+ 	nop
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S b/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
+index b4583716881..46178d58fad 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
+@@ -71,3 +71,4 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-basic.S b/gdb/testsuite/gdb.dwarf2/dw2-basic.S
+index 93eba201b8b..9be8b9963b5 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-basic.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-basic.S
+@@ -197,3 +197,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S b/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
+index 2107d88b438..c74781b0de3 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
+@@ -154,3 +154,4 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S b/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
+index e51a18186fd..f7dd7ca55e3 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
+@@ -126,3 +126,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S b/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
+index 5128e252896..bc8317752e0 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
+@@ -239,3 +239,4 @@ gcc43:	.globl gcc43
+ 	.uleb128	1
+ 	.byte		1
+ .Lgcc43_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-compressed.S b/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
+index 00d7c3aa8fb..8c778423cd8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
+@@ -218,3 +218,4 @@ func_cu1:
+ 	.byte		0x9c
+ 	.byte		0x00
+ 	.byte		0x92
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-const.S b/gdb/testsuite/gdb.dwarf2/dw2-const.S
+index 09263ff9b08..26fe111369c 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-const.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-const.S
+@@ -249,3 +249,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S b/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
+index 20061ba23e6..8b35f999614 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
+@@ -113,3 +113,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S b/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
+index 1aad8a5af35..de5759877d2 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
+@@ -107,3 +107,4 @@
+ 
+ 	.byte		0x0			/* Terminator .debug_abbrev
+ 						   section.  */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S b/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
+index 205b7645d54..9d8e400c6a0 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
+@@ -74,3 +74,4 @@ dieb:
+ 	.byte	0x0
+ 
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S b/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
+index 6f0a0a80346..4a28b1f0d7b 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
+@@ -648,3 +648,4 @@
+ 	.byte	0x0
+ 	.byte	0x0
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S b/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
+index 298658fbdbf..9bf275f13b4 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
+@@ -31,3 +31,4 @@ main_end:
+ 	.section	.debug_abbrev
+ .Ldebug_abbrev0:
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S b/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
+index f6dbb91e14a..b2fb1fcb05c 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
+@@ -106,3 +106,4 @@ var:	.4byte	1
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S b/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
+index 83cc71fb159..c9ad27b2b37 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
+@@ -80,3 +80,4 @@ dieb:
+ 	.byte	0x0
+ 
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S b/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
+index 491a985823f..223044d7bf7 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
+@@ -102,3 +102,4 @@ loclist:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-filename.S b/gdb/testsuite/gdb.dwarf2/dw2-filename.S
+index 635577a2873..7895ab7a2bb 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-filename.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-filename.S
+@@ -51,3 +51,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S b/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
+index 834b35e5f50..61e6e74d902 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
+@@ -252,3 +252,4 @@ debug_info_seg3_end:
+ 	.byte 0x08	/* DW_FORM_string. */
+ 	.2byte 0x0000	/* End abbrev. */
+ 	.byte 0x00	/* End abbrev table. */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-icycle.S b/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
+index 4ccc7bb6947..e63966ccae6 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
+@@ -246,3 +246,4 @@ p__top:
+ .Lline1_begin:
+         .byte   0
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S b/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
+index 9c4b576fd39..20b2a9f9c66 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
+@@ -96,3 +96,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S b/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
+index 1c79805c2b5..14958e6092d 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
+@@ -150,3 +150,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-intercu.S b/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
+index 3c9abadb947..d8857fe675d 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
+@@ -314,3 +314,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-intermix.S b/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
+index a2dd41f0514..208a14fdb5f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
+@@ -198,3 +198,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S b/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
+index 8f23b3cc7bc..0b8aec84c39 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
+@@ -132,3 +132,4 @@ c:	.4byte	0
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S b/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
+index 248908bb072..c87092c031a 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
+@@ -115,3 +115,4 @@ func2:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S b/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
+index f3fe651d92d..c55e86fb127 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
+@@ -121,3 +121,4 @@ die221:
+ 	.string	"GNU Modula-2 0.78 (20100402) grafted onto GCC 4.1.2"
+ .LASF2:
+ 	.string	""
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-noloc.S b/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
+index 988f0955041..5d7d326aa9f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
+@@ -324,3 +324,4 @@ resolvable:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
+index 80f62c38a84..e3a02e795b7 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
+@@ -178,3 +178,4 @@ inner:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
+index a0bda9fa578..213b0bc3d9e 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
+@@ -209,3 +209,4 @@ outer_after:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-op-call.S b/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
+index 3069f07ff78..60ef039314c 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
+@@ -166,3 +166,4 @@ loclist:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-op-out-param.S b/gdb/testsuite/gdb.dwarf2/dw2-op-out-param.S
+index 91657263288..51f9f09d1d7 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-op-out-param.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-op-out-param.S
+@@ -675,3 +675,4 @@ int_param_two_reg_pieces:
+         .byte   0x0
+ 
+         .byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S b/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
+index 6c7ff185cfc..eff6467acbc 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
+@@ -130,3 +130,4 @@ aa551234:	.byte	0xaa, 0x55, 0x12, 0x34
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-param-error.S b/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
+index f22e6450848..a2a5a1d08a9 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
+@@ -106,3 +106,4 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-producer.S b/gdb/testsuite/gdb.dwarf2/dw2-producer.S
+index df83b67dfdd..011af698920 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-producer.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-producer.S
+@@ -198,3 +198,4 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S b/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
+index 38bbe013ddc..4780025dca5 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
+@@ -149,3 +149,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-restore.S b/gdb/testsuite/gdb.dwarf2/dw2-restore.S
+index 8ac559f2c45..ad834e992df 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-restore.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-restore.S
+@@ -47,3 +47,4 @@ foo:	.cfi_startproc
+ 	jmp 1b
+ 	.cfi_endproc
+ 	.endfunc
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S b/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
+index 90f5b8e3217..1da2a52e2dd 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
+@@ -167,3 +167,4 @@ d:
+ 	.string	"sizetype"
+ .LASF1:
+ 	.string	"char"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S b/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
+index b8a18f647b1..1245c1cf080 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
+@@ -397,3 +397,4 @@ loclist:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S b/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
+index dc392fe01d6..8bef4f062f1 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
+@@ -66,3 +66,4 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-strp.S b/gdb/testsuite/gdb.dwarf2/dw2-strp.S
+index 1857a2c10fa..f154b680f5f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-strp.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-strp.S
+@@ -176,3 +176,4 @@
+ 	.string		"hello world!\n"
+ .Lemptyname:
+ 	.string		""
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S b/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
+index 2313e0c1c48..d1d78f15a05 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
+@@ -178,3 +178,4 @@ SYMBOL(var):	.byte	2
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S b/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
+index d05e06c792c..5d402e9cbe7 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
+@@ -90,3 +90,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S b/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
+index 38231f18f41..0d9ad40c82a 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
++++ b/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
+@@ -85,3 +85,4 @@ types_start:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/fission-reread.S b/gdb/testsuite/gdb.dwarf2/fission-reread.S
+index c829fef32c7..92c6be49363 100644
+--- a/gdb/testsuite/gdb.dwarf2/fission-reread.S
++++ b/gdb/testsuite/gdb.dwarf2/fission-reread.S
+@@ -460,3 +460,4 @@ SYMBOL(main):
+ .Ldebug_addr0:
+ 	.4byte	.LFB0	/* DW_AT_low_pc */
+ 	.4byte	SYMBOL(baz)	/* DW_AT_location */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S b/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
+index 268745275f4..5ec9c8c494b 100644
+--- a/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
++++ b/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
+@@ -164,3 +164,4 @@ __start_high_pc:
+ 
+ .global __cu_high_pc
+ __cu_high_pc:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/mac-fileno.S b/gdb/testsuite/gdb.dwarf2/mac-fileno.S
+index 462781495a1..ca70acb421f 100644
+--- a/gdb/testsuite/gdb.dwarf2/mac-fileno.S
++++ b/gdb/testsuite/gdb.dwarf2/mac-fileno.S
+@@ -209,3 +209,4 @@ func_cu1:
+ 	.uleb128 0x0	/* Included from line number 0 */
+ 	.uleb128 0x0	/* Filename we just started (bug: number too small) */
+         .byte   0x0     /* end of CU's macro information */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/pr11465.S b/gdb/testsuite/gdb.dwarf2/pr11465.S
+index 28155090f23..eaf2925a768 100644
+--- a/gdb/testsuite/gdb.dwarf2/pr11465.S
++++ b/gdb/testsuite/gdb.dwarf2/pr11465.S
+@@ -360,3 +360,4 @@ die149:	.uleb128 0x16		/* DW_TAG_variable */
+ .LASF4:
+ 	.string	"GNU C++ 4.4.2"
+ 	.ident	"GCC: (GNU) 4.4.2"
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.dwarf2/pr13961.S b/gdb/testsuite/gdb.dwarf2/pr13961.S
+index d3b4acee53f..aa34a0bafce 100644
+--- a/gdb/testsuite/gdb.dwarf2/pr13961.S
++++ b/gdb/testsuite/gdb.dwarf2/pr13961.S
+@@ -378,3 +378,4 @@ SYMBOL(main):
+ .LASF3:
+ 	.string	"main"
+ 
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.linespec/break-asm-file0.s b/gdb/testsuite/gdb.linespec/break-asm-file0.s
+index 94f0ec0daa3..c3beb38cba4 100644
+--- a/gdb/testsuite/gdb.linespec/break-asm-file0.s
++++ b/gdb/testsuite/gdb.linespec/break-asm-file0.s
+@@ -231,3 +231,4 @@ func:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.linespec/break-asm-file1.s b/gdb/testsuite/gdb.linespec/break-asm-file1.s
+index 0106394d997..ff97bb3f977 100644
+--- a/gdb/testsuite/gdb.linespec/break-asm-file1.s
++++ b/gdb/testsuite/gdb.linespec/break-asm-file1.s
+@@ -257,3 +257,4 @@ func:
+ 	.byte		1
+ 
+ .Lline1_end:
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S b/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
+index c93c1cdddbf..886c70d8746 100644
+--- a/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
++++ b/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
+@@ -163,3 +163,4 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S b/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
+index 4ac9785a5d5..bd81bfd21e1 100644
+--- a/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
++++ b/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
+@@ -20,3 +20,4 @@ _start:
+ 	.rept 5
+ 	nop
+ 	.endr
++	.section	.note.GNU-stack,"",@progbits
+diff --git a/gdb/testsuite/lib/dwarf.exp b/gdb/testsuite/lib/dwarf.exp
+index 6e8b1ccbe7f..29151574c0d 100644
+--- a/gdb/testsuite/lib/dwarf.exp
++++ b/gdb/testsuite/lib/dwarf.exp
+@@ -2910,6 +2910,8 @@ namespace eval Dwarf {
+ 
+ 	_write_deferred_output
+ 
++	_section .note.GNU-stack "" progbits
++
+ 	catch {close $_output_file}
+ 	set _output_file {}
+     }
+diff --git a/gdb/testsuite/lib/my-syscalls.S b/gdb/testsuite/lib/my-syscalls.S
+index 5fc38948217..7f06f9c398b 100644
+--- a/gdb/testsuite/lib/my-syscalls.S
++++ b/gdb/testsuite/lib/my-syscalls.S
+@@ -54,3 +54,5 @@ my_execve_syscall:
+ #else
+ # error "Unsupported architecture"
+ #endif
++
++	.section	.note.GNU-stack,"",@progbits
+-- 
+2.35.3
+

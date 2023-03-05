@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  3 21:49:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Compatibility update for ykman 5.0.1.
+  * Update to Python 3.11.
+  * Update product images.
+- add keyring for gpg validation
+
+-------------------------------------------------------------------
 Mon Nov  1 18:52:08 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to version 1.2.4 (released 2021-10-26)

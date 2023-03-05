@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-firstboot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -60,7 +60,6 @@ created to personalize the system.
 
 %package wsl
 Summary:        YaST2 firstboot settings for WSL images
-Group:          System/YaST
 
 Requires:       %{name} = %{version}
 

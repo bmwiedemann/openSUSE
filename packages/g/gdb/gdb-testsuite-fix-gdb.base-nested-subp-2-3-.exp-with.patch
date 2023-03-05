@@ -1,0 +1,80 @@
+From a95556346e4336d2d6eeba74430212e833c065fb Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 12 Oct 2022 16:50:16 +0200
+Subject: [PATCH 10/11] [gdb/testsuite] Fix gdb.base/nested-subp{2,3}.exp with
+ recent ld
+
+On openSUSE Tumbleweed (with ld 2.39) I get for test-case
+gdb.base/nested-subp2.exp:
+...
+gdb compile failed, ld: warning: tmp.o: requires executable stack \
+  (because the .note.GNU-stack section is executable)
+...
+
+Fix this by compiling with -Wl,--no-warn-execstack.
+
+Likewise in gdb.base/nested-subp3.exp
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.base/nested-subp2.exp | 15 ++++++++++++---
+ gdb/testsuite/gdb.base/nested-subp3.exp | 15 ++++++++++++---
+ 2 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/nested-subp2.exp b/gdb/testsuite/gdb.base/nested-subp2.exp
+index 876b797e49d..8cb57bd1ee7 100644
+--- a/gdb/testsuite/gdb.base/nested-subp2.exp
++++ b/gdb/testsuite/gdb.base/nested-subp2.exp
+@@ -29,10 +29,19 @@ if ![support_nested_function_tests] {
+     return -1
+ }
+ 
++set flags {}
++lappend flags debug
++lappend flags additional_flags=-std=gnu99
++
++set ld_flags additional_flags=-Wl,--no-warn-execstack
++if { [gdb_can_simple_compile ld-flags {int main () { return 0; }} executable \
++	  $ld_flags] } {
++    lappend flags $ld_flags
++}
++
+ if { [gdb_compile "${srcdir}/${subdir}/${testcase}.c" \
+-                  [standard_output_file "${testcase}"] \
+-                  executable \
+-                  [list debug "additional_flags=-std=gnu99"]] != "" } {
++	  [standard_output_file "${testcase}"] \
++	  executable $flags] != "" } {
+     return -1
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/nested-subp3.exp b/gdb/testsuite/gdb.base/nested-subp3.exp
+index dd236f07c8f..31da8d47f84 100644
+--- a/gdb/testsuite/gdb.base/nested-subp3.exp
++++ b/gdb/testsuite/gdb.base/nested-subp3.exp
+@@ -29,10 +29,19 @@ if ![support_nested_function_tests] {
+     return -1
+ }
+ 
++set flags {}
++lappend flags debug
++lappend flags additional_flags=-std=gnu99
++
++set ld_flags additional_flags=-Wl,--no-warn-execstack
++if { [gdb_can_simple_compile ld-flags {int main () { return 0; }} executable \
++	  $ld_flags] } {
++    lappend flags $ld_flags
++}
++
+ if { [gdb_compile "${srcdir}/${subdir}/${testcase}.c" \
+-                  [standard_output_file "${testcase}"] \
+-                  executable \
+-                  [list debug "additional_flags=-std=gnu99"]] != "" } {
++	  [standard_output_file "${testcase}"] \
++	  executable $flags] != "" } {
+     return -1
+ }
+ 
+-- 
+2.35.3
+

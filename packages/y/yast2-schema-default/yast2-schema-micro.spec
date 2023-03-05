@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.5.9
+Version:        4.6.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,0 +1,93 @@
+gdb/testsuite: fix gdb.base/break-idempotent.exp on ppc
+
+When running the gdb.base/break-idempotent.exp test on ppc, I was
+seeing some test failures (or rather errors), that looked like this:
+
+  (gdb) watch local
+  Hardware watchpoint 2: local
+
+  has_hw_wp_support: Hardware watchpoint detected
+  ERROR: no fileid for gcc2-power8
+  ERROR: Couldn't send delete breakpoints to GDB.
+  ERROR OCCURED: can't read "gdb_spawn_id": no such variable
+      while executing
+  "expect {
+  -i 1000 -timeout 100
+          -re ".*A problem internal to GDB has been detected" {
+              fail "$message (GDB internal error)"
+              gdb_internal_erro..."
+      ("uplevel" body line 1)
+      invoked from within
+
+What happens is that in break-idempotent.exp we basically do this:
+
+    if {[prepare_for_testing "failed to prepare" $binfile $srcfile $opts]} {
+        continue
+    }
+
+    # ....
+
+    if {![skip_hw_watchpoint_tests]} {
+        test_break $always_inserted "watch"
+    }
+
+The problem with this is that skip_hw_watchpoint_tests, includes this:
+
+    if { [istarget "i?86-*-*"]
+	 || [istarget "x86_64-*-*"]
+	 || [istarget "ia64-*-*"]
+	 || [istarget "arm*-*-*"]
+	 || [istarget "aarch64*-*-*"]
+	 || ([istarget "powerpc*-*-linux*"] && [has_hw_wp_support])
+	 || [istarget "s390*-*-*"] } {
+	return 0
+    }
+
+For powerpc only we call has_hw_wp_support.  This is a caching proc
+that runs a test within GDB to detect if we have hardware watchpoint
+support or not.
+
+Unfortunately, to run this test we restart GDB, and when the test has
+completed, we exit GDB.  This means that in break-idempotent.exp, when
+we call skip_hw_watchpoint_tests for the first time on powerpc, GDB
+will unexpectedly be exited.  When we later call delete_breakpoints we
+see the errors I reported above.
+
+The fix is to call skip_hw_watchpoint_tests early, before we start GDB
+as part of the break-idempotent.exp script, and store the result in a
+variable, we can then check this variable in the script as needed.
+
+After this change break-idempotent.exp runs fine on powerpc.
+
+Co-authored-by: Andrew Burgess <aburgess@redhat.com>
+
+---
+ gdb/testsuite/gdb.base/break-idempotent.exp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/break-idempotent.exp b/gdb/testsuite/gdb.base/break-idempotent.exp
+index 29002f103a8..837ac000b57 100644
+--- a/gdb/testsuite/gdb.base/break-idempotent.exp
++++ b/gdb/testsuite/gdb.base/break-idempotent.exp
+@@ -36,6 +36,12 @@
+ 
+ standard_testfile
+ 
++# The skip_hw_watchpoint_tests starts GDB on a small test program to
++# check if HW watchpoints are supported.  We do not want to restart
++# GDB after this test script has itself started GDB, so call
++# skip_hw_watchpoint_tests first and cache the result.
++set skip_hw_watchpoint_tests_p [skip_hw_watchpoint_tests]
++
+ # Force a breakpoint re-set in GDB.  Currently this is done by
+ # reloading symbols with the "file" command.
+ 
+@@ -174,7 +180,7 @@ foreach_with_prefix pie { "nopie" "pie" } {
+ 	    test_break $always_inserted "hbreak"
+ 	}
+ 
+-	if {![skip_hw_watchpoint_tests]} {
++	if {!$skip_hw_watchpoint_tests_p} {
+ 	    test_break $always_inserted "watch"
+ 	}
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-hardware-detection
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           yast2-hardware-detection
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
+Group:          System/YaST
+License:        GPL-2.0-or-later
 # obviously
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -41,8 +43,6 @@ BuildRequires:  pkg-config
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 Summary:        YaST2 - Hardware Detection Interface
-License:        GPL-2.0-or-later
-Group:          System/YaST
 Requires:       hwinfo >= 21.5
 
 %description

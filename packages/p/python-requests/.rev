@@ -808,4 +808,12 @@
 - drop requests-allow-charset-normalizer-3.patch (upstream)</comment>
     <requestid>1060118</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>feb200dc8163ce2d7b36985c82e21df2</srcmd5>
+    <version>2.28.2</version>
+    <time>1677966138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069145</requestid>
+  </revision>
 </revisionlist>

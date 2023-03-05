@@ -17,7 +17,7 @@
 
 
 Name:           yast2-transfer
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Agent for Various Transfer Protocols
 License:        GPL-2.0-only

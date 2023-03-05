@@ -1,0 +1,174 @@
+gdb: fix assert when quitting GDB while a thread is stepping
+
+This commit addresses one of the issues identified in PR gdb/28275.
+
+Bug gdb/28275 identifies a number of situations in which this assert:
+
+  Assertion `!proc_target->commit_resumed_state' failed.
+
+could be triggered.  There's actually a number of similar places where
+this assert is found in GDB, the two of interest in gdb/28275 are in
+target_wait and target_stop.
+
+In one of the comments:
+
+  https://sourceware.org/bugzilla/show_bug.cgi?id=28275#c1
+
+steps to trigger the assertion within target_stop were identified when
+using a modified version of the gdb.threads/detach-step-over.exp test
+script.
+
+In the gdb.threads/detach-step-over.exp test, we attach to a
+multi-threaded inferior, and continue the inferior in asynchronous
+(background) mode.  Each thread is continuously hitting a conditional
+breakpoint where the condition is always false.  While the inferior is
+running we detach.  The goal is that we detach while GDB is performing a
+step-over for the conditional breakpoint in at least one thread.
+
+While detaching, if a step-over is in progress, then GDB has to
+complete the step over before we can detach.  This involves calling
+target_stop and target_wait (see prepare_for_detach).
+
+As far as gdb/28275 is concerned, the interesting part here, is the
+the process_stratum_target::commit_resumed_state variable must be
+false when target_stop and target_wait are called.
+
+This is currently ensured because, in detach_command (infrun.c), we
+create an instance of scoped_disable_commit_resumed, this ensures that
+when target_detach is called, ::commit_resumed_state will be false.
+
+The modification to the test that I propose here, and which exposed
+the bug, is that, instead of using "detach" to detach from the
+inferior, we instead use "quit".  Quitting GDB after attaching to an
+inferior will cause GDB to first detach, and then exit.
+
+When we quit GDB we end up calling target_detach via a different code
+path, the stack looks like:
+
+  #0 target_detach
+  #1 kill_or_detach
+  #2 quit_force
+  #3 quit_command
+
+Along this path there is no scoped_disable_commit_resumed created.
+::commit_resumed_state can be true when we reach prepare_for_detach,
+which calls target_wait and target_stop, so the assertion will trigger.
+
+In this commit, I propose fixing this by adding the creation of a
+scoped_disable_commit_resumed into target_detach.  This will ensure
+that ::commit_resumed_state is false when calling prepare_for_detach
+from within target_detach.
+
+I did consider placing the scoped_disable_commit_resumed in
+prepare_for_detach, however, placing it in target_detach ensures that
+the target's commit_resumed_state flag is left to false if the detached
+inferior was the last one for that target.  It's the same rationale as
+for patch "gdb: disable commit resumed in target_kill" that comes later
+in this series, but for detach instead of kill.
+
+detach_command still includes a scoped_disable_commit_resumed too, but I
+think it is still relevant to cover the resumption at the end of the
+function.
+
+Co-Authored-By: Simon Marchi <simon.marchi@efficios.com>
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28275
+Change-Id: Ie128f7aba6ef0e018859275eca372e6ea738e96f
+
+---
+ gdb/target.c                                   |  5 +++
+ gdb/testsuite/gdb.threads/detach-step-over.exp | 52 ++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
+
+diff --git a/gdb/target.c b/gdb/target.c
+index 1ee051b520a..0c86b571e1c 100644
+--- a/gdb/target.c
++++ b/gdb/target.c
+@@ -2558,6 +2558,9 @@ target_preopen (int from_tty)
+ void
+ target_detach (inferior *inf, int from_tty)
+ {
++  /* Thread's don't need to be resumed until the end of this function.  */
++  scoped_disable_commit_resumed disable_commit_resumed ("detaching");
++
+   /* After we have detached, we will clear the register cache for this inferior
+      by calling registers_changed_ptid.  We must save the pid_ptid before
+      detaching, as the target detach method will clear inf->pid.  */
+@@ -2588,6 +2591,8 @@ target_detach (inferior *inf, int from_tty)
+      inferior_ptid matches save_pid_ptid, but in our case, it does not
+      call it, as inferior_ptid has been reset.  */
+   reinit_frame_cache ();
++
++  disable_commit_resumed.reset_and_commit ();
+ }
+ 
+ void
+diff --git a/gdb/testsuite/gdb.threads/detach-step-over.exp b/gdb/testsuite/gdb.threads/detach-step-over.exp
+index ad9b08f549e..d2cb52423d9 100644
+--- a/gdb/testsuite/gdb.threads/detach-step-over.exp
++++ b/gdb/testsuite/gdb.threads/detach-step-over.exp
+@@ -284,6 +284,56 @@ proc_with_prefix test_detach_command {condition_eval target_non_stop non_stop di
+     kill_wait_spawned_process $test_spawn_id
+ }
+ 
++# Similar to the proc above, but this time, instead of detaching using
++# the 'detach' command, we quit GDB, this will also trigger a detach, but
++# through a slightly different path, which can expose different bugs.
++proc_with_prefix test_detach_quit {condition_eval target_non_stop \
++	non_stop displaced} {
++    # If debugging with target remote, check whether the all-stop variant
++    # of the RSP is being used.  If so, we can't run the background tests.
++    if {!$non_stop
++	&& [target_info exists gdb_protocol]
++	&& ([target_info gdb_protocol] == "remote"
++	    || [target_info gdb_protocol] == "extended-remote")} {
++	start_gdb_for_test $condition_eval $target_non_stop \
++	    $non_stop $displaced
++
++	gdb_test_multiple "maint show target-non-stop" "" {
++	    -wrap -re "(is|currently) on.*" {
++	    }
++	    -wrap -re "(is|currently) off.*" {
++		return
++	    }
++	}
++    }
++
++    set test_spawn_id [spawn_wait_for_attach $::binfile]
++    set testpid [spawn_id_get_pid $test_spawn_id]
++
++    set attempts 3
++    for {set attempt 1} { $attempt <= $attempts } { incr attempt } {
++	with_test_prefix "iter $attempt" {
++
++	    start_gdb_for_test $condition_eval $target_non_stop \
++		$non_stop $displaced
++
++	    if {![prepare_test_iter $testpid $non_stop \
++		      $attempt $attempts "$::decimal"]} {
++		kill_wait_spawned_process $test_spawn_id
++		return
++	    }
++
++	    gdb_test_multiple "with confirm off -- quit" "" {
++		eof {
++		    pass $gdb_test_name
++		}
++	    }
++	}
++    }
++
++    kill_wait_spawned_process $test_spawn_id
++}
++
+ # The test program exits after a while, in case GDB crashes.  Make it
+ # wait at least as long as we may wait before declaring a time out
+ # failure.
+@@ -331,6 +381,8 @@ foreach_with_prefix breakpoint-condition-evaluation {"host" "target"} {
+ 	    foreach_with_prefix displaced {"off" "auto"} {
+ 		test_detach_command ${breakpoint-condition-evaluation} \
+ 		    ${target-non-stop} ${non-stop} ${displaced}
++		test_detach_quit ${breakpoint-condition-evaluation} \
++		    ${target-non-stop} ${non-stop} ${displaced}
+ 	    }
+ 	}
+     }

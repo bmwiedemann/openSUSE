@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Mon Feb 20 14:25:37 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed a crash when selecting depending products (bsc#1208421)

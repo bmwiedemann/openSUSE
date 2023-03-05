@@ -1,0 +1,101 @@
+From 1907d04cb6cb94052369995cf8373f2670908e2a Mon Sep 17 00:00:00 2001
+From: Pedro Alves <pedro@palves.net>
+Date: Wed, 28 Sep 2022 11:33:30 +0100
+Subject: [PATCH] Fix GDB build: ELF support check & -lzstd
+
+GDB fails to build for me, on Ubuntu 20.04.  I get:
+
+ ...
+   CXXLD  gdb
+ /usr/bin/ld: linux-tdep.o: in function `linux_corefile_thread(thread_info*, linux_corefile_thread_data*)':
+ /home/pedro/gdb/binutils-gdb/src/gdb/linux-tdep.c:1831: undefined reference to `gcore_elf_build_thread_register_notes(gdbarch*, thread_info*, gdb_signal, bfd*, std::unique_ptr<char, gdb::xfree_deleter<char> >*, int*)'
+ /usr/bin/ld: linux-tdep.o: in function `linux_make_corefile_notes(gdbarch*, bfd*, int*)':
+ /home/pedro/gdb/binutils-gdb/src/gdb/linux-tdep.c:2117: undefined reference to `gcore_elf_make_tdesc_note(bfd*, std::unique_ptr<char, gdb::xfree_deleter<char> >*, int*)'
+ collect2: error: ld returned 1 exit status
+ make[2]: *** [Makefile:2149: gdb] Error 1
+ make[2]: Leaving directory '/home/pedro/gdb/binutils-gdb/build/gdb'
+ make[1]: *** [Makefile:11847: all-gdb] Error 2
+ make[1]: Leaving directory '/home/pedro/gdb/binutils-gdb/build'
+ make: *** [Makefile:1004: all] Error 2
+
+Those undefined functions exist in gdb/gcore-elf.c, which is only
+included in the build if GDB's configure thinks that the target you're
+configuring for is an ELF target.  GDB's configure thinks my system
+isn't ELF, which is incorrect.
+
+For the ELF support check, gdb/config.log shows:
+
+ configure:17387: checking for ELF support in BFD
+ configure:17407: gcc -o conftest -I/home/pedro/gdb/binutils-gdb/src/gdb/../include -I../bfd -I/home/pedro/gdb/binutils-gdb/src/gdb/../bfd -g3 -O0      -L../bfd -L../libiberty  -lzstd   conftest.c -lbfd -liberty -lz  -lncursesw -lm -ldl  >&5
+ /usr/bin/ld: ../bfd/libbfd.a(compress.o): in function `decompress_contents':
+ /home/pedro/gdb/binutils-gdb/src/bfd/compress.c:42: undefined reference to `ZSTD_decompress'
+ /usr/bin/ld: /home/pedro/gdb/binutils-gdb/src/bfd/compress.c:44: undefined reference to `ZSTD_isError'
+ /usr/bin/ld: ../bfd/libbfd.a(compress.o): in function `bfd_compress_section_contents':
+ /home/pedro/gdb/binutils-gdb/src/bfd/compress.c:195: undefined reference to `ZSTD_compress'
+ /usr/bin/ld: /home/pedro/gdb/binutils-gdb/src/bfd/compress.c:198: undefined reference to `ZSTD_isError'
+ collect2: error: ld returned 1 exit status
+ configure:17407: $? = 1
+ ...
+ configure:17417: result: no
+
+Note how above, in the gcc command line, "-lzstd" appears before
+"-lbfd".  That explain the link failure.  It should appear after, like
+-lz does.
+
+This commit fixes it, by moving ZSTD_LIBS from LDFLAGS to LIBS, next
+to -lz, in GDB_AC_CHECK_BFD, and regenerating gdb/configure.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29630
+Change-Id: I1f4128dde634e8ea04c9002904f1005a8b3a6863
+---
+ gdb/acinclude.m4 | 4 ++--
+ gdb/configure    | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/acinclude.m4 b/gdb/acinclude.m4
+index 28846119dcb..62fa66c7af3 100644
+--- a/gdb/acinclude.m4
++++ b/gdb/acinclude.m4
+@@ -234,9 +234,9 @@ AC_DEFUN([GDB_AC_CHECK_BFD], [
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+-  LIBS="-lbfd -liberty -lz $intl $LIBS"
++  LIBS="-lbfd -liberty -lz $ZSTD_LIBS $intl $LIBS"
+   AC_CACHE_CHECK(
+     [$1],
+     [$2],
+diff --git a/gdb/configure b/gdb/configure
+index 2fcba76b5e8..a5f33ce65d9 100755
+--- a/gdb/configure
++++ b/gdb/configure
+@@ -17963,9 +17963,9 @@ WIN32LIBS="$WIN32LIBS $WIN32APILIBS"
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+-  LIBS="-lbfd -liberty -lz $intl $LIBS"
++  LIBS="-lbfd -liberty -lz $ZSTD_LIBS $intl $LIBS"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ELF support in BFD" >&5
+ $as_echo_n "checking for ELF support in BFD... " >&6; }
+ if ${gdb_cv_var_elf+:} false; then :
+@@ -18078,9 +18078,9 @@ fi
+   # always want our bfd.
+   CFLAGS="-I${srcdir}/../include -I../bfd -I${srcdir}/../bfd $CFLAGS"
+   ZLIBDIR=`echo $zlibdir | sed 's,\$(top_builddir)/,,g'`
+-  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $ZSTD_LIBS $LDFLAGS"
++  LDFLAGS="-L../bfd -L../libiberty $ZLIBDIR $LDFLAGS"
+   intl=`echo $LIBINTL | sed 's,${top_builddir}/,,g'`
+-  LIBS="-lbfd -liberty -lz $intl $LIBS"
++  LIBS="-lbfd -liberty -lz $ZSTD_LIBS $intl $LIBS"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Mach-O support in BFD" >&5
+ $as_echo_n "checking for Mach-O support in BFD... " >&6; }
+ if ${gdb_cv_var_macho+:} false; then :
+-- 
+2.35.3
+

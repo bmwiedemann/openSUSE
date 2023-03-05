@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 16 17:03:23 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Don't upper limit version of charset_normalized at runtime, too.
+  * Added change to patch: requests-no-hardcoded-version.patch
+
+-------------------------------------------------------------------
 Sat Jan 21 10:01:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.28.2:

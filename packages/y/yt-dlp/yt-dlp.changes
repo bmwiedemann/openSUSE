@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  3 23:33:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.03.03
+  * youtube: Construct dash formats with range query
+  * yt: Detect and break on looping comments
+  * yt: Extract channel view_count when /about tab is passed
+
+-------------------------------------------------------------------
 Sat Feb 18 06:08:22 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to release 2023.02.17 

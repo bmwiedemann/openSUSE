@@ -1,7 +1,7 @@
 #
 # spec file for package xbitmaps
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xbitmaps
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Base X bitmaps
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/releases/individual/data/
-Source:         http://xorg.freedesktop.org/releases/individual/data/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/releases/individual/data/
+Source:         http://xorg.freedesktop.org/releases/individual/data/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
 BuildArch:      noarch

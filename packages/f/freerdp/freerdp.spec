@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %endif
 
 Name:           freerdp
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -47,12 +47,8 @@ Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
 Source1:        freerdp-rpmlintrc
-# PATCH-FIX-UPSTREAM freerdp-channels-off-link-fix.diff -- based on https://github.com/FreeRDP/FreeRDP/pull/7235
-Patch0:         freerdp-builtin-channels-off-link-fix.diff
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
-Patch1:         0001-Make-H.264-codec-optional-during-runtime.patch
-# PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/8551 -- slightly modified: see -DWITH_PLUGIN_RPATH_ONLY
-Patch2:         freerdp-fix-rpath-settings.diff
+Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel

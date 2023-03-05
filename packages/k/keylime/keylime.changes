@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  3 13:58:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add python-typing_extensions requirement
+
+-------------------------------------------------------------------
 Sat Feb 11 16:32:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove completely unnecessary dependency on python-simplejson.

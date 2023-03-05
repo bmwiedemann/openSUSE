@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  4 18:08:31 CET 2023 - tumic@cbox.cz
+
+- Update to version 12.2
+  * Fixed broken handling of IMG "multi-maps" (maps with overviews).
+  * Marine maps rendering fixes & improvements (IMG & ENC).
+  * Allow arbitrary large images (Qt6 only).
+  * Added support for 0.5" (7201x7201) DEM tiles.
+  * Made the DEM cache configurable.
+
+-------------------------------------------------------------------
 Sat Feb 18 14:11:19 CET 2023 - tumic@cbox.cz
 
 - Update to version 12.1

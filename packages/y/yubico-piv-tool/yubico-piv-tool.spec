@@ -1,7 +1,7 @@
 #
 # spec file for package yubico-piv-tool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover  2
 Name:           yubico-piv-tool
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Yubico YubiKey NEO CCID Manager
 License:        BSD-2-Clause

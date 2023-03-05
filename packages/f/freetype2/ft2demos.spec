@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires:       ftbench = %{version}-%{release}
 Requires:       ftdiff = %{version}-%{release}
-Requires:       ftdump = %{version}-%{release}
+Requires:       ftdump = %{version}
 Requires:       ftgamma = %{version}-%{release}
 Requires:       ftgrid = %{version}-%{release}
 Requires:       ftinspect = %{version}-%{release}

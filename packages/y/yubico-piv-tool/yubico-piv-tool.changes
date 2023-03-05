@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  3 21:51:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * ykpiv: Add support for T=0 smartcards
+  * ykpiv: ykcs11: Minor code optimization
+  * ykpiv: ykcs11: Improve logging
+  * ykpiv: ykcs11: Improve error handling
+  * ykpiv: ykcs11: Fix minor bugs
+  * ykcs11: Add support for several PKCS11 Attributes
+  * ykcs11: Add support for CKM_ECDSA_SHA512 mechanism
+  * ykcs11: Fix incorrect value for public key attributes
+    CKA_PRIVATE, CKA_SENSITIVE, CKA_ALWAYS_SENSITIVE,
+    CKA_EXTRACTABLE and CKA_NEVER_EXTRACTABLE
+  * doc: Minor documentation improvement
+
+-------------------------------------------------------------------
 Sat Dec  3 17:05:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

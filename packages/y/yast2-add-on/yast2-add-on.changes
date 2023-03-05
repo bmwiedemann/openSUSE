@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Thu Dec 15 12:50:41 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed failure with the "media_url" element in AutoYaST profile

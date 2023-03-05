@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 28 09:05:48 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.8.2:
+  * Remove WM_TAKE_FOCUS from WM_PROTOCOLS for notification windows
+  * Add pref to change what fields are shown in notifications
+  * Fix a use-after-free with a notification's app ID
+  * Fix plural forms missing from translatable strings
+  * Fix weird formatting mistake in configure.ac
+  * Remove support for xfce4-panel 4.12.
+  * Reduce gettext requirement to 0.20.
+  * Simplify notification placement code
+  * Add assertion to ensure no window with new ID exists in the tree
+  * Fix possible index out of bounds issue
+  * Don't compare uints like char pointers
+  * Support default actions
+  * Add option to allow gauge notifications to ignore DnD
+  * Don't move notifications on mouse-over
+  * If urgency updated, start/stop expiration
+  * Close all non-urgent notifications when DnD is activated
+  * Add a missing $(AM_V_GEN)
+  * Remove intltool in favor of plain gettext
+  * Use pkg-config to find gdbus-codegen
+  * Don't hide glib-genmarshal behind MAINTAINER_MODE
+  * Use glib-compile-resources instead of xdt-csource
+  * Don't require xdt-csource for dist tarball builds
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Feb 17 08:13:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.8.1:

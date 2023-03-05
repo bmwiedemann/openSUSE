@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 04 02:35:41 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1677843192.451bff6:
+  * Use true-or-assign operator
+  * Add Enterprise Linux support to the QEMU backend
+  * testapi: Remove obsolete "do_wait" argument to "send_key"
+  * Remove deprecated backends after one-year notice
+  * Fix generalhw cmd log: Show actual cmd and not "IPMI"
+  * Fall back to manual fetch when checking out branch/ref of Git repo
+  * Fix typo in `t/34-git.t`
+  * Format `t/34-git.t` in a more compact way
+
+-------------------------------------------------------------------
 Wed Mar 01 19:22:20 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1677698531.3c837b1:

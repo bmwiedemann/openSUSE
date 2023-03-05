@@ -1,7 +1,7 @@
 #
 # spec file for package autoyast2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.5.12
+Version:        4.6.0
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only

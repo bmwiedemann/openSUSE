@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  3 14:26:36 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.4:
+  * ISO 15765 and ISO 10681 dissector crash (boo#1208914).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.4.html
+
+-------------------------------------------------------------------
 Thu Jan 19 11:56:26 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
-- Wireshark 4.0.3 (bsc#1207447):
+- Wireshark 4.0.3 (boo#1207447):
   * CVE-2023-0414: EAP dissector crash (boo#1207666).
   * CVE-2023-0417: NFS dissector memory leak (boo#1207669).
   * CVE-2023-0413: Dissection engine crash (boo#1207665).

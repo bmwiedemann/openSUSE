@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sat Mar 04 08:45:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.0.5:
+  * Release 12.0.5 (#22599)
+  * Add SAML IdP service providers to default allow rules.
+    (#22600)
+  * [v12] node hb and watcher scalability improvements (#21495)
+  * Add in SAML IdP service provider session metadata to auth
+    attempts. (#22544) (#22562)
+  * update eref (#22596)
+  * [Web] Refactor serverside filtering and pagination
+    (#20823) (#22432)
+  * fix video link (#22576)
+  * Use `btree.BTreeG` directly in memory backend (#22409)
+  * [v12] Add GCP Service Account parameter to tctl users add
+    reference (#22543)
+  * [v12] Add Telnet into docker to test connectivity for cloud
+    getting started (#22570)
+  * Allow all alert severities to be acknowledged (#22582)
+  * add github.com/google/go-attestation/attest to e imports #2
+    (#22465)
+  * Fix compilation on ARM (#22569)
+  * [v12] Refresh the Access Controls menu (#22523)
+  * [v12] update e ref to latest branch/v12 (#22566)
+  * Added 03/02 Upcoming Releases Update (#22547)
+  * [v12] Enable BPF on ARM64 (#22550)
+  * Teleport 12 Videos (#22527)
+  * Add Azure auto-joining (#21087) (#22521)
+  * [v12] Unify x86/ARM64 build process (#22495)
+  * Fix pickDefaultAddr not respecting HTTPS_PROXY (#22492)
+  * Set `create_as_resource` in device-related `tctl` RPCs
+    (#22415) (#22518)
+  * Improve `tsh kube credentials` read operations (#22508)
+  * [v12] SAML IdP audit events. (#22510)
+  * [v12] `lib/usagereporter` refactor and consolidation (#22512)
+  * [v12] Make curl fail on server error when downloading binaries
+    in buildbox (#22380) (#22442)
+  * add known STS endpoint for ap-southeast-4 (#22486)
+  * [v12] Server Access RBAC Docs page (#22500)
+  * Okta local service. (#22434) (#22513)
+  * chore: Bump Buf to v1.15.0 (#22430) (#22472)
+  * [v12] Allow devices writes with resource-like semantics
+    (#22470)
+  * Initial Okta objects. (#22151) (#22431)
+  * [v12] Update to libbpf 1.0.1  (#22424)
+  * Automatically parse entity ID from SAML SP during CLI creation.
+    (#22101) (#22368)
+  * [v12] Add static and dynamic web ui configuration options
+    (#22422)
+  * [v12] feat: add LoginRule methods to api/client (#22426)
+  * [v12] Add docs steps to create machine-id data dir and systemd
+    enablement (#22477)
+  * [v12] Remove non-applicable roles from teleport start --roles
+    reference (#22311)
+  * [v12] Use developer-friendly and precise technical language in
+    docs (#22412)
+  * docs: use approved terminology for desktop access w/ local
+    users (#22418)
+  * [v12] Add CLI doc changes after new client only parameter for
+    tsh version (#22392)
+  * Export runtime traces from tsh (#22406)
+  * [v12] fixes #21970 - remove broken config validation check in
+    scratch mode (#22423)
+  * [v12] sshserver: Correctly handle PuTTY winadj channel requests
+    (#22420)
+  * Docs: Device Trust role and locking support (#21915) (#22416)
+  * [v12] update e-ref (#22381)
+  * Install libbpf 1.0.1 in buildboxes (#22317)
+  * [v12] Update to default k8s deployment docs (#22396)
+  * Update docs Teleport version and golang (#22384)
+  * Add caching to web assets (#22183)
+  * [v12] Connect: Remove resource cache (#22316)
+  * Machine ID readme example script fix (#22394)
+  * Add Azure join method (#22204)
+  * [v12] Bump versions in docker images to 12 (#22375)
+  * Updates to enable merge queue (#22370)
+  * Fix incorrect login options for Windows Desktops
+    (#22118) (#22333)
+  * [v12] Update eref (#22343)
+  * Add WEBASSETS_SKIP_BUILD to Makefile (#22337)
+  * Always include webassets_embed when building teleport (#22339)
+  * Add `isDashboard` to web config object (#20830) (#22329)
+  * [v12] [Web] Add custom element support to SearchPanel (#22325)
+  * Fix SAML IdP service provider CLI bug. (#22322)
+  * [v12] [web] Move filtering out cloud and tcp apps to the
+    frontend (#22324)
+
+-------------------------------------------------------------------
 Tue Feb 28 07:52:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.0.4:

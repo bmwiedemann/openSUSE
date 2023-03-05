@@ -61,6 +61,7 @@ Requires:       python-psutil
 Requires:       python-pyzmq
 Requires:       python-requests
 Requires:       python-tornado
+Requires:       python-typing_extensions
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools

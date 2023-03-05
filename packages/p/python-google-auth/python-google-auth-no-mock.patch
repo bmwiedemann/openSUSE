@@ -1,51 +1,6 @@
----
- tests/compute_engine/test__metadata.py         |    2 +-
- tests/compute_engine/test_credentials.py       |    2 +-
- tests/conftest.py                              |    2 +-
- tests/crypt/test__python_rsa.py                |    2 +-
- tests/oauth2/test__client.py                   |    2 +-
- tests/oauth2/test_challenges.py                |    2 +-
- tests/oauth2/test_credentials.py               |    2 +-
- tests/oauth2/test_gdch_credentials.py          |    2 +-
- tests/oauth2/test_id_token.py                  |    2 +-
- tests/oauth2/test_reauth.py                    |    2 +-
- tests/oauth2/test_service_account.py           |    2 +-
- tests/oauth2/test_sts.py                       |    2 +-
- tests/test__cloud_sdk.py                       |    2 +-
- tests/test__default.py                         |    2 +-
- tests/test__exponential_backoff.py             |    2 +-
- tests/test__oauth2client.py                    |    2 +-
- tests/test_app_engine.py                       |    2 +-
- tests/test_aws.py                              |    2 +-
- tests/test_downscoped.py                       |    2 +-
- tests/test_external_account.py                 |    2 +-
- tests/test_external_account_authorized_user.py |    2 +-
- tests/test_iam.py                              |    2 +-
- tests/test_identity_pool.py                    |    2 +-
- tests/test_impersonated_credentials.py         |    2 +-
- tests/test_jwt.py                              |    2 +-
- tests/test_pluggable.py                        |    2 +-
- tests/transport/test__custom_tls_signer.py     |    2 +-
- tests/transport/test__mtls_helper.py           |    2 +-
- tests/transport/test_grpc.py                   |    2 +-
- tests/transport/test_mtls.py                   |    2 +-
- tests/transport/test_requests.py               |    2 +-
- tests/transport/test_urllib3.py                |    2 +-
- 32 files changed, 32 insertions(+), 32 deletions(-)
-
---- a/tests/compute_engine/test__metadata.py
-+++ b/tests/compute_engine/test__metadata.py
-@@ -16,7 +16,7 @@ import datetime
- import json
- import os
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- from six.moves import reload_module
---- a/tests/compute_engine/test_credentials.py
-+++ b/tests/compute_engine/test_credentials.py
+diff -Nru google-auth-2.16.1.orig/tests/compute_engine/test_credentials.py google-auth-2.16.1/tests/compute_engine/test_credentials.py
+--- google-auth-2.16.1.orig/tests/compute_engine/test_credentials.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/compute_engine/test_credentials.py	2023-03-02 11:59:04.134850027 +0100
 @@ -14,7 +14,7 @@
  import base64
  import datetime
@@ -55,8 +10,21 @@
  import pytest  # type: ignore
  import responses  # type: ignore
  
---- a/tests/conftest.py
-+++ b/tests/conftest.py
+diff -Nru google-auth-2.16.1.orig/tests/compute_engine/test__metadata.py google-auth-2.16.1/tests/compute_engine/test__metadata.py
+--- google-auth-2.16.1.orig/tests/compute_engine/test__metadata.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/compute_engine/test__metadata.py	2023-03-02 11:59:04.138850079 +0100
+@@ -16,7 +16,7 @@
+ import json
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ from six.moves import reload_module
+diff -Nru google-auth-2.16.1.orig/tests/conftest.py google-auth-2.16.1/tests/conftest.py
+--- google-auth-2.16.1.orig/tests/conftest.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/conftest.py	2023-03-02 11:59:04.070849194 +0100
 @@ -15,7 +15,7 @@
  import os
  import sys
@@ -66,8 +34,9 @@
  import pytest  # type: ignore
  
  
---- a/tests/crypt/test__python_rsa.py
-+++ b/tests/crypt/test__python_rsa.py
+diff -Nru google-auth-2.16.1.orig/tests/crypt/test__python_rsa.py google-auth-2.16.1/tests/crypt/test__python_rsa.py
+--- google-auth-2.16.1.orig/tests/crypt/test__python_rsa.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/crypt/test__python_rsa.py	2023-03-02 11:59:04.158850340 +0100
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -77,19 +46,9 @@
  from pyasn1_modules import pem  # type: ignore
  import pytest  # type: ignore
  import rsa  # type: ignore
---- a/tests/oauth2/test__client.py
-+++ b/tests/oauth2/test__client.py
-@@ -16,7 +16,7 @@ import datetime
- import json
- import os
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- import six
- from six.moves import http_client
---- a/tests/oauth2/test_challenges.py
-+++ b/tests/oauth2/test_challenges.py
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_challenges.py google-auth-2.16.1/tests/oauth2/test_challenges.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_challenges.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_challenges.py	2023-03-02 11:59:04.114849767 +0100
 @@ -17,7 +17,7 @@
  import base64
  import sys
@@ -99,9 +58,22 @@
  import pytest  # type: ignore
  import pyu2f  # type: ignore
  
---- a/tests/oauth2/test_credentials.py
-+++ b/tests/oauth2/test_credentials.py
-@@ -18,7 +18,7 @@ import os
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test__client.py google-auth-2.16.1/tests/oauth2/test__client.py
+--- google-auth-2.16.1.orig/tests/oauth2/test__client.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test__client.py	2023-03-02 11:59:04.106849663 +0100
+@@ -16,7 +16,7 @@
+ import json
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ import six
+ from six.moves import http_client
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_credentials.py google-auth-2.16.1/tests/oauth2/test_credentials.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_credentials.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_credentials.py	2023-03-02 11:59:04.110849715 +0100
+@@ -18,7 +18,7 @@
  import pickle
  import sys
  
@@ -110,9 +82,10 @@
  import pytest  # type: ignore
  
  from google.auth import _helpers
---- a/tests/oauth2/test_gdch_credentials.py
-+++ b/tests/oauth2/test_gdch_credentials.py
-@@ -17,7 +17,7 @@ import datetime
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_gdch_credentials.py google-auth-2.16.1/tests/oauth2/test_gdch_credentials.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_gdch_credentials.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_gdch_credentials.py	2023-03-02 11:59:04.102849611 +0100
+@@ -17,7 +17,7 @@
  import json
  import os
  
@@ -121,8 +94,9 @@
  import pytest  # type: ignore
  import requests
  import six
---- a/tests/oauth2/test_id_token.py
-+++ b/tests/oauth2/test_id_token.py
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_id_token.py google-auth-2.16.1/tests/oauth2/test_id_token.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_id_token.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_id_token.py	2023-03-02 11:59:04.106849663 +0100
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -132,8 +106,9 @@
  import pytest  # type: ignore
  
  from google.auth import environment_vars
---- a/tests/oauth2/test_reauth.py
-+++ b/tests/oauth2/test_reauth.py
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_reauth.py google-auth-2.16.1/tests/oauth2/test_reauth.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_reauth.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_reauth.py	2023-03-02 11:59:04.110849715 +0100
 @@ -14,7 +14,7 @@
  
  import copy
@@ -143,9 +118,10 @@
  import pytest  # type: ignore
  
  from google.auth import exceptions
---- a/tests/oauth2/test_service_account.py
-+++ b/tests/oauth2/test_service_account.py
-@@ -16,7 +16,7 @@ import datetime
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_service_account.py google-auth-2.16.1/tests/oauth2/test_service_account.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_service_account.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_service_account.py	2023-03-02 11:59:04.106849663 +0100
+@@ -16,7 +16,7 @@
  import json
  import os
  
@@ -154,8 +130,9 @@
  
  from google.auth import _helpers
  from google.auth import crypt
---- a/tests/oauth2/test_sts.py
-+++ b/tests/oauth2/test_sts.py
+diff -Nru google-auth-2.16.1.orig/tests/oauth2/test_sts.py google-auth-2.16.1/tests/oauth2/test_sts.py
+--- google-auth-2.16.1.orig/tests/oauth2/test_sts.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/oauth2/test_sts.py	2023-03-02 11:59:04.118849819 +0100
 @@ -14,7 +14,7 @@
  
  import json
@@ -165,52 +142,9 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test__cloud_sdk.py
-+++ b/tests/test__cloud_sdk.py
-@@ -17,7 +17,7 @@ import json
- import os
- import subprocess
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- 
- from google.auth import _cloud_sdk
---- a/tests/test__default.py
-+++ b/tests/test__default.py
-@@ -15,7 +15,7 @@
- import json
- import os
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- 
- from google.auth import _default
---- a/tests/test__exponential_backoff.py
-+++ b/tests/test__exponential_backoff.py
-@@ -12,7 +12,7 @@
- # See the License for the specific language governing permissions and
- # limitations under the License.
- 
--import mock
-+from unittest import mock
- 
- from google.auth import _exponential_backoff
- 
---- a/tests/test__oauth2client.py
-+++ b/tests/test__oauth2client.py
-@@ -16,7 +16,7 @@ import datetime
- import os
- import sys
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import reload_module
- 
---- a/tests/test_app_engine.py
-+++ b/tests/test_app_engine.py
+diff -Nru google-auth-2.16.1.orig/tests/test_app_engine.py google-auth-2.16.1/tests/test_app_engine.py
+--- google-auth-2.16.1.orig/tests/test_app_engine.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_app_engine.py	2023-03-02 11:59:04.094849506 +0100
 @@ -14,7 +14,7 @@
  
  import datetime
@@ -220,64 +154,10 @@
  import pytest  # type: ignore
  
  from google.auth import app_engine
---- a/tests/test_aws.py
-+++ b/tests/test_aws.py
-@@ -15,7 +15,7 @@
- import datetime
- import json
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- from six.moves import urllib
---- a/tests/test_downscoped.py
-+++ b/tests/test_downscoped.py
-@@ -15,7 +15,7 @@
- import datetime
- import json
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- from six.moves import urllib
---- a/tests/test_external_account.py
-+++ b/tests/test_external_account.py
-@@ -15,7 +15,7 @@
- import datetime
- import json
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- from six.moves import urllib
---- a/tests/test_external_account_authorized_user.py
-+++ b/tests/test_external_account_authorized_user.py
-@@ -15,7 +15,7 @@
- import datetime
- import json
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- 
---- a/tests/test_iam.py
-+++ b/tests/test_iam.py
-@@ -16,7 +16,7 @@ import base64
- import datetime
- import json
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- from six.moves import http_client
- 
---- a/tests/test_identity_pool.py
-+++ b/tests/test_identity_pool.py
-@@ -16,7 +16,7 @@ import datetime
+diff -Nru google-auth-2.16.1.orig/tests/test_aws.py google-auth-2.16.1/tests/test_aws.py
+--- google-auth-2.16.1.orig/tests/test_aws.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_aws.py	2023-03-02 11:59:04.166850444 +0100
+@@ -16,7 +16,7 @@
  import json
  import os
  
@@ -286,9 +166,106 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test_impersonated_credentials.py
-+++ b/tests/test_impersonated_credentials.py
-@@ -19,7 +19,7 @@ import os
+diff -Nru google-auth-2.16.1.orig/tests/test__cloud_sdk.py google-auth-2.16.1/tests/test__cloud_sdk.py
+--- google-auth-2.16.1.orig/tests/test__cloud_sdk.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test__cloud_sdk.py	2023-03-02 11:59:04.098849558 +0100
+@@ -17,7 +17,7 @@
+ import os
+ import subprocess
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.auth import _cloud_sdk
+diff -Nru google-auth-2.16.1.orig/tests/test__default.py google-auth-2.16.1/tests/test__default.py
+--- google-auth-2.16.1.orig/tests/test__default.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test__default.py	2023-03-02 11:59:04.126849923 +0100
+@@ -15,7 +15,7 @@
+ import json
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.auth import _default
+diff -Nru google-auth-2.16.1.orig/tests/test_downscoped.py google-auth-2.16.1/tests/test_downscoped.py
+--- google-auth-2.16.1.orig/tests/test_downscoped.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_downscoped.py	2023-03-02 11:59:04.134850027 +0100
+@@ -15,7 +15,7 @@
+ import datetime
+ import json
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ from six.moves import urllib
+diff -Nru google-auth-2.16.1.orig/tests/test__exponential_backoff.py google-auth-2.16.1/tests/test__exponential_backoff.py
+--- google-auth-2.16.1.orig/tests/test__exponential_backoff.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test__exponential_backoff.py	2023-03-02 11:59:04.066849142 +0100
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import mock
++from unittest import mock
+ 
+ from google.auth import _exponential_backoff
+ 
+diff -Nru google-auth-2.16.1.orig/tests/test_external_account_authorized_user.py google-auth-2.16.1/tests/test_external_account_authorized_user.py
+--- google-auth-2.16.1.orig/tests/test_external_account_authorized_user.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_external_account_authorized_user.py	2023-03-02 11:59:04.130849975 +0100
+@@ -15,7 +15,7 @@
+ import datetime
+ import json
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ 
+diff -Nru google-auth-2.16.1.orig/tests/test_external_account.py google-auth-2.16.1/tests/test_external_account.py
+--- google-auth-2.16.1.orig/tests/test_external_account.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_external_account.py	2023-03-02 11:59:04.070849194 +0100
+@@ -15,7 +15,7 @@
+ import datetime
+ import json
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ from six.moves import urllib
+diff -Nru google-auth-2.16.1.orig/tests/test_iam.py google-auth-2.16.1/tests/test_iam.py
+--- google-auth-2.16.1.orig/tests/test_iam.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_iam.py	2023-03-02 11:59:04.142850132 +0100
+@@ -16,7 +16,7 @@
+ import datetime
+ import json
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ 
+diff -Nru google-auth-2.16.1.orig/tests/test_identity_pool.py google-auth-2.16.1/tests/test_identity_pool.py
+--- google-auth-2.16.1.orig/tests/test_identity_pool.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_identity_pool.py	2023-03-02 11:59:04.146850184 +0100
+@@ -16,7 +16,7 @@
+ import json
+ import os
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import http_client
+ from six.moves import urllib
+diff -Nru google-auth-2.16.1.orig/tests/test_impersonated_credentials.py google-auth-2.16.1/tests/test_impersonated_credentials.py
+--- google-auth-2.16.1.orig/tests/test_impersonated_credentials.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_impersonated_credentials.py	2023-03-02 11:59:04.162850392 +0100
+@@ -19,7 +19,7 @@
  # Because Python 2.7
  # from typing import List
  
@@ -297,9 +274,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  
---- a/tests/test_jwt.py
-+++ b/tests/test_jwt.py
-@@ -17,7 +17,7 @@ import datetime
+diff -Nru google-auth-2.16.1.orig/tests/test_jwt.py google-auth-2.16.1/tests/test_jwt.py
+--- google-auth-2.16.1.orig/tests/test_jwt.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_jwt.py	2023-03-02 11:59:04.150850236 +0100
+@@ -17,7 +17,7 @@
  import json
  import os
  
@@ -308,9 +286,22 @@
  import pytest  # type: ignore
  
  from google.auth import _helpers
---- a/tests/test_pluggable.py
-+++ b/tests/test_pluggable.py
-@@ -17,7 +17,7 @@ import json
+diff -Nru google-auth-2.16.1.orig/tests/test__oauth2client.py google-auth-2.16.1/tests/test__oauth2client.py
+--- google-auth-2.16.1.orig/tests/test__oauth2client.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test__oauth2client.py	2023-03-02 11:59:04.094849506 +0100
+@@ -16,7 +16,7 @@
+ import os
+ import sys
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ from six.moves import reload_module
+ 
+diff -Nru google-auth-2.16.1.orig/tests/test_pluggable.py google-auth-2.16.1/tests/test_pluggable.py
+--- google-auth-2.16.1.orig/tests/test_pluggable.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/test_pluggable.py	2023-03-02 11:59:04.162850392 +0100
+@@ -17,7 +17,7 @@
  import os
  import subprocess
  
@@ -319,9 +310,10 @@
  import pytest  # type: ignore
  
  # from six.moves import http_client
---- a/tests/transport/test__custom_tls_signer.py
-+++ b/tests/transport/test__custom_tls_signer.py
-@@ -16,7 +16,7 @@ import base64
+diff -Nru google-auth-2.16.1.orig/tests/transport/test__custom_tls_signer.py google-auth-2.16.1/tests/transport/test__custom_tls_signer.py
+--- google-auth-2.16.1.orig/tests/transport/test__custom_tls_signer.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test__custom_tls_signer.py	2023-03-02 11:59:04.078849298 +0100
+@@ -16,7 +16,7 @@
  import ctypes
  import os
  
@@ -330,8 +322,21 @@
  import pytest  # type: ignore
  from requests.packages.urllib3.util.ssl_ import create_urllib3_context  # type: ignore
  import urllib3.contrib.pyopenssl  # type: ignore
---- a/tests/transport/test__mtls_helper.py
-+++ b/tests/transport/test__mtls_helper.py
+diff -Nru google-auth-2.16.1.orig/tests/transport/test_grpc.py google-auth-2.16.1/tests/transport/test_grpc.py
+--- google-auth-2.16.1.orig/tests/transport/test_grpc.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test_grpc.py	2023-03-02 11:59:04.078849298 +0100
+@@ -16,7 +16,7 @@
+ import os
+ import time
+ 
+-import mock
++from unittest import mock
+ import pytest  # type: ignore
+ 
+ from google.auth import _helpers
+diff -Nru google-auth-2.16.1.orig/tests/transport/test__mtls_helper.py google-auth-2.16.1/tests/transport/test__mtls_helper.py
+--- google-auth-2.16.1.orig/tests/transport/test__mtls_helper.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test__mtls_helper.py	2023-03-02 11:59:04.086849402 +0100
 @@ -15,7 +15,7 @@
  import os
  import re
@@ -341,19 +346,9 @@
  from OpenSSL import crypto
  import pytest  # type: ignore
  
---- a/tests/transport/test_grpc.py
-+++ b/tests/transport/test_grpc.py
-@@ -16,7 +16,7 @@ import datetime
- import os
- import time
- 
--import mock
-+from unittest import mock
- import pytest  # type: ignore
- 
- from google.auth import _helpers
---- a/tests/transport/test_mtls.py
-+++ b/tests/transport/test_mtls.py
+diff -Nru google-auth-2.16.1.orig/tests/transport/test_mtls.py google-auth-2.16.1/tests/transport/test_mtls.py
+--- google-auth-2.16.1.orig/tests/transport/test_mtls.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test_mtls.py	2023-03-02 11:59:04.086849402 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -363,9 +358,10 @@
  import pytest  # type: ignore
  
  from google.auth import exceptions
---- a/tests/transport/test_requests.py
-+++ b/tests/transport/test_requests.py
-@@ -18,7 +18,7 @@ import os
+diff -Nru google-auth-2.16.1.orig/tests/transport/test_requests.py google-auth-2.16.1/tests/transport/test_requests.py
+--- google-auth-2.16.1.orig/tests/transport/test_requests.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test_requests.py	2023-03-02 11:59:04.090849454 +0100
+@@ -18,7 +18,7 @@
  import sys
  
  import freezegun
@@ -374,8 +370,9 @@
  import OpenSSL
  import pytest  # type: ignore
  import requests
---- a/tests/transport/test_urllib3.py
-+++ b/tests/transport/test_urllib3.py
+diff -Nru google-auth-2.16.1.orig/tests/transport/test_urllib3.py google-auth-2.16.1/tests/transport/test_urllib3.py
+--- google-auth-2.16.1.orig/tests/transport/test_urllib3.py	2023-02-17 21:41:23.000000000 +0100
++++ google-auth-2.16.1/tests/transport/test_urllib3.py	2023-03-02 11:59:04.074849246 +0100
 @@ -15,7 +15,7 @@
  import os
  import sys

@@ -1,3 +1,13 @@
+gpxsee (12.2) stable; urgency=low
+
+  * Fixed broken handling of IMG "multi-maps" (maps with overviews).
+  * Marine maps rendering fixes & improvements (IMG & ENC).
+  * Allow arbitrary large images (Qt6 only).
+  * Added support for 0.5" (7201x7201) DEM tiles.
+  * Made the DEM cache configurable.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 04 Mar 2023 18:15:15 +0100
+
 gpxsee (12.1) stable; urgency=medium
 
   * Fixed areas rendering.

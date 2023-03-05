@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Wed Mar  1 07:54:03 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed TFTP download, truncate the target file to avoid garbage

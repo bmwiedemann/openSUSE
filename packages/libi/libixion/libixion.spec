@@ -1,7 +1,7 @@
 #
 # spec file for package libixion
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,7 @@ Python 3 bindings for %{name}.
 %patch0 -p1
 
 %build
+%global optflags %optflags -fexcess-precision=fast
 libtoolize --force --copy
 autoreconf -fi
 %if 0%{?suse_version} < 1500

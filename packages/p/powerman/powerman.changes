@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  4 07:01:36 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
+  Replace deprecated usmHMACMD5AuthProtocol Protocol by
+  SNMP_DEFAULT_AUTH_PROTO.
+
+-------------------------------------------------------------------
 Mon Nov 15 14:20:41 UTC 2021 - Egbert Eich <eich@suse.com>
 
-- Utilize sysuser infrastructure to set user/group powerman. 
+- Utilize sysuser infrastructure to set user/group powerman.
 
 -------------------------------------------------------------------
 Tue Oct 19 13:06:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
@@ -19,7 +26,7 @@ Thu May 13 07:54:21 UTC 2021 - pgajdos@suse.com
   * Add etc/openbmc.dev (Albert Chu, PR #33)
   * Add etc/kvm.dev & etc/kvm-ssh.dev (tisbeok, PR #8)
   * Fix misinterpretation of error strings in ipmipower.dev.
-- fix [bsc#1185180] -- PIDFile under /run
+- fix [bsc#1185071] -- PIDFile under /run
 - modified patches
   % service-dynamic-user-autofiles.patch (refreshed)
   % service-dynamic-user-configure.patch (refreshed)

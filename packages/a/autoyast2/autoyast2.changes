@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Wed Dec 21 14:19:22 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
 
 - Added XSLT transformation for easy conversion of the data types in the

@@ -1,0 +1,272 @@
+gdb: disable commit resumed in target_kill
+
+New in this version:
+
+ - Better comment in target_kill
+ - Uncomment line in test to avoid hanging when exiting, when testing on
+   native-extended-gdbserver
+
+PR 28275 shows that doing a sequence of:
+
+ - Run inferior in background (run &)
+ - kill that inferior
+ - Run again
+
+We get into this assertion:
+
+    /home/smarchi/src/binutils-gdb/gdb/target.c:2590: internal-error: target_wait: Assertion `!proc_target->commit_resumed_state' failed.
+
+    #0  internal_error_loc (file=0x5606b344e740 "/home/smarchi/src/binutils-gdb/gdb/target.c", line=2590, fmt=0x5606b344d6a0 "%s: Assertion `%s' failed.") at /home/smarchi/src/binutils-gdb/gdbsupport/errors.cc:54
+    #1  0x00005606b6296475 in target_wait (ptid=..., status=0x7fffb9390630, options=...) at /home/smarchi/src/binutils-gdb/gdb/target.c:2590
+    #2  0x00005606b5767a98 in startup_inferior (proc_target=0x5606bfccb2a0 <the_amd64_linux_nat_target>, pid=3884857, ntraps=1, last_waitstatus=0x0, last_ptid=0x0) at /home/smarchi/src/binutils-gdb/gdb/nat/fork-inferior.c:482
+    #3  0x00005606b4e6c9c5 in gdb_startup_inferior (pid=3884857, num_traps=1) at /home/smarchi/src/binutils-gdb/gdb/fork-child.c:132
+    #4  0x00005606b50f14a5 in inf_ptrace_target::create_inferior (this=0x5606bfccb2a0 <the_amd64_linux_nat_target>, exec_file=0x604000039f50 "/home/smarchi/build/binutils-gdb/gdb/test", allargs="", env=0x61500000a580, from_tty=1)
+        at /home/smarchi/src/binutils-gdb/gdb/inf-ptrace.c:105
+    #5  0x00005606b53b6d23 in linux_nat_target::create_inferior (this=0x5606bfccb2a0 <the_amd64_linux_nat_target>, exec_file=0x604000039f50 "/home/smarchi/build/binutils-gdb/gdb/test", allargs="", env=0x61500000a580, from_tty=1)
+        at /home/smarchi/src/binutils-gdb/gdb/linux-nat.c:978
+    #6  0x00005606b512b79b in run_command_1 (args=0x0, from_tty=1, run_how=RUN_NORMAL) at /home/smarchi/src/binutils-gdb/gdb/infcmd.c:468
+    #7  0x00005606b512c236 in run_command (args=0x0, from_tty=1) at /home/smarchi/src/binutils-gdb/gdb/infcmd.c:526
+
+When running the kill command, commit_resumed_state for the
+process_stratum_target (linux-nat, here) is true.  After the kill, when
+there are no more threads, commit_resumed_state is still true, as
+nothing touches this flag during the kill operation.  During the
+subsequent run command, run_command_1 does:
+
+    scoped_disable_commit_resumed disable_commit_resumed ("running");
+
+We would think that this would clear the commit_resumed_state flag of
+our native target, but that's not the case, because
+scoped_disable_commit_resumed iterates on non-exited inferiors in order
+to find active process targets.  And after the kill, the inferior is
+exited, and the native target was unpushed from it anyway.  So
+scoped_disable_commit_resumed doesn't touch the commit_resumed_state
+flag of the native target, it stays true.  When reaching target_wait, in
+startup_inferior (to consume the initial expect stop events while the
+inferior is starting up and working its way through the shell),
+commit_resumed_state is true, breaking the contract saying that
+commit_resumed_state is always false when calling the targets' wait
+method.
+
+(note: to be correct, I think that startup_inferior should toggle
+commit_resumed between the target_wait and target_resume calls, but I'll
+ignore that for now)
+
+I can see multiple ways to fix this.  In the end, we need
+commit_resumed_state to be cleared by the time we get to that
+target_wait.  It could be done at the end of the kill command, or at the
+beginning of the run command.
+
+To keep things in a coherent state, I'd like to make it so that after
+the kill command, when the target is left with no threads, its
+commit_resumed_state flag is left to false.  This way, we can keep
+working with the assumption that a target with no threads (and therefore
+no running threads) has commit_resumed_state == false.
+
+Do this by adding a scoped_disable_commit_resumed in target_kill.  It
+clears the target's commit_resumed_state on entry, and leaves it false
+if the target does not have any resumed thread on exit.  That means,
+even if the target has another inferior with stopped threads,
+commit_resumed_state will be left to false, which makes sense.
+
+Add a test that tries to cover various combinations of actions done
+while an inferior is running (and therefore while commit_resumed_state
+is true on the process target).
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28275
+Change-Id: I8e6fe6dc1f475055921520e58cab68024039a1e9
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+---
+ gdb/target.c                                       |   9 ++
+ .../gdb.base/run-control-while-bg-execution.c      |  33 ++++++
+ .../gdb.base/run-control-while-bg-execution.exp    | 122 +++++++++++++++++++++
+ 3 files changed, 164 insertions(+)
+
+diff --git a/gdb/target.c b/gdb/target.c
+index 0c86b571e1c..0eae5307785 100644
+--- a/gdb/target.c
++++ b/gdb/target.c
+@@ -908,6 +908,15 @@ add_deprecated_target_alias (const target_info &tinfo, const char *alias)
+ void
+ target_kill (void)
+ {
++
++  /* If the commit_resume_state of the to-be-killed-inferior's process stratum
++     is true, and this inferior is the last live inferior with resumed threads
++     of that target, then we want to leave commit_resume_state to false, as the
++     target won't have any resumed threads anymore.  We achieve this with
++     this scoped_disable_commit_resumed.  On construction, it will set the flag
++     to false.  On destruction, it will only set it to true if there are resumed
++     threads left.  */
++  scoped_disable_commit_resumed disable ("killing");
+   current_inferior ()->top_target ()->kill ();
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/run-control-while-bg-execution.c b/gdb/testsuite/gdb.base/run-control-while-bg-execution.c
+new file mode 100644
+index 00000000000..8092fadc8b9
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/run-control-while-bg-execution.c
+@@ -0,0 +1,33 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2020-2022 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++					       //
++#include <unistd.h>
++
++static pid_t mypid = -1;
++
++static void
++after_getpid (void)
++{
++}
++
++int
++main (void)
++{
++  mypid = getpid ();
++  after_getpid ();
++  sleep (30);
++}
+diff --git a/gdb/testsuite/gdb.base/run-control-while-bg-execution.exp b/gdb/testsuite/gdb.base/run-control-while-bg-execution.exp
+new file mode 100644
+index 00000000000..5b4834f0b32
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/run-control-while-bg-execution.exp
+@@ -0,0 +1,122 @@
++# Copyright 2022 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# This test aims at testing various operations after getting rid of an inferior
++# that was running in background, or while we have an inferior running in
++# background.  The original intent was to expose cases where the commit-resumed
++# state of the process stratum target was not reset properly after killing an
++# inferior running in background, which would be a problem when trying to run
++# again.  The test was expanded to test various combinations of
++# run-control-related actions done with an inferior running in background.
++
++if {[use_gdb_stub]} {
++    unsupported "test requires running"
++    return
++}
++
++standard_testfile
++
++if {[build_executable "failed to prepare" $testfile $srcfile]} {
++    return
++}
++
++# Run one variation of the test:
++#
++# 1. Start an inferior in the background with "run &"
++# 2. Do action 1
++# 3. Do action 2
++#
++# Action 1 indicates what to do with the inferior running in background:
++#
++#  - kill: kill it
++#  - detach: detach it
++#  - add: add a new inferior and switch to it, leave the inferior running in
++#    background alone
++#  - none: do nothing, leave the inferior running in background alone
++#
++# Action 2 indicates what to do after that:
++#
++#  - start: use the start command
++#  - run: use the run command
++#  - attach: start a process outside of GDB and attach it
++proc do_test { action1 action2 } {
++    save_vars { ::GDBFLAGS } {
++	append ::GDBFLAGS " -ex \"maintenance set target-non-stop on\""
++	clean_restart $::binfile
++    }
++
++    # Ensure we are at least after the getpid call, should we need it.
++    if { ![runto "after_getpid"] } {
++	return
++    }
++
++    # Some commands below ask for confirmation.  Turn that off for simplicity.
++    gdb_test "set confirm off"
++    gdb_test_multiple "continue &" "" {
++	-re ".*\r\n$::gdb_prompt " {
++	    pass $gdb_test_name
++	}
++    }
++
++    if { $action1 == "kill" } {
++	gdb_test "kill" "Inferior 1 .* killed.*"
++    } elseif { $action1 == "detach" } {
++	set child_pid [get_integer_valueof "mypid" -1]
++	if { $child_pid == -1 } {
++	    fail "failed to extract child pid"
++	    return
++	}
++
++	gdb_test "detach" "Inferior 1 .* detached.*" "detach from first instance"
++
++	# Kill the detached process, to avoid hanging when exiting GDBserver,
++	# when testing with the native-extended-gdbserver board.
++	remote_exec target "kill $child_pid"
++    } elseif { $action1 == "add" } {
++	gdb_test "add-inferior -exec $::binfile" \
++	    "Added inferior 2 on connection 1.*" "add-inferior"
++	gdb_test "inferior 2" "Switching to inferior 2 .*"
++    } elseif { $action1 == "none" } {
++
++    } else {
++	error "invalid action 1"
++    }
++
++    if { $action2 == "start" } {
++	gdb_test "start" "Temporary breakpoint $::decimal\(?:\.$::decimal\)?, main .*"
++    } elseif { $action2 == "run" } {
++	gdb_test "break main" "Breakpoint $::decimal at $::hex.*"
++	gdb_test "run" "Breakpoint $::decimal\(?:\.$::decimal\)?, main .*"
++    } elseif { $action2 == "attach" } {
++	set test_spawn_id [spawn_wait_for_attach $::binfile]
++	set test_pid [spawn_id_get_pid $test_spawn_id]
++
++	if { [gdb_attach $test_pid] } {
++	    gdb_test "detach" "Inferior $::decimal .* detached.*" \
++		"detach from second instance"
++	}
++
++	# Detach and kill this inferior so we don't leave it around.
++	kill_wait_spawned_process $test_spawn_id
++    } else {
++	error "invalid action 2"
++    }
++}
++
++foreach_with_prefix action1 { kill detach add none } {
++    foreach_with_prefix action2 { start run attach } {
++	do_test $action1 $action2
++    }
++}

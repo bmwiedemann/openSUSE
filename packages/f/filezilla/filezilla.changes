@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar  4 14:33:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.63.2.1
+  * Bugfixes and minor changes:
+    - macOS: Several rendering fixes in dark mode
+    - macOS: Disable automatic quote/dash substitution in text
+      input fields
+    - MSW: Fixed an issue with Drag&Drop to Explorer on systems
+      that use shortened 8.3 pathnames in environment variables
+    - MSW: If FileZilla was installed for current user only,
+      updating with the installer now skips the UAC prompt
+    - Updated to libfilezilla 0.41.1 to fix a rare crash
+    - Official binaries are now built againt GnuTLS 3.8.0
+
+-------------------------------------------------------------------
 Fri Feb 24 15:17:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.63.2
