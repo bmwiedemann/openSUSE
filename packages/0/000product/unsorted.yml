@@ -10439,6 +10439,8 @@ unsorted:
   - libblockdev-devel 
   - libblosc1 
   - libblosc2-2 
+  - libblosc2-2-32bit: [x86_64] 
+  - libblosc2-2-x86-64-v3: [x86_64] 
   - libbluetooth3-32bit: [x86_64] 
   - libbluray-bdj 
   - libbluray-devel 
@@ -27512,6 +27514,7 @@ unsorted:
   - python311-kasa 
   - python311-kazoo 
   - python311-kerberos 
+  - python311-keylime 
   - python311-keyring 
   - python311-keyring-keyutils 
   - python311-keyring-pass 
