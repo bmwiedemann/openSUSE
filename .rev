@@ -591,4 +591,17 @@
   package.</comment>
     <requestid>1066987</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e25c21c9730e143a9caf2db36630d81</srcmd5>
+    <version>3.10.10</version>
+    <time>1678043268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.10:
+  Bug fixes and regressions handling, no change of behaviour and
+  no security bugs fixed.
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters</comment>
+    <requestid>1068979</requestid>
+  </revision>
 </revisionlist>

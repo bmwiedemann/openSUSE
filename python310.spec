@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.9
+Version:        3.10.10
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -166,6 +166,10 @@ Patch35:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#7da97f61816f mcepl@suse.com
 # NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
 Patch36:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-UPSTREAM CVE-2023-24329-blank-URL-bypass.patch bsc#1208471 mcepl@suse.com
+# blocklist bypass via the urllib.parse component when supplying
+# a URL that starts with blank characters
+Patch37:        CVE-2023-24329-blank-URL-bypass.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -438,6 +442,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
+%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -633,7 +638,7 @@ for library in \
     _posixsubprocess _queue _random resource select _ssl _socket spwd \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
     _testmultiphase unicodedata zlib _ctypes_test _testinternalcapi _testcapi \
-    xxlimited xxlimited_35 \
+    _testclinic xxlimited xxlimited_35 \
     _xxtestfuzz _xxsubinterpreters _elementtree pyexpat _md5 _sha1 \
     _sha256 _sha512 _blake2 _sha3 _uuid _zoneinfo
 do
@@ -882,6 +887,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{dynlib _ctypes_test}
 %{dynlib _testbuffer}
 %{dynlib _testcapi}
+%{dynlib _testclinic}
 %{dynlib _testinternalcapi}
 %{dynlib _testimportmultiple}
 %{dynlib _testmultiphase}
