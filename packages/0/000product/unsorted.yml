@@ -10828,7 +10828,6 @@ unsorted:
   - libcmis-devel 
   - libcmocka-devel 
   - libcmocka-devel-32bit: [x86_64] 
-  - libcmocka-devel-static 
   - libcmocka0 
   - libcmocka0-32bit: [x86_64] 
   - libcmpiCppImpl0 
@@ -12874,6 +12873,7 @@ unsorted:
   - libminiupnpc17-32bit: [x86_64] 
   - libminizinc-devel 
   - libminizip1-32bit: [x86_64] 
+  - libminizip1-x86-64-v3: [x86_64] 
   - libmirage-3_2 
   - libmirage-data 
   - libmirage-devel 
@@ -13028,7 +13028,7 @@ unsorted:
   - libmunit0suse0 
   - libmuparser2_3_4 
   - libmuparser2_3_4-32bit: [x86_64] 
-  - libmuparserx4_0_11 
+  - libmuparserx4_0_12 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -15773,6 +15773,7 @@ unsorted:
   - libz-ng2 
   - libz-ng2-32bit: [x86_64] 
   - libz1-32bit: [x86_64] 
+  - libz1-x86-64-v3: [x86_64] 
   - libz3-4_12 
   - libzapojit-0_0-0 
   - libzapojit-devel 
