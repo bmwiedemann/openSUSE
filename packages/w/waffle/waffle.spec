@@ -20,7 +20,7 @@
 %define _minorVersion 0
 %define libname lib%{name}-%{_majorVersion}-%{_minorVersion}
 Name:           waffle
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause

@@ -131,4 +131,15 @@
 - supersedes 106.patch</comment>
     <requestid>1068965</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5728f8c12839d57ef5acd82c4ee5f07c</srcmd5>
+    <version>1.7.2</version>
+    <time>1678125315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.2
+  * all: use format(gnu_printf), enable in mingw
+  * meson: don't run TLS checks on mingw
+  * wgl: remove unused dummy wgl_error.[ch]</comment>
+    <requestid>1069489</requestid>
+  </revision>
 </revisionlist>

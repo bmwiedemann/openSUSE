@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  5 21:31:46 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.7.2
+  * all: use format(gnu_printf), enable in mingw
+  * meson: don't run TLS checks on mingw
+  * wgl: remove unused dummy wgl_error.[ch]
+
+-------------------------------------------------------------------
 Thu Mar  2 15:01:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.7.1
