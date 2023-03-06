@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyssim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-pyssim
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Structured Similarity Image Metric (SSIM)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jterrace/pyssim
-Source:         https://github.com/jterrace/pyssim/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyssim/pyssim-%{version}.tar.gz
 Patch0:         Pillow-imports.patch
+# PATCH-FIX-UPSTREAM numpy120.patch gh#jterrace/pyssim#44
+Patch1:         numpy120.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,7 +35,7 @@ Requires:       python-Pillow
 Requires:       python-numpy
 Requires:       python-scipy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
@@ -47,8 +48,7 @@ BuildRequires:  %{python_module scipy}
 Module for computing Structured Similarity Image Metric (SSIM) in Python.
 
 %prep
-%setup -q -n pyssim-%{version}
-%patch0 -p1
+%autosetup -p1 -n pyssim-%{version}
 
 %build
 %python_build
@@ -77,6 +77,7 @@ $python -m ssim --cw --width 128 --height 128 test-images/test3-orig.jpg test-im
 %license LICENSE.md
 %doc README.md
 %python_alternative %{_bindir}/pyssim
-%{python_sitelib}/*
+%{python_sitelib}/ssim
+%{python_sitelib}/pyssim-%{version}*-info
 
 %changelog

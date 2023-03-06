@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  6 11:17:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy120.patch to support numpy 1.20 gh#jterrace/pyssim#44
+- Update to 0.5
+  * No release notes found
+
+-------------------------------------------------------------------
 Sat Feb 13 07:49:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 build (scipy) 
