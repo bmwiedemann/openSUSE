@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar  4 16:52:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.1
+  * close TCP connections faster to lessen the resource
+    utilization on target.
+
+-------------------------------------------------------------------
+Sun Feb 26 13:33:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * implmenet sub-millisecond timing report to make it suitable
+    for Data center and Cloud environments.
+  * fix downtime report miscalculation.
+  * misc fixes
+
+-------------------------------------------------------------------
 Sat Oct 15 12:29:28 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package for tcping, version 1.12.1

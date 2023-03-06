@@ -7,4 +7,12 @@
     <comment>I want to maintain tcping in Factory</comment>
     <requestid>1035920</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>03a2d9551ac91898270fd0affadd444b</srcmd5>
+    <version>1.19.1</version>
+    <time>1678125318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069492</requestid>
+  </revision>
 </revisionlist>

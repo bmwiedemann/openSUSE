@@ -1,7 +1,8 @@
 #
 # spec file for package tcping
 #
-# Copyright (c) 2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2022-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           tcping
-Version:        1.12.1
+Version:        1.19.1
 Release:        0
 Summary:        A ping program for TCP ports
 License:        MIT
