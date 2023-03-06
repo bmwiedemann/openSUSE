@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="localonly">
-    <param name="url">git://github.com/libhugetlbfs/libhugetlbfs.git</param>
+    <param name="url">https://github.com/libhugetlbfs/libhugetlbfs.git</param>
     <param name="scm">git</param>
     <param name="revision">HEAD</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.g%h</param>

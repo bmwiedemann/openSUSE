@@ -433,4 +433,12 @@ D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
     <comment></comment>
     <requestid>917685</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>e9085cb794119fab7a9527b9c58ce541</srcmd5>
+    <version>2.23.0.g6b126a4</version>
+    <time>1678125294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069472</requestid>
+  </revision>
 </revisionlist>

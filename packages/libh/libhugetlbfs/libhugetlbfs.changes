@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  1 03:18:42 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop tests from rpm (boo#1159558)
+
+-------------------------------------------------------------------
 Thu Sep  9 07:42:34 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add glibc-2.34-fix.patch as a fix for upstream issue gh#52:

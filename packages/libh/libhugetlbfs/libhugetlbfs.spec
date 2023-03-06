@@ -75,6 +75,7 @@ chmod 644 %{buildroot}%{_libdir}/*.a
 if [ -f %{buildroot}%{_libdir}/libhugetlbfs/tests/obj64/dummy.ldscript ]; then
 	chmod -f a-x %{buildroot}%{_libdir}/libhugetlbfs/tests/obj64/dummy.ldscript
 fi
+rm -r %{buildroot}%{_libdir}/libhugetlbfs/tests
 
 %files
 %defattr(-, root, root)
