@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define skip_python36 1
 %define skip_python2 1
 Name:           python-sphinxcontrib-%{short_name}%{psuffix}
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 %if "%{flavor}" == "" || "%{flavor}" == "test"
 Summary:        Sphinx extension to document CLI programs
@@ -37,11 +37,11 @@ Summary:        Documentation for sphinxcontrib-autoprogram
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-contrib/%{short_name}
 Source0:        %{URL}/archive/%{version}/python-sphinxcontrib-%{short_name}-%{version}.tar.gz
-# https://github.com/sphinx-contrib/autoprogram/pull/25
-Patch0:         python-sphinxcontrib-autoprogram-python310.patch
 # PATCH-FIX-UPSTREAM skip-failing-test.patch gh#sphinx-contrib/autoprogram#54 mcepl@suse.com
 # Switch off failing tests by the environmental variable SKIPTESTS
 Patch1:         skip-failing-test.patch
+# PATCH-FIX-UPSTREAM sphinx6.patch gh#sphinx-contrib/autoprogram#62
+Patch2:         sphinx6.patch
 BuildRequires:  %{python_module Sphinx >= 1.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -51,11 +51,12 @@ Requires:       python-six
 BuildArch:      noarch
 %if "%{flavor}" == "test"
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module sphinxcontrib-autoprogram}
+BuildRequires:  %{python_module sphinxcontrib-autoprogram == %{version}}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= 1.0.1}
 %endif
 %if "%{flavor}" == "doc"
-BuildRequires:  %{python_module sphinxcontrib-autoprogram}
+BuildRequires:  %{python_module sphinxcontrib-autoprogram == %{version}}
+BuildRequires:  %{python_module sphinxcontrib-websupport}
 %endif
 %python_subpackages
 

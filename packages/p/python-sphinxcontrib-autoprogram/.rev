@@ -41,4 +41,17 @@
 </comment>
     <requestid>1042701</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ccafb2894813cfb51ab567266446a56f</srcmd5>
+    <version>0.1.8</version>
+    <time>1678125387</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sphinx6.patch to support Sphinx &gt;= 6.0, gh#sphinx-contrib/autoprogram#62
+- Delete python-sphinxcontrib-autoprogram-python310.patch
+- skip-failing-test.patch
+- Update to 0.1.8
+  * Test against Python 3.10, 3.11.
+</comment>
+    <requestid>1069584</requestid>
+  </revision>
 </revisionlist>

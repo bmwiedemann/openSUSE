@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 20 10:40:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add sphinx6.patch to support Sphinx >= 6.0, gh#sphinx-contrib/autoprogram#62
+- Delete python-sphinxcontrib-autoprogram-python310.patch
+- skip-failing-test.patch
+- Update to 0.1.8
+  * Test against Python 3.10, 3.11.
+
+-------------------------------------------------------------------
 Thu Dec  8 09:33:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add skip-failing-test.patch skipping failing test
