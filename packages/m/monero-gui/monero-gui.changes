@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Mar  6 08:38:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.2.0:
+  * DaemonManager: remove systemd check
+  * cmake: fix windows deploy
+  * build: prepare v0.18.2.0
+  * wizard: redesign seed page
+  * p2pool: Stop p2pool mining on node switch
+  * Utils.js simplify ago func
+  * p2pool: Restart monerod only when needed and with proper args
+  * p2pool: update to v3.0
+  * docker: update hidapi to 0.13.1 on linux
+  * docker: update Windows and Linux Qt to 5.15.8
+  * p2pool: update to v2.7
+  * open-wallet: set network type when using file browser
+  * Override desktop theming
+  * main: skip proxy when setting localhost remote node
+  * README: add unbound for Windows
+  * workflows: remove unnecessary dependency
+  * Sign/Verify: clear text fields on wallet close
+  * History: add open folder button after CSV export
+  * p2pool: update to 2.6
+  * docker: update Qt to 5.15.7
+  * Transfer: update mixin, silence warning
+  * docker: update zlib on android
+  * workflows: verify p2pool hashes
+  * deploy: update libicu to 72
+  * README: update Debian dependencies
+  * main: fix a potential warning
+  * DaemonManager: take dataDir into account when sending cmd
+  * main: update blockchain size
+  * Docker android: avoid gradle auto download
+  * Android: disable simple mode
+  * Android: hide local node settings
+  * Android: hide log tab
+  * Android: hide mining tab
+  * Android: useRemoteNode default to true
+
+-------------------------------------------------------------------
 Wed Jan 18 21:11:05 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64

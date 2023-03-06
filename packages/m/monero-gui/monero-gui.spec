@@ -17,7 +17,7 @@
 
 
 Name:           monero-gui
-Version:        0.18.1.2
+Version:        0.18.2.0
 Release:        0
 Summary:        The official GUI app for the Monero cryptocurrency
 License:        BSD-3-Clause
