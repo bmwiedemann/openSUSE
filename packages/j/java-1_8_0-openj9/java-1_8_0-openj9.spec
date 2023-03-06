@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       352
-%global buildver        b08
+%global updatever       362
+%global buildver        b09
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   b213334935844e882a8ac821c5c9fa3170e4834e
-%global root_branch     v0.35.0-release
+%global root_revision   eebde685ec08dbafdfcddad2782a823b8238a886
+%global root_branch     v0.36.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    85a21674fdf30403b75c3000a4dc10605ca52ba2
-%global omr_branch      v0.35.0-release
+%global omr_revision    f491bbf6f6f3f87bfd38a65055589125c13de555
+%global omr_branch      v0.36.1-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision e04a7f6c1c365a6b375deb5f641c72309b170b95
-%global openj9_branch   v0.35.0-release
-%global openj9_tag      openj9-0.35.0
+%global openj9_revision 0592661e480dd108a708689dc56bf1a427677645
+%global openj9_branch   v0.36.1-release
+%global openj9_tag      openj9-0.36.1
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0

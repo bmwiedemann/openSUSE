@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:04:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u362 build 09 with OpenJ9 0.36.0 virtual
+  machine
+- Including Oracle January 2023 CPU changes
+  CVE-2023-21830 (bsc#1207249), CVE-2023-21843 (bsc#1207248)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.36/
+
+-------------------------------------------------------------------
 Mon Oct 31 11:42:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u352 build 08 with OpenJ9 0.35.0 virtual

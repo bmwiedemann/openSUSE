@@ -127,4 +127,12 @@
     <comment>Security fixes</comment>
     <requestid>1032468</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b83009c0a0c768d34162f5dfc3fe9db5</srcmd5>
+    <version>1.8.0.362</version>
+    <time>1678125359</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU</comment>
+    <requestid>1069552</requestid>
+  </revision>
 </revisionlist>
