@@ -926,6 +926,7 @@ Prefer: -parpack-openmpi1-devel-32bit
 Prefer: -parpack-openmpi2-devel-32bit
 Prefer: -parpack-openmpi3-devel-32bit
 Prefer: -pciutils-devel-32bit
+Prefer: -pcsc-lite-devel-32bit
 Prefer: -pipewire-libjack-0_3-32bit
 Prefer: -popt-devel-32bit
 Prefer: -rdma-core-devel-32bit
