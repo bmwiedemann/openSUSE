@@ -56,7 +56,7 @@ sed -e '1d' -i youtube_dl/__init__.py youtube_dl/__main__.py \
 rm -rf %buildroot/%_bindir/youtube-dl %buildroot/%_bindir \
        %buildroot/%_prefix/%_sysconfdir \
        %buildroot/%_datadir %buildroot/%_mandir
-%python_expand %fdupes -s %buildroot/%{$python_sitelib}
+%python_expand %fdupes %buildroot/%{$python_sitelib}
 
 %files %python_files
 %license LICENSE

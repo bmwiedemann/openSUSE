@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 07:00:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Wed Apr  6 07:11:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 30713-new-ceskatelevize.patch fixing download

@@ -1588,4 +1588,12 @@
   gh#yt-dlp/yt-dlp@149eb0bbf34f). (forwarded request 1067339 from mcepl)</comment>
     <requestid>1067344</requestid>
   </revision>
+  <revision rev="176" vrev="5">
+    <srcmd5>0f85827112138d02e1b06870b69fb1fa</srcmd5>
+    <version>2021.12.17</version>
+    <time>1678125385</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use fdupes -s, it hurts. (forwarded request 1069531 from mcepl)</comment>
+    <requestid>1069559</requestid>
+  </revision>
 </revisionlist>
