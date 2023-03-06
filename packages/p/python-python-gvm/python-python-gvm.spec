@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gvm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,26 +22,26 @@
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-python-gvm
-Version:        21.5.0
+Version:        23.2.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/greenbone/python-gvm
-Source:         https://files.pythonhosted.org/packages/source/p/python-gvm/python-gvm-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python_gvm/python_gvm-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-defusedxml >= 0.6.0
+Requires:       python-lxml >= 4.5.0
+Requires:       python-paramiko >= 2.7.1
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module defusedxml >= 0.6.0}
-BuildRequires:  %{python_module lxml >= 4.4.2}
-BuildRequires:  %{python_module paramiko >= 2.4.2}
+BuildRequires:  %{python_module lxml >= 4.5.0}
+BuildRequires:  %{python_module paramiko >= 2.7.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-defusedxml >= 0.6.0
-Requires:       python-lxml >= 4.4.2
-Requires:       python-paramiko >= 2.4.2
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,7 +52,7 @@ Manager (GSM) appliance and its underlying Greenbone Vulnerability Manager
 Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
 
 %prep
-%setup -q -n python-gvm-%{version}
+%setup -q -n python_gvm-%{version}
 
 %build
 %python_build
@@ -64,7 +64,7 @@ Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm tests/connections/test_unix_socket_connection.py
+rm -v tests/connections/test_unix_socket_connection.py tests/connections/test_ssh_connection.py
 %pytest
 
 %files %{python_files}

@@ -31,4 +31,41 @@
     <comment></comment>
     <requestid>897679</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a03300c0eed3c17b206c051b7a410a6</srcmd5>
+    <version>23.2.0</version>
+    <time>1678125396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.2.0:
+  * Use universal release action, not python specific d7d4ea59
+  * Add workaround for non-standard SSH ports (#925) 6a8c2f19
+  * Format workflows, update actions and support Python 3.11
+  * Format workflows, update actions and support Python 3.11
+  * Improve error output in case of unix socket connection issues
+  * Start to deploy the python-gvm docs at github pages too
+    98ac0c56
+  * Remove hardcoded ignore_pagination from get_reports (#821)
+  * Update links and terms in README and docs 6bd8c78e
+  * Fix setting the port for the SSH connection #818 9784cf52
+  * Improve installation chapter d1d602e4
+  * Use furo theme for sphinx based docs for improved navigation
+  * Use sphinx directly for typehints in API docs f707efdf
+  * Update gvmd socket location to /run/gvmd/gvmd.sock 4a0f1706
+  * Adjust PR template for using Conventional Commits 6287140d
+  * Update lastest Gmp class to 22.4 44e85036
+  * Add missing API docs for GMP 22.4 class (#804) fb69ec30
+  * Use isort for sorting Python import automatically e61b9ac5
+  * OSP Scanner is deprecated with 22.04 (#789) 1cf0559a
+  * Normalize all strings with black fbf0083d
+  * Check port in overrides/notes like in gvmd 905e85ab
+  * severity values of '0' have not been passed to gvmd cd4e0b44
+    gvm/compare/22.6.1.dev1...22.6.1
+  * Don't mention ALLINFO in the get_info_list method dc288185
+  * Deprecate ifaces and icafes allow_parameters in user commands
+  * Rename GMP 21.10 to GMP 22.04 [#691] f5ef7672
+  * Unwrap SSL socket before closing transport socket. (#737)
+  * Ensure that connection is closed when using context manager
+  * Added support for PEP-561 c354da8</comment>
+    <requestid>1069626</requestid>
+  </revision>
 </revisionlist>

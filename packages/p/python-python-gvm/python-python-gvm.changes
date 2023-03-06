@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar  6 12:13:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.2.0:
+  * Use universal release action, not python specific d7d4ea59
+  * Add workaround for non-standard SSH ports (#925) 6a8c2f19
+  * Format workflows, update actions and support Python 3.11
+  * Format workflows, update actions and support Python 3.11
+  * Improve error output in case of unix socket connection issues
+  * Start to deploy the python-gvm docs at github pages too
+    98ac0c56
+  * Remove hardcoded ignore_pagination from get_reports (#821)
+  * Update links and terms in README and docs 6bd8c78e
+  * Fix setting the port for the SSH connection #818 9784cf52
+  * Improve installation chapter d1d602e4
+  * Use furo theme for sphinx based docs for improved navigation
+  * Use sphinx directly for typehints in API docs f707efdf
+  * Update gvmd socket location to /run/gvmd/gvmd.sock 4a0f1706
+  * Adjust PR template for using Conventional Commits 6287140d
+  * Update lastest Gmp class to 22.4 44e85036
+  * Add missing API docs for GMP 22.4 class (#804) fb69ec30
+  * Use isort for sorting Python import automatically e61b9ac5
+  * OSP Scanner is deprecated with 22.04 (#789) 1cf0559a
+  * Normalize all strings with black fbf0083d
+  * Check port in overrides/notes like in gvmd 905e85ab
+  * severity values of '0' have not been passed to gvmd cd4e0b44
+    gvm/compare/22.6.1.dev1...22.6.1
+  * Don't mention ALLINFO in the get_info_list method dc288185
+  * Deprecate ifaces and icafes allow_parameters in user commands
+  * Rename GMP 21.10 to GMP 22.04 [#691] f5ef7672
+  * Unwrap SSL socket before closing transport socket. (#737)
+  * Ensure that connection is closed when using context manager
+  * Added support for PEP-561 c354da8
+  * Adding the structure for GVM 21.10. [#575] fe203be
+  * The types dict could not be accessed via dotted notation
+    previously, this fix should make it possible. 0111cd9
+  * Adding the `types` attribute back to the `Gmp` classes [#568]
+    d04aea4
+  * For SSH Connections: Reject unknown hosts, ask user if he
+    wants to connect to unknown remote host and ask user if he
+    wants to add the host to `known_hosts` #486
+
+-------------------------------------------------------------------
 Sat Jun  5 12:03:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 21.5.0
