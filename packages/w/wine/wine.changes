@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  4 08:28:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.3 release
+  - Support for the Low Fragmentation Heap.
+  - Smard card support using PCSC-Lite.
+  - Bundled Zydis library for more correct disassembly.
+  - Various bug fixes.
+- update staging to 8.3 release
+
+-------------------------------------------------------------------
 Mon Feb 20 08:09:42 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.2 release

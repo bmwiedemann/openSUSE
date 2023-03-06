@@ -4714,4 +4714,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067954</requestid>
   </revision>
+  <revision rev="402" vrev="1">
+    <srcmd5>583338231b70b8d6668cb0f0bce0a8e6</srcmd5>
+    <version>8.3</version>
+    <time>1678125380</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.3 release
+  - Support for the Low Fragmentation Heap.
+  - Smard card support using PCSC-Lite.
+  - Bundled Zydis library for more correct disassembly.
+  - Various bug fixes.
+- update staging to 8.3 release</comment>
+    <requestid>1069560</requestid>
+  </revision>
 </revisionlist>
