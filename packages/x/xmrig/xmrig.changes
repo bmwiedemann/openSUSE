@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  6 07:59:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.0:
+  * v6.19.0
+  * Update scripts/build.*.sh.
+  * v6.19.0-dev (new config options added).
+  * Update CHANGELOG.md
+  * Solo mining: added job timeout (default is 15 seconds)
+  * Update hwloc for MSVC builds to 2.9.0.
+  * Update CHANGELOG.md
+  * Update to latest sse2neon.h.
+  * Fixed broken RandomX light mode mining
+  * #3185 Fixed macOS DMI reader.
+  * Show IP address for failed connections
+  * DragonflyBSD compilation fixes
+  * Added ifdefs for DragonflyBSD
+  * Bump the minimum CMake version in other places too.
+  * Update cmake required version to 3.1
+  * Improved Zen 3 MSR mod
+  * MSVC build: enabled parallel compilation
+  * #2869
+  * Update to latest sse2neon.h from github:DLTcollab/sse2neon
+  * v6.18.2-dev
+
+-------------------------------------------------------------------
 Wed Nov  2 08:52:18 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.18.1:

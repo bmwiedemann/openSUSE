@@ -503,4 +503,32 @@
   * Recognize armv7ve as valid ARMv7 target.</comment>
     <requestid>1032798</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b6bf96c8e912c56cd638ec0b6f88faa8</srcmd5>
+    <version>6.19.0</version>
+    <time>1678125338</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.0:
+  * v6.19.0
+  * Update scripts/build.*.sh.
+  * v6.19.0-dev (new config options added).
+  * Update CHANGELOG.md
+  * Solo mining: added job timeout (default is 15 seconds)
+  * Update hwloc for MSVC builds to 2.9.0.
+  * Update CHANGELOG.md
+  * Update to latest sse2neon.h.
+  * Fixed broken RandomX light mode mining
+  * #3185 Fixed macOS DMI reader.
+  * Show IP address for failed connections
+  * DragonflyBSD compilation fixes
+  * Added ifdefs for DragonflyBSD
+  * Bump the minimum CMake version in other places too.
+  * Update cmake required version to 3.1
+  * Improved Zen 3 MSR mod
+  * MSVC build: enabled parallel compilation
+  * #2869
+  * Update to latest sse2neon.h from github:DLTcollab/sse2neon
+  * v6.18.2-dev</comment>
+    <requestid>1069540</requestid>
+  </revision>
 </revisionlist>
