@@ -25,6 +25,7 @@ URL:            https://github.com/jaseg/python-mpv
 Source0:        https://files.pythonhosted.org/packages/source/p/python-mpv/python-mpv-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
