@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 04 20:22:41 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20230304.050c1a4:
+  * Add %#FLAVOR#_fix_shebang macro, call in %#FLAVOR#_pyproject_install
+
+-------------------------------------------------------------------
 Sat Jan 28 17:03:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 20230128.e704796:

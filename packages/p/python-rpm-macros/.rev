@@ -563,4 +563,14 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>1061988</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1025a3a07a4ca549502c8120d35d7eb1</srcmd5>
+    <version>20230304.050c1a4</version>
+    <time>1678125243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230304.050c1a4:
+  * Add %#FLAVOR#_fix_shebang macro, call in %#FLAVOR#_pyproject_install
+</comment>
+    <requestid>1069422</requestid>
+  </revision>
 </revisionlist>
