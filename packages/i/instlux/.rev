@@ -550,4 +550,14 @@
 </comment>
     <requestid>982544</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>95e5278ae6aefa7fbbd1c1e58ee94f4b</srcmd5>
+    <version>15.5.0</version>
+    <time>1678125386</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.5.0.
+  * Added Leap 15.5 (but not default)
+</comment>
+    <requestid>1069565</requestid>
+  </revision>
 </revisionlist>
