@@ -175,4 +175,35 @@
   * randomx: update submodule</comment>
     <requestid>1035610</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3e9527ab1108a6e103a2c5fcf6e0f6b</srcmd5>
+    <version>0.18.2.0</version>
+    <time>1678125348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.2.0:
+  * build: prepare v0.18.2.0
+  * depends: bump openssl to 1.1.1t
+  * blockchain-stats: print any remaining data at end of loop
+  * p2p: add plowsof seed nodes
+  * p2p: remove offline seed nodes
+  * depends: bump hidapi/libusb
+  * Demote large pages warning to `mdebug`
+  * RandomX: print VM allocation warnings only once
+  * Cache successful `verRctNonSemanticsSimple` calls
+  * common: add missing includes
+  * Refactored rx-slow-hash.c
+  * workflows: set a public DNS when doing tests
+  * DNSResolver: fix not handling hostnames without dot characters [release]
+  * p2p: fix exclusive node DNS resolution for certain hosts [release]
+  * workflows: build gitian on tag
+  * Fix static builds for Ubuntu 22.04
+  * p2p: fix back ping to discover healthy peers to connect to
+  * workflows: ubuntu 18.04 is deprecated
+  * Fix dandelion++ fluff/stem bug with local txes
+  * wallet2: fix create view-only wallet from existing wallet
+  * wallet_api: take priority into account when estimating fee
+  * workflows: ubuntu 18.04 is deprecated
+  * epee: dont shrink slice when storing to binary [release]</comment>
+    <requestid>1069545</requestid>
+  </revision>
 </revisionlist>

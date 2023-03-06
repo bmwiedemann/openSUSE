@@ -1,11 +1,11 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="versionformat">0.18.1.2</param>
+    <param name="versionformat">0.18.2.0</param>
     <param name="url">https://github.com/monero-project/monero.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>
-    <param name="revision">refs/tags/v0.18.1.2</param>
+    <param name="revision">refs/tags/v0.18.2.0</param>
   </service>
   <service name="tar" mode="buildtime">
   </service>
