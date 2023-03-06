@@ -1,7 +1,7 @@
 #
 # spec file for package rstudio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@
 # - Boost                                    => unbundled
 # - RapidXml                                 => bundled in ./src/cpp/core/include/core/rapidxml/rapidxml.hpp at version 1.13, license is (BSL-1.0 OR MIT)
 %global bundled_rapidxml_version      1.13
+# - fmt                                      => unbundled
 # - Google Web Toolkit                       => bundled as gwt-rstudio (version 1.3), new upstream https://github.com/rstudio/gwt, license is Apache-2.0
 %global bundled_gwt_rstudio_version   1.3
 # - Guice                                    => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}/, version 3.0, license is Apache-2.0
@@ -96,11 +97,11 @@
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
 %global rstudio_version_major 2022
-%global rstudio_version_minor 02
-%global rstudio_version_patch 2
-%global rstudio_version_suffix 485
+%global rstudio_version_minor 12
+%global rstudio_version_patch 0
+%global rstudio_version_suffix 353
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 8acbd38b0d4ca3c86c570cf4112a8180c48cc6fb
+%global rstudio_git_revision_hash 7d165dcfc1b6d300eb247738db2c7076234f6ef0
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}+%{rstudio_version_suffix}
 Release:        0
@@ -147,11 +148,10 @@ Patch5:         0006-Fix-libclang-usage.patch
 Patch6:         0007-use-system-node.patch
 # Leap 15.2 only patch
 Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
-# Quick fix for MINSIGSTKSZ no longer being compile-time constant with glibc 2.34.
-# This is only used in unit tests, and hopefully they just don't run into signals anyway.
-# Upstream fix is https://github.com/catchorg/Catch2/commit/8f277a54c0b9c1d1024dedcb2dec1d206971e745,
-# but that's quite large and is hard to apply because the files are concatenated here.
-Patch8:         0009-Fix-catch-build.patch
+Patch8:         0009-Fix-false-quarto-warning.patch
+Patch9:         unbundle-fmt.patch
+Patch100:       old-boost.patch
+Patch101:       missing-include.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -167,17 +167,17 @@ BuildRequires:  glibc-devel
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java
-BuildRequires:  libboost_atomic-devel-impl          >= %{boost_version}
-BuildRequires:  libboost_chrono-devel-impl          >= %{boost_version}
-BuildRequires:  libboost_date_time-devel-impl       >= %{boost_version}
-BuildRequires:  libboost_filesystem-devel-impl      >= %{boost_version}
-BuildRequires:  libboost_headers-devel-impl         >= %{boost_version}
-BuildRequires:  libboost_iostreams-devel-impl       >= %{boost_version}
-BuildRequires:  libboost_program_options-devel-impl >= %{boost_version}
-BuildRequires:  libboost_random-devel-impl          >= %{boost_version}
-BuildRequires:  libboost_regex-devel-impl           >= %{boost_version}
-BuildRequires:  libboost_system-devel-impl          >= %{boost_version}
-BuildRequires:  libboost_thread-devel-impl          >= %{boost_version}
+BuildRequires:  libboost_atomic-devel
+BuildRequires:  libboost_chrono-devel
+BuildRequires:  libboost_date_time-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_random-devel
+BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
@@ -190,6 +190,7 @@ BuildRequires:  soci-sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
+BuildRequires:  cmake(fmt)
 BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -227,7 +228,7 @@ Recommends:     gcc
 Recommends:     gcc-c++
 Recommends:     ghc-pandoc-citeproc
 Recommends:     git
-Recommends:     libclang%{_llvm_sonum}
+Recommends:     libclang%{_libclang_sonum}
 Recommends:     mathjax
 Recommends:     pandoc
 Suggests:       rstudio-desktop
@@ -306,6 +307,9 @@ on a server has a number of benefits, including:
 %patch5 -p1
 %patch6 -p1
 %patch8 -p1
+%patch9 -p1
+%patch100 -p1
+%patch101 -p1
 %endif
 
 tar -xf %{SOURCE2}
@@ -318,6 +322,7 @@ cp %{SOURCE3} .
 rm -r \
     src/cpp/core/include/core/libclang/clang-c/ \
     src/cpp/core/spelling/hunspell/ \
+    src/cpp/ext/fmt \
     src/cpp/ext/websocketpp \
     src/cpp/shared_core/include/shared_core/json/rapidjson/
 find src/cpp/core/zlib -type f -not -name '*.cpp' -delete
@@ -334,7 +339,7 @@ unzip -d dependencies/dictionaries %{SOURCE1}
 sed -i 's@gwt_build ALL@gwt_build@g' src/gwt/CMakeLists.txt
 
 # The unversioned libclang.so is only part of clang-devel, so we use the versioned so instead.
-sed -i 's#LIBCLANG_PLACEHOLDER#%{_libdir}/libclang.so.%{_llvm_sonum}#' src/cpp/core/libclang/LibClang.cpp
+sed -i 's#LIBCLANG_PLACEHOLDER#%{_libdir}/libclang.so.%{_libclang_sonum}#' src/cpp/core/libclang/LibClang.cpp
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}-server

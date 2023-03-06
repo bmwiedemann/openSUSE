@@ -1,0 +1,18 @@
+From: Libor Pechacek <lpechacek@gmx.com>
+Date: Mon, 17 Oct 2022 22:14:12 +0200
+Subject: [PATCH] Avoid false warning in absence of Quarto
+
+When Quarto is not found, RStudio should not issue the CLI
+warning.
+
+--- a/src/cpp/session/modules/quarto/SessionQuarto.cpp
++++ b/src/cpp/session/modules/quarto/SessionQuarto.cpp
+@@ -268,7 +268,7 @@ void detectQuartoInstallation()
+          LOG_ERROR(error);
+       }
+    }
+-   else
++   else if (!embeddedVersion.empty())
+    {
+       showQuartoVersionWarning(embeddedVersion, kQuartoRequiredVersion);
+    }

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar  4 20:15:56 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release 2022.12.0+353.
+- Add missing-include.patch to fix build by adding include.
+- Add unbundle-fmt.patch to use the system version of fmt.
+- Drop boost_patches.diff that landed upstream.
+- Use the correct soname for libclang.
+
+-------------------------------------------------------------------
+Tue Oct 18 12:17:40 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- boost_patches.diff old-boost.patch: fix building with Boost 1.66
+
+-------------------------------------------------------------------
+Sun Oct 16 09:04:54 UTC 2022 - Libor Pechacek <lpechacek@gmx.com>
+
+- New upstream release v2022.07.2+576.
+- Added patch 0009-Fix-false-quarto-warning.patch.
+- Refreshed patches:
+   * 0002-Don-t-install-pandoc-and-mathjax.patch
+   * 0006-Fix-libclang-usage.patch
+   * 0007-use-system-node.patch
+- Removed patch 0009-Fix-catch-build.patch.
+
+-------------------------------------------------------------------
 Sat May 21 19:48:08 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - New upstream release v2022.02.2+485. (boo#1198936)

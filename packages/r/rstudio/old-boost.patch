@@ -1,0 +1,22 @@
+Index: rstudio-2022.07.2-576/src/cpp/CMakeLists.txt
+===================================================================
+--- rstudio-2022.07.2-576.orig/src/cpp/CMakeLists.txt
++++ rstudio-2022.07.2-576/src/cpp/CMakeLists.txt
+@@ -233,7 +233,7 @@ endif()
+ 
+ # default Boost versions
+ if(NOT RSTUDIO_BOOST_REQUESTED_VERSION)
+-   set(RSTUDIO_BOOST_REQUESTED_VERSION 1.78.0)
++   set(RSTUDIO_BOOST_REQUESTED_VERSION 1.66.0)
+ endif()
+ 
+ # disable system boost if we're not using it.
+@@ -281,7 +281,7 @@ if(UNIX)
+    else()
+       add_definitions(-DRSTUDIO_BOOST_NAMESPACE=boost)
+       find_package(Boost ${RSTUDIO_BOOST_REQUESTED_VERSION} REQUIRED)
+-      if(NOT Boost_VERSION LESS 106900)
++      if(NOT Boost_VERSION LESS 106600)
+          list(REMOVE_ITEM BOOST_LIBS signals)
+       endif()
+       find_package(Boost ${RSTUDIO_BOOST_REQUESTED_VERSION} REQUIRED COMPONENTS ${BOOST_LIBS})

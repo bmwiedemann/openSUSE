@@ -7,8 +7,6 @@ Subject: [PATCH] use system node
  src/gwt/build.xml | 18 +-----------------
  1 file changed, 1 insertion(+), 17 deletions(-)
 
-diff --git a/src/gwt/build.xml b/src/gwt/build.xml
-index ec9d4c9..691b644 100644
 --- a/src/gwt/build.xml
 +++ b/src/gwt/build.xml
 @@ -84,23 +84,7 @@
@@ -16,7 +14,7 @@ index ec9d4c9..691b644 100644
  
     <!-- panmirror typescript library -->
 -   <!-- ensure version matches RSTUDIO_NODE_VERSION -->
--   <property name="node.version" value="14.17.5"/>
+-   <property name="node.version" value="16.14.0"/>
 -   <property name="node.dir" value="../../dependencies/common/node/${node.version}"/>
 -   <condition property="node.bin" value="../../../${node.dir}/bin/node">
 -     <not>
@@ -36,6 +34,3 @@ index ec9d4c9..691b644 100644
  
     <property name="panmirror.dir" value="./panmirror/src/editor"/>
     <property name="panmirror.build.dir" value="./www/js/panmirror"/>
--- 
-2.31.1
-

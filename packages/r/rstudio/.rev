@@ -203,4 +203,16 @@ Rebase patches:
     <comment>Undo unnecessary changes before submit to Factory. (Initially the file wasn't there because I didn't enable the desktop build for aarch64.) (forwarded request 978896 from aaronpuchert)</comment>
     <requestid>978950</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9a94b1f06f14eb50a452eded1d42083f</srcmd5>
+    <version>2022.12.0+353</version>
+    <time>1678125300</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 2022.12.0+353.
+- Add missing-include.patch to fix build by adding include.
+- Add unbundle-fmt.patch to use the system version of fmt.
+- Drop boost_patches.diff that landed upstream.
+- Use the correct soname for libclang. (forwarded request 1069421 from aaronpuchert)</comment>
+    <requestid>1069470</requestid>
+  </revision>
 </revisionlist>

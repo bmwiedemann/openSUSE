@@ -1,0 +1,24 @@
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index b1a91eb..ff44703 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -580,7 +580,7 @@ endif()
+ 
+ # external libraries
+ add_subdirectory(ext)
+-include_directories(SYSTEM "${FMT_SOURCE_DIR}/include")
++find_package(fmt REQUIRED)
+ 
+ # shared library
+ add_subdirectory(shared_core)
+diff --git a/src/cpp/ext/CMakeLists.txt b/src/cpp/ext/CMakeLists.txt
+index 2e08e79..0b4d5fa 100644
+--- a/src/cpp/ext/CMakeLists.txt
++++ b/src/cpp/ext/CMakeLists.txt
+@@ -14,6 +14,3 @@
+ #
+ 
+ project (EXT)
+-
+-add_subdirectory(fmt)
+-
