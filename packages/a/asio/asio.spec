@@ -1,7 +1,7 @@
 #
 # spec file for package asio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           asio
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        A cross-platform C++ library for network and low-level I/O programming
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://asio.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/asio/asio-%{version}.tar.bz2
+URL:            https://think-async.com/Asio/
+Source0:        https://sourceforge.net/projects/asio/files/asio/%{version}%%20%%28Stable%%29/asio-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
