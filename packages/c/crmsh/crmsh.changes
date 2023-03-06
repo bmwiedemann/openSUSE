@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 06 05:37:55 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230306.0f04eb29:
+  * Dev: bootstrap: Don't save core.debug when saving core.hosts
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: log: Redirect debug messages into stderr
+
+-------------------------------------------------------------------
+Fri Mar 03 04:14:46 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230303.0df99d8c:
+  * Dev: ChangeLog: update ChangeLog for release 4.5.0-rc1
+  * replace 2&>1 by 2>&1 and swap with >/dev/null
+
+-------------------------------------------------------------------
 Thu Mar 02 06:37:38 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230302.2b5310b9:
