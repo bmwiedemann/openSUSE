@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Mar  6 01:19:28 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v5.40.1
+  * Fix bug in user agent request blocking
+- from v5.40.0
+  * Update packages and linters for new version support
+  * Update documentation links
+  * Use importlib instead of setuptools for Python 3.8+
+  * Python 3.11 support
+  * Documentation improvements
+- from v5.39.0
+  * Utilize new backend class in tests to fix false negative
+    system check warnings
+- from v5.38.0
+  * Adjust changelog so release notes are correctly visible
+    on PyPy and released package
+- from v5.37.0
+  * Add Django 4.1 support. PyPy 3.8 has a known issue with
+    Django 4.1 and is exempted
+- from v5.36.0
+  * Add AxesStandaloneBackend without ModelBackend dependencies
+- from v5.35.0
+  * Add Arabic translations
+- from v5.34.0
+  * Improve German translations
+- from v5.33.0
+  * Migrate MD5 cache key digests to SHA256
+  * Improve and streamline startup logging
+  * Improve module typing
+  * Add support for float or partial hours for AXES_COOLOFF_TIME
+- from v5.32.0
+  * Add support for persistent failure logging where failed login
+    attempts are persisted in the database until a specific threshold
+    is reached.
+  * Add support for not resetting login times when users try to login
+    during the lockout cooloff period
+- from v5.31.0
+  * Adjust version specifiers for newer Python and other package versions.
+    Set package minimum Python version to 3.7. Relax django-ipware
+    version requirements to allow newer versions
+- from v5.30.0
+  * Fix package build error in 5.29.0 to allow publishing
+- from v5.29.0
+  * Drop Python 3.6 support
+- from v5.28.0
+  * Drop Django < 3.2 support
+  * Add Django 4.0 to test matrix
+- from v5.27.0
+  * Fix pkg_resources missing for package version resolution on runtime
+    due to setuptools not being a runtime dependency.
+  * Add Python 3.10 and Django 3.2 support
+- from v5.26.0
+  * Fix AXES_USERNAME_CALLABLE not receiving credentials attribute in
+    Axes middleware lockout response when user is locked out
+- from v5.25.0
+  * Fix duplicated AccessAttempts with updated database model
+    unique_together constraints and data and schema migration
+- from v5.24.0
+  * Use atomic transaction for updating AccessAttempts in database handler
+- from v5.23.0
+  * Pass request as argument to AXES_CLIENT_STR_CALLABLE
+- from v5.22.0
+  * Improve failures_since_start handling by moving the counter
+    incrementation from non-atomic Python code call to atomic
+    database function
+  * Add publicly available request.axes_failures_since_start attribute
+- from v5.21.0
+  * Add configurable lockout HTTP status code responses with the new
+    AXES_HTTP_RESPONSE_CODE setting
+- from v5.20.0
+  * Improve race condition handling in e.g. multi-process environments
+    by using get_or_create for access attempt fetching and updates
+- from v5.19.0
+  * Add Polish locale
+- from v5.18.0
+  * Fix default_auto_field warning
+- from v5.17.0
+  * Fix default_app_config deprecation. Django 3.2 automatically
+    detects AppConfig so setting is no longer required
+- from v5.16.0
+  * Add AXES_CLIENT_STR_CALLABLE setting
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
