@@ -1,7 +1,7 @@
 #
 # spec file for package python-quantum-blackbird
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,14 @@
 %define packagename quantum-blackbird
 %define skip_python2 1
 %define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-quantum-blackbird
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
 Summary:        Quantum assembly language for continuous-variable quantum computation
 License:        Apache-2.0
 URL:            https://github.com/XanaduAI/blackbird
 Source:         https://github.com/XanaduAI/blackbird/archive/v%{version}.tar.gz#/blackbird-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_32bit_divide_scalar_array_test.patch gh#XanaduAI/blackbird#42 mcepl@suse.com
-# Skip tests failing on 32bit
-Patch0:         skip_32bit_divide_scalar_array_test.patch
-# PATCH-FIX-UPSTREAM - https://github.com/XanaduAI/blackbird/pull/45
-Patch1:         fix-aarch64.patch
-BuildRequires:  %{python_module antlr4-python3-runtime >= 4.8}
+BuildRequires:  %{python_module antlr4-python3-runtime >= 4.9.2}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module pytest}
@@ -41,7 +35,7 @@ BuildRequires:  %{python_module sympy}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  uuid-devel
-Requires:       python-antlr4-python3-runtime >= 4.8
+Requires:       python-antlr4-python3-runtime >= 4.9.2
 Requires:       python-networkx
 Requires:       python-numpy >= 1.16
 Requires:       python-sympy
@@ -67,7 +61,9 @@ hardware and Strawberry Fields simulator.
 chmod 644 README.rst
 
 %check
-%pytest
+# Broken tests with numpy 1.24 gh#XanaduAI/blackbird#54
+donttest="scalar_array or test_array_variable_expression"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst

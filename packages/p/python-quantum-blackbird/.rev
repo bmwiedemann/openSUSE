@@ -49,4 +49,35 @@
     <comment></comment>
     <requestid>900584</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c531e3c0d5705b692cfd143ef44ec8ef</srcmd5>
+    <version>0.5.0</version>
+    <time>1678125389</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable numpy 1.24 broken tests, gh#XanaduAI/blackbird#54
+- Remove skip_32bit_divide_scalar_array_test.patch
+- Remove fix-aarch64.patch
+- Update to 0.5.0
+  * Rebuilds the grammar using ANTLR v4.9.2 (#51)
+  * Updates ANTLR v4.9.2 version on the compiling grammar section.  (#51)
+- 0.4.0
+  * Remove support for Python 3.5. (#38)
+  * Add support for Python 3.8 and 3.9. (#40)
+  * Add public method to retrieve Blackbird program variables via
+    prog.variables. (#47)
+  * Improve match_template to automatically return matched parameters
+    with their array values, rather than their array names (p0, p1,
+    etc.) (#47)
+  * Remove p-type parameters from prog.parameters since they're only
+    needed there internally and are otherwise stored in
+    prog.variables. This also changes TDM programs to not be templates
+    (prog.is_template now returns False).  (#47)
+  * Fix bool or string objects in for-loop iterators not working
+    correctly. (#41)
+  * Update the NumPy scalar types in the Blackbird listener due to
+    being deprecated in NumPy 1.20. (#43)
+  * Add access to the symbolic expression used when creating a
+    RegRefTransform, as a class attribute. (#46)</comment>
+    <requestid>1069587</requestid>
+  </revision>
 </revisionlist>
