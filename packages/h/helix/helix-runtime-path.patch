@@ -1,0 +1,16 @@
+Index: helix-22.12/helix-loader/src/lib.rs
+===================================================================
+--- helix-22.12.orig/helix-loader/src/lib.rs	2023-03-06 10:51:51.196485557 +0100
++++ helix-22.12/helix-loader/src/lib.rs	2023-03-06 10:52:38.460917379 +0100
+@@ -41,6 +41,11 @@ pub fn runtime_dir() -> PathBuf {
+         return conf_dir;
+     }
+ 
++    let rt_dir = std::path::PathBuf::from("@HELIX_RUNTIME_DIR@").join(RT_DIR);
++    if rt_dir.exists() {
++        return rt_dir;
++    }
++
+     // fallback to location of the executable being run
+     // canonicalize the path in case the executable is symlinked
+     std::env::current_exe()

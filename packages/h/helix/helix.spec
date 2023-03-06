@@ -15,8 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Workaround for quilt to work
+%if "x%{?rust_arches}" == "x"
+%global rust_arches x86_64
+%endif
 
-%global _helix_runtimedir %{_sharedstatedir}/%{name}/runtime
+%global _helix_runtimedir %{_libdir}/%{name}/runtime
 
 Name:           helix
 Version:        22.12
@@ -24,16 +28,19 @@ Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0+ AND Zlib AND MPL-2.0
 URL:            https://github.com/helix-editor/helix
+# This tarball includes fetched grammars
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}-source.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        README-suse-maint.md
 Source4:        helix-rpmlintrc
+Patch0:         helix-runtime-path.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
-Suggests:       %{name}-runtime
+BuildRequires:  update-desktop-files
+Recommends:     %{name}-runtime
 ExclusiveArch:  %{rust_arches}
 
 %description
@@ -67,25 +74,26 @@ BuildArch:      noarch
 %description    zsh-completion
 Zsh command-line completion support for %{name}.
 
-%prep
-%autosetup -a1 -c -n %{name}-%{version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config.toml
-
-for shell in bash fish zsh
-do
-  sed -i "s|\#\!\/usr\/bin\/env ${shell}||g" contrib/completion/hx.${shell}
-done
-
 %package        runtime
 Summary:        Runtime files for %{name}
-Suggests:       %{name}
+Recommends:     %{name}
 
 %description runtime
 Helix runtime files. Separated due to how huge the runtime files are.
 The runtime contains tree-sitter and grammars that makes run helix normally
 if there is no runtime present in the users config directory specifically
 `XDG_CONFIG_HOME/helix`.
+
+%prep
+%autosetup -a1 -p1 -c -n %{name}-%{version}
+mkdir -p .cargo
+cp %{SOURCE2} .cargo/config.toml
+
+# Replace RUNTIME dir
+sed -e 's#@HELIX_RUNTIME_DIR@#%{_libdir}/%{name}#' -i helix-loader/src/lib.rs
+
+# Remove shell definitions
+sed -e '/^\#\!\/usr\/bin\/env .*/d' -i contrib/completion/hx.*
 
 %build
 export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
@@ -99,20 +107,19 @@ sed -i "s|hx|helix|g" contrib/completion/hx.*
 sed -i "s|hx|helix|g" contrib/Helix.desktop
 
 %install
-mkdir -p %{buildroot}%{_libdir}/%{name}
-mkdir -p %{buildroot}%{_helix_runtimedir}
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/hx %{buildroot}%{_libdir}/%{name}/hx
-cp -rv "runtime/queries" %{buildroot}%{_helix_runtimedir}
-cp -rv "runtime/themes" %{buildroot}%{_helix_runtimedir}
+install -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 target/release/hx %{buildroot}%{_bindir}/%{name}
+
+install -d -m 0755 %{buildroot}%{_helix_runtimedir}
+cp -av "runtime/queries" %{buildroot}%{_helix_runtimedir}
+cp -av "runtime/themes" %{buildroot}%{_helix_runtimedir}
 find "%{_builddir}/%{name}-%{version}/runtime/grammars" -type f -name '*.so' -exec \
     install --verbose -Dm 755 {} -t "%{buildroot}%{_helix_runtimedir}/grammars" \;
 install -Dm644 runtime/tutor -t %{buildroot}%{_helix_runtimedir}
-ln -sv %{_helix_runtimedir} %{buildroot}%{_libdir}/%{name}/runtime
-install -D -d -m 0755 %{buildroot}%{_bindir}
-ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
 
 # Desktop application file
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file %{name}
 
 # Icon
 install -Dm644 -T %{_builddir}/%{name}-%{version}/logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -125,40 +132,29 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{bu
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md languages.toml docs/CONTRIBUTING.md docs/architecture.md docs/vision.md
-%dir %{_libdir}/%{name}
+%{_bindir}/%{name}
 
 # Desktop application file
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/*
 
-# hx symlinked as helix
-%{_bindir}/%{name}
-
-# The real hx binary
-%{_libdir}/%{name}/hx
+%dir %{_libdir}/helix
 
 # Tutor
+%dir %{_helix_runtimedir}
 %{_helix_runtimedir}/tutor
 
 %files runtime
 # Runtimes and runtime files
-%dir %{_sharedstatedir}/%{name}
-%dir %{_helix_runtimedir}
-%dir %{_helix_runtimedir}/queries
-%dir %{_helix_runtimedir}/themes
-%dir %{_helix_runtimedir}/grammars
-
 # Grammars
+%dir %{_helix_runtimedir}/grammars
 %{_helix_runtimedir}/grammars/*
-
 # Queries
+%dir %{_helix_runtimedir}/queries
 %{_helix_runtimedir}/queries/*
-
 # Themes
+%dir %{_helix_runtimedir}/themes
 %{_helix_runtimedir}/themes/*
-
-# Symlinked runtime directory
-%{_libdir}/%{name}/runtime
 
 %files bash-completion
 %{_datadir}/bash-completion/*

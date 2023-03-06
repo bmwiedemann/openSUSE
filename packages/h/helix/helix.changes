@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  6 08:45:10 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Changed runtime path to /usr/libexec/helix as it includes loadable shared
+  objects
+  * Added helix-runtime-path.patch
+- Some spec file cleanup
+
+-------------------------------------------------------------------
+Wed Mar  1 00:12:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace Suggests to Recommends.
+
+-------------------------------------------------------------------
+Wed Mar  1 00:04:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Check desktop file
+
+-------------------------------------------------------------------
 Tue Feb 14 01:39:46 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
