@@ -518,4 +518,23 @@
     <comment>- Update to version 0.111.0: (forwarded request 1068558 from jfkw)</comment>
     <requestid>1068559</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c643ada75a1300e1ac9fd15c021f0c19</srcmd5>
+    <version>0.111.2</version>
+    <time>1678125323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.111.2:
+  * Fix .Fragments when called cross sites on uninitialized output format
+  * Allow page.TableOfContents on self in shortcode
+  * tpl/partial: Consolidate GoDoc
+  * Fix &quot;context canceled&quot; with partial
+  * cache: Fix --gc failure on Windows
+  * Page context handling in i18n
+  * Work around --gc failure on Windows &lt;= 10
+  * Update to Go 1.20.1
+  * snap: Fix dart-sass-embedded installation
+  * Correct typos in Go comments
+  * Fix &quot;page&quot; not defined (forwarded request 1069503 from jfkw)</comment>
+    <requestid>1069504</requestid>
+  </revision>
 </revisionlist>

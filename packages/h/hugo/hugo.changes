@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 06 02:25:47 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.111.2:
+  * Fix .Fragments when called cross sites on uninitialized output format
+  * Allow page.TableOfContents on self in shortcode
+  * tpl/partial: Consolidate GoDoc
+  * Fix "context canceled" with partial
+  * cache: Fix --gc failure on Windows
+  * Page context handling in i18n
+  * Work around --gc failure on Windows <= 10
+  * Update to Go 1.20.1
+  * snap: Fix dart-sass-embedded installation
+  * Correct typos in Go comments
+
+-------------------------------------------------------------------
+Mon Mar 06 02:24:58 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.111.1:
+  * Fix "page" not defined
+
+-------------------------------------------------------------------
 Wed Mar 01 21:16:35 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.111.0:
