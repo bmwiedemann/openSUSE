@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 05:14:30 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Do not build on Python 3.11.
+
+-------------------------------------------------------------------
 Wed Nov  3 10:22:50 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest_arch rpm macro

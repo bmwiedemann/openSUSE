@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python311 1
 Name:           python-pysha3
 Version:        1.0.2
 Release:        0
