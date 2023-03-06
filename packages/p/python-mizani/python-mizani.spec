@@ -1,7 +1,7 @@
 #
 # spec file for package python-mizani
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-mizani
-Version:        0.7.3
+Version:        0.8.1
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause
 URL:            https://github.com/has2k1/mizani
 Source:         https://files.pythonhosted.org/packages/source/m/mizani/mizani-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 3.1.1
@@ -35,10 +36,12 @@ Requires:       python-pandas >= 1.1.0
 Requires:       python-scipy >= 1.5.0
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module matplotlib >= 3.1.1}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pandas >= 1.1.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.5.0}
 # /SECTION
@@ -53,15 +56,17 @@ Mizani is a scales package for graphics.
 sed -i 's/unit=//' mizani/tests/test_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Broken test in i586
+donttest="mizani.breaks.log_breaks"
 # test_breaks needs https://github.com/matplotlib/matplotlib/issues/22305 fixed in next mpl
-%pytest --ignore mizani/tests/test_breaks.py
+%pytest --ignore mizani/tests/test_breaks.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst

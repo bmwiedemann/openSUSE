@@ -31,4 +31,29 @@
     <comment></comment>
     <requestid>951927</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>86bcfac7ae770610b5dc1439ff7dd350</srcmd5>
+    <version>0.8.1</version>
+    <time>1678125421</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken test in i586 mizani.breaks.log_breaks
+- Update to 0.8.1:
+  * Fixed regression bug in mizani.formatters.log_format for
+    where formatting for bases 2, 8 and 16 would fail if the values were
+    float-integers.
+  * mizani.formatters.log_format now uses exponent notation
+    for bases other than base 10.
+  * The lut parameter of mizani.palettes.cmap_pal and
+    mizani.palettes.cmap_d_pal has been deprecated and will
+    removed in a future version.
+  * mizani.transforms.datetime_trans gained parameter tz
+    that controls the timezone of the transformation.
+  * mizani.formatters.log_format gained boolean parameter
+    mathtex for TeX values as understood by matplotlib instead of
+    values in scientific notation.
+  * Fixed bug in mizani.bounds.zero_range where uint64
+    values would cause a RuntimeError. 
+</comment>
+    <requestid>1069704</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar  6 16:30:10 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken test in i586 mizani.breaks.log_breaks, it's broken
+  because it expect:
+    array([     1000,    10000,   100000,  1000000])
+  but got:
+    array([     1000,    10000,   100000,  1000000], dtype=int32)
+
+-------------------------------------------------------------------
+Tue Feb 14 03:46:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8.1:
+  * Fixed regression bug in mizani.formatters.log_format for
+    where formatting for bases 2, 8 and 16 would fail if the values were
+    float-integers.
+  * mizani.formatters.log_format now uses exponent notation
+    for bases other than base 10.
+  * The lut parameter of mizani.palettes.cmap_pal and
+    mizani.palettes.cmap_d_pal has been deprecated and will
+    removed in a future version.
+  * mizani.transforms.datetime_trans gained parameter tz
+    that controls the timezone of the transformation.
+  * mizani.formatters.log_format gained boolean parameter
+    mathtex for TeX values as understood by matplotlib instead of
+    values in scientific notation.
+  * Fixed bug in mizani.bounds.zero_range where uint64
+    values would cause a RuntimeError. 
+
+-------------------------------------------------------------------
 Fri Feb  4 23:06:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.3
