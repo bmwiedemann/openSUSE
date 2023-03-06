@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 24 13:50:58 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed fix-warning.patch, not needed anymore
+- added pipewire build dependency
+- added deadbeef-fix-desktop-file.patch to fix bogus "Play Pause" action
+- added upstream deadbeef-fix-libretro-compilation.patch to fix compilation on ARM
+- Update to 1.9.5:
+
+  * Fixed: GME chiptune voice muting was affecting converter / replaygain scanner
+  * Fixed: SID chiptune voice muting was affecting converter / replaygain scanner
+  * Fixed: SID stereo was not working the way it was intended
+  * Fixed: Wave format conversion regressions, which could lead to wrong channels mapping
+  * Fixed: Converter race condition bug when checking whether a directory exists (dakeryas)
+  * Fixed: Album art fetching for tracks with multiple artists
+  * Fixed: GTK warning when opening track properties
+  * Fixed: Prompting before deleting playlist via middle mouse button
+  * Fixed: Album art left/right/center alignment in GTKUI
+  * Fixed: Removed embedded album art size limit for ID3v2 tags
+  * Fixed: Deadlock when trying to delete files from disk
+  * Fixed: Mute functionality for output plugins with their own volume control
+  * Fixed: Switching to previous/next track after the current track is removed
+  * Fixed: Incorrect playlist affected by hotkeys
+  * Fixed: Unsynchronized ID3v2 tag loading (credit: Robin Seth Ekman)
+  * Fixed: Spectrum analyzer buffer overflow
+  * Fixed: Deadlock when removing multiple selected tracks while one of them is playing
+  * Added: Pipewire output plugin (saivert)
+  * Added: LibRetro resampling plugin (toadking)
+  * Added: Chiptune voice muting in DUMB plugin
+  * Added: Improved drawing of spectrum analyzer
+  * Added: $itematindex(index,value) function to title formatting, get value by index from multivalue fields
+
+-------------------------------------------------------------------
 Sun Jan  1 17:43:46 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.4:

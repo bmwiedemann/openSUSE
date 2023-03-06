@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -34,8 +34,8 @@ Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
 Patch1:         %{name}-drop-documents-installation.patch
 Patch2:         %{name}-fix-includes.patch
-Patch3:         fix-warning.patch
-# PATCH-FIX-UPSTREAM fix-ffmpeg-5-support.patch -- Fix build against ffmpeg 5.0x
+Patch3:         %{name}-fix-desktop-file.patch
+Patch4:         %{name}-fix-libretro-compilation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -65,6 +65,7 @@ BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(mad)
@@ -200,7 +201,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/mp3.so*
 %{_libdir}/%{name}/vfs_zip.so*
 %{_libdir}/%{name}/ddb_dumb.so*
+%{_libdir}/%{name}/ddb_dsp_libretro.so*
 %{_libdir}/%{name}/ddb_mono2stereo.so*
+%{_libdir}/%{name}/ddb_out_pw.so*
 %{_libdir}/%{name}/ddb_shn.so*
 %ifnarch %{ix86}
 %{_libdir}/%{name}/ddb_soundtouch.so*

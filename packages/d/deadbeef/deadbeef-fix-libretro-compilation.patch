@@ -1,0 +1,40 @@
+From 8162195768d48840f512f2b4922604b04ac363ed Mon Sep 17 00:00:00 2001
+From: Oleksiy Yakovenko <wakeroid@gmail.com>
+Date: Tue, 21 Feb 2023 22:08:01 +0100
+Subject: [PATCH] deadbeef: moved a block of includes in sinc_resampler.h
+
+---
+ sinc_resampler.h | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git deadbeef-1.9.5/external/ddb_dsp_libretro/sinc_resampler.h.orig deadbeef-1.9.5/external/ddb_dsp_libretro/sinc_resampler.h
+index fab5877..c709136 100644
+--- deadbeef-1.9.5/external/ddb_dsp_libretro/sinc_resampler.h.orig
++++ deadbeef-1.9.5/external/ddb_dsp_libretro/sinc_resampler.h
+@@ -24,6 +24,12 @@
+ #define __forceinline
+ 
+ #include "ppsimd/ppsimd.h"
++#include <stdint.h>
++#include <stdlib.h>
++#include <math.h>
++#if !__APPLE__
++#include <malloc.h>
++#endif
+ 
+ #ifdef _MSC_VER
+ #define _NOALIAS __declspec(noalias)
+@@ -65,13 +71,6 @@ static void resampler_sinc_free(void *data);
+ 
+ typedef void (*resampler_sinc_process_t)(void *re_, struct resampler_data *data);
+ 
+-#include <stdint.h>
+-#include <stdlib.h>
+-#include <math.h>
+-#if !__APPLE__
+-#include <malloc.h>
+-#endif
+-
+ enum class sinc_window {
+     NONE = 0,
+     KAISER,
