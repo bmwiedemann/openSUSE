@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Sun Mar 05 20:35:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * Fix issue in secret literals in inlets-operator app
+  * Bump github.com/cheggaaa/pb/v3 from 3.1.0 to 3.1.2
+  * Update test-tool.sh readability
+
+-------------------------------------------------------------------
+Sun Mar 05 20:30:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.2:
+  * Fix issue with inlets-pro binary for M1
+
+-------------------------------------------------------------------
+Sun Mar 05 20:28:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.1:
+  * Trim installation text
+  * Install CRD from chart
+  * Create inlets license secret in K8s
+  * Update CRD URL for inlets-operator app
+
+-------------------------------------------------------------------
+Sun Mar 05 20:22:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.0:
+  * Create meaningful next action for missing tools
+  * Add user-agent to all HTTP requests
+  * UX: print human-readable error in case of 404
+  * add croc cli
+  * Update README.md
+  * Bump golang.org/x/crypto from 0.5.0 to 0.6.0
+  * Bump golang.org/x/mod from 0.7.0 to 0.8.0
+
+-------------------------------------------------------------------
+Sun Mar 05 20:17:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.62:
+  * feat: add project's link in the markdown format for list of
+    tools
+  * Broken sponsors link
+
+-------------------------------------------------------------------
+Sun Mar 05 19:15:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.61:
+  * Grafana agent changed its download URL
+  * clusterawsadm: rm ming/arm64 test
+
+-------------------------------------------------------------------
+Sun Mar 05 19:10:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.60:
+  * add clusterawsadm
+  * add eksctl-anywhere
+  * Fix k9s install, template name, upd contributing.md
+  * Smaller image for Everyday Golang
+  * Remove matrix from GHA
+
+-------------------------------------------------------------------
+Sun Mar 05 13:28:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.59:
+  * Add grype to arkade get
+
+-------------------------------------------------------------------
+Sun Mar 05 13:27:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.58:
+  * add syft to arkade get
+
+-------------------------------------------------------------------
+Sun Mar 05 13:24:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.57:
+  * Fix tool for devspace
+  * Bump github.com/google/go-containerregistry from 0.12.1
+    to 0.13.0
+  * Upgrade Istio version in app
+  * Replace outdated tiller reference with helm reference
+  * Amend ming entries following review comments
+  * Add v prefix to VersionNumber for kail
+  * Fix krew on Apple silicon
+  * Bump golang.org/x/crypto from 0.4.0 to 0.5.0
+
+-------------------------------------------------------------------
+Sun Mar 05 13:21:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.56:
+  * fix: handle "v" prefix on image tags when upgrading
+  * Update stats
+  * Swap image out for eBook link
+  * Update ToC for Helm features
+
+-------------------------------------------------------------------
+Sun Mar 05 13:17:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.55:
+  * feat: Upgrade container images within YAML files
+  * Add support of scaleway-cli
+  * Switch to GitHub for looking up Helm version dynamically
+
+-------------------------------------------------------------------
+Sun Mar 05 13:15:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.54:
+  * Update Helm version
+
+-------------------------------------------------------------------
+Sun Mar 05 13:14:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.53:
+  * Unpin the version of Helm used
+  * Fix dashboard flag for OpenFaaS app
+  * Add jetstream flag to OpenFaaS app
+  * Bump github.com/otiai10/copy from 1.7.1 to 1.9.0
+  * Bump golang.org/x/mod from 0.6.0 to 0.7.0
+  * Bump github.com/google/go-containerregistry from 0.12.0
+    to 0.12.1
+  * support grafana agent
+  * Remove artificats from tmp
+  * Update README.md
+
+-------------------------------------------------------------------
+Sun Mar 05 13:11:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.52:
+  * Bump github actions to go1.19
+  * Add code for hostctl on Apple silicon
+  * Add support for registry component
+  * Bump golang.org/x/crypto from 0.1.0 to 0.4.0
+
+-------------------------------------------------------------------
+Sun Mar 05 13:09:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.51:
+  * Bump github.com/otiai10/copy from 1.7.0 to 1.7.1
+  * Add support for firectl
+
+-------------------------------------------------------------------
+Sun Mar 05 13:08:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.50:
+  * Update publish.yml
+
+-------------------------------------------------------------------
+Sun Mar 05 13:03:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.49:
+  * Support reading non gzip-compressed tar files
+
+-------------------------------------------------------------------
+Sun Mar 05 13:00:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.48:
+  * Bump github.com/google/go-containerregistry from 0.11.0
+    to 0.12.0
+  * Bump github.com/spf13/cobra from 1.5.0 to 1.6.1
+  * Fix argocd for darwin arm
+  * Add tctl to arkade get
+  * Fix missing WithHelmUpdateRepo
+  * add support of viddy
+  * Fix tc-redirect-tap system app for arm64
+
+-------------------------------------------------------------------
+Sun Mar 05 12:46:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.47:
+  * Add google crane to arkade
+  * Add kubeconform, conftest, kubeval tools
+  * Mention GH action
+
+-------------------------------------------------------------------
+Sun Mar 05 12:45:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.46:
+  * Fix rabbitmq installation message
+
+-------------------------------------------------------------------
+Sun Mar 05 12:44:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.45:
+  * Add tc-redirect-tap system app
+  * Update Grafana helm chart version
+  * Less is more
+
+-------------------------------------------------------------------
+Sun Mar 05 12:41:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.44:
+  * Add inlets/mixctl
+  * Update kubectl version to v1.24
+  * add flyctl tool
+  * Update PULL_REQUEST_TEMPLATE.md
+
+-------------------------------------------------------------------
 Wed Sep 07 11:53:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.8.43:
