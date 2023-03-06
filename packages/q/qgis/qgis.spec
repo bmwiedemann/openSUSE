@@ -214,10 +214,13 @@ export PATH=$PATH:$QTDIR/bin
 %if %{with grass}
   -DWITH_GRASS=TRUE \
   -DWITH_GRASS7=TRUE \
+  -DWITH_GRASS8=TRUE \
 %if 0%{?suse_version} > 1500
   -DGRASS_PREFIX7=`cat %{_sysconfdir}/GRASSDIR` \
+  -DGRASS_PREFIX8=`cat %{_sysconfdir}/GRASSDIR` \
 %else
   -DGRASS_PREFIX7=%{_libdir}/grass78 \
+  -DGRASS_PREFIX8=%{_libdir}/grass82 \
 %endif
 %endif
   -DWITH_QSPATIALITE=TRUE \
@@ -295,11 +298,11 @@ popd
 %dir %{_libdir}/qgis/
 %{_libdir}/qgis/*
 %if %{with grass}
-%exclude %{_libdir}/libqgisgrass7.so
-%exclude %{_libdir}/libqgisgrass7.so.*
-%exclude %{_libdir}/qgis/libplugin_grass7.so
-%exclude %{_libdir}/qgis/libprovider_grass7.so
-%exclude %{_libdir}/qgis/libprovider_grassraster7.so
+%exclude %{_libdir}/libqgisgrass?.so
+%exclude %{_libdir}/libqgisgrass?.so.*
+%exclude %{_libdir}/qgis/libplugin_grass?.so
+%exclude %{_libdir}/qgis/libprovider_grass?.so
+%exclude %{_libdir}/qgis/libprovider_grassraster?.so
 %exclude %{_libdir}/qgis/grass
 %endif
 %exclude %{_datadir}/qgis/%{sampledir}
@@ -311,11 +314,11 @@ popd
 
 %if %{with grass}
 %files plugin-grass
-%{_libdir}/qgis/libplugin_grass7.so
-%{_libdir}/qgis/libprovider_grass7.so
-%{_libdir}/qgis/libprovider_grassraster7.so
-%{_libdir}/libqgisgrass7.so
-%{_libdir}/libqgisgrass7.so.*
+%{_libdir}/qgis/libplugin_grass?.so
+%{_libdir}/qgis/libprovider_grass?.so
+%{_libdir}/qgis/libprovider_grassraster?.so
+%{_libdir}/libqgisgrass?.so
+%{_libdir}/libqgisgrass?.so.*
 %defattr(755,root,root)
 %{_libdir}/qgis/grass
 %endif
