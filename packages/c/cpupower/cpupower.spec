@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 Name:           cpupower
 Version:        %{version}
-#Version:        5.19
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
@@ -77,6 +76,7 @@ Group:          System/Shells
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 bash command line completion support for cpupower.
@@ -157,9 +157,7 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 %{_libdir}/libcpupower*.so.*
 
 %files devel
-%{_includedir}/cpufreq.h
-%{_includedir}/cpuidle.h
-#%%{_includedir}/powercap.h
+%{_includedir}/*.h
 %{_libdir}/libcpu*.so
 
 %files bash-completion

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  5 18:19:36 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Add wildcard for powercap.h since powercap patches have reached mainline
+- Build bash-completion noarch
+
+-------------------------------------------------------------------
 Fri Oct 21 13:59:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - clean up sources: drop rapl_monitor.patch and

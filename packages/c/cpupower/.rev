@@ -482,4 +482,12 @@ D intel-speed-select_remove_DATE_TIME.patch</comment>
     <comment></comment>
     <requestid>1030431</requestid>
   </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>abf792bd69d11ee3f635d082f4317c86</srcmd5>
+    <version>MACRO</version>
+    <time>1678125312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069475</requestid>
+  </revision>
 </revisionlist>
