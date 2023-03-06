@@ -1713,9 +1713,6 @@ unsorted:
   - busybox-wget 
   - busybox-whois 
   - butane 
-  - buzztrax 
-  - buzztrax-lang 
-  - buzztrax-plugins 
   - bvi 
   - bwbar 
   - bwidget 
@@ -6774,7 +6771,6 @@ unsorted:
   - gssntlmssp-devel 
   - gssproxy 
   - gst123 
-  - gstreamer-1_0-plugins-buzztrax 
   - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
   - gstreamer-devel-32bit: [x86_64] 
@@ -10446,8 +10442,6 @@ unsorted:
   - libbluray-devel 
   - libbluray-tools 
   - libbluray2-32bit: [x86_64] 
-  - libbml-devel 
-  - libbml1 
   - libbobcat-devel 
   - libbobcat-devel-static 
   - libbobcat-light-devel-static 
@@ -10613,15 +10607,6 @@ unsorted:
   - libbullet-devel 
   - libbullet3_17 
   - libburn-devel 
-  - libbuzztrax-core-devel 
-  - libbuzztrax-core1 
-  - libbuzztrax-core1-32bit: [x86_64] 
-  - libbuzztrax-gst-devel 
-  - libbuzztrax-gst1 
-  - libbuzztrax-gst1-32bit: [x86_64] 
-  - libbuzztrax-ic-devel 
-  - libbuzztrax-ic1 
-  - libbuzztrax-ic1-32bit: [x86_64] 
   - libbytesize-devel 
   - libbz2-devel 
   - libbz2-devel-32bit: [x86_64] 
@@ -19817,6 +19802,7 @@ unsorted:
   - pcsc-ccid 
   - pcsc-eco5000 
   - pcsc-lite-devel 
+  - pcsc-lite-devel-32bit: [x86_64] 
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
@@ -24838,7 +24824,6 @@ unsorted:
   - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pybind11-stubgen 
-  - python310-pyblake2 
   - python310-pybluez 
   - python310-pybtex 
   - python310-pybugz 
@@ -24965,7 +24950,6 @@ unsorted:
   - python310-pyperf 
   - python310-pypet 
   - python310-pypi-search 
-  - python310-pypipegraph 
   - python310-pypiserver 
   - python310-pypng 
   - python310-pyppmd 
@@ -25498,7 +25482,6 @@ unsorted:
   - python310-sphinx-qt-documentation 
   - python310-sphinx-removed-in 
   - python310-sphinx-tabs 
-  - python310-sphinx-testing 
   - python310-sphinx-version-warning 
   - python310-sphinx_mdinclude 
   - python310-sphinx_press_theme 
@@ -26919,6 +26902,7 @@ unsorted:
   - python311-django-attachments 
   - python311-django-auth-ldap 
   - python311-django-avatar 
+  - python311-django-axes 
   - python311-django-bootstrap3 
   - python311-django-bootstrap4 
   - python311-django-braces 
@@ -27154,6 +27138,7 @@ unsorted:
   - python311-flake8-isort 
   - python311-flake8-pep3101 
   - python311-flake8-polyfill 
+  - python311-flake8-pyi 
   - python311-flake8-quotes 
   - python311-flaky 
   - python311-flasgger 
@@ -27679,6 +27664,7 @@ unsorted:
   - python311-mistune 
   - python311-mitmproxy 
   - python311-mitmproxy-wireguard 
+  - python311-mizani 
   - python311-mkdocs 
   - python311-mkdocs-bootstrap 
   - python311-moban 
@@ -28237,6 +28223,7 @@ unsorted:
   - python311-pysolr 
   - python311-pyspnego 
   - python311-pysrt 
+  - python311-pyssim 
   - python311-pystache 
   - python311-pysvn 
   - python311-pytaglib 
@@ -28491,6 +28478,7 @@ unsorted:
   - python311-qtwebengine-qt5 
   - python311-qtwebengine-qt5-devel 
   - python311-quantities 
+  - python311-quantum-blackbird 
   - python311-queuelib 
   - python311-radexreader 
   - python311-radon 
@@ -28728,6 +28716,7 @@ unsorted:
   - python311-sphinxcontrib-applehelp 
   - python311-sphinxcontrib-asyncio 
   - python311-sphinxcontrib-autoprogram 
+  - python311-sphinxcontrib-autoprogram-doc 
   - python311-sphinxcontrib-blockdiag 
   - python311-sphinxcontrib-copybutton 
   - python311-sphinxcontrib-devhelp 
@@ -31429,7 +31418,6 @@ unsorted:
   - python38-pybind11 
   - python38-pybind11-devel 
   - python38-pybind11-stubgen 
-  - python38-pyblake2 
   - python38-pybluez 
   - python38-pybtex 
   - python38-pybugz 
@@ -31565,7 +31553,6 @@ unsorted:
   - python38-pyperf 
   - python38-pypet 
   - python38-pypi-search 
-  - python38-pypipegraph 
   - python38-pypiserver 
   - python38-pypng 
   - python38-pyppmd 
@@ -32120,7 +32107,6 @@ unsorted:
   - python38-sphinx-qt-documentation 
   - python38-sphinx-removed-in 
   - python38-sphinx-tabs 
-  - python38-sphinx-testing 
   - python38-sphinx-version-warning 
   - python38-sphinx_mdinclude 
   - python38-sphinx_press_theme 
@@ -34849,7 +34835,6 @@ unsorted:
   - python39-pybind11 
   - python39-pybind11-devel 
   - python39-pybind11-stubgen 
-  - python39-pyblake2 
   - python39-pybluez 
   - python39-pybtex 
   - python39-pybugz 
@@ -34985,7 +34970,6 @@ unsorted:
   - python39-pyperf 
   - python39-pypet 
   - python39-pypi-search 
-  - python39-pypipegraph 
   - python39-pypiserver 
   - python39-pypng 
   - python39-pyppmd 
@@ -35540,7 +35524,6 @@ unsorted:
   - python39-sphinx-qt-documentation 
   - python39-sphinx-removed-in 
   - python39-sphinx-tabs 
-  - python39-sphinx-testing 
   - python39-sphinx-version-warning 
   - python39-sphinx_mdinclude 
   - python39-sphinx_press_theme 
@@ -47520,10 +47503,6 @@ unsorted:
   - typelib-1_0-BraseroMedia-3_2_0 
   - typelib-1_0-Budgie-1_0 
   - typelib-1_0-BudgieRaven-1_0 
-  - typelib-1_0-BuzztraxCore-1_1 
-  - typelib-1_0-BuzztraxCore-1_1-32bit: [x86_64] 
-  - typelib-1_0-BuzztraxIc-1_1 
-  - typelib-1_0-BuzztraxIc-1_1-32bit: [x86_64] 
   - typelib-1_0-CMenu-3_0 
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
