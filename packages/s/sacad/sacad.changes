@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 27 21:50:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.4:
+  * crunch using oxipng if available
+  * improve FLAC cover tag compatibility
+  * update UA to fix Amazon sources 503 errors
+
+-------------------------------------------------------------------
 Mon Jan  2 13:47:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.3:
