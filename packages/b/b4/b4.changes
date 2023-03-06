@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 21:26:19 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.1:
+  * Use typing compatible with Python 3.8
+
+-------------------------------------------------------------------
 Tue Jan 24 06:21:58 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.12.0
