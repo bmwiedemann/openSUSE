@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  6 13:02:39 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.0.2.
+  * Fix --source/-s argument to transplant with Hg-Git enabled. (#392)
+  * Fix cloning repositories using the old static HTTP support with Hg-Git enabled.
+  * Handle pushing tags to Git that cannot be stored as references such as double-quotes on Windows. (#397)
+  * Avoid converting unrelated refs on pull, such as Github PR-related refs. (#386)
+  * Fix tests with GNU Grep 3.8 and later, by avoiding the egrep alias (#400)
+  * Support reading remote refs even if packed.
+  * Add support for Dulwich 0.21 and later.
+  * Mark Mercurial 6.4 as supported and tested.
+  * Address slowness when pulling large repositories, caused by writing unchanged references. (#401)
+
+-------------------------------------------------------------------
 Wed Feb  1 21:29:31 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - BuildRequire python3-toml on Leap.

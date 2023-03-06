@@ -24,7 +24,7 @@
 
 %define pythons python3
 Name:           mercurial-extension-hg-git
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Hg-Git Mercurial plugin
 License:        GPL-2.0-only
