@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 11:50:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- test-tsne.patch: skip non-sensible assertion in testsuite
+
+-------------------------------------------------------------------
 Wed Mar  2 23:38:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_sklearn.patch adjusting for changed API of

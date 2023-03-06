@@ -1,7 +1,7 @@
 #
 # spec file for package python-MulticoreTSNE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/M/MulticoreTSNE/M
 # PATCH-FIX-UPSTREAM fix_sklearn.patch gh#DmitryUlyanov/Multicore-TSNE#90 mcepl@suse.com
 # signature of sklearn.datasets.make_blogs changed
 Patch0:         fix_sklearn.patch
+Patch1:         test-tsne.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
