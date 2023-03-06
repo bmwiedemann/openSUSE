@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar  4 11:56:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.65
+  * Quick fix for volume ramp delta.
+- Update to version 1.64
+  * Increased number of precision bits for song BPM, playback time
+    counter and audio->video syncing. This is a minor change and
+    does very little in practice as the previous precision was
+    already quite good.
+  * Audio/video sync timestamps are reset every half an hour to
+    prevent possible sync drifting after several hours of playing
+    a song without a single song stop (resets timestamp) in-between
+  * The HPC timers are reset every half an hour instead of every
+    hour. Video (if no vsync) and the scopes use these timers.
+  * Small code refactor for how the song is timed/ticked. Longer
+    song-to-WAV renders may have a filesize change of a few bytes,
+    but this is actually more correct.
+
+-------------------------------------------------------------------
 Tue Feb 14 21:42:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.63
