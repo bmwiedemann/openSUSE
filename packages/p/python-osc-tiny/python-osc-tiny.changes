@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 06:03:47 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release .0.7.12
+  * Enhanced usability and reliability for `HttpSignatureAuth`
+  * Prevent sharing of sessions across forked processes
+  * Fixed typo in quickstart doc
+
+-------------------------------------------------------------------
 Mon Jan  9 08:44:37 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.11
