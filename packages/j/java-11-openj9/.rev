@@ -119,4 +119,12 @@
     <comment>Mess-up with bug number</comment>
     <requestid>1068375</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f09e20982a7bb886dc1f838b478e5f73</srcmd5>
+    <version>11.0.18.0</version>
+    <time>1678125371</time>
+    <user>dimstar_suse</user>
+    <comment>January 2023 CPU</comment>
+    <requestid>1069555</requestid>
+  </revision>
 </revisionlist>

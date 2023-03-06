@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:13:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.18 with OpenJ9 0.36.1 virtual machine
+  * Including Oracle January 2023 CPU changes
+    + CVE-2023-21835, bsc#1207246
+    + CVE-2023-21843, bsc#1207248
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.36
+
+-------------------------------------------------------------------
 Fri Feb 17 13:19:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the accessibility sub-package, since it was never really

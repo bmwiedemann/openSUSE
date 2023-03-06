@@ -33,19 +33,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       17
+%global updatever       18
 %global patchver        0
-%global buildver        8
+%global buildver        10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   a94c231303679fde6ac12ca299253f643c2a1a45
-%global root_branch     v0.35.0-release
+%global root_revision   4e060ceb0bbbbf5fa0432db08e0b38292cbbe1ba
+%global root_branch     v0.36.1-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    85a21674fdf30403b75c3000a4dc10605ca52ba2
-%global omr_branch      v0.35.0-release
+%global omr_revision    f491bbf6f6f3f87bfd38a65055589125c13de555
+%global omr_branch      v0.36.1-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision e04a7f6c1c365a6b375deb5f641c72309b170b95
-%global openj9_branch   v0.35.0-release
-%global openj9_tag      openj9-0.35.0
+%global openj9_revision 0592661e480dd108a708689dc56bf1a427677645
+%global openj9_branch   v0.36.1-release
+%global openj9_tag      openj9-0.36.1
 # JavaEE modules
 %global java_activation_repository activation
 %global java_activation_tag JAF-1_2_0
@@ -1106,7 +1106,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
-%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %{_jvmdir}/%{sdkdir}/include/linux/jawt_md.h
