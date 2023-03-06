@@ -1,0 +1,31 @@
+From df2ef0b5bdcd9c9ec2059c1b78305cd079ac7d83 Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Wed, 1 Mar 2023 16:57:01 +0800
+Subject: [PATCH 1/1] Vendor BPF_F_KPROBE_MULTI_RETURN definition
+
+This is done in similar fashion as commit d524a408a2 "Add bpf_map_type
+and bpf_prog_type to vendored bpf.h" to decouple the build from the
+system bpftrace being built on, so bpftrace built on older
+kernels/libraries will still work correctly on newer kernels.
+---
+ src/libbpf/bpf.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/libbpf/bpf.h b/src/libbpf/bpf.h
+index 53c33369..bcdf27b3 100644
+--- a/src/libbpf/bpf.h
++++ b/src/libbpf/bpf.h
+@@ -8,6 +8,10 @@
+ #define BPF_PSEUDO_MAP_VALUE 2
+ #endif
+ 
++#ifndef BPF_F_KPROBE_MULTI_RETURN
++#define BPF_F_KPROBE_MULTI_RETURN       (1U << 0)
++#endif
++
+ // clang-format off
+ enum bpf_map_type {
+ 	BPF_MAP_TYPE_UNSPEC,
+-- 
+2.39.2
+

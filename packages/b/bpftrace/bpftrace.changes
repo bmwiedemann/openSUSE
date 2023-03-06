@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 08:57:00 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add Vendor-BPF_F_KPROBE_MULTI_RETURN-definition.patch to fix build on
+  Leap 15.5/SLES 15-SP5
+
+-------------------------------------------------------------------
 Thu Feb  9 07:35:30 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Set USE_SYSTEM_BPF_BCC to ON so system libraries are used
