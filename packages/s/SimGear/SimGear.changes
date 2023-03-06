@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  4 05:11:03 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add simgear-boost-1.81.patch, fix building with boost >= 1.81
+
+-------------------------------------------------------------------
 Wed Nov 23 16:11:51 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2020.3.17

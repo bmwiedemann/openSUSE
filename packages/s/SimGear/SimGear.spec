@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
 Source99:       SimGear-rpmlintrc
+# PATCH-FIX-UPSTREAM simgear-boost-1.81.patch - fix building with boost >= 1.81
+Patch0:         simgear-boost-1.81.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel
