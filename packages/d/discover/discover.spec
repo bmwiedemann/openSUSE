@@ -34,6 +34,8 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Warning-for-FlatHub.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-pk-Don-t-forget-to-finish-streams.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  flatpak-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 14:46:54 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d
+
+-------------------------------------------------------------------
 Tue Dec 13 10:49:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Drop 0009-Fix-KDC-null-deref-on-TGS-inner-body-null-server.patch,

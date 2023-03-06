@@ -1,7 +1,7 @@
 #
 # spec file for package babl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.98
+Version:        0.1.102
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

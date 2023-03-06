@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  1 17:50:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- avoid buildcycle with krb5 (in sle15+ - jsc#PED-3641)
+- skip hwcaps subpackage building for -static subpackage
+
+-------------------------------------------------------------------
+Wed Feb  1 09:26:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with glibc hwcaps optimized libs
+
+-------------------------------------------------------------------
 Thu Jan 19 11:07:25 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.2.13:

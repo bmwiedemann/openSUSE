@@ -22,9 +22,9 @@
 %define psuffix -doc-src
 %endif
 
-%define libbase 4_0_11
+%define libbase 4_0_12
 Name:           muparserx
-Version:        4.0.11
+Version:        4.0.12
 Release:        0
 Summary:        A C++ Library for Parsing Expressions
 License:        BSD-2-Clause

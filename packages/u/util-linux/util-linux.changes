@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:01:54 UTC 2023 - pgajdos@suse.com
+
+- added patches
+  agetty: don't ignore --noclear when re-print issue file
+  https://github.com/util-linux/util-linux/commit/0c0fb46dcef6c63c74094486e499e376fdb33a04.diff
+  [bsc#1194322]
+  + util-linux-honor-noclear-when-reprint-issue.patch
+
+-------------------------------------------------------------------
 Tue Feb 14 16:07:27 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove requires for adjtimex, which and time: this where wrongly

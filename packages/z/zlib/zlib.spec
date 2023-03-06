@@ -57,6 +57,9 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+# SLE15 specific buildcycle: we don't need NIS functionality in PAM for building
+#!BuildIgnore: libtirpc3 libtirpc-netconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 zlib is a general-purpose lossless data-compression library,

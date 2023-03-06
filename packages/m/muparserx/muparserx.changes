@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar  5 00:17:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.12
+  * String constants starting with "or" was confused with
+    operator during parsing step.
+  * Equals operator behavior was inconsistent when checking
+    boolean values. (no type check)
+
+-------------------------------------------------------------------
 Wed Mar  1 20:14:46 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split fairly large API documentation from devel subpackage

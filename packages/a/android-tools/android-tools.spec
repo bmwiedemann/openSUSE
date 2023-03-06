@@ -1,7 +1,7 @@
 #
 # spec file for package android-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 Name:           android-tools
-Version:        33.0.3p2
+Version:        34.0.0
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
@@ -43,11 +43,11 @@ Patch0:         fix-install-completion.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
-BuildRequires:  gtest
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python%{_pyn}
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -98,7 +98,7 @@ Bash command line completion support for android-tools.
 
 %prep
 %autosetup -a2 -p1
-tar xf %{SOURCE1} -C vendor/boringssl
+tar -xf %{SOURCE1} -C vendor/boringssl
 
 # fix env-script-interpreter
 sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
@@ -108,7 +108,7 @@ sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
 
 %build
 %define __builder ninja
-export GOFLAGS="-mod=vendor -buildmode=pie -trimpath"
+export GOFLAGS="-mod=vendor -buildmode=pie -trimpath -ldflags=-buildid="
 
 %cmake \
 	-DBUILD_SHARED_LIBS=OFF		\

@@ -943,4 +943,13 @@ Marcus
 - fix version in git</comment>
     <requestid>1056691</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>781505a8bc8f20661a4a1e35a829bb0a</srcmd5>
+    <version>84.87+git20230302.ff58c9e</version>
+    <time>1678043270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20230302.ff58c9e:
+  * delete-x86_64-subarches: don't search in RPMS dir if not present</comment>
+    <requestid>1069032</requestid>
+  </revision>
 </revisionlist>

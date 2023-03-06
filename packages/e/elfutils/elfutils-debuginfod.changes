@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar  3 16:52:50 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.189:
+  * configure: eu-nm, eu-addr2line and eu-stack can provide demangled symbols
+           when linked with libstdc++. Use --disable-demangler to disable.
+           A new option --enable-sanitize-memory has been added for msan
+           sanitizer support.
+  * libelf: elf_compress now supports ELFCOMPRESS_ZSTD when build against
+        libzstd
+  * libdwfl: dwfl_module_return_value_location now returns 0 (no return type)
+         for DIEs that point to a DW_TAG_unspecified_type.
+  * elfcompress: -t, --type= now support zstd if libelf has been build with
+             ELFCOMPRESS_ZSTD support.
+  * backends: Add support for LoongArch and Synopsys ARCv2 processors.
+- drop upsteam patches:
+  * elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
+  * elfutils-0.188-CURL_AT_LEAST_VERSION.patch
+  * elfutils-0.188-deprecated-CURLINFO.patch
+  * support-DW_TAG_unspecified_type.patch
+- Enable -Werror=use-after-free again.
+
+-------------------------------------------------------------------
 Thu Feb 23 09:29:20 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Disable a false-positive -Werror=use-after-free warning.

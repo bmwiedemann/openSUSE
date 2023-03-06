@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  3 22:12:34 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20230303
+  Bug Fixes
+  * Install.sh: get current user instead of root on the automatic
+    install script (#239)
+  * exclude several Sony and Microsoft USB controllers, VR, BT
+    (#252)
+
+  Features
+  * Add Wileyfox Swift 2 Plus (#249)
+  * Add Amazon Fire TV Stick Lite (3rd gen) (#251)
+
+  Miscellaneous Tasks
+  * Rewrite Polar vendor and add Polar M600 product. (#248)
+
+-------------------------------------------------------------------
 Thu Jan  5 18:59:24 UTC 2023 - munix9@googlemail.com
 
 - Update to version 20230104

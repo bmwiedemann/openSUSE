@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  2 08:27:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.42:
+  + Operations:
+    - raw-load: add conditional support for 0.21.0 API.
+    - rgb-clib: improved ui-ranges.
+    - perlin, mosiac, c2g, long-shadow: small cleanups.
+    - gif-load: update vendored dependency, including code updates.
+  + Build: Keeping up with babl.
+- Drop 133.patch: Fixed upstream.
+- Add boolean pkgconfig(babl-0.1) BuildRequires following upstream
+  changes.
+
+-------------------------------------------------------------------
 Wed Jan 11 09:05:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 133.patch: Fix build against libraw 0.21.0.

@@ -163,4 +163,23 @@
     <comment></comment>
     <requestid>697461</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d1d1c28a444fc705b9f53d01797e095d</srcmd5>
+    <version>1.1.7</version>
+    <time>1678043274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.7
+  * Fixed tarball generation
+- Update to version 1.1.6
+  * Added new assert macros to compare 2 double given an epsilon
+  * Added meson build system
+  * Added header with version to TAP13 output
+  * Fixed issues with MSVC
+  * Fixed TAP output for skipped tests
+  * Fixed issue with fail_msg
+  * CMake generated configs for find_package(cmocka)
+  * Documentation improvements
+</comment>
+    <requestid>1068186</requestid>
+  </revision>
 </revisionlist>

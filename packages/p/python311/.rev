@@ -720,4 +720,15 @@ C API
 </comment>
     <requestid>1067032</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7d3c3ccdbc08ee72291198ee2020df0</srcmd5>
+    <version>3.11.2</version>
+    <time>1678043281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.2:
+  Bug fixes, no changes in API and no security bugs.
+- Add python310 Obsoletes line to obsolete_python_versioned macro.
+</comment>
+    <requestid>1069317</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  3 17:23:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.11.2:
+  Bug fixes, no changes in API and no security bugs.
+
+-------------------------------------------------------------------
+Wed Mar  1 20:50:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add python310 Obsoletes line to obsolete_python_versioned macro.
+
+-------------------------------------------------------------------
 Tue Feb 21 11:34:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add provides for readline and sqlite3 to the main Python

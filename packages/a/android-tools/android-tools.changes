@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar  3 19:06:59 UTC 2023 - munix9@googlemail.com
+
+- Update to version 34.0.0
+  * Upgrade to platform-tools-34.0.0 (see #106)
+
+  * adb
+    - Fixed zero length packet sends for macOS
+      (issuetracker: 208675141).
+    - Addressed unstable connectivity (MacBook high speed cable):
+      frequent adb disconnects.
+    - Improved error message for adb push with insufficient number
+      of arguments.
+
+  * fastboot
+    - Improved flashing: flashall will now skip reboots to
+      userspace if it can.
+    - Fixed zero length packet sends for macOS
+      (issuetracker: 208675141).
+    - Fixed flashing recovery.img resulting in wrong AVB footer.
+
+-------------------------------------------------------------------
 Tue Dec 13 17:27:34 UTC 2022 - munix9@googlemail.com
 
 - Update to version 33.0.3p2

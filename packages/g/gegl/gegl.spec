@@ -26,16 +26,15 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.40
+Version:        0.4.42
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 133.patch dimstar@opensuse.org -- Fix build against libraw 0.21.0
-Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/merge_requests/133.patch
 Source99:       baselibs.conf
+
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
@@ -50,7 +49,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
-BuildRequires:  pkgconfig(babl) >= 0.1.90
+BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gexiv2)

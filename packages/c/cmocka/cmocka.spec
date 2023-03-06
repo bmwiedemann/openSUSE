@@ -1,7 +1,7 @@
 #
 # spec file for package cmocka
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           cmocka
-Version:        1.1.5
+Version:        1.1.7
 Release:        0
 Summary:        Lightweight library to simplify and generalize unit tests for C
 License:        Apache-2.0
@@ -40,7 +40,8 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+Obsoletes:      libcmocka-devel-static < %{version}
 
 %description
 cmocka is an elegant unit testing framework for C with support for mock
@@ -94,14 +95,6 @@ Requires:       pkg-config
 %description -n libcmocka-devel
 Development headers for the cmocka unit testing library.
 
-%package -n libcmocka-devel-static
-Summary:        Static cmocka library
-Group:          Development/Libraries/C and C++
-Requires:       libcmocka-devel = %{version}
-
-%description -n libcmocka-devel-static
-Static cmocka unit testing library.
-
 %prep
 %autosetup -p1
 
@@ -116,7 +109,8 @@ Static cmocka unit testing library.
 make %{?_smp_mflags}
 %if %{with docs}
 make docs
-%endif # with docs
+#endif  with docs
+%endif
 
 %install
 %cmake_install
@@ -138,7 +132,8 @@ popd
 %files -n libcmocka-devel
 %if %{with docs}
 %doc build/doc/html
-%endif # with docs
+#endif with docs
+%endif
 %{_includedir}/cmocka.h
 %{_includedir}/cmocka_pbc.h
 %dir %{_includedir}/cmockery
@@ -147,10 +142,8 @@ popd
 %{_libdir}/libcmocka.so
 %{_libdir}/pkgconfig/cmocka.pc
 %dir %{_libdir}/cmake/cmocka
+%{_libdir}/cmake/cmocka/cmocka-config-relwithdebinfo.cmake
 %{_libdir}/cmake/cmocka/cmocka-config-version.cmake
 %{_libdir}/cmake/cmocka/cmocka-config.cmake
-
-%files -n libcmocka-devel-static
-%{_libdir}/libcmocka-static.a
 
 %changelog

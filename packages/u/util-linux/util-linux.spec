@@ -112,6 +112,8 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch4:         util-linux-bash-completion-su-chsh-l.patch
 # PATCH-FIX-SUSE util-linux-fix-tests-when-@-in-path.patch bsc#1194038 -- rpmbuild %checks fail when @ in the directory path
 Patch5:         util-linux-fix-tests-when-at-symbol-in-path.patch
+# https://github.com/util-linux/util-linux/commit/0c0fb46dcef6c63c74094486e499e376fdb33a04.diff
+Patch6:         util-linux-honor-noclear-when-reprint-issue.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

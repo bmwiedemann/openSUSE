@@ -746,4 +746,12 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061759</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>9899850e305c835696267df8d7e5a040</srcmd5>
+    <version>1.2.13</version>
+    <time>1678043266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068547</requestid>
+  </revision>
 </revisionlist>

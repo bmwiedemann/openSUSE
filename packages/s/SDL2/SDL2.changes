@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  3 22:41:23 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Use current keymap on console
+  (https://github.com/libsdl-org/SDL/pull/7400 )
+  + 0001-Cleanup-add-brace-6545.patch
+  + 0002-Update-for-SDL3-coding-style-6717.patch
+  + 0003-Clang-Tidy-fixes-6725.patch
+  + 0004-evdev_kbd-Use-current-keymap.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 00:16:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26.3

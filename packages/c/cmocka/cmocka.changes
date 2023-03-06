@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 27 13:16:24 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.7
+  * Fixed tarball generation
+
+-------------------------------------------------------------------
+Fri Feb 17 14:11:14 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.6
+  * Added new assert macros to compare 2 double given an epsilon
+  * Added meson build system
+  * Added header with version to TAP13 output
+  * Fixed issues with MSVC
+  * Fixed TAP output for skipped tests
+  * Fixed issue with fail_msg
+  * CMake generated configs for find_package(cmocka)
+  * Documentation improvements
+
+-------------------------------------------------------------------
 Wed Apr 24 09:43:30 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133122).

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 03 12:46:22 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230303.7726e9f:
+  * tuned: incremental addition of new acquire_devices method (bsc#1208727)
+
+-------------------------------------------------------------------
 Wed Nov 02 10:15:16 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20221102.9f111fa:

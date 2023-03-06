@@ -574,4 +574,22 @@
     <comment>- Add 133.patch: Fix build against libraw 0.21.0.</comment>
     <requestid>1057748</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b6a09014e7f3003df7963eb6b3d491af</srcmd5>
+    <version>0.4.42</version>
+    <time>1678043279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.42:
+  + Operations:
+    - raw-load: add conditional support for 0.21.0 API.
+    - rgb-clib: improved ui-ranges.
+    - perlin, mosiac, c2g, long-shadow: small cleanups.
+    - gif-load: update vendored dependency, including code updates.
+  + Build: Keeping up with babl.
+- Drop 133.patch: Fixed upstream.
+- Add boolean pkgconfig(babl-0.1) BuildRequires following upstream
+  changes.
+</comment>
+    <requestid>1068662</requestid>
+  </revision>
 </revisionlist>

@@ -68,7 +68,7 @@ BuildRequires:  python-gtk-devel >= 2.10.4
 %endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
-BuildRequires:  pkgconfig(babl) >= 0.1.78
+BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2

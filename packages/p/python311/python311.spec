@@ -47,7 +47,8 @@
 # Obsoleting previous "latest" Python versions
 # Next versions will get more lines like for older versions
 %define obsolete_python_versioned() \
-Obsoletes:      python39%{?1:-%{1}}
+Obsoletes:      python39%{?1:-%{1}} \
+Obsoletes:      python310%{?1:-%{1}}
 %else
 %define obsolete_python_versioned() %{nil}
 %endif
@@ -103,7 +104,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -642,7 +643,7 @@ for library in \
     _posixsubprocess _queue _random resource select _ssl _socket spwd \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
     _testmultiphase unicodedata zlib _ctypes_test _testinternalcapi _testcapi \
-    _typing xxlimited xxlimited_35 \
+    _typing _testclinic xxlimited xxlimited_35 \
     _xxtestfuzz _xxsubinterpreters _elementtree pyexpat _md5 _sha1 \
     _sha256 _sha512 _blake2 _sha3 _uuid _zoneinfo
 do
@@ -891,6 +892,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{dynlib _ctypes_test}
 %{dynlib _testbuffer}
 %{dynlib _testcapi}
+%{dynlib _testclinic}
 %{dynlib _testinternalcapi}
 %{dynlib _testimportmultiple}
 %{dynlib _testmultiphase}

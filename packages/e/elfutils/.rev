@@ -1056,4 +1056,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1067346</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>0279728837d8ce4cfbe5f7348da97187</srcmd5>
+    <version>0.189</version>
+    <time>1678043274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069264</requestid>
+  </revision>
 </revisionlist>

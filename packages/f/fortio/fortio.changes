@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 05 12:39:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.53.0:
+  * Stream input back in echo h2 + h2c curl streaming payload
+    + minimal prometheus metrics (number of fd) (#721)
+  * Bump github/codeql-action from 2.2.4 to 2.2.5 (#722)
+
+-------------------------------------------------------------------
 Sun Feb 26 15:08:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.52.0:

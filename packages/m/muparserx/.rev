@@ -23,4 +23,12 @@
     <comment>- Split fairly large API documentation from devel subpackage</comment>
     <requestid>1068636</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8be187410764fb79783303e294af49c</srcmd5>
+    <version>4.0.12</version>
+    <time>1678043287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.12</comment>
+    <requestid>1069427</requestid>
+  </revision>
 </revisionlist>

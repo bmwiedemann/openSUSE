@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 16:56:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix some pages not loading (kde#466765):
+  * 0001-pk-Don-t-forget-to-finish-streams.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2

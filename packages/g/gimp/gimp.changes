@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:33:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add boolean pkgconfig(babl-0.1) BuildRequires, allow build with
+  new version of babl.
+
+-------------------------------------------------------------------
 Wed Feb 22 10:13:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.10.34:

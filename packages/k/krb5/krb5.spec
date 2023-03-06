@@ -267,8 +267,13 @@ install -d -m 755 %{buildroot}/%{_datadir}/kerberos/ldap
 install -m 644 %{_builddir}/%{srcRoot}/src/plugins/kdb/ldap/libkdb_ldap/kerberos.schema %{buildroot}/%{_datadir}/kerberos/ldap/kerberos.schema
 install -m 644 %{_builddir}/%{srcRoot}/src/plugins/kdb/ldap/libkdb_ldap/kerberos.ldif %{buildroot}/%{_datadir}/kerberos/ldap/kerberos.ldif
 # link pam-config for su to ksu
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/ksu
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d/
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pam.d/ksu
+%endif
 
 # cleanup
 rm -f  %{buildroot}%{_mandir}/man1/tmac.doc*
@@ -305,6 +310,20 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 
 %post plugin-kdb-ldap -p /sbin/ldconfig
 %postun plugin-kdb-ldap -p /sbin/ldconfig
+
+%if 0%{?suse_version} > 1500
+%pre client
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/ksu ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans client
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/ksu ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files devel
 %dir %{_datadir}/aclocal
@@ -409,7 +428,11 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 %{_mandir}/man8/sserver.8%{?ext_man}
 
 %files client
+%if 0%{?suse_version} > 1500
+%attr(0644,root,root) %{_pam_vendordir}/ksu
+%else
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/ksu
+%endif
 %{_bindir}/kvno
 %{_bindir}/kinit
 %{_bindir}/kdestroy

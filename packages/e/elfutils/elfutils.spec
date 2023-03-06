@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.188
+Version:        0.189
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -31,20 +31,17 @@ Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch1:         harden_debuginfod.service.patch
-Patch2:         0005-backends-Add-RISC-V-object-attribute-printing.patch
-Patch3:         support-DW_TAG_unspecified_type.patch
-#PATCH-FIX-UPSTREAM Patches to fix deprecated curl options
-Patch4:         elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
-Patch5:         elfutils-0.188-CURL_AT_LEAST_VERSION.patch
-Patch6:         elfutils-0.188-deprecated-CURLINFO.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+# For libstdc++ demangle support
+BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 
 %description
 elfutils is a collection of utilities and libraries to read, create
@@ -155,7 +152,7 @@ The package is dummy.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CFLAGS="%optflags -Werror=date-time -Wno-use-after-free"
+export CFLAGS="%optflags -Werror=date-time"
 CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient

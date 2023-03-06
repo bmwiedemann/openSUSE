@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.188
+Version:        0.189
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -29,12 +29,6 @@ Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Patch1:         harden_debuginfod.service.patch
-Patch2:         0005-backends-Add-RISC-V-object-attribute-printing.patch
-Patch3:         support-DW_TAG_unspecified_type.patch
-#PATCH-FIX-UPSTREAM Patches to fix deprecated curl options
-Patch4:         elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
-Patch5:         elfutils-0.188-CURL_AT_LEAST_VERSION.patch
-Patch6:         elfutils-0.188-deprecated-CURLINFO.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -51,6 +45,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 
 # For debuginfod
 BuildRequires:  pkgconfig(libarchive) >= 3.1.2
@@ -118,7 +113,7 @@ URL for a distribution.
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
-export CFLAGS="%optflags -Werror=date-time -Wno-use-after-free"
+export CFLAGS="%optflags -Werror=date-time"
 CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient

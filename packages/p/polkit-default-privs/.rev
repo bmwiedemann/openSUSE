@@ -2040,4 +2040,13 @@ for 12.3</comment>
     easy profile).</comment>
     <requestid>1032839</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>7c04fd480922f2191ac91e075167278e</srcmd5>
+    <version>1550+20230303.7726e9f</version>
+    <time>1678043272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20230303.7726e9f:
+  * tuned: incremental addition of new acquire_devices method (bsc#1208727)</comment>
+    <requestid>1069152</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 02 20:08:20 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20230302.ff58c9e:
+  * delete-x86_64-subarches: don't search in RPMS dir if not present
+
+-------------------------------------------------------------------
 Fri Jan 06 20:25:08 UTC 2023 - dmueller@suse.com
 
 - Update to version 84.87+git20230106.3a359c5:
