@@ -1,7 +1,7 @@
 #
 # spec file for package epy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           epy
-Version:        2022.4.18+git.1664754357.6dd1860
+Version:        2022.12.11+git.1675870044.c7a87f3
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only

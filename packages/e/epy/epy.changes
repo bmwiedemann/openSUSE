@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 04 13:16:37 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 2022.12.11+git.1675870044.c7a87f3:
+  * Fix versioning consistency
+  * Bugfix #61 (#84)
+  * Simplify logic
+  * Bump version to v2022.12.11
+  * Fix issue #73
+  * Ignore .envrc
+  * A suggestion for enhancing the Readme file (#69)
+  * Update tests trigger path
+  * Update tests and Makefile
+  * Update tests
+
+-------------------------------------------------------------------
 Wed Oct 05 22:19:22 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 2022.4.18+git.1664754357.6dd1860:
