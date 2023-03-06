@@ -1,7 +1,7 @@
 #
 # spec file for package dpic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           dpic
-Version:        2020.06.01
+Version:        2023.02.01
 Release:        0
 Summary:        Pic language processor
 License:        BSD-2-Clause AND CC-BY-3.0
 Group:          Productivity/Publishing/Other
-URL:            http://www.ece.uwaterloo.ca/~aplevich/dpic/
+URL:            https://ece.uwaterloo.ca/~aplevich/dpic/
 Source0:        https://ece.uwaterloo.ca/~aplevich/dpic/%{name}-%{version}.tar.gz
 
 %description

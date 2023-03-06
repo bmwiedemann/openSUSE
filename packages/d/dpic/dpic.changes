@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  3 08:57:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.02.1:
+  * More precise obtuse-angle arcs.
+  * Minor addition to the manual.
+  * Non-LaTeX error-handling cleanup.
+  * Line thickness recovery parameter enabled.
+  * Redundant code dating from pascal conversion removed.
+  * Robustness fixes.
+  * Improved robustness for fuzzed input.
+  * Added colored svg sprintf text and % appended to selected outputs.
+  * Shift operation bugfix.
+  * Improved error messaging; additional distribution examples. 
+
+-------------------------------------------------------------------
 Mon Aug 17 12:20:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2020.06.01:
