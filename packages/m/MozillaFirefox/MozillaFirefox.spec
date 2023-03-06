@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          109
+%define major          110
 %define mainver        %major.0.1
-%define orig_version   109.0.1
+%define orig_version   110.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -99,17 +99,17 @@ BuildRequires:  gcc11-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.63
-BuildRequires:  rust >= 1.63
+BuildRequires:  cargo >= 1.65
+BuildRequires:  rust >= 1.65
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
 # minimal requirement:
-BuildRequires:  rust+cargo >= 1.63
+BuildRequires:  rust+cargo >= 1.65
 # actually used upstream:
-BuildRequires:  cargo1.65
-BuildRequires:  rust1.65
+BuildRequires:  cargo1.66
+BuildRequires:  rust1.66
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -120,7 +120,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.86
+BuildRequires:  mozilla-nss-devel >= 3.87
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -193,7 +193,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/4503820/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/7335408da3073ec6b582fc364010cf09665765b3/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 Source17:       firefox-search-provider.ini
@@ -228,6 +228,7 @@ Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
+Patch28:        mozilla-bmo1810584.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

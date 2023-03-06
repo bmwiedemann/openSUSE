@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  a6ee87356867ce6ed5b0be1ba2c2690a488beb55
+# Parent  191cd9e24a9e0812f74c808ceef611c8b10141e1
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4878,16 +4879,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4882,16 +4883,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
  #if defined(MOZ_WIDGET_GTK)
    // Under Flatpak/Snap package, load /etc/firefox/defaults/pref/*.js.
-@@ -4969,17 +4981,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4973,17 +4985,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -105,7 +105,7 @@ diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/chrome/flags.py
 --- a/python/mozbuild/mozpack/chrome/flags.py
 +++ b/python/mozbuild/mozpack/chrome/flags.py
-@@ -229,16 +229,17 @@ class Flags(OrderedDict):
+@@ -228,16 +228,17 @@ class Flags(OrderedDict):
          "os": StringFlag,
          "osversion": VersionFlag,
          "abi": StringFlag,
@@ -126,7 +126,7 @@ diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/c
 diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpack/chrome/manifest.py
 --- a/python/mozbuild/mozpack/chrome/manifest.py
 +++ b/python/mozbuild/mozpack/chrome/manifest.py
-@@ -39,16 +39,17 @@ class ManifestEntry(object):
+@@ -37,16 +37,17 @@ class ManifestEntry(object):
          "os",
          "osversion",
          "abi",
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1239,36 +1239,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1240,36 +1240,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -1704,9 +1704,9 @@ diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestPars
 +  desktop = nsKDEUtils::kdeSession() ? u"kde"_ns : u"gnome"_ns;
  #elif defined(MOZ_WIDGET_ANDROID)
    bool isTablet = false;
-   if (mozilla::AndroidBridge::Bridge()) {
-     mozilla::AndroidBridge::Bridge()->GetStaticStringField(
-         "android/os/Build$VERSION", "RELEASE", osVersion);
+   if (jni::IsAvailable()) {
+     jni::String::LocalRef release = java::sdk::Build::VERSION::RELEASE();
+     osVersion.Assign(release->ToString());
      isTablet = java::GeckoAppShell::IsTablet();
    }
 +  desktop = u"android"_ns;

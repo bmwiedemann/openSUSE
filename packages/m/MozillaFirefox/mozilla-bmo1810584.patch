@@ -1,0 +1,35 @@
+
+# HG changeset patch
+# User Iain Ireland <iireland@mozilla.com>
+# Date 1674084161 0
+# Node ID 0a20a4613cc423258696c2e6200dc7d34f934cb6
+# Parent  26cacd18b61e629c8c45ca45c36770d3bf3f15b8
+Bug 1810584: Suppress false positive error for gcc r=mgaudet
+
+Differential Revision: https://phabricator.services.mozilla.com/D167194
+
+diff --git a/js/src/irregexp/moz.build b/js/src/irregexp/moz.build
+--- a/js/src/irregexp/moz.build
++++ b/js/src/irregexp/moz.build
+@@ -9,16 +9,20 @@ FINAL_LIBRARY = "js"
+ # Includes should be relative to parent path
+ LOCAL_INCLUDES += ["!..", ".."]
+ 
+ include("../js-config.mozbuild")
+ include("../js-cxxflags.mozbuild")
+ 
+ CXXFLAGS += ["-Wno-error=type-limits", "-Wno-error=return-type"]
+ 
++# Suppress spurious warnings in third-party code. See bug 1810584.
++if CONFIG["CC_TYPE"] == "gcc":
++    CXXFLAGS += ["-Wno-error=nonnull"]
++
+ UNIFIED_SOURCES += [
+     "imported/regexp-bytecode-generator.cc",
+     "imported/regexp-bytecode-peephole.cc",
+     "imported/regexp-bytecodes.cc",
+     "imported/regexp-compiler-tonode.cc",
+     "imported/regexp-dotprinter.cc",
+     "imported/regexp-interpreter.cc",
+     "imported/regexp-macro-assembler-tracer.cc",
+

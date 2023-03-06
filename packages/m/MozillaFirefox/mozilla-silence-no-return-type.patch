@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  9d5642506b3a46c3bb28c659173d7055c9674c77
+# Parent  2ac470c477a4897e48ca399b50614af79fececc4
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2348,18 +2348,16 @@ name = "glsl-to-cxx"
+@@ -2367,18 +2367,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,24 +26,24 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -154,16 +154,17 @@ async-task = { git = "https://github.com
- chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
- chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
+@@ -155,16 +155,17 @@ chardetng_c = { git = "https://github.co
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
  fog = { path = "toolkit/components/glean/api" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
  packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/packed_simd", rev="412f9a0aa556611de021bde89dee8fefe6e0fbbd" }
- midir = { git = "https://github.com/mozilla/midir.git", rev = "e1b4dcb767f9e69afe95a860374aaa9635d81e3d" }
- minidump_writer_linux = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "75ada456c92a429704691a85e1cb42fef8cafc0d" }
+ midir = { git = "https://github.com/mozilla/midir.git", rev = "519e651241e867af3391db08f9ae6400bc023e18" }
+ minidump-writer = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "7d76616d27b9dc87fe3a94639b8b4f947d52a6aa" }
+ # warp 0.3.3 + https://github.com/seanmonstar/warp/pull/1007
+ warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
- sync15 = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
- tabs = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
- viaduct = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
- webext-storage = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ sync15 = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ tabs = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ viaduct = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -2223,7 +2223,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -114,16 +114,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -115,16 +115,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -2241,7 +2241,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -1955,16 +1956,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1956,16 +1957,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:

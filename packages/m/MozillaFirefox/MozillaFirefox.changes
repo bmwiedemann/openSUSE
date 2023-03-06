@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Mar  4 16:03:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix 32 bit build bmo#1810584 add mozilla-bmo1810584.patch
+
+-------------------------------------------------------------------
+Fri Mar  3 17:29:27 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 110.0.1 boo#1208886
+  * Fixed clearing recent cookies clears all cookies
+    (bmo#1816279)
+  * Fixed WebGL crashes on Linux when ran inside a VMWare virtual
+    machine (bmo#1807942)
+  * Fixed a bug with CSP serialization causing bugs with the MitID
+    Digital ID in Denmark (Bug 1819096)
+
+-------------------------------------------------------------------
+Wed Feb 15 09:56:46 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 110.0
+  * https://www.mozilla.org/en-US/firefox/110.0/releasenotes
+  MFSA 2023-05 (bsc#1208144)
+  * CVE-2023-25728 (bmo#1790345)
+    Content security policy leak in violation reports using iframes
+  * CVE-2023-25730 (bmo#1794622)
+    Screen hijack via browser fullscreen mode
+  * CVE-2023-25743 (bmo#1800203)
+    Fullscreen notification not shown in Firefox Focus
+  * CVE-2023-0767 (bmo#1804640)
+    Arbitrary memory write via PKCS 12 in NSS
+  * CVE-2023-25735 (bmo#1810711)
+    Potential use-after-free from compartment mismatch in SpiderMonkey
+  * CVE-2023-25737 (bmo#1811464)
+    Invalid downcast in SVGUtils::SetupStrokeGeometry
+  * CVE-2023-25738 (bmo#1811852)
+    Printing on Windows could potentially crash Firefox with some
+    device drivers
+  * CVE-2023-25739 (bmo#1811939)
+    Use-after-free in mozilla::dom::ScriptLoadContext::~ScriptLoadContext
+  * CVE-2023-25729 (bmo#1792138)
+    Extensions could have opened external schemes without user knowledge
+  * CVE-2023-25732 (bmo#1804564)
+    Out of bounds memory write from EncodeInputStream
+  * CVE-2023-25734 (bmo#1784451, bmo#1809923, bmo#1810143, bmo#1812338)
+    Opening local .url files could cause unexpected network loads
+  * CVE-2023-25740 (bmo#1812354)
+    Opening local .scf files could cause unexpected network loads
+  * CVE-2023-25731 (bmo#1801542)
+    Prototype pollution when rendering URLPreview
+  * CVE-2023-25733 (bmo#1808632)
+    Possible null pointer dereference in TaskbarPreviewCallback
+  * CVE-2023-25736 (bmo#1811331)
+    Invalid downcast in GetTableSelectionMode
+  * CVE-2023-25741 (bmo#1437126, bmo#1812611, bmo#1813376)
+    Same-origin policy leak via image drag and drop
+  * CVE-2023-25742 (bmo#1813424)
+    Web Crypto ImportKey crashes tab
+  * CVE-2023-25744 (bmo#1789449, bmo#1803628, bmo#1810536)
+    Memory safety bugs fixed in Firefox 110 and Firefox ESR 102.8
+  * CVE-2023-25745 (bmo#1688592, bmo#1797186, bmo#1804998,
+    bmo#1806521, bmo#1813284)
+    Memory safety bugs fixed in Firefox 110
+- requires
+  NSS = 3.87
+  rust/cargo = 1.66
+- update create-tar.sh
+
+-------------------------------------------------------------------
 Wed Feb  1 19:48:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 109.0.1

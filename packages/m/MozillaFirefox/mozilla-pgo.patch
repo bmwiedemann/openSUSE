@@ -1,6 +1,6 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  855b1f176633af8ae11c0d791c8b33e9a2ae88e0
+# Parent  d6f551c7b3dc20bb47526e06c44646fd159f3dd1
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
@@ -133,17 +133,17 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
      CXX="$MOZ_FETCHES_DIR/gcc/bin/g++"
  
 +    if [ -n "$MOZ_PGO" ]; then
-+        if [ -z "$USE_ARTIFACT" ]; then
-+            ac_add_options --enable-lto
-+	fi
-+	export AR="$topsrcdir/gcc/bin/gcc-ar"
-+        export NM="$topsrcdir/gcc/bin/gcc-nm"
-+        export RANLIB="$topsrcdir/gcc/bin/gcc-ranlib"
++       if [ -z "$USE_ARTIFACT" ]; then
++           ac_add_options --enable-lto
++       fi
++       export AR="$topsrcdir/gcc/bin/gcc-ar"
++       export NM="$topsrcdir/gcc/bin/gcc-nm"
++       export RANLIB="$topsrcdir/gcc/bin/gcc-ranlib"
 +    fi
 +
      # We want to make sure we use binutils and other binaries in the tooltool
      # package.
-     mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$PATH"
+     mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$MOZ_FETCHES_DIR/binutils/bin:$PATH"
  else
      # For some builds we don't want to have Clang based static-analysis activated
      if [ -z "$DISABLE_CLANG_PLUGIN" ]; then
