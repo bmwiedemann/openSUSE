@@ -18,7 +18,7 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.12
+Version:        3.7.13
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,6 +26,7 @@ Group:          Productivity/Text/Convertors
 URL:            https://github.com/rrthomas/recode
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  flex
+BuildRequires:  help2man
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 

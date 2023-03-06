@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 30 10:36:30 UTC 2023 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- update to 3.7.13:
+
+  * Fix request diagnostics with --verbose: avoid output of confusing and
+    possibly incorrect diagnostics.
+  * Fix a file descriptor leak.
+
+-------------------------------------------------------------------
 Thu Feb 17 21:16:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.12:
