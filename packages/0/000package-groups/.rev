@@ -1613,4 +1613,12 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Remove some more suggested tags; these are non-default installed things, and we need space</comment>
   </revision>
+  <revision rev="226" vrev="224">
+    <srcmd5>be1c268433191eb8e8f83b6bc16579b8</srcmd5>
+    <version>unknown</version>
+    <time>1678125296</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1202372</comment>
+    <requestid>1069589</requestid>
+  </revision>
 </revisionlist>

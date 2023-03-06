@@ -262,6 +262,7 @@
   <group name="i686_packages">
     <conditional name="i686_replacement"/>
     <packagelist relationship="requires">
+      <package name="bitwarden"/>
       <package name="MozillaFirefox"/>
       <package name="MozillaFirefox-devel"/>
       <package name="MozillaFirefox-translations-common"/>
