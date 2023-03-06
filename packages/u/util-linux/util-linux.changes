@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 10:43:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix comments bleeding into rpm scriptlets. /sbin/ldconfig does
+  not take any parameters and thus we must not have content in the
+  script body. Use %dnl to properly mark the comments as 'rpm
+  comments' (boo#1208963).
+
+-------------------------------------------------------------------
 Mon Feb 27 09:01:54 UTC 2023 - pgajdos@suse.com
 
 - added patches

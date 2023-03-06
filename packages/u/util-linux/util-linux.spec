@@ -698,14 +698,14 @@ exit "$result"
 %verify_permissions -e %{_bindir}/wall -e %{_bindir}/write -e %{_bindir}/mount -e %{_bindir}/umount
 %verify_permissions -e %{_bindir}/su
 %endif
-# ulsubset == core, ulbuild == base
+%dnl # ulsubset == core, ulbuild == base
 
 %endif
-# ulbuild == base
+%dnl # ulbuild == base
 
-###################
-# Core pre & post #
-###################
+%dnl ###################
+%dnl # Core pre & post #
+%dnl ###################
 %if "%ulsubset" == "core"
 %pre
 # move outdated pam.d/*.rpmsave files away
@@ -742,7 +742,7 @@ if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; the
 	fi
 fi
 %endif
-# !defined no_config
+%dnl # !defined no_config
 
 %if %{defined no_config}
 %posttrans
@@ -751,7 +751,7 @@ for i in  login remote runuser runuser-l su su-l; do
   test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
 done
 %endif
-# defined no_config
+%dnl # defined no_config
 
 %post -n libblkid1 -p /sbin/ldconfig
 
@@ -774,11 +774,11 @@ done
 %postun -n libfdisk1 -p /sbin/ldconfig
 
 %endif
-# ulsubset == core, pre & post
-
-######################
-# Systemd pre & post #
-######################
+%dnl # ulsubset == core, pre & post
+%dnl
+%dnl ######################
+%dnl # Systemd pre & post #
+%dnl ######################
 %if "%ulsubset" == "systemd"
 %pre
 %service_add_pre fstrim.service fstrim.timer
@@ -800,7 +800,7 @@ getent passwd uuidd >/dev/null || \
 	/usr/sbin/useradd -r -g uuidd -c "User for uuidd" \
 	-d %{_localstatedir}/run/uuidd uuidd
 %endif
-# suse_version < 1330
+%dnl # suse_version < 1330
 
 %{service_add_pre uuidd.socket uuidd.service}
 
@@ -819,11 +819,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{service_del_postun uuidd.socket uuidd.service}
 
 %endif
-# ulsubset == systemd, pre & post
-
-##############
-# Base files #
-##############
+%dnl # ulsubset == systemd, pre & post
+%dnl
+%dnl ##############
+%dnl # Base files #
+%dnl ##############
 %if "%ulbuild" == "base"
 %files -n %{name} -f %{name}.files
 %defattr(-,root,root)
