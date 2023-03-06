@@ -16,31 +16,32 @@
 #
 
 
+%{?!python_module:define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 Name:           b4
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildArch:      noarch
+BuildRequires:  %{python_module dkimpy >= 1.0.5}
+BuildRequires:  %{python_module dnspython >= 2.0.0}
+BuildRequires:  %{python_module patatt >= 0.5}
+BuildRequires:  %{python_module requests >= 2.24.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-# SECTION test requirements
 BuildRequires:  git-core
 BuildRequires:  git-filter-repo >= 2.30
-BuildRequires:  python3-dkimpy >= 1.0.5
-BuildRequires:  python3-dnspython >= 2.0.0
-BuildRequires:  python3-patatt >= 0.5
-BuildRequires:  python3-requests >= 2.24.0
-# /SECTION
-BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
+Requires:       %{python_module dkimpy}
+Requires:       %{python_module dnspython}
+Requires:       %{python_module patatt}
+Requires:       %{python_module requests}
 Requires:       git-core
 Requires:       git-filter-repo >= 2.30
-Requires:       python3-dkimpy >= 1.0.5
-Requires:       python3-dnspython >= 2.0.0
-Requires:       python3-patatt >= 0.5
-Requires:       python3-requests >= 2.24.0
+BuildArch:      noarch
 
 %description
 This is a helper utility to work with patches made available via a
@@ -65,7 +66,7 @@ sed -i.old '1{/#!.*/d}' b4/*.py
 
 %install
 %python3_install
-%fdupes %{buildroot}%python3_sitelib
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 python3 setup.py check
@@ -80,7 +81,7 @@ test "$THEIRS" = "$OURS"
 %doc README.rst
 %license COPYING
 %{_bindir}/%{name}
-%{_mandir}/man5/b4.5.gz
+%{_mandir}/man5/b4.5%{?ext_man}
 %{python_sitelib}/%{name}*
 
 %changelog
