@@ -1,8 +1,8 @@
 #
 # spec file for package python-gvm-tools
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-gvm-tools
-Version:        22.9.0
+Version:        23.2.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
@@ -34,11 +33,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-gvm >= 1.4.0
+Requires:       python-python-gvm >= 23.2.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-gvm >= 1.4.0}
+BuildRequires:  %{python_module python-gvm >= 23.2.0}
 # /SECTION
 %python_subpackages
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 21 12:39:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 23.2.0
+  * Added --with-descriptions and host details source types to
+    generate-random-reports.
+
+-------------------------------------------------------------------
 Thu Sep 29 01:28:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update  to 22.9.0
