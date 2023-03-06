@@ -44,9 +44,6 @@ A notification daemon for Wayland. Intended to be used with sway.
 %build
 export CFLAGS="%{optflags}"
 %meson \
-%if 0%{?suse_version} < 1550
-  -Dtray=disabled \
-%endif
   -Dsd-bus-provider=libsystemd
 
 %meson_build
