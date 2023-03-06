@@ -1,7 +1,7 @@
 #
 # spec file for package grass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 # Notice to maintainer : move this package to real lfhs
-%define	shortver 78
+%define	shortver 82
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-wxPython
 %else
@@ -25,7 +25,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 %endif
 
 Name:           grass
-Version:        7.8.7
+Version:        8.2.1
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ URL:            https://grass.osgeo.org/
 Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
 Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.md5sum
 BuildRequires:  -post-build-checks
+BuildRequires:  PDAL-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  fdupes
@@ -64,6 +65,7 @@ BuildRequires:  python3-numpy
 BuildRequires:  python3-opengl
 BuildRequires:  python3-six
 BuildRequires:  python3-xml
+BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
@@ -121,8 +123,8 @@ sed -i s/%{grasver}//g include/Make/Platform.make.in
 sed -i s/%{grasver}//g grass.pc.in
 sed -i s/%{grasver2}//g configure
 sed -i s/%{grasver2}//g Makefile
-sed -i -e "/GRASS_HEADERS_/ s/@GRASS_HEADERS_GIT_.*@/"$(date -d @${SOURCE_DATE_EPOCH} -u +%FT%T%:z)"/" include/version.h.in
-cat include/version.h.in
+sed -i -e "/GRASS_HEADERS_/ s/@GRASS_HEADERS_GIT_.*@/"$(date -d @${SOURCE_DATE_EPOCH} -u +%FT%T%:z)"/" include/grass/version.h.in
+cat include/grass/version.h.in
 
 %define grassprefix %{_libdir}
 %define grassdir %{grassprefix}/%{name}%{shortver}
@@ -138,6 +140,7 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 	--enable-socket \
 	--enable-largefile \
 	--with-blas \
+	--with-bzlib \
 	--with-cairo --with-cairo-ldflags=-lfontconfig \
 	--with-curses \
 	--with-cxx \
@@ -151,16 +154,21 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 	--with-netcdf \
 	--with-nls \
 	--with-odbc \
+	--with-opengl \
 	--with-openmp \
+	--with-pdal \
+	--with-png \
 	--with-postgres --with-postgres-includes=%{_includedir}/pgsql \
 	--with-proj-share=%{_datadir}/proj \
 	--with-pthread \
 	--with-python \
-	--with-bzlib \
-    --with-x \
-    --with-zstd \
+	--with-readline \
+	--with-regex \
 	--with-sqlite \
-	--with-wxwidgets
+	--with-tiff \
+	--with-wxwidgets \
+	--with-x \
+	--with-zstd
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
 find . -type f -exec sed -i -e 's:#!%{_bindir}/env python3:#!%{_bindir}/python3:g' {} +
@@ -179,19 +187,14 @@ rm -rf dist.*
 
 # don't create a non-standard-directory for a single file
 mkdir -p %{buildroot}%{_bindir}
-mv %{buildroot}%{grassprefix}/bin/grass%{shortver} %{buildroot}%{_bindir}
+mv %{buildroot}%{grassprefix}/bin/grass %{buildroot}%{_bindir}
 rmdir %{buildroot}%{grassprefix}/bin
 
 # changing GISBASE in startup script (deleting %%{buildroot} from path)
-sed -i s:%{buildroot}::g %{buildroot}%{_bindir}/grass%{shortver}
+sed -i s:%{buildroot}::g %{buildroot}%{_bindir}/grass
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Grass.make
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Platform.make
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}%{_sysconfdir}/fontcap
-# Make symlinks in /usr/bin/
-install -d %{buildroot}%{_bindir}/
-pushd %{buildroot}%{_bindir}/
-ln -fsv grass%{shortver} grass
-popd
 
 # make grass libraries available on the system
 install -d %{buildroot}%{_sysconfdir}/ld.so.conf.d
@@ -202,7 +205,7 @@ cp  %{buildroot}%{grassdir}/share/applications/grass.desktop %{buildroot}%{_data
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}%{_datadir}/pixmaps/grass.png
 
-rm -rf %{buildroot}%{_libdir}/grass%{shortver}/tools/__pycache__
+rm -rf %{buildroot}%{_libdir}/grass%{shortver}/utils/__pycache__
 
 echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 
@@ -222,7 +225,6 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %files
 %config %{_sysconfdir}/ld.so.conf.d/grass-%{version}.conf
 %{_bindir}/%{name}
-%{_bindir}/%{name}%{shortver}
 %{grassdir}/bin/*
 %{grassdir}%{_sysconfdir}/*
 %{grassdir}/gui/*
@@ -261,8 +263,8 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %lang(vi) %{grassdir}/locale/vi/LC_MESSAGES/*.mo
 %lang(zh) %{grassdir}/locale/zh/LC_MESSAGES/*.mo
 %lang(zh_cn) %{grassdir}/locale/zh_CN/LC_MESSAGES/*.mo
-%{grassdir}/tools/*.py*
-%{grassdir}/tools/g.echo
+%{grassdir}/utils/*.py*
+%{grassdir}/utils/g.echo
 %{grassdir}/driver/*
 %{grassdir}/fonts/*
 %{grasslib}/*.so
@@ -275,7 +277,7 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{grassdir}/GPL.TXT
 %{grassdir}/REQUIREMENTS.html
 %{grassdir}/CITING
-%{grassdir}/INSTALL
+%{grassdir}/INSTALL.md
 %exclude %{grassdir}/demolocation
 
 %changelog

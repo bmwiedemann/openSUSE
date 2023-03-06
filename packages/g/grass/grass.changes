@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:49:37 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8.2.1:
+  * more than 80 improvements and fixes
+  * Full changleog at https://github.com/OSGeo/grass/releases/tag/8.2.1
+- Changes in previous releases:
+  * 8.2: https://trac.osgeo.org/grass/wiki/Grass8/NewFeatures82
+  * 8.0: https://trac.osgeo.org/grass/wiki/Grass8/NewFeatures80
+
+-------------------------------------------------------------------
 Wed Dec  7 19:24:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make build reproducible:
