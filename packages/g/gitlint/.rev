@@ -40,4 +40,41 @@
     <comment></comment>
     <requestid>867225</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1c44d1e1d8aaed938d97a870c0056fe</srcmd5>
+    <version>0.18.0</version>
+    <time>1678204151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.0:
+  * Python 3.11 support
+  * Last release to support Python 3.6 (EOL since 2021-12-23)
+  * **Behavior Change**: In a future release, gitlint will be
+    switching to use `re.search` instead of `re.match` semantics
+    for all rules. Your rule regexes might need updating as a
+    result, gitlint will print a warning if so. More details are
+    in the docs. (#254)
+  * gitlint no longer uses the sh library by default in an
+    attempt to reduce external dependencies. In case of issues,
+    the use of `sh` can be re-enabled by setting the env var
+    `GITLINT_USE_SH_LIB=1`. This fallback will be removed
+    entirely in a future gitlint release. (#351)
+  * `--commits` now also accepts a comma-separated list of commit
+    hashes, making it possible to lint a list of non-contiguous
+    commits without invoking gitlint multiple times (#283)
+  * Improved handling of branches that have no commits (#188)
+  * Support for `GITLINT_CONFIG` env variable (#189)
+  * Added a new `gitlint-ci` pre-commit hook, making it easier to
+    run gitlint through pre-commit in CI (#191)
+  * Gitlint now recognizes `fixup=amend` commits (see related
+    git documentation), available as
+    `commit.is_fixup_amend_commit=True`
+  * Gitlint now parses diff **stat** information, available
+    in `commit.changed_files_stats` (#314)
+  * Bugfixes:
+  *   - Use correct encoding when using `--msg-filename`
+    parameter (#310)
+  *   - Various documentation fixes (#244) (#263) (#266) (#294)
+    (#295) (#347) (#364) - thanks scop, OrBin, jtaylor100,</comment>
+    <requestid>1069322</requestid>
+  </revision>
 </revisionlist>

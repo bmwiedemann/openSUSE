@@ -1,7 +1,7 @@
 #
 # spec file for package gitlint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,25 @@
 #
 
 
+%global pythons %primary_python
 Name:           gitlint
-Version:        0.13.1
+Version:        0.18.0
 Release:        0
 Summary:        Git commit message linter checking
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jorisroovers/%{name}
-Source:         https://pypi.io/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE relax-requirements.patch -- relax requirements to work with openSUSE
-Patch0:         relax-requirements.patch
+Source:         https://pypi.io/packages/source/g/%{name}-core/%{name}-core-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-arrow >= 0.10.0
-Requires:       python-click >= 6.7
-Requires:       python-sh >= 1.12.14
+Requires:       python-arrow >= 1
+Requires:       python-click >= 8
+Requires:       python-sh >= 1.13.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,26 +46,18 @@ found useful throughout the years. Gitlint has sane defaults, but you can
 also easily customize it to your own liking.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-core-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/%{name}
+%pyproject_install
 %fdupes %{buildroot}%{_prefix}
-
-%post
-%python_install_alternative gitlint
-
-%postun
-%python_uninstall_alternative gitlint
 
 %files %{python_files}
 %license LICENSE
+%{_bindir}/gitlint
 %{python_sitelib}/*
-%python_alternative %{_bindir}/gitlint
 
 %changelog

@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Fri Mar  3 22:16:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.0:
+  * Python 3.11 support
+  * Last release to support Python 3.6 (EOL since 2021-12-23)
+  * **Behavior Change**: In a future release, gitlint will be
+    switching to use `re.search` instead of `re.match` semantics
+    for all rules. Your rule regexes might need updating as a
+    result, gitlint will print a warning if so. More details are
+    in the docs. (#254)
+  * gitlint no longer uses the sh library by default in an
+    attempt to reduce external dependencies. In case of issues,
+    the use of `sh` can be re-enabled by setting the env var
+    `GITLINT_USE_SH_LIB=1`. This fallback will be removed
+    entirely in a future gitlint release. (#351)
+  * `--commits` now also accepts a comma-separated list of commit
+    hashes, making it possible to lint a list of non-contiguous
+    commits without invoking gitlint multiple times (#283)
+  * Improved handling of branches that have no commits (#188)
+  * Support for `GITLINT_CONFIG` env variable (#189)
+  * Added a new `gitlint-ci` pre-commit hook, making it easier to
+    run gitlint through pre-commit in CI (#191)
+  * Gitlint now recognizes `fixup=amend` commits (see related
+    git documentation), available as
+    `commit.is_fixup_amend_commit=True`
+  * Gitlint now parses diff **stat** information, available
+    in `commit.changed_files_stats` (#314)
+  * Bugfixes:
+  *   - Use correct encoding when using `--msg-filename`
+    parameter (#310)
+  *   - Various documentation fixes (#244) (#263) (#266) (#294)
+    (#295) (#347) (#364) - thanks scop, OrBin, jtaylor100,
+    stauchert
+  * Gitlint is now split in 2 packages: `gitlint` and `gitlint-
+    core`. This allows users to install gitlint without pinned
+    dependencies (which is the default) (#162)
+  * Python 3.10 support
+  * **New Rule**: ignore-by-author-name allows users to skip
+    linting commit messages made by specific authors
+  * `--commit ` flag to more easily lint a single commit message
+    (#141)
+  * `--fail-without-commits` flag will force gitlint to fail
+    (exit code 253) when the target commit range is empty
+    (typically when using `--commits`)  (#193)
+  * Bugfixes:
+  *   - contrib-title-conventional-commits (CT1)  now properly
+    enforces the commit type (#185)
+  *   - contrib-title-conventional-commits (CT1) now supports the
+    BREAKING CHANGE symbol "!" (#186)
+  * Heads-up: Python 3.6 will become EOL at the end of 2021. It's
+    likely that future gitlint releases will stop supporting
+    Python 3.6 as a result. We will continue to support Python
+    3.6 as long as its easily doable, which in practice usually
+    means as long as our dependencies support it.
+  * Under-the-hood: dependencies updated, test and github action
+    improvements.
+  *   - Git commit message body with only new lines is not longer
+    considered empty by `body-is-missing` (#176)
+  *   - Added compatibility with `git commit -s` for `contrib-
+    requires-signed-off-by` rule (#178)
+  * Minor tweak to gitlint commit-hook output (#173)
+  * All dependencies have been upgraded to the latest available
+    versions (`Click==7.1.2`, `arrow==1.0.3`, `sh==1.14.1`).
+  * Minor doc fixes
+  * **This release drops support for Python 2.7 and Python 3.5
+    (both are EOL). Other than a few minor fixes, there are no
+    functional differences from the 0.14.0 release.**
+  * Other call-outs:
+  * **Mac users**: Gitlint can now be installed using both
+    homebrew (upgraded to latest) and macports. Special thanks to
+    @harens for maintaining these packages (best-effort).
+  * Bugfix: Gitlint now properly handles exceptions when using
+    its built-in commit-msg hook (#166).
+  * All dependencies have been upgraded to the latest available
+    versions (`Click==7.1.2`, `arrow==0.17.0`, `sh==1.14.1`).
+  * Much under-the-hood refactoring as a result of dropping
+    Python 2.7
+  * **IMPORTANT: Gitlint 0.14.x will be the last gitlint release
+    to support Python 2.7 and Python 3.5, as both are EOL which
+    makes it difficult to keep supporting them.**
+  * Python 3.9 support
+  * **New Rule**: title-min-length enforces a minimum length on
+    titles (default: 5 chars) (#138)
+  * **New Rule**: body-match-regex allows users to enforce that
+    the commit-msg body matches a given regex (#130)
+  * **New Rule**: ignore-body-lines allows users to
+  * ignore parts of a commit by matching a regex against
+  * the lines in a commit message body (#126)
+  * Named Rules allow users to have multiple instances of the
+    same rule active at the same time. This is useful when you
+    want to enforce the same rule multiple times but with
+    different options (#113, #66)
+  * User-defined Configuration Rules allow users to dynamically
+    change gitlint's configuration and/or the commit *before* any
+    other rules are applied.
+  * The `commit-msg` hook has been re-written in Python (it
+    contained a lot of Bash before), fixing a number of platform
+    specific issues. Existing users will need to reinstall their
+    hooks (`gitlint uninstall-hook; gitlint install-hook`) to
+    make use of this.
+  * Most general options can now be set through environment
+    variables (e.g. set the `general.ignore` option via
+    `GITLINT_IGNORE=T1,T2`). The list of available environment
+    variables can be found in the configuration documentation.
+  * Users can now use `self.log.debug("my message")` for
+    debugging purposes in their user-defined rules. Debug
+    messages will show up when running `gitlint --debug`.
+  * **Breaking**: User-defined rule id's can no longer start with
+    'I', as those are reserved for built-in gitlint ignore rules.
+  *  New `RegexOption` rule option type for use in user-defined
+    rules. By using the `RegexOption`, regular expressions are
+    pre-validated at gitlint startup and compiled only once which
+    is much more efficient when linting multiple commits.
+  * Bugfixes:
+  *   -  Improved UTF-8 fallback on Windows (ongoing - #96)
+  *   - Windows users can now use the 'edit' function of the
+    `commit-msg` hook (#94)
+  *   -  Doc update: Users should use `--ulimit nofile=1024` when
+    invoking gitlint using Docker (#129)
+  *   - The `commit-msg` hook was broken in Ubuntu's gitlint
+    package due to a python/python3 mismatch (#127)
+  *   - Better error message when no git username is set (#149)
+  *   - Options can now actually be set to `None` (from code) to
+    make them optional.
+  *   -  Ignore rules no longer have `"None"` as default regex,
+    but an empty regex - effectively disabling them by default
+    (as intended).
+  * Contrib Rules:
+  *   - Added 'ci' and 'build' to conventional commit types
+    (#135)
+  * Under-the-hood: minor performance improvements (removed some
+    unnecessary regex matching), test improvements, improved
+    debug logging, CI runs on pull requests, PR request template.
+- build only for primary python, this is a cli tool
+- drop relax-requirements.patch (unnecessary with the switch to gitlint-core)
+
+-------------------------------------------------------------------
 Wed Jan 27 15:50:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix filelist: do not use %{name}, as python single-spec rewrites
