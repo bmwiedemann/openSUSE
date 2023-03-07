@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 01:50:57 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to 0.4.1
+  * plane: add NULL check to liftoff_plane_destroy()
+  * Fix -Wsign-conversion on 32-bit
+- drop fix-sign-conversion-32bit.patch as it's included in release 
+
+-------------------------------------------------------------------
 Fri Feb 24 21:58:05 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Add patch with upstream fix for i586 builds: fix-sign-conversion-32bit.patch

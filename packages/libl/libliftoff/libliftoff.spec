@@ -19,14 +19,13 @@
 %define libname libliftoff0
 
 Name:           libliftoff
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        KMS plane library
 Group:          Development/Libraries/C and C++
 License:        MIT
 URL:            https://gitlab.freedesktop.org/emersion/libliftoff
 Source0:        https://gitlab.freedesktop.org/emersion/libliftoff/-/archive/v%{version}/libliftoff-v%{version}.tar.gz
-Patch0:         fix-sign-conversion-32bit.patch
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 

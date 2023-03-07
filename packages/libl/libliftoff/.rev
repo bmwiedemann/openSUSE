@@ -16,4 +16,16 @@
 </comment>
     <requestid>1067654</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a52ce0703b9af4fa28ba4364e22dc7e0</srcmd5>
+    <version>0.4.1</version>
+    <time>1678204193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1
+  * plane: add NULL check to liftoff_plane_destroy()
+  * Fix -Wsign-conversion on 32-bit
+- drop fix-sign-conversion-32bit.patch as it's included in release 
+</comment>
+    <requestid>1069775</requestid>
+  </revision>
 </revisionlist>
