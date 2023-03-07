@@ -638,4 +638,18 @@ update to version 2.3.0
   - Bump tox minversion to 3.18.0</comment>
     <requestid>1055987</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e03c413798cf2545c297412a6a009703</srcmd5>
+    <version>4.3.0</version>
+    <time>1678204187</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - Fix functional tests and docs generation
+  - Release notes for 4.3.0
+  - Unhardcode the value of DEFAULT_PAGE_SIZE from the tests
+  - Remove unicode-related Python2-only code
+  - Boolean options: use strict checking
+  - Replace osc with glance commands</comment>
+    <requestid>1069831</requestid>
+  </revision>
 </revisionlist>

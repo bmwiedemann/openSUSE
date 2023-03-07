@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:57:00 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Fix functional tests and docs generation
+  - Release notes for 4.3.0
+  - Unhardcode the value of DEFAULT_PAGE_SIZE from the tests
+  - Remove unicode-related Python2-only code
+  - Boolean options: use strict checking
+  - Replace osc with glance commands
+
+-------------------------------------------------------------------
 Thu Dec  1 10:45:00 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.2.0
