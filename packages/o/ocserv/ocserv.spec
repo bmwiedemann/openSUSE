@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
 Source2:        ca.tmpl
 Source3:        server.tmpl
 Source4:        user.tmpl
-Source5:        ocserv.sysctl
+Source5:        ocserv-forwarding.sh
 Source6:        ocserv.firewalld.xml
 Source99:       README.SUSE
 Source100:      gpgkey-1F42418905D8206AA754CCDC29EE58B996865171.gpg
@@ -109,7 +109,7 @@ make V=1 %{?_smp_mflags}
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
-install -Dm 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/sysctl.d/60-ocserv.conf
+install -Dm 0755 %{SOURCE5} %{buildroot}%{_sbindir}/ocserv-forwarding
 %if 0%{suse_version} >= 1500
 install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/ocserv.xml
 %endif
@@ -127,6 +127,9 @@ install -d %{buildroot}%{_unitdir}
 # if --with-dubs, here should be "standalone"
 install -m 0644 doc/systemd/socket-activated/ocserv.socket %{buildroot}%{_unitdir}
 install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitdir}
+
+sed -i '/^\[Service\].*/a ExecStopPost=%{_sbindir}/ocserv-forwarding --disable' %{buildroot}%{_unitdir}/ocserv.service
+sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %{buildroot}%{_unitdir}/ocserv.service
 
 %pre
 %service_add_pre ocserv.service ocserv.socket
@@ -148,7 +151,6 @@ install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitd
 %doc AUTHORS NEWS README.md
 %license COPYING LICENSE
 %config %{_sysconfdir}/ocserv
-%config(noreplace) %{_sysconfdir}/sysctl.d/60-ocserv.conf
 %if 0%{suse_version} >= 1500
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
@@ -159,6 +161,7 @@ install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitd
 %{_bindir}/ocserv-script
 %{_bindir}/ocserv-fw
 %{_sbindir}/ocserv
+%{_sbindir}/ocserv-forwarding
 %{_sbindir}/ocserv-worker
 %{_unitdir}/ocserv.service
 %{_unitdir}/ocserv.socket
