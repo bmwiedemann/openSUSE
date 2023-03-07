@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  6 14:43:16 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Stop using File.exists? which no longer works in Ruby 3.2
+  (bsc#1206419)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
