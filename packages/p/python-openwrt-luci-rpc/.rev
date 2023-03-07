@@ -33,4 +33,13 @@
 </comment>
     <requestid>1008149</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d3d9b12cd8b278fd19e56cab0b07b5c2</srcmd5>
+    <version>1.1.12</version>
+    <time>1678204168</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch to make tests work with latest packaging module
+</comment>
+    <requestid>1069709</requestid>
+  </revision>
 </revisionlist>
