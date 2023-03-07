@@ -7,4 +7,17 @@
     <comment>mcfly</comment>
     <requestid>1057766</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc19559afb173e0dff215b692e83293b</srcmd5>
+    <version>0.8.0~0</version>
+    <time>1678204229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Add forward-compatibility check for database schema
+  * Add MCFLY_DISABLE_RUN_COMMAND option to disable command running
+  * Add customizable prompt with MCFLY_PROMPT
+  * Replace termion with crossterm
+  * Allow ENV variables to be set to FALSE</comment>
+    <requestid>1069845</requestid>
+  </revision>
 </revisionlist>

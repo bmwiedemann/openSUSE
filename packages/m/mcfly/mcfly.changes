@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:39:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Add forward-compatibility check for database schema
+  * Add MCFLY_DISABLE_RUN_COMMAND option to disable command running
+  * Add customizable prompt with MCFLY_PROMPT
+  * Replace termion with crossterm
+  * Allow ENV variables to be set to FALSE
+
+-------------------------------------------------------------------
 Wed Jan 11 11:24:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of mcfly 0.7.1 for openSUSE
