@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar  4 12:13:23 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.21:
+  * Add user password reset feature
+  * Add the fossil repack command
+  * Add the ability to put text descriptions on ticket report
+    formats.
+  * Multiple UI updates
+  * Passwords for remembered remote repositories are now stored as
+    irreversible hashes rather than obscured clear-text, for
+    improved security.
+  * Add the "nossl" and "nocompress" options to CGI.
+  * Update search infrastructure from FTS4 to FTS5.
+  * Writes to the database are disabled by default if the HTTP
+    request does not come from the same origin. This enhancement
+    is a defense in depth measure only; it does not address any
+    known vulnerabilities.
+  * Improvements to automatic detection and mitigation of attacks
+    from malicious robots.
+
+-------------------------------------------------------------------
 Sat Nov 19 17:06:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.20:
