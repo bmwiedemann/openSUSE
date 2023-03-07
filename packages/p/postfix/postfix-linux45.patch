@@ -1,15 +1,15 @@
-Index: makedefs
-===================================================================
+---
+ makedefs |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 --- makedefs.orig
 +++ makedefs
-@@ -627,8 +627,8 @@ EOF
+@@ -627,7 +627,7 @@ EOF
  		: ${SHLIB_ENV="LD_LIBRARY_PATH=`pwd`/lib"}
  		: ${PLUGIN_LD="${CC-gcc} -shared"}
  		;;
-- Linux.[345].*)	SYSTYPE=LINUX$RELEASE_MAJOR
--		case "$CCARGS" in
-+ Linux.[3-9].*|Linux.[1-9][0-9].*)    SYSTYPE=LINUX3
-+   case "$CCARGS" in
+-Linux.[3456].*)	SYSTYPE=LINUX$RELEASE_MAJOR
++Linux.[3-9].*|Linux.[1-9][0-9].*)    SYSTYPE=LINUX3
+ 		case "$CCARGS" in
  		 *-DNO_DB*) ;;
  		 *-DHAS_DB*) ;;
- 		 *) if [ -f /usr/include/db.h ]
