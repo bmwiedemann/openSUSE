@@ -42,4 +42,12 @@
     <comment>add ignore on cputype-armv6l</comment>
     <requestid>602984</requestid>
   </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>54d9e27278c6dded3965da6b0482cd87</srcmd5>
+    <version>unknown</version>
+    <time>1678204128</time>
+    <user>dimstar_suse</user>
+    <comment>remove obsolete Name: which confuses factory-auto. also add cputype-armv7</comment>
+    <requestid>1069625</requestid>
+  </revision>
 </revisionlist>
