@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar  3 17:01:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.1.0:
+  + New experimental API that uses font variations to expand or
+    shrink the text to a given advance
+  + Various build and bug fixes.
+  + New API: hb_font_set_variation().
+
+-------------------------------------------------------------------
 Tue Feb 21 11:02:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.0.1:

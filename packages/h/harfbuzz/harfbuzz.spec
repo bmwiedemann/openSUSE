@@ -17,7 +17,7 @@
 
 
 Name:           harfbuzz
-Version:        7.0.1
+Version:        7.1.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
