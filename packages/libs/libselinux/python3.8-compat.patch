@@ -1,7 +1,7 @@
-Index: libselinux-3.1/src/Makefile
+Index: libselinux-3.5/src/Makefile
 ===================================================================
---- libselinux-3.1.orig/src/Makefile
-+++ libselinux-3.1/src/Makefile
+--- libselinux-3.5.orig/src/Makefile
++++ libselinux-3.5/src/Makefile
 @@ -13,7 +13,11 @@ LIBDIR ?= $(PREFIX)/lib
  SHLIBDIR ?= /lib
  INCLUDEDIR ?= $(PREFIX)/include
@@ -11,6 +11,6 @@ Index: libselinux-3.1/src/Makefile
 +else
  PYLIBS ?= $(shell $(PKG_CONFIG) --libs $(PYPREFIX))
 +endif
- PYTHONLIBDIR ?= $(shell $(PYTHON) -c "from distutils.sysconfig import *; print(get_python_lib(plat_specific=1, prefix='$(PREFIX)'))")
+ PYTHONLIBDIR ?= $(shell $(PYTHON) -c "import sysconfig; print(sysconfig.get_path('platlib', vars={'platbase': '$(PREFIX)', 'base': '$(PREFIX)'}))")
  PYCEXT ?= $(shell $(PYTHON) -c 'import importlib.machinery;print(importlib.machinery.EXTENSION_SUFFIXES[0])')
  RUBYINC ?= $(shell $(RUBY) -e 'puts "-I" + RbConfig::CONFIG["rubyarchhdrdir"] + " -I" + RbConfig::CONFIG["rubyhdrdir"]')

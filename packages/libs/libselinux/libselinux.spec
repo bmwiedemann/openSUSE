@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.4
+%define libsepol_ver 3.5
 Name:           libselinux
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
@@ -32,7 +32,6 @@ Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
 Patch5:         skip_cycles.patch
-Patch7:         restorecon_pin_file.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  pkgconfig
@@ -102,7 +101,6 @@ necessary to develop your own software using libselinux.
 %setup -q -n libselinux-%{version}
 %patch4 -p1
 %patch5 -p1
-%patch7 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -150,6 +148,7 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 %{_sbindir}/selinux_check_securetty_context
 %{_sbindir}/selabel_get_digests_all_partial_matches
 %{_sbindir}/validatetrans
+%{_sbindir}/getpidprevcon
 %{_mandir}/man5/*
 %{_mandir}/ru/man5/*
 %{_mandir}/man8/*

@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux-bindings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define libsepol_ver 3.4
+%define libsepol_ver 3.5
 Name:           libselinux-bindings
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        SELinux runtime library and simple utilities
 License:        SUSE-Public-Domain
@@ -36,7 +36,8 @@ Patch4:         readv-proto.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch5:         python3.8-compat.patch
 Patch6:         swig4_moduleimport.patch
-Patch7:         restorecon_pin_file.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel

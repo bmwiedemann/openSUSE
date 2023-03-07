@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:42:25 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5:
+  * check for truncations
+  * avoid newline in avc message
+  * bail out on path truncations
+  * add getpidprevcon to gather the previous context before the last
+    exec of a given process
+  * Workaround for heap overhead of pcre
+  * fix memory leaks on the audit2why module init
+  * ignore invalid class name lookup
+- Drop restorecon_pin_file.patch, is upstream
+- Refreshed python3.8-compat.patch
+- Added additional developer key (Jason Zaman)
+
+-------------------------------------------------------------------
 Mon May  9 10:23:32 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.4:
