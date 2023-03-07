@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:48:05 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * Allow user to set SYSCONFDIR
+  * always write kernel policy when check_ext_changes is specified
+- Added additional developer key (Jason Zaman)
+
+-------------------------------------------------------------------
 Mon May  9 10:37:17 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.4

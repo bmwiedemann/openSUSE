@@ -1,7 +1,7 @@
 #
 # spec file for package python-semanage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define soversion 2
 %define libname libsemanage%{soversion}
 
-%define libsepol_ver     3.4
-%define libselinux_ver   3.4
+%define libsepol_ver     3.5
+%define libselinux_ver   3.5
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only

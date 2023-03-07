@@ -465,4 +465,12 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>978303</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>958f78b7fc5df0af73f4a2cb6cc22fba</srcmd5>
+    <version>3.5</version>
+    <time>1678204100</time>
+    <user>dimstar_suse</user>
+    <comment>SELinux 3.5 toolchain</comment>
+    <requestid>1068397</requestid>
+  </revision>
 </revisionlist>

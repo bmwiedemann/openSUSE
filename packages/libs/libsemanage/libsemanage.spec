@@ -1,7 +1,7 @@
 #
 # spec file for package libsemanage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libsemanage%{soversion}
 
 Name:           libsemanage
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        SELinux policy management library
 License:        LGPL-2.1-or-later
