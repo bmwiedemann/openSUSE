@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.metrics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-oslo.metrics
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Epoch:          0
 Summary:        Collect metrics data from other Oslo libraries
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.metrics
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.metrics/oslo.metrics-0.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.metrics/oslo.metrics-0.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-oslo.config >= 6.9.0
 BuildRequires:  python3-oslo.log >= 3.44.0
@@ -63,13 +63,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo.metrics library.
 
 %prep
-%autosetup -p1 -n oslo.metrics-0.5.0
+%autosetup -p1 -n oslo.metrics-0.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=0.5.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=0.6.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -78,7 +78,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 export PYTHONPATH=`pwd`
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.metrics
 %license LICENSE

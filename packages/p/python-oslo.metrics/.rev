@@ -31,4 +31,15 @@
   - Remove unnecessary unicode prefixes</comment>
     <requestid>1007582</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e69c5126997c4ec687a4d20d68d572e</srcmd5>
+    <version>0.6.0</version>
+    <time>1678204177</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.0
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - Fix logging labales --&gt; labels</comment>
+    <requestid>1069688</requestid>
+  </revision>
 </revisionlist>

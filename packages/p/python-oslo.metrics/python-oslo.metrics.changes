@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:46:52 UTC 2023 - cloud-devel@suse.de
+
+- update to version 0.6.0
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - Fix logging labales --> labels
+
+-------------------------------------------------------------------
 Sun Oct  2 14:48:25 UTC 2022 - cloud-devel@suse.de
 
 - update to version 0.5.0
