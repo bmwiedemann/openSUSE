@@ -1,4 +1,3 @@
-Name: preinstall-libX11-devel
 # pure libX11 is just not worth it
 BuildRequires: pkgconfig pkgconfig(gl) pkgconfig(xt)
 #!BuildIgnore: brp-trim-desktopfiles
