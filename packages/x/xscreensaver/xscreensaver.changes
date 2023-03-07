@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  6 00:44:00 UTC 2023 - Jason Sikes <jsikes@suse.com>
+
+- Added spec file changes to handle hard-coded PAM directories.
+  * bsc#1204744
+
+-------------------------------------------------------------------
+Thu Feb 23 04:29:22 UTC 2023 - Jason Sikes <jsikes@suse.com>
+
+- Added fix for configuration reading
+  * Added xscreensaver-bsc1204744.patch
+  * bsc#1204744
+  * Patch provided by Jaroslav Jindrak
+
+-------------------------------------------------------------------
 Wed Jan  4 10:18:11 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

@@ -1,0 +1,14 @@
+Index: xscreensaver-6.03/driver/xscreensaver.c
+===================================================================
+--- xscreensaver-6.03.orig/driver/xscreensaver.c
++++ xscreensaver-6.03/driver/xscreensaver.c
+@@ -782,6 +782,8 @@ static void init_line_handler (int linen
+                                const char *key, const char *val,
+                                void *closure)
+ {
++  if (*key == '*')
++    key++;
+   if      (!strcmp (key, "verbose")) verbose_p = !strcasecmp (val, "true");
+   else if (!strcmp (key, "splash"))  splash_p  = !strcasecmp (val, "true");
+   else if (!strcmp (key, "lock"))    lock_p    = !strcasecmp (val, "true");
+
