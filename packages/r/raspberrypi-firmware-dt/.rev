@@ -403,4 +403,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>1059981</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>82f8f696fe65a4e8ea6d9f271f7365a7</srcmd5>
+    <version>2023.03.02</version>
+    <time>1678204141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069661</requestid>
+  </revision>
 </revisionlist>
