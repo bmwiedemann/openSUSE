@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 01:12:09 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Add patch 0001-Don-t-link-against-gumbo.patch to allow building 
+  without linking against gumbo
+- Add patch 0002-Revert-Rework-detection-of-mupdf.patch to unbreak mupdf
+  detection keep building this on life support.
+- Build with external libs
+
+-------------------------------------------------------------------
 Tue Dec 13 19:19:58 UTC 2022 - llyyr <llyyr.public@gmail.com>
 
 - Update to 0.4.0

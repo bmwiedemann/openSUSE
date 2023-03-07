@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-pdf-mupdf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,20 @@ License:        Zlib
 Group:          Productivity/Office/Other
 URL:            https://pwmt.org/projects/zathura-pdf-mupdf/
 Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
+Patch1:         0001-Don-t-link-against-gumbo.patch
+Patch2:         0002-Revert-Rework-detection-of-mupdf.patch
 BuildRequires:  cmake
-BuildRequires:  libgumbo-devel
 BuildRequires:  meson
 BuildRequires:  mupdf-devel-static >= 1.20
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
 BuildRequires:  pkgconfig(jbig2dec)
+BuildRequires:  pkgconfig(lept)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(mujs)
+BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(zathura) >= 0.5.2
 Requires:       mupdf >= 1.20
 Requires:       zathura >= 0.5.2
@@ -46,10 +50,12 @@ Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPU
 
 %prep
 %setup -q -n %{realname}-%{version}
+%patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson -Dlink-external=true
 %meson_build
 
 %install
