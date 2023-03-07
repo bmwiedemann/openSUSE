@@ -213,4 +213,21 @@
   - Make server connection retries configurable</comment>
     <requestid>1055985</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bd72ce84acd855daf3bf593fab79855</srcmd5>
+    <version>4.4.2</version>
+    <time>1678204179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.2
+  - Fix exceeding retries
+  - Fix setting boot related attributes
+  - workaround: requests verify handling if env is set
+  - Fix tox4 and setuptools errors
+  - Remove setuptools workaround
+  - Handle a different error code for missing TransferProtocolType
+  - Retry on iDRAC SYS518 errors for all requests
+  - Handle proper code_status in unit test
+  - Fix volume deletion on newer iDRACs</comment>
+    <requestid>1069690</requestid>
+  </revision>
 </revisionlist>

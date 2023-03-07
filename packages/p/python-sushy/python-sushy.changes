@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:52:38 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.4.2
+  - Fix exceeding retries
+  - Fix setting boot related attributes
+  - workaround: requests verify handling if env is set
+  - Fix tox4 and setuptools errors
+  - Remove setuptools workaround
+  - Handle a different error code for missing TransferProtocolType
+  - Retry on iDRAC SYS518 errors for all requests
+  - Handle proper code_status in unit test
+  - Fix volume deletion on newer iDRACs
+
+-------------------------------------------------------------------
 Mon Jan  2 09:11:53 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.4.0

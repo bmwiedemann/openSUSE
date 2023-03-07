@@ -17,13 +17,13 @@
 
 
 Name:           python-sushy
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Python library to communicate with Redfish based systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/sushy
-Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-4.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-4.4.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
@@ -62,7 +62,7 @@ Sushy is a Python library to communicate with `Redfish` based systems.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n sushy-4.4.0
+%autosetup -p1 -n sushy-4.4.2
 %py_req_cleanup
 
 %build
@@ -74,7 +74,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-sushy
 %license LICENSE
