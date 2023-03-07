@@ -6898,4 +6898,32 @@ always built-in because vim has direct perl dependencies anyway.
   * Divide by zero in zero-width window.</comment>
     <requestid>1068672</requestid>
   </revision>
+  <revision rev="342" vrev="1">
+    <srcmd5>ade8434524d62a0068d7b932dba782c4</srcmd5>
+    <version>9.0.1386</version>
+    <time>1678204117</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1386, fixes the following problems
+  * Divide by zero in zero-width window.
+  * Bass files are not recognized.
+  * Still some &quot;else if&quot; constructs for setting options.
+  * Crash when using a NULL object. (Ernie Rael)
+  * Ballooneval interferes with Insert completion.
+  * Test for 'toolbariconsize' may fail.
+  * Wrong text displayed when using both 'linebreak' and 'list'.
+  * Function for setting options not used consistently.
+  * Crash when getting member of obj of unknown class.
+  * Accessing invalid memory with put in Visual block mode.
+  * job_status() may return &quot;dead&quot; if the process parent changed.
+  * Illegal memory access when using virtual editing.
+  * Functions for handling options are not ordered.
+  * CTRL-X on 2**64 subtracts two. (James McCoy)
+  * ACCESS_ names have a conflict with on some systems.
+  * Failing test for strptime() doesn't show returned value.
+  * xxd: combination of little endian and cols fails. (Aapo Rantalainen)
+  * Setting HOMEBREW_NO_AUTO_UPDATE is not needed with Homebew version 4.
+  * g'Esc is considered an error.
+  * Options test fails with some window width.</comment>
+    <requestid>1069600</requestid>
+  </revision>
 </revisionlist>

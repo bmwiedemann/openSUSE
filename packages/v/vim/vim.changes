@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  6 11:26:48 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1386, fixes the following problems
+  * Divide by zero in zero-width window.
+  * Bass files are not recognized.
+  * Still some "else if" constructs for setting options.
+  * Crash when using a NULL object. (Ernie Rael)
+  * Ballooneval interferes with Insert completion.
+  * Test for 'toolbariconsize' may fail.
+  * Wrong text displayed when using both 'linebreak' and 'list'.
+  * Function for setting options not used consistently.
+  * Crash when getting member of obj of unknown class.
+  * Accessing invalid memory with put in Visual block mode.
+  * job_status() may return "dead" if the process parent changed.
+  * Illegal memory access when using virtual editing.
+  * Functions for handling options are not ordered.
+  * CTRL-X on 2**64 subtracts two. (James McCoy)
+  * ACCESS_ names have a conflict with on some systems.
+  * Failing test for strptime() doesn't show returned value.
+  * xxd: combination of little endian and cols fails. (Aapo Rantalainen)
+  * Setting HOMEBREW_NO_AUTO_UPDATE is not needed with Homebew version 4.
+  * g'Esc is considered an error.
+  * Options test fails with some window width.
+
+-------------------------------------------------------------------
 Thu Mar  2 11:29:14 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1367, fixes the following problems
