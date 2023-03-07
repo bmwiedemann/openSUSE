@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  5 13:20:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.2:
+  + Demo:
+    - Correctly use GtkSwitch
+    - Fix a GLib deprecation
+  + Docs: Fix dependency names
+  + HdyTabView:
+    - Fix set_menu_model() input check
+    - Fix a typo in docs
+  + HdySwipeable: Fix get_swipe_area() fallback
+  + Memory leak fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb  1 13:27:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.1:
