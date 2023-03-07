@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -50,14 +50,14 @@ BuildRequires:  libvmime-devel >= 0.9.2.175
 BuildRequires:  zstd
 BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
-BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
-BuildRequires:  pkgconfig(libHX) >= 4.9
+BuildRequires:  pkgconfig(libHX) >= 4.12
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libolecf)
 BuildRequires:  pkgconfig(libpff)
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tinyxml2) >= 8
@@ -75,7 +75,6 @@ Requires:       php8-fpm
 Requires:       php8-mysql
 Requires:       php8-posix
 Requires:       php8-soap
-Conflicts:      php8-opcache
 %endif
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
 Requires:       php-cli
@@ -83,7 +82,6 @@ Requires:       php7-fpm
 Requires:       php7-mysql
 Requires:       php7-posix
 Requires:       php7-soap
-Conflicts:      php7-opcache
 %endif
 %if 0%{?rhel} || 0%{?fedora_version}
 Requires:       php-cli
@@ -91,12 +89,12 @@ Requires:       php-fpm
 Requires:       php-mysqlnd
 Requires:       php-posix
 Requires:       php-soap
-Conflicts:      php-opcache
 %endif
 Requires:       w3m
 Requires(pre):  user(grommunio)
 Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
+Provides:       php-mapi-gromox = %version-%release
 Provides:       bundled(tzcode) = 2022c
 %{?systemd_ordering}
 %if !0%{?_pamdir:1}
@@ -163,7 +161,7 @@ cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php-fpm.d/gromox.conf
 perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.service
 %fdupes %buildroot/%_prefix
 
-%global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-timer.service gromox-zcore.service
+%global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-snapshot.service gromox-snapshot.timer gromox-timer.service gromox-zcore.service
 
 %pre
 # User addition done a priori by system-user-gromox(!)

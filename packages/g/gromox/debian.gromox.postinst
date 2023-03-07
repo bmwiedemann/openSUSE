@@ -38,7 +38,7 @@ else
 fi
 if test -x /usr/bin/systemctl; then
 	systemctl daemon-reload || :
-	systemctl try-restart gromox-adaptor.service gromox-delivery.service \
+	systemctl try-restart gromox-delivery.service \
 		gromox-delivery-queue.service gromox-event.service \
 		gromox-http.service gromox-imap.service gromox-midb.service \
 		gromox-pop3.service gromox-timer.service gromox-zcore.service \

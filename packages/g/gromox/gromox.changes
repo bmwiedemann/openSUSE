@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  5 23:23:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5
+  * authmgr: Alternate username support
+  * Repair a null deref during HTML-to-text conversion
+  * Synchronization of embedded messages now works
+  * Saving a draft in grommunio-web would erroneously strip the
+    subject prefix
+  * EWS: Detailed FreeBusy requests did not return detailed info
+
+-------------------------------------------------------------------
 Sun Feb 26 18:24:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4

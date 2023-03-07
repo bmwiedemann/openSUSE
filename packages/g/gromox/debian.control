@@ -10,9 +10,8 @@ Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends},
  php-cli, php-fpm, php-mysql, php-simplexml, php-soap,
- system-user-gromox, w3m, libhx32 (>= 4.0)
-Conflicts: php7.4-opcache, php8.0-opcache, php8.1-opcache, php8.2-opcache
-Provides: php7-mapi-gromox
+ system-user-gromox, w3m, libhx32 (>= 4.12)
+Provides: php-mapi-gromox
 Description: Groupware server (backend) with RPCH, IMAP and Z-MAPI support
  .
  Gromox is the central groupware server component of grommunio. It is
