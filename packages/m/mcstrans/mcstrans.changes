@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:51:59 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * preserve runtime directory
+- Refreshed harden_mcstrans.service.patch
+- Added additional developer key (Jason Zaman)
+
+-------------------------------------------------------------------
 Mon May  9 10:49:13 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.4

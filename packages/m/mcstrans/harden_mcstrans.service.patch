@@ -1,7 +1,7 @@
-Index: mcstrans-3.3/src/mcstrans.service
+Index: mcstrans-3.5/src/mcstrans.service
 ===================================================================
---- mcstrans-3.3.orig/src/mcstrans.service
-+++ mcstrans-3.3/src/mcstrans.service
+--- mcstrans-3.5.orig/src/mcstrans.service
++++ mcstrans-3.5/src/mcstrans.service
 @@ -7,7 +7,17 @@ Before=shutdown.target sysinit.target
  Conflicts=shutdown.target
  
@@ -19,5 +19,5 @@ Index: mcstrans-3.3/src/mcstrans.service
 +# end of automatic additions 
 +ExecStart=/usr/sbin/mcstransd -f
  RuntimeDirectory=setrans
+ RuntimeDirectoryPreserve=true
  
- [Install]
