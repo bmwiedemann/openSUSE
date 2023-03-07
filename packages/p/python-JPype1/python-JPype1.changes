@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 00:25:49 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.4.1
+  * Fixed issue with startJVM changing locale settings
+  * Changes to support Python 3.11
+  * Fix truncation of strings on null when using convert strings
+  * Replaced distutil with packaging
+
+-------------------------------------------------------------------
 Thu Aug 18 13:28:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - ExcludeArch armv7 and i586 due to significant test failures

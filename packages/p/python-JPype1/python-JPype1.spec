@@ -1,7 +1,7 @@
 #
 # spec file for package python-JPype1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define skip_python2 1
 %define skip_python36 1
 %bcond_without  test
-# https://build.opensuse.org/package/show/Java:packages/sqlite-jdbc is not in Factory
+# https://build.opensuse.org/package/show/Java:packages/h2database is not in Factory
 %bcond_with     test_jdbc
 Name:           python-JPype1
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0
@@ -79,6 +79,9 @@ ant -f test/build.xml compile
 # JClassTestCase.testAsArray fails on i586
 # https://github.com/jpype-project/jpype/issues/1029
 skip_tests="(JClassTestCase and testAsArray)"
+
+# v1.4.1: https://github.com/jpype-project/jpype/issues/1116
+skip_tests+=" or (HtmlTestCase and testClass)"
 
 %if %{without test_jbdc}
 skip_tests+=" or test_sql_h2 or test_sql_hsqldb or test_sql_sqlite"
