@@ -16,17 +16,16 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           procs
-Version:        0.13.4
+Version:        0.14.0
 Release:        0
 Summary:        A modern replacement for ps written in Rust
 License:        MIT
 URL:            https://github.com/dalance/procs
 Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 
 %description
 procs is a replacement for ps written in Rust.
@@ -37,13 +36,13 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release
+%{cargo_build}
 
 %install
-RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
-# remove residue crate file
-rm %{buildroot}%{_prefix}/.crates.toml
-rm %{buildroot}%{_prefix}/.crates2.json
+%{cargo_install}
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE
