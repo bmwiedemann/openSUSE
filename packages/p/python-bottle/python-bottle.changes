@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  5 17:56:40 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.25: bugfix release
+  * Reduce deprectation warnings during tests
+  * Adjusts the test_server 'fetch' method to disable proxying
+    within test cases where it is used
+  * fix #1194: Regular expression catastrophic backtracking in
+    bottle.Router.rule_syntax
+  * fix #1155: Catastrophic backtracking issue in template parser
+  * Fix release task in Makefile
+  * fix: Raising HTTPResponse should not bypass JsonPlugin
+- drop python_module macro: provided by python-rpm-macros
+- run fdupes to deduplicate identical files
+
+-------------------------------------------------------------------
 Tue Feb 21 18:22:20 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.24: bugfix release
