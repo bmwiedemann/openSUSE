@@ -1,6 +1,19 @@
 <package name="python-semanage" project="openSUSE:Factory">
-  <title>Python bindings for libsemanage</title>
-  <description>This package contains the python bindings for developing
-SELinux management applications.</description>
+  <title>SELinux binary policy manipulation library</title>
+  <description>Security-enhanced Linux is a feature of the Linux kernel and a number
+of utilities with enhanced security functionality designed to add
+mandatory access controls to Linux.  The Security-enhanced Linux
+kernel contains new architectural components originally developed to
+improve the security of the Flask operating system. These
+architectural components provide general support for the enforcement
+of many kinds of mandatory access control policies, including those
+based on the concepts of Type Enforcement, Role-based Access
+Control, and Multi-level Security.
+
+libsemanage provides an API for the manipulation of SELinux binary policies.
+It is used by checkpolicy (the policy compiler) and similar tools, as well
+as by programs like load_policy that need to perform specific transformations
+on binary policies such as customizing policy boolean settings.</description>
   <devel project="openSUSE:Factory" package="libsemanage"/>
+  <bcntsynctag>libsemanage</bcntsynctag>
 </package>
