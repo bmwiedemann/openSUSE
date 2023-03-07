@@ -308,4 +308,21 @@
   - Update python testing classifier</comment>
     <requestid>979077</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3db6013baec3e7968653dc9e8c0d983c</srcmd5>
+    <version>5.0.1</version>
+    <time>1678204176</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid eventlet lockup
+
+- update to version 5.0.1
+  - Log when waiting to acquire lock
+  - Ignore coverage result files
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix fair internal lock used from eventlet.spawn_n
+  - Prove that spawn_n with fair lock is broken
+  - Imported Translations from Zanata</comment>
+    <requestid>1069678</requestid>
+  </revision>
 </revisionlist>

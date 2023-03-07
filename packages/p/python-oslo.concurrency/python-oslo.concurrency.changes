@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:22:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- avoid eventlet lockup
+
+-------------------------------------------------------------------
+Sat Oct  1 12:23:30 UTC 2022 - cloud-devel@suse.de
+
+- update to version 5.0.1
+  - Log when waiting to acquire lock
+  - Ignore coverage result files
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix fair internal lock used from eventlet.spawn_n
+  - Prove that spawn_n with fair lock is broken
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue May 24 21:18:02 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.5.1

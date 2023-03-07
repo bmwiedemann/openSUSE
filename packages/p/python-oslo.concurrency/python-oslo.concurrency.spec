@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.concurrency
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.concurrency
-Version:        4.5.1
+Version:        5.0.1
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.concurrency
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-4.5.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-5.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fasteners >= 0.7.0
@@ -73,7 +73,7 @@ external processes.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.concurrency-4.5.1
+%autosetup -p1 -n oslo.concurrency-5.0.1
 %py_req_cleanup
 
 %build
@@ -88,7 +88,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+env TEST_EVENTLET=0 %{openstack_stestr_run}
+env TEST_EVENTLET=1 %{openstack_stestr_run}
 
 %files -n python3-oslo.concurrency
 %license LICENSE
