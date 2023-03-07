@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 20:57:22 UTC 2023 - cloud-devel@suse.de
+
+- update to version 7.0.1
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix issues related to tox4
+  - Update CI to use unversioned jobs template
+  - Remove unnecessary unicode prefixes
+  - Fix formatting of release list
+
+-------------------------------------------------------------------
 Tue May 24 21:09:10 UTC 2022 - cloud-devel@suse.de
 
 - update to version 6.3.1
