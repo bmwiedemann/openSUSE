@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:11:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable system gumbo, so it may be removed [boo#1208381].
+
+-------------------------------------------------------------------
 Sat Dec 17 17:35:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1:

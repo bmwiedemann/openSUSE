@@ -1,7 +1,7 @@
 #
 # spec file for package mupdf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,6 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libgumbo-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
@@ -74,7 +73,7 @@ based on mupdf.
 %prep
 %autosetup -p1 -n %{name}-%{version}-source
 
-for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract)
+for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract -e gumbo-parser)
 do
   rm -rf thirdparty/$d
 done
@@ -91,7 +90,6 @@ echo > user.make "\
   USE_SYSTEM_ZLIB := yes
   USE_SYSTEM_GLUT := no # need freeglut2-art frok
   USE_SYSTEM_CURL := yes
-  USE_SYSTEM_GUMBO := yes
 "
 
 %build
