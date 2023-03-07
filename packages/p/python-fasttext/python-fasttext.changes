@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 12:30:34 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add gcc13-fix.patch that fixes upstream issue:
+  https://github.com/facebookresearch/fastText/issues/1281
+
+-------------------------------------------------------------------
 Wed Jun  1 09:51:33 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to not depend on build machine CPU (boo#1100677)

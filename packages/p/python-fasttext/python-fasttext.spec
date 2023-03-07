@@ -1,7 +1,7 @@
 #
 # spec file for package python-fasttext
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ License:        MIT
 URL:            https://github.com/facebookresearch/fastText
 Source:         https://github.com/facebookresearch/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Patch0:         reproducible.patch
+Patch1:         gcc13-fix.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
