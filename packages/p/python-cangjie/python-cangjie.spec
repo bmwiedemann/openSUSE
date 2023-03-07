@@ -1,7 +1,7 @@
 #
 # spec file for package python-cangjie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{1} python3-%{1}}
 %global src_name cangjie
 Name:           python-cangjie
 Version:        1.3
@@ -60,10 +59,11 @@ popd
 %{python_expand #
 pushd build
 %make_install
-%fdupes -s %{buildroot}/%{$python_sitearch}
 popd
-}
 find %{buildroot} -type f -name "*.la" -delete -print
+
+fdupes %{buildroot}/%{$python_sitearch}
+}
 
 # check
 %pyunittest_arch discover tests
