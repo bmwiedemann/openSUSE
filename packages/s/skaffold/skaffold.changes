@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Mar 07 05:45:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * release: v2.2.0 (#8496)
+  * docs: update _index.md: add `minikube tunnel` command (#8490)
+  * fix: retag multiarch images (#8493)
+  * chore: update CHANGELOG.md with 3 patch releases (#8487)
+  * fix: skaffold render/apply namespace regression in v2 (#8482)
+  * docs: update _index.md (#8484)
+  * feat: support deploying to multiple clusters (#8459)
+  * fix: resolve issue in which skaffold + helm did not properly
+    handle ':' chars in go templating (#8464)
+  * chore: remove validation for kpt version (#8425)
+  * chore: bump golang.org/x/net (#8478)
+  * fix: expand home directory for docker secrets (#8476)
+  * chore: bump golang.org/x/net in
+    /examples/grpc-e2e-tests/service (#8473)
+  * chore: bump golang.org/x/crypto in /hack/tools (#8469)
+  * chore: upgrade kpt to support parameterization (#8470)
+  * chore: remove unnecessary code comments (#8350)
+  * chore: add docs to explain keep-running-on-failure (#8446)
+  * fix: output cause of kubernetes manifest parsing error vs
+    generic message (#8463)
+  * chore: delete unused helm fields and methods from v1 -> v2
+    migration (#8461)
+  * chore: bump golang.org/x/text in
+    /examples/grpc-e2e-tests/service (#8468)
+  * chore: bump golang.org/x/text (#8467)
+  * chore(deps): bump actions/upload-artifact from 3.1.1 to 3.1.2
+    (#8304)
+  * chore: bump golang.org/x/text (#8466)
+  * chore: bump golang.org/x/text (#8465)
+  * docs: follow-ups to builders page refactor (#8449)
+  * chore: Update skaffold base image (#8460)
+  * chore: golang.org/x/net from 0.6.0 to 0.7.0 (#8451)
+  * docs: add missing space (#8450)
+  * chore: change skaffold base image (#8433)
+  * chore: add more krm functions to allowList (#8445)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.6.18 (#8444)
+  * docs: add Python 3.11 not currently supported but coming soon
+    info (#8435)
+  * chore(deps): bump flask from 2.2.2 to 2.2.3 in
+    /integration/examples (#8442)
+  * chore(deps): bump flask from 2.2.2 to 2.2.3 in
+    /examples (#8443)
+  * chore: upgrade dependencies (#8431)
+  * fix: not inject `metadata.namespace` in manifests rendered
+    with kustomize (#8409)
+  * fix: change log level to Info so
+    `skaffold render --output=render.yaml` produces same output as
+    `skaffold render &> render.yaml` for helm with OCI registry
+    (#8341)
+  * chore: upgrade go in dockerfile (#8420)
+  * docs: restructure builders docs (#8426)
+  * chore: bump pack version used in skaffold pack image (#8428)
+  * chore: bump schema version to v4beta3 (#8421)
+  * docs: update upgrade.md to reflect helm hooks support change
+    (#8419)
+  * feat: parameterization  (#8365)
+  * docs: fix issue where debug.md link was not rendered properly
+    (#8412)
+  * fix: prevent long startup time (#8376)
+  * refactor: replace 4d63.com/tz with time/tzdata (#8408)
+  * feat: define `skaffold.env` file for loading environment
+    variables (#8395)
+  * chore(deps): bump peter-evans/create-or-update-comment (#8404)
+  * fix: resolve issue where verify validation did not properly
+    validate uniqueness across all modules (#8373)
+  * docs: add IMAGE_DIGEST_* as well to *.tag docs examples (#8402)
+  * docs: add more detail to Cloud Run deployer page (#8381)
+  * fix: envTemplate is not working with command template and
+    output with spaces (#8393)
+  * docs: Upgrade hugo and docsy versions to enable collapsible nav
+    (#8398)
+  * fix: resolve issue where verify incorrectly failed when run
+    with multiple modules where any module didn't have verify test
+    cases (#8369)
+  * fix: resolve issue where kubectl Flags.Apply namespace flag
+    usage would fail (#8351)
+  * chore: bump examples to v4beta2 after v2.1.0 release (#8355)
+  * feat: add timeout for copying build context on kaniko (#8329)
+  * feat: add support for remote docker over ssh (#8349)
+  * chore(deps): bump rack from 2.1.4.1 to 2.1.4.2 in
+    /examples/ruby/backend (#8332)
+  * test: integration test for helm render with OCI repo (#8352)
+  * chore(deps): bump rack in /integration/examples/ruby/backend
+    (#8331)
+
+-------------------------------------------------------------------
 Tue Jan 24 08:43:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.1.0:
