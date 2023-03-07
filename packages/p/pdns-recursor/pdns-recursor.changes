@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  7 10:13:47 UTC 2023 - Adam Majer <adam.majer@suse.de> 4.8.3
+
+- update to 4.8.3
+  * Fix serve-stale logic to not cause intermittent high CPU load by:
+    + correcting the removal of a negative cache entry,
+    + correcting the serve-stale main loop regarding exception handling,
+    + correctly handle negcache entries with serve-state status.
+
+- changes in version 4.8.2
+  * Make cache cleaning of record an negative cache more fair
+  * Do not report “not decreasing socket buf size” as an error
+  * Do not use “message” as key, it has a special meaning to systemd-journal
+  * Add the ‘parse packet from auth’ error message to structured logging
+  * Refresh of negcache stale entry might use wrong qtype
+  * Do not chain ECS enabled queries
+  * Properly encode json string containing binary data
+
+-------------------------------------------------------------------
 Fri Jan 20 12:32:44 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.8.1
