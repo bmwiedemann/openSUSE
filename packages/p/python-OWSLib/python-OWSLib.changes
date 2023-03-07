@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:57:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Fri Dec  3 12:41:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.25.0
