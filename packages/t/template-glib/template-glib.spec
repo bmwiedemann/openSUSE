@@ -1,7 +1,7 @@
 #
 # spec file for package template-glib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           template-glib
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later

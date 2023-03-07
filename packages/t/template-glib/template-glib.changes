@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 13:37:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Fix leak of GObject Introspection interface info.
+  + Document usage of package_subdir.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 10:31:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:
