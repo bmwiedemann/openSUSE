@@ -1,7 +1,7 @@
-From 827413baa8f803ff07e8adc3efaf907ed7faa734 Mon Sep 17 00:00:00 2001
+From cc329567eec2ab99f2dd883b2d48b069054d85b5 Mon Sep 17 00:00:00 2001
 From: Robbie Harwood <rharwood@redhat.com>
 Date: Tue, 23 Aug 2016 16:30:53 -0400
-Subject: [PATCH 7/8] SELinux integration
+Subject: [PATCH] SELinux integration
 
 SELinux bases access to files on the domain of the requesting process,
 the operation being performed, and the context applied to the file.
@@ -36,7 +36,9 @@ The selabel APIs for looking up the context should be thread-safe (per
 Red Hat #273081), so switching to using them instead of matchpathcon(),
 which we used earlier, is some improvement.
 
-Last-updated: krb5-1.18-beta1
+Last-updated: krb5-1.20.1
+[jrische@redhat.com: Replace deprecated security_context_t by char *:
+    - src/util/support/selinux.c]
 ---
  src/aclocal.m4                                |  49 +++
  src/build-tools/krb5-config.in                |   3 +-
@@ -61,15 +63,15 @@ Last-updated: krb5-1.18-beta1
  .../kdb/ldap/ldap_util/kdb5_ldap_services.c   |  11 +-
  src/util/profile/prof_file.c                  |   3 +-
  src/util/support/Makefile.in                  |   3 +-
- src/util/support/selinux.c                    | 406 ++++++++++++++++++
- 24 files changed, 574 insertions(+), 21 deletions(-)
+ src/util/support/selinux.c                    | 405 ++++++++++++++++++
+ 24 files changed, 573 insertions(+), 21 deletions(-)
  create mode 100644 src/include/k5-label.h
  create mode 100644 src/util/support/selinux.c
 
-Index: krb5-1.19.3/src/aclocal.m4
-===================================================================
---- krb5-1.19.3.orig/src/aclocal.m4
-+++ krb5-1.19.3/src/aclocal.m4
+diff --git a/src/aclocal.m4 b/src/aclocal.m4
+index baec309ae..b09c74b1b 100644
+--- a/src/aclocal.m4
++++ b/src/aclocal.m4
 @@ -85,6 +85,7 @@ AC_SUBST_FILE(libnodeps_frag)
  dnl
  KRB5_AC_PRAGMA_WEAK_REF
@@ -78,7 +80,7 @@ Index: krb5-1.19.3/src/aclocal.m4
  KRB5_LIB_PARAMS
  KRB5_AC_INITFINI
  KRB5_AC_ENABLE_THREADS
-@@ -1745,3 +1746,51 @@ AC_SUBST(PAM_LIBS)
+@@ -1526,3 +1527,51 @@ AC_SUBST(PAM_LIBS)
  AC_SUBST(PAM_MAN)
  AC_SUBST(NON_PAM_MAN)
  ])dnl
@@ -130,10 +132,10 @@ Index: krb5-1.19.3/src/aclocal.m4
 +LIBS="$old_LIBS"
 +AC_SUBST(SELINUX_LIBS)
 +])dnl
-Index: krb5-1.19.3/src/build-tools/krb5-config.in
-===================================================================
---- krb5-1.19.3.orig/src/build-tools/krb5-config.in
-+++ krb5-1.19.3/src/build-tools/krb5-config.in
+diff --git a/src/build-tools/krb5-config.in b/src/build-tools/krb5-config.in
+index f153aeb1c..c2f13f38c 100755
+--- a/src/build-tools/krb5-config.in
++++ b/src/build-tools/krb5-config.in
 @@ -41,6 +41,7 @@ DL_LIB='@DL_LIB@'
  DEFCCNAME='@DEFCCNAME@'
  DEFKTNAME='@DEFKTNAME@'
@@ -151,10 +153,10 @@ Index: krb5-1.19.3/src/build-tools/krb5-config.in
      # here.
  
      echo $lib_flags
-Index: krb5-1.19.3/src/config/pre.in
-===================================================================
---- krb5-1.19.3.orig/src/config/pre.in
-+++ krb5-1.19.3/src/config/pre.in
+diff --git a/src/config/pre.in b/src/config/pre.in
+index c96d7c1f4..290f06cc2 100644
+--- a/src/config/pre.in
++++ b/src/config/pre.in
 @@ -177,6 +177,7 @@ LD = $(PURE) @LD@
  KRB_INCLUDES = -I$(BUILDTOP)/include -I$(top_srcdir)/include
  LDFLAGS = @LDFLAGS@
@@ -163,7 +165,7 @@ Index: krb5-1.19.3/src/config/pre.in
  
  INSTALL=@INSTALL@
  INSTALL_STRIP=
-@@ -403,7 +404,7 @@ SUPPORT_LIB			= -l$(SUPPORT_LIBNAME)
+@@ -379,7 +380,7 @@ SUPPORT_LIB			= -l$(SUPPORT_LIBNAME)
  # HESIOD_LIBS is -lhesiod...
  HESIOD_LIBS	= @HESIOD_LIBS@
  
@@ -172,11 +174,11 @@ Index: krb5-1.19.3/src/config/pre.in
  KDB5_LIBS	= $(KDB5_LIB) $(GSSRPC_LIBS)
  GSS_LIBS	= $(GSS_KRB5_LIB)
  # needs fixing if ever used on macOS!
-Index: krb5-1.19.3/src/configure.ac
-===================================================================
---- krb5-1.19.3.orig/src/configure.ac
-+++ krb5-1.19.3/src/configure.ac
-@@ -1391,6 +1391,8 @@ AC_PATH_PROG(GROFF, groff)
+diff --git a/src/configure.ac b/src/configure.ac
+index aa970b044..40545f2bf 100644
+--- a/src/configure.ac
++++ b/src/configure.ac
+@@ -1402,6 +1402,8 @@ AC_PATH_PROG(GROFF, groff)
  
  KRB5_WITH_PAM
  
@@ -185,10 +187,10 @@ Index: krb5-1.19.3/src/configure.ac
  # Make localedir work in autoconf 2.5x.
  if test "${localedir+set}" != set; then
      localedir='$(datadir)/locale'
-Index: krb5-1.19.3/src/include/k5-int.h
-===================================================================
---- krb5-1.19.3.orig/src/include/k5-int.h
-+++ krb5-1.19.3/src/include/k5-int.h
+diff --git a/src/include/k5-int.h b/src/include/k5-int.h
+index 44dc1eeb3..c3aecba7d 100644
+--- a/src/include/k5-int.h
++++ b/src/include/k5-int.h
 @@ -128,6 +128,7 @@ typedef unsigned char   u_char;
  
  
@@ -197,10 +199,11 @@ Index: krb5-1.19.3/src/include/k5-int.h
  
  #define KRB5_KDB_MAX_LIFE       (60*60*24) /* one day */
  #define KRB5_KDB_MAX_RLIFE      (60*60*24*7) /* one week */
-Index: krb5-1.19.3/src/include/k5-label.h
-===================================================================
+diff --git a/src/include/k5-label.h b/src/include/k5-label.h
+new file mode 100644
+index 000000000..dfaaa847c
 --- /dev/null
-+++ krb5-1.19.3/src/include/k5-label.h
++++ b/src/include/k5-label.h
 @@ -0,0 +1,32 @@
 +#ifndef _KRB5_LABEL_H
 +#define _KRB5_LABEL_H
@@ -234,10 +237,10 @@ Index: krb5-1.19.3/src/include/k5-label.h
 +#define THREEPARAMOPEN(x,y,z) open(x,y,z)
 +#endif
 +#endif
-Index: krb5-1.19.3/src/include/krb5/krb5.hin
-===================================================================
---- krb5-1.19.3.orig/src/include/krb5/krb5.hin
-+++ krb5-1.19.3/src/include/krb5/krb5.hin
+diff --git a/src/include/krb5/krb5.hin b/src/include/krb5/krb5.hin
+index c0194c3c9..7e1dea2cb 100644
+--- a/src/include/krb5/krb5.hin
++++ b/src/include/krb5/krb5.hin
 @@ -87,6 +87,12 @@
  #define THREEPARAMOPEN(x,y,z) open(x,y,z)
  #endif
@@ -251,11 +254,11 @@ Index: krb5-1.19.3/src/include/krb5/krb5.hin
  #define KRB5_OLD_CRYPTO
  
  #include <stdlib.h>
-Index: krb5-1.19.3/src/kadmin/dbutil/dump.c
-===================================================================
---- krb5-1.19.3.orig/src/kadmin/dbutil/dump.c
-+++ krb5-1.19.3/src/kadmin/dbutil/dump.c
-@@ -148,12 +148,21 @@ create_ofile(char *ofile, char **tmpname
+diff --git a/src/kadmin/dbutil/dump.c b/src/kadmin/dbutil/dump.c
+index a89b5144f..4d6cc0bdf 100644
+--- a/src/kadmin/dbutil/dump.c
++++ b/src/kadmin/dbutil/dump.c
+@@ -148,12 +148,21 @@ create_ofile(char *ofile, char **tmpname)
  {
      int fd = -1;
      FILE *f;
@@ -277,7 +280,7 @@ Index: krb5-1.19.3/src/kadmin/dbutil/dump.c
      if (fd == -1)
          goto error;
  
-@@ -197,7 +206,7 @@ prep_ok_file(krb5_context context, char
+@@ -197,7 +206,7 @@ prep_ok_file(krb5_context context, char *file_name, int *fd_out)
          goto cleanup;
      }
  
@@ -286,11 +289,11 @@ Index: krb5-1.19.3/src/kadmin/dbutil/dump.c
      if (fd == -1) {
          com_err(progname, errno, _("while creating 'ok' file, '%s'"), file_ok);
          goto cleanup;
-Index: krb5-1.19.3/src/kdc/main.c
-===================================================================
---- krb5-1.19.3.orig/src/kdc/main.c
-+++ krb5-1.19.3/src/kdc/main.c
-@@ -872,7 +872,7 @@ write_pid_file(const char *path)
+diff --git a/src/kdc/main.c b/src/kdc/main.c
+index 38b929906..085afc922 100644
+--- a/src/kdc/main.c
++++ b/src/kdc/main.c
+@@ -848,7 +848,7 @@ write_pid_file(const char *path)
      FILE *file;
      unsigned long pid;
  
@@ -299,11 +302,11 @@ Index: krb5-1.19.3/src/kdc/main.c
      if (file == NULL)
          return errno;
      pid = (unsigned long) getpid();
-Index: krb5-1.19.3/src/kprop/kpropd.c
-===================================================================
---- krb5-1.19.3.orig/src/kprop/kpropd.c
-+++ krb5-1.19.3/src/kprop/kpropd.c
-@@ -487,6 +487,9 @@ doit(int fd)
+diff --git a/src/kprop/kpropd.c b/src/kprop/kpropd.c
+index f2341d720..ffdac9f39 100644
+--- a/src/kprop/kpropd.c
++++ b/src/kprop/kpropd.c
+@@ -488,6 +488,9 @@ doit(int fd)
      krb5_enctype etype;
      int database_fd;
      char host[INET6_ADDRSTRLEN + 1];
@@ -313,7 +316,7 @@ Index: krb5-1.19.3/src/kprop/kpropd.c
  
      signal_wrapper(SIGALRM, alarm_handler);
      alarm(params.iprop_resync_timeout);
-@@ -542,9 +545,15 @@ doit(int fd)
+@@ -543,9 +546,15 @@ doit(int fd)
          free(name);
          exit(1);
      }
@@ -329,11 +332,11 @@ Index: krb5-1.19.3/src/kprop/kpropd.c
      retval = krb5_lock_file(kpropd_context, lock_fd,
                              KRB5_LOCKMODE_EXCLUSIVE | KRB5_LOCKMODE_DONTBLOCK);
      if (retval) {
-Index: krb5-1.19.3/src/lib/kadm5/logger.c
-===================================================================
---- krb5-1.19.3.orig/src/lib/kadm5/logger.c
-+++ krb5-1.19.3/src/lib/kadm5/logger.c
-@@ -309,7 +309,7 @@ krb5_klog_init(krb5_context kcontext, ch
+diff --git a/src/lib/kadm5/logger.c b/src/lib/kadm5/logger.c
+index c6885edf2..9aec3c05e 100644
+--- a/src/lib/kadm5/logger.c
++++ b/src/lib/kadm5/logger.c
+@@ -309,7 +309,7 @@ krb5_klog_init(krb5_context kcontext, char *ename, char *whoami, krb5_boolean do
                       */
                      append = (cp[4] == ':') ? O_APPEND : 0;
                      if (append || cp[4] == '=') {
@@ -351,11 +354,11 @@ Index: krb5-1.19.3/src/lib/kadm5/logger.c
              if (f) {
                  set_cloexec_file(f);
                  log_control.log_entries[lindex].lfu_filep = f;
-Index: krb5-1.19.3/src/lib/kdb/kdb_log.c
-===================================================================
---- krb5-1.19.3.orig/src/lib/kdb/kdb_log.c
-+++ krb5-1.19.3/src/lib/kdb/kdb_log.c
-@@ -480,7 +480,7 @@ ulog_map(krb5_context context, const cha
+diff --git a/src/lib/kdb/kdb_log.c b/src/lib/kdb/kdb_log.c
+index 2659a2501..e9b95fce5 100644
+--- a/src/lib/kdb/kdb_log.c
++++ b/src/lib/kdb/kdb_log.c
+@@ -480,7 +480,7 @@ ulog_map(krb5_context context, const char *logname, uint32_t ulogentries)
          return ENOMEM;
  
      if (stat(logname, &st) == -1) {
@@ -364,11 +367,11 @@ Index: krb5-1.19.3/src/lib/kdb/kdb_log.c
          if (log_ctx->ulogfd == -1) {
              retval = errno;
              goto cleanup;
-Index: krb5-1.19.3/src/lib/krb5/ccache/cc_dir.c
-===================================================================
---- krb5-1.19.3.orig/src/lib/krb5/ccache/cc_dir.c
-+++ krb5-1.19.3/src/lib/krb5/ccache/cc_dir.c
-@@ -183,10 +183,19 @@ write_primary_file(const char *primary_p
+diff --git a/src/lib/krb5/ccache/cc_dir.c b/src/lib/krb5/ccache/cc_dir.c
+index 1da40b51d..f3ab7340a 100644
+--- a/src/lib/krb5/ccache/cc_dir.c
++++ b/src/lib/krb5/ccache/cc_dir.c
+@@ -183,10 +183,19 @@ write_primary_file(const char *primary_path, const char *contents)
      char *newpath = NULL;
      FILE *fp = NULL;
      int fd = -1, status;
@@ -414,11 +417,11 @@ Index: krb5-1.19.3/src/lib/krb5/ccache/cc_dir.c
          k5_setmsg(context, KRB5_FCC_NOFILE,
                    _("Credential cache directory %s does not exist"),
                    dirname);
-Index: krb5-1.19.3/src/lib/krb5/keytab/kt_file.c
-===================================================================
---- krb5-1.19.3.orig/src/lib/krb5/keytab/kt_file.c
-+++ krb5-1.19.3/src/lib/krb5/keytab/kt_file.c
-@@ -735,14 +735,14 @@ krb5_ktfileint_open(krb5_context context
+diff --git a/src/lib/krb5/keytab/kt_file.c b/src/lib/krb5/keytab/kt_file.c
+index e510211fc..f3ea28c8e 100644
+--- a/src/lib/krb5/keytab/kt_file.c
++++ b/src/lib/krb5/keytab/kt_file.c
+@@ -735,14 +735,14 @@ krb5_ktfileint_open(krb5_context context, krb5_keytab id, int mode)
  
      KTCHECKLOCK(id);
      errno = 0;
@@ -435,11 +438,11 @@ Index: krb5-1.19.3/src/lib/krb5/keytab/kt_file.c
              if (!KTFILEP(id))
                  goto report_errno;
              writevno = 1;
-Index: krb5-1.19.3/src/lib/krb5/os/trace.c
-===================================================================
---- krb5-1.19.3.orig/src/lib/krb5/os/trace.c
-+++ krb5-1.19.3/src/lib/krb5/os/trace.c
-@@ -458,7 +458,7 @@ krb5_set_trace_filename(krb5_context con
+diff --git a/src/lib/krb5/os/trace.c b/src/lib/krb5/os/trace.c
+index 3369fc4ba..95f82cda0 100644
+--- a/src/lib/krb5/os/trace.c
++++ b/src/lib/krb5/os/trace.c
+@@ -459,7 +459,7 @@ krb5_set_trace_filename(krb5_context context, const char *filename)
      fd = malloc(sizeof(*fd));
      if (fd == NULL)
          return ENOMEM;
@@ -448,11 +451,11 @@ Index: krb5-1.19.3/src/lib/krb5/os/trace.c
      if (*fd == -1) {
          free(fd);
          return errno;
-Index: krb5-1.19.3/src/plugins/kdb/db2/adb_openclose.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/db2/adb_openclose.c
-+++ krb5-1.19.3/src/plugins/kdb/db2/adb_openclose.c
-@@ -152,7 +152,7 @@ osa_adb_init_db(osa_adb_db_t *dbp, char
+diff --git a/src/plugins/kdb/db2/adb_openclose.c b/src/plugins/kdb/db2/adb_openclose.c
+index 7db30a33b..2b9d01921 100644
+--- a/src/plugins/kdb/db2/adb_openclose.c
++++ b/src/plugins/kdb/db2/adb_openclose.c
+@@ -152,7 +152,7 @@ osa_adb_init_db(osa_adb_db_t *dbp, char *filename, char *lockfilename,
           * needs be open read/write so that write locking can work with
           * POSIX systems
           */
@@ -461,11 +464,11 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/adb_openclose.c
              /*
               * maybe someone took away write permission so we could only
               * get shared locks?
-Index: krb5-1.19.3/src/plugins/kdb/db2/kdb_db2.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/db2/kdb_db2.c
-+++ krb5-1.19.3/src/plugins/kdb/db2/kdb_db2.c
-@@ -694,8 +694,8 @@ ctx_create_db(krb5_context context, krb5
+diff --git a/src/plugins/kdb/db2/kdb_db2.c b/src/plugins/kdb/db2/kdb_db2.c
+index 2c163d91c..9a344a603 100644
+--- a/src/plugins/kdb/db2/kdb_db2.c
++++ b/src/plugins/kdb/db2/kdb_db2.c
+@@ -694,8 +694,8 @@ ctx_create_db(krb5_context context, krb5_db2_context *dbc)
      if (retval)
          return retval;
  
@@ -476,11 +479,11 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/kdb_db2.c
      if (dbc->db_lf_file < 0) {
          retval = errno;
          goto cleanup;
-Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/btree/bt_open.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/db2/libdb2/btree/bt_open.c
-+++ krb5-1.19.3/src/plugins/kdb/db2/libdb2/btree/bt_open.c
-@@ -60,6 +60,7 @@ static char sccsid[] = "@(#)bt_open.c	8.
+diff --git a/src/plugins/kdb/db2/libdb2/btree/bt_open.c b/src/plugins/kdb/db2/libdb2/btree/bt_open.c
+index 2977b17f3..d5809a5a9 100644
+--- a/src/plugins/kdb/db2/libdb2/btree/bt_open.c
++++ b/src/plugins/kdb/db2/libdb2/btree/bt_open.c
+@@ -60,6 +60,7 @@ static char sccsid[] = "@(#)bt_open.c	8.11 (Berkeley) 11/2/95";
  #include <string.h>
  #include <unistd.h>
  
@@ -488,7 +491,7 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/btree/bt_open.c
  #include "db-int.h"
  #include "btree.h"
  
-@@ -203,7 +204,7 @@ __bt_open(fname, flags, mode, openinfo,
+@@ -203,7 +204,7 @@ __bt_open(fname, flags, mode, openinfo, dflags)
  			goto einval;
  		}
  
@@ -497,11 +500,11 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/btree/bt_open.c
  			goto err;
  
  	} else {
-Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/hash/hash.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/db2/libdb2/hash/hash.c
-+++ krb5-1.19.3/src/plugins/kdb/db2/libdb2/hash/hash.c
-@@ -51,6 +51,7 @@ static char sccsid[] = "@(#)hash.c	8.12
+diff --git a/src/plugins/kdb/db2/libdb2/hash/hash.c b/src/plugins/kdb/db2/libdb2/hash/hash.c
+index 862dbb164..686a960c9 100644
+--- a/src/plugins/kdb/db2/libdb2/hash/hash.c
++++ b/src/plugins/kdb/db2/libdb2/hash/hash.c
+@@ -51,6 +51,7 @@ static char sccsid[] = "@(#)hash.c	8.12 (Berkeley) 11/7/95";
  #include <assert.h>
  #endif
  
@@ -509,7 +512,7 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/hash/hash.c
  #include "db-int.h"
  #include "hash.h"
  #include "page.h"
-@@ -129,7 +130,7 @@ __kdb2_hash_open(file, flags, mode, info
+@@ -129,7 +130,7 @@ __kdb2_hash_open(file, flags, mode, info, dflags)
  		new_table = 1;
  	}
  	if (file) {
@@ -518,11 +521,11 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/hash/hash.c
  			RETURN_ERROR(errno, error0);
  		(void)fcntl(hashp->fp, F_SETFD, 1);
  	}
-Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/recno/rec_open.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/db2/libdb2/recno/rec_open.c
-+++ krb5-1.19.3/src/plugins/kdb/db2/libdb2/recno/rec_open.c
-@@ -51,6 +51,7 @@ static char sccsid[] = "@(#)rec_open.c	8
+diff --git a/src/plugins/kdb/db2/libdb2/recno/rec_open.c b/src/plugins/kdb/db2/libdb2/recno/rec_open.c
+index d8b26e701..b0daa7c02 100644
+--- a/src/plugins/kdb/db2/libdb2/recno/rec_open.c
++++ b/src/plugins/kdb/db2/libdb2/recno/rec_open.c
+@@ -51,6 +51,7 @@ static char sccsid[] = "@(#)rec_open.c	8.12 (Berkeley) 11/18/94";
  #include <stdio.h>
  #include <unistd.h>
  
@@ -530,7 +533,7 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/recno/rec_open.c
  #include "db-int.h"
  #include "recno.h"
  
-@@ -68,7 +69,8 @@ __rec_open(fname, flags, mode, openinfo,
+@@ -68,7 +69,8 @@ __rec_open(fname, flags, mode, openinfo, dflags)
  	int rfd = -1, sverrno;
  
  	/* Open the user's file -- if this fails, we're done. */
@@ -540,11 +543,11 @@ Index: krb5-1.19.3/src/plugins/kdb/db2/libdb2/recno/rec_open.c
  		return (NULL);
  
  	if (fname != NULL && fcntl(rfd, F_SETFD, 1) == -1) {
-Index: krb5-1.19.3/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
-===================================================================
---- krb5-1.19.3.orig/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
-+++ krb5-1.19.3/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
-@@ -190,7 +190,7 @@ kdb5_ldap_stash_service_password(int arg
+diff --git a/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c b/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
+index e87688d66..30f7c00ab 100644
+--- a/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
++++ b/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
+@@ -190,7 +190,7 @@ kdb5_ldap_stash_service_password(int argc, char **argv)
  
      /* set password in the file */
      old_mode = umask(0177);
@@ -553,7 +556,7 @@ Index: krb5-1.19.3/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
      if (pfile == NULL) {
          com_err(me, errno, _("Failed to open file %s: %s"), file_name,
                  strerror (errno));
-@@ -231,6 +231,9 @@ kdb5_ldap_stash_service_password(int arg
+@@ -231,6 +231,9 @@ kdb5_ldap_stash_service_password(int argc, char **argv)
           * Delete the existing entry and add the new entry
           */
          FILE *newfile;
@@ -563,7 +566,7 @@ Index: krb5-1.19.3/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
  
          mode_t omask;
  
-@@ -242,7 +245,13 @@ kdb5_ldap_stash_service_password(int arg
+@@ -242,7 +245,13 @@ kdb5_ldap_stash_service_password(int argc, char **argv)
          }
  
          omask = umask(077);
@@ -577,10 +580,10 @@ Index: krb5-1.19.3/src/plugins/kdb/ldap/ldap_util/kdb5_ldap_services.c
          umask (omask);
          if (newfile == NULL) {
              com_err(me, errno, _("Error creating file %s"), tmp_file);
-Index: krb5-1.19.3/src/util/profile/prof_file.c
-===================================================================
---- krb5-1.19.3.orig/src/util/profile/prof_file.c
-+++ krb5-1.19.3/src/util/profile/prof_file.c
+diff --git a/src/util/profile/prof_file.c b/src/util/profile/prof_file.c
+index aa951df05..79f9500f6 100644
+--- a/src/util/profile/prof_file.c
++++ b/src/util/profile/prof_file.c
 @@ -33,6 +33,7 @@
  #endif
  
@@ -589,7 +592,7 @@ Index: krb5-1.19.3/src/util/profile/prof_file.c
  
  struct global_shared_profile_data {
      /* This is the head of the global list of shared trees */
-@@ -391,7 +392,7 @@ static errcode_t write_data_to_file(prf_
+@@ -391,7 +392,7 @@ static errcode_t write_data_to_file(prf_data_t data, const char *outfile,
  
      errno = 0;
  
@@ -598,10 +601,10 @@ Index: krb5-1.19.3/src/util/profile/prof_file.c
      if (!f) {
          retval = errno;
          if (retval == 0)
-Index: krb5-1.19.3/src/util/support/Makefile.in
-===================================================================
---- krb5-1.19.3.orig/src/util/support/Makefile.in
-+++ krb5-1.19.3/src/util/support/Makefile.in
+diff --git a/src/util/support/Makefile.in b/src/util/support/Makefile.in
+index 86d5a950a..1052d53a1 100644
+--- a/src/util/support/Makefile.in
++++ b/src/util/support/Makefile.in
 @@ -74,6 +74,7 @@ IPC_SYMS= \
  
  STLIBOBJS= \
@@ -619,11 +622,12 @@ Index: krb5-1.19.3/src/util/support/Makefile.in
  
  DEPLIBS=
  
-Index: krb5-1.19.3/src/util/support/selinux.c
-===================================================================
+diff --git a/src/util/support/selinux.c b/src/util/support/selinux.c
+new file mode 100644
+index 000000000..807d039da
 --- /dev/null
-+++ krb5-1.19.3/src/util/support/selinux.c
-@@ -0,0 +1,406 @@
++++ b/src/util/support/selinux.c
+@@ -0,0 +1,405 @@
 +/*
 + * Copyright 2007,2008,2009,2011,2012,2013,2016 Red Hat, Inc.  All Rights Reserved.
 + *
@@ -722,17 +726,16 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +    }
 +}
 +
-+static security_context_t
++static char *
 +push_fscreatecon(const char *pathname, mode_t mode)
 +{
-+    security_context_t previous, configuredsc, currentsc, derivedsc;
++    char *previous, *configuredsc, *currentsc, *genpath;
++    const char *derivedsc, *fullpath, *currentuser;
 +    context_t current, derived;
-+    const char *fullpath, *currentuser;
-+    char *genpath;
 +
-+    previous = configuredsc = currentsc = derivedsc = NULL;
++    previous = configuredsc = currentsc = genpath = NULL;
++    derivedsc = NULL;
 +    current = derived = NULL;
-+    genpath = NULL;
 +
 +    fullpath = pathname;
 +
@@ -860,7 +863,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +}
 +
 +static void
-+pop_fscreatecon(security_context_t previous)
++pop_fscreatecon(char *previous)
 +{
 +    if (!is_selinux_enabled()) {
 +        return;
@@ -914,7 +917,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +{
 +    FILE *fp;
 +    int errno_save;
-+    security_context_t ctx;
++    char *ctx;
 +
 +    if ((strcmp(mode, "r") == 0) ||
 +        (strcmp(mode, "rb") == 0)) {
@@ -940,7 +943,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +{
 +    int fd;
 +    int errno_save;
-+    security_context_t ctx;
++    char *ctx;
 +
 +    k5_once(&labeled_once, label_mutex_init);
 +    k5_mutex_lock(&labeled_mutex);
@@ -961,7 +964,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +{
 +    int ret;
 +    int errno_save;
-+    security_context_t ctx;
++    char *ctx;
 +
 +    k5_once(&labeled_once, label_mutex_init);
 +    k5_mutex_lock(&labeled_mutex);
@@ -982,7 +985,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +{
 +    int ret;
 +    int errno_save;
-+    security_context_t ctx;
++    char *ctx;
 +
 +    k5_once(&labeled_once, label_mutex_init);
 +    k5_mutex_lock(&labeled_mutex);
@@ -1003,7 +1006,7 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +{
 +    int fd;
 +    int errno_save;
-+    security_context_t ctx;
++    char *ctx;
 +    mode_t mode;
 +    va_list ap;
 +
@@ -1030,3 +1033,6 @@ Index: krb5-1.19.3/src/util/support/selinux.c
 +}
 +
 +#endif /* USE_SELINUX */
+-- 
+2.39.2
+

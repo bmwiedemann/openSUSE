@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 10:20:22 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update 0007-SELinux-integration.patch for SELinux 3.5;
+  (bsc#1208887);
+
+-------------------------------------------------------------------
 Tue Dec 13 10:49:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Drop 0009-Fix-KDC-null-deref-on-TGS-inner-body-null-server.patch,

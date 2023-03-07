@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 10:20:22 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update 0007-SELinux-integration.patch for SELinux 3.5;
+  (bsc#1208887);
+
+-------------------------------------------------------------------
 Tue Dec 27 14:46:54 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d
