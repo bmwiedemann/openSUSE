@@ -266,4 +266,12 @@
     <comment></comment>
     <requestid>978305</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a0e8ac677e8dc6f44313600a132f0e8f</srcmd5>
+    <version>3.5</version>
+    <time>1678204097</time>
+    <user>dimstar_suse</user>
+    <comment>SELinux 3.5 toolchain</comment>
+    <requestid>1068393</requestid>
+  </revision>
 </revisionlist>
