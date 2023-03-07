@@ -1167,6 +1167,7 @@ unsorted:
   - azure-storage-cpp-devel 
   - b4 
   - babe 
+  - babelstone-han-fonts 
   - babelstone-marchen-fonts 
   - babelstone-modern-fonts 
   - babelstone-ogham-fonts 
@@ -2042,6 +2043,7 @@ unsorted:
   - ciano 
   - ciano-lang 
   - cifs-utils-devel 
+  - cil 
   - cilium-cli 
   - cim-schema 
   - cinema 
@@ -3446,7 +3448,6 @@ unsorted:
   - efl-lang 
   - efl-testsuite 
   - efont-serif-fonts 
-  - efont-unicode-bitmap-fonts 
   - eglexternalplatform-devel 
   - eiciel 
   - eiciel-lang 
@@ -8464,6 +8465,8 @@ unsorted:
   - kdb-postgresql-driver 
   - kdb-sqlite3-driver 
   - kdbusaddons-devel 
+  - kddockwidgets-devel 
+  - kddockwidgets-qt6-devel 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -11054,6 +11057,9 @@ unsorted:
   - libdeflate0 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit: [x86_64] 
+  - libdex-1-1 
+  - libdex-devel 
+  - libdex-devel-docs 
   - libdfm-extension5 
   - libdframeworkdbus-devel 
   - libdframeworkdbus2 
@@ -12420,6 +12426,8 @@ unsorted:
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
+  - libkddockwidgets-qt6-1_6 
+  - libkddockwidgets1_6 
   - libkdecoration2-devel 
   - libkdegames-devel 
   - libkdepim-devel 
@@ -22457,6 +22465,7 @@ unsorted:
   - python3-libtorrent-rasterbar 
   - python3-libvoikko 
   - python3-lilv 
+  - python3-linkchecker 
   - python3-lldb: [x86_64] 
   - python3-lldb11: [x86_64] 
   - python3-lldb12: [x86_64] 
@@ -23775,7 +23784,6 @@ unsorted:
   - python310-editdistance-devel 
   - python310-edk2toolext 
   - python310-edk2toollib 
-  - python310-efilter 
   - python310-efl 
   - python310-elastic-transport 
   - python310-elasticsearch 
@@ -25976,6 +25984,7 @@ unsorted:
   - python311-HeapDict 
   - python311-IMAPClient 
   - python311-IMDbPY 
+  - python311-JPype1: [x86_64] 
   - python311-Jinja2 
   - python311-Js2Py 
   - python311-Kivy 
@@ -26640,7 +26649,7 @@ unsorted:
   - python311-bobo 
   - python311-bobodoctestumentation 
   - python311-bokcolmaps 
-  - python311-bokeh: [x86_64] 
+  - python311-bokeh 
   - python311-bokeh2 
   - python311-boltons 
   - python311-boolean.py 
@@ -26873,6 +26882,7 @@ unsorted:
   - python311-deprecation 
   - python311-derpconf 
   - python311-devel 
+  - python311-devpi-common 
   - python311-dfVFS 
   - python311-dfdatetime 
   - python311-dialite 
@@ -27220,7 +27230,6 @@ unsorted:
   - python311-git-url-parse 
   - python311-gitdb 
   - python311-github3.py 
-  - python311-gitlint 
   - python311-glad2 
   - python311-glean 
   - python311-glean-parser 
@@ -27846,6 +27855,7 @@ unsorted:
   - python311-openqa_client 
   - python311-opentelemetry-api 
   - python311-opentracing 
+  - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
   - python311-orange-canvas-core 
   - python311-orange-widget-base 
@@ -28656,7 +28666,7 @@ unsorted:
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
   - python311-setuptools-git 
-  - python311-setuptools-git-versioning: [x86_64] 
+  - python311-setuptools-git-versioning 
   - python311-setuptools-rust 
   - python311-setuptools-version-command 
   - python311-setuptools_scm 
@@ -30351,7 +30361,6 @@ unsorted:
   - python38-editdistance-devel 
   - python38-edk2toolext 
   - python38-edk2toollib 
-  - python38-efilter 
   - python38-efl 
   - python38-elastic-transport 
   - python38-elasticsearch 
@@ -30527,7 +30536,6 @@ unsorted:
   - python38-git-url-parse 
   - python38-gitdb 
   - python38-github3.py 
-  - python38-gitlint 
   - python38-glad2 
   - python38-glean 
   - python38-glean-parser 
@@ -33767,7 +33775,6 @@ unsorted:
   - python39-editdistance-devel 
   - python39-edk2toolext 
   - python39-edk2toollib 
-  - python39-efilter 
   - python39-efl 
   - python39-elastic-transport 
   - python39-elasticsearch 
@@ -33944,7 +33951,6 @@ unsorted:
   - python39-git-url-parse 
   - python39-gitdb 
   - python39-github3.py 
-  - python39-gitlint 
   - python39-glad2 
   - python39-glean 
   - python39-glean-parser 
@@ -47548,6 +47554,7 @@ unsorted:
   - typelib-1_0-DbusmenuGtk-0_4 
   - typelib-1_0-DbusmenuGtk3-0_4 
   - typelib-1_0-Devhelp-3_0 
+  - typelib-1_0-Dex-1_0 
   - typelib-1_0-Dmap-4_0 
   - typelib-1_0-EBackend-1_2 
   - typelib-1_0-EBook-1_2 
@@ -48977,6 +48984,7 @@ unsorted:
   - xz-devel-32bit: [x86_64] 
   - xz-java 
   - xz-java-javadoc 
+  - yacreader 
   - yadm 
   - yadm-bash-completion 
   - yadm-fish-completion 
