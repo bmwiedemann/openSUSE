@@ -1,7 +1,7 @@
 #
 # spec file for package intel-gpu-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        1.26
+Version:        1.27.1
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -26,8 +26,6 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
 Source1:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
 Patch0:         u_%{name}-1.7-fix-bashisms.patch
-#PATCH-FIX-UPSTREAM build with latest meson (commit 963917a3)
-Patch1:         intel-gpu-tools_fix-meson.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -73,7 +71,6 @@ Development files and library headers for %{name}
 %prep
 %setup -q -n igt-gpu-tools-%{version}
 %patch0
-%patch1 -p1
 
 %build
 #Tests fail on x86_64 with -z now
@@ -84,6 +81,7 @@ export SUSE_ZNOW=0
 
 %install
 %meson_install
+sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_bindir}/code_cov_gather_on_test
 
 %check
 %meson_test
@@ -98,7 +96,7 @@ export SUSE_ZNOW=0
 %{_libexecdir}/igt-gpu-tools/
 %{_datadir}/igt-gpu-tools/
 %{_libdir}/libigt.so.0
-%{_libdir}/libi915_perf.so.1
+%{_libdir}/libi915_perf.so.1.5
 %{_mandir}/man1/intel_*
 %doc %{_datadir}/gtk-doc/html/igt-gpu-tools/
 

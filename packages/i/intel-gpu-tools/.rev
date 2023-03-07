@@ -27,4 +27,26 @@
 </comment>
     <requestid>979538</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ceb525ecde45c197c4428db5bd39316</srcmd5>
+    <version>1.27.1</version>
+    <time>1678204171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1:   
+  * Support for Intel discrete graphics and other new platforms (Andrzej
+    Turko, Matt Roper, Clint Taylor, Tejas Upadhyay, et al)
+  * Support for MSM driver. (Mark Yacoub, Rob Clark)
+  * Support for SRIOV device selection. (Łukasz Łaguna)
+  * Tiled display emulation support with chamelium. (Kunal Joshi)
+  * Support for Chamelium v3. (Mark Yacoub)
+  * Initial FreeBSD support. (Jake Freeland)
+  * Structured communication from tests to igt_runner. (Petri Latvala)
+  * Removed last remaining uses of libdrm_intel in tests and
+    tools. (Zbigniew Kempczyński)
+  * Automatic kernel code coverage collection during testing. (Mauro
+    Carvalho Chehab)
+- Remove intel-gpu-tools_fix-meson.patch
+</comment>
+    <requestid>1069720</requestid>
+  </revision>
 </revisionlist>
