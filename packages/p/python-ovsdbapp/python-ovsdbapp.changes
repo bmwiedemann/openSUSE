@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:50:49 UTC 2023 - cloud-devel@suse.de
+
+- update to version 2.2.1
+  - Update tox.ini for tox4
+  - Accept HA chassis group commands in HAChassisGroupAdd*
+  - Define "LbAddIpPortMappingCommand" with latin chars
+
+-------------------------------------------------------------------
 Thu Dec  1 10:44:42 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.2.0

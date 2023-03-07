@@ -208,4 +208,15 @@
   - Update python testing as per zed cycle teting runtime</comment>
     <requestid>1039290</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>768030a3ad5479eab589b5bf6b839373</srcmd5>
+    <version>2.2.1</version>
+    <time>1678204178</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.1
+  - Update tox.ini for tox4
+  - Accept HA chassis group commands in HAChassisGroupAdd*
+  - Define &quot;LbAddIpPortMappingCommand&quot; with latin chars</comment>
+    <requestid>1069689</requestid>
+  </revision>
 </revisionlist>
