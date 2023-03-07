@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  3 21:36:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add openstack_stestr_run macro
+
+-------------------------------------------------------------------
 Tue Feb 15 12:37:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move rpm macros from /etc/rpm to /usr/lib/rpm/macros.d

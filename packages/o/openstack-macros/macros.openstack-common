@@ -26,6 +26,7 @@ CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} install -O1 --sk
 #
 # OpenStack macros
 #
+%openstack_stestr_run %{__python3} -m stestr.cli run
 
 # the directory where the test files will be installed
 %openstack_test_package_dir %{_localstatedir}/lib/%{name}-test

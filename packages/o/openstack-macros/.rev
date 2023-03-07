@@ -143,4 +143,12 @@
     <comment></comment>
     <requestid>964712</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4fe0f2bf2156a778f35a767f9b6dd123</srcmd5>
+    <version>2020.1.2</version>
+    <time>1678204154</time>
+    <user>dimstar_suse</user>
+    <comment>- add openstack_stestr_run macro</comment>
+    <requestid>1069735</requestid>
+  </revision>
 </revisionlist>
