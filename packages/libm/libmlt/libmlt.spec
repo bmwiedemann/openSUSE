@@ -18,28 +18,25 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.12.0
+%define lversion 7.14.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.12.0
+%define lversion_pp 7.14.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-# Qt 6 is not available in Leap 15.3
 %bcond_without Qt6
-# The glaxnimate module fails to build on 15.3
-%bcond_without glaxnimate
-%endif
 Name:           %{libname}
-Version:        7.12.0
+Version:        7.14.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/releases/download/v%{version}/mlt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-compilation-with-Werror-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -69,9 +66,7 @@ BuildRequires:  pkgconfig(frei0r)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jack)
-%if %{with glaxnimate}
 BuildRequires:  pkgconfig(libarchive)
-%endif
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavdevice) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
@@ -88,6 +83,8 @@ BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(rtaudio)
+BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sox)
@@ -230,9 +227,8 @@ export CC=gcc-10 CXX=g++-10
    -DGPL3=ON \
    -DSWIG_PYTHON=ON \
    -DCMAKE_SKIP_RPATH=1 \
-%if %{with glaxnimate}
    -DMOD_GLAXNIMATE=ON \
-%endif
+   -DMOD_GLAXNIMATE_QT6=ON \
 %if %{with Qt6}
    -DMOD_QT6=ON
 %endif
@@ -265,10 +261,8 @@ popd
 # remove dupes
 %fdupes %{buildroot}%{_datadir}/mlt-%{sover}
 
-%post -n %{lib_pkgname} -p /sbin/ldconfig
-%postun -n %{lib_pkgname} -p /sbin/ldconfig
-%post -n %{libpp_pkgname} -p /sbin/ldconfig
-%postun -n %{libpp_pkgname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_pkgname}
+%ldconfig_scriptlets -n %{libpp_pkgname}
 
 %files -n %{lib_pkgname}
 %{_libdir}/lib%{_name}-%{sover}.so.%{sover}
@@ -297,13 +291,17 @@ popd
 %license GPLv3 COPYING GPL
 %{_libdir}/%{_name}-%{sover}
 %dir %{_datadir}/%{_name}-%{sover}/
+%{_datadir}/%{_name}-%{sover}/chain_normalizers.ini
+%exclude %{_libdir}/%{_name}-%{sover}/libmltglaxnimate-qt6.so
 %exclude %{_libdir}/%{_name}-%{sover}/libmltqt6.so
 
 %if %{with Qt6}
 %files -n %{libname}%{sover}-module-qt6
 %dir %{_libdir}/%{_name}-%{sover}
+%{_libdir}/%{_name}-%{sover}/libmltglaxnimate-qt6.so
 %{_libdir}/%{_name}-%{sover}/libmltqt6.so
 %dir %{_datadir}/%{_name}-%{sover}/
+%{_datadir}/%{_name}-%{sover}/glaxnimate-qt6/
 %{_datadir}/%{_name}-%{sover}/qt6/
 %endif
 

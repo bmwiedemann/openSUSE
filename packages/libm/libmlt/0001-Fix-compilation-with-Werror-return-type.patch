@@ -1,0 +1,39 @@
+From 295f95261a56151243ff9b35ea41d8baa741734e Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Tue, 7 Mar 2023 07:16:30 +0100
+Subject: [PATCH] Fix compilation with -Werror=return-type
+
+---
+ src/modules/avformat/common_swr.c | 2 +-
+ src/modules/avformat/common_swr.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/avformat/common_swr.c b/src/modules/avformat/common_swr.c
+index e30b017..3be0043 100644
+--- a/src/modules/avformat/common_swr.c
++++ b/src/modules/avformat/common_swr.c
+@@ -106,7 +106,7 @@ int mlt_configure_swr_context( mlt_service service, mlt_swr_private_data *pdata
+ 	return error;
+ }
+ 
+-int mlt_free_swr_context( mlt_swr_private_data *pdata )
++void mlt_free_swr_context( mlt_swr_private_data *pdata )
+ {
+ 	if( pdata )
+ 	{
+diff --git a/src/modules/avformat/common_swr.h b/src/modules/avformat/common_swr.h
+index 229975e..bc592e0 100644
+--- a/src/modules/avformat/common_swr.h
++++ b/src/modules/avformat/common_swr.h
+@@ -39,7 +39,7 @@ typedef struct
+ } mlt_swr_private_data;
+ 
+ int mlt_configure_swr_context( mlt_service service, mlt_swr_private_data *pdata );
+-int mlt_free_swr_context( mlt_swr_private_data *pdata );
++void mlt_free_swr_context( mlt_swr_private_data *pdata );
+ 
+ 
+ #endif // COMMON_H
+-- 
+2.39.2
+
