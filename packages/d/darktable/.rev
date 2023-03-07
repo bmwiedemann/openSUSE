@@ -1520,4 +1520,14 @@ Togan
 - add SDL2 BR</comment>
     <requestid>1045657</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6842e95d27882a7210088fe868a216e9</srcmd5>
+    <version>4.2.1</version>
+    <time>1678204164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1
+  https://github.com/darktable-org/darktable/releases/tag/release-4.2.1
+</comment>
+    <requestid>1069695</requestid>
+  </revision>
 </revisionlist>

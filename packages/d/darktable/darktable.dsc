@@ -4,7 +4,7 @@ Section: graphics
 Priority: optional
 Binary: darktable darktable-tools-basecurve darktable-tools-noise
 Architecture: any-amd64 any-arm64
-Version: 4.2.0-1.1
+Version: 4.2.1-1.1
 Homepage: http://www.darktable.org/
 #               libavif-dev (>= 0.9.1),
 Build-Depends: cmake (>= 3.18),

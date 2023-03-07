@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global        desktop_filename          org.darktable.darktable
 
 %bcond_with clang
 
@@ -109,7 +111,7 @@
 %endif
 
 Name:           darktable
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -344,7 +346,7 @@ make %{_smp_mflags} VERBOSE=1
 %cmake_install
 
 %if 0%{?suse_version}
-%suse_update_desktop_file darktable
+%suse_update_desktop_file %{desktop_filename}
 %endif
 #/ cmake macros branch
 %else
@@ -388,11 +390,11 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_bindir}/darktable-cmstest
 %{_bindir}/darktable-rs-identify
 %{_libdir}/darktable
-%{_datadir}/applications/darktable.desktop
+%{_datadir}/applications/%{desktop_filename}.desktop
 %{_datadir}/darktable
 %exclude %{_datadir}/%{pkg_name}/tools/basecurve/
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/darktable.appdata.xml
+%{_datadir}/metainfo/%{desktop_filename}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/darktable*
 %{_mandir}/man1/darktable*.1*
 %if %{with translated_manpages}
