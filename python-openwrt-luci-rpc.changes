@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 17:10:10 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests.patch to make tests work with latest packaging module
+
+-------------------------------------------------------------------
 Wed Oct  5 09:34:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.1.12 (2022-09-11)

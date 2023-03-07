@@ -1,7 +1,7 @@
 #
 # spec file for package python-openwrt-luci-rpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openwrt-luci-rpc
 Version:        1.1.12
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Module for interacting with OpenWrt Luci RPC interface
 License:        Apache-2.0
 URL:            https://github.com/fbradyirl/openwrt-luci-rpc
 Source:         https://files.pythonhosted.org/packages/source/o/openwrt-luci-rpc/openwrt-luci-rpc-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-tests.patch
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module packaging >= 19.1}
 BuildRequires:  %{python_module requests >= 2.21}
@@ -47,7 +48,7 @@ installed on your openwrt based router.
 https://openwrt-luci-rpc.readthedocs.io
 
 %prep
-%setup -q -n openwrt-luci-rpc-%{version}
+%autosetup -p1 -n openwrt-luci-rpc-%{version}
 # do not harcode versions
 sed -i -e 's:==:>=:g' setup.py
 
