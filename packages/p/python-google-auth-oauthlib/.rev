@@ -108,4 +108,15 @@
   * Introduce granted scopes to credentials</comment>
     <requestid>1056090</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8170180672c86df0541982f9688b73f6</srcmd5>
+    <version>1.0.0</version>
+    <time>1678204255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * PKCE is enabled by default. (#269)
+  * Change the library from preview to stable (#267)
+  * Remove deprecated OOB code (1391486) (forwarded request 1069899 from glaubitz)</comment>
+    <requestid>1069914</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-auth-oauthlib
-Version:        0.8.0
+Version:        1.0.0
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 10:38:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.0
+  * PKCE is enabled by default. (#269)
+  * Change the library from preview to stable (#267)
+  * Remove deprecated OOB code (1391486)
+
+-------------------------------------------------------------------
 Wed Jan  4 22:20:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.8.0:
