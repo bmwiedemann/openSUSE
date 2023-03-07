@@ -1,4 +1,3 @@
-Name: gtk2-devel
 BuildRequires: gtk2-devel
 #!BuildIgnore: brp-trim-desktopfiles
 #!BuildIgnore: cputype-armv6
