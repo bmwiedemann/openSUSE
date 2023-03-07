@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Feb 24 07:58:20 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * Restore error on context rule conflicts
+  * Documentation fixes
+- Added additional developer key (Jason Zaman)
+
+-------------------------------------------------------------------
+Mon May  9 11:07:25 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.4
+  *  Allow optional file type in genfscon rules
+  *  Do not copy blockabstracts when inheriting a block
+  *  Mark as abstract all sub-blocks of an abstract block
+  *  Do not resolve names to declarations in abstract blocks
+  *  Ensure that the class in a classcommon is a kernel class
+  *  Limit the neverallow violations reported
+  *  Limit the amount of reporting for context rule conflicts
+
+-------------------------------------------------------------------
+Thu Nov 11 14:18:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.3
+  * CIL: Lists are allowed in constraint expressions
+  * CIL: Improved situation with duplicate macro and block declarations
+  * Added the new `secilc2tree` program to write out CIL AST.
+
+-------------------------------------------------------------------
+Tue Mar  9 09:22:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.2
+  * Improved documentation: fenced code blocks, syntax highlighting, 
+    custom color theme and more
+
+-------------------------------------------------------------------
+Tue Jul 14 08:33:26 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * add basic test for policy optimization
+  * Fix policy optimization test
+
+-------------------------------------------------------------------
+Thu Mar  5 10:05:46 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to version 3.0
+  * Report disabling an optional block only at high verbose levels      
+  * Fix mlsconstrain segfault
+  * Do not dereference perm_value_to_cil when it has not been allocated
+  * Add flag to enable policy optimization
+  * Allow validatetrans rules to be resolved
+- removed pandoc build requirement to allow building on older
+  products
+
+-------------------------------------------------------------------
+Wed Mar 20 15:02:25 UTC 2019 - jsegitz@suse.com
+
+- Update to version 2.9
+  * Better error handling
+
+-------------------------------------------------------------------
+Wed Nov 21 13:12:44 UTC 2018 - jsegitz@suse.com
+
+- Update to version 2.8. To many changes to list, sorry
+
+-------------------------------------------------------------------
+Wed Oct 22 14:52:06 UTC 2014 - jsegitz@novell.com
+
+- Initial import based on the git repository on 2014-10-22
