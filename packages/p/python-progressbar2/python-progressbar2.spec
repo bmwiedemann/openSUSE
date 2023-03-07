@@ -1,7 +1,7 @@
 #
 # spec file for package python-progressbar2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-utils >= 2.3.0
-Requires:       python-six
 Conflicts:      python-progressbar
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-utils >= 2.3.0}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
