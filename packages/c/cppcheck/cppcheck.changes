@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 27 21:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.2:
+  * GUI: Set proper title for compliance report dialog
+  * GUI: Generate compliance report
+  * Tokenizer: tweaked simplification of function pointers 
+
+-------------------------------------------------------------------
 Tue Jan 31 18:24:47 UTC 2023 - PragmaticLinux <info@pragmaticlinux.com>
 
 - install files from the addons/ and platforms/ directories - boo#1207806
