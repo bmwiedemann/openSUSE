@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  5 13:24:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.3:
+  + AdwEntryRow: Fix :disabled styles.
+  + AdwExpanderRow: Expose expanded state for a11y.
+  + Memory leak fixes.
+
+-------------------------------------------------------------------
 Sun Feb 12 12:13:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.2:

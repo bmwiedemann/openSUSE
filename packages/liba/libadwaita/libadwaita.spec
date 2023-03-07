@@ -17,7 +17,7 @@
 
 
 Name:           libadwaita
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
