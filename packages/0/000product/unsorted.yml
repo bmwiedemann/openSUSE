@@ -26873,6 +26873,7 @@ unsorted:
   - python311-deprecation 
   - python311-derpconf 
   - python311-devel 
+  - python311-dfVFS 
   - python311-dfdatetime 
   - python311-dialite 
   - python311-dictdiffer 
@@ -27219,6 +27220,7 @@ unsorted:
   - python311-git-url-parse 
   - python311-gitdb 
   - python311-github3.py 
+  - python311-gitlint 
   - python311-glad2 
   - python311-glean 
   - python311-glean-parser 
@@ -27556,18 +27558,40 @@ unsorted:
   - python311-lib3to6 
   - python311-libarchive 
   - python311-libarchive-c 
+  - python311-libbde 
+  - python311-libcaes 
   - python311-libcst 
   - python311-libevdev 
   - python311-libewf 
+  - python311-libfsapfs 
+  - python311-libfsext 
+  - python311-libfsfat 
+  - python311-libfshfs 
+  - python311-libfsntfs 
+  - python311-libfsxfs 
+  - python311-libfvde 
+  - python311-libfwnt 
   - python311-libkdumpfile 
   - python311-liblarch 
   - python311-liblarch-gtk 
+  - python311-libluksde 
+  - python311-libmodi 
   - python311-libmount 
   - python311-libnacl 
+  - python311-libphdi 
+  - python311-libqcow 
   - python311-librouteros 
   - python311-libsass 
+  - python311-libsigscan 
+  - python311-libsmdev 
+  - python311-libsmraw 
   - python311-libusb1 
+  - python311-libvhdi 
   - python311-libvirt-python 
+  - python311-libvmdk 
+  - python311-libvsgpt 
+  - python311-libvshadow 
+  - python311-libvslvm 
   - python311-libxml2 
   - python311-license-expression 
   - python311-ligo-lw: [x86_64] 
