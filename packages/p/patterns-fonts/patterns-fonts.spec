@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ This particular package contains the Fonts patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package fonts
 %pattern_graphicalenvironments
 Summary:        Fonts
@@ -88,7 +88,7 @@ Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
 Recommends:     ghostscript-fonts-other
 # noto-sans and noto-sans-cjk pulls in too much (>500MiB!)
-Recommends:     babelstone-han-fonts
+Recommends:     efont-unicode-bitmap-fonts
 Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
 Recommends:     texlive-lm-fonts
