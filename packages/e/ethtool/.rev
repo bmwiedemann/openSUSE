@@ -650,4 +650,13 @@ sfc.c and stmmac.c have GPL-2.0 licenses (forwarded request 95755 from babelworx
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068233</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>6e5289a03ee9a4516ec470a98970a28f</srcmd5>
+    <version>6.2</version>
+    <time>1678204136</time>
+    <user>dimstar_suse</user>
+    <comment>- Split bash-completion to separate sub-package (forwarded request
+  1069158 from gmbr3, changelog typo fixed)</comment>
+    <requestid>1069637</requestid>
+  </revision>
 </revisionlist>

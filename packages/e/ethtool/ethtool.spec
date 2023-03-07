@@ -37,6 +37,20 @@ BuildRequires:  pkgconfig(libmnl)
 Ethtool is a small utility for examining and tuning ethernet-based
 network interfaces.  See the man page for more details.
 
+%package bash-completion
+Summary:        Bash completion for ethtool
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+%if 0%{?suse_version} >= 1500
+Supplements:    (%{name} and bash-completion)
+%else
+Supplements:    packageand(%{name}:bash-completion)
+%endif
+
+%description bash-completion
+bash command line completion support for ethtool.
+
 %prep
 %setup -q
 
@@ -54,9 +68,6 @@ make install DESTDIR="%buildroot"
 %files
 %defattr(-,root,root)
 %{_sbindir}/ethtool
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/ethtool
 %{_mandir}/man8/ethtool.8*
 %if (0%{?suse_version} >= 1500) || (0%{?sle_version} >= 120300)
 %license COPYING
@@ -64,5 +75,11 @@ make install DESTDIR="%buildroot"
 %doc COPYING
 %endif
 %doc AUTHORS NEWS
+
+%files bash-completion
+%defattr(-,root,root)
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/ethtool
 
 %changelog
