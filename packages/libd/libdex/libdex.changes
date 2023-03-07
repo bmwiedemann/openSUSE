@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar  3 07:35:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.1:
+  + Fix soname versioning
+  + Documentation improvements
+  + Fix various GObject Introspection issues
+  + More backports for older GLib use
+  + Various ucontext fiber fixes for less-used architectures
+  + Fixes for various incorrect cast-align warnings
+  + Tweaks for better Forward portability
+  + Add some missing g_autoptr() definitions
+  + Add GCancellation integration to DexPromise
+
+-------------------------------------------------------------------
+Mon Feb 27 12:29:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.

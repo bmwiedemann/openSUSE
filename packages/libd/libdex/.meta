@@ -1,0 +1,15 @@
+<package name="libdex" project="openSUSE:Factory">
+  <title>Library supporting &quot;Deferred Execution&quot; for GNOME and GTK</title>
+  <description>Dex is a library supporting &quot;Deferred Execution&quot; with the explicit
+goal of integrating with GNOME and GTK-based applications.
+It provides primatives for supporting futures in a variety of ways
+with both read-only and writable views. Additionally, integration
+with existing asynchronous-based APIs is provided through the use
+of wrapper promises.
+&quot;Fibers&quot; are implemented which allows for writing synchronous
+looking code which calls asynchronous APIs from GIO underneath.
+
+</description>
+  <devel project="GNOME:Factory" package="libdex"/>
+  <url>https://gitlab.gnome.org/chergert/libdex</url>
+</package>
