@@ -2,7 +2,7 @@ Index: tinc-1.0.36/systemd/tinc.service.in
 ===================================================================
 --- tinc-1.0.36.orig/systemd/tinc.service.in
 +++ tinc-1.0.36/systemd/tinc.service.in
-@@ -10,6 +10,19 @@ After=network.target
+@@ -10,6 +10,20 @@ After=network.target
  Wants=network.target
  
  [Service]
@@ -10,7 +10,6 @@ Index: tinc-1.0.36/systemd/tinc.service.in
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
 +ProtectHome=true
-+PrivateDevices=true
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelTunables=true
@@ -19,6 +18,8 @@ Index: tinc-1.0.36/systemd/tinc.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
++DeviceAllow=/dev/net/tun rwm
++DevicePolicy=closed
  Type=oneshot
  RemainAfterExit=yes
  ExecStart=/bin/true

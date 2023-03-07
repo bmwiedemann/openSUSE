@@ -1,7 +1,7 @@
 #
 # spec file for package tinc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@ Group:          Productivity/Networking/Security
 URL:            http://www.tinc-vpn.org/
 Source0:        http://www.tinc-vpn.org/packages/%{name}-%{version}.tar.gz
 Patch0:         tinc-systemd-path-fix.patch
-Patch1:	harden_tinc.service.patch
-Patch2:	harden_tinc@.service.patch
+Patch1:         harden_tinc.service.patch
+Patch2:         harden_tinc@.service.patch
 
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 
-Requires(post):   info
-Requires(preun):  info
+Requires(post): info
+Requires(preun):info
 %systemd_ordering
 
 %description

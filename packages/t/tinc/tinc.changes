@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 13 13:10:17 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Removed PrivateDevices setting and allow access to /dev/net/tun for the
+  service. Updated harden_tinc@.service.patch (also harden_tinc.service.patch 
+  to keep it in sync, even thought nothing really happens in there)
+  (bsc#1181400)
+
+-------------------------------------------------------------------
 Thu Nov 25 07:30:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
