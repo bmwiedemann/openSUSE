@@ -353,4 +353,13 @@
     <comment></comment>
     <requestid>1058006</requestid>
   </revision>
+  <revision rev="43" vrev="9">
+    <srcmd5>a71a71476865dc7623b3509ec13d24fc</srcmd5>
+    <version>20221019</version>
+    <time>1678204105</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove erroneous SUSE man page. Will not be created with the
+  3.5 toolchain</comment>
+    <requestid>1069867</requestid>
+  </revision>
 </revisionlist>

@@ -488,7 +488,6 @@ install -m 644 doc/example.* %{buildroot}%{_datadir}/selinux/devel/
 install -m 644 doc/policy.* %{buildroot}%{_datadir}/selinux/devel/
 %{_bindir}/sepolicy manpage -a -p %{buildroot}%{_datadir}/man/man8/ -w -r %{buildroot}
 mkdir %{buildroot}%{_datadir}/selinux/devel/html
-mv %{buildroot}%{_datadir}/man/man8/SUSE %{buildroot}%{_datadir}/selinux/devel/html
 mv %{buildroot}%{_datadir}/man/man8/*.html %{buildroot}%{_datadir}/selinux/devel/html
 mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/devel/html
 rm %{buildroot}%{_mandir}/man8/container_selinux.8*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 08:49:05 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove erroneous SUSE man page. Will not be created with the
+  3.5 toolchain
+
+-------------------------------------------------------------------
 Thu Jan 12 13:01:47 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update fix_container.patch to allow privileged containers to use
