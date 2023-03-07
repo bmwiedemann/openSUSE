@@ -194,4 +194,21 @@
   * improve testing</comment>
     <requestid>1065971</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e155d382eea5aa34858aa6818b2e1482</srcmd5>
+    <version>2.7.3</version>
+    <time>1678204206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.3:
+  * allow running ``python setup.py test``
+  * add official Python 3.12 support
+  * simplify count functionality in util module
+  * retire ``bitcount_lookup[256]`` table
+  * improve ``util.count_n()`` error messages
+  * avoid ``util`` module tests from being run more than once in
+    each call to ``bitarray.test()`` when called multiple times in
+    the same Python process
+  * improve testing</comment>
+    <requestid>1069754</requestid>
+  </revision>
 </revisionlist>

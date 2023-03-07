@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:24:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.3:
+  * allow running ``python setup.py test``
+  * add official Python 3.12 support
+  * simplify count functionality in util module
+  * retire ``bitcount_lookup[256]`` table
+  * improve ``util.count_n()`` error messages
+  * avoid ``util`` module tests from being run more than once in
+    each call to ``bitarray.test()`` when called multiple times in
+    the same Python process
+  * improve testing
+
+-------------------------------------------------------------------
 Wed Feb 15 13:59:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.2:
