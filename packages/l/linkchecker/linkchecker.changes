@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Sat Nov  5 13:49:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v10.1.0
+  - See https://github.com/linkchecker/linkchecker/blob/master/doc/changelog.txt
+    for changes since 2014
+
+-------------------------------------------------------------------
+Tue Jan  8 17:20:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant %_prefix redefinition.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jan  3 10:00:06 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Corrected requires to general pyxdg 
+
+-------------------------------------------------------------------
+Thu Jan  3 08:17:00 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Removed empty not needed lines in the description 
+
+-------------------------------------------------------------------
+Thu Jan  3 08:10:52 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Removed dependencies for GUI
+
+-------------------------------------------------------------------
+Wed Jan  2 08:52:17 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Added new release 9.4.0 from the linkchecker project
+- Changed the repository from wummel to the linkchecker group.
+- Detatched the GUI to an own package.
+
+-------------------------------------------------------------------
+Fri Dec 16 13:12:53 UTC 2016 - lpechacek@suse.com
+
+- fix python-requests version check (bsc#1015996)
+- recommend python-qt4 (bsc#1015997)
+
+-------------------------------------------------------------------
+Wed Jan 20 11:05:05 UTC 2016 - robin.roth@kit.edu
+
+- add explicit dependency on python-requests, fixes boo#962747
+
+-------------------------------------------------------------------
+Wed Mar 25 14:21:43 UTC 2015 - olaf@aepfle.de
+
+- run suse_update_desktop_file to fix build in SLE12
+
+-------------------------------------------------------------------
+Thu Sep 11 17:17:51 CEST 2014 - pth@suse.de
+
+- Fix specfile so that the icons are installed in the right place.
+
+-------------------------------------------------------------------
+Tue Sep  2 16:45:03 CEST 2014 - pth@suse.de
+
+- Update to 9.3. Only the Changes for 9.3 are listed, for the rest
+  see /usr/share/doc/packages/linkchecker/changelog.txt.
+
+  9.3 "Better Living Through Chemistry" (released 16.7.2014)
+
+  Features:
+  - checking: Parse and check links in PDF files.
+  - checking: Parse Refresh: and Content-Location: HTTP headers for URLs.
+
+  Changes:
+  - plugins: PDF and Word checks are now parser plugins
+    (PdfParser, WordParser). Both plugins are not enabled
+    by default since they require third party modules.
+  - plugins: Print a warning for enabled plugins that could not
+    import needed third party modules.
+  - checking: Treat empty URLs as same as parent URL.
+    Closes: GH bug #524
+  - installation: Replaced the twill dependency with local code.
+
+  Fixes:
+  - checking: Catch XML parse errors in sitemap XML files and print them
+    as warnings. Patch by Mark-Hetherington.
+    Closes: GH bug #516
+  - checking: Fix internal URL match pattern. Patch by Mark-Hetherington.
+    Closes: GH bug #510
+  - checking: Recalculate extern status after HTTP redirection.
+    Patch by Mark-Hetherington.
+    Closes: GH bug #515
+  - checking: Do not strip quotes from already resolved URLs.
+    Closes: GH bug #521
+  - cgi: Sanitize configuration.
+    Closes: GH bug #519
+  - checking: Use user-supplied authentication and proxies when requestiong
+    robot.txt.
+  - plugins: Fix Word file check plugin.
+    Closes: GH bug #530
+
+- Install all icons
+
+-------------------------------------------------------------------
+Wed Feb 15 13:13:15 CET 2012 - pth@suse.de
+
+- Update to 7.5
+  Fixes:
+  - checking: Properly handle non-ascii HTTP header values.
+    Closes: SF bug #3473359
+  - checking: Work around a Squid proxy bug which resulted in not
+    detecting broken links.
+    Closes: SF bug #3472341
+  - documentation: Fix typo in the manual page.
+    Closes: SF bug #3485876
+
+  Changes:
+  - checking: Add steam:// URIs to the list of ignored URIs.
+    Closes: SF bug #3471570
+  - checking: Deprecate the --check-html-w3 and --check-css-w3 options.
+    The W3C checkers are automatically used if a local check library
+    is not installed.
+  - distribution: The portable version of LinkChecker does not write
+    the configuration file in the user directory anymore. So a user
+    can use this version on a foreign system without leaving any traces
+    behind.
+
+  Features:
+  - gui: Add Ctrl-L shortcut to highlight the URL input.
+  - gui: Support loading and saving of project files.
+    Closes: SF bug #3467492
+
+  For further changes since 6.9 see changelog.txt in 
+  /usr/share/doc/packages/linkchecker.
+
+-------------------------------------------------------------------
+Sat May 21 17:26:07 UTC 2011 - vlado.paskov@gmail.com
+
+- Version update to 6.9 
+
+Fixes:
+- gui: Correctly reset logger statistics.
+- gui: Fixed saving of parent URL source.
+- installer: Fixed portable windows version by not compressing DLLs.
+- checking: Catch socket errors when resolving GeoIP country data.
+
+Changes:
+- checking: Automatically allow redirections from URLs given by the
+  user.
+- checking: Limit download file size to 5MB.
+  SF bug #3297970
+- gui: While checking, show new URLs added in the URL list view by
+  scrolling down.
+- gui: Display release date in about dialog.
+  Closes: SF bug #3297255
+- gui: Warn before closing changed editor window.
+  Closes: SF bug #3297245
+- doc: Improved warningregex example in default configuration file.
+  Closes: SF bug #3297254
+
+Features:
+- gui: Add syntax highlighting for Qt editor in case QScintilla
+  is not installed.
+- gui: Highlight check results and colorize number of errors.
+- gui: Reload configuration after changes have been made in the editor.
+  Closes: SF bug #3297242
+
+-------------------------------------------------------------------
+Mon Mar 14 17:43:46 CET 2011 - pth@suse.de
+
+- Update to 6.5:
+   Fixes:
+   - checking: Fix typo calling get_temp_file() function.
+     Closes: SF bug #3196917
+   - checking: Prevent false positives when detecting the MIME type
+     of certain archive files.
+   - checking: Correct conversion between file URLs and encoded
+     filenames. Fixes false errors when handling files with Unicode
+     encodings.
+   - checking: Work around a Python 2.7 regression in parsing certain
+     URLs with paths starting with a digit.
+   - cmdline: Fix filename completion if path starts with ~
+   - cgi: Prevent encoding errors printing to sys.stdout using an
+     encoding wrapper.
+
+   Changes:
+   - checking: Use HTTP GET requests to work around buggy IIS servers
+     sending false positive status codes for HEAD requests.
+   - checking: Strip leading and trailing whitespace from URLs and print
+     a warning instead of having errors.
+     Also all embedded whitespace is stripped from URLs given at the
+     commandline or the GUI.
+     Closes: SF bug #3196918
+
+   Features:
+   - configuration: Support reading GNOME and KDE proxy settings.
+
+   For all other changes since 4.9 see
+   /usr/share/doc/packages/linkchecker/changelog.txt.
+
+-------------------------------------------------------------------
+Tue Apr 29 20:43:12 CEST 2008 - pth@suse.de
+
+- Update to 4.9:
+  * Parse Shockwave Flash (SWF) for URLs to check
+  * Don't parse <script for=""> attributes since they specify IDs,
+    not URLs.
+  * Fix bash filename completion script:
+      - add missing COMPREPLY variable
+      - support whitespace in files using "-o filenames" bash completion
+        option
+      - support subdirs by adding a FileCompleter argument matcher to
+        optcomplete.autocomplete()
+  * Prevent unicode errors when an email address contains non-ascii
+    characters.
+  * Workaround for buggy servers that break protocol synchronization of
+    persistent HTTP connections.
+  * Properly fall back to DNS A requests when no MX host could be found
+    for a mailto: URL.
+  * Double Ctrl-C aborts checking immediately, without cleanup.
+  * Internal patterns now accept URLs with and without "www." prefixes
+    as default. This allows sites to check that use both variants.
+  * Added --check-html and --check-css options to enable HTML and CSS
+    syntax checking. Uses third-party modules "tidy" and "cssutils"
+    for the actual check.
+
+-------------------------------------------------------------------
+Mon Jan  7 13:49:37 CET 2008 - pth@suse.de
+
+- Update to 4.8. Changes since 4.5:
+  * Fixed default config file syntax by not indenting comment lines
+  * Don't set the URL result on redirections when getting the content.
+  * Ignore errors when opening the log file output, and display a warning
+    instead.
+  * Added some more examples.
+  * Pull in changes from Python subversion repository to locally stored
+    gzip and httplib modules.
+  * Mention in the documentation that --anchors enables logging of
+    the anchor warning.
+  * Make sure --anchors and --no-warnings play along in the configuration.
+  * Check that charset is not None before lowering it in set_encoding().
+  * Use standard "utf-8" charset name instead of "utf8" for the XML output
+    encoding.
+  * Added "created" attribute in XML output root element.
+    Added "result" attribute in XML output valid element.
+  * Fix printing of unicode names. Thanks to Frank Bennet for the hint.
+  * Deprecate gopher: URLs. They do not really exist anymore and the
+    gopherlib module in Python 2.5 is deprecated and will vanish soon.
+  * Fix message typo for not disclosing information.
+  * Always read the request body data on persistent HTTP connections, else
+    subsequent calls will get data from the previous request.
+  * Zope server workaround: assume missing HEAD support when receiving
+    text/plain on a HEAD request. Switch to GET request in this case.
+  * Prevent double encoding in HTML info output.
+  * Honor urllib.proxy_bypass() when ignoring proxy settings.
+    This only affected Windows systems, since on other platforms
+    the proxy_bypass() function always return False (on Python <= 2.5
+    that is).
+  * Document the --configfile option in the man page.
+  * Remove comments from CSS content before searching for links.
+  * Try to detect unkonwn URL schemes from the command line, eg. URLs
+    like "rtsp://foo".
+  * Fix typo in warnings and use constants for the warning strings
+    to avoid this in the future.
+  * Make sure LinkChecker does not check paths that are not prefixed
+    with the start URL.
+  * Try to solve the "Too many open files" errors that users have
+    encountered.
+    + Ensure that the connection of a checked URL are closed after checking
+      (except for reused connections in the connection pool).
+    + Regularly close expired connections from the connection pool, and
+      finally close all of them when the program is finished.
+    Closes: SF #1758338, SF #1678055, SF #1631042
+  * Add man page linkcheckerrc(5) for the configuration file format.
+  * Drop french translations, they are less than 20% complete for
+    years now.
+  * Correct misnamed colums in create.sql script: r/*string/\1/g
+  * Improved cookie parsing:
+    + Allow spaces in attribute values. Example:
+      "Set-Cookie: expires=Wed, 12-Dec-2001 19:27:57 GMT"
+      is now parsed correctly
+    + Add an optional leading dot for domain names, and account for that
+      in the domain checking routine.
+  * Don't print cached errors or warnings unless verbose output is
+    requested.
+
+-------------------------------------------------------------------
+Mon Apr  2 01:46:58 CEST 2007 - ro@suse.de
+
+- added non-english manpage directories to filelist 
+
+-------------------------------------------------------------------
+Wed Oct 11 15:34:14 CEST 2006 - ro@suse.de
+
+- update to 4.5
+  - Don't ignore robots.txt entries consisting only of Allow: directives
+  - Don't rely on HTTP HEAD requests to generate the same response status
+    as HTTP GET. So we have to follow redirections when using HTTP GET to
+    get page contents.
+  - Document proxy URL syntax
+  - Print active URLs on Ctrl-C interrupt
+  - Replace all old "entry1, entry2" configuration entries with
+    multiline "entry" config entry. The old syntax is still supported,
+    but deprecated.
+  - If LinkChecker was not able to spawn the initial checker and status
+    threads, print an informative error instead of an internal error.
+- update to 4.4
+  - The JavaScript URL syntax check allows now digits and underscores
+  - Add "internlinks" documentation and example to the default config
+    file linkcheckerrc. 
+  - Detect more cases when a HTTP connection cannot be reused and
+    must be closed. And close response objects after usage
+  - Only wait before a new connection to a host, not when reusing
+    a previous connection.
+  - Add more infos to various HTTP errors. Don't close connection when
+    the response object is still open.
+  - Ignore keyboard interrupts during shutdown
+  - Removed old Psyco references from man page and documentation
+- fix dependencies for old python2.4
+
+-------------------------------------------------------------------
+Wed Sep 13 13:50:37 CEST 2006 - pth@suse.de
+
+- Pass --record-rpm instead of --record to setup.py to get
+  everything needed recorded.
+
+- Compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Sep  2 20:09:36 CEST 2006 - pth@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Thu Aug 31 17:40:32 CEST 2006 - pth@suse.de
+
+- Initial package creation at version 4.3

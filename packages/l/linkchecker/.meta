@@ -1,0 +1,34 @@
+<package name="linkchecker" project="openSUSE:Factory">
+  <title>Check Websites and HTML Documents for Broken Links</title>
+  <description>LinkChecker checks websites and HTML documents for broken links.
+Features are:
+
+* recursive checking
+
+* multithreaded
+
+* output in colored or normal text, HTML, SQL, CSV, XML or a sitemap
+   graph in different formats
+
+* HTTP/1.1, HTTPS, FTP, mailto:, news:, nntp:, Gopher, Telnet and
+   local file links support
+
+* restriction of link checking with regular expression filters for
+   URLs
+
+* proxy support
+
+* username/password authorization for HTTP and FTP
+
+* robots.txt exclusion protocol support
+
+* i18n support
+
+* a command line interface
+
+* a (Fast)CGI web interface (requires HTTP server)
+
+</description>
+  <devel project="network:utilities" package="linkchecker"/>
+  <url>http://linkchecker.sourceforge.net</url>
+</package>
