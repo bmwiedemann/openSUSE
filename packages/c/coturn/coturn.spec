@@ -1,7 +1,7 @@
 #
 # spec file for package coturn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Source6:        %{name}.firewalld
 Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
 Source9:        %{name}@.service
+# PATCH-FIX-UPSTREAM - coturn-no-FIPS-140-mode.patch - see https://github.com/coturn/coturn/pull/916/commits/518094e0d30bb04364b6751841cd55172a33b539
+Patch0:         coturn-no-FIPS-140-mode.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0

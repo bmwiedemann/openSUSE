@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 17:09:44 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add coturn-no-FIPS-140-mode.patch, fixes build against OpenSSL 3.0
+
+-------------------------------------------------------------------
 Sun Dec  4 12:27:54 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Version 4.6.1
