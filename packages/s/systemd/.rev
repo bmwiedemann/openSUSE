@@ -6342,4 +6342,19 @@ handle manual pages that consist only of a .so directive such as
   support enabled (i.e. SLE).</comment>
     <requestid>1068038</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>f5233160dfb9c9009236542e3635c01a</srcmd5>
+    <version>252.7</version>
+    <time>1678204112</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit d447802feee7752cd1756f8fa86ce2a6314ba24f (merge of v252.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8e0a8094b8bbc442d262795b85ac57a37264c5fe...d447802feee7752cd1756f8fa86ce2a6314ba24f
+
+- Fix return non-zero value when disabling SysVinit service(bsc#1208432)
+
+- Correct BR from python3-jinja2 to python3-Jinja2, fixes
+  dependency resolving on older distros</comment>
+    <requestid>1069558</requestid>
+  </revision>
 </revisionlist>

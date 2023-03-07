@@ -93,10 +93,10 @@ enable_initscript() {
 
 disable_initscript() {
 	for symlink in rc*.d/[SK]*; do
-		[ -L $symlink ] && [ $(readlink $symlink) = "../$1" ] && {
+		if [ -L $symlink ] && [ $(readlink $symlink) = "../$1" ]; then
 			info "rm $(pwd)/$symlink"
 			rm $symlink
-		}
+		fi
 	done
 }
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  6 08:40:35 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit d447802feee7752cd1756f8fa86ce2a6314ba24f (merge of v252.7)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8e0a8094b8bbc442d262795b85ac57a37264c5fe...d447802feee7752cd1756f8fa86ce2a6314ba24f
+
+-------------------------------------------------------------------
+Tue Feb 28 02:58:20 UTC 2023 - Lidong Zhong <lidong.zhong@suse.com>
+
+- Fix return non-zero value when disabling SysVinit service(bsc#1208432)
+
+-------------------------------------------------------------------
 Mon Feb 27 08:43:27 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 8e0a8094b8bbc442d262795b85ac57a37264c5fe (merge of v252.6)
@@ -10,6 +23,12 @@ Mon Feb 27 08:43:27 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - aaa_base has stop providing /etc/sysctl.conf, cope with this change so the
   compat symlink we provide is not dangling during the build.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:52:48 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Correct BR from python3-jinja2 to python3-Jinja2, fixes
+  dependency resolving on older distros
 
 -------------------------------------------------------------------
 Fri Feb 17 11:06:41 UTC 2023 - Franck Bui <fbui@suse.com>
