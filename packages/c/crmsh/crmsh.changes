@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 07 02:12:59 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230307.daea9d13:
+  * Fix: report: Fix crm report issue under non-root user
+
+-------------------------------------------------------------------
 Mon Mar 06 05:37:55 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230306.0f04eb29:
