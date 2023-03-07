@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 07 05:48:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.1.0:
+  * Release 12.1.0 (#22694)
+  * (v12) Downgrade Go to 1.19.6 (#22691)
+  * Add MaxRetryPeriod for cachePolicy config to use in tests
+    (#22656) (#22692)
+  * [v12] temporarily disable TestHSMDualAuthRotation (#22682)
+  * [v12] Docs: Add Datadog guide. (#22677)
+  * Update node listing troubleshooting (#22678)
+  * [v12] Update access request enterprise description (#22621)
+  * [v12] Machine ID Agent Anonymous Analytics (#22658)
+  * test keyword frontmatter (#22666)
+  * Machine ID telemetry docs (#22541) (#22660)
+  * SCP - Change file attrs only when requested (#22579) (#22609)
+  * Fix broken Teleterm stories (#22665)
+  * spell fixes and discord config fix (#22617)
+  * Remove network I/O from database_service collection apply
+    (#22588)
+  * [v12] Add OSS repo name to github actions trigger (#22653)
+  * Update e (#22608)
+  * Refresh remote cluster connection status periodically (#22575)
+  * bump cloud version (#22542)
+  * fix typo in image (#22138) (#22552)
+  * Bump e ref. (#22602)
+
+-------------------------------------------------------------------
 Sat Mar 04 08:45:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.0.5:
