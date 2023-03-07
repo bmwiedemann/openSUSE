@@ -196,4 +196,16 @@
   * python-google-resumable-media-no-mock.patch (forwarded request 1012047 from glaubitz)</comment>
     <requestid>1012096</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>de10a742a120255c891cf6d23510eb93</srcmd5>
+    <version>2.4.1</version>
+    <time>1678204254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1
+  Bug Fixes
+  * Avoid validating checksums for partial responses (#361)
+- Drop patches for issues fixed upstream
+  * python-google-resumable-media-no-mock.patch (forwarded request 1069897 from glaubitz)</comment>
+    <requestid>1069913</requestid>
+  </revision>
 </revisionlist>

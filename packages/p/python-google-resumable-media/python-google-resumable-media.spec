@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-resumable-media
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-google-resumable-media
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-resumable-media-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-%{version}.tar.gz
-# https://github.com/googleapis/google-resumable-media-python/commit/82f9769f3368404d1854dd22eeed34eeb25ea835
-Patch0:         python-google-resumable-media-no-mock.patch
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module google-crc32c}
 BuildRequires:  %{python_module pip}
@@ -48,7 +46,6 @@ Utilities for Google Media Downloads and Resumable Uploads
 
 %prep
 %setup -q -n google-resumable-media-%{version}
-%patch0 -p1
 
 %build
 %pyproject_wheel

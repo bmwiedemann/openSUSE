@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 10:30:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.1
+  Bug Fixes
+  * Avoid validating checksums for partial responses (#361)
+- Drop patches for issues fixed upstream
+  * python-google-resumable-media-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Oct 17 09:39:25 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.0
