@@ -1,8 +1,0 @@
-%optipng() \
-  find %1 -links 1 -type f -iname \*.png -print | \
-  while read target ; do \
-    if (file $target | grep -q 'PNG image data'); then \
-      optipng -q $target; \
-    fi ;\
-  done \
-%{nil}

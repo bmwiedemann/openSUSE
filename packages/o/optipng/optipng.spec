@@ -1,7 +1,7 @@
 #
 # spec file for package optipng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        Zlib
 Group:          Productivity/Archiving/Compression
 URL:            http://optipng.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-%{version}/optipng-%{version}.tar.gz
-Source1:        macros.optipng
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 
@@ -52,7 +51,6 @@ sed -i "s:\(LDFLAGS = \)-s:\1:" src/optipng/Makefile
 
 %install
 %make_install
-install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.optipng
 
 %check
 %make_build check
@@ -61,6 +59,5 @@ install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.optipng
 %doc README.txt doc
 %{_bindir}/optipng
 %{_mandir}/man1/optipng.1%{?ext_man}
-%{_rpmmacrodir}/macros.optipng
 
 %changelog

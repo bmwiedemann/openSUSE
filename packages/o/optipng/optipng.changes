@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 27 10:18:05 UTC 2023 - pgajdos@suse.com
+
+- remove unused %optipng macro
+- deleted sources
+  - macros.optipng (not needed)
+
+-------------------------------------------------------------------
 Wed May  4 08:43:23 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched source url to https
