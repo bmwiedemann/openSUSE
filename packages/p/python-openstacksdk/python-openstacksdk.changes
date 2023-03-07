@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:57:16 UTC 2023 - cloud-devel@suse.de
+
+- update to version 1.0.1
+  - baremetal: Add Node.inject_nmi method
+  - Fix server topology and diagnostics
+  - Revert "Add 'details' parameter to various 'find' proxy methods"
+  - compute: don't pass networks: auto for older microversions
+  - Drop munch dependency
+  - Drop _normalize class
+  - Move get_compute_usage to use proxy
+  - Cron Triggers proxy
+  - tox: Trivial fixes
+  - Prepare release note for R1.0
+  - image: Remove _base_proxy module
+  - Whitelist cloud functional tests in acceptance
+  - image: Add metadef resource type operations
+  - Stop normalizing floating ips
+  - Deprecate all of the compute image proxy APIs
+  - Implement unified search_resources method
+  - image: Modify signatures of various image methods
+  - Add Tap Services and Flows to SDK
+  - add flavor description to flavor_create
+  - block storage volume resource
+  - Update README to indicate COE resource/proxy support
+  - Remove unnecessary mocks
+  - Add identity.group_users method
+  - image: Add 'store' argument to 'delete_image' proxy method
+  - tests: Avoid potential aliasing of imports
+  - Convert cloud layer to use COE proxy layer
+  - compute/server: add support of target state for evacuate API
+  - Introduce resource_registry in the proxies
+  - Add missing block storage v2 'find_*' methods
+  - Finish Magnum rework
+  - Add BGP Speakers and Peers to SDK
+  - Add magnum cluster templates resource
+  - Update python testing classifier
+  - Fix backup metadata management and update
+  - Add 'details' parameter to various 'find' proxy methods
+  - baremetal: Add Node console methods
+  - Add 'all_projects' support to proxy layers
+  - Add typing information and documentation
+  - image: Prevent passing conflicts args to stage_image
+  - Fix creation of protected image for old user code
+  - docs: Add docstring to 'openstack' module
+  - Update tox.ini for tox v4 compatibility
+  - Rework network functional tests
+  - compute: Add functional tests for volume attachments
+  - docs: Add overview of supported services to README
+  - Improve swift headers handling
+  - Prevent sending None password on create_user
+  - Revert "compute/server: add support of target state for evacuate API"
+  - Normalise query strings passed to 'find_*' methods
+  - image: Correct typo
+  - Allow passing more arguments to create_port
+  - Add query mappings for vpnaas resources
+  - Move normalize security group to sg class
+  - support nat_destination when attaching existing floating_ip to a server
+  - image: Allow providing 'data' argument to image upload, stage
+  - Move _normalize_coe_* into _coe class
+  - compute: Add support for triggering crash dumps
+  - image: Remove unsupported parameters from v1 proxy
+  - image: Correct typo with 'get_import_info' proxy method
+  - Fix server action request generation
+  - Move normalize_server to compute mixin
+  - Add additional_vips parameter for Octavia load balancers
+  - Update Internap auth URL
+  - Remove python-dev from bindep
+  - image: Add missing image import options
+  - Fix docs for class SecurityGroupRule
+  - image: Reformat proxy modules
+  - compute: Pass microversion for actions
+  - image: Remove unnecessary abstractions
+  - coe: Add support for clusters
+  - Accept queries when listing migrations
+  - baremetal: Add Node boot_device methods
+  - image: Allow listing detailed view of stores
+  - Use /servers/detail endpoint in find_server proxy method
+  - compute: Fix '*volume_attachment' proxy methods
+  - Initialize tests of real clouds
+
+-------------------------------------------------------------------
+Mon Jan  2 09:17:11 UTC 2023 - cloud-devel@suse.de
+
+- update to version 0.102.0
+  - compute: Default to 2.48 for server diagnostics
+  - Added Ansible OpenStack Collection to Bifrost's job.required-projects
+  - added api requirements for new "openstack image metadefs namespace list" command
+  - resource: Reformat calls to request
+  - docs: Trivial adjust index structure
+  - Drop query parameter 'id' from identity mapping
+  - Fix pre-commit issues
+  - tests: Improve functional testing for image methods
+  - Fix incremental backups handling in project cleanup
+  - image: Add support for other metadef namespace operations
+  - Support unknown attributes in resource.__getitem__
+  - Migrate register_machine to use the proxy layer
+  - docs: Add missing docs for proxy helper methods
+  - Allow passing explicit microversions to Resource methods
+  - Add docstring to wait_for_load_balancer() method
+  - Allow Resource.to_dict to allow returning unknown values
+  - network: Rename ikepolicy module
+  - block storage: Add support for the GroupSnapshot resource
+  - image: Trivial grouping of image proxy methods
+  - trivial: Correct some docstrings
+  - baremetal: rework node creation to be closer to the backend
+  - resource: Remove unused helper, variable
+  - Replace base64.encodestring with encodebytes
+  - tests: Remove unnecessary service check
+  - volume: Trivial docstring fixes to 'wait_for_status'
+  - Extend project cleanup
+  - block storage: Add update_volume proxy method
+  - Add Python3 antelope unit tests
+  - workflow: Trivial fix doc title
+  - Update master for stable/zed
+  - Use /volumes/detail endpoint in find_volume proxy method
+  - Add support for fault object per Server API
+  - Add support for updated_at field for volume snapshots
+  - network: Remove duplicate module, update references
+  - Allow to attach a floating ip to a specific fixed address
+  - Update register_machine to use the Ironic format for ports
+  - Implement project cleanup for object-store
+  - Improve project cleanup for cinder
+  - Actually use openstacksdk from source in the Bifrost job
+  - resource: Fix pagination of nested Glance resources
+  - docs: Correct docs for VpnIpsecPolicy
+  - image: Add metadef schema resource to v2 api
+  - Unify resource list filtering
+
+-------------------------------------------------------------------
 Sat Oct  1 12:24:27 UTC 2022 - cloud-devel@suse.de
 
 - update to version 0.101.0

@@ -451,4 +451,41 @@
   - resource: Merge unnecessary separation of logic</comment>
     <requestid>1007440</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f1ee3b9a3fa0742475a4e6478b75cae8</srcmd5>
+    <version>1.0.1</version>
+    <time>1678204183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.1
+  - baremetal: Add Node.inject_nmi method
+  - Fix server topology and diagnostics
+  - Revert &quot;Add 'details' parameter to various 'find' proxy methods&quot;
+  - compute: don't pass networks: auto for older microversions
+  - Drop munch dependency
+  - Drop _normalize class
+  - Move get_compute_usage to use proxy
+  - Cron Triggers proxy
+  - tox: Trivial fixes
+  - Prepare release note for R1.0
+  - image: Remove _base_proxy module
+  - Whitelist cloud functional tests in acceptance
+  - image: Add metadef resource type operations
+  - Stop normalizing floating ips
+  - Deprecate all of the compute image proxy APIs
+  - Implement unified search_resources method
+  - image: Modify signatures of various image methods
+  - Add Tap Services and Flows to SDK
+  - add flavor description to flavor_create
+  - block storage volume resource
+  - Update README to indicate COE resource/proxy support
+  - Remove unnecessary mocks
+  - Add identity.group_users method
+  - image: Add 'store' argument to 'delete_image' proxy method
+  - tests: Avoid potential aliasing of imports
+  - Convert cloud layer to use COE proxy layer
+  - compute/server: add support of target state for evacuate API
+  - Introduce resource_registry in the proxies
+  - Add missing block storage v2 'find_*' methods</comment>
+    <requestid>1069740</requestid>
+  </revision>
 </revisionlist>
