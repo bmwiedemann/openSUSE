@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:50:14 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * Stricter policy validation
+  * do not write empty class definitions to allow simpler round-trip tests
+  * reject attributes in type av rules for kernel policies
+- Added additional developer key (Jason Zaman)
+
+-------------------------------------------------------------------
 Mon May  9 10:27:53 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.4
