@@ -438,4 +438,39 @@
   - Include BIOS registry fields in bios setting list command</comment>
     <requestid>983768</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e8a2324d7abc4d398d69c5824f06a2a5</srcmd5>
+    <version>5.1.0</version>
+    <time>1678204187</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.0
+  - Fix tox4 error
+  - Add support for fields in drivers CLI
+  - CI: Removing ironic job queue
+  - No longer override install_command in tox.ini
+  - Update master for stable/yoga
+  - Fix wrong assertion methods
+  - Avoid using 'foo' as invalid JSON test data
+  - Add Python3 yoga unit tests
+  - Updating python testing classifier as per Yoga testing runtime
+  - Add Python3 zed unit tests
+  - Update master for stable/zed
+  - Validate path when passing a config-drive
+  - Improve description of &quot;node boot mode set&quot;
+  - remove unicode from code
+  - Add node history support
+  - Made `baremetal &lt;command&gt; --help` display command specific help.
+  - Update master for stable/xena
+  - Test python 3.6 for distributions compatibility
+  - Fix CI
+  - Remove unused check_python_version
+  - Add Python3 antelope unit tests
+  - Drop lower-constraints.txt and its testing
+  - Fix logging in the baremetal CLI
+  - The Python 3.6 and Python 3.7 Support has been dropped since zed
+  - Fix references to ironicclient classes and methods
+  - Fix distribution compatability for configdrive build
+  - Use only Yoga tests</comment>
+    <requestid>1069832</requestid>
+  </revision>
 </revisionlist>
