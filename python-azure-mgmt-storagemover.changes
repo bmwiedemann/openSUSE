@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 08:48:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+
+-------------------------------------------------------------------
 Mon Feb 20 10:46:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
