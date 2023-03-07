@@ -1,0 +1,1602 @@
+diff --git a/jnius/__init__.py b/jnius/__init__.py
+index d333eef6..fc3fa921 100644
+--- a/jnius/__init__.py
++++ b/jnius/__init__.py
+@@ -44,15 +44,13 @@
+     from .jnius import *  # noqa
+     from .reflect import *  # noqa
+ 
+-from six import with_metaclass
+-
+ # XXX monkey patch methods that cannot be in cython.
+ # Cython doesn't allow to set new attribute on methods it compiled
+ 
+ HASHCODE_MAX = 2 ** 31 - 1
+ 
+ 
+-class PythonJavaClass_(with_metaclass(MetaJavaBase, PythonJavaClass)):
++class PythonJavaClass_(PythonJavaClass, metaclass=MetaJavaBase):
+ 
+     @java_method('()I', name='hashCode')
+     def hashCode(self):
+diff --git a/jnius/env.py b/jnius/env.py
+index a50680bf..8ba9b316 100644
+--- a/jnius/env.py
++++ b/jnius/env.py
+@@ -11,16 +11,10 @@
+ from shlex import split
+ from logging import getLogger
+ from textwrap import dedent
++from shutil import which
+ 
+ log = getLogger(__name__)
+ 
+-PY2 = sys.version_info.major < 3
+-
+-if PY2:
+-    from distutils.spawn import find_executable as which
+-else:
+-    from shutil import which
+-
+ machine = machine()  # not expected to change at runtime
+ 
+ # This dictionary converts values from platform.machine()
+@@ -368,9 +362,7 @@ def get_osx_framework():
+         stdout=PIPE, shell=True
+     ).communicate()[0]
+ 
+-    if not PY2:
+-        framework = framework.decode('utf-8')
+-
++    framework = framework.decode('utf-8')
+     return framework.strip()
+ 
+ 
+diff --git a/jnius/jnius_compat.pxi b/jnius/jnius_compat.pxi
+index ed9598b2..bf8a4ed1 100644
+--- a/jnius/jnius_compat.pxi
++++ b/jnius/jnius_compat.pxi
+@@ -2,19 +2,11 @@
+ Handle Python 2 vs 3 differences here.
+ '''
+ 
+-from cpython.version cimport PY_MAJOR_VERSION
+-
+-cdef int PY2 = PY_MAJOR_VERSION < 3
+-
+ # because Cython's basestring doesn't work with isinstance() properly
+ # and has differences between Python 2 and Python 3 runtime behavior
+ # so it's not really usable unless some bug in the upstream is fixed
+ # (tested with Cython==0.29.2)
+-cdef tuple base_string
+-if PY_MAJOR_VERSION < 3:
+-    base_string = (bytes, unicode)
+-else:
+-    base_string = (bytes, str)
++cdef tuple base_string = (bytes, str)
+ 
+ 
+ cdef unicode to_unicode(object arg):
+diff --git a/jnius/jnius_conversion.pxi b/jnius/jnius_conversion.pxi
+index d3d0b248..dcabad32 100644
+--- a/jnius/jnius_conversion.pxi
++++ b/jnius/jnius_conversion.pxi
+@@ -1,5 +1,3 @@
+-from cpython.version cimport PY_MAJOR_VERSION
+-
+ activeLambdaJavaProxies = set()
+ 
+ cdef jstringy_arg(argtype):
+@@ -142,12 +140,7 @@ cdef void populate_args(JNIEnv *j_env, tuple definition_args, jvalue *j_args, ar
+             if py_arg is None:
+                 j_args[index].l = NULL
+                 continue
+-            if isinstance(py_arg, basestring) and PY_MAJOR_VERSION < 3:
+-                if argtype == '[B':
+-                    py_arg = map(ord, py_arg)
+-                elif argtype == '[C':
+-                    py_arg = list(py_arg)
+-            if isinstance(py_arg, str) and PY_MAJOR_VERSION >= 3 and argtype == '[C':
++            if isinstance(py_arg, str) and argtype == '[C':
+                 py_arg = list(py_arg)
+             if isinstance(py_arg, ByteArray) and argtype != '[B':
+                 raise JavaException(
+@@ -260,10 +253,7 @@ cdef convert_jstring_to_python(JNIEnv *j_env, jstring j_string):
+     finally:
+         j_env[0].ReleaseStringChars(j_env, j_string, j_chars)
+ 
+-    if PY_MAJOR_VERSION < 3:
+-        return py_uni.encode('utf-8')
+-    else:
+-        return py_uni
++    return py_uni
+ 
+ cdef convert_jarray_to_python(JNIEnv *j_env, definition, jobject j_object):
+     cdef jboolean iscopy
+@@ -311,10 +301,7 @@ cdef convert_jarray_to_python(JNIEnv *j_env, definition, jobject j_object):
+         j_chars = j_env[0].GetCharArrayElements(
+                 j_env, j_object, &iscopy)
+ 
+-        if PY_MAJOR_VERSION < 3:
+-            ret = [chr(<char>j_chars[i]) for i in range(array_size)]
+-        else:
+-            ret = [chr(j_chars[i]) for i in range(array_size)]
++        ret = [chr(j_chars[i]) for i in range(array_size)]
+         j_env[0].ReleaseCharArrayElements(
+                 j_env, j_object, j_chars, 0)
+ 
+@@ -551,24 +538,14 @@ cdef jobject convert_python_to_jobject(JNIEnv *j_env, definition, obj) except *:
+                         definition[1:-1], obj))
+ 
+     elif definition[0] == '[':
+-        if PY_MAJOR_VERSION < 3:
+-            conversions = {
+-                int: 'I',
+-                bool: 'Z',
+-                long: 'J',
+-                float: 'F',
+-                unicode: 'Ljava/lang/String;',
+-                bytes: 'Ljava/lang/String;'
+-            }
+-        else:
+-            conversions = {
+-                int: 'I',
+-                bool: 'Z',
+-                long: 'J',
+-                float: 'F',
+-                unicode: 'Ljava/lang/String;',
+-                bytes: 'B'
+-            }
++        conversions = {
++            int: 'I',
++            bool: 'Z',
++            long: 'J',
++            float: 'F',
++            unicode: 'Ljava/lang/String;',
++            bytes: 'B'
++        }
+         retclass = j_env[0].FindClass(j_env, 'java/lang/Object')
+         retobject = j_env[0].NewObjectArray(j_env, len(obj), retclass, NULL)
+         for index, item in enumerate(obj):
+@@ -661,23 +638,14 @@ cdef jobject convert_pyarray_to_java(JNIEnv *j_env, definition, pyarray) except
+     if definition == 'Ljava/lang/Object;' and len(pyarray) > 0:
+         # then the method will accept any array type as param
+         # let's be as precise as we can
+-        if PY_MAJOR_VERSION < 3:
+-            conversions = {
+-                int: 'I',
+-                bool: 'Z',
+-                long: 'J',
+-                float: 'F',
+-                basestring: 'Ljava/lang/String;',
+-            }
+-        else:
+-            conversions = {
+-                int: 'I',
+-                bool: 'Z',
+-                long: 'J',
+-                float: 'F',
+-                bytes: 'B',
+-                str: 'Ljava/lang/String;',
+-            }
++        conversions = {
++            int: 'I',
++            bool: 'Z',
++            long: 'J',
++            float: 'F',
++            bytes: 'B',
++            str: 'Ljava/lang/String;',
++        }
+         for _type, override in conversions.iteritems():
+             if isinstance(pyarray[0], _type):
+                 definition = override
+diff --git a/jnius/jnius_export_class.pxi b/jnius/jnius_export_class.pxi
+index b6e6246c..1c7e7c5c 100644
+--- a/jnius/jnius_export_class.pxi
++++ b/jnius/jnius_export_class.pxi
+@@ -1,5 +1,4 @@
+ from cpython cimport PyObject
+-from cpython.version cimport PY_MAJOR_VERSION
+ from warnings import warn
+ 
+ 
+@@ -225,7 +224,7 @@ class MetaJavaClass(MetaJavaBase):
+         cdef JavaMethod jm
+         cdef JavaMultipleMethod jmm
+         cdef jboolean resolve_static = True
+-        for name, value in items_compat(classDict):
++        for name, value in classDict.items():
+             if isinstance(value, JavaMethod):
+                 jm = value
+                 if not jm.is_static:
+@@ -239,7 +238,7 @@ class MetaJavaClass(MetaJavaBase):
+ 
+         # search all the static JavaField within our class, and resolve them
+         cdef JavaField jf
+-        for name, value in items_compat(classDict):
++        for name, value in classDict.items():
+             if not isinstance(value, JavaField):
+                 continue
+             jf = value
+@@ -403,7 +402,7 @@ cdef class JavaClass(object):
+         cdef JavaMultipleMethod jmm
+         cdef JNIEnv *j_env = get_jnienv()
+         cdef jboolean resolve_static = False
+-        for name, value in items_compat(self.__class__.__dict__):
++        for name, value in self.__class__.__dict__.items():
+             if isinstance(value, JavaMethod):
+                 jm = value
+                 if jm.is_static:
+@@ -419,7 +418,7 @@ cdef class JavaClass(object):
+         # search all the JavaField within our class, and resolve them
+         cdef JavaField jf
+         cdef JNIEnv *j_env = get_jnienv()
+-        for name, value in items_compat(self.__class__.__dict__):
++        for name, value in self.__class__.__dict__.items():
+             if not isinstance(value, JavaField):
+                 continue
+             jf = value
+@@ -586,10 +585,7 @@ cdef class JavaField(object):
+         elif r == 'C':
+             j_char = j_env[0].GetCharField(
+                     j_env, j_self, self.j_field)
+-            if PY_MAJOR_VERSION < 3:
+-                ret = chr(<char>j_char)
+-            else:
+-                ret = chr(j_char)
++            ret = chr(j_char)
+         elif r == 'S':
+             j_short = j_env[0].GetShortField(
+                     j_env, j_self, self.j_field)
+@@ -713,10 +709,7 @@ cdef class JavaField(object):
+         elif r == 'C':
+             j_char = j_env[0].GetStaticCharField(
+                     j_env, self.j_cls, self.j_field)
+-            if PY_MAJOR_VERSION < 3:
+-                ret = chr(<char>j_char)
+-            else:
+-                ret = chr(j_char)
++            ret = chr(j_char)
+         elif r == 'S':
+             j_short = j_env[0].GetStaticShortField(
+                     j_env, self.j_cls, self.j_field)
+@@ -929,10 +922,7 @@ cdef class JavaMethod(object):
+             with nogil:
+                 j_char = j_env[0].CallCharMethodA(
+                         j_env, j_self, self.j_method, j_args)
+-            if PY_MAJOR_VERSION < 3:
+-                ret = chr(<char>j_char)
+-            else:
+-                ret = chr(j_char)
++            ret = chr(j_char)
+         elif r == 'S':
+             with nogil:
+                 j_short = j_env[0].CallShortMethodA(
+@@ -1020,10 +1010,7 @@ cdef class JavaMethod(object):
+             with nogil:
+                 j_char = j_env[0].CallStaticCharMethodA(
+                         j_env, self.j_cls, self.j_method, j_args)
+-            if PY_MAJOR_VERSION < 3:
+-                ret = chr(<char>j_char)
+-            else:
+-                ret = chr(j_char)
++            ret = chr(j_char)
+         elif r == 'S':
+             with nogil:
+                 j_short = j_env[0].CallStaticShortMethodA(
+@@ -1142,7 +1129,7 @@ cdef class JavaMultipleMethod(object):
+         else:
+             methods = self.static_methods
+ 
+-        for signature, jm in items_compat(methods):
++        for signature, jm in methods.items():
+             # store signatures for the exception
+             found_signatures.append(signature)
+ 
+diff --git a/jnius/jnius_export_func.pxi b/jnius/jnius_export_func.pxi
+index 2bc6d8dc..3a76dd52 100644
+--- a/jnius/jnius_export_func.pxi
++++ b/jnius/jnius_export_func.pxi
+@@ -1,12 +1,8 @@
+-from cpython.version cimport PY_MAJOR_VERSION
+-
+-
+ def cast(destclass, obj):
+     cdef JavaClass jc
+     cdef JavaClass jobj = obj
+     from .reflect import autoclass
+-    if (PY_MAJOR_VERSION < 3 and isinstance(destclass, base_string)) or \
+-          (PY_MAJOR_VERSION >=3 and isinstance(destclass, str)):
++    if isinstance(destclass, str):
+         jc = autoclass(destclass)(noinstance=True)
+     else:
+         jc = destclass(noinstance=True)
+diff --git a/jnius/jnius_jvm_desktop.pxi b/jnius/jnius_jvm_desktop.pxi
+index d0022e95..d72c176f 100644
+--- a/jnius/jnius_jvm_desktop.pxi
++++ b/jnius/jnius_jvm_desktop.pxi
+@@ -2,7 +2,6 @@ import sys
+ import os
+ from os.path import join
+ from jnius.env import get_java_setup
+-from cpython.version cimport PY_MAJOR_VERSION
+ 
+ # on desktop, we need to create an env :)
+ # example taken from http://www.inonit.com/cygwin/jni/invocationApi/c.html
+diff --git a/jnius/jnius_proxy.pxi b/jnius/jnius_proxy.pxi
+index 0a1325c9..da9b43a5 100644
+--- a/jnius/jnius_proxy.pxi
++++ b/jnius/jnius_proxy.pxi
+@@ -133,9 +133,7 @@ cdef jobject py_invoke0(JNIEnv *j_env, jobject j_this, jobject j_proxy, jobject
+     if ret_signature == 'Ljava/lang/Object;':
+         # generic object, try to manually convert it
+         tp = type(ret)
+-        if PY2 and tp == int:
+-            jtype = 'I'
+-        elif (PY2 and tp == long) or tp == int:
++        if tp == int:
+             jtype = 'J'
+         elif tp == float:
+             jtype = 'D'
+diff --git a/jnius/jnius_utils.pxi b/jnius/jnius_utils.pxi
+index 8ffafee6..ef5d6ab9 100644
+--- a/jnius/jnius_utils.pxi
++++ b/jnius/jnius_utils.pxi
+@@ -1,17 +1,5 @@
+ cdef str_for_c(s):
+-     if PY2:
+-        if isinstance(s, unicode):
+-            return s.encode('utf-8')
+-        else:
+-            return s
+-     else:
+-        return s.encode('utf-8')
+-
+-cdef items_compat(d):
+-     if not PY2:
+-         return d.items()
+-     else:
+-        return d.iteritems()                
++    return s.encode('utf-8')
+ 
+ cdef parse_definition(definition):
+     # not a function, just a field
+@@ -370,11 +358,7 @@ cdef int calculate_score(sign_args, args, is_varargs=False) except *:
+                 continue
+ 
+             # if it's a string, accept any python string
+-            if r == 'java/lang/String' and isinstance(arg, base_string) and PY2:
+-                score += 10
+-                continue
+-
+-            if r == 'java/lang/String' and isinstance(arg, str) and not PY2:
++            if r == 'java/lang/String' and isinstance(arg, str):
+                 score += 10
+                 continue
+ 
+@@ -440,15 +424,11 @@ cdef int calculate_score(sign_args, args, is_varargs=False) except *:
+                 score += 10
+                 continue
+ 
+-            if (r == '[B' or r == '[C') and isinstance(arg, base_string) and PY2:
+-                score += 10
+-                continue
+-
+-            if (r == '[B') and isinstance(arg, bytes) and not PY2:
++            if (r == '[B') and isinstance(arg, bytes):
+                 score += 10
+                 continue
+ 
+-            if (r == '[C') and isinstance(arg, str) and not PY2:
++            if (r == '[C') and isinstance(arg, str):
+                 score += 10
+                 continue
+ 
+diff --git a/jnius/reflect.py b/jnius/reflect.py
+index 2bbe7dc6..3a503894 100644
+--- a/jnius/reflect.py
++++ b/jnius/reflect.py
+@@ -4,7 +4,6 @@
+ from collections import defaultdict
+ from logging import getLogger, DEBUG
+ 
+-from six import with_metaclass, PY2
+ 
+ from .jnius import (
+     JavaClass, MetaJavaClass, JavaMethod, JavaStaticMethod,
+@@ -17,7 +16,7 @@
+ log = getLogger(__name__)
+ 
+ 
+-class Class(with_metaclass(MetaJavaClass, JavaClass)):
++class Class(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/Class'
+ 
+     desiredAssertionStatus = JavaMethod('()Z')
+@@ -72,14 +71,14 @@ def __repr__(self):
+         return '<%s at 0x%x>' % (self, id(self))
+ 
+ 
+-class Object(with_metaclass(MetaJavaClass, JavaClass)):
++class Object(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/Object'
+ 
+     getClass = JavaMethod('()Ljava/lang/Class;')
+     hashCode = JavaMethod('()I')
+ 
+ 
+-class Modifier(with_metaclass(MetaJavaClass, JavaClass)):
++class Modifier(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/reflect/Modifier'
+ 
+     isAbstract = JavaStaticMethod('(I)Z')
+@@ -95,7 +94,7 @@ class Modifier(with_metaclass(MetaJavaClass, JavaClass)):
+     isTransient = JavaStaticMethod('(I)Z')
+     isVolatile = JavaStaticMethod('(I)Z')
+ 
+-class Method(with_metaclass(MetaJavaClass, JavaClass)):
++class Method(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/reflect/Method'
+ 
+     getName = JavaMethod('()Ljava/lang/String;')
+@@ -105,10 +104,9 @@ class Method(with_metaclass(MetaJavaClass, JavaClass)):
+     getModifiers = JavaMethod('()I')
+     isVarArgs = JavaMethod('()Z')
+     isDefault = JavaMethod('()Z')
+-    
+ 
+ 
+-class Field(with_metaclass(MetaJavaClass, JavaClass)):
++class Field(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/reflect/Field'
+ 
+     getName = JavaMethod('()Ljava/lang/String;')
+@@ -117,7 +115,7 @@ class Field(with_metaclass(MetaJavaClass, JavaClass)):
+     getModifiers = JavaMethod('()I')
+ 
+ 
+-class Constructor(with_metaclass(MetaJavaClass, JavaClass)):
++class Constructor(JavaClass, metaclass=MetaJavaClass):
+     __javaclass__ = 'java/lang/reflect/Constructor'
+ 
+     toString = JavaMethod('()Ljava/lang/String;')
+@@ -380,31 +378,6 @@ def _map_getitem(self, k):
+     return rtr
+ 
+ 
+-class Py2Iterator(object):
+-    '''
+-    In py2 the next() is called on the iterator, not __next__
+-    so we need to wrap the java call to check hasNext to conform to
+-    python's api
+-    '''
+-    def __init__(self, java_iterator):
+-        self.java_iterator = java_iterator
+-
+-    def __iter__(self):
+-        return self
+-
+-    def next(self):
+-        log.debug("monkey patched next() called")
+-        if not self.java_iterator.hasNext():
+-            raise StopIteration()
+-        return self.java_iterator.next()
+-
+-
+-def safe_iterator(iterator):
+-    if PY2:
+-        return Py2Iterator(iterator)
+-    return iterator
+-
+-
+ def _iterator_next(self):
+     ''' dunder method for java.util.Iterator'''
+     if not self.hasNext():
+@@ -429,14 +402,14 @@ def _iterator_next(self):
+         '__delitem__' : lambda self, item: self.remove(item),
+         '__len__' : lambda self: self.size(),
+         '__contains__' : lambda self, item: self.containsKey(item),
+-        '__iter__' : lambda self: safe_iterator(self.keySet().iterator())
++        '__iter__' : lambda self: self.keySet().iterator()
+     },
+     'java.util.Iterator' : {
+-        '__iter__' : lambda self: safe_iterator(self),
++        '__iter__' : lambda self: self,
+         '__next__' : _iterator_next,
+     },
+     'java.lang.Iterable' : {
+-        '__iter__' : lambda self: safe_iterator(self.iterator()),
++        '__iter__' : lambda self: self.iterator(),
+     },
+     # this also addresses java.io.Closeable
+     'java.lang.AutoCloseable' : {
+diff --git a/setup.cfg b/setup.cfg
+index 98caab5c..7df3a159 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,7 +1,3 @@
+-[options]
+-install_requires =
+-    six>=1.7.0
+-
+ [options.extras_require]
+ dev =
+     pytest
+@@ -9,4 +5,4 @@ dev =
+     pycodestyle
+ ci =
+     coveralls
+-    pytest-rerunfailures
+\ No newline at end of file
++    pytest-rerunfailures
+diff --git a/setup.py b/setup.py
+index 079299f1..18800713 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,16 +19,13 @@
+ # jnius.jnius yet, better solution welcome
+ syspath = sys.path[:]
+ sys.path.insert(0, 'jnius')
+-from env import (
+-    get_java_setup,
+-    PY2
+-)
++from env import get_java_setup
+ sys.path = syspath
+ 
+ def getenv(key):
+     '''Get value from environment and decode it.'''
+     val = environ.get(key)
+-    if val is not None and not PY2:
++    if val is not None:
+         try:
+             return val.decode()
+         except AttributeError:
+diff --git a/tests/test_basics.py b/tests/test_basics.py
+index fe784dc3..c8b87674 100644
+--- a/tests/test_basics.py
++++ b/tests/test_basics.py
+@@ -1,21 +1,9 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ from jnius.reflect import autoclass
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+ 
+ class BasicsTest(unittest.TestCase):
+ 
+@@ -29,7 +17,7 @@ def test_static_methods(self):
+         self.assertEqual(Test.methodStaticJ(), 9223372036854775807)
+         self.assertAlmostEqual(Test.methodStaticF(), 1.23456789)
+         self.assertEqual(Test.methodStaticD(), 1.23456789)
+-        self.assertEqual(Test.methodStaticString(), py2_encode(u'hello \U0001F30E!'))
++        self.assertEqual(Test.methodStaticString(), 'hello \U0001F30E!')
+ 
+     def test_static_fields(self):
+         Test = autoclass('org.jnius.BasicsTest')
+@@ -41,7 +29,7 @@ def test_static_fields(self):
+         self.assertEqual(Test.fieldStaticJ, 9223372036854775807)
+         self.assertAlmostEqual(Test.fieldStaticF, 1.23456789)
+         self.assertEqual(Test.fieldStaticD, 1.23456789)
+-        self.assertEqual(Test.fieldStaticString, py2_encode(u'hello \U0001F30E!'))
++        self.assertEqual(Test.fieldStaticString, 'hello \U0001F30E!')
+ 
+     def test_instance_methods(self):
+         test = autoclass('org.jnius.BasicsTest')()
+@@ -53,7 +41,7 @@ def test_instance_methods(self):
+         self.assertEqual(test.methodJ(), 9223372036854775807)
+         self.assertAlmostEqual(test.methodF(), 1.23456789)
+         self.assertEqual(test.methodD(), 1.23456789)
+-        self.assertEqual(test.methodString(), py2_encode(u'hello \U0001F30E!'))
++        self.assertEqual(test.methodString(), 'hello \U0001F30E!')
+ 
+     def test_instance_fields(self):
+         test = autoclass('org.jnius.BasicsTest')()
+@@ -65,7 +53,7 @@ def test_instance_fields(self):
+         self.assertEqual(test.fieldJ, 9223372036854775807)
+         self.assertAlmostEqual(test.fieldF, 1.23456789)
+         self.assertEqual(test.fieldD, 1.23456789)
+-        self.assertEqual(test.fieldString, py2_encode(u'hello \U0001F30E!'))
++        self.assertEqual(test.fieldString, 'hello \U0001F30E!')
+         test2 = autoclass('org.jnius.BasicsTest')(10)
+         self.assertEqual(test2.fieldB, 10)
+         self.assertEqual(test.fieldB, 127)
+@@ -100,8 +88,7 @@ def test_instances_methods_array(self):
+         test = autoclass('org.jnius.BasicsTest')()
+         self.assertEqual(test.methodArrayZ(), [True] * 3)
+         self.assertEqual(test.methodArrayB()[0], 127)
+-        if sys.version_info >= (3, 0):
+-            self.assertEqual(test.methodArrayB(), [127] * 3)
++        self.assertEqual(test.methodArrayB(), [127] * 3)
+         self.assertEqual(test.methodArrayC(), ['k'] * 3)
+         self.assertEqual(test.methodArrayS(), [32767] * 3)
+         self.assertEqual(test.methodArrayI(), [2147483467] * 3)
+@@ -114,18 +101,16 @@ def test_instances_methods_array(self):
+         self.assertAlmostEqual(ret[2], ref[2])
+ 
+         self.assertEqual(test.methodArrayD(), [1.23456789] * 3)
+-        self.assertEqual(test.methodArrayString(), [py2_encode(u'hello \U0001F30E!')] * 3)
++        self.assertEqual(test.methodArrayString(), ['hello \U0001F30E!'] * 3)
+ 
+     def test_instances_methods_params(self):
+         test = autoclass('org.jnius.BasicsTest')()
+         self.assertEqual(test.methodParamsZBCSIJFD(
+             True, 127, 'k', 32767, 2147483467, 9223372036854775807, 1.23456789, 1.23456789), True)
+-        self.assertEqual(test.methodParamsZBCSIJFD(
+-            True, long(127), 'k', long(32767), long(2147483467), 9223372036854775807, 1.23456789, 1.23456789), True)
+-        self.assertEqual(test.methodParamsString(py2_encode(u'hello \U0001F30E!')), True)
++        self.assertEqual(test.methodParamsString('hello \U0001F30E!'), True)
+         self.assertEqual(test.methodParamsArrayI([1, 2, 3]), True)
+         self.assertEqual(test.methodParamsArrayString([
+-            py2_encode(u'hello'), py2_encode(u'\U0001F30E')]), True)
++            'hello', '\U0001F30E']), True)
+ 
+     def test_instances_methods_params_object_list_str(self):
+         test = autoclass('org.jnius.BasicsTest')()
+@@ -140,10 +125,6 @@ def test_instances_methods_params_object_list_float(self):
+         test = autoclass('org.jnius.BasicsTest')()
+         self.assertEqual(test.methodParamsObject([3.14, 1.61]), True)
+ 
+-    def test_instances_methods_params_object_list_long(self):
+-        test = autoclass('org.jnius.BasicsTest')()
+-        self.assertEqual(test.methodParamsObject([1, 2]), True)
+-
+     def test_instances_methods_params_array_byte(self):
+         test = autoclass('org.jnius.BasicsTest')()
+         self.assertEqual(test.methodParamsArrayByte([127, 127, 127]), True)
+@@ -152,8 +133,8 @@ def test_instances_methods_params_array_byte(self):
+ 
+     def test_return_array_as_object_array_of_strings(self):
+         test = autoclass('org.jnius.BasicsTest')()
+-        self.assertEqual(test.methodReturnStrings(), [py2_encode(u'Hello'),
+-                py2_encode(u'\U0001F30E')])
++        self.assertEqual(test.methodReturnStrings(), ['Hello',
++                '\U0001F30E'])
+ 
+     def test_return_array_as_object_of_integers(self):
+         test = autoclass('org.jnius.BasicsTest')()
+diff --git a/tests/test_chars_and_strings.py b/tests/test_chars_and_strings.py
+index 75f73c50..de1f2731 100644
+--- a/tests/test_chars_and_strings.py
++++ b/tests/test_chars_and_strings.py
+@@ -2,24 +2,10 @@
+ # from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ from jnius.reflect import autoclass, JavaException
+ 
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+-
+ class CharsAndStringsTest(unittest.TestCase):
+ 
+     def test_char_fields(self):
+@@ -27,60 +13,52 @@ def test_char_fields(self):
+                          include_protected=False, include_private=False)
+         test = Test()
+ 
+-        self.assertEqual(test.testChar1, py2_encode('a'))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(test.testChar2, 'ä')
+-            self.assertEqual(test.testChar3, '☺')
++        self.assertEqual(test.testChar1, 'a')
++        self.assertEqual(test.testChar2, 'ä')
++        self.assertEqual(test.testChar3, '☺')
+ 
+-        self.assertEqual(Test.testStaticChar1, py2_encode('a'))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(Test.testStaticChar2, 'ä')
+-            self.assertEqual(Test.testStaticChar3, '☺')
++        self.assertEqual(Test.testStaticChar1, 'a')
++        self.assertEqual(Test.testStaticChar2, 'ä')
++        self.assertEqual(Test.testStaticChar3, '☺')
+ 
+     def test_string_fields(self):
+         Test = autoclass('org.jnius.CharsAndStrings',
+                          include_protected=False, include_private=False)
+         test = Test()
+ 
+-        self.assertEqual(test.testString1, py2_encode("hello world"))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(test.testString2, "umlauts: äöü")
+-            self.assertEqual(test.testString3, "happy face: ☺")
++        self.assertEqual(test.testString1, "hello world")
++        self.assertEqual(test.testString2, "umlauts: äöü")
++        self.assertEqual(test.testString3, "happy face: ☺")
+ 
+-        self.assertEqual(Test.testStaticString1, py2_encode("hello world"))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(Test.testStaticString2, "umlauts: äöü")
+-            self.assertEqual(Test.testStaticString3, "happy face: ☺")
++        self.assertEqual(Test.testStaticString1, "hello world")
++        self.assertEqual(Test.testStaticString2, "umlauts: äöü")
++        self.assertEqual(Test.testStaticString3, "happy face: ☺")
+ 
+     def test_char_methods(self):
+         Test = autoclass('org.jnius.CharsAndStrings',
+                          include_protected=False, include_private=False)
+         test = Test()
+ 
+-        self.assertEqual(test.testChar(1, py2_encode('a')), py2_encode('a'))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(test.testChar(2, 'ä'), 'ä')
+-            self.assertEqual(test.testChar(3, '☺'), '☺')
++        self.assertEqual(test.testChar(1, 'a'), 'a')
++        self.assertEqual(test.testChar(2, 'ä'), 'ä')
++        self.assertEqual(test.testChar(3, '☺'), '☺')
+ 
+-        self.assertEqual(Test.testStaticChar(1, py2_encode('a')), py2_encode('a'))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(Test.testStaticChar(2, 'ä'), 'ä')
+-            self.assertEqual(Test.testStaticChar(3, '☺'), '☺')
++        self.assertEqual(Test.testStaticChar(1, 'a'), 'a')
++        self.assertEqual(Test.testStaticChar(2, 'ä'), 'ä')
++        self.assertEqual(Test.testStaticChar(3, '☺'), '☺')
+ 
+     def test_string_methods(self):
+         Test = autoclass('org.jnius.CharsAndStrings',
+                          include_protected=False, include_private=False)
+         test = Test()
+ 
+-        self.assertEqual(test.testString(1, py2_encode("hello world")), py2_encode("hello world"))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(test.testString(2, "umlauts: äöü"), "umlauts: äöü")
+-            self.assertEqual(test.testString(3, "happy face: ☺"), "happy face: ☺")
++        self.assertEqual(test.testString(1, "hello world"), "hello world")
++        self.assertEqual(test.testString(2, "umlauts: äöü"), "umlauts: äöü")
++        self.assertEqual(test.testString(3, "happy face: ☺"), "happy face: ☺")
+ 
+-        self.assertEqual(Test.testStaticString(1, py2_encode("hello world")), py2_encode("hello world"))
+-        if sys.version_info.major >= 3:
+-            self.assertEqual(Test.testStaticString(2, "umlauts: äöü"), "umlauts: äöü")
+-            self.assertEqual(Test.testStaticString(3, "happy face: ☺"), "happy face: ☺")
++        self.assertEqual(Test.testStaticString(1, "hello world"), "hello world")
++        self.assertEqual(Test.testStaticString(2, "umlauts: äöü"), "umlauts: äöü")
++        self.assertEqual(Test.testStaticString(3, "happy face: ☺"), "happy face: ☺")
+ 
+     def test_char_array(self):
+         Test = autoclass('org.jnius.CharsAndStrings',
+@@ -94,11 +72,10 @@ def test_char_array(self):
+             self.assertEqual(c1, c2)
+         for c1, c2 in zip(charArray1, test.testCharArray(1)):
+             self.assertEqual(c1, c2)
+-        if sys.version_info.major >= 3:
+-            for c1, c2 in zip(charArray2, test.testCharArray2):
+-                self.assertEqual(c1, c2)
+-            for c1, c2 in zip(charArray2, test.testCharArray(2)):
+-                self.assertEqual(c1, c2)
++        for c1, c2 in zip(charArray2, test.testCharArray2):
++            self.assertEqual(c1, c2)
++        for c1, c2 in zip(charArray2, test.testCharArray(2)):
++            self.assertEqual(c1, c2)
+ 
+     def test_static_char_array(self):
+         Test = autoclass('org.jnius.CharsAndStrings',
+@@ -111,11 +88,10 @@ def test_static_char_array(self):
+             self.assertEqual(c1, c2)
+         for c1, c2 in zip(charArray1, Test.testStaticCharArray(1)):
+             self.assertEqual(c1, c2)
+-        if sys.version_info.major >= 3:
+-            for c1, c2 in zip(charArray2, Test.testStaticCharArray2):
+-                self.assertEqual(c1, c2)
+-            for c1, c2 in zip(charArray2, Test.testStaticCharArray(2)):
+-                self.assertEqual(c1, c2)
++        for c1, c2 in zip(charArray2, Test.testStaticCharArray2):
++            self.assertEqual(c1, c2)
++        for c1, c2 in zip(charArray2, Test.testStaticCharArray(2)):
++            self.assertEqual(c1, c2)
+ 
+ 
+     def test_java_string(self):
+@@ -123,11 +99,10 @@ def test_java_string(self):
+ 
+         testString1 = JString('hello world')
+         self.assertTrue(testString1.equals('hello world'))
+-        if sys.version_info.major >= 3:
+-            testString2 = JString('umlauts: äöü')
+-            self.assertTrue(testString2.equals('umlauts: äöü'))
+-            testString3 = JString('happy face: ☺')
+-            self.assertTrue(testString3.equals('happy face: ☺'))
++        testString2 = JString('umlauts: äöü')
++        self.assertTrue(testString2.equals('umlauts: äöü'))
++        testString3 = JString('happy face: ☺')
++        self.assertTrue(testString3.equals('happy face: ☺'))
+ 
+     # two methods below are concerned with type-checking of arguments
+ 
+diff --git a/tests/test_implementation.py b/tests/test_implementation.py
+index 6a5aa33b..a7be2c38 100644
+--- a/tests/test_implementation.py
++++ b/tests/test_implementation.py
+@@ -2,7 +2,6 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ from jnius.reflect import autoclass
+ 
+@@ -29,6 +28,4 @@ def test_unicode(self):
+         emoji = u'\U0001F602'
+         stack.push(emoji)
+         popped = stack.pop()
+-        if sys.version_info < (3, 0):
+-            popped = popped.decode('utf-8')
+         self.assertEqual(emoji, popped)
+diff --git a/tests/test_method_multiple_signatures.py b/tests/test_method_multiple_signatures.py
+index ed674d7b..d8469d74 100644
+--- a/tests/test_method_multiple_signatures.py
++++ b/tests/test_method_multiple_signatures.py
+@@ -2,15 +2,8 @@
+ from __future__ import division
+ from __future__ import absolute_import
+ import unittest
+-import sys
+ from jnius.reflect import autoclass
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+ 
+ class MultipleSignature(unittest.TestCase):
+ 
+@@ -23,9 +16,8 @@ def test_multiple_constructors(self):
+     def test_multiple_methods(self):
+         String = autoclass('java.lang.String')
+         s = String('hello')
+-        if sys.version_info >= (3, 0):
+-            self.assertEqual(s.getBytes(), [104, 101, 108, 108, 111])
+-            self.assertEqual(s.getBytes('utf8'), [104, 101, 108, 108, 111])
++        self.assertEqual(s.getBytes(), [104, 101, 108, 108, 111])
++        self.assertEqual(s.getBytes('utf8'), [104, 101, 108, 108, 111])
+         self.assertEqual(s.indexOf(ord('e')), 1)
+         self.assertEqual(s.indexOf(ord('e'), 2), -1)
+ 
+@@ -60,10 +52,6 @@ def test_multiple_methods_varargs(self):
+         MultipleMethods = autoclass('org.jnius.MultipleMethods')
+         self.assertEqual(MultipleMethods.resolve(1, 2, 3), 'resolved varargs')
+ 
+-    def test_multiple_methods_varargs_long(self):
+-        MultipleMethods = autoclass('org.jnius.MultipleMethods')
+-        self.assertEqual(MultipleMethods.resolve(long(1), long(2), long(3)), 'resolved varargs')
+-
+     def test_multiple_methods_two_args_and_varargs(self):
+         MultipleMethods = autoclass('org.jnius.MultipleMethods')
+         self.assertEqual(MultipleMethods.resolve('one', 'two', 1, 2, 3), 'resolved two args and varargs')
+@@ -71,7 +59,7 @@ def test_multiple_methods_two_args_and_varargs(self):
+     def test_multiple_methods_one_int_one_small_long_and_a_string(self):
+         MultipleMethods = autoclass('org.jnius.MultipleMethods')
+         self.assertEqual(MultipleMethods.resolve(
+-            1, long(1), "one"), "resolved one int, one long and a string")
++            1, 1, "one"), "resolved one int, one long and a string")
+ 
+     def test_multiple_methods_one_int_one_actual_long_and_a_string(self):
+         MultipleMethods = autoclass('org.jnius.MultipleMethods')
+diff --git a/tests/test_proxy.py b/tests/test_proxy.py
+index 13f642aa..80340874 100644
+--- a/tests/test_proxy.py
++++ b/tests/test_proxy.py
+@@ -1,8 +1,6 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-from six.moves import range
+-import sys
+ 
+ from jnius import autoclass, java_method, PythonJavaClass, cast
+ 
+@@ -149,9 +147,8 @@ def bad_signature(self, *args):
+ 
+ 
+ # XXX We have issues for methosd with multiple signature
+-if sys.version_info >= (3, 0):
+-    print('-> Collections.max(a)')
+-    print(Collections.max(a2))
++print('-> Collections.max(a)')
++print(Collections.max(a2))
+ #print '-> Collections.shuffle(a)'
+ #print Collections.shuffle(a2)
+ 
+diff --git a/tests/test_simple.py b/tests/test_simple.py
+index edfcd996..a4d7e624 100644
+--- a/tests/test_simple.py
++++ b/tests/test_simple.py
+@@ -3,13 +3,12 @@
+ from __future__ import absolute_import
+ import unittest
+ from jnius import JavaClass, MetaJavaClass, JavaMethod
+-from six import with_metaclass
+ 
+ class HelloWorldTest(unittest.TestCase):
+ 
+     def test_helloworld(self):
+ 
+-        class HelloWorld(with_metaclass(MetaJavaClass, JavaClass)):
++        class HelloWorld(JavaClass, metaclass=MetaJavaClass):
+             __javaclass__ = 'org/jnius/HelloWorld'
+             hello = JavaMethod('()Ljava/lang/String;')
+ 
+diff --git a/tests/test_visibility_all.py b/tests/test_visibility_all.py
+index 85b34e6e..475c4930 100644
+--- a/tests/test_visibility_all.py
++++ b/tests/test_visibility_all.py
+@@ -1,26 +1,12 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ import jnius_config
+ from jnius import JavaMultipleMethod, JavaMethod
+ from jnius.reflect import autoclass
+ 
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+-
+ class VisibilityAllTest(unittest.TestCase):
+ 
+     def test_static_fields_all(self):
+@@ -31,10 +17,10 @@ def test_static_fields_all(self):
+         self.assertTrue(hasattr(Test, 'fieldStaticProtected'))
+         self.assertTrue(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
+-        self.assertEqual(Test.fieldStaticPackageProtected, py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.fieldStaticProtected, py2_encode("StaticProtected"))
+-        self.assertEqual(Test.fieldStaticPrivate, py2_encode("StaticPrivate"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
++        self.assertEqual(Test.fieldStaticPackageProtected, "StaticPackageProtected")
++        self.assertEqual(Test.fieldStaticProtected, "StaticProtected")
++        self.assertEqual(Test.fieldStaticPrivate, "StaticPrivate")
+ 
+     def test_child_static_fields_all(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=True)
+@@ -44,20 +30,20 @@ def test_child_static_fields_all(self):
+         self.assertTrue(hasattr(Test, 'fieldStaticProtected'))
+         self.assertTrue(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
+-        self.assertEqual(Test.fieldStaticPackageProtected, py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.fieldStaticProtected, py2_encode("StaticProtected"))
+-        self.assertEqual(Test.fieldStaticPrivate, py2_encode("StaticPrivate"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
++        self.assertEqual(Test.fieldStaticPackageProtected, "StaticPackageProtected")
++        self.assertEqual(Test.fieldStaticProtected, "StaticProtected")
++        self.assertEqual(Test.fieldStaticPrivate, "StaticPrivate")
+ 
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticProtected'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldChildStaticPublic, py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.fieldChildStaticPackageProtected, py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.fieldChildStaticProtected, py2_encode("ChildStaticProtected"))
+-        self.assertEqual(Test.fieldChildStaticPrivate, py2_encode("ChildStaticPrivate"))
++        self.assertEqual(Test.fieldChildStaticPublic, "ChildStaticPublic")
++        self.assertEqual(Test.fieldChildStaticPackageProtected, "ChildStaticPackageProtected")
++        self.assertEqual(Test.fieldChildStaticProtected, "ChildStaticProtected")
++        self.assertEqual(Test.fieldChildStaticPrivate, "ChildStaticPrivate")
+ 
+     def test_static_methods_all(self):
+         Test = autoclass('org.jnius.VisibilityTest', include_protected=True, include_private=True)
+@@ -67,10 +53,10 @@ def test_static_methods_all(self):
+         self.assertTrue(hasattr(Test, 'methodStaticProtected'))
+         self.assertTrue(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
+-        self.assertEqual(Test.methodStaticPackageProtected(), py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.methodStaticProtected(), py2_encode("StaticProtected"))
+-        self.assertEqual(Test.methodStaticPrivate(), py2_encode("StaticPrivate"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
++        self.assertEqual(Test.methodStaticPackageProtected(), "StaticPackageProtected")
++        self.assertEqual(Test.methodStaticProtected(), "StaticProtected")
++        self.assertEqual(Test.methodStaticPrivate(), "StaticPrivate")
+ 
+     def test_child_static_methods_all(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=True)
+@@ -80,20 +66,20 @@ def test_child_static_methods_all(self):
+         self.assertTrue(hasattr(Test, 'methodStaticProtected'))
+         self.assertTrue(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
+-        self.assertEqual(Test.methodStaticPackageProtected(), py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.methodStaticProtected(), py2_encode("StaticProtected"))
+-        self.assertEqual(Test.methodStaticPrivate(), py2_encode("StaticPrivate"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
++        self.assertEqual(Test.methodStaticPackageProtected(), "StaticPackageProtected")
++        self.assertEqual(Test.methodStaticProtected(), "StaticProtected")
++        self.assertEqual(Test.methodStaticPrivate(), "StaticPrivate")
+ 
+         self.assertTrue(hasattr(Test, 'methodChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticProtected'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodChildStaticPublic(), py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.methodChildStaticPackageProtected(), py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.methodChildStaticProtected(), py2_encode("ChildStaticProtected"))
+-        self.assertEqual(Test.methodChildStaticPrivate(), py2_encode("ChildStaticPrivate"))
++        self.assertEqual(Test.methodChildStaticPublic(), "ChildStaticPublic")
++        self.assertEqual(Test.methodChildStaticPackageProtected(), "ChildStaticPackageProtected")
++        self.assertEqual(Test.methodChildStaticProtected(), "ChildStaticProtected")
++        self.assertEqual(Test.methodChildStaticPrivate(), "ChildStaticPrivate")
+ 
+     def test_fields_all(self):
+         Test = autoclass('org.jnius.VisibilityTest', include_protected=True, include_private=True)
+@@ -104,10 +90,10 @@ def test_fields_all(self):
+         self.assertTrue(hasattr(test, 'fieldProtected'))
+         self.assertTrue(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
+-        self.assertEqual(test.fieldPackageProtected, py2_encode("PackageProtected"))
+-        self.assertEqual(test.fieldProtected, py2_encode("Protected"))
+-        self.assertEqual(test.fieldPrivate, py2_encode("Private"))
++        self.assertEqual(test.fieldPublic, "Public")
++        self.assertEqual(test.fieldPackageProtected, "PackageProtected")
++        self.assertEqual(test.fieldProtected, "Protected")
++        self.assertEqual(test.fieldPrivate, "Private")
+ 
+     def test_child_fields_all(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=True)
+@@ -118,20 +104,20 @@ def test_child_fields_all(self):
+         self.assertTrue(hasattr(test, 'fieldProtected'))
+         self.assertTrue(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
+-        self.assertEqual(test.fieldPackageProtected, py2_encode("PackageProtected"))
+-        self.assertEqual(test.fieldProtected, py2_encode("Protected"))
+-        self.assertEqual(test.fieldPrivate, py2_encode("Private"))
++        self.assertEqual(test.fieldPublic, "Public")
++        self.assertEqual(test.fieldPackageProtected, "PackageProtected")
++        self.assertEqual(test.fieldProtected, "Protected")
++        self.assertEqual(test.fieldPrivate, "Private")
+ 
+         self.assertTrue(hasattr(test, 'fieldChildPublic'))
+         self.assertTrue(hasattr(test, 'fieldChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'fieldChildProtected'))
+         self.assertTrue(hasattr(test, 'fieldChildPrivate'))
+ 
+-        self.assertEqual(test.fieldChildPublic, py2_encode("ChildPublic"))
+-        self.assertEqual(test.fieldChildPackageProtected, py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.fieldChildProtected, py2_encode("ChildProtected"))
+-        self.assertEqual(test.fieldChildPrivate, py2_encode("ChildPrivate"))
++        self.assertEqual(test.fieldChildPublic, "ChildPublic")
++        self.assertEqual(test.fieldChildPackageProtected, "ChildPackageProtected")
++        self.assertEqual(test.fieldChildProtected, "ChildProtected")
++        self.assertEqual(test.fieldChildPrivate, "ChildPrivate")
+ 
+     def test_methods_all(self):
+         Test = autoclass('org.jnius.VisibilityTest', include_protected=True, include_private=True)
+@@ -142,10 +128,10 @@ def test_methods_all(self):
+         self.assertTrue(hasattr(test, 'methodProtected'))
+         self.assertTrue(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
+-        self.assertEqual(test.methodPackageProtected(), py2_encode("PackageProtected"))
+-        self.assertEqual(test.methodProtected(), py2_encode("Protected"))
+-        self.assertEqual(test.methodPrivate(), py2_encode("Private"))
++        self.assertEqual(test.methodPublic(), "Public")
++        self.assertEqual(test.methodPackageProtected(), "PackageProtected")
++        self.assertEqual(test.methodProtected(), "Protected")
++        self.assertEqual(test.methodPrivate(), "Private")
+ 
+     def test_child_methods_all(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=True)
+@@ -155,20 +141,20 @@ def test_child_methods_all(self):
+         self.assertTrue(hasattr(test, 'methodProtected'))
+         self.assertTrue(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
+-        self.assertEqual(test.methodPackageProtected(), py2_encode("PackageProtected"))
+-        self.assertEqual(test.methodProtected(), py2_encode("Protected"))
+-        self.assertEqual(test.methodPrivate(), py2_encode("Private"))
++        self.assertEqual(test.methodPublic(), "Public")
++        self.assertEqual(test.methodPackageProtected(), "PackageProtected")
++        self.assertEqual(test.methodProtected(), "Protected")
++        self.assertEqual(test.methodPrivate(), "Private")
+ 
+         self.assertTrue(hasattr(test, 'methodChildPublic'))
+         self.assertTrue(hasattr(test, 'methodChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'methodChildProtected'))
+         self.assertTrue(hasattr(test, 'methodChildPrivate'))
+ 
+-        self.assertEqual(test.methodChildPublic(), py2_encode("ChildPublic"))
+-        self.assertEqual(test.methodChildPackageProtected(), py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.methodChildProtected(), py2_encode("ChildProtected"))
+-        self.assertEqual(test.methodChildPrivate(), py2_encode("ChildPrivate"))
++        self.assertEqual(test.methodChildPublic(), "ChildPublic")
++        self.assertEqual(test.methodChildPackageProtected(), "ChildPackageProtected")
++        self.assertEqual(test.methodChildProtected(), "ChildProtected")
++        self.assertEqual(test.methodChildPrivate(), "ChildPrivate")
+ 
+     def test_static_multi_methods(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=True)
+@@ -199,7 +185,7 @@ def test_check_method_vs_field(self):
+         function must pick one of these two. If it were to pick the field, this
+         would cause an "'int' object is not callable" TypeError when attempting
+         to call the size method. This unit test is here to ensure that future
+-        changes to `autoclass` continue to prefer methods over fields.    
++        changes to `autoclass` continue to prefer methods over fields.
+         """
+ 
+         def assert_is_method(obj, name):
+diff --git a/tests/test_visibility_package_protected.py b/tests/test_visibility_package_protected.py
+index b4a287db..00b8a3ad 100644
+--- a/tests/test_visibility_package_protected.py
++++ b/tests/test_visibility_package_protected.py
+@@ -1,26 +1,12 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ import jnius_config
+ from jnius import JavaMethod, JavaStaticMethod, JavaException
+ from jnius.reflect import autoclass
+ 
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+-
+ class VisibilityPackageProtectedTest(unittest.TestCase):
+     """This unittest verifies the correct visibility of package protected methods and fields.
+ 
+@@ -38,17 +24,17 @@ def test_child_static_fields_package_protected(self):
+         self.assertTrue(hasattr(Test, 'fieldStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
+-        self.assertEqual(Test.fieldStaticProtected, py2_encode("StaticProtected"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
++        self.assertEqual(Test.fieldStaticProtected, "StaticProtected")
+ 
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldChildStaticPublic, py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.fieldChildStaticPackageProtected, py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.fieldChildStaticProtected, py2_encode("ChildStaticProtected"))
++        self.assertEqual(Test.fieldChildStaticPublic, "ChildStaticPublic")
++        self.assertEqual(Test.fieldChildStaticPackageProtected, "ChildStaticPackageProtected")
++        self.assertEqual(Test.fieldChildStaticProtected, "ChildStaticProtected")
+ 
+     def test_child_static_methods_package_protected(self):
+         Test = autoclass('org.jnius2.ChildVisibilityTest', include_protected=True, include_private=False)
+@@ -58,17 +44,17 @@ def test_child_static_methods_package_protected(self):
+         self.assertTrue(hasattr(Test, 'methodStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
+-        self.assertEqual(Test.methodStaticProtected(), py2_encode("StaticProtected"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
++        self.assertEqual(Test.methodStaticProtected(), "StaticProtected")
+ 
+         self.assertTrue(hasattr(Test, 'methodChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodChildStaticPublic(), py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.methodChildStaticPackageProtected(), py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.methodChildStaticProtected(), py2_encode("ChildStaticProtected"))
++        self.assertEqual(Test.methodChildStaticPublic(), "ChildStaticPublic")
++        self.assertEqual(Test.methodChildStaticPackageProtected(), "ChildStaticPackageProtected")
++        self.assertEqual(Test.methodChildStaticProtected(), "ChildStaticProtected")
+ 
+     def test_child_fields_package_protected(self):
+ 
+@@ -80,17 +66,17 @@ def test_child_fields_package_protected(self):
+         self.assertTrue(hasattr(test, 'fieldProtected'))
+         self.assertFalse(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
+-        self.assertEqual(test.fieldProtected, py2_encode("Protected"))
++        self.assertEqual(test.fieldPublic, "Public")
++        self.assertEqual(test.fieldProtected, "Protected")
+ 
+         self.assertTrue(hasattr(test, 'fieldChildPublic'))
+         self.assertTrue(hasattr(test, 'fieldChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'fieldChildProtected'))
+         self.assertFalse(hasattr(test, 'fieldChildPrivate'))
+ 
+-        self.assertEqual(test.fieldChildPublic, py2_encode("ChildPublic"))
+-        self.assertEqual(test.fieldChildPackageProtected, py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.fieldChildProtected, py2_encode("ChildProtected"))
++        self.assertEqual(test.fieldChildPublic, "ChildPublic")
++        self.assertEqual(test.fieldChildPackageProtected, "ChildPackageProtected")
++        self.assertEqual(test.fieldChildProtected, "ChildProtected")
+ 
+     def test_child_methods_package_protected(self):
+ 
+@@ -102,14 +88,14 @@ def test_child_methods_package_protected(self):
+         self.assertTrue(hasattr(test, 'methodProtected'))
+         self.assertFalse(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
+-        self.assertEqual(test.methodProtected(), py2_encode("Protected"))
++        self.assertEqual(test.methodPublic(), "Public")
++        self.assertEqual(test.methodProtected(), "Protected")
+ 
+         self.assertTrue(hasattr(test, 'methodChildPublic'))
+         self.assertTrue(hasattr(test, 'methodChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'methodChildProtected'))
+         self.assertFalse(hasattr(test, 'methodChildPrivate'))
+ 
+-        self.assertEqual(test.methodChildPublic(), py2_encode("ChildPublic"))
+-        self.assertEqual(test.methodChildPackageProtected(), py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.methodChildProtected(), py2_encode("ChildProtected"))
++        self.assertEqual(test.methodChildPublic(), "ChildPublic")
++        self.assertEqual(test.methodChildPackageProtected(), "ChildPackageProtected")
++        self.assertEqual(test.methodChildProtected(), "ChildProtected")
+diff --git a/tests/test_visibility_public_only.py b/tests/test_visibility_public_only.py
+index 78ac831b..aec174b4 100644
+--- a/tests/test_visibility_public_only.py
++++ b/tests/test_visibility_public_only.py
+@@ -1,26 +1,12 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ import jnius_config
+ from jnius import JavaMethod, JavaStaticMethod, JavaException
+ from jnius.reflect import autoclass
+ 
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+-
+ class VisibilityPublicOnlyTest(unittest.TestCase):
+ 
+     def test_static_fields_public_only(self):
+@@ -31,7 +17,7 @@ def test_static_fields_public_only(self):
+         self.assertFalse(hasattr(Test, 'fieldStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
+ 
+     def test_child_static_fields_public_only(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=False, include_private=False)
+@@ -41,14 +27,14 @@ def test_child_static_fields_public_only(self):
+         self.assertFalse(hasattr(Test, 'fieldStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
+ 
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPublic'))
+         self.assertFalse(hasattr(Test, 'fieldChildStaticPackageProtected'))
+         self.assertFalse(hasattr(Test, 'fieldChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldChildStaticPublic, py2_encode("ChildStaticPublic"))
++        self.assertEqual(Test.fieldChildStaticPublic, "ChildStaticPublic")
+ 
+     def test_static_methods_public_only(self):
+         Test = autoclass('org.jnius.VisibilityTest', include_protected=False, include_private=False)
+@@ -58,7 +44,7 @@ def test_static_methods_public_only(self):
+         self.assertFalse(hasattr(Test, 'methodStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
+ 
+     def test_child_static_methods_public_only(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=False, include_private=False)
+@@ -68,14 +54,14 @@ def test_child_static_methods_public_only(self):
+         self.assertFalse(hasattr(Test, 'methodStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
+ 
+         self.assertTrue(hasattr(Test, 'methodChildStaticPublic'))
+         self.assertFalse(hasattr(Test, 'methodChildStaticPackageProtected'))
+         self.assertFalse(hasattr(Test, 'methodChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodChildStaticPublic(), py2_encode("ChildStaticPublic"))
++        self.assertEqual(Test.methodChildStaticPublic(), "ChildStaticPublic")
+ 
+     def test_fields_public_only(self):
+ 
+@@ -87,7 +73,7 @@ def test_fields_public_only(self):
+         self.assertFalse(hasattr(test, 'fieldProtected'))
+         self.assertFalse(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
++        self.assertEqual(test.fieldPublic, "Public")
+ 
+     def test_child_fields_public_only(self):
+ 
+@@ -99,14 +85,14 @@ def test_child_fields_public_only(self):
+         self.assertFalse(hasattr(test, 'fieldProtected'))
+         self.assertFalse(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
++        self.assertEqual(test.fieldPublic, "Public")
+ 
+         self.assertTrue(hasattr(test, 'fieldChildPublic'))
+         self.assertFalse(hasattr(test, 'fieldChildPackageProtected'))
+         self.assertFalse(hasattr(test, 'fieldChildProtected'))
+         self.assertFalse(hasattr(test, 'fieldChildPrivate'))
+ 
+-        self.assertEqual(test.fieldChildPublic, py2_encode("ChildPublic"))
++        self.assertEqual(test.fieldChildPublic, "ChildPublic")
+ 
+     def test_methods_public_only(self):
+ 
+@@ -118,7 +104,7 @@ def test_methods_public_only(self):
+         self.assertFalse(hasattr(test, 'methodProtected'))
+         self.assertFalse(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
++        self.assertEqual(test.methodPublic(), "Public")
+ 
+     def test_child_methods_public_only(self):
+ 
+@@ -130,14 +116,14 @@ def test_child_methods_public_only(self):
+         self.assertFalse(hasattr(test, 'methodProtected'))
+         self.assertFalse(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
++        self.assertEqual(test.methodPublic(), "Public")
+ 
+         self.assertTrue(hasattr(test, 'methodChildPublic'))
+         self.assertFalse(hasattr(test, 'methodChildPackageProtected'))
+         self.assertFalse(hasattr(test, 'methodChildProtected'))
+         self.assertFalse(hasattr(test, 'methodChildPrivate'))
+ 
+-        self.assertEqual(test.methodChildPublic(), py2_encode("ChildPublic"))
++        self.assertEqual(test.methodChildPublic(), "ChildPublic")
+ 
+     def test_static_multi_methods(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=False, include_private=False)
+diff --git a/tests/test_visibility_public_protected.py b/tests/test_visibility_public_protected.py
+index 8f591c48..812d3fe3 100644
+--- a/tests/test_visibility_public_protected.py
++++ b/tests/test_visibility_public_protected.py
+@@ -1,26 +1,12 @@
+ from __future__ import print_function
+ from __future__ import division
+ from __future__ import absolute_import
+-import sys
+ import unittest
+ import jnius_config
+ from jnius import JavaMultipleMethod, JavaException
+ from jnius.reflect import autoclass
+ 
+ 
+-try:
+-    long
+-except NameError:
+-    # Python 3
+-    long = int
+-
+-
+-def py2_encode(uni):
+-    if sys.version_info < (3, 0):
+-        uni = uni.encode('utf-8')
+-    return uni
+-
+-
+ class VisibilityPublicProtectedTest(unittest.TestCase):
+ 
+     def test_static_fields_public_protected(self):
+@@ -31,9 +17,9 @@ def test_static_fields_public_protected(self):
+         self.assertTrue(hasattr(Test, 'fieldStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
+-        self.assertEqual(Test.fieldStaticPackageProtected, py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.fieldStaticProtected, py2_encode("StaticProtected"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
++        self.assertEqual(Test.fieldStaticPackageProtected, "StaticPackageProtected")
++        self.assertEqual(Test.fieldStaticProtected, "StaticProtected")
+ 
+     def test_child_static_fields_public_protected(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=False)
+@@ -43,18 +29,18 @@ def test_child_static_fields_public_protected(self):
+         self.assertTrue(hasattr(Test, 'fieldStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldStaticPublic, py2_encode("StaticPublic"))
+-        self.assertEqual(Test.fieldStaticPackageProtected, py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.fieldStaticProtected, py2_encode("StaticProtected"))
++        self.assertEqual(Test.fieldStaticPublic, "StaticPublic")
++        self.assertEqual(Test.fieldStaticPackageProtected, "StaticPackageProtected")
++        self.assertEqual(Test.fieldStaticProtected, "StaticProtected")
+ 
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'fieldChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'fieldChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.fieldChildStaticPublic, py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.fieldChildStaticPackageProtected, py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.fieldChildStaticProtected, py2_encode("ChildStaticProtected"))
++        self.assertEqual(Test.fieldChildStaticPublic, "ChildStaticPublic")
++        self.assertEqual(Test.fieldChildStaticPackageProtected, "ChildStaticPackageProtected")
++        self.assertEqual(Test.fieldChildStaticProtected, "ChildStaticProtected")
+ 
+     def test_static_methods_public_protected(self):
+         Test = autoclass('org.jnius.VisibilityTest', include_protected=True, include_private=False)
+@@ -64,9 +50,9 @@ def test_static_methods_public_protected(self):
+         self.assertTrue(hasattr(Test, 'methodStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
+-        self.assertEqual(Test.methodStaticPackageProtected(), py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.methodStaticProtected(), py2_encode("StaticProtected"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
++        self.assertEqual(Test.methodStaticPackageProtected(), "StaticPackageProtected")
++        self.assertEqual(Test.methodStaticProtected(), "StaticProtected")
+ 
+     def test_child_static_methods_public_protected(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=False)
+@@ -76,18 +62,18 @@ def test_child_static_methods_public_protected(self):
+         self.assertTrue(hasattr(Test, 'methodStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodStaticPublic(), py2_encode("StaticPublic"))
+-        self.assertEqual(Test.methodStaticPackageProtected(), py2_encode("StaticPackageProtected"))
+-        self.assertEqual(Test.methodStaticProtected(), py2_encode("StaticProtected"))
++        self.assertEqual(Test.methodStaticPublic(), "StaticPublic")
++        self.assertEqual(Test.methodStaticPackageProtected(), "StaticPackageProtected")
++        self.assertEqual(Test.methodStaticProtected(), "StaticProtected")
+ 
+         self.assertTrue(hasattr(Test, 'methodChildStaticPublic'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticPackageProtected'))
+         self.assertTrue(hasattr(Test, 'methodChildStaticProtected'))
+         self.assertFalse(hasattr(Test, 'methodChildStaticPrivate'))
+ 
+-        self.assertEqual(Test.methodChildStaticPublic(), py2_encode("ChildStaticPublic"))
+-        self.assertEqual(Test.methodChildStaticPackageProtected(), py2_encode("ChildStaticPackageProtected"))
+-        self.assertEqual(Test.methodChildStaticProtected(), py2_encode("ChildStaticProtected"))
++        self.assertEqual(Test.methodChildStaticPublic(), "ChildStaticPublic")
++        self.assertEqual(Test.methodChildStaticPackageProtected(), "ChildStaticPackageProtected")
++        self.assertEqual(Test.methodChildStaticProtected(), "ChildStaticProtected")
+ 
+     def test_fields_public_protected(self):
+ 
+@@ -99,9 +85,9 @@ def test_fields_public_protected(self):
+         self.assertTrue(hasattr(test, 'fieldProtected'))
+         self.assertFalse(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
+-        self.assertEqual(test.fieldPackageProtected, py2_encode("PackageProtected"))
+-        self.assertEqual(test.fieldProtected, py2_encode("Protected"))
++        self.assertEqual(test.fieldPublic, "Public")
++        self.assertEqual(test.fieldPackageProtected, "PackageProtected")
++        self.assertEqual(test.fieldProtected, "Protected")
+ 
+     def test_child_fields_public_protected(self):
+ 
+@@ -113,18 +99,18 @@ def test_child_fields_public_protected(self):
+         self.assertTrue(hasattr(test, 'fieldProtected'))
+         self.assertFalse(hasattr(test, 'fieldPrivate'))
+ 
+-        self.assertEqual(test.fieldPublic, py2_encode("Public"))
+-        self.assertEqual(test.fieldPackageProtected, py2_encode("PackageProtected"))
+-        self.assertEqual(test.fieldProtected, py2_encode("Protected"))
++        self.assertEqual(test.fieldPublic, "Public")
++        self.assertEqual(test.fieldPackageProtected, "PackageProtected")
++        self.assertEqual(test.fieldProtected, "Protected")
+ 
+         self.assertTrue(hasattr(test, 'fieldChildPublic'))
+         self.assertTrue(hasattr(test, 'fieldChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'fieldChildProtected'))
+         self.assertFalse(hasattr(test, 'fieldChildPrivate'))
+ 
+-        self.assertEqual(test.fieldChildPublic, py2_encode("ChildPublic"))
+-        self.assertEqual(test.fieldChildPackageProtected, py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.fieldChildProtected, py2_encode("ChildProtected"))
++        self.assertEqual(test.fieldChildPublic, "ChildPublic")
++        self.assertEqual(test.fieldChildPackageProtected, "ChildPackageProtected")
++        self.assertEqual(test.fieldChildProtected, "ChildProtected")
+ 
+     def test_methods_public_protected(self):
+ 
+@@ -136,9 +122,9 @@ def test_methods_public_protected(self):
+         self.assertTrue(hasattr(test, 'methodProtected'))
+         self.assertFalse(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
+-        self.assertEqual(test.methodPackageProtected(), py2_encode("PackageProtected"))
+-        self.assertEqual(test.methodProtected(), py2_encode("Protected"))
++        self.assertEqual(test.methodPublic(), "Public")
++        self.assertEqual(test.methodPackageProtected(), "PackageProtected")
++        self.assertEqual(test.methodProtected(), "Protected")
+ 
+     def test_child_methods_public_protected(self):
+ 
+@@ -150,18 +136,18 @@ def test_child_methods_public_protected(self):
+         self.assertTrue(hasattr(test, 'methodProtected'))
+         self.assertFalse(hasattr(test, 'methodPrivate'))
+ 
+-        self.assertEqual(test.methodPublic(), py2_encode("Public"))
+-        self.assertEqual(test.methodPackageProtected(), py2_encode("PackageProtected"))
+-        self.assertEqual(test.methodProtected(), py2_encode("Protected"))
++        self.assertEqual(test.methodPublic(), "Public")
++        self.assertEqual(test.methodPackageProtected(), "PackageProtected")
++        self.assertEqual(test.methodProtected(), "Protected")
+ 
+         self.assertTrue(hasattr(test, 'methodChildPublic'))
+         self.assertTrue(hasattr(test, 'methodChildPackageProtected'))
+         self.assertTrue(hasattr(test, 'methodChildProtected'))
+         self.assertFalse(hasattr(test, 'methodChildPrivate'))
+ 
+-        self.assertEqual(test.methodChildPublic(), py2_encode("ChildPublic"))
+-        self.assertEqual(test.methodChildPackageProtected(), py2_encode("ChildPackageProtected"))
+-        self.assertEqual(test.methodChildProtected(), py2_encode("ChildProtected"))
++        self.assertEqual(test.methodChildPublic(), "ChildPublic")
++        self.assertEqual(test.methodChildPackageProtected(), "ChildPackageProtected")
++        self.assertEqual(test.methodChildProtected(), "ChildProtected")
+ 
+     def test_static_multi_methods(self):
+         Test = autoclass('org.jnius.ChildVisibilityTest', include_protected=True, include_private=False)
+

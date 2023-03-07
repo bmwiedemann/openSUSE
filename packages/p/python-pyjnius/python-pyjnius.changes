@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 09:07:16 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/kivy/pyjnius/commit/ee4e9c224c4a3dda1f15a6f161cd0dfb268eb0e3
+  + python-pyjnius-no-python2.patch
+
+-------------------------------------------------------------------
 Wed Oct  5 00:17:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.4.2 

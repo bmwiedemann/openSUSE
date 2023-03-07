@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjnius
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kivy/pyjnius
 Source:         https://github.com/kivy/pyjnius/archive/%{version}.tar.gz#/pyjnius-%{version}.tar.gz
+# https://github.com/kivy/pyjnius/commit/ee4e9c224c4a3dda1f15a6f161cd0dfb268eb0e3
+Patch0:         python-pyjnius-no-python2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ant
@@ -32,10 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-Cython
-Requires:       python-six >= 1.7.0
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.7.0}
 BuildRequires:  javapackages-local
 # /SECTION
 %python_subpackages
@@ -45,6 +45,7 @@ Access Java classes from Python.
 
 %prep
 %setup -q -n pyjnius-%{version}
+%patch0 -p1
 sed -i 's:python:python3:' tests/test_jvm_options.py
 
 %build
