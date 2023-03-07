@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  5 09:54:13 UTC 2023 - Aeneas Jaißle <aj@ajaissle.de>
+
+- add "/usr/share/php" to include_path
+
+-------------------------------------------------------------------
+Fri Mar  3 13:56:09 UTC 2023 - pgajdos@suse.com
+
+- allow to specify load order of extensions in %{php_sysconf}/conf.d
+  [bsc#1205162]
+
+-------------------------------------------------------------------
 Sat Feb 25 20:36:50 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - change to %bcond conditional build dependencies

@@ -7,7 +7,7 @@ Index: php-8.0.0/php.ini-production
  
  ; UNIX: "/path1:/path2"
 -;include_path = ".:/php/includes"
-+include_path = ".:/usr/share/php8:/usr/share/php/PEAR"
++include_path = ".:/usr/share/php8:/usr/share/php:/usr/share/php/PEAR
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"

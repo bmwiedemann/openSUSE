@@ -1285,13 +1285,21 @@ for f in %{buildroot}%{extension_dir}/*; do
         f=${f%.so}
     fi
     ext=${f##*/}
-    echo "; comment out next line to disable $ext extension in php" > %{buildroot}%{php_sysconf}/conf.d/$ext.ini
     zend_=''
-    if [ $ext == "opcache" ]; then
-      # https://secure.php.net/manual/en/opcache.installation.php
-      zend_='zend_'
-    fi
-    echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/$ext.ini
+    case $ext in
+      # priority 0 (will be loaded first)
+      opcache)
+        ini_name=00-${ext}
+        zend_='zend_';;
+      # priority 2 (will be loaded after < 2)
+      pdo_*|mysqli|xmlreader)
+        ini_name=20-${ext};;
+      # priority 1 (will be loaded after < 1)
+      *)
+        ini_name=10-${ext};;
+    esac
+    echo "; comment out next line to disable $ext extension in php" > %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
+    echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
 done
 # fix symlink (bnc#734176)
 ln -s %{_bindir}/php %{buildroot}%{_bindir}/%{php_name}
@@ -1302,8 +1310,6 @@ install -m 644 -c macros.php %{buildroot}%{_rpmconfigdir}/macros.d/macros.php
 # install missing SAPI headers for embed
 install -d %{buildroot}%{_includedir}/%{php_name}/sapi/embed
 install -m 644 sapi/embed/php_embed.h %{buildroot}%{_includedir}/%{php_name}/sapi/embed/php_embed.h
-# mysqlnd must be loaded before mysqli (undefined symbol: mysqlnd_global_stats)
-mv %{buildroot}%{php_sysconf}/conf.d/{,_}mysqlnd.ini
 # fix file contains a shebang
 for f in %{buildroot}%{_datadir}/%{php_name}/build/{gen_stub.php,run-tests.php}; do
     sed -i '1{s|env ||}' $f
@@ -1465,250 +1471,250 @@ fi
 %files bcmath
 %defattr(-, root, root)
 %{extension_dir}/bcmath.so
-%config(noreplace) %{php_sysconf}/conf.d/bcmath.ini
+%config(noreplace) %{php_sysconf}/conf.d/*bcmath.ini
 
 %files bz2
 %defattr(-, root, root)
 %{extension_dir}/bz2.so
-%config(noreplace) %{php_sysconf}/conf.d/bz2.ini
+%config(noreplace) %{php_sysconf}/conf.d/*bz2.ini
 
 %files calendar
 %defattr(-, root, root)
 %{extension_dir}/calendar.so
-%config(noreplace) %{php_sysconf}/conf.d/calendar.ini
+%config(noreplace) %{php_sysconf}/conf.d/*calendar.ini
 
 %files ctype
 %defattr(-, root, root)
 %{extension_dir}/ctype.so
-%config(noreplace) %{php_sysconf}/conf.d/ctype.ini
+%config(noreplace) %{php_sysconf}/conf.d/*ctype.ini
 
 %files curl
 %defattr(-, root, root)
 %{extension_dir}/curl.so
-%config(noreplace) %{php_sysconf}/conf.d/curl.ini
+%config(noreplace) %{php_sysconf}/conf.d/*curl.ini
 
 %files dba
 %defattr(-, root, root)
 %{extension_dir}/dba.so
-%config(noreplace) %{php_sysconf}/conf.d/dba.ini
+%config(noreplace) %{php_sysconf}/conf.d/*dba.ini
 
 %files dom
 %defattr(-, root, root)
 %{extension_dir}/dom.so
-%config(noreplace) %{php_sysconf}/conf.d/dom.ini
+%config(noreplace) %{php_sysconf}/conf.d/*dom.ini
 
 %files enchant
 %defattr(-, root, root)
 %{extension_dir}/enchant.so
-%config(noreplace) %{php_sysconf}/conf.d/enchant.ini
+%config(noreplace) %{php_sysconf}/conf.d/*enchant.ini
 
 %files exif
 %defattr(-, root, root)
 %{extension_dir}/exif.so
-%config(noreplace) %{php_sysconf}/conf.d/exif.ini
+%config(noreplace) %{php_sysconf}/conf.d/*exif.ini
 
 %files ffi
 %defattr(-, root, root)
 %{extension_dir}/ffi.so
-%config(noreplace) %{php_sysconf}/conf.d/ffi.ini
+%config(noreplace) %{php_sysconf}/conf.d/*ffi.ini
 
 %files fileinfo
 %defattr(-, root, root)
 %{extension_dir}/fileinfo.so
-%config(noreplace) %{php_sysconf}/conf.d/fileinfo.ini
+%config(noreplace) %{php_sysconf}/conf.d/*fileinfo.ini
 
 %files ftp
 %defattr(-, root, root)
 %{extension_dir}/ftp.so
-%config(noreplace) %{php_sysconf}/conf.d/ftp.ini
+%config(noreplace) %{php_sysconf}/conf.d/*ftp.ini
 
 %files gd
 %defattr(-, root, root)
 %{extension_dir}/gd.so
-%config(noreplace) %{php_sysconf}/conf.d/gd.ini
+%config(noreplace) %{php_sysconf}/conf.d/*gd.ini
 
 %files gettext
 %defattr(-, root, root)
 %{extension_dir}/gettext.so
-%config(noreplace) %{php_sysconf}/conf.d/gettext.ini
+%config(noreplace) %{php_sysconf}/conf.d/*gettext.ini
 
 %files gmp
 %defattr(-, root, root)
 %{extension_dir}/gmp.so
-%config(noreplace) %{php_sysconf}/conf.d/gmp.ini
+%config(noreplace) %{php_sysconf}/conf.d/*gmp.ini
 
 %files iconv
 %defattr(-, root, root)
 %{extension_dir}/iconv.so
-%config(noreplace) %{php_sysconf}/conf.d/iconv.ini
+%config(noreplace) %{php_sysconf}/conf.d/*iconv.ini
 
 %files intl
 %defattr(-, root, root)
 %{extension_dir}/intl.so
-%config(noreplace) %{php_sysconf}/conf.d/intl.ini
+%config(noreplace) %{php_sysconf}/conf.d/*intl.ini
 
 %files ldap
 %defattr(-, root, root)
 %{extension_dir}/ldap.so
-%config(noreplace) %{php_sysconf}/conf.d/ldap.ini
+%config(noreplace) %{php_sysconf}/conf.d/*ldap.ini
 
 %files mbstring
 %defattr(-, root, root)
 %{extension_dir}/mbstring.so
-%config(noreplace) %{php_sysconf}/conf.d/mbstring.ini
+%config(noreplace) %{php_sysconf}/conf.d/*mbstring.ini
 
 %files mysql
 %defattr(-, root, root)
 %{extension_dir}/mysqli.so
-%config(noreplace) %{php_sysconf}/conf.d/mysqli.ini
+%config(noreplace) %{php_sysconf}/conf.d/*mysqli.ini
 %{extension_dir}/mysqlnd.so
-%config(noreplace) %{php_sysconf}/conf.d/_mysqlnd.ini
+%config(noreplace) %{php_sysconf}/conf.d/*mysqlnd.ini
 %{extension_dir}/pdo_mysql.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo_mysql.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo_mysql.ini
 
 %if %{with firebird}
 %files firebird
 %defattr(-, root, root)
 %{extension_dir}/pdo_firebird.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo_firebird.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo_firebird.ini
 %endif
 
 %files odbc
 %defattr(-, root, root)
 %{extension_dir}/odbc.so
-%config(noreplace) %{php_sysconf}/conf.d/odbc.ini
+%config(noreplace) %{php_sysconf}/conf.d/*odbc.ini
 %{extension_dir}/pdo_odbc.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo_odbc.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo_odbc.ini
 
 %files opcache
 %defattr(-, root, root)
 %{extension_dir}/opcache.so
-%config(noreplace) %{php_sysconf}/conf.d/opcache.ini
+%config(noreplace) %{php_sysconf}/conf.d/*opcache.ini
 
 %files openssl
 %defattr(-, root, root)
 %{extension_dir}/openssl.so
-%config(noreplace) %{php_sysconf}/conf.d/openssl.ini
+%config(noreplace) %{php_sysconf}/conf.d/*openssl.ini
 
 %files phar
 %defattr(-, root, root)
 %{_mandir}/man1/phar.1%{?ext_man}
 %{_mandir}/man1/phar.phar.1%{?ext_man}
 %{extension_dir}/phar.so
-%config(noreplace) %{php_sysconf}/conf.d/phar.ini
+%config(noreplace) %{php_sysconf}/conf.d/*phar.ini
 %{_bindir}/phar
 %{_bindir}/phar.phar
 
 %files pcntl
 %defattr(-, root, root)
 %{extension_dir}/pcntl.so
-%config(noreplace) %{php_sysconf}/conf.d/pcntl.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pcntl.ini
 
 %files pdo
 %defattr(-, root, root)
 %{extension_dir}/pdo.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo.ini
 
 %files pgsql
 %defattr(-, root, root)
 %{extension_dir}/pgsql.so
-%config(noreplace) %{php_sysconf}/conf.d/pgsql.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pgsql.ini
 %{extension_dir}/pdo_pgsql.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo_pgsql.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo_pgsql.ini
 
 %files posix
 %defattr(-, root, root)
 %{extension_dir}/posix.so
-%config(noreplace) %{php_sysconf}/conf.d/posix.ini
+%config(noreplace) %{php_sysconf}/conf.d/*posix.ini
 
 %files readline
 %defattr(-, root, root)
 %{extension_dir}/readline.so
-%config(noreplace) %{php_sysconf}/conf.d/readline.ini
+%config(noreplace) %{php_sysconf}/conf.d/*readline.ini
 
 %files shmop
 %defattr(-, root, root)
 %{extension_dir}/shmop.so
-%config(noreplace) %{php_sysconf}/conf.d/shmop.ini
+%config(noreplace) %{php_sysconf}/conf.d/*shmop.ini
 
 %files snmp
 %defattr(-, root, root)
 %{extension_dir}/snmp.so
-%config(noreplace) %{php_sysconf}/conf.d/snmp.ini
+%config(noreplace) %{php_sysconf}/conf.d/*snmp.ini
 
 %files soap
 %defattr(-, root, root)
 %{extension_dir}/soap.so
-%config(noreplace) %{php_sysconf}/conf.d/soap.ini
+%config(noreplace) %{php_sysconf}/conf.d/*soap.ini
 
 %if %{with sodium}
 %files sodium
 %defattr(-, root, root)
 %{extension_dir}/sodium.so
-%config(noreplace) %{php_sysconf}/conf.d/sodium.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sodium.ini
 %endif
 
 %files sockets
 %defattr(-, root, root)
 %{extension_dir}/sockets.so
-%config(noreplace) %{php_sysconf}/conf.d/sockets.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sockets.ini
 
 %files sqlite
 %defattr(-, root, root)
 %{extension_dir}/pdo_sqlite.so
-%config(noreplace) %{php_sysconf}/conf.d/pdo_sqlite.ini
+%config(noreplace) %{php_sysconf}/conf.d/*pdo_sqlite.ini
 %{extension_dir}/sqlite3.so
-%config(noreplace) %{php_sysconf}/conf.d/sqlite3.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sqlite3.ini
 
 %files sysvmsg
 %defattr(-, root, root)
 %{extension_dir}/sysvmsg.so
-%config(noreplace) %{php_sysconf}/conf.d/sysvmsg.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sysvmsg.ini
 
 %files sysvsem
 %defattr(-, root, root)
 %{extension_dir}/sysvsem.so
-%config(noreplace) %{php_sysconf}/conf.d/sysvsem.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sysvsem.ini
 
 %files sysvshm
 %defattr(-, root, root)
 %{extension_dir}/sysvshm.so
-%config(noreplace) %{php_sysconf}/conf.d/sysvshm.ini
+%config(noreplace) %{php_sysconf}/conf.d/*sysvshm.ini
 
 %files tidy
 %defattr(-, root, root)
 %{extension_dir}/tidy.so
-%config(noreplace) %{php_sysconf}/conf.d/tidy.ini
+%config(noreplace) %{php_sysconf}/conf.d/*tidy.ini
 
 %files tokenizer
 %defattr(-, root, root)
 %{extension_dir}/tokenizer.so
-%config(noreplace) %{php_sysconf}/conf.d/tokenizer.ini
+%config(noreplace) %{php_sysconf}/conf.d/*tokenizer.ini
 
 %files xmlreader
 %defattr(-, root, root)
 %{extension_dir}/xmlreader.so
-%config(noreplace) %{php_sysconf}/conf.d/xmlreader.ini
+%config(noreplace) %{php_sysconf}/conf.d/*xmlreader.ini
 
 %files xmlwriter
 %defattr(-, root, root)
 %{extension_dir}/xmlwriter.so
-%config(noreplace) %{php_sysconf}/conf.d/xmlwriter.ini
+%config(noreplace) %{php_sysconf}/conf.d/*xmlwriter.ini
 
 %files xsl
 %defattr(-, root, root)
 %{extension_dir}/xsl.so
-%config(noreplace) %{php_sysconf}/conf.d/xsl.ini
+%config(noreplace) %{php_sysconf}/conf.d/*xsl.ini
 
 %files zip
 %defattr(-, root, root)
 %{extension_dir}/zip.so
-%config(noreplace) %{php_sysconf}/conf.d/zip.ini
+%config(noreplace) %{php_sysconf}/conf.d/*zip.ini
 
 %files zlib
 %defattr(-, root, root)
 %{extension_dir}/zlib.so
-%config(noreplace) %{php_sysconf}/conf.d/zlib.ini
+%config(noreplace) %{php_sysconf}/conf.d/*zlib.ini
 %endif
 
 %if "%{flavor}" == "test"

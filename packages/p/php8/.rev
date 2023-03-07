@@ -387,4 +387,15 @@
     <comment>- change to %bcond conditional build dependencies (forwarded request 1067746 from adkorte)</comment>
     <requestid>1067902</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>38d26f6bf06102409b6b614f6184a115</srcmd5>
+    <version>8.1.16</version>
+    <time>1678204113</time>
+    <user>dimstar_suse</user>
+    <comment>- add &quot;/usr/share/php&quot; to include_path
+
+- allow to specify load order of extensions in %{php_sysconf}/conf.d
+  [bsc#1205162]</comment>
+    <requestid>1069569</requestid>
+  </revision>
 </revisionlist>
