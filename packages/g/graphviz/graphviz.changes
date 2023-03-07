@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  1 23:16:17 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix RPM conditionals for PHP, elif does not work on Leap 15.x
+- Remove unused ghostscript_any BuildRequires for qt5 and main
+  flavors
+
+-------------------------------------------------------------------
 Mon Nov 14 14:44:56 UTC 2022 - pgajdos@suse.com
 
 - php8 support was added in swig 4.1.0

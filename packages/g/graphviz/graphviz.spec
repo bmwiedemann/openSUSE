@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package graphviz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,14 +35,11 @@
 %bcond_with    java
 %bcond_with    ocaml
 %if "%{flavor}" == "addons"
-# PHP7 requires swig >= 3.0.11, not available on Leap 42.x
 # PHP8 requires swig >= 4.1.0, https://github.com/swig/swig/commit/56d74355735f3661406d69d04d89d1bdb4ca96f9
 %if 0%{?suse_version} >= 1599
 %define php_version 8
-%elif 0%{?suse_version} >= 1500
-%define php_version 7
 %else
-%define php_version 5
+%define php_version 7
 %endif
 %define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
 %define phpext_dir  %(%{__php_config} --extension-dir)
@@ -115,12 +112,9 @@ BuildRequires:  perl
 %if %{php_version} == 8
 BuildRequires:  php8-devel
 BuildRequires:  swig >= 4.1.0
-%elif %{php_version} == 7
+%else
 BuildRequires:  php7-devel
 BuildRequires:  swig >= 3.0.11
-%else
-BuildRequires:  php5-devel
-BuildRequires:  swig
 %endif
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(cairo)
@@ -148,8 +142,6 @@ BuildRequires:  java-devel >= 1.6.0
 %if %{with ocaml}
 BuildRequires:  ocaml
 %endif
-%else
-BuildRequires:  ghostscript_any
 %endif
 %if "%{flavor}" == "qt5"
 BuildRequires:  pkgconfig(Qt5Core)
@@ -462,10 +454,13 @@ export LDFLAGS="-pie"
 %if "%{flavor}" == "addons"
       --with-x \
       --enable-lefty \
-      --with-qt \
       --with-smyrna \
       RUBY_VER=%{ruby_version} \
-%else
+%endif
+%if "%{flavor}" == "qt5"
+      --with-qt \
+%endif
+%if "%{flavor}" == ""
       --without-mylibgd \
       --without-libgd \
 %endif
