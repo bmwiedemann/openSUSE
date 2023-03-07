@@ -38,4 +38,19 @@
 - remove sshpass-1.05-f_option_check.patch (upstream)</comment>
     <requestid>869793</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9a7bf36133cc289df86f1c5a70815a9a</srcmd5>
+    <version>1.10</version>
+    <time>1678204229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10:
+  * Remove sig unsafe functions from signal handler (Ticket #22).
+  * Allow -e to explicitly specify the environment variable to
+    use
+  * Unset the variable specified with -e before calling
+    subprogram
+  * Change the logic for setting a controlling TTY. Fixes
+    compatibility issues with OpenSolaris and MSYS/Cygwin.</comment>
+    <requestid>1069841</requestid>
+  </revision>
 </revisionlist>

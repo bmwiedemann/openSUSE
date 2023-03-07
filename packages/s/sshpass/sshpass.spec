@@ -1,7 +1,7 @@
 #
 # spec file for package sshpass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sshpass
-Version:        1.09
+Version:        1.10
 Release:        0
 Summary:        Non-interactive SSH authentication utility
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            http://sshpass.sourceforge.net/
+URL:            https://sshpass.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/sshpass/sshpass-%{version}.tar.gz
 
 %description
@@ -35,15 +35,15 @@ more secure public key authentication of SSH instead.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
 %{_bindir}/sshpass
-%{_mandir}/man1/sshpass.1%{ext_man}
+%{_mandir}/man1/sshpass.1%{?ext_man}
 
 %changelog

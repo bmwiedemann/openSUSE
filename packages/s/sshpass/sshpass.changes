@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  * Remove sig unsafe functions from signal handler (Ticket #22).
+  * Allow -e to explicitly specify the environment variable to
+    use
+  * Unset the variable specified with -e before calling
+    subprogram
+  * Change the logic for setting a controlling TTY. Fixes
+    compatibility issues with OpenSolaris and MSYS/Cygwin.
+
+-------------------------------------------------------------------
 Wed Feb  3 18:53:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.9:
