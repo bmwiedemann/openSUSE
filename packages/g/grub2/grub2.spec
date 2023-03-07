@@ -497,6 +497,7 @@ Patch970:       grub2-add-module-for-boot-loader-interface.patch
 # Fix out of memory error on lpar installation from virtual cdrom (bsc#1208024)
 Patch971:       0001-ieee1275-Further-increase-initially-allocated-heap-f.patch
 Patch972:       0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
+Patch973:       0001-RISC-V-Handle-R_RISCV_CALL_PLT-reloc.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  1 02:58:07 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix riscv64 error for relocation 0x13 is not implemented yet
+  * 0001-RISC-V-Handle-R_RISCV_CALL_PLT-reloc.patch
+
+-------------------------------------------------------------------
 Wed Feb 22 07:08:44 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix out of memory error on lpar installation from virtual cdrom (bsc#1208024)
