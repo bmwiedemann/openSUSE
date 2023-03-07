@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 07 05:43:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.4:
+  * build: strip credentials from remote url on collecting Git
+    provenance info
+  * build: makes git dirty check opt-in
+  * docs: added --platform=local example
+  * Add env var to disable default attestations
+
+-------------------------------------------------------------------
 Thu Feb 16 15:32:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.3:
