@@ -1,4 +1,3 @@
-Name: base
 BuildRequires: bash
 #!BuildIgnore: brp-trim-desktopfiles
 #!BuildIgnore: rpmlint-mini
@@ -9,3 +8,4 @@ BuildRequires: bash
 #!BuildIgnore: gettext-runtime
 #!BuildIgnore: brp-extract-appdata
 #!BuildIgnore: cputype-armv6
+#!BuildIgnore: cputype-armv7
