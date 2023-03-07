@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 24 07:54:02 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.5
+  * fixfiles: Unmount temporary bind mounts on SIGINT
+  * Lots of smaller changes
+- Refreshed get_os_version.patch
+- Drop chcat_handle_missing_translations.patch, is upstream
+- Add additional BuildRequires for python
+- Added additional developer key (Jason Zaman)
+- Add requires for python3-distro for the devel package
+
+-------------------------------------------------------------------
 Mon Dec 19 14:38:47 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_pam_vendordir

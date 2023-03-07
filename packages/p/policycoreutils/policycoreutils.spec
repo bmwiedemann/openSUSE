@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.4
-%define libsemanage_ver  3.4
-%define libselinux_ver   3.4
+%define libsepol_ver     3.5
+%define libsemanage_ver  3.5
+%define libselinux_ver   3.5
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -45,7 +45,6 @@ Source13:       newrole.pam
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
-Patch4:         chcat_handle_missing_translations.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -62,9 +61,11 @@ BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  pam-devel
 # needed only for dir /usr/share/polkit-1 from policycoreutils-gui
 BuildRequires:  polkit
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
-BuildRequires:  python3-setools >= %{setools_ver}
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 Requires:       gawk
@@ -121,6 +122,7 @@ Summary:        SELinux policy core policy devel utilities
 Group:          Productivity/Security
 Requires:       %{_bindir}/make
 Requires:       python3-%{name} = %{version}-%{release}
+Requires:       python3-distro
 Recommends:     %{_sbindir}/ausearch
 Conflicts:      %{name}-python <= 2.6
 
@@ -171,7 +173,6 @@ semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
@@ -214,7 +215,6 @@ ln -sf consolehelper %{buildroot}%{_bindir}/system-config-selinux
 ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
 mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
 mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
-cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolgen
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
 (cd selinux-python-%{version}/po && make DESTDIR=%{buildroot} install)
