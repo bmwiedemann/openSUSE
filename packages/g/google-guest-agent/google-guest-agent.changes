@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 20:03:53 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Bump go API version to 1.18 (bsc#1208723)
+  + Address CVE-2021-38297 and CVE-2022-23806
+
+-------------------------------------------------------------------
 Mon Feb 27 10:30:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230221.00

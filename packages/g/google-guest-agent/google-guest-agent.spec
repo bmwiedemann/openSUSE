@@ -35,13 +35,12 @@ Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
 Patch1:         dont_overwrite_ifcfg.patch
-BuildRequires:  go1.15
+BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.18
 Requires:       google-guest-configs
 Provides:       google-compute-engine-init = %{version}
 Obsoletes:      google-compute-engine-init < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-BuildRequires:  golang-packaging
 
 %{go_nostrip}
 %{go_provides}

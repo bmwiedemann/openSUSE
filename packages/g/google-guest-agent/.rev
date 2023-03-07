@@ -238,4 +238,12 @@
   * Update OWNERS file (#199)</comment>
     <requestid>1067974</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c72eacb222bb9578f57d6998e074b544</srcmd5>
+    <version>20230221.00</version>
+    <time>1678204190</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069742</requestid>
+  </revision>
 </revisionlist>
