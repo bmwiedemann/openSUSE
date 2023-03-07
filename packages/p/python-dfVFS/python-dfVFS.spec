@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfVFS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Group:          Productivity/File utilities
 URL:            https://github.com/log2timeline/dfvfs/wiki
 Source0:        https://github.com/log2timeline/dfvfs/releases/download/%{timestamp}/dfvfs-%{timestamp}.tar.gz
 Source99:       python-dfVFS-rpmlintrc
-BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dfdatetime}
@@ -63,7 +63,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tsk}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
 Requires:       python-construct
+Requires:       python-cryptography
 Requires:       python-dfdatetime >= 0~20180110
 Requires:       python-dtfabric >= 20220219
 Requires:       python-libbde

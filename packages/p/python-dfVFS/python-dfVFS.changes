@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 16 20:30:26 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Add requirements on more Python modules
+
+-------------------------------------------------------------------
 Fri Dec 16 18:57:35 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Upstream libyal/plaso is only supporting python 3.7 or newer
