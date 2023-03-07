@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  2 20:36:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 31:
+  * provides a bundled libbsd (not used in the openSUSE package)
+- needs libbsd 0.11.0 for freezero
+- run tests
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Wed May 19 19:12:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 30
