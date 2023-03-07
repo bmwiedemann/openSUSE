@@ -30,6 +30,7 @@ Source:         https://github.com/openucx/ucx/releases/download/v%version/ucx-%
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
 Patch3:         UCS-DEBUG-replace-PTR-with-void.patch
+Patch4:         gcc13-fix.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -139,6 +140,7 @@ hardware.
 %endif
 %patch2
 %patch3
+%patch4 -p1
 
 %build
 autoreconf -fi

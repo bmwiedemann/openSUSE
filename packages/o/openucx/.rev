@@ -226,4 +226,12 @@
     <comment>- openucx-s390x-support.patch: fix use of clz builtin for 64-bit value (forwarded request 1058654 from Andreas_Schwab)</comment>
     <requestid>1058681</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>c311affe3e26784ddee6a2a6988371dc</srcmd5>
+    <version>1.13.1</version>
+    <time>1678204129</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream gcc13-fix.patch fix. (forwarded request 1069627 from marxin)</comment>
+    <requestid>1069629</requestid>
+  </revision>
 </revisionlist>
