@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  5 21:22:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.1
+  * Fixed compilation under PHP 8.2 [#16293]
+
+- update to 5.2.0
+  * Fixed `Phalcon\Html\Helper\Title::prepend` to correctly prepend
+    text in subsequent calls [#16283]
+  * Added support for PHP 8.2 [#15973]
+
+-------------------------------------------------------------------
 Sat Jan 14 10:54:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.4

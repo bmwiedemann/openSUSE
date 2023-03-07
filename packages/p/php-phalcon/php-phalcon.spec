@@ -1,5 +1,5 @@
 #
-# spec file for package php-phalcon
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.1.4
+Version:        5.2.1
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -48,7 +48,7 @@ BuildRequires:  gcc
 BuildRequires:  %{php_name} >= 7.4.1
 BuildRequires:  %{php_name}-json
 %else
-BuildRequires:  %{php_name} < 8.2
+BuildRequires:  %{php_name} < 8.3
 %endif
 Requires:       %{php_name}-mysql
 
