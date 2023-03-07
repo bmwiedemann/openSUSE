@@ -33,4 +33,13 @@
   (bsc#1196972, CVE-2022-24713)</comment>
     <requestid>962474</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97d0f2fbb498b6f67e56b0fa2958fe0d</srcmd5>
+    <version>1.2.2~git0.4ccc639</version>
+    <time>1678204250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2~git0.4ccc639 to get all the precious cargo
+  (bsc#1208555, CVE-2022-31394)</comment>
+    <requestid>1069903</requestid>
+  </revision>
 </revisionlist>

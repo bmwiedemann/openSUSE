@@ -19,7 +19,7 @@
 
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.2.0~git2.841ef94
+Version:        1.2.2~git0.4ccc639
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
@@ -35,11 +35,11 @@ Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
 Requires:       jq
-BuildRequires:  cargo > 1.44
+BuildRequires:  cargo > 1.58
 BuildRequires:  clang
 BuildRequires:  glibc-devel-static
 BuildRequires:  openssl-devel
-BuildRequires:  rust > 1.44
+BuildRequires:  rust > 1.58
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 

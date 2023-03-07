@@ -37,7 +37,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">841ef94fb5b95b59669b4378499d2b195b6796d4</param>
+    <param name="revision">4ccc639acfd35a24a4c8ea7c4179e0d1068eef76</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>
@@ -62,10 +62,8 @@
   <service name="set_version" mode="disabled">
     <param name="basename">aws-nitro-enclaves-cli</param>
   </service>
-<!--
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">aws-nitro-enclaves-cli</param>
      <param name="compression">xz</param>
   </service>
--->
 </services>
