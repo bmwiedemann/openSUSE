@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  7 12:25:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * feat: keep column order after filtering flag
+  * feat: Awkward Arrays in Numba's CUDA target
+  * feat: add 'highlevel' and 'behavior' arguments to
+    'ak.from_rdataframe' function
+  * fix: set dtype in full_like
+  * fix: use simplified in ak._do.merge_as_union
+  * fix: support unknown content length in to_packed
+  * fix: run-lengths with typetracer
+  * fix: add trivial nan_to_num impl
+  * fix: add ak.broadcast_fields
+  * fix: keep column order in all tests
+
+-------------------------------------------------------------------
 Wed Mar  1 14:04:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.8:

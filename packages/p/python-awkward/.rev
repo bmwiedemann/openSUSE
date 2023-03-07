@@ -204,4 +204,23 @@
   * chore: update pre-commit hooks</comment>
     <requestid>1068476</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5e2f8e241957341e6f1a32ef857f2a6</srcmd5>
+    <version>2.0.9</version>
+    <time>1678204265</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.9:
+  * feat: keep column order after filtering flag
+  * feat: Awkward Arrays in Numba's CUDA target
+  * feat: add 'highlevel' and 'behavior' arguments to
+    'ak.from_rdataframe' function
+  * fix: set dtype in full_like
+  * fix: use simplified in ak._do.merge_as_union
+  * fix: support unknown content length in to_packed
+  * fix: run-lengths with typetracer
+  * fix: add trivial nan_to_num impl
+  * fix: add ak.broadcast_fields
+  * fix: keep column order in all tests</comment>
+    <requestid>1069926</requestid>
+  </revision>
 </revisionlist>
