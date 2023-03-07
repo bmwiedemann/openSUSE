@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:00:01 UTC 2023 - cloud-devel@suse.de
+
+- update to version 18.3.0
+  - Add support for 2.92 : keypair import mandatory
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - tests: Fix Python 3.11 compatibility
+  - MV 2.93 - Add support to rebuild boot volume
+  - Imported Translations from Zanata
+  - Fix a fixture for keypairs tests
+  - Replace old URLs with new ones
+  - Make tox.ini tox 4.0.0 compatible
+  - Microversion 2.91: Support specifying destination host to unshelve
+  - trivial: Remove use of kwargs
+  - Update python classifier for python 3.10
+  - Bump microversion to 2.95
+  - Update master for stable/zed
+  - Remove unnecessary testing code
+
+-------------------------------------------------------------------
 Tue May 24 20:57:03 UTC 2022 - cloud-devel@suse.de
 
 - update to version 18.0.0

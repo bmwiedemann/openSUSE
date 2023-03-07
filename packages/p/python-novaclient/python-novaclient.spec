@@ -1,7 +1,7 @@
 #
 # spec file for package python-novaclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-novaclient
-Version:        18.0.0
+Version:        18.3.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-novaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-18.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-18.3.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient
@@ -89,7 +89,7 @@ This package contains auto-generated documentation.
 %build
 %{py3_build}
 
-PBR_VERSION=18.0.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PBR_VERSION=18.3.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 
@@ -98,7 +98,7 @@ rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 
 %check
 export OS_TEST_PATH=novaclient/tests/unit
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-novaclient
 %license LICENSE
