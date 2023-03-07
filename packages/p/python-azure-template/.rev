@@ -204,4 +204,15 @@
 - Re-add unzip to BuildRequires (forwarded request 1055441 from glaubitz)</comment>
     <requestid>1055776</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aa442979d878f631d4407da9ed64c7f2</srcmd5>
+    <version>0.1.0b2609285</version>
+    <time>1678204248</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b2609285
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1069869 from glaubitz)</comment>
+    <requestid>1069888</requestid>
+  </revision>
 </revisionlist>
