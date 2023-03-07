@@ -1,0 +1,10 @@
+--- yacreader-9.11.0.orig/compressed_archive/unarr/unarr.pro
++++ yacreader-9.11.0/compressed_archive/unarr/unarr.pro
+@@ -30,6 +30,7 @@
+ 		$$PWD/unarr-master/lzmasdk/Ppmd8.c\
+ 		$$PWD/unarr-master/lzmasdk/LzmaDec.c\
+ 		$$PWD/unarr-master/lzmasdk/Ppmd7Dec.c\
++		$$PWD/unarr-master/lzmasdk/Ppmd7aDec.c\
+ 		$$PWD/unarr-master/lzmasdk/Ppmd8Dec.c\
+ 		$$PWD/unarr-master/zip/inflate.c\
+ 		$$PWD/unarr-master/zip/parse-zip.c\

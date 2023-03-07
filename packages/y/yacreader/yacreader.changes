@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Feb 28 04:12:49 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.11.0
+- Revert to unarr backend because of p7zip build failure.
+
+-------------------------------------------------------------------
+Sun Jul 10 23:56:03 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Switch to p7zip backend to support RAR5 format.
+
+-------------------------------------------------------------------
+Thu Mar 24 03:30:16 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.8.2
+
+-------------------------------------------------------------------
+Fri Jun 11 13:32:35 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.8.1
+  * New search engine
+  * Add support for full manga mode
+  * Improve keyboard navigation in Comic Vine dialog
+  * Fix "reading lists" reading order on YACReader
+
+-------------------------------------------------------------------
+Fri Jan  1 03:20:25 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.7.1
+  * Fix enlargement/stretching default value
+
+- Update to 9.7.0
+  * Image enlargement/stretching can now be disabled for fit to
+    width and height
+  * New option to show covers as single pages in double page mode
+    (enabled by default)
+
+-------------------------------------------------------------------
+Sun Oct 13 23:51:35 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Initial commit v9.6.2
+
+- v9.6.1
+  * Fixes PDF support in macros
+
