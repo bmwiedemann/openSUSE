@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 12:23:38 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add upstream fix gcc13-fix.patch.
+
+-------------------------------------------------------------------
 Mon Feb 27 12:22:47 UTC 2023 - pgajdos@suse.com
 
 - fltk not needed (openexr-3.1.5/ASWF/tsc-meetings/2021-01-14.md)

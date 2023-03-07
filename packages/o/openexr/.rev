@@ -772,4 +772,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- fltk not needed (openexr-3.1.5/ASWF/tsc-meetings/2021-01-14.md)</comment>
     <requestid>1067985</requestid>
   </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>fdebb7a468f00adbbdcd1f8ab89eb72d</srcmd5>
+    <version>3.1.5</version>
+    <time>1678204133</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix gcc13-fix.patch. (forwarded request 1069628 from marxin)</comment>
+    <requestid>1069635</requestid>
+  </revision>
 </revisionlist>
