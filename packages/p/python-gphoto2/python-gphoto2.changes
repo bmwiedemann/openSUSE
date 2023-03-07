@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 16:04:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
 Thu Sep  2 14:42:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix rpmlint errors.

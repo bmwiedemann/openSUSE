@@ -1,7 +1,7 @@
 #
 # spec file for package python-gphoto2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Patch0:         %{name}-do_not_install_data.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libgphoto2)
 %python_subpackages
@@ -51,11 +52,12 @@ chmod -x examples/*.py
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.txt README.rst examples
-%{python_sitearch}/*
+%{python_sitearch}/gphoto2
+%{python_sitearch}/gphoto2-%{version}*-info
 
 %changelog
