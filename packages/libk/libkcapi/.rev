@@ -146,4 +146,12 @@ Add reproducibledate.patch to not add current time to man-pages to fix build-com
 - Added libkcapi-fix-lto.patch</comment>
     <requestid>972887</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>512af85531760fe64568fa2e8b87af7d</srcmd5>
+    <version>1.4.0</version>
+    <time>1678204142</time>
+    <user>dimstar_suse</user>
+    <comment>- libkcapi was actually signed by the wrong key (bsc#1207892) (forwarded request 1069676 from msmeissn)</comment>
+    <requestid>1069677</requestid>
+  </revision>
 </revisionlist>

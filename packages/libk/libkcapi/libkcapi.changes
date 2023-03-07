@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:17:46 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- libkcapi was actually signed by the wrong key (bsc#1207892)
+
+-------------------------------------------------------------------
 Tue Apr 26 12:45:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 1.4.0

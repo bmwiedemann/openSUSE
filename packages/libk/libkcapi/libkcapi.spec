@@ -1,7 +1,7 @@
 #
 # spec file for package libkcapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,9 +111,9 @@ mv %{buildroot}/usr/bin/.??* %{buildroot}/%{_libexecdir}/libkcapi/
 	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha256hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha256hmac.hmac \
 	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha384hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha384hmac.hmac \
 	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha512hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha512hmac.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%_libdir/libkcapi.so|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%_libdir/libkcapi.so.1|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.1.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%_libdir/libkcapi.so.%version|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.%version.hmac \
+	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.hmac \
+	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so.1|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.1.hmac \
+	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so.%version|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.%version.hmac \
 	%{nil}
 
 %post -n libkcapi1 -p /sbin/ldconfig
