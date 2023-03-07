@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 10:46:51 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use -fexcess-precision=fast as GCC 13 changes the default
+  for C++ compiler and without the change some tests fail on i586.
+  More info can be seen here:
+  https://gcc.gnu.org/gcc-13/porting_to.html#excess-precision
+
+-------------------------------------------------------------------
 Sun Dec 18 14:52:12 UTC 2022 - thod_@gmx.de
 
 - Update to version 1.2.2

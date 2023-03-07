@@ -1,7 +1,7 @@
 #
 # spec file for package lib2geom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,15 +32,15 @@ Group:          System/Libraries
 Source0:        %{url}/-/archive/%{short_version}/%{name}-%{short_version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch1:         fix-pkgconfig-libdir-path.patch
-BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake >= 2.6
-BuildRequires:  cmake(double-conversion)
 BuildRequires:  gcc-c++
 BuildRequires:  glib2
 BuildRequires:  gsl-devel
 BuildRequires:  gtest
 BuildRequires:  gtk3-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  ninja
+BuildRequires:  cmake(double-conversion)
 
 %description
 A C++ 2D geometry library geared towards processing data
@@ -68,6 +68,7 @@ needed to develop applications that require %{name}.
 %autosetup -n %{name}-%{short_version} -p1
 
 %build
+%global optflags %optflags -fexcess-precision=fast
 %cmake -Wno-dev \
        -D2GEOM_BUILD_SHARED:BOOL=ON \
        -D2GEOM_TOYS:BOOL=OFF \
