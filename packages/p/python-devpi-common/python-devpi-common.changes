@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  6 17:21:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with new packaging module because invalid
+  version
+- Update to version 3.7.2
+  * Fix #928: correct default for pre-release matching after switching
+    from ``pkg_resources`` to ``packaging``.
+  * Fix #949: correct parsing of wheel tags for Python 3.10 and above.
+- 3.7.1 (2022-12-16)
+  * Fix #939: pin packaging to <22 as it removed the deprecated
+    LegacyVersion.
+
+-------------------------------------------------------------------
 Wed Oct 12 03:05:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.7.0 
