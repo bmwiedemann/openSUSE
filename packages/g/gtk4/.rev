@@ -609,4 +609,12 @@
     <comment>New stable release (forwarded request 1044333 from iznogood)</comment>
     <requestid>1044371</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a69d7f71ed7b9c3a6fbde67fa9f5a675</srcmd5>
+    <version>4.10.0</version>
+    <time>1678204151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069715</requestid>
+  </revision>
 </revisionlist>

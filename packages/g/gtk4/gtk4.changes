@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Sun Mar  5 13:27:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.0:
+  + GtkTextView: Document hanging indentation
+  + GtkListView: Fix a size allocation problem
+  + GtkFileChooser:
+    - Fix paned behavior
+    - Fix a crash
+  + GtkText: Fix various problems with undo
+  + Accessibility:
+    - Make some getters transfer-full
+    - Allow setting accessible parents and siblings
+    - Add a role for toggle buttons
+    - Miscellaneous property fixes and improvements
+  + gtk: Improve the handling resize-during-size-allocate
+  + gdk:
+    - Introduce GdkTextureDownloader and use it
+    - Make gdk_texture_get_format public
+  + gsk:
+    - Make mask nodes more versatile
+    - Improve the GL implementation for texture scale nodes
+  + X11: Fix key handling during DND
+  + Tools:
+    - gtk-builder-tool: Try harder to handle templates
+    - gtk-builder-tool: Prefer properties over <child>
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 10:31:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.9.4:
+  + Printing:
+    - Add a CPDB backend
+    - Drop the lpr backend
+  + GtkFileDialog: Robustness fixes
+  + GtkScaleButton: Add an 'active' property
+  + GtkSearchEntry: Add placeholder text
+  + Fix conflicting type names between gtk and gio
+  + Gsk:
+    - Settable filtering for scaled textures
+    - Add mask nodes
+    - Some robustness and crash fixes
+  + Wayland: Handle dispatch failing in more places
+  + Deprecations: GtkVolumeButton
+  + Updated translations.
+- Changes from version 4.9.3:
+  + Add GtkUriLauncher, as replacement for gtk_show_uri
+  + Add GdkMonitor::description
+  + Fix problems with tooltip sizing
+  + Deprecations:
+    - GtkStatusbar
+    - GtkAssistant
+    - GtkLockButton
+    - gtk_gesture_set_sequence_state
+  + GtkColumnView: Only create widgets for visible columns
+  + GtkFileDialog: Drop shortcut folders API
+  + GtkCalendar: Make marked days work again
+  + GtkSwitch: Make state and active independently settable
+  + GtkFileChooser:
+    - Fix a crash with DND
+    - Fix excessively wide sidebar
+    - Make context menus work again
+  + Accessibility:
+    - Make GtkAccessible public, so it can be implemented outside
+      GTK
+    - Support accessible implementation for editables
+  + CSS: Fix randomly stopping CSS animations
+  + GL:
+    - Fix synchronization with GStreamer
+    - Fix problems with 3rd party GL in the same thread
+  + Wayland: Fix startup notification with xdg_activation
+  + Broadway: Implement modal windows
+  + macOS: Make DND work
+  + Build:
+    - Require graphene 1.10
+    - Require gobject-introspection 1.72
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:11:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.9.2:
+  + GtkFileChooserWidget: Add a grid view.
+  + GtkText, GtkTextView:
+    - Fix activation of the on-screen keyboard.
+    - Prevent unexpected text direction changes.
+  + GtkCenterBox: Add properties for children.
+  + GtkTreeExpander: Add a hide-expander property.
+  + GtkStringList: Add a construct-only strings property.
+  + GtkBuilder: Support parsing Pango attributes in string form.
+  + GtkGestureStylus: Add a stylus-only property.
+  + GtkFileLauncher: New async-style api to replace gtk_show_uri.
+  + GtkColorDialog, GtkFontDialog, GtkFileDialog, GtkAlertDialog:
+    - APIs have seen some tweaks
+    - Prefer portals when available
+    - Fixes for cancellation
+  + Add GDK_DEBUG=no-portals
+  + Improve file DND with remote files
+  + GtkInfoBar has been deprecated
+  + gtk_widget_show/hide have been deprecated
+  + gtk_show_uri has been deprecated
+  + Wayland:
+    - Fix button mask handling
+    - Fix problems with cursor size on hi-dpi screens
+    - Support newer versions of some protocols
+    - Fix handling of surrounding text in input methods
+- Changes from version 4.9.1:
+  + GtkTreeView, GtkIconView, GtkComboBox and auxiliary classes
+    have been deprecated.
+  + GtkEntryCompletion has been deprecated.
+  + GtkStyleContext has been deprecated.
+  + gtk_render_ and gtk_snapshot_render_ APIs have been deprecated.
+  + GtkAppChooser widgets have been deprecated.
+  + GtkMessageDialog has been deprecated and replaced by a new
+    async dialog API.
+  + GtkDialog has been deprecated.
+  + GtkColorChooser, GtkFontChooser, GtkFileChooser interfaces and
+    their implementations have been deprecated. A new family of
+    async dialog APIs has been introduced to replace them.
+  + GtkColorDialog, GtkFontDialog, GtkFileDialog and GtkAlertDialog
+    are new dialog classes with a consistent and well-bindable API.
+  + GtkMountOperation:
+    - Fix the dialog to look reasonable.
+    - Make it work under non-X11.
+  + GtkStringSorter: Support different collation methods.
+  + Accessibility: Introduce GtkAccessibleRange and implement it.
+  + Debugging:
+    - Unify formatting for debug output.
+    - Make make debug options available in non-debug builds.
+  + Increase the memory limit for the jpeg loader to 1G.
+
+-------------------------------------------------------------------
 Thu Dec 22 20:52:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.8.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.8.3
+Version:        4.10.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.8/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.10/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -69,12 +69,12 @@ BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
-BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
-BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
+BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.6.0
