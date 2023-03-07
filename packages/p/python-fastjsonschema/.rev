@@ -23,4 +23,13 @@
   * Add an assertion before removing 'data' from variable name</comment>
     <requestid>1008418</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1706b9c4d2f7f105fd10a88473d69a33</srcmd5>
+    <version>2.16.3</version>
+    <time>1678204205</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.3:
+  * Fix variable name resolving with references</comment>
+    <requestid>1069753</requestid>
+  </revision>
 </revisionlist>
