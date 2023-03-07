@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:40:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * Updated type definitions for mypy 1.0.0, removing a
+    dependency on implicit Optional types, and working around an
+    issue that could trigger a mypy internal error.
+  * Updated unit tests to avoid calculation of SHA-1 signatures,
+    which are no longer allowed in cryptography 39.0.0.
+- drop remove-sha1.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jan 25 12:18:38 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add remove-sha1.patch to make it compatible with latests versions of

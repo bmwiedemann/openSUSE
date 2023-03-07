@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-asyncssh
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
@@ -27,8 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ronf/asyncssh
 Source:         https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-%{version}.tar.gz
 Patch0:         gss_test.patch
-# PATCH-FIX-UPSTREAM remove-sha1.patch gh#ronf/asyncssh@fae5a9e8baad
-Patch1:         remove-sha1.patch
 # SECTION test requirements
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.8}
