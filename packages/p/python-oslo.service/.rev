@@ -372,4 +372,17 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>996543</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4587267a4fb2156450c9d1178ef00a91</srcmd5>
+    <version>3.1.1</version>
+    <time>1678204182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.1
+  - Fix issues related to tox4
+  - Add Python3 antelope unit tests
+  - Fix misuse of assertTrue
+  - Imported Translations from Zanata
+  - Update master for stable/zed</comment>
+    <requestid>1069739</requestid>
+  </revision>
 </revisionlist>

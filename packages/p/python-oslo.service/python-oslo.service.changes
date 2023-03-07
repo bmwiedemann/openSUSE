@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 20:58:55 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Fix issues related to tox4
+  - Add Python3 antelope unit tests
+  - Fix misuse of assertTrue
+  - Imported Translations from Zanata
+  - Update master for stable/zed
+
+-------------------------------------------------------------------
 Thu Aug 11 08:32:12 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.0.0
