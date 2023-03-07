@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.10.3
+Version:        10.11.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -380,8 +380,6 @@ rm -f man/comp_err.1        # built-time utility
 # Breaks VPATH builds when in sourcedir, is generated in the builddirs
 rm -f sql/sql_builtin.cc
 
-sed -i 's|@localstatedir@|%{_localstatedir}/log|' support-files/mysql-log-rotate.sh
-
 # Broken test that needs sources
 rm -f mysql-test/t/file_contents.test mysql-test/r/file_contents.result
 
@@ -518,13 +516,6 @@ filelist_excludes()
 
 # Install the package itself
 %cmake_install benchdir_root=%{_datadir}/
-
-# Logrotate file should be named as the package
-if [ ! -e %{buildroot}%{_sysconfdir}/logrotate.d/mysql ]; then
-    # some versions do not install it automatically
-    install -D -m 644 build/support-files/mysql-log-rotate %{buildroot}%{_sysconfdir}/logrotate.d/mysql
-fi
-mv %{buildroot}%{_sysconfdir}/logrotate.d/mysql %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
 # Create log directory with the expected perms of mysql
 install -d -m 700 %{buildroot}%{_localstatedir}/log/mysql/
@@ -852,6 +843,7 @@ exit 0
 %endif
 %config(noreplace) %{_pam_secconfdir}/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
+%{_datadir}/mysql/%{name}.logrotate
 %doc %{_defaultdocdir}/%{name}
 %dir %{_libexecdir}/mysql
 %dir %attr(0700, mysql, mysql) %{_localstatedir}/log/mysql

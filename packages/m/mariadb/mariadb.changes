@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  1 10:49:52 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.11.2:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-1011/
+    https://mariadb.com/kb/en/mariadb-10-11-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-11-2-changelog/
+    https://mariadb.com/kb/en/mariadb-10-11-1-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-11-1-changelog/
+    https://mariadb.com/kb/en/mariadb-10-11-0-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-11-0-changelog/
+- Refresh mariadb-10.2.4-logrotate.patch
+
+-------------------------------------------------------------------
 Mon Feb 20 16:32:57 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.10.3:

@@ -111,5 +111,7 @@ main.lock_kill                                   : since 10.9.2 - all
 innodb.innodb_bug51920                           : since 10.9.2 - all
 rpl.rpl_slave_shutdown_mdev20821                 : since 10.9.2 - all
 
-rpl.rpl_change_master_demote                     : since 10.10.2 -all
+rpl.rpl_change_master_demote                     : since 10.10.2 - all
+
+rpl.rpl_rewrite_db_sys_vars                      : since 10.11.2 - all
 

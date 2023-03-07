@@ -5,23 +5,14 @@ In SUSE we've got MySQL log in different directory. It's located in
 
 Maintainer: Michal Hrusecky <Michal.Hrusecky@opensuse.org>
 
-Index: support-files/mysql-log-rotate.sh
+Index: support-files/mariadb.logrotate.sh
 ===================================================================
---- support-files/mysql-log-rotate.sh.orig
-+++ support-files/mysql-log-rotate.sh
-@@ -18,7 +18,7 @@
- # ATTENTION: This /root/.my.cnf should be readable ONLY
- # for root !
- 
--@localstatedir@/mysqld.log {
-+/var/log/mysql/*.log {
-         # create 600 mysql mysql
-         su mysql mysql
-         notifempty
+--- support-files/mariadb.logrotate.sh.orig
++++ support-files/mariadb.logrotate.sh
 @@ -32,6 +32,14 @@
- 	then
- 	   @bindir@/mysqladmin --local flush-error-log \
-               flush-engine-log flush-general-log flush-slow-log
+     then
+       @bindir@/mariadb-admin $EXTRAPARAM --local flush-error-log \
+         flush-engine-log flush-general-log flush-slow-log
 +	   ret=$?
 +	   if test $ret -ne 0
 +	   then
@@ -30,6 +21,6 @@ Index: support-files/mysql-log-rotate.sh
 +		echo "See comments in /etc/logrotate.d/mariadb on how to fix this" >&2
 +		exit $ret
 +	   fi
- 	fi
-     endscript
+     fi
+   endscript
  }
