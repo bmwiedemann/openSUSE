@@ -694,4 +694,13 @@ Jan added the patch name of all changed patches.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1031330</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>12ef03208dee5c6802b23a8c56408bf1</srcmd5>
+    <version>72.1</version>
+    <time>1678204107</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -fexcess-precision=fast as GCC 13 will default to -fexcess-precision=standard
+  for C++. (forwarded request 1068645 from marxin)</comment>
+    <requestid>1069482</requestid>
+  </revision>
 </revisionlist>

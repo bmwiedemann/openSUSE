@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,7 @@ popd
 %build
 cd source
 mkdir -p data/out/tmp # build procedure forgets to do this on its own
-export CXXFLAGS="%optflags -DICU_DATA_DIR=\\\"%_datadir/icu/%version/\\\""
+export CXXFLAGS="%optflags -DICU_DATA_DIR=\\\"%_datadir/icu/%version/\\\" -fexcess-precision=fast"
 export CFLAGS="$CXXFLAGS"
 %configure \
 	--disable-static \
