@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.versionedobjects
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-3.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-3.1.0.tar.gz
+Patch1:         0001-Avoid-TypeError-when-building-for-Sphinx-6.1.1-and-a.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-jsonschema
@@ -82,7 +83,7 @@ BuildRequires:  python3-openstackdocstheme
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-3.0.1
+%autosetup -p1 -n oslo.versionedobjects-3.1.0
 %py_req_cleanup
 
 %build
@@ -95,7 +96,7 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 %py3_install
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.versionedobjects
 %license LICENSE

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:17:08 UTC 2023 - cloud-devel@suse.de
+
+- added 0001-Avoid-TypeError-when-building-for-Sphinx-6.1.1-and-a.patch
+- update to version 3.1.0
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+
+-------------------------------------------------------------------
 Sun Oct  2 14:46:39 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.0.1

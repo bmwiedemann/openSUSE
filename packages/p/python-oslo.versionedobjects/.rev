@@ -218,4 +218,15 @@
   - setup.cfg: Replace dashes by underscores</comment>
     <requestid>1007584</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4937f85bde716074deaf79ae74ec0f5b</srcmd5>
+    <version>3.1.0</version>
+    <time>1678204184</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Avoid-TypeError-when-building-for-Sphinx-6.1.1-and-a.patch
+- update to version 3.1.0
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests</comment>
+    <requestid>1069751</requestid>
+  </revision>
 </revisionlist>
