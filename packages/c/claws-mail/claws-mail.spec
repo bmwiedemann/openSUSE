@@ -22,12 +22,6 @@
 %endif
 
 %if 0%{?suse_version} >= 1550
-%bcond_without litehtml
-%else
-%bcond_with    litehtml
-%endif
-
-%if 0%{?suse_version} >= 1550
 %bcond_with     claws_pilot_link
 %else
 %if 0%{?is_opensuse} && 0%{?sle_version} <= 150300 
@@ -109,10 +103,6 @@ BuildRequires:  pilot-link-devel
 BuildRequires:  libytnef-devel
 %endif
 # LiteHTML requires Gumbo which is currently shipped only with Tumbleweed
-%if %{with litehtml}
-BuildRequires:  c++_compiler
-BuildRequires:  pkgconfig(gumbo)
-%endif
 # libetpan 1.9.2 introduced function mailstream_ssl_set_server_name, which
 # will be used by claws-mail if available
 %if %{pkg_vcmp libetpan-devel >= 1.9.2}

@@ -948,4 +948,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>1033462</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>07ad0d0307bb297c38e098bd9cd75b37</srcmd5>
+    <version>4.1.1</version>
+    <time>1678204234</time>
+    <user>dimstar_suse</user>
+    <comment>- Deactive litehtml/gumbo as gumbo will be deleted [boo#1208381]</comment>
+    <requestid>1069862</requestid>
+  </revision>
 </revisionlist>
