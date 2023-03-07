@@ -217,4 +217,26 @@
   - Add retry mechanisms to oslo.cache</comment>
     <requestid>981112</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>443b11d0174db7171f3a2b5b30d893d6</srcmd5>
+    <version>3.3.1</version>
+    <time>1678204186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.1
+  - Fix issues related to tox4
+
+- update to version 3.3.0
+  - Add Python3 antelope unit tests
+  - Imported Translations from Zanata
+  - Add bmemcached as optional dependency
+  - Update master for stable/zed
+
+- update to version 3.1.0
+  - Support SASL protocol for memcached
+
+- update to version 3.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Imported Translations from Zanata</comment>
+    <requestid>1069829</requestid>
+  </revision>
 </revisionlist>

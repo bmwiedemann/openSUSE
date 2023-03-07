@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:52:28 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.3.1
+  - Fix issues related to tox4
+
+-------------------------------------------------------------------
+Mon Mar  6 15:24:27 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - Add Python3 antelope unit tests
+  - Imported Translations from Zanata
+  - Add bmemcached as optional dependency
+  - Update master for stable/zed
+
+-------------------------------------------------------------------
+Sun Oct  2 14:47:23 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Support SASL protocol for memcached
+
+-------------------------------------------------------------------
+Tue Aug 16 08:43:11 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue Jun  7 08:41:59 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.11.0

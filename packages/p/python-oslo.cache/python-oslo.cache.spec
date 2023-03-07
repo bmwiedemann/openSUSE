@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.cache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.cache
-Version:        2.11.0
+Version:        3.3.1
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.cache
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.cache/oslo.cache-2.11.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.cache/oslo.cache-3.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-dogpile.cache >= 1.1.5
 BuildRequires:  python3-oslo.config >= 8.1.0
@@ -34,6 +34,7 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr
 BuildRequires:  python3-pymemcache
 BuildRequires:  python3-pymongo
+BuildRequires:  python3-python-binary-memcached
 BuildRequires:  python3-python-memcached
 BuildRequires:  python3-stestr
 BuildArch:      noarch
@@ -69,7 +70,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack Oslo cache library.
 
 %prep
-%autosetup -p1 -n oslo.cache-2.11.0
+%autosetup -p1 -n oslo.cache-3.3.1
 %py_req_cleanup
 
 %build
@@ -79,12 +80,12 @@ Documentation for the OpenStack Oslo cache library.
 %{py3_install}
 
 # generate html docs
-PBR_VERSION=2.11.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.3.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.cache
 %license LICENSE
