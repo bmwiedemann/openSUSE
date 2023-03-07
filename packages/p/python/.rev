@@ -2799,4 +2799,12 @@ However, upstream development now focuses on 3.x series.
   when supplying a URL that starts with blank characters</comment>
     <requestid>1068978</requestid>
   </revision>
+  <revision rev="179" vrev="30">
+    <srcmd5>14133e609a00dbd139033e09209d7032</srcmd5>
+    <version>2.7.18</version>
+    <time>1678204146</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE-12 builds nis.so as well.</comment>
+    <requestid>1069685</requestid>
+  </revision>
 </revisionlist>

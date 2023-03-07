@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:35:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- SLE-12 builds nis.so as well.
+
+-------------------------------------------------------------------
 Wed Mar  1 14:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
