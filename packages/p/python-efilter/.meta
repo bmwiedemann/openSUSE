@@ -1,6 +1,0 @@
-<package name="python-efilter" project="openSUSE:Factory">
-  <title>EFILTER query language</title>
-  <description>EFILTER is a general-purpose destructuring and search language implemented in Python, and suitable for integration with any Python project that requires a search function for some of its data.
-</description>
-  <devel project="devel:languages:python" package="python-efilter"/>
-</package>
