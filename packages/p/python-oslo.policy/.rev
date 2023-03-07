@@ -350,4 +350,17 @@
   - Fix generation of sample policy files</comment>
     <requestid>1007441</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>98c26a5fbcd342dfece7808bd45f8e02</srcmd5>
+    <version>4.1.1</version>
+    <time>1678204180</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.1
+  - Fix py38 jobs by using focal rather than jammy
+  - Add Python3 antelope unit tests
+  - Imported Translations from Zanata
+  - Update master for stable/zed
+- add 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch</comment>
+    <requestid>1069736</requestid>
+  </revision>
 </revisionlist>

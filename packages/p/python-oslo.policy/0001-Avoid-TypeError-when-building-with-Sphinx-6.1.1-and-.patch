@@ -1,0 +1,29 @@
+From 5274d612bc5811bc3c9f740f29e1b015a4e8672d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Mon, 6 Mar 2023 21:48:26 +0100
+Subject: [PATCH] Avoid TypeError when building with Sphinx 6.1.1 and above
+
+see https://github.com/sphinx-doc/sphinx/issues/11094 for the
+investigation and the fix.
+
+Change-Id: I836df2bc88d416415c395245f012d6990fd006b2
+---
+ doc/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index e390675..84c108a 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -98,7 +98,7 @@ man_pages = [
+ # -- sphinx.ext.extlinks configuration ---------------------------------------
+ 
+ extlinks = {
+-    'example': (source_tree + '/oslo_policy/%s', ''),
++    'example': (source_tree + '/oslo_policy/%s', None),
+ }
+ 
+ # -- sphinxcontrib.apidoc configuration --------------------------------------
+-- 
+2.39.2
+

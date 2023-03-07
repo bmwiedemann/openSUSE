@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 20:46:19 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Fix py38 jobs by using focal rather than jammy
+  - Add Python3 antelope unit tests
+  - Imported Translations from Zanata
+  - Update master for stable/zed
+- add 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
+
+-------------------------------------------------------------------
 Sat Oct  1 12:38:50 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.0.0
