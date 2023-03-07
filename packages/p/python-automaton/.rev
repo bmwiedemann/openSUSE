@@ -246,4 +246,14 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>1007579</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6439266e6f9a943fbb137ed3818c883b</srcmd5>
+    <version>3.1.0</version>
+    <time>1678204185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.0
+  - Add Python3 antelope unit tests
+  - Update master for stable/zed</comment>
+    <requestid>1069828</requestid>
+  </revision>
 </revisionlist>
