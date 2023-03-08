@@ -17,4 +17,34 @@
 - Switch from using nose runner to pytest</comment>
     <requestid>795886</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a561486ac5614d3dadf4112414c9d70</srcmd5>
+    <version>0.10.0</version>
+    <time>1678283628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * Fix infinite recursion in __eq__ in some cases. (FelisNivalis)
+  * Improve error message in left-recursive rules. (lucaswiman)
+  * Add support for range ``{min,max}`` repetition expressions (righthandabacus)
+  * Fix bug in ``*`` and ``+`` for token grammars (lucaswiman)
+  * Add support for grammars on bytestrings (lucaswiman)
+  * Fix LazyReference resolution bug #134 (righthandabacus)
+  * ~15% speedup on benchmarks with a faster node cache (ethframe)
+  * This release makes backward-incompatible changes:
+      * Fix precedence of string literal modifiers ``u/r/b``.
+        This will break grammars with no spaces between a
+        reference and a string literal. (lucaswiman)
+  * Add support for Python 3.7, 3.8, 3.9, 3.10 (righthandabacus, Lonnen)
+  * Drop support for Python 2.x, 3.3, 3.4 (righthandabacus, Lonnen)
+  * Remove six and go all in on Python 3 idioms (Lonnen)
+  * Replace re with regex for improved handling of unicode characters
+    in regexes (Oderjunkie)
+  * Dropped nose for unittest (swayson)
+  * `Grammar.__repr__()` now correctly escapes backslashes (ingolemo)
+  * Custom rules can now be class methods in addition to
+    functions (James Addison)
+  * Make the ascii flag available in the regex syntax (Roman Inflianskas)
+- drop replace-nose.patch (upstream)</comment>
+    <requestid>1070105</requestid>
+  </revision>
 </revisionlist>
