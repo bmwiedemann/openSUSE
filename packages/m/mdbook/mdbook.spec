@@ -27,6 +27,8 @@ Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
+BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 mdbook is a utility to create books from Markdown files
