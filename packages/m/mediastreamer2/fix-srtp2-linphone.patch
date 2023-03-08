@@ -1,7 +1,7 @@
-Index: mediastreamer2-5.1.64/cmake/FindSRTP.cmake
+Index: mediastreamer2-5.2.30/cmake/FindSRTP.cmake
 ===================================================================
---- mediastreamer2-5.1.64.orig/cmake/FindSRTP.cmake
-+++ mediastreamer2-5.1.64/cmake/FindSRTP.cmake
+--- mediastreamer2-5.2.30.orig/cmake/FindSRTP.cmake
++++ mediastreamer2-5.2.30/cmake/FindSRTP.cmake
 @@ -31,7 +31,7 @@ set(_SRTP_ROOT_PATHS
  )
  
@@ -20,11 +20,11 @@ Index: mediastreamer2-5.1.64/cmake/FindSRTP.cmake
  		HINTS ${_SRTP_ROOT_PATHS}
  		PATH_SUFFIXES bin lib
  	)
-Index: mediastreamer2-5.1.64/src/utils/srtp_prefix.h
+Index: mediastreamer2-5.2.30/src/utils/srtp_prefix.h
 ===================================================================
---- mediastreamer2-5.1.64.orig/src/utils/srtp_prefix.h
-+++ mediastreamer2-5.1.64/src/utils/srtp_prefix.h
-@@ -29,7 +29,7 @@
+--- mediastreamer2-5.2.30.orig/src/utils/srtp_prefix.h
++++ mediastreamer2-5.2.30/src/utils/srtp_prefix.h
+@@ -30,7 +30,7 @@
  #elif SRTP_VERSION==1
  #include <srtp/srtp.h>
  #else

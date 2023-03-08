@@ -21,7 +21,7 @@
 %define docuver 5.2.0
 
 Name:           mediastreamer2
-Version:        5.2.9
+Version:        5.2.30
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later
@@ -61,13 +61,13 @@ BuildRequires:  libsqlite3x-devel
 %endif
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.30
 BuildRequires:  pkgconfig(libbcg729)
-BuildRequires:  pkgconfig(libbzrtp) >= 5.2.0
+BuildRequires:  pkgconfig(libbzrtp) >= 5.2.30
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 5.2.0
+BuildRequires:  pkgconfig(ortp) >= 5.2.30
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(theora)
