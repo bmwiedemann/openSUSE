@@ -440,4 +440,13 @@
     (1981)</comment>
     <requestid>1046291</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>83c43d57c789b5f5c56794bf1c30b1eb</srcmd5>
+    <version>2022.7.1</version>
+    <time>1678283482</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.7.1:
+  * fixes to documentation formatting</comment>
+    <requestid>1069839</requestid>
+  </revision>
 </revisionlist>
