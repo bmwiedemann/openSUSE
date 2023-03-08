@@ -263,4 +263,12 @@
   upgrade path from the wrongly named package.</comment>
     <requestid>973236</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1feafd43ff50f318fd3937d58a8e3dfc</srcmd5>
+    <version>0.3.4</version>
+    <time>1678283546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069949</requestid>
+  </revision>
 </revisionlist>
