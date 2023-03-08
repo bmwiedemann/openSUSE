@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 27 13:39:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versoin 1.20.1
+  * Bugfix release.
+- Update to versoin 1.20.0
+  * Discard invalid empty HDLC frame at end of buffer.
+  * Prepend "SVPNCOOKIE=" to the given cookie if missing.
+
+-------------------------------------------------------------------
 Wed Oct 12 09:51:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.19.0
