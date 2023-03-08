@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 07 13:15:49 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.4.0+git20230307.1e9f1e0:
+  * d-bus services: add kde-inotify-survey (bsc#1208689)
+  * Add missing newline at the end of TOML files.
+  * Add missing newline at the end of file.
+  * TagsCheck: handle license exception in grouping
+
+-------------------------------------------------------------------
+Fri Mar 03 18:55:40 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230303.8af2aa4:
+  * polkit-rules-whitelist: adjust libvirt-daemon rule to new sub-package (bsc#1208876)
+
+-------------------------------------------------------------------
 Mon Feb 27 14:52:57 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230227.db0110c:

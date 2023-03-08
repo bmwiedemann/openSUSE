@@ -4332,4 +4332,12 @@ oddjob-gpupdate isn't blocked)</comment>
   * Revert &quot;disable opensuse-tumbleweed-aarch64 due to system crash&quot;</comment>
     <requestid>1068021</requestid>
   </revision>
+  <revision rev="438" vrev="1">
+    <srcmd5>79b465dd57a7e483d32c809e7d54faf5</srcmd5>
+    <version>2.4.0+git20230307.1e9f1e0</version>
+    <time>1678283536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069939</requestid>
+  </revision>
 </revisionlist>
