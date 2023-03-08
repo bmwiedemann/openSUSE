@@ -284,4 +284,8 @@ index a65d686..e45beff 100644
              final=True
          )
  
-
+--- latexcodec-2.0.1.orig/requirements.txt
++++ latexcodec-2.0.1/requirements.txt
+@@ -1 +0,0 @@
+-six>=1.4.1
+\ No newline at end of file

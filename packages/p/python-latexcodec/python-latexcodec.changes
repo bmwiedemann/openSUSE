@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  7 08:23:16 UTC 2023 - pgajdos@suse.com
+
+- drop six from requirements.txt
+- modified patches
+  % python-latexcodec-no-python2.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Oct 21 11:28:11 UTC 2022 - pgajdos@suse.com
 
 - added patches
