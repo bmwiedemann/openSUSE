@@ -42,6 +42,8 @@ Patch4:         smartmontools-suse-default.patch
 # PATCH-FIX-OPENSUSE smartmontools-var-lock-subsys.patch sbrabec@suse.cz -- Do not use unsupported /var/lock/subsys.
 Patch10:        smartmontools-var-lock-subsys.patch
 Patch11:        harden_smartd.service.patch
+# https://www.smartmontools.org/changeset/5448
+Patch12:        smartmontools-smartctl-NVMe-big-endian.patch
 Requires(pre):  %fillup_prereq
 # Needed by generate_smartd_opt:
 Requires(pre):  coreutils
@@ -78,6 +80,7 @@ cp -a %{SOURCE2} %{SOURCE5} .
 %patch4
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
 sed "s:/usr/local/etc/sysconfig/smartmontools:%{_localstatedir}/lib/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new

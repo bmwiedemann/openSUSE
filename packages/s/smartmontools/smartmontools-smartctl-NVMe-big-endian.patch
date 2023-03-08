@@ -1,0 +1,18 @@
+--- a/nvmecmds.cpp
++++ b/nvmecmds.cpp
+@@ -229,6 +229,7 @@
+                                   num_entries * sizeof(*error_log), lpo_sup);
+ 
+-  if (isbigendian()) {
+-    for (unsigned i = 0; i < n; i++) {
++  unsigned read_entries = n / sizeof(*error_log);
++  if (isbigendian()) {
++    for (unsigned i = 0; i < read_entries; i++) {
+       swapx(&error_log[i].error_count);
+       swapx(&error_log[i].sqid);
+@@ -241,5 +242,5 @@
+   }
+ 
+-  return n / sizeof(*error_log);
++  return read_entries;
+ }

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 13:07:41 UTC 2023 - pgajdos@suse.com
+
+- fix smartctl crash for an NVMe on big endian systems [bsc#1208905]
+- added patches
+  fix https://www.smartmontools.org/changeset/5448
+  + smartmontools-smartctl-NVMe-big-endian.patch
+
+-------------------------------------------------------------------
 Thu Feb  2 14:31:01 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Catch another invalid state in %post: DRIVEDB_H_RELEASE_SAVED
