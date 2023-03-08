@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.45.0
+Version:        2.46.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -51,9 +51,8 @@ Requires:       python3-msal-extensions < 2.0.0
 Requires:       python3-msal-extensions >= 1.0.0
 Requires:       python3-msrestazure < 0.7.0
 Requires:       python3-msrestazure >= 0.6.4
-Requires:       python3-packaging < 24.0
 Requires:       python3-packaging >= 20.9
-Requires:       python3-paramiko < 3.0.0
+Requires:       python3-paramiko < 4.0.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-pip
 Requires:       python3-pkginfo >= 1.5.0.1
