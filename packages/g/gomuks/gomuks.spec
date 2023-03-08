@@ -1,7 +1,7 @@
 #
 # spec file for package gomuks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A terminal Matrix client written in Go
 License:        AGPL-3.0-only
 URL:            https://github.com/tulir/gomuks
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/tulir/gomuks/archive/refs/tags/v%{version}.tar.gz#/gomuks-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
