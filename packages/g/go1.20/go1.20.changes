@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar  7 18:03:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.2 (released 2023-03-07) includes a security fix to the
+  crypto/elliptic package, as well as bug fixes to the compiler,
+  the covdata command, the linker, the runtime, and the
+  crypto/ecdh, crypto/rsa, crypto/x509, os, and syscall packages.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-24532
+  * go#58720 go#58647 boo#1209030 security: fix CVE-2023-24532 crypto/elliptic: specific unreduced P-256 scalars produce incorrect results
+  * go#58427 cmd/covdata: short read on string table when merging coverage counters
+  * go#58442 runtime: some linkname signatures do not match
+  * go#58444 cmd/compile: inline static init cause compile time error
+  * go#58467 cmd/compile: internal compiler error: '(*Tree[go.shape.int]).RemoveParent.func1': value .dict (nil) incorrectly live at entry
+  * go#58498 crypto/ecdh: ECDH method doesn't check curve
+  * go#58503 cmd/link: relocation truncated to fit: R_ARM_CALL against `runtime.duffcopy'
+  * go#58505 crypto/internal/bigmod: flag amd64 assembly as noescape
+  * go#58531 runtime: endless traceback when panic in generics funtion
+  * go#58536 runtime: long latency of sweep assists
+  * go#58624 syscall.Faccessat and os.LookPath regression in Go 1.20
+  * go#58627 os: cmd/go gets error "copy_file_range: function not implemented"
+  * go#58717 net: TestTCPSelfConnect failures due to unexpected connections
+  * go#58774 syscall: Environ uses an invalid unsafe.Pointer conversion on Windows
+  * go#58776 cmd/compile: ICE on method value involving imported anonymous interface
+  * go#58793 crypto/x509: Incorrect documentation for ParsePKCS8PrivateKey
+  * go#58811 crypto/x509: TestSystemVerify consistently failing
+
+-------------------------------------------------------------------
 Fri Feb 17 07:26:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Improvements to go1.x packaging spec:
