@@ -1,0 +1,131 @@
+--- a/src/qthotkey/gui.cc
++++ b/src/qthotkey/gui.cc
+@@ -40,11 +40,14 @@
+ 
+ #include <QtCore/QMap>
+ #include <QtCore/QStringList>
++#include <QtGui/QGuiApplication>
+ #include <QtGui/QKeyEvent>
+ #include <QtGui/QMouseEvent>
+ #include <QtWidgets/QApplication>
+ #include <QtWidgets/QStyle>
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #include <QtX11Extras/QX11Info>
++#endif
+ 
+ #include <libaudcore/i18n.h>
+ #include <libaudcore/preferences.h>
+@@ -106,8 +109,14 @@ public:
+ 
+             QStringList strings;
+ 
+-            KeySym keysym;
+-            keysym = XkbKeycodeToKeysym(QX11Info::display(), key, 0, 0);
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++            Display * xdisplay = reinterpret_cast<Display *>(qApp
++                ->nativeInterface<QNativeInterface::QX11Application>()
++                ->display());
++#else
++            Display * xdisplay = QX11Info::display();
++#endif
++            KeySym keysym = XkbKeycodeToKeysym(xdisplay, key, 0, 0);
+             if (keysym == 0 || keysym == NoSymbol)
+             {
+                 text = QString::fromLocal8Bit("#%1").arg(key);
+--- a/src/qthotkey/meson.build
++++ b/src/qthotkey/meson.build
+@@ -1,17 +1,17 @@
+ if get_option('qt6')
+-  qtx11extras_dep = dependency('qt6', version: qt_req, required: false, modules: ['X11Extras'])
++  qtprivate_dep = dependency('qt6', version: qt_req, private_headers: true, required: false, modules: ['Core', 'Gui'])
+ else
+-  qtx11extras_dep = dependency('qt5', version: qt_req, required: false, modules: ['X11Extras'])
++  qtprivate_dep = dependency('qt5', version: qt_req, required: false, modules: ['X11Extras'])
+ endif
+ 
+-have_qthotkey = qtx11extras_dep.found()
++have_qthotkey = qtprivate_dep.found()
+ 
+ 
+ if have_qthotkey
+   shared_module('qthotkey',
+     'gui.cc',
+     'plugin.cc',
+-    dependencies: [audacious_dep, qt_dep, audqt_dep, qtx11extras_dep],
++    dependencies: [audacious_dep, qt_dep, audqt_dep, qtprivate_dep],
+     name_prefix: '',
+     install: true,
+     install_dir: general_plugin_dir
+--- a/src/qthotkey/plugin.cc
++++ b/src/qthotkey/plugin.cc
+@@ -42,7 +42,10 @@
+ #include <QtCore/QCoreApplication>
+ #include <QtCore/QString>
+ #include <QtCore/QTimer>
++#include <QtGui/QGuiApplication>
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #include <QtX11Extras/QX11Info>
++#endif
+ 
+ #include <libaudcore/drct.h>
+ #include <libaudcore/hook.h>
+@@ -95,6 +98,7 @@ static GlobalHotkeysEventFilter event_fi
+ static PluginConfig plugin_cfg;
+ 
+ static int grabbed = 0;
++static Display * xdisplay = nullptr;
+ unsigned int numlock_mask = 0;
+ unsigned int scrolllock_mask = 0;
+ unsigned int capslock_mask = 0;
+@@ -336,7 +340,7 @@ void add_hotkey(QList<HotkeyConfiguratio
+         return;
+     }
+ 
+-    keycode = XKeysymToKeycode(QX11Info::display(), keysym);
++    keycode = XKeysymToKeycode(xdisplay, keysym);
+     if (keycode == 0)
+     {
+         return;
+@@ -436,13 +440,25 @@ bool GlobalHotkeys::init()
+ {
+     audqt::init();
+ 
+-    if (!QX11Info::isPlatformX11())
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    auto * native = qApp->nativeInterface<QNativeInterface::QX11Application>();
++#else
++    bool   native = QX11Info::isPlatformX11();
++#endif
++
++    if (!native)
+     {
+         AUDERR("Global Hotkey plugin only supports X11.\n");
+         audqt::cleanup();
+         return false;
+     }
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    xdisplay = reinterpret_cast<Display *>(native->display());
++#else
++    xdisplay = QX11Info::display();
++#endif
++
+     load_config();
+     grab_keys();
+     QCoreApplication::instance()->installNativeEventFilter(&event_filter);
+@@ -610,7 +626,6 @@ void grab_keys()
+     PluginConfig * plugin_cfg = get_config();
+ 
+     XErrorHandler old_handler = nullptr;
+-    Display * xdisplay = QX11Info::display();
+ 
+     if (grabbed || (!xdisplay))
+     {
+@@ -704,7 +719,6 @@ void ungrab_keys()
+     PluginConfig * plugin_cfg = get_config();
+ 
+     XErrorHandler old_handler = nullptr;
+-    Display * xdisplay = QX11Info::display();
+ 
+     if ((!grabbed) || (!xdisplay))
+     {

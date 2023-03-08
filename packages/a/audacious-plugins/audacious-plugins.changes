@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  7 20:06:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3:
+  * See https://audacious-media-player.org/news/56-audacious-4-3-released
+- Add PipeWire, ModPlug and Opus build requirements.
+- Add audacious-plugins-fix-qt6-qthotkey.patch: Fix Qt6 support in
+  qthotkey.
+- Switch to Qt 6 on openSUSE newer than 15.x
+- Switch to GTK 3.
+
+-------------------------------------------------------------------
 Wed Jul 13 20:21:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.2:
