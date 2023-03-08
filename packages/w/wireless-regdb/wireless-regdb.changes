@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:57:49 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230213:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory info for Russia (RU) on 5GHz
+
+-------------------------------------------------------------------
 Tue Dec  6 11:09:50 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20221205:
