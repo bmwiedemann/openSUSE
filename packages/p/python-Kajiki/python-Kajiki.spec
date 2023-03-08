@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kajiki
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() ython3-%{**}}
 Name:           python-Kajiki
-Version:        0.8.3
+Version:        0.9.2
 Release:        0
 Summary:        Compiler for Genshi syntax outputting Python bytecode
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/kajiki
-Source:         https://files.pythonhosted.org/packages/source/k/kajiki/kajiki-%{version}.tar.gz
+Source:         https://github.com/jackrosenthal/kajiki/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module linetable}
 BuildRequires:  %{python_module nine}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -33,8 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Requires:       python-linetable
 Requires:       python-nine
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -45,7 +46,6 @@ other textual content for output generation on the web.)
 
 %prep
 %setup -q -n kajiki-%{version}
-sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests/test_xml.py
 
 %build
 %python_build
@@ -53,7 +53,6 @@ sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/kajiki
-%python_expand rm -r %{buildroot}%{$python_sitelib}/kajiki/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
@@ -63,7 +62,10 @@ sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests
 %python_uninstall_alternative kajiki
 
 %check
+# tests fail on 32-bit platform as they expect 64-bit int
+%ifnarch %arm32 %ix86 s390 ppc
 %pytest
+%endif
 
 %files %{python_files}
 %python_alternative %{_bindir}/kajiki

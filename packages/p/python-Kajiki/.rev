@@ -104,4 +104,27 @@
     <comment></comment>
     <requestid>915772</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5917491f38a51ed133f980a4e89108be</srcmd5>
+    <version>0.9.2</version>
+    <time>1678283631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.2:
+  * Python 3.11 compatibility.
+  * Documentation updates and clarifications.
+  * Unit test updates.
+  * Fixed compatibility for Python 3.11.
+  * The unit tests were moved out of the ``kajiki`` package:
+    tests are now under the ``tests/`` directory.
+  * Migrated from Travis CI to GitHub Actions.
+  * Support dropped for Python 2.7.
+  * Fixed up lnotab bugs in Python 3.6+ (``ERROR LOOKING UP
+    LINE`` messages).
+  * DTD will not be inserted before an ```` declaration
+    anymore.
+  * Dependency on ``nine`` dropped.
+  * Dropped integration for TurboGears 1.
+  * Improved end-to-end testing.</comment>
+    <requestid>1070115</requestid>
+  </revision>
 </revisionlist>
