@@ -1,5 +1,5 @@
 <services>
   <service name="go_modules" mode="disabled">
-    <param name="archive">browserpass-native-3.0.9.tar.gz</param>
+    <param name="archive">browserpass-native-3.1.0.tar.gz</param>
   </service>
 </services>

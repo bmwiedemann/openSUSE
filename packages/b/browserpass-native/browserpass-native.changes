@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  5 21:11:17 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.0
+  * Implement add/edit/delete password functionality
+    (pending new browser extension release)
+    (gh#browserpass/browserpass-native#99,
+     gh#browserpass/browserpass-native#129)
+  * Add Edge browser support (gh#browserpass/browserpass-native#122,
+    gh#browserpass/browserpass-native#130)
+  * Add Yandex browser (gh#browserpass/browserpass-native#133)
+- Update vendor.tar.gz
+
+-------------------------------------------------------------------
 Sat Aug  6 21:10:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.0.10:

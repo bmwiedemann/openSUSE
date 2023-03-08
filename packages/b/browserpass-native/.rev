@@ -59,4 +59,13 @@
     <comment></comment>
     <requestid>993812</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b99d2b9c28e472309435ec8d3bccc99</srcmd5>
+    <version>3.1.0</version>
+    <time>1678283586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0
+- Update vendor.tar.gz (forwarded request 1069488 from tux93)</comment>
+    <requestid>1070014</requestid>
+  </revision>
 </revisionlist>
