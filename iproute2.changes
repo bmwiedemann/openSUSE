@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 14:14:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.2
+  * f_flower: Introduce L2TPv3 support
+  * bridge: fdb: Add support for locked FDB entries
+  * bridge: link: Add MAC Authentication Bypass (MAB) support
+  * ip: Support --json on `ip neigh get`
+  * tc: Add JSON output to tc-class
+
+-------------------------------------------------------------------
 Tue Dec 27 12:27:23 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

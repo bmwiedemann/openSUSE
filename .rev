@@ -1086,4 +1086,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1054740 from lnussel)</comment>
     <requestid>1055736</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>17bc59195f330c7709367b5587a06b67</srcmd5>
+    <version>6.2</version>
+    <time>1678283528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.2</comment>
+    <requestid>1069956</requestid>
+  </revision>
 </revisionlist>
