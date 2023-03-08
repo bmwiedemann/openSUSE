@@ -3,7 +3,7 @@ Tue Jan 10 14:12:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify _service file and set all services to disabled
 - remove patch 0001-Update-prometheus-client-to-1.11.1.patch
-- update to 1.5.0:
+- update to 1.5.0 (jsc#PED-3578):
   * NOTE: This changes the Go runtime "GOMAXPROCS" to 1. This is done to limit the
     concurrency of the exporter to 1 CPU thread at a time in order to avoid a
     race condition problem in the Linux kernel (#2500) and parallel IO issues
@@ -11,20 +11,19 @@ Tue Jan 10 14:12:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
   * [CHANGE] Default GOMAXPROCS to 1 #2530
   * [FEATURE] Add multiple listeners and systemd socket listener activation #2393
   * [ENHANCEMENT] Add RTNL version of netclass collector #2492, #2528
-  * [BUGFIX] Fix diskstats exclude flags #2487
-  * [BUGFIX] Bump go/x/crypt and go/x/net #2488
   * [BUGFIX] Fix hwmon label sanitizer #2504
   * [BUGFIX] Use native endianness when encoding InetDiagMsg #2508
   * [BUGFIX] Fix btrfs device stats always being zero #2516
-  * [BUGFIX] Security: Update exporter-toolkit (CVE-2022-46146) #2531
 
 -------------------------------------------------------------------
 Tue Jan 10 14:08:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.4.1:
   * [BUGFIX] Fix diskstats exclude flags #2487
-  * [BUGFIX] Security: Update go/x/crypto and go/x/net (CVE-2022-27191 CVE-2022-27664) #2488
-  * [BUGFIX] Security: Update exporter-toolkit (CVE-2022-46146) #2531
+  * [BUGFIX] Security: Update go/x/crypto and go/x/net
+    (CVE-2022-27191, CVE-2022-27664)
+  * [BUGFIX] Security: Update exporter-toolkit
+    (CVE-2022-46146, bsc#1208064)
 
 -------------------------------------------------------------------
 Tue Jan 10 14:06:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
