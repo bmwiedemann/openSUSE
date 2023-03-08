@@ -39,7 +39,7 @@
 
 %define skip_python2 1
 Name:           python-afdko%{psuffix}
-Version:        3.9.1
+Version:        3.9.3
 Release:        0
 Summary:        Adobe Font Development Kit for OpenType
 License:        Apache-2.0 AND MIT
@@ -49,8 +49,6 @@ Source0:        https://files.pythonhosted.org/packages/source/a/afdko/afdko-%{v
 Source1:        https://www.antlr.org/download/antlr4-cpp-runtime-%{antlr4version}-source.zip
 # PATCH-FIX-OPENSUSE afdko-opensuse-custom-build.patch -- make sure we can build offline, code@bnavigator.de
 Patch0:         afdko-opensuse-custom-build.patch
-# PATCH-FIX-OPENSUSE use-system-libxml2.patch -- make sure we can build offline
-Patch1:         use-system-libxml2.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools_scm}

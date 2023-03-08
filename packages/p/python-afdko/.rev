@@ -144,4 +144,24 @@
 </comment>
     <requestid>1046646</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8951e6d0b80afec2406540879a926333</srcmd5>
+    <version>3.9.3</version>
+    <time>1678283599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.3:
+  * Stop forcing static LibXML2 build on Linux (#1601)
+  * Unify cmake libxml build logic (#1597)
+  * Restore stack-like behavior of parseGLIF transform pointer (#1595)
+  * Always use blend for stem storage in cffwrite_t2cstr.c (#1591)
+  * Use non-xxxVF paths in t2cstr when flattening and outputting CFF2 (#1588)
+  * Replace UFO .glif file parsing with libxml2 (#1556)
+  * Replace UFO content.plist/glyphList parsing with libxml2 (#1543)
+  * Fixing the two instances of &quot;rU&quot; (#1584)
+  * Add --instance_info option to makeinstancesufo (#1577)
+  * Boost number of makeinstancesufo pool processors by one (#1561)
+  * Ensure poolCapacity is at least 1 (#1530)
+- Remove patch use-system-libxml2.patch, no longer needed.</comment>
+    <requestid>1070051</requestid>
+  </revision>
 </revisionlist>
