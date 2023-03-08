@@ -1,7 +1,7 @@
 #
 # spec file for package poppler-data
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           poppler-data
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        Encoding Files for use with libpoppler
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only

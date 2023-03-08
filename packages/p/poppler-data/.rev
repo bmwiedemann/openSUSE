@@ -191,4 +191,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>932779</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1c192dcc2ac0ec8d1fc7f70a580e9db5</srcmd5>
+    <version>0.4.12</version>
+    <time>1678283517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.12:
+  * updated files from the adobe-type-tools repositories</comment>
+    <requestid>1069919</requestid>
+  </revision>
 </revisionlist>
