@@ -19,7 +19,7 @@
 %define splitbin 0%{?suse_version} >= 1300
 
 Name:           xterm
-Version:        378
+Version:        379
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
@@ -42,7 +42,6 @@ Patch2:         xterm-sigwinch.patch
 Patch3:         xterm-double_width_fonts.patch
 Patch4:         xterm-desktop_file_icon.patch
 Patch5:         xterm-forbid_window_and_font_ops.patch
-Patch6:         xterm-enable_libtinfo.patch
 Patch7:         xterm-allow_iso-utf_fonts_in_menu.patch
 Patch8:         xterm-decomposed_bitmaps.patch
 Patch9:         xterm-desktop-item-in-gnome-utilities-appfolder.patch

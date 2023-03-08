@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:41:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 379:
+  * improve text-cursor (patch by Jan Engelhardt):
+    + allow selecting CURSOR_BAR mode from command-
+      line/Xresources.
+    + draw  cursor  using  filled  rectangle  instead
+      of  rectangle outline to permit thicker underlines/bars.
+    + scale up cursor relative to font size.
+  * improve readline modes (Fedora #2166860):
+    + document readline modes
+    + change the feature to configure by default
+    + replace hard-coded SS3 for cursor movement with
+      current mode
+    + replace hard-coded erase/lnext characters with
+      current values
+  * improve status-line (report by Thomas Wolff):
+    + RIS turns off status-line
+    + Right-margin  (DECLRMM  and DECSLRM) limits the
+      length of text written/updated in the status-line.
+    + Most controls which affect the whole screen are
+      ignored while updating the status-line.
+  * modify  configure check for tgetent to allow for some special
+    cases of ncurses configuration
+  * reduce  timeout,  improve  warning  message  if  resize is
+    run on a terminal which is not VT100-compatible.
+  * reduce compiler warnings in configure script.
+- drop xterm-enable_libtinfo.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Jan 17 13:15:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 378:
