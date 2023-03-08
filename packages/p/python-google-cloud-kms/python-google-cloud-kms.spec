@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-cloud-kms
-Version:        2.13.0
+Version:        2.15.0
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0

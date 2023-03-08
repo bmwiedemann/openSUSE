@@ -101,4 +101,12 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1056376 from glaubitz)</comment>
     <requestid>1056390</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e5aeb662e690ce2a597b17d4e1f3bff3</srcmd5>
+    <version>2.15.0</version>
+    <time>1678290618</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070202</requestid>
+  </revision>
 </revisionlist>

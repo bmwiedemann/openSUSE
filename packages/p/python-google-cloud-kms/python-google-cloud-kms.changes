@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  1 14:18:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.0
+  * Enable "rest" transport in Python for services supporting numeric enums (#377)
+- from version 2.14.1
+  * Add context manager return types (8137467)
+  * Add documentation for enums (8137467)
+- from version 2.14.0
+  * Add support for python 3.11 (#368)
+
+-------------------------------------------------------------------
 Fri Jan  6 11:24:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.13.0
