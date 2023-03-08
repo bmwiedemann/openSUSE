@@ -36,17 +36,5 @@ MDEhky/9NqMy\n\
 
 %post
     ln -s /etc/products.d/SLE-HPC.prod /etc/products.d/baseproduct
-    SUSEConnect -p PackageHub/12.5/x86_64
-    zypper install -y bash coreutils e2fsprogs \
-    ethtool filesystem findutils gawk grep \
-    iputils iproute2 net-tools nfs-client pam psmisc rsync sed \
-    rsyslog util-linux words wicked tar less \
-    gzip which util-linux \
-    pciutils vim strace sudo syslinux tcpdump timezone chrony cpio \
-    wget openssh 
-    # up to here, its a base container, line below can be used
-    # used for warewulf
-    zypper install -y ipmitool kernel-default
-
-    systemctl enable sshd
-
+    echo "Hello from post boot strap"
+    zypper install -y vim

@@ -6,20 +6,22 @@ of bootdef variables need to be specified:
 
 1. Create a bootdef file (for instance 'sle.def'), add
    BootStrap: zypper
-2. Set the OS version:
+2. Set the optional OS version:
    OSVersion: 15.0
    The version number corresponds to the Leap version or the
    SLE version and service pack level: <version>.<service_pack_level>
    Example: SLE-12 SP4 would be 12.4.
    The inital release of a major version corresponds to
    <service_pack_level> 0.  
-3. For openSUSE the following additional variables need to be
+3. For openSUSE the following variables need to be
    specified:
-   * MirrorURL: URL to the installation repository.
-                Check 'man 8 zypper' for supported formats
+   * MirrorURL: URL to the installation repository. Following URL 
+     should be work:
+     http://download.opensuse.org/distribution/openSUSE-stable/repo/oss
    * UpdateURL: (optional) URI of the update repository
-4. For SLE, all required settings are obtained from SCC.
-   The following variables are recognized:
+4. For SLE, all required settings are obtained from SCC via 
+   suseconnect-container. If the container should be registered separately 
+   the following variables are recognized:
    * Product: The product code: The following forms may be
                  used:
                  <product_id>
@@ -51,8 +53,8 @@ of bootdef variables need to be specified:
 
 Examples
 ========
-Example defintions for SLE12-SP5 and SLE15-SP3 are in the same 
-directory as README.SUSE
+Example defintions for openSUSE leap, registration via suseconnect-container, SLE12-SP5 
+and SLE15-SP5 are in the same directory as README.SUSE
 
 ProductPGP
 ==========

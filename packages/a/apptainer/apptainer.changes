@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 24 13:22:57 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- added simple sif building for SLE systems via suseconnect-container
+- added files: 
+  * simpler-sif-building.patch
+  * SLE-12SP5.def
+  * leap.def
+
+-------------------------------------------------------------------
 Wed Feb 15 09:01:08 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - update to 1.1.6 with following changes:

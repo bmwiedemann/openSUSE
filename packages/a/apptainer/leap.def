@@ -1,0 +1,6 @@
+Bootstrap: zypper
+MirrorURL: http://download.opensuse.org/distribution/openSUSE-stable/repo/oss
+Include: zypper
+%post
+    echo "Hello from post boot strap"
+    zypper in -y vim

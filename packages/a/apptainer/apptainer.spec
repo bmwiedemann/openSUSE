@@ -34,9 +34,12 @@ Obsoletes:      singularity <= 3.8.5
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SLE-12SP5.def
-Source3:        SLE-15SP3.def
-Source5:        %{name}-rpmlintrc
+Source3:        SLE-15SP5.def
+Source4:        SLE.def
+Source5:        leap.def
+Source8:        %{name}-rpmlintrc
 Source9:        vendor.tar.gz
+Patch1:         simpler-sif-building.patch
 %if "%{?squashfuse_version}" != ""
 Source10:       https://github.com/vasi/squashfuse/archive/%{squashfuse_version}/squashfuse-%{squashfuse_version}.tar.gz
 Patch10:        https://github.com/vasi/squashfuse/pull/70.patch
@@ -85,7 +88,8 @@ containers that can be used across host environments.
 %patch -P 10 -p1
 %endif
 %setup -q -n %{name}-%{version}
-cp %{S:1} %{S:2} %{S:3} .
+%patch1 -p 1
+cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
 
 %build
 %if "%{?squashfuse_version}" != ""

@@ -1,7 +1,7 @@
 BootStrap: zypper
-OSVersion: 15.3
+OSVersion: 15.5
 Include: zypper
-Product: SLES/15.3/x86_64
+Product: SLES/15.5/x86_64
 User: EMAIL
 Regcode: REGCODE
 MirrorURL: https://updates.suse.com/SUSE/Products/SLE-BCI/15-SP3/x86_64/product/
@@ -35,19 +35,5 @@ MDEhky/9NqMy\n\
 
 %post
     update-ca-certificates 
-    SUSEConnect -p PackageHub/15.3/x86_64
-    SUSEConnect -p sle-module-web-scripting/15.3/x86_64
-    SUSEConnect -p sle-module-hpc/15.3/x86_64
-    zypper install -y bash coreutils e2fsprogs \
-    ethtool filesystem findutils gawk grep \
-    iputils iproute2 net-tools nfs-client pam psmisc rsync sed \
-    rsyslog util-linux words wicked tar less \
-    gzip which util-linux \
-    pciutils vim strace sudo syslinux tcpdump timezone chrony cpio \
-    wget openssh 
-    # up to here, its a base container, line below can be used
-    # used for warewulf
-    zypper in -y kernel-default ipmitool 
-
-    systemctl enable sshd
-
+    echo "Hello from post boot strap"
+    zypper in -y vim
