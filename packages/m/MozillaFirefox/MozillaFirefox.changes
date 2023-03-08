@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  6 20:09:41 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Limit memory use on riscv64
+
+-------------------------------------------------------------------
 Sat Mar  4 16:03:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix 32 bit build bmo#1810584 add mozilla-bmo1810584.patch

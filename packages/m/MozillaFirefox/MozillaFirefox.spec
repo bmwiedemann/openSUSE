@@ -405,7 +405,7 @@ EOF
 # Done with env-variables.
 source ./.obsenv.sh
 
-%ifarch aarch64 %arm ppc64 ppc64le
+%ifarch aarch64 %arm ppc64 ppc64le riscv64
 %limit_build -m 2500
 %endif
 
