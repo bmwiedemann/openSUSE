@@ -441,6 +441,7 @@ unsorted:
   - adolc-devel 
   - adolc-devel-32bit: [x86_64] 
   - adolc-doc 
+  - adplugdb 
   - adriconf 
   - adriconf-lang 
   - ads 
@@ -2146,7 +2147,6 @@ unsorted:
   - cloud-init-config-MicroOS: [i586] 
   - cloud-init-config-suse 
   - cloud-init-doc 
-  - cloud-init-vmware-guestinfo 
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
   - cloud-netconfig-gce 
@@ -6428,6 +6428,11 @@ unsorted:
   - godot-rpm-macros 
   - godot-runner 
   - godot-server 
+  - godot3 
+  - godot3-bash-completion 
+  - godot3-headless 
+  - godot3-runner 
+  - godot3-server 
   - goffice-devel 
   - goffice-lang 
   - gojsontoyaml 
@@ -10113,6 +10118,8 @@ unsorted:
   - libadns1-32bit: [x86_64] 
   - libadolc2 
   - libadolc2-32bit: [x86_64] 
+  - libadplug-devel 
+  - libadplug2_3_3-0 
   - libadwaita-devel 
   - libadwaita-docs 
   - libadwaita-qt5-devel 
@@ -10405,6 +10412,8 @@ unsorted:
   - libbfoverlay-tools 
   - libbfoverlay1 
   - libbiblesync2_0 
+  - libbinio-devel 
+  - libbinio1 
   - libbitcoinconsensus-devel 
   - libbitcoinconsensus0 
   - libbitmask-devel 
@@ -11110,6 +11119,8 @@ unsorted:
   - libdnssec9 
   - libdocparser1 
   - libdouble-conversion3-32bit: [x86_64] 
+  - libdovi-devel 
+  - libdovi3 
   - libdpdk-22: [x86_64] 
   - libdqlite0 
   - libdrm-devel 
@@ -12237,6 +12248,8 @@ unsorted:
   - libiec61883-0-32bit: [x86_64] 
   - libiec61883-devel 
   - libiec61883-tools 
+  - libieee1284-devel 
+  - libieee12843 
   - libiga-devel: [x86_64] 
   - libiga64-1: [x86_64] 
   - libigc-devel: [x86_64] 
@@ -12785,10 +12798,13 @@ unsorted:
   - libmbd-openmpi4-devel 
   - libmbedcrypto7 
   - libmbedcrypto7-32bit: [x86_64] 
+  - libmbedcrypto7-x86-64-v3: [x86_64] 
   - libmbedtls14 
   - libmbedtls14-32bit: [x86_64] 
+  - libmbedtls14-x86-64-v3: [x86_64] 
   - libmbedx509-1 
   - libmbedx509-1-32bit: [x86_64] 
+  - libmbedx509-1-x86-64-v3: [x86_64] 
   - libmbim-devel 
   - libmbus 
   - libmbus-devel 
@@ -12918,7 +12934,9 @@ unsorted:
   - libmonosgen-2_0-1 
   - libmonosgen-2_0-devel 
   - libmopac7-1 
+  - libmopac7-1-32bit: [x86_64] 
   - libmopac7-1-devel 
+  - libmopac7-1-x86-64-v3: [x86_64] 
   - libmosquitto1 
   - libmosquittopp1 
   - libmount-devel 
@@ -14366,6 +14384,7 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
+  - libruby3_1-3_1 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -14660,6 +14679,8 @@ unsorted:
   - libspqr2 
   - libspread-sheet-widget0 
   - libsqlcipher-3_39_4-0 
+  - libsqlcipher-3_39_4-0-32bit: [x86_64] 
+  - libsqlcipher-3_39_4-0-x86-64-v3: [x86_64] 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -14911,6 +14932,8 @@ unsorted:
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract-5_3_0 
+  - libtesseract-5_3_0-32bit: [x86_64] 
+  - libtesseract-5_3_0-x86-64-v3: [x86_64] 
   - libtestshade1_12: [x86_64] 
   - libtevent-devel 
   - libtexlua53-5 
@@ -15255,17 +15278,18 @@ unsorted:
   - libvirt 
   - libvirt-cim 
   - libvirt-client-qemu 
+  - libvirt-daemon 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-lxc 
   - libvirt-daemon-driver-storage-gluster 
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc 
+  - libvirt-daemon-plugin-sanlock 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-devel-32bit: [x86_64] 
   - libvirt-doc 
   - libvirt-glib-devel 
-  - libvirt-lock-sanlock 
   - libvirt-nss 
   - libvirt-sandbox-1_0-5 
   - libvirt-sandbox-devel 
@@ -16884,7 +16908,7 @@ unsorted:
   - mcqd 
   - mcstrans 
   - mda-lv2 
-  - mdbook 
+  - mdbook: [x86_64] 
   - mdbtools 
   - mdbtools-devel 
   - mdds-1_5-devel 
@@ -24348,6 +24372,7 @@ unsorted:
   - python310-ligotimegps 
   - python310-limnoria 
   - python310-line_profiler 
+  - python310-linetable 
   - python310-lineup-widget 
   - python310-link-traits 
   - python310-linkify-it-py 
@@ -24678,6 +24703,7 @@ unsorted:
   - python310-pefile 
   - python310-pegasus-wms.api 
   - python310-pegasus-wms.common 
+  - python310-pegen 
   - python310-pelican: [x86_64] 
   - python310-pem 
   - python310-pendulum 
@@ -25987,6 +26013,7 @@ unsorted:
   - python311-JPype1: [x86_64] 
   - python311-Jinja2 
   - python311-Js2Py 
+  - python311-Kajiki 
   - python311-Kivy 
   - python311-Kivy-devel 
   - python311-LHAPDF 
@@ -26703,6 +26730,7 @@ unsorted:
   - python311-cdflib 
   - python311-celery 
   - python311-celery-batches 
+  - python311-cepa 
   - python311-certbot 
   - python311-certbot-apache 
   - python311-certbot-dns-cloudflare 
@@ -27069,6 +27097,7 @@ unsorted:
   - python311-emcee 
   - python311-emoji 
   - python311-empy 
+  - python311-enaml 
   - python311-encore 
   - python311-enrich 
   - python311-entrypoint2 
@@ -27609,6 +27638,7 @@ unsorted:
   - python311-limnoria 
   - python311-line_profiler 
   - python311-linecache2 
+  - python311-linetable 
   - python311-lineup-widget 
   - python311-link-traits 
   - python311-linkify-it-py 
@@ -27895,6 +27925,7 @@ unsorted:
   - python311-parse_type 
   - python311-parsedatetime 
   - python311-parsel 
+  - python311-parsimonious 
   - python311-parso 
   - python311-parsy 
   - python311-partd 
@@ -27928,6 +27959,7 @@ unsorted:
   - python311-pefile 
   - python311-pegasus-wms.api 
   - python311-pegasus-wms.common 
+  - python311-pegen 
   - python311-pelican: [x86_64] 
   - python311-pem 
   - python311-pendulum 
@@ -28869,6 +28901,7 @@ unsorted:
   - python311-thespian 
   - python311-threadpoolctl 
   - python311-three-merge 
+  - python311-threevis 
   - python311-thriftpy2 
   - python311-tifffile 
   - python311-time-machine 
@@ -30950,6 +30983,7 @@ unsorted:
   - python38-limnoria 
   - python38-line_profiler 
   - python38-linecache2 
+  - python38-linetable 
   - python38-lineup-widget 
   - python38-link-traits 
   - python38-linkify-it-py 
@@ -31288,6 +31322,7 @@ unsorted:
   - python38-pefile 
   - python38-pegasus-wms.api 
   - python38-pegasus-wms.common 
+  - python38-pegen 
   - python38-pelican: [x86_64] 
   - python38-pem 
   - python38-pendulum 
@@ -34364,6 +34399,7 @@ unsorted:
   - python39-limnoria 
   - python39-line_profiler 
   - python39-linecache2 
+  - python39-linetable 
   - python39-lineup-widget 
   - python39-link-traits 
   - python39-linkify-it-py 
@@ -34703,6 +34739,7 @@ unsorted:
   - python39-pefile 
   - python39-pegasus-wms.api 
   - python39-pegasus-wms.common 
+  - python39-pegen 
   - python39-pelican: [x86_64] 
   - python39-pem 
   - python39-pendulum 
@@ -37019,6 +37056,7 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
+  - ruby3.1 
   - ruby3.1-devel 
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
@@ -37028,9 +37066,14 @@ unsorted:
   - ruby3.1-rubygem-actioncable-7.0 
   - ruby3.1-rubygem-actionmailbox-7.0 
   - ruby3.1-rubygem-actionmailer-7.0 
+  - ruby3.1-rubygem-actionpack-7.0 
   - ruby3.1-rubygem-actiontext-7.0 
+  - ruby3.1-rubygem-actionview-7.0 
+  - ruby3.1-rubygem-activejob-7.0 
+  - ruby3.1-rubygem-activemodel-7.0 
   - ruby3.1-rubygem-activerecord-7.0 
   - ruby3.1-rubygem-activestorage-7.0 
+  - ruby3.1-rubygem-activesupport-7.0 
   - ruby3.1-rubygem-addressable 
   - ruby3.1-rubygem-aes_key_wrap 
   - ruby3.1-rubygem-afm 
@@ -37048,7 +37091,10 @@ unsorted:
   - ruby3.1-rubygem-bcrypt_pbkdf 
   - ruby3.1-rubygem-benchmark 
   - ruby3.1-rubygem-bindata 
+  - ruby3.1-rubygem-bindex 
   - ruby3.1-rubygem-binding_of_caller 
+  - ruby3.1-rubygem-bootsnap 
+  - ruby3.1-rubygem-builder 
   - ruby3.1-rubygem-bundler 
   - ruby3.1-rubygem-bundler-audit 
   - ruby3.1-rubygem-byebug 
@@ -37067,8 +37113,10 @@ unsorted:
   - ruby3.1-rubygem-coffee-script-source 
   - ruby3.1-rubygem-colorator 
   - ruby3.1-rubygem-commander 
+  - ruby3.1-rubygem-concurrent-ruby 
   - ruby3.1-rubygem-cool.io 
   - ruby3.1-rubygem-crack 
+  - ruby3.1-rubygem-crass 
   - ruby3.1-rubygem-cri 
   - ruby3.1-rubygem-css_parser 
   - ruby3.1-rubygem-csv 
@@ -37097,6 +37145,7 @@ unsorted:
   - ruby3.1-rubygem-ed25519 
   - ruby3.1-rubygem-em-websocket 
   - ruby3.1-rubygem-equalizer 
+  - ruby3.1-rubygem-erubi 
   - ruby3.1-rubygem-erubis 
   - ruby3.1-rubygem-eventmachine 
   - ruby3.1-rubygem-exception_notification 
@@ -37126,6 +37175,7 @@ unsorted:
   - ruby3.1-rubygem-gettext_i18n_rails 
   - ruby3.1-rubygem-gettext_i18n_rails_js 
   - ruby3.1-rubygem-gli 
+  - ruby3.1-rubygem-globalid 
   - ruby3.1-rubygem-google-protobuf 
   - ruby3.1-rubygem-googleapis-common-protos-types 
   - ruby3.1-rubygem-gpgme 
@@ -37149,9 +37199,12 @@ unsorted:
   - ruby3.1-rubygem-http-form_data 
   - ruby3.1-rubygem-http_parser.rb 
   - ruby3.1-rubygem-httpclient 
+  - ruby3.1-rubygem-i18n 
   - ruby3.1-rubygem-ice_nine 
+  - ruby3.1-rubygem-importmap-rails 
   - ruby3.1-rubygem-inifile 
   - ruby3.1-rubygem-jaro_winkler 
+  - ruby3.1-rubygem-jbuilder 
   - ruby3.1-rubygem-jekyll 
   - ruby3.1-rubygem-jekyll-sass-converter 
   - ruby3.1-rubygem-jekyll-watch 
@@ -37177,10 +37230,12 @@ unsorted:
   - ruby3.1-rubygem-log4r 
   - ruby3.1-rubygem-logging 
   - ruby3.1-rubygem-lolcat 
+  - ruby3.1-rubygem-loofah 
   - ruby3.1-rubygem-mail 
   - ruby3.1-rubygem-manpages 
   - ruby3.1-rubygem-marcel 
   - ruby3.1-rubygem-mercenary 
+  - ruby3.1-rubygem-method_source 
   - ruby3.1-rubygem-micromachine 
   - ruby3.1-rubygem-mime 
   - ruby3.1-rubygem-mime-types 
@@ -37197,6 +37252,7 @@ unsorted:
   - ruby3.1-rubygem-mixlib-shellout 
   - ruby3.1-rubygem-mocha 
   - ruby3.1-rubygem-moneta 
+  - ruby3.1-rubygem-msgpack 
   - ruby3.1-rubygem-multi_json 
   - ruby3.1-rubygem-multi_xml 
   - ruby3.1-rubygem-multipart-post 
@@ -37210,6 +37266,8 @@ unsorted:
   - ruby3.1-rubygem-net-ssh 
   - ruby3.1-rubygem-net-ssh-6.1 
   - ruby3.1-rubygem-netrc 
+  - ruby3.1-rubygem-nio4r 
+  - ruby3.1-rubygem-nokogiri 
   - ruby3.1-rubygem-nori 
   - ruby3.1-rubygem-oauth2 
   - ruby3.1-rubygem-omniauth 
@@ -37244,15 +37302,21 @@ unsorted:
   - ruby3.1-rubygem-public_suffix 
   - ruby3.1-rubygem-public_suffix-3.1 
   - ruby3.1-rubygem-puma 
+  - ruby3.1-rubygem-puma-5 
   - ruby3.1-rubygem-puma_worker_killer 
   - ruby3.1-rubygem-pundit 
   - ruby3.1-rubygem-rack 
+  - ruby3.1-rubygem-rack-2.2 
   - ruby3.1-rubygem-rack-accept 
   - ruby3.1-rubygem-rack-oauth2 
   - ruby3.1-rubygem-rack-protection 
   - ruby3.1-rubygem-rack-proxy 
+  - ruby3.1-rubygem-rack-test-0_6 
   - ruby3.1-rubygem-rails-7.0 
+  - ruby3.1-rubygem-rails-dom-testing 
+  - ruby3.1-rubygem-rails-html-sanitizer 
   - ruby3.1-rubygem-rails-i18n 
+  - ruby3.1-rubygem-railties-7.0 
   - ruby3.1-rubygem-rainbow 
   - ruby3.1-rubygem-raindrops 
   - ruby3.1-rubygem-rake-compiler 
@@ -37315,9 +37379,13 @@ unsorted:
   - ruby3.1-rubygem-slop 
   - ruby3.1-rubygem-snaky_hash 
   - ruby3.1-rubygem-spring 
+  - ruby3.1-rubygem-sprockets 
   - ruby3.1-rubygem-sprockets-3.7 
   - ruby3.1-rubygem-sprockets-helpers 
+  - ruby3.1-rubygem-sprockets-rails 
+  - ruby3.1-rubygem-sqlite3 
   - ruby3.1-rubygem-sshkit 
+  - ruby3.1-rubygem-stimulus-rails 
   - ruby3.1-rubygem-stomp 
   - ruby3.1-rubygem-stream 
   - ruby3.1-rubygem-strptime 
@@ -37327,6 +37395,7 @@ unsorted:
   - ruby3.1-rubygem-terminal-table 
   - ruby3.1-rubygem-terminal-table-2 
   - ruby3.1-rubygem-text 
+  - ruby3.1-rubygem-thor 
   - ruby3.1-rubygem-thread_safe 
   - ruby3.1-rubygem-tilt 
   - ruby3.1-rubygem-timers 
@@ -37335,8 +37404,10 @@ unsorted:
   - ruby3.1-rubygem-treetop 
   - ruby3.1-rubygem-trollop 
   - ruby3.1-rubygem-ttfunk 
+  - ruby3.1-rubygem-turbo-rails 
   - ruby3.1-rubygem-turbolinks 
   - ruby3.1-rubygem-turbolinks-source 
+  - ruby3.1-rubygem-tzinfo 
   - ruby3.1-rubygem-tzinfo-1.2 
   - ruby3.1-rubygem-tzinfo-data 
   - ruby3.1-rubygem-uglifier 
@@ -37351,6 +37422,7 @@ unsorted:
   - ruby3.1-rubygem-version_gem 
   - ruby3.1-rubygem-virtus 
   - ruby3.1-rubygem-warden 
+  - ruby3.1-rubygem-web-console 
   - ruby3.1-rubygem-webfinger 
   - ruby3.1-rubygem-webpacker 
   - ruby3.1-rubygem-webrick 
@@ -37367,10 +37439,42 @@ unsorted:
   - ruby3.1-rubygem-xmlrpc 
   - ruby3.1-rubygem-yajl-ruby 
   - ruby3.1-rubygem-yard 
+  - ruby3.1-rubygem-zeitwerk 
   - ruby3.2-devel 
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
+  - ruby3.2-rubygem-actioncable-7.0 
+  - ruby3.2-rubygem-actionmailbox-7.0 
+  - ruby3.2-rubygem-actionmailer-7.0 
+  - ruby3.2-rubygem-actiontext-7.0 
+  - ruby3.2-rubygem-activejob-7.0 
+  - ruby3.2-rubygem-activestorage-7.0 
+  - ruby3.2-rubygem-coffee-rails 
+  - ruby3.2-rubygem-devise 
+  - ruby3.2-rubygem-devise-i18n 
+  - ruby3.2-rubygem-devise_ldap_authenticatable 
+  - ruby3.2-rubygem-exception_notification 
+  - ruby3.2-rubygem-font-awesome-rails 
+  - ruby3.2-rubygem-gettext_i18n_rails_js 
+  - ruby3.2-rubygem-haml-rails 
+  - ruby3.2-rubygem-importmap-rails 
+  - ruby3.2-rubygem-jquery-rails 
+  - ruby3.2-rubygem-js-routes 
+  - ruby3.2-rubygem-lightbox2 
+  - ruby3.2-rubygem-rails-7.0 
+  - ruby3.2-rubygem-rails-i18n 
+  - ruby3.2-rubygem-railties-7.0 
+  - ruby3.2-rubygem-responders 
+  - ruby3.2-rubygem-rspec-rails 
+  - ruby3.2-rubygem-rspec-rails-4.0 
+  - ruby3.2-rubygem-sass-rails 
+  - ruby3.2-rubygem-sass-rails-5.1 
+  - ruby3.2-rubygem-sassc-rails 
+  - ruby3.2-rubygem-stimulus-rails 
+  - ruby3.2-rubygem-turbo-rails 
+  - ruby3.2-rubygem-web-console 
+  - ruby3.2-rubygem-webpacker 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
@@ -38350,6 +38454,7 @@ unsorted:
   - swing-worker-javadoc 
   - swingx 
   - swingx-javadoc 
+  - swipl 
   - switch_sles_sle-hpc 
   - switcheroo-control 
   - switcheroo-control-doc 
@@ -38771,7 +38876,7 @@ unsorted:
   - texi2html-lang 
   - texi2roff 
   - texinfo 
-  - texlab 
+  - texlab: [x86_64] 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
@@ -47413,6 +47518,7 @@ unsorted:
   - trivy 
   - trng-devel 
   - trojan 
+  - trousers 
   - trousers-devel 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
@@ -49003,6 +49109,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yascreen-devel 
   - yasm 
