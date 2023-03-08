@@ -2049,4 +2049,12 @@ for 12.3</comment>
   * tuned: incremental addition of new acquire_devices method (bsc#1208727)</comment>
     <requestid>1069152</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>ab508b1d80fd041f97eca9cd5de1521f</srcmd5>
+    <version>1550+20230307.7f42172</version>
+    <time>1678283534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069934</requestid>
+  </revision>
 </revisionlist>

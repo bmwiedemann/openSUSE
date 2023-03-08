@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 07 13:08:18 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230307.7f42172:
+  * Whitelist kde-inotify-survey (bsc#1208689)
+
+-------------------------------------------------------------------
 Fri Mar 03 12:46:22 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 1550+20230303.7726e9f:
