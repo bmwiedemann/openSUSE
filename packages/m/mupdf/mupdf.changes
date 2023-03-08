@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 17:34:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequires freeglut & lcms2, this is not used
+  and the build always relies on the bundled copy.
+
+-------------------------------------------------------------------
 Mon Mar  6 21:11:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable system gumbo, so it may be removed [boo#1208381].

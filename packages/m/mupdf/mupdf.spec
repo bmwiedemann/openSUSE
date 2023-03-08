@@ -30,7 +30,6 @@ Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
-BuildRequires:  freeglut-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
@@ -41,13 +40,19 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
+Provides:       bundled(freeglut) = 3.0.0
+Provides:       bundled(freeglut-art) = 3.0.0
+Provides:       bundled(gumbo-parser) = 0.10.1
+Provides:       bundled(lcms2) = 2.14
+Provides:       bundled(lcms2-art) = 2.14
+Provides:       bundled(mujs) = 1.3.2
 Requires:       xdg-utils
 
 %description
