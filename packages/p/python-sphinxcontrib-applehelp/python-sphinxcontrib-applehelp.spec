@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib-applehelp
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,15 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-applehelp%{psuffix}
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Sphinx extension which outputs Apple help books
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-applehelp
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-applehelp/sphinxcontrib-applehelp-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python-rpm-macros
@@ -54,11 +55,11 @@ sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books
 %setup -q -n sphinxcontrib-applehelp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

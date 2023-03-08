@@ -16,4 +16,15 @@
   * Fix package metadata</comment>
     <requestid>782534</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f80b40a41cdb0760d76f9655a0b0b53</srcmd5>
+    <version>1.0.4</version>
+    <time>1678283466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Fix package name
+  * Drop Python 3.8 and lower
+  * Fix deprecation warnings from Sphinx 6.1</comment>
+    <requestid>1069746</requestid>
+  </revision>
 </revisionlist>
