@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 27 13:33:07 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- update to version 7.0.4.1
+  see installed CHANGELOG.md
+  fix CVE-2023-22796 (bsc#1207454)
+
+  ## Rails 7.0.4.1 (January 17, 2023) ##
+  
+  *   Avoid regex backtracking in Inflector.underscore
+  
+      [CVE-2023-22796] 
+
+-------------------------------------------------------------------
 Mon Oct 10 12:55:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.4
