@@ -1,5 +1,0 @@
-<package name="cloud-init-vmware-guestinfo" project="openSUSE:Factory">
-  <title>A cloud-init datasource that uses VMware GuestInfo</title>
-  <description>A cloud-init datasource that uses VMware GuestInfo</description>
-  <devel project="Cloud:Tools" package="cloud-init-vmware-guestinfo"/>
-</package>
