@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-anyio
 Version:        3.6.2
 Release:        0
@@ -25,6 +23,8 @@ Summary:        High level compatibility layer for asynchronous event loop imple
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support trio >= 0.22 just enough for asyncclick
+Patch0:         support-trio-0.22.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}

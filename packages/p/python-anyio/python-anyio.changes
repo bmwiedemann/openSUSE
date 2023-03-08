@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:29:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patc support-trio-0.22.patch:
+  * Support trio >= 0.22 just enough for asyncclick.
+
+-------------------------------------------------------------------
 Fri Dec 16 15:06:08 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Skip trio exception tests for now 

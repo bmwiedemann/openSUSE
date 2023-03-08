@@ -1,0 +1,22 @@
+Index: anyio-3.6.2/src/anyio/_backends/_trio.py
+===================================================================
+--- anyio-3.6.2.orig/src/anyio/_backends/_trio.py
++++ anyio-3.6.2/src/anyio/_backends/_trio.py
+@@ -161,7 +161,7 @@ current_time = trio.current_time
+ #
+ 
+ 
+-class ExceptionGroup(BaseExceptionGroup, trio.MultiError):
++class ExceptionGroup(BaseExceptionGroup):
+     pass
+ 
+ 
+@@ -185,7 +185,7 @@ class TaskGroup(abc.TaskGroup):
+     ) -> Optional[bool]:
+         try:
+             return await self._nursery_manager.__aexit__(exc_type, exc_val, exc_tb)
+-        except trio.MultiError as exc:
++        except ExceptionGroup as exc:
+             raise ExceptionGroup(exc.exceptions) from None
+         finally:
+             self._active = False
