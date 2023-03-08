@@ -1064,4 +1064,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1069264</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>ca690254de8fde5e1824e35cd70ea863</srcmd5>
+    <version>0.189</version>
+    <time>1678290609</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix file listing for 15.x builds.</comment>
+    <requestid>1069928</requestid>
+  </revision>
 </revisionlist>

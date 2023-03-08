@@ -205,7 +205,9 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %config %{_sysconfdir}/profile.d/debuginfod.sh
 %config %{_sysconfdir}/profile.d/debuginfod.csh
 %dir %{_sysconfdir}/debuginfod
+%if %{suse_version} > 1500
 %config %{_sysconfdir}/debuginfod/elfutils.urls
+%endif
 
 %pre -f %{name}.pre
 %service_add_pre debuginfod.service
