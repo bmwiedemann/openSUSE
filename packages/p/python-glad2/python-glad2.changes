@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 16:39:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Correct BR from python3-jinja2 to python3-Jinja2, fixes
+  dependency resolving on older distros
+
+-------------------------------------------------------------------
 Wed Oct 26 13:20:55 UTC 2022 - Niklas Haas <obs@haasn.xyz>
 
 - Add missing run-time dependency on python-setuptools

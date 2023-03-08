@@ -7,4 +7,12 @@
     <comment>This is needed as a dependency to package the new version of libplacebo (5.229.1).</comment>
     <requestid>1037618</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91ebde5ed69e01fe6376eb6f2cd84dbf</srcmd5>
+    <version>2.0.1</version>
+    <time>1678283525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069950</requestid>
+  </revision>
 </revisionlist>

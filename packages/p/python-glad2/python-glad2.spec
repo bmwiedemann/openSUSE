@@ -28,10 +28,10 @@ Source1:        python-glad2-rpmlintrc
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module jinja2}
+BuildRequires:  %{python_module Jinja2}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-jinja2
+Requires:       python-Jinja2
 Requires:       python-setuptools
 BuildArch:      noarch
 Requires(post): %{_sbindir}/update-alternatives
