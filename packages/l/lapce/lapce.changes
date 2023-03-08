@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Mar 01 10:21:38 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.6:
+  * bump version
+  * Make auto_closing_matching_pairs dependent on BufferContent (#2188)
+  * Extended double-click options (#2127)
+  * chore(deps): bump once_cell from 1.15.0 to 1.17.1 (#2173)
+  * fix: build WSL backend only for Windows (#2166)
+  * return stdout stderr
+  * update psp-types
+  * fix cannot open file when diff already opened (#2125)
+  * Use abs_diff (#2123)
+  * Added Lapce App Icon (#2128)
+  * fix: dont overwrite symlink (#2131)
+  * ci: run workflow in PR to test changes (#2132)
+  * chore(deps): bump git2 from 0.14.4 to 0.16.1 (#2050)
+  * fix: rewrite script + fix version comparison (#2117)
+  * Add settings to configure the scroll speed (#2120)
+  * make wasi initilization async (#2114)
+  * feat: configurable diff context lines (#2094)
+  * Properly instantiate the WASM blob and let it live inside the thread (#2090)
+  * If format-on-save is not enabled, save immediately (#2088)
+  * feat: diff view navbar (#2084)
+  * Enable plugins to act as LSP themselves (#2087)
+  * fix: branches filter not updating (#2080)
+  * feat: add Ctrl+{a,e,k} keybinds on macOS (#2074)
+  * fix: remove regex, parse remote as URL (#2075)
+  * fix: find repository if it's not in current workspace path (#2069)
+  * fix: set language environment in proper way (#2070)
+  * feat: add command and keybinds to delete line (#2071)
+  * Add an option to disable moving the focus area when you type (#2062)
+  * Don't spawn a thread for every config watcher notifications (#2034)
+  * fix: remove ssh timeout option on windows (#2072)
+  * fix: missing newline (#2073)
+  * fix(clippy): apply new lints (#2063)
+  * Actually logs LogMessage request from plugins (#2061)
+  * Fix select current line not working (#2046)
+  * Some fixes to global search with files outside of workspaces (#2048)
+  * Use bounded channel of 1 when responding to plugin rpc requests (#2055)
+  * send user HOME dir from proxy to editor (#2056)
+- Use zstd compression for tarballs.
+
+-------------------------------------------------------------------
 Mon Jan 23 05:01:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.5+git87:

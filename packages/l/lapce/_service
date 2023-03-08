@@ -1,10 +1,10 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/lapce/lapce</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">5b2d412fc83b4a72ec91da884cc07e127ffef8a5</param>
-	<param name="match-tag">v0.2.5</param>
+    <param name="revision">cc154ac94fbcfd3fe9bb3ac7c03d161d300b31c8</param>
+	<param name="match-tag">v0.2.6</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -13,13 +13,15 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zstd</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">lapce</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled" />
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">lapce</param>
+  </service>
 </services>
