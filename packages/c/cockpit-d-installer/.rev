@@ -52,4 +52,12 @@
 - Allow user downloading logs (gh#yast/d-installer#379)</comment>
     <requestid>1066106</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>40ce6a34304a46fa88894a8239dd6cba</srcmd5>
+    <version>0</version>
+    <time>1678283641</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070152</requestid>
+  </revision>
 </revisionlist>
