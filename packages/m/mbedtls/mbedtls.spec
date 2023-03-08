@@ -33,6 +33,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpkcs11-helper-1)
 BuildRequires:  pkgconfig(zlib)
+%{?suse_build_hwcaps_libs}
 
 %description
 mbedtls implements the SSL3, TLS 1.0, 1.1 and 1.2 protocols. It

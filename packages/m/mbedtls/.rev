@@ -366,4 +366,12 @@
     <comment></comment>
     <requestid>1044169</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>0c3b5b2dde27c893918e660c9faf1c63</srcmd5>
+    <version>2.28.2</version>
+    <time>1678283660</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1070164</requestid>
+  </revision>
 </revisionlist>
