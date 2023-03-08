@@ -1,7 +1,7 @@
 #
 # spec file for package openpgl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define libname libopenpgl0
 
 Name:           openpgl
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Open Path Guiding Library
 License:        Apache-2.0

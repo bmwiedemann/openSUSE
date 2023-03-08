@@ -21,4 +21,12 @@ it's x86_64 exclusive for the time being</comment>
     <comment></comment>
     <requestid>1041966</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f032686febea6096367966cf9eb7a65d</srcmd5>
+    <version>0.4.1</version>
+    <time>1678283632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070114</requestid>
+  </revision>
 </revisionlist>

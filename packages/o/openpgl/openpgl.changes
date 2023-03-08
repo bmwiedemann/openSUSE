@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  8 08:29:28 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 0.4.1:
+  * Fixing bug introduced in 0.4.0 when using
+    ApplySingleLobeHenyeyGreensteinProduct() for VMM-based
+    representations
+
+-------------------------------------------------------------------
 Fri Dec  9 19:45:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Enable aarch64, allow lax vector conversion (uint/int) for the
