@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  8 09:38:46 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated cputype (bsc#1208983)
+  * Changed the script to avoid "/usr/bin/cputype: line xx: nnnn: command not found",
+    when machine type was found more than once in the /proc/cpuinfo.
+
+-------------------------------------------------------------------
 Tue Feb 21 13:49:29 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Apllied the following patches (bsc#1208527, bsc#1206173) 

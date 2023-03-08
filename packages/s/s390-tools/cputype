@@ -2,7 +2,7 @@
 #
 # cputype
 #
-# Copyright (c) 2014-2017, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2014-2017, 2019, 2023 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # Based on the IBM machine model, returns a (hopefully) human understandable
 # string that identifies the processor.
@@ -25,7 +25,7 @@ if [ "${architecture}" != "s390x" -a "${architecture}" != "s390" ]; then
   exit 1
 fi
 
-args=$(/usr/bin/grep machine /proc/cpuinfo | /usr/bin/cut -f2- -d: | /usr/bin/tr -d ' ' | /usr/bin/tr ',' ';' )
+args=$(/usr/bin/grep machine /proc/cpuinfo | awk '{print $11}' )
 
 if [ -z "${args}" ]; then
   echo "I couldn't find the machine type. Please report a bug with this output:" >&2
@@ -35,7 +35,7 @@ if [ -z "${args}" ]; then
   exit 2
 fi
 
-eval ${args}
+machine=${args:0:4}
 
 if [ -z "${machine}" ] ; then
   echo "The machine type came out null. Please report a bug with this output:" >&2
