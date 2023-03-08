@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 20:49:06 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-beta.4.
+- This version uses hyper 0.14.24, which prevents CVE-2022-31394
+  (bsc#1208559).
+
+-------------------------------------------------------------------
 Mon May  9 06:41:34 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
-- Update upstream version 1.0.0-beta.2:
+- Update to upstream version 1.0.0-beta.2:
   * Improve "pijul key" documentation.
   * "pijul pull" does not open $EDITOR anymore when given a list
     of changes.
