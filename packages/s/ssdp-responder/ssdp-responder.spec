@@ -1,8 +1,8 @@
 #
 # spec file for package ssdp-responder
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2018-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ssdp-responder
-Version:        1.9
+Version:        2.0
 Release:        0
 Summary:        SSDP responder for Linux
 License:        ISC
@@ -49,7 +49,7 @@ autoreconf -fiv
 
 %install
 %make_install
-rm -rf %{buildroot}/%{_datadir}/doc
+rm -Rv %{buildroot}/%{_datadir}/doc
 
 %preun
 %service_del_preun ssdpd.service
