@@ -369,4 +369,12 @@
   * cached cell values are now correctly loaded from the xlsx file.</comment>
     <requestid>956518</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>1a30336496172e8071e58adc50777e77</srcmd5>
+    <version>0.17.2</version>
+    <time>1678283480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069835</requestid>
+  </revision>
 </revisionlist>

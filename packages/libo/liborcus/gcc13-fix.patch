@@ -1,0 +1,25 @@
+diff --git a/include/orcus/types.hpp b/include/orcus/types.hpp
+index f5ec320de541050d333dc7699b1991167ea2d88c..46edd1ca04bdebf92abcd2a46f05c370ab2c0c3a 100644
+--- a/include/orcus/types.hpp
++++ b/include/orcus/types.hpp
+@@ -8,6 +8,7 @@
+ #ifndef INCLUDED_ORCUS_TYPES_HPP
+ #define INCLUDED_ORCUS_TYPES_HPP
+ 
++#include <cstdint>
+ #include <cstdlib>
+ #include <vector>
+ #include <string>
+
+diff --git a/include/orcus/base64.hpp b/include/orcus/base64.hpp
+index f880b7f..398fafb 100644
+--- a/include/orcus/base64.hpp
++++ b/include/orcus/base64.hpp
+@@ -11,6 +11,7 @@
+ #include "env.hpp"
+ #include <vector>
+ #include <string>
++#include <cstdint>
+ 
+ namespace orcus {
+ 

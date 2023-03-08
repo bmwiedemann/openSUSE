@@ -1,7 +1,7 @@
 #
 # spec file for package liborcus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
 Patch0:         no-std-filesystem.patch
+Patch1:         gcc13-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -90,6 +91,7 @@ Python 3 bindings for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 libtoolize --force --copy
