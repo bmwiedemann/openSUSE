@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:50:14 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Tue Jun  9 14:51:14 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 %arm by adding '-fPIC' flag

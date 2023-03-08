@@ -1,7 +1,7 @@
 #
 # spec file for package mopac7
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        SUSE-Public-Domain
 Group:          Productivity/Scientific/Chemistry
 URL:            https://sourceforge.net/projects/mopac7/
 Source0:        http://www.bioinformatics.org/ghemical/download/current/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 Patch1:         mopac7-1.14-random_data.patch
 Patch2:         mopac7-1.14-libdir.patch
 # PATCH-FEATURE-OPENSUSE mopac7-fortify.patch -- fix for building with gcc7
@@ -34,6 +35,7 @@ BuildRequires:  automake
 BuildRequires:  gcc-fortran
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 MOPAC7 is a semi-empirical quantum-mechanics code written by James J. P.
@@ -73,7 +75,7 @@ This package contains development files.
 autoreconf -fiv
 # http://www.bioinformatics.org/pipermail/ghemical-devel/2008-August/000763.html
 export FFLAGS="%{optflags} -std=legacy -fno-automatic"
-%ifarch aarch64 %arm
+%ifarch aarch64 %{arm}
 export FFLAGS="%{optflags} -fPIC"
 %endif
 %configure \
