@@ -1,0 +1,21 @@
+<constraints>
+  <hardware>
+    <processors>8</processors>
+    <physicalmemory>
+      <size unit="M">8192</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">10</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+      <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
+</constraints> 

@@ -1,0 +1,120 @@
+From: cunix@mail.de
+Date: 2023-03-02 12:00:00
+Subject: Use version specific files and wording
+
+To allow parallel install and use of godot from current and older branch,
+the 3.x branch gets "3" as suffix.
+This should store configuration and data files in "godot3" directories
+instead of "godot" which is used by the current branch.
+Same for binary name, man page, etc.
+
+---
+
+diff -r -U 5 a/misc/dist/linux/godot.6 b/misc/dist/linux/godot.6
+--- a/misc/dist/linux/godot.6
++++ b/misc/dist/linux/godot.6
+@@ -1,10 +1,10 @@
+ .TH GODOT "6" "January 2020" "godot 3.2" "Games"
+ .SH NAME
+-godot \- multi\-platform 2D and 3D game engine with a feature\-rich editor
++godot3 \- multi\-platform 2D and 3D game engine with a feature\-rich editor
+ .SH SYNOPSIS
+-.B godot
++.B godot3
+ [\fI\,options\/\fR] [path to scene or 'project.godot' file]
+ .SH DESCRIPTION
+ Godot Engine is an advanced, feature\-packed, multi\-platform 2D and 3D game
+ engine.
+ .br
+@@ -160,27 +160,27 @@
+ Generate JSON dump of the Godot API for GDNative bindings.
+ .TP
+ \fB\-\-test\fR <test>
+ Run a unit test ('string', 'math', 'physics', 'physics_2d', 'render', 'oa_hash_map', 'gui', 'shaderlang', 'gd_tokenizer', 'gd_parser', 'gd_compiler', 'gd_bytecode', 'ordered_hash_map', 'astar').
+ .SH FILES
+-XDG_DATA_CONFIG/godot/ or ~/.config/godot/
++XDG_DATA_CONFIG/godot3/ or ~/.config/godot3/
+ .RS
+ User\-specific configuration folder, contains persistent editor settings, script and text editor templates and projects metadata.
+ .RE
+-XDG_DATA_HOME/godot/ or ~/.local/share/godot/
++XDG_DATA_HOME/godot3/ or ~/.local/share/godot3/
+ .RS
+ Contains the default configuration and user data folders for Godot\-made games (\fIuser://\fR path), as well as export templates.
+ .RE
+-XDG_DATA_CACHE/godot/ or ~/.cache/godot/
++XDG_DATA_CACHE/godot3/ or ~/.cache/godot3/
+ .RS
+ Cache folder for generated thumbnails and scene previews, as well as temporary location for downloads.
+ .RE
+ /usr/share/doc/godot/
+ .RS
+ Additional documentation files.
+ .RE
+-/usr/share/licenses/godot/
++/usr/share/licenses/godot3/
+ .RS
+ Detailed licensing information.
+ .RE
+ .SH "SEE ALSO"
+ See the project website at \fIhttps://godotengine.org\fR and the source
+diff -r -U 5 a/misc/dist/linux/org.godotengine.Godot.appdata.xml b/misc/dist/linux/org.godotengine.Godot.appdata.xml
+--- a/misc/dist/linux/org.godotengine.Godot.appdata.xml
++++ b/misc/dist/linux/org.godotengine.Godot.appdata.xml
+@@ -1,14 +1,14 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2017-2022 Rémi Verschelde <remi@godotengine.org> -->
+ <component type="desktop">
+-  <id>org.godotengine.Godot</id>
++  <id>org.godotengine.Godot3</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT</project_license>
+-  <name>Godot Engine</name>
++  <name>Godot Engine 3</name>
+   <summary>Multi-platform 2D and 3D game engine with a feature-rich editor</summary>
+-  ​<launchable type="desktop-id">org.godotengine.Godot.desktop</launchable>
++  ​<launchable type="desktop-id">org.godotengine.Godot3.desktop</launchable>
+   <description>
+     <p>
+       Godot is an advanced, feature-packed, multi-platform 2D and 3D game
+       engine. It provides a huge set of common tools, so you can just focus on
+       making your game without reinventing the wheel.
+diff -r -U 5 a/misc/dist/linux/org.godotengine.Godot.desktop b/misc/dist/linux/org.godotengine.Godot.desktop
+--- a/misc/dist/linux/org.godotengine.Godot.desktop
++++ b/misc/dist/linux/org.godotengine.Godot.desktop
+@@ -1,18 +1,18 @@
+ [Desktop Entry]
+-Name=Godot Engine
++Name=Godot Engine 3
+ GenericName=Libre game engine
+ GenericName[el]=Ελεύθερη μηχανή παιχνιδιού
+ GenericName[fr]=Moteur de jeu libre
+ GenericName[zh_CN]=自由的游戏引擎
+ Comment=Multi-platform 2D and 3D game engine with a feature-rich editor
+ Comment[el]=2D και 3D μηχανή παιχνιδιού πολλαπλών πλατφορμών με επεξεργαστή πλούσιο σε χαρακτηριστικά
+ Comment[fr]=Moteur de jeu 2D et 3D multiplateforme avec un éditeur riche en fonctionnalités
+ Comment[zh_CN]=多平台 2D 和 3D 游戏引擎，带有功能丰富的编辑器
+-Exec=godot %f
+-Icon=godot
++Exec=godot3 %f
++Icon=godot3
+ Terminal=false
+ PrefersNonDefaultGPU=true
+ Type=Application
+ MimeType=application/x-godot-project;
+ Categories=Development;IDE;
+-StartupWMClass=Godot
++StartupWMClass=Godot3
+diff -r -U 5 a/version.py b/version.py
+--- a/version.py
++++ b/version.py
+@@ -1,7 +1,7 @@
+-short_name = "godot"
+-name = "Godot Engine"
++short_name = "godot3"
++name = "Godot Engine 3"
+ major = 3
+ minor = 5
+ patch = 1
+ status = "stable"
+ module_config = ""

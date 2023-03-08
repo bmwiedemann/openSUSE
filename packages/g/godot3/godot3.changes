@@ -1,0 +1,1137 @@
+Thu Mar 2 12:00:00 UTC 2023 - cunix@mail.de
+
+- Transformed current package "godot" to branch specific package
+  "godot3" in order to install and use both.
+
+- Added rename_to_godot3.patch to do part of the job.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:03:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of godot and bash-completion (already in place).
+
+-------------------------------------------------------------------
+Fri Sep 30 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.5.1
+
+  Added:
+  * Expose Tabs "set/get_tab_button_icon()" to scripting
+
+  Changed:
+  * Include terminal indented comments for code folding in editor
+  * Portals: Show RayCast debug helper
+
+  Fixed:
+  * GNU ld detection for pck_embed linker script
+  * CPUParticles initialize data on "set_amount"
+  * Crash when playing SceneTreeTween right after finishing
+  * "Time.get_unix_time_from_system()" not including msecs
+  * Crash when pressing up on an empty PopupMenu
+  * Exclude disabled StaticBody collisions from NavigationMesh baking
+  * Prevent HTTPRequest from polling invalid client
+  * Hotfix for Bullet's collision margin regression
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Mon Sep 12 12:00:00 UTC 2022 - cunix@mail.de
+
+- Heap-buffer-overflow in bundled thirdparty tool tinyexr
+  * added tinyexr_thirdparty_upstream.patch from upstream tinyexr (boo#1203278)
+
+-------------------------------------------------------------------
+Sat Aug 6 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.5
+
+  Added:
+  * NavigationServer with obstacle avoidance
+  * Physics interpolation in 3D
+  * SceneTreeTween
+  * Time singleton
+  * Label3D node and Sprite3D material render priority
+  * Scene unique nodes
+  * FlowContainer
+  * Asynchronous shader compilation and caching
+  * OccluderShapePolygon
+  * "material_overlay" property for MeshInstance
+  * Transparent background Viewports with post processing effects
+  * Changing directional shadows at runtime
+  * Setting visibility for CanvasLayer
+  * push, pull, fetch and improved diff view to VCS UI
+  * "global_translation" and "global_rotation"` to Spatial
+  * Option to paste animation as duplicate
+  * Configuring loop mode on WAV import
+  * Pinning property values and Consistent property defaults
+  * Deep comparison of Array and Dictionary
+  * methods "OS.is_process_running()", "OS.crash()", "OS.has_clipboard()",
+    "OS.get_processor_name()", "OS.get_screen_refresh_rate()",
+    "OS.move_to_trash()", "Image.fill_rect()", "String.get_slice()",
+    "String.join()", "Dictionary.merge()"
+  * Search methods for PoolArrays: "has()", "count()", "find()", "rfind()"
+  * Option to keep or skip carriage return (CR) in "File.get_as_text()"
+  * GradientTexture2D
+  * Signal to notify when children nodes enter or exit tree
+  * Alt + Mouse wheel to adjust FOV in the 3D editor viewport
+  * Make overridden properties link to parent definition
+  * drag and drop for NodePaths
+  * drag and drop to TextEdit, LineEdit, RichTextLabel
+  * drag start/end signals for Slider
+  * Option to make selection unique to TextEdit, LineEdit, RichTextLabel
+  * alignment options to Button icons
+  * WOFF2 font support and brotli decoder
+  * RichTextLabel: "deselect()" and "get_selected_text()" methods
+  * Binary MO translation file support
+  * Proxy support for HTTPClient and the editor
+  * "set_extra_headers()" to WebSocketServer
+  * Support for primary clipboard
+  * Viewport property to use full floating-point precision in HDR
+  * Saving multiple Images in BakedLightmap
+  * "max_distance" for VisibilityNotifier
+  * "VERTEX_ID" and "INSTANCE_ID" to user created shaders
+  * Random initial color feature for all Particles nodes
+
+  Changed:
+  * Create onready variables when dropping nodes and holding Ctrl
+  * Don't switch to 2D/3D viewports when selecting nodes while in Script Editor
+  * Re-enable input accumulation disabled by error in 3.4
+  * Navigation and Navigation2D nodes were kept for compatibility but are now
+    deprecated. Their functionality is replaced by the NavigationServer
+    and Navigation2DServer.
+  * WebSocket hostname resolution non-blocking
+  * Use application name as PulseAudio device name
+
+  And much more:
+  https://downloads.tuxfamily.org/godotengine/3.5/Godot_v3.5-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" rebased
+
+- Use bundled freetype, libpng and zlib for non-Tumbleweed builds.
+
+-------------------------------------------------------------------
+Tue Aug 2 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.5
+
+  Added:
+  * Expose "tile_texture" property in TilesetEditorContext
+
+  Changed:
+  * XR: Update Meta hand tracking version
+
+  Fixed:
+  * X11 "OS.is_window_maximized()"
+  * Properly check for fullscreen toggle made through the Window Manager
+  * Crash in AudioServer when switching audio devices
+    with different audio channels count
+  * EditorProperty icon overlapping text with checkbox
+  * Custom class icon when it inherits from a script
+  * UndoRedo in Gradient editor
+  * Editor undo history for function name autocompletion
+  * FileDialog: Fix support for changing directory in
+    "user://" and "res://" modes
+  * RichTextLabel: Fix implementation of "remove_line()"
+  * glTF texture filename decoding
+  * Document that accumulated input is disabled by default
+    This is actually due to a regression in 3.4.
+    It's kept disabled in this release for compatibility,
+    but will be enabled by default in 3.5.
+  * GLES2: Unpack blend shape arrays when necessary
+  * GLES3: Unbind vertex buffer before calculating blend shapes
+  * Portals: Force full check on adding moving object
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.5/Godot_v3.4.5-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Wed Jun 29 11:22:45 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix name of installable binaries
+
+-------------------------------------------------------------------
+Sat Mar 26 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.4
+
+  Reverted:
+  * Audio: PitchShift effect quality for different pitch scale values
+  * ProjectSettings "has_setting()" when used
+    on a overriden setting with feature tags
+
+  Fixed:
+  * CSG: visible seam on smoothed sphere, cylinder, and torus shapes
+  * CSG: mixed smoothed and non-smoothed face normals computation
+  * Portals: duplication of instanced scenes during conversion
+  * Animation: cubic interpolate when looping
+  * "UndoRedo::create_action()" invalid memory usage
+  * RichTextLabel: shadow color when text has transparency
+  * Editor: showing "Extend Script" option without script attached
+  * Physics: Update joints on "NOTIFICATION_POST_ENTER_TREE"
+  * GLES2: compression on blend shapes
+  * GLES2: "VersionKey" comparison in shader binding
+  * GLES3: shader state caching when blend shapes used
+  * GLES3: broken normals in meshes with blend shapes
+
+-------------------------------------------------------------------
+Sat Feb 26 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.3
+
+  Added:
+  * TileMap: Expose "autotile_coord"` parameter in "TileMap.set_cellv"
+  * Expose "AnimationNodeOneShot::mix_mode" as a property
+
+  Fixed:
+  * GridMap: "Convert to MeshLibrary" not respecting collision transforms
+  * GridMap: Editing MeshLibrary's Shapes array from the Inspector
+  * Portals: gameplay monitor unloading and ticking
+  * Portals: DYNAMIC particle systems
+  * Potential infinite recursion crash in Variant decoding
+  * Decoding UTF-8 filenames on unzipping
+  * Replicate load-as-placeholder state on node duplication
+  * "ProjectSettings.has_setting()" handle feature overrides
+  * Editor: undo/redo operations in Input Map
+  * Editor: Performance increase for opening the editor on big projects
+  * GDScript: Clear pending function states when reloading script
+  * GDScript: crash when "is" keyword is tested against a String variable
+  * GUI: Release focus of Control node when exiting tree
+  * GUI: LineEdit center and right alignment
+  * GUI: PopupMenu bad item offset with custom vseparation
+  * GUI: RichTextLabel underline appearance when inside fill tag
+  * GUI: RichTextLabel underline prevents strikethrough from rendering
+  * GUI: TabContainer not setting layout immediately
+  * GUI: TextEdit blocking side scrolling in ScrollContainer
+  * GUI: TextureButton focus texture logic
+  * GUI: nine patch of circular TextureProgressBar
+  * Import: glTF scene export crash on null normal texture
+  * Increase joystick max button number
+  * HTTPRequest support for requests with "content-length" above 2.1 GB
+  * Fix tablet tilt values returning bad values
+  * Rendering: blend shapes when octahedral compression is used
+  * Rendering: nvalid read when using LightOccluder2D
+  * GLES3: Fix visible background line in intersections in screen-space reflections
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.3/Godot_v3.4.3-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Wed Dec 29 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4.2
+
+  Fixed:
+  * BaseButton's localization for tooltip text with shortcut
+  * Size issue for ARVR managed viewport
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.2/Godot_v3.4.2-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Sun Dec 19 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4.1
+
+  Added:
+  * Expose "ScriptEditor::edit" to scripting
+  * TextEdit: Allow toggling bookmark gutter
+  * TextEdit: methods to get position from column and line
+  * "Input.is_physical_key_pressed()" method
+  * Expose "intersect_point" in 3D physics server
+  * BVH: option for expanded AABBs in leaves
+  * Support for OpenXR export configurations
+
+  Changed:
+  * Remove editor splash screen with sponsors logo
+  * Clamp rotation for up/down orbiting shortcuts
+  * Sort and group theme properties in docs,
+    improve formatting for theme and enums
+
+  Fixed:
+  * TileSet editor workspace breaking
+  * Only add light occlusion for visible TileMaps
+  * Selecting next/previous subtile in TileSet editor
+  * Swapped rest pose action names in the Skeleton2D editor
+  * Theme Editor crash when clicking the element picker
+  * Don't ignore the type mismatch in GDScript setter function
+  * GDScript: Support multiline indexing with "[]"
+  * Prevent LSP adding signal callbacks to non GDScripts
+  * RichTextLabel: Right alignment regression
+  * RichTextLabel: min/max line width calculation
+  * Support for CSG and GridMap in glTF scene export
+  * Crash when exporting meshes to glTF that have no skin
+  * HTTP request headers being included in response
+  * Potential infinite loop when connecting HTTPClient
+  * WebRTC returning packets from peers too early
+  * Volume calculation for cylinders in GodotPhysics
+  * Errors in KinematicBody when floor is destroyed or removed
+  * Double use of seed in random Particles shader variables
+  * Update CanvasItem when MultiMesh instance transform changes
+  * Portals: Allow user to set roaming expansion margin
+  * Incorrect VisualServer RID cleanup in various locations
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.1/Godot_v3.4.1-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Mon Nov 8 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4
+
+  Added:
+  * "AESContext", RSA public keys, encryption, decryption, sign, and verify
+  * "HMACContext"
+  * Revamped UI theme editor
+  * Support for translating the class reference
+  * Initial support for the RISC-V architecture
+  * Rooms and portals-based occlusion culling
+  * Ring emitter for 3D particles
+  * Structs and fragment-to-light varyings in shaders
+  * Global const arrays in shaders
+  * Object validity checks
+  * High quality tonemapper
+  * Auto-reload scripts with external editor
+  * Allow to create a node at specific position
+  * Assign value to property by dropping to scene tree
+  * Allow dropping property path into script editor
+  * Save branch as scene by dropping to filesystem
+  * Implement a "%command%" placeholder in the Main Run Args settin
+  * Keyboard shortcuts to the project manager
+  * History navigation in the script editor using extra mouse buttons
+  * Focus font color for Button and derivatives
+  * ButtonGroup: "pressed" signal
+  * ColorPicker: Display previous color and allow selecting it back
+  * DynamicFont: Allow using WOFF fonts
+  * ScrollBar: "increment_pressed" and "decrement_pressed" icons
+  * Theme: support for partial custom editor theme
+  * Theme: API to retrieve the default font
+  * Improved glTF module with scene export support
+  * Lossless WebP encoding
+  * Input: physical scancodes to fix non-latin layout scancodes 
+  * Allow checking for exact matches with action events
+  * Multiple address resolution in DNS requests
+  * Enable setting the number of physics solver iterations
+  * Heightmap collision shape support in Physics 3D
+  * Expose collider RID in 2D/3D kinematic collision
+  * Support for disabling physics on "SoftBody"
+  * GLES2: Add basic support for CPU blendshapes
+  * GLES3: Add support for contrast-adaptive sharpening in 3D
+  * Soft shadows for the CPU lightmapper
+  * High quality glow mode
+  * Horizon specular occlusion
+  * Shaders: "TIME" available in custom functions by default
+  * Allow dropping custom node scripts in VisualScript editor
+  * Frame delta smoothing
+  * OS data directory getter methods exposed
+  * Getter for the project data directory
+  * BVH thread safety
+  * Property "Engine.print_error_messages" to disable printing errors
+  * Setting to configure number of threads for lightmap baking
+  * Allow for platform "Thread" implementation override
+  * Method "Thread.is_alive()" to check if the thread is still doing work
+  * Method "String::parse_url()" for parsing URLs
+  * Property "dtls_hostname" for ENet
+  * Animation "reset" track
+  * Options to clean/simplify convex hull generated from mesh
+  * 2D Viewport scale factor property
+  * LSP: support for custom host setting
+
+  Changed:
+  * Most recently added current "Camera2D" takes precedence
+  * Add Node name to "print()" of all nodes
+  * Thread callbacks can now take optional parameters
+  * "AStar.get_available_point_id()" returns 0 instead of 1 when empty
+  * Button: Don't change hovering during focus events
+  * DynamicFont: Re-add support for kerning
+  * LineEdit: Double click selects words, triple click selects all the content
+  * Return RID instead of Object ID in "area"-/"body_shape_entered"/-"exited"
+  * "VisualServer" now sorts based on AABB position
+  * Default shader specular render mode to "SCHLICK_GGX"
+
+  Fixed:
+  * Make all file access 64-bit
+  * Ignore property groups and categories in GDScript code completion
+  * LSP: "SymbolKind" reporting wrong types and better "get_node()" parsing
+  * Breaking Compatibility: swapped axes in "OpenSimplexNoise.get_image()"
+
+  And much more:
+  https://downloads.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_changelog_chrono.txt
+
+- "certs_fallback.patch" and "linker_pie_flag.patch" rebased
+
+-------------------------------------------------------------------
+Tue Oct 5 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.4
+
+  Added:
+  * AStar Error messages
+
+  Changed:
+  * Compare signal connections by ObjectID to avoid spurious
+    reordering in .tscn files.
+  * Remove deprecation warning for BaseButton.enabled_focus_mode
+  * LinkButton's text is now automatically translated.
+
+  Fixed:
+  * LocalVector crash on insert
+  * Quote and escape ConfigFile keys when necessary.
+  * invalid "Too many warnings!" error in remote script debugger
+  * setting NodePath properties on multiple nodes at once
+  * preview grid and preserve source texture margins
+    in SpriteFrames editor
+  * LSP: Fix completion crashing on scene-less scripts
+  * CSG: Don't update CSGShape when not inside tree
+  * drawing current tab when it's disabled
+  * GLES3: Fix multimesh being colored by other nodes
+  * GLES3: Properly clear cubemap filter state
+    when texture array environment disabled
+  * GLES3: Fix Light2D UBO initialization
+  * Prevent shaders from generating code before the constructor finishes
+  * Fix VisualScriptPropertySet value hint
+  * LineEdit undo crash
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3.4/Godot_v3.3.4-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Fri Aug 20 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.3
+
+  Added:
+  * "action_get_deadzone()" method to InputMap
+
+  Changed:
+  * GraphEdit: Allow higher and lower maximum zoom values
+  * Copy the Godot version identifier by clicking it
+  * Separate version hash from version number
+  * Relationship lines draw on top of TreeItems
+  * Allow reading shaders from .gdshader files
+
+  Fixed:
+  * Audio: cubic resampling algorithm
+  * Save binary "ProjectSettings" key length
+  * Editor: Slow load/save of scenes with many instances of the same script
+  * Editor: Logic for showing tilemap debug collision
+  * LSP: Implement "didClose" notification
+  * LSP: "SymbolKind" reporting wrong types
+  * glTF Import: mesh nodes which are also bones
+  * Import RLE compressed TGA files
+  * Game controllers ignoring the last listed button
+  * Parsing some IPv6 URLs for WebSocket
+  * WebsocketPeer outbound buffer
+  * IP address resolution incorrectly locking the main thread
+  * PathFollow: Forward calculation for the position at the end of the curve
+  * RichTextLabel: Fix auto-wrapping on CJK texts
+  * SkeletonIK: Bones become detached if multiple SkeletonIK nodes are used
+  * Physics: calculating inertias for bodies without mass/area
+  * Physics: Ignore disabled shapes for mass property calculations
+  * ALSA MIDI with PulseAudio
+  * "Directory::get_space_left()"
+  * VisualServer now sorts based on AABB position
+  * Depth sorting of meshes with transparent textures
+  * CanvasItem bounding rect calculation
+  * Allow unclamped colors in Sprite3D
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3.3/Godot_v3.3.3-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Fri Aug  6 07:23:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use asimdrdm CPU flag for aarch64 to select only more powerful
+  buildhosts.
+
+-------------------------------------------------------------------
+Fri Jun 03 12:00:00 UTC 2021 - cunix@mail.de
+
+- Exclude currently failing %arm builds
+
+-------------------------------------------------------------------
+Tue May 25 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.2
+
+  Added:
+  * GDScript: Allow "warning-ignore" in the same line
+    as the respective warning
+  * Import: Print warning when importing a
+    repeating NPOT texture in a GLES2 project
+
+  Changed:
+  * Remove high radiance sizes from the editor due to issues on specific GPUs
+
+  Fixed:
+  * STL to Godot type conversion of polypartition
+  * Duplicate close file when deconstructing ZipArchive
+  * Swapped front/rear directions in viewport rotation control
+  * Editor crash when exporting profiler data
+  * glTF: Improved error handling around invalid images and invalid meshes
+  * ragdoll simulation when parent was readded to scene
+  * Crash on debug shapes update if CollisionObject is not in tree
+  * Batching: "item_batch_flags" stale state causing glitches
+
+-------------------------------------------------------------------
+Fri May 21 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.1
+
+  Added:
+  * Expose "Shape.get_debug_mesh()" to the scripting API
+  * Add Ctrl+Shift+A to instance scene in Scene Tree dock
+  * Allow negative contrast values in the editor theme settings
+  * TileMap: Apply modulate on autotile previews
+  * Add support for ARM64 architecture for the Embree raycaster
+
+  Changed:
+  * Create "CollisionObject" debug shapes using VisualServer
+
+  Fixed:
+  * SkeletonIK root bones being twisted incorrectly when rotated
+  * Skinning initialization in "MeshInstance" when loaded from thread
+  * Linux packaging fixes
+  * ZIP files being opened with two file descriptors
+  * CSG Path Polygon cache being removed after connect
+  * LineEdit: Fix double click to select words
+    and triple click to select whole line
+  * Race condition in font preview generation
+    could lock the editor on first edit
+  * 3D scene preview generation
+  * Handle having no sinks in the PulseAudio driver
+  * Batching: GLES3 light pass modulates
+  * Batching: Crash with wrong number of verts in translation
+  * Batching: Fallback for 2D skinning with unrigged polygons
+  * Lightmapper: Fixes to environment energy
+  * Disable GIProbe emission when disabled on a material
+
+- "use_system_zlib_for_fbx.patch" dropped - fixed upstream
+
+- aarch64 and %arm: enable modules lightmapper_cpu_enabled and raycast_enabled
+
+-------------------------------------------------------------------
+Thu Apr 29 12:37:28 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable modules unsupported on aarch64 and %arm:
+  * module_denoise_enabled
+  * module_lightmapper_cpu_enabled
+  * module_raycast_enabled
+
+-------------------------------------------------------------------
+Thu Apr 22 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3
+
+  Added:
+  * MP3 loading and playback support
+  * AudioEffectCapture to access the microphone in real-time
+  * New dynamic BVH for rendering and the GodotPhysics backends
+  * Ability to restore RandomNumberGenerator state
+  * "Array.append_array()" method to append an array
+      at the end of another array
+  * "OS.set_environment()" method to set environment variables
+  * Infinite 3D editor grid
+  * New 3D rotation gizmo
+  * Support for copy-pasting nodes
+  * Detect external modification of scenes and prompt for reloading
+  * New editor to configure default import presets
+  * 3D viewport's View Information pane displays viewport resolution
+  * Minimap support in GraphEdit
+  * New AspectRatioContainer Control node
+  * Rewritten and greatly improved FBX importer
+  * "Keep" mode to keep files as-is and export them
+  * Mouse event pass-through support for the window
+  * Support for pause-aware picking (breaks compatibility but only
+      enabled by default for new projects)
+  * CollisionObject can now display collision shape meshes
+  * Cylinder collision shape support
+  * PulseAudio and ALSA libraries are now dynamically loaded
+  * Implement the "--no-window" command line argument
+  * 2D batching for GLES3
+  * Configurable amount of lights per object
+  * New CPU lightmapper
+  * Anisotropic filtering now works when using the GLES2 backend
+
+  Changed:
+  * Deleted object access now raises an error instead of a warning
+  * Improved error messages when passing nonexistent node paths
+      to "get_node()"
+  * Modernized multi-threading APIs
+  * SVG images can now be used as a project icon
+  * Improved inspector subresource editing visibility
+  * Pressed CheckButtons are now colored in blue for easier recognition
+  * Rename Node is now bound to "F2" key
+  * Search Help shortcut from keys "Shift + F1" changed to "F1"
+  * The inspector now allows using a comma as a decimal separator
+  * Drag-and-dropping a ZIP archive to the project manager window
+    will now prompt for importing it
+  * Increase the default HTTPClient download chunk size to 64 KiB
+  * Binaries are now stripped of string and symbol tables,
+    reducing their size significantly
+
+  Removed:
+  * ResourceImporterCSV importer superseded by the new "keep" import mode
+
+  Fixed:
+  * Use higher-quality resampling for Ogg Vorbis and MP3 sounds
+  * exporting if the temporary export directory doesn't exist yet
+  * Export PCK/ZIP action now obeys the export path configured
+    in the export preset as expected
+  * UDP ports being silently reused without an error in PacketPeerUDP
+  * keyboard input lag and clipboard delay issues
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3/Godot_v3.3-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" rebased
+
+- "upstream_fix_TGA_loader.patch" dropped - included in source now
+
+- "use_system_zlib_for_fbx.patch" added to force using system zlib
+
+-------------------------------------------------------------------
+Sat Feb 13 00:00:00 UTC 2021 - cunix@mail.de
+
+- Fix a crash in the TGA loader with malformed input
+  * added upstream_fix_TGA_loader.patch from upstream
+  * integer overflow issue CVE-2021-26825 (boo#1182177)
+  * stack overflow issue CVE-2021-26826 (boo#1182178)
+
+-------------------------------------------------------------------
+Sun Nov  1 23:35:40 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Fix AppStream file location to match latest standard
+
+-------------------------------------------------------------------
+Fri Sep 18 16:00:00 UTC 2020 - cunix@mail.de
+
+- Update to 3.2.3
+
+  Added:
+  * Input: Support SDL2 half axes and inverted axes mappings
+  * LineEdit: Add option to disable virtual keyboard for LineEdit
+  * Rendering: Allow nearest neighbor lookup when using mipmaps
+
+  Changed:
+  * GDScript: Auto completion enhanced for extends and
+    class level identifier
+  * Physics: Better damping implementation for Bullet rigid bodies.
+    If you're using damping with the Bullet backend,
+    you may need to adjust some properties to restore
+    the behavior from 3.2.2 or earlier.
+  * Project Settings: Enable file logging by default on desktops
+  * Script editor: Don't open dominant script in external editor
+  * Sprite3D: Use mesh instead of immediate for drawing Sprite3D
+
+  Fixed:
+  * Core: debugger error when Dictionary key is a freed Object
+  * Core: leaked ObjectRCs on object Variant reassignment
+  * GLES3: OpenGL error when generating radiance
+  * Import: custom tracks causing issues on reimport
+  * Import: regression causing crashes with some OGG files
+  * Particles: 2D Particle velocity with directed emission mask
+  * PathFollow3D: repeated updates of PathFollow3D Transform
+  * Physics: Trigger broadphase update when changing collision layer/mask
+  * Physics: laxist collision detection on one way shapes
+  * Physics: Properly pass safe margin on initialization
+  * Project Settings: overriding compression related settings
+  * Rendering: images in black margins
+  * Rendering: Properly calculate Polygon2D AABB with skeleton
+  * Shaders: specular 'render_mode' for Visual Shaders
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_changelog_chrono.txt
+
+- "certs_fallback.patch" rebased
+
+-------------------------------------------------------------------
+Tue Jul 01 12:00:00 UTC 2020 - cunix@mail.de
+
+- In .desktop file prefix "PrefersNonDefaultGPU" with "X-" only
+  until package desktop-file-utils is up to date.
+
+-------------------------------------------------------------------
+Fri Jun 26 21:00:00 UTC 2020 - cunix@mail.de
+
+- In .desktop file "PrefersNonDefaultGPU" prefixed with "X-"
+
+-------------------------------------------------------------------
+Fri Jun 26 17:23:58 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Update to 3.2.2
+
+  Highlights:
+  * 2D batching for the GLES2 renderer
+  * C# support for the iOS platform
+  * Re-architecture of the Android plugin system
+  * DTLS support and ENet integration
+  * Better handling of Variants pointing to released Objects
+  * Updated and localized documentation
+
+  Added:
+  * 2D: MODULATE builtin for canvas item shaders
+  * Editor: rotation widget in 3D viewport
+  * Editor: Allow duplicating files when holding Control
+  * GLES2/GLES3: support for OpenGL external textures
+  * Import: support for glTF lights
+  * Input: keyboard layout enumeration / set / get functions
+  * Object: has_signal method
+  * RegEx: Enable Unicode support for RegEx class
+  * Shaders: shader time scaling
+  * Add 'custom_modules' build option to compile external user modules
+  * SCons: Allow to read 'custom_modules' option via a file
+  * Provide the ability for clients of the Godot library
+    to add their own command line arguments
+  * Request the dedicated GPU when starting Godot from the '.desktop' file
+  * set_frame, pause, and oneshot to AnimatedTexture
+  * selection outline to locked nodes
+
+  Fixed:
+  * Audio: volume interpolation in positional audio nodes
+  * Import: changing the import type of multiple files at once
+  * Particles: uninitialized memory in CPUParticles and CPUParticles2D
+  * Physics: Make soft body completely stiff to attachment point
+  * Physics: Normalize up direction vector in move_and_slide()
+  * Account for file deletion and renaming in Export Presets
+  * can't convert Transform -> Transform2D
+  * Emit signal when animation ends by seek
+  * Othographic camera in-editor now uses Z near/far settings
+    instead of a hardcoded value
+  * Editor 2D: Change pixel alignment strategy, jittering in high zoom
+  * Allow single quotes in comments
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" adjusted.
+
+-------------------------------------------------------------------
+Tue Mar 10 16:00:00 UTC 2020 - cunix@mail.de
+
+- Update to 3.2.1
+
+  Fixed:
+  * Bullet: Fix detection of concave shape in Area.
+  * Camera2D: Fix inverted use of Camera2D offset_v.
+  * Debugger: Fix crash inspecting freed objects.
+  * Expression: Fix parsing integers as 32-bit.
+  * Particles: Fix undefined behavior with atan in GPU Particles.
+  * TileSet: Hide TileSet properties from Inspector, fixing
+    OOM crash on huge tilesets.
+  * Video: Workaround WebM playback bug after AudioServer latency fixes.
+
+  Added:
+  * Skin: Add support for named binds.
+  * API documentation updates.
+  * Editor translation updates.
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" adjusted.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:00:00 UTC 2020 - cunix@mail.de
+
+- Added "linker_pie_flag.patch" in order to link with "-pie".
+    Replaces previous "fix-pie-warning.patch".
+
+- "project_certs_fallback.patch" renamed to "certs_fallback.patch".
+    Modified and adapted to Godot source code changes.
+
+- Bash completion files "godot", "godot-headless", "godot-runner"
+    and "godot-server" added.
+
+- Package "godot-bash-completion" added.
+
+- Location of documentation in man page adjusted.
+
+- godot-rpmlintrc deleted with filter "no-manual-page-for-binary"
+    because this warning doesn't seems to be thrown anymore.
+
+- Build option "faster_build" introduced to speed up build
+    during tests.
+
+-------------------------------------------------------------------
+Sat Feb  1 04:33:27 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Removed patch "fix-pie-warning.patch"
+- Removed export_presets.cfg file as games should supply this file
+
+- Update to v3.2
+
+  Added:
+  * Support for importing 3D scense using Assimp
+  * Support for high-level multiplayer API and NAT traversal for 
+    WebRTC
+  * Support for enabling / disabling parts of the editor or specific 
+    nodes
+  * Added language server for GDScript
+  * Added version control integration into the editor
+  * Added a network profiler
+  * Editor is now capped to 20FPS when the window is unfocused
+  * Added MSAA support in the GLES2 renderer
+  * Ability to define script templates on a per-project basis
+  * Ability to limit the minimum and maximum window size
+  * Minimap in the script editor
+  * CSV files can now be imported as non-translation files
+  * Multicast support in PacketPeerUDP
+  * WebSocket improvements.
+      * Support for SSL in WebSocketServer.
+      * WebSocketClient can now use custom SSL certificates 
+        (except on HTML5).
+      * WebSocketClient can now define custom headers.
+  * The editor now features a built-in Web server for testing HTML5 
+    projects
+  * Reimplemented support for embedding project data in the PCK file
+
+  Changed:
+  * Tabs and space indentation can no longer be mixed in the same 
+    GDScript file
+  * assert() in GDScript must now always be used with parentheses
+  * UDP broadcasting is now disabled by default and must be enabled 
+    by calling 
+    set_broadcast_enabled(true) on the PacketPeerUDP instance
+  * 3D collision shapes and RayCasts are now drawn in gray when disabled
+  * The SCons build system now automatically detects the host platform
+  * Exporting a project PCK or ZIP from the command line must now 
+    be done with the new --export-pack command-line argument
+  * Exported PCK files now contain the Godot patch version in their 
+    header
+  * "Set as Main Scene" context option for scenes in the FileSystem dock
+
+  Removed:
+
+  * Unused Panel panelf and panelnc styles.
+  * thekla_atlas dependency, as light baking now relies on xatlas 
+    for UV unwrapping.
+  * Rating icons in the Asset Library
+  * Some editor languages are no longer available due to missing 
+    support for RTL and text shaping in Godot.
+      * Arabic
+      * Bengali
+      * Persian
+      * Hebrew
+      * Hindi
+      * Malayalam
+      * Sinhalese
+      * Tamil
+      * Telugu
+      * Urdu
+  * Android: ARMv6 support.
+  * iOS: ARMv7 support.
+
+  Fixed:
+  * The Project Manager now remembers the sorting option that was 
+    previously set
+  * Fixed issues with PBR environment mapping
+  * Several fixes to the GLES2 renderer
+  * Fixed importing BMP images
+  * Exporting a project via the command-line now returns a non-zero 
+    exit code if an error occurred during exporting
+  * Fixed autocompletion in the script editor
+
+  And more:
+  https://github.com/godotengine/godot/blob/3.2/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jan 13 16:00:00 UTC 2020 - cunix@mail.de
+
+- Sources replaced by upstream without version bump
+  to hotfix export templates for HTML5 platform
+
+-------------------------------------------------------------------
+Tue Dec  3 05:46:01 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Updated bundled library versions within specfile
+- Cleaned up specfile
+  * Removed defattr directives
+  * Use %license directive for license files
+
+-------------------------------------------------------------------
+Sat Nov 30 19:18:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to 3.1.2
+
+  Fixed:
+  * Animation: Fixes for onion skinning support of Skeleton2D
+  * AnimationTree: Fixes to AnimationTree and State Machine
+  * Audio: Fix seemingly random crashes related to the audio engine misusing 
+    internal processing
+  * CPUParticles(2D): Various fixes
+  * GLES2: Many bugfixes
+  * GLES3: Many bugfixes
+  * Editor: Fix issues when moving and renaming files
+  * Export: Fix resetting editor settings when exporting from the 
+    command line 
+  * Import: Various improvements to BMP support
+  * Internationalization: Various fixes to Control localization, 
+    and fixes to support of some regional locales
+  * iOS: Fix crash on resume/exit on iOS 13
+  * macOS: Fix non-HiDPI mode on HiDPI displays on macOS Catalina
+  * macOS: Fix locale detection when running from .app bundle
+  * Object: Improve instance validation, mitigating thread-related issues
+  * Shaders: Fix support for hint_range using integers
+
+  Added:
+  * Editor: Allow to removing 2D editor limits
+  * Mobile: Add vibration support on Android and iOS
+  * TileMap: Add support for negative Y and X offsets
+  * API documentation updates.
+  * Editor translation updates.
+
+  Third Party Libraries:
+  * zstd upgraded to 1.4.4
+  * libwebsockets downgraded to 3.0.1 (3.1 caused regressions)
+
+-------------------------------------------------------------------
+Sun May 12 13:53:21 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Fixing packaging issues for submission to Factory
+  * Changed python build requirement for python3
+  * Removed no-version-in-last-changelog from rpmlintrc
+  * Renamed rpmlintrc to godot-rpmlintrc per openSUSE packaging
+    standards
+
+-------------------------------------------------------------------
+Mon Apr 29 16:00:00 UTC 2019 - cunix@bitmessage.ch
+
+- Use system certificates from /var/lib/ca-certificates/ca-bundle.pem
+  by default and dynamically. Stop hard coding its content during build.
+  These certificates are used by the editor to connect to the Asset Library.
+
+- Added patch file "project_certs_fallback.patch" to use the previously
+  defined system certificates as fallback for missing certificates in
+  project setting "network/ssl/certificates".
+
+-------------------------------------------------------------------
+Sun Apr 28 16:00:00 UTC 2019 - cunix@bitmessage.ch
+
+- Changes in 3.1.1
+
+  Fixed Security Issue:
+  * to deserialize Object data. GDNative ABI was changed.
+
+  Fixed:
+  * GLES 3 support for depth textures.
+  * GLTF2 importer
+
+  Added:
+  * HeightMapShape to the Bullet physics engine implementation
+  * FPS snapping in the Animation player
+  * audio features for 3.2 were backported
+  * menu options for the Sprite editor: "Convert to Mesh2D",
+    "Convert to Polygon2D", "Create CollisionPolygon2D Sibling"
+    and "Create LightOccluder2D Sibling"
+  * AnimatedSprite can now play backwards
+  * Emission Mask to CPUParticles2D
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.1.1/Godot_v3.1.1-stable_changelog.txt
+
+-------------------------------------------------------------------
+Sun Apr 28 09:20:19 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+- Require bash for the build due to use of [[ x > y ]].
+
+-------------------------------------------------------------------
+Sat Apr 27 18:32:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to 3.1.1
+
+-------------------------------------------------------------------
+Sat Apr 27 06:53:41 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Mention rpmlintrc as a source file.
+
+-------------------------------------------------------------------
+Tue Apr 16 03:16:21 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Update to 3.1
+  * See https://github.com/godotengine/godot/blob/3.1-stable/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Mar  7 00:31:03 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Added export_presets.cfg to be used when one is not present in
+  Godot game's source.
+
+-------------------------------------------------------------------
+Tue Mar  5 00:29:36 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Added godot-headless package 
+
+-------------------------------------------------------------------
+Tue Feb 26 10:05:26 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable lto for anything older than openSUSE 15.0.
+
+-------------------------------------------------------------------
+Tue Feb 19 12:24:19 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Rename subpackages to godot-runner and godot-server in order
+  to provide same names as in Fedora package
+- Do not use -fno-strict-aliasing
+- Make output verbose and use LTO (increase RAM requirements).
+
+-------------------------------------------------------------------
+Mon Feb 18 00:00:00 UTC 2019 - cunix@bitmessage.ch
+
+- Added patches to use system certificates
+- Added service file for local hash checking
+- Added rpmlintrc file to silence warning of missing version in
+    changelog and for missing manual-page for server package
+
+-------------------------------------------------------------------
+Tue Feb  5 12:36:39 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Jan 30 19:35:31 UTC 2019 - maxmitschke@fastmail.com
+
+- Updated spec file to better align with openSUSE package 
+  guidelines
+
+-------------------------------------------------------------------
+Sun Jul 29 12:00:00 UTC 2018 - cunix@bitmessage.ch
+
+- Update to 3.0.6
+  Fixed Security Vulnerability:
+  * marshalls size checks
+
+  Fixed:
+  * vsync initialization
+  * can't set AudioStreamPlayer stream to null
+  * Basis.Transposed()
+  * Several editor crashes
+  * GLTF import fixes
+  and more
+
+  Upgrade:
+  * OpenSSL to 1.0.2o (not used in openSUSE build)
+
+-------------------------------------------------------------------
+Wed Jul 11 18:00:00 UTC 2018 - cunix@bitmessage.ch
+
+- spec changes:
+  * build with more shared libraries from the distribution
+    instead of bundled versions
+  * make build of templates optional
+  * unify repetive build arguments
+  * include thirdparty/README.md in licenses section
+
+-------------------------------------------------------------------
+Tue Jul 10 04:01:38 UTC 2018 - maxmitschke@fastmail.com
+
+- Update to 3.0.5
+  * Android export templates no longer contain the placeholder
+    permissions which Google Play started complaining about. Now
+    only requested permissions will be written to the manifest when
+    exporting.
+  * Added 'android_add_asset_dir('...') method to Android module
+    gradle build config
+  * User defined signals in the exported C# projects were
+    misbehaving, this is now fixed.
+  * Fix CORS problems due to added headers on JS target
+  * Lerp now consistent with Godot API. InverseLerp fixed.
+  * Fix debugger focus stealing
+  * Fix segfault at quiting editor
+
+-------------------------------------------------------------------
+Sun Jul  1 22:40:12 UTC 2018 - maxmitschke@fastmail.com
+
+- Added openSUSE branding to build info
+- Use upstream desktop file, appdata.xml and manpage
+- Licenses relocated
+- Require update-desktop-files post and postun
+- desktop_database only updating explicitly for Leap < 15.0
+- Update to 3.0.4
+
+  * Updated documentation for particles, ViewportTexture, Vector2,
+    skeleton docs, Rect.abs function
+  * Make heightmap shape usable from PhysicsServer
+  * Add NoCache wrapper to Command
+  * Fixed crasher in asset library on systems with a low threadcount CPU
+
+-------------------------------------------------------------------
+Sun Jun 17 12:39:57 UTC 2018 - maxmitschke@fastmail.com
+
+- Update to 3.0.3
+
+  Added:
+  * C# projects can now be exported for Windows, Linux, and MacOS targets.
+  * Universal translation of touch to mouse.
+  * Dynamic fonts can now have a hinting mode set.
+  * print_tree_pretty() was added allowing a graphical view of the scene tree.
+  * Restore purchases feature for iOS.
+  * AudioStreamPlayer, AudioStreamPlayer2D,
+    and AudioStreamPlayer3D now have a pitch scale property.
+  * Show origin and Show viewport setting in 2D editor.
+  * You can now set Godot windows as 'always on top'.
+  * print-fps options to print FPS to stdout.
+
+  Fixed:
+  * Mono: Signal parameters no longer crash the engine.
+  * Asset library thread usage, this makes the asset library more responsive.
+  * Several GLTF import fixes.
+  * Several memory leaks.
+  * iPhone X support.
+  * Several fixes to audio drivers (WASAPI and PulseAudio).
+  * Several crashes.
+  * Export PCK/ZIP now works again.
+
+-------------------------------------------------------------------
+Sat Mar 10 20:00:00 UTC 2018 - cunix@bitmessage.ch
+
+- Update to 3.0.2
+
+-------------------------------------------------------------------
+Tue Feb 27 23:58:22 UTC 2018 - gwasser@gmail.com
+
+- Update to 3.0.1
+
+-------------------------------------------------------------------
+Tue Jan 30 23:08:53 UTC 2018 - gwasser@gmail.com
+
+- Update to 3.0.0
+
+-------------------------------------------------------------------
+Tue Sep  5 07:28:53 UTC 2017 - dmacvicar@suse.de
+
+- Update to 2.1.4
+
+-------------------------------------------------------------------
+Fri Feb 10 00:56:05 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 2.1.2
+- Add appdata.xml
+- Remove fix-arch-detection.patch
+- Remove fix-undefined-return.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 00:58:13 UTC 2016 - rpm@fthiessen.de
+
+- Update to 2.0.3
+- Added fix-arch-detection.patch to fix ppc build
+- Added fix-undefined-return.patch to fix functions with random
+  return.
+
+-------------------------------------------------------------------
+Mon Jun  1 07:39:45 UTC 2015 - gber@opensuse.org
+
+- add desktop file
+
+-------------------------------------------------------------------
+Sun May 31 22:00:18 UTC 2015 - gber@opensuse.org
+
+- split examples into subpackage
+
+-------------------------------------------------------------------
+Sun May 31 20:39:49 UTC 2015 - gber@opensuse.org
+
+- initial packaging 
