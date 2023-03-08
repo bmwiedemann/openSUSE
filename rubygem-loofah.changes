@@ -1,16 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  6 14:42:39 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- udpated to version 2.19.1
+
+    ## 2.19.1 / 2022-12-13
+
+    ### SecurityAddress
+    * Address CVE-2022-23514, inefficient regular expression complexity. See GHSA-486f-hjj9-9vhh for more information.
+    * Address CVE-2022-23515, improper neutralization of data URIs. See GHSA-228g-948r-83gx for more information.
+    * Address CVE-2022-23516, uncontrolled recursion. See GHSA-3x8r-x6xp-q4vm for more information.
+
+
+-------------------------------------------------------------------
 Mon Oct 10 13:09:46 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.19.0
  see installed CHANGELOG.md
 
   ## 2.19.0 / 2022-09-14
-  
+
   ### Features
-  
+
   * Allow SVG 1.0 color keyword names in CSS attributes. These colors are part of the [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) recommendation released 2022-01-18. [[#243](https://github.com/flavorjones/loofah/issues/243)]
-  
-  
+
+
 
 -------------------------------------------------------------------
 Sun May 15 15:40:12 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
@@ -34,19 +47,19 @@ updated to version 2.16.0
  see installed CHANGELOG.md
 
   ## 2.16.0 / 2022-04-01
-  
+
   ### Features
-  
+
   * Allow MathML elements `menclose` and `ms`, and MathML attributes `dir`, `href`, `lquote`, `mathsize`, `notation`, and `rquote`. [[#231](https://github.com/flavorjones/loofah/issues/231)] (Thanks, [@nick-desteffen](https://github.com/nick-desteffen)!)
-  
-  
+
+
   ## 2.15.0 / 2022-03-14
-  
+
   ### Features
-  
+
   * Expand set of allowed protocols to include `sms:`. [[#228](https://github.com/flavorjones/loofah/issues/228)] (Thanks, [@brendon](https://github.com/brendon)!)
-  
-  
+
+
 
 -------------------------------------------------------------------
 Thu Mar  3 08:22:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
@@ -55,12 +68,12 @@ updated to version 2.14.0
  see installed CHANGELOG.md
 
   ## 2.14.0 / 2022-02-11
-  
+
   ### Features
-  
+
   * The `#to_text` method on `Loofah::HTML::{Document,DocumentFragment}` replaces `<br>` line break elements with a newline. [[#225](https://github.com/flavorjones/loofah/issues/225)]
-  
-  
+
+
 
 -------------------------------------------------------------------
 Fri Dec 24 23:54:55 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
@@ -103,12 +116,12 @@ updated to version 2.10.0
  see installed CHANGELOG.md
 
   ## 2.10.0 / 2021-06-06
-  
+
   ### Features
-  
+
   * Allow CSS properties `overflow-x` and `overflow-y`. [[#206](https://github.com/flavorjones/loofah/issues/206)] (Thanks, [@sampokuokkanen](https://github.com/sampokuokkanen)!)
-  
-  
+
+
 
 -------------------------------------------------------------------
 Tue Apr 20 13:38:21 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
@@ -402,4 +415,3 @@ Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
 Thu Jan  7 18:17:12 CET 2010 - prusnak@suse.cz
 
 - created package
-

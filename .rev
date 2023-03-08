@@ -203,4 +203,17 @@
 </comment>
     <requestid>1010074</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>98000202eff52f883a21458474e9c359</srcmd5>
+    <version>2.19.1</version>
+    <time>1678283543</time>
+    <user>dimstar_suse</user>
+    <comment>- udpated to version 2.19.1
+    ## 2.19.1 / 2022-12-13
+    ### SecurityAddress
+    * Address CVE-2022-23514, inefficient regular expression complexity. See GHSA-486f-hjj9-9vhh for more information.
+    * Address CVE-2022-23515, improper neutralization of data URIs. See GHSA-228g-948r-83gx for more information.
+    * Address CVE-2022-23516, uncontrolled recursion. See GHSA-3x8r-x6xp-q4vm for more information.</comment>
+    <requestid>1069966</requestid>
+  </revision>
 </revisionlist>
