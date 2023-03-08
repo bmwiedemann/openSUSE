@@ -1,7 +1,7 @@
 #
 # spec file for package mpDris2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mpDris2
-Version:        0.8
+Version:        0.9.1
 Release:        0
 Summary:        MPRIS V2.1 support for mpd
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://github.com/eonpatapon/mpDris2
+URL:            https://github.com/eonpatapon/mpDris2
 Source:         https://github.com/eonpatapon/mpDris2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch:          interpreter.patch
 BuildRequires:  autoconf

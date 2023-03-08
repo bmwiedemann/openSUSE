@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 20:21:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * Use journald when using systemd service
+  * Bug fixes
+  * Drop python2 support
+  * Support `~` expansion in configuration file
+  * Added -j option to use systemd journald
+
+-------------------------------------------------------------------
 Sun Apr 14 09:57:03 UTC 2019 - Sébastien 'sogal' Poher <sogal@opensuse.org>
 
 - Updated to release 0.8:

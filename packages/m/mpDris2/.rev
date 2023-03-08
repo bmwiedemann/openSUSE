@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>694161</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ffacf849e53a065ac69a85efb3cea31</srcmd5>
+    <version>0.9.1</version>
+    <time>1678283587</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1:
+  * Use journald when using systemd service
+  * Bug fixes
+  * Drop python2 support
+  * Support `~` expansion in configuration file
+  * Added -j option to use systemd journald</comment>
+    <requestid>1070029</requestid>
+  </revision>
 </revisionlist>
