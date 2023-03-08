@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.45.0
+Version:        2.46.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -72,7 +72,7 @@ Requires:       python3-azure-mgmt-advisor >= 9.0.0
 Requires:       python3-azure-mgmt-apimanagement >= 3.0.0
 Requires:       python3-azure-mgmt-appconfiguration >= 2.2.0
 Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
-Requires:       python3-azure-mgmt-authorization >= 0.61.0
+Requires:       python3-azure-mgmt-authorization >= 3.0.0
 Requires:       python3-azure-mgmt-batch >= 17.0.0
 Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
@@ -81,15 +81,14 @@ Requires:       python3-azure-mgmt-cdn >= 12.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 13.3.0
 Requires:       python3-azure-mgmt-compute >= 29.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
-Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
-Requires:       python3-azure-mgmt-containerregistry >= 10.0.0
-Requires:       python3-azure-mgmt-containerservice >= 21.1.0
-Requires:       python3-azure-mgmt-cosmosdb >= 8.0.0
+Requires:       python3-azure-mgmt-containerinstance >= 10.1.0~b1
+Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
+Requires:       python3-azure-mgmt-containerservice >= 21.2.0
+Requires:       python3-azure-mgmt-cosmosdb >= 9.0.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
 Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
 Requires:       python3-azure-mgmt-datamigration >= 10.0.0
-Requires:       python3-azure-mgmt-deploymentmanager >= 0.2.0
 Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 8.0.0
 Requires:       python3-azure-mgmt-eventgrid >= 10.2.0
@@ -109,7 +108,7 @@ Requires:       python3-azure-mgmt-maps >= 2.0.0
 Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 9.0
 Requires:       python3-azure-mgmt-monitor >= 5.0.0
-Requires:       python3-azure-mgmt-msi >= 6.1.0
+Requires:       python3-azure-mgmt-msi >= 7.0.0
 Requires:       python3-azure-mgmt-netapp >= 9.0.1
 Requires:       python3-azure-mgmt-network >= 21.0.1
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
@@ -124,13 +123,13 @@ Requires:       python3-azure-mgmt-reservations >= 2.0.0
 Requires:       python3-azure-mgmt-resource >= 21.1.0
 Requires:       python3-azure-mgmt-search >= 8.0
 Requires:       python3-azure-mgmt-security >= 3.0.0
-Requires:       python3-azure-mgmt-servicebus >= 8.1.0
+Requires:       python3-azure-mgmt-servicebus >= 8.2.0
 Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       python3-azure-mgmt-signalr >= 1.1.0
-Requires:       python3-azure-mgmt-sql >= 4.0.0b7
-Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b4
+Requires:       python3-azure-mgmt-sql >= 4.0.0b8
+Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       python3-azure-mgmt-storage >= 21.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
@@ -138,8 +137,8 @@ Requires:       python3-azure-mgmt-web >= 7.0.0
 Requires:       python3-azure-multiapi-storage >= 1.0.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.14.0
-Requires:       python3-azure-synapse-managedprivateendpoints >= 0.3.0
+Requires:       python3-azure-synapse-artifacts >= 0.15.0
+Requires:       python3-azure-synapse-managedprivateendpoints >= 0.4.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
 Requires:       python3-chardet >= 3.0.4
 Requires:       python3-colorama >= 0.4.4
