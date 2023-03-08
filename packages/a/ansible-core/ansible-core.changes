@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb 28 14:38:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.3:
+  Full changelog
+	https://github.com/ansible/ansible/blob/v2.14.3/changelogs/
+	CHANGELOG-v2.14.rst
+  * Minor Changes
+    - Make using blocks as handlers a parser error (#79968)
+    - ansible-test - Specify the configuration file location
+			required by test plugins when the config file is not found.
+			This resolves issue: #79411
+    - ansible-test - Update error handling code to use Python 3.x
+			constructs, avoiding direct use of errno.
+    - ansible-test acme test container - update version to update
+			used Pebble version, underlying Python and Go base
+			containers, and Python requirements (#79783).
+  * Bugfixes
+    - Ansible.Basic.cs - Ignore compiler warning (reported as an
+			error) when running under PowerShell 7.3.x.
+    - Fix conditionally notifying include_tasks` handlers when
+			``force_handlers is used (#79776)
+    - TaskExecutor - don't ignore templated _raw_params that k=v
+			parser failed to parse (#79862)
+    - ansible-galaxy - fix installing collections in git
+			repositories/directories which contain a MANIFEST.json file
+			(#79796).
+    - ansible-test - Support Podman 4.4.0+ by adding the SYS_CHROOT
+			capability when running containers.
+    - ansible-test - fix warning message about failing to run an
+			image to include the image name
+    - strategy plugins now correctly identify bad registered
+			variables, even on skip.
+
+-------------------------------------------------------------------
 Tue Jan 31 15:08:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.14.2:
