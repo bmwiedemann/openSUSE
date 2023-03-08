@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Feb 22 16:23:02 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- updated to version 1.5.0
+    * SafeListSanitizer, PermitScrubber, and TargetScrubber now all support pruning of unsafe tags.
+
+        By default, unsafe tags are still stripped, but this behavior can be
+        changed to prune the elementand its children from the document by passing
+        prune: true to any of these classes' constructors.
+
+        @seyerian
+
+    ## 1.4.4 / 2022-12-13
+
+	* Address inefficient regular expression complexity with certain configurations of Rails::Html::Sanitizer.
+	Fixes CVE-2022-23517. See GHSA-5x79-w82f-gw8w for more information.
+
+	_Mike Dalessio_
+
+	* Address improper sanitization of data URIs.
+	Fixes CVE-2022-23518 and #135. See GHSA-mcvf-2q2m-x72m for more information.
+
+	_Mike Dalessio_
+
+	* Address possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.
+	Fixes CVE-2022-23520. See GHSA-rrfc-7g8p-99q8 for more information.
+
+	_Mike Dalessio_
+
+	* Address possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.
+	Fixes CVE-2022-23519. See GHSA-9h9g-93gc-623h for more information.
+
+	_Mike Dalessio_
+
+-------------------------------------------------------------------
 Mon Jun 13 17:09:28 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.3
@@ -84,9 +118,9 @@ Fri Mar 23 09:55:41 UTC 2018 - dkang@suse.com
 Tue Jan 26 05:35:48 UTC 2016 - coolo@suse.com
 
 - updated to version 1.0.3:
-  * boo#963326: CVE-2015-7578: XSS vulnerability via attributes 
+  * boo#963326: CVE-2015-7578: XSS vulnerability via attributes
   * boo#963327: CVE-2015-7579: XSS vulnerability
-  * boo#963328: CVE-2015-7580: XSS via whitelist sanitizer 
+  * boo#963328: CVE-2015-7580: XSS via whitelist sanitizer
 
 -------------------------------------------------------------------
 Mon Mar 16 06:51:40 UTC 2015 - coolo@suse.com
@@ -97,4 +131,3 @@ Mon Mar 16 06:51:40 UTC 2015 - coolo@suse.com
 Mon Feb  9 08:20:28 UTC 2015 - coolo@suse.com
 
 - initial package (version 1.0.1)
-
