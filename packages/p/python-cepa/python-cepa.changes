@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  8 04:31:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-fullargspec.patch:
+  - Stop using a function that was removed in Python 3.11.
+
+-------------------------------------------------------------------
 Thu Oct 27 22:11:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.8.4 

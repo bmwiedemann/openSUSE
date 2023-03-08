@@ -1,7 +1,7 @@
 #
 # spec file for package python-cepa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/cepa/cepa-%{ver
 # PATCH-FIX-UPSTREAM mock.patch gh#onionshare/cepa#1 mcepl@suse.com
 # Replace use of the external mock module with the one in stdlib.
 Patch0:         mock.patch
+Patch1:         use-fullargspec.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}

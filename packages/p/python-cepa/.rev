@@ -20,4 +20,13 @@ When accepted to Factory, please, remove python-stem.</comment>
     Complete changelog https://stem.torproject.org/change_log.html#version-1-8</comment>
     <requestid>1032180</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>54c3e1142c4cdbf0aaebdb1856c200f3</srcmd5>
+    <version>1.8.4</version>
+    <time>1678283603</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-fullargspec.patch:
+  - Stop using a function that was removed in Python 3.11.</comment>
+    <requestid>1070054</requestid>
+  </revision>
 </revisionlist>
