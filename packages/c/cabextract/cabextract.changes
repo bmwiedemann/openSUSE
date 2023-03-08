@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  7 19:51:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11:
+  * Fixed bug in creating directories given in archives, e.g.
+    extracting file
+
+-------------------------------------------------------------------
 Mon Feb  6 16:45:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10
