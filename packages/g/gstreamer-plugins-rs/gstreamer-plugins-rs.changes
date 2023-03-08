@@ -23,7 +23,7 @@ Thu Feb 16 15:14:03 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable the aws plugin in big endian architectures since it
   requires the ring crate which doesn't support big endian systems
-  (see gh#briansmith/ring#1555)
+  (see gh#briansmith/ring#1555). Fixes bsc#1208795
 
 -------------------------------------------------------------------
 Thu Feb 16 09:42:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
