@@ -1228,4 +1228,20 @@
 </comment>
     <requestid>1063623</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>c9eb973bfecc946e3171ba8f60e00132</srcmd5>
+    <version>1.23.2</version>
+    <time>1678283595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.2
+  * Bugfixes:
+    #8749: Relay listener does not restart sometimes
+  * Enhancements:
+    #8660: GUI editor for xattr filter patterns
+    #8781: gui: Remove duplicate Spanish translation
+  * Other issues:
+    #8768: Update quic-go for Go 1.20
+</comment>
+    <requestid>1070036</requestid>
+  </revision>
 </revisionlist>

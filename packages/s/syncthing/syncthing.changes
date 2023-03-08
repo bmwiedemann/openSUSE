@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  7 21:19:00 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.23.2
+  * Bugfixes:
+    #8749: Relay listener does not restart sometimes
+  * Enhancements:
+    #8660: GUI editor for xattr filter patterns
+    #8781: gui: Remove duplicate Spanish translation
+  * Other issues:
+    #8768: Update quic-go for Go 1.20
+
+-------------------------------------------------------------------
 Tue Feb  7 12:43:54 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.23.1
