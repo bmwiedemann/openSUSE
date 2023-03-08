@@ -757,4 +757,19 @@
   * chore(deps): bump alpine from 3.17.1 to 3.17.2 (#3723)</comment>
     <requestid>1069011</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b0ae7db49bddc82dcca379ce536998d4</srcmd5>
+    <version>0.38.2</version>
+    <time>1678283653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38.2:
+  * chore(deps): bump github.com/moby/buildkit from 0.11.0 to 0.11.4 (#3789)
+  * chore(deps): bump actions/add-to-project from 0.4.0 to 0.4.1 (#3724)
+  * fix(license): disable jar analyzer for licence scan only (#3780)
+  * bump trivy-issue-action to v0.0.0; skip `pkg` dir (#3781)
+  * fix: skip checking dirs for required post-analyzers (#3773)
+  * docs: add information about plugin format (#3749)
+  * fix(sbom): add trivy version to spdx creators tool field (#3756)</comment>
+    <requestid>1070155</requestid>
+  </revision>
 </revisionlist>

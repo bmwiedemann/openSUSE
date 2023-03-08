@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 08 11:02:13 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.38.2:
+  * chore(deps): bump github.com/moby/buildkit from 0.11.0 to 0.11.4 (#3789)
+  * chore(deps): bump actions/add-to-project from 0.4.0 to 0.4.1 (#3724)
+  * fix(license): disable jar analyzer for licence scan only (#3780)
+  * bump trivy-issue-action to v0.0.0; skip `pkg` dir (#3781)
+  * fix: skip checking dirs for required post-analyzers (#3773)
+  * docs: add information about plugin format (#3749)
+  * fix(sbom): add trivy version to spdx creators tool field (#3756)
+
+-------------------------------------------------------------------
 Thu Mar 02 17:30:50 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.38.1:
