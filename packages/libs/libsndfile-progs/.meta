@@ -1,5 +1,9 @@
 <package name="libsndfile-progs" project="openSUSE:Factory">
-  <title>Example Programs for libsndfile</title>
-  <description>This package includes the example programs for libsndfile.</description>
+  <title>A Library to Handle Various Audio File Formats</title>
+  <description>Libsndfile is a C library for reading and writing sound files, such as
+AIFF, AU, and WAV files, through one standard interface.  It can
+currently read and write 8, 16, 24, and 32-bit PCM files as well as
+32-bit floating point WAV files and a number of compressed formats.</description>
   <devel project="openSUSE:Factory" package="libsndfile"/>
+  <bcntsynctag>libsndfile</bcntsynctag>
 </package>
