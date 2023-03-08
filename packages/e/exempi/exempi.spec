@@ -1,7 +1,7 @@
 #
 # spec file for package exempi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sonum 8
 Name:           exempi
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause

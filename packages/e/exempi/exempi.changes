@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:10:08 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.6.3:
+  * Fix null to int assignement error.
+
+-------------------------------------------------------------------
 Sun Dec  4 21:11:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.2:
