@@ -15,10 +15,10 @@ From: <cbosdonnat@suse.com>
  src/lxc/lxc_process.c    | 1 +
  3 files changed, 4 insertions(+)
 
-Index: libvirt-9.0.0/src/lxc/lxc_controller.c
+Index: libvirt-9.1.0/src/lxc/lxc_controller.c
 ===================================================================
---- libvirt-9.0.0.orig/src/lxc/lxc_controller.c
-+++ libvirt-9.0.0/src/lxc/lxc_controller.c
+--- libvirt-9.1.0.orig/src/lxc/lxc_controller.c
++++ libvirt-9.1.0/src/lxc/lxc_controller.c
 @@ -1997,6 +1997,7 @@ static int virLXCControllerDeleteInterfa
          if (virNetDevVethDelete(ctrl->veths[i]) < 0)
              ret = -1;
@@ -27,11 +27,11 @@ Index: libvirt-9.0.0/src/lxc/lxc_controller.c
  
      return ret;
  }
-Index: libvirt-9.0.0/src/lxc/lxc_driver.c
+Index: libvirt-9.1.0/src/lxc/lxc_driver.c
 ===================================================================
---- libvirt-9.0.0.orig/src/lxc/lxc_driver.c
-+++ libvirt-9.0.0/src/lxc/lxc_driver.c
-@@ -3494,6 +3494,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
+--- libvirt-9.1.0.orig/src/lxc/lxc_driver.c
++++ libvirt-9.1.0/src/lxc/lxc_driver.c
+@@ -3593,6 +3593,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
          case VIR_DOMAIN_NET_TYPE_NETWORK:
          case VIR_DOMAIN_NET_TYPE_ETHERNET:
              ignore_value(virNetDevVethDelete(veth));
@@ -39,7 +39,7 @@ Index: libvirt-9.0.0/src/lxc/lxc_driver.c
              break;
  
          case VIR_DOMAIN_NET_TYPE_DIRECT:
-@@ -3935,6 +3936,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
+@@ -4058,6 +4059,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
              virDomainAuditNet(vm, detach, NULL, "detach", false);
              goto cleanup;
          }
@@ -47,10 +47,10 @@ Index: libvirt-9.0.0/src/lxc/lxc_driver.c
          break;
  
          /* It'd be nice to support this, but with macvlan
-Index: libvirt-9.0.0/src/lxc/lxc_process.c
+Index: libvirt-9.1.0/src/lxc/lxc_process.c
 ===================================================================
---- libvirt-9.0.0.orig/src/lxc/lxc_process.c
-+++ libvirt-9.0.0/src/lxc/lxc_process.c
+--- libvirt-9.1.0.orig/src/lxc/lxc_process.c
++++ libvirt-9.1.0/src/lxc/lxc_process.c
 @@ -226,6 +226,7 @@ static void virLXCProcessCleanup(virLXCD
                  VIR_WARN("Unable to release network device '%s'", NULLSTR(iface->ifname));
          }

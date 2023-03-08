@@ -1,0 +1,43 @@
+From f49281168b3201d0ffe731554a49923914b0e67c Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Thu, 23 Feb 2023 11:02:46 -0700
+Subject: [PATCH] security: Add support for SUSE edk2 firmware paths
+
+SUSE installs edk2 firmwares for both x86_64 and aarch64 in /usr/share/qemu.
+Add support for this path in virt-aa-helper and allow locking files within
+the path in the libvirt qemu abstraction.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+(cherry picked from commit b94a82ce9a3a27db2e6f76eacdb64428d11cbe6f)
+---
+ src/security/apparmor/libvirt-qemu | 2 +-
+ src/security/virt-aa-helper.c      | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+Index: libvirt-9.1.0/src/security/apparmor/libvirt-qemu
+===================================================================
+--- libvirt-9.1.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-9.1.0/src/security/apparmor/libvirt-qemu
+@@ -91,7 +91,7 @@
+   /usr/share/proll/** r,
+   /usr/share/qemu-efi/** r,
+   /usr/share/qemu-kvm/** r,
+-  /usr/share/qemu/** r,
++  /usr/share/qemu/** rk,
+   /usr/share/seabios/** r,
+   /usr/share/sgabios/** r,
+   /usr/share/slof/** r,
+Index: libvirt-9.1.0/src/security/virt-aa-helper.c
+===================================================================
+--- libvirt-9.1.0.orig/src/security/virt-aa-helper.c
++++ libvirt-9.1.0/src/security/virt-aa-helper.c
+@@ -481,6 +481,7 @@ valid_path(const char *path, const bool
+         "/usr/share/AAVMF/",                 /* for AAVMF images */
+         "/usr/share/qemu-efi/",              /* for AAVMF images */
+         "/usr/share/qemu-efi-aarch64/",      /* for AAVMF images */
++        "/usr/share/qemu/",                  /* SUSE path for OVMF and AAVMF images */
+         "/usr/lib/u-boot/",                  /* u-boot loaders for qemu */
+         "/usr/lib/riscv64-linux-gnu/opensbi" /* RISC-V SBI implementation */
+     };

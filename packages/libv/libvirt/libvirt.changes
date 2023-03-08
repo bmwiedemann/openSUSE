@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar  2 23:11:37 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Apparmor: Add support for SUSE edk2 firmware paths
+  4959490e-support-SUSE-edk2-firmware-paths.patch
+  boo#1208567
+
+-------------------------------------------------------------------
+Wed Mar  1 20:58:57 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.1.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-1-0-2023-03-01
+  - spec: Remove obsolete Groups tag
+  - spec: Integrate upstream spec file changes that split the
+    libvirt-daemon package, allowing more modular, customized
+    installations
+  - spec: New subpackages libvirt-daemon-common, libvirt-daemon-lock,
+    libvirt-daemon-log, libvirt-daemon-proxy, and
+    libvirt-daemon-plugin-lockd
+  - spec: Renamed subpackage libvirt-lock-sanlock to
+    libvirt-daemon-plugin-sanlock
+  - Dropped patches:
+    ef482951-apparmor-Allow-umount-dev.patch,
+    d6a8b9ee-qemu-Fix-managed-no-when-creating-ethdev.patch,
+    c3f16cea-qemu-cleanup-label-on-umount-failure.patch,
+    697c16e3-qemu_process-better-debug-message.patch,
+    5155ab4b-qemu_namespace-nested-mounts-when-umount.patch
+
+-------------------------------------------------------------------
 Wed Feb  8 18:01:55 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix umount of /dev in VM private namespace

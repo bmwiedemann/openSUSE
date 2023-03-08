@@ -13,10 +13,10 @@ From <cbosdonnat@suse.com>
  create mode 100644 docs/manpages/virt-create-rootfs.rst
  create mode 100644 tools/virt-create-rootfs
 
-Index: libvirt-9.0.0/docs/manpages/meson.build
+Index: libvirt-9.1.0/docs/manpages/meson.build
 ===================================================================
---- libvirt-9.0.0.orig/docs/manpages/meson.build
-+++ libvirt-9.0.0/docs/manpages/meson.build
+--- libvirt-9.1.0.orig/docs/manpages/meson.build
++++ libvirt-9.1.0/docs/manpages/meson.build
 @@ -21,6 +21,7 @@ docs_man_files = [
    { 'name': 'virt-qemu-qmp-proxy', 'section': '1', 'install': conf.has('WITH_QEMU') },
    { 'name': 'virt-xml-validate', 'section': '1', 'install': true },
@@ -25,10 +25,10 @@ Index: libvirt-9.0.0/docs/manpages/meson.build
  
    { 'name': 'libvirt-guests', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
    { 'name': 'libvirtd', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
-Index: libvirt-9.0.0/docs/manpages/virt-create-rootfs.rst
+Index: libvirt-9.1.0/docs/manpages/virt-create-rootfs.rst
 ===================================================================
 --- /dev/null
-+++ libvirt-9.0.0/docs/manpages/virt-create-rootfs.rst
++++ libvirt-9.1.0/docs/manpages/virt-create-rootfs.rst
 @@ -0,0 +1,88 @@
 +==================
 +virt-create-rootfs
@@ -118,10 +118,10 @@ Index: libvirt-9.0.0/docs/manpages/virt-create-rootfs.rst
 +========
 +
 +virsh(1), `https://libvirt.org/ <https://libvirt.org/>`_
-Index: libvirt-9.0.0/tools/meson.build
+Index: libvirt-9.1.0/tools/meson.build
 ===================================================================
---- libvirt-9.0.0.orig/tools/meson.build
-+++ libvirt-9.0.0/tools/meson.build
+--- libvirt-9.1.0.orig/tools/meson.build
++++ libvirt-9.1.0/tools/meson.build
 @@ -154,6 +154,8 @@ else
    virsh_icon_res = []
  endif
@@ -131,10 +131,10 @@ Index: libvirt-9.0.0/tools/meson.build
  executable(
    'virsh',
    [
-Index: libvirt-9.0.0/tools/virt-create-rootfs
+Index: libvirt-9.1.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-9.0.0/tools/virt-create-rootfs
++++ libvirt-9.1.0/tools/virt-create-rootfs
 @@ -0,0 +1,236 @@
 +#!/bin/sh
 +set -e
@@ -372,3 +372,15 @@ Index: libvirt-9.0.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
+Index: libvirt-9.1.0/docs/manpages/index.rst
+===================================================================
+--- libvirt-9.1.0.orig/docs/manpages/index.rst
++++ libvirt-9.1.0/docs/manpages/index.rst
+@@ -45,6 +45,7 @@ Tools
+ * `virt-pki-query-dn(1) <virt-pki-query-dn.html>`__ - extract Distinguished Name from a PEM certificate
+ * `virt-ssh-helper(8) <virt-ssh-helper.html>`__ - libvirt socket proxy (internal helper tool)
+ * `virt-qemu-qmp-proxy(1) <virt-qemu-qmp-proxy.html>`__ - Expose a QMP proxy server for a libvirt QEMU guest
++* `virt-create-rootfs(1) <virt-create-rootfs.html>`__ - tool to create a root file system for distro containers
+ 
+ Key codes
+ =========
