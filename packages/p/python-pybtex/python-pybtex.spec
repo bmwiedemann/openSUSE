@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,18 +27,18 @@ License:        MIT
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://pybtex.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pybtex/pybtex-%{version}.tar.gz
+# https://bitbucket.org/pybtex-devs/pybtex/commits/6afabe217af95995d595de493cf9bc5120f85ca7
+Patch0:         python-pybtex-no-six.patch
 BuildRequires:  %{python_module PyYAML >= 3.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module latexcodec}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-latexcodec
 Requires:       python-pyparsing
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -56,6 +56,7 @@ process the above formats.
 
 %prep
 %setup -q -n %{oname}-%{version}
+%patch0 -p1
 
 %build
 %python_build

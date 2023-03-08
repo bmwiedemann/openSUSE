@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 08:29:25 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://bitbucket.org/pybtex-devs/pybtex/commits/6afabe217af95995d595de493cf9bc5120f85ca7
+  + python-pybtex-no-six.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 02:49:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.24.0:
