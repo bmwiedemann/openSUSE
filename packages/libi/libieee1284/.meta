@@ -1,0 +1,5 @@
+<package name="libieee1284" project="openSUSE:Factory">
+  <title>A Library for Interfacing IEEE 1284-Compatible Devices</title>
+  <description>This library is intended to be used by applications that need to communicate with (or at least identify) devices that are attached via a parallel port. For Linux, there are some wrinkles in communicating with devices on parallel ports (see /usr/share/doc/packages/libieee1284/README). The aim of this library is to take all the worry about these wrinkles from the application. It figures out which method is appropriate for the currently running kernel. For instance, if the application wants to know the device ID of a device on a particular port, it asks the library for the the device ID. The library then figures out if it is available via /proc (in any of the possible locations) and, if not, tries asking the device itself. If /dev/parport0 is not available for use, it tries ioperm; if that fails, it tries /dev/port. The application does not have to care.</description>
+  <devel project="Emulators" package="libieee1284"/>
+</package>
