@@ -299,4 +299,13 @@
     <comment></comment>
     <requestid>1061852</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3bd25dced838155f2959872f3e393c11</srcmd5>
+    <version>5.2.30</version>
+    <time>1678283622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.30 (no changelog)
+</comment>
+    <requestid>1070097</requestid>
+  </revision>
 </revisionlist>
