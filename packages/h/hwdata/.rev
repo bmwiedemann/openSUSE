@@ -605,4 +605,13 @@
     <comment></comment>
     <requestid>1063581</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ccf4a6dbafdc93914b651977422e912b</srcmd5>
+    <version>0.368</version>
+    <time>1678283485</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.368:
+  * Update pci, usb and vendor ids</comment>
+    <requestid>1069850</requestid>
+  </revision>
 </revisionlist>
