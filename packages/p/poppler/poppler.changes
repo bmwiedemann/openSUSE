@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:31:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.03.0:
+  core:
+  * PngWriter: Fix potential uninitialized memory use
+
+-------------------------------------------------------------------
 Wed Feb 15 22:40:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 23.02.0:

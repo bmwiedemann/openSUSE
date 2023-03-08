@@ -1968,4 +1968,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1066073</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>8e715b8480e767f33e087ca63f4ce4a8</srcmd5>
+    <version>23.03.0</version>
+    <time>1678283512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069886</requestid>
+  </revision>
 </revisionlist>
