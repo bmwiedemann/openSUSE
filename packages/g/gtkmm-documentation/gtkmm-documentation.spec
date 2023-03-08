@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm-documentation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtkmm-documentation
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
@@ -78,7 +78,7 @@ rm -r %{buildroot}%{_datadir}/doc/gtkmm-4.0/tutorial/html
 
 %files -n gtkmm4-tutorial
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_datadir}/help/C/gtkmm-tutorial/
 
 %files -n gtkmm4-tutorial-lang -f gtkmm-tutorial.lang
