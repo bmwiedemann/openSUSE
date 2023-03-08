@@ -1006,4 +1006,12 @@ Fixes:
 </comment>
     <requestid>1055955</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>06efb52e365d45f83459d3b75bcac61a</srcmd5>
+    <version>5.229.2</version>
+    <time>1678283527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069954</requestid>
+  </revision>
 </revisionlist>

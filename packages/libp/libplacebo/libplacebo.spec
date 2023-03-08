@@ -31,7 +31,7 @@ BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-glad2
-BuildRequires:  python3-jinja2
+BuildRequires:  python3-Jinja2
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(lcms2)

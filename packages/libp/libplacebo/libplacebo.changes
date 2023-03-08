@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 28 16:40:45 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Correct BR from python3-jinja2 to python3-Jinja2, fixes
+  dependency resolving on older distro
+
+-------------------------------------------------------------------
 Wed Jan  4 16:22:00 UTC 2023 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 5.229.2. See details in:
