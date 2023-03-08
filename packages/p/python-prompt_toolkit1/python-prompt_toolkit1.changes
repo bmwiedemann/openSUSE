@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:44:09 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.0.38
+  * lot of changes, see CHANGES or
+    https://github.com/prompt-toolkit/python-prompt-toolkit/blob/master/CHANGELOG
+  * python-six is not required
+
+-------------------------------------------------------------------
 Tue Jan  7 14:41:21 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - disabled test_with_style (gh#1046) 

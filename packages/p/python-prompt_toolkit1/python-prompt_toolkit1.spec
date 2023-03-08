@@ -1,7 +1,7 @@
 #
 # spec file for package python-prompt_toolkit1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         oldpython python
 %bcond_without  test
 Name:           python-prompt_toolkit1
-Version:        1.0.18
+Version:        3.0.38
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
@@ -30,13 +30,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/prompt_toolkit/
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9.0
 Requires:       python-wcwidth
 Recommends:     python-Pygments
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wcwidth}
 %endif
 %ifpython2
