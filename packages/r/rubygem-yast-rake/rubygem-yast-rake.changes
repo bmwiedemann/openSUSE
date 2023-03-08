@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 16:35:45 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Allow overriding the submit target using YAST_SUBMIT also
+  when the target is set in the Rakefile (related to bsc#1208913)
+- Removed support for the yast-rake-ci gem, it is not used anymore
+- 0.2.48
+
+-------------------------------------------------------------------
 Tue May 10 07:01:41 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Mention YAST_SUBMIT in the 'rake -T' task list (bsc#1199371)

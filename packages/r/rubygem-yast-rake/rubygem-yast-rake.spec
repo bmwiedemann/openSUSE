@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yast-rake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define rb_build_ruby_abis    %{rb_default_ruby_abi}
 
 Name:           rubygem-yast-rake
-Version:        0.2.47
+Version:        0.2.48
 Release:        0
 %define mod_name yast-rake
 %define mod_full_name %{mod_name}-%{version}
