@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2023-02-01
+%global longver 2023-03-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-10
 Name:           re2
