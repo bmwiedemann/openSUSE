@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  6 14:54:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.0
+  * Added exfatattrib utility which prints or changes file attributes 
+  * Added FUSE 3 support. FUSE 2 continues to be supported.
+  * Added support for timezone offsets
+  * Fixed device opening error being reported as FS error.
+  * Fixed possible data leakage when uninitialized clusters were allocated using NtSetInformationFile() call under Windows and FS was not unmounted correctly.
+  * Improved compatibility with autoconf 2.70.
+  * Allowed to specify the "nonempty" mount option.
+  * Fixed file data contiguity handling bug which could cause performance degradation 
+  * Fixed possible crashes on invalid UTF-8 sequences.
+  * Fixed a situation when FS could be erroneously marked as dirty (not cleanly unmounted).
+
+-------------------------------------------------------------------
 Tue Dec 27 10:35:41 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

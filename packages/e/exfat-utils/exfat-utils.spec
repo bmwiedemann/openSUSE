@@ -18,7 +18,7 @@
 
 
 Name:           exfat-utils
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Utilities for exFAT file system
 License:        GPL-2.0-or-later
@@ -28,23 +28,22 @@ Source0:        https://github.com/relan/exfat/releases/download/v%{version}/%{n
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Recommends:     fuse-exfat
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A set of utilities for creating, checking, dumping and labelling exFAT file
 system.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # force installation of manual pages
 sed -i -e 's/no-installman//' configure.ac
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -58,8 +57,8 @@ ln -s mkexfatfs.8.gz mkfs.exfat.8.gz
 popd
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %if 0%{?suse_version} < 1550
 /sbin/*
 %endif
@@ -68,12 +67,14 @@ popd
 %{_sbindir}/exfatlabel
 %{_sbindir}/fsck.exfat
 %{_sbindir}/mkexfatfs
+%{_sbindir}/exfatattrib
 %{_sbindir}/mkfs.exfat
-%{_mandir}/man8/dumpexfat.8%{ext_man}
-%{_mandir}/man8/exfatfsck.8%{ext_man}
-%{_mandir}/man8/exfatlabel.8%{ext_man}
-%{_mandir}/man8/fsck.exfat.8%{ext_man}
-%{_mandir}/man8/mkexfatfs.8%{ext_man}
-%{_mandir}/man8/mkfs.exfat.8%{ext_man}
+%{_mandir}/man8/dumpexfat.8%{?ext_man}
+%{_mandir}/man8/exfatfsck.8%{?ext_man}
+%{_mandir}/man8/exfatlabel.8%{?ext_man}
+%{_mandir}/man8/fsck.exfat.8%{?ext_man}
+%{_mandir}/man8/mkexfatfs.8%{?ext_man}
+%{_mandir}/man8/mkfs.exfat.8%{?ext_man}
+%{_mandir}/man8/exfatattrib.8%{?ext_man}
 
 %changelog
