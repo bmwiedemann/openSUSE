@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  1 12:51:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.3.0:
+  * Apply percent decoding when searching for PDFs
+  * Allow filtering document symbols using regex
+  * Return [] instead of "not found" in code action
+- Use zstd compression for vendored tarball.
+- Restrict to tier 1 rust arches.
+
+-------------------------------------------------------------------
 Thu Feb  9 13:13:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.2.0:
