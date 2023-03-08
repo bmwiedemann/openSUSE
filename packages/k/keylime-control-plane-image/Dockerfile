@@ -36,6 +36,7 @@ RUN set -euo pipefail; \
       python3-packaging \
       python3-pyasn1 \
       python3-pyasn1-modules \
+      libefivar1 \
       iproute2; \
     zypper -n clean; \
     rm -rf /var/log/*
