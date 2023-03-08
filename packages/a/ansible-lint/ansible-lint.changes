@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Mar  3 13:08:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.0
+  * Minor Changes
+    - Add rulebook schema (#3103) @ssbarnea
+    - Add sanity rule with check for bad and disallowed ignores
+      (#3102) @alisonlhart
+    - Remove support for python 3.8 (#3051) @ssbarnea
+  * Bugfixes
+    - Adding 2.9 ignore allow-list for sanity rule (#3118)
+      @alisonlhart
+    - Generalize args rule exception handling (#3113) @ajinkyau
+    - Remove duplicate deprecated-command-syntax rule (#3119)
+      @ssbarnea
+    - Allow schema refresh to run without installing app (#3117)
+      @ssbarnea
+    - Removed unused code (#3116) @ajinkyau
+    - Allow custom rules specific configuration with
+      ansible-lint-config JSON Schema (#3080) @ssato
+    - Ensure SPDX license list is in sync (#3111) @ssbarnea
+    - Added support for raw booleans when using complex_conditional
+      (#3109) @ajinkyau
+    - Make git errors fatal when strict mode is active (#3064)
+      @ssbarnea
+    - Fix for skipped rules key in yaml rule (#3097) @ajinkyau
+    - Allow manifest field on galaxy file schema (#3100) @ssbarnea
+    - Simplify logic for meta-runtime rule (#3089) @ajinkyau
+    - Removed lines not required for code coverage (meta-no-info
+      rule) (#3094) @ajinkyau
+    - Remove "mode: preserve" from risky file perms doc, add copy
+      example (#3078) @jamescooke
+    - Improved ignore file handling (#3075) @4ch1m
+    - fix exclude-path test (#3071) @4ch1m
+    - Avoid jinja rule triggering with mutually exclusive arguments
+      (#3060) @ssbarnea
+    - Avoid reformatting of strings with line feeds and no jinja
+      (#3059) @ssbarnea
+    - Change CodeClimate severity to expose error or warning levels
+      (#3057) @ssbarnea
+    - Avoid 'not defined' with jinja rule (#3056) @ssbarnea
+    - Avoid 'is undefined' error with jinja rule (#3055) @ssbarnea
+    - Document output formats (#3054) @ssbarnea
+    - Allow /dev/null to be passed as config file (#3053) @ssbarnea
+- BuildRequire python3.9 or higher
+- BuildRequire/Require ansible-core 2.14 or higher
+
+-------------------------------------------------------------------
 Fri Feb 17 12:09:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.13.1:

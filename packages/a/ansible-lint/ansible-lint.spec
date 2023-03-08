@@ -31,7 +31,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.13.1
+Version:        6.14.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -39,7 +39,7 @@ URL:            https://github.com/ansible-community/ansible-lint
 Source0:        https://github.com/ansible-community/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz#/ansible-lint-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{ansible_python}-base >= 3.8
+BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
@@ -58,7 +58,7 @@ BuildRequires:  %{ansible_python}-flake8
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
-BuildRequires:  ansible-core >= 2.12
+BuildRequires:  ansible-core >= 2.14
 BuildRequires:  %{ansible_python}-ansible-compat >= 2.2.5
 BuildRequires:  %{ansible_python}-enrich >= 1.2.6
 BuildRequires:  %{ansible_python}-filelock >= 3.8.0
@@ -74,7 +74,7 @@ BuildRequires:  %{ansible_python}-wcmatch >= 8.3.2
 BuildRequires:  %{ansible_python}-yamllint >= 1.26.3
 
 #
-Requires:       ansible-core >= 2.12
+Requires:       ansible-core >= 2.14
 Requires:       %{ansible_python}-ansible-compat >= 2.2.5
 Requires:       %{ansible_python}-black >= 22.8.0
 Requires:       %{ansible_python}-bracex
