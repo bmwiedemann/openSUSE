@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 28 16:03:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.3.0:
+  Ansible 7.3.0 will include ansible-core 2.14.3 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
+
+-------------------------------------------------------------------
 Thu Feb  2 07:09:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 7.2.0:
-  Ansible 7.2.0 will include ansible-core 2.14.2 as well as a curated set of
-  Ansible collections to provide a vast number of modules and plugins.
+  Ansible 7.2.0 will include ansible-core 2.14.2 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
 
 -------------------------------------------------------------------
 Thu Jan 12 12:17:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
