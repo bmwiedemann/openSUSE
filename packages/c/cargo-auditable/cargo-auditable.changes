@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 23 14:27:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.6.0~0:
+  * README and documentation improvements 
+  * Read the rustc path passed by Cargo; fixes #90
+  * Read location of Cargo from the environment variable Cargo sets for third-party subcommands
+  * Add a note on sccache version compatibility to CHANGELOG.md
+  * Panic on compilation commands where we fail to parse the arguments instead of silently ignoring the error
+  * Specifying the binary-scanning feature is no longer needed
+  * Pass options such as --offline to `cargo metadata`
+  * Pass on arguments from `cargo auditable` invocation to the rustc wrapper; prep work towards fixing #83
+  * Bump rust-audit-info to 0.5.2
+  * Bump auditable-serde version to 0.5.2
+  * Correctly fill in the source even in dependency entries when converting to cargo-lock data format
+  * Drop the roundtrip through &str in semver::Version; now that semver 1.0 has shipped the versions are API-compatible and this is no longer necessary
+  * Release auditable-info 0.6.1
+  * Bump all the version requirements for things depending on auditable-info
+  * Fix audit_info_from_slice function signature
+
+-------------------------------------------------------------------
 Thu Nov  3 04:31:16 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Initial commit

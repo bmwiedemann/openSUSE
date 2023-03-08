@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-auditable
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define __rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false
 %define __cargo CARGO_FEATURE_VENDORED=1 RUSTFLAGS="%{__rustflags}" %{_bindir}/cargo
 %define __cargo_common_opts %{?_smp_mflags}
 
 Name:           cargo-auditable
-Version:        0.5.2~0
+Version:        0.6.0~0
 Release:        0
 Summary:        A tool to embed auditing information in ELF sections of rust binaries
 #               If you know the license, put it's SPDX string here.
 #               Alternately, you can use cargo lock2rpmprovides to help generate this.
-License:        ( (MIT OR Apache-2.0) AND Unicode-DFS-2016 ) AND ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND MIT
+License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND MIT
 #               Select a group from this link:
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Development/Languages/Rust
-Url:            https://github.com/rust-secure-code/cargo-auditable
+URL:            https://github.com/rust-secure-code/cargo-auditable
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
@@ -64,4 +65,3 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/cargo-auditable %
 %{_bindir}/cargo-auditable
 
 %changelog
-
