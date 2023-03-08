@@ -1,0 +1,11 @@
+--- bctoolbox-5.2.30/CMakeLists.txt.orig	2023-03-08 08:46:24.562116821 +0100
++++ bctoolbox-5.2.30/CMakeLists.txt	2023-03-08 08:46:31.346153166 +0100
+@@ -28,7 +28,7 @@
+ 	cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(bctoolbox VERSION 5.2.0)
++project(bctoolbox VERSION 5.2.30)
+ 
+ set(BCTOOLBOX_VERSION "${PROJECT_VERSION}")
+ set(BCTOOLBOX_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})

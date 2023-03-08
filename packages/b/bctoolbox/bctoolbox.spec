@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.2.16
+Version:        5.2.30
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bctoolbox-fix-pkgconfig.patch
 Patch0:         bctoolbox-fix-pkgconfig.patch
 Patch1:         gcc9-stringop-bogus-warning.patch
+Patch2:         set_curret_version.patch
 BuildRequires:  bcunit-devel >= 3.0.2+git.20191119
 BuildRequires:  chrpath
 BuildRequires:  cmake
@@ -80,10 +81,8 @@ This package the contains shared library for testing component.
 %autosetup -p1
 
 %build
-%if 0%{?fedora} == 36
-export CFLAGS=$(echo "$CFLAGS -Wno-error=maybe-uninitialized")
-export CXXFLAGS=$(echo "$CXXFLAGS -Wno-error=maybe-uninitialized")
-%endif
+export CFLAGS=$(echo "$CFLAGS -Wno-error=maybe-uninitialized -Wno-error=unused-parameter")
+export CXXFLAGS=$(echo "$CXXFLAGS -Wno-error=maybe-uninitialized -Wno-error=unused-parameter")
 %cmake -DENABLE_STATIC=OFF
 %cmake_build
 
