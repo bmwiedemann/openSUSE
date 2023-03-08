@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Feb 13 14:28:12 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile overhaul
+- Update to version 1.5.0
+  * Fix off-by-one error in memory streams.
+- Remove patch:
+  * libbinio-1.4-gcc43.patch
+
+-------------------------------------------------------------------
+Mon Jul  7 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be>
+
+- new package
+
+

@@ -1,0 +1,5 @@
+<package name="libbinio" project="openSUSE:Factory">
+  <title>libbinio</title>
+  <description>libbinio</description>
+  <devel project="devel:libraries:c_c++" package="libbinio"/>
+</package>
