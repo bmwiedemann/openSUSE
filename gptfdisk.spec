@@ -1,7 +1,7 @@
 #
 # spec file for package gptfdisk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            http://rodsbooks.com/gdisk
 #Git-Web:       https://sourceforge.net/p/gptfdisk/code/ci/master/tree/
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
 Patch1:         0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
+# PATCH-FIX-UPSTREAM gptfdisk-fix-null-pointer-dereference.patch bsc#1208877 alynx.zhou@suse.com -- Fix NULL pointer dereference in previous patch
+Patch2:         gptfdisk-fix-null-pointer-dereference.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)
