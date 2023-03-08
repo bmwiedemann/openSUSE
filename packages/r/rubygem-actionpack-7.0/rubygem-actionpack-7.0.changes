@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 27 13:44:49 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 7.0.4.1
+  see installed CHANGELOG.md
+  fix CVE-2023-22795 (bsc#1207451)
+  fix CVE-2023-22792 (bsc#1207455)
+
+  ## Rails 7.0.4.1 (January 17, 2023) ##
+  
+  *   Fix sec issue with _url_host_allowed?
+  
+      Disallow certain strings from `_url_host_allowed?` to avoid a redirect
+      to malicious sites.
+  
+      [CVE-2023-22797]
+  
+  *   Avoid regex backtracking on If-None-Match header
+  
+      [CVE-2023-22795]
+  
+  *   Use string#split instead of regex for domain parts
+  
+      [CVE-2023-22792] 
+
+-------------------------------------------------------------------
 Mon Oct 10 12:51:58 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.4
