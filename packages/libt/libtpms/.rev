@@ -168,4 +168,14 @@
   * build-sys: Fix configure script to support _FORTIFY_SOURCE=3 (forwarded request 1039771 from dirkmueller)</comment>
     <requestid>1040190</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4039469a4134c42f5e999d29f497c743</srcmd5>
+    <version>0.9.6</version>
+    <time>1678283487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.6:
+  * CVE-2023-1018: tpm2: Fixed out of bounds read in CryptParameterDecryption (bsc#1206023)
+  * CVE-2023-1017: tpm2: Fixed out of bounds write in CryptParameterDecryption (bsc#1206022)</comment>
+    <requestid>1069859</requestid>
+  </revision>
 </revisionlist>
