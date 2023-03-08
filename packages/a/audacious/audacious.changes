@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  7 20:06:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3:
+  * See https://audacious-media-player.org/news/56-audacious-4-3-released
+- Add the libarchive build requirement.
+- Switch to Qt 6 on openSUSE newer than 15.x
+- Switch to GTK 3.
+
+-------------------------------------------------------------------
 Wed Jul 13 20:18:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.2:

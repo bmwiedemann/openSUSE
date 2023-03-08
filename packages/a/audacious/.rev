@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>989324</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2295e5940397096ba43c3a20b3e2906</srcmd5>
+    <version>4.3</version>
+    <time>1678283597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.</comment>
+    <requestid>1070049</requestid>
+  </revision>
 </revisionlist>

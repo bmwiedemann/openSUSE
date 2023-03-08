@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define aud_plugin_ver_min 4.2
-%define aud_plugin_ver_max 4.2.99
+%define aud_plugin_ver_min 4.3
+%define aud_plugin_ver_max 4.3.99
 %define core_soname 5
 %define qt_soname 2
 %define gtk_soname 5
 %define tag_soname 3
 Name:           audacious
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -31,17 +31,25 @@ URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 4.5
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libarchive)
 Requires:       %{name}-plugins%{?_isa} <= %{aud_plugin_ver_max}
 Requires:       %{name}-plugins%{?_isa} >= %{aud_plugin_ver_min}
 Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
+%if 0%{?suse_version} > 1500
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
+%else
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
+%endif
 
 %description
 Audacious is an audio player. It is based on Qt and supports a wide
@@ -93,7 +101,15 @@ Development files for Audacious audio player.
 %setup -q
 
 %build
-%meson -Dqt=true
+%meson \
+  -Dqt=true   \
+%if 0%{?suse_version} > 1500
+  -Dqt6=true  \
+%else
+  -Dqt6=false \
+%endif
+  -Dgtk=true  \
+  -Dgtk3=true
 %meson_build
 
 %install
