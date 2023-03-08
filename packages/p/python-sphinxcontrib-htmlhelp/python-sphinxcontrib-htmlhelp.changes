@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:09:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Drop support for Python 3.7 and lower
+  * Fix deprecation warnings from Sphinx 6.1
+- drop sphinx5.patch (upstream)
+
+-------------------------------------------------------------------
 Mon May 30 10:38:17 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch sphinx5.patch to fix build with the new Sphinx

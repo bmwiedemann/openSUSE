@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,15 @@
 %bcond_with test
 %endif
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Sphinx contrib extension to generate html help files
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-htmlhelp/commit/248ff52b3c3d39c20cdaef3052ac7507a407733a Fix #9457: RemovedInSphinx50Warning on testing
-Patch0:         sphinx5.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -53,15 +52,14 @@ BuildRequires:  %{python_module sphinxcontrib-htmlhelp >= %{version}}
 Html help generating extension.
 
 %prep
-%setup -q -n sphinxcontrib-htmlhelp-%{version}
-%autopatch -p1
+%autosetup -p1 -n sphinxcontrib-htmlhelp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
