@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -65,7 +65,6 @@ echo exit 77 > tests/pcre-jitstack
 echo exit 77 > gnulib-tests/test-c-stack.sh
 echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow1.c
 echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow2.c
-echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 %endif
 %make_build check
 

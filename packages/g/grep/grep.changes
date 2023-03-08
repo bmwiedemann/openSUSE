@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:28:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to grep 3.9
+  * With -P, some non-ASCII UTF8 characters were not recognized as
+    word-constituent due to our omission of the PCRE2_UCP flag.
+  * When given multiple patterns the last of which has a back-reference,
+    grep no longer sometimes mistakenly matches lines in some cases
+
+-------------------------------------------------------------------
 Tue Dec 27 12:25:45 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

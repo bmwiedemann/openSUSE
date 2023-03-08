@@ -741,4 +741,14 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment></comment>
     <requestid>1055273</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>602c03319e96cccc61fb12b738e211f7</srcmd5>
+    <version>3.9</version>
+    <time>1678283458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to grep 3.9
+  * When given multiple patterns the last of which has a back-reference,
+    grep no longer sometimes mistakenly matches lines in some cases (forwarded request 1069578 from Andreas_Schwab)</comment>
+    <requestid>1069579</requestid>
+  </revision>
 </revisionlist>
