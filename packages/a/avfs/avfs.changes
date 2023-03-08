@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 19:57:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * added support for ls output with SElinux attributes.
+  * improved handling of xz memory limit to allow detecting
+    when the limit is reached and to increase it on demand.
+  * added basic decoding of tar's extended headers to support
+    longer file names. 
+
+-------------------------------------------------------------------
 Wed May 26 08:52:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.1.4:

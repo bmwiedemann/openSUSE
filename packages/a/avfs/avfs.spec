@@ -1,7 +1,7 @@
 #
 # spec file for package avfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           avfs
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
