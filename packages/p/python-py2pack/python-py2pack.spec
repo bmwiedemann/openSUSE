@@ -1,7 +1,7 @@
 #
 # spec file for package python-py2pack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module metaextract}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pypi-search}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 # SECTION doc requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-programoutput
@@ -43,9 +42,8 @@ Requires:       python-pbr
 Requires:       python-pypi-search
 Requires:       python-requests
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
