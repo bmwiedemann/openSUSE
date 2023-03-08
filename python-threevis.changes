@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  8 03:36:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Shorten Summary (rpmlint)
+- Clean specfile
+- PEP517
+
+-------------------------------------------------------------------
 Tue Apr 27 05:18:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

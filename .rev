@@ -39,4 +39,14 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>888645</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>540e5010680eb2d6447fe6f0994d5ca7</srcmd5>
+    <version>0.1.0.post25</version>
+    <time>1678283601</time>
+    <user>dimstar_suse</user>
+    <comment>- Shorten Summary (rpmlint)
+- Clean specfile
+- PEP517 (forwarded request 1070052 from bnavigator)</comment>
+    <requestid>1070053</requestid>
+  </revision>
 </revisionlist>
