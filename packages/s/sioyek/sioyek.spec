@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/ahrm/sioyek
 Source0:        https://github.com/ahrm/sioyek/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         no-link-gumbo.patch
 BuildRequires:  binutils
 BuildRequires:  c++_compiler
 BuildRequires:  libQt5Gui-devel
@@ -35,7 +36,6 @@ BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  mupdf-devel-static
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jbig2dec)
 BuildRequires:  pkgconfig(libjpeg)

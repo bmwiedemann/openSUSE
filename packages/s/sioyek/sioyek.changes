@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  7 18:01:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add no-link-gumbo.patch and drop dependency on gumbo.
+
+-------------------------------------------------------------------
 Mon Jan  9 02:01:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix icon not showing by moving back the icon from
