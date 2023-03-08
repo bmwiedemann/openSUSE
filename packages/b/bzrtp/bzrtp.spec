@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.2.16
+Version:        5.2.30
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
@@ -28,10 +28,11 @@ Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch
+Patch1:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.30
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 

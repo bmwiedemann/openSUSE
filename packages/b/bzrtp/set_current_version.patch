@@ -1,0 +1,11 @@
+--- bzrtp-5.2.30/CMakeLists.txt.orig	2023-03-08 08:57:00.053520234 +0100
++++ bzrtp-5.2.30/CMakeLists.txt	2023-03-08 08:57:06.909556904 +0100
+@@ -28,7 +28,7 @@
+     cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(bzrtp VERSION 5.2.0 LANGUAGES C CXX)
++project(bzrtp VERSION 5.2.30 LANGUAGES C CXX)
+ 
+ option(ENABLE_SHARED "Build shared library." YES)
+ option(ENABLE_STATIC "Build static library." YES)
