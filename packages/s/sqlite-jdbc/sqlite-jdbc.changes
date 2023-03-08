@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 23 08:19:26 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.41.0.0
+  * Features
+    ~ bump sqlite to 3.41.0 (a1c3625)
+  * Fixes
+    ~ jdbc: DatabaseMetaData#getColumns now returns SCOPE_CATALOG
+      column instead of SCOPE_CATLOG (4429515), closes #837
+  * Build
+    ~ use junit-jupiter in POM to pull all dependencies
+      transitively (7863376), closes #838
+
+-------------------------------------------------------------------
 Thu Feb  2 09:34:13 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.40.1.0

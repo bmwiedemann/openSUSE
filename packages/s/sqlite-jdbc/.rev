@@ -394,4 +394,21 @@
     <comment>3.40.1.0</comment>
     <requestid>1064178</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6db4112ca304f2f89026e27f099ea02</srcmd5>
+    <version>3.41.0.0</version>
+    <time>1678283576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.41.0.0
+  * Features
+    ~ bump sqlite to 3.41.0 (a1c3625)
+  * Fixes
+    ~ jdbc: DatabaseMetaData#getColumns now returns SCOPE_CATALOG
+      column instead of SCOPE_CATLOG (4429515), closes #837
+  * Build
+    ~ use junit-jupiter in POM to pull all dependencies
+      transitively (7863376), closes #838
+</comment>
+    <requestid>1070003</requestid>
+  </revision>
 </revisionlist>
