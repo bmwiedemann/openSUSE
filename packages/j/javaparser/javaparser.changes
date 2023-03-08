@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Wed Mar  8 05:30:37 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to upstream version 3.25.1
+  * API or Behaviour Change
+    + Fix: Issue 3045 Unexpected exception when solving type inside
+      an Anonymous class (PR #3896 by @jlerbsc)
+  * Added
+    + Improved search for functional interfaces (PR #3894 by
+      @jlerbsc)
+  * Changed
+    + chore(deps): bump maven-compiler-plugin from 3.10.1 to 3.11.0
+      (PR #3928 by @dependabot[bot])
+    + chore(deps): bump checkstyle from 10.7.0 to 10.8.0 (PR #3927
+      by @dependabot[bot])
+    + chore(deps): bump versions-maven-plugin from 2.14.2 to 2.15.0
+      (PR #3914 by @dependabot[bot])
+    + chore(deps): bump maven-javadoc-plugin from 3.4.1 to 3.5.0
+      (PR #3906 by @dependabot[bot])
+    + Refactor: cleanup/refactor code after fixing #3859 (PR #3886
+      by @abego)
+  * Fixed
+    + Fix: issue 3924 Removing ImportDeclaration with Annotated
+      package thr… (PR #3926 by @jlerbsc)
+    + Fix: issue 3918 JavaParserTypeDeclarationAdapter resolving
+      wrong Type via Ancestor (PR #3921 by @jlerbsc)
+    + Fix: issue 3919 ResolvedType::isAssignableBy(ResolvedType) is
+      wrong f… (PR #3920 by @jlerbsc)
+    + Fix: issue 3911 java.lang.UnsupportedOperationException: T[]
+      while resolving generic method with type parameter with
+      arrays like List<T[]> (PR #3917 by @jlerbsc)
+    + Fix: \s escape gives lexical error but should be valid since
+      Java 15 (PR #3903 by @jlerbsc)
+    + Fix: Issue 3045 Unexpected exception when solving type inside
+      an Anonymous class (PR #3896 by @jlerbsc)
+    + Fix issue 1883 Finding lambda return type (PR #3890 by
+      @jlerbsc)
+    + Fix: issue 1815 ArrayIndexOutOfBoundsException when resolving
+      lambda parameter. This fix is offered by Blackgen (PR #3888
+      by @jlerbsc)
+  * Developer Changes
+    + chore(deps): bump checkstyle from 10.6.0 to 10.7.0 (PR #3885
+      by @dependabot[bot])
+- Upgrade to upstream version 3.25.0
+  * Added
+    + First part of the implementation of least upper bound logic
+      (PR #3880 by @jlerbsc)
+    + feat: Improved support for calculating the type of an object
+      creation… (PR #3877 by @jlerbsc)
+    + feat: Implement addRecord & getRecordByName for
+      CompilationUnit (PR #3836 by @marcluque)
+    + Support Jigsaw requires static (PR #3826 by @jlerbsc)
+    + Add toDescriptor to ResolvedMethodDeclaration (PR #3819 by
+      @vanHekthor)
+    + Refactoring context (WIP) (PR #3792 by @jlerbsc)
+    + Refactoring context (WIP) (PR #3782 by @jlerbsc)
+    + Refactoring convert to usage (PR #3774 by @jlerbsc)
+    + Simplified usage of class AssociableToAST (PR #3063 by
+      @4everTheOne)
+  * Changed
+    + Revert import related checkstyle rule from error to warning
+      (PR #3881 by @jlerbsc)
+    + Minor refactoring for example to get all parameter types (PR
+      #3879 by @jlerbsc)
+    + Add header and footer methods in comments instead of using
+      literal st… (PR #3876 by @jlerbsc)
+    + In the context of lexical preservation, the CSM token must be
+      added m… (PR #3874 by @jlerbsc)
+    + Refactoring: remove useless code that is already implemented
+      (PR #3869 by @jlerbsc)
+    + Memory usage improvement when printing a node from the
+      LexicalPreserv… (PR #3858 by @jlerbsc)
+    + chore(deps-dev): bump assertj-core from 3.24.1 to 3.24.2 (PR
+      #3852 by @dependabot[bot])
+    + chore(deps): bump maven-checkstyle-plugin from 3.2.0 to 3.2.1
+      (PR #3846 by @dependabot[bot])
+    + chore(deps): bump maven-dependency-plugin from 3.4.0 to 3.5.0
+      (PR #3845 by @dependabot[bot])
+    + chore(deps): update junit5 monorepo to v5.9.2 (PR #3840 by
+      @renovate[bot])
+    + Minor refactoring on Difference class (PR #3839 by @jlerbsc)
+    + chore(deps-dev): bump assertj-core from 3.23.1 to 3.24.1 (PR
+      #3837 by @dependabot[bot])
+    + chore(deps): bump actions/checkout from 3.2.0 to 3.3.0 (PR
+      #3834 by @dependabot[bot])
+    + chore(deps): bump checkstyle from 10.5.0 to 10.6.0 (PR #3829
+      by @dependabot[bot])
+  * Fixed
+    + Fix: Method hasScope must return true on
+      NodeWithOptionalScope and No… (PR #3875 by @jlerbsc)
+    + fix #3859 UnsupportedOperationException when trying to
+      resolve a type… (PR #3873 by @abego)
+    + Fix: issue 3866 Symbol solver is unable to resolve inner
+      classes of ancestors when they are prefixed with a subclass
+      (PR #3868 by @jlerbsc)
+    + Fix: issue 3703 Allow removing empty parentheses after
+      removing all pairs from an annotation (PR #3865 by @jlerbsc)
+    + Fix: One must be able to know if any resolved type is a boxed
+      primiti… (PR #3864 by @jlerbsc)
+    + Fix: Issue 2374 Comments of added Nodes are ignored in
+      LexicalPreserv… (PR #3856 by @jlerbsc)
+    + Checkstyle for unused import (PR #3841 by @4everTheOne)
+    + Update bnd file (PR #3783 by @jlerbsc)
+  * Developer Changes
+    + Update javaparser copyright headers (PR #3862 by @jlerbsc)
+  * Uncategorised
+    + Add test case to verify range calculation on ArrayType (PR
+      #3828 by @jlerbsc)
+    + Add test case to verify that LexicalPreservation supports
+      TextBlock (PR #3827 by @jlerbsc)
+    + Refactoring: Removing useless method convertToUsage in
+      JavaParserFacade (PR #3780 by @jlerbsc)
+
+-------------------------------------------------------------------
+Sat Jan 28 05:23:24 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to upstream version 3.24.10
+  * Added
+    + Add a method in LexicalPreservingPrinter to know if LPP is
+      available/activated on the specified node (PR #3823 by
+      @jlerbsc)
+    + Handle nested records (PR #3814 by @mernst)
+    + Source printer import ordering strategy (PR #3807 by
+      @4everTheOne)
+  * Changed
+    + chore(deps): bump versions-maven-plugin from 2.14.1 to 2.14.2
+      (PR #3817 by @dependabot[bot])
+    + Enabled import validation (PR #3812 by @4everTheOne)
+    + Part 5 | Import organization (PR #3805 by @4everTheOne)
+    + Part 4 | Import organization (PR #3804 by @4everTheOne)
+    + Part 3 | Import organization (PR #3803 by @4everTheOne)
+    + Part 2 | Import organization (PR #3802 by @4everTheOne)
+    + Part 1 | Import organization (PR #3801 by @4everTheOne)
+    + Checkstyle configuration tweaks (PR #3799 by @4everTheOne)
+    + chore(deps): bump versions-maven-plugin from 2.13.0 to 2.14.1
+      (PR #3797 by @dependabot[bot])
+    + chore(deps): bump actions/checkout from 3.1.0 to 3.2.0 (PR
+      #3789 by @dependabot[bot])
+    + chore(deps): bump checkstyle from 8.45.1 to 10.5.0 (PR #3788
+      by @dependabot[bot])
+  * Fixed
+    + explicit use asString for performance (PR #3821 by @dencat)
+    + Fix: issue #3818 Wrong range calculation on ArrayType with
+      multiple d… (PR #3820 by @jlerbsc)
+    + Fix: Lexical Preserving Fails To Remove Comment (PR #3810 by
+      @jlerbsc)
+  * Developer Changes
+    + chore(deps): bump versions-maven-plugin from 2.13.0 to 2.14.0
+      (PR #3794 by @dependabot[bot])
+    + Basic CheckStyle validation (PR #3781 by @4everTheOne)
+  * Uncategorised
+    + Fix: 3412 Remove walkmod again (PR #3806 by @jlerbsc)
+
+-------------------------------------------------------------------
 Mon Dec 12 16:35:19 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to upstream version 3.24.9
