@@ -160,6 +160,8 @@ Patch34:        fix_kmp_build.patch
 Patch35:        fixes_for_leap15.5.patch
 # Fix for GCC13
 Patch36:        fixes_for_gcc13.patch
+# Fix for kernel 6.3
+Patch37:        fixes_for_kernel_6.3.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -298,13 +300,6 @@ and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
-
-
-
-
-
-
-
 #-#########################################
 
 %package qt
@@ -323,13 +318,6 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
-
-
-
-
-
-
-
 #-########################################
 
 %package websrv
@@ -341,13 +329,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
-
-
 
 
 #-##########################################
@@ -371,13 +352,6 @@ Requires(pre):  net-tools-deprecated
 %description guest-tools
 VirtualBox guest addition tools.
 
-
-
-
-
-
-
-
 #-##########################################
 
 %package -n python3-%{name}
@@ -397,13 +371,6 @@ Obsoletes:      python3-%{name}-ose < %{version}
 %description -n python3-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
-
-
-
-
-
-
-
 #-##########################################
 
 %package devel
@@ -417,13 +384,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
-
-
 
 #-##########################################
 
@@ -456,13 +416,6 @@ Source files for %{name} guest kernel modules
 These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
-
-
-
-
-
-
-
 #-##########################################
 
 %package guest-desktop-icons
@@ -474,13 +427,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
-
-
 
 #-##########################################
 
@@ -551,6 +497,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %if 0%{gcc_version} >= 13
 %patch36 -p1
 %endif
+%patch37 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

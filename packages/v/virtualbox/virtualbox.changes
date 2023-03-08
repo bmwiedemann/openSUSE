@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:14:12 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Added file "fixes_for_kernel_6.3.patch" to handle API change.
+- File "fixes_for_gcc13.patch" updated for additional changes in GCC 13 boo#1207468
+
+-------------------------------------------------------------------
 Wed Mar  1 16:13:24 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add file "fixes_for_gcc13.patch" to fix builds with GCC13. 

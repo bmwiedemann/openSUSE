@@ -1,0 +1,40 @@
+Patch to fix VirtualBox builds on kernel 6.3.0 and newer
+
+Beginning with 6.3, a user is no loncer to write directly info the
+vm_flags member of struct vm_area_struct. It is now necessary to use
+the vm_flags_set() wrapper. Two locations in memobj-r0drv-linux.c are
+affected.
+
+Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
+
+Index: VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+===================================================================
+--- VirtualBox-7.0.6.orig/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -1401,8 +1401,12 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+             while (rc-- > 0)
+             {
+                 flush_dcache_page(pMemLnx->apPages[rc]);
+-                papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
+-            }
++# if RTLNX_VER_MIN(6, 3, 0)
++		vm_flags_set(papVMAs[rc], VM_DONTCOPY | VM_LOCKED);
++#else
++		papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
++#endif
++	    }
+ 
+             LNX_MM_UP_READ(pTask->mm);
+ 
+@@ -1873,7 +1877,11 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(
+                     /* Thes flags help making 100% sure some bad stuff wont happen (swap, core, ++).
+                      * See remap_pfn_range() in mm/memory.c */
+ #if    RTLNX_VER_MIN(3,7,0)
++# if RTLNX_VER_MIN(6, 3, 0)
++                    vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
++#else
+                     vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
++#endif
+ #else
+                     vma->vm_flags |= VM_RESERVED;
+ #endif
