@@ -36,18 +36,18 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
-BuildRequires:  mupdf-devel-static >= 1.20.3
 BuildRequires:  openSUSE-release
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(zlib)
+Provides:       bundled(mupdf) = %version
+# mupdf has bundled() on its own, too, so kinda bad
 %python_subpackages
 
 %description
