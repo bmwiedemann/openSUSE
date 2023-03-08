@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Mar  6 20:21:50 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop trousers requirement
+
+-------------------------------------------------------------------
+Mon Mar  6 16:34:33 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.8.0:
+  * swtpm:
+    + Implement release-lock-outgoing parameter for --migration option
+    + Introduce --migration option and 'incoming' parameter
+    + Implement terminate parameter for ctrl channel loss
+    + Add a chroot option
+    + Introduce disable-auto-shutdown flag for --flags option
+    + If necessary send TPM2_Shutdown() before TPMLIB_Terminate()
+    + Add some more recent syscalls to seccomp profile
+    + Disable OpenSSL FIPS mode to avoid libtpms failures
+    + Avoid locking directory multiple times
+    + Remove support for pre-v0.1 state files without header
+    + Use uint64_t in tlv_data_append() to avoid integer overflows
+    + Use uint64_t to avoid integer wrap-around when adding a uint32_t
+    + Do not chdir(/) when using --daemon
+    + Check header size indicator against expected size (CVE-2022-23645 bsc#1196240)
+    + Fixes for gcc 12.2.1 -fanalyzer
+  * build-sys:
+    + Fix configure script to support _FORTIFY_SOURCE=3
+    + Define __USE_LINUX_IOCTL_DEFS in header file (Cygwin)
+  * swtpm-localca:
+    + Re-implement variable resolution for swtpm-localca.conf
+    + Test for available issuercert before creating CA
+  * swtpm_setup:
+    + Configure swtpm to log to stdout/err if needed (glib >=2.74)
+  * tests:
+    + Use ${WORKDIR} in config files to test env. var replacement
+    + Patch IBM TSS2 test suite for OpenSSL 3.x
+  * build-sys:
+    + Add probing for -fstack-protector
+
+-------------------------------------------------------------------
 Fri Apr 29 07:41:51 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to version 0.7.3:

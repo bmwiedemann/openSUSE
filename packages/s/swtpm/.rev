@@ -151,4 +151,41 @@
 - removed allow-FORTIFY_SOURCE=3.patch (upstreamed) (forwarded request 973850 from msmeissn)</comment>
     <requestid>974426</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>83c7a908ee0ce678bc3964032a81d092</srcmd5>
+    <version>0.8.0</version>
+    <time>1678283489</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop trousers requirement
+
+- Update to version 0.8.0:
+  * swtpm:
+    + Implement release-lock-outgoing parameter for --migration option
+    + Introduce --migration option and 'incoming' parameter
+    + Implement terminate parameter for ctrl channel loss
+    + Add a chroot option
+    + Introduce disable-auto-shutdown flag for --flags option
+    + If necessary send TPM2_Shutdown() before TPMLIB_Terminate()
+    + Add some more recent syscalls to seccomp profile
+    + Disable OpenSSL FIPS mode to avoid libtpms failures
+    + Avoid locking directory multiple times
+    + Remove support for pre-v0.1 state files without header
+    + Use uint64_t in tlv_data_append() to avoid integer overflows
+    + Use uint64_t to avoid integer wrap-around when adding a uint32_t
+    + Do not chdir(/) when using --daemon
+    + Check header size indicator against expected size (CVE-2022-23645 bsc#1196240)
+    + Fixes for gcc 12.2.1 -fanalyzer
+  * build-sys:
+    + Fix configure script to support _FORTIFY_SOURCE=3
+    + Define __USE_LINUX_IOCTL_DEFS in header file (Cygwin)
+  * swtpm-localca:
+    + Re-implement variable resolution for swtpm-localca.conf
+    + Test for available issuercert before creating CA
+  * swtpm_setup:
+    + Configure swtpm to log to stdout/err if needed (glib &gt;=2.74)
+  * tests:
+    + Use ${WORKDIR} in config files to test env. var replacement
+    + Patch IBM TSS2 test suite for OpenSSL 3.x</comment>
+    <requestid>1069861</requestid>
+  </revision>
 </revisionlist>

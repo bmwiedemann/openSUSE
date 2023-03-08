@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
@@ -54,7 +54,6 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       python3-cryptography
-Requires:       trousers
 Requires:       (%{name}-selinux if selinux-policy-base)
 Requires(pre):  user(tss)
 
@@ -137,6 +136,7 @@ fi
 %{_datadir}/swtpm
 %dir %{_libdir}/swtpm
 %{_libdir}/swtpm/*.so.*
+%{_mandir}/man5/swtpm*%{?ext_man}
 %{_mandir}/man8/swtpm*%{?ext_man}
 %dir %attr(0750,tss,root) %{_localstatedir}/lib/swtpm-localca
 
