@@ -1,7 +1,7 @@
 #
 # spec file for package sqlcipher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define         lib_version 3.39.4
-%define         lib_name lib%{name}-3_39_4-0
+%define         lib_name libsqlcipher-3_39_4-0
 Name:           sqlcipher
 Version:        4.5.3
 Release:        0
@@ -26,12 +26,14 @@ License:        BSD-3-Clause
 Group:          Productivity/Databases/Clients
 URL:            http://sqlcipher.net
 Source:         https://github.com/sqlcipher/sqlcipher/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tcl)
+%{?suse_build_hwcaps_libs}
 
 %description
 SQLCipher is an SQLite extension that provides transparent 256-bit AES
