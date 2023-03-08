@@ -19,10 +19,9 @@
 
 %define soname  libortp
 %define sover   15
-%define docuver 5.2.0
 
 Name:           ortp
-Version:        5.2.16
+Version:        5.2.30
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later
@@ -32,12 +31,13 @@ Source:         https://gitlab.linphone.org/BC/public/ortp/-/archive/%{version}/
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
+Patch1:         set_current_version.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.30
 
 %description
 oRTP is a C library implementing the RTP protocol (RFC 1889).
@@ -77,7 +77,7 @@ develop programs using the oRTP library.
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
 # manually keeping the version here because upstream doesn't (usually) update the patch version
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docuver} %{buildroot}%{_docdir}/%{name}
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/%{name}
 
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc

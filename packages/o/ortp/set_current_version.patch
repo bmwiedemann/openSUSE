@@ -1,0 +1,11 @@
+--- ortp-5.2.30/CMakeLists.txt.orig	2023-03-08 08:55:48.341136679 +0100
++++ ortp-5.2.30/CMakeLists.txt	2023-03-08 08:55:51.105151462 +0100
+@@ -28,7 +28,7 @@
+     cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(oRTP VERSION 5.2.0)
++project(oRTP VERSION 5.2.30)
+ 
+ 
+ 
