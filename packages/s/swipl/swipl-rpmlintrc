@@ -1,0 +1,2 @@
+# They are needed for swipl / pl
+addFilter("E: devel-file-in-non-devel-package *")
