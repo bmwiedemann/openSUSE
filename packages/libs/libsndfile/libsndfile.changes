@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 21 10:14:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.2.0:
+  * Searching for LAME dependency with CMake build system (issue #821).
+  * CMake build from Autotools tarball (issue #816).
+  * Build on UWP platform (issue #824).
+  * Fix signed integer overflow (issue #785).
+  * Skipping large wav chunks on stdin (PR #819).
+
+-------------------------------------------------------------------
 Tue Mar 29 18:07:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

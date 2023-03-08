@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	%{name}1
 Name:           libsndfile
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
