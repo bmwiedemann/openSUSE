@@ -24,6 +24,7 @@ Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/refs/tags/%{version}.tar.gz#/tesseract-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  asciidoc
 BuildRequires:  chrpath
 BuildRequires:  cmake
@@ -47,6 +48,7 @@ BuildRequires:  pkgconfig(pango) >= 1.22.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.22.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.22.0
 Recommends:     tesseract-ocr-traineddata-english
+%{?suse_build_hwcaps_libs}
 
 %description
 A commercial quality OCR engine originally developed at HP between 1985 and

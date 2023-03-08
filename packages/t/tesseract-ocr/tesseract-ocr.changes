@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:11:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Sun Feb 26 22:09:01 UTC 2023 - malcolmlewis@opensuse.org
 
 - Define TESSDATA_PREFIX during build to point at /usr/share
