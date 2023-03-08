@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3status
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
-Version:        3.47
+Version:        3.49
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     i3status
 Recommends:     python-gevent >= 1.1
 Recommends:     python-pyudev >= 0.21.0
@@ -73,7 +75,7 @@ export LANG=en_US.UTF8
 %python_install_alternative py3status
 %python_install_alternative py3-cmd
 
-%preun
+%postun
 %python_uninstall_alternative py3status
 %python_uninstall_alternative py3-cmd
 
@@ -82,6 +84,6 @@ export LANG=en_US.UTF8
 %doc CHANGELOG README.md
 %python_alternative %{_bindir}/py3status
 %python_alternative %{_bindir}/py3-cmd
-%{python_sitelib}/*
+%{python_sitelib}/py3status*
 
 %changelog

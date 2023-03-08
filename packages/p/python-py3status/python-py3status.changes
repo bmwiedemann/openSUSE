@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Feb 28 10:14:23 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 3.49:
+  * do_not_disturb module: use 'makoctl mode' to check current mode. (#2172), by Valdur Kana
+  * google_calendar module: add support to configure which google calendar will be used (#2174), by Alex Thomae
+
+-------------------------------------------------------------------
+Tue Feb 28 10:14:23 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 3.48:
+  * IMPORTANT: bluetooth module has been replaced by the bluetooth2 code, please migrate
+  * python: drop py 3.6 from CI and bump 3.11 (#2166)
+  * battery_level module: allow icon to not use charging_character (#2158), by Kevin Pulo
+  * bluetooth module: replaced by bluetooth2 as announced on 2022-10
+  * check_tcp module: add IPv6 support (#2167), by Björn Busse
+  * clock module: migrate to standard zoneinfo with 3.7, 3.8 support. (#2155), by Valdur Kana
+  * events: change the reading timeout to infinity (#2153), by Austin Lund
+  * kdeconnector module: Active notifications were always 1. (#2170), by Valdur Kana
+  * kdeconnector module: refactor to use dbus signals to update module (#2168), by Valdur Kana
+  * kdeconnector module: show cell network type and strength. (#2162) (#2163), by Valdur Kana
+  * mpris module: fix error self.parent on Py3status module not found. (#2169), by Valdur Kana
+  * timewarrior module: remove dependency on dateutil (#2161), by Rasmus Rendal
+  * volume_status module: amixer scontrols uses device and card parameter. (#2152), by Valdur Kana
+  * volume_status module: deprecate start_delay parameter
+  * volume_status module: smarter initialization logic with retry, remove start_delay setting (#2165), by Joan Bruguera
+  * window module: window without title will not produce error on i3msg mode, by Valdur Kana* core: add inhibition timer on misbehaving signals
+
+-------------------------------------------------------------------
 Mon Oct 03 01:39:34 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
 
 - Update to 3.47:
