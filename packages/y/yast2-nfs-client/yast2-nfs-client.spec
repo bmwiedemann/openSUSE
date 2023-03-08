@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-nfs-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nfs-client
-Version:        4.5.1
+Version:        4.6.1
 Release:        0
 URL:            https://github.com/yast/yast-nfs-client
 Summary:        YaST2 - NFS Configuration
@@ -53,8 +53,8 @@ Requires:       yast2-nfs-common >= 2.24.0
 # showmount, #150382, #286300
 Recommends:     nfs-client
 # Better integration with Partitioner
-Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-storage-ng >= 4.4.35
+Requires:       yast2-ruby-bindings >= 1.0.0
 # bsc#1161687
 Requires:       /usr/bin/killall
 

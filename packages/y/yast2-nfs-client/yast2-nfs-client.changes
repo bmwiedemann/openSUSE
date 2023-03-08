@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  7 12:27:28 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed unit test to not read the values from the current system
+  (bsc#1209007)
+- 4.6.1
+
+-------------------------------------------------------------------
+Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.6.0 (bsc#1208913)
+
+-------------------------------------------------------------------
 Wed May 11 13:12:14 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix localization of NFS Version widget values (bsc#1198076)
