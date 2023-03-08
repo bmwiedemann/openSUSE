@@ -58,7 +58,7 @@ This package does not have a devel package, because this project is for
 development/testing.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # CMAKE_SKIP_RPATH:BOOL=OFF is need to run the tests!
