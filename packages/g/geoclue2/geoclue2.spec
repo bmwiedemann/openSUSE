@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name geoclue
 
 Name:           geoclue2
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
-# PATCH-FIX-UPSTREAM 129.patch -- Port to use soup3
-Patch0:         https://gitlab.freedesktop.org/geoclue/geoclue/-/merge_requests/129.patch
 
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.47.2

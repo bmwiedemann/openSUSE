@@ -355,4 +355,12 @@ So please don't worry for the build failure you see :) (forwarded request 198545
     <comment></comment>
     <requestid>1011148</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ce35fa7735996583cbbb7474b9970808</srcmd5>
+    <version>2.7.0</version>
+    <time>1678283474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069774</requestid>
+  </revision>
 </revisionlist>
