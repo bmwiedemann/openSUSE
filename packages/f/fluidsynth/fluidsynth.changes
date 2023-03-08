@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 12:35:28 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Fixed systemd service not starting by linking fluidsynth against
+  libsystemd
+
+-------------------------------------------------------------------
 Thu Dec 29 11:01:45 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.3.1

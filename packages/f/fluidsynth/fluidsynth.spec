@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libinstpatch-1.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 Recommends:     fluid-soundfont-gm
