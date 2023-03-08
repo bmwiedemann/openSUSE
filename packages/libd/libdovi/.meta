@@ -1,0 +1,6 @@
+<package name="libdovi" project="openSUSE:Factory">
+  <title>Library to read &amp; write Dolby Vision metadata</title>
+  <description>Library to read &amp; write Dolby Vision metadata. Comes as a Rust crate and C compatible library</description>
+  <devel project="multimedia:libs" package="libdovi"/>
+  <url>https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision</url>
+</package>
