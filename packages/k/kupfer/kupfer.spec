@@ -1,7 +1,7 @@
 #
 # spec file for package kupfer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           kupfer
-Version:        319
+Version:        322
 Release:        0
 Summary:        An interface for access to applications and documents
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://kupferlauncher.github.io/
-Source:         https://github.com/kupferlauncher/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz
+Source:         https://github.com/kupferlauncher/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 BuildRequires:  dbus-1-python3
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -71,7 +71,7 @@ paradigm can be extended to many more objects than just
 applications.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-%{version}
 
 %build
 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir}

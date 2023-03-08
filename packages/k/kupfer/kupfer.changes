@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  7 09:23:22 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v322
+  * Update translations
+  * Add support mate-dictionary in dictionary plugin
+  * Fix Firefox and Thunderbird database connection
+  * Add support for file://<local-hostname>/ URLs
+  * Add Firefox tags plugin
+  * Fix Thunderbird plugin 
+  * Add libvirt plugin - manage libvirt domains
+  * Add zeal plugin - quick search in zeal docsets
+  * Fix window plugin - don't break on Wayland, fix switching workspace
+  * Fix segfault on Wayland and newer version of libwnck
+
+-------------------------------------------------------------------
 Sat Sep 11 15:30:00 UTC 2021 - IBBoard <dev@ibboard.co.uk>
 
 - Fix Python XDG dependency so that Kupfer doesn't crash on start
