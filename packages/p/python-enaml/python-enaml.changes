@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  8 07:02:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.0:
+  * add support for Python 3.11+ PR #514
+  * fix several issues related to PySide6 PR #513
+  * switch to use pegen to generate the parser PR #474
+  * implement hash and eq for decl functions PR #517 
+- Add pegen to BuildRequires.
+
+-------------------------------------------------------------------
 Thu Dec 15 23:23:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update tp version 0.15.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-enaml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-enaml
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
@@ -54,6 +54,7 @@ BuildRequires:  %{python_module QtPy >= 2.1.0}
 BuildRequires:  %{python_module atom >= 0.8.0}
 BuildRequires:  %{python_module bytecode >= 0.13.0}
 BuildRequires:  %{python_module kiwisolver >= 1.2.0}
+BuildRequires:  %{python_module pegen}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}

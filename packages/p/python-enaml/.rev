@@ -93,4 +93,17 @@
     <comment></comment>
     <requestid>1043287</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18a9d6e9d7c273378ed777d214882857</srcmd5>
+    <version>0.16.0</version>
+    <time>1678283606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * add support for Python 3.11+ PR #514
+  * fix several issues related to PySide6 PR #513
+  * switch to use pegen to generate the parser PR #474
+  * implement hash and eq for decl functions PR #517 
+- Add pegen to BuildRequires.</comment>
+    <requestid>1070067</requestid>
+  </revision>
 </revisionlist>
