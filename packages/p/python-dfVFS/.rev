@@ -463,4 +463,12 @@ Move from python 2 to python 3</comment>
     <comment>- Add requirements on more Python modules</comment>
     <requestid>1069876</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2ed2951059c0f685187f1a641bf5ac6f</srcmd5>
+    <version>0~20221224</version>
+    <time>1678380330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070239</requestid>
+  </revision>
 </revisionlist>
