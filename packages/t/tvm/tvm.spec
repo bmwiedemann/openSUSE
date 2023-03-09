@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@
 %else
 %bcond_with onednn
 %endif
-%bcond_without pytest
+# Disable pytest until python3-xgboost is available
+%bcond_with pytest
 %ifarch aarch64
 %bcond_without arm_compute_lib
 %else
@@ -37,14 +38,12 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.8.0
+Version:        0.11.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
-Source:         https://github.com/apache/tvm/archive/v%{version}.tar.gz#/tvm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tvm-fix-relay-test.patch --  gh#apache/tvm#10402
-Patch0:         tvm-fix-relay-test.patch
+Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE lib-finder-python-cmake.patch -- custom cmake path
 Patch1:         lib-finder-python-cmake.patch
 # PATCH-FIX-OPENSUSE tvm-fix-openblas.patch -- We use openblas headers instead of netlib cblas
@@ -64,12 +63,15 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module synr}
 BuildRequires:  %{python_module tornado}
+%if %{with pytest}
+BuildRequires:  %{python_module typing_extensions}
+%endif
 %if %{with arm_compute_lib}
 BuildRequires:  ComputeLibrary-devel
 %endif
 BuildRequires:  antlr4-java
 BuildRequires:  cmake
-BuildRequires:  dlpack-devel
+BuildRequires:  dlpack-devel >= 0.7
 BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -158,6 +160,14 @@ Libraries generated for TVM without any provided soname.
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
 ln -s %{_includedir}/endian.h include/endian.h
+# Workaround for tests/cpp/relay/ir/indexed_graph_test.cc:20:10: fatal error: ../../../src/relay/ir/indexed_graph.h: No such file or directory
+pushd tests/
+ln -s ../src
+popd
+#  Workaround for tests/cpp/target_test.cc:29:10: fatal error: ../../../src/target/llvm/llvm_instance.h: No such file or directory
+pushd ../
+ln -s tvm-%{version}/src
+popd
 
 %build
 %limit_build -m 800
@@ -247,6 +257,10 @@ donttest="$donttest or test_sketch_search_policy_xgbmodel"
 donttest="$donttest or test_sketch_search_policy_custom_sketch"
 donttest="$donttest or test_task_tuner_without_measurement"
 donttest="$donttest or test_autotvm_xgboost_mode"
+donttest="$donttest or test_meta_schedule_xgb_model"
+donttest="$donttest or test_meta_schedule_xgb_model_reload"
+donttest="$donttest or test_meta_schedule_xgb_model_reupdate"
+donttest="$donttest or test_tune_matmul"
 # No OpenCL device
 donttest="$donttest or test_simplex_data_transferring"
 donttest="$donttest or test_duplex_data_transferring"
@@ -266,6 +280,9 @@ donttest="$donttest or test_check_correctness or test_graph_simple or test_llvm_
 # probes vulkan on test collection
 ignorefiles="--ignore tests/python/unittest/test_target_codegen_vulkan.py"
 ignorefiles="$ignorefiles --ignore tests/python/unittest/test_tir_intrin.py"
+ignorefiles="$ignorefiles --ignore tests/python/unittest/test_tvm_testing_features.py"
+# No python module for XGBoost
+ignorefiles="$ignorefiles --ignore tests/python/unittest/test_meta_schedule_cost_model.py"
 %if 0%{?suse_version} <= 1500
 # Skip some tests on Leap/SLE (some tests would need python 3.7+)
 donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_schedule_local_runner_exception"
@@ -286,9 +303,12 @@ donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_sch
 
 %files -n %{name}-devel
 %{_includedir}/tvm
+%dir %{_libdir}/cmake/tvm/
+%{_libdir}/cmake/tvm/*.cmake
 
 %files %{python_files}
 %{python_sitearch}/tvm
-%{python_sitearch}/tvm-%{version}*-info
+%dir %{python_sitearch}/tvm*.egg-info/
+%{python_sitearch}/tvm*.egg-info/*
 
 %changelog

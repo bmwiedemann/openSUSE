@@ -1,10 +1,10 @@
---- tvm-0.8.0.orig/python/gen_requirements.py	2022-04-06 09:59:13.271853015 +0200
-+++ tvm-0.8.0/python/gen_requirements.py	2022-04-06 09:59:35.912108846 +0200
-@@ -251,7 +251,7 @@ CONSTRAINTS = [
+--- tvm-0.11.0/python/gen_requirements.py.orig	2023-03-07 10:45:01.380359638 +0100
++++ tvm-0.11.0/python/gen_requirements.py	2023-03-07 10:45:20.964577547 +0100
+@@ -270,7 +270,7 @@ CONSTRAINTS = [
      ("sphinx_autodoc_annotation", None),
      ("sphinx_gallery", None),
      ("sphinx_rtd_theme", None),
--    ("synr", "==0.5.0"),
+-    ("synr", "==0.6.0"),
 +    ("synr", None),
      ("tensorflow", None),
      ("tensorflow-estimator", None),

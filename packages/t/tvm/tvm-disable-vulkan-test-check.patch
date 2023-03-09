@@ -1,34 +1,17 @@
-diff -ur tvm-0.8.0.orig/python/tvm/testing/utils.py tvm-0.8.0/python/tvm/testing/utils.py
---- tvm-0.8.0.orig/python/tvm/testing/utils.py	2022-02-27 19:26:51.985686775 +0100
-+++ tvm-0.8.0/python/tvm/testing/utils.py	2022-02-28 03:09:32.457757673 +0100
-@@ -545,14 +545,6 @@
-         Function to mark
-     """
-     _requires_gpu = [
--        pytest.mark.skipif(
--            not tvm.cuda().exist
--            and not tvm.rocm().exist
--            and not tvm.opencl().exist
--            and not tvm.metal().exist
--            and not tvm.vulkan().exist,
--            reason="No GPU present",
--        ),
-         *uses_gpu(),
-     ]
-     return _compose(args, _requires_gpu)
-@@ -570,7 +562,6 @@
-     """
-     _requires_cuda = [
-         pytest.mark.cuda,
--        pytest.mark.skipif(not device_enabled("cuda"), reason="CUDA support not enabled"),
-         *requires_gpu(),
-     ]
-     return _compose(args, _requires_cuda)
-@@ -722,7 +713,6 @@
-     """
-     _requires_vulkan = [
-         pytest.mark.vulkan,
--        pytest.mark.skipif(not device_enabled("vulkan"), reason="vulkan support not enabled"),
-         *requires_gpu(),
-     ]
-     return _compose(args, _requires_vulkan)
+--- tvm-0.11.0/python/tvm/testing/utils.py.orig	2023-03-07 09:40:58.121602504 +0100
++++ tvm-0.11.0/python/tvm/testing/utils.py	2023-03-07 09:45:47.652819665 +0100
+@@ -823,13 +823,7 @@ class Feature:
+ 
+ 
+ def _any_gpu_exists():
+-    return (
+-        tvm.cuda().exist
+-        or tvm.rocm().exist
+-        or tvm.opencl().exist
+-        or tvm.metal().exist
+-        or tvm.vulkan().exist
+-    )
++    return (False)
+ 
+ 
+ # Mark a test as requiring llvm to run
