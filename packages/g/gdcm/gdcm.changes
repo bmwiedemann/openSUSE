@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  8 19:24:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.21:
+  * handle MFSPLIT case from SIEMENS
+  * Tweak a bit the logic for legacy PMS handling
+  * Make it available for more storage class  
+
+-------------------------------------------------------------------
 Sun Dec  4 16:22:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.20:

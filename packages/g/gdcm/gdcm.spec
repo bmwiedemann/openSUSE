@@ -1,7 +1,7 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.20
+Version:        3.0.21
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
