@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ClusterLabs/crmsh.git</param>
     <param name="scm">git</param>
     <param name="filename">crmsh</param>
-    <param name="versionformat">4.4.1+%cd.%h</param>
+    <param name="versionformat">4.5.0+%cd.%h</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>

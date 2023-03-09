@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 09 10:28:49 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230309.a4c4192d:
+  * Dev: ChangeLog: update ChangeLog for release 4.5.0-rc2
+  * Dev: version: Bump crmsh version to 4.5.0
+
+-------------------------------------------------------------------
+Thu Mar 09 08:27:30 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230309.e15745c6:
+  * Dev: bootstrap: remove unused codes
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: bootstrap: Swap hacluster ssh key with other nodes
+  * Dev: behave: Check passwordless for hacluster between cluster nodes
+
+-------------------------------------------------------------------
 Tue Mar 07 02:12:59 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230307.daea9d13:
