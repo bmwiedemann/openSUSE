@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 08 13:45:08 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1678283083.88597fc:
+  * Trigger job finalization reliably from livehandler
+  * Run cache.fullstack job also in nightly job
+  * Use Minion's dependency handling to restart before finalizing
+  * Invoke hook script only after the first restart attempt
+  * Avoid ugly checks for Gru in enqueuing functions for jobs
+  * Improve error handling when automatically restarting a job
+  * Update docs/UsersGuide.asciidoc
+  * Add openQA status badges
+
+-------------------------------------------------------------------
 Sat Mar 04 02:09:59 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1677862140.c495768:
