@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Mar  9 15:48:22 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Bump Leap's GCC to 12 as Chromium really likes newer standards
+
+-------------------------------------------------------------------
+Thu Mar  9 01:58:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 111.0.5563.64
+  * New View Transitions API
+  * CSS Color Level 4
+  * New developer tools in style panel for color functionality
+  * CSS added trigonometric functions, additional root font units
+    and extended the n-th child pseudo selector.
+  * previousslide and nextslide actions are now part of the Media
+    Session API
+  * A number of security fixes (boo#1209040)
+  * CVE-2023-1213: Use after free in Swiftshader
+  * CVE-2023-1214: Type Confusion in V8
+  * CVE-2023-1215: Type Confusion in CSS
+  * CVE-2023-1216: Use after free in DevTools
+  * CVE-2023-1217: Stack buffer overflow in Crash reporting
+  * CVE-2023-1218: Use after free in WebRTC
+  * CVE-2023-1219: Heap buffer overflow in Metrics
+  * CVE-2023-1220: Heap buffer overflow in UMA
+  * CVE-2023-1221: Insufficient policy enforcement in Extensions API
+  * CVE-2023-1222: Heap buffer overflow in Web Audio API
+  * CVE-2023-1223: Insufficient policy enforcement in Autofill
+  * CVE-2023-1224: Insufficient policy enforcement in Web Payments API
+  * CVE-2023-1225: Insufficient policy enforcement in Navigation
+  * CVE-2023-1226: Insufficient policy enforcement in Web Payments API
+  * CVE-2023-1227: Use after free in Core
+  * CVE-2023-1228: Insufficient policy enforcement in Intents
+  * CVE-2023-1229: Inappropriate implementation in Permission prompts
+  * CVE-2023-1230: Inappropriate implementation in WebApp Installs
+  * CVE-2023-1231: Inappropriate implementation in Autofill
+  * CVE-2023-1232: Insufficient policy enforcement in Resource Timing
+  * CVE-2023-1233: Insufficient policy enforcement in Resource Timing
+  * CVE-2023-1234: Inappropriate implementation in Intents
+  * CVE-2023-1235: Type Confusion in DevTools
+  * CVE-2023-1236: Inappropriate implementation in Internals
+- drop patches:
+  * chromium-86-ImageMemoryBarrierData-init.patch
+  * chromium-93-InkDropHost-crash.patch
+  * chromium-110-NativeThemeBase-fabs.patch
+  * chromium-110-CredentialUIEntry-const.patch
+  * chromium-110-DarkModeLABColorSpace-pow.patch
+  * v8-move-the-Stack-object-from-ThreadLocalTop.patch
+  * chromium-icu72-1.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 08:21:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 110.0.5481.177 (boo#1208589)

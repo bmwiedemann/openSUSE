@@ -73,7 +73,7 @@
 %define ffmpeg_version 58
 %endif
 Name:           chromium
-Version:        110.0.5481.177
+Version:        111.0.5563.64
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -108,29 +108,22 @@ Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-110-compiler.patch
-Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch63:        chromium-ffmpeg-lp152.patch
 Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
-Patch69:        chromium-93-InkDropHost-crash.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
-Patch104:       chromium-110-NativeThemeBase-fabs.patch
-Patch105:       chromium-110-CredentialUIEntry-const.patch
-Patch106:       chromium-110-DarkModeLABColorSpace-pow.patch
-Patch107:       v8-move-the-Stack-object-from-ThreadLocalTop.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch206:       chromium-109-clang-lp154.patch
-Patch207:       chromium-icu72-1.patch
 Patch208:       chromium-icu72-2.patch
 Patch210:       chromium-110-system-libffi.patch
 BuildRequires:  SDL-devel
@@ -313,8 +306,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 %if %{with clang}
 %if 0%{?suse_version} < 1550
 BuildRequires:  clang%{llvm_version}
-BuildRequires:  gcc11
-BuildRequires:  libstdc++6-devel-gcc11
+BuildRequires:  gcc12
+BuildRequires:  libstdc++6-devel-gcc12
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
 #!BuildIgnore:  gcc
@@ -331,8 +324,8 @@ BuildRequires:  binutils-gold
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %endif
 %endif
 
@@ -417,7 +410,9 @@ keeplibs=(
     third_party/abseil-cpp
     third_party/angle
     third_party/angle/src/common/third_party/xxhash
+    third_party/angle/src/third_party/ceval
     third_party/angle/src/third_party/libXNVCtrl
+    third_party/angle/src/third_party/systeminfo
     third_party/angle/src/third_party/volk
     third_party/apple_apsl
     third_party/axe-core
@@ -529,6 +524,7 @@ keeplibs=(
     third_party/maldoca
     third_party/maldoca/src/third_party
     third_party/markupsafe
+    third_party/material_color_utilities
     third_party/mesa
     third_party/metrics_proto
     third_party/minigbm
@@ -559,7 +555,6 @@ keeplibs=(
     third_party/private-join-and-compute
     third_party/private_membership
     third_party/protobuf
-    third_party/protobuf/third_party/six
     third_party/pthreadpool
     third_party/pyjson5
     third_party/pyyaml
@@ -667,8 +662,8 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 %else
 %if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=g++-11
+export CC=gcc-12
+export CXX=g++-12
 # some still call gcc/g++
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
