@@ -1,0 +1,29 @@
+Author: Ignaz Forster <iforster@suse.com>
+Date:   Thu, 9 Feb 2023 16:05:27 +0100
+Upstream: Ticket opened [gh#coreos/ignition#1556]
+
+    Continue with empty config on missing QEMU device
+    
+    The two QEMU provider implementations (fwcfg for platforms with
+    native support and blockdev for the others) have slightly different
+    behaviour: If fwcfg doesn't contain any configuration, it will just
+    skip ("QEMU firmware config was not found. Ignoring..."). The blockdev
+    provider would error out if it can't read the configuration.
+    
+    Change the behavior of the blockdev provider to match the fwcfg one
+    and continue with an empty configuration if the device is not there.
+
+diff --git a/internal/providers/qemu/qemu_blockdev.go b/internal/providers/qemu/qemu_blockdev.go
+index 911eb973..11739f3e 100644
+--- a/internal/providers/qemu/qemu_blockdev.go
++++ b/internal/providers/qemu/qemu_blockdev.go
+@@ -83,7 +83,8 @@ func fetchConfigFromBlockDevice(logger *log.Logger) ([]byte, error) {
+ 			return nil, err
+ 		}
+ 	case <-time.After(blockDeviceTimeout):
+-		return nil, fmt.Errorf("timed out after %v waiting for block device %q to appear", blockDeviceTimeout, ignitionBlockDevicePath)
++		logger.Info("timed out after %v waiting for block device %q to appear. Ignoring...", blockDeviceTimeout, ignitionBlockDevicePath)
++		return util.ParseConfig(logger, []byte{})
+ 	}
+ 
+ 	return bytes.TrimRight(data, "\x00"), nil

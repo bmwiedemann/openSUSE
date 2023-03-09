@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -41,12 +41,13 @@ Source14:       ignition-touch-selinux-autorelabel.conf
 Source15:       ignition-rmcfg-suse.conf
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
+Patch1:         0001-ignore-missing-qemu-blockdev.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.18
 Requires:       %{name}-dracut-grub2
 Requires:       dracut
 Recommends:     %{_sbindir}/groupadd
@@ -115,7 +116,7 @@ install -p -m 0755 grub/* %{buildroot}%{_sysconfdir}/grub.d/
 install -p -m 0644 systemd_suse/*.service %{buildroot}%{_prefix}/lib/systemd/system/
 install -p -m 0644 systemd_suse/ignition-delete-config.service.d/* %{buildroot}%{_prefix}/lib/systemd/system/ignition-delete-config.service.d
 install -d %{buildroot}%{_sbindir}/
-mv %{buildroot}/usr/libexec/ignition-rmcfg %{buildroot}/%{_sbindir}/
+mv %{buildroot}/usr/libexec/* %{buildroot}/%{_sbindir}/
 rmdir %{buildroot}/usr/libexec
 
 %pre
@@ -173,6 +174,7 @@ fi
 /usr/lib/dracut/modules.d/30ignition-microos
 /usr/bin/ignition-validate
 /usr/lib/systemd/system/ignition-delete-config.service
+%{_sbindir}/ignition-apply
 %{_sbindir}/ignition-rmcfg
 %dir %{_unitdir}/ignition-delete-config.service.d
 %{_unitdir}/ignition-delete-config.service.d/ignition-rmcfg-suse.conf

@@ -6,10 +6,10 @@ Upstream: Ticket opened [gh#coreos/ignition#890]
     e.g. to mount several subvolumes from a Btrfs device or bind mounting
     the device to multiple places, by also adding the path to the key.
 
-Index: ignition-2.4.0/config/v3_1/types/filesystem.go
+Index: ignition-2.15.0/config/v3_1/types/filesystem.go
 ===================================================================
---- ignition-2.4.0.orig/config/v3_1/types/filesystem.go
-+++ ignition-2.4.0/config/v3_1/types/filesystem.go
+--- ignition-2.15.0.orig/config/v3_1/types/filesystem.go
++++ ignition-2.15.0/config/v3_1/types/filesystem.go
 @@ -23,7 +23,7 @@ import (
  )
  
@@ -19,10 +19,10 @@ Index: ignition-2.4.0/config/v3_1/types/filesystem.go
  }
  
  func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
-Index: ignition-2.4.0/config/v3_2/types/filesystem.go
+Index: ignition-2.15.0/config/v3_2/types/filesystem.go
 ===================================================================
---- ignition-2.4.0.orig/config/v3_2/types/filesystem.go
-+++ ignition-2.4.0/config/v3_2/types/filesystem.go
+--- ignition-2.15.0.orig/config/v3_2/types/filesystem.go
++++ ignition-2.15.0/config/v3_2/types/filesystem.go
 @@ -23,7 +23,7 @@ import (
  )
  
@@ -32,10 +32,10 @@ Index: ignition-2.4.0/config/v3_2/types/filesystem.go
  }
  
  func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
-Index: ignition-2.4.0/config/v3_3/types/filesystem.go
+Index: ignition-2.15.0/config/v3_3/types/filesystem.go
 ===================================================================
---- ignition-2.4.0.orig/config/v3_3/types/filesystem.go
-+++ ignition-2.4.0/config/v3_3/types/filesystem.go
+--- ignition-2.15.0.orig/config/v3_3/types/filesystem.go
++++ ignition-2.15.0/config/v3_3/types/filesystem.go
 @@ -23,7 +23,7 @@ import (
  )
  
@@ -45,10 +45,23 @@ Index: ignition-2.4.0/config/v3_3/types/filesystem.go
  }
  
  func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
-Index: ignition-2.4.0/config/v3_4_experimental/types/filesystem.go
+Index: ignition-2.15.0/config/v3_4/types/filesystem.go
 ===================================================================
---- ignition-2.4.0.orig/config/v3_4_experimental/types/filesystem.go
-+++ ignition-2.4.0/config/v3_4_experimental/types/filesystem.go
+--- ignition-2.15.0.orig/config/v3_4/types/filesystem.go
++++ ignition-2.15.0/config/v3_4/types/filesystem.go
+@@ -23,7 +23,7 @@ import (
+ )
+ 
+ func (f Filesystem) Key() string {
+-	return f.Device
++	return f.Device + *f.Path
+ }
+ 
+ func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
+Index: ignition-2.15.0/config/v3_5_experimental/types/filesystem.go
+===================================================================
+--- ignition-2.15.0.orig/config/v3_5_experimental/types/filesystem.go
++++ ignition-2.15.0/config/v3_5_experimental/types/filesystem.go
 @@ -23,7 +23,7 @@ import (
  )
  

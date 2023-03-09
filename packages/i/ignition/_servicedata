@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/coreos/ignition</param>
-    <param name="changesrevision">d10f7c1ac3576c1010cecaa74b12a502cbfbffce</param>
+    <param name="changesrevision">13f05b3c9f6221fb68234387ff2e4c2d63a39b63</param>
  </service>
 </servicedata>

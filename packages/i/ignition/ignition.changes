@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 27 13:09:37 UTC 2023 - iforster@suse.com
+
+- Update to version 2.15.0:
+  * Features
+    * Support offline Tang provisioning via pre-shared advertisement (3.4.0)
+    * Allow enabling discard passthrough on LUKS devices (3.4.0)
+    * Allow specifying arbitrary LUKS open options (3.4.0)
+    * Ship aarch64 macOS ignition-validate binary in GitHub release artifacts
+  * Changes
+    * Mark the 3.4.0 config spec as stable
+    * No longer accept configs with version 3.4.0-experimental
+    * Create new 3.5.0-experimental config spec from 3.4.0
+    * Fail if files/links/dirs conflict with systemd units or dropins
+    * Warn if template for enabled systemd instance unit has no Install section
+    * Warn if filesystem overwrites partitioned disk
+    * Warn if wipeTable overwrites a filesystem that would otherwise be reused
+    * Warn if user/group specified for hard link
+    * Install ignition-apply in /usr/libexec
+    * Allow distros to add Ignition command-line arguments from a unit drop-in
+    * Convert NEWS to Markdown and move to docs site
+    * Require Go 1.18+
+  * Bug fixes
+    * Don't overwrite LUKS1 volume when storage.luks.wipeVolume is false
+    * Request network when custom Clevis config has needsNetwork set
+    * Fix creating LUKS volume with custom Clevis config that uses TPM2
+    * Avoid logging spurious error when a LUKS volume wasn't previously formatted
+    * Fix version string in ignition-validate release container
+    * Fix reproducibility of systemd preset file in ignition-apply output
+    * Document that user/group fields aren't applied to hard links
+    * Clarify spec docs for files/directories/links group fields
+- Modified 0002-allow-multiple-mounts-of-same-device.patch to add
+  new Ignition spec version
+- Add 0001-ignore-missing-qemu-blockdev.patch [bsc#1207679] to
+  support booting without configuration device on s390x.
+- Move all /usr/libexec contents to %sbindir
+
+-------------------------------------------------------------------
 Tue Aug  2 11:28:11 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - ignition-enable-network.sh: Use /lib/dracut/hooks directly
