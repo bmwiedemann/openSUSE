@@ -25,10 +25,12 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/open-source-parsers/jsoncpp
 Source0:        https://github.com/open-source-parsers/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+%{?suse_build_hwcaps_libs}
 
 %description
 JSON is a lightweight data-interchange format. It can represent numbers,
