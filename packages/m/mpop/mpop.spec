@@ -1,7 +1,7 @@
 #
 # spec file for package mpop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Fabrice Bauzac.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ TLS/SSL support, IPv6 support, and more.
 }
 %bcond_with gnome-keyring
 Name:           mpop
-Version:        1.4.17
+Version:        1.4.18
 Release:        0
 Summary:        Lightweight and featureful POP3 Client
 License:        GPL-3.0-or-later
