@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  8 15:05:01 UTC 2023 - Marina Latini <marina.latini@suse.com>
+
+- Build with go >= 1.19 on SUSE Linux Enterprise and
+  with go1.18 only on SUSE Linux Enterprise 15 SP3. (bsc#1203599)
+
+-------------------------------------------------------------------
 Wed Sep 28 11:44:38 UTC 2022 - Marina Latini <marina.latini@suse.com>
 
 - Require go1.18 (bsc#1203599, GH#19127)

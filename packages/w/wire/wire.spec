@@ -1,7 +1,7 @@
 #
 # spec file for package wire
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,10 +35,11 @@ URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-%if 0%{?suse_version}
+%if 0%{?sle_version} == 150300
+# Needed due to bsc#1203599
 BuildRequires:  golang(API) = 1.18
 %else
-BuildRequires:  golang >= 1.12
+BuildRequires:  golang(API) >= 1.19
 %endif
 %{?systemd_ordering}
 ExcludeArch:    s390

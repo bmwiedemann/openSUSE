@@ -63,4 +63,12 @@
     <comment>Require go1.18 (bsc#1203599, GH#19127) (forwarded request 1006664 from deneb_alpha)</comment>
     <requestid>1006714</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>f6f38678f66961d8867c36e07efce261</srcmd5>
+    <version>0.5.0</version>
+    <time>1678380325</time>
+    <user>dimstar_suse</user>
+    <comment>Build with go &gt;= 1.19 on SUSE Linux Enterprise and with go1.18 only on SUSE Linux Enterprise 15 SP3. (bsc#1203599) (forwarded request 1070205 from deneb_alpha)</comment>
+    <requestid>1070228</requestid>
+  </revision>
 </revisionlist>
