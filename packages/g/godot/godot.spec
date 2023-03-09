@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.5.1
+Version:        4.0
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -32,12 +32,10 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz
 Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz.sha256
-# Project policy does not allow "-no-pie"
-Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
-Patch1:         certs_fallback.patch
+Patch0:         certs_fallback.patch
 # Heap-buffer-overflow in bundled tinyexr
-Patch2:         tinyexr_thirdparty_upstream.patch
+Patch1:         tinyexr_thirdparty_upstream.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -49,24 +47,28 @@ BuildRequires:  scons
 BuildRequires:  update-desktop-files
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libpcre2-32)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(speech-dispatcher)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(theoradec)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
-BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
 
 %if 0%{?suse_version} > 1500
 # Does not work currently:
@@ -84,8 +86,10 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(graphite2)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  glslang-devel
 BuildRequires:  mbedtls-devel
-BuildRequires:  pkgconfig(bullet) >= 2.90
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(miniupnpc)
@@ -105,9 +109,7 @@ Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
 Requires(post): update-desktop-files
 Requires(postun):update-desktop-files
-Suggests:       %{name}-headless = %{version}
 Suggests:       %{name}-runner = %{version}
-Suggests:       %{name}-server = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # The following "Provides: bundled()" and comments were taken from the
@@ -120,37 +122,47 @@ Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.2.12
+Provides:       bundled(minizip) = 1.2.13
 
 Provides:       bundled(FastLZ)
+Provides:       bundled(FastNoiseLite)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
+Provides:       bundled(amd-fsr) = 1.0.2
+Provides:       bundled(astcenc) = 4.3.0
+Provides:       bundled(basis_universal)
 Provides:       bundled(brotli)
 Provides:       bundled(cvtt)
-Provides:       bundled(etc2comp)
-Provides:       bundled(glad)
+Provides:       bundled(doctest) = 2.4.9
+Provides:       bundled(etcpak) = 1.0
+Provides:       bundled(glad) = 2.0.2
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(hack-fonts)
+Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(hqx)
+Provides:       bundled(icu4c) = 72.1
 Provides:       bundled(ifaddrs-android)
-Provides:       bundled(jpeg-compressor)
-Provides:       bundled(libsimplewebm)
+Provides:       bundled(jpeg-compressor) = 2.00
+Provides:       bundled(meshoptimizer)
 Provides:       bundled(minimp3)
+Provides:       bundled(msdfgen) = 1.9.2
 Provides:       bundled(noto-sans-fonts)
-Provides:       bundled(oidn)
-Provides:       bundled(open-simplex-noise-in-c)
+Provides:       bundled(oidn) = 1.9.2
+Provides:       bundled(openxr) = 1.0.26
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
+Provides:       bundled(spirv-reflect) = sdk-1.3.231.1
 Provides:       bundled(stb)
-Provides:       bundled(tinyexr)
+Provides:       bundled(thorvg) = 0.8.3
+Provides:       bundled(tinyexr) = 1.0.1
 Provides:       bundled(vhacd)
+Provides:       bundled(volk) = sdk-1.3.231.1
+Provides:       bundled(vulkan) = sdk-1.3.231.1
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
-Provides:       bundled(nanosvg)
 Provides:       bundled(recastnavigation)
 Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
@@ -160,23 +172,26 @@ Provides:       bundled(xatlas)
 # Currently build fails with Distro (unbundled) embree on Tumbleweed although
 # the required version is available.
 # Perhaps because it is build with special flags (static) for blender.
-Provides:       bundled(embree) = 3.13.0
+Provides:       bundled(embree) = 3.13.5
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 3.24
+Provides:       bundled(glslang) = 11.12.0
 # see comments for freetype2, libpng and zlib Factory BuildRequires
-Provides:       bundled(freetype2)
+Provides:       bundled(freetype2) = 2.12.1
+Provides:       bundled(graphite) = 1.3.14
+Provides:       bundled(harfbuzz) = 6.0.0
+
 Provides:       bundled(libpng) = 1.6.38
 Provides:       bundled(libzstd)
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.18.1
+Provides:       bundled(mbedtls) = 2.18.2
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc)
+Provides:       bundled(miniupnpc) = 2.2.4
 %endif
 %endif
 
@@ -189,18 +204,6 @@ oriented workflow that can export games to PC, Mobile and Web
 platforms.
 
 %if !0%{?faster_build}
-
-%package headless
-Summary:        Headless version of Godot editor useful for command line
-Group:          Development/Tools/Other
-Requires:       ca-certificates
-Recommends:     ca-certificates-mozilla
-Suggests:       %{name}-bash-completion
-
-%description headless
-This package is the headless version of the Godot editor that is suited for
-exporting Godot games on the command line.
-
 %package runner
 Summary:        Shared binary to play games developed with the Godot engine
 Group:          Amusements/Games/Other
@@ -212,18 +215,6 @@ Suggests:       %{name}-bash-completion
 This package contains a godot-runner binary for the Linux X11 platform,
 which can be used to run any game developed with the Godot engine simply
 by pointing to the location of the game's data package.
-
-%package server
-Summary:        Godot headless binary for servers
-Group:          Amusements/Games/Other
-Requires:       ca-certificates
-Recommends:     ca-certificates-mozilla
-Suggests:       %{name}-bash-completion
-
-%description server
-This package contains the headless binary for the Godot game engine
-particularly suited for running dedicated servers.
-
 %endif
 
 %package bash-completion
@@ -232,19 +223,15 @@ Group:          Amusements/Games/Other
 BuildArch:      noarch
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
-Enhances:       (%{name}-headless and bash-completion)
 Enhances:       (%{name}-runner and bash-completion)
-Enhances:       (%{name}-server and bash-completion)
 
 %description bash-completion
-Bash command line completion support for %{name}, %{name}-headless,
-%{name}-runner and %{name}-server
+Bash command line completion support for %{name} and %{name}-runner
 
 %prep
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
@@ -268,19 +255,14 @@ fi
 # disarm shebang
 sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion
 
-# bash completion for sub packages
-cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-headless
+# bash completion for sub package
 cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-runner
-cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-server
-
-sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-headless/' misc/dist/shell/godot-headless
 sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-runner/' misc/dist/shell/godot-runner
-sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-server/' misc/dist/shell/godot-server
 
 %build
 # Configuring build to use some distribution libraries
 unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
-               'libwebp' 'opus' 'pcre2')
+               'libwebp' 'pcre2')
 
 # Adding distribution name to build name
 %if 0%{?suse_version}
@@ -295,21 +277,13 @@ unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
 
 # Unbundle more libs for Tumbleweed
 %if %{suse_version} > 1500
-unbundle_libs+=('bullet' 'freetype' 'libpng' 'mbedtls' 'zlib' 'zstd')
+unbundle_libs+=('freetype' 'glslang' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
 %else
 # Unbundle more libs for coming Leap
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 unbundle_libs+=('mbedtls')
 %endif
 %endif
-
-# Unbundle libvpx only if it doesn't meet the minimum requirement.
-# See: https://github.com/godotengine/godot/tree/master/thirdparty#libvpx
-vpx_version_min=1.6.0
-vpx_version=$(pkg-config --modversion vpx)
-if [[ $vpx_version = $vpx_version_min || $vpx_version > $vpx_version_min ]]; then
-  unbundle_libs+=('libvpx')
-fi
 
 system_libs=""
 for thirdparty in "${unbundle_libs[@]}"; do
@@ -322,10 +296,12 @@ done
 mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
+rm -rf thirdparty/linuxbsd_headers
+
 %define build_args_common %{?_smp_mflags} \\\
         progress=no verbose=yes udev=yes use_lto=1 \\\
         use_static_cpp=no CCFLAGS='%{optflags}' \\\
-        system_certs_path=%{ca_bundle} $system_libs
+        system_certs_path=%{ca_bundle} use_sowrap=no $system_libs
 
 %ifarch aarch64 %arm
 # Disable unsupported features - https://github.com/godotengine/godot/issues/48297#issuecomment-829165296
@@ -334,29 +310,28 @@ touch thirdparty/certs/ca-certificates.crt
 %define build_args %{build_args_common}
 %endif
 
-# Build graphical editor (tools)
-# rename x11 to linuxbsd ?
-scons %{build_args} platform=x11 tools=yes target=release_debug
+# Build graphical editor
+scons %{build_args} platform=linuxbsd target=editor
 
 %if !0%{?faster_build}
-# Build headless version of the editor (with tools)
-scons %{build_args} platform=server tools=yes target=release_debug
-
-# Build game runner (without tools)
-scons %{build_args} platform=x11 tools=no target=release
-
-# Build server version (without tools)
-scons %{build_args} platform=server tools=no target=release
+# Build game runner
+scons %{build_args} platform=linuxbsd target=template_release production=yes
 %endif
 
 %install
-# Installing the editor
+# build binary suffix
 %ifarch riscv64
 suffix=rv64
 %else
-suffix=%{__isa_bits}
+%ifarch aarch64
+suffix=arm64
+%else
+suffix=%{__isa_name}_%{__isa_bits}
 %endif
-install -D -p -m 755 bin/%{name}.x11.opt.tools.$suffix %{buildroot}%{_bindir}/%{name}
+%endif
+
+# Installing the editor
+install -D -p -m 755 bin/%{name}.linuxbsd.editor.$suffix %{buildroot}%{_bindir}/%{name}
 
 install -D -p -m 644 misc/dist/linux/godot.6 %{buildroot}/%{_mandir}/man6/%{name}.6%{?ext_man}
 install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
@@ -365,21 +340,13 @@ install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildr
 %suse_update_desktop_file -i org.godotengine.Godot
 
 %if !0%{?faster_build}
-# Installing the headless editor
-install -D -p -m 755 bin/%{name}_server.x11.opt.tools.$suffix %{buildroot}%{_bindir}/%{name}-headless
-
 # Installing the runner
-install -D -p -m 755 bin/%{name}.x11.opt.$suffix %{buildroot}%{_bindir}/%{name}-runner
-
-# Installing the server
-install -D -p -m 755 bin/%{name}_server.x11.opt.$suffix %{buildroot}%{_bindir}/%{name}-server
+install -D -p -m 755 bin/%{name}.linuxbsd.template_release.$suffix %{buildroot}%{_bindir}/%{name}-runner
 %endif
 
 # Installing bash-completion
 install -D -p -m 644 misc/dist/shell/godot.bash-completion %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -D -p -m 644 misc/dist/shell/godot-headless %{buildroot}%{_datadir}/bash-completion/completions/%{name}-headless
 install -D -p -m 644 misc/dist/shell/godot-runner %{buildroot}%{_datadir}/bash-completion/completions/%{name}-runner
-install -D -p -m 644 misc/dist/shell/godot-server %{buildroot}%{_datadir}/bash-completion/completions/%{name}-server
 
 %fdupes -s %{buildroot}/%{_prefix}
 
@@ -399,27 +366,15 @@ install -D -p -m 644 misc/dist/shell/godot-server %{buildroot}%{_datadir}/bash-c
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %if !0%{?faster_build}
-%files headless
-%license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
-%{_bindir}/%{name}-headless
-
 %files runner
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %{_bindir}/%{name}-runner
-
-%files server
-%license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
-%{_bindir}/%{name}-server
 %endif
 
 %files bash-completion
 %license LICENSE.txt COPYRIGHT.txt
 %{_datadir}/bash-completion/completions/%{name}
-%{_datadir}/bash-completion/completions/%{name}-headless
 %{_datadir}/bash-completion/completions/%{name}-runner
-%{_datadir}/bash-completion/completions/%{name}-server
 
 %changelog

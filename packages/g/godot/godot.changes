@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Mar 3 12:00:00 UTC 2023 - cunix@mail.de
+
+- existing 3.x projects will probably need manual work to port to 4.0
+  * BACKUPS NEEDED!
+
+- Update to 4.0
+  * 3D & General Rendering Overhaul
+      Vulkan & New Renderers
+      Highly Improved Lighting & Shadows
+      New Rendering Optimization Techniques
+      Enhanced Mid & Post-Processing
+  * 2D Improvements
+      Powerful New 2D Level-Editing Tools
+      New 2D Rendering Options
+      Improved 2D Lighting & Shadows
+  * Shaders & VFX
+      New Atmospheric Effects
+      Textures & Material Projection
+      Enhanced Shader-Game World Interaction
+      Improved Shader Editor
+      Extended Shader Language
+      Compute Shaders
+  * Scripting
+      GDScript
+        static typing system is now more robust
+        first-class functions, lambdas and signals
+        await and super keywords
+        report many errors simultaneously
+        automatically generate documentation
+      GDExtension (experimental) replaces GDNative
+  * Physics
+      Game-Specific Physics Engine
+      Multithreading & Performance Optimization
+      Better Physics API
+      Higher Simulation Stability
+  * UI and Text
+      Multiple Window Support
+      UI Editor Improvements
+      New Text Rendering Systems
+      New Theme and Theme Editor
+  * Internationalization
+      Extended Language Support
+      Easier Translation Workflow
+  * Editor & UX
+      Easier Importing
+      New Editor Features and Widgets
+      Inspector Dock Improvements
+      Scene Dock Improvements
+      Script Editor Improvements
+      Easier Version Control
+      New Movie Maker Mode
+      New Editor Theme
+  * Navigation
+      Server-Based Navigation System
+      Extended Complex Navigation Support
+  * XR
+      Wider Headset & Platform Support
+      Godot XR Tools
+  * Networking & Multiplayer
+      More Stable Networking Systems
+      Simplified Multiplayer Development Workflow
+  * Audio
+      Cleaner Sound
+      Built-in Polyphony
+      Music Looping Point and Text-To-Speech
+  * Animation
+      Enhanced Animation Editor
+      Improved 3D Animation Workflow
+      Animation Libraries and Retargeting System
+      Blending, Transitions and Complex Animation Support
+      New Tween Animation System
+  * Platform Support
+      Android & Web Support
+      More Exporting Options
+  * and so much more:
+    https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_changelog_chrono.txt
+
+- certs_fallback.patch rebased
+
+- drop linker_pie_flag.patch
+
+- dropped separate headless and server packages
+
+-------------------------------------------------------------------
 Mon Nov 21 15:03:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not have the main package recommend the bash-completion

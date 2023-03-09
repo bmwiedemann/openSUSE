@@ -5,7 +5,7 @@ References: https://github.com/godotengine/godot/pull/22066#issuecomment-4215657
             https://github.com/godotengine/godot/pull/22066#issuecomment-422528664
             https://github.com/godotengine/godot/issues/22232
 Upstream:   offered to upstream
-Rebased:    2021-11-08
+Rebased:    2023-03-03
 
 If project has no value set for "network/ssl/certificates" (the default),
 "default_certs" is not filled by function "load_default_certificates" because
@@ -42,10 +42,10 @@ See comments in patch for more details.
  }
  
  Error CryptoKeyMbedTLS::load(String p_path, bool p_public_only) {
-@@ -317,10 +319,22 @@
+@@ -305,10 +307,22 @@
  	ERR_FAIL_COND(default_certs == nullptr);
  
- 	if (p_path != "") {
+ 	if (!p_path.is_empty()) {
  		// Use certs defined in project settings.
  		default_certs->load(p_path);
 +
@@ -64,4 +64,4 @@ See comments in patch for more details.
  #ifdef BUILTIN_CERTS_ENABLED
  	else {
  		// Use builtin certs only if user did not override it in project settings.
- 		PoolByteArray out;
+ 		PackedByteArray out;
