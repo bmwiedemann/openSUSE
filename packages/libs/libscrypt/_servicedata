@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/technion/libscrypt.git</param>
+    <param name="changesrevision">4f7d1de4af5ce4951711d194f103c5faaa7a918a</param>
+  </service>
+</servicedata>

@@ -1,0 +1,8 @@
+<package name="libscrypt" project="openSUSE:Factory">
+  <title>SCrypt library</title>
+  <description>This is a shared library that implements scrypt() functionality.
+
+</description>
+  <devel project="network:cryptocurrencies" package="libscrypt"/>
+  <url>https://github.com/technion/libscrypt</url>
+</package>

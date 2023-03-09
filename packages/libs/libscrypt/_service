@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">1.22</param>
+    <param name="url">https://github.com/technion/libscrypt.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="filename">libscrypt</param>
+    <param name="revision">60e585c</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">libscrypt*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="file">libscrypt.spec</param>
+  </service>
+  <service name="format_spec_file" mode="disabled">
+    <param name="specfile">libscrypt.spec</param>
+  </service>
+</services>
