@@ -1220,4 +1220,12 @@ This set of changes is not suitable for direct copy to currently released produc
   * check: improve error messages for mismatched references</comment>
     <requestid>1061779</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>77a0d3b130e696618984922e3553c95a</srcmd5>
+    <version>6.2.1</version>
+    <time>1678380308</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.1: (forwarded request 1070011 from dsterba)</comment>
+    <requestid>1070012</requestid>
+  </revision>
 </revisionlist>

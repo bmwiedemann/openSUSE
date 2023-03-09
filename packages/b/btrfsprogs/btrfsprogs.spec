@@ -17,8 +17,6 @@
 
 
 %define udev_with_btrfs_builtin 190
-%define udev_version %(pkg-config --modversion udev)
-%define package_udev_rules %{udev_version} >= %{udev_with_btrfs_builtin}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 # enable building of btrfsprogs-static
@@ -29,12 +27,16 @@
 %endif
 
 # the tarball contains prebuilt documentation
+%if 0%{?suse_version} <= 1590
+%define build_docs	0
+%else
 %define build_docs	1
+%endif
 
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.1.3
+Version:        6.2.1
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -55,6 +57,7 @@ Provides:       btrfs-progs = %{version}-%{release}
 Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
+Patch2:         check-qgroup-init.diff
 
 %if %build_docs
 BuildRequires:  python3-Sphinx
@@ -73,27 +76,18 @@ BuildRequires:  libuuid-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
+BuildRequires:  libudev-devel
 BuildRequires:  lzo-devel
 BuildRequires:  pkg-config
-%if 0%{?suse_version} >= 1310
-BuildRequires:  suse-module-tools
-%endif
-BuildRequires:  libudev-devel
-BuildRequires:  pkgconfig(udev)
-%if %build_docs
-BuildRequires:  xmlto
-%endif
 BuildRequires:  python-rpm-macros
+BuildRequires:  suse-module-tools
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} >= 1310
+BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
 Requires(postun):coreutils
-%endif
 Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
-%if %{package_udev_rules}
 Requires:       btrfsprogs-udev-rules
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -142,9 +136,6 @@ Requires:       libbtrfs0 = %{version}
 This package contains the libraries and headers files for developers to
 build applications to interface with Btrfs.
 
-# rpm < 4.6.0 (SLE11 uses 4.4) doesn't support noarch subpackages.
-# Fortunately, it doesn't use systemd either so we can just skip it.
-%if %{package_udev_rules}
 %package udev-rules
 Summary:        Udev rules for configuring btrfs file systems
 Group:          System/Kernel
@@ -158,7 +149,6 @@ used with versions of udev that contain the "built-in" btrfs command
 (v190 and newer).  Older versions of udev will call the version of
 "btrfs ready" contained in the btrfsprogs package, which does the right
 thing.
-%endif
 
 %package -n libbtrfsutil1
 Summary:        Utility library for interacting with Btrfs
@@ -195,6 +185,7 @@ with Btrfs using libbtrfsutil.
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
+%patch2 -p0
 
 %build
 ./autogen.sh
@@ -404,15 +395,14 @@ done
 %{_libdir}/libbtrfsutil.so
 %{_libdir}/pkgconfig/libbtrfsutil.pc
 
-%if %{package_udev_rules}
 %files udev-rules
 %defattr(-, root, root)
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/64-btrfs-dm.rules
 %{_udevrulesdir}/64-btrfs-zoned.rules
-%endif
 
 %files -n python-btrfsutil
+%defattr(-, root, root)
 %{python3_sitearch}/*
 
 %changelog

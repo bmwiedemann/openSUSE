@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar  7 00:00:00 CET 2023 - dsterba@suse.cz
+
+- update to 6.2.1:
+  * fix build with crypto libraries
+  * CI images updated, build tests extended
+- update to 6.2:
+  * receive: fix a corruption when decompressing zstd extents
+  * subvol sync: print total number and deletion progress
+  * accelerated hash algorithm implementations in fallback mode on x86_64
+  * fi mkswapfile: new option --uuid
+  * new global option --log=level to set the verbosity level directly
+  * other:
+    * experimental: update checksum conversion (not usable yet)
+    * build actually requires -std=gnu11
+    * refactor help option formatting, auto wrap long lines
+- spec changes:
+  - drop xmlto, not used anymore
+  - Add patch: check-qgroup-init.diff, fix build on SLE12SP5
+  - use packaged pregenerated documentation on <= SLE15
+  - drop conditional build of udev-rules (SLE12SP5 has version 228)
+  - add missing defattr directive to python package
+
+-------------------------------------------------------------------
 Sat Jan 28 18:29:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.3:
