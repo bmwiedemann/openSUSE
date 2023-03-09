@@ -200,4 +200,13 @@ no _service here, yo stupid bot</comment>
     <comment>- update to 1.17.1:</comment>
     <requestid>1041651</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bbb5c9b2ca4fa1ffbd52749edf1e9040</srcmd5>
+    <version>1.17.2</version>
+    <time>1678380313</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.2:
+  * Fixed FD leak when using --block-devices-as-files</comment>
+    <requestid>1070020</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 19:50:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.2:
+  * Fixed FD leak when using --block-devices-as-files
+
+-------------------------------------------------------------------
 Mon Dec  5 10:42:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.1:
