@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:00:49 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase constraints so it doesn't fail to build for lack of
+  disk space.
+
+-------------------------------------------------------------------
 Mon Feb 27 15:10:02 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.10.2:
