@@ -163,4 +163,17 @@
     the ./azotebg file. Closes #169.</comment>
     <requestid>1035298</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce847a3547ddea4d39924c1603b7d272</srcmd5>
+    <version>1.10.1</version>
+    <time>1678380389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * Fix lang files path
+
+- Updaet to 1.10.0:
+  * Multiple langs support unified with nwg-shell;
+  * Added &quot;Close&quot; button to unify this matter as well.</comment>
+    <requestid>1070332</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  9 06:42:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.1:
+  * Fix lang files path
+
+-------------------------------------------------------------------
+Thu Mar  9 06:42:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Updaet to 1.10.0:
+  * Multiple langs support unified with nwg-shell;
+  * Added "Close" button to unify this matter as well.
+
+-------------------------------------------------------------------
 Fri Nov 11 16:00:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.7:
