@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Mar  8 15:20:50 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Update dependencies
+- Skip one more test failing because of missing pyarrow
+
+-------------------------------------------------------------------
+Wed Mar  8 09:37:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.3.0:
+  * Bag must not pick p2p as shuffle default (:pr:`10005`)
+  * Minor follow-up to P2P by default (:pr:`10008`) `James
+    Bourbeau`_
+  * Add minimum version to optional ``jinja2`` dependency
+    (:pr:`9999`) `Charles Blackmon-Luca`_
+  * Enable P2P shuffling by default
+  * P2P rechunking
+  * Efficient `dataframe.convert_string` support for
+    `read_parquet`
+  * Allow p2p shuffle kwarg for DataFrame merges
+  * Change ``split_row_groups`` default to "infer"
+  * Add option for converting string data to use ``pyarrow``
+    strings
+  * Add support for multi-column ``sort_values``
+  * ``Generator`` based random-number generation in``dask.array``
+  * Support ``numeric_only`` for simple groupby aggregations for
+    ``pandas`` 2.0 compatibility
+  * Fix profilers plot not being aligned to context manager enter
+    time
+  * Relax dask.dataframe assert_eq type checks
+  * Restore ``describe`` compatibility for ``pandas`` 2.0
+  * Improving deploying Dask docs
+  * More docs for ``DataFrame.partitions``
+  * Update docs with more information on default Delayed
+    scheduler
+  * Deployment Considerations documentation
+  * Temporarily rerun flaky tests
+  * Update parsing of FULL_RAPIDS_VER/FULL_UCX_PY_VER
+  * Increase minimum supported versions to ``pandas=1.3`` and
+    ``numpy=1.21``
+  * Fix ``std`` to work with ``numeric_only`` for ``pandas`` 2.0
+  * Temporarily ``xfail``
+    ``test_roundtrip_partitioned_pyarrow_dataset`` (:pr:`9977`)
+  * Fix copy on write failure in `test_idxmaxmin` (:pr:`9944`)
+  * Bump ``pre-commit`` versions (:pr:`9955`) `crusaderky`_
+  * Fix ``test_groupby_unaligned_index`` for ``pandas`` 2.0
+  * Un-``xfail`` ``test_set_index_overlap_2`` for ``pandas`` 2.0
+  * Fix ``test_merge_by_index_patterns`` for ``pandas`` 2.0
+  * Bump jacobtomlinson/gha-find-replace from 2 to 3 (:pr:`9953`)
+  * Fix ``test_rolling_agg_aggregate`` for ``pandas`` 2.0
+    compatibility
+  * Bump ``black`` to ``23.1.0``
+  * Run GPU tests on python 3.8 & 3.10 (:pr:`9940`)
+  * Fix ``test_to_timestamp`` for ``pandas`` 2.0 (:pr:`9932`)
+  * Fix an error with ``groupby`` ``value_counts`` for ``pandas``
+    2.0 compatibility 
+  * Config converter: replace all dashes with underscores
+
+-------------------------------------------------------------------
 Sun Feb 26 00:08:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Prepare test multiflavors for python311, but skip python311

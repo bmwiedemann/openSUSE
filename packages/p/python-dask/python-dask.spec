@@ -54,7 +54,7 @@
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.2.0
+Version:        2023.3.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -73,7 +73,7 @@ Requires:       python-click >= 7
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
 Requires:       python-packaging >= 20.0
-Requires:       python-partd >= 0.3.10
+Requires:       python-partd >= 1.2.0
 Requires:       python-toolz >= 0.8.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -174,7 +174,7 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-delayed = %{version}
-Requires:       python-numpy >= 1.18
+Requires:       python-numpy >= 1.21
 Recommends:     python-scipy
 
 %description array
@@ -222,8 +222,7 @@ Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
-Requires:       python-numpy >= 1.18
-# Patch0 requires pandas 1.3+ -- https://github.com/dask/dask/issues/8169
+Requires:       python-numpy >= 1.21
 Requires:       python-pandas >= 1.3
 
 %description dataframe
@@ -268,7 +267,7 @@ This meta package pulls in the distributed module into the dask namespace.
 %package diagnostics
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
-Requires:       python-Jinja2
+Requires:       python-Jinja2 >= 2.10.3
 # Not ready yet: https://github.com/dask/dask/pull/9659, we provide a legacy bokeh2 in Tumbleweed
 Requires:       (python-bokeh >= 2.4.2 with python-bokeh < 3)
 
@@ -375,6 +374,7 @@ donttest="(test_datasets and test_deterministic)"
 donttest+=" or test_development_guidelines_matches_ci"
 # requires otherwise optional pyarrow (not available on TW) --  https://github.com/dask/dask/issues/9975
 donttest+=" or (test_parquet and (test_chunksize or test_extra_file or (test_select_filtered_column and fastparquet)))"
+donttest+=" or test_read_parquet_convert_string_fastparquet_warns"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8620
   donttest+=" or test_query_with_meta"
