@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 09 05:46:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.53.1:
+  * bump release (#728)
+  * go1.19.7 + codeOK fix + streaming misses (#727)
+  * Bump golang.org/x/net from 0.7.0 to 0.8.0 (#725)
+
+-------------------------------------------------------------------
 Sun Mar 05 12:39:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.53.0:
