@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  7 16:11:03 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add tenant.conf.diff path to do not require a valid EK certificate
+  (that is the case in TPM simulator)
+
+-------------------------------------------------------------------
 Fri Mar  3 13:58:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add python-typing_extensions requirement

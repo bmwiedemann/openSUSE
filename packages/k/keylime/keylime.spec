@@ -41,6 +41,7 @@ Source4:        tmpfiles.%{name}
 Source10:       agent.conf.diff
 Source11:       registrar.conf.diff
 Source12:       verifier.conf.diff
+Source13:       tenant.conf.diff
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -172,6 +173,7 @@ export VERSION=%{version}
 patch -s --fuzz=0 config/agent.conf < %{SOURCE10}
 patch -s --fuzz=0 config/registrar.conf < %{SOURCE11}
 patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
+patch -s --fuzz=0 config/tenant.conf < %{SOURCE13}
 
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_attest
