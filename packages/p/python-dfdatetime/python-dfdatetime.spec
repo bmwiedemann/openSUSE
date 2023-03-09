@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfdatetime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define timestamp 20220925
+%define timestamp 20230225
 %define modname dfdatetime
 Name:           python-dfdatetime
 Version:        0~%{timestamp}
