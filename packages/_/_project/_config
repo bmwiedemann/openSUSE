@@ -1499,7 +1499,7 @@ Optflags: ppc
 Optflags: ppc64
 Optflags: ia64
 Optflags: s390
-Optflags: s390
+Optflags: s390x
 Optflags: armv7l
 Optflags: armv7hl
 Optflags: armv6l
