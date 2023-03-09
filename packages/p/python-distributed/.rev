@@ -784,4 +784,18 @@
 </comment>
     <requestid>1068133</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8246dd4bd819b168ed2720213ab26808</srcmd5>
+    <version>2023.3.0</version>
+    <time>1678380318</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.3.0:
+  * Remove pyarrow dependency for rechunking
+  * Update rechunk_transfer and rechunk_unpack errors
+  * Remove dead code and document arguments to ShardBuffer
+    constructors
+  * Fix tests for p2p by default
+  * Remove obsolete cast</comment>
+    <requestid>1070124</requestid>
+  </revision>
 </revisionlist>
