@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  7 18:03:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.7 (released 2023-03-07) includes a security fix to the
+  crypto/elliptic package, as well as bug fixes to the linker, the
+  runtime, and the crypto/x509 and syscall packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-24532
+  * go#58719 go#58647 boo#1209030 security: fix CVE-2023-24532 crypto/elliptic: specific unreduced P-256 scalars produce incorrect results
+  * go#58441 runtime: some linkname signatures do not match
+  * go#58502 cmd/link: relocation truncated to fit: R_ARM_CALL against `runtime.duffcopy'
+  * go#58535 runtime: long latency of sweep assists
+  * go#58716 net: TestTCPSelfConnect failures due to unexpected connections
+  * go#58773 syscall: Environ uses an invalid unsafe.Pointer conversion on Windows
+  * go#58810 crypto/x509: TestSystemVerify consistently failing
+
+-------------------------------------------------------------------
 Tue Feb 14 18:28:32 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.6 (released 2023-02-14) includes security fixes to the

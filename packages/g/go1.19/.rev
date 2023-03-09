@@ -189,4 +189,23 @@
   * go#58449 cmd/go/internal/modfetch: TestCodeRepo/gopkg.in_natefinch_lumberjack.v2/latest failing (forwarded request 1066110 from jfkw)</comment>
     <requestid>1066111</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>040f9244aec91e6ec1de408764f0dab9</srcmd5>
+    <version>1.19.7</version>
+    <time>1678380280</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.7 (released 2023-03-07) includes a security fix to the
+  crypto/elliptic package, as well as bug fixes to the linker, the
+  runtime, and the crypto/x509 and syscall packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-24532
+  * go#58719 go#58647 boo#1209030 security: fix CVE-2023-24532 crypto/elliptic: specific unreduced P-256 scalars produce incorrect results
+  * go#58441 runtime: some linkname signatures do not match
+  * go#58502 cmd/link: relocation truncated to fit: R_ARM_CALL against `runtime.duffcopy'
+  * go#58535 runtime: long latency of sweep assists
+  * go#58716 net: TestTCPSelfConnect failures due to unexpected connections
+  * go#58773 syscall: Environ uses an invalid unsafe.Pointer conversion on Windows
+  * go#58810 crypto/x509: TestSystemVerify consistently failing (forwarded request 1070080 from jfkw)</comment>
+    <requestid>1070082</requestid>
+  </revision>
 </revisionlist>
