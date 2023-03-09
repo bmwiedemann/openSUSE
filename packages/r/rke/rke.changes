@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Mar  9 05:51:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.4.3:
+  * Enhancements
+    - Introduced v1.24.10-rancher4-1 and v1.23.16-rancher2-1.
+  * Major Bug Fixes
+    - Fixed high cpu usage issue for v1.24 clusters #38816
+    - Fixed issues around hostname-override for AWS cloud provider:
+      - Added hostname-override back to RKE. RKE will continue
+        finding the node by matching hostname_override to
+        kubernetes.io/hostname label on the node. Fixes node not
+        found regression.
+      - RKE will now set the hostname-override for kube-proxy to
+        the instance metadata hostname only if
+        useInstanceMetadataHostname is true. If
+        useInstanceMetadataHostname is false, RKE will use
+        hostname-override set by users.
+    - Refer to RKE PR for more details and rancher/rancher#37634
+      (comment) for testing usecases.
+    - Fixed upgrade issue from clusters having v1beta1 calico
+      custom resource definitions with latest kubernetes versions.
+      #40280
+    - Removed flannel cpu/memory limits with latest kubernetes
+      versions #40178
+  * Known Major Issues
+    - Ephemeral /var/lib/dockershim and /var/lib/cri-dockerd
+      directories for kubelet container could cause
+      kubelet/dockershim to send empty portMappings after upgrade.
+      The workaround is to bind mount these directories by
+      specifying extra_binds for kubelet service. See #2993.
+    - In clusters where cloud_provider is configured and either
+      address or internal_address does not contain a valid IP
+      address (e.g., hostname or FQDN), kube-proxy will fail to
+      start. See #1725.
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.24.10-rancher4-1 (Default)
+        - v1.23.16-rancher2-1
+  * Experimental Kubernetes version
+    - N/A
+  * New Images in v1.24.10-rancher4-1 and v1.23.16-rancher2-1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.24.10-rancher4
+      - rancher/hyperkube:v1.23.16-rancher2
+
+-------------------------------------------------------------------
 Tue Jan 24 08:44:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.4.2:
