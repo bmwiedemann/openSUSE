@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:24:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1392, fixes the following problems
+- fixes CVE-2023-1264
+  * Options test fails with some window width.
+  * Scrollbar test sporadically fails.
+  * Amiga: not all builds use gethostname().
+  * Amiga: a couple of include files are included twice.
+  * FOR_ALL_ macros are defined in an unexpected file.
+  * "clear" macros are not always used.
+  * Using NULL pointer with nested :open command.
+
+-------------------------------------------------------------------
 Mon Mar  6 11:26:48 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1386, fixes the following problems
+- fixes CVE-2023-1175 CVE-2023-1170
   * Divide by zero in zero-width window.
   * Bass files are not recognized.
   * Still some "else if" constructs for setting options.
