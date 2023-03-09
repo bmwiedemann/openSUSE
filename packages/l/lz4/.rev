@@ -155,4 +155,12 @@
     <comment>- Update to release 1.9.4</comment>
     <requestid>996246</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b07e480c6feec1fa2456601b8ae5447c</srcmd5>
+    <version>1.9.4</version>
+    <time>1678380283</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070125 from pluskalm)</comment>
+    <requestid>1070130</requestid>
+  </revision>
 </revisionlist>

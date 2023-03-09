@@ -30,6 +30,7 @@ Source:         https://github.com/lz4/lz4/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch2:         lz-export.diff
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 LZ4 is a lossless data compression algorithm that is focused on
