@@ -27,12 +27,19 @@ ExclusiveArch:  do_not_build
 
 %define spack_dir  %_prefix/lib/spack/
 %define spack_group spack
+
 # These packages are found and can be used by spack, /etc/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
-%define spack_trigger_recommended autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex gcc gcc-c++ gcc-fortran git-lfs make m4 ncurses-devel libtool openssl-devel perl-base pkgconf pkg-config python3-base tar info xz xz-devel
+%define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs make m4 ncurses-devel libtool openssl-devel perl-base pkgconf pkg-config python3-base tar info xz xz-devel
+
+%define spack_trigger_recommended_compilers  gcc gcc-c++ gcc-fortran
+
 # packages recognized by spack, but not recommended
-%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel gcc7 gcc8 gcc9 gcc10 gcc11 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran
+%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel
+
+%define spack_trigger_compilers gcc7 gcc8 gcc9 gcc10 gcc11 gcc12 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc12-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran gcc12-fortran
+
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
@@ -79,7 +86,7 @@ Requires:       python3-clingo
 Requires:       sudo
 Requires:       tar
 Requires:       xz
-Recommends:     %spack_trigger_recommended
+Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
 %else
 BuildRequires:  git
 BuildRequires:  makeinfo
@@ -460,11 +467,17 @@ mkdir -p /opt/spack
 chgrp spack /opt/spack
 chmod 0775 /opt/spack
 
-%triggerin -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
-/usr/lib/spack/run-find-external.sh
+%triggerin -- %{?spack_trigger_recommended_packages} %{?spack_trigger_packages} %{?spack_trigger_external}
+/usr/lib/spack/run-find-external.sh packages
 
-%triggerpostun -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
-/usr/lib/spack/run-find-external.sh
+%triggerin -- %{?spack_trigger_recommended_compilers} %{?spack_trigger_compilers}
+/usr/lib/spack/run-find-external.sh compilers
+
+%triggerpostun -- %{?spack_trigger_recommended_packages} %{?spack_trigger_packages} %{?spack_trigger_external}
+/usr/lib/spack/run-find-external.sh packages
+
+%triggerpostun -- %{?spack_trigger_recommended_compilers} %{?spack_trigger_compilers}
+/usr/lib/spack/run-find-external.sh compilers
 
 %if %{without doc}
 %files

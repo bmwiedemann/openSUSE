@@ -1,5 +1,49 @@
 #!/bin/bash
-if [ -e @@_sysconfdir@@/spack/no_rpm_trigger ] ; then
+
+scope=system
+what=$1
+
+addpath() {
+    path=$1
+    shift
+    while [ -n "$1" ]; do
+	eval "${path}"=${1}:${!path}
+	shift
+    done
+}
+
+find_packages() {
+    if [ $scope = user ]; then
+	test -e  /etc/spack/packages.yaml && mv /etc/spack/packages.yaml /etc/spack/packages.yaml.old
+	# drop all root rights, when calling external find
+	sudo -u nobody PATH=${mypath}:${PATH} spack external find --scope user --all #--exclude 'installdbgsymbols'
+	if [ -e /var/lib/nobody/.spack/packages.yaml ] ; then
+	    mv -v /var/lib/nobody/.spack/packages.yaml /etc/spack/packages.yaml
+	    chown root:root /etc/spack/packages.yaml
+	fi
+	rm -r /var/lib/nobody/.spack
+    else
+	# May run in a container...
+	PATH=${mypath}:${PATH} spack external find --scope system --all #--exclude 'installdbgsymbols'
+    fi
+}
+
+find_compilers() {
+    if [ $scope = user ]; then
+	test -e  /etc/spack/compilers.yaml && mv /etc/spack/compilers.yaml /etc/spack/compilers.yaml.old
+	# drop all root rights, when calling external find
+	sudo -u nobody PATH=${cpath}:${PATH} spack compiler find --scope user
+	if [ -e /var/lib/nobody/.spack/compilers.yaml ] ; then
+	    mv -v /var/lib/nobody/.spack/compilers.yaml /etc/spack/compilers.yaml
+	    chown root:root /etc/spack/compilers.yaml
+	fi
+    else
+	# May run in a container...
+	PATH=${cpath}:${PATH} spack compiler find --scope system
+    fi
+}
+
+if [ -e /etc/spack/no_rpm_trigger ] ; then
   exit 0
 fi
 if [ "x$(id -u)" != "x0" ] ; then
@@ -9,34 +53,35 @@ fi
 
 echo "Create /etc/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
 # save old packages.yml, it has to be removed as when not
-# the new and old packages.yaml files would have to be 
+# the new and old packages.yaml files would have to be
 # combined
-test -e  /etc/spack/packages.yaml && mv /etc/spack/packages.yaml /etc/spack/packages.yaml.old
-# prepare the path
-mypath=/usr/lib64/mpi/gcc/openmpi4/bin
-mypath=/usr/lib64/mpi/gcc/openmpi3/bin:${mypath}
-mypath=/usr/lib64/mpi/gcc/openmpi2/bin:${mypath}
-mypath=/usr/lib64/mpi/gcc/openmpi1/bin:${mypath}
-mypath=/usr/lib64/mpi/gcc/mvapich2/bin:${mypath}
-mypath=/usr/lib64/mpi/gcc/mpich/bin:${mypath}
-mypath=/usr/lib/hpc/gnu?/mpi/openmpi/4.*/bin:${mypath}
-mypath=/usr/lib/hpc/gnu?/mpi/openmpi/3.*/bin:${mypath}
-mypath=/usr/lib/hpc/gnu?/mpi/openmpi/2.*/bin:${mypath}
-mypath=/usr/lib/hpc/gnu?/mpi/mpich/3.*/bin:${mypath}
-mypath=/usr/lib/hpc/gnu?/mpi/mvapich2/2.*/bin:${mypath}
 
+
+# prepare the path
+shopt -s nullglob
+addpath mypath /usr/lib64/mpi/gcc/openmpi4/bin
+addpath mypath /usr/lib64/mpi/gcc/openmpi3/bin
+addpath mypath /usr/lib64/mpi/gcc/openmpi2/bin
+addpath mypath /usr/lib64/mpi/gcc/openmpi1/bin
+addpath mypath /usr/lib64/mpi/gcc/mvapich2/bin
+addpath mypath /usr/lib64/mpi/gcc/mpich/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/4.*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/3.*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/2.*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/mpich/3.*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/mvapich2/2.*/bin
+addpath cpath /usr/lib/hpc/compiler/gnu/*/bin
 
 # test if we can run as nobody
 getent passwd nobody &> /dev/null
 if [ "x$?" == "x0" ] ; then
-# drop all root rights, when calling external find
-  sudo -u nobody PATH=${mypath}:${PATH} spack external find --all --scope user #--exclude 'installdbgsymbols' 
-  if [ -e /var/lib/nobody/.spack/packages.yaml ] ; then
-    mv -v /var/lib/nobody/.spack/packages.yaml /etc/spack/packages.yaml
-    chown root:root /etc/spack/packages.yaml
-    rm -r /var/lib/nobody/.spack
-  fi
-else
-  # May run in a container...
-  PATH=${mypath}:${PATH} spack external find --scope system #--exclude 'installdbgsymbols' 
+    scope=user
 fi
+
+case $what in
+    packages) find_packages $scope ;;
+    compilers) find_compilers $scope ;;
+    '') find_packages $scope
+	find_compilers $scope ;;
+    *) exit 1 ;;
+esac

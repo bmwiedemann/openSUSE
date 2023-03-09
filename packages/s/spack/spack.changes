@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  8 19:54:55 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Improve run-find-external.sh:
+  * Extend to run 'spack compiler find'.
+  * Separate triggers for packages and compilers.
+  * Better handle when search patterns match multiple directories.
+
+-------------------------------------------------------------------
 Wed Mar  1 13:13:34 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - Udpate to 0.19.1 with following bug fixes:
@@ -7,7 +15,7 @@ Wed Mar  1 13:13:34 UTC 2023 - Christian Goll <cgoll@suse.com>
   * Improve error message for requirements
   * Fix libtool filter for Fujitsu compilers
   * FileCache: delete the new cache file on exception
-- using `--all` flag for `spack external find` in the %triggrin 
+- using `--all` flag for `spack external find` in the %triggrin
   section, as MPI packages were not recognized any more, fixing
   (bsc#1208751)
 
