@@ -60,12 +60,12 @@ ExclusiveArch:  do_not_build
 %define base_ver 2302
 %endif
 
-%if 0%{?suse_version} >= 1500
-%define have_sysuser 1
+%if 0%{?base_ver} > 0 && 0%{?base_ver} < %{lua:x=string.gsub(rpm.expand("%_ver"),"_","");print(x)}
+%define upgrade 1
 %endif
 
-%if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
-%define upgrade 1
+%if 0%{?suse_version} >= 1500
+%define have_sysuser 1
 %endif
 
 # Build with PMIx only for SLE >= 15.0 and TW
@@ -75,27 +75,14 @@ ExclusiveArch:  do_not_build
 %{bcond_with pmix}
 %endif
 
-%if 0%{?suse_version} >= 1220 || 0%{?sle_version} >= 120000
- %define with_systemd 1
-%endif
-
-%if 0%{?suse_version:1} && 0%{?suse_version} <= 1140
- %define comp_at %defattr(-,root,root)
- %undefine python_ver
-%else
- %define have_json_c 1
- %define python_ver 3
- %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
- %define have_apache_rpm_macros 1
- %endif
-%endif
-
+%define python_ver 3
 %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
+%define have_apache_rpm_macros 1
 %define have_http_parser 1
 %endif
 
 # it seems as disabling slurmrestd has no effect on 22.05
-%if 0%{?have_http_parser} && 0%{?have_json_c}
+%if 0%{?have_http_parser}
 %define build_slurmrestd 1
 %endif
 
@@ -103,11 +90,7 @@ ExclusiveArch:  do_not_build
 %define have_netloc 1
 %endif
 
-%if 0%{?is_opensuse} && 0%{!?sle_version:1}
-%define is_factory 1
-%endif
-
-%if 0%{?is_factory} || 0%{?sle_version} >= 150000
+%if 0%{?suse_version} >= 1500
 %define have_hdf5 1
 %define have_boolean_deps 1
 %define have_lz4 1
@@ -124,13 +107,8 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if 0%{?with_systemd}
- %define slurm_u %pname
- %define slurm_g %pname
-%else
- %define slurm_u daemon
- %define slurm_g root
-%endif
+%define slurm_u %pname
+%define slurm_g %pname
 %define slurm_uid 120
 %define slurmdir %{_rundir}/slurm
 %define slurmdescr "SLURM workload manager"
@@ -141,8 +119,8 @@ ExclusiveArch:  do_not_build
 %if !0%{?_pam_moduledir:1}
 %define _pam_moduledir /%_lib
 %endif
-%if !0%{?%_pam_secconfdir:1}
-%define _pam_secconfdir %_sysconfdir/security
+%if 0%{!?_pam_secconfdir:1}
+%define _pam_secconfdir %{_sysconfdir}/security
 %endif
 
 Name:           %{pname}%{?upgrade:%{_ver}}
@@ -155,9 +133,9 @@ URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 #Source:         https://github.com/SchedMD/slurm/archive/refs/tags/%{pname}-%{dl_ver}.tar.gz
 Source1:        slurm-rpmlintrc
-Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmd.xml
-Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
-Source12:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmdbd.xml
+Source10:       slurmd.xml
+Source11:       slurmctld.xml
+Source12:       slurmdbd.xml
 # create: tar --owner=nobody --group=nogroup --exclude=*~ -cvzf test_setup.tar.gz test_setup
 Source20:       test_setup.tar.gz
 Source21:       README_Testsuite.md
@@ -171,6 +149,7 @@ Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.p
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
+%{?upgrade:Obsoletes: %{pname} < %{version}}
 %{?upgrade:Conflicts: %{pname}}
 
 Requires:       %{name}-config = %{version}
@@ -219,25 +198,19 @@ BuildRequires:  freeipmi-devel
 %endif
 %endif
 BuildRequires:  libcurl-devel
-%if 0%{?have_json_c}
 BuildRequires:  libjson-c-devel
-%endif
 %if 0%{?have_lz4}
 BuildRequires:  liblz4-devel
 %endif
 BuildRequires:  libssh2-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  rrdtool-devel
-%if 0%{?with_systemd}
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_ordering}
 BuildRequires:  dejagnu
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(systemd)
-%else
-Requires(post): %insserv_prereq %fillup_prereq
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Obsoletes:      slurm-sched-wiki < %{version}
 Obsoletes:      slurmdb-direct < %{version}
@@ -253,6 +226,7 @@ Summary:        Documentation for SLURM
 Group:          Documentation/HTML
 BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-doc = %{version}}
+%{?upgrade:Obsoletes: %{pname}-doc < %{version}}
 %{?upgrade:Conflicts: %{pname}-doc}
 
 %package webdoc
@@ -266,6 +240,9 @@ BuildRequires:  apache-rpm-macros
 %endif
 Requires:       slurm-doc = %{version}
 Requires(pre):  apache2
+%{?upgrade:Provides: %{pname}-webdoc = %{version}}
+%{?upgrade:Obsoletes: %{pname}-webdoc < %{version}}
+%{?upgrade:Conflicts: %{pname}-webdoc}
 
 %description webdoc
 Set up HTTP server for SLURM configuration.
@@ -284,6 +261,7 @@ Requires:       perl = %{perl_version}
 %{perl_requires}
 %endif
 %{?upgrade:Provides: perl-%{pname} = %{version}}
+%{?upgrade:Obsoletes: perl-%{pname} < %{version}}
 %{?upgrade:Conflicts: perl-%{pname}}
 
 %description -n perl-%{name}
@@ -309,6 +287,7 @@ with SLURM.
 Summary:        SLURM PMI Library
 Group:          System/Libraries
 %{?upgrade:Provides: libpmi%{pmi_so} = %{version}}
+%{?upgrade:Obsoletes: libpmi%{pmi_so} < %{version}}
 %{?upgrade:Conflicts: libpmi%{pmi_so}}
 
 %description -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
@@ -319,6 +298,7 @@ with SLURM.
 Summary:        NSS Plugin for SLURM
 Group:          System/Libraries
 %{?upgrade:Provides: libnss_%{pname}%{nss_so} = %{version}}
+%{?upgrade:Obsoletes: libnss_%{pname}%{nss_so} < %{version}}
 %{?upgrade:Conflicts: libnss_%{pname}%{nss_so}}
 
 %description -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
@@ -331,8 +311,9 @@ Summary:        Development package for SLURM
 Group:          Development/Libraries/C and C++
 Requires:       %{libslurm} = %{version}
 Requires:       %{name} = %{version}
-Requires:       libpmi%{pmi_so} = %{version}
+Requires:       libpmi%{pmi_so}%{?upgrade:%{_ver}} = %{version}
 %{?upgrade:Provides: %{pname}-devel = %{version}}
+%{?upgrade:Obsoletes: %{pname}-devel < %{version}}
 %{?upgrade:Conflicts: %{pname}-devel}
 
 %description devel
@@ -343,6 +324,7 @@ Summary:        SLURM auth NULL implementation (no authentication)
 Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
 %{?upgrade:Provides: %{pname}-auth-none = %{version}}
+%{?upgrade:Obsoletes: %{pname}-auth-none < %{version}}
 %{?upgrade:Conflicts: %{pname}-auth-none}
 
 %description auth-none
@@ -357,6 +339,7 @@ BuildRequires:  munge-devel
 Obsoletes:      %{name}-auth-munge < %{version}
 Provides:       %{name}-auth-munge = %{version}
 %{?upgrade:Provides: %{pname}-munge = %{version}}
+%{?upgrade:Obsoletes: %{pname}-munge < %{version}}
 %{?upgrade:Conflicts: %{pname}-munge}
 
 %description munge
@@ -366,6 +349,7 @@ This package contains the SLURM authentication module for Chris Dunlap's Munge.
 Summary:        SLURM graphical interface
 Group:          Productivity/Clustering/Computing
 %{?upgrade:Provides: %{pname}-sview = %{version}}
+%{?upgrade:Obsoletes: %{pname}-sview < %{version}}
 %{?upgrade:Conflicts: %{pname}-sview}
 
 %description sview
@@ -386,15 +370,12 @@ Recommends:     (%{name}-munge = %version if munge)
 %else
 Recommends:     %{name}-munge = %version
 %endif
-%if 0%{?with_systemd}
 %{?systemd_ordering}
-%else
-Requires(post): %insserv_prereq %fillup_prereq
-%endif
 Obsoletes:      slurm-sched-wiki < %{version}
 Obsoletes:      slurmdb-direct < %{version}
 %{?upgrade:Provides: %{pname}-slurmdbd = %{version}}
-%{?upgrade:Conflicts: %{pname}-slurmdb}
+%{?upgrade:Obsoletes: %{pname}-slurmdbd < %{version}}
+%{?upgrade:Conflicts: %{pname}-slurmdbd}
 
 %description slurmdbd
 The SLURM database daemon provides accounting of jobs in a database.
@@ -403,6 +384,7 @@ The SLURM database daemon provides accounting of jobs in a database.
 Summary:        Slurm SQL support
 Group:          Productivity/Clustering/Computing
 %{?upgrade:Provides: %{pname}-sql = %{version}}
+%{?upgrade:Obsoletes: %{pname}-sql < %{version}}
 %{?upgrade:Conflicts: %{pname}-sql}
 
 %description sql
@@ -412,6 +394,7 @@ Contains interfaces to MySQL for use by SLURM.
 Summary:        SLURM plugins (loadable shared objects)
 Group:          Productivity/Clustering/Computing
 %{?upgrade:Provides: %{pname}-plugins = %{version}}
+%{?upgrade:Obsoletes: %{pname}-plugins < %{version}}
 %{?upgrade:Conflicts: %{pname}-plugins}
 %if %{with pmix}
 Requires:       libpmix%{pmix_so}
@@ -424,10 +407,12 @@ This package contains the SLURM plugins (loadable shared objects)
 %package plugin-ext-sensors-rrd
 Summary:        SLURM ext_sensors/rrd Plugin (loadable shared objects)
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Provides: %{pname}-plugin-ext-sensors-rrd = %{version}}
-%{?upgrade:Conflicts: %{pname}-plugin-ext-sensors-rrd}
-Conflicts:      %{pname}-plugins < %version
 Requires:       %{name}-plugins = %{version}
+%{?upgrade:Provides: %{pname}-plugin-ext-sensors-rrd = %{version}}
+%{?upgrade:Obsoletes: %{pname}-plugin-ext-sensors-rrd < %{version}}
+%{?upgrade:Conflicts: %{pname}-plugin-ext-sensors-rrd}
+# file was moved from slurm-plugins to here
+Conflicts:      %{pname}-plugins < %{version}
 
 %description plugin-ext-sensors-rrd
 This package contains the ext_sensors/rrd plugin used to read data
@@ -441,6 +426,7 @@ Requires:       perl-%{name} = %{version}
 Requires:       perl-Switch
 Provides:       torque-client
 %{?upgrade:Provides: %{pname}-torque = %{version}}
+%{?upgrade:Obsoletes: %{pname}-torque < %{version}}
 %{?upgrade:Conflicts: %{pname}-torque}
 
 %description torque
@@ -451,6 +437,7 @@ Summary:        Wrappers for transitition from OpenLava/LSF to Slurm
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 %{?upgrade:Provides: %{pname}-openlava = %{version}}
+%{?upgrade:Obsoletes: %{pname}-openlava < %{version}}
 %{?upgrade:Conflicts: %{pname}-openlava}
 
 %description openlava
@@ -461,6 +448,7 @@ Summary:        Mail tool that includes job statistics in user notification emai
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 %{?upgrade:Provides: %{pname}-seff = %{version}}
+%{?upgrade:Obsoletes: %{pname}-seff < %{version}}
 %{?upgrade:Conflicts: %{pname}-seff}
 
 %description seff
@@ -473,6 +461,7 @@ Summary:        Perl tool to print SLURM job state information
 Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
 %{?upgrade:Provides: %{pname}-sjstat = %{version}}
+%{?upgrade:Obsoletes: %{pname}-sjstat < %{version}}
 %{?upgrade:Conflicts: %{pname}-sjstat}
 %if 0%{?suse_version} < 1140
 Requires:       perl = %{perl_version}
@@ -488,6 +477,7 @@ Summary:        PAM module for restricting access to compute nodes via SLURM
 Group:          Productivity/Clustering/Computing
 Requires:       %{name}-node = %{version}
 %{?upgrade:Provides: %{pname}-pam_slurm = %{version}}
+%{?upgrade:Obsoletes: %{pname}-pam_slurm < %{version}}
 %{?upgrade:Conflicts: %{pname}-pam_slurm}
 BuildRequires:  pam-devel
 
@@ -502,6 +492,7 @@ Summary:        Lua API for SLURM
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 %{?upgrade:Provides: %{pname}-lua = %{version}}
+%{?upgrade:Obsoletes: %{pname}-lua < %{version}}
 %{?upgrade:Conflicts: %{pname}-lua}
 BuildRequires:  lua-devel
 
@@ -522,6 +513,7 @@ Recommends:     (%{name}-munge = %version if munge)
 Recommends:     %{name}-munge = %version
 %endif
 %{?upgrade:Provides: %{pname}-rest = %{version}}
+%{?upgrade:Obsoletes: %{pname}-rest < %{version}}
 %{?upgrade:Conflicts: %{pname}-rest}
 
 %description rest
@@ -538,12 +530,9 @@ Recommends:     (%{name}-munge = %version if munge)
 Recommends:     %{name}-munge = %version
 %endif
 %{?with_pmix:Recommends:     pmix-devel}
-%if 0%{?with_systemd}
 %{?systemd_ordering}
-%else
-Requires(post): %insserv_prereq %fillup_prereq
-%endif
 %{?upgrade:Provides: %{pname}-node = %{version}}
+%{?upgrade:Obsoletes: %{pname}-node < %{version}}
 %{?upgrade:Conflicts: %{pname}-node}
 
 %description node
@@ -559,10 +548,9 @@ Requires(pre):  pwdutils
 %else
 Requires(pre):  shadow
 %endif
-%if 0%{?with_systemd}
 %{?systemd_ordering}
-%endif
 %{?upgrade:Provides: %{pname}-config = %{version}}
+%{?upgrade:Obsoletes: %{pname}-config < %{version}}
 %{?upgrade:Conflicts: %{pname}-config}
 
 %description config
@@ -574,6 +562,7 @@ Summary:        Config files and directories for slurm services
 Group:          Documentation/Man
 BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-config-man = %{version}}
+%{?upgrade:Obsoletes: %{pname}-config-man < %{version}}
 %{?upgrade:Conflicts: %{pname}-config-man}
 
 %description config-man
@@ -582,6 +571,7 @@ Man pages for the SLURM cluster managment software config files.
 %package hdf5
 Summary:        Store accounting data in hdf5
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Conflicts:      %{pname}-hdf5}
 %{?upgrade:Obsoletes:      %{pname}-hdf5 < %{version}}
 %{?upgrade:Provides:       %{pname}-hdf5 = %{version}}
 Requires:       %{name}-plugins = %version
@@ -594,6 +584,7 @@ sh5utils to merge this hdf5 files or extract data from them.
 %package cray
 Summary:        Cray specific plugins
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Conflicts:      %{pname}-cray}
 %{?upgrade:Obsoletes:      %{pname}-cray < %{version}}
 %{?upgrade:Provides:       %{pname}-cray = %{version}}
 
@@ -607,6 +598,7 @@ Contains also cray specific documentation.
 %package testsuite
 Summary:        Regression tests from Slurm sources
 Group:          Productivity/Clustering/Computing
+%{?upgrade:Conflicts:      %{pname}-testsuite}
 %{?upgrade:Obsoletes:      %{pname}-testsuite < %{version}}
 %{?upgrade:Provides:       %{pname}-testsuite = %{version}}
 Requires:       %{name} = %version
@@ -694,8 +686,7 @@ autoreconf
 %{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
-%{!?have_lz4:--without-lz4} \
-%{!?have_json_c:--without-json}
+%{!?have_lz4:--without-lz4}
 
 make %{?_smp_mflags}
 
@@ -704,7 +695,6 @@ make %{?_smp_mflags}
 %make_install
 make install-contrib DESTDIR=%{buildroot} PERL_MM_PARAMS="INSTALLDIRS=vendor"
 
-%if 0%{?with_systemd}
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m644 etc/slurmd.service etc/slurmdbd.service etc/slurmctld.service %{buildroot}%{_unitdir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmd
@@ -716,12 +706,6 @@ cat <<-EOF > %{buildroot}/%{_tmpfilesdir}/%{pname}.conf
 	d %{_rundir}/slurm 0700 slurm slurm
 EOF
 chmod 0644 %{buildroot}/%{_tmpfilesdir}/%{pname}.conf
-%else
-install -D -m755 etc/init.d.slurm    %{buildroot}%{_initrddir}/slurm
-install -D -m755 etc/init.d.slurmdbd %{buildroot}%{_initrddir}/slurmdbd
-ln -sf %{_initrddir}/slurm %{buildroot}%{_sbindir}/rcslurm
-ln -sf %{_initrddir}/slurmdbd %{buildroot}%{_sbindir}/rcslurmdbd
-%endif
 mkdir -p %{buildroot}%{_localstatedir}/spool/slurm
 
 install -D -m644 etc/cgroup.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/cgroup.conf
@@ -773,7 +757,6 @@ sed -i -e "s@PidFile=.*@PidFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
  %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
 # manage local state dir and a remote states save location
 mkdir -p %{buildroot}/%_localstatedir/lib/slurm
-%if 0%{?with_systemd}
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmctld.pid@" \
  -e "s@After=.*@After=network.target munge.service remote-fs.target@" \
  %{buildroot}/%{_unitdir}/slurmctld.service
@@ -787,7 +770,6 @@ sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
 echo "u %slurm_u %{slurm_uid} \"%slurmdescr\" %{slurmdir} ${BASH_BIN}" > system-user-%{pname}.conf
 %sysusers_generate_pre system-user-%{pname}.conf %{pname} system-user-%{pname}.conf
 install -D -m 644 system-user-%{pname}.conf %{buildroot}%{_sysusersdir}/system-user-%{pname}.conf
-%endif
 %endif
 
 # Delete static files:
@@ -982,84 +964,44 @@ rm -f %{buildroot}%{_libdir}/slurm/rest_auth_*.so
 %endif
 
 %pre
-%if 0%{?with_systemd}
 %service_add_pre slurmctld.service
-%endif
 
 %post
-%if 0%{?with_systemd}
 %service_add_post slurmctld.service
-%else
-%fillup_and_insserv slurm
-%endif
 
 %preun
-%if 0%{?with_systemd}
 %service_del_preun slurmctld.service
-%endif
 
 %postun
-%if 0%{?with_systemd}
 %service_del_postun_without_restart slurmctld.service
-%else
-%insserv_cleanup
-%endif
 
-%if 0%{?with_systemd}
 %pre slurmdbd
 %service_add_pre slurmdbd.service
-%endif
 
 %post slurmdbd
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
-%if 0%{?with_systemd}
 %service_add_post slurmdbd.service
-%else
-%fillup_and_insserv slurmdbd
-%endif
 
 %preun slurmdbd
-%if 0%{?with_systemd}
 %service_del_preun slurmdbd.service
-%else
-%stop_on_removal slurmdbd
-%endif
 
 %postun slurmdbd
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
-%if 0%{?with_systemd}
 %service_del_postun_without_restart slurmdbd.service
-%else
-%restart_on_update slurmdbd
-%insserv_cleanup
-%endif
 
 %pre node
-%if 0%{?with_systemd}
 %service_add_pre slurmd.service
-%endif
 
 %post node
-%if 0%{?with_systemd}
 %service_add_post slurmd.service
-%endif
 
 %preun node
-%if 0%{?with_systemd}
 %service_del_preun slurmd.service
-%else
-%stop_on_removal slurmd
-%endif
 
 %postun node
-%if 0%{?with_systemd}
 %service_del_postun_without_restart slurmd.service
-%else
-%restart_on_update slurmd
-%insserv_cleanup
-%endif
 
 %pre config %{?have_sysuser:-f %{pname}.pre}
 %if 0%{!?have_sysuser:1}
@@ -1070,12 +1012,10 @@ exit 0
 %endif
 
 %post config
-%if 0%{?with_systemd}
 %if 0%{?tmpfiles_create:1}
   %tmpfiles_create slurm.conf
 %else
   systemd-tmpfiles --create slurm.conf
-%endif
 %endif
 
 %post -n %{libslurm} -p /sbin/ldconfig
@@ -1104,7 +1044,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 # They should be removed at some point.
 # Do pretrans in lua: https://fedoraproject.org/wiki/Packaging:Scriptlets
 }
-%define _test_rest() %{?with_systemd: os.remove("/run/%{1}.rst")
+%define _test_rest() %{?nil:os.remove("/run/%{1}.rst")
  if os.execute() and os.getenv("YAST_IS_RUNNING") ~= "instsys" then
   local handle = io.popen("systemctl is-active %{1} 2>&1")
   local str = handle:read("*a"); handle:close()
@@ -1116,15 +1056,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
   end
  end
 }
-%define _rest() %{?with_systemd:[ -e /run/%{1}.rst ] && { systemctl status %{1} &>/dev/null || systemctl restart %{1}; }; rm -f /run/%{1}.rst;}
-%{!?nil:
-# Until a posttrans macro has been added to macros.systemd, we need this
-# Do NOT delete the line breaks in the macro definition: they help
-# to cope with different versions of the %%_restart_on_update.
-}
-%define _res_update() %{?with_systemd:
- %{expand:%%_restart_on_update %{?*}}
-}
+
+%define _rest() [ -e /run/%{1}.rst ] && { systemctl status %{1} &>/dev/null || systemctl restart %{1}; }; rm -f /run/%{1}.rst;
 
 %pretrans -p <lua>
 %_test_rest slurmctld
@@ -1136,15 +1069,18 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %_test_rest slurmdbd
 
 %posttrans
-%_res_update slurmctld
+%_restart_on_update slurmctld
+%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
 %_rest slurmctld
 
 %posttrans node
-%_res_update slurmd
+%_restart_on_update slurmd
+%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
 %_rest slurmd
 
 %posttrans slurmdbd
-%_res_update slurmdbd.service
+%_restart_on_update slurmdbd
+%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
 %_rest slurmdbd
 
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
@@ -1154,7 +1090,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %endif
 
 %files
-%{?comp_at}
 %doc AUTHORS NEWS RELEASE_NOTES DISCLAIMER
 %my_license COPYING
 %{_bindir}/sacct
@@ -1180,10 +1115,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_sbindir}/slurmctld
 %{_sbindir}/slurmsmwd
 %dir %{_libdir}/slurm/src
-%if 0%{?with_systemd}
 %{_unitdir}/slurmctld.service
 %{_sbindir}/rcslurmctld
-%endif
 %{_mandir}/man1/sacct.1*
 %{_mandir}/man1/sacctmgr.1*
 %{_mandir}/man1/salloc.1*
@@ -1209,65 +1142,52 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man8/spank*
 
 %files openlava
-%{?comp_at}
 %{_bindir}/bjobs
 %{_bindir}/bkill
 %{_bindir}/bsub
 %{_bindir}/lsid
 
 %files seff
-%{?comp_at}
 %{_bindir}/seff
 %{_bindir}/smail
 
 %files doc
-%{?comp_at}
 %dir %{_datadir}/doc/%{pname}-%{version}%{?rc_v:-%rc_v}
 %{_datadir}/doc/%{pname}-%{version}%{?rc_v:-%rc_v}/*
 
 %files webdoc
-%{?comp_at}
 %config %{apache_sysconfdir}/conf.d/slurm.conf
 
 %files -n %{libslurm}
-%{?comp_at}
 %{_libdir}/libslurm*.so.%{so_version}*
 
 %files -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
-%{?comp_at}
 %{_libdir}/libpmi*.so.%{pmi_so}*
 
 %files -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
-%{?comp_at}
 %config(noreplace) %{_sysconfdir}/%{pname}/nss_slurm.conf
 %{_libdir}/libnss_slurm.so.%{nss_so}
 
 %files devel
-%{?comp_at}
 %{_prefix}/include/slurm
 %{_libdir}/libpmi.so
 %{_libdir}/libpmi2.so
 %{_libdir}/libslurm.so
 %{_libdir}/slurm/src/*
-#%{_mandir}/man3/slurm_*
 %{_libdir}/pkgconfig/slurm.pc
 
 %files sview
-%{?comp_at}
 %{_bindir}/sview
 %{_mandir}/man1/sview.1*
 
 %files auth-none
-%{?comp_at}
 %{_libdir}/slurm/auth_none.so
 
 %files munge
-%{?comp_at}
 %{_libdir}/slurm/auth_munge.so
 %{_libdir}/slurm/cred_munge.so
 
 %files -n perl-%{name}
-%{?comp_at}
 %{perl_vendorarch}/Slurm.pm
 %{perl_vendorarch}/Slurm
 %{perl_vendorarch}/auto/Slurm
@@ -1276,26 +1196,19 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man3/Slurm*.3pm.*
 
 %files slurmdbd
-%{?comp_at}
 %{_sbindir}/slurmdbd
 %{_mandir}/man5/slurmdbd.*
 %{_mandir}/man8/slurmdbd.*
 %config(noreplace) %attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf
-%if 0%{?with_systemd}
 %{_unitdir}/slurmdbd.service
-%else
-%{_initrddir}/slurmdbd
-%endif
 %{_sbindir}/rcslurmdbd
 
 %files sql
-%{?comp_at}
 %dir %{_libdir}/slurm
 %{_libdir}/slurm/accounting_storage_mysql.so
 %{_libdir}/slurm/jobcomp_mysql.so
 
 %files plugins
-%{?comp_at}
 %config %{_sysconfdir}/ld.so.conf.d/slurm.conf
 %config(noreplace) %{_sysconfdir}/%{pname}/plugstack.conf
 %dir %{_sysconfdir}/%{pname}/plugstack.conf.d
@@ -1314,7 +1227,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_interconnect_none.so
 %{_libdir}/slurm/acct_gather_profile_none.so
 %{_libdir}/slurm/burst_buffer_lua.so
-%{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
+%{_libdir}/slurm/burst_buffer_datawarp.so
 %{_libdir}/slurm/data_parser_v0_0_39.so
 %{_libdir}/slurm/cgroup_v1.so
 %if 0%{?suse_version} >= 1500
@@ -1407,11 +1320,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/ext_sensors_rrd.so
 
 %files lua
-%{?comp_at}
 %{_libdir}/slurm/job_submit_lua.so
 
 %files torque
-%{?comp_at}
 %{_bindir}/pbsnodes
 %{_bindir}/qalter
 %{_bindir}/qdel
@@ -1426,18 +1337,15 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/spank_pbs.so
 
 %files sjstat
-%{?comp_at}
 %{_bindir}/sjstat
 
 %files pam_slurm
-%{?comp_at}
 %doc ../README.pam_slurm ../README.pam_slurm_adopt
 %{_pam_moduledir}/pam_slurm.so
 %{_pam_moduledir}/pam_slurm_adopt.so
 
 %if 0%{?build_slurmrestd}
 %files rest
-%{?comp_at}
 %{_sbindir}/slurmrestd
 %{_mandir}/man8/slurmrestd.*
 %{_libdir}/slurm/openapi_dbv0_0_39.so
@@ -1446,12 +1354,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/openapi_v0_0_38.so
 %{_libdir}/slurm/openapi_dbv0_0_37.so
 %{_libdir}/slurm/openapi_v0_0_37.so
-#%{_libdir}/slurm/rest_auth_jwt.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 
 %files node
-%{?comp_at}
 %{_sbindir}/slurmd
 %{_sbindir}/slurmstepd
 # bsc#1153095
@@ -1461,22 +1367,16 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man1/scrun.1*
 %{_mandir}/man8/slurmd.*
 %{_mandir}/man8/slurmstepd*
-%if 0%{?with_systemd}
 %{_sbindir}/rcslurmd
 %{_unitdir}/slurmd.service
-%else
-%{_initrddir}/slurm
-%{_sbindir}/rcslurm
-%endif
 
 %files config
-%{?comp_at}
 %dir %{_sysconfdir}/%{pname}
 %config(noreplace) %{_sysconfdir}/%{pname}/slurm.conf
 %config %{_sysconfdir}/%{pname}/slurm.conf.example
 %config(noreplace) %{_sysconfdir}/%{pname}/cgroup.conf
 %attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm
-%{?with_systemd:%{_tmpfilesdir}/%{pname}.conf}
+%{_tmpfilesdir}/%{pname}.conf
 %{?_rundir:%ghost %{_rundir}/slurm}
 %dir %attr(0755, %slurm_u, %slurm_g)%{_localstatedir}/spool/slurm
 %config(noreplace) %{_sysconfdir}/logrotate.d/slurm*
@@ -1488,7 +1388,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{?have_sysuser:%{_sysusersdir}/system-user-%{pname}.conf}
 
 %files config-man
-%{?comp_at}
 %{_mandir}/man5/acct_gather.conf.*
 %{_mandir}/man5/burst_buffer.conf.*
 %{_mandir}/man5/ext_sensors.conf.*
@@ -1511,7 +1410,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %endif
 
 %files cray
-%{?comp_at}
 # do not remove cray sepcific packages from SLES update
 # Only for Cray
 %{_libdir}/slurm/core_spec_cray_aries.so
@@ -1521,10 +1419,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/task_cray_aries.so
 %{_libdir}/slurm/proctrack_cray_aries.so
 %{_libdir}/slurm/mpi_cray_shasta.so
-%if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
 %{_libdir}/slurm/power_cray_aries.so
-%endif
 
 %if 0%{?slurm_testsuite}
 %files testsuite

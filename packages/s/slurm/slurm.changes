@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  7 15:18:05 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Stop pulling firewall rules from github. There is no benefit to
+  host these separately.
+- Remove pre-sle12 pieces.
+
+-------------------------------------------------------------------
 Wed Mar  1 17:18:41 UTC 2023 - Egbert Eich <eich@suse.com>
 
-- Add missing Provides: and Obsoletes: to slurm-cray, slurm-hdf5
-  and slurm-testsuite to avoid package conflicts.
+- Add missing Provides:, Conflicts: and Obsoletes: to slurm-cray,
+  slurm-hdf5 and slurm-testsuite to avoid package conflicts.
+- Unify Obsoletes:.
+- Consolidate spec files between different Slurm releases in
+  Leap/SLE maintenance.
 - Add dependency for the general plugin package to the
   AcctGatherProfile HDF5 plugin.
 - Adjust node RealMemory in slurm.conf of test suite for 8G test
