@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 15:46:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3 
+
+-------------------------------------------------------------------
 Wed Feb  1 09:37:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Drop libbaseencode dep, since it's no longer necessary and obsolete it

@@ -30,12 +30,14 @@ URL:            https://github.com/paolostivanin/%{name}
 Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{version}/v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 Obsoletes:      libbaseencode <= 1.0.15
+%{?suse_build_hwcaps_libs}
 
 %description
 %{name} C library for generating TOTP and HOTP according to RFC-6238.
