@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Mar 08 19:23:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.0:
+  * docs: fix create embed script for node/ts (#4730)
+  * docs: untrack guides.json (#4732)
+  * Raise error when using container has not been executed (#4716)
+  * fix grep -v in entrypoint causing early exit (#4733)
+  * docs: Fixed broken link to API concepts page (#4728)
+  * docs: Added multi-language snippets and text for Gitlab +
+    Google Cloud guide (#4688)
+  * Use singleton cache manager for experimental s3 cache pooling.
+    (#4715)
+  * Support privileged executions. (#4677)
+  * fix mutating vertex with LogOutput set (#4695)
+  * docs: Converted snippets to embeds for API Concepts doc (#4687)
+  * Disable networking before spinning up engine in remotecache
+    test. (#4697)
+  * Disable CNI for remotecache tests to address flake. (#4696)
+  * add GitHub workflow/job name in labels (#4690)
+  * docs: Stderr() used in code instead of ExitCode() (#4534)
+  * add labels for github metadata from actions run (#4672)
+  * invert services feature flag (#4682)
+  * Note that tests should be run with ./hack/dev (#4681)
+  * Apply Dagger engine config defaults at runtime, configure MTU
+    that matches default interface (#4666)
+  * fix: check for file name length (#4654)
+  * Pipeline Labels (#4615)
+  * Flush engine logs on Go SDK client close (#4656)
+  * better resolv.conf/dnsmasq setup (#4658)
+  * docs: Added guide metadata, updated links and paths (#4598)
+  * docs: Fixed quickstart code snippets (#4655)
+  * Make services feature opt-in (#4657)
+  * fix: contents was not assigned in go_sdk tests (#4650)
+  * bump golangci-lint, fix lints (#4649)
+  * docs: add new layout to quickstart (#4537)
+
+-------------------------------------------------------------------
 Sat Feb 25 08:31:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.13:
