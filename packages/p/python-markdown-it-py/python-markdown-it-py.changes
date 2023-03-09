@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  6 13:33:26 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 2.2.0:
+ - What's Changed:
+  - UPGRADE: Allow linkify-it-py v2
+  - FIX: CVE-2023-26303, fix boo#1208974
+  - FIX: CLI crash on non-utf8 character
+  - DOCS: Add section about markdown renderer
+  - Update benchmark pkg versions
+
+-------------------------------------------------------------------
 Mon Sep  5 08:05:47 UTC 2022 - Elisei Roca <eroca@mailbox.org>
 
 - Cleanup requirements, tests, files section and comments 
