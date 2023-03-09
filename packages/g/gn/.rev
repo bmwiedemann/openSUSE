@@ -133,4 +133,12 @@
     <comment>leap</comment>
     <requestid>935807</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a5eeecf9196cd98c8e6d0a6a595875c4</srcmd5>
+    <version>0.20210811</version>
+    <time>1678380427</time>
+    <user>dimstar_suse</user>
+    <comment>gcc + exclude ppc</comment>
+    <requestid>1070457</requestid>
+  </revision>
 </revisionlist>

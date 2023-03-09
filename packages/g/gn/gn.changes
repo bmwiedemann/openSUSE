@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  9 15:43:20 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Bump Leap's GCC version to 12 to align with the other Chromium
+  tools
+- Exclude ppc - it doesn't build
+
+-------------------------------------------------------------------
 Sun Dec  5 15:41:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add deprecated_copy.patch: fix deprecated copy GCC warnings

@@ -23,8 +23,9 @@ License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         deprecated_copy.patch
+ExcludeArch:    ppc
 %if %{?suse_version} < 1550
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -40,7 +41,7 @@ GN is a meta-build system that generates build files for Ninja.
 %build
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
 %if 0%{?suse_version} < 1550
-export CXX=g++-10
+export CXX=g++-12
 %else
 export CXX=g++
 %endif
