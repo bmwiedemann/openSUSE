@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  9 06:49:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.0:
+  * Option -e to keep the switcher.
+  * Document usage on mobile devices.
+  * Configurable bordercolor.
+  * Build scripts for OpenBSD.
+  * Fix xpm icon bug.
+  * Feature: kill window by pressing 'k'.
+  * Feature: line at the bottom of tile.
+  * Show windows on scratchpad only: -d 4
+  * Disable icons: -s 4
+  * Prevent segfault on zero size tile or icon.
+
+-------------------------------------------------------------------
 Mon Dec  6 10:47:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.1:

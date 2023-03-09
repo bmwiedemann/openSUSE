@@ -61,4 +61,22 @@
   * Extra border around the alttab window.</comment>
     <requestid>935977</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>892362621672ce5028f07d6c71914a9b</srcmd5>
+    <version>1.7.0</version>
+    <time>1678380391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Option -e to keep the switcher.
+  * Document usage on mobile devices.
+  * Configurable bordercolor.
+  * Build scripts for OpenBSD.
+  * Fix xpm icon bug.
+  * Feature: kill window by pressing 'k'.
+  * Feature: line at the bottom of tile.
+  * Show windows on scratchpad only: -d 4
+  * Disable icons: -s 4
+  * Prevent segfault on zero size tile or icon.</comment>
+    <requestid>1070336</requestid>
+  </revision>
 </revisionlist>
