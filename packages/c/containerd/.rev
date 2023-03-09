@@ -435,4 +435,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1041295</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>3392cd21a5a006d72e06c427fce2f980</srcmd5>
+    <version>1.6.12</version>
+    <time>1678380276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070064</requestid>
+  </revision>
 </revisionlist>
