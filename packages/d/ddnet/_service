@@ -1,5 +1,5 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">ddnet-16.7.2</param>
+    <param name="srcdir">ddnet-16.8</param>
   </service>
 </services>

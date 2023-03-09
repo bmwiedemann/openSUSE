@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        16.7.2
+Version:        16.8
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -26,7 +26,6 @@ URL:            https://ddnet.org/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  appstream-glib
 BuildRequires:  cargo

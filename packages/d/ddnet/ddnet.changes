@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar  7 20:46:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 16.8:
+  * [Client] Add skin to serverbrowser's scoreboard
+  * [Client] Add ingame and browser buttons to copy server info
+    to clipboard
+  * [Client] Better lists with smooth scrolling
+    (ui_smooth_scroll_time)
+  * [Client+Server] Implement FIFO on Windows using Named Pipes
+  * [Client] Add tooltip to demo seekbar showing the currently
+    hovered time
+  * [Client] Fix client crash when echoing client message to chat,
+    use em dash for client messages in chat
+  * [Client] Make color pickers not change selected color as much
+  * [Client] Support 4 and 8 digit RGBA color values in console
+  * [Client] Merge entity textures to reduce memory usage
+  * [Client] Increase relative joystick movement based on input
+    update time, disable relative joystick when console is open
+    or window not focused
+  * [Client] For integrated and discrete GPUs always prefer what
+    comes first in the list
+  * [Client] Show error message when downloaded map cannot be saved
+  * [Client] Add error message when saving screenshot fails
+  * [Client] Save prediction margin
+  * [Client] Fix text rendering over maximum line width with newline
+  * [Client] Align color picker buttons on right side
+  * [Editor] Support longer file/folder names
+  * [Editor] Clear file browser search term when entering folder
+  * [Editor] Add buttons to move envelopes left and right,
+    improve envelope UI layout, add tooltips for editboxes
+  * [Editor] Add a refresh button to the file browser
+  * [Server] Add reset command to server
+  * [Server] Fix sv_vanilla_antispoof for vanilla 0.6.5 clients
+  * [Server] Remove projectiles on save and load
+  * [Server] Remove projectiles on team change
+  * [Server] Hand the client IP addresses to the antibot module
+  * [Server] Fix announcement feature
+  * [Server] Don't count (connecting) players for voting
+  * [Server] Fix crash in team save/load
+
+-------------------------------------------------------------------
 Mon Feb  6 18:43:49 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 16.7.2:
