@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-connector-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
