@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 12:09:38 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Sat Feb 25 10:48:18 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add 32bit devel package for Wine development.

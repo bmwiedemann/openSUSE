@@ -89,4 +89,12 @@
     <comment></comment>
     <requestid>1067977</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3164248e5f4bb89a6291a20f41886957</srcmd5>
+    <version>1.0.9</version>
+    <time>1678380294</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070173 from pluskalm)</comment>
+    <requestid>1070177</requestid>
+  </revision>
 </revisionlist>

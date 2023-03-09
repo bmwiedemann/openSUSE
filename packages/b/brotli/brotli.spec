@@ -32,6 +32,7 @@ BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  gzip
 BuildRequires:  pkg-config
+%{?suse_build_hwcaps_libs}
 
 %description
 This package contains the brotli command line utility to compress and
