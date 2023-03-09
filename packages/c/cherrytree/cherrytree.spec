@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        0.99.54+1
+Version:        0.99.55
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only

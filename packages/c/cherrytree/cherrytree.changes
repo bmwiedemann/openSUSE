@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 08 14:19:07 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.55:
+  + Unit tested code to convert lists to HTML.
+  + Fixed list element on more lines conversion into real html,
+    (gh#giuspen/cherrytree#1765).
+  + Implemented conversion of multi level lists into real html
+    unordered and ordered lists, (gh#giuspen/cherrytree#1765).
+  + Added support for executing c-sharp code,
+    (gh#giuspen/cherrytree#2234).
+  + Codebox actions: keyboard shortcuts now configurable in
+    preferences dialog and available in toolbar configurability.
+  + Added missing dependences to Dockerfile for dev container,
+    added ms cpp extension pack, (gh#giuspen/cherrytree#2231).
+  + Table actions: keyboard shortcuts now configurable in
+    preferences dialog and available in toolbar configurability,
+    (gh#giuspen/cherrytree#2124, gh#giuspen/cherrytree#2195 and
+    gh#giuspen/cherrytree#2219).
+  + Removed leftover line no longer needed after latest commit
+    about new pdf page bottom numbering.
+  + Fixed issue with latest version of cairo in msys2 and pdf
+    pages numbering no longer rendered correctly.
+  + Recently added autosave options in file save storage not to be
+    shown in case of export.
+  + Fixed export to pdf crash, (gh#giuspen/cherrytree#2227).
+  + Fixed issue with font family name getting multiplied while
+    zooming.
+  + Fixed autosave in case the document was never saved before, to
+    prompt the user for a storage type/path,
+    (gh#giuspen/cherrytree#2225).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb 01 02:11:14 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.54+1:
