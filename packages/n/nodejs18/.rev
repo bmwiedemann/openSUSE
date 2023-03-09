@@ -206,4 +206,18 @@ flaky_test_rerun.patch nodejs-libpath.patch  sle12_python3_compat.patch</comment
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068665</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>db3e065ee6be4695f57cf06911364085</srcmd5>
+    <version>18.15.0</version>
+    <time>1678380296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to NodeJS 18.15.0 LTS version:
+  * test_runner:
+    + add initial code coverate support
+    + add reporters
+  * fs: add statfs()
+  * buffer: add isAscii()
+- s390.patch, sysctl.patch: upstreamed and removed</comment>
+    <requestid>1070188</requestid>
+  </revision>
 </revisionlist>

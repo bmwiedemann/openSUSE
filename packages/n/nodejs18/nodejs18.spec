@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs18
-Version:        18.14.2
+Version:        18.15.0
 Release:        0
 
 # Double DWZ memory limits
@@ -171,8 +171,6 @@ Patch133:       rsa-pss-revert.patch
 Patch200:       versioned.patch
 
 Patch305:       qemu_timeouts_arches.patch
-Patch307:       s390.patch
-Patch309:       sysctl.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -365,7 +363,7 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.14
+Provides:       bundled(uvwasi) = 0.0.15
 Provides:       bundled(libuv) = 1.44.2
 Provides:       bundled(v8) = 10.2.154.26
 %if %{with intree_brotli}
@@ -382,7 +380,7 @@ Provides:       bundled(simdutf) = 3.1.0
 # bundled url-ada parser, not ada
 
 
-Provides:       bundled(node-acorn) = 8.8.1
+Provides:       bundled(node-acorn) = 8.8.2
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
@@ -708,8 +706,6 @@ popd
 %patch200 -p1
 
 %patch305 -p1
-%patch307 -p1
-%patch309 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
