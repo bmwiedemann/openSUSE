@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  9 12:25:49 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.0.4.2
+  * rack.input is now optional, and if missing, will raise an error. 
+    Use this to fail on multipart parsing a request without an input body.
+    (#2018, @ioquatix)
+  * Introduce module Rack::BadRequest which is included in multipart and
+    query parser errors. (#2019, @ioquatix)
+  * MIME type for JavaScript files (.js) changed from application/javascript
+    to text/javascript (1bd0f15)
+  * fixes CVE-2023-27530 [bsc#1209095]
+
+-------------------------------------------------------------------
 Fri Jan 20 13:25:39 UTC 2023 - Hendrik Vogelsang <hvogel@suse.com>
 
 updated to version 3.0.4.1

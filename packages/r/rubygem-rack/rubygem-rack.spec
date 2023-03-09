@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack
-Version:        3.0.4.1
+Version:        3.0.4.2
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
