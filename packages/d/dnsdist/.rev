@@ -7,4 +7,15 @@
     <comment>dnsdist for Factory</comment>
     <requestid>1067916</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25044b978b50537a9e31f802c1d59674</srcmd5>
+    <version>1.8.0~rc2</version>
+    <time>1678380414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0~rc2
+  https://dnsdist.org/changelog.html#change-1.8.0-rc2
+- no_doh_protobuf.patch, f44a8a8f19aff191fb1dc0631e37ec30ff087c25.patch
+  upstreamed and removed</comment>
+    <requestid>1070406</requestid>
+  </revision>
 </revisionlist>

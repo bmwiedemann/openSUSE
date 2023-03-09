@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  9 11:33:45 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.8.0~rc2
+
+- update to 1.8.0~rc2
+  https://dnsdist.org/changelog.html#change-1.8.0-rc2
+- no_doh_protobuf.patch, f44a8a8f19aff191fb1dc0631e37ec30ff087c25.patch
+  upstreamed and removed
+
+-------------------------------------------------------------------
 Mon Feb 27 09:20:22 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.8.0~rc1

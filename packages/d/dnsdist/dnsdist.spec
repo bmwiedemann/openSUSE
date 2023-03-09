@@ -34,10 +34,10 @@
 %bcond_with     dnsdist_re2
 %endif
 
-%define file_version 1.8.0-rc1
+%define file_version 1.8.0-rc2
 
 Name:           dnsdist
-Version:        1.8.0~rc1
+Version:        1.8.0~rc2
 Release:        0
 License:        GPL-2.0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
@@ -50,8 +50,6 @@ Source10:       dnsdist.user
 Source11:       dnsdist.lua
 Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
-Patch1:         no_doh_protobuf.patch
-Patch2:         f44a8a8f19aff191fb1dc0631e37ec30ff087c25.patch
 %if %{with apparmor}
 BuildRequires:  apparmor-profiles
 %endif
