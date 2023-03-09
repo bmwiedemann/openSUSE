@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 11 02:33:46 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1678302794.ef0676d:
+  * Explicitly specify backingfile format
+  * Fix flaky codecov coverage checks about t/data/tests
+  * Stream run_cmd output in generalhw backend
+  * Rename foo.pm and bar/baz.pm to more specific names
+  * testapi: Remove obsolete "do_wait" argument to "send_key"
+
+-------------------------------------------------------------------
 Wed Mar 08 09:23:18 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1678267388.ef1258a:
