@@ -1,7 +1,7 @@
 #
 # spec file for package openjpeg2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libzstd)
+%{?suse_build_hwcaps_libs}
 
 %description
 The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
@@ -85,8 +86,7 @@ The OpenJPEG library is an open-source JPEG 2000 codec written in C language.
 This package provides the API documentation for %{name}.
 
 %prep
-%setup -q -n openjpeg-%{version}
-%autopatch -p1
+%autosetup -n openjpeg-%{version} -p0
 
 # do not embed timestamps into html documentation
 sed -i 's|^HTML_TIMESTAMP[ =].*$|HTML_TIMESTAMP = NO|' doc/Doxyfile.dox.cmake.in
@@ -109,7 +109,7 @@ done
   -DOPENJPEG_INSTALL_LIB_DIR=%{_lib} \
   -DOPENJPEG_INSTALL_DOC_DIR=share/doc/packages/%{name}-devel-doc
 
-%make_build all doc
+%cmake_build all doc
 
 %install
 %cmake_install
