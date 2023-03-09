@@ -81,4 +81,13 @@
     <comment></comment>
     <requestid>1039668</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>152aa96517b9162c735fe785c30b0e65</srcmd5>
+    <version>3.8.0</version>
+    <time>1678380275</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare test environment: correctly provide jaraco modules locally
+  %{python3_sitelib} might not be available</comment>
+    <requestid>1069981</requestid>
+  </revision>
 </revisionlist>

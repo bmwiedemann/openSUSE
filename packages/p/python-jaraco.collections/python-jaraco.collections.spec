@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.collections
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,10 +55,11 @@ Models and classes to supplement the stdlib ‘collections’ module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-#  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
+# work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
+# prepare test environment: provide jaraco modules locally
 touch jaraco/__init__.py
-cp -r %{python3_sitelib}/jaraco/* jaraco/
-%{python_expand # workaround for gh#jaraco/jaraco.text#10 without pathlib2
+%{python_expand cp -vr %{$python_sitelib}/jaraco/* jaraco/
+# workaround for gh#jaraco/jaraco.text#10 without pathlib2
 if [ %{$python_version_nodots} -lt 310 ]; then
   $python_donttest="or read_newlines or report_newlines"
 fi

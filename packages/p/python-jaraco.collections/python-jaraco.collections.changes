@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  5 18:56:10 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- prepare test environment: correctly provide jaraco modules locally
+  %{python3_sitelib} might not be available
+
+-------------------------------------------------------------------
 Fri Dec  2 18:07:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.8.0 
