@@ -1,0 +1,60 @@
+From df0fe4fcc7d54a1a8801f74bfac430f9986f0722 Mon Sep 17 00:00:00 2001
+From: Ygal Blum <ygal.blum@gmail.com>
+Date: Wed, 22 Feb 2023 09:36:20 +0200
+Subject: [PATCH] Quadlet - use the default runtime
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Do not set the runtime when processing a .container file
+Let Podman choose the runtime based on its configuration
+
+Signed-off-by: Ygal Blum <ygal.blum@gmail.com>
+Signed-off-by: Dan Čermák <dcermak@suse.com>
+(cherry picked from commit 0d75854c52e646f4c83a7a4389d8c4aebbb7ee5c)
+---
+ pkg/systemd/quadlet/quadlet.go        | 6 ++----
+ test/e2e/quadlet/basepodman.container | 2 +-
+ test/e2e/quadlet/basic.container      | 1 -
+ 3 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/pkg/systemd/quadlet/quadlet.go b/pkg/systemd/quadlet/quadlet.go
+index 8724eb0e156..091fcb76d46 100644
+--- a/pkg/systemd/quadlet/quadlet.go
++++ b/pkg/systemd/quadlet/quadlet.go
+@@ -295,11 +295,9 @@ func ConvertContainer(container *parser.UnitFile, isUser bool) (*parser.UnitFile
+ 		"--log-driver", "passthrough",
+ 	)
+ 
+-	// We use crun as the runtime and delegated groups to it
++	// We delegate groups to the runtime
+ 	service.Add(ServiceGroup, "Delegate", "yes")
+-	podman.add(
+-		"--runtime", "/usr/bin/crun",
+-		"--cgroups=split")
++	podman.add("--cgroups=split")
+ 
+ 	timezone, ok := container.Lookup(ContainerGroup, KeyTimezone)
+ 	if ok && len(timezone) > 0 {
+diff --git a/test/e2e/quadlet/basepodman.container b/test/e2e/quadlet/basepodman.container
+index 91e12ceb9ca..1e2c34141ab 100644
+--- a/test/e2e/quadlet/basepodman.container
++++ b/test/e2e/quadlet/basepodman.container
+@@ -1,4 +1,4 @@
+-## assert-podman-final-args run --name=systemd-%N --cidfile=%t/%N.cid --replace --rm --log-driver passthrough --runtime /usr/bin/crun --cgroups=split --sdnotify=conmon  -d localhost/imagename
++## assert-podman-final-args run --name=systemd-%N --cidfile=%t/%N.cid --replace --rm --log-driver passthrough --cgroups=split --sdnotify=conmon  -d localhost/imagename
+ 
+ [Container]
+ Image=localhost/imagename
+diff --git a/test/e2e/quadlet/basic.container b/test/e2e/quadlet/basic.container
+index 794ded61e34..af2c325d593 100644
+--- a/test/e2e/quadlet/basic.container
++++ b/test/e2e/quadlet/basic.container
+@@ -5,7 +5,6 @@
+ ## assert-podman-args "--replace"
+ ## assert-podman-args "-d"
+ ## assert-podman-args "--log-driver" "passthrough"
+-## assert-podman-args "--runtime" "/usr/bin/crun"
+ ## assert-podman-args "--cgroups=split"
+ ## assert-podman-args "--sdnotify=conmon"
+ ## assert-key-is "Unit" "RequiresMountsFor" "%t/containers"

@@ -1,7 +1,7 @@
 #
 # spec file for package podman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.3.1
+Version:        4.4.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -27,10 +27,7 @@ URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source2:        README.SUSE.SLES
-# hotfix for https://github.com/containers/podman/issues/16765
-Patch0:         0001-Revert-Default-missing-hostPort-to-containerPort-is-.patch
-Patch1:         0002-Make-the-priority-for-picking-the-storage-driver-con.patch
-Patch2:         0003-Only-override-the-graphdriver-to-vfs-if-the-priority.patch
+Patch0:         https://github.com/containers/podman/pull/17641.patch#./Quadlet-use-the-default-runtime.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -46,7 +43,7 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.18
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
@@ -116,7 +113,7 @@ pages and %{name}.
 
 %build
 # Build podman
-BUILDFLAGS="-buildmode=pie" %make_build
+BUILDFLAGS="-buildmode=pie" PREFIX=%{_prefix} %make_build
 
 # Build manpages
 %make_build docs
@@ -126,7 +123,7 @@ BUILDFLAGS="-buildmode=pie" %make_build
 # Updates must be tested manually.
 
 %install
-%make_install PREFIX=/usr LIBEXECDIR=%{_libexecdir} install.completions install.docker
+%make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir} install.completions install.docker
 
 # remove the user tmpfile on SLE/Leap as it cannot handle them
 %if 0%{?suse_version} == 1500
@@ -153,6 +150,8 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_bindir}/podman
 # Manpages
 %{_mandir}/man1/podman*.1*
+%{_mandir}/man5/podman*.5*
+%{_mandir}/man5/quadlet*.5*
 %exclude %{_mandir}/man1/podman-remote*.1*
 # Configs
 %dir %{_prefix}/lib/modules-load.d
@@ -161,6 +160,7 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 # Rootless port
 %dir %{_libexecdir}/podman
 %{_libexecdir}/podman/rootlessport
+%{_libexecdir}/podman/quadlet
 # Completion
 %{_datadir}/bash-completion/completions/podman
 %{_datadir}/zsh/site-functions/_podman
@@ -173,14 +173,16 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_unitdir}/podman-kube@.service
 %{_unitdir}/podman-restart.service
 %{_unitdir}/podman-auto-update.timer
+%{_unitdir}/podman-clean-transient.service
 %{_userunitdir}/podman.service
 %{_userunitdir}/podman.socket
 %{_userunitdir}/podman-auto-update.service
 %{_userunitdir}/podman-kube@.service
 %{_userunitdir}/podman-restart.service
 %{_userunitdir}/podman-auto-update.timer
+%{_systemdusergeneratordir}/podman-user-generator
+%{_systemdgeneratordir}/podman-system-generator
 %ghost /run/podman
-%ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
 %license LICENSE
 
 %files remote
@@ -207,50 +209,19 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
-%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
-# move away any old rpmsave config file to avoid having it re-activated again in
-# %%posttrans
-test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf.rpmsave.old ||:
+%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 
 %post
-%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %tmpfiles_create %{_tmpfilesdir}/podman.conf
 %systemd_user_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %preun
-%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %postun
-%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 %systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
-
-%posttrans
-# if libpod.conf.rpmsave was created, set an update
-# message informing about the libpod.conf -> containers.conf change
-if test -f /etc/containers/libpod.conf.rpmsave ; then
-    cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf << EOF
-WARNING: Podman configuration file changes
-
-With version 2.0 Podman changed to a slightly different configuration file format.
-Also the name of default configuration file has been changed. The new format is
-documented in the containers.conf(5) man-page and changes should usually be
-straight-forward.
-
-The new default configuration is located in /usr/share/containers/containers.conf.
-In order to override setting from that file you can create
-/etc/containers/containers.conf with your changed settings.
-EOF
-fi
-
-%triggerun cni-config -- %{name}-cni-config < 1.6.0
-# The name of the network bridge changed from cni0 to podman-cni0 with
-# podman 1.6. We need to rename the existing bridge to the new name to
-# to avoid network issues after upgrade
-if ip link show dev cni0 > /dev/null 2>&1; then
-    ip link set dev cni0 down
-    ip link set dev cni0 name cni-podman0
-    ip link set dev cni-podman0 up
-fi
 
 %changelog
