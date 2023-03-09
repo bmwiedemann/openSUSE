@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:32:28 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.5.1
+  * Add ValidateOptions() options supporting ch
+  * Add experimental NewParallel Job implementation for better
+    scaling highly parallel builds
+  * Add FILE_ENCODING to allow explicitly setting the text encoding
+    for files written by the Textfile() and Substfile() builders
+  * Deprecated: The qt tool has been renamed qt3.
+  * A number of bug fixes and improvements
+  * Documentation updates
+
+-------------------------------------------------------------------
 Mon Oct 10 19:57:09 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.4.0:

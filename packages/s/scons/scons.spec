@@ -1,7 +1,7 @@
 #
 # spec file for package scons
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           scons
-Version:        4.4.0
+Version:        4.5.1
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
@@ -41,8 +40,8 @@ full power of Python to control compilation.
 %prep
 %autosetup -p1 -n SCons-%{version}
 
-sed -i -e '/QT_LIBPATH = os.path.join.*QTDIR/s/lib/%{_lib}/' \
-    SCons/Tool/qt.py
+sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
+    SCons/Tool/qt3.py
 
 %build
 %python_build
