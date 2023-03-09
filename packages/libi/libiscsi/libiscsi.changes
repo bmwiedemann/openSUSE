@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  8 11:49:02 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20230208:
+  * iser: Remove unnecessary 'return;'
+  * pdu: Remove temporary variables from functions
+  * connect: Add check after malloc allocation
+  * aros_compat: Add check after malloc allocation
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Mon Nov 28 08:40:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20221112:

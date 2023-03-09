@@ -1,7 +1,7 @@
 #
 # spec file for package libiscsi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define         sover 9
 Name:           libiscsi
-Version:        1.19.0+git.20221112
+Version:        1.19.0+git.20230208
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sahlberg/libiscsi
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -33,6 +34,7 @@ BuildRequires:  librdmacm-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)
+%{?suse_build_hwcaps_libs}
 
 %description
 libiscsi is a clientside library to implement the iSCSI protocol

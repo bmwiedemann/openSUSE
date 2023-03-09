@@ -299,4 +299,17 @@
   * Retain the immediate data param during login processing</comment>
     <requestid>1038591</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>314c620f2539367b29a1e642d19b9811</srcmd5>
+    <version>1.19.0+git.20230208</version>
+    <time>1678380291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20230208:
+  * iser: Remove unnecessary 'return;'
+  * pdu: Remove temporary variables from functions
+  * connect: Add check after malloc allocation
+  * aros_compat: Add check after malloc allocation
+- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1070165</requestid>
+  </revision>
 </revisionlist>
