@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sun Aug  7 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  0.007 2022-08-06 00:09:43+02:00
+
+      - Improve scalar style tidying
+      - Also tidy scalar style in flow collections
+      - Fix adjacent values if key turns into plain
+        `{"key":23} --> {key: 23}`
+
+-------------------------------------------------------------------
+Wed Jun  8 03:09:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  0.006 2022-06-07 15:12:11+02:00
+
+      - Fix scalar style
+
+-------------------------------------------------------------------
+Sun Apr 17 03:08:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.005
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  0.005 2022-04-16 21:59:58+02:00
+      - Fix tarball (remove accidentally included etc/docker/perl5 directory)
+  0.004 2022-04-16 21:51:25+02:00
+      - Add option for indenting sequences in block mappings
+      - Add option for quoting (and use plain by default)
+      - Add option for adding or removing header/footer
+
+-------------------------------------------------------------------
+Sun Apr 10 20:19:15 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Initial submission
