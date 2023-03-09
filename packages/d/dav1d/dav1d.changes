@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  7 19:40:24 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Revert last change. This is now handled in xxhash.
+
+-------------------------------------------------------------------
 Wed Mar  1 16:22:14 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Require gcc9 on SLE. Otherwise defaults to gcc7 and fails to

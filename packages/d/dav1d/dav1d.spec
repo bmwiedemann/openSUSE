@@ -31,9 +31,6 @@ BuildRequires:  meson >= 0.49.0
 BuildRequires:  nasm >= 2.14
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxxhash)
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc9
-%endif
 
 %description
 dav1d is a SIMD-enhanced decoder for AV1 video. It features
@@ -66,9 +63,6 @@ Group:          System/Libraries
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-export CC=gcc-9
-%endif
 %meson
 %meson_build
 
