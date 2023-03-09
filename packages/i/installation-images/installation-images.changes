@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 8 11:29:05 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#636
+- Include openssl hmac for SLE Micro (bsc#1208981)
+- 17.78
+
+--------------------------------------------------------------------
 Wed Mar 1 15:50:17 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#632

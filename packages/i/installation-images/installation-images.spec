@@ -175,10 +175,10 @@ BuildRequires:  distribution-logos-openSUSE-Leap
 
 %if "%theme" == "SMO" || "%theme" == "LeapMicro"
 %define with_storage_ng 1
-%define with_fips 0
 %define branding_skelcd   SMO
 %define branding_systemd  SMO
 %if "%theme" == "LeapMicro"
+%define with_fips 0
 BuildRequires:  Leap-Micro-release
 BuildRequires:  distribution-logos-openSUSE-LeapMicro
 %define branding_plymouth openSUSE
@@ -667,7 +667,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.77
+Version:        17.78
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
