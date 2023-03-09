@@ -37,6 +37,7 @@ Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 Patch5:         fat.patch
+Patch6:         gcc13-fix.patch
 # COMMON-END
 # COMMON-END
 URL:            https://www.iana.org/time-zones
@@ -58,6 +59,7 @@ package is intended for Java Virtual Machine based on OpenJDK.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 # COMMON-PREP-END
 # COMMON-PREP-END
