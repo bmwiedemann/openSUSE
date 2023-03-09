@@ -47,4 +47,17 @@
     <comment></comment>
     <requestid>977906</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>67eb4191fb94a5ffa44db3c909de3797</srcmd5>
+    <version>23.0</version>
+    <time>1678380316</time>
+    <user>dimstar_suse</user>
+    <comment>- ExclusiveArch because of pkgconfig(Qt6WebView) availability.
+- Update to version 23.0:
+  * Require C++ compiler with C++20 support.
+  * Minimum required Qt version is now 6.4.
+- Update to version 22.0.
+- Update to version 21.1.</comment>
+    <requestid>1070330</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package pentobi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,30 @@
 
 
 Name:           pentobi
-Version:        21.0
+Version:        23.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            http://pentobi.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
+# unresolvable: nothing provides pkgconfig(Qt6WebView)
+ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cmake >= 3.18
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  kio-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  rsvg-convert
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5WebView)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6WebView)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(appstream)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -87,8 +89,6 @@ Pentobi game files.
 %{_bindir}/pentobi-thumbnailer
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/pentobi.thumbnailer
-%{_libdir}/qt5/plugins/pentobi-thumbnail.so
-%{_datadir}/kservices5/pentobi-thumbnail.desktop
 %{_mandir}/man6/pentobi-thumbnailer.6%{?ext_man}
 %{_mandir}/*/man6/pentobi-thumbnailer.6%{?ext_man}
 

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Mar  9 06:40:14 UTC 2023 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- ExclusiveArch because of pkgconfig(Qt6WebView) availability.
+
+-------------------------------------------------------------------
+Mon Mar  6 19:08:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 23.0
+  * Use native file dialogs on Linux to make loading and saving of
+    games work with flatpak.
+# This adds a run-time dependency on package
+#    qml6-module-qtquick-dialogs (on Debian).
+  * Prefix MIME config and icons with io.sourceforge.pentobi, such
+    that registering Pentobi as an app for its game files works
+    with flatpak.
+  * Removed option to disable animations.
+  * Removed menu item Open Clipboard.
+  * Require C++ compiler with C++20 support.
+  * Minimum required Qt version is now 6.4
+  * Removed custom CMake module to find path of Docbook XSL and let
+    the local XML catalog do the mapping between URL and path.
+  * Don't initialize move number dialog with current move but show
+    it as placeholder text.
+- Update to version 22.0
+  * Fixed game analysis hanging on some platforms.
+  * Don't use custom menu implementation, which caused problems in
+    dark mode on Android and KDE 5. As a consequence, shortcuts
+    are no longer shown on the menu but documented in the Pentobi
+    manual.
+  * Made navigation links in help viewer part of the scrollable
+    page to avoid a bug in Qt that made the text sometimes
+    disappear if a navigation link was pressed with a scrolled
+    page.
+  * Help window shortcuts stopped working after mouse click with
+    Qt 6.4.
+
+-------------------------------------------------------------------
+Tue Jan 31 23:40:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 21.1
+  * Fixed game analysis hanging on some platforms.
+  * Don't use custom menu implementation, which caused problems in
+    dark mode on Android and KDE 5. As a consequence, shortcuts
+    are no longer shown on the menu but documented in the Pentobi
+    manual.
+  * Made navigation links in help viewer part of the scrollable
+    page to avoid a bug in Qt that made the text sometimes
+    disappear if a navigation link was pressed with a scrolled
+    page.
+  * Help window shortcuts stopped working after mouse click with
+    Qt 6.4.
+
+-------------------------------------------------------------------
 Wed May 18 07:01:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 21.0
