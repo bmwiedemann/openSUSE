@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,7 @@ Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch9:         func_math_tests_MDEV-26645.diff
 Patch10:        fix-pamdir.patch
+Patch11:        gcc13-fix.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -365,6 +366,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %if 0%{?suse_version} > 1500
 %patch10 -p1
 %endif
+%patch11 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:28:23 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Cherry-pick upstream changes (gcc13-fix.patch) for GCC 13.
+
+-------------------------------------------------------------------
 Wed Mar  1 10:49:52 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.11.2:
