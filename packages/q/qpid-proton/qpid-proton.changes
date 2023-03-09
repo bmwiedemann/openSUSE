@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar  7 10:25:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.0:
+  * see https://qpid.apache.org/releases/qpid-proton-0.38.0/release-notes.html
+  * Cancellable tasks
+  * Implement distributed tracing
+  * Improve python-qpid-proton wheel build regarding pkgconfig and deps
+  * The new frame codec doesn't omit enough nulls!
+  * Modernize package setup
+  * Provide a way to query proton::connection for the url it was created with
+  * Simplify and Speed up proton-c object system
+  * Remove internal details from the proton/object.h API header file
+  * Refactor logging so that it doesn't allocate any heap memory
+  * Remove "from __future__ import ..." as they are all the default behaviour
+    for Python 3
+  * Proactor: allow early writes to reduce latency
+  * Set a reasonable default maximum frame size
+  * use consistent socket io cals in epoll proactor
+  * Support Python 3.11
+  * Many bugfixes
+
+-------------------------------------------------------------------
 Fri Nov  4 14:15:58 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Add -Wno-deprecated-declarations to allow building with openssl-3

@@ -1,7 +1,7 @@
 #
 # spec file for package qpid-proton
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define _unpackaged_files_terminate_build 0
 %endif
 Name:           qpid-proton
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        A messaging library
 License:        Apache-2.0

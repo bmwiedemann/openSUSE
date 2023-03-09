@@ -1,20 +1,19 @@
-Index: qpid-proton-0.31.0/python/CMakeLists.txt
+Index: qpid-proton-0.38.0/python/CMakeLists.txt
 ===================================================================
---- qpid-proton-0.31.0.orig/python/CMakeLists.txt
-+++ qpid-proton-0.31.0/python/CMakeLists.txt
-@@ -115,8 +115,9 @@ macro (py_compile directory files artifa
-   endforeach (src_file)
- endmacro(py_compile)
+--- qpid-proton-0.38.0.orig/python/CMakeLists.txt
++++ qpid-proton-0.38.0/python/CMakeLists.txt
+@@ -132,8 +132,8 @@ if (CHECK_SYSINSTALL_PYTHON)
+     endforeach (src_file)
+   endmacro(py_compile)
  
--py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
--py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
-+#Let setuptools do the compiling
-+#py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
-+#py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
+-  py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
+-  py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
++  # py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
++  # py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
  
- # Sphinx documentation
- check_python_module("sphinx" SPHINX_MODULE_FOUND)
-@@ -206,7 +207,8 @@ endforeach()
+   install(FILES ${CPROTON_ARTIFACTS}
+           DESTINATION ${PYTHON_SITEARCH_PACKAGES}
+@@ -185,7 +185,8 @@ endforeach()
  
  # Make python source and binary packages if we have prerequisistes
  check_python_module("setuptools" SETUPTOOLS_MODULE_FOUND)
