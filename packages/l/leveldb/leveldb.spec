@@ -1,7 +1,7 @@
 #
 # spec file for package leveldb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,19 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/leveldb
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 # PATCH-FEATURE-OPENSUSE detect-system-gtest.patch -- https://github.com/google/leveldb/pull/912
 Patch0:         detect-system-gtest.patch
 # PATCH-FIX-OPENSUSE enable-rtti.patch -- Enable rtti support again, needed for ceph
 Patch1:         enable-rtti.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  cmake(GTest)
 BuildRequires:  cmake(benchmark)
 BuildRequires:  pkgconfig(sqlite3)
+%{?suse_build_hwcaps_libs}
 
 %description
 leveldb implements a system for maintaining a persistent key/value store.
