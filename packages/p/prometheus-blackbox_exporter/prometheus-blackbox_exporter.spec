@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-blackbox_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,13 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang >= 1.14
 BuildRequires:  libcap
 %else
-BuildRequires:  libcap-progs
+%if 0%{?sle_version} == 150300
+# Needed due to bsc#1203599
 BuildRequires:  golang(API) = 1.18
+%else
+BuildRequires:  golang(API) >= 1.19
+%endif
+BuildRequires:  libcap-progs
 %endif
 %{?systemd_ordering}
 %if 0%{?suse_version}
