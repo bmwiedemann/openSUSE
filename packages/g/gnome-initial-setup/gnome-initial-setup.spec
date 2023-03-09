@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-initial-setup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdm) >= 3.8.3
@@ -55,7 +56,6 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality)
 BuildRequires:  pkgconfig(rest-1.0)
 BuildRequires:  pkgconfig(systemd) >= 242
-BuildRequires:  pkgconfig(webkit2gtk-5.0)
 # Remove the yelp document dependency on both sle and leap, keeping tw consistent with upstream
 %if !0%{?sle_version}
 Requires:       gnome-getting-started-docs

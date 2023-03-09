@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  7 12:07:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + The webkitgtk-6.0 API version is now supported, in addition to
+    the previous webkit2gtk-5.0 API version.
+  + Bugs fixed:
+    - The Shell quick settings menu will now be shown in the
+      Initial Setup session. This regressed when the previous menu
+      was renamed in gnome-shell during the 43 cycle.
+    - Error messages shown during enterprise account setup can now
+      be closed by clicking the Close button.
+  + Updated translations.
+- Add boolean pkgconfig(webkitgtk-6.0) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
 Wed Oct 19 07:59:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
