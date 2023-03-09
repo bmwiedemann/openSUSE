@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Mar  8 10:31:15 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7.0:
+  * add CD/DVD media installation support
+  * add overwrite mode
+  * add transparent hugepage support
+  * add more checks of external tools
+  * add SEV support
+  * add a new virt-select-firmware tool
+  * update all docs
+  * improve various functions and code
+  * improve general layout
+  * change some defaults settings (check the table in the README.md file)
+  * fix some guest/host mode bugs
+  * various other bugs/pylint fixes
+
+-------------------------------------------------------------------
+Fri Jan 20 16:34:09 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- testing release 0.5.0
+
+-------------------------------------------------------------------
+Tue Jan 17 08:56:59 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- first release
