@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,7 @@ make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500 || 0%{?centos_version} >= 800
 export PY3=true
 %endif
-make %{?_smp_mflags} check
+make %{?_smp_mflags} check EXTRA_CXXFLAGS="-fexcess-precision=fast"
 
 %install
 %make_install
