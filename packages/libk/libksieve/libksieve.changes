@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:06:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix accidentially using the password as username
+  (kde#437858, kde#467034, boo#1209050):
+  * 0001-Fix-467034-libksieve-src-kmanagesieve-session.cpp-as.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:46:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3

@@ -1,0 +1,30 @@
+From 6b460ba93ac4ac503ba039d0b788ac7595120db1 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 8 Mar 2023 06:51:22 +0100
+Subject: [PATCH] Fix 467034: libksieve/src/kmanagesieve/session.cpp assigns
+ password to username & gets logged(
+
+Bug investigate by "bib" thanks
+BUG: 467034
+BUG: 437858
+FIXED-IN: 5.23.0
+---
+ src/kmanagesieve/session.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kmanagesieve/session.cpp b/src/kmanagesieve/session.cpp
+index 26fd7b59..0e40d721 100644
+--- a/src/kmanagesieve/session.cpp
++++ b/src/kmanagesieve/session.cpp
+@@ -273,7 +273,7 @@ KManageSieve::AuthDetails Session::requestAuthDetails(const QUrl &url)
+     AuthDetails ad;
+     ad.valid = false;
+     if (dlg->exec()) {
+-        ad.username = dlg->password();
++        ad.username = dlg->username();
+         ad.password = dlg->password();
+         ad.valid = true;
+     }
+-- 
+2.39.2
+
