@@ -78,6 +78,7 @@ Summary:        Development package for pimcommon
 License:        LGPL-2.1-or-later
 Requires:       libKF5PimCommon5 = %{version}
 Requires:       libKF5PimCommonAkonadi5 = %{version}
+Requires:       libKF5PimCommonAutoCorrection5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiContact)
 Requires:       cmake(KF5Config)
