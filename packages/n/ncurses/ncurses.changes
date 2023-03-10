@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 28 14:28:56 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230225
+  + build-fixes for rpm test-packages.
+  + add/user configure check for clock_gettime(), to supersede
+    gettimeofday().
+- Correct offsets of patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Feb 20 07:28:49 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230218

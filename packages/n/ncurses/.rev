@@ -4002,4 +4002,12 @@
     MinGW/Win32 configurations (adapted from patch by LIU Hao).</comment>
     <requestid>1066746</requestid>
   </revision>
+  <revision rev="234" vrev="7">
+    <srcmd5>e48b5f7a7ce35568e2f487c748bab361</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1678482408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070101</requestid>
+  </revision>
 </revisionlist>
