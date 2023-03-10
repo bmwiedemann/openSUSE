@@ -1,0 +1,23 @@
+yarn run v1.22.19
+$ /home/danigm/Projects/suse/obs/home:dgarcia:sphinx-theme-builder/python-/tmp//tmp/node_modules/.bin/license-checker --summary
+├─ MIT: 718
+├─ ISC: 111
+├─ BSD-2-Clause: 18
+├─ Apache-2.0: 15
+├─ BSD-3-Clause: 13
+├─ Unlicense: 4
+├─ (MIT OR CC0-1.0): 3
+├─ (MIT OR Apache-2.0): 2
+├─ CC0-1.0: 2
+├─ (CC-BY-4.0 AND OFL-1.1 AND MIT): 1
+├─ MIT*: 1
+├─ CC-BY-4.0: 1
+├─ (AFL-2.1 OR BSD-3-Clause): 1
+├─ (BSD-3-Clause OR GPL-2.0): 1
+├─ (MIT AND Zlib): 1
+├─ (MIT AND BSD-3-Clause): 1
+├─ CC-BY-3.0: 1
+├─ (MIT AND CC-BY-3.0): 1
+└─ 0BSD: 1
+
+Done in 1.04s.
