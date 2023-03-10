@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  9 15:58:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix test on aarch64:
+  * 2582.patch
+
+-------------------------------------------------------------------
 Wed Feb  8 06:56:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 3.22.1. 

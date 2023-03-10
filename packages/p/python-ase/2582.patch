@@ -1,0 +1,26 @@
+From 5e733253d9e791ed1568076ede93a983f27979f6 Mon Sep 17 00:00:00 2001
+From: "Adam J. Jackson" <a.j.jackson@physics.org>
+Date: Tue, 30 Nov 2021 09:51:47 +0000
+Subject: [PATCH] TST: Vibration slab test should check for movement in ANY
+ direction
+
+It is possible for a perfectly good eigenvector to be zero in some
+Cartesian direction; this was encountered in #976 and appears to be
+architecture-dependent.
+---
+ ase/test/vibrations/test_vib.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ase/test/vibrations/test_vib.py b/ase/test/vibrations/test_vib.py
+index fe28ff13e5..7786a47aec 100644
+--- a/ase/test/vibrations/test_vib.py
++++ b/ase/test/vibrations/test_vib.py
+@@ -524,4 +524,4 @@ class TestSlab:
+             assert_array_almost_equal(vibs.get_mode(i)[0], [0., 0., 0.])
+ 
+             # The N atoms should have finite displacement
+-            assert np.all(vibs.get_mode(i)[-2:, :])
++            assert np.all(np.any(vibs.get_mode(i)[-2:, :], axis=1))
+-- 
+GitLab
+

@@ -20,20 +20,22 @@ Name:           python-ase
 Version:        3.22.1
 Release:        0
 Summary:        Atomic Simulation Environment
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 URL:            https://wiki.fysik.dtu.dk/ase
 Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/2826
 Patch0:         support-matplotlib-36.patch
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/2582
+Patch1:         2582.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module numpy >= 1.15.0}
-BuildRequires:  %{python_module scipy >= 1.1.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 1.1.0}
 BuildRequires:  %{python_module tk}
 # /SECTION
 BuildRequires:  fdupes
