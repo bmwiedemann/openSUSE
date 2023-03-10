@@ -18,7 +18,7 @@
 
 %define cpan_name Data-Dump-Streamer
 Name:           perl-Data-Dump-Streamer
-Version:        2.41
+Version:        2.42
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Accurately serialize a data structure as Perl code
