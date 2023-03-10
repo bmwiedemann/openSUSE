@@ -463,4 +463,12 @@
     <comment></comment>
     <requestid>1068709</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>3982b262126fad2cd7ee467d39cfa7f7</srcmd5>
+    <version>4.0.1</version>
+    <time>1678482422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Licenses</comment>
+    <requestid>1070448</requestid>
+  </revision>
 </revisionlist>

@@ -29,10 +29,15 @@ Name:           musescore
 Version:        4.0.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
-# Musescore code license is GPL-2.0
+# Musescore code license is GPL-3.0 with font exception (see LICENSE.rtf in top dir
 # Software in thirdparty is licensed under their own license
-# Documentation is CC-SA
-License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND MIT
+# thirdparty/beatroot: GPL 2.0 or later
+# thirdparty/dr_libs: Public Domain OR MIT no attribution
+# thirdparty/dtl: BSD
+# thirdparty/fluidsytn: LGPL-2.1
+# thirdparty/invaltree: MIT
+# thirdparty?kddockwidgets: GPL-2.0-only OR GPL-3.0-only
+License:        BSD-3-Clause AND GPL-2.0-only AND SUSE-GPL-3.0-with-font-exception AND GPL-2.0-or-later AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
 Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
