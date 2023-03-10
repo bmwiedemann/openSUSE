@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-zhuyin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  fcitx5-devel
 BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpinyin-devel
-BuildRequires:  libzhuyin13
 BuildRequires:  pkgconfig
 Requires:       fcitx5
 Provides:       fcitx-zhuyin = %{version}
