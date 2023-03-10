@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  7 03:07:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.73
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.73  2023-03-06  sbeck
+    -  NEW CODE(s)
+    -  Fixed a problem with test failing on windows
+           Reported in GitHub #15
+
+-------------------------------------------------------------------
 Fri Sep  2 03:10:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.72

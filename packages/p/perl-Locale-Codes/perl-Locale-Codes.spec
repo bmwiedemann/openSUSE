@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Locale-Codes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Locale-Codes
 Name:           perl-Locale-Codes
-Version:        3.72
+Version:        3.73
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution of modules to handle locale codes
@@ -81,6 +81,7 @@ sooner, just email me and I'll get one out.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
