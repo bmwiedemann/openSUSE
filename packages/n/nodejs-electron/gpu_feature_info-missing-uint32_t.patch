@@ -1,0 +1,10 @@
+--- src/gpu/config/gpu_feature_info.h.old	2023-03-07 10:51:25.926757800 +0000
++++ src/gpu/config/gpu_feature_info.h	2023-03-09 05:36:10.635812200 +0000
+@@ -5,6 +5,7 @@
+ #ifndef GPU_CONFIG_GPU_FEATURE_INFO_H_
+ #define GPU_CONFIG_GPU_FEATURE_INFO_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 

@@ -4,7 +4,7 @@
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 # License: GPLv3
 #
-# dnf install python3-base git-core npm16 yarn python2-base moreutils
+# dnf install python3-base file findutils git-core tar yarn moreutils zstd
 
 ELECTRON_PKGVERSION="$(rpmspec -P ./*.spec | grep ^\s*Version | sed -e 's/Version:[ ]*//g')"
 ELECTRON_PKGNAME="electron"
@@ -169,7 +169,7 @@ keeplibs=(
     third_party/angle  # ANGLE is an integral part of chrome and is not available as a shared library.
     third_party/angle/src/common/third_party/base #Derived code, not vendored dependency.
     third_party/angle/src/common/third_party/smhasher ##Derived code, not vendored dependency.
-    third_party/angle/src/third_party/libXNVCtrl #Not in Factory yet
+    third_party/angle/src/third_party/libXNVCtrl #Not in 15.4
     third_party/angle/src/third_party/trace_event #Does not seem to be a separate library.
     third_party/angle/src/third_party/volk #Not in Factory or Rawhide. Debian has it as vulkan-volk, CONSIDER UNBUNDLING when we have it
     third_party/blink #Integral part of chrome
@@ -212,7 +212,7 @@ keeplibs=(
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
-    third_party/highway #Not in Leap
+    third_party/highway #Not in 15.4. Needed by libjxl
     third_party/hunspell #heavily forked version
     third_party/iccjpeg #not in any distro
     third_party/inspector_protocol #integral part of chrome
@@ -250,7 +250,7 @@ keeplibs=(
     third_party/markupsafe #ImportError: cannot import name 'soft_unicode' from 'markupsafe' (/usr/lib64/python3.10/site-packages/markupsafe/__init__.py). CONSIDER UNBUNDLING when jinja is fixed
     third_party/mesa_headers #ui/gl/gl_bindings.cc depends on GL_KHR_robustness not being defined.
     third_party/metrics_proto #integral part of chrome
-    third_party/modp_b64 #not in any distro
+    third_party/modp_b64 #not in Factory or Rawhide. pkgconfig(stringencoders) Mageia, AltLinux, Debian have it
     third_party/node #javascript code
     third_party/one_euro_filter #not in any distro
     third_party/openscreen #Integral part of chrome, needed even if you're building without.
@@ -289,7 +289,6 @@ keeplibs=(
     third_party/vulkan-deps/spirv-headers #FC36 too old
     third_party/vulkan-deps/spirv-tools #FC36 too old
     third_party/vulkan-deps/vulkan-headers #FC36 too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
-    third_party/vulkan-deps/vulkan-tools #The mock ICD seems to be used during build, but is not shipped (see https://github.com/electron/electron/pull/18596)
     third_party/vulkan_memory_allocator #not in any distro
     third_party/webgpu-cts #Javascript code. Needed even if you're building chrome without webgpu
     third_party/webrtc #Integral part of chrome
@@ -384,9 +383,9 @@ echo ">>>>>> Remove empty directories"
 find . -type d -empty -print -delete
 popd || cleanup_and_exit 1
 
-echo ">>>>>> Hardlink duplicate files to reduce extraction time"
-
-/usr/lib/rpm/fdupes_wrapper src
+#echo ">>>>>> Hardlink duplicate files to reduce extraction time"
+#Disabled this — it fails to link sometimes causing tarball nondeterminism
+#/usr/lib/rpm/fdupes_wrapper src
 
 echo ">>>>>> Create tarball"
 ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src

@@ -1,0 +1,30 @@
+--- src/net/third_party/quiche/src/quiche/http2/adapter/header_validator_base.h.old	2023-03-07 11:51:42.050773300 +0100
++++ src/net/third_party/quiche/src/quiche/http2/adapter/header_validator_base.h	2023-03-07 23:09:36.544902600 +0100
+@@ -1,6 +1,7 @@
+ #ifndef QUICHE_HTTP2_ADAPTER_HEADER_VALIDATOR_BASE_H_
+ #define QUICHE_HTTP2_ADAPTER_HEADER_VALIDATOR_BASE_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "absl/strings/string_view.h"
+--- src/net/third_party/quiche/src/quiche/quic/core/quic_connection_id.h.old	2023-03-07 10:51:42.086773400 +0000
++++ src/net/third_party/quiche/src/quiche/quic/core/quic_connection_id.h	2023-03-08 05:31:08.115134100 +0000
+@@ -5,6 +5,7 @@
+ #ifndef QUICHE_QUIC_CORE_QUIC_CONNECTION_ID_H_
+ #define QUICHE_QUIC_CORE_QUIC_CONNECTION_ID_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- src/net/third_party/quiche/src/quiche/quic/core/crypto/quic_hkdf.h.old	2023-03-07 11:51:42.070773300 +0100
++++ src/net/third_party/quiche/src/quiche/quic/core/crypto/quic_hkdf.h	2023-03-08 00:06:05.139705800 +0100
+@@ -5,6 +5,7 @@
+ #ifndef QUICHE_QUIC_CORE_CRYPTO_QUIC_HKDF_H_
+ #define QUICHE_QUIC_CORE_CRYPTO_QUIC_HKDF_H_
+ 
++#include <cstdint>
+ #include <vector>
+ 
+ #include "absl/strings/string_view.h"

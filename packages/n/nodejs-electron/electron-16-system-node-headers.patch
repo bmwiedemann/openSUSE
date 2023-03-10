@@ -8,7 +8,7 @@ Index: electron-17.1.0/third_party/electron_node/common.gypi
        }],
 +      [ 'OS in "linux"', {
 +        'cflags': [ '-I/usr/include/electron' ],
-+        'ldflags': [ '-Wl,--as-needed', '-lz' ],
++        'libraries': [ '-lz' ],
 +      }],
        [ 'OS in "linux freebsd openbsd solaris aix"', {
          'cflags': [ '-pthread' ],

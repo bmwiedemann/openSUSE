@@ -1,0 +1,20 @@
+--- src/third_party/openscreen/src/util/base64.h.old	2023-03-07 11:52:10.906800987 +0100
++++ src/third_party/openscreen/src/util/base64.h	2023-03-07 13:52:52.310335841 +0100
+@@ -5,6 +5,7 @@
+ #ifndef UTIL_BASE64_H_
+ #define UTIL_BASE64_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- src/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h.old
++++ src/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
+@@ -5,6 +5,7 @@
+ #ifndef DISCOVERY_DNSSD_PUBLIC_DNS_SD_TXT_RECORD_H_
+ #define DISCOVERY_DNSSD_PUBLIC_DNS_SD_TXT_RECORD_H_
+ 
++#include <cstdint>
+ #include <functional>
+ #include <map>
+ #include <set>

@@ -1,0 +1,33 @@
+--- src/ui/base/prediction/kalman_filter.h.old	2023-03-07 10:51:36.714768200 +0000
++++ src/ui/base/prediction/kalman_filter.h	2023-03-08 08:32:35.533343500 +0000
+@@ -5,6 +5,8 @@
+ #ifndef UI_BASE_PREDICTION_KALMAN_FILTER_H_
+ #define UI_BASE_PREDICTION_KALMAN_FILTER_H_
+ 
++#include <cstdint>
++
+ #include "base/component_export.h"
+ #include "ui/gfx/geometry/matrix3_f.h"
+ 
+--- src/ui/gfx/geometry/linear_gradient.h.old	2023-03-07 11:51:36.862768295 +0100
++++ src/ui/gfx/geometry/linear_gradient.h	2023-03-08 13:03:18.500668734 +0100
+@@ -6,6 +6,8 @@
+ #define UI_GFX_LINEAR_GRADIENT_H_
+ 
+ #include <array>
++#include <cstddef>
++#include <cstdint>
+ #include <string>
+ 
+ #include "ui/gfx/geometry/geometry_skia_export.h"
+--- src/ui/events/types/scroll_types.h.old	2023-03-07 11:51:36.834768269 +0100
++++ src/ui/events/types/scroll_types.h	2023-03-08 11:07:48.696799233 +0100
+@@ -5,6 +5,8 @@
+ #ifndef UI_EVENTS_TYPES_SCROLL_TYPES_H_
+ #define UI_EVENTS_TYPES_SCROLL_TYPES_H_
+ 
++#include <cstdint>
++
+ namespace ui {
+ 
+ enum class ScrollGranularity : uint8_t {

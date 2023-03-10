@@ -1,0 +1,11 @@
+--- src/third_party/webrtc/rtc_base/third_party/base64/base64.h.old	2023-03-07 10:52:34.754823900 +0000
++++ src/third_party/webrtc/rtc_base/third_party/base64/base64.h	2023-03-08 06:56:05.662101900 +0000
+@@ -12,6 +12,8 @@
+ #ifndef RTC_BASE_THIRD_PARTY_BASE64_BASE64_H_
+ #define RTC_BASE_THIRD_PARTY_BASE64_BASE64_H_
+ 
++#include <cstddef>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 

@@ -1,0 +1,10 @@
+--- src/third_party/angle/include/GLSLANG/ShaderVars.h.old
++++ src/third_party/angle/include/GLSLANG/ShaderVars.h
+@@ -12,6 +12,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 

@@ -1,0 +1,21 @@
+--- src/net/cookies/cookie_inclusion_status.h.old	2023-03-07 11:51:26.874758704 +0100
++++ src/net/cookies/cookie_inclusion_status.h	2023-03-08 16:26:46.505830726 +0100
+@@ -6,6 +6,7 @@
+ #define NET_COOKIES_COOKIE_INCLUSION_STATUS_H_
+ 
+ #include <bitset>
++#include <cstdint>
+ #include <ostream>
+ #include <string>
+ #include <vector>
+--- src/net/base/parse_number.h.old	2023-03-07 11:51:26.858758688 +0100
++++ src/net/base/parse_number.h	2023-03-08 14:54:32.174472371 +0100
+@@ -5,6 +5,8 @@
+ #ifndef NET_BASE_PARSE_NUMBER_H_
+ #define NET_BASE_PARSE_NUMBER_H_
+ 
++#include <cstdint>
++
+ #include "base/strings/string_piece.h"
+ #include "net/base/net_export.h"
+ 

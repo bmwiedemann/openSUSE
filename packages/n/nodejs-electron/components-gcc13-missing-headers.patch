@@ -1,0 +1,70 @@
+--- a/components/crash/core/app/crash_reporter_client.h
++++ b/components/crash/core/app/crash_reporter_client.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_CRASH_CORE_APP_CRASH_REPORTER_CLIENT_H_
+ #define COMPONENTS_CRASH_CORE_APP_CRASH_REPORTER_CLIENT_H_
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ 
+--- src/components/feature_engagement/internal/event_storage_validator.h.old	2023-03-07 10:51:24.306756300 +0000
++++ src/components/feature_engagement/internal/event_storage_validator.h	2023-03-08 19:07:07.780289000 +0000
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_FEATURE_ENGAGEMENT_INTERNAL_EVENT_STORAGE_VALIDATOR_H_
+ #define COMPONENTS_FEATURE_ENGAGEMENT_INTERNAL_EVENT_STORAGE_VALIDATOR_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace feature_engagement {
+--- a/components/password_manager/core/browser/generation/password_generator.h
++++ b/components/password_manager/core/browser/generation/password_generator.h
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_PASSWORD_MANAGER_CORE_BROWSER_GENERATION_PASSWORD_GENERATOR_H_
+ #define COMPONENTS_PASSWORD_MANAGER_CORE_BROWSER_GENERATION_PASSWORD_GENERATOR_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ 
+--- src/components/metrics/psi_memory_parser.h.old	2023-03-07 11:51:24.394756322 +0100
++++ src/components/metrics/psi_memory_parser.h	2023-03-08 14:04:15.470128894 +0100
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_METRICS_PSI_MEMORY_PARSER_H_
+ #define COMPONENTS_METRICS_PSI_MEMORY_PARSER_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/gtest_prod_util.h"
+--- src/components/soda/constants.h.old	2023-03-07 10:51:24.794756800 +0000
++++ src/components/soda/constants.h	2023-03-08 20:58:33.789967200 +0000
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_SODA_CONSTANTS_H_
+ #define COMPONENTS_SODA_CONSTANTS_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "base/files/file_path.h"
+--- src/components/viz/common/shared_element_resource_id.h.old	2023-03-07 10:51:25.094757000 +0000
++++ src/components/viz/common/shared_element_resource_id.h	2023-03-08 22:10:33.253309800 +0000
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_VIZ_COMMON_SHARED_ELEMENT_RESOURCE_ID_H_
+ #define COMPONENTS_VIZ_COMMON_SHARED_ELEMENT_RESOURCE_ID_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- src/components/autofill/core/browser/autofill_ablation_study.h.old	2023-03-07 11:51:24.058756000 +0100
++++ src/components/autofill/core/browser/autofill_ablation_study.h	2023-03-09 11:39:59.131542780 +0100
+@@ -5,6 +5,7 @@
+ #ifndef COMPONENTS_AUTOFILL_CORE_BROWSER_AUTOFILL_ABLATION_STUDY_H_
+ #define COMPONENTS_AUTOFILL_CORE_BROWSER_AUTOFILL_ABLATION_STUDY_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ class GURL;

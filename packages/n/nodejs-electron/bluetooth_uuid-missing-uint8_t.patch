@@ -1,0 +1,10 @@
+--- src/device/bluetooth/public/cpp/bluetooth_uuid.h.old	2023-03-07 11:51:25.678757600 +0100
++++ src/device/bluetooth/public/cpp/bluetooth_uuid.h	2023-03-07 21:50:18.367030500 +0100
+@@ -5,6 +5,7 @@
+ #ifndef DEVICE_BLUETOOTH_PUBLIC_CPP_BLUETOOTH_UUID_H_
+ #define DEVICE_BLUETOOTH_PUBLIC_CPP_BLUETOOTH_UUID_H_
+ 
++#include <cstdint>
+ #include <ostream>
+ #include <string>
+ #include <vector>

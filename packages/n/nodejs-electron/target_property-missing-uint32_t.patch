@@ -1,0 +1,11 @@
+--- src/cc/trees/target_property.cc.old	2023-03-07 10:51:21.466753600 +0000
++++ src/cc/trees/target_property.cc	2023-03-08 17:47:48.197294200 +0000
+@@ -4,6 +4,8 @@
+ 
+ #include "cc/trees/target_property.h"
+ 
++#include <cstdint>
++
+ #include "ui/gfx/animation/keyframe/target_property.h"
+ 
+ namespace cc {

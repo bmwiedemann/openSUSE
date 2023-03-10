@@ -1,0 +1,22 @@
+--- src/extensions/common/constants.h.old	2023-03-07 10:51:25.826757700 +0000
++++ src/extensions/common/constants.h	2023-03-08 16:42:05.632267700 +0000
+@@ -5,6 +5,9 @@
+ #ifndef EXTENSIONS_COMMON_CONSTANTS_H_
+ #define EXTENSIONS_COMMON_CONSTANTS_H_
+ 
++#include <cstddef>
++#include <cstdint>
++
+ #include "base/files/file_path.h"
+ #include "base/strings/string_piece_forward.h"
+ #include "build/chromeos_buildflags.h"
+--- src/extensions/renderer/bindings/api_invocation_errors.h.old	2023-03-07 10:51:25.838757800 +0000
++++ src/extensions/renderer/bindings/api_invocation_errors.h	2023-03-09 17:57:28.682181200 +0000
+@@ -5,6 +5,7 @@
+ #ifndef EXTENSIONS_RENDERER_BINDINGS_API_INVOCATION_ERRORS_H_
+ #define EXTENSIONS_RENDERER_BINDINGS_API_INVOCATION_ERRORS_H_
+ 
++#include <cstdint>
+ #include <set>
+ #include <string>
+ 

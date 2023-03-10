@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 10 05:54:55 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.2
+  * Fixed window could not go back to maximized state when restored
+  * Improved error messages for contents.takeHeapSnapshot
+- Disable some debugging code
+- Revert disablement of _package_note_file on Fedora
+- Switch to default BFD linker on aarch64 Fedora 36
+- Fix FTBFS on Rawhide
+  * angle-ShaderVars-missing-uint32_t.patch
+  * openscreen-gcc13-missing-headers.patch
+  * perfetto-uuid-missing-uint8_t.patch
+  * swiftshader-LRUCache-missing-uint64_t.patch
+  * vulkan_memory_allocator-vk_mem_alloc-missing-snprintf.patch
+  * profiler-missing-uintptr_t.patch
+  * components-gcc13-missing-headers.patch
+  * one_writer_seqlock-missing-uintptr_t.patch
+  * bluetooth_uuid-missing-uint8_t.patch
+  * broker_file_permission-missing-uint64_t.patch
+  * net-third_party-quiche-gcc13-missing-headers.patch
+  * webrtc-base64-missing-uint8_t.patch
+  * ui-gcc13-missing-headers.patch
+  * net-gcc13-missing-headers.patch
+  * extensions-gcc13-missing-headers.patch
+  * target_property-missing-uint32_t.patch
+  * gpu_feature_info-missing-uint32_t.patch
+  * blink-gcc13-missing-headers.patch
+  * effect_paint_property_node-Wchanges-meaning.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 11:33:18 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.1
+  * no changes
+- Actually fix -lz inserted in wrong place in the modules build command line
+
+-------------------------------------------------------------------
 Thu Feb 16 20:32:34 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.0
   * Fixed a crash when BrowserViews are present and a user

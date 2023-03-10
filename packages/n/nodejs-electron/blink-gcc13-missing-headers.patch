@@ -1,0 +1,22 @@
+--- src/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h.old	2023-03-07 10:51:27.754759600 +0000
++++ src/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h	2023-03-09 08:25:00.771159100 +0000
+@@ -6,6 +6,9 @@
+ #define THIRD_PARTY_BLINK_PUBLIC_COMMON_BLUETOOTH_WEB_BLUETOOTH_DEVICE_ID_H_
+ 
+ #include <array>
++#include <cstdint>
++#include <functional>
++#include <iosfwd>
+ #include <string>
+ 
+ #include "third_party/blink/public/common/common_export.h"
+--- src/third_party/blink/public/common/origin_trials/origin_trial_public_key.h.old	2023-03-07 11:51:27.758759553 +0100
++++ src/third_party/blink/public/common/origin_trials/origin_trial_public_key.h	2023-03-09 13:54:11.881700635 +0100
+@@ -6,6 +6,7 @@
+ #define THIRD_PARTY_BLINK_PUBLIC_COMMON_ORIGIN_TRIALS_ORIGIN_TRIAL_PUBLIC_KEY_H_
+ 
+ #include <array>
++#include <cstdint>
+ 
+ namespace blink {
+ 
