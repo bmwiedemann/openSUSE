@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 27 03:07:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230226
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20230226        2023-02-26
+
+              * Cleanups and speedups
+                  * https://github.com/shlomif/Test-PerlTidy/pull/8
+                      * Thanks to @thoke !
+
+-------------------------------------------------------------------
 Sat Sep  3 03:08:58 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20220902
