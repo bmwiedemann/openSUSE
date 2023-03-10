@@ -32,8 +32,8 @@ This package provides translations of man pages in %{2}.\
     print("opensuse-leap-15-5")
   elseif suse_version ~= nil and suse_version > 1500 then
     print("opensuse-tumbleweed")
-  elseif fedora_version == 37 then
-    print("fedora-37")
+  elseif fedora_version == 38 then
+    print("fedora-38")
   elseif fedora_version == 99 then
     print("fedora-rawhide")
   elseif mageia_version == 99 then

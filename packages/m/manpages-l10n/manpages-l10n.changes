@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 10 13:14:48 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.18.0
+  * Updated and added many translations.
+  * Switched from fedora-37 to fedora-38.
+  * Archived some old translations (grub2-rpm-sort.8).
+
+-------------------------------------------------------------------
 Tue Jan 17 20:41:48 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.17.0:
