@@ -29,6 +29,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/sdk.html
 Source0:        https://www.7-zip.org/a/lzma%{_sver}.7z
 Source1:        lzma-sdk-LICENSE.fedora
+Source2:        baselibs.conf
 Patch1:         lzma-sdk-shlib.patch
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -37,6 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  p7zip-full
 BuildRequires:  pkg-config
+%{?suse_build_hwcaps_libs}
 
 %description
 LZMA SDK provides documentation, samples, header files, libraries,
