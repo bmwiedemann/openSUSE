@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 09 15:31:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.59.1:
+  * Update grype bootstrap tools to latest versions. (#1163)
+  * Update Syft to v0.74.1 (#1168)
+  * fix: correct APK CPE version comparison logic (#1165)
+
+-------------------------------------------------------------------
 Sat Mar 04 08:34:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.59.0:
