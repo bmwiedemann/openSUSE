@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">https://github.com/endocrimes/keylightctl.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">0.0.3</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">keylightctl-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="go_modules" mode="localonly"/>
+</services>
+
