@@ -23,4 +23,16 @@
     <comment>- skip python 3.6 (only compatible with python 3.7+)</comment>
     <requestid>871617</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4004d7c12aae255a1e84ce1e1d577fba</srcmd5>
+    <version>0.5.1</version>
+    <time>1678482428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * Changelog: https://github.com/python-kasa/python-kasa/releases/tag/0.5.1
+
+- Update to 0.5.0:
+  * Changelog: https://github.com/python-kasa/python-kasa/releases/tag/0.5.0</comment>
+    <requestid>1070520</requestid>
+  </revision>
 </revisionlist>

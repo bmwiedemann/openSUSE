@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  9 09:18:28 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.5.1:
+  * Changelog: https://github.com/python-kasa/python-kasa/releases/tag/0.5.1
+
+-------------------------------------------------------------------
+Mon Sep 26 14:29:53 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.5.0:
+  * Changelog: https://github.com/python-kasa/python-kasa/releases/tag/0.5.0
+
+-------------------------------------------------------------------
 Sat Feb 13 09:49:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (only compatible with python 3.7+) 

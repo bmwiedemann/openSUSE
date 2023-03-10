@@ -1,7 +1,7 @@
 #
 # spec file for package python-kasa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,37 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-kasa
-Version:        0.0~git1580219900.15b0c8c
+Version:        0.5.1
 Release:        0
 Summary:        Python API for TP-Link Kasa Smarthome products
 License:        GPL-3.0-or-later
 URL:            https://github.com/python-kasa/python-kasa
-Source0:        python-kasa-%{version}.tar.xz
-BuildRequires:  %{python_module click >= 7.0}
+Source0:        https://github.com/python-kasa/python-kasa/archive/refs/tags/%{version}.tar.gz#/python-kasa-%{version}.tar.gz
+BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module asyncclick}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module voluptuous}
+BuildRequires:  %{python_module xdoctest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Runtime requires
-Requires:       python-click >= 7.0
-Requires:       python-pytest-asyncio
+Requires:       python-anyio
+Requires:       python-asyncclick
+Requires:       python-pydantic
 Requires:       python-setuptools
+Requires:       python-voluptuous
+Requires:       python-xdoctest
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,17 +57,19 @@ Use 'kasa' binary.
 %prep
 %setup -q
 
+find . -name \*.py -o -name \*.json -exec chmod -x '{}' \;
+
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/kasa
+%python_expand rm %{buildroot}%{$python_sitelib}/CHANGELOG.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/python-kasa/python-kasa/issues/27
-#%%pytest
+%pytest
 
 %post
 %python_install_alternative kasa
@@ -71,8 +81,7 @@ Use 'kasa' binary.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/kasa
-%dir %{python_sitelib}/kasa
-%{python_sitelib}/kasa/*
-%{python_sitelib}/*.egg-info*
+%{python_sitelib}/kasa
+%{python_sitelib}/python_kasa-%{version}.dist-info
 
 %changelog
