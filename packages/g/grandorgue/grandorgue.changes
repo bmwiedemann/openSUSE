@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar  9 17:44:00 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.10.1-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.10.1-1
+  - Fixed crash on loading an incorrect organ
+- Changes from version 3.10.0-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.10.0-1
+  - Added storing the GrandOrgueVersion key in the Organ Settings file https://github.com/GrandOrgue/grandorgue/issues/1375
+  - Added capability of redefining ReleaseLength and IgnorePitch on each level of Organ Settings
+  - Changed defaults for the General Setter elements to Piston https://github.com/GrandOrgue/grandorgue/issues/1360
+  - Added new fields ManualTuning and AutoTuningCorrection of Organ Settings https://github.com/GrandOrgue/grandorgue/issues/1333
+  - Fixed duplicating packaged organs in the organ list https://github.com/GrandOrgue/grandorgue/issues/1367
+  - Fixed displaying a popup window when a cache had been created with another GO version https://github.com/GrandOrgue/grandorgue/issues/1363
+  - Fixed not saving midi settings of divisional buttons https://github.com/GrandOrgue/grandorgue/issues/1350
+  - Added PitchCorrection for organs and windchest. Pipe999PitchCorrection became additive to PitchCorrection of the rank, of the windchest and of the organ https://github.com/GrandOrgue/grandorgue/issues/1351
+  - Added full support of '/' as the file sepearator in ODF unless 'Check ODF for HW1-compatibility' is set https://github.com/GrandOrgue/grandorgue/issues/827
+  - Added support of ODF comments from ';' at any position to the end of line https://github.com/GrandOrgue/grandorgue/issues/828
+
+-------------------------------------------------------------------
 Tue Jan 24 22:39:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.9.5-1.

@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.9.5
+Version:        3.10.1
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
