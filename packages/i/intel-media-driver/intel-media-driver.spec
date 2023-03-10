@@ -90,27 +90,10 @@ export CFLAGS="%optflags -D_FILE_OFFSET_BITS=64" \
 %install
 %cmake_install
 
-# create a profile for exporting LIBVA_DRIVER_NAME variable
-%if 0%{?suse_version} >= 1550
-mkdir -p %{buildroot}%{_distconfdir}/profile.d
-echo "export LIBVA_DRIVER_NAME=iHD" > %{buildroot}%{_distconfdir}/profile.d/intel-media-driver.sh
-echo "setenv LIBVA_DRIVER_NAME iHD" > %{buildroot}%{_distconfdir}/profile.d/intel-media-driver.csh
-%else
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-echo "export LIBVA_DRIVER_NAME=iHD" > %{buildroot}%{_sysconfdir}/profile.d/intel-media-driver.sh
-echo "setenv LIBVA_DRIVER_NAME iHD" > %{buildroot}%{_sysconfdir}/profile.d/intel-media-driver.csh
-%endif
-
 %files
 %doc media-driver/README.md
 %license media-driver/LICENSE.md
 %{_libdir}/dri
-%if 0%{?suse_version} >= 1550
-%dir %{_distconfdir}/profile.d
-%{_distconfdir}/profile.d/*
-%else
-%{_sysconfdir}/profile.d/*
-%endif
 
 %files -n libigfxcmrt%{so_ver}
 %{_libdir}/libigfxcmrt.so.%{so_ver}

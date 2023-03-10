@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 12:36:39 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer set LIBVA_DRIVER_NAME=iHD; it's no longer needed;
+  implemented in libva meanwhile (boo#1209134)
+
+-------------------------------------------------------------------
 Thu Mar  9 14:23:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.1.3:
