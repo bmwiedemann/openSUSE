@@ -58,4 +58,12 @@
 - Update {Build,}Requires.</comment>
     <requestid>911882</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3cfcdc9fa942c5466deda02fe660cbab</srcmd5>
+    <version>0.2.5</version>
+    <time>1678482431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070526</requestid>
+  </revision>
 </revisionlist>

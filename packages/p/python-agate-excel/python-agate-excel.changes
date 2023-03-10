@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  9 09:35:03 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/wireservice/agate-excel/commit/833dc6d39dda3e4b025e3e4dc61533622d65cc5f
+  + python-agate-excel-no-python2.patch
+
+-------------------------------------------------------------------
 Fri Aug 13 05:07:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.2.5:

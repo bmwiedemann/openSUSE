@@ -1,0 +1,116 @@
+Index: agate-excel-0.2.5/agateexcel/table_xls.py
+===================================================================
+--- agate-excel-0.2.5.orig/agateexcel/table_xls.py
++++ agate-excel-0.2.5/agateexcel/table_xls.py
+@@ -8,7 +8,6 @@ from collections import OrderedDict
+ 
+ import agate
+ import olefile
+-import six
+ import xlrd
+ 
+ EXCEL_TO_AGATE_TYPE = {
+@@ -71,7 +70,7 @@ def from_xls(cls, path, sheet=None, skip
+         tables = OrderedDict()
+ 
+         for i, sheet in enumerate(sheets):
+-            if isinstance(sheet, six.string_types):
++            if isinstance(sheet, str):
+                 sheet = book.sheet_by_name(sheet)
+             elif isinstance(sheet, int):
+                 sheet = book.sheet_by_index(sheet)
+@@ -108,7 +107,7 @@ def from_xls(cls, path, sheet=None, skip
+                         agate_type = agate.Date()
+ 
+                 if header:
+-                    name = six.text_type(sheet.cell_value(skip_lines, i)) or None
++                    name = str(sheet.cell_value(skip_lines, i)) or None
+                     column_names.append(name)
+ 
+                 columns.append(values)
+Index: agate-excel-0.2.5/agateexcel/table_xlsx.py
+===================================================================
+--- agate-excel-0.2.5.orig/agateexcel/table_xlsx.py
++++ agate-excel-0.2.5/agateexcel/table_xlsx.py
+@@ -8,7 +8,6 @@ from collections import OrderedDict
+ 
+ import agate
+ import openpyxl
+-import six
+ 
+ NULL_TIME = datetime.time(0, 0, 0)
+ 
+@@ -52,7 +51,7 @@ def from_xlsx(cls, path, sheet=None, ski
+     tables = OrderedDict()
+ 
+     for i, sheet in enumerate(sheets):
+-        if isinstance(sheet, six.string_types):
++        if isinstance(sheet, str):
+             try:
+                 sheet = book[sheet]
+             except KeyError:
+@@ -76,7 +75,7 @@ def from_xlsx(cls, path, sheet=None, ski
+ 
+         if header:
+             sheet_header = sheet.iter_rows(min_row=1 + skip_lines, max_row=1 + skip_lines)
+-            column_names = [None if c.value is None else six.text_type(c.value) for row in sheet_header for c in row]
++            column_names = [None if c.value is None else str(c.value) for row in sheet_header for c in row]
+             offset = 1
+ 
+         if row_limit is None:
+Index: agate-excel-0.2.5/setup.py
+===================================================================
+--- agate-excel-0.2.5.orig/setup.py
++++ agate-excel-0.2.5/setup.py
+@@ -21,11 +21,11 @@ setup(
+         'Natural Language :: English',
+         'Operating System :: OS Independent',
+         'Programming Language :: Python',
+-        'Programming Language :: Python :: 2.7',
+-        'Programming Language :: Python :: 3.6',
+         'Programming Language :: Python :: 3.7',
+         'Programming Language :: Python :: 3.8',
+         'Programming Language :: Python :: 3.9',
++        'Programming Language :: Python :: 3.10',
++        'Programming Language :: Python :: 3.11',
+         'Programming Language :: Python :: Implementation :: CPython',
+         'Programming Language :: Python :: Implementation :: PyPy',
+         'Topic :: Scientific/Engineering :: Information Analysis',
+@@ -36,7 +36,6 @@ setup(
+         'agate>=1.5.0',
+         'olefile',
+         'openpyxl>=2.3.0',
+-        'six',
+         'xlrd>=0.9.4',
+     ],
+     extras_require={
+Index: agate-excel-0.2.5/tests/test_table_xlsx.py
+===================================================================
+--- agate-excel-0.2.5.orig/tests/test_table_xlsx.py
++++ agate-excel-0.2.5/tests/test_table_xlsx.py
+@@ -4,7 +4,6 @@
+ import datetime
+ 
+ import agate
+-import six
+ 
+ import agateexcel  # noqa: F401
+ 
+@@ -106,16 +105,10 @@ class TestXLSX(agate.AgateTestCase):
+     def test_ambiguous_date(self):
+         table = agate.Table.from_xlsx('examples/test_ambiguous_date.xlsx')
+ 
+-        # openpyxl >= 3 fixes a bug, but Python 2 is constrained to openpyxl < 3.
+-        if six.PY2:
+-            expected = datetime.date(1899, 12, 31)
+-        else:
+-            expected = datetime.date(1900, 1, 1)
+-
+         self.assertColumnNames(table, ['s'])
+         self.assertColumnTypes(table, [agate.Date])
+         self.assertRows(table, [
+-            [expected],
++            [datetime.date(1900, 1, 1)],
+         ])
+ 
+     def test_empty(self):
