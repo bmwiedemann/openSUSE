@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  8 16:42:57 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.4
+  * Advanced settings: fix escaping single quotes ( ' ) in WLAN password
+  * Windows only: when auto-detecting the WLAN password used by the computer running Imager, it now processes passwords that contain < > ' " & correctly.
+  * Advanced settings: default to using username of logged-in user instead of 'pi'
+  * Now uses a different method to edit files on the FAT partition to apply advanced settings. Imager now understands the FAT16/FAT32 file system format and can edit files by itself using the raw disk device, without having to rely on the operating system to mount the partition first.
+  * French translation update
+
+-------------------------------------------------------------------
 Mon Oct 17 16:22:27 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - rpi-imager (1.7.3) 

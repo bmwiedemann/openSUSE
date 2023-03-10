@@ -1,7 +1,7 @@
 #
 # spec file for package rpi-imager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpi-imager
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
