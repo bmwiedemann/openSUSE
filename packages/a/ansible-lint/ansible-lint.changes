@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Mar  9 18:26:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.2:
+  * Bugfixes
+    - Ignore risky-shell-pipe with pwsh (#3166) @ssbarnea
+    - Implement galaxy[no-runtime] check for meta/runtime.yml file
+      (#3162) @ssbarnea
+    - Fixed args rule error for synchronize module (#3158)
+      @ajinkyau
+    - Avoid test ... require a dictionary error with jinja rule
+      (#3157) @ssbarnea
+
+-------------------------------------------------------------------
+Tue Mar  7 15:09:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.1:
+  * Bugfixes
+    - Avoid "unable to evaluate string as dictionary" with args
+      rule (#3150) @ssbarnea
+    - Avoid 'Unrecognized type' errors with jinja rule
+      (#3149) @ssbarnea
+    - Allow 'use' parameter with service module (args)
+      (#3147) @ssbarnea
+    - Change schema $id to be a valid URL (#3146) @ssbarnea
+    - Document skip_ansible_lint does not work with yamllint rule
+      (#3144) @ssbarnea
+    - Update schema '$id' (#3137) @dericcrago
+    - Ensure ignored matches are reports as minor in codeclimate
+      output (#3131) @ssbarnea
+    - Remove unused rules_as_docs (#3130) @ssbarnea
+    - Remove deprecated nested_items (#3129) @ssbarnea
+    - Avoid undefined errors from jinja rule (#3127) @ssbarnea
+    - Refactor processing of module args (#3125) @ssbarnea
+
+-------------------------------------------------------------------
 Fri Mar  3 13:08:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.14.0
