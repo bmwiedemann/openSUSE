@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 09 19:38:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.9.1:
+  * release v1.9.1 (#6520)
+  * fix: missing metrics for policies in audit mode (#6509)
+  * fix: release (#6502)
+  * fix: release (#6498)
+  * release v1.9.1-rc.1 (#6485)
+  * cherry-pick #6459 (#6468)
+  * fix: error log (#6429) (#6437)
+  * check errors (#6424) (#6426)
+  * fix: autoUpdateWebhooks=false causes ClusterPolicy to never be
+    ready (#6374) (#6382)
+  * fix: delete certificate secret if type is not TLS
+    (#6368) (#6373)
+  * oldObject translation solved in autogen (#6305) (#6372)
+  * chore(deps): bump github.com/sigstore/k8s-manifest-sigstore
+    (cherry-pick #6320) (#6359)
+  * fix: dump admission response (#6349) (#6352)
+  * chore(deps): bump golang.org/x/net (#6344)
+  * fix: add roles and clusterroles when dumping admission requests
+    (#6319) (#6323)
+  * fix: use client instead of discovery for sanity checks
+    (cherry-pick #6296) (#6299)
+  * cherry-pick #6237 (#6273)
+  * chore: add error logs in wait for cache sync helper (#6275)
+  * fix: jp divide quantities (#6229) (#6232)
+  * Cherry-pick #6126 (#6228)
+  * fix: admission review variables for DELETE operations
+    (#6197) (#6214)
+  * cherry-pick #6188 (#6209)
+  * fix: image tagging strategy (#6200)
+
+-------------------------------------------------------------------
 Thu Feb 02 06:49:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.9.0:
