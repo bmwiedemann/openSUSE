@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 24 03:07:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-SQL-Translator/Changes
+
+  1.63 - 2023-02-23
+   * sqlt-diff: Change producer_args to sqlt_args for better self-documentation
+     NOTE - using producer_args will now throw a deprecation warning
+
+   FEATURES
+   * A lot of new functionality for the Oracle producer (thanks @hazardv)
+   * Support DB commments in the following producers: PG, JSON, YAML. Also in the sqlite parser (thanks @djerius)
+   * Support INCLUDE on indices for Pg (producer + parser)
+   * Postgres producer now supports materialized views via $extra->{materialized}
+
+   FIXES
+   * Postgres producer genrates correct constraint names for schema-namespaced tables
+   * Postgres DBI parser now returns scalarref SQL instead of strings for defaults (thanks @nrdvana)
+   * Postgres producer drops NOT NULL constraints more correctly (thanks @uehara-delta)
+   * binaries now have their perl set by EUMM (thanks @toddr)
+
+-------------------------------------------------------------------
 Tue Sep 15 03:14:53 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.62

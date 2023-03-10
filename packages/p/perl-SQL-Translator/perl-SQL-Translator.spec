@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SQL-Translator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
+%define cpan_name SQL-Translator
 Name:           perl-SQL-Translator
-Version:        1.62
+Version:        1.63
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
-%define cpan_name SQL-Translator
-Summary:        Manipulate structured data definitions (SQL and more)
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-only
-Group:          Development/Libraries/Perl
+Summary:        SQL DDL transformations and more
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILMARI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/V/VE/VEESH/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Clan)
 BuildRequires:  perl(DBI) >= 1.54
 BuildRequires:  perl(Digest::SHA)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.54
 BuildRequires:  perl(File::ShareDir) >= 1.0
 BuildRequires:  perl(File::ShareDir::Install)
 BuildRequires:  perl(JSON::MaybeXS) >= 1.003003
@@ -83,7 +82,8 @@ the definition parts of SQL are handled (CREATE, ALTER), not the
 manipulation of data (INSERT, UPDATE, DELETE).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
@@ -91,7 +91,7 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -102,7 +102,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc AUTHORS Changes README
 %license LICENSE
 
