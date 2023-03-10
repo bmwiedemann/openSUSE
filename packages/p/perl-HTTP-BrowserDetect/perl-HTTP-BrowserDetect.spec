@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-BrowserDetect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-BrowserDetect
 Name:           perl-HTTP-BrowserDetect
-Version:        3.37
+Version:        3.38
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine Web browser, version, and platform from an HTTP user agent string

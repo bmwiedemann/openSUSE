@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  4 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.38
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.38      2023-03-03 21:37:52Z
+      - Detect Yandex Browser (GH#201) (altblue)
+      - Detect some "Meta" apps (GH#199) (altblue)
+      - Detect Instagram (GH#200) (altblue)
+
+-------------------------------------------------------------------
 Wed Sep 28 06:39:39 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 3.37
