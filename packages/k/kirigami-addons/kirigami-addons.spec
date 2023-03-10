@@ -19,7 +19,7 @@
 %bcond_without released
 
 Name:           kirigami-addons
-Version:        0.6.1
+Version:        0.7.2
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  9 11:47:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.7.2. No changelog. Changes since 0.7.1:
+  * Fix indicator spacing
+  * Add edit text
+  * Silence some errors
+  * Add avatar of user if specified
+  * qdatetimeparser "QVariant::Type" -> "QMetaType::Type"
+  * Fix layout bug in AboutPage
+
+-------------------------------------------------------------------
 Tue Dec 20 12:24:56 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Don't delete the CMake config files, tokodon needs them
