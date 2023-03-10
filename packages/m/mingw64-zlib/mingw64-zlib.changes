@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  2 17:04:20 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix cmake macro usage (boo#1205135)
+
+-------------------------------------------------------------------
 Mon Apr  4 10:15:19 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 1.2.12

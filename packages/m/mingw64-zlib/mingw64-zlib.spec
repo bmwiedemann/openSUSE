@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-zlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,7 +110,7 @@ developing applications which use minizip.
 
 %build
 %_mingw64_cmake . -DINSTALL_PKGCONFIG_DIR=%{_mingw64_libdir}/pkgconfig
-%_mingw64_make CFLAGS=-shared LDFLAGS=-no-undefined
+%_mingw64_cmake_build CFLAGS=-shared LDFLAGS=-no-undefined
 
 cd contrib/minizip
 autoreconf -fi
@@ -122,7 +122,7 @@ MINGW64_LDFLAGS="%{_mingw64_ldflags} -L%{_builddir}/%{name}-%{version}-%{release
 %_mingw64_make CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
-%make_install
+%_mingw64_cmake_install
 %make_install -C contrib/minizip
 # for compatibility with older packages
 ln -sf libz.dll %{buildroot}%{_mingw64_bindir}/zlib1.dll
