@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 10 12:09:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove adapter_dwiggiecom.patch … it really doesn't work.
+
+-------------------------------------------------------------------
 Fri Mar  3 09:15:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.21.0:

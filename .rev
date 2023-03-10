@@ -1139,4 +1139,13 @@
   * Add style attr by default to fiction.live</comment>
     <requestid>1069115</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>3c2da67586dda2dc3dafe183106d6082</srcmd5>
+    <version>4.21.0</version>
+    <time>1678482510</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove adapter_dwiggiecom.patch … it really doesn't work.
+</comment>
+    <requestid>1070710</requestid>
+  </revision>
 </revisionlist>
