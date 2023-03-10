@@ -1,7 +1,7 @@
 #
 # spec file for package streamlink
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           streamlink
-Version:        4.2.0
+Version:        5.3.1
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
@@ -32,29 +32,34 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx >= 4
 BuildRequires:  python3-devel >= 3.7
-BuildRequires:  python3-pip
+BuildRequires:  python3-pip >= 9
 BuildRequires:  python3-requests >= 2.26
 BuildRequires:  python3-versioningit >= 2.0.0
 BuildRequires:  python3-wheel
 
 # TEST REQUIREMENTS
-BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest >= 6.0.0
 BuildRequires:  python3-PySocks >= 1.5.6
-BuildRequires:  python3-freezegun
+BuildRequires:  python3-certifi
+BuildRequires:  python3-freezegun >= 1.0.0
 BuildRequires:  python3-isodate
 BuildRequires:  python3-lxml >= 4.6.4
 BuildRequires:  python3-pycountry
-BuildRequires:  python3-pycryptodome
+BuildRequires:  python3-pycryptodome >= 3.4.3
+BuildRequires:  python3-pytest-asyncio
 BuildRequires:  python3-requests-mock
+BuildRequires:  python3-urllib3 >= 1.26.0
 BuildRequires:  python3-websocket-client >= 1.2.1
 BuildConflicts: python3-PySocks = 1.5.7
 
 Requires:       python3-PySocks >= 1.5.6
+Requires:       python3-certifi
 Requires:       python3-isodate
 Requires:       python3-lxml >= 4.6.4
 Requires:       python3-pycountry
 Requires:       python3-pycryptodome >= 3.4.3
 Requires:       python3-requests >= 2.26
+Requires:       python3-urllib3 >= 1.26.0
 Requires:       python3-websocket-client >= 1.2.1
 Conflicts:      python3-PySocks = 1.5.7
 

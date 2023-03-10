@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  4 04:52:38 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 5.3.1. Breaking changes:
+  + BREAKING: removed avconv (libav) from FFmpeg fallback list (#4826)
+  + BREAKING/API: removed Plugin.bind() and changed the signature of the Plugin class constructor (#4768)
+    A compatibility wrapper for these interface changes has temporarily been added in order to keep third-party plugin implementations working.
+    Please see the deprecation docs for more details.
+  + BREAKING/API: changed the return value of Session.resolve_url() (#4768)
+    Please see the deprecation docs for more details.
+  + BREAKING/API: removed HTTPSession.parse_*() methods (#4803)
+
+-------------------------------------------------------------------
 Wed Jul 27 01:38:22 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 4.2.0
