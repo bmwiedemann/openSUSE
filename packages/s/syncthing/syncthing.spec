@@ -30,6 +30,7 @@ Patch0:         harden_strelaysrv.service.patch
 Patch1:         harden_syncthing-resume.service.patch
 Patch2:         harden_syncthing@.service.patch
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  update-desktop-files
 BuildRequires:  golang(API) >= 1.14
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
@@ -104,6 +105,8 @@ install -Dpm 0644 etc/linux-systemd/user/%{name}.service           \
   %{buildroot}%{_userunitdir}/%{name}.service
 %endif
 
+%suse_update_desktop_file -i "syncthing-ui"
+
 %pre
 %service_add_pre %{name}-resume.service
 
@@ -145,6 +148,7 @@ getent passwd strelaysrv >/dev/null || \
 %license LICENSE
 %doc AUTHORS CONDUCT.md CONTRIBUTING.md README.md
 %{_bindir}/%{name}
+%{_datadir}/applications/syncthing-ui.desktop
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
