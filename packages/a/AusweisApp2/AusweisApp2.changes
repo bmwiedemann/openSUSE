@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar  9 23:31:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.3
+    - Improvement of help and tutorial texts.
+    - Improvements in diagnostics.
+    - Fix an error in the NFC dialog on iOS.
+    - Improved accessibility when entering PIN, CAN and PUK.
+    - Introduction of unique FailureCodes in SDK.
+    - Added the environment variable AUSWEISAPP2_AUTOMATIC_DEVELOPERMODE
+      in the fully automated SDK.
+    - Fixed incorrect progress display in SDK for iOS.
+    - Added SECURESCREENKEYBOARD for corporate environments.
+    - Bumped TargetSDK to 33 in SDK for Android.
+    - Update of OpenSSL to version 3.0.8.
+
+-------------------------------------------------------------------
 Sun Feb  5 20:05:56 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - switch to generic openssl-devel to allow openssl-3
