@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 10 14:20:33 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Remove check stage via cargo test
+
+-------------------------------------------------------------------
+Fri Mar 10 13:14:09 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.13.0
+  Maintenance
+  * Add info on extracting currently playing to README
+  * Fix clippy warnings
+  * Always pass cover URL to notification
+  * Change unnecessary usage of Arc to borrow instead
+  * Disable autojump for add to playlist dialog
+  Features
+  * Theme config support for Cursive's `HighlightInactive`
+  * Switch from MM:SS to HH:MM:SS duration representation if needed
+  * commands: Add "reconnect" command to force socket shutdown
+  * Allow executing program to retrieve credentials
+  * Add manpage generation using xtask
+  * Automatic shell completion generation using xtask
+- Switch to zst compression for vendored deps
+- Use cargo test as check stage
+
+-------------------------------------------------------------------
 Fri Dec 30 14:08:30 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.12.0

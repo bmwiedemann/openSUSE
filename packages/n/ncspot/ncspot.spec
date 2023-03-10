@@ -1,7 +1,7 @@
 #
 # spec file for package ncspot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           ncspot
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Ncurses Spotify client
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/hrkfdn/ncspot
 Source:         https://github.com/hrkfdn/ncspot/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo >= 1.58
 BuildRequires:  libpulse-devel
@@ -35,6 +35,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.61
 BuildRequires:  update-desktop-files
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
 
 %description
