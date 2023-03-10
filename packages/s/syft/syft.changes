@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 09 15:31:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.74.1:
+  * Update syft bootstrap tools to latest versions. (#1658)
+  * fix: improved Python binary detection (#1648)
+  * fix: suppress some known incorrect vendor candidates for npm
+    CPEs (#1659)
+  * fix: sanitize SPDX LicenseRefs (#1657)
+  * chore(deps): bump golang.org/x/mod from 0.8.0 to 0.9.0 (#1655)
+  * chore(deps): bump golang.org/x/net from 0.7.0 to 0.8.0 (#1653)
+  * chore(deps): bump github.com/spf13/afero from 1.9.4 to 1.9.5
+    (#1654)
+  * chore(deps): bump golang.org/x/term from 0.5.0 to 0.6.0 (#1656)
+  * fix: dotnet PURL types are invalid (#1649)
+  * feat: disable cpe vendor wildcards to reduce false positives
+    (#1647)
+  * read relative etc/apk/repositories for alpine version when no
+    OS provided (#1615)
+
+-------------------------------------------------------------------
 Fri Mar 03 05:40:08 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.74.0:
