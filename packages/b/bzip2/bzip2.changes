@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:04:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Mon May  2 05:05:16 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Port rpmlintrc format to rpmlint 2.x.

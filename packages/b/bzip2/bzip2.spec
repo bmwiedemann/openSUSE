@@ -1,7 +1,7 @@
 #
 # spec file for package bzip2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig
 Requires(pre):  %{libname}
 Provides:       bzip = %{version}
 Obsoletes:      bzip < %{version}
+%{?suse_build_hwcaps_libs}
 
 %description
 The bzip2 program is a program for compressing files.
