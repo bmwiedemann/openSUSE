@@ -1,7 +1,7 @@
 #
 # spec file for package perl-GraphViz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name GraphViz
 Name:           perl-GraphViz
-Version:        2.25
+Version:        2.26
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to AT&T's GraphViz. Deprecated. See GraphViz2
@@ -33,7 +33,6 @@ BuildRequires:  perl(IPC::Run) >= 0.6
 BuildRequires:  perl(LWP::Simple) >= 6
 BuildRequires:  perl(Parse::RecDescent) >= 1.965001
 BuildRequires:  perl(Test::More) >= 1.001002
-BuildRequires:  perl(Test::Pod) >= 1.48
 BuildRequires:  perl(XML::Twig) >= 3.52
 BuildRequires:  perl(XML::XPath) >= 1.13
 Requires:       perl(File::Which) >= 1.09
@@ -63,6 +62,7 @@ GraphViz is deprecated in favour of GraphViz2.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e s,/usr/local/bin/perl,/usr/bin/perl, examples/*.pl

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  4 03:07:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.26
+   see /usr/share/doc/packages/perl-GraphViz/Changes
+
+  2.26 2023-03-03
+  - unchanged from 2.25 (except for deps adjustment) which also got deleted from CPAN by co-maint
+
+-------------------------------------------------------------------
 Mon Aug 22 03:07:21 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.25
