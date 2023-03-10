@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230308" schemaversion="4.1">
+<image name="OBS__openSUSE___20230309" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230308</productvar>
+      <productvar name="VERSION">20230309</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230308,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230309,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230308/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230309/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -75,6 +75,7 @@
       <repopackage name="adobe-sourceserifpro-fonts"/>
       <repopackage name="adwaita-icon-theme"/>
       <repopackage name="adwaita-qt5"/>
+      <repopackage name="adwaita-qt6" arch="x86_64"/>
       <repopackage name="adwaita-xfce-icon-theme"/>
       <repopackage name="aha"/>
       <repopackage name="akonadi-calendar-lang"/>
@@ -463,6 +464,7 @@
       <repopackage name="fcitx-mozc" arch="x86_64"/>
       <repopackage name="fcitx-pinyin"/>
       <repopackage name="fcitx-qt5"/>
+      <repopackage name="fcitx-qt6" arch="x86_64"/>
       <repopackage name="fcitx-sunpinyin"/>
       <repopackage name="fcitx-table"/>
       <repopackage name="fcitx-table-cn-wubi"/>
@@ -1240,6 +1242,7 @@
       <repopackage name="libadwaita-1-0"/>
       <repopackage name="libadwaita-lang"/>
       <repopackage name="libadwaitaqt5-1"/>
+      <repopackage name="libadwaitaqt6-1" arch="x86_64"/>
       <repopackage name="libaio1"/>
       <repopackage name="libalternatives1"/>
       <repopackage name="libamd2"/>
@@ -1302,6 +1305,7 @@
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
       <repopackage name="libavutil57"/>
+      <repopackage name="libb2-1" arch="x86_64"/>
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
@@ -2470,6 +2474,42 @@
       <repopackage name="libQt5X11Extras5"/>
       <repopackage name="libQt5Xml5"/>
       <repopackage name="libQt5XmlPatterns5"/>
+      <repopackage name="libQt6Core6" arch="x86_64"/>
+      <repopackage name="libQt6DBus6" arch="x86_64"/>
+      <repopackage name="libQt6Gui6" arch="x86_64"/>
+      <repopackage name="libQt6LabsAnimation6" arch="x86_64"/>
+      <repopackage name="libQt6LabsFolderListModel6" arch="x86_64"/>
+      <repopackage name="libQt6LabsQmlModels6" arch="x86_64"/>
+      <repopackage name="libQt6LabsSettings6" arch="x86_64"/>
+      <repopackage name="libQt6LabsSharedImage6" arch="x86_64"/>
+      <repopackage name="libQt6LabsWavefrontMesh6" arch="x86_64"/>
+      <repopackage name="libQt6Network6" arch="x86_64"/>
+      <repopackage name="libQt6OpenGL6" arch="x86_64"/>
+      <repopackage name="libQt6Qml6" arch="x86_64"/>
+      <repopackage name="libQt6QmlCore6" arch="x86_64"/>
+      <repopackage name="libQt6QmlLocalStorage6" arch="x86_64"/>
+      <repopackage name="libQt6QmlModels6" arch="x86_64"/>
+      <repopackage name="libQt6QmlWorkerScript6" arch="x86_64"/>
+      <repopackage name="libQt6QmlXmlListModel6" arch="x86_64"/>
+      <repopackage name="libQt6Quick6" arch="x86_64"/>
+      <repopackage name="libQt6QuickControls2-6" arch="x86_64"/>
+      <repopackage name="libQt6QuickControls2Impl6" arch="x86_64"/>
+      <repopackage name="libQt6QuickDialogs2-6" arch="x86_64"/>
+      <repopackage name="libQt6QuickDialogs2QuickImpl6" arch="x86_64"/>
+      <repopackage name="libQt6QuickDialogs2Utils6" arch="x86_64"/>
+      <repopackage name="libQt6QuickLayouts6" arch="x86_64"/>
+      <repopackage name="libQt6QuickParticles6" arch="x86_64"/>
+      <repopackage name="libQt6QuickShapes6" arch="x86_64"/>
+      <repopackage name="libQt6QuickTemplates2-6" arch="x86_64"/>
+      <repopackage name="libQt6QuickTest6" arch="x86_64"/>
+      <repopackage name="libQt6Sql6" arch="x86_64"/>
+      <repopackage name="libQt6Test6" arch="x86_64"/>
+      <repopackage name="libQt6WaylandClient6" arch="x86_64"/>
+      <repopackage name="libQt6WaylandCompositor6" arch="x86_64"/>
+      <repopackage name="libQt6WaylandEglClientHwIntegration6" arch="x86_64"/>
+      <repopackage name="libQt6WaylandEglCompositorHwIntegration6" arch="x86_64"/>
+      <repopackage name="libQt6Widgets6" arch="x86_64"/>
+      <repopackage name="libQt6WlShellIntegration6" arch="x86_64"/>
       <repopackage name="libQtQuick5"/>
       <repopackage name="libquadmath0"/>
       <repopackage name="libquicktime0"/>
@@ -3377,7 +3417,7 @@
       <repopackage name="pcsc-towitoko"/>
       <repopackage name="pentaho-libxml"/>
       <repopackage name="pentaho-reporting-flow-engine"/>
-      <repopackage name="pentobi-kde-thumbnailer"/>
+      <repopackage name="pentobi-kde-thumbnailer" arch="x86_64"/>
       <repopackage name="perl"/>
       <repopackage name="perl-Archive-Zip"/>
       <repopackage name="perl-Authen-SASL"/>
@@ -3843,7 +3883,14 @@
       <repopackage name="qemu-vgabios"/>
       <repopackage name="qemu-x86"/>
       <repopackage name="QGnomePlatform-qt5"/>
+      <repopackage name="QGnomePlatform-qt6" arch="x86_64"/>
       <repopackage name="qqc2-desktop-style"/>
+      <repopackage name="qt6-declarative-imports" arch="x86_64"/>
+      <repopackage name="qt6-imageformats" arch="x86_64"/>
+      <repopackage name="qt6-network-tls" arch="x86_64"/>
+      <repopackage name="qt6-platformtheme-gtk3" arch="x86_64"/>
+      <repopackage name="qt6-translations" arch="x86_64"/>
+      <repopackage name="qt6-wayland" arch="x86_64"/>
       <repopackage name="qtdeclarative-imports-provides-qt5"/>
       <repopackage name="quadrapassel"/>
       <repopackage name="quadrapassel-lang"/>
