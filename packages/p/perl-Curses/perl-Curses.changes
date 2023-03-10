@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  8 03:07:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Curses/ChangeLog
+
+  New in 1.44 (Released March 07, 2023)
+
+    Implement A_ITALIC
+
+-------------------------------------------------------------------
 Thu Dec  8 03:06:50 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.43
