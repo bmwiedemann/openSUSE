@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  8 15:08:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire libzhuyin13: that's the responsibility of the
+  respective devel package.
+
+-------------------------------------------------------------------
 Sun Jan 22 16:34:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.2:

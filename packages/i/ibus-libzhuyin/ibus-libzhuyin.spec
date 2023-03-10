@@ -16,8 +16,6 @@
 #
 
 
-%define sover 13
-
 Name:           ibus-libzhuyin
 Version:        1.10.2
 Release:        0
@@ -32,7 +30,6 @@ BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libpinyin-tools >= 2.0.91
-BuildRequires:  libzhuyin%{sover}
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
