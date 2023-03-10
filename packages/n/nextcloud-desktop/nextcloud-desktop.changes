@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar  9 17:29:08 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.4
+  - desktop#5425 [stable-3.7] check German translation for wrong wording
+  - desktop#5437 [stable-3.7] Fix "Create new folder" menu entries in settings not working correctly on macOS
+  - desktop#5438 [stable-3.7] Clean up account creation and deletion code
+  - desktop#5446 [stable-3.7] Fix share dialog infinite loading
+  - desktop#5450 [stable-3.7] fix edit locally job not finding the user account: wrong user id
+  - desktop#5454 [stable-3.7] skip e2e encrypted files with empty filename in metadata
+  - desktop#5481 [stable-3.7] Always discover blacklisted folders to avoid data loss when modifying selectivesync list.
+  - desktop#5483 [stable-3.7] use new connect syntax
+  - desktop#5484 [stable-3.7] with cfapi when dehydrating files add missing flag
+  - desktop#5487 [stable-3.7] Fix avatars not showing up in settings dialog account actions until clicked on
+  - desktop#5488 [stable-3.7] Fix text labels in Sync Status component
+  - desktop#5489 [stable-3.7] Fix infinite loading in the share dialog when public link shares are disabled on the server
+  - desktop#5490 [stable-3.7] Ci/clang tidy checks init variables
+  - desktop#5494 [stable-3.7] Display 'Search globally' as the last sharees list element
+  - desktop#5499 [stable-3.7] Resize WebView widget once the loginpage rendered
+  - desktop#5502 [stable-3.7] Bugfix/do not restore virtual files
+  - desktop#5505 [stable-3.7] Fix display of 2FA notification.
+
+-------------------------------------------------------------------
 Fri Feb 10 06:25:57 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.7.3
