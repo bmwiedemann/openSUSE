@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 10 03:06:23 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.16.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+
+  Version 3.16.1 (released March 5, 2023)
+   - Add new attribute "pg_int8_as_string", for backwards compatibility.
+     [Alexander Gorlov]
+     (Github pull request #100)
+   - Add a META.json file; rename META.yml to META.yaml
+   - Fix 03smethod.t $sth->last_insert_id skip count for DBI < 1.642
+     [Dagfinn Ilmari Mannsåker]
+     (Github issue #99)
+   - Documentation improvements for service files
+     [Erik Rijkers]
+
+-------------------------------------------------------------------
 Tue Aug  9 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.16.0

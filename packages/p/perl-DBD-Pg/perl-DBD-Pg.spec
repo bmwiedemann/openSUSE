@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-Pg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DBD-Pg
 Name:           perl-DBD-Pg
-Version:        3.16.0
+Version:        3.16.1
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        DBI PostgreSQL interface
