@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.36
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.36 2023-03-02 (rurban)
+          - remove the SAVESTACK_POS noop. Merged from JSON-XS-3.02,
+            removed there with 4.0. requested to remove with
+            L<https://github.com/Perl/perl5/pull/20858>
+  4.35 2023-02-22 (rurban)
+          - fix utf8 object stringification (jixam PR #212)
+  4.34 2023-02-21 (rurban)
+          - fix c89 compilation regression, for loop init on centos. GH #211
+  4.33 2023-02-21 (rurban)
+          - fix a security issue, decoding hash keys without ending :
+            (GH #208)
+          - check all bare hash keys for utf8 (GH #209)
+          - improve overload warnings (Graham Knop PR #205)
+          - fix a croak leak (GH #206)
+
+-------------------------------------------------------------------
 Sun Aug 14 03:07:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.32
