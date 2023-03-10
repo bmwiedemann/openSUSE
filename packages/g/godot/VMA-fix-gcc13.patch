@@ -1,0 +1,59 @@
+From b113e6d4ff18dc1b1e6f4ec1bd0e307fd1d8623d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Verschelde?= <rverschelde@gmail.com>
+Date: Thu, 9 Mar 2023 10:46:35 +0100
+Subject: [PATCH] Vulkan: Fix VMA build with GCC 13
+
+Fixes #74647.
+---
+ thirdparty/vulkan/patches/VMA-fix-gcc13.patch | 26 +++++++++++++++++++
+ thirdparty/vulkan/vk_mem_alloc.h              |  4 +++
+ 2 files changed, 30 insertions(+)
+ create mode 100644 thirdparty/vulkan/patches/VMA-fix-gcc13.patch
+
+diff --git a/thirdparty/vulkan/patches/VMA-fix-gcc13.patch b/thirdparty/vulkan/patches/VMA-fix-gcc13.patch
+new file mode 100644
+index 000000000000..08928503a768
+--- /dev/null
++++ b/thirdparty/vulkan/patches/VMA-fix-gcc13.patch
+@@ -0,0 +1,26 @@
++From 29d492b60c84ca784ea0943efc7d2e6e0f3bdaac Mon Sep 17 00:00:00 2001
++From: Adam Sawicki <adam.sawicki@amd.com>
++Date: Thu, 19 Jan 2023 13:19:55 +0100
++Subject: [PATCH] Added missing #include <cstdio>
++
++For snprintf, for compatibility with GCC 13.
++Fixes #312 - thanks @marxin !
++---
++ thirdparty/vulkan/vk_mem_alloc.h | 4 ++++
++ 1 file changed, 4 insertions(+)
++
++diff --git a/thirdparty/vulkan/vk_mem_alloc.h b/thirdparty/vulkan/vk_mem_alloc.h
++index b787c36..0fe459b 100644
++--- a/thirdparty/vulkan/vk_mem_alloc.h
+++++ b/thirdparty/vulkan/vk_mem_alloc.h
++@@ -2614,6 +2614,10 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeStatsString(
++     #include <bit> // For std::popcount
++ #endif
++ 
+++#if VMA_STATS_STRING_ENABLED
+++    #include <cstdio> // For snprintf
+++#endif
+++
++ /*******************************************************************************
++ CONFIGURATION SECTION
++ 
+diff --git a/thirdparty/vulkan/vk_mem_alloc.h b/thirdparty/vulkan/vk_mem_alloc.h
+index 184ee005d827..ea30060649f2 100644
+--- a/thirdparty/vulkan/vk_mem_alloc.h
++++ b/thirdparty/vulkan/vk_mem_alloc.h
+@@ -2582,6 +2582,10 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeStatsString(
+     #include <bit> // For std::popcount
+ #endif
+ 
++#if VMA_STATS_STRING_ENABLED
++    #include <cstdio> // For snprintf
++#endif
++
+ /*******************************************************************************
+ CONFIGURATION SECTION
+ 

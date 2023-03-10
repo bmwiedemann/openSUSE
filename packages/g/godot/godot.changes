@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 9 12:00:00 UTC 2023 - cunix@mail.de
+
+- added scons_regression.patch for scons 4.5.1 until 4.5.2
+
+-------------------------------------------------------------------
+Thu Mar  9 11:54:06 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Include upstream fix for GCC 13: VMA-fix-gcc13.patch.
+
+-------------------------------------------------------------------
 Fri Mar 3 12:00:00 UTC 2023 - cunix@mail.de
 
 - existing 3.x projects will probably need manual work to port to 4.0

@@ -1,7 +1,7 @@
 #
 # spec file for package godot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,8 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         certs_fallback.patch
 # Heap-buffer-overflow in bundled tinyexr
 Patch1:         tinyexr_thirdparty_upstream.patch
+Patch2:         VMA-fix-gcc13.patch
+Patch3:         scons_regression.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -62,11 +64,11 @@ BuildRequires:  pkgconfig(theoradec)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 
@@ -86,10 +88,10 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(graphite2)
-BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  glslang-devel
 BuildRequires:  mbedtls-devel
+BuildRequires:  pkgconfig(graphite2)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(miniupnpc)
@@ -126,6 +128,7 @@ Provides:       bundled(minizip) = 1.2.13
 
 Provides:       bundled(FastLZ)
 Provides:       bundled(FastNoiseLite)
+Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(amd-fsr) = 1.0.2
@@ -137,7 +140,6 @@ Provides:       bundled(doctest) = 2.4.9
 Provides:       bundled(etcpak) = 1.0
 Provides:       bundled(glad) = 2.0.2
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(hqx)
 Provides:       bundled(icu4c) = 72.1
 Provides:       bundled(ifaddrs-android)
@@ -232,6 +234,8 @@ Bash command line completion support for %{name} and %{name}-runner
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 

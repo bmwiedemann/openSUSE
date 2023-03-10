@@ -1,0 +1,25 @@
+From: cunix@mail.de
+Date: 2023-03-09 22:00:00
+Subject: scons 4.5.1 regression
+References: https://github.com/godotengine/godot/issues/74683
+
+work around regression of scons 4.5.1
+expected to be fixed with 4.5.2
+
+---
+
+diff -r -U 5 a/platform/linuxbsd/detect.py b/platform/linuxbsd/detect.py
+--- a/platform/linuxbsd/detect.py
++++ b/platform/linuxbsd/detect.py
+@@ -305,10 +305,11 @@
+             env.Append(CPPDEFINES=["ALSA_ENABLED", "ALSAMIDI_ENABLED"])
+ 
+     if env["pulseaudio"]:
+         if not env["use_sowrap"]:
+             if os.system("pkg-config --exists libpulse") == 0:  # 0 means found
++                env["CPPDEFINES"] = list(env["CPPDEFINES"])
+                 env.ParseConfig("pkg-config libpulse --cflags --libs")
+                 env.Append(CPPDEFINES=["PULSEAUDIO_ENABLED", "_REENTRANT"])
+             else:
+                 print("Warning: PulseAudio development libraries not found. Disabling the PulseAudio audio driver.")
+                 env["pulseaudio"] = False
