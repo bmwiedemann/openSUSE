@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,6 @@ BuildRequires:  %{python_module flit-core >= 3.8.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tomli-w}
-# SECTION test requirements
-BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module pytest >= 2.7.3}
-BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module tomli}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
@@ -46,6 +40,12 @@ Requires:       python-tomli-w
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest >= 2.7.3}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module tomli}
+# /SECTION
 %python_subpackages
 
 %description
