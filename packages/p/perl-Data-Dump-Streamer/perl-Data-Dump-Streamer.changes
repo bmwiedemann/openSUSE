@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 22 03:06:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.42
+   see /usr/share/doc/packages/perl-Data-Dump-Streamer/Changes
+
+  2.42
+
+  Perltidy source to my preferred format. Fixed issues serializing
+  the global stash. Added test to detect if serializing the global
+  stash breaks anything.
+
+-------------------------------------------------------------------
 Sat Jan 28 03:06:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.41
