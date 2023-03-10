@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 03:06:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.14
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.14 2023-03-06T13:45:33
+   - Avoid mutating OpenAPIv2 schema "parameters" when validating
+
+-------------------------------------------------------------------
 Fri Dec  9 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.13
