@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  8 07:06:01 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable --with-pamconfdir=/usr/lib/pam.d on Tumbleweed
+  (gh#neutrinolabs/xrdp!2552 bsc#1208121).
+
+-------------------------------------------------------------------
+Wed Mar  8 06:51:28 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add xrdp-make-pamconfdir-configurable.patch: Apply upstream
+  implementation and introduce --with-pamconfdir at build time
+  (gh#neutrinolabs/xrdp!2552 bsc#1208121).
+- Drop xrdp-fix-search-pam-vendor-dir.patch
+
+-------------------------------------------------------------------
 Mon Feb 13 09:18:44 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add xrdp-fix-search-pam-vendor-dir.patch: Search pam

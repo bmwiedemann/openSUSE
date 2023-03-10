@@ -405,4 +405,18 @@
     <comment></comment>
     <requestid>1066673</requestid>
   </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>822e62b6e44640f8ce4279ea35373d94</srcmd5>
+    <version>0.9.20</version>
+    <time>1678482417</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable --with-pamconfdir=/usr/lib/pam.d on Tumbleweed
+  (gh#neutrinolabs/xrdp!2552 bsc#1208121).
+
+- Add xrdp-make-pamconfdir-configurable.patch: Apply upstream
+  implementation and introduce --with-pamconfdir at build time
+  (gh#neutrinolabs/xrdp!2552 bsc#1208121).
+- Drop xrdp-fix-search-pam-vendor-dir.patch</comment>
+    <requestid>1070579</requestid>
+  </revision>
 </revisionlist>

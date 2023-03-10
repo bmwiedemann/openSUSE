@@ -1,0 +1,96 @@
+From 8be6bc137e44939d15a8b28eff4df53c961ca84c Mon Sep 17 00:00:00 2001
+From: Yifan J <yifanj2007@gmail.com>
+Date: Tue, 21 Feb 2023 09:50:46 +0800
+Subject: [PATCH] Make pam.d directory configurable
+
+---
+ configure.ac                |  7 +++++++
+ instfiles/pam.d/Makefile.am |  2 +-
+ sesman/Makefile.am          |  1 +
+ sesman/tools/Makefile.am    |  1 +
+ sesman/verify_user_pam.c    | 10 +++++++++-
+ 5 files changed, 19 insertions(+), 2 deletions(-)
+
+Index: xrdp-0.9.20/configure.ac
+===================================================================
+--- xrdp-0.9.20.orig/configure.ac
++++ xrdp-0.9.20/configure.ac
+@@ -464,6 +464,12 @@ if test "x$enable_strict_locations" != "
+   localstatedir="/var";
+ fi
+ 
++AC_ARG_WITH([pamconfdir],
++  [AS_HELP_STRING([--with-pamconfdir=DIR],
++                  [Use directory for pam.d config (default: /etc/pam.d)])],
++                  [], [with_pamconfdir="$sysconfdir/pam.d"])
++AC_SUBST([pamconfdir], [$with_pamconfdir])
++
+ PKG_INSTALLDIR
+ 
+ AC_CHECK_HEADERS([sys/prctl.h])
+@@ -542,6 +548,7 @@ echo "  exec_prefix             $exec_pr
+ echo "  libdir                  $libdir"
+ echo "  bindir                  $bindir"
+ echo "  sysconfdir              $sysconfdir"
++echo "  pamconfdir              $pamconfdir"
+ echo ""
+ echo "  unit tests performable  $perform_unit_tests"
+ echo ""
+Index: xrdp-0.9.20/instfiles/pam.d/Makefile.am
+===================================================================
+--- xrdp-0.9.20.orig/instfiles/pam.d/Makefile.am
++++ xrdp-0.9.20/instfiles/pam.d/Makefile.am
+@@ -25,7 +25,7 @@ endif
+ endif
+ endif
+ 
+-pamddir = $(sysconfdir)/pam.d
++pamddir = $(pamconfdir)
+ 
+ pamd_DATA = \
+   $(PAMFILE)
+Index: xrdp-0.9.20/sesman/Makefile.am
+===================================================================
+--- xrdp-0.9.20.orig/sesman/Makefile.am
++++ xrdp-0.9.20/sesman/Makefile.am
+@@ -8,6 +8,7 @@ AM_CPPFLAGS = \
+   -DXRDP_SHARE_PATH=\"${datadir}/xrdp\" \
+   -DXRDP_PID_PATH=\"${localstatedir}/run\" \
+   -DXRDP_SOCKET_PATH=\"${socketdir}\" \
++  -DXRDP_PAMCONF_PATH=\"${pamconfdir}\" \
+   -I$(top_srcdir)/common \
+   -I$(top_srcdir)/sesman/libscp
+ 
+Index: xrdp-0.9.20/sesman/tools/Makefile.am
+===================================================================
+--- xrdp-0.9.20.orig/sesman/tools/Makefile.am
++++ xrdp-0.9.20/sesman/tools/Makefile.am
+@@ -4,6 +4,7 @@ AM_CPPFLAGS = \
+   -DXRDP_SHARE_PATH=\"${datadir}/xrdp\" \
+   -DXRDP_PID_PATH=\"${localstatedir}/run\" \
+   -DXRDP_SOCKET_PATH=\"${socketdir}\" \
++  -DXRDP_PAMCONF_PATH=\"${pamconfdir}\" \
+   -I$(top_srcdir)/common \
+   -I$(top_srcdir)/sesman/libscp \
+   -I$(top_srcdir)/sesman
+Index: xrdp-0.9.20/sesman/verify_user_pam.c
+===================================================================
+--- xrdp-0.9.20.orig/sesman/verify_user_pam.c
++++ xrdp-0.9.20/sesman/verify_user_pam.c
+@@ -197,7 +197,15 @@ get_service_name(char *service_name)
+     service_name[0] = 0;
+ 
+     if (g_file_exist("/etc/pam.d/xrdp-sesman") ||
+-            g_file_exist(XRDP_SYSCONF_PATH "/pam.d/xrdp-sesman"))
++#ifdef __LINUX_PAM__
++            /* /usr/lib/pam.d is hardcoded into Linux-PAM */
++            g_file_exist("/usr/lib/pam.d/xrdp-sesman") ||
++#endif
++#ifdef OPENPAM_VERSION
++            /* /usr/local/etc/pam.d is hardcoded into OpenPAM */
++            g_file_exist("/usr/local/etc/pam.d/xrdp-sesman") ||
++#endif
++            g_file_exist(XRDP_PAMCONF_PATH "/xrdp-sesman"))
+     {
+         g_strncpy(service_name, "xrdp-sesman", 255);
+     }

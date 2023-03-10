@@ -38,8 +38,6 @@ Source7:        sesman.ini
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE xrdp-pam.patch - hfiguiere@novell.com refreshed by ftake@geeko.jp
 Patch1:         xrdp-pam.patch
-# PATCH-FIX-OPENSUSE xrdp-fix-search-pam-vendor-dir.patch bsc#1208121 - yfjiang@suse.com -- Search pam configuration file in the vendor directory /usr/lib/pam.d/
-Patch2:         xrdp-fix-search-pam-vendor-dir.patch
 # PATCH-FIX-OPENSUSE xrdp-disable-8-bpp-vnc-support.patch bsc#991059 - fezhang@suse.com -- disable 8 bpp support for vnc connections
 Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 # PATCH-FIX-OPENSUSE xrdp-support-KillDisconnected-for-Xvnc.patch boo#1101506 - fezhang@suse.com -- Support the KillDisconnected option for TigerVNC Xvnc sessions
@@ -68,6 +66,9 @@ Patch15:        xrdp-CVE-2022-23484.patch
 Patch16:        xrdp-CVE-2022-23493.patch
 # PATCH-FIX-UPSTREAM xrdp-CVE-2022-23477.patch bsc#1206301 - yu.daike@suse.com -- Buffer over flow in audin_send_open() function
 Patch17:        xrdp-CVE-2022-23477.patch
+# PATCH-FIX-UPSTREAM xrdp-make-pamconfdir-configurable.patch gh#neutrinolabs/xrdp!2552 bsc#1208121 - yfjiang@suse.com -- Configure pam.d directory at build time
+Patch18:        xrdp-make-pamconfdir-configurable.patch
+
 # Keep SLE only patches on the bottom starting from patch number 1001
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
 Patch1001:      xrdp-avahi.diff
@@ -126,7 +127,6 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
@@ -141,6 +141,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
 %if 0%{?sle_version}
 %patch1001 -p1
 %patch1002 -p1
@@ -154,6 +155,9 @@ sh ./bootstrap
    --enable-ipv6 \
    --enable-painter \
    --with-systemdsystemunitdir=%{_unitdir} \
+%if 0%{?suse_version} > 1500
+   --with-pamconfdir=%{_pam_vendordir} \
+%endif
    --enable-vsock \
    --enable-fuse
 make %{?_smp_mflags} V=1
@@ -174,11 +178,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp-sesman
 # remove a private key and certification file generated during make and
 # use certification file created at the post phase
 rm -f %{buildroot}/%{_sysconfdir}/xrdp/{cert,key}.pem
-
-%if 0%{?suse_version} > 1500
-mkdir -p %{buildroot}%{_pam_vendordir}
-mv %{buildroot}%{_sysconfdir}/pam.d/xrdp-sesman %{buildroot}%{_pam_vendordir}
-%endif
 
 %fdupes -s %{buildroot}
 
