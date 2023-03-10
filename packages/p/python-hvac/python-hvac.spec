@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hvac
-Version:        0.11.2
+Version:        1.1.0
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
 URL:            https://github.com/ianunruh/hvac
 Source:         https://github.com/hvac/hvac/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#hvac/hvac#23cd94654835134aa118805ecb4b7e5c538d04c1
-Patch0:         remove-mock.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pyhcl >= 0.3.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.5.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyhcl >= 0.3.10
 Requires:       python-requests >= 2.21.0
-Requires:       python-six >= 1.5.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,20 +51,21 @@ HashiCorp Vault API client for Python 2/3
 # doctests and ldap need set up ldap server and that is quite an effort
 rm -r tests/doctest/
 rm tests/integration_tests/api/auth_methods/test_ldap.py
+find hvac -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc README*
+%doc README.* CHANGELOG.*
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/hvac*
 
 %changelog

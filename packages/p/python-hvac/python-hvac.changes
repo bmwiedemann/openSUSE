@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 10 12:10:52 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * python-six is not required
+  * drop python 2 support
+  * lot of changes, see CHANGELOG.md or
+    https://github.com/hvac/hvac/blob/develop/CHANGELOG.md
+- deleted patches
+  - remove-mock.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Aug  2 05:50:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove patch python-hvac-no-mock.patch
