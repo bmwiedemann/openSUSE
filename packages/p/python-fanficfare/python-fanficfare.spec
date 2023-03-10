@@ -27,9 +27,6 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
 Source:         https://github.com/JimmXinu/FanFicFare/archive/v%{version}/FanFicFare-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE adapter_dwiggiecom.patch gh#JimmXinu/FanFicFare#903 mcepl@suse.com
-# adapter for dwiggie.com, which is probably not for upstream
-Patch0:         adapter_dwiggiecom.patch
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cloudscraper}
