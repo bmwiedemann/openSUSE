@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  5 03:06:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Carp-Assert/Changes
+
+  0.22 2023-03-04
+      - Removed shouldn't. As of perl 5.37.9 use of apostrophe
+        as a package separator warns. As of 5.42 it will be removed.
+        Really Schwern, you should have resisted the urge. :-)
+      - Changed the Makefile.PL metadata to point at my repo, not
+        the Schwern repo.
+
+-------------------------------------------------------------------
 Mon Apr 13 17:52:16 UTC 2015 - coolo@suse.com
 
 - updated to 0.21
