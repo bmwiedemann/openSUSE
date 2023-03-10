@@ -218,7 +218,7 @@ unsorted:
   - PrusaSlicer 
   - PyCBC-utils: [x86_64] 
   - QCSXCAD-devel 
-  - QGnomePlatform-qt6 
+  - QGnomePlatform-qt6: [i586] 
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
@@ -445,7 +445,7 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
-  - adwaita-qt6 
+  - adwaita-qt6: [i586] 
   - aegisub: [x86_64] 
   - aelfred 
   - aelfred-javadoc 
@@ -3780,7 +3780,7 @@ unsorted:
   - fcitx-pylogger 
   - fcitx-qt5-32bit: [x86_64] 
   - fcitx-qt5-devel 
-  - fcitx-qt6 
+  - fcitx-qt6: [i586] 
   - fcitx-quwei 
   - fcitx-rime 
   - fcitx-sayura 
@@ -9768,34 +9768,34 @@ unsorted:
   - libQt6Coap6 
   - libQt6Concurrent6 
   - libQt6Core5Compat6 
-  - libQt6Core6 
-  - libQt6DBus6 
+  - libQt6Core6: [i586] 
+  - libQt6DBus6: [i586] 
   - libQt6DataVisualization6 
   - libQt6DataVisualizationQml6 
   - libQt6DeclarativeOpcua6 
   - libQt6Designer6 
   - libQt6DesignerComponents6 
-  - libQt6Gui6 
+  - libQt6Gui6: [i586] 
   - libQt6Help6 
   - libQt6HttpServer6 
   - libQt6HunspellInputMethod6 
   - libQt6JsonRpc6 
-  - libQt6LabsAnimation6 
-  - libQt6LabsFolderListModel6 
-  - libQt6LabsQmlModels6 
-  - libQt6LabsSettings6 
-  - libQt6LabsSharedImage6 
-  - libQt6LabsWavefrontMesh6 
+  - libQt6LabsAnimation6: [i586] 
+  - libQt6LabsFolderListModel6: [i586] 
+  - libQt6LabsQmlModels6: [i586] 
+  - libQt6LabsSettings6: [i586] 
+  - libQt6LabsSharedImage6: [i586] 
+  - libQt6LabsWavefrontMesh6: [i586] 
   - libQt6LanguageServer6 
   - libQt6Mqtt6 
   - libQt6Multimedia6 
   - libQt6MultimediaQuick6 
   - libQt6MultimediaWidgets6 
-  - libQt6Network6 
+  - libQt6Network6: [i586] 
   - libQt6NetworkAuth6 
   - libQt6Nfc6 
   - libQt6OpcUa6 
-  - libQt6OpenGL6 
+  - libQt6OpenGL6: [i586] 
   - libQt6OpenGLWidgets6 
   - libQt6Pdf6: [x86_64] 
   - libQt6PdfQuick6: [x86_64] 
@@ -9803,13 +9803,13 @@ unsorted:
   - libQt6Positioning6 
   - libQt6PositioningQuick6 
   - libQt6PrintSupport6 
-  - libQt6Qml6 
+  - libQt6Qml6: [i586] 
   - libQt6QmlCompiler6 
-  - libQt6QmlCore6 
-  - libQt6QmlLocalStorage6 
-  - libQt6QmlModels6 
-  - libQt6QmlWorkerScript6 
-  - libQt6QmlXmlListModel6 
+  - libQt6QmlCore6: [i586] 
+  - libQt6QmlLocalStorage6: [i586] 
+  - libQt6QmlModels6: [i586] 
+  - libQt6QmlWorkerScript6: [i586] 
+  - libQt6QmlXmlListModel6: [i586] 
   - libQt6Quick3D6 
   - libQt6Quick3DAssetImport6 
   - libQt6Quick3DAssetUtils6 
@@ -9824,17 +9824,17 @@ unsorted:
   - libQt6Quick3DRuntimeRender6 
   - libQt6Quick3DSpatialAudio6 
   - libQt6Quick3DUtils6 
-  - libQt6Quick6 
-  - libQt6QuickControls2-6 
-  - libQt6QuickControls2Impl6 
-  - libQt6QuickDialogs2-6 
-  - libQt6QuickDialogs2QuickImpl6 
-  - libQt6QuickDialogs2Utils6 
-  - libQt6QuickLayouts6 
-  - libQt6QuickParticles6 
-  - libQt6QuickShapes6 
-  - libQt6QuickTemplates2-6 
-  - libQt6QuickTest6 
+  - libQt6Quick6: [i586] 
+  - libQt6QuickControls2-6: [i586] 
+  - libQt6QuickControls2Impl6: [i586] 
+  - libQt6QuickDialogs2-6: [i586] 
+  - libQt6QuickDialogs2QuickImpl6: [i586] 
+  - libQt6QuickDialogs2Utils6: [i586] 
+  - libQt6QuickLayouts6: [i586] 
+  - libQt6QuickParticles6: [i586] 
+  - libQt6QuickShapes6: [i586] 
+  - libQt6QuickTemplates2-6: [i586] 
+  - libQt6QuickTest6: [i586] 
   - libQt6QuickTimeline6 
   - libQt6QuickWidgets6 
   - libQt6RemoteObjects6 
@@ -9847,19 +9847,19 @@ unsorted:
   - libQt6SerialPort6 
   - libQt6ShaderTools6 
   - libQt6SpatialAudio6 
-  - libQt6Sql6 
+  - libQt6Sql6: [i586] 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
   - libQt6Svg6 
   - libQt6SvgWidgets6 
-  - libQt6Test6 
+  - libQt6Test6: [i586] 
   - libQt6TextToSpeech6 
   - libQt6UiTools6 
   - libQt6VirtualKeyboard6 
-  - libQt6WaylandClient6 
-  - libQt6WaylandCompositor6 
-  - libQt6WaylandEglClientHwIntegration6 
-  - libQt6WaylandEglCompositorHwIntegration6 
+  - libQt6WaylandClient6: [i586] 
+  - libQt6WaylandCompositor6: [i586] 
+  - libQt6WaylandEglClientHwIntegration6: [i586] 
+  - libQt6WaylandEglCompositorHwIntegration6: [i586] 
   - libQt6WebChannel6 
   - libQt6WebEngineCore6: [x86_64] 
   - libQt6WebEngineQuick6: [x86_64] 
@@ -9867,8 +9867,8 @@ unsorted:
   - libQt6WebSockets6 
   - libQt6WebView6: [x86_64] 
   - libQt6WebViewQuick6: [x86_64] 
-  - libQt6Widgets6 
-  - libQt6WlShellIntegration6 
+  - libQt6Widgets6: [i586] 
+  - libQt6WlShellIntegration6: [i586] 
   - libQt6Xml6 
   - libQtAV1 
   - libQtAV1-32bit: [x86_64] 
@@ -10124,7 +10124,7 @@ unsorted:
   - libadwaita-docs 
   - libadwaita-qt5-devel 
   - libadwaita-qt6-devel 
-  - libadwaitaqt6-1 
+  - libadwaitaqt6-1: [i586] 
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
@@ -10350,7 +10350,7 @@ unsorted:
   - libayatana-indicator3-devel 
   - libayatana-indicator7 
   - libazurestorage7 
-  - libb2-1 
+  - libb2-1: [i586] 
   - libb2-devel 
   - libb64 
   - libb64-0 
@@ -10601,7 +10601,10 @@ unsorted:
   - libbrial3 
   - libbrotli-devel 
   - libbrotli-devel-32bit: [x86_64] 
+  - libbrotlicommon1-x86-64-v3: [x86_64] 
+  - libbrotlidec1-x86-64-v3: [x86_64] 
   - libbrotlienc1-32bit: [x86_64] 
+  - libbrotlienc1-x86-64-v3: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
   - libbsd-ctor-static 
@@ -10880,6 +10883,8 @@ unsorted:
   - libcorrect0_0_0 
   - libcotp-devel 
   - libcotp2 
+  - libcotp2-32bit: [x86_64] 
+  - libcotp2-x86-64-v3: [x86_64] 
   - libcourier-unicode7 
   - libcpath-devel 
   - libcpath1 
@@ -12356,6 +12361,8 @@ unsorted:
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
+  - libiscsi9-32bit: [x86_64] 
+  - libiscsi9-x86-64-v3: [x86_64] 
   - libisds-devel 
   - libisds5 
   - libisl23-32bit: [x86_64] 
@@ -12417,6 +12424,8 @@ unsorted:
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjsoncpp25 
+  - libjsoncpp25-32bit: [x86_64] 
+  - libjsoncpp25-x86-64-v3: [x86_64] 
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
@@ -12609,6 +12618,7 @@ unsorted:
   - libleptonica6 
   - libleptonica6-32bit: [x86_64] 
   - libleveldb1 
+  - libleveldb1-32bit: [x86_64] 
   - liblevmar2 
   - libliftoff-devel 
   - libliftoff0 
@@ -12719,6 +12729,7 @@ unsorted:
   - liblxqt-lang 
   - liblxqt1 
   - liblz1 
+  - liblz4-1-x86-64-v3: [x86_64] 
   - liblz4-devel 
   - liblzo2-2-32bit: [x86_64] 
   - libm17n0-32bit: [x86_64] 
@@ -13380,6 +13391,7 @@ unsorted:
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
+  - libopenjp2-7-x86-64-v3: [x86_64] 
   - libopenlibm4 
   - libopenmpi1-gnu-hpc 
   - libopenmpi2-gnu-hpc 
@@ -14485,6 +14497,10 @@ unsorted:
   - libscotch-gnu-hpc 
   - libscotch0 
   - libscotch_6_1_0-gnu-hpc 
+  - libscrypt-devel 
+  - libscrypt0 
+  - libscrypt0-32bit: [x86_64] 
+  - libscrypt0-x86-64-v3: [x86_64] 
   - libsdbus-c++1 
   - libseafile0 
   - libsearpc-devel 
@@ -19882,7 +19898,7 @@ unsorted:
   - pen 
   - pentaho-libxml-javadoc 
   - pentaho-reporting-flow-engine-javadoc 
-  - pentobi 
+  - pentobi: [x86_64] 
   - percona-toolkit 
   - perf 
   - perf-bash-completion 
@@ -21181,6 +21197,7 @@ unsorted:
   - perl-YAML-PP 
   - perl-YAML-PP-LibYAML 
   - perl-YAML-Syck 
+  - perl-YAML-Tidy 
   - perl-YAML-Tiny 
   - perl-aliased 
   - perl-apparmor 
@@ -22626,6 +22643,7 @@ unsorted:
   - python3-upm 
   - python3-vapoursynth 
   - python3-virt-bootstrap: [x86_64] 
+  - python3-virt-scenario 
   - python3-virt-tuner 
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
@@ -25062,7 +25080,7 @@ unsorted:
   - python310-pytest-expect 
   - python310-pytest-filter-subpackage 
   - python310-pytest-fixture-config 
-  - python310-pytest-flake8 
+  - python310-pytest-flake8-path 
   - python310-pytest-flake8dir 
   - python310-pytest-flakes 
   - python310-pytest-flask 
@@ -26287,6 +26305,7 @@ unsorted:
   - python311-asv 
   - python311-async_generator 
   - python311-async_timeout 
+  - python311-asyncclick 
   - python311-asyncpg 
   - python311-asyncssh 
   - python311-atlassian-python-api 
@@ -28232,6 +28251,7 @@ unsorted:
   - python311-pymssql 
   - python311-pynamodb 
   - python311-pynetbox 
+  - python311-pyngus 
   - python311-pynxos 
   - python311-pyo 
   - python311-pyocr 
@@ -28325,6 +28345,7 @@ unsorted:
   - python311-pytest-expect 
   - python311-pytest-filter-subpackage 
   - python311-pytest-fixture-config 
+  - python311-pytest-flake8-path 
   - python311-pytest-flake8dir 
   - python311-pytest-flakes 
   - python311-pytest-flask 
@@ -28453,6 +28474,7 @@ unsorted:
   - python311-python-pseudorandom: [i586] 
   - python311-python-ptrace 
   - python311-python-qdatamatrix: [i586] 
+  - python311-python-qpid-proton 
   - python311-python-rapidjson 
   - python311-python-redis-lock 
   - python311-python-redmine 
@@ -28634,6 +28656,7 @@ unsorted:
   - python311-rpyc 
   - python311-rq 
   - python311-rsa 
+  - python311-rss2email 
   - python311-rst.linker 
   - python311-rstcheck 
   - python311-rt 
@@ -28957,6 +28980,7 @@ unsorted:
   - python311-tsk 
   - python311-ttp 
   - python311-ttp-templates 
+  - python311-tvm: [x86_64] 
   - python311-tweepy 
   - python311-twine 
   - python311-twitter 
@@ -31699,7 +31723,7 @@ unsorted:
   - python38-pytest-expect 
   - python38-pytest-filter-subpackage 
   - python38-pytest-fixture-config 
-  - python38-pytest-flake8 
+  - python38-pytest-flake8-path 
   - python38-pytest-flake8dir 
   - python38-pytest-flakes 
   - python38-pytest-flask 
@@ -35116,7 +35140,7 @@ unsorted:
   - python39-pytest-expect 
   - python39-pytest-filter-subpackage 
   - python39-pytest-fixture-config 
-  - python39-pytest-flake8 
+  - python39-pytest-flake8-path 
   - python39-pytest-flake8dir 
   - python39-pytest-flakes 
   - python39-pytest-flask 
@@ -36261,7 +36285,7 @@ unsorted:
   - qt6-declarative-docs-html 
   - qt6-declarative-docs-qch 
   - qt6-declarative-examples 
-  - qt6-declarative-imports 
+  - qt6-declarative-imports: [i586] 
   - qt6-declarative-private-devel 
   - qt6-declarative-tools 
   - qt6-declarativeopcua-private-devel 
@@ -36279,7 +36303,7 @@ unsorted:
   - qt6-httpserver-examples 
   - qt6-httpserver-private-devel 
   - qt6-hunspellinputmethod-private-devel 
-  - qt6-imageformats 
+  - qt6-imageformats: [i586] 
   - qt6-imageformats-devel 
   - qt6-imageformats-docs-html 
   - qt6-imageformats-docs-qch 
@@ -36321,7 +36345,7 @@ unsorted:
   - qt6-multimediawidgets-private-devel 
   - qt6-network-devel 
   - qt6-network-private-devel 
-  - qt6-network-tls 
+  - qt6-network-tls: [i586] 
   - qt6-networkauth-devel 
   - qt6-networkauth-docs-html 
   - qt6-networkauth-docs-qch 
@@ -36349,7 +36373,7 @@ unsorted:
   - qt6-pdfwidgets-private-devel: [x86_64] 
   - qt6-platformsupport-devel-static 
   - qt6-platformsupport-private-devel 
-  - qt6-platformtheme-gtk3 
+  - qt6-platformtheme-gtk3: [i586] 
   - qt6-platformtheme-xdgdesktopportal 
   - qt6-positioning 
   - qt6-positioning-devel 
@@ -36525,7 +36549,7 @@ unsorted:
   - qt6-tools-private-devel 
   - qt6-tools-qdbus 
   - qt6-tools-qdoc 
-  - qt6-translations 
+  - qt6-translations: [i586] 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
   - qt6-virtualkeyboard 
@@ -36535,7 +36559,7 @@ unsorted:
   - qt6-virtualkeyboard-examples 
   - qt6-virtualkeyboard-imports 
   - qt6-virtualkeyboard-private-devel 
-  - qt6-wayland 
+  - qt6-wayland: [i586] 
   - qt6-wayland-devel 
   - qt6-wayland-docs-html 
   - qt6-wayland-docs-qch 

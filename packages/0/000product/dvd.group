@@ -3124,7 +3124,6 @@
     <package name="pcsc-towitoko" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-towitoko -->
     <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pentaho-reporting-flow-engine" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pentobi-kde-thumbnailer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl-Archive-Zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Authen-SASL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4702,6 +4701,8 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="QGnomePlatform-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="adwaita-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4717,6 +4718,7 @@
     <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx-gtk2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="fcitx-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ffmpeg-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fwupd-efi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4739,6 +4741,42 @@
     <package name="libFLAC++10" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libQt6Core6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6DBus6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Gui6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsAnimation6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsFolderListModel6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsQmlModels6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6LabsWavefrontMesh6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Network6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6OpenGL6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Qml6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QmlCore6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QmlLocalStorage6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QmlModels6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QmlWorkerScript6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QmlXmlListModel6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Quick6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickControls2-6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickControls2Impl6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickDialogs2-6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickDialogs2QuickImpl6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickDialogs2Utils6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickLayouts6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickParticles6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickShapes6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickTemplates2-6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickTest6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Sql6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Test6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6WaylandClient6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6WaylandCompositor6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6WaylandEglClientHwIntegration6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6WaylandEglCompositorHwIntegration6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6Widgets6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6WlShellIntegration6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4756,6 +4794,7 @@
     <package name="libXss1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXv1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libacl1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libadwaitaqt6-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libargon2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libasound2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libatk-1_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4763,6 +4802,7 @@
     <package name="libavahi-client3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libavahi-common3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libavdevice59" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbrotlidec1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4906,6 +4946,7 @@
     <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="pentobi-kde-thumbnailer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -4915,6 +4956,12 @@
     <package name="python310-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qt6-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qt6-translations" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qt6-wayland" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="samba-ad-dc-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
