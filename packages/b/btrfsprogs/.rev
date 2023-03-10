@@ -1228,4 +1228,11 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.2.1: (forwarded request 1070011 from dsterba)</comment>
     <requestid>1070012</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>c3ac8ed1d23ad54d585f9cdcf151dd38</srcmd5>
+    <version>6.1.3</version>
+    <time>1678435775</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1209136</comment>
+  </revision>
 </revisionlist>
