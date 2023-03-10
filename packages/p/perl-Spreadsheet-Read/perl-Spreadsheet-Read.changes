@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar  9 16:51:41 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove nonstdperlpath.patch, fixed paths upstream, thanks Tux :)
+
+-------------------------------------------------------------------
+Thu Feb 23 03:08:41 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.87
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.87	- 22 Feb 2023, H.Merijn Brand
+      * Change default #! to /usr/bin/perl (Tinita)
+      * Improve ->sheets (safer and docs)
+      * Update to Spreadsheet::ReadGnumeric 0.2 (attributes and small fixes)
+
+  0.86	- 07 Feb 2023, H.Merijn Brand
+      * Add Gnumeric support (Bob Rogers, THANKS!)
+        - work in progress, use with care, feedback welcome
+
+  0.85	- 04 Jan 2023, H.Merijn Brand
+      * Suggest the preferred parser if none found
+      * It's 2022
+      * xlscat --box and improvements for -L
+      * Add balloons to ss2tk buttons
+      * Fix typo in help (Erix)
+      * It's 2023
+
+-------------------------------------------------------------------
 Sat Jan 29 21:20:51 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Do not install xls2csv and xls2csv.1 (conflict with libxls-tools

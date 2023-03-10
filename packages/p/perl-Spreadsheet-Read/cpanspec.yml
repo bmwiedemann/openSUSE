@@ -21,7 +21,7 @@ description: |-
 #  - source2
 patches:
   # Patch to fix non-standard perl path in source
-  nonstdperlpath.patch: -p1
+  # nonstdperlpath.patch: -p1
 preamble: |-
   BuildRequires:  perl(Spreadsheet::ParseExcel) >= 0.34
   BuildRequires:  perl(Spreadsheet::ParseExcel::FmtDefault)
