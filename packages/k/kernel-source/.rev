@@ -6202,4 +6202,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.1 &amp; lockdown patches &amp; gfx drivers cleanup</comment>
     <requestid>1068171</requestid>
   </revision>
+  <revision rev="681" vrev="1">
+    <srcmd5>4c89f81efffc99dc6280fce65c37da4a</srcmd5>
+    <version>6.2.2</version>
+    <time>1678482412</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.2 &amp; lockdown DISABLED &amp; packaging fixes</comment>
+    <requestid>1070329</requestid>
+  </revision>
 </revisionlist>
