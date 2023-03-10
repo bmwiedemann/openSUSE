@@ -58,6 +58,12 @@
 %define llvm_version 15
 %endif
 %endif
+# GCC version
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150500
+%define gcc_version 11
+%else
+%define gcc_version 12
+%endif
 # Compiler
 %bcond_without clang
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
@@ -306,8 +312,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 %if %{with clang}
 %if 0%{?suse_version} < 1550
 BuildRequires:  clang%{llvm_version}
-BuildRequires:  gcc12
-BuildRequires:  libstdc++6-devel-gcc12
+BuildRequires:  gcc%{gcc_version}
+BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
 #!BuildIgnore:  gcc
@@ -324,8 +330,8 @@ BuildRequires:  binutils-gold
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc%{gcc_version}
+BuildRequires:  gcc%{gcc_version}-c++
 %endif
 %endif
 
@@ -662,8 +668,8 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 %else
 %if 0%{?suse_version} <= 1500
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
 # some still call gcc/g++
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++

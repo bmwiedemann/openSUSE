@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  9 23:54:55 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert back to GCC 11 on 15.4 as Clang 13 doesn't support GCC 12
+
+-------------------------------------------------------------------
 Thu Mar  9 15:48:22 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Bump Leap's GCC to 12 as Chromium really likes newer standards
