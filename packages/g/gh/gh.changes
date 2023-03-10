@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Mar  9 15:06:16 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.24.2
+  https://github.com/cli/cli/releases/tag/v2.24.1
+
+  What's Changed
+  * codespace ssh: fix "connection reset by peer" by @mislav in #7120
+
+-------------------------------------------------------------------
+Thu Mar  9 10:11:08 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.24.1
+  https://github.com/cli/cli/releases/tag/v2.24.1
+
+  What's Changed
+  * Fix progress indicator bug with generic RunWithProgress function by @jungaretti in #6848
+  * auth login: Fix retrieving current login name when pasting auth token @samcoe in #7114
+
+- Update to 2.24.0
+  https://github.com/cli/cli/releases/tag/v2.24.0
+
+  What's Changed
+  * repo fork: retry git clone on git clone failure by @jsoref in #6962
+  * repo fork: add newline after printing error about existing fork by @digitalfu in #7030
+  * codespace: add --repo filter to more commands by @cmbrose in #6669
+  * codespace code: always open new VS Code window by @cmbrose in #7092
+  * pr diff: sanitize control characters for terminal output by @mislav in #7108
+  * browse: use --commit flag to browse commit SHAs containing only digits by @yanskun in #7038
+  * pr status: fix when on a detached HEAD by @alex-petrov-vt in #7082
+  * auth token: respect GH_HOST if a hostname is not provided by @samcoe in #7094
+  * Address Projects bugs by @samcoe in #7007
+  * Properly handle C1 control sequences by @samcoe in #7079
+  * Cleanup logic to retry on failure by @samcoe in #7027
+  * Cleanup config.AuthToken and config.DefaultHost methods by @samcoe in #7049
+  * Bump golang.org/x/net package by @samcoe in #7026
+  * Bump github.com/gabriel-vasile/mimetype from 1.4.1 to 1.4.2 by @dependabot in #7107
+  * Update working-with-us.md by @vilmibm in #7077
+
+  What's New
+  * Option to store gh access token in system encrypted storage
+    The gh auth login and gh auth refresh commands gained the new --secure-storage flag.
+    In this mode, the access token that GitHub CLI uses for GitHub API requests will now
+    be stored in the system keyring instead of in the plain text config file.
+
+    To migrate as an existing GitHub CLI user, re-authenticate like so:
+      gh auth refresh --secure-storage -h github.com
+
+    Depending on your system, you could get an interactive prompt to allow the CLI tool to access the system keyring. The systems that are supported are:
+    * Keychain on macOS
+    * GNOME Keyring on Linux (Secret Service dbus interface)
+    * Wincred on Windows
+
+    Please note:
+    This feature is currently opt-in, but will become the default in the near future.
+    If none of the system storage providers are found, or the store operation fails,
+    the token will be written to the config file as before.
+
+    Using this feature could result in Go extensions breaking if they were not updated to the latest go-gh version. If extensions you are using no longer work after migrating your token to secure token storage, please report the issue to that extension's repository.
+    Storing tokens in system keyring most likely won't work in “headless” environments.
+
+  Other additions
+  * Add option to store credentials in OS keyring by @samcoe @mislav in #7033 #7043 #7098
+  * browse: add --releases option by @owenvoke in #6996
+  * Add gpg-key add --title to name GPG keys by @rpadaki in #6993
+  * Add command gh repo unarchive by @Ruminateer in #7003
+  * Add macOS arm64 prebuilt binaries by @beret in #4435
+  * Introduce GH_PATH environment variable by @samcoe in #7025
+
+-------------------------------------------------------------------
 Wed Feb  8 09:25:56 UTC 2023 - Pavel Dostál <pdostal@suse.com>
 
 - Update to 2.23.0
