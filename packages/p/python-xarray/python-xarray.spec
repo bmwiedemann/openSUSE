@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python38 1
 Name:           python-xarray
-Version:        2022.12.0
+Version:        2023.2.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -26,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.20}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pandas >= 1.3}
@@ -34,9 +35,9 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.20
+Requires:       python-numpy >= 1.21
 Requires:       python-packaging >= 21.3
-Requires:       python-pandas >= 1.3
+Requires:       python-pandas >= 1.4
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch
@@ -67,8 +68,9 @@ Suggests:       python-pooch
 #/SECTION
 # SECTION tests
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask-diagnostics}
+# not available on python 3.11
+#BuildRequires:  %%{python_module dask-dataframe}
+#BuildRequires:  %%{python_module dask-diagnostics}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module netCDF4}
