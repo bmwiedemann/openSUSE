@@ -1040,4 +1040,14 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>1063863</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4abb7957c1b4a22f644e532bcfc58415</srcmd5>
+    <version>4.1.4</version>
+    <time>1678555422</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.1.4
+  - Workaround for broken Tumbleweed package libfdisk1
+</comment>
+    <requestid>1070733</requestid>
+  </revision>
 </revisionlist>
