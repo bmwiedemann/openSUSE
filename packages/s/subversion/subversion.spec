@@ -77,6 +77,7 @@ Patch46:        remove-kdelibs4support-dependency.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1195486 bsc#1193778
 # Fix testCrash_RequestChannel_nativeRead_AfterException test on aarch64 and ppc64le
 Patch47:        fix-javahl-test.patch
+Patch48:        swig4.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -259,6 +260,7 @@ parameters and keywords for the svn command and other tools.
 %patch45 -p1
 %patch46 -p1
 %patch47
+%patch48 -p1
 
 # do not use 'env python'
 sed -i -e 's#%{_bindir}/env python#%{_bindir}/python3#' subversion/tests/cmdline/*.py

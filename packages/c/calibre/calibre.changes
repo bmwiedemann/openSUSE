@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sat Mar 11 10:08:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.14.0
+  * New Features
+    - Edit metadata: When setting a cover from comic files allow 
+      choosing which page to use as the cover
+    - Allow display of columns built from other columns as comments
+      in Book details
+    - Comments editor: Add a shortcut for "Paste and match style" 
+      (Ctrl+Shift+v)
+  * Bug Fixes
+    - macOS: ToC Editor: Fix mouse becoming unusable when trying to
+      create a new entry
+    - When computing title sorts strip leading and trailing quotes,
+      not just leading quotes
+    - Content server viewer: Fix searching only showing results
+      from the current chapter onwards
+    - Check book: Fix some incorrect line numbers reported in a few
+      CSS error messages
+- Update to 6.13.0
+  * New Features
+    - Content server: E-book viewer: Long tapping on an image now
+      causes it to be displayed in an internal popup rather than a
+      new window as some browsers block the creation of new windows
+  * Bug Fixes
+    - E-book viewer: Fix some adjacent highlights with nothing in
+      between them not being displayed.
+    - Content server: Workaround for Safari regression causing
+      bookmarks to disappear on reload
+    - E-book viewer: Read aloud: Fix a regression in the previous
+      release that caused the Read aloud controls to not reappear
+      when Read aloud is canceled and restarted
+    - E-book viewer: Read aloud: Fix a regression in the previous
+      release that caused an error when using Read aloud on a
+      chapter with no text, such as the cover page
+    - E-book viewer: Fix a regression that caused a spurious error
+      on Windows when reading out selected text
+    - Fix a regression in calibre 5.0 that broke sorting the device
+      view by title if one of the books has an empty title
+    - Edit book: Spell Check dialog: Fix second word not getting
+      selected when after first word is fixed
+    - Improve hover highlight color in tree views
+- Update to 6.12.0
+  * New Features
+    - E-book viewer: Read aloud: On Windows switch to using the
+      new Microsoft speech subsystem with access to more voices
+    - calibre:// URL scheme: allow specifying a Virtual library for
+      show_book URLs
+    - Add by ISBN: Allow adding using identifiers other than ISBN
+      as well
+    - Update bundled Qt to 6.4 this means calibre on macOS is now
+      only supported on Big Sur and newer
+    - Spell check dialog: Allow up and down arrow keys to work
+      regardless of focus
+    - Allow multiple Template tester dialogs
+  * Bug Fixes
+    - Windows MTP device driver: Ignore failure to enumerate
+      objects inside non-root folders
+    - Book list: Fix a regression in the previous release that
+      broke dragging to select multiple books
+    - Content server viewer: Fix reload book not actually reloading
+      until the browser is also refreshed
+    - E-book viewer: Fix occasional false warning about highlight
+      being overwritten
+    - E-book viewer: Fix detection of selected highlights when all
+      text is selected
+    - Fix an error when embedding metadata into a large number of
+      books
+    - When updating metadata in EPUB 2 files and no language is
+      specified, do not remove the <dc:language> tag as this causes
+      epubcheck to complain. Instead set the language to "und"
+    - Wireless device driver: Remove the timeout for initial
+      connection
+    - Use an icon rather than a color to report errors in fields
+      and the search box
+    - Conversion dialog: Regex builder: Workaround bug in Qt that
+      prevented searching for non breaking spaces in the wizard
+      used to test search expressions
+    - Spell check dialog: move down after correcting word, not up
+    - Get books: Fix Mobileread store plugin not working
+- Add mathjax and hyphenation-dictionaries.
+- Additional build some "submodules".
+- Add separat user-agent-data.json to fix 
+  "No such file or directory: '/usr/share/calibre/user-agent-data.json'"
+- Use mspack from system and not from calibre upstream.
+
+-------------------------------------------------------------------
 Fri Jan  6 08:17:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.11.0

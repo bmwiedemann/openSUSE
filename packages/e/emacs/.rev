@@ -1759,4 +1759,15 @@ Now one could consider building emacs with gsettings support (both debian and fe
   for libwebp if given</comment>
     <requestid>1066988</requestid>
   </revision>
+  <revision rev="172" vrev="3">
+    <srcmd5>9729886f7fe50459f27857f460212be4</srcmd5>
+    <version>28.2</version>
+    <time>1678555350</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch d3209119.patch
+  boo#1209089,CVE-2023-27985: Fix shell command injection in emacsclient-mail.desktop
+- Add patch 3c1693d0.patch 
+  boo#1209090,CVE-2023-27986: Fix Emacs Lisp code injection in emacsclient-mail.desktop</comment>
+    <requestid>1070372</requestid>
+  </revision>
 </revisionlist>

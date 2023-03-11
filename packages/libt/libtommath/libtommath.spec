@@ -35,6 +35,7 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?suse_build_hwcaps_libs}
 
 %description
 LibTomMath provides highly optimized and portable routines for a vast

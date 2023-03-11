@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar  1 10:44:06 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.5.1.2:
+  https://wiki.documentfoundation.org/ReleaseNotes/7.5
+  https://wiki.documentfoundation.org/Releases/7.5.1/RC2
+  https://wiki.documentfoundation.org/Releases/7.5.1/RC1
+  https://wiki.documentfoundation.org/Releases/7.5.0/RC3
+  https://wiki.documentfoundation.org/Releases/7.5.0/RC2
+  https://wiki.documentfoundation.org/Releases/7.5.0/RC1
+- Add fix-sdk-idl.patch
+- Update bundled dependencies:
+  * pdfium-5058.tar.bz2 -> pdfium-5408.tar.bz2
+- Refreshed patches:
+  * fix_math_desktop_file.patch
+  * use-fixmath-shared-library.patch
+- Removed patches:
+  * Remove_dependency_on_BitArray_h.patch
+  * boost-181.patch
+  * bsc1204825.patch
+  * bsc1205866.patch
+  * libreoffice-7.4.1.2-grep.patch
+  * riscv64-support.patch
+
+-------------------------------------------------------------------
 Mon Feb  6 08:55:57 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to match current requirements

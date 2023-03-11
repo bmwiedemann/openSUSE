@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  4 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.56
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.56 2023-03-01
+
+      [ TESTING ]
+      - add new cookie field 'Priority' to CGI::Cookie code (GH #253, thanks to Pavel)
+
+-------------------------------------------------------------------
 Wed Jan  4 03:06:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.55

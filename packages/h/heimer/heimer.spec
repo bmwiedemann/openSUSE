@@ -18,7 +18,7 @@
 
 
 Name:           heimer
-Version:        3.7.0
+Version:        4.0.0
 Release:        0
 Summary:        Mind map, diagram, and note-taking tool
 License:        CC-BY-SA-3.0 AND GPL-3.0-only

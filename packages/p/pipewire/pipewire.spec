@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.65
+Version:        0.3.66
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -62,8 +62,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 0001-modules-also-install-module-combine-stream.patch
-Patch0:         0001-modules-also-install-module-combine-stream.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -74,6 +72,7 @@ BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  graphviz
 BuildRequires:  meson >= 0.59.0
+BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -112,6 +111,7 @@ BuildRequires:  pkgconfig(libdrm)
 %if %{with aptx}
 BuildRequires:  pkgconfig(libfreeaptx)
 %endif
+BuildRequires:  pkgconfig(libmysofa)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
@@ -138,6 +138,7 @@ Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Requires:       rtkit
 Suggests:       wireplumber
+Suggests:       pipewire-libjack-%{apiver_str}
 %{?systemd_ordering}
 
 %description
@@ -401,9 +402,6 @@ export CXX=g++-9
 %if 0%{?suse_version} <= 1500
     -Dreadline=disabled \
 %endif
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150400
-    -Dx11-xfixes=disabled \
-%endif
     -Dsession-managers="[]" \
     -Dsdl2=disabled \
     %{nil}
@@ -418,6 +416,11 @@ cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
+
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_secdistconfdir}/limits.d/
+mv %{buildroot}%{_sysconfdir}/security/limits.d/*.conf %{buildroot}%{_pam_secdistconfdir}/limits.d/
+%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
 echo %{_libdir}/pipewire-%{apiver}/jack/ > %{buildroot}%{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
@@ -533,8 +536,14 @@ fi
 %files
 %license LICENSE COPYING
 %doc README.md
+%if 0%{?suse_version} > 1500
+%{_pam_secdistconfdir}/limits.d/25-pw-rlimits.conf
+%else
+%config(noreplace) %{_sysconfdir}/security/limits.d/25-pw-rlimits.conf
+%endif
 %{_bindir}/pipewire
 %{_bindir}/pipewire-avb
+%{_bindir}/pipewire-aes67
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
 %{_userunitdir}/filter-chain.service
@@ -546,6 +555,7 @@ fi
 %dir %{_datadir}/pipewire/filter-chain/
 %{_datadir}/pipewire/filter-chain/*.conf
 %{_datadir}/pipewire/pipewire-avb.conf
+%{_datadir}/pipewire/pipewire-aes67.conf
 %ghost %dir %{_localstatedir}/lib/pipewire/
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  2 10:33:46 MST 2023 - carnold@suse.com
+
+- bsc#1208736 - GCC 13: xen package fails
+  bunzip-gcc13.patch
+  altp2m-gcc13.patch
+- Drop gcc13-fixes.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 08:56:55 MST 2023 - carnold@suse.com
 
 - bsc#1208736 - GCC 13: xen package fails

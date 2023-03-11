@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        3.0.0~dev.3
+Version:        3.0.0~dev.4
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
-Source:         https://github.com/python-semver/python-semver/archive/refs/tags/3.0.0-dev.3.tar.gz#/%{name}-3.0.0-dev.3-gh.tar.gz
+Source:         https://github.com/python-semver/python-semver/archive/refs/tags/3.0.0-dev.4.tar.gz#/%{name}-3.0.0-dev.4-gh.tar.gz
+# PATCH-FIX-UPSTREAM - setup-remove-asterisk.patch
+Patch0:         https://github.com/python-semver/python-semver/pull/398.patch#/setup-remove-asterisk.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -42,14 +45,15 @@ A Python module for semantic versioning. Simplifies comparing versions.
 See also http://semver.org/
 
 %prep
-%setup -q -n python-semver-3.0.0-dev.3
+%setup -q -n python-semver-3.0.0-dev.4
+%patch0 -p1
 sed -i '/-cov/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pysemver
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -66,7 +70,6 @@ sed -i '/-cov/d' setup.cfg
 %files %{python_files}
 %doc README.rst
 %{python_sitelib}/semver*
-#%%pycache_only %%{python_sitelib}/__pycache__/semver*
 %python_alternative %{_bindir}/pysemver
 
 %changelog

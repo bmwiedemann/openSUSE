@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,52 +17,14 @@
 
 
 Name:           transfig
-BuildRequires:  fdupes
-BuildRequires:  libjpeg-devel
-BuildRequires:  netpbm
-BuildRequires:  texlive-latex
-%if %suse_version > 1220
-BuildRequires:  texlive-amsfonts
-BuildRequires:  texlive-cm-super
-BuildRequires:  texlive-courier
-BuildRequires:  texlive-dvips
-%if 0%{?suse_version} > 1315
-BuildRequires:  texlive-epstopdf
-%endif
-BuildRequires:  texlive-pdftex
-BuildRequires:  texlive-times
-BuildRequires:  tex(beamer.cls)
-%if 0%{?suse_version} > 1315
-BuildRequires:  tex(german.sty)
-%endif
-BuildRequires:  tex(multimedia.sty)
-BuildRequires:  tex(times.sty)
-BuildRequires:  tex(xmpmulti.sty)
-%endif
-BuildRequires:  libpng-devel
-%if 0%{?suse_version} > 1310
-BuildRequires:  pkgconfig(xpm)
-%else
-BuildRequires:  xorg-x11-libXpm-devel
-BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
-#  www.xfig.org is dead
-URL:            http://mcj.sourceforge.net/
-Provides:       fig2dev
-Provides:       transfig.3.2.3d
-Requires:       ghostscript-fonts-std
-Requires:       ghostscript-library
-Requires:       netpbm
-%if 0%{?suse_version} > 1315
-Requires:       texlive-epstopdf
-%endif
 Version:        3.2.8b
 Release:        0
 Summary:        Graphic Converter
-#Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%{version}.tar.xz/download#/fig2dev-%{version}.tar.xz
+#  www.xfig.org is dead
+URL:            https://mcj.sourceforge.net/
 License:        MIT
 Group:          Productivity/Graphics/Convertors
+#Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%%{version}.tar.xz/download#/fig2dev-%%{version}.tar.xz
 Source:         fig2dev-%{version}.tar.xz
 Patch0:         transfig-3.2.8.dif
 Patch1:         1b09a8.patch
@@ -70,6 +32,37 @@ Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
+Patch46:        0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
+BuildRequires:  fdupes
+BuildRequires:  libjpeg-devel
+BuildRequires:  libpng-devel
+BuildRequires:  netpbm
+BuildRequires:  sharutils
+#!BuildIgnore:  texlive-tex4ht
+BuildRequires:  texlive-courier
+BuildRequires:  texlive-latex
+%if 0%{?suse_version} > 1315
+BuildRequires:  texlive-epstopdf
+%endif
+BuildRequires:  texlive-pdftex
+BuildRequires:  texlive-times
+BuildRequires:  tex(8r.enc)
+BuildRequires:  tex(beamer.cls)
+%if 0%{?suse_version} > 1315
+BuildRequires:  tex(german.sty)
+%endif
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  tex(multimedia.sty)
+BuildRequires:  tex(times.sty)
+BuildRequires:  tex(xmpmulti.sty)
+Provides:       fig2dev
+Recommends:     ghostscript-fonts-std
+Recommends:     ghostscript-library
+Requires:       netpbm
+Recommends:     texlive-epstopdf
+%if 0%{?suse_version} > 1315
+Requires:       (texlive-epstopdf if texlive-latex)
+%endif
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -81,27 +74,16 @@ which generates a Makefile which translates Fig code to various
 graphics description languages using the fig2dev program.  In previous
 releases, this command was implemented as a shell script.
 
-Documentation: man transfig
-
-
-
-Authors:
---------
-    Anthony Starks     <ajs@merck.com>
-    George Ferguson    <ferguson@cs.rochester.edu>
-    Herbert Bauer      <heb@regent.e-technik.tu-muenchen.de>
-    Micah Beck         <supoj@sally.utexas.edu>
-    Supoj Sutantavibul <beck@cs.utk.ecu>
-
 %prep
 %setup -q -n fig2dev-%{version}
-find -type f | xargs -r chmod a-x,go-w
+find -type f -exec chmod a-x,go-w '{}' \;
 %patch0 -p0 -b .0
 %patch1 -p0 -b .1
 %patch4 -p1 -b .afl
 %patch43 -p1 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
+%patch46 -p1 -b .pdfmark
 
 %build
 ulimit -v unlimited || :
@@ -155,32 +137,44 @@ chmod 755 configure
     --docdir=%{_defaultdocdir}/%{name} \
     --enable-transfig \
     --enable-scale-pic2t2e
-make %{?_smp_mflags} CCOPTIONS="$CFLAGS"
+%make_build CCOPTIONS="$CFLAGS"
+
+pushd transfig/doc
+    ../../fig2dev/fig2dev -L latex trans.fig > trans.tex
+    pdflatex -draft manual.tex
+    pdflatex -draft manual.tex
+    pdflatex manual.tex
+popd
+
+pushd  fig2mpdf/doc
+%if 0%{?suse_version} > 1315
+    make
+    while $(grep -q -i 'rerunfilecheck.*warning' sample-presentation.log); do
+        pdflatex sample-presentation
+    done
+%endif
+    mkdir htmlimg
+    (cd htmlimg; uudecode ../*.uue)
+popd
 
 %install
-find -name '*.mpdfdoc' -o -name '*.mpdf' | xargs -r rm -vf
-make DESTDIR=%{buildroot} install
+#find -name '*.mpdfdoc' -o -name '*.mpdf' | xargs -r rm -vf
+%make_install
 install -m 0755 fig2mpdf/fig2mpdf %{buildroot}%{_bindir}
 install -m 0644 fig2mpdf/fig2mpdf.1 %{buildroot}%{_mandir}/man1/
-gzip -9 %{buildroot}%{_mandir}/man1/fig2mpdf.1
 
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 install -m 0644 [CLNR]* %{buildroot}%{_defaultdocdir}/%{name}
-%if 0%{?suse_version} > 1315
+install -m 0644 transfig/doc/manual.pdf %{buildroot}%{_defaultdocdir}/%{name}/transfig.pdf
+
 pushd fig2mpdf/doc
-    make
     mkdir %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf
-    rm -f overlay-sample-?.pdf
-    rm -f *.aux *.log *.nav *.out *.snm *.toc
-    install -m 0644 * %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
-popd
+    install -m 0644 *.{html,css,lfig} %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
+    install -m 0644 htmlimg/*.{jpg,gif,pdf} %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
+    install -m 0644 sample-presentation.tex Makefile %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
+%if 0%{?suse_version} > 1315
+    install -m 0644 sample-presentation.pdf %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
 %endif
-pushd transfig/doc
-    ../../fig2dev/fig2dev -L latex trans.fig > trans.tex
-    pdflatex manual.tex
-    pdflatex manual.tex
-    pdflatex manual.tex
-    install -m 0644 manual.pdf %{buildroot}%{_defaultdocdir}/%{name}/transfig.pdf
 popd
 
 %fdupes %{buildroot}

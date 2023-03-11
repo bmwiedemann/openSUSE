@@ -457,4 +457,18 @@
     <comment></comment>
     <requestid>1069525</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d91e1833c2200d241dfc6d5b61be08c7</srcmd5>
+    <version>0.12.2</version>
+    <time>1678555445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.2:
+  * prep: add ability to use markdown in the cover content (requires
+    escaping the leading &quot;#&quot; as &quot;&gt;#&quot; that is stripped on cover letter
+    rendering)
+  * send: don't require vN to --resend (will resend the latest version)
+  * test: don't require running from git
+  * plus several bugfixes mostly dealing with corner-case conditions</comment>
+    <requestid>1070834</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-by heming.zhao@suse.com on 20220105
+by heming.zhao@suse.com on 20220105 (bsc#1206791)
 
 This is SUSE special patch, and this patch cocci codes were partly
 copied from upstream kernel commit 81895a65ec63ee1daec3255dc1a06675d2fbe915
@@ -7,6 +7,18 @@ copied from upstream kernel commit 81895a65ec63ee1daec3255dc1a06675d2fbe915
 Because I don't know cocci syntax, so in drbd_state.c this patch
 directly modifies prandom_u32() to prandom_u32_max(U32_MAX). All
 other cases use cocci to modify.
+
+---
+by heming.zhao@suse.com on 20230311 (bsc#1209168)
+
+OpenSUSE kernel had been updated to v6.2.1, modification on 20220105
+is not suitable. The upstream commit 8032bf1233a7 ("treewide:
+use get_random_u32_below() instead of deprecated function") replaced
+the prandom.h function prandom_u32_max with the random.h function
+get_random_u32_below.
+
+I changed this patch under latest kernel, using get_random_u32_below
+to replace prandom_u32_max.
 
 ---
 
@@ -25,16 +37,16 @@ diff -Nupr a/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci b/drbd/
 +@@
 +(
 +- ((T)get_random_u32() % (E))
-++ prandom_u32_max(E)
+++ get_random_u32_below(E)
 +|
 +- ((T)get_random_u32() & ((E) - 1))
-++ prandom_u32_max(E * XXX_MAKE_SURE_E_IS_POW2)
+++ get_random_u32_below(E * XXX_MAKE_SURE_E_IS_POW2)
 +|
 +- ((u64)(E) * get_random_u32() >> 32)
-++ prandom_u32_max(E)
+++ get_random_u32_below(E)
 +|
 +- ((T)get_random_u32() & ~PAGE_MASK)
-++ prandom_u32_max(PAGE_SIZE)
+++ get_random_u32_below(PAGE_SIZE)
 +)
 +
 +@multi_line@
@@ -46,7 +58,7 @@ diff -Nupr a/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci b/drbd/
 +-       RAND = get_random_u32();
 +        ... when != RAND
 +-       RAND %= (E);
-++       RAND = prandom_u32_max(E);
+++       RAND = get_random_u32_below(E);
 +
 +// Find a potential literal
 +@literal_mask@
@@ -92,7 +104,7 @@ diff -Nupr a/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci b/drbd/
 +@@
 +
 +-       (FUNC()@p & (LITERAL))
-++       prandom_u32_max(RESULT)
+++       get_random_u32_below(RESULT)
 diff -Nupr a/drbd/drbd_state.c b/drbd/drbd_state.c
 --- a/drbd/drbd_state.c	2023-01-05 09:00:01.252434773 +0800
 +++ b/drbd/drbd_state.c	2023-01-05 09:02:47.519078927 +0800
@@ -101,7 +113,7 @@ diff -Nupr a/drbd/drbd_state.c b/drbd/drbd_state.c
  
  	do
 -		reply->tid = prandom_u32();
-+		reply->tid = prandom_u32_max(U32_MAX);
++		reply->tid = get_random_u32_below(U32_MAX);
  	while (!reply->tid);
  
  	request.tid = cpu_to_be32(reply->tid);
@@ -110,7 +122,7 @@ diff -Nupr a/drbd/drbd_state.c b/drbd/drbd_state.c
  
  	do
 -		reply->tid = prandom_u32();
-+		reply->tid = prandom_u32_max(U32_MAX);
++		reply->tid = get_random_u32_below(U32_MAX);
  	while (!reply->tid);
  
  	request.tid = cpu_to_be32(reply->tid);

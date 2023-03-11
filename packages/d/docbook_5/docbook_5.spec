@@ -33,6 +33,9 @@ Source2:        %{name}-README.SUSE
 Source3:        docbook-5.0-docs.tar.bz2
 Source4:        docbook-5.1-docs.tar.bz2
 Source6:        Makefile
+# For testing
+Source10:       check-catalog.sh
+
 # DB 5.0
 Source500:      docbook-5.0.tar.bz2
 # DB 5.1
@@ -46,6 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  sgml-skel
 BuildRequires:  unzip
+BuildRequires:  xmlstarlet
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
 Requires(postun):sgml-skel >= 0.7
@@ -119,12 +123,10 @@ update-xml-catalog
 
 %check
 %define catalog %{buildroot}%{xml_sysconf_dir}/catalog.d/docbook_5.xml
-if [ -e %{catalog} ]; then
-  xmlcatalog %{catalog} http://www.oasis-open.org/docbook/xml/5.2/rng/docbook.rnc
-  exit 0
-else
-  exit 10
-fi
+cp -p %{SOURCE10} .
+chmod +x check-catalog.sh
+
+./check-catalog.sh --buildroot %{buildroot} "%{catalog}"
 
 %files
 %config %{xml_sysconf_dir}/catalog.d/docbook_5.xml

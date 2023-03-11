@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,13 @@
 
 %define cpan_name HTTP-Daemon
 Name:           perl-HTTP-Daemon
-Version:        6.14
+Version:        6.16
 Release:        0
-Summary:        Simple http server class
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple http server class
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-SECURITY bsc#1201157 otto.hollmann@suse.com
-# Fix request smuggling in HTTP::Daemon
-Patch0:         CVE-2022-31081.patch
-Patch1:         CVE-2022-31081-2.patch
-Patch2:         CVE-2022-31081-Add-new-test-for-Content-Length-issues.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -37,14 +32,12 @@ BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(HTTP::Request) >= 6
 BuildRequires:  perl(HTTP::Response) >= 6
 BuildRequires:  perl(HTTP::Status) >= 6
-BuildRequires:  perl(HTTP::Tiny) >= 0.042
 BuildRequires:  perl(IO::Socket::IP) >= 0.32
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Needs)
-BuildRequires:  perl(URI)
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Request) >= 6
 Requires:       perl(HTTP::Response) >= 6
@@ -70,8 +63,7 @@ method on this object will read data from the client and return an
 back various responses.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL --installdirs=vendor

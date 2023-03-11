@@ -144,4 +144,34 @@
   * Fix node left selected on canceled node/text color dialog</comment>
     <requestid>1065644</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fbef3fe1520300aa7270ff2246a82a6e</srcmd5>
+    <version>4.0.0</version>
+    <time>1678555443</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  New features:
+  * Add setting for 'inverted controls'
+  * Add parameter initialization options to layout optimization dialog
+  * Add progress indicator when opening a mind map
+  * Add tool tips for optimizer parameters
+  * Add tool tip text for selecting node group by intersection
+  * Change help texts into tool tips
+  Bug fixes:
+  * Fix tab key not working properly with node and edge text inputs
+  * Unselect implicitly selected node after context menu has closed
+  * Don't autosave unmodified mind map on exit
+  * Don't autosave unmodified mind map on new file or open file
+  Other:
+  * More subtle new version indicator with a timeout
+  * Change help texts to tool tips in edit settings
+  * Update Italian translations
+  * Update Dutch translations
+  * Breaking changes to ALZ-format (old files can still be opened normally)
+    + Move style data into style element
+    + Move layout optimizer config into metadata element
+    + Save and load application and format versions separately
+    + Rename index =&gt; i, index0 =&gt; i0, index1 =&gt; i1</comment>
+    <requestid>1070826</requestid>
+  </revision>
 </revisionlist>

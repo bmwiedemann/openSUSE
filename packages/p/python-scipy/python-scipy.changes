@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 14:18:09 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Fix i686 tests for GCC 13 due to:
+  https://gcc.gnu.org/gcc-13/porting_to.html#excess-precision
+
+-------------------------------------------------------------------
 Sun Feb 26 00:27:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.1

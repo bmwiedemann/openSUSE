@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        6.11.0
+Version:        6.14.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -27,6 +27,12 @@ Source0:        https://download.calibre-ebook.com/%{version}/calibre-%{version}
 Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.sig
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source3:        %{name}.desktop
+Source4:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
+Source5:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
+# Missing user-agent-data.json since 6.12.0.
+# Fix: FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/calibre/user-agent-data.json'
+# Use from inside https://github.com/kovidgoyal/calibre/releases/download/v6.14.0/calibre-6.14.0-x86_64.txz
+Source6:        user-agent-data.json
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE: disabling unrar test, disable zeroconf test
 Patch1:         %{name}-python_test.patch
@@ -98,6 +104,7 @@ BuildRequires:  pkgconfig(hunspell) >= 1.7.0
 BuildRequires:  pkgconfig(icu-i18n) >= 70.1
 BuildRequires:  pkgconfig(libffi) >= 3.4.2
 BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
+BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.4.0
 BuildRequires:  pkgconfig(libpng16) >= 1.6.37
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
@@ -238,7 +245,7 @@ metadata for books. It can download newspapers and convert them
 into ebooks for convenient reading.
 
 %prep
-%setup -q
+%setup -q -a4 -a5
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1 -b .no-update
@@ -264,6 +271,10 @@ chmod -x recipes/*.recipe
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
 find setup -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
 
+# use system mspack (mga#15218)
+rm -f src/calibre/utils/lzx/mspack.h
+sed -i 's| calibre/utils/lzx/mspack.h||' setup/extensions.json
+
 cp -v %{SOURCE3}  .
 
 %build
@@ -273,6 +284,16 @@ CXXFLAGS="%{optflags}" \
 OVERRIDE_CFLAGS="%{optflags}" \
 CALIBRE_PY3_PORT=1 python3 setup.py build
 ###python setup.py build
+%{__python3} setup.py iso639
+%{__python3} setup.py iso3166
+%{__python3} setup.py translations
+%{__python3} setup.py gui
+%{__python3} setup.py resources \
+	--path-to-liberation_fonts %{_datadir}/fonts/truetype \
+	--system-liberation_fonts \
+	--path-to-hyphenation `pwd`/dictionaries-master \
+	--path-to-mathjax `pwd`/MathJax-3.1.4
+#%%{__python3} setup.py man_pages
 
 %install
 ###python setup.py install \
@@ -319,6 +340,9 @@ rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.metainfo.xml
 rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
 rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
 
+# Fix missing user-agent-data.json
+install -Dm 0644 %{SOURCE6} %{buildroot}%{_datadir}/%{name}/user-agent-data.json
+
 %fdupes %{buildroot}%{_prefix}
 
 # bsc#1022710, bsc#1104597: fix upgrade
@@ -361,6 +385,7 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 %{_datadir}/icons/hicolor/*/mimetypes/*.png
 %{_datadir}/mime/packages/calibre-mimetypes.xml
 %{_datadir}/%{name}/
+%{_datadir}/%{name}/user-agent-data.json
 %{_libdir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}-gui.metainfo.xml

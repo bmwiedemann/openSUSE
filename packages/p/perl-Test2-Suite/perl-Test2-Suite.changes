@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  6 03:12:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000148
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000148  2023-03-05 14:59:45-08:00 America/Los_Angeles
+      - Fixes for refcount stuff
+  0.000147  2023-03-04 11:42:59-08:00 America/Los_Angeles
+      - Add refcount tools, and include in ::V0
+  0.000146  2023-03-04 11:08:10-08:00 America/Los_Angeles
+      - Add T2_AUTO_DUMP and T2_AUTO_DEPARSE env vars
+
+-------------------------------------------------------------------
 Sat Mar  5 03:11:21 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000145

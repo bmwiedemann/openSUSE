@@ -199,4 +199,12 @@
     <comment>- Update to release 1.2.4</comment>
     <requestid>1035106</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e705d0abfb850e0c841bc32b4363ef84</srcmd5>
+    <version>1.2.5</version>
+    <time>1678555392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.5</comment>
+    <requestid>1070563</requestid>
+  </revision>
 </revisionlist>

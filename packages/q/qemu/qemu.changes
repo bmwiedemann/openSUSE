@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  9 15:21:18 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Disable -Werror as it is very sensitive when one
+  updates a new compiler. -Werror is fine for upstream development,
+  but not when it comes to stability of a package build.
+
+-------------------------------------------------------------------
 Fri Feb 24 12:12:42 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix build issue with Linux 6.2's headers (bsc#1208657) by dropping

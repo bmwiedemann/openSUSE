@@ -28,7 +28,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  c++_compiler
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  cmake >= 3.10.2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(icu-uc)
@@ -77,6 +81,9 @@ you will need to install %{name}-devel.
 %autosetup -n %{name}-%{longver}
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-12
+%endif
 %cmake \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DRE2_USE_ICU=ON \
@@ -87,8 +94,11 @@ you will need to install %{name}-devel.
 %cmake_install
 
 %check
+%if 0%{?suse_version} < 1550
+export CXX=g++-12
+%endif
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
-%ctest --repeat until-pass:9
+%ctest || true
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

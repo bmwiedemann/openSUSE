@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-pptp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-pptp
-Version:        1.2.10
+Version:        1.2.12
 Release:        0
 Summary:        NetworkManager VPN support for PPTP
 License:        GPL-2.0-or-later

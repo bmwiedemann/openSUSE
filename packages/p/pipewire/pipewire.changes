@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Feb 28 13:08:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add a suggests on the pipewire-jack packages to avoid the jack
+  versions getting picked for dependency resolution
+
+-------------------------------------------------------------------
+Thu Feb 16 13:08:02 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.66:
+  * Highlights
+    - Fix a regression in the pulseaudio module-combine-stream
+      because the new module-combine-stream was not installed.
+    - PipeWire can now generate a limits.d config file with our
+      recommended settings for priorities and memlock.
+    - Modules, exec and objects can now be loaded depending on
+      conditions. One example is the X11-bell module that can now
+      be disabled with a custom property override.
+    - Filter-chain has a new mysofa based spacialiser plugin.
+    - Support was added for different clocks that allow the RTP
+      modules to work with a PTP clock, for example.
+    - Many bugfixes and improvements.
+  * PipeWire
+    - Avoid rate switches when the graph is idle.
+    - The rate selection algorithm was improved. This ensures
+      minimal performance and quality loss when resampling.
+    - The default min.quantum was set to 32 again after it got
+      erronously changed to (the too low) 16 in version 0.3.45.
+    - Fix compilation issues with rust bindings because of macros
+      in defines. Work around it for now.
+    - Invalid file mappings are now refused.
+    - Modules, exec and objects can now be loaded depending on
+      conditions. One example is the X11-bell module that can now
+      be disabled with a custom property override.
+    - Filter now also supports _trigger_process() to drive the
+      graph.
+    - TID is now added to the journald log.
+    - PipeWire generates and installs
+      `/etc/security/limits.d/25-pw-rlimits.conf` that by default
+      contains project's recommended settings. Creation of the
+      pipewire group is left to the distro or user
+      ( `groupadd -r pipewire` ). See the rlimits-* Meson options
+      for controlling this behaviour.
+    - Additionally there is now by default disabled Meson option
+      that will install
+      `/etc/security/limits.d/20-pw-defaults.conf` with the current
+      Linux default memlock value. Distros with only kernels >=5.16
+      or always using systemd v251 or newer do not need this.
+      But all other builds should set the
+      `-Dpam-defaults-install=true` Meson option to ensure that the
+      memlock value is always large enough.
+  * modules
+    - Install module-combine-stream.
+    - RTP source now has support for custom channel names.
+    - RTP source will now stop when inactive.
+    - Filter-chain has a new mysofa based spacializer plugin.
+    - The RTP modules can now use direct clock timestamps to send
+      and receive packets. This makes it possible to synchronise
+      sender and receiver with a PTP clock, for example.
+    - Filter-chain now has an invert plugin to invert the polarity
+      of a signal.
+  * SPA
+    - There is now an option to set the channels used for probing
+      Pro Audio devices. This could unlock more samplerates for
+      some devices when they are probed with fewer channels.
+    - Support was added for other clocks than the MONOTONIC clock
+      in the driver nodes. This can be used to synchronise the
+      graph to a PTP clock, for example.
+    - The ALSA source has some more headroom when rate matching to
+      avoid stuttering when following another driver.
+    - libcamera controls are now mapped to standard PipeWire
+      property values.
+    - The channelmixer has seen some improvements.
+      MONO and undefined channel layouts are now upmixed and
+      downmixed more correctly.
+  * Bluetooth
+    - Many BAP support fixes.
+  * GStreamer
+    - The gstreamer elements now support buffer video metadata so
+      that strides are correctly handled.
+    - pipewiresrc will now error out correctly in more cases.
+  * JACK
+    - The frame to/from time functions are improved to also work
+      with negative time and frame offsets.
+- Drop patches already included upstream:
+  * 0001-modules-also-install-module-combine-stream.patch
+
+-------------------------------------------------------------------
 Thu Jan 26 12:21:31 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.65:

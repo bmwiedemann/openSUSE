@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 10 13:14:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Introduce docs flag, set to 0: do not build documentation using
+  pandoc: ghc is not part of the rings and we don't want this
+  there.
+
+-------------------------------------------------------------------
+Thu Mar  2 16:55:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.12:
+  + Allow setting the package user agent before the client has
+    connected.
+  + Fix a small memory leak when refreshing metadata.
+- Changes from version 1.8.11:
+  + Add support for replaying USB devices so they can be emulated
+    in CI.
+  + Allow desktop software to inhibit the system to prevent
+    updates.
+  + Allow using requirements with depth=0 and no parent.
+  + Auto-set the CCGX remove-delay now we parse DMC subcomponents.
+  + Detect and warn users with the broken NVMe firmware 3B2QGXA7.
+  + Print errors as JSON objects when using fwupdmgr --json.
+- Changes from version 1.8.10:
+  + Add a PE/COFF firmware parser to allow reading coSWID SBoM
+    data.
+  + Allow dumping CFI SPI chips using devices like CH341a.
+  + Refactor the HWIDs functionality to include FDT data.
+- Rebase fwupd-bsc1130056-change-shim-path.patch.
+- Drop uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch:
+  fixed upstream.
+- Add -Dcompat_cli=true meson parameter: keep compat binaries for
+  the time being.
+- Add xz-devel BuildRequires: needed to link liblzma.
+
+-------------------------------------------------------------------
 Wed Jan 18 17:13:29 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix error generating grub.cfg when an update is available.

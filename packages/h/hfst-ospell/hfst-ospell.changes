@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  9 07:04:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch gcc13-fix.patch in order to support GCC 13.
+
+-------------------------------------------------------------------
 Fri Mar 27 14:25:33 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Fix boo#1158318 by

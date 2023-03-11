@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-Class-Method-Modifiers/Changes
+
+  2.15      2023-03-05 23:42:48Z
+          - localize $SIG{__DIE__} before calling eval (closes RT#146848; Yves
+            Orton)
+
+-------------------------------------------------------------------
 Tue Jan 17 03:06:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.14

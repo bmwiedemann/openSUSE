@@ -25,7 +25,11 @@ Group:          Development/Languages/C and C++
 URL:            https://mujs.com
 Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(readline)
+%else
+BuildRequires:  readline-devel
+%endif
 
 %description
 MuJS is a lightweight Javascript interpreter designed for embedding in other software to extend them with scripting capabilities.

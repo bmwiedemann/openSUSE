@@ -2807,4 +2807,13 @@ However, upstream development now focuses on 3.x series.
     <comment>- SLE-12 builds nis.so as well.</comment>
     <requestid>1069685</requestid>
   </revision>
+  <revision rev="180" vrev="31">
+    <srcmd5>29b3341a632cb1c9f633f8e2297d1822</srcmd5>
+    <version>2.7.18</version>
+    <time>1678555347</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable --with-system-ffi for non-standard architectures.
+</comment>
+    <requestid>1070346</requestid>
+  </revision>
 </revisionlist>

@@ -6092,4 +6092,16 @@
     <comment></comment>
     <requestid>1069866</requestid>
   </revision>
+  <revision rev="391" vrev="3">
+    <srcmd5>9982dfcbaa4a07896d2b8c6af12fb4ac</srcmd5>
+    <version>110.0.1</version>
+    <time>1678555333</time>
+    <user>dimstar_suse</user>
+    <comment>- Cherry-pick upstream changes for GCC 13 in gcc13-fix.patch.
+
+- Fix 32 bit build bmo#1810584 (add mozilla-bmo1810584.patch)
+- Mozilla Firefox 110.0.1 (boo#1208886)
+    Digital ID in Denmark (bmo#1819096)</comment>
+    <requestid>1070344</requestid>
+  </revision>
 </revisionlist>

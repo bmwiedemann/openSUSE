@@ -18,7 +18,7 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.55
+Version:        4.56
 Release:        0
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
@@ -55,6 +55,7 @@ however is has now been removed from the perl core...
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

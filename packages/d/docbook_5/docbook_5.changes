@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar  3 06:54:34 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR5
+
+Only spec file changes
+
+- Introduce check-catalog.sh script in %check section
+  This script tests the docbook_5.xml XML catalog, extracts entries, and checks
+  if the file exists.
+
+- Add missing "/" in catalog file "docbook_5.xml"
+  In several rewritePrefix attributes the missing "/" leads to invalid local paths.
+  For example:
+
+  $ xmlcatalog /etc/xml/catalog https://cdn.docbook.org/schema/5.2/rng/assemblyxi.rnc
+  file:///usr/share/xml/docbook/schema/rng/5.2assemblyxi.rnc
+
+  The ".../5.2assemblyxi.rnc" part should be ".../5.2/assemblyxi.rnc".
+
+-------------------------------------------------------------------
 Thu Feb  9 12:39:46 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR5
 
 - Update to version 5.2CR5

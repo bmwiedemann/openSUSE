@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  1 03:07:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.088
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.088		2023-02-28	T. R. Wyant
+      Remove support for (**{ ... code ... }).  This was introduced in
+      Perl 5.37.8 along with a single-splat version.  The double-splat
+      version was removed without deprecation in Perl 5.37.9, so it is
+      being removed without deprecation here as well, per my stated policy
+      about development functionality.  The single-splat version still
+      exists (and is documented) in Perl 5.37.9, and in this package.
+
+-------------------------------------------------------------------
 Sun Jan 29 03:08:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.087

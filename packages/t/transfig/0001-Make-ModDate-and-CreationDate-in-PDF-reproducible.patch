@@ -1,0 +1,123 @@
+From e72a9d017742366cba636d783ea121279bfb7d6c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 9 Mar 2023 19:19:51 +0100
+Subject: [PATCH] Make ModDate and CreationDate in PDF reproducible
+
+Ghostscript ignores the date in the preamble and uses the current
+time instead. This notably breaks the SOURCE_DATE_EPOCH support
+for reproducible builds.
+
+Passing the creation time as DOCINFO pdfmark forces gs to use the
+specified date/time. Although ghostscript still adds the unreproducible
+DocumentUUID and trailer ID, it is sufficient when including the PDF
+figure with pdflatex.
+
+Reuse the SOURCE_DATE_EPOCH code from creation_date for determining
+the wanted timestamp, and return the formatted time via the new
+`creation_date_pdfmark` function.
+---
+ fig2dev/creationdate.c | 38 +++++++++++++++++++++++++++++++++-----
+ fig2dev/creationdate.h |  1 +
+ fig2dev/dev/genps.c    |  8 ++++++++
+ 3 files changed, 42 insertions(+), 5 deletions(-)
+
+diff --git a/fig2dev/creationdate.c b/fig2dev/creationdate.c
+index a51bfd4..de914a5 100644
+--- a/fig2dev/creationdate.c
++++ b/fig2dev/creationdate.c
+@@ -36,8 +36,8 @@
+ #include "creationdate.h"
+ 
+ 
+-int
+-creation_date(char *buf)
++static struct tm*
++parse_time()
+ {
+     time_t now;
+ 
+@@ -70,15 +70,43 @@ creation_date(char *buf)
+ 	} else {
+ 	    /* no errors, epoch is valid */
+ 	    now = epoch;
+-	    strftime(buf, CREATION_TIME_LEN, "%F %H:%M:%S", gmtime(&now));
+-	    return true;
++	    return gmtime(&now);
+ 	}
+     }
+ #endif
+ 
+     /* fall trough on errors or !source_date_epoch */
+     time(&now);
+-    if (strftime(buf, CREATION_TIME_LEN, "%F %H:%M:%S", localtime(&now)))
++    return localtime(&now);
++}
++
++static struct tm*
++get_time()
++{
++    static struct tm time = { 0 };
++    static int initialized = 0;
++    if (!initialized) {
++      time = *parse_time();
++      initialized = 1;
++    }
++    return &time;
++}
++
++int
++creation_date(char *buf)
++{
++    if (strftime(buf, CREATION_TIME_LEN, "%F %H:%M:%S", get_time()))
++	return true;
++    else
++	return false;
++}
++
++int
++creation_date_pdfmark(char *buf)
++{
++    // Pdfmark format should be D:YYYYMMDDHHmmSSOHH’mm’.
++    // Timezone offset (O...) may be omitted
++    if (strftime(buf, CREATION_TIME_LEN, "D:%Y%m%d%H%M%S", get_time()))
+ 	return true;
+     else
+ 	return false;
+diff --git a/fig2dev/creationdate.h b/fig2dev/creationdate.h
+index 048508a..199d985 100644
+--- a/fig2dev/creationdate.h
++++ b/fig2dev/creationdate.h
+@@ -21,3 +21,4 @@
+ 
+ #define	CREATION_TIME_LEN	36
+ extern int	creation_date(char *buf);
++extern int	creation_date_pdfmark(char *buf);
+diff --git a/fig2dev/dev/genps.c b/fig2dev/dev/genps.c
+index 5bea35c..48e05a6 100644
+--- a/fig2dev/dev/genps.c
++++ b/fig2dev/dev/genps.c
+@@ -1181,6 +1181,7 @@ genps_end(void)
+ 	const int	h = pageheight, w = pagewidth;
+ 	int		epslen, tiflen;
+ 	struct stat	fstat;
++	char		date_buf[CREATION_TIME_LEN];
+ 
+ 	/* for multipage, translate and output objects for each page */
+ 	if (multi_page) {
+@@ -1368,6 +1369,13 @@ genps_end(void)
+ 	/* final DSC comment for eps output (EOF = end of document) */
+ 	fputs("%EOF\n", tfp);
+ 
++	if (pdfflag) {
++		if (creation_date_pdfmark(date_buf))
++		        fprintf(tfp,
++				"[ /ModDate (%s)\n /CreationDate (%s)\n /DOCINFO pdfmark\n",
++				date_buf, date_buf);
++	}
++
+ 	/* all ok */
+ 	return 0;
+ }
+-- 
+2.39.2
+

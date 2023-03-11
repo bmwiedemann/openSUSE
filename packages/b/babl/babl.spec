@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
 # None of these is needed for standard build:
 #BuildRequires:  inkscape ruby w3m
+%{?suse_build_hwcaps_libs}
 
 %description
 babl is a dynamic, any to any, pixel format translation library.

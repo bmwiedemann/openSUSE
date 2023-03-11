@@ -1,7 +1,7 @@
 #
 # spec file for package libmng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,9 @@ BuildRequires:  cmake
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  man
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?suse_build_hwcaps_libs}
 
 %description
 This library can handle MNG and JNG formats that contain animated
@@ -62,8 +62,7 @@ pictures. These formats should replace the GIF format.
 This package contains the static library and the header files.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 # This is not zlib licensed and unused, just as a caution, bnc#744320
@@ -74,23 +73,20 @@ rm -rf contrib
       -DMNG_INSTALL_DOC_DIR=%{_docdir}/%{name} \
       -DBUILD_MAN=ON \
       -DBUILD_STATIC_LIBS=OFF ..
-
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc LICENSE README doc/doc.readme doc/libmng.txt
+%license LICENSE
+%doc README doc/doc.readme doc/libmng.txt
 %{_libdir}/libmng.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*.h
 %{_mandir}/*/*
 %doc %{_docdir}/libmng/

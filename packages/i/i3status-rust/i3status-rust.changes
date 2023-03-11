@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  8 17:08:53 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.30.4
+- Added:
+  * Time: timezone can now be set to a list of values. Click on the block to cycle between timezones.
+- Fixed:
+  * Net: prefer the default device when multiple devices match the regex.
+  * Cpu: fix panic on systems which do not report CPU frequency.
+  * Bluetooth: change block color based on battery level.
+  * Memory: consider ZFS arc cache as available memory.
+  * Backlight: reconnect after monitor sleeps.
+  * Nvidia GPU: display unavailable stats as zeros instead of failing.
+  * Bluetooth: correctly display battery level even if it is not available instantly.
+  * Net: get SSID from NL80211_BSS_INFORMATION_ELEMENTS (makes SSID available on Linux kernel 5.19 and newer).
+  * Backlight: fallback to sysfs on systems which don't use systemd-logind.
+  * Do not require config file to have a .toml extension.
+  
+
+-------------------------------------------------------------------
 Tue Feb 28 10:10:39 UTC 2023 - nyslay@gmail.com
 
 - Update to version 0.30.3:

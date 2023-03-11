@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 10 09:23:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3e3158ce12741b58ce53f132b48f26438094886d.patch: widget: Use
+  the correct template in dispose_template(). Fixes crashes in
+  various apps.
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
+Thu Mar  9 07:36:45 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add 0001-combobox-Avoid-extra-queue_resize.patch: Fix combobox
+  not showing (bsc#1209043 glgo#GNOME/gtk!5608).
+
+-------------------------------------------------------------------
 Sun Mar  5 13:27:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.10.0:

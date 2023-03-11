@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.12.1
+%define doc_version 2.13.0
 Name:           freetype2
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        A TrueType Font Library
 License:        GPL-2.0-or-later OR SUSE-Freetype
@@ -110,6 +110,8 @@ This tool is part of the FreeType project
 export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
 %configure \
 	--with-bzip2 \
+	--with-brotli \
+	--without-harfbuzz \
 	--with-png \
 	--with-zlib \
     --enable-freetype-config \

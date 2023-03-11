@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 08:50:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_ppc64_ibm_double_double128 test on ppc64*
+  architectures (gh#numpy/numpy#21094, bsc#1208865).
+
+-------------------------------------------------------------------
 Wed Feb  1 21:44:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build-conditionalize cblas dependency, it is missing on SLE <= 15

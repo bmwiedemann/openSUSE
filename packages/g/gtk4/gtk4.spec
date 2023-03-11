@@ -39,6 +39,10 @@ Source99:       gtk4-rpmlintrc
 # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
 # PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
 Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+# PATCH-FIX-UPSTREAM 0001-combobox-Avoid-extra-queue_resize.patch bsc#1209043 glgo#GNOME/gtk!5608 xwang@suse.com -- combobox: Avoid extra queue_resize()
+Patch1:         0001-combobox-Avoid-extra-queue_resize.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gtk/-/commit/3e3158ce12741b58ce53f132b48f26438094886d.patch -- widget: Use the correct template in dispose_template()
+Patch2:         3e3158ce12741b58ce53f132b48f26438094886d.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas

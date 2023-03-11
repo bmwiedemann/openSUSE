@@ -860,4 +860,15 @@
     <comment></comment>
     <requestid>1045739</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a80987f83428d4d80c989ce4795b8f96</srcmd5>
+    <version>5.15.13</version>
+    <time>1678555402</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc12 for openSUSE:Factory as workaround for boo#1207469.
+
+We would like to reach gcc13 to Factory soon and this package is one
+of the last blockers as we're still waiting for an upstream fix. (forwarded request 1070359 from marxin)</comment>
+    <requestid>1070629</requestid>
+  </revision>
 </revisionlist>

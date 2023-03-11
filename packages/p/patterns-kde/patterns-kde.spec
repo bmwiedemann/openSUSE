@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ not make sense.
 This particular package contains the KDE patterns.
 
 ################################################################################
+
 %package devel_kde_frameworks
 %pattern_development
 Summary:        KDE Frameworks and Plasma Development
@@ -452,6 +453,8 @@ Recommends:     kdenetwork-filesharing
 Recommends:     kio-extras5
 Recommends:     kwalletmanager5
 Recommends:     pinentry-qt5
+# boo#1208684
+Recommends:     pam_kwallet
 
 %if 0%{?suse_version} > 1500
 # pipewire
@@ -639,8 +642,8 @@ Obsoletes:      patterns-openSUSE-kde4_imaging < %{version}
 Obsoletes:      patterns-openSUSE-kde_imaging < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-imaging)
 Requires:       pattern() = kde_plasma
-Recommends:     gwenview5
 Recommends:     digikam
+Recommends:     gwenview5
 Recommends:     kcolorchooser
 Recommends:     kio_kamera
 Recommends:     kipi-plugins
@@ -705,11 +708,11 @@ Provides:       pattern-order() = 2620
 Obsoletes:      patterns-openSUSE-kde4_multimedia < %{version}
 Obsoletes:      patterns-openSUSE-kde_multimedia < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-multimedia)
-Recommends:     plasma5-pa
 Recommends:     PackageKit-gstreamer-plugin
 Recommends:     gstreamer-plugins-good
 Recommends:     kio_audiocd
 Recommends:     phonon4qt5-backend-gstreamer
+Recommends:     plasma5-pa
 # we want a video player
 Recommends:     vlc
 Suggests:       amarok
@@ -739,8 +742,8 @@ Provides:       pattern-order() = 2700
 Obsoletes:      patterns-openSUSE-kde4_office < %{version}
 Obsoletes:      patterns-openSUSE-kde_office < %{version}
 Supplements:    (patterns-kde-kde and patterns-office-office)
-Recommends:     libreoffice-qt5
 Recommends:     libreoffice-icon-theme-breeze
+Recommends:     libreoffice-qt5
 Suggests:       scribus
 
 %description kde_office
@@ -801,11 +804,11 @@ Provides:       pattern-icon() = package_utilities
 Provides:       pattern-order() = 2860
 Obsoletes:      patterns-openSUSE-kde4_utilities < %{version}
 Obsoletes:      patterns-openSUSE-kde_utilities < %{version}
-Recommends:     pattern() = kde_utilities_opt
-Recommends:     kmag
 Recommends:     kcharselect
+Recommends:     kmag
 Recommends:     kmousetool
 Recommends:     kompare
+Recommends:     pattern() = kde_utilities_opt
 Suggests:       okteta
 Suggests:       kteatime
 Suggests:       k4dirstat

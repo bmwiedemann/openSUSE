@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  8 03:06:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.78
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.78      2023-03-07 11:49:27 -0700
+    - Test fix to handle Perls with space in the path (gh#391, mohawk++)
+
+-------------------------------------------------------------------
 Sat Jan 21 03:06:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.77

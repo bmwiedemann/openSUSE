@@ -1,7 +1,7 @@
 #
 # spec file for package hfst-ospell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://hfst.github.io/
 Source0:        https://github.com/hfst/%{name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch
+Patch1:         gcc13-fix.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -58,6 +59,7 @@ Development headers and libraries for hfst-ospell
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 # disable libxml++ as upstream requires version 2.6

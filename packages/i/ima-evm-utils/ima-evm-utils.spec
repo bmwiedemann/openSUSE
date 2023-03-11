@@ -1,7 +1,7 @@
 #
 # spec file for package ima-evm-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
-%define sover 3
+%define sover 4
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
 Source0:        https://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
+Patch1:         0001-fsverity.test-Add-usr-sbin-into-PATH.patch
 BuildRequires:  asciidoc
 BuildRequires:  attr
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  e2fsprogs
 BuildRequires:  keyutils-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libtool
@@ -38,6 +40,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  util-linux
 BuildRequires:  vim
 
 %description

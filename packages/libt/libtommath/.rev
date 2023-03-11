@@ -24,4 +24,12 @@
 - update License tag to match upstream change</comment>
     <requestid>746606</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8923ab27457e5e7e450ab5582168c190</srcmd5>
+    <version>1.2.0</version>
+    <time>1678555424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070741</requestid>
+  </revision>
 </revisionlist>

@@ -267,6 +267,7 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
+%{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel

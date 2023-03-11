@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 14:05:37 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.1.4
+  - Workaround for broken Tumbleweed package libfdisk1
+
+-------------------------------------------------------------------
 Wed Feb  8 15:14:26 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.1.3

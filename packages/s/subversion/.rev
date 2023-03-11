@@ -1662,4 +1662,12 @@
     <comment>- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&amp;revision=1904472)</comment>
     <requestid>1056713</requestid>
   </revision>
+  <revision rev="191" vrev="5">
+    <srcmd5>d043baa464a1ae994f2fd3619c17c09a</srcmd5>
+    <version>1.14.2</version>
+    <time>1678555403</time>
+    <user>dimstar_suse</user>
+    <comment>- add swig4.patch for better support with SWIG 4.x (bsc#1209110)</comment>
+    <requestid>1070632</requestid>
+  </revision>
 </revisionlist>

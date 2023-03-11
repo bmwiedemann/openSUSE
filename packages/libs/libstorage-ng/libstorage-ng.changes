@@ -1,4 +1,56 @@
 --------------------------------------------------------------------
+Fri Mar 10 09:36:18 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Czech) (bsc#1149754)
+- 4.5.82
+
+--------------------------------------------------------------------
+Fri Mar 10 00:15:05 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+- 4.5.81
+
+--------------------------------------------------------------------
+Thu Mar 9 15:35:20 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.80
+
+--------------------------------------------------------------------
+Thu Mar 9 11:08:49 UTC 2023 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.5.79
+
+--------------------------------------------------------------------
+Thu Mar 9 09:44:54 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Mar 9 09:35:43 UTC 2023 - guillaume.gardet@opensuse.org
+
+- Translated using Weblate (French) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Mar 9 09:17:41 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#916
+- updated bindings
+- extended integration tests
+- update pot and po files
+- 4.5.78
+
+--------------------------------------------------------------------
+Wed Mar 8 16:16:43 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#915
+- rename source files with actions
+- expose some functions of action classes in API
+- extended commit callbacks to include pointer to action
+- 4.5.77
+
+--------------------------------------------------------------------
 Mon Mar 6 11:44:41 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#914

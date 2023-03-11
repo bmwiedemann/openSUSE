@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  2 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.91
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.91  2023-03-01
+    -  Fixed bug where timezone alias wasn't handled
+           On linux systems configured to be in a timezone that is an alias,
+           the system timezone wasn't recognized, and it defaulted to GMT.
+           This is now fixed. Patch supplied by Sandi Wallendahl (GitHub #43)
+
+-------------------------------------------------------------------
 Sat Dec  3 03:06:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.90

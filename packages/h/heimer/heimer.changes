@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 11 06:03:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.0:
+  New features:
+  * Add setting for 'inverted controls'
+  * Add parameter initialization options to layout optimization dialog
+  * Add progress indicator when opening a mind map
+  * Add tool tips for optimizer parameters
+  * Add tool tip text for selecting node group by intersection
+  * Change help texts into tool tips
+  Bug fixes:
+  * Fix tab key not working properly with node and edge text inputs
+  * Unselect implicitly selected node after context menu has closed
+  * Don't autosave unmodified mind map on exit
+  * Don't autosave unmodified mind map on new file or open file
+  Other:
+  * More subtle new version indicator with a timeout
+  * Change help texts to tool tips in edit settings
+  * Update Italian translations
+  * Update Dutch translations
+  * Breaking changes to ALZ-format (old files can still be opened normally)
+    + Move style data into style element
+    + Move layout optimizer config into metadata element
+    + Save and load application and format versions separately
+    + Rename index => i, index0 => i0, index1 => i1
+
+-------------------------------------------------------------------
 Tue Feb 14 04:23:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.7.0:

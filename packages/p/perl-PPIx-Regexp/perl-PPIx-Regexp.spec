@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.087
+Version:        0.088
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse regular expressions

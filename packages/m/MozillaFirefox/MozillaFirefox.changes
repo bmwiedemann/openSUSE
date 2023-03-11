@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  7 09:40:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Cherry-pick upstream changes for GCC 13 in gcc13-fix.patch.
+
+-------------------------------------------------------------------
 Mon Mar  6 20:09:41 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Limit memory use on riscv64
@@ -6,18 +11,18 @@ Mon Mar  6 20:09:41 UTC 2023 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Sat Mar  4 16:03:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Fix 32 bit build bmo#1810584 add mozilla-bmo1810584.patch
+- Fix 32 bit build bmo#1810584 (add mozilla-bmo1810584.patch)
 
 -------------------------------------------------------------------
 Fri Mar  3 17:29:27 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Mozilla Firefox 110.0.1 boo#1208886
+- Mozilla Firefox 110.0.1 (boo#1208886)
   * Fixed clearing recent cookies clears all cookies
     (bmo#1816279)
   * Fixed WebGL crashes on Linux when ran inside a VMWare virtual
     machine (bmo#1807942)
   * Fixed a bug with CSP serialization causing bugs with the MitID
-    Digital ID in Denmark (Bug 1819096)
+    Digital ID in Denmark (bmo#1819096)
 
 -------------------------------------------------------------------
 Wed Feb 15 09:56:46 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>

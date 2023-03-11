@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test2-Suite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test2-Suite
 Name:           perl-Test2-Suite
-Version:        0.000145
+Version:        0.000148
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution with a rich set of tools built upon the Test2 framework
@@ -63,7 +63,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc appveyor.yml Changes README README.md
+%doc Changes README README.md
 %license LICENSE
 
 %changelog

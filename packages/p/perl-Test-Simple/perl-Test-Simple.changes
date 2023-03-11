@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 03:09:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302193
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302193  2023-03-06 09:38:00-08:00 America/Los_Angeles
+
+      - Deprecate inst't()
+
+-------------------------------------------------------------------
 Fri Feb  3 03:07:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302192

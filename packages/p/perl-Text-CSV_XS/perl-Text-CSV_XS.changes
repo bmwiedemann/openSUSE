@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  2 03:08:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.50	- 2023-03-01, H.Merijn Brand
+      * Promote sep to sep_set in csv () with auto-headers
+      * Fix bug in set_diag surfaced by PERL_RC_STACK
+
+-------------------------------------------------------------------
 Wed Jan  4 03:11:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.49

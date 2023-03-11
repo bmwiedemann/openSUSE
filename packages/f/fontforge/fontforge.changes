@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:20:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230101:
+  * Display the block name for reserved code points
+  * Don't respond to wheel scrolls for buttons/tabsets
+  * gfilechooser.c: fix behaviour when changing file type
+  * Better control-drag handling for line-adjacent points
+  * Fix resolution of program root
+  * Fix missed nonextcp edit
+  * Support ToUnicode extraction from PDFs for Type3 fonts
+  * Add resource file and Windows application manifest
+  * Fix name extraction for Type3 fonts from pdfs
+  * cmake: Install fonttools and pycontrib
+  * Fix InfoPlist.strings file name.
+  * Fix normalisation of absolute paths
+  * Handle non-array cm transforms while reading graphics stream
+    from PDFs
+  * Fix rect extraction from graphics stream for type3 fonts
+  * Change which lookup types are suggested for jamo features
+  * Better line handling in simplify
+  * Use 'cmap' for Adobe-Identity-0 CID fonts
+  * Fix ChangeGlyph calcluations relative to new nonext/prevcp
+    conventions
+  * Docs composite glyph
+  * FVSplineFontPieceMeal: Check that the clut is present before
+    applying conversion
+  * Expand the lists of languages and scripts
+  * Add flags to Python font.transform()
+  * Support setting SplineChar width from importOutlines.
+  * Undefine "extended" macro temporarily on GNU Hurd
+  * Define PATH_MAX and MAXPATHLEN for GNU/Hurd compatibility
+  * Fix Ascent & Descent Importing from SVG Font
+  * Prevent floating point shenanigans in loop termination (fixes
+    #5012)
+  * GroupFindLPos() in fontforgeexe/groupsdlg.c null pointer fix
+  * Fix drawing outside of expose calls
+  * Fixed one more typo
+  * Upgrade GitHub Actions
+  * Prevents memory underflow in GFileMimeType() in gutils/fsys.c
+  * Add a preference for saving editor state
+  * splineutil.c: prevent hang on nan input
+  * Shell-quote command sent to compressor in BDF
+  * Fix pfadecrypt bugs
+  * Include `SFDUTF7` functions in `libfontforge.so`
+  * splinefit.c: Improvements to merge/simplify
+  * RFE: [FEAT] When reference to non-existent glyphs are present
+    in an OpenTy…
+  * docs: Python scripting - update font.mergeFeature with
+    details of boo…
+  * Fix logic for CharString double-movetos after PR 4685
+  * Upgrade to Unicode 15.0.0 and fix and expand the script lists
+  * Fix broken link on scripting page
+  * Fix typo in man page
+  * Fix painting behaviour of the ruler linger window and layer
+    change dialog
+  * fontinfo.c: fix crash from uninitialised other_pos
+  * tottfgpos: Fix needless warning about 16-bit field
+  * ufo.c: emit guidelines key
+  * fvmetrics.c: partial revert of 1033bc6
+  * Update tranlsations from Crowdin
+  * Fix woff2 decoding
+  * Record unicode cmap encodings when one glyph is in multiple
+    slots
+
+-------------------------------------------------------------------
 Sun Mar 20 21:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220308:

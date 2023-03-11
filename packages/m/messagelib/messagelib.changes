@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  9 13:16:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix encoding of replies (kde#447297, kde#443009, kde#298349):
+  * 0001-Fix-fallback-path-in-MessageFactoryNG-applyCharset.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:46:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3

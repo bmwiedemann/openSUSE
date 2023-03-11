@@ -151,6 +151,7 @@ Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
+BuildRequires:  libffi-devel
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
@@ -332,6 +333,7 @@ touch Parser/asdl* Python/Python-ast.c Include/Python-ast.h
 %configure \
     --docdir=%{_docdir}/python \
     --with-fpectl \
+    --with-system-ffi \
     --enable-ipv6 \
     --enable-shared \
     --enable-unicode=ucs4

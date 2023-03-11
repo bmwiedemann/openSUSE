@@ -285,6 +285,9 @@ test_failok+=" or test_keepdims_out"
 # boo#1148173 gh#numpy/numpy#14438
 %ifarch ppc64 ppc64le
 test_failok+=" or test_generalized_sq"
+# situation with IBM and double numbers is ... complicated
+# gh#numpy/numpy#21094
+test_failok+=" or test_ppc64_ibm_double_double128"
 %endif
 # these tests fail on big endian gh#numpy/numpy#11831
 %ifarch s390x ppc ppc64

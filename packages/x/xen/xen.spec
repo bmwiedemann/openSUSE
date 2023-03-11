@@ -207,7 +207,8 @@ Patch409:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
-Patch422:       gcc13-fixes.patch
+Patch422:       bunzip-gcc13.patch
+Patch423:       altp2m-gcc13.patch
 # Other bug fixes or features
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch

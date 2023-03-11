@@ -301,4 +301,12 @@ See any of the files in the docs/ subdirectory (section on notices and ip toward
     <comment></comment>
     <requestid>1064011</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>80b785fdc0bd0c27c779df88cb435e04</srcmd5>
+    <version>5.2cr5</version>
+    <time>1678555422</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070731</requestid>
+  </revision>
 </revisionlist>

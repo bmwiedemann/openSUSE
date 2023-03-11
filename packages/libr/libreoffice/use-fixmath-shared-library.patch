@@ -1,8 +1,8 @@
-Index: libreoffice-7.4.3.2/configure.ac
+Index: libreoffice-7.5.0.2/configure.ac
 ===================================================================
---- libreoffice-7.4.3.2.orig/configure.ac
-+++ libreoffice-7.4.3.2/configure.ac
-@@ -10594,7 +10594,7 @@ if test "$with_system_libfixmath" = "yes
+--- libreoffice-7.5.0.2.orig/configure.ac
++++ libreoffice-7.5.0.2/configure.ac
+@@ -10559,7 +10559,7 @@ if test "$with_system_libfixmath" = "yes
      AC_LANG_PUSH([C++])
      AC_CHECK_HEADER([libfixmath/fix16.hpp], [],
         [AC_MSG_ERROR([libfixmath/fix16.hpp not found. install libfixmath])], [])
@@ -11,3 +11,29 @@ Index: libreoffice-7.4.3.2/configure.ac
      AC_LANG_POP([C++])
  else
      AC_MSG_RESULT([internal])
+Index: libreoffice-7.5.0.2/tools/Library_tl.mk
+===================================================================
+--- libreoffice-7.5.0.2.orig/tools/Library_tl.mk
++++ libreoffice-7.5.0.2/tools/Library_tl.mk
+@@ -115,7 +115,7 @@ endif
+ 
+ ifeq ($(SYSTEM_LIBFIXMATH),TRUE)
+ $(eval $(call gb_Library_add_libs,tl,\
+-	-llibfixmath \
++	-lfixmath \
+ ))
+ endif
+ 
+Index: libreoffice-7.5.0.2/vcl/Library_vcl.mk
+===================================================================
+--- libreoffice-7.5.0.2.orig/vcl/Library_vcl.mk
++++ libreoffice-7.5.0.2/vcl/Library_vcl.mk
+@@ -572,7 +572,7 @@ vcl_headless_freetype_code=\
+ 
+ ifeq ($(SYSTEM_LIBFIXMATH),TRUE)
+ $(eval $(call gb_Library_add_libs,vcl,\
+-        -llibfixmath \
++        -lfixmath \
+ ))
+ endif
+ 

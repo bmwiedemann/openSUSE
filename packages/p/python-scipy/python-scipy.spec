@@ -251,6 +251,9 @@ donttest+=" or (test_lobpcg and test_tolerance_float32)"
 donttest+=" or (test_iterative and test_maxiter_worsening)"
 %ifarch %ix86
 donttest+=" or (test_solvers and test_solve_generalized_discrete_are)"
+# Skip the following tests that fail with GCC 13 due to the excess precision change:
+# https://gcc.gnu.org/gcc-13/porting_to.html#excess-precision
+donttest+=" or (test_fitpack or test_fitpack2 or test_splint or test_integrate or test_boost)"
 %endif
 # fails on big endian
 donttest+=" or (TestNoData and test_nodata)"

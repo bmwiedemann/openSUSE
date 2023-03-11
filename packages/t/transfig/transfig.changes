@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar  9 19:39:39 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make PDF output via ghostscript (for large parts) reproducible,
+  add 0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
+
+-------------------------------------------------------------------
+Thu Mar  9 17:02:41 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix fig2mpdf documentation:
+  * rerun latex to get references right.
+  * uudecode images for html documentation.
+- Clean up spec file, remove parts for EOLed SLE 11.
+- Depend on texlive-epstopdf only if texlive is installed.
+- Use weak dependency on ghostscript, vector output formats
+  like EPS, PS and SVG do not depend on it.
+
+-------------------------------------------------------------------
 Wed Oct  6 10:45:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to fig2dev version 3.2.8 Patchlevel 8b (Aug 2021)

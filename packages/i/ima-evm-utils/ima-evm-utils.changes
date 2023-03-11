@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 10 07:53:03 UTC 2023 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.5
+	* CI changes:
+	  * New: UML kernel testing environment
+	  * Support for running specific test(s)
+	  * Update distros
+	  * Update software release versions
+	* New features:
+	  * Signing fs-verity signatures
+	  * Reading TPM 2.0 PCRs via sysfs interface
+	* New tests:
+	  * Missing IMA mmapped file measurements
+	  * Overlapping IMA policy rules
+	  * EVM portable signatures
+	  * fs-verity file measurements in the IMA measurement list
+	* Build and library changes:
+	  * OpenSSL 3.0 version related changes
+	  * New configuration options: --disable-engine, --enable-sigv1
+	  * Deprecate IMA signature v1 format
+	* Misc bug fixes and code cleanup:
+	  * memory leaks, bounds checking, use after free
+	  * Fix and update test output
+	  * Add missing sanity checks
+	* Documentation:
+	  * Store the sourceforge ima-evm-utils wiki for historical
+	    purposes.
+- Upstream bumped soname to 4.0.0
+- Add BuildRequires: e2fsprogs util-linux (required by tests, which are mandatory)
+- /usr/sbin to PATH (0001-fsverity.test-Add-usr-sbin-into-PATH.patch, sent to upstream ML)
+
+-------------------------------------------------------------------
 Mon Apr 25 11:32:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch to use https urls

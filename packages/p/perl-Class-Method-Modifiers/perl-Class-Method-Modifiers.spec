@@ -18,7 +18,7 @@
 
 %define cpan_name Class-Method-Modifiers
 Name:           perl-Class-Method-Modifiers
-Version:        2.14
+Version:        2.15
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provides Moose-like method modifiers

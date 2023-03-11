@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar  8 20:09:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * The demo program `ftinspect` has  been completely updated and much
+    enhanced.  It now  combines the functionality of  almost all other
+    graphical FreeType  demo programs into a  single application based
+    on the Qt framework.  This was Charlie Jiang's GSoC 2022 project.
+  * The `ftbench` demo  program got a new command line  option `-e` to
+    set a charmap index.
+  * Specifying  a point  size is  now optional  for the  demo programs
+    `ftgrid`, `ftmulti`,  `ftstring`, and  `ftview`.  If not  given, a
+    default size is used.
+  * For  `ftgrid`,  `ftstring`, and  `ftview`,  option  `-e` now  also
+    accepts a numeric value to set a charmap index.
+  * In  `ftstring`, it  is  now  possible to  set  the displayed  text
+    interactively by pressing the 'Enter' key.
+  * `ftmulti` can now handle up to 16 design axes.
+- drop CVE-2022-31782.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Aug 23 09:29:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add CVE-2022-31782.patch

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  9 09:04:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch d3209119.patch
+  boo#1209089,CVE-2023-27985: Fix shell command injection in emacsclient-mail.desktop
+- Add patch 3c1693d0.patch 
+  boo#1209090,CVE-2023-27986: Fix Emacs Lisp code injection in emacsclient-mail.desktop
+
+-------------------------------------------------------------------
 Tue Feb 21 08:28:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream commit/patches

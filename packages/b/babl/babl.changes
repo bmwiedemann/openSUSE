@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  9 06:52:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Wed Mar  1 07:35:32 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.1.102:

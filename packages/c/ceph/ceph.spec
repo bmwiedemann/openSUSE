@@ -136,7 +136,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.11.58+g38d6afd3b78
+Version:	16.2.11.62+gce6291a3463
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -152,7 +152,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.11-58-g38d6afd3b78.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.11-62-gce6291a3463.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -1210,7 +1210,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.11-58-g38d6afd3b78
+%autosetup -p1 -n ceph-16.2.11-62-gce6291a3463
 
 %build
 # Disable lto on systems that do not support symver attribute

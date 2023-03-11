@@ -443,4 +443,12 @@
     <comment></comment>
     <requestid>1069909</requestid>
   </revision>
+  <revision rev="52" vrev="53">
+    <srcmd5>19a385210e7f6a385a8bcfd285909ca1</srcmd5>
+    <version>MACRO</version>
+    <time>1678555386</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog typo</comment>
+    <requestid>1070510</requestid>
+  </revision>
 </revisionlist>

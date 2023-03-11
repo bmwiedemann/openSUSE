@@ -1,7 +1,7 @@
 #
 # spec file for package libnftnl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnftnl
 %define lname	libnftnl11
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Userspace library to access the nftables Netlink interface
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libnftnl/
 
 #Git-Clone:	git://git.netfilter.org/libnftnl
-Source:         http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.bz2
-Source2:        http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.bz2.sig
+Source:         http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.xz
+Source2:        http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.xz.sig
 Source9:        %name.keyring
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4

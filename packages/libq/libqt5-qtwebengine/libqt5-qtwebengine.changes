@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Mar 09 10:11:11 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.13:
+  * Force to disable IPC logging
+  * Move out GetInProcessGpuShareGroup form content browser client
+  * Fix probabilistic signature scheme
+  * Bump version to 5.15.13
+  * Recreate response head objects on multiple redirect
+  * Add checksum to mailbox name in Release build too
+  * Drop dependency on content/public/browser in content gpu
+  * FIXUP: Mark Node::opcode() and Operator::opcode()
+    as constexpr
+  * [Backport] Add missing include for std::begin and std::end
+    in SkParseColor.cpp
+  * [Backport] CVE-2022-4179: Use after free in Audio
+  * [Backport] CVE-2022-4437: Use after free in Mojo IPC
+  * [Backport] CVE-2022-4438: Use after free in Blink Frames
+  * [Backport] CVE-2023-0129: Heap buffer overflow in
+    Network Service
+  * [Backport] CVE-2023-0472: Use after free in WebRTC
+  * [Backport] CVE-2023-0698: Out of bounds read in WebRTC
+  * [Backport] CVE-2023-0931: Use after free in Video
+  * [Backport] CVE-2023-0933: Integer overflow in PDF
+  * [Backport] Disable ABSL_HAVE_STD_IS_TRIVIALLY_ASSIGNABLE
+    for clang-cl
+  * [Backport] Fix more clang deprecated builtins
+  * [Backport] Map the absl::is_trivially_* functions to their
+    std impl
+  * [Backport] Mark Node::opcode() and Operator::opcode()
+    as constexpr
+  * [Backport] Security bug 1393384
+  * [Backport] Security bug 1394382
+  * [Backport] Security bug 1399424
+  * [Backport] Security bug 1406115
+  * [Backport][Windows] Remove unused sidestep intercepts
+- Update 0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+
+-------------------------------------------------------------------
+Thu Mar  9 08:51:39 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use gcc12 for openSUSE:Factory as workaround for boo#1207469.
+
+-------------------------------------------------------------------
 Thu Dec 29 15:26:07 UTC 2022 - christophe@krop.fr
 
 - Update to version 5.15.12:

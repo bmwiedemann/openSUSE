@@ -1,0 +1,28 @@
+bunzip: work around gcc13 warning
+
+While provable that length[0] is always initialized (because symCount
+cannot be zero), upcoming gcc13 fails to recognize this and warns about
+the unconditional use of the value immediately following the loop.
+
+See also https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106511.
+
+Reported-by: Martin Liška <martin.liska@suse.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+---
+RFC: We've cloned this code from Linux and the code is unchanged there.
+     Therefore the same issue should exist there, and we may better get
+     whatever workaround is going to be applied there. But I'm unaware
+     of the issue, so far, having been observed in and reported against
+     Linux.
+
+--- unstable.orig/xen/common/bunzip2.c	2022-03-29 15:48:15.000000000 +0200
++++ unstable/xen/common/bunzip2.c	2023-03-01 10:29:24.209241950 +0100
+@@ -233,7 +233,7 @@ static int __init get_next_block(struct
+ 		   becomes negative, so an unsigned inequality catches
+ 		   it.) */
+ 		t = get_bits(bd, 5)-1;
+-		for (i = 0; i < symCount; i++) {
++		for (length[0] = i = 0; i < symCount; i++) {
+ 			for (;;) {
+ 				if (((unsigned)t) > (MAX_HUFCODE_BITS-1))
+ 					return RETVAL_DATA_ERROR;

@@ -16,9 +16,9 @@
 #
 
 
-%define freetype_version 2.12.1
+%global freetype_version 2.13.0
 Name:           ft2demos
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
@@ -40,9 +40,8 @@ NoSource:       1000
 Patch201:       overflow.patch
 # PATCH-FIX-OPENSUSE don-t-mark-libpng-as-required-library.patch -- it is private in .pc
 Patch202:       don-t-mark-libpng-as-required-library.patch
-# PATCH-FIX-UPSTREAM CVE-2022-31782.patch -- exit if face->num_glyphs is zero
-Patch203:       CVE-2022-31782.patch
 Patch308961:    bugzilla-308961-cmex-workaround.patch
+BuildRequires:  cmake
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -175,7 +174,6 @@ This tool is part of the FreeType project
 %patch308961 -p 1
 pushd ../ft2demos-%{version}
 %patch201 -p1
-%patch203 -p1
 popd
 %patch202 -p1
 
@@ -192,10 +190,8 @@ pushd ..
     %make_build
 
     cd src/ftinspect
-    sed -i s/"-isystem "/"-I "/ ftinspect.pro
-# FIXME: you should use the %%qmake5 macro
-    qmake-qt5 ftinspect.pro
-    %make_build
+    %cmake
+    %cmake_build
 popd
 
 %install
@@ -204,7 +200,8 @@ pushd ../ft2demos-%{version}/bin/.libs
     # packaged in freetype2.spec
     rm ftdump
     install -m 755 ft* %{buildroot}%{_bindir}
-    install -m 755 ../../src/ftinspect/ftinspect %{buildroot}%{_bindir}
+    cd ../../src/ftinspect
+    install -m 755 ../../src/ftinspect/build/ftinspect %{buildroot}%{_bindir}
 popd
 
 %check

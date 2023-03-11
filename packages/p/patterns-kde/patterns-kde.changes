@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 13:54:00 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend pam_kwallet in kde_plasma (boo#1208684)
+
+-------------------------------------------------------------------
 Sat Oct  1 21:09:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the Qt6 pattern for the 6.4.0 release

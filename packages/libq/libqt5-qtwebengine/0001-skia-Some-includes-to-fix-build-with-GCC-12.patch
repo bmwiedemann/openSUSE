@@ -7,8 +7,7 @@ Those includes got introduced upstream for other reasons and fixed building
 with GCC 12 as a side effect.
 ---
  src/3rdparty/chromium/third_party/skia/include/core/SkColor.h     | 2 ++
- src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp | 2 ++
- 2 files changed, 4 insertions(+)
+ 1 file changed, 2 insertions(+)
 
 diff --git a/src/3rdparty/chromium/third_party/skia/include/core/SkColor.h b/src/3rdparty/chromium/third_party/skia/include/core/SkColor.h
 index 36527e38e53..f77c24ade82 100644
@@ -23,19 +22,6 @@ index 36527e38e53..f77c24ade82 100644
  /** \file SkColor.h
  
      Types, consts, functions, and macros for colors.
-diff --git a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
-index 7260365b2c6..3164650728e 100644
---- a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
-+++ b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
-@@ -8,6 +8,8 @@
- 
- #include "include/utils/SkParse.h"
- 
-+#include <algorithm> // std::lower_bound
-+
- static constexpr const char* gColorNames[] = {
-     "aliceblue",
-     "antiquewhite",
 -- 
 2.34.1
 

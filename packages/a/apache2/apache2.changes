@@ -1,10 +1,41 @@
 -------------------------------------------------------------------
+Wed Mar  8 19:44:32 UTC 2023 - David Anes <david.anes@suse.com>
+
+- This update fixes the following security issues:
+  * CVE-2023-27522 [bsc#1209049]: mod_proxy_uwsgi HTTP response splitting 
+  * CVE-2023-25690 [bsc#1209047]: HTTP request splitting with mod_rewrite and mod_proxy  
+
+- Update to 2.4.56: 
+    *) rotatelogs: Add -T flag to allow subsequent rotated logfiles to be
+      truncated without the initial logfile being truncated.  [Eric Covener]
+    *) mod_ldap: LDAPConnectionPoolTTL should accept negative values in order to
+      allow connections of any age to be reused. Up to now, a negative value
+      was handled as an error when parsing the configuration file.  PR 66421.
+      [nailyk <bzapache nailyk.fr>, Christophe Jaillet]
+    *) mod_proxy_ajp: Report an error if the AJP backend sends an invalid number
+      of headers. [Ruediger Pluem]
+    *) mod_md:
+      - Enabling ED25519 support and certificate transparency information when
+        building with libressl v3.5.0 and newer. Thanks to Giovanni Bechis.
+      - MDChallengeDns01 can now be configured for individual domains.
+        Thanks to Jérôme Billiras (@bilhackmac) for the initial PR.
+      - Fixed a bug found by Jérôme Billiras (@bilhackmac) that caused the challenge
+        teardown not being invoked as it should.
+      [Stefan Eissing]
+    *) mod_http2: client resets of HTTP/2 streams led to unwanted 500 errors
+      reported in access logs and error documents. The processing of the
+      reset was correct, only unneccesary reporting was caused.
+      [Stefan Eissing]
+    *) mod_proxy_uwsgi: Stricter backend HTTP response parsing/validation.
+      [Yann Ylavic]
+
+-------------------------------------------------------------------
 Wed Jan 18 21:54:41 UTC 2023 - David Anes <david.anes@suse.com>
 
 - This update fixes the following security issues:
-  * fix CVE-2022-37436 [bsc#1207251], mod_proxy backend HTTP response splitting
-  * fix CVE-2022-36760 [bsc#1207250], mod_proxy_ajp Possible request smuggling
-  * fix CVE-2006-20001 [bsc#1207247], mod_dav out of bounds read, or write of zero byte
+  * CVE-2022-37436 [bsc#1207251], mod_proxy backend HTTP response splitting
+  * CVE-2022-36760 [bsc#1207250], mod_proxy_ajp Possible request smuggling
+  * CVE-2006-20001 [bsc#1207247], mod_dav out of bounds read, or write of zero byte
 
 - Update to 2.4.55:
     *) SECURITY: CVE-2022-37436: Apache HTTP Server: mod_proxy prior to

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  9 07:47:01 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update version to 1.5.28
+  * Implement new process_key_event for ibus-x11
+  * Convert internal EN compose table to GResource
+  * Enhance surrounding text
+  * Enhance CI
+  * Update ibusunicodegen.h with Unicode 15.0.0
+  * Update simple.xml with xkeyboard-config 2.38-1
+  * Fix SEGVs
+
+-------------------------------------------------------------------
 Fri Nov 18 13:48:57 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Switch to use systemd service file to start ibus daemon

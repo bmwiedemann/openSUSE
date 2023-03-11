@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 11 08:37:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Set worker disk size to 4GB to fix "No space left on device" on pp64.
+
+-------------------------------------------------------------------
+Sat Mar 11 07:43:01 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies
+- Use zstd compression for tarballs.
+
+-------------------------------------------------------------------
+Sat Mar 11 07:40:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove gitui-v0.22.1.obscpio file. Forgot to delete
+
+-------------------------------------------------------------------
 Fri Jan  6 15:31:04 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix version name both on specfile and tarball sources.

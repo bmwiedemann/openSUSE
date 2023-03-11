@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.4.4.2
+Version:        7.5.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -90,7 +90,7 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-5058.tar.bz2
+Source2008:     %{external_url}/pdfium-5408.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
@@ -105,29 +105,20 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
-Patch7:         boost-181.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
 Patch12:        fix_harfbuzz_on_sle12_sp5.patch
-# PATCH-FIX-UPSTREAM remove egrep/fgrep calls
-Patch13:        libreoffice-7.4.1.2-grep.patch
 # PATCH-FIX-SUSE use fixmath shared library
 Patch14:        use-fixmath-shared-library.patch
-# LO-L3: PPTX: text box shows that does not show in PowerPoint
-Patch15:        bsc1204825.patch
-# LO-L3: Connector lines from PPTX "break"/bend too often
-Patch16:        bsc1205866.patch
-# PATCH-FIX-UPSTREAM Remove_dependency_on_BitArray_h.patch -- Remove dependency on BitArray.h from zxing-1.2.0
-Patch17:        Remove_dependency_on_BitArray_h.patch
+# PATCH-FIX-SUSE Fix make distro-pack-install
+Patch15:        fix-sdk-idl.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
-# PATCH-FIX-UPSTREAM Add riscv64 support (backport of commit bc9487f745be)
-Patch1000:      riscv64-support.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -932,7 +923,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l da -n Danish -X -m da_DK -T
 %langpack -l de -n German -X -M -T
 %langpack -l dgo -n Dogri -X
-%langpack -l dsb -n Lower_Sorbian -X
+%langpack -l dsb -n Lower_Sorbian -T -X
 %langpack -l dz -n Dzongkha -s ctl -T -X
 %langpack -l el -n Greek  -m el_GR -T -X
 %langpack -l en -n English -L en-US -X -M -g en_US -T -j en_US
@@ -955,7 +946,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l he -n Hebrew -s ctl -m he_IL -T -X
 %langpack -l hi -n Hindi -s ctl -p hi-IN -m hi_IN -T -X
 %langpack -l hr -n Croatian -m hr_HR -X -T
-%langpack -l hsb -n Upper_Sorbian -X
+%langpack -l hsb -n Upper_Sorbian -T -X
 %langpack -l hu -n Hungarian -X -m hu_HU -T
 %langpack -l it -n Italian -X -m it_IT -T
 %langpack -l id -n Indonesian -T -M -X
@@ -1039,7 +1030,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch6 -p1
-%patch7 -p1
 %patch9 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
@@ -1047,14 +1037,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch12 -p1
 %patch101 -p1
 %endif
-%patch13 -p1
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch990 -p1
+#%patch990 -p1
 %patch991 -p1
-%patch1000 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

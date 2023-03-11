@@ -285,4 +285,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>1007486</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8f5daf3bad9fddf6b08aaf71e5e41d53</srcmd5>
+    <version>20221001</version>
+    <time>1678555349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070351</requestid>
+  </revision>
 </revisionlist>

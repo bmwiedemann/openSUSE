@@ -8,4 +8,16 @@
 </comment>
     <requestid>1056744</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1db251d73b10ea73b7895e915d512d94</srcmd5>
+    <version>0.22.1</version>
+    <time>1678555449</time>
+    <user>dimstar_suse</user>
+    <comment>- Set worker disk size to 4GB to fix &quot;No space left on device&quot; on pp64.
+- Update vendored dependencies
+- Use zstd compression for tarballs.
+- Remove gitui-v0.22.1.obscpio file. Forgot to delete
+</comment>
+    <requestid>1070836</requestid>
+  </revision>
 </revisionlist>

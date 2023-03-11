@@ -37,9 +37,10 @@
 %endif
 
 %define shlib_sover  2
+%define docs 0
 
 Name:           fwupd
-Version:        1.8.9
+Version:        1.8.12
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -55,8 +56,6 @@ Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 Patch3:         harden_fwupd-offline-update.service.patch
 # PATCH-FEATURE-OPENSUSE harden_fwupd-refresh.service.patch -- Harden services
 Patch4:         harden_fwupd-refresh.service.patch
-# PATCH_FIX_UPSTREAM uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch -- https://github.com/fwupd/fwupd/issues/5424
-Patch5:         uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -81,12 +80,16 @@ BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
 BuildRequires:  vala
+BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(appstream-glib) >= 0.5.10
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
 %ifnarch s390x ppc64le
 BuildRequires:  pkgconfig(flashrom)
+%endif
+%if 0%{?docs}
+BuildRequires:  pandoc
 %endif
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
@@ -232,6 +235,7 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
   -Dsystemd_unit_user=root \
+  -Dcompat_cli=true \
 %else
   -Dplugin_uefi_capsule=disabled \
   -Dplugin_uefi_pk=disabled \
@@ -258,6 +262,11 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dtests=false \
 %ifarch s390x ppc64le
   -Dplugin_flashrom=disabled \
+%endif
+%if 0%{?docs}
+  -Dman=enabled \
+%else
+  -Dman=disabled \
 %endif
   %{nil}
 %meson_build
@@ -340,12 +349,14 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
+%if 0%{?docs}
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
 %if %{with efi_fw_update}
 %{_mandir}/man1/dbxtool.1%{?ext_man}
 %{_mandir}/man1/fwupdate.1%{?ext_man}
+%endif
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %if %{with msr_support}
@@ -383,7 +394,9 @@ rm -fr %{buildroot}%{_datadir}/fish
 
 %files -n dfu-tool
 %{_bindir}/dfu-tool
+%if 0%{?docs}
 %{_mandir}/man1/dfu-tool.1%{?ext_man}
+%endif
 
 %files -n libfwupd%{shlib_sover}
 %{_libdir}/libfwupd.so.*
@@ -407,7 +420,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %files bash-completion
 %{_datadir}/bash-completion/completions/fwupdmgr
 %{_datadir}/bash-completion/completions/fwupdtool
-%{_datadir}/bash-completion/completions/fwupdagent
 
 %if %{with fish_support}
 %files fish-completion

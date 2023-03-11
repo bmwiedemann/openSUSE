@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  4 01:55:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.10.3:
+  * Fix uninitialized variables (GPU, Windows)
+  * Fix compiling errors (Windows)
+  * Improve performance (WmTheme amd Font, Windows and macOS)
+  * Enable nonblocking public-ip / weather detection (Android)
+
+-------------------------------------------------------------------
 Thu Feb  2 02:54:22 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.9.1:

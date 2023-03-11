@@ -561,4 +561,12 @@
   * bsc#1192019, CVE-2021-32280: NULL pointer dereference in compute_closed_spline() in trans_spline.c</comment>
     <requestid>927524</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>af3422945e34dead80b02902e88a5f84</srcmd5>
+    <version>3.2.8b</version>
+    <time>1678555401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070627</requestid>
+  </revision>
 </revisionlist>

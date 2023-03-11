@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libwww-perl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.67
+Version:        6.68
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
@@ -28,21 +28,19 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
 BuildRequires:  perl(Encode::Locale)
 BuildRequires:  perl(File::Listing) >= 6
 BuildRequires:  perl(HTML::Entities)
-BuildRequires:  perl(HTML::HeadParser)
+BuildRequires:  perl(HTML::HeadParser) >= 3.71
 BuildRequires:  perl(HTTP::Cookies) >= 6
 BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(HTTP::Negotiate) >= 6
-BuildRequires:  perl(HTTP::Request) >= 6
-BuildRequires:  perl(HTTP::Request::Common) >= 6
-BuildRequires:  perl(HTTP::Response) >= 6
-BuildRequires:  perl(HTTP::Status) >= 6.07
+BuildRequires:  perl(HTTP::Request) >= 6.18
+BuildRequires:  perl(HTTP::Request::Common) >= 6.18
+BuildRequires:  perl(HTTP::Response) >= 6.18
+BuildRequires:  perl(HTTP::Status) >= 6.18
 BuildRequires:  perl(LWP::MediaTypes) >= 6
-BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Net::HTTP) >= 6.18
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
@@ -56,14 +54,14 @@ BuildRequires:  perl(parent) >= 0.217
 Requires:       perl(Encode::Locale)
 Requires:       perl(File::Listing) >= 6
 Requires:       perl(HTML::Entities)
-Requires:       perl(HTML::HeadParser)
+Requires:       perl(HTML::HeadParser) >= 3.71
 Requires:       perl(HTTP::Cookies) >= 6
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Negotiate) >= 6
-Requires:       perl(HTTP::Request) >= 6
-Requires:       perl(HTTP::Request::Common) >= 6
-Requires:       perl(HTTP::Response) >= 6
-Requires:       perl(HTTP::Status) >= 6.07
+Requires:       perl(HTTP::Request) >= 6.18
+Requires:       perl(HTTP::Request::Common) >= 6.18
+Requires:       perl(HTTP::Response) >= 6.18
+Requires:       perl(HTTP::Status) >= 6.18
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(Net::HTTP) >= 6.18
 Requires:       perl(Try::Tiny)

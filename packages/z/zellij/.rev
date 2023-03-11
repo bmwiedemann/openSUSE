@@ -71,4 +71,65 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1045158</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11770ff2f9c9ff23e6f304d89f3a8c45</srcmd5>
+    <version>0.35.1</version>
+    <time>1678555447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix vendored dependencies.
+- Fix specfile. Duplicated BuildRequires section for rust+cargo
+- Update to version 0.35.1:
+  * fix(panes): show visual error when unable to split panes vertically/horizontally
+  * WIP: Use xtask as build system
+  * fix(panes): show visual error when failing to resize panes
+  * chore(repo): remove nix support
+  * Floating panes in layouts
+  * add tmux close pane key
+  * fix: properly end selection with copy_on_select = false
+  * fix 3 bugs
+  * Errors: less unwrap in server
+  * Support UTF-8 character in tab name and pane name
+  * errors: handle missing plugin caches
+  * Improve client disconnect handling
+  * feat: add ScrollToTop action by 
+  * Fix status bar not displaying w/ size=1 and show shortcuts
+  * Add GoToTabName action to switch tab by name
+  * Use singlepass in debug mode by 
+  * cleanups around &quot;buffer full&quot; error
+  * Make the singlepass compiler opt-in through flags by 
+  * Add pencil theme
+  * Apply correct color on 'more tabs' message
+  * feat: add args to new-tab action
+  * update termwiz to v0.20.0
+  * feat(ui): swap layouts and stacked panes
+  * fix(ux): cache stdin queries on startup (remove startup delay)
+  * Project Governance Change
+  * Add Helix editor (hx) to editors that support prefix positions
+  * Extend display char in tab
+  * Fix fullscreen navigation by 
+  * fix(grid): glitchy resizes
+  * Update bug_report.md template with OSX log directory
+  * fix(layout): various parser and ui fixes
+  * fix(messaging): cache hold pane messages by their tab_id if the tab is not ready
+  * fix(layout): tab focus
+  * fix(cli): new-tab now also looks in layout_dir for layouts
+  * fix(kdl): new-tab keybind looks in layout_dir for layouts
+  * fix(cli): edit cwd
+  * fix(layouts): do not relayout twice on auto_layout
+  * fix(new-tab): get config parameters from config file
+  * fix(grid): only use background pending styling when deleting characters
+  * feat(layouts): exact panes constraint
+  * fix(pty): report no-cwd for empty path returned from sysinfo
+  * fix(sixel): report pixel size in winsize change ioctl
+  * Fix plugin location path decoding from Url
+  * Add action QueryTabNames to list all tab names
+  * fix(pty): do not crash when unable to set cwd
+  * fix(layouts): naming and gototabname
+  * fix(cli): make auto_layout work through the cli
+  * feat: add self-provided themes
+  * Feature: simulate publishing
+  * Revert theme pr
+</comment>
+    <requestid>1070835</requestid>
+  </revision>
 </revisionlist>

@@ -1830,7 +1830,7 @@ cd %blddir
 # because, for them, ix86 == i686 (while for us it's i586).
 
 # Let's try to stick to _FORTIFY_SOURCE=2 for now
-EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
 
 %srcdir/configure \
 	--docdir=%_docdir \

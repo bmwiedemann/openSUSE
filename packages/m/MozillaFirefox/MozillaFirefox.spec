@@ -229,6 +229,7 @@ Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
 Patch28:        mozilla-bmo1810584.patch
+Patch29:        gcc13-fix.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

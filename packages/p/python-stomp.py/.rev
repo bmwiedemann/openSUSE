@@ -123,4 +123,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>980014</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f43df26e43b701d0ce5344075960f055</srcmd5>
+    <version>8.1.0</version>
+    <time>1678555454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0:
+ - Remove ssl expiration check as per PR: #380
+ - Change deprecated PROTOCOL_TLS to PROTOCOL_TLS_CLIENT
+ - Mock dns responses for testing: #383
+ - Support for connection over websocket: #395
+ - Add default arg for try_setsockopt (#391)
+ - Updating log levels (#401)
+ - General tidy up of log messages
+</comment>
+    <requestid>1070844</requestid>
+  </revision>
 </revisionlist>

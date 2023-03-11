@@ -192,6 +192,8 @@ Patch30:        d48bb487.patch
 Patch31:        01a4035c.patch
 Patch32:        CVE-2022-48338.patch
 Patch33:        CVE-2022-48339.patch
+Patch34:        d3209119.patch
+Patch35:        3c1693d0.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
@@ -341,6 +343,8 @@ and most assembler-like syntaxes.
 %patch31 -p0 -b .cve2022XXXXX
 %patch32 -p0 -b .cve202248338
 %patch33 -p0 -b .cve202248339
+%patch34 -p1 -b .cve202327985
+%patch35 -p1 -b .cve202327986
 %patch0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -655,6 +659,9 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/dynamic-setting.el.custfnt
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/htmlfontify.el.cve202248339
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/ruby-mode.el.cve202248338
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327985
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327986
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient.desktop.cve202327985
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/bindings.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/cus-start.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/generic-x.elc

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 19:11:00 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Sat Jan 28 22:01:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add boost-phoenix-revert-std-tuple-support.patch to fix

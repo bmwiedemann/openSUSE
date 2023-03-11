@@ -1,7 +1,7 @@
 #
 # spec file for package zellij
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.34.4
+Version:        0.35.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
-Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        README.suse-maint.md
 BuildRequires:  cargo-packaging
-
+BuildRequires:  rust+cargo
+BuildRequires:  zstd
 %if 0%{?suse_version} > 1500
 BuildRequires:  mandown
 %endif
 
-BuildRequires:  rust+cargo >= 1.59
 ExclusiveArch:  %{rust_tier1_arches}
 %if %{with test}
 BuildRequires:  pkgconfig(openssl)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 21:17:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Enable --with-system-ffi for non-standard architectures.
+
+-------------------------------------------------------------------
 Mon Mar  6 15:35:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - SLE-12 builds nis.so as well.

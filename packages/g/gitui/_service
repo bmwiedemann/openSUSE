@@ -12,13 +12,13 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zstd</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">gitui</param>
-     <param name="compression">xz</param>
-     <param name="update">false</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">gitui</param>

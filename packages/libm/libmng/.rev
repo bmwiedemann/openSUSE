@@ -180,4 +180,12 @@ this shall be needed for OF:staging:D (forwarded request 234880 from sumski)</co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976271</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>e4883c4552b919025ff7d58ab8ee329b</srcmd5>
+    <version>2.0.3</version>
+    <time>1678555330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070293</requestid>
+  </revision>
 </revisionlist>

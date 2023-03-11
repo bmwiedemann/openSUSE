@@ -16,11 +16,6 @@
 #
 
 
-%if %{?suse_version} > 1500 || 0%{?sle_version} > 150300
-%bcond_without system_vpx
-%else
-%bcond_with system_vpx
-%endif
 %bcond_without system_ffmpeg
 %bcond_without system_minizip
 %bcond_without pipewire
@@ -35,18 +30,18 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.12
+Version:        5.15.13
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.12
-%define so_version 5.15.12
+%define real_version 5.15.13
+%define so_version 5.15.13
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
-# Use a git snapshot for catapult to build with python3 (git rev: b7e9d5899)
+# Use a git snapshot for catapult to build with python3 (git rev: 2da767c6)
 Source1:        catapult-git.tar.xz
 Source99:       libqt5-qtwebengine-rpmlintrc
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
@@ -76,6 +71,9 @@ BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  git-core
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc12-c++
+%endif
 BuildRequires:  gperf
 BuildRequires:  krb5
 BuildRequires:  krb5-devel
@@ -177,9 +175,7 @@ BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(sqlite3)
-%if %{with system_vpx}
 BuildRequires:  pkgconfig(vpx) >= 1.8.0
-%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -348,6 +344,11 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
 %qmake5 QMAKE_CFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_CXXFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
+%if 0%{?suse_version} >= 1550
+        QMAKE_CC=gcc-12 \
+        QMAKE_CXX=g++-12 \
+        QMAKE_LINK=g++-12 \
+%endif
         gn_args+="link_pulseaudio=true" \
         gn_args+="media_use_openh264=false" \
         gn_args+="use_system_libxml=true use_system_libxslt=true" \

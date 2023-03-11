@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar  9 16:44:14 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patches
+  - CVE-2022-31081-2.patch
+  - CVE-2022-31081-Add-new-test-for-Content-Length-issues.patch
+  - CVE-2022-31081.patch
+  They were fixed upstream (bsc#1201157)
+
+-------------------------------------------------------------------
+Sat Feb 25 03:06:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.16
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.16      2023-02-24 03:07:14Z
+    - Bump LWP::UserAgent to 6.37 in TestSuggests (GH#65) (Olaf Alders)
+
+  6.15      2023-02-22 22:02:46Z
+    - Fix CVE-2022-31081: Inconsistent Interpretation of HTTP Requests
+      Correctly handle multiple Content-Length headers and its variants
+      (Theo van Hoesel)
+      Closes "Discrepancies in the Parsing of Content Length header ..." (GH#56)
+      (blessingcharles)
+    - kill test server with KILL rather than QUIT (GH#63) (Graham Knop)
+    - Create TestServer test lib for running daemon process (GH#62) (Graham Knop)
+    - Clean up tests (GH#61) (Graham Knop)
+
+-------------------------------------------------------------------
 Wed Jul 13 09:04:49 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Fix request smuggling in HTTP::Daemon

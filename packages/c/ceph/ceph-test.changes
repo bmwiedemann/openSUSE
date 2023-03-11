@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 05:08:15 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.11-62-gce6291a3463:
+  + (bsc#1201088) fix FTBFS on gcc 13
+
+-------------------------------------------------------------------
 Tue Feb  7 07:46:18 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.11-58-g38d6afd3b78:

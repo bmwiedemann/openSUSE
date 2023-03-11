@@ -1486,4 +1486,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
   used</comment>
     <requestid>1061818</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>8883a1225525f63353fb09ccd3ce9b9a</srcmd5>
+    <version>1.81.0</version>
+    <time>1678555381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070498</requestid>
+  </revision>
 </revisionlist>

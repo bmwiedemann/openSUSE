@@ -1,3 +1,10 @@
+------------------------------------------------------------------
+Sat Mar 11 06:25:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.2.1 (bsc#1209168)
+  * update patch
+    + bsc-1206791-05-prandom_u32_max.patch
+
 -------------------------------------------------------------------
 Thu Jan  6 01:40:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
