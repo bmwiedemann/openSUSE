@@ -19,7 +19,7 @@
 %{?!python_module:define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           b4
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
