@@ -6424,10 +6424,8 @@ unsorted:
   - gocr-gui 
   - godot 
   - godot-bash-completion 
-  - godot-headless 
   - godot-rpm-macros 
   - godot-runner 
-  - godot-server 
   - godot3 
   - godot3-bash-completion 
   - godot3-headless 
@@ -7417,7 +7415,6 @@ unsorted:
   - ibus-hangul 
   - ibus-input-pad 
   - ibus-kkc 
-  - ibus-libzhuyin 
   - ibus-rime 
   - ibus-skk 
   - ibus-sunpinyin 
@@ -8571,6 +8568,7 @@ unsorted:
   - keybinder-lua 
   - keychain 
   - keyd 
+  - keylightctl 
   - keylime-agent 
   - keylime-config: [i586] 
   - keylime-firewalld: [i586] 
@@ -10623,6 +10621,7 @@ unsorted:
   - libbullet3_17 
   - libburn-devel 
   - libbytesize-devel 
+  - libbz2-1-x86-64-v3: [x86_64] 
   - libbz2-devel 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
@@ -10819,6 +10818,8 @@ unsorted:
   - libclutter-gtk-1_0-0-32bit: [x86_64] 
   - libclxclient3 
   - libclzma-suse0 
+  - libclzma-suse0-32bit: [x86_64] 
+  - libclzma-suse0-x86-64-v3: [x86_64] 
   - libcm0 
   - libcmap4-32bit: [x86_64] 
   - libcmh0 
@@ -12586,6 +12587,9 @@ unsorted:
   - liblbxutil-devel-32bit: [x86_64] 
   - liblbxutil1 
   - liblbxutil1-32bit: [x86_64] 
+  - liblc3-1 
+  - liblc3-devel 
+  - liblc3-tools 
   - liblcf0 
   - liblcf0-devel 
   - liblcms2-2-32bit: [x86_64] 
@@ -12619,6 +12623,7 @@ unsorted:
   - libleptonica6-32bit: [x86_64] 
   - libleveldb1 
   - libleveldb1-32bit: [x86_64] 
+  - libleveldb1-x86-64-v3: [x86_64] 
   - liblevmar2 
   - libliftoff-devel 
   - libliftoff0 
@@ -22898,6 +22903,7 @@ unsorted:
   - python310-abimap 
   - python310-abimap-doc 
   - python310-abseil 
+  - python310-accessible-pygments 
   - python310-acefile 
   - python310-acitoolkit 
   - python310-acme 
@@ -25523,6 +25529,7 @@ unsorted:
   - python310-speaklater 
   - python310-specfile 
   - python310-sphinx-argparse 
+  - python310-sphinx-autobuild 
   - python310-sphinx-autodoc-typehints 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
@@ -25534,6 +25541,7 @@ unsorted:
   - python310-sphinx-qt-documentation 
   - python310-sphinx-removed-in 
   - python310-sphinx-tabs 
+  - python310-sphinx-theme-builder 
   - python310-sphinx-version-warning 
   - python310-sphinx_mdinclude 
   - python310-sphinx_press_theme 
@@ -26197,6 +26205,7 @@ unsorted:
   - python311-abimap 
   - python311-abimap-doc 
   - python311-abseil 
+  - python311-accessible-pygments 
   - python311-acefile 
   - python311-acitoolkit 
   - python311-acme 
@@ -28161,6 +28170,7 @@ unsorted:
   - python311-pydantic 
   - python311-pydash 
   - python311-pydata-google-auth 
+  - python311-pydata-sphinx-theme 
   - python311-pydbus 
   - python311-pydenticon 
   - python311-pydicom 
@@ -28787,7 +28797,9 @@ unsorted:
   - python311-speaklater 
   - python311-specfile 
   - python311-sphinx-argparse 
+  - python311-sphinx-autobuild 
   - python311-sphinx-autodoc-typehints 
+  - python311-sphinx-book-theme 
   - python311-sphinx-bootstrap-theme 
   - python311-sphinx-click 
   - python311-sphinx-feature-classification 
@@ -28797,6 +28809,7 @@ unsorted:
   - python311-sphinx-qt-documentation 
   - python311-sphinx-removed-in 
   - python311-sphinx-tabs 
+  - python311-sphinx-theme-builder 
   - python311-sphinx-version-warning 
   - python311-sphinx_mdinclude 
   - python311-sphinx_press_theme 
@@ -29464,6 +29477,7 @@ unsorted:
   - python38-abimap 
   - python38-abimap-doc 
   - python38-abseil 
+  - python38-accessible-pygments 
   - python38-acefile 
   - python38-acitoolkit 
   - python38-acme 
@@ -32187,6 +32201,7 @@ unsorted:
   - python38-sparse 
   - python38-speaklater 
   - python38-sphinx-argparse 
+  - python38-sphinx-autobuild 
   - python38-sphinx-autodoc-typehints 
   - python38-sphinx-book-theme 
   - python38-sphinx-bootstrap-theme 
@@ -32198,6 +32213,7 @@ unsorted:
   - python38-sphinx-qt-documentation 
   - python38-sphinx-removed-in 
   - python38-sphinx-tabs 
+  - python38-sphinx-theme-builder 
   - python38-sphinx-version-warning 
   - python38-sphinx_mdinclude 
   - python38-sphinx_press_theme 
@@ -32541,7 +32557,6 @@ unsorted:
   - python38-xapian 
   - python38-xapian-haystack 
   - python38-xapp 
-  - python38-xarray 
   - python38-xarray-einstats 
   - python38-xattr 
   - python38-xcffib 
@@ -32881,6 +32896,7 @@ unsorted:
   - python39-abimap 
   - python39-abimap-doc 
   - python39-abseil 
+  - python39-accessible-pygments 
   - python39-acefile 
   - python39-acitoolkit 
   - python39-acme 
@@ -35604,6 +35620,7 @@ unsorted:
   - python39-speaklater 
   - python39-specfile 
   - python39-sphinx-argparse 
+  - python39-sphinx-autobuild 
   - python39-sphinx-autodoc-typehints 
   - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
@@ -35615,6 +35632,7 @@ unsorted:
   - python39-sphinx-qt-documentation 
   - python39-sphinx-removed-in 
   - python39-sphinx-tabs 
+  - python39-sphinx-theme-builder 
   - python39-sphinx-version-warning 
   - python39-sphinx_mdinclude 
   - python39-sphinx_press_theme 
