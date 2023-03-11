@@ -853,6 +853,7 @@
     <package name="ibus-gtk4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-libpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="ibus-libzhuyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
