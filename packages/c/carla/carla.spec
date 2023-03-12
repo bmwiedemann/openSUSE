@@ -16,11 +16,20 @@
 #
 
 
-%if 0%{?suse_version} > 1501
+%if 0%{?suse_version} >= 1550
 %bcond_without liblo
+%bcond_without vst
 %else
+%if 0%{?sle_version} >= 150500
+%bcond_without liblo
+%bcond_with vst
+%else
+%bcond_with vst
 %bcond_with liblo
 %endif
+%endif
+#carla doesn't produce debug rpms unless a debugbuild is defined as 1
+%define debugbuild 0
 
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
@@ -42,6 +51,9 @@ Patch0:         0001-Use-system-flac-vorbis-ogg.patch
 Patch1:         0002-Remove-rpath-from-.pc-files.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         0003-Use-correct-plugin-paths-for-openSUSE.patch
+# Patches from pre version 2.5.4 release
+Patch3:         0001-Fix-crash-regression-when-using-LV2-plugins-without-.patch
+Patch4:         0001-Fix-compat-with-PyQt-PyQt-5.15.8.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
@@ -85,7 +97,7 @@ BuildRequires:  libX11-devel-32bit
 BuildRequires:  libXcursor-devel-32bit
 BuildRequires:  libXext-devel-32bit
 BuildRequires:  libstdc++-devel-32bit
-%if 0%{?suse_version} >= 1550
+%if %{with vst}
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  mingw64-cross-gcc
@@ -140,7 +152,9 @@ win32 and wine32 binaries for handling ms win32 vst plugins
 %define optflags -O2 -Wall -D_FORTIFY_SOURCE=2 -funwind-tables -fasynchronous-unwind-tables -Werror=return-type -flto=auto
 export CXXFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
-
+%if 0%{?debugbuild} == 1
+export DEBUG=true
+%endif
 # list build configuration, no need for optflags or -j
 make features
 
@@ -152,7 +166,7 @@ make %{_smp_mflags} \
 #Makes 32bit plugin capabilities
 make posix32
 #missing /usr/lib64/gcc/i686-w64-mingw32/9.2.0/libssp.a
-%if 0%{?suse_version} >= 1550
+%if %{with vst}
 export CFLAGS=`echo $CFLAGS | sed s/\-flto=auto//`
 export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
 echo $CFLAGS
@@ -202,7 +216,7 @@ cp %{S:2} .
 %{_libdir}/carla
 %exclude %{_libdir}/carla/carla-bridge-posix32
 %exclude %{_libdir}/carla/carla-discovery-posix32
-%if 0%{?suse_version} >= 1550
+%if %{with vst}
 %exclude %{_libdir}/carla/carla-bridge-win32.exe
 %exclude %{_libdir}/carla/carla-bridge-win64.exe
 %exclude %{_libdir}/carla/carla-discovery-win32.exe
@@ -228,7 +242,7 @@ cat %{_localstatedir}/adm/update-messages/%{name}-warning
 %{_libdir}/vst/carla.vst
 %{_libdir}/carla/carla-bridge-posix32
 %{_libdir}/carla/carla-discovery-posix32
-%if 0%{?suse_version} >= 1550
+%if %{with vst}
 %{_libdir}/carla/carla-bridge-win32.exe
 %{_libdir}/carla/carla-bridge-win64.exe
 %{_libdir}/carla/carla-discovery-win32.exe

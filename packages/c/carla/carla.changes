@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 11 10:45:38 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Add patch to fix #boo1209057
+  0001-Fix-crash-regression-when-using-LV2-plugins-without-.patch
+- Added patch 0001-Fix-compat-with-PyQt-PyQt-5.15.8.patch
+- Made build macros more specific
+
+-------------------------------------------------------------------
 Mon Feb 13 10:46:35 UTC 2023 - christophe@krop.fr
 
 - Update to version 2.5.3:

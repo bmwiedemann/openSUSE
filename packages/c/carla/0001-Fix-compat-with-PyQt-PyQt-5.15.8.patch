@@ -1,0 +1,31 @@
+From 8c662a990f33e278a738dcc4f5b43c086c12166b Mon Sep 17 00:00:00 2001
+From: falkTX <falktx@falktx.com>
+Date: Sun, 29 Jan 2023 20:40:54 +0100
+Subject: [PATCH] Fix compat with PyQt >= PyQt 5.15.8
+
+Signed-off-by: falkTX <falktx@falktx.com>
+---
+ source/frontend/carla_shared.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/source/frontend/carla_shared.py b/source/frontend/carla_shared.py
+index bdc7d4ffb..e9fd22722 100644
+--- a/source/frontend/carla_shared.py
++++ b/source/frontend/carla_shared.py
+@@ -38,7 +38,12 @@ except:
+ # ------------------------------------------------------------------------------------------------------------
+ # Imports (PyQt5)
+ 
+-from PyQt5.Qt import PYQT_VERSION_STR
++# import changed in PyQt 5.15.8, so try both
++try:
++    from PyQt5.Qt import PYQT_VERSION_STR
++except ImportError:
++    from PyQt5.QtCore import PYQT_VERSION_STR
++
+ from PyQt5.QtCore import qFatal, QT_VERSION, QT_VERSION_STR, qWarning, QDir, QSettings
+ from PyQt5.QtGui import QIcon
+ from PyQt5.QtWidgets import QFileDialog, QMessageBox
+-- 
+2.35.3
+

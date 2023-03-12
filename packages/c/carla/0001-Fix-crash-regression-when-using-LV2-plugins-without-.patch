@@ -1,0 +1,35 @@
+From 235beb8de5bf8bf12d2b93c551098fd4ba26f54d Mon Sep 17 00:00:00 2001
+From: falkTX <falktx@falktx.com>
+Date: Sat, 28 Jan 2023 14:24:20 +0100
+Subject: [PATCH] Fix crash/regression when using LV2 plugins without worker
+ ext
+
+Signed-off-by: falkTX <falktx@falktx.com>
+---
+ source/backend/plugin/CarlaPluginLV2.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/source/backend/plugin/CarlaPluginLV2.cpp b/source/backend/plugin/CarlaPluginLV2.cpp
+index 4c9b64ecc..38bf8afd1 100644
+--- a/source/backend/plugin/CarlaPluginLV2.cpp
++++ b/source/backend/plugin/CarlaPluginLV2.cpp
+@@ -3247,8 +3247,16 @@ public:
+ 
+         if (fRdfDescriptor->ParameterCount > 0 ||
+             (fUI.type != UI::TYPE_NULL && fEventsIn.count > 0 && (fEventsIn.data[0].type & CARLA_EVENT_DATA_ATOM) != 0))
++        {
+             fAtomBufferEvIn.createBuffer(eventBufferSize);
+ 
++            if (fAtomBufferRealtimeSize == 0)
++            {
++                fAtomBufferRealtimeSize = fAtomBufferEvIn.getSize(); // actual buffer size will be next power of 2
++                fAtomBufferRealtime = static_cast<LV2_Atom*>(std::malloc(fAtomBufferRealtimeSize));
++            }
++        }
++
+         if (hasPatchParameterOutputs ||
+             (fUI.type != UI::TYPE_NULL && fEventsOut.count > 0 && (fEventsOut.data[0].type & CARLA_EVENT_DATA_ATOM) != 0))
+         {
+-- 
+2.35.3
+
