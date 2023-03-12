@@ -1,6 +1,9 @@
 <package name="libdb_java-4_8" project="openSUSE:Factory">
-  <title>Java Bindings for the Berkeley DB</title>
-  <description>These are the Java bindings for the Berkeley DB. They are needed for
-the Java support of db and dbxml.</description>
+  <title>Berkeley DB Database Library Version 4.8</title>
+  <description>The Berkeley DB Database is a programmatic toolkit that provides
+database support for applications.
+
+This package contains the necessary runtime libraries.</description>
   <devel project="openSUSE:Factory" package="libdb-4_8"/>
+  <bcntsynctag>libdb-4_8</bcntsynctag>
 </package>
