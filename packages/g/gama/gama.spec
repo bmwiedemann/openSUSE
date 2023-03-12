@@ -1,7 +1,7 @@
 #
 # spec file for package gama
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -37,9 +37,19 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires:       libxml2-tools
 
 %description
-GNU Gama is a project dedicated to adjustment of geodetic networks. It is intended for use with traditional geodetic surveyings which are still used and needed in special measurements (e.g., underground or high precision engineering measurements) where the Global Positioning System (GPS) cannot be used.
+GNU Gama is a project dedicated to adjustment of geodetic
+networks. It is intended for use with traditional geodetic
+surveyings which are still used and needed in special measurements
+(e.g., underground or high precision engineering measurements)
+where the Global Positioning System (GPS) cannot be used.
 
-Adjustment in local Cartesian coordinate systems is fully supported by a command-line program gama-local that adjusts geodetic (free) networks of observed distances, directions, angles, height differences, 3D vectors and observed coordinates (coordinates with given variance-covariance matrix). Adjustment in global coordinate systems is supported only partly as a gama-g3 program.
+Adjustment in local Cartesian coordinate systems is fully
+supported by a command-line program gama-local that adjusts
+geodetic (free) networks of observed distances, directions,
+angles, height differences, 3D vectors and observed coordinates
+(coordinates with given variance-covariance matrix). Adjustment in
+global coordinate systems is supported only partly as a gama-g3
+program.
 
 %prep
 %setup -q
