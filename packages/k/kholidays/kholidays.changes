@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Add holidays for Dominican Rebublic (kde#HolidayRegionTest::testRegions(), kde#This, kde#regionCode, kde#=, kde#"do_es")
+  * Kf5 add cuba holidays (kde#HolidayRegionTest::testRegions())
+  * holidayregion variable 'regionCode' shadows outer function
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
