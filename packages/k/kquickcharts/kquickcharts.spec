@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.103
+%define _tar_path 5.104
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kquickcharts
-Version:        5.103.0
+Version:        5.104.0
 Release:        0
 Summary:        Set of charts for QtQuick applications
 License:        LGPL-2.1-or-later
