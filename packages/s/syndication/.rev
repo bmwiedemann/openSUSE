@@ -736,4 +736,12 @@
     <comment>KDE Frameworks 5.103.0 (forwarded request 1063796 from krop)</comment>
     <requestid>1064633</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>43a6ae5fee620b44605244641f347e13</srcmd5>
+    <version>5.104.0</version>
+    <time>1678634642</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.104.0 (forwarded request 1070398 from krop)</comment>
+    <requestid>1070933</requestid>
+  </revision>
 </revisionlist>
