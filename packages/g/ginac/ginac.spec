@@ -29,6 +29,13 @@
 %bcond_with doc
 %endif
 
+# Latex fails on Leap/SLE 15.x
+%if 0%{?suse_version} < 1550
+%bcond_with    apiref_pdf
+%else
+%bcond_without apiref_pdf
+%endif
+
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
 Version:        1.8.5
@@ -54,17 +61,23 @@ BuildRequires:  python3-base
 BuildRequires:  readline-devel
 # SECTION Requirements for building documentation
 %if %{with doc}
+#!BuildIgnore:  texlive-tex4ht
 BuildRequires:  doxygen
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gnome
 BuildRequires:  texinfo
-BuildRequires:  texlive-courier
-BuildRequires:  texlive-dvips-bin
-BuildRequires:  texlive-helvetic
-BuildRequires:  texlive-latex-bin
-BuildRequires:  texlive-makeindex-bin
-BuildRequires:  texlive-metafont-bin
-BuildRequires:  texlive-wasy
+BuildRequires:  texlive-dvips
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-pdftex
 BuildRequires:  transfig
+BuildRequires:  tex(float.sty)
+BuildRequires:  tex(newunicodechar.sty)
+BuildRequires:  tex(xcolor.sty)
+%if %{with apiref_pdf}
+BuildRequires:  texlive-courier
+BuildRequires:  texlive-helvetic
+BuildRequires:  texlive-wasy
+BuildRequires:  tex(8r.enc)
 BuildRequires:  tex(adjustbox.sty)
 BuildRequires:  tex(alphalph.sty)
 BuildRequires:  tex(caption.sty)
@@ -74,18 +87,17 @@ BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(fancyvrb.sty)
-BuildRequires:  tex(float.sty)
 BuildRequires:  tex(hanging.sty)
 BuildRequires:  tex(helvet.sty)
 BuildRequires:  tex(multirow.sty)
 BuildRequires:  tex(natbib.sty)
-BuildRequires:  tex(newunicodechar.sty)
 BuildRequires:  tex(sectsty.sty)
 BuildRequires:  tex(stackengine.sty)
 BuildRequires:  tex(tabu.sty)
 BuildRequires:  tex(tocloft.sty)
 BuildRequires:  tex(ulem.sty)
 BuildRequires:  tex(wasysym.sty)
+%endif
 %endif
 # /SECTION
 
@@ -155,6 +167,13 @@ This package provides a tutorial file for GiNaC in PDF format.
 %prep
 %autosetup -p1 -n %{srcname}-%{version}
 
+# Use dot to generate class diagrams. Otherwise, ghostscript is used
+# to convert EPS to PDF, which embeds the current time
+sed -i -e '/HAVE_DOT/ s/=.*NO/= YES/' doc/reference/DoxyfilePDF.in
+# PNG files rendered with cairo are nonreproducible depending on
+# CPU features and architecture
+sed -i -e '/DOT_IMAGE_FORMAT/ s/=.*png/= svg/' doc/reference/DoxyfileHTML.in
+
 %build
 export LDFLAGS="-Wl,--no-undefined"
 %cmake -DCMAKE_SKIP_RPATH:BOOL=ON \
@@ -164,7 +183,10 @@ export LDFLAGS="-Wl,--no-undefined"
 %if "%{flavor}" == "doc"
 # Build just the reference doc for the "doc" flavour
 pushd doc/reference
-%cmake_build pdf_dox html_dox
+%if %{with apiref_pdf}
+%cmake_build pdf_dox
+%endif
+%cmake_build html_dox
 popd
 pushd doc/tutorial
 %cmake_build pdf_ginac_tutorial
@@ -175,9 +197,12 @@ popd
 
 %install
 %if "%{flavor}" == "doc"
-pushd build/doc/reference
-%make_install
-popd
+install -d -m 755 %{buildroot}%{_docdir}/%{name}/html
+cp -R -t %{buildroot}%{_docdir}/%{name}/html/ %{__builddir}/doc/reference/html_files/*
+
+%if %{with apiref_pdf}
+install -m 644 -t %{buildroot}%{_docdir}/%{name}/ %{__builddir}/doc/reference/pdflatex/reference.pdf
+%endif
 %else
 %cmake_install
 %endif
@@ -228,9 +253,11 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 # SECTION doc flavoured pkg
 %if "%{flavor}" == "doc"
+%if %{with apiref_pdf}
 %files pdf
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/reference.pdf
+%endif
 
 %files html
 %dir %{_docdir}/%{name}

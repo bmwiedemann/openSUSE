@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar  8 03:35:32 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make documentation build reproducible:
+  * Use SVGs for HTML API reference documentation
+  * Use dot to generate PDFs, instead of relying on ghostscript
+    to convert EPS to PDF
+- Disable PDF API reference on Leap/SLE 15.x, fails to build.
+
+-------------------------------------------------------------------
 Wed Jan  4 14:44:55 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.8.5:
