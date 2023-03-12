@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * wayland: Guard wayland object destructors (kde#465801)
+
+-------------------------------------------------------------------
 Sun Feb 26 09:59:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Build the wayland plugin (kde#462695)
