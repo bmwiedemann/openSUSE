@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Don't include screen connector names in screen position/size data
+  * Fix multimonitor window size restoration (kde#460260)
+  * Sort connector names for multi-screen size/position keys
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
