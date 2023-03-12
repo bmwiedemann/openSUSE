@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Load translations for application-specific language also on Win and Mac
+  * ECMGenerateExportHeader: fix duplicated addition of deprecation macros code
+  * Find wayland.xml from wayland-scanner.pc
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
