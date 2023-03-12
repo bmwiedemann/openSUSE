@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.103
+%define _tar_path 5.104
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           libKF5ModemManagerQt
-Version:        5.103.0
+Version:        5.104.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
