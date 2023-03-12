@@ -16,21 +16,16 @@
 #
 
 
-%define revision fd1e21ffc7c16fd5637a5c440224766417e840f9
-%define skip_python2 1
 Name:           python-exrex
-Version:        0.10.5+git119
+Version:        0.11.0
 Release:        0
 Summary:        Irregular methods for regular expressions
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/asciimoo/exrex
 #Source:         https://files.pythonhosted.org/packages/source/e/exrex/exrex-%%{version}.tar.gz
-Source:         https://github.com/asciimoo/exrex/archive/%{revision}.tar.gz#/exrex-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-setup-encoding.patch
-Patch0:         https://github.com/asciimoo/exrex/pull/53.patch#/fix-setup-encoding.patch
-# PATCH-FIX-UPSTREAM fix-python-3.11.patch
-Patch1:         https://github.com/asciimoo/exrex/pull/65.patch#/fix-python-3.11.patch
+# pypi has no tests
+Source:         https://github.com/asciimoo/exrex/archive/v%{version}.tar.gz#/exrex-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,10 +39,8 @@ BuildArch:      noarch
 A command line tool and python module that generates all or random matching strings to a given regular expression and more.
 
 %prep
-%setup -q -n exrex-%{revision}
+%setup -q -n exrex-%{version}
 sed -i '1s/^#!.*//' exrex.py
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
@@ -71,7 +64,7 @@ LANG=C.UTF-8 PYTHONPATH=%{buildroot}%{$python_sitelib} $python ./tests.py}
 %files %{python_files}
 %{python_sitelib}/exrex*
 %{python_sitelib}/__pycache__/exrex.*
-%{python_sitelib}/exrex-0.10.6*-info
+%{python_sitelib}/exrex-%{version}*-info
 %license COPYING
 %doc README.md doc/
 %python_alternative %{_bindir}/exrex

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 12 08:36:45 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 0.11.0:
+ - Add support for \w and \W 
+ - fix utf-8
+ - Fix: Import error sre_parse: sre_parse module was moved in py3.11
+- remove obsolete fix-setup-encoding.patch
+- remove obsolete fix-python-3.11.patch
+
+-------------------------------------------------------------------
 Mon Feb 27 19:06:55 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix-python-3.11.patch from upstream PR #65 to fix the build on Python 3.11.
