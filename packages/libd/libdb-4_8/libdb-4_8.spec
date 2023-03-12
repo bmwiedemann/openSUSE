@@ -1,7 +1,7 @@
 #
 # spec file for package libdb-4_8
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 Provides:       db = %{version}
+%{?suse_build_hwcaps_libs}
 
 %description
 The Berkeley DB Database is a programmatic toolkit that provides

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 10 10:25:40 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Tue Aug 27 00:06:09 UTC 2019 - William Brown <william.brown@suse.com>
 
 - Add opd deadlock patch as found and documented by Red Hat.
