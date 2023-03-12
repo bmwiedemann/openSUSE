@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  9 17:55:16 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Add `dasd_mod.dasd=autodetect` to kernel command line parameters
+  (for Ignition device support on S/390) [boo#1207903]
+
+-------------------------------------------------------------------
 Mon Feb 27 13:09:37 UTC 2023 - iforster@suse.com
 
 - Update to version 2.15.0:

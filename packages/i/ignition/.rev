@@ -646,4 +646,14 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1069979</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c3e59b540628f010cb5951e681c0f6c4</srcmd5>
+    <version>2.15.0</version>
+    <time>1678634543</time>
+    <user>dimstar_suse</user>
+    <comment>- Add `dasd_mod.dasd=autodetect` to kernel command line parameters
+  (for Ignition device support on S/390) [boo#1207903]
+- Fix S/390 build in 0001-ignore-missing-qemu-blockdev.patch</comment>
+    <requestid>1070759</requestid>
+  </revision>
 </revisionlist>

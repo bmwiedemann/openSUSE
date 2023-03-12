@@ -20,5 +20,5 @@ if ! [ -f "${flagpath}/firstboot_happened" ]; then
         source "${flagpath}/ignition.firstboot"
     fi
     
-    set ignition_firstboot="ignition.firstboot $ignition_network_kcmdline"
+    set ignition_firstboot="ignition.firstboot dasd_mod.dasd=autodetect $ignition_network_kcmdline"
 fi
