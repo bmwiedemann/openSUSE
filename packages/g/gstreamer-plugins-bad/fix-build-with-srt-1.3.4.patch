@@ -5,11 +5,11 @@ SRTO_STRICTENC was just renamed to SRTO_ENFORCEDENCRYPTION in 1.4, so revert tha
 SRTO_PACKETFILTER was introduced in 1.4.0 so we can't support urls
 specifying a value for it in the url.
 
-Index: gst-plugins-bad-1.20.1/ext/srt/gstsrtobject.c
+Index: gst-plugins-bad-1.22.1/ext/srt/gstsrtobject.c
 ===================================================================
---- gst-plugins-bad-1.20.1.orig/ext/srt/gstsrtobject.c
-+++ gst-plugins-bad-1.20.1/ext/srt/gstsrtobject.c
-@@ -189,13 +189,13 @@ SrtOption srt_options[] = {
+--- gst-plugins-bad-1.22.1.orig/ext/srt/gstsrtobject.c
++++ gst-plugins-bad-1.22.1/ext/srt/gstsrtobject.c
+@@ -177,13 +177,13 @@ SrtOption srt_options[] = {
    {"transtype", SRTO_TRANSTYPE, G_TYPE_INT},
    {"kmrefreshrate", SRTO_KMREFRESHRATE, G_TYPE_INT},
    {"kmpreannounce", SRTO_KMPREANNOUNCE, G_TYPE_INT},

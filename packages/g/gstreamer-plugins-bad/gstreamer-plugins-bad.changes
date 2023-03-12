@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Mar  9 18:03:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.1:
+  + aom: Include stream-format and alignment in the AV1 caps
+  + av1parser: Don't consider unknown metadata OBUs a bitstream error
+  + av1parser, h265parser: Fix some code defects
+  + avfvideosrc: Don't wait on main thread for permissions request
+  + ccconverter: don't debug a potentially freed filter caps
+  + closedcaption: Don't leak caps event
+  + codecparsers: {h264, h265}bitwriter: Remove redundant condition
+    checks
+  + codecs: decoders: fail early if no input caps have been
+    provided for all new decoder base classes
+  + codectimestamper: Fix timestamping on sequence update
+  + curlhttpsrc: Add curl anyauth option
+  + d3d11overlaycompositor: fix texture width and height
+  + d3d11videosink: Fix rendering on external handle
+  + h265parse: Always set profile on src caps
+  + msdkav1enc: fix the category for msdkav1enc debug
+  + nvcodec: improve error reporting on plugin init
+  + nvencoder:
+    - Fix b-frame encoding on Linux
+    - Fix min buffers parameter of allocation query in auto GPU
+      mode
+  + nvvp9dec: Fix return value
+  + qsvav1enc, amfav1enc: Set stream-format on caps
+  + va:
+    - Avoid the array index overflow when filling 8x8 scaling list.
+    - Fix some code defects
+  + vah265enc: Use helper to update properties.
+  + vtdec:
+    - Fix DPB size calculations not taking values from SPS into
+      account
+    - Fix not waiting for async frames when flushing
+    - Jittery playback of H.264 Level 4.1 movies in macOS (both
+      x86_64 and arm64)
+  + vtenc:
+    - Disable ARGB/RGBA64 caps on M1 Pro/Max with macOS <13
+    - Disable HW acceleration for interlaced ProRes
+    - Fix checking for certain CPU variants when running in VMs
+  + vulkan: memory: Flush non coherent memory after write.
+  + wasapi2src: Fix loopback capture on Windows 10 Anniversary
+    Update
+  + webrtcbin: small stats improvements
+  + win32ipcutils: Add missing include
+  + wpe: Logging fixes for the WebExtension
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Feb 16 12:16:42 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove sys/decklink since that contains a non-standard license
