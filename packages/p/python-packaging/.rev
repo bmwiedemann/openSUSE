@@ -254,4 +254,14 @@
     <comment></comment>
     <requestid>1058762</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>feafd2fec0a22eb8aedad08604f87fb1</srcmd5>
+    <version>23.0</version>
+    <time>1678634536</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use :primary multibuild flavor for non-Tumbleweed
+  * accomodates special SLE15 projects defininig extra flavors but
+    not building for primary python3</comment>
+    <requestid>1070509</requestid>
+  </revision>
 </revisionlist>

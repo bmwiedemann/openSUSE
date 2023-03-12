@@ -20,6 +20,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %global flavor @BUILD_FLAVOR@%{nil}
+%if 0%{?suse_version} >= 1550
 %if "%{flavor}" == "primary"
 # this one is goes into Ring0:  Bootstrap for primary python stack
 %define pprefix %{primary_python}
@@ -32,6 +33,15 @@
 %define pprefix python
 %{expand:%%define skip_%{primary_python} 1}
 BuildRequires:  python3-packaging
+%endif
+%else
+# backport and option d projects for 15.X having one or more python in the buildset don't need the Ring split for bootstrap
+%if "%{flavor}" == "primary"
+%define python_module() invalid-multibuild-flavor-for-15.X
+ExclusiveArch:  do-not-build
+%else
+%define pprefix python
+%endif
 %endif
 %if "%{flavor}" == "test"
 %define pprefix python

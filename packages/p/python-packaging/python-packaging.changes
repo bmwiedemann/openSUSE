@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  9 16:39:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Don't use :primary multibuild flavor for non-Tumbleweed
+  * accomodates special SLE15 projects defininig extra flavors but
+    not building for primary python3
+
+-------------------------------------------------------------------
 Fri Jan 13 15:27:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v23.0
