@@ -20,7 +20,7 @@
 %define compatversion 7.0.0
 
 Name:           kicad-templates
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
