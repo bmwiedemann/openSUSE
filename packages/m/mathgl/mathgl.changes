@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 23:11:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable octave bindings on Leap/SLE 15 due to missing SWIG 4.x.
+- Use %cmake macros as far as possible.
+- Fix underlinking of libmgl-mpi, requires libmgl.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
 Tue Sep 20 03:37:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add mathgl-libharu2_4-compat.patch: Fix compilation against

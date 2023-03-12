@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,15 @@
 %endif
 %define skip_python2 1
 
+%define libversion 8
+
 # oct_version must be x.y.z
 %define oct_version %{version}
-%define libversion 8
+%if 0%{?suse_version} >= 1550
 %bcond_without octave
+%else
+%bcond_with    octave
+%endif
 
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}
@@ -78,7 +83,7 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
 BuildRequires:  openmpi%{omp_ver}-devel
-BuildRequires:  swig >= 4.0
+BuildRequires:  swig
 BuildRequires:  sz2-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-filesystem
@@ -92,6 +97,7 @@ Requires:       python-numpy
 %endif
 %if %{with octave}
 BuildRequires:  octave-devel
+BuildRequires:  swig >= 4.0
 %endif
 %if 0%{?fedora_version}
 BuildRequires:  fltk-fluid
@@ -144,8 +150,6 @@ console modes and for embedding into other programs.
 
 %package -n     %{libname}-qt5-%{libversion}
 Summary:        MathGL Qt5 widget library
-Provides:       %{libname}-qt4-%{libversion} = %{version}
-Obsoletes:      %{libname}-qt4-%{libversion} < %{version}
 
 %description -n %{libname}-qt5-%{libversion}
 MathGL is a library for making scientific graphics. It provides data
@@ -270,7 +274,6 @@ console modes and for embedding into other programs.
 
 This package provides lua interface for MathGL.
 
-%if %{with octave}
 %package -n     octave-mathgl
 Summary:        Octave interface for the MathGL library
 Requires:       octave-cli
@@ -281,7 +284,6 @@ plotting and handling of large data arrays, as well as window and
 console modes and for embedding into other programs.
 
 This package provides Octave interface for MathGL.
-%endif
 
 %package        tex
 Summary:        MathGL scripts for LaTeX documents
@@ -334,18 +336,15 @@ execute MGL scripts, set up, rotate graphics, and so on.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch7 -p1
-%patch8 -p1
+%autopatch -p1
+
+# Link mgl-mpi to mgl
+sed -i 's/target_link_libraries(mgl-mpi /\0 mgl /' src/CMakeLists.txt
 
 # Correct octave-mathgl version
 sed -i 's/2.0/%{oct_version}/' lang/DESCRIPTION
 
-# convert EOL encodings, maintaining timestames
+# convert EOL encodings, maintaining timestamps
 sed -i 's/\r$//' AUTHORS README
 
 %build
@@ -356,11 +355,10 @@ fi
 
 %{python_expand # For all supported python flavors
 export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
-# cmake macros don't work
-cmake \
+echo "Building for $python_ providing %{$python_provides} "
+%define __builddir ${PYTHON}_build
+pushd .
+%cmake \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}  \
       -DMathGL_INSTALL_LIB_DIR:PATH=%{_lib}   \
       -DMathGL_INSTALL_CMAKE_DIR:PATH=%{_libdir}/cmake/mathgl   \
@@ -391,8 +389,8 @@ cmake \
       -Denable-lua=on                         \
       -Denable-mgltex=on                      \
       -Denable-octave=%{?with_octave:on}%{!?with_octave:off} \
-      -Denable-octave-install=%{?with_octave:on}%{!?with_octave:off} \
-      -Denable-qt5=on                         \
+      -Denable-octave-install=OFF             \
+      -Denable-qt=on                          \
       -Denable-wx=on                          \
 %else
       -Denable-doc-html=off                   \
@@ -406,32 +404,33 @@ cmake \
       -Denable-qt5=off                        \
       -Denable-wx=off                         \
 %endif
-      .
+      %{nil}
 
-%make_build
+%cmake_build
 popd
 }
 
 %install
 %{python_expand # For all supported python flavors
 export PYTHON=$python
-pushd ../${PYTHON}_build
-%make_install
+%define __builddir ${PYTHON}_build
+%cmake_install
+
 %if "%{$python_provides}" == "python3" || "$python_" == "python3_"
+pushd %{__builddir}
 
 %if %{with octave}
+# Can not use enable-octave-install, as it ignores the buildroot
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
-# # Install octave-mathgl
+# Install octave-mathgl
 mkdir -p %{buildroot}%{_libdir}/octave/packages
 mkdir -p %{buildroot}%{_datadir}/octave/packages
-octave %{octave_args} --eval "pkg prefix %{buildroot}%{_datadir}/octave/packages %{buildroot}%{_libdir}/octave/packages; pkg install lang/%{name}.tar.gz"
+octave %{octave_args} --eval \
+  "pkg prefix %{buildroot}%{_datadir}/octave/packages %{buildroot}%{_libdir}/octave/packages; pkg install lang/%{name}.tar.gz"
 # rm %%{buildroot}%%{_datadir}/octave/packages/*/packinfo/.autoload
 # remove octave module archive
 rm %{buildroot}%{_datadir}/%{name}/%{name}.tar.gz
 %endif
-
-# Install docs
-install -m 644 texinfo/{classes.pdf,mgl_en.pdf} %{buildroot}%{_docdir}/%{name}/
 
 # move mgl.cgi
 install -d %{buildroot}/srv/www/cgi-bin/
@@ -446,12 +445,18 @@ ln -sf %{_datadir}/texmf/texconfig/zypper.py \
 
 %find_lang %{name}
 # Copy mathgl.lang file to main dir for use with file list
-cp %{name}.lang %{_builddir}/%{name}-%{version}/
-
-%endif
+cp %{name}.lang ../
 
 popd
+%endif
 }
+
+# R-B diagnostics
+# fexport.prc is nontrivial to fix, as it contains a time based UUID
+# fexport.pdf is non-reproducible due to embedded fexport.prc
+grep `date +'%Y'` %{buildroot}%{_docdir}/mathgl/png/fexport*.{eps,svg}
+sha256sum %{buildroot}%{_docdir}/mathgl/png/fexport*.{prc,pdf,eps,svg}
+
 # %%post doc
 # %%install_info --info-dir=%%{_infodir} %%{_infodir}/%%{name}_en.info.gz
 # %%install_info --info-dir=%%{_infodir} %%{_infodir}/%%{name}_en.info-1.gz
