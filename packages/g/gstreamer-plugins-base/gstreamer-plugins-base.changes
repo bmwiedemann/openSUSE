@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar  9 17:12:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version to 1.22.1:
+  + alsasink: Fix stall when going from PLAYING to NULL (stucked at
+    PAUSED) with uac1 gadget
+  + appsrc: Don't chain up BaseSrc::negotiate()
+  + audio: channel-mix: Fix channel count limit to be able to equal
+    64
+  + gl/cocoa: Return a strong ref to the parent GstGLContext
+  + gldisplay:
+    - Mark gst_gl_display_create_context() other_context parameter
+      as nullable
+    - Remove unused code
+  + gstglwindow_x11.c: Fix colormap leak
+  + gst-play-1.0: Don't force accurate seeking
+  + rtspconnection: Annotate RTSP message and RTSP events
+    parameters correctly
+  + sdp: gstmikey: gst_mikey_message_to_caps: extract ROC from
+    first crypto session
+  + sdp, typefind: Fix some annotations
+  + subparse: Properly forward segment seqnum
+  + uridecodebin: Set source element to READY before querying it
+  + uritranscodebin: Fix unref of NULL
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Fri Jan 27 10:10:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to reduce the required meson version to 0.61.0 since
