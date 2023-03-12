@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  9 08:41:43 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Fix showing of release notes when we update a rubygem
+  (bsc#1205913)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
