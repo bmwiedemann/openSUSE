@@ -51,7 +51,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.7.3+git0.1065b1000
+Version:        2.7.4+git0.d28541d1f
 Release:        0
 #
 #
@@ -130,10 +130,7 @@ multi-processor systems. That's the reason why they must be optimized to get
 the most work done from every CPU cycle.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} \

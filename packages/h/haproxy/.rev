@@ -1271,4 +1271,12 @@
     <comment>- Update to version 2.7.3+git0.1065b1000: (boo#1208132 CVE-2023-25725)</comment>
     <requestid>1065786</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3425797842e8bc4b2494448e7e1d69d7</srcmd5>
+    <version>2.7.4+git0.d28541d1f</version>
+    <time>1678634704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.4+git0.d28541d1f:</comment>
+    <requestid>1071001</requestid>
+  </revision>
 </revisionlist>
