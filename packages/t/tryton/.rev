@@ -103,4 +103,12 @@
     <comment>bugfix version</comment>
     <requestid>1066724</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>61bd809f7780a94ab4454c06b81591ab</srcmd5>
+    <version>6.0.26</version>
+    <time>1678646875</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071007</requestid>
+  </revision>
 </revisionlist>
