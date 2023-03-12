@@ -1,7 +1,7 @@
 #
 # spec file for package meep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define somajor 30
+%define somajor 31
 Name:           meep
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        FDTD finite-difference time-domain solver
 License:        GPL-2.0-or-later
