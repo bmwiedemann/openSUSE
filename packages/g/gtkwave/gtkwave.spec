@@ -1,7 +1,7 @@
 #
 # spec file for package gtkwave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtkwave
-Version:        3.3.113
+Version:        3.3.114
 Release:        0
 Summary:        Waveform viewer for Ditital Signals
 License:        GPL-2.0-or-later
