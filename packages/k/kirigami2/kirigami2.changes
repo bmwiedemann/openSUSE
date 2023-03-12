@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Dialog: Don't let user interact with footer during transitions
+  * For styling and recoloring, use `down` property instead of `pressed`
+  * Fix mistyping of Kirigami.Settings.isMobile
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
