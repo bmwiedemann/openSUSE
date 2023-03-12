@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ItemModels5
-%define _tar_path 5.103
+%define _tar_path 5.104
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kitemmodels
-Version:        5.103.0
+Version:        5.104.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
