@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:37:09 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Tue Feb  7 15:43:22 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 3.0.8:

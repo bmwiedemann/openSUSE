@@ -61,6 +61,7 @@ Requires:       crypto-policies
 Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      openssl-1_1_0
+%{?suse_build_hwcaps_libs}
 
 %description
 OpenSSL is a software library to be used in applications that need to
