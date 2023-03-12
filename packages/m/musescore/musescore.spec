@@ -29,15 +29,27 @@ Name:           musescore
 Version:        4.0.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
-# Musescore code license is GPL-3.0 with font exception (see LICENSE.rtf in top dir
+# Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
+# Musescore code license is GPL-3.0 with font exception (see LICENSE.rtf in top dir)
+# although some files mention GPL-2.0, probably for historical reasons
 # Software in thirdparty is licensed under their own license
 # thirdparty/beatroot: GPL 2.0 or later
 # thirdparty/dr_libs: Public Domain OR MIT no attribution
 # thirdparty/dtl: BSD
+# thirdparty/flac: BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
 # thirdparty/fluidsytn: LGPL-2.1
+# thirdparty/freetype): FTL (we use system freetype)
+# thirdparty/google_crashpad_client: Apache 2.0 (we don't build with this)
+# thirdparty/googletest: BSD 3
 # thirdparty/invaltree: MIT
-# thirdparty?kddockwidgets: GPL-2.0-only OR GPL-3.0-only
-License:        BSD-3-Clause AND GPL-2.0-only AND SUSE-GPL-3.0-with-font-exception AND GPL-2.0-or-later AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND MIT
+# thirdparty/kddockwidgets: GPL-2.0-only OR GPL-3.0-only
+# thirdparty/lame: LGPL 2
+# thirdparty/opus and opusenc: BSD 3
+# thirdparty/rtf2html: LGPL-2.1
+# thirdparty/singleapp: the actual code has BSD 3 (although GPL and LGPL are included)
+# thirdparty/stb: MIT
+# the soundfont we musescore uses (see below) is BSD 3
+License:        Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND SUSE-GPL-3.0-with-font-exception AND GPL-2.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
 Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
