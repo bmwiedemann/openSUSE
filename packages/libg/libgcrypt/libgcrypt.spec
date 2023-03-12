@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,7 @@ BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 Libgcrypt is a general purpose library of cryptographic building
