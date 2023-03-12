@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Properly mark panel icon group as deprecated
+  * Deprecate KIconLoader overloads in KIconButton and KIconDialog
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
