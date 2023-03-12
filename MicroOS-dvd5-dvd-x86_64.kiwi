@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230310" schemaversion="4.1">
+<image name="OBS__MicroOS___20230311" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230310</productvar>
+      <productvar name="VERSION">20230311</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230310,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230311,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230310/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230311/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -343,6 +343,7 @@
       <repopackage name="firewalld" arch="x86_64"/>
       <repopackage name="firewalld-bash-completion" arch="x86_64"/>
       <repopackage name="firewalld-lang" arch="x86_64"/>
+      <repopackage name="fixmath-devel"/>
       <repopackage name="flatpak" arch="x86_64"/>
       <repopackage name="flatpak-remote-flathub" arch="x86_64"/>
       <repopackage name="flute"/>
@@ -1206,7 +1207,7 @@
       <repopackage name="libidn2-lang"/>
       <repopackage name="libIex-3_1-30"/>
       <repopackage name="libIlmThread-3_1-30"/>
-      <repopackage name="libimaevm3" arch="x86_64"/>
+      <repopackage name="libimaevm4" arch="x86_64"/>
       <repopackage name="libimagequant0" arch="x86_64"/>
       <repopackage name="libImath-3_1-29"/>
       <repopackage name="libImlib2-1" arch="x86_64"/>
@@ -1437,7 +1438,7 @@
       <repopackage name="libmtp-udev"/>
       <repopackage name="libmtp9"/>
       <repopackage name="libmwaw-0_3-3"/>
-      <repopackage name="libmysofa1" arch="x86_64"/>
+      <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension4" arch="x86_64"/>
       <repopackage name="libncurses6"/>
@@ -2121,6 +2122,8 @@
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
       <repopackage name="pam-manpages"/>
+      <repopackage name="pam_kwallet" arch="x86_64"/>
+      <repopackage name="pam_kwallet-common" arch="x86_64"/>
       <repopackage name="pam_pwquality"/>
       <repopackage name="parallel-printer-support" arch="x86_64"/>
       <repopackage name="paratype-pt-mono-fonts"/>
@@ -2228,6 +2231,7 @@
       <repopackage name="pipewire"/>
       <repopackage name="pipewire-alsa" arch="x86_64"/>
       <repopackage name="pipewire-lang"/>
+      <repopackage name="pipewire-libjack-0_3" arch="x86_64"/>
       <repopackage name="pipewire-modules-0_3"/>
       <repopackage name="pipewire-pulseaudio" arch="x86_64"/>
       <repopackage name="pipewire-spa-plugins-0_2"/>
@@ -2537,6 +2541,7 @@
       <repopackage name="snapper" arch="x86_64"/>
       <repopackage name="snapper-zypp-plugin" arch="x86_64"/>
       <repopackage name="snmp-mibs" arch="x86_64"/>
+      <repopackage name="socat" arch="x86_64"/>
       <repopackage name="solid-imports" arch="x86_64"/>
       <repopackage name="solid-tools" arch="x86_64"/>
       <repopackage name="sonnet" arch="x86_64"/>
