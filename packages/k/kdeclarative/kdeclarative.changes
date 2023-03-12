@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:07:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Guard nullable property access, and bind instead of assigning once
+  * AbstractKCM: Rewrite padding expressions to be more readable
+  * Add import aliases, bump internal import versions as needed
+  * Drop unused QML imports
+  * [managedconfigmodule] Fix deprecation comments
+  * [configmodule] Deprecate constructor without metadata
+  * [configmodule] Deprecate setAboutData
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
