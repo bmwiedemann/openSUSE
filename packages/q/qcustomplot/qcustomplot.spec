@@ -65,6 +65,7 @@ visualization applications.
 Summary:        Development files for QCustomPlot
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
+Requires:       pkgconfig(Qt5PrintSupport)
 # Last used 2018 with version 2.0.0
 Provides:       %{name}-qt5-devel = %{version}
 Obsoletes:      %{name}-qt5-devel < %{version}
