@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Mar  9 17:03:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.1:
+  + Highlighted bugfixes:
+    - audio channel-mix: allow up to 64 channels (instead of up to
+      63 channels)
+    - avfvideosrc: Don't wait on main thread for permissions
+      request
+    - avvidenc: avoid generating inaccurate output timestamps,
+      especially with variable framerate streams
+    - AV1 video codec caps signalling improvements in various
+      elements
+    - codectimestamper: Fix timestamping on sequence update
+    - d3d11overlaycompositor: fix texture width and height
+    - d3d11videosink: Fix rendering on external handle
+    - dashdemux2: fix seek operation taking a log time to finish
+      for some streams
+    - nvencoder: Fix B-frame encoding on Linux and min buffers in
+      auto GPU mode
+    - playbin3: fixing buffering for live pipelines
+    - playbin: fix potential deadlock when stopping stream with
+      subtitles visible
+    - redenc: fix setting of extension ID for twcc
+    - rtspsrc: improved compatibility with more broken RTSP servers
+    - v4l2h264dec: Fix Raspberry Pi4 will not play video in
+      application
+    - vtdec: fix jittery playback of H.264 Level 4.1 movies in
+      macOS
+    - vtdec: Fix non-deterministic frame output after flushing
+      seeks
+    - vtenc: fix handling of interlaced ProRes on Apple M1 hardware
+    - vtenc: don't advertise ARGB/RGBA64 input caps on M1 Pro/Max
+      with macOS <13
+    - wasapi2src: Fix loopback capture on Windows 10 Anniversary
+      Update
+    - tools: better handling of non-ASCII command line arguments on
+      Windows
+    - gst-libav: fix build against newer ffmpeg versions
+    - gst-python: Use arch-specific install dir for gi overrides
+    - cerbero: Fix setuptools site.py breakage in Python 3.11
+    - macOS packages: Fix broken binaries on macos < 11.0
+    - various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+  + gstreamer:
+    - buffer: fix copy meta reference debug log formatting
+    - bin: Don't unlock unlocked mutex in gst_bin_remove_func()
+    - pad: Don't leak user_data in gst_pad_start_task()
+    - aggregator: Always lock aggpad around update_time_level
+    - inputselector: Avoid potential deadlock when shutting down,
+      e.g. playbin with subtitles
+    - multiqueue: Handle use-interleave latency live pipelines,
+      fixing buffering for live pipelines in playbin3
+    - GstBaseSrc: fix transfer annotation for fixate() virtual
+      method
+    - GstBaseSrc, GstPushSrc: add nullable annotations to virtual
+      methods
+    - tools: Make sure UTF-8 encoded command line arguments on
+      Windows
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Tue Feb  7 22:30:48 UTC 2023 - munix9@googlemail.com
 
 - Add fix using sed to find gst-plugin-scanner-%{_target_cpu}

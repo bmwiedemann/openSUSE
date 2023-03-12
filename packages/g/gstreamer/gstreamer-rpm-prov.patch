@@ -1,7 +1,7 @@
-Index: gstreamer-1.22.0/tools/gst-inspect.c
+Index: gstreamer-1.22.1/tools/gst-inspect.c
 ===================================================================
---- gstreamer-1.22.0.orig/tools/gst-inspect.c
-+++ gstreamer-1.22.0/tools/gst-inspect.c
+--- gstreamer-1.22.1.orig/tools/gst-inspect.c
++++ gstreamer-1.22.1/tools/gst-inspect.c
 @@ -1869,7 +1869,224 @@ print_tracer_info (GstPluginFeature * fe
   * is meant for machines, not humans.
   */
@@ -344,7 +344,7 @@ Index: gstreamer-1.22.0/tools/gst-inspect.c
      {"plugin", '\0', 0, G_OPTION_ARG_NONE, &plugin_name,
          N_("List the plugin contents"), NULL},
      {"types", 't', 0, G_OPTION_ARG_STRING, &types,
-@@ -2284,7 +2527,7 @@ real_main (int argc, char *argv[])
+@@ -2289,7 +2532,7 @@ real_main (int argc, char *argv[])
        /* if there is such a plugin, print out info */
        if (plugin) {
          if (print_aii) {
@@ -353,7 +353,7 @@ Index: gstreamer-1.22.0/tools/gst-inspect.c
          } else {
            print_plugin_info (plugin);
            print_plugin_features (plugin);
-@@ -2297,13 +2540,17 @@ real_main (int argc, char *argv[])
+@@ -2302,13 +2545,17 @@ real_main (int argc, char *argv[])
  
            if (plugin) {
              if (print_aii) {
