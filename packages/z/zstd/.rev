@@ -352,4 +352,12 @@
   * cli: support `--best` and `--no-name` in `gzip` compatibility</comment>
     <requestid>1067313</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a0b3841c3f3b36a89ef5708b54724440</srcmd5>
+    <version>1.5.4</version>
+    <time>1678634535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070370</requestid>
+  </revision>
 </revisionlist>

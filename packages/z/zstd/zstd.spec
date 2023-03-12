@@ -35,6 +35,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 # for .gz support
 BuildRequires:  pkgconfig(zlib)
+%{?suse_build_hwcaps_libs}
 
 %description
 Zstd, short for Zstandard, is a lossless compression algorithm. Speed
