@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar 05 04:40:56 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g30:
+  * Keyboard: fix keyboard-layout mapping crash
+  * deps: update to latest zig-wayland/zig-wlroots
+  * deps: update to latest zig-wayland/zig-wlroots
+  * Seat: guard setFocusRaw() usage while locked
+  * docs: remove repology badge from readme
+  * docs: fix typos in riverctl man page
+  * wlr-output-management: fix bug due to zig miscompilation
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: leverage new wlroots APIs
+  * wlr-output-management: apply adaptive sync state
+  * idle-inhibit: fix use-after-free
+  * session-lock: properly handle disabled outputs
+  * View: fix pointer comparison in notifyTitle()
+  * Cursor: fix incorrect lock manager state assertion
+  * command/layout: fix a memory leak
+  * Seat: rework Xwayland Override Redirect focus
+  * Seat: keep parent Xwayland view of a focused OR surface activated
+  * deps: update zig-wayland to fix build on aarch64
+  * flags: further cleanup after Zig 0.10
+  * deps: update to Zig 0.10
+  * render: fix rounding for fractional scaling
+  * session-lock: fix assertion failure on abnormal client behavior
+  * session-lock: fix assertion failure due to race
+  * session-lock: wait for present before locking
+  * rivertile: fix code to disallow 0 main count
+  * render: premultiply alpha for user-provided colors
+  * completions: add keyboard-layout
+  * ci: Use meson setup command
+  * river: fix bug in snap down / right
+  * build: bump version to 0.3.0-dev
+
+-------------------------------------------------------------------
 Sun Feb 12 20:49:58 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 0.2.4:

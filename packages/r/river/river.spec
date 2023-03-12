@@ -17,12 +17,12 @@
 
 
 Name:           river
-Version:        0.2.4
+Version:        0.2.4+g30
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
 URL:            https://github.com/riverwm/river
-Source:         river-%{version}.tar.xz
+Source:         river-%{version}.tar.zst
 Source1:        river-run.sh
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  zig
 BuildRequires:  zig-rpm-macros
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
