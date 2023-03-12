@@ -1,7 +1,7 @@
 #
 # spec file for package zynaddsubfx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,7 @@ Patch0:         zynaddsubfx-buildflags.patch
 BuildRequires:  cmake
 BuildRequires:  dssi
 BuildRequires:  fltk-devel
-%if 0%{?suse_version} < 1325
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -66,8 +61,8 @@ insertion effects, too.
 
 %package bash-completion
 Summary:        Bash completion for ZynAddSubFX
-Requires:       bash
 Requires:       %{name} = %{version}
+Requires:       bash
 
 %description bash-completion
 Bash command line completion support for ZynAddSubFX.
@@ -139,18 +134,14 @@ This package includes the VST zynaddsubfx synthesizer plugins.
       -DDefaultOutput=jack \
       -DNoNeonPlease:BOOL=ON \
       -DOssEnable:BOOL=FALSE \
-%if 0%{?suse_version} < 1325
-      -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-7 \
-      -DCMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-7 \
-      -DCMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-7 \
-      -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-7 \
-      -DCMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-7 \
-      -DCMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-7 \
-%endif
 %ifarch %{ix86} x86_64
       -DX86Build=ON \
 %endif
       -DPluginLibDir:STRING=%{_lib}
+
+pushd src/Tests/CMakeFiles
+for i in `find . -name link.txt` ;do sed -i 's/--no-as-needed -lpthread/--no-as-needed -lpthread -lfltk/' ${i} ;done
+popd
 
 make %{?_smp_mflags}
 
