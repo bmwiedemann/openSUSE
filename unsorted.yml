@@ -11027,6 +11027,7 @@ unsorted:
   - libdb-4_8-32bit: [x86_64] 
   - libdb-4_8-devel 
   - libdb-4_8-devel-32bit: [x86_64] 
+  - libdb-4_8-x86-64-v3: [x86_64] 
   - libdb_java-4_8 
   - libdb_java-4_8-devel 
   - libdbh2 
@@ -11632,7 +11633,10 @@ unsorted:
   - libgcr3-devel 
   - libgcrypt-devel 
   - libgcrypt-devel-32bit: [x86_64] 
+  - libgcrypt-devel-x86-64-v3: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
+  - libgcrypt20-hmac-x86-64-v3: [x86_64] 
+  - libgcrypt20-x86-64-v3: [x86_64] 
   - libgd3-32bit: [x86_64] 
   - libgda-6_0-6_0_0 
   - libgda-6_0-6_0_0-lang 
@@ -11974,8 +11978,6 @@ unsorted:
   - libguile1-devel 
   - libguile17 
   - libguilereadline-v-17-17 
-  - libgumbo-devel 
-  - libgumbo1 
   - libgupnp-1_6-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
@@ -12869,7 +12871,7 @@ unsorted:
   - libmediastreamer11 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
-  - libmeep30 
+  - libmeep31 
   - libmemcache-devel 
   - libmemcache0 
   - libmemcached 
@@ -13468,6 +13470,8 @@ unsorted:
   - libopenssl1_1-32bit: [x86_64] 
   - libopenssl1_1-hmac-32bit: [x86_64] 
   - libopenssl3-hmac-32bit: [x86_64] 
+  - libopenssl3-hmac-x86-64-v3: [x86_64] 
+  - libopenssl3-x86-64-v3: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -15885,6 +15889,7 @@ unsorted:
   - libzstd-devel 
   - libzstd-devel-32bit: [x86_64] 
   - libzstd-devel-static 
+  - libzstd1-x86-64-v3: [x86_64] 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit: [x86_64] 
   - libzvbi0-32bit: [x86_64] 
@@ -27735,6 +27740,7 @@ unsorted:
   - python311-marshmallow 
   - python311-marshmallow-enum 
   - python311-material-color-utilities-python 
+  - python311-mathgl: [i586] 
   - python311-mathics-pygments 
   - python311-matplotlib 
   - python311-matplotlib-cairo 
