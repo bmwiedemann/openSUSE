@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 12 09:36:48 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.2.1:
+    * Fixed bug: Delete old picturefiles automatically
+    * Language files updated
+- UltimateDailyWallpaper.desktop:
+    * Keywords entry added (line 9)
+
+-------------------------------------------------------------------
 Mon Feb 27 19:11:36 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
 
 - Filename in Source0 of UltimateDailyWallpaper.spec corrected

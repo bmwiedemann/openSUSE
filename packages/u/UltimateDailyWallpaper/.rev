@@ -10,4 +10,17 @@ Best regards,
 pgcsw</comment>
     <requestid>1068054</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4c3358254ff5cf1db6a1b8aa91da4f6</srcmd5>
+    <version>3.2.1</version>
+    <time>1678634698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.1:
+    * Fixed bug: Delete old picturefiles automatically
+    * Language files updated
+- UltimateDailyWallpaper.desktop:
+    * Keywords entry added (line 9)
+</comment>
+    <requestid>1070990</requestid>
+  </revision>
 </revisionlist>
