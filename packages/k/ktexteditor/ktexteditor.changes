@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  6 09:08:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Improve cstyle performance
+  * Improve performance of rendering spaces with dyn wrap disabled (kde#465841)
+  * documentSaveCopyAs: Use async job api (kde#466571)
+  * Optimize rendering spaces with dyn wrapping (kde#465841)
+
+-------------------------------------------------------------------
 Wed Feb  8 09:13:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.103.0
