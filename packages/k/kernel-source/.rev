@@ -6210,4 +6210,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.2 &amp; lockdown DISABLED &amp; packaging fixes</comment>
     <requestid>1070329</requestid>
   </revision>
+  <revision rev="682" vrev="1">
+    <srcmd5>e566f1737f198d6a42617bb07e515143</srcmd5>
+    <version>6.2.4</version>
+    <time>1678707603</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.4 &amp; 6.2.3 &amp; ppc fix</comment>
+    <requestid>1070843</requestid>
+  </revision>
 </revisionlist>

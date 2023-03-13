@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.2
-%define patchversion 6.2.2
+%define patchversion 6.2.4
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.2.2
+Version:        6.2.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g44ca817
+Release:        <RELEASE>.g0532a55
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-44ca817f15b215421a4c788790dd5351c186d1df
-Provides:       kernel-srchash-44ca817f15b215421a4c788790dd5351c186d1df
+Provides:       kernel-%build_flavor-base-srchash-0532a55e39a8752b6674ba3ce852f0c1000b1e6e
+Provides:       kernel-srchash-0532a55e39a8752b6674ba3ce852f0c1000b1e6e
 # END COMMON DEPS
-Provides:       %name-srchash-44ca817f15b215421a4c788790dd5351c186d1df
+Provides:       %name-srchash-0532a55e39a8752b6674ba3ce852f0c1000b1e6e
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -828,6 +828,10 @@ BRP_PESIGN_FILES=""
 export BRP_PESIGN_FILES
 %if "%{compress_modules}" != "none"
 export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
+%endif
+# Do not sign vanilla kernels released in official projects
+%if %build_vanilla && ! %vanilla_only
+BRP_PESIGN_FILES=""
 %endif
 
 if test -x /usr/lib/rpm/pesign/gen-hmac; then
