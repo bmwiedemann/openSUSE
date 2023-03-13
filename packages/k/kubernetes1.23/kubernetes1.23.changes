@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar  2 12:48:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update patch files to reflect upstream registry changes from k8s.gcr.io to registry.k8s.io
+  * kubeadm-opensuse-registry.patch
+  * revert-coredns-image-renaming.patch 
+
+-------------------------------------------------------------------
+Thu Mar 02 12:35:00 UTC 2023 - priyanka.saggu@suse.com
+
+- Update to version 1.23.17:
+  * Release commit for Kubernetes v1.23.17
+  * releng: Update images, dependencies and version to Go 1.19.6
+  * Update golang.org/x/net to v0.7.0
+  * Pin golang.org/x/net to v0.4.0
+  * add scale test for probes
+  * use custom dialer for http probes
+  * use custom dialer for tcp probes
+  * add custom dialer optimized for probes
+  * egress_selector: prevent goroutines leak on connect() step.
+  * tls.Dial() validates hostname, no need to do that manually
+  * Fix issue that Audit Server could not correctly encode DeleteOption
+  * Do not include scheduler name in the preemption event message
+  * Do not leak cross namespace pod metadata in preemption events
+  * pkg/controller/job: re-honor exponential backoff
+  * releng: Update images, dependencies and version to Go 1.19.5
+  * Bump Konnectivity to v0.0.35
+  * Improve vendor verification works for each staging repo
+  * Update to go1.19
+  * Adjust for os/exec changes in 1.19
+  * Update golangci-lint to 1.46.2 and fix errors
+  * Match go1.17 defaults for SHA-1 and GC
+  * update golangci-lint to 1.45.0
+  * kubelet: make the image pull time more accurate in event
+  * change k8s.gcr.io/pause to registry.k8s.io/pause
+  * use etcd 3.5.6-0 after promotion
+  * changelog: CVE-2022-3294 and CVE-2022-3162 were fixed in v1.23.14
+  * Add CVE-2021-25749 to CHANGELOG-1.23.md
+  * Add CVE-2022-3294 to CHANGELOG-1.23.md
+  * kubeadm: use registry.k8s.io instead of k8s.gcr.io
+  * etcd: Updated to v3.5.5
+  * Bump konnectivity network proxy to v0.0.33. Includes a couple bug fixes for better handling of dial failures. [Agent & Server](https://github.com/kubernetes-sigs/apiserver-network-proxy/commits/v0.0.33) include numerous other fixes.
+  * kubeadm: allow RSA and ECDSA format keys in preflight check
+  * Fixes kubelet log compression on Windows
+  * Reduce default gzip compression level from 4 to 1 in apiserver
+  * exec auth: support TLS config caching
+  * Marshal MicroTime to json and proto at the same precision
+  * Windows: ensure runAsNonRoot does case-insensitive comparison on user name
+  * update structured-merge-diff to 4.2.3
+  * Add rate limiting when calling STS assume role API
+  * Fixing issue in generatePodSandboxWindowsConfig for hostProcess containers by where pod sandbox won't have HostProcess bit set if pod does not have a security context but containers specify HostProcess.
+
+-------------------------------------------------------------------
 Tue Jul 19 05:05:54 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.23.9:
