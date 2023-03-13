@@ -94,6 +94,7 @@ Python 3 bindings for %{name}.
 %patch1 -p1
 
 %build
+%global optflags %optflags -fexcess-precision=fast
 libtoolize --force --copy
 autoreconf -fi
 %if 0%{?suse_version} < 1500

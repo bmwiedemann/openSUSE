@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 10 13:57:17 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use -fexcess-precision=fast in order to support GCC compiler:
+  https://gcc.gnu.org/gcc-13/porting_to.html#excess-precision.
+  Fixes: https://gitlab.com/orcus/orcus/-/issues/175
+
+-------------------------------------------------------------------
 Mon Mar  6 19:25:17 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add include fix gcc13-fix.patch for GCC 13 compiler.
