@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:26:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13:
+  * Added missing bind_dev getter and setter.
+  * a fix for A resource leak bug in function iperf_create_pidfile (#1443)
+  * doc: Fix copy-and-paste error leading to wrong error message
+  * Fix crash on rcv-timeout with JSON logfile
+
+-------------------------------------------------------------------
 Sat Dec  3 13:24:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12:
