@@ -239,6 +239,8 @@
     <ignore name="usbmuxd"/>
     <package name="aaa_base" replaces="gnome-keyring-pam"/>
     <ignore name="gnome-keyring-pam"/>
+    <package name="aaa_base" replaces="pam_kwallet"/>
+    <ignore name="pam_kwallet"/>
     <package name="aaa_base" replaces="apparmor-docs"/>
     <ignore name="apparmor-docs"/>
     <package name="aaa_base" replaces="mutt-doc"/>

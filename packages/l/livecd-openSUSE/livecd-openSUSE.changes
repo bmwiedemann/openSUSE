@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 13 10:34:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore pam_kwallet like gnome-keyring-pam
+
+-------------------------------------------------------------------
 Tue Feb 21 15:27:21 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - list-gnome: ignore sushi on Leap, deps too big. Hopefully temporary.

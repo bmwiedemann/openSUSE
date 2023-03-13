@@ -110,8 +110,11 @@ buildignore usbmuxd
 
 # This would otherwise create a password prompt
 # See also https://bugzilla.opensuse.org/show_bug.cgi?id=544314 and
-# https://bugzilla.opensuse.org/show_bug.cgi?id=537343
+# https://bugzilla.opensuse.org/show_bug.cgi?id=537343 and
+# https://bugzilla.suse.com/show_bug.cgi?id=477488 and
+# http://bugzilla.opensuse.org/show_bug.cgi?id=1209177
 buildignore gnome-keyring-pam
+buildignore pam_kwallet
 
 buildignore apparmor-docs
 buildignore mutt-doc
