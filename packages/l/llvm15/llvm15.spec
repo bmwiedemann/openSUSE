@@ -369,6 +369,10 @@ Patch14:        llvm-do-not-install-static-libraries.patch
 Patch15:        libcxx-test-library-path.patch
 # PATCH-FIX-UPSTREAM (?): Work around gh#llvm/llvm-project#28804 by hinting with __builtin_assume.
 Patch16:        llvm-workaround-superfluous-branches.patch
+# PATCH-FIX-UPSTREAM: Recognize <arch>-suse-linux as implicitly GNU. Discussion at https://reviews.llvm.org/D110900.
+Patch17:        llvm-suse-implicit-gnu.patch
+# PATCH-FIX-UPSTREAM: Don't implicitly add RUNPATHs to openmp executable. (boo#1206837)
+Patch18:        openmp-drop-rpath.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -810,6 +814,7 @@ This package contains the development files for Polly.
 %patch13 -p1
 %patch14 -p1
 %patch16 -p2
+%patch17 -p2
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
@@ -825,6 +830,7 @@ pushd clang-%{_version}.src
 %patch4 -p1
 %patch6 -p1
 %patch9 -p2
+%patch18 -p2
 %patch36 -p2
 
 # We hardcode openSUSE

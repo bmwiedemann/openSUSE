@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 11 14:09:34 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add llvm-suse-implicit-gnu.patch to recognize <arch>-suse-linux
+  as implicitly GNU. Without this we would get library calls for
+  fused-multiply-add even if it's available in hardware.
+- Add openmp-drop-rpath.patch: backport revert of adding RUNPATH
+  to openmp executables. (boo#1206837)
+
+-------------------------------------------------------------------
+Thu Mar  9 17:17:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update constraints to exclude workers with very slow CPU
+
+-------------------------------------------------------------------
 Sat Jan 14 14:06:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 15.0.7.

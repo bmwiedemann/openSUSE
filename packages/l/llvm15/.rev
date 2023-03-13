@@ -119,4 +119,18 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1059871</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3baa7a5e9843bc73fa4fe00aa5bcc584</srcmd5>
+    <version>15.0.7</version>
+    <time>1678707595</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm-suse-implicit-gnu.patch to recognize &lt;arch&gt;-suse-linux
+  as implicitly GNU. Without this we would get library calls for
+  fused-multiply-add even if it's available in hardware.
+- Add openmp-drop-rpath.patch: backport revert of adding RUNPATH
+  to openmp executables. (boo#1206837)
+- update constraints to exclude workers with very slow CPU
+</comment>
+    <requestid>1070944</requestid>
+  </revision>
 </revisionlist>

@@ -8,6 +8,7 @@
       <size unit="M">4096</size>
     </memory>
   </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
   <overwrite>
     <!-- 
       We have disabled debuginfo on 32 bit architecture because they simply can no address enough memory to link llvm libraries with it.
