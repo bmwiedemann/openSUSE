@@ -3,7 +3,7 @@
     <param name="url">https://github.com/life4/enc.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.1.0</param>
+    <param name="revision">1.1.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

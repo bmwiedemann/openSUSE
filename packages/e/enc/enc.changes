@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 12 17:45:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.1:
+  * Fix broken link in README #3
+  * Submit Go dependencies into GitHub API #4
+  * Update all dependencies #5
+
+-------------------------------------------------------------------
 Fri Feb 10 13:11:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of enc 1.1.0 for openSUSE
