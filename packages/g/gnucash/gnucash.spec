@@ -84,7 +84,7 @@ BuildRequires:  pkgconfig(libofx) >= 0.9.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.0
 BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Recommends:     %{name}-docs
 # For translation of currency names
 Recommends:     iso-codes

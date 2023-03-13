@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 12 15:13:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  BuildRequires: Version 4.13 added support for webkit2gtk-4.1.
+
+-------------------------------------------------------------------
 Thu Dec 22 13:33:56 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 4.13

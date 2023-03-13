@@ -977,4 +977,12 @@
     <comment>Update to 4.13</comment>
     <requestid>1045063</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>4851c9884ea68529dfbc282d051d49c8</srcmd5>
+    <version>4.13</version>
+    <time>1678707613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071016</requestid>
+  </revision>
 </revisionlist>
