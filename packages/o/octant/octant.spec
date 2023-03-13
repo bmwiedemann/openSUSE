@@ -1,7 +1,7 @@
 #
 # spec file for package octant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define goipath github.com/vmware-tanzu/octant
-%define commit 5a8648921cc2779eb62a0ac11147f12aa29f831c
+%define commit f95b5f7ea824daf447a08c7ddc031e0dbbd64ced
 
 Name:           octant
-Version:        0.24.0
+Version:        0.25.1
 Release:        0
 Summary:        A platform to better understand the complexity of Kubernetes clusters
 License:        Apache-2.0

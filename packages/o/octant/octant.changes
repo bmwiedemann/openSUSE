@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 08 15:57:17 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.25.1:
+  * fix: Calling the DynamicCache.gvrFromKey method when the gvr is not cached returns an nil object #3177 (#3178)
+  * Bump dependencies
+  * Fix disabled Clarity buttons
+  * Support Secret with binary data 
+  * Spelling 
+  * Allow manual trigger via workflow_dispatch 
+  * fix invalid port when backend service has multiple port 
+  * Move to go 1.17 
+  * Use namespace scoped informers under restricted rbac 
+  * Update Electron doc
+  * Add docs sidebar and action documentation 
+  * Added check for resource access for namespaces before starting informers 
+  * Bumped to electron 13 and node 16 
+
+-------------------------------------------------------------------
 Thu Sep 16 02:26:24 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 0.24.0:
