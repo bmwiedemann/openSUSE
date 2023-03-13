@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           konstraint
-Version:        0.25.1
+Version:        0.26.0
 Release:        0
 Summary:        A policy management tool for interacting with Gatekeeper
 License:        Apache-2.0
