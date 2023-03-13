@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 07:42:09 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
+
+- bsc#1208922: fails to replace directory /lib/drbd with symlink
+  * modify drbd-utils.spec to rename it in pretrans script
+
+-------------------------------------------------------------------
 Tue Jan  3 05:09:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd.service fails to load - incorrect path to executable (bsc#1206754)

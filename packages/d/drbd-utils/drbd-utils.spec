@@ -141,8 +141,20 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 
 rm -rf %{buildroot}%{libdir}/drbd/crm-*fence-peer.sh     # bsc#1204276
 
+%if 0%{?suse_version} < 1550
+    # create symlink for bsc#1206364
+    rmdir %{buildroot}/lib/drbd
+    ln -sf %{libdir}/drbd %{buildroot}/lib/drbd
+%endif
+
 %pre
 %service_add_pre %{services}
+%if 0%{?suse_version} < 1550
+if [ ! -L /lib/drbd ] && [ -d /lib/drbd ]; then
+    rm -rf /lib/drbd.rpmmoved
+    mv /lib/drbd /lib/drbd.rpmmoved
+fi
+%endif
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/drbd.conf
@@ -158,10 +170,6 @@ ln -sf drbd.conf-9.0.5.gz %{_mandir}/ja/man5/drbd.conf.5.gz
 %if %{with drbdmon}
   ln -sf drbdmon-9.0.8.gz %{_mandir}/man8/drbdmon.8.gz
   ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
-%endif
-%if 0%{?suse_version} < 1550
-  # create symbolic folder for bsc#1206364
-  ln -s /usr/lib/drbd /lib/drbd 
 %endif
 
 %preun
@@ -190,6 +198,11 @@ ln -sf drbd.conf-9.0.5.gz %{_mandir}/ja/man5/drbd.conf.5.gz
 %dir %{_sysconfdir}/multipath
 %dir %{_sysconfdir}/multipath/conf.d
 %{libdir}/drbd
+%if 0%{?suse_version} < 1550
+    # symlink for bsc#1206364
+    /lib/drbd
+    %ghost /lib/drbd.rpmmoved
+%endif
 %{sbindir}/drbdadm
 %{sbindir}/drbdsetup
 %{sbindir}/drbdmeta
