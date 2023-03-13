@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar 12 19:30:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.24.0:
+  * Update CHANGELOG for v1.24.0 (#251)
+  * Upgrade golang.org/x/net to fix a dependabot alert (#250)
+  * Add a short format for timestamps (#249)
+  * Bump golangci-lint to v1.51.2 (#248)
+  * Add dynamic completion for --node flag (#244)
+  * Add --node flag to filter on a specific node (#243)
+  * allow flexible log parsing and formatting (#239)
+  * Documenting how to get Bash completion in Krew mode (#240)
+  * Add CI for skipped files (#241)
+  * Replace actions/cache with setup-go's cache (#238)
+  * Make CI jobs faster (#237)
+  * Refactor options.sternConfig() (#236)
+  * Return error when output option is invalid (#235)
+  * Refactor template logic (#233)
+  * Revert "add support to parse JSON logs (#228)" (#232)
+  * Change the default of --container-state to `all` (#225)
+  * Highlight matched strings in the log lines with the include
+    option (#231)
+  * Support resuming from the last log when retrying (#230)
+  * add support to parse JSON logs (#228)
+  * Show initContainers first when --no-follow and
+    --max-log-requests 1 (#226)
+  * Add --max-log-requests flag to limit concurrent requests (#224)
+  * Improve handling of container termination (#221)
+  * Allow pods without labels to be selected in the resource query
+    (#223)
+  * Add `all` option to --container-state flag (#222)
+
+-------------------------------------------------------------------
 Mon Jan 30 12:07:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.23.0:
