@@ -1861,6 +1861,7 @@ unsorted:
   - cargo1.65 
   - cargo1.66 
   - cargo1.67 
+  - cargo1.68 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -6408,6 +6409,7 @@ unsorted:
   - go1.19-race: [x86_64] 
   - go1.20 
   - go1.20-doc 
+  - go1.20-libstd 
   - go1.20-race: [x86_64] 
   - go1.9 
   - go1.9-doc 
@@ -6802,7 +6804,6 @@ unsorted:
   - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
-  - gstreamer-plugins-vaapi-devel 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder 
   - gstreamer-transcoder-devel 
@@ -27740,7 +27741,7 @@ unsorted:
   - python311-marshmallow 
   - python311-marshmallow-enum 
   - python311-material-color-utilities-python 
-  - python311-mathgl: [i586] 
+  - python311-mathgl 
   - python311-mathics-pygments 
   - python311-matplotlib 
   - python311-matplotlib-cairo 
@@ -37572,6 +37573,7 @@ unsorted:
   - rust1.65 
   - rust1.66 
   - rust1.67 
+  - rust1.68 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
