@@ -511,7 +511,7 @@ Prefer: -Catch2-2-devel
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
-Prefer: -python39-txt2tags -python310-txt2tags
+Prefer: -python38-txt2tags -python39-txt2tags -python311-txt2tags
 
 # have choice for python3-magic: python38-magic python38-python-magic
 Prefer: -python38-magic -python39-magic -python310-magic
@@ -1495,6 +1495,7 @@ Substitute: yast2-theme-SLE
 Optflags: i586 -fomit-frame-pointer
 Optflags: i686 -march=i686 -mtune=generic -fomit-frame-pointer
 Optflags: x86_64
+Optflags: x86_64_v3
 Optflags: ppc
 Optflags: ppc64
 Optflags: ia64
