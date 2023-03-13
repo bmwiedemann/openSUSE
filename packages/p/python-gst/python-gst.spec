@@ -19,7 +19,7 @@
 %define _name gst-python
 
 Name:           python-gst
-Version:        1.22.0
+Version:        1.22.1
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
@@ -76,8 +76,8 @@ written in Python.
 %files %{python_files}
 %license COPYING
 %doc NEWS TODO
-%dir %{python_sitelib}/gi
-%{python_sitelib}/gi/overrides/
+%dir %{python_sitearch}/gi
+%{python_sitearch}/gi/overrides/
 
 %files -n gstreamer-plugin-python
 %{_libdir}/gstreamer-1.0/libgstpython.so
