@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  9 18:34:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.1:
+  + Fix gstreamer-validate-1.0 dependency name.
+- Rebase patch with quilt.
+- Drop gst-editing-services-fix-pc-name.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar  1 13:01:19 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to reduce the required meson version to 0.61.0 since
