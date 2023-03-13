@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  9 18:18:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.1:
+  + vaapi: Skip plugin pc file for shared plugins
+- Rebase patch with quilt.
+- Drop devel sub-package added in 1.22.0, following upstream
+  changes.
+
+-------------------------------------------------------------------
 Wed Mar  1 13:03:10 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to reduce the required meson version to 0.61.0 since

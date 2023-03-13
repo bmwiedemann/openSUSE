@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-vaapi
-Version:        1.22.0
+Version:        1.22.1
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
@@ -66,15 +66,6 @@ gstreamer-vaapi is a collection of GStreamer plugins and helper
 libraries that allow hardware accelerated video decoding through
 VA-API.
 
-%package devel
-Summary:        Gstreamer VA-API plugins -- Development files
-
-%description devel
-gstreamer-vaapi is a collection of GStreamer plugins and helper
-libraries that allow hardware accelerated video decoding through
-VA-API.
-This package contains the devel files of %{name}
-
 %prep
 %autosetup -n gstreamer-vaapi-%{version} -p1
 
@@ -100,9 +91,5 @@ This package contains the devel files of %{name}
 %license COPYING.LIB
 %doc AUTHORS NEWS README
 %{_libdir}/gstreamer-%{gst_branch}/libgstvaapi.so
-
-%files devel
-%dir %{_libdir}/gstreamer-%{gst_branch}/pkgconfig
-%{_libdir}/gstreamer-%{gst_branch}/pkgconfig/gstvaapi.pc
 
 %changelog
