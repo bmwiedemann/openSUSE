@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar  7 20:08:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.8:
+  * #620: With the "create" action and the "--list" ("--files")
+    flag, only show excluded files at verbosity 2.
+  * #621: Add optional authentication to the ntfy monitoring
+    hook.
+  * With the "create" action, only one of "--list" ("--files")
+    and "--progress" flags can be used.
+  * This lines up with the new behavior in Borg 2.0.0b5.
+  * Internally support new Borg 2.0.0b5 "--filter" status
+    characters / item flags for the "create" action.
+  * Fix the "create" action with the "--dry-run" flag querying
+    for databases when a PostgreSQL/MySQL "all" database is
+    configured. Now, these queries are skipped due to the dry run.
+  * Add "--repository" flag to the "rcreate" action to optionally
+    select one configured repository to create.
+  * Add "--progress" flag to the "transfer" action, new in Borg
+    2.0.0b5.
+  * Add "checkpoint_volume" configuration option to creates
+    checkpoints every specified number of bytes during a
+    long-running backup, new in Borg 2.0.0b5.
+
+-------------------------------------------------------------------
 Tue Feb 21 07:41:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.7:
