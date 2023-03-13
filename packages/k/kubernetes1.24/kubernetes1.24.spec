@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.23
 
 Name:           kubernetes%{baseversion}
-Version:        1.24.3
+Version:        1.24.11
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 # packages to build containerized control plane

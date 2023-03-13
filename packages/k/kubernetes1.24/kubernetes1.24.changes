@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:14:29 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update patch files to reflect upstream registry changes from k8s.gcr.io to registry.k8s.io
+  * kubeadm-opensuse-registry.patch
+  * revert-coredns-image-renaming.patch 
+
+-------------------------------------------------------------------
+Thu Mar  2 13:01:58 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.24.11:
+  * Release commit for Kubernetes v1.24.11
+  * releng: Update images, dependencies and version to Go 1.19.6
+  * Update golang.org/x/net to v0.7.0
+  * Pin golang.org/x/net to v0.4.0 in 1.24
+  * kubelet/client: collapse transport wiring onto standard approach
+  * apiserver: remove 34s from DELETECOLLECTION rest handler
+  * update prev succeeded indexes for indexed jobs unconditionally
+  * use custom dialer for http probes
+  * use custom dialer for tcp probes
+  * add custom dialer optimized for probes
+  * bump honnef.co/go/tools to support go1.20
+  * Fix issue that Audit Server could not correctly encode DeleteOption
+  * Do not include scheduler name in the preemption event message
+  * Do not leak cross namespace pod metadata in preemption events
+  * pkg/controller/job: re-honor exponential backoff
+  * releng: Update images, dependencies and version to Go 1.19.5
+  * Explicitly call rand.Seed() method
+  * Improve vendor verification works for each staging repo
+  * Bump Konnectivity to v0.0.35
+  * Add pod to dsw if termination is not completed during reconstruction #issues/113979
+  * integration: migrate taint tests
+  * integration: migrate scoring tests
+  * integration: migrate preemption tests
+  * integration: migrate plugings tests
+  * integration: migrate extender tests
+  * integration: scheduler: migrate PDB from v1beta1 to v1
+  * Fix issues in volumesnapshot test for ephemeral storage
+  * update golangci-lint for go 1.19
+  * golang: Update to 1.19
+  * Adjust for os/exec changes in 1.19
+  * Update golangci-lint to 1.46.2 and fix errors
+  * Windows Kube-Proxy implementation for internal traffic policy.
+  * Fix a regression that scheduler always go through all Filter plugins
+  * Fix SPDY proxy authentication with special chars
+  * Creating Ingress IP loadbalancer alone when all the endpoints are terminating. KEP1669
+  * change k8s.gcr.io/pause to registry.k8s.io/pause
+  * Update golang.org/x/net 1e63c2f
+  * image pull event include duration with waiting
+  * kubelet: make the image pull time more accurate in event
+  * update structured-merge-diff to 4.2.3
+  * regression test for exponential recursion bug on CRDs
+  * Fix endpoint reconciler failing to delete masterlease
+  * kubeadm: remove v1.25 etcd "3.5.6-0" for v1.24
+  * use etcd 3.5.6-0 after promotion
+  * changelog: CVE-2022-3294 and CVE-2022-3162 were fixed in v1.23.14
+  * upgrade system-validators to v1.8.0 for a bugfix of cgroupv2 io check
+  * Introducing LoadbalancerPortMapping flags for VipExternalIP
+  * egress_selector: prevent goroutines leak on connect() step.
+  * Merge pull request #113133 from sxllwx:automated-cherry-pick-of-#113133-upstream-release-1.25
+  * Fixed (CVE-2022-27664) Bump golang.org/x/net to v0.1.1-0.20221027164007-c63010009c80
+  * Add CVE-2022-3162 to CHANGELOG-1.24.md
+  * tls.Dial() validates hostname, no need to do that manually
+  * e2e: use custom timeouts in GetSnapshotContentFromSnapshot()
+  * test/e2e/storage: replace hardcoded value with custom timeout in cleanup routine
+  * StatefulSet: Cleanup the complex defer function updating the status
+  * Be sure to update the status of StatefulSet even if the new replica creation fails
+  * added retries to winkernel proxy rules deletion
+  * added backend hashing to winkernel proxier
+  * kubelet: fix pod log line corruption when using timestamps and long lines
+  * kubeadm: mutate ClusterConfiguration.imageRepository to "registry.k8s.io"
+  * kubeadm: use registry.k8s.io instead of k8s.gcr.io
+  * add GetAllocatableCPUs test in cpumanager
+  * fix GetAllocatableCPUs in cpumanager
+  * e2e: restore volume lifecycle checks for csi-hostpath driver
+  * kubelet: fix volume reconstruction for CSI ephemeral volumes
+  * NodeLifecycleController: Remove race condition
+  * kube-proxy wait for cluster cidr skip delete events
+  * kube-proxy handle node PodCIDR changs
+  * kube-proxy: gate topology correctly
+  * service update event should be triggered when appProtocol in port is changed.
+  * filter out terminated containers in cadvisor_stats_provider
+  * Fix winkernel proxier setting the wrong HNS loadbalancer ID for ingress IP
+  * Bump konnectivity-client to v0.0.33
+  * Fix list estimator for lists that are executed as gets
+  * kubeadm: allow RSA and ECDSA format keys in preflight check
+  * Limit redirect proxy handling to redirected responses
+  * Make sure auto-mounted subpath mount source is already mounted
+  * Call SetupDevice only if Volume is not globally Mounted
+  * Fixes kubelet log compression on Windows
+  * Add zone field to vsphere test cloudconfig
+  * Reduce default gzip compression level from 4 to 1 in apiserver
+  * exec auth: support TLS config caching
+  * Add an option for aggregator
+  * Update go-runner to v2.3.1-go1.18.6-bullseye.0
+  * Update kube-cross image to v1.24.0-go1.18.6-bullseye.0
+  * Fix problem in updating VolumeAttached in node status
+  * Call queueSet::boundNextDispatchLocked enough
+  * Always log APF InitialSeats and FinalSeats values
+  * Marshal MicroTime to json and proto at the same precision
+  * Windows: ensure runAsNonRoot does case-insensitive comparison on user name
+  * Tolerate sub-microsecond eventTime changes on update
+  * Improve kubectl display of invalid errors
+  * fix unmatch reason when updating pod status
+  * fix nestedPendingOperations mount and umount parallel bug
+  * client-go/rest: check if url is nil to prevent nil pointer dereference
+  * Revert "client-go: remove no longer used finalURLTemplate"
+  * Skip "instance not found" error for LB backend address pools
+  * Update cel-go to v0.10.2.
+  * fix a memory leak problem when calling DryRunPreemption
+  * Fix JobTrackingWithFinalizers when a pod succeeds after the job fails
+  * Use CheckAndMarkAsUncertainViaReconstruction for uncertain volumes
+  * Remove volume from found during reconstruction if mounted
+  * Add unit test for verifying if processReconstructedVolumes works as expected
+  * Fix code to process volumes which were skipped during reconstruction
+  * Keep track of each pod that uses a volume during reconstruction
+  * allow namespace admins to use leases to encourage migration off of configmaps
+  * Fix: filter out unsatisfied nodes when calling AddPod in PodTopologySpread
+  * Fix `kubeadm upgrade plan` issue with FQDN nodes names
+  * Add rate limiting when calling STS assume role API
+  * Fix kubelet panic when accessing metrics/resource endpoint
+  * Fixing issue in generatePodSandboxWindowsConfig for hostProcess containers by where pod sandbox won't have HostProcess bit set if pod does not have a security context but containers specify HostProcess.
+  * Add retry logic for Unix Domain sockets on Windows
+  * Execute the Run function of kubelet, no log output after failure
+  * Prune defaults for CRD serving
+
+-------------------------------------------------------------------
 Tue Jul 19 01:53:28 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.24.3:

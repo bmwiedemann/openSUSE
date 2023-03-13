@@ -19,4 +19,12 @@
   minimum Go major version. (forwarded request 990344 from jfkw)</comment>
     <requestid>990408</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>594558a6b975ea87617fb60868a85896</srcmd5>
+    <version>1.24.11</version>
+    <time>1678707639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070751</requestid>
+  </revision>
 </revisionlist>
