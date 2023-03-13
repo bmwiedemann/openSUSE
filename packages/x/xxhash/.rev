@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>941635</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c1089c1f7559fb9033680b0c89778830</srcmd5>
+    <version>0.8.1</version>
+    <time>1678707594</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch: fix build
+  failure on ppc64le when using gcc 7 (boo#1208794).
+</comment>
+    <requestid>1070769</requestid>
+  </revision>
 </revisionlist>

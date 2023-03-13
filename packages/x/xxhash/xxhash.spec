@@ -1,7 +1,7 @@
 #
 # spec file for package xxhash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/Cyan4973/xxHash
 Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
 Patch0:         xxhash-avoid-armv6-unaligned-access.patch
 Patch1:         https://github.com/Cyan4973/xxHash/commit/836f4e735cf368542f14005e41d2f84ec29dfd60.patch
+Patch2:         https://github.com/Cyan4973/xxHash/commit/15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 

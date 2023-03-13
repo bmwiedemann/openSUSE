@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  8 21:28:23 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch: fix build
+  failure on ppc64le when using gcc 7 (boo#1208794).
+
+-------------------------------------------------------------------
 Mon Dec 20 10:27:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix racy check execution 
