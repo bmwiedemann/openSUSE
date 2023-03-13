@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Mar  2 13:58:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.21.14:
+  * Release commit for Kubernetes v1.21.14
+  * Reject proxy requests to 0.0.0.0 as well
+  * etcd-client starts retrying transient errors from the etcd cluster
+  * authn: fix cache mutation by AuthenticatedGroupAdder
+  * Fix OpenAPI loading error caused by empty APIService
+  * Correct event registration for multiple scheduler plugins.
+  * Fix: abort nominating a pod that was already scheduled to a node
+  * cpu manager policy set to none, no one remove container id from container map, lead memory leak
+  * kube-up: use registry.k8s.io for containerd-related jobs
+  * Skip updating Endpoints and EndpointSlice if no relevant fields change
+  * ipvs: remove port opener
+  * iptables: remove port opener
+  * Extract containerID from systemd-style cgroupPath in cri_stats_provider And fix test to generate UUID without dash
+  * update go.mod for golang.org/x/crypto to v0.0.0-20211202192323-5770296d904e
+  * azure_file: try to get secret namespace from ClaimRef
+  * azure_file: add namespace tests for InTree to CSI conversion
+  * Update Go to 1.16.15
+  * cluster/gce: update konnectivity image tags to v0.0.30
+  * bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client@v0.0.30
+  * fix dryrun when ca file exists
+  * fix regression introduced by PR 100320
+  * bump k8s.io/utils for inotify fix
+  * cronjob_controllerv2: do not filter jobs to be reconciled by labels
+  * fix: remove outdated ipv4 route when the corresponding node is deleted
+  * Updating EndpointSlice strategy to retain node name in topology until field is set
+  * Add PDB selector patch integration test
+  * Revert v1beta1 PodDisruptionBudget select patchStrategy
+  * kubeadm: fix the bug that 'kubeadm init --dry-run --upload-certs' command failed with 'secret not found' error
+  * Mark device as uncertain if unmount device succeeds
+  * add namespace in azurefile volumeid
+  * fix: azurefile volumeid conflict in csi migration
+  * Fix DaemonSet status update retry
+  * Enabling kube-proxy metrics on windows kernel mode
+  * fix: delete non existing disk issue
+  * fix containers order after applying
+  * upgrade sigs.k8s.io/structured-merge-diff/v4 to v4.2.1
+  * fix: do not delete the lb that does not exist
+  * Fix header mutation race in timeout filter
+  * Don't set sysctl net.ipv4.vs.conn_reuse_mode for kernels >=5.9
+  * kubeadm: remove the restriction that the ca.crt can only contain one certificate
+  * flake fix: remove the error handler for cronjob integration test
+  * vendor: bump cAdvisor to v0.39.3
+  * Fix the leak of vSphere client sessions
+  * client-go: Clear the ResourceVersionMatch on paged list calls
+  * Update GCE manifest to use konnectivity v0.0.27
+  * Update to apiserver-network-proxy v0.0.27
+  * Improving performance of EndpointSlice controller metrics cache
+  * Mark volume mount as uncertain in case of volume expansion fails
+  * mount-utils: Detect potential stale file handle
+  * Add GetPossiblyMountedVolumesForPod to let kubelet know all volumes were unmounted
+  * Add e2e test for NodeUnstage error cases
+  * Skip creating HNS loadbalancer with empty endpoints
+  * dependencies: Update golang.org/x/net to v0.0.0-20211209124913-491a49abca63
+  * kubeadm: avoid requiring a CA key during kubeconfig expiration checks
+  * kubeadm: print the CA of kubeconfig files in "check expiration"
+  * kubeadm: validate local etcd certficates during expiration checks
+  * publishing-bot/rules: drop rules for release-1.17 branch
+  * Ensure deletion of pods in queues and cache
+  * kube-scheduler: Increase the duration to expire an assumed pod
+  * Skip check for all topology labels when using system default spreading
+  * workqueue: fix leak in queue preventing objects from being GCed
+  * Update mounter interface in volume manager
+  * Ignore 'wait: no child processes' error when calling mount/umount
+  * Reduce calls to docker from dockershim for stats
+  * Fix concurrent map writes error in kube-apiserver
+  * e2e: node: release-1.21: backport findKubeletServiceName
+  * node: e2e: add test for the checkpoint recovery
+  * devicemanager: checkpoint: support pre-1.20 data
+  * fix: remove VMSS and VMSS instances from SLB backend pool only when necessary
+  * fix: leave the probe path empty for TCP probes
+  * fix: skip instance not found when decoupling vmss from lb
+  * Add test for counting inodes correct with hardlinks
+  * Get inodes and disk usage via pure go
+
+-------------------------------------------------------------------
 Mon Feb  7 16:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in client-common postinstall script (bsc#1195391)
