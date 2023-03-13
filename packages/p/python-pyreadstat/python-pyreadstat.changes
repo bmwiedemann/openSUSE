@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:42:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Readstat source updated to version 1.1.9
+  * introduced recognition for pandas datatype datetime64[ns,
+    UTC] and other datetime64 types when writing,
+    so that this column type gets correctly written as datetime
+  * introduced extra_datetime_formats and extra_date_formats
+    arguments for read functions, cleaned the list of
+    sas date, datetime and time formats to exclude those not
+    directly convertible to python objects
+  * improved performace of writer when there are datetime64
+    columns
+
+-------------------------------------------------------------------
 Mon Feb 13 04:53:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.0:

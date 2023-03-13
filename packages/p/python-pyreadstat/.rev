@@ -86,4 +86,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1066675</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3ceec21be3857df70826ef124763334</srcmd5>
+    <version>1.2.1</version>
+    <time>1678707647</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Readstat source updated to version 1.1.9
+  * introduced recognition for pandas datatype datetime64[ns,
+    UTC] and other datetime64 types when writing,
+    so that this column type gets correctly written as datetime
+  * introduced extra_datetime_formats and extra_date_formats
+    arguments for read functions, cleaned the list of
+    sas date, datetime and time formats to exclude those not
+    directly convertible to python objects
+  * improved performace of writer when there are datetime64
+    columns</comment>
+    <requestid>1071071</requestid>
+  </revision>
 </revisionlist>
