@@ -138,7 +138,7 @@ Version:        1.20.2
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 URL:            https://go.dev/
 Source:         https://go.dev/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
@@ -162,7 +162,8 @@ BuildRequires:  gcc%{gcc_go_version}-go
 BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
-Recommends:     %{name}-doc = %{version}
+Suggests:       %{name}-doc = %{version}
+Suggests:       %{name}-libstd = %{version}
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
@@ -192,7 +193,6 @@ safety of a static language.
 %package doc
 Summary:        Go documentation
 Group:          Documentation/Other
-Requires:       %{name} = %{version}
 Provides:       go-doc = %{version}
 
 %description doc
@@ -202,7 +202,7 @@ Go examples and documentation.
 # boo#1052528
 %package race
 Summary:        Go runtime race detector
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
@@ -211,6 +211,16 @@ ExclusiveArch:  %{tsan_arch}
 %description race
 Go runtime race detector libraries. Install this package if you wish to use the
 -race option, in order to detect race conditions present in your Go programs.
+%endif
+
+%if %{with_shared}
+%package libstd
+Summary:        Go compiled shared library libstd.so
+Group:          Development/Languages/Go
+Provides:       go-libstd = %{version}
+
+%description libstd
+Go standard library compiled to a dynamically loadable shared object libstd.so
 %endif
 
 %prep
@@ -285,7 +295,22 @@ bin/go install -race std
 %endif
 
 %if %{with_shared}
-bin/go install -buildmode=shared -linkshared std
+# Compile Go standard library as a dynamically loaded shared object libstd.so
+# for inclusion in a subpackage which can be installed standalone.
+# Upstream Go binary releases do not ship a compiled libstd.so.
+# Standard practice is to build Go binaries as a single executable.
+# Upstream Go discussed removing this feature, opted to fix current support:
+# Relevant upstream comments on: https://github.com/golang/go/issues/47788
+#
+# -buildmode=shared
+#    Combine all the listed non-main packages into a single shared
+#    library that will be used when building with the -linkshared
+#    option. Packages named main are ignored.
+#
+# -linkshared
+#    build code that will be linked against shared libraries previously
+#    created with -buildmode=shared.
+bin/go install -buildmode=shared std
 %endif
 
 %check
@@ -425,12 +450,23 @@ fi
 %exclude %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 
+# We don't include libstd.so in the main Go package.
+%if %{with_shared}
+# ./go/1.20/pkg/linux_amd64_dynlink/libstd.so
+%exclude %{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
+%endif
+
 %files doc
 %doc %{_docdir}/go/%{go_label}/*.html
 
 %ifarch %{tsan_arch}
 %files race
 %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
+%endif
+
+%if %{with_shared}
+%files libstd
+%{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
 %endif
 
 %changelog

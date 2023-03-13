@@ -37,4 +37,12 @@
   * go#58811 crypto/x509: TestSystemVerify consistently failing (forwarded request 1070081 from jfkw)</comment>
     <requestid>1070083</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a982b21101c2e6fd2b0dae057d353578</srcmd5>
+    <version>1.20.2</version>
+    <time>1678707644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071065</requestid>
+  </revision>
 </revisionlist>
