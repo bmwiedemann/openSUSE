@@ -483,4 +483,13 @@
     <comment>- Update to version 1.7.1.</comment>
     <requestid>1063918</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>07dd9a43c2d12752be6dcaa7846bb1a4</srcmd5>
+    <version>1.7.2</version>
+    <time>1678707624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2.
+</comment>
+    <requestid>1071026</requestid>
+  </revision>
 </revisionlist>

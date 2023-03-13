@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 12 20:08:25 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.2:
+  * Add message menu entry for deleting messages locally.
+  * Proxies: Add "Tor (Browser)" default proxy setting.
+  * Select group chat after creating it.
+  * Don’t colour log timestamps.
+  * PEPConfig: Ask for confirmation when deleting nodes.
+  * Improve get_recent_muc_nicks query.
+  * Improve check for message highlight and add tests.
+  * Tests: Use in-memory settings database.
+  * Add audio/x-wav to default mime types.
+  * Audio preview: Allow skipping by clicking the visualisation.
+  * Migration: Don’t fail on colour setting migration.
+  * HTTPUpload: Respect infinite file size limit.
+  * Chatstates: Remove composing timeout correctly.
+  * Show chat notifications when chat page is not visible.
+  * Don't fail if contact name for MUC message is None.
+  * Notifications: Honour notification_preview_message setting.
+  * Fix nickname highlight in group chats.
+  * Profile: Don't allow saving profile when not connected.
+  * GetRelativeTimeTest: Fix comparison of translated strings and
+    off-by timezone errors.
+  * Don't highlight message if it's an URI containing our nick.
+  * Nickname completion: Make sure recent nicknames list does not
+    contain None.
+  * Plugins: Don't fail hard on uninstall errors.
+  * Start Chat: Fix wrong JID type in _start_new_chat.
+
+-------------------------------------------------------------------
 Wed Feb  8 23:30:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.7.1:

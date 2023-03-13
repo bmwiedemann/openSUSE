@@ -25,7 +25,7 @@
 %define pythons python310
 %endif
 Name:           gajim
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
