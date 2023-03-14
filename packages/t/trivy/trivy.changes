@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:56:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.38.3:
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.86.1 to 1.89.1 (#3827)
+  * fix(java): skip empty files for jar post analyzer (#3832)
+  * fix(docker): build healthcheck command for line without /bin/sh prefix (#3831)
+  * refactor(license): use goyacc for license parser (#3824)
+  * chore(deps): bump github.com/docker/docker from 23.0.0-rc.1+incompatible to 23.0.1+incompatible (#3586)
+  * fix: populate timeout context to node-collector (#3766)
+  * fix: exclude node collector scanning (#3771)
+  * fix: display correct flag in error message when skipping java db update #3808
+  * fix: disable jar analyzer for scanners other than vuln (#3810)
+  * fix(sbom): fix incompliant license format for spdx (#3335)
+  * fix(java): the project props take precedence over the parent's props (#3320)
+  * docs: add canary build info to README.md (#3799)
+  * docs: adding link to gh token generation (#3784)
+  * docs: changing docs in accordance with #3460 (#3787)
+
+-------------------------------------------------------------------
 Wed Mar 08 11:02:13 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.38.2:
