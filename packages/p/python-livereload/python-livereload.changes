@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:30:12 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/lepture/python-livereload/commit/5165fedf96b161bf146fa31893c2e99b78570977
+  + python-livereload-no-python2.patch
+
+-------------------------------------------------------------------
 Mon Feb 27 10:45:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use fdupes -s, it hurts.

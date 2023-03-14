@@ -1,0 +1,85 @@
+Index: python-livereload-2.6.3/Makefile
+===================================================================
+--- python-livereload-2.6.3.orig/Makefile
++++ python-livereload-2.6.3/Makefile
+@@ -15,7 +15,7 @@ clean-pyc:
+ 	find . -name '*~' -exec rm -f {} +
+ 
+ install:
+-	python setup.py install
++	python3 setup.py install
+ 
+ docs:
+ 	$(MAKE) -C docs html
+Index: python-livereload-2.6.3/livereload/server.py
+===================================================================
+--- python-livereload-2.6.3.orig/livereload/server.py
++++ python-livereload-2.6.3/livereload/server.py
+@@ -27,11 +27,10 @@ from tornado.log import LogFormatter
+ from .handlers import LiveReloadHandler, LiveReloadJSHandler
+ from .handlers import ForceReloadHandler, StaticFileHandler
+ from .watcher import get_watcher_class
+-from six import string_types, PY3
+ 
+ import sys
+ 
+-if sys.version_info >= (3, 7) or sys.version_info.major == 2:
++if sys.version_info >= (3, 7):
+     import errno
+ else:
+     from os import errno
+Index: python-livereload-2.6.3/livereload/watcher.py
+===================================================================
+--- python-livereload-2.6.3.orig/livereload/watcher.py
++++ python-livereload-2.6.3/livereload/watcher.py
+@@ -13,12 +13,7 @@ import glob
+ import logging
+ import os
+ import time
+-import sys
+-
+-if sys.version_info.major < 3:
+-    import inspect
+-else:
+-    from inspect import signature
++from inspect import signature
+ 
+ try:
+     import pyinotify
+@@ -109,11 +104,7 @@ class Watcher(object):
+                         name = getattr(func, '__name__', 'anonymous')
+                     logger.info(
+                         "Running task: {} (delay: {})".format(name, delay))
+-                    if sys.version_info.major < 3:
+-                        sig_len = len(inspect.getargspec(func)[0])
+-                    else:
+-                        sig_len = len(signature(func).parameters)
+-                    if sig_len > 0 and isinstance(changed, list):
++                    if len(signature(func).parameters) > 0 and isinstance(changed, list):
+                         func(changed)
+                     else:
+                         func()
+@@ -206,10 +197,7 @@ class Watcher(object):
+ 
+     def get_changed_glob_files(self, path, ignore=None):
+         """Check if glob path has any changed filepaths."""
+-        if sys.version_info[0] >=3 and sys.version_info[1] >=5:
+-            files = glob.glob(path, recursive=True)
+-        else:
+-            files = glob.glob(path)
++        files = glob.glob(path, recursive=True)
+         changed_files = [f for f in files if self.is_file_changed(f, ignore)]
+         return changed_files
+ 
+Index: python-livereload-2.6.3/setup.py
+===================================================================
+--- python-livereload-2.6.3.orig/setup.py
++++ python-livereload-2.6.3/setup.py
+@@ -35,7 +35,6 @@ setup(
+     install_requires=[
+         'tornado;python_version>"2.7"',
+         'tornado<6;python_version=="2.7"',
+-        'six',
+     ],
+     license='BSD',
+     include_package_data=True,

@@ -24,6 +24,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://livereload.readthedocs.io/en/latest/
 Source:         https://github.com/lepture/python-livereload/archive/%{version}.tar.gz
+# https://github.com/lepture/python-livereload/commit/5165fedf96b161bf146fa31893c2e99b78570977
+Patch0:         python-livereload-no-python2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
