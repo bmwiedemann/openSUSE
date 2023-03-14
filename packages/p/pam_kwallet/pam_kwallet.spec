@@ -30,6 +30,11 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/kwallet-pam/-/merge_requests/12
+Patch1:         0001-Verify-that-XDG_RUNTIME_DIR-is-usable.patch
+Patch2:         0002-Don-t-do-anything-if-the-password-is-empty.patch
+Patch3:         0003-Exit-early-if-the-target-user-is-root.patch
+Patch4:         0004-Don-t-call-pam_sm_open_session-within-pam_sm_authent.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libgcrypt-devel >= 1.5.0
@@ -64,7 +69,7 @@ This package contains support files used by the KWallet PAM
 module.
 
 %prep
-%setup -q -n kwallet-pam-%{version}
+%autosetup -p1 -n kwallet-pam-%{version}
 
 %build
   # Before usrmerge, the PAM module goes into /lib*/security/

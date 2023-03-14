@@ -1,0 +1,37 @@
+From 42f4dbd10b0f1a24d38513399f07936360920fa2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 13 Mar 2023 10:07:22 +0100
+Subject: [PATCH 1/4] Verify that XDG_RUNTIME_DIR is usable
+
+It needs to be an existing directory with mode 0700 and owned by the user.
+---
+ pam_kwallet.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index e8fbc27..31e93aa 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -455,6 +455,19 @@ static void start_kwallet(pam_handle_t *pamh, struct passwd *userInfo, const cha
+         snprintf(fullSocket, needed, "%s/%s_%s%s", socketPath, socketPrefix, userInfo->pw_name, ".socket");
+     } else {
+         socketPath = get_env(pamh, "XDG_RUNTIME_DIR");
++        // Check whether XDG_RUNTIME_DIR is usable
++        if (socketPath) {
++            struct stat rundir_stat;
++            if (stat(socketPath, &rundir_stat) != 0) {
++                pam_syslog(pamh, LOG_ERR, "%s: Failed to stat %s", logPrefix, socketPath);
++                socketPath = NULL;
++            } else if(!S_ISDIR(rundir_stat.st_mode) || (rundir_stat.st_mode & ~S_IFMT) != 0700
++                      || rundir_stat.st_uid != userInfo->pw_uid) {
++                pam_syslog(pamh, LOG_ERR, "%s: %s has wrong type, perms or ownership", logPrefix, socketPath);
++                socketPath = NULL;
++            }
++        }
++
+         if (socketPath) {
+             size_t needed = snprintf(NULL, 0, "%s/%s%s", socketPath, socketPrefix, ".socket");
+             needed += 1;
+-- 
+2.39.2
+
