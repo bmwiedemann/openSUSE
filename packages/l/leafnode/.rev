@@ -185,4 +185,12 @@
     <comment></comment>
     <requestid>1069406</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>99ca19b6447ec5a5d673339b1c607107</srcmd5>
+    <version>2.0.0+git.1677927696.44d2783</version>
+    <time>1678814204</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071195</requestid>
+  </revision>
 </revisionlist>
