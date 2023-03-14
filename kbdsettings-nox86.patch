@@ -1,5 +1,5 @@
---- sysconfig.keyboard
-+++ sysconfig.keyboard
+--- a/sysconfig.keyboard
++++ b/sysconfig.keyboard
 @@ -15,12 +15,12 @@
  # Keyboard repeat rate (2.0 - 30.0)
  KBD_RATE=""

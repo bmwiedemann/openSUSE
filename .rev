@@ -936,4 +936,12 @@ Fix version typo:
     <comment></comment>
     <requestid>1058140</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>ebbb8861e4b6016f99e4c6f6affaaa50</srcmd5>
+    <version>2.5.1</version>
+    <time>1678814149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071152</requestid>
+  </revision>
 </revisionlist>
