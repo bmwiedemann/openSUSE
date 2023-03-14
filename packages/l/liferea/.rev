@@ -137,4 +137,12 @@
     provide protocol on subscribing feed</comment>
     <requestid>1059942</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9de80f0c145f495c077757585430b5a3</srcmd5>
+    <version>1.14.1</version>
+    <time>1678814224</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.14.1 point release.</comment>
+    <requestid>1071305</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 09:37:27 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.14.1:
+  + Fix CVE-2023-1350 - Remote code execution on feed enrichment
+    (boo#1209190).
+
+-------------------------------------------------------------------
 Fri Jan 20 11:05:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use the properly boostrapped release tarball from upstream.
