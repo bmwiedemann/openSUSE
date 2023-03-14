@@ -1,7 +1,7 @@
 #
 # spec file for package libqxmpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,37 @@
 #
 
 
-%define sover 3
+# Currently not available on 15.4 / 15.5
+%if 0%{?suse_version} > 1500
+%bcond_without omemo
+%endif
+%define sover 4
 Name:           libqxmpp
-Version:        1.4.0
+Version:        1.5.3
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/qxmpp-project/qxmpp/
 Source0:        https://github.com/qxmpp-project/qxmpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-BuildRequires:  cmake >= 3.3
+BuildRequires:  cmake >= 3.7
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+# c++-17 is required
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.7.0
+BuildRequires:  cmake(Qca-qt5)
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(speex)
-BuildRequires:  pkgconfig(theora)
-BuildRequires:  pkgconfig(vpx)
+%if %{with omemo}
+BuildRequires:  pkgconfig(libomemo-c)
+%endif
 
 %description
 QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
@@ -74,47 +81,53 @@ This packages provides documentation of Qxmpp library API.
 
 %prep
 %setup -q -n qxmpp-%{version}
-# Disable tests needing a network connection
-sed -i 's,add_simple_test(qxmppserver),#add_simple_test(qxmppserver),' tests/CMakeLists.txt
-sed -i 's,add_simple_test(qxmppcallmanager),#add_simple_test(qxmppcallmanager),' tests/CMakeLists.txt
-sed -i 's,add_simple_test(qxmppiceconnection),#add_simple_test(qxmppiceconnection),' tests/CMakeLists.txt
-sed -i 's,add_subdirectory(qxmpptransfermanager),#add_subdirectory(qxmpptransfermanager),' tests/CMakeLists.txt
-sed -i 's,add_subdirectory(qxmppuploadrequestmanager),#add_subdirectory(qxmppuploadrequestmanager),' tests/CMakeLists.txt
 
 %build
+%if 0%{?suse_version} <= 1500
+  export CXX=g++-10
+%endif
+
 %cmake \
-  -DWITH_SPEEX=ON \
-  -DWITH_OPUS=ON \
-  -DWITH_THEORA=ON \
-  -DWITH_VPX=ON \
   -DWITH_GSTREAMER=ON \
   -DBUILD_DOCUMENTATION=ON \
   -DBUILD_EXAMPLES=ON \
-  -DBUILD_TESTS=ON
+  -DBUILD_TESTS=ON \
+%if %{with omemo}
+  -DBUILD_OMEMO=ON \
+%endif
 
 %cmake_build
 
 %install
 %cmake_install
+
 %fdupes %{buildroot}%{_datadir}/doc/qxmpp/
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-%ctest
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+# Exclude tests needing a network connection
+%{ctest --exclude-regex "tst_(qxmppcallmanager|qxmppiceconnection|qxmppserver|qxmpptransfermanager|qxmppuploadrequestmanager)"}
+
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
-%license LICENSE.LGPL
+%license LICENSES/*
 %doc AUTHORS CHANGELOG.md README.md
 %{_libdir}/%{name}.so.*
+%if %{with omemo}
+%{_libdir}/libQXmppOmemo.so.*
+%endif
 
 %files -n %{name}-devel
 %{_includedir}/qxmpp/
 %{_libdir}/%{name}.so
 %{_libdir}/cmake/qxmpp/
 %{_libdir}/pkgconfig/qxmpp.pc
+%if %{with omemo}
+%{_libdir}/libQXmppOmemo.so
+%{_libdir}/cmake/QXmppOmemo/
+%endif
 
 %files doc
 %{_datadir}/doc/qxmpp/

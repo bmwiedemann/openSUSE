@@ -163,4 +163,41 @@ Qt5 alternative.</comment>
     <comment></comment>
     <requestid>909704</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0c2174bbe637f67dcb50e406e64f5508</srcmd5>
+    <version>1.5.3</version>
+    <time>1678814187</time>
+    <user>dimstar_suse</user>
+    <comment>- remove baselibs, not sure if we need 32bit libs anymore.
+
+- Update to 1.5.3
+  * MAM: Fix task is never finished when none of the messages is
+    encrypted but e2ee is enabled
+  * SaslDigestMd5: Fix undefined behaviour with Qt 6 when parsing
+    empty property at the end of the input
+  * CarbonManagerV2: Fix enable IQ sending
+  * Fix various OMEMO issues and update to libomemo-c 0.5
+  * Add CMake option to manually specify Qt major version
+  * Readd old PubSubIq and PubSubItem after justified complaints
+
+- Update to 1.5.2
+  * Fix undefined behaviour in OmemoManager and FileSharingManager
+  * STUN: Fix nonce attribute is not padded
+  Changes in 1.5.1:
+  * Fix build with clang (usage of auto in template argument)
+  Changes in 1.5.0:
+  * New QXmppTask/Promise for asynchronous APIs
+  * Packet sending result reporting (sent, stream management acks)
+  * IQ response recognition and mapping to requests via QXmppTask
+  * Add QXmppTask-based APIs to most of the managers
+  * Implement XEP-0060: Publish-Subscribe (nearly complete)
+  * Implement XEP-0118: User Tune
+  * Implement XEP-0080: User Location
+  * Rewrite MIX items with new PubSubItem
+  * Add specified data forms parsing utilities
+  * Implement XEP-0384: OMEMO Encryption
+  * Implement XEP-0434: Trust Messages (TM)
+  * Implement XEP-0450: Automatic Trust Management (ATM)</comment>
+    <requestid>1071800</requestid>
+  </revision>
 </revisionlist>

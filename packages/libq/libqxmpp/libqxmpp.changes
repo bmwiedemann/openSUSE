@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Mar 14 14:25:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove baselibs, not sure if we need 32bit libs anymore.
+
+-------------------------------------------------------------------
+Sat Mar 11 09:18:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.3
+
+  * MAM: Fix task is never finished when none of the messages is
+    encrypted but e2ee is enabled
+  * SaslDigestMd5: Fix undefined behaviour with Qt 6 when parsing
+    empty property at the end of the input
+  * CarbonManagerV2: Fix enable IQ sending
+  * Fix various OMEMO issues and update to libomemo-c 0.5
+  * Add CMake option to manually specify Qt major version
+  * Readd old PubSubIq and PubSubItem after justified complaints
+
+-------------------------------------------------------------------
+Fri Feb 24 21:15:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.2
+  * Fix undefined behaviour in OmemoManager and FileSharingManager
+  * STUN: Fix nonce attribute is not padded
+  Changes in 1.5.1:
+  * Fix build with clang (usage of auto in template argument)
+  Changes in 1.5.0:
+  * New QXmppTask/Promise for asynchronous APIs
+  * Packet sending result reporting (sent, stream management acks)
+  * IQ response recognition and mapping to requests via QXmppTask
+  * Add QXmppTask-based APIs to most of the managers
+  * Implement XEP-0060: Publish-Subscribe (nearly complete)
+  * Implement XEP-0118: User Tune
+  * Implement XEP-0080: User Location
+  * Rewrite MIX items with new PubSubItem
+  * Add specified data forms parsing utilities
+  * Implement XEP-0384: OMEMO Encryption
+  * Implement XEP-0434: Trust Messages (TM)
+  * Implement XEP-0450: Automatic Trust Management (ATM)
+  * Implement XEP-0420: Stanza Content Encryption
+  * Add new Message Carbons manager capable of end-to-end
+    encryption
+  * Adapt QXmppClient to support end-to-end-encryptions
+  * Implement XEP-0446: File metadata element
+  * Implement XEP-0300: Use of Cryptographic Hash Functions
+    in XMPP
+  * Implement XEP-0264: Jingle Content Thumbnails
+  * Implement XEP-0447: Stateless file sharing
+  * Implement XEP-0448: Encryption for stateless file sharing
+  * Add new HTTP File Upload Manager for slot requesting
+    and uploading
+  * Implement stanza parsing for modern audio-video calls
+  * Implement XEP-0444: Message Reactions
+  * Add QXmppNonza as base for stanzas and nonzas
+  * RosterManager: Add subscription request signal with
+    full presence
+* library now major version 4
+
+-------------------------------------------------------------------
 Mon Aug  2 05:49:29 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - update to 1.4.0:
