@@ -549,4 +549,12 @@
     <user>dimstar_suse</user>
     <comment>- editbootinstall_*.sh: fix loopdev to work with new kiwi.</comment>
   </revision>
+  <revision rev="58" vrev="58">
+    <srcmd5>6016c5c58bdffd2fada3b3390503aec2</srcmd5>
+    <version>16.0.0</version>
+    <time>1678814131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071805</requestid>
+  </revision>
 </revisionlist>

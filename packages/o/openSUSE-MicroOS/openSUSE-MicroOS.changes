@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  7 14:49:19 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Include wireless-regdb on RPi images
+
+-------------------------------------------------------------------
 Thu Dec 29 08:57:55 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - editbootinstall_*.sh: fix loopdev to work with new kiwi.
