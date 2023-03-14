@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 13 17:39:44 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.4
+  * Fix updating of flag only parameters so they don't have '='
+    or '=crudini_no_arg' added added on update
+  * Handle closed stdin/stdout gracefully, without giving errors
+  * Windows line endings are maintained
+  * Lists can be delimited with arbitrary whitespace with --list-sep=
+  * Support for unspaced "name=val" format with --ini-options=nospace
+
+-------------------------------------------------------------------
 Wed May 13 10:57:28 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.9.3:

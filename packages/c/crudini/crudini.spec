@@ -1,7 +1,7 @@
 #
 # spec file for package crudini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           crudini
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        A utility for manipulating ini files
 License:        GPL-2.0-only
@@ -36,12 +36,12 @@ scripts.
 %prep
 %setup -q
 
-sed -i 's/env python/python3/' crudini
+sed -i 's/env python/python3/' crudini.py
 
 %build
 
 %install
-install -m 0755 -D %{name} %{buildroot}%{_bindir}/%{name}
+install -m 0755 -D %{name}.py %{buildroot}%{_bindir}/%{name}
 install -m 0644 -D %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
@@ -51,7 +51,7 @@ popd
 
 %files
 %license COPYING
-%doc README TODO NEWS example.ini
+%doc README.md EXAMPLES TODO NEWS example.ini
 %{_bindir}/crudini
 %{_mandir}/man1/*
 
