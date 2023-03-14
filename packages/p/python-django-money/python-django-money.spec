@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-money
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-django-money
-Version:        2.1.1
+Version:        3.0
 Release:        0
 Summary:        Django support for using money and currency fields
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django-money/django-money
 Source:         https://github.com/django-money/django-money/archive/%{version}.tar.gz#/django-money-%{version}.tar.gz
-Patch0:         merged_pr_657.patch
-Patch1:         pr_638.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,9 +50,9 @@ BuildRequires:  %{python_module setuptools}
 Django money and currency fields in models and forms.
 
 %prep
-%setup -q -n django-money-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n django-money-%{version}
+
+sed -i -e '/^addopts/d' pytest.ini
 
 %build
 %python_build
@@ -75,7 +73,7 @@ export PYTHONPATH=$(pwd -P)
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/djmoney/
-%{python_sitelib}/django_money*/
+%{python_sitelib}/djmoney
+%{python_sitelib}/django_money-%{version}*-info
 
 %changelog

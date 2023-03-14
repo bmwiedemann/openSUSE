@@ -50,4 +50,37 @@
 </comment>
     <requestid>981048</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a40ac16f69fddd7b772ae2084ba815d</srcmd5>
+    <version>3.0</version>
+    <time>1678814184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0:
+  - Changed
+    - Update py-moneyed to 2.0.
+    - Remove the deprecated Money.decimal_places_display property
+      and argument.
+    - Remove the deprecated CURRENCY_DECIMAL_PLACES_DISPLAY
+      setting.
+    - Null constraint on an implicit CurrencyField is now
+      declared from null=... argument to MoneyField.
+  - Fixed
+    - Improve the internal check for whether a currency is
+      provided
+    - Fix test suite for django main branch
+    - MoneyField raises TypeError when default contains a valid
+      amount but no currence, i.e. Money(123, None).
+    - MoneyField supports default of type bytes
+  - Added
+    - Add support for Django 4.0 and 4.1.
+    - Add support for Python 3.10.
+  - Removed
+    - Drop support for Django 3.1.
+    - Drop support for Python 3.6.
+- Remove upstreamed patches:
+  - merged_pr_657.patch
+  -  pr_638.patch
+</comment>
+    <requestid>1071154</requestid>
+  </revision>
 </revisionlist>
