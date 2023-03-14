@@ -70,6 +70,7 @@ Patch5:         Release-a-lock-that-is-no-longer-used-in-dsh.patch
 Patch6:         fail-fast-on-ssh-errors-or-non-zero-return-code.patch
 Patch7:         doc-fast-fail-update.patch
 Patch8:         Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
+Patch9:         Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch
 
 %description
 Pdsh is a multithreaded remote shell client which executes commands on
@@ -140,6 +141,7 @@ Plugin for pdsh to determine nodes to run on from netgroups.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

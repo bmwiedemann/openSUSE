@@ -394,4 +394,14 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
   generic. (boo#1208846). (forwarded request 1068673 from eeich)</comment>
     <requestid>1068674</requestid>
   </revision>
+  <revision rev="48" vrev="10">
+    <srcmd5>639c2a6f1baf6e11e2a470a0c5f1e97b</srcmd5>
+    <version>2.34</version>
+    <time>1678814208</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix slurm plugin: make sure slurm_init() is called before using
+  the Slurm API. This has been the case since version 20.11 (bsc#1209216).
+  Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch (forwarded request 1071206 from eeich)</comment>
+    <requestid>1071207</requestid>
+  </revision>
 </revisionlist>

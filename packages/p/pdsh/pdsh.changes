@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 14:31:14 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix slurm plugin: make sure slurm_init() is called before using
+  the Slurm API. This has been the case since version 20.11 (bsc#1209216).
+  Add-call-to-slurm_init-this-makes-sure-the-config-options-are-set.patch
+
+-------------------------------------------------------------------
 Thu Mar  2 11:21:56 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Hack-to-work-around-a-generic-type-name-breakage-introduced-by-latest-Slurm.patch
