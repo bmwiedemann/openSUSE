@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 13 19:15:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.75.0:
+  * fix: more python matching support (#1667)
+  * Update syft bootstrap tools to latest versions. (#1666)
+  * feat: add ruby classifier (#1665)
+
+-------------------------------------------------------------------
 Thu Mar 09 15:31:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.74.1:
