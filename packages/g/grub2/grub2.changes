@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  6 06:31:09 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Discard cached key from grub shell and editor mode
+  * 0001-clean-up-crypttab-and-linux-modules-dependency.patch
+  * 0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
+
+-------------------------------------------------------------------
+Fri Mar  3 07:48:56 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Make grub more robust against storage race condition causing system boot
+  failures (bsc#1189036)
+  * 0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 02:58:07 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix riscv64 error for relocation 0x13 is not implemented yet

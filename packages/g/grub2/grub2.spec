@@ -498,6 +498,10 @@ Patch970:       grub2-add-module-for-boot-loader-interface.patch
 Patch971:       0001-ieee1275-Further-increase-initially-allocated-heap-f.patch
 Patch972:       0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
 Patch973:       0001-RISC-V-Handle-R_RISCV_CALL_PLT-reloc.patch
+Patch974:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
+Patch975:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
+# Make grub more robust against storage race condition causing system boot failures (bsc#1189036)
+Patch976:       0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

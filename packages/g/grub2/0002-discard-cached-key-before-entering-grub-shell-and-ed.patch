@@ -1,0 +1,88 @@
+From 2271da7522d8406c528d2a9079d810e140f8041a Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 3 Feb 2023 19:40:31 +0800
+Subject: [PATCH 2/2] discard cached key before entering grub shell and editor
+ mode
+
+The cached key is cleared in case of anyone poking around it by means of
+the interactive shell offerings.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/crypttab.c | 16 ++++++++++++++++
+ grub-core/normal/main.c       |  2 ++
+ grub-core/normal/menu_entry.c |  3 +++
+ include/grub/crypttab.h       |  2 ++
+ 4 files changed, 23 insertions(+)
+
+--- a/grub-core/commands/crypttab.c
++++ b/grub-core/commands/crypttab.c
+@@ -49,6 +49,22 @@
+   return GRUB_ERR_NONE;
+ }
+ 
++void
++grub_initrd_discard_key (void)
++{
++  struct grub_key_publisher *cur, *nxt;
++
++  FOR_LIST_ELEMENTS_SAFE (cur, nxt, kpuber)
++	{
++	  grub_list_remove (GRUB_AS_LIST (cur));
++	  grub_memset (cur->key, 0, cur->key_len);
++	  grub_free (cur->name);
++	  grub_free (cur->path);
++	  grub_free (cur->key);
++	  grub_free (cur);
++	}
++}
++
+ static grub_err_t
+ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+ 	       int argc, char **argv)
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -37,6 +37,7 @@
+ #ifdef GRUB_MACHINE_IEEE1275
+ #include <grub/ieee1275/ieee1275.h>
+ #endif
++#include <grub/crypttab.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -477,6 +478,7 @@
+       return;
+     }
+ 
++  grub_initrd_discard_key ();
+   grub_normal_reader_init (nested);
+ 
+   while (1)
+--- a/grub-core/normal/menu_entry.c
++++ b/grub-core/normal/menu_entry.c
+@@ -28,6 +28,7 @@
+ #include <grub/i18n.h>
+ #include <grub/charset.h>
+ #include <grub/safemath.h>
++#include <grub/crypttab.h>
+ 
+ enum update_mode
+   {
+@@ -1262,6 +1263,8 @@
+       return;
+     }
+ 
++  grub_initrd_discard_key();
++
+   screen = make_screen (entry);
+   if (! screen)
+     return;
+--- a/include/grub/crypttab.h
++++ b/include/grub/crypttab.h
+@@ -19,4 +19,6 @@
+ grub_err_t
+ grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);
+ 
++void
++grub_initrd_discard_key (void);
+ #endif /* ! GRUB_CRYPTTAB_HEADER */
