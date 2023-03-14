@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-ppxlib
 Name:           %pkg%nsuffix
-Version:        0.28.0
+Version:        0.29.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
