@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 27 19:06:36 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.5.1
+  - Add Irish keyboard map
+  - Add PinePhone keyboard keymap
+  - Added braces to IT keyboard map
+  - Add Euro at Portuguese keyboards
+  - Fix incorrect acentuation pt-latin9
+  - fa.map: drop high codepoint character that chokes loadkeys
+  - data/keymaps/i386/neo: use Delete instead of Backspace
+  - Fix documentation for a few program options
+  - Fix some memory leaks
+  - Update translations
+  - autogen.sh missing from release tarball, copy from git
+  - Remove upstreamed patches
+    - 0001-libkfont-Initialize-kfont_context-options.patch
+    - kbd-1.15.2-dumpkeys-C-opt.patch
+    - kbd-2.0.2-comment-typo-qwerty.patch
+
+-------------------------------------------------------------------
 Sat Dec 31 12:29:16 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - rebased cz-map.patch for console-setup 1.215 update; apparently

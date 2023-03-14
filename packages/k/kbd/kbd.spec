@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define legacy_folders amiga,atari,i386,include,mac,ppc,sun
 
 Name:           kbd
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
@@ -39,6 +39,7 @@ Source3:        README.SUSE
 Source4:        vlock.pamd
 Source8:        sysconfig.console
 Source9:        sysconfig.keyboard
+Source10:       autogen.sh
 Source11:       fbtest.c
 Source12:       fbtest.8
 Source15:       cz-map.patch
@@ -51,12 +52,9 @@ Source44:       xml2lst.pl
 Source45:       genmap4systemd.sh
 Patch0:         kbd-1.15.2-prtscr_no_sigquit.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-libkfont-Initialize-kfont_context-options.patch
 Patch2:         kbd-1.15.2-unicode_scripts.patch
 Patch3:         kbd-1.15.2-docu-X11R6-xorg.patch
 Patch4:         kbd-1.15.2-sv-latin1-keycode10.patch
-Patch6:         kbd-1.15.2-dumpkeys-C-opt.patch
-Patch9:         kbd-2.0.2-comment-typo-qwerty.patch
 Patch10:        kbd-2.0.2-doshell-reference.patch
 Patch11:        kbd-2.0.2-euro-unicode.patch
 Patch12:        kbd-2.0.2-fix-bashisms.patch
@@ -113,26 +111,16 @@ Please note that %{name}-legacy is not helpful without kbd.
 
 cp -fp %{SOURCE8} .
 cp -fp %{SOURCE9} .
+cp -fp %{SOURCE10} .
 cp -fp %{SOURCE44} .
 cp -fp %{SOURCE45} .
 cp -fp %{SOURCE20} .
 cp -fp %{SOURCE21} .
 cp -fp %{SOURCE22} .
-%patch0 -p1
-%patch1 -p1
-%patch2
-%patch3
-%patch4 -p1
-%patch6
-%patch9
-%patch10
-%patch11
-%patch12 -p1
-%patch13 -p1
-%ifnarch %{ix86} x86_64
-%patch14 -p0
+%autopatch -p1
+%ifarch %{ix86} x86_64
+%patch14 -p1 -R
 %endif
-%patch15 -p1
 
 %build
 for i in `find data/keymaps/mac -type f` ; do
@@ -150,6 +138,7 @@ pushd data/keymaps/i386
 	test -f olpc/pt.map || mv olpc/pt.map olpc/pt-olpc.map
 	test -f qwerty/cz.map || mv qwerty/cz.map qwerty/cz-qwerty.map
 popd
+chmod 755 autogen.sh
 ./autogen.sh
 %configure \
 	--disable-silent-rules \
@@ -194,7 +183,7 @@ mkdir -p $DOC/doc/
 install -m 644 docs/doc/keysyms.h.info docs/doc/kbd.FAQ.txt docs/doc/kbd.FAQ*.html docs/doc/README* docs/doc/TODO $DOC/doc/
 install -m 644 docs/doc/as400.kbd docs/doc/console.docs docs/doc/repeat/set_kbd_repeat-2 $DOC/doc/
 echo "See %{_datadir}/i18/charmaps for a description of char maps" >$DOC/doc/README.charmaps
-install -m 644 ChangeLog CREDITS README $DOC/
+install -m 644 CREDITS README $DOC/
 install -m 644 %{SOURCE3} $DOC/
 rm -f $K/consolefonts/README* $K/consolefonts/ERRORS.gz
 if ls $K/consolefonts/Agafari-* > /dev/null 2>&1; then
@@ -410,9 +399,9 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 
 %files -f %{name}.lang
 #config(noreplace) /etc/sysconfig/console
-%license LICENSE
+%license COPYING
 %doc %{_defaultdocdir}/kbd
-#doc CHANGES README CREDITS
+#doc CREDITS README
 %{_fillupdir}/sysconfig.console
 %{_fillupdir}/sysconfig.keyboard
 %{kbd}

@@ -1,5 +1,5 @@
---- src/unicode_start
-+++ src/unicode_start
+--- a/src/unicode_start
++++ b/src/unicode_start
 @@ -72,6 +72,17 @@
  # have a Unicode map attached, or explicitly specified, e.g.,
  # by giving `def.uni' as a second argument.
