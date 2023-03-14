@@ -57,13 +57,6 @@ Requires(preun):systemd
 Conflicts:      inn
 Obsoletes:      leafnode < %{version}
 Provides:       leafnode = %{version}-%{release}
-#
-Provides:       user(%runas_user)
-Provides:       group(%admin_group)
-Provides:       group(%runas_group)
-Provides:       user(%admin_user)
-# For postfix
-Requires(pre):  (group(maildrop) and postfix)
 
 %description
 Leafnode is a small NNTP server for leaf sites without permanent
@@ -146,8 +139,6 @@ getent passwd %{runas_user} >/dev/null || \
 getent passwd %{admin_user} >/dev/null || \
     useradd -r -g %{admin_group} -s /bin/false -c "leafnode administration" \
         -d %{spooldir} %{admin_user}  2>/dev/null || :
-# if postfix is installed
-test -x /sbin/postdrop && usermod -a -G maildrop %{runas_user}
 exit 0
 
 %post
