@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">containerized-data-importer</param>
-    <param name="revision">v1.55.0</param>
+    <param name="revision">v1.56.0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/kubevirt/containerized-data-importer</param>
