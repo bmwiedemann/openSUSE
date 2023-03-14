@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:03:03 UTC 2023 - ohering@suse.de
+
+- Update to version 0.6.1.7
+  turn caml_copy_*() return blocks into root values
+- rebase ocaml-libvirt.patch
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
 
 - Use upstream libvirt.git

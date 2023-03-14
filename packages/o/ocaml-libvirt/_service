@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-libvirt</param>
-    <param name="revision">06c073b25e4c18212b6fd1be77b23431b4612caf</param>
+    <param name="revision">ce1be8712bc9f54b293374fe44d0f510873bd4b6</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/libvirt/libvirt-ocaml.git</param>

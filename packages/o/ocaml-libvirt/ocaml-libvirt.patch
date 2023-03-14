@@ -1,11 +1,9 @@
 --- /dev/null
 +++ b/dune-project
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,25 @@
 +(lang dune 1.11)
 +
 +(name libvirt)
-+
-+(version 0.6.1.5)
 +
 +(generate_opam_files true)
 +
@@ -37,7 +35,7 @@
 + (libraries libvirt))
 --- /dev/null
 +++ b/libvirt/config/discover.ml
-@@ -0,0 +1,16 @@
+@@ -0,0 +1,17 @@
 +module C = Configurator.V1
 +
 +let () =
@@ -52,7 +50,8 @@
 +      | Some deps -> deps
 +  in
 +
-+  C.Flags.write_sexp "c_flags.sexp"         conf.cflags;
++  C.C_define.gen_header_file c ~fname:"config.h" [];
++  C.Flags.write_sexp "c_flags.sexp"        (conf.cflags @ [ "-I"; "." ]);
 +  C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
 --- /dev/null
 +++ b/libvirt/config/dune
