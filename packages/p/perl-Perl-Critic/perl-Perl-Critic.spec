@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Critic
 Name:           perl-Perl-Critic
-Version:        1.148
+Version:        1.150
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Critique Perl source code for best-practices
@@ -45,8 +45,7 @@ BuildRequires:  perl(PPI::Token::Whitespace) >= 1.271
 BuildRequires:  perl(PPIx::QuoteLike)
 BuildRequires:  perl(PPIx::Regexp) >= 0.027
 BuildRequires:  perl(PPIx::Regexp::Util) >= 0.068
-BuildRequires:  perl(PPIx::Utilities::Node) >= 1.001
-BuildRequires:  perl(PPIx::Utilities::Statement) >= 1.001
+BuildRequires:  perl(PPIx::Utils::Traversal) >= 0.003
 BuildRequires:  perl(Perl::Tidy)
 BuildRequires:  perl(Pod::PlainText)
 BuildRequires:  perl(Pod::Select)
@@ -73,8 +72,7 @@ Requires:       perl(PPI::Token::Whitespace) >= 1.271
 Requires:       perl(PPIx::QuoteLike)
 Requires:       perl(PPIx::Regexp) >= 0.027
 Requires:       perl(PPIx::Regexp::Util) >= 0.068
-Requires:       perl(PPIx::Utilities::Node) >= 1.001
-Requires:       perl(PPIx::Utilities::Statement) >= 1.001
+Requires:       perl(PPIx::Utils::Traversal) >= 0.003
 Requires:       perl(Perl::Tidy)
 Requires:       perl(Pod::PlainText)
 Requires:       perl(Pod::Select)
@@ -116,6 +114,7 @@ from http://www.activestate.com.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

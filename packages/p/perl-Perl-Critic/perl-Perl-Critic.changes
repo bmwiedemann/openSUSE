@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  6 03:10:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.150
+   see /usr/share/doc/packages/perl-Perl-Critic/Changes
+
+  1.150 Sat Mar  4 21:17:45 CST 2023
+
+      [Enhancements]
+      Added Test::Builder and Text::Wrap to the list of default exceptions in
+      Variables::ProhibitPackageVars. Thanks, Graham Knop. (GH #1025)
+
+      [Internals]
+      We now use PPIx::Utils instead of PPIx::Utilities, which is more recently
+      maintained.
+
+-------------------------------------------------------------------
 Sun Jan  8 03:07:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.148
