@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Mon Mar 13 10:37:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.19; fix wrong URL and Summary
+
+-------------------------------------------------------------------
+Mon Mar 13 10:28:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.16.0:
+  * Feat/allowlist regex target (#1107)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:28:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.15.4:
+  * ignore package-lock.json (#1076)
+  * Fix typos in README.md and CONTRIBUTING.md (#1090)
+  * fix: ignore baseline if path was not relative in source (#1101)
+  * Fix H in GitHub and update pre-commit rev tag in README (#1087)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:28:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.15.3:
+  * Add missing GitLab token patterns (#1077)
+  * Fix rule for private keys (#1072)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:28:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.15.2:
+  * remove color formatting when #1042 is encountered (#1050)
+  * Update README.md
+  * adding jwt tokens with padding format "=" (#1031)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:28:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.15.1:
+  * include default newline pairs when calculating location (#1038)
+  * Add rule for fine-grained GitHub PAT (#1026)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:27:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.15.0:
+  * Add scanning from a pipe with --pipe (#1012)
+  * add a few fingerprints for test data
+  * Add support for following symlinks (#1010)
+  * fix bug in readme (#1011)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:27:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.14.1:
+  * define log-opts, odd that this wasn't failing before... (#1009)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:27:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.14.0:
+  * add --max-target-megabytes : maximum size for a file/blob to be
+    scanned (#1003)
+  * Update USERS.md
+  * Update .gitleaksignore
+  * Update README.md
+  * Add detection rules for DigitalOcean tokens (#1002)
+  * docs: add Trendyol to users (#998)
+  * docs: added goreleaser to user list (#997)
+  * Update USERS.md (#996)
+  * Create USERS.md
+  * Exclude dacpac refactorlogs (#990)
+  * Output number of commits at info-level. (#991)
+  * Detect Slack Workflow Webhook URLs (#989)
+  * Upgrade go version to 1.19 (#987)
+  * Minor cleanup to error handling and logging (#985)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:27:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.13.0:
+  * Update README.md
+  * Update .gitleaksignore
+  * Update README.md
+  * Adding quiet mode to silence banner (#852)
+  * Issue #980: Add support for Telegram Bot API Token (#981)
+  * add rule for microsoft teams webhooks (#970)
+  * Add baseline (#975)
+  * Add pre-commit autoupdate command to README.md (#978)
+  * refactor: more precise rule for private keys (#930)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:26:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.12.0:
+  * update gitleaksignore
+  * add fingerprint to output
+  * Pretty output (#973)
+  * Update version in readme file (#972)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:25:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.11.2:
+  * ignore empty files (#965)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:25:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.11.1:
+  * Add grafana tokens rules (#959)
+  * add prefect and readme rules (#961)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:25:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.11.0:
+  * draft: bump gitdiff, add git.Err state, better log messages
+    (#954)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:23:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.10.3:
+  * Feat/add fingerprint no git (#952)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:23:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.10.2:
+  * safe file checking (#946)
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 10:23:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.10.1:
+  * Explicit fingerprint (#944)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:22:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.10.0:
+  * add two test findings to gitleaksignore
+  * Feat/ignore finding (#938)
+  * add jwt rule (#943)
+  * bump golang test version (#942)
+  * gitleaks allow docs (#941)
+  * Add new rules for vault tokens (#919)
+  * Feature/add sidekiq rules (#933)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:21:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.9.0:
+  * update readme
+  * add url for config
+  * Feature: Adding the ability to extend configuration files (#926)
+  * Add fix for issue #915 (#916)
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 10:20:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.12:
+  * Update README.md
+  * Update README.md
+  * adding access to generic rule keywords and identifiers
+  * Fix proper names capitalization (#907)
+  * Add multi platform build (#897)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:20:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.11:
+  * update twitter rule generation description and id
+  * capitilze twitter description
+  * adding travis ci
+  * Fix id and description for twitter tokens (#905)
+  * Adding okta, codecov, zendesk, and updating Atlassian's rule to
+    include `jira` keyword (#904)
+  * Fix Plaid, add Plaid access token (#903)
+  * adding airtable and adafruit (#902)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:19:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.10:
+  * Fixes accidental type typos while translating rules from
+    validation spreadsheet, adds bittrex rule
+
+-------------------------------------------------------------------
+Mon Mar 13 10:18:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.9:
+  * Remove ssn allowlist (#898)
+  * Adding a bunch of new rules, update allowlist to include
+    node_modules… (#896)
+  * contributing guidelines first draft (#895)
+  * Lint python commit script to satisfy PEP8 (#893)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:18:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.8:
+  * Update generate (#892)
+  * maintain parity with recent changes... need to create rule
+    contributing guidelines (#891)
+  * Fix duplicate TOML Rules and IDs  (#889)
+  * Update README.md
+  * Update gitleaks.yml
+  * Update README.md
+  * user accounts don't need gitleaks license
+  * Update README.md
+  * Add gitleaks badge
+  * Create gitleaks.yml (#884)
+  * add link to gitleaks.io
+
+-------------------------------------------------------------------
+Mon Mar 13 10:18:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.7:
+  * fix git unsafe directory (#883)
+  * Limit newlines regex (#881)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:18:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.6:
+  * add combo to stopwords, update cmd/generate
+  * Fix generic-api-key detected erroneously
+    (zricethezav#877) (#878)
+  * ignore end line when comparing generic rules (#879)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:17:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.5:
+  * updating generic regex and algoia regex (#875)
+  * feat: add algolia key support (#866)
+  * Improve PlanetScale token detection (#874)
+  * Update README.md
+  * Adding JIT Security messages
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 10:17:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.4:
+  * fix no-git bug (#859)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:17:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.3:
+  * Removing private keyword from private key rule (#858)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:17:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.2:
+  * nasty little bug (#853)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:17:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.1:
+  * adding a ton of stopwords to the generic rule only as that is
+    the loudest rule (#851)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:16:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.8.0:
+  * adding stopwords (#849)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:16:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.7.2:
+  * Update dockerfile (#848)
+  * fix EOL in secret suffix (#847)
+  * unpin docker version in pre-commit hook (#832)
+  * Generate tps (#845)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:15:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.7.1:
+  * maybe fix out of bounds (#843)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:14:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.7.0:
+  * optimize keywords (#841)
+  * Update detect.go (#839)
+  * Standardize/alphabetize rules, add cmd/generate/config package
+    (#840)
+  * fix ghcr.io typo in README.md (#835)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:14:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.6.1:
+  * normalize keyword check (#830)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:14:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.6.0:
+  * Keyword (#825)
+  * doc gitleaks-docker pre-commit hook (#819)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:13:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.3:
+  * skip content checks for path only rules
+  * use official docker image as pre-commit hook (#818)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:13:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.2:
+  * remove stopwords from global allowlist
+
+-------------------------------------------------------------------
+Mon Mar 13 10:13:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.1:
+  * detect: skip binary files with --no-git (#810)
+  * fixing a location off by one edge case for --no-git (#812)
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 10:12:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.0:
+  * Allow tag (#809)
+  * Stop words (#808)
+  * Refactor `detect`, add `entropy` to all findings (#804)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:11:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.4.0:
+  * commenting out git tests, will need to revisit eventually
+  * commenting out flaky test for now
+  * go mod tidying
+  * more comments
+  * adding git test again
+  * handle goimports/go vet warnings
+  * more tests
+  * more cleaningup
+  * maintaining parity between current master
+  * more bug
+  * cleanup
+  * more cleaning up
+  * getting some tests working
+  * regular git scan parity
+  * init
+  * Escape - character in regex character groups (#802)
+  * adding go mod/sum to ignore (#797)
+  * GitLab pats may contain underscores as well as dashes (#794)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:11:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.3.0:
+  * ignore k8s apiVersion in generic-api-key pattern (#760)
+  * build: updates for go1.17 (#769)
+  * allow non-last-element secret groups (#792)
+  * fixing segfault when using a rule with only a path (#791)
+  * Fix: Typo in LinkedIn id (#789)
+  * Fix vendor name casing, Flutterwave typo (#785)
+  * Sarif results with empty rules now represents as [] instead of
+    null/nil (#786)
+  * Fix typos in README.md (#780)
+
+-------------------------------------------------------------------
+Sun Feb 13 07:44:51 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package gitleaks at 8.2.7
