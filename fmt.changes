@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 08:14:22 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use -ffloat-store as a fix for excessive precision provided
+  by X87 on i686 target (https://github.com/fmtlib/fmt/issues/3337).
+
+-------------------------------------------------------------------
 Sun Aug 28 06:35:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.1

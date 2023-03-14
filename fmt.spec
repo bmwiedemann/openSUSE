@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ Development files for fmt, a formatting library for C++.
 %autosetup -p1
 
 %build
+# X87 fix for excessive precision: https://github.com/fmtlib/fmt/issues/3337
+%global optflags %optflags -ffloat-store
 %cmake -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}
 %cmake_build
 

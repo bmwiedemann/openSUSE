@@ -479,4 +479,13 @@
     <comment>update</comment>
     <requestid>999986</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9f53cf105584583b102fd8cf9f607396</srcmd5>
+    <version>9.1.0</version>
+    <time>1678814142</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -ffloat-store as a fix for excessive precision provided
+  by X87 on i686 target (https://github.com/fmtlib/fmt/issues/3337). (forwarded request 1070626 from marxin)</comment>
+    <requestid>1071110</requestid>
+  </revision>
 </revisionlist>
