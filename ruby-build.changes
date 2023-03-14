@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 11 16:21:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Change summary and description of dependency packages to shut up rpmlint.
+
+-------------------------------------------------------------------
 Thu Mar  9 11:56:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230309.
