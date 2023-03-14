@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -28,6 +28,7 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
+Patch1:         0001-snapshot-safer-parsing-of-snapshot.cfg.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -115,7 +116,7 @@ grommunio-web. The grommunio appliance ships these essentials and has a
 ready-to-run installation of Gromox.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 %build
 autoreconf -fi
@@ -225,9 +226,9 @@ fi
 
 %files
 %_sysconfdir/php*
-# Group write permission is exercised by grommunio-admin-api.
-# pam.cfg needs to be readable by all
-%attr(0775,root,grommunio) %dir %_sysconfdir/%name/
+# grommunio permission is exercised by grommunio-admin-api.
+# pam.cfg needs to be readable by all (hence d0755).
+%attr(0755,grommunio,gromox) %dir %_sysconfdir/%name/
 %_sbindir/gromox-*
 %_libdir/*.so.*
 %_libdir/%name/
@@ -239,7 +240,7 @@ fi
 %_tmpfilesdir/*.conf
 %_unitdir/*
 %attr(0770,gromox,gromox) /var/lib/gromox/
-%attr(0770,gromox,gromox) /var/log/gromox/
+%attr(0750,gromox,gromox) /var/log/gromox/
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %dir %_libexecdir
 %endif

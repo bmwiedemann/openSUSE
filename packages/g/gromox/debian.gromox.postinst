@@ -10,25 +10,27 @@ set_perms()
 	MODE="$3"
 	FILE="$4"
 	if ! dpkg-statoverride --list "$FILE" >/dev/null 2>&1; then
-		chown -R "$USER:$GROUP" "$FILE"
-		chmod -R $MODE "$FILE"
+		chown -h "$USER:$GROUP" "$FILE"
+		chmod $MODE "$FILE"
         fi
 }
 
 xpostinst()
 {
-set_perms root gromox 0770 /etc/gromox || :
+set_perms grommunio gromox 0755 /etc/gromox || :
 for i in /var/lib/gromox \
+	/var/lib/gromox/domain \
+	/var/lib/gromox/user \
 	/var/lib/gromox/queue \
 	/var/lib/gromox/queue/cache \
 	/var/lib/gromox/queue/clone \
 	/var/lib/gromox/queue/insulation \
 	/var/lib/gromox/queue/mess \
 	/var/lib/gromox/queue/save \
-	/var/lib/gromox/queue/timer \
-	/var/log/gromox; do
+	/var/lib/gromox/queue/timer; do
 	set_perms gromox gromox 0770 "$i" || :
 done
+set_perms gromox gromox 0750 /var/log/gromox || :
 
 # %post
 if test -x /usr/bin/systemd-tmpfiles; then
