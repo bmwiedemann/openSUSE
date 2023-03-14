@@ -1,0 +1,6 @@
+<package name="just" project="openSUSE:Factory">
+  <title>just a command runner</title>
+  <description>Just is a command runner. Although, it's not really a build system like Make. It avoids Make's complexities and confusing PHONY statements.</description>
+  <devel project="Base:System" package="just"/>
+  <url>https://github.com/casey/just</url>
+</package>
