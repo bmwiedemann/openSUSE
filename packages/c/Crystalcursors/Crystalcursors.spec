@@ -1,7 +1,7 @@
 #
 # spec file for package Crystalcursors
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           Crystalcursors
 BuildRequires:  libpng
 BuildRequires:  xcursorgen
-Url:            http://digilander.iol.it/m4rt/crystalcursors.html
+URL:            https://digilander.libero.it/m4rt/html/crystalcursors.html
 Summary:        Mouse Cursors in Crystal Icon Style
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/X11/Icons
-Version:        0.5
+Version:        0.9
 Release:        0
-Source:         6240-%{name}.tar.bz2
-Patch:          root-installation.diff
-Patch1:         Crystalcursors.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://digilander.libero.it/m4rt/files/Crystalcursors.tar.bz2
+Patch0:         root-installation.diff
+BuildRequires:  ImageMagick
 BuildArch:      noarch
 
 %description
@@ -38,24 +37,17 @@ Control Center, in the mouse configuration.
 
 %prep
 %setup -q -n %name
-%patch1
-%patch
+%patch0 -p1
 
 %build
-# the crowd complained about the speed ..
-for i in */watch/*conf; do
- awk '{ print $1" "$2" "$3" "$4" 240" }' $i > ${i}.new
- mv ${i}.new ${i}
-done
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 
 %files
-%defattr(-, root, root)
-%doc CHANGELOG CREDITS LICENSE README
+%license LICENSE
+%doc CHANGELOG CREDITS README
 /usr/share/icons/*
 
 %changelog

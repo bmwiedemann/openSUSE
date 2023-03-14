@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 13 18:09:39 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9
+  * Corrected a little asymmetry in the left pointers
+  * All themes have a left-handed (i.e. flipped) version
+- Update to version 0.8:
+  * Modified the shiny effect of the hands
+  * All borders of the 32x32 version now are more sharp
+  * Remade all the shadows of the white version
+- Update to version 0.7:
+  * A 32x32 version of watch cursor theme to enable it set the
+    environment variable XCURSOR_SIZE=32
+  * Watch busy cursor updated with the one in the current crystal icons
+  * Green theme reworked
+  * Lighter shadows
+  * Reworked all the svg images
+- Update to version 0.6:
+  * Adjusted hand cursor proportions.
+- Rebased root-installation.diff
+- Dropped outdated Crystalcursors.patch
+
+-------------------------------------------------------------------
 Fri Jun 29 07:03:28 UTC 2012 - coolo@suse.com
 
 - replace buildrequire xorg-x11 with the real require

@@ -1,27 +1,44 @@
---- Makefile
-+++ Makefile
-@@ -19,12 +19,6 @@
- 	@echo -e "\nGrayscale version of CrystalCursors is correctly installed.\n"
+diff -Nur Crystalcursors/blue_src/classic/Makefile Crystalcursors-n/blue_src/classic/Makefile
+--- Crystalcursors/blue_src/classic/Makefile	2004-10-15 19:35:25.000000000 +0200
++++ Crystalcursors-n/blue_src/classic/Makefile	2023-03-13 19:56:13.457093411 +0100
+@@ -1,4 +1,4 @@
+-CURSORDIR=$(HOME)/.icons/crystalblue_classic/cursors
++CURSORDIR=$(DESTDIR)/usr/share/icons/crystalblue_classic/cursors
+ BUILDDIR=../../blue_cursors_classic
  
- 	$(MAKE) install -C white_src
--	cp -f  ./blue_src/index.theme.default $(HOME)/.icons/default/index.theme
--	@echo -e "\nWhite version of CrystalCursors is correctly installed.\n"
--
--	@echo -e "The blue version will be used; in order to change this you can run ./choose.sh"
--	@echo -e "in the current folder or copy the proper index.theme in ~/.icons/default."
--	@echo -e "Have Fun!\n"
- clean:
- 	rm blue_cursors/*
- 	rm blue_cursors_nonanim/*
---- blue_src/Makefile
-+++ blue_src/Makefile
+ 
+@@ -25,16 +25,16 @@
+ install: all
+ 	#Create necessary directories
+ 
+-	if test ! -d $(HOME)/.icons ;then mkdir $(HOME)/.icons; fi
+-	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
+-	if test ! -d $(HOME)/.icons/crystalblue_classic ;then mkdir $(HOME)/.icons/crystalblue_classic; fi
+-	if test ! -d $(HOME)/.icons/crystalblue_classic/cursors ;then mkdir $(HOME)/.icons/crystalblue_classic/cursors; fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue_classic ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue_classic; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue_classic/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue_classic/cursors; fi
+ 	#Copy the cursors
+ 
+ 	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
+ 
+ 	#Copy the configuration file
+-	cp -f  index.theme $(HOME)/.icons/crystalblue_classic/
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalblue_classic/
+ 
+ 	#Create some symlinks
+ 	ln -sf hand $(CURSORDIR)/hand1
+diff -Nur Crystalcursors/blue_src/Makefile Crystalcursors-n/blue_src/Makefile
+--- Crystalcursors/blue_src/Makefile	2004-10-15 19:35:25.000000000 +0200
++++ Crystalcursors-n/blue_src/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
 -CURSORDIR=$(HOME)/.icons/crystalblue/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalblue/cursors
  BUILDDIR=../blue_cursors
  
  #Define here the animation cursor directories
-@@ -35,16 +35,13 @@
+@@ -35,16 +35,16 @@
  install: all
  	#Create necessary directories
  
@@ -29,34 +46,30 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalblue ;then mkdir $(HOME)/.icons/crystalblue; fi
 -	if test ! -d $(HOME)/.icons/crystalblue/cursors ;then mkdir $(HOME)/.icons/crystalblue/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalblue/
-+	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalblue
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalblue/
  
  	#Create some symlinks
  	ln -sf hand $(CURSORDIR)/hand1
---- blue_src/nonanim/Makefile
-+++ blue_src/nonanim/Makefile
+diff -Nur Crystalcursors/blue_src/nonanim/Makefile Crystalcursors-n/blue_src/nonanim/Makefile
+--- Crystalcursors/blue_src/nonanim/Makefile	2004-10-15 19:35:26.000000000 +0200
++++ Crystalcursors-n/blue_src/nonanim/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
--CURSORDIR=$(DESTDIR)/usr/X11R6/lib/X11/icons/crystalblue_nonanim/cursors
+-CURSORDIR=$(HOME)/.icons/crystalblue_nonanim/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalblue_nonanim/cursors
  BUILDDIR=../../blue_cursors_nonanim
  
  
-@@ -51,7 +51,6 @@
- 
- watch.png: ../watch/watch12.png
- 	ln -sf ../watch/watch12.png watch.png
--CURSORDIR=$(HOME)/.icons/crystalblue_nonanim/cursors
- BUILDDIR=../../blue_cursors_nonanim
- 
- 
-@@ -78,16 +77,13 @@
+@@ -25,16 +25,16 @@
  install: all
  	#Create necessary directories
  
@@ -64,26 +77,30 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalblue_nonanim ;then mkdir $(HOME)/.icons/crystalblue_nonanim; fi
 -	if test ! -d $(HOME)/.icons/crystalblue_nonanim/cursors ;then mkdir $(HOME)/.icons/crystalblue_nonanim/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue_nonanim ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue_nonanim; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalblue_nonanim/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalblue_nonanim/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalblue_nonanim/
-+	cp -f  index.theme $(CURSORDIR)/../
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalblue_nonanim/
  
  	#Create some symlinks
  	ln -sf left_ptr_watch $(CURSORDIR)/3ecb610c1bf2410f44200f48c40d3599 # left_ptr_watch
---- gray_src/Makefile
-+++ gray_src/Makefile
+diff -Nur Crystalcursors/gray_src/Makefile Crystalcursors-n/gray_src/Makefile
+--- Crystalcursors/gray_src/Makefile	2004-10-15 19:35:26.000000000 +0200
++++ Crystalcursors-n/gray_src/Makefile	2023-03-13 19:56:13.461093495 +0100
 @@ -1,4 +1,4 @@
 -CURSORDIR=$(HOME)/.icons/crystalgray/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgray/cursors
  BUILDDIR=../gray_cursors
  
  #Define here the animation cursor directories
-@@ -34,16 +34,13 @@
+@@ -34,16 +34,16 @@
  install: all
  	#Create necessary directories
  
@@ -91,7 +108,10 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalgray ;then mkdir $(HOME)/.icons/crystalgray; fi
 -	if test ! -d $(HOME)/.icons/crystalgray/cursors ;then mkdir $(HOME)/.icons/crystalgray/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgray ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgray; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgray/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgray/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
@@ -102,23 +122,16 @@
  
  	#Create some symlinks
  	ln -sf hand $(CURSORDIR)/hand1
---- gray_src/nonanim/Makefile
-+++ gray_src/nonanim/Makefile
+diff -Nur Crystalcursors/gray_src/nonanim/Makefile Crystalcursors-n/gray_src/nonanim/Makefile
+--- Crystalcursors/gray_src/nonanim/Makefile	2004-10-15 19:35:26.000000000 +0200
++++ Crystalcursors-n/gray_src/nonanim/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
--CURSORDIR=$(DESTDIR)/usr/X11R6/lib/X11/icons/crystalgray_nonanim/cursors
+-CURSORDIR=$(HOME)/.icons/crystalgray_nonanim/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgray_nonanim/cursors
  BUILDDIR=../../gray_cursors_nonanim
  
  
-@@ -51,7 +51,6 @@
- 
- watch.png: ../watch/watch12.png
- 	ln -sf ../watch/watch12.png watch.png
--CURSORDIR=$(HOME)/.icons/crystalgray_nonanim/cursors
- BUILDDIR=../../gray_cursors_nonanim
- 
- 
-@@ -78,16 +77,13 @@
+@@ -25,16 +25,16 @@
  install: all
  	#Create necessary directories
  
@@ -126,26 +139,61 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalgray_nonanim ;then mkdir $(HOME)/.icons/crystalgray_nonanim; fi
 -	if test ! -d $(HOME)/.icons/crystalgray_nonanim/cursors ;then mkdir $(HOME)/.icons/crystalgray_nonanim/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgray_nonanim ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgray_nonanim; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgray_nonanim/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgray_nonanim/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalgray_nonanim/
-+	cp -f  index.theme $(CURSORDIR)/../
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalgray_nonanim/
  
  	#Create some symlinks
  	ln -sf left_ptr_watch $(CURSORDIR)/3ecb610c1bf2410f44200f48c40d3599 # left_ptr_watch
---- green_src/Makefile
-+++ green_src/Makefile
+diff -Nur Crystalcursors/green_src/classic/Makefile Crystalcursors-n/green_src/classic/Makefile
+--- Crystalcursors/green_src/classic/Makefile	2004-10-15 19:35:27.000000000 +0200
++++ Crystalcursors-n/green_src/classic/Makefile	2023-03-13 19:56:13.457093411 +0100
+@@ -1,4 +1,4 @@
+-CURSORDIR=$(HOME)/.icons/crystalgreen_classic/cursors
++CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgreen_classic/cursors
+ BUILDDIR=../../green_cursors_classic
+ 
+ 
+@@ -25,16 +25,16 @@
+ install: all
+ 	#Create necessary directories
+ 
+-	if test ! -d $(HOME)/.icons ;then mkdir $(HOME)/.icons; fi
+-	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
+-	if test ! -d $(HOME)/.icons/crystalgreen_classic ;then mkdir $(HOME)/.icons/crystalgreen_classic; fi
+-	if test ! -d $(HOME)/.icons/crystalgreen_classic/cursors ;then mkdir $(HOME)/.icons/crystalgreen_classic/cursors; fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen_classic ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen_classic; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen_classic/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen_classic/cursors; fi
+ 	#Copy the cursors
+ 
+ 	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
+ 
+ 	#Copy the configuration file
+-	cp -f  index.theme $(HOME)/.icons/crystalgreen_classic/
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalgreen_classic/
+ 
+ 	#Create some symlinks
+ 	ln -sf hand $(CURSORDIR)/hand1
+diff -Nur Crystalcursors/green_src/Makefile Crystalcursors-n/green_src/Makefile
+--- Crystalcursors/green_src/Makefile	2004-10-15 19:35:26.000000000 +0200
++++ Crystalcursors-n/green_src/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
 -CURSORDIR=$(HOME)/.icons/crystalgreen/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgreen/cursors
  BUILDDIR=../green_cursors
  
  #Define here the animation cursor directories
-@@ -35,16 +35,13 @@
+@@ -35,16 +35,16 @@
  install: all
  	#Create necessary directories
  
@@ -153,34 +201,30 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalgreen ;then mkdir $(HOME)/.icons/crystalgreen; fi
 -	if test ! -d $(HOME)/.icons/crystalgreen/cursors ;then mkdir $(HOME)/.icons/crystalgreen/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalgreen/
-+	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalgreen
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalgreen/
  
  	#Create some symlinks
  	ln -sf hand $(CURSORDIR)/hand1
---- green_src/nonanim/Makefile
-+++ green_src/nonanim/Makefile
+diff -Nur Crystalcursors/green_src/nonanim/Makefile Crystalcursors-n/green_src/nonanim/Makefile
+--- Crystalcursors/green_src/nonanim/Makefile	2004-10-15 19:35:27.000000000 +0200
++++ Crystalcursors-n/green_src/nonanim/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
--CURSORDIR=$(DESTDIR)/usr/X11R6/lib/X11/icons/crystalgreen_nonanim/cursors/
-+CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgreen_nonanim/cursors/
- BUILDDIR=../../green_cursors_nonanim
- 
- 
-@@ -51,7 +51,6 @@
- 
- watch.png: ../watch/watch12.png
- 	ln -sf ../watch/watch12.png watch.png
 -CURSORDIR=$(HOME)/.icons/crystalgreen_nonanim/cursors
++CURSORDIR=$(DESTDIR)/usr/share/icons/crystalgreen_nonanim/cursors
  BUILDDIR=../../green_cursors_nonanim
  
  
-@@ -78,16 +77,13 @@
+@@ -25,16 +25,16 @@
  install: all
  	#Create necessary directories
  
@@ -188,26 +232,95 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalgreen_nonanim ;then mkdir $(HOME)/.icons/crystalgreen_nonanim; fi
 -	if test ! -d $(HOME)/.icons/crystalgreen_nonanim/cursors ;then mkdir $(HOME)/.icons/crystalgreen_nonanim/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen_nonanim ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen_nonanim; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalgreen_nonanim/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalgreen_nonanim/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalgreen_nonanim/
-+	cp -f  index.theme $(CURSORDIR)/../
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalgreen_nonanim/
  
  	#Create some symlinks
  	ln -sf left_ptr_watch $(CURSORDIR)/3ecb610c1bf2410f44200f48c40d3599 # left_ptr_watch
---- white_src/Makefile
-+++ white_src/Makefile
+diff -Nur Crystalcursors/Makefile Crystalcursors-n/Makefile
+--- Crystalcursors/Makefile	2004-10-17 17:04:59.000000000 +0200
++++ Crystalcursors-n/Makefile	2023-03-13 19:56:13.457093411 +0100
+@@ -62,7 +62,7 @@
+ 	$(MAKE) install -C white_src_left
+ 	@echo -e "\nWhite left handed  version of CrystalCursors is correctly installed.\n"
+         
+-	cp -f  ./blue_src/index.theme.default $(HOME)/.icons/default/index.theme
++	cp -f  ./blue_src/index.theme.default $(DESTDIR)/usr/share/icons/default/index.theme
+ 	@echo -e "The blue version will be used; in order to change this you can run ./choose.sh"
+ 	@echo -e "in the current folder or copy the proper index.theme in ~/.icons/default."
+ 	@echo -e "Have Fun!\n"
+@@ -96,28 +96,28 @@
+ 	rm -rf white_src_left
+ 
+ uninstall:
+-	rm -rf $(HOME)/.icons/crystalblue
+-	rm -rf $(HOME)/.icons/crystalblue_nonanim
+-	rm -rf $(HOME)/.icons/crystalblue_classic
+-	rm -rf $(HOME)/.icons/crystalblueleft
+-	rm -rf $(HOME)/.icons/crystalblueleft_nonanim
+-	rm -rf $(HOME)/.icons/crystalblueleft_classic
+-                
+-	rm -rf $(HOME)/.icons/crystalgray
+-	rm -rf $(HOME)/.icons/crystalgray_nonanim
+-	rm -rf $(HOME)/.icons/crystalgrayleft
+-	rm -rf $(HOME)/.icons/crystalgrayleft_nonanim
+-                
+-	rm -rf $(HOME)/.icons/crystalgreen
+-	rm -rf $(HOME)/.icons/crystalgreen_nonanim
+-	rm -rf $(HOME)/.icons/crystalgreen_classic
+-	rm -rf $(HOME)/.icons/crystalgreenleft
+-	rm -rf $(HOME)/.icons/crystalgreenleft_nonanim
+-	rm -rf $(HOME)/.icons/crystalgreenleft_classic
+-                
+-	rm -rf $(HOME)/.icons/crystalwhite
+-	rm -rf $(HOME)/.icons/crystalwhite_nonanim
+-	rm -rf $(HOME)/.icons/crystalwhiteleft
+-	rm -rf $(HOME)/.icons/crystalwhiteleft_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblue
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblue_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblue_classic
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblueleft
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblueleft_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalblueleft_classic
++                
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgray
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgray_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgrayleft
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgrayleft_nonanim
++                
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreen
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreen_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreen_classic
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreenleft
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreenleft_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalgreenleft_classic
++                
++	rm -rf $(DESTDIR)/usr/share/icons/crystalwhite
++	rm -rf $(DESTDIR)/usr/share/icons/crystalwhite_nonanim
++	rm -rf $(DESTDIR)/usr/share/icons/crystalwhiteleft
++	rm -rf $(DESTDIR)/usr/share/icons/crystalwhiteleft_nonanim
+                 
+-	rm $(HOME)/.icons/default/index.theme
++	rm $(DESTDIR)/usr/share/icons/default/index.theme
+diff -Nur Crystalcursors/white_src/Makefile Crystalcursors-n/white_src/Makefile
+--- Crystalcursors/white_src/Makefile	2004-10-15 19:35:27.000000000 +0200
++++ Crystalcursors-n/white_src/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
 -CURSORDIR=$(HOME)/.icons/crystalwhite/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalwhite/cursors
  BUILDDIR=../white_cursors
  
  #Define here the animation cursor directories
-@@ -34,16 +34,13 @@
+@@ -34,16 +34,16 @@
  install: all
  	#Create necessary directories
  
@@ -215,7 +328,10 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalwhite ;then mkdir $(HOME)/.icons/crystalwhite; fi
 -	if test ! -d $(HOME)/.icons/crystalwhite/cursors ;then mkdir $(HOME)/.icons/crystalwhite/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalwhite ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalwhite; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalwhite/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalwhite/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
@@ -226,23 +342,16 @@
  
  	#Create some symlinks
  	ln -sf hand $(CURSORDIR)/hand1
---- white_src/nonanim/Makefile
-+++ white_src/nonanim/Makefile
+diff -Nur Crystalcursors/white_src/nonanim/Makefile Crystalcursors-n/white_src/nonanim/Makefile
+--- Crystalcursors/white_src/nonanim/Makefile	2004-10-15 19:35:27.000000000 +0200
++++ Crystalcursors-n/white_src/nonanim/Makefile	2023-03-13 19:56:13.457093411 +0100
 @@ -1,4 +1,4 @@
--CURSORDIR=$(DESTDIR)/usr/X11R6/lib/X11/icons/crystalwhite_nonanim/cursors
+-CURSORDIR=$(HOME)/.icons/crystalwhite_nonanim/cursors
 +CURSORDIR=$(DESTDIR)/usr/share/icons/crystalwhite_nonanim/cursors
  BUILDDIR=../../white_cursors_nonanim
  
  
-@@ -51,7 +51,6 @@
- 
- watch.png: ../watch/watch12.png
- 	ln -sf ../watch/watch12.png watch.png
--CURSORDIR=$(HOME)/.icons/crystalwhite_nonanim/cursors
- BUILDDIR=../../white_cursors_nonanim
- 
- 
-@@ -78,16 +77,13 @@
+@@ -25,16 +25,16 @@
  install: all
  	#Create necessary directories
  
@@ -250,14 +359,17 @@
 -	if test ! -d $(HOME)/.icons/default ;then mkdir $(HOME)/.icons/default;fi
 -	if test ! -d $(HOME)/.icons/crystalwhite_nonanim ;then mkdir $(HOME)/.icons/crystalwhite_nonanim; fi
 -	if test ! -d $(HOME)/.icons/crystalwhite_nonanim/cursors ;then mkdir $(HOME)/.icons/crystalwhite_nonanim/cursors; fi
-+	if test ! -d $(CURSORDIR) ;then mkdir -p $(CURSORDIR); fi
++	if test ! -d $(DESTDIR)/usr/share/icons ;then mkdir -p $(DESTDIR)/usr/share/icons; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/default ;then mkdir -p $(DESTDIR)/usr/share/icons/default;fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalwhite_nonanim ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalwhite_nonanim; fi
++	if test ! -d $(DESTDIR)/usr/share/icons/crystalwhite_nonanim/cursors ;then mkdir -p $(DESTDIR)/usr/share/icons/crystalwhite_nonanim/cursors; fi
  	#Copy the cursors
  
  	cp -Rf $(BUILDDIR)/* $(CURSORDIR)
  
  	#Copy the configuration file
 -	cp -f  index.theme $(HOME)/.icons/crystalwhite_nonanim/
-+	cp -f  index.theme $(CURSORDIR)/../
++	cp -f  index.theme $(DESTDIR)/usr/share/icons/crystalwhite_nonanim/
  
  	#Create some symlinks
  	ln -sf left_ptr_watch $(CURSORDIR)/3ecb610c1bf2410f44200f48c40d3599 # left_ptr_watch
