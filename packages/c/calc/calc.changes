@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 08:25:27 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.14.1.5:
+  * Fixed FUNCPTR typedef in hist.c to fix deprecated compiler warnings.
+  * Fixed when USE_READLINE, READLINE_LIB, READLINE_EXTRAS, and
+    READLINE_INCLUDE are set to empty (disable use of the GNU-readline
+    facility).
+
+-------------------------------------------------------------------
 Wed Feb 15 14:30:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.1.3:

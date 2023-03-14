@@ -16,10 +16,10 @@
 #
 
 
-%define soname 2_14_1_3
+%define soname 2_14_1_5
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.14.1.3
+Version:        2.14.1.5
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
@@ -32,7 +32,6 @@ BuildRequires:  ncurses-devel >= 5.5
 BuildRequires:  readline-devel >= 5.1
 Requires:       %{libname} = %{version}-%{release}
 Requires:       less >= 358
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Calc is arbitrary precision C-like arithmetic system that is a
@@ -103,16 +102,12 @@ rmdir %{buildroot}%{_includedir}/calc/custom
 # dummy-install some docs etc. to create the symlinks
 install -d -m 755 %{buildroot}%{_docdir}/%{name}
 install -m 644 \
-    BUGS CHANGES COPYING COPYING-LGPL HOWTO.INSTALL LIBRARY \
+    BUGS CHANGES HOWTO.INSTALL LIBRARY \
     README.FIRST README.md README.openSUSE \
     custom/CUSTOM_CAL custom/HOW_TO_ADD \
     %{buildroot}%{_docdir}/%{name}/
 
 # create symlinks to the help-dir for the help command, e.g. "help bugs"
-ln -sf %{_docdir}/%{name}/COPYING \
-    %{buildroot}%{_datadir}/%{name}/help/COPYING
-ln -sf %{_docdir}/%{name}/COPYING-LGPL \
-    %{buildroot}%{_datadir}/%{name}/help/COPYING-LGPL
 ln -sf %{_docdir}/%{name}/BUGS \
     %{buildroot}%{_datadir}/%{name}/help/bug
 ln -sf %{_docdir}/%{name}/BUGS \
@@ -133,27 +128,25 @@ ln -sf %{_datadir}/%{name}/help/intro \
 %fdupes %{buildroot}
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc BUGS CHANGES COPYING COPYING-LGPL HOWTO.INSTALL LIBRARY
+%license COPYING COPYING-LGPL
+%doc BUGS CHANGES HOWTO.INSTALL LIBRARY
 %doc README.FIRST README.md README.openSUSE
 %doc custom/CUSTOM_CAL custom/HOW_TO_ADD
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%doc %{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %doc %{_docdir}/%{name}/what-is-calc.txt
 
 %files -n %{libname}
-%defattr(-,root,root)
 %attr(755, root, root) %{_libdir}/libcalc.so.*
 %attr(755, root, root) %{_libdir}/libcustcalc.so.*
 
 %files devel
-%defattr(-, root, root)
-%doc %attr(644, root, root) BUGS COPYING COPYING-LGPL LIBRARY
+%license COPYING COPYING-LGPL
+%doc %attr(644, root, root) BUGS LIBRARY
 %doc sample_many.c sample_rand.c sample.README README.md README.openSUSE
 %{_includedir}/%{name}
 %{_libdir}/libcalc.so
