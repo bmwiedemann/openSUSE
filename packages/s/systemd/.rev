@@ -6357,4 +6357,23 @@ handle manual pages that consist only of a .so directive such as
   dependency resolving on older distros</comment>
     <requestid>1069558</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>43b195042563bd961f090b38cbecd41a</srcmd5>
+    <version>253.1</version>
+    <time>1678814129</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5000-core-manager-run-generators-directly-when-we-are-in-.patch, a
+  temporary workaround until https://github.com/dracutdevs/dracut/issues/2211 is
+  fixed in dracut.
+
+- Upgrade to v253.1 (commit 6c327d74aa0d350482e82a247d7018559699798d)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v253/NEWS for details.
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+  * Ship systemd-journald-audit.socket again: it can now be disabled via the
+    usual &quot;systemctl disable&quot; mechanism to stop collection of audit
+    messages. Note that it's handled by the preset logic, which turns it off by
+    default.
+  * TEST_06_SELINUX needs selinux-policy-devel.</comment>
+    <requestid>1070393</requestid>
+  </revision>
 </revisionlist>

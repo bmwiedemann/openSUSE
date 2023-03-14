@@ -1,7 +1,7 @@
-From 288be40eb94ddc1d549a98556baea71d20df224f Mon Sep 17 00:00:00 2001
+From 77391d9baf86f10daf210ccf5527e0155a33fc73 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 22 Jan 2021 14:57:08 +0100
-Subject: [PATCH 1/8] conf-parser: introduce 'early' drop-ins
+Subject: [PATCH 1/1] conf-parser: introduce 'early' drop-ins
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -62,14 +62,14 @@ drop this feature at any time.
 Fixes: #2121
 ---
  src/shared/conf-parser.c    |  55 ++++++++++--
- src/test/test-conf-parser.c | 164 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 214 insertions(+), 5 deletions(-)
+ src/test/test-conf-parser.c | 166 +++++++++++++++++++++++++++++++++++-
+ 2 files changed, 215 insertions(+), 6 deletions(-)
 
 diff --git a/src/shared/conf-parser.c b/src/shared/conf-parser.c
-index 5cb41a39da..86dc1c95f6 100644
+index 29051ca0e3..72935030ea 100644
 --- a/src/shared/conf-parser.c
 +++ b/src/shared/conf-parser.c
-@@ -478,6 +478,7 @@ int hashmap_put_stats_by_path(Hashmap **stats_by_path, const char *path, const s
+@@ -477,6 +477,7 @@ int hashmap_put_stats_by_path(Hashmap **stats_by_path, const char *path, const s
  
  static int config_parse_many_files(
                  const char* const* conf_files,
@@ -77,7 +77,7 @@ index 5cb41a39da..86dc1c95f6 100644
                  char **files,
                  const char *sections,
                  ConfigItemLookup lookup,
-@@ -496,6 +497,20 @@ static int config_parse_many_files(
+@@ -495,6 +496,20 @@ static int config_parse_many_files(
                          return -ENOMEM;
          }
  
@@ -98,7 +98,7 @@ index 5cb41a39da..86dc1c95f6 100644
          /* First read the first found main config file. */
          STRV_FOREACH(fn, conf_files) {
                  r = config_parse(NULL, *fn, NULL, sections, lookup, table, flags, userdata, &st);
-@@ -534,6 +549,27 @@ static int config_parse_many_files(
+@@ -533,6 +548,27 @@ static int config_parse_many_files(
          return 0;
  }
  
@@ -126,7 +126,7 @@ index 5cb41a39da..86dc1c95f6 100644
  /* Parse each config file in the directories specified as nulstr. */
  int config_parse_many_nulstr(
                  const char *conf_file,
-@@ -545,15 +581,19 @@ int config_parse_many_nulstr(
+@@ -544,15 +580,19 @@ int config_parse_many_nulstr(
                  void *userdata,
                  Hashmap **ret_stats_by_path) {
  
@@ -149,7 +149,7 @@ index 5cb41a39da..86dc1c95f6 100644
                                         ret_stats_by_path);
  }
  
-@@ -591,6 +631,7 @@ int config_parse_many(
+@@ -590,6 +630,7 @@ int config_parse_many(
                  Hashmap **ret_stats_by_path,
                  char ***ret_dropin_files) {
  
@@ -157,7 +157,7 @@ index 5cb41a39da..86dc1c95f6 100644
          _cleanup_strv_free_ char **files = NULL;
          int r;
  
-@@ -603,12 +644,16 @@ int config_parse_many(
+@@ -602,12 +643,16 @@ int config_parse_many(
          if (r < 0)
                  return r;
  
@@ -177,20 +177,22 @@ index 5cb41a39da..86dc1c95f6 100644
          return 0;
  }
 diff --git a/src/test/test-conf-parser.c b/src/test/test-conf-parser.c
-index 8c27dcac3f..745e4a127a 100644
+index 0acb4131b5..96a52e759f 100644
 --- a/src/test/test-conf-parser.c
 +++ b/src/test/test-conf-parser.c
-@@ -5,6 +5,9 @@
+@@ -5,7 +5,10 @@
  #include "fs-util.h"
  #include "log.h"
  #include "macro.h"
+-#include "string-util.h"
 +#include "mkdir.h"
++#include "nulstr-util.h"
 +#include "path-util.h"
 +#include "rm-rf.h"
- #include "string-util.h"
  #include "strv.h"
  #include "tests.h"
-@@ -391,4 +394,165 @@ TEST(config_parse) {
+ #include "tmpfile-util.h"
+@@ -390,4 +393,165 @@ TEST(config_parse) {
                  test_config_parse_one(i, config_file[i]);
  }
  

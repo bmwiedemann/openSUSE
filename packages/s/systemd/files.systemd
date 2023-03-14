@@ -100,6 +100,7 @@
 %{_bindir}/localectl
 %{_bindir}/loginctl
 %{_bindir}/systemctl
+%{_bindir}/systemd-ac-power
 %{_bindir}/systemd-analyze
 %{_bindir}/systemd-ask-password
 %{_bindir}/systemd-cat
@@ -232,8 +233,8 @@
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
 %endif
-%{_libdir}/systemd/libsystemd-core-252.so
-%{_libdir}/systemd/libsystemd-shared-252.so
+%{_libdir}/systemd/libsystemd-core-253.so
+%{_libdir}/systemd/libsystemd-shared-253.so
 %if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
@@ -242,6 +243,7 @@
 %{_mandir}/man1/localectl.1.gz
 %{_mandir}/man1/loginctl.1.gz
 %{_mandir}/man1/systemctl.1.gz
+%{_mandir}/man1/systemd-ac-power.1.gz
 %{_mandir}/man1/systemd-analyze.1.gz
 %{_mandir}/man1/systemd-ask-password.1.gz
 %{_mandir}/man1/systemd-cat.1.gz
@@ -445,7 +447,6 @@
 %{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
 %{_systemd_util_dir}/system-preset/99-default.preset
 %{_systemd_util_dir}/systemd
-%{_systemd_util_dir}/systemd-ac-power
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
 %{_systemd_util_dir}/systemd-cgroups-agent
@@ -505,6 +506,7 @@
 %{_systemdgeneratordir}/systemd-system-update-generator
 %{_sysusersdir}/systemd-journal.conf
 %{_sysusersdir}/systemd-timesync.conf
+%{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
 %{_tmpfilesdir}/suse.conf
@@ -641,6 +643,7 @@
 %{_unitdir}/systemd-hybrid-sleep.service
 %{_unitdir}/systemd-journal-catalog-update.service
 %{_unitdir}/systemd-journal-flush.service
+%{_unitdir}/systemd-journald-audit.socket
 %{_unitdir}/systemd-journald-dev-log.socket
 %{_unitdir}/systemd-journald-varlink@.socket
 %{_unitdir}/systemd-journald.service

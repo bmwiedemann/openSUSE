@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  9 10:38:10 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Add 5000-core-manager-run-generators-directly-when-we-are-in-.patch, a
+  temporary workaround until https://github.com/dracutdevs/dracut/issues/2211 is
+  fixed in dracut.
+
+-------------------------------------------------------------------
+Mon Mar  6 10:08:33 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v253.1 (commit 6c327d74aa0d350482e82a247d7018559699798d)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v253/NEWS for details.
+
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+
+  * Ship systemd-journald-audit.socket again: it can now be disabled via the
+    usual "systemctl disable" mechanism to stop collection of audit
+    messages. Note that it's handled by the preset logic, which turns it off by
+    default.
+
+  * TEST_06_SELINUX needs selinux-policy-devel.
+
+-------------------------------------------------------------------
 Mon Mar  6 08:40:35 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit d447802feee7752cd1756f8fa86ce2a6314ba24f (merge of v252.7)
