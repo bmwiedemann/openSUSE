@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:04:07 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Removed unnecessary executable flags from files (bsc#1209094)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
