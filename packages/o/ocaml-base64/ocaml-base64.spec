@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-base64
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,37 @@
 
 
 %bcond_with ocaml_base64_testsuite
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %if %{without ocaml_base64_testsuite}
 ExclusiveArch:  do-not-build
 %endif
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-base64
-Name:           %{pkg}%{nsuffix}
-Version:        3.5.0
+Name:           %pkg%nsuffix
+Version:        3.5.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base64 encoding and decoding in OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/base64
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-dune >= 2.3
+BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bos)
+BuildRequires:  ocamlfind(fmt)
 BuildRequires:  ocamlfind(rresult)
 %endif
 
@@ -56,39 +57,39 @@ that represent binary data in an ASCII string format by translating it into a
 radix-64 representation. It is specified in RFC 4648.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='base64'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 

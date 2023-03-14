@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-base64</param>
-    <param name="revision">3a5e259895acef979a0fab8bb59d396e1bccead0</param>
+    <param name="revision">084346f14ed1e6706d733402dd6ff65b0dc4f718</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mirage/ocaml-base64.git</param>

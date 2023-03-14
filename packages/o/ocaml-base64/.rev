@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-dose</comment>
     <requestid>885056</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8b54c7719a480b9e1d98954b666250d</srcmd5>
+    <version>3.5.1</version>
+    <time>1678814178</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071155</requestid>
+  </revision>
 </revisionlist>
