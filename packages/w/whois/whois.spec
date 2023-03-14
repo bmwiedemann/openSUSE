@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.15
+Version:        5.5.16
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -45,14 +45,23 @@ It can intelligently select the appropriate WHOIS server for most queries.
 The package also contains mkpasswd, a features-rich front end to the
 password encryption function crypt(3).
 
+%package bash-completion
+Summary:        Bash completion for whois
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+bash command line completion support for whois.
+
 %prep
 # the signature is on the Debian .dsc. Extract the checksums and verify against source
 echo "`grep -A1 "Files:" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | md5sum -c
 echo "`grep -A1 "Checksums-Sha1" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha1sum -c
 echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha256sum -c
 
-%setup -q -n %{name}
-%patch0 -p1
+%autosetup -p1
 
 %build
 %make_build all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 \
@@ -76,5 +85,9 @@ make BASEDIR=%{buildroot} mandir=%{_mandir} prefix=%{_prefix} \
 %{_bindir}/whois
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
+
+%files bash-completion
+%{_sysconfdir}/bash_completion.d/whois
+%{_sysconfdir}/bash_completion.d/mkpasswd
 
 %changelog

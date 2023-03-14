@@ -1,7 +1,7 @@
-Index: whois-5.2.12/mkpasswd.c
+Index: whois-5.5.16/mkpasswd.c
 ===================================================================
---- whois-5.2.12.orig/mkpasswd.c
-+++ whois-5.2.12/mkpasswd.c
+--- whois-5.5.16.orig/mkpasswd.c
++++ whois-5.5.16/mkpasswd.c
 @@ -17,10 +17,7 @@
   */
  
@@ -13,10 +13,10 @@ Index: whois-5.2.12/mkpasswd.c
  
  /* System library */
  #include <stdio.h>
-Index: whois-5.2.12/whois.c
+Index: whois-5.5.16/whois.c
 ===================================================================
---- whois-5.2.12.orig/whois.c
-+++ whois-5.2.12/whois.c
+--- whois-5.5.16.orig/whois.c
++++ whois-5.5.16/whois.c
 @@ -7,9 +7,6 @@
   * (at your option) any later version.
   */
@@ -27,16 +27,16 @@ Index: whois-5.2.12/whois.c
  /* System library */
  #include <stdio.h>
  #include <stdlib.h>
-Index: whois-5.2.12/Makefile
+Index: whois-5.5.16/Makefile
 ===================================================================
---- whois-5.2.12.orig/Makefile
-+++ whois-5.2.12/Makefile
-@@ -53,7 +53,7 @@ endif
+--- whois-5.5.16.orig/Makefile
++++ whois-5.5.16/Makefile
+@@ -69,7 +69,7 @@ else
  mkpasswd_LDADD += -lcrypt
  endif
  
 -CPPFLAGS += $(DEFS) $(INCLUDES)
 +CPPFLAGS += -D_GNU_SOURCE $(DEFS) $(INCLUDES)
  
- ##############################################################################
- all: Makefile.depend whois mkpasswd pos
+ BASHCOMPDIR ?= $(shell $(PKG_CONFIG) --variable=completionsdir bash-completion 2>/dev/null || echo /etc/bash_completion.d)
+ 

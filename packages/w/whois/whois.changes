@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:39:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.16:
+  * Add bash completion support, courtesy of Ville Skyttä.
+  * Updated the .tr TLD server.
+  * Removed support for -metu NIC handles.
+
+-------------------------------------------------------------------
 Mon Jan  2 19:41:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.15:
