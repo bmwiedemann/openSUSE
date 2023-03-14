@@ -48,7 +48,7 @@ Recommends:     %{name}-dependencies-mri
 ruby-build provides a simple way to compile and install different versions of Ruby on UNIX-like systems.
 
 %package dependencies-mri
-Summary:        ruby-build dependencies for building MRI
+Summary:        Meta package for dependencies to build MRI
 Requires:       automake
 Requires:       bison
 Requires:       gcc
@@ -63,38 +63,38 @@ Requires:       readline-devel
 Requires:       tk-devel
 
 %description dependencies-mri
-ruby-build dependencies for building MRI.
+Meta package for ruby-build dependencies to build MRI.
 
 %package dependencies-jruby
-Summary:        ruby-build dependencies for building JRuby
+Summary:        Meta package for dependencies to build JRuby
 Requires:       gcc-c++
 
 %description dependencies-jruby
-ruby-build dependencies for building JRuby.
+Meta package for ruby-build dependencies to build JRuby.
 
 %package dependencies-truffleruby
-Summary:        ruby-build dependencies for building TruffleRuby
+Summary:        Meta package for dependencies to build TruffleRuby
 Requires:       gcc
 Requires:       openssl-devel
 
 %description dependencies-truffleruby
-ruby-build dependencies for building TruffleRuby.
+Meta package for ruby-build dependencies to build TruffleRuby.
 
 %package dependencies-mruby
-Summary:        ruby-build dependencies for building mruby
+Summary:        Meta package for dependencies to build mruby
 Requires:       gcc
 Requires:       git
 
 %description dependencies-mruby
-ruby-build dependencies for building mruby.
+Meta package for ruby-build dependencies to build mruby.
 
 %package dependencies-picoruby
-Summary:        ruby-build dependencies for building PicoRuby
+Summary:        Meta package for dependencies to build PicoRuby
 Requires:       gcc
 Requires:       git
 
 %description dependencies-picoruby
-ruby-build dependencies for building PicoRuby.
+Meta package for ruby-build dependencies to build PicoRuby.
 
 %prep
 %setup -q
