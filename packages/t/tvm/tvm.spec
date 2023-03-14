@@ -20,9 +20,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# https://github.com/apache/tvm/issues/8577
-%define skip_python39 1
-%define skip_python310 1
 %ifarch aarch64 x86_64 ppc64le
 %bcond_without onednn
 %else
@@ -115,22 +112,12 @@ TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerato
 %package -n tvmc
 Summary:        TVM command line driver
 Requires:       libtvm = %{version}
-%if 0%{?suse_version} > 1550
-# Tumbleweed defaults to python 3.10 which is not compatible yet
-Requires:       python38-scipy
-Requires:       python38-setuptools
-Requires:       python38-tvm = %{version}
-Requires:       python38-typed-ast
-Recommends:     python38-Pillow
-Recommends:     python38-onnx
-%else
 Requires:       python3-scipy
 Requires:       python3-setuptools
 Requires:       python3-tvm = %{version}
 Requires:       python3-typed-ast
 Recommends:     python3-Pillow
 Recommends:     python3-onnx
-%endif
 
 %description -n tvmc
 TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
@@ -226,6 +213,8 @@ popd
 rm -rf %{buildroot}%{_prefix}/tvm
 # Remove .cpp file
 %python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
+# tvmc shebang should be default python, not highest available version
+sed -i -r 's|#!/usr/bin/python3(.*)|#!/usr/bin/python3|' %{buildroot}%{_bindir}/tvmc
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

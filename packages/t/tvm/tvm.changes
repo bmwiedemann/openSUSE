@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 13 16:14:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase disk size requirements
+
+-------------------------------------------------------------------
+Mon Mar 13 13:26:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable all python versions again (remaining issues are corner cases)
+- tvmc shebang should be default python, not highest available version
+
+-------------------------------------------------------------------
 Tue Mar  7 07:46:44 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to match current needs
