@@ -17,37 +17,36 @@
 
 
 Name:           xmoto
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        2D motocross platform game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://xmoto.tuxfamily.org/
-Source0:        https://github.com/xmoto/xmoto/archive/%{version}/%{version}.tar.gz
+Source0:        https://github.com/xmoto/xmoto/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
+# PATCH-FIX-UPSTREAM xmoto-install-icon.patch - fix install xmoto icon into the correct directory
+Patch0:         xmoto-install-icon.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(SDL_net)
-BuildRequires:  pkgconfig(SDL_ttf)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(lua5.1)
-BuildRequires:  pkgconfig(ode)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
-# Fix for: Failed loading SDL2 library on openSUSE Leap
-%if 0%{?suse_version} <= 1500
-BuildRequires:  pkgconfig(sdl2)
-%endif
 
 %description
 X-Moto is a challenging 2D motocross platform game, where physics play
@@ -67,20 +66,16 @@ BuildArch:      noarch
 Xmoto translations and some other architecture independent data.
 
 %prep
-%setup -q
-# Let's always use system's ode:
-rm -rf src/ode
-ln -s %{_includedir}/ode src/ode
+%autosetup -p1
 
 %build
-%cmake -DPREFER_SYSTEM_BZip2=ON -DPREFER_SYSTEM_Lua=ON -DPREFER_SYSTEM_ODE=ON -DPREFER_SYSTEM_XDG=OFF \
+%cmake -DPREFER_SYSTEM_BZip2=ON -DPREFER_SYSTEM_Lua=ON -DPREFER_SYSTEM_XDG=OFF \
     -DDEFAULT_ASIAN_TTF_FILE=%{_datadir}/fonts/truetype/bkai00mp.ttf
 %make_build
 
 %install
 %cmake_install
 %fdupes %{buildroot}%{_datadir}/locale
-install -p -D -m 644 extra/%{name}.xpm %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
 mkdir -p %{buildroot}%{_datadir}/appdata
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %suse_update_desktop_file -i %{name}
@@ -90,11 +85,11 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man6/%{name}.6%{?ext_man}
-%{_datadir}/pixmaps/xmoto.xpm
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
+%{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files data -f %{name}.lang
 %{_datadir}/%{name}

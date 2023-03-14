@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar 11 18:55:36 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.6.2
+  * X-Moto now uses SDL2 for window handling, input etc
+  * Added:
+    * Shortcut to view level info
+    * Shortcut for connecting / disconnecting from the server
+    * Button for clearing level cache
+    * File drag & drop support
+    * File associations
+    * Support for high refresh rate screens
+  * Improved controller support in menus
+  * Default theme changed to 'Classic'
+  * Safemode now prevents you from restarting in the death screen
+    if a checkpoint has been reached
+  * In 'beating mode', if you have not reached a checkpoint,
+    the 'return to checkpoint' key takes you to the start of
+    the level
+  * Log files are now kept for longer
+  * UI improvements:
+    * Improved text boxes (with pasting support and word jumping etc)
+    * Scrollable admin console
+  * Added new options:
+    * Hide sprites in ugly mode and minimap
+    * Max frame rate
+    * Native/software cursor
+  * Updated translations:
+    * Russian
+    * Swedish
+    * Danish
+  * Bug fixes:
+    * The window is now properly focused when alt-tabbing
+    * Fixed various memory leaks and crashes
+- Add xmoto-install-icon.patch, fix install xmoto icon into the
+  correct directory
+- Removed BuildRequires pkgconfig(ode), because xmoto dropped
+  system ode support: https://github.com/xmoto/xmoto/commit/bd78a39
+
+-------------------------------------------------------------------
 Tue Jan 17 16:34:55 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires SDL2 for openSUSE Leap: fix for building with
