@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:06:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 3.5.6 (wrt Kubernetes v1.23.17 https://github.com/kubernetes/kubernetes/blob/v1.23.17/build/dependencies.yaml)
+  * version: bump up to 3.5.6
+  * release: build with consistent paths
+  * client/pkg/fileutil: add missing logger to {Create,Touch}DirAll
+  * test: add test case to cover the CommonName based authentication
+  * test: add certificate with root CommonName
+  * clientv3: do not refresh token when using TLS CommonName based authentication
+
+-------------------------------------------------------------------
 Wed Dec  8 15:59:34 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Initial Package 

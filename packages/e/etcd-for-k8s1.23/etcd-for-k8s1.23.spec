@@ -1,7 +1,7 @@
 #
 # spec file for package etcd-for-k8s1.23
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project go.etcd.io/etcd
 
 Name:           etcd-for-k8s1.23
-Version:        3.5.1
+Version:        3.5.6
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        vendor-etcdctl.tar.gz
 Source2:        vendor-server.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.19
 ExcludeArch:    %ix86
 ExcludeArch:    s390
 Conflicts:      etcd
