@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 14:39:48 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.9
+  - Add support for pam_lastlog2
+
+-------------------------------------------------------------------
 Thu Jan 12 14:01:17 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Added pam-config-rpmlintrc in order to ignore the rpmlint check

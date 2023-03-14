@@ -708,4 +708,13 @@
     <comment></comment>
     <requestid>1058019</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>8f57296327393447cc7d2bd3cdd04627</srcmd5>
+    <version>1.9</version>
+    <time>1678814152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9
+  - Add support for pam_lastlog2</comment>
+    <requestid>1071168</requestid>
+  </revision>
 </revisionlist>
