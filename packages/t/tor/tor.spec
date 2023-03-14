@@ -1,7 +1,7 @@
 #
 # spec file for package tor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,9 @@ Source100:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256
 Source101:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum.asc
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
+%if 0%{?suse_version} > 1500
+BuildRequires:  libscrypt-devel
+%endif
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils

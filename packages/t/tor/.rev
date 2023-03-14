@@ -1012,4 +1012,12 @@ nicer version with try-reload-or-restart</comment>
   * fix relay channel handling</comment>
     <requestid>1058127</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>852328b99db2fa3e5f59302e42f189ad</srcmd5>
+    <version>0.4.7.13</version>
+    <time>1678814243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071428</requestid>
+  </revision>
 </revisionlist>
