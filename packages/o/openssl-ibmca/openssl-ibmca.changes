@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 11:35:44 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated .spec file removed '#' from the line containing
+  'sed -e 's/^dynamic_path/#dynamic_path/' (bsc#1209038)
+- Added in %files 
+  * /usr/lib64/engines-3/ibmca-provider.la
+  * /usr/lib64/engines-3/ibmca-provider.so
+
+-------------------------------------------------------------------
 Tue Oct  4 19:33:57 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.3.1 (jsc#PED-597)

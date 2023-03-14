@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2018-2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,13 +73,16 @@ cp -p %{SOURCE1} %{buildroot}%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 grep -v "^#" src/engine/openssl.cnf.sample | \
     sed -n -e '/^\[ibmca_section\]/,$ p' | \
     sed -e '/^$/ {N;N;s/\n\n/\n/g;}' | \
-    sed -e 's/^dynamic_path/#dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
+    sed -e 's/^dynamic_path/dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 
 %post
 #Original fix for bsc#942839 was to update on first install
 #For bsc#966139 update if openssl_def not found
 SSLENGCNF=%{_sysconfdir}/ssl/engines.d
 SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
+
+mkdir -p ${SSLENGCNF}
+mkdir -p ${SSLENGDEF}
 
 cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt ${SSLENGCNF}/openssl-ibmca.cnf
 cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf ${SSLENGDEF}/openssl-ibmca.cnf
@@ -102,6 +105,9 @@ fi
 %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 %{enginesdir}/ibmca.*
+/usr/lib64/engines-3/ibmca-provider.la
+/usr/lib64/engines-3/ibmca-provider.so
 %{_mandir}/man5/ibmca.5%{?ext_man}
+%{_mandir}/man5/ibmca-provider.5.gz
 
 %changelog
