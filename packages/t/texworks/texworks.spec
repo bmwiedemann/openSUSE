@@ -1,7 +1,7 @@
 #
 # spec file for package texworks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2007-09 by Jonathan Kew.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           texworks
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        TeXshop-like TeX Editor
 License:        GPL-2.0-or-later

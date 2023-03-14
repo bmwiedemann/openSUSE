@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:40:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.8:
+  * Make the maximum RAM usage of the PDF previewer configurable
+    (and reduce the default to 256 MiB).
+  * Enable typesetting from preview if no source is open.
+  * Make the PDF paper color configurable.
+  * Add AppImage support.
+  * Speed up populating the recently opened files menu
+    (particularly when containing files on slow network drives).
+  * Disable the typesetting button in the preview if no source is
+    available.
+  * Update translations.
+  * Refactor and modernize parts of the code.
+  * Bug fixes:
+    - Fix crash when closing a source opened after the preview.
+    - Fix crash when killing a typesetting process by closing the
+      source window.
+    - Fix several memory leaks.
+    - Fix the PDF preview of files that are in the process of
+      being changed (e.g., during typesetting).
+    - Fix focusing of the console when typesetting from the
+      preview.
+    - Fix (potential) non-sequential ordering of PDF search
+      results.
+    - Fix repeated PDF searches with the same search string but
+      different search flags.
+    - Fix blocking UI while performing long PDF searches.
+    - Fix PDF search result highlighting disappearing too quickly.
+    - Fix the display of PDF search results in single page view.
+    - Fix typesetting with symlinked root files.
+    - Fix quotation of paths in the TEXEDIT & MIKTEX_EDITOR
+      environment variables.
+    - Pre-select the ruler unit in the "Edit guideline" dialog.
+
+-------------------------------------------------------------------
 Sat Mar  5 17:10:27 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.7:
