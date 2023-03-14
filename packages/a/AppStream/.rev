@@ -375,4 +375,12 @@ Features:
     <comment>- Add ldconfig_scriptlets for libappstream-compose (forwarded request 1068217 from favogt)</comment>
     <requestid>1068218</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c91ed1449575c6610b147198843a05f9</srcmd5>
+    <version>0.16.1</version>
+    <time>1678814153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071181</requestid>
+  </revision>
 </revisionlist>

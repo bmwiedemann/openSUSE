@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 10:23:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream fix for new glib-2.76:
+  * bfa8fa6ac4ef645368a93384a6c16ac551a40922.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 14:57:58 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 0.16.1:
