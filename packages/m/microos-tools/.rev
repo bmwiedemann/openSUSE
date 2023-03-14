@@ -243,4 +243,12 @@
   - Fix spelling error in warning</comment>
     <requestid>1060456</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1f98a0c01fcd16e1141686a67f72a838</srcmd5>
+    <version>2.19</version>
+    <time>1678814130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071802</requestid>
+  </revision>
 </revisionlist>

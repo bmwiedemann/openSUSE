@@ -19,12 +19,12 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            https://github.com/kubic-project/microos-tools
+URL:            https://github.com/openSUSE/microos-tools
 Source:         https://github.com/openSUSE/microos-tools/releases/download/v%{version}/microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
 Source2:        microos-tmp.conf

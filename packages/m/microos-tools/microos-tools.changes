@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 14 14:25:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update URL
+- Update to version 2.19:
+  - configure.ac: Run autoupdate to fix some deprecation warnings
+  - Clean up selinux-autorelabel-generator and make it compatible with systemd 253
+
+-------------------------------------------------------------------
 Thu Jan 19 10:49:29 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.18:
