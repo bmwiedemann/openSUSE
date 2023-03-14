@@ -33,7 +33,11 @@ BuildRequires:  mupdf-devel-static >= 1.20
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(jbig2dec)
+%else
+BuildRequires:  jbig2dec-devel
+%endif
 BuildRequires:  pkgconfig(lept)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
