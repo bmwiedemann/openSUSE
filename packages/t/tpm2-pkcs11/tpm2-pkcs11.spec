@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-pkcs11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver  0
 %define pythons python3
 Name:           tpm2-pkcs11
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A PKCS#11 interface for TPM2 hardware
 License:        BSD-2-Clause
