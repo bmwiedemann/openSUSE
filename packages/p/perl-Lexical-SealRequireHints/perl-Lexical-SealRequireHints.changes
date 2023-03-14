@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Mar 11 03:06:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.012
+   see /usr/share/doc/packages/perl-Lexical-SealRequireHints/Changes
+
+  version 0.012; 2023-03-10
+    * bugfix: comprehensive set of preemptive loads of modules for which
+      a delayed load might have been compiled while loading this module
+    * bugfix: if AutoLoader was loaded during (or before) loading this
+      module, flush its compiled code and reload it, to make subsequent
+      autoloads of *.al files not leak hints
+    * bugfix: if utf8_heavy.pl was loaded during (or before) loading this
+      module, flush its compiled code and reload it, to make subsequent
+      loads of Unicode data files not leak hints
+    * bugfix: perform preemptive loads, of modules for which a delayed
+      load might have been compiled while loading this module, regardless
+      of whether XS module loading was successful
+    * bugfix: also work around hint leakage affecting do-file, which
+      suffers exactly the same problem as require
+    * correct thread behaviour: make the XS implementation behave the way
+      the pure Perl implementation already did, by not applying workaround
+      until it has been requested in a particular thread (including being
+      requested pre-cloning in a thread from which this thread was cloned)
+    * be more conservative about maintaining op tree structure
+    * port to Perl 5.33.1, which defines a PERL_VERSION_GE() macro that
+      clashes with the one this module previously had
+    * delay the preemptive module loads, of modules potentially subject
+      to early-compiled delayed loads, until applying the fix
+    * update swash test for Perl 5.27.11, which avoids actually loading
+      swashes most of the time
+    * skip thread tests on some old versions of Perl (around 5.10.0) where
+      a core bug makes thread creation violate an internal assertion and
+      causes crashes
+    * skip thread tests on pre-5.8.9 Perls where a core bug makes thread
+      creation corrupt memory
+    * skip thread tests on pre-5.8.3 Perls where a core bug makes thread
+      completion break the global PL_sv_placeholder
+    * in t/override.t, make the test overrides of require() provide the
+      correct context to the file scope of each file being loaded
+    * test the point at which the workaround goes into effect
+    * in documentation, describe the bug affecting "do" on Perls 5.15.{5..7}
+    * in documentation, use four-column indentation for all verbatim
+      material
+    * in META.{yml,json}, point to public bug tracker
+    * use full stricture in the module, now that delayed module loads
+      compiled while loading this module are properly handled so there's
+      no need to try avoiding them entirely
+    * in XS, better argument parenthesisation in a macro
+    * avoid some compiler warnings that arise on Perl 5.6
+    * fix indentation in the reserve definition of wrap_op_checker()
+
+-------------------------------------------------------------------
 Tue Jul 25 05:43:20 UTC 2017 - coolo@suse.com
 
 - updated to 0.011
