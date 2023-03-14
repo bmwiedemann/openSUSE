@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Mar 14 07:12:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.1.1:
+  * Release 12.1.1 (#23016)
+  * [v12] Hide upgrade-related alerts from dashboards (#22991)
+  * Hide download center when not on dashboards and prevent license
+    gRPC endpoint from being called (#22965) (#22980)
+  * Web-Discover: Add support for connection testers with
+    per-session MFA enabled (#22529) (#22943)
+  * [v12] Add docs for Connect usage reporting (#22661)
+  * fix leave session command (#22795)
+  * Fix usagereporter tests (#22968)
+  * [v12] Remove docs reference and video that users can
+    approve/deny within PagerDuty (#22939)
+  * [v12] Export CRL and Database CA in DER format (#22896)
+  * docs: include a separate page for OSS access requests (#22946)
+  * macOS-compatible grep (#22759)
+  * Use 13px font size in a `Notification` (#22870)
+  * [v12] Swap out select for poll (#22676) and Loop for poll
+    (#22746) (#22798)
+  * [Web] Make language on mfa verify step dialog more clear
+    (#20825) (#22924)
+  * Fix panic when AuditWriter fails on moderated sessions (#22930)
+  * [v12] Add per-session mfa support to connection testers
+    (#22918)
+  * update eref (#22937)
+  * fix select box sizing (#22686)
+  * Make the NodeWatcher more robust (#22910)
+  * Add idle connection timeouts to http clients and servers
+    (#22885) (#22908)
+  * Remove the permissions alias. (#22909)
+  * [v12] chore: Bump gci and golangci-lint (#22900)
+  * Drop local_auth/second_factor warning (#22859)
+  * Update e ref. (#22905)
+  * [v12] Connect: Provide prehog address for prod env (#22876)
+  * [v12] Emit new `AgentMetadataEvent` (#22879)
+  * chore: Bump Buf to v1.15.1 (#22856)
+  * Ensure that the `webclient` closes connections
+    (#22832) (#22893)
+  * [v12] Connect: Remove leftovers from resource cache removal
+    (#22884)
+  * docs: mention how to get the correct API version (#22812)
+  * [v12] Return Public Web Port in TLS mode for postgres when
+    listen addr specified. (#22889)
+  * Idp Docs Fixes (#22853)
+  * Added 03/09 Upcoming Releases Update (#22846)
+  * [v12] Add documentation for tsh --trace-exporter (#22837)
+  * Move the authorizer into its own package. (#22825)
+  * [v12] Interface for processing SAML IdP request signing on
+    auth server. (#22801)
+  * Do not check os groups when user exits (#22805)
+  * [v12] Deduplicate multiplexer detection errors over 1-minute
+    windows (#22802)
+  * Validate static labels assigned to Kubernetes service
+    (#22701) (#22777)
+  * [v12] AWS Terraform doc updates (#22786)
+  * Cherry-pick 6c58a9e (#22785)
+  * usagereporter: Allow multiple batch submissions in a row
+    (#22711) (#22788)
+  * [v12] Use the teleport-ent package on enterprise clusters in
+    the discovery installer (#22769)
+  * Add correct link in place of placeholder for Telemetry docs
+    (#22781)
+  * Docs teleport and golang version (#22765)
+  * [v12] Docs: Fix AWS Terraform Snippets  (#22743)
+  * The SAML IdP CA will be handled during auth.Init. (#22721)
+  * [v12] Improve error messages for tsh login connectivity and ssh
+    port (#22763)
+  * [v12] Reorganize the config reference (#22271)
+  * [v12] chore: Bump Go to 1.19.7 (#22725)
+  * [v12] SAML identity provider docs. (#22625)
+  * NodeJoin Script: clear yum repo cache (#22585)
+  * Improve tctl auth export docs/help (#22681)
+
+-------------------------------------------------------------------
 Tue Mar 07 05:48:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.1.0:
