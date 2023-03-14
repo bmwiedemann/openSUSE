@@ -1,7 +1,7 @@
 #
 # spec file for package python-ligotimegps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,11 +28,9 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pytest >= 2.8}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six
 BuildArch:      noarch
 
 %python_subpackages
@@ -62,9 +60,12 @@ this module.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ligotimegps*
 
 %changelog

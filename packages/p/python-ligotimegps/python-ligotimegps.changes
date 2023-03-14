@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:48:01 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+- test the package
+
+-------------------------------------------------------------------
 Tue Dec 14 12:35:00 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
