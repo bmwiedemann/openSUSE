@@ -7,4 +7,12 @@
     <comment>New package etcd-for-k8s1.24 v3.5.3</comment>
     <requestid>984013</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5070dc62cf364c4655503b18cb928a75</srcmd5>
+    <version>3.5.6</version>
+    <time>1678814253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071461</requestid>
+  </revision>
 </revisionlist>

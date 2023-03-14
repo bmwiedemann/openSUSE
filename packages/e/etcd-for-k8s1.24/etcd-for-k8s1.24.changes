@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:05:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 3.5.6:
+  * version: bump up to 3.5.6
+  * release: build with consistent paths
+  * client/pkg/fileutil: add missing logger to {Create,Touch}DirAll
+  * test: add test case to cover the CommonName based authentication
+  * test: add certificate with root CommonName
+  * clientv3: do not refresh token when using TLS CommonName based authentication
+  * etcdserver: call the OnPreCommitUnsafe in unsafeCommit
+  * add range flag for delete in etcdctl
+  * server: add more context to panic message
+  * clientv3: fix the design & implementation of double barrier
+  * test: added e2e test case for issue 14571: etcd doesn't load auth info when recovering from a snapshot
+  * etcdserver: call refreshRangePermCache on Recover() in AuthStore. #14574
+  * server: add a unit test case for authStore.Reocver() with empty rangePermCache
+  * client/v3: Add backoff before retry when watch stream returns unavailable
+  * etcdserver: added more debug log for the purgeFile goroutine
+  * netutil: make a `raw` URL comparison part of the urlsEqual function
+  * Apply suggestions from code review
+  * netutil: add url comparison without resolver to URLStringsEqual
+  * tests/Dockerfile: Switch to ubuntu 22.04 base
+  * Makefile: Additional logic fix
+  * *: avoid closing a watch with ID 0 incorrectly
+  * tests: a test case for watch with auth token expiration
+  * *: handle auth invalid token and old revision errors in watch
+  * server/etcdmain: add configurable cipher list to gRPC proxy listener
+  * Replace github.com/form3tech-oss/jwt-go with https://github.com/golang-jwt/jwt/v4
+  * fix the flaky test fix_TestV3AuthRestartMember_20220913 for 3.5
+  * etcdctl: fix move-leader for multiple endpoints
+  * testing: fix TestOpenWithMaxIndex cleanup
+  * server,test: refresh cache on each NewAuthStore
+  * server/etcdmain: add build support for Apple M1
+  * tests: Fix member id in CORRUPT alarm
+  * server: Make corrtuption check optional and period configurable
+  * server: Implement compaction hash checking
+  * tests: Cover periodic check in tests
+  * server: Refactor compaction checker
+  * tests: Move CorruptBBolt to testutil
+  * tests: Rename corruptHash to CorruptBBolt
+  * tests: Unify TestCompactionHash and extend it to also Delete keys and Defrag
+  * tests: Add tests for HashByRev HTTP API
+  * tests: Add integration tests for compact hash
+  * server: Cache compaction hash for HashByRev API
+  * server: Extract hasher to separate interface
+  * server: Remove duplicated compaction revision
+  * server: Return revision range that hash was calcualted for
+  * server: Store real rv range in hasher
+  * server: Move adjusting revision to hasher
+  * server: Pass revision as int
+  * server: Calculate hash during compaction
+  * server: Fix range in mock not returning same number of keys and values
+  * server: Move reading KV index inside scheduleCompaction function
+  * server: Return error from scheduleCompaction
+  * server: Refactor hasher
+  * server: Extract kvHash struct
+  * server: Move unsafeHashByRev to new hash.go file
+  * server: Extract unsafeHashByRev function
+  * server: Test HashByRev values to make sure they don't change
+  * server: Cover corruptionMonitor with tests
+  * server: Extract corruption detection to dedicated struct
+  * server: Extract triggerCorruptAlarm to function
+  * move consistent_index forward when executing alarmList operation
+  * fix the potential data loss for clusters with only one member
+  * [backport 3.5] server: don't panic in readonly serializable txn
+  * Refactor the keepAliveListener and keepAliveConn
+  * clientv3: close streams after use in lessor keepAliveOnce method
+  * Change default sampling rate from 100% to 0%
+  * Fix the failure in TestEndpointSwitchResolvesViolation
+  * move setupTracing into a separate file config_tracing.go
+  * etcdserver: bump OpenTelemetry to 1.0.1
+  * Change default sampling rate from 100% to 0%
+  * server/auth: protect rangePermCache with a RW lock
+  * Improve error message for incorrect values of ETCD_CLIENT_DEBUG
+  * add e2e test cases to cover the maxConcurrentStreams
+  * Add flag `--max-concurrent-streams` to set the max concurrent stream each client can open at a time
+  * add the uint32Value data type
+  * Client: fix check for WithPrefix op
+  * client/v3: do not overwrite authTokenBundle on dial
+  * restrict the max size of each WAL entry to the remaining size of the file
+  * Add FileReader and FileBufReader utilities
+  * Backport two lease related bug fixes to 3.5
+  * scripts: Detect staged files before building release
+  * scripts: Avoid additional repo clone
+  * scripts: Add tests for release scripts
+  * server/auth: enable tokenProvider if recoved store enables auth
+  * Update golang.org/x/crypto to latest
+  * Update conssitent_index when applying fails
+  * Add unit test for canonical SRV records
+  * Revert "trim the suffix dot from the srv.Target for etcd-client DNS lookup"
+
+-------------------------------------------------------------------
 Mon Jun 20 15:05:49 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Remove duplicate files go.mod, go.sum present in etcdctl source

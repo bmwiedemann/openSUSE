@@ -1,7 +1,7 @@
 #
 # spec file for package etcd-for-k8s1.24
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project go.etcd.io/etcd
 
 Name:           etcd-for-k8s1.24
-Version:        3.5.3
+Version:        3.5.6
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
