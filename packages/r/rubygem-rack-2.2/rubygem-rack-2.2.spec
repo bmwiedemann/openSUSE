@@ -24,18 +24,13 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.6.2
+Version:        2.2.6.3
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -2.2
 # MANUAL
 BuildRequires:  fdupes
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%define rb_build_versions ruby23 ruby24 ruby25
-%define rb_build_ruby_abi ruby:2.3.0 ruby:2.4.0 ruby:2.5.0
-%endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
