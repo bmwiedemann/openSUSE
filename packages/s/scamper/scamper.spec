@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20230224
+Version:        20230302
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -42,14 +42,15 @@ fragmentation required message is not returned to establish the PMTU
 to the next point in the network, followed by a TTL limited search to
 infer where the failure appears to occur.
 
-%package -n libscamperfile4
+%package -n libscamperfile5
 Summary:        File access library for scamper's binary dump format
 Group:          System/Libraries
 Obsoletes:      libscamperfile1 < %{version}
 Obsoletes:      libscamperfile2 < %{version}
 Obsoletes:      libscamperfile3 < %{version}
+Obsoletes:      libscamperfile4 < %{version}
 
-%description -n libscamperfile4
+%description -n libscamperfile5
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -62,7 +63,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile4 = %{version}-%{release}
+Requires:       libscamperfile5 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -114,9 +115,9 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile4 -p /sbin/ldconfig
+%post   -n libscamperfile5 -p /sbin/ldconfig
 %post   -n libscamperctrl1 -p /sbin/ldconfig
-%postun -n libscamperfile4 -p /sbin/ldconfig
+%postun -n libscamperfile5 -p /sbin/ldconfig
 %postun -n libscamperctrl1 -p /sbin/ldconfig
 
 %files
@@ -126,7 +127,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
-%files -n libscamperfile4
+%files -n libscamperfile5
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel

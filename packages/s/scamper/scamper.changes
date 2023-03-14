@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  7 09:28:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20230302:
+ - scamper:
+  * use a random source port / ICMP ID in trace if -s 0.
+  * better parallelize pings to a single destination that use
+    udp-dport, tcp-ack-sport, or tcp-syn-sport probe methods.
+  * document default value of source port consistently for all
+    measurements that take a source port parameter in the man page.
+ - sc_wartscat:
+  * print useful error messages when encountering an error.
+  * add ability to merge neighbourdisc, tbit, sting, sniff, and host.
+
+-------------------------------------------------------------------
 Fri Feb 24 07:32:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20230224:
