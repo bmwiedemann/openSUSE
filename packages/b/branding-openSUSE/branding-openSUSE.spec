@@ -20,7 +20,7 @@
 %define theme_name openSUSE
 %define theme_version tumbleweed
 %define theme_version_clean Tumbleweed
-%define date 20210910
+%define date 20230227
 
 %ifarch x86_64 %{ix86}
 %define gfxboot 1
@@ -41,7 +41,6 @@ BuildRequires:  GraphicsMagick
 BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 BuildRequires:  fdupes
 BuildRequires:  fribidi
-BuildRequires:  optipng
 %if 0%{?suse_version} >= 1550
 # rsvg-convert used to be packaged together with rsvg-view in one package. With the removal
 # of the rsvg-view program, this package was renamed to rsvg-convert (which is more fitting)
