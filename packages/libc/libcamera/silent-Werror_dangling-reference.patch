@@ -1,0 +1,21 @@
+diff --git a/src/apps/cam/file_sink.cpp b/src/apps/cam/file_sink.cpp
+index b32aad24..9a543dc1 100644
+--- a/src/apps/cam/file_sink.cpp
++++ b/src/apps/cam/file_sink.cpp
+@@ -114,7 +114,16 @@ void FileSink::writeBuffer(const Stream *stream, FrameBuffer *buffer,
+ 	}
+ 
+ 	for (unsigned int i = 0; i < buffer->planes().size(); ++i) {
++
++#if __GNUC__ >= 13
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wdangling-reference"
++#endif
++
+ 		const FrameMetadata::Plane &meta = buffer->metadata().planes()[i];
++#if __GNUC__ >= 13
++#pragma GCC diagnostic pop
++#endif
+ 
+ 		Span<uint8_t> data = image->data(i);
+ 		unsigned int length = std::min<unsigned int>(meta.bytesused, data.size());

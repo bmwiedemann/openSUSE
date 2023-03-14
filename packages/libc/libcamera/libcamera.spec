@@ -28,6 +28,7 @@ URL:            http://libcamera.org/
 
 Source:         %name-%version.tar.xz
 Source1:        baselibs.conf
+Patch0:         silent-Werror_dangling-reference.patch
 
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
