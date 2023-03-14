@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 11 04:17:51 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7.2:
+  * merge all doc to one README.md
+  * adjust path to default configuration (sync with rpm)
+  * fix bug in secure_vm (missing LaunchSecurity part)
+
+-------------------------------------------------------------------
 Fri Mar  8 10:31:15 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 0.7.0:
