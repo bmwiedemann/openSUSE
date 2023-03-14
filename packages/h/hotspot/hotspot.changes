@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:12:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Replace 0001-Prevent-running-hotspot-as-root.patch with
+  upstream change (boo#1209206, CVE-2023-28144):
+  * 0001-Opt-in-via-CMake-to-allow-privilege-escalation.patch
+
+-------------------------------------------------------------------
+Wed Mar  1 08:31:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.4.1:
+  * improved disassembly view with a godbolt-like source code
+    annotation
+  * the self cost columns for tracepoints are now hidden by default
+  * more flexible window layouting with KDDockWidgets
+  * you can export and import data from hotspot in a custom
+    format that is efficient to load and self-contained
+  * analysis data can be grouped by thread, process or CPU
+  * demangling for the D programming language
+  * a new frequency page that shows how often certain events got
+    measured, which can also indicate the CPU frequency scaling
+    when cycles are measured
+- Drop patch, merged upstream:
+  * 0001-CMake-Don-t-assume-KDE_INSTALL_-variables-are-relati.patch
+- Add patch to prevent running hotspot as root (boo#1208808)
+  * 0001-Prevent-running-hotspot-as-root.patch
+
+-------------------------------------------------------------------
 Thu May 12 05:29:10 UTC 2022 - Lubos Lunak <l.lunak@centrum.cz>
 
 - Enable zstd support.
