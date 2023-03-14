@@ -1,7 +1,7 @@
 #
 # spec file for package python-dmidecode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%define modname dmidecode
 Name:           python-dmidecode
 Version:        3.12.3
 Release:        0
@@ -26,7 +26,7 @@ License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://github.com/nima/python-dmidecode
 Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%{version}.tar.gz#/python-dmidecode-%{version}.tar.gz
-# Source0:        python-dmidecode-%{version}.tar.gz
+Source99:       python-dmidecode.rpmlintrc
 # PATCH-FIX-UPSTREAM gcc7-inline.patch gh#nima/python-dmidecode#35 mcepl@suse.com
 # Don't use inline keyword.
 Patch1:         gcc7-inline.patch
@@ -36,21 +36,21 @@ Patch2:         31-version_info-v-version.patch
 # PATCH-FIX-UPSTREAM detect-lib-with-py3.patch gh#nima/python-dmidecode#36 mcepl@suse.com
 #  Make the code future-proof against removal of distutils module.
 Patch3:         detect-lib-with-py3.patch
-Obsoletes:      %{oldpython}-dmidecode <= %{version}
-Obsoletes:      python-python-dmidecode <= %{version}
 BuildRequires:  %{python_module devel}
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module libxml2}
-%else
-BuildRequires:  python2-libxml2-python
-BuildRequires:  python3-libxml2-python
-%endif
 BuildRequires:  fdupes
 BuildRequires:  libxml2-devel
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Obsoletes:      %{oldpython}-dmidecode <= %{version}
+Obsoletes:      python-python-dmidecode <= %{version}
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module libxml2}
+%else
+BuildRequires:  python2-libxml2-python
+BuildRequires:  python3-libxml2-python
+%endif
 %python_subpackages
 
 %description
@@ -62,6 +62,7 @@ structures or as XML data using libxml2.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags}"
 %{python_expand export LDFLAGS="-Wl,-rpath=%{$python_sitearch}"
 %make_build PY_BIN=$python build
 }
@@ -82,7 +83,7 @@ ln -s %{_sysconfdir}/alternatives/pymap.xml \
 %check
 pushd unit-tests
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-make PY_BIN=$python
+%make_build PY_BIN=$python
 }
 popd
 
@@ -107,7 +108,8 @@ fi
 %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
 # %%{python_sitearch}/python_dmidecode-%%{version}*-info
 %{python_sitearch}/python_dmidecode-3.12.2*-info
-%{python_sitearch}/dmidecode*
-%pycache_only %{python_sitearch}/__pycache__/dmidecode*.py[co]
+%{python_sitearch}/dmidecode.py
+%{python_sitearch}/dmidecodemod.*.so
+%pycache_only %{python_sitearch}/__pycache__/dmidecode*.pyc
 
 %changelog

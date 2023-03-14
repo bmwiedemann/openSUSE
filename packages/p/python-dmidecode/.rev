@@ -112,4 +112,14 @@
 </comment>
     <requestid>1036837</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9b10f44e32cd35599225ff2ca338cc81</srcmd5>
+    <version>3.12.3</version>
+    <time>1678814259</time>
+    <user>dimstar_suse</user>
+    <comment>- In the end just a cosmetical changes and cleaning up the SPEC
+  file.
+</comment>
+    <requestid>1071473</requestid>
+  </revision>
 </revisionlist>
