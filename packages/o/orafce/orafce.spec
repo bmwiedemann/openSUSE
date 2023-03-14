@@ -20,13 +20,13 @@
 %define		realname orafce
 
 Name:           %{pgname}-orafce
-Version:        4.1.1+git0.519b5b5
+Version:        4.2.1+git0.82ab40c
 Release:        0
 Summary:        Implementation of some Oracle functions into PostgreSQL
 Group:          Productivity/Databases/Tools
 License:        MIT
 URL:            https://github.com/orafce/orafce
-Source0:        %{realname}-%{version}.tar.xz
+Source0:        %{realname}-%{version}.tar.gz
 BuildRequires:  %{pgname}-server-devel
 BuildRequires:  bison
 BuildRequires:  flex

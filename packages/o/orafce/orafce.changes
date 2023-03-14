@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 14 08:59:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.2.1+git0.82ab40c:
+  * prepare for 4.2.1
+  * fix build Postgres 15
+  * update copyright year
+  * formmatting, removing white spaces
+  * typo
+  * update copyright year
+  * Use function _wfopen on WIN32 platform instead fopen. It should to work with file names where are used not ANSI chars.
+  * fix PostgreSQL 15 build
+  * fix build for PostgreSQL 16
+  * Update README.asciidoc
+  * possibility to use gen_random_uuid for making result in sys_guid function
+  * fix build for all supported pg releases
+  * implementation of oracle.sys_guid() based on uuid-ossp
+
+-------------------------------------------------------------------
 Fri Feb 10 10:38:48 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Added "Name:" tag. 
