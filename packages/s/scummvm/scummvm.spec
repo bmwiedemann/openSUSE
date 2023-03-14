@@ -31,6 +31,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libieee1284-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 0.9
@@ -111,7 +112,9 @@ CXXFLAGS="%{optflags}" ; export CXXFLAGS ; \
             --enable-verbose-build \
             --enable-plugins \
             --enable-engine-dynamic=lastexpress \
-            --enable-engine-dynamic=wintermute
+            --enable-engine-dynamic=wintermute \
+            --enable-opl2lpt
+
 # Subengines are not included even as dynamic since I don't want to touch the main engines
 make %{?_smp_mflags}
 
