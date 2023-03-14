@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230313" schemaversion="4.1">
+<image name="OBS__openSUSE___20230314" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230313</productvar>
+      <productvar name="VERSION">20230314</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230313,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230314,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230313/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230314/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1637,7 +1637,6 @@
       <repopackage name="libgio-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgirepository-1_0-1"/>
-      <repopackage name="libgit2-1_5"/>
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
@@ -3732,7 +3731,6 @@
       <repopackage name="python310-Babel"/>
       <repopackage name="python310-base"/>
       <repopackage name="python310-Brotli"/>
-      <repopackage name="python310-cached-property"/>
       <repopackage name="python310-certifi"/>
       <repopackage name="python310-cffi"/>
       <repopackage name="python310-chardet"/>
@@ -3808,7 +3806,6 @@
       <repopackage name="python310-pycparser"/>
       <repopackage name="python310-pycups"/>
       <repopackage name="python310-pycurl"/>
-      <repopackage name="python310-pygit2"/>
       <repopackage name="python310-Pygments"/>
       <repopackage name="python310-pyinotify"/>
       <repopackage name="python310-pyOpenSSL"/>
@@ -4715,6 +4712,7 @@
       <repopackage name="wget-lang"/>
       <repopackage name="which"/>
       <repopackage name="whois"/>
+      <repopackage name="whois-bash-completion"/>
       <repopackage name="wicked"/>
       <repopackage name="wicked-service"/>
       <repopackage name="WindowMaker"/>
