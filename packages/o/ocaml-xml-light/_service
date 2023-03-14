@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-xml-light</param>
-    <param name="revision">dune</param>
+    <param name="revision">fd62588fb7515e61d43771d885f585d3cd3fb9ca</param>
     <param name="scm">git</param>
-    <param name="url">https://github.com/olafhering/ocaml-xml-light.git</param>
-    <param name="versionformat">2.4.%cd.%h</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ncannasse/xml-light.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

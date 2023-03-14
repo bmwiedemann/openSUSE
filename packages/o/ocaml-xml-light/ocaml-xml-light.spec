@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-xml-light
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-xml-light
-Version:        2.4.20191104.4615265
+Version:        2.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Minimal XML parser and printer for OCaml
 License:        LGPL-2.1+
 Group:          Development/Languages/OCaml
-Url:            https://github.com/gasche/xml-light
-Source0:        %{name}-%{version}.tar.xz
+Url:            https://opam.ocaml.org/packages/xml-light
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-dune >= 2.7
+BuildRequires:  ocaml-rpm-macros >= 20230101
 
 %description
 Xml-Light is a minimal XML parser & printer for OCaml. It provides
@@ -37,13 +37,13 @@ parsing and checking, and is entirely written in OCaml, hence it does
 not require additional C library.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -60,8 +60,8 @@ dune_release_pkgs='xml-light'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
