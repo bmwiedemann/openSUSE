@@ -90,4 +90,19 @@
     <comment></comment>
     <requestid>910346</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb426d1771d1e4502061edba67e52181</srcmd5>
+    <version>0.22.0</version>
+    <time>1678814198</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file and tighten it a bit to be less
+  all-accepting.
+- version update to 0.22.0
+  - Remove python 2.x support [:issue:`373` by anthony sottile].
+  - Remove deprecated ``sassc`` cli [:issue:`379` by anthony sottile].
+- python-six is not required
+- do not conflict with sassc package
+</comment>
+    <requestid>1071186</requestid>
+  </revision>
 </revisionlist>

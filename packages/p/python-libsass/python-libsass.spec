@@ -1,7 +1,7 @@
 #
 # spec file for package python-libsass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define _name   libsass-python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libsass
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Python binding for libsass
 License:        MIT
@@ -29,17 +28,13 @@ Source:         https://github.com/sass/libsass-python/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsass-devel >= 3.6.4
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-# Both are providing sassc binary with different parameters
-Conflicts:      sassc
 # SECTION test requirements
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module pytest}
@@ -54,30 +49,37 @@ with no Ruby stack at all!
 %setup -q -n libsass-python-%{version}
 
 %build
+sed -i -e '/^#!\//, 1d' *.py
 export SYSTEM_SASS=true
 %python_build
 
 %install
 export SYSTEM_SASS=true
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/sassc
 %python_clone -a %{buildroot}%{_bindir}/pysassc
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand \
+# We don't want to install tests
+rm %{buildroot}%{$python_sitearch}/sasstests.py \
+   %{buildroot}%{$python_sitearch}/__pycache__/sasstests.*.pyc
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
 %pytest_arch sasstests.py
 
 %post
-%python_install_alternative sassc
 %python_install_alternative pysassc
 
 %postun
-%python_uninstall_alternative sassc
 %python_uninstall_alternative pysassc
 
 %files %{python_files}
 %python_alternative %{_bindir}/pysassc
-%python_alternative %{_bindir}/sassc
-%{python_sitearch}/*
+%{python_sitearch}/pysassc.py
+%{python_sitearch}/sass.py
+%{python_sitearch}/_sass*.so
+%{python_sitearch}/sassutils
+%pycache_only %{python_sitearch}/__pycache__/*sass*.pyc
+%{python_sitearch}/libsass-%{version}*-info
 
 %changelog

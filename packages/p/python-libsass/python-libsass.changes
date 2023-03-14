@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 13 16:27:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file and tighten it a bit to be less
+  all-accepting.
+
+-------------------------------------------------------------------
+Mon Mar 13 13:15:05 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.22.0
+  - Remove python 2.x support [:issue:`373` by anthony sottile].
+  - Remove deprecated ``sassc`` cli [:issue:`379` by anthony sottile].
+- python-six is not required
+- do not conflict with sassc package
+
+-------------------------------------------------------------------
 Tue Aug  3 13:10:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.21.0
