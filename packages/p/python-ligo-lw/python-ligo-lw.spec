@@ -1,7 +1,7 @@
 #
-# spec file for package python-ligo-lw
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ Patch0:         ligo-lw-segments-test-fix.patch
 Patch1:         ligo-lw-disable-doctests.patch
 # PATCH-FIX-OPENSUSE ligo-lw-disable-sqlite-test.patch badshah400@gmail.com -- Disable sqlite test that requires network resources
 Patch3:         ligo-lw-disable-sqlite-test.patch
+# https://git.ligo.org/kipp.cannon/python-ligo-lw/-/commit/693cfc4d4759c1984609effa1dde810a192fe94f
+Patch4:         python-ligo-lw-no-python2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,7 +56,6 @@ Requires:       python-lal
 Requires:       python-ligo-segments
 Requires:       python-lscsoft-glue
 Requires:       python-python-dateutil
-Requires:       python-six
 Requires:       python-tqdm
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -70,7 +71,6 @@ BuildRequires:  %{python_module lscsoft-glue}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  diffutils
 BuildRequires:  libxml2-tools

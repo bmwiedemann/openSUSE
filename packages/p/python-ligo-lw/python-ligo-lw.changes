@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 13 13:06:57 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  https://git.ligo.org/kipp.cannon/python-ligo-lw/-/commit/693cfc4d4759c1984609effa1dde810a192fe94f
+  + python-ligo-lw-no-python2.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 03:56:49 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.3:
