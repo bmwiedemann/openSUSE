@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 13 13:46:02 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- add airline and ale plugins
+
+-------------------------------------------------------------------
 Tue Nov  8 07:00:33 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add salt-syntax-avoid-multiline-lets.patch (bsc#1205034)

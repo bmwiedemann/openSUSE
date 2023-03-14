@@ -1,7 +1,7 @@
 #
 # spec file for package vim-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %define ack_version		1.0.9
+%define airline_version		0.11
+%define ale_version		3.3.0
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
@@ -99,6 +101,8 @@ Source32:       https://github.com/vim-scripts/rails.vim/archive/refs/tags/%{rai
 Source33:       https://github.com/mileszs/ack.vim/archive/refs/tags/%{ack_version}.tar.gz#/vimplugin-ack-%{ack_version}.tar.gz
 Source34:       https://github.com/editorconfig/editorconfig-vim/archive/refs/tags/v%{editorconfig_version}.tar.gz#/vimplugin-editorconfig-%{editorconfig_version}.tar.gz
 Source35:       https://github.com/tpope/vim-fugitive/archive/refs/tags/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
+Source36:       https://github.com/vim-airline/vim-airline/archive/refs/tags/v%{airline_version}.tar.gz#/vimplugin-airline-%{airline_version}.tar.gz
+Source37:       https://github.com/dense-analysis/ale/archive/refs/tags/v%{ale_version}.tar.gz#/vimplugin-ale-%{ale_version}.tar.gz
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
@@ -147,6 +151,33 @@ Provides:       vim-plugin-ag = 20160231
 
 %description -n vim-plugin-ack
 Run the ack search tool from Vim, with enhanced results listing.
+
+%package -n vim-plugin-airline
+Version:        %airline_version
+Release:        0
+Summary:        Lean & mean status/tabline for vim that's light as air.
+License:        MIT
+Group:          Productivity/Text/Editors
+
+%description -n vim-plugin-airline
+When the plugin is correctly loaded, there will be a nice
+statusline at the bottom of each vim window.
+
+%package -n vim-plugin-ale
+Version:        %ale_version
+Release:        0
+Summary:        Asynchronous Lint Engine plugin for VIM
+License:        BSD-2-Clause
+Group:          Productivity/Text/Editors
+
+%description -n vim-plugin-ale
+ALE makes use of NeoVim and Vim 8 job control functions and timers
+to run linters on the contents of text buffers and return errors as
+text is changed in Vim. This allows for displaying warnings and
+errors in files being edited in Vim before files have been saved
+back to a filesystem.
+
+In other words, this plugin allows you to lint while you type.
 
 %package -n vim-plugin-align
 Version:        %align_version
@@ -663,7 +694,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a100 -a101 -a102 -a103 -a104
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101 -a102 -a103 -a104
 pushd salt-vim-%{salt_version}
 %patch0 -p1
 popd
@@ -686,7 +717,7 @@ chmod -v 644 taglist-%{taglist_version}/doc/taglist.txt
 %install
 pushd editorconfig-vim-%{editorconfig_version}
 rm -rf plugin/editorconfig-core-py/ tests/
-rm mkzip.sh
+rm -f mkzip.sh
 popd
 
 pushd nerdtree-%{NERDtree_version}
@@ -698,18 +729,23 @@ rm -f salt-vim.spec
 popd
 
 pushd tlib_vim-%{tlib_version}
-rm -r addon-info.json doc/tags etc samples scripts test
+rm -rf addon-info.json doc/tags etc samples scripts test
+popd
+
+pushd vim-airline-%{airline_version}
+rm -rf t/ ISSUE_TEMPLATE.md Gemfile Rakefile
 popd
 
 install -d %buildroot/%vimplugin_dir
-for i in vimplugin-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
+for i in vimplugin-* ale-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
 	colorsel.vim-* bufexplorer-* diffchanges.vim-* editorconfig-vim-* \
 	file-line-* gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* \
 	minibufexpl.vim-* MultipleSearch-* neomutt.vim-* nerdcommenter-* \
 	nerdtree-* project.tar.gz-* quilt-* rails.vim-* salt-vim-* \
 	SearchComplete-* ShowMarks7-* snipMate-* SuperTab--Van-Dewoestine-* \
 	taglist-* tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* \
-	utl.vim-* vim-fugitive-* vim-gnupg-* vimwiki-* ZoomWin-*; do
+	utl.vim-* vim-airline-* vim-fugitive-* vim-gnupg-* vimwiki-* \
+	ZoomWin-*; do
     pushd $i
     cp -av * %buildroot/%vimplugin_dir/
     popd
@@ -737,13 +773,14 @@ install -d %{buildroot}/%vimplugin_dir/snippets/
 install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
 # delete unneeded files
-rm -rf %{buildroot}/%vimplugin_dir/CHANGE*
-rm -rf %{buildroot}/%vimplugin_dir/CONTRIBUT*
-rm -rf %{buildroot}/%vimplugin_dir/LICEN?E*
-rm -rf %{buildroot}/%vimplugin_dir/README*
-rm -rf %{buildroot}/%vimplugin_dir/doc/Makefile*
-rm -rf %{buildroot}/%vimplugin_dir/doc/README*
-rm -rf %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
+rm -f %{buildroot}/%vimplugin_dir/CHANGE*
+rm -f %{buildroot}/%vimplugin_dir/CONTRIBUT*
+rm -f %{buildroot}/%vimplugin_dir/LICEN?E*
+rm -f %{buildroot}/%vimplugin_dir/README*
+rm -f %{buildroot}/%vimplugin_dir/supported-tools.md
+rm -f %{buildroot}/%vimplugin_dir/doc/Makefile*
+rm -f %{buildroot}/%vimplugin_dir/doc/README*
+rm -f %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
 
 # For every plugin providing documentation, we have to call the post and postun
 # scriptlets.
@@ -758,6 +795,8 @@ fi \
 %{nil}
 
 %vim_doc_post -n vim-plugin-ack
+%vim_doc_post -n vim-plugin-airline
+%vim_doc_post -n vim-plugin-ale
 %vim_doc_post -n vim-plugin-align
 %vim_doc_post -n vim-plugin-bufexplorer
 %vim_doc_post -n vim-plugin-colorsel
@@ -799,6 +838,34 @@ fi \
 %vimplugin_dir/doc/ack_quick_help.txt
 %dir %vimplugin_dir/ftplugin
 %vimplugin_dir/ftplugin/qf.vim
+
+%files -n vim-plugin-airline
+%defattr(-,root,root,0755)
+%license vim-airline-%{airline_version}/LICENSE
+%doc vim-airline-%{airline_version}/README.md
+%vimplugin_dir/autoload/airline*
+%vimplugin_dir/doc/airline.txt
+%vimplugin_dir/plugin/airline.vim
+
+%files -n vim-plugin-ale
+%defattr(-,root,root,0755)
+%license ale-%{ale_version}/LICENSE
+%doc ale-%{ale_version}/supported-tools.md
+%vimplugin_dir/ale_linters
+%vimplugin_dir/autoload/ale
+%vimplugin_dir/autoload/ale.vim
+%dir %vimplugin_dir/autoload/asyncomplete
+%dir %vimplugin_dir/autoload/asyncomplete/sources
+%vimplugin_dir/autoload/asyncomplete/sources/ale.vim
+%vimplugin_dir/doc/ale*
+%vimplugin_dir/ftplugin/ale-*.vim
+%vimplugin_dir/plugin/ale.vim
+%dir %vimplugin_dir/rplugin
+%dir %vimplugin_dir/rplugin/python3
+%dir %vimplugin_dir/rplugin/python3/deoplete
+%dir %vimplugin_dir/rplugin/python3/deoplete/sources
+%vimplugin_dir/rplugin/python3/deoplete/sources/ale.py
+%vimplugin_dir/syntax/ale-*.vim
 
 %files -n vim-plugin-align
 %defattr(-,root,root,0755)
