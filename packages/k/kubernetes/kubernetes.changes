@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 08:54:40 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (Version) - 1.24.11
+  * kubernetes (versionminus1) - 1.23.17
+  * etcd (etcdversion) - 3.5.6
+  * etcd (etcdversionminus1) - 3.5.6
+  * coredns (corednsversionminus1) - 1.8.6
+
+-------------------------------------------------------------------
 Mon Jul 25 11:53:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Exclude 32-bit arm
