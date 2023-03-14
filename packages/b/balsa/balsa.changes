@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 12 13:21:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add balsa-webkitgtk-bump.patch: Port to build against
+  webkit2gtk-4.1. Following this replace pkgconfig(webkit2gtk-4.0)
+  with pkgconfig(webkit2gtk-4.1) BuildRequires, and add libtool
+  BuildRequires and bootstrap the build since the patch touches the
+  buildsystem.
+
+-------------------------------------------------------------------
 Fri Oct 21 20:13:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.4:

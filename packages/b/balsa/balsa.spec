@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,14 @@ Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
 URL:            https://pawsa.fedorapeople.org/balsa/
 Source0:        %{url}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM balsa-webkitgtk-bump.patch -- Build against webkit2gtk-4.1
+Patch0:         balsa-webkitgtk-bump.patch
 
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libesmtp-devel
+BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-html2text
@@ -55,7 +58,7 @@ BuildRequires:  pkgconfig(mit-krb5)
 BuildRequires:  pkgconfig(mit-krb5-gssapi)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
 An e-mail client for GNOME. It supports
@@ -72,6 +75,7 @@ An e-mail client for GNOME. It supports
 %autosetup -p1
 
 %build
+./bootstrap.sh
 %configure\
 	--disable-static\
 	--enable-more-warnings\
