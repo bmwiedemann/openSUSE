@@ -75,6 +75,7 @@ mkdir -p \
 install -m 0644 -p systemctl/et.service %{buildroot}%{_unitdir}/et.service
 install -m 0644 -p etc/et.cfg %{buildroot}%{_sysconfdir}/et.cfg
 install -m 0644 %{SOURCE1} %{buildroot}%{_firewalld_dir}/services/et.xml
+mv %{buildroot}%{_bindir}/et %{buildroot}%{_bindir}/et-client
 
 %pre
 %service_add_pre et.service
@@ -93,7 +94,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_firewalld_dir}/services/et.xml
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/et
+%{_bindir}/et-client
 %{_bindir}/etserver
 %{_bindir}/etterminal
 %{_bindir}/htm

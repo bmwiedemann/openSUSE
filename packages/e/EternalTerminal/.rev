@@ -213,4 +213,17 @@
   and redid 6.2.4</comment>
     <requestid>1060453</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b7307c4e96bcfc8f020bb2f84f7dd5c9</srcmd5>
+    <version>6.2.4</version>
+    <time>1678814201</time>
+    <user>dimstar_suse</user>
+    <comment>- Move binary 'et' to 'et-client'
+  There is a naming conflict with 'erdtree' and it makes more sense
+  to have that with the shorter name.
+  Additionally I think EternalTerminal isn't used that much.
+  And they last CVEs were handled not so well which is why we even
+  think about dropping it in the future</comment>
+    <requestid>1071204</requestid>
+  </revision>
 </revisionlist>
