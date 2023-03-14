@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Mar 13 17:23:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.28:
+  * fix duplicate topologySpreadConstraints
+
+-------------------------------------------------------------------
+Mon Mar 13 10:03:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.27:
+  * fix according to review
+  * fix test
+  * hide autofill behind CLI flag
+  * fix: tolerations and other constraint under deployment name
+  * feat: added constraints
+  * feat: introduce topologyConstraints, node selectors and
+    tolerations
+
+-------------------------------------------------------------------
+Fri Mar 10 06:37:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.26:
+  * fix: env vars with default values in values.yaml
+  * modify pull policy in deployment
+  * modify pull policy in deployment
+  * feat: add imagePullPolicy template
+
+-------------------------------------------------------------------
+Mon Mar  6 07:14:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package helmify: Creates Helm chart from Kubernetes yaml

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>259971b98d323de11ad14611634b6c19</srcmd5>
+    <version>0.3.28</version>
+    <time>1678814212</time>
+    <user>dimstar_suse</user>
+    <comment>new package helmify: Creates a Helm chart from Kubernetes yaml</comment>
+    <requestid>1071219</requestid>
+  </revision>
+</revisionlist>

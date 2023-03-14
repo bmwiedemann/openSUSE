@@ -1,0 +1,5 @@
+<package name="helmify" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="helmify"/>
+</package>
