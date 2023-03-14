@@ -1048,4 +1048,12 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
   * Fixed an issue whereby, when -progressive was passed to TJBench, (forwarded request 1066935 from polslinux)</comment>
     <requestid>1067523</requestid>
   </revision>
+  <revision rev="67" vrev="74">
+    <srcmd5>b67644fa6900484ee13ac2b82cc92467</srcmd5>
+    <version>unknown</version>
+    <time>1678814140</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070184 from pluskalm)</comment>
+    <requestid>1071086</requestid>
+  </revision>
 </revisionlist>
