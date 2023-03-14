@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 13 17:54:01 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.32.0:
+  * fix: Allow underscores and dots in GitHub dotfile repo name guesses
+  * Improve chezmoi cd command
+  * feat: Add support for the JSONC format
+  * feat: Refuse to add chezmoi files to chezmoi
+  * feat: Add pre- and post-command hooks
+  * chore: Miscellaneous password manager cleanups
+  * feat: Add rbw template function for Bitwarden
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Thu Mar  2 13:40:59 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.31.1:
