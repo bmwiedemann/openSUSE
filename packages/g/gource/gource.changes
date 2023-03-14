@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 20:58:31 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 0.54:
+  * Added experimental support for Wayland.
+- Add new build dependency on libboost_system-devel.
+
+-------------------------------------------------------------------
 Tue Sep 27 20:29:56 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Pass --with-boost-libdir to configure: Workarounds boost

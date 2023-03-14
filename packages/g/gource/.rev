@@ -157,4 +157,15 @@
 </comment>
     <requestid>1006748</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e13cdb37f120bdd9d2d2da82b5e79d70</srcmd5>
+    <version>0.54</version>
+    <time>1678814219</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.54:
+  * Added experimental support for Wayland.
+- Add new build dependency on libboost_system-devel.
+</comment>
+    <requestid>1071244</requestid>
+  </revision>
 </revisionlist>

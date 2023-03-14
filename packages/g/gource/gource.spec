@@ -1,7 +1,7 @@
 #
 # spec file for package gource
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gource
-Version:        0.53
+Version:        0.54
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
