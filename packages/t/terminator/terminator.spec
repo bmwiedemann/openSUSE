@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only

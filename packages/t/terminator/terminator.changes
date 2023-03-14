@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 13 03:47:53 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.1.3:
+  + Full Changelog:
+    https://github.com/gnome-terminator/terminator/compare/v2.1.2...v2.1.3
+  + Option to set split ratio of terminals
+  + Add option to set given terminal to "read only"
+  + background image - respect ratio
+  + Shortcut for autosplit h/v depending on active terminal size
+  + Feature: Insert terminal name to terminal (for broadcast)
+  + Background image drawing modes and alignment
+  + Zoom on notebook even if there is only one terminal in the
+    tab + keep tab position and label in notebook rotation
+
+-------------------------------------------------------------------
 Fri Nov 18 11:31:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.2:
