@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.6.2
+Version:        3.7.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -68,7 +68,6 @@ dune-private-libs
 dune-rpc
 dune-site
 dyn
-fiber
 ocamlc-loc
 ordering
 stdune
@@ -117,7 +116,6 @@ dune-private-libs
 dune-rpc
 dune-site
 dyn
-fiber
 ocamlc-loc
 ordering
 stdune
