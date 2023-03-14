@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:34:39 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.15.0: 
+  * Parsing the spec file by RPM is now performed only if really
+    necessary, greatly improving performance in certain scenarios. 
+    (#212)
+  * Checked that license is a valid SPDX license.
+
+-------------------------------------------------------------------
 Sat Feb 25 12:10:44 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.14.0:
