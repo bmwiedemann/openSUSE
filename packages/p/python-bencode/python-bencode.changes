@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:13:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Improved API has been moved to the `bencodepy` package
+  * Implemented backwards-compatible `bencode` package (#16)
+  * Exception raised while attempting to decode strings on
+    Python 3+
+  * Improvements to the handling of binary values (#14)
+  * Dropped support for Python 2.6, 3.4
+
+-------------------------------------------------------------------
 Mon Oct 14 11:42:38 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

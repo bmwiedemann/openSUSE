@@ -54,4 +54,12 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738296</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7f2b4c5cfbd618622f8c21a31855d7df</srcmd5>
+    <version>4.0.0</version>
+    <time>1678814217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071247</requestid>
+  </revision>
 </revisionlist>

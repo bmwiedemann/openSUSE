@@ -1,7 +1,7 @@
 #
 # spec file for package python-bencode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-bencode
-Version:        2.1.0
+Version:        4.0.0
 Release:        0
 Summary:        The BitTorrent bencode module as light-weight, standalone package
 License:        BitTorrent-1.1
