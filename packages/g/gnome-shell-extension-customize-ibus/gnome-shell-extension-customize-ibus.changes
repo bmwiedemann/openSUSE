@@ -1,7 +1,14 @@
+-------------------------------------------------------------------
+Tue Mar 07 22:29:28 UTC 2023 - Hollow Man <hollowman@opensuse.org>
+
+- V86: Add support for GNOME 44.
+
+-------------------------------------------------------------------
 Thu Dec 01 17:07:31 UTC 2022 - Hollow Man <hollowman@opensuse.org>
 
 - V85: Fix loading theme after unlocking the screen.
 
+-------------------------------------------------------------------
 Sun Nov 06 20:57:23 UTC 2022 - Hollow Man <hollowman@opensuse.org>
 
 - V84: Fix to make lock screen theme get unaffected.
