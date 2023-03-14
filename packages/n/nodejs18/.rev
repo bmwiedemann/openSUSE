@@ -220,4 +220,12 @@ flaky_test_rerun.patch nodejs-libpath.patch  sle12_python3_compat.patch</comment
 - s390.patch, sysctl.patch: upstreamed and removed</comment>
     <requestid>1070188</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7c7a1e79cc5091f7f7553d87e5879a62</srcmd5>
+    <version>18.15.0</version>
+    <time>1678814155</time>
+    <user>dimstar_suse</user>
+    <comment>- relax Requires to Suggests for alts on TW</comment>
+    <requestid>1071190</requestid>
+  </revision>
 </revisionlist>

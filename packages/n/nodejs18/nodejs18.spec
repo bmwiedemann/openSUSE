@@ -322,7 +322,7 @@ BuildRequires:  valgrind
 %endif
 
 %if %{with libalternatives}
-Requires:       alts
+Suggests:       alts
 %else
 Requires(postun): %{_sbindir}/update-alternatives
 %endif

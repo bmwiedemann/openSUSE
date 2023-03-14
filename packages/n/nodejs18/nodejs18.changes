@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 13 16:43:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- relax Requires to Suggests for alts on TW
+
+-------------------------------------------------------------------
 Wed Mar  8 13:01:06 UTC 2023 - Adam Majer <adam.majer@suse.de> - 18.15.0
 
 - Update to NodeJS 18.15.0 LTS version:
