@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:46:58 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- updated to version 0.99.0
+  among other changes, a fix for bsc#1209175, yast2-docker:
+  - fix for URI gem changes when host empty for unix urls
+
+-------------------------------------------------------------------
 Wed Dec  7 11:19:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.94.0
