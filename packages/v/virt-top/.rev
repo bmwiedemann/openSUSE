@@ -40,4 +40,12 @@
 - Use virt-top.patch to build with dune</comment>
     <requestid>967744</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5c8d2564920de314648943ba0893afe0</srcmd5>
+    <version>1.1.1</version>
+    <time>1678814191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1071170</requestid>
+  </revision>
 </revisionlist>
