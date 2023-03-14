@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  7 14:39:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libgit2 1.6.2:
+  * Support the notion of a home directory separately from global
+    configuration directory
+  * stash: partial stash specific files
+  * push: revpars refspec source, so user can push things that are
+    not refs
+  * Support OpenSSL 3
+  * Many bug fixes
+- Not enabled: experimental SHA256 support for bare repositories
+
+-------------------------------------------------------------------
 Sun Feb 26 17:14:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.5.2:
