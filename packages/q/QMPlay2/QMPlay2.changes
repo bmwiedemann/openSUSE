@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 13 22:48:16 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-broken-yt-dlp.patch to fix broken youtube video quality
+
+-------------------------------------------------------------------
 Thu Feb  9 01:23:42 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-mono-playback.patch to fix pipewire mono playback

@@ -1,0 +1,45 @@
+From 6a2caa3fbae7dbc753b65fd07f137e08bcac6657 Mon Mar 13 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Mon, 13 Mar 2023 23:33:17 +0100
+Subject: [PATCH] YouTubeDL: Don't filter http_dash_segments protocol
+         [PATCH] Fix typo: SkipYtDplUpdate->SkipYtDlpUpdate
+
+Amends: 6a2caa3fbae7dbc753b65fd07f137e08bcac6657
+        775689382576ee30902443fa6ce73063db85d39f
+
+---
+ src/modules/Extensions/YouTube.cpp | 7 -------
+ src/qmplay2/YouTubeDL.cpp          | 2 +-
+ 2 files changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/src/modules/Extensions/YouTube.cpp b/src/modules/Extensions/YouTube.cpp
+index b5eebd62..5c16ea18 100644
+--- a/src/modules/Extensions/YouTube.cpp
++++ b/src/modules/Extensions/YouTube.cpp
+@@ -1170,13 +1170,6 @@ QStringList YouTube::getYouTubeVideo(const QString &param, const QString &url, I
+         if (format.isEmpty())
+             continue;
+ 
+-        const auto protocol = format["protocol"].toString();
+-        if (protocol.contains("dash", Qt::CaseInsensitive))
+-        {
+-            // Skip MP4 DASH, because it doesn't work properly (old comment, is it still valid?)
+-            continue;
+-        }
+-
+         const auto itag = format["format_id"].toString().toInt();
+         const auto url = format["url"].toString();
+         const auto ext = format["ext"].toString();
+diff --git a/src/qmplay2/YouTubeDL.cpp b/src/qmplay2/YouTubeDL.cpp
+index f80863d7..4c7d6961 100644
+--- a/src/qmplay2/YouTubeDL.cpp
++++ b/src/qmplay2/YouTubeDL.cpp
+@@ -374,7 +374,7 @@ bool YouTubeDL::update()
+     return true;
+ #endif
+ 
+-    if (QMPlay2Core.getSettings().getBool("SkipYtDplUpdate"))
++    if (QMPlay2Core.getSettings().getBool("SkipYtDlpUpdate"))
+         return true;
+ 
+     // Mutex must be locked here
