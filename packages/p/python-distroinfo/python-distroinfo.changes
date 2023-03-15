@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:38:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Add twine\_python parameter to upload-pypi
+  * Use python3 in build-python-release
+  * Add new filtering option and tests
+  * Add new unit tests and fixes others
+
+-------------------------------------------------------------------
 Thu Dec  9 08:49:52 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.5.1

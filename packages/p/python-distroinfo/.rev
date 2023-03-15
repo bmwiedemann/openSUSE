@@ -36,4 +36,16 @@
     <comment></comment>
     <requestid>938239</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e4c51b938f3d2eac28f1f3bb301da2f6</srcmd5>
+    <version>0.6.2</version>
+    <time>1678902880</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2:
+  * Add twine\_python parameter to upload-pypi
+  * Use python3 in build-python-release
+  * Add new filtering option and tests
+  * Add new unit tests and fixes others</comment>
+    <requestid>1071883</requestid>
+  </revision>
 </revisionlist>
