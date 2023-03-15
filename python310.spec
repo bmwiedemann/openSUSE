@@ -170,6 +170,9 @@ Patch36:        support-expat-CVE-2022-25236-patched.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch37:        CVE-2023-24329-blank-URL-bypass.patch
+# PATCH-FIX-UPSTREAM invalid-json.patch gh#python/cpython#102582 mcepl@suse.com
+# We require valid JSON in documentation
+Patch38:        invalid-json.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -443,6 +446,7 @@ other applications.
 %patch35 -p1
 %patch36 -p1
 %patch37 -p1
+%patch38 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
