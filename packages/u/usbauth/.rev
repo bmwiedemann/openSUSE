@@ -56,4 +56,16 @@
     <comment></comment>
     <requestid>974764</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b710f7a10204115fa9b7f434312eb3ed</srcmd5>
+    <version>1.0.5</version>
+    <time>1678902874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Support devpath comparisation
+  * Support explicit value type comparisation
+  * Add default value types
+</comment>
+    <requestid>1071873</requestid>
+  </revision>
 </revisionlist>

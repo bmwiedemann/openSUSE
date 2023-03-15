@@ -1,7 +1,7 @@
 #
 # spec file for package usbauth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Stefan Koch <stefan.koch10@gmail.com>
 # Copyright (c) 2015 SUSE LLC. All Rights Reserved.
 # Author: Stefan Koch <skoch@suse.de>
@@ -21,15 +21,18 @@
 
 %define _name   usbauth-all
 Name:           usbauth
-Version:        1.0.3
-Release:        0
+Version:        1.0.5
 Summary:        USB firewall against BadUSB attacks
-License:        GPL-2.0-only
-Group:          Productivity/Security
 URL:            https://github.com/kochstefan/usbauth-all/
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+
+Release:        0
+License:        GPL-2.0-only
+Group:          Productivity/Security
+
 Requires:       systemd
 Requires:       udev
+BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
@@ -46,22 +49,30 @@ A config file describes in which way devices would be accepted.
 %autosetup -n %{_name}-%{version}
 
 %build
-cd usbauth
+pushd %{name}/
 autoreconf -f -i
 %configure
 %make_build
+popd
 
 %install
-cd usbauth
+pushd %{name}/
 %make_install udevrulesdir=%_udevrulesdir
+popd
 
 %files
-%doc %{name}/README %{name}/CHANGELOG.md
 %license %{name}/COPYING
+%doc %{name}/README
+%doc %_mandir/*/*
 %_sbindir/usbauth
 %config %_sysconfdir/dbus-1/system.d/org.opensuse.usbauth.conf
 %config(noreplace) %_sysconfdir/usbauth.conf
 %_udevrulesdir/20-usbauth.rules
-%_mandir/man8/usbauth.8.*
+
+%post
+%{?udev_rules_update:%udev_rules_update}
+
+%postun
+%{?udev_rules_update:%udev_rules_update}
 
 %changelog
