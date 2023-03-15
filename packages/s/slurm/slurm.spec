@@ -399,6 +399,7 @@ Group:          Productivity/Clustering/Computing
 %if %{with pmix}
 Requires:       libpmix%{pmix_so}
 Requires:       pmix
+Requires:       pmix-pluginlib
 %endif
 
 %description plugins

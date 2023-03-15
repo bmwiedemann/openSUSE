@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 15 10:19:12 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- slurm-plugins need to require pmix-pluginlib (bsc#1209260)
+
+-------------------------------------------------------------------
 Tue Mar  7 15:18:05 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Stop pulling firewall rules from github. There is no benefit to

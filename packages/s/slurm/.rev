@@ -1078,4 +1078,12 @@
     <comment>- Fixing dependencies for slurm--plugin-ext-sensors-rrd again. (forwarded request 1070212 from eeich)</comment>
     <requestid>1070214</requestid>
   </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>22deeacf77fbb8794c1d16d8f0290f4b</srcmd5>
+    <version>23.02.0</version>
+    <time>1678902972</time>
+    <user>dimstar_suse</user>
+    <comment>- slurm-plugins need to require pmix-pluginlib (bsc#1209260) (forwarded request 1072084 from mslacken)</comment>
+    <requestid>1072087</requestid>
+  </revision>
 </revisionlist>
