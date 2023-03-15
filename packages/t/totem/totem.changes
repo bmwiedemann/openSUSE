@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 18:10:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused intltool, vala and
+  pkgconfig(libepc-ui-1.0) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Sep 16 13:26:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

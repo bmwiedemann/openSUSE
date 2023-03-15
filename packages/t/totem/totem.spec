@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,8 @@ BuildRequires:  gstreamer-plugins-good-gtk
 # For gst-inspect tool
 BuildRequires:  gstreamer-utils >= 0.11.93
 BuildRequires:  gtk-doc
-BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
@@ -49,7 +47,6 @@ BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libepc-ui-1.0) > 0.4.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
