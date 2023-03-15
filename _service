@@ -8,7 +8,8 @@
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
-        <param name="compression">xz</param>
-     </service>
-     <service name="set_version" mode="disabled"/>
+        <param name="compression">gz</param>
+    </service>
+    <service name="set_version" mode="disabled"/>
+    <service name="go_modules" mode="disabled" />
 </services>
