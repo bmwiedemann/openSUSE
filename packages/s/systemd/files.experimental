@@ -27,7 +27,6 @@
 %{_mandir}/man1/oomctl.1.gz
 %if %{with sd_boot}
 %{_mandir}/man1/systemd-measure.1.gz
-%{_mandir}/man1/ukify.1.gz
 %endif
 %{_mandir}/man1/userdbctl.1.gz
 %{_mandir}/man5/homed.conf.5.gz
@@ -44,9 +43,6 @@
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
 %if %{with sd_boot}
-%{_mandir}/man8/systemd-pcrfs-root.service.8.gz
-%{_mandir}/man8/systemd-pcrfs@.service.8.gz
-%{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.8.gz
@@ -76,13 +72,9 @@
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-userdbd
 %{_systemd_util_dir}/systemd-userwork
-%if %{with sd_boot}
-%{_systemd_util_dir}/ukify
-%endif
 %{_sysusersdir}/systemd-oom.conf
 %if %{with sd_boot}
 %{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
 %endif
@@ -91,9 +83,6 @@
 %{_unitdir}/systemd-oomd.service
 %{_unitdir}/systemd-oomd.socket
 %if %{with sd_boot}
-%{_unitdir}/systemd-pcrfs-root.service
-%{_unitdir}/systemd-pcrfs@.service
-%{_unitdir}/systemd-pcrmachine.service
 %{_unitdir}/systemd-pcrphase-initrd.service
 %{_unitdir}/systemd-pcrphase-sysinit.service
 %{_unitdir}/systemd-pcrphase.service

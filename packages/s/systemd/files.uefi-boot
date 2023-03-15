@@ -26,20 +26,19 @@
 %{_mandir}/man8/systemd-bless-boot-generator.8.gz
 %{_mandir}/man8/systemd-bless-boot.8.gz
 %{_mandir}/man8/systemd-bless-boot.service.8.gz
-%{_mandir}/man8/systemd-boot-random-seed.service.8.gz
+%{_mandir}/man8/systemd-boot-system-token.service.8.gz
 %endif
 %{_prefix}/lib/kernel/install.conf
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
-%{_prefix}/lib/kernel/install.d/90-uki-copy.install
 # These are the few exceptions where glob pattern is allowed.
 %{_systemd_util_dir}/boot/efi/linux*.efi.stub
 %{_systemd_util_dir}/boot/efi/linux*.elf.stub
 %{_systemd_util_dir}/boot/efi/systemd-boot*.efi
 %{_systemd_util_dir}/systemd-bless-boot
 %{_systemdgeneratordir}/systemd-bless-boot-generator
-%{_unitdir}/sysinit.target.wants/systemd-boot-random-seed.service
+%{_unitdir}/sysinit.target.wants/systemd-boot-system-token.service
 %{_unitdir}/systemd-bless-boot.service
-%{_unitdir}/systemd-boot-random-seed.service
+%{_unitdir}/systemd-boot-system-token.service
 %{_unitdir}/systemd-boot-update.service
 %endif

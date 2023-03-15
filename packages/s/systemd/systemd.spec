@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version %nil
+%define archive_version +suse.50.gd447802fee
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.1
+Version:        252.7
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -209,10 +209,9 @@ Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 
 # Patches listed below are put in quarantine. Normally all changes must go to
 # upstream first and then are cherry-picked in the SUSE git repository. But for
-# very few cases, some stuff might be broken in upstream and need to be fixed or
-# worked around quickly. In these cases, the patches are added temporarily and
-# will be removed as soon as a proper fix will be merged by upstream.
-Patch5000:      5000-core-manager-run-generators-directly-when-we-are-in-.patch
+# very few cases, some stuff might be broken in upstream and need to be fixed
+# quickly. But even in these cases, the patches are temporary and should be
+# removed as soon as a fix is merged by upstream.
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -531,7 +530,6 @@ Requires:       netcat
 Requires:       python3-pexpect
 Requires:       qemu-kvm
 Requires:       quota
-Requires:       selinux-policy-devel
 Requires:       socat
 Requires:       squashfs
 Requires:       systemd-container
@@ -887,8 +885,8 @@ rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
 
-# The current situation with tmpfiles snippets dealing with the generic paths is
-# pretty messy currently because:
+# The tmpfiles dealing with the generic paths is pretty messy
+# currently because:
 #
 #  1. filesystem package wants to define the generic paths and some of them
 #     conflict with the definition given by systemd in var.conf, see
@@ -932,6 +930,12 @@ fi
 # still be used by yast.
 cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
+# Don't ship systemd-journald-audit.socket as there's no other way for us to
+# prevent journald from recording audit messages in the journal by default
+# (bsc#1109252).
+rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
+rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
+
 %if %{with testsuite}
 # -Dinstall_test took care of installing the unit tests only (those in
 # src/tests) and testdata directory. Here we copy the integration tests
@@ -960,7 +964,6 @@ tar -cO \
 %systemd_pre remote-fs.target
 %systemd_pre getty@.service
 %systemd_pre systemd-timesyncd.service
-%systemd_pre systemd-journald-audit.socket
 
 %post
 # Make /etc/machine-id an empty file during package installation. On the first
@@ -1020,7 +1023,6 @@ fi
 %systemd_post remote-fs.target
 %systemd_post getty@.service
 %systemd_post systemd-timesyncd.service
-%systemd_post systemd-journald-audit.socket
 
 # v228 wrongly set world writable suid root permissions on timestamp files used
 # by permanent timers. Fix the timestamps that might have been created by the
@@ -1312,13 +1314,13 @@ fi
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libsystemd.so.0
-%{_libdir}/libsystemd.so.0.36.0
+%{_libdir}/libsystemd.so.0.35.0
 
 %files -n libudev%{?mini}1
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
-%{_libdir}/libudev.so.1.7.6
+%{_libdir}/libudev.so.1.7.5
 
 %if %{with coredump}
 %files coredump
