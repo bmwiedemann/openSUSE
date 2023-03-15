@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 13 18:54:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8:
+  * Improved the automatic cache cleanup mechanism. Automatic
+    cleanups are now performed on 1/256 of the cache instead of
+    1/16, thus making them much quicker (but naturally more frequent).
+    Cleanups are coordinated between ccache processes so that at most
+    one process will perform cleanup at a time. Also, the actual cache
+    size will stay very close to the configured maximum size instead of
+    staying around 90% as was the case before.
+  * Added support for setting per-compilation configuration options on
+    the command line. Example: `ccache hash_dir=false gcc -c example.c`
+  * Made it possible to disable ccache for a certain source code file
+    by embedding the string `ccache:disable` in a comment near the top
+    of the file.
+  * Made ccache understand that an MSVC `/Z7` option overrides an
+    earlier `/Z*` option and thus is not too hard to cache.
+  * Added a `--recompress-threads` command line option for selecting
+    the number of CPU threads to use when recompressing the local cache.
+  * Added `--trim-recompress` and `--trim-recompress-threads` command
+    line options for recompressing file-based remote storage.
+  * Added tmpfs, ufs and zfs to the list of supported filesystems on
+    macOS and BSDs for the inode cache.
+  * Improved progress bars for clean/clear/evict-style operations.
+  * Improved printing of cache sizes in various outputs.
+  * Activate debug logging for command mode options like `--cleanup`.
+  * Added support for `-Wp,-U<macro>` in the direct mode.
+  * Added quotes around arguments with space in logged command lines.
+  * Added logging of executed command lines on Windows. +
+  * Made sure not to update the stats file when there are no incremented
+    counters.
+  * Improved actual disk size calculation on Windows.
+  * Bugfixes
+
+-------------------------------------------------------------------
 Mon Dec  5 12:36:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.4:
