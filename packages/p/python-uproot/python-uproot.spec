@@ -1,7 +1,7 @@
 #
 # spec file for package python-uproot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,11 @@
 
 # No numpy for py3.6
 %define skip_python36 1
+# Numba does not build with python3.11, therefore no python311-dask
+%define skip_python311 1
 %global modname uproot
 Name:           python-uproot
-Version:        4.3.4
+Version:        5.0.3
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -28,36 +30,40 @@ Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/uproot4
 Source0:        https://files.pythonhosted.org/packages/source/u/uproot/uproot-%{version}.tar.gz
 Source1:        tests.tar.xz
-# PATCH-FEATURE-OPENSUSE uproot-use-packaging-module.patch badshah400@gmail.com -- Use packaging module directly instead of calling it via setup.extern; the latter does not work on openSUSE directly
-Patch0:         uproot-use-packaging-module.patch
+BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13.1
 Requires:       python-packaging
 Recommends:     python-awkward
-Suggests:       python-lz4
-Suggests:       python-zstandard
-Suggests:       python-xrootd
-Suggests:       python-pandas
-Suggests:       python-cupy
 Suggests:       python-boost-histogram
+Suggests:       python-cupy
 Suggests:       python-hist
+Suggests:       python-lz4
+Suggests:       python-pandas
+Suggests:       python-xrootd
+Suggests:       python-zstandard
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module awkward}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module awkward}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy >= 1.13.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-hep-testdata}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
+# python-awkward no longer builds for 32-bit archs
+ExcludeArch:    %{ix86} %{arm32}
 %python_subpackages
 
 %description
@@ -68,16 +74,13 @@ Python. It uses Numpy to cast blocks of data from the ROOT file as Numpy
 arrays.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
-%setup -q -D -T -a 1 -n %{modname}-%{version}
-# gh#scikit-hep/uproot4#396
-sed -i '/def test/ i @pytest.mark.network' tests/test_0220-contiguous-byte-ranges-in-http.py
+%autosetup -p1 -a1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -90,7 +93,7 @@ fi
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog

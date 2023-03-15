@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Mar 12 10:15:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable building against python3.11 until numba -- and dask -- is
+  compatible.
+- Disable 32-bit builds since python-awkward no longer builds for
+  those archs.
+
+-------------------------------------------------------------------
+Wed Mar  1 08:33:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Thu Feb 23 21:23:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.3:
+  * feat: Infrastructure for writing of RNTuple (incomplete
+    functionality)
+  * feat: [WIP] RNTuple Basic Writing
+  * fix: an uproot.dask test was wrong; revealed by new dask-
+    awkward.
+  * fix: separate AwkwardForth machine for each TBranch context.
+  * fix: separate ZstdDecompressor for each thread.
+  * fix: uproot.dask: Protect against `branches=None` in
+    `project_columns`
+  * fix: AsStridedObjects.awkward_form was still including the
+    '@' members.
+  * fix: protect Uproot's 'project_columns' from Dask node names.
+  * Uproot version 5 has a few major new features, one removal
+    (`uproot.lazy`), and is based on Awkward Array version 2
+    instead of version 1.
+  * @kkothari2001 upgraded Uproot from Awkward version 1 to
+    version 2, the major part of which was replacing
+    `uproot.lazy`, which is based on Awkward 1's virtual and
+    partitioned lazy arrays, with the new Dask collection, dask-
+    awkward. The entry point for this function is `uproot.dask`.
+  * @kkothari2001 also simplified Uproot's Pandas backend, which
+    used to "explode" ragged arrays from ROOT into Pandas
+    DataFrames with a non-trivial MultiIndex. Now, it takes
+    advantage of awkward-pandas to put ragged (and more complex)
+    Awkward Arrays directly into Pandas columns.
+  * If you want the old behavior, you can read data using
+    `library="ak"` to get an Awkward Array, and use
+    ak.to_dataframe to "explode" the data into a MultiIndex.
+  * @aryan26roy added a new code path to the TTree-reading
+    routines to read them with AwkwardForth instead of pure
+    Python. Users won't see any _interface_ changes due to this
+    code, but the performance of reading TBranches with
+    `AsObject` or `AsStrings` Interpretations should be orders of
+    magnitude faster. For example, `std::vector>` reading is now
+    400× faster.
+  * @Moelf added a complete reader of RNTuple data with most of
+    an RNTuple-writer in an unmerged pull request (#705).
+    Although the RNTuple format is still in development, this is
+    a very good start at reading RNTuple data, whose structure is
+    a close match to Awkward Arrays (so the translation is more
+    one-to-one than it is for TTrees, for instance).
+  * feat: move to hatchling
+  * feat: `from_map` like optimization for dask arrays
+  * feat: Finalizing AwkwardForth reader for Uproot
+  * feat: implemented NON-memberwise deserialization for AsMap.
+  * feat: Added column_projection optimization
+  * feat: support categorical axes on boost histograms
+  * feat: warn about TBranch name, alias name conflict.
+  * feat: any Mapping assigned to a WritableDirectory is
+    interpreted as a TTree or failure, no fall-through.
+  * feat: add 'interp_options' mechanism and ak_add_doc.
+  * feat: Use awkward pandas, instead of the existing code that
+    explodes Pandas Dataframes
+  * feat: made 'very optional' arguments keyword-only
+  * feat: adjust for name change in scikit-hep/awkward#1919.
+  * fix: depend on packaging, not setuptools vendored packaging
+  * fix: Avoid triggering temporary dask-awkward/awkward
+    incompatibility.
+  * fix: Do not write incorrect fSumw2 in histograms (v5).
+  * fix: Fixes uproot.dask bug with empty branches
+  * fix: Use `from_map` optimization for delayed numpy arrays and
+    add tests with empty branches for the same
+  * fix: use ctx manager to ensure resources are freed
+  * fix: ReadOnlyDirectory should provide the largest abs(cycle)
+    when cycle is unspecified, not the largest cycle.
+  * fix: regularize ROOT type aliases to C fundamental type
+    names.
+  * fix: avoid empty TBasket issue in embedded TBasket
+  * fix: don't use Awkward in test_0751 that doesn't need it
+  * fix: working TList serialization
+  * fix: histogram weights not handled correctly in hist / boost
+    conversion
+  * perf: streamline metadata handling for TBranch name lookup
+    and uproot.dask
+  * fix: ensure AwkwardForth fallback path is tested without
+    history.
+  * fix: all AwkwardForth Forms now agree with awkward_form
+    method output.
+  * fix: Uproot tests now work with Awkward 2.0.0.
+- drop uproot-use-packaging-module.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Aug 10 22:47:27 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.3.4:

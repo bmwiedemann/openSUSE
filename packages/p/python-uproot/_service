@@ -1,8 +1,8 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
-		<param name="url">https://github.com/scikit-hep/uproot4</param>
-		<param name="revision">4.3.4</param>
+		<param name="url">https://github.com/scikit-hep/uproot5</param>
+		<param name="revision">v5.0.3</param>
 		<param name="subdir">tests</param>
 		<param name="filename">tests</param>
 		<param name="version">_none_</param>
