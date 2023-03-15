@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 12 04:55:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable building PDF documentation for openSUSE >= 1550 and 15.4
+  temporarily, until real issue with respect to dot errors is
+  resolved.
+
+-------------------------------------------------------------------
 Wed Jun 15 15:18:47 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.0:

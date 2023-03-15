@@ -1,7 +1,7 @@
 #
 # spec file for package glucat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,15 @@
 %define skip_python2 1
 %endif
 
+# Build failures when building doc for 15.4 and TW
+%if 0%{?suse_version} >= 1550 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
+%bcond_with pdfdoc
+%else
+%bcond_without pdfdoc
+%endif
+
+%define doctargets %{?with_pdfdoc:doc}%{!?with_doc:html}
+
 Name:           %{pname}%{?psuffix}
 Version:        0.12.0
 Release:        0
@@ -51,7 +60,9 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+%python_subpackages
 %else
+%if %{with pdfdoc}
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-metafont-bin
@@ -109,7 +120,7 @@ BuildRequires:  tex(xcolor.sty)
 BuildRequires:  tex(xkeyval.sty)
 BuildRequires:  tex(xtab.sty)
 %endif
-%python_subpackages
+%endif
 
 %description
 GluCat is a library of template classes which model the universal
@@ -150,7 +161,6 @@ This package provides the documentation for %{name}.
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
-sed -i "s|-march=native||g" configure
 %if %{with python}
 %{python_expand # Apply to all supported python flavors
 export PYTHON=$python
@@ -162,6 +172,8 @@ pushd ../${PYTHON}_build
   --enable-pyclical \
   --with-demo-dir=%{_docdir}/%{pname}-python%{$python_version}/demos
 
+sed -i "s|-march=native||g" configure
+
 %make_build clean all
 popd
 }
@@ -170,9 +182,11 @@ popd
   --docdir=%{_docdir}/%{pname} \
   --disable-pyclical
 
+sed -i "s|-march=native||g" configure
+
 %make_build clean all
 # Build doc only for main flavor
-%make_build doc
+%make_build -C doc/ %{doctargets}
 %endif
 
 %install
@@ -187,7 +201,12 @@ popd
 }
 %else
 %make_install
-make DESTDIR=%{buildroot} install-doc
+# Manually install doc files
+mkdir -p %{buildroot}%{_docdir}/%{pname}
+cp -pr doc/api/html %{buildroot}%{_docdir}/%{pname}/
+%if %{with pdfdoc}
+cp -pr doc/api/latex/*pdf %{buildroot}%{_docdir}/%{pname}/
+%endif
 %endif
 
 # REMOVE FILES PKGED USING %%doc ANYWAY OR OTHERWISE NOT NEEDED
@@ -215,8 +234,10 @@ popd
 
 %files -n %{pname}-doc
 %dir %{_docdir}/%{pname}
-%{_docdir}/%{pname}/html/
-%{_docdir}/%{pname}/pdf/
+%doc %{_docdir}/%{pname}/html/
+%if %{with pdfdoc}
+%doc doc/api/latex/*.pdf
+%endif
 
 %else
 
