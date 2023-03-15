@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 13 15:19:34 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6.12:
+  * Fixed “sizeof object containing a set is wrong” 
+  * Fixed “Missing bounds check for len(toOpenArray..)” 
+  * Fixed “Add warning for bare except: clause” 
+  * Fixed “Little Copyright notice inconsistency” 
+  * Fixed “std/deques: wrong result after calling shrink” 
+  * Fixed “io.readLine adds ‘\00’ char to the end” 
+  * Fixed “New JS mdoe issue: return + ref ints.” 
+  * Fixed “Bad codegen for passed var seq to proc returning array[] converted to seq with @” 
+  * Fixed “Templates allowed to use ambiguous identifier” 
+  * Fixed “Mutating a var parameter through a mutable view triggers SIGSEGV” 
+  * Fixed “gcc error when constructing an object that has the same name in the same file name in 2 different directories” 
+
+-------------------------------------------------------------------
 Wed Nov 23 22:42:27 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to version 1.6.10:

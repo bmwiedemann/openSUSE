@@ -20,10 +20,10 @@ remove the "ip" check altogether.
  tests/stdlib/tgetprotobyname.nim | 4 ----
  1 file changed, 4 deletions(-)
 
-Index: nim-1.6.6/tests/stdlib/tgetprotobyname.nim
+Index: nim-1.6.12/tests/stdlib/tgetprotobyname.nim
 ===================================================================
---- nim-1.6.6.orig/tests/stdlib/tgetprotobyname.nim
-+++ nim-1.6.6/tests/stdlib/tgetprotobyname.nim
+--- nim-1.6.12.orig/tests/stdlib/tgetprotobyname.nim
++++ nim-1.6.12/tests/stdlib/tgetprotobyname.nim
 @@ -1,14 +1,7 @@
  import nativesockets
  
@@ -39,10 +39,10 @@ Index: nim-1.6.6/tests/stdlib/tgetprotobyname.nim
  
  when defined(windows):
    doAssertRaises(OSError):
-Index: nim-1.6.6/lib/pure/nativesockets.nim
+Index: nim-1.6.12/lib/pure/nativesockets.nim
 ===================================================================
---- nim-1.6.6.orig/lib/pure/nativesockets.nim
-+++ nim-1.6.6/lib/pure/nativesockets.nim
+--- nim-1.6.12.orig/lib/pure/nativesockets.nim
++++ nim-1.6.12/lib/pure/nativesockets.nim
 @@ -214,7 +214,7 @@ proc getProtoByName*(name: string): int
      let protoent = posix.getprotobyname(name.cstring)
  

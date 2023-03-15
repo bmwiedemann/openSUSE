@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.6.10
+Version:        1.6.12
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -30,18 +30,14 @@ Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-certificate-key-too-small.patch
 # UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/2c73e84436a11cae1676c7da0228158ba1a885cc
 Patch2:         nim-fix-tests-ip-protocol-missing.patch
-
-# pull in a C compiler (required to build Nim programs)
-Requires:       gcc
-Recommends:     clang
-Recommends:     pcre
-
 BuildRequires:  binutils-devel
-
-# required for the testsuite
-BuildRequires:  gc-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
+# required for the testsuite
+BuildRequires:  gc-devel
+# Nim needs support for both __builtin_saddll_overflow and
+# -std=c++14, therefore gcc 6.2+ is required.
+BuildRequires:  gcc-c++ >= 6.2
 BuildRequires:  git
 BuildRequires:  libopenssl-devel
 BuildRequires:  netcfg
@@ -49,21 +45,19 @@ BuildRequires:  pcre
 BuildRequires:  sqlite3-devel
 BuildRequires:  timezone
 BuildRequires:  valgrind
-
-# Nim needs support for both __builtin_saddll_overflow and
-# -std=c++14, therefore gcc 6.2+ is required.
-BuildRequires:  gcc-c++ >= 6.2
-
+# pull in a C compiler (required to build Nim programs)
+Requires:       gcc
+Recommends:     clang
+Recommends:     git
+Recommends:     pcre
+ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le
 # Needs node 12 for flag --unhandled-rejections=strict, but it's not
 # strictly needed (it's used to test the Nim JS compiler, so we can
 # skip it and run tests without this compiler target afterwards)
-%if 0%{?suse_version} >= 150100 || (0%{?suse_version} >= 150100 && 0%{?is_backports})
+%if 0%{?suse_version} >= 1501 || (0%{?suse_version} >= 1501 && 0%{?is_backports})
 BuildRequires:  nodejs >= 12
 Recommends:     nodejs
 %endif
-
-Recommends:     git
-ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le
 
 %description
 Nim is a statically typed compiled systems programming language. It
@@ -108,7 +102,7 @@ export NIMFLAGS="$(echo '%{optflags}' | sed 's/\([^[:space:]]\+\)/--passC:\1/g')
 export NIMFLAGS="$NIMFLAGS %{?jobs:--parallelBuild:%{jobs}}"
 
 ./build.sh
-make %{?_smp_mflags} V=1 CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 ./bin/nim c  $NIMFLAGS -d:release koch
 ./koch boot  $NIMFLAGS -d:release
@@ -144,6 +138,7 @@ cat << EOT >> tests_to_skip
   tests/arc/thard_alignment.nim
   # this one needs NodeJS althought its not required by the build
   tests/nimdoc/trunnableexamples.nim
+  tests/js/tnativeexc.nim
   # broken in Leap 15.3
   tests/exception/t13115.nim
   # no SFML in plain SLE and missing in backport repos
@@ -154,6 +149,8 @@ EOT
 cat << EOT >> tests_to_skip
   # flaky test, fails in i586
   tests/async/tasyncssl.nim
+  tests/realtimeGC/tmain.nim
+  tests/realtimeGC/shared.nim
 EOT
 %endif
 
@@ -180,7 +177,7 @@ cat << EOT >> tests_to_skip
 EOT
 %endif
 
-%if 0%{?suse_version} < 150100
+%if 0%{?suse_version} < 1501
 cat << EOT >> tests_to_skip
   # deactivate all tests that require node, as node version in
   # SLE and Leap 15.1 is either too old or not available at all
@@ -237,6 +234,7 @@ sed -i 's/\r$//' $TARGET/nim/doc/nimdoc.css
 # move executables to final location (or delete what isn't needed)
 rm $TARGET/nim/bin/atlas
 rm $TARGET/nim/bin/testament
+rm $TARGET/nim/nim.nimble
 mv $TARGET/nim/bin %{buildroot}%{_libdir}/nim/
 
 # strip all symbols from binaries

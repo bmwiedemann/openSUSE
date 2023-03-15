@@ -12,10 +12,10 @@ has been added to meet this new requirement.
  tests/testdata/mycert.pem | 105 ++++++++++++++++++++++++++++----------
  1 file changed, 77 insertions(+), 28 deletions(-)
 
-diff --git a/tests/testdata/mycert.pem b/tests/testdata/mycert.pem
-index 69039fe04936..61dcb685c325 100644
---- a/tests/testdata/mycert.pem
-+++ b/tests/testdata/mycert.pem
+Index: nim-1.6.12/tests/testdata/mycert.pem
+===================================================================
+--- nim-1.6.12.orig/tests/testdata/mycert.pem
++++ nim-1.6.12/tests/testdata/mycert.pem
 @@ -1,32 +1,81 @@
  -----BEGIN PRIVATE KEY-----
 -MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAL9QXX/nuiFbizdI
