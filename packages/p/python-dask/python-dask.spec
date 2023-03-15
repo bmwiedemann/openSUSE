@@ -54,7 +54,7 @@
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.3.0
+Version:        2023.3.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -124,7 +124,7 @@ BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tables}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 BuildRequires:  %{python_module zarr}
 # /SECTION
 %endif
@@ -153,6 +153,9 @@ Requires:       %{name}-delayed = %{version}
 Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
+# Added to the [complete] extra in 2023.3.1, not available for TW yet
+#Requires:       python-pyarrow >= 7
+Requires:       python-lz4 >= 4.3.2
 Provides:       %{name}-all = %{version}-%{release}
 Obsoletes:      %{name}-all < %{version}-%{release}
 
@@ -372,8 +375,8 @@ mv dask dask.moved
 donttest="(test_datasets and test_deterministic)"
 # upstreams test if their ci is up to date, irrelevant for obs
 donttest+=" or test_development_guidelines_matches_ci"
-# requires otherwise optional pyarrow (not available on TW) --  https://github.com/dask/dask/issues/9975
-donttest+=" or (test_parquet and (test_chunksize or test_extra_file or (test_select_filtered_column and fastparquet)))"
+# requires otherwise optional pyarrow (not available on TW) --  https://github.com/dask/dask/issues/10042
+donttest+=" or (test_select_filtered_column and fastparquet)"
 donttest+=" or test_read_parquet_convert_string_fastparquet_warns"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8620

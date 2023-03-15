@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Mar 11 22:53:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2023.3.1
+  ## Enhancements
+  * Support pyarrow strings in MultiIndex (GH#10040) Irina Truong
+  * Improved support for pyarrow strings (GH#10000) Irina Truong
+  * Fix flaky RuntimeWarning during array reductions (GH#10030)
+    James Bourbeau
+  * Extend complete extras (GH#10023) James Bourbeau
+  * Raise an error with dataframe.convert_string=True and pandas<2.0
+    (GH#10033) Irina Truong
+  * Rename shuffle/rechunk config option/kwarg to method (GH#10013)
+    James Bourbeau
+  * Add initial support for converting pandas extension dtypes to
+    arrays (GH#10018) James Bourbeau
+  * Remove randomgen support (GH#9987) Eray Aslan
+  ## Bug Fixes
+  * Skip rechunk when rechunking to the same chunks with unknown
+    sizes (GH#10027) Hendrik Makait
+  * Custom utility to convert parquet filters to pyarrow expression
+    (GH#9885) Richard (Rick) Zamora
+  * Consider numpy scalars and 0d arrays as scalars when padding
+    (GH#9653) Justus Magin
+  * Fix parquet overwrite behavior after an adaptive read_parquet
+    operation (GH#10002) Richard (Rick) Zamora
+  ## Maintenance
+  * Remove stale hive-partitioning code from pyarrow parquet engine
+    (GH#10039) Richard (Rick) Zamora
+  * Increase minimum supported pyarrow to 7.0 (GH#10024) James
+    Bourbeau
+  * Revert “Prepare drop packunpack (GH#9994) (GH#10037) Florian
+    Jetter
+  * Have codecov wait for more builds before reporting (GH#10031)
+    James Bourbeau
+  * Prepare drop packunpack (GH#9994) Florian Jetter
+  * Add CI job with pyarrow strings turned on (GH#10017) James
+    Bourbeau
+  * Fix test_groupby_dropna_with_agg for pandas 2.0 (GH#10001) Irina
+    Truong
+  * Fix test_pickle_roundtrip for pandas 2.0 (GH#10011) James
+    Bourbeau
+
+-------------------------------------------------------------------
 Wed Mar  8 15:20:50 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
 
 - Update dependencies
