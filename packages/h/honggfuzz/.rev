@@ -153,4 +153,12 @@
     <comment></comment>
     <requestid>999853</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7c37bbb44d908ed2435e0287ce1ec35d</srcmd5>
+    <version>2.5</version>
+    <time>1678902990</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix linking with latest binutils</comment>
+    <requestid>1072114</requestid>
+  </revision>
 </revisionlist>

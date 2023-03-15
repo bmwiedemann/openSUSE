@@ -1,7 +1,7 @@
 #
 # spec file for package honggfuzz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch1:         0002-linux-bfd-use-DIAGNOSTIC_ERROR_SWITCH-define-to-figu.patch
 Patch2:         0003-linux-bfd-cover-include-diagnostics.h-with-__has_inc.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libunwind-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  zlib-devel
 
 %description
@@ -42,7 +43,7 @@ evolutionary, feedback-driven fuzzing based on code coverage
 
 %build
 export CFLAGS="%{optflags}"
-%make_build ARCH_LDFLAGS="-L/usr/local/include -L/usr/include -lpthread -lunwind-ptrace -lunwind-generic -lbfd -lopcodes -lrt -liberty -lz -ldl"
+%make_build ARCH_LDFLAGS="-L/usr/local/include -L/usr/include -lpthread -lunwind-ptrace -lunwind-generic -lbfd -lopcodes -lrt -liberty -lz -ldl -lzstd -lsframe"
 
 %install
 install -Dpm 0755 %{name} \
