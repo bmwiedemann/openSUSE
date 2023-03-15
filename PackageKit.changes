@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 02:46:44 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-fix-pkcon-permission.patch: trivial: Drop
+  unnecessary x permission
+  (gh#PackageKit/PackageKit/commit/47b7f97bc, bsc#1209138)
+
+-------------------------------------------------------------------
 Fri Jan  6 02:22:16 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-fix-ambiguous-filesystem-reference.patch:
