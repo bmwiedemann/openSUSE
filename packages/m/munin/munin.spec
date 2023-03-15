@@ -1,7 +1,7 @@
 #
 # spec file for package munin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define plugindir %{_prefix}/lib/munin/plugins
 %define active_by_default 0
 Name:           munin
-Version:        2.0.71
+Version:        2.0.72
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
