@@ -1,7 +1,7 @@
-Index: zvbi-0.2.35/zvbi-0.2.pc.in
+Index: zvbi-0.2.41/zvbi-0.2.pc.in
 ===================================================================
---- zvbi-0.2.35.orig/zvbi-0.2.pc.in
-+++ zvbi-0.2.35/zvbi-0.2.pc.in
+--- zvbi-0.2.41.orig/zvbi-0.2.pc.in
++++ zvbi-0.2.41/zvbi-0.2.pc.in
 @@ -7,5 +7,6 @@ Name: ZVBI
  Description: VBI Capturing and Decoding Library
  Requires: 

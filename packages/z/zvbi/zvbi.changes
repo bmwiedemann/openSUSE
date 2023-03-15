@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 16:57:20 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.2.41:
+  * src/libzvbi.h: In libzvbi.h, remove #include version.h and replace with version number macros
+  * po/*.po: Update Project-Id-Version.
+
+-------------------------------------------------------------------
 Wed Dec 28 12:35:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.39:

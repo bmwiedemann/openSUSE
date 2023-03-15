@@ -1,7 +1,7 @@
 #
 # spec file for package zvbi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         libname lib%{name}%{sover}
 %define         libchains lib%{name}-chains%{sover}
 Name:           zvbi
-Version:        0.2.39
+Version:        0.2.41
 Release:        0
 Summary:        Linux "VBI proxy"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
