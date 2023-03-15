@@ -17,7 +17,7 @@
 
 
 Name:           onioncat
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        VPN adapter for Tor and I2P
 License:        GPL-3.0-only
@@ -26,8 +26,6 @@ Source:         https://github.com/rahra/onioncat/releases/download/v%{version}/
 Source2:        https://github.com/rahra/onioncat/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 # 0x98678E06063007E4A1F0B9C59BD601668E24F29D
 Source3:        %{name}.keyring
-# PATCH-FIX-UPSTREAM onioncat-DESTDIR-for-localstatedir.patch gh#rahra/onioncat#43 badshah400@gmail.com -- Create localstatedir inside DESTDIR
-Patch0:         onioncat-DESTDIR-for-localstatedir.patch
 BuildRequires:  libtool
 Requires:       tor
 
@@ -51,8 +49,9 @@ autoreconf -fvi
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
+%doc %{_docdir}/%{name}/Garlicat-HOWTO
+%doc %{_docdir}/%{name}/README
 %{_bindir}/ocat
 %{_mandir}/man1/ocat.1%{?ext_man}
-%{_docdir}/%{name}
 
 %changelog
