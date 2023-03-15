@@ -1,0 +1,958 @@
+-------------------------------------------------------------------
+Mon Mar 13 09:51:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.5:
+  * initialize context in Prometheus handler
+  * fixup unit test: error handling
+  * test(hostsensorutils): added unit tests to the
+    hostsensorutils package
+  * test(reports): adds unit test to the report receiver
+
+-------------------------------------------------------------------
+Mon Mar 13 09:50:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.4:
+  * chore(lintin): run another pass of linting with the rules
+    already in place
+  * removed otel middleware from some APIs
+  * wip: update UTMs & display UTM only on first scan
+  * wip: do not add message when account ID is empty
+  * Do not display  URL when message is empty
+  * wip: removed unused code
+  * wip: update link in docs
+  * refactor: update node scanner daemonset tolerations
+
+-------------------------------------------------------------------
+Mon Mar 13 09:49:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.3:
+  * ci: pin workflows versions to fixed commits
+  * fix(hostsensorsutils): remove hostNet and hostPort from
+    deployment
+  * added clusterName to otel initialization
+
+-------------------------------------------------------------------
+Mon Mar 13 09:48:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.2:
+  * Move GITHUB_REF to the krew step
+  * add unitsests to new behavior
+  * Do not print table when logger level is warn
+  * marking structs that are implementing IPrinter
+  * wip: re-arange struct
+  * Override GITHUB_REF env when releasing krew
+  * removing host scanner otel env
+  * Update rbac-utils pkg
+  * fix(processorhandler): reduce GC pressure
+
+-------------------------------------------------------------------
+Mon Mar 13 09:47:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.1:
+  * fix(hostsensorutils): improve namespace deletion in
+    host-scanner lifecycle
+  * update opa pkg to 238
+  * update opa pkg
+  * Fix HTML output (#1111)
+  * bump go-git-url (#1110)
+  * fix macos build - add missing pkg-config
+  * style(hostsensorutils): simplify code with gofmt
+  * fix(build): LICENSE file
+  * fix(README): broken links
+  * enable krew plugin publishing action
+  * chore: Remove an unwanted file
+  * fix(hostsensorutils): improve cloud provider detection
+  * generated rego policy json fixture file, short-circuited call
+    to github when fixture is here
+  * test(getters): added unit tests for utilities
+  * test(getters): added unit tests to the kubescape API client
+  * tests(cautils): added unit tests for released policy
+
+-------------------------------------------------------------------
+Mon Mar 13 09:44:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * Statuses (#1016)  (#1082)
+  * modify plugin description for krew approval
+  * Revert "fix: add check to skip controlplaneinfo in case of
+    cloud providers"
+  * fix: add check to skip controlplaneinfo in case of cloud providers
+  * docs(contributing): add semantic commit messages best practice
+
+-------------------------------------------------------------------
+Mon Mar 13 09:42:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.1.3:
+  * Loading kubeconfig name from env when running ms (#1089)
+  * removed unwnated span (#1088)
+  * fix #1025 (#1087)
+  * Default frameworks (#1085)
+  * update logs in some resource getters (#1071)
+  * don't add host scanner as excluded ns, use exception instead
+    (#1083)
+  * Fixes for krew plugin submission (#1081)
+  * GitRegoStore moved to Regolibrary (#1058)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:36:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.1.1:
+  * Renaming the files (#1079)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:34:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.1.0:
+  * Add cosign functions for signature checking
+  * Add progress bar for control processing
+  * Add OTEL with uptrace client
+  * Changed default JSON output to v2
+
+-------------------------------------------------------------------
+Mon Mar 13 09:08:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.182:
+  * setCloudMetadata only when scanning a cluster
+  * Initial documentation update upon joining the CNCF (#1020)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:07:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.181:
+  * update opa-utils pkg with URL parsing fixed
+
+-------------------------------------------------------------------
+Mon Mar 13 09:06:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.180:
+  * Release  (#1000)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:05:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.179:
+  * update httphandler go mod
+  * update go-git pkg
+  * update config scanning path
+  * Update core/pkg/resultshandling/results.go
+  * feat: notify about writing to an output file in PrettyPrinter
+  * style: tidy up the PDFPrinter
+  * style: shorten receiver names in JUnitPrinter
+  * style: shorten receiver names in JSONPrinter
+  * style: shorten receiver names in HTML Printer
+  * style: shorten receiver names in PrettyPrinter
+  * docs: clarify new meaning of the `--format` CLI flag
+  * feat: always print to (T)UI using PrettyPrinter
+  * style: `GetFormats` → `Formats`
+  * style: `go fmt` the project
+  * style: shorten receiver names in ResultsHandler
+  * style: shorten receiver names for Prometheus printer
+  * refactor: tidy up printing to multiple outputs
+  * fix: revert the overriden ScanningTarget when submitting
+    reports
+  * Add logs for some formats
+  * Update core/pkg/resultshandling/printer/printresults.go
+  * Handle Output Extensions Gracefully
+  * Add logs for some formats
+  * Support getting outputs in multiple formats
+  * minor fix
+  * update go mod in httphandler
+  * Breakdown cloud-cluster name
+  * Fixed test
+  * DownloadInfo, PolicyIdentifier add Identity, remove ID and Name
+  * opa-utils v0.0.216
+  * opa-utils v0.0.216
+  * ignore resource if it is not found
+  * remove image vuln warning
+  * remove --verbose flag from default
+  * remove emoji from display
+  * Adopt CNCF Code of Conduct.
+  * Update maintainers
+  * validate downloaded framework
+  * Revert "Excluding controlPlaneInfo from error message in case
+    no data recieved."
+  * chore: Explicit set allowPrivilegeEscalation=true
+  * test fix
+  * test fix
+  * control scan by id
+  * download control only by id
+  * minor
+  * revert opa-utils version
+  * patch to filter out "controlPlaneInfo" from error messages in
+    case no data
+  * chore(style): renamed versioned packages to stick to idiomatic
+    conventions
+  * go mod tidy
+  * update opa-utils  v0.0.209
+  * All prints and outputs to get data by control ID
+  * added GitLab repo scanning support
+
+-------------------------------------------------------------------
+Mon Mar 13 09:03:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.178:
+  * change linux runner to 20.04 instead of ubuntu-latest (#960)
+
+-------------------------------------------------------------------
+Mon Mar 13 09:02:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.177:
+  * Fix Junit format
+  * Added Kubescape flow.drawio
+  * remove tag latest
+  * fixed scanning example
+  * do not build dev images
+  * fixed echo command
+  * go mod tidy ancillary modules manifest
+  * move parsing of version to GetVersion
+  * fix(giturlparse): fixes panic on unexpected gitlab remote URL
+  * fixed typo
+  * Update cmd/scan/framework.go
+  * deprecate set-output
+  * testing release
+  * run build only if secret is set
+  * tagging only main image as latest
+  * update repository scanning URL
+  * update hostscanner version
+  * added logs of host scanner version
+  * fix link for cis controls in html output
+  * go mod tidy
+  * minor fix
+  * update opa-utils functions
+  * Update host-scanner image version to v1.0.38
+  * Handle Invalid Formats
+  * Support in new host-scanner endpoint - cloudProviderInfo
+  * Getting cloud provider from gitversion of discovered API
+    version
+  * Getting cluster name from context
+  * supporting client type from env
+  * update examples
+  * Added "CloudProvider" to postureControlInputs
+  * fix: filepath.Dir requires trailing slash
+  * Adding frameworks column to control command
+  * PER-633 support loading exceptions from cache
+  * PER-550 Support loading attack tracks from cache
+  * stash
+  * omit raw resources flag in json output
+  * Revert PR #802 to the old junit format
+  * Fix RootDir Info
+  * replace src with RelSrc
+  * Relative Path When scanning Local Repos
+
+-------------------------------------------------------------------
+Mon Mar 13 09:01:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.176:
+  * test build flow
+  * fixed docker build to support arm
+  * replace control 0006 by 0048
+  * continue when resource not found
+  * Pretty Print frameworks and exceptions
+  * Shift GetControlLink to cautils
+  * remove from smoke test
+  * Do not exit on error
+  * Updating json v1 deprecation message
+  * Deprecate rbac submit
+  * adding Remediation to message
+  * Updated and Used GetControlLink
+  * Modified Link Convention for CIS Controls
+  * Improve Code Quality
+  * Pretty Print Controls made Pretty
+  * Update rbac-utils tag
+  * Fix go.mod in httphandler
+  * Update k8s-interface version
+  * remove deprecated ioutil package
+  * Invalid Format Error
+  * Solved: Empty Lines before printing Controls
+  * add IDs to controls list, deprecate id flag
+  * fixing readme (#899)
+  * Fix reading frameworks from local file
+
+-------------------------------------------------------------------
+Mon Mar 13 09:00:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.175:
+  * retrieve submit flag
+  * fixed indentation
+  * updated go.mod
+  * added line and column information when using the sarif format
+  * fix dependencies
+  * fix go.sum
+  * updated go.mod
+  * Remove irrelevant code
+  * Adding Log in Caller Function
+  * remove --submit from msg when not submitted
+  * Add support to exceptions on repo (files) scan
+  * remove platforms build
+  * removed log
+  * Added Path variables for credentials
+  * Error Info Added
+  * Update core/core/initutils.go
+  * Add go sum
+  * Fix go mod and go sum
+  * Support downloading system-exception from GitHub
+  * feat: support the SARIF output format
+  * Fix when running with include or exclude namespace scanning
+    only namespaced scope
+  * PER-335 Fix comments
+  * PER-335 Add comment
+  * PER-335 Remove submit option from kubescape docs
+  * Store default URLs in cache
+  * PER-335 Removing support for submitting results without
+    accountID
+  * update cmd functionality added
+  * update cmd functionality added
+  * removed getLastScanId function
+  * changed name and added readme
+  * fixed
+  * Added the required changes
+  * Made the required changes
+  * added adaptor
+  * Added the comments for update command
+  * auto pick the OS of the usersystem
+  * Added the update command for kubescape
+  * Update rootinfo.go
+  * Update root.go
+  * Delete kubeconfig.go
+  * Rename kubeconfig to kubeconfig.go
+  * Create kubeconfig
+  * Delete kubeconfig
+  * Create kubeconfig
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 08:59:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.174:
+  * update hostsensor version
+  * commented out tests which made actual http calls
+  * Adding links to readme
+  * Update README.md
+  * APIServerInfo resource added to the scan
+  * Adopt custom cluster name
+  * Update go.mod
+  * Migrate to yaml.v3
+  * cleaning from unused branches
+  * Workflow call testing (#7)
+  * testing gh actions
+  * testing gh actions
+  * host scanner with fixed version
+  * update logs
+  * change user to ks
+
+-------------------------------------------------------------------
+Mon Mar 13 08:58:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.173:
+  * use os path join in build file
+  * adding github token
+  * comment out image release
+  * Store default URLs in cache (#875)
+  * removed path from dockerfile
+  * fixed typo
+  * Fixed host-sensor control plane info collecting
+  * following review
+  * Support for getting backend URLs from ENV
+  * Upgrade opa dependency
+  * Added `controlPlaneInfo` host-sensor endpoint
+  * Adopt custom cluster name (#862)
+  * feat: add `--kubeconfig` flag (#858)
+  * Use workflow_call (#859)
+  * update path env var
+  * Add arch diagrams (#857)
+  * Update python build file
+  * Update logs (#854)
+  * Addition of Cosign for image signing (#826)
+  * Fix typos, linting errors of markdown file, modify the content
+    to make it more concise (#820)
+  * Correcting Punctuation (#849)
+  * Refactoring of Code Base (#853)
+  * Merge branch 'master' into dev
+  * feat: unify severity threshold into one CLI flag (#838)
+  * Scan Kustomize Directory (#795)
+  * add flag validation for --account-id (#605) (#793)
+  * fixed attack tracks loading logic
+  * fixed merge
+  * fixed welcome message
+  * remove unsupported installation method
+  * typo in .gitignore file (#833)
+  * Fix merge conflict
+  * Per 307 fail on severity counters (#831)
+  * Issue 613 cluster name (#783)
+  * Prioritization (#815)
+  * removed the extra 'download' word from the example (#810)
+  * Print line separator only if some controls failed (#813)
+  * update AdoptClusterName
+  * Print line separator only if some controls failed
+  * Edit Junit output (#802)
+  * commened out prioritization logic
+  * Remove windows extension build (#775)
+  * remove windows exe extension
+  * Update host scanner image  (#774)
+  * update scanner image
+  * Option to force enable color output (closes #560) (#767)
+  * bump opa-utils to 181
+  * Fixed: Kubescape fails to authenticate remote private Github
+    repo (#721)
+  * update logger version (#773)
+  * update logger version
+  * Merging typo fixes from master (#772)
+  * Added resource prioritization information, raw resource will be
+    sent on the result object
+  * Change formatting to %s
+  * Print chart name log when fail to generate
+  * update go.mod
+  * Added fixed control input
+  * Update completion.go
+  * Update core/pkg/resourcehandler/filesloader.go
+  * Fix scanning ListObj following reviews
+  * Handle with issues  caused by updating opa-utils
+  * Fix issues according to review
+  * docs(readme): Star → star
+  * gramatical improvements
+  * Support scanning several files
+  * improved icon of kubescape in readme
+  * override infoMap only if it's not nil
+  * Broken links fix in roadmap.md
+  * Fix go mod in httphandler pkg
+  * Fix issue for scanning list obj
+
+-------------------------------------------------------------------
+Mon Mar 13 08:57:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.172:
+  * Release (#844)
+  * build killercoda playground added (#843)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:56:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.171:
+  * Enhancing CLI flags (#835)
+  * Update README.md (#827)
+  * Fixed typos on multiple files (#808)
+  * Fixed typos in roadmap.md (#800)
+  * Update README.md (#804)
+  *  fixed some typo mistakes (#786)
+  * fixed typos (#777)
+  * Fixed typos in contribute.md (#779)
+  * Update README.md (#782)
+  * Publishing community meetings (#781)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:55:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.170:
+  * Hot fix - Revert report structure (#776)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:54:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.169:
+  * Fixed InfoMap usage  (#680)
+  * Update PULL_REQUEST_TEMPLATE.md
+  * fixed the typo in docs/index.html
+  * Fixed some typos in feature_request.md
+  * modified PR template
+  *  build.py is modified
+  * Automatically Close "Typo" labelled Issue
+  *  roadmap.md file is modified
+  * Added alpine tag
+  * Fixed readme
+  * Added link to code of conduct file
+  * Updated README.md file
+  * some grammar mistake is corrected in PULL_REQUEST_TEMPLATE.md
+    file
+  * fixed typos
+  * docs : added gitpod badge in readme.md
+  * punctuation changes
+  * grammar error fixer in CONTRIBUTING.md
+  * typo: In the title and h1 element
+  * Fixed Typos in examples/exceptions/README.md
+  * Update aws.sh
+  * Update container-image-vulnerability-adaptor.md
+  * fix typos
+  * greetings
+  * Update close-typos-issues.yaml
+  * auto close typo issues
+  * typo correction: for better code readability
+  * Update README.md
+  * Adding "open for contribution" tickets in the team intro
+    section
+  * small reame changes
+  * removing ARMO from Kubescape logo
+  * Updating high level roadmap
+  * Update README.md
+  * Update CONTRIBUTING.md
+  * Update roadmap.md
+  * Corrected grammatical errors
+  * Edited few words
+  * Edited here as well
+  * Edited few words
+
+-------------------------------------------------------------------
+Mon Mar 13 08:53:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.168:
+  * Fixing building section links
+  * Fixed readme links
+  * fixed test deps pkg
+  * pr fixes
+  * Update PULL_REQUEST_TEMPLATE.md
+  * Fixed typo
+  * replace armo by kubescape mentioned in urls
+  * Removing mention of ARMO in the initi log print
+  * use setters
+  * Requesting PRs should be opened against the dev branch
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Correction of grammatical errors
+  * Added simple PR template
+  * Updated the correct link on the discord button
+  * Made changes in Readme file by adding discord link
+  * update to kubescape org
+  * chore: Add a Bug Report issue template
+  * Add a feature request template
+  * go mod tidy
+  * change if order
+  * log error
+  * send mapNamespace to nuimber of resources in report
+  * use ks namespace
+  * removing unused function
+  * updated dependencies pkgs
+  * refactor!: httphandler: use Kubescape’s updated exported
+    functions
+  * chore: summeryhelpers.go → summaryhelpers.go
+  * refactor!: resourcehandler: rename armoResources to ksResources
+  * refactor!: resourcehandler: rename armoResources to ksResources
+  * refactor!: resourcehandler: rename armoResources to ksResources
+  * chore!: registryadaptors: rename armosec/v1 Go files
+  * refactor!: registryadaptors: rename adaptor Armo to KS
+  * refactor!: policyhandler/handlenotification.go: rename
+    armoResources to ksResources
+  * refactor!: opaprocessor/processorhandlerutils.go: rename
+    getArmoObjects to getKSObjects
+  * refactor!: core/submit.go: rename armoAPI to ksCloudAPI
+  * refactor!: core/list: rename armoAPI to ksCloudAPI
+  * refactor!: core/initutils.go: rename Armo to Kubescape Cloud
+  * refactor!: core/delete.go: rename Armo to Kubescape
+  * style: format ArmoResource comment
+  * refactor!: rename MapArmoResource to MapKSResource
+  * refactor!: rename "ArmoResources" to "KSResources"
+  * chore!: scaninfo_test.go: remove commented out code
+  * docs!: scaninfo.go: remove Armo mentions
+  * chore!: remove commented out code from reportv2tov1
+  * docs: rename CA in comments to Kubescape Cloud
+  * refactor!: rename "ruleWithArmoOpaDependency" to
+    "ruleWithKSOpaDependency"
+  * refactor!: rename "ArmoResources" to "KSCloudResources"
+  * docs: "armo" to "kubescape cloud" in customerloader comments
+  * chore!: rename "armoapi.go" to "kscloudapi.go"
+  * refactor(armoapiutils)!: rename "armoAPI" to "api"
+  * refactor!: rename "armoAPI" receivers to "api"
+  * refactor!: rename NewArmoAPICustomized to NewKSCloudCustomized
+  * refactor!: rename "NewARMOAPIStaging" to "NewKSCloudAPIStaging"
+  * refactor!: rename top-level global vars from "armo" to
+    "ksCloud"
+  * refactor!: rename "NewARMOAPIProd" to "NewKSCloudAPIProd"
+    (Github tests ratelimit fails here)
+  * refactor!: rename "NewArmoAPIDev" to "NewKSCloudAPIDev"
+  * refactor!: rename "globalArmoAPIConnector" to
+    "globalKSCloudAPIConnector"
+  * refactor!: rename "GetArmoAPIConnector" to
+    "etKSCloudAPIConnector"
+  * refactor!: rename SetArmoAPIConnector to SetKSCloudAPIConnector
+  * refactor!: rename ArmoAPI to KSCloudAPI
+  * refactor!: rename "armo" to "kscloud" in RootInfo
+  * refactor!: rename `armo` to `kubescape` in rootutils
+
+-------------------------------------------------------------------
+Mon Mar 13 08:53:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.167:
+  * Ignore markdown changes in workflows
+  * Updated brew commands
+
+-------------------------------------------------------------------
+Mon Mar 13 08:52:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.166:
+  * fixed url displayed
+
+-------------------------------------------------------------------
+Mon Mar 13 08:52:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.165:
+  * adding gitlab support
+  * fixed rbac submit
+  * fixed link in readme
+  * update readme
+  * update failed image scanning message
+  * chore: remove swagger.yaml at root
+  * chore: regenerate swagger.yaml on latest
+  * chore: clean up unused files
+  * fix: add Swagger file to httphandler package
+  * fix: update go module files
+  * docs: add embedded Swagger spec
+  * fix: tag proper JSON field in StatusQueryParams
+  * refactor: clean up OpenAPI UI serving func
+  * wip: feat: serve swagger doc
+  * wip: docs: autogenerate Swagger specs
+  * docs: add OpenAPI v3 spec
+  * docs: swagger: extend GET scan endpoint info
+  * docs: swagger: add OpenAPI V2 schema
+  * adding UTMs
+  * adding pprof
+  * docs: update link for playground
+  * cleaning the readme
+  * adding heap api
+  * helm chart name fix
+  * Fix support account from ENV
+  * include helm chart name
+  * Support windows build
+
+-------------------------------------------------------------------
+Mon Mar 13 08:51:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.164:
+  * Update Makefile
+
+-------------------------------------------------------------------
+Mon Mar 13 08:51:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.163:
+  * remove URLs from python build file
+  * use exteranl go logger
+
+-------------------------------------------------------------------
+Mon Mar 13 08:50:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.162:
+  * update go sum
+  * Support relative paths in repo scanning
+  * updated README
+  * fix README
+  * Replaced install_dependencie with Makefile, updated readme
+  * updated workflow to run also on PR to dev
+  * update build
+  * update submodule commit
+  * fix tests
+  * missing tag for go test
+  * update build process with libgit2
+  * remove file commit information for windows
+  * use git2go to get file commit information
+  * update go deps
+  * Decrease max report size
+  * update URL
+  * fixed tests
+  * printing error when failed to load exceptions
+  * Refactor for code aesthetics
+  * update dev and stage urls
+  * Modify the ScanningTarget to be a cluster or file
+  * go mod tidy
+  * Change "[info] Scanning. cluster:” to be dynamic by targetScan
+  * Edit the noOfWorkers to be the minimum between the number of
+    pods and 10
+  * Ignore a case where the chan is closed
+  * support in wokerpool in host sensor
+  * Replacing the documentation links to the new URL
+
+-------------------------------------------------------------------
+Mon Mar 13 08:50:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.161:
+  * update report size limit to 4mb
+  * use filepath join in unitests
+  * update go mod
+  * update readme
+  * update readme
+  * validate no workloads found
+  * mixed merge
+  * helm chart scanning
+
+-------------------------------------------------------------------
+Mon Mar 13 08:50:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.160:
+  * fixed printer
+  * handke invalide files
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.159:
+  * remove error when reading yaml
+  * Added host sensor new resources
+  * fixed docker version
+  * fixed typo
+  * fixed test for win
+  * fixed test
+  * fixed test
+  * ignore empty file
+  * upgrade go version
+  * fixed test
+  * add nixos/nix and go install instructions
+  * update dependencies
+  * update pkg
+  * fixed test
+  * update opa pkg
+  * fixed unitests
+  * adding file path to wl
+  * feat: add HTML as an output for scan results
+  * fixed go mod
+  * fixed build files
+  * do not submit invalide account ID
+  * validating slice length
+  * Added gitignore for vscode git history files
+  * Fixed web URL in git repo scanning
+  * Fixed relative path in git repo scan
+  * Fix backward competability of file scanning
+  * Added default pattern, and type filtering in `listFiles`
+  * Use clone in remote git repositories
+  * ignore last commit
+  * adding git data to file
+  * support installation of a fixed version
+  * moved testdata repo
+  * beta url support
+  * submit git scanning
+  * adding client build
+  * adding grafana dashboard
+  * supporting github.repository_owner
+  * updated commit date to time.Time and added length checking for
+    remote URLs
+  * implemented LocalGitRepository for working with a local git
+    folder
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.158:
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.157:
+  * chore: add maintenance message
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.156:
+  * print submit error
+  * support secret key and account ID from cmd
+  * adding logs
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.155:
+  * do not submit results every scan with Prometheus
+  * loading from file fallback
+  * update loading customer config
+  * update auth url
+  * load data from config.json
+  * update readme
+  * send prometheus triggering to queue
+  * use channels for triggering scan
+  * update status busy to support more than one req
+  * fixed triggerd all frameworks
+  * using Buildx in githubactions
+  * update k8s-interface pkg
+  * adding scan request log
+  * go mod
+  * update k8s-iface for http handler
+  * update k8s-interface version
+  * fixed import
+  * adding status rest api
+  * fix test
+  * unit test for isEmptyImgVulns
+  * unit test for isMaterNodeTaints
+  * go mod
+  * show skipped for scan without imgvuln
+  * pull worker nodes based on taints
+  * update go mod
+  * support http and https for all endpoints
+  * update k8s-interface
+  * fix url
+  * make parse func
+  * support env with http
+
+-------------------------------------------------------------------
+Mon Mar 13 08:49:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.154:
+  * rm format-vers flag from examples
+  * support control view
+  * Updated readme - Lens extension
+  * Updated readme - Lens extension
+
+-------------------------------------------------------------------
+Mon Mar 13 08:48:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.153:
+  * reprot ks version
+  * return response object
+  * check that fixCOmmand is not nul
+  * go mod
+  * support fixCOmmand
+  * fixed saving error files
+  * adding tests
+  * docker user name
+  * support keep in query
+  * check tat control is not nil
+  * check that control is present
+  * use iface
+  * update docker user name
+  * return resp object from http req
+  * update http handler
+  * update go mod
+  * sent git repo context
+  * fix skipped for controlsd which use both armo and k8s resources
+
+-------------------------------------------------------------------
+Mon Mar 13 08:48:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.152:
+  * removed binary
+
+-------------------------------------------------------------------
+Mon Mar 13 08:48:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.151:
+  * update version check
+  * rm context name
+  * rm error msg
+  * merge
+  * change to ge contextname
+  * fixed submit url
+  * Call cmd pkg from root
+  * update pkg struct
+  * remove v1 format
+  * adding logs
+  * save policy in file
+  * update resource table
+  * format v2
+  * report format version
+  * convert score to int
+  * support only one input
+  * send file meta
+  * update output
+  * fix error msg for cloud
+  * go mod
+  * exit status 1
+  * fix go mod
+  * fix control input for yaml scan
+  * register usesrs download from BE
+  * update metrics
+  * Added Severity Column with colored text
+  * Improved grammatical mistakes and typos
+  * mv cloud logic to k8s-interface
+  * support yaml scan submit
+
+-------------------------------------------------------------------
+Mon Mar 28 07:11:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.150:
+  * udpate armo api types
+  * use scan ID
+  * fixed report sending
+  * inserting scan source
+  * adding githubusercontent tests
+  * loading github token from env
+  * fixed test
+  * fixed url scanning
+  * update error display
+  * update readme
+  * Add kubescape covarage
+  * rm list initializtion
+  * fix json printer
+  * update opa-utils version
+  * fix resources in report
+  * update get context
+  * udpate badges
+  * adding vs code to readme
+  * send scan metadata
+  * json output
+  * support frameworks from http request
+  * fixed cmd init
+  * fixes
+  * refactor
+  * fix table display
+  * rm space
+  * support status info
+  * update prometheus format
+  * add ks user to dockerfile
+  * update Prometheus yaml
+  * update output
+  * junit format
+  * update readme
+  * adding docker build
+  * change gif
+  * add web & CLI Interfaces
+  * update gif
+  * Add new video to readme
+  * adding tests to build
+  * fixed unitest
+  * add cautils to core
+  * fixed output format
+  * adding ks interface
+  * split pkg
+  * pass info in call
+  * update cmd struct
+  * update logger support
+  * export to json
+  * adding http handler
+  * cli: added support for no color
+  * Misc typo fixes
+  * Add mock logger
+  * udpate go mod
+  * use semver.Compare for version check
+  * update vulns input / output api
+  * update readme
+  * Adding readme and yaml
+  * Prometheus support
+
+-------------------------------------------------------------------
+Mon Mar 07 07:23:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.149:
+  * call setTenant when submitting results
+  * read linux kernel variables from host sensor
+  * update roadmap
+  * update maintainers
+  * Update maintainers and roadmap
+  * support submitting v2
+  * update readme
+  * auto complete examples
+  * swapped print versions
+  * json v2 support
+  * Update junit support
+  * added updated roadmap
+  * extend exceptions support
+  * update junit
+  * fixed junit support
+  * extent host-sensor support
+  * Support float in fail-threshold
+  * udpate packages
+  * fixed help message
+  * support output versions
+  * support host sensor from local file
+  * adding autocompletion
+  * adding resource table
+  * fix: argument validation for framework/control
+  * ignore empty framewprks
+  * handle errors
+  * stage url
+  * fix uuid high-risk vulnerability
+  * fixed pretty-print v1, expand list support
+  * init printer for all pkg
+  * fixed discord banner
+  * docs: describe support for pdf format output
+  * feat(resulthandling): add support for pdf format output
+
+-------------------------------------------------------------------
+Tue Feb 22 10:30:14 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubescape: Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of glass, including risk analysis, security compliance, RBAC visualizer and image vulnerabilities scanning
