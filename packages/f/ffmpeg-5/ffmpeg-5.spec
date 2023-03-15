@@ -109,6 +109,7 @@ Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        no-vk-video-decoding.patch
+Patch93:        soname.diff
 
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
@@ -238,7 +239,7 @@ Requires:       libavfilter8 = %version-%release
 Requires:       libavformat59 = %version-%release
 Requires:       libavutil57 = %version-%release
 Requires:       libpostproc56 = %version-%release
-Requires:       libswresample4 = %version-%release
+Requires:       libswresample4_ff5 = %version-%release
 Requires:       libswscale6 = %version-%release
 
 %description
@@ -254,7 +255,7 @@ This build of ffmpeg is limited in the number of codecs supported.
 Summary:        FFmpeg codec library
 Group:          System/Libraries
 Requires:       libavutil57 = %version-%release
-Requires:       libswresample4 = %version-%release
+Requires:       libswresample4_ff5 = %version-%release
 %if 0%{?BUILD_ORIG}
 Provides:       libavcodec-full = %version-%release
 # This can be (and is) required by packages like vlc-codecs -
@@ -337,7 +338,7 @@ Requires:       libavcodec59 = %version-%release
 Requires:       libavformat59 = %version-%release
 Requires:       libavutil57 = %version-%release
 Requires:       libpostproc56 = %version-%release
-Requires:       libswresample4 = %version-%release
+Requires:       libswresample4_ff5 = %version-%release
 Requires:       libswscale6 = %version-%release
 
 %description -n libavfilter8
@@ -457,12 +458,12 @@ correction, linear/cubic interpolating deinterlacing.
 
 This subpackage contains the headers for FFmpeg libpostproc.
 
-%package -n libswresample4
+%package -n libswresample4_ff5
 Summary:        FFmpeg software resampling library
 Group:          System/Libraries
 Requires:       libavutil57 = %version-%release
 
-%description -n libswresample4
+%description -n libswresample4_ff5
 The libswresample library performs audio conversion between different
 sample rates, channel layout and channel formats.
 
@@ -472,7 +473,7 @@ Group:          Development/Libraries/C and C++
 Provides:       libswresample-devel = %version-%release
 Obsoletes:      libswresample-devel < %version-%release
 Requires:       %name-libavutil-devel = %version-%release
-Requires:       libswresample4 = %version-%release
+Requires:       libswresample4_ff5 = %version-%release
 %devel_conflicts -c < -v %_major_version
 %devel_conflicts -c >= -v %_major_expected
 
@@ -721,8 +722,8 @@ done
 %postun -n libavutil57 -p /sbin/ldconfig
 %post   -n libpostproc56 -p /sbin/ldconfig
 %postun -n libpostproc56 -p /sbin/ldconfig
-%post   -n libswresample4 -p /sbin/ldconfig
-%postun -n libswresample4 -p /sbin/ldconfig
+%post   -n libswresample4_ff5 -p /sbin/ldconfig
+%postun -n libswresample4_ff5 -p /sbin/ldconfig
 %post   -n libswscale6 -p /sbin/ldconfig
 %postun -n libswscale6 -p /sbin/ldconfig
 
@@ -756,7 +757,7 @@ done
 %license COPYING.GPLv2 LICENSE.md
 %_libdir/libpostproc.so.*
 
-%files -n libswresample4
+%files -n libswresample4_ff5
 %license COPYING.GPLv2 LICENSE.md
 %_libdir/libswresample.so.*
 
@@ -847,6 +848,7 @@ Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        no-vk-video-decoding.patch
+Patch93:        soname.diff
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 
@@ -864,7 +866,7 @@ Conflicts:      libavfilter8
 Conflicts:      libavformat59
 Conflicts:      libavutil57
 Conflicts:      libpostproc56
-Conflicts:      libswresample4
+Conflicts:      libswresample4_ff5
 Conflicts:      libswscale6
 Requires:       this-is-only-for-build-envs
 

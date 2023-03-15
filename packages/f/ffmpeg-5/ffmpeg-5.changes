@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 13 11:54:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add soname.diff to get libswresample4 nonconflicting with ffmpeg-6.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:48:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Actually enable libjxl backend
+
+-------------------------------------------------------------------
 Mon Feb 27 09:44:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add ``Requires: this-is-only-for-build-envs`` [boo#1208652]
