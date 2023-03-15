@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.25.2
+Version:        1.26.0
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
@@ -52,6 +52,7 @@ go build \
    -buildmode=pie \
 %endif
    ./cmd/telegraf;
+./telegraf config > etc/telegraf.conf
 
 %install
 # Install the binary.
