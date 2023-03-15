@@ -1,7 +1,7 @@
 #
 # spec file for package iso-codes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iso-codes
-Version:        4.12.0
+Version:        4.13.0
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later

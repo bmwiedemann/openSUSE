@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  8 16:07:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to version 4.13.0:
+  + ISO 3166-1: Add missing common names for Laos, Iran, and Syria.
+  + ISO 3166-3: Fix withdrawal dates of AN, CS and YU.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Nov 23 14:02:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.12.0:
