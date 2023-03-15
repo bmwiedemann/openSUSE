@@ -1,7 +1,7 @@
 #
-# spec file for package kvantum
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -92,7 +94,7 @@ This package provides instructions on how to change configuration or make new th
 
 %package -n kvantum-themes
 Summary:        Themes for Kvantum engine
-Requires:       (kvanum-qt5 = %{version} or kvantum-qt6 = %{version})
+Requires:       (kvantum-qt5 = %{version} or kvantum-qt6 = %{version})
 BuildArch:      noarch
 
 %description -n kvantum-themes

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 06:31:24 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Fix a typo in kvantum-themes dep-requirement
+  * Change kvanum-qt5 to kvantum-qt5
+
+-------------------------------------------------------------------
 Thu Dec  1 22:33:24 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.0.7
