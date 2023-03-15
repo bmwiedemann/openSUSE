@@ -1,0 +1,5 @@
+<package name="distrobox-packaging-image" project="openSUSE:Factory">
+  <title>Distrobox Image for openSUSE Packagers</title>
+  <description>Distrobox Image based on the official openSUSE Distrobox image. Provides a Tumbleweed environment with all the tools that openSUSE Packagers and Release Management need to use to build rpms, images and openSUSE products and submit them to OBS.</description>
+  <devel project="devel:microos:containers" package="distrobox-packaging-image"/>
+</package>
