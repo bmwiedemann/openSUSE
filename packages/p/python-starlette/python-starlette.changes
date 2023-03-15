@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:11:16 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.26.1:
+  * Fixed
+    - Fix typing of Lifespan to allow subclasses of Starlette #2077.
+
+-------------------------------------------------------------------
+Fri Mar 10 11:36:42 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.26.0.post1:
+  * Fixed
+    - Replace reference from Events to Lifespan on the mkdocs.yml #2072.
+
+- Update to 0.26.0:
+  * Added
+    - Support lifespan state #2060, #2065 and #2064.
+  * Changed
+    - Change url_for signature to return a URL instance #1385.
+  * Fixed
+    - Allow "name" argument on url_for() and url_path_for() #2050.
+  * Deprecated
+    - Deprecate on_startup and on_shutdown events #2070. 
+
+-------------------------------------------------------------------
 Thu Feb 16 16:22:35 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.25.0:
