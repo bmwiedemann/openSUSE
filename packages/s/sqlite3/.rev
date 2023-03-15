@@ -1488,4 +1488,12 @@ CVE-2020-13871 boo#1172646</comment>
 - The new version obsoletes sqlite-src-3390000-func7-pg-181.patch</comment>
     <requestid>1067149</requestid>
   </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>6b6ef50df6771d6c66860ec061a3cafa</srcmd5>
+    <version>3.41.0</version>
+    <time>1678902794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071411</requestid>
+  </revision>
 </revisionlist>

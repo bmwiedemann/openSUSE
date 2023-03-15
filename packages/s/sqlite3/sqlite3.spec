@@ -49,6 +49,7 @@ Obsoletes:      %{oname} < %{version}
 %if %{with icu}
 BuildRequires:  libicu-devel
 %endif
+%{?suse_build_hwcaps_libs}
 
 %description
 SQLite is a C library that implements an embeddable SQL database
