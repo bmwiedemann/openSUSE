@@ -2,5 +2,9 @@
   <service name="cargo_vendor" mode="disabled">
     <param name="compression">xz</param>
     <param name="srcdir">parsec-1.1.0</param>
+    <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">parsec-1.1.0</param>
   </service>
 </services>

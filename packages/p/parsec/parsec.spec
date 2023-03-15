@@ -1,7 +1,7 @@
 #
 # spec file for package parsec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
 Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-389b506.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/parallaxsecond/parsec/pull/664
+Patch1:         664.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -42,15 +44,11 @@ BuildRequires:  llvm-devel
 # Fix build with GCC11 on Backports SLE15-SP4/5 - Avoid to get -lstdc++ not found
 BuildRequires:  libstdc++6-devel-gcc11
 %endif
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python3
 # jwt-svid-authenticator (SPIFFE-based authenticator) needs rust >= 1.53
-%if %suse_version > 1550
-BuildRequires:  cargo-packaging
-%else
-BuildRequires:  rust-packaging
-%endif
 BuildRequires:  rust >= 1.53
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
@@ -73,6 +71,7 @@ enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
 %setup -q -a1 -a10 -n parsec-%{archive_version}
+%patch1 -p1
 rmdir trusted-services-vendor
 mv trusted-services-389b506 trusted-services-vendor
 rm -rf .cargo && mkdir .cargo

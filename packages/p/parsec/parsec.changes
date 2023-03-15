@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 15 07:27:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on Tumbleweed (update tss-esapi to 7.2.0):
+  * 664.patch
+- Add <param name="update">true</param> to _service to apply
+  security updates
+- Use cargo-packaging for all flavors
+- Enable cargo_audit
+
+-------------------------------------------------------------------
 Thu Jan 19 11:03:49 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add libstdc++6-devel-gcc11 to fix build with GCC11 on
