@@ -1,7 +1,7 @@
 #
 # spec file for package vkquake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.22.3
+Version:        1.30.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -28,9 +28,9 @@ Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.ta
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
-Patch0:         fix-aarch64-build.patch
+BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig
-BuildRequires:  vulkan-devel
+BuildRequires:  vulkan-devel >= 1.2.162
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(opus)
@@ -43,7 +43,7 @@ vkQuake is a Quake 1 port using Vulkan instead of OpenGL for rendering. It is ba
 Game data must be placed in ~/.vkquake/id1 .
 
 %prep
-%autosetup -p1 -n vkQuake-%{version}
+%autosetup -n vkQuake-%{version}
 
 %if 0%{?sle_version} < 150200
 sed -i 's#vulkan_core.h#vulkan.h#' Quake/quakedef.h

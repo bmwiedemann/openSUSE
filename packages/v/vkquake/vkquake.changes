@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:33:56 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed patch fix-aarch64-build.patch, not needed anymore
+- requires vulkan-devel >= 1.2.162
+- Update to version 1.33.0
+  * Support for remastered models (Needs data from remastered Quake)
+  * Support for dynamic lightmap shadows (requires an RT capable GPU)
+  * Reworked all option menus
+  * Support for modern HUD style
+  * Transparency sorting (thanks @temx)
+  * Dynamic lights are now computed in world instead of texel space for more consistent light sizes
+  * New GPU memory allocator
+  * Improved level load times
+
+-------------------------------------------------------------------
 Mon Dec 12 11:15:37 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - added patch fix-aarch64-build.patch
