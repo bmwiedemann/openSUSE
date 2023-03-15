@@ -164,6 +164,7 @@ autoreconf -fi
         --with-qemu=$QEMU \
         --with-supermin-packager-config="$PWD/zypper.priv.conf --use-installed --verbose" \
         --without-java \
+        --enable-appliance-format-auto \
         --enable-daemon \
 	--enable-install-daemon \
         --enable-ocaml \

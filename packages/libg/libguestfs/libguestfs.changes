@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 07:33:43 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Configure with --enable-appliance-format-auto to allow
+  qcow2-format fixed appliances.
+
+-------------------------------------------------------------------
 Wed Feb 22 13:14:38 MST 2023 - carnold@suse.com
 
 - Update to version 1.50.1
