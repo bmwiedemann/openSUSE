@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.39.2
+Version:        2.40.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -488,7 +488,6 @@ fi
 
 %files
 %dir %{_docdir}/%{name}
-%{gitexecdir}/git-add--interactive
 %{_docdir}/%{name}/README.md
 
 %files doc
@@ -571,8 +570,6 @@ fi
 %dir %{gitexecdir}
 %dir %{gitexecdir}/mergetools
 %{gitexecdir}/mergetools/guiffy
-# We want to prefer the builtin
-%exclude %{gitexecdir}/git-add--interactive
 %{_bindir}/git-new-workdir
 %{_datadir}/bash-completion/completions/*
 %{_sysconfdir}/bash_completion.d/git-prompt

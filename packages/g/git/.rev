@@ -2596,4 +2596,12 @@ git 2.12.3
     overwritten as the user who is running &quot;git apply&quot; boo#1208028</comment>
     <requestid>1065811</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>305de3222a834aacdad18cd6ad13380f</srcmd5>
+    <version>2.40.0</version>
+    <time>1678902799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071417</requestid>
+  </revision>
 </revisionlist>

@@ -2,13 +2,13 @@
  contrib/completion/git-completion.bash |   10 ++++++----
  1 file changed, 6 insertions(+), 4 deletions(-)
 
-Index: git-2.29.0/contrib/completion/git-completion.bash
+Index: git-2.40.0/contrib/completion/git-completion.bash
 ===================================================================
---- git-2.29.0.orig/contrib/completion/git-completion.bash
-+++ git-2.29.0/contrib/completion/git-completion.bash
-@@ -45,10 +45,12 @@
- #     When set to "1" suggest all options, including options which are
- #     typically hidden (e.g. '--allow-empty' for 'git commit').
+--- git-2.40.0.orig/contrib/completion/git-completion.bash
++++ git-2.40.0/contrib/completion/git-completion.bash
+@@ -65,10 +65,12 @@
+ #     case insensitively, even on systems with case sensitive file systems
+ #     (e.g., completing tag name "FOO" on "git checkout f<TAB>").
  
 -case "$COMP_WORDBREAKS" in
 -*:*) : great ;;

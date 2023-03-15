@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 13 20:08:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.40.0:
+  * backward incompatible change: The format.attach configuration
+    variable lacked a way to override a value defined in a
+    lower-priority configuration file (e.g. the system one) by
+    redefining it in a higher-priority configuration file. Now,
+    setting format.attach to an empty string means show the patch
+    inline in the e-mail message, without using MIME attachment.
+  * multiple commands and workflows gained additional options,
+    compatible functionality, or more helpful output
+  * "grep -P" learned to use Unicode Character Property to grok
+    character classes when processing \b and \w etc.
+  * under-the-hood improvements and bug fixes
+- The scripted "git add -p/-i" implementation was removed upstream.
+  The openSUSE package already preferred the C implementation.
+
+-------------------------------------------------------------------
 Tue Feb 14 20:06:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.39.2:
