@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Mar 15 07:58:39 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#918
+- allow trailing space when parsing btrfs version (bsc#1209252)
+- 4.5.85
+
+--------------------------------------------------------------------
+Tue Mar 14 15:39:05 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#917
+- extended error logging
+- 4.5.84
+
+--------------------------------------------------------------------
 Sun Mar 12 06:01:01 UTC 2023 - bittin@opensuse.org
 
 - Translated using Weblate (Swedish) (bsc#1149754)
