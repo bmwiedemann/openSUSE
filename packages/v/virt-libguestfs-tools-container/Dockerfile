@@ -67,21 +67,25 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
               zypper -n install qemu-arm qemu-uefi-aarch64 qemu-x86; \
               fi;
 
-RUN zypper -n remove kubevirt-manifests && \
+# Make a "fixed appliance" for libguestfs.
+# Note: the resulting 'appliance/root' is a sparse file. Docker does not
+# preserve sparseness hence it is converted to qcow2.
+RUN mkdir -p /usr/local/lib/guestfs/appliance && \
+    cd /usr/local/lib/guestfs/appliance && \
+    LIBGUESTFS_BACKEND=direct LIBGUESTFS_DEBUG=1 libguestfs-make-fixed-appliance . && \
+    qemu-img convert -c -O qcow2 root root.qcow2 && \
+    mv root.qcow2 root && \
+    touch done && \
+    rm -rf /var/tmp/.guestfs-*
+
+RUN zypper -n remove --clean-deps \
+              kernel-kvmsmall \
+              kubevirt-manifests && \
     zypper clean -a && \
     useradd -u 1001 --create-home -s /bin/bash virt-libguestfs-tools
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
-
-# Make a "fixed appliance" for libguestfs.
-# Note: the resulting 'appliance/root' is a sparse file. Docker does not
-# preserve sparseness hence a compressed tarball is created.
-RUN LIBGUESTFS_BACKEND=direct \
-    LIBGUESTFS_DEBUG=1 \
-    libguestfs-make-fixed-appliance --xz && \
-    mv appliance-*.tar.xz appliance.tar.xz && \
-    rm -rf /var/tmp/.guestfs-*
 
 USER 1001
 ENTRYPOINT [ "/entrypoint.sh" ]

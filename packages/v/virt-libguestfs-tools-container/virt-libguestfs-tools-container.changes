@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  2 18:15:49 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use qcow2 format to store the appliance rootfs
+
+-------------------------------------------------------------------
 Mon Jan 16 07:29:29 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Do not install reiserfs as it has been deprecated
