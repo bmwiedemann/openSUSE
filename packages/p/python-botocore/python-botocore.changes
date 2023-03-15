@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:13:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.29.89
+  * api-change:``ivschat``: This release adds a new exception returned when calling AWS IVS chat
+    UpdateLoggingConfiguration. Now UpdateLoggingConfiguration can return ConflictException when
+    invalid updates are made in sequence to Logging Configurations.
+  * api-change:``secretsmanager``: The type definitions of SecretString and SecretBinary now have a
+    minimum length of 1 in the model to match the exception thrown when you pass in empty values.
+- from version 1.29.88
+  * api-change:``codeartifact``: This release introduces the generic package format, a mechanism for
+    storing arbitrary binary assets. It also adds a new API, PublishPackageVersion, to allow for
+    publishing generic packages.
+  * api-change:``connect``: This release adds a new API, GetMetricDataV2, which returns metric data
+    for Amazon Connect.
+  * api-change:``evidently``: Updated entity override documentation
+  * api-change:``networkmanager``: This update provides example usage for TransitGatewayRouteTableArn.
+  * api-change:``quicksight``: This release has two changes: add state persistence feature for
+    embedded dashboard and console in GenerateEmbedUrlForRegisteredUser API; add properties for hidden
+    collapsed row dimensions in PivotTableOptions.
+  * api-change:``redshift-data``: Added support for Redshift Serverless workgroup-arn wherever the
+    WorkgroupName parameter is available.
+  * api-change:``sagemaker``: Amazon SageMaker Inference now allows SSM access to customer's model
+    container by setting the "EnableSSMAccess" parameter for a ProductionVariant in
+    CreateEndpointConfig API.
+  * api-change:``servicediscovery``: Updated all AWS Cloud Map APIs to provide consistent throttling
+    exception (RequestLimitExceeded)
+  * api-change:``sesv2``: This release introduces a new recommendation in Virtual Deliverability
+    Manager Advisor, which detects missing or misconfigured Brand Indicator for Message Identification
+    (BIMI) DNS records for customer sending identities.
+- from version 1.29.87
+  * api-change:``athena``: A new field SubstatementType is added to GetQueryExecution API, so
+    customers have an error free way to detect the query type and interpret the result.
+  * api-change:``dynamodb``: Adds deletion protection support to DynamoDB tables. Tables with
+    deletion protection enabled cannot be deleted. Deletion protection is disabled by default, can be
+    enabled via the CreateTable or UpdateTable APIs, and is visible in TableDescription. This setting
+    is not replicated for Global Tables.
+  * api-change:``ec2``: Introducing Amazon EC2 C7g, M7g and R7g instances, powered by the latest
+    generation AWS Graviton3 processors and deliver up to 25% better performance over Graviton2-based
+    instances.
+  * api-change:``lakeformation``: This release adds two new API support "GetDataCellsFiler" and
+    "UpdateDataCellsFilter", and also updates the corresponding documentation.
+  * api-change:``mediapackage-vod``: This release provides the date and time VOD resources were
+    created.
+  * api-change:``mediapackage``: This release provides the date and time live resources were created.
+  * api-change:``route53resolver``: Add dual-stack and IPv6 support for Route 53 Resolver
+    Endpoint,Add IPv6 target IP in Route 53 Resolver Forwarding Rule
+  * api-change:``sagemaker``: There needs to be a user identity to specify the SageMaker user who
+    perform each action regarding the entity. However, these is a not a unified concept of user
+    identity across SageMaker service that could be used today.
+- from version 1.29.86
+  * api-change:``dms``: This release adds DMS Fleet Advisor Target Recommendation APIs and exposes
+    functionality for DMS Fleet Advisor. It adds functionality to start Target Recommendation
+    calculation.
+  * api-change:``location``: Documentation update for the release of 3 additional map styles for use
+    with Open Data Maps: Open Data Standard Dark, Open Data Visualization Light & Open Data
+    Visualization Dark.
+- from version 1.29.85
+  * api-change:``account``: AWS Account alternate contact email addresses can now have a length of
+    254 characters and contain the character "|".
+  * api-change:``ivs``: Updated text description in DeleteChannel, Stream, and StreamSummary.
+- from version 1.29.84
+  * api-change:``dynamodb``: Documentation updates for DynamoDB.
+  * api-change:``ec2``: This release adds support for a new boot mode for EC2 instances called 'UEFI
+    Preferred'.
+  * api-change:``macie2``: Documentation updates for Amazon Macie
+  * api-change:``mediaconvert``: The AWS Elemental MediaConvert SDK has improved handling for
+    different input and output color space combinations.
+  * api-change:``medialive``: AWS Elemental MediaLive adds support for Nielsen watermark timezones.
+  * api-change:``transcribe``: Amazon Transcribe now supports role access for these API operations:
+    CreateVocabulary, UpdateVocabulary, CreateVocabularyFilter, and UpdateVocabularyFilter.
+- from version 1.29.83
+  * api-change:``iot``: A recurring maintenance window is an optional configuration used for rolling
+    out the job document to all devices in the target group observing a predetermined start time,
+    duration, and frequency that the maintenance window occurs.
+  * api-change:``migrationhubstrategy``: This release updates the File Import API to allow importing
+    servers already discovered by customers with reduced pre-requisites.
+  * api-change:``organizations``: This release introduces a new reason code,
+    ACCOUNT_CREATION_NOT_COMPLETE, to ConstraintViolationException in CreateOrganization API.
+  * api-change:``pi``: This release adds a new field PeriodAlignment to allow the customer specifying
+    the returned timestamp of time periods to be either the start or end time.
+  * api-change:``pipes``: This release fixes some input parameter range and patterns.
+  * api-change:``sagemaker``: Add a new field "EndpointMetrics" in SageMaker Inference Recommender
+    "ListInferenceRecommendationsJobSteps" API response.
+- from version 1.29.82
+  * api-change:``codecatalyst``: Published Dev Environments StopDevEnvironmentSession API
+  * api-change:``pricing``: This release adds 2 new APIs - ListPriceLists which returns a list of
+    applicable price lists, and GetPriceListFileUrl which outputs a URL to retrieve your price lists
+    from the generated file from ListPriceLists
+  * api-change:``s3outposts``: S3 on Outposts introduces a new API ListOutpostsWithS3, with this API
+    you can list all your Outposts with S3 capacity.
+- from version 1.29.81
+  * enhancement:Documentation: Splits service documentation into multiple sub-pages for better
+    organization and faster loading time.
+  * api-change:``comprehend``: Amazon Comprehend now supports flywheels to help you train and manage
+    new model versions for custom models.
+  * api-change:``ec2``: This release allows IMDS support to be set to v2-only on an existing AMI, so
+    that all future instances launched from that AMI will use IMDSv2 by default.
+  * api-change:``kms``: AWS KMS is deprecating the RSAES_PKCS1_V1_5 wrapping algorithm option in the
+    GetParametersForImport API that is used in the AWS KMS Import Key Material feature. AWS KMS will
+    end support for this wrapping algorithm by October 1, 2023.
+  * api-change:``lightsail``: This release adds Lightsail for Research feature support, such as GUI
+    session access, cost estimates, stop instance on idle, and disk auto mount.
+  * api-change:``managedblockchain``: This release adds support for tagging to the accessor resource
+    in Amazon Managed Blockchain
+  * api-change:``omics``: Minor model changes to accomodate batch imports feature
+- from version 1.29.80
+  * api-change:``devops-guru``: This release adds the description field on ListAnomaliesForInsight
+    and DescribeAnomaly API responses for proactive anomalies.
+  * api-change:``drs``: New fields were added to reflect availability zone data in source server and
+    recovery instance description commands responses, as well as source server launch status.
+  * api-change:``internetmonitor``: CloudWatch Internet Monitor is a a new service within CloudWatch
+    that will help application developers and network engineers continuously monitor internet
+    performance metrics such as availability and performance between their AWS-hosted applications and
+    end-users of these applications
+  * api-change:``lambda``: This release adds the ability to create ESMs with Document DB change
+    streams as event source. For more information see
+    https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html.
+  * api-change:``mediaconvert``: The AWS Elemental MediaConvert SDK has added support for HDR10 to
+    SDR tone mapping, and animated GIF video input sources.
+  * api-change:``timestream-write``: This release adds the ability to ingest batched historical data
+    or migrate data in bulk from S3 into Timestream using CSV files.
+- from version 1.29.79
+  * api-change:``connect``: StartTaskContact API now supports linked task creation with a new
+    optional RelatedContactId parameter
+  * api-change:``connectcases``: This release adds the ability to delete domains through the
+    DeleteDomain API. For more information see
+    https://docs.aws.amazon.com/cases/latest/APIReference/Welcome.html
+  * api-change:``redshift``: Documentation updates for Redshift API bringing it in line with IAM best
+    practices.
+  * api-change:``securityhub``: New Security Hub APIs and updates to existing APIs that help you
+    consolidate control findings and enable and disable controls across all supported standards
+  * api-change:``servicecatalog``: Documentation updates for Service Catalog
+
+-------------------------------------------------------------------
 Fri Feb 24 09:17:28 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.78
