@@ -780,4 +780,19 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- Add upstream fix gcc13-fix.patch. (forwarded request 1069628 from marxin)</comment>
     <requestid>1069635</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5e2db1ee5d37c30ae4bfd1e8033ae201</srcmd5>
+    <version>3.1.6</version>
+    <time>1678902814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * NEON optimizations for ZIP reading
+  * Enable fast Huffman &amp; Huffman zig-zag transform for Arm Neon
+  * Support relative and absolute libdir/includedir in pkg-config generation
+  * Fix for reading memory mapped files with DWA compression
+  * Enable SSE4 support on Windows
+  * Fast huf decoder
+- Drop gcc13-fix.patch (forwarded request 1071437 from polslinux)</comment>
+    <requestid>1071520</requestid>
+  </revision>
 </revisionlist>

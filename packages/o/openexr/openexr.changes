@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:13:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.1.6:
+  * NEON optimizations for ZIP reading
+  * Enable fast Huffman & Huffman zig-zag transform for Arm Neon
+  * Support relative and absolute libdir/includedir in pkg-config generation
+  * Fix for reading memory mapped files with DWA compression
+  * Enable SSE4 support on Windows
+  * Fast huf decoder
+- Drop gcc13-fix.patch
+
+-------------------------------------------------------------------
 Mon Mar  6 12:23:38 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add upstream fix gcc13-fix.patch.
