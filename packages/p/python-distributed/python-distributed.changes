@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Mar 14 03:42:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip more flaky tests
+
+-------------------------------------------------------------------
+Sat Mar 11 23:58:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.1
+  ## Enhancements
+  * Add Jupyter link to dashboard menu if --jupyter flag is set
+    (GH#7638) Jacob Tomlinson
+  * Bump minimum click version from 7.0 to 8.0 (GH#7637) Miles
+  * Extend dask metapackage dependencies (GH#7630) James Bourbeau
+  * Further improvements to Client.restart_workers (GH#7620) Miles
+  * P2P offload get_output_partition (GH#7587) Florian Jetter
+  * Initial integration of GIL contention metric (GH#7624) Miles
+  * Add dashboard documentation links (GH#7610) Miles
+  * Rename shuffle/rechunk config option/kwarg to method (GH#7623)
+    Hendrik Makait
+  * Return results in restart_workers (GH#7606) Miles
+  * Ensure client key cancellation uses ordered messages (GH#7583)
+    Florian Jetter
+  ## Bug Fixes
+  * Fix undefined async_wait_for -> async_poll_for (GH#7627) Miles
+  * Don’t send client heartbeat without a scheduler_comm (GH#7612)
+    James Bourbeau
+  * Do not unspill on free-keys (GH#7607) crusaderky
+  ## Documentation
+  * Add notes to Client.submit, Client.map, and Client.scatter with
+    the description of the current task graph resolution algorithm
+    limitations (GH#7588) Eugene Druzhynin
+  ## Maintenance
+  * Use range with pickle protocol versions (GH#7635) jakirkham
+  * Share thread pool among P2P shuffle runs (GH#7621) Hendrik
+    Makait
+  * Replace psutil suspend with BlockedGatherDep in
+    test_failing_worker_with_additional_replicas_on_cluster
+    (GH#7633) Thomas Grainger
+  * Ignore pkg_resources DeprecationWarning for mindeps (GH#7626)
+    Miles
+  * Implement wait_for using asyncio.timeout() on 3.11 (GH#7571)
+    Thomas Grainger
+  * Use tmp_path fixture instead of outdated tmpdir fixture
+    (GH#7582) ypogorelova
+  * Only one crick callback (GH#7614) crusaderky
+  * Add mindeps + numpy job to tests CI (GH#7609) Miles
+  * Do not xfail whole tests due to (GH#6705) (GH#7611) crusaderky
+
+-------------------------------------------------------------------
 Wed Mar  8 09:41:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.3.0:

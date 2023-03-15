@@ -56,7 +56,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.3.0
+Version:        2023.3.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -76,7 +76,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.3
 Requires:       python-PyYAML >= 5.3.1
-Requires:       python-click >= 7.0
+Requires:       python-click >= 8.0
 Requires:       python-cloudpickle >= 1.5.0
 Requires:       python-dask = %{version}
 Requires:       python-locket >= 1.0.0
@@ -166,9 +166,12 @@ donttest+=" or (test_metrics and test_wall_clock)"
 donttest+=" or (test_priorities and test_compute)"
 donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_steal and test_steal_twice)"
+donttest+=" or (test_utils and test_popen_timeout)"
 donttest+=" or (test_variable and test_variable_in_task)"
+donttest+=" or (test_worker and test_gather_dep_from_remote_workers_if_all_local_workers_are_busy)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 donttest+=" or (test_worker_memory and test_digests)"
+donttest+=" or (test_worker_memory and test_pause_while_spilling)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
@@ -192,7 +195,6 @@ notparallel+=" or test_stack_overflow"
 #
 notparallel+=" or test_dashboard_host"
 notparallel+=" or test_close_properly"
-notparallel+=" or test_popen_timeout"
 notparallel+=" or test_plugin_internal_exception"
 notparallel+=" or test_runspec_regression_sync"
 notparallel+=" or test_client_async_before_loop_starts"
