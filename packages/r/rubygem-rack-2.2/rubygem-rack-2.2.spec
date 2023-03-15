@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.6.3
+Version:        2.2.6.4
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
