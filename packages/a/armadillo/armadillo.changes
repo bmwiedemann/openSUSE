@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 14 11:33:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12.0.1:
+  * faster fft() and ifft() via optional use of FFTW3.
+  * faster min() and max().
+  * faster index_min() and index_max().
+  * added .col_as_mat() and .row_as_mat() which return matrix
+    representation of cube column and cube row.
+  * added csv_opts::strict option to loading CSV files to
+    interpret missing values as NaN.
+  * added check_for_zeros option to form 4 of sparse matrix batch
+    constructors.
+  * inv() and inv_sympd() with options inv_opts::no_ugly or
+    inv_opts::allow_approx now use a scaled threshold similar to
+    pinv().
+  * set_cout_stream() and set_cerr_stream() are now no-ops;
+    instead use the options ARMA_WARN_LEVEL, or ARMA_COUT_STREAM,
+    or ARMA_CERR_STREAM.
+- Bump lib version 11 -> 12, update baselibs.conf file.
+
+-------------------------------------------------------------------
 Sun Feb 19 09:11:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls 

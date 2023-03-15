@@ -16,9 +16,9 @@
 #
 
 
-%define soname libarmadillo11
+%define soname libarmadillo12
 Name:           armadillo
-Version:        11.4.4
+Version:        12.0.1
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
