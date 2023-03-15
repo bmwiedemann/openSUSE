@@ -1,0 +1,5 @@
+<package name="amfora" project="openSUSE:Factory">
+  <title>terminal gemini browser</title>
+  <description>A fancy terminal browser for the Gemini protocol. </description>
+  <devel project="network" package="amfora"/>
+</package>
