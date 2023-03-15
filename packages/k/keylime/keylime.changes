@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Mar 14 08:09:07 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.7.0:
+  * codestyle: Define RuntimePolicyType and use it
+  * ima: Move type defitions from ima_dm.py to types.py
+  * docs: fix docs
+  * End of term for @mpeters + propose @maugustosilva
+  * verifier: Activate every m-th agent starting at the n-th agent on a worker
+  * verifier: Read list of agents early on
+  * create_policy: read the hashes from filelists-ext
+  * tests: remove restful test and simplify test scripts
+  * tests: config move agent config example to verifier
+  * Update source code mapping in codecov.yml
+  * ima: do not validate against the allowlist if signature was already validated
+  * Disable e2e on Rawhide due to RHBZ#2171376
+  * roadmap: update for 2023
+  * readme: remove installation instructions, update outdated information
+  * db: switch to pessimistic disconnect handling
+  * Add timestamp of last successful attestation to verifier API
+  * tpm: improve logging for tpm and measured boot policy
+  * da: fixes for breakages on durable Attestation
+  * codestyle: Fully annotate cloud_verifier_tornado and add to mypy
+  * create_policy: clarify IMA on links
+  * create_policy: be explicit on opening binary files
+  * create_policy: use public variants for RPM flags
+  * create_policy: remote repository IMA extraction
+  * create_policy: local RPM repository IMA extraction
+  * create_policy: remove the experimental status
+  * create_policy: print into stderr
+  * signing: small refactor on the code
+  * Add missing e2e tests and reordering tests based on alphabetical order
+  * verifier,tenant : fix IMA runtime policy bug (issue #1306)
+  * e2e tests: Fix test name (#1307)
+  * verifier: fixing type issues (#1272)
+  * config: improve support for (log-based) debugging
+  * Fix stray references to "IMA policies" in conversion script
+  * tests: only keep test specific packages in test-requirements.txt
+  * codestyle: Have pyright ignore assignments of values to DB columns
+  * codestyle: Call type conversion functions on agent's DB columns
+  * codestyle: Fully annotate cloud_verifier_common.py and add to mypy
+  * codestyle: Have pyright ignore the parameter passed to the update() function
+  * codestyle: Have pyright ignore fields used to select columns to load
+  * codestyle: Add an assert to the returned update_agent to avoid pyright errors
+  * codesyle: Fix annotations of notify functions in revocation_notifier.py
+
+-------------------------------------------------------------------
 Tue Mar  7 16:11:03 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add tenant.conf.diff path to do not require a valid EK certificate
