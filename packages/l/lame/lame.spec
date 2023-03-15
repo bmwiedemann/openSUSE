@@ -1,7 +1,7 @@
 #
 # spec file for package lame
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Release:        0
 Summary:        The LAME MP3 encoder
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-URL:            http://lame.sourceforge.net/
+URL:            https://lame.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/lame/lame-%{version}.tar.gz
 Source99:       lame-rpmlintrc
 Source1000:     baselibs.conf
@@ -34,12 +34,12 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-2.0)
 Requires:       libmp3lame%{sover} >= %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifarch %ix86
+%{?suse_build_hwcaps_libs}
+%ifarch %{ix86}
 BuildRequires:  nasm
 %endif
-BuildRequires:  pkgconfig(gtk+-2.0)
 
 %description
 LAME is an educational tool to be used for learning about MP3 encoding.
@@ -87,10 +87,8 @@ tests.
 
 This package includes "mp3rtp", an MP3 encoder with RTP streaming of the output.
 
-
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 LIBS="-lm" \
@@ -105,10 +103,10 @@ CFLAGS="%{optflags}" \
     --disable-rpath \
     --disable-static
 
-make %{?_smp_mflags} pkgdocdir=%{_defaultdocdir}/%{name}/
+%make_build pkgdocdir=%{_defaultdocdir}/%{name}/
 
 %check
-make test
+%make_build test
 
 %install
 make install pkgdocdir=%{_defaultdocdir}/%{name}/ DESTDIR=%{buildroot}
@@ -121,9 +119,9 @@ prefix=%{_prefix}
 libdir=%{_libdir}
 includedir=%{_includedir}/lame
 
-Name: lame
+Name:           lame
 Description: encoder that converts audio to the MP3 file format.
-Version: %{version}
+Version:        %{version}
 Libs: -L\${libdir} -lmp3lame
 Cflags: -I\${includedir}
 EOF
@@ -136,16 +134,13 @@ for f in ChangeLog README TODO USAGE; do
 done
 
 %post   -n libmp3lame%{sover} -p /sbin/ldconfig
-
 %postun -n libmp3lame%{sover} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/lame
-%{_mandir}/man1/lame.1*
+%{_mandir}/man1/lame.1%{?ext_man}
 
 %files doc
-%defattr(-,root,root)
 %{_defaultdocdir}/%{name}
 
 %files -n libmp3lame%{sover}
@@ -154,14 +149,12 @@ done
 %{_libdir}/libmp3lame.so.%{sover}.*
 
 %files -n libmp3lame-devel
-%defattr(-,root,root)
 %doc API HACKING STYLEGUIDE
 %{_includedir}/lame/
 %{_libdir}/libmp3lame.so
 %{_libdir}/pkgconfig/*pc
 
 %files mp3rtp
-%defattr(-,root,root)
 %{_bindir}/mp3rtp
 
 %changelog
