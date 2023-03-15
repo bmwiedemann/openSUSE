@@ -645,7 +645,7 @@ ln -s %{rust_root} %{_builddir}/rustc-%{version}-src/build/%{rust_triple}/stage0
 # we can use it with -Z gcc-ld=lld (which is sadly trapped in nightly). We can't exclude
 # a single test so sadly we have to exclude that whole suite.
 %ifarch aarch64
-python3 ./x.py test --target=%{rust_triple} --exclude src/test/run-make,src/tools/tidy
+python3 ./x.py test --target=%{rust_triple} --exclude tests/run-make/issue-71519,src/tools/tidy
 %else
 python3 ./x.py test --target=%{rust_triple} --exclude src/tools/tidy
 %endif
