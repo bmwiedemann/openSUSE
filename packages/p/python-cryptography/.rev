@@ -813,4 +813,15 @@
     <comment></comment>
     <requestid>1063995</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>b6802212c22f814901cc283a7cc1a3eb</srcmd5>
+    <version>39.0.2</version>
+    <time>1678902778</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 39.0.2:
+  * Fixed a bug where the content type header was not properly
+    encoded for PKCS7 signatures when using the ``Text`` option and
+    ``SMIME`` encoding.</comment>
+    <requestid>1069840</requestid>
+  </revision>
 </revisionlist>

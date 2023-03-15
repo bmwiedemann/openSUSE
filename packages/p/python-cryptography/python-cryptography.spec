@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-cryptography%{psuffix}
-Version:        39.0.1
+Version:        39.0.2
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause

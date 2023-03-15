@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  7 07:34:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 39.0.2:
+  * Fixed a bug where the content type header was not properly
+    encoded for PKCS7 signatures when using the ``Text`` option and
+    ``SMIME`` encoding.
+
+-------------------------------------------------------------------
 Thu Feb  9 09:53:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 39.0.1:
