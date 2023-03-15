@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 10 19:01:21 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Support custom firmware paths
+  bf3be5b7-libxl-Support-custom-firmware-path.patch,
+  705525cb-libxl-Support-custom-firmware-path-conversion.patch
+  bsc#1209161
+- spec: Move ovmf dependency to correct package
+
+-------------------------------------------------------------------
 Thu Mar  2 23:11:37 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Apparmor: Add support for SUSE edk2 firmware paths

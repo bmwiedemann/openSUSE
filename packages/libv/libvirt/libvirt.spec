@@ -304,6 +304,8 @@ Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         4959490e-support-SUSE-edk2-firmware-paths.patch
+Patch1:         bf3be5b7-libxl-Support-custom-firmware-path.patch
+Patch2:         705525cb-libxl-Support-custom-firmware-path-conversion.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -385,13 +387,6 @@ Requires:       group(libvirt)
 Requires:       gettext-runtime
 Requires:       bash-completion >= 2.0
 
-# A KVM or Xen libvirt stack really does need UEFI firmware these days
-%ifarch x86_64
-Requires:       qemu-ovmf-x86_64
-%endif
-%ifarch aarch64
-Requires:       qemu-uefi-aarch64
-%endif
 %if %{with_apparmor}
 Recommends:     apparmor-abstractions
 %endif
@@ -655,6 +650,13 @@ Requires:       systemd-container
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       swtpm
 %endif
+# The KVM libvirt stack really does need UEFI firmware these days
+%ifarch x86_64
+Requires:       qemu-ovmf-x86_64
+%endif
+%ifarch aarch64
+Requires:       qemu-uefi-aarch64
+%endif
 %if %{with_numad}
 Suggests:       numad
 %endif
@@ -695,6 +697,8 @@ VirtualBox
 Summary:        Libxl driver plugin for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
+# The Xen libvirt stack really does need UEFI firmware these days
+Requires:       qemu-ovmf-x86_64
 
 %description daemon-driver-libxl
 The Libxl driver plugin for the libvirtd daemon, providing

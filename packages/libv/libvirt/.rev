@@ -4259,4 +4259,16 @@ StandardGroups in rpmlint package.
     5155ab4b-qemu_namespace-nested-mounts-when-umount.patch</comment>
     <requestid>1069758</requestid>
   </revision>
+  <revision rev="370" vrev="2">
+    <srcmd5>7b15c4e764067e69337e5e30f370820b</srcmd5>
+    <version>9.1.0</version>
+    <time>1678902833</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: Support custom firmware paths
+  bf3be5b7-libxl-Support-custom-firmware-path.patch,
+  705525cb-libxl-Support-custom-firmware-path-conversion.patch
+  bsc#1209161
+- spec: Move ovmf dependency to correct package</comment>
+    <requestid>1071839</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,204 @@
+From 4bb53ee6b832c4f8f6631ab7508c6bccd7a4241e Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Fri, 10 Feb 2023 14:22:19 -0700
+Subject: [PATCH 1/2] libxl: Support specifying a custom firmware path
+
+libxl added support for specifying custom firmware paths long ago. The
+functionality exists in all Xen version supported by libvirt. This patch
+adds support for user-specified efi firmware paths in the libxl driver.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+(cherry picked from commit bf3be5b76e96f22edfe71738f97c02a01f3b8354)
+References: bsc#1209161
+---
+ src/libxl/libxl_conf.c                    | 14 ++--
+ tests/libxlxml2domconfigdata/efi-hvm.json | 91 +++++++++++++++++++++++
+ tests/libxlxml2domconfigdata/efi-hvm.xml  | 36 +++++++++
+ tests/libxlxml2domconfigtest.c            |  1 +
+ 4 files changed, 134 insertions(+), 8 deletions(-)
+
+Index: libvirt-9.1.0/src/libxl/libxl_conf.c
+===================================================================
+--- libvirt-9.1.0.orig/src/libxl/libxl_conf.c
++++ libvirt-9.1.0/src/libxl/libxl_conf.c
+@@ -632,14 +632,10 @@ libxlMakeDomBuildInfo(virDomainDef *def,
+         b_info->ramdisk = g_strdup(def->os.initrd);
+ 
+         /*
+-         * Currently libxl only allows specifying the type of BIOS.
+-         * If automatic firmware selection is enabled or the loader
+-         * type is PFLASH, we assume OVMF and set libxl_bios_type
+-         * to LIBXL_BIOS_TYPE_OVMF. The path to the OVMF firmware is
+-         * configured when building Xen using '--with-system-ovmf='. If
+-         * not specified, LIBXL_FIRMWARE_DIR/ovmf.bin is used. In the
+-         * future, Xen will support a user-specified firmware path. See
+-         * https://lists.xenproject.org/archives/html/xen-devel/2016-03/msg01628.html
++         * libxl allows specifying the type of firmware and an optional path.
++         * If the path is not explicitly specified, a default path for the given
++         * firmware type is used. For EFI, it's LIBXL_FIRMWARE_DIR/ovmf.bin.
++         * Currently libxl does not support specifying nvram for EFI firmwares.
+          */
+         if (def->os.firmware == VIR_DOMAIN_OS_DEF_FIRMWARE_EFI) {
+             if (def->os.loader == NULL)
+@@ -651,9 +647,11 @@ libxlMakeDomBuildInfo(virDomainDef *def,
+             if (def->os.loader->readonly == VIR_TRISTATE_BOOL_ABSENT)
+                 def->os.loader->readonly = VIR_TRISTATE_BOOL_YES;
+             b_info->u.hvm.bios = LIBXL_BIOS_TYPE_OVMF;
++            b_info->u.hvm.system_firmware = g_strdup(def->os.loader->path);
+             def->os.firmware = VIR_DOMAIN_OS_DEF_FIRMWARE_NONE;
+         } else if (virDomainDefHasOldStyleUEFI(def)) {
+             b_info->u.hvm.bios = LIBXL_BIOS_TYPE_OVMF;
++            b_info->u.hvm.system_firmware = g_strdup(def->os.loader->path);
+         }
+ 
+         if (def->emulator) {
+Index: libvirt-9.1.0/tests/libxlxml2domconfigdata/efi-hvm.json
+===================================================================
+--- /dev/null
++++ libvirt-9.1.0/tests/libxlxml2domconfigdata/efi-hvm.json
+@@ -0,0 +1,91 @@
++{
++    "c_info": {
++        "type": "hvm",
++        "name": "test-hvm",
++        "uuid": "2147d599-9cc6-c0dc-92ab-4064b5446e9b"
++    },
++    "b_info": {
++        "max_vcpus": 4,
++        "avail_vcpus": [
++            0,
++            1,
++            2,
++            3
++        ],
++        "max_memkb": 1048576,
++        "target_memkb": 1048576,
++        "video_memkb": 8192,
++        "shadow_memkb": 1234,
++        "device_model_version": "qemu_xen",
++        "device_model": "/bin/true",
++        "sched_params": {
++
++        },
++        "apic": "True",
++        "acpi": "True",
++        "type.hvm": {
++            "bios": "ovmf",
++            "pae": "True",
++            "system_firmware": "/usr/share/qemu/ovmf-x86_64-xen.bin",
++            "vga": {
++                "kind": "cirrus"
++            },
++            "vnc": {
++                "enable": "True",
++                "listen": "0.0.0.0",
++                "findunused": "False"
++            },
++            "sdl": {
++                "enable": "False"
++            },
++            "spice": {
++
++            },
++            "boot": "c",
++            "rdm": {
++
++            }
++        },
++        "arch_arm": {
++
++        }
++    },
++    "disks": [
++        {
++            "pdev_path": "/var/lib/xen/images/test-hvm.img",
++            "vdev": "hda",
++            "backend": "qdisk",
++            "format": "raw",
++            "removable": 1,
++            "readwrite": 1
++        }
++    ],
++    "nics": [
++        {
++            "devid": 0,
++            "mac": "00:16:3e:66:12:b4",
++            "bridge": "br0",
++            "script": "/etc/xen/scripts/vif-bridge",
++            "nictype": "vif_ioemu"
++        }
++    ],
++    "vfbs": [
++        {
++	    "devid": -1,
++            "vnc": {
++                "enable": "True",
++                "listen": "0.0.0.0",
++                "findunused": "False"
++            },
++            "sdl": {
++                "enable": "False"
++            }
++        }
++    ],
++    "vkbs": [
++        {
++            "devid": -1
++        }
++    ],
++    "on_reboot": "restart"
++}
+Index: libvirt-9.1.0/tests/libxlxml2domconfigdata/efi-hvm.xml
+===================================================================
+--- /dev/null
++++ libvirt-9.1.0/tests/libxlxml2domconfigdata/efi-hvm.xml
+@@ -0,0 +1,36 @@
++<domain type='xen'>
++  <name>test-hvm</name>
++  <description>None</description>
++  <uuid>2147d599-9cc6-c0dc-92ab-4064b5446e9b</uuid>
++  <memory>1048576</memory>
++  <currentMemory>1048576</currentMemory>
++  <vcpu>4</vcpu>
++  <on_poweroff>destroy</on_poweroff>
++  <on_reboot>restart</on_reboot>
++  <on_crash>destroy</on_crash>
++  <clock offset='utc'/>
++  <os>
++    <type>hvm</type>
++    <loader readonly='yes' type='pflash'>/usr/share/qemu/ovmf-x86_64-xen.bin</loader>
++    <boot dev='hd'/>
++  </os>
++  <features>
++    <apic/>
++    <acpi/>
++    <pae/>
++  </features>
++  <devices>
++    <emulator>/bin/true</emulator>
++    <disk type='file' device='disk'>
++      <driver name='qemu'/>
++      <source file='/var/lib/xen/images/test-hvm.img'/>
++      <target dev='hda'/>
++    </disk>
++    <interface type='bridge'>
++      <source bridge='br0'/>
++      <mac address='00:16:3e:66:12:b4'/>
++      <script path='/etc/xen/scripts/vif-bridge'/>
++    </interface>
++    <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
++  </devices>
++</domain>
+Index: libvirt-9.1.0/tests/libxlxml2domconfigtest.c
+===================================================================
+--- libvirt-9.1.0.orig/tests/libxlxml2domconfigtest.c
++++ libvirt-9.1.0/tests/libxlxml2domconfigtest.c
+@@ -183,6 +183,7 @@ mymain(void)
+ 
+     DO_TEST("basic-pv");
+     DO_TEST("basic-hvm");
++    DO_TEST("efi-hvm");
+ # ifdef WITH_XEN_PVH
+     DO_TEST("basic-pvh");
+ # endif

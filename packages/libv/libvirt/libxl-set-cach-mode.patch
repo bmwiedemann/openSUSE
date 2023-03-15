@@ -14,7 +14,7 @@ Index: libvirt-9.1.0/src/libxl/libxl_conf.c
 ===================================================================
 --- libvirt-9.1.0.orig/src/libxl/libxl_conf.c
 +++ libvirt-9.1.0/src/libxl/libxl_conf.c
-@@ -949,6 +949,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
+@@ -947,6 +947,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
      }
  }
  
@@ -43,7 +43,7 @@ Index: libvirt-9.1.0/src/libxl/libxl_conf.c
  static char *
  libxlMakeNetworkDiskSrcStr(virStorageSource *src,
                             const char *username,
-@@ -1183,6 +1205,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1181,6 +1203,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
      x_disk->readwrite = !l_disk->src->readonly;
      x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
      libxlDiskSetDiscard(x_disk, l_disk->discard);

@@ -1,0 +1,87 @@
+From a4bec048bc68b2eeac0f3157a9b946b404f1cea1 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Mon, 13 Feb 2023 14:30:31 -0700
+Subject: [PATCH 2/2] libxl: Add support for custom firmware path in config
+ converter
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+(cherry picked from commit 705525cbec0b2551d54a04d22b5605b04e0343c0)
+References: bsc#1209161
+---
+ src/libxl/xen_xl.c                        | 19 ++++++++++++++-----
+ tests/xlconfigdata/test-fullvirt-ovmf.cfg |  1 +
+ tests/xlconfigdata/test-fullvirt-ovmf.xml |  2 +-
+ 3 files changed, 16 insertions(+), 6 deletions(-)
+
+Index: libvirt-9.1.0/src/libxl/xen_xl.c
+===================================================================
+--- libvirt-9.1.0.orig/src/libxl/xen_xl.c
++++ libvirt-9.1.0/src/libxl/xen_xl.c
+@@ -104,18 +104,23 @@ xenParseXLOS(virConf *conf, virDomainDef
+ 
+     if (def->os.type == VIR_DOMAIN_OSTYPE_HVM) {
+         g_autofree char *bios = NULL;
++        g_autofree char *bios_path = NULL;
+         g_autofree char *boot = NULL;
+         int val = 0;
+ 
+         if (xenConfigGetString(conf, "bios", &bios, NULL) < 0)
+             return -1;
++        if (xenConfigGetString(conf, "bios_path_override", &bios_path, NULL) < 0)
++            return -1;
+ 
+         if (bios && STREQ(bios, "ovmf")) {
+             def->os.loader = g_new0(virDomainLoaderDef, 1);
+             def->os.loader->type = VIR_DOMAIN_LOADER_TYPE_PFLASH;
+             def->os.loader->readonly = VIR_TRISTATE_BOOL_YES;
+-
+-            def->os.loader->path = g_strdup(LIBXL_FIRMWARE_DIR "/ovmf.bin");
++            if (bios_path)
++                def->os.loader->path = g_strdup(bios_path);
++            else
++                def->os.loader->path = g_strdup(LIBXL_FIRMWARE_DIR "/ovmf.bin");
+         } else {
+             for (i = 0; i < caps->nguests; i++) {
+                 if (caps->guests[i]->ostype == VIR_DOMAIN_OSTYPE_HVM &&
+@@ -1119,9 +1124,13 @@ xenFormatXLOS(virConf *conf, virDomainDe
+         if (xenConfigSetString(conf, "builder", "hvm") < 0)
+             return -1;
+ 
+-        if (virDomainDefHasOldStyleUEFI(def) &&
+-            xenConfigSetString(conf, "bios", "ovmf") < 0)
+-            return -1;
++        if (virDomainDefHasOldStyleUEFI(def)) {
++            if (xenConfigSetString(conf, "bios", "ovmf") < 0)
++                return -1;
++            if (def->os.loader->path &&
++                (xenConfigSetString(conf, "bios_path_override", def->os.loader->path) < 0))
++                return -1;
++        }
+ 
+         if (def->os.slic_table &&
+             xenConfigSetString(conf, "acpi_firmware", def->os.slic_table) < 0)
+Index: libvirt-9.1.0/tests/xlconfigdata/test-fullvirt-ovmf.cfg
+===================================================================
+--- libvirt-9.1.0.orig/tests/xlconfigdata/test-fullvirt-ovmf.cfg
++++ libvirt-9.1.0/tests/xlconfigdata/test-fullvirt-ovmf.cfg
+@@ -22,5 +22,6 @@ parallel = "none"
+ serial = "none"
+ builder = "hvm"
+ bios = "ovmf"
++bios_path_override = "/usr/share/qemu/ovmf-x86_64-xen.bin"
+ boot = "d"
+ disk = [ "format=raw,vdev=hda,access=rw,backendtype=phy,target=/dev/HostVG/XenGuest2", "format=qcow2,vdev=hdb,access=rw,backendtype=qdisk,target=/var/lib/libvirt/images/XenGuest2-home", "format=raw,vdev=hdc,access=ro,backendtype=qdisk,devtype=cdrom,target=/root/boot.iso" ]
+Index: libvirt-9.1.0/tests/xlconfigdata/test-fullvirt-ovmf.xml
+===================================================================
+--- libvirt-9.1.0.orig/tests/xlconfigdata/test-fullvirt-ovmf.xml
++++ libvirt-9.1.0/tests/xlconfigdata/test-fullvirt-ovmf.xml
+@@ -6,7 +6,7 @@
+   <vcpu placement='static'>1</vcpu>
+   <os>
+     <type arch='x86_64' machine='xenfv'>hvm</type>
+-    <loader readonly='yes' type='pflash'>/LIBXL_FIRMWARE_DIR/ovmf.bin</loader>
++    <loader readonly='yes' type='pflash'>/usr/share/qemu/ovmf-x86_64-xen.bin</loader>
+     <boot dev='cdrom'/>
+   </os>
+   <features>

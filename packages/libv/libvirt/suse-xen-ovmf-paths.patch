@@ -16,7 +16,7 @@ Index: libvirt-9.1.0/src/libxl/libxl_conf.c
 ===================================================================
 --- libvirt-9.1.0.orig/src/libxl/libxl_conf.c
 +++ libvirt-9.1.0/src/libxl/libxl_conf.c
-@@ -1791,7 +1791,7 @@ libxlDriverConfigNew(void)
+@@ -1789,7 +1789,7 @@ libxlDriverConfigNew(void)
      cfg->firmwares = g_new0(virFirmware *, 1);
      cfg->nfirmwares = 1;
      cfg->firmwares[0] = g_new0(virFirmware, 1);
