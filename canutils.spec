@@ -1,7 +1,7 @@
 #
 # spec file for package canutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           canutils
-Summary:        Utilities for Controller Area Networks from the Linux-CAN project
-License:        GPL-2.0-only AND BSD-3-Clause
-Group:          Hardware/Other
-Version:        2021.08.0
+Version:        2023.03
 Release:        0
+Summary:        Utilities for Controller Area Networks from the Linux-CAN project
+License:        BSD-3-Clause AND GPL-2.0-only
+Group:          Hardware/Other
 URL:            https://github.com/linux-can/can-utils
-Source:         https://github.com/linux-can/can-utils/archive/v%version.tar.gz
+Source:         https://github.com/linux-can/can-utils/archive/refs/tags/v%version.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  xz
 Obsoletes:      canutils-linuxcan
-Provides:       canutils-linuxcan
 Provides:       can-utils = %version-%release
+Provides:       canutils-linuxcan
 
 %description
 SocketCAN userspace utilities and tools.

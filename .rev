@@ -119,4 +119,12 @@
     <comment>- Update to release 2021.08.0</comment>
     <requestid>913181</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0168d9d8079129140dcb007b2d15c24e</srcmd5>
+    <version>2023.03</version>
+    <time>1678902989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2023.03</comment>
+    <requestid>1072111</requestid>
+  </revision>
 </revisionlist>

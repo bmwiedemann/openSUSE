@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 15 13:35:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.03
+  * cangen: add support for SO_TXTIME
+  * canfdtest: Add extended frame format / message length / FD /
+    BRS support
+  * can-calc-bit-timing: add support for calculation of CAN-FD
+    bit timings
+  * cangen: new generation mode - partially randomized payload
+    (-D)
+  * cansniffer: add CAN FD support
+
+-------------------------------------------------------------------
 Thu Aug 19 11:34:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.08.0
