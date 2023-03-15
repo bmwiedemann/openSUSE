@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.36
+Version:        1.37
 Release:        0
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
@@ -66,8 +66,8 @@ Net::DNS is a collection of Perl modules that act as a Domain Name System
 (DNS) resolver. It allows the programmer to perform DNS queries that are
 beyond the capabilities of "gethostbyname" and "gethostbyaddr".
 
-The programmer should be familiar with the structure of a DNS packet. See
-RFC 1035 or DNS and BIND (Albitz & Liu) for details.
+The programmer should be familiar with the structure of a DNS packet and
+the zone file presentation format described in RFC1035.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
