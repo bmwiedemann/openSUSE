@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sat Feb 25 21:59:04 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Add patch install-i18n.patch to correctly build a lang package
+
+-------------------------------------------------------------------
+Sat Feb 25 20:58:04 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package

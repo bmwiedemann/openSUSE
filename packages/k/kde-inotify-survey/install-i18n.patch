@@ -1,0 +1,25 @@
+From: Harald Sitter <sitter@kde.org>
+Date: Fri, 24 Feb 2023 13:30:50 +0100
+Subject: [PATCH] install i18n
+
+BUG: 466322
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4967e07..180b317 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,8 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+ add_subdirectory(src)
+ add_subdirectory(autotests)
+ 
++ki18n_install(po)
++
+ install(FILES org.kde.inotify-survey.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+ 
+ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+-- 
+GitLab
+

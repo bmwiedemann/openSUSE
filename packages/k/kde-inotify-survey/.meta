@@ -1,0 +1,9 @@
+<package name="kde-inotify-survey" project="openSUSE:Factory">
+  <title>Monitor inotify limits and inform the user when they are reached</title>
+  <description>Tooling for monitoring inotify limits and informing the user
+when they have been or are about to be reached.
+
+</description>
+  <devel project="KDE:Applications" package="kde-inotify-survey"/>
+  <url>https://www.kde.org</url>
+</package>
