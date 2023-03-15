@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 10 17:23:47 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Rubocop configuration update: Disable autocorrection for the
+  Lint/ScriptPermission cop or disable it completely.
+  (related to bsc#1209094)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
