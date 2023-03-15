@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 13 07:21:45 CET 2023 - aschnell@suse.com
+
+- colorize output
+- version 0.2.0
+
+-------------------------------------------------------------------
 Tue Jan 17 15:01:10 CET 2023 - aschnell@suse.com
 
 - allow both 'swap' and 'none' as path for swap
+- version 0.1.9
 
 -------------------------------------------------------------------
 Tue Oct 18 14:13:50 CEST 2022 - aschnell@suse.com
