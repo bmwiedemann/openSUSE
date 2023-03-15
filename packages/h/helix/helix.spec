@@ -129,6 +129,11 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.bash %{b
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
+%pre
+if [ -l "%{_helix_runtimedir}" ] ; then
+    rm -f "%{_helix_runtimedir}"
+fi
+
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md languages.toml docs/CONTRIBUTING.md docs/architecture.md docs/vision.md

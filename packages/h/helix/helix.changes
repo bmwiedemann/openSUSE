@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  8 14:44:35 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix upgrade path
+
+-------------------------------------------------------------------
 Mon Mar  6 08:45:10 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Changed runtime path to /usr/libexec/helix as it includes loadable shared
