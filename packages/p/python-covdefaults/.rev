@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1041186</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad762200896dab932002a89f062436e7</srcmd5>
+    <version>2.3.0</version>
+    <time>1678902879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Add assert_never to coverage ignore rules</comment>
+    <requestid>1071880</requestid>
+  </revision>
 </revisionlist>
