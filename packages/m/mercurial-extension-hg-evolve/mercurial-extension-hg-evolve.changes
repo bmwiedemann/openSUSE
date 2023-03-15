@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:01:14 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 11.0.0.
+  Changelog: https://foss.heptapod.net/mercurial/evolve/-/blob/11.0.0/CHANGELOG
+  * deprecate evolve.serveronly extension, evolve extension is recommended for
+    all users, clients and servers
+  * fixup: support `hg abort`
+  * evolve, pick, fixup: support `hg continue`
+  * evolve: stop preserving all of {extras} for uninterrupted evolve operations
+  * evolve: don't embed graft data when completing interrupted evolve
+    operations
+  * prune: pruning (without any successors) an already obsolete revision will
+    no longer give a false warning about divergence
+  * evolve: use detailed exit codes for most commands (enabled with
+    `ui.detailed-exit-code=yes`)
+
+-------------------------------------------------------------------
 Thu Dec 22 16:23:43 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 10.5.3

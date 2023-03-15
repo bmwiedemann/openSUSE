@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-evolve
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mercurial-extension-hg-evolve
-Version:        10.5.3
+Version:        11.0.0
 Release:        0
 Summary:        Flexible evolution of Mercurial history
 License:        GPL-2.0-or-later
