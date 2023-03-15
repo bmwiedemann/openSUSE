@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        3.23.2
+Version:        3.23.3
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -46,7 +46,7 @@ BuildRequires:  python3-click >= 8.0.4
 BuildRequires:  python3-cryptography >= 3.2.1
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.10.0
-BuildRequires:  python3-oci-sdk >= 2.93.1
+BuildRequires:  python3-oci-sdk >= 2.94.0
 BuildRequires:  python3-pyOpenSSL >= 22.1.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
@@ -66,15 +66,18 @@ BuildRequires:  python3-py >= 1.10.0
 BuildRequires:  python3-pyasn1 >= 0.2.3
 BuildRequires:  python3-pycparser >= 2.20
 BuildRequires:  python3-pyparsing >= 2.2.0
-BuildRequires:  python3-pytest >= 3.2.3
 BuildRequires:  python3-pytest-cov >= 2.5.1
 BuildRequires:  python3-pytest-forked >= 1.0.2
 BuildRequires:  python3-pytest-xdist >= 1.22.2
 BuildRequires:  python3-requests >= 2.21.0
 BuildRequires:  python3-sphinx_rtd_theme >= 0.4.3
 BuildRequires:  python3-tox >= 3.23.0
-BuildRequires:  python3-vcrpy >= 1.13.0
+BuildRequires:  python3-vcrpy >= 4.2.1
 BuildRequires:  python3-virtualenv >= 16.7.10
+BuildRequires:  (python3-vcrpy >= 1.13.0 if python-base <= 3.9)
+BuildRequires:  (python3-vcrpy >= 4.2.1 if python-base >= 3.10)
+BuildRequires:  (python3-vcrpy >= 4.6.10 if python-base <= 3.9)
+BuildRequires:  (python3-vcrpy >= 7.1.2 if python-base >= 3.10)
 %endif
 Requires:       python3-PyYAML >= 5.4.1
 Requires:       python3-arrow >= 1.0.0
@@ -82,7 +85,7 @@ Requires:       python3-certifi
 Requires:       python3-click >= 8.0.4
 Requires:       python3-cryptography >= 3.2.1
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.93.1
+Requires:       python3-oci-sdk >= 2.94.0
 Requires:       python3-prompt_toolkit >= 3.0.29
 Requires:       python3-pyOpenSSL >= 22.1.0
 Requires:       python3-python-dateutil >= 2.5.3
