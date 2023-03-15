@@ -164,6 +164,8 @@ Patch923:       s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.p
 Patch924:       s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
 Patch925:       s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
 Patch926:       s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
+# Bug 1209196
+Patch927:       s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
 #
 Patch999:       s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 

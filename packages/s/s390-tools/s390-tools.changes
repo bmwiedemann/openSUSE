@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 15:33:43 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1209196)
+  * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch 
+
+-------------------------------------------------------------------
 Wed Mar  8 09:38:46 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated cputype (bsc#1208983)
