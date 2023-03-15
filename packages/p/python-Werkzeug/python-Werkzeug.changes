@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 13 18:48:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3 (bsc#1208283, CVE-2023-25577):
+  * Ensure that URL rules using path converters will redirect
+    with strict slashes when the trailing slash is missing.
+  * Type signature for ``get_json`` specifies that return type
+    is not optional when ``silent=False``.
+  * ``parse_content_range_header`` returns ``None`` for a value
+    like ``bytes */-1`` where the length is invalid, instead of
+    raising an ``AssertionError``.
+  * Address remaining ``ResourceWarning`` related to the socket
+    used by ``run_simple``.
+  * Remove ``prepare_socket``, which now happens when
+    creating the server.
+  * Update pre-existing headers for ``multipart/form-data``
+    requests with the test client.
+  * Fix handling of header extended parameters such that they
+    are no longer quoted.
+  * ``LimitedStream.read`` works correctly when wrapping a
+    stream that may not return the requested size in one 
+    ``read`` call.
+  * A cookie header that starts with ``=`` is treated as an
+    empty key and discarded, rather than stripping the leading ``==``.
+  * Specify a maximum number of multipart parts, default 1000,
+    after which a ``RequestEntityTooLarge`` exception is
+    raised on parsing.  This mitigates a DoS attack where a
+    larger number of form/file parts would result in disproportionate
+    resource use.
+
+-------------------------------------------------------------------
 Tue Sep 13 17:13:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean some unused python2 python36 code from specfile

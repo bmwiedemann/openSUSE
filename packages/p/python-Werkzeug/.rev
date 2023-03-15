@@ -573,4 +573,37 @@
     <comment></comment>
     <requestid>1003681</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>62a24dd6a7e01b97473e3957a91761c0</srcmd5>
+    <version>2.2.3</version>
+    <time>1678902781</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3 (bsc#1208283, CVE-2023-25577):
+  * Ensure that URL rules using path converters will redirect
+    with strict slashes when the trailing slash is missing.
+  * Type signature for ``get_json`` specifies that return type
+    is not optional when ``silent=False``.
+  * ``parse_content_range_header`` returns ``None`` for a value
+    like ``bytes */-1`` where the length is invalid, instead of
+    raising an ``AssertionError``.
+  * Address remaining ``ResourceWarning`` related to the socket
+    used by ``run_simple``.
+  * Remove ``prepare_socket``, which now happens when
+    creating the server.
+  * Update pre-existing headers for ``multipart/form-data``
+    requests with the test client.
+  * Fix handling of header extended parameters such that they
+    are no longer quoted.
+  * ``LimitedStream.read`` works correctly when wrapping a
+    stream that may not return the requested size in one 
+    ``read`` call.
+  * A cookie header that starts with ``=`` is treated as an
+    empty key and discarded, rather than stripping the leading ``==``.
+  * Specify a maximum number of multipart parts, default 1000,
+    after which a ``RequestEntityTooLarge`` exception is
+    raised on parsing.  This mitigates a DoS attack where a
+    larger number of form/file parts would result in disproportionate
+    resource use.</comment>
+    <requestid>1071237</requestid>
+  </revision>
 </revisionlist>

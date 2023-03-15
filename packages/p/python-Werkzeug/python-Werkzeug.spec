@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-Werkzeug%{psuffix}
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
