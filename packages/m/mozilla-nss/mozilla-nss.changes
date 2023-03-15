@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Mar 11 13:21:23 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.88.1
+  * bmo#1804640 - improve handling of unknown PKCS#12 safe bag types
+- update to NSS 3.88
+  * bmo#1815870 - use a different treeherder symbol for each docker
+                  image build task
+  * bmo#1815868 - pin an older version of the ubuntu:18.04 and
+                  20.04 docker images
+  * bmo#1810702 - remove nested table in rst doc
+  * bmo#1815246 - Export NSS_CMSSignerInfo_GetDigestAlgTag.
+  * bmo#1812671 - build failure while implicitly casting SECStatus
+                  to PRUInt32
+  * bmo#1212915 - Add check for ClientHello SID max length
+  * bmo#1771100 - Added EarlyData ALPN test support to BoGo shim
+  * bmo#1790357 - ECH client - Discard resumption TLS < 1.3
+                  Session(IDs|Tickets) if ECH configs are setup
+  * bmo#1714245 - On HRR skip PSK incompatible with negotiated
+                  ciphersuites hash algorithm
+  * bmo#1789410 - ECH client: Send ech_required alert on server
+                  negotiating TLS 1.2. Fixed misleading Gtest,
+                  enabled corresponding BoGo test
+  * bmo#1771100 - Added Bogo ECH rejection test support
+  * bmo#1771100 - Added ECH 0Rtt support to BoGo shim
+  * bmo#1747957 - RSA OAEP Wycheproof JSON
+  * bmo#1747957 - RSA decrypt Wycheproof JSON
+  * bmo#1747957 - ECDSA Wycheproof JSON
+  * bmo#1747957 - ECDH Wycheproof JSON
+  * bmo#1747957 - PKCS#1v1.5 wycheproof json
+  * bmo#1747957 - Use X25519 wycheproof json
+  * bmo#1766767 - Move scripts to python3
+  * bmo#1809627 - Properly link FuzzingEngine for oss-fuzz.
+  * bmo#1805907 - Extending RSA-PSS bltest test coverage
+                  (Adding SHA-256 and SHA-384)
+  * bmo#1804091 - NSS needs to move off of DSA for integrity checks
+  * bmo#1805815 - Add initial testing with ACVP vector sets using
+                  acvp-rust
+  * bmo#1806369 - Don't clone libFuzzer, rely on clang instead
+
+-------------------------------------------------------------------
 Tue Feb 14 23:09:39 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.87

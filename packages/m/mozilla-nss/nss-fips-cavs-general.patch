@@ -102,7 +102,7 @@ Index: nss/cmd/fipstest/fipstest.c
  SECStatus
  tdea_encrypt_buf(
      int mode,
-@@ -8930,41 +8994,6 @@ out:
+@@ -8915,41 +8979,6 @@ out:
      }
  }
  
@@ -144,7 +144,7 @@ Index: nss/cmd/fipstest/fipstest.c
  void
  kas_ffc_test(char *reqfn, int do_validity)
  {
-@@ -9387,12 +9416,34 @@ out:
+@@ -9372,12 +9401,34 @@ out:
      free_param_specs (pspecs);
  }
  

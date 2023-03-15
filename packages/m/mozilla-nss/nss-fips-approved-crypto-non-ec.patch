@@ -440,7 +440,7 @@ Index: nss/lib/freebl/nsslowhash.c
 ===================================================================
 --- nss.orig/lib/freebl/nsslowhash.c
 +++ nss/lib/freebl/nsslowhash.c
-@@ -12,6 +12,7 @@
+@@ -13,6 +13,7 @@
  #include "plhash.h"
  #include "nsslowhash.h"
  #include "blapii.h"
@@ -448,7 +448,7 @@ Index: nss/lib/freebl/nsslowhash.c
  
  struct NSSLOWInitContextStr {
      int count;
-@@ -92,6 +93,12 @@ NSSLOWHASH_NewContext(NSSLOWInitContext
+@@ -99,6 +100,12 @@ NSSLOWHASH_NewContext(NSSLOWInitContext
  {
      NSSLOWHASHContext *context;
  
@@ -487,7 +487,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -7491,7 +7491,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7495,7 +7495,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();

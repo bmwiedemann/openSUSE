@@ -14,7 +14,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -4822,8 +4822,8 @@ loser:
+@@ -4826,8 +4826,8 @@ loser:
      return crv;
  }
  
@@ -25,7 +25,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
-@@ -5771,6 +5771,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -5775,6 +5775,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
                              (PRUint32)crv);
                  sftk_LogAuditMessage(NSS_AUDIT_ERROR, NSS_AUDIT_SELF_TEST, msg);
              }

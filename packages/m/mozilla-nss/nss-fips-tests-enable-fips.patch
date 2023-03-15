@@ -2,7 +2,7 @@ Index: nss/tests/cert/cert.sh
 ===================================================================
 --- nss.orig/tests/cert/cert.sh
 +++ nss/tests/cert/cert.sh
-@@ -1353,6 +1353,11 @@ cert_stresscerts()
+@@ -1350,6 +1350,11 @@ cert_stresscerts()
  ##############################################################################
  cert_fips()
  {
@@ -14,7 +14,7 @@ Index: nss/tests/cert/cert.sh
    CERTFAILED=0
    echo "$SCRIPTNAME: Creating FIPS 140 DSA Certificates =============="
    cert_init_cert "${FIPSDIR}" "FIPS PUB 140 Test Certificate" 1000 "${D_FIPS}"
-@@ -1393,6 +1398,8 @@ MODSCRIPT
+@@ -1390,6 +1395,8 @@ MODSCRIPT
      cert_log "SUCCESS: FIPS passed"
    fi
  

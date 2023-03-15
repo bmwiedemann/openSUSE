@@ -92,7 +92,7 @@ Index: nss/lib/freebl/dh.c
 ===================================================================
 --- nss.orig/lib/freebl/dh.c
 +++ nss/lib/freebl/dh.c
-@@ -193,6 +193,10 @@ cleanup:
+@@ -192,6 +192,10 @@ cleanup:
          rv = SECFailure;
      }
      if (rv) {
@@ -107,7 +107,7 @@ Index: nss/lib/freebl/ec.c
 ===================================================================
 --- nss.orig/lib/freebl/ec.c
 +++ nss/lib/freebl/ec.c
-@@ -943,7 +943,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
+@@ -974,7 +974,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
      ECParams *ecParams = NULL;
      SECItem pointC = { siBuffer, NULL, 0 };
      int slen;       /* length in bytes of a half signature (r or s) */
@@ -175,7 +175,7 @@ Index: nss/lib/freebl/gcm.c
      return SECSuccess;
  }
  #endif /* HAVE_INT128_SUPPORT */
-@@ -867,11 +894,13 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
+@@ -870,11 +897,13 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
      /* verify the block */
      rv = gcmHash_Update(gcm->ghash_context, inbuf, inlen);
      if (rv != SECSuccess) {
@@ -191,7 +191,7 @@ Index: nss/lib/freebl/gcm.c
      }
      /* Don't decrypt if we can't authenticate the encrypted data!
       * This assumes that if tagBits is not a multiple of 8, intag will
-@@ -879,10 +908,18 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
+@@ -882,10 +911,18 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
      if (NSS_SecureMemcmp(tag, intag, tagBytes) != 0) {
          /* force a CKR_ENCRYPTED_DATA_INVALID error at in softoken */
          PORT_SetError(SEC_ERROR_BAD_DATA);

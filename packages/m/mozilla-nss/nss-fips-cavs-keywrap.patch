@@ -12,10 +12,11 @@ From f4cbaf95fcf2519029bb3c4407b2f15aa27c94c1 Mon Sep 17 00:00:00 2001
  2 files changed, 200 insertions(+)
  create mode 100644 nss/cmd/fipstest/keywrap.sh
 
-diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c	Sun Mar 15 21:54:30 2020 +0100
-+++ b/cmd/fipstest/fipstest.c	Wed Nov 20 08:13:43 2019 +0100
-@@ -8752,6 +8752,161 @@
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
+@@ -8737,6 +8737,161 @@ done:
      return;
  }
  
@@ -177,7 +178,7 @@ diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/fipstest.c
  int
  main(int argc, char **argv)
  {
-@@ -8933,6 +9088,11 @@
+@@ -8918,6 +9073,11 @@ main(int argc, char **argv)
          ikev2(argv[2]);
      } else if (strcmp(argv[1], "kbkdf") == 0) {
          kbkdf(argv[2]);
@@ -189,9 +190,10 @@ diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/fipstest.c
      }
      return 0;
  }
-diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/keywrap.sh
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/cmd/fipstest/keywrap.sh	Wed Nov 20 08:13:43 2019 +0100
+Index: nss/cmd/fipstest/keywrap.sh
+===================================================================
+--- /dev/null
++++ nss/cmd/fipstest/keywrap.sh
 @@ -0,0 +1,40 @@
 +#!/bin/sh
 +# 

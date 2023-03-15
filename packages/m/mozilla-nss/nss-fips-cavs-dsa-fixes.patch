@@ -10,10 +10,11 @@ From ef2620b770082c77dbbbccae2e773157897b005d Mon Sep 17 00:00:00 2001
  nss/cmd/fipstest/fipstest.c | 112 ++++++++++++++++++++++++++++++++----
  1 file changed, 101 insertions(+), 11 deletions(-)
 
-diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c
-+++ b/cmd/fipstest/fipstest.c
-@@ -5576,7 +5576,7 @@
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
+@@ -5575,7 +5575,7 @@ loser:
  void
  dsa_pqggen_test(char *reqfn)
  {
@@ -22,7 +23,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
                           * or to the output RESPONSE file.
                           * 800 to hold seed = (384 public key (x2 for HEX)
                           */
-@@ -5592,6 +5592,13 @@
+@@ -5591,6 +5591,13 @@ dsa_pqggen_test(char *reqfn)
      PQGVerify *vfy = NULL;
      unsigned int keySizeIndex = 0;
      dsa_pqg_type type = FIPS186_1;
@@ -36,7 +37,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  
      dsareq = fopen(reqfn, "r");
      dsaresp = stdout;
-@@ -5612,8 +5619,8 @@
+@@ -5611,8 +5618,8 @@ dsa_pqggen_test(char *reqfn)
                  output_g = 1;
                  exit(1);
              } else if (strncmp(&buf[1], "A.2.3", 5) == 0) {
@@ -47,7 +48,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
              } else if (strncmp(&buf[1], "A.1.2.1", 7) == 0) {
                  type = A_1_2_1;
                  output_g = 0;
-@@ -5627,14 +5634,17 @@
+@@ -5626,14 +5633,17 @@ dsa_pqggen_test(char *reqfn)
  
          /* [Mod = ... ] */
          if (buf[0] == '[') {
@@ -59,15 +60,14 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
                      goto loser;
                  }
 -            } else if (sscanf(buf, "[mod = L=%d, N=%d", &L, &N) != 2) {
--                goto loser;
 +            } else if (sscanf(buf, "[mod = L=%d, N=%d, SHA-%d", &L, &N, &hashbits) != 3) {
-+                goto loser;
+                 goto loser;
 +            } else {
 +                hashtype = sha_get_hashType (hashbits);
              }
  
              fputs(buf, dsaresp);
-@@ -5656,7 +5666,7 @@
+@@ -5655,7 +5665,7 @@ dsa_pqggen_test(char *reqfn)
              continue;
          }
          /* N = ... */
@@ -76,7 +76,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
              if (strncmp(buf, "Num", 3) == 0) {
                  if (sscanf(buf, "Num = %d", &count) != 1) {
                      goto loser;
-@@ -5671,7 +5681,10 @@
+@@ -5670,7 +5680,10 @@ dsa_pqggen_test(char *reqfn)
                      rv = PQG_ParamGenSeedLen(keySizeIndex, PQG_TEST_SEED_BYTES,
                                               &pqg, &vfy);
                  } else {
@@ -88,7 +88,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
                  }
                  if (rv != SECSuccess) {
                      fprintf(dsaresp,
-@@ -5682,6 +5695,10 @@
+@@ -5681,6 +5694,10 @@ dsa_pqggen_test(char *reqfn)
                  fprintf(dsaresp, "P = %s\n", buf);
                  to_hex_str(buf, pqg->subPrime.data, pqg->subPrime.len);
                  fprintf(dsaresp, "Q = %s\n", buf);
@@ -99,7 +99,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
                  if (output_g) {
                      to_hex_str(buf, pqg->base.data, pqg->base.len);
                      fprintf(dsaresp, "G = %s\n", buf);
-@@ -5697,13 +5714,13 @@
+@@ -5696,13 +5713,13 @@ dsa_pqggen_test(char *reqfn)
                      }
                      fprintf(dsaresp, "%s\n", buf);
                  } else {
@@ -118,11 +118,10 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
                      fprintf(dsaresp, "qseed = %s\n", buf);
                      fprintf(dsaresp, "pgen_counter = %d\n", pgen_counter);
                      fprintf(dsaresp, "qgen_counter = %d\n", qgen_counter);
-@@ -5723,12 +5740,85 @@
+@@ -5722,12 +5739,85 @@ dsa_pqggen_test(char *reqfn)
                      vfy = NULL;
                  }
              }
--
 +            continue;
 +        }
 +
@@ -180,7 +179,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
 +
 +            to_hex_str(buf, pqg->base.data, pqg->base.len);
 +            fprintf(dsaresp, "G = %s\n\n", buf);
-+
+ 
 +            PQG_DestroyParams(pqg);
 +            pqg = NULL;
 +            PQG_DestroyVerify(vfy);

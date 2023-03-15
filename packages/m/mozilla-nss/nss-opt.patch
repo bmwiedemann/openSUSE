@@ -2,7 +2,7 @@ Index: nss/coreconf/Linux.mk
 ===================================================================
 --- nss.orig/coreconf/Linux.mk
 +++ nss/coreconf/Linux.mk
-@@ -113,11 +113,7 @@ LIBC_TAG		= _glibc
+@@ -114,11 +114,7 @@ LIBC_TAG		= _glibc
  endif
  
  ifdef BUILD_OPT

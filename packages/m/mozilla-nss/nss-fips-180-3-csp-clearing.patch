@@ -29,7 +29,7 @@ Index: nss/lib/softoken/sftkpwd.c
 ===================================================================
 --- nss.orig/lib/softoken/sftkpwd.c
 +++ nss/lib/softoken/sftkpwd.c
-@@ -1439,7 +1439,7 @@ loser:
+@@ -1459,7 +1459,7 @@ loser:
          PORT_ZFree(newKey.data, newKey.len);
      }
      if (result) {

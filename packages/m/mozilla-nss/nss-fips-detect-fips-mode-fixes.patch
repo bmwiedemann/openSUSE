@@ -8,10 +8,11 @@ commit facacdb9078693d7a4219e84f73ea7b8f977ddc2
 Author: Hans Petter Jansson <hpj@cl.no>
     Patch 32: nss-fips-detect-fips-mode-fixes.patch
 
-diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
---- a/lib/freebl/nsslowhash.c
-+++ b/lib/freebl/nsslowhash.c
-@@ -2,10 +2,15 @@
+Index: nss/lib/freebl/nsslowhash.c
+===================================================================
+--- nss.orig/lib/freebl/nsslowhash.c
++++ nss/lib/freebl/nsslowhash.c
+@@ -2,6 +2,9 @@
   * License, v. 2.0. If a copy of the MPL was not distributed with this
   * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
@@ -21,13 +22,7 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
  #ifdef FREEBL_NO_DEPEND
  #include "stubs.h"
  #endif
-+
- #include "prtypes.h"
-+#include "prenv.h"
- #include "secerr.h"
- #include "blapi.h"
- #include "hasht.h"
-@@ -24,6 +29,23 @@
+@@ -25,6 +28,23 @@ struct NSSLOWHASHContextStr {
  };
  
  #ifndef NSS_FIPS_DISABLED
@@ -51,7 +46,7 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
  static int
  nsslow_GetFIPSEnabled(void)
  {
-@@ -45,6 +67,7 @@
+@@ -52,6 +72,7 @@ nsslow_GetFIPSEnabled(void)
  #endif /* LINUX */
      return 1;
  }
@@ -59,7 +54,7 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
  #endif /* NSS_FIPS_DISABLED */
  
  static NSSLOWInitContext dummyContext = { 0 };
-@@ -60,7 +83,7 @@
+@@ -67,7 +88,7 @@ NSSLOW_Init(void)
  #ifndef NSS_FIPS_DISABLED
      /* make sure the FIPS product is installed if we are trying to
       * go into FIPS mode */
@@ -68,10 +63,11 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
          if (BL_FIPSEntryOK(PR_TRUE) != SECSuccess) {
              PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
              post_failed = PR_TRUE;
-diff --git a/lib/sysinit/nsssysinit.c b/lib/sysinit/nsssysinit.c
---- a/lib/sysinit/nsssysinit.c
-+++ b/lib/sysinit/nsssysinit.c
-@@ -178,16 +178,16 @@
+Index: nss/lib/sysinit/nsssysinit.c
+===================================================================
+--- nss.orig/lib/sysinit/nsssysinit.c
++++ nss/lib/sysinit/nsssysinit.c
+@@ -178,16 +178,16 @@ getFIPSMode(void)
      f = fopen("/proc/sys/crypto/fips_enabled", "r");
      if (!f) {
          /* if we don't have a proc flag, fall back to the

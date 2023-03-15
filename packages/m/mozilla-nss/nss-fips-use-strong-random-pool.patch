@@ -10,9 +10,10 @@ From a7cbf64ba8ac07a4a1fdea91f39da56d86af03bf Mon Sep 17 00:00:00 2001
  nss/lib/freebl/unix_rand.c | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/lib/freebl/unix_rand.c b/lib/freebl/unix_rand.c
---- a/lib/freebl/unix_rand.c
-+++ b/lib/freebl/unix_rand.c
+Index: nss/lib/freebl/unix_rand.c
+===================================================================
+--- nss.orig/lib/freebl/unix_rand.c
++++ nss/lib/freebl/unix_rand.c
 @@ -24,6 +24,7 @@
  #include "prthread.h"
  #include "prprf.h"
@@ -21,7 +22,7 @@ diff --git a/lib/freebl/unix_rand.c b/lib/freebl/unix_rand.c
  
  #ifdef NSS_USE_GETRANDOM
  #  ifndef __NR_getrandom
-@@ -779,7 +780,7 @@
+@@ -692,7 +693,7 @@ RNG_SystemInfoForRNG(void)
      }
  
      /* grab some data from system's PRNG before any other files. */
@@ -30,7 +31,7 @@ diff --git a/lib/freebl/unix_rand.c b/lib/freebl/unix_rand.c
      if (!bytes) {
          PORT_SetError(SEC_ERROR_NEED_RANDOM);
      }
-@@ -909,7 +910,8 @@
+@@ -822,7 +823,8 @@ RNG_SystemRNG(void *dest, size_t maxLen)
      int ret;
  
      do {
@@ -40,7 +41,7 @@ diff --git a/lib/freebl/unix_rand.c b/lib/freebl/unix_rand.c
  
          if (0 < ret)
              inBytes += ret;
-@@ -929,7 +931,7 @@
+@@ -842,7 +844,7 @@ RNG_SystemRNG(void *dest, size_t maxLen)
      size_t fileBytes = 0;
      unsigned char *buffer = dest;
  

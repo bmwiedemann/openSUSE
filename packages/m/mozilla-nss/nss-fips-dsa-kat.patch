@@ -28,7 +28,7 @@ Index: nss/lib/freebl/fipsfreebl.c
 ===================================================================
 --- nss.orig/lib/freebl/fipsfreebl.c
 +++ nss/lib/freebl/fipsfreebl.c
-@@ -126,11 +126,11 @@ BOOL WINAPI DllMain(
+@@ -127,11 +127,11 @@ DllMain(
  
  /* FIPS preprocessor directives for DSA.                        */
  #define FIPS_DSA_TYPE siBuffer

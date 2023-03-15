@@ -14,7 +14,7 @@ Index: nss/lib/freebl/gcm.c
 ===================================================================
 --- nss.orig/lib/freebl/gcm.c
 +++ nss/lib/freebl/gcm.c
-@@ -532,8 +532,14 @@ struct GCMContextStr {
+@@ -535,8 +535,14 @@ struct GCMContextStr {
      unsigned char tagKey[MAX_BLOCK_SIZE];
      PRBool ctr_context_init;
      gcmIVContext gcm_iv;
@@ -29,7 +29,7 @@ Index: nss/lib/freebl/gcm.c
  SECStatus gcm_InitCounter(GCMContext *gcm, const unsigned char *iv,
                            unsigned int ivLen, unsigned int tagBits,
                            const unsigned char *aad, unsigned int aadLen);
-@@ -673,6 +679,8 @@ gcm_InitCounter(GCMContext *gcm, const u
+@@ -676,6 +682,8 @@ gcm_InitCounter(GCMContext *gcm, const u
          goto loser;
      }
  
@@ -38,7 +38,7 @@ Index: nss/lib/freebl/gcm.c
      /* finally mix in the AAD data */
      rv = gcmHash_Reset(ghash, aad, aadLen);
      if (rv != SECSuccess) {
-@@ -774,6 +782,13 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
+@@ -777,6 +785,13 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
          return SECFailure;
      }
  
@@ -52,7 +52,7 @@ Index: nss/lib/freebl/gcm.c
      tagBytes = (gcm->tagBits + (PR_BITS_PER_BYTE - 1)) / PR_BITS_PER_BYTE;
      if (UINT_MAX - inlen < tagBytes) {
          PORT_SetError(SEC_ERROR_INPUT_LEN);
-@@ -802,6 +817,7 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
+@@ -805,6 +820,7 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
          *outlen = 0;
          return SECFailure;
      };

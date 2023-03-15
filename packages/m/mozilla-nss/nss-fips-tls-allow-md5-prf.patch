@@ -250,7 +250,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -7158,7 +7158,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7162,7 +7162,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
      SFTKAttribute *att2 = NULL;
      unsigned char *buf;
      SHA1Context *sha;
@@ -259,7 +259,7 @@ Index: nss/lib/softoken/pkcs11c.c
      MD2Context *md2;
      CK_ULONG macSize;
      CK_ULONG tmpKeySize;
-@@ -7698,7 +7698,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7702,7 +7702,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              }
              sftk_FreeAttribute(att2);
              md5 = MD5_NewContext();

@@ -10,10 +10,11 @@ From 9b4636ad75add2ac09ce1844b3071785d563c275 Mon Sep 17 00:00:00 2001
  nss/cmd/fipstest/fipstest.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c
-+++ b/cmd/fipstest/fipstest.c
-@@ -6536,7 +6536,7 @@
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
+@@ -6535,7 +6535,7 @@ rsa_siggen_test(char *reqfn)
              /* Output the signature */
              fputs(buf, rsaresp);
              to_hex_str(buf, rsa_computed_signature, rsa_bytes_signed);
@@ -22,7 +23,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  
              /* Perform RSA verification with the RSA public key. */
              rv = RSA_HashCheckSign(shaOid,
-@@ -9536,6 +9536,7 @@
+@@ -9521,6 +9521,7 @@ main(int argc, char **argv)
      init_functions();
      RNG_RNGInit();
      SECOID_Init();

@@ -11,10 +11,11 @@ From 4c27df62aa425745620f45710465b0264acacbb0 Mon Sep 17 00:00:00 2001
  nss/cmd/fipstest/kas.sh     |  22 +++
  2 files changed, 326 insertions(+)
 
-diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c
-+++ b/cmd/fipstest/fipstest.c
-@@ -9092,6 +9092,301 @@
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
+@@ -9077,6 +9077,301 @@ out:
      }
  }
  
@@ -316,7 +317,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  int
  main(int argc, char **argv)
  {
-@@ -9287,6 +9582,15 @@
+@@ -9272,6 +9567,15 @@ main(int argc, char **argv)
          } else {
              kas_ffc_test(argv[3], PR_FALSE);
          }
@@ -332,10 +333,11 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
      }
      return 0;
  }
-diff --git a/cmd/fipstest/kas.sh b/cmd/fipstest/kas.sh
---- a/cmd/fipstest/kas.sh
-+++ b/cmd/fipstest/kas.sh
-@@ -27,6 +27,16 @@
+Index: nss/cmd/fipstest/kas.sh
+===================================================================
+--- nss.orig/cmd/fipstest/kas.sh
++++ nss/cmd/fipstest/kas.sh
+@@ -27,6 +27,16 @@ KASValidityTest_FFCEphem_NOKC_ZZOnly_ini
  KASValidityTest_FFCEphem_NOKC_ZZOnly_resp.req
  "
  
@@ -352,7 +354,7 @@ diff --git a/cmd/fipstest/kas.sh b/cmd/fipstest/kas.sh
  if [ ${COMMAND} = "verify" ]; then
      for request in $kas_requests; do
  	sh ./validate1.sh ${TESTDIR} $request
-@@ -45,3 +55,15 @@
+@@ -45,3 +55,15 @@ for request in $kas_requests_ffc_validit
      echo $request $response
      fipstest kasffc validity ${REQDIR}/$request > ${RSPDIR}/$response
  done

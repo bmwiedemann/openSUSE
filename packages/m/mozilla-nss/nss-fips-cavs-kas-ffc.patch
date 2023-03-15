@@ -12,10 +12,11 @@ From ac98082c3bc0c9f85213078b730980483062f25c Mon Sep 17 00:00:00 2001
  2 files changed, 241 insertions(+)
  create mode 100644 nss/cmd/fipstest/kas.sh
 
-diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c
-+++ b/cmd/fipstest/fipstest.c
-@@ -2258,6 +2258,29 @@
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
+@@ -2257,6 +2257,29 @@ fips_hashBuf(HASH_HashType type, unsigne
      return rv;
  }
  
@@ -45,7 +46,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  int
  fips_hashLen(HASH_HashType type)
  {
-@@ -8907,6 +8930,168 @@
+@@ -8892,6 +8915,168 @@ out:
      }
  }
  
@@ -214,7 +215,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  int
  main(int argc, char **argv)
  {
-@@ -9093,6 +9278,15 @@
+@@ -9078,6 +9263,15 @@ main(int argc, char **argv)
          /* AES Keywrap */
          /***************/
          keywrap(argv[2]);
@@ -230,10 +231,10 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
      }
      return 0;
  }
-diff --git a/cmd/fipstest/kas.sh b/cmd/fipstest/kas.sh
-new file mode 100644
+Index: nss/cmd/fipstest/kas.sh
+===================================================================
 --- /dev/null
-+++ b/cmd/fipstest/kas.sh
++++ nss/cmd/fipstest/kas.sh
 @@ -0,0 +1,47 @@
 +#!/bin/sh
 +# 

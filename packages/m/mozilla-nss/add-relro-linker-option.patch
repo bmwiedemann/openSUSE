@@ -2,7 +2,7 @@ Index: nss/coreconf/Linux.mk
 ===================================================================
 --- nss.orig/coreconf/Linux.mk
 +++ nss/coreconf/Linux.mk
-@@ -183,6 +183,12 @@ endif
+@@ -184,6 +184,12 @@ endif
  endif
  endif
  

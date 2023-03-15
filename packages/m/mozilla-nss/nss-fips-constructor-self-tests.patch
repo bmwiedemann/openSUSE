@@ -21,8 +21,8 @@ Index: nss/cmd/shlibsign/shlibsign.c
 ===================================================================
 --- nss.orig/cmd/shlibsign/shlibsign.c
 +++ nss/cmd/shlibsign/shlibsign.c
-@@ -946,10 +946,12 @@ main(int argc, char **argv)
-             goto cleanup;
+@@ -814,10 +814,12 @@ shlibSignDSA(CK_FUNCTION_LIST_PTR pFunct
+             return crv;
          }
  
 -        if ((keySize == 0) && mechInfo.ulMaxKeySize >= 2048) {
@@ -839,7 +839,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -186,6 +187,7 @@ ALL_HDRS =  \
+@@ -187,6 +188,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -851,7 +851,7 @@ Index: nss/lib/freebl/shvfy.c
 ===================================================================
 --- nss.orig/lib/freebl/shvfy.c
 +++ nss/lib/freebl/shvfy.c
-@@ -22,6 +22,8 @@
+@@ -23,6 +23,8 @@
  
  #ifndef NSS_FIPS_DISABLED
  
@@ -860,7 +860,7 @@ Index: nss/lib/freebl/shvfy.c
  /*
   * Most modern version of Linux support a speed optimization scheme where an
   * application called prelink modifies programs and shared libraries to quickly
-@@ -231,8 +233,6 @@ bl_CloseUnPrelink(PRFileDesc *file, int
+@@ -232,8 +234,6 @@ bl_CloseUnPrelink(PRFileDesc *file, int
  }
  #endif
  
@@ -869,7 +869,7 @@ Index: nss/lib/freebl/shvfy.c
  static char *
  mkCheckFileName(const char *libName)
  {
-@@ -287,19 +287,19 @@ readItem(PRFileDesc *fd, SECItem *item)
+@@ -288,19 +288,19 @@ readItem(PRFileDesc *fd, SECItem *item)
      return SECSuccess;
  }
  
@@ -893,7 +893,7 @@ Index: nss/lib/freebl/shvfy.c
  
  loser:
      if (shName != NULL) {
-@@ -310,19 +310,19 @@ loser:
+@@ -311,15 +311,15 @@ loser:
  }
  
  PRBool
@@ -912,96 +912,84 @@ Index: nss/lib/freebl/shvfy.c
 +    return blapi_SHVerifyFile(shName, PR_FALSE, err);
  }
  
- static PRBool
--blapi_SHVerifyFile(const char *shName, PRBool self)
-+blapi_SHVerifyFile(const char *shName, PRBool self, int *err)
- {
-     char *checkName = NULL;
-     PRFileDesc *checkFD = NULL;
-@@ -340,7 +340,7 @@ blapi_SHVerifyFile(const char *shName, P
- #endif
+ #ifndef NSS_STRICT_INTEGRITY
+@@ -421,7 +421,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+     }
  
-     PRBool result = PR_FALSE; /* if anything goes wrong,
--                   * the signature does not verify */
-+                               * the signature does not verify */
-     unsigned char buf[4096];
-     unsigned char hashBuf[HASH_LENGTH_MAX];
- 
-@@ -367,14 +367,17 @@ blapi_SHVerifyFile(const char *shName, P
-     /* open the check File */
-     checkFD = PR_Open(checkName, PR_RDONLY, 0);
-     if (checkFD == NULL) {
-+        if (err) {
-+            *err = PORT_GetError();
-+        }
+     static PRBool
+-    blapi_SHVerifyFile(const char *shName, PRBool self)
++    blapi_SHVerifyFile(const char *shName, PRBool self, int *err)
+     {
+         char *checkName = NULL;
+         PRFileDesc *checkFD = NULL;
+@@ -462,14 +462,17 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+         /* open the check File */
+         checkFD = PR_Open(checkName, PR_RDONLY, 0);
+         if (checkFD == NULL) {
++            if (err) {
++                *err = PORT_GetError();
++            }
  #ifdef DEBUG_SHVERIFY
--        fprintf(stderr, "Failed to open the check file %s: (%d, %d)\n",
--                checkName, (int)PR_GetError(), (int)PR_GetOSError());
-+        fprintf(stderr, "Failed to open the check file %s: (%d)\n",
-+                checkName, (int)PORT_GetError());
+-            fprintf(stderr, "Failed to open the check file %s: (%d, %d)\n",
+-                    checkName, (int)PR_GetError(), (int)PR_GetOSError());
++            fprintf(stderr, "Failed to open the check file %s: (%d)\n",
++                    checkName, (int)PR_GetError());
  #endif /* DEBUG_SHVERIFY */
-         goto loser;
-     }
+             goto loser;
+         }
  
--    /* read and Verify the headerthe header */
-+    /* read and Verify the header */
-     bytesRead = PR_Read(checkFD, buf, 12);
-     if (bytesRead != 12) {
-         goto loser;
-@@ -415,7 +418,8 @@ blapi_SHVerifyFile(const char *shName, P
-     if (rv != SECSuccess) {
-         goto loser;
-     }
--    /* read the siganture */
-+
-+    /* read the signature */
-     rv = readItem(checkFD, &signature);
-     if (rv != SECSuccess) {
-         goto loser;
-@@ -430,7 +434,7 @@ blapi_SHVerifyFile(const char *shName, P
-         goto loser;
-     }
+-        /* read and Verify the headerthe header */
++        /* read and Verify the header */
+         bytesRead = PR_Read(checkFD, &header, sizeof(header));
+         if (bytesRead != sizeof(header)) {
+             goto loser;
+@@ -550,7 +553,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+             goto loser;
+         }
  
 -/* open our library file */
 +    /* open our library file */
  #ifdef FREEBL_USE_PRELINK
-     shFD = bl_OpenUnPrelink(shName, &pid);
+         shFD = bl_OpenUnPrelink(shName, &pid);
  #else
-@@ -438,13 +442,13 @@ blapi_SHVerifyFile(const char *shName, P
+@@ -558,8 +561,8 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
  #endif
-     if (shFD == NULL) {
+         if (shFD == NULL) {
  #ifdef DEBUG_SHVERIFY
--        fprintf(stderr, "Failed to open the library file %s: (%d, %d)\n",
--                shName, (int)PR_GetError(), (int)PR_GetOSError());
-+        fprintf(stderr, "Failed to open the library file %s: (%d)\n",
-+                shName, (int)PORT_GetError());
+-            fprintf(stderr, "Failed to open the library file %s: (%d, %d)\n",
+-                    shName, (int)PR_GetError(), (int)PR_GetOSError());
++            fprintf(stderr, "Failed to open the library file %s: (%d)\n",
++                    shName, (int)PR_GetError());
  #endif /* DEBUG_SHVERIFY */
-         goto loser;
+             goto loser;
+         }
+@@ -620,7 +623,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
      }
  
--    /* hash our library file with SHA1 */
-+    /* hash our library file */
-     hashcx = hashObj->create();
-     if (hashcx == NULL) {
-         goto loser;
-@@ -531,7 +535,7 @@ loser:
- }
+     PRBool
+-    BLAPI_VerifySelf(const char *name)
++    BLAPI_VerifySelf(const char *name, int *err)
+     {
+         if (name == NULL) {
+             /*
+@@ -629,7 +632,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+          */
+             return PR_TRUE;
+         }
+-        return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE);
++        return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, err);
+     }
  
+ #else /* NSS_FIPS_DISABLED */
+@@ -645,7 +648,7 @@ BLAPI_SHVerify(const char *name, PRFuncP
+     return PR_FALSE;
+ }
  PRBool
 -BLAPI_VerifySelf(const char *name)
 +BLAPI_VerifySelf(const char *name, int *err)
  {
-     if (name == NULL) {
-         /*
-@@ -540,7 +544,7 @@ BLAPI_VerifySelf(const char *name)
-          */
-         return PR_TRUE;
-     }
--    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE);
-+    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, err);
+     return PR_FALSE;
  }
- 
- #else /* NSS_FIPS_DISABLED */
 Index: nss/lib/softoken/fips.c
 ===================================================================
 --- /dev/null
@@ -1066,7 +1054,7 @@ Index: nss/lib/softoken/fipstest.c
 ===================================================================
 --- nss.orig/lib/softoken/fipstest.c
 +++ nss/lib/softoken/fipstest.c
-@@ -682,6 +682,327 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
+@@ -683,6 +683,327 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -1394,7 +1382,7 @@ Index: nss/lib/softoken/fipstest.c
  static PRBool sftk_self_tests_ran = PR_FALSE;
  static PRBool sftk_self_tests_success = PR_FALSE;
  
-@@ -693,7 +1014,6 @@ static void
+@@ -694,7 +1015,6 @@ static void
  sftk_startup_tests(void)
  {
      SECStatus rv;
@@ -1402,7 +1390,7 @@ Index: nss/lib/softoken/fipstest.c
  
      PORT_Assert(!sftk_self_tests_ran);
      PORT_Assert(!sftk_self_tests_success);
-@@ -705,6 +1025,7 @@ sftk_startup_tests(void)
+@@ -706,6 +1026,7 @@ sftk_startup_tests(void)
      if (rv != SECSuccess) {
          return;
      }
@@ -1410,7 +1398,7 @@ Index: nss/lib/softoken/fipstest.c
      /* make sure freebl is initialized, or our RSA check
       * may fail. This is normally done at freebl load time, but it's
       * possible we may have shut freebl down without unloading it. */
-@@ -722,12 +1043,21 @@ sftk_startup_tests(void)
+@@ -723,12 +1044,21 @@ sftk_startup_tests(void)
      if (rv != SECSuccess) {
          return;
      }
@@ -1436,7 +1424,7 @@ Index: nss/lib/softoken/fipstest.c
      rv = sftk_fips_IKE_PowerUpSelfTests();
      if (rv != SECSuccess) {
          return;
-@@ -759,17 +1089,11 @@ sftk_startup_tests(void)
+@@ -760,17 +1090,11 @@ sftk_startup_tests(void)
  CK_RV
  sftk_FIPSEntryOK()
  {
@@ -1500,7 +1488,7 @@ Index: nss/lib/softoken/legacydb/lgfips.c
 ===================================================================
 --- nss.orig/lib/softoken/legacydb/lgfips.c
 +++ nss/lib/softoken/legacydb/lgfips.c
-@@ -90,7 +90,7 @@ lg_startup_tests(void)
+@@ -91,7 +91,7 @@ lg_startup_tests(void)
  
      /* no self tests required for the legacy db, only the integrity check */
      /* check the integrity of our shared library */
