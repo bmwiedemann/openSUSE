@@ -765,4 +765,41 @@
   * Updates to German translation</comment>
     <requestid>982737</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>84867d8ced66ed1d227fe2c4dd0fd804</srcmd5>
+    <version>1.10.0</version>
+    <time>1678902871</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tiled-1.10.0-lib.patch:
+  Move so files into corresponding directories
+
+- Update to 1.10.0:
+  * Restored Tiled 1.8 file format compatibility by default (#3560)
+  * Added action search popup on Ctrl+Shift+P (with dogboydog, #3449)
+  * Added Godot 4 export plugin (by Rick Yorgason, #3550)
+  * Added file system actions also for tileset image based tilesets (#3448)
+  * Added custom class option to disable drawing fill for objects (with dogboydog, #3312)
+  * Added option to choose a custom interface font (#3589)
+  * Implemented rendering of major grid lines for staggered / hexagonal maps (#3583)
+  * Fixed new layer names to be always unique (by Logan Higinbotham, #3452)
+  * Fixed broken tile images after importing/exporting a tileset
+  * AutoMapping: Added support for output set probability (#3179)
+  * AutoMapping: When input regions are defined, match in order by default (#3559)
+  * AutoMapping: Skip locked layers when applying rules (#3544)
+  * AutoMapping: Fixed NoOverlappingOutput in case of multiple output indices (#3551)
+  * AutoMapping: Fixed automatic output regions for object output (#3473)
+  * AutoMapping: Fixed crash on undo when output layers have properties
+  * Scripting: Added Object.setColorProperty and Object.setFloatProperty (#3423)
+  * Scripting: Added tiled.projectFilePath
+  * Scripting: Added tiled.versionLessThan
+  * Scripting: Added TileMap.toImage (#3519)
+  * Scripting: Added Tool.targetLayerType (#3248)
+  * Scripting: Added region.contiguousRegions() (#3576)
+  * Scripting: Added tiled.compress and tiled.decompress (#3153)
+  * Scripting: Added Base64 encoding and decoding API (#3153)
+  * Scripting: Allow assigning null to Tile.objectGroup (by Logan Higinbotham, #3495)
+  * Scripting: Allow changing the items in a combo box added to a dialog
+  * Scripting: Fixed painting issues after changing TileLayer size (#3481)</comment>
+    <requestid>1072096</requestid>
+  </revision>
 </revisionlist>

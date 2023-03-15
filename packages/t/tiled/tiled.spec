@@ -1,7 +1,7 @@
 #
 # spec file for package tiled
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,33 @@
 
 
 Name:           tiled
-Version:        1.8.6
+Version:        1.10.0
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mvetter@suse.com tiled-1.10.0-lib.patch -- gh/mapeditor/tiled#3613
+Patch0:         tiled-1.10.0-lib.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5OpenGL-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+BuildRequires:  karchive-devel
+BuildRequires:  qbs
+BuildRequires:  qt6-base-common-devel
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-core-devel >= 6.4.2
+BuildRequires:  qt6-declarative-devel
+BuildRequires:  qt6-declarative-private-devel
+BuildRequires:  qt6-gui-devel
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-opengl-devel
+BuildRequires:  qt6-qml-devel
+BuildRequires:  qt6-quickcontrols2-devel
+BuildRequires:  qt6-svg-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(Qt5Qml)
 Recommends:     tmxtools
 Provides:       tiled-qt
 
@@ -51,25 +61,23 @@ License:        BSD-2-Clause
 This package contains tmxviewer, a simple application to view Tiled maps
 and tmxrasterizer which is also a command line tool.
 
-%package -n libtiled1
-Summary:        Library for Tiled MapEditor
-License:        BSD-2-Clause
-
-%description -n libtiled1
-This package contains libtiled a library for the Tiled map editor.
-
 %prep
 %setup -q
+%if "%{_lib}" == "lib64"
+%patch0 -p1
+%endif
 # Remove copy of zlib
 rm -rf src/zlib
 
 %build
-qmake-qt5 -r PREFIX=%{_prefix} LIBDIR=%{_libdir} RPATH=no USE_FHS_PLUGIN_PATH=yes
-
-make %{?_smp_mflags}
+# see gh/mapeditor/tiled#3613 why no --detect
+qbs setup-toolchains --type gcc %{_bindir}/g++-12 gcc
+qbs setup-qt %{_bindir}/qmake6 defprof
+qbs config defaultProfile defprof
+qbs qbs.installPrefix:"%{_prefix}" projects.Tiled.useRPaths:false
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+qbs install --install-root %{buildroot}
 
 # Clean build artefacts
 find -name ".uic" -or -name ".moc" -or -name ".rcc" | xargs rm -rf
@@ -77,14 +85,8 @@ find -name ".uic" -or -name ".moc" -or -name ".rcc" | xargs rm -rf
 # locale files
 %find_lang %{name} --with-qt
 
-# Removed development file (this version does not install headers anyway)
-rm %{buildroot}%{_libdir}/lib%{name}.so
-
 # Remove duplicates
 %fdupes %{buildroot}%{_datadir}
-
-%post -n libtiled1 -p /sbin/ldconfig
-%postun -n libtiled1 -p /sbin/ldconfig
 
 %if 0%{?suse_version} > 1130
 %post
@@ -110,12 +112,26 @@ rm %{buildroot}%{_libdir}/lib%{name}.so
 %{_datadir}/mime/packages/org.mapeditor.Tiled.xml
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/translations
-%{_libdir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
-
-%files -n libtiled1
-%license LICENSE.BSD
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/libtiled.so
+%{_libdir}/libtilededitor.so
+%dir %{_libdir}/tiled
+%dir %{_libdir}/tiled/plugins
+%{_libdir}/tiled/plugins/libcsv.so
+%{_libdir}/tiled/plugins/libdefold.so
+%{_libdir}/tiled/plugins/libdefoldcollection.so
+%{_libdir}/tiled/plugins/libdroidcraft.so
+%{_libdir}/tiled/plugins/libflare.so
+%{_libdir}/tiled/plugins/libgmx.so
+%{_libdir}/tiled/plugins/libjson.so
+%{_libdir}/tiled/plugins/libjson1.so
+%{_libdir}/tiled/plugins/liblua.so
+%{_libdir}/tiled/plugins/libreplicaisland.so
+%{_libdir}/tiled/plugins/librpmap.so
+%{_libdir}/tiled/plugins/libtbin.so
+%{_libdir}/tiled/plugins/libtengine.so
+%{_libdir}/tiled/plugins/libtscn.so
+%{_libdir}/tiled/plugins/libyy.so
 
 %files -n tmxtools
 %license LICENSE.BSD

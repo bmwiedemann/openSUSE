@@ -1,0 +1,39 @@
+Index: tiled-1.10.0/src/libtiled/libtiled.qbs
+===================================================================
+--- tiled-1.10.0.orig/src/libtiled/libtiled.qbs
++++ tiled-1.10.0/src/libtiled/libtiled.qbs
+@@ -209,7 +209,7 @@ DynamicLibrary {
+                 else
+                     return "bin"
+             else
+-                return "lib"
++                return "lib64"
+         }
+         fileTagsFilter: "dynamiclibrary"
+     }
+Index: tiled-1.10.0/qbs/imports/TiledPlugin.qbs
+===================================================================
+--- tiled-1.10.0.orig/qbs/imports/TiledPlugin.qbs
++++ tiled-1.10.0/qbs/imports/TiledPlugin.qbs
+@@ -42,7 +42,7 @@ DynamicLibrary {
+             else if (qbs.targetOS.contains("macos"))
+                 return "Tiled.app/Contents/PlugIns"
+             else
+-                return "lib/tiled/plugins"
++                return "lib64/tiled/plugins"
+         }
+         fileTagsFilter: "dynamiclibrary"
+     }
+Index: tiled-1.10.0/src/tiled/libtilededitor.qbs
+===================================================================
+--- tiled-1.10.0.orig/src/tiled/libtilededitor.qbs
++++ tiled-1.10.0/src/tiled/libtilededitor.qbs
+@@ -608,7 +608,7 @@ DynamicLibrary {
+                 else
+                     return "bin"
+             else
+-                return "lib"
++                return "lib64"
+         }
+         fileTagsFilter: "dynamiclibrary"
+     }
