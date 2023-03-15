@@ -1,7 +1,7 @@
 #
 # spec file for package lazarus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define dlver   2.2.4-0
+%define dlver   2.2.6-0
 %define sover   1
 Name:           lazarus
-Version:        2.2.4
+Version:        2.2.6
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
