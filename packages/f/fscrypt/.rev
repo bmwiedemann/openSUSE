@@ -37,4 +37,12 @@
 - drop pam-specs from main package</comment>
     <requestid>1065972</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6018d523ed19a763568975a1e0ce4407</srcmd5>
+    <version>0.3.4</version>
+    <time>1678902986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072103</requestid>
+  </revision>
 </revisionlist>

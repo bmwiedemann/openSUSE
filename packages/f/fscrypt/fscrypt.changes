@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  8 11:28:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- move to pam_vendordir
+- add baselibs
+
+-------------------------------------------------------------------
 Wed Feb 15 13:58:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add fscrypt pam configuration
