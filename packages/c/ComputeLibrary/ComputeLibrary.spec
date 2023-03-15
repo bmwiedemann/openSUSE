@@ -1,7 +1,7 @@
 #
 # spec file for package ComputeLibrary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 29
+%define so_ver 30
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        22.11
+Version:        23.02
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
