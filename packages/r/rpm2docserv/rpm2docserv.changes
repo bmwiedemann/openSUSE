@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 08 10:05:45 UTC 2023 - kukuk@suse.com
+
+- Update to version 20230308.4ed55cf:
+  * Remove forceRender, don't compress index.html
+  * Update dependencies
+- Add service to generate vendor.tar.gz
+
+-------------------------------------------------------------------
 Thu Jan 19 17:58:03 UTC 2023 - kukuk@suse.com
 
 - Update to version 20230119.8224a04:
