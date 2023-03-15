@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 14 16:44:15 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Replace ffmpeg libs pkgconfig build requires with actual
+  ffmpeg-4 devel packages to fix build for Tumbleweed
+
+-------------------------------------------------------------------
 Tue Dec 13 09:19:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(libavresample) with pkgconfig(libswresample)

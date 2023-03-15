@@ -1,7 +1,7 @@
 #
 # spec file for package aubio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,20 +35,29 @@ Patch1:         8a05420.patch
 Source99:       baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-%if 0%{?suse_version} > 1315
 BuildRequires:  txt2man
+%if 1 == 0
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswresample)
+%else
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavdevice-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
+BuildRequires:  ffmpeg-4-libswresample-devel
 %endif
+
+#ExcludeArch:    i586
 
 %description
 Aubio is a library for real time audio labelling. Its features include
@@ -85,6 +94,14 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 %description tools
 This package includes the example programs for aubio library.
 
+%package docs
+Summary:        Documentation for aubio library
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description docs
+This package includes the documentation for aubio library.
+
 %prep
 %autosetup -p1
 # set proper library dir
@@ -102,6 +119,7 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pR %{buildroot}%{_datadir}/doc/libaubio-doc/api %{buildroot}%{_docdir}/%{name}
 rm -rf %{buildroot}%{_datadir}/doc/libaubio-doc
 rm -f %{buildroot}%{_libdir}/libaubio.a
+%fdupes -s %{buildroot}%{_docdir}
 
 %post -n %{libpkgname} -p /sbin/ldconfig
 %postun -n %{libpkgname} -p /sbin/ldconfig
@@ -116,11 +134,11 @@ rm -f %{buildroot}%{_libdir}/libaubio.a
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/aubio
 
-%files tools
+%files docs
 %doc %{_docdir}/%{name}
-%if 0%{?suse_version} > 1315
+
+%files tools
 %{_mandir}/man1/*
-%endif
 %{_bindir}/*
 
 %changelog
