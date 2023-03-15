@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:10:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.19:
+  * crawler: add lru_crawler mgdump command
+  * replace 2&>1 by 2>&1 in rpm spec file
+  * log: fix race condition while incrementing log entries dropped
+  * Add new pkg-config dependencies to dockerfiles
+  * Document missing flags of Meta Arithmetic
+  * configure.ac: add --enable-werror
+  * proxy: reduce noise for dead backends
+  * proxy: more await unit tests
+  * proxy: fix trailingdata error with ascii multiget misses
+  * crawler: don't hold lock while writing to network
+  * proxy: redo libevent handling code (speedup/fixes)
+  * proxy: fix "missingend" error on reading responses
+  * proxy: add read buffer data to backend error messages
+  * proxy: fix partial responses on backend timeouts
+  * proxy: disallow overriding mn command
+  * tests: timedrun SIGHUP pass-thru
+  * proxy: new integration tests.
+  * proxy: fix mismatched responses after bad write
+  * proxy: fix stats deadlock caused by await code
+  * proxy: clean logic around lua yielding
+  * core: remove *c from some response code
+  * core: simplify background IO API
+  * core: remove *conn object from cache commands
+
+-------------------------------------------------------------------
+Sun Jan 15 21:30:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.18:
+  * Mostly fixes and improvements to proxy mode.
+  * Meta protocol has some adjusments: extra spaces were 
+    being returned in a few instances
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes1618
+
+-------------------------------------------------------------------
 Mon Oct  3 10:30:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove sysv init case
