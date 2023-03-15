@@ -225,4 +225,15 @@
   * Dropped support for Python versions older than 3.6</comment>
     <requestid>1067422</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e445654fd65ef313802d9193a1ee1df9</srcmd5>
+    <version>3.10.1</version>
+    <time>1678902879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  * Fixed ``TypeError: arguments did not match any overloaded
+    call:`` in QtScheduler due to ``wait_time`` being float
+    and not an integer which QT needs it to be</comment>
+    <requestid>1071875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:16:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.1:
+  * Fixed ``TypeError: arguments did not match any overloaded
+    call:`` in QtScheduler due to ``wait_time`` being float
+    and not an integer which QT needs it to be
+
+-------------------------------------------------------------------
 Thu Feb 23 14:31:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.0:
