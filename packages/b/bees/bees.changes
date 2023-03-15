@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 12 23:52:54 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Removed patch: fix-Makefile-version.diff, replaced with make parameter.
+
+-------------------------------------------------------------------
 Tue Feb 14 07:27:50 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 0.9.1:

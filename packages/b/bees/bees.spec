@@ -24,7 +24,6 @@ License:        GPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/Zygo/bees
 Source:         https://github.com/Zygo/bees/archive/refs/tags/v%{version}.tar.gz
-Patch1:         fix-Makefile-version.diff
 BuildRequires:  gcc-c++
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libuuid-devel
@@ -49,7 +48,6 @@ Hilights:
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 cat >localconf <<-EOF
@@ -61,7 +59,7 @@ cat >localconf <<-EOF
 	DEFAULT_MAKE_TARGET=all
 EOF
 
-%make_build
+%make_build BEES_VERSION=%{version}
 
 %install
 %make_install
