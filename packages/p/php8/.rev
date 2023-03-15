@@ -398,4 +398,17 @@
   [bsc#1205162]</comment>
     <requestid>1069569</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>6a6880c184d1448b19b59e19caf0f1da</srcmd5>
+    <version>8.1.16</version>
+    <time>1678902805</time>
+    <user>dimstar_suse</user>
+    <comment>- update to newest systzdata patch [bsc#1208199]
+- deleted patches
+  - php-systzdata-v21.patch (upstreamed)
+- added patches
+  fix use of the system timezone database
+  + php-systzdata-v23.patch</comment>
+    <requestid>1071456</requestid>
+  </revision>
 </revisionlist>

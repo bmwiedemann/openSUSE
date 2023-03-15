@@ -84,7 +84,7 @@ Patch2:         php-php-config.patch
 # SUSE specific ini defaults
 Patch3:         php-ini.patch
 # use of the system timezone database
-Patch4:         php-systzdata-v21.patch
+Patch4:         php-systzdata-v23.patch
 # adjust upstream systemd unit to SUSE needs
 Patch5:         php-systemd-unit.patch
 # PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar

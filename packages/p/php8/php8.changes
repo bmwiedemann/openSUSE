@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:50:55 UTC 2023 - pgajdos@suse.com
+
+- update to newest systzdata patch [bsc#1208199]
+- deleted patches
+  - php-systzdata-v21.patch (upstreamed)
+- added patches
+  fix use of the system timezone database
+  + php-systzdata-v23.patch
+
+-------------------------------------------------------------------
 Sun Mar  5 09:54:13 UTC 2023 - Aeneas Jaißle <aj@ajaissle.de>
 
 - add "/usr/share/php" to include_path
