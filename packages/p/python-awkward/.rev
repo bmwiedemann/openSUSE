@@ -223,4 +223,13 @@
   * fix: keep column order in all tests</comment>
     <requestid>1069926</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1a11fb5f4fdf5a6e5ac2872bf39546fb</srcmd5>
+    <version>2.1.0</version>
+    <time>1678902881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * bump numpy to 1.17.0</comment>
+    <requestid>1071882</requestid>
+  </revision>
 </revisionlist>
