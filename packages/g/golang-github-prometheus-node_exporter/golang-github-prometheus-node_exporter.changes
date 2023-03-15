@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 14 16:37:01 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Remove node_exporter-1.5.0.tar.gz
+- Execute tar and recompress service modules at buildtime
+
+-------------------------------------------------------------------
 Tue Jan 10 14:12:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify _service file and set all services to disabled
