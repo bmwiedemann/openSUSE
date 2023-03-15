@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 16 23:35:19 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add manual provides for mono(netstandard) = 2.0.0.0, to avoid
+  pulling in mono-devel. Automatic dependencies only provide
+  version 2.1.0.0. Fixes boo#1184608.
+- Move System.ServiceProcess and .ServiceModel Facades to their
+  respective implementation subpackage (-extras, -wcf).
+- Move System.Data.Services.Client to wcf package, removes
+  winfxforms from minimal install.
+
+-------------------------------------------------------------------
 Fri Oct  1 13:17:13 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add enable-X509_V_FLAG_TRUSTED_FIRST-flag.patch in order to fix bsc#1191220.

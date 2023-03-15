@@ -163,9 +163,6 @@ Provides:       mono(System.Runtime.Serialization.Xml) = 4.0.0.0
 Provides:       mono(System.Security) = 1.0.5000.0
 Provides:       mono(System.Security) = 2.0.0.0
 Provides:       mono(System.Security.Principal) = 4.0.0.0
-Provides:       mono(System.ServiceModel.Http) = 4.0.0.0
-Provides:       mono(System.ServiceModel.Primitives) = 4.0.0.0
-Provides:       mono(System.ServiceModel.Security) = 4.0.0.0
 Provides:       mono(System.Text.Encoding) = 4.0.0.0
 Provides:       mono(System.Text.Encoding.Extensions) = 4.0.0.0
 Provides:       mono(System.Text.RegularExpressions) = 4.0.0.0
@@ -181,6 +178,7 @@ Provides:       mono(System.Xml.XmlSerializer) = 4.0.0.0
 Provides:       mono(mscorlib) = 1.0.5000.0
 Provides:       mono(mscorlib) = 2.0.0.0
 Provides:       mono(mscorlib) = 4.0.0.0
+Provides:       mono(netstandard) = 2.0.0.0
 Provides:       mono(System.Runtime.CompilerServices.Unsafe) = 4.0.4.1
 # mono-core provides System.DateTime functions, which rely on timezone information
 Requires:       timezone
@@ -492,6 +490,8 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_prefix}/lib/mono/4.5/cscompmgd.dll
 %{_prefix}/lib/mono/4.5/mscorlib.dll*
 %{_prefix}/lib/mono/4.5/Facades/System*
+%exclude %{_prefix}/lib/mono/4.5/Facades/System.ServiceModel*
+%exclude %{_prefix}/lib/mono/4.5/Facades/System.ServiceProcess*
 %{_prefix}/lib/mono/4.5/Facades/Microsoft*
 %{_prefix}/lib/mono/4.5/Facades/netstandard*
 %{_prefix}/lib/mono/gac/Commons.Xml.Relaxng
@@ -962,6 +962,7 @@ Extra packages.
 %{_prefix}/lib/mono/4.5/System.Runtime.Caching.dll
 %{_prefix}/lib/mono/4.5/System.ServiceProcess.dll
 %{_prefix}/lib/mono/4.5/System.Xaml.dll
+%{_prefix}/lib/mono/4.5/Facades/System.ServiceProcess*
 %{_prefix}/lib/mono/gac/Mono.Messaging
 %{_prefix}/lib/mono/gac/Mono.Messaging.RabbitMQ
 %{_prefix}/lib/mono/gac/RabbitMQ.Client
@@ -1006,6 +1007,12 @@ Summary:        Mono implementation of WCF, Windows Communication Foundation
 License:        MIT AND MS-PL
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
+Provides:       mono(System.ServiceModel.Http) = 4.0.0.0
+Provides:       mono(System.ServiceModel.Primitives) = 4.0.0.0
+Provides:       mono(System.ServiceModel.Security) = 4.0.0.0
+# Moved files
+Provides:       mono-core:%{_prefix}/lib/mono/4.5/Facades/System.ServiceModel.Http.dll
+Provides:       mono-winfxcore:%{_prefix}/lib/mono/4.5/System.Data.Services.Client.dll
 
 %description -n mono-wcf
 The Mono Project is an open development initiative that is working to
@@ -1021,6 +1028,7 @@ Mono implementation of WCF, Windows Communication Foundation
 %{_bindir}/svcutil
 %{_libdir}/pkgconfig/wcf.pc
 %{_prefix}/lib/mono/4.5/System.Data.Services.dll
+%{_prefix}/lib/mono/4.5/System.Data.Services.Client.dll*
 %{_prefix}/lib/mono/4.5/System.IdentityModel.Selectors.dll
 %{_prefix}/lib/mono/4.5/System.IdentityModel.dll
 %{_prefix}/lib/mono/4.5/System.Runtime.DurableInstancing.dll
@@ -1032,7 +1040,9 @@ Mono implementation of WCF, Windows Communication Foundation
 %{_prefix}/lib/mono/4.5/System.ServiceModel.dll
 %{_prefix}/lib/mono/4.5/SMDiagnostics.dll
 %{_prefix}/lib/mono/4.5/svcutil.exe*
+%{_prefix}/lib/mono/4.5/Facades/System.ServiceModel*
 %{_prefix}/lib/mono/gac/System.Data.Services
+%{_prefix}/lib/mono/gac/System.Data.Services.Client
 %{_prefix}/lib/mono/gac/System.IdentityModel
 %{_prefix}/lib/mono/gac/System.IdentityModel.Selectors
 %{_prefix}/lib/mono/gac/System.Runtime.DurableInstancing
@@ -1064,9 +1074,8 @@ Mono implementation of core WinFX APIs
 
 %files -n mono-winfxcore
 %defattr(-, root, root)
-%{_prefix}/lib/mono/4.5/System.Data.Services.Client.dll*
+
 %{_prefix}/lib/mono/4.5/WindowsBase.dll*
-%{_prefix}/lib/mono/gac/System.Data.Services.Client
 %{_prefix}/lib/mono/gac/WindowsBase
 
 %package -n mono-web
