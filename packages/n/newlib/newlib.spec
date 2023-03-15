@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 # In the staging/ring projects, we don't want to build the unneeded packages
 %bcond_with ringdisabled
 Name:           %{pname}
-Version:        4.1.0
+Version:        4.3.0.20230120
 Release:        0
 Summary:        C library intended for use on embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
@@ -57,6 +57,7 @@ BuildArch:      noarch
 %else
 BuildRequires:  cross-%{gcc_cross_arch}-gcc%{gcc_version}-bootstrap
 BuildRequires:  fdupes
+BuildRequires:  makeinfo
 %if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
@@ -131,6 +132,8 @@ for variant in nano regular; do
     fi
     popd
 done
+
+rm %{buildroot}%{_infodir}/porting.info
 
 %fdupes %{buildroot}
 %endif

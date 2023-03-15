@@ -180,4 +180,41 @@
     <comment></comment>
     <requestid>975723</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a6e96c641d7cff5df489136a9bdcf96</srcmd5>
+    <version>4.3.0.20230120</version>
+    <time>1678902853</time>
+    <user>dimstar_suse</user>
+    <comment>- Use valid tarball FTP url.
+
+- Update to v4.3.0
+  * remove i?86-pc-linux-gnu support
+  * remove decstation &amp; sunos support
+  * remove phoenix OS support
+  * remove unused members from struct _reent (see also
+    --enable-newlib-reent-binary-compat)
+  * build system internals heavily rewritten &amp; updated
+  * make arm jmp_buf size and alignment ABI-conformant
+  * fixed bug in arm setjmp/longjmp to preserve floating-point register
+    values
+  * add --enable-newlib-reent-thread-local configuration option
+  * add --enable-newlib-reent-binary-compat configuration option
+  * add 64-bit powerpc setjmp/longjmp support
+  * use global stdio streams for all configurations
+  * use global atexit data for all configurations
+  * vectorized math routines added for amdgcn platform
+  * nvptx: remove newlib ELIX level 1 restriction
+- Already in v4.2.0
+  * remove use of --cygnus option for automake
+  * rename configure.in files to configure.ac
+  * enable automake silent rules
+  * import gdtoa from OpenBSD
+  * update to Unicode 14.0
+  * ignore _FORTIFY_SOURCE when building newlib
+  * fixes to ldtoa
+  * add clock support to nvptx port
+  * various pthread POSIX APIs added
+  * added implementatio for sig2str/str2sig</comment>
+    <requestid>1072055</requestid>
+  </revision>
 </revisionlist>

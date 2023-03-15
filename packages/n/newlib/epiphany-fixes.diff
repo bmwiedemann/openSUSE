@@ -11,3 +11,14 @@ Index: newlib-2.1.0/libgloss/epiphany/Makefile.in
  	done
  info:
  install-info:
+--- newlib-4.3.0.20230120/libgloss/epiphany/crt0.S.orig	2023-03-08 13:57:15.671910169 +0100
++++ newlib-4.3.0.20230120/libgloss/epiphany/crt0.S	2023-03-08 13:57:27.135910057 +0100
+@@ -121,7 +121,7 @@
+ #error "not implemented"
+ #else  /* !__STRUCT_ALIGN_64__ */
+ 	str	r1, [r2, 0]	; __atexit = &__atexit0
+-	movr	r0, 1
++	mov	r0, 1
+ 	str	r0, [r1, 4]	; __atexit0._ind = 1
+ 	mov	r0,%low(fini)
+ 	movt	r0,%high(fini)
