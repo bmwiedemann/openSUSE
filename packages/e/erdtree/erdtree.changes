@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Mar 15 07:39:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.2:
+  * Fix stray print
+
+-------------------------------------------------------------------
+Wed Mar 15 07:39:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.0:
+  * Added --size-left to print disk usage to the left of the tree #611
+  * Added more paths the erdtree config could be placed at #702
+  * Fixed issue where --dirs-first wouldn't work unless -s, --sort was specified #67
+  * Fixed isse where arguments from the erdtree config were being completely disregarded #74
+
+-------------------------------------------------------------------
+Mon Mar 13 10:33:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of erdtree 1.4.1 for openSUSE
