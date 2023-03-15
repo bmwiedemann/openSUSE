@@ -35,6 +35,7 @@ Source5:        xznew.1
 BuildRequires:  pkgconfig
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
+%{?suse_build_hwcaps_libs}
 
 %description
 The xz command is a program for compressing files.
