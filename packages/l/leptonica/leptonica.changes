@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:37:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.83.1:
+  * Fix jp2k header reader for header offset larger than assumed
+    44 bytes
+  * Fix issue 659: pdf generation for 1 bpp images fails,
+    breaking tesseract 
+
+-------------------------------------------------------------------
 Mon Jan  9 02:50:35 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.83.0:

@@ -208,4 +208,12 @@
     <comment>Update back to new version</comment>
     <requestid>1057139</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6a5c37e681bc837d8a1e4e07910d757b</srcmd5>
+    <version>1.83.1</version>
+    <time>1678902965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072041</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,13 @@
 
 %define major   6
 Name:           leptonica
-Version:        1.83.0
+Version:        1.83.1
 Release:        0
 Summary:        Library for image processing and image analysis applications
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://leptonica.org/
-Source0:        http://leptonica.org/source/%{name}-%{version}.tar.gz
+Source0:        https://github.com/DanBloomberg/leptonica/releases/download/%{version}/leptonica-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  giflib-devel
 BuildRequires:  gnuplot
