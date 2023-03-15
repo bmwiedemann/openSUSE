@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 03:07:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Pod-Spell/Changes
+
+  1.26      2023-03-13
+
+      - encode output as UTF-8
+
+-------------------------------------------------------------------
 Wed Oct  5 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.25

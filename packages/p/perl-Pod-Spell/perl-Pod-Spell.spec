@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Spell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-Spell
 Name:           perl-Pod-Spell
-Version:        1.25
+Version:        1.26
 Release:        0
 License:        Artistic-2.0
 Summary:        Formatter for spellchecking Pod
