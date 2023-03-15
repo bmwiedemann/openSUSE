@@ -1,7 +1,7 @@
-Index: osinfo-db-20221130/os/microsoft.com/win-2k19.xml
+Index: osinfo-db-20230308/os/microsoft.com/win-2k19.xml
 ===================================================================
---- osinfo-db-20221130.orig/os/microsoft.com/win-2k19.xml
-+++ osinfo-db-20221130/os/microsoft.com/win-2k19.xml
+--- osinfo-db-20230308.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20230308/os/microsoft.com/win-2k19.xml
 @@ -36,6 +36,22 @@
      <upgrades id="http://microsoft.com/win/2k16"/>
      <release-date>2018-11-13</release-date>
@@ -24,4 +24,4 @@ Index: osinfo-db-20221130/os/microsoft.com/win-2k19.xml
 +    </media>
      <variant id="essentials">
        <name>Windows Server 2019 Essentials</name>
-       <name xml:lang="uk">Windows Server 2019 Essentials</name>
+       <name xml:lang="ka">Windows Server 2019 Essentials</name>

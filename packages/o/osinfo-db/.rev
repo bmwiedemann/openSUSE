@@ -504,4 +504,12 @@
     <comment>Update to database version 20221130. Add support for SLE Micro 5.4</comment>
     <requestid>1043201</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>15e4dd8c76f99fbbf59652f1e191f7eb</srcmd5>
+    <version>20230308</version>
+    <time>1678902783</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20230308</comment>
+    <requestid>1071248</requestid>
+  </revision>
 </revisionlist>
