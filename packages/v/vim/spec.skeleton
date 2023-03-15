@@ -29,7 +29,7 @@ BuildRequires:
 %description
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure

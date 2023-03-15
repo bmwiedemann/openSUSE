@@ -6944,4 +6944,12 @@ always built-in because vim has direct perl dependencies anyway.
 - fixes CVE-2023-1175 CVE-2023-1170</comment>
     <requestid>1070144</requestid>
   </revision>
+  <revision rev="344" vrev="2">
+    <srcmd5>4eb9671dbf940357c1e2eb5b32eb2002</srcmd5>
+    <version>9.0.1392</version>
+    <time>1678902811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071507</requestid>
+  </revision>
 </revisionlist>

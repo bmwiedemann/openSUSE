@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 13 15:15:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update spec.skeleton to use autosetup in place of setup macro.
+
+-------------------------------------------------------------------
 Wed Mar  8 10:24:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1392, fixes the following problems
