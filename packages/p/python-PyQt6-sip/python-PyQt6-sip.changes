@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 14 06:16:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support Python 3.6 in order to build for
+  SLE/Leap 15:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
 Sun Jan 29 19:42:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Upate to ABI version 13.4.1
