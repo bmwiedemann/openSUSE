@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,9 +64,9 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 22
-%define version_minor 11
-%define version_lib 31
+%define version_major 23
+%define version_minor 02
+%define version_lib 32
 %define version_lib_testutils 2
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
@@ -79,10 +79,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/711
-Patch1:         armnn-gh711.patch
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/712
-Patch2:         armnn-281e97b.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -376,8 +372,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
-%patch1 -p1
-%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1

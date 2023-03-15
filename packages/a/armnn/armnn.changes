@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 15 09:03:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 23.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v23.02
+- Drop upstream patches:
+  * armnn-gh711.patch
+  * armnn-281e97b.patch
+
+-------------------------------------------------------------------
 Wed Dec 14 15:41:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - tensorflow-lite >= 2.10 is only avaialble on Tumbleweed
