@@ -23,7 +23,9 @@ Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/sip/
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+# PATCH-FIX-SLE support-python3.6.patch alarrosa@suse.com -- Let python-PyQt6-sip work with SLE's python3.6
+Patch0:         support-python3.6.patch
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +42,7 @@ can also be used write self contained extension modules, i.e.
 without a library to be wrapped.
 
 %prep
-%setup -q -n PyQt6_sip-%{version}
+%autosetup -p1 -n PyQt6_sip-%{version}
 
 %build
 export CFLAGS="%{optflags}"
