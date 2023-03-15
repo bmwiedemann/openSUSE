@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:39:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add invalid-json.patch fixing invalid JSON in
+  Doc/howto/logging-cookbook.rst (somehow similar to
+  gh#python/cpython#102582).
+
+-------------------------------------------------------------------
 Wed Mar  1 20:59:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.10:

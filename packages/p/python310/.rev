@@ -604,4 +604,14 @@
   when supplying a URL that starts with blank characters</comment>
     <requestid>1068979</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>43472ed5d476385a007ba95bad74ecf0</srcmd5>
+    <version>3.10.10</version>
+    <time>1678902769</time>
+    <user>dimstar_suse</user>
+    <comment>- Add invalid-json.patch fixing invalid JSON in
+  Doc/howto/logging-cookbook.rst (somehow similar to
+  gh#python/cpython#102582).</comment>
+    <requestid>1071070</requestid>
+  </revision>
 </revisionlist>
