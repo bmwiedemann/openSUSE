@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:25:33 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to v0.3.2 + git commit 255d370
+     dependency: Enable vendored feature for openssl
+     Add show commands for identifier, SNP status and VCEK URL.
+     readme: Add some basic provisioning instructions
+     Update sev library to version 1.1.0
+     ok: Find singular model and family on processor ID
+
+-------------------------------------------------------------------
 Wed Feb  8 20:34:00 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
 
 - Set cargo_vendor update param to false to bypass upstream semvar issues

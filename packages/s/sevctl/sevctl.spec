@@ -17,7 +17,7 @@
 
 
 Name:           sevctl
-Version:        0.3.2+git.e37c4d6
+Version:        0.3.2+git.255d370
 Release:        0
 Summary:        Administrative utility for AMD SEV
 Group:          Development/Libraries/Rust

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/virtee/sevctl.git</param>
     <param name="scm">git</param>
     <param name="filename">sevctl</param>
-    <param name="revision">e37c4d6868b8144b547ade68eff6062771c67eb0</param>
+    <param name="revision">255d370</param>
     <param name="version">0.3.2</param>
     <param name="versionformat">0.3.2+git.%h</param>
   </service>
