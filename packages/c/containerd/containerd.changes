@@ -4,10 +4,17 @@ Wed Mar  1 05:29:46 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 - Re-build containerd to use updated golang-packaging. jsc#1342
 
 -------------------------------------------------------------------
+Thu Feb  9 01:58:07 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.6.16 for Docker v23.0.0-ce. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.16>
+
+-------------------------------------------------------------------
 Thu Dec  8 01:28:48 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
-- Update to containerd v1.6.12 to fix CVE-2022-23471. Upstream release notes:
-  <https://github.com/containerd/containerd/releases/tag/v1.6.11>
+- Update to containerd v1.6.12 to fix CVE-2022-23471 bsc#1206235. Upstream
+  release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.12>
 
 -------------------------------------------------------------------
 Tue Dec  6 22:41:50 UTC 2022 - Aleksa Sarai <asarai@suse.com>
