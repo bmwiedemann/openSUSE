@@ -1,7 +1,7 @@
 #
 # spec file for package flac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(ogg)
 Obsoletes:      %{name}-doc
+%{?suse_build_hwcaps_libs}
 
 %description
 FLAC is an audio coding format for lossless compression of digital
