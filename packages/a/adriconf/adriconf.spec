@@ -1,7 +1,7 @@
 #
 # spec file for package adriconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           adriconf
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
@@ -35,9 +35,10 @@ BuildRequires:  libboost_locale-devel >= 1.60
 BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(atkmm-2.36)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(gdkmm-3.0) > 3.24
+BuildRequires:  pkgconfig(gtkmm-4.0)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(pciaccess)
