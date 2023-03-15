@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 13 20:47:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.7
+  * Support for vxlan/geneve/gre/gretap matching
+  * auto-merge support for partial set element deletion
+  * Allow for NAT mapping with concatenation and ranges
+  * Support for quota in sets
+
+-------------------------------------------------------------------
 Wed Dec 21 23:47:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.6

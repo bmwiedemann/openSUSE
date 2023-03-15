@@ -233,4 +233,12 @@
     <comment>- Update to release 1.0.6</comment>
     <requestid>1044143</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ca4e74f51b6fda8c992fcb8a294b8293</srcmd5>
+    <version>1.0.7</version>
+    <time>1678902780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.7</comment>
+    <requestid>1071236</requestid>
+  </revision>
 </revisionlist>
