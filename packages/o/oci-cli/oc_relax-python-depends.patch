@@ -1,7 +1,7 @@
-diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
---- oci-cli-3.23.2.orig/requirements.txt	2023-02-28 08:57:36.000000000 +0100
-+++ oci-cli-3.23.2/requirements.txt	2023-03-01 13:44:10.037647032 +0100
-@@ -2,42 +2,42 @@
+diff -Nru oci-cli-3.23.3.orig/requirements.txt oci-cli-3.23.3/requirements.txt
+--- oci-cli-3.23.3.orig/requirements.txt	2023-03-07 20:43:28.000000000 +0100
++++ oci-cli-3.23.3/requirements.txt	2023-03-14 11:33:38.405379694 +0100
+@@ -2,44 +2,44 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
@@ -10,7 +10,7 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
  arrow>=1.0.0
  certifi
  cffi>=1.9.1
--click==7.1.2
+-click==8.0.4
 -coverage==4.5.2
 -cryptography>=3.2.1,<39.0.0
 -httpsig-cffi==15.0.0
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.93.1
+-oci==2.94.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -26,10 +26,11 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 -pyOpenSSL>=17.5.0,<=22.1.0
 -pycparser==2.20
 -pyparsing==2.2.0
--pytest==3.2.3
+-pytest==4.6.10; python_version <= '3.9'
+-pytest==7.1.2; python_version >= '3.10'
 -pytest-cov==2.5.1
 -python-dateutil>=2.5.3,<3.0.0
-+click>=7.1.2
++click>=8.0.4
 +coverage>=4.5.2
 +cryptography>=3.2.1
 +httpsig-cffi>=15.0.0
@@ -37,7 +38,7 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.93.1
++oci>=2.94.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -45,7 +46,8 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 +pyOpenSSL>=17.5.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
-+pytest>=3.2.3
++pytest>=4.6.10; python_version <= '3.9'
++pytest>=7.1.2; python_version >= '3.10'
 +pytest-cov>=2.5.1
 +python-dateutil>=2.5.3
  pytz>=2016.10
@@ -56,7 +58,8 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 -sphinx-rtd-theme==0.4.3
 -terminaltables==3.1.0
 -tox==3.23.0
--vcrpy==1.13.0
+-vcrpy==1.13.0; python_version <= '3.9'
+-vcrpy==4.2.1; python_version >= '3.10'
 -virtualenv==20.13.0
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
@@ -67,7 +70,8 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.0
 +tox>=3.23.0
-+vcrpy>=1.13.0
++vcrpy>=1.13.0; python_version <= '3.9'
++vcrpy>=4.2.1; python_version >= '3.10'
 +virtualenv>=20.13.0
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
@@ -78,22 +82,22 @@ diff -Nru oci-cli-3.23.2.orig/requirements.txt oci-cli-3.23.2/requirements.txt
 -setuptools==59.6.0; python_version == '3.6'
 \ No newline at end of file
 +setuptools>=59.6.0; python_version >= '3.6'
-diff -Nru oci-cli-3.23.2.orig/setup.py oci-cli-3.23.2/setup.py
---- oci-cli-3.23.2.orig/setup.py	2023-02-28 08:57:36.000000000 +0100
-+++ oci-cli-3.23.2/setup.py	2023-03-01 13:43:24.297667520 +0100
+diff -Nru oci-cli-3.23.3.orig/setup.py oci-cli-3.23.3/setup.py
+--- oci-cli-3.23.3.orig/setup.py	2023-03-07 20:43:28.000000000 +0100
++++ oci-cli-3.23.3/setup.py	2023-03-14 11:32:41.764918764 +0100
 @@ -29,23 +29,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.93.1',
-+    'oci>=2.93.1',
+-    'oci==2.94.0',
++    'oci>=2.94.0',
      'arrow>=1.0.0',
      'certifi',
--    'click==7.1.2',
+-    'click==8.0.4',
 -    'cryptography>=3.2.1,<39.0.0',
 -    'jmespath==0.10.0',
 -    'python-dateutil>=2.5.3,<3.0.0',
-+    'click>=7.1.2',
++    'click>=8.0.4',
 +    'cryptography>=3.2.1',
 +    'jmespath>=0.10.0',
 +    'python-dateutil>=2.5.3',
