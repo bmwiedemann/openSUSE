@@ -5230,4 +5230,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes n_Revert-glx-Only-compute-client-GL-extensions-for-ind.patch</comment>
     <requestid>1068561</requestid>
   </revision>
+  <revision rev="474" vrev="346">
+    <srcmd5>352bb69aaf9b663ae512d6a91ae30f32</srcmd5>
+    <version>unknown</version>
+    <time>1678902810</time>
+    <user>dimstar_suse</user>
+    <comment>- U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
+  * reverse apply this patch to fix a regression caused by this
+    commit, which resulted in gnome-shell constantly crashing, which
+    is making a GNOME/X11 session impossible (boo#1209005)</comment>
+    <requestid>1071497</requestid>
+  </revision>
 </revisionlist>

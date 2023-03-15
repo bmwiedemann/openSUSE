@@ -1,0 +1,83 @@
+From 19c57ea3bf6d77cf6f07f2a56e781f55b0e6013b Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 13 Dec 2022 12:26:58 -0500
+Subject: [PATCH] glx: Remove pointless GLX_INTEL_swap_event paranoia
+
+It's not our job to filter this out, it's the server's job to not send
+events that haven't been selected for. We'll still throw the event away
+if we don't have any client-side state for it though.
+
+Acked-by: David Heidelberg <david.heidelberg@collabora.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/20300>
+---
+ src/glx/dri2_glx.c    |  2 +-
+ src/glx/glx_pbuffer.c | 20 --------------------
+ src/glx/glxclient.h   |  1 -
+ 3 files changed, 1 insertion(+), 22 deletions(-)
+
+diff --git a/src/glx/dri2_glx.c b/src/glx/dri2_glx.c
+index 9a47f40ca9c..85d6faee5f4 100644
+--- a/src/glx/dri2_glx.c
++++ b/src/glx/dri2_glx.c
+@@ -649,7 +649,7 @@ unsigned dri2GetSwapEventType(Display* dpy, XID drawable)
+       struct glx_display *glx_dpy = __glXInitialize(dpy);
+       __GLXDRIdrawable *pdraw;
+       pdraw = dri2GetGlxDrawableFromXDrawableId(dpy, drawable);
+-      if (!pdraw || !(pdraw->eventMask & GLX_BUFFER_SWAP_COMPLETE_INTEL_MASK))
++      if (!pdraw)
+          return 0;
+       return glx_dpy->codes.first_event + GLX_BufferSwapComplete;
+ }
+diff --git a/src/glx/glx_pbuffer.c b/src/glx/glx_pbuffer.c
+index b74fed99efe..f66a520ea30 100644
+--- a/src/glx/glx_pbuffer.c
++++ b/src/glx/glx_pbuffer.c
+@@ -64,10 +64,6 @@ ChangeDrawableAttribute(Display * dpy, GLXDrawable drawable,
+                         const CARD32 * attribs, size_t num_attribs)
+ {
+    struct glx_display *priv = __glXInitialize(dpy);
+-#ifdef GLX_DIRECT_RENDERING
+-   __GLXDRIdrawable *pdraw;
+-   int i;
+-#endif
+    CARD32 *output;
+    CARD8 opcode;
+ 
+@@ -112,22 +108,6 @@ ChangeDrawableAttribute(Display * dpy, GLXDrawable drawable,
+    UnlockDisplay(dpy);
+    SyncHandle();
+ 
+-#ifdef GLX_DIRECT_RENDERING
+-   pdraw = GetGLXDRIDrawable(dpy, drawable);
+-
+-   if (!pdraw)
+-      return;
+-
+-   for (i = 0; i < num_attribs; i++) {
+-      switch(attribs[i * 2]) {
+-      case GLX_EVENT_MASK:
+-	 /* Keep a local copy for masking out DRI2 proto events as needed */
+-	 pdraw->eventMask = attribs[i * 2 + 1];
+-	 break;
+-      }
+-   }
+-#endif
+-
+    return;
+ }
+ 
+diff --git a/src/glx/glxclient.h b/src/glx/glxclient.h
+index af7759bec02..8eda47988b4 100644
+--- a/src/glx/glxclient.h
++++ b/src/glx/glxclient.h
+@@ -127,7 +127,6 @@ struct __GLXDRIdrawableRec
+    struct glx_screen *psc;
+    GLenum textureTarget;
+    GLenum textureFormat;        /* EXT_texture_from_pixmap support */
+-   unsigned long eventMask;
+    int refcount;
+ };
+ 
+-- 
+2.35.3
+

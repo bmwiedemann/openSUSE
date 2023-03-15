@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 14 11:53:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
+  * reverse apply this patch to fix a regression caused by this
+    commit, which resulted in gnome-shell constantly crashing, which
+    is making a GNOME/X11 session impossible (boo#1209005)
+
+-------------------------------------------------------------------
 Wed Mar  1 21:55:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_glx-fix-indirect-initialization-crash.patch 

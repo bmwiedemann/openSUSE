@@ -148,6 +148,7 @@ Patch200:       u_fix-build-on-ppc64le.patch
 Patch300:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 Patch400:       n_stop-iris-flicker.patch
 Patch500:       U_ReturnME.patch
+Patch600:       U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -795,6 +796,8 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %endif
 %patch400 -p1
 %patch500 -p1
+# reverse apply to fix a regression (boo#1209005)
+%patch600 -p1 -R
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
