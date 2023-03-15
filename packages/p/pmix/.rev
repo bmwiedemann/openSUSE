@@ -153,4 +153,12 @@
     <comment>- Separate out psec munge plugin to avoid dependency creep. (forwarded request 988481 from eeich)</comment>
     <requestid>988486</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>bb5a6ffb9f492b2e8fba87c06e0d7313</srcmd5>
+    <version>3.2.3</version>
+    <time>1678902971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072064</requestid>
+  </revision>
 </revisionlist>

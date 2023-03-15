@@ -1,7 +1,7 @@
 #
 # spec file for package pmix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://pmix.org/
 Source0:        https://github.com/openpmix/openpmix/archive/v%{version}.tar.gz#/openpmix-%{version}.tar.gz
+Source1:        pmix.rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -88,12 +89,20 @@ Group:          System/Libraries
 %description  -n libmca_common_dstore1
 This package contains the communication library used by the PMI
 
+%package -n pmix-pluginlib
+Summary:        Communication library used by PMI-X as Plugin
+Group:          System/Libraries
+Requires:       libpmix2 = %{version}
+
+%description -n pmix-pluginlib
+This package contains the shared library plugin used by the PMI-X standard
+
 %package devel
 Summary:        Process Management Interface for MPI
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-headers = %{version}
 Requires:       libmca_common_dstore1 = %{version}
-Requires:       libpmix2 = %{version}
+Requires:       pmix-pluginlib = %{version}
 
 %description devel
 This Package contains necessary files for development and building PMI-X
@@ -181,6 +190,9 @@ make check
 %files -n libpmix2
 %{_libdir}/libpmix.so.*
 
+%files -n pmix-pluginlib
+%{_libdir}/libpmix.so
+
 %files plugins
 %exclude %{_libdir}/pmix/mca_psec_munge.so
 %{_libdir}/pmix/mca_*.so
@@ -192,7 +204,6 @@ make check
 %{_libdir}/libmca_common_dstore.so.*
 
 %files devel
-%{_libdir}/libpmix.so
 %{_libdir}/libmca_common_dstore.so
 %{_libdir}/pkgconfig/pmix.pc
 

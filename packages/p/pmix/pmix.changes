@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 14 19:24:25 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Create library plugin for Slurm: it contains the libpmix.so
+  link which normally goes into the devel package - without
+  the headers (bsc#1209260).
+
+-------------------------------------------------------------------
 Mon Jul 11 14:57:37 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Separate out psec munge plugin to avoid dependency creep.
