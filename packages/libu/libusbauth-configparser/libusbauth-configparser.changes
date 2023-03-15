@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 20 17:38:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Add default value types
+
+-------------------------------------------------------------------
 Mon Feb  3 14:45:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libdev) instead of libudev-devel: allow

@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>769961</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee3f1679926e0249b13d91ee3eabc38b</srcmd5>
+    <version>1.0.5</version>
+    <time>1678902873</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Add default value types
+</comment>
+    <requestid>1071872</requestid>
+  </revision>
 </revisionlist>

@@ -1,10 +1,8 @@
 #
 # spec file for package libusbauth-configparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2018 Stefan Koch <stefan.koch10@gmail.com>
-# Copyright (c) 2015 SUSE LLC. All Rights Reserved.
-# Author: Stefan Koch <skoch@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +17,17 @@
 #
 
 
+%define _name   usbauth-all
 Name:           libusbauth-configparser
-Version:        1.0.1
-Release:        0
+Version:        1.0.5
 Summary:        Library for USB Firewall including flex/bison parser
+URL:            https://github.com/kochstefan/usbauth-all/
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+
+Release:        0
 License:        LGPL-2.1-only
 Group:          Development/Languages/C and C++
-URL:            https://github.com/kochstefan/usbauth-all/tree/master/libusbauth-configparser
-Source:         https://github.com/kochstefan/usbauth-all/archive/v%{version}.tar.gz
+
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
@@ -52,7 +53,7 @@ Requires:       libusbauth-configparser1 = %{version}
 Development part of library to read usbauth config file into data structures
 
 %prep
-%autosetup -n usbauth-all-%{version} -p1
+%autosetup -n %{_name}-%{version}
 
 %build
 pushd %{name}/
@@ -67,13 +68,11 @@ pushd %{name}/
 popd
 
 %files -n %{name}1
-%defattr(-,root,root)
 %_libdir/lib*.so.1*
 
 %files devel
-%defattr(-,root,root)
-%license libusbauth-configparser/COPYING
-%doc libusbauth-configparser/README
+%license %{name}/COPYING
+%doc %{name}/README
 %doc %_mandir/*/*
 %_includedir/*
 %_libdir/lib*.so
