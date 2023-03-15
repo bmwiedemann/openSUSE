@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 15 08:26:43 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Disable wine vst due to libwine.so.1 being removed in wine version
+  8.3 see https://bugs.winehq.org/show_bug.cgi?id=54635 and
+  https://github.com/LMMS/lmms/issues/6672
+
+-------------------------------------------------------------------
 Thu Dec 29 16:36:51 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Reenable the VST plugin integration.
