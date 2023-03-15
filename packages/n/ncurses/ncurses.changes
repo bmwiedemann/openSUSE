@@ -1,9 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:27:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230311
+  + improve manpage description for addch versus unctrl format used for
+    non-printable characters.
+  + modify version-check for gcc/g++, now works for msys2.
+  + modify check in _nc_write_entry() for multiply defined aliases to
+    report problems within the current runtime of tic rather than for
+    conflicts with pre-existing terminal descriptions.
+  + allow for MinGW32-/64-bit configurations to use _DEFAULT_SOURCE
+  + clarify interaction of -R option versus -C, -I and -r in infocmp
+    manpage.
+  + build-fix in lib_win32con.c (cf: 20230211).
+
+-------------------------------------------------------------------
 Tue Feb 28 14:28:56 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230225
   + build-fixes for rpm test-packages.
-  + add/user configure check for clock_gettime(), to supersede
+  + add/use configure check for clock_gettime(), to supersede
     gettimeofday().
 - Correct offsets of patch ncurses-6.4.dif
 
