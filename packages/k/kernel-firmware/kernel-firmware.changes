@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 14 14:50:08 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230313 (git commit 5bc279fb161d):
+  * iwlwifi: update core69 and core72 firmwares for So device
+  * qat: update licence text
+  * rtl_bt: Update RTL8822C BT USB firmware to 0x0CC6_D2E3
+  * rtl_bt: Update RTL8822C BT UART firmware to 0x05C6_D2E3
+  * WHENCE: remove duplicate File entries
+  * WHENCE: remove trailing white space
+  * linux-firmware: add fw for qat_4xxx (jsc#PED-3699)
+  * Fix symlinks for Intel firmware
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * iwlwifi: update core69 and core72 firmwares for Ty device
+  * rtlwifi: Add firmware v16.0 for RTL8710BU aka RTL8188GU
+  * brcm: Add nvram for the Lenovo Yoga Book X90F / X90L convertible
+  * brcm: Fix Xiaomi Inc Mipad2 nvram/.txt file macaddr
+  * brcm: Add nvram for the Advantech MICA-071 tablet
+  * rtl_bt: Update RTL8852C BT USB firmware to 0xD7B8_FABF
+  * rtl_bt: Add firmware and config files for RTL8821CS
+  * rtw89: 8852b: update fw to v0.29.29.0
+  * rtw89: 8852b: update fw to v0.29.26.0
+  * liquidio: remove lio_23xx_vsw.bin
+  * intel: avs: Add AudioDSP base firmware for CNL-based platforms
+  * intel: avs: Add AudioDSP base firmware for APL-based platforms
+  * intel: avs: Add AudioDSP base firmware for SKL-based platforms
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.23
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: WCN6750 hw1.0: update board-2.bin
+  * ath11k: IPQ5018 hw1.0: add to WLAN.HK.2.6.0.1-00861-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ5018 hw1.0: add board-2.bin
+  * ath10k: QCA6174 hw3.0: update firmware-sdio-6.bin to version WLAN.RMH.4.4.1-00174
+  * ath10k: WCN3990 hw1.0: update board-2.bin
+  * cnm: update chips&media wave521c firmware.
+  * amdgpu: Update GC 11.0.1 firmware
+  * intel: catpt: Add AudioDSP base firmware for BDW platforms
+- Update topics for catpt/avs
+- Update aliases
+- Update spec template
+
+-------------------------------------------------------------------
 Mon Feb 13 12:59:21 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230210 (git commit bf4115c1aa2b):

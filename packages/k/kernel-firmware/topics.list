@@ -138,6 +138,8 @@ xhci-rcar:	platform
 snd_soc_sst_acpi: sound		snd-soc-sst-acpi snd-intel-sst-acpi
 as102:		media
 it9135:		media		dvb_usb_af9035
+snd_soc_catpt:	sound
+snd_soc_avs:	sound
 snd_intel_sst_core: sound
 snd-soc-skl:	sound
 smsmdtv:	media

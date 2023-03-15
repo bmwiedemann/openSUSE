@@ -135,6 +135,8 @@ xhci-rcar:	platform	LICENCE.r8a779x_usb3
 snd_soc_sst_acpi: sound		LICENCE.IntcSST2
 as102:		media		LICENCE.Abilis
 it9135:		media		LICENCE.it913x
+snd_soc_catpt:	sound		LICENCE.IntcSST2
+snd_soc_avs:	sound		LICENCE.adsp_sst
 snd_intel_sst_core: sound	LICENCE.fw_sst_0f28
 snd-soc-skl:	sound		LICENCE.adsp_sst
 smsmdtv:	media		LICENCE.siano
