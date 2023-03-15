@@ -18,6 +18,7 @@ PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/distrobox:%OS_VERSION_ID%.%RELEASE%"
 
 # Packagelist from https://github.com/89luca89/distrobox/blob/main/distrobox-init#L639-L674
+# openSUSE-release included explicitly to ensure kiwi-metainfo-helper finds it for %OS_VERSION_ID%
 RUN zypper --non-interactive install --no-recommends bash \
     bc \
     curl \
@@ -41,6 +42,7 @@ RUN zypper --non-interactive install --no-recommends bash \
     libvulkan1 \
     libvulkan_intel \
     libvulkan_radeon \
+    openSUSE-release \
   && zypper al parallel-printer-support \
   && zypper clean \
   && sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = false/g' /etc/zypp/zypp.conf \

@@ -7,4 +7,12 @@
     <comment>To be used by default by distrobox to dramatically speed up creation of default distroboxes (from minutes to seconds especially if folk are behind slower zypp mirrors)</comment>
     <requestid>1065904</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e4e47720c88ba88be22e871b48fdb60</srcmd5>
+    <version>unknown</version>
+    <time>1678902993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072140</requestid>
+  </revision>
 </revisionlist>

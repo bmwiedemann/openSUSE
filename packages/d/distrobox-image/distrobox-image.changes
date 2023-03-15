@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 14:13:32 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Explicitly add openSUSE-release to ensure %OS_VERSION_ID% is
+  found by kiwi-metainfo-helper 
+
+-------------------------------------------------------------------
 Sun Feb 12 12:14:06 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Initial container 
