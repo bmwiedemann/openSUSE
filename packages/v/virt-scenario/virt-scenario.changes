@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 15 08:43:08 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7.3:
+  * cleanup some code
+  * fix wrong info in data encryption
+  * fix cluster size error
+  * fix default path to image
+  * fix missing custom loader
+  * fix some wrong output order
+
+-------------------------------------------------------------------
 Sat Mar 11 04:17:51 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 0.7.2:
