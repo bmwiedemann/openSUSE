@@ -264,4 +264,14 @@
 </comment>
     <requestid>1064195</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fcff22bea16130a1463fd5af2c212318</srcmd5>
+    <version>3.1.5</version>
+    <time>1678902987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * allow db to be a symlink (fix #289)
+</comment>
+    <requestid>1072106</requestid>
+  </revision>
 </revisionlist>

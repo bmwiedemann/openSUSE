@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 13:00:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.5:
+  * allow db to be a symlink (fix #289)
+
+-------------------------------------------------------------------
 Fri Feb 10 09:41:55 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.4:
