@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:28:53 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+- Small spec file cleanup
+
+-------------------------------------------------------------------
 Wed Jun 15 13:55:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove bad %defattr - not needed and causes SHLIB non-executable

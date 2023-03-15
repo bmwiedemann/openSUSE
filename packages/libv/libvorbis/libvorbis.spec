@@ -1,7 +1,7 @@
 #
 # spec file for package libvorbis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,11 +34,7 @@ BuildRequires:  libogg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# bug437293 (SLES10 -> SLES11 upgrade path)
-%ifarch ppc64
-Obsoletes:      libvorbis-64bit
-%endif
+%{?suse_build_hwcaps_libs}
 
 %description
 Vorbis is a fully open, nonproprietary, patent-and-royalty-free, and
@@ -50,15 +46,7 @@ libmatroska (matroska) can also be used.
 
 %package -n libvorbis0
 Summary:        The Vorbis General Audio Compression Codec
-#
-# libvorbis was last used in openSUSE 11.3
 Group:          System/Libraries
-Provides:       %{name} = 1.3.2
-Obsoletes:      %{name} < 1.3.2
-# bug437293 (SLES10 -> SLES11 upgrade path)
-%ifarch ppc64
-Obsoletes:      libvorbis-64bit
-%endif
 
 %description -n libvorbis0
 Vorbis is a fully open, nonproprietary, patent-and-royalty-free, and
@@ -100,11 +88,6 @@ Requires:       libogg-devel
 Requires:       libvorbis0 = %{version}
 Requires:       libvorbisenc2 = %{version}
 Requires:       libvorbisfile3 = %{version}
-# bug437293 (SLES10 -> SLES11 upgrade path)
-%ifarch ppc64
-Obsoletes:      libvorbis-devel-64bit
-%endif
-#
 
 %description devel
 This package contains all necessary include files and libraries needed
@@ -127,28 +110,23 @@ autoreconf -fiv
 %configure \
 	--disable-examples \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 # docs are built in a separate spec file
 rm -rf %{buildroot}%{_datadir}/doc/*
 # remove unneeded files
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libvorbis0 -p /sbin/ldconfig
-
 %postun -n libvorbis0 -p /sbin/ldconfig
-
 %post -n libvorbisenc2 -p /sbin/ldconfig
-
 %postun -n libvorbisenc2 -p /sbin/ldconfig
-
 %post -n libvorbisfile3 -p /sbin/ldconfig
-
 %postun -n libvorbisfile3 -p /sbin/ldconfig
 
 %files -n libvorbis0
@@ -161,7 +139,6 @@ make %{?_smp_mflags} check
 %{_libdir}/libvorbisfile.so.3*
 
 %files devel
-%defattr(-,root,root)
 %doc AUTHORS
 %license COPYING
 %{_datadir}/aclocal/*.m4
