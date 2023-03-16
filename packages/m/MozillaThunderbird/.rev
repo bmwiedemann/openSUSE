@@ -4750,4 +4750,32 @@ I cannot test locally unfortunately.
     bmo#1810536)</comment>
     <requestid>1066604</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>ee698509616e6d764a5647b3bf3f6b77</srcmd5>
+    <version>102.9.0</version>
+    <time>1679003948</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.9.0
+  * https://www.thunderbird.net/en-US/thunderbird/102.9.0/releasenotes
+  MFSA 2023-11 (bsc#1209173))
+  * CVE-2023-25751 (bmo#1814899)
+    Incorrect code generation during JIT compilation
+  * CVE-2023-28164 (bmo#1809122)
+    URL being dragged from a removed cross-origin iframe into the
+    same tab triggered navigation
+  * CVE-2023-28162 (bmo#1811327)
+    Invalid downcast in Worklets
+  * CVE-2023-25752 (bmo#1811627)
+    Potential out-of-bounds when accessing throttled streams
+  * CVE-2023-28163 (bmo#1817768)
+    Windows Save As dialog resolved environment variables
+  * CVE-2023-28176 (bmo#1808352, bmo#1811637, bmo#1815904,
+    bmo#1817442, bmo#1818674)
+    Memory safety bugs fixed in Thunderbird 102.9
+- update create-tar.sh
+- build using rust 1.67
+- Ensure gcc11-c++ gets used on Leap 15.5, too.
+</comment>
+    <requestid>1072474</requestid>
+  </revision>
 </revisionlist>
