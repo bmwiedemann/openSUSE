@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:14:21 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2
+  * fixed build with cmake 3.17
+  * imported libhidx directly into the sources (fixes a lot of
+    compilation issues)
+  * updated to QT6
+  * added a new icon
+- Drop hidviz-moc_policy.patch and hidviz-gcc11.patch (no longer
+  necessary)
+
+-------------------------------------------------------------------
 Fri Jun  4 05:26:49 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Ad hidviz-gcc11.patch and fix build in Factory

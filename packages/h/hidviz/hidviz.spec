@@ -1,7 +1,7 @@
 #
 # spec file for package hidviz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,22 @@
 
 
 Name:           hidviz
-Version:        0.1.5
+Version:        0.2
 Release:        0
 Summary:        A tool for in-depth analysis of USB HID devices communication
 License:        GPL-3.0-or-later
 URL:            https://hidviz.org/
-Source0:        https://hidviz.org/releases/%{name}-%{version}.tar.gz
+Source0:        https://github.com/hidviz/hidviz/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hidviz-libexec_path.patch
 Patch0:         hidviz-libexec_path.patch
-# PATCH-FIX-OPENSUSE hidviz-moc_policy.patch aloisio@gmx.com -- fix MOC problem with cmake 3.17
-Patch1:         hidviz-moc_policy.patch
-# PATCH-FIX-UPSTREAM hidviz-gcc11.patch
-Patch2:         hidviz-gcc11.patch
 BuildRequires:  ImageMagick
 BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(protobuf)
 
@@ -56,18 +53,13 @@ sed -i 's|__LIBEXECDIR__|%{_libexecdir}|' libhidx/libhidx/src/Connector.cc
 
 %install
 %cmake_install
-# create icon and desktop file
-convert -strip hidviz/images/usb.png -resize 128x128 -background transparent \
-  -compose copy -gravity center -extent 128x128 %{name}.png
-install -Dpm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-%suse_update_desktop_file -c %{name} "USB HID debugger" %{name} %{name} %{name} "Development;Debugger;"
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_libexecdir}/libhidx_server_daemon
 
 %changelog
