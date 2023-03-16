@@ -145,4 +145,17 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
     (gl#saalen/ansifilter#27).</comment>
     <requestid>869586</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e61c67a28dde024930d87a866b197eb9</srcmd5>
+    <version>2.19</version>
+    <time>1679003848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.19:
+  * Added stdin/stdio default stream hints in `--help`
+    (gl#saalen/ansifilter#34).
+  * Added shell completion scripts (gl#saalen/ansifilter#36).
+- Update ansifilter.keyring.
+</comment>
+    <requestid>1072195</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 15 20:54:22 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 2.19:
+  * Added stdin/stdio default stream hints in `--help`
+    (gl#saalen/ansifilter#34).
+  * Added shell completion scripts (gl#saalen/ansifilter#36).
+- Update ansifilter.keyring.
+
+-------------------------------------------------------------------
 Thu Feb  4 22:07:51 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 2.18:

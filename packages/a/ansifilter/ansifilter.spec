@@ -1,7 +1,7 @@
 #
 # spec file for package ansifilter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
@@ -45,6 +45,39 @@ Requires:       %{name} = %{version}
 %description gui
 This package provides a Qt Graphical User Interface to run %{name}.
 %endif
+
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (bash-completion and %{name})
+BuildArch:      noarch
+
+%description bash-completion
+This package provides Bash command-line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       fish
+Supplements:    (fish and %{name})
+BuildArch:      noarch
+
+%description fish-completion
+This package provides Fish command-line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       zsh
+Supplements:    (zsh and %{name})
+BuildArch:      noarch
+
+%description zsh-completion
+This package provides Zsh command-line completion support for %{name}.
 
 %prep
 %setup -q
@@ -91,5 +124,18 @@ rm %{buildroot}%{_docdir}/%{name}/INSTALL
 %{_datadir}/applications/ansifilter.desktop
 %{_datadir}/pixmaps/ansifilter.xpm
 %endif
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
