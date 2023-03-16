@@ -813,4 +813,147 @@
     <comment></comment>
     <requestid>1063368</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>ef0a53e0ba7ff4bc297b7440bdc9acb0</srcmd5>
+    <version>4.0.2</version>
+    <time>1679003896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  + Highlights:
+    - Fixed 4.0.1 bug where some torrents thought they were
+      magnet links.
+    - Fixed 4.0.0 bug where download speed limits were ignored for
+      uTP peers.
+    - Fixed 4.0.0 bug using announce-list when creating
+      single-tracker private torrents.
+  + All platforms:
+    - Restored support for path.utf-8 keys in torrent info dictionaries.
+    - Fixed value of TR_TIME_LOCALTIME environment variable in
+      torrent scripts.
+    - Limited in-kernel file copying to 2 GiB blocks at a time to avoid
+      potential issues with CIFS mounts.
+    - Simplified filename info in log messages.
+    - Fixed std::clamp() assertion failures.
+    - Fixed small error calculating protocol overhead when receiving
+      peer messages.
+    - Fixed incorrect escaping of non-BMP characters when
+      generating JSON. 
+    - Fixed 4.0.0 crash when receiving malformed piece data from peers.
+    - Fixed 4.0.0 potential crash when downloading from webseeds. 
+    - Improved handling of the leechers param in trackers'
+      announce responses.
+    - Fixed 4.0.0 regression that stopped increasing the download
+      priority of files' first and last pieces. These pieces are
+      important for making incomplete files previewable / playable
+      while still being downloaded.
+    - Fixed display of IPv6 tracker URLs.
+    - Fixed code that could stop being interested in peers that
+      have pieces we want to download.
+    - Improved sanity checking of magnet links added via RPC.
+    - Fixed a misleading error message when Transmission is unable to
+      write to the incomplete-dir.
+    - Worked around an older libdht bug that could provide
+      invalid peer info.
+    - Restored RPC torrentGet.wanted return value
+      to match 3.00 behavior.
+  + QT client:
+    - Ensured that &quot;Open File&quot; opens the torrent's folder for
+      multi-file torrents.
+    - Fixed 4.0.0 bug that prevented batch-adding trackers to
+      multiple torrents at once.
+    - Fixed per-torrent ratio display in main window. 
+  + GTK client:
+    - Fixed 4.0.0 ignoring -m/--minimized command line option. 
+    - Fixed assertion failure in the progress display when creating
+      a new torrent. 
+  + Web client:
+    - Fixed minor UI bugs, e.g. layout and control alignment.
+    - Fixed 4.0.0 bug that that failed to save alternate speed begin/end
+      settings changes.
+    - Improved colors in both light &amp; dark mode.
+  + Daemon:
+    - Made the &quot;unrecognized argument&quot; error message more readable.
+  + transmission-remote:
+    - Fixed a spurious error message when adding magnet links.
+- Update to version 4.0.1:
+  + Issues fixed:
+    - Poor speed and some checksums being incorrectly marked as
+      failed in somes torrents.
+    - Beachballing / jank.
+    - Blocklists using more memory than necessary.
+    - Failure to migrate magnet links from Transmission 3.
+    - Many other fixes.
+- Changes from version 4.0.0:
+  + Added many performance improvements, and numerous bugfixes.
+  + The entire codebase has been migrated from C to C++.
+  + The remote control GUIs (transmission-qt and transmission-web)
+    now use the RPC API &quot;table&quot; mode, resulting in smaller payloads
+    / less bandwidth use.
+  + Added support for GTK 4, and both Qt5 and Qt6.
+  + The GTK client has been ported to gtkmm.
+  + New Features:
+    - Support for using BitTorrent v2 and hybrid torrents.
+    - Users can now set &quot;default&quot; trackers that can be used to
+      announce all public torrents.
+    - Newly-added seeds can start immediately and verify pieces on
+      demand now.
+    - Added an option to omit potentially-identifying information
+      (e.g. User-Agent and date created) when creating new
+      torrents.
+    - The Web client has been rewritten and now supports mobile
+      use.
+    - When creating new torrents, users can now specify the piece
+      size.
+    - IPv6 blocklists are now supported.
+    - Dozens of other new features.
+  + Fix small scrape/announce packet size that could trip SYN flood
+    detection on some systems.
+  + Remove the 1024 open files limit previously required by how
+    libcurl was used.
+  + Add configurable anti-brute force settings.
+  + Fetch metadata of stopped magnets.
+  + Stop logging excessive error messages after they repeat too
+    many times.
+  + The web client has been given a major overhaul.
+  + User-visible highlights include:
+    - Mobile is now fully supported.
+    - Added fullscreen support on mobile.
+    - Better support for dark mode.
+    - Added mime icons to the torrent list.
+    - Improved theme consistency across the app.
+- Port build system from Autotools to CMake: replace libtool build
+  requirement with cmake and ninja; replace Autotool macros with
+  CMake's.
+- Add explicit build requirement on CMake modules: Qt5Gui,
+  Qt5LinguistTools, Qt5Network, Qt5Svg, and Qt5Widgets.
+- Drop libqt5-linguist-devel, now that its CMake module is being
+  used instead.
+- Use our own libdeflate as build requirement instead of the
+  bundled one.
+- Replace openssl-devel with the more reliable pkgconfig(openssl).
+- Replace intltool build requirement with gettext-tools.
+- Replace glib-2.0 and gtk+-3.0 with giomm-2.68, glibmm-2.68, and
+  gtkmm-4.0 pkgconfig modules following code base switch from C to
+  C++.
+- Drop libappindicator3-devel build requirement. AppIndicator is no
+  longer supported.
+- Drop fdupes build requirement/macro. There isn't duplicate files
+  anymore.
+- Drop no longer needed %desktop_database_post and
+  %icon_theme_cache_post macros targeted at pre-Leap openSUSE/SUSE
+  releases.
+- Drop no longer needed patches:
+  transmission-hybrid-torrent-length.patch, and
+  transmission-3.00-openssl-3.patch.
+- Refresh harden_transmission-daemon.service.patch patch with
+  Quilt.
+- Drop transmission-qt.desktop source file favoring the one
+  provided by upstream.
+- Add transmission.rpmlintrc file to filter the &quot;file-not-in-%lang&quot;
+  warning, since we are excluding the English translations from the
+  lang sub-packages and packaging them in the common sub-package
+  instead.
+</comment>
+    <requestid>1072280</requestid>
+  </revision>
 </revisionlist>

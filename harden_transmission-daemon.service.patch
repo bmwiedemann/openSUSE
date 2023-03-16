@@ -1,9 +1,7 @@
-Index: transmission-3.00/daemon/transmission-daemon.service
-===================================================================
---- transmission-3.00.orig/daemon/transmission-daemon.service
-+++ transmission-3.00/daemon/transmission-daemon.service
-@@ -3,6 +3,18 @@ Description=Transmission BitTorrent Daem
- After=network.target
+--- a/daemon/transmission-daemon.service
++++ b/daemon/transmission-daemon.service
+@@ -4,6 +4,18 @@ Wants=network-online.target
+ After=network-online.target
  
  [Service]
 +# added automatically, for details please see
@@ -20,4 +18,4 @@ Index: transmission-3.00/daemon/transmission-daemon.service
 +# end of automatic additions 
  User=transmission
  Type=notify
- ExecStart=/usr/bin/transmission-daemon -f --log-error
+ ExecStart=/usr/bin/transmission-daemon -f --log-level=error

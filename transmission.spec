@@ -16,44 +16,71 @@
 #
 
 
-%global WITH_APPINDICATOR 1
+# Ninja has greater speed than GNU Make. And it provides better error output.
+%bcond_without ninja
+%bcond_with    webui
+
+%define qt5_version    5.6
+%define glibmm_version 2.60.0
+
+%if %{with ninja}
+%define __builder ninja
+#BuildIgnore:     make
+%endif
+
+%if %{with webui}
+%define webui_opt ON
+%else
+%define webui_opt OFF
+%endif
+
 Name:           transmission
-Version:        3.00
+Version:        4.0.2
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Networking/Other
 URL:            https://www.transmissionbt.com/
-Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
-Source1:        transmission-qt.desktop
-Source3:        README.openSUSE
+Source0:        https://github.com/transmission/transmission/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        README.openSUSE
+Source99:       %{name}.rpmlintrc
 Patch0:         harden_transmission-daemon.service.patch
-Patch1:         transmission-hybrid-torrent-length.patch
-Patch2:         transmission-3.00-openssl-3.patch
+
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
+BuildRequires:  gettext-tools
 BuildRequires:  libb64-devel
-BuildRequires:  libcurl-devel
+BuildRequires:  libcurl-devel >= 7.28.0
+BuildRequires:  libdeflate-devel
 BuildRequires:  libevent-devel >= 2.0.0
 BuildRequires:  libminiupnpc-devel
-BuildRequires:  libqt5-linguist-devel >= 5.12
-BuildRequires:  libqt5-qtbase-devel >= 5.12
-BuildRequires:  libtool
-BuildRequires:  openssl-devel >= 0.9.7
+BuildRequires:  libpsl-devel
+BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
-BuildRequires:  pkgconfig(libsystemd) >= 209
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  cmake(Qt5LinguistTools) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Svg) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  pkgconfig(giomm-2.68) >= %{glibmm_version}
+BuildRequires:  pkgconfig(glibmm-2.68) >= %{glibmm_version}
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 3.24.0
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib) >= 1.2.3
+%if %{with ninja}
+BuildRequires:  ninja
+%endif
+%if %{with webui}
+BuildRequires:  npm >= 8.1.307
+%endif
+
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       %{name}-ui = %{version}
-%if 0%{?WITH_APPINDICATOR}
-BuildRequires:  libappindicator3-devel >= 0.4.90
-%endif
 
 %description
 Transmission is a BitTorrent client. It has GTK+ and Qt GUI clients,
@@ -122,53 +149,46 @@ Discovery, DHT, µTP, PEX and magnet links.
 %lang_package -n %{name}-qt
 
 %prep
-%setup
-cp %{SOURCE3} .
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+cp %{SOURCE1} .
 
 %build
-sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
-%configure \
-    --prefix=/usr \
-    --enable-cli
-%make_build
-cd qt
-%qmake5 DEFINES+=TRANSLATIONS_DIR=\\\\\\\"/usr/share/transmission/translations\\\\\\\"
-lrelease-qt5 translations/*.ts
+# Turning INSTALL_DOC off breaks the package because it doesn't install
+# transmission.1 manpage, argh!
+%cmake \
+    -D ENABLE_CLI=ON \
+    -D ENABLE_GTK=ON \
+    -D ENABLE_QT=ON \
+    -D ENABLE_WEB=%{webui_opt}
+%cmake_build
 
 %install
-%make_install
-(
-cd qt
-mkdir -p %{buildroot}/%{_datadir}/%{name}/translations
-mv translations/*qm %{buildroot}/%{_datadir}/%{name}/translations
-)
-make -C qt INSTALL_ROOT=%{buildroot}/usr install
-mkdir -p %{buildroot}%{_unitdir}
-install -m0644 daemon/transmission-daemon.service  %{buildroot}%{_unitdir}/
-mkdir -p %{buildroot}%{_sharedstatedir}/transmission
-install -d %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rctransmission-daemon
-mkdir -p %{buildroot}%{_localstatedir}/lib/transmission
-# create targets for transmission below /etc/alternatives/
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/transmission %{buildroot}/%{_bindir}/transmission
-ln -s -f %{_sysconfdir}/alternatives/transmission.1.gz %{buildroot}/%{_mandir}/man1/transmission.1.gz
-# fix doc
-rm -rf %{buildroot}%{_datadir}/doc/transmission
-%find_lang transmission-gtk %{?no_lang_C}
+%cmake_install
+
+%find_lang %{name}-gtk %{?no_lang_C}
 %find_lang transmission transmission-qt.lang --with-qt --without-mo %{?no_lang_C}
 %suse_update_desktop_file transmission-gtk
-%suse_update_desktop_file -i transmission-qt
-%fdupes %{buildroot}
+%suse_update_desktop_file transmission-qt
+
+# The installation scripts don't install the Systemd service file for some
+# reason.
+install -v -m 0644 daemon/transmission-daemon.service \
+    -D -t %{buildroot}%{_unitdir}
+
+# create targets for transmission below /etc/alternatives/
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/transmission \
+         %{buildroot}/%{_bindir}/transmission
+ln -s -f %{_sysconfdir}/alternatives/transmission.1.gz \
+         %{buildroot}/%{_mandir}/man1/transmission.1.gz
+# fix doc
+rm -rf %{buildroot}%{_datadir}/doc/transmission
 
 %pre daemon
 getent group transmission >/dev/null || groupadd -r transmission
 getent passwd transmission >/dev/null || \
-    useradd -r -g transmission -d %{_localstatedir}/lib/transmission -s /sbin/nologin \
-    -c "Transmission BT daemon user" transmission
+    useradd -r -g transmission -d %{_localstatedir}/lib/transmission \
+        -s /sbin/nologin -c "Transmission BT daemon user" transmission
 %service_add_pre transmission-daemon.service
 
 %post daemon
@@ -181,54 +201,49 @@ getent passwd transmission >/dev/null || \
 %service_del_postun transmission-daemon.service
 
 %post
-update-alternatives --install %{_bindir}/transmission           transmission      %{_bindir}/transmission-cli 5         \
-                    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz %{_mandir}/man1/transmission-cli.1.gz
+update-alternatives \
+    --install %{_bindir}/transmission transmission \
+              %{_bindir}/transmission-cli 5 \
+    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
+              %{_mandir}/man1/transmission-cli.1.gz
 
 %post gtk
-update-alternatives --install %{_bindir}/transmission           transmission      %{_bindir}/transmission-gtk 15        \
-                    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz %{_mandir}/man1/transmission-gtk.1.gz
+update-alternatives \
+    --install %{_bindir}/transmission transmission \
+              %{_bindir}/transmission-gtk 15 \
+    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
+              %{_mandir}/man1/transmission-gtk.1.gz
 %desktop_database_post
 
 %post qt
-update-alternatives --install %{_bindir}/transmission           transmission      %{_bindir}/transmission-qt 10         \
-                    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz %{_mandir}/man1/transmission-qt.1.gz
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-
-%post common
-%icon_theme_cache_post
-%endif
+update-alternatives \
+    --install %{_bindir}/transmission transmission \
+              %{_bindir}/transmission-qt 10 \
+    --slave   %{_mandir}/man1/transmission.1.gz transmission.1.gz \
+              %{_mandir}/man1/transmission-qt.1.gz
 
 %postun
 # Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
 if [ ! -f %{_bindir}/transmission-cli ]; then
-  update-alternatives --remove transmission %{_bindir}/transmission-cli
+    update-alternatives --remove transmission %{_bindir}/transmission-cli
 fi
 
 %postun gtk
 # Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
 if [ ! -f %{_bindir}/transmission-gtk ]; then
-  update-alternatives --remove transmission %{_bindir}/transmission-gtk
+    update-alternatives --remove transmission %{_bindir}/transmission-gtk
 fi
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%endif
 
 %postun qt
 # Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
 if [ ! -f %{_bindir}/transmission-qt ]; then
-  update-alternatives --remove transmission %{_bindir}/transmission-qt
+    update-alternatives --remove transmission %{_bindir}/transmission-qt
 fi
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-
-%postun common
-%icon_theme_cache_postun
-%endif
 
 %files
-%doc AUTHORS NEWS.md README.md README.openSUSE
-%doc extras/rpc-spec.txt extras/send-email-when-torrent-done.sh
+%doc docs/* news/* AUTHORS README.md README.openSUSE
+%doc extras/send-email-when-torrent-done.sh extras/encryption.txt
+%doc extras/extended-messaging.txt
 %license COPYING
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-create
@@ -240,59 +255,77 @@ fi
 %{_mandir}/man1/%{name}-edit.1%{?ext_man}
 %{_mandir}/man1/%{name}-remote.1%{?ext_man}
 %{_mandir}/man1/%{name}-show.1%{?ext_man}
-# Update-Alternative managed
+
+# Binary and manpage provided via update-alternatives
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
 %ghost %{_sysconfdir}/alternatives/%{name}
 %ghost %{_sysconfdir}/alternatives/%{name}.1.gz
 
 %files daemon
-%doc AUTHORS NEWS.md README.md README.openSUSE
+%doc docs/* news/* AUTHORS README.md README.openSUSE
+%doc extras/send-email-when-torrent-done.sh extras/encryption.txt
+%doc extras/extended-messaging.txt
 %license COPYING
-%dir %{_localstatedir}/lib/%{name}
-%{_mandir}/man1/%{name}-daemon.1%{?ext_man}
 %{_bindir}/%{name}-daemon
-%{_sbindir}/rc%{name}-daemon
+%{_mandir}/man1/%{name}-daemon.1%{?ext_man}
 %{_unitdir}/%{name}-daemon.service
-%attr(-,transmission,transmission)%{_localstatedir}/lib/transmission/
-
-%files -n %{name}-gtk-lang -f %{name}-gtk.lang
 
 %files gtk
-%doc AUTHORS NEWS.md README.md README.openSUSE
+%doc docs/* news/* AUTHORS README.md README.openSUSE
+%doc extras/send-email-when-torrent-done.sh extras/encryption.txt
+%doc extras/extended-messaging.txt
 %license COPYING
 %{_bindir}/%{name}-gtk
 %{_datadir}/applications/%{name}-gtk.desktop
 %{_mandir}/man1/%{name}-gtk.1%{?ext_man}
-# Update-Alternative managed
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}-gtk.metainfo.xml
+
+# Binary and manpage provided via update-alternatives
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
 %ghost %{_sysconfdir}/alternatives/%{name}
 %ghost %{_sysconfdir}/alternatives/%{name}.1.gz
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}-gtk.appdata.xml
-
-%files -n %{name}-qt-lang -f %{name}-qt.lang
-%dir %{_datadir}/%{name}/translations
 
 %files qt
-%doc AUTHORS NEWS.md README.md README.openSUSE
+%doc docs/* news/* AUTHORS README.md README.openSUSE
+%doc extras/send-email-when-torrent-done.sh extras/encryption.txt
+%doc extras/extended-messaging.txt
 %license COPYING
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 %{_mandir}/man1/%{name}-qt.1%{?ext_man}
-# Update-Alternative managed
+
+# Binary and manpage provided via update-alternatives
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
 %ghost %{_sysconfdir}/alternatives/%{name}
 %ghost %{_sysconfdir}/alternatives/%{name}.1.gz
 
 %files common
-%{_datadir}/%{name}/
-%{_datadir}/icons/*/*/apps/%{name}.*
-%{_datadir}/icons/hicolor/symbolic/apps/transmission-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/apps/transmission-devel.svg
-%{_datadir}/pixmaps/transmission.png
-%exclude %{_datadir}/%{name}/translations
+%{_datadir}/icons/*/*/apps/%{name}*.svg
+# English translations should be generally available
+%{_datadir}/locale/en_AU/LC_MESSAGES/
+%{_datadir}/locale/en_CA/LC_MESSAGES/
+%{_datadir}/locale/en_GB/LC_MESSAGES/
+%{_datadir}/%{name}/translations/transmission_en.qm
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/public_html
+%{_datadir}/%{name}/public_html/*
+
+%files gtk-lang -f %{name}-gtk.lang
+# English translations should be generally available
+%exclude %{_datadir}/locale/en_AU/LC_MESSAGES/
+%exclude %{_datadir}/locale/en_CA/LC_MESSAGES/
+%exclude %{_datadir}/locale/en_GB/LC_MESSAGES/
+
+%files qt-lang -f %{name}-qt.lang
+%dir %{_datadir}/%{name}/translations
+# English translations should be generally available
+%exclude %{_datadir}/%{name}/translations/transmission_en.qm
 
 %changelog
