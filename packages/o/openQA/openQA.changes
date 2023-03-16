@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 15 18:10:17 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1678883699.d3ce35d:
+  * Add note about hook script in carry over comment
+  * Extract locating hook script for job into separate function
+  * Improve coding style in `carry_over_bugrefs`
+  * Improve auth test
+  * Test OpenID error handling
+  * Fix "Useless use of a constant" in auth test
+  * Make it easier to distinguish OpenID-related errors
+  * Fix `restart_job` jobs failing with `already has clone`
+  * Avoid failing coverage check in ISO-API test
+  * Simplify example for scenario YAML mentioned in documentation
+  * Improve coding style of ISO-API tests
+  * Move tests for scheduling from YAML into separate file
+  * Split tests for scheduling from YAML file
+  * Make machines/products in scenario definitions YAML optional
+  * Refactor code for scheduling jobs from YAML file
+  * Use constant to avoid duplicating default job priority
+  * Document supplying scenario definitions via YAML
+  * Extend test checks for YAML-related error handling to cover context
+  * Simplify code for returning from `_schedule_from_yaml`
+  * Use signatures in helper functions of `_schedule_from_yaml`
+  * Allow specifying scenario definitions YAML content directly
+  * Remove stub with TODO for cloning a Git repo to retrieve YAML file
+  * Rename `SCHEDULE_FROM_YAML_FILE` to `SCENARIO_DEFINITIONS_YAML_FILE`
+  * Validate scenario definitions passed for scheduling an ISO explicitly
+  * Fix various problems with the function for scheduling from YAML file
+  * Improve tests for scheduling an ISO using definitions from YAML file
+  * Load job templates from YAML file when scheduling isos
+
+-------------------------------------------------------------------
 Mon Mar 13 10:10:14 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1678589270.14d05d8:
