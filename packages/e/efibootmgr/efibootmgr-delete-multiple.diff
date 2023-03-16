@@ -13,10 +13,11 @@ This does unfortunately require an API-change of efivar!
 
 Signed-off-by: Raymund Will <rw@suse.com>
 ---
-diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
---- old/src/efibootmgr.c	2018-06-10 22:12:10.000000000 +0200
-+++ new/src/efibootmgr.c	2021-08-03 11:57:25.435196489 +0200
-@@ -617,6 +617,146 @@
+Index: efibootmgr-18/src/efibootmgr.c
+===================================================================
+--- efibootmgr-18.orig/src/efibootmgr.c
++++ efibootmgr-18/src/efibootmgr.c
+@@ -664,6 +664,146 @@ delete_label(const char *prefix, const u
  	return 0;
  }
  
@@ -40,7 +41,7 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
 +		pathlen = efi_loadopt_pathlen(load_option,
 +					      entry->data_size);
 +		path = efi_loadopt_path(load_option, entry->data_size);
-+		rc = efidp_format_device_path(text_path, 1024,
++		rc = efidp_format_device_path((unsigned char *)text_path, 1024,
 +					      path, pathlen);
 +
 +		if (rc < 0 || rc > 1024)
@@ -163,26 +164,26 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
  static void
  set_var_nums(const char *prefix, list_t *list)
  {
-@@ -1236,7 +1376,9 @@
- 	printf("\t-a | --active         sets bootnum active\n");
- 	printf("\t-A | --inactive       sets bootnum inactive\n");
- 	printf("\t-b | --bootnum XXXX   modify BootXXXX (hex)\n");
--	printf("\t-B | --delete-bootnum delete bootnum\n");
+@@ -1397,7 +1537,9 @@ usage()
+ 	printf("\t-a | --active         Set bootnum active.\n");
+ 	printf("\t-A | --inactive       Set bootnum inactive.\n");
+ 	printf("\t-b | --bootnum XXXX   Modify BootXXXX (hex).\n");
+-	printf("\t-B | --delete-bootnum Delete bootnum.\n");
 +	printf("\t-B | --delete-bootnum delete bootnum (specified with -b)\n");
 +	printf("\t     --delete         delete entry by bootnum (-b), by UUID (-P)\n");
 +	printf("\t                      or by disk+partition[+file] (-d -p -l)\n");
- 	printf("\t-c | --create         create new variable bootnum and add to bootorder\n");
- 	printf("\t-C | --create-only	create new variable bootnum and do not add to bootorder\n");
- 	printf("\t-D | --remove-dups	remove duplicate values from BootOrder\n");
-@@ -1263,6 +1405,7 @@
- 	printf("\t-o | --bootorder XXXX,YYYY,ZZZZ,...     explicitly set BootOrder (hex)\n");
- 	printf("\t-O | --delete-bootorder delete BootOrder\n");
- 	printf("\t-p | --part part        partition containing loader (defaults to 1 on partitioned devices)\n");
-+  printf("\t-P | --part-uuid UUID   select all variables for given partition UUID\n");
- 	printf("\t-q | --quiet            be quiet\n");
- 	printf("\t-t | --timeout seconds  set boot manager timeout waiting for user input.\n");
- 	printf("\t-T | --delete-timeout   delete Timeout.\n");
-@@ -1288,6 +1431,7 @@
+ 	printf("\t-c | --create         Create new variable bootnum and add to bootorder at index (-I).\n");
+ 	printf("\t-C | --create-only    Create new variable bootnum and do not add to bootorder.\n");
+ 	printf("\t-d | --disk disk      Disk containing boot loader (defaults to /dev/sda).\n");
+@@ -1420,6 +1562,7 @@ usage()
+ 	printf("\t-o | --bootorder XXXX,YYYY,ZZZZ,...     Explicitly set BootOrder (hex).\n");
+ 	printf("\t-O | --delete-bootorder Delete BootOrder.\n");
+ 	printf("\t-p | --part part        Partition containing loader (defaults to 1 on partitioned devices).\n");
++	printf("\t-P | --part-uuid UUID   select all variables for given partition UUID\n");
+ 	printf("\t-q | --quiet            Be quiet.\n");
+ 	printf("\t-r | --driver           Operate on Driver variables, not Boot Variables.\n");
+ 	printf("\t-t | --timeout seconds  Set boot manager timeout waiting for user input.\n");
+@@ -1447,6 +1590,7 @@ set_default_opts()
  	opts.label           = (unsigned char *)"Linux";
  	opts.disk            = "/dev/sda";
  	opts.part            = -1;
@@ -190,24 +191,24 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
  }
  
  static void
-@@ -1310,6 +1454,7 @@
+@@ -1470,6 +1614,7 @@ parse_opts(int argc, char **argv)
  			{"delete-bootnum",         no_argument, 0, 'B'},
  			{"create",                 no_argument, 0, 'c'},
  			{"create-only",            no_argument, 0, 'C'},
-+			{"delete",                 no_argument, 0,   2},
- 			{"remove-dups",            no_argument, 0, 'D'},
++			{"delete",                 no_argument, 0, 2},
  			{"disk",             required_argument, 0, 'd'},
- 			{"iface",            required_argument, 0, 'i'},
-@@ -1342,7 +1487,7 @@
+ 			{"remove-dups",            no_argument, 0, 'D'},
+ 			{"edd",              required_argument, 0, 'e'},
+@@ -1508,7 +1653,7 @@ parse_opts(int argc, char **argv)
  		};
  
- 		c = getopt_long (argc, argv,
--				 "AaBb:cCDd:e:E:gH:i:l:L:M:m:n:No:Op:qt:TuU:v::Vw"
-+				 "AaBb:cCDd:e:E:gH:i:l:L:M:m:n:No:Op:P:qt:TuU:v::Vw"
- 				 "@:hry",
- 				 long_options, &option_index);
+ 		c = getopt_long(argc, argv,
+-				"aAb:BcCd:De:E:fFgi:kl:L:m:M:n:No:Op:qrt:Tuv::Vwy@:h",
++				"aAb:BcCd:De:E:fFgi:kl:L:m:M:n:No:Op:P:qrt:Tuv::Vwy@:h",
+ 				long_options, &option_index);
  		if (c == -1)
-@@ -1390,11 +1535,16 @@
+ 			break;
+@@ -1561,11 +1706,16 @@ parse_opts(int argc, char **argv)
  			opts.create = 1;
  			opts.no_order = 1;
  			break;
@@ -224,7 +225,7 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
  			break;
  		case 'e':
  			rc = sscanf(optarg, "%d", &snum);
-@@ -1434,6 +1584,9 @@
+@@ -1627,6 +1777,9 @@ parse_opts(int argc, char **argv)
  			break;
  		case 'l':
  			opts.loader = optarg;
@@ -234,7 +235,7 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
  			break;
  		case 'L':
  			opts.label = (unsigned char *)optarg;
-@@ -1498,6 +1651,17 @@
+@@ -1707,6 +1860,17 @@ parse_opts(int argc, char **argv)
  			else
  				errorx(37, "invalid numeric value %s\n",
  				       optarg);
@@ -252,11 +253,11 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
  			break;
  		case 'q':
  			opts.quiet = 1;
-@@ -1622,9 +1786,24 @@
+@@ -1843,9 +2007,24 @@ main(int argc, char **argv)
  	set_var_nums(prefices[mode], &entry_list);
  
  	if (opts.delete) {
--		if (opts.num == -1)
+-		if (opts.num == -1 && opts.explicit_label == 0) {
 +		if (opts.part_uuid) {
 +			ret = delete_by_uuid(prefices[mode], opts.part_uuid,
 +				(opts.delete & 8) ? opts.loader : NULL);
@@ -272,27 +273,26 @@ diff -ru old/src/efibootmgr.c new/src/efibootmgr.c
 +		} else if (opts.delete > 1)
 +			errorx(3, "Disk and partition must be specified "
 +				"(see the --delete option).");
-+		else if (opts.num == -1)
- 			errorx(3, "You must specify an entry to delete "
--				"(see the -b option).");
-+				"(e.g. with the -b option).");
- 		else {
- 			ret = delete_var(prefices[mode], opts.num);
- 			if (ret < 0)
-Only in new/src: efibootmgr.c.orig
-Only in new/src: efibootmgr.c.rej
-diff -ru old/src/include/efibootmgr.h new/src/include/efibootmgr.h
---- old/src/include/efibootmgr.h	2018-06-10 22:12:10.000000000 +0200
-+++ new/src/include/efibootmgr.h	2021-08-03 11:56:14.638896535 +0200
-@@ -60,6 +60,7 @@
++		else if (opts.num == -1 && opts.explicit_label == 0) {
+ 			errorx(3,
+-			       "You must specify an entry to delete (see the -b option or -L option).");
++			       "You must specify an entry to delete (e.g. with the -b option or -L option).");
+ 		} else {
+ 			if (opts.num != -1) {
+ 				ret = delete_var(prefices[mode], opts.num);
+Index: efibootmgr-18/src/include/efibootmgr.h
+===================================================================
+--- efibootmgr-18.orig/src/include/efibootmgr.h
++++ efibootmgr-18/src/include/efibootmgr.h
+@@ -66,6 +66,7 @@ typedef struct {
  	int keep_old_entries;
  	char *testfile;
  	char *extra_opts_file;
 +	char *part_uuid;
  	uint32_t part;
- 	int edd_version;
+ 	int abbreviate_path;
  	uint32_t edd10_devicenum;
-@@ -70,7 +71,7 @@
+@@ -77,7 +78,7 @@ typedef struct {
  	int below4g;
  	int above4g;
  	int deduplicate;

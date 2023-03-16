@@ -231,4 +231,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>942358</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>10138ca5cdc76ca56c286e9f55bb50df</srcmd5>
+    <version>18</version>
+    <time>1679003831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v18
+  * fixed the simple run example
+  * Restore activation error message in efibootmgr
+  * remove-dupes: update error message
+  * Fix typo in manual page
+  * README: Note efivarfs as the current required kernel module
+  * Fix possible read out of bounds in ucs2_to_utf8
+  * Add code of conduct
+  * Fix help messages
+  * Add option for insertion location of new entries
+- Rebase efibootmgr-delete-multiple.diff</comment>
+    <requestid>1071187</requestid>
+  </revision>
 </revisionlist>

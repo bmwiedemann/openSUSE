@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 20 06:17:48 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to v18
+  * fixed the simple run example
+  * Restore activation error message in efibootmgr
+  * remove-dupes: update error message
+  * Fix typo in manual page
+  * README: Note efivarfs as the current required kernel module
+  * Fix possible read out of bounds in ucs2_to_utf8
+  * Add code of conduct
+  * Fix help messages
+  * Add option for insertion location of new entries
+- Rebase efibootmgr-delete-multiple.diff
+
+-------------------------------------------------------------------
 Tue Aug  3 10:03:52 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v17:  [jsc#SLE-22542]

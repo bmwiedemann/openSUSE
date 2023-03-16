@@ -1,7 +1,7 @@
 #
 # spec file for package efibootmgr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           efibootmgr
-Version:        17
+Version:        18
 Release:        0
 Summary:        EFI Boot Manager
 License:        GPL-2.0-or-later
 Group:          System/Boot
 URL:            https://github.com/rhinstaller/efibootmgr
-Source:         https://github.com/rhboot/efibootmgr/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/rhboot/efibootmgr/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-delete-multiple.diff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(efiboot) >= 31
