@@ -7,4 +7,12 @@
     <comment>fork of current and existing godot package to keep the 3.x branch available</comment>
     <requestid>1069985</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c6dbf32fe1d9afdbb4a4e9930f49d6c</srcmd5>
+    <version>3.5.2</version>
+    <time>1679003890</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.2</comment>
+    <requestid>1072203</requestid>
+  </revision>
 </revisionlist>

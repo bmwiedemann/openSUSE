@@ -30,7 +30,7 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -46,6 +46,7 @@ Patch1:         certs_fallback.patch
 Patch2:         tinyexr_thirdparty_upstream.patch
 # branch specific seperate config files and so on
 Patch3:         rename_to_godot3.patch
+Patch4:         scons_regression.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -128,7 +129,7 @@ Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.2.12
+Provides:       bundled(minizip) = 1.2.13
 
 Provides:       bundled(FastLZ)
 Provides:       bundled(RVO2-3D)
@@ -179,7 +180,7 @@ Provides:       bundled(libpng) = 1.6.38
 Provides:       bundled(libzstd)
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.18.1
+Provides:       bundled(mbedtls) = 2.18.2
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -254,6 +255,7 @@ Bash command line completion support for %{name}, %{name}-headless,
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
@@ -288,6 +290,11 @@ sed -i '$s/_complete_godot_bash %{original_name}/_complete_godot_bash %{name}/' 
 sed -i '$s/_complete_godot_bash %{original_name}/_complete_godot_bash %{name}-headless/' misc/dist/shell/%{name}-headless
 sed -i '$s/_complete_godot_bash %{original_name}/_complete_godot_bash %{name}-runner/' misc/dist/shell/%{name}-runner
 sed -i '$s/_complete_godot_bash %{original_name}/_complete_godot_bash %{name}-server/' misc/dist/shell/%{name}-server
+
+# used for config, data and cache directory of user
+# E.g. instead of ~/.config/godot/ the branch 3.x will use ~/.config/godot3/
+sed -i 's/short_name = "godot"/short_name = "godot%{branch}"/' version.py
+sed -i 's/name = "Godot Engine"/name = "Godot Engine %{branch}"/' version.py
 
 %build
 # Configuring build to use some distribution libraries

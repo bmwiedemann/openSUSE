@@ -105,16 +105,3 @@ diff -r -U 5 a/misc/dist/linux/org.godotengine.Godot.desktop b/misc/dist/linux/o
  Categories=Development;IDE;
 -StartupWMClass=Godot
 +StartupWMClass=Godot3
-diff -r -U 5 a/version.py b/version.py
---- a/version.py
-+++ b/version.py
-@@ -1,7 +1,7 @@
--short_name = "godot"
--name = "Godot Engine"
-+short_name = "godot3"
-+name = "Godot Engine 3"
- major = 3
- minor = 5
- patch = 1
- status = "stable"
- module_config = ""

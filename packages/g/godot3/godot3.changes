@@ -1,3 +1,39 @@
+-------------------------------------------------------------------
+Sat Mar 11 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 3.5.2
+
+  Added:
+  * Expose all existing PropertyHint global enums
+  * Improve dragging scene into 3D viewport
+  * Store Bullet total gravity, linear damp and angular damp calculations
+  * Options for sorting transparent objects
+
+  Changed:
+  * Cast between float and ints in Tween "tween_property()"
+  * Hide "text" property of RichTextLabel if BBCode is enabled
+
+  Fixed:
+  * CanvasLayer visibility toggle can only run once per frame
+  * Editor crash when MeshLibrary gets replaced while used in an open scene
+  * Skeleton3D falsely assuming all physical bones
+    will be children of their first bone
+  * "word_wrap()" for long words
+  * Checking if script is attached to any node belonging to scene
+    for drag and drop to script editor
+  * Exporting with export template binaries over 2.0 GiB
+  * local variables not showing when breaking on final line
+  * TreeItem "remove_child()" not updating Tree immediately
+  * Move navigation server finalize before physics server
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.5.2/Godot_v3.5.2-stable_changelog_chrono.txt
+
+- added scons_regression.patch for scons 4.5.1 until 4.5.2
+
+- user directory rename logic moved from rename_to_godot3.patch to spec file
+
+-------------------------------------------------------------------
 Thu Mar 2 12:00:00 UTC 2023 - cunix@mail.de
 
 - Transformed current package "godot" to branch specific package

@@ -1,0 +1,52 @@
+From: cunix@mail.de
+Date: 2023-03-09 22:00:00
+Subject: scons 4.5.1 regression
+References: https://github.com/godotengine/godot/issues/74683
+
+work around regression of scons 4.5.1
+expected to be fixed with 4.5.2
+
+---
+
+diff -r -U 5 a/platform/server/detect.py b/platform/server/detect.py
+--- a/platform/server/detect.py
++++ b/platform/server/detect.py
+@@ -166,10 +166,11 @@
+                 "Bullet: System version {0} does not match minimal requirements ({1}). Aborting.".format(
+                     bullet_version, min_bullet_version
+                 )
+             )
+             sys.exit(255)
++        env["CPPDEFINES"] = list(env["CPPDEFINES"])
+         env.ParseConfig("pkg-config bullet --cflags --libs")
+ 
+     if False:  # not env['builtin_assimp']:
+         # FIXME: Add min version check
+         env.ParseConfig("pkg-config assimp --cflags --libs")
+diff -r -U 5 a/platform/x11/detect.py b/platform/x11/detect.py
+--- a/platform/x11/detect.py
++++ b/platform/x11/detect.py
+@@ -286,10 +286,11 @@
+                 "Bullet: System version {0} does not match minimal requirements ({1}). Aborting.".format(
+                     bullet_version, min_bullet_version
+                 )
+             )
+             sys.exit(255)
++        env["CPPDEFINES"] = list(env["CPPDEFINES"])
+         env.ParseConfig("pkg-config bullet --cflags --libs")
+ 
+     if False:  # not env['builtin_assimp']:
+         # FIXME: Add min version check
+         env.ParseConfig("pkg-config assimp --cflags --libs")
+@@ -364,10 +365,11 @@
+         print("Warning: ALSA libraries not found. Disabling the ALSA audio driver.")
+ 
+     if env["pulseaudio"]:
+         if os.system("pkg-config --exists libpulse") == 0:  # 0 means found
+             env.Append(CPPDEFINES=["PULSEAUDIO_ENABLED"])
++            env["CPPDEFINES"] = list(env["CPPDEFINES"])
+             env.ParseConfig("pkg-config libpulse --cflags")  # Only cflags, we dlopen the library.
+         else:
+             print("Warning: PulseAudio development libraries not found. Disabling the PulseAudio audio driver.")
+ 
+     if platform.system() == "Linux":
