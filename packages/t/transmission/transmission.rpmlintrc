@@ -1,0 +1,2 @@
+# We are excluding the English translations from the lang sub-packages.
+addFilter("W: file-not-in-%lang")
