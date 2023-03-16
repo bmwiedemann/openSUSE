@@ -1,7 +1,7 @@
 #
 # spec file for package tuxcursors
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tuxcursors
-Summary:        Tux Cursors!
-License:        GPL-2.0
-Group:          System/X11/Icons
 Version:        0.5
 Release:        0
+Summary:        Tux Cursors!
+License:        GPL-2.0-only
 Source:         tuxcursors-0.5.tar.bz2
 Source1:        tuxcursors.sh
 BuildRequires:  xcursorgen
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
 A cursor set that has nice animated penguins.
 
 %prep
-%setup -n tuxcursors
+%autosetup -n tuxcursors
 
 %build
 ./build.sh
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/share/icons
-cp -a tuxcursors $RPM_BUILD_ROOT/usr/share/icons
-install -m 755 -D %{S:1} $RPM_BUILD_ROOT/usr/bin/%{name}
+mkdir -p %{buildroot}%{_datadir}/icons
+cp -a tuxcursors %{buildroot}%{_datadir}/icons
+install -m 755 -D %{SOURCE1} %{buildroot}%{_bindir}/%{name}
 
 %files
-%defattr(-,root,root)
-/usr/share/icons/tuxcursors
-/usr/bin/tuxcursors
-%doc LICENSE COPYING
+%license LICENSE COPYING
+%{_bindir}/tuxcursors
+%{_datadir}/icons/tuxcursors
 
 %changelog

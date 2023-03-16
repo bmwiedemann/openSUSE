@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 13:58:20 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Mon Sep  3 11:43:21 UTC 2012 - idonmez@suse.com
 
 - Depend on xcursorgen to fix build for Factory. 
