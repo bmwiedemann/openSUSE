@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:26:57 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- Update to 1.0.0 (full changelog to the latest stable version 0.182.0)
+  - Command-line:
+    - Use '.' as a wildcard that resolves to a project or a package name from the current working copy, for example 'osc rdiff ./. -c <num>'
+    - Add 'create-pbuild-config' (cpc) command
+    - Add '--disable-build' option to the 'branch' command
+    - Add '--disable-build' option to the 'linkpac' command
+    - Add '-X/--extra-pkgs-from' option to the 'build' command
+    - Add '--add' option to the 'meta' command that appends new values to the existing values
+    - Replace '-q/--hide-legend' option in 'prjresults' command with global '-q/--quiet' option
+    - Replace '--debug' option in the 'getbinaries' command with '--debuginfo' to avoid conflicts with the global '--debug'
+    - Replace '--verbose' option in the 'build' command with '--verbose-mode' to avoid conflicts with the global '--verbose'
+    - Replace '--version' option with 'version' command
+    - Enable forwarding requests to the parent projects in 'rq list -i' and 'sr accept' commands
+    - Make use of '-M/--multibuild' option consistent across the commands
+    - Enhance '--force' option in the 'commit' command to allow deleting packages even if other packages depend on them
+    - Print URLs and xpaths in the debug rather than the verbose mode
+    - Fix 'add' command for github /archive/ URLs
+    - Fix 'buildhistory' command to produce proper output using build_table() and a CSV writer
+    - Fix 'linkpac' command to avoid copying a lock from a locked package to the target package
+    - Fix 'setlinkrev' command to write a log message on setting a revision
+    - Fix 'submitrequest' command not to error out on using an alias to apiurl
+    - Fix 'update' command on project level for scm packages
+    - Fix '--mine' option in the 'request' command to show only requests created by the user
+    - Fix the documentation url in the 'maintenancerequest' and 'createincident' commands
+    - Remove '--skip-validation' option from the 'commit' command
+    - Remove '--oldpkg', '--oldprj' options from the 'rdiff' command
+    - Remove 'create', 'list', 'log', 'show', 'decline', 'accept', 'delete', 'revoke' subcommands from the 'submitrequest' command
+    - Remove '--seperate-requests' option from the 'submitrequest' command
+    - Remove '--raw' option from the 'develproject' command
+    - Remove '--maintained' option from the 'search' command
+    - Remove 'deleteprj' command
+    - Remove 'deletepac' command
+    - Remove 'editmeta' command
+    - Remove 'results_meta' command
+    - Remove 'rlog' command
+    - Remove 'rprjresults' command
+    - Remove 'rresults' command
+  - Configuration:
+    - Add 'project_separator' config option
+    - Add 'disable_hdrmd5_check' config option to ignore hdrmd5 mismatches
+    - Remove 'plaintext_passwd' config option
+  - Library:
+    - Add Store class that will replace store_{read,write}* functions
+    - Remove 'GnomeKeyringCredentialsManager' and related code
+    - Remove Request.get_creator() method
+    - Replace unmaintained cmdln.py with a custom code based on argparse
+    - Replace core.findpacs() with Package.from_paths() and Package.from_paths_nofail()
+    - Drop Python 2 support, Python 3.6 is the lowest supported version
+    - Code cleanups, following PEP 8 and the latest best practices now
+    - Improve handling of hdrmd5 mismatches
+    - Handle uncompressed Debian packages
+    - Replace arbitrary XML escaping code with xml_escape()
+    - Fix race condition in using .old directory in Serviceinfo.execute()
+    - Fix manual run of source service
+  - Connection:
+    - Switch http_request() to urllib3 and cryptography (drop M2Crypto dependency)
+    - Warn when using HTTP connection, make HTTPS the default
+    - Send HTTP header Accept: application/xml
+    - Wait between retries
+  - Authentication:
+    - Support signature (ssh) auth including ssh-agent forwarding
+    - Lock cookiejar to prevent unnecessary signature auth by waiting for a session cookie
+    - Print user and apiurl when prompting for a password
+    - Fix a crash when deleting a password
+  - Known issues:
+    - Commandline option values cannot start with '-', for example: osc build -x -vim
+      Background: This is a limitation of underlying Python's argparse
+      How to fix: Use '=' to join the option with its value: osc build -x=-vim
+      URL: https://github.com/openSUSE/osc/issues/1227
+    - Commandline positional arguments no longer recognize '/' as a universal argument separator
+      Background: This is an attempt to bring some consistency into argument parsing, reducing number of separators and value combinations
+      How to fix: Separate <project>/<package> from <repo>/<arch> with a space
+      URL: https://github.com/openSUSE/osc/issues/1272
+
+-------------------------------------------------------------------
+Tue Mar 14 12:26:57 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.0.0
+  - Revert "Remove the '-A' option from the 'maintainer' command"
+  - core.get_request_list: Remove deprecation warning
+  - meta attribute: Add --add option to append values to the existing list
+  - Replace arbitrary XML escaping code with xml_escape()
+  - build: New option 'disable_hdrmd5_check' to ignore hdrmd5 mismatches
+  - commit: Pass --force down to delete_package
+
+-------------------------------------------------------------------
 Thu Feb  9 14:08:25 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.0.0b5

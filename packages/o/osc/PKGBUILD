@@ -1,5 +1,5 @@
 pkgname=osc
-pkgver=1.0.0~b5
+pkgver=1.0.0
 pkgrel=0
 pkgdesc="Command-line client for the Open Build Service"
 arch=('x86_64')
