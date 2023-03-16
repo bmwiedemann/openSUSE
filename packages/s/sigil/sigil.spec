@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2022.05.17
 Name:           sigil
-Version:        1.9.20
+Version:        1.9.30
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only

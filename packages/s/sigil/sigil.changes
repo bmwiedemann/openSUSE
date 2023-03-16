@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:35:30 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.9.30
+  * Bug Fixes
+    - fix Checkpointing to work with dulwich version 0.20.46+
+    - EmbeddedPython fixes to work with Python 3.11 and later (thank you sharkcz)
+    - leave cursor position unchanged if nothing found when search groups of files
+    - make all Numeric items in Reports align right
+    - add support for thousands separator to Reports
+    - allow blank dc:language values to prevent crashing (as Sigil-1.9.10 did)
+    - allow unknown language codes to pass through MetaEditor
+    - MetaEditor under epub2, allow custom opf scheme values
+    - prevent duplicate spaces when reformatting CSS in import, charset and namespace
+    - better prevent random OPF attribute order changes to simplify Checkpoint diffs
+    - fixed file menu Print Preview for xhtml and image tabs
+    - prevent plugins from crashing Sigil by deleting last xhtml file in epub
+    - fix issue where images/css could not be properly added in an epub3 with no css files
+  * New Features
+    - allow user to edit Checkpoint descriptions for clarity via Checkpoint menu
+    - add ability to show the Checkpoint Change Log via Checkpoint menu
+    - update to Hunspell 1.7.2 (released in December 2022) for spellchecking
+    - update to latest zlib-1.2.13 for latest security fixes
+    - move completely away from ever using OS system tmp folder for storing Sigil wip files.
+      Instead create a new workspace folder inside Sigil Preferences folder
+    - added ability to Print Preview and Print contents of Sigil's Preview window
+
+-------------------------------------------------------------------
 Sat Sep  3 20:42:00 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.9.20
