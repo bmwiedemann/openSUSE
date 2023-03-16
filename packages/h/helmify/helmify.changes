@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:04:36 UTC 2023 - kastl@b1-systems.de
+
+- remove tarball and use obscpio
+  - use tar and recompress service at buildtime to create
+    the tarball on the fly
+- Update to version 0.3.30:
+  * further indent container securityContext values
+
+-------------------------------------------------------------------
+Wed Mar 15 12:10:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.29:
+  * add missing import, re-generate examples
+  * feat: add support for security context
+  * always use quotes for env values
+
+-------------------------------------------------------------------
 Mon Mar 13 17:23:28 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.28:

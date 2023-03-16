@@ -7,4 +7,12 @@
     <comment>new package helmify: Creates a Helm chart from Kubernetes yaml</comment>
     <requestid>1071219</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e6a0942ee33fd58f0d1c818915ffc71f</srcmd5>
+    <version>0.3.30</version>
+    <time>1679003895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072353</requestid>
+  </revision>
 </revisionlist>

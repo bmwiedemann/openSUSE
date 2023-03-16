@@ -1,9 +1,9 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/arttor/helmify/</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.3.28</param>
+    <param name="revision">v0.3.30</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -11,7 +11,8 @@
   <service name="set_version" mode="disabled">
     <param name="basename">helmify</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
