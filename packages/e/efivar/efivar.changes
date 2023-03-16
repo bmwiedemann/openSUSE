@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Feb 10 07:21:31 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 38
+  + Rework some makefile bits to make overriding some options
+    simpler
+  + Handle /sys/devices/virtual/{nvme-fabrics,nvme-subsystem}
+    devices
+  + guids.S: Include <cet.h> when CET is enabled
+  + Fix /sys/block sysfs parsing for eMMC-s
+  + Properly check mmap return error
+  + Fix s{yt,ty}le typo in efi_get_variable(3)
+  + Handle NULL set_variable()
+  + Fix parsing for nvme-subsystem devices
+  + Attempt to fix the identified thread safety bugs
+  + Make thread-test depend on libefivar.so
+  + Upstream a local patch from rawhide
+  + Fix conversion from UTF8 to UCS2
+  + efivar: make docs match current code for 'efivar -A'
+  + Add code of conduct
+  + Misc minor fixes
+  + Add efi_time_t declarations and helper functions
+  + More misc fixes
+  + Coverity fixes 20211208
+  + Fix linux virtual root device parsing
+  + efivar.spec.in: fix license to be valid SPDX
+  + Add efisecdb tooling
+  + Fix linker string comparison for dash 
+- Add efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch
+  to remove the ld script hack for efi_well_known_* variables
+  that caused build failure with LTO (bsc#1206388)
+- Add mandoc to BuildRequires to build efisecdb man page
+- Add efivar-adjust-dependency.patch to avoid 'make install' from
+  building the binaries again
+- Add efivar-filter-gcc-march.patch to drop '-march=native' from
+  HOST_CPPFLAGS for ppc64le and riscv64 due to the absence of the
+  gcc parameter
+- Refresh libefiboot-export-disk_get_partition_info.patch
+  + Cast (uint8_t *) signature to (partition_signature_t *)
+  + Update src/libefiboot.map.in
+- Remove upstreamed patches
+  + efivar-Fix-all-the-places-Werror-address-of-packed-member-c.patch
+  + efivar-bsc1127544-fix-ucs2len.patch
+  + efivar-bsc1175989-handle-NULL-set-variable.patch
+  + efivar-bsc1181967-fix-nvme-parsing.patch
+  + efivar-bsc1187386-fix-emmc-parsing.patch
+  + efivar-fix-efidp_ipv4_addr-fields-assignment.patch
+  + efivar-make-format_guid-handle-misaligned-guid-pointer.patch
+
+-------------------------------------------------------------------
+Wed Dec 21 18:58:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update spec file to current standards
+
+-------------------------------------------------------------------
 Wed Aug 10 01:54:21 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add efivar-bsc1202209-fix-glibc-2.36-build.patch to fix the build

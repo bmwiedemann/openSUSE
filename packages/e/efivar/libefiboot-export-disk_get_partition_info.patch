@@ -1,8 +1,8 @@
-Index: efivar-37/src/disk.c
+Index: efivar-38/src/disk.c
 ===================================================================
---- efivar-37.orig/src/disk.c
-+++ efivar-37/src/disk.c
-@@ -256,6 +256,33 @@ is_partitioned(int fd)
+--- efivar-38.orig/src/disk.c
++++ efivar-38/src/disk.c
+@@ -239,6 +239,34 @@ is_partitioned(int fd)
  	return true;
  }
  
@@ -30,16 +30,17 @@ Index: efivar-37/src/disk.c
 +                         uint8_t *mbr_type, uint8_t *signature_type)
 +{
 +        return get_partition_info(fd, EFIBOOT_OPTIONS_IGNORE_PMBR_ERR, part,
-+                        start, size, signature, mbr_type, signature_type);
++                        start, size, (partition_signature_t *)signature, mbr_type,
++                        signature_type);
 +}
 +
  ssize_t HIDDEN
  make_hd_dn(uint8_t *buf, ssize_t size, int fd, int32_t partition,
-            uint32_t options)
-Index: efivar-37/src/include/efivar/efiboot-disk.h
+ 	   uint32_t options)
+Index: efivar-38/src/include/efivar/efiboot-disk.h
 ===================================================================
 --- /dev/null
-+++ efivar-37/src/include/efivar/efiboot-disk.h
++++ efivar-38/src/include/efivar/efiboot-disk.h
 @@ -0,0 +1,32 @@
 +/*
 + * libefiboot - library for the manipulation of EFI boot variables
@@ -73,26 +74,25 @@ Index: efivar-37/src/include/efivar/efiboot-disk.h
 +	__attribute__((__visibility__ ("default")));
 +
 +#endif /* _EFIBOOT_BOOT_H */
-Index: efivar-37/src/include/efivar/efiboot.h
+Index: efivar-38/src/include/efivar/efiboot.h
 ===================================================================
---- efivar-37.orig/src/include/efivar/efiboot.h
-+++ efivar-37/src/include/efivar/efiboot.h
-@@ -34,5 +34,6 @@
+--- efivar-38.orig/src/include/efivar/efiboot.h
++++ efivar-38/src/include/efivar/efiboot.h
+@@ -20,6 +20,7 @@
  
  #include <efivar/efiboot-creator.h>
  #include <efivar/efiboot-loadopt.h>
 +#include <efivar/efiboot-disk.h>
  
- #endif /* EFIBOOT_H */
-Index: efivar-37/src/libefiboot.map.in
+ extern uint32_t efi_get_libefiboot_version(void)
+ 	__attribute__((__visibility__("default")));
+Index: efivar-38/src/libefiboot.map.in
 ===================================================================
---- efivar-37.orig/src/libefiboot.map.in
-+++ efivar-37/src/libefiboot.map.in
-@@ -33,3 +33,7 @@ LIBEFIBOOT_1.29 {
+--- efivar-38.orig/src/libefiboot.map.in
++++ efivar-38/src/libefiboot.map.in
+@@ -36,4 +36,5 @@ LIBEFIBOOT_1.30 {
  
- LIBEFIBOOT_1.30 {
- } LIBEFIBOOT_1.29;
-+
-+LIBEFIBOOT_1.31 {
-+        global: efi_disk_get_partition_info;
-+} LIBEFIBOOT_1.30;
+ LIBEFIBOOT_1.31 {
+ 	global:	efi_get_libefiboot_version;
++		efi_disk_get_partition_info;
+ } LIBEFIBOOT_1.30;

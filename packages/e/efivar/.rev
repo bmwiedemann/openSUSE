@@ -174,4 +174,41 @@
     <comment></comment>
     <requestid>994225</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f74ce7127c82830edd45538fc7949a5</srcmd5>
+    <version>38</version>
+    <time>1679003832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 38
+  + Rework some makefile bits to make overriding some options
+    simpler
+  + Handle /sys/devices/virtual/{nvme-fabrics,nvme-subsystem}
+    devices
+  + guids.S: Include &lt;cet.h&gt; when CET is enabled
+  + Fix /sys/block sysfs parsing for eMMC-s
+  + Properly check mmap return error
+  + Fix s{yt,ty}le typo in efi_get_variable(3)
+  + Handle NULL set_variable()
+  + Fix parsing for nvme-subsystem devices
+  + Attempt to fix the identified thread safety bugs
+  + Make thread-test depend on libefivar.so
+  + Upstream a local patch from rawhide
+  + Fix conversion from UTF8 to UCS2
+  + efivar: make docs match current code for 'efivar -A'
+  + Add code of conduct
+  + Misc minor fixes
+  + Add efi_time_t declarations and helper functions
+  + More misc fixes
+  + Coverity fixes 20211208
+  + Fix linux virtual root device parsing
+  + efivar.spec.in: fix license to be valid SPDX
+  + Add efisecdb tooling
+  + Fix linker string comparison for dash 
+- Add efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch
+  to remove the ld script hack for efi_well_known_* variables
+  that caused build failure with LTO (bsc#1206388)
+- Add mandoc to BuildRequires to build efisecdb man page
+- Add efivar-adjust-dependency.patch to avoid 'make install' from</comment>
+    <requestid>1072154</requestid>
+  </revision>
 </revisionlist>

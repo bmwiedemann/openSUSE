@@ -1,7 +1,7 @@
 #
 # spec file for package efivar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,9 @@
 #
 
 
-%if 0%{?suse_version} <= 1320
-  # Allow building on older products (SLE11SP4, SLES12, and Leap 42.2)
-  %define gcc 5
-  %define gcc_v %{gcc}
-  %if 120200 <= 0%{?sle_version} && 0%{?sle_version} < 130000
-    %define gcc 6
-    %define gcc_v %{gcc}
-  %endif
-%endif
 %define major 1
-
 Name:           efivar
-Version:        37
+Version:        38
 Release:        0
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
@@ -36,26 +26,14 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/rhinstaller/efivar
 Source:         https://github.com/rhinstaller/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         libefiboot-export-disk_get_partition_info.patch
-# PATCH-FIX-UPSTREAM boo#1120862
-Patch1:         efivar-make-format_guid-handle-misaligned-guid-pointer.patch
-# PATCH-FIX-UPSTREAM boo#1120862
-Patch2:         efivar-Fix-all-the-places-Werror-address-of-packed-member-c.patch
-Patch3:         efivar-bsc1127544-fix-ucs2len.patch
-Patch4:         efivar-fix-efidp_ipv4_addr-fields-assignment.patch
-Patch5:         efivar-bsc1175989-handle-NULL-set-variable.patch
-Patch6:         efivar-bsc1181967-fix-nvme-parsing.patch
-Patch7:         efivar-bsc1187386-fix-emmc-parsing.patch
-Patch8:         efivar-bsc1202209-fix-glibc-2.36-build.patch
-%if "0%{?buildroot}" == "0"
-# set a sane value for buildroot, unless it's already there!
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
+Patch1:         efivar-bsc1202209-fix-glibc-2.36-build.patch
+Patch2:         efivar-adjust-dependency.patch
+Patch3:         efivar-filter-gcc-march.patch
+Patch4:         efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch
 BuildRequires:  fdupes
-BuildRequires:  pkg-config
-BuildRequires:  popt-devel
-%if 0%{?gcc} != 0
-BuildRequires:  gcc%{gcc}
-%endif
+BuildRequires:  mandoc
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(popt)
 Requires:       libefivar%{major} = %{version}-%{release}
 
 %description
@@ -77,25 +55,7 @@ Requires:       libefivar%{major} = %{version}-%{release}
 Development headers required to use libefivar.
 
 %prep
-%setup -q
-%patch0 -p1
-%if 0%{?suse_version} == 1110
-# Instead of conditional patching:
-# - 'popt.pc' missing in 'popt-devel' on SLE11
-perl -pi -e 's{^.*PKGS=popt.*$}{}; s{^(efivar\S* : LIBS=.*)dl}{$1popt dl}' \
-   src/Makefile
-# - 'uchar.h' missing in both 'glibc-devel' and 'gcc-5' packages on SLE11
-perl -pi -e 's{\#include \<uchar\.h\>}{typedef __CHAR16_TYPE__ char16_t;}' \
-   src/export.c
-%endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags} -Wno-nonnull -flto"
@@ -105,45 +65,33 @@ CFLAGS="%{optflags} -Wno-nonnull -flto"
 export CFLAGS
 export LDFLAGS="-flto-partition=one"
 
-make \
-%if 0%{?gcc_v} != 0
-  CC=gcc-%{gcc_v} \
-  AR=gcc-ar-%{gcc_v} \
-  NM=gcc-nm-%{gcc_v} \
-  RANLIB=gcc-ranlib-%{gcc_v} \
-%endif
+%make_build
+
+%install
+%make_install \
   libdir=%{_libdir} \
   bindir=%{_bindir}
 
-%install
-make DESTDIR=%{buildroot} \
-  libdir=%{_libdir} \
-  bindir=%{_bindir} \
-  install
 %fdupes -s %{buildroot}
 
 # fail on undercover ABI changes
 file %{buildroot}/%{_libdir}/lib%{name}.so.%{major}*
 
-%post -n libefivar%{major} -p /sbin/ldconfig
-
-%postun -n libefivar%{major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libefivar%{major}
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/efivar
+%{_bindir}/efisecdb
 %{_mandir}/man1/*
 
 %files devel
-%defattr(-,root,root)
 %{_mandir}/man3/*
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files -n libefivar%{major}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %changelog
