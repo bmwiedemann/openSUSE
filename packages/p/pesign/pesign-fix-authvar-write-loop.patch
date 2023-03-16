@@ -12,32 +12,11 @@ Signed-off-by: Gary Ching-Pang Lin <glin@suse.com>
  src/authvar_context.c | 16 +++++++---------
  1 file changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/src/authvar_context.c b/src/authvar_context.c
-index 7a753fc..c51c666 100644
---- a/src/authvar_context.c
-+++ b/src/authvar_context.c
-@@ -20,6 +20,7 @@
- #include "fix_coverity.h"
- 
- #include <unistd.h>
-+#include <stddef.h>
- #include <sys/mman.h>
- 
- #include <prerror.h>
-@@ -135,11 +136,7 @@ generate_descriptor(authvar_context *ctx)
- 	if (rc < 0)
- 		cmsreterr(-1, ctx->cms_ctx, "could not create signed data");
- 
--#if __WORDSIZE == 64
--	offset = (uint64_t) &((win_cert_uefi_guid_t *)0)->data;
--#else
--	offset = (uint32_t) &((win_cert_uefi_guid_t *)0)->data;
--#endif
-+	offset = offsetof(win_cert_uefi_guid_t, data);
- 	authinfo = calloc(offset + sd_der.len, 1);
- 	if (!authinfo)
- 		cmsreterr(-1, ctx->cms_ctx, "could not allocate authinfo");
-@@ -162,6 +159,7 @@ write_authvar(authvar_context *ctx)
+Index: pesign-115/src/authvar_context.c
+===================================================================
+--- pesign-115.orig/src/authvar_context.c
++++ pesign-115/src/authvar_context.c
+@@ -151,6 +151,7 @@ write_authvar(authvar_context *ctx)
  	void *buffer, *ptr;
  	size_t buf_len, des_len, remain;
  	ssize_t wlen;
@@ -45,7 +24,7 @@ index 7a753fc..c51c666 100644
  
  	if (!ctx->authinfo)
  		cmsreterr(-1, ctx->cms_ctx, "Not a valid authvar");
-@@ -189,19 +187,19 @@ write_authvar(authvar_context *ctx)
+@@ -179,19 +180,19 @@ write_authvar(authvar_context *ctx)
  	if (ctx->value_size > 0)
  		memcpy(ptr, ctx->value, ctx->value_size);
  
@@ -69,6 +48,3 @@ index 7a753fc..c51c666 100644
  	} while (remain > 0);
  
          free(buffer);
--- 
-2.21.0
-

@@ -1,0 +1,91 @@
+From 09a41248f9f867e9aaf06e890621c392d36b52ec Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Tue, 31 Jan 2023 10:00:18 -0500
+Subject: [PATCH] Remove pesign-authorize
+
+The onus of correct file/directory permissions should be a configuration
+and systems administration issue, not pesign's.
+
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+---
+ src/.gitignore          |  1 -
+ src/Makefile            |  3 +--
+ src/pesign-authorize.in | 13 -------------
+ src/pesign.service.in   |  1 -
+ src/pesign.sysvinit.in  |  1 -
+ 5 files changed, 1 insertion(+), 18 deletions(-)
+ delete mode 100644 src/pesign-authorize.in
+
+Index: pesign-116/src/.gitignore
+===================================================================
+--- pesign-116.orig/src/.gitignore
++++ pesign-116/src/.gitignore
+@@ -10,5 +10,4 @@ peverify
+ pesign.service
+ pesign.sysvinit
+ pesign-rpmbuild-helper
+-pesign-authorize
+ tmpfiles.conf
+Index: pesign-116/src/Makefile
+===================================================================
+--- pesign-116.orig/src/Makefile
++++ pesign-116/src/Makefile
+@@ -6,7 +6,7 @@ include $(TOPDIR)/Make.rules
+ include $(TOPDIR)/Make.defaults
+ 
+ BINTARGETS=authvar client efikeygen pesigcheck pesign \
+-	   pesign-rpmbuild-helper pesign-authorize pesum
++	   pesign-rpmbuild-helper pesum
+ CFGTARGETS=tmpfiles.conf
+ SVCTARGETS=pesign.sysvinit pesign.service
+ MAN1TARGETS=authvar.1 efikeygen.1 pesigcheck.1 pesign-client.1 pesign.1
+@@ -99,7 +99,6 @@ install :
+ 	$(INSTALL) -d -m 755 $(INSTALLROOT)$(rpmmacrodir)
+ 	$(INSTALL) -m 644 macros.pesign $(INSTALLROOT)$(rpmmacrodir)
+ 	$(INSTALL) -d -m 755 $(INSTALLROOT)$(libexecdir)/pesign/
+-	$(INSTALL) -m 750 pesign-authorize $(INSTALLROOT)$(libexecdir)/pesign/
+ 	$(INSTALL) -m 755 pesign-rpmbuild-helper $(INSTALLROOT)$(libexecdir)/pesign/
+ 	$(INSTALL) -d -m 700 $(INSTALLROOT)/etc/pesign
+ 	$(INSTALL) -m 600 pesign-users $(INSTALLROOT)/etc/pesign/users
+Index: pesign-116/src/pesign-authorize.in
+===================================================================
+--- pesign-116.orig/src/pesign-authorize.in
++++ /dev/null
+@@ -1,13 +0,0 @@
+-#!/bin/bash
+-set -e
+-set -u
+-
+-# License: GPLv2
+-
+-# This script is deprecated and will be removed in a future release.
+-
+-sleep 3
+-for x in @@RUNDIR@@pesign/ /etc/pki/pesign/ ; do
+-	chown -R pesign:pesign "${x}" || true
+-	chmod -R ug+rwX "${x}" || true
+-done
+Index: pesign-116/src/pesign.service.in
+===================================================================
+--- pesign-116.orig/src/pesign.service.in
++++ pesign-116/src/pesign.service.in
+@@ -18,7 +18,6 @@ RestrictRealtime=true
+ # end of automatic additions 
+ PIDFile=@@RUNDIR@@/pesign.pid
+ ExecStart=/usr/bin/pesign --daemonize --nofork
+-ExecStartPost=@@LIBEXECDIR@@/pesign/pesign-authorize
+ 
+ [Install]
+ WantedBy=multi-user.target
+Index: pesign-116/src/pesign.sysvinit.in
+===================================================================
+--- pesign-116.orig/src/pesign.sysvinit.in
++++ pesign-116/src/pesign.sysvinit.in
+@@ -30,7 +30,6 @@ start(){
+     RETVAL=$?
+     echo
+     touch /var/lock/subsys/pesign
+-    @@LIBEXECDIR@@/pesign/pesign-authorize
+ }
+ 
+ stop(){

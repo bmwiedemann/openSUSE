@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Feb 22 08:05:20 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 116
+  + daemon: remove always-true comparison
+  + pesum - add a new tool to the shed
+  + Fix building signed kernels on setups other than koji
+  + Add -D_GLIBCXX_ASSERTIONS to CPPFLAGS
+  + macros.pesign: handle centos like rhel with --rhelver
+  + Detect the presence of rpm-sign when checking for "rhel"-ness
+  + Fix typo in efikeygen command
+  + pesigcheck: Fix crash on digest match
+  + cms: store digest as pointer instead of index
+  + Fix mandoc invocation to not produce garbage
+  + Password fixes
+  + Re-work CMS's selected_digest again...
+  + src/certs/make-certs: delete the duplicate codes
+  + Free resources if certification cannot be found
+  + macros: drop %{_pesign_args}
+  + Fix two bugs from package building
+  + Fix bad free of cms data (DoS only)
+  + Send pesign stdout/err to systemd journal
+  + Add missing Install section
+  + Add default packages for pkg-config
+  + Short delay to ensure /run/pesign/socket exists
+  + Resolve crash when signature that is removed is not the end of
+    the list
+  + Enhance error diagnostics about version mismatch
+  + Upstream all Fedora changes
+  + Add some hardening options to build
+  + Add code of conduct
+  + Fix build on gcc 12 and non-Fedora
+- Add BuildRequires efivar-devel >= 38 for efisec.h
+  + efisiglist is replaced by efisecdb in efivar 38
+- Add BuildRequires mandoc to generate the manpages
+- Replace pesign-privkey_unneeded.diff with
+  pesign-skip-auth-on-friendly-slot.patch to avoid the unnecessary
+  authentication
+- Add pesign-fix-cert-match-check.patch to fix the subject name
+  matching
+- Add pesign-fix-efikeygen-segfault.patch to fix the potential
+  crash when executing efikeygen
+- Add pesign-bsc1202933-Remove-pesign-authorize.patch to remove
+  pesign-authorize completely (bsc#1202933)
+- Refresh patches
+  + harden_pesign.service.patch
+  + pesign-boo1143063-remove-var-tracking.patch
+  + pesign-boo1185663-set-rpmmacrodir.patch
+  + pesign-fix-authvar-write-loop.patch
+  + pesign-suse-build.patch
+  + pesign-bsc1202933-Make-etc-pki-pesign-writeable.patch
+- Remove upstreamed/unnecessary patches
+  + pesign-boo1158197-fix-pesigncheck-gcc10.patch
+  + pesign-efikeygen-Fix-the-build-with-nss-3.44.patch
+  + pesign-run.patch
+  + pesign-bsc1202933-Use-normal-file-permissions-instead-of-ACLs.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 07:37:20 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-bsc1202933-Use-normal-file-permissions-instead-of-ACLs.patch

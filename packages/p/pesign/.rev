@@ -347,4 +347,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment></comment>
     <requestid>1063715</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>69fe8db5c7294b2a994a0d193593c331</srcmd5>
+    <version>116</version>
+    <time>1679003829</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070580</requestid>
+  </revision>
 </revisionlist>

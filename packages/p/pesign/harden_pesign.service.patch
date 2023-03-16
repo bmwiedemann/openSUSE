@@ -1,7 +1,7 @@
-Index: pesign-113/src/pesign.service.in
+Index: pesign-115/src/pesign.service.in
 ===================================================================
---- pesign-113.orig/src/pesign.service.in
-+++ pesign-113/src/pesign.service.in
+--- pesign-115.orig/src/pesign.service.in
++++ pesign-115/src/pesign.service.in
 @@ -3,6 +3,19 @@ Description=Pesign signing daemon
  
  [Service]
@@ -19,6 +19,6 @@ Index: pesign-113/src/pesign.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- Type=forking
- PIDFile=/run/pesign.pid
- ExecStart=/usr/bin/pesign --daemonize
+ PIDFile=@@RUNDIR@@/pesign.pid
+ ExecStart=/usr/bin/pesign --daemonize --nofork
+ ExecStartPost=@@LIBEXECDIR@@/pesign/pesign-authorize

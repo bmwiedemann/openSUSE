@@ -1,8 +1,8 @@
-diff --git a/Make.defaults b/Make.defaults
-index 7892d73..2d18005 100644
---- a/Make.defaults
-+++ b/Make.defaults
-@@ -47,7 +47,7 @@ cflags	= $(CFLAGS) $(ARCH3264) \
+Index: pesign-115/Make.defaults
+===================================================================
+--- pesign-115.orig/Make.defaults
++++ pesign-115/Make.defaults
+@@ -69,7 +69,7 @@ cflags	= $(CFLAGS) $(ARCH3264) \
  	$(call pkg-config-cflags)
  clang_ccldflags =
  gcc_ccldflags = -fno-merge-constants \
@@ -10,4 +10,4 @@ index 7892d73..2d18005 100644
 +	-fvar-tracking-assignments -fkeep-inline-functions \
  	-Wl,--fatal-warnings,--no-allow-shlib-undefined,--default-symver \
  	-Wl,-O2 -Wl,--no-undefined-version -Wl,-z,relro,-z,now \
- 	-Wl,--no-add-needed,--no-copy-dt-needed-entries,--as-needed
+ 	-Wl,--no-add-needed,--no-copy-dt-needed-entries,--as-needed -pie

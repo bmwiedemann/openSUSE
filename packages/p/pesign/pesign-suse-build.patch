@@ -1,7 +1,7 @@
-Index: pesign-113/util/Makefile
+Index: pesign-116/util/Makefile
 ===================================================================
---- pesign-113.orig/util/Makefile
-+++ pesign-113/util/Makefile
+--- pesign-116.orig/util/Makefile
++++ pesign-116/util/Makefile
 @@ -7,7 +7,7 @@ include $(TOPDIR)/Make.efirules
  include $(TOPDIR)/Make.defaults
  
@@ -17,18 +17,18 @@ Index: pesign-113/util/Makefile
  install :
 -	$(INSTALL) -d -m 755 $(INSTALLROOT)/boot/efi/EFI/redhat/
 -	$(INSTALL) -m 755 *.efi $(INSTALLROOT)/boot/efi/EFI/redhat/
-+	$(INSTALL) -d -m 755 $(INSTALLROOT)/boot/efi/EFI/SuSE/
-+	$(INSTALL) -m 755 *.efi $(INSTALLROOT)/boot/efi/EFI/SuSE/
++	$(INSTALL) -d -m 755 $(INSTALLROOT)/boot/efi/EFI/sles/
++	$(INSTALL) -m 755 *.efi $(INSTALLROOT)/boot/efi/EFI/sles/
  
  install_systemd:
  
-Index: pesign-113/src/pesign.sysvinit.in
+Index: pesign-116/src/pesign.sysvinit.in
 ===================================================================
---- pesign-113.orig/src/pesign.sysvinit.in
-+++ pesign-113/src/pesign.sysvinit.in
+--- pesign-116.orig/src/pesign.sysvinit.in
++++ pesign-116/src/pesign.sysvinit.in
 @@ -6,16 +6,19 @@
  # processname: /usr/bin/pesign
- # pidfile: /var/run/pesign.pid
+ # pidfile: @@RUNDIR@@pesign.pid
  ### BEGIN INIT INFO 
 -# Provides: pesign
 -# Default-Start:
@@ -46,50 +46,28 @@ Index: pesign-113/src/pesign.sysvinit.in
 -. /etc/init.d/functions
  [ -f /usr/bin/pesign ] || exit 1
  
-+PESIGN_PIDFILE=/var/run/pesign.pid
++PESIGN_PIDFILE=@@RUNDIR@@pesign.pid
  RETVAL=0
  
  start(){
 @@ -23,7 +26,7 @@ start(){
-     mkdir /var/run/pesign 2>/dev/null &&
-         chown pesign:pesign /var/run/pesign &&
-         chmod 0770 /var/run/pesign
+     mkdir @@RUNDIR@@pesign 2>/dev/null &&
+         chown pesign:pesign @@RUNDIR@@pesign &&
+         chmod 0770 @@RUNDIR@@pesign
 -    daemon /usr/bin/pesign --daemonize
 +    startproc -f -p "$PESIGN_PIDFILE" /usr/bin/pesign --daemonize
      RETVAL=$?
      echo
      touch /var/lock/subsys/pesign
-@@ -32,7 +35,7 @@ start(){
- 
- stop(){
-     echo -n "Stopping pesign: "
--    killproc -p /var/run/pesign.pid pesignd
-+    killproc -p /run/pesign.pid pesignd
-     RETVAL=$?
-     echo
-     rm -f /var/lock/subsys/pesign
-Index: pesign-113/Make.defaults
+Index: pesign-116/Makefile
 ===================================================================
---- pesign-113.orig/Make.defaults
-+++ pesign-113/Make.defaults
-@@ -61,7 +61,7 @@ CPPFLAGS ?=
- RANLIBFLAGS	:= $(if $(filter $(CC),gcc),-D)
- ARFLAGS := $(if $(filter $(CC),gcc),-Dcvqs)$(if $(filter $(CC),clang),-cqvs)
- 
--LDLIBS	= $(foreach lib,$(LIBS),-l$(lib)) $(call pkg-config-ldlibs)
-+LDLIBS	= -lpthread $(foreach lib,$(LIBS),-l$(lib)) $(call pkg-config-ldlibs)
- 
- ifeq ($(ARCH),ia64)
-   efi_cflags += -mfixed-range=f32-f127
-Index: pesign-113/Makefile
-===================================================================
---- pesign-113.orig/Makefile
-+++ pesign-113/Makefile
+--- pesign-116.orig/Makefile
++++ pesign-116/Makefile
 @@ -11,7 +11,6 @@ SUBDIRS := include libdpe src
  
  install :
  	$(INSTALL) -d -m 755 $(INSTALLROOT)$(docdir)/pesign-$(VERSION)/
 -	$(INSTALL) -pm 644 COPYING $(INSTALLROOT)$(docdir)/pesign-$(VERSION)/
- 	@set -e ; for x in $(SUBDIRS) ; do \
- 		$(MAKE) -C $$x $@ ; \
- 	done
+ 	@$(call descend)
+ 
+ install_systemd install_sysvinit : install

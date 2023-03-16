@@ -1,27 +1,27 @@
-diff --git a/Make.defaults b/Make.defaults
-index 2d18005..7ecba00 100644
---- a/Make.defaults
-+++ b/Make.defaults
-@@ -11,6 +11,7 @@ includedir ?= $(prefix)include/
- bindir	?= $(prefix)bin/
+Index: pesign-115/Make.defaults
+===================================================================
+--- pesign-115.orig/Make.defaults
++++ pesign-115/Make.defaults
+@@ -13,6 +13,7 @@ rundir  ?= /run/
+ rundir	:= $(abspath $(rundir))/
  pcdir	?= $(libdir)pkgconfig/
  docdir	?= $(prefix)share/doc/
 +rpmmacrodir ?= /etc/rpm/
  DESTDIR	?=
  INSTALLROOT = $(DESTDIR)
  
-diff --git a/src/Makefile b/src/Makefile
-index 5fb2841..ca546a3 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -90,8 +90,8 @@ install :
- 	$(INSTALL) -m 644 pesigcheck.1 $(INSTALLROOT)$(mandir)man1/
- 	$(INSTALL) -m 644 authvar.1 $(INSTALLROOT)$(mandir)man1/
- 	$(INSTALL) -m 644 efisiglist.1 $(INSTALLROOT)$(mandir)man1/
+Index: pesign-115/src/Makefile
+===================================================================
+--- pesign-115.orig/src/Makefile
++++ pesign-115/src/Makefile
+@@ -88,8 +88,8 @@ install :
+ 	$(INSTALL) -m 644 pesign.popt $(INSTALLROOT)/etc/popt.d/
+ 	$(INSTALL) -d -m 755 $(INSTALLROOT)$(mandir)man1/
+ 	$(INSTALL) -m 644 $(MAN1TARGETS) $(INSTALLROOT)$(mandir)man1/
 -	$(INSTALL) -d -m 755 $(INSTALLROOT)/etc/rpm/
 -	$(INSTALL) -m 644 macros.pesign $(INSTALLROOT)/etc/rpm/
 +	$(INSTALL) -d -m 755 $(INSTALLROOT)$(rpmmacrodir)
 +	$(INSTALL) -m 644 macros.pesign $(INSTALLROOT)$(rpmmacrodir)
  	$(INSTALL) -d -m 755 $(INSTALLROOT)$(libexecdir)/pesign/
  	$(INSTALL) -m 750 pesign-authorize $(INSTALLROOT)$(libexecdir)/pesign/
- 	$(INSTALL) -d -m 700 $(INSTALLROOT)/etc/pesign
+ 	$(INSTALL) -m 755 pesign-rpmbuild-helper $(INSTALLROOT)$(libexecdir)/pesign/
