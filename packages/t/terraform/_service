@@ -3,12 +3,12 @@
     <param name="url">https://github.com/hashicorp/terraform</param>
     <param name="scm">git</param>
     <param name="filename">terraform</param>
-    <param name="versionformat">1.4.0</param>
-    <param name="revision">v1.4.0</param>
+    <param name="versionformat">1.4.1</param>
+    <param name="revision">v1.4.1</param>
     <param name="exclude">.git</param>
   </service>
-  <service name="tar" mode="disabled"/>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
@@ -16,6 +16,5 @@
     <param name="basename">terraform</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">terraform-1.4.0.tar.gz</param>
   </service>
 </services>

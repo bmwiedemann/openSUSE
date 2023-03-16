@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Mar 15 15:09:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.4.1:
+  * Enables overriding modules that have the `depends_on`
+    attribute set, while still preventing the `depends_on`
+    attribute itself from being overridden.
+    ([#32796](https://github.com/hashicorp/terraform/issues/32796))
+  * `terraform providers mirror`: when a dependency lock file is
+    present, mirror the resolved providers versions, not the latest
+    available based on configuration.
+    ([#32749](https://github.com/hashicorp/terraform/issues/32749))
+  * Fixed module downloads from S3 URLs when using AWS IAM roles
+    for service accounts (IRSA).
+    ([#32700](https://github.com/hashicorp/terraform/issues/32700))
+  * hcl: Fix a crash in Terraform when attempting to apply defaults
+    into an incompatible type.
+    ([#32775](https://github.com/hashicorp/terraform/issues/32775))
+  * Prevent panic when creating a plan which errors before the
+    planning process has begun.
+    ([#32818](https://github.com/hashicorp/terraform/issues/32818))
+  * Fix the plan renderer skipping the "no changes" messages when
+    there are no-op outputs within the plan.
+    ([#32820](https://github.com/hashicorp/terraform/issues/32820))
+  * Prevent panic when rendering null nested primitive values in a
+    state output.
+    ([#32840](https://github.com/hashicorp/terraform/issues/32840))
+  * Warn when an invalid path is specified in `TF_CLI_CONFIG_FILE`
+    ([#32846](https://github.com/hashicorp/terraform/issues/32846))
+
+-------------------------------------------------------------------
+Wed Mar 15 10:19:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- do no longer store the tarball, create it at buildtime
+
+-------------------------------------------------------------------
 Wed Mar  8 19:21:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.4.0:
