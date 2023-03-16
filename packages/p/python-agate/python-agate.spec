@@ -34,7 +34,6 @@ BuildRequires:  %{python_module parsedatetime >= 2.1}
 BuildRequires:  %{python_module python-slugify >= 1.2.1}
 BuildRequires:  %{python_module pytimeparse >= 1.1.5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  python-rpm-macros
@@ -49,7 +48,6 @@ Requires:       python-leather >= 0.3.2
 Requires:       python-parsedatetime >= 2.1
 Requires:       python-python-slugify >= 1.2.1
 Requires:       python-pytimeparse >= 1.1.5
-Requires:       python-six >= 1.9.0
 Recommends:     python-PyICU >= 2.4.2
 BuildArch:      noarch
 %python_subpackages

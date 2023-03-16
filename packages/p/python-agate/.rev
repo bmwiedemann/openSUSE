@@ -122,4 +122,12 @@
   * Allow parsedatetime 2.6.</comment>
     <requestid>1059991</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>68eb6add83f8c666d1fb7e34b2a7ac1d</srcmd5>
+    <version>1.7.1</version>
+    <time>1679003930</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072310</requestid>
+  </revision>
 </revisionlist>
