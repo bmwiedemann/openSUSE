@@ -1597,4 +1597,14 @@ Changes:
 - KIWI VM image SBOM support added</comment>
     <requestid>1068160</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>3705b7a26225cbb487eb94ec45169026</srcmd5>
+    <version>20230314</version>
+    <time>1679003834</time>
+    <user>dimstar_suse</user>
+    <comment>- universal post-build hook, just place a file in /usr/lib/build/post_build.d/
+- mkbaselibs/hwcaps, fix pattern name once again (x86_64_v3)
+- KiwiProduct: add --use-newest-package hint if the option is set</comment>
+    <requestid>1071527</requestid>
+  </revision>
 </revisionlist>
