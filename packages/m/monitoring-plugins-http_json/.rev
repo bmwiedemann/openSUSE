@@ -18,4 +18,12 @@
   * Update Makefile and Workflows by @martialblog in #78</comment>
     <requestid>1004170</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b6d7080fb2139c718b4fd306e5e220eb</srcmd5>
+    <version>2.1.2</version>
+    <time>1679003902</time>
+    <user>dimstar_suse</user>
+    <comment>- Build the package against python3 only.</comment>
+    <requestid>1072281</requestid>
+  </revision>
 </revisionlist>

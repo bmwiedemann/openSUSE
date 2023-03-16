@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:17:13 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Build the package against python3 only.
+
+-------------------------------------------------------------------
 Fri Sep 16 17:55:16 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 2.1.2:

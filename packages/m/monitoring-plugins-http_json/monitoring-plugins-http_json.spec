@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-http_json
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,7 @@
 
 
 %define modname monitoring-plugins-http_json
-%define skip_python36 1
-%define skip_python38 1
-%define skip_python39 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 Name:           monitoring-plugins-http_json
 Version:        2.1.2
 Release:        0
