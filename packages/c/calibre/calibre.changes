@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 16 05:05:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.14.1
+  * Bug fixes
+    - Fix regression in 6.14.0 that caused some generated resources
+      to be excluded from the calibre source bundle
+    - Fix regression in 6.14.0 that broke using paths with single
+      quotes in them for the calibre library
+    - Fix ToC Editor on macOS in 6.14.0 not working inside the Edit
+      book tool only
+  * Improved news sources
+    - Strange Horizons
+    - The Saturday Paper
+    - New Scientist
+    - The Mainichi
+    - DR Nyheder
+    - New York Magazine
+    - Bloomberg
+    - Deccan Herald
+
+-------------------------------------------------------------------
 Sat Mar 11 10:08:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.14.0
