@@ -1,0 +1,13 @@
+Index: PyQt6_Charts-6.4.0/PKG-INFO
+===================================================================
+--- PyQt6_Charts-6.4.0.orig/PKG-INFO
++++ PyQt6_Charts-6.4.0/PKG-INFO
+@@ -1,7 +1,7 @@
+ Metadata-Version: 2.1
+ Name: PyQt6-Charts
+ Version: 6.4.0
+-Requires-Python: >=3.7
++Requires-Python: >=3.6
+ Summary: Python bindings for the Qt Charts library
+ Home-Page: https://www.riverbankcomputing.com/software/pyqtchart/
+ Author: Riverbank Computing Limited
