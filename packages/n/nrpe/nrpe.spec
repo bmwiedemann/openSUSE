@@ -1,7 +1,7 @@
 #
 # spec file for package nrpe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,6 @@ Patch6:         nrpe-static_dh_parameters.patch
 Patch7:         nrpe-disable-chkconfig_in_Makefile.patch
 # PATCH-FIX-UPSTREAM this fills up the logs on the clients without real need
 Patch8:         nrpe-4.0.4-silence_wrong_package_version_messages.patch
-BuildRequires:  monitoring-plugins-common
 BuildRequires:  nagios-rpm-macros
 Requires(pre):  grep
 Requires(pre):  sed
@@ -80,10 +79,8 @@ PreReq:         %fillup_prereq
 PreReq:         %insserv_prereq
 PreReq:         /bin/logger
 %else
-Requires(pre):         %{_bindir}/logger
+Requires(pre):  %{_bindir}/logger
 %endif
-Requires(pre):  netcfg
-Requires(pre):  pwdutils
 %if 0%{?suse_version} > 1130
 %if 0%{?suse_version} <= 1230
 Requires(pre):  sysvinit(network)
@@ -91,9 +88,20 @@ Requires(pre):  sysvinit(syslog)
 %endif
 %endif
 BuildRequires:  krb5-devel
+%if 0%{?suse_version}
+Requires(pre):  netcfg
+Requires(pre):  pwdutils
 BuildRequires:  libopenssl-devel
-BuildRequires:  openssl
+BuildRequires:  monitoring-plugins-common
 BuildRequires:  tcpd-devel
+%endif
+%if 0%{?fedora_version}
+Requires(pre):  shadow-utils
+BuildRequires:  nagios-plugins-all
+BuildRequires:  openssl-devel
+BuildRequires:  tcp_wrappers-devel
+%endif
+BuildRequires:  openssl
 Recommends:     inet-daemon
 Recommends:     monitoring-plugins-disk
 Recommends:     monitoring-plugins-load
@@ -276,12 +284,17 @@ echo "# Site-specific additions and overrides for 'usr.sbin.nrpe'" > %{buildroot
 # remove the uninstall script: this is done by RPM
 rm %{buildroot}/%{_sbindir}/nrpe-uninstall
 
+%if 0%{?suse_version} >= 1599
+# remove xinetd snipplets on newer distribution, where we do not support xinetd any longer
+rm -rf %{buildroot}%{_sysconfdir}/xinetd.d
+%endif
+
 %pre
 # Create user and group on the system if necessary
 %nagios_user_group_add
 %nagios_command_user_group_add
 # check if the port for nrpe is already defined in /etc/services
-if grep -q %{nrpeport} %{_sysconfdir}/services ; then
+if getent services nrpe >/dev/null ; then
     : OK - port already defined
 else
     %{nnmmsg} "Adding port %{nrpeport} to %{_sysconfdir}/services"
@@ -322,6 +335,7 @@ STATUS='%{_localstatedir}/adm/update-scripts/nrpe'
   elif systemctl -q is-enabled xinetd.service ; then
     echo "systemctl -q reload xinetd.service" >> "$STATUS"
   else
+    # JFYI: no need to restart the nrpe.socket
     touch "$STATUS"
   fi
 %else
@@ -387,10 +401,10 @@ fi
 %{_mandir}/man8/nrpe.8%{?ext_man}
 %dir %{_sysconfdir}/nrpe.d
 %config(noreplace) %{_sysconfdir}/nrpe.cfg
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 && 0%{?suse_version} < 1599
 %dir %{_sysconfdir}/xinetd.d
-%endif
 %config(noreplace) %{_sysconfdir}/xinetd.d/nrpe
+%endif
 %if %{without firewalld}
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/nrpe
 %endif

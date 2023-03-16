@@ -162,4 +162,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>925239</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>68b582b92a2ad52518f547de40eeea57</srcmd5>
+    <version>4.0.3</version>
+    <time>1679003984</time>
+    <user>dimstar_suse</user>
+    <comment>- use getent to check if the nrpe port is already added to the 
+  services description in post-script (bsc#1205157)
+- remove xinetd snipplets on newer (&gt;15.5) distributions: 
+  xinetd is not supported any longer</comment>
+    <requestid>1072360</requestid>
+  </revision>
 </revisionlist>

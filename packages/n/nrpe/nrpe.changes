@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:14:28 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- use getent to check if the nrpe port is already added to the 
+  services description in post-script (bsc#1205157)
+- remove xinetd snipplets on newer (>15.5) distributions: 
+  xinetd is not supported any longer
+
+-------------------------------------------------------------------
 Thu Oct  7 10:08:12 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - follow /bin/bash -> /usr/bin/bash in the apparmor profile
