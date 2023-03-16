@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:48:44 UTC 2023 - jslaby@suse.cz
+
+- Update to version 1.9+git.20230109:
+  * periodic version bump
+- add 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch
+
+-------------------------------------------------------------------
 Mon Jan 09 07:05:48 UTC 2023 - jslaby@suse.cz
 
 - Update to version 1.9+git.20230108:

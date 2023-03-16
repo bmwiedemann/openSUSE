@@ -735,4 +735,14 @@
   * drop decnet</comment>
     <requestid>1056974</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ac134fbb5ee64320dccdc85dfdd9fcbd</srcmd5>
+    <version>1.9+git.20230109</version>
+    <time>1679003947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20230109:
+  * periodic version bump
+- add 0001-kvm-drop-KVM_SET_MEMORY_REGION.patch</comment>
+    <requestid>1072311</requestid>
+  </revision>
 </revisionlist>
