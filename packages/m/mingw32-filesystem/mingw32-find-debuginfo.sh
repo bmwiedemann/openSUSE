@@ -1,5 +1,5 @@
 #!/bin/sh
-#mingw32_find-debuginfo.sh - automagically generate debug info and file list
+#mingw32-find-debuginfo.sh - automagically generate debug info and file list
 #for inclusion in an rpm spec file for mingw32-* packages.
 #
 # $PWD package dir below $BUILDDIR
@@ -83,7 +83,7 @@ do
 	o=`echo $f | sed "s,$BUILDDIR,$destdir,g"`
 	p=`dirname $o`
 	if [ ! -e "$p" ]; then
-		 install -d "$p"
+		install -d "$p"
 	fi
 	echo copying $f to $o
 	install -m 644 $f $o

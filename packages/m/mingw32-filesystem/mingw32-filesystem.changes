@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 16 12:31:06 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20230309
+  * Let cmake macros be based on associated macros from macros.cmake
+  * Add support to define a custom rpm macro when running mingw32
+    related shell scripts, see mingw32-scripts.sh for details
+  * Drop using external dependency generator (boo#1175587)
+  * Add mingw32_*.attr files to support actual used dependency generator
+  * Fix bug that rpm does not use attribute file for cmake by renaming
+    to mingw32_cmake.attr (rpm does not like '-' in those file name
+    and keys inside)
+  * Extend mingw32_cmake.attr to find cmake support files in
+    share subdirectory as required for example by mingw32-dlfcn-win32
+  * Print deprecated message when using %_mingw32_makeinstall or
+    %__mingw32_cmake
+  * Reduce some differences to mingw64 in changes and other files,
+    which are mostly indentions, hours, trailing '/', variable
+    definition rows - make it easier to compare
+
+-------------------------------------------------------------------
 Mon Nov 14 08:20:48 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20221115
@@ -32,9 +52,9 @@ Thu Jul 28 15:22:52 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
   * Added the script 'mingw-objdump-srcfiles' to determine the
     source files used by the package in question.
   * The gawk script is based on a perl script from jengelh, which was
-    not adopted due to an additional runtime dependency. 
+    not adopted due to an additional runtime dependency
   * With this change, *.sym files are no longer included in generated
-    debug packages. 
+    debug packages
   * The now obsolete runtime dependency to mingw32-cross-breakpad-tools
     has been removed
 - Exclude 'mlang.dll' and other dll's from automatic runtime library
@@ -117,9 +137,9 @@ Wed Jul 28 06:04:17 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 - Add provides for bcrypt.dll required by mingw32-gdb 10.2
 
 -------------------------------------------------------------------
-Mon Jul 12 14:28:25 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+Mon Jul 12 14:30:26 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
-- Add missing provide for ncrypt.dll
+- Add provides for ncrypt.dll required by mingw32-gnutls clients
 
 -------------------------------------------------------------------
 Mon Jun 14 10:47:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>

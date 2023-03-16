@@ -23,4 +23,7 @@ addFilter("debuginfo-without-sources")
 # This group is used a lot, so ignore the warning about it.
 addFilter ("^mingw32-.*non-standard-group Development/Libraries$")
 
+# using /opt/testing
+addFilter("^mingw32-*filelist-forbidden-opt")
+
 addFilter("^mingw32-.*potential-bashisms")

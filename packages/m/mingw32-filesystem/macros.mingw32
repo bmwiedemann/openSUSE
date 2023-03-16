@@ -61,7 +61,8 @@
 
 %_mingw32_cache           mingw32-config.cache
 
-# setup rpmbuild hooks
+#
+# Experimental import library scanning support: 
 # 
 # To provide project wide import library scanning add this to project config 
 #   Macros:
@@ -71,6 +72,10 @@
 #   %global _mingw32_find_requires_scan_implibs 1
 # to the related spec file
 #
+
+# 
+# Support to exclude shared libraries from generating runtime dependencies
+# 
 # To exclude project wide shared library requirements add this to project config 
 #   Macros:
 #   %_mingw32_find_requires_exclude d3d12 ... [%{nil}]
@@ -79,8 +84,11 @@
 #   %global _mingw32_find_requires_exclude d3d12 ... [%{nil}]
 # to the related spec file
 # 
-%_mingw32_findprovides    /usr/lib/rpm/mingw32-find-provides.sh
-%_mingw32_findrequires    /usr/lib/rpm/mingw32-find-requires.sh %{?_mingw32_find_requires_exclude:--exclude "%_mingw32_find_requires_exclude"} %{?_mingw32_find_requires_scan_implibs:--scan-implibs}
+# see mingw32_reqprov.attr for details
+
+#
+# setup rpmbuild hooks
+# 
 %_mingw32_install_post    /usr/lib/rpm/mingw32-install-post.sh
 %_mingw32_find_lang       /usr/lib/rpm/mingw32-find-lang.sh %{buildroot}
 
@@ -148,20 +156,13 @@ package or when debugging this package.\
 %_mingw32_package_header \
   %global __strip %{_mingw32_strip} \
   %global __objdump %{_mingw32_objdump} \
-  %global _use_internal_dependency_generator 0 \
-  %global __find_requires %{_mingw32_findrequires} \
-  %global __find_provides %{_mingw32_findprovides} \
   %global __os_install_post %{_mingw32_install_post}
-
 
 # this macro also disables the default debug package
 %_mingw32_package_header_debug \
   %global debug_package %{nil} \
   %global __strip %{_mingw32_strip} \
   %global __objdump %{_mingw32_objdump} \
-  %global _use_internal_dependency_generator 0 \
-  %global __find_requires %{_mingw32_findrequires} \
-  %global __find_provides %{_mingw32_findprovides} \
   %global __os_install_post %{_mingw32_debug_install_post} \\\
                             %{_mingw32_install_post}
 
@@ -219,7 +220,9 @@ package or when debugging this package.\
   install
 
 # deprecated, use _mingw32_make_install (unix variant is named %make_install)
-%_mingw32_makeinstall %_mingw32_make_install
+%_mingw32_makeinstall \
+   echo "Deprecated %%_mingw32_makeinstall macro used, please use %%_mingw32_make_install" \
+   %_mingw32_make_install
 
 # requires installed packages wine and mingw32-gdb
 %_mingw32_gdb %{_mingw32_env} ; \
