@@ -29,7 +29,7 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-3D/PyQt6_3D-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= %{version}}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
