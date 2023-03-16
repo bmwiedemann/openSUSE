@@ -68,6 +68,8 @@ from verbose to completely silent.
 
 %suse_update_desktop_file org.kde.kdebugsettings Utility DesktopUtility
 
+%ldconfig_scriptlets
+
 %files
 %license LICENSES/*
 %dir %{_kf5_sharedir}/kdebugsettings/
