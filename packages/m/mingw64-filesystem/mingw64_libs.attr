@@ -1,0 +1,3 @@
+%__mingw64_libs_provides	%{_rpmconfigdir}/mingw64-find-provides.sh
+%__mingw64_libs_requires	%{_rpmconfigdir}/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"} %{?_mingw64_find_requires_scan_implibs:--scan-implibs}
+%__mingw64_libs_path		^(%{_mingw64_libdir}/.*\.a)$

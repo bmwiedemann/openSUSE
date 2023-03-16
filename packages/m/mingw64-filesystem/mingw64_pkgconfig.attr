@@ -1,0 +1,3 @@
+%__mingw64_pkgconfig_provides	%{_rpmconfigdir}/mingw64-find-provides.sh
+%__mingw64_pkgconfig_requires	%{_rpmconfigdir}/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"}
+%__mingw64_pkgconfig_path	^(%{_mingw64_datadir}|%{_mingw64_libdir})/pkgconfig/.*\.pc$

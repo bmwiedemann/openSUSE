@@ -1,6 +1,15 @@
-# internal macro used by related filesystem packages
-%__mingw64_cmake %{_mingw64_env} ; \
-  cmake \\\
+#
+# Macros for cmake for mingw64
+#
+# depends on macros.cmake
+#
+%__cmake_generator %{lua: if rpm.expand("%__builder") == rpm.expand("%__make") then print("-G'Unix Makefiles'") else print("-GNinja") end}
+
+%_mingw64_cmake %{_mingw64_env} ; \
+    mkdir -p %__builddir \
+    cd %__builddir \
+    %__cmake $OLDPWD/%__sourcedir \\\
+         %__cmake_generator \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
         -DCMAKE_VERBOSE_MAKEFILE=ON \\\
         -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
@@ -22,10 +31,17 @@
         -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \\\
         -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
 
-# cmake > 3.13.1 requires setting source dir 
-%_mingw64_cmake %{__mingw64_cmake} .
+%__mingw64_cmake \
+   echo "Deprecated %%__mingw64_cmake macro used, please use %%_mingw64_cmake" \
+   %{_mingw64_cmake}
 
 %_mingw64_cmake_build %cmake_build
 
-%_mingw64_cmake_install %{_mingw64_env} ; \
-  make VERBOSE=1 DESTDIR=%{buildroot} install/fast
+%_mingw64_cmake_install %{_mingw64_env}; \
+    %cmake_install
+
+%_mingw64_ctest(:-:) \
+    cd %__builddir \
+    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** \
+    cd $OLDPWD
+ 

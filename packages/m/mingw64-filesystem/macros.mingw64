@@ -28,7 +28,7 @@
 %_mingw64_cxxflags        %{_mingw64_cflags}
 
 %_mingw64_ldflags_base    -Wl,--exclude-libs=libintl.a -Wl,--exclude-libs=libiconv.a -Wl,--no-keep-memory
-# used for bootstrap packages
+# for bootstrap packages
 %_mingw64_ldflags_bootstrap %{_mingw64_ldflags_base}
 # for normal packages
 %_mingw64_ldflags         %{_mingw64_ldflags_base} -fstack-protector
@@ -61,7 +61,8 @@
 
 %_mingw64_cache           mingw64-config.cache
 
-# setup rpmbuild hooks
+#
+# Experimental import library scanning support: 
 # 
 # To provide project wide import library scanning add this to project config 
 #   Macros:
@@ -71,16 +72,23 @@
 #   %global _mingw64_find_requires_scan_implibs 1
 # to the related spec file
 #
+
+# 
+# Support to exclude shared libraries from generating runtime dependencies
+# 
 # To exclude project wide shared library requirements add this to project config 
 #   Macros:
-#   %_mingw64_find_requires_exclude d3d12 ... [%{nil}] 
+#   %_mingw64_find_requires_exclude d3d12 ... [%{nil}]
 #   :Macros
 # for a single package add 
 #   %global _mingw64_find_requires_exclude d3d12 ... [%{nil}]
 # to the related spec file
 # 
-%_mingw64_findprovides    /usr/lib/rpm/mingw64-find-provides.sh
-%_mingw64_findrequires    /usr/lib/rpm/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"} %{?_mingw64_find_requires_scan_implibs:--scan-implibs}
+# see mingw64_*.attr for details
+
+#
+# setup rpmbuild hooks
+# 
 %_mingw64_install_post    /usr/lib/rpm/mingw64-install-post.sh
 %_mingw64_find_lang       /usr/lib/rpm/mingw64-find-lang.sh %{buildroot}
 
@@ -88,7 +96,7 @@
    /usr/lib/rpm/mingw64-find-debuginfo.sh %{_builddir} 1\
 %{nil}
 
-# Template for debug sub-package.
+# Template for combined debuginfo and debugsource sub-package.
 %_mingw64_debug_package(n:) \
 %package %{-n:-n %{-n*}-}debug \
 Summary: Debug information for package %{name} \
@@ -148,9 +156,6 @@ package or when debugging this package.\
 %_mingw64_package_header \
   %global __strip %{_mingw64_strip} \
   %global __objdump %{_mingw64_objdump} \
-  %global _use_internal_dependency_generator 0 \
-  %global __find_requires %{_mingw64_findrequires} \
-  %global __find_provides %{_mingw64_findprovides} \
   %global __os_install_post %{_mingw64_install_post}
 
 # this macro also disables the default debug package
@@ -158,9 +163,6 @@ package or when debugging this package.\
   %global debug_package %{nil} \
   %global __strip %{_mingw64_strip} \
   %global __objdump %{_mingw64_objdump} \
-  %global _use_internal_dependency_generator 0 \
-  %global __find_requires %{_mingw64_findrequires} \
-  %global __find_provides %{_mingw64_findprovides} \
   %global __os_install_post %{_mingw64_debug_install_post} \\\
                             %{_mingw64_install_post}
 
@@ -218,8 +220,10 @@ package or when debugging this package.\
   install
 
 # deprecated, use _mingw64_make_install (unix variant is named %make_install)
-%_mingw64_makeinstall %_mingw64_make_install
+%_mingw64_makeinstall \
+   echo "Deprecated %%_mingw64_makeinstall macro used, please use %%_mingw64_make_install" \
+   %_mingw64_make_install
 
-# requires installed packaged wine and mingw64-gdb
+# requires installed packages wine and mingw64-gdb
 %_mingw64_gdb %{_mingw64_env} ; \
   wineconsole %{_mingw64_bindir}/gdb.exe

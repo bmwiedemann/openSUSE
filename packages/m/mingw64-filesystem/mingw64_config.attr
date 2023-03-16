@@ -1,0 +1,2 @@
+%__mingw64_config_requires	%{_rpmconfigdir}/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"}
+%__mingw64_config_path	^%{_mingw64_bindir}/.*config$

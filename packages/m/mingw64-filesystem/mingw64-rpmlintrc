@@ -1,3 +1,5 @@
+# not used on Leap 15.x for linting mingw64-filesystem package
+
 # Unconditionally remove devel-file-in-non-devel rpmlint warning.
 addFilter ("^mingw64-.*devel-file-in-non-devel")
 

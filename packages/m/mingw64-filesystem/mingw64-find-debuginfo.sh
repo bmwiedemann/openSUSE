@@ -1,17 +1,20 @@
 #!/bin/sh
 #mingw64-find-debuginfo.sh - automagically generate debug info and file list
 #for inclusion in an rpm spec file for mingw64-* packages.
+#
+# $PWD package dir below $BUILDDIR
+
 target="mingw64"
 host="x86_64-w64-mingw32"
+
+# speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
+export MALLOC_CHECK_=0
+export MALLOC_PERTURB_=0
 
 BUILDDIR=.
 if [ -n "$1" ]; then
 	BUILDDIR="$1"
 fi
-
-# speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
-export MALLOC_CHECK_=0
-export MALLOC_PERTURB_=0
 
 # generate separate debuginfo and debugsource or single debug package combining both
 if [ -n "$2" ]; then
@@ -62,7 +65,7 @@ find $RPM_BUILD_ROOT -type f \
 	-or -name "*.exe.mdb" \
 	-or -name "*.dll.mdb" \
 | sort \
-| sed -n -e "s#^$RPM_BUILD_ROOT##p" >"$BUILDDIR/$target-debugfiles.list"
+| sed -n -e "s#^$RPM_BUILD_ROOT##p" > $BUILDDIR/$target-debugfiles.list
 
 echo creating debugsource file structure
 

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-filesystem
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20221115
+Version:        20230309
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -50,10 +50,15 @@ Source9:        mingw64-find-lang.sh
 Source10:       languages
 Source11:       languages.man
 Source12:       mingw64-cmake.prov
-Source13:       mingw64-cmake.attr
+Source13:       mingw64_cmake.attr
 Source14:       macros.mingw64-cmake
 Source15:       mingw64-filesystem-rpmlintrc
 Source16:       mingw-objdump-srcfiles
+Source17:       mingw64_binaries.attr
+Source18:       mingw64_cmake.attr
+Source19:       mingw64_config.attr
+Source20:       mingw64_libs.attr
+Source21:       mingw64_pkgconfig.attr
 # add excluded system libraries to mingw64-find-requires.sh
 # TODO: The following provides could be removed after all packages has been rebuild
 Provides:       mingw64(bcrypt.dll)
@@ -114,13 +119,13 @@ install -m 755 %{SOURCE6} %{buildroot}%{_libexecdir}/mingw64-scripts
 # but including macros.mingw64 results into an unknown failure
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-for i in mingw64-configure mingw64-make mingw64-cmake mingw64-gdb ; do
+for i in mingw64-configure mingw64-make mingw64-cmake mingw64-gdb; do
   ln -s %{_libexecdir}/mingw64-scripts $i
 done
 popd
 
 mkdir -p %{buildroot}%{_distconfdir}/profile.d
-install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/profile.d
+install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw64
@@ -182,11 +187,16 @@ install -m 0755 %{SOURCE4} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE5} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE8} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE9} %{buildroot}%{_rpmconfigdir}
-
 # cmake support
 install -m 0755 %{SOURCE12} %{buildroot}%{_rpmconfigdir}
 mkdir -p %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE13} %{buildroot}%{_fileattrsdir}
+# dependency generator support
+install -m 0644 %{SOURCE17} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE18} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE19} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE20} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE21} %{buildroot}%{_fileattrsdir}
 
 # Create the locale directories:
 while read LANG ; do
@@ -217,8 +227,9 @@ install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/x86_64-w64-mingw32-objdump-sr
 %else
 %_rpmlintdir/mingw64-rpmlint.config
 %endif
-%{_rpmconfigdir}/mingw64-cmake.prov
-%{_fileattrsdir}/mingw64-cmake.attr
+
+%{_rpmconfigdir}/mingw64-*.prov
+%{_fileattrsdir}/mingw64*.attr
 %{_bindir}/mingw64-*
 %{_bindir}/x86_64-w64-mingw32-*
 %{_libexecdir}/mingw64-scripts

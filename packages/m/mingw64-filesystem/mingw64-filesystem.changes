@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 16 12:31:06 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20230309
+  * Let cmake macros be based on associated macros from macros.cmake
+  * Add support to define a custom rpm macro when running mingw64
+    related shell scripts, see mingw64-scripts.sh for details
+  * Drop using external dependency generator (boo#1175587)
+  * Add mingw64_*.attr files to support actual used dependency generator
+  * Fix bug that rpm does not use attribute file for cmake by renaming
+    to mingw64_cmake.attr (rpm does not like '-' in those file name
+    and keys inside)
+  * Extend mingw64_cmake.attr to find cmake support files in
+    share subdirectory as required for example by mingw64-dlfcn-win32
+  * Print deprecated message when using %_mingw64_makeinstall or
+    %__mingw64_cmake
+  * Reduce some differences to mingw32 in changes and other files,
+    which are mostly indentions, hours, trailing '/', variable
+    definition rows - make it easier to compare
+
+-------------------------------------------------------------------
 Mon Nov 14 08:20:48 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20221115
@@ -6,7 +26,7 @@ Mon Nov 14 08:20:48 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
   * Change dependency to mingw64-cross-binutils-utils and
     mingw64-cross-pkgconf-utils to avoid cyclic dependencies (boo#1204985)
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Aug 29 10:17:22 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix generating invalid source file path when scanning binaries
@@ -32,14 +52,14 @@ Thu Jul 28 15:22:52 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
   * Added the script 'mingw-objdump-srcfiles' to determine the
     source files used by the package in question.
   * The gawk script is based on a perl script from jengelh, which was
-    not adopted due to an additional runtime dependency. 
+    not adopted due to an additional runtime dependency
   * With this change, *.sym files are no longer included in generated
-    debug packages. 
+    debug packages
   * The now obsolete runtime dependency to mingw64-cross-breakpad-tools
     has been removed
-- Exclude 'mlang.dll' from automatic runtime library detection required
-  for win_iconv package
-- Fix spelling in *.changes  
+- Exclude 'mlang.dll' and other dll's from automatic runtime library
+  detection required for win_iconv and libqt5 packages
+- Fix spelling in *.changes
 
 -------------------------------------------------------------------
 Thu Jul 28 09:03:20 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
@@ -77,7 +97,7 @@ Sun Jun  5 05:03:17 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 - Add optional support for excluding runtime DLL dependencies to avoid
   rebuilding the whole project, see macro %_mingw64_find_requires_exclude
   in macros.mingw64 for details
-  
+
 -------------------------------------------------------------------
 Mon May 23 13:58:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
@@ -90,7 +110,7 @@ Mon May 23 13:58:15 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
   when parsing xxx-config files
 
 -------------------------------------------------------------------
-Thu Dec  2 14:04:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+Thu Dec  2 14:06:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change all version comparisons for Tumbleweed to >= 1550 (instead
   of == 1550). Anything in Tumbleweed counts for current Tumbleweed
@@ -115,7 +135,7 @@ Tue Sep 14 06:39:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Jul 28 06:04:17 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
--  Add provides for bcrypt.dll required by mingw64-gdb 10.2
+- Add provides for bcrypt.dll required by mingw64-gdb 10.2
 
 -------------------------------------------------------------------
 Mon Jul 12 14:30:26 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
@@ -135,13 +155,8 @@ Thu Nov  5 10:38:47 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 - Update to 20201105
 - Add macro _mingw64_create_macro_links
 - Add macro _mingw64_gdb and command line wrapper /usr/bin/mingw64-gdb
-- In mingw64-scripts support rpm macro processing to
+- In mingw64-scripts support rpm macro processing according to
   https://rpm.org/user_doc/macros.htm
-
--------------------------------------------------------------------
-Sun Nov  1 10:38:47 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
-
-- Add macro _mingw64_gdb and command line wrapper /usr/bin/mingw64-gdb
 
 -------------------------------------------------------------------
 Sat Oct 17 14:32:20 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
@@ -194,7 +209,7 @@ Sun Apr 19 17:39:26 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 - Process debuginfo in a reproducible way (boo#1041090)
 
 -------------------------------------------------------------------
-Wed Dec 18 21:49:44 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
+Wed Dec 18 21:49:04 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
 
 - Revert -lssp 
 
@@ -215,6 +230,11 @@ Mon Nov 25 16:31:30 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
 Mon Nov 25 05:05:10 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Add -fstack-protector to LDFLAGS 
+
+-------------------------------------------------------------------
+Sun Nov 24 21:36:08 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- fix compile errors: undefined reference to `__memcpy_chk`
 
 -------------------------------------------------------------------
 Fri Nov 22 10:58:42 UTC 2019 - Ludwig Nussel <lnussel@suse.de>

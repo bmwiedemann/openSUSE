@@ -1,0 +1,3 @@
+%__mingw64_binaries_provides	%{_rpmconfigdir}/mingw64-find-provides.sh
+%__mingw64_binaries_requires	%{_rpmconfigdir}/mingw64-find-requires.sh %{?_mingw64_find_requires_exclude:--exclude "%_mingw64_find_requires_exclude"}
+%__mingw64_binaries_magic	PE32[+] executable
