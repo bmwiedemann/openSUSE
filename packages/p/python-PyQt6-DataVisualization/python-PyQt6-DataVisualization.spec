@@ -28,8 +28,9 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/PyQt6_%{qtlib}-%{version}.tar.gz
+Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module pyqt-builder >= 1.10}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
