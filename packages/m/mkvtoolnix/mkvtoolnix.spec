@@ -89,7 +89,7 @@ mkvextract, mkvinfo, mkvmerge and mkvpropedit.
 %package gui
 Summary:        Graphical user interface for mkvtoolnix utils
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 Requires:       qt6-multimedia
 %else
 Requires:       qt5-multimedia
