@@ -1243,4 +1243,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   kubelet.env docker-kubic-service.conf 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch</comment>
     <requestid>1062476</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>cae93066d987d2791a19b9705458dabb</srcmd5>
+    <version>20.10.23_ce</version>
+    <time>1679003861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072262</requestid>
+  </revision>
 </revisionlist>
