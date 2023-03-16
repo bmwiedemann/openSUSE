@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 15 13:32:12 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1678887116.6d02300:
+  * Don't set NUMDISKS to the default of 1
+  * Isotovideo/Utils.pm: Fix undefined NUMDISKS for generalhw
+  * Explicitly specify backingfile format
+  * Fix flaky codecov coverage checks about t/data/tests
+  * Stream run_cmd output in generalhw backend
+
+-------------------------------------------------------------------
 Sat Mar 11 02:33:46 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1678302794.ef0676d:
