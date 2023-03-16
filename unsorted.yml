@@ -542,6 +542,7 @@ unsorted:
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
+  - amfora 
   - aml-devel 
   - amsynth 
   - amsynth-lang 
@@ -978,6 +979,7 @@ unsorted:
   - atuin-bash-completion 
   - atuin-fish-completion 
   - atuin-zsh-completion 
+  - aubio-docs 
   - aubio-tools 
   - audacious 
   - audacious-devel 
@@ -2428,6 +2430,8 @@ unsorted:
   - coredns-for-k8s1.23-extras 
   - coredns-for-k8s1.24 
   - coredns-for-k8s1.24-extras 
+  - coredns-for-k8s1.26 
+  - coredns-for-k8s1.26-extras 
   - corepack18 
   - corepack19 
   - coreutils-doc: [i586] 
@@ -3598,6 +3602,7 @@ unsorted:
   - epymc: [x86_64] 
   - epymc-lang: [x86_64] 
   - equalx 
+  - erdtree 
   - eremaea 
   - erfa-devel 
   - erfa-devel-static 
@@ -8475,6 +8480,8 @@ unsorted:
   - kdbusaddons-devel 
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
+  - kde-inotify-survey 
+  - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -9015,6 +9022,7 @@ unsorted:
   - kubernetes1.24-kubelet-common: [x86_64] 
   - kubernetes1.24-proxy: [x86_64] 
   - kubernetes1.24-scheduler: [x86_64] 
+  - kubescape 
   - kubeseal 
   - kubetap 
   - kubeval 
@@ -9401,7 +9409,9 @@ unsorted:
   - libFAudio0-32bit: [x86_64] 
   - libFLAC++10: [i586] 
   - libFLAC++10-32bit: [x86_64] 
+  - libFLAC++10-x86-64-v3: [x86_64] 
   - libFLAC12-32bit: [x86_64] 
+  - libFLAC12-x86-64-v3: [x86_64] 
   - libFOX-1_6-0 
   - libFS-devel 
   - libFS-devel-32bit: [x86_64] 
@@ -10227,17 +10237,17 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute29: [x86_64] 
-  - libarm_compute_core29: [x86_64] 
-  - libarm_compute_graph29: [x86_64] 
-  - libarmadillo11 
-  - libarmadillo11-32bit: [x86_64] 
-  - libarmnn31: [x86_64] 
-  - libarmnn31-opencl: [x86_64] 
-  - libarmnnBasePipeServer31: [x86_64] 
-  - libarmnnBasePipeServer31-opencl: [x86_64] 
-  - libarmnnSerializer31: [x86_64] 
-  - libarmnnSerializer31-opencl: [x86_64] 
+  - libarm_compute30: [x86_64] 
+  - libarm_compute_core30: [x86_64] 
+  - libarm_compute_graph30: [x86_64] 
+  - libarmadillo12 
+  - libarmadillo12-32bit: [x86_64] 
+  - libarmnn32: [x86_64] 
+  - libarmnn32-opencl: [x86_64] 
+  - libarmnnBasePipeServer32: [x86_64] 
+  - libarmnnBasePipeServer32-opencl: [x86_64] 
+  - libarmnnSerializer32: [x86_64] 
+  - libarmnnSerializer32-opencl: [x86_64] 
   - libarmnnTestUtils2: [x86_64] 
   - libarmnnTestUtils2-opencl: [x86_64] 
   - libarmnnTfLiteParser24: [x86_64] 
@@ -12772,6 +12782,7 @@ unsorted:
   - liblz1 
   - liblz4-1-x86-64-v3: [x86_64] 
   - liblz4-devel 
+  - liblzma5-x86-64-v3: [x86_64] 
   - liblzo2-2-32bit: [x86_64] 
   - libm17n0-32bit: [x86_64] 
   - libm2cor18 
@@ -13001,6 +13012,7 @@ unsorted:
   - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
+  - libmp3lame0-x86-64-v3: [x86_64] 
   - libmpc3-32bit: [x86_64] 
   - libmpcdec-devel 
   - libmpcdec5 
@@ -14742,6 +14754,7 @@ unsorted:
   - libsqlcipher-3_39_4-0-32bit: [x86_64] 
   - libsqlcipher-3_39_4-0-x86-64-v3: [x86_64] 
   - libsqlite3-0-32bit: [x86_64] 
+  - libsqlite3-0-x86-64-v3: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
   - libsrecord0 
@@ -14907,7 +14920,7 @@ unsorted:
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
-  - libswresample4-32bit: [x86_64] 
+  - libswresample4_ff5-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
   - libswscale6-32bit: [x86_64] 
   - libsybdb5 
@@ -15020,11 +15033,10 @@ unsorted:
   - libtidyp-devel 
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
-  - libtiled1 
-  - libtimelineDecoder31: [x86_64] 
-  - libtimelineDecoder31-opencl: [x86_64] 
-  - libtimelineDecoderJson31: [x86_64] 
-  - libtimelineDecoderJson31-opencl: [x86_64] 
+  - libtimelineDecoder32: [x86_64] 
+  - libtimelineDecoder32-opencl: [x86_64] 
+  - libtimelineDecoderJson32: [x86_64] 
+  - libtimelineDecoderJson32-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -15390,7 +15402,10 @@ unsorted:
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
+  - libvorbis0-x86-64-v3: [x86_64] 
   - libvorbisenc2-32bit: [x86_64] 
+  - libvorbisenc2-x86-64-v3: [x86_64] 
+  - libvorbisfile3-x86-64-v3: [x86_64] 
   - libvoro++0 
   - libvotca2022 
   - libvotequorum8 
@@ -16100,7 +16115,6 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
-  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
@@ -19543,6 +19557,7 @@ unsorted:
   - pam-extra 
   - pam-extra-32bit: [x86_64] 
   - pam-fscrypt 
+  - pam-fscrypt-32bit: [x86_64] 
   - pam-test 
   - pam_apparmor 
   - pam_apparmor-32bit: [x86_64] 
@@ -21659,6 +21674,7 @@ unsorted:
   - pmix-headers 
   - pmix-mca-params 
   - pmix-plugin-munge 
+  - pmix-pluginlib 
   - pmix-plugins 
   - pmix-test 
   - pnetcdf-devel-data: [x86_64] 
@@ -23239,6 +23255,7 @@ unsorted:
   - python310-azure-mgmt-datamigration 
   - python310-azure-mgmt-dataprotection 
   - python310-azure-mgmt-datashare 
+  - python310-azure-mgmt-defendereasm 
   - python310-azure-mgmt-deploymentmanager 
   - python310-azure-mgmt-devcenter 
   - python310-azure-mgmt-deviceupdate 
@@ -25811,7 +25828,7 @@ unsorted:
   - python310-unsync 
   - python310-untokenize 
   - python310-unyt 
-  - python310-uproot 
+  - python310-uproot: [x86_64] 
   - python310-uri-template 
   - python310-uritemplate 
   - python310-uritools 
@@ -26540,6 +26557,7 @@ unsorted:
   - python311-azure-mgmt-datamigration 
   - python311-azure-mgmt-dataprotection 
   - python311-azure-mgmt-datashare 
+  - python311-azure-mgmt-defendereasm 
   - python311-azure-mgmt-deploymentmanager 
   - python311-azure-mgmt-devcenter 
   - python311-azure-mgmt-deviceupdate 
@@ -27334,6 +27352,7 @@ unsorted:
   - python311-glean-parser 
   - python311-glfw 
   - python311-glob2 
+  - python311-glucat 
   - python311-gmpy2 
   - python311-gns3fy 
   - python311-gobject 
@@ -29828,6 +29847,7 @@ unsorted:
   - python38-azure-mgmt-datamigration 
   - python38-azure-mgmt-dataprotection 
   - python38-azure-mgmt-datashare 
+  - python38-azure-mgmt-defendereasm 
   - python38-azure-mgmt-deploymentmanager 
   - python38-azure-mgmt-devcenter 
   - python38-azure-mgmt-deviceupdate 
@@ -32497,7 +32517,7 @@ unsorted:
   - python38-unsync 
   - python38-untokenize 
   - python38-unyt 
-  - python38-uproot 
+  - python38-uproot: [x86_64] 
   - python38-uri-template 
   - python38-uritemplate 
   - python38-uritools 
@@ -33247,6 +33267,7 @@ unsorted:
   - python39-azure-mgmt-datamigration 
   - python39-azure-mgmt-dataprotection 
   - python39-azure-mgmt-datashare 
+  - python39-azure-mgmt-defendereasm 
   - python39-azure-mgmt-deploymentmanager 
   - python39-azure-mgmt-devcenter 
   - python39-azure-mgmt-deviceupdate 
@@ -35916,7 +35937,7 @@ unsorted:
   - python39-unsync 
   - python39-untokenize 
   - python39-unyt 
-  - python39-uproot 
+  - python39-uproot: [x86_64] 
   - python39-uri-template 
   - python39-uritemplate 
   - python39-uritools 
