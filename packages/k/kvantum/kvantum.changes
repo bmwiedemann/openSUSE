@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:01:17 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use qt6_build macros to fix build in SLE15 SP5
+
+-------------------------------------------------------------------
 Wed Mar 15 06:31:24 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Fix a typo in kvantum-themes dep-requirement

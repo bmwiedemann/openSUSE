@@ -52,11 +52,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 %endif
 %if 0%{?qt6}
-%if 0%{?sle_version} == 150400
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Svg)
 %endif
@@ -120,16 +115,18 @@ pushd Kvantum
 %cmake_build
 %endif
 %if 0%{?qt6}
-%if 0%{?sle_version} == 150400
-export CXX=g++-10
-%endif
-%cmake -DENABLE_QT5=OFF
-%cmake_build
+%cmake_qt6 -DENABLE_QT5=OFF
+%{qt6_build}
 %endif
 
 %install
 pushd Kvantum
+%if 0%{?qt5}
 %cmake_install
+%endif
+%if 0%{?qt6}
+%{qt6_install}
+%endif
 
 %if 0%{?qt5}
 %fdupes %{buildroot}%{_datadir}/themes
