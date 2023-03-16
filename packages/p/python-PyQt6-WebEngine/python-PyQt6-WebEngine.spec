@@ -27,8 +27,9 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/%{muname}-%{version}.tar.gz
+Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
@@ -64,7 +65,7 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%setup -q -n %{muname}-%{version}
+%autosetup -p1 -n %{muname}-%{version}
 
 %build
 %pyqt_build
