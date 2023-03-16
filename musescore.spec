@@ -26,7 +26,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -65,6 +65,8 @@ Source5:        README.SUSE
 Patch0:         use-qtmake-qt5.patch
 # PATCH-FIX-UPSTREAM: fix build with jack on linux.
 Patch1:         0dde64eef84.patch
+# PATCH-FIX-UPSTREAM: make compiler happy by adding returns
+Patch2:         musescore-4.0.2-return.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

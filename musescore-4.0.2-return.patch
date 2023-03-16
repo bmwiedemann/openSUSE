@@ -1,0 +1,28 @@
+Index: MuseScore-4.0.2/src/project/internal/projectactionscontroller.cpp
+===================================================================
+--- MuseScore-4.0.2.orig/src/project/internal/projectactionscontroller.cpp
++++ MuseScore-4.0.2/src/project/internal/projectactionscontroller.cpp
+@@ -934,6 +934,7 @@ bool ProjectActionsController::askIfUser
+     default:
+         return false;
+     }
++    return false;
+ }
+ 
+ void ProjectActionsController::warnScoreWithoutPartsCannotBeSaved()
+@@ -960,6 +961,7 @@ bool ProjectActionsController::askIfUser
+     case SaveLocationType::Undefined:
+         return false;
+     }
++    return false;
+ }
+ 
+ void ProjectActionsController::warnCorruptedScoreCannotBeSavedOnCloud(const std::string& errorText, bool canRevert)
+@@ -1040,6 +1042,7 @@ bool ProjectActionsController::askIfUser
+     case SaveLocationType::Undefined:
+         return false;
+     }
++    return false;
+ }
+ 
+ void ProjectActionsController::showErrCorruptedScoreCannotBeSaved(const SaveLocation& location, const std::string& errorText)

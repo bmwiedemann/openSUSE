@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:21:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.2:
+  * Score corruption fixes
+    - Multiple issues causing score corruption have been fixed
+    - Part scores are now scanned for corruptions
+    - There is now a more comprehensive system for alerting you
+      when there are corruptions identified on your score (including
+      a mechanism to help you avoid saving those corruptions)
+  * Usability improvements
+    - The Properties panel has been improved so it's possible to edit
+      the visibility, colour and play settings of individual notes within chords
+    - Toggling visibility of notes within chords now produces more predictable results
+    - Images in frames can now be deleted
+    - Parts can now be reset to their original layout
+    - The UI is now easier to interact with when the user is holding the mouse unsteadily
+    - The audio export process can now be cancelled
+    - There's a new feature to save relevant diagnostic files (making it
+      easier to get support from MuseScore developers)
+  * Performance enhancements
+    - Major improvements to how MuseScore handles with WASAPI (Benefits Windows users)
+  * Bugs squashed and regressions repaired
+    - Various crashes have been fixed (including numerous VST-related crashes)
+    - Zoom controls in the status bar are easier to use and more intuitive
+    - Various problems with the visual behaviour of the app on second monitors are now resolved
+    - Text line spacing option has been reinstated in Properties
+    - Some playback problems have been resolved, including when entering tablature
+      notation, and when changing the tempo using the tempo slider
+    - Multiple other minor bug fixes
+  * A ton of engraving fixes and improvements
+    - Multiple fixes to system-line objects
+    - Several errors arising from setting notes to cue size are resolved
+    - Fixes to the behaviour of system objects
+    - Various fixes to the behaviour of stems
+    - Voices now align correctly in 'full' tab staves
+    - Sticking in percussion music no longer breaks slurs
+    - Slurs now show correctly in parts when only some voices are displayed
+    - Cross-page glissando lines have been finessed
+    - Various collisions have been resolved (clefs and key signatures, accidentals and cross-staff beams)
+- Add musescore-4.0.2-return.patch: to make the compiler happy
+
+-------------------------------------------------------------------
 Sat Mar 11 11:07:40 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - More licenses found, also include licenses for sources we don't
