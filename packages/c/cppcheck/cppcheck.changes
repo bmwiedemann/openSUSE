@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 20:23:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.3:
+  * SymbolDatabase: Fix handling of function pointer arguments 
+
+-------------------------------------------------------------------
 Mon Feb 27 21:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.2:
