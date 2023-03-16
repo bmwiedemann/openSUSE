@@ -98,6 +98,8 @@ Personal alarm message, command and email scheduler by KDE.
 
 %suse_update_desktop_file org.kde.kalarm Utility TimeUtility
 
+%ldconfig_scriptlets
+
 %files
 %license LICENSES/*
 %doc README
