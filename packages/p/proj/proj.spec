@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.12
+%define data_version 1.13
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.1.1
+Version:        9.2.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -114,7 +114,7 @@ License:        MIT
 %data_subpkg -c za -n %{quote:South Africa}
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -175,6 +175,8 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/projjson.schema.json
 %{_datadir}/%{name}/triangulation.schema.json
 %{_datadir}/%{name}/world
+%{_datadir}/%{name}/si_gurs_README.txt
+%{_datadir}/%{name}/si_gurs_SLO-VRP2016-Koper.tif
 
 %files -n %{libname}
 %license COPYING
