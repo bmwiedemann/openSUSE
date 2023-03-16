@@ -4,10 +4,10 @@ Date:   Tue Dec 6 13:19:35 2022 -0700
 
     Fix cmake error when building with jack on Linux
 
-diff --git a/build/cmake/FindJack.cmake b/build/cmake/FindJack.cmake
-index 6713e3aeef..d1676fa82b 100644
---- a/build/cmake/FindJack.cmake
-+++ b/build/cmake/FindJack.cmake
+Index: MuseScore-4.0.2/build/cmake/FindJack.cmake
+===================================================================
+--- MuseScore-4.0.2.orig/build/cmake/FindJack.cmake
++++ MuseScore-4.0.2/build/cmake/FindJack.cmake
 @@ -28,6 +28,7 @@ IF(BUILD_JACK)
             set (JACK_LIB "$ENV{${progenv}}/Jack/lib/libjack.a")
             MESSAGE("JACK support enabled.")
