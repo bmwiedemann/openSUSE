@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Mar 16 04:50:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to v1.3.1:
+  * Pick lowest delta when fuzzy matching refreshes
+  * Fall back to "Unknown" when make/model/serial is unset
+
+-------------------------------------------------------------------
+Tue Aug 30 11:12:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to v1.3.0:
+  * This release adds an IPC interface with a kanshictl utility,
+    improves make-model-serial matching, and fixes a handful of bugs.
+    libvarlink is a new optional dependency.
+  * Support output-management version 3 release requests
+  * Improve the make-model-serial matching of outputs
+  * Upgrade wlr-output-management-unstable-v1.xml to version 2
+
+-------------------------------------------------------------------
+Sun Jun 26 11:16:50 UTC 2022 - Tomasz Hołubowicz <alternateved@pm.me>
+
+- Update to v1.2.0
+  * parser: print errno when failing to open the config file
+  * parser: explicitly initialize key (kanshi_output_field) to 0
+  * [man 5] Add blockquotes to ensure line break
+  * Properly reap children to avoid zombies
+  * Add missing header after 5a30abdf0b3b
+  * Accept user-specified config path
+  * Add 'include' directive to read additional configs
+  * Add the 'profile' directive in kanshi(5) examples
+  * readme: move to Libera Chat
+  * readme: switch to new profile syntax
+  * build: bump version to 1.2.0
+  * parser: use abort() instead of assert(0)
+
+-------------------------------------------------------------------
+Fri Apr 17 11:52:01 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to v1.1.0
+  * Add support for comments in configuration file
+  * Allow names to distinguish configuration
+  * Add `exec` to execute commands when a configuration is matched
+  * Be tolerant to matching refresh rates that are a few points off.
+  * Select highest refresh rate for selected mode when none is specified.
+  * Fix typo in man page
+  * Use correct formatting for variable in man page
+  * Specify correct version in meson.build
+  * Fix parser_next_token return value
+  * Require profiles with a name to have a profile directive
+
+-------------------------------------------------------------------
+Thu Sep  5 21:47:11 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
+
+- First kanshi release
