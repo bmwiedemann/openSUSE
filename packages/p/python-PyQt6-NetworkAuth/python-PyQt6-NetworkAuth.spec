@@ -29,8 +29,9 @@ License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtnetworkauth
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/PyQt6_%{qtlib}-%{version}.tar.gz
+Patch0:         support-python3.6.patch
 BuildRequires:  %{python_module PyQt6-devel >= %{version}}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
@@ -57,7 +58,7 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%setup -q -n PyQt6_%{qtlib}-%{version}
+%autosetup -p1 -n PyQt6_%{qtlib}-%{version}
 
 %build
 %pyqt_build
