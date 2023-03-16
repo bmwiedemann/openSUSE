@@ -16,16 +16,14 @@
 #
 
 
-%define realversion 1.0.0b3
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-developer-loadtesting
-Version:        1.0.0~b3
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Developer LoadTesting Client Library for Python
 License:        MIT
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk
-Source:         https://files.pythonhosted.org/packages/source/a/azure-developer-loadtesting/azure-developer-loadtesting-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-developer-loadtesting/azure-developer-loadtesting-%{version}.zip
 BuildRequires:  %{python_module azure-core >= 1.24.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module isodate >= 0.6.1}
@@ -47,7 +45,7 @@ BuildArch:      noarch
 Microsoft Azure Developer LoadTesting Client Library for Python
 
 %prep
-%setup -q -n azure-developer-loadtesting-%{realversion}
+%setup -q -n azure-developer-loadtesting-%{version}
 
 %build
 %python_build
