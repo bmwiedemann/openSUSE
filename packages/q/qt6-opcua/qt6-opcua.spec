@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -125,10 +125,8 @@ any ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6DeclarativeOpcua6 -p /sbin/ldconfig
-%post -n libQt6OpcUa6 -p /sbin/ldconfig
-%postun -n libQt6DeclarativeOpcua6 -p /sbin/ldconfig
-%postun -n libQt6OpcUa6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6DeclarativeOpcua6
+%ldconfig_scriptlets -n libQt6OpcUa6
 
 %files
 %dir %{_qt6_pluginsdir}/opcua
