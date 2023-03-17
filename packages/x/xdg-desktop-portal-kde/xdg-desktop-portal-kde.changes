@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * Fix cursor and borders selectors in screenshot dialog
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
