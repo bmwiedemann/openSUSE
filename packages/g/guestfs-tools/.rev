@@ -63,4 +63,12 @@
     <comment>Update to guestfs-tools version 1.50.0</comment>
     <requestid>1065782</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ea1909da50a689faf29428a5e910109d</srcmd5>
+    <version>1.50.0</version>
+    <time>1679069115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072668</requestid>
+  </revision>
 </revisionlist>

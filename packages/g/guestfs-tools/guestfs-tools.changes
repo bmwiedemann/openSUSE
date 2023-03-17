@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 11:31:35 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use gzip -n for bit-reproducible packages
+
+-------------------------------------------------------------------
 Thu Feb  9 15:23:16 MST 2023 - carnold@suse.com
 
 - Update to verion 1.50.0

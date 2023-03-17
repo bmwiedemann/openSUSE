@@ -238,7 +238,7 @@ find %{buildroot} -name '*.la' -delete
 # Move installed documentation back to the source directory so
 # we can install it using a %%doc rule.
 mv %{buildroot}%{_docdir}/%{name} installed-docs
-gzip --best installed-docs/*.xml
+gzip -n --best installed-docs/*.xml
 
 # Remove virt-dib if it was built.
 rm -f $RPM_BUILD_ROOT%{_bindir}/virt-dib
