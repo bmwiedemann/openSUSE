@@ -2,7 +2,7 @@
 #
 # spec file for package userspace-rcu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define soname  8
 Name:           userspace-rcu
-Version:        0.13.2
+Version:        0.14.0
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source0:        https://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2
 Source1:        https://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2.asc
 Source2:        userspace-rcu.keyring
 Source99:       baselibs.conf
-BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
