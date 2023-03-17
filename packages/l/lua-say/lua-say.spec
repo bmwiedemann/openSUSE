@@ -1,7 +1,7 @@
 #
 # spec file for package lua-say
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Release:        0
 Summary:        Lua string hashing library, useful for internationalization
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            https://github.com/Olivine-Labs/say
-Source:         https://github.com/Olivine-Labs/say/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+URL:            https://github.com/lunarmodules/say
+Source:         https://github.com/lunarmodules/say/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
