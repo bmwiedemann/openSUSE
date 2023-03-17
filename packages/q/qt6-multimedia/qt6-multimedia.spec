@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -229,16 +229,11 @@ This library does not have any ABI or API guarantees.
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 
-%post -n libQt6Multimedia6 -p /sbin/ldconfig
-%post -n libQt6MultimediaQuick6 -p /sbin/ldconfig
-%post -n libQt6MultimediaWidgets6 -p /sbin/ldconfig
-%post -n libQt6Quick3DSpatialAudio6 -p /sbin/ldconfig
-%post -n libQt6SpatialAudio6 -p /sbin/ldconfig
-%postun -n libQt6Multimedia6 -p /sbin/ldconfig
-%postun -n libQt6MultimediaQuick6 -p /sbin/ldconfig
-%postun -n libQt6MultimediaWidgets6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DSpatialAudio6 -p /sbin/ldconfig
-%postun -n libQt6SpatialAudio6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Multimedia6
+%ldconfig_scriptlets -n libQt6MultimediaQuick6
+%ldconfig_scriptlets -n libQt6MultimediaWidgets6
+%ldconfig_scriptlets -n libQt6Quick3DSpatialAudio6
+%ldconfig_scriptlets -n libQt6SpatialAudio6
 
 %files
 %{_qt6_pluginsdir}/multimedia/
