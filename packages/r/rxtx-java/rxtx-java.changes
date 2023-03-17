@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 13 16:12:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * rxtx-yield.patch
+    + fix 'yield' becoming a restricted identifier in Java 13
+- Do not force building of javadoc with source level 8
+
+-------------------------------------------------------------------
 Wed Mar 23 10:27:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Require java >= 1.8 for building

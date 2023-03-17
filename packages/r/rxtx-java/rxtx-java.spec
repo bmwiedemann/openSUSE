@@ -1,7 +1,7 @@
 #
 # spec file for package rxtx-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ Patch4:         rxtx-java-sysio.patch
 Patch5:         rxtx-java-38400.patch
 Patch6:         rxtx-java-version.patch
 Patch7:         rxtx-java-missing-javah.patch
+Patch8:         rxtx-yield.patch
 BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -94,6 +95,7 @@ the specification for Sun's Java Communications API.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 export THREADS_FLAG=native
@@ -115,7 +117,7 @@ mv RXTXcomm-bnd.jar RXTXcomm.jar
 
 # build javadoc
 mkdir -p javadoc
-javadoc -d javadoc -source 8 src/gnu/io/*.java
+javadoc -d javadoc src/gnu/io/*.java
 
 %install
 install -dm 0755 %{buildroot}%{_jnidir} %{buildroot}%{_libdir}
