@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 16 18:00:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.0:
+  * Make LED class more flexible. This will allow e.g. hw based
+    implementations.
+  * Trigger module load via udev. This avoids shipping another conf
+    file.
+- Changes from version 0.0.3:
+  * spec: Separate system and application events
+  * theme: add screen-shot event
+  * Build and doc fixes
+  * Update gmobile to 0.0.1
+
+-------------------------------------------------------------------
 Tue Jan 31 09:30:04 UTC 2023 - Adrian Campos Garrido <adriancampos@teachelp.com>
 
-- Released December 2022
+- Update to version 0.0.2:
   * Support theme merging
   * Support user themes (`theme` gsetting)
   * Add theme validator
