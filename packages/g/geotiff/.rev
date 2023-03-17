@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>975356</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2f5015e5833acce19937b17e881779ed</srcmd5>
+    <version>1.7.1</version>
+    <time>1679069109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update spec file</comment>
+    <requestid>1072620</requestid>
+  </revision>
 </revisionlist>

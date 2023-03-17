@@ -1,7 +1,7 @@
 #
 # spec file for package geotiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,6 @@ License:        MIT AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/OSGeo/libgeotiff
 Source0:        https://github.com/OSGeo/libgeotiff/releases/download/%{version}/libgeotiff-%{version}.tar.gz
-# UPSTREAM Patch (geotif) to be used with gdal 2.4.1
-# Patch0:         https://github.com/OSGeo/libgeotiff/commit/f4956251.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
@@ -67,9 +65,7 @@ This library is designed to permit the extraction and parsing of the
 GeoTIFF keys in new files.
 
 %prep
-
-%setup -q -n lib%{name}-%{version}
-#%%autopatch -p2
+%autosetup -n lib%{name}-%{version}
 
 %build
 export CFLAGS="%{optflags} $CFLAGS -g -fstack-protector -fno-strict-aliasing -D _BSD_SOURCE"
@@ -83,7 +79,7 @@ export CXXFLAGS="%{optflags} $CXXFLAGS -g -fstack-protector -fno-strict-aliasing
 	--with-pic \
 	--enable-static=no \
 	--enable-debug=yes
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
