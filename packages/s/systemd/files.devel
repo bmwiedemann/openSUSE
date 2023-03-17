@@ -197,6 +197,8 @@
 %{_mandir}/man3/sd_bus_emit_properties_changed.3.gz
 %{_mandir}/man3/sd_bus_emit_properties_changed_strv.3.gz
 %{_mandir}/man3/sd_bus_emit_signal.3.gz
+%{_mandir}/man3/sd_bus_emit_signal_to.3.gz
+%{_mandir}/man3/sd_bus_emit_signal_tov.3.gz
 %{_mandir}/man3/sd_bus_emit_signalv.3.gz
 %{_mandir}/man3/sd_bus_enqueue_for_read.3.gz
 %{_mandir}/man3/sd_bus_error.3.gz
@@ -312,6 +314,7 @@
 %{_mandir}/man3/sd_bus_message_new_method_errorf.3.gz
 %{_mandir}/man3/sd_bus_message_new_method_return.3.gz
 %{_mandir}/man3/sd_bus_message_new_signal.3.gz
+%{_mandir}/man3/sd_bus_message_new_signal_to.3.gz
 %{_mandir}/man3/sd_bus_message_open_container.3.gz
 %{_mandir}/man3/sd_bus_message_peek_type.3.gz
 %{_mandir}/man3/sd_bus_message_read.3.gz
@@ -663,6 +666,14 @@
 %{_mandir}/man3/sd_pid_notify.3.gz
 %{_mandir}/man3/sd_pid_notify_with_fds.3.gz
 %{_mandir}/man3/sd_pid_notifyf.3.gz
+%{_mandir}/man3/sd_pidfd_get_cgroup.3.gz
+%{_mandir}/man3/sd_pidfd_get_machine_name.3.gz
+%{_mandir}/man3/sd_pidfd_get_owner_uid.3.gz
+%{_mandir}/man3/sd_pidfd_get_session.3.gz
+%{_mandir}/man3/sd_pidfd_get_slice.3.gz
+%{_mandir}/man3/sd_pidfd_get_unit.3.gz
+%{_mandir}/man3/sd_pidfd_get_user_slice.3.gz
+%{_mandir}/man3/sd_pidfd_get_user_unit.3.gz
 %{_mandir}/man3/sd_seat_can_graphical.3.gz
 %{_mandir}/man3/sd_seat_can_tty.3.gz
 %{_mandir}/man3/sd_seat_get_active.3.gz

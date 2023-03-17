@@ -94,7 +94,6 @@
 %endif
 %{_prefix}/lib/udev/fido_id
 %{_prefix}/lib/udev/mtd_probe
-%{_prefix}/lib/udev/path_id_compat
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
@@ -174,7 +173,6 @@
 %{_udevrulesdir}/60-persistent-v4l.rules
 %{_udevrulesdir}/60-sensor.rules
 %{_udevrulesdir}/60-serial.rules
-%{_udevrulesdir}/61-persistent-storage-compat.rules
 %{_udevrulesdir}/64-btrfs.rules
 %{_udevrulesdir}/70-camera.rules
 %{_udevrulesdir}/70-joystick.rules
@@ -226,6 +224,8 @@
 %{_unitdir}/system-systemd\x2dcryptsetup.slice
 %endif
 %{_unitdir}/systemd-backlight@.service
+%{_unitdir}/systemd-growfs-root.service
+%{_unitdir}/systemd-growfs@.service
 %{_unitdir}/systemd-hwdb-update.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-modules-load.service

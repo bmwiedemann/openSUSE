@@ -6384,4 +6384,34 @@ handle manual pages that consist only of a .so directive such as
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1209305</comment>
     <requestid>1072108</requestid>
   </revision>
+  <revision rev="383" vrev="2">
+    <srcmd5>91ce7ac216e4d5f0c3d36fb2bb128822</srcmd5>
+    <version>253.1</version>
+    <time>1679068851</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5002-systemctl-explicitly-cast-the-constants-to-uint64_t.patch (bsc#1209305)
+  Added temporarily until it's merged in either the stable v253 branch or in the
+  SUSE git repo.
+
+- Add 5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch until
+  https://github.com/systemd/systemd/issues/26839 is fixed properly.
+
+- testsuite: mtools is required by TEST-58-REPART
+
+- testsuite: swtpm and tpm2.0-tools are needed by TEST-70-TPM2
+
+- Add 5000-core-manager-run-generators-directly-when-we-are-in-.patch, a
+  temporary workaround until https://github.com/dracutdevs/dracut/issues/2211 is
+  fixed in dracut.
+
+- Upgrade to v253.1 (commit 6c327d74aa0d350482e82a247d7018559699798d)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v253/NEWS for details.
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+  * Ship systemd-journald-audit.socket again: it can now be disabled via the
+    usual &quot;systemctl disable&quot; mechanism to stop collection of audit
+    messages. Note that it's handled by the preset logic, which turns it off by
+    default.
+  * TEST_06_SELINUX needs selinux-policy-devel.</comment>
+    <requestid>1072270</requestid>
+  </revision>
 </revisionlist>

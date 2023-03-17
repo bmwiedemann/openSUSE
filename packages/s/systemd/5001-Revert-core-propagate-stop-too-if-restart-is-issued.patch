@@ -1,0 +1,75 @@
+From 7e094b534978a8c5e980271a00ebccdba98ae6f7 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Wed, 15 Mar 2023 19:48:52 +0100
+Subject: [PATCH 5001/5001] Revert "core: propagate stop too if restart is
+ issued"
+
+This reverts commit 017a7ba4f406adcf69d6b3ec15b9f2d9ed5ad853.
+
+Until https://github.com/systemd/systemd/issues/26839 is properly fixed.
+---
+ src/core/transaction.c | 42 +++++++++++++++---------------------------
+ 1 file changed, 15 insertions(+), 27 deletions(-)
+
+diff --git a/src/core/transaction.c b/src/core/transaction.c
+index a6fd184e33..9689d5faab 100644
+--- a/src/core/transaction.c
++++ b/src/core/transaction.c
+@@ -1047,39 +1047,27 @@ int transaction_add_job_and_dependencies(
+                 }
+ 
+                 if (IN_SET(type, JOB_STOP, JOB_RESTART)) {
+-                        _cleanup_set_free_ Set *propagated_restart = NULL;
++                        UnitDependencyAtom atom;
++                        JobType ptype;
++
+                         /* We propagate STOP as STOP, but RESTART only as TRY_RESTART, in order not to start
+                          * dependencies that are not around. */
++                        if (type == JOB_RESTART) {
++                                atom = UNIT_ATOM_PROPAGATE_RESTART;
++                                ptype = JOB_TRY_RESTART;
++                        } else {
++                                ptype = JOB_STOP;
++                                atom = UNIT_ATOM_PROPAGATE_STOP;
++                        }
+ 
+-                        if (type == JOB_RESTART)
+-                                UNIT_FOREACH_DEPENDENCY(dep, ret->unit, UNIT_ATOM_PROPAGATE_RESTART) {
+-                                        JobType nt;
+-
+-                                        r = set_ensure_put(&propagated_restart, NULL, dep);
+-                                        if (r < 0)
+-                                                return r;
+-
+-                                        nt = job_type_collapse(JOB_TRY_RESTART, dep);
+-                                        if (nt == JOB_NOP)
+-                                                continue;
+-
+-                                        r = transaction_add_job_and_dependencies(tr, nt, dep, ret, true, false, false, ignore_order, e);
+-                                        if (r < 0) {
+-                                                if (r != -EBADR) /* job type not applicable */
+-                                                        return r;
+-
+-                                                sd_bus_error_free(e);
+-                                        }
+-                                }
++                        UNIT_FOREACH_DEPENDENCY(dep, ret->unit, atom) {
++                                JobType nt;
+ 
+-                        /* The 'stop' part of a restart job is also propagated to
+-                         * units with UNIT_ATOM_PROPAGATE_STOP */
+-                        UNIT_FOREACH_DEPENDENCY(dep, ret->unit, UNIT_ATOM_PROPAGATE_STOP) {
+-                                /* Units experienced restart propagation are skipped */
+-                                if (set_contains(propagated_restart, dep))
++                                nt = job_type_collapse(ptype, dep);
++                                if (nt == JOB_NOP)
+                                         continue;
+ 
+-                                r = transaction_add_job_and_dependencies(tr, JOB_STOP, dep, ret, true, false, false, ignore_order, e);
++                                r = transaction_add_job_and_dependencies(tr, nt, dep, ret, true, false, false, ignore_order, e);
+                                 if (r < 0) {
+                                         if (r != -EBADR) /* job type not applicable */
+                                                 return r;
+-- 
+2.35.3
+
