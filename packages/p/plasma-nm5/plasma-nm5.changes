@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:06:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * Don't crash when importing VPN config with missing NetworkManager plugin (kde#465484)
+  * [kcm] Show VPN import error in the UI
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
