@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtwebsockets-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-websockets%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 WebSockets library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -108,8 +108,7 @@ ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6WebSockets6 -p /sbin/ldconfig
-%postun -n libQt6WebSockets6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6WebSockets6
 
 %files imports
 %{_qt6_qmldir}/QtWebSockets/
