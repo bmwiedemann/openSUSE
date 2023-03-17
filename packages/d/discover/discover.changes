@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * rpm-ostree/notifier: Setup a watcher to trigger reboot check
+  * rpm-ostree/notifier: Fix update/reboot notification logic
+  * ApplicationPage: Allow main app info column to grow with window
+  * ApplicationPage: off-by-one in stackedLayout calc
+  * ApplicationResouceButton: place icon side-by-side to the title
+  * ApplicationResourceButton: attribute the left/right padding
+  * ApplicationPage: drop the ternary operator for buttonWidth
+  * flatpak: Use Downloading as the status for Flatpak transactions
+  * pk: Finish porting away from runservices (kde#466742)
+  * pk: Don't forget to finish streams (kde#466765)
+  * Flatpak: Fix spacing in permissions view
+  * fwupd: Mark the backend as invalid if fwupd_client_connect() fails
+- Drop patches, now upstream:
+  * 0001-pk-Don-t-forget-to-finish-streams.patch
+
+-------------------------------------------------------------------
 Fri Mar  3 16:56:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix some pages not loading (kde#466765):

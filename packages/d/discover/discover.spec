@@ -21,7 +21,7 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.27.2
+Version:        5.27.3
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -34,8 +34,6 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Warning-for-FlatHub.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-pk-Don-t-forget-to-finish-streams.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  flatpak-devel
