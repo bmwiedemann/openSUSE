@@ -10,11 +10,11 @@ This reverts commit 71cdb91f313380152d7bf38cfeebe76f5b2d39ac.
  OvmfPkg/XenPlatformPei/XenPlatformPei.inf | 1 -
  3 files changed, 3 insertions(+), 6 deletions(-)
 
-Index: edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
+Index: edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
 ===================================================================
---- edk2-edk2-stable202208.orig/OvmfPkg/OvmfXen.dsc
-+++ edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
-@@ -455,6 +455,9 @@
+--- edk2-edk2-stable202302.orig/OvmfPkg/OvmfXen.dsc
++++ edk2-edk2-stable202302/OvmfPkg/OvmfXen.dsc
+@@ -456,6 +456,9 @@
    # Point to the MdeModulePkg/Application/UiApp/UiApp.inf
    gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x21, 0xaa, 0x2c, 0x46, 0x14, 0x76, 0x03, 0x45, 0x83, 0x6e, 0x8a, 0xb6, 0xf4, 0x66, 0x23, 0x31 }
  
@@ -24,7 +24,7 @@ Index: edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
    # We populate DXE IPL tables with 1G pages preferably on Xen
    gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable|TRUE
  
-@@ -485,7 +488,6 @@
+@@ -486,7 +489,6 @@
    gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Base|0x0
    gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Size|0x800000000
  
@@ -32,10 +32,10 @@ Index: edk2-edk2-stable202208/OvmfPkg/OvmfXen.dsc
    gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|0
  
    # Set video resolution for text setup.
-Index: edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/Xen.c
+Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/Xen.c
 ===================================================================
---- edk2-edk2-stable202208.orig/OvmfPkg/XenPlatformPei/Xen.c
-+++ edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/Xen.c
+--- edk2-edk2-stable202302.orig/OvmfPkg/XenPlatformPei/Xen.c
++++ edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/Xen.c
 @@ -634,9 +634,5 @@ CalibrateLapicTimer (
    Freq = DivU64x64Remainder (Dividend, TscTick2 - TscTick, NULL);
    DEBUG ((DEBUG_INFO, "APIC Freq % 8lu Hz\n", Freq));
@@ -46,10 +46,10 @@ Index: edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/Xen.c
 -
    UnmapXenPage (SharedInfo);
  }
-Index: edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+Index: edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
 ===================================================================
---- edk2-edk2-stable202208.orig/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
-+++ edk2-edk2-stable202208/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+--- edk2-edk2-stable202302.orig/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
++++ edk2-edk2-stable202302/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
 @@ -86,7 +86,6 @@
    gEfiMdeModulePkgTokenSpaceGuid.PcdDxeIplSwitchToLongMode
    gEfiMdeModulePkgTokenSpaceGuid.PcdUse1GPageTable

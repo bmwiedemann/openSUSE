@@ -51,6 +51,9 @@ build_template()
 	#  memory: 256MB
 	local MEMORY="-m 256"
 
+	# kvm
+	local FW_CFG="-fw_cfg name=opt/org.tianocore/X-Cpuhp-Bugcheck-Override,string=yes"
+
 	#  redirect display to stdio and disable network
 	local MISC="-display none -no-user-config -nodefaults -smp 1"
 	MISC="$MISC -serial stdio"
@@ -83,5 +86,5 @@ build_template()
 	fi
 
 	# Launch the VM
-	$QEMU $MACHINE $MEMORY $PFLASH $SMBIOS $CDROM $MISC
+	$QEMU $MACHINE $MEMORY $FW_CFG $PFLASH $SMBIOS $CDROM $MISC
 }

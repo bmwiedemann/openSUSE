@@ -14,10 +14,10 @@ Subject: [PATCH 1/3] Add DebugPkg
  create mode 100644 DebugPkg/GdbSyms/GdbSyms.inf
  create mode 100644 DebugPkg/Scripts/gdb_uefi.py
 
-Index: edk2-edk2-stable202202/DebugPkg/DebugPkg.dec
+Index: edk2-edk2-stable202302/DebugPkg/DebugPkg.dec
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202202/DebugPkg/DebugPkg.dec
++++ edk2-edk2-stable202302/DebugPkg/DebugPkg.dec
 @@ -0,0 +1,34 @@
 +## @file
 +#  Debug package - various useful stuff for debugging.
@@ -53,10 +53,10 @@ Index: edk2-edk2-stable202202/DebugPkg/DebugPkg.dec
 +
 +[LibraryClasses]
 +
-Index: edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.c
+Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.c
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.c
++++ edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.c
 @@ -0,0 +1,78 @@
 +/** @file
 +
@@ -136,10 +136,10 @@ Index: edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.c
 +}
 +
 +
-Index: edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.inf
+Index: edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.inf
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.inf
++++ edk2-edk2-stable202302/DebugPkg/GdbSyms/GdbSyms.inf
 @@ -0,0 +1,57 @@
 +## @file
 +#
@@ -198,10 +198,10 @@ Index: edk2-edk2-stable202202/DebugPkg/GdbSyms/GdbSyms.inf
 +[Depex]
 +  TRUE
 +
-Index: edk2-edk2-stable202202/DebugPkg/Scripts/gdb_uefi.py
+Index: edk2-edk2-stable202302/DebugPkg/Scripts/gdb_uefi.py
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202202/DebugPkg/Scripts/gdb_uefi.py
++++ edk2-edk2-stable202302/DebugPkg/Scripts/gdb_uefi.py
 @@ -0,0 +1,350 @@
 +"""
 +Allows loading TianoCore symbols into a GDB session attached to EFI
@@ -553,13 +553,13 @@ Index: edk2-edk2-stable202202/DebugPkg/Scripts/gdb_uefi.py
 +ReloadUefi ()
 +
 +
-Index: edk2-edk2-stable202202/OvmfPkg/OvmfPkgX64.dsc
+Index: edk2-edk2-stable202302/OvmfPkg/OvmfPkgX64.dsc
 ===================================================================
---- edk2-edk2-stable202202.orig/OvmfPkg/OvmfPkgX64.dsc
-+++ edk2-edk2-stable202202/OvmfPkg/OvmfPkgX64.dsc
-@@ -1004,3 +1004,5 @@
+--- edk2-edk2-stable202302.orig/OvmfPkg/OvmfPkgX64.dsc
++++ edk2-edk2-stable202302/OvmfPkg/OvmfPkgX64.dsc
+@@ -1123,3 +1123,5 @@
    # TPM support
    #
- !include OvmfPkg/OvmfTpmComponentsDxe.dsc.inc
+ !include OvmfPkg/Include/Dsc/OvmfTpmComponentsDxe.dsc.inc
 +
-+  DebugPkg/GdbSyms/GdbSyms.inf
++  DebugPkg/GdbSyms/GdbSyms.inf

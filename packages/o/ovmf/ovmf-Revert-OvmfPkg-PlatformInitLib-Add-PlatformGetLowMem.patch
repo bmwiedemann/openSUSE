@@ -1,0 +1,312 @@
+From 04b5515d31f9754a661bbe000093b0feb9ef6d65 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Mar 2023 17:20:57 +0800
+Subject: [PATCH 4/6] Revert "OvmfPkg/PlatformInitLib: Add
+ PlatformGetLowMemoryCB"
+
+This reverts commit 124b765051333010a3cf1038c601568001e39574.
+---
+ OvmfPkg/Include/Library/PlatformInitLib.h     |  3 +-
+ OvmfPkg/Library/PeilessStartupLib/Hob.c       |  3 +-
+ .../PeilessStartupLib/PeilessStartup.c        |  7 +-
+ OvmfPkg/Library/PlatformInitLib/MemDetect.c   | 70 ++++++-------------
+ OvmfPkg/Library/PlatformInitLib/Platform.c    |  7 +-
+ OvmfPkg/PlatformPei/MemDetect.c               |  3 +-
+ 6 files changed, 33 insertions(+), 60 deletions(-)
+
+diff --git a/OvmfPkg/Include/Library/PlatformInitLib.h b/OvmfPkg/Include/Library/PlatformInitLib.h
+index 57b18b94d9..67403a1dd9 100644
+--- a/OvmfPkg/Include/Library/PlatformInitLib.h
++++ b/OvmfPkg/Include/Library/PlatformInitLib.h
+@@ -26,7 +26,6 @@ typedef struct {
+   BOOLEAN              Q35SmramAtDefaultSmbase;
+   UINT16               Q35TsegMbytes;
+ 
+-  UINT32               LowMemory;
+   UINT64               FirstNonAddress;
+   UINT8                PhysMemAddressWidth;
+   UINT32               Uc32Base;
+@@ -145,7 +144,7 @@ PlatformQemuUc32BaseInitialization (
+   IN OUT EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+   );
+ 
+-VOID
++UINT32
+ EFIAPI
+ PlatformGetSystemMemorySizeBelow4gb (
+   IN EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+diff --git a/OvmfPkg/Library/PeilessStartupLib/Hob.c b/OvmfPkg/Library/PeilessStartupLib/Hob.c
+index 318b74c95d..630ce445eb 100644
+--- a/OvmfPkg/Library/PeilessStartupLib/Hob.c
++++ b/OvmfPkg/Library/PeilessStartupLib/Hob.c
+@@ -42,8 +42,7 @@ ConstructSecHobList (
+ 
+   ZeroMem (&PlatformInfoHob, sizeof (PlatformInfoHob));
+   PlatformInfoHob.HostBridgeDevId = PciRead16 (OVMF_HOSTBRIDGE_DID);
+-  PlatformGetSystemMemorySizeBelow4gb (&PlatformInfoHob);
+-  LowMemorySize = PlatformInfoHob.LowMemory;
++  LowMemorySize                   = PlatformGetSystemMemorySizeBelow4gb (&PlatformInfoHob);
+   ASSERT (LowMemorySize != 0);
+   LowMemoryStart = FixedPcdGet32 (PcdOvmfDxeMemFvBase) + FixedPcdGet32 (PcdOvmfDxeMemFvSize);
+   LowMemorySize -= LowMemoryStart;
+diff --git a/OvmfPkg/Library/PeilessStartupLib/PeilessStartup.c b/OvmfPkg/Library/PeilessStartupLib/PeilessStartup.c
+index 164aa2d619..922a083225 100644
+--- a/OvmfPkg/Library/PeilessStartupLib/PeilessStartup.c
++++ b/OvmfPkg/Library/PeilessStartupLib/PeilessStartup.c
+@@ -42,7 +42,8 @@ InitializePlatform (
+   EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+   )
+ {
+-  VOID  *VariableStore;
++  UINT32  LowerMemorySize;
++  VOID    *VariableStore;
+ 
+   DEBUG ((DEBUG_INFO, "InitializePlatform in Pei-less boot\n"));
+   PlatformDebugDumpCmos ();
+@@ -70,14 +71,14 @@ InitializePlatform (
+     PlatformInfoHob->PcdCpuBootLogicalProcessorNumber
+     ));
+ 
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
++  LowerMemorySize = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+   PlatformQemuUc32BaseInitialization (PlatformInfoHob);
+   DEBUG ((
+     DEBUG_INFO,
+     "Uc32Base = 0x%x, Uc32Size = 0x%x, LowerMemorySize = 0x%x\n",
+     PlatformInfoHob->Uc32Base,
+     PlatformInfoHob->Uc32Size,
+-    PlatformInfoHob->LowMemory
++    LowerMemorySize
+     ));
+ 
+   VariableStore                                  = PlatformReserveEmuVariableNvStore ();
+diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+index 57feeb6dab..fdfe134247 100644
+--- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c
++++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+@@ -51,16 +51,18 @@ PlatformQemuUc32BaseInitialization (
+   IN OUT EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+   )
+ {
++  UINT32  LowerMemorySize;
++
+   if (PlatformInfoHob->HostBridgeDevId == 0xffff /* microvm */) {
+     return;
+   }
+ 
+   if (PlatformInfoHob->HostBridgeDevId == INTEL_Q35_MCH_DEVICE_ID) {
+-    PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
++    LowerMemorySize = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+     ASSERT (PcdGet64 (PcdPciExpressBaseAddress) <= MAX_UINT32);
+-    ASSERT (PcdGet64 (PcdPciExpressBaseAddress) >= PlatformInfoHob->LowMemory);
++    ASSERT (PcdGet64 (PcdPciExpressBaseAddress) >= LowerMemorySize);
+ 
+-    if (PlatformInfoHob->LowMemory <= BASE_2GB) {
++    if (LowerMemorySize <= BASE_2GB) {
+       // Newer qemu with gigabyte aligned memory,
+       // 32-bit pci mmio window is 2G -> 4G then.
+       PlatformInfoHob->Uc32Base = BASE_2GB;
+@@ -90,8 +92,8 @@ PlatformQemuUc32BaseInitialization (
+   // variable MTRR suffices by truncating the size to a whole power of two,
+   // while keeping the end affixed to 4GB. This will round the base up.
+   //
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+-  PlatformInfoHob->Uc32Size = GetPowerOfTwo32 ((UINT32)(SIZE_4GB - PlatformInfoHob->LowMemory));
++  LowerMemorySize           = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
++  PlatformInfoHob->Uc32Size = GetPowerOfTwo32 ((UINT32)(SIZE_4GB - LowerMemorySize));
+   PlatformInfoHob->Uc32Base = (UINT32)(SIZE_4GB - PlatformInfoHob->Uc32Size);
+   //
+   // Assuming that LowerMemorySize is at least 1 byte, Uc32Size is at most 2GB.
+@@ -99,13 +101,13 @@ PlatformQemuUc32BaseInitialization (
+   //
+   ASSERT (PlatformInfoHob->Uc32Base >= BASE_2GB);
+ 
+-  if (PlatformInfoHob->Uc32Base != PlatformInfoHob->LowMemory) {
++  if (PlatformInfoHob->Uc32Base != LowerMemorySize) {
+     DEBUG ((
+       DEBUG_VERBOSE,
+       "%a: rounded UC32 base from 0x%x up to 0x%x, for "
+       "an UC32 size of 0x%x\n",
+       __FUNCTION__,
+-      PlatformInfoHob->LowMemory,
++      LowerMemorySize,
+       PlatformInfoHob->Uc32Base,
+       PlatformInfoHob->Uc32Size
+       ));
+@@ -278,34 +280,6 @@ PlatformGetFirstNonAddressCB (
+   }
+ }
+ 
+-/**
+-  Store the low (below 4G) memory size in
+-  PlatformInfoHob->LowMemory
+-**/
+-STATIC
+-VOID
+-PlatformGetLowMemoryCB (
+-  IN     EFI_E820_ENTRY64       *E820Entry,
+-  IN OUT EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+-  )
+-{
+-  UINT64  Candidate;
+-
+-  if (E820Entry->Type != EfiAcpiAddressRangeMemory) {
+-    return;
+-  }
+-
+-  Candidate = E820Entry->BaseAddr + E820Entry->Length;
+-  if (Candidate >= BASE_4GB) {
+-    return;
+-  }
+-
+-  if (PlatformInfoHob->LowMemory < Candidate) {
+-    DEBUG ((DEBUG_INFO, "%a: LowMemory=0x%Lx\n", __FUNCTION__, Candidate));
+-    PlatformInfoHob->LowMemory = (UINT32)Candidate;
+-  }
+-}
+-
+ /**
+   Iterate over the entries in QEMU's fw_cfg E820 RAM map, call the
+   passed callback for each entry.
+@@ -422,13 +396,14 @@ GetHighestSystemMemoryAddressFromPvhMemmap (
+   return HighestAddress;
+ }
+ 
+-VOID
++UINT32
+ EFIAPI
+ PlatformGetSystemMemorySizeBelow4gb (
+   IN EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+   )
+ {
+   EFI_STATUS  Status;
++  UINT64      LowerMemorySize = 0;
+   UINT8       Cmos0x34;
+   UINT8       Cmos0x35;
+ 
+@@ -436,13 +411,12 @@ PlatformGetSystemMemorySizeBelow4gb (
+       (CcProbe () != CcGuestTypeIntelTdx))
+   {
+     // Get the information from PVH memmap
+-    PlatformInfoHob->LowMemory = (UINT32)GetHighestSystemMemoryAddressFromPvhMemmap (TRUE);
+-    return;
++    return (UINT32)GetHighestSystemMemoryAddressFromPvhMemmap (TRUE);
+   }
+ 
+-  Status = PlatformScanE820 (PlatformGetLowMemoryCB, PlatformInfoHob);
+-  if (!EFI_ERROR (Status) && (PlatformInfoHob->LowMemory > 0)) {
+-    return;
++  Status = PlatformScanOrAdd64BitE820Ram (FALSE, &LowerMemorySize, NULL);
++  if ((Status == EFI_SUCCESS) && (LowerMemorySize > 0)) {
++    return (UINT32)LowerMemorySize;
+   }
+ 
+   //
+@@ -457,7 +431,7 @@ PlatformGetSystemMemorySizeBelow4gb (
+   Cmos0x34 = (UINT8)PlatformCmosRead8 (0x34);
+   Cmos0x35 = (UINT8)PlatformCmosRead8 (0x35);
+ 
+-  PlatformInfoHob->LowMemory = (UINT32)(((UINTN)((Cmos0x35 << 8) + Cmos0x34) << 16) + SIZE_16MB);
++  return (UINT32)(((UINTN)((Cmos0x35 << 8) + Cmos0x34) << 16) + SIZE_16MB);
+ }
+ 
+ STATIC
+@@ -993,6 +967,7 @@ PlatformQemuInitializeRam (
+   IN EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+   )
+ {
++  UINT64         LowerMemorySize;
+   UINT64         UpperMemorySize;
+   MTRR_SETTINGS  MtrrSettings;
+   EFI_STATUS     Status;
+@@ -1002,7 +977,7 @@ PlatformQemuInitializeRam (
+   //
+   // Determine total memory size available
+   //
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
++  LowerMemorySize = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+ 
+   if (PlatformInfoHob->BootMode == BOOT_ON_S3_RESUME) {
+     //
+@@ -1036,14 +1011,14 @@ PlatformQemuInitializeRam (
+       UINT32  TsegSize;
+ 
+       TsegSize = PlatformInfoHob->Q35TsegMbytes * SIZE_1MB;
+-      PlatformAddMemoryRangeHob (BASE_1MB, PlatformInfoHob->LowMemory - TsegSize);
++      PlatformAddMemoryRangeHob (BASE_1MB, LowerMemorySize - TsegSize);
+       PlatformAddReservedMemoryBaseSizeHob (
+-        PlatformInfoHob->LowMemory - TsegSize,
++        LowerMemorySize - TsegSize,
+         TsegSize,
+         TRUE
+         );
+     } else {
+-      PlatformAddMemoryRangeHob (BASE_1MB, PlatformInfoHob->LowMemory);
++      PlatformAddMemoryRangeHob (BASE_1MB, LowerMemorySize);
+     }
+ 
+     //
+@@ -1221,10 +1196,9 @@ PlatformQemuInitializeRamForS3 (
+       // Make sure the TSEG area that we reported as a reserved memory resource
+       // cannot be used for reserved memory allocations.
+       //
+-      PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+       TsegSize = PlatformInfoHob->Q35TsegMbytes * SIZE_1MB;
+       BuildMemoryAllocationHob (
+-        PlatformInfoHob->LowMemory - TsegSize,
++        PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob) - TsegSize,
+         TsegSize,
+         EfiReservedMemoryType
+         );
+diff --git a/OvmfPkg/Library/PlatformInitLib/Platform.c b/OvmfPkg/Library/PlatformInitLib/Platform.c
+index 9fee6e4810..d99b239b27 100644
+--- a/OvmfPkg/Library/PlatformInitLib/Platform.c
++++ b/OvmfPkg/Library/PlatformInitLib/Platform.c
+@@ -131,6 +131,7 @@ PlatformMemMapInitialization (
+ {
+   UINT64  PciIoBase;
+   UINT64  PciIoSize;
++  UINT32  TopOfLowRam;
+   UINT64  PciExBarBase;
+   UINT32  PciBase;
+   UINT32  PciSize;
+@@ -152,7 +153,7 @@ PlatformMemMapInitialization (
+     return;
+   }
+ 
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
++  TopOfLowRam  = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+   PciExBarBase = 0;
+   if (PlatformInfoHob->HostBridgeDevId == INTEL_Q35_MCH_DEVICE_ID) {
+     //
+@@ -160,11 +161,11 @@ PlatformMemMapInitialization (
+     // the base of the 32-bit PCI host aperture.
+     //
+     PciExBarBase = PcdGet64 (PcdPciExpressBaseAddress);
+-    ASSERT (PlatformInfoHob->LowMemory <= PciExBarBase);
++    ASSERT (TopOfLowRam <= PciExBarBase);
+     ASSERT (PciExBarBase <= MAX_UINT32 - SIZE_256MB);
+     PciBase = (UINT32)(PciExBarBase + SIZE_256MB);
+   } else {
+-    ASSERT (PlatformInfoHob->LowMemory <= PlatformInfoHob->Uc32Base);
++    ASSERT (TopOfLowRam <= PlatformInfoHob->Uc32Base);
+     PciBase = PlatformInfoHob->Uc32Base;
+   }
+ 
+diff --git a/OvmfPkg/PlatformPei/MemDetect.c b/OvmfPkg/PlatformPei/MemDetect.c
+index 41d186986b..3d8375320d 100644
+--- a/OvmfPkg/PlatformPei/MemDetect.c
++++ b/OvmfPkg/PlatformPei/MemDetect.c
+@@ -271,8 +271,7 @@ PublishPeiMemory (
+   UINT32                S3AcpiReservedMemoryBase;
+   UINT32                S3AcpiReservedMemorySize;
+ 
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+-  LowerMemorySize = PlatformInfoHob->LowMemory;
++  LowerMemorySize = PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+   if (PlatformInfoHob->SmmSmramRequire) {
+     //
+     // TSEG is chipped from the end of low RAM
+-- 
+2.35.3
+

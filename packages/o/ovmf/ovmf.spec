@@ -22,13 +22,13 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202211
+Version:        202302
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
 URL:            https://github.com/tianocore/edk2
-Source0:        edk2-edk2-stable%{version}.tar.gz
+Source0:        edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source112:      openssl.keyring
@@ -51,21 +51,17 @@ Patch3:         %{name}-disable-ia32-firmware-piepic.patch
 Patch4:         %{name}-set-fixed-enroll-time.patch
 Patch5:         %{name}-disable-brotli.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
-Patch7:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
-# PED-1359, because nasm-2.14 doesn't support corresponding instructions.
-Patch8:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch
-Patch9:         %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch
-Patch10:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
-Patch11:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
-Patch12:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
 # Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
-Patch13:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
-# Bug 1206078 - qemu-ovmf-x86_64-202211 is broken: NvVarStore Variable header State was invalid
-Patch14:        %{name}-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch
-# Bug 1207095
-Patch15:        fix-aarch64.patch
+Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-reorder-PlatformQemuU.patch
+Patch8:         %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformReservati.patch
+Patch9:         %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformAddHobCB.patch
+Patch10:        %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformGetLowMem.patch
+Patch11:        %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformScanE820-.patch
+Patch12:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
+# Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
+Patch13:        %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
-Patch16:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
+Patch14:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -182,17 +178,13 @@ rm -rf $PKG_TO_REMOVE
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150500
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
-%endif
 %patch13 -p1
 %patch14 -p1
-%patch15 -p1
-%patch16 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

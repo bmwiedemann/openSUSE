@@ -1,0 +1,55 @@
+From 2ac2dc711bd6bdbda239955f1ae810ccb87c8789 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Mar 2023 17:17:10 +0800
+Subject: [PATCH 1/6] Revert "OvmfPkg/PlatformInitLib: reorder
+ PlatformQemuUc32BaseInitialization"
+
+This reverts commit 015a001b03db14f791476f817b8b125b195b6d10.
+---
+ OvmfPkg/Library/PlatformInitLib/MemDetect.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+index 38cece9173..1f0344e47f 100644
+--- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c
++++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+@@ -55,15 +55,8 @@ PlatformQemuUc32BaseInitialization (
+     return;
+   }
+ 
+-  if (PlatformInfoHob->HostBridgeDevId == CLOUDHV_DEVICE_ID) {
+-    PlatformInfoHob->Uc32Size = CLOUDHV_MMIO_HOLE_SIZE;
+-    PlatformInfoHob->Uc32Base = CLOUDHV_MMIO_HOLE_ADDRESS;
+-    return;
+-  }
+-
+-  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+-
+   if (PlatformInfoHob->HostBridgeDevId == INTEL_Q35_MCH_DEVICE_ID) {
++    PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+     ASSERT (PcdGet64 (PcdPciExpressBaseAddress) <= MAX_UINT32);
+     ASSERT (PcdGet64 (PcdPciExpressBaseAddress) >= PlatformInfoHob->LowMemory);
+ 
+@@ -85,12 +78,19 @@ PlatformQemuUc32BaseInitialization (
+     return;
+   }
+ 
++  if (PlatformInfoHob->HostBridgeDevId == CLOUDHV_DEVICE_ID) {
++    PlatformInfoHob->Uc32Size = CLOUDHV_MMIO_HOLE_SIZE;
++    PlatformInfoHob->Uc32Base = CLOUDHV_MMIO_HOLE_ADDRESS;
++    return;
++  }
++
+   ASSERT (PlatformInfoHob->HostBridgeDevId == INTEL_82441_DEVICE_ID);
+   //
+   // On i440fx, start with the [LowerMemorySize, 4GB) range. Make sure one
+   // variable MTRR suffices by truncating the size to a whole power of two,
+   // while keeping the end affixed to 4GB. This will round the base up.
+   //
++  PlatformGetSystemMemorySizeBelow4gb (PlatformInfoHob);
+   PlatformInfoHob->Uc32Size = GetPowerOfTwo32 ((UINT32)(SIZE_4GB - PlatformInfoHob->LowMemory));
+   PlatformInfoHob->Uc32Base = (UINT32)(SIZE_4GB - PlatformInfoHob->Uc32Size);
+   //
+-- 
+2.35.3
+

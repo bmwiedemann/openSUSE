@@ -1,0 +1,78 @@
+From f4abfc909103eda354a96a9aa579a80f74cbb80e Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Mar 2023 17:17:16 +0800
+Subject: [PATCH 2/6] Revert "OvmfPkg/PlatformInitLib: Add
+ PlatformReservationConflictCB"
+
+This reverts commit c0a0b9bc3534b71ad90c022b0cab10910697de69.
+---
+ OvmfPkg/Library/PlatformInitLib/MemDetect.c | 46 ---------------------
+ 1 file changed, 46 deletions(-)
+
+diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+index 1f0344e47f..ec2a1e9e37 100644
+--- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c
++++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+@@ -216,51 +216,6 @@ PlatformAddHobCB (
+   }
+ }
+ 
+-/**
+-  Check whenever the 64bit PCI MMIO window overlaps with a reservation
+-  from qemu.  If so move down the MMIO window to resolve the conflict.
+-
+-  This happens on (virtual) AMD machines with 1TB address space,
+-  because the AMD IOMMU uses an address window just below 1TB.
+-**/
+-STATIC
+-VOID
+-PlatformReservationConflictCB (
+-  IN     EFI_E820_ENTRY64       *E820Entry,
+-  IN OUT EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+-  )
+-{
+-  UINT64  IntersectionBase;
+-  UINT64  IntersectionEnd;
+-  UINT64  NewBase;
+-
+-  IntersectionBase = MAX (
+-                       E820Entry->BaseAddr,
+-                       PlatformInfoHob->PcdPciMmio64Base
+-                       );
+-  IntersectionEnd = MIN (
+-                      E820Entry->BaseAddr + E820Entry->Length,
+-                      PlatformInfoHob->PcdPciMmio64Base +
+-                      PlatformInfoHob->PcdPciMmio64Size
+-                      );
+-
+-  if (IntersectionBase >= IntersectionEnd) {
+-    return;  // no overlap
+-  }
+-
+-  NewBase = E820Entry->BaseAddr - PlatformInfoHob->PcdPciMmio64Size;
+-  NewBase = NewBase & ~(PlatformInfoHob->PcdPciMmio64Size - 1);
+-
+-  DEBUG ((
+-    DEBUG_INFO,
+-    "%a: move mmio: 0x%Lx => %Lx\n",
+-    __FUNCTION__,
+-    PlatformInfoHob->PcdPciMmio64Base,
+-    NewBase
+-    ));
+-  PlatformInfoHob->PcdPciMmio64Base = NewBase;
+-}
+-
+ /**
+   Iterate over the entries in QEMU's fw_cfg E820 RAM map, call the
+   passed callback for each entry.
+@@ -698,7 +653,6 @@ PlatformDynamicMmioWindow (
+     DEBUG ((DEBUG_INFO, "%a:   MMIO Space 0x%Lx (%Ld GB)\n", __func__, MmioSpace, RShiftU64 (MmioSpace, 30)));
+     PlatformInfoHob->PcdPciMmio64Size = MmioSpace;
+     PlatformInfoHob->PcdPciMmio64Base = AddrSpace - MmioSpace;
+-    PlatformScanE820 (PlatformReservationConflictCB, PlatformInfoHob);
+   } else {
+     DEBUG ((DEBUG_INFO, "%a: using classic mmio window\n", __func__));
+   }
+-- 
+2.35.3
+

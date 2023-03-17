@@ -1,20 +1,19 @@
-From 0e12a96d9f8475e164c634be9d672ca7cdb26567 Mon Sep 17 00:00:00 2001
+From 5b3a40038886774228826b42c9aa3c9645a799a9 Mon Sep 17 00:00:00 2001
 From: "Lee, Chun-Yi" <jlee@suse.com>
-Date: Fri, 2 Dec 2022 20:11:45 +0800
-Subject: [PATCH] Revert "OvmfPkg/PlatformInitLib: dynamic mmio window size"
+Date: Wed, 15 Mar 2023 17:21:25 +0800
+Subject: [PATCH 6/6] Revert "OvmfPkg/PlatformInitLib: dynamic mmio window
+ size"
 
 This reverts commit ecb778d0ac62560aa172786ba19521f27bc3f650.
-
-Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
 ---
  OvmfPkg/Library/PlatformInitLib/MemDetect.c | 28 ---------------------
  1 file changed, 28 deletions(-)
 
 diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
-index b8feae4309..822e4aefc3 100644
+index 882805269b..0ac7d5b967 100644
 --- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c
 +++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
-@@ -606,33 +606,6 @@ PlatformAddressWidthFromCpuid (
+@@ -625,33 +625,6 @@ PlatformAddressWidthFromCpuid (
    }
  }
  
@@ -48,7 +47,7 @@ index b8feae4309..822e4aefc3 100644
  /**
    Iterate over the PCI host bridges resources information optionally provided
    in fw-cfg and find the highest address contained in the PCI MMIO windows. If
-@@ -794,7 +767,6 @@ PlatformAddressWidthInitialization (
+@@ -813,7 +786,6 @@ PlatformAddressWidthInitialization (
    if (PlatformInfoHob->PhysMemAddressWidth != 0) {
      // physical address width is known
      PlatformInfoHob->FirstNonAddress = FirstNonAddress;
