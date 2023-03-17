@@ -292,4 +292,14 @@
     <comment></comment>
     <requestid>1045422</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>136a2eecfe13705b59bec0957cbd232a</srcmd5>
+    <version>3.8.3</version>
+    <time>1679068852</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable DeprecationWarning to avoid error with the latest setuptools
+  and pkg_resources deprecation
+</comment>
+    <requestid>1072272</requestid>
+  </revision>
 </revisionlist>

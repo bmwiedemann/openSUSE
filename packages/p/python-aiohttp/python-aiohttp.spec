@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,9 +73,9 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module proxy.py}
+BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module trustme}
 # /SECTION
@@ -143,7 +143,10 @@ if [ %{$python_version_nodots} -eq 36 ]; then
   $python_donttest=" or test_read_boundary_with_incomplete_chunk"
 fi
 }
-%pytest_arch tests -rsEf -k "not ($donttest ${$python_donttest})"
+
+# Disable DeprecationWarning to avoid error with the latest setuptools
+# and pkg_resources deprecation
+%pytest_arch tests -rsEf -k "not ($donttest ${$python_donttest})" -W ignore::DeprecationWarning
 
 %files %{python_files}
 %license LICENSE.txt

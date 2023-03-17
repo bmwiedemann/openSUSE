@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 07:32:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable DeprecationWarning to avoid error with the latest setuptools
+  and pkg_resources deprecation
+
+-------------------------------------------------------------------
 Mon Dec 26 21:35:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't assume python3 to be present for d:l:p:backports/15.4_py39
