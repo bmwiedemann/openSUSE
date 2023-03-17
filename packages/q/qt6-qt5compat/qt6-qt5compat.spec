@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -109,8 +109,7 @@ ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6Core5Compat6 -p /sbin/ldconfig
-%postun -n libQt6Core5Compat6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Core5Compat6
 
 %files imports
 %{_qt6_qmldir}/Qt5Compat/
