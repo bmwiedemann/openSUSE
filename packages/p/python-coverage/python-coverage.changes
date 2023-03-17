@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:26:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.1:
+  * Fix: the PyPI page had broken links to documentation pages,
+    but no longer does
+  * Fix: public members of the coverage module are now properly
+    indicated so that mypy will find them
+  * Added a new setting ``[report] exclude_also`` to let you add
+    more exclusions without overwriting the defaults.
+  * Added a :meth:`.CoverageData.purge_files` method to remove
+    recorded data for a particular file.
+  * Fix: when reporting commands fail, they will no longer
+    congratulate themselves with messages like "Wrote XML
+    report to file.xml" before spewing a traceback about
+    their failure.
+  * Fix: arguments in the public API that name file paths now
+    accept pathlib.Path objects.  This includes the
+    ``data_file`` and ``config_file`` arguments to
+    the Coverage constructor and the ``basename`` argument to
+    CoverageData.
+  * Fix: In some embedded environments, an IndexError could occur
+    on stop() when the originating thread exits before completion.
+    This is now fixed, thanks to
+  * Added a ``py.typed`` file to announce our type-hintedness.
+
+-------------------------------------------------------------------
 Sat Jan 28 13:38:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0:
