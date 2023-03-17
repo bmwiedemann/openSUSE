@@ -109,7 +109,9 @@ sed -i '/pytest.mark.xfail(reason="#10042")/d' testing/test_debugging.py
 
 %check
 %if %{with test}
-%pytest -n auto
+# Disable broken tests with latest setuptools, gh#pytest-dev/pytest#10815
+donttest="test_cmdline_python_namespace_package or test_syspath_prepend_with_namespace_packages"
+%pytest -n auto -k "not ($donttest)"
 %endif
 
 %if ! %{with test}

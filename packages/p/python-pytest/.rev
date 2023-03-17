@@ -1127,4 +1127,14 @@
 </comment>
     <requestid>1056778</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>e5be72ea8a2a2ad8ac7ec0986236be19</srcmd5>
+    <version>7.2.0</version>
+    <time>1679068850</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests with latest setuptools,
+  gh#pytest-dev/pytest#10815
+</comment>
+    <requestid>1072266</requestid>
+  </revision>
 </revisionlist>

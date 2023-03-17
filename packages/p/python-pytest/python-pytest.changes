@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 07:06:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with latest setuptools,
+  gh#pytest-dev/pytest#10815
+
+-------------------------------------------------------------------
 Wed Jan  4 10:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-pygments-2.14.0.patch to make it work with pygments 2.14.0
