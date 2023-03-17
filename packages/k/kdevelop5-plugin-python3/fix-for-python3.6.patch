@@ -1,0 +1,51 @@
+Index: kdev-python-22.12.3/parser/python_grammar.h
+===================================================================
+--- kdev-python-22.12.3.orig/parser/python_grammar.h
++++ kdev-python-22.12.3/parser/python_grammar.h
+@@ -78,6 +78,14 @@ public:
+     PyObject* ast_List;
+     PyObject* ast_Tuple;
+     PyObject* ast_Slice;
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 8, 0)
++    PyObject* ast_Ellipsis;
++    PyObject* ast_NameConstant;
++#endif
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 9, 0)
++    PyObject* ast_ExtSlice;
++    PyObject* ast_Index;
++#endif
+ 
+     // expr_context
+     PyObject* ast_expr_context;
+@@ -250,6 +258,16 @@ public:
+         Py_GRAMMAR_GET(mod, List);
+         Py_GRAMMAR_GET(mod, Tuple);
+         Py_GRAMMAR_GET(mod, Slice);
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 8, 0)
++        Py_GRAMMAR_GET(mod, Ellipsis);
++        Py_GRAMMAR_GET(mod, NameConstant);
++#endif
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 9, 0)
++        Py_GRAMMAR_GET(mod, ExtSlice);
++        Py_GRAMMAR_GET(mod, Index);
++#endif
++
++
+ 
+         Py_GRAMMAR_GET(mod, expr_context);
+         Py_GRAMMAR_GET(mod, Load);
+@@ -397,6 +415,14 @@ public:
+         Py_XDECREF(ast_List);
+         Py_XDECREF(ast_Tuple);
+         Py_XDECREF(ast_Slice);
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 8, 0)
++        Py_XDECREF(ast_Ellipsis);
++        Py_XDECREF(ast_NameConstant);
++#endif
++#if PYTHON_VERSION < QT_VERSION_CHECK(3, 9, 0)
++        Py_XDECREF(ast_ExtSlice);
++        Py_XDECREF(ast_Index);
++#endif
+ 
+         Py_XDECREF(ast_expr_context);
+         Py_XDECREF(ast_Load);

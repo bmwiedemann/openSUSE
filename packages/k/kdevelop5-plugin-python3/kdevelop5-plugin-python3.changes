@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 13:22:29 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch that fixes build with python < 3.9 as in SLE/Backports:
+  * fix-for-python3.6.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:45:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3
