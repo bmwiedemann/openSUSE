@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.27.2
+Version:        5.27.3
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -33,6 +33,10 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{versi
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FEATURE-UPSTREAM
+Patch100:       0001-Outline-intensity-setting.patch
+# PATCH-FIX-OPENSUSE for ^
+Patch101:       0002-Undo-some-string-changes-from-the-preceding-commit.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes

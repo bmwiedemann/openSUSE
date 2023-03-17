@@ -1,0 +1,52 @@
+From 9bdf353d8cbce8d602ce799ab56179861888629f Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 16 Mar 2023 21:43:33 +0100
+Subject: [PATCH 2/2] Undo some string changes from the preceding commit
+
+To avoid breaking translations, revert some not really necessary string
+changes. Makes the option a bit harder to find though.
+---
+ kdecoration/config/ui/breezeconfigurationui.ui | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kdecoration/config/ui/breezeconfigurationui.ui b/kdecoration/config/ui/breezeconfigurationui.ui
+index a760f7b7..e0283c93 100644
+--- a/kdecoration/config/ui/breezeconfigurationui.ui
++++ b/kdecoration/config/ui/breezeconfigurationui.ui
+@@ -193,13 +193,13 @@
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+-       <string>Shadows and Outline</string>
++       <string>Shadows</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+-          <string>Shadow size:</string>
++          <string>Si&amp;ze:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+@@ -241,7 +241,7 @@
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+-          <string comment="strength of the shadow (from transparent to opaque)">Shadow strength:</string>
++          <string comment="strength of the shadow (from transparent to opaque)">S&amp;trength:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+@@ -280,7 +280,7 @@
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+-          <string>Shadow color:</string>
++          <string>Color:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-- 
+2.39.2
+
