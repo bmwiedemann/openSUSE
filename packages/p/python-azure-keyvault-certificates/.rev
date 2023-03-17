@@ -102,4 +102,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1004930 from glaubitz)</comment>
     <requestid>1005726</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e510bdbe79b73323a736cb6ce88f5de</srcmd5>
+    <version>4.7.0</version>
+    <time>1679069094</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1072538 from glaubitz)</comment>
+    <requestid>1072562</requestid>
+  </revision>
 </revisionlist>
