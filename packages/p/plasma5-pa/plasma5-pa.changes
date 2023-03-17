@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:06:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * kcm: Fix visuals when testing non-standard channel names
+  * kcm: Fix missing id and implicit parameter signal handler (kde#466075)
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
