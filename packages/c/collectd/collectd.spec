@@ -34,27 +34,32 @@
   wireless write_graphite write_http write_log write_sensu write_tsdb \\\
   write_prometheus zfs_arc zookeeper
 %ifnarch s390 s390x
-%define sensors    1
+%bcond_without sensors
 %define sensors_plugin sensors
 %else
-%define sensors    0
+%bcond_with sensors
 %define sensors_plugin %{nil}
 %endif
 # dpdk exclusive build arch requirements copied:
 %ifarch aarch64 x86_64 ppc64le
-%define dpdk       1
+%bcond_without dpdk
 %else
-%define dpdk       0
+%bcond_with dpdk
 %endif
 %ifarch x86_64 %{ix86}
-%define intel_rdt    1
+%bcond_without intel_rdt
 %define rdt_plugin intel_rdt
 %else
-%define intel_rdt    0
+%bcond_with intel_rdt
 %define rdt_plugin %{nil}
 %endif
+%if 0%{?suse_version} >= 1330 && 0%{?suse_version} <= 1500
+%bcond_without nut
+%else
+%bcond_with nut
+%endif
 Name:           collectd
-Version:        5.12.0.130.g2f3c12e
+Version:        5.12.0.134.g4cebbfc
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -78,7 +83,6 @@ Patch8:         9e36cd85a2bb_sigrok_Update_to_support_libsigrok_0_4.patch
 # PATCH-FIX-OPENSUSE avoid-pg-config.patch avoid pg_config if possible
 Patch11:        avoid-pg-config.patch
 Patch12:        harden_collectd.service.patch
-Patch13:        Fix-compile-issue-if-net-snmp-has-NETSNMP_DISABLE_MD5-set.patch
 # for /etc/apache2/... ownership (rpmlint):
 BuildRequires:  apache2
 BuildRequires:  autoconf
@@ -96,6 +100,7 @@ BuildRequires:  libjansson-devel
 BuildRequires:  libnetlink-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libtool
 BuildRequires:  libyajl-devel
 BuildRequires:  linux-kernel-headers
@@ -106,7 +111,6 @@ BuildRequires:  openldap2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-BuildRequires:  protobuf-c
 BuildRequires:  rrdtool
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xfsprogs-devel
@@ -125,7 +129,6 @@ BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(librrd)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libupsclient)
 BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
@@ -138,12 +141,12 @@ Requires(post): %fillup_prereq
 Obsoletes:      collectd-beta < %{version}
 Provides:       collectd-beta = %{version}-%{release}
 %{?systemd_requires}
-%if %{dpdk}
+%if %{with dpdk}
 BuildRequires:  dpdk-devel >= 19.08
 %endif
 # intel_rdt -> pqos.h
 # intel-cmt-cat exclusive build arch requirements copied:
-%if %{intel_rdt}
+%if %{with intel_rdt}
 BuildRequires:  libpqos-devel
 %endif
 %if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
@@ -160,10 +163,10 @@ BuildRequires:  pkgconfig(libmosquitto)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  pkgconfig(librabbitmq)
 %endif
-%if 0%{?suse_version} >= 1330
+%if %{with nut}
 BuildRequires:  pkgconfig(libnutclient)
 %endif
-%if %{sensors}
+%if %{with sensors}
 BuildRequires:  sensors
 Requires:       sensors
 %endif
@@ -184,6 +187,7 @@ Requires:       perl(Data::Dumper)
 Requires:       perl(HTML::Entities)
 Requires:       perl(RRDs)
 Requires:       perl(URI::Escape)
+BuildArch:      noarch
 
 %description web
 Web frontend CGI for watching %{name} statistics from a browser.
@@ -202,6 +206,7 @@ Requires:       perl(Data::Dumper)
 Requires:       perl(HTML::Entities)
 Requires:       perl(JSON)
 Requires:       perl(RRDs)
+BuildArch:      noarch
 
 %description web-js
 Web/JavaScript frontend CGI for watching %{name} statistics from
@@ -267,7 +272,7 @@ Requires:       %{name} = %{version}-%{release}
 This plugin for collectd reads monitoring information
 from OpenLDAP's cn=Monitor subtree.
 
-%if 0%{?suse_version} >= 1330
+%if %{with nut}
 %package plugin-nut
 Summary:        Network UPS Tools plugin for collectd
 Group:          System/Monitoring
@@ -559,9 +564,10 @@ Requires:       %{name}-plugin-mqtt = %{version}-%{release}
 %if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 Requires:       %{name}-plugin-sigrok = %{version}-%{release}
 %endif
-%if 0%{?suse_version} >= 1330
+%if %{with nut}
 Requires:       %{name}-plugin-nut = %{version}-%{release}
 %endif
+BuildArch:      noarch
 
 %description plugins-all
 Metapackage that installs %{name} and all the available
@@ -572,6 +578,7 @@ Summary:        Spamassassin Monitoring for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
 Requires:       perl-spamassassin
+BuildArch:      noarch
 
 %description spamassassin
 Plugin for filling %{name} with statistics from the
@@ -723,6 +730,8 @@ rm contrib/snmp-probe-host.px
 install -d "%{buildroot}%{_mandir}/man1"
 
 find contrib/ -name '*.orig' -delete
+find contrib/ -name .gitignore -delete
+sed -i 's/env //1' contrib/exec-borg
 
 # plugin list:
 echo -n > plugins.lst
@@ -960,7 +969,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/write_influxdb_udp.la
 %{_libdir}/collectd/write_influxdb_udp.so
 
-%if 0%{?suse_version} >= 1330
+%if %{with nut}
 %files plugin-nut
 %{_libdir}/collectd/nut.so
 %{_libdir}/collectd/nut.la
@@ -976,7 +985,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %doc %{perl_man3dir}/Mail::SpamAssassin::Plugin::Collectd.%{perl_man3ext}%{ext_man}
 
 %files plugin-dpdk
-%if %{dpdk}
+%if %{with dpdk}
 %{_libdir}/collectd/dpdkevents.la
 %{_libdir}/collectd/dpdkevents.so
 %{_libdir}/collectd/dpdkstat.la

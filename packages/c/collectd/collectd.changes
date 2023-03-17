@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 11 15:43:03 UTC 2023 - suse+build@de-korte.org
+
+- Update to version 5.12.0.134.g4cebbfc:
+  * Hugepages plugin skips reading write-only file
+  * Update the format of contrib/snmp-data.conf
+  * [cleanup] Fix typo in comment and remove executable bits of config file
+  * Remove upstreamed patch
+    - Fix-compile-issue-if-net-snmp-has-NETSNMP_DISABLE_MD5-set.patch
+- Change to %bcond style conditional builds
+- Disable building NUT plugin in Tumbleweed (fails to build due to changes
+  in NUT-2.8.0)
+- Minor spec file fixes
+
+-------------------------------------------------------------------
 Tue Jan 31 13:51:08 UTC 2023 - trenn@suse.de
 
 - Update to version 5.12.0.130.g2f3c12e:

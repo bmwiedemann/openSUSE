@@ -391,4 +391,12 @@ Packaging :
     <comment></comment>
     <requestid>1062319</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f5f564bfbb2c6186c46c8de6cc2e2bbb</srcmd5>
+    <version>5.12.0.134.g4cebbfc</version>
+    <time>1679069082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072544</requestid>
+  </revision>
 </revisionlist>
