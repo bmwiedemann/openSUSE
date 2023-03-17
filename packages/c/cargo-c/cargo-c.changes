@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:29:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add constraints to avoid out of disk space errors
+
+-------------------------------------------------------------------
 Mon Jan 02 15:45:48 UTC 2023 - asn@cryptomilk.org
 
 - Update to version 0.9.15~git0.2d3044b:
