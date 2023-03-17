@@ -59,4 +59,13 @@
     <comment></comment>
     <requestid>1058621</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b23d86175bf1d6d89e8042bf02dfd72</srcmd5>
+    <version>1.5.0</version>
+    <time>1679069097</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Fix building for Leap</comment>
+    <requestid>1072569</requestid>
+  </revision>
 </revisionlist>

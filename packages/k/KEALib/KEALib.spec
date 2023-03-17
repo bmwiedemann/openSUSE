@@ -75,8 +75,7 @@ Group:          System/Libraries
 KEALib plugin for GDAL.
 
 %prep
-%setup -q -n %{sourcename}-%{version}
-%patch -p1
+%autosetup -n %{sourcename}-%{version} -p1
 
 %build
 %cmake \
@@ -91,12 +90,12 @@ KEALib plugin for GDAL.
 %endif
 
 cp ../build/include/libkea/kea-config.h ../include/libkea/kea-config.h
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-%if %__isa_bits == 64
+%if %{__isa_bits} == 64
 mv %{buildroot}%{_prefix}/lib %{buildroot}/%{_libdir}
 %endif
 
