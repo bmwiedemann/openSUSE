@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230315" schemaversion="4.1">
+<image name="OBS__openSUSE___20230316" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230315</productvar>
+      <productvar name="VERSION">20230316</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230315,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230316,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230315/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230316/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1310,6 +1310,7 @@
       <repopackage name="libavutil56_70"/>
       <repopackage name="libavutil57"/>
       <repopackage name="libb2-1" arch="x86_64"/>
+      <repopackage name="libb64-0"/>
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
@@ -1364,6 +1365,7 @@
       <repopackage name="libcairo2"/>
       <repopackage name="libcairo2-32bit" arch="x86_64"/>
       <repopackage name="libcairomm-1_0-1"/>
+      <repopackage name="libcairomm-1_16-1"/>
       <repopackage name="libcamd2"/>
       <repopackage name="libcamel-1_2-64"/>
       <repopackage name="libcamera-base0_0_4"/>
@@ -1469,6 +1471,7 @@
       <repopackage name="libdc1394-25"/>
       <repopackage name="libdconf1"/>
       <repopackage name="libdebuginfod1"/>
+      <repopackage name="libdeflate0"/>
       <repopackage name="libdeflt1_0"/>
       <repopackage name="libdevmapper-event1_03"/>
       <repopackage name="libdevmapper1_03"/>
@@ -1636,6 +1639,7 @@
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgio-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1"/>
+      <repopackage name="libgiomm-2_68-1"/>
       <repopackage name="libgirepository-1_0-1"/>
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
@@ -1643,6 +1647,7 @@
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglib-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libglibmm-2_4-1"/>
+      <repopackage name="libglibmm-2_68-1"/>
       <repopackage name="libglslang12"/>
       <repopackage name="libGLU1"/>
       <repopackage name="libglut3"/>
@@ -1758,6 +1763,7 @@
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkimageview0"/>
       <repopackage name="libgtkmm-3_0-1"/>
+      <repopackage name="libgtkmm-4_0-0"/>
       <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtksourceview-5-0"/>
@@ -2296,6 +2302,7 @@
       <repopackage name="libpango-1_0-0"/>
       <repopackage name="libpango-1_0-0-32bit" arch="x86_64"/>
       <repopackage name="libpangomm-1_4-1"/>
+      <repopackage name="libpangomm-2_48-1"/>
       <repopackage name="libpaper"/>
       <repopackage name="libpaper-tools"/>
       <repopackage name="libpaper2"/>
@@ -2608,6 +2615,7 @@
       <repopackage name="libshumate-1_0-1"/>
       <repopackage name="libshumate-lang"/>
       <repopackage name="libsigc-2_0-0"/>
+      <repopackage name="libsigc-3_0-0"/>
       <repopackage name="libsignon-qt5-1"/>
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>

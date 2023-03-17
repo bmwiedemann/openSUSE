@@ -572,7 +572,10 @@ unsorted:
   - ansible-runner 
   - ansible-test 
   - ansifilter 
+  - ansifilter-bash-completion 
+  - ansifilter-fish-completion 
   - ansifilter-gui 
+  - ansifilter-zsh-completion 
   - ansilove 
   - ansilove-term 
   - ant 
@@ -8428,6 +8431,7 @@ unsorted:
   - kanku-urlwrapper 
   - kanku-web 
   - kanku-worker 
+  - kanshi 
   - kapidox 
   - kapman 
   - kapman-lang 
@@ -10371,7 +10375,6 @@ unsorted:
   - libb2-1: [i586] 
   - libb2-devel 
   - libb64 
-  - libb64-0 
   - libb64-devel 
   - libbabl-0_1-0-32bit: [x86_64] 
   - libbabl-0_1-0-x86-64-v3: [x86_64] 
@@ -10686,7 +10689,6 @@ unsorted:
   - libcaes1 
   - libcairo-gobject2-32bit: [x86_64] 
   - libcairo-script-interpreter2-32bit: [x86_64] 
-  - libcairomm-1_16-1 
   - libcaja-extension1 
   - libcal3d12 
   - libcalc2_14_1_5 
@@ -11115,7 +11117,6 @@ unsorted:
   - libdeepin_pw_check1 
   - libdeflate-devel 
   - libdeflate-tools 
-  - libdeflate0 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit: [x86_64] 
   - libdex-1-1 
@@ -11745,7 +11746,6 @@ unsorted:
   - libginac11 
   - libgio-qt0 
   - libgiomm-2_4-1-32bit: [x86_64] 
-  - libgiomm-2_68-1 
   - libgiomm-2_68-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
@@ -11772,7 +11772,6 @@ unsorted:
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit: [x86_64] 
-  - libglibmm-2_68-1 
   - libglibmm-2_68-1-32bit: [x86_64] 
   - libglog0 
   - libgloox18 
@@ -11960,7 +11959,6 @@ unsorted:
   - libgtkhtml-4_0-0 
   - libgtkhtml-editor-4_0-0 
   - libgtkmm-2_4-1 
-  - libgtkmm-4_0-0 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-3_0-0 
@@ -13640,7 +13638,6 @@ unsorted:
   - libpanel-devel 
   - libpanel-lang 
   - libpanel1-1 
-  - libpangomm-2_48-1 
   - libpano-devel 
   - libpano-utils 
   - libpano13-3 
@@ -14612,7 +14609,6 @@ unsorted:
   - libsigc++2-devel 
   - libsigc++3-devel 
   - libsigc-2_0-0-32bit: [x86_64] 
-  - libsigc-3_0-0 
   - libsigc-3_0-0-32bit: [x86_64] 
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
@@ -19408,7 +19404,6 @@ unsorted:
   - osc-collab-server 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
-  - osc-plugin-install 
   - osc-plugin-origin: [x86_64] 
   - osc-plugin-pcheck: [x86_64] 
   - osc-plugin-staging: [x86_64] 
@@ -22582,6 +22577,7 @@ unsorted:
   - python3-mistralclient 
   - python3-mlt 
   - python3-monascaclient 
+  - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
   - python3-mraa 
   - python3-nemo 
@@ -24561,7 +24557,6 @@ unsorted:
   - python310-modernize 
   - python310-mohawk 
   - python310-mongoengine 
-  - python310-monitoring-plugins-http_json 
   - python310-monotonic 
   - python310-more-itertools 
   - python310-moreorless 
