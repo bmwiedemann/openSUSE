@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 15 17:07:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.4+79+suse.25c23a9:
+  * fix multipath-tools build with liburcu 0.14.0
+- Upstream bug fixes:
+  * libmultipath: return 'pending' state when port is in transition
+  * multipath.rules: fix "smart" bug with failed valid path check
+  * libmpathpersist: fix resource leak in update_map_pr()
+  * libmultipath: keep renames from stopping other multipath actions
+
+-------------------------------------------------------------------
 Wed Jan 25 15:04:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.4+68+suse.98559ea:

@@ -1769,4 +1769,18 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * spec file: use verbose build (forwarded request 1060999 from mwilck)</comment>
     <requestid>1061002</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>2097a860d71a98522a7278654bc2b2b3</srcmd5>
+    <version>0.9.4+79+suse.25c23a9</version>
+    <time>1679068948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.4+79+suse.25c23a9:
+  * fix multipath-tools build with liburcu 0.14.0
+- Upstream bug fixes:
+  * libmultipath: return 'pending' state when port is in transition
+  * multipath.rules: fix &quot;smart&quot; bug with failed valid path check
+  * libmpathpersist: fix resource leak in update_map_pr()
+  * libmultipath: keep renames from stopping other multipath actions (forwarded request 1072176 from mwilck)</comment>
+    <requestid>1072177</requestid>
+  </revision>
 </revisionlist>
