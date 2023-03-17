@@ -25,10 +25,10 @@ License:        Apache-2.0
 URL:            https://github.com/googleapis/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python/issues/1055
-Patch0:         python-google-auth-no-mock.patch
+Patch1:         python-google-auth-no-mock.patch
 # PATCH-FIX-UPSTREAM no-python3.patch gh#googleapis/google-auth-library-python!1233 mcepl@suse.com
 # don't use 'python3' literal when you mean sys.executable
-Patch1:         no-python3.patch
+Patch2:         no-python3.patch
 BuildRequires:  %{python_module Flask}
 # START TESTING SECTION
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
