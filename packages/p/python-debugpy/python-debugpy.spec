@@ -37,6 +37,8 @@ Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
 URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM setuptools-67.3.0.patch (gh#microsoft/debugpy#1230, gh#microsoft/debugpy@35504f83ed80)
+Patch1:         setuptools-67.3.0.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

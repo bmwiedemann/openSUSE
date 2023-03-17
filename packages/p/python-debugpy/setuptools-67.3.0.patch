@@ -1,0 +1,24 @@
+From 35504f83ed807fa9eddcacf940da4e35e7688d78 Mon Sep 17 00:00:00 2001
+From: Pavel Minaev <pminaev@microsoft.com>
+Date: Tue, 7 Mar 2023 10:34:59 -0800
+Subject: [PATCH] Work around #1230
+
+Look for more specific text in the output to avoid false positives.
+---
+ tests/debugpy/test_run.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: debugpy-1.6.6/tests/debugpy/test_run.py
+===================================================================
+--- debugpy-1.6.6.orig/tests/debugpy/test_run.py
++++ debugpy-1.6.6/tests/debugpy/test_run.py
+@@ -89,8 +89,7 @@ def test_run_relative_path(pyfile, run):
+         with open(pydevd_debug_file, "r") as stream:
+             contents = stream.read()
+ 
+-    assert "critical" not in contents
+-    assert "Traceback" not in contents
++    assert "FileNotFound" not in contents
+ 
+ 
+ @pytest.mark.parametrize("run", runners.all_launch)

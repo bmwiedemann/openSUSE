@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:39:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add setuptools-67.3.0.patch to fix test issues with new setuptools.
+  gh#microsoft/debugpy#1230
+
+-------------------------------------------------------------------
 Thu Feb  2 12:58:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip more tests for python 3.11
