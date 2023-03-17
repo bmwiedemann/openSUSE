@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 06:55:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- No need to use enforcer plugin in controlled environment
+
+-------------------------------------------------------------------
 Fri Nov 18 21:43:50 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.5.3:

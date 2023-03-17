@@ -1,7 +1,7 @@
 #
 # spec file for package antlr3-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ Patch1:         antlr3-osgi-manifest.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-enforcer-plugin
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(antlr:antlr)
@@ -151,6 +150,7 @@ find -type f -a -name *.class -delete
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 
 # compile for target 1.8
 sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resources/pom.xml \
