@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -123,10 +123,10 @@ This package contains the Qt 6 Designer Library.
 %package -n qt6-designer-devel
 Summary:        Qt 6 Designer libraries - Development files
 Requires:       libQt6Designer6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6OpenGLWidgets)
-Requires:       cmake(Qt6Widgets)
-Requires:       cmake(Qt6Xml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
+Requires:       cmake(Qt6Widgets) = %{real_version}
+Requires:       cmake(Qt6Xml) = %{real_version}
 
 %description -n qt6-designer-devel
 Development files for the Qt6 Designer libraries.
@@ -151,10 +151,10 @@ This package contains the Qt 6 Help library.
 %package -n qt6-help-devel
 Summary:        Qt 6 Help library - Development files
 Requires:       libQt6Help6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
-Requires:       cmake(Qt6Sql)
-Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6Sql) = %{real_version}
+Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description -n qt6-help-devel
 Development files for the Qt6 Help library.
@@ -177,11 +177,11 @@ This package contains the Qt 6 UiTools library.
 %package -n qt6-uitools-devel
 Summary:        Qt 6 UiTools library - Development files
 Requires:       libQt6UiTools6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6OpenGL)
-Requires:       cmake(Qt6OpenGLWidgets)
-Requires:       cmake(Qt6UiPlugin)
-Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
+Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
+Requires:       cmake(Qt6UiPlugin) = %{real_version}
+Requires:       cmake(Qt6Widgets) = %{real_version}
 # qt6uitools_*_metatypes.json location fixed
 Conflicts:      qt6-designer-devel < 6.2.2
 
@@ -262,8 +262,8 @@ This library does not have any ABI or API guarantees.
 Summary:        Development files for the Qt 6 DesignerComponents library
 Requires:       libQt6DesignerComponents6 = %{version}
 Requires:       qt6-designer-private-devel = %{version}
-Requires:       cmake(Qt6Core)
-Requires:       cmake(Qt6Xml)
+Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6Xml) = %{real_version}
 %requires_eq    qt6-gui-private-devel
 %requires_eq    qt6-widgets-private-devel
 
@@ -313,14 +313,10 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 install -D -m644 src/assistant/assistant/images/assistant.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/assistant6.png
 install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/assistant6.png
 
-%post -n libQt6Designer6 -p /sbin/ldconfig
-%post -n libQt6DesignerComponents6 -p /sbin/ldconfig
-%post -n libQt6Help6 -p /sbin/ldconfig
-%post -n libQt6UiTools6 -p /sbin/ldconfig
-%postun -n libQt6Designer6 -p /sbin/ldconfig
-%postun -n libQt6DesignerComponents6 -p /sbin/ldconfig
-%postun -n libQt6Help6 -p /sbin/ldconfig
-%postun -n libQt6UiTools6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Designer6
+%ldconfig_scriptlets -n libQt6DesignerComponents6
+%ldconfig_scriptlets -n libQt6Help6
+%ldconfig_scriptlets -n libQt6UiTools6
 
 %files
 %license LICENSES/*
@@ -419,7 +415,11 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_datadir}/applications/org.qt.designer6.desktop
 %{_datadir}/icons/hicolor/128x128/apps/designer6.png
 %{_qt6_bindir}/designer
+%{_qt6_pluginsdir}/designer/libcontainerextension.so
+%{_qt6_pluginsdir}/designer/libcustomwidgetplugin.so
 %{_qt6_pluginsdir}/designer/libqquickwidget.so
+%{_qt6_pluginsdir}/designer/libtaskmenuextension.so
+%{_qt6_pluginsdir}/designer/libworldtimeclockplugin.so
 
 %files helpgenerators
 %{_qt6_libexecdir}/qhelpgenerator
