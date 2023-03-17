@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * kded/output: with duplicate edid hashes, use different global config files (kde#452614,kde#448599)
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
