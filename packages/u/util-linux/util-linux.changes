@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:40:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Redistribute file entries to make sure that the files goes to the
+  corresponding subpackage, util-linux or util-linux-systemd
+  (bsc#1207023)
+
+-------------------------------------------------------------------
+Wed Mar  8 22:22:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Use requires(post,verify) instead of the PreReq hammer
+
+-------------------------------------------------------------------
+Wed Mar  8 10:08:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add Provides for all tty-tools binaries in the tty-tools package to
+  handle conflict with previous versions of util-linux.
+
+-------------------------------------------------------------------
+Thu Mar  7 06:57:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Split out mesg, wall and write to their own util-linux-tty-tools
+  package. (bsc#1208310)
+
+-------------------------------------------------------------------
 Mon Mar  6 10:43:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix comments bleeding into rpm scriptlets. /sbin/ldconfig does

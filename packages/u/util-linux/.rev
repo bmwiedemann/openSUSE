@@ -2432,4 +2432,14 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1069593</requestid>
   </revision>
+  <revision rev="267" vrev="10">
+    <srcmd5>e634fcf71031e864b273d8b05f473fa7</srcmd5>
+    <version>2.38.1</version>
+    <time>1679068842</time>
+    <user>dimstar_suse</user>
+    <comment>- Redistribute file entries to make sure that the files goes to the
+  corresponding subpackage, util-linux or util-linux-systemd
+  (bsc#1207023)</comment>
+    <requestid>1071484</requestid>
+  </revision>
 </revisionlist>

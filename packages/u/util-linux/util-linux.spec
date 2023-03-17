@@ -38,7 +38,7 @@
 %endif
 # flavor == systemd
 
-# All python flavors are build separately. No module can be built together with base.
+# All python flavors are built separately. No module can be built together with base.
 # This is a limitation of %%python_subpackages.
 %if "%{flavor}" == "python"
 %define ulbuild python
@@ -131,7 +131,8 @@ BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  utempter-devel
 BuildRequires:  zlib-devel
-PreReq:         permissions
+Requires(post): permissions
+Requires(verify):permissions
 # util-linux is part of VMInstall, but we can well build without it
 # Helps shorten a cycle and eliminate a bootstrap issue
 #!BuildIgnore:  util-linux
@@ -188,7 +189,6 @@ Recommends:     login_defs-support-for-util-linux >= 2.37
 # ulsubset == core
 
 %if "%ulbuild" == "base"
-Requires(pre):  group(tty)
 # The problem with inconsistent /proc/self/mountinfo read is fixed in kernel 5.8.
 # util-linux >= 2.37 no more contain work-around.
 Conflicts:      kernel < 5.8
@@ -360,6 +360,19 @@ Requires:       libuuid-devel = %{version}
 %description -n libuuid-devel-static
 Files to develop applications using the library to generate universally
 unique IDs (UUIDs).
+
+%package -n util-linux-tty-tools
+Summary:        Tools for writing to TTYs
+License:        BSD-3-Clause
+Requires(pre):  group(tty)
+Requires(post): permissions
+Requires(verify):permissions
+Provides:       util-linux:%{_bindir}/mesg
+Provides:       util-linux:%{_bindir}/wall
+Provides:       util-linux:%{_bindir}/write
+
+%description -n util-linux-tty-tools
+Tools that write to TTYs that the current user does not own.
 
 %lang_package
 %endif
@@ -579,10 +592,10 @@ rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 
 # create list of setarch(8) symlinks
 find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64|uname26)\.8.*" \
   -printf "%{_mandir}/man8/%f*\n" >> %{name}.files
 find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64|uname26)$" \
   -printf "%{_bindir}/%f\n" >> %{name}.files
 mkdir -p %{buildroot}/run/uuidd
 
@@ -695,8 +708,11 @@ exit "$result"
 
 %if "%ulsubset" == "core"
 %verifyscript
-%verify_permissions -e %{_bindir}/wall -e %{_bindir}/write -e %{_bindir}/mount -e %{_bindir}/umount
+%verify_permissions -e %{_bindir}/mount -e %{_bindir}/umount
 %verify_permissions -e %{_bindir}/su
+
+%verifyscript -n util-linux-tty-tools
+%verify_permissions -e %{_bindir}/wall -e %{_bindir}/write
 %endif
 %dnl # ulsubset == core, ulbuild == base
 
@@ -714,7 +730,7 @@ for i in login remote runuser runuser-l su su-l ; do
 done
 
 %post
-%set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
+%set_permissions %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
 
 %if ! %{defined no_config}
@@ -773,6 +789,9 @@ done
 
 %postun -n libfdisk1 -p /sbin/ldconfig
 
+%post -n util-linux-tty-tools
+%set_permissions %{_bindir}/wall %{_bindir}/write
+
 %endif
 %dnl # ulsubset == core, pre & post
 %dnl
@@ -829,32 +848,32 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %defattr(-,root,root)
 
 %if %{defined no_config}
-%{_pam_vendordir}/login
-%{_pam_vendordir}/remote
-%{_pam_vendordir}/runuser
-%{_pam_vendordir}/runuser-l
-%{_pam_vendordir}/su
-%{_pam_vendordir}/su-l
+%core %{_pam_vendordir}/login
+%core %{_pam_vendordir}/remote
+%core %{_pam_vendordir}/runuser
+%core %{_pam_vendordir}/runuser-l
+%core %{_pam_vendordir}/su
+%core %{_pam_vendordir}/su-l
 
 %if 0%{?suse_version} <= 1520
-%dir %{_distconfdir}/default
+%core %dir %{_distconfdir}/default
 %endif
 # suse_version <= 1520
 
-%{_distconfdir}/default/runuser
-%{_distconfdir}/default/su
+%core %{_distconfdir}/default/runuser
+%core %{_distconfdir}/default/su
 
 %else
 # ! defined no_config
 
-%config(noreplace) %{_pam_vendordir}/login
-%config(noreplace) %{_pam_vendordir}/remote
-%config(noreplace) %{_pam_vendordir}/runuser
-%config(noreplace) %{_pam_vendordir}/runuser-l
-%config(noreplace) %{_pam_vendordir}/su
-%config(noreplace) %{_pam_vendordir}/su-l
-%config(noreplace) %{_sysconfdir}/default/runuser
-%config(noreplace) %{_sysconfdir}/default/su
+%core %config(noreplace) %{_pam_vendordir}/login
+%core %config(noreplace) %{_pam_vendordir}/remote
+%core %config(noreplace) %{_pam_vendordir}/runuser
+%core %config(noreplace) %{_pam_vendordir}/runuser-l
+%core %config(noreplace) %{_pam_vendordir}/su
+%core %config(noreplace) %{_pam_vendordir}/su-l
+%core %config(noreplace) %{_sysconfdir}/default/runuser
+%core %config(noreplace) %{_sysconfdir}/default/su
 %endif
 # defined no_config
 
@@ -862,165 +881,174 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %if %{ul_extra_bin_sbin}
 %exclude /bin/findmnt
-/bin/kill
-%verify(not mode) %attr(%ul_suid,root,root) /bin/su
-/bin/dmesg
-/bin/more
-%verify(not mode) %attr(%ul_suid,root,root) /bin/mount
-%verify(not mode) %attr(%ul_suid,root,root) /bin/umount
-/bin/login
+%core /bin/kill
+%core %verify(not mode) %attr(%ul_suid,root,root) /bin/su
+%core /bin/dmesg
+%core /bin/more
+%core %verify(not mode) %attr(%ul_suid,root,root) /bin/mount
+%core %verify(not mode) %attr(%ul_suid,root,root) /bin/umount
+%core /bin/login
+%core /sbin/agetty
+%core /sbin/blockdev
+%core /sbin/ctrlaltdel
+%core /sbin/fsck.minix
+%core /sbin/fsck.cramfs
+%core /sbin/losetup
+%core /sbin/mkfs
+%core /sbin/mkfs.bfs
+%core /sbin/mkfs.minix
+%core /sbin/mkfs.cramfs
+%core /sbin/mkswap
+%core /sbin/nologin
+%core /sbin/pivot_root
+%core /sbin/swapoff
+%core /sbin/swapon
+%core /sbin/blkid
+%core /sbin/findfs
+%core /sbin/fsck
+%core /sbin/switch_root
+%core /sbin/wipefs
+%core /sbin/fsfreeze
+%core /sbin/swaplabel
+%core /sbin/fstrim
+%core /sbin/chcpu
+
 %exclude /bin/logger
 %exclude /bin/lsblk
-/sbin/agetty
-/sbin/blockdev
-/sbin/ctrlaltdel
-/sbin/fsck.minix
-/sbin/fsck.cramfs
-/sbin/losetup
-/sbin/mkfs
-/sbin/mkfs.bfs
-/sbin/mkfs.minix
-/sbin/mkfs.cramfs
-/sbin/mkswap
-/sbin/nologin
-/sbin/pivot_root
-/sbin/swapoff
-/sbin/swapon
-/sbin/blkid
-/sbin/findfs
-/sbin/fsck
-/sbin/switch_root
-/sbin/wipefs
-/sbin/fsfreeze
-/sbin/swaplabel
-/sbin/fstrim
-/sbin/chcpu
 %endif
 # ul_extra_bin_sbin
 
-%{_bindir}/kill
-%verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
-%{_bindir}/eject
-%{_bindir}/cal
-%{_bindir}/chmem
-%{_bindir}/choom
-%{_bindir}/chrt
-%{_bindir}/col
-%{_bindir}/colcrt
-%{_bindir}/colrm
-%{_bindir}/column
-%{_bindir}/dmesg
-%{_bindir}/fallocate
-%{_bindir}/fincore
+%core %{_bindir}/kill
+%core %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
+%core %{_bindir}/eject
+%core %{_bindir}/cal
+%core %{_bindir}/chmem
+%core %{_bindir}/choom
+%core %{_bindir}/chrt
+%core %{_bindir}/col
+%core %{_bindir}/colcrt
+%core %{_bindir}/colrm
+%core %{_bindir}/column
+%core %{_bindir}/dmesg
+%core %{_bindir}/fallocate
+%core %{_bindir}/fincore
 
-%{_bindir}/flock
-%{_bindir}/getopt
-%{_bindir}/hardlink
-%{_bindir}/hexdump
-%{_bindir}/ionice
-%{_bindir}/ipcmk
-%{_bindir}/ipcrm
-%{_bindir}/ipcs
-%{_bindir}/irqtop
-%{_bindir}/isosize
-%{_bindir}/last
-%{_bindir}/lastb
-%{_bindir}/line
-%{_bindir}/look
+%core %{_bindir}/flock
+%core %{_bindir}/getopt
+%core %{_bindir}/hardlink
+%core %{_bindir}/hexdump
+%core %{_bindir}/ionice
+%core %{_bindir}/ipcmk
+%core %{_bindir}/ipcrm
+%core %{_bindir}/ipcs
+%core %{_bindir}/irqtop
+%core %{_bindir}/isosize
+%core %{_bindir}/last
+%core %{_bindir}/lastb
+%core %{_bindir}/line
+%core %{_bindir}/look
 
 %if !%{ul_extra_bin_sbin}
-%{_bindir}/login
+%core %{_bindir}/login
 %endif
 # ul_extra_bin_sbin
 
-%{_bindir}/lscpu
-%{_bindir}/lsfd
-%{_bindir}/lsipc
-%{_bindir}/lsirq
-%{_bindir}/lslocks
-%{_bindir}/lsmem
-%{_bindir}/lsns
-%{_bindir}/mcookie
-%{_bindir}/mesg
-%{_bindir}/more
-%verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/mount
-%{_bindir}/namei
-%{_bindir}/nsenter
-%{_bindir}/prlimit
-%{_bindir}/rename
-%{_bindir}/renice
-%{_bindir}/rev
-%{_bindir}/script
-%{_bindir}/scriptlive
-%{_bindir}/scriptreplay
-%{_bindir}/setarch
-%{_bindir}/setpriv
-%{_bindir}/setsid
-%{_bindir}/taskset
-%{_bindir}/uclampset
-%{_bindir}/ul
-%verify(not mode)%attr(%ul_suid,root,root)  %{_bindir}/umount
-%{_bindir}/unshare
-%{_bindir}/mountpoint
-%{_bindir}/utmpdump
-%{_bindir}/uuidgen
-%{_bindir}/uuidparse
-%{_bindir}/uname26
-%{_bindir}/wdctl
-%{_sbindir}/addpart
-%{_sbindir}/agetty
-%{_sbindir}/blkid
-%{_sbindir}/blkdiscard
-# blkzone depends on linux/blkzoned.h
+%core %{_bindir}/lscpu
+%core %{_bindir}/lsfd
+%core %{_bindir}/lsipc
+%core %{_bindir}/lsirq
+%core %{_bindir}/lslocks
+%core %{_bindir}/lsmem
+%core %{_bindir}/lsns
+%core %{_bindir}/mcookie
+%core %{_bindir}/more
+%core %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/mount
+%core %{_bindir}/namei
+%core %{_bindir}/nsenter
+%core %{_bindir}/prlimit
+%core %{_bindir}/rename
+%core %{_bindir}/renice
+%core %{_bindir}/rev
+%core %{_bindir}/script
+%core %{_bindir}/scriptlive
+%core %{_bindir}/scriptreplay
+%core %{_bindir}/setarch
+%core %{_bindir}/setpriv
+%core %{_bindir}/setsid
+%core %{_bindir}/taskset
+%core %{_bindir}/uclampset
+%core %{_bindir}/ul
+%core %verify(not mode)%attr(%ul_suid,root,root)  %{_bindir}/umount
+%core %{_bindir}/unshare
+%core %{_bindir}/mountpoint
+%core %{_bindir}/utmpdump
+%core %{_bindir}/uuidgen
+%core %{_bindir}/uuidparse
+%core %{_bindir}/uname26
+%core %{_bindir}/wdctl
+%core %{_sbindir}/addpart
+%core %{_sbindir}/agetty
+%core %{_sbindir}/blkid
+%core %{_sbindir}/blkdiscard
 
+# blkzone depends on linux/blkzoned.h
 %if 0%{?suse_version} >= 1330
-%{_sbindir}/blkzone
+%core %{_sbindir}/blkzone
 %endif
 # suse_version >= 1330
 
-%{_sbindir}/blockdev
-%{_sbindir}/chcpu
-%{_sbindir}/ctrlaltdel
-%{_sbindir}/delpart
-%{_sbindir}/findfs
-%{_sbindir}/fsck
-%{_sbindir}/fsck.minix
-%{_sbindir}/fsck.cramfs
-%{_sbindir}/fsfreeze
-%{_sbindir}/fstrim
-%{_sbindir}/ldattach
-%{_sbindir}/losetup
-%{_sbindir}/mkfs
-%{_sbindir}/mkfs.bfs
-%{_sbindir}/mkfs.minix
-%{_sbindir}/mkfs.cramfs
-%{_sbindir}/mkswap
-%{_sbindir}/nologin
-%{_sbindir}/partx
-%{_sbindir}/pivot_root
-%{_sbindir}/resizepart
-%{_sbindir}/rfkill
-%{_sbindir}/rtcwake
-%{_sbindir}/runuser
-%{_sbindir}/sulogin
-%{_sbindir}/swaplabel
-%{_sbindir}/swapoff
-%{_sbindir}/swapon
-%{_sbindir}/switch_root
-%{_sbindir}/wipefs
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
-%{_bindir}/whereis
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
-%{_sbindir}/zramctl
-%{_sbindir}/flushb
-%{_sbindir}/readprofile
+%core %{_sbindir}/blockdev
+%core %{_sbindir}/chcpu
+%core %{_sbindir}/ctrlaltdel
+%core %{_sbindir}/delpart
+%core %{_sbindir}/findfs
+%core %{_sbindir}/fsck
+%core %{_sbindir}/fsck.minix
+%core %{_sbindir}/fsck.cramfs
+%core %{_sbindir}/fsfreeze
+%core %{_sbindir}/fstrim
+%core %{_sbindir}/ldattach
+%core %{_sbindir}/losetup
+%core %{_sbindir}/mkfs
+%core %{_sbindir}/mkfs.bfs
+%core %{_sbindir}/mkfs.minix
+%core %{_sbindir}/mkfs.cramfs
+%core %{_sbindir}/mkswap
+%core %{_sbindir}/nologin
+%core %{_sbindir}/partx
+%core %{_sbindir}/pivot_root
+%core %{_sbindir}/resizepart
+%core %{_sbindir}/rfkill
+%core %{_sbindir}/rtcwake
+%core %{_sbindir}/runuser
+%core %{_sbindir}/sulogin
+%core %{_sbindir}/swaplabel
+%core %{_sbindir}/swapoff
+%core %{_sbindir}/swapon
+%core %{_sbindir}/switch_root
+%core %{_sbindir}/wipefs
+%core %{_bindir}/whereis
+%core %{_sbindir}/zramctl
+%core %{_sbindir}/flushb
+%core %{_sbindir}/readprofile
 # These directories should be owned by bash-completion. But we don't want to
 # install them on build, so own these two directories:
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/*
-#
+%core %dir %{_datadir}/bash-completion
+%core %dir %{_datadir}/bash-completion/completions
+
 %exclude %{_datadir}/bash-completion/completions/uuidd
+
+# tty-tools package
+%exclude %{_datadir}/bash-completion/completions/wall
+%exclude %{_datadir}/bash-completion/completions/write
+%exclude %{_datadir}/bash-completion/completions/mesg
+%exclude %{_mandir}/man1/mesg.1.gz
+%exclude %{_mandir}/man1/wall.1.gz
+%exclude %{_mandir}/man1/write.1.gz
+%exclude %{_bindir}/mesg
+%exclude %{_bindir}/wall
+%exclude %{_bindir}/write
+
 # util-linux documentation files
 %doc Documentation/blkid.txt
 %doc Documentation/cal.txt
@@ -1081,6 +1109,115 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %endif
 # narch s390
 
+%core %{_mandir}/man1/kill.1.gz
+%core %{_mandir}/man1/su.1.gz
+%core %{_mandir}/man1/cal.1.gz
+%core %{_mandir}/man1/choom.1.gz
+%core %{_mandir}/man1/chrt.1.gz
+%core %{_mandir}/man1/col.1.gz
+%core %{_mandir}/man1/colcrt.1.gz
+%core %{_mandir}/man1/colrm.1.gz
+%core %{_mandir}/man1/column.1.gz
+%core %{_mandir}/man1/dmesg.1.gz
+%core %{_mandir}/man1/eject.1.gz
+%core %{_mandir}/man1/fallocate.1.gz
+%core %{_mandir}/man1/fincore.1.gz
+%core %{_mandir}/man1/flock.1.gz
+%core %{_mandir}/man1/getopt.1.gz
+%core %{_mandir}/man1/hardlink.1.gz
+%core %{_mandir}/man1/hexdump.1.gz
+%core %{_mandir}/man1/ipcrm.1.gz
+%core %{_mandir}/man1/ipcs.1.gz
+%core %{_mandir}/man1/last.1.gz
+%core %{_mandir}/man1/lastb.1.gz
+%core %{_mandir}/man1/line.1.gz
+%core %{_mandir}/man1/login.1.gz
+%core %{_mandir}/man1/look.1.gz
+%core %{_mandir}/man1/lscpu.1.gz
+%core %{_mandir}/man1/lsfd.1.gz
+%core %{_mandir}/man1/lsipc.1.gz
+%core %{_mandir}/man1/lsirq.1.gz
+%core %{_mandir}/man1/lsmem.1.gz
+%core %{_mandir}/man1/mcookie.1.gz
+%core %{_mandir}/man1/more.1.gz
+%core %{_mandir}/man1/namei.1.gz
+%core %{_mandir}/man1/nsenter.1.gz
+%core %{_mandir}/man1/ionice.1.gz
+%core %{_mandir}/man1/irqtop.1.gz
+%core %{_mandir}/man1/prlimit.1.gz
+%core %{_mandir}/man1/rename.1.gz
+%core %{_mandir}/man1/rev.1.gz
+%core %{_mandir}/man1/renice.1.gz
+%core %{_mandir}/man1/setpriv.1.gz
+%core %{_mandir}/man1/setsid.1.gz
+%core %{_mandir}/man1/script.1.gz
+%core %{_mandir}/man1/scriptlive.1.gz
+%core %{_mandir}/man1/scriptreplay.1.gz
+%core %{_mandir}/man1/setterm.1.gz
+%core %{_mandir}/man1/taskset.1.gz
+%core %{_mandir}/man1/ul.1.gz
+%core %{_mandir}/man1/unshare.1.gz
+%core %{_mandir}/man1/whereis.1.gz
+%core %{_mandir}/man1/ipcmk.1.gz
+%core %{_mandir}/man1/mountpoint.1.gz
+%core %{_mandir}/man1/runuser.1.gz
+%core %{_mandir}/man1/uclampset.1.gz
+%core %{_mandir}/man1/utmpdump.1.gz
+%core %{_mandir}/man1/uuidgen.1.gz
+%core %{_mandir}/man1/uuidparse.1.gz
+%core %{_mandir}/man5/adjtime_config.5.gz
+%core %{_mandir}/man5/fstab.5.gz
+%core %{_mandir}/man5/terminal-colors.d.5.gz
+%core %{_mandir}/man8/addpart.8.gz
+%core %{_mandir}/man8/agetty.8.gz
+
+%if 0%{?suse_version} >= 1330
+%core %{_mandir}/man8/blkzone.8.gz
+%endif
+# suse_version >= 1330
+
+%core %{_mandir}/man8/blockdev.8.gz
+%core %{_mandir}/man8/chmem.8.gz
+%core %{_mandir}/man8/ctrlaltdel.8.gz
+%core %{_mandir}/man8/delpart.8.gz
+%core %{_mandir}/man8/blkid.8.gz
+%core %{_mandir}/man8/blkdiscard.8.gz
+%core %{_mandir}/man8/switch_root.8.gz
+%core %{_mandir}/man8/mkfs.bfs.8.gz
+%core %{_mandir}/man8/mkfs.minix.8.gz
+%core %{_mandir}/man8/findfs.8.gz
+%core %{_mandir}/man8/fsck.8.gz
+%core %{_mandir}/man8/fsck.cramfs.8.gz
+%core %{_mandir}/man8/fsck.minix.8.gz
+%core %{_mandir}/man8/isosize.8.gz
+%core %{_mandir}/man8/ldattach.8.gz
+%core %{_mandir}/man8/losetup.8.gz
+%core %{_mandir}/man8/lslocks.8.gz
+%core %{_mandir}/man8/lsns.8.gz
+%core %{_mandir}/man8/mkfs.8.gz
+%core %{_mandir}/man8/mkfs.cramfs.8.gz
+%core %{_mandir}/man8/mkswap.8.gz
+%core %{_mandir}/man8/mount.8.gz
+%core %{_mandir}/man8/nologin.8.gz
+%core %{_mandir}/man8/fsfreeze.8.gz
+%core %{_mandir}/man8/swaplabel.8.gz
+%core %{_mandir}/man8/readprofile.8.gz
+%core %{_mandir}/man8/rfkill.8.gz
+%core %{_mandir}/man8/chcpu.8.gz
+%core %{_mandir}/man8/partx.8.gz
+%core %{_mandir}/man8/pivot_root.8.gz
+%core %{_mandir}/man8/rtcwake.8.gz
+%core %{_mandir}/man8/setarch.8.gz
+%core %{_mandir}/man8/swapoff.8.gz
+%core %{_mandir}/man8/swapon.8.gz
+%core %{_mandir}/man8/umount.8.gz
+%core %{_mandir}/man8/wipefs.8.gz
+%core %{_mandir}/man8/zramctl.8.gz
+%core %{_mandir}/man8/fstrim.8.gz
+%core %{_mandir}/man8/resizepart.8.gz
+%core %{_mandir}/man8/sulogin.8.gz
+%core %{_mandir}/man8/wdctl.8.gz
+
 ##############
 # Core files #
 ##############
@@ -1094,11 +1231,23 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 
+%{_datadir}/bash-completion/completions/*
+%exclude %{_datadir}/bash-completion/completions/findmnt
+%exclude %{_datadir}/bash-completion/completions/logger
+%exclude %{_datadir}/bash-completion/completions/lsblk
+%exclude %{_datadir}/bash-completion/completions/lslogins
+
 %exclude %{_bindir}/findmnt
 %exclude %{_bindir}/logger
 %exclude %{_bindir}/lsblk
 %exclude %{_bindir}/lslogins
-%exclude %{_mandir}/man*/*
+
+%exclude %{_mandir}/man8/findmnt.8.gz
+%exclude %{_mandir}/man1/logger.1.gz
+%exclude %{_mandir}/man8/lsblk.8.gz
+%exclude %{_mandir}/man1/lslogins.1.gz
+
+%exclude %{_mandir}/man8/uuidd.8.gz
 %endif
 # ulsubset == core, ulbuild == base
 
@@ -1109,201 +1258,133 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %config(noreplace) %{_sysconfdir}/filesystems
 %exclude %config(noreplace) %{_sysconfdir}/blkid.conf
 
-%if %{defined no_config}
-%exclude %{_pam_vendordir}/login
-%exclude %{_pam_vendordir}/remote
-%exclude %{_pam_vendordir}/runuser
-%exclude %{_pam_vendordir}/runuser-l
-%exclude %{_pam_vendordir}/su
-%exclude %{_pam_vendordir}/su-l
-
-%if 0%{?suse_version} <= 1520
-%exclude %dir %{_distconfdir}/default
-%endif
-# suse_version <= 1520
-
-%exclude %{_distconfdir}/default/runuser
-%exclude %{_distconfdir}/default/su
-%else
-# ! defined no_config
-%exclude %config(noreplace) %{_pam_vendordir}/login
-%exclude %config(noreplace) %{_pam_vendordir}/remote
-%exclude %config(noreplace) %{_pam_vendordir}/runuser
-%exclude %config(noreplace) %{_pam_vendordir}/runuser-l
-%exclude %config(noreplace) %{_pam_vendordir}/su
-%exclude %config(noreplace) %{_pam_vendordir}/su-l
-%exclude %config(noreplace) %{_sysconfdir}/default/runuser
-%exclude %config(noreplace) %{_sysconfdir}/default/su
-%endif
-# defined no_config
-
 %exclude %config %dir %{_sysconfdir}/issue.d
 
 %if %{ul_extra_bin_sbin}
 %exclude /bin/findmnt
-%exclude /bin/kill
-%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/su
-%exclude /bin/dmesg
-%exclude /bin/more
-%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/mount
-%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/umount
-%exclude /bin/login
 /bin/logger
 /bin/lsblk
-%exclude /sbin/agetty
-%exclude /sbin/blockdev
-%exclude /sbin/ctrlaltdel
-%exclude /sbin/fsck.minix
-%exclude /sbin/fsck.cramfs
-%exclude /sbin/losetup
-%exclude /sbin/mkfs
-%exclude /sbin/mkfs.bfs
-%exclude /sbin/mkfs.minix
-%exclude /sbin/mkfs.cramfs
-%exclude /sbin/mkswap
-%exclude /sbin/nologin
-%exclude /sbin/pivot_root
-%exclude /sbin/swapoff
-%exclude /sbin/swapon
-%exclude /sbin/blkid
-%exclude /sbin/findfs
-%exclude /sbin/fsck
-%exclude /sbin/switch_root
-%exclude /sbin/wipefs
-%exclude /sbin/fsfreeze
-%exclude /sbin/swaplabel
-%exclude /sbin/fstrim
-%exclude /sbin/chcpu
 %endif
 # ul_extra_bin_sbin
 
-%exclude %{_bindir}/kill
-%exclude %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/su
-%exclude %{_bindir}/eject
-%exclude %{_bindir}/cal
-%exclude %{_bindir}/chmem
-%exclude %{_bindir}/choom
-%exclude %{_bindir}/chrt
-%exclude %{_bindir}/col
-%exclude %{_bindir}/colcrt
-%exclude %{_bindir}/colrm
-%exclude %{_bindir}/column
-%exclude %{_bindir}/dmesg
-%exclude %{_bindir}/fallocate
-%exclude %{_bindir}/fincore
 %{_bindir}/findmnt
-%exclude %{_bindir}/flock
-%exclude %{_bindir}/getopt
-%exclude %{_bindir}/hardlink
-%exclude %{_bindir}/hexdump
-%exclude %{_bindir}/ionice
-%exclude %{_bindir}/ipcmk
-%exclude %{_bindir}/ipcrm
-%exclude %{_bindir}/ipcs
-%exclude %{_bindir}/irqtop
-%exclude %{_bindir}/isosize
-%exclude %{_bindir}/last
-%exclude %{_bindir}/lastb
-%exclude %{_bindir}/line
 %{_bindir}/logger
-%exclude %{_bindir}/look
-
-%if !%{ul_extra_bin_sbin}
-%exclude %{_bindir}/login
-%endif
-# ul_extra_bin_sbin
-
 %{_bindir}/lsblk
-%exclude %{_bindir}/lscpu
-%exclude %{_bindir}/lsfd
-%exclude %{_bindir}/lsipc
-%exclude %{_bindir}/lsirq
-%exclude %{_bindir}/lslocks
 %{_bindir}/lslogins
-%exclude %{_bindir}/lsmem
-%exclude %{_bindir}/lsns
-%exclude %{_bindir}/mcookie
-%exclude %{_bindir}/mesg
-%exclude %{_bindir}/more
-%exclude %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/mount
-%exclude %{_bindir}/namei
-%exclude %{_bindir}/nsenter
-%exclude %{_bindir}/prlimit
-%exclude %{_bindir}/rename
-%exclude %{_bindir}/renice
-%exclude %{_bindir}/rev
-%exclude %{_bindir}/script
-%exclude %{_bindir}/scriptlive
-%exclude %{_bindir}/scriptreplay
-%exclude %{_bindir}/setarch
-%exclude %{_bindir}/setpriv
-%exclude %{_bindir}/setsid
-%exclude %{_bindir}/taskset
-%exclude %{_bindir}/uclampset
-%exclude %{_bindir}/ul
-%exclude %verify(not mode)%attr(%ul_suid,root,root)  %{_bindir}/umount
-%exclude %{_bindir}/unshare
-%exclude %{_bindir}/mountpoint
-%exclude %{_bindir}/utmpdump
-%exclude %{_bindir}/uuidgen
-%exclude %{_bindir}/uuidparse
-%exclude %{_bindir}/uname26
-%exclude %{_bindir}/wdctl
-%exclude %{_sbindir}/addpart
-%exclude %{_sbindir}/agetty
-%exclude %{_sbindir}/blkid
-%exclude %{_sbindir}/blkdiscard
-# blkzone depends on linux/blkzoned.h
 
-%if 0%{?suse_version} >= 1330
-%exclude %{_sbindir}/blkzone
-%endif
-# suse_version >= 1330
+%{_mandir}/man8/findmnt.8.gz
+%{_mandir}/man1/logger.1.gz
+%{_mandir}/man8/lsblk.8.gz
+%{_mandir}/man1/lslogins.1.gz
 
-%exclude %{_sbindir}/blockdev
-%exclude %{_sbindir}/chcpu
-%exclude %{_sbindir}/ctrlaltdel
-%exclude %{_sbindir}/delpart
-%exclude %{_sbindir}/findfs
-%exclude %{_sbindir}/fsck
-%exclude %{_sbindir}/fsck.minix
-%exclude %{_sbindir}/fsck.cramfs
-%exclude %{_sbindir}/fsfreeze
-%exclude %{_sbindir}/fstrim
-%exclude %{_sbindir}/ldattach
-%exclude %{_sbindir}/losetup
-%exclude %{_sbindir}/mkfs
-%exclude %{_sbindir}/mkfs.bfs
-%exclude %{_sbindir}/mkfs.minix
-%exclude %{_sbindir}/mkfs.cramfs
-%exclude %{_sbindir}/mkswap
-%exclude %{_sbindir}/nologin
-%exclude %{_sbindir}/partx
-%exclude %{_sbindir}/pivot_root
-%exclude %{_sbindir}/resizepart
-%exclude %{_sbindir}/rfkill
-%exclude %{_sbindir}/rtcwake
-%exclude %{_sbindir}/runuser
-%exclude %{_sbindir}/sulogin
-%exclude %{_sbindir}/swaplabel
-%exclude %{_sbindir}/swapoff
-%exclude %{_sbindir}/swapon
-%exclude %{_sbindir}/switch_root
-%exclude %{_sbindir}/wipefs
-%exclude %{_bindir}/wall
-%exclude %{_bindir}/whereis
-%exclude %{_bindir}/write
-%exclude %{_sbindir}/zramctl
-%exclude %{_sbindir}/flushb
-%exclude %{_sbindir}/readprofile
-# These directories should be owned by bash-completion. But we don't want to
-# install them on build, so own these two directories:
-%exclude %dir %{_datadir}/bash-completion
-%exclude %dir %{_datadir}/bash-completion/completions
-%exclude %{_datadir}/bash-completion/completions/*
-#
+# Exclude core binaries bash-completion
+%exclude %{_datadir}/bash-completion/completions/addpart
+%exclude %{_datadir}/bash-completion/completions/blkdiscard
+%exclude %{_datadir}/bash-completion/completions/blkid
+%exclude %{_datadir}/bash-completion/completions/blkzone
+%exclude %{_datadir}/bash-completion/completions/blockdev
+%exclude %{_datadir}/bash-completion/completions/cal
+%exclude %{_datadir}/bash-completion/completions/cfdisk
+%exclude %{_datadir}/bash-completion/completions/chcpu
+%exclude %{_datadir}/bash-completion/completions/chmem
+%exclude %{_datadir}/bash-completion/completions/chrt
+%exclude %{_datadir}/bash-completion/completions/col
+%exclude %{_datadir}/bash-completion/completions/colcrt
+%exclude %{_datadir}/bash-completion/completions/colrm
+%exclude %{_datadir}/bash-completion/completions/column
+%exclude %{_datadir}/bash-completion/completions/ctrlaltdel
+%exclude %{_datadir}/bash-completion/completions/delpart
+%exclude %{_datadir}/bash-completion/completions/dmesg
+%exclude %{_datadir}/bash-completion/completions/eject
+%exclude %{_datadir}/bash-completion/completions/fallocate
+%exclude %{_datadir}/bash-completion/completions/fdformat
+%exclude %{_datadir}/bash-completion/completions/fdisk
+%exclude %{_datadir}/bash-completion/completions/fincore
+%exclude %{_datadir}/bash-completion/completions/findfs
+%exclude %{_datadir}/bash-completion/completions/flock
+%exclude %{_datadir}/bash-completion/completions/fsck
+%exclude %{_datadir}/bash-completion/completions/fsck.cramfs
+%exclude %{_datadir}/bash-completion/completions/fsck.minix
+%exclude %{_datadir}/bash-completion/completions/fsfreeze
+%exclude %{_datadir}/bash-completion/completions/fstrim
+%exclude %{_datadir}/bash-completion/completions/getopt
+%exclude %{_datadir}/bash-completion/completions/hardlink
+%exclude %{_datadir}/bash-completion/completions/hexdump
+%exclude %{_datadir}/bash-completion/completions/hwclock
+%exclude %{_datadir}/bash-completion/completions/ionice
+%exclude %{_datadir}/bash-completion/completions/ipcmk
+%exclude %{_datadir}/bash-completion/completions/ipcrm
+%exclude %{_datadir}/bash-completion/completions/ipcs
+%exclude %{_datadir}/bash-completion/completions/irqtop
+%exclude %{_datadir}/bash-completion/completions/isosize
+%exclude %{_datadir}/bash-completion/completions/last
+%exclude %{_datadir}/bash-completion/completions/lastb
+%exclude %{_datadir}/bash-completion/completions/ldattach
+%exclude %{_datadir}/bash-completion/completions/look
+%exclude %{_datadir}/bash-completion/completions/losetup
+%exclude %{_datadir}/bash-completion/completions/lscpu
+%exclude %{_datadir}/bash-completion/completions/lsipc
+%exclude %{_datadir}/bash-completion/completions/lsirq
+%exclude %{_datadir}/bash-completion/completions/lslocks
+%exclude %{_datadir}/bash-completion/completions/lsmem
+%exclude %{_datadir}/bash-completion/completions/lsns
+%exclude %{_datadir}/bash-completion/completions/mcookie
+%exclude %{_datadir}/bash-completion/completions/mkfs
+%exclude %{_datadir}/bash-completion/completions/mkfs.bfs
+%exclude %{_datadir}/bash-completion/completions/mkfs.cramfs
+%exclude %{_datadir}/bash-completion/completions/mkfs.minix
+%exclude %{_datadir}/bash-completion/completions/mkswap
+%exclude %{_datadir}/bash-completion/completions/more
+%exclude %{_datadir}/bash-completion/completions/mount
+%exclude %{_datadir}/bash-completion/completions/mountpoint
+%exclude %{_datadir}/bash-completion/completions/namei
+%exclude %{_datadir}/bash-completion/completions/nsenter
+%exclude %{_datadir}/bash-completion/completions/partx
+%exclude %{_datadir}/bash-completion/completions/pivot_root
+%exclude %{_datadir}/bash-completion/completions/prlimit
+%exclude %{_datadir}/bash-completion/completions/readprofile
+%exclude %{_datadir}/bash-completion/completions/rename
+%exclude %{_datadir}/bash-completion/completions/renice
+%exclude %{_datadir}/bash-completion/completions/resizepart
+%exclude %{_datadir}/bash-completion/completions/rev
+%exclude %{_datadir}/bash-completion/completions/rfkill
+%exclude %{_datadir}/bash-completion/completions/rtcwake
+%exclude %{_datadir}/bash-completion/completions/runuser
+%exclude %{_datadir}/bash-completion/completions/script
+%exclude %{_datadir}/bash-completion/completions/scriptlive
+%exclude %{_datadir}/bash-completion/completions/scriptreplay
+%exclude %{_datadir}/bash-completion/completions/setarch
+%exclude %{_datadir}/bash-completion/completions/setpriv
+%exclude %{_datadir}/bash-completion/completions/setsid
+%exclude %{_datadir}/bash-completion/completions/setterm
+%exclude %{_datadir}/bash-completion/completions/sfdisk
+%exclude %{_datadir}/bash-completion/completions/su
+%exclude %{_datadir}/bash-completion/completions/swaplabel
+%exclude %{_datadir}/bash-completion/completions/swapoff
+%exclude %{_datadir}/bash-completion/completions/swapon
+%exclude %{_datadir}/bash-completion/completions/taskset
+%exclude %{_datadir}/bash-completion/completions/tunelp
+%exclude %{_datadir}/bash-completion/completions/uclampset
+%exclude %{_datadir}/bash-completion/completions/ul
+%exclude %{_datadir}/bash-completion/completions/umount
+%exclude %{_datadir}/bash-completion/completions/unshare
+%exclude %{_datadir}/bash-completion/completions/utmpdump
+%exclude %{_datadir}/bash-completion/completions/uuidgen
+%exclude %{_datadir}/bash-completion/completions/uuidparse
+%exclude %{_datadir}/bash-completion/completions/wdctl
+%exclude %{_datadir}/bash-completion/completions/whereis
+%exclude %{_datadir}/bash-completion/completions/wipefs
+%exclude %{_datadir}/bash-completion/completions/zramctl
+
+%{_datadir}/bash-completion/completions/findmnt
+%{_datadir}/bash-completion/completions/logger
+%{_datadir}/bash-completion/completions/lsblk
+%{_datadir}/bash-completion/completions/lslogins
+
+# uuidd sub-package
 %exclude %{_sbindir}/uuidd
 %exclude %{_datadir}/bash-completion/completions/uuidd
+
 %exclude %{_datadir}/locale
 %exclude %{_includedir}/*
 %exclude %{_libdir}/lib*.*
@@ -1313,125 +1394,52 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_mandir}/man3/libblkid.3.gz
 %exclude %{_mandir}/man3/uuid.3.gz
 %exclude %{_mandir}/man3/uuid_*.3.gz
-%{_mandir}/man1/kill.1.gz
-%{_mandir}/man1/su.1.gz
-%{_mandir}/man1/cal.1.gz
-%{_mandir}/man1/choom.1.gz
-%{_mandir}/man1/chrt.1.gz
-%{_mandir}/man1/col.1.gz
-%{_mandir}/man1/colcrt.1.gz
-%{_mandir}/man1/colrm.1.gz
-%{_mandir}/man1/column.1.gz
-%{_mandir}/man1/dmesg.1.gz
-%{_mandir}/man1/eject.1.gz
-%{_mandir}/man1/fallocate.1.gz
-%{_mandir}/man1/fincore.1.gz
-%{_mandir}/man1/flock.1.gz
-%{_mandir}/man1/getopt.1.gz
-%{_mandir}/man1/hardlink.1.gz
-%{_mandir}/man1/hexdump.1.gz
-%{_mandir}/man1/ipcrm.1.gz
-%{_mandir}/man1/ipcs.1.gz
-%{_mandir}/man1/last.1.gz
-%{_mandir}/man1/lastb.1.gz
-%{_mandir}/man1/line.1.gz
-%{_mandir}/man1/login.1.gz
-%{_mandir}/man1/look.1.gz
-%{_mandir}/man1/logger.1.gz
-%{_mandir}/man1/lscpu.1.gz
-%{_mandir}/man1/lsfd.1.gz
-%{_mandir}/man1/lsipc.1.gz
-%{_mandir}/man1/lsirq.1.gz
-%{_mandir}/man1/lslogins.1.gz
-%{_mandir}/man8/lsblk.8.gz
-%{_mandir}/man1/lsmem.1.gz
-%{_mandir}/man1/mcookie.1.gz
-%{_mandir}/man1/mesg.1.gz
-%{_mandir}/man1/more.1.gz
-%{_mandir}/man1/namei.1.gz
-%{_mandir}/man1/nsenter.1.gz
-%{_mandir}/man1/ionice.1.gz
-%{_mandir}/man1/irqtop.1.gz
-%{_mandir}/man1/prlimit.1.gz
-%{_mandir}/man1/rename.1.gz
-%{_mandir}/man1/rev.1.gz
-%{_mandir}/man1/renice.1.gz
-%{_mandir}/man1/setpriv.1.gz
-%{_mandir}/man1/setsid.1.gz
-%{_mandir}/man1/script.1.gz
-%{_mandir}/man1/scriptlive.1.gz
-%{_mandir}/man1/scriptreplay.1.gz
-%{_mandir}/man1/setterm.1.gz
-%{_mandir}/man1/taskset.1.gz
-%{_mandir}/man1/ul.1.gz
-%{_mandir}/man1/unshare.1.gz
-%{_mandir}/man1/wall.1.gz
-%{_mandir}/man1/whereis.1.gz
-%{_mandir}/man1/write.1.gz
-%{_mandir}/man1/ipcmk.1.gz
-%{_mandir}/man1/mountpoint.1.gz
-%{_mandir}/man1/runuser.1.gz
-%{_mandir}/man1/uclampset.1.gz
-%{_mandir}/man1/utmpdump.1.gz
-%{_mandir}/man1/uuidgen.1.gz
-%{_mandir}/man1/uuidparse.1.gz
-%{_mandir}/man5/adjtime_config.5.gz
-%{_mandir}/man5/fstab.5.gz
-%{_mandir}/man5/terminal-colors.d.5.gz
-%{_mandir}/man8/addpart.8.gz
-%{_mandir}/man8/agetty.8.gz
 
-%if 0%{?suse_version} >= 1330
-%{_mandir}/man8/blkzone.8.gz
-%endif
-# suse_version >= 1330
+# exclude setarch from systemd package
+%exclude %{_bindir}/linux32
+%exclude %{_bindir}/linux64
+%exclude %{_bindir}/s390
+%exclude %{_bindir}/s390x
+%exclude %{_bindir}/i386
+%exclude %{_bindir}/ppc
+%exclude %{_bindir}/ppc64
+%exclude %{_bindir}/ppc32
+%exclude %{_bindir}/sparc
+%exclude %{_bindir}/sparc64
+%exclude %{_bindir}/sparc32
+%exclude %{_bindir}/sparc32bash
+%exclude %{_bindir}/mips
+%exclude %{_bindir}/mips64
+%exclude %{_bindir}/mips32
+%exclude %{_bindir}/ia64
+%exclude %{_bindir}/x86_64
+%exclude %{_bindir}/parisc
+%exclude %{_bindir}/parisc32
+%exclude %{_bindir}/parisc64
+%exclude %{_bindir}/uname26
 
-%{_mandir}/man8/blockdev.8.gz
-%{_mandir}/man8/chmem.8.gz
-%{_mandir}/man8/ctrlaltdel.8.gz
-%{_mandir}/man8/delpart.8.gz
-%{_mandir}/man8/blkid.8.gz
-%{_mandir}/man8/blkdiscard.8.gz
-%ifnarch s390 s390x
-%{_mandir}/man8/hwclock.8.gz
-%endif
-%{_mandir}/man8/switch_root.8.gz
-%{_mandir}/man8/mkfs.bfs.8.gz
-%{_mandir}/man8/mkfs.minix.8.gz
-%{_mandir}/man8/findfs.8.gz
-%{_mandir}/man8/fsck.8.gz
-%{_mandir}/man8/fsck.cramfs.8.gz
-%{_mandir}/man8/fsck.minix.8.gz
-%{_mandir}/man8/isosize.8.gz
-%{_mandir}/man8/ldattach.8.gz
-%{_mandir}/man8/losetup.8.gz
-%{_mandir}/man8/lslocks.8.gz
-%{_mandir}/man8/lsns.8.gz
-%{_mandir}/man8/mkfs.8.gz
-%{_mandir}/man8/mkfs.cramfs.8.gz
-%{_mandir}/man8/mkswap.8.gz
-%{_mandir}/man8/mount.8.gz
-%{_mandir}/man8/nologin.8.gz
-%{_mandir}/man8/fsfreeze.8.gz
-%{_mandir}/man8/swaplabel.8.gz
-%{_mandir}/man8/readprofile.8.gz
-%{_mandir}/man8/rfkill.8.gz
-%{_mandir}/man8/chcpu.8.gz
-%{_mandir}/man8/partx.8.gz
-%{_mandir}/man8/pivot_root.8.gz
-%{_mandir}/man8/rtcwake.8.gz
-%{_mandir}/man8/setarch.8.gz
-%{_mandir}/man8/swapoff.8.gz
-%{_mandir}/man8/swapon.8.gz
-%{_mandir}/man8/umount.8.gz
-%{_mandir}/man8/uname26.8.gz
-%{_mandir}/man8/wipefs.8.gz
-%{_mandir}/man8/zramctl.8.gz
-%{_mandir}/man8/findmnt.8.gz
-%{_mandir}/man8/fstrim.8.gz
-%{_mandir}/man8/resizepart.8.gz
-%{_mandir}/man8/sulogin.8.gz
-%{_mandir}/man8/wdctl.8.gz
+%exclude %{_mandir}/man8/linux32.8.gz
+%exclude %{_mandir}/man8/linux64.8.gz
+%exclude %{_mandir}/man8/s390.8.gz
+%exclude %{_mandir}/man8/s390x.8.gz
+%exclude %{_mandir}/man8/i386.8.gz
+%exclude %{_mandir}/man8/ppc.8.gz
+%exclude %{_mandir}/man8/ppc64.8.gz
+%exclude %{_mandir}/man8/ppc32.8.gz
+%exclude %{_mandir}/man8/sparc.8.gz
+%exclude %{_mandir}/man8/sparc64.8.gz
+%exclude %{_mandir}/man8/sparc32.8.gz
+%exclude %{_mandir}/man8/sparc32bash.8.gz
+%exclude %{_mandir}/man8/mips.8.gz
+%exclude %{_mandir}/man8/mips64.8.gz
+%exclude %{_mandir}/man8/mips32.8.gz
+%exclude %{_mandir}/man8/ia64.8.gz
+%exclude %{_mandir}/man8/x86_64.8.gz
+%exclude %{_mandir}/man8/parisc.8.gz
+%exclude %{_mandir}/man8/parisc32.8.gz
+%exclude %{_mandir}/man8/parisc64.8.gz
+%exclude %{_mandir}/man8/uname26.8.gz
+
 %{_sbindir}/rcfstrim
 %{_unitdir}/fstrim.service
 %{_unitdir}/fstrim.timer
@@ -1461,6 +1469,18 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %files -n libuuid1
 %{_libdir}/libuuid.so.1
 %{_libdir}/libuuid.so.1.*
+
+%files -n util-linux-tty-tools
+%{_bindir}/mesg
+%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
+%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
+%{_mandir}/man1/mesg.1.gz
+%{_mandir}/man1/wall.1.gz
+%{_mandir}/man1/write.1.gz
+
+%{_datadir}/bash-completion/completions/wall
+%{_datadir}/bash-completion/completions/write
+%{_datadir}/bash-completion/completions/mesg
 
 # devel, lang and uuidd files are not packaged in staging mode
 # and packaged separately in full mode
