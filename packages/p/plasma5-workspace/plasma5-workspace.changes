@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:06:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * klipper: remove duplicate items when loading from history (kde#466236)
+  * kcms/region_language: set LC_PAPER, not LC_PAGE (kde#467269)
+  * Screenpool: avoid uniqueConnection with lambda
+  * kcms/fonts: Enable change notifications for base fonts settings (forceFontDPI)
+  * sddm-theme: Transfer the focus to the text field as we show the OSK (kde#466969)
+  * appstreamtest: fix test failure
+  * wallpapers/image: improve efficiency of ImageFinder
+  * klipper: Make action menu Frameless (kde#466406)
+  * dataengines/mpris2: tolerate non-standards compliant players like mpris-proxy (kde#466288)
+  * klipper: History test passes now
+  * klipper: Insert items before remove (kde#466041)
+  * sddm: Focus something useful when switching between alternative login screens
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
