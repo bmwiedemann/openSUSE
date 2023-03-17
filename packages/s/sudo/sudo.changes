@@ -20,14 +20,14 @@ Thu Mar  9 00:19:39 UTC 2023 - Jason Sikes <jsikes@suse.com>
 -------------------------------------------------------------------
 Tue Feb 28 01:40:48 UTC 2023 - Jason Sikes <jsikes@suse.com>
 
-- Update to 1.9.13p2:
+- Update to 1.9.13p2 (bsc#1208595, CVE-2023-27320):
 
     Fixed the --enable-static-sudoers option, broken in sudo 1.9.13.
     GitHub issue #245.
 
     Fixed a potential double-free bug when matching a sudoers rule
     that contains a per-command chroot directive (CHROOT=dir).
-    This bug was introduced in sudo 1.9.8. [bsc#1208595]
+    This bug was introduced in sudo 1.9.8.
 
 -------------------------------------------------------------------
 Sun Feb 19 04:06:03 UTC 2023 - Jason Sikes <jsikes@suse.com>
