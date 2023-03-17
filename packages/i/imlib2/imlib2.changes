@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Mar 10 08:26:46 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- update to 1.11.0:
+  * remove bad unused function
+  * test: Add a few tests for obscure pnm formats
+  * test: Add some pam tests
+  * Avoid some more undefined behaviors with shifts
+  * api: Fix code duplication around some __imlib_BlendImageToImage() calls
+  * api: Change some parameter names
+  * api: Tweak/correct error handling in drawable grabbing functions
+  * image: Let __imlib_CreateImage() allocate pixel data buffer
+  * Drop some redundant calls to __imlib_LoadImageData()
+  * api: Remember error on deferred image data loads
+  * imlib2_load: Show error on deferred data load problem
+  * imlib2_view: Be more verbose about load errors
+  * PNM loader: Speedups
+  * test: Introduce image_get_crc32()
+  * test: test_save: Trivial changes
+  * test: test_save: Check that files are written and ok
+  * PNM saver: Write images with alpha as P7 PAM RGB_ALPHA type
+  * x11_rgba: Add missing const
+  * x11_grab: Avoid cast-align warnings with -Wcast-align=strict
+  * x11_rgba: Avoid cast-align warnings with -Wcast-align=strict
+  * Loaders: Debug macro cleanups
+  * ANI loader: Use struct to access chunk data
+  * Loaders: Avoid cast-align warnings with -Wcast-align=strict
+  * autofoo: Add __PACKED__ for optional struct packing
+  * ANI, PNG, TGA loaders: Enable handling of unaligned data
+  * __imlib_FileDir(): Fix missing closedir() on OOM
+  * Loaders: decompress_load() is not part of the loader API
+  * Loaders: Debug tweaks
+  * Savers: Centralize file open/close
+  * JPG saver: Avoid potential clobber warning
+  * PNG saver: Avoid potential clobber warning
+  * Loaders, savers: Handle EINTR during fopen()
+  * api: Remove pointless statement
+  * api: Update documentation for imlib_get_error()
+  * api: Cosmetics around image save functions
+  * api: Minor simplification in error handling in save functions
+  * Add imlib_save_image_fd()
+  * api: Oops - debug--
+  * test_grab: Rearrange code
+  * x11_grab: Let __imlib_Grab..() return error instead of ok
+  * x11_grab: Eliminate unnecessary pixmap copy
+  * imlib_create_scaled_image_from_drawable(): Simplify call path
+  * x11_grab: Drop now unused 1:1 scaling path in __imlib_GrabDrawableScaledToRGBA()
+  * imlib2_view: Add option to set background checkerboard field size
+  * test_grab: Update
+  * test_grab: Add some tests for imlib_copy_drawable_to_image()
+  * test_grab: Check get-mask-from-shape too
+  * x11: Pass X11 context around by struct
+  * x11_grab: Move window/pixmap checking to separate function
+  * x11_grab: Rework clipping
+  * x11_grab: Clear image pixels not actually grabbed
+  * x11_grab: Various fixes in __imlib_GrabDrawableScaledToRGBA()
+  * x11_grab: Eliminate some overhead in scaled grabbing
+  * test_grab: Debug tweak
+  * PNM loader: avoid some undefined behavior
+  * PNM loader: add read support for PAM
+
+-------------------------------------------------------------------
 Mon Dec 19 20:09:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

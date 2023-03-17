@@ -25,7 +25,7 @@
 %bcond_with svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
@@ -142,7 +142,18 @@ jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 	--enable-shared \
 	--enable-visibility-hiding \
 	--enable-doc-build \
-	--disable-static
+	--disable-static \
+%if %{with jxl}
+	--with-jxl \
+%endif
+%if %{with svg}
+	--with-svg \
+%endif
+%if %{with postscript}
+	--with-ps \
+%endif
+%{?nil}
+
 %make_build
 
 %install
