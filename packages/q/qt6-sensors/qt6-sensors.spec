@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -134,10 +134,8 @@ ABI or API guarantees.
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
-%post -n libQt6Sensors6 -p /sbin/ldconfig
-%post -n libQt6SensorsQuick6 -p /sbin/ldconfig
-%postun -n libQt6Sensors6 -p /sbin/ldconfig
-%postun -n libQt6SensorsQuick6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Sensors6
+%ldconfig_scriptlets -n libQt6SensorsQuick6
 
 %files
 %{_qt6_pluginsdir}/sensors/
