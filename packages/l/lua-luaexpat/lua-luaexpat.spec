@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 florian.leparoux@gmail.com
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
@@ -25,11 +25,11 @@ Release:        0
 Summary:        A SAX XML parser based on the Expat library
 License:        MIT
 Group:          Productivity/Networking/Other
-URL:            http://matthewwild.co.uk/projects/luaexpat/
+URL:            https://lunarmodules.github.io/luaexpat/
 Source:         https://github.com/lunarmodules/luaexpat/archive/%{version}/%{mod_name}-%{version}.tar.gz
-BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libexpat-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""

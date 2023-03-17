@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 18:13:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
 Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix missing dependency on lua-macros (boo#1205612)
