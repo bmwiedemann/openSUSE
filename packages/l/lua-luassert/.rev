@@ -33,4 +33,13 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1037593</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8829466ff3b58a6bef484f8b89bfcc9e</srcmd5>
+    <version>1.7.11</version>
+    <time>1679069060</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072465</requestid>
+  </revision>
 </revisionlist>
