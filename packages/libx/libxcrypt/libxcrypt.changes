@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 10 20:29:48 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Enable livepatching support on x86_64.
+
+-------------------------------------------------------------------
 Wed Nov 30 15:02:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update to 4.4.33
