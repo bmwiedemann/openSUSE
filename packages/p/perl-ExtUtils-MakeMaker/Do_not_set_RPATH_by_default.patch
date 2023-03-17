@@ -88,7 +88,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MakeMaker.pm
 +    };
 +
      print "MakeMaker (v$VERSION)\n" if $Verbose;
-     if (-f "MANIFEST" && ! -f "Makefile" && ! $UNDER_CORE){
+     if (-f "MANIFEST" && ! -f "Makefile" && ! $self->{PERL_CORE}){
          check_manifest();
 @@ -2837,6 +2857,40 @@ precedence.  A typemap in the current di
  precedence, even if it isn't listed in TYPEMAPS.  The default system
