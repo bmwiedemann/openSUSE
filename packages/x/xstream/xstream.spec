@@ -1,7 +1,7 @@
 #
 # spec file for package xstream
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with  hibernate
 Name:           xstream
-Version:        1.4.19
+Version:        1.4.20
 Release:        0
 Summary:        Java XML serialization library
 License:        BSD-3-Clause

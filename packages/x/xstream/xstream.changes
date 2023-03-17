@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 17 13:04:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.20
+  * Security fixes
+    + This maintenance release addresses the security
+      vulnerabilities CVE-2022-40151 (bsc#1203520) and
+      CVE-2022-41966 (bsc#1206729), causing a Denial of Service by
+      raising a stack overflow. It also provides new converters for
+      Optional and Atomic types.
+  * Major changes
+    + #308: Add converter for AtomicBoolean, AtomicInteger,
+      AtomicLong, and AtomicReference of package
+      java.util.concurrent.atomic.
+    + #293: Add converter for Optional, OptionalDouble, OptionalInt,
+      and OptionalLong of package java.util.
+  * Minor changes
+    + #287: Close stream opened from provided URL.
+    + #284: Fix disabling check against hash code attack with
+      XStream.setCollectionUpdateLimit(0).
+  * Stream compatibility
+    + The atomic types with new converters of package
+      java.util.concurrent.atomic, that have been written with
+      previous versions of XStream, can still be deserialized.
+    + The Optional types with new converters of package java.util,
+      that have been written with previous versions of XStream,
+      can still be deserialized.
+    + The WildcardTypePermission allows by default no longer
+      anonymous class types.
+  * API changes
+    + Added c.t.x.converters.extended.AtomicBooleanConverter.
+    + Added c.t.x.converters.extended.AtomicIntegerConverter.
+    + Added c.t.x.converters.extended.AtomicLongConverter.
+    + Added c.t.x.converters.extended.AtomicReferenceConverter.
+    + Added c.t.x.converters.extended.OptionalConverter.
+    + Added c.t.x.converters.extended.OptionalDoubleConverter.
+    + Added c.t.x.converters.extended.OptionalIntConverter.
+    + Added c.t.x.converters.extended.OptionalLongConverter.
+    + Added c.t.x.security.WildcardTypePermission
+      .WildcardTypePermission(boolean,String[]).
+
+-------------------------------------------------------------------
 Wed Mar 30 09:20:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules unconditionally
