@@ -154,4 +154,12 @@
     <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
     <requestid>1057279</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2b83d182f13fbb3ed9431d7002c49d01</srcmd5>
+    <version>6.4.3</version>
+    <time>1679069007</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
+    <requestid>1072418</requestid>
+  </revision>
 </revisionlist>
