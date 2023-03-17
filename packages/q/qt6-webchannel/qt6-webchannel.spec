@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -110,8 +110,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %fdupes %{buildroot}
 
-%post -n libQt6WebChannel6 -p /sbin/ldconfig
-%postun -n libQt6WebChannel6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6WebChannel6
 
 %files imports
 %{_qt6_qmldir}/QtWebChannel/
