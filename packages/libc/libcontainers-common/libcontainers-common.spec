@@ -51,12 +51,9 @@ Source8:        common-%{commonver}.tar.xz
 Source9:        containers.conf
 Source10:       %{name}.rpmlintrc
 Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
-Source12:       container-storage-driver.sh
 BuildRequires:  go-go-md2man
-Requires:       util-linux-systemd
 Requires(post): %{_bindir}/grep
 Requires(post): %{_bindir}/sed
-Requires(post): util-linux-systemd
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
 Obsoletes:      libcontainers-image < %{version}
@@ -125,12 +122,6 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
-%if 0%{?suse_version} == 1500
-# /usr/etc/ does not work on Leap & SLE
-install -D -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/profile.d/libcontainers-common-storage.sh
-%else
-install -D -m 0644 %{SOURCE12} %{buildroot}%{_prefix}%{_sysconfdir}/profile.d/libcontainers-common-storage.sh
-%endif
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE9}
 install -D -m 0644 %{SOURCE9} %{buildroot}/%{_datadir}/containers/containers.conf
@@ -150,17 +141,6 @@ install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_ma
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf
-# use btrfs storage driver if system storage is on btrfs
-# For rootless it will fall back to overlay if btrfs is not working
-# https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md#storage-table
-if [ $1 -eq 1 ] ; then
-  for dir in %{_localstatedir}/lib/containers %{_localstatedir}/lib ; do
-    test "$(findmnt -o FSTYPE -l --target '$dir' | grep -v FSTYPE)" != "btrfs" && CONTAINERS_USE_BTRFS_DRIVER=0
-  done
-  if [ "$CONTAINERS_USE_BTRFS_DRIVER" != "0" ]; then
-    sed -i 's/driver = "overlay"/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
-  fi
-fi
 
 %files
 %dir %{_sysconfdir}/containers
@@ -175,11 +155,6 @@ fi
 %config(noreplace) %{_sysconfdir}/containers/policy.json
 %config(noreplace) %{_sysconfdir}/containers/storage.conf
 %config(noreplace) %{_sysconfdir}/containers/mounts.conf
-%if 0%{?suse_version} == 1500
-%{_sysconfdir}/profile.d/libcontainers-common-storage.sh
-%else
-%{_prefix}%{_sysconfdir}/profile.d/libcontainers-common-storage.sh
-%endif
 %{_datadir}/containers/mounts.conf
 %config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json

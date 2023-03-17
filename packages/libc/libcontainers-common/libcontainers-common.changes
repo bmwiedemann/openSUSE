@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 15 09:17:51 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Remove container-storage-driver.sh, we want to default to the overlay driver
+  instead of btrfs.
+  The btrfs driver is not really supported upstream (see
+  e.g. https://github.com/containers/podman/issues/16882), there is no real
+  development anymore and it appears to have subtle bugs (e.g. the one linked
+  previously).
+  To prevent further such issues, we will from now on default to the overlay
+  driver.
+
+-------------------------------------------------------------------
+Wed Mar 15 08:55:24 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Remove obsolete Requires(post): util-linux-systemd
+
+-------------------------------------------------------------------
 Mon Feb 27 10:30:12 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add registry.suse.com to the unqualified-search-registries
