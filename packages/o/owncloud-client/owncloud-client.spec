@@ -244,6 +244,10 @@ done
 %{_datadir}/mime/packages/owncloud.xml
 %{_datadir}/cloud-providers/
 %{_libdir}/qt5/plugins/owncloudsync_vfs_*.so
+%if 0%{?suse_version} < 1550
+%dir %{_datadir}/icons/hicolor/1024x1024
+%dir %{_datadir}/icons/hicolor/1024x1024/apps
+%endif
 %doc CONTRIBUTING.md README.md
 %license COPYING COPYING.documentation
 
