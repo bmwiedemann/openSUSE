@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -926,56 +926,31 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 # There are no private headers
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
-%post -n libQt6LabsAnimation6 -p /sbin/ldconfig
-%post -n libQt6LabsFolderListModel6 -p /sbin/ldconfig
-%post -n libQt6LabsQmlModels6 -p /sbin/ldconfig
-%post -n libQt6LabsSettings6 -p /sbin/ldconfig
-%post -n libQt6LabsSharedImage6 -p /sbin/ldconfig
-%post -n libQt6LabsWavefrontMesh6 -p /sbin/ldconfig
-%post -n libQt6Qml6 -p /sbin/ldconfig
-%post -n libQt6QmlCompiler6 -p /sbin/ldconfig
-%post -n libQt6QmlCore6 -p /sbin/ldconfig
-%post -n libQt6QmlLocalStorage6 -p /sbin/ldconfig
-%post -n libQt6QmlModels6 -p /sbin/ldconfig
-%post -n libQt6QmlWorkerScript6 -p /sbin/ldconfig
-%post -n libQt6QmlXmlListModel6 -p /sbin/ldconfig
-%post -n libQt6Quick6 -p /sbin/ldconfig
-%post -n libQt6QuickControls2-6 -p /sbin/ldconfig
-%post -n libQt6QuickControls2Impl6 -p /sbin/ldconfig
-%post -n libQt6QuickDialogs2-6 -p /sbin/ldconfig
-%post -n libQt6QuickDialogs2QuickImpl6 -p /sbin/ldconfig
-%post -n libQt6QuickDialogs2Utils6 -p /sbin/ldconfig
-%post -n libQt6QuickLayouts6 -p /sbin/ldconfig
-%post -n libQt6QuickParticles6 -p /sbin/ldconfig
-%post -n libQt6QuickShapes6 -p /sbin/ldconfig
-%post -n libQt6QuickTemplates2-6 -p /sbin/ldconfig
-%post -n libQt6QuickTest6 -p /sbin/ldconfig
-%post -n libQt6QuickWidgets6 -p /sbin/ldconfig
-%postun -n libQt6LabsAnimation6 -p /sbin/ldconfig
-%postun -n libQt6LabsFolderListModel6 -p /sbin/ldconfig
-%postun -n libQt6LabsQmlModels6 -p /sbin/ldconfig
-%postun -n libQt6LabsSettings6 -p /sbin/ldconfig
-%postun -n libQt6LabsSharedImage6 -p /sbin/ldconfig
-%postun -n libQt6LabsWavefrontMesh6 -p /sbin/ldconfig
-%postun -n libQt6Qml6 -p /sbin/ldconfig
-%postun -n libQt6QmlCompiler6 -p /sbin/ldconfig
-%postun -n libQt6QmlCore6 -p /sbin/ldconfig
-%postun -n libQt6QmlLocalStorage6 -p /sbin/ldconfig
-%postun -n libQt6QmlModels6 -p /sbin/ldconfig
-%postun -n libQt6QmlWorkerScript6 -p /sbin/ldconfig
-%postun -n libQt6QmlXmlListModel6 -p /sbin/ldconfig
-%postun -n libQt6Quick6 -p /sbin/ldconfig
-%postun -n libQt6QuickControls2-6 -p /sbin/ldconfig
-%postun -n libQt6QuickControls2Impl6 -p /sbin/ldconfig
-%postun -n libQt6QuickDialogs2-6 -p /sbin/ldconfig
-%postun -n libQt6QuickDialogs2QuickImpl6 -p /sbin/ldconfig
-%postun -n libQt6QuickDialogs2Utils6 -p /sbin/ldconfig
-%postun -n libQt6QuickLayouts6 -p /sbin/ldconfig
-%postun -n libQt6QuickParticles6 -p /sbin/ldconfig
-%postun -n libQt6QuickShapes6 -p /sbin/ldconfig
-%postun -n libQt6QuickTemplates2-6 -p /sbin/ldconfig
-%postun -n libQt6QuickTest6 -p /sbin/ldconfig
-%postun -n libQt6QuickWidgets6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6LabsAnimation6
+%ldconfig_scriptlets -n libQt6LabsFolderListModel6
+%ldconfig_scriptlets -n libQt6LabsQmlModels6
+%ldconfig_scriptlets -n libQt6LabsSettings6
+%ldconfig_scriptlets -n libQt6LabsSharedImage6
+%ldconfig_scriptlets -n libQt6LabsWavefrontMesh6
+%ldconfig_scriptlets -n libQt6Qml6
+%ldconfig_scriptlets -n libQt6QmlCompiler6
+%ldconfig_scriptlets -n libQt6QmlCore6
+%ldconfig_scriptlets -n libQt6QmlLocalStorage6
+%ldconfig_scriptlets -n libQt6QmlModels6
+%ldconfig_scriptlets -n libQt6QmlWorkerScript6
+%ldconfig_scriptlets -n libQt6QmlXmlListModel6
+%ldconfig_scriptlets -n libQt6Quick6
+%ldconfig_scriptlets -n libQt6QuickControls2-6
+%ldconfig_scriptlets -n libQt6QuickControls2Impl6
+%ldconfig_scriptlets -n libQt6QuickDialogs2-6
+%ldconfig_scriptlets -n libQt6QuickDialogs2QuickImpl6
+%ldconfig_scriptlets -n libQt6QuickDialogs2Utils6
+%ldconfig_scriptlets -n libQt6QuickLayouts6
+%ldconfig_scriptlets -n libQt6QuickParticles6
+%ldconfig_scriptlets -n libQt6QuickShapes6
+%ldconfig_scriptlets -n libQt6QuickTemplates2-6
+%ldconfig_scriptlets -n libQt6QuickTest6
+%ldconfig_scriptlets -n libQt6QuickWidgets6
 
 %files devel
 %doc meta_package
