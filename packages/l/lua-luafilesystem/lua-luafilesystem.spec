@@ -32,8 +32,8 @@ Release:        0
 Summary:        Filesystem support for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            https://keplerproject.github.io/luafilesystem/
-Source:         https://github.com/keplerproject/luafilesystem/archive/v%{_pversion}.tar.gz#/%{mod_name}-%{version}.tar.gz
+URL:            https://lunarmodules.github.io/luafilesystem/
+Source:         https://github.com/lunarmodules/luafilesystem/archive/v%{_pversion}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 %lua_provides

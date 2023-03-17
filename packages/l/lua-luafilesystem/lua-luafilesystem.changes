@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 17:29:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

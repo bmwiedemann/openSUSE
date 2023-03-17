@@ -79,4 +79,13 @@
 - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061044</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7259c18f50c2874f56c5465460d6d49c</srcmd5>
+    <version>1.8.0</version>
+    <time>1679069053</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072457</requestid>
+  </revision>
 </revisionlist>
