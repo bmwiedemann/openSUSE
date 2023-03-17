@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
@@ -132,10 +132,8 @@ ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6Charts6 -p /sbin/ldconfig
-%post -n libQt6ChartsQml6 -p /sbin/ldconfig
-%postun -n libQt6Charts6 -p /sbin/ldconfig
-%postun -n libQt6ChartsQml6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Charts6
+%ldconfig_scriptlets -n libQt6ChartsQml6
 
 %files imports
 %{_qt6_qmldir}/QtCharts/
