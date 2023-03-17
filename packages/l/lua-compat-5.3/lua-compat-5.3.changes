@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 18:22:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
 Fri Nov 25 18:22:08 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix unowned %%{lua_incdir} error.

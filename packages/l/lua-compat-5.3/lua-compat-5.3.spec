@@ -1,7 +1,7 @@
 #
 # spec file for package lua-compat-5.3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ Release:        0
 Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            https://github.com/keplerproject/lua-compat-5.3
-Source:         https://github.com/keplerproject/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+URL:            https://github.com/lunarmodules/lua-compat-5.3
+Source:         https://github.com/lunarmodules/lua-compat-5.3/archive/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
