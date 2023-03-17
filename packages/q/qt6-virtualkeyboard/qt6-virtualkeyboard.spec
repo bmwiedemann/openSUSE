@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -138,10 +138,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenwnn
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledPinyin
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 
-%post -n libQt6HunspellInputMethod6 -p /sbin/ldconfig
-%post -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
-%postun -n libQt6HunspellInputMethod6 -p /sbin/ldconfig
-%postun -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6HunspellInputMethod6
+%ldconfig_scriptlets -n libQt6VirtualKeyboard6
 
 %files
 %dir %{_qt6_pluginsdir}/platforminputcontexts
