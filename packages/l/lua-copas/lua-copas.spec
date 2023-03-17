@@ -1,7 +1,7 @@
 #
 # spec file for package lua-copas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Version:        2.0.2
 Release:        0
 Summary:        Coroutine Oriented Portable Asynchronous Services
 License:        MIT
-URL:            http://www.keplerproject.org/copas/
-Source:         https://github.com/keplerproject/%{mod_name}/archive/%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+URL:            https://lunarmodules.github.io/copas
+Source:         https://github.com/lunarmodules/%{mod_name}/archive/%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-coxpcall
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luasec

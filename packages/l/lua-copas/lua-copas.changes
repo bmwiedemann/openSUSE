@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 17:32:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
 Thu Feb 11 09:48:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %lua_provides: add the lua-mod_name provides/obsoletes to
