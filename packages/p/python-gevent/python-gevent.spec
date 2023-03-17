@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
+%define modname gevent
 # on TW, gevent is able to use system libev, Leaps et.al. need the bundled version
 %if 0%{?suse_version} <= 1500
 %define use_bundled_libev 1
 %else
 %define use_bundled_libev 0
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modname gevent
 Name:           python-gevent
 Version:        22.10.1
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.gevent.org/
+URL:            https://www.gevent.org/
 # Source:         https://files.pythonhosted.org/packages/source/g/gevent/gevent-%%{version}.tar.gz
 Source0:        https://github.com/gevent/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
@@ -58,9 +56,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
 BuildRequires:  pkgconfig(libcares)
-%if ! 0%{use_bundled_libev}
-BuildRequires:  pkgconfig(libev)
-%endif
 BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
@@ -68,6 +63,9 @@ Requires:       python-greenlet
 Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface
+%if ! 0%{use_bundled_libev}
+BuildRequires:  pkgconfig(libev)
+%endif
 %if 0%{?suse_version} || 0%{?fedora_version} ||  0%{?rhel} >= 8
 Recommends:     python-psutil
 %else
@@ -170,8 +168,8 @@ fi
 %files %{python_files}
 %doc AUTHORS README.rst TODO CHANGES.rst CONTRIBUTING.rst
 %license LICENSE*
-%{python_sitearch}/gevent-%{version}-py*.egg-info
-%{python_sitearch}/gevent/
+%{python_sitearch}/gevent-%{version}*-info
+%{python_sitearch}/gevent
 
 %files -n python-gevent-doc
 %license LICENSE*
