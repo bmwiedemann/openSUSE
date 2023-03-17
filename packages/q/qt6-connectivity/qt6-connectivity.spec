@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -109,10 +109,8 @@ The packages that build against these have to require the exact Qt version.
 
 %if !%{qt6_docs_flavor}
 
-%post -n libQt6Bluetooth6 -p /sbin/ldconfig
-%postun -n libQt6Bluetooth6 -p /sbin/ldconfig
-%post -n libQt6Nfc6 -p /sbin/ldconfig
-%postun -n libQt6Nfc6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Bluetooth6
+%ldconfig_scriptlets -n libQt6Nfc6
 
 %files
 %{_qt6_libexecdir}/sdpscanner
