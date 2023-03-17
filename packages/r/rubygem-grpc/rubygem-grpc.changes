@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 15 06:13:58 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.52.0
+  * Upgraded Boring SSL to address CVE-2023-0286.
+  * Removed some default allocators.
+
+-------------------------------------------------------------------
 Fri Oct 28 04:58:22 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.50.0

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-grpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-grpc
-Version:        1.50.0
+Version:        1.52.0
 Release:        0
 %define mod_name grpc
 %define mod_full_name %{mod_name}-%{version}
