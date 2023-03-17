@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -99,8 +99,7 @@ ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6Bodymovin6 -p /sbin/ldconfig
-%postun -n libQt6Bodymovin6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Bodymovin6
 
 %files imports
 %dir %{_qt6_qmldir}/Qt
