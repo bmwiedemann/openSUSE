@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Compare
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,21 @@
 #
 
 
-Name:           perl-Data-Compare
-Version:        1.27
-Release:        0
-#Upstream: SUSE-Public-Domain
 %define cpan_name Data-Compare
-Summary:        Compare perl data structures
+Name:           perl-Data-Compare
+Version:        1.28
+Release:        0
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Compare perl data structures
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Clone) >= 0.43
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
 BuildRequires:  perl(File::Find::Rule) >= 0.1
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Clone) >= 0.43
@@ -84,12 +83,13 @@ an arrayref of strings. When comparing two hashes, any keys mentioned in
 this list will be ignored.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -100,8 +100,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc CHANGELOG GPL2.txt MAINTAINERS-NOTE NOTES README
-%license ARTISTIC.txt
+%doc CHANGELOG MAINTAINERS-NOTE NOTES README
+%license ARTISTIC.txt GPL2.txt
 
 %changelog

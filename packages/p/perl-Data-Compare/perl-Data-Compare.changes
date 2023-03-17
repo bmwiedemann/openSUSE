@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 15 03:06:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Data-Compare/CHANGELOG
+
+  1.28    2023-03-14
+
+  - Bug fix: DCANTRELL: undef values in hashes were treated incorrectly,
+    need to check for existence, not definedness before comparing. See
+    https://github.com/DrHyde/perl-modules-Data-Compare/issues/21
+
+-------------------------------------------------------------------
 Fri Nov 15 11:45:39 UTC 2019 -  <timueller+perl@suse.de>
 
 - Add manual license Artistic-1.0 OR GPL-1.0-or-later to cpanspec.yml
