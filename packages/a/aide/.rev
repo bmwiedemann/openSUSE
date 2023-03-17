@@ -297,4 +297,16 @@
 - Rebase aide-xattr-in-libc.patch (forwarded request 1067470 from pperego)</comment>
     <requestid>1067533</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>68583f04fe4edeed9110e2028696fdf4</srcmd5>
+    <version>0.18.1</version>
+    <time>1679069125</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.1:
+  * Fix handling of empty growing files
+  * Fix segfault when using --dry-init
+  * Update README
+- switch to pcre2 (forwarded request 1072661 from dirkmueller)</comment>
+    <requestid>1072663</requestid>
+  </revision>
 </revisionlist>

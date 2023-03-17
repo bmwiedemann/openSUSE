@@ -17,12 +17,13 @@
 
 
 Name:           aide
-Version:        0.18
+Version:        0.18.1
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
 URL:            https://aide.github.io/
 Source0:        https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz
+Source100:      https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source1:        aide.conf
 Source2:        aide-cron_daily.sh
 Source3:        aide-test.sh
@@ -31,7 +32,6 @@ Source5:        aide.service.8
 Source6:        aide.timer
 Source7:        aide.timer.8
 Source8:        aide_service.conf
-Source42:       https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source43:       aide.keyring
 Patch1:         aide-0.18-as-needed.patch
 Patch2:         aide-xattr-in-libc.patch
@@ -46,7 +46,7 @@ BuildRequires:  gzip
 BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
