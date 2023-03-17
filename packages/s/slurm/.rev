@@ -1086,4 +1086,12 @@
     <comment>- slurm-plugins need to require pmix-pluginlib (bsc#1209260) (forwarded request 1072084 from mslacken)</comment>
     <requestid>1072087</requestid>
   </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>394c567a5df0c8421de98c15bf54fdee</srcmd5>
+    <version>23.02.0</version>
+    <time>1679069103</time>
+    <user>dimstar_suse</user>
+    <comment>added: right-pmix-path.patch (forwarded request 1072591 from mslacken)</comment>
+    <requestid>1072592</requestid>
+  </revision>
 </revisionlist>

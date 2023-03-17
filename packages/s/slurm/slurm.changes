@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 16 15:48:15 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- use libpmix.so.2 instead of libpmix.so to fix (bsc#1209260)
+  this removes the need of pmix-pluginlib
+  added: right-pmix-path.patch
+
+-------------------------------------------------------------------
 Wed Mar 15 10:19:12 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - slurm-plugins need to require pmix-pluginlib (bsc#1209260)

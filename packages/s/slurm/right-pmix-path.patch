@@ -1,0 +1,26 @@
+From 2e5a2f4fbb4b575694cffb14aa59cb02e5d24486 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Tue, 14 Mar 2023 16:58:41 +0100
+Subject: [PATCH] right pmix path
+
+Signed-off-by: Christian Goll <cgoll@suse.de>
+---
+ src/plugins/mpi/pmix/mpi_pmix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/mpi/pmix/mpi_pmix.c b/src/plugins/mpi/pmix/mpi_pmix.c
+index dde4d22751..007b556265 100644
+--- a/src/plugins/mpi/pmix/mpi_pmix.c
++++ b/src/plugins/mpi/pmix/mpi_pmix.c
+@@ -137,7 +137,7 @@ static void *_libpmix_open(void)
+ #elif defined PMIXP_V4_LIBPATH
+ 	xstrfmtcat(full_path, "%s/", PMIXP_V4_LIBPATH);
+ #endif
+-	xstrfmtcat(full_path, "libpmix.so");
++	xstrfmtcat(full_path, "libpmix.so.2");
+ 
+ 	lib_plug = dlopen(full_path, RTLD_LAZY | RTLD_GLOBAL);
+ 	xfree(full_path);
+-- 
+2.40.0
+
