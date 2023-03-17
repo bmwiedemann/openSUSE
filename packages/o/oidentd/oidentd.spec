@@ -1,7 +1,7 @@
 #
 # spec file for package oidentd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,9 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} > 1230
 %bcond_without systemd
-%else
-%bcond_with    systemd
-%endif
 Name:           oidentd
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Configurable IDENT Server That Supports NAT/IP Masquerading
 License:        GPL-2.0-or-later
@@ -82,7 +78,7 @@ pairs.
 CFLAGS="%{optflags} -fgnu89-inline"
 autoreconf --install --force
 %configure
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 %make_install

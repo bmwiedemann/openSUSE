@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 15:34:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.1.0
+	* Allow using masquerading without IPv6 support on Linux.
+	* Remove `-S` (`--nosyslog`) from systemd unit files.
+	* Warn about missing logs if forking with NOSYSLOG set.
+
+-------------------------------------------------------------------
 Fri Oct 21 09:43:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Add patch oidentd-3.0.0-configure_zstd.patch to fix compilation under <= SP15.4 

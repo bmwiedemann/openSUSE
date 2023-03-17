@@ -1,5 +1,5 @@
---- oidentd-3.0.0.orig/configure.ac	2022-10-20 15:53:17.101986806 +0200
-+++ oidentd-3.0.0/configure.ac	2022-10-20 15:53:49.706277762 +0200
+--- oidentd-3.1.0.orig/configure.ac	2022-10-20 15:53:17.101986806 +0200
++++ oidentd-3.1.0/configure.ac	2022-10-20 15:53:49.706277762 +0200
 @@ -16,7 +16,7 @@
  dnl Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  
