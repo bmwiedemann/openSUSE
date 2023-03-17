@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %endif
 
 %global plugin_dir %{_libdir}/stonith/plugins/rhcs
-%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm cdu
+%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm cdu
 
 Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.11.0+git.1665557656.1381bf21
+Version:        4.12.1+git.1677142927.bf55c675
 Release:        0
 URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz

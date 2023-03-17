@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 16 14:13:52 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.12.1+git.1677142927.bf55c675:
+  * Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  * fence_scsi: fix registration handling if ISID conflicts ISID (Initiator Session ID) belonging to I_T Nexus changes for RHEL based on the session ID. This means that the connection to the device can be set up with different ISID on reconnects.
+  * fence_amt/fence_ipmilan/fence_ironic: use shlex instead of pipes when available, as pipes is deprecated and will be removed in Python 3.13
+  * fence_vmware_soap: set login_timeout lower than default pcmk_monitor_timeout (20s) to remove tmp dirs on fail
+  * fencing: add plug_separator to default DEPENDENCY_OPT
+  * fence_virt: fix man page spelling (#522)
+  * fence_scsi: skip key generation during validate-all action
+  * [virt] fix clang build
+  * [virt] fix cpg plugin build
+  * [virt] update man page to cover all serial listener configs
+  * [virt] update man page for serial listener in serial mode
+  * [virt] fix serial debug output
+  * [virt] add debug print for static map check
+  * [virt] Clarify usage of ip= for vsock listener
+  * [virt] fix tcp plugin to properly pass info to acl check
+  * [virt] drop last qmf bits (rhel6 era)
+  * [virt] allow groups to only specify vm_name without UUID
+  * [virtd] add support for named groups
+  * fence_virtd: add info about using multiple uuid/ip entries for groups
+  * fence_wti: increase login timeout to avoid random timeouts
+  * fence_virtd: set secure file permissions for fence_virtd.conf and key file if they are not mode 600
+  * fencing: add plug_separator parameter to be able to specify one that isnt part of the plug name(s)
+  * build: dont rm PKG_CHECK_VAR.m4 when running maintainer-clean
+  * fence_vmware_soap: set default login timeout less than Pacemakers default timeout to remove tmp dirs
+  * fence_virtd: add link and non-user socket example to man page
+  * fence_ibm_powervs: improve defaults based on testing
+
+-------------------------------------------------------------------
 Thu Oct 13 16:05:44 UTC 2022 - varkoly@suse.com
 
 - Update to version 4.11.0+git.1665557656.1381bf21:
