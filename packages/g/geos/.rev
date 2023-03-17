@@ -236,4 +236,24 @@
   * Use more robust Delaunay Triangulation frame size heuristic (GH-728, Martin Davis)</comment>
     <requestid>1038590</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7b03356c8cd05f19f09ce28abbfbdaf0</srcmd5>
+    <version>3.11.2</version>
+    <time>1679069090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.2:
+  * GEOSIntersection: Fix FE_INVALID exception on intersection of disjoint geometries (GH-791, Joris Van den Bossche &amp; Dan Baston)
+  * Fix incorrect result from Envelope::disjoint (GH-791, Dan Baston)
+  * Fix handling of odd cases in PolygonHoleJoiner (JTS-946, Paul Ramsey, Martin Davis)
+  * Support gcc-13 (GH-743, Sergei Trofimovich)
+  * Disallow Inf envelopes in Quadtree, avoid inf loop (Paul Ramsey)
+  * GEOSUnaryUnion: Fix crash on collection containing empty point (GH-830, Dan Baston)
+  * GEOSSTRtree_iterate: Do not return removed items (GH-833, Dan Baston)
+  * IndexedFacetDistance: Fix crash with Inf coordinates (GH-821, Dan Baston)
+  * HausdorffDistance: Fix crash on collection containing empty point (GH-840, Dan Baston)
+  * MaximumInscribedCircle: Fix infinite loop with non-finite coordinates (GH-843, Dan Baston)
+  * DistanceOp: Fix crash on collection containing empty point (GH-842, Dan Baston)
+  * Guard against non-finite distances in Buffer/OffsetCurve (GH-661, Paul Ramsey)</comment>
+    <requestid>1072559</requestid>
+  </revision>
 </revisionlist>
