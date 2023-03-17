@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:09:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.3
+  * Fixed an issue where unhandled rejections could cause duplicate logs in some cases.
+  * Fix UAF problem in AngleVulkanImageBacking (CVE-2023-0928)
+  * CHECK that YUV readback finished synchronously (CVE-2023-0929)
+  * Simplify WebMediaPlayerMSCompositor destruction (CVE-2023-0931)
+
+-------------------------------------------------------------------
 Fri Mar 10 05:54:55 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.2
   * Fixed window could not go back to maximized state when restored
