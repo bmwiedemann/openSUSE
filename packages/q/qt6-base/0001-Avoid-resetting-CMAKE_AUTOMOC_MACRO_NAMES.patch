@@ -1,0 +1,36 @@
+From 9bcb5cbfb07052ffd24c4a419bf20bd63a842591 Mon Sep 17 00:00:00 2001
+From: Amir Masoud Abdol <amir.abdol@qt.io>
+Date: Tue, 28 Feb 2023 10:32:13 +0100
+Subject: [PATCH] Avoid resetting CMAKE_AUTOMOC_MACRO_NAMES
+
+Instead of overwriting the CMAKE_AUTOMOC_MACRO_NAMES, we try to append
+our desired moc names to it, and don't get rid of what's there.
+
+Thanks for Friedrich W. H. Kossebau for filling a descriptive bug report
+and offering a solution as well.
+
+Fixes: QTBUG-110497
+Change-Id: I582af431151cacfe24085b890ae9dba0a0e53f3f
+Reviewed-by: Alexey Edelev <alexey.edelev@qt.io>
+(cherry picked from commit 38ee9ee8497291c899c2a72e0ed24bfffe9ced4e)
+---
+ src/corelib/Qt6CoreConfigExtras.cmake.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/corelib/Qt6CoreConfigExtras.cmake.in b/src/corelib/Qt6CoreConfigExtras.cmake.in
+index 8b4d3164cf..4a95625854 100644
+--- a/src/corelib/Qt6CoreConfigExtras.cmake.in
++++ b/src/corelib/Qt6CoreConfigExtras.cmake.in
+@@ -26,7 +26,8 @@ if (NOT QT_NO_CREATE_TARGETS)
+     set_property(TARGET ${__qt_core_target} PROPERTY INTERFACE_COMPILE_FEATURES cxx_decltype)
+ endif()
+ 
+-set(CMAKE_AUTOMOC_MACRO_NAMES "Q_OBJECT" "Q_GADGET" "Q_GADGET_EXPORT" "Q_NAMESPACE" "Q_NAMESPACE_EXPORT")
++list(APPEND CMAKE_AUTOMOC_MACRO_NAMES Q_OBJECT Q_GADGET Q_GADGET_EXPORT Q_NAMESPACE Q_NAMESPACE_EXPORT)
++list(REMOVE_DUPLICATES CMAKE_AUTOMOC_MACRO_NAMES)
+ 
+ # install layout information, following what qmake -query provides
+ get_filename_component(QT@PROJECT_VERSION_MAJOR@_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_DIR}/../@QT_INVERSE_CONFIG_INSTALL_DIR@ ABSOLUTE)
+-- 
+2.39.2
+

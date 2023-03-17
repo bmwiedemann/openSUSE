@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,7 +39,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         CVE-2023-24607-qtbase-6.4.diff
+Patch0:         0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -809,30 +809,18 @@ rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 
-%post -n libQt6Concurrent6 -p /sbin/ldconfig
-%post -n libQt6Core6 -p /sbin/ldconfig
-%post -n libQt6DBus6 -p /sbin/ldconfig
-%post -n libQt6Gui6 -p /sbin/ldconfig
-%post -n libQt6Network6 -p /sbin/ldconfig
-%post -n libQt6OpenGL6 -p /sbin/ldconfig
-%post -n libQt6OpenGLWidgets6 -p /sbin/ldconfig
-%post -n libQt6PrintSupport6 -p /sbin/ldconfig
-%post -n libQt6Sql6 -p /sbin/ldconfig
-%post -n libQt6Test6 -p /sbin/ldconfig
-%post -n libQt6Widgets6 -p /sbin/ldconfig
-%post -n libQt6Xml6 -p /sbin/ldconfig
-%postun -n libQt6Concurrent6 -p /sbin/ldconfig
-%postun -n libQt6Core6 -p /sbin/ldconfig
-%postun -n libQt6DBus6 -p /sbin/ldconfig
-%postun -n libQt6Gui6 -p /sbin/ldconfig
-%postun -n libQt6Network6 -p /sbin/ldconfig
-%postun -n libQt6OpenGL6 -p /sbin/ldconfig
-%postun -n libQt6OpenGLWidgets6 -p /sbin/ldconfig
-%postun -n libQt6PrintSupport6 -p /sbin/ldconfig
-%postun -n libQt6Sql6 -p /sbin/ldconfig
-%postun -n libQt6Test6 -p /sbin/ldconfig
-%postun -n libQt6Widgets6 -p /sbin/ldconfig
-%postun -n libQt6Xml6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Concurrent6
+%ldconfig_scriptlets -n libQt6Core6
+%ldconfig_scriptlets -n libQt6DBus6
+%ldconfig_scriptlets -n libQt6Gui6
+%ldconfig_scriptlets -n libQt6Network6
+%ldconfig_scriptlets -n libQt6OpenGL6
+%ldconfig_scriptlets -n libQt6OpenGLWidgets6
+%ldconfig_scriptlets -n libQt6PrintSupport6
+%ldconfig_scriptlets -n libQt6Sql6
+%ldconfig_scriptlets -n libQt6Test6
+%ldconfig_scriptlets -n libQt6Widgets6
+%ldconfig_scriptlets -n libQt6Xml6
 
 %files devel
 %doc meta_package

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:59:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.3:
+  * https://www.qt.io/blog/qt-6.4.3-released
+- Drop patch, merged upstream:
+  * CVE-2023-24607-qtbase-6.4.diff
+- Add patch to silence moc warnings:
+  * 0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
+
+-------------------------------------------------------------------
 Wed Feb  8 17:48:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607):

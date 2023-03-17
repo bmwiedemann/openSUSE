@@ -226,4 +226,12 @@
   * CVE-2023-24607-qtbase-6.4.diff (forwarded request 1063888 from krop)</comment>
     <requestid>1063889</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0ac72138b58ec3392535bb80e9c62017</srcmd5>
+    <version>6.4.3</version>
+    <time>1679068979</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
+    <requestid>1072394</requestid>
+  </revision>
 </revisionlist>
