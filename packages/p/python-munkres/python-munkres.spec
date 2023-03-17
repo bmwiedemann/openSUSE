@@ -1,7 +1,7 @@
 #
 # spec file for package python-munkres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-munkres
 Version:        1.1.4
 Release:        0
@@ -26,15 +25,16 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://software.clapper.org/munkres/
 Source:         https://github.com/bmc/munkres/archive/release-%{version}.tar.gz
-# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
+# PATCH-FIX-UPSTREAM test_profil_float_32bit.patch gh#bmc/munkres#40 mcepl@suse.com
+# skip test_profit_float on 32bit archs, where it fails
 Patch0:         test_profil_float_32bit.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -53,10 +53,10 @@ http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html.
 %autosetup -p1 -n munkres-release-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand \
 sed -i -e '/^#\/usr\/bin\/env/d' %{buildroot}%{$python_sitelib}/munkres.py
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/munkres.py
@@ -70,6 +70,8 @@ chmod -x %{buildroot}%{$python_sitelib}/munkres.py
 %files %{python_files}
 %license LICENSE.md
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/munkres.*.pyc
+%{python_sitelib}/munkres.py
+%{python_sitelib}/munkres-%{version}*-info
 
 %changelog

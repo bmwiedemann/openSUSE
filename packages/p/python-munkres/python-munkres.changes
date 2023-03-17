@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 15 23:34:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up spec
+- Fix metadata for the added patch.
+
+-------------------------------------------------------------------
 Fri Apr 22 10:38:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add test_profil_float_32bit.patch to skip test_profil_float
