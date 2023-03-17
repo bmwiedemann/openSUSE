@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 13 17:16:12 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update libplacebo to version 5.264.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v5.264.0
+
+-------------------------------------------------------------------
 Tue Feb 28 16:40:45 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Correct BR from python3-jinja2 to python3-Jinja2, fixes
