@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 17 10:46:51 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- removed library plugin for slurm as a fix was applied there,
+   (bsc#1209260)
+
+-------------------------------------------------------------------
 Tue Mar 14 19:24:25 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Create library plugin for Slurm: it contains the libpmix.so

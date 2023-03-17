@@ -161,4 +161,13 @@
     <comment></comment>
     <requestid>1072064</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>4469203eda5e925d25139cd42eab990e</srcmd5>
+    <version>3.2.3</version>
+    <time>1679069105</time>
+    <user>dimstar_suse</user>
+    <comment>- removed library plugin for slurm as a fix was applied there,
+   (bsc#1209260) (forwarded request 1072588 from mslacken)</comment>
+    <requestid>1072589</requestid>
+  </revision>
 </revisionlist>

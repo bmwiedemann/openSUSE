@@ -89,20 +89,11 @@ Group:          System/Libraries
 %description  -n libmca_common_dstore1
 This package contains the communication library used by the PMI
 
-%package -n pmix-pluginlib
-Summary:        Communication library used by PMI-X as Plugin
-Group:          System/Libraries
-Requires:       libpmix2 = %{version}
-
-%description -n pmix-pluginlib
-This package contains the shared library plugin used by the PMI-X standard
-
 %package devel
 Summary:        Process Management Interface for MPI
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-headers = %{version}
 Requires:       libmca_common_dstore1 = %{version}
-Requires:       pmix-pluginlib = %{version}
 
 %description devel
 This Package contains necessary files for development and building PMI-X
@@ -190,9 +181,6 @@ make check
 %files -n libpmix2
 %{_libdir}/libpmix.so.*
 
-%files -n pmix-pluginlib
-%{_libdir}/libpmix.so
-
 %files plugins
 %exclude %{_libdir}/pmix/mca_psec_munge.so
 %{_libdir}/pmix/mca_*.so
@@ -204,6 +192,7 @@ make check
 %{_libdir}/libmca_common_dstore.so.*
 
 %files devel
+%{_libdir}/libpmix.so
 %{_libdir}/libmca_common_dstore.so
 %{_libdir}/pkgconfig/pmix.pc
 
