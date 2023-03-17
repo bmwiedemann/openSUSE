@@ -58,7 +58,9 @@ BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module uvloop >= 0.14.0}
+%endif
 BuildRequires:  %{python_module websockets >= 8.0}
 BuildRequires:  %{python_module wsproto >= 1.2.0}
 # We don't want watchfiles in Ring1

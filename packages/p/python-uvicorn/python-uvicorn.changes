@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:13:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip optional uvloop test dependency for SLE15 
+
+-------------------------------------------------------------------
 Thu Feb 16 15:27:53 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to version 0.20.0:
