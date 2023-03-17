@@ -1,7 +1,7 @@
 #
 # spec file for package Fragments
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.gnome.org/World/Fragments
 Source:         %{name}-%{version}.tar.xz
-Source2:        vendor.tar.xz
+Source2:        vendor.tar.zst
 Source3:        cargo_config
 
 BuildRequires:  appstream-glib
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gtk4) >= 4.0.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.20
 Requires:       transmission-daemon
 
