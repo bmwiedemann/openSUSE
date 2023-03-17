@@ -24,7 +24,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.27.2
+Version:        5.27.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}

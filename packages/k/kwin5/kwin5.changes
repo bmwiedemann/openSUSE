@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * colordevice: default the simple transformations to 1
+  * backends/drm: fail commits if nonexistent properties would be set
+  * backends/drm: ignore opaque formats for the cursor plane
+  * Forward keymap and modifier change to input method keyboard grab when changed.
+  * inputmethod: Show the input method even if it was dismissed (kde#466969)
+  * backends/drm: support CTM for simple color transformations (kde#455720)
+  * xwayland: Prevent potential file descriptor leak
+  * wayland: Prevent leaking --wayland-fd and --xwayland-fd to child processes
+  * helper: Don't leak lock file to kwin_wayland
+  * backends/wayland: Don't leak renderD128 fd
+  * backends/wayland: Don't leak WaylandEventThread's pipe fds
+  * Fix text-input-v1 compatibility with 111.0.5563.64-1
+  * input: Make sure input backends are initialised when the workspace is set up (kde#466721)
+  * Tabbox: Fix grouping windows by application
+  * scene: Use correct scale when computing world transform
+  * wayland: Fix interactive resize of debug console
+  * kscreenintegration: read global output data
+  * workspace: move kscreen integration into separate files
+  * screencast: Try harder to be compatible with the pipewire buffer format
+  * screencasting: on memfd, skip the QImage step (kde#466655)
+  * TabBox: Avoid unnecesary resets of the client model (kde#466660)
+  * wayland: Cancel selections if set without focus
+  * windowitem: properly handle sub-subsurfaces (kde#466747)
+  * tabletmodemanager: properly export properties
+  * Enable GLSL for Mali (Lima) / PinePhone devices
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
