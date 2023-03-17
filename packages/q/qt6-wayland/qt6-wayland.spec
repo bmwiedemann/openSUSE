@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -237,16 +237,11 @@ EOF
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
-%post -n libQt6WaylandClient6 -p /sbin/ldconfig
-%post -n libQt6WaylandCompositor6 -p /sbin/ldconfig
-%post -n libQt6WaylandEglClientHwIntegration6 -p /sbin/ldconfig
-%post -n libQt6WaylandEglCompositorHwIntegration6 -p /sbin/ldconfig
-%post -n libQt6WlShellIntegration6 -p /sbin/ldconfig
-%postun -n libQt6WaylandClient6 -p /sbin/ldconfig
-%postun -n libQt6WaylandCompositor6 -p /sbin/ldconfig
-%postun -n libQt6WaylandEglClientHwIntegration6 -p /sbin/ldconfig
-%postun -n libQt6WaylandEglCompositorHwIntegration6 -p /sbin/ldconfig
-%postun -n libQt6WlShellIntegration6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6WaylandClient6
+%ldconfig_scriptlets -n libQt6WaylandCompositor6
+%ldconfig_scriptlets -n libQt6WaylandEglClientHwIntegration6
+%ldconfig_scriptlets -n libQt6WaylandEglCompositorHwIntegration6
+%ldconfig_scriptlets -n libQt6WlShellIntegration6
 
 %files
 %license LICENSES/*
