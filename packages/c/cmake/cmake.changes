@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 14 19:18:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.25.3:
+  * no changes to documented features or interfaces. Some
+    implementation updates were made to support ecosystem changes
+    and/or fix regressions
+
+-------------------------------------------------------------------
 Sat Jan 21 09:17:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.25.2:

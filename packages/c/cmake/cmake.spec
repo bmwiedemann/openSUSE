@@ -46,7 +46,7 @@
 %endif
 %define shortversion 3.25
 Name:           cmake%{?psuffix}
-Version:        3.25.2
+Version:        3.25.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -73,12 +73,12 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libssl)
-%if %{suse_version} > 1500
-BuildRequires:  pkgconfig(libuv) >= 1.28
-%endif
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libuv) >= 1.28
+%endif
 %if "%{flavor}" == ""
 Requires:       cmake-implementation = %{version}
 %endif
@@ -161,7 +161,7 @@ export CXXFLAGS="$CFLAGS"
 %endif
     --parallel=0%{jobs} \
     --verbose \
-%if %{suse_version} < 1550
+%if 0%{?suse_version} < 1550
     --no-system-libuv \
 %endif
 %if %{with qhelp}
