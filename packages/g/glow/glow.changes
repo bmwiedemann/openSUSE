@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Thu Mar  9 17:01:01 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add README.suse-maint.md to sources in specfile.
+
+-------------------------------------------------------------------
+Sun Feb 19 10:10:41 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.5.0:
+  * New Features
+    - a07fdb7: feat(ui): e to open edit local markdown files in editor
+    - 071783d: feat: copy contents of document
+    - b36e5ad: feat: sync glow with git.charm.sh
+  * Bug fixes
+    - d9bf3b8: fix: don't close HTTP body
+    - 5f14914: fix: editor with args
+    - 01d9858: fix: goreleaser workflow
+    - 6543979: fix: performance scrolling
+    - 19732a6: fix: support hard line breaks
+    - e0d667a: fix: use filepath.Dir instead of path.Dir
+  * Others
+    - 8138788: Automatically read from stdin if stdin is a pipe
+    - db7f49b: Bump Bubbles to v0.14.0, update accordingly, and simplify spinners
+    - ff59ead: Extend example how to read from stdin
+    - dd1593b: Keybindings for editing the document from the pager
+- Format and update specfile
+- Disable LTO to prevent build failures on some architectures.
+- Use zstd compression for vendored deps tarball
+
+-------------------------------------------------------------------
+Fri Jul  9 07:11:03 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.4.1
+  * https://github.com/charmbracelet/glow/releases/tag/v1.4.1
+
+-------------------------------------------------------------------
+Mon Mar 15 09:03:49 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.4.0
+  * https://github.com/charmbracelet/glow/releases/tag/v1.4.0
+
+-------------------------------------------------------------------
+Wed Nov 25 08:45:57 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.1
+  * Filter markdowns asynchronously so filtering doesn't block
+
+- Update to version 1.2.0
+  * Added search using '/'
+  * Add fuzzy filtering for stash notes
+  * Add "hidden" command/config for switching on mouse wheel support
+  * Ignore YAML frontmatter
+  * Display news item count in stash view
+  * Load the whole stash, page by page, automatically
+  * Now in Scoop!
+  * Upgrade to Bubble Tea v0.12.2 and Bubbles v0.7.5
+
+-------------------------------------------------------------------
+Wed Oct 28 07:29:02 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.0
+  * Add config file support
+  * Add flag for local files only (aka disable network) in TUI
+  * Add golangci linter to GitHub workflows
+  * Add paragraph about the config file to README
+  * Bump Bubble Tea and Bubbles deps for keybinding improvements
+  * Check for $EDITOR before writing the file
+  * Clean up and re-enable Windows workflow
+  * Convert pager to bubbletea 0.12.0 format
+  * Correct placement of stash hint in pager help
+  * Display default value for config flag in --help
+  * Don't handle filenames with a colon in it as http(s) url
+  * Don't show stash/memo info in pager help for news
+  * Error codes should be in the range of 0 to 125
+  * Fix README typo
+  * Fix bug where pager help isn't updated after an in-pager stash
+  * Fix coverage reporting from GitHub workflow
+  * Fix typo in README.md
+  * Fix typo in README.md (#176)
+  * Move "stashed only" flag from the package-level into the model
+  * Note new Windows, OpenBSD, and Alpine support in README
+  * Open the configuration file with $EDITOR via 'glow config'
+  * Point out the 'glow config' command in README
+  * README: add MacPorts install instructions
+  * Remove extra line at the bottom of pager help
+  * Respect width flag/config setting in the TUI; closes #168
+  * Saner default values in the defaultConfig
+  * Simplify loading completion check
+  * Split up workflows and automatically pick latest Go version
+  * State minimum required Go version in README
+  * Stub out config sub-command
+  * Support width as a config setting
+  * Update build instructions
+  * Update footer in README
+  * Update to bubbletea 0.12.0; minimum required changes
+  * Use the same type to track docs to load and docs loaded
+
+-------------------------------------------------------------------
+Sun Oct 18 14:16:15 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package
