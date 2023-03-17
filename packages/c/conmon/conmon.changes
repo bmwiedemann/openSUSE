@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 15 14:36:27 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.7
+2.1.7:
+
+### Bug Fixes
+Fix leaking symbolic links in the opt_socket_path directory
+cgroup: Stumble on if we can't set up oom handling
+
+2.1.6:
+
+### Bug Fixes
+  * Fix OOM watcher for cgroupv2 `oom_kill` events
+### Misc
+  * Use --detach instead of -d
+  * ctrl: drop fifo perms to 0660
+
+- Remove merged patch:
+  * 0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
+
+- Bump go version to 1.19 (bsc#1209307)
+
+-------------------------------------------------------------------
 Wed Nov 23 14:43:15 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Update to version 2.1.5:

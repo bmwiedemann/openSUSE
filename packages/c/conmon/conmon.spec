@@ -17,17 +17,15 @@
 
 
 Name:           conmon
-Version:        2.1.5
+Version:        2.1.7
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
-# https://github.com/containers/conmon/pull/364
-Patch1:         %{URL}/pull/364.patch#./0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
 BuildRequires:  pkgconfig
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.19
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
