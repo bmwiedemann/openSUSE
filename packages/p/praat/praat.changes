@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 14 10:17:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.09:
+  * SpeechSynthesizer can do eSpeak’s grapheme-to-phoneme
+    conversion in 130 languages.
+  * FormantPath can now have time stretches that are not aligned
+    to frame boundaries.
+  * Stabler handling of edge cases in editor scripting.
+
+-------------------------------------------------------------------
 Tue Feb 14 04:47:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.3.08:

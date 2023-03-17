@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.3.08
+Version:        6.3.09
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
