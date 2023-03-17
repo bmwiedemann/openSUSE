@@ -175,4 +175,14 @@
     <comment>- fix substitution on tests/test.py to test the current python flavor</comment>
     <requestid>1062354</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>bd1f62396d66431a0f82942684d796e0</srcmd5>
+    <version>2.0.0</version>
+    <time>1679068863</time>
+    <user>dimstar_suse</user>
+    <comment>- Add without_fish.patch which makes fish only optional
+  BuildRequires (gh#kislyuk/argcomplete!410).
+</comment>
+    <requestid>1072312</requestid>
+  </revision>
 </revisionlist>

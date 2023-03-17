@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-argcomplete
 Version:        2.0.0
@@ -29,12 +28,14 @@ URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
+# PATCH-FIX-UPSTREAM without_fish.patch gh#kislyuk/argcomplete!410 mcepl@suse.com
+# Don't fail the test suite when fish is not available
+Patch2:         without_fish.patch
 BuildRequires:  %{python_module importlib-metadata >= 0.23}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  fish
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 0.23
 Requires(post): update-alternatives
@@ -57,8 +58,7 @@ for your argument/option values (for example, if the user is browsing
 resources over the network).
 
 %prep
-%setup -q -n argcomplete-%{version}
-%autopatch -p1
+%autosetup -p1 -n argcomplete-%{version}
 
 %build
 %python_build
@@ -95,7 +95,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/argcomplete-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/argcomplete-%{version}*-info
 %{python_sitelib}/argcomplete
 %python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
 %python_alternative %{_bindir}/register-python-argcomplete

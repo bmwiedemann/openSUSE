@@ -1,8 +1,10 @@
-Index: argcomplete-1.12.2/test/test.py
-===================================================================
---- argcomplete-1.12.2.orig/test/test.py
-+++ argcomplete-1.12.2/test/test.py
-@@ -1310,40 +1310,6 @@ class TestBashGlobal(TestBash):
+---
+ test/test.py |   34 ----------------------------------
+ 1 file changed, 34 deletions(-)
+
+--- a/test/test.py
++++ b/test/test.py
+@@ -1308,40 +1308,6 @@ class TestBashGlobal(TestBash):
          self._test_console_script(package=True, wheel=True)
  
  
