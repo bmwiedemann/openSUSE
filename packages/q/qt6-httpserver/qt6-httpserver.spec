@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qthttpserver-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-httpserver%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt HTTP Server
 License:        GPL-3.0-only
@@ -92,8 +92,7 @@ ABI or API guarantees.
 
 %if !%{qt6_docs_flavor}
 
-%post -n libQt6HttpServer6 -p /sbin/ldconfig
-%postun -n libQt6HttpServer6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6HttpServer6
 
 %files -n libQt6HttpServer6
 %license LICENSES/*
