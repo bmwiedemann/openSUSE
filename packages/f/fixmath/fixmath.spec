@@ -1,7 +1,7 @@
 #
 # spec file for package fixmath
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define sover 1
 Name:           fixmath
 Version:        2022.07.20
 Release:        0
-Summary:        Fixed point math operations library
+Summary:        Fixed-point math operations library
 License:        MIT
 URL:            https://github.com/PetteriAimonen/libfixmath
+Group:          Development/Libraries/C and C++
 Source0:        %{url}/archive/refs/heads/master.tar.gz#:/%{name}-%{version}.tar.gz
 # PATCH-FIX-SUSE build shared lib instead of static one
 Patch0:         build-shared-library.patch
@@ -38,16 +38,19 @@ BuildRequires:  cmake >= 3.13
 %endif
 
 %description
-fixmath is fix point math operations library.
+fixmath is a fixed-point math operations library written in C and
+implementing the Q16.16 format.
 
 %package devel
-Summary:        Header files for dragonbox, a float-to-string conversion library
-Group:          Development/Languages/C and C++
+Summary:        Header files for fixmath, a fixed-point math library
+Requires:       %name = %version
+Conflicts:      %name < %version-%release
 
 %description devel
-fixmath is fix point math operations library.
+fixmath is a fixed-point math operations library written in C and
+implementing the Q16.16 format.
 
-This package contains the headers and the static library.
+This package contains the headers.
 
 %prep
 %autosetup -n lib%{name}-master -p1
@@ -60,16 +63,23 @@ export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
 # Remove -fsanitize=undefined opts in SLE-12-SP5
 sed -e '/set(sanitizer_opts/d' -i tests/tests.cmake
 %endif
-%cmake
+sv="$PWD/fixmath.sym"
+echo "FIXMATH_%version { global: *; };" >"$sv"
+%cmake -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
 %cmake_build
 
 %install
 %cmake_install
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%files
+%{_libdir}/lib%{name}.so
+
 %files devel
 %doc README.md
 %license LICENSE
 %{_includedir}/libfixmath
-%{_libdir}/lib%{name}.so
 
 %changelog

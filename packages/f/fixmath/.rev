@@ -26,4 +26,12 @@
   * cmake-install.patch</comment>
     <requestid>1043164</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>db050754aebf742ce07875839a050391</srcmd5>
+    <version>2022.07.20</version>
+    <time>1679068861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072307</requestid>
+  </revision>
 </revisionlist>
