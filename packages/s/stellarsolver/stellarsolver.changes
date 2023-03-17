@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 10 07:39:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Revert hwcaps.
+
+-------------------------------------------------------------------
+Wed Mar  8 10:11:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3 
+
+-------------------------------------------------------------------
 Mon Aug  1 12:09:18 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4:
