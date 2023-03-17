@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 14:07:12 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump required rust version & fix libexecdir
+
+-------------------------------------------------------------------
 Fri Feb 10 09:14:07 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - First version of netavark

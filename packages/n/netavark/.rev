@@ -7,4 +7,12 @@
     <comment>First version of netavark, the new container stack for podman 4.4+</comment>
     <requestid>1065928</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81e5a0102b38317662b2f2934a12d447</srcmd5>
+    <version>1.5.0</version>
+    <time>1679069048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072439</requestid>
+  </revision>
 </revisionlist>

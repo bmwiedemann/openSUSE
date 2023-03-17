@@ -25,7 +25,7 @@ URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
-BuildRequires:  cargo
+BuildRequires:  rust+cargo >= 1.66
 BuildRequires:  cargo-packaging
 BuildRequires:  go-md2man
 BuildRequires:  protobuf-devel
@@ -69,7 +69,7 @@ go-md2man -in %{name}.1.md -out %{name}.1
 
 
 %install
-%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
 
 
 %files
