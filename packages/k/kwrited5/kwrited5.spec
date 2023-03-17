@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kwrited5
-Version:        5.27.2
+Version:        5.27.3
 Release:        0
 Summary:        Daemon listening for wall and write messages
 License:        GPL-2.0-or-later
