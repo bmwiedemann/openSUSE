@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-secrets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-secrets
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Secrets Client Library for Python
 License:        MIT
@@ -38,11 +38,11 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.20.0
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
-Requires:       python-six >= 1.11.0
+Requires:       python-isodate >= 0.6.1
+Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
