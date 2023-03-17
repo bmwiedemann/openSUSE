@@ -539,4 +539,15 @@ additions, including new UTF-8 compose sequences for:
   * U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch</comment>
     <requestid>1040432</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>40e4b33ba0a85ba74209216561819dfe</srcmd5>
+    <version>1.8.4</version>
+    <time>1679068947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.4
+  This release fixes the regressions in previous 1.8.x related to the thread-
+  -safety-constructor option. (boo#1209176)
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch</comment>
+    <requestid>1072175</requestid>
+  </revision>
 </revisionlist>
