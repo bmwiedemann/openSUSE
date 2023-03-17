@@ -167,4 +167,14 @@
     <comment></comment>
     <requestid>1039662</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f38c4ef2a03a365deb8b7869bc445c09</srcmd5>
+    <version>3.19.0</version>
+    <time>1679068955</time>
+    <user>dimstar_suse</user>
+    <comment>- rename docs subpackage to the more common doc name 
+
+- We want &quot;modern&quot; Sphinx on SLE-15, not the 3.6-based one.</comment>
+    <requestid>1072288</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-marshmallow
 Version:        3.19.0
 Release:        0
@@ -29,18 +28,26 @@ Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/mar
 # https://github.com/humitos/sphinx-version-warning/issues/22
 Patch0:         python-marshmallow-no-version-warning.patch
 BuildRequires:  %{python_module autodocsumm}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       %{name}-docs
+Suggests:       %{name}-doc
 Suggests:       python-python-dateutil
 Suggests:       python-simplejson
 BuildArch:      noarch
 # SECTION doc build requirements
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module alabaster}
+BuildRequires:  %{python_module sphinx-issues}
+BuildRequires:  %{python_module sphinx-version-warning}
+%else
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-alabaster
 BuildRequires:  python3-sphinx-issues
 BuildRequires:  python3-sphinx-version-warning
+%endif
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -49,15 +56,17 @@ BuildRequires:  %{python_module simplejson}
 # /SECTION
 %python_subpackages
 
-%package -n %{name}-docs
+%package -n %{name}-doc
 Summary:        Documentation files for %{name}
 Group:          Documentation/Other
+Provides:       %{name}-docs = %{version}
+Obsoletes:      %{name}-docs < %{version}
 
 %description
 marshmallow is an ORM/ODM/framework-agnostic library for converting complex
 datatypes, such as objects, to and from native Python datatypes.
 
-%description -n %{name}-docs
+%description -n %{name}-doc
 HTML Documentation and examples for %{name}.
 
 %prep
@@ -66,7 +75,7 @@ HTML Documentation and examples for %{name}.
 
 %build
 %python_build
-sphinx-build-%{python3_bin_suffix} docs/ docs/_build/html
+sphinx-build docs/ docs/_build/html
 rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 
 %install
@@ -81,7 +90,7 @@ rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 %license LICENSE NOTICE
 %{python_sitelib}/*
 
-%files -n %{name}-docs
+%files -n %{name}-doc
 %doc examples docs/_build/html/
 
 %changelog

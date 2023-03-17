@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:45:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rename docs subpackage to the more common doc name 
+
+-------------------------------------------------------------------
+Wed Mar 15 14:54:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We want "modern" Sphinx on SLE-15, not the 3.6-based one.
+
+-------------------------------------------------------------------
 Fri Dec  2 20:31:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.19.0 
