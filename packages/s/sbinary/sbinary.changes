@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 27 18:22:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 8 or higher
+
+-------------------------------------------------------------------
 Mon Dec  2 07:27:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Require scala 2.10.7 for build: allows building with jdk11
