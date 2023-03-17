@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
