@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * Guard m_producer
+  * stream: better fallback for BGR formats when downloading into a QImage
+  * stream: Fix support of SPA_VIDEO_FORMAT_RGB
+  * recording: Drop unnecessary conditional
+  * recording: use "good" deadline rather than quality that is deprecated upstream
+  * recording: Make bitrate depend on the stream size
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
