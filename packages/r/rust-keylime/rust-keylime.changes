@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 15 16:46:28 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add keylime-ima-policy subpackage to provide a better IMA policy
+
+-------------------------------------------------------------------
 Thu Mar 02 15:12:27 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.0+git.1677691779.f7edd9a:

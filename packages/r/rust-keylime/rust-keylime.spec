@@ -36,6 +36,9 @@ Source2:        cargo_config
 Source3:        keylime.xml
 Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
+Source6:        ima-policy
+Source7:        ima-policy.service
+Source8:        README.suse
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
 BuildRequires:  cargo-packaging
@@ -48,6 +51,7 @@ BuildRequires:  tpm2-0-tss-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
+Recommends:     keylime-ima-policy
 Provides:       user(keylime)
 %sysusers_requires
 # Disable this line if you wish to support all platforms.  In most
@@ -58,6 +62,12 @@ Provides:       user(keylime)
 %description
 Rust implementation of keylime agent. Keylime is system integrity
 monitoring system.
+
+%package -n keylime-ima-policy
+Summary:        IMA policy for Keylime agent
+
+%description -n keylime-ima-policy
+Subpackage of %{name} to provide an suggested IMA policy for Keylime agent
 
 %prep
 %autosetup -a1 -p1
@@ -91,6 +101,9 @@ install -d %{buildroot}%{_libexecdir}/keylime
 # Create work directory and the certificate directory
 mkdir -p %{buildroot}%{_sharedstatedir}/keylime/cv_ca
 
+install -Dpm 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/ima/ima-policy
+install -Dpm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/ima-policy.service
+
 # %_check
 # %_{cargo_test}
 
@@ -118,7 +131,7 @@ mkdir -p %{buildroot}%{_sharedstatedir}/keylime/cv_ca
 %{_bindir}/keylime_agent
 %{_bindir}/keylime_ima_emulator
 %dir %attr(0700,keylime,tss) %{_distconfdir}/keylime
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/keylime/agent.conf
+%_config_norepl %attr(0600,keylime,tss) %{_distconfdir}/keylime/agent.conf
 %{_unitdir}/keylime_agent.service
 %{_unitdir}/var-lib-keylime-secure.mount
 %dir %{_prefix}/lib/firewalld
@@ -130,5 +143,10 @@ mkdir -p %{buildroot}%{_sharedstatedir}/keylime/cv_ca
 %dir %attr(0750,keylime,tss) %{_libexecdir}/keylime
 %dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
 %dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime/cv_ca
+
+%files -n keylime-ima-policy
+%dir %attr(0750,root,root) %{_sysconfdir}/ima
+%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/ima/ima-policy
+%{_unitdir}/ima-policy.service
 
 %changelog
