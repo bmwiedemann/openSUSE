@@ -70,12 +70,15 @@ BuildRequires:  cmake(Qt6Widgets)
 # /SECTION
 # SECTION optional_modules
 BuildRequires:  qt6-qml-private-devel
+# TODO: Reenable when 6.5.0 is released
+%ifnarch %{ix86}
 BuildRequires:  cmake(Qt63DAnimation)
 BuildRequires:  cmake(Qt63DCore)
 BuildRequires:  cmake(Qt63DExtras)
 BuildRequires:  cmake(Qt63DInput)
 BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
+%endif
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6DBus)
