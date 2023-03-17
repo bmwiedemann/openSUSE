@@ -35,4 +35,12 @@
   * 0004-Fix-GLib-memory-management-issue.patch (forwarded request 1068360 from Vogtinator)</comment>
     <requestid>1068413</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8f94b3569b19a7a97897392b8bd0971</srcmd5>
+    <version>5.27.3</version>
+    <time>1679068877</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.3 (forwarded request 1071929 from Vogtinator)</comment>
+    <requestid>1071982</requestid>
+  </revision>
 </revisionlist>

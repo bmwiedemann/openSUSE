@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kcm_flatpak
-Version:        5.27.2
+Version:        5.27.3
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later
@@ -32,10 +32,6 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/flatpak-kcm-%{
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Expose-FlatpakReferencesModel-to-QML.patch
-Patch2:         0002-Avoid-duplicating-connections-between-ref-and-its-re.patch
-Patch3:         0003-Port-from-NULL-to-nullptr.patch
-Patch4:         0004-Fix-GLib-memory-management-issue.patch
 BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig

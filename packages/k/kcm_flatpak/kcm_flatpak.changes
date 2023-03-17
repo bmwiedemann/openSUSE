@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Expose-FlatpakReferencesModel-to-QML.patch
+  * 0002-Avoid-duplicating-connections-between-ref-and-its-re.patch
+  * 0003-Port-from-NULL-to-nullptr.patch
+  * 0004-Fix-GLib-memory-management-issue.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 07:47:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Apply important fixes from the 5.27 branch:
