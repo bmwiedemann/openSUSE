@@ -1240,4 +1240,12 @@
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068775</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>53afca7bee44b08f3651b45345d4065b</srcmd5>
+    <version>22.12.3</version>
+    <time>1679068858</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the %ldconfig_scriptlets macro</comment>
+    <requestid>1072293</requestid>
+  </revision>
 </revisionlist>

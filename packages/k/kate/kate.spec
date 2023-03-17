@@ -111,6 +111,8 @@ plugins and data files for Kate and KWrite editors.
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 
+%ldconfig_scriptlets
+
 %files
 %doc README*
 %dir %{_kf5_iconsdir}/hicolor/150x150/
