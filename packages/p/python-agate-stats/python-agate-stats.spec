@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-stats
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-agate-stats
 Version:        0.4.0
 Release:        0
@@ -27,6 +26,8 @@ Group:          Development/Languages/Python
 Source:         https://github.com/wireservice/agate-stats/archive/refs/tags/%{version}.tar.gz#/agate-stats-%{version}.tar.gz
 # https://github.com/wireservice/agate-stats/compare/0.4.0...master.diff
 Patch0:         python-agate-stats-remove-mysterious-line.patch
+# https://github.com/wireservice/agate-stats/issues/18
+Patch1:         python-agate-stats-no-six.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +48,7 @@ Agate-stats adds statistical methods to agate.
 
 %prep
 %setup -q -n agate-stats-%{version}
-%patch0 -p1
+%autopatch -p1
 sed -i -e '/^#!\//, 1d' agatestats/*.py
 
 %build
@@ -64,6 +65,7 @@ sed -i -e '/^#!\//, 1d' agatestats/*.py
 %defattr(-,root,root,-)
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/agate_stats*
+%{python_sitelib}/agatestats*
 
 %changelog
