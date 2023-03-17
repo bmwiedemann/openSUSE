@@ -1,0 +1,22 @@
+diff -Naur a/src/databases.h b/src/databases.h
+--- a/src/databases.h	2022-11-12 11:27:40.000000000 -0600
++++ b/src/databases.h	2023-03-15 14:51:11.822420193 -0500
+@@ -57,7 +57,9 @@
+ 	{  6,           6,           6,         250 }, // PII Dixon / Celeron Mendocino
+ 	{  6,           6,          15,          65 }, // P4 Cedar Mill / PD Presler
+ 	{  6,          22,          -1,          65 }, // C2 Conroe-L
++	{  6,          37,           6,          32 }, // Clarkdale (Core i3)
+ 	{  6,          54,          -1,          32 }, // Atom Cedarview
++	{  6,          63,           5,          22 }, // Haswell-EP
+ 	{  6,          70,          -1,          22 }, // Haswell (Crystalwell, L4 cache)
+ 	{  6,         102,          -1,          10 }, // Cannon Lake
+ 	{  6,         150,          -1,          10 }, // Tremont (Elkhart Lake)
+@@ -177,6 +179,8 @@
+ 	{ "Pentium D (SmithField)",         NULL,                               "LGA 775"        },
+ 	{ "Pentium D (Presler)",            NULL,                               "LGA 775"        },
+ 	{ "Bloomfield",                     NULL,                               "LGA 1366"       },
++	{ "Xeon (Woodcrest)",               "Intel(R) Xeon(R) CPU E5-2690 v3",  "FCLGA2011-3"    },
++	{ "Clarkdale (Core i3)",            "Intel(R) Core™ i3 CPU 540",        "FCLGA1156"      },
+ 	{ NULL,                             "Intel(R) Core(TM)2 Duo CPU E7400", "LGA 775"        },
+ 	{ NULL,                             "Intel(R) Core(TM) i5-2520M CPU",   "rPGA 988B"      },
+ 	{ NULL,                             "Intel(R) Xeon(R) CPU E31275",      "LGA 1155"       },

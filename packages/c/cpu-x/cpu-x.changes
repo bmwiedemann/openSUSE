@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 15 19:52:07 UTC 2023 - malcolmlewis@opensuse.org
+
+- Add build requires to enable Vulkan support.
+- Add cpu-x-update-database.patch: Update database.h to include cpu
+  information for Clarkdale (Core i3) and Haswell-EP. 
+
+-------------------------------------------------------------------
 Thu Nov 17 15:53:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.5.2

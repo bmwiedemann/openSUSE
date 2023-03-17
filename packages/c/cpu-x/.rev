@@ -64,4 +64,14 @@
     <comment>- Update to release 4.5.2</comment>
     <requestid>1036477</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>784d7054a95c06ae17ec6435a8724d20</srcmd5>
+    <version>4.5.2</version>
+    <time>1679069062</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build requires to enable Vulkan support.
+- Add cpu-x-update-database.patch: Update database.h to include cpu
+  information for Clarkdale (Core i3) and Haswell-EP. (forwarded request 1072186 from malcolmlewis)</comment>
+    <requestid>1072480</requestid>
+  </revision>
 </revisionlist>

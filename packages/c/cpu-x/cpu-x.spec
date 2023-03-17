@@ -1,7 +1,7 @@
 #
 # spec file for package cpu-x
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          System/X11/Utilities
 URL:            https://github.com/TheTumultuousUnicornOfDarkness/CPU-X
 Source:         https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v%version.tar.gz
 Patch1:         no-no-pie.patch
+#PATCH-FIX-OPENSUSE cpu-x-update-database.patch malcolmlewis@opensuse.org -- Update database to include cpu information.
+Patch2:         cpu-x-update-database.patch
 BuildRequires:  cmake
 BuildRequires:  gettext-tools
 %ifarch %ix86 x86_64
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig(libcpuid) >= 0.6.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(vulkan)
 # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/issues/105
 Provides:       bundled(bandwidth) = 1.5.1
 Provides:       bundled(dmidecode) = 3.4.20220922.f50b925
