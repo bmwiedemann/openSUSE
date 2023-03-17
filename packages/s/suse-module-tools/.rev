@@ -638,4 +638,14 @@ source service setup which messed up my spec file.
   * modprobe.conf: s390x: remove softdep on fbcon (boo#1207853) (forwarded request 1062627 from mwilck)</comment>
     <requestid>1062630</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a3dcaa1b116ca793daaca072190869f8</srcmd5>
+    <version>16.0.30</version>
+    <time>1679068945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.30:
+  * get rid of weak-modules (bsc#1202353)
+  * Remove last mentions of mkinitrd (forwarded request 1072148 from mwilck)</comment>
+    <requestid>1072149</requestid>
+  </revision>
 </revisionlist>

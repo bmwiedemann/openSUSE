@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 15 15:13:14 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.30:
+  * get rid of weak-modules (bsc#1202353)
+  * Remove last mentions of mkinitrd
+
+-------------------------------------------------------------------
 Thu Feb  2 12:02:36 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.29:

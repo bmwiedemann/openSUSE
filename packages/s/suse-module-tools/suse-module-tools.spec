@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.29
+Version:        16.0.30
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -88,18 +88,6 @@ This package contains helper scripts for KMP installation and
 uninstallation, as well as default configuration files for depmod and
 modprobe.
 
-
-%package legacy
-Summary:        Legacy "weak-modules" script for Code10
-Group:          System/Base
-Requires:       %{name}
-Requires:       binutils
-Supplements:    dkms
-
-%description legacy
-This package contains the legacy "weak-modules" script for kernel
-module package (KMP) support. It was replaced by "weak-modules2" in
-SLE 11 and later. It is still used by the DKMS module packaging framework.
 
 %if 0%{?suse_version} >= 1550
 %package scriptlets
@@ -150,10 +138,10 @@ install -d -m 755 "%{buildroot}/%{depmod_dir}"
 install -d -m 755 "%{buildroot}%{_sysconfdir}/depmod.d"
 install -pm 644 "depmod-00-system.conf" "%{buildroot}%{depmod_dir}/00-system.conf"
 
-# "/usr/lib/module-init-tools" name hardcoded in KMPs, mkinitrd, etc.
+# "/usr/lib/module-init-tools" name hardcoded in other packages
 install -d -m 755 "%{buildroot}/usr/lib/module-init-tools"
 install -pm 755 -t "%{buildroot}/usr/lib/module-init-tools/" \
-	weak-modules{,2} driver-check.sh unblacklist lsinitrd-quick
+	weak-modules2 driver-check.sh unblacklist lsinitrd-quick
 
 %if 0%{?suse_version} < 1550
 # rpm macros and helper
@@ -294,10 +282,5 @@ exit 0
 %files scriptlets
 %endif
 /usr/lib/module-init-tools/kernel-scriptlets
-
-
-%files legacy
-%defattr(-,root,root)
-/usr/lib/module-init-tools/weak-modules
 
 %changelog
