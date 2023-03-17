@@ -1,0 +1,216 @@
+From 7b2a6027775b0158304635a98de0f9b5672f163a Mon Sep 17 00:00:00 2001
+From: Dimitri van Heesch <doxygen@gmail.com>
+Date: Wed, 4 Jan 2023 10:55:36 +0100
+Subject: [PATCH] issue #9319: Doc build fails with cairo 1.17.6
+
+---
+ TinyDeflate/gunzip.hh |  26 ++++++-----
+ src/CMakeLists.txt    |   1 +
+ src/dotrunner.cpp     | 104 ++++++++++++++++++++++++++++++++++++++++++
+ src/doxygen.cpp       |   2 -
+ 4 files changed, 120 insertions(+), 13 deletions(-)
+
+diff --git a/TinyDeflate/gunzip.hh b/TinyDeflate/gunzip.hh
+index c0039d5f832..c237298fdb0 100644
+--- a/TinyDeflate/gunzip.hh
++++ b/TinyDeflate/gunzip.hh
+@@ -944,23 +944,27 @@ namespace gunzip_ns
+ 
+         // The following routines are macros rather than e.g. lambda functions,
+         // in order to make them inlined in the function structure, and breakable/resumable.
++	#define CONCAT(a, b) a##b
+ 
+         // Bit-by-bit input routine
+-        #define DummyGetBits(numbits) do { \
+-            auto p = state.template GetBits<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), numbits); \
+-            if((Abortable & Flag_InputAbortable) && !~p) return -2; \
++        #define DummyGetBits_(line,numbits) do { \
++            auto CONCAT(pd,line) = state.template GetBits<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), numbits); \
++            if((Abortable & Flag_InputAbortable) && !~CONCAT(pd,line)) return -2; \
+         } while(0)
++        #define DummyGetBits(numbits) DummyGetBits_(__LINE__, numbits)
+ 
+-        #define GetBits(numbits, target) \
+-            auto p = state.template GetBits<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), numbits); \
+-            if((Abortable & Flag_InputAbortable) && !~p) return -2; \
+-            target = p
++        #define GetBits_(line,numbits, target) \
++            auto CONCAT(pb,line) = state.template GetBits<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), numbits); \
++            if((Abortable & Flag_InputAbortable) && !~CONCAT(pb,line)) return -2; \
++            target = CONCAT(pb,line)
++        #define GetBits(numbits, target) GetBits_(__LINE__, numbits, target)
+ 
+         // Huffman tree read routine.
+-        #define HuffRead(tree, target) \
+-            auto p = state.template HuffRead<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), tree); \
+-            if((Abortable & Flag_InputAbortable) && !~p) return -2; \
+-            target = p
++        #define HuffRead_(line, tree, target) \
++            auto CONCAT(ph,line) = state.template HuffRead<bool(Abortable&Flag_InputAbortable)>(std::forward<InputFunctor>(input), tree); \
++            if((Abortable & Flag_InputAbortable) && !~CONCAT(ph,line)) return -2; \
++            target = CONCAT(ph,line)
++        #define HuffRead(tree, target) HuffRead_(__LINE__, tree, target)
+ 
+         #define Fail_If(condition) do { \
+             /*assert(!(condition));*/ \
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e9df895ce3a..0e33638c42d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ # vim:ts=4:sw=4:expandtab:autoindent:
+ 
+ include_directories(
++    ${PROJECT_SOURCE_DIR}/TinyDeflate
+     ${PROJECT_SOURCE_DIR}/filesystem
+     ${PROJECT_SOURCE_DIR}/libmd5
+     ${PROJECT_SOURCE_DIR}/liblodepng
+diff --git a/src/dotrunner.cpp b/src/dotrunner.cpp
+index d3b2615f4ed..5be9f20de9c 100644
+--- a/src/dotrunner.cpp
++++ b/src/dotrunner.cpp
+@@ -16,6 +16,8 @@
+ #include <cassert>
+ #include <cmath>
+ 
++#include <gunzip.hh>
++
+ #include "dotrunner.h"
+ #include "util.h"
+ #include "portable.h"
+@@ -31,6 +33,9 @@
+ #define MAX_LATEX_GRAPH_INCH  150
+ #define MAX_LATEX_GRAPH_SIZE  (MAX_LATEX_GRAPH_INCH * 72)
+ 
++//#define DBG(x) printf x
++#define DBG(x) do {} while(0)
++
+ //-----------------------------------------------------------------------------------------
+ 
+ // since dot silently reproduces the input file when it does not
+@@ -108,6 +113,7 @@ static bool resetPDFSize(const int width,const int height, const QCString &base)
+ 
+ bool DotRunner::readBoundingBox(const QCString &fileName,int *width,int *height,bool isEps)
+ {
++#if 0
+   const char *bb = isEps ? "%%PageBoundingBox:" : "/MediaBox [";
+   size_t bblen = strlen(bb);
+   FILE *f = Portable::fopen(fileName,"rb");
+@@ -139,6 +145,104 @@ bool DotRunner::readBoundingBox(const QCString &fileName,int *width,int *height,
+   err("Failed to extract bounding box from generated diagram file %s\n",qPrint(fileName));
+   fclose(f);
+   return FALSE;
++#endif
++  std::ifstream f = Portable::openInputStream(fileName);
++  if (!f.is_open())
++  {
++    err("Failed to open file %s for extracting bounding box\n",qPrint(fileName));
++    return false;
++  }
++
++  // read file contents into string 'contents'
++  std::stringstream buffer;
++  buffer << f.rdbuf();
++  std::string contents = buffer.str();
++
++  // start of bounding box marker we are looking for
++  const std::string boundingBox = isEps ? "%%PageBoundingBox:" : "/MediaBox [";
++
++  // helper routine to extract the bounding boxes width and height
++  auto extractBoundingBox = [&fileName,&boundingBox,&width,&height](const char *s) -> bool
++  {
++    int x,y;
++    double w,h;
++    if (sscanf(s+boundingBox.length(),"%d %d %lf %lf",&x,&y,&w,&h)==4)
++    {
++      *width  = static_cast<int>(std::ceil(w));
++      *height = static_cast<int>(std::ceil(h));
++      return true;
++    }
++    err("Failed to extract bounding box from generated diagram file %s\n",qPrint(fileName));
++    return false;
++  };
++
++  // compressed segment start and end markers
++  const std::string streamStart = "stream\n";
++  const std::string streamEnd = "\nendstream";
++
++  const size_t l = contents.length();
++  size_t i=0;
++  while (i<l)
++  {
++    if (!isEps && contents[i]=='s' && strncmp(&contents[i],streamStart.c_str(),streamStart.length())==0)
++    { // compressed stream start
++      int col=17;
++      i+=streamStart.length();
++      const size_t start=i;
++      DBG(("---- start stream at offset %08x\n",(int)i));
++      while (i<l)
++      {
++        if (contents[i]=='\n' && strncmp(&contents[i],streamEnd.c_str(),streamEnd.length())==0)
++        { // compressed block found in range [start..i]
++          DBG(("\n---- end stream at offset %08x\n",(int)i));
++          // decompress it into decompressBuf
++          std::vector<char> decompressBuf;
++          const char *source = &contents[start];
++          const size_t sourceLen = i-start;
++          size_t sourcePos = 0;
++          decompressBuf.reserve(sourceLen*2);
++          auto getter = [source,&sourcePos,sourceLen]() -> int {
++            return sourcePos<sourceLen ? static_cast<unsigned char>(source[sourcePos++]) : EOF;
++          };
++          auto putter = [&decompressBuf](const char c) -> int {
++            decompressBuf.push_back(c); return c;
++          };
++          Deflate(getter,putter);
++          // convert decompression buffer to string
++          std::string s(decompressBuf.begin(), decompressBuf.end());
++          DBG(("decompressed_data=[[[\n%s\n]]]\n",s.c_str()));
++          // search for bounding box marker
++          const size_t idx = s.find(boundingBox);
++          if (idx!=std::string::npos) // found bounding box in uncompressed data
++          {
++            return extractBoundingBox(s.c_str()+idx);
++          }
++          // continue searching after end stream marker
++          i+=streamEnd.length();
++          break;
++        }
++        else // compressed stream character
++        {
++          if (col>16) { col=0; DBG(("\n%08x: ",static_cast<int>(i))); }
++          DBG(("%02x ",static_cast<unsigned char>(contents[i])));
++          col++;
++          i++;
++        }
++      }
++    }
++    else if (((isEps && contents[i]=='%') || (!isEps && contents[i]=='/')) &&
++             strncmp(&contents[i],boundingBox.c_str(),boundingBox.length())==0)
++    { // uncompressed bounding box
++      return extractBoundingBox(&contents[i]);
++    }
++    else // uncompressed stream character
++    {
++      i++;
++    }
++  }
++  err("Failed to find bounding box in generated diagram file %s\n",qPrint(fileName));
++  // nothing found
++  return false;
+ }
+ 
+ //---------------------------------------------------------------------------------
+diff --git a/src/doxygen.cpp b/src/doxygen.cpp
+index 78b72ebfecc..55068e74dcb 100644
+--- a/src/doxygen.cpp
++++ b/src/doxygen.cpp
+@@ -11930,8 +11930,6 @@ void parseInput()
+     {
+       Portable::setenv("DOTFONTPATH",qPrint(curFontPath));
+     }
+-    // issue 9319
+-    Portable::setenv("CAIRO_DEBUG_PDF","1");
+   }
+ 
+ 

@@ -1,0 +1,66 @@
+From 8129939c312e4b5060042fdb93bd071b7b133381 Mon Sep 17 00:00:00 2001
+From: Dimitri van Heesch <doxygen@gmail.com>
+Date: Thu, 5 Jan 2023 11:16:24 +0100
+Subject: [PATCH] issue #9319: Doc build fails with cairo 1.17.6
+
+- Improve detection of "flate" encoded streams
+---
+ TinyDeflate/gunzip.hh |  2 +-
+ src/dotrunner.cpp     | 20 +++++++++++++++++++-
+ 2 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/TinyDeflate/gunzip.hh b/TinyDeflate/gunzip.hh
+index a631815a255..652058ab823 100644
+--- a/TinyDeflate/gunzip.hh
++++ b/TinyDeflate/gunzip.hh
+@@ -430,7 +430,7 @@ namespace gunzip_ns
+         static_assert((T)false, "result_of<CallableType> is invalid; use "
+             "result_of<CallableType(zero or more argument types)> instead.");
+     };
+-    #if __cplusplus > 201703UL
++    #if __cplusplus > 202000UL
+     template <typename F, typename... Args>
+     struct result_of<F(Args...)> : std::invoke_result<F, Args...> {};
+     #else
+diff --git a/src/dotrunner.cpp b/src/dotrunner.cpp
+index 9246029cb61..2e87a0d4a37 100644
+--- a/src/dotrunner.cpp
++++ b/src/dotrunner.cpp
+@@ -20,6 +20,7 @@
+ #pragma warning( push )
+ #pragma warning( disable : 4242 )
+ #pragma warning( disable : 4244 )
++#pragma warning( disable : 4996 )
+ #endif
+ #include <gunzip.hh>
+ #ifdef _MSC_VER
+@@ -156,11 +157,28 @@ bool DotRunner::readBoundingBox(const QCString &fileName,int *width,int *height,
+   const std::string streamStart = "stream\n";
+   const std::string streamEnd = "\nendstream";
+ 
++  auto detectDeflateStreamStart = [&streamStart](const char *s)
++  {
++    size_t len = streamStart.length();
++    bool streamOK = strncmp(s,streamStart.c_str(),len)==0;
++    if (streamOK) // ASCII marker matches, check stream header bytes as well
++    {
++      unsigned short header1 = static_cast<unsigned char>(s[len])<<8; // CMF byte
++      if (header1) // not end of string
++      {
++        unsigned short header = (static_cast<unsigned char>(s[len+1])) | header1; // FLG byte
++        // check for correct header (see https://www.rfc-editor.org/rfc/rfc1950)
++        return ((header&0x8F20)==0x0800) && (header%31)==0;
++      }
++    }
++    return false;
++  };
++
+   const size_t l = contents.length();
+   size_t i=0;
+   while (i<l)
+   {
+-    if (!isEps && contents[i]=='s' && strncmp(&contents[i],streamStart.c_str(),streamStart.length())==0)
++    if (!isEps && contents[i]=='s' && detectDeflateStreamStart(&contents[i]))
+     { // compressed stream start
+       int col=17;
+       i+=streamStart.length();

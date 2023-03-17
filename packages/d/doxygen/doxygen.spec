@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,11 @@ Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Patch1:         %{name}-no-lowercase-man-names.patch
 # The unified libclang-cpp library doesn't exist on older Leap / SLE
 Patch10:        doxygen-no-libclang-cpp.patch
+# Fix PDF boudingbox parsing when dot uses cairo >= 1.17.6 -- https://github.com/doxygen/doxygen/issues/9319
+Patch20:        https://github.com/doxygen/doxygen/commit/966d69c603b5.patch#/Fix-boundingbox-parsing_part1.patch
+Patch21:        https://github.com/doxygen/doxygen/commit/7b2a6027775b.patch#/Fix-boundingbox-parsing_part2.patch
+Patch22:        https://github.com/doxygen/doxygen/commit/f3514d578633.patch#/Fix-boundingbox-parsing_part3.patch
+Patch23:        https://github.com/doxygen/doxygen/commit/8129939c312e.patch#/Fix-boundingbox-parsing_part4.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -68,6 +73,10 @@ as well.
 %patch10 -p1
 %endif
 %endif
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
 
 %build
 %cmake \

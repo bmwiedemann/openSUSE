@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 02:17:05 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix boundingbox parsing of graphviz PDFs when using cairo >=
+  1.17.6, add:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch
+
+-------------------------------------------------------------------
 Wed Dec 28 10:28:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.6: see https://www.doxygen.nl/manual/changelog.html

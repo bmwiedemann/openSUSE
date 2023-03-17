@@ -1,0 +1,93 @@
+From f3514d578633cad3e39d6787f81085e46bafbaf4 Mon Sep 17 00:00:00 2001
+From: Dimitri van Heesch <doxygen@gmail.com>
+Date: Wed, 4 Jan 2023 22:49:00 +0100
+Subject: [PATCH] Fix and work around compiler warnings and remove dead code
+
+---
+ TinyDeflate/gunzip.hh |  4 ++--
+ src/dotrunner.cpp     | 42 +++++++++---------------------------------
+ 2 files changed, 11 insertions(+), 35 deletions(-)
+
+diff --git a/TinyDeflate/gunzip.hh b/TinyDeflate/gunzip.hh
+index c237298fdb0..a631815a255 100644
+--- a/TinyDeflate/gunzip.hh
++++ b/TinyDeflate/gunzip.hh
+@@ -430,7 +430,7 @@ namespace gunzip_ns
+         static_assert((T)false, "result_of<CallableType> is invalid; use "
+             "result_of<CallableType(zero or more argument types)> instead.");
+     };
+-    #if __cplusplus > 202000UL
++    #if __cplusplus > 201703UL
+     template <typename F, typename... Args>
+     struct result_of<F(Args...)> : std::invoke_result<F, Args...> {};
+     #else
+@@ -702,7 +702,7 @@ namespace gunzip_ns
+                     // Note: Throws away progress already made traversing the tree
+                     return ~std::uint_least32_t(0); // error flag
+                 }
+-                cur = (unsigned(cur) << 1) | bool(p);
++                cur = (unsigned(cur) << 1) | unsigned(bool(p));
+             #ifdef DEFL_DO_HUFF_STATS
+                 if(len > maxlen)
+                 {
+diff --git a/src/dotrunner.cpp b/src/dotrunner.cpp
+index 5be9f20de9c..9246029cb61 100644
+--- a/src/dotrunner.cpp
++++ b/src/dotrunner.cpp
+@@ -16,7 +16,16 @@
+ #include <cassert>
+ #include <cmath>
+ 
++#ifdef _MSC_VER
++#pragma warning( push )
++#pragma warning( disable : 4242 )
++#pragma warning( disable : 4244 )
++#endif
+ #include <gunzip.hh>
++#ifdef _MSC_VER
++#pragma warning( pop )
++#endif
++
+ 
+ #include "dotrunner.h"
+ #include "util.h"
+@@ -113,39 +122,6 @@ static bool resetPDFSize(const int width,const int height, const QCString &base)
+ 
+ bool DotRunner::readBoundingBox(const QCString &fileName,int *width,int *height,bool isEps)
+ {
+-#if 0
+-  const char *bb = isEps ? "%%PageBoundingBox:" : "/MediaBox [";
+-  size_t bblen = strlen(bb);
+-  FILE *f = Portable::fopen(fileName,"rb");
+-  if (!f)
+-  {
+-    //printf("readBoundingBox: could not open %s\n",fileName);
+-    return FALSE;
+-  }
+-  const int maxLineLen=1024;
+-  char buf[maxLineLen];
+-  while (fgets(buf,maxLineLen,f)!=NULL)
+-  {
+-     const char *p = strstr(buf,bb);
+-     if (p) // found PageBoundingBox or /MediaBox string
+-     {
+-       int x,y;
+-       double w,h;
+-       fclose(f);
+-       if (sscanf(p+bblen,"%d %d %lf %lf",&x,&y,&w,&h)!=4)
+-       {
+-         //printf("readBoundingBox sscanf fail\n");
+-         return FALSE;
+-       }
+-       *width = static_cast<int>(std::ceil(w));
+-       *height = static_cast<int>(std::ceil(h));
+-       return TRUE;
+-     }
+-  }
+-  err("Failed to extract bounding box from generated diagram file %s\n",qPrint(fileName));
+-  fclose(f);
+-  return FALSE;
+-#endif
+   std::ifstream f = Portable::openInputStream(fileName);
+   if (!f.is_open())
+   {

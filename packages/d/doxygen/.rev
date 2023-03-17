@@ -1068,4 +1068,17 @@
     <comment></comment>
     <requestid>1045632</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>242da955175dc248add40b642e08bd93</srcmd5>
+    <version>1.9.6</version>
+    <time>1679068854</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boundingbox parsing of graphviz PDFs when using cairo &gt;=
+  1.17.6, add:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch (forwarded request 1072216 from StefanBruens)</comment>
+    <requestid>1072283</requestid>
+  </revision>
 </revisionlist>
