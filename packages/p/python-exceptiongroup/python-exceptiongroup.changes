@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:18:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Worked around `CPython issue #98778
+    ``urllib.error.HTTPError(..., fp=None)`` raises
+    ``KeyError`` on unknown attribute access, on affected
+    Python versions.
+
+-------------------------------------------------------------------
 Fri Dec 23 15:24:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0

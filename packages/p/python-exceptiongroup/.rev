@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1045050</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c2d0c0caa376920f49f936a4683da78</srcmd5>
+    <version>1.1.1</version>
+    <time>1679068925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Worked around `CPython issue #98778
+    ``urllib.error.HTTPError(..., fp=None)`` raises
+    ``KeyError`` on unknown attribute access, on affected
+    Python versions.</comment>
+    <requestid>1071876</requestid>
+  </revision>
 </revisionlist>
