@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>873528</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43180366f31e956df92f28e7d3357d4f</srcmd5>
+    <version>2.4.0</version>
+    <time>1679069056</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072462</requestid>
+  </revision>
 </revisionlist>

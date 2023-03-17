@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luasql
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,8 +37,8 @@ Release:        0
 Summary:        Simple interface from Lua to a DBMS
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            https://keplerproject.github.io/luasql/
-Source0:        https://github.com/keplerproject/luasql/archive/v%{version}/%{mod_name}-%{version}.tar.gz
+URL:            https://github.com/lunarmodules/luasql
+Source0:        https://github.com/lunarmodules/luasql/archive/v%{version}/%{mod_name}-%{version}.tar.gz
 #Source0 via https://codeload.github.com/keplerproject/luasql/tar.gz/v2.3.0
 # PATCH-FIX-OPENSUSE luasql-fix-configuration.patch malcolmlewis@opensuse.org -- Clean up building and add rpm optflags.
 Patch0:         luasql-fix-configuration.patch

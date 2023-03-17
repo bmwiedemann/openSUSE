@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 18:18:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
 Thu Feb 18 15:58:47 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
