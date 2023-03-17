@@ -18,7 +18,7 @@
 
 
 Name:           python-filelock
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense

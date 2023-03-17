@@ -88,4 +88,13 @@
   * move to hatchling build backend</comment>
     <requestid>1055798</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2610a61bbaf1550c7f4f8fac4bec429c</srcmd5>
+    <version>3.9.1</version>
+    <time>1679068927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.1:
+  * use time.perf_counter instead of time.monotonic</comment>
+    <requestid>1071878</requestid>
+  </revision>
 </revisionlist>
