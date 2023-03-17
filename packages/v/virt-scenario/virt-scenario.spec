@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virt-scenario
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Create XML guest configuration and prepare the host for a scenario
 License:        GPL-3.0-or-later
@@ -70,6 +70,7 @@ mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
 %{_bindir}/*
 %{python_sitelib}/virtscenario
 %{python_sitelib}/virt_select_firmware
+%{python_sitelib}/virtscenario_launch
 %{python_sitelib}/*.egg-info
 %attr(0755,root,root) %{_datadir}/%name
 %{_mandir}/man1/%{name}.1%{ext_man}

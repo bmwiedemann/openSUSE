@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 16:27:50 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7.4:
+  * add virt-scenario-launch (Joerg Roedel):
+    * tool to launch VMs created by virtscenario and do attestation 
+      for SecureVMs
+  * rewrite and clean some part of the code
+  * remove check_container use (no more needed for now)
+
+-------------------------------------------------------------------
 Wed Mar 15 08:43:08 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 0.7.3:
