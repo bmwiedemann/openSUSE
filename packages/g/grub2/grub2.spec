@@ -282,6 +282,7 @@ Patch421:       0002-AUDIT-0-http-boot-tracker-bug.patch
 Patch430:       grub2-mkconfig-default-entry-correction.patch
 Patch431:       grub2-s390x-10-keep-network-at-kexec.patch
 Patch432:       grub2-s390x-11-secureboot.patch
+Patch433:       grub2-s390x-12-zipl-setup-usrmerge.patch
 # Support for UEFI Secure Boot on AArch64 (FATE#326541)
 Patch450:       grub2-secureboot-install-signed-grub.patch
 Patch501:       grub2-btrfs-help-on-snapper-rollback.patch

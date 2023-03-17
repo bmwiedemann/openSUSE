@@ -1,0 +1,84 @@
+---
+ util/s390x/zipl2grub.pl.in |   41 ++++++++++++++++++++++++++++-------------
+ 1 file changed, 28 insertions(+), 13 deletions(-)
+
+Index: grub-2.06/util/s390x/zipl2grub.pl.in
+===================================================================
+--- grub-2.06.orig/util/s390x/zipl2grub.pl.in
++++ grub-2.06/util/s390x/zipl2grub.pl.in
+@@ -101,20 +101,22 @@ sub ManagePrev($$$){
+   }
+   return $ret;
+ }
+-sub BootCopy($$$) {
+-  my( $file, $dir, $tgt) = @_;
++sub BootCopy($$$$) {
++  my( $src, $file, $dir, $tgt) = @_;
+   my $curr = "$dir/$tgt";
+-  Info(4, "Copy /boot/$file $dir $tgt\n");
++  $src = "/boot/$src" unless ( -r $src );
++  Info(4, "Copy $src $dir $tgt\n");
+   if ( $tgt eq "image" && ManagePrev( $file, $dir, $tgt)) {
+     ManagePrev( $file, $dir, "initrd")
+   }
+-  cp( "/boot/$file", "$dir/$file");
++  cp( $src, "$dir/$file");
+   ln( $file, $curr);
+ }
+ sub MkInitrd($$$) {
+   my( $initrd, $dir, $version) = @_;
+   my @C = ( "dracut", "--hostonly", "--force");
+   my $uuid;
++  push @C, "--quiet" unless ($verbose > 1);
+   if ( exists( $fsdev{"/boot"}) ) {
+   chomp( $uuid = qx{grub2-probe --target=fs_uuid /boot});
+     my ($dev, $type) = ($fsdev{"/boot"},  $fstype{"/boot"});
+@@ -429,18 +431,31 @@ if ( ! -r $Image ) {
+ }
+ Panic( 1, "$C: kernel '$Image' not readable!?\n") unless (-r $Image);
+ 
+-if ( -l $Image ) {
+-  $Image = readlink( $Image);
+-}
+-my ($image, $version) = ($Image =~ m{^(?:/boot/)?([^-]+-(.+))$});
+-if ( !defined($image) || !defined($version) || ! -r "/boot/$image" ) {
+-  Panic( 1, "$C: weird $Image. This should never happen!\n");
++my ($image, $version) = ($Image, undef);
++while ( !defined( $version) ) {
++  my ($i, $vr, $f) = ($image =~ m{^(?:/boot/)?([^-/]+)-([^/]+)-([^-/]+)$});
++  Info( 4, "image='$image': ");
++  if ( defined($i) && defined($vr) && defined( $f) && -r "/boot/$i-$vr-$f" ) {
++    Info( 4, "matches pattern ('$vr'-'$f')\n");
++    $version = "$vr-$f";
++    last;
++  }
++  if ( -l $image ) {
++    Info( 4, "readlink...\n");
++    $image = readlink( $image);
++    next;
++  }
++  Info( 4, "last resort: get_kernel_version from original '$Image'...\n");
++  chomp( $version = qx{get_kernel_version $Image});
++  Panic( 1, "$C: failed to get kernel version for '$Image'!\n")
++    unless ( defined( $version) && $version );
+ }
+ my $initrd = "initrd-$version";
++$image = "image-$version";
+ 
+ if ( ! -r $ziplimage || ! -r $ziplinitrd || $refresh ) {
+-  BootCopy( $image, $zipldir, "image");
+-  BootCopy( $initrd, $zipldir, "initrd")
++  BootCopy( $Image, $image, $zipldir, "image");
++  BootCopy( $initrd, $initrd, $zipldir, "initrd")
+     if (-r "/boot/$initrd" && ! exists( $fsdev{"/boot"}));
+ }
+ if ( $refresh || ChkInitrd( $zipldir, "initrd") <= 0 ) {
+@@ -463,7 +478,7 @@ if ( ! $debug ) {
+ }
+ 
+ # now: go for it!
+-my @C = ( "/sbin/zipl", (($verbose) ? "-Vnc" : "-nc"), "$ziplconf" );
++my @C = ( "/sbin/zipl", (($verbose > 1) ? "-Vnc" : "-nc"), "$ziplconf" );
+ System( @C);
+ exit( $miss);
+ 
