@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
 Version:        1.10.4
@@ -58,7 +57,9 @@ Data validation and settings management using Python type hinting.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_multiple_env_file'
+# Disable DeprecationWarning to avoid error with the latest setuptools
+# and pkg_resources deprecation
+%pytest -k 'not test_multiple_env_file' -W ignore::DeprecationWarning
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 07:18:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable DeprecationWarning in tests to avoid error with the latest
+  setuptools and pkg_resources deprecation
+
+-------------------------------------------------------------------
 Mon Jan  2 20:22:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.10.4:
