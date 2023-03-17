@@ -320,4 +320,11 @@ view</comment>
     <comment>1.72</comment>
     <requestid>1031120</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6a75f48093df45f175a1dee9c50337a8</srcmd5>
+    <version>1.72</version>
+    <time>1679069291</time>
+    <user>dimstar_suse</user>
+    <comment>Bump constraints: disk 10gb</comment>
+  </revision>
 </revisionlist>
