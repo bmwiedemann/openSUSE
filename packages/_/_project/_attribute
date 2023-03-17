@@ -21,7 +21,7 @@
   boo#1204604: '20221109'
   boo#1204605: '20221022'
   boo#1204629: '20221024'
-  boo#1204833: '20230314'
+  boo#1204833: '20230315'
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
@@ -74,6 +74,7 @@
   boo#1209179: '20230315'
   boo#1209180: '20230315'
   boo#1209249: '20230313'
+  boo#1209402: '20230315'
   boo#12345: '20221004'
   boo#978027: '20230213'
   bsc#1161276: '20221027'
@@ -185,7 +186,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230315</value>
+    <value>20230316</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -488,9 +489,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230315'
-published: '20230313'
-publishing: '20230313'
+    <value>failed: ''
+published: '20230315'
+publishing: '20230315'
 testing: '20230315'
 </value>
   </attribute>
