@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-Bottleneck
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause
