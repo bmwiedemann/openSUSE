@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 17 06:11:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.1:
+  * add github.com/repo.full_name, github.com/repo.url (#4767)
+  * Telemetry ingestion (#4637)
+  * feat: add dynamic secret API (#4667)
+  * run services tests in parallel (#4764)
+  * Collect more git labels, silence noisy log (#4763)
+  * Prevent GC of content pending export. (#4758)
+  * Initial support for cache mount import/export. (#4671)
+  * docs: add origin as embed domain (#4753)
+  * docs: proxy embed to avoid third party errors (#4752)
+  * Improve releasing instructions post v0.4.0 (#4741)
+  * Use zstd compression for s3 cached layers. (#4746)
+  * docs: Updated minimum Go version for Go SDK (#4743)
+  * docs: Updated title and content to reflect the final feature
+    name (#4744)
+  * docs: Improved services guide (#4740)
+  * docs: Added services guide (#4712)
+  * Fix loading GitHub labels for push events (#4691)
+  * docs: add tag search to guide index (#4686)
+
+-------------------------------------------------------------------
 Wed Mar 08 19:23:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.0:
