@@ -324,6 +324,7 @@ fi
 %{_libexecdir}/groff/groff_opts_with_arg.txt
 %exclude %{_docdir}/groff/html
 %exclude %{_docdir}/groff/examples
+%exclude %{_docdir}/groff/pdf
 %{_infodir}/groff*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
@@ -341,6 +342,7 @@ fi
 %dir %{_docdir}/groff
 %doc %{_docdir}/groff/html
 %doc %{_docdir}/groff/examples
+%doc %{_docdir}/groff/pdf
 
 %files -n gxditview
 %dir %{_datadir}/X11/app-defaults

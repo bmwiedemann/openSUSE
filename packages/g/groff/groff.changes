@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:04:16 UTC 2023 - pgajdos@suse.com
+
+- ship %{_docdir}/groff/pdf also in groff-doc [bsc#1208498]
+
+-------------------------------------------------------------------
 Wed Jan  4 12:16:28 UTC 2023 - pgajdos@suse.com
 
 - set doc-default-operating-system and doc-volume-operating-system

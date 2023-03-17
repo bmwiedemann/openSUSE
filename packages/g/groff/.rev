@@ -578,4 +578,12 @@
     <comment></comment>
     <requestid>1058164</requestid>
   </revision>
+  <revision rev="66" vrev="10">
+    <srcmd5>05f109e8debc50b79de3ee7d7c088236</srcmd5>
+    <version>1.22.4</version>
+    <time>1679068864</time>
+    <user>dimstar_suse</user>
+    <comment>- ship %{_docdir}/groff/pdf also in groff-doc [bsc#1208498]</comment>
+    <requestid>1072315</requestid>
+  </revision>
 </revisionlist>
