@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:11:46 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- Update to 1.0.1
+  - Configuration:
+    - Fix a cut&paste error in setting 'disable_hdrmd5_check' config option
+  - Connection:
+    - Set Content-Type of POST requests without data to 'application/x-www-form-urlencoded'
+
+-------------------------------------------------------------------
 Tue Mar 14 12:26:57 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - Update to 1.0.0 (full changelog to the latest stable version 0.182.0)

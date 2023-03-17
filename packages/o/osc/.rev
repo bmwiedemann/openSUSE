@@ -1649,4 +1649,16 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1072318</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>1673312ec6a2732933ef688137b08500</srcmd5>
+    <version>1.0.1</version>
+    <time>1679069117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1
+  - Configuration:
+    - Fix a cut&amp;paste error in setting 'disable_hdrmd5_check' config option
+  - Connection:
+    - Set Content-Type of POST requests without data to 'application/x-www-form-urlencoded'</comment>
+    <requestid>1072666</requestid>
+  </revision>
 </revisionlist>
