@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 15 20:58:14 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 4.5:
+  * Added support for Hare.
+  * Fixed `--no-trailing-nl` option for LaTeX output
+    (gl#saalen/highlight#216).
+  * Fixed typos in rnc.lang, spn.lang and znn.lang
+    (gl#saalen/highlight!139).
+  * Fixed missing ngerman package for `--replace-quotes` option
+    (gl#saalen/highlight#222).
+  * Fixed quotes highlighting in XML (gl#saalen/highlight#226).
+  * Updated file extension lists (gl#saalen/highlight#227).
+  * Updated astyle lib to version 3.2.
+
+-------------------------------------------------------------------
 Sat Nov 12 17:14:40 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 4.4:
