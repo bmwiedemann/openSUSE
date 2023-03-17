@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 14 12:43:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.1:
+  + GtkFileChooser:
+    - Improve search performance
+    - Be safe against pathless files
+    - Fix memory leaks
+    - Only show local files in recent files
+    - Show most recent files first
+    - Make files non-selectable in selet_folder mode
+  + GtkListView / GtkColumnView / GtkGridView:
+    - Fix scrolling problems
+    - Support CSS border-spacing
+  + GtkComboBox: Fix a size allocation problem
+  + gtk: Size allocation fixes
+  + Accessibility: Miscellaneous property fixes and improvements
+  + Wayland: Fix an ordering problem in surface disposal
+  + Windows: Fix Visual Studio build with older GLib
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 3e3158ce12741b58ce53f132b48f26438094886d.patch
+  + 0001-combobox-Avoid-extra-queue_resize.patch
+- Refresh 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+  with quilt.
+
+-------------------------------------------------------------------
 Fri Mar 10 09:23:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3e3158ce12741b58ce53f132b48f26438094886d.patch: widget: Use

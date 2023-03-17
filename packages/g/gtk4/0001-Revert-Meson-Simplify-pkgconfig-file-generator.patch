@@ -13,11 +13,11 @@ This reverts commit 802bf4199911c811938b0454a876089bafa97dba.
  meson.build | 47 +++++++++++++++++++++++++++++++++--------------
  1 file changed, 33 insertions(+), 14 deletions(-)
 
-Index: gtk-4.10.0/meson.build
+Index: gtk-4.10.1/meson.build
 ===================================================================
---- gtk-4.10.0.orig/meson.build
-+++ gtk-4.10.0/meson.build
-@@ -431,6 +431,9 @@ if not os_win32
+--- gtk-4.10.1.orig/meson.build
++++ gtk-4.10.1/meson.build
+@@ -438,6 +438,9 @@ if not os_win32
    endif
  endif
  
@@ -27,7 +27,7 @@ Index: gtk-4.10.0/meson.build
  cairo_backends = []
  foreach backend: [ ['cairo-xlib', cairo_req, x11_enabled],
                     ['cairo-win32', cairo_req, win32_enabled],
-@@ -559,14 +562,26 @@ if x11_enabled
+@@ -566,14 +569,26 @@ if x11_enabled
    cdata.set('HAVE_RANDR15', xrandr15_dep.found())
  endif
  
@@ -54,7 +54,7 @@ Index: gtk-4.10.0/meson.build
  
    # Check whether libepoxy is built with EGL support on Windows
  endif
-@@ -791,7 +806,16 @@ gsk_private_packages = [] # all already
+@@ -803,7 +818,16 @@ gsk_private_packages = [] # all already
  pangoft2_pkgs = (wayland_enabled or x11_enabled) ? ['pangoft2'] : []
  gtk_private_packages = pangoft2_pkgs
  
@@ -72,7 +72,7 @@ Index: gtk-4.10.0/meson.build
  pkg_targets = []
  display_backends = []
  foreach backend: [ 'broadway', 'macos', 'wayland', 'win32', 'x11', ]
-@@ -808,23 +832,18 @@ common_pc_variables = [
+@@ -820,23 +844,18 @@ common_pc_variables = [
    'gtk_host=@0@-@1@'.format(host_machine.cpu_family(), host_machine.system()), # FIXME
  ]
  
@@ -102,7 +102,7 @@ Index: gtk-4.10.0/meson.build
    )
    meson.override_dependency(pkg, libgtk_dep)
  endforeach
-@@ -835,10 +854,10 @@ if os_unix
+@@ -847,10 +866,10 @@ if os_unix
      unescaped_variables: common_pc_variables,
      name: 'GTK',
      description: 'GTK Unix print support',
