@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -110,10 +110,8 @@ ABI or API guarantees.
 # No private headers for Qt6SvgWidgets
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets_private.pri
 
-%post -n libQt6Svg6 -p /sbin/ldconfig
-%postun -n libQt6Svg6 -p /sbin/ldconfig
-%post -n libQt6SvgWidgets6 -p /sbin/ldconfig
-%postun -n libQt6SvgWidgets6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Svg6
+%ldconfig_scriptlets -n libQt6SvgWidgets6
 
 %files -n libQt6Svg6
 %license LICENSES/*
