@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:13:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Limit operator secrets permission (CVE-2023-26484, bsc#1209359)
+  0001-Vulnerability-fix-limit-operator-secrets-permission.patch
+
+-------------------------------------------------------------------
 Thu Mar  2 07:12:05 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.59.0
