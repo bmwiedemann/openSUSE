@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -103,8 +103,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6SerialBus/*Plugin*.cmake
 
 %{qt6_link_executables}
 
-%post -n libQt6SerialBus6 -p /sbin/ldconfig
-%postun -n libQt6SerialBus6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6SerialBus6
 
 %files
 %{_bindir}/canbusutil6
