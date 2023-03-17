@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -367,28 +367,17 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 
 %fdupes %{buildroot}%{_qt6_qmldir}/QtQuick3D
 
-%post -n libQt6Quick3D6 -p /sbin/ldconfig
-%post -n libQt6Quick3DAssetImport6 -p /sbin/ldconfig
-%post -n libQt6Quick3DAssetUtils6 -p /sbin/ldconfig
-%post -n libQt6Quick3DEffects6 -p /sbin/ldconfig
-%post -n libQt6Quick3DGlslParser6 -p /sbin/ldconfig
-%post -n libQt6Quick3DHelpers6 -p /sbin/ldconfig
-%post -n libQt6Quick3DIblBaker6 -p /sbin/ldconfig
-%post -n libQt6Quick3DParticleEffects6 -p /sbin/ldconfig
-%post -n libQt6Quick3DParticles6 -p /sbin/ldconfig
-%post -n libQt6Quick3DRuntimeRender6 -p /sbin/ldconfig
-%post -n libQt6Quick3DUtils6 -p /sbin/ldconfig
-%postun -n libQt6Quick3D6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DAssetImport6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DAssetUtils6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DEffects6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DGlslParser6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DHelpers6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DIblBaker6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DParticleEffects6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DParticles6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DRuntimeRender6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DUtils6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt6Quick3D6
+%ldconfig_scriptlets -n libQt6Quick3DAssetImport6
+%ldconfig_scriptlets -n libQt6Quick3DAssetUtils6
+%ldconfig_scriptlets -n libQt6Quick3DEffects6
+%ldconfig_scriptlets -n libQt6Quick3DGlslParser6
+%ldconfig_scriptlets -n libQt6Quick3DHelpers6
+%ldconfig_scriptlets -n libQt6Quick3DIblBaker6
+%ldconfig_scriptlets -n libQt6Quick3DParticleEffects6
+%ldconfig_scriptlets -n libQt6Quick3DParticles6
+%ldconfig_scriptlets -n libQt6Quick3DRuntimeRender6
+%ldconfig_scriptlets -n libQt6Quick3DUtils6
 
 %files
 # No better place to install these quick3d plugins
