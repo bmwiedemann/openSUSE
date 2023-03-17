@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.2
+%define real_version 6.4.3
 %define short_version 6.4
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,15 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-3d-rpmlintrc
+# TODO: Reenable build when 6.5.0 is released
+ExcludeArch:    %{ix86}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -440,30 +442,18 @@ touch meta_package
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
-%post -n libQt63DAnimation6 -p /sbin/ldconfig
-%postun -n libQt63DAnimation6 -p /sbin/ldconfig
-%post -n libQt63DCore6 -p /sbin/ldconfig
-%postun -n libQt63DCore6 -p /sbin/ldconfig
-%post -n libQt63DExtras6 -p /sbin/ldconfig
-%postun -n libQt63DExtras6 -p /sbin/ldconfig
-%post -n libQt63DInput6 -p /sbin/ldconfig
-%postun -n libQt63DInput6 -p /sbin/ldconfig
-%post -n libQt63DLogic6 -p /sbin/ldconfig
-%postun -n libQt63DLogic6 -p /sbin/ldconfig
-%post -n libQt63DQuick6 -p /sbin/ldconfig
-%postun -n libQt63DQuick6 -p /sbin/ldconfig
-%post -n libQt63DQuickAnimation6 -p /sbin/ldconfig
-%postun -n libQt63DQuickAnimation6 -p /sbin/ldconfig
-%post -n libQt63DQuickExtras6 -p /sbin/ldconfig
-%postun -n libQt63DQuickExtras6 -p /sbin/ldconfig
-%post -n libQt63DQuickInput6 -p /sbin/ldconfig
-%postun -n libQt63DQuickInput6 -p /sbin/ldconfig
-%post -n libQt63DQuickRender6 -p /sbin/ldconfig
-%postun -n libQt63DQuickRender6 -p /sbin/ldconfig
-%post -n libQt63DQuickScene2D6 -p /sbin/ldconfig
-%postun -n libQt63DQuickScene2D6 -p /sbin/ldconfig
-%post -n libQt63DRender6 -p /sbin/ldconfig
-%postun -n libQt63DRender6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQt63DAnimation6
+%ldconfig_scriptlets -n libQt63DCore6
+%ldconfig_scriptlets -n libQt63DExtras6
+%ldconfig_scriptlets -n libQt63DInput6
+%ldconfig_scriptlets -n libQt63DLogic6
+%ldconfig_scriptlets -n libQt63DQuick6
+%ldconfig_scriptlets -n libQt63DQuickAnimation6
+%ldconfig_scriptlets -n libQt63DQuickExtras6
+%ldconfig_scriptlets -n libQt63DQuickInput6
+%ldconfig_scriptlets -n libQt63DQuickRender6
+%ldconfig_scriptlets -n libQt63DQuickScene2D6
+%ldconfig_scriptlets -n libQt63DRender6
 
 %files devel
 %doc meta_package
