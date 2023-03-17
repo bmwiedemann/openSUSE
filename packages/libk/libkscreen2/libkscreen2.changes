@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 14 15:05:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * libdpms/wayland: Do not create dpms interfaces for placeholder QScreens (kde#466674)
+  * dpms/xcb: Make sure we are setting it as unsupported when it is (kde#466181)
+  * backends/wayland: Round passed scale
+
+-------------------------------------------------------------------
 Tue Feb 28 17:34:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.2
