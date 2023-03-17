@@ -1,7 +1,7 @@
 #
 # spec file for package ibmswtpm2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source:         https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm%{version
 Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
 Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
+# PATCH-FIX-OPENSUSE: not yet merged https://github.com/kgoldman/ibmswtpm2/pull/9
+Patch3:         ibmswtpm2-OpenSSL-3.1.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description
