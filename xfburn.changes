@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar  4 10:13:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.7.0
+  * Add MIME types to open blank and audio CDs
+  * Automatically update burner list as burners are plugged and unplugged
+  * Change default temporary directory to /var/tmp
+  * Improve text of write modes
+  * Replace some icons with symbolic versions that better respect light/dark mode
+  * Support delete key in audio compositions
+  * Fix adding progress dialog not appearing after dragging files
+  * Fix adding progress dialog cancel button not working
+  * Fix adding progress dialog not being modal
+  * Fix assertion failure when burner not present
+  * Fix composition term not being used consistently
+  * Fix crash when adding files to a data composition
+  * Fix dragged audio composition tracks being copied instead of moved
+  * Fix excessive minimum width of main window
+  * Fix icons not appearing on dialogs
+  * Fix intltool lock file bug in `make distcheck`
+  * Fix multiple selection being instantly deselected upon right click
+  * Fix multithreading issue when initializing an audio composition
+  * Fix out-of-date address in COPYING
+  * Fix project homepage URL
+  * Fix removed audio composition tracks not reducing total composition length
+  * Fix some compilation warnings
+  * Fix typo in burn failure dialog
+  * Fix XSLT processor warnings
+  * Add basic GitLab pipeline
+  * Add Markdown version of the README
+  * Add more translatable content to the AppStream/AppData
+  * Bump GLib minimum required to 2.38
+  * Modernize build system
+  * Resolve AppStream warnings from Debian
+  * Strip trailing whitespace like as in Debian's build process
+  * Update bug tracker links in readme
+  * Update information on how to build xfburn
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jan  7 01:29:57 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed URL

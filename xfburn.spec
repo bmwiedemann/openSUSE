@@ -1,7 +1,7 @@
 #
 # spec file for package xfburn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           xfburn
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Simple CD/DVD Burning Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://docs.xfce.org/apps/xfburn/start
-Source:         https://archive.xfce.org/src/apps/xfburn/0.6/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfburn/0.7/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(exo-2) >= 0.11.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.38
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
-BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.38
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libburn-1)
-BuildRequires:  pkgconfig(libisofs-1)
-BuildRequires:  pkgconfig(libxfce4ui-2)
+BuildRequires:  pkgconfig(libburn-1) >= 0.4.2
+BuildRequires:  pkgconfig(libisofs-1) >= 0.6.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -62,7 +62,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 
 %files
 %license COPYING
-%doc README AUTHORS NEWS TODO
+%doc README.md AUTHORS NEWS TODO
 %{_bindir}/xfburn
 %{_datadir}/applications/xfburn.desktop
 %{_mandir}/man1/xfburn.1%{?ext_man}
