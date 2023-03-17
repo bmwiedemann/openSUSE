@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-keys
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 4.8.0b2
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-keys
-Version:        4.8.0~b2
+Version:        4.8.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-keys/azure-keyvault-keys-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-keys/azure-keyvault-keys-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -63,10 +61,10 @@ Azure Key Vault helps solve the following problems:
    manage, and deploy public and private SSL/TLS certificates
 
 %prep
-%setup -q -n azure-keyvault-keys-%{realversion}
+%setup -q -n azure-keyvault-keys-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-keys-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-keys-%{version}
 %python_build
 
 %install
