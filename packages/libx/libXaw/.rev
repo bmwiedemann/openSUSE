@@ -115,4 +115,22 @@
 - supersedes U_NULL-pointer-dereference-in-XawAsciiSinkInitialize.patch</comment>
     <requestid>882194</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d376b94b2d7896d13e731eb1c515e5b9</srcmd5>
+    <version>1.0.15</version>
+    <time>1679068859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.15
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Stop memory leak in GetResourcePixmapPath()
+  * Stop memory leak in error paths in XawTextSinkConvertPropertyList()
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Replace calls to index() with strchr()
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Fix ctype(3) users.
+  * issue #6: fix typo in XawMax parameter in GetBlockBoundaries</comment>
+    <requestid>1072299</requestid>
+  </revision>
 </revisionlist>

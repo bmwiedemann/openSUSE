@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 16 09:09:26 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.15
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Stop memory leak in GetResourcePixmapPath()
+  * Stop memory leak in error paths in XawTextSinkConvertPropertyList()
+  * Remove "All rights reserved" from Oracle copyright notices
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Replace calls to index() with strchr()
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Fix ctype(3) users.
+  * issue #6: fix typo in XawMax parameter in GetBlockBoundaries
+
+-------------------------------------------------------------------
 Tue Mar 30 15:06:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.14
