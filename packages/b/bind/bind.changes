@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Mar 15 16:13:44 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.13
+  New Features:
+  * RPZ updates are now run on specialized “offload” threads to
+    reduce the amount of time they block query processing on the
+    main networking threads. This increases the responsiveness of
+    named when RPZ updates are being applied after an RPZ zone has
+    been successfully transferred.
+
+  Feature Changes:
+  * Catalog zone updates are now run on specialized “offload”
+    threads to reduce the amount of time they block query
+    processing on the main networking threads. This increases the
+    responsiveness of named when catalog zone updates are being
+    applied after a catalog zone has been successfully transferred.
+  * libuv support for receiving multiple UDP messages in a single
+    recvmmsg() system call has been tweaked several times between
+    libuv versions 1.35.0 and 1.40.0; the current recommended libuv
+    version is 1.40.0 or higher. New rules are now in effect for
+    running with a different version of libuv than the one used at
+    compilation time. These rules may trigger a fatal error at
+    startup:
+    - Building against or running with libuv versions 1.35.0 and
+      1.36.0 is now a fatal error.
+    - Running with libuv version higher than 1.34.2 is now a
+      fatal error when named is built against libuv version
+      1.34.2 or lower.
+    - Running with libuv version higher than 1.39.0 is now a
+      fatal error when named is built against libuv version
+      1.37.0, 1.38.0, 1.38.1, or 1.39.0.
+  * This prevents the use of libuv versions that may trigger an
+    assertion failure when receiving multiple UDP messages in a
+    single system call.
+
+  Bug Fixes:
+  * named could crash with an assertion failure when adding a new
+    zone into the configuration file for a name which was already
+    configured as a member zone for a catalog zone. This has been
+    fixed.
+  * When named starts up, it sends a query for the DNSSEC key for
+    each configured trust anchor to determine whether the key has
+    changed. In some unusual cases, the query might depend on a
+    zone for which the server is itself authoritative, and would
+    have failed if it were sent before the zone was fully loaded.
+    This has now been fixed by delaying the key queries until all
+    zones have finished loading.
+
+-------------------------------------------------------------------
 Thu Feb 16 14:36:14 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.12
