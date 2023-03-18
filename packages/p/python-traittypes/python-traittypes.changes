@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 18 12:24:41 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip testing xarray on Python 3.8
+
+-------------------------------------------------------------------
 Sat Jan  7 20:11:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add python-fix-nptypes.patch gh#jupyter-widgets/traittypes#32

@@ -42,7 +42,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.2.2}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 # /SECTION
 %python_subpackages
 
@@ -51,6 +51,7 @@ Custom trait types for scientific computing.
 
 %prep
 %autosetup -p1 -n traittypes-%{version}
+sed -i '1{/^#!/d}' traittypes/tests/test_validators.py
 
 %build
 %pyproject_wheel
@@ -60,7 +61,9 @@ Custom trait types for scientific computing.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest traittypes
+# no xarray for Python 3.8
+python38_ignore="--ignore traittypes/tests/test_traittypes.py"
+%pytest traittypes ${$python_ignore}
 
 %files %{python_files}
 %doc README.md

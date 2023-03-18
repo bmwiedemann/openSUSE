@@ -81,4 +81,12 @@
 - Use PEP517 build (forwarded request 1056814 from bnavigator)</comment>
     <requestid>1056815</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>2c13086856272f7243525b956c07cdfc</srcmd5>
+    <version>0.2.1</version>
+    <time>1679182331</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing xarray on Python 3.8</comment>
+    <requestid>1072838</requestid>
+  </revision>
 </revisionlist>
