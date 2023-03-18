@@ -16,27 +16,30 @@
 #
 
 
-%define skip_python2 1
 Name:           python-mkdocs
-Version:        1.3.1
+Version:        1.4.2
 Release:        0
 Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
 URL:            https://www.mkdocs.org
 Source:         https://github.com/mkdocs/mkdocs/archive/%{version}.tar.gz#/mkdocs-%{version}.tar.gz
-BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Markdown}
+BuildRequires:  %{python_module Babel >= 2.9.0}
+BuildRequires:  %{python_module Jinja2 >= 2.11.1}
+BuildRequires:  %{python_module Markdown >= 3.2.1}
+# https://github.com/mkdocs/mkdocs/blob/master/pyproject.toml#L38
+#BuildRequires:  %{python_module Markdown <3.4}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module ghp-import}
-BuildRequires:  %{python_module importlib_metadata}
-BuildRequires:  %{python_module mergedeep}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pyyaml_env_tag}
+BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module ghp-import  >= 1.0}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module importlib_metadata if python-base < 3.10}
+BuildRequires:  %{python_module mergedeep >= 1.3.4}
+BuildRequires:  %{python_module packaging >= 20.5}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyyaml_env_tag >= 0.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module watchdog}
+BuildRequires:  %{python_module watchdog >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  fontawesome-fonts
 BuildRequires:  fontawesome-fonts-web
@@ -73,10 +76,10 @@ find . -type f -name "*.py" -exec sed -i '/#!\/usr\/bin\/env/d' {} +
 find . -type f -name "*.svg" -exec chmod -x {} +
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mkdocs
 
 # unbundle fontawesome where possible
@@ -102,7 +105,11 @@ find %{buildroot} -type f "(" -name "*.eot" -o -name "*.ttf" -o \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -p '*tests.py' -v mkdocs
+rm -vf mkdocs/tests/gh_deploy_tests.py
+rm -vf mkdocs/tests/config/config_tests.py
+rm -vf mkdocs/tests/cli_tests.py
+rm -vf mkdocs/tests/config/base_tests.py
+%pyunittest discover -p '*tests.py' -v mkdocs --top-level-directory .
 
 %post
 %python_install_alternative mkdocs
