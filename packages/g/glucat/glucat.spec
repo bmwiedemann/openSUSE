@@ -1,5 +1,5 @@
 #
-# spec file for package glucat
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -29,14 +29,12 @@
 %define skip_python2 1
 %endif
 
-# Build failures when building doc for 15.4 and TW
-%if 0%{?suse_version} >= 1550 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
+# Build failures when building doc for 15.4
+%if (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
 %bcond_with pdfdoc
 %else
 %bcond_without pdfdoc
 %endif
-
-%define doctargets %{?with_pdfdoc:doc}%{!?with_doc:html}
 
 Name:           %{pname}%{?psuffix}
 Version:        0.12.0
@@ -48,12 +46,9 @@ URL:            http://glucat.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE glucat-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps from html footer to make build reproducible
 Patch0:         glucat-disable-doxygen-html-timestamp.patch
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  graphviz-gd
-BuildRequires:  graphviz-gnome
 BuildRequires:  libboost_headers-devel
 %if %{with python}
 BuildRequires:  %{python_module Cython}
@@ -62,6 +57,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %python_subpackages
 %else
+BuildRequires:  doxygen
+BuildRequires:  graphviz-gnome
 %if %{with pdfdoc}
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
@@ -73,6 +70,7 @@ BuildRequires:  tex(auxhook.sty)
 BuildRequires:  tex(bigintcalc.sty)
 BuildRequires:  tex(bitset.sty)
 BuildRequires:  tex(caption.sty)
+BuildRequires:  tex(changepage.sty)
 BuildRequires:  tex(collectbox.sty)
 BuildRequires:  tex(colortbl.sty)
 BuildRequires:  tex(courier.sty)
@@ -186,7 +184,7 @@ sed -i "s|-march=native||g" configure
 
 %make_build clean all
 # Build doc only for main flavor
-%make_build -C doc/ %{doctargets}
+%make_build -C doc/ html %{?with_pdfdoc:doc} || (cat doc/api/latex/*.log ; false)
 %endif
 
 %install
@@ -204,9 +202,6 @@ popd
 # Manually install doc files
 mkdir -p %{buildroot}%{_docdir}/%{pname}
 cp -pr doc/api/html %{buildroot}%{_docdir}/%{pname}/
-%if %{with pdfdoc}
-cp -pr doc/api/latex/*pdf %{buildroot}%{_docdir}/%{pname}/
-%endif
 %endif
 
 # REMOVE FILES PKGED USING %%doc ANYWAY OR OTHERWISE NOT NEEDED
@@ -236,7 +231,7 @@ popd
 %dir %{_docdir}/%{pname}
 %doc %{_docdir}/%{pname}/html/
 %if %{with pdfdoc}
-%doc doc/api/latex/*.pdf
+%doc doc/api/GluCat*.pdf
 %endif
 
 %else

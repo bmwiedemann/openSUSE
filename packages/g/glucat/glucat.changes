@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 02:23:31 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add changepage.sty dependency, reenable PDF generation on TW
+- Remove doxygen/graphviz-gnome build dependency for python
+  build flavor, drop unused graphviz-gd.
+- Fix some syntax errors in spec file
+
+-------------------------------------------------------------------
 Sun Mar 12 04:55:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable building PDF documentation for openSUSE >= 1550 and 15.4
