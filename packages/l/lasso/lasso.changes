@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:52:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 2.8.2:
+  * Compatibility with EVP API of openssl 1.x
+- Changes from 2.8.1:
+  * Major overhaul of OpenSSL API usage by using only the EVP API
+    as the low level API (RSA*, HMAC*) is deprecated.
+  * Fix wrong parsing of Count attribute on saml:ProxyRestriction.
+  * Perl: pass LDFLAGS to Makefile.PL
+  * Replace use of deprecated xmlSecBase64Decode by
+    xmlSecBase64Decode_ex.
+  * Fix overwrite of profile.signature_status in
+    lasso_saml20_login_process_response_status_and_assertion.
+  * Fix lot of GCC warnings
+
+-------------------------------------------------------------------
 Wed Mar 16 10:05:43 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Updaet to 2.8.0:

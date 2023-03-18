@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -28,13 +28,13 @@
   %global configure_args %{configure_args} --enable-wsf --with-sasl2=%{_prefix}/sasl2
 %endif
 Name:           lasso
-Version:        2.8.0
+Version:        2.8.2
 Release:        0
 Summary:        Liberty Alliance Single Sign On
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lasso.entrouvert.org/
-Source:         http://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
+Source:         https://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
 # Backports from upstream (from Fedora)
 BuildRequires:  autoconf
 BuildRequires:  automake
