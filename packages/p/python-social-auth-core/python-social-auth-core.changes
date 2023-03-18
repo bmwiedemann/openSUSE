@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:58:44 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.4.0 
+  - Backend for OpenInfra OpenID
+  - Facebook Limited Login backend
+  - Add support for Python 3.11
+  - Removed OpenStackDevOpenId backend
+  - Updated `user_data` method in `StripeOAuth2` to return `email` 
+    in `get_user_details`
+  - Removes fixed version of `lxml`
+  - Fixed OIDC crash on groups
+  - Fixed Qiita users identification
+  - Dropped support for TLSv1
+  - Coding style improvements
+
+-------------------------------------------------------------------
 Mon Jun 13 10:44:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.3.0
