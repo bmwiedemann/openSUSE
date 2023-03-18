@@ -62,4 +62,27 @@
     <comment></comment>
     <requestid>946784</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b68a316fb36f07ebeff2d1f06f9ca56</srcmd5>
+    <version>2.2.2</version>
+    <time>1679182350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2:
+  - Reverting gcc -BSymbolic due to symbol collisions
+  - Add pack_command to support writing via hiredis-py
+  - Fixing broken windows builds on python &lt; 3.8
+  - Fix url in Issue tracker
+  - Restores publishing of source distribution
+  - Supporting hiredis 1.1.0
+  - Modernizing: Restoring CI, Moving to pytest
+  - Adding LICENSE to Repository
+  - Python 3.11 trove, and links back to the project
+  - Integrating release drafter
+  - Implement pack_command that serializes redis-py command to
+    the RESP bytes object.
+- Add 159-sdsalloc-to-alloc.patch (gh#redis/hiredis-py#158),
+  which replaces use of sdsalloc with plain alloc.
+</comment>
+    <requestid>1072863</requestid>
+  </revision>
 </revisionlist>

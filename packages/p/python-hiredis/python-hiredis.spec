@@ -1,7 +1,7 @@
 #
 # spec file for package python-hiredis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hiredis
-Version:        2.0.0
+Version:        2.2.2
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
@@ -27,9 +26,13 @@ Source:         https://files.pythonhosted.org/packages/source/h/hiredis/hiredis
 Patch0:         0001-Use-system-libhiredis.patch
 # PATCH-FIX-UPSTREAM drop-vendor-sources.patch gh#redis/hiredis-py#90 mcepl@suse.com
 # Allow to use platform hiredis libs on build
-Patch2:         drop-vendor-sources.patch
+Patch1:         drop-vendor-sources.patch
+# PATCH-FIX-UPSTREAM 159-sdsalloc-to-alloc.patch gh#redis/hiredis-py#158 mcepl@suse.com
+# Don't use sdsalloc, we actually don't need it
+Patch2:         159-sdsalloc-to-alloc.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hiredis-devel >= 1.0.0
 BuildRequires:  python-rpm-macros
@@ -39,23 +42,23 @@ BuildRequires:  python-rpm-macros
 Python wrapper for hiredis C connector.
 
 %prep
-%setup -q -n hiredis-%{version}
-%autopatch -p1
+%autosetup -p1 -n hiredis-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%check
-%python_exec setup.py build_ext --inplace
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-%python_exec test.py
+# %%check
+# export PYTHONPATH=%%{buildroot}%%{$python_sitearch}
+# %%python_exec test.py
 
 %files %{python_files}
-%license COPYING
-%{python_sitearch}/*
+%license LICENSE
+%doc README.md
+%{python_sitearch}/hiredis
+%{python_sitearch}/hiredis-%{version}*-info
 
 %changelog

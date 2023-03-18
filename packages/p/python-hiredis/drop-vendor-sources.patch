@@ -1,16 +1,16 @@
 ---
 setup.py |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/setup.py	2022-01-15 16:32:39.379711369 +0100
-+++ b/setup.py	2022-01-15 16:33:03.091710944 +0100
-@@ -11,8 +11,7 @@ def version():
-   return module.__version__
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,7 @@ def version():
  
- ext = Extension("hiredis.hiredis",
--  sources=sorted(glob.glob("src/*.c") +
--                 ["vendor/hiredis/%s.c" % src for src in ("alloc", "read", "sds")]),
-+  sources=sorted(glob.glob("src/*.c")),
-   extra_link_args=["-lhiredis"])
+ def get_sources():
+     hiredis_sources = ("alloc", "async", "hiredis", "net", "read", "sds", "sockcompat")
+-    return sorted(glob.glob("src/*.c") + ["vendor/hiredis/%s.c" % src for src in hiredis_sources])
++    return sorted(glob.glob("src/*.c"))
  
- setup(
+ 
+ def get_linker_args():

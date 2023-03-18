@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 18 20:17:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.2.2:
+  - Reverting gcc -BSymbolic due to symbol collisions
+  - Add pack_command to support writing via hiredis-py
+  - Fixing broken windows builds on python < 3.8
+  - Fix url in Issue tracker
+  - Restores publishing of source distribution
+  - Supporting hiredis 1.1.0
+  - Modernizing: Restoring CI, Moving to pytest
+  - Adding LICENSE to Repository
+  - Python 3.11 trove, and links back to the project
+  - Integrating release drafter
+  - Implement pack_command that serializes redis-py command to
+    the RESP bytes object.
+
+- Add 159-sdsalloc-to-alloc.patch (gh#redis/hiredis-py#158),
+  which replaces use of sdsalloc with plain alloc.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:37:17 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 2.0.0

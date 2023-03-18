@@ -9,17 +9,28 @@ Forwarded: no
 Last-Updated: 2022-01-15
 Patch-Name: 0001-Use-system-libhiredis.patch
 ---
- setup.py  2022-01-15 16:17:07.715728053 +0100 |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ setup.py |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
---- a/setup.py  2021-03-28 17:11:23.000000000 +0200
-+++ b/setup.py  2022-01-15 16:17:07.715728053 +0100
-@@ -13,7 +13,7 @@ def version():
- ext = Extension("hiredis.hiredis",
-   sources=sorted(glob.glob("src/*.c") +
-                  ["vendor/hiredis/%s.c" % src for src in ("alloc", "read", "sds")]),
--  include_dirs=["vendor"])
-+  extra_link_args=["-lhiredis"])
-
+--- a/setup.py
++++ b/setup.py
+@@ -26,8 +26,7 @@ def get_linker_args():
+     if 'win32' in sys.platform or 'darwin' in sys.platform:
+         return []
+     else:
+-        return ["-Wl,-Bsymbolic", ]
+-
++        return ["-Wl,-Bsymbolic", "-lhiredis"]
+ 
+ def get_compiler_args():
+     if 'win32' in sys.platform:
+@@ -47,8 +46,7 @@ ext = Extension("hiredis.hiredis",
+                 sources=get_sources(),
+                 extra_compile_args=get_compiler_args(),
+                 extra_link_args=get_linker_args(),
+-                libraries=get_libraries(),
+-                include_dirs=["vendor"])
++                libraries=get_libraries())
+ 
  setup(
-   name="hiredis",
+     name="hiredis",
