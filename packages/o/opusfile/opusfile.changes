@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 20:17:36 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add opusfile-CVE-2022-47021.patch: fix a NULL pointer
+  dereference (boo#1207381 CVE-2022-47021).
+
+-------------------------------------------------------------------
 Fri Sep 11 15:19:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.12:

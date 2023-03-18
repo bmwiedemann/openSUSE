@@ -1,7 +1,7 @@
 #
 # spec file for package opusfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Bjørn Lie (zaitor@opensuse.org).
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://www.opus-codec.org/
 Source:         https://downloads.xiph.org/releases/opus/opusfile-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM opusfile-CVE-2022-47021.patch boo#1207381 mgorse@suse.com -- fix a NULL pointer dereference.
+Patch0:         opusfile-CVE-2022-47021.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ogg) >= 1.3
 BuildRequires:  pkgconfig(openssl)
@@ -67,7 +69,7 @@ Requires:       pkgconfig
 Files for development with %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
