@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 17 17:25:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.22:
+  * Implement notify-focus-out signal
+  * Change GtkIMContext.reset to always commit preedit
+  * preedit when focus out need to happen before has_focus set
+
+-------------------------------------------------------------------
 Thu Nov 24 14:18:26 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.21
