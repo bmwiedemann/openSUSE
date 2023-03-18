@@ -1,7 +1,7 @@
 #
 # spec file for package DSView
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           DSView
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        GUI for DreamSourceLab USB-based instruments
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.dreamsourcelab.com
 Source0:        https://github.com/DreamSourceLab/DSView/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
@@ -39,14 +38,9 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libftdi)
-BuildRequires:  pkgconfig(libserialport)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(python3)
 Obsoletes:      libsigrok4DSL1
 Obsoletes:      libsigrokdecode4DSL4
@@ -55,7 +49,7 @@ Obsoletes:      libsigrokdecode4DSL4
 GUI for DreamSourceLab USB-based instruments
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake

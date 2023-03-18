@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:28:32 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 1.2.2:
+  common:
+  * Add shortcut key recognition of ctrl/shift/alt
+  * Fix multiple clicks crash during file saving
+  * Fix screenshot crash under macOS
+  * Improve accuracy of CSV file
+  for logic analyzer:
+  * Support new hardware and firmware versions
+  * Clean up 0: UART protocol outputs statement
+  * Add CAN decoder support for CANFD
+  * Fix wait error for some decoders
+  * Fix QI decoder bugs
+  * Fix SPDIF decoder error for incomplete frames
+  * Add message type support for USB PD decoder
+  for oscilloscope:
+  * Fix measure error of DSL files with different channel number
+- Remove various unnecessary BuildRequires
+
+-------------------------------------------------------------------
 Fri Nov 25 21:32:20 UTC 2022 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Update to version 1.2.1
@@ -15,7 +36,7 @@ Wed Jan 12 10:56:53 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 -------------------------------------------------------------------
 Sat Feb 20 21:20:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.12:
+- update to 1.1.2:
   * fix issue of saving/loading file with special characters
   * fix issue #226, double-click open dsl file on Windows
   * improve range settings in decoders
