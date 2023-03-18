@@ -3,8 +3,8 @@
     <param name="url">https://github.com/hashicorp/terraform</param>
     <param name="scm">git</param>
     <param name="filename">terraform</param>
-    <param name="versionformat">1.4.1</param>
-    <param name="revision">v1.4.1</param>
+    <param name="versionformat">1.4.2</param>
+    <param name="revision">v1.4.2</param>
     <param name="exclude">.git</param>
   </service>
   <service name="tar" mode="buildtime"/>

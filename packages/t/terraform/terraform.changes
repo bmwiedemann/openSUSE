@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 16 13:57:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.4.2:
+  * Fix bug in which certain uses of `setproduct` caused Terraform
+    to crash
+    ([#32860](https://github.com/hashicorp/terraform/issues/32860))
+  * Fix bug in which some provider plans were not being calculated
+    correctly, leading to an "invalid plan" error
+    ([#32860](https://github.com/hashicorp/terraform/issues/32860))
+
+-------------------------------------------------------------------
 Wed Mar 15 15:09:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.4.1:
