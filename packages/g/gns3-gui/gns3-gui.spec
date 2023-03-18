@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.37
+Version:        2.2.38
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later

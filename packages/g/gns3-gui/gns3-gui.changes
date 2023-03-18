@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:41:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.38:
+  * Add long description content type in setup.py
+  * Automatically add new issues to GNS3 project
+
+-------------------------------------------------------------------
 Wed Jan 25 21:10:02 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Bugfix release
