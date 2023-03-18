@@ -17,7 +17,7 @@
 
 
 Name:           FAudio
-Version:        23.01
+Version:        23.03
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib

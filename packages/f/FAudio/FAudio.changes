@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 17 17:13:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.03:
+  * CMake: Add feature macros for usleep for tests
+  * GDK:
+    - GDK now builds dynamic libraries, rather than static
+    - Look for "SDL" rather than "SDL2", to match the
+      upstream Git repository name
+
+-------------------------------------------------------------------
 Tue Jan  3 08:34:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.01:
