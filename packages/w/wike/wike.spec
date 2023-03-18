@@ -1,7 +1,7 @@
 #
 # spec file for package wike
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           wike
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A Wikipedia reader for the GNOME Desktop
 License:        GPL-3.0-or-later
