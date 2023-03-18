@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 17 08:59:44 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix not finding zconf.h and libz.dll.a with autotools submodule build
+- Fix warning that package obsoletes itself
+
+-------------------------------------------------------------------
+Tue Mar 14 22:49:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.13:
+  * Fix configure issue that discarded provided CC definition
+  * Correct incorrect inputs provided to the CRC functions
+  * Repair prototypes and exporting of new CRC functions
+  * Fix inflateBack to detect invalid input with distances too far
+  * Have infback() deliver all of the available output up to any error
+  * Fix a bug when getting a gzip header extra field with inflate()
+  * Fix bug in block type selection when Z_FIXED used
+  * Tighten deflateBound bounds
+  * Remove deleted assembler code references
+  * Various portability and appearance improvements
+
+-------------------------------------------------------------------
 Thu Mar  2 17:04:20 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix cmake macro usage (boo#1205135)

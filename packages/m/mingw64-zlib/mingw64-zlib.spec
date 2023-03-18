@@ -17,13 +17,13 @@
 
 
 Name:           mingw64-zlib
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Zlib compression library
 License:        Zlib
 Group:          Productivity/Archiving/Compression
 URL:            https://www.zlib.net/
-Source:         http://www.zlib.net/zlib-%{version}.tar.gz
+Source:         https://www.zlib.net/zlib-%{version}.tar.gz
 Source1000:     %{name}-rpmlintrc
 Patch0:         zlib-1.2.5-nostrip.patch
 Patch1:         zlib-1.2.5-tml.patch
@@ -88,8 +88,8 @@ This subpackage holds the development headers for the library.
 %package -n mingw64-libminizip1
 Summary:        Zip archive library
 Group:          System/Libraries
-Obsoletes:      mingw64-minizip
-Provides:       mingw64-minizip
+Obsoletes:      mingw64-minizip < %{version}-%{release}
+Provides:       mingw64-minizip = %{version}-%{release}
 
 %description -n  mingw64-libminizip1
 Minizip is a library for manipulation with files from .zip archives.
@@ -115,10 +115,10 @@ developing applications which use minizip.
 cd contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw64_cache}
-MINGW64_CFLAGS="%{_mingw64_cflags} -I%{_builddir}/%{name}-%{version}-%{release}" \
-MINGW64_LDFLAGS="%{_mingw64_ldflags} -L%{_builddir}/%{name}-%{version}-%{release}" \
 %_mingw64_configure
 
+cp ../../zconf.h.included zconf.h
+ln -s build/libz.dll.a ../..
 %_mingw64_make CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
