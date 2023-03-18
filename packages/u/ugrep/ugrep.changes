@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 18 08:31:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.10.1:
+  * Fix a performace issue with specific regex patterns when used
+    with case-insensitive pattern matching
+
+-------------------------------------------------------------------
 Wed Mar  1 19:42:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.10.0:

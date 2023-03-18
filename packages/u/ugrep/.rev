@@ -298,4 +298,12 @@
     <comment>ugrep 3.10.0</comment>
     <requestid>1068539</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>173ddc369c6cd5796ed3aef3a1d51b45</srcmd5>
+    <version>3.10.1</version>
+    <time>1679182322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072814</requestid>
+  </revision>
 </revisionlist>
