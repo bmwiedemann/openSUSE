@@ -18,7 +18,7 @@
 
 
 Name:           forkstat
-Version:        0.03.00
+Version:        0.03.01
 Release:        0
 Summary:        Process fork/exec/exit monitoring tool
 License:        GPL-2.0-or-later

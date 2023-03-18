@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 17 17:02:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.03.01:
+  * Makefile: bump version
+  * debian/control: update standards version to 4.6.2
+  * Manual: update copyright
+  * forkstat: add -p process group id filtering option
+  * forkstat: handle empty arg in argv[], replace with ' '
+  * forkstat: make cmdline buffer 64K, allocate on heap
+
+-------------------------------------------------------------------
 Sun Jan 22 16:33:18 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.03.00
