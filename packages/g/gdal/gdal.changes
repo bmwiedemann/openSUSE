@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:37:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.3:
+  * bugfixes
+  * see https://github.com/OSGeo/gdal/blob/v3.6.3/NEWS.md
+
+-------------------------------------------------------------------
 Sun Jan  8 20:46:55 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 3.6.2 bugfix release
