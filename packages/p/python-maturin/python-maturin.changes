@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 17 22:53:30 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.15:
+  * Add sdist and sccache support to generate-ci command
+- Changes in v0.14.14:
+  * Add support for Emscripten in generate-ci command
+    gh#PyO3/maturin#1484
+  * Use default ext_suffix for Emscripten target if not provided in
+    PYO3_CONFIG_FILE
+    gh#PyO3/maturin#1491
+  * Deprecate package.metadata.maturin.data in favor of
+    tool.maturin.data in pyproject.toml
+    gh#PyO3/maturin#1492
+
+-------------------------------------------------------------------
+Tue Feb 21 09:28:41 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.13:
+  * maturin develop now looks for a virtualenv .venv in the current
+    or any parent directory if no virtual environment is active
+    gh#PyO3/maturin#1462
+  * Add a new generate-ci command to generate CI configuration
+    gh#PyO3/maturin#1456
+  * Deprecate --univeral2 in favor of universal2-apple-darwin
+    target
+    gh#PyO3/maturin#1457
+  * Raise an error when Cargo.toml contains removed python package
+    metadata
+    gh#PyO3/maturin#1471
+  * Use extension_name instead of module_name for CFFI extensions
+    in develop mode
+    gh#PyO3/maturin#1476
+- Changes in v0.14.12:
+  * Keep dev-dependencies in sdist when there are no path
+    dependencies
+    gh#PyO3/maturin#1441
+- Changes in v0.14.11:
+  * Use the extension_name in develop builds
+    gh#PyO3/maturin#1416
+  * Upgrade pyo3 to 0.18.0
+    gh#PyO3/maturin#1417
+  * Better error message when normalize path failed
+    gh#PyO3/maturin#1432
+  * Don't package dev-only path dependencies in sdist
+    gh#PyO3/maturin#1435
+  * Add a user-friendly panic hook
+    gh#PyO3/maturin#1436
+
+-------------------------------------------------------------------
 Sat Jan 14 12:23:46 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.10
