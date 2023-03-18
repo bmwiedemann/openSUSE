@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 17 21:21:21 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.4.0
+  * fix uninitialized variable in tpm2_try_policy()
+  * fix importable key creation with Intel TSS
+  * restructure directory layout to prepare for OpenSSL-3 provider
+  * Fix memory leak of key authorization (3.3.2)
+
+-------------------------------------------------------------------
 Tue Jan 31 21:17:40 UTC 2023 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.3.1

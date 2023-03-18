@@ -18,7 +18,7 @@
 
 
 Name:           openssl_tpm2_engine
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        OpenSSL TPM 2.0 interface engine plugin
 License:        LGPL-2.1-only
@@ -31,8 +31,9 @@ BuildRequires:  fakeroot
 BuildRequires:  help2man
 BuildRequires:  ibmswtpm2
 BuildRequires:  ibmtss-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-BuildRequires:  openssl-devel
+BuildRequires:  openssl
 
 %description
 This package contains a plugin a for OpenSSL which connects it with the
@@ -48,7 +49,7 @@ autoreconf -fiv
 %make_build
 
 %check
-make check || { cat tests/test-suite.log; exit 1; }
+make check || { cat tests/engine/test-suite.log; exit 1; }
 
 %install
 %make_install

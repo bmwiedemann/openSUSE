@@ -86,4 +86,12 @@
   * Fix name hash for importable keys and data (forwarded request 1062344 from jejb1)</comment>
     <requestid>1062393</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c1b5bda848d83d186dcf564888ac0ff4</srcmd5>
+    <version>3.4.0</version>
+    <time>1679182319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072807</requestid>
+  </revision>
 </revisionlist>
