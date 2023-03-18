@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:40:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.4:
+  * LIB-69: Revert "Use discid_feature enum in discid_read_sparse".
+    Fixes compiler errors with C++.
+  * LIB-66: fix for Debian kFreeBSD
+  * Haiku platform support (TOC only)
+  * Use discid_feature enum in discid_read_sparse
+  * Fixed building with CMake on macOS
+  * LIB-68: provide macOS universal2 binaries with support for both
+            x86_64 and arm64
+  * LIB-67: Source tarball with updated autotools configuration
+  * CMake: Use GNUInstallDirs to determine install location
+  * CMake 2.8.12 is now the minimum required version
+
+-------------------------------------------------------------------
 Fri Jul  7 10:34:07 UTC 2017 - tchvatal@suse.com
 
 - Update to 0.6.2:

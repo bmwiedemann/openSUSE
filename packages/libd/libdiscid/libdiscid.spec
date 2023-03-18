@@ -1,7 +1,7 @@
 #
 # spec file for package libdiscid
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libdiscid0
 Name:           libdiscid
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 Summary:        Library for gathering DiscIDs and ISRCs from audio CDs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://musicbrainz.org/doc/libdiscid
+URL:            https://musicbrainz.org/doc/libdiscid
 Source:         http://ftp.musicbrainz.org/pub/musicbrainz/libdiscid/%{name}-%{version}.tar.gz
 Source1000:     baselibs.conf
 # PATCH-FEATURE-OPENSUSE libdiscid-no-crypto.patch
@@ -32,7 +32,6 @@ BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmusicbrainz5)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libdiscid is a C library for creating MusicBrainz and freedb DiscIDs
@@ -76,24 +75,22 @@ autoreconf -fiv
 %configure \
     --disable-silent-rules \
     --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libdiscid.so.0*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/discid
 %{_includedir}/discid/*.h
 %{_libdir}/libdiscid.so

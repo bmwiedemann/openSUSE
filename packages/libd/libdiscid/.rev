@@ -261,4 +261,12 @@ I finally managed to use osc, rather than changing everything &quot;online&quot;
 - Refresh patch libdiscid-no-crypto.patch (forwarded request 508746 from scarabeus_iv)</comment>
     <requestid>508747</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>db86e7470cd32e5bdb790116f22ed5af</srcmd5>
+    <version>0.6.4</version>
+    <time>1679182229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072682</requestid>
+  </revision>
 </revisionlist>
