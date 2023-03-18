@@ -1983,4 +1983,41 @@
     <comment></comment>
     <requestid>1064254</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>50519659c5689abb603331a265eb84f3</srcmd5>
+    <version>0.35.1+git.20230315.e1727553</version>
+    <time>1679182310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35.1+git.20230315.e1727553:
+  * test: update format refs to ffmpeg 6
+  * github/workflows: fix failure conditions
+  * common/av_common: clean up mp_lavc_set_extradata
+  * sub/sd_lavc: properly fill avctx with codecpar values at init
+  * sub/lavc_conv: properly fill avctx with codecpar values at init
+  * common/av_common: constify mp_codec_params related getters
+  * demux_mkv: support ARIB captions
+  * player/command: fix mem leak in user-data property; closes #11436
+  * vo_gpu_next: compatibility with libplacebo v6.265
+  * wayland: make wayland-edge-pixels-pointer default to 16
+  * wayland: use correct x/y coordinates for the cursor
+  * screenshot: fix segfault when taking a screenshot without video
+  * wayland: fix client side resize
+  * vo_gpu_next: compatibility with PL_API_VER &gt;= 254
+  * vo_gpu_next: use inverse mapping functions to tag screenshots
+  * video/out/placebo/utils: add mappings from pl enums to mpv enums
+  * video: add missing libplacebo colorspace enums
+  * mp_image: assert if src and dst are different in copy_attributes
+  * mp_image: copy side data in mp_image_copy_attributes
+  * ao_pipewire: use realtime scheduling for data thread
+  * loadfile: strongly prefer that all streams are from the same program
+  * command: expose hls-bitrate and program-id as track-list subproperties
+  * loadfile: report hls_bitrate and program_id in struct track
+  * demux: propagate hls_bitrate and program_id in generated caption tracks
+  * demux_lavf: report program_id
+  * ytdl_hook: only log error when no fallback url available
+  * ytdl_hook: init fragment requires other fragments
+  * vo: fix race condition with redraw requests
+  * ci: separate meson tests and reorganize build steps</comment>
+    <requestid>1072771</requestid>
+  </revision>
 </revisionlist>
