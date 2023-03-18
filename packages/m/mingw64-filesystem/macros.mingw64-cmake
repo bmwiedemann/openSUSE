@@ -7,9 +7,10 @@
 
 %_mingw64_cmake %{_mingw64_env} ; \
     mkdir -p %__builddir \
-    cd %__builddir \
-    %__cmake $OLDPWD/%__sourcedir \\\
+    %__cmake \\\
          %__cmake_generator \\\
+        -S %__sourcedir \\\
+        -B %__builddir \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
         -DCMAKE_VERBOSE_MAKEFILE=ON \\\
         -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
@@ -35,13 +36,11 @@
    echo "Deprecated %%__mingw64_cmake macro used, please use %%_mingw64_cmake" \
    %{_mingw64_cmake}
 
-%_mingw64_cmake_build %cmake_build
+%_mingw64_cmake_build %cmake_build -C %__builddir
 
 %_mingw64_cmake_install %{_mingw64_env}; \
     %cmake_install
 
 %_mingw64_ctest(:-:) \
-    cd %__builddir \
-    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** \
-    cd $OLDPWD
+    %__ctest --test-dir %__builddir --output-on-failure --force-new-ctest-process %{?_smp_mflags} %**
  
