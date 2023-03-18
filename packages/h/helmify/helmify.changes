@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 17 18:56:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.31:
+  * #30 multiline configmap values
+  * replace codeclimate with golang-ci lint
+  * add golang-ci lint
+  * do dry-run on CI
+  * #90 upgrade dependencies
+
+-------------------------------------------------------------------
 Thu Mar 16 12:04:36 UTC 2023 - kastl@b1-systems.de
 
 - remove tarball and use obscpio
