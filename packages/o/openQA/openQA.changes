@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 18 02:10:26 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1679074680.4609521:
+  * Remove unused variable in `_sort_dep`
+  * Improve test for `_SKIP_CHAINED_DEPS`
+  * Make t_created unambiguous in SQL
+
+-------------------------------------------------------------------
 Wed Mar 15 18:10:17 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1678883699.d3ce35d:
