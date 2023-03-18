@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 17 18:24:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.6.0:
+  - Added read-only mode to SQLite3 and two new methods to MySQL
+    fetch.
+  - This release also added the library opening functions to
+    luasql.h in order to ease the initialization process in C
+    applications.
+  - Added seek method to MySQL driver and bug-fix on ODBC driver
+    number retrieval.
+- Clean up luasql-fix-configuration.patch (now on
+  gh#lunarmodules/luasql!152).
+
+-------------------------------------------------------------------
 Thu Mar 16 18:18:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.

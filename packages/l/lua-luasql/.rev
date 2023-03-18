@@ -43,4 +43,22 @@
 </comment>
     <requestid>1072462</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a9c687ddddf1c704889ab03d7bfaaba9</srcmd5>
+    <version>2.6.0</version>
+    <time>1679182265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  - Added read-only mode to SQLite3 and two new methods to MySQL
+    fetch.
+  - This release also added the library opening functions to
+    luasql.h in order to ease the initialization process in C
+    applications.
+  - Added seek method to MySQL driver and bug-fix on ODBC driver
+    number retrieval.
+- Clean up luasql-fix-configuration.patch (now on
+  gh#lunarmodules/luasql!152).
+</comment>
+    <requestid>1072753</requestid>
+  </revision>
 </revisionlist>

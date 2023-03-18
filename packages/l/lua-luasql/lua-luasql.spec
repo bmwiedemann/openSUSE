@@ -32,20 +32,20 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Simple interface from Lua to a DBMS
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/luasql
-Source0:        https://github.com/lunarmodules/luasql/archive/v%{version}/%{mod_name}-%{version}.tar.gz
-#Source0 via https://codeload.github.com/keplerproject/luasql/tar.gz/v2.3.0
-# PATCH-FIX-OPENSUSE luasql-fix-configuration.patch malcolmlewis@opensuse.org -- Clean up building and add rpm optflags.
+Source0:        https://github.com/lunarmodules/luasql/archive/refs/tags/%{version}/%{mod_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM luasql-fix-configuration.patch gh#lunarmodules/luasql!152 mcepl@suse.com
+# Clean up building and add rpm optflags.
 Patch0:         luasql-fix-configuration.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libiodbc-devel
 BuildRequires:  libmysqlclient-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconf
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
 Requires:       %{flavor}
@@ -58,8 +58,7 @@ A simple interface from Lua to a DBMS. It enables a Lua program to:
  - Retrieve results in a row-by-row cursor fashion.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
 export OPTFLAGS="%{optflags}"
