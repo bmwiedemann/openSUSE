@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 17 08:59:44 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix not finding zconf.h and libz.dll.a with autotools submodule build
+- Use cmake provided macros
+- Fix warning that package obsoletes itself
+
+-------------------------------------------------------------------
 Mon Jan  2 09:14:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.13:

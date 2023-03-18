@@ -88,8 +88,8 @@ This subpackage holds the development headers for the library.
 %package -n mingw32-libminizip1
 Summary:        Zip archive library
 Group:          System/Libraries
-Obsoletes:      mingw32-minizip
-Provides:       mingw32-minizip
+Obsoletes:      mingw32-minizip < %{version}-%{release}
+Provides:       mingw32-minizip = %{version}-%{release}
 
 %description -n  mingw32-libminizip1
 Minizip is a library for manipulation with files from .zip archives.
@@ -110,19 +110,19 @@ developing applications which use minizip.
 
 %build
 %_mingw32_cmake . -DINSTALL_PKGCONFIG_DIR=%{_mingw32_libdir}/pkgconfig
-%{_mingw32_make} CFLAGS=-shared LDFLAGS=-no-undefined
+%_mingw32_cmake_build CFLAGS=-shared LDFLAGS=-no-undefined
 
 cd contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
-MINGW32_CFLAGS="%{_mingw32_cflags} -I%{_builddir}/%{name}-%{version}-%{release}" \
-MINGW32_LDFLAGS="%{_mingw32_ldflags} -L%{_builddir}/%{name}-%{version}-%{release}" \
 %{_mingw32_configure}
 
+cp ../../zconf.h.included zconf.h
+ln -s build/libz.dll.a ../..
 %{_mingw32_make} CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
-%make_install
+%_mingw32_cmake_install
 %make_install -C contrib/minizip
 # for compatibility with older packages
 ln -sf libz.dll %{buildroot}/%{_mingw32_bindir}/zlib1.dll
