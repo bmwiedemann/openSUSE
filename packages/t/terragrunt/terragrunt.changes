@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:32:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.0:
+  * #2488 Terraform dependencies upgrade (#2489)
+  * Add automatic lock release (#2487)
+  * Add comment for sourceChangeLocks variable (#2476)
+
+-------------------------------------------------------------------
 Wed Mar 08 14:37:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.44.5:
