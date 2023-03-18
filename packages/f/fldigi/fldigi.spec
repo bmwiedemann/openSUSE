@@ -1,7 +1,7 @@
 #
 # spec file for package fldigi
 #
-# Copyright (c) 2020-2023 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fldigi
-Version:        4.1.25
+Version:        4.1.26
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 Recommends:     %{name}-lang
 
 %description
@@ -56,7 +56,7 @@ WEFAX, WWV calibration, Frequency Analysis, Tune
 Summary:        Transmitting and receiving frames of ARQ data (hamradio)
 Group:          Productivity/Hamradio/Other
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 
 %description -n flarq
 Fast Light Automatic Repeat reQuest is a file transfer application that is based
