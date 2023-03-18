@@ -138,4 +138,22 @@
 </comment>
     <requestid>1067957</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f4a9371438347e42605fdbd6ed1269d8</srcmd5>
+    <version>2.6.0</version>
+    <time>1679182268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0
+  * _pix_to_image now works with binary images
+    gh#sirfz/tesserocr#274
+  * SetImage with alpha channels support
+    gh#sirfz/tesserocr#280
+  * Leptonica 1.83.0 support
+    gh#sirfz/tesserocr#306
+  * Pointsize should be returned even if fontname doesn't exist
+    gh#sirfz/tesserocr#308
+  * Added Python 3.10, 3.11 setup classifiers
+- Drop 1441bec703cf68161acce5e85907ddd71c47fdc3.patch</comment>
+    <requestid>1072758</requestid>
+  </revision>
 </revisionlist>

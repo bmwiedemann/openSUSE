@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 17 22:09:28 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.6.0
+  * _pix_to_image now works with binary images
+    gh#sirfz/tesserocr#274
+  * SetImage with alpha channels support
+    gh#sirfz/tesserocr#280
+  * Leptonica 1.83.0 support
+    gh#sirfz/tesserocr#306
+  * Pointsize should be returned even if fontname doesn't exist
+    gh#sirfz/tesserocr#308
+  * Added Python 3.10, 3.11 setup classifiers
+- Drop 1441bec703cf68161acce5e85907ddd71c47fdc3.patch
+
+-------------------------------------------------------------------
 Mon Feb 27 10:22:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable current broken tests, test_LSTM_choices, test_detect_os and

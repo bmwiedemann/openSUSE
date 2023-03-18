@@ -17,14 +17,13 @@
 
 
 Name:           python-tesserocr
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
-Patch1:         1441bec703cf68161acce5e85907ddd71c47fdc3.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
@@ -52,7 +51,6 @@ GIL while processing an image in tesseract.
 
 %prep
 %setup -q -n tesserocr-%{version}
-%patch1 -p1
 
 %build
 %python_build
