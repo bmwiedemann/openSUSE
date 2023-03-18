@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 10 18:27:09 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Enable livepatching support on x86_64.
+
+-------------------------------------------------------------------
 Tue Jan 24 08:38:04 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Use rpm macros for pam dist conf dir (/usr/etc/security)
