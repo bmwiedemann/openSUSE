@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 18 09:47:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.11
+  * fixed issue #755 - FAIL/FAIL_CHECK weren't properly reported with the junit reporter
+  * fixed #751 which was caused by commit db758e0 when turning the values from an enum to an integer implicitly
+  * removed the generated html docs 
+
+- Update to 2.4.10
+  * Add Intel Compiler support
+  * Fix stringification of enums that overload operator<<
+  * Suppress hash() clang integer sanitizer issues 
+  * Fix compile errors when comparing pointers.
+  * Use variables instead of hard-coded mpirun -np 
+  * Fix typos and CMake example in docs
+
+
+-------------------------------------------------------------------
 Tue Nov  8 10:42:36 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 2.4.9
