@@ -1,7 +1,7 @@
 #
 # spec file for package firetools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firetools
-Version:        0.9.64
+Version:        0.9.72
 Release:        0
 Summary:        GUI for Firajail security sandbox
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-qtbase-devel
-Requires:       firejail >= 0.9.40
+Requires:       firejail >= 0.9.64
 
 %description
 Firetools is the graphical user interface of Firejail security sandbox.

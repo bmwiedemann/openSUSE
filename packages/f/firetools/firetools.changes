@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:31:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.72:
+  * modif: move hardcoded apps recognized by default in uiapps file
+  * modif: remove sandbox edit dialog and replace it with uiapps
+    file
+  * feature: added uiapps file for default and user apps
+    configuration
+  * feature: added a system network monitor in sandbox stats
+  * feature: added apparmor support in firejail-ui
+  * feature: added bluetooth support in firejail-ui
+  * feature: print final sandbox configuration in firejail-ui
+  * bugfixes
+
+-------------------------------------------------------------------
 Wed May 12 02:41:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.9.64
