@@ -7,9 +7,10 @@
 
 %_mingw32_cmake %{_mingw32_env} ; \
     mkdir -p %__builddir \
-    cd %__builddir \
-    %__cmake $OLDPWD/%__sourcedir \\\
+    %__cmake \\\
          %__cmake_generator \\\
+        -S %__sourcedir \\\
+        -B %__builddir \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
         -DCMAKE_VERBOSE_MAKEFILE=ON \\\
         -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
@@ -35,13 +36,10 @@
    echo "Deprecated %%__mingw32_cmake macro used, please use %%_mingw32_cmake" \
    %{_mingw32_cmake}
 
-%_mingw32_cmake_build %cmake_build
+%_mingw32_cmake_build %cmake_build -C %__builddir
 
 %_mingw32_cmake_install %{_mingw32_env}; \
     %cmake_install
 
 %_mingw32_ctest(:-:) \
-    cd %__builddir \
-    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** \
-    cd $OLDPWD
- 
+    %__ctest --test-dir %__builddir --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** 

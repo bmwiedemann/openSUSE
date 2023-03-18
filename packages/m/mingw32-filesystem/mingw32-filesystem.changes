@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 17 08:54:56 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- In cmake macros, avoid changing the current directory
+  to avoid build errors in packages that use multiple
+  build systems such as mingw32-zlib
+
+-------------------------------------------------------------------
 Thu Feb 16 12:31:06 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20230309
