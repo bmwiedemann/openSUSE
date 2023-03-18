@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene
 Version:        3.2.1
@@ -36,13 +35,11 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aniso8601 >= 8
 Requires:       python-graphql-core >= 3.1
 Requires:       python-graphql-relay >= 3.1
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
