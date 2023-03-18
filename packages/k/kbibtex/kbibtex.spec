@@ -1,7 +1,7 @@
 #
 # spec file for package kbibtex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           kbibtex
-Version:        0.9.2
+Version:        0.9.3.2
 Release:        0
 Summary:        The BibTeX (Latex) bibliography manager by KDE
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            https://userbase.kde.org/KBibTeX/
+URL:            https://apps.kde.org/nl/kbibtex/
 Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libicu-devel
@@ -56,8 +56,8 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Requires(postun):desktop-file-utils
+Requires(postun):shared-mime-info
 
 %description
 KBibTeX is a BibTeX editor by KDE to edit bibliographies used with
@@ -110,7 +110,6 @@ This package contains the devel files for %{name}.
 %{_kf5_plugindir}/kbibtexpart.so*
 %{_kf5_servicesdir}/kbibtexpart.desktop
 %{_kf5_sharedir}/kbibtex/
-%{_kf5_sharedir}/man/*/man1/kbibtex.1.gz
 %{_kf5_sharedir}/man/man1/kbibtex.1.gz
 %{_kf5_sharedir}/mime/packages/bibliography.xml
 

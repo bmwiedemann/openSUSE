@@ -82,4 +82,25 @@
     <comment></comment>
     <requestid>912952</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8372ee8d7f6afb0794b9975d8bcffb8</srcmd5>
+    <version>0.9.3.2</version>
+    <time>1679182348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.3.2:
+  * KDE Bug 464606: Reactivating installation of translations
+  * KDE Bug 464607: Removing dependency on Qt5's NetworkAuth
+  * Fixing crashes with newer Qt versions (Albert Astals Cid &lt;aacid@kde.org&gt;)
+  * Revamping various online searches by backporting updates from branch 'kbibtex/0.10':
+    ACM's Digital Library, SpringerLink, JStor, NASA Astrophysics Data System, bioRxiv,
+    InspireHEP
+  * Fixing minor issues with build system
+  * Fixing potential crash in BibTeX importer code
+  * KDE Bug 459150: Fix creation of URL from user input
+  * KDE Bug 463398: Predefined keywords are not remembered
+  * Fixing various smaller issues
+  * Adding Qt5's NetworkAuth as new explicit dependency
+- Change URL from developer's page to kde apps page</comment>
+    <requestid>1072857</requestid>
+  </revision>
 </revisionlist>

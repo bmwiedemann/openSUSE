@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 18 18:26:06 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.9.3.2:
+  * KDE Bug 464606: Reactivating installation of translations
+  * KDE Bug 464607: Removing dependency on Qt5's NetworkAuth
+  * Fixing crashes with newer Qt versions (Albert Astals Cid <aacid@kde.org>)
+  * Revamping various online searches by backporting updates from branch 'kbibtex/0.10':
+    ACM's Digital Library, SpringerLink, JStor, NASA Astrophysics Data System, bioRxiv,
+    InspireHEP
+  * Fixing minor issues with build system
+  * Fixing potential crash in BibTeX importer code
+  * KDE Bug 459150: Fix creation of URL from user input
+  * KDE Bug 463398: Predefined keywords are not remembered
+  * Fixing various smaller issues
+  * Adding Qt5's NetworkAuth as new explicit dependency
+- Change URL from developer's page to kde apps page
+
+-------------------------------------------------------------------
 Wed Aug 18 14:38:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the QtWebKit dependency.
