@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f6fe25a2b8a38798db94bd8bc5115e3</srcmd5>
+    <version>0.6.2</version>
+    <time>1679182316</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides GPS time conversion utilities, including a gpstime subclass of the built-in datetime class with the addition of GPS time parsing and conversion methods. It is mainly needed for gravitational-wave applications like python-gwpy and others.</comment>
+    <requestid>1072796</requestid>
+  </revision>
+</revisionlist>
