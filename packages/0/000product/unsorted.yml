@@ -566,6 +566,7 @@ unsorted:
   - anjuta-devel 
   - anjuta-lang 
   - ansible 
+  - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
   - ansible-lint 
@@ -1862,7 +1863,6 @@ unsorted:
   - cargo-c 
   - cargo-packaging 
   - cargo1.62 
-  - cargo1.63 
   - cargo1.65 
   - cargo1.66 
   - cargo1.67 
@@ -2267,7 +2267,6 @@ unsorted:
   - collectd-plugin-mqtt 
   - collectd-plugin-mysql 
   - collectd-plugin-notify-desktop 
-  - collectd-plugin-nut 
   - collectd-plugin-openldap 
   - collectd-plugin-ovs 
   - collectd-plugin-pcie 
@@ -4021,6 +4020,7 @@ unsorted:
   - five-or-more 
   - five-or-more-doc 
   - five-or-more-lang 
+  - fixmath-devel 
   - fkwnn 
   - fkwnn-devel 
   - flac-devel 
@@ -6169,6 +6169,7 @@ unsorted:
   - glog-devel 
   - gloox-devel 
   - glorytun 
+  - glow 
   - glpk 
   - glpk-devel 
   - glpk-doc 
@@ -8589,6 +8590,7 @@ unsorted:
   - keylime-agent 
   - keylime-config: [i586] 
   - keylime-firewalld: [i586] 
+  - keylime-ima-policy: [i586] 
   - keylime-logrotate: [i586] 
   - keylime-registrar: [i586] 
   - keylime-tenant: [i586] 
@@ -9768,18 +9770,18 @@ unsorted:
   - libQt5Xml-devel-32bit: [x86_64] 
   - libQt5Xml5-32bit: [x86_64] 
   - libQt5XmlPatterns5-32bit: [x86_64] 
-  - libQt63DAnimation6 
-  - libQt63DCore6 
-  - libQt63DExtras6 
-  - libQt63DInput6 
-  - libQt63DLogic6 
-  - libQt63DQuick6 
-  - libQt63DQuickAnimation6 
-  - libQt63DQuickExtras6 
-  - libQt63DQuickInput6 
-  - libQt63DQuickRender6 
-  - libQt63DQuickScene2D6 
-  - libQt63DRender6 
+  - libQt63DAnimation6: [x86_64] 
+  - libQt63DCore6: [x86_64] 
+  - libQt63DExtras6: [x86_64] 
+  - libQt63DInput6: [x86_64] 
+  - libQt63DLogic6: [x86_64] 
+  - libQt63DQuick6: [x86_64] 
+  - libQt63DQuickAnimation6: [x86_64] 
+  - libQt63DQuickExtras6: [x86_64] 
+  - libQt63DQuickInput6: [x86_64] 
+  - libQt63DQuickRender6: [x86_64] 
+  - libQt63DQuickScene2D6: [x86_64] 
+  - libQt63DRender6: [x86_64] 
   - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
@@ -11173,7 +11175,6 @@ unsorted:
   - libdocparser1 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdovi-devel 
-  - libdovi3 
   - libdpdk-22: [x86_64] 
   - libdqlite0 
   - libdrm-devel 
@@ -11714,7 +11715,7 @@ unsorted:
   - libgensiomdns0 
   - libgensioosh0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos3_11_1 
+  - libgeos3_11_2 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -21669,7 +21670,6 @@ unsorted:
   - pmix-headers 
   - pmix-mca-params 
   - pmix-plugin-munge 
-  - pmix-pluginlib 
   - pmix-plugins 
   - pmix-test 
   - pnetcdf-devel-data: [x86_64] 
@@ -22311,7 +22311,7 @@ unsorted:
   - python-magnumclient-doc 
   - python-manilaclient-doc 
   - python-mapscript 
-  - python-marshmallow-docs 
+  - python-marshmallow-doc 
   - python-masakariclient-doc 
   - python-md2workflow-common 
   - python-mistralclient-doc 
@@ -36292,36 +36292,36 @@ unsorted:
   - qsynth-lang 
   - qt5ct 
   - qt5integration 
-  - qt6-3d-devel 
-  - qt6-3d-docs-html 
-  - qt6-3d-docs-qch 
-  - qt6-3d-examples 
-  - qt6-3d-imports 
-  - qt6-3d-private-devel 
-  - qt6-3danimation-devel 
-  - qt6-3danimation-private-devel 
-  - qt6-3dcore-devel 
-  - qt6-3dcore-private-devel 
-  - qt6-3dextras-devel 
-  - qt6-3dextras-private-devel 
-  - qt6-3dinput-devel 
-  - qt6-3dinput-private-devel 
-  - qt6-3dlogic-devel 
-  - qt6-3dlogic-private-devel 
-  - qt6-3dquick-devel 
-  - qt6-3dquick-private-devel 
-  - qt6-3dquickanimation-devel 
-  - qt6-3dquickanimation-private-devel 
-  - qt6-3dquickextras-devel 
-  - qt6-3dquickextras-private-devel 
-  - qt6-3dquickinput-devel 
-  - qt6-3dquickinput-private-devel 
-  - qt6-3dquickrender-devel 
-  - qt6-3dquickrender-private-devel 
-  - qt6-3dquickscene2d-devel 
-  - qt6-3dquickscene2d-private-devel 
-  - qt6-3drender-devel 
-  - qt6-3drender-private-devel 
+  - qt6-3d-devel: [x86_64] 
+  - qt6-3d-docs-html: [x86_64] 
+  - qt6-3d-docs-qch: [x86_64] 
+  - qt6-3d-examples: [x86_64] 
+  - qt6-3d-imports: [x86_64] 
+  - qt6-3d-private-devel: [x86_64] 
+  - qt6-3danimation-devel: [x86_64] 
+  - qt6-3danimation-private-devel: [x86_64] 
+  - qt6-3dcore-devel: [x86_64] 
+  - qt6-3dcore-private-devel: [x86_64] 
+  - qt6-3dextras-devel: [x86_64] 
+  - qt6-3dextras-private-devel: [x86_64] 
+  - qt6-3dinput-devel: [x86_64] 
+  - qt6-3dinput-private-devel: [x86_64] 
+  - qt6-3dlogic-devel: [x86_64] 
+  - qt6-3dlogic-private-devel: [x86_64] 
+  - qt6-3dquick-devel: [x86_64] 
+  - qt6-3dquick-private-devel: [x86_64] 
+  - qt6-3dquickanimation-devel: [x86_64] 
+  - qt6-3dquickanimation-private-devel: [x86_64] 
+  - qt6-3dquickextras-devel: [x86_64] 
+  - qt6-3dquickextras-private-devel: [x86_64] 
+  - qt6-3dquickinput-devel: [x86_64] 
+  - qt6-3dquickinput-private-devel: [x86_64] 
+  - qt6-3dquickrender-devel: [x86_64] 
+  - qt6-3dquickrender-private-devel: [x86_64] 
+  - qt6-3dquickscene2d-devel: [x86_64] 
+  - qt6-3dquickscene2d-private-devel: [x86_64] 
+  - qt6-3drender-devel: [x86_64] 
+  - qt6-3drender-private-devel: [x86_64] 
   - qt6-base-common-devel 
   - qt6-base-devel 
   - qt6-base-docs-html 
@@ -37599,7 +37599,6 @@ unsorted:
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.62 
-  - rust1.63 
   - rust1.65 
   - rust1.66 
   - rust1.67 
@@ -38516,7 +38515,6 @@ unsorted:
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-hpc 
-  - suse-module-tools-legacy 
   - suse-prime 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
@@ -48138,6 +48136,7 @@ unsorted:
   - utf8proc-devel 
   - utfcpp-devel 
   - uthash-devel 
+  - util-linux-tty-tools 
   - util-macros-devel 
   - utils-libnfs 
   - utmp-cli 
