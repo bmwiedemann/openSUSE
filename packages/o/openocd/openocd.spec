@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} < 1320
+%if 0%{?suse_version} < 1550
 %define external_jimtcl 0
 %else
 %define external_jimtcl 1

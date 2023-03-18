@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:50:00 UTC 2023 - Torsten Duwe <duwe@suse.com>
+
+- OpenOCD-0.12 requires a TCL jim version newer than the 0.75 which
+  15.4 provides, so bump that version limit.
+
+-------------------------------------------------------------------
 Wed Jan 18 16:59:58 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 0.12.0
