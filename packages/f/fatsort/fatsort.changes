@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.5.640:
+  * refactored character conversion and fixed bugs related to
+    multi-byte characters
+  * added checks for overly long filenames
+  * added test cases for long file names
+
+-------------------------------------------------------------------
 Mon Dec 20 21:52:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4.625:
