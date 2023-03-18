@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynamodb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-pynamodb
-Version:        4.3.3
+Version:        5.3.4
 Release:        0
 Summary:        Python Interface to DynamoDB
 License:        MIT
@@ -33,7 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore >= 1.12.54
 Requires:       python-python-dateutil >= 2.1
-Requires:       python-six
 Recommends:     python-blinker >= 1.3
 BuildArch:      noarch
 # SECTION test requirements
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module botocore >= 1.12.54}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
