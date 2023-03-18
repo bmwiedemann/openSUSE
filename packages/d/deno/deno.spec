@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.31.1
+Version:        1.31.3
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  rust >= 1.62.1
+BuildRequires:  rust >= 1.68.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
