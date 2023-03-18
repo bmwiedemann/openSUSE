@@ -1,21 +1,29 @@
---- lib/liba2ps.h
-+++ lib/liba2ps.h	2008-10-27 11:40:05.145358590 +0100
-@@ -57,16 +57,8 @@
- #  endif
+---
+ liba2ps/liba2ps.h    |    3 +++
+ liba2ps/liba2ps.h.in |    3 +++
+ 2 files changed, 6 insertions(+)
+
+--- liba2ps/liba2ps.h.in
++++ liba2ps/liba2ps.h.in	2023-03-10 13:23:48.196486749 +0000
+@@ -39,6 +39,9 @@
+ # define __END_DECLS /* empty */
  #endif
  
--/*
-- * The type bool must be defined, for instance with
--
-- #if HAVE_STDBOOL_H
-- # include <stdbool.h>
-- #else
-- typedef enum {false = 0, true = 1} bool;
-- #endif
--
--*/
 +#include <stdbool.h>
 +#include <sys/types.h>
- 
++
  __BEGIN_DECLS
  
+ /*
+--- liba2ps/liba2ps.h
++++ liba2ps/liba2ps.h	2023-03-10 13:23:58.020307717 +0000
+@@ -39,6 +39,9 @@
+ # define __END_DECLS /* empty */
+ #endif
+ 
++#include <stdbool.h>
++#include <sys/types.h>
++
+ __BEGIN_DECLS
+ 
+ /*

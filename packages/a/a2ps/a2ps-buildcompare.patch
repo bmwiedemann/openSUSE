@@ -7,7 +7,7 @@ Index: a2ps-4.14/doc/a2ps.texi
 ===================================================================
 --- a2ps-4.14.orig/doc/a2ps.texi
 +++ a2ps-4.14/doc/a2ps.texi
-@@ -103,7 +103,7 @@ approved by the author.
+@@ -96,7 +96,7 @@ approved by the author.
  @titlepage
  @title GNU a2ps, version @value{VERSION}
  @subtitle General Purpose PostScript Generating Utility
@@ -16,7 +16,7 @@ Index: a2ps-4.14/doc/a2ps.texi
  @author Akim Demaille
  @author Miguel Santana
  
-@@ -141,8 +141,7 @@ GNU @pack{} is a filter which generates
+@@ -131,8 +131,7 @@ GNU @pack{} is a filter which generates
  with pretty-printing features, strong support for many alphabets, and
  customizable layout.
  

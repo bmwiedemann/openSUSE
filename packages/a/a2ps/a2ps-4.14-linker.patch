@@ -1,19 +1,22 @@
-diff -rupN a2ps-4.14.old/auxdir/ltmain.sh a2ps-4.14/auxdir/ltmain.sh
---- a2ps-4.14.old/auxdir/ltmain.sh	2007-11-27 13:23:09.000000000 -0800
-+++ a2ps-4.14/auxdir/ltmain.sh	2014-08-06 21:06:38.888482449 -0700
-@@ -3792,11 +3792,12 @@ EOF
- 	    $echo
- 	    if test "X$deplibs_check_method" = "Xnone"; then
- 	      $echo "*** Warning: inter-library dependencies are not supported in this platform."
-+	      $echo "*** All declared inter-library dependencies are being dropped."
-+	      droppeddeps=yes
+---
+ a2ps-4.15/build-aux/ltmain.sh |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a2ps-4.15/build-aux/ltmain.sh
++++ a2ps-4.15/build-aux/ltmain.sh	2023-03-10 13:32:25.551060728 +0000
+@@ -9715,11 +9715,13 @@ EOF
+ 	    echo
+ 	    if test none = "$deplibs_check_method"; then
+ 	      echo "*** Warning: inter-library dependencies are not supported in this platform."
++              $echo "*** All declared inter-library dependencies are being dropped."
++              droppeddeps=yes
  	    else
--	      $echo "*** Warning: inter-library dependencies are not known to be supported."
-+	      deplibs=$($echo "X $deplibs" | $Xsed -e 's/ -1c$//' -e 's/ -[LR][^ ]*//g' -e 's/[    ]//g')
-+	      newdeplibs="$deplibs"
+ 	      echo "*** Warning: inter-library dependencies are not known to be supported."
++              deplibs=$($echo "X $deplibs" | $Xsed -e 's/ -1c$//' -e 's/ -[LR][^ ]*//g' -e 's/[	 ]//g')
++              newdeplibs="$deplibs"
  	    fi
--	    $echo "*** All declared inter-library dependencies are being dropped."
+-	    echo "*** All declared inter-library dependencies are being dropped."
 -	    droppeddeps=yes
- 	  fi
+ 	    ;;
+ 	  esac
  	  ;;
- 	esac

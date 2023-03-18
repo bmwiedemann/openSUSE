@@ -1,6 +1,13 @@
+---
+ etc/a2ps_cfg.in   |    3 ++
+ sheets/sheets.map |    3 ++
+ src/buffer.c      |   29 +++++++++++++++++++++
+ src/generate.c    |   74 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 108 insertions(+), 1 deletion(-)
+
 --- etc/a2ps_cfg.in
-+++ etc/a2ps_cfg.in	2008-07-15 14:12:03.044199079 +0200
-@@ -266,6 +266,9 @@ $3p<-$3p> $4l# lines\n||
++++ etc/a2ps_cfg.in	2023-03-10 13:06:52.122978624 +0000
+@@ -199,6 +199,9 @@ $3p<-$3p> $4l# lines\n||
  #               rm is done by a2ps itself.  No need to quote.
  #
  
@@ -11,8 +18,8 @@
  # A compressed file should be decompressed and processed by a2ps
  # A consequence is that the decompressed file may be delegated.
 --- sheets/sheets.map
-+++ sheets/sheets.map	2008-07-15 17:24:53.922318567 +0200
-@@ -144,6 +144,9 @@ gmake:	/GNUmakefile/	/*\/GNUmakefile/
++++ sheets/sheets.map	2023-03-10 13:06:52.122978624 +0000
+@@ -146,6 +146,9 @@ gmake:	/GNUmakefile/	/*\/GNUmakefile/
  plain:	/*.doc/
  	/*.txt/
  
@@ -23,19 +30,26 @@
  ada:	/*.ad[abs]/
  
 --- src/buffer.c
-+++ src/buffer.c	2008-07-15 17:11:53.197276387 +0200
-@@ -193,9 +193,24 @@ buffer_release (buffer_t * buffer)
- {
-   /* VALUE is malloc'd only if BUFFER->LOWER_CASE */
-   if (buffer->lower_case)
--    free (buffer->value);
++++ src/buffer.c	2023-03-10 13:15:24.785647598 +0000
+@@ -175,6 +175,35 @@ buffer_self_print (buffer_t * buffer, FI
+     fprintf (stream, "Content = `%s'\n", buffer->content);
+ }
+ 
++/*
++ * It frees the content, not the pointer
++ */
++void
++buffer_release (buffer_t * buffer)
++{
++  /* VALUE is malloc'd only if BUFFER->LOWER_CASE */
++  if (buffer->lower_case)
 +    {
 +      free (buffer->value);
 +      buffer->value = NULL;
 +      buffer->allocsize = 0;
-+    }    
-   /* I don't know how this one should be used */
--  /*  obstack_free (&buffer->obstack, NULL); */
++    }
++
++  /* I don't know how this one should be used */
 +  if (buffer->buf)
 +    {
 +      free(buffer->buf);
@@ -48,12 +62,14 @@
 +      buffer->content = obstack_finish(&buffer->obstack);
 +    }
 +  obstack_free (&buffer->obstack, NULL);
- }
- 
++}
++
  void
+ buffer_set_lower_case (buffer_t * buffer, bool sensitive)
+ {
 --- src/generate.c
-+++ src/generate.c	2008-07-15 17:12:02.778172717 +0200
-@@ -35,7 +35,7 @@ char *sample_tmpname = NULL;
++++ src/generate.c	2023-03-10 13:17:27.919406928 +0000
+@@ -29,7 +29,7 @@ char *sample_tmpname = NULL;
   */
  enum style_kind_e
  {
@@ -62,16 +78,16 @@
  };
  
  static enum style_kind_e
-@@ -49,6 +49,8 @@ string_to_style_kind (const char * strin
+@@ -43,6 +43,8 @@ string_to_style_kind (const char * strin
      return no_style;
-   else if (strequ (string, "delegate"))
+   else if (STREQ (string, "delegate"))
      return delegate;
-+  else if (strequ (string, "utf8"))
++  else if (STREQ (string, "utf8"))
 +    return utf8;
    return sshparser;
  }
  /************************************************************************/
-@@ -360,6 +362,76 @@ print (uchar * filename, int * native_jo
+@@ -350,6 +352,76 @@ print (char * filename, int * native_job
        msg_file_pages_printed (job, _("plain"));
        (*native_jobs)++;
        break;

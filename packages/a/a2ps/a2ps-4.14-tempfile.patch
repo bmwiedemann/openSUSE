@@ -1,7 +1,7 @@
-diff -rupN a2ps-4.14.old/contrib/card.m4 a2ps-4.14/contrib/card.m4
---- a2ps-4.14.old/contrib/card.m4	2007-12-28 18:11:47.000000000 -0800
-+++ a2ps-4.14/contrib/card.m4	2014-08-06 20:08:33.925684483 -0700
-@@ -27,7 +27,6 @@ LC_ALL="${LC_ALL-C}" export LC_ALL
+diff -rupN a2ps-4.14.old/contrib/card.in a2ps-4.14/contrib/card.in
+--- a2ps-4.14.old/contrib/card.in	2007-12-28 18:11:47.000000000 -0800
++++ a2ps-4.14/contrib/card.in	2014-08-06 20:08:33.925684483 -0700
+@@ -41,7 +41,6 @@ LC_ALL="${LC_ALL-C}" export LC_ALL
  print_form_feeds=:
  RM="/bin/rm -rf"
  tmp_dir=`mktemp -d -t card.XXXXXX` || { echo "$program: Cannot create temporary dir!" >&2 ; exit 1; }
@@ -9,7 +9,7 @@ diff -rupN a2ps-4.14.old/contrib/card.m4 a2ps-4.14/contrib/card.m4
  success=false
  verbose=:
  version_short="card $card_version (@GNU_PACKAGE@ @VERSION@)"
-@@ -111,7 +110,14 @@ if test $# = 0 && test "X$commands" = X;
+@@ -192,7 +191,14 @@ if test $# = 0 && test "X$commands" = X;
  fi
  
  # Create a tmp dir and be ready to clean up
@@ -25,149 +25,3 @@ diff -rupN a2ps-4.14.old/contrib/card.m4 a2ps-4.14/contrib/card.m4
  
  case $LC_ALL in
    fr) footer="Engendré par $version_short" ;;
-diff -rupN a2ps-4.14.old/contrib/fixnt.l a2ps-4.14/contrib/fixnt.l
---- a2ps-4.14.old/contrib/fixnt.l	2002-03-04 10:46:23.000000000 -0800
-+++ a2ps-4.14/contrib/fixnt.l	2014-08-06 20:13:20.264026372 -0700
-@@ -90,6 +90,7 @@ int ifpagesv   = 0;
- int ifcorel    = 0;
- int ifendsetup = 0;
- int pid;
-+int fd;
- char  fontfname[255];
- char adobefname[255];
- char  bodyfname[255];
-@@ -131,7 +132,9 @@ const char *tmpdir;
- 
- <NORMAL>%%Page:.*\n { /* read up to first page and just output everyting */
-   sprintf(bodyfname, "%s/fixnt_Body_%d", tmpdir, pid);
--  body = fopen(bodyfname,"w+");
-+  fd = fopen(bodyfname,"w+");
-+  if (fd == -1) abort();
-+  body = fdopen(fd,"w+");
-   fprintf(body,"%s",yytext);
-   BEGIN BODY;
- }
-@@ -142,7 +145,9 @@ const char *tmpdir;
- 
- <BODY>[/]Adobe_WinNT_Driver_Gfx[ ]175[ ]dict[ ]dup[ ]begin.*\n { /* Adobe Stuff */
-   sprintf(adobefname, "%s/fixnt_Adobe_%d", tmpdir, pid);
--  adobe = fopen(adobefname,"w+");
-+  fd = mkstemp(adobefname);
-+  if (fd == -1) abort();
-+  adobe = fdopen(fd,"w+");
-   fprintf(adobe,"%s",yytext);
-   BEGIN ADOBE;
- }
-@@ -169,7 +174,9 @@ const char *tmpdir;
- <BODY>(NTPSOct95[ ]){0,1}[/]FontSV[ ]save[ ](put|def).*\n { ;
-   /* font definitions from here on  */
-   sprintf(fontfname, "%s/fixnt_Font_%d", tmpdir, pid);
--  font = fopen(fontfname,"w+");
-+  fd = mkstemp(fontfname);
-+  if (fd == -1) abort();
-+  font = fdopen(fd,"w+");
-   fprintf(font,"%s",yytext);
-   BEGIN FONT;
- }
-diff -rupN a2ps-4.14.old/contrib/fixps.m4 a2ps-4.14/contrib/fixps.m4
---- a2ps-4.14.old/contrib/fixps.m4	2007-12-28 18:11:47.000000000 -0800
-+++ a2ps-4.14/contrib/fixps.m4	2014-08-06 20:18:34.234875842 -0700
-@@ -101,12 +101,23 @@ case $# in
-       exit 1;;
- esac
- 
--if test -n "$debug"; then
--  # Set -x now if debugging
--  set -x
-+if type -p mktemp > /dev/null 2>&1 ; then
-+  tmpdir="`mktemp -d ${tmpdir}.XXXXXX`" || exit 1
-+  if test -n "$debug"; then
-+    # Set -x now if debugging
-+    set -x
-+  else
-+    trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
- else
--  # Temp dir.  Get ready not to leave junk (if not debugging)
--  trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  if test -n "$debug"; then
-+    # Set -x now if debugging
-+    set -x
-+  else
-+    # Temp dir.  Get ready not to leave junk (if not debugging)
-+    trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
-+  (umask 077 && mkdir $tmpdir) || exit 1 
- fi
- 
- fixps_sed=$tmpdir/fixps.sed
-diff -rupN a2ps-4.14.old/contrib/psset.m4 a2ps-4.14/contrib/psset.m4
---- a2ps-4.14.old/contrib/psset.m4	2007-12-28 18:11:47.000000000 -0800
-+++ a2ps-4.14/contrib/psset.m4	2014-08-06 20:28:09.587478128 -0700
-@@ -20,7 +20,6 @@ output=-
- pagedevices=	# `;' separated list of `key:value'
- quiet=:         # i.e., verbose
- tmpdir=`mktemp -d -t psset.XXXXXX` || { echo "$program: Cannot create temporary dir!" >&2 ; exit 1; }
--sedscript=$tmpdir/psset.sed
- 
- # The version/usage strings
- version="$program 1.3 (@GNU_PACKAGE@ @VERSION@)
-@@ -106,13 +105,26 @@ case $# in
-       exit 1;;
- esac
- 
--if test -n "$debug"; then
--  # Set -x now if debugging
--  set -x
-+if type -p mktemp > /dev/null 2>&1 ; then
-+  tmpdir="`mktemp -d ${tmpdir}.XXXXXX`" || exit 1
-+  if test -n "$debug"; then
-+    # Set -x now if debugging
-+    set -x
-+  else
-+    # Temp dir.  Get ready not to leave junk (if not debugging)
-+    trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
- else
--  # Temp dir.  Get ready not to leave junk (if not debugging)
--  trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  if test -n "$debug"; then
-+    # Set -x now if debugging
-+    set -x
-+  else
-+    # Temp dir.  Get ready not to leave junk (if not debugging)
-+    trap "/bin/rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
-+  (umask 077 && mkdir $tmpdir) || exit 1
- fi
-+sedscript=$tmpdir/psset.sed
- 
- # Well, if there is nothing to do, just do nothing.
- if test -z "$pagedevices"; then
-diff -rupN a2ps-4.14.old/contrib/texi2dvi4a2ps a2ps-4.14/contrib/texi2dvi4a2ps
---- a2ps-4.14.old/contrib/texi2dvi4a2ps	2007-12-28 17:58:11.000000000 -0800
-+++ a2ps-4.14/contrib/texi2dvi4a2ps	2014-08-06 20:34:41.870692018 -0700
-@@ -197,9 +197,20 @@ case $# in
-   ;;
- esac
- 
--# Prepare the temporary directory.  Remove it at exit, unless debugging.
--if test -z "$debug"; then
--  trap "cd / && rm -rf $tmpdir" 0 1 2 15
-+if type -p mktemp > /dev/null 2>&1 ; then
-+  # Create the temporary directory with strict rights
-+  tmpdir="`mktemp -d ${tmpdir}.XXXXXX`" || exit 1
-+  # Prepare the temporary directory.  Remove it at exit, unless debugging.
-+  if test -z "$debug"; then
-+    trap "cd / && rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
-+else
-+  # Prepare the temporary directory.  Remove it at exit, unless debugging
-+  if test -x "$debug"; then
-+    trap "cd / && rm -rf $tmpdir" 0 1 2 3 13 15
-+  fi
-+  # Create the temporary directory with strict rights
-+  (umask 077 && mkdir $tmpdir) || exit 1
- fi
- 
- # Prepare the tools we might need.  This may be extra work in some

@@ -1,7 +1,7 @@
-diff -pur a2ps-4.13-1059/lib/title.c a2ps-4.13/lib/title.c
---- a2ps-4.13-1059/lib/title.c	2005-09-20 13:40:15.000000000 +0200
-+++ a2ps-4.13/lib/title.c	2005-09-20 13:53:13.000000000 +0200
-@@ -57,6 +57,10 @@
+diff -pur a2ps-4.13-1059/liba2ps/title.c a2ps-4.13/liba2ps/title.c
+--- a2ps-4.13-1059/liba2ps/title.c	2005-09-20 13:40:15.000000000 +0200
++++ a2ps-4.13/liba2ps/title.c	2005-09-20 13:53:13.000000000 +0200
+@@ -32,6 +32,10 @@
  
  #include "title.h"
  #include "printlen.h"

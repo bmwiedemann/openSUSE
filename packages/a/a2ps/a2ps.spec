@@ -1,7 +1,7 @@
 #
 # spec file for package a2ps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,26 @@
 
 
 Name:           a2ps
-Version:        4.14
+Version:        4.15
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
-URL:            http://www.gnu.org/software/a2ps/a2ps.html
-Source0:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz.sig
+URL:            https://www.gnu.org/software/a2ps/a2ps.html
+Source0:        https://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        a2ps-ko.po
 Source4:        a2ps-open
 Source5:        a2ps-4.14-manuals.diff
 Patch0:         a2ps-4.14.diff
-Patch1:         a2ps-4.13-security.patch
 Patch2:         a2ps-4.14-ogonkify.patch
 Patch3:         a2ps-4.14-tempfile.patch
-Patch4:         a2ps-4.14-automake.patch
 Patch6:         a2ps-4.13-include.patch
-Patch7:         a2ps-4.14-acroread.patch
 Patch8:         a2ps-4.13-base.patch
 Patch9:         a2ps-4.13-utf8.patch
 Patch10:        a2ps-4.13-types.patch
-Patch11:        a2ps-4.13-psgen.patch
-Patch12:        a2ps-4.14-iswprint.patch
 Patch13:        a2ps-4.14-linker.patch
-# PATCH-FIX-USTREAM Bug 871097 - CVE-2014-0466: a2ps: fixps does not use -dSAFER
-Patch14:        CVE-2014-0466.diff
-Patch15:        a2ps-4.14-gperf.patch
-# PATCH-FIX-SUSE Bug 955194 - CVE-2015-8107: CVE-2015-8107 - a2ps(gnu) v4.14 format string vulnerability
-Patch16:        a2ps-4.14-bnc955194.patch
 Patch17:        a2ps-buildcompare.patch
-Patch18:        reproducible.patch
-# PATCH-FIX-SUSE New texinfo 6.7 does not like KOI8-R endcoded characters within UTF-8 environment
-Patch19:        a2ps-4.14-texinfo-6.7.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -58,9 +45,12 @@ BuildRequires:  flex
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  glibc-locale
 BuildRequires:  gv
+BuildRequires:  libpaper-devel
+BuildRequires:  libtool
 BuildRequires:  psutils
 BuildRequires:  texlive-latex
 BuildRequires:  timezone
+BuildRequires:  pkgconfig(bdw-gc)
 Requires:       file
 Requires:       ghostscript-fonts-std
 Requires:       glibc
@@ -98,7 +88,7 @@ Latin encodings are supported.
 Summary:        Library to convert ASCII/Latin text into PostScript
 
 %description -n liba2ps1
-liba2ps converts ASCII text into PostScript.
+The library liba2ps used by the program a2ps to convert ASCII text into PostScript.
 
 %package     -n a2ps-devel
 Summary:        Library and header file for the interface of a2ps
@@ -113,67 +103,69 @@ Warning: a2ps is not able to convert complex Unicode (UTF-8) text to
 PostScript.  Only language text which can be converted from UTF-8 to
 Latin encodings are supported.
 
+%lang_package
+
 %prep
-%setup -q -n a2ps-4.14
-touch -r configure.in .ref
-%patch1   -b .security
+%setup -q -n a2ps-4.15
+touch -r configure.ac .ref
 %patch2  -p1
 %patch3  -p1
-%patch4   -b .norefresh
 %patch6  -p1 -b .incld
-%ifarch %ix86 x86_64
-%patch7 -p1
-%endif
 %patch8   -b .base
 %patch9   -b .utf8
 %patch10  -b .types
-%patch11  -b .psgen
-%patch12  -b .iswprint
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p0
-%patch17 -p1
+%patch13 -p1 -b .p13
+%patch17 -p1 -b .p17
 %patch0   -b .p0
-%patch18 -p1
-%patch19 -p0 -b .p19
 cp -f %{SOURCE3} po/ko.po
 find -type f | grep -vE '(parseppd|parsessh).y' | xargs \
 sed -ri 's/59 Temple Place(,| -) Suite 330/51 Franklin Street, Fifth Floor/;s/02111-1307/02110-1301/'
-touch -r .ref configure.in
 find -name Makefile.in | xargs touch
 
 %build
- #XXX: ugly hack; necessary??
- #YYY: Not a hack and it is necessary!!
- #     The a2ps source is much to old to (re)run auto conf tools
- cp -p %{_datadir}/automake-*/config.{guess,sub} auxdir/
- cp -p /bin/true auxdir/missing
- export AUTOMAKE=/bin/true
- export ACLOCAL=/bin/true
- export AUTOCONF=/bin/true
- export AUTOHEADER=/bin/true
+ autoreconf -fiv -I $PWD -I $PWD/m4
  export PATH=$PWD:$PATH
  export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS) -funroll-loops -Wall -pipe -fstack-protector -fPIE"
  export LPR=lpr
  export CC=gcc
  export TZ=UTC
+ export COM_psselect=yes
 %configure --enable-shared --disable-static --with-medium=LC_PAPER \
 	--with-encoding=LC_CTYPE
- con=""
- pushd contrib
-   for m4 in *.m4; do
-     in=${m4%.*}.in
-     rm -f ${in} ${m4%.*}
-     con="$con ${in##*/}"
-   done
- popd
- make -C contrib/ ${con} LDFLAGS="-pie"
- sh ./config.status
+
+ for mf in $(find -name Makefile); do
+   sed -ri -e '/^am--refresh: Makefile/,/\t@:/d' \
+           -e '/^\$\(top_builddir\)\/config.status:/,/^\t/d' \
+           -e '/^\$\(top_srcdir\)\/configure/,/^\t/d' \
+           -e '/^\$\(ACLOCAL_M4\):/,/^\t/d' \
+           -e '/^\t\s+\$\(SHELL\)\s\.\/config\.status;;\s\\/{s/\.\/config.status/-c true/}' $mf
+ done
+
+ make -C contrib/ LDFLAGS="-pie" AUTOMAKE=/bin/true
  # the build system is awful so we need to build with -B and avoid parallelism
- make PSFONT_PATH=%{_datadir}/ghostscript/fonts LDFLAGS="-pie" MAKEINFO='makeinfo --force' -B
+ make PSFONT_PATH=%{_datadir}/ghostscript/fonts LDFLAGS="-pie" AUTOMAKE=/bin/true AUTOHEADER=/bin/true MAKEINFO='makeinfo --force' GPERF=/usr/bin/gperf -B all
  pushd doc
    texi2html a2ps.texi
+ popd
+ pushd contrib/emacs
+   echo "(setq load-path (cons nil load-path))" > script
+   for el in a2ps.el a2ps-print.el
+   do
+     emacs -batch -q -l script -f batch-byte-compile $el
+   done
+ popd
+ pushd liba2ps
+   gcc -shared .libs/*.o -Wl,-soname -Wl,liba2ps.so.1 -o .libs/liba2ps.so.1.0.0
+   ln -s liba2ps.so.1.0.0 .libs/liba2ps.so.1
+   ln -s liba2ps.so.1.0.0 .libs/liba2ps.so
+   rm -vf liba2ps.a
+   sed -ri -e "/dlname/{ s/(dlname=')(')/\1liba2ps.so.1\2/ }" \
+           -e "/old_library=/{ s/liba2ps\.a/liba2ps.so/ }" \
+           -e "/library_names/{ s/(library_names=')(')/\1liba2ps.so.1.0.0 liba2ps.so.1 liba2ps.so\2/ }" liba2ps.la
+ popd
+ pushd src
+   rm a2ps
+   make AUTOMAKE=/bin/true AUTOHEADER=/bin/true a2ps
  popd
  # Run a test with UTF-8 Umlauts
  mkdir -p .root/.a2ps
@@ -185,7 +177,7 @@ find -name Makefile.in | xargs touch
  ln -sf $PWD/ppd/*		.root/.a2ps/
  ln -sf $PWD/sheets/*		.root/.a2ps/
  A2PS_CONFIG=$PWD%{_sysconfdir}/a2ps.cfg \
-        HOME=$PWD/.root \
+        HOME=$PWD/.root LD_LIBRARY_PATH=$PWD/liba2ps/.libs \
     LC_CTYPE=en_US.UTF-8 ./src/a2ps --output=test.latin test.utf8
  grep '(This is a test text' test.latin | iconv -f latin1 -t utf8
  chmod u+rw,g+r,o+r man/*.1
@@ -199,11 +191,31 @@ find -name Makefile.in | xargs touch
  fi
 
 %install
+ make -C contrib/ install DESTDIR=%{buildroot}
  %make_install PSFONT_PATH=%{_datadir}/ghostscript/fonts
  rm -r %{buildroot}/%{_infodir}/regex*
- %find_lang %{name}
  rm -f %{buildroot}%{_libdir}/liba2ps.la
  install -m 0755 %{SOURCE4} %{buildroot}/%{_bindir}/
+ pushd contrib/emacs
+   for el in a2ps.el a2ps-print.el
+   do
+     install ${el}c %{buildroot}%{_datadir}/emacs/site-lisp/
+   done
+ popd
+ pushd liba2ps
+   mkdir -p %{buildroot}%{_libdir}
+   mkdir -p %{buildroot}%{_includedir}
+   install .libs/liba2ps.so.1.0.0 %{buildroot}%{_libdir}/
+   ln -s liba2ps.so.1.0.0 %{buildroot}%{_libdir}/liba2ps.so.1
+   ln -s liba2ps.so.1.0.0 %{buildroot}%{_libdir}/liba2ps.so
+   install liba2ps.h %{buildroot}%{_includedir}
+ popd
+ for sc in card fixps lp2 pdiff
+ do
+   sed -ri '1 {s@/env +@/@}' %{buildroot}%{_bindir}/$sc
+ done
+%find_lang %{name} %{name}.lang
+%find_lang %{name}-gnulib %{name}.lang
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -216,27 +228,31 @@ find -name Makefile.in | xargs touch
 %post   -n liba2ps1 -p /sbin/ldconfig
 %postun -n liba2ps1 -p /sbin/ldconfig
 
-%files -f %{name}.lang
-%doc AUTHORS COPYING ABOUT-NLS ChangeLog NEWS THANKS README doc/a2ps.html
+%files
+%doc AUTHORS ABOUT-NLS ChangeLog NEWS THANKS README doc/a2ps.html
 %config %{_sysconfdir}/a2ps-site.cfg
 %config %{_sysconfdir}/a2ps.cfg
 %{_bindir}/a2ps
 %{_bindir}/a2ps-open
+%{_bindir}/a2ps-lpr-wrapper
 %{_bindir}/card
 %{_bindir}/composeglyphs
-%{_bindir}/fixnt
+#{_bindir}/fixnt
 %{_bindir}/fixps
 %{_bindir}/ogonkify
 %{_bindir}/pdiff
-%{_bindir}/psmandup
-%{_bindir}/psset
-%{_bindir}/texi2dvi4a2ps
+#{_bindir}/psmandup
+%{_bindir}/lp2
+#{_bindir}/psset
+#{_bindir}/texi2dvi4a2ps
 %{_infodir}/*.gz
 %{_mandir}/man1/*.1.gz
 %{_datadir}/a2ps
 %{_datadir}/emacs/site-lisp/*.el
 %{_datadir}/emacs/site-lisp/*.elc
 %{_datadir}/ogonkify
+
+%files lang -f %{name}.lang
 
 %files -n liba2ps1
 %{_libdir}/liba2ps.so.*

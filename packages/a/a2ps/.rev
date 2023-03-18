@@ -391,4 +391,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>954308</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9e46afc97eed1ecc607d529ff9db4ad6</srcmd5>
+    <version>4.15</version>
+    <time>1679182216</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 4.15
+ * Noteworthy changes in release 4.15 (2023-03-07) [stable]
+ * Features:
+   - Replace the 'psmandup' utility with simpler 'lp2' to directly print
+     documents to a simplex printer.
+   - Remove the outdated 'psset' and 'fixnt', and simplify 'fixps' to
+     always process its input with Ghostscript.
+   - Use libpaper's paper sizes. This includes user-defined paper sizes
+     when using libpaper 2. It is still possible to define custom margins
+     using &quot;Medium:&quot; specifications in the configuration file, and the
+     one size defined by a2ps that libpaper does not know about, Quarto, is
+     retained for backwards compatiblity, and as an example.
+ * Documentation
+   - Remove some obsolete explanations.
+   - Reformat --help output consistently to 80 columns.
+   - Some English fixes.
+ * Bug fixes:
+   - Avoid a crash when a medium is not specified; instead, use the default
+     libpaper size (configured by the user or sysadmin, or the locale
+     default).
+   - Fix some other potential crashes and compiler warnings.
+   - Fixes for security bugs CVE-2001-1593, CVE-2015-8107 and CVE-2014-0466.
+   - Minor bugs fixed.
+ * Predefined delegations:
+   - Remove support for defunct Netscape and proprietary Acrobat Reader.
+   - Add lpr wrapper for automatic detection of different printing systems,
+     including CUPS support.
+ * Encodings:
+   - Use libre fonts for KOI-8.
+   - Composite fonts support.</comment>
+    <requestid>1072656</requestid>
+  </revision>
 </revisionlist>

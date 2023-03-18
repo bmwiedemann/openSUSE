@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Fri Mar 17 13:09:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Updated to 4.15
+ * Noteworthy changes in release 4.15 (2023-03-07) [stable]
+ * Features:
+   - Replace the 'psmandup' utility with simpler 'lp2' to directly print
+     documents to a simplex printer.
+   - Remove the outdated 'psset' and 'fixnt', and simplify 'fixps' to
+     always process its input with Ghostscript.
+   - Use libpaper's paper sizes. This includes user-defined paper sizes
+     when using libpaper 2. It is still possible to define custom margins
+     using "Medium:" specifications in the configuration file, and the
+     one size defined by a2ps that libpaper does not know about, Quarto, is
+     retained for backwards compatiblity, and as an example.
+ * Documentation
+   - Remove some obsolete explanations.
+   - Reformat --help output consistently to 80 columns.
+   - Some English fixes.
+ * Bug fixes:
+   - Avoid a crash when a medium is not specified; instead, use the default
+     libpaper size (configured by the user or sysadmin, or the locale
+     default).
+   - Fix some other potential crashes and compiler warnings.
+   - Fixes for security bugs CVE-2001-1593, CVE-2015-8107 and CVE-2014-0466.
+   - Minor bugs fixed.
+ * Predefined delegations:
+   - Remove support for defunct Netscape and proprietary Acrobat Reader.
+   - Add lpr wrapper for automatic detection of different printing systems,
+     including CUPS support.
+ * Encodings:
+   - Use libre fonts for KOI-8.
+   - Composite fonts support.
+ * Build
+   - Update build system to more recent autotools and gettext versions.
+   - Build man pages in a simpler and more robust way.
+   - Document runtime dependencies.
+   - Minor code quality improvements.
+   - Minor tidy up and removal of obsolete code.
+   - Require libpaper.
+   - Remove OS/2 support.
+ * Build
+  - Build man pages in a simpler and more robust way, using x-to-1 from
+    gnulib.
+  - Don't install useless liba2ps.h.
+  - Other minor build system improvements, including updating to more recent
+    autoconf and gettext.
+  - Don't require help2man or gperf to build from source.
+  - Document runtime dependencies.
+  - Minor code quality improvements.
+ * Build:
+   - Re-add a2ps to the Translation Project, and remove po files from git.
+ * Bug fixes:
+   - Remove reference to @COM_distill@ variable in a2ps_cfg.in.
+ * Documentation:
+   - Format --help output consistently to 80 columns.
+   - Fix a couple of message typos.
+ * Features:
+   - Replace the 'psmandup' utility with simpler 'lp2' to directly print
+     documents to a simplex printer.
+   - Remove the outdated 'psset' and 'fixnt', and simplify 'fixps' to
+     always process its input with Ghostscript.
+ * Documentation
+   - Remove some obsolete explanations.
+ * Build
+   - Minor tidy up and removal of obsolete code.
+ * Features:
+   - Use libpaper's paper sizes. This includes user-defined paper sizes
+     when using libpaper 2. It is still possible to define custom margins
+     using "Medium:" specifications in the configuration file, and the
+     one size defined by a2ps that libpaper does not know about, Quarto, is
+     retained for backwards compatiblity, and as an example.
+ * Bug fixes:
+   - Avoid a crash when a medium is not specified; instead, use the default
+     libpaper size (configured by the user or sysadmin, or the locale
+     default).
+   - Fix some other potential crashes and compiler warnings.
+ * Documentation:
+   - Reformat --help output consistently to 80 columns.
+ * Build:
+   - Require autoconf 2.71.
+   - Require libpaper.
+ * Documentation:
+   - Undo reformatting of --help output from 4.14.91, so as not to annoy
+     translators (thanks, Benno Schulenberg!).
+   - Use gnulib function to emit bug reporting information.  This also
+     fixes a problem with the translated strings introduced in 4.14.91
+     (thanks, Benno Schulenberg!).
+ * Build:
+   - Re-add a2ps to the Translation Project, and remove po files from git.
+ * Bug fixes:
+   - Remove reference to @COM_distill@ variable in a2ps_cfg.in.
+ * Documentation:
+   - Format --help output consistently to 80 columns.
+   - Fix a couple of message typos.
+ * This is an alpha release, owing to the considerable changes since the
+   last version.
+ * New maintainer, Reuben Thomas.
+ * Build:
+   - Updated and fixed the build system, using gnulib and modern Autotools.
+   - Remove OS/2 support.
+   - Require libpaper.
+ * Predefined delegations:
+   - Remove support for defunct Netscape and proprietary Acrobat Reader.
+   - Add lpr wrapper for automatic detection of different printing systems,
+     including CUPS support.
+ * Encodings:
+   - Use libre fonts for KOI-8.
+   - Composite fonts support.
+ * Documentation:
+   - Some English fixes.
+   - Man page for fixnt.
+ * Bug fixes:
+   - Fixes for security bugs CVE-2001-1593, CVE-2015-8107 and CVE-2014-0466.
+   - Minor bugs fixed.
+- Reintroduce shared library
+- Avoid configure (endless) loop during make
+- New a2ps-lang package
+- Remove obsolete patches
+  * CVE-2014-0466.diff
+  * a2ps-4.13-psgen.patch
+  * a2ps-4.13-security.patch
+  * a2ps-4.14-acroread.patch
+  * a2ps-4.14-automake.patch
+  * a2ps-4.14-bnc955194.patch
+  * a2ps-4.14-gperf.patch
+  * a2ps-4.14-iswprint.patch
+  * a2ps-4.14-texinfo-6.7.patch
+  * reproducible.patch
+- Port patches
+  * a2ps-4.13-base.patch
+  * a2ps-4.13-include.patch
+  * a2ps-4.13-types.patch
+  * a2ps-4.13-utf8.patch
+  * a2ps-4.14-linker.patch
+  * a2ps-4.14-manuals.diff
+  * a2ps-4.14-ogonkify.patch
+  * a2ps-4.14-tempfile.patch
+  * a2ps-4.14.diff
+  * a2ps-buildcompare.patch
+
+-------------------------------------------------------------------
 Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - For iconv glibc-locale should be installed 
