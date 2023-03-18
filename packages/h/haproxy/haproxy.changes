@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:42:07 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.5+git0.8d230219e:
+  * [RELEASE] Released version 2.7.5
+  * OPTIM: mux-h1: limit first read size to avoid wrapping
+  * BUG/MAJOR: qpack: fix possible read out of bounds in static table
+  * BUG/MINOR: sock_unix: match finalname with tempname in sock_unix_addrcmp()
+  * BUG/MINOR: protocol: fix minor memory leak in protocol_bind_all()
+  * BUG/MINOR: proto_ux: report correct error when bind_listener fails
+  * BUG/MEDIUM: spoe: Don't set the default traget for the SPOE agent frontend
+  * BUG/MINOR: mux-h2: Fix possible null pointer deref on h2c in _h2_trace_header()
+  * MEDIUM: mux-h2/trace: add tracing support for headers
+  * MINOR: h2: add h2_phdr_to_ist() to make ISTs from pseudo headers
+  * MEDIUM: bwlim: Support constants limit or period on set-bandwidth-limit actions
+  * BUG/MEDIUM: listener: duplicate inherited FDs if needed
+  * BUG/MINOR: quic: Missing STREAM frame data pointer updates
+  * BUG/MINOR: mux-h2: set CO_SFL_STREAMER when sending lots of data
+  * BUG/MEDIUM: mux-h2: only restart sending when mux buffer is decongested
+  * MINOR: buffer: add br_single() to check if a buffer ring has more than one buf
+  * BUG/MINOR: mux-h2: make sure the h2c task exists before refreshing it
+  * BUG/MEDIUM: connection: Preserve flags when a conn is removed from an idle list
+  * BUG/MINOR: quic: Missing STREAM frame length updates
+  * BUG/MINOR: tcp_sample: fix a bug in fc_dst_port and fc_dst_is_local sample fetches
+  * BUG/MEDIUM: mux-h1: Don't block SE_FL_ERROR if EOS is not reported on H1C
+  * DEBUG: ssl-sock/show_fd: Display SSL error code
+  * DEBUG: cli/show_fd: Display connection error code
+  * BUG/MEDIUM: resolvers: Properly stop server resolutions on soft-stop
+  * BUG/MEDIUM: proxy: properly stop backends on soft-stop
+  * BUG/MINOR: mux-h1: Don't report an H1C error on client timeout
+  * BUG/MEDIUM: mux-pt: Set EOS on error on sending path if read0 was received
+
+-------------------------------------------------------------------
 Sun Mar 12 12:30:54 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - switch to autopatch to simplify patch handling
