@@ -3,7 +3,7 @@
     <param name="url">https://github.com/Horus645/swww</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">63075f36802e96af706ffab6d0b2dc33aab9b664</param>
+    <param name="revision">9df72ca3c680e88c5314000f70f8c3198363647d</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -13,7 +13,7 @@
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">swww</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">

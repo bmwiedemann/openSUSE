@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar 18 01:33:30 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix specfile.
+- Fix installation of swww-daemon.
+
+-------------------------------------------------------------------
+Fri Mar 10 13:26:49 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.7.2:
+  * prepare 0.7.2 release
+  * update dependencies
+  * man-pages (#84)
+  * Sync animations (#82)
+  * update changelog
+  * ignore integration_tests by default
+  * cache the images to reload them on startup (#80)
+  * prepare 0.7.1 release
+  * update dependencies
+  * cargo clippy and style
+  * update CHANGELOG.md
+  * fix integration_tests calling incorrect daemon bin
+  * add ability to use screen cords instead of percentages in `--transition-pos` (#71)
+  * typo: pipw -> pipe
+  * fix reading image from stdin (don't cannonicalize)
+  * document `--no_resize` and `--fill_color` args
+  * fix `swww` query not returning correct image
+  * change the version in Cargo.toml
+
+-------------------------------------------------------------------
 Mon Jan 30 22:19:21 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.7.0

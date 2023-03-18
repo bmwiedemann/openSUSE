@@ -31,4 +31,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1063529</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c74068a8238c9227a6c9899374bb9067</srcmd5>
+    <version>0.7.2</version>
+    <time>1679182213</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix specfile.
+- Fix installation of swww-daemon.
+- Update to version 0.7.2:
+  * prepare 0.7.2 release
+  * update dependencies
+  * man-pages (#84)
+  * Sync animations (#82)
+  * update changelog
+  * ignore integration_tests by default
+  * cache the images to reload them on startup (#80)
+  * prepare 0.7.1 release
+  * update dependencies
+  * cargo clippy and style
+  * update CHANGELOG.md
+  * fix integration_tests calling incorrect daemon bin
+  * add ability to use screen cords instead of percentages in `--transition-pos` (#71)
+  * typo: pipw -&gt; pipe
+  * fix reading image from stdin (don't cannonicalize)
+  * document `--no_resize` and `--fill_color` args
+  * fix `swww` query not returning correct image
+  * change the version in Cargo.toml
+</comment>
+    <requestid>1072775</requestid>
+  </revision>
 </revisionlist>
