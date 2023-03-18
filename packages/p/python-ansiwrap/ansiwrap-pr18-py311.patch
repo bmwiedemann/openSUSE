@@ -1,0 +1,25 @@
+From b7f0149d6063c095da5ccb74afc6262682a9ff92 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Mon, 20 Jun 2022 09:27:40 -0400
+Subject: [PATCH] Fix tests on Python 3.11 (fix #18)
+
+random.sample() population must be a sequence
+---
+ test/test_ansiwrap.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_ansiwrap.py b/test/test_ansiwrap.py
+index 13e7149..da97f0e 100644
+--- a/test/test_ansiwrap.py
++++ b/test/test_ansiwrap.py
+@@ -20,8 +20,8 @@
+ 
+ # as an alternative to testing all lengths at all times, which is slow,
+ # choose a few other lengths at random
+-other_lengths = (random.sample(set(range(20, 120)).difference(LINE_LENGTHS), 2) +
+-                 random.sample(set(range(120, 400)).difference(LINE_LENGTHS), 1))
++other_lengths = (random.sample(sorted(set(range(20, 120)).difference(LINE_LENGTHS)), 2) +
++                 random.sample(sorted(set(range(120, 400)).difference(LINE_LENGTHS)), 1))
+ LINE_LENGTHS.extend(other_lengths)
+ 
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansiwrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ansiwrap
 Version:        0.8.4
 Release:        0
 Summary:        Textwrap, but savvy to ANSI colors and styles
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/jonathaneunice/ansiwrap
+URL:            https://github.com/jonathaneunice/ansiwrap
 Source:         https://files.pythonhosted.org/packages/source/a/ansiwrap/ansiwrap-%{version}.zip
+# PATCH-FIX-UPSTREAM ansiwrap-pr18-py311.patch gh#jonathaneunice/ansiwrap#18
+Patch0:         ansiwrap-pr18-py311.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION test requirements
 BuildRequires:  %{python_module ansicolors >= 1.1.8}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module textwrap3}
-BuildRequires:  %{python_module tox}
 # /SECTION
 Requires:       python-textwrap3
 BuildArch:      noarch
@@ -52,23 +52,22 @@ ansiwrap is not; it understands that however much those codes affect color
 and display style, they have no logical length.
 
 %prep
-%setup -q -n ansiwrap-%{version}
+%autosetup -p1 -n ansiwrap-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix}
-}
+%pytest
 
 %files %{python_files}
 %doc AUTHORS CHANGES.yml README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/ansiwrap
+%{python_sitelib}/ansiwrap-%{version}.dist-info
 
 %changelog
