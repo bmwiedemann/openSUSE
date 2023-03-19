@@ -40,7 +40,6 @@ BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,7 +48,6 @@ Requires:       python-distlib >= 0.3.1
 Requires:       python-filelock >= 3.0.0
 Requires:       python-platformdirs >= 2
 Requires:       python-setuptools
-Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

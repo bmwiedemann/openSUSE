@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 14:01:37 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Wed Jan 11 03:46:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add python_module devel to BuildRequires in the test flavor, since
