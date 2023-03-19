@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:04:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde183:
+  * Add nullptr guard in QStyleSheetStyle::drawPrimitive(PE_PanelLineEdit)
+  * QAbstractItemView: don't access invalid indexes on copy-key
+  * Apply CVE-2023-24607-qtbase-5.15.diff
+  * QXcbConnection::getTimestamp: do not return stale timestamp
+  * QToolButton: Elide text when constraints prevent from showing whole text
+  * correctly set up ref counting in QThreadPool::tryStart(std::function)
+  * Do not set Qt::ToolTip flag for QShapedPixmapWindow
+  * Fix deletion order also for QImageReader/Writer::setDevice()
+  * Fix deletion order in QImageReader/Writer destructors
+  * QNetworkReply: Fix typos in the documentation
+  * Doc: Fix typo in the online documentation template
+  * Doc: Link to page documenting Qt trademarks in the copyright footer
+  * [doc] Fix typo in QBuffer::setBuffer() description
+  * qwindowsdrag: Fix typo in documentation
+  * openglblacklists: Fix typo in description
+  * qxcbscreen: Fix typo in documentation
+  * Fix typos in SQL driver documentation
+  * qxcbwindow.cpp: Fix sign-compare and another warnings
+  * QToolButton: reimplement the fix for QTBUG-95255
+  * QSysInfo::prettyProductName(): Add macOS Ventura product name
+  * QSysInfo::prettyProductName(): add missing macOS product names
+  * xcb: correctly disconnect xsettings callbacks
+  * ibus: add SetCursorLocationRelative in InputContext.xml
+
+-------------------------------------------------------------------
 Thu Mar  2 11:52:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Drop the mechanism for supporting systems without SSE2. glibc removed

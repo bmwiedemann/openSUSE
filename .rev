@@ -2503,4 +2503,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Drop support for systems without SSE2 to fix boo#1208188. RFC, not built yet (forwarded request 1068677 from favogt)</comment>
     <requestid>1068721</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>31d9ba0692a601f4f46e82dc9f7b63f4</srcmd5>
+    <version>5.15.8+kde183</version>
+    <time>1679238963</time>
+    <user>dimstar_suse</user>
+    <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
+    <requestid>1072577</requestid>
+  </revision>
 </revisionlist>
