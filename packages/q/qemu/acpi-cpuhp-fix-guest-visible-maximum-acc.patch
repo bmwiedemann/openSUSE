@@ -1,0 +1,166 @@
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 5 Jan 2023 17:18:04 +0100
+Subject: acpi: cpuhp: fix guest-visible maximum access size to the legacy reg
+ block
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The modern ACPI CPU hotplug interface was introduced in the following
+series (aa1dd39ca307..679dd1a957df), released in v2.7.0:
+
+  1  abd49bc2ed2f docs: update ACPI CPU hotplug spec with new protocol
+  2  16bcab97eb9f pc: piix4/ich9: add 'cpu-hotplug-legacy' property
+  3  5e1b5d93887b acpi: cpuhp: add CPU devices AML with _STA method
+  4  ac35f13ba8f8 pc: acpi: introduce AcpiDeviceIfClass.madt_cpu hook
+  5  d2238cb6781d acpi: cpuhp: implement hot-add parts of CPU hotplug
+                  interface
+  6  8872c25a26cc acpi: cpuhp: implement hot-remove parts of CPU hotplug
+                  interface
+  7  76623d00ae57 acpi: cpuhp: add cpu._OST handling
+  8  679dd1a957df pc: use new CPU hotplug interface since 2.7 machine type
+
+Before patch#1, "docs/specs/acpi_cpu_hotplug.txt" only specified 1-byte
+accesses for the hotplug register block.  Patch#1 preserved the same
+restriction for the legacy register block, but:
+
+- it specified DWORD accesses for some of the modern registers,
+
+- in particular, the switch from the legacy block to the modern block
+  would require a DWORD write to the *legacy* block.
+
+The latter functionality was then implemented in cpu_status_write()
+[hw/acpi/cpu_hotplug.c], in patch#8.
+
+Unfortunately, all DWORD accesses depended on a dormant bug: the one
+introduced in earlier commit a014ed07bd5a ("memory: accept mismatching
+sizes in memory_region_access_valid", 2013-05-29); first released in
+v1.6.0.  Due to commit a014ed07bd5a, the DWORD accesses to the *legacy*
+CPU hotplug register block would work in spite of the above series *not*
+relaxing "valid.max_access_size = 1" in "hw/acpi/cpu_hotplug.c":
+
+> static const MemoryRegionOps AcpiCpuHotplug_ops = {
+>     .read = cpu_status_read,
+>     .write = cpu_status_write,
+>     .endianness = DEVICE_LITTLE_ENDIAN,
+>     .valid = {
+>         .min_access_size = 1,
+>         .max_access_size = 1,
+>     },
+> };
+
+Later, in commits e6d0c3ce6895 ("acpi: cpuhp: introduce 'Command data 2'
+field", 2020-01-22) and ae340aa3d256 ("acpi: cpuhp: spec: add typical
+usecases", 2020-01-22), first released in v5.0.0, the modern CPU hotplug
+interface (including the documentation) was extended with another DWORD
+*read* access, namely to the "Command data 2" register, which would be
+important for the guest to confirm whether it managed to switch the
+register block from legacy to modern.
+
+This functionality too silently depended on the bug from commit
+a014ed07bd5a.
+
+In commit 5d971f9e6725 ('memory: Revert "memory: accept mismatching sizes
+in memory_region_access_valid"', 2020-06-26), first released in v5.1.0,
+the bug from commit a014ed07bd5a was fixed (the commit was reverted).
+That swiftly exposed the bug in "AcpiCpuHotplug_ops", still present from
+the v2.7.0 series quoted at the top -- namely the fact that
+"valid.max_access_size = 1" didn't match what the guest was supposed to
+do, according to the spec ("docs/specs/acpi_cpu_hotplug.txt").
+
+The symptom is that the "modern interface negotiation protocol"
+described in commit ae340aa3d256:
+
+> +      Use following steps to detect and enable modern CPU hotplug interface:
+> +        1. Store 0x0 to the 'CPU selector' register,
+> +           attempting to switch to modern mode
+> +        2. Store 0x0 to the 'CPU selector' register,
+> +           to ensure valid selector value
+> +        3. Store 0x0 to the 'Command field' register,
+> +        4. Read the 'Command data 2' register.
+> +           If read value is 0x0, the modern interface is enabled.
+> +           Otherwise legacy or no CPU hotplug interface available
+
+falls apart for the guest: steps 1 and 2 are lost, because they are DWORD
+writes; so no switching happens.  Step 3 (a single-byte write) is not
+lost, but it has no effect; see the condition in cpu_status_write() in
+patch#8.  And step 4 *misleads* the guest into thinking that the switch
+worked: the DWORD read is lost again -- it returns zero to the guest
+without ever reaching the device model, so the guest never learns the
+switch didn't work.
+
+This means that guest behavior centered on the "Command data 2" register
+worked *only* in the v5.0.0 release; it got effectively regressed in
+v5.1.0.
+
+To make things *even more* complicated, the breakage was (and remains, as
+of today) visible with TCG acceleration only.  Commit 5d971f9e6725 makes
+no difference with KVM acceleration -- the DWORD accesses still work,
+despite "valid.max_access_size = 1".
+
+As commit 5d971f9e6725 suggests, fix the problem by raising
+"valid.max_access_size" to 4 -- the spec now clearly instructs the guest
+to perform DWORD accesses to the legacy register block too, for enabling
+(and verifying!) the modern block.  In order to keep compatibility for the
+device model implementation though, set "impl.max_access_size = 1", so
+that wide accesses be split before they reach the legacy read/write
+handlers, like they always have been on KVM, and like they were on TCG
+before 5d971f9e6725 (v5.1.0).
+
+Tested with:
+
+- OVMF IA32 + qemu-system-i386, CPU hotplug/hot-unplug with SMM,
+  intermixed with ACPI S3 suspend/resume, using KVM accel
+  (regression-test);
+
+- OVMF IA32X64 + qemu-system-x86_64, CPU hotplug/hot-unplug with SMM,
+  intermixed with ACPI S3 suspend/resume, using KVM accel
+  (regression-test);
+
+- OVMF IA32 + qemu-system-i386, SMM enabled, using TCG accel; verified the
+  register block switch and the present/possible CPU counting through the
+  modern hotplug interface, during OVMF boot (bugfix test);
+
+- I do not have any testcase (guest payload) for regression-testing CPU
+  hotplug through the *legacy* CPU hotplug register block.
+
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Ani Sinha <ani@anisinha.ca>
+Cc: Ard Biesheuvel <ardb@kernel.org>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
+Cc: qemu-stable@nongnu.org
+Ref: "IO port write width clamping differs between TCG and KVM"
+Link: http://mid.mail-archive.com/aaedee84-d3ed-a4f9-21e7-d221a28d1683@redhat.com
+Link: https://lists.gnu.org/archive/html/qemu-devel/2023-01/msg00199.html
+Reported-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Tested-by: Ard Biesheuvel <ardb@kernel.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20230105161804.82486-1-lersek@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit dab30fbef3896bb652a09d46c37d3f55657cbcbb)
+References: bsc#1209266
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/acpi/cpu_hotplug.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
+index 53654f8638306bda80874a5e7d85..ff14c3f4106f7db41702ef9a38b9 100644
+--- a/hw/acpi/cpu_hotplug.c
++++ b/hw/acpi/cpu_hotplug.c
+@@ -52,6 +52,9 @@ static const MemoryRegionOps AcpiCpuHotplug_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 1,
++        .max_access_size = 4,
++    },
++    .impl = {
+         .max_access_size = 1,
+     },
+ };

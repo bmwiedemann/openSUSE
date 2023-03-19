@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 16 16:27:19 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1209064
+- Backport the "acpi: cpuhp: fix guest-visible maximum access size
+  to the legacy reg block" patch, as it makes developing and
+  testing OVMF/EDK2 easier
+* Patches added:
+  acpi-cpuhp-fix-guest-visible-maximum-acc.patch
+  s390x-pci-reset-ISM-passthrough-devices-.patch
+  s390x-pci-shrink-DMA-aperture-to-be-boun.patch
+
+-------------------------------------------------------------------
 Thu Mar  9 15:21:18 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Disable -Werror as it is very sensitive when one

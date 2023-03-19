@@ -3317,4 +3317,20 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>1070451</requestid>
   </revision>
+  <revision rev="249" vrev="14">
+    <srcmd5>25576d25f9931f420ac02fcf8991c744</srcmd5>
+    <version>7.1.0</version>
+    <time>1679238946</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1209064
+- Backport the &quot;acpi: cpuhp: fix guest-visible maximum access size
+  to the legacy reg block&quot; patch, as it makes developing and
+  testing OVMF/EDK2 easier
+* Patches added:
+  acpi-cpuhp-fix-guest-visible-maximum-acc.patch
+  s390x-pci-reset-ISM-passthrough-devices-.patch
+  s390x-pci-shrink-DMA-aperture-to-be-boun.patch
+</comment>
+    <requestid>1072460</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,76 @@
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+Date: Fri, 28 Oct 2022 15:47:58 -0400
+Subject: s390x/pci: shrink DMA aperture to be bound by vfio DMA limit
+
+Currently, s390x-pci performs accounting against the vfio DMA
+limit and triggers the guest to clean up mappings when the limit
+is reached. Let's go a step further and also limit the size of
+the supported DMA aperture reported to the guest based upon the
+initial vfio DMA limit reported for the container (if less than
+than the size reported by the firmware/host zPCI layer).  This
+avoids processing sections of the guest DMA table during global
+refresh that, for common use cases, will never be used anway, and
+makes exhausting the vfio DMA limit due to mismatch between guest
+aperture size and host limit far less likely and more indicitive
+of an error.
+
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Message-Id: <20221028194758.204007-4-mjrosato@linux.ibm.com>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+(cherry picked from commit df202e3ff3fccb49868e08f20d0bda86cb953fbe)
+Resolves: bsc#1209064
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/s390x/s390-pci-vfio.c        | 11 +++++++++++
+ include/hw/s390x/s390-pci-bus.h |  1 +
+ 2 files changed, 12 insertions(+)
+
+diff --git a/hw/s390x/s390-pci-vfio.c b/hw/s390x/s390-pci-vfio.c
+index 2aefa508a07d9a228c045a5ff50b..99806e2a846d260e2932fdecef07 100644
+--- a/hw/s390x/s390-pci-vfio.c
++++ b/hw/s390x/s390-pci-vfio.c
+@@ -84,6 +84,7 @@ S390PCIDMACount *s390_pci_start_dma_count(S390pciState *s,
+     cnt->users = 1;
+     cnt->avail = avail;
+     QTAILQ_INSERT_TAIL(&s->zpci_dma_limit, cnt, link);
++    pbdev->iommu->max_dma_limit = avail;
+     return cnt;
+ }
+ 
+@@ -103,6 +104,7 @@ static void s390_pci_read_base(S390PCIBusDevice *pbdev,
+     struct vfio_info_cap_header *hdr;
+     struct vfio_device_info_cap_zpci_base *cap;
+     VFIOPCIDevice *vpci =  container_of(pbdev->pdev, VFIOPCIDevice, pdev);
++    uint64_t vfio_size;
+ 
+     hdr = vfio_get_device_info_cap(info, VFIO_DEVICE_INFO_CAP_ZPCI_BASE);
+ 
+@@ -122,6 +124,15 @@ static void s390_pci_read_base(S390PCIBusDevice *pbdev,
+     /* The following values remain 0 until we support other FMB formats */
+     pbdev->zpci_fn.fmbl = 0;
+     pbdev->zpci_fn.pft = 0;
++
++    /*
++     * If appropriate, reduce the size of the supported DMA aperture reported
++     * to the guest based upon the vfio DMA limit.
++     */
++    vfio_size = pbdev->iommu->max_dma_limit << TARGET_PAGE_BITS;
++    if (vfio_size < (cap->end_dma - cap->start_dma + 1)) {
++        pbdev->zpci_fn.edma = cap->start_dma + vfio_size - 1;
++    }
+ }
+ 
+ static bool get_host_fh(S390PCIBusDevice *pbdev, struct vfio_device_info *info,
+diff --git a/include/hw/s390x/s390-pci-bus.h b/include/hw/s390x/s390-pci-bus.h
+index 0605fcea24d313693e1b1a0491c8..1c46e3a2691c93abc1d89f9b89df 100644
+--- a/include/hw/s390x/s390-pci-bus.h
++++ b/include/hw/s390x/s390-pci-bus.h
+@@ -278,6 +278,7 @@ struct S390PCIIOMMU {
+     uint64_t g_iota;
+     uint64_t pba;
+     uint64_t pal;
++    uint64_t max_dma_limit;
+     GHashTable *iotlb;
+     S390PCIDMACount *dma_limit;
+ };

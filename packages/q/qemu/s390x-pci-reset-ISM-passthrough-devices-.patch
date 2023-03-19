@@ -1,0 +1,132 @@
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+Date: Fri, 9 Dec 2022 14:57:00 -0500
+Subject: s390x/pci: reset ISM passthrough devices on shutdown and system reset
+
+ISM device firmware stores unique state information that can
+can cause a wholesale unmap of the associated IOMMU (e.g. when
+we get a termination signal for QEMU) to trigger firmware errors
+because firmware believes we are attempting to invalidate entries
+that are still in-use by the guest OS (when in fact that guest is
+in the process of being terminated or rebooted).
+To alleviate this, register both a shutdown notifier (for unexpected
+termination cases e.g. virsh destroy) as well as a reset callback
+(for cases like guest OS reboot).  For each of these scenarios, trigger
+PCI device reset; this is enough to indicate to firmware that the IOMMU
+is no longer in-use by the guest OS, making it safe to invalidate any
+associated IOMMU entries.
+
+Fixes: 15d0e7942d3b ("s390x/pci: don't fence interpreted devices without MSI-X")
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Message-Id: <20221209195700.263824-1-mjrosato@linux.ibm.com>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+[thuth: Adjusted the hunk in s390-pci-vfio.c due to different context]
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+(cherry picked from commit 03451953c79e6b31f7860ee0c35b28e181d573c1)
+Resolves: bsc#1209064
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/s390x/s390-pci-bus.c         | 28 ++++++++++++++++++++++++++++
+ hw/s390x/s390-pci-vfio.c        |  2 ++
+ include/hw/s390x/s390-pci-bus.h |  5 +++++
+ 3 files changed, 35 insertions(+)
+
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 977e7daa15305be17b530981b7f0..02751f35971a874b81113b1dc607 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -24,6 +24,8 @@
+ #include "hw/pci/msi.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
++#include "sysemu/reset.h"
++#include "sysemu/runstate.h"
+ 
+ #ifndef DEBUG_S390PCI_BUS
+ #define DEBUG_S390PCI_BUS  0
+@@ -150,10 +152,30 @@ out:
+     psccb->header.response_code = cpu_to_be16(rc);
+ }
+ 
++static void s390_pci_shutdown_notifier(Notifier *n, void *opaque)
++{
++    S390PCIBusDevice *pbdev = container_of(n, S390PCIBusDevice,
++                                           shutdown_notifier);
++
++    pci_device_reset(pbdev->pdev);
++}
++
++static void s390_pci_reset_cb(void *opaque)
++{
++    S390PCIBusDevice *pbdev = opaque;
++
++    pci_device_reset(pbdev->pdev);
++}
++
+ static void s390_pci_perform_unplug(S390PCIBusDevice *pbdev)
+ {
+     HotplugHandler *hotplug_ctrl;
+ 
++    if (pbdev->pft == ZPCI_PFT_ISM) {
++        notifier_remove(&pbdev->shutdown_notifier);
++        qemu_unregister_reset(s390_pci_reset_cb, pbdev);
++    }
++
+     /* Unplug the PCI device */
+     if (pbdev->pdev) {
+         DeviceState *pdev = DEVICE(pbdev->pdev);
+@@ -1111,6 +1133,12 @@ static void s390_pcihost_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+                 pbdev->fh |= FH_SHM_VFIO;
+                 pbdev->forwarding_assist = false;
+             }
++            /* Register shutdown notifier and reset callback for ISM devices */
++            if (pbdev->pft == ZPCI_PFT_ISM) {
++                pbdev->shutdown_notifier.notify = s390_pci_shutdown_notifier;
++                qemu_register_shutdown_notifier(&pbdev->shutdown_notifier);
++                qemu_register_reset(s390_pci_reset_cb, pbdev);
++            }
+         } else {
+             pbdev->fh |= FH_SHM_EMUL;
+             /* Always intercept emulated devices */
+diff --git a/hw/s390x/s390-pci-vfio.c b/hw/s390x/s390-pci-vfio.c
+index 99806e2a846d260e2932fdecef07..69af35f4fe339680ff2b3abc4051 100644
+--- a/hw/s390x/s390-pci-vfio.c
++++ b/hw/s390x/s390-pci-vfio.c
+@@ -124,6 +124,8 @@ static void s390_pci_read_base(S390PCIBusDevice *pbdev,
+     /* The following values remain 0 until we support other FMB formats */
+     pbdev->zpci_fn.fmbl = 0;
+     pbdev->zpci_fn.pft = 0;
++    /* Store function type separately for type-specific behavior */
++    pbdev->pft = cap->pft;
+ 
+     /*
+      * If appropriate, reduce the size of the supported DMA aperture reported
+diff --git a/include/hw/s390x/s390-pci-bus.h b/include/hw/s390x/s390-pci-bus.h
+index 1c46e3a2691c93abc1d89f9b89df..e0a9f9385be758bb9af0ed72d443 100644
+--- a/include/hw/s390x/s390-pci-bus.h
++++ b/include/hw/s390x/s390-pci-bus.h
+@@ -39,6 +39,9 @@
+ #define UID_CHECKING_ENABLED 0x01
+ #define ZPCI_DTSM 0x40
+ 
++/* zPCI Function Types */
++#define ZPCI_PFT_ISM 5
++
+ OBJECT_DECLARE_SIMPLE_TYPE(S390pciState, S390_PCI_HOST_BRIDGE)
+ OBJECT_DECLARE_SIMPLE_TYPE(S390PCIBus, S390_PCI_BUS)
+ OBJECT_DECLARE_SIMPLE_TYPE(S390PCIBusDevice, S390_PCI_DEVICE)
+@@ -344,6 +347,7 @@ struct S390PCIBusDevice {
+     uint16_t noi;
+     uint16_t maxstbl;
+     uint8_t sum;
++    uint8_t pft;
+     S390PCIGroup *pci_group;
+     ClpRspQueryPci zpci_fn;
+     S390MsixInfo msix;
+@@ -352,6 +356,7 @@ struct S390PCIBusDevice {
+     MemoryRegion msix_notify_mr;
+     IndAddr *summary_ind;
+     IndAddr *indicator;
++    Notifier shutdown_notifier;
+     bool pci_unplug_request_processed;
+     bool unplug_requested;
+     bool interp;

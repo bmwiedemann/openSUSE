@@ -242,6 +242,9 @@ Patch00075:     s390x-pv-Add-dump-support.patch
 Patch00076:     block-Handle-curl-7.55.0-7.85.0-version-.patch
 Patch00077:     hw-pvrdma-Protect-against-buggy-or-malic.patch
 Patch00078:     Revert-linux-user-fix-compat-with-glibc-.patch
+Patch00079:     acpi-cpuhp-fix-guest-visible-maximum-acc.patch
+Patch00080:     s390x-pci-shrink-DMA-aperture-to-be-boun.patch
+Patch00081:     s390x-pci-reset-ISM-passthrough-devices-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     openSUSE-switch-to-python3-as-needed.patch
 Patch01001:     openSUSE-build-enable-cross-compilation-.patch
