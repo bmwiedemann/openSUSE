@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:28:08 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.94.1:
+  * Fixes:
+    - Fix types for lifespan, upgrade Starlette to 0.26.1. 
+      PR #9245 by @tiangolo.
+
+- Update to 0.94.0: 
+  * Upgrades
+    - Upgrade python-multipart to support 0.0.6. 
+      PR #9212 by @musicinmybrain.
+    - Upgrade Starlette version, support new lifespan with state. 
+      PR #9239 by @tiangolo.
+  * Docs
+    - Update Sentry link in docs. PR #9218 by @smeubank.
+  * Translations
+    - Add Russian translation for docs/ru/docs/history-design-future.md. 
+      PR #5986 by @Xewus.
+  * Internal
+    - Add pydantic to PyPI classifiers. PR #5914 by @yezz123.
+    - Bump black from 22.10.0 to 23.1.0. PR #5953 by @dependabot[bot].
+    - Bump types-ujson from 5.6.0.0 to 5.7.0.1. 
+      PR #6027 by @dependabot[bot].
+    - Bump dawidd6/action-download-artifact from 2.24.3 to 2.26.0. 
+      PR #6034 by @dependabot[bot].
+    - [pre-commit.ci] pre-commit autoupdate. 
+      PR #5709 by @pre-commit-ci[bot].
+
+-------------------------------------------------------------------
+Fri Mar 10 11:38:38 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.93.0:
+  * Features
+    - Add support for lifespan async context managers (superseding 
+      startup and shutdown events). Initial PR #2944 by @uSpike.
+  * Docs
+    - Fix formatting in docs/en/docs/tutorial/metadata.md for ReDoc. 
+      PR #6005 by @eykamp.
+  * Translations
+    - Tamil translations - initial setup. PR #5564 by @gusty1g.
+    - Add French translation for docs/fr/docs/advanced/path-operation-advanced-configuration.md. 
+      PR #9221 by @axel584.
+    - Add French translation for docs/tutorial/debugging.md. 
+      PR #9175 by @frabc.
+    - Initiate Armenian translation setup. PR #5844 by @har8.
+    - Add French translation for deployment/manually.md. 
+      PR #3693 by @rjNemo.
+  * Internal
+    - Update translation bot messages. PR #9206 by @tiangolo.
+    - Update translations bot to use Discussions, and notify when a
+      PR is done. PR #9183 by @tiangolo.
+    - Update sponsors-badges. PR #9182 by @tiangolo.
+    - Update FastAPI People. PR #9181 by @github-actions[bot].
+    - Log GraphQL errors in FastAPI People, because it returns 200,
+      with a payload with an error. PR #9171 by @tiangolo.
+    - Fix/workaround GitHub Actions in Docker with git for FastAPI 
+      People. PR #9169 by @tiangolo.
+    - Refactor FastAPI Experts to use only discussions now that 
+      questions are migrated. PR #9165 by @tiangolo.
+    - Upgrade analytics. PR #6025 by @tiangolo.
+    - Upgrade and re-enable installing Typer-CLI. 
+      PR #6008 by @tiangolo.
+
+-------------------------------------------------------------------
 Thu Feb 16 16:19:51 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.92.0:
