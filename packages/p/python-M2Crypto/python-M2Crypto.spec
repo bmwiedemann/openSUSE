@@ -1,7 +1,7 @@
 #
 # spec file for package python-M2Crypto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch0:         CVE-2020-25657-Bleichenbacher-attack.patch
 Patch1:         openssl-stop-parsing-header.patch
 # Patch-FIX-OPENSUSE add test skips for openssl 3.x
 Patch2:         https://src.fedoraproject.org/rpms/m2crypto/raw/d7be0dd83ee5a414544d99dcc62cde4ad5998f0c/f/m2crypto-0.38-ossl3-tests.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/m2crypto/m2crypto/-/merge_requests/284
+Patch3:         openssl-adapt-tests-for-3.1.0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}

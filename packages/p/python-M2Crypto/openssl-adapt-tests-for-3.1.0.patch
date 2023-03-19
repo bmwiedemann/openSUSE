@@ -1,0 +1,22 @@
+From a72341e20fd781b59beb59a27b222d32d021076e Mon Sep 17 00:00:00 2001
+From: Otto Hollmann <otto.hollmann@suse.com>
+Date: Thu, 16 Mar 2023 11:21:04 +0100
+Subject: [PATCH] Adapt tests for OpenSSL v3.1.0
+
+---
+ tests/test_ssl.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_ssl.py b/tests/test_ssl.py
+index 6b9e1216..029e11ab 100644
+--- a/tests/test_ssl.py
++++ b/tests/test_ssl.py
+@@ -411,6 +411,7 @@ class MiscSSLClientTestCase(BaseSSLClientTestCase):
+                 warnings.simplefilter('ignore', DeprecationWarning)
+                 ctx = SSL.Context('tlsv1')
+             s = SSL.Connection(ctx)
++            s.set_cipher_list('DEFAULT:@SECLEVEL=0')
+             with six.assertRaisesRegex(self, SSL.SSLError,
+                                        r'version|unexpected eof'):
+                 s.connect(self.srv_addr)
+--
