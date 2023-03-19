@@ -559,4 +559,12 @@
     key setup speed.</comment>
     <requestid>1068136</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>7d54346e72de7d82d9eb5449284bb451</srcmd5>
+    <version>1.99.13</version>
+    <time>1679238989</time>
+    <user>dimstar_suse</user>
+    <comment>- Readd detached signature.</comment>
+    <requestid>1072685</requestid>
+  </revision>
 </revisionlist>

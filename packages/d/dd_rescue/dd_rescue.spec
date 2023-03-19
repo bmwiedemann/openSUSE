@@ -28,7 +28,7 @@ License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Base
 URL:            http://www.garloff.de/kurt/linux/ddrescue/
 Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
-# Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
+Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
