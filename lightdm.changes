@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 15:25:32 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Split bash-completion to separate sub-package
+
+-------------------------------------------------------------------
 Tue Aug  9 09:56:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir
