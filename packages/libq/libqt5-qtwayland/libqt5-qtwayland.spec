@@ -26,7 +26,7 @@
 %define so_version 5.15.8
 %define tar_version qtwayland-everywhere-src-%{version}
 Name:           libqt5-qtwayland
-Version:        5.15.8+kde57
+Version:        5.15.8+kde63
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later

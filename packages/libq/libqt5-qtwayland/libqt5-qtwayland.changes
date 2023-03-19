@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:17:47 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde63:
+  * Client: Remove flip popup constraints
+  * client: set_constraint_adjustment() for popups in xdg
+  * client: Do not cast placeholder screens to QWaylandScreen
+  * Client: Manage QMimeData lifecycle
+  * client: Force a roundtrip when an XdgOutput is not ready yet
+  * Client: Fix handling of Qt::BlankCursor
+
+-------------------------------------------------------------------
 Mon Jan  9 09:24:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde57, rebased upstream:
