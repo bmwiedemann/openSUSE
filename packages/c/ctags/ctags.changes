@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  2 10:40:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- mark u-a generics as non-%ghost
+
+-------------------------------------------------------------------
 Wed Jan 18 13:06:30 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - CVE-2022-4515.patch: fixes arbitrary command execution via

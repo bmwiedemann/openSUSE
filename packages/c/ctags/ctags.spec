@@ -80,8 +80,6 @@ mv %{buildroot}%{_mandir}/man1/ctags{,-exuberant}.1
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 ln -s %{_sysconfdir}/alternatives/ctags              %{buildroot}%{_bindir}/ctags
 ln -s %{_sysconfdir}/alternatives/ctags.1%{ext_man}  %{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
-ln -s %{_bindir}/ctags-exuberant                     %{buildroot}%{_sysconfdir}/alternatives/ctags
-ln -s %{_mandir}/man1/ctags.1%{ext_man}              %{buildroot}%{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
 %post
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
@@ -94,12 +92,12 @@ if [ ! -f %{_bindir}/ctags-exuberant ]; then
 fi
 
 %files
-%doc EXTENDING.html FAQ README
 %license COPYING
+%doc EXTENDING.html FAQ README
+%{_bindir}/ctags
 %{_bindir}/ctags-exuberant
 %{_mandir}/man1/ctags-exuberant.1%{ext_man}
-%ghost %{_bindir}/ctags
-%ghost %{_mandir}/man1/ctags.1%{ext_man}
+%{_mandir}/man1/ctags.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/ctags
 %ghost %{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
