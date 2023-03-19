@@ -25,6 +25,7 @@ Summary:        Low Complexity Communication Codec (LC3)
 License:        Apache-2.0
 URL:            https://github.com/google/liblc3
 Source:         %{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
