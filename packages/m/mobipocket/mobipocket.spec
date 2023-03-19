@@ -17,8 +17,9 @@
 
 
 %define rname kdegraphics-mobipocket
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define lname libqmobipocket
+%define sover 2
+
 %bcond_without released
 Name:           mobipocket
 Version:        22.12.3
@@ -39,9 +40,17 @@ BuildRequires:  cmake(Qt5Gui)
 %description
 Mobipocket E-book support for Okular.
 
+%package -n %{lname}%{sover}
+Summary:        E-book plugin and library
+Provides:       mobipocket = %{version}
+Obsoletes:      mobipocket < %{version}
+
+%description -n %{lname}%{sover}
+Mobipocket E-book plugin and library.
+
 %package devel
 Summary:        E-book plugin and library
-Requires:       %{name} = %{version}
+Requires:       %{lname}%{sover} = %{version}
 
 %description devel
 Mobipocket E-book plugin and library.
@@ -53,15 +62,15 @@ library
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-%ldconfig_scriptlets
+%ldconfig_scriptlets -n %{lname}%{sover}
 
-%files
+%files -n %{lname}%{sover}
 %license COPYING
 %{_kf5_libdir}/libqmobipocket.so.*
 
