@@ -57,4 +57,12 @@
   do anything by default. [boo#1189023]</comment>
     <requestid>1034811</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6de11de7777b2a53a79888b55ae92c3f</srcmd5>
+    <version>2.3.1</version>
+    <time>1679238955</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix &quot;no such built-in model&quot; due to missing build dependency</comment>
+    <requestid>1072487</requestid>
+  </revision>
 </revisionlist>

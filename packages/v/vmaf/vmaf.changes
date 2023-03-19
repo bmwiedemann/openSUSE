@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 16 21:06:47 UTC 2023 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Fix "no such built-in model" due to missing build dependency
+
+-------------------------------------------------------------------
 Wed Nov  9 10:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop recommends on vmaf-data, the package is gone since vmaf 2.x.

@@ -1,7 +1,7 @@
 #
 # spec file for package vmaf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47
 BuildRequires:  nasm
 BuildRequires:  pkg-config
+# Need /usr/bin/xxd for build
+BuildRequires:  vim
 Provides:       bundled(libsvm) = 3.18
 
 %description
