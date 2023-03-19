@@ -1,0 +1,5 @@
+<package name="golangci-lint" project="openSUSE:Factory">
+  <title>golangci-lint CLI tool to run Go linters fast</title>
+  <description>golangci-lint is a fast Go linters runner. It runs linters in parallel, uses caching, supports yaml config, has integrations with all major IDE and has dozens of linters included.</description>
+  <devel project="devel:languages:go" package="golangci-lint"/>
+</package>

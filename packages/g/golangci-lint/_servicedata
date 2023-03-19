@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/golangci/golangci-lint.git</param>
+              <param name="changesrevision">a12be2d59a0e2d99e1c64efabc55d737f352fc7d</param></service></servicedata>
