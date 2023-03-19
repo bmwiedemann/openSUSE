@@ -1,7 +1,7 @@
 Index: driver/XScreenSaver_ad.h
 ===================================================================
---- driver/XScreenSaver_ad.h.orig
-+++ driver/XScreenSaver_ad.h
+--- a/driver/XScreenSaver_ad.h
++++ b/driver/XScreenSaver_ad.h
 @@ -1,35 +1,35 @@
  "#error Do not run app-defaults files through xrdb!",
  "#error That does not do what you might expect.",
@@ -61,8 +61,8 @@ Index: driver/XScreenSaver_ad.h
  				metaballs --root			    \\n\
 Index: driver/XScreenSaver.ad.in
 ===================================================================
---- driver/XScreenSaver.ad.in.orig
-+++ driver/XScreenSaver.ad.in
+--- a/driver/XScreenSaver.ad.in
++++ b/driver/XScreenSaver.ad.in
 @@ -28,7 +28,7 @@
  
  ! /* (xrdb prevention kludge: whole file)

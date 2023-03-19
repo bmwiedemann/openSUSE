@@ -3,8 +3,8 @@ change default background to black
 ================================================================================
 Index: utils/resources.c
 ===================================================================
---- utils/resources.c.orig
-+++ utils/resources.c
+--- a/utils/resources.c
++++ b/utils/resources.c
 @@ -176,7 +176,7 @@ get_pixel_resource (Display *dpy, Colorm
    if (s) free (s);
  

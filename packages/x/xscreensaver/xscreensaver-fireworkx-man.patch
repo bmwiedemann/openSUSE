@@ -1,7 +1,7 @@
 Index: hacks/fireworkx.man
 ===================================================================
---- hacks/fireworkx.man.orig
-+++ hacks/fireworkx.man
+--- a/hacks/fireworkx.man
++++ b/hacks/fireworkx.man
 @@ -9,7 +9,7 @@ fireworkx \- pyrotechnic explosions eye-
  [\-\-root]
  [\-\-window\-id \fInumber\fP]

@@ -1,7 +1,7 @@
 Index: hacks/Makefile.in
 ===================================================================
---- hacks/Makefile.in.orig
-+++ hacks/Makefile.in
+--- a/hacks/Makefile.in
++++ b/hacks/Makefile.in
 @@ -18,8 +18,8 @@ datarootdir	= @datarootdir@
  datadir		= @datadir@
  mandir		= @mandir@
@@ -15,8 +15,8 @@ Index: hacks/Makefile.in
  HACK_CONF_DIR	= @HACK_CONF_DIR@
 Index: hacks/glx/Makefile.in
 ===================================================================
---- hacks/glx/Makefile.in.orig
-+++ hacks/glx/Makefile.in
+--- a/hacks/glx/Makefile.in
++++ b/hacks/glx/Makefile.in
 @@ -19,8 +19,8 @@ datarootdir	= @datarootdir@
  datadir		= @datadir@
  mandir		= @mandir@

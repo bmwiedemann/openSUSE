@@ -35,7 +35,6 @@ Source99:       xscreensaver-rpmlintrc
 Patch5:         xscreensaver-background.patch
 Patch20:        xscreensaver-mansuffix.patch
 Patch21:        xscreensaver-default-screensaver.patch
-Patch24:        xscreensaver-slideshow-dri-detect.patch
 Patch29:        xscreensaver-ignore-no-pwent-password.patch
 Patch32:        xscreensaver-fireworkx-man.patch
 # PATCH-FIX-OPENSUSE xscreensaver-webcollage-dictpath.patch seife+obs@b1-systems.com -- Add /var/lib/dict/words to search path for word dictionaries.
@@ -151,19 +150,7 @@ This packages contains additional graphics demos.
 %lang_package
 
 %prep
-%setup -q
-%patch5
-%patch20
-%patch21
-# FIXME: Test, whether this patch is still needed:
-%patch24 -p1
-%patch29
-%patch32
-%patch42
-%patch43 -p1
-%patch45 -p1
-%patch46 -p1
-%patch47 -p1
+%autosetup -p1
 # KDE, GNOME and MATE have there own screensavers:
 #echo 'NotShowIn=KDE;GNOME;MATE;' >> driver/screensaver-properties.desktop.in
 cp -f %{SOURCE4} xscreensaver-desktops-generate

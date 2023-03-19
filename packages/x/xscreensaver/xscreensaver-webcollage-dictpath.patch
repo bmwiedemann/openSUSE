@@ -1,7 +1,7 @@
 Index: hacks/webcollage
 ===================================================================
---- hacks/webcollage.orig
-+++ hacks/webcollage
+--- a/hacks/webcollage
++++ b/hacks/webcollage
 @@ -827,6 +827,7 @@ sub pick_image_from_rss($$) {
  
  sub pick_dictionary() {

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 16 13:18:10 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Drop obsolete patch (bsc#1203594).
+  - xscreensaver-slideshow-dri-detect.patch
+- Use autosetup
+
+-------------------------------------------------------------------
 Mon Mar  6 00:44:00 UTC 2023 - Jason Sikes <jsikes@suse.com>
 
 - Added spec file changes to handle hard-coded PAM directories.
