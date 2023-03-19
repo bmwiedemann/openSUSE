@@ -39,4 +39,12 @@
     <comment>- Update to version 0.26 (forwarded request 1059878 from jfkw)</comment>
     <requestid>1059879</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b2451b3fee5a48cef2983c8623941bb4</srcmd5>
+    <version>0.27</version>
+    <time>1679239008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27 (forwarded request 1072867 from jfkw)</comment>
+    <requestid>1072868</requestid>
+  </revision>
 </revisionlist>

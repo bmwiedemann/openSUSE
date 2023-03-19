@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="localonly">
     <param name="url">https://github.com/grisu48/openqa-mon.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="version">v0.26</param>
+    <param name="revision">main</param>
+    <param name="version">v0.27</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="localonly"/>

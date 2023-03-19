@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 18 22:38:42 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- _service obs_scm revision change branch to main from master which
+  no longer exists.
+
+-------------------------------------------------------------------
+Thu Mar 16 09:38:05 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.27
+  * Fix incomplete jobs not considered with --exit
+  * Refactoring of the revtui screen
+  * Introduce the --input parameter in openqa-mon
+  * Many small bugfixes
+
+-------------------------------------------------------------------
 Fri Jan 13 09:29:18 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 0.26
