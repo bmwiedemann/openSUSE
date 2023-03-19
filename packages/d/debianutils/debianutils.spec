@@ -1,7 +1,7 @@
 #
 # spec file for package debianutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Source:         http://ftp.debian.org/debian/pool/main/d/%{name}/%{name}_%{versi
 install -Dt %{buildroot}%{_bindir} ischroot
 install -Dt %{buildroot}%{_sbindir} add-shell
 install -Dt %{buildroot}%{_sbindir} remove-shell
-install -Dt %{buildroot}%{_sbindir} run-parts
+install -Dt %{buildroot}%{_bindir} run-parts
 install -Dt %{buildroot}%{_sbindir} update-shells
 
 install -m 0644 -Dt %{buildroot}%{_mandir}/man1 ischroot.1
@@ -57,7 +57,7 @@ install -m 0644 -Dt %{buildroot}%{_mandir}/man8 update-shells.8
 %{_bindir}/ischroot
 %{_sbindir}/add-shell
 %{_sbindir}/remove-shell
-%{_sbindir}/run-parts
+%{_bindir}/run-parts
 %{_sbindir}/update-shells
 %{_mandir}/man1/ischroot.1%{?ext_man}
 %{_mandir}/man8/add-shell.8%{?ext_man}

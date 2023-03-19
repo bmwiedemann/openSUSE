@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 14 20:58:02 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Move run-parts to /usr/bin, Run-parts runs just fast as regular user.
+
+-------------------------------------------------------------------
 Fri Sep 10 13:07:28 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 5.4:
