@@ -1,7 +1,7 @@
 #
 # spec file for package lzo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.oberhumer.com/opensource/lzo/
 Source:         https://www.oberhumer.com/opensource/%{name}/download/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch1:         https://src.fedoraproject.org/rpms/lzo/raw/master/f/lzo-2.08-rhbz1309225.patch
+Patch1:         https://src.fedoraproject.org/rpms/lzo/raw/main/f/lzo-2.08-rhbz1309225.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 LZO is a portable lossless data compression library written in ANSI C.

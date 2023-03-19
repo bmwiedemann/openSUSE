@@ -314,4 +314,16 @@ No GPL-2.0 &quot;only&quot; licenses found in the package (forwarded request 131
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868545</requestid>
   </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>baa7aaf1739f8d8ae36557b6d97019d9</srcmd5>
+    <version>2.10</version>
+    <time>1679238991</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust lzo-2.08-rhbz1309225.patch download reference
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+- add lzo-2.08-rhbz1309225.patch to avoid aliasing issues</comment>
+    <requestid>1072688</requestid>
+  </revision>
 </revisionlist>

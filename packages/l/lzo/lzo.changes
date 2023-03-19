@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:27:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- adjust lzo-2.08-rhbz1309225.patch download reference
+
+-------------------------------------------------------------------
+Wed Mar  8 11:17:20 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Tue Jan 26 08:33:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add lzo-2.08-rhbz1309225.patch to avoid aliasing issues 
+- add lzo-2.08-rhbz1309225.patch to avoid aliasing issues
 
 -------------------------------------------------------------------
 Wed Nov 20 09:04:53 UTC 2019 - Martin Liška <mliska@suse.cz>
