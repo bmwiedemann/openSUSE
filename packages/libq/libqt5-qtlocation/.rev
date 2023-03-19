@@ -442,4 +442,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1069151</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>52e6b9e9a9cd71dfabe1b34127efb0ea</srcmd5>
+    <version>5.15.8+kde4</version>
+    <time>1679238965</time>
+    <user>dimstar_suse</user>
+    <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
+    <requestid>1072580</requestid>
+  </revision>
 </revisionlist>

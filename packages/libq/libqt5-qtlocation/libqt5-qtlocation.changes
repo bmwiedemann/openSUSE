@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 06 07:13:25 UTC 2023 - fvogt@suse.com
+
+- Update to version 5.15.8+kde4:
+  * Update mapbox-gl-native
+- Drop patches, now upstream:
+  * 0001-Add-some-missing-cstdint-inclusions-872.patch
+
+-------------------------------------------------------------------
 Fri Mar  3 11:19:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with GCC 13 (boo#1207470):
