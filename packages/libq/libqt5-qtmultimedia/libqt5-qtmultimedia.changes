@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:14:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde3:
+  * Drop obsolete QtOpengl dependency
+  * Pass explicit GL api when initializing GStreamer backend
+
+-------------------------------------------------------------------
 Mon Jan  9 09:21:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde1, rebased upstream:
