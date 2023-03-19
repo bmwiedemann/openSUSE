@@ -157,4 +157,12 @@ Changes in 0.19.0:
   * Drop support for Python 3.4</comment>
     <requestid>982861</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>134e79a88f11bf75ee0b267ace821257</srcmd5>
+    <version>0.20.0</version>
+    <time>1679238995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072756</requestid>
+  </revision>
 </revisionlist>

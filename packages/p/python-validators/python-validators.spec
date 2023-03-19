@@ -1,7 +1,7 @@
 #
 # spec file for package python-validators
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 3.4.0
-Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.4.0}
 # /SECTION
 %python_subpackages
 
