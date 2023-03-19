@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:14:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde9:
+  * TGA Plugin: Fix reading of CMapDepth
+  * Implement support for file memory mapping for tiff reading
+  * Explicitly include QVarLengthArray header
+
+-------------------------------------------------------------------
 Mon Jan  9 09:21:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde6, rebased upstream:
