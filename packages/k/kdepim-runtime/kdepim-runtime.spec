@@ -38,7 +38,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_system-devel
-BuildRequires:  libkolabxml-devel >= 1.1
+BuildRequires:  cmake(Libkolabxml) >= 1.1
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -86,6 +86,7 @@ Recommends:     kalendarac
 Requires:       akonadi-plugin-calendar
 Requires:       akonadi-plugin-contacts
 Requires:       akonadi-plugin-mime
+Requires:       akonadi-server
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 Provides:       kio-pimlibs = %{version}
