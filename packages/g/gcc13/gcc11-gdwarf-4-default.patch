@@ -12,11 +12,11 @@ index 376687d91b1..613003eb14f 100644
  
  #ifndef USED_FOR_TARGET
 diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
-index 09f7cf13eb6..dbc2cf5429a 100644
+index 04ca9d9b02b..944019edbc1 100644
 --- a/gcc/doc/invoke.texi
 +++ b/gcc/doc/invoke.texi
-@@ -10860,9 +10860,8 @@ possible.
- @opindex gdwarf
+@@ -11255,9 +11255,8 @@ possible.
+ @itemx -gdwarf-@var{version}
  Produce debugging information in DWARF format (if that is supported).
  The value of @var{version} may be either 2, 3, 4 or 5; the default
 -version for most targets is 5 (with the exception of VxWorks, TPF and

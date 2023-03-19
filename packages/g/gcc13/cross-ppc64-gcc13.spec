@@ -103,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git5428
+Version:        13.0.1+git6669
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -332,7 +332,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %endif
 %patch51
 %patch60 -p1
-%patch61
+%patch61 -p1
 
 #test patching end
 
@@ -697,14 +697,11 @@ amdgcn-amdhsa,\
 %if %{with bootstrap}
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}
 	--with-build-config=bootstrap-lto-lean \
-	--enable-link-mutex \
 %endif
 %else
 	--disable-bootstrap \
 %endif
-%ifarch riscv64
 	--enable-link-mutex \
-%endif
 	$CONFARGS \
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST} || \

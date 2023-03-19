@@ -83,11 +83,11 @@ gcc/java/ChangeLog:
  libgomp/libgomp.texi      |    2 -
  22 files changed, 131 insertions(+), 70 deletions(-)
 
-Index: gcc/Makefile.in
-===================================================================
---- gcc/Makefile.in.orig
-+++ gcc/Makefile.in
-@@ -3306,8 +3306,29 @@ install-no-fixedincludes:
+diff --git a/gcc/Makefile.in b/gcc/Makefile.in
+index 6001c9e3b55..3dd359b63fe 100644
+--- a/gcc/Makefile.in
++++ b/gcc/Makefile.in
+@@ -3330,8 +3330,29 @@ install-no-fixedincludes:
  
  doc: $(BUILD_INFO) $(GENERATED_MANPAGES)
  
@@ -119,7 +119,7 @@ Index: gcc/Makefile.in
  
  info: $(INFOFILES) lang.info @GENINSRC@ srcinfo lang.srcinfo
  
-@@ -3363,21 +3384,41 @@ gcc-vers.texi: $(BASEVER) $(DEVPHASE)
+@@ -3387,21 +3408,41 @@ gcc-vers.texi: $(BASEVER) $(DEVPHASE)
  # patterns.  To use them, put each of the specific targets with its
  # specific dependencies but no build commands.
  
@@ -168,7 +168,7 @@ Index: gcc/Makefile.in
  			-I $(gcc_docdir)/include -o $@ $<; \
  	fi
  
-@@ -3787,11 +3828,11 @@ install-driver: installdirs xgcc$(exeext
+@@ -3811,11 +3852,11 @@ install-driver: installdirs xgcc$(exeext)
  # $(INSTALL_DATA) might be a relative pathname, so we can't cd into srcdir
  # to do the install.
  install-info:: doc installdirs \
@@ -185,7 +185,7 @@ Index: gcc/Makefile.in
  	lang.install-info
  
  $(DESTDIR)$(infodir)/%.info: doc/%.info installdirs
-@@ -4030,8 +4071,11 @@ uninstall: lang.uninstall
+@@ -4054,8 +4095,11 @@ uninstall: lang.uninstall
  	-rm -rf $(DESTDIR)$(bindir)/$(GCOV_INSTALL_NAME)$(exeext)
  	-rm -rf $(DESTDIR)$(man1dir)/$(GCC_INSTALL_NAME)$(man1ext)
  	-rm -rf $(DESTDIR)$(man1dir)/cpp$(man1ext)
@@ -199,10 +199,10 @@ Index: gcc/Makefile.in
  	for i in ar nm ranlib ; do \
  	  install_name=`echo gcc-$$i|sed '$(program_transform_name)'`$(exeext) ;\
  	  target_install_name=$(target_noncanonical)-`echo gcc-$$i|sed '$(program_transform_name)'`$(exeext) ; \
-Index: gcc/ada/gnat-style.texi
-===================================================================
---- gcc/ada/gnat-style.texi.orig
-+++ gcc/ada/gnat-style.texi
+diff --git a/gcc/ada/gnat-style.texi b/gcc/ada/gnat-style.texi
+index f3b1c29a24f..46bd21535cf 100644
+--- a/gcc/ada/gnat-style.texi
++++ b/gcc/ada/gnat-style.texi
 @@ -12,7 +12,7 @@
  @finalout
  @dircategory GNU Ada Tools 
@@ -212,10 +212,10 @@ Index: gcc/ada/gnat-style.texi
  @end direntry
  
  @c %**end of header
-Index: gcc/ada/gnat_rm.texi
-===================================================================
---- gcc/ada/gnat_rm.texi.orig
-+++ gcc/ada/gnat_rm.texi
+diff --git a/gcc/ada/gnat_rm.texi b/gcc/ada/gnat_rm.texi
+index 212ed3df9d8..bed8ce40548 100644
+--- a/gcc/ada/gnat_rm.texi
++++ b/gcc/ada/gnat_rm.texi
 @@ -12,7 +12,7 @@
  @finalout
  @dircategory GNU Ada Tools 
@@ -225,10 +225,10 @@ Index: gcc/ada/gnat_rm.texi
  @end direntry
  
  @c %**end of header
-Index: gcc/ada/gnat_ugn.texi
-===================================================================
---- gcc/ada/gnat_ugn.texi.orig
-+++ gcc/ada/gnat_ugn.texi
+diff --git a/gcc/ada/gnat_ugn.texi b/gcc/ada/gnat_ugn.texi
+index a1daff92fbe..514931ec139 100644
+--- a/gcc/ada/gnat_ugn.texi
++++ b/gcc/ada/gnat_ugn.texi
 @@ -12,7 +12,7 @@
  @finalout
  @dircategory GNU Ada Tools 
@@ -238,11 +238,11 @@ Index: gcc/ada/gnat_ugn.texi
  @end direntry
  
  @c %**end of header
-Index: gcc/d/Make-lang.in
-===================================================================
---- gcc/d/Make-lang.in.orig
-+++ gcc/d/Make-lang.in
-@@ -240,10 +240,11 @@ D_TEXI_FILES = \
+diff --git a/gcc/d/Make-lang.in b/gcc/d/Make-lang.in
+index 4feebac982b..8a9ac65f8ab 100644
+--- a/gcc/d/Make-lang.in
++++ b/gcc/d/Make-lang.in
+@@ -246,10 +246,11 @@ D_TEXI_FILES = \
  	$(gcc_docdir)/include/gcc-common.texi \
  	gcc-vers.texi
  
@@ -256,8 +256,8 @@ Index: gcc/d/Make-lang.in
 +	  $(MAKEINFO) $(MAKEINFOFLAGS) $(MAKEINFODEFS) -I $(gcc_docdir) \
  		-I $(gcc_docdir)/include -o $@ $<; \
  	else true; fi
-
-@@ -273,11 +274,11 @@ gdc.pod: d/gdc.texi
+ 
+@@ -274,11 +275,11 @@ gdc.pod: d/gdc.texi
  d.all.cross: gdc-cross$(exeext)
  d.start.encap: gdc$(exeext)
  d.rest.encap:
@@ -271,7 +271,7 @@ Index: gcc/d/Make-lang.in
  	-cp -p $^ $(srcdir)/doc
  d.srcextra:
  
-@@ -314,7 +315,7 @@ d.install-common: installdirs
+@@ -319,7 +320,7 @@ d.install-common: installdirs
  
  d.install-plugin:
  
@@ -280,7 +280,7 @@ Index: gcc/d/Make-lang.in
  
  d.install-pdf: doc/gdc.pdf
  	@$(NORMAL_INSTALL)
-@@ -364,7 +365,7 @@ d.uninstall:
+@@ -369,7 +370,7 @@ d.uninstall:
  	-rm -rf $(DESTDIR)$(bindir)/$(D_INSTALL_NAME)$(exeext)
  	-rm -rf $(DESTDIR)$(man1dir)/$(D_INSTALL_NAME)$(man1ext)
  	-rm -rf $(DESTDIR)$(bindir)/$(D_TARGET_INSTALL_NAME)$(exeext)
@@ -289,11 +289,11 @@ Index: gcc/d/Make-lang.in
  
  # Clean hooks.
  
-Index: gcc/d/gdc.texi
-===================================================================
---- gcc/d/gdc.texi.orig
-+++ gcc/d/gdc.texi
-@@ -36,7 +36,7 @@ man page gfdl(7).
+diff --git a/gcc/d/gdc.texi b/gcc/d/gdc.texi
+index 24b6ee00478..1a35bb099e6 100644
+--- a/gcc/d/gdc.texi
++++ b/gcc/d/gdc.texi
+@@ -38,7 +38,7 @@ man page gfdl(7).
  @format
  @dircategory Software development
  @direntry
@@ -302,11 +302,11 @@ Index: gcc/d/gdc.texi
  @end direntry
  @end format
  
-Index: gcc/doc/cpp.texi
-===================================================================
---- gcc/doc/cpp.texi.orig
-+++ gcc/doc/cpp.texi
-@@ -50,7 +50,7 @@ This manual contains no Invariant Sectio
+diff --git a/gcc/doc/cpp.texi b/gcc/doc/cpp.texi
+index 536167445ab..8afa4b2521e 100644
+--- a/gcc/doc/cpp.texi
++++ b/gcc/doc/cpp.texi
+@@ -50,7 +50,7 @@ This manual contains no Invariant Sections.  The Front-Cover Texts are
  @ifinfo
  @dircategory Software development
  @direntry
@@ -315,10 +315,10 @@ Index: gcc/doc/cpp.texi
  @end direntry
  @end ifinfo
  
-Index: gcc/doc/cppinternals.texi
-===================================================================
---- gcc/doc/cppinternals.texi.orig
-+++ gcc/doc/cppinternals.texi
+diff --git a/gcc/doc/cppinternals.texi b/gcc/doc/cppinternals.texi
+index a8ddb5c190e..e8fe1fcf2d8 100644
+--- a/gcc/doc/cppinternals.texi
++++ b/gcc/doc/cppinternals.texi
 @@ -7,7 +7,7 @@
  @ifinfo
  @dircategory Software development
@@ -328,11 +328,11 @@ Index: gcc/doc/cppinternals.texi
  @end direntry
  @end ifinfo
  
-Index: gcc/doc/extend.texi
-===================================================================
---- gcc/doc/extend.texi.orig
-+++ gcc/doc/extend.texi
-@@ -24506,7 +24506,7 @@ want to write code that checks whether t
+diff --git a/gcc/doc/extend.texi b/gcc/doc/extend.texi
+index 1ae68b0f20a..b07b6c044da 100644
+--- a/gcc/doc/extend.texi
++++ b/gcc/doc/extend.texi
+@@ -24497,7 +24497,7 @@ want to write code that checks whether these features are available, you can
  test for the GNU compiler the same way as for C programs: check for a
  predefined macro @code{__GNUC__}.  You can also use @code{__GNUG__} to
  test specifically for GNU C++ (@pxref{Common Predefined Macros,,
@@ -341,11 +341,11 @@ Index: gcc/doc/extend.texi
  
  @menu
  * C++ Volatiles::       What constitutes an access to a volatile object.
-Index: gcc/doc/gcc.texi
-===================================================================
---- gcc/doc/gcc.texi.orig
-+++ gcc/doc/gcc.texi
-@@ -63,12 +63,12 @@ Texts being (a) (see below), and with th
+diff --git a/gcc/doc/gcc.texi b/gcc/doc/gcc.texi
+index 7019365429d..9d9cb743a2d 100644
+--- a/gcc/doc/gcc.texi
++++ b/gcc/doc/gcc.texi
+@@ -63,12 +63,12 @@ Texts being (a) (see below), and with the Back-Cover Texts being (b)
  @ifnottex
  @dircategory Software development
  @direntry
@@ -373,11 +373,11 @@ Index: gcc/doc/gcc.texi
  
  @menu
  * G++ and GCC::     You can compile C or C++ programs.
-Index: gcc/doc/gccint.texi
-===================================================================
---- gcc/doc/gccint.texi.orig
-+++ gcc/doc/gccint.texi
-@@ -49,7 +49,7 @@ Texts being (a) (see below), and with th
+diff --git a/gcc/doc/gccint.texi b/gcc/doc/gccint.texi
+index 33cf7fdafce..8c76bf8a0c6 100644
+--- a/gcc/doc/gccint.texi
++++ b/gcc/doc/gccint.texi
+@@ -49,7 +49,7 @@ Texts being (a) (see below), and with the Back-Cover Texts being (b)
  @ifnottex
  @dircategory Software development
  @direntry
@@ -386,7 +386,7 @@ Index: gcc/doc/gccint.texi
  @end direntry
  This file documents the internals of the GNU compilers.
  @sp 1
-@@ -81,7 +81,7 @@ write front ends for new languages.  It
+@@ -81,7 +81,7 @@ write front ends for new languages.  It corresponds to the compilers
  @value{VERSION_PACKAGE}
  @end ifset
  version @value{version-GCC}.  The use of the GNU compilers is documented in a
@@ -395,10 +395,10 @@ Index: gcc/doc/gccint.texi
  Compiler Collection (GCC)}.
  
  This manual is mainly a reference manual rather than a tutorial.  It
-Index: gcc/doc/install.texi
-===================================================================
---- gcc/doc/install.texi.orig
-+++ gcc/doc/install.texi
+diff --git a/gcc/doc/install.texi b/gcc/doc/install.texi
+index 8ef5c1414da..b6c3dec7a60 100644
+--- a/gcc/doc/install.texi
++++ b/gcc/doc/install.texi
 @@ -89,7 +89,7 @@ Free Documentation License}''.
  @end ifinfo
  @dircategory Software development
@@ -408,11 +408,11 @@ Index: gcc/doc/install.texi
  @end direntry
  
  @c Part 3 Titlepage and Copyright
-Index: gcc/doc/invoke.texi
-===================================================================
---- gcc/doc/invoke.texi.orig
-+++ gcc/doc/invoke.texi
-@@ -16744,7 +16744,7 @@ One of the standard libraries bypassed b
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 04ca9d9b02b..92f6ba2bb67 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -17687,7 +17687,7 @@ One of the standard libraries bypassed by @option{-nostdlib} and
  @option{-nodefaultlibs} is @file{libgcc.a}, a library of internal subroutines
  which GCC uses to overcome shortcomings of particular machines, or special
  needs for some languages.
@@ -421,7 +421,7 @@ Index: gcc/doc/invoke.texi
  Collection (GCC) Internals},
  for more discussion of @file{libgcc.a}.)
  In most cases, you need @file{libgcc.a} even when you want to avoid
-@@ -16860,7 +16860,7 @@ or @option{-nodefaultlibs} you should usually specify @option{-lgcc} as well.
+@@ -17696,7 +17696,7 @@ or @option{-nodefaultlibs} you should usually specify @option{-lgcc} as well.
  This ensures that you have no unresolved references to internal GCC
  library subroutines.
  (An example of such an internal subroutine is @code{__main}, used to ensure C++
@@ -429,8 +429,8 @@ Index: gcc/doc/invoke.texi
 +constructors are called; @pxref{Collect2,,@code{collect2}, @value{fngccint},
  GNU Compiler Collection (GCC) Internals}.)
  
- @item -nostdlib++
-@@ -34229,7 +34229,7 @@ Note that you can also specify places to
+ @opindex nostdlib++
+@@ -35074,7 +35074,7 @@ Note that you can also specify places to search using options such as
  @option{-B}, @option{-I} and @option{-L} (@pxref{Directory Options}).  These
  take precedence over places specified using environment variables, which
  in turn take precedence over those specified by the configuration of GCC@.
@@ -439,7 +439,7 @@ Index: gcc/doc/invoke.texi
  GNU Compiler Collection (GCC) Internals}.
  
  @table @env
-@@ -34409,7 +34409,7 @@ the headers it contains change.
+@@ -35254,7 +35254,7 @@ the headers it contains change.
  
  A precompiled header file is searched for when @code{#include} is
  seen in the compilation.  As it searches for the included file
@@ -448,10 +448,10 @@ Index: gcc/doc/invoke.texi
  compiler looks for a precompiled header in each directory just before it
  looks for the include file in that directory.  The name searched for is
  the name specified in the @code{#include} with @samp{.gch} appended.  If
-Index: gcc/doc/libgcc.texi
-===================================================================
---- gcc/doc/libgcc.texi.orig
-+++ gcc/doc/libgcc.texi
+diff --git a/gcc/doc/libgcc.texi b/gcc/doc/libgcc.texi
+index 73aa803f97b..e005588b88e 100644
+--- a/gcc/doc/libgcc.texi
++++ b/gcc/doc/libgcc.texi
 @@ -24,7 +24,7 @@ that needs them.
  GCC will also generate calls to C library routines, such as
  @code{memcpy} and @code{memset}, in some cases.  The set of routines
@@ -461,10 +461,10 @@ Index: gcc/doc/libgcc.texi
  
  These routines take arguments and return values of a specific machine
  mode, not a specific C type.  @xref{Machine Modes}, for an explanation
-Index: gcc/fortran/Make-lang.in
-===================================================================
---- gcc/fortran/Make-lang.in.orig
-+++ gcc/fortran/Make-lang.in
+diff --git a/gcc/fortran/Make-lang.in b/gcc/fortran/Make-lang.in
+index 1666fd8f0ff..96ec8861a3d 100644
+--- a/gcc/fortran/Make-lang.in
++++ b/gcc/fortran/Make-lang.in
 @@ -116,7 +116,8 @@ fortran.tags: force
  	cd $(srcdir)/fortran; $(ETAGS) -o TAGS.sub *.cc *.h; \
  	$(ETAGS) --include TAGS.sub --include ../TAGS.sub
@@ -488,7 +488,7 @@ Index: gcc/fortran/Make-lang.in
  	    -o $@ $<; \
  	else true; fi
  
-@@ -267,7 +268,7 @@ fortran.install-common: install-finclude
+@@ -267,7 +268,7 @@ fortran.install-common: install-finclude-dir installdirs
  
  fortran.install-plugin:
  
@@ -506,11 +506,11 @@ Index: gcc/fortran/Make-lang.in
  
  #
  # Clean hooks:
-Index: gcc/fortran/gfortran.texi
-===================================================================
---- gcc/fortran/gfortran.texi.orig
-+++ gcc/fortran/gfortran.texi
-@@ -101,7 +101,7 @@ Texts being (a) (see below), and with th
+diff --git a/gcc/fortran/gfortran.texi b/gcc/fortran/gfortran.texi
+index c483e13686d..d0c243de08c 100644
+--- a/gcc/fortran/gfortran.texi
++++ b/gcc/fortran/gfortran.texi
+@@ -101,7 +101,7 @@ Texts being (a) (see below), and with the Back-Cover Texts being (b)
  @ifinfo
  @dircategory Software development
  @direntry
@@ -519,11 +519,11 @@ Index: gcc/fortran/gfortran.texi
  @end direntry
  This file documents the use and the internals of
  the GNU Fortran compiler, (@command{gfortran}).
-Index: libffi/Makefile.am
-===================================================================
---- libffi/Makefile.am.orig
-+++ libffi/Makefile.am
-@@ -28,6 +28,8 @@ TEXINFO_TEX   = ../gcc/doc/include/texin
+diff --git a/libffi/Makefile.am b/libffi/Makefile.am
+index c6d6f849c53..6fbf374a2e7 100644
+--- a/libffi/Makefile.am
++++ b/libffi/Makefile.am
+@@ -28,6 +28,8 @@ TEXINFO_TEX   = ../gcc/doc/include/texinfo.tex
  # Defines info, dvi, pdf and html targets
  MAKEINFOFLAGS = -I $(srcdir)/../gcc/doc/include
  info_TEXINFOS = doc/libffi.texi
@@ -551,11 +551,11 @@ Index: libffi/Makefile.am
  	@touch $@
  
  CLEANFILES = $(STAMP_GENINSRC) $(STAMP_BUILD_INFO)
-Index: libffi/Makefile.in
-===================================================================
---- libffi/Makefile.in.orig
-+++ libffi/Makefile.in
-@@ -249,7 +249,8 @@ AM_V_texidevnull = $(am__v_texidevnull_@
+diff --git a/libffi/Makefile.in b/libffi/Makefile.in
+index 5524a6a571e..1898ffee446 100644
+--- a/libffi/Makefile.in
++++ b/libffi/Makefile.in
+@@ -249,7 +249,8 @@ AM_V_texidevnull = $(am__v_texidevnull_@AM_V@)
  am__v_texidevnull_ = $(am__v_texidevnull_@AM_DEFAULT_V@)
  am__v_texidevnull_0 = > /dev/null
  am__v_texidevnull_1 = 
@@ -565,7 +565,7 @@ Index: libffi/Makefile.in
  am__TEXINFO_TEX_DIR = $(srcdir)/../gcc/doc/include
  DVIS = doc/libffi.dvi
  PDFS = doc/libffi.pdf
-@@ -473,6 +474,8 @@ TEXINFO_TEX = ../gcc/doc/include/texinfo
+@@ -473,6 +474,8 @@ TEXINFO_TEX = ../gcc/doc/include/texinfo.tex
  # Defines info, dvi, pdf and html targets
  MAKEINFOFLAGS = -I $(srcdir)/../gcc/doc/include
  info_TEXINFOS = doc/libffi.texi
@@ -574,7 +574,7 @@ Index: libffi/Makefile.in
  @GENINSRC_FALSE@STAMP_GENINSRC = 
  
  # AM_CONDITIONAL on configure option --generated-files-in-srcdir
-@@ -1906,14 +1909,15 @@ uninstall-am: uninstall-dvi-am uninstall
+@@ -1906,14 +1909,15 @@ uninstall-am: uninstall-dvi-am uninstall-html-am uninstall-info-am \
  
  all-local: $(STAMP_GENINSRC)
  
@@ -594,11 +594,11 @@ Index: libffi/Makefile.in
  	@touch $@
  @LIBFFI_BUILD_VERSIONED_SHLIB_SUN_TRUE@@LIBFFI_BUILD_VERSIONED_SHLIB_TRUE@libffi.map-sun : libffi.map $(top_srcdir)/../contrib/make_sunver.pl \
  @LIBFFI_BUILD_VERSIONED_SHLIB_SUN_TRUE@@LIBFFI_BUILD_VERSIONED_SHLIB_TRUE@		 $(libffi_la_OBJECTS) $(libffi_la_LIBADD)
-Index: libffi/doc/libffi.texi
-===================================================================
---- libffi/doc/libffi.texi.orig
-+++ libffi/doc/libffi.texi
-@@ -43,7 +43,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN
+diff --git a/libffi/doc/libffi.texi b/libffi/doc/libffi.texi
+index 7fd3625d992..62dc76d6d64 100644
+--- a/libffi/doc/libffi.texi
++++ b/libffi/doc/libffi.texi
+@@ -43,7 +43,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
  @dircategory Development
  @direntry
@@ -607,10 +607,10 @@ Index: libffi/doc/libffi.texi
  @end direntry
  
  @titlepage
-Index: libgomp/Makefile.am
-===================================================================
---- libgomp/Makefile.am.orig
-+++ libgomp/Makefile.am
+diff --git a/libgomp/Makefile.am b/libgomp/Makefile.am
+index 428f7a9dab5..cce97d85bc8 100644
+--- a/libgomp/Makefile.am
++++ b/libgomp/Makefile.am
 @@ -129,14 +129,17 @@ endif
  
  all-local: $(STAMP_GENINSRC)
@@ -633,11 +633,11 @@ Index: libgomp/Makefile.am
  	@touch $@
  
  
-Index: libgomp/Makefile.in
-===================================================================
---- libgomp/Makefile.in.orig
-+++ libgomp/Makefile.in
-@@ -618,6 +618,7 @@ info_TEXINFOS = libgomp.texi
+diff --git a/libgomp/Makefile.in b/libgomp/Makefile.in
+index 2c81ccacc1d..0fb67876733 100644
+--- a/libgomp/Makefile.in
++++ b/libgomp/Makefile.in
+@@ -612,6 +612,7 @@ info_TEXINFOS = libgomp.texi
  
  # AM_CONDITIONAL on configure check ACX_CHECK_PROG_VER([MAKEINFO])
  @BUILD_INFO_TRUE@STAMP_BUILD_INFO = stamp-build-info
@@ -645,7 +645,7 @@ Index: libgomp/Makefile.in
  CLEANFILES = $(STAMP_GENINSRC) $(STAMP_BUILD_INFO)
  MAINTAINERCLEANFILES = $(srcdir)/libgomp.info
  MULTISRCTOP = 
-@@ -1398,15 +1399,16 @@ env.lo: libgomp_f.h
+@@ -1392,15 +1393,16 @@ env.lo: libgomp_f.h
  env.o: libgomp_f.h
  
  all-local: $(STAMP_GENINSRC)
@@ -667,11 +667,11 @@ Index: libgomp/Makefile.in
  	@touch $@
  
  # target overrides
-Index: libgomp/libgomp.texi
-===================================================================
---- libgomp/libgomp.texi.orig
-+++ libgomp/libgomp.texi
-@@ -31,7 +31,7 @@ texts being (a) (see below), and with th
+diff --git a/libgomp/libgomp.texi b/libgomp/libgomp.texi
+index 1b6358db4dc..99726051c33 100644
+--- a/libgomp/libgomp.texi
++++ b/libgomp/libgomp.texi
+@@ -31,7 +31,7 @@ texts being (a) (see below), and with the Back-Cover Texts being (b)
  @ifinfo
  @dircategory GNU Libraries
  @direntry
@@ -680,10 +680,10 @@ Index: libgomp/libgomp.texi
  @end direntry
  
  This manual documents libgomp, the GNU Offloading and Multi Processing
-Index: libitm/libitm.texi
-===================================================================
---- libitm/libitm.texi.orig
-+++ libitm/libitm.texi
+diff --git a/libitm/libitm.texi b/libitm/libitm.texi
+index 9bb818fa53f..e62a90231f5 100644
+--- a/libitm/libitm.texi
++++ b/libitm/libitm.texi
 @@ -20,7 +20,7 @@ Free Documentation License''.
  @ifinfo
  @dircategory GNU Libraries
@@ -693,10 +693,10 @@ Index: libitm/libitm.texi
  @end direntry
  
  This manual documents the GNU Transactional Memory Library.
-Index: libquadmath/libquadmath.texi
-===================================================================
---- libquadmath/libquadmath.texi.orig
-+++ libquadmath/libquadmath.texi
+diff --git a/libquadmath/libquadmath.texi b/libquadmath/libquadmath.texi
+index 2e3a62511b1..ac658f5f2a7 100644
+--- a/libquadmath/libquadmath.texi
++++ b/libquadmath/libquadmath.texi
 @@ -25,7 +25,7 @@ copy and modify this GNU manual.
  @ifinfo
  @dircategory GNU Libraries

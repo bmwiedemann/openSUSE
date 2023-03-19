@@ -71,4 +71,13 @@
 - Also package libhwasan_preinit.o on aarch64.</comment>
     <requestid>1061993</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>218f306274543f61df6492887ca597dd</srcmd5>
+    <version>13.0.1+git6669</version>
+    <time>1679239000</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 42630fadbe248717859d61c0244c821c32b4e52c, git6669.
+- Fixes mariadb miscompilation (PR109109). (forwarded request 1071855 from marxin)</comment>
+    <requestid>1071933</requestid>
+  </revision>
 </revisionlist>

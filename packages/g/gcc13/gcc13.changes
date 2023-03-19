@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 14 18:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Bump to 42630fadbe248717859d61c0244c821c32b4e52c, git6669.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:25:35 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Always enable the link mutex.
+
+-------------------------------------------------------------------
+Mon Feb 27 08:34:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Bump to 529e03b9882fe48cfa3c182abb12a5858a5762a2, git6353.
+
+-------------------------------------------------------------------
+Thu Feb 23 10:26:27 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Rebase gcc44-rename-info-files.patch patch.
+
+-------------------------------------------------------------------
 Fri Jan 27 10:35:15 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add support for new front-ends Rust and Modula-2.
