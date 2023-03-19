@@ -619,4 +619,12 @@ from GCC 6).
     <comment>- Add lto-dump binary and link it similarly to e.g. gcov-dump.</comment>
     <requestid>978266</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>58a66fec56f6b5db66e1842496de3677</srcmd5>
+    <version>13</version>
+    <time>1679238998</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch gcc to default 13.</comment>
+    <requestid>1059897</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 19 11:30:13 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Switch gcc to default 13.
+
+-------------------------------------------------------------------
 Fri May 20 09:41:16 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add lto-dump binary and link it similarly to e.g. gcov-dump.

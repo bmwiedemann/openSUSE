@@ -1,7 +1,7 @@
 #
 # spec file for package gcc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,9 +43,9 @@ Name:           gcc
 %endif
 %define libgccjit_sover 0
 URL:            http://gcc.gnu.org/
-%define gcc_version 12
-%define gcc_suffix 12
-Version:        12
+%define gcc_version 13
+%define gcc_suffix 13
+Version:        13
 Release:        0
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
@@ -136,6 +136,7 @@ The system GNU Compiler documentation.
 
 
 # install / update the entries
+
 %post -n gcc-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
