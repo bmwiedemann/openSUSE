@@ -193,6 +193,17 @@ Obsoletes:      %{name}-qt-devel < %{version}
 This package contains development files needed for developing
 Qt5-based LightDM clients.
 
+%package bash-completion
+Summary:        Bash completion for lightdm
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+bash command line completion support for lightdm.
+
 %prep
 %autosetup -p1
 
@@ -351,10 +362,6 @@ fi
 %{_datadir}/accountsservice/interfaces/org.freedesktop.DisplayManager.AccountsService.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.DisplayManager.AccountsService.xml
 %{_datadir}/polkit-1/actions/org.freedesktop.DisplayManager.AccountsService.policy
-%dir %{_datadir}/bash-completion/
-%dir %{_datadir}/bash-completion/completions/
-%{_datadir}/bash-completion/completions/dm-tool
-%{_datadir}/bash-completion/completions/lightdm
 %dir %{_datadir}/xgreeters/
 %ghost %attr(711,lightdm,lightdm) %dir %{rundir}/lightdm/
 %attr(750,lightdm,lightdm) %dir %{_localstatedir}/log/lightdm/
@@ -402,5 +409,11 @@ fi
 %{_libdir}/lib%{qt5_libname}.so
 %{_libdir}/pkgconfig/lib%{qt5_libname}.pc
 %{_includedir}/%{qt5_libname}/
+
+%files bash-completion
+%dir %{_datadir}/bash-completion/
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/dm-tool
+%{_datadir}/bash-completion/completions/lightdm
 
 %changelog

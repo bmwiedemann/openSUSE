@@ -1376,4 +1376,12 @@
     <comment>* Move D-Bus conf file to $(datadir)/dbus-1/system.d (bsc#1205939)</comment>
     <requestid>1041376</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>73d65c251fe245e636ed454b8e397be7</srcmd5>
+    <version>1.32.0</version>
+    <time>1679238952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072473</requestid>
+  </revision>
 </revisionlist>
