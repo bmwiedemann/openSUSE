@@ -29,7 +29,7 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.8+kde160
+Version:        5.15.8+kde183
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
