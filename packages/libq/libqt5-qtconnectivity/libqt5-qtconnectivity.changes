@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:04:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde8:
+  * SDP scanner: encode input URLs and escape XML-specific characters
+  * sdpscanner: fix URL processing
+  * sdpscanner: fix potential unwanted truncation for SDP_TEXT_STR{8,16,32}
+
+-------------------------------------------------------------------
 Mon Jan  9 09:17:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde5, rebased upstream:
