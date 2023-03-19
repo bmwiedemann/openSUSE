@@ -198,4 +198,12 @@
   * CycloneDX SBOM generation added</comment>
     <requestid>1065966</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3708023f3d929e655ee36914b3fb51c8</srcmd5>
+    <version>1.8.3</version>
+    <time>1679238978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072660</requestid>
+  </revision>
 </revisionlist>

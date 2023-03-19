@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 16 17:29:47 CET 2023 - ro@suse.de
+
+- 1.8.3
+  * rerun generate_sbom for full media on the combined trees
+  * handle full media like pool media (which it contains)
+  (bsc#1209384) 
+
+-------------------------------------------------------------------
 Wed Feb 15 08:15:57 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - 1.8.2
