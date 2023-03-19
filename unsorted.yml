@@ -327,6 +327,7 @@ unsorted:
   - a2ps 
   - a2ps-devel 
   - a2ps-h 
+  - a2ps-lang 
   - a52dec 
   - aaa_base-malloccheck 
   - aaa_base-wsl 
@@ -2349,7 +2350,6 @@ unsorted:
   - compton-conf 
   - compton-conf-lang 
   - conauto 
-  - concurrent 
   - conftest 
   - conftest-bash-completion 
   - conftest-fish-completion 
@@ -13426,6 +13426,11 @@ unsorted:
   - libopencascade-modelingdata7_7 
   - libopencascade-visualization7_7 
   - libopencl-clang11: [x86_64] 
+  - libopencore-amr-devel 
+  - libopencore-amrnb0 
+  - libopencore-amrnb0-32bit: [x86_64] 
+  - libopencore-amrwb0 
+  - libopencore-amrwb0-32bit: [x86_64] 
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
@@ -17120,7 +17125,6 @@ unsorted:
   - mingw32-cpp 
   - mingw32-cross-binutils 
   - mingw32-cross-binutils-utils 
-  - mingw32-cross-breakpad-tools 
   - mingw32-cross-cpp 
   - mingw32-cross-cpp-bootstrap 
   - mingw32-cross-gcc 
@@ -17174,7 +17178,6 @@ unsorted:
   - mingw64-cpp 
   - mingw64-cross-binutils 
   - mingw64-cross-binutils-utils 
-  - mingw64-cross-breakpad-tools 
   - mingw64-cross-cpp 
   - mingw64-cross-cpp-bootstrap 
   - mingw64-cross-gcc 
@@ -24084,6 +24087,7 @@ unsorted:
   - python310-gphoto2 
   - python310-gprof2dot 
   - python310-gps3 
+  - python310-gpstime 
   - python310-gpxpy 
   - python310-grab 
   - python310-graphene 
@@ -26320,6 +26324,7 @@ unsorted:
   - python311-ansi2html 
   - python311-ansicolor 
   - python311-ansicolors 
+  - python311-ansiwrap 
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
   - python311-anyio 
@@ -27372,6 +27377,7 @@ unsorted:
   - python311-gphoto2 
   - python311-gprof2dot 
   - python311-gps3 
+  - python311-gpstime 
   - python311-gpxpy 
   - python311-grab 
   - python311-graphene 
@@ -28004,6 +28010,7 @@ unsorted:
   - python311-pandocfilters 
   - python311-panel 
   - python311-panflute 
+  - python311-papermill 
   - python311-parallax 
   - python311-param 
   - python311-parameterized 
@@ -30702,6 +30709,7 @@ unsorted:
   - python38-gphoto2 
   - python38-gprof2dot 
   - python38-gps3 
+  - python38-gpstime 
   - python38-gpxpy 
   - python38-grab 
   - python38-graphene 
@@ -34122,6 +34130,7 @@ unsorted:
   - python39-gphoto2 
   - python39-gprof2dot 
   - python39-gps3 
+  - python39-gpstime 
   - python39-gpxpy 
   - python39-grab 
   - python39-graphene 
