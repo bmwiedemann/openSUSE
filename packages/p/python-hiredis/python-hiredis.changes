@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 19 09:47:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Replace 0001-Use-system-libhiredis.patch with
+  the upstream provided (gh#redis/hiredis-py!161)
+  161-use-system-hiredis.patch for proper use of the system
+  hiredis library.
+
+-------------------------------------------------------------------
 Sat Mar 18 20:17:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.2.2:

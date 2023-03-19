@@ -23,13 +23,15 @@ Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
 URL:            https://github.com/redis/hiredis-py
 Source:         https://files.pythonhosted.org/packages/source/h/hiredis/hiredis-%{version}.tar.gz
-Patch0:         0001-Use-system-libhiredis.patch
 # PATCH-FIX-UPSTREAM drop-vendor-sources.patch gh#redis/hiredis-py#90 mcepl@suse.com
 # Allow to use platform hiredis libs on build
-Patch1:         drop-vendor-sources.patch
+Patch0:         drop-vendor-sources.patch
 # PATCH-FIX-UPSTREAM 159-sdsalloc-to-alloc.patch gh#redis/hiredis-py#158 mcepl@suse.com
 # Don't use sdsalloc, we actually don't need it
-Patch2:         159-sdsalloc-to-alloc.patch
+Patch1:         159-sdsalloc-to-alloc.patch
+# PATCH-FIX-UPSTREAM 161-use-system-hiredis.patch gh#redis/hiredis-py#158 mcepl@suse.com
+# use system hiredis instead
+Patch2:         161-use-system-hiredis.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -43,6 +45,9 @@ Python wrapper for hiredis C connector.
 
 %prep
 %autosetup -p1 -n hiredis-%{version}
+
+# Use system hiredis
+rm -r vendor/hiredis
 
 %build
 %pyproject_wheel
