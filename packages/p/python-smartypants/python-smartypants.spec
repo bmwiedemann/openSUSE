@@ -1,7 +1,7 @@
 #
 # spec file for package python-smartypants
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/leohemsted/smartypants.py
 Source:         https://github.com/leohemsted/smartypants.py/archive/v%{version}.tar.gz#/smartypants-%{version}.tar.gz
+Patch1:         use-sys-executable.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
@@ -43,10 +44,10 @@ typographic punctuation HTML entities.
 
 %prep
 %setup -q -n smartypants.py-%{version}
+%patch1 -p1
 
 %build
 %python_build
-sed -i 's:python:python3:' setup.py smartypants tests/*.py
 
 %install
 %python_install
