@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>KDE Connect</short>
-  <description>KDE Connect is a project that aims to communicate all your devices.</description>
-  <port protocol="tcp" port="1714-1764"/>
-  <port protocol="udp" port="1714-1764"/>
-</service>

@@ -515,4 +515,12 @@
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068792</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>d57ccd301f42886478ba7233ad5f97fa</srcmd5>
+    <version>22.12.3</version>
+    <time>1679238971</time>
+    <user>dimstar_suse</user>
+    <comment>Add -q everywhere (forwarded request 1072554 from Vogtinator)</comment>
+    <requestid>1072593</requestid>
+  </revision>
 </revisionlist>

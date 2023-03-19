@@ -31,13 +31,12 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
-Source101:      kdeconnect-kde-firewalld.xml
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
@@ -60,8 +59,8 @@ BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5WaylandClient)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(x11)
@@ -120,15 +119,61 @@ done
 install -D -m 0644 %{SOURCE100} \
     %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %endif
-# firewalld config file
-install -D -m 0644 %{SOURCE101} \
-    %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop Network RemoteAccess
 
-%ldconfig_scriptlets
+%pre
+# migrate old kdeconnect-kde service
+# XXX: can be removed after some time, the author would suggest after 2023-06-15 has passed
+if grep -q kdeconnect-kde /etc/firewalld/zones/*.xml 2>/dev/null; then
+    echo "Migrating 'kdeconnect-kde' firewalld service to identical 'kdeconnect' shipped with firewalld."
+    sed -i 's/<service name="kdeconnect-kde"\/>/<service name="kdeconnect"\/>/' /etc/firewalld/zones/*.xml
+    if firewall-cmd -q --state; then
+        firewall-cmd --reload
+    fi
+fi
+true
+# migrate kdeconnect-kde end
+
+%post
+%ldconfig
+%if 0%{?is_opensuse}
+if [ $1 -eq 1 ]; then # inital/first package install
+    if [ -x %{_bindir}/firewall-cmd ]; then
+        echo 'Adding kdeconnect service to default and home firewalld zones'
+        if firewall-cmd -q --state; then
+            firewall-cmd -q --add-service=kdeconnect
+            firewall-cmd -q --add-service=kdeconnect --zone=home
+            firewall-cmd -q --runtime-to-permanent
+        else
+            firewall-offline-cmd -q --add-service=kdeconnect
+            firewall-offline-cmd -q --add-service=kdeconnect --zone=home
+        fi
+    fi
+fi
+true
+%endif
+
+%postun
+%ldconfig
+%if 0%{?is_opensuse}
+if [ $1 -eq 0 ]; then # last/final package removal
+    if [ -x %{_bindir}/firewall-cmd ]; then
+        echo 'Removing kdeconnect service from default and home firewalld zones'
+        if firewall-cmd -q --state; then
+            firewall-cmd -q --remove-service=kdeconnect
+            firewall-cmd -q --remove-service=kdeconnect --zone=home
+            firewall-cmd -q --runtime-to-permanent
+        else
+            firewall-offline-cmd -q --remove-service=kdeconnect
+            firewall-offline-cmd -q --remove-service-from-zone=kdeconnect --zone=home
+        fi
+    fi
+fi
+true
+%endif
 
 %files zsh-completion
 %dir %{_datadir}/zsh
@@ -148,8 +193,6 @@ install -D -m 0644 %{SOURCE101} \
 %dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
 %dir %{_datadir}/nautilus-python
 %dir %{_kf5_sharedir}/kdeconnect
-%dir %{_prefix}/lib/firewalld
-%dir %{_prefix}/lib/firewalld/services
 %{_datadir}/Thunar/sendto/
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
@@ -182,7 +225,6 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_sharedir}/kdeconnect/kdeconnect_clipboard_config.qml
 %{_kf5_sharedir}/plasma/
 %{_libexecdir}/kdeconnectd
-%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %files lang -f %{name}.lang
 

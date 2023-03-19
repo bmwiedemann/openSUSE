@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 17 09:00:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix some potential scriptlet bugs and style issues
+
+-------------------------------------------------------------------
+Wed Mar  8 17:02:56 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Automatically handle firewalld setup during initial install or final removal
+  of kdeconnect-kde for openSUSE distros. (boo#1175627)
+- Drop kdeconnect-kde-firewalld.xml, service definition now shipped with
+  firewalld package.
+  * the 'kdeconnect-kde' firewalld service is migrated over to 'kdeconnect'
+
+-------------------------------------------------------------------
 Tue Feb 28 09:45:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3
