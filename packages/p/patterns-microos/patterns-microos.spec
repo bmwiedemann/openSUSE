@@ -537,6 +537,7 @@ Suggests:       power-profiles-daemon
 %if 0%{is_opensuse}
 # bnc#430161
 Requires:       NetworkManager
+Requires:       NetworkManager-openconnect-gnome
 Requires:       NetworkManager-openvpn-gnome
 Requires:       canberra-gtk-play
 #
@@ -584,6 +585,7 @@ Requires:       baloo5-file
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin
+Requires:       plasma-nm5-openconnect
 Requires:       plasma-nm5-openvpn
 Requires:       plasma5-addons
 Requires:       plasma5-pa
