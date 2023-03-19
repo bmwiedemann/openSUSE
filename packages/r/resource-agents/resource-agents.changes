@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 16 14:16:12 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.0+git10.fe1a2f88:
+  * Mid: ocf-shellfuncs: Explicitly specify $OCF_RESOURCE_INSTANCE in the p parameter for compatibility.
+  * nfsserver: fix "server scope" functionality to live with additional drop-in files
+  * pgsql: dont run promotable and file checks that could be on shared storage during validate-all action
+  * exportfs: move testdir() to start-action to avoid failing during resource creation (validate-all) and make it create the directory if it doesnt exist
+
+-------------------------------------------------------------------
 Wed Jan 25 13:30:26 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.12.0+git3.5c81805c:

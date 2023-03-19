@@ -1614,4 +1614,16 @@
     <comment>Add bsc number to changes</comment>
     <requestid>1060963</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>5735dff17cd72e8d2707f983a5109194</srcmd5>
+    <version>4.12.0+git10.fe1a2f88</version>
+    <time>1679238954</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.0+git10.fe1a2f88:
+  * Mid: ocf-shellfuncs: Explicitly specify $OCF_RESOURCE_INSTANCE in the p parameter for compatibility.
+  * nfsserver: fix &quot;server scope&quot; functionality to live with additional drop-in files
+  * pgsql: dont run promotable and file checks that could be on shared storage during validate-all action
+  * exportfs: move testdir() to start-action to avoid failing during resource creation (validate-all) and make it create the directory if it doesnt exist</comment>
+    <requestid>1072482</requestid>
+  </revision>
 </revisionlist>
