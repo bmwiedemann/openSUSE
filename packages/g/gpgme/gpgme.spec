@@ -19,12 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
-%bcond_without python2
 %bcond_without python3
 %bcond_with qt
 %else
 %define psuffix qt
-%bcond_with python2
 %bcond_with python3
 %bcond_without qt
 %endif
@@ -60,7 +58,7 @@ BuildRequires:  libassuan-devel >= 2.4.2
 BuildRequires:  libgpg-error-devel >= 1.36
 BuildRequires:  pkgconfig
 BuildRequires:  swig
-%if %{with python2} || %{with python3}
+%if %{with python3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  python-rpm-macros
 %endif
@@ -160,20 +158,6 @@ This package contains the bindings to use the library from Python %{python_versi
 
 %else
 
-%package -n python2-gpg
-Summary:        Python 2 bindings for GPGME, a library for accessing GnuPG
-Group:          Development/Languages/Python
-Provides:       python-gpg = %{version}-%{release}
-Obsoletes:      python-gpg < %{version}-%{release}
-
-%description -n python2-gpg
-GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
-easier for applications. It provides a high-level crypto API for
-encryption, decryption, signing, signature verification, and key
-management.
-
-This package contains the bindings to use the library from Python 2 applications.
-
 %package -n python3-gpg
 Summary:        Python 3 bindings for GPGME, a library for accessing GnuPG
 Group:          Development/Languages/Python
@@ -223,7 +207,7 @@ This package contains the bindings to use the library in Qt C++ applications.
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
 languages="cl cpp"
 
-%if %{with python2} || %{with python3}
+%if %{with python3}
 languages="${languages} python"
 %endif
 
@@ -307,14 +291,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %{_libdir}/cmake/Gpgmepp/GpgmeppConfig*.cmake
 %endif
 
-%if %{with python2} && ! 0%{?python_subpackage_only}
-%files -n python2-gpg
-%license COPYING COPYING.LESSER LICENSES
-%{python2_sitearch}/gpg
-%{python2_sitearch}/gpg-%{version}-py%{python2_version}.egg-info
-%endif
-
-%if %{with python3} || ( 0%{?python_subpackage_only} && %{with python2} )
+%if %{with python3}
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg

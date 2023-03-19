@@ -729,4 +729,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
 - add python311.patch to build language bindings for python 3.11</comment>
     <requestid>1060479</requestid>
   </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>820d80cedd0b992c83d34b1c985591d1</srcmd5>
+    <version>1.18.0</version>
+    <time>1679238973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072624</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 12:18:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop python2 subpackage handling. we do not support python 2.x
+  anymore, and if we would it would happen via singlespec 
+
+-------------------------------------------------------------------
 Mon Jan 23 11:49:07 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update upstream keyring: https://gnupg.org/signature_key.asc
