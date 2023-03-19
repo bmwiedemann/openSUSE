@@ -822,4 +822,14 @@
     <comment></comment>
     <requestid>1005557</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>8c08497172a4acb95fca66bfd4c6979d</srcmd5>
+    <version>1.74.0</version>
+    <time>1679238959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update path regex used in gobjectintrospection.attr: the old one
+  was not sufficiently escaped, which resulted in many more files
+  being scanned than needed.</comment>
+    <requestid>1072522</requestid>
+  </revision>
 </revisionlist>

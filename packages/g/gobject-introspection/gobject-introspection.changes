@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 15 10:28:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update path regex used in gobjectintrospection.attr: the old one
+  was not sufficiently escaped, which resulted in many more files
+  being scanned than needed.
+
+-------------------------------------------------------------------
 Thu Sep 22 17:02:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Switch to pcre2grep (pcre is dead upstream)

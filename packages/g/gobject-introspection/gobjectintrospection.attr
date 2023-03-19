@@ -1,4 +1,4 @@
 %__gobjectintrospection_provides       %{_rpmconfigdir}/gi-find-deps.sh -P
 %__gobjectintrospection_requires       %{_rpmconfigdir}/gi-find-deps.sh -R
-%__gobjectintrospection_path           ^(%{_libdir}/.*\.typelib)|(.*\.gresource)|(.*\.py)|(.*\.js)|(.*\.so)|(%{_bindir}/.*)$
+%__gobjectintrospection_path           ^%{_libdir}/.*\\.typelib$|^%{_bindir}/|\\.(gresource|py|js|so|so\\.[^/]*)$
 %__gobjectintrospection_exclude_path   ^/usr/share/doc/packages/
