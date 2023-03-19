@@ -1,7 +1,7 @@
 #
 # spec file for package librsync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   librsync2
 Name:           librsync
-Version:        2.3.2
+Version:        2.3.4
 Release:        0
 Summary:        A Library for Generating Network Deltas
 License:        LGPL-2.1-or-later
