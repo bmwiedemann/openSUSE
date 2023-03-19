@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Mar 17 14:25:10 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#919
+- always delegate used_features from Action to Device
+- 4.5.86
+
+--------------------------------------------------------------------
 Wed Mar 15 07:58:39 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#918
