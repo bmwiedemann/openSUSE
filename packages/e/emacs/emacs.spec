@@ -710,8 +710,6 @@ done
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/ctags		%{buildroot}%{_bindir}/ctags
 ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
-ln -sf %{_bindir}/gnuctags				%{buildroot}%{_sysconfdir}/alternatives/ctags
-ln -sf %{_mandir}/man1/gnuctags.1%{ext_man}		%{buildroot}%{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
 %if %{with nativecomp}
 touch eln.list
@@ -4936,13 +4934,13 @@ fi
 %defattr(-,root,root)
 %doc etc/ETAGS.EBNF
 %doc etc/ETAGS.README
+%{_bindir}/ctags
 %{_bindir}/etags
 %{_bindir}/gnuctags
+%{_mandir}/man1/ctags.1%{ext_man}
 %{_mandir}/man1/etags.1%{ext_man}
 %{_mandir}/man1/gnuctags.1%{ext_man}
-%ghost %{_bindir}/ctags
 %ghost %{_sysconfdir}/alternatives/ctags
-%ghost %{_mandir}/man1/ctags.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/ctags.1%{ext_man}
 
 %changelog

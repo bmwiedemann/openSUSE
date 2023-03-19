@@ -1770,4 +1770,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   boo#1209090,CVE-2023-27986: Fix Emacs Lisp code injection in emacsclient-mail.desktop</comment>
     <requestid>1070372</requestid>
   </revision>
+  <revision rev="173" vrev="4">
+    <srcmd5>4e3681d0405d963e350425ede31d4651</srcmd5>
+    <version>28.2</version>
+    <time>1679238957</time>
+    <user>dimstar_suse</user>
+    <comment>- don't create ghosted files (forwarded request 1072440 from dirkmueller)</comment>
+    <requestid>1072521</requestid>
+  </revision>
 </revisionlist>
