@@ -150,6 +150,9 @@ Source100:      llvm-%{tsan_commit}.tar.xz
 Patch7:         dont-force-gold-on-arm64.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
 Patch8:         gcc-go.patch
+Patch9:         bsc1208491.patch
+Patch10:        bsc1208491-41724.patch
+Patch11:        bsc1208491-41725.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -226,6 +229,9 @@ Go runtime race detector libraries. Install this package if you wish to use the
 sed -i "s/\$gcc_go_version/%{gcc_go_version}/" $RPM_SOURCE_DIR/gcc-go.patch
 %patch8 -p1
 %endif
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 cp %{SOURCE4} .
 

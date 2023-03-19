@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 17:04:37 UTC 2023 - Jaroslav Jindrak <jjindrak@suse.com>
+
+- Fix for SG#65262, bsc#1208491:
+  * go#57855 boo#1208270 security: fix CVE-2022-41723 bsc1208491.patch
+  * go#58001 boo#1208271 security: fix CVE-2022-41724 bsc1208491-41724.patch
+  * go#58006 boo#1208272 security: fix CVE-2022-41725 bsc1208491-41725.patch
+
+-------------------------------------------------------------------
 Tue Jan 10 22:13:49 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.10 (released 2023-01-10) includes fixes to cgo, the

@@ -358,4 +358,15 @@
   * go#56323 net/http: bad handling of HEAD requests with a body (forwarded request 1057691 from jfkw)</comment>
     <requestid>1057693</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4ae04da8ec0b4c1d35ac8926c6feb663</srcmd5>
+    <version>1.18.10</version>
+    <time>1679238975</time>
+    <user>dimstar_suse</user>
+    <comment>Add bugzilla references:
+  * go#57855 boo#1208270 security: fix CVE-2022-41723 bsc1208491.patch
+  * go#58001 boo#1208271 security: fix CVE-2022-41724 bsc1208491-41724.patch
+  * go#58006 boo#1208272 security: fix CVE-2022-41725 bsc1208491-41725.patch (forwarded request 1072628 from jfkw)</comment>
+    <requestid>1072629</requestid>
+  </revision>
 </revisionlist>
