@@ -1,0 +1,103 @@
+From 62b3e3491f283a5b5ac243e1f5904ad17e0353bc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ra=C3=BAl=20Osuna?=
+ <17827278+raulillo82@users.noreply.github.com>
+Date: Tue, 31 Jan 2023 13:13:32 +0100
+Subject: [PATCH] Fixes pkg.version_cmp on openEuler systems and a few 
+ other OS flavors (#576)
+
+* Fix bug/issue #540
+
+* Fix bug/issue #540
+
+* Add tests for __virtual__ function
+
+* Minor changes to align with upstream
+---
+ changelog/540.fixed                           |  1 +
+ salt/modules/rpm_lowpkg.py                    | 12 +++++--
+ tests/pytests/unit/modules/test_rpm_lowpkg.py | 31 +++++++++++++++++++
+ 3 files changed, 42 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/540.fixed
+
+diff --git a/changelog/540.fixed b/changelog/540.fixed
+new file mode 100644
+index 0000000000..50cb42bf40
+--- /dev/null
++++ b/changelog/540.fixed
+@@ -0,0 +1 @@
++Fix pkg.version_cmp on openEuler and a few other os flavors.
+diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
+index c8e984c021..01cd575bc7 100644
+--- a/salt/modules/rpm_lowpkg.py
++++ b/salt/modules/rpm_lowpkg.py
+@@ -62,14 +62,22 @@ def __virtual__():
+             " grains.",
+         )
+ 
+-    enabled = ("amazon", "xcp", "xenserver", "virtuozzolinux")
++    enabled = (
++        "amazon",
++        "xcp",
++        "xenserver",
++        "virtuozzolinux",
++        "virtuozzo",
++        "issabel pbx",
++        "openeuler",
++    )
+ 
+     if os_family in ["redhat", "suse"] or os_grain in enabled:
+         return __virtualname__
+     return (
+         False,
+         "The rpm execution module failed to load: only available on redhat/suse type"
+-        " systems or amazon, xcp or xenserver.",
++        " systems or amazon, xcp, xenserver, virtuozzolinux, virtuozzo, issabel pbx or openeuler.",
+     )
+ 
+ 
+diff --git a/tests/pytests/unit/modules/test_rpm_lowpkg.py b/tests/pytests/unit/modules/test_rpm_lowpkg.py
+index f19afa854e..e07f71eb61 100644
+--- a/tests/pytests/unit/modules/test_rpm_lowpkg.py
++++ b/tests/pytests/unit/modules/test_rpm_lowpkg.py
+@@ -35,6 +35,37 @@ def _called_with_root(mock):
+ def configure_loader_modules():
+     return {rpm: {"rpm": MagicMock(return_value=MagicMock)}}
+ 
++def test___virtual___openeuler():
++    patch_which = patch("salt.utils.path.which", return_value=True)
++    with patch.dict(
++        rpm.__grains__, {"os": "openEuler", "os_family": "openEuler"}
++    ), patch_which:
++        assert rpm.__virtual__() == "lowpkg"
++
++
++def test___virtual___issabel_pbx():
++    patch_which = patch("salt.utils.path.which", return_value=True)
++    with patch.dict(
++        rpm.__grains__, {"os": "Issabel Pbx", "os_family": "IssabeL PBX"}
++    ), patch_which:
++        assert rpm.__virtual__() == "lowpkg"
++
++
++def test___virtual___virtuozzo():
++    patch_which = patch("salt.utils.path.which", return_value=True)
++    with patch.dict(
++        rpm.__grains__, {"os": "virtuozzo", "os_family": "VirtuoZZO"}
++    ), patch_which:
++        assert rpm.__virtual__() == "lowpkg"
++
++
++def test___virtual___with_no_rpm():
++    patch_which = patch("salt.utils.path.which", return_value=False)
++    ret = rpm.__virtual__()
++    assert isinstance(ret, tuple)
++    assert ret[0] is False
++
++
+ 
+ # 'list_pkgs' function tests: 2
+ 
+-- 
+2.37.3
+
+

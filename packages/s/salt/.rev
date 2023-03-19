@@ -2194,4 +2194,19 @@ let build start it or we will get libvirt errors.
   * control-the-collection-of-lvm-grains-via-config.patch</comment>
     <requestid>1059578</requestid>
   </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>a010809d3bd130fb5749abf4c5f06284</srcmd5>
+    <version>3005.1</version>
+    <time>1679238972</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes pkg.version_cmp on openEuler systems and a few other OS flavors
+- Make pkg.remove function from zypperpkg module to handle also PTF packages
+- Require python3-jmespath runtime dependency (bsc#1209233)
+- Fix problem with detecting PTF packages (bsc#1208691)
+- Added:
+  * skip-package-names-without-colon-bsc-1208691-578.patch
+  * fixes-pkg.version_cmp-on-openeuler-systems-and-a-few.patch
+  * 3005.1-implement-zypper-removeptf-573.patch</comment>
+    <requestid>1072612</requestid>
+  </revision>
 </revisionlist>
