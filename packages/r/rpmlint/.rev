@@ -4340,4 +4340,12 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1069939</requestid>
   </revision>
+  <revision rev="439" vrev="1">
+    <srcmd5>c613046453823ec3c27d0be691b1de55</srcmd5>
+    <version>2.4.0+git20230316.e10f602</version>
+    <time>1679238996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072571</requestid>
+  </revision>
 </revisionlist>
