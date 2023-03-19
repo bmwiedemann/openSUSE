@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>917714</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9097b9c2852e1e9c4f9e6304e8242c65</srcmd5>
+    <version>2.0.1</version>
+    <time>1679238990</time>
+    <user>dimstar_suse</user>
+    <comment>- add use-sys-executable.patch to run the tests with the flavor
+  python interpreter</comment>
+    <requestid>1072687</requestid>
+  </revision>
 </revisionlist>

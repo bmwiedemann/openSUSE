@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 14 20:32:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add use-sys-executable.patch to run the tests with the flavor
+  python interpreter 
+
+-------------------------------------------------------------------
 Wed Sep  8 10:03:32 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
