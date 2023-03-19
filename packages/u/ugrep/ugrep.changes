@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:50:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.11.0:
+  * Update --format output when used with option -o to also enable
+    option -u to show all matches automatically;
+  * improve --json, --xml, --csv output when used with option -o
+  * update option -o output with headings (when applicable) for
+    every match like GNU grep
+  * update options --format and --replace field %m to output the
+    number of matches sequentially
+  * new --format and --replace field %M outputs number of matching
+    lines
+
+-------------------------------------------------------------------
 Sat Mar 18 08:31:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.10.1:
