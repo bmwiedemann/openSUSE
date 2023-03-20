@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2471,7 +2471,6 @@ unsorted:
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
   - cpp11 
-  - cpp13 
   - cpp7 
   - cppcheck-gui: [x86_64] 
   - cpphs: [x86_64] 
@@ -4335,6 +4334,7 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
+  - gcc 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -6469,6 +6469,7 @@ unsorted:
   - golang-gopkgin-check 
   - golang-org-x-sys 
   - golang-packaging 
+  - golangci-lint 
   - goldendict 
   - goldendict-lang 
   - gom-devel 
@@ -12633,6 +12634,7 @@ unsorted:
   - liblbxutil1 
   - liblbxutil1-32bit: [x86_64] 
   - liblc3-1 
+  - liblc3-1-32bit: [x86_64] 
   - liblc3-devel 
   - liblc3-tools 
   - liblcf0 
@@ -12783,6 +12785,7 @@ unsorted:
   - liblz4-devel 
   - liblzma5-x86-64-v3: [x86_64] 
   - liblzo2-2-32bit: [x86_64] 
+  - liblzo2-2-x86-64-v3: [x86_64] 
   - libm17n0-32bit: [x86_64] 
   - libm2cor18 
   - libm2cor18-32bit: [x86_64] 
@@ -14793,8 +14796,8 @@ unsorted:
   - libstdc++-devel-32bit: [x86_64] 
   - libstdc++6-devel-gcc11 
   - libstdc++6-devel-gcc11-32bit: [x86_64] 
+  - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit: [x86_64] 
-  - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit: [x86_64] 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit: [x86_64] 
@@ -24278,7 +24281,6 @@ unsorted:
   - python310-jinja2-time 
   - python310-jira 
   - python310-jirafs 
-  - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
   - python310-jplephem 
@@ -24835,7 +24837,6 @@ unsorted:
   - python310-pluggy 
   - python310-pluginbase 
   - python310-plumbum 
-  - python310-ply 
   - python310-plyvel 
   - python310-pmw 
   - python310-pname 
@@ -26092,6 +26093,7 @@ unsorted:
   - python311-GridDataFormats 
   - python311-HTTPolice 
   - python311-HeapDict 
+  - python311-HepMC 
   - python311-IMAPClient 
   - python311-IMDbPY 
   - python311-JPype1: [x86_64] 
@@ -26175,6 +26177,7 @@ unsorted:
   - python311-PyQt6-DataVisualization-devel 
   - python311-PyQt6-NetworkAuth 
   - python311-PyQt6-NetworkAuth-devel 
+  - python311-PyQt6-QScintilla 
   - python311-PyQt6-WebEngine: [x86_64] 
   - python311-PyQt6-WebEngine-devel: [x86_64] 
   - python311-PyQt6-devel 
@@ -26199,6 +26202,7 @@ unsorted:
   - python311-Pyphen 
   - python311-Pyro5 
   - python311-QDarkStyle 
+  - python311-QR-Code-generator 
   - python311-QtAwesome 
   - python311-QtPy 
   - python311-QtPy-test 
@@ -26331,6 +26335,7 @@ unsorted:
   - python311-anyjson 
   - python311-anymarkup-core 
   - python311-apache-libcloud 
+  - python311-apfel 
   - python311-apipkg 
   - python311-apiron 
   - python311-apns2 
@@ -26340,6 +26345,7 @@ unsorted:
   - python311-apptools 
   - python311-apsw 
   - python311-arabic-reshaper 
+  - python311-archmage 
   - python311-arf 
   - python311-argcomplete 
   - python311-argh 
@@ -26399,6 +26405,7 @@ unsorted:
   - python311-autopep8 
   - python311-autoray 
   - python311-autoupgrade-ng 
+  - python311-avahi 
   - python311-avro 
   - python311-awkward: [x86_64] 
   - python311-awkward-cpp 
@@ -26761,6 +26768,7 @@ unsorted:
   - python311-bloscpack 
   - python311-blue 
   - python311-blurb 
+  - python311-bmap-tools 
   - python311-bobo 
   - python311-bobodoctestumentation 
   - python311-bokcolmaps 
@@ -26918,6 +26926,7 @@ unsorted:
   - python311-control 
   - python311-conu 
   - python311-convertdate 
+  - python311-cookiecutter 
   - python311-cookies 
   - python311-cooldict 
   - python311-copr 
@@ -27001,6 +27010,7 @@ unsorted:
   - python311-devpi-common 
   - python311-dfVFS 
   - python311-dfdatetime 
+  - python311-dfwinreg 
   - python311-dialite 
   - python311-dictdiffer 
   - python311-dictknife 
@@ -27162,6 +27172,7 @@ unsorted:
   - python311-dukpy-kovidgoyal 
   - python311-dulwich 
   - python311-dynaconf 
+  - python311-e-antic 
   - python311-easy-thumbnails 
   - python311-easydev 
   - python311-easygui 
@@ -27300,6 +27311,7 @@ unsorted:
   - python311-forbiddenfruit 
   - python311-formats 
   - python311-fqdn 
+  - python311-framel 
   - python311-freeipa 
   - python311-freetype-py 
   - python311-freezegun 
@@ -27406,10 +27418,15 @@ unsorted:
   - python311-gwdatafind 
   - python311-gwosc 
   - python311-gwyfile 
+  - python311-gyp 
   - python311-h11 
   - python311-h2 
   - python311-h5netcdf 
   - python311-h5py 
+  - python311-h5py-openmpi1 
+  - python311-h5py-openmpi2 
+  - python311-h5py-openmpi3 
+  - python311-h5py-openmpi4 
   - python311-habanero 
   - python311-hammett 
   - python311-hankel 
@@ -27559,6 +27576,7 @@ unsorted:
   - python311-jaraco.stream 
   - python311-jaraco.text 
   - python311-jaraco.tidelift 
+  - python311-javapackages 
   - python311-javaproperties 
   - python311-jdatetime 
   - python311-jdcal 
@@ -27601,6 +27619,7 @@ unsorted:
   - python311-junit-xml 
   - python311-junitxml 
   - python311-junos-eznc 
+  - python311-jupyter 
   - python311-jupyter-client 
   - python311-jupyter-core 
   - python311-jupyter-events 
@@ -27676,6 +27695,7 @@ unsorted:
   - python311-ldapdomaindump 
   - python311-ldappool 
   - python311-ldaptor 
+  - python311-ldas-tools-al-swig 
   - python311-leather 
   - python311-leglight 
   - python311-lesscpy 
@@ -27688,9 +27708,15 @@ unsorted:
   - python311-libarchive-c 
   - python311-libbde 
   - python311-libcaes 
+  - python311-libcreg 
   - python311-libcst 
+  - python311-libesedb 
   - python311-libevdev 
+  - python311-libevt 
+  - python311-libevtx 
   - python311-libewf 
+  - python311-libexe 
+  - python311-libfmos 
   - python311-libfsapfs 
   - python311-libfsext 
   - python311-libfsfat 
@@ -27699,17 +27725,27 @@ unsorted:
   - python311-libfsxfs 
   - python311-libfvde 
   - python311-libfwnt 
+  - python311-libfwps 
+  - python311-libfwsi 
   - python311-libkdumpfile 
   - python311-liblarch 
   - python311-liblarch-gtk 
+  - python311-liblnk 
   - python311-libluksde 
   - python311-libmodi 
   - python311-libmount 
+  - python311-libmsiecf 
+  - python311-libmsym 
   - python311-libnacl 
+  - python311-libolecf 
+  - python311-libpff 
+  - python311-libpfm 
   - python311-libphdi 
   - python311-libqcow 
+  - python311-libregf 
   - python311-librouteros 
   - python311-libsass 
+  - python311-libscca 
   - python311-libsigscan 
   - python311-libsmdev 
   - python311-libsmraw 
@@ -27717,9 +27753,12 @@ unsorted:
   - python311-libvhdi 
   - python311-libvirt-python 
   - python311-libvmdk 
+  - python311-libvsapm 
   - python311-libvsgpt 
   - python311-libvshadow 
   - python311-libvslvm 
+  - python311-libvsmbr 
+  - python311-libwrc 
   - python311-libxml2 
   - python311-license-expression 
   - python311-ligo-lw: [x86_64] 
@@ -27732,8 +27771,11 @@ unsorted:
   - python311-lineup-widget 
   - python311-link-traits 
   - python311-linkify-it-py 
+  - python311-linode-cli 
   - python311-linstor 
+  - python311-linstor-client 
   - python311-linux-procfs 
+  - python311-lit 
   - python311-littleutils 
   - python311-livereload 
   - python311-llfuse 
@@ -27791,6 +27833,7 @@ unsorted:
   - python311-matrix-nio 
   - python311-matrix_common 
   - python311-maturin 
+  - python311-mautrix 
   - python311-maxminddb 
   - python311-mbstrdecoder 
   - python311-mccabe 
@@ -27814,6 +27857,7 @@ unsorted:
   - python311-mimesis 
   - python311-minidb 
   - python311-minio 
+  - python311-miniupnpc 
   - python311-misaka 
   - python311-mistune 
   - python311-mitmproxy 
@@ -27903,6 +27947,7 @@ unsorted:
   - python311-neovim 
   - python311-nest-asyncio 
   - python311-nested-lookup 
+  - python311-net-snmp 
   - python311-netCDF4 
   - python311-netaddr 
   - python311-netifaces 
@@ -27913,6 +27958,7 @@ unsorted:
   - python311-nibabel 
   - python311-nilearn: [i586] 
   - python311-nine 
+  - python311-nlopt 
   - python311-nltk 
   - python311-nocasedict 
   - python311-nocaselist 
@@ -27959,6 +28005,7 @@ unsorted:
   - python311-oktaloginwrapper 
   - python311-olefile 
   - python311-oletools 
+  - python311-olm 
   - python311-onnx 
   - python311-onnxconverter-common 
   - python311-opcodes 
@@ -27995,6 +28042,7 @@ unsorted:
   - python311-ospd-openvas 
   - python311-outcome 
   - python311-ovirt-engine-sdk 
+  - python311-ovs 
   - python311-pa-ringbuffer 
   - python311-packaging 
   - python311-padaos 
@@ -28088,7 +28136,9 @@ unsorted:
   - python311-pip-licenses 
   - python311-pip-run 
   - python311-pip-shims 
+  - python311-pip-test 
   - python311-pip-tools 
+  - python311-pip-wheel 
   - python311-pipdeptree 
   - python311-pipreqs 
   - python311-pipx 
@@ -28214,6 +28264,7 @@ unsorted:
   - python311-pybind11-stubgen 
   - python311-pybluez 
   - python311-pybtex 
+  - python311-pybugz 
   - python311-pycairo 
   - python311-pycairo-devel 
   - python311-pycapnp 
@@ -28553,6 +28604,7 @@ unsorted:
   - python311-python-ptrace 
   - python311-python-qdatamatrix: [i586] 
   - python311-python-qpid-proton 
+  - python311-python-qprogedit 
   - python311-python-rapidjson 
   - python311-python-redis-lock 
   - python311-python-redmine 
@@ -28622,6 +28674,7 @@ unsorted:
   - python311-qgrid 
   - python311-qpageview 
   - python311-qrcode 
+  - python311-qscintilla-qt5 
   - python311-qstylizer 
   - python311-qsymm 
   - python311-qt3d-qt5 
@@ -28630,6 +28683,10 @@ unsorted:
   - python311-qt5 
   - python311-qt5-devel 
   - python311-qt5-doc 
+  - python311-qt5-quick3d 
+  - python311-qt5-quick3d-devel 
+  - python311-qt5-remoteobjects 
+  - python311-qt5-remoteobjects-devel 
   - python311-qt5-sip 
   - python311-qtcharts-qt5 
   - python311-qtcharts-qt5-api 
@@ -28752,6 +28809,7 @@ unsorted:
   - python311-sambacc 
   - python311-samplerate 
   - python311-sane 
+  - python311-sanlock 
   - python311-sarge 
   - python311-sarif-om 
   - python311-sas7bdat 
@@ -28804,6 +28862,7 @@ unsorted:
   - python311-setuptools-git-versioning 
   - python311-setuptools-rust 
   - python311-setuptools-version-command 
+  - python311-setuptools-wheel 
   - python311-setuptools_scm 
   - python311-setuptools_scm_git_archive 
   - python311-sfs 
@@ -28971,8 +29030,10 @@ unsorted:
   - python311-tabpy 
   - python311-tabulate 
   - python311-tap.py 
+  - python311-targetcli-fb 
   - python311-tasklib 
   - python311-taskw 
+  - python311-tbb 
   - python311-tblib 
   - python311-tcolorpy 
   - python311-technicolor 
@@ -29008,6 +29069,7 @@ unsorted:
   - python311-threadpoolctl 
   - python311-three-merge 
   - python311-threevis 
+  - python311-thrift 
   - python311-thriftpy2 
   - python311-tifffile 
   - python311-time-machine 
@@ -29033,6 +29095,7 @@ unsorted:
   - python311-toolz 
   - python311-toposort 
   - python311-topy 
+  - python311-tornado 
   - python311-tornado6 
   - python311-tortilla 
   - python311-towncrier 
@@ -29123,6 +29186,7 @@ unsorted:
   - python311-usfm2osis 
   - python311-uvicorn 
   - python311-uvloop 
+  - python311-uwsgi-python3 
   - python311-validate-pyproject 
   - python311-validate_email 
   - python311-validators 
@@ -29163,7 +29227,9 @@ unsorted:
   - python311-vulture 
   - python311-w3lib 
   - python311-wadllib 
+  - python311-wafw00f 
   - python311-waitress 
+  - python311-waitress-doc 
   - python311-wakeonlan 
   - python311-warlock 
   - python311-watchdog 
@@ -29186,6 +29252,7 @@ unsorted:
   - python311-websocket-client 
   - python311-websockets 
   - python311-websockify 
+  - python311-wfuzz 
   - python311-whatever 
   - python311-whatthepatch 
   - python311-wheel 
@@ -29286,12 +29353,14 @@ unsorted:
   - python311-zope.schema 
   - python311-zope.security 
   - python311-zope.testbrowser 
+  - python311-zope.testbrowser-test 
   - python311-zope.testing 
   - python311-zope.testrunner 
   - python311-zopfli 
   - python311-zstandard 
   - python311-zstd 
   - python311-zxcvbn 
+  - python311-zypp-plugin 
   - python38 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
@@ -48067,6 +48136,7 @@ unsorted:
   - unit-api-javadoc 
   - units 
   - unittest-cpp-devel 
+  - universal-ctags 
   - univocity-parsers 
   - univocity-parsers-javadoc 
   - unixODBC 

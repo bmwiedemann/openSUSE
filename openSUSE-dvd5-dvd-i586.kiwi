@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230318" schemaversion="4.1">
+<image name="OBS__openSUSE___20230319" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230318</productvar>
+      <productvar name="VERSION">20230319</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230318,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230319,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230318/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230319/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -293,6 +293,7 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp12"/>
+      <repopackage name="cpp13"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
       <repopackage name="cpupower-lang"/>
@@ -504,7 +505,6 @@
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
       <repopackage name="gcab-lang"/>
-      <repopackage name="gcc"/>
       <repopackage name="gcc12"/>
       <repopackage name="gcc12-locale"/>
       <repopackage name="gcin"/>
@@ -2291,6 +2291,7 @@
       <repopackage name="libqgpgme15"/>
       <repopackage name="libqmi-glib5"/>
       <repopackage name="libqmi-tools"/>
+      <repopackage name="libqmobipocket2"/>
       <repopackage name="libqpdf29"/>
       <repopackage name="libqqwing2"/>
       <repopackage name="libqrencode4"/>
@@ -2500,7 +2501,7 @@
       <repopackage name="libstartup-notification-1-0"/>
       <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
-      <repopackage name="libstdc++6-devel-gcc12"/>
+      <repopackage name="libstdc++6-devel-gcc13"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
       <repopackage name="libstoken1"/>
@@ -2775,6 +2776,7 @@
       <repopackage name="libzypp-plugin-appdata"/>
       <repopackage name="lifecycle-data-openSUSE"/>
       <repopackage name="lightdm"/>
+      <repopackage name="lightdm-bash-completion"/>
       <repopackage name="lightdm-gtk-greeter"/>
       <repopackage name="lightdm-gtk-greeter-branding-openSUSE"/>
       <repopackage name="lightdm-gtk-greeter-lang"/>
@@ -2884,7 +2886,6 @@
       <repopackage name="mlterm-sdl2"/>
       <repopackage name="mlterm-wnn"/>
       <repopackage name="mobile-broadband-provider-info"/>
-      <repopackage name="mobipocket"/>
       <repopackage name="ModemManager"/>
       <repopackage name="ModemManager-bash-completion"/>
       <repopackage name="ModemManager-lang"/>
@@ -3538,6 +3539,7 @@
       <repopackage name="python310-iniconfig"/>
       <repopackage name="python310-ipaddr"/>
       <repopackage name="python310-Jinja2"/>
+      <repopackage name="python310-jmespath"/>
       <repopackage name="python310-libvirt-python"/>
       <repopackage name="python310-libxml2"/>
       <repopackage name="python310-linecache2"/>
@@ -3557,6 +3559,7 @@
       <repopackage name="python310-pexpect"/>
       <repopackage name="python310-Pillow"/>
       <repopackage name="python310-pip"/>
+      <repopackage name="python310-ply"/>
       <repopackage name="python310-psutil"/>
       <repopackage name="python310-ptyprocess"/>
       <repopackage name="python310-py"/>
