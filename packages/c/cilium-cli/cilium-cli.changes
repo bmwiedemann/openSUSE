@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:19:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.2:
+  * Prepare for v0.13.2 release
+  * vendor: Pick up the latest cilium
+  * go.mod, vendor: bump github.com/go-openapi/strfmt from 0.21.3
+    to 0.21.5
+  * report IP families that are being tested
+  * Change the default Cilium version to v1.13.1
+  * vendor: Pick up the latest github.com/cilium/charts
+  * uninstall: set "cni.uninstall" to true
+  * ci: bump actions/checkout from 3.3.0 to 3.4.0
+  * ci: bump actions/setup-go from 3.5.0 to 4.0.0
+  * clustermesh: correctly mount the etcd data dir in the init
+    container
+  * Update Go to 1.20.2
+  * refactor: Break generateManifests() into smaller functions
+  * internal/utils: match new snapshot release version format
+  * internal/utils: refactor CheckVersion to return an error
+  * go.mod, vendor: update cilium to latest master to pull in
+    versioncheck fix
+  * Dockerfile: Bump library/golang from `0848e98` to `50e46c1`
+  * connectivity: allow to restrict connectivity test pods using
+    nodeSelector
+  * install: Generate resource quotas from Helm chart
+  * ci: bump docker/setup-buildx-action from 2.4.1 to 2.5.0
+  * helm: fix incorrect log error formatting directive.
+  * Dockerfile: Bump library/golang
+  * go.mod, vendor: bump helm.sh/helm/v3 from 3.11.1 to 3.11.2
+  * ci: bump aws-actions/configure-aws-credentials from 1.7.0 to 2.0.0
+  * Enable L7 and k8s secrets in tests
+  * Adds a test case for L7 policy with TLS
+  * ingress: Clean-up Ingress related resources
+  * ingress: Create Ingress Endpoint
+  * Update Go to 1.20.1
+  * Update stable release to v0.13.1
+  * go.mod, vendor: bump golang.org/x/mod from 0.8.0 to 0.9.0
+  * RELEASE.md: adjust release instructions after change to new
+    release action
+  * .github/workflows: use tag name instead of fully-formed ref in
+    release name
+
+-------------------------------------------------------------------
 Fri Mar 03 13:20:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.1:
