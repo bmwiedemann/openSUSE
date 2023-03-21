@@ -1,7 +1,7 @@
 #
 # spec file for package rawtherapee
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://rawtherapee.com
 Source0:        https://rawtherapee.com/shared/source/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM - Fix build with gcc13 - https://github.com/Beep6581/RawTherapee/pull/6670
+Patch1:         6670.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  glib2-devel
@@ -153,6 +155,7 @@ Latest stable build from "releases" branch.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 test -x "$(type -p gcc-4.9)" && export CC=gcc-4.9

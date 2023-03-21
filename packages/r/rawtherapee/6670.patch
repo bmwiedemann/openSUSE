@@ -1,0 +1,25 @@
+From 311f3422fd25b8306a11186d866d902057fbccb2 Mon Sep 17 00:00:00 2001
+From: Mattia Verga <mattia.verga@tiscali.it>
+Date: Wed, 25 Jan 2023 14:16:19 +0100
+Subject: [PATCH] Add missing include for GCC13 compatibility
+
+Signed-off-by: Mattia Verga <mattia.verga@tiscali.it>
+
+Guillaume: Updated to apply the patch
+---
+ rtengine/dcraw.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/rtengine/dcraw.h b/rtengine/dcraw.h
+index e0a6cda929..aadc0b9698 100644
+--- a/rtengine/dcraw.h
++++ b/rtengine/dcraw.h
+@@ -21,7 +21,7 @@
+ 
+ #include "myfile.h"
+ #include <csetjmp>
+-
++#include <cstdint>
+ 
+ class DCraw
+ {
