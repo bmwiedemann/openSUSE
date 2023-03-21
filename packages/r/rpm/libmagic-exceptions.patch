@@ -1,0 +1,29 @@
+From 4e244280db8d780ac90313785598487f888b8924 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Wed, 15 Mar 2023 19:15:00 +0100
+Subject: [PATCH] add more libmagic exceptions for HTML, SVG and PNG
+
+I noticed there are ~150K .html files in all libreoffice rpm files
+and the detection is significantly delaying package build. Thus, I
+introduce more exceptions for commonly used file formats.
+---
+ build/rpmfc.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git build/rpmfc.c build/rpmfc.c
+index 763a68603..cd9e64348 100644
+--- build/rpmfc.c
++++ build/rpmfc.c
+@@ -1181,6 +1181,9 @@ static const struct skipped_extension_s skipped_extensions[] = {
+ 	{ ".h",  "C Header",                 "text/x-c"   },
+ 	{ ".la", "libtool library file",     "text/plain" },
+ 	{ ".pc", "pkgconfig file",           "text/plain" },
++	{ ".html", "HTML document",                           "text/html" },
++	{ ".png",  "PNG image data",                          "image/png" },
++	{ ".svg",  "SVG Scalable Vector Graphics image",      "image/svg+xml" },
+ 	{ NULL, NULL, NULL }
+ };
+ 
+-- 
+2.39.2
+

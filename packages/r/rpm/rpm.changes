@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:22:23 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch libmagic-exceptions.patch that speeds up libreoffice
+  package build.
+
+-------------------------------------------------------------------
+Thu Mar  9 15:12:11 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- add cpuid_lzcnt.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 13:17:31 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
