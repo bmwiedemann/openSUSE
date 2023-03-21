@@ -173,4 +173,22 @@
     <comment></comment>
     <requestid>1064696</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af2c592b043863542bde227c8f355016</srcmd5>
+    <version>0.5.3</version>
+    <time>1679416828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3
+  * Fix generating of .mo and .json files for nl translation #221
+    (@frenzymadness)
+  * Fix banner icons #220 (@echarles)
+- Release 0.5.2
+  * Add news banner and log #215 (@echarles)
+  * Update get_rendered_contents further marked javascript upgrade
+    #210 (@echarles)
+  * Update security concerns link #218 (@RRosio)
+  * Don't require two different minimal versions of jupyter_server
+    #208 (@hroncok)</comment>
+    <requestid>1072952</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
 Name:           python-nbclassic%{psuffix}
-Version:        0.5.1
+Version:        0.5.3
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -51,7 +51,6 @@ Requires:       python-ipykernel
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 6.1.1
 Requires:       python-jupyter-core >= 4.6.1
-Requires:       python-jupyter-server >= 1.17.0
 Requires:       python-nbconvert >= 5
 Requires:       python-nbformat
 Requires:       python-nest-asyncio >= 1.5
