@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 20 19:16:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.0:
+  * New Dns debug endpoint (#735)
+  * Bump actions/checkout from 3.3.0 to 3.4.0 (#736)
+  * Bump github/codeql-action from 2.2.6 to 2.2.7 (#737)
+  * Bump docker/setup-buildx-action from 2.4.1 to 2.5.0 (#731)
+  * Bump github.com/golang/protobuf from 1.5.2 to 1.5.3 (#729)
+  * Bump github/codeql-action from 2.2.5 to 2.2.6 (#732)
+
+-------------------------------------------------------------------
 Thu Mar 09 05:46:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.53.1:
