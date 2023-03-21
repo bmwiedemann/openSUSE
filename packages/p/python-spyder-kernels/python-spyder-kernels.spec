@@ -47,7 +47,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 22.1}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 %if %{with dasktest}
 BuildRequires:  %{python_module dask-distributed}
 %endif
@@ -86,7 +86,9 @@ all inside the IDE.
 %if ! %{with dasktest}
 donttest=("-k" "not test_dask_multiprocessing")
 %endif
-%pytest "${donttest[@]}"
+# no xarray for python38
+python38_ignore="--ignore spyder_kernels/utils/tests/test_nsview.py"
+%pytest "${donttest[@]}" ${$python_ignore}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

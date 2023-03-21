@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 19 14:20:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip test file requiring xarray on python38
+
+-------------------------------------------------------------------
 Thu Jan 19 14:19:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.2

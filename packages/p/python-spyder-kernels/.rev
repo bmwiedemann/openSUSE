@@ -570,4 +570,12 @@
  * formatargspec is deprecated since Python 3.5 (forwarded request 1059823 from bnavigator)</comment>
     <requestid>1059824</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>bcc1c203c9f54e9b4b0b3ce827963345</srcmd5>
+    <version>2.4.2</version>
+    <time>1679416815</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test file requiring xarray on python38 (forwarded request 1072938 from bnavigator)</comment>
+    <requestid>1072939</requestid>
+  </revision>
 </revisionlist>
