@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 18 09:01:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build failures:
+  * 0001-Add-missing-comma-between-enum-values.patch
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
