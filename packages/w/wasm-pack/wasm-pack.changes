@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Mar 20 01:18:52 UTC 2023 - elimat@opensuse.org
+
+- bsc#1208562 - CVE-2022-31394 - the version of hyper used was vulnerable to dos
+  through header manipulation.
+- Update to version 0.11.0~0:
+  * 0.11.0
+  * chore(deps): bump minimatch from 3.0.4 to 3.1.2 in /npm
+  * Update npm installation link
+  * chore(deps): bump openssl-src from 111.24.0+1.1.1s to 111.25.0+1.1.1t
+  * Mark snippets and the bundler target's main file as having side effects
+  * Update JamesIves/github-pages-deploy-action in GHA workflow to v4.4.1
+  * Update actions/cache in GitHub Actions workflows to v3
+  * Update actions/checkout in GitHub Actions workflows to v3
+  * Fix some typos
+  * Update dependencies
+  * Add support for workspace inheritance
+  * Update to Rust 2021
+  * Fix SPDX license syntax
+  * Bump dependencies
+  * Use binary-install v0.1.0
+  * chore(deps): bump bzip2 from 0.4.3 to 0.4.4
+  * Bump binaryen to version 111
+  * Use prebuilt cargo-generate binary on aarch64-macos
+  * Update mdbook to v0.4
+  * Fix flaky unit tests due to non-existent cache
+  * Update dependencies
+  * Bump binaryen version to 110
+  * Correctly download libbinaryen.dylib on macos
+  * Switch from failure to anyhow
+  * Apply patches from @printfn
+  * Test URL-building matrix
+  * Fix windows x86_64 binaryen toolchain download URL
+  * Fix macos install target path
+  * Make x86 32bit an unsupported installation target
+  * Fix binaryen toolchain URL
+  * Add Linux arm64 support
+  * Pass --enable-reference-types to wasm-opt
+  * Pass through --weak-refs --reference-types flags to bindgen
+  * fix: adds back run.js to npm installer
+  * Make Deno target available
+  * small fixes
+  * Update non-rustup-setups.md
+  * Update mod.rs
+  * chore: adds run.js back
+  * chore: updates binary-install to v1.0.0
+  * Add suppot for more platforms to installer script
+  * Replace two mentions of `wasm-pack init` with `wasm-pack build` in the docs.
+  * fix(#1076): `--target-dir` as extra option is now considered as expected
+  * fix(typo): considerations.md
+
+-------------------------------------------------------------------
+Tue Feb 14 01:49:08 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Fri Jan 13 03:09:42 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1207039 - CVE-2023-22895 - update bzip2 crate
