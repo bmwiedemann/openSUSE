@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-datafactory
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Microsoft Azure Data Factory Management Client Library
 License:        MIT

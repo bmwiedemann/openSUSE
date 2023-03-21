@@ -253,4 +253,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1066991 from glaubitz)</comment>
     <requestid>1067003</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cb8060cd11ee21d493e2c247aaa968e4</srcmd5>
+    <version>3.1.0</version>
+    <time>1679416893</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1073126 from glaubitz)</comment>
+    <requestid>1073134</requestid>
+  </revision>
 </revisionlist>
