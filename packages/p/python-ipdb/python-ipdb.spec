@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-ipdb
-Version:        0.13.11
+Version:        0.13.13
 Release:        0
 Summary:        IPython-enabled pdb
 License:        BSD-3-Clause

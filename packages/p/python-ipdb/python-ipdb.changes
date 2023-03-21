@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:27:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.13
+  * Use context manager for opening toml config
+- Release 0.13.12
+  * Modify tests to test 3.11 separately from earlier python
+    versions.
+
+-------------------------------------------------------------------
 Sun Dec 25 17:39:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.11

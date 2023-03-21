@@ -98,4 +98,16 @@
   * Based on OSV:PYSEC-2022-12 change ipython dependencies</comment>
     <requestid>1045312</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25ae217acb4a82897fcdc14123b8331d</srcmd5>
+    <version>0.13.13</version>
+    <time>1679416831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.13
+  * Use context manager for opening toml config
+- Release 0.13.12
+  * Modify tests to test 3.11 separately from earlier python
+    versions.</comment>
+    <requestid>1072954</requestid>
+  </revision>
 </revisionlist>
