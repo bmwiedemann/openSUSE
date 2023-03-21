@@ -1094,4 +1094,12 @@
 - clean up SLE11 compat sections</comment>
     <requestid>883212</requestid>
   </revision>
+  <revision rev="113" vrev="6">
+    <srcmd5>f1bb03729a7650092c382119254cb085</srcmd5>
+    <version>93vu</version>
+    <time>1679416926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073278</requestid>
+  </revision>
 </revisionlist>

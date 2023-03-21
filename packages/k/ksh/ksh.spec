@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           ksh
 %global         do_tests	0
 %endif
 %global         use_locale	0
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define libdir %{_libdir}
 %define bindir %{_bindir}
 %else
@@ -52,9 +52,9 @@ BuildRequires:  strace
 BuildRequires:  vim
 URL:            http://www.research.att.com/~gsf/download/
 Requires(post): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
-Requires(postun): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
-Requires(post):  update-alternatives
-Requires(preun): update-alternatives
+Requires(postun):/bin/ln /bin/rm /etc/bash.bashrc /bin/true
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 %if %use_suid_exe
 PreReq:         permissions
 %endif
@@ -438,7 +438,7 @@ fi
 	 ;;
   ppc64le|powerpc64le)
 	RPM_OPT_FLAGS="${RPM_OPT_FLAGS//-O[s0-9]/-O}"
-	# -mpowerpc64 is correct, the compiler defaults to 
+	# -mpowerpc64 is correct, the compiler defaults to
 	# little endian anyway
 	cflags -mpowerpc64             RPM_OPT_FLAGS
 	HOSTTYPE=linux.powerpc64le
@@ -711,7 +711,7 @@ fi
   # create update-alternatives symlinks
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
   touch %{buildroot}/%{_sysconfdir}/alternatives/ksh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
   touch %{buildroot}/%{_sysconfdir}/alternatives/usr-bin-ksh
   ln -sf %{_sysconfdir}/alternatives/usr-bin-ksh        %{buildroot}%{_bindir}/ksh
 %endif
@@ -728,7 +728,7 @@ fi
   if cmp -s %{buildroot}%{_datadir}/ksh/fun/pushd %{buildroot}%{_datadir}/ksh/fun/popd ; then
       ln -sf pushd %{buildroot}%{_datadir}/ksh/fun/popd
   fi
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
   for so in %{buildroot}%{libdir}/ast/*.so.*.* ; do
       so=${so##*/}
       ln -sf %{libdir}/ast/$so %{buildroot}%{_libdir}/ast/${so%%%%.*}.so
@@ -828,7 +828,7 @@ if test -x %{libdir}/ast/bin/ksh ; then
 fi
 %{_sbindir}/update-alternatives \
     --install %{bindir}/ksh ksh %{bindir}/ksh93 20 \
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     --slave %{_bindir}/ksh usr-bin-ksh /bin/ksh93 \
 %endif
     --slave %{_mandir}/man1/ksh.1.gz ksh.1.gz %{_mandir}/man1/ksh93.1.gz \
@@ -862,7 +862,7 @@ fi
 %doc %{_mandir}/man1/rksh.1.gz
 %doc %{_mandir}/man1/ksh93.1.gz
 %ghost %{_sysconfdir}/alternatives/ksh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/ksh93
 /bin/ksh
 %ghost %{_sysconfdir}/alternatives/usr-bin-ksh

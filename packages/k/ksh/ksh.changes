@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:06:43 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Mar 31 08:38:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove BuildRequires: bind-libs. Requiring libs this way
