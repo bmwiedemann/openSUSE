@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 08:50:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add weechat-ruby3.2.patch: Fix build against Ruby 3.2.
+- Add pkgconfig(libzstd) BuildRequires: fix linking of the
+  binaries.
+-------------------------------------------------------------------
 Wed Nov  9 15:24:53 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.7.1:
