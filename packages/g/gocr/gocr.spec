@@ -1,7 +1,7 @@
 #
 # spec file for package gocr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,14 @@ URL:            https://www-e.uni-magdeburg.de/jschulen/ocr/index.html
 Source0:        https://www-e.uni-magdeburg.de/jschulen/ocr/%{name}-%{version}.tar.gz
 Source1:        gocr.desktop
 BuildRequires:  ImageMagick
+BuildRequires:  ghostscript_any
+BuildRequires:  gnu-free-fonts
 BuildRequires:  libnetpbm-devel
 BuildRequires:  transfig
-Requires:       jpeg
-Requires:       netpbm
-Requires:       transfig
+# Native supported format is pnm, others are imported with helpers
+Recommends:     jpeg
+Recommends:     netpbm
+Recommends:     transfig
 
 %description
 GOCR is an optical character recognition program. It reads images in
@@ -42,7 +45,8 @@ Summary:        Optical Character Recognition Program - Basic Graphical Interfac
 Group:          Productivity/Graphics/Other
 Requires:       %{name} = %{version}
 Requires:       tk
-Supplements:    packageand(gocr:tk)
+Supplements:    (gocr and tk)
+BuildArch:      noarch
 
 %description gui
 GOCR is an optical character recognition program. It reads images in
@@ -53,6 +57,8 @@ This package contains a basic graphical interface for GOCR.
 
 %prep
 %setup -q
+# According to "convert -list font", the regular variant is just "FreeMono"
+sed -i -e 's,"FreeMono-Regular","FreeMono",' examples/Makefile
 
 # Fix rpmlint warning "hidden-file-or-dir"
 rm -f examples/.#Makefile.1.22
@@ -69,8 +75,8 @@ EOF
 # configure does not check if netpbm headers are installed in /usr/include/netpbm
 export CPPFLAGS=-I%{_includedir}/netpbm
 %configure
-make %{?_smp_mflags}
-make %{?_smp_mflags} examples
+%make_build
+%make_build examples
 
 %install
 %make_install
@@ -79,7 +85,7 @@ make %{?_smp_mflags} examples
 chmod 644 %{buildroot}%{_mandir}/man1/gocr.1
 
 # Fix doc files path in manpage
-perl -pi -e "s|%{_datadir}/doc/gocr-\\\fBX.XX\\\fR/|%{_docdir}/gocr/|" %{buildroot}%{_mandir}/man1/gocr.1
+sed -i -e "s|/usr/share/doc/gocr-\\\fBX.XX\\\fR/|%{_docdir}/gocr/|" %{buildroot}%{_mandir}/man1/gocr.1
 
 # Install desktop file
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"

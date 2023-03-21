@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 20 06:47:20 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build:
+  * Add explicit build dependency on gnu-free-font (FreeFont)
+  * Add build dependency for ghostscript
+- Clean up and modernize spec file
+- Only recommend optional import helpers
+
+-------------------------------------------------------------------
 Sun Feb 28 04:20:51 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not use urandom for examples
