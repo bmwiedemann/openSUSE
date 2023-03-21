@@ -110,12 +110,14 @@ Source102:      neomutt.vim-%{neomutt_version}.tar.xz
 Source103:      salt-vim-%{salt_version}.tar.xz
 Source104:      vim-latex-%{latex_version}.tar.xz
 Source200:      gitrebase.vim
+Source300:      global-rsync-filter
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Source1001:     check_for_updates.pl
 Patch0:         salt-syntax-avoid-multiline-lets.patch
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
+BuildRequires:  rsync
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -715,51 +717,73 @@ chmod -v 644 taglist-%{taglist_version}/doc/taglist.txt
 %build
 
 %install
-pushd editorconfig-vim-%{editorconfig_version}
-rm -rf plugin/editorconfig-core-py/ tests/
-rm -f mkzip.sh
-popd
+# BEGIN EXCLUDES
+cat > ale-%{ale_version}/.rsync-filter <<EOF
+- /supported-tools.md
+EOF
 
-pushd nerdtree-%{NERDtree_version}
-rm -f _config.yml screenshot.png
-popd
+cat > editorconfig-vim-%{editorconfig_version}/.rsync-filter <<EOF
+- /plugin/editorconfig-core-py/
+- /tests/
+- /mkzip.sh
+EOF
 
-pushd salt-vim-%{salt_version}
-rm -f salt-vim.spec
-popd
+cat > nerdtree-%{NERDtree_version}/.rsync-filter <<EOF
+- /_config.yml
+- /nerdtree_plugin/
+- /screenshot.png
+EOF
 
-pushd tlib_vim-%{tlib_version}
-rm -rf addon-info.json doc/tags etc samples scripts test
-popd
+cat > salt-vim-%{salt_version}/.rsync-filter <<EOF
+- /salt-vim.spec
+EOF
 
-pushd vim-airline-%{airline_version}
-rm -rf t/ ISSUE_TEMPLATE.md Gemfile Rakefile
-popd
+cat > tlib_vim-%{tlib_version}/.rsync-filter <<EOF
+- /addon-info.json
+- /doc/tags
+- /etc/
+- /samples/
+- /scripts/
+- /test/
+EOF
+
+cat > vim-airline-%{airline_version}/.rsync-filter <<EOF
+- /t/
+- /ISSUE_TEMPLATE.md
+- /Gemfile
+- /Rakefile
+EOF
+
+cat > vim-latex-%{latex_version}/.rsync-filter <<EOF
+- /Makefile*
+- /vim-latex.metainfo.xml
+- /doc/*.css
+- /doc/*.xml
+- /doc/*.xsl
+- /doc/Makefile*
+- /doc/README*
+EOF
+# END EXCLUDES
 
 install -d %buildroot/%vimplugin_dir
-for i in vimplugin-* ale-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
-	colorsel.vim-* bufexplorer-* diffchanges.vim-* editorconfig-vim-* \
-	file-line-* gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* \
-	minibufexpl.vim-* MultipleSearch-* neomutt.vim-* nerdcommenter-* \
-	nerdtree-* project.tar.gz-* quilt-* rails.vim-* salt-vim-* \
-	SearchComplete-* ShowMarks7-* snipMate-* SuperTab--Van-Dewoestine-* \
-	taglist-* tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* \
-	utl.vim-* vim-airline-* vim-fugitive-* vim-gnupg-* vimwiki-* \
-	ZoomWin-*; do
-    pushd $i
-    cp -av * %buildroot/%vimplugin_dir/
-    popd
+for i in */; do
+	test "$i" = 'vim-markdown-%{markdown_version}/' && continue
+	rsync -FFXHav --filter='merge %{SOURCE300}' \
+		"$i" %buildroot/%{vimplugin_dir}/
 done
 
 install -d %buildroot/%vimplugin_dir/after/ftplugin/
 install -m 644 %{SOURCE200} %buildroot/%vimplugin_dir/after/ftplugin/
 
-install -d %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
-mv %{buildroot}/%vimplugin_dir/nerdtree_plugin %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
+install -d %{buildroot}/%vimplugin_dir/snippets/
+install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
-# vim-plugin-latex
+pushd nerdtree-%{NERDtree_version}
+install -d %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
+install -m 644 nerdtree_plugin/* %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
+popd
+
 pushd vim-latex-%{latex_version}
-cp -av compiler doc ftplugin indent latextags ltags plugin %{buildroot}/%{vimplugin_dir}
 install -d %{buildroot}%{_datadir}/appdata
 install -m 644 vim-latex.metainfo.xml %{buildroot}%{_datadir}/appdata/
 popd
@@ -768,19 +792,6 @@ pushd vim-markdown-%{markdown_version}
 chmod 644 indent/markdown.vim
 %{makeinstall} 'ADDONS=${VIMDIR}/site'
 popd
-
-install -d %{buildroot}/%vimplugin_dir/snippets/
-install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
-
-# delete unneeded files
-rm -f %{buildroot}/%vimplugin_dir/CHANGE*
-rm -f %{buildroot}/%vimplugin_dir/CONTRIBUT*
-rm -f %{buildroot}/%vimplugin_dir/LICEN?E*
-rm -f %{buildroot}/%vimplugin_dir/README*
-rm -f %{buildroot}/%vimplugin_dir/supported-tools.md
-rm -f %{buildroot}/%vimplugin_dir/doc/Makefile*
-rm -f %{buildroot}/%vimplugin_dir/doc/README*
-rm -f %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
 
 # For every plugin providing documentation, we have to call the post and postun
 # scriptlets.

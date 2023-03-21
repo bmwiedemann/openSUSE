@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 14 08:16:22 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- use rsync for installs
+  We can exclude files instead of ugly rm -rf
+
+-------------------------------------------------------------------
 Mon Mar 13 13:46:02 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
 
 - add airline and ale plugins
