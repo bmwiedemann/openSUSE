@@ -29,6 +29,7 @@ Source:         https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
 Patch1:         0001-snapshot-safer-parsing-of-snapshot.cfg.patch
+Patch2:         0001-build-resolve-compile-error-with-gcc-13.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

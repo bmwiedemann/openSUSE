@@ -1,0 +1,23 @@
+From 34d37b8d49dbc8e8733372ba97333af1ecff1f0e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 20 Mar 2023 21:54:33 +0100
+Subject: [PATCH] build: resolve compile error with gcc-13
+
+include/gromox/authmgr.hpp:42:9: error: 'uint8_t' does not name a type
+---
+ include/gromox/authmgr.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git include/gromox/authmgr.hpp include/gromox/authmgr.hpp
+index 623cc8a39..39e58c68b 100644
+--- include/gromox/authmgr.hpp
++++ include/gromox/authmgr.hpp
+@@ -1,4 +1,5 @@
+ #pragma once
++#include <cstdint>
+ #include <string>
+ 
+ /**
+-- 
+2.40.0
+

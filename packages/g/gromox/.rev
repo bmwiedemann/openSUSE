@@ -71,4 +71,12 @@
     <comment>- Update to release 2.6</comment>
     <requestid>1071127</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1a1e6fd2a19c9fd848c28d1f50be4146</srcmd5>
+    <version>2.6</version>
+    <time>1679417018</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-compile-error-with-gcc-13.patch</comment>
+    <requestid>1073383</requestid>
+  </revision>
 </revisionlist>
