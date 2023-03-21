@@ -311,4 +311,14 @@
     <comment>- Add fix-sqlite-3_41_0-support.patch, fix build on sqlite 3.41.0 (forwarded request 1067810 from hillwood)</comment>
     <requestid>1067811</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>48e3d4517b69b50d542930684aa62364</srcmd5>
+    <version>1.15.2</version>
+    <time>1679416933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.15.2
+  * Fix bugs
+- Drop fix-sqlite-3_41_0-support.patch, merged (forwarded request 1073290 from hillwood)</comment>
+    <requestid>1073292</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 13:54:32 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.15.2
+  * Fix bugs
+- Drop fix-sqlite-3_41_0-support.patch, merged
+
+-------------------------------------------------------------------
 Sun Feb 26 13:40:30 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-sqlite-3_41_0-support.patch, fix build on sqlite 3.41.0

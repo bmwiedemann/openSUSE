@@ -20,15 +20,13 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source0:        https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
-# https://github.com/libpinyin/ibus-libpinyin/pull/414
-Patch0:         fix-sqlite-3_41_0-support.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -44,17 +42,17 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(libpinyin) >= 2.7.91
+BuildRequires:  pkgconfig(lua)
 %if %{with_cloud_input}
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 %endif
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python310-base
+Requires:       python310-base
+%endif
 Provides:       locale(ibus:zh_CN;zh_SG)
 %{ibus_requires}
-%if 0%{?suse_version} <= 1320
-BuildRequires:  lua51-devel
-%else
-BuildRequires:  pkgconfig(lua)
-%endif
 
 %description
 It includes a Chinese Pinyin input method and a Chinese ZhuYin (Bopomofo) input
@@ -73,7 +71,10 @@ NOCONFIGURE=1 ./autogen.sh
 %if %{with_cloud_input}
            --enable-cloud-input-mode \
 %endif
-           --with-python=python3
+%if 0%{?suse_version} <= 1500
+           PYTHON=python3.10 \
+%endif
+
 %make_build
 
 %install
