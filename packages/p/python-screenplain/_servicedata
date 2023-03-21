@@ -1,4 +1,8 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/mcepl/screenplain.git</param>
-              <param name="changesrevision">4e34d1f78f6006d40933d744e61ae968f349f95d</param></service></servicedata>
+              <param name="changesrevision">4e34d1f78f6006d40933d744e61ae968f349f95d</param></service><service name="tar_scm">
+                <param name="url">https://git.sr.ht/~mcepl/screenplay</param>
+              <param name="changesrevision">302bfdd3362f4287a471cff80908e018bc09f990</param></service><service name="tar_scm">
+                <param name="url">https://git.sr.ht/~mcepl/screenplain</param>
+              <param name="changesrevision">353e6c94e996055880c07a3846cb51b98e19dfa2</param></service></servicedata>

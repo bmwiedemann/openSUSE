@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 20 13:44:17 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 0.9.0+git.1679319196.353e6c9:
+  * Package tests as well.
+  * Add test for issue #65, which passes
+  * readme: PDF is supported now
+  * Add Python 3.11 to testing matrix
+  * Add test for forcing action with "!"
+  * Fix runtime error in pdf output of dual dialog
+  * Possible to force action by starting line with !
+  * pdf Settings object for styles and layout
+  * Replace nose with pytest
+  * assertEquals is deprecated - use assertEqual
+  * Remove unittest2 (Python 2 compatibility)
+
+-------------------------------------------------------------------
 Tue Oct 04 08:42:28 UTC 2022 - andres.munoz@suse.com
 
 - Add E275 to the list of ignored errors in pycodestyle

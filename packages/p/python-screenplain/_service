@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="versionprefix">0.9.0+git</param>
-    <!-- param name="url">https://github.com/vilcans/screenplain.git</param -->
-    <param name="url">https://github.com/mcepl/screenplain.git</param>
+    <!-- param name="url">https://github.com/vilcans/screenplain.git</param-->
+    <param name="url">https://git.sr.ht/~mcepl/screenplain</param>
     <param name="revision">cleanup-testing</param>
     <param name="scm">git</param>
     <param name="exclude">.git*</param>

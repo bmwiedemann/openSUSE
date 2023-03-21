@@ -28,4 +28,24 @@
     <comment></comment>
     <requestid>1008251</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3def3d05cfea3124575266285aeb05ea</srcmd5>
+    <version>0.9.0+git.1679319196.353e6c9</version>
+    <time>1679416932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0+git.1679319196.353e6c9:
+  * Package tests as well.
+  * Add test for issue #65, which passes
+  * readme: PDF is supported now
+  * Add Python 3.11 to testing matrix
+  * Add test for forcing action with &quot;!&quot;
+  * Fix runtime error in pdf output of dual dialog
+  * Possible to force action by starting line with !
+  * pdf Settings object for styles and layout
+  * Replace nose with pytest
+  * assertEquals is deprecated - use assertEqual
+  * Remove unittest2 (Python 2 compatibility)
+</comment>
+    <requestid>1073282</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-screenplain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,8 @@
 %else
 %bcond_without python2
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-screenplain
-Version:        0.9.0+git.1597423678.4e34d1f
+Version:        0.9.0+git.1679319196.353e6c9
 Release:        0
 Summary:        Convert text file to viewable screenplay
 License:        MIT
@@ -89,6 +88,7 @@ sed -i '1{/^#!.*env python/d}' screenplain/main.py
 
 %files %{python_files}
 %python_alternative %{_bindir}/screenplain
-%{python_sitelib}/*
+%{python_sitelib}/screenplain
+%{python_sitelib}/screenplain-0.9.0*-info
 
 %changelog
