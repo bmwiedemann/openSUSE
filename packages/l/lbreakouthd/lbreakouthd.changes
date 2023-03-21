@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 18 19:01:05 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.2
+  * mini game "Outbreak" now ends on appearance of 10th brick.
+  * show "Game Over" instead of congrats at end of mini game set.
+  * fixed memory violation in shine effect.
+  * use proper display settings for multiple monitors.
+  * properly link to libintl.
+  * properly install icons.
+  * use config directory as fallback for highscores.
+- Drop patch:
+  * lbreakouthd-user-hiscoredir.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Sun Feb 12 14:14:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update lbreakouthd-user-hiscoredir.patch with upstream version.

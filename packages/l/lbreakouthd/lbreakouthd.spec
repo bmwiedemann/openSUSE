@@ -18,18 +18,17 @@
 
 
 Name:           lbreakouthd
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Breakout
-URL:            http://lgames.sourceforge.net/LBreakoutHD/
+URL:            https://lgames.sourceforge.net/LBreakoutHD/
 Source:         https://downloads.sourceforge.net/project/lgames/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/lgames/files/add-ons/lbreakout2/lbreakout2-levelsets-20160512.tar.gz
-# PATCH-FIX-UPSTREAM lbreakouthd-user-hiscoredir.patch badshah400@gmail.com -- Save hiscores to user config dir instead of global localstatedir
-Patch0:         lbreakouthd-user-hiscoredir.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
@@ -68,9 +67,9 @@ rm %{buildroot}%{_localstatedir}/games/*
 %files -f %{name}.lang
 %license COPYING
 %doc Changelog README TODO
-%{_datadir}/icons/lbreakouthd256.gif
 %{_bindir}/lbreakouthd
 %{_datadir}/%{name}
+%{_datadir}/icons/hicolor/*/apps/lbreakouthd.png
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
