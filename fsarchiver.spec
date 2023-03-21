@@ -1,7 +1,7 @@
 #
 # spec file for package fsarchiver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fsarchiver
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Filesystem Archiver
 License:        GPL-2.0-only
