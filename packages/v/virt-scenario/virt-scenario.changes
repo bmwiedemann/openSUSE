@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 21 10:01:43 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- fix memory user issue
+
+-------------------------------------------------------------------
+Mon Mar 20 17:31:07 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 0.7.6:
+  * add support for virtual network selection (vnet)
+  * add force_sev to extract a local PDH (not recommended: for testing purposes)
+  * improve connect to libvirtd socket (more info)
+  * fix memory_pin issue while user was setting memory
+  * fixes around bootdev
+  * various other bug fixes
+
+-------------------------------------------------------------------
 Thu Mar 16 16:27:50 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 0.7.4:
