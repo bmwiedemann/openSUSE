@@ -1,7 +1,7 @@
 #
 # spec file for package cmark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libcmark0_30_2
+%define libname libcmark0_30_3
 Name:           cmark
-Version:        0.30.2
+Version:        0.30.3
 Release:        0
 Summary:        CommonMark parsing and rendering library and program in C
 License:        BSD-2-Clause AND MIT AND CC-BY-SA-4.0
@@ -85,6 +85,7 @@ This package provides the development files for cmark.
 %{_libdir}/libcmark.so.%{version}
 
 %files devel
+%license COPYING
 %{_includedir}/cmark.h
 %{_includedir}/cmark_export.h
 %{_includedir}/cmark_version.h

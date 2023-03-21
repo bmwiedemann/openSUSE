@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 18 09:20:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.30.3:
+  * CVE-2023-22486: quadratic complexity bug with repeated `![[]()`
+    (boo#1207674)
+  * Allow declarations with no space, as per spec
+  * Set `enumi*` counter correctly in LaTeX output
+  * Allow `<!DOCTYPE` to be case-insensitive
+    existing spec
+  * Fixed HTML comment scanning
+  * CVE-2023-22484: quadratic parsing issue with repeated `<!--`
+    (boo#1207438) - not in a released version
+  * Fix quadratic behavior involving `get_containing_block`
+
+-------------------------------------------------------------------
 Tue Nov 30 07:50:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix dependencies.
