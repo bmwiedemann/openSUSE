@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 19 10:22:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * ``packages_distributions`` now honors packages and
+    modules with Python modules that not ``.py`` sources (e.g.
+    ``.pyc``, *   ``.so``).
+  * #434: Expand protocol for ``PackageMetadata.get_all`` to
+    match the upstream implementation of ``email.message.Message.get_all``
+    in python/typeshed#9620.
+
+-------------------------------------------------------------------
 Mon Jan  2 19:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

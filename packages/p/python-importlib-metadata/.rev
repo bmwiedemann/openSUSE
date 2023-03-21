@@ -196,4 +196,18 @@ It does NOT conflict with python38 standard library (see upstream description)</
   ``KeyError``.</comment>
     <requestid>1046282</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4097cd1472d06000aa485d29c164dae7</srcmd5>
+    <version>6.1.0</version>
+    <time>1679416805</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * ``packages_distributions`` now honors packages and
+    modules with Python modules that not ``.py`` sources (e.g.
+    ``.pyc``, *   ``.so``).
+  * #434: Expand protocol for ``PackageMetadata.get_all`` to
+    match the upstream implementation of ``email.message.Message.get_all``
+    in python/typeshed#9620.</comment>
+    <requestid>1072924</requestid>
+  </revision>
 </revisionlist>
