@@ -17,15 +17,13 @@
 
 
 Name:           python-autopep8
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ignore-deprecation.patch gh#hhatto/autopep8#665/files
-Patch:          ignore-deprecation.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.8}

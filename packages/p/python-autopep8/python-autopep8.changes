@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 13 08:44:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Ignore DeprecationWarnings to fix tests on py3.11
+  * fix: infinite loop in autopep8.fix_code without w50 ignore
+    option
+- drop ignore-deprecation.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jan 25 12:46:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add ignore-deprecation.patch to make it compatible with python 3.11
