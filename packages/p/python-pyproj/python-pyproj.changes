@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 21 13:30:23 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix failing tests after Proj update to 9.2.0 (upstream #1224, #1241)
+- Add upstream patch:
+  * 0001-TST-Update-test_transform_bounds__ignore_inf-for-PRO.patch
+  * 0002-TST-Update-transformer-test_repr__conditional-1241.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 05:52:45 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two tests to support latest PROJ 9.2
+
+-------------------------------------------------------------------
+Sun Mar 19 10:14:14 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Disable python38 support due to new xarray version.
+
+-------------------------------------------------------------------
 Thu Dec 15 13:58:56 UTC 2022 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.4.1
