@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:30:41 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.4
+   Added
+    Type hints.
+  Removed
+    Support for Python 2.7, 3.5, and 3.6.
+    __version__, __author__, and __email__ attributes from parver
+    module. Use :mod:`importlib.metadata` instead.
+
+-------------------------------------------------------------------
 Wed Dec  8 22:33:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Skip build for python 2 to fix build on Leap
