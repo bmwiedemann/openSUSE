@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 20 11:53:21 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.0.7
+  [3.0.7] - 2023-03-16
+    Make query parameters without = have nil values. (#2059, @jeremyevans)
+  [3.0.6.1] - 2023-03-13
+    [CVE-2023-27539] Avoid ReDoS in header parsing [bsc#1209503]
+  [3.0.6] - 2023-03-13
+    Add QueryParser#missing_value for handling missing values + tests. (#2052, @ioquatix)
+  [3.0.5] - 2023-03-13
+    Split form/query parsing into two steps. (#2038, @matthewd)
+
+-------------------------------------------------------------------
 Thu Mar  9 12:25:49 UTC 2023 - pgajdos@suse.com
 
 - version update to 3.0.4.2
