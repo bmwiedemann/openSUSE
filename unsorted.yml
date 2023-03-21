@@ -2911,6 +2911,7 @@ unsorted:
   - dbxtool 
   - dc3dd 
   - dc3dd-lang 
+  - dcatools 
   - dcmtk 
   - dcmtk-devel 
   - dconf-devel 
@@ -8891,6 +8892,7 @@ unsorted:
   - kshutdown 
   - ksirk 
   - ksirk-lang 
+  - ksmbd-tools 
   - ksmtp-devel 
   - ksnakeduel 
   - ksnakeduel-lang 
@@ -9979,7 +9981,6 @@ unsorted:
   - libX11-devel 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
-  - libXISF 
   - libXISF-devel 
   - libXISF0 
   - libXNVCtrl-devel 
@@ -11092,6 +11093,9 @@ unsorted:
   - libdc1394-25-32bit: [x86_64] 
   - libdc1394-devel 
   - libdc1394-tools 
+  - libdca-devel 
+  - libdca0 
+  - libdca0-32bit: [x86_64] 
   - libdcmtk17 
   - libddccontrol0 
   - libddcutil-devel 
@@ -11169,7 +11173,7 @@ unsorted:
   - libdnf-plugin-txnupd: [i586] 
   - libdnf-repo-config-zypp: [i586] 
   - libdnf2: [i586] 
-  - libdnnl2: [x86_64] 
+  - libdnnl3: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdnssec9 
@@ -11578,8 +11582,6 @@ unsorted:
   - libfsxfs-devel 
   - libfsxfs-tools 
   - libfsxfs1 
-  - libftdi-devel 
-  - libftdi1 
   - libftdi1-devel 
   - libftgl2 
   - libftgl2-32bit: [x86_64] 
@@ -21928,6 +21930,7 @@ unsorted:
   - powerline 
   - powerline-docs 
   - powerline-fonts 
+  - powerline-go 
   - powerman 
   - powerman-devel 
   - powermanga 
@@ -23259,6 +23262,7 @@ unsorted:
   - python310-azure-mgmt-datashare 
   - python310-azure-mgmt-defendereasm 
   - python310-azure-mgmt-deploymentmanager 
+  - python310-azure-mgmt-desktopvirtualization 
   - python310-azure-mgmt-devcenter 
   - python310-azure-mgmt-deviceupdate 
   - python310-azure-mgmt-devspaces 
@@ -24477,6 +24481,7 @@ unsorted:
   - python310-loguru 
   - python310-logutils 
   - python310-logzero 
+  - python310-looseversion 
   - python310-lscsoft-glue 
   - python310-lupa 
   - python310-lws 
@@ -26566,6 +26571,7 @@ unsorted:
   - python311-azure-mgmt-datashare 
   - python311-azure-mgmt-defendereasm 
   - python311-azure-mgmt-deploymentmanager 
+  - python311-azure-mgmt-desktopvirtualization 
   - python311-azure-mgmt-devcenter 
   - python311-azure-mgmt-deviceupdate 
   - python311-azure-mgmt-devspaces 
@@ -27790,6 +27796,7 @@ unsorted:
   - python311-loguru 
   - python311-logutils 
   - python311-logzero 
+  - python311-looseversion 
   - python311-lscsoft-glue 
   - python311-lupa 
   - python311-lxml 
@@ -28703,6 +28710,7 @@ unsorted:
   - python311-quantities 
   - python311-quantum-blackbird 
   - python311-queuelib 
+  - python311-quicktions 
   - python311-radexreader 
   - python311-radon 
   - python311-railroad-diagrams 
@@ -29920,6 +29928,7 @@ unsorted:
   - python38-azure-mgmt-datashare 
   - python38-azure-mgmt-defendereasm 
   - python38-azure-mgmt-deploymentmanager 
+  - python38-azure-mgmt-desktopvirtualization 
   - python38-azure-mgmt-devcenter 
   - python38-azure-mgmt-deviceupdate 
   - python38-azure-mgmt-devspaces 
@@ -31186,6 +31195,7 @@ unsorted:
   - python38-loguru 
   - python38-logutils 
   - python38-logzero 
+  - python38-looseversion 
   - python38-lscsoft-glue 
   - python38-lupa 
   - python38-lws 
@@ -31805,7 +31815,6 @@ unsorted:
   - python38-pyppmd 
   - python38-pyprel 
   - python38-pyprimes 
-  - python38-pyproj 
   - python38-pyproject-hooks 
   - python38-pyproject-metadata 
   - python38-pypsexec 
@@ -33341,6 +33350,7 @@ unsorted:
   - python39-azure-mgmt-datashare 
   - python39-azure-mgmt-defendereasm 
   - python39-azure-mgmt-deploymentmanager 
+  - python39-azure-mgmt-desktopvirtualization 
   - python39-azure-mgmt-devcenter 
   - python39-azure-mgmt-deviceupdate 
   - python39-azure-mgmt-devspaces 
@@ -34606,6 +34616,7 @@ unsorted:
   - python39-loguru 
   - python39-logutils 
   - python39-logzero 
+  - python39-looseversion 
   - python39-lscsoft-glue 
   - python39-lupa 
   - python39-lws 
@@ -37634,10 +37645,16 @@ unsorted:
   - ruby3.2-rubygem-actioncable-7.0 
   - ruby3.2-rubygem-actionmailbox-7.0 
   - ruby3.2-rubygem-actionmailer-7.0 
+  - ruby3.2-rubygem-actionpack-7.0 
   - ruby3.2-rubygem-actiontext-7.0 
+  - ruby3.2-rubygem-actionview-7.0 
   - ruby3.2-rubygem-activejob-7.0 
+  - ruby3.2-rubygem-activemodel-7.0 
+  - ruby3.2-rubygem-activerecord-7.0 
   - ruby3.2-rubygem-activestorage-7.0 
   - ruby3.2-rubygem-coffee-rails 
+  - ruby3.2-rubygem-d-installer-cli 
+  - ruby3.2-rubygem-delayed_job_active_record 
   - ruby3.2-rubygem-devise 
   - ruby3.2-rubygem-devise-i18n 
   - ruby3.2-rubygem-devise_ldap_authenticatable 
@@ -37646,9 +37663,11 @@ unsorted:
   - ruby3.2-rubygem-gettext_i18n_rails_js 
   - ruby3.2-rubygem-haml-rails 
   - ruby3.2-rubygem-importmap-rails 
+  - ruby3.2-rubygem-jbuilder 
   - ruby3.2-rubygem-jquery-rails 
   - ruby3.2-rubygem-js-routes 
   - ruby3.2-rubygem-lightbox2 
+  - ruby3.2-rubygem-openid_connect 
   - ruby3.2-rubygem-rails-7.0 
   - ruby3.2-rubygem-rails-i18n 
   - ruby3.2-rubygem-railties-7.0 
@@ -37658,8 +37677,11 @@ unsorted:
   - ruby3.2-rubygem-sass-rails 
   - ruby3.2-rubygem-sass-rails-5.1 
   - ruby3.2-rubygem-sassc-rails 
+  - ruby3.2-rubygem-sprockets-rails 
   - ruby3.2-rubygem-stimulus-rails 
   - ruby3.2-rubygem-turbo-rails 
+  - ruby3.2-rubygem-validate_email 
+  - ruby3.2-rubygem-validate_url 
   - ruby3.2-rubygem-web-console 
   - ruby3.2-rubygem-webpacker 
   - rubygem-libguestfs: [x86_64] 
