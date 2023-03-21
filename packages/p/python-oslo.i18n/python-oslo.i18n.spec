@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.i18n
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.i18n
-Version:        5.1.0
+Version:        6.0.0
 Release:        0
 Summary:        OpenStack i18n library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.i18n
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-5.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-6.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
@@ -56,7 +56,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo.i18n library.
 
 %prep
-%autosetup -p1 -n oslo.i18n-5.1.0
+%autosetup -p1 -n oslo.i18n-6.0.0
 %py_req_cleanup
 
 %build
@@ -71,7 +71,7 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.i18n
 %license LICENSE

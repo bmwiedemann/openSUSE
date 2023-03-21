@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:52:53 UTC 2023 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - setup.cfg: Replace dashes by underscores
+  - Fix formatting of release list
+  - Imported Translations from Zanata
+  - Remove unnecessary unicode prefixes
+  - Update CI to use unversioned jobs template
+
+-------------------------------------------------------------------
 Mon Jun 20 17:40:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop unused dependencies 

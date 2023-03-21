@@ -291,4 +291,18 @@
     <comment>- drop unused dependencies</comment>
     <requestid>994198</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>760d491395c39ac03ed9043ed3587559</srcmd5>
+    <version>6.0.0</version>
+    <time>1679416861</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - setup.cfg: Replace dashes by underscores
+  - Fix formatting of release list
+  - Imported Translations from Zanata
+  - Remove unnecessary unicode prefixes
+  - Update CI to use unversioned jobs template</comment>
+    <requestid>1073027</requestid>
+  </revision>
 </revisionlist>
