@@ -1,7 +1,7 @@
 #
 # spec file for package mayavi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%
 Source1:        mayavi.desktop
 Source2:        tvtk_doc.desktop
 Source99:       mayavi-rpmlintrc
+# PATCH-FIX-UPSTREAM Based on gh#enthought/mayavi#1199
+Patch0:         python-311-support.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -97,7 +99,7 @@ This package pulls in the dependencies needed to
 run mayavi in a Jupyter notebook.
 
 %prep
-%setup -q -n mayavi-%{version}
+%autosetup -p1 -n mayavi-%{version}
 
 # wrong-file-end-of-line-encoding
 sed -i 's|\r||' examples/mayavi/data/room_vis.wrl

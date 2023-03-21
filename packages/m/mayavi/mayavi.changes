@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 04:02:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch python-311-support.patch:
+  * Avoid an interpreter segfault.
+
+-------------------------------------------------------------------
 Tue Nov 22 19:22:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.8.1
