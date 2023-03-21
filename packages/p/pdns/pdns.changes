@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:01:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 12453.patch: Fix build using gcc 13.
+- Refresh pdns.keyring.
+
+-------------------------------------------------------------------
 Fri Dec  9 14:18:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.7.3

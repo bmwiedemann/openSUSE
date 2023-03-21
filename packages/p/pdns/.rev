@@ -851,4 +851,12 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     - fix pdns_control list-zones PR#12181</comment>
     <requestid>1041916</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>cdbb07ce934d0f30585bd83c87ce7369</srcmd5>
+    <version>4.7.3</version>
+    <time>1679417044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073483</requestid>
+  </revision>
 </revisionlist>

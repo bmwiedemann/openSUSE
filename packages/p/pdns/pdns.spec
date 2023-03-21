@@ -1,7 +1,7 @@
 #
 # spec file for package pdns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,7 @@ Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
 Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/PowerDNS/pdns/pull/12453.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

@@ -1,0 +1,21 @@
+From d8b4ea24dc5dbe7c53c24bfffba24bcae7f58e02 Mon Sep 17 00:00:00 2001
+From: Peter van Dijk <peter.van.dijk@powerdns.com>
+Date: Mon, 23 Jan 2023 14:54:09 +0100
+Subject: [PATCH] lock.hh: include <stdexcept>
+
+---
+ pdns/lock.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pdns/lock.hh b/pdns/lock.hh
+index e8bd82988da..a08951a266d 100644
+--- a/pdns/lock.hh
++++ b/pdns/lock.hh
+@@ -22,6 +22,7 @@
+ #pragma once
+ #include <mutex>
+ #include <shared_mutex>
++#include <stdexcept>
+ 
+ /*
+   This file provides several features around locks:
