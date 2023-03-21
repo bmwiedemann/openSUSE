@@ -1,7 +1,7 @@
 #
 # spec file for package terminology
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,16 @@
 %define e_branding_version 0.1
 %endif
 Name:           terminology
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        EFL based terminal emulator
 License:        BSD-2-Clause AND OFL-1.1
 Group:          System/X11/Terminals
-URL:            http://enlightenment.org
+URL:            https://enlightenment.org
 Source:         https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
 Patch0:         fix-desktop.patch
 # Creates a "Flat" colorscheme so we can ship the "Default" from branding packages
 Patch1:         feature-flat-colorscheme.patch
-Patch2:         fix-colorscheme-name-typo.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.1

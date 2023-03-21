@@ -223,4 +223,12 @@ Doesn't set it as the default or anything so low risk change, would be great if 
 </comment>
     <requestid>974375</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9f2ec742ce682f76431784a8f3bc92e3</srcmd5>
+    <version>1.13.0</version>
+    <time>1679417006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073379</requestid>
+  </revision>
 </revisionlist>

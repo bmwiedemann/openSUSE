@@ -77,15 +77,15 @@ Index: terminology-1.12.1/data/colorschemes/Flat.ini
 +white = #c7c7c7
 +inverse_fg = #141414
 +inverse_bg = #bababa
-Index: terminology-1.12.1/data/colorschemes/meson.build
+Index: terminology-1.13.0/data/colorschemes/meson.build
 ===================================================================
---- terminology-1.12.1.orig/data/colorschemes/meson.build
-+++ terminology-1.12.1/data/colorschemes/meson.build
+--- a/data/colorschemes/meson.build
++++ b/data/colorschemes/meson.build
 @@ -6,6 +6,7 @@ colorschemes = [
    'Default',
    'Dracula',
    'Fahrenheit',
 +  'Flat',
+   'Fir Dark',
    'Material',
    'Mild',
-   'Mustang',
