@@ -17,7 +17,7 @@
 
 
 Name:           watchexec
-Version:        1.21.1
+Version:        1.22.0
 Release:        0
 Summary:        Watches a path and runs a command whenever it detects modifications.
 License:        Apache-2.0
@@ -56,7 +56,8 @@ install -m 0644 doc/watchexec.1 %{buildroot}%{_mandir}/man1/watchexec.1
 %files
 %license LICENSE
 %doc README.md
-%doc doc/watchexec.1.html
+%doc doc/watchexec.1.md
+%doc doc/watchexec.1.pdf
 %{_mandir}/man1/watchexec.1%{?ext_man}
 %{_bindir}/watchexec
 

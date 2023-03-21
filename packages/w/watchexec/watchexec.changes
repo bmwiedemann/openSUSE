@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 20 11:49:53 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.22.0:
+  * release: watchexec-cli v1.22.0 (#538)
+  * release: watchexec-filterer-globset v1.2.0 (#537)
+  * release: watchexec-filterer-ignore v1.2.0 (#536)
+  * release: watchexec v2.2.0 (#535)
+  * release: ignore-files v1.2.0 (#534)
+  * release: watchexec-events v1.0.0 (#533)
+  * release: watchexec-signals v1.0.0 (#532)
+  * Set new crates to zero for release (#531)
+  * Fix and adjust docs (#530)
+  * Rename --manpage to --manual (#529)
+
+-------------------------------------------------------------------
 Thu Feb 16 08:27:44 UTC 2023 - david.anes@suse.com
 
 - Update to version 1.21.1:
