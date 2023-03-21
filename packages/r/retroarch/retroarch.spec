@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
