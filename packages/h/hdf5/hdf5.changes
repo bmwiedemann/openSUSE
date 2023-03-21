@@ -46,7 +46,7 @@ Sat Oct 15 13:29:22 UTC 2022 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Wed Sep 21 01:09:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Remove timestamp/buildhost/kernel version from libhdf5.settings
+- Remove timestamp/buildhost/kernel version from libhdf5.settings (boo#1209548).
 
 -------------------------------------------------------------------
 Wed Jul 27 23:42:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>

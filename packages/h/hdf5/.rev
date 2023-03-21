@@ -808,4 +808,12 @@ fixed baselibs.conf compared to previous version</comment>
   Remove-duplicate-code.patch (forwarded request 1066178 from eeich)</comment>
     <requestid>1066251</requestid>
   </revision>
+  <revision rev="82" vrev="5">
+    <srcmd5>a6c68f785913539b41d842497aaf75d4</srcmd5>
+    <version>1.12.2</version>
+    <time>1679416898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove timestamp/buildhost/kernel version from libhdf5.settings (boo#1209548).</comment>
+    <requestid>1073525</requestid>
+  </revision>
 </revisionlist>
