@@ -1,7 +1,7 @@
 #
 # spec file for package supertuxkart
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://github.com/supertuxkart/stk-code/releases/download/%{ver
 # Geeko kart add-on (CC-BY 3.0)
 Source1:        14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
+Patch0:         gcc13.patch
 BuildRequires:  cmake >= 3
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -89,7 +90,7 @@ BuildArch:      noarch
 Data files for SuperTuxKart a Free 3d kart racing game.
 
 %prep
-%setup -q -n SuperTuxKart-%{version}-src
+%autosetup -p1 -n SuperTuxKart-%{version}-src
 find -name '*~' -delete -print
 find -name '.git*' -type f -delete -print
 rm -rfv ./.github

@@ -1,0 +1,227 @@
+From 0163e3fa88b72634c3ddff5304c9086b649f53b1 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 26 Jan 2023 16:35:54 +0100
+Subject: [PATCH] Add missing includes to fix the build with gcc 13
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <stdexcept> and <cstdio> are no longer transitively included.
+Explicitly include them for std::runtime_error and snprintf.
+---
+ lib/graphics_engine/include/vk_mem_alloc.h               | 1 +
+ lib/graphics_engine/src/ge_spm_buffer.cpp                | 1 +
+ lib/graphics_engine/src/ge_vulkan_array_texture.cpp      | 1 +
+ lib/graphics_engine/src/ge_vulkan_command_loader.cpp     | 1 +
+ lib/graphics_engine/src/ge_vulkan_depth_texture.cpp      | 2 ++
+ lib/graphics_engine/src/ge_vulkan_draw_call.cpp          | 1 +
+ lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp        | 1 +
+ lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp         | 1 +
+ lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp    | 1 +
+ lib/graphics_engine/src/ge_vulkan_texture.cpp            | 1 +
+ lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp | 1 +
+ 11 files changed, 12 insertions(+)
+
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/include/vk_mem_alloc.h
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/include/vk_mem_alloc.h
++++ SuperTuxKart-1.4-src/lib/graphics_engine/include/vk_mem_alloc.h
+@@ -2563,6 +2563,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeS
+ #undef VMA_IMPLEMENTATION
+ 
+ #include <cstdint>
++#include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+ #include <utility>
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_spm_buffer.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_spm_buffer.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_spm_buffer.cpp
+@@ -5,6 +5,7 @@
+ #include "ge_vulkan_features.hpp"
+ 
+ #include <algorithm>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_array_texture.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_array_texture.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_array_texture.cpp
+@@ -12,6 +12,7 @@
+ 
+ #include <IImageLoader.h>
+ #include <cassert>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
+@@ -8,6 +8,7 @@
+ #include <deque>
+ #include <memory>
+ #include <mutex>
++#include <stdexcept>
+ #include <thread>
+ 
+ #include "../source/Irrlicht/os.h"
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
+@@ -3,6 +3,8 @@
+ #include "ge_main.hpp"
+ #include "ge_vulkan_driver.hpp"
+ 
++#include <stdexcept>
++
+ namespace GE
+ {
+ GEVulkanDepthTexture::GEVulkanDepthTexture(GEVulkanDriver* vk,
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_draw_call.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_draw_call.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_draw_call.cpp
+@@ -25,6 +25,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <limits>
++#include <stdexcept>
+ 
+ #include "../source/Irrlicht/os.h"
+ #include "quaternion.h"
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <array>
+ #include <exception>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <stdexcept>
+ #include <vector>
+ 
+ namespace GE
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <array>
+ #include <cstdint>
++#include <stdexcept>
+ #include <unordered_map>
+ 
+ namespace GE
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_texture.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_texture.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_texture.cpp
+@@ -21,6 +21,7 @@ extern "C"
+ #include <IAttributes.h>
+ #include <IImageLoader.h>
+ #include <limits>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+Index: SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp
+===================================================================
+--- SuperTuxKart-1.4-src.orig/lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp
++++ SuperTuxKart-1.4-src/lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <algorithm>
+ #include <exception>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+From 27eb0f3116921492e183ad3aa685ddb147ed7183 Mon Sep 17 00:00:00 2001
+From: Gwyn Ciesla <gwync@protonmail.com>
+Date: Thu, 23 Feb 2023 08:56:27 -0600
+Subject: [PATCH] gcc13 fixes
+
+---
+ lib/graphics_engine/include/vk_mem_alloc.h            | 2 ++
+ lib/graphics_engine/src/ge_vulkan_command_loader.cpp  | 1 +
+ lib/graphics_engine/src/ge_vulkan_depth_texture.cpp   | 2 ++
+ lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp      | 1 +
+ lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp | 1 +
+ 5 files changed, 7 insertions(+)
+
+diff --git a/lib/graphics_engine/include/vk_mem_alloc.h b/lib/graphics_engine/include/vk_mem_alloc.h
+index d4b683a755..ac82aedb15 100644
+--- a/lib/graphics_engine/include/vk_mem_alloc.h
++++ b/lib/graphics_engine/include/vk_mem_alloc.h
+@@ -20,6 +20,8 @@
+ // THE SOFTWARE.
+ //
+ 
++#include <cstdio>
++
+ #ifndef AMD_VULKAN_MEMORY_ALLOCATOR_H
+ #define AMD_VULKAN_MEMORY_ALLOCATOR_H
+ 
+diff --git a/lib/graphics_engine/src/ge_vulkan_command_loader.cpp b/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
+index a1e5b3a71b..13cadd63da 100644
+--- a/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
+@@ -10,6 +10,7 @@
+ #include <mutex>
+ #include <stdexcept>
+ #include <thread>
++#include <stdexcept>
+ 
+ #include "../source/Irrlicht/os.h"
+ 
+diff --git a/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp b/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
+index 4a5d3d391b..0411c617df 100644
+--- a/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
+@@ -1,3 +1,5 @@
++#include <stdexcept>
++
+ #include "ge_vulkan_depth_texture.hpp"
+ 
+ #include "ge_main.hpp"
+diff --git a/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp b/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
+index f510f91813..a821ee4a96 100644
+--- a/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
+@@ -12,6 +12,7 @@
+ #include <cassert>
+ #include <stdexcept>
+ #include <vector>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+diff --git a/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp b/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
+index fe7fcc4551..82977f0078 100644
+--- a/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
+@@ -13,6 +13,7 @@
+ #include <cstdint>
+ #include <stdexcept>
+ #include <unordered_map>
++#include <stdexcept>
+ 
+ namespace GE
+ {

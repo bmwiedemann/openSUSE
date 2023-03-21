@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 20 15:23:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gcc13.patch.: Fix build using gcc 13.
+
+-------------------------------------------------------------------
 Mon Nov 28 12:17:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - _constraints: Require 12GB Disk (last build was short of 11GB usage)
