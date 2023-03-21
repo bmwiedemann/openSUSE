@@ -16,17 +16,15 @@
 #
 
 
-# Do not support python 3.11 yet, gh#scoder/quicktions#6
-%define skip_python311 1
 Name:           python-quicktions
-Version:        1.11
+Version:        1.14
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/scoder/quicktions
 Source:         https://files.pythonhosted.org/packages/source/q/quicktions/quicktions-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

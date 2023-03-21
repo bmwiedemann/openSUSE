@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 20 06:44:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Enable python 3.11 build again, now is supported
+- Update to 1.14
+  - Implement __format__ for Fraction, following python/cpython#100161
+  - Implement Fraction.is_integer(), following python/cpython#100488
+  - Fraction.limit_denominator() is faster, following
+    python/cpython#93730
+  - Internal creation of result Fractions is about 10% faster if the
+    calculated numerator/denominator pair is already normalised,
+    following python/cpython#101780
+  - Built using Cython 3.0.0b1.
+- 1.13
+  - Parsing very long numbers from a fraction string was very slow,
+    even slower than fractions.Fraction. The parser is now faster in
+    all cases (and still much faster for shorter numbers).
+  - Fraction did not implement __int__.
+    https://bugs.python.org/issue44547
+- 1.12
+  - Faster and more space friendly pickling and unpickling.
+    https://bugs.python.org/issue44154
+  - Algorithmically faster arithmetic for large denominators, although
+    slower for small fraction components.
+    https://bugs.python.org/issue43420 Original patch for CPython by
+    Sergey B. Kirpichev and Raymond Hettinger.
+  - Make sure bool(Fraction) always returns a bool.
+    https://bugs.python.org/issue39274
+  - Built using Cython 3.0.0a10.
+
+-------------------------------------------------------------------
 Tue Feb 21 08:50:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip python 3.11, it's not supported yet
