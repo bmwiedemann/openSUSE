@@ -161,4 +161,22 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Drop Python 3.6. #270 (@encukou)</comment>
     <requestid>992085</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c3fe91c72ba6cc552aa408b66b1f89d5</srcmd5>
+    <version>6.6.3</version>
+    <time>1679416835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.3
+  * Fix handle_external_iopub again #286 (@blink1073)
+- Release 6.6.2
+  * Fix handle_external_iopub #285 (@blink1073)
+- Release 6.6.0
+  * Switch to hatch backend #281 (@blink1073)
+- Release 6.5.1
+  * Fix completion handling #278 (@blink1073)
+- Release 6.5.0
+  * Fix client 7 and 8 compat #276 (@blink1073)
+</comment>
+    <requestid>1072975</requestid>
+  </revision>
 </revisionlist>

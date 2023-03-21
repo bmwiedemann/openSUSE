@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_console
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,39 @@
 
 
 Name:           python-jupyter_console
-Version:        6.4.4
+Version:        6.6.3
 Release:        0
 Summary:        Jupyter terminal console
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_console
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_console/jupyter_console-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling >= 1.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipykernel >= 6.14}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter-client >= 7}
-BuildRequires:  %{python_module prompt_toolkit >= 2}
+BuildRequires:  %{python_module jupyter-core >= 5.1}
+BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module prompt_toolkit >= 3.0.30}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module traitlets >= 5.4}
 # /SECTION
 Requires:       jupyter-jupyter_console = %{version}
-Requires:       python-ipykernel
+Requires:       python-Pygments
+Requires:       python-ipykernel >= 6.14
 Requires:       python-ipython
 Requires:       python-jupyter-client >= 7
-Requires:       python-prompt_toolkit >= 2
-Requires:       python-pyzmq
+Requires:       python-prompt_toolkit >= 3.0.30
+Requires:       python-pyzmq >= 17
+Requires:       python-traitlets >= 5.4
+Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or python-jupyter-core >= 5.1)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-jupyter-console = %{version}-%{release}
@@ -63,10 +70,10 @@ This code is based on the single-process IPython terminal.
 %setup -q -n jupyter_console-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-console
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
