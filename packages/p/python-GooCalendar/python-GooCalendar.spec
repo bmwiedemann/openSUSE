@@ -1,8 +1,8 @@
 #
 # spec file for package python-GooCalendar
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2021 Dr. Axel Braun
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2016-2023 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-GooCalendar
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A calendar widget for GTK using PyGoocanvas
 License:        GPL-2.0-only
@@ -52,6 +51,7 @@ A calendar widget for GTK using PyGoocanvas (Gnome widget linrary).
 %files %{python_files}
 %license LICENSE
 %doc README COPYRIGHT
-%{python_sitelib}/*
+%{python_sitelib}/goocalendar
+%{python_sitelib}/GooCalendar-%{version}*-info
 
 %changelog
