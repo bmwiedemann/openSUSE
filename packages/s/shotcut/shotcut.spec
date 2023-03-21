@@ -36,6 +36,7 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Patch1:         shotcut-libdir.patch
+ExclusiveArch:  ppc64 ppc64le %ix86 x86_64
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

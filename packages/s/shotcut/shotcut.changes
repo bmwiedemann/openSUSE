@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
+
+- Limit architectures to avoid build errors
+
+-------------------------------------------------------------------
 Mon Jan  9 08:16:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 22.12.21:

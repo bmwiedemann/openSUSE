@@ -521,4 +521,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1058163</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>dac7d06c077336b756b47f1fd31c15c2</srcmd5>
+    <version>22.12.21</version>
+    <time>1679416817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072941</requestid>
+  </revision>
 </revisionlist>
