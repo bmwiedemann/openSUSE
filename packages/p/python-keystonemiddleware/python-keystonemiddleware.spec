@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystonemiddleware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        9.5.0
+Version:        10.2.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
-Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-9.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-10.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-WebTest
@@ -91,7 +91,7 @@ BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n keystonemiddleware-9.5.0
+%autosetup -p1 -n keystonemiddleware-10.2.0
 %py_req_cleanup
 
 %build
@@ -108,7 +108,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 rm -v keystonemiddleware/tests/unit/audit/test_logging_notifier.py
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-keystonemiddleware
 %license LICENSE

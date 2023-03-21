@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:55:47 UTC 2023 - cloud-devel@suse.de
+
+- update to version 10.2.0
+  - Update python testing as per zed cycle teting runtime
+  - Bump tox minversion to 3.18.0
+  - Fix logging notifier unit test
+  - setup.cfg: Replace dashes by underscores
+  - Remove translation sections from setup.cfg
+  - Update Python 3 job template
+  - Remove cache invalidation when using expired token
+  - OAuth2.0 Client Credentials Grant Flow Support
+  - Fix pep8 gate
+  - Remove references to 'sys.version_info'
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue Jun  7 09:22:02 UTC 2022 - cloud-devel@suse.de
 
 - update to version 9.5.0

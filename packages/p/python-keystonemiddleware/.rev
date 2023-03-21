@@ -276,4 +276,23 @@ update to version 4.9.0
   - Imported Translations from Zanata</comment>
     <requestid>994404</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79fb0754c96548161feb70cedb351f7f</srcmd5>
+    <version>10.2.0</version>
+    <time>1679416853</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 10.2.0
+  - Update python testing as per zed cycle teting runtime
+  - Bump tox minversion to 3.18.0
+  - Fix logging notifier unit test
+  - setup.cfg: Replace dashes by underscores
+  - Remove translation sections from setup.cfg
+  - Update Python 3 job template
+  - Remove cache invalidation when using expired token
+  - OAuth2.0 Client Credentials Grant Flow Support
+  - Fix pep8 gate
+  - Remove references to 'sys.version_info'
+  - Imported Translations from Zanata</comment>
+    <requestid>1073020</requestid>
+  </revision>
 </revisionlist>
