@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:37:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.7:
+  * Implement support for option "uuid=" for vfat
+  * Update list of btrfs supported features
+  * Add support for the "nrext64" feature on XFS
+  * Do not error out on deleted files when option -A is used
+  * Handle termination by signal in exec_command()
+  * Add support for the "orphan_file" feature in EXT4
+  * Do not try to save xattrs if not supported by the filesystem
+
+-------------------------------------------------------------------
 Mon Mar  1 08:25:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.6:
