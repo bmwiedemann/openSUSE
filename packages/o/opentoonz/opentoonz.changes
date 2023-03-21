@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 10:13:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch
+
+-------------------------------------------------------------------
 Sat Apr  2 06:26:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.6.0:

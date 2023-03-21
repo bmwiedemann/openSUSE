@@ -195,4 +195,13 @@
     * (new) Hex color names editor</comment>
     <requestid>966527</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1bc5452a7ee0877190e445e3ae7fb319</srcmd5>
+    <version>1.6.0</version>
+    <time>1679417064</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch</comment>
+    <requestid>1073516</requestid>
+  </revision>
 </revisionlist>

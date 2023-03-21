@@ -29,6 +29,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         0001-Fix-linker-errors-on-Linux.patch
 # PATCH-FIX-OPENSUSE -- Use the system mypaint brushes
 Patch1:         0001-Use-the-system-mypaint-brushes.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -42,6 +44,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  superlu-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(OpenCV)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -63,16 +66,11 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= 1.3
-%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
-BuildRequires:  pkgconfig(opencv)
-%else
-BuildRequires:  cmake(OpenCV)
-%endif
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       mypaint-brushes1
 # build fails on ARM (conflicting declaration between glew and gles)
-ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv} %{mips}
+ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv}
 
 %description
 2D animation software previously known as Toonz.
