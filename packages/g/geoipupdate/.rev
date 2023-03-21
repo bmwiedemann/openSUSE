@@ -175,4 +175,19 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
 </comment>
     <requestid>1034814</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f9416fffe44c4196452a6d116eab0a2</srcmd5>
+    <version>4.11.1</version>
+    <time>1679417025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.1:
+  * github.com/pkg/errors is no longer used to wrap errors.
+  * Docker secrets are now supported for the MaxMind account ID and license key. 
+  * The Dockerfile now has a Healthcheck that makes sure the modification date of
+    the database directory is within the update period.
+  * Removed extra underscore in script variables preventing the Docker secret
+    support added in 4.11.0 from working as expected.
+</comment>
+    <requestid>1073473</requestid>
+  </revision>
 </revisionlist>
