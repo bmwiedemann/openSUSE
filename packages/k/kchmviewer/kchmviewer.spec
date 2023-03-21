@@ -1,7 +1,7 @@
 #
 # spec file for package kchmviewer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch4:         no-webkit.patch
 Patch5:         InitialPreference-greater-than-okular.patch
 # PATCH-FIX-OPENSUSE https://github.com/gyunaev/kchmviewer/pull/17
 Patch6:         rename-desktop-file.patch
+# PATCH-FIX-UPSTREAM - kchmviewer-adding-support-for-old-single-pass-gcc-linker.patch - https://github.com/gyunaev/kchmviewer/commit/e3b09edbbae17ad19661a7514afe5a9d84ca0ffa
+Patch7:         kchmviewer-adding-support-for-old-single-pass-gcc-linker.patch
 BuildRequires:  chmlib-devel
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5DBus-devel

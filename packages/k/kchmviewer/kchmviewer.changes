@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 20 17:23:58 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add kchmviewer-adding-support-for-old-single-pass-gcc-linker.patch,
+  fixes building for openSUSE Leap
+
+-------------------------------------------------------------------
 Thu Feb 17 11:25:23 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Add InitialPreference-greater-than-okular.patch
 
