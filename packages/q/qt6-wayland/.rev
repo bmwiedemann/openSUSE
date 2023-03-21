@@ -159,4 +159,12 @@
     <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
     <requestid>1072424</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>eda2cb8cb025b7b99f8a00f2ad9c71ff</srcmd5>
+    <version>6.4.3</version>
+    <time>1679417001</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a _constraints file to fix build issues</comment>
+    <requestid>1073351</requestid>
+  </revision>
 </revisionlist>
