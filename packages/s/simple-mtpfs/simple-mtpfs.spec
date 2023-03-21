@@ -1,7 +1,7 @@
 #
 # spec file for package simple-mtpfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/phatina/simple-mtpfs
 Source:         https://github.com/phatina/simple-mtpfs/archive/v%{version}.tar.gz
+Patch1:         disable-partial-support.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -42,13 +43,13 @@ The practical effect of this is that the end user can seamlessly interact with
 MTP device files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fvi
 %configure \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

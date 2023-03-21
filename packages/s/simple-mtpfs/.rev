@@ -56,4 +56,12 @@ The license is gpl2, the gpl3 in place was wrongly added, see the git.</comment>
   * build system cleanup</comment>
     <requestid>827058</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>007669be0485cc986d4f96fc7f96f306</srcmd5>
+    <version>0.4.0</version>
+    <time>1679416921</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1073256</requestid>
+  </revision>
 </revisionlist>
