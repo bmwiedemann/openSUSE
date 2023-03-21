@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:34:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.3:
+  * change: budget table view is now the default
+  * bugfix: scheduled transaction list was not display src/dst
+    account for xfer
+  * bugfix: scheduled transaction list total was incorrect
+  * bugfix: account future transaction account column was not
+    displayed oblique
+  * bugfix: lp#2009277 removing tag from multiple transactions
+  * bugfix: lp#2009250 cannot select Hidden Categories in
+    Statistics Reporting
+  * bugfix: lp#2008521 account window toggle future transaction
+    is not working
+  * bugfix: lp#2007947 dropdown boxes in the Edit Transaction
+    dialog box behave inconsistently
+  * bugfix: lp#2007712 report half-year column header is not
+    translated
+  * bugfix: lp#2000728 wayland: template window closes only
+    on third attempt
+  * bugfix: lp#1999699 wayland: click on schedule button select
+    first item and don't open popover
+  * wish: lp#2007714 table budget dialog view improvements 
+  * wish: lp#2000290 Fortnight interval in Reports 
+  * wish: lp#1996505 Sum SELECTED scheduled transaction at
+    main window
+  * wish: lp1956060 sort by amount in statistics report to take
+    sign into consideration
+  * wish: lp#1886123 Remind status transactions not calculated
+    in reports despite include preference 
+
+-------------------------------------------------------------------
 Mon Feb  6 18:10:55 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 5.6.2:
