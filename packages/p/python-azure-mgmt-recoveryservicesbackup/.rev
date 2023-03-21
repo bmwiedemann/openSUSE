@@ -215,4 +215,16 @@
 - Update Requires from setup.py (forwarded request 1062079 from glaubitz)</comment>
     <requestid>1062249</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>20ceaf74b65eeb295ad74c151b832e50</srcmd5>
+    <version>5.2.0</version>
+    <time>1679416886</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1073105 from glaubitz)</comment>
+    <requestid>1073124</requestid>
+  </revision>
 </revisionlist>
