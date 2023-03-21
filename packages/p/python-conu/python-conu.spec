@@ -1,7 +1,7 @@
 #
 # spec file for package python-conu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-conu
 Version:        1.0.0
@@ -25,6 +24,8 @@ Summary:        Python container testing library
 License:        MIT
 URL:            https://github.com/user-cont/conu
 Source:         https://files.pythonhosted.org/packages/source/c/conu/conu-%{version}.tar.gz
+# https://github.com/user-cont/conu/issues/390
+Patch0:         python-conu-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +34,6 @@ Requires:       python-flexmock
 Requires:       python-kubernetes >= 8
 Requires:       python-pytest
 Requires:       python-requests
-Requires:       python-six
 Recommends:     docker
 Recommends:     podman
 BuildArch:      noarch
@@ -43,7 +43,6 @@ BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module kubernetes >= 8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  acl
 BuildRequires:  docker
 BuildRequires:  podman
@@ -55,7 +54,7 @@ BuildRequires:  user(nobody)
 Python container testing library.
 
 %prep
-%setup -q -n conu-%{version}
+%autosetup -p1 -n conu-%{version}
 rm tests/integration/test_k8s.py tests/integration/test_openshift.py tests/release/test_release.py
 
 %build
@@ -71,6 +70,7 @@ rm tests/integration/test_k8s.py tests/integration/test_openshift.py tests/relea
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/conu
+%{python_sitelib}/conu-%{version}*-info
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 20 10:16:36 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/user-cont/conu/issues/390
+  + python-conu-no-six.patch
+
+-------------------------------------------------------------------
 Wed Feb 10 04:31:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.0:
