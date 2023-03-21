@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
+
+- Adjust package name of libXNVCtrl
+- Enable conditionals libXNVCtrl and cmus, they are available in Factory
+
+-------------------------------------------------------------------
 Wed Sep 21 10:18:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.13.1:

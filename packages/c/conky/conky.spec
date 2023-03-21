@@ -17,8 +17,8 @@
 
 
 %bcond_with    audacious
-%bcond_with    cmus
-%bcond_with    libXNVCtrl
+%bcond_without cmus
+%bcond_without libXNVCtrl
 %if 0%{?is_opensuse} && 0%{?suse_version} <= 1500
 %bcond_without xmms2
 %else
@@ -80,7 +80,7 @@ Provides:       conky-feature-audacious = %{version}
 Obsoletes:      conky-feature-audacious < %{version}
 %endif
 %if %{with libXNVCtrl}
-BuildRequires:  libXNVCtrl
+BuildRequires:  libXNVCtrl-devel
 Provides:       conky-feature-nvidia = %{version}
 Obsoletes:      conky-feature-nvidia < %{version}
 %endif
