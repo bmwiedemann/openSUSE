@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 20 07:53:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+* Update to version 0.16
+  - Add overall access lock
+  - Optionally add delay during close
+  - Optionally disable telnet processing
+  - Add test server and client
+  - Log to stderr instead of stdout
+  - Optionally be quiet
+  - Various minor bug fixes
+  - Various cleanups
+* Update to version 0.15
+  Bugfixes:
+  - Clear pollin flag when input buffer is flushed
+  - Correct termios2 baud rate calculation
+  - Fix potentially incorrect speed check
+  - Handle CRTSCTS properly
+  Other:
+  - Support for software flow control
+  - Add support for termios2 ioctls
+
+-------------------------------------------------------------------
 Sun Jan 10 19:14:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.14
