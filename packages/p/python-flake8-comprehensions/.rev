@@ -83,4 +83,14 @@
     <comment></comment>
     <requestid>1071258</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03030d9267501de5981da1fe42bd2891</srcmd5>
+    <version>3.11.1</version>
+    <time>1679417086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.1:
+  * Fix false positives in C406 “unnecessary dict literal”.
+  * Expand C416 to ``dict`` comprehensions.</comment>
+    <requestid>1073581</requestid>
+  </revision>
 </revisionlist>

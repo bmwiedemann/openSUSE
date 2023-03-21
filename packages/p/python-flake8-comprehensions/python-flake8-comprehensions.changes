@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:37:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.1:
+  * Fix false positives in C406 “unnecessary dict literal”.
+  * Expand C416 to ``dict`` comprehensions.
+
+-------------------------------------------------------------------
 Thu Mar  9 09:48:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.10.1
