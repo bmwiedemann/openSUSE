@@ -60,4 +60,21 @@
 </comment>
     <requestid>1067904</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20003b12ffbf065310e1a5d152e6360f</srcmd5>
+    <version>0.8</version>
+    <time>1679416986</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8 
+  * Adapted the service configuration for the s390x architecture
+    (gh#yast/d-installer#469).
+  * Fix gem2rpm configuration requiring the dbus-1-common package
+    (gh#yast/d-installer#470).
+  * Fix gem2rpm configuration to include YaST2 dependencies
+    (gh#yast/d-installer#459).
+  * Write /iguana/mountlist if running on Iguana
+    (gh#yast/d-installer#445).
+  * Add D-Bus API for iSCSI (gh#yast/d-installer#402).</comment>
+    <requestid>1073333</requestid>
+  </revision>
 </revisionlist>

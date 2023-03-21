@@ -1,7 +1,36 @@
 -------------------------------------------------------------------
+Thu Mar 16 15:19:43 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 0.8 
+
+-------------------------------------------------------------------
+Thu Mar 16 14:54:44 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Adapted the service configuration for the s390x architecture
+  (gh#yast/d-installer#469).
+
+-------------------------------------------------------------------
+Thu Mar 16 13:45:21 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix gem2rpm configuration requiring the dbus-1-common package
+  (gh#yast/d-installer#470).
+
+-------------------------------------------------------------------
+Wed Mar  8 07:46:54 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix gem2rpm configuration to include YaST2 dependencies
+  (gh#yast/d-installer#459).
+
+-------------------------------------------------------------------
+Thu Mar  2 08:48:36 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Write /iguana/mountlist if running on Iguana
+  (gh#yast/d-installer#445).
+
+-------------------------------------------------------------------
 Wed Feb 15 16:09:16 UTC 2023 - José Iván López González <jlopez@suse.com>
 
-- Add D-Bus API for iSCSI.
+- Add D-Bus API for iSCSI (gh#yast/d-installer#402).
 
 -------------------------------------------------------------------
 Wed Feb 15 15:18:43 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
