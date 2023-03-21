@@ -251,4 +251,15 @@
 - Update Requires from setup.py (forwarded request 1043813 from glaubitz)</comment>
     <requestid>1043814</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>36e782ac3403e8154c963f20b262c7d0</srcmd5>
+    <version>22.3.0</version>
+    <time>1679416891</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 22.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1073103 from glaubitz)</comment>
+    <requestid>1073133</requestid>
+  </revision>
 </revisionlist>
