@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:09:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.10
+  * Add cell-id anchor for cell identification #1897 (@krassowski)
+  * Do not import pyppeteer for installation check #1947
+    (@krassowski)
+
+-------------------------------------------------------------------
 Thu Feb  9 16:19:54 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.2.9:

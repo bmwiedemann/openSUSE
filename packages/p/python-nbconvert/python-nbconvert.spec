@@ -30,7 +30,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-nbconvert%{psuffix}
-Version:        7.2.9
+Version:        7.2.10
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
