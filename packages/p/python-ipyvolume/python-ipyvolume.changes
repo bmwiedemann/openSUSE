@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:17:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * no upstream changelog
+  * commit: osname should not fail under emscripten
+
+-------------------------------------------------------------------
 Fri Feb  3 11:53:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6

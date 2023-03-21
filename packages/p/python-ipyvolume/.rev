@@ -36,4 +36,15 @@
   extension</comment>
     <requestid>1063062</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3dbf2edc3ca2eb7f84cf0347fd4aa93</srcmd5>
+    <version>0.6.1</version>
+    <time>1679416941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+  * no upstream changelog
+  * commit: osname should not fail under emscripten
+</comment>
+    <requestid>1073300</requestid>
+  </revision>
 </revisionlist>
