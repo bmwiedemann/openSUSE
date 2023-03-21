@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 11:30:46 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Fix libexecdir issue on Leap and SLE
+
+-------------------------------------------------------------------
 Tue Feb 14 10:53:26 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - First version of aardvark-dns

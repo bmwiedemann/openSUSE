@@ -1,7 +1,7 @@
 #
 # spec file for package aardvark-dns
 #
-# Copyright (c) SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,16 +40,13 @@ It can forward other requests to configured resolvers.
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
-
 %build
 cargo build --release
 mkdir -p bin
 cp target/release/%{name} bin/
 
-
 %install
-%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix}
-
+%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
 
 %files
 %license LICENSE
