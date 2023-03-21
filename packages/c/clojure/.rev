@@ -89,4 +89,41 @@
     <comment></comment>
     <requestid>1000695</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26e6d89ae81a2db44a3ecae77ed35335</srcmd5>
+    <version>1.11.1.1257</version>
+    <time>1679417074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1257:
+  * Use tools.deps 0.18.1308
+
+- Update to 1.11.1.1252:
+  * Switch to passing exec args via the basis :argmap
+  * Function execution protocol support for -X/-T
+  * Use tools.deps 0.17.1297
+
+- Update to 1.11.1.1237:
+  * Added env var that can be set to temporarily allow support for
+    http repos: CLOJURE_CLI_ALLOW_HTTP_REPO
+  * Remove deprecated support for -R and -C
+  * Clean up help text around repl supporting init-opts
+  * Use tools.deps 0.16.1285
+
+- Update to 1.11.1.1224:
+  * Fix issue with git tag verification for repos with a large number of tags
+  * TDEPS-235 - Disallow http :mvn/repos
+  * TDEPS-236 - Add rlwrap -m to clj for multiline editing
+
+- Update to 1.11.1.1208:
+  * TDEPS-234 - Always include -XX:-OmitStackTraceInFastThrow by default
+  * Use tools.deps 0.16.1264
+
+- Update to 1.11.1.1200:
+  * Added support in :mvn/repos map to set release and snapshot policies
+  * TDEPS-101 Output repo policies in -Spom and -X:deps mvn-pom
+  * Use tools.deps.alpha 0.15.1254
+
+- Update to 1.11.1.1189:</comment>
+    <requestid>1073539</requestid>
+  </revision>
 </revisionlist>

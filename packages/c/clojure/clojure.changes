@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Mar 21 12:35:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1257:
+  * Use tools.deps 0.18.1308
+
+-------------------------------------------------------------------
+Tue Mar 21 12:35:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1252:
+  * Switch to passing exec args via the basis :argmap
+  * Function execution protocol support for -X/-T
+  * Use tools.deps 0.17.1297
+
+-------------------------------------------------------------------
+Tue Mar 21 12:34:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1237:
+  * Added env var that can be set to temporarily allow support for
+    http repos: CLOJURE_CLI_ALLOW_HTTP_REPO
+  * Remove deprecated support for -R and -C
+  * Clean up help text around repl supporting init-opts
+  * Use tools.deps 0.16.1285
+
+-------------------------------------------------------------------
+Tue Mar 21 12:34:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1224:
+  * Fix issue with git tag verification for repos with a large number of tags
+  * TDEPS-235 - Disallow http :mvn/repos
+  * TDEPS-236 - Add rlwrap -m to clj for multiline editing
+
+-------------------------------------------------------------------
+Tue Mar 21 12:34:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1208:
+  * TDEPS-234 - Always include -XX:-OmitStackTraceInFastThrow by default
+  * Use tools.deps 0.16.1264
+
+-------------------------------------------------------------------
+Tue Mar 21 12:33:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1200:
+  * Added support in :mvn/repos map to set release and snapshot policies
+  * TDEPS-101 Output repo policies in -Spom and -X:deps mvn-pom
+  * Use tools.deps.alpha 0.15.1254
+
+-------------------------------------------------------------------
+Tue Mar 21 12:33:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1189:
+  * TDEPS-233 bash script fixes from stale jar check changes
+  * Add some missing items on help and man page
+
+-------------------------------------------------------------------
+Tue Mar 21 12:32:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1182:
+  * TDEPS-70 - Detect missing jar in classpath and download automatically
+  * TDEPS-232 - Add generic posix installer
+  * TDEPS-200 - Clean up default user deps.edn
+  * TDEPS-219 Fixed -X:deps find-versions doesn’t find Maven versions
+    that start with a letter
+  * Add :n option to -X:deps find-versions and default to 8
+  * During -X:deps prep, use :exec-args of alias being prepped, if present
+  * During -X:deps prep, also prep current project if needed add :current
+    flag to prep current project, default=false
+  * Fix bad invocation of deps/prep-libs! in clojure.tools.cli.api/prep
+  * Improve error message when local dep directory is missing
+  * For downstream tools, added new well-known location to look up
+    latest stable tools release
+  * Use tools.deps.alpha 0.15.1244
+
+-------------------------------------------------------------------
+Tue Mar 21 12:31:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1165:
+  * TDEPS-165 Use the env var CLJ_JVM_OPTS to pass JVM properties
+    to the internal classpath building process
+  * Add support to include the common JAVA_OPTS env var as JVM
+    properties in user program execution
+
+-------------------------------------------------------------------
 Sun Aug 28 19:17:20 UTC 2022 - Chris Coutinho <chrisbcoutinho@gmail.com>
 
 - Update to 1.11.1.1155

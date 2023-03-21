@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clojure
-Version:        1.11.1.1155
+Version:        1.11.1.1257
 Release:        0
 Summary:        A dynamic programming language that targets the JVM
 License:        EPL-1.0
