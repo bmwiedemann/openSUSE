@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.middleware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.middleware
-Version:        4.5.1
+Version:        5.1.1
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.middleware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-4.5.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-5.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-WebOb >= 1.8.0
@@ -85,7 +85,7 @@ for limiting size/connection etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.middleware-4.5.1
+%autosetup -p1 -n oslo.middleware-5.1.1
 %py_req_cleanup
 
 %build
@@ -100,7 +100,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py3_install
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.middleware
 %license LICENSE

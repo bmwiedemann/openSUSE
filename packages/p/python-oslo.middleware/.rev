@@ -342,4 +342,21 @@
   - Add Python3 yoga unit tests</comment>
     <requestid>979083</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>02314525eed76b6c00a6c0fab597295e</srcmd5>
+    <version>5.1.1</version>
+    <time>1679416863</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.1
+  - Add Python3 antelope unit tests
+  - Update master for stable/zed
+  - Fix issues related to tox4
+
+- update to version 5.0.0
+  - Add Python3 zed unit tests
+  - Update master for stable/yoga
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>1073028</requestid>
+  </revision>
 </revisionlist>

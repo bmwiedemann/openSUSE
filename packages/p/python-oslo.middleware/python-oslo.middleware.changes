@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:40:10 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.1.1
+  - Add Python3 antelope unit tests
+  - Update master for stable/zed
+  - Fix issues related to tox4
+
+-------------------------------------------------------------------
+Thu Aug 11 08:33:45 UTC 2022 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - Add Python3 zed unit tests
+  - Update master for stable/yoga
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue May 24 21:29:13 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.5.1
