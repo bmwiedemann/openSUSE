@@ -329,4 +329,18 @@ update to version 2.12.0
 - update to version 4.4.0</comment>
     <requestid>994202</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>07efc4c3c150cf44bacc6df245eb209f</srcmd5>
+    <version>5.1.2</version>
+    <time>1679416851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.2
+  - OAuth2.0 Client Credentials Grant Flow Support
+  - Update python testing as per zed cycle teting runtime
+  - Enforce scope mutual exclusion for system
+  - Allow passing of version header
+  - Fix docs build for tox4
+  - Fix linters and bindep on jammy</comment>
+    <requestid>1073019</requestid>
+  </revision>
 </revisionlist>

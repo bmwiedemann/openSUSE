@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:53:59 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.1.2
+  - OAuth2.0 Client Credentials Grant Flow Support
+  - Update python testing as per zed cycle teting runtime
+  - Enforce scope mutual exclusion for system
+  - Allow passing of version header
+  - Fix docs build for tox4
+  - Fix linters and bindep on jammy
+
+-------------------------------------------------------------------
 Tue Jun  7 09:22:23 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.6.0
