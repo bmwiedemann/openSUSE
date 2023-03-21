@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-lib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-osc-lib
-Version:        2.6.2
+Version:        2.7.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.6.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.7.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 3.2.0
 BuildRequires:  python3-fixtures
@@ -75,7 +75,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-2.6.2
+%autosetup -p1 -n osc-lib-2.7.0
 %py_req_cleanup
 
 %build
@@ -90,7 +90,7 @@ PBR_VERSION=%{version} PYTHONPATH=. %sphinx_build -a -E -d doc/build/doctrees -b
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-osc-lib
 %license LICENSE

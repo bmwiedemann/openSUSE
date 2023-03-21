@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:51:33 UTC 2023 - cloud-devel@suse.de
+
+- update to version 2.7.0
+  - Remove Python 3 guide in HACKING
+  - remove unicode prefix from code
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - tox: Ignore .venv files for flake8
+
+-------------------------------------------------------------------
 Sat Oct  1 13:52:45 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.6.2

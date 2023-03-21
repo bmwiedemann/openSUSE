@@ -274,4 +274,17 @@
   - doc: Comment out language option</comment>
     <requestid>1007455</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>57c93753dc742bdbdd9aada40dc89b12</srcmd5>
+    <version>2.7.0</version>
+    <time>1679416860</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.0
+  - Remove Python 3 guide in HACKING
+  - remove unicode prefix from code
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - tox: Ignore .venv files for flake8</comment>
+    <requestid>1073026</requestid>
+  </revision>
 </revisionlist>
