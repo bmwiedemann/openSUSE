@@ -191,4 +191,15 @@
     <comment></comment>
     <requestid>983182</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>25b0df4c5f41d82661f409da91fff4c9</srcmd5>
+    <version>3.5+1679292226.g8769429</version>
+    <time>1679416846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5+1679292226.g8769429:
+  + rbd-target-api: don't ignore controls on disk create (bsc#1208820)
+- checkin.sh: default to ses7 branch
+</comment>
+    <requestid>1073011</requestid>
+  </revision>
 </revisionlist>

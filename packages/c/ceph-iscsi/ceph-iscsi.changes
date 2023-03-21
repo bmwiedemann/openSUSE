@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 06:04:33 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 3.5+1679292226.g8769429:
+  + rbd-target-api: don't ignore controls on disk create (bsc#1208820)
+- checkin.sh: default to ses7 branch
+
+-------------------------------------------------------------------
 Thu Jun 16 20:30:47 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 3.5+1655410541.gf482c7a.

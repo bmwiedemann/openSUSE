@@ -11,7 +11,7 @@ set -x
 
 PROJECT="ceph-iscsi"
 DEFAULT_REPO="https://github.com/SUSE/$PROJECT.git"
-DEFAULT_BRANCH="ses6"
+DEFAULT_BRANCH="ses7"
 BASEDIR=$(pwd)
 
 function usage {
