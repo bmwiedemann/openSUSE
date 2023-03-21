@@ -28,6 +28,7 @@ Source1:        weechat.desktop
 Source2:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.changes
+Patch0:         weechat-ruby3.2.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -47,6 +48,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(enchant)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tcl)
 Requires:       ca-certificates
