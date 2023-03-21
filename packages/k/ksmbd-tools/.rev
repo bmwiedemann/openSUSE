@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8edbbbf2cb182d7a3106df5ebed93a09</srcmd5>
+    <version>3.4.7</version>
+    <time>1679417078</time>
+    <user>dimstar_suse</user>
+    <comment>https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/XXS4HEBUYQULBINQVYO2MISSLQSO3PBW/
+
+The openSUSE Tumbleweed kernel has been shipping with ksmbd.ko
+(CONFIG_SMB_SERVER=m) since its initial merge into mainline 5.15.
+
+The ksmbd-tools package provides user-space dependencies for the
+in-kernel server, such as a DCE/RPC server, user, share and service
+management utilities:
+  https://github.com/cifsd-team/ksmbd-tools
+
+A devel project with the latest ksmbd-tools 3.4.7 release is located at
+https://build.opensuse.org/package/show/network:samba:STABLE/ksmbd-tools</comment>
+    <requestid>1073536</requestid>
+  </revision>
+</revisionlist>

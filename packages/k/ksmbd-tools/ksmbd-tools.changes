@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sun Mar 19 22:31:45 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.4.7:
+  * add max connections for global section.
+  * default max connections is changed to 128 from no limitation.
+  * build utilities as a single binary.
+  * fix several bugs and memleak, and clean-ups.
+  * use 'disabled', 'auto' and 'mandatory' for smb3 encryption parameter.
+  * fix guest account bugs.
+
+- 3.4.6:
+  * Add meson build.
+  * Several clean-up and bug fixes.(leak, segfault, debug print, typo, etc)
+  * Improve usage strings and argument handling.
+  * Support --sysconfdir and --with-rundir(or -Drundir) options for configure
+    or meson.(See the README for details.)
+  * Fix password prompting for ksmbd.adduser.
+  * Notify ksmbd of all commands of ksmbd.addshare and ksmbd.addshare.
+  * Inform ksmbd of stale share config.
+  * Fix passworkd prompting issues on ksmbd.adduser.
+  * Add manpages for all utils and ksmbd.conf.
+  * Rename smb.conf to ksmbd.conf.
+  * Set netlink socket's receive buffer size to 1 MiB
+  * Add @group support to ksmbd.conf for lists of users.
+  * Casefold utf-8 share names.
+
+- 3.4.5:
+  * Add support for Heimdal as the Kerberos 5 implementation.
+  * Add smbd max io size parameter.
+  * Accept global share options.
+
+- 3.4.4:
+  * add smb2 max credits parameter to configuration.
+  * add space in ipc req/resp.
+
+- Use git tag tarball instead of GitHub release, due to autogen.sh removal
+- Package man pages and move example configuration under docdir
+
+-------------------------------------------------------------------
+Tue 18 Jan 2022 11:41:09 UTC - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Update to version 3.4.3:
+  * Fix file transfer stuck at 99%
+  * Creates a template ksmbd.service systemd unit file
+  * Remove follow symlinks support
+  * Throttle session setup failures to avoid dictionary attacks
+
+- Updates to spec file
+  * use pkgconfig() for BuildRequires
+  * update Source URL to use project's upstream instead of maintainer's
+    personal repo
+
+-------------------------------------------------------------------
+Wed Sep 29 12:08:58 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Initial import from main repository. Version 3.4.2.
