@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 20 11:31:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * Add NetBSD instructions #77
+  * Add repology badge #76
+  * Fix issue where level wasn't being read from config #78
+  * Add scoop manifest #80
+  * Default to num logical cpus rather than 4 threads #81
+  * Add support for generating shell completions #82
+  * Fix miscoloration of directories that have extension #83
+  * [Optimization] - Upgraded heap-based tree data structure to an index-tree #86
+  * Replace tempdir crate with tempfile crate #87
+  * Fix issue where ansi escapes were being printed raw on windows #90
+
+-------------------------------------------------------------------
 Wed Mar 15 07:39:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.2:
