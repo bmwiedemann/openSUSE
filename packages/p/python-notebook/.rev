@@ -221,4 +221,18 @@
 - Drop dependency on jupyter-nbformat, empty subpackage got removed (forwarded request 1045435 from bnavigator)</comment>
     <requestid>1045436</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f4b94bc47e738dd320855a6defa8db8d</srcmd5>
+    <version>6.5.3</version>
+    <time>1679416823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.3
+  * Add a banner and log to information about the migration to
+    Notebook 7 plan #6742 (@echarles)
+  * Add sys_info to page template for 6.5.x #6668 (@juhasch)
+  * Add .mo and .json files for translations #6728 (@frenzymadness)
+  * Apply PR #6609 to 6.5.x (Fix rename_file and delete_file to
+    handle hidden files properly) #6660 (@yacchin1205)</comment>
+    <requestid>1072950</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
