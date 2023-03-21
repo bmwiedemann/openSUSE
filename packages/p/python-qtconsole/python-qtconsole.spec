@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -33,7 +31,9 @@ URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gdb
@@ -49,6 +49,7 @@ Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
+Requires:       python-packaging
 Requires:       python-pyzmq >= 17.1
 Requires:       python-traitlets
 Conflicts:      python-traitlets = 5.2.1
@@ -74,6 +75,7 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
@@ -91,11 +93,11 @@ supporting rich media output, session export, and more.
 %setup -q -n qtconsole-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/jupyter-qtconsole

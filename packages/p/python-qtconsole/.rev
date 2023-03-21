@@ -229,4 +229,14 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment></comment>
     <requestid>1033841</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>45dd26eee1c6244a67f3765b4a1c12b9</srcmd5>
+    <version>5.4.1</version>
+    <time>1679416820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.1
+  * Fix crash at startup with PySide6.
+  * Cast images width and height to int when trying to insert them.</comment>
+    <requestid>1072944</requestid>
+  </revision>
 </revisionlist>

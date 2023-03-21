@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 19 15:57:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.1
+  * Fix crash at startup with PySide6.
+  * Cast images width and height to int when trying to insert them.
+
+-------------------------------------------------------------------
 Sat Nov  5 19:52:20 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.4.0:
