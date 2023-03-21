@@ -1,5 +1,5 @@
 #
-# spec file for package python-pybind11
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -34,7 +34,7 @@
 %define skip_python2 1
 %define plainpython python
 Name:           python-pybind11%{psuffix}
-Version:        2.10.3
+Version:        2.10.4
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause

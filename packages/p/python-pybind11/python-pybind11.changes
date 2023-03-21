@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 19 12:06:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.4:
+  * ``python3 -m pybind11`` gained a ``--version`` option (prints
+    the version and exits).
+  * Fix a warning when pydebug is enabled on Python 3.11.
+  * Ensure ``gil_scoped_release`` RAII is non-copyable.
+  * Ensure the tests dir does not show up with new versions of
+    setuptools.
+  * Better stacklevel for a warning in setuptools helpers.
+
+-------------------------------------------------------------------
 Thu Jan 12 17:50:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Package new pkgconfig file gh#pybind/pybind11#4077

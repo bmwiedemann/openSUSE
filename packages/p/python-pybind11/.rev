@@ -200,4 +200,19 @@
     <comment></comment>
     <requestid>1058218</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2afdc2b82abb5c8dbb687c740a31862</srcmd5>
+    <version>2.10.4</version>
+    <time>1679416807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.4:
+  * ``python3 -m pybind11`` gained a ``--version`` option (prints
+    the version and exits).
+  * Fix a warning when pydebug is enabled on Python 3.11.
+  * Ensure ``gil_scoped_release`` RAII is non-copyable.
+  * Ensure the tests dir does not show up with new versions of
+    setuptools.
+  * Better stacklevel for a warning in setuptools helpers.</comment>
+    <requestid>1072929</requestid>
+  </revision>
 </revisionlist>
