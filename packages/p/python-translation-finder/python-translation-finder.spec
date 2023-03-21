@@ -1,7 +1,7 @@
 #
 # spec file for package python-translation-finder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2021 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define modname translation-finder
 %define skip_python2 1
 Name:           python-translation-finder
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later

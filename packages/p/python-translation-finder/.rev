@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>1009907</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>358ccc88347c420c9f0cf23cc370b4d9</srcmd5>
+    <version>2.15</version>
+    <time>1679417085</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15:
+  * Added support for gotext JSON.
+  * Added support for i18next JSON v4.
+  * REUSE 3.0 compliance.</comment>
+    <requestid>1073578</requestid>
+  </revision>
 </revisionlist>
