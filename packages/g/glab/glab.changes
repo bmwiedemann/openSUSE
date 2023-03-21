@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Mar 15 08:08:40 UTC 2023 - kastl@b1-systems.de
+
+- set tar and recompress services to "buildtime"
+- use obscpio file for local go-modules run
+- cleanup spec file, remove old %go macros
+- Update to version 1.26.0:
+  * Merge security fix for v1.26.0 release
+  * refactor(test): use http constants in tests
+  * refactor: use HTTP constants in code
+  * chore: Remove profclems/glab from .goreleaser.yml
+  * chore: add debug environment variable to Makefile
+  * chore: remove build date and add architecture
+  * refactor(project): Stop requsting for README when viewing
+    project on web
+  * docs: add guidelines for triaging bugs
+  * chore: Modify UserAgent to be more like other CLIs
+  * docs: self-managed doc improvements
+  * docs: fix link to issue command in README
+  * chore(ci/test): separate integration tests
+  * docs: update core commands with links
+  * fix(issue create): better error message when users are not
+    members
+  * docs: reword homebrew section
+  * docs: Build jump list of core commands
+  * docs(installation): Add asdf-vm to install options
+  * feat: variable export
+  * docs: specify [flags] position in clone command
+  * feat(schedule): Add command to run schedules
+  * refactor: use strings.Join in comma separated list functions
+  * fix(repo): URL encode branch name when viewing on web
+  * refactor(test): combine issue/incident list tests
+  * refactor(issue/view): extract issuable/list package
+  * fix(project): Remove repo override functionality
+  * chore: Add test-race make target
+  * ci: lock down go lint image version
+  * docs: Add Fedora to installation options
+  * docs: Updating instructions for homebrew release
+  * ci(coverage): report correct coverage
+  * fix(ci): Fix issue where `ci get` fails if user is not
+    maintainer
+  * fix: check-update command output to StdErr
+  * refactor(test): adjust issuable tests to cover both types
+  * refactor(issue/view): extract issuable/view package
+  * chore: Expose make gen-docs task
+  * chore: Run tests in different Go versions
+  * fix: making sure homebrew doesn't try to open a browser
+  * test: fix timing issue with release tests
+
+-------------------------------------------------------------------
+Wed Mar 15 06:53:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adapt to new URL https://gitlab.com/gitlab-org/cli
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
 Tue Feb 07 14:07:31 UTC 2023 - pdostal@suse.com
 
 - Update to version 1.25.3:

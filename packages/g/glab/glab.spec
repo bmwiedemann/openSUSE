@@ -17,27 +17,19 @@
 #
 
 
-%global build_date      2021-01-11
-
-%global provider        github
-%global provider_tld    com
-%global project         profclems
-%global repo            glab
-%global provider_prefix %{provider}.%{provider_tld}/%{project}
-%global import_path     %{provider_prefix}/%{repo}
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           glab
-Version:        1.25.3
+Version:        1.26.0
 Release:        0
 Summary:        An open-source GitLab command line tool
 License:        MIT
 Group:          Development/Tools/Other
-URL:            https://github.com/profclems/glab
+URL:            https://gitlab.com/gitlab-org/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.18
 Suggests:       glab-doc
 
 %description
@@ -81,26 +73,25 @@ BuildArch:      noarch
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
-%{go_nostrip}
-%{go_provides}
-
 %prep
 %setup -q -n %{name}-%{version}
 %setup -a1 %{SOURCE1}
 
 %build
-%goprep .
-mkdir -p vendor/%{provider_prefix}
-ln -s . vendor/%{import_path}
-%gobuild -mod=vendor -ldflags "-s -w -X main.version=%{version} -X main.build=%{build_date} -X main.debugMode=false" ./cmd/glab
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+go build \
+        -mod=vendor \
+        -buildmode=pie \
+        -ldflags "-s -w -X main.version=%{version} -X main.build=$BUILD_DATE -X main.debugMode=false" \
+        ./cmd/glab
 
 # Build HTML docs
-go run -v -p 4 -x -mod=vendor ./cmd/gen-docs/
-make -C docs html
+go run ./cmd/gen-docs/docs.go
 
 # Build manpages
-go run -v -p 4 -x -mod=vendor ./cmd/gen-docs/ -m --path ./docs/build/man
-gzip -r ./docs/build/man
+go run -v -p 4 -x -mod=vendor ./cmd/gen-docs/docs.go --manpage --path ./share/man/man1
+gzip -r ./share/man/man1
 
 # Generate completion files
 go run -v -p 4 -x -mod=vendor ./cmd/glab/ completion -s bash > %{name}.bash
@@ -108,15 +99,21 @@ go run -v -p 4 -x -mod=vendor ./cmd/glab/ completion -s zsh > %{name}.zsh
 go run -v -p 4 -x -mod=vendor ./cmd/glab/ completion -s fish > %{name}.fish
 
 %install
-%goinstall
+mkdir -p "%{buildroot}/%{_bindir}/"
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 # Install HTML docs
-for i in $(find ./docs/build/html/ -type f | grep -vE "_source|.buildinfo|objects.inv"); do install -D -m0644 $i %{buildroot}%{_docdir}/%{name}/$(echo $i | sed -e s@^./docs/build/html/@@); done;
+mkdir -p "%{buildroot}/%{_docdir}/%{name}/"
+cp -vr ./docs/source/* %{buildroot}%{_docdir}/%{name}/
+find %{buildroot}%{_docdir}/%{name}/ -type f -exec chmod 644 {} "+"
+find %{buildroot}%{_docdir}/%{name}/ -type d -exec chmod 755 {} "+"
 
 # Install manpages
-for i in $(find ./docs/build/man/ -type f); do install -D -m0644 $i %{buildroot}%{_mandir}/man1/$(echo $i | sed -e s@^./docs/build/man/@@); done;
+mkdir -p "%{buildroot}/%{_mandir}/man1/"
+cp ./share/man/man1/* %{buildroot}%{_mandir}/man1/
+find %{buildroot}%{_mandir}/man1/ -type f -exec chmod 644 {} "+"
 
-# Install comletion files
+# Install completion files
 install -D -m0644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -D -m0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -D -m0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
