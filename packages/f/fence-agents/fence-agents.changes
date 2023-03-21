@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
-Thu Mar 16 14:13:52 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+Thu Mar 16 21:59:57 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.1+git.1677142927.bf55c675:
-  * Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  Include IBM Cloud VPC fence agent (jsc#PED-3626)
   * fence_scsi: fix registration handling if ISID conflicts ISID (Initiator Session ID) belonging to I_T Nexus changes for RHEL based on the session ID. This means that the connection to the device can be set up with different ISID on reconnects.
   * fence_amt/fence_ipmilan/fence_ironic: use shlex instead of pipes when available, as pipes is deprecated and will be removed in Python 3.13
   * fence_vmware_soap: set login_timeout lower than default pcmk_monitor_timeout (20s) to remove tmp dirs on fail
@@ -28,11 +28,6 @@ Thu Mar 16 14:13:52 UTC 2023 - Peter Varkoly <varkoly@suse.com>
   * fence_vmware_soap: set default login timeout less than Pacemakers default timeout to remove tmp dirs
   * fence_virtd: add link and non-user socket example to man page
   * fence_ibm_powervs: improve defaults based on testing
-
--------------------------------------------------------------------
-Thu Oct 13 16:05:44 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git.1665557656.1381bf21:
   * fence_lpar: only output additional error output on DEBUG level
   * fence_virt: add note that reboot-action doesnt power on nodes that are powered off
   * fencing: source_env(): dont process empty lines
@@ -48,47 +43,15 @@ Thu Oct 13 16:05:44 UTC 2022 - varkoly@suse.com
   * fence_ibm_powervs: add support for proxy, private API servers and get token via API key (#490)
   * fence_ibm_vpc: add proxy support
   * fence_zvmip: show unable to connect error instead of full stacktrace, e.g. when not using --ssl for SSL devices
-
--------------------------------------------------------------------
-Thu Jul 14 12:51:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
-
-- Don’t use python-oauth2client, which is deprecated
-  (gh#ClusterLabs/fence-agents#495).
-
--------------------------------------------------------------------
-Thu May 19 05:06:43 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git.1652860746.11107cb7:
   * Mid: fence_scsi,fence_mpath: Add suppress-errors option. (#484)
   * fence_gce: Make zone optional for get_nodes_list (#487)
-
--------------------------------------------------------------------
-Wed May 18 07:39:31 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git.1652779508.228f4a1b:
   * fence_apc/fence_ilo_moonshot: add missing "import logging"
   * fence_gce: inform that SSLError might be caused by old versions of httplib2
   * fence_ibm_vpc: remove unused instance parameter and make limit optional
   * all agents: unify ssl parameters to avoid having to use --ssl when using --ssl-secure/--ssl-insecure for some agents
-
--------------------------------------------------------------------
-Tue Apr 12 21:39:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
-
-- Do not use oauth2client on Tumbleweed: deprecated package.
-  oauth2 is supported since 4.8: gh#ClusterLabs/fence-agents#384
-
--------------------------------------------------------------------
-Thu Mar 31 13:33:20 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git.1647434775.2f1b86d8:
   * fence_apc.py compatibility for Firmware major release 7 workaround #475
   * fence_lpar: fix missing import logging, use fail_usage
   * fence_raritan: Also allow pure port number, not only system1/outletX string (#473)
-
--------------------------------------------------------------------
-Tue Feb 22 13:19:32 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git.1644831027.5283cdb5:
   * fence_cdu: add 8i support (#471)
   * fence_zvmip: add --disable-ssl
   * fencing: add ability to set bool parameters to 0 or false
@@ -126,17 +89,7 @@ Tue Feb 22 13:19:32 UTC 2022 - varkoly@suse.com
   * fence_ibm_vpc/fence_ibm_powervs: new fence agents
   * fence_kdump: properly support -v[X] and -vvv (and combinations)
   * fence_mpath/fence_scsi: use store path detected by configure
-
--------------------------------------------------------------------
-Mon Aug 23 09:51:14 UTC 2021 - varkoly@suse.com
-
-- Update to version 4.10.0+git.1627556580.31443c15:
   * fence_kubevirt: add --ssl-insecure parameter
-
--------------------------------------------------------------------
-Thu Jul 29 05:53:12 UTC 2021 - varkoly@suse.com
-
-- Update to version 4.10.0+git.1626946937.8ade08b4:
   * fence_kdump: accept message from multiple addresses (useful for RRP clusters) (#374)
   * fence_pve: Replace `nodename` with `pmx-node` in fence_pve.py (matching original intent) (#424)
   * spec: add dependency to new split packages for Fedora 35+
@@ -146,19 +99,50 @@ Thu Jul 29 05:53:12 UTC 2021 - varkoly@suse.com
   * build: expose delay-check to be able to skip the other tests when debugging
   * fence-kubevirt: Add fence-kubevirt declaration for rpm creation
   * fence_kubevirt: Fix accept header param to openshift client
+- Don’t use python-oauth2client, which is deprecated
+  (gh#ClusterLabs/fence-agents#495).
+- Remove python2 stuff from spec file
+- remove patches included by update:
+  * 0001-fence_gce-Add-timeouts-and-failure-options-458.patch
+  * 0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+  * 0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
 
 -------------------------------------------------------------------
-Fri Jun 25 15:51:21 UTC 2021 - trenn@suse.de
+Thu Jun 23 13:47:45 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
-- Update to version 4.9.0+git.1624631789.25ec70f0:
-  * fence_cdu: new fence agent (#416)
-  This fence is needed for SEntry powerswitches
+- Azure fence agent doesn’t work correctly on SLES15 SP3 - fence_azure_arm
+  fails with error 'MSIAuthentication' object has no attribute 'get_token' - SFSC00334437
+  (bsc#1195891)
+  - Apply proposed patch
+    0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
 
 -------------------------------------------------------------------
-Thu Jun 24 09:11:35 UTC 2021 - varkoly@suse.com
+Tue May 17 05:11:00 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in
+  GCP due to missing "--zone" parameter (bsc#1198872)
+  - Apply proposed patch
+    0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+
+-------------------------------------------------------------------
+Wed May  4 11:08:48 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in GCP due to missing "--zone" parameter
+  (bsc#1198872) 
+
+-------------------------------------------------------------------
+Thu Feb 24 13:16:51 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1196350) fence_gce updates pull from Clusterlabs repo
+  - Apply proposed upstream patch
+    0001-fence_gce-Add-timeouts-and-failure-options-458.patch 
+
+-------------------------------------------------------------------
+Thu Jun 24 07:59:27 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.9.0+git.1624456340.8d746be9:
   * fence_azure_arm: corrections to support Azure SDK >= 15 - including backward compatibility (#415)
+  (bsc#1185058)
   * fence_gce: make serviceaccount work with new libraries
   * fence_kubevirt: new fence agent
   * fence_virt*: simple_auth: use %zu for sizeof to avoid failing verbose builds on some archs
@@ -167,12 +151,6 @@ Thu Jun 24 09:11:35 UTC 2021 - varkoly@suse.com
   * fencing: add multi plug support for reboot-action
   * fence_redfish: add missing diag logic
   * fencing: fix issue with hardcoded help text length for metadata
-  (bsc#1185058) ERROR: Failed: 'ServicePrincipalCredentials' object has no attribute 'get_token' - SFSC 00281399 - ref:_00D1igLOd._5001icMD3K:ref
-
--------------------------------------------------------------------
-Mon May 10 12:51:57 UTC 2021 - varkoly@suse.com
-
-- Update to version 4.8.0+git.1619794372.c48ba825:
   * fence_lindypdu: update metadata
   * fence_lindypdu: new fence agent
   * fencing: add stonith_status_sleep parameter for sleep between status calls during a STONITH action
@@ -186,11 +164,6 @@ Mon May 10 12:51:57 UTC 2021 - varkoly@suse.com
   * Revert change to __all__
   * Major rework of the original agent:
   (bsc#1182701) [0.9.10-GCE-Build1.6] fence_gce doesn't restart the node as expected
-
--------------------------------------------------------------------
-Fri Apr 09 08:38:18 UTC 2021 - trenn@suse.de
-
-- Update to version 4.8.0+git.1617895246.97a7479e (shortend):
   * fence_virt: fix required=1 parameters that used to not be required and add deprecated=1 for old deprecated params
   * fence_gce: default method moved back to powercycle (#389)
   * fence_aws: add filter parameter to be able to limit which nodes are listed
@@ -221,7 +194,11 @@ Fri Apr 09 08:38:18 UTC 2021 - trenn@suse.de
   * Move fence_virt to the correct location
   * Ignore unknown options on stdin
   * fence_gce: support google-auth and oauthlib and fallback to deprecated libs when not available
-  * spec: add aliyun subpackage and fence_mpath_check* to mpath subpackage
+  * spec:
+     add aliyun subpackage and fence_mpath_check* to mpath subpackage
+     add libxml2-devel to BuildRequires
+  (jsc#SLE-18182) ECO: Update fence-agents
+  (jsc#SLE-17998) Add upstream PR to aws-vpc-move-ip and apply required resource & fence agent patches
 
 -------------------------------------------------------------------
 Wed Feb 10 20:25:29 UTC 2021 - trenn@suse.de

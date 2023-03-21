@@ -16,14 +16,10 @@
 #
 
 
-%if 0%{?suse_version} == 1315
-%define python_version python2
-%else
 %define python_version python3
-%endif
 
 %global plugin_dir %{_libdir}/stonith/plugins/rhcs
-%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm cdu
+%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
 
 Name:           fence-agents
 Summary:        Fence Agents for High Availability
@@ -37,7 +33,6 @@ Patch1:         0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_version}
-%if "%{python_version}" == "python3"
 BuildRequires:  python3-google-api-python-client
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-novaclient
@@ -45,21 +40,7 @@ BuildRequires:  python3-novaclient
 BuildRequires:  python3-oauth2
 %else
 BuildRequires:  python3-google-auth-oauthlib
-%endif
-BuildRequires:  python3-openwsman
-BuildRequires:  python3-pexpect
-BuildRequires:  python3-pycurl
-BuildRequires:  python3-requests
-BuildRequires:  python3-xml
-%else
-BuildRequires:  python-google-api-python-client
-BuildRequires:  python-google-auth-oauthlib
-BuildRequires:  python-keystoneclient
-BuildRequires:  python-novaclient
-BuildRequires:  python-pexpect
-BuildRequires:  python-pycurl
-BuildRequires:  python-requests
-BuildRequires:  python-xml
+BuildRequires:  python3-oauth2client
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -74,20 +55,18 @@ BuildRequires:  mozilla-nss-devel
 BuildRequires:  perl
 BuildRequires:  perl-Net-Telnet
 BuildRequires:  pkg-config
+BuildRequires:  python3-openwsman
+BuildRequires:  python3-pexpect
+BuildRequires:  python3-pycurl
+BuildRequires:  python3-requests
+BuildRequires:  python3-xml
 BuildRequires:  xz
-
-%if "%{python_version}" == "python3"
-Requires:       python3-pexpect
-Requires:       python3-pycurl
-Requires:       python3-requests
-%else
-Requires:       python-pexpect
-Requires:       python-pycurl
-Requires:       python-requests
-%endif
 Requires:       net-snmp
 Requires:       openssh
 Requires:       perl-Net-Telnet
+Requires:       python3-pexpect
+Requires:       python3-pycurl
+Requires:       python3-requests
 Requires:       sg3_utils
 Requires:       telnet
 
@@ -99,9 +78,7 @@ Recommends:     /usr/bin/virsh
 # have changed Requires around. Make sure to get the right one.
 Recommends:     /usr/bin/ipmitool
 
-%if "%{python_version}" == "python3"
 Recommends:     python3-openwsman
-%endif
 
 %if 0%{?with_regression_tests}
 BuildRequires:  time
@@ -141,18 +118,12 @@ development.
 
 %prep
 %setup -q -n %{name}-%{version}
-%if "%{python_version}" == "python3"
 %patch1 -p1
-%endif
 
 %build
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"
 export CFLAGS
-%if "%{python_version}" == "python3"
 PYTHON="%{_bindir}/python3"
-%else
-PYTHON="%{_bindir}/python2"
-%endif
 export PYTHON
 echo "%{version}" >.tarball-version
 ./autogen.sh

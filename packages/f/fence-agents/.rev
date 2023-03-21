@@ -935,4 +935,41 @@
   * fence_ibm_powervs: improve defaults based on testing</comment>
     <requestid>1072481</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>f1065ccb5641c5f20cbd54d79a4de498</srcmd5>
+    <version>4.12.1+git.1677142927.bf55c675</version>
+    <time>1679416898</time>
+    <user>dimstar_suse</user>
+    <comment>  Include IBM Cloud VPC fence agent (jsc#PED-3626)
+- Don’t use python-oauth2client, which is deprecated
+  (gh#ClusterLabs/fence-agents#495).
+- Remove python2 stuff from spec file
+- remove patches included by update:
+  * 0001-fence_gce-Add-timeouts-and-failure-options-458.patch
+  * 0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+  * 0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
+
+- Azure fence agent doesn’t work correctly on SLES15 SP3 - fence_azure_arm
+  fails with error 'MSIAuthentication' object has no attribute 'get_token' - SFSC00334437
+  (bsc#1195891)
+  - Apply proposed patch
+    0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in
+  GCP due to missing &quot;--zone&quot; parameter (bsc#1198872)
+  - Apply proposed patch
+    0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in GCP due to missing &quot;--zone&quot; parameter
+  (bsc#1198872) 
+
+- (bsc#1196350) fence_gce updates pull from Clusterlabs repo
+  - Apply proposed upstream patch
+    0001-fence_gce-Add-timeouts-and-failure-options-458.patch 
+
+  (bsc#1185058)
+  * spec:
+     add aliyun subpackage and fence_mpath_check* to mpath subpackage
+     add libxml2-devel to BuildRequires
+  (jsc#SLE-18182) ECO: Update fence-agents</comment>
+    <requestid>1073128</requestid>
+  </revision>
 </revisionlist>
