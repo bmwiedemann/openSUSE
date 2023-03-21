@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 18 23:41:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.2:
+  The difference is huge and the list of changes is long. Please,
+  if you care study whole story on https://openlp.org/blog.
+  This particular minor release changed:
+  - Only show hash if song book number exists
+  - FIX: Missing looping for theme background videos
+  - Fix Songs' Topics media manager icon to be the same from the
+    Song Maintenance dialog
+  - Add ability to return transposed item with service_item
+    format to avoid duplicate calls on remote
+  - Fix OpenLyrics whitespaces being 'eaten' (again)
+  - Fixg service manager's list exception when pressing 'Left'
+    keyboard key without any item selected
+  - Force the use of SqlAlchemy 1.4 for now
+  - Removing login requirement from transpose endpoint
+  - Handle verse ranges in BibleServer
+  - Fix up loading 2.9.x services
+  - Attempt to fix #1287 by checking for both str and bytes, and
+    decoding bytes to unicode
+  - Add debugging for VLC and fix strange state.
+  - Display the closing progress dialog during plugin shutdown
+  - Fix an issue with the Worship Center Pro importer
+  - Fix white preview display when previewing presentations
+  - Fix an issue where the websockets server would try to shut
+    down even when -w is supplied
+  - Use a simpler approach when creating a tmp file when saving
+    service files
+
+
+-------------------------------------------------------------------
 Thu Dec 17 21:10:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - nose dependency was actually not needed at all

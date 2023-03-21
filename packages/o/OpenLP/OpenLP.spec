@@ -17,20 +17,22 @@
 
 
 Name:           OpenLP
-Version:        2.4.6
+Version:        3.0.2
 Release:        0
 Summary:        Open source Church presentation and lyrics projection application
 License:        GPL-2.0-only
-URL:            https://openlp.org
+URL:            https://gitlab.com/openlp/openlp
 Source0:        https://get.openlp.org/%{version}/%{name}-%{version}.tar.gz
 Source1:        OpenLP-rpmlintrc
 Patch0:         suse_corrections.patch
 BuildRequires:  desktop-file-utils
+BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
 BuildRequires:  python3
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-pip
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
 Requires:       python3-Mako
@@ -53,20 +55,19 @@ used to display slides of Songs, Bible verses, videos, images, and
 presentations via LibreOffice using a computer and projector.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1 -c
 
 # Remove unit tests
 rm tests/__init__.py
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 # Compile the translation files and copy them to the correct directory
 # Presumes you are in the base directory of OpenLP
 
 %install
-python3 setup.py install --skip-build -O1 --prefix=%{_prefix} --root=%{buildroot}
+%python3_pyproject_install
 
 install -m644 -p -D resources/images/openlp-logo-16x16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/openlp.png
 install -m644 -p -D resources/images/openlp-logo-32x32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/openlp.png
@@ -74,8 +75,6 @@ install -m644 -p -D resources/images/openlp-logo-48x48.png %{buildroot}%{_datadi
 install -m644 -p -D resources/images/openlp-logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/openlp.svg
 
 %suse_update_desktop_file -i -r openlp AudioVideo Video Player
-
-mv %{buildroot}%{_bindir}/openlp.py %{buildroot}%{_bindir}/openlp
 
 mkdir -p %{buildroot}%{_datadir}/openlp/i18n/
 for TSFILE in resources/i18n/*.ts; do
@@ -109,6 +108,6 @@ update-desktop-database > /dev/null 2>&1 ||:
 %{_datadir}/icons/hicolor
 %{_datadir}/openlp
 %{python3_sitelib}/openlp/
-%{python3_sitelib}/%{name}-%{version}*.egg-info
+%{python3_sitelib}/%{name}-%{version}*-info
 
 %changelog
