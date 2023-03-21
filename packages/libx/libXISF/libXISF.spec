@@ -18,9 +18,9 @@
 
 %define sover 0
 Name:           libXISF
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
-Summary:        Read and write XISF files produced by PixInsight
+Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later
 URL:            https://gitea.nouspiro.space/nou/libXISF
 Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -36,7 +36,7 @@ BuildRequires:  gcc-c++
 C++ library that can read and write XISF files produced by PixInsight.
 
 %package -n %{name}%{sover}
-Summary:        Read and write XISF files produced by PixInsight
+Summary:        Library to read/write PixInsight XISF files
 
 %description -n %{name}%{sover}
 C++ library that can read and write XISF files produced by PixInsight.
@@ -69,15 +69,13 @@ This package contains all the needed development files to use %{name}.
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
-%files
-%license LICENSE
-%doc README.md
-
 %files -n %{name}%{sover}
 %{_libdir}/libXISF.so.%{sover}
 %{_libdir}/libXISF.so.%{version}
+%license LICENSE
 
 %files devel
+%doc README.md
 %{_includedir}/libXISF_global.h
 %{_includedir}/libxisf.h
 %{_libdir}/libXISF.so

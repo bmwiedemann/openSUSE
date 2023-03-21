@@ -7,4 +7,15 @@
     <comment>new package needed by INDI</comment>
     <requestid>1071408</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3118d78d42c7824647e5121a7a0f48cc</srcmd5>
+    <version>0.2.1</version>
+    <time>1679416849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1 (no changelog).
+- Use noun phrase for descriptions. Avoid miniscule main package
+  by moving documentation to subpackages.
+</comment>
+    <requestid>1073022</requestid>
+  </revision>
 </revisionlist>
