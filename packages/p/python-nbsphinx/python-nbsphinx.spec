@@ -16,9 +16,8 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.8.12
+Version:        0.9.1
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
@@ -77,7 +76,7 @@ build process.
 %{python_expand # no other unit tests provided
 # import the module.
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m nbsphinx
+$python -c 'import nbsphinx'
 # We cannot test it on our own doc/ because we lack the right Sphinx packages
 #$python -m sphinx doc/ _build/ -Dsuppress_warnings=git.too_shallow -b html
 }
@@ -85,8 +84,7 @@ $python -m nbsphinx
 %files %{python_files}
 %doc NEWS.rst README.rst
 %license LICENSE
-%{python_sitelib}/nbsphinx.py*
-%pycache_only %{python_sitelib}/__pycache__/nbsphinx.*.py*
+%{python_sitelib}/nbsphinx
 %{python_sitelib}/nbsphinx-%{version}.dist-info
 
 %changelog
