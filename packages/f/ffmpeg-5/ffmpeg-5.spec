@@ -230,7 +230,7 @@ BuildRequires:  pkgconfig(x264)
 BuildRequires:  pkgconfig(x265)
 %endif
 Provides:       ffmpeg-tools = %version
-Obsoletes:      ffmpeg-tools < %version
+Conflicts:      ffmpeg-tools
 Provides:       ffmpeg = %version
 Obsoletes:      ffmpeg < %version
 Requires:       libavcodec59 = %version-%release
@@ -462,6 +462,7 @@ This subpackage contains the headers for FFmpeg libpostproc.
 Summary:        FFmpeg software resampling library
 Group:          System/Libraries
 Requires:       libavutil57 = %version-%release
+Obsoletes:      libswresample4 < %version-%release
 
 %description -n libswresample4_ff5
 The libswresample library performs audio conversion between different

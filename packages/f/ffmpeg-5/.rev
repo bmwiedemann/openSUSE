@@ -133,4 +133,14 @@
     <comment>add to ADI:66</comment>
     <requestid>1071235</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>2cc4447e388cf6b0f02c43ee9f5ab7a8</srcmd5>
+    <version>5.1.2</version>
+    <time>1679416808</time>
+    <user>dimstar_suse</user>
+    <comment>obsoletes != provides
+THIS IS NEEDED
+https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=share&amp;utm_medium=web2x&amp;context=3 (forwarded request 1072935 from gmbr3)</comment>
+    <requestid>1072937</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 18:11:17 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Obsolete old FFmpeg 5 libswresample4, otherwise they'll conflict
+
+-------------------------------------------------------------------
+Thu Mar 16 17:55:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
 Mon Mar 13 11:54:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add soname.diff to get libswresample4 nonconflicting with ffmpeg-6.
