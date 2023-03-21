@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Mar 20 11:56:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.1:
+  * Changed bold foreground back to default, made it into an
+    option set by themes
+  * #298 Added a new "compact" Git mode, with less width than
+    "fancy", and a bit more information than "simple" (@jacobo-
+    diaz)
+  * #308 add low precision duration setting (@pridkett)
+  * #310 Restyle nix-shell segment (@jonascarpay)
+  * #321 Add support to show current date and time (@flybyray)
+  * #330 Added segment to display current node version (@caleb-
+    artifact)
+  * #331 Increased the performance of GCP segment (@caleb-
+    artifact)
+  * #333 Add more exit code strings (@scop)
+  * #336 Add vi-mode segment (@blackheaven)
+  * #338 Add Openshift cluster context shortening (@stas2k)
+  * #339 Allow node indicator to be overridden (@mjgiarlo)
+  * #340 Add RVM segment for Rubyists who use RVM (@mjgiarlo)
+  * #349 make foreground color bold (@buckley310)
+  * #351 Add support for DOCKER_CONTEXT environment variable
+  * #352 direnv support (@scop)
+  * #289 Avoid a git rev-list if stash stats are disabled (@scop)
+  * #292 Fix prompt for Fish Shell (@cfinnberg)
+  * #294 fallback to $PWD if os.Getwd returns error (@vgropp)
+  * #296 git ignores global config gitexcludes/.git/config/ignore
+  * #301 Path should be escaped in plain mode (@dswij)
+  * #312 Improve shell detection (@scop)
+  * #314 only warn about shellVarName not existing if it's been
+    set (@kchiem)
+  * #317 Try to escape virtualenv on Git Bash for Windows
+  * #319 Replace wc with fish builtin count (@kidonng)
+  * #341 Do not render node package segment if no version found
+
+-------------------------------------------------------------------
+Thu Jul 15 16:57:58 UTC 2021 - pandom79@gmail.com
+
+- Update to version 1.21.0:
+  * Fix typod flag name to re-enable prompt shrinking when `-max-width` is specified
+  * added signal numbers for DragonFly BSD
+  * Improve README for -colorize-hostname
+  * Corrects whitespace in README.md
+  * Fixes return value in bzr and fossil segments and adds modules bzr and fossil to README.md
+  * fixed terraform refactor
+  * use happy path for better code readability
+  * Use goenv's colors for vgo too
+  * Added Fossil segment
+  * Added Bazaar segment
+
+-------------------------------------------------------------------
+Tue Jun 22 09:05:20 UTC 2021 - Domenico Panella <pandom79@gmail.com>
+
+
+Several bugfixes and improvements thanks to the help from many contributors :)
+- 
