@@ -1,0 +1,200 @@
+From 7695852856d2d841308fb6375ac2f7ec26e29eea Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 4 Feb 2023 20:16:24 +0000
+Subject: [PATCH] Add missing standard library includes (fix build with GCC 13)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> etc is no longer transitively included.
+
+See https://www.gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/892814
+---
+ source/mididevices/music_adlmidi_mididevice.cpp    |    1 +
+ source/mididevices/music_fluidsynth_mididevice.cpp |    1 +
+ source/mididevices/music_opl_mididevice.cpp        |    3 ++-
+ source/mididevices/music_opnmidi_mididevice.cpp    |    1 +
+ source/mididevices/music_timidity_mididevice.cpp   |    1 +
+ source/mididevices/music_timiditypp_mididevice.cpp |    3 ++-
+ source/mididevices/music_wavewriter_mididevice.cpp |    1 +
+ source/mididevices/music_wildmidi_mididevice.cpp   |    3 ++-
+ source/musicformats/music_midi.cpp                 |    3 ++-
+ source/streamsources/music_gme.cpp                 |    4 +++-
+ source/streamsources/music_opl.cpp                 |    2 ++
+ source/zmusic/fileio.h                             |    1 +
+ 12 files changed, 19 insertions(+), 5 deletions(-)
+
+Index: source/mididevices/music_adlmidi_mididevice.cpp
+===================================================================
+--- source/mididevices/music_adlmidi_mididevice.cpp.orig
++++ source/mididevices/music_adlmidi_mididevice.cpp
+@@ -34,6 +34,7 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
++#include <stdexcept>
+ #include <stdlib.h>
+ 
+ #include "zmusic/zmusic_internal.h"
+Index: source/mididevices/music_fluidsynth_mididevice.cpp
+===================================================================
+--- source/mididevices/music_fluidsynth_mididevice.cpp.orig
++++ source/mididevices/music_fluidsynth_mididevice.cpp
+@@ -35,6 +35,7 @@
+ // HEADER FILES ------------------------------------------------------------
+ 
+ #include <mutex>
++#include <stdexcept>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "zmusic/zmusic_internal.h"
+Index: source/mididevices/music_opl_mididevice.cpp
+===================================================================
+--- source/mididevices/music_opl_mididevice.cpp.orig
++++ source/mididevices/music_opl_mididevice.cpp
+@@ -35,6 +35,7 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
++#include <stdexcept>
+ #include "zmusic/zmusic_internal.h"
+ #include "mididevice.h"
+ #include "zmusic/mus2midi.h"
+@@ -333,4 +334,4 @@ MIDIDevice* CreateOplMIDIDevice(const ch
+ {
+ 	throw std::runtime_error("OPL device not supported in this configuration");
+ }
+-#endif
+\ No newline at end of file
++#endif
+Index: source/mididevices/music_opnmidi_mididevice.cpp
+===================================================================
+--- source/mididevices/music_opnmidi_mididevice.cpp.orig
++++ source/mididevices/music_opnmidi_mididevice.cpp
+@@ -34,6 +34,7 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
++#include <stdexcept>
+ #include "mididevice.h"
+ #include "zmusic/zmusic_internal.h"
+ 
+Index: source/mididevices/music_timidity_mididevice.cpp
+===================================================================
+--- source/mididevices/music_timidity_mididevice.cpp.orig
++++ source/mididevices/music_timidity_mididevice.cpp
+@@ -34,6 +34,7 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
++#include <stdexcept>
+ #include <stdlib.h>
+ #include "mididevice.h"
+ #include "zmusic/zmusic_internal.h"
+Index: source/mididevices/music_timiditypp_mididevice.cpp
+===================================================================
+--- source/mididevices/music_timiditypp_mididevice.cpp.orig
++++ source/mididevices/music_timiditypp_mididevice.cpp
+@@ -32,6 +32,7 @@
+ **
+ */
+ 
++#include <stdexcept>
+ #include "mididevice.h"
+ #include "zmusic/zmusic_internal.h"
+ 
+@@ -239,4 +240,4 @@ MIDIDevice* CreateTimidityPPMIDIDevice(c
+ {
+ 	throw std::runtime_error("Timidity++ device not supported in this configuration");
+ }
+-#endif
+\ No newline at end of file
++#endif
+Index: source/mididevices/music_wavewriter_mididevice.cpp
+===================================================================
+--- source/mididevices/music_wavewriter_mididevice.cpp.orig
++++ source/mididevices/music_wavewriter_mididevice.cpp
+@@ -38,6 +38,7 @@
+ #include "mididevice.h"
+ #include "zmusic/m_swap.h"
+ #include "fileio.h"
++#include <stdexcept>
+ #include <errno.h>
+ 
+ // MACROS ------------------------------------------------------------------
+Index: source/mididevices/music_wildmidi_mididevice.cpp
+===================================================================
+--- source/mididevices/music_wildmidi_mididevice.cpp.orig
++++ source/mididevices/music_wildmidi_mididevice.cpp
+@@ -34,6 +34,7 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
++#include <stdexcept>
+ #include "mididevice.h"
+ #include "zmusic/zmusic_internal.h"
+ 
+@@ -278,4 +279,4 @@ MIDIDevice* CreateWildMIDIDevice(const c
+ {
+ 	throw std::runtime_error("WildMidi device not supported in this configuration");
+ }
+-#endif
+\ No newline at end of file
++#endif
+Index: source/musicformats/music_midi.cpp
+===================================================================
+--- source/musicformats/music_midi.cpp.orig
++++ source/musicformats/music_midi.cpp
+@@ -34,8 +34,9 @@
+ 
+ // HEADER FILES ------------------------------------------------------------
+ 
+-#include <string>
+ #include <algorithm>
++#include <stdexcept>
++#include <string>
+ #include <assert.h>
+ #include "zmusic/zmusic_internal.h"
+ #include "zmusic/musinfo.h"
+Index: source/streamsources/music_gme.cpp
+===================================================================
+--- source/streamsources/music_gme.cpp.orig
++++ source/streamsources/music_gme.cpp
+@@ -38,9 +38,11 @@
+ //#define GME_DLL
+ 
+ #include <algorithm>
++#include <mutex>
++#include <stdexcept>
++
+ #include "streamsource.h"
+ #include <gme/gme.h>
+-#include <mutex>
+ #include "fileio.h"
+ 
+ // MACROS ------------------------------------------------------------------
+Index: source/streamsources/music_opl.cpp
+===================================================================
+--- source/streamsources/music_opl.cpp.orig
++++ source/streamsources/music_opl.cpp
+@@ -35,6 +35,8 @@
+ 
+ #ifdef HAVE_OPL
+ 
++#include <stdexcept>
++
+ #include "streamsource.h"
+ #include "oplsynth/opl.h"
+ #include "oplsynth/opl_mus_player.h"
+Index: source/zmusic/fileio.h
+===================================================================
+--- source/zmusic/fileio.h.orig
++++ source/zmusic/fileio.h
+@@ -25,6 +25,7 @@
+ #pragma once
+ #include <stdio.h>
+ #include <string.h>
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ 

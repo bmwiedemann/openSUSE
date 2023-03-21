@@ -63,4 +63,12 @@
     <comment>- Update to release 1.1.11</comment>
     <requestid>1037784</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>19dfb163e5d6de1a96f4d55b25d1bfdd</srcmd5>
+    <version>1.1.11</version>
+    <time>1679417016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Add-missing-standard-library-includes-fix-build-with.patch to make gcc 13 happy.</comment>
+    <requestid>1073381</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package zmusic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://github.com/ZDoom/ZMusic/archive/%version.tar.gz
 Patch1:         system-fluidsynth.patch
 Patch2:         system-gme.patch
 Patch3:         dumb-dumb.patch
+Patch4:         0001-Add-missing-standard-library-includes-fix-build-with.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
