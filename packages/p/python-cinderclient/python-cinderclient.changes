@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:55:29 UTC 2023 - cloud-devel@suse.de
+
+- update to version 9.3.0
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Handle downgraded client for snapshot-create
+  - Move print operations to shell_utils
+  - Improve help text of volume create command
+  - Remove python-dev from bindep
+  - Remove the unused tool scripts
+  - Bump API max version to 3.70
+  - Update python testing as per zed cycle testing runtime
+  - Add Python3 yoga unit tests
+  - Update minimum requirements
+  - Update master for stable/zed
+  - Add Python 3 only classifier
+  - Add W503 to flake8 ignores
+  - Add support for collect-timing option
+  - Python3.11: fix crashes in ShellTest
+  - Correct "Increase default quotas for zuul jobs"
+  - Prepare for Yoga cinderclient release
+  - Add Python3 antelope unit tests
+  - Add test coverage for shell snapshot-create w/ metadata
+  - remove simplejson requirement
+  - Update bindep for ubuntu jammy
+  - Updating python testing as per Yoga testing runtime
+  - Move tempest requirement to functional env
+  - Fix extension loading from python path
+  - Continue using tox 3
+  - Python3.11: Fix argparse-related test failures
+  - Add volume reimage command
+
+-------------------------------------------------------------------
 Tue May 24 20:52:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove unneeded dependencies 

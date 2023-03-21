@@ -809,4 +809,40 @@
     <comment>- remove unneeded dependencies</comment>
     <requestid>979058</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b397e1d0f55b08eba3b53b1d2eddb23b</srcmd5>
+    <version>9.3.0</version>
+    <time>1679416858</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 9.3.0
+  - Update master for stable/xena
+  - Update master for stable/yoga
+  - Handle downgraded client for snapshot-create
+  - Move print operations to shell_utils
+  - Improve help text of volume create command
+  - Remove python-dev from bindep
+  - Remove the unused tool scripts
+  - Bump API max version to 3.70
+  - Update python testing as per zed cycle testing runtime
+  - Add Python3 yoga unit tests
+  - Update minimum requirements
+  - Update master for stable/zed
+  - Add Python 3 only classifier
+  - Add W503 to flake8 ignores
+  - Add support for collect-timing option
+  - Python3.11: fix crashes in ShellTest
+  - Correct &quot;Increase default quotas for zuul jobs&quot;
+  - Prepare for Yoga cinderclient release
+  - Add Python3 antelope unit tests
+  - Add test coverage for shell snapshot-create w/ metadata
+  - remove simplejson requirement
+  - Update bindep for ubuntu jammy
+  - Updating python testing as per Yoga testing runtime
+  - Move tempest requirement to functional env
+  - Fix extension loading from python path
+  - Continue using tox 3
+  - Python3.11: Fix argparse-related test failures
+  - Add volume reimage command</comment>
+    <requestid>1073024</requestid>
+  </revision>
 </revisionlist>

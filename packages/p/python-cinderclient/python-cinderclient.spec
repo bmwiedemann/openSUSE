@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinderclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-cinderclient
-Version:        8.1.0
+Version:        9.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Cinder
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-cinderclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python-cinderclient-8.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python-cinderclient-9.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 4.3.1
+BuildRequires:  python3-keystoneauth1 >= 5.0.0
 BuildRequires:  python3-oslo.serialization
 BuildRequires:  python3-oslo.utils >= 4.8.0
 BuildRequires:  python3-pbr >= 5.5.0
@@ -47,11 +47,10 @@ Each implements 100% of the OpenStack Cinder API.
 Summary:        Python API and CLI for OpenStack Cinder
 Requires:       python3-Babel
 Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-keystoneauth1 >= 4.3.1
+Requires:       python3-keystoneauth1 >= 5.0.0
 Requires:       python3-oslo.i18n >= 5.0.1
 Requires:       python3-oslo.utils >= 4.8.0
 Requires:       python3-requests >= 2.25.1
-Requires:       python3-simplejson >= 3.5.1
 %if 0%{?suse_version}
 Obsoletes:      python2-cinderclient < 6.0.0
 %endif
@@ -77,15 +76,15 @@ Each implements 100% of the OpenStack Cinder API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-cinderclient-8.1.0
+%autosetup -p1 -n python-cinderclient-9.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 export PYTHONPATH=.
-PBR_VERSION=8.1.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=8.1.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=9.3.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=9.3.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -98,7 +97,7 @@ install -p -D -m 644 tools/cinder.bash_completion %{buildroot}%{_sysconfdir}/bas
 
 %check
 rm cinderclient/tests/unit/test_shell.py
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-cinderclient
 %license LICENSE
