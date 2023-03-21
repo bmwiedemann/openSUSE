@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee61e9d9c5c3ee2834016483ffa3928f</srcmd5>
+    <version>1.1.2</version>
+    <time>1679417020</time>
+    <user>dimstar_suse</user>
+    <comment>Replacement of now gone distutils.version.LooseVersion.</comment>
+    <requestid>1073386</requestid>
+  </revision>
+</revisionlist>
