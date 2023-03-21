@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 19 09:15:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.4 release
+  - Initial step of the Wayland graphics driver.
+  - Cleanups in IME support.
+  - A number of test fixes.
+  - Various bug fixes.
+- update staging to 8.4 release
+- buildrequires pkgconfig(wayland-client)
+
+-------------------------------------------------------------------
 Sat Mar  4 08:28:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.3 release
