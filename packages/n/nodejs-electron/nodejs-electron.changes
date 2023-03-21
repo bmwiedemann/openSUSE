@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 18 18:48:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- ANGLE: Link libvulkan.so and libGL.so instead of dlopening it
+  * angle_link_glx.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 10:09:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.3
   * Fixed an issue where unhandled rejections could cause duplicate logs in some cases.

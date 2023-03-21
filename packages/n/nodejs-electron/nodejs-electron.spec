@@ -136,6 +136,12 @@ BuildArch:      i686
 %bcond_with system_nvctrl
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora_version}
+%bcond_without link_vulkan
+%else
+%bcond_with link_vulkan
+%endif
+
 
 
 
@@ -242,7 +248,6 @@ Patch25:        electron-16-system-node-headers.patch
 Patch39:        support-i386.patch
 # from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
 Patch67:        disable-catapult.patch
-Patch68:        do-not-build-libvulkan.so.patch
 Patch69:        nasm-generate-debuginfo.patch
 Patch70:        disable-fuses.patch
 Patch71:        enable-jxl.patch
@@ -253,8 +258,10 @@ Patch74:        common.gypi-remove-fno-omit-frame-pointer.patch
 Patch75:        gcc-asmflags.patch
 # https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
 Patch76:        disable-devtools-tests.patch
+Patch77:        angle_link_glx.patch
 
 # PATCHES to use system libs
+Patch1000:      do-not-build-libvulkan.so.patch
 Patch1002:      chromium-system-libusb.patch
 Patch1017:      system-libdrm.patch
 # http://svnweb.mageia.org/packages/updates/7/chromium-browser-stable/current/SOURCES/chromium-74-pdfium-system-libopenjpeg2.patch?view=markup
@@ -596,6 +603,9 @@ BuildRequires:  spirv-headers-devel
 %endif
 BuildRequires:  pkgconfig(SPIRV-Tools) >= 2022.2
 %endif
+%if %{with link_vulkan}
+BuildRequires:  pkgconfig(vulkan) >= 1.3
+%endif
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(zlib)
@@ -626,10 +636,12 @@ Requires:       google-roboto-fonts
 Recommends:     noto-coloremoji-fonts
 
 # This required library is dlopened
+%if %{without link_vulkan}
 %ifarch %ix86 %arm
 Requires:       libvulkan.so.1
 %else
 Requires:       libvulkan.so.1()(64bit)
+%endif
 %endif
 
 Provides:       electron
@@ -998,7 +1010,9 @@ gn_system_libraries+=( libyuv )
 
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
-
+%if %{with link_vulkan}
+find third_party/angle/src/third_party/volk -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
+%endif
 
 %if %{with system_nghttp2}
 find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
@@ -1070,8 +1084,13 @@ myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
 
-# always load system libvulkan.so
+# link libvulkan.so and libGLX.so instead of dlopening
 myconf_gn+=" angle_use_custom_libvulkan=false"
+%if %{with link_vulkan}
+myconf_gn+=" angle_shared_libvulkan=false"
+%endif
+myconf_gn+=" angle_link_glx=true"
+
 
 # do not build PDF support
 myconf_gn+=" enable_pdf=false"

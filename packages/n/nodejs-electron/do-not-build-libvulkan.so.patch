@@ -15,12 +15,22 @@ Do not try to build a private copy of a DLL which is already available on every 
          if (current_cpu == "x86") {
 --- a/third_party/vulkan-deps/vulkan-loader/src/BUILD.gn
 +++ b/third_party/vulkan-deps/vulkan-loader/src/BUILD.gn
-@@ -99,7 +99,8 @@
+@@ -99,7 +99,18 @@
      library_type = "static_library"
    }
  
 -  target(library_type, "libvulkan") {
-+  source_set("libvulkan") {}
++if (!angle_shared_libvulkan) {
++ import("//build/config/linux/pkg_config.gni")
++ pkg_config("system_libvulkan") {
++  packages = [ "vulkan" ]
++ }
++}
++source_set("libvulkan") {
++ if (!angle_shared_libvulkan) {
++  public_configs = [ ":system_libvulkan" ]
++ }
++}
 +  target(library_type, "xlibvulkan") {
      sources = [
        "loader/adapters.h",
