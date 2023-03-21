@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-python/%{_name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE reduce-required-meson.patch -- Fix build on Leap 15.5
+Patch0:         reduce-required-meson.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler

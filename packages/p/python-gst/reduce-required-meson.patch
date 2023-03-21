@@ -1,0 +1,10 @@
+--- gst-python-1.22.1-orig/meson.build	2023-03-04 14:42:32.000000000 +0100
++++ gst-python-1.22.1/meson.build	2023-03-09 19:47:37.647172490 +0100
+@@ -1,6 +1,6 @@
+ project('gst-python', 'c',
+   version : '1.22.1',
+-  meson_version : '>= 0.62',
++  meson_version : '>= 0.61',
+   default_options : [ 'warning_level=1',
+                       'c_std=gnu99',
+                       'buildtype=debugoptimized' ])

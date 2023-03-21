@@ -5,6 +5,13 @@ Thu Mar  9 18:30:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + gst-python: Use arch-specific install dir for gi overrides
 
 -------------------------------------------------------------------
+Thu Mar  9 18:30:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add patch to reduce the required meson version to 0.61.0 since
+  that's what we have in Leap 15.5:
+  + reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Thu Jan 26 01:52:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.0:
