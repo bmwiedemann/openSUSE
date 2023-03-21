@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 20 19:32:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.2:
+  * Release v0.20.2 (#1154)
+  * Fix skip recreate panic (#1152)
+  * Carvel Release 0.20.1 (#1150)
+  * Helm Release Version to v0.20.1 (#1149)
+
+-------------------------------------------------------------------
 Thu Mar 16 05:54:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.20.1:

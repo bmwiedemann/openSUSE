@@ -21,7 +21,7 @@
 %define archive_name sealed-secrets
 
 Name:           kubeseal
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0
