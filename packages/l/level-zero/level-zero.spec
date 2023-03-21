@@ -18,7 +18,7 @@
 
 
 Name:           level-zero
-Version:        1.9.4
+Version:        1.9.9
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT
@@ -38,7 +38,7 @@ support broader set of languages features such as function pointers, virtual
 functions, unified memory, and I/O capabilities.
 
 %package devel
-Summary:        The oneAPI Level Zero Specification Headers and Loader development package.
+Summary:        The oneAPI Level Zero Specification Headers and Loader development package
 Requires:       %{name} = %{version}-%{release}
 
 %description   devel
@@ -46,7 +46,7 @@ The %{name}-devel package contains library and header files for developing
 applications that use %{name}.
 
 %prep
-%setup -q -n level-zero-%{version}
+%autosetup -n level-zero-%{version}
 
 %build
 %cmake

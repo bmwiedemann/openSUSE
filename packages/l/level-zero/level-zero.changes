@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:18:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9.9:
+  * Update to spec v1.5.17
+  * Fix for calling zeInit in zesInit path
+  * Added readme for validation layer
+  * Refactor of validation layer to prepare for future enhancements
+
+-------------------------------------------------------------------
 Tue Jan 31 01:10:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - update to 1.9.4:
