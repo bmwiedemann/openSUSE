@@ -1,7 +1,7 @@
 #
 # spec file for package translate-shell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           translate-shell
-Version:        0.9.7
+Version:        0.9.7.1
 Release:        0
 Summary:        Command line translator using various online services as backends
 License:        Unlicense
@@ -47,12 +47,12 @@ from a terminal.
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix}
 chmod -x %{buildroot}%{_mandir}/man1/trans.1
-sed -i 's,/usr/bin/env bash,/bin/bash,' %{buildroot}%{_bindir}/trans
+sed -i 's|%{_bindir}/env bash|/bin/bash|' %{buildroot}%{_bindir}/trans
 
 %files
 %license LICENSE
