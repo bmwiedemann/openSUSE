@@ -18,7 +18,7 @@
 
 
 Name:           parti
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Show partition table information
 License:        GPL-3.0
