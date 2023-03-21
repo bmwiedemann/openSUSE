@@ -398,4 +398,16 @@
   - Imported Translations from Zanata</comment>
     <requestid>1007434</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b717d5372d122e7a39bd54c4167143c0</srcmd5>
+    <version>4.1.1</version>
+    <time>1679416855</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.1
+  - Update master for stable/zed
+  - Fix issues related to tox4
+  - Add Python3 antelope unit tests
+  - remove unicode literal from code</comment>
+    <requestid>1073021</requestid>
+  </revision>
 </revisionlist>

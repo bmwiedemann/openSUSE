@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:49:40 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Update master for stable/zed
+  - Fix issues related to tox4
+  - Add Python3 antelope unit tests
+  - remove unicode literal from code
+
+-------------------------------------------------------------------
 Sat Oct  1 12:21:52 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.0.1
