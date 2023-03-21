@@ -941,4 +941,12 @@
   | GLK-R          | R0       | 06-7a-08/01 | 00000020 | 00000022 | Pentium J5040/N5030, Celeron J4125/J4025/N4020/N4120 (forwarded request 1065905 from msmeissn)</comment>
     <requestid>1065907</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>87219d0da53fb7c6dff3c4e9d52395eb</srcmd5>
+    <version>20230214</version>
+    <time>1679416897</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1073277</requestid>
+  </revision>
 </revisionlist>
