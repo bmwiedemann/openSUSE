@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 21 10:27:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.0.1:
+  * Changes: https://github.com/oneapi-src/oneDNN/releases/tag/v3.0.1
+- Skipped 3.0:
+  * Changes: https://github.com/oneapi-src/oneDNN/releases/tag/v3.0
+- Add patch to fix build with GCC13:
+  * onednn-fix-gcc13.patch
+- Disable Arm Compute library support until fixed upstream
+  https://github.com/oneapi-src/oneDNN/issues/1599
+- Drop upstream patches:
+  * 1428.patch
+  * fa93750.patch
+
+-------------------------------------------------------------------
 Tue Sep 20 08:26:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build with latest Arm Compute Library:

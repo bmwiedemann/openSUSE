@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,22 @@
 %endif
 
 %ifarch aarch64
-%bcond_without acl
+# Disable ACL until fixed upstream - https://github.com/oneapi-src/oneDNN/issues/1599
+%bcond_with acl
 %else
 %bcond_with acl
 %endif
 
-%define libname libdnnl2
+%define libname libdnnl3
 Name:           onednn
-Version:        2.6.2
+Version:        3.0.1
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
 URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - deps for Patch2
-Patch1:         fa93750.patch
-# PATCH-FIX-UPSTREAM - Fix build with latest ACL - https://github.com/oneapi-src/oneDNN/pull/1428
-Patch2:         1428.patch
+# PATCH-FIX-UPSTREAM - https://github.com/oneapi-src/oneDNN/issues/1600
+Patch1:         onednn-fix-gcc13.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -49,7 +48,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  texlive-dvips-bin
 %if %{with acl}
-BuildRequires:  ComputeLibrary-devel
+BuildRequires:  ComputeLibrary-devel >= 22.08
 %endif
 %if %{with opencl}
 BuildRequires:  opencl-headers

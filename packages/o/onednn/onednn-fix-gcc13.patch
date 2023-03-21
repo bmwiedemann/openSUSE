@@ -1,0 +1,10 @@
+--- oneDNN-3.0.1/src/cpu/aarch64/xbyak_aarch64/xbyak_aarch64/xbyak_aarch64.h.orig	2023-02-24 03:36:27.000000000 +0100
++++ oneDNN-3.0.1/src/cpu/aarch64/xbyak_aarch64/xbyak_aarch64/xbyak_aarch64.h	2023-03-21 13:44:05.786852048 +0100
+@@ -25,6 +25,7 @@
+ #endif
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <deque>
+ #include <initializer_list>
+ #include <iostream>
