@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 18 17:18:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add a _constraints file to fix oom issues when building mlt
+
+-------------------------------------------------------------------
 Mon Mar  6 21:05:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.14.0
