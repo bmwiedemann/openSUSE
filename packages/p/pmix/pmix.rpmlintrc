@@ -1,3 +1,0 @@
-# .so-file without version number is used for dlopen() it as a plugin
-addFilter("pmix2-plugin.*: E: devel-file-in-non-devel-package .*")
-

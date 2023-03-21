@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 20 13:44:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- The devel package must require the actual library libpmix2.
+
+-------------------------------------------------------------------
 Fri Mar 17 10:46:51 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - removed library plugin for slurm as a fix was applied there,

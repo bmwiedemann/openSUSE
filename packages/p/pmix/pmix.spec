@@ -26,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://pmix.org/
 Source0:        https://github.com/openpmix/openpmix/archive/v%{version}.tar.gz#/openpmix-%{version}.tar.gz
-Source1:        pmix.rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -67,7 +66,7 @@ Group:          System/Libraries
 Requires:       libmca_common_dstore1 = %version
 Recommends:     pmix-plugins-munge = %version
 # explicit requires for package libmca_common_dstore1
-# as other providers for libmca_common_dstore.so.1 exit
+# as other providers for libmca_common_dstore.so.1 exist
 
 %description  plugins
 This package contains plugins used by libpmix2.
@@ -77,7 +76,7 @@ Summary:        PMI-X munge plugin version 1
 Group:          System/Libraries
 Requires:       libmca_common_dstore1 = %version
 # explicit requires for package libmca_common_dstore1
-# as other providers for libmca_common_dstore.so.1 exit
+# as other providers for libmca_common_dstore.so.1 exist
 
 %description  plugin-munge
 This package contains the munge plugin for libpmix2.
@@ -94,6 +93,7 @@ Summary:        Process Management Interface for MPI
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-headers = %{version}
 Requires:       libmca_common_dstore1 = %{version}
+Requires:       libpmix2 = %{version}
 
 %description devel
 This Package contains necessary files for development and building PMI-X

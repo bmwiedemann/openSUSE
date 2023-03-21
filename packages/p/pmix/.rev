@@ -170,4 +170,12 @@
    (bsc#1209260) (forwarded request 1072588 from mslacken)</comment>
     <requestid>1072589</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>6e7f7624f657ea841a643d03bd7837d4</srcmd5>
+    <version>3.2.3</version>
+    <time>1679416923</time>
+    <user>dimstar_suse</user>
+    <comment>- The devel package must require the actual library libpmix2.</comment>
+    <requestid>1073547</requestid>
+  </revision>
 </revisionlist>
