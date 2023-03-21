@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 20 08:53:40 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230320.5e777809:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: validate ssh session when the users is determined by guessing (bsc#1209193)
+
+-------------------------------------------------------------------
+Tue Mar 14 06:42:32 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230314.c7422396:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: parallax: Use 'sudo bash -c' when executing commands via sudoer (bsc#1209192)
+  * Dev: qdevice: Add more debug messages for running commands
+  * Dev: log: For the log_only_to_file method, show debug log in debug mode
+
+-------------------------------------------------------------------
 Thu Mar 09 10:28:49 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230309.a4c4192d:
