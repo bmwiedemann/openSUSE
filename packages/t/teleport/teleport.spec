@@ -31,7 +31,7 @@ Source3:        teleport.service
 Source4:        teleport.yaml
 Source5:        tbot.yaml
 BuildRequires:  git-core
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.19
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       teleport-tctl
