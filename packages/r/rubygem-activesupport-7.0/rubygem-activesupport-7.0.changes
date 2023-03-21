@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 12:52:45 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.0.4.3
+  * Implement SafeBuffer#bytesplice
+    [CVE-2023-28120][bsc#1209506]
+
+-------------------------------------------------------------------
 Fri Jan 27 13:33:07 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - update to version 7.0.4.1
