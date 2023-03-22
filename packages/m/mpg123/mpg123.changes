@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:37:10 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.31.3
+  build:
+  * Fix --disable-8bit.
+  * Fix some pedantic compiler warnings, avoid breaking libtool
+    wrappers.
+  mpg123:
+  * Fix verbose position printout for new resampling outside
+    libmpg123 (where output rate differs from decoding rate).
+  libsyn123:
+  * Fix reconfiguration of resampler to avoid double free when
+    reducing decimator stages to zero.
+
+-------------------------------------------------------------------
 Sun Jan 15 11:51:12 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.31.2
