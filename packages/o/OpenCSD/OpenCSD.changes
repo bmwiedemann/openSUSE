@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 22 09:09:23 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 1.4.0:
+  * Update: ETE: Add support for Arch v9.4 FEAT_ITE. ETE v1p3,
+    sw trace instrumentation. Adds in new generic output packet
+    type: OCSD_GEN_TRC_ELEM_INSTRUMENTATION.
+  * Bugfix: Fix memory leak in mispredict handling (github issue
+    #52 from yabinc)
+
+
+-------------------------------------------------------------------
 Sat Jan 28 20:50:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.3:
