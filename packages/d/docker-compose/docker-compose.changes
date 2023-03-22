@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:07:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.0:
+  * update -p project name flag documentation
+  * introduce `ignore` attribute for watch triggers
+  * Run classic builder with BuildConfig, not buildx.Options
+  * use `build` as common API for build scenarios
+  * use progress to show copy status
+  * watch: add file delete/rename handling
+  * build(deps): bump github.com/docker/buildx from 0.10.3 to
+    0.10.4
+  * Fix concurrent map read/write when recreating containers
+  * build(deps): bump github.com/moby/buildkit from 0.11.3 to
+    0.11.4
+  * build and push binaries images when a PR is merged or a tag
+    pushed
+  * Add support for `additional_contexts` in `build` service config
+  * introduce dockerfile_inline
+  * one off container name use configured Separator for naming
+  * collect built image IDs
+  * progress writer uses dockercli.Err stream
+  * Remove "-s" from LDFLAGS
+  * use go 1.20 -cover support
+  * pad can be negative on small terminal
+  * add dry-run support for push command
+  * add dry-run support for pull command
+  * adopt http://no-color.org/
+  * add dry-run support to restart command
+  * restart only needed services by checking depends_on relations
+  * update compose-go
+  * Report error if project name is empty after normalization
+  * only consider containers with config_hash labels (i.e, created
+    by compose)
+  * build(deps): bump github.com/containerd/containerd from 1.6.18
+    to 1.6.19
+  * build(deps): bump go.opentelemetry.io/otel from 1.13.0 to
+    1.14.0
+  * test: tweak pause test to try and prevent failures in Windows
+    CI
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2
+  * watch: ignore ephemeral files & minor output tweaks
+  * bump golang/x/net to v0.7.0 (CVE-2022-41723)
+  * add support for `restart` for `depends_on`
+  * build(deps): bump github.com/containerd/containerd from 1.6.17
+    to 1.6.18
+  * apply config options for pseudo-subcommands
+  * build(deps): bump github.com/docker/buildx from 0.10.2 to
+    0.10.3
+  * compact TUI to monitor layers download progress
+  * ci: bump to Go 1.20.1 and latest deps
+  * ignore services without a build section
+  * sort service --hash output by service name
+  * introduce --timeout on `up`
+  * introduce --no-deps on restart
+  * also restart dependent services after a service has been
+    restarted
+  * build(deps): bump go.uber.org/goleak from 1.1.12 to 1.2.1
+  * exclude unstable labels from config hash
+  * store exec details to offer better dry-run status on ExecStart
+  * add support for `excludes` and `rebuild`
+  * use CGO to enable fsevent on OSX
+  * ci: don't use `-race` on Windows
+  * ci: use CGO for tests to enable race detector
+  * support dry-run for rm command
+  * support dry-run for stop command
+  * support dry-run for exec command
+  * Update emacs ignore patterns (#5903)
+  * ignore: add Go umask files to ephemeral set (#5740)
+  * filewatch: use apiserver FileWatch model in EngineState (#4277)
+  * Add .kate-swp files to ignore pattern (#3380)
+  * change org name from windmilleng to tilt-dev (#3346)
+  * tilt: ignore a few more vim swap files (#2190)
+  * ignore: auto-ignore jetbrains .idea file (#2065)
+  * model: move to pkg (#2024)
+  * ignore: improve the ephemeral temp file patterns [ch2663]
+    (#1925)
+
+-------------------------------------------------------------------
 Wed Feb 08 12:44:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.0:
