@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 22 08:40:52 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.6:
+  * Correctly quit the password dialog on export. This avoid dumping
+    the database in plaintext format if the user presses either the
+    cancel or close button. 
+
+-------------------------------------------------------------------
 Wed Mar 15 13:00:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.5:

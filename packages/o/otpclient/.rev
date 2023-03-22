@@ -274,4 +274,16 @@
 </comment>
     <requestid>1072106</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8d6a90953b676b8b75e213a4d20620f9</srcmd5>
+    <version>3.1.6</version>
+    <time>1679520665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.6:
+  * Correctly quit the password dialog on export. This avoid dumping
+    the database in plaintext format if the user presses either the
+    cancel or close button. 
+</comment>
+    <requestid>1073715</requestid>
+  </revision>
 </revisionlist>
