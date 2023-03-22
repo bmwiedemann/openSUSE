@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:40:08 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.8.0~rc3
+
+- update to 1.8.0~rc3
+  https://dnsdist.org/changelog.html#change-1.8.0-rc3
+- dnsdist.lua sample config -- comment google's DNS servers. Valid
+  downstream DNS resolver configuration should be chosen by the admin
+
+-------------------------------------------------------------------
 Thu Mar  9 11:33:45 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.8.0~rc2
 
 - update to 1.8.0~rc2

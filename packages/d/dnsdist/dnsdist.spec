@@ -1,7 +1,7 @@
 #
 # spec file for package dnsdist
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version}
 %bcond_without  apparmor
@@ -34,14 +35,14 @@
 %bcond_with     dnsdist_re2
 %endif
 
-%define file_version 1.8.0-rc2
+%define file_version 1.8.0-rc3
 
 Name:           dnsdist
-Version:        1.8.0~rc2
+Version:        1.8.0~rc3
 Release:        0
-License:        GPL-2.0
+License:        GPL-2.0-only
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
-Url:            http://www.powerdns.com/
+URL:            http://www.powerdns.com/
 Group:          Productivity/Networking/DNS/Servers
 Source0:        https://downloads.powerdns.com/releases/dnsdist-%{file_version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/dnsdist-%{file_version}.tar.bz2.sig
@@ -62,20 +63,20 @@ BuildRequires:  re2-devel
 %if %{with dnsdist_doh}
 BuildRequires:  pkgconfig(libh2o-evloop)
 %endif
+BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libfstrm-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  luajit-devel
-BuildRequires:  gcc-c++
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
 %{systemd_ordering}
 %{sysusers_requires}
 

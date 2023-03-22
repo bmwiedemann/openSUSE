@@ -18,4 +18,15 @@
   upstreamed and removed</comment>
     <requestid>1070406</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>573371e40acad379ca7ff7a7472b6ad8</srcmd5>
+    <version>1.8.0~rc3</version>
+    <time>1679520706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0~rc3
+  https://dnsdist.org/changelog.html#change-1.8.0-rc3
+- dnsdist.lua sample config -- comment google's DNS servers. Valid
+  downstream DNS resolver configuration should be chosen by the admin</comment>
+    <requestid>1073801</requestid>
+  </revision>
 </revisionlist>
