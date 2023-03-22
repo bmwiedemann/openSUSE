@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 19 12:08:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.1:
+  * Fix buffer overread if soft-wrapping occurred and
+    ASS_FEATURE_WHOLE_TEXT_LAYOUT was enabled via API or due
+    to Encoding -1
+  * x86: detect GNU Hurd and configure NASM appropriately
+
+-------------------------------------------------------------------
 Wed Dec  7 16:34:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.0:
