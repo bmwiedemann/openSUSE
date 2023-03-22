@@ -1,7 +1,7 @@
 #
 # spec file for package stp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.3+20220722
+Version:        2.3.3+20220915
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/stp/stp/wiki
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         py3.patch
 Patch1:         CMakeLists-use-absolute-libdir-in-rpath-handling.patch
+Patch2:         0001-gcc-13-include-cstdint-for-int-_t.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex

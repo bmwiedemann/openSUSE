@@ -141,4 +141,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>992451</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cdebffa9292eb923d3746994c4987a9c</srcmd5>
+    <version>2.3.3+20220915</version>
+    <time>1679520677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.3+20220915:
+  * Fix compilation error on libstdc++-7-dev
+  * disable SQLITE when building cms
+  * Fix so user flags are respected
+  * Convert ordered collections to faster unordered collections.
+  * copy on write to reduce the number of malloc/free
+  * Cleanup the dependency building code
+  * Small changes to make core simplification algorithms faster.
+  * Improve again on the performance of QF_BV benchmark problems.
+  * Handle an extra case in unconstrained variable elimination.
+  * Improve again on the performance of QF_BV benchmark problems.
+  * Fix test cases so that they work when stp has pure variable removal disabled.
+  * Tune the parameters to improve performance on QF_BV benchmark problems
+  * Adding REQUIRE for Perl
+  * Remove some mentions of the CVC format from our documentation.
+  * Remove mention of CVC from front readme.
+  * Update codeql-analysis.yml
+  * fix #128
+  * Clarrify as discussed in #4, that the bitvector library is also licensed under the artistic licence.
+  * move cvc_to_c utility out of unit testing into tools.
+  * remove tests which are not currently being used
+  * Update main.cpp
+  * Adds an extra simplification rule. fix #381.
+  * Fix #383. Makes bvxnor 2-arity only.
+  * oops. Fix inadvertent checkin
+  * Write through unapplied simplfications. Previously this was unsound  if unconstrained variable elimination (UVE) was disabled. UVE wrote through unapplied simplifications so masked the problem.
+  * rename tests which aren't really unit tests.
+  * Improve testing. The intention of these is that the combination of simplifications reduces them to true or false before reaching the SAT solver.
+  * Enable some generated tests that weren't previously enabled
+  * remove old test generators. FuzzSMT is much better than these</comment>
+    <requestid>1073729</requestid>
+  </revision>
 </revisionlist>
