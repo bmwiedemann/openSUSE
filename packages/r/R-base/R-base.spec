@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.2.2
+Version:        4.2.3
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1170,7 +1170,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.20
+Version:        7.3.21
 Release:        %release
 Requires:       R-base
 
@@ -1236,7 +1236,7 @@ This packages provides R-cluster, one of the recommended packages.
 
 %package -n R-codetools
 Summary:        Package provides recommended R-codetools
-Version:        0.2.18
+Version:        0.2.19
 Release:        %release
 Requires:       R-base
 
@@ -1257,7 +1257,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.83
+Version:        0.8.84
 Release:        %release
 Requires:       R-base
 
@@ -1382,7 +1382,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.5.1
+Version:        1.5.3
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1430,7 +1430,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.41
+Version:        1.8.42
 Release:        %release
 Requires:       R-base
 
@@ -1460,7 +1460,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.160
+Version:        3.1.162
 Release:        %release
 Requires:       R-base
 
@@ -1555,7 +1555,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.15
+Version:        7.3.16
 Release:        %release
 Requires:       R-base
 
@@ -1588,7 +1588,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.4.0
+Version:        3.5.3
 Release:        %release
 Requires:       R-base
 

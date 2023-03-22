@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Mar 15 11:30:49 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.2.3:
+
+  C-LEVEL FACILITIES:
+
+    * The definition of DL_FUNC in R_ext/Rdynload.h has been changed to
+      be fully C-compliant.  This means that functions loaded _via_ for
+      example R_GetCCallable need to be cast to an appropriate type if
+      they have any arguments.
+
+    * .Machine has a new element sizeof.time_t to identify old systems
+      with a 32-bit type and hence a limited range of date-times (and
+      limited support for dates millions of years from present).
+
+  PACKAGE INSTALLATION:
+
+    * (Windows) The default C++ standard had accidentally been left at
+      C++11 when it was changed to C++14 on Unix.
+
+  BUG FIXES:
+
+    * As "POSIXlt" objects may be "partially filled" and their list
+      components meant to be recycled, length() now is the length of
+      the longest component.
+
+    * as.POSIXlt.Date() could underflow for dates in the far past (more
+      than half a million years BCE).
+
+    * as.Date.POSIXlt(x) would return "1970-01-01" instead of NA in R
+      4.2.2, e.g., for
+
+              x <- as.POSIXlt(c("2019-01-30","2001-1-1"))
+              x$mon <- c(0L, NA); as.Date(x)
+      
+    * R CMD check failed to apply enabled _R_CHECK_SUGGESTS_ONLY_ to
+      examples and vignettes (regression in R 4.2.0).
+
+    * R CMD check did not re-build vignettes in separate processes by
+      default (regression in R 4.2.0).
+
+    * Running examples from HTML documentation now restores previous
+      knitr settings and options (PR#18420).
+
+    * Quartz: fonts are now located using Core Graphics API instead of
+      deprecated ATS which is no longer supported in the macOS 13 SDK
+      (PR#18426).  This also addresses an issue where the currently
+      used font in the Quartz device context was not correctly
+      retained.
+
+    * (Windows) Math symbols in text drawing functions are again
+      rendered correctly (PR#18440).  This fixes a regression in R
+      4.2.1 caused by a fix in PR#18382 which uncovered an issue in
+      GraphApp due to which the symbol charset was not used with TT
+      Symbol font face.
+
+    * (Windows) Installing a package with a src/Makefile.{win,ucrt}
+      file includes ~/.R/Makevars.win64 in the search for user
+      makevars, as documented in "R Installation and Administration"
+      and done for packages with a src/Makevars.{win,ucrt} file.
+    * format(<POSIXlt_w/_unbalanced_sec>, "....%OS<n>") with n > 0 no
+      longer accidentally uses the unbalanced seconds, thanks to
+      Suharto Anggono's report (including patch) in PR#18448.
+
+    * solve.default(a, b) works around issues with some versions of
+      LAPACK when a contains NA or NaN values.
+
+    * When UseMethod() cannot dispatch, it no longer segfaults
+      producing the error message in case of a long class(), thanks to
+      Joris Vankerschaver's report (including patch) in PR#18447.
+
+    * When example(foo, ..) produces graphics on an interactive device
+      it needs to open itself, it now leaves devAskNewPage() unchanged
+      even when it was FALSE, thus fixing a 14 years old '<FIXME>'.
+
+    * packageDescription() again catches errors from encoding
+      conversions. This also fixes broken packageVersion() in C locale
+      on systems where iconv does not support transliteration.
+
+-------------------------------------------------------------------
 Mon Oct 31 18:56:44 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.2.2:

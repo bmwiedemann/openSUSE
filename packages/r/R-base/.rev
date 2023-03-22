@@ -1826,4 +1826,12 @@ CHANGES IN R 3.4.2:
   BUG FIXES:</comment>
     <requestid>1033874</requestid>
   </revision>
+  <revision rev="87" vrev="44">
+    <srcmd5>860867efbe6a7f4b3e5ea6944a89c699</srcmd5>
+    <version>unknown</version>
+    <time>1679520691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1073781</requestid>
+  </revision>
 </revisionlist>
