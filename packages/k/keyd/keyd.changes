@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 09:47:20 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- added upstream patch fix-udev-tablet.patch to address the virtual
+pointer being treated as a tablet, resulting in mouse pointer not working
+
+-------------------------------------------------------------------
 Sat Sep  3 11:48:06 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - fixed upgrades cluttering libinput overrides file

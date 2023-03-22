@@ -7,4 +7,14 @@
     <comment>fixed upgrade in spec file</comment>
     <requestid>1001022</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f99d357ff106bb0192265e3f4d88e59</srcmd5>
+    <version>2.4.2</version>
+    <time>1679520680</time>
+    <user>dimstar_suse</user>
+    <comment>added upstream patch fix-udev-tablet.patch to address the virtual
+pointer being treated as a tablet, resulting in mouse pointer not working
+</comment>
+    <requestid>1073736</requestid>
+  </revision>
 </revisionlist>

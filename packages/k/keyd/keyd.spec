@@ -1,7 +1,7 @@
 #
 # spec file for package keyd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@ Summary:        A key remapping daemon for linux
 License:        MIT
 URL:            https://github.com/rvaiya/keyd
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
+Patch:          fix-udev-tablet.patch
 BuildRequires:  gcc
 Requires:       python3-xlib
-Requires(postun): sed
-Requires(postun): shadow
+Requires(postun):sed
+Requires(postun):shadow
 Requires(pre):  shadow
 %systemd_ordering
 
@@ -40,7 +41,7 @@ keyd attempts to solve this problem by providing a flexible system wide daemon
 which remaps keys using kernel level input primitives (evdev, uinput).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build

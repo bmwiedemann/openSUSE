@@ -1,0 +1,32 @@
+From 0fb86d3a95f0c91a4266391d05158cfd5dd4500f Mon Sep 17 00:00:00 2001
+From: Raheman Vaiya <r.vaiya@gmail.com>
+Date: Mon, 6 Mar 2023 17:54:51 -0500
+Subject: [PATCH] Fix mouse buttons (#441)
+
+The following change in udev seems to incorrectly identify the virtual
+pointer as a 'tablet pad'.
+
+https://github.com/systemd/systemd/commit/0855ce6772#diff-e3c18b2fc4f50acbb9f2d66a1daf229fde99a5c8785f17aa6f69e6a9c41ae2c7R261
+
+This patch removes the BTN_[0-9] capability from the virtual pointer (which is
+presently unused) to avoid the issue. It is unclear if this behaviour should
+be considered pathological in udev, since I can't find any documentation which
+suggests it is illegitimate for non tablet devices to make use of these codes.
+---
+ src/vkbd/uinput.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/vkbd/uinput.c b/src/vkbd/uinput.c
+index d93282a..992ba97 100644
+--- a/src/vkbd/uinput.c
++++ b/src/vkbd/uinput.c
+@@ -124,9 +124,6 @@ static int create_virtual_pointer(const char *name)
+ 	for (code = BTN_LEFT; code <= BTN_TASK; code++)
+ 		ioctl(fd, UI_SET_KEYBIT, code);
+ 
+-	for (code = BTN_0; code <= BTN_9; code++)
+-		ioctl(fd, UI_SET_KEYBIT, code);
+-
+ 	udev.id.bustype = BUS_USB;
+ 	udev.id.vendor = 0x0FAC;
+ 	udev.id.product = 0x1ADE;
