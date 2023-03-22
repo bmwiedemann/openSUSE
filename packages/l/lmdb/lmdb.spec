@@ -20,8 +20,8 @@ Name:           lmdb
 Summary:        Lightning Memory-Mapped Database Manager
 License:        OLDAP-2.8
 Group:          Productivity/Databases/Tools
-%define lname liblmdb-0_9_29
-Version:        0.9.29
+%define lname liblmdb-0_9_30
+Version:        0.9.30
 Release:        0
 URL:            https://symas.com/mdb/
 Source:         https://git.openldap.org/openldap/openldap/-/archive/LMDB_%{version}/openldap-LMDB_%{version}.tar.gz
