@@ -171,4 +171,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1061160 from glaubitz)</comment>
     <requestid>1061164</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c21481280394f897ca4f86a1ab613521</srcmd5>
+    <version>5.11.2</version>
+    <time>1679520696</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1073722 from glaubitz)</comment>
+    <requestid>1073777</requestid>
+  </revision>
 </revisionlist>

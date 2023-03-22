@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-eventhub
-Version:        5.11.1
+Version:        5.11.2
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT
