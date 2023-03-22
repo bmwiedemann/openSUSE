@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Thu Mar  9 13:34:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.26.2:
+  * Release commit for Kubernetes v1.26.2
+  * releng: Update images, dependencies and version to Go 1.19.6
+  * Update golang.org/x/net to v0.7.0
+  * Pin golang.org/x/net to v0.4.0 in 1.26
+  * Enforce nodeName cannot be set along with non empty schedulingGates
+  * kubelet/client: collapse transport wiring onto standard approach
+  * Ignore container events with nil PodSandboxStatus
+  * apiserver: remove 34s from DELETECOLLECTION rest handler
+  * update prev succeeded indexes for indexed jobs unconditionally
+  * dynamic resource allocation: avoid apiserver complaint about list content
+  * Avoid typechecking stdlib
+  * Fix konnectivity-client metric registration.
+  * Fix nil pointer error in nodevolumelimits csi logging
+  * add scale test for probes
+  * kubectl: use v2 for hpa
+  * Fix panic on ClusterIP allocation for /28 subnets
+  * use custom dialer for http probes
+  * use custom dialer for tcp probes
+  * add custom dialer optimized for probes
+  * k8s.io/component-base/logs: match full help text in unit test
+  * k8s.io/component-base/logs: relax flagset unit tests
+  * k8s.io/component-base/logs: unit test for command line help output
+  * k8s.io/component-base/logs: fix usage through Go flag package
+  * fix bug with param controllers being removed if used by more than one policy
+  * bump honnef.co/go/tools to support go1.20
+  * PodGC should not add DisruptionTarget condition for pods which are in terminal phase
+  * pkg/controller/job: re-honor exponential backoff
+  * releng: Update images, dependencies and version to Go 1.19.5
+  * Do not include scheduler name in the preemption event message
+  * Explicitly call rand.Seed() method
+  * Exports WarningPrinter field in DeleteOptions
+  * Do not leak cross namespace pod metadata in preemption events
+  * Adjust DisruptionTarget condition message to do not include preemptor pod metadata
+  * egress_selector.go: register konnectivity-client metrics.
+  * expose prometheus.Registerer so that we can hook into this from external sources
+  * Bump konnectivity-client to v0.0.35
+  * Cherry pick 114857 to release-1.26
+  * Automated cherry pick of #114602: Removed the reverted changes from Changelogv1.26.md
+  * Update daemonSet status even if syncDaemonSet fails
+  * Licensing: skip modules with fewer subdirs than mods
+  * Fix issues in volumesnapshot test for ephemeral storage
+  * Fix clearing rate limiter in disruption controller
+  * Add pod to dsw if termination is not completed during reconstruction #issues/113979
+  * Add .go-version file containing build go version
+  * Windows Kube-Proxy implementation for internal traffic policy.
+  * Fix a regression that scheduler always go through all Filter plugins
+  * Fix SPDY proxy authentication with special chars
+  * fix double lock and excercise its codepath in tests
+  * Creating Ingress IP loadbalancer alone when all the endpoints are terminating. KEP1669
+  * Deflake a preemption test that may patch Node incorrectly
+  * Introducing LoadbalancerPortMapping flags for VipExternalIP
+
+-------------------------------------------------------------------
+Thu Mar  9 07:29:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package 
