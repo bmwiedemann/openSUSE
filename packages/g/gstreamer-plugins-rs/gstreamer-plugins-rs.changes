@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Mar 16 08:50:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.4:
+  * Fixed:
+    - fmp4mux:
+      . Return a running time from AggregatorImpl::next_time() to
+        fix waiting in live pipelines.
+      . Fix hls_live example to set properties on the right
+        element.
+    - uriplaylistbin: Reset element when switching back to NULL
+      state.
+    - livesync: Handle variable framerates correctly in fallback
+      buffer duration calculation.
+    - meson: Fix GStreamer version feature detection.
+  * Added: webrtc: New webrtc element.
+
+-------------------------------------------------------------------
+Thu Mar 09 19:19:14 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.10.3:
+  * Added:
+    - tracers: `queue_levels` tracer now also supports printing the
+      `appsrc` levels.
+    - webrtc: `webrtcsink` can use `nvvidconv` if `nvvideoconvert`
+      does not exist on an NVIDIA platform.
+  * Fixed:
+    - gtk4: Set the sync point on the video frame after mapping it
+      as otherwise the frame might not be ready yet for further
+      usage.
+    - livesync: Correctly calculate the fallback buffer duration
+      from the video framerate.
+    - ndi: Handle caps changes correctly in `ndisinkcombiner`.
+  * Changed: webrtc: Minor cleanup.
+
+-------------------------------------------------------------------
 Tue Mar  7 07:00:49 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Increase constraints so it doesn't fail to build for lack of
