@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:18:18 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.22.2:
+  * release: watchexec-cli v1.22.2 (#560)
+  * Normalise paths to unix on windows for filtering only (#558)
+  * Disable signals on windows (#559)
+  * Build manpage just before packaging (#557)
+  * Fix tests-pass job (#556)
+  * Update manpage (#555)
+  * Fix dist-manifest gen (#554)
+  * Switch away from set-output (#553)
+  * release: watchexec-cli v1.22.1 (#551)
+  * release: watchexec v2.3.0 (#550)
+
+-------------------------------------------------------------------
 Mon Mar 20 11:49:53 UTC 2023 - david.anes@suse.com
 
 - Update to version 1.22.0:
