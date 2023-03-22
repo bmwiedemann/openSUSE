@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 28 19:44:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * The default sleep-multipler value was 0, instead of 1. This resulted in
+    failure of most DDC/CI operations, including display detection.
+
+-------------------------------------------------------------------
 Mon Jan 16 15:17:46 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.4.0:
