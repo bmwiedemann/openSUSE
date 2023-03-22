@@ -208,4 +208,12 @@
 - Re-add changes to zero-byte ipvsadm-print_largenum.patch file</comment>
     <requestid>1001486</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ed251e6e6d446365768c1861505ea2e9</srcmd5>
+    <version>1.31</version>
+    <time>1679520544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073276</requestid>
+  </revision>
 </revisionlist>

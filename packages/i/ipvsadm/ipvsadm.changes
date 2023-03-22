@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:28:01 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Sep  6 14:21:39 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - Finish UsrMerge and move binaries /usr/sbin (bsc#1191064)

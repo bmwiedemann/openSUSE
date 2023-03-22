@@ -1,7 +1,7 @@
 #
 # spec file for package ipvsadm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ make POPT_LIB="-lpopt" CFLAGS="%{optflags} -fPIC -DHAVE_POPT -DLIBIPVS_USE_NL -I
 %install
 mkdir -p %{buildroot}/{sbin,%{_sbindir},%{_mandir}/man8,%{_unitdir},%{_fillupdir}}
 make BUILD_ROOT=%{buildroot} MANDIR=%{_mandir} SBINDIR=%{_sbindir} install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 for binary in ipvsadm ipvsadm-save ipvsadm-restore ; do
   ln -sf %{_sbindir}/$binary            %{buildroot}/sbin/$binary ;
 done
@@ -105,7 +105,7 @@ install -m 644 ipvsadm.rules		%{buildroot}%{_sysconfdir}/%{name}.rules
 %doc README
 %config %{_sysconfdir}/%{name}.rules
 %{_unitdir}/%{name}.service
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/ipvsadm*
 %endif
 %{_sbindir}/ipvsadm*
