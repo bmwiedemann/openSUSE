@@ -1,6 +1,0 @@
-<package name="rancher-selinux" project="openSUSE:Factory">
-  <title>rancher-selinux</title>
-  <description>Rancher selinux policy repository</description>
-  <devel project="devel:kubic" package="rancher-selinux"/>
-  <url>https://github.com/rancher/rancher-selinux</url>
-</package>
