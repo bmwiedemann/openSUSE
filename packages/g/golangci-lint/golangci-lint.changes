@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 21 20:11:11 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.52.1:
+  * fix: combination of --fix and --path-prefix (#3700)
+  * fix: improve panic management (#3710)
+  * build(deps): bump actions/setup-go from 3 to 4 (#3707)
+  * docs: fix typos (#3705)
+  * docs: Update documentation and assets
+- Packaging: _service add set_version to automate version updates
+
+-------------------------------------------------------------------
+Tue Mar 21 11:27:19 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use SOURCE_DATE_EPOCH as build date (boo#1047218)
+
+-------------------------------------------------------------------
 Sat Mar 18 16:42:42 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Normalize _service modes localonly and manual to disabled to
