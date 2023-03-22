@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 19 17:35:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.0
+  * Fix pywin32 version constraint #347 (@blink1073)
+  * Support platformdirs 3 #342 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Feb  5 15:58:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.2.0

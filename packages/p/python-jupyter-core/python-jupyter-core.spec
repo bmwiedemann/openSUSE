@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-core%{psuffix}
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -127,7 +127,7 @@ donttest="$donttest or test_config_dir_linux"
 
 %if !%{with test}
 %files %{python_files}
-%license COPYING.md
+%license LICENSE
 %python_alternative %{_bindir}/jupyter
 %python_alternative %{_bindir}/jupyter-migrate
 %python_alternative %{_bindir}/jupyter-troubleshoot
