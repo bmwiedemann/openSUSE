@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 21 21:00:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 109.patch: Fix build with glib-2.76.x
+
+-------------------------------------------------------------------
 Thu Mar 16 18:00:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.0:

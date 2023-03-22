@@ -1,0 +1,295 @@
+From 847c21d78ea61faa101f58792389373ce2109d54 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:16 +0100
+Subject: [PATCH 1/9] build: Avoid meson deprecation warning
+
+---
+ libfeedback/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libfeedback/meson.build b/libfeedback/meson.build
+index 09a495c..27d94c6 100644
+--- a/libfeedback/meson.build
++++ b/libfeedback/meson.build
+@@ -87,7 +87,6 @@ if introspection
+     '--quiet',
+     '-DLIBFEEDBACK_COMPILATION',
+     '-DLIBFEEDBACK_USE_UNSTABLE_API',
+-    '--warn-error',
+     '--warn-all',
+   ]
+ 
+@@ -104,6 +103,7 @@ if introspection
+         install_dir_gir : girdir,
+     install_dir_typelib : typelibdir,
+              extra_args : libfeedback_gir_extra_args,
++         fatal_warnings : true,
+    )
+ 
+   if get_option('vapi')
+-- 
+GitLab
+
+
+From 64076e5ad08dd297a1d602b4a37b640e9a03c784 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:17 +0100
+Subject: [PATCH 2/9] fbd-event: Simplify
+
+Gbp-Dch: Ignore
+---
+ src/fbd-event.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/fbd-event.c b/src/fbd-event.c
+index 96e1c6d..5791d2f 100644
+--- a/src/fbd-event.c
++++ b/src/fbd-event.c
+@@ -376,8 +376,6 @@ fbd_event_remove_feedback (FbdEvent *self, FbdFeedbackBase *feedback)
+ void
+ fbd_event_run_feedbacks (FbdEvent *self)
+ {
+-  GSList *l;
+-
+   g_return_if_fail (FBD_IS_EVENT (self));
+ 
+   g_debug ("Running %d feedbacks for event %d", g_slist_length (self->feedbacks), self->id);
+@@ -392,7 +390,7 @@ fbd_event_run_feedbacks (FbdEvent *self)
+     g_source_set_name_by_id (self->timeout_id, "event timeout source");
+   }
+ 
+-  for (l = self->feedbacks; l; l = l->next) {
++  for (GSList *l = self->feedbacks; l; l = l->next) {
+     FbdFeedbackBase *fb = FBD_FEEDBACK_BASE (l->data);
+     fbd_feedback_run (fb);
+   }
+-- 
+GitLab
+
+
+From 03b0f4c2aa35548e0655db002b21e1e02dd8210e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:18 +0100
+Subject: [PATCH 3/9] fbd-event: Make sure we iterate the list safely
+
+When all feedbacks are done the event signals "feedbacks-ended" which
+lets the manager dispose the feedback. When all feedbacks end instantly
+and synchronously (as is the case with the dummy feedback) this triggers
+the disposal of the event within the loop leading to a crash.
+
+Make sure the object doesn't go away be referencing it during the loop
+iteration.
+
+We didn't see this before as glib's slice allocator for lists papered
+over this for us.
+
+Closes: https://source.puri.sm/Librem5/feedbackd/-/issues/69
+---
+ src/fbd-event.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/fbd-event.c b/src/fbd-event.c
+index 5791d2f..917b5e2 100644
+--- a/src/fbd-event.c
++++ b/src/fbd-event.c
+@@ -390,10 +390,12 @@ fbd_event_run_feedbacks (FbdEvent *self)
+     g_source_set_name_by_id (self->timeout_id, "event timeout source");
+   }
+ 
++  g_object_ref (self);
+   for (GSList *l = self->feedbacks; l; l = l->next) {
+     FbdFeedbackBase *fb = FBD_FEEDBACK_BASE (l->data);
+     fbd_feedback_run (fb);
+   }
++  g_object_unref (self);
+ }
+ 
+ /**
+-- 
+GitLab
+
+
+From 460985cfa03ad0a091bb2acf0d283606edb95593 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:20 +0100
+Subject: [PATCH 4/9] tests: Don't leak json string
+
+---
+ tests/test-fbd-feedback-theme.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test-fbd-feedback-theme.c b/tests/test-fbd-feedback-theme.c
+index c5cb636..5bd00da 100644
+--- a/tests/test-fbd-feedback-theme.c
++++ b/tests/test-fbd-feedback-theme.c
+@@ -37,10 +37,10 @@ test_fbd_feedback_theme_profiles (void)
+ 							"event-name", "event2",
+ 							NULL);
+   g_autoptr(FbdFeedbackTheme) theme = fbd_feedback_theme_new (THEME_NAME);
+-
+   FbdFeedbackProfile *profile_full = fbd_feedback_profile_new ("full");
+   FbdFeedbackProfile *profile_quiet = fbd_feedback_profile_new ("quiet");
+   FbdFeedbackProfile *profile;
++  g_autofree char *json = NULL;
+ 
+   fbd_feedback_profile_add_feedback (profile_quiet, FBD_FEEDBACK_BASE(quiet_fb1));
+   fbd_feedback_profile_add_feedback (profile_quiet, FBD_FEEDBACK_BASE(quiet_fb2));
+@@ -55,7 +55,8 @@ test_fbd_feedback_theme_profiles (void)
+   profile = fbd_feedback_theme_get_profile (theme, "full");
+   g_assert_true (FBD_IS_FEEDBACK_PROFILE (profile));
+ 
+-  g_print ("%s\n", json_gobject_to_data (G_OBJECT(theme), NULL));
++  json = json_gobject_to_data (G_OBJECT(theme), NULL);
++  g_print ("%s\n", json);
+ }
+ 
+ 
+-- 
+GitLab
+
+
+From 1933a23172e231917bd51af76d19b204c7c08805 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:20 +0100
+Subject: [PATCH 5/9] tests: Don't leak profiles and test that
+
+We finalize the theme first so the last reference is dropped when
+finalizing the profiles.
+---
+ tests/test-fbd-feedback-theme.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test-fbd-feedback-theme.c b/tests/test-fbd-feedback-theme.c
+index 5bd00da..f1987be 100644
+--- a/tests/test-fbd-feedback-theme.c
++++ b/tests/test-fbd-feedback-theme.c
+@@ -36,7 +36,7 @@ test_fbd_feedback_theme_profiles (void)
+   g_autoptr (FbdFeedbackDummy) full_fb2 = g_object_new (FBD_TYPE_FEEDBACK_DUMMY,
+ 							"event-name", "event2",
+ 							NULL);
+-  g_autoptr(FbdFeedbackTheme) theme = fbd_feedback_theme_new (THEME_NAME);
++  FbdFeedbackTheme *theme = fbd_feedback_theme_new (THEME_NAME);
+   FbdFeedbackProfile *profile_full = fbd_feedback_profile_new ("full");
+   FbdFeedbackProfile *profile_quiet = fbd_feedback_profile_new ("quiet");
+   FbdFeedbackProfile *profile;
+@@ -57,6 +57,10 @@ test_fbd_feedback_theme_profiles (void)
+ 
+   json = json_gobject_to_data (G_OBJECT(theme), NULL);
+   g_print ("%s\n", json);
++
++  g_assert_finalize_object (theme);
++  g_assert_finalize_object (profile_full);
++  g_assert_finalize_object (profile_quiet);
+ }
+ 
+ 
+-- 
+GitLab
+
+
+From 5206c3aae53f52a7629eb891027adcf850ed3f6e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:21 +0100
+Subject: [PATCH 6/9] feedback-profile: Don't leak json array when serializing
+ profile
+
+json_array_add_element doesn't transfer ownership
+---
+ src/fbd-feedback-profile.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fbd-feedback-profile.c b/src/fbd-feedback-profile.c
+index 28d6f29..94cbb36 100644
+--- a/src/fbd-feedback-profile.c
++++ b/src/fbd-feedback-profile.c
+@@ -58,7 +58,7 @@ fbd_feedback_profile_serializable_serialize_property (JsonSerializable *serializ
+     GHashTableIter iter;
+     gpointer key;
+     FbdFeedbackProfile *profile;
+-    JsonArray *array = json_array_sized_new (FBD_FEEDBACK_PROFILE_N_PROFILES);
++    g_autoptr (JsonArray) array = json_array_sized_new (FBD_FEEDBACK_PROFILE_N_PROFILES);
+ 
+     g_hash_table_iter_init (&iter, self->feedbacks);
+     while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *) &profile)) {
+-- 
+GitLab
+
+
+From 7becab334633747f9b73edfaa103ffecc15a9bfb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:21 +0100
+Subject: [PATCH 7/9] feedback-theme: Don't leak json array when serializing
+ profile
+
+json_array_add_element doesn't transfer ownership.
+---
+ src/fbd-feedback-theme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fbd-feedback-theme.c b/src/fbd-feedback-theme.c
+index 3274920..966feb8 100644
+--- a/src/fbd-feedback-theme.c
++++ b/src/fbd-feedback-theme.c
+@@ -53,7 +53,7 @@ fbd_theme_serializable_serialize_property (JsonSerializable *serializable,
+     GHashTableIter iter;
+     gpointer key;
+     FbdFeedbackProfile *profile;
+-    JsonArray *array = json_array_sized_new (FBD_FEEDBACK_PROFILE_N_PROFILES);
++    g_autoptr (JsonArray) array = json_array_sized_new (FBD_FEEDBACK_PROFILE_N_PROFILES);
+ 
+     g_hash_table_iter_init (&iter, self->profiles);
+     while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *) &profile)) {
+-- 
+GitLab
+
+
+From 3d7c4b376a7c94a6566f883d6d17bb9085428c43 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:23 +0100
+Subject: [PATCH 8/9] feedback-theme: Don't leak parent name
+
+---
+ src/fbd-feedback-theme.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/fbd-feedback-theme.c b/src/fbd-feedback-theme.c
+index 966feb8..e416f89 100644
+--- a/src/fbd-feedback-theme.c
++++ b/src/fbd-feedback-theme.c
+@@ -182,6 +182,7 @@ fbd_feedback_theme_finalize (GObject *object)
+ {
+   FbdFeedbackTheme *self = FBD_FEEDBACK_THEME (object);
+ 
++  g_clear_pointer (&self->parent_name, g_free);
+   g_clear_pointer (&self->name, g_free);
+ 
+   G_OBJECT_CLASS (fbd_feedback_theme_parent_class)->finalize (object);
+-- 
+GitLab
+
+
+From f9c65381db4382c087835c728b0ad990b1e6cea0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Mon, 13 Mar 2023 15:24:24 +0100
+Subject: [PATCH 9/9] tests/profile: Don't leak json node
+
+---
+ tests/test-fbd-feedback-profile.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test-fbd-feedback-profile.c b/tests/test-fbd-feedback-profile.c
+index 96fd247..546cc90 100644
+--- a/tests/test-fbd-feedback-profile.c
++++ b/tests/test-fbd-feedback-profile.c
+@@ -68,7 +68,7 @@ test_fbd_feedback_profile_parse (void)
+         "    }                                    ";
+   g_autoptr (GError) err = NULL;
+   g_autoptr (FbdFeedbackProfile) profile = NULL;
+-  JsonNode *node;
++  g_autoptr (JsonNode) node = NULL;
+   FbdFeedbackBase *fb;
+ 
+   node = json_from_string(json, &err);
+-- 
+GitLab
+
