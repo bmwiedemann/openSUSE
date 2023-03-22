@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Mar 15 11:38:33 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230315.982c565:
+  * pkglistgen: handle published repos using sha512 nistead of sha256
+
+-------------------------------------------------------------------
+Tue Mar 14 08:35:56 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230314.143a171:
+  * skippkg-finder: add conditionals support for the product ftp-tree
+
+-------------------------------------------------------------------
+Thu Mar 09 14:06:26 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230309.7eca6b9:
+  * Drop flavors in Leap155 appliances
+
+-------------------------------------------------------------------
+Thu Mar 09 11:43:29 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230309.8252602:
+  * add eruby generated pkglistgen.opensuse.gocd.yaml
+  * remove pkglistgen for leap16 completely
+  * Comment out skippkgfinder for now
+  * Initial Leap 16.0 pkglistgen
+
+-------------------------------------------------------------------
+Thu Mar 09 09:06:47 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230309.846b7c0:
+  * dashboard: leap: fix openQA IDs
+
+-------------------------------------------------------------------
+Fri Mar 03 22:11:13 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230303.db6249f:
+  * gocd: add Micro and Bedrock packagelistgenerator call
+
+-------------------------------------------------------------------
+Fri Mar 03 22:07:20 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230303.e6dbbae:
+  * Create new pipeline to deploy sle-prjmgr-tools scripts
+
+-------------------------------------------------------------------
+Fri Mar 03 21:56:55 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230303.08e0489:
+  * Switch testing from Leap 15.3 to openSUSE Leap 15.4
+
+-------------------------------------------------------------------
+Fri Mar 03 15:55:27 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230303.85a08f7:
+  * Fix handling of preinstall images
+
+-------------------------------------------------------------------
+Thu Mar 02 06:06:21 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230302.a0cb736:
+  * Port from mock to unittest.mock
+
+-------------------------------------------------------------------
 Fri Feb 10 10:11:22 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230210.1cf4e6b:
