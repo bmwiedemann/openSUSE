@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 21 17:23:18 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1679419381.956c72b:
+  * testapi.pm: Move function prototype to the top
+  * testapi/save_screenshot: Do not act on serial terminal
+  * Update tidy version
+  * Don't set NUMDISKS to the default of 1
+  * Isotovideo/Utils.pm: Fix undefined NUMDISKS for generalhw
+  * Rename foo.pm and bar/baz.pm to more specific names
+
+-------------------------------------------------------------------
 Sat Mar 18 02:28:46 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1679050790.fe55fab:
