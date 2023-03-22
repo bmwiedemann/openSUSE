@@ -32,12 +32,9 @@ Patch1:         0001-add-opensuse-customizations.patch
 Patch2:         0001-fix-mono-playback.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-fix-broken-yt-dlp.patch
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
-BuildRequires:  gcc-c++
-# Use gcc 11 for openSUSE Leap 15.4+ and SLE15SP4+
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400
-BuildRequires:  gcc11-c++
-%endif
+BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
@@ -93,6 +90,7 @@ browser.
 Summary:        %{name} development files
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description    devel
 It's a development package for %{name}.
@@ -104,15 +102,12 @@ It's a development package for %{name}.
 
 %build
 # Build options
-# - Override shared linker flags from /usr/lib/rpm/macros.d/macros.cmake
-#   because the "--no-undefined -Wl" flag is not compatible with QMPlay2
-# - Set gcc11 as compiler for openSUSE Leap 15.4+ and SLE15SP4+
+# - Force DWARFv4 as DWARFv5 is not fully supported by dwz yet
 %cmake \
-  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400
-  -DCMAKE_C_COMPILER=gcc-11 \
-  -DCMAKE_CXX_COMPILER=g++-11 \
-%endif
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -gdwarf-4" \
+  -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -gdwarf-4" \
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
   -DUSE_PCH=ON \

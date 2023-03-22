@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 21 22:26:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Switch from GCC compiler to clang/llvm compiler to better
+  conform with upstream decisions
+- Switch devel package BuildArch to noarch as it contains
+  no binaries
+
+-------------------------------------------------------------------
 Mon Mar 13 22:48:16 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-broken-yt-dlp.patch to fix broken youtube video quality
