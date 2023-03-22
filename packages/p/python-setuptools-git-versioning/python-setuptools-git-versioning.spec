@@ -45,6 +45,7 @@ BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
@@ -85,7 +86,7 @@ donttest="test_substitution_env"
 donttest="$donttest or (test_version_file_count_commits and sha)"
 # broken under Python 3.11
 donttest="$donttest or test_substitution_timestamp"
-%pytest -k "not ($donttest)"
+%pytest -k "not ($donttest)" -n auto
 
 %post
 %python_install_alternative setuptools-git-versioning

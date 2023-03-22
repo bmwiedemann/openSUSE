@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 21 13:30:49 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Run tests in parallel.
+
+-------------------------------------------------------------------
 Fri Mar  3 04:03:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13.2:
