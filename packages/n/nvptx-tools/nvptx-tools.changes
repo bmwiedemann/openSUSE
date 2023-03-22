@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 21 21:44:49 UTC 2023 - mliska@suse.cz
+
+- Start using tar_scm OBS server for a tarball.
+- Update to version 1.0+git.20230122.93e0090:
+  * nm: '#define __STDC_FORMAT_MACROS' for '#include <inttypes.h>' [#40]
+  * 'nm'
+  * ld: Clean up the 'symbol_table' when we're done
+  * as: Clean up the 'symbol_table' when we're done
+  * ld: Clean up 'file_hash_entry' instances when we're done with the 'symbol_table'
+  * as: Always 'free' the 'tok_preamble_target_arg'-deduced 'target_arg' string after 'ptxas' verification
+  * as: 'obstack_free' after 'ptxas' verification
+  * run: Close files after use
+
+-------------------------------------------------------------------
 Thu Oct 13 09:34:42 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update nvptx-tools tarball from git

@@ -46,4 +46,21 @@
 - Remove nvptx-tools.patch as it is included in the above tarball update</comment>
     <requestid>1029657</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49e977e6d2f527a0f3864341ebf5b61d</srcmd5>
+    <version>1.0+git.20230122.93e0090</version>
+    <time>1679520668</time>
+    <user>dimstar_suse</user>
+    <comment>- Start using tar_scm OBS server for a tarball.
+- Update to version 1.0+git.20230122.93e0090:
+  * nm: '#define __STDC_FORMAT_MACROS' for '#include &lt;inttypes.h&gt;' [#40]
+  * 'nm'
+  * ld: Clean up the 'symbol_table' when we're done
+  * as: Clean up the 'symbol_table' when we're done
+  * ld: Clean up 'file_hash_entry' instances when we're done with the 'symbol_table'
+  * as: Always 'free' the 'tok_preamble_target_arg'-deduced 'target_arg' string after 'ptxas' verification
+  * as: 'obstack_free' after 'ptxas' verification
+  * run: Close files after use (forwarded request 1073654 from marxin)</comment>
+    <requestid>1073728</requestid>
+  </revision>
 </revisionlist>
