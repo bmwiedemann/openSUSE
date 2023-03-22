@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 16:12:32 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Use valid separator for logrotate config file. [bsc#1192179]
+
+-------------------------------------------------------------------
 Fri Sep 16 06:18:26 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - systemd versions prior to 244 do not support the ProtectXYZ

@@ -3,7 +3,7 @@
 	dateext
 	maxage 365
 	rotate 99
-	size=+1024k
+	size +1024k
 	notifempty
 	missingok
 	create 600 root root
