@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:56:15 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.0
+  * Replace icons from unknown sources 
+  * Replace share/invite icon 
+  * Parse command line for GUI 
+  * Select and Configure Input Channels 
+  * Replace QVector in meter code 
+  * Move inputMixMode into AudioInterface.h 
+  * Fix Output Device Selection Bug 
+  * Bugfix Refresh Button & Device Combo State 
+  * Fix crash when using JACK 
+  * Change text on button when deeplinked 
+  * Select Output Channels 
+  * Minor Fix for Refresh Button on Settings Page 
+  * Improve Sign In For First Time Users 
+  * Only check IP address if loading standard GUI
+
+-------------------------------------------------------------------
 Mon Feb 20 10:31:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.1
