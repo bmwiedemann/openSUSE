@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:48:12 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.1
+  - Bug fix release
+
+-------------------------------------------------------------------
+Mon Mar 20 15:15:57 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.0
+  - Add support for pam_fscrypt
+  - Add support for pam.d/common-session-nonlogin
+  - Add support for pam.d/postlogin-{account,auth,password,session}
+
+-------------------------------------------------------------------
 Mon Mar 13 14:39:48 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.9
