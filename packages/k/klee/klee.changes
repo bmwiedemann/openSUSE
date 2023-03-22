@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Mar 22 08:17:59 UTC 2023 - jslaby@suse.cz
+
+- Update to version 2.3+20230320:
+  * ConstantArrayExprVisitor: Fix detection of multiple array indices
+  * ConstantArrayExprVisitor: Deduplicate `visitConcat` and `visitRead`
+  * llvm14 support
+  * Update KDAlloc unittests
+  * Don't fail `KleeStats.c` test if it takes 1s or longer
+  * Disable `const_array_opt1` for ubsan as well
+  * Fix uninitialised memory access while reading last path entry
+  * Fix building of runtime library and klee-replay
+  * Add support to disable memsan instrumentation; update UB/Asan suppression
+  * [MemSan] Mark memory objects modified by syscalls as initialised
+  * Fix compiler warning with newer compilers
+  * Use bitcode library paths via config generation instead of `-D` flags
+  * [cmake] Use LLVM's CMake functionality only
+  * Fixed a bug in KLEE libc's implementation of strcmp: according to the C standard, characters should be compared as unsigned chars.
+  * Add some system tests for KDAlloc
+  * Integrate KDAlloc into KLEE
+  * Have the STP coverage build also provide Z3, so that the crosscheck solver can also be tested
+  * Add a few simple solver tests
+  * create klee-last as a relative link
+  * Fix integer overflow
+  * Add an extra check to test/Runtime/FreeStanding/memcpy_chk_err.c ensuring that a call to __memcpy_chk is emitted
+  * fix output check in test const_arr_opt1
+  * add missing FileCheck command to test
+  * Fixed some leaks in klee-replay
+  * fix FileCheck cmd of VarArgByVal test
+- remove (upstream):
+  * 0001-Module-InstructionOperandTypeCheckPass-Fix-Wbitwise-.patch
+  * 0001-llvm14-Add-LLVM-14-to-lit.cfg.patch
+  * 0002-llvm14-TargetRegistry.h-was-moved-from-Support-to-MC.patch
+  * 0003-llvm14-PointerType-getElementType-was-deprecated.patch
+- add
+  * 0001-cmake-implement-USE_MAP-to-support-single-LLVM-libra.patch
+  * 0001-gcc13-include-cstint-for-int-_t.patch
+
+-------------------------------------------------------------------
 Tue Oct 25 06:53:25 UTC 2022 - jslaby@suse.cz
 
 - Update to version 2.3+20220926:

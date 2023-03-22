@@ -1,0 +1,39 @@
+From a5b33410851e89eff9b0baee52bc68c0d209aaeb Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 22 Mar 2023 09:48:50 +0100
+Subject: [PATCH] [gcc13] include cstint for *int*_t
+
+Otherwise we see errors like this with gcc13:
+include/klee/Statistics/Statistic.h:31:10: error: no type named 'uint32_t' in namespace 'std'
+---
+ include/klee/Core/Interpreter.h     | 1 +
+ include/klee/Statistics/Statistic.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/include/klee/Core/Interpreter.h b/include/klee/Core/Interpreter.h
+index f14e3d88..04fdef88 100644
+--- a/include/klee/Core/Interpreter.h
++++ b/include/klee/Core/Interpreter.h
+@@ -9,6 +9,7 @@
+ #ifndef KLEE_INTERPRETER_H
+ #define KLEE_INTERPRETER_H
+ 
++#include <cstdint>
+ #include <map>
+ #include <memory>
+ #include <set>
+diff --git a/include/klee/Statistics/Statistic.h b/include/klee/Statistics/Statistic.h
+index bbb67116..e675b067 100644
+--- a/include/klee/Statistics/Statistic.h
++++ b/include/klee/Statistics/Statistic.h
+@@ -10,6 +10,7 @@
+ #ifndef KLEE_STATISTIC_H
+ #define KLEE_STATISTIC_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace klee {
+-- 
+2.35.3
+

@@ -1,0 +1,243 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 22 Mar 2023 09:36:46 +0100
+Subject: [cmake] implement USE_MAP to support single LLVM library
+Patch-mainline: no
+References: https://github.com/klee/klee/pull/1585
+
+Otherwise we see:
+: && /var/lib/build/ccache/bin/clang++ -O2 -Wall ... test-randgen.cpp.o -o bin/ktest-randgen  lib/libkleeBasic.a  -lLLVMSupport && :
+ /usr/bin/ld: cannot find -lLLVMSupport: No such file or directory
+
+Fixes #1581.
+
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@gmail.com>
+---
+ CMakeLists.txt               |  8 ++++++++
+ lib/Basic/CMakeLists.txt     |  7 ++++++-
+ lib/Core/CMakeLists.txt      |  7 ++++++-
+ lib/Expr/CMakeLists.txt      |  7 ++++++-
+ lib/Module/CMakeLists.txt    | 34 +++++++++++++++++++---------------
+ lib/Solver/CMakeLists.txt    |  7 ++++++-
+ lib/Support/CMakeLists.txt   |  6 +++++-
+ test/CMakeLists.txt          | 12 ++++++++++--
+ tools/kleaver/CMakeLists.txt |  6 +++++-
+ unittests/CMakeLists.txt     |  6 +++++-
+ 10 files changed, 76 insertions(+), 24 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf01df24e9df..43f7144b4562 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -727,3 +727,11 @@ add_custom_target(uninstall
+   COMMENT "Uninstalling..."
+   VERBATIM
+ )
++
++set(USE_MAP FALSE)
++if (TARGET LLVMSupport)
++	get_target_property(LLVMSupport_TYPE LLVMSupport TYPE)
++	if (LLVMSupport STREQUAL SHARED_LIBRARY)
++		set(USE_MAP TRUE)
++	endif()
++endif()
+diff --git a/lib/Basic/CMakeLists.txt b/lib/Basic/CMakeLists.txt
+index 5671c1445948..d489ba9c47f6 100644
+--- a/lib/Basic/CMakeLists.txt
++++ b/lib/Basic/CMakeLists.txt
+@@ -11,7 +11,12 @@ add_library(kleeBasic
+   Statistics.cpp
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs support)
++else()
++	set(llvm_libs LLVM)
++endif()
++
+ target_link_libraries(kleeBasic PRIVATE ${llvm_libs})
+ target_compile_options(kleeBasic PRIVATE ${KLEE_COMPONENT_CXX_FLAGS})
+ target_compile_definitions(kleeBasic PRIVATE ${KLEE_COMPONENT_CXX_DEFINES})
+diff --git a/lib/Core/CMakeLists.txt b/lib/Core/CMakeLists.txt
+index 0905a7f03e98..5467f240aed1 100644
+--- a/lib/Core/CMakeLists.txt
++++ b/lib/Core/CMakeLists.txt
+@@ -36,7 +36,12 @@ target_link_libraries(kleeCore PRIVATE
+   kleeSupport
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs core executionengine mcjit native support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs core executionengine mcjit native support)
++else()
++	set(llvm_libs LLVM)
++endif()
++
+ target_link_libraries(kleeCore PRIVATE ${llvm_libs} ${SQLITE3_LIBRARIES})
+ target_include_directories(kleeCore PRIVATE ${KLEE_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS} ${SQLITE3_INCLUDE_DIRS})
+ target_compile_options(kleeCore PRIVATE ${KLEE_COMPONENT_CXX_FLAGS})
+diff --git a/lib/Expr/CMakeLists.txt b/lib/Expr/CMakeLists.txt
+index 6b8a873bb8ed..eed9e9b354c1 100644
+--- a/lib/Expr/CMakeLists.txt
++++ b/lib/Expr/CMakeLists.txt
+@@ -26,7 +26,12 @@ add_library(kleaverExpr
+   Updates.cpp
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs support)
++else()
++	set(llvm_libs LLVM)
++endif()
++
+ target_link_libraries(kleaverExpr PRIVATE ${llvm_libs})
+ target_include_directories(kleaverExpr PRIVATE ${KLEE_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS})
+ target_compile_options(kleaverExpr PRIVATE ${KLEE_COMPONENT_CXX_FLAGS})
+diff --git a/lib/Module/CMakeLists.txt b/lib/Module/CMakeLists.txt
+index c81d395e2cb8..49b51a9936c6 100644
+--- a/lib/Module/CMakeLists.txt
++++ b/lib/Module/CMakeLists.txt
+@@ -26,21 +26,25 @@ add_library(kleeModule
+   ${KLEE_MODULE_COMPONENT_SRCS}
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs bitreader
+-  bitwriter
+-  codegen
+-  ipo
+-  irreader
+-  linker
+-  support
+-  scalaropts
+-  instcombine
+-  transformutils
+-  analysis
+-  object
+-  mc
+-  binaryformat
+-  )
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs bitreader
++		bitwriter
++		codegen
++		ipo
++		irreader
++		linker
++		support
++		scalaropts
++		instcombine
++		transformutils
++		analysis
++		object
++		mc
++		binaryformat
++		)
++else()
++	set(llvm_libs LLVM)
++endif()
+ 
+ target_link_libraries(kleeModule PRIVATE ${llvm_libs})
+ 
+diff --git a/lib/Solver/CMakeLists.txt b/lib/Solver/CMakeLists.txt
+index 81a64882672c..bef0391325e5 100644
+--- a/lib/Solver/CMakeLists.txt
++++ b/lib/Solver/CMakeLists.txt
+@@ -32,7 +32,12 @@ add_library(kleaverSolver
+   Z3Solver.cpp
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs support)
++else()
++	set(llvm_libs LLVM)
++endif()
++
+ target_link_libraries(kleaverSolver PRIVATE
+   kleeBasic
+   kleaverExpr
+diff --git a/lib/Support/CMakeLists.txt b/lib/Support/CMakeLists.txt
+index 7ff4daa34e85..8e6e876dc415 100644
+--- a/lib/Support/CMakeLists.txt
++++ b/lib/Support/CMakeLists.txt
+@@ -18,7 +18,11 @@ add_library(kleeSupport
+   TreeStream.cpp
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs support)
++else()
++	set(llvm_libs LLVM)
++endif()
+ 
+ target_link_libraries(kleeSupport PRIVATE ${llvm_libs} ${ZLIB_LIBRARIES} ${TCMALLOC_LIBRARIES})
+ target_include_directories(kleeSupport PRIVATE ${KLEE_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS} ${TCMALLOC_INCLUDE_DIR})
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 226eb08a3d1f..4c6bdfd172b9 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -96,7 +96,11 @@ if (DOWNLOAD_FILECHECK_SOURCE)
+   add_executable(FileCheck
+     ${FILECHECK_SRC_FILE}
+   )
+-  llvm_map_components_to_libnames(FILECHECK_NEEDED_LIBS support)
++  if (USE_MAP)
++	  llvm_map_components_to_libnames(FILECHECK_NEEDED_LIBS support)
++  else()
++	  set(FILECHECK_NEEDED_LIBS LLVM)
++  endif()
+   target_include_directories(FileCheck PRIVATE ${LLVM_INCLUDE_DIRS})
+   target_link_libraries(FileCheck PRIVATE ${FILECHECK_NEEDED_LIBS})
+ endif()
+@@ -117,7 +121,11 @@ if (DOWNLOAD_NOT_SOURCE)
+   add_executable("not"
+     ${NOT_SRC_FILE}
+   )
+-  llvm_map_components_to_libnames(NOT_NEEDED_LIBS support)
++  if (USE_MAP)
++	  llvm_map_components_to_libnames(NOT_NEEDED_LIBS support)
++  else()
++	  set(NOT_NEEDED_LIBS LLVM)
++  endif()
+   target_include_directories("not" PRIVATE ${LLVM_INCLUDE_DIRS})
+   target_link_libraries("not" PRIVATE ${NOT_NEEDED_LIBS})
+ endif()
+diff --git a/tools/kleaver/CMakeLists.txt b/tools/kleaver/CMakeLists.txt
+index acc681e506c3..414c4d53ad10 100644
+--- a/tools/kleaver/CMakeLists.txt
++++ b/tools/kleaver/CMakeLists.txt
+@@ -10,7 +10,11 @@ add_executable(kleaver
+   main.cpp
+ )
+ 
+-llvm_map_components_to_libnames(llvm_libs core support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(llvm_libs core support)
++else()
++	set(llvm_libs LLVM)
++endif()
+ 
+ target_link_libraries(kleaver kleaverSolver ${llvm_libs})
+ target_include_directories(kleaver PRIVATE ${KLEE_INCLUDE_DIRS} ${LLVM_INCLUDE_DIRS})
+diff --git a/unittests/CMakeLists.txt b/unittests/CMakeLists.txt
+index 9e30a9b76613..e852558d930a 100644
+--- a/unittests/CMakeLists.txt
++++ b/unittests/CMakeLists.txt
+@@ -201,7 +201,11 @@ endif()
+ 
+ add_library(unittest_main)
+ target_sources(unittest_main PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/TestMain.cpp")
+-llvm_map_components_to_libnames(UNITTEST_MAIN_LIBS support)
++if (USE_MAP)
++	llvm_map_components_to_libnames(UNITTEST_MAIN_LIBS support)
++else()
++	set(UNITTEST_MAIN_LIBS LLVM)
++endif()
+ 
+ target_link_libraries(unittest_main
+   PUBLIC
+-- 
+2.40.0
+
