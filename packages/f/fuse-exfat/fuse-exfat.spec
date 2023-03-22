@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-exfat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           fuse-exfat
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        exFAT file system implementation
 License:        GPL-2.0-or-later
