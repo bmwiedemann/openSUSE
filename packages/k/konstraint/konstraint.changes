@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 22 05:57:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.1:
+  * Bump k8s.io/apiextensions-apiserver from 0.26.2 to 0.26.3
+    (#383)
+  * Bump actions/setup-go from 3 to 4 (#382)
+  * Bump golang from 1.20.1-alpine to 1.20.2-alpine (#380)
+  * Bump k8s.io/apimachinery from 0.26.2 to 0.26.3 (#384)
+  * Bump github.com/open-policy-agent/opa from 0.50.0 to 0.50.2
+    (#385)
+
+-------------------------------------------------------------------
 Mon Mar 13 07:18:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.26.0:
