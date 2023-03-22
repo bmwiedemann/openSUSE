@@ -6414,4 +6414,20 @@ handle manual pages that consist only of a .so directive such as
   * TEST_06_SELINUX needs selinux-policy-devel.</comment>
     <requestid>1072270</requestid>
   </revision>
+  <revision rev="384" vrev="3">
+    <srcmd5>14591d021f30d5ebac621fb966d63815</srcmd5>
+    <version>253.1</version>
+    <time>1679520540</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop 0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
+  These obsolete symlinks were kept because several years ago VLC was still
+  relying on some of them. However it's been a long a time ago that it's been
+  fixed and cdrom or similar devices are discovered in a better way.
+
+- Enable that systemd can load the IMA policy from
+  /etc/ima/ima-policy.  This is used to complement dracut-ima when
+  using SELinux, as the SELinux policy should not be loaded in the
+  initrd (https://github.com/openSUSE/microos-tools/pull/14)</comment>
+    <requestid>1073063</requestid>
+  </revision>
 </revisionlist>

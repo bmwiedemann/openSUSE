@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 20 08:32:49 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop 0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
+
+  These obsolete symlinks were kept because several years ago VLC was still
+  relying on some of them. However it's been a long a time ago that it's been
+  fixed and cdrom or similar devices are discovered in a better way.
+
+-------------------------------------------------------------------
+Mon Mar 20 07:48:49 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Enable that systemd can load the IMA policy from
+  /etc/ima/ima-policy.  This is used to complement dracut-ima when
+  using SELinux, as the SELinux policy should not be loaded in the
+  initrd (https://github.com/openSUSE/microos-tools/pull/14)
+
+-------------------------------------------------------------------
 Thu Mar 16 07:33:21 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Add 5002-systemctl-explicitly-cast-the-constants-to-uint64_t.patch (bsc#1209305)

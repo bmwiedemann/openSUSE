@@ -200,7 +200,6 @@ Source207:      files.experimental
 Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
-Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
 %if %{with sysvcompat}
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
@@ -684,7 +683,6 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         \
         -Dbump-proc-sys-fs-nr-open=false \
         -Dgshadow=false \
-        -Dima=false \
         -Dldconfig=false \
         -Dsmack=false \
         \
@@ -695,6 +693,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Defi=%{when_not bootstrap} \
         -Delfutils=%{when_not bootstrap} \
         -Dhtml=%{when_not bootstrap} \
+        -Dima=%{when_not bootstrap} \
         -Dlibcryptsetup-plugins=%{when_not bootstrap} \
         -Dman=%{when_not bootstrap} \
         -Dnss-myhostname=%{when_not bootstrap} \
