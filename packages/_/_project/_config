@@ -1495,7 +1495,9 @@ Substitute: yast2-theme-SLE
 Optflags: i586 -fomit-frame-pointer
 Optflags: i686 -march=i686 -mtune=generic -fomit-frame-pointer
 Optflags: x86_64
-Optflags: x86_64_v3
+Optflags: x86_64_v2 -march=x86-64-v2
+Optflags: x86_64_v3 -march=x86-64-v3
+Optflags: x86_64_v4 -march=x86-64-v4
 Optflags: ppc
 Optflags: ppc64
 Optflags: ia64
