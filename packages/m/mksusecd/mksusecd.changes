@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Tue Mar 21 17:21:28 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#65
+- create efi boot image, if missing
+- support grub hybrid boot code
+- update doc
+- show missing s390x file name correctly
+- adjust boot info table checksum in grub
+- better warning of insufficient file permissions
+- support Live media (jsc#PED-2975)
+- 2.10
+
+--------------------------------------------------------------------
 Thu Dec 15 19:22:07 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#64
