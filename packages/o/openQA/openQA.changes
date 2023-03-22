@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 22 18:10:32 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1679501784.c715f72:
+  * Add advice to timestamp mismatch error
+  * Unify handling formatting args of `openqa-cli` sub cmds
+  * Don't be quiet about errors of `openqa-cli schedule`
+  * Don't rely on js for badge length setting
+  * Improve variable declarations in `43-cli-schedule.t`
+  * Avoid changing Perl-global for UTF-8-encoded output in CLI
+  * Combine `openqa-cli api` options `-r` and `-m`
+  * Streamline "waiting" output between `openqa-cli` sub commands
+  * Reuse retry from `openqa-cli api` in `openqa-cli schedule`
+  * Tweak retry-loop of `openqa-cli`
+  * Move retry-loop from `api.pm` to baseclass to use in other cmds
+  * Remove unused variable in `api.pm`
+  * Allow scheduling and monitoring a product via `openqa-cli`
+  * Evaluate comment contents on carry-over
+
+-------------------------------------------------------------------
 Mon Mar 20 10:10:27 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1679268237.39af241:
