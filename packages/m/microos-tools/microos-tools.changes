@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:06:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.20:
+  - 98selinux-microos: don't load the policy to label the system
+
+-------------------------------------------------------------------
 Tue Mar 14 14:25:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update URL
