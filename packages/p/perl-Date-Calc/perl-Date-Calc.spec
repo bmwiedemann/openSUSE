@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Date-Calc/
 Source0:        http://www.cpan.org/authors/id/S/ST/STBEY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         fix2038.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -46,6 +47,7 @@ Recommends:     perl(Date::Calc::XS) >= 6.4
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor

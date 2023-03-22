@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 07:14:06 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2038.patch to handle dates beyond year 2038
+
+-------------------------------------------------------------------
 Thu Apr 16 19:56:35 UTC 2015 - coolo@suse.com
 
 - updated to 6.4

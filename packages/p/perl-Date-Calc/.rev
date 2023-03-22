@@ -176,4 +176,12 @@
 - remove upstream Date-Calc-6.3.diff</comment>
     <requestid>297343</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9d673c6935d534890c4395e84ee8e49f</srcmd5>
+    <version>6.4</version>
+    <time>1679520530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073044</requestid>
+  </revision>
 </revisionlist>

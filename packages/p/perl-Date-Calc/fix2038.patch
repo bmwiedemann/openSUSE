@@ -1,0 +1,34 @@
+Date: 2023-03-17
+Author: Bernhard M. Wiedemann
+
+Fix year2038 issue
+
+https://rt.cpan.org/Public/Bug/Display.html?id=102495
+
+Index: Date-Calc-6.4/lib/Date/Calc/PP.pm
+===================================================================
+--- Date-Calc-6.4.orig/lib/Date/Calc/PP.pm
++++ Date-Calc-6.4/lib/Date/Calc/PP.pm
+@@ -2057,21 +2057,13 @@ sub DateCalc_mktime
+     {
+         return 0 if
+         (
+-            ($year  < 1970) or ($year  > 2038) or
++            ($year  < 1970) or
+             ($month <    1) or ($month >   12) or
+             ($day   <    1) or ($day   >   31) or
+             ($hour  <    0) or ($hour  >   23) or
+             ($min   <    0) or ($min   >   59) or
+             ($sec   <    0) or ($sec   >   59)
+         );
+-        return 0 if
+-        (
+-            ($year == 2038) and ( ($month >  1) or
+-                                ( ($month == 1) and ( ($day >  19) or
+-                                                    ( ($day == 19) and ( ($hour >  3) or
+-                                                                       ( ($hour == 3) and ( ($min >  14) or
+-                                                                                          ( ($min == 14) and ($sec > 7) ) )))))))
+-        );
+     }
+     $year -= 1900;
+     $month--;
