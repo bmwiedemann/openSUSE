@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Mar 22 07:13:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.14.1
+  See: https://github.com/matomo-org/matomo/milestone/184?closed=1
+  
+- Update to 4.14.0
+  * matomo-org/matomo
+    - #17399 Add diagnostics command options to list and delete unexpected files
+    - #20285 Tabbing (tab navigation with keyboard) is not working in Matomo 4.13 (regression)
+    - #20306 In accept invitation screen show the email instead of the username
+    - #20380 Improve detection of GA3 and GA4 to more accurately suggest correct tracking set up guides
+    - #20410 Added code to include schedule command for plugins while generating github action
+    - #20343 Feedback success overlay might not be shown
+    - #20404 OptOut: Remove extra twig markings
+    - #20430 Ensure empty widgets are loaded correctly
+    - #20441 Ensure archiving for segments uses correct date ranges
+    - #20370 Slightly improve visits log layout as dashboard widget
+    - #20166 Adjust some archivers to use correct row limit when aggregating periods
+    - #20307 Fix PHP 8.2 deprecations in 2FA plugin
+    - #20312 What’s new icon “on” doesn’t show there is a new entry when never clicked on it previously
+    - #20323 Fix for PHP8 type error on NFS diagnostic check
+    - #20333 Fix non-countable fatal error in the datatable class
+    - #20336 Fix to allow campaign switching during a session
+    - #20339 Harden check for multiple sites
+    - #20356 Fix PHP 8.1 deprecation in DevicesDetection
+    - #20357 Ensure to use int values to determine maximum values in graphs
+    - #20358 Fix compatibility of minimum PHP version check with older versions
+    - #20374 Language is not correctly detected automatically by Matomo
+    - #20391 Fix visits log might show incorrect action for groups
+    - #20399 Fix for unsupported operand error in RowEvolution
+    - #20402 Fixes for PHP 8.2 deprecation warnings
+    - #20426 Fix PHP 8.2 deprecation in event actions
+    - #20098 Avoid errors when trying to create invalid date objects
+    - #20222 Fix for creating a new segment that has some visits will show 2 notifications instead of 1
+    - #20262 Make millisecond dimension grouping less error prone
+    - #20272 Remove unneeded table from query when querying conversions by page view to increase performance
+    - #20296 Trim spaces from login email in password reset process if some are set
+    - #20298 Unset link token when accepting an invite
+    - #20303 Fix Matomo dialog does not close
+    - #20424 Delete log table data in chunks to prevent possible performance issues
+    - #20425 Add new metricTypes report metadata to prepare for LookerStudio integration
+    - #20429 Updated bug report template: moved Context to the top
+    - #20437 Fixed PHP 8.2 deprecation error in CustomDimensions
+    - #20438 Get all numerics in one go for faster goal conversion calculation
+    - #20471 Added new semantic types for date/datetime for CrashAnalytics
+  * matomo-org/tag-manager
+    - #386 Replace Travis.CI tests with GitHub action
+    - #594 Improvements to MTM tracker to allow full _paq functionality
+    - #599 Improve JavaScript reliability
+    - #606 Added code to create default container for idsite:1 if not created
+    - #607 Images and text updated for tags
+  * matomo-org/device-detector
+    - #7344 Detect devices for exists brands: LG, Energy Sistem, SmartBook, Arnova
+    - #7345 Detect new brand BMXC and Detect devices for exist brands
+    - #7346 Detect new brands: V-Gen, Nedaphone and Detect devices for exist brands
+    - #7348 Detect new brands: Frunsi, RelNAT, TeloSystems, MIWANG and Detect devices for exist brands
+    - #7349 Detect new brands: HeadWolf, Great Asia, Zamolxe, ZoomSmart and Detect devices for exist brands
+    - #7350 Fix possible error if an incorrect version list array is provided
+    - #7353 Detect new brands: PC Smart, Ephone, YunSong, SYH, iRobot and Detect devices for exist brands
+    - #7354 Overwrite device type smartphone – if UA contains a’prefix, Pad/APad
+    - #7355 Detect new brands: Roam Cat, DIMO, Everest, SANY and Detect devices for exist brands
+    - #7357 Detect new brands: Attila, BRAVE and Detect devices for exist brands
+    - #7359 Detect new brands: BenWee, BluSlate, Bookeen, Lectrus,
+      LeBest, NOVO, Pano, Surge, Volt and Detect devices for exist brands
+    - #7360 Adds detection for various bots and apps
+    - #7362 Detect new brands: FFF SmartLife, NuVision, Versus and Detect devices for exist brands
+    - #7364 Detect Morning Score bot
+    - #7365 Fir for YamlParser AppHints & BrowserHints
+    - #7366 Detect browsers: YandexBrowser, AlohaBrowser for iOS and Detect apps: Quora, JJ2GO, BonPrix
+    - #7367 Fix: YamlParser for AppHints & BrowserHints
+    - #7373 Detect devices for exist brands: POCO, OPPO, Ravoz,
+      Vivo, Samsung, Huawei, Nubia, OnePlus, Oukitel, Xiaomi
+  * matomo-org/matomo-php-tracker
+    - #113 Add function to set api url
+  * matomo-org/component-ini
+    - #22 Use bash syntax for installation instructions
+  * matomo-org/referrer-spam-list
+    - #1343 Add nutriwestncahi.com
+    - #1344 Add epcpolo.com
+    - #1345 Add 100+ .xyz domains
+- See also https://matomo.org/changelog/matomo-4-14-0/
+
+-------------------------------------------------------------------
+Thu Mar 16 21:59:28 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix boo#1209312
+- Fix boo#1209313
+
+-------------------------------------------------------------------
 Mon Jan 30 17:27:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.13.3
