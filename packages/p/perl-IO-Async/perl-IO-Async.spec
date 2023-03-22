@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Async
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Recommends:     perl(IO::Socket::IP)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  netcfg
+BuildRequires:  perl(Test2::V0)
 # MANUAL END
 
 %description
