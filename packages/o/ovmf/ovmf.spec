@@ -62,6 +62,8 @@ Patch12:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch13:        %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch14:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
+# Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
+Patch15:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -185,6 +187,7 @@ rm -rf $PKG_TO_REMOVE
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

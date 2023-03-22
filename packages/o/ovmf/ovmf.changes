@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 13:28:55 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
+  to revert 58eb8517ad7b56574f8f04b770a59a9cbed796c4 patch to prevent
+  booting hangs when SEV + secure boot. (bsc#1209266) 
+
+-------------------------------------------------------------------
 Thu Mar 16 08:17:08 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Removed patches which are merged to edk2-stable202302 (bsc#1209266):

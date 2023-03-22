@@ -1,0 +1,53 @@
+From 251820bfcd28abecf8a67ee94d82c8ab47547b0b Mon Sep 17 00:00:00 2001
+From: Joey Lee <jlee@suse.com>
+Date: Mon, 20 Mar 2023 13:14:57 +0100
+Subject: [PATCH] Revert "OvmfPkg/PlatformPei: Update
+ ReserveEmuVariableNvStore"
+
+This reverts commit 58eb8517ad7b56574f8f04b770a59a9cbed796c4.
+(bsc#1209266)
+
+Signed-off-by: Joey Lee <jlee@suse.com>
+---
+ OvmfPkg/PlatformPei/Platform.c | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/OvmfPkg/PlatformPei/Platform.c b/OvmfPkg/PlatformPei/Platform.c
+index 148240342b..19677d99e7 100644
+--- a/OvmfPkg/PlatformPei/Platform.c
++++ b/OvmfPkg/PlatformPei/Platform.c
+@@ -219,13 +219,24 @@ ReserveEmuVariableNvStore (
+   EFI_PHYSICAL_ADDRESS  VariableStore;
+   RETURN_STATUS         PcdStatus;
+ 
+-  VariableStore = (EFI_PHYSICAL_ADDRESS)(UINTN)PlatformReserveEmuVariableNvStore ();
+-  PcdStatus     = PcdSet64S (PcdEmuVariableNvStoreReserved, VariableStore);
+-
+- #ifdef SECURE_BOOT_FEATURE_ENABLED
+-  PlatformInitEmuVariableNvStore ((VOID *)(UINTN)VariableStore);
+- #endif
+-
++  //
++  // Allocate storage for NV variables early on so it will be
++  // at a consistent address.  Since VM memory is preserved
++  // across reboots, this allows the NV variable storage to survive
++  // a VM reboot.
++  //
++  VariableStore =
++    (EFI_PHYSICAL_ADDRESS)(UINTN)
++    AllocateRuntimePages (
++      EFI_SIZE_TO_PAGES (2 * PcdGet32 (PcdFlashNvStorageFtwSpareSize))
++      );
++  DEBUG ((
++    DEBUG_INFO,
++    "Reserved variable store memory: 0x%lX; size: %dkb\n",
++    VariableStore,
++    (2 * PcdGet32 (PcdFlashNvStorageFtwSpareSize)) / 1024
++    ));
++  PcdStatus = PcdSet64S (PcdEmuVariableNvStoreReserved, VariableStore);
+   ASSERT_RETURN_ERROR (PcdStatus);
+ }
+ 
+-- 
+2.39.2
+
