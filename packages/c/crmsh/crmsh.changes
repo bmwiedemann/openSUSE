@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:30:12 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230321.97bd51bb:
+  * Dev: behave: Split the time cost case into two cases
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: remove 'sudo' prefix internally
+
+-------------------------------------------------------------------
+Tue Mar 21 13:34:38 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230321.eda6d2d9:
+  * Dev: workflows: Disable resource_failcount.feature temporarily
+  * Dev: behave: Add test case for 'Passwordless for root, not for sudoer(bsc#1209193)'
+  * Dev: behave: check user shell after init and join, without upgrading
+  * Dev: bootstrap: Change user shell for hacluster on remote node, in init_ssh_impl function
+  * Dev: behave: Add functional test to check user shell for hacluster
+
+-------------------------------------------------------------------
 Mon Mar 20 08:53:40 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230320.5e777809:
