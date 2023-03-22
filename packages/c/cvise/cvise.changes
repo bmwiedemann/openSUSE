@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 22 11:44:28 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230322.994dbe2:
+  * add timeout of 10s when we query for instances in clangbinarysearch pass
+  * Fix build error with the current LLVM tip.
+  * fix clang Werror
+  * CI: add LLVM builder
+  * CI: fix
+  * CI: move cocurrency to top-level scope
+  * CI: add concurrency also for llvm-nightly
+  * CI: fix concurrency
+  * CI: cancel previous builds
+  * Use latest LLVM release.
+  * Fix clang error: error: variable 'which' set but not used.
+  * Use -Wno-error=maybe-uninitialized conditionally.
+
+-------------------------------------------------------------------
 Thu Mar 02 08:35:10 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.7.0+git.20230302.ff4e51e:

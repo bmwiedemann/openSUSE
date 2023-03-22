@@ -997,4 +997,24 @@
   * bump CMake minimal version</comment>
     <requestid>1068630</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>e8928df363d33540144351b9a7d51ede</srcmd5>
+    <version>2.7.0+git.20230322.994dbe2</version>
+    <time>1679520697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20230322.994dbe2:
+  * add timeout of 10s when we query for instances in clangbinarysearch pass
+  * Fix build error with the current LLVM tip.
+  * fix clang Werror
+  * CI: add LLVM builder
+  * CI: fix
+  * CI: move cocurrency to top-level scope
+  * CI: add concurrency also for llvm-nightly
+  * CI: fix concurrency
+  * CI: cancel previous builds
+  * Use latest LLVM release.
+  * Fix clang error: error: variable 'which' set but not used.
+  * Use -Wno-error=maybe-uninitialized conditionally.</comment>
+    <requestid>1073778</requestid>
+  </revision>
 </revisionlist>
