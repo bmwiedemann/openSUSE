@@ -79,7 +79,7 @@
 %define ffmpeg_version 58
 %endif
 Name:           chromium
-Version:        111.0.5563.64
+Version:        111.0.5563.110
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -132,6 +132,7 @@ Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch206:       chromium-109-clang-lp154.patch
 Patch208:       chromium-icu72-2.patch
 Patch210:       chromium-110-system-libffi.patch
+Patch211:       gcc13-fix.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
