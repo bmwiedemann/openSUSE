@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 22 14:54:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.32:
+  * #50 support Job and CronJob
+  * #50 move out pod processing
+
+-------------------------------------------------------------------
 Fri Mar 17 18:56:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.31:
