@@ -88,6 +88,11 @@ Source12:       pam-login_defs-check.sh
 Source13:       pam.tmpfiles
 Source14:       Linux-PAM-%{version}-docs.tar.xz.asc
 Source15:       Linux-PAM-%{version}.tar.xz.asc
+Source20:       common-session-nonlogin.pamd
+Source21:       postlogin-auth.pamd
+Source22:       postlogin-account.pamd
+Source23:       postlogin-password.pamd
+Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
 Patch3:         pam-xauth_ownership.patch
 Patch4:         pam-bsc1177858-dont-free-environment-string.patch
@@ -276,6 +281,11 @@ install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/common-auth
 install -m 644 %{SOURCE5} %{buildroot}%{_pam_vendordir}/common-account
 install -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/common-password
 install -m 644 %{SOURCE7} %{buildroot}%{_pam_vendordir}/common-session
+install -m 644 %{SOURCE20} %{buildroot}%{_pam_vendordir}/common-session-nonlogin
+install -m 644 %{SOURCE21} %{buildroot}%{_pam_vendordir}/postlogin-auth
+install -m 644 %{SOURCE22} %{buildroot}%{_pam_vendordir}/postlogin-account
+install -m 644 %{SOURCE23} %{buildroot}%{_pam_vendordir}/postlogin-password
+install -m 644 %{SOURCE24} %{buildroot}%{_pam_vendordir}/postlogin-session
 mkdir -p %{buildroot}%{_prefix}/lib/motd.d
 #
 # Remove crap
@@ -374,6 +384,7 @@ done
 %else
 %{_pam_vendordir}/other
 %{_pam_vendordir}/common-*
+%{_pam_vendordir}/postlogin-*
 %endif
 %{_distconfdir}/environment
 %{_pam_secdistconfdir}/access.conf

@@ -1,0 +1,10 @@
+#
+# /etc/pam.d/postlogin-account - account settings common to login services
+#
+# This file is included from login service-specific PAM config files,
+# and contains the PAM modules which should be called after
+# the modules of "common-account".
+#
+# This file should only be included from services doing real logins,
+# so like "login", "xdm" or "sshd", but not "chsh" or "cron".
+#

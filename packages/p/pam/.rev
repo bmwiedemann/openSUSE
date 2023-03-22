@@ -1145,4 +1145,14 @@
     <comment></comment>
     <requestid>1072045</requestid>
   </revision>
+  <revision rev="129" vrev="14">
+    <srcmd5>9e36812bdb23485fc1ffa552e1e1737c</srcmd5>
+    <version>1.5.2</version>
+    <time>1679520560</time>
+    <user>dimstar_suse</user>
+    <comment>- Add common-session-nonlogin and postlogin-* pam.d config files
+  for https://github.com/SUSE/pam-config/pull/16, pam_lastlog2
+  and upcoming pam_wtmpdb.</comment>
+    <requestid>1073099</requestid>
+  </revision>
 </revisionlist>

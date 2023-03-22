@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 10:12:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add common-session-nonlogin and postlogin-* pam.d config files
+  for https://github.com/SUSE/pam-config/pull/16, pam_lastlog2
+  and upcoming pam_wtmpdb.
+
+-------------------------------------------------------------------
 Fri Mar 10 18:27:09 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Enable livepatching support on x86_64.
