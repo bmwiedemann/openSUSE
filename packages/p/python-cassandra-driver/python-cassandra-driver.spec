@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cassandra-driver
-Version:        3.25.0
+Version:        3.26.0
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
@@ -65,8 +64,7 @@ protocol and Cassandra Query Language v3.
 A list of features may be found at https://github.com/datastax/python-driver#features .
 
 %prep
-%setup -q -n python-driver-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-driver-%{version}
 # do not run integration tests
 rm -rf tests/integration
 rm -rf tests/stress_tests
