@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:48:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.0:
+  * Find drm_fourcc.h in sysroot
+  * build: bump libdrm to 2.4.114
+  * ci: add .gitlab-ci.yml
+  * build: fix "Unknown statement" error
+  * build: fix "Unknown statement" for real
+  * Consistently use lower-case "unknown" as fallback value
+  * Add device bus info
+  * Add support for Vivante modifiers
+  * Add support for printing AMD GFX11 modifiers
+  * Fix AMD tile for GFX11 modifiers
+  * build: add workaround for include_directories() sandbox
+  * build: bump version to 2.5.0
+  * Decode HDR_OUTPUT_METADATA
+
+-------------------------------------------------------------------
 Fri Jan 20 16:49:06 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.4.0
