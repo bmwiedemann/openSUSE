@@ -4,6 +4,7 @@ set -e
 # grub-mkconfig helper script.
 # Copyright (C) 2011  Michal Ambroz <rebus@seznam.cz>
 # Adapted for openSUSE by Andrey Borzenkov <arvidjaar@gmail.com>
+# Adapted for EFI by Hans-Peter Jansen <hpj@urpla.net>
 #
 # you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,16 +19,10 @@ set -e
 # You should have received a copy of the GNU General Public License
 # along with the script.  If not, see <http://www.gnu.org/licenses/>.
 
-. /usr/share/grub2/grub-mkconfig_lib
+. "$pkgdatadir/grub-mkconfig_lib"
 
 export TEXTDOMAIN=grub2
 export TEXTDOMAINDIR=/usr/share/locale
-
-# memset86+ requires the x86 real mode
-# which is not available with UEFI booting.
-if [ -d /sys/firmware/efi ]; then
-  exit 0
-fi
 
 CLASS="--class memtest86 --class gnu --class tools"
 
@@ -38,7 +33,19 @@ else
   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1) ${CLASS}"
 fi
 
-memtest=/boot/memtest.bin
+# memtest86+ comes in two flavours, one EFI and one suitable for x86 real mode.
+# The EFI module requires security disabled in BIOS (Boot Mode: Other OS)
+if [ -d /sys/firmware/efi -a -f /boot/efi/EFI/memtest86/memtest.efi ]; then
+  memtest=/boot/efi/EFI/memtest86/memtest.efi
+  loader='linux  '
+  message="$(gettext_printf "Loading EFI memtest ...\n" | grub_quote)"
+  # locate the real EFI partition
+  GRUB_DEVICE_BOOT=$(grub2-probe -t device "$memtest")
+else
+  memtest=/boot/memtest.bin
+  loader='linux16'
+  message="$(gettext_printf "Loading x86 memtest ...\n" | grub_quote)"
+fi
 
 if grub_file_is_not_garbage "$memtest" ; then
   gettext_printf "Found memtest image: %s\n" "$memtest" >&2
@@ -50,10 +57,10 @@ if grub_file_is_not_garbage "$memtest" ; then
   printf "menuentry '%s' %s \$menuentry_id_option '%s' {\n" "${OS}" "${CLASS}" "memtest-$boot_device_id"
   prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/")"
   printf '%s\n' "${prepare_boot_cache}"
-  message="$(gettext_printf "Loading memtest ...\n" | grub_quote)"
   cat << EOF
-	echo	'$message'
-	linux16	${rel_dirname}/${basename}
+        echo    '$message'
+        ${loader} ${rel_dirname}/${basename}
 }
+
 EOF
 fi

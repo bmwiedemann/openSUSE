@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 20 05:02:01 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Restrict cryptsetup key file permission for better security (bsc#1207499)
+  * 0001-loader-linux-Ensure-the-newc-pathname-is-NULL-termin.patch
+  * 0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
+
+-------------------------------------------------------------------
+Wed Mar 15 21:46:00 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Meanwhile, memtest86+ gained EFI support, but using the grub
+  command line to run it manually is quite tedious...
+  Adapt 20_memtest86+ to provide a proper menu entry. Executing
+  memtest requires to turn security off in BIOS: (Boot Mode: Other OS).
+
+-------------------------------------------------------------------
 Mon Mar 13 15:43:01 UTC 2023 - rw@suse.com
 
 - Tolerate kernel moved out of /boot. (bsc#1184804)

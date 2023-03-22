@@ -503,6 +503,8 @@ Patch974:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
 Patch975:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
 # Make grub more robust against storage race condition causing system boot failures (bsc#1189036)
 Patch976:       0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+Patch977:       0001-loader-linux-Ensure-the-newc-pathname-is-NULL-termin.patch
+Patch978:       0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -527,6 +529,10 @@ Requires:       s390-tools
 %endif
 %ifarch ppc64 ppc64le
 Requires:       powerpc-utils
+%endif
+%ifarch %{ix86}
+# meanwhile, memtest is available as EFI executable
+Recommends:     memtest86+
 %endif
 
 %if 0%{?only_x86_64:1}
