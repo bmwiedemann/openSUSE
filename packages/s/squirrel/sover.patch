@@ -1,0 +1,13 @@
+Index: squirrel3/CMakeLists.txt
+===================================================================
+--- squirrel3.orig/CMakeLists.txt
++++ squirrel3/CMakeLists.txt
+@@ -51,7 +50,7 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+ endif()
+ 
+ if(NOT DISABLE_DYNAMIC)
+-  set_target_properties(squirrel sqstdlib PROPERTIES SOVERSION 0 VERSION 0.0.0)
++  set_target_properties(squirrel sqstdlib PROPERTIES SOVERSION 1001 VERSION 1001.1001.1001)
+ endif()
+ 
+ if(NOT SQ_DISABLE_INSTALLER AND NOT SQ_DISABLE_HEADER_INSTALLER)

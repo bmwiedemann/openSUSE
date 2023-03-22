@@ -129,4 +129,27 @@
 - drop squirrel-aliasing.patch, squirrel-ptr_conversion.patch (upstream)</comment>
     <requestid>1058212</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>509952e4f18ac6d5a1d44ccd64732f84</srcmd5>
+    <version>3.2</version>
+    <time>1679520684</time>
+    <user>dimstar_suse</user>
+    <comment>- spec file changes:
+  * drop static library because everything that needs maintenance
+    patch is then vulnerable without rebuild (see bug that was just patched)
+  * drop Group since it was wrong anyway
+  * move runtime library to its won subpackage from executable
+  * switch to cmake
+  * update sover ourselves since upstream doesn't do this and
+    seems to break ABI between versions.
+- c++11.patch: drop C++11 standard in favour of latest
+- sover.patch: patch to update sover on version updates, generated
+  from sover.patch.in during setup
+- squirrel-gcc47.patch: dropped, fixed upstream
+- squirrel-autoconfiscate.patch: dropped, obsolete
+- squirrel-rename_binary.patch: dropped, obsolete
+- squirrel-config.cmake.in: add missing file
+- squirrel.rpmlintrc: ignore EOL warnings in doc files</comment>
+    <requestid>1073749</requestid>
+  </revision>
 </revisionlist>

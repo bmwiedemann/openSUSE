@@ -16,7 +16,14 @@
 #
 
 
-%define tardir squirrel3
+### Upstream doesn't version the library and changes ABI
+### bump this version on every version update or check that it should remain
+### Re-run %%setup (quilt setup) after each update
+%define sover 1001
+
+# Disable LTO optimizations
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %define tarver 3_2
 Name:           squirrel
 Version:        3.2
@@ -25,13 +32,16 @@ Summary:        A high level imperative/OO programming language
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://squirrel-lang.org/
-Source:         https://downloads.sourceforge.net/%{name}/%{name}_%{tarver}_stable.tar.gz
-Patch0:         squirrel-autoconfiscate.patch.bz2
-Patch3:         squirrel-rename_binary.patch
-Patch4:         squirrel-gcc47.patch
-BuildRequires:  dos2unix
+Source:         https://downloads.sourceforge.net/squirrel/squirrel_%{tarver}_stable.tar.gz
+Source1:        squirrel-config.cmake.in
+Source10:       sover.patch.in
+Source11:       squirrel.rpmlintrc
+Patch1:         c++11.patch
+# Generated from S:10 in %%prep, so update that if patch no longer applies
+Patch10:        sover.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
+BuildRequires:  sed
 
 %description
 Squirrel is a programming language featuring higher-order functions,
@@ -39,28 +49,23 @@ classes, inheritance, delegation, tail recursion, generators,
 cooperative threads, exception handling, reference counting, garbage
 collection on demand, and a C-like syntax.
 
+%package        -n libsquirrel%{sover}
+Summary:        Development files for %{name}
+
+%description -n libsquirrel%{sover}
+This package contains runtime library for Squirrel
+
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       libsquirrel%{sover} = %{version}
 
 %description devel
 This package contains everything to embed the Squirrel engine in
 your own application.
 
-%package        devel-static
-Summary:        Static squirrel libraries
-Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
-
-%description devel-static
-This package contains the static versions of the engine and
-standard lbrary.
-
 %package        doc
 Summary:        Documentation for %{name}
-Group:          Development/Languages/Other
-Requires:       %{name} = %{version}
+Supplements:    %{name} = %{version}
 BuildArch:      noarch
 
 %description doc
@@ -68,61 +73,60 @@ Documentation files for squirrel.
 
 %package        examples
 Summary:        Example scripts for %{name}
-Group:          Development/Languages/Other
-Requires:       %{name} = %{version}
+Suggests:       %{name} = %{version}
 BuildArch:      noarch
 
 %description examples
 Example scripts to show squirrel usage.
 
 %prep
-%setup -q -n %{tardir}
-dos2unix -q $(find . -type f)
-%patch0
-%patch3
-%patch4 -p1
-find . -type f -exec chmod -x {} +
-chmod +x configure config.guess config.sub depcomp install-sh ltmain.sh missing
-autoreconf -fi
+%setup -q -n squirrel3
+sed -e 's,1000,%{sover},g' < %{_sourcedir}/sover.patch.in > %{_sourcedir}/sover.patch
+%patch1 -p1
+%patch10 -p1
+cp %SOURCE1 .
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CXXFLAGS="%{optflags} -std=gnu++0x"
-export CFLAGS="%{optflags}"
-%configure --enable-static
+%cmake \
+    -DDISABLE_STATIC=1 \
+    -DLONG_OUTPUT_NAMES=1
 make %{?_smp_mflags}
 
 %install
-%make_install
-install -d %{buildroot}/%{_defaultdocdir}/%{name}
-install -m 644 README HISTORY COPYRIGHT %{buildroot}/%{_defaultdocdir}/%{name}
-rm -fv %{buildroot}/%{_libdir}/*.la
+%cmake_install
+# compat link for older distros
+%if %suse_version < 1599
+ln -s /usr/bin/squirrel3 %{buildroot}%{_bindir}/sqrl
+%endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post -n libsquirrel%{sover} -p /sbin/ldconfig
+%postun -n libsquirrel%{sover} -p /sbin/ldconfig
 
 %files
-%dir %{_defaultdocdir}/%{name}
-%doc %{_defaultdocdir}/%{name}/README
-%doc %{_defaultdocdir}/%{name}/HISTORY
-%doc %{_defaultdocdir}/%{name}/COPYRIGHT
+%{_bindir}/squirrel3
+%if %suse_version < 1599
 %{_bindir}/sqrl
-%{_libdir}/*.so.*
+%endif
+
+%files -n libsquirrel%{sover}
+%license COPYRIGHT
+%{_libdir}/*.so.%{sover}
+%{_libdir}/*.so.%{sover}.*
 
 %files devel
-%{_includedir}/*
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/squirrel
+%{_includedir}/sq*.h
 %{_libdir}/*.so
-
-%files devel-static
-%{_libdir}/*.a
+%{_libdir}/cmake/squirrel/*
 
 %files doc
-%exclude %{_defaultdocdir}/%{name}/README
-%exclude %{_defaultdocdir}/%{name}/HISTORY
-%exclude %{_defaultdocdir}/%{name}/COPYRIGHT
-%{_defaultdocdir}/%{name}/*
+%license COPYRIGHT
+%doc README HISTORY
+%doc doc/*
 
 %files examples
-%{_datadir}/%{name}
+%license COPYRIGHT
+%doc samples/*
 
 %changelog
