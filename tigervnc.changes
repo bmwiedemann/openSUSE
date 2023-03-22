@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 19 09:33:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.1:
+  * x0vncserver can either crash itself, or crash the X server 
+    it is connected to
+  * The servers might crash if the clipboard is updated just as
+    a client is connected
+  * The vncserver service can fail to start on SELinux system
+    if ~/.vnc doesn't exist
+
+-------------------------------------------------------------------
 Wed Feb 15 16:41:57 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - A little cleanup of specfile

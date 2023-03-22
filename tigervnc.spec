@@ -29,7 +29,7 @@
 %define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
 Name:           tigervnc
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
