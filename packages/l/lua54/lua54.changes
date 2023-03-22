@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 18 12:11:40 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Added more numbered patches from upstream:
+  * luabugs10.patch
+
+-------------------------------------------------------------------
 Tue Jan 24 10:53:04 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Do not use complex dependencies on SLE12

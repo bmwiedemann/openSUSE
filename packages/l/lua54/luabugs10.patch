@@ -1,0 +1,67 @@
+From 02bab9fc258fe1cbc6088b1bd61193499d058eff Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Wed, 8 Feb 2023 14:15:41 -0300
+Subject: [PATCH] Bug: Wrong line in error message for arith. errors
+
+It also causes 'L->top' to be wrong when the error happens,
+triggering an 'assert'.
+---
+ lvm.c             | 4 ++++
+ testes/errors.lua | 8 ++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/lvm.c b/lvm.c
+index 2e84dc63c..8493a770c 100644
+--- a/src/lvm.c
++++ b/src/lvm.c
+@@ -1410,6 +1410,7 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+         vmbreak;
+       }
+       vmcase(OP_MODK) {
++        savestate(L, ci);  /* in case of division by 0 */
+         op_arithK(L, luaV_mod, luaV_modf);
+         vmbreak;
+       }
+@@ -1422,6 +1423,7 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+         vmbreak;
+       }
+       vmcase(OP_IDIVK) {
++        savestate(L, ci);  /* in case of division by 0 */
+         op_arithK(L, luaV_idiv, luai_numidiv);
+         vmbreak;
+       }
+@@ -1470,6 +1472,7 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+         vmbreak;
+       }
+       vmcase(OP_MOD) {
++        savestate(L, ci);  /* in case of division by 0 */
+         op_arith(L, luaV_mod, luaV_modf);
+         vmbreak;
+       }
+@@ -1482,6 +1485,7 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+         vmbreak;
+       }
+       vmcase(OP_IDIV) {  /* floor division */
++        savestate(L, ci);  /* in case of division by 0 */
+         op_arith(L, luaV_idiv, luai_numidiv);
+         vmbreak;
+       }
+diff --git a/testes/errors.lua b/testes/errors.lua
+index cf0ab5265..bf6f389d2 100644
+--- a/testes/errors.lua
++++ b/testes/errors.lua
+@@ -444,6 +444,14 @@ if not b then
+   end
+ end]], 5)
+ 
++
++-- bug in 5.4.0
++lineerror([[
++  local a = 0
++  local b = 1
++  local c = b % a
++]], 3)
++
+ do
+   -- Force a negative estimate for base line. Error in instruction 2
+   -- (after VARARGPREP, GETGLOBAL), with first absolute line information
