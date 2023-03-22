@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virt-scenario
-Version:        0.7.6
+Version:        1.0.1
 Release:        0
 Summary:        Create XML guest configuration and prepare the host for a scenario
 License:        GPL-3.0-or-later
@@ -31,12 +31,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module libvirt-python}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  fdupes
 #Buildrequires:	pandoc
 BuildArch:      noarch
 Requires:	python-PyYAML
 Requires:	python-pyudev
 Requires:	python-curses
+Requires:	python-psutil
 Requires:	python-libvirt-python
 %python_subpackages
 

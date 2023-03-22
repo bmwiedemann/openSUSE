@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 22 17:25:34 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.1:
+  * user can specify a VM image to use instead of creating one
+
+-------------------------------------------------------------------
+Tue Mar 21 17:38:18 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- Major version 1.0.0:
+  * various SEV fixes
+  * improve force_sev mode
+  * update all documentation
+  * various pylint fixes
+- add requires on python-psutil
+
+-------------------------------------------------------------------
 Tue Mar 21 10:01:43 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - fix memory user issue
