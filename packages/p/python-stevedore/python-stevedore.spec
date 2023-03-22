@@ -17,13 +17,13 @@
 
 
 Name:           python-stevedore
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/stevedore/latest/
-Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-4.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-5.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-docutils
 BuildRequires:  python3-pbr >= 2.0.0
@@ -86,7 +86,7 @@ This package contains documentation in HTML format.
 %py3_build
 
 # generate html docs
-PBR_VERSION=4.1.1 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=5.0.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

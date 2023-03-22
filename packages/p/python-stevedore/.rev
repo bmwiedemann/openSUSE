@@ -453,4 +453,13 @@
   - Fix compatibility with Python 3.10, 3.9.11</comment>
     <requestid>1055984</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9e171ef0b9f607ee7cc3c118560fa2e5</srcmd5>
+    <version>5.0.0</version>
+    <time>1679520527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Remove Extension.extras</comment>
+    <requestid>1073029</requestid>
+  </revision>
 </revisionlist>
