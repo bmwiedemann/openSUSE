@@ -19,7 +19,7 @@
 %define amanda_group amanda
 %define upstreamver tag-community-%{version}
 Name:           amanda
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Network Disk Archiver
 License:        GPL-3.0-or-later
@@ -34,11 +34,6 @@ Patch3:         amanda-2.6.1p1-avoid-perl-provides.patch
 Patch4:         amanda-3.3.2-returnvalues.patch
 Patch6:         amanda-3.5-no_return_in_nonvoid_fnc.patch
 Patch7:         amanda-libnsl.patch
-Patch8:         amanda-3.5.1-GCC10_extern.patch
-# PATCH-FIX-UPSTREAM amanda-3.5.2-fix-tests.patch -- gh#zmanda/amanda#167
-Patch9:         amanda-3.5.2-fix-tests.patch
-# PATCH-FIX-UPSTREAM CVE-2022-37705.patch -- boo#1208032, gh#zmanda/amanda#194
-Patch10:        CVE-2022-37705.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -95,9 +90,6 @@ running multiple versions of Linux or Unix.
 %patch4 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
 
 %build
 ./autogen
@@ -132,7 +124,7 @@ install -d %{buildroot}/%{_sysconfdir}/amanda \
            %{buildroot}%{_localstatedir}/lib/amanda/lbl-templ \
            %{buildroot}/%{_docdir}/%{name} \
            %{buildroot}/%{_sysconfdir}/xinetd.d
-install NEWS README README.SUSE example/{amanda.conf,chg-multi.conf,disklist} %{buildroot}/%{_docdir}/%{name}
+install NEWS README.md README.SUSE example/{amanda.conf,chg-multi.conf,disklist} %{buildroot}/%{_docdir}/%{name}
 install -m 644 %{buildroot}%{_sysconfdir}/amanda/amanda-security.conf %{buildroot}%{_sysconfdir}/amanda-security.conf
 chmod 644 %{buildroot}/%{_docdir}/%{name}/* %{buildroot}/%{_mandir}/*/*
 cp -a SUSE/* %{buildroot}
@@ -194,7 +186,7 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %verify_permissions -f %{_libexecdir}/amanda/suidlist
 
 %files
-%doc amanda-howto-collection.pdf ChangeLog NEWS AUTHORS COPYRIGHT README ReleaseNotes README.SUSE
+%doc amanda-howto-collection.pdf ChangeLog NEWS AUTHORS COPYRIGHT README.md ReleaseNotes README.SUSE
 %doc %attr(755,root,root) %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/*
 %{_mandir}/man*/*

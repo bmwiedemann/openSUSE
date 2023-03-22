@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 21 16:16:06 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.5.3:
+  * Fixed: removed vulnerable jQuery dependency
+  * Fixed: fix suppressed 1st char of error message in
+    common-src/bsdtcp-security.c
+  * docs: improved README with Markdown
+  * docs: updated README file name for docs in Debian builds
+  * Fixed: post_inst_functions.sh to create amkey
+  * Fixed: added extern keyword for tu_debugging_enabled declaration in
+    testutils.h
+  * Fixed: https://sogis.eu complaint symmetric encryption key derivation algorithm
+  * Fixed: removed perror to fix information leak vulnerability found in the
+    calcsize SUID binary. (CVE-2022-37703, bsc#1203390)
+  * Fixed: added filter for RSH environment settings in rundump to fix
+    privilege escalation vulnerability (CVE-2022-37704, bsc#1208033)
+  * Fixed: arg checking for runtar.c (CVE-2022-37705, bsc#1208032)
+- Remove upstreamed patches:
+  * CVE-2022-37705.patch
+  * amanda-3.5.1-GCC10_extern.patch
+  * amanda-3.5.2-fix-tests.patch
+
+-------------------------------------------------------------------
 Thu Feb 16 11:03:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2022-37705.patch to fix privilege scalation
