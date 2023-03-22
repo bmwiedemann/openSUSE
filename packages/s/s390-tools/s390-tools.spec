@@ -104,7 +104,11 @@ Source39:       vmlogrdr.service.suse
 %endif
 Source40:       xpram.service
 Source41:       pkey.conf
-
+###
+Source42:       module-setup.sh
+Source43:       parse-zdev-suse.sh
+Source44:       write-udev-live-suse.sh
+###
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
 ### That's been delayed to at least SLES12 SP1, but I'm leaving the comments here.
 Source86:       read_values.c
