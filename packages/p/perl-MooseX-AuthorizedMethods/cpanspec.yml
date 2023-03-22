@@ -1,3 +1,34 @@
 ---
-post_prep:
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#  baz.patch: PATCH-FIX-OPENSUSE
+preamble: |-
+ BuildRequires:  perl(Sub::Name)
+post_prep: |-
  sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+#skip_doc: regexp_to_skip_for_doc.*
+#add_doc: files to add to docs
+#misc: |-
+#anything else to be added to spec file
+#follows directly after %files section, so it can contain new blocks or also
+#changes to %files section

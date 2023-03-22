@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 22 07:25:43 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add missing build require Sub::Name
+
+-------------------------------------------------------------------
 Tue Oct  3 08:16:54 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26

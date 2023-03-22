@@ -43,4 +43,13 @@
     <comment>1</comment>
     <requestid>530773</requestid>
   </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>0c4c5db63babab671ee468d7622e13f1</srcmd5>
+    <version>0.006</version>
+    <time>1679520661</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing build require Sub::Name
+</comment>
+    <requestid>1073694</requestid>
+  </revision>
 </revisionlist>
