@@ -89,4 +89,12 @@ With dimstar's build cycle fix</comment>
     <comment>- prepare usrmerge (boo#1029961) (forwarded request 849612 from lnussel)</comment>
     <requestid>867115</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>37fa8e6c98c62279be00111ee55348d2</srcmd5>
+    <version>3.23</version>
+    <time>1679520561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073275</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hostname
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,13 +44,13 @@ make %{?_smp_mflags} CFLAGS="%{optflags} -D_GNU_SOURCE"
 
 %install
 install -D -p -m 755 %{name} %{buildroot}%{_bindir}/%{name}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -d -m 755 %{buildroot}/bin/
 ln -sf %{_bindir}/%{name} %{buildroot}/bin/%{name}
 %endif
 install -D -p -m 644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 for prog in dnsdomainname domainname ypdomainname nisdomainname; do
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -sf %{_bindir}/%{name} %{buildroot}/bin/$prog
 %endif
     ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/$prog
@@ -71,7 +71,7 @@ install -p -m 0644 nis-domainname.service %{buildroot}%{_unitdir}
 %files
 %license COPYRIGHT
 %doc debian/changelog
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/%{name}
 /bin/domainname
 /bin/dnsdomainname
