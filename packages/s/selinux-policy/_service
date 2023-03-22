@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="version">1</param>
+    <param name="versionformat">%cd</param>
+    <param name="url">https://gitlab.suse.de/selinux/selinux-policy.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">factory</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual" >
+    <param name="file">selinux-policy.spec</param>
+  </service>
+</services>
+

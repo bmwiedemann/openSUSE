@@ -33,10 +33,15 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20221019
+Version:        20230321
 Release:        0
-Source:         fedora-policy-%{version}.tar.bz2
-Source1:        selinux-policy-rpmlintrc
+Source0:        %{name}-%{version}.tar.xz
+Source1:        container.fc
+Source2:        container.te
+Source3:        container.if
+Source4:        selinux-policy-rpmlintrc
+Source5:        README.Update
+Source6:        update.sh
 
 Source10:       modules-targeted-base.conf
 Source11:       modules-targeted-contrib.conf
@@ -70,88 +75,6 @@ Source92:       customizable_types
 #Source93:       config.tgz
 Source94:       file_contexts.subs_dist
 Source95:       macros.selinux-policy
-Source96:       update.sh
-
-Source120:      packagekit.te
-Source121:      packagekit.if
-Source122:      packagekit.fc
-Source123:      rtorrent.te
-Source124:      rtorrent.if
-Source125:      rtorrent.fc
-Source126:      wicked.te
-Source127:      wicked.if
-Source128:      wicked.fc
-Source129:      rebootmgr.te
-Source130:      rebootmgr.if
-Source131:      rebootmgr.fc
-
-Patch000:       distro_suse_to_distro_redhat.patch
-Patch001:       fix_djbdns.patch
-Patch002:       fix_dbus.patch
-Patch004:       fix_java.patch
-Patch006:       fix_thunderbird.patch
-Patch007:       fix_postfix.patch
-Patch008:       fix_nscd.patch
-Patch009:       fix_sysnetwork.patch
-Patch010:       fix_logging.patch
-Patch011:       fix_xserver.patch
-Patch012:       fix_miscfiles.patch
-Patch013:       fix_init.patch
-Patch014:       fix_locallogin.patch
-Patch016:       fix_iptables.patch
-Patch017:       fix_irqbalance.patch
-Patch018:       fix_ntp.patch
-Patch019:       fix_fwupd.patch
-Patch020:       fix_firewalld.patch
-Patch021:       fix_logrotate.patch
-Patch022:       fix_selinuxutil.patch
-Patch024:       fix_corecommand.patch
-Patch025:       fix_snapper.patch
-Patch026:       fix_systemd.patch
-Patch027:       fix_unconfined.patch
-Patch028:       fix_unconfineduser.patch
-Patch029:       fix_chronyd.patch
-Patch030:       fix_networkmanager.patch
-Patch032:       fix_accountsd.patch
-Patch033:       fix_automount.patch
-Patch034:       fix_colord.patch
-Patch035:       fix_mcelog.patch
-Patch036:       fix_sslh.patch
-Patch037:       fix_nagios.patch
-Patch038:       fix_openvpn.patch
-Patch039:       fix_cron.patch
-Patch040:       fix_usermanage.patch
-Patch041:       fix_smartmon.patch
-Patch042:       fix_geoclue.patch
-Patch044:       fix_authlogin.patch
-Patch045:       fix_screen.patch
-Patch046:       fix_unprivuser.patch
-Patch047:       fix_rpm.patch
-Patch048:       fix_apache.patch
-Patch049:       fix_nis.patch
-Patch050:       fix_libraries.patch
-Patch051:       fix_dovecot.patch
-# https://github.com/cockpit-project/cockpit/pull/15758
-#Patch052:       fix_cockpit.patch
-Patch053:       fix_systemd_watch.patch
-# kernel specific sysctl.conf (boo#1184804)
-Patch054:       fix_kernel_sysctl.patch
-Patch055:       fix_auditd.patch
-Patch056:       fix_wine.patch
-Patch057:       fix_hypervkvp.patch
-Patch058:       fix_bitlbee.patch
-Patch059:       systemd_domain_dyntrans_type.patch
-Patch060:       fix_dnsmasq.patch
-Patch061:       fix_userdomain.patch
-Patch062:       fix_cloudform.patch
-Patch063:       fix_alsa.patch
-Patch064:       dontaudit_interface_kmod_tmpfs.patch
-Patch065:       fix_sendmail.patch
-Patch066:       fix_ipsec.patch
-# https://github.com/containers/container-selinux/pull/199, can be dropped once this is included
-Patch067:       fix_container.patch
-
-Patch100:       sedoctool.patch
 
 URL:            https://github.com/fedora-selinux/selinux-policy.git
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -412,7 +335,16 @@ fi;
 exit 0
 
 %prep
-%autosetup -n fedora-policy-%{version} -p1
+
+# set up selinux-policy
+%autosetup -n %{name}-%{version} -p1
+
+# dirty hack for container-selinux, because selinux-policy won't build without it
+# upstream does not want to include it in main policy tree:
+# see discussion in https://github.com/containers/container-selinux/issues/186
+for i in %{SOURCE1} %{SOURCE2} %{SOURCE3}; do
+  cp $i policy/modules/services/
+done
 
 %build
 
@@ -437,10 +369,6 @@ mkdir -p %{buildroot}%{_datadir}/selinux/packages/{targeted,mls,minimum,modules}
 mkdir selinux_config
 for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE91} %{SOURCE92} %{SOURCE94};do
  cp $i selinux_config
-done
-
-for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128} %{SOURCE129} %{SOURCE130} %{SOURCE131}; do
- cp $i policy/modules/contrib
 done
 
 make clean

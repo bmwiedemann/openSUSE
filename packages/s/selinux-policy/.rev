@@ -362,4 +362,12 @@
   3.5 toolchain</comment>
     <requestid>1069867</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bbc56b7e3d573fcbd551f002192a9376</srcmd5>
+    <version>20230321</version>
+    <time>1679520558</time>
+    <user>dimstar_suse</user>
+    <comment>please stage this with the microos-tools changes. Should now be good since kernel_t is unconfined again</comment>
+    <requestid>1073587</requestid>
+  </revision>
 </revisionlist>

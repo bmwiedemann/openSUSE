@@ -1,23 +1,27 @@
 #!/bin/sh
 
 date=$(date '+%Y%m%d')
+base_name_pattern='selinux-policy-*.tar.xz'
 
 echo Update to $date
 
-rm -rf fedora-policy container-selinux
+old_tar_file=$(ls -1 $base_name_pattern)
 
-git clone --depth 1 https://github.com/fedora-selinux/selinux-policy.git
+osc service manualrun
+
+rm -rf container-selinux
 git clone --depth 1 https://github.com/containers/container-selinux.git
+rm -f container.*
+mv container-selinux/container.* .
+rm -rf container-selinux
 
-mv selinux-policy fedora-policy-$date
-rm -rf fedora-policy-$date/.git*
-mv container-selinux/container.* fedora-policy-$date/policy/modules/services/
+# delete old files. Might need a better sanity check
+tar_cnt=$(ls -1 $base_name_pattern  | wc -l)
+if [ $tar_cnt -gt 1 ]; then
+  echo delte old file $old_tar_file
+  rm "$old_tar_file"
+  osc addremove
+fi
 
-rm -f fedora-policy?$date.tar*
-tar cf fedora-policy-$date.tar fedora-policy-$date
-bzip2 fedora-policy-$date.tar
-rm -rf fedora-policy-$date container-selinux
+osc status
 
-sed -i -e "s/^Version:.*/Version:        $date/" selinux-policy.spec
-
-echo "remove old tar file, then osc addremove"

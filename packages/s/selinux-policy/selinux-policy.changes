@@ -1,8 +1,167 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:37:23 UTC 2023 - jsegitz@suse.com
+
+- Update to version 20230321:
+  * make kernel_t unconfined again
+
+-------------------------------------------------------------------
+Thu Mar 16 15:43:19 UTC 2023 - jsegitz@suse.com
+
+- Update to version 20230316:
+  * prevent labeling of overlayfs filesystems based on the /var/lib/overlay
+    path
+  * allow kernel_t to relabel etc_t files
+  * allow kernel_t to relabel sysnet config files
+  * allow kernel_t to relabel systemd hwdb etc files
+  * add systemd_hwdb_relabel_etc_files to allow labeling of hwdb files
+  * change sysnet_relabelto_net_conf and sysnet_relabelfrom_net_conf to apply
+    to files and lnk_files. lnk_files are commonly used in SUSE to allow easy
+    management of config files
+  * add files_relabel_etc_files_basic and files_relabel_etc_lnk_files_basic
+    interfaces to allow labeling on etc_t, not on the broader configfiles
+    attribute
+  * Allow systemd-timesyncd to bind to generic UDP ports (bsc#1207962). The
+    watch permissions reported are already fixed in a current policy.
+- Reinstate update.sh and remove container-selinux from the service.
+  Having both repos in there causes issues and update.sh makes the update
+  process easier in general. Updated README.Update
+
+-------------------------------------------------------------------
 Tue Mar  7 08:49:05 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove erroneous SUSE man page. Will not be created with the
   3.5 toolchain
+
+-------------------------------------------------------------------
+Tue Feb 14 21:41:54 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Complete packaging rework: Move policy to git repository and
+  only use tar_scm obs service to refresh from there: 
+  https://gitlab.suse.de/selinux/selinux-policy
+
+  Please use `osc service manualrun` to update this OBS package to the 
+  newest git version.
+
+  * Added README.Update describing how to update this package
+  * Added _service file that pulls from selinux-policy and 
+    upstream container-selinux and tars them
+  * Adapted selinux-policy.spec to build selinux-policy with
+    container-selinux
+  * Removed update.sh as no longer needed
+  * Removed suse specific modules as they are now covered by git commits
+    * packagekit.te packagekit.if packagekit.fc
+    * rebootmgr.te rebootmgr.if rebootmgr.fc
+    * rtorrent.te rtorrent.if rtorrent.fc
+    * wicked.te wicked.if wicked.fc
+  * Removed *.patch as they are now covered by git commits:
+    * distro_suse_to_distro_redhat.patch
+    * dontaudit_interface_kmod_tmpfs.patch
+    * fix_accountsd.patch
+    * fix_alsa.patch
+    * fix_apache.patch
+    * fix_auditd.patch
+    * fix_authlogin.patch
+    * fix_automount.patch
+    * fix_bitlbee.patch
+    * fix_chronyd.patch
+    * fix_cloudform.patch
+    * fix_colord.patch
+    * fix_corecommand.patch
+    * fix_cron.patch
+    * fix_dbus.patch
+    * fix_djbdns.patch
+    * fix_dnsmasq.patch
+    * fix_dovecot.patch
+    * fix_entropyd.patch
+    * fix_firewalld.patch
+    * fix_fwupd.patch
+    * fix_geoclue.patch
+    * fix_hypervkvp.patch
+    * fix_init.patch
+    * fix_ipsec.patch
+    * fix_iptables.patch
+    * fix_irqbalance.patch
+    * fix_java.patch
+    * fix_kernel.patch
+    * fix_kernel_sysctl.patch
+    * fix_libraries.patch
+    * fix_locallogin.patch
+    * fix_logging.patch
+    * fix_logrotate.patch
+    * fix_mcelog.patch
+    * fix_miscfiles.patch
+    * fix_nagios.patch
+    * fix_networkmanager.patch
+    * fix_nis.patch
+    * fix_nscd.patch
+    * fix_ntp.patch
+    * fix_openvpn.patch
+    * fix_postfix.patch
+    * fix_rpm.patch
+    * fix_rtkit.patch
+    * fix_screen.patch
+    * fix_selinuxutil.patch
+    * fix_sendmail.patch
+    * fix_smartmon.patch
+    * fix_snapper.patch
+    * fix_sslh.patch
+    * fix_sysnetwork.patch
+    * fix_systemd.patch
+    * fix_systemd_watch.patch
+    * fix_thunderbird.patch
+    * fix_unconfined.patch
+    * fix_unconfineduser.patch
+    * fix_unprivuser.patch
+    * fix_userdomain.patch
+    * fix_usermanage.patch
+    * fix_wine.patch
+    * fix_xserver.patch
+    * sedoctool.patch
+    * systemd_domain_dyntrans_type.patch
+
+-------------------------------------------------------------------
+Mon Feb  6 08:36:32 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20230206. Refreshed:
+  * fix_entropyd.patch
+  * fix_networkmanager.patch
+  * fix_systemd_watch.patch
+  * fix_unconfineduser.patch
+- Updated fix_kernel.patch to allow kernel_t access to xdm state. This is
+  necessary as plymouth doesn't run in it's own domain in early boot
+
+-------------------------------------------------------------------
+Mon Jan 16 08:42:09 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20230125. Refreshed:
+  * distro_suse_to_distro_redhat.patch
+  * fix_dnsmasq.patch
+  * fix_init.patch
+  * fix_ipsec.patch
+  * fix_kernel_sysctl.patch
+  * fix_logging.patch
+  * fix_rpm.patch
+  * fix_selinuxutil.patch
+  * fix_systemd_watch.patch
+  * fix_userdomain.patch
+- More flexible lib(exec) matching in fix_fwupd.patch
+- Removed sys_admin for systemd_gpt_generator_t in fix_systemd.patch
+- Dropped fix_container.patch, is now upstream
+- Added fix_entropyd.patch
+  * Added new interface entropyd_semaphore_filetrans to properly transfer
+    semaphore created during early boot. That doesn't work yet, so work
+    around with next item
+  * Allow reading tempfs files
+- Added fix_kernel.patch. Added modutils_execute_kmod_tmpfs_files interace
+  to allow kmod_tmpfs_t files to be executed. Necessary for firewalld
+- Added fix_rtkit.patch to fix labeling of binary
+- Modified fix_ntp.patch:
+  * Proper labeling for start-ntpd
+  * Fixed label rules for chroot path
+  * Temporarily allow dac_override for ntpd_t (bsc#1207577)
+  * Add interface ntp_manage_pid_files to allow management of pid
+    files
+- Updated fix_networkmanager.patch to allow managing ntp pid files
 
 -------------------------------------------------------------------
 Thu Jan 12 13:01:47 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
