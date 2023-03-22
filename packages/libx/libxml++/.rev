@@ -399,4 +399,12 @@
 - Move documentation to -devel subpackage.</comment>
     <requestid>1067350</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fa334b83d599fc079ad8a80a4c49ebe5</srcmd5>
+    <version>5.0.3</version>
+    <time>1679520709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073817</requestid>
+  </revision>
 </revisionlist>

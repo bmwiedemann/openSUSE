@@ -21,7 +21,7 @@
 %define base_ver 5.0
 
 Name:           libxml++
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -80,7 +80,7 @@ chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 %{_libdir}/*.so.*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_includedir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}/include

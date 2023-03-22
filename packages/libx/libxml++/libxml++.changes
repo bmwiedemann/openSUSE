@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:22:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.0.3:
+  + exception: Fix linking on MinGW.
+  + headers: Drop LIBXMLPP_API from 'friend' members.
+  + Meson build:
+    - Detect if we build from a git subtree.
+    - Don't copy files with configure_file().
+    - Fix the evaluation of is_git_build on Windows.
+
+-------------------------------------------------------------------
 Wed Feb 22 17:45:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop hard glibmm2-devel Requires in devel sub-package.
