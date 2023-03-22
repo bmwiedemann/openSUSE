@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        5.6.3
+Version:        5.6.4
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later

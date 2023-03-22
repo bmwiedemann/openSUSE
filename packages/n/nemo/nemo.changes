@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 21 20:42:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.4:
+  * nemo-view-dnd.c: Fix the check for a web link's title, and
+    use the url if it's missing.
+  * nemo-mime-actions.c: Prioritize an http link to open in a
+    browser, regardless of the mimetype of the link's target.
+  * Fix for List View thumbnail scaling at HiDPI
+  * list-view: Scale the thumbnail correctly when applying
+    emblems, and fix the emblem sanity checks everywhere.
+  * file info: Use generic methods for attributes that aren't
+    guaranteed to be supported by the filesystem.
+
+-------------------------------------------------------------------
 Sat Jan 28 21:12:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.3:
