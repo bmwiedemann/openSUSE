@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Mar  3 04:56:17 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.7:
+  * Release commit for Kubernetes v1.25.7
+  * releng: Update images, dependencies and version to Go 1.19.6
+  * Update golang.org/x/net to v0.7.0
+  * Pin golang.org/x/net to v0.4.0 in 1.25
+  * kubelet/client: collapse transport wiring onto standard approach
+  * apiserver: remove 34s from DELETECOLLECTION rest handler
+  * update prev succeeded indexes for indexed jobs unconditionally
+  * Fix nil pointer error in nodevolumelimits csi logging
+  * Fix panic on ClusterIP allocation for /28 subnets
+  * use custom dialer for http probes
+  * use custom dialer for tcp probes
+  * add custom dialer optimized for probes
+  * bump honnef.co/go/tools to support go1.20
+  * Do not include scheduler name in the preemption event message
+  * Do not leak cross namespace pod metadata in preemption events
+  * pkg/controller/job: re-honor exponential backoff
+  * Explicitly call rand.Seed() method
+  * Exports WarningPrinter field in DeleteOptions
+  * Improve vendor verification works for each staging repo
+  * Bump konnectivity-client to v0.0.35
+  * Cherry pick 114857 to release-1.25
+  * Update daemonSet status even if syncDaemonSet fails
+  * Fix issues in volumesnapshot test for ephemeral storage
+  * Add pod to dsw if termination is not completed during reconstruction #issues/113979
+  * Add .go-version file containing build go version
+  * Windows Kube-Proxy implementation for internal traffic policy.
+  * Fix a regression that scheduler always go through all Filter plugins
+  * Fix SPDY proxy authentication with special chars
+  * Improve error message when proxy connection fails
+  * Creating Ingress IP loadbalancer alone when all the endpoints are terminating. KEP1669
+  * Update golang.org/x/net 1e63c2f
+  * image pull event include duration with waiting
+  * kubelet: make the image pull time more accurate in event
+  * use etcd 3.5.6-0 after promotion
+  * changelog: CVE-2022-3294 and CVE-2022-3162 were fixed in v1.23.14
+  * upgrade system-validators to v1.8.0 for a bugfix of cgroupv2 io check
+  * Introducing LoadbalancerPortMapping flags for VipExternalIP
+  * egress_selector: prevent goroutines leak on connect() step.
+  * allow noop-ignoring transformer to be configurable
+  * Add CVE-2022-3162 to CHANGELOG-1.25.md
+  * e2e: use custom timeouts in GetSnapshotContentFromSnapshot()
+  * StatefulSet: Cleanup the complex defer function updating the status
+  * added retries to winkernel proxy rules deletion
+  * added backend hashing to winkernel proxier
+  * kubelet: fix pod log line corruption when using timestamps and long lines
+  * Disable expansion in SC, if driver does not support it
+  * Fixed (CVE-2022-27664) Bump golang.org/x/net to v0.1.1-0.20221027164007-c63010009c80
+  * add GetAllocatableCPUs test in cpumanager
+  * fix GetAllocatableCPUs in cpumanager
+  * NodeLifecycleController: Remove race condition
+  * Merge pull request #113133 from sxllwx:automated-cherry-pick-of-#113133-upstream-release-1.25
+  * kube-proxy wait for cluster cidr skip delete events
+  * kube-proxy handle node PodCIDR changs
+  * kube-proxy: gate topology correctly
+  * service update event should be triggered when appProtocol in port is changed.
+  * remove in-tree volume limits test now that CSIMigration is GA
+  * Fix winkernel proxier setting the wrong HNS loadbalancer ID for ingress IP
+  * Revert "De-duping node "update enqueuing"/sync predicates"
+  * Revert "Avoid re-syncing LBs for ETP=local svc"
+  * Revert "[CCM - service controller] Remove schedulability predicate for LB set"
+  * kubeadm: allow RSA and ECDSA format keys in preflight check
+  * kube-scheduler: add taints filtering logic consistent with TaintToleration plugin for PodTopologySpread plugin
+  * Fix calculating error when adding nominated pods in podTopologySpread
+  * Call SetupDevice only if Volume is not globally Mounted
+  * Add zone field to vsphere test cloudconfig
+  * Ensure metric 'running_managed_controllers' is registered
+  * Reduce default gzip compression level from 4 to 1 in apiserver
+  * Fix the TestRoundTripTypes by adding default to the fuzzer
+  * exec auth: support TLS config caching
+  * Call queueSet::boundNextDispatchLocked enough
+  * Marshal MicroTime to json and proto at the same precision
+  * Avoid propagating `search .` into containers /etc/resolv.conf
+  * Tolerate sub-microsecond eventTime changes on update
+  * e2e: suppress progress messages for custom progress reporter
+  * dependencies: update to ginkgo v2.1.6 and gomega v1.20.1
+  * Run lint-dependencies.sh/pin-dependency.sh/update-vendor.sh.
+  * regression test for exponential recursion bug on CRDs
+  * fix nestedPendingOperations mount and umount parallel bug
+  * Revert "promote LocalStorageCapacityIsolationFSQuotaMonitoring to beta"
+  * client-go/rest: check if url is nil to prevent nil pointer dereference
+  * Revert "client-go: remove no longer used finalURLTemplate"
+
+
+-------------------------------------------------------------------
+Thu Mar  2 13:32:23 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package 
