@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Mar 22 16:00:30 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.25.1
+  https://github.com/cli/cli/releases/tag/v2.25.0
+
+  What's Changed
+  * variable list: fix api path by @rsteube in #7207
+
+-------------------------------------------------------------------
+Tue Mar 21 08:14:42 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.25.0
+  https://github.com/cli/cli/releases/tag/v2.25.0
+
+  What's New
+  * New suit of commands for working with Repository and Organization variables
+    - variable set by @atirikt in #6928
+    - variable list by @atirikt in #6995
+    - variable delete by @atirikt in #6929
+  * ext install: Introduce new --force flag by @heaths in #7173
+
+  What's Changed
+  * browse: Improve documentation and consistency of the --commit flag by @alex-petrov-vt in #7105
+  * repo sync: Ensure git fetch is always authenticated by @samcoe in #7139
+  * repo delete: Don't delete repos that have transfered ownership by @samcoe in #7106
+  * auth: Skip searching keyring when checking for environment tokens by @benjlevesque in #7169
+  * auth refresh: Improve documentation of --scopes flag behavior by @alex-petrov-vt in #7132
+  * pr status: Hide "current branch" when using --repo flag by @jtpetty in #7180
+  * repo archive: Change to use Prompter package by @Ruminateer in #7083
+  * search: Fix multiword keyword quoting by @samcoe in #7170
+  * Replace deprecated command with environment file by @jongwooo in #7195
+  * New prompt testing utility by @vilmibm in #7116
+  * Use transform.Transformer interface for ascii sanitization by @samcoe in #7117
+  * Only replace control sequences by @samcoe in #7168
+  * Tech debt cleanup for variable and secret commands by @samcoe in #7151
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #7177
+
+- Update to 2.25.0-pre0
+  https://github.com/cli/cli/releases/tag/v2.25.0-pre0
+
+  What's New
+  * New suit of commands for working with Repository and Organization variables
+  * variable set by @atirikt in #6928
+  * variable list by @atirikt in #6995
+  * variable delete by @atirikt in #6929
+  * ext install: Introduce new --force flag by @heaths in #7173
+
+  What's Changed
+  * browse: Improve documentation and consistency of the --commit flag by @alex-petrov-vt in #7105
+  * repo sync: Ensure git fetch is always authenticated by @samcoe in #7139
+  * repo delete: Don't delete repos that have transfered ownership by @samcoe in #7106
+  * auth: Skip searching keyring when checking for environment tokens by @benjlevesque in #7169
+  * auth refresh: Improve documentation of --scopes flag behavior by @alex-petrov-vt in #7132
+  * pr status: Hide "current branch" when using --repo flag by @jtpetty in #7180
+  * repo archive: Change to use Prompter package by @Ruminateer in #7083
+  * search: Fix multiword keyword quoting by @samcoe in #7170
+  * Replace deprecated command with environment file by @jongwooo in #7195
+  * New prompt testing utility by @vilmibm in #7116
+  * Use transform.Transformer interface for ascii sanitization by @samcoe in #7117
+  * Only replace control sequences by @samcoe in #7168
+  * Tech debt cleanup for variable and secret commands by @samcoe in #7151
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #7177
+
+-------------------------------------------------------------------
 Thu Mar  9 15:06:16 UTC 2023 - Pavel Dostál <pdostal@suse.com>
 
 - Update to 2.24.2
