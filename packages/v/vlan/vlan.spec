@@ -51,7 +51,7 @@ make DESTDIR=$RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/{sbin,%_sbindir,%{_mandir}/man8/}
 install -m755 vconfig   $RPM_BUILD_ROOT/%_sbindir
 install -m644 vconfig.8 $RPM_BUILD_ROOT%{_mandir}/man8/
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %_sbindir/vconfig $RPM_BUILD_ROOT/sbin
 %endif
 
@@ -60,7 +60,7 @@ ln -sf %_sbindir/vconfig $RPM_BUILD_ROOT/sbin
 %doc *.html *.pl CHANGELOG README
 %doc %{_mandir}/man8/vconfig.8.gz
 %attr(755,root,root) %_sbindir/vconfig
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %attr(755,root,root) /sbin/vconfig
 %endif
 
