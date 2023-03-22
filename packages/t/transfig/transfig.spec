@@ -31,8 +31,8 @@ Patch1:         1b09a8.patch
 Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
-Patch45:        fig2dev-3.2.6a-RGBFILE.patch
 Patch46:        0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
+Patch47:        0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
 BuildRequires:  fdupes
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -41,28 +41,20 @@ BuildRequires:  sharutils
 #!BuildIgnore:  texlive-tex4ht
 BuildRequires:  texlive-courier
 BuildRequires:  texlive-latex
-%if 0%{?suse_version} > 1315
-BuildRequires:  texlive-epstopdf
-%endif
 BuildRequires:  texlive-pdftex
 BuildRequires:  texlive-times
+BuildRequires:  pkgconfig(xpm)
 BuildRequires:  tex(8r.enc)
 BuildRequires:  tex(beamer.cls)
-%if 0%{?suse_version} > 1315
 BuildRequires:  tex(german.sty)
-%endif
-BuildRequires:  pkgconfig(xpm)
 BuildRequires:  tex(multimedia.sty)
 BuildRequires:  tex(times.sty)
 BuildRequires:  tex(xmpmulti.sty)
 Provides:       fig2dev
+Requires:       netpbm
 Recommends:     ghostscript-fonts-std
 Recommends:     ghostscript-library
-Requires:       netpbm
-Recommends:     texlive-epstopdf
-%if 0%{?suse_version} > 1315
-Requires:       (texlive-epstopdf if texlive-latex)
-%endif
+Recommends:     rgb
 
 %description
 TransFig is a set of tools for creating TeX documents with graphics
@@ -82,8 +74,10 @@ find -type f -exec chmod a-x,go-w '{}' \;
 %patch4 -p1 -b .afl
 %patch43 -p1 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
-%patch45 -p1 -b .p45
 %patch46 -p1 -b .pdfmark
+%patch47 -p1 -b .epstopdf
+# remove obsolete libc fallback implementations
+rm fig2dev/lib/*.c
 
 %build
 ulimit -v unlimited || :
@@ -110,10 +104,10 @@ ulimit -v unlimited || :
 	   ;;
       *)
 	   if ${CC:-gcc} -Werror $flag -S -o /dev/null -xc /dev/null > /dev/null 2>&1 ; then
-	       eval $var=\${$var:+\$$var\ }$flag
+	       eval $var=\${$var:+\$$var\ }\' $flag \'
 	   fi
 	   if ${CXX:-g++} -Werror $flag -S -o /dev/null -xc++ /dev/null > /dev/null 2>&1 ; then
-	       eval $var=\${$var:+\$$var\ }$flag
+	       eval $var=\${$var:+\$$var\ }\' $flag \'
 	   fi
       esac
   }
@@ -121,12 +115,13 @@ ulimit -v unlimited || :
 CC=gcc
 CFLAGS="%{optflags} -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99 $(getconf LFS_CFLAGS)"
 cflags -D_FORTIFY_SOURCE=2       CFLAGS
+cflags -D_FORTIFY_SOURCE=3       CFLAGS
 cflags -fstack-protector         CFLAGS
 cflags -fstack-protector-strong  CFLAGS
 cflags -fstack-protector-all     CFLAGS
 cflags -Wformat                  CFLAGS
-cflags -Wformat-security         CFLAGS
-cflags -Werror=format-security   CFLAGS
+cflags "-Wformat -Wformat-security"         CFLAGS
+cflags "-Wformat -Werror=format-security"   CFLAGS
 cflags -fPIE                     CFLAGS
 cflags -pie                      LDFLAGS
 cflags -Wl,-z,relro              LDFLAGS
@@ -136,7 +131,8 @@ chmod 755 configure
 %configure \
     --docdir=%{_defaultdocdir}/%{name} \
     --enable-transfig \
-    --enable-scale-pic2t2e
+    --enable-scale-pict2e \
+    --with-rgbfile=%{_datadir}/X11/rgb.txt
 %make_build CCOPTIONS="$CFLAGS"
 
 pushd transfig/doc
@@ -147,12 +143,10 @@ pushd transfig/doc
 popd
 
 pushd  fig2mpdf/doc
-%if 0%{?suse_version} > 1315
     make
     while $(grep -q -i 'rerunfilecheck.*warning' sample-presentation.log); do
         pdflatex sample-presentation
     done
-%endif
     mkdir htmlimg
     (cd htmlimg; uudecode ../*.uue)
 popd
@@ -172,9 +166,7 @@ pushd fig2mpdf/doc
     install -m 0644 *.{html,css,lfig} %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
     install -m 0644 htmlimg/*.{jpg,gif,pdf} %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
     install -m 0644 sample-presentation.tex Makefile %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
-%if 0%{?suse_version} > 1315
     install -m 0644 sample-presentation.pdf %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
-%endif
 popd
 
 %fdupes %{buildroot}

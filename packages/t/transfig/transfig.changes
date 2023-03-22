@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 18 04:27:12 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop obsolete fig2dev-3.2.6a-RGBFILE.patch.
+- Set correct path for X11 rgb.txt file (no longer in /etc),
+  recommend rgb package.
+- Fix typo for enable-scale-pict2e option.
+- Remove obsolsete hunks from transfig-3.2.8.dif,
+  rebase fig2dev-3.2.6-fig2mpdf.patch.
+- Avoid epstopdf dependency, add
+  0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
+  This also fixes unreproducible figures created by fig2mpdf.
+- Fix CFLAGS checks, -Wformat-security requires -Wformat.
+
+-------------------------------------------------------------------
 Thu Mar  9 19:39:39 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make PDF output via ghostscript (for large parts) reproducible,

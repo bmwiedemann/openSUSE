@@ -91,32 +91,6 @@
  	}
  #endif /* I18N */
  
---- fig2dev/dev/genpstex.c
-+++ fig2dev/dev/genpstex.c	2021-02-12 09:17:16.360300734 +0000
-@@ -46,6 +46,7 @@
- 
- #include <stdio.h>
- #include <string.h>
-+#include <sys/stat.h>
- 
- #include "fig2dev.h"
- #include "object.h"
-@@ -62,10 +63,13 @@ extern void
- 	genps_spline(F_spline *s),
- 	genlatex_option(char opt, char *optarg),
- 	genlatex_text(F_text *t),
--	genps_text(F_text *t);
-+	genps_text(F_text *t),
-+	genpdf_option(char opt, char *optarg),
-+	genpdf_start(F_compound *objects);
- extern int
- 	genlatex_end(void),
--	genps_end(void);
-+	genps_end(void),
-+	genpdf_end(void);
- 
- extern void	genpdf_option(char opt, char *optarg);	/* genpdf.c */
- extern void	genpdf_start(F_compound *objects);	/* genpdf.c */
 --- fig2dev/fig2ps2tex.csh
 +++ fig2dev/fig2ps2tex.csh	2021-02-12 08:54:37.954704887 +0000
 @@ -22,7 +22,7 @@
@@ -128,28 +102,6 @@
  set bbox = `grep "^%%BoundingBox:" $1`
  
  set xsp = `echo "3k $bbox[4] $bbox[2] - 72 / p" | dc`
---- fig2dev/lib/getopt.c
-+++ fig2dev/lib/getopt.c	2021-02-12 08:54:37.954704887 +0000
-@@ -42,6 +42,7 @@
- #define EMSG	 ""
- #define	ENDARGS  "--"
- 
-+#ifndef __GLIBC__
- /*
-  * get option letter from argument vector
-  */
-@@ -88,3 +89,11 @@ getopt(int nargc, char **nargv, const ch
- 	}
- 	return optc;			/* dump back option letter */
- }
-+#else
-+#include <unistd.h>
-+int
-+fig_getopt(int nargc, char * const nargv[], const char *ostr)
-+{
-+	return getopt(nargc, nargv, ostr);
-+}
-+#endif
 --- transfig/transfig.c
 +++ transfig/transfig.c	2021-02-12 08:54:37.954704887 +0000
 @@ -26,6 +26,8 @@
