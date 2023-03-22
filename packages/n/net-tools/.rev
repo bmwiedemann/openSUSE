@@ -416,4 +416,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>867901</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>ce25d263459558ed1d324cfd38995026</srcmd5>
+    <version>2.10</version>
+    <time>1679520547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073279</requestid>
+  </revision>
 </revisionlist>

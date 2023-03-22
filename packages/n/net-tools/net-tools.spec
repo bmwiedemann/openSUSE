@@ -84,7 +84,7 @@ for tool in iptunnel ipmaddr; do
   help2man -s8 "%{buildroot}%{_sbindir}/${tool}" --no-discard-stderr >"${t}"
 done
 # generate bin/sbin compat symlinks
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}/bin
 for i in ether-wake nameif plipconfig slattach arp ipmaddr iptunnel; do
@@ -103,7 +103,7 @@ done
 %{_sbindir}/nameif
 %{_sbindir}/plipconfig
 %{_sbindir}/slattach
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/ether-wake
 /sbin/nameif
 /sbin/plipconfig
@@ -126,7 +126,7 @@ done
 %{_bindir}/ifconfig
 %{_bindir}/netstat
 %{_bindir}/route
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/ifconfig
 /bin/netstat
 /bin/route
