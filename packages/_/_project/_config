@@ -538,6 +538,7 @@ Prefer: kernel-default-base
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
 Prefer: -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
+Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 
 # have choice for html2text
 Prefer: -python38-html2text -python39-html2text -python310-html2text -python311-html2text
