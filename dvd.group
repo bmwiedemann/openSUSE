@@ -2116,7 +2116,7 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libliveMedia107" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="liblmdb-0_9_29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
