@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2432,6 +2432,8 @@ unsorted:
   - coredns-for-k8s1.23-extras 
   - coredns-for-k8s1.24 
   - coredns-for-k8s1.24-extras 
+  - coredns-for-k8s1.25 
+  - coredns-for-k8s1.25-extras 
   - coredns-for-k8s1.26 
   - coredns-for-k8s1.26-extras 
   - corepack18 
@@ -3659,6 +3661,8 @@ unsorted:
   - etcd-for-k8s1.22: [x86_64] 
   - etcd-for-k8s1.23: [x86_64] 
   - etcd-for-k8s1.24: [x86_64] 
+  - etcd-for-k8s1.25: [x86_64] 
+  - etcd-for-k8s1.26: [x86_64] 
   - etcdctl: [x86_64] 
   - etcdutl: [x86_64] 
   - etckeeper 
@@ -9031,6 +9035,24 @@ unsorted:
   - kubernetes1.24-kubelet-common: [x86_64] 
   - kubernetes1.24-proxy: [x86_64] 
   - kubernetes1.24-scheduler: [x86_64] 
+  - kubernetes1.25-apiserver: [x86_64] 
+  - kubernetes1.25-client: [x86_64] 
+  - kubernetes1.25-client-common: [x86_64] 
+  - kubernetes1.25-controller-manager: [x86_64] 
+  - kubernetes1.25-kubeadm: [x86_64] 
+  - kubernetes1.25-kubelet: [x86_64] 
+  - kubernetes1.25-kubelet-common: [x86_64] 
+  - kubernetes1.25-proxy: [x86_64] 
+  - kubernetes1.25-scheduler: [x86_64] 
+  - kubernetes1.26-apiserver: [x86_64] 
+  - kubernetes1.26-client: [x86_64] 
+  - kubernetes1.26-client-common: [x86_64] 
+  - kubernetes1.26-controller-manager: [x86_64] 
+  - kubernetes1.26-kubeadm: [x86_64] 
+  - kubernetes1.26-kubelet: [x86_64] 
+  - kubernetes1.26-kubelet-common: [x86_64] 
+  - kubernetes1.26-proxy: [x86_64] 
+  - kubernetes1.26-scheduler: [x86_64] 
   - kubescape 
   - kubeseal 
   - kubetap 
@@ -12707,7 +12729,7 @@ unsorted:
   - liblldb15: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
-  - liblmdb-0_9_29-32bit: [x86_64] 
+  - liblmdb-0_9_30-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
   - liblnk-devel 
@@ -14763,6 +14785,7 @@ unsorted:
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlite3-0-x86-64-v3: [x86_64] 
   - libsqlparser1 
+  - libsquirrel1001 
   - libsratom-0-0-32bit: [x86_64] 
   - libsrecord0 
   - libsrt1_5-32bit: [x86_64] 
@@ -24159,6 +24182,7 @@ unsorted:
   - python310-holidays 
   - python310-holoviews 
   - python310-hotdoc 
+  - python310-hsluv 
   - python310-hstspreload 
   - python310-html2text 
   - python310-html5-parser 
@@ -25969,6 +25993,7 @@ unsorted:
   - python310-xvfbwrapper 
   - python310-xxhash 
   - python310-xyzservices 
+  - python310-y-py 
   - python310-yacron 
   - python310-yafe 
   - python310-yamldoc 
@@ -26822,6 +26847,7 @@ unsorted:
   - python311-canonicaljson 
   - python311-capturer 
   - python311-case 
+  - python311-cassandra-driver 
   - python311-cassowary 
   - python311-casttube 
   - python311-catkin-pkg 
@@ -27463,6 +27489,7 @@ unsorted:
   - python311-holidays 
   - python311-hotdoc 
   - python311-hpack 
+  - python311-hsluv 
   - python311-hstspreload 
   - python311-html2text 
   - python311-html5-parser 
@@ -29314,6 +29341,7 @@ unsorted:
   - python311-xvfbwrapper 
   - python311-xxhash 
   - python311-xyzservices 
+  - python311-y-py 
   - python311-yacron 
   - python311-yafe 
   - python311-yamldoc 
@@ -29713,7 +29741,6 @@ unsorted:
   - python38-argparse-manpage 
   - python38-args 
   - python38-arrow 
-  - python38-arviz 
   - python38-asciimatics 
   - python38-asciitree 
   - python38-asdf 
@@ -30857,6 +30884,7 @@ unsorted:
   - python38-holoviews 
   - python38-hotdoc 
   - python38-hpack 
+  - python38-hsluv 
   - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
@@ -32736,6 +32764,7 @@ unsorted:
   - python38-xvfbwrapper 
   - python38-xxhash 
   - python38-xyzservices 
+  - python38-y-py 
   - python38-yacron 
   - python38-yafe 
   - python38-yamldoc 
@@ -34278,6 +34307,7 @@ unsorted:
   - python39-holoviews 
   - python39-hotdoc 
   - python39-hpack 
+  - python39-hsluv 
   - python39-hstspreload 
   - python39-html2text 
   - python39-html5-parser 
@@ -36159,6 +36189,7 @@ unsorted:
   - python39-xvfbwrapper 
   - python39-xxhash 
   - python39-xyzservices 
+  - python39-y-py 
   - python39-yacron 
   - python39-yafe 
   - python39-yamldoc 
@@ -36877,7 +36908,6 @@ unsorted:
   - raleway-fonts 
   - rancher-cli 
   - rancher-kim 
-  - rancher-selinux 
   - rang-devel 
   - range-v3-devel 
   - ranger 
@@ -37101,7 +37131,6 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
-  - rke2-selinux 
   - rkhunter 
   - rkward 
   - rlwrap 
@@ -37318,7 +37347,6 @@ unsorted:
   - ruby3.1-rubygem-cri 
   - ruby3.1-rubygem-css_parser 
   - ruby3.1-rubygem-csv 
-  - ruby3.1-rubygem-d-installer-cli 
   - ruby3.1-rubygem-debase-ruby_core_source 
   - ruby3.1-rubygem-debug_inspector 
   - ruby3.1-rubygem-delayed_job 
@@ -37653,7 +37681,6 @@ unsorted:
   - ruby3.2-rubygem-activerecord-7.0 
   - ruby3.2-rubygem-activestorage-7.0 
   - ruby3.2-rubygem-coffee-rails 
-  - ruby3.2-rubygem-d-installer-cli 
   - ruby3.2-rubygem-delayed_job_active_record 
   - ruby3.2-rubygem-devise 
   - ruby3.2-rubygem-devise-i18n 
@@ -38433,7 +38460,6 @@ unsorted:
   - squilt: [x86_64] 
   - squirrel 
   - squirrel-devel 
-  - squirrel-devel-static 
   - squirrel-doc 
   - squirrel-examples 
   - sratom-devel 
