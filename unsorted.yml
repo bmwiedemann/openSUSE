@@ -3513,7 +3513,6 @@ unsorted:
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
-  - empty-fake-package 
   - enblend-enfuse 
   - enblend-enfuse-doc 
   - enc 
@@ -28594,7 +28593,7 @@ unsorted:
   - python311-python-crfsuite 
   - python311-python-crontab 
   - python311-python-daemon 
-  - python311-python-datamatrix: [i586] 
+  - python311-python-datamatrix 
   - python311-python-dateutil 
   - python311-python-dbusmock 
   - python311-python-debian 
@@ -28634,9 +28633,9 @@ unsorted:
   - python311-python-poppler 
   - python311-python-pptx 
   - python311-python-prctl 
-  - python311-python-pseudorandom: [i586] 
+  - python311-python-pseudorandom 
   - python311-python-ptrace 
-  - python311-python-qdatamatrix: [i586] 
+  - python311-python-qdatamatrix 
   - python311-python-qpid-proton 
   - python311-python-qprogedit 
   - python311-python-rapidjson 
