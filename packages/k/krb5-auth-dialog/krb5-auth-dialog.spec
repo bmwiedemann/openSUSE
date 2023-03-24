@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-auth-dialog
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,27 +18,26 @@
 
 
 Name:           krb5-auth-dialog
-Version:        43.0
+Version:        44.0.alpha1
 Release:        0
 Summary:        Kerberos 5 ticket monitoring tray applet
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/krb5-auth-dialog/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/krb5-auth-dialog/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
-BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
+BuildRequires:  pkgconfig(gtk4) >= 4.4
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
 
 %description
 krb5-auth-dialog is a tray applet that monitors and refreshes your
@@ -65,13 +64,13 @@ It features ticket autorenewal and supports pkinit.
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}*
 %{_libdir}/%{name}/
-%{_datadir}/metainfo/krb5-auth-dialog.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.KrbAuthDialog.service
 %{_datadir}/glib-2.0/schemas/org.gnome.KrbAuthDialog.gschema.xml
 %{_datadir}/icons/hicolor/*/status/krb*.*
-%{_sysconfdir}/xdg/autostart/*.desktop
+%{_datadir}/metainfo/org.gnome.KrbAuthDialog.metainfo.xml
 %{_mandir}/man?/*%{ext_man}
+%{_sysconfdir}/xdg/autostart/*.desktop
 
 %files lang -f %{name}.lang
 

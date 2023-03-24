@@ -244,4 +244,24 @@
     <comment></comment>
     <requestid>1011051</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fc436e85bea7c66a8219ad4d6e0048e1</srcmd5>
+    <version>44.0.alpha1</version>
+    <time>1679667559</time>
+    <user>dimstar_suse</user>
+    <comment>Subbing RC in case upstream forgets to do stable bump.
+
+- Update to version 44.0.alpha1:
+  + Port to GTK4 and libadwaita.
+  + Rework prefs using mobile friendly widgets.
+  + Fix PKINIT with Heimdal Kerberos.
+  + Update examples to use Python3.
+  + Cleanup and simplify (dropping ~1000 LOC).
+- Adjust BuildRequires for gtk4 port:
+  + Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4)
+  + Add pkgconfig(libadwaita-1)
+- Drop pkgconfig(libnm) buildRequires: no reference found in the
+  build system. (forwarded request 1073116 from iznogood)</comment>
+    <requestid>1073152</requestid>
+  </revision>
 </revisionlist>

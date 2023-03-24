@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 17 15:55:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.0.alpha1:
+  + Port to GTK4 and libadwaita.
+  + Rework prefs using mobile friendly widgets.
+  + Fix PKINIT with Heimdal Kerberos.
+  + Update examples to use Python3.
+  + Cleanup and simplify (dropping ~1000 LOC).
+- Adjust BuildRequires for gtk4 port:
+  + Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4)
+  + Add pkgconfig(libadwaita-1)
+- Drop pkgconfig(libnm) buildRequires: no reference found in the
+  build system.
+
+-------------------------------------------------------------------
 Thu Oct 13 08:32:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
