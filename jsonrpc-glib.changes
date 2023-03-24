@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:02:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.0:
+  + No changes since 3.43.0 development release.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:50:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.0:
+  + Testsuite fixes
+  + Improved error messages
+  + Provide client error code with JSON_CLIENT_ERROR error domain
+  + Explicit variant ownership fixes
+- Enable meson_test macro again, following upstreams fixes.
+
+-------------------------------------------------------------------
 Mon Aug 29 06:19:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable meson_test macro, it randomly fails for all arches and
