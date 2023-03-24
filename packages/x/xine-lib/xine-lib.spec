@@ -59,6 +59,7 @@ BuildRequires:  speex-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
 BuildRequires:  pkgconfig(dvdnav)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(liba52)

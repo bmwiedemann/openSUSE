@@ -622,4 +622,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment>prevent 15.4 from building with ffmpeg-3</comment>
     <requestid>1061758</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>5e65d299a87db5901b1babdb926ee0a3</srcmd5>
+    <version>1.2.13</version>
+    <time>1679667498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073695</requestid>
+  </revision>
 </revisionlist>

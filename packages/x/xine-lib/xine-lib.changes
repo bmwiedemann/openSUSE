@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 10:33:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(egl) BuildRequires, configure checks for
+  it. Previously pulled in by chance via cairo.
+
+-------------------------------------------------------------------
 Sat Jan 28 15:41:11 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Prevent Leap:15.4 building with ffmpeg-3
