@@ -842,4 +842,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963601</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>28b3497440d2dcbb86a2b00f65617997</srcmd5>
+    <version>44.0</version>
+    <time>1679667431</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072744 from iznogood)</comment>
+    <requestid>1073185</requestid>
+  </revision>
 </revisionlist>
