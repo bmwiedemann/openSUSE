@@ -571,4 +571,37 @@
     <comment>Scripted push from GNOME:Next (forwarded request 972572 from dimstar)</comment>
     <requestid>973150</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>258b4e6d08cd847dda819dfffc72c3c8</srcmd5>
+    <version>44.rc</version>
+    <time>1679667474</time>
+    <user>dimstar_suse</user>
+    <comment>Subbing RC in case upstream forgets to do stable bump.
+
+- Update to version 44.rc:
+  + Shortcuts menu cleanups
+  + Misc focus fixes in album widgets
+  + Decrease memory usage in SongsView
+  + Bugs Fixed:
+    - SongView popup is a memory hog
+    - Shuffle on/off mixup
+    - Default template for issues
+- Update to version 44.beta:
+  + Make shuffle shuffle again
+  + Fix time display in RTL languages
+  + Port to soup 3
+  + Port about to AdwAboutWindow
+  + No longer mismatch art on scrolling
+  + Fix async queue block on fresh art retrieval
+  + Use new GNOME Settings app id in flatpak
+  + Fix welcome image rendering
+  + Bugs fixed:
+    - Rework ArtStack to handle cycling widgets better
+    - Shuffle broken in Music 42
+    - Time is reversed in RTL
+  + Updated translations.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  following upstreams port. (forwarded request 1073119 from iznogood)</comment>
+    <requestid>1073240</requestid>
+  </revision>
 </revisionlist>
