@@ -113,7 +113,7 @@ Requires:       gstreamer >= %{gstreamer_req_version}
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Recommends:     %{name}-gtk
 Enhances:       gstreamer
-Conflicts:      gstreamer-plugins-ugly < 1.18.1
+Conflicts:      gstreamer-plugins-ugly < 1.22.0
 # Generic name, never used in SuSE: I wish it had been used I would have used it then I wouldn't have to keep copy pasting and actually type it.
 Provides:       gst-plugins-good = %{version}
 %if 0%{?ENABLE_AALIB}
