@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define mutter_api 11
+%define mutter_api 12
 
 Name:           gnome-kiosk
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
@@ -49,6 +49,7 @@ application deployments like wall displays and point-of-sale systems.
 Summary:        Search appliance sample app
 Requires:       %{name} = %{version}
 Requires:       MozillaFirefox
+BuildArch:      noarch
 
 %description sample-app
 Search appliance sample app that demonstate how the kiosk
@@ -84,6 +85,11 @@ compositor is used.
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/gnome-kiosk-script-wayland.desktop
 %{_datadir}/xsessions/gnome-kiosk-script-xorg.desktop
+%dir %{_datadir}/dconf
+%dir %{_datadir}/dconf/profile
+%dir %{_datadir}/gnome-kiosk
+%{_datadir}/dconf/profile/gnomekiosk
+%{_datadir}/gnome-kiosk/gnomekiosk.dconf.compiled
 
 %files sample-app
 %{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop

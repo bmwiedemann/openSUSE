@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:09:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:02:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Rename dconf profile to not have hyphen
+  + Set dconf profile unconditionally
+  + Use https instead of http in search-app
+
+-------------------------------------------------------------------
+Fri Feb 24 18:05:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Deprecation fixes
+  + Require mutter 44
+  + Compat fix for Anaconda Installer project
+  + Script session double-starting fix
+  + Allow changing background in gsettings
+- Bump mutter_api define to 12 following upstream changes.
+- Build sample-app as noarch.
+
+-------------------------------------------------------------------
 Tue Sep 20 17:52:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
