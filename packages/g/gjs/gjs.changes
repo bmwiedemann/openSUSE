@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:52:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.76.0:
+  + No changes from release candidate 1.75.90.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:26:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.75.90:
+  + Closed bugs and merge requests:
+    - NEWS: fix a typo causing codespell to fail
+    - doc: Add more apps written in GJS
+    - Gio: Use proper default priority on async generators
+    - gjs 1.75.2 GObjectValue build test failing on ARM
+    - testGObjectValue: Enable creating object with a string
+      property
+    - Handle transfer-none string return value from vfunc
+      implemented in JS
+    - Various maintenance, performance improvements
+
+-------------------------------------------------------------------
+Fri Feb 24 12:43:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.75.2:
+  + There are new `Gio.Application.prototype.runAsync()` and
+    `GLib.MainLoop.prototype.runAsync()` methods which do the same
+    thing as `run()` but return a Promise which resolves when the
+    main loop ends, instead of blocking while the main loop runs.
+    Use one of these methods (by awaiting it) if you use async
+    operations with Promises in your application. Previously, it
+    was easy to get into a state where Promises never resolved if
+    you didn't run the main loop inside a callback.
+  + There are new `Gio.InputStream.prototype.createSyncIterator()`
+    and `Gio.InputStream.prototype.createAsyncIterator()` methods
+    which allow easy iteration of input streams in consecutive
+    chunks of bytes, either with a for-of loop or a for-await-of
+    loop.
+  + DBus proxy wrapper classes now have a static `newAsync()`
+    method, which returns a Promise that resolves to an instance of
+    the proxy wrapper class on which `initAsync()` has completed.
+  + DBus property getters can now return GLib.Variant instances
+    directly, if they have the correct type, instead of returning
+    JS values and having them be packed into GLib.Variants.
+  + Dramatic performance improvements in the legacy
+    `imports.signals` module, which has also gained a
+    `connectAfter()` method that works like the same-named method
+    in GObject signals. (However, the signals module remains
+    legacy, and is mostly there for historical reasons with GNOME
+    Shell. Don't use it in new code.)
+  + For years we have had a typo in `Cairo.LineCap.SQUARE`,
+    incorrectly naming it `SQUASH`. This is fixed and the typoed
+    name is retained as an alias.
+  + Also in Cairo, the value of `Cairo.Format.RGB16_565` was wrong.
+    This was fixed with a breaking change, because anyone using it
+    was probably already not getting the results they expected.
+  + Continuing the Cairo improvements, SVG surfaces have gained
+    `Cairo.SVGSurface.prototype.finish()` and
+    `Cairo.SVGSurface.prototype.flush()` because previously SVG
+    surfaces were only written to disk when the SVGSurface object
+    was garbage collected, making it uncertain to rely on them.
+  + The debugger now handles Symbol values and Symbol property keys
+    of objects. Previously, these were not displayed correctly.
+  + Various type-safety refactors.
+  + Many bug fixes and performance improvements.
+
+-------------------------------------------------------------------
+Tue Feb 21 10:24:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.75.1:
+  + Static methods on classes from GObject introspection are now
+    present on JS classes that inherit from those classes.
+
+-------------------------------------------------------------------
 Tue Feb 21 10:24:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.74.2:

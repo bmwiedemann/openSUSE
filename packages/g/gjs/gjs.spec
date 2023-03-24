@@ -17,14 +17,14 @@
 
 
 Name:           gjs
-Version:        1.74.2
+Version:        1.76.0
 # FIXME # Disable tests for unstable 1.71.1 - Try tests again on next versionbump
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.74/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.76/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  git
