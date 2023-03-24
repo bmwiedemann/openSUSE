@@ -18,7 +18,7 @@
 
 %define sover   264
 Name:           libplacebo
-Version:        5.264.0
+Version:        5.264.1
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -26,9 +26,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://code.videolan.org/videolan/libplacebo
 Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{version}/libplacebo-v%{version}.tar.bz2
 Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/c512ac886425f6b6b6c816d67f4cb1385cd4cc53/nuklear.h
+Source9:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-glad2

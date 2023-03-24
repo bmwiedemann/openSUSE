@@ -1022,4 +1022,16 @@ Fixes:
     <comment></comment>
     <requestid>1071217</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>90f62d34ec720418bb9a11c52c6c4a48</srcmd5>
+    <version>5.264.1</version>
+    <time>1679667402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libplacebo to version 5.264.1. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v5.264.0
+- Bump meson dependency to 0.63
+- Add baselibs.conf (for the sake of ffmpeg)
+</comment>
+    <requestid>1074110</requestid>
+  </revision>
 </revisionlist>
