@@ -7,4 +7,21 @@
     <comment>New name for gnome-todo</comment>
     <requestid>1005428</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a18292766cbf6fb611d736b009c1cee</srcmd5>
+    <version>43.0</version>
+    <time>1679667557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + The Welcome screen has been removed, as its design didn't
+    really work out.
+  + The notification system was switched to use AdwToast instead of
+    the older, custom notifications.
+  + Styles have been updated to fit a more Adwaita-like design.
+  + Lots of bugs have been squashed, leading to a more stable
+    experience.
+  + Updated translations.
+- Add check section and run meson_test macro during build. (forwarded request 1073108 from iznogood)</comment>
+    <requestid>1073150</requestid>
+  </revision>
 </revisionlist>

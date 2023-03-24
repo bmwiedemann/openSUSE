@@ -1,7 +1,7 @@
 #
 # spec file for package endeavour
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           endeavour
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
@@ -64,7 +64,7 @@ This package contains the development files for %{name}.
 
 %build
 # NOTE: We are not building introspection support as that
-# introduces a dep on a private lib, last checked ver 41.0
+# introduces a dep on a private lib, last checked ver 43.0
 %meson \
 	-D introspection=false \
 	%{nil}
@@ -75,12 +75,14 @@ This package contains the development files for %{name}.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/org.gnome.Todo.desktop
 %{_datadir}/dbus-1/services/org.gnome.Todo.service
-%{_datadir}/glib-2.0/schemas/org.gnome.todo.background.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.todo.gschema.xml
 %{_datadir}/help/C/%{name}/
 %dir %{_datadir}/icons/hicolor/symbolic/actions
@@ -95,4 +97,3 @@ This package contains the development files for %{name}.
 %files lang -f %{name}.lang
 
 %changelog
-
