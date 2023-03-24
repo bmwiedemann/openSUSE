@@ -1,0 +1,28 @@
+<package name="omnispeak" project="openSUSE:Factory">
+  <title>An reimplementation of &quot;Commander Keen in Goodbye Galaxy!&quot;</title>
+  <description>Omnispeak is an open-source reimplementation of Commander Keen
+episodes 4, 5, and 6. It aims to be a pixel-perfect, bug-for-bug
+clone of the original games, and is compatible with savegames
+from the DOS version.
+
+Omnispeak also includes several new features, including:
+ * Improved graphics scaling and compatibility support.
+ * Dramatically improved joystick/gamepad support.
+ * QuickLoad and QuickSave support (F5 and F9 by default)
+ * Support for real AdLib / OPL2 compatible sound cards
+ * Support for the OPL2LPT
+
+NOTE:
+To play the Commander Keen games with omnispeak you need the
+original game files!
+
+Run
+ * omnispeak-keen4
+ * omnispeak-keen5
+ * omnispeak-keen6
+from the folder where the original game files are located.
+
+</description>
+  <devel project="games" package="omnispeak"/>
+  <url>https://davidgow.net/keen/omnispeak.html</url>
+</package>
