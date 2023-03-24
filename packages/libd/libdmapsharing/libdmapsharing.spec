@@ -1,7 +1,7 @@
 #
 # spec file for package libdmapsharing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define sover 3
 
 Name:           libdmapsharing
-Version:        3.9.10
+Version:        3.9.11
 Release:        0
 Summary:        Library implementing the Digital Media Access Protocol family
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 
 %description
 Libdmapsharing is a library you may use to access, share and control the

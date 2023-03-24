@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 13 10:59:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.11:
+  + Migrate to libsoup3.
+  + Remove extraneous #includes.
+  + Round of cleanup.
+  + vala-dmap-db.vala: fix object ownership issue.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  following upstream changes.
+
+-------------------------------------------------------------------
 Mon Dec 19 08:33:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit
