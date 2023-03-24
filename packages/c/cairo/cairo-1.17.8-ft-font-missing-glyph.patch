@@ -1,0 +1,62 @@
+From 2766d9feeccd5d66e346b0abab38726b8e0aa1e9 Mon Sep 17 00:00:00 2001
+From: Adrian Johnson <ajohnson@redneon.com>
+Date: Tue, 7 Mar 2023 19:40:21 +1030
+Subject: [PATCH] ft: Use normal font size when detecting the format
+
+The format may depend on the font size.
+
+Fixes #643
+---
+ src/cairo-ft-font.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/cairo-ft-font.c b/src/cairo-ft-font.c
+index 22a6a622b..89af6193d 100644
+--- a/src/cairo-ft-font.c
++++ b/src/cairo-ft-font.c
+@@ -3314,11 +3314,13 @@ _cairo_ft_scaled_glyph_init_metrics (cairo_ft_scaled_font_t  *scaled_font,
+     if (scaled_font->unscaled->have_color && scaled_font->base.options.color_mode != CAIRO_COLOR_MODE_NO_COLOR)
+ 	color_flag = FT_LOAD_COLOR;
+ #endif
++    /* Ensure use_em_size = FALSE as the format (bitmap or outline)
++     * may change with the size. */
+     status = _cairo_ft_scaled_glyph_load_glyph (scaled_font,
+ 						scaled_glyph,
+ 						face,
+ 						load_flags | color_flag,
+-						!hint_metrics,
++						FALSE,
+ 						vertical_layout);
+     if (unlikely (status))
+ 	return status;
+@@ -3344,6 +3346,18 @@ _cairo_ft_scaled_glyph_init_metrics (cairo_ft_scaled_font_t  *scaled_font,
+ 	 glyph_priv->format =  CAIRO_FT_GLYPH_TYPE_BITMAP;
+     }
+ 
++    /* If hinting is off, load the glyph with font size set the the em size. */
++    if (!hint_metrics) {
++	status = _cairo_ft_scaled_glyph_load_glyph (scaled_font,
++						    scaled_glyph,
++						    face,
++						    load_flags | color_flag,
++						    TRUE,
++						    vertical_layout);
++	if (unlikely (status))
++	    return status;
++    }
++
+     _cairo_ft_scaled_glyph_get_metrics (scaled_font,
+ 					face,
+ 					vertical_layout,
+@@ -3369,6 +3383,7 @@ _cairo_ft_scaled_glyph_init_metrics (cairo_ft_scaled_font_t  *scaled_font,
+     }
+ 
+     if (glyph_priv->format == CAIRO_FT_GLYPH_TYPE_COLR_V1) {
++	/* Restore font size if previously loaded at em_size. */
+ 	if (!hint_metrics) {
+ 	    status = _cairo_ft_scaled_glyph_load_glyph (scaled_font,
+ 							scaled_glyph,
+-- 
+GitLab
+
+

@@ -702,4 +702,41 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002604 from dimstar)</comment>
     <requestid>1003137</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>77e0e19b4e6b5dd6056a7d69cef45412</srcmd5>
+    <version>1.17.8</version>
+    <time>1679667423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.8:
+  + In a continuing effort to reduce the amount of legacy code, and
+    increase the long-term maintainability of cairo, the following
+    backends have been removed:
+    - GL and GLES drawing
+  + Additionally, cairo's Autotools build system has been removed;
+    from now on, cairo will only support the Meson build system.
+    While the end result should be identical, further testing is
+    appreciated.
+  + In this snapshot, cairo gained support for rendering COLRv1
+    fonts, and rendering SVG and COLRv1 fonts with custom palettes.
+  + Support for macOS and Windows has been improved, with lots of
+    build and bug fixes.
+  + Lots of safety issues have been fixed, with array bounds
+    checking and plugging memory leaks, as well as fixes for bugs
+    identified via fuzzying.
+  + This is going to be the last snapshot of the 1.17 development
+    cycle; we only expect minor bug fixing and improvements until
+    the 1.18.0 release.
+- Switch to meson buildsystem: Add meson BuildRequires and macros.
+- Update Source Url to new home.
+- Drop build_gl_backend define and conditional pkgconfig(egl) and
+  pkgconfig(gl) BuildRequires: No longer supported.
+- Add generic c++_compiler and c_compiler BuildRequires: New
+  dependencies.
+- Drop 0001-Set-default-LCD-filter-to-FreeType-s-default.patch:
+  Fixed upstream.
+- Add upstream bug fix patches:
+  + cairo-1.17.8-fix-tee-compilation.patch
+  + cairo-1.17.8-ft-font-missing-glyph.patch (forwarded request 1072675 from iznogood)</comment>
+    <requestid>1073167</requestid>
+  </revision>
 </revisionlist>

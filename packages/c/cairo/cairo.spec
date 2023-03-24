@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,30 @@
 
 
 %define build_xcb_backend 1
-%define build_gl_backend 1
+
 Name:           cairo
-Version:        1.17.6
+Version:        1.17.8
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
 Group:          Development/Libraries/C and C++
 URL:            https://cairographics.org/
-Source0:        https://download.gnome.org/sources/cairo/1.17/%{name}-%{version}.tar.xz
+Source0:        https://cairographics.org/snapshots/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
-# PATCH-FIX-UPSTREAM 0001-Set-default-LCD-filter-to-FreeType-s-default.patch -- Set default LCD filter to FreeType's default
-Patch2:         0001-Set-default-LCD-filter-to-FreeType-s-default.patch
+# PATCH-FIX-UPSTREAM cairo-1.17.8-fix-tee-compilation.patch --  https://gitlab.freedesktop.org/cairo/cairo/-/issues/634 tee: Fix cairo wrapper functions
+Patch2:         cairo-1.17.8-fix-tee-compilation.patch
+# PATCH-FIX-UPSTREAM cairo-1.17.8-ft-font-missing-glyph.patch -- https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/467 ft: Use normal font size when detecting the format
+Patch3:         cairo-1.17.8-ft-font-missing-glyph.patch
 
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -49,10 +54,6 @@ BuildRequires:  pkgconfig(zlib)
 # These libraries are needed only for tests.
 # Do not enable tests in build systems, it causes build loop!
 #BuildRequires:  librsvg-devel poppler-devel
-%if %{build_gl_backend}
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(gl)
-%endif
 %if %{build_xcb_backend}
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-render) >= 1.6
@@ -144,28 +145,25 @@ cairo.
 %autosetup -p1
 
 %build
-%configure \
-    --enable-fc \
-    --enable-ft \
-%if %{build_gl_backend}
-    --enable-gl \
-%endif
-    --enable-ps \
-    --enable-pdf \
-    --enable-script \
-    --enable-svg \
-    --enable-tee \
+%meson \
 %if %{build_xcb_backend}
-    --enable-xcb \
+	-D xcb=enabled \
 %endif
-    --enable-xlib \
-    --enable-gtk-doc \
-    --disable-static
-%make_build
+	-D freetype=enabled \
+	-D fontconfig=enabled \
+	-D glib=enabled \
+	-D gtk_doc=true \
+	-D spectre=disabled \
+	-D symbol-lookup=disabled \
+	-D tee=enabled \
+	-D tests=disabled \
+	-D xlib=enabled \
+	-D xml=disabled
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %ldconfig_scriptlets -n libcairo2
 %ldconfig_scriptlets -n libcairo-gobject2
@@ -187,12 +185,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cairo-sphinx
 %{_bindir}/cairo-trace
 %dir %{_libdir}/cairo
-%{_libdir}/cairo/cairo-fdr.so
-%{_libdir}/cairo/cairo-sphinx.so
+%{_libdir}/cairo/libcairo-fdr.so
+%{_libdir}/cairo/libcairo-sphinx.so
 %{_libdir}/cairo/libcairo-trace.so
 
 %files devel
-%doc AUTHORS ChangeLog NEWS PORTING_GUIDE README
+%doc AUTHORS NEWS README.md
 %doc %{_datadir}/gtk-doc/html/cairo
 %{_includedir}/cairo/
 %{_libdir}/*.so
