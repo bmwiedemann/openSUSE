@@ -1,7 +1,7 @@
 #
-# spec file for package librpma
+# spec file for package rpma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           rpma
 %define lname   librpma0
-Version:        0.9.0
+Version:        1.2.0
 Release:        0
 Summary:        Remote Persistent Memory Access
 License:        BSD-3-Clause
@@ -27,8 +27,8 @@ URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/rpma/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc
-BuildRequires:  pkg-config
 BuildRequires:  libibverbs-devel
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpmem) >= 1.6
 ExclusiveArch:  x86_64 aarch64 ppc64le
 
