@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 19 17:41:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Add shortcut for Preferences (Ctrl+comma: Opens the preferences
+    window).
+  + Add buttons to change orientation of even/odd pages - usecase
+    for Reversing Automatic Document Feeder (RADF) scanners.
+  + Fix image size after cropping.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 21 08:17:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.5:

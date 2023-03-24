@@ -1,7 +1,7 @@
 #
 # spec file for package simple-scan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           simple-scan
-Version:        42.5
+Version:        44.0
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
-Source0:        https://download.gnome.org/sources/simple-scan/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/simple-scan/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gusb) >= 0.2.7
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
+BuildRequires:  pkgconfig(libhandy-1) >= 1.6.0
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.5

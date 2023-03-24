@@ -709,4 +709,12 @@
     <comment></comment>
     <requestid>1005136</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>570417fbf934d22cc75621efe531b534</srcmd5>
+    <version>44.0</version>
+    <time>1679667405</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072961 from iznogood)</comment>
+    <requestid>1073148</requestid>
+  </revision>
 </revisionlist>
