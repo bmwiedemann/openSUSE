@@ -1,7 +1,7 @@
 #
 # spec file for package glib-networking
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.74.0
+Version:        2.76.0
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/glib-networking/2.74/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib-networking/2.76/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM glib-networking-gnutls-tls-exporter-tls12.patch glgo#GNOME/glib-networking#201 pmonreal@suse.com -- Fix build with gnutls 3.7.8
-Patch0:         glib-networking-gnutls-tls-exporter-tls12.patch
 BuildRequires:  ca-certificates-mozilla
 # For directory ownership
 BuildRequires:  dbus-1
@@ -77,7 +75,6 @@ Currently, there is only a proxy module based on libproxy.
 %license COPYING LICENSE_EXCEPTION
 %doc NEWS README
 %{_datadir}/dbus-1/services/org.gtk.GLib.PACRunner.service
-%{_libdir}/gio/modules/libgioenvironmentproxy.so
 %{_libdir}/gio/modules/libgiognomeproxy.so
 %{_libdir}/gio/modules/libgiognutls.so
 %{_libdir}/gio/modules/libgiolibproxy.so

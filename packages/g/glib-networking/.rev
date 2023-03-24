@@ -675,4 +675,12 @@ a newer version not fitting</comment>
 </comment>
     <requestid>1034190</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e77ef05d41ca64a9e6ce8aa3341aee09</srcmd5>
+    <version>2.76.0</version>
+    <time>1679667425</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072679 from iznogood)</comment>
+    <requestid>1073170</requestid>
+  </revision>
 </revisionlist>

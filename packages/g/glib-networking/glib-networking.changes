@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:49:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.0:
+  + Fix OpenSSL sessions becoming unresumable.
+  + Fix installed libproxy test.
+
+-------------------------------------------------------------------
+Mon Feb 27 18:05:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.76.beta:
+  + Hopefully fix environment proxy resolver on Windows.
+  + Remove static_modules build option, use
+    -Ddefault_library=static instead.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 15:24:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.76.alpha:
+  + OpenSSL: add session resumption support.
+  + GnuTLS: several session resumption improvements.
+  + Skip TLS exporter test for TLS 1.2.
+  + Default values for build options have changed, no longer use
+    auto.
+  + Fix static linking on Windows.
+  + Don't use system trust on iOS.
+  + Updated translations.
+- Drop glib-networking-gnutls-tls-exporter-tls12.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Oct 26 10:22:12 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with gnutls 3.7.8:
