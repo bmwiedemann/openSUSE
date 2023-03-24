@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.10.8
+Version:        2.12.0
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libsigc.sourceforge.net/
-Source0:        https://download.gnome.org/sources/libsigc++/2.10/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsigc++/2.12/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
@@ -90,7 +90,7 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %files -n libsigc-2_0-0
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS
 %{_libdir}/libsigc-2.0.so.*
 
 %files devel

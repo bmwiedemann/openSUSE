@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 27 18:07:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.12.0:
+  + Add track_object(), deprecate track_obj().
+  + Examples, tests:
+    - examples/member_method: Make on_print() non-virtual.
+    - test_limit_reference.cc: Don't use auto where a slot is
+      required.
+  + Build:
+    - Meson:
+      . Avoid configuration warnings.
+      . Detect if we build from a git subtree.
+      . Simplify lookup of python command.
+      . Add build_tests option.
+    - Meson, MSVC: Compensate for the lack of
+      msvc_recommended_pragmas.h.
+    - Fix build with -Dbuild-deprecated-api=false.
+
+-------------------------------------------------------------------
 Fri Feb 11 17:11:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.10.8:

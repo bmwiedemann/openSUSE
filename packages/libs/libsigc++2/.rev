@@ -377,4 +377,26 @@
     <comment></comment>
     <requestid>962640</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>e978eaf55a9fdcda9296b01277a9dda0</srcmd5>
+    <version>2.12.0</version>
+    <time>1679667476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12.0:
+  + Add track_object(), deprecate track_obj().
+  + Examples, tests:
+    - examples/member_method: Make on_print() non-virtual.
+    - test_limit_reference.cc: Don't use auto where a slot is
+      required.
+  + Build:
+    - Meson:
+      . Avoid configuration warnings.
+      . Detect if we build from a git subtree.
+      . Simplify lookup of python command.
+      . Add build_tests option.
+    - Meson, MSVC: Compensate for the lack of
+      msvc_recommended_pragmas.h.
+    - Fix build with -Dbuild-deprecated-api=false. (forwarded request 1073121 from iznogood)</comment>
+    <requestid>1073242</requestid>
+  </revision>
 </revisionlist>
