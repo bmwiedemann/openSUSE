@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 24 08:08:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20230209:
+  * mmc-utils: Add basic erase error check
+  * mmc-utils: Add a command to write extcsd registers
+  * mmc-utils: Implement alternative boot operation
+  * mmc-utils: Add CMD0 softreset and preidle command
+  * mmc-utils: Allow for custom sanitize timeout
+  * mmc-utils: Refactor switch to allow custom timeout
+  * mmc-utils: Fix a typo for ATP mid
+  * mmc-utils: Fix ffu in case of unsupported MODE_OPERATION_CODES
+  * mmc-utils: fix warning on uninitialized 'cnt'
+  * mmc-utils: correct and clean up the file handling
+  * mmc-utils: Fix 4k sector size block count in FFU
+  * mmc-utils: Add General command CMD56 read support
+  * mmc-utils: Fix build error MMC_BLOCK_MAJOR undeclared
+  * Enhancement to do_status_get() function for detailed Response info
+
+-------------------------------------------------------------------
 Thu Feb 17 08:09:45 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20220208:

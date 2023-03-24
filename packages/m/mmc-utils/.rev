@@ -218,4 +218,26 @@
   * add README</comment>
     <requestid>955580</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5763ba453e4242f6dc4a112d382a947a</srcmd5>
+    <version>0.1+git.20230209</version>
+    <time>1679667697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20230209:
+  * mmc-utils: Add basic erase error check
+  * mmc-utils: Add a command to write extcsd registers
+  * mmc-utils: Implement alternative boot operation
+  * mmc-utils: Add CMD0 softreset and preidle command
+  * mmc-utils: Allow for custom sanitize timeout
+  * mmc-utils: Refactor switch to allow custom timeout
+  * mmc-utils: Fix a typo for ATP mid
+  * mmc-utils: Fix ffu in case of unsupported MODE_OPERATION_CODES
+  * mmc-utils: fix warning on uninitialized 'cnt'
+  * mmc-utils: correct and clean up the file handling
+  * mmc-utils: Fix 4k sector size block count in FFU
+  * mmc-utils: Add General command CMD56 read support
+  * mmc-utils: Fix build error MMC_BLOCK_MAJOR undeclared
+  * Enhancement to do_status_get() function for detailed Response info</comment>
+    <requestid>1074096</requestid>
+  </revision>
 </revisionlist>
