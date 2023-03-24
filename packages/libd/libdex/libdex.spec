@@ -15,28 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define soname libdex-1-1
 
-
 Name:           libdex
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libdex
-Source0:        https://download.gnome.org/sources/%{name}/0.1/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/0.2/%{name}-%{version}.tar.xz
 
-BuildRequires: c_compiler
-BuildRequires: meson
-BuildRequires: pkgconfig
-BuildRequires: pkgconfig(atomic_ops)
-BuildRequires: pkgconfig(gi-docgen)
-BuildRequires: pkgconfig(gio-2.0)
-BuildRequires: pkgconfig(gobject-introspection-1.0)
-BuildRequires: pkgconfig(liburing)
-BuildRequires: pkgconfig(sysprof-capture-4)
-BuildRequires: pkgconfig(sysprof-4)
-BuildRequires: pkgconfig(vapigen)
+BuildRequires:  c_compiler
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(atomic_ops)
+BuildRequires:  pkgconfig(gi-docgen)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(liburing)
+BuildRequires:  pkgconfig(sysprof-4)
+BuildRequires:  pkgconfig(sysprof-capture-4)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 Dex is a library supporting "Deferred Execution" with the explicit
@@ -49,7 +49,7 @@ of wrapper promises.
 looking code which calls asynchronous APIs from GIO underneath.
 
 %package -n %soname
-Summary:  Shared library for %name
+Summary:        Shared library for %name
 
 %description -n %soname
 Dex is a library supporting "Deferred Execution" with the explicit
@@ -64,23 +64,23 @@ looking code which calls asynchronous APIs from GIO underneath.
 This package contains the shared library for %name.
 
 %package -n typelib-1_0-Dex-1_0
-Summary:    Introspection bindings for %name
+Summary:        Introspection bindings for %name
 
 %description -n typelib-1_0-Dex-1_0
 This package contains the introspection bindings for %name.
 
 %package  devel
-Summary:  Development files for libdex
-Requires: %soname = %{version}
-Requires: typelib-1_0-Dex-1_0 = %{version}
+Summary:        Development files for libdex
+Requires:       %soname = %{version}
+Requires:       typelib-1_0-Dex-1_0 = %{version}
 
 %description devel
 This package contains the libraries and header files that are
 needed for writing applications with libdex.
 
 %package   devel-docs
-Summary:   Developer documentation for libdex
-BuildArch: noarch
+Summary:        Developer documentation for libdex
+BuildArch:      noarch
 
 %description devel-docs
 This package contains developer documentation for writing
@@ -124,4 +124,3 @@ applications with libdex.
 %doc %{_datadir}/doc/libdex-1/
 
 %changelog
-

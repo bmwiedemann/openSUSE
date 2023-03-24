@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:46:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.0:
+  + Followup fixes for building on mips.
+  + Fixes for introspection gi-scanner.
+  + Remove abstract type flag from DexFuture to satisfy GObject
+    Introspection rules about constructors.
+  + Many documentation/gi-annotation fixes.
+  + Build system improvements.
+  + Default to `-Dintrospection=enabled`.
+
+-------------------------------------------------------------------
 Fri Mar  3 07:35:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.1:
