@@ -832,4 +832,1251 @@
   being scanned than needed.</comment>
     <requestid>1072522</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>6a42e65ffb931399cb188880c58fa9a4</srcmd5>
+    <version>1.76.0</version>
+    <time>1679667465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.76.0:
+  + Update the GIR data for GLib.
+  + Documentation fixes.
+- Update to version 1.75.6:
+  + Documentation fixes.
+  + Fix build when using GLib as a subproject.
+  + Update the GIR data for GLib.
+- Update to version 1.75.4:
+  + Brown-paper bag release to fix the GLib dependency.
+- Changes from version 1.75.2:
+  + Split 'disguised' attribute into two separate attributes.
+  + Add copy/free function annotations for plain-old data types.
+  + Include the default value of GObject properties in the GIR
+    data.
+  + Drop wrap files for recursive dependencies.
+  + Add more marshalling tests.
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+- Switch to pcre2grep (pcre is dead upstream)
+- Update to version 1.74.0:
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+- Update to version 1.73.1:
+  + Update the GIR data for GLib, GObject, GModule, and GIO
+  + Disable rpath on Windows
+  + Add llvm/mingw support on Windows
+  + Fix annotations in libgirepository
+  + Support C99 designated initializers when parsing C declarations
+  + Add some more types to win32 GIR
+  + Let doctool prepend emitting objects in GJS signals
+  + Require a C99 toolchain like GLib
+- gi-find-deps.sh: extend js script parser to detect imports in the
+  form import 'gi://GeocodeGlib?version=2.0'.
+- Update to version 1.73.0:
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+  + scanner:
+    - Support pre-processor macros with zero arguments.
+    - Support ISO C varargs in macros.
+  + Fix subproject build.
+- Update to version 1.72.0:
+  + Add new utility API to libgirepository for bindings
+    implementing an argument cache.
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+- Update to version 1.71.0:
+  + Create new API for libffi closures
+  + Treat @-prefixed shlib paths as absolute on macOS
+  + Add new `forever` scope
+  + Build fixes with newer Meson
+  + Improve regression test suite
+  + Avoid a segfault when using an invalid GType
+  + Build fixes on Windows when using g-i as a subproject
+  + Warn about property name collisions
+  + Add &quot;strict&quot; warnings to g-ir-scanner
+  + Add the &quot;emitter&quot; annotation for signal emitters
+  + Add a command line option to g-ir-scanner to specify the
+    compiler
+  + Add new convenience API to libgirepository
+  + Build fixes on Windows when using MSVC
+  + Documentation fixes
+  + Update the GIR data for GLib, GObject, and GIO
+- Drop patches fixed upstream:
+  + 7c1178069f1c58a05ec56a94ca6ba124215a947b.patch
+  + effb1e09dee263cdac4ec593e8caf316e6f01fe2.patch
+  + 827494d6415b696a98fa195cbd883b50cc893bfc.patch
+- use bash for bash scripts (bsc#1195391) 
+- Add upstream patches to fix build with meson 0.61.0 and newer:
+  + 7c1178069f1c58a05ec56a94ca6ba124215a947b.patch
+  + effb1e09dee263cdac4ec593e8caf316e6f01fe2.patch
+  + 827494d6415b696a98fa195cbd883b50cc893bfc.patch
+- Add explicit libgirepository-1_0-1 Requires to devel subpackage,
+  it was already pulled in via the main package, so no real change.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update to version 1.70.0:
+  + Update the GIR data for GLib, GObject, and GIO.
+- Update to version 1.69.0:
+  + Fix build when gobject-introspection is a subproject,
+  + Add more float types,
+  + Make test suite work with cross-related options,
+  + Fix several leaks found by Coverity,
+  + Fix enum member,
+  + Add g-ir-doc-tool man page,
+  + Export warnlib sources as variables,
+  + Update the GLib annotations,
+  + Add &quot;final&quot; class attribute,
+  + Add option to make .gir files installation paths configurable,
+  + Handle constructors with mismatched GTypes,
+  + Add property accessors annotations,
+- Revert back o HOSTTYPE: RPM_ARCH is not available to the dep
+  scanners.
+- gi-find-deps.sh: Don't use HOSTTYPE, use RPM_ARCH.
+- ia64 never used ()(64bit) markers, do drop that from gi-find-deps.
+- gi-find-deps.sh: on Tumbleweed, HOSTTYPE on ppc64/ppc64le reports
+  powerpc64 and powerpc64le: accept those strings as 64bit archs.
+- Update to version 1.68.0:
+  + Update GLib annotations.
+  + docs: cleanup.
+  + Fix syntax errors in gir-1.2.rnc.
+- Update to version 1.67.1:
+  + Requires Python 3.6+.
+  + Update GLib annotations.
+  + Fix compatibility with Python 3.10.
+  + Fix build with GIR data disabled.
+  + Add test object for signal marshallers.
+- Update to version 1.66.1:
+  + Update glib annotations.
+  + gimarshallingtests: Add more tests for flags..
+  + Revert &quot;giscanner: Fix section matching for documentation.
+- Update to version 1.66.0:
+  + Support the gtk-doc action syntax.
+  + GITypeInfo storage type utility API.
+  + libgirepository: Add a couple missing nullable annotations.
+  + dumper: Fix missing symbols in LTO case or with overridden
+    symbol visibility settings.
+  + Documentation improvements.
+  + Remove old autoconf fallback code for the python tools.
+  + giscanner: parse block comments for members and fields.
+  + Add the notion of standalone doc sections.
+  + giscanner: Add support for using clang-cl.
+  + giscanner: Fix section matching for documentation.
+- Update to version 1.64.1:
+  + Replace calls to deprecated xml.etree.cElementTree removed in
+    Python 3.9.
+  + gimarshallingtests: Use g_assert_cmpfloat_with_epsilon. Fixes
+    tests on some architectures.
+- Update to version 1.64.0:
+  + Update glib annotations.
+  + Fix regress scanner tests for non-gcc/clang compilers.
+  + Document how to update glib GIR.
+- Update to version 1.63.2:
+  + Update glib annotations.
+  + Fix build reproducibility.
+  + Drop deprecated xml.etree.ElementTree.Element.getchildren()
+    calls.
+- Changes from version 1.63.1:
+  + Update glib annotations.
+  + build: require meson 0.50.1.
+  + scanner: Support array arguments with static keyword.
+  + Fix non-libtool code being run with no nob-libtool
+    dependencies.
+  + meson: change &quot;cairo&quot; and &quot;doctool&quot; from a boolean to a
+    feature option.
+  + Fix a memory leak in g_irepository_get_object_gtype_interfaces.
+  + autotools: Make INTROSPECTION_GIRDIR/INTROSPECTION_TYPELIBDIR
+    respect prefix/datadir/libdir.
+  + girepository: Also store GType cache misses.
+  + docs: Document GI_CROSS_LAUNCHER envvar.
+- Change  -Dcairo=true and -Ddoctool=true meson parameters to
+  -Dcairo=enabled and -Ddoctool=enabled: follow upstreams changes.
+- Drop python3-Sphix BuildRequires, only used for rebuilding the
+  website contents.
+- Depend on the specific Python ABI version the module was built with,
+  as the _giscanner binary module is ABI dependent. Fixes boo#1153837
+- Update to version 1.62.0:
+  + No changes since 1.61.2.
+- Update to version 1.61.2:
+  + dumper: Use the distutils linker.
+  + structinfo: Fix offset in find_method().
+  + tests: Don't include &quot;config.h&quot; in installed files.
+  + meson: Make meson.override_find_program working on more complex
+    use cases.
+- Changes from version 1.61.1:
+  + Drop autotools build system.
+  + meson: require 0.49.2.
+  + Update glib annotations.
+  + Add documentation to the RelaxNG schema.
+  + Unused variable fixes.
+  + cachestore: handle cache getting deleted while loading it.
+  + Add Vulkan gir.
+  + Make g_irepository_get_object_gtype_interfaces actually work.
+  + gimarshallingtests: Add a marshalling test case for GPtrArrays
+    and GArrays of structures.
+  + scanner: parse and expose function macros.
+  + meson: use pkg-config directly for libffi cflags and libs.
+  + meson: Fix wrong dependency type check for gio-unix.
+  + regress: Add regression test for signal with GError param.
+- Add Vulkan to typelib template.
+- Update gi-find-deps.sh: upate javascript_requires function to parse
+  the new JS import style (bsc#1140614).
+- Update to version 1.60.2:
+  + docwriter: Fix Exception message attribute.
+  + meson: fix default cairo DLL name on Windows.
+  + scanner: Fix error on Windows in case source files are on
+    different drives.
+  + gi-test: Fix gir file tests with MSVC.
+  + MSVC.README.rst: Update VS 2008/x64 build notes.
+  + giscanner/scannerlexer.l: Include io.h on Windows.
+  + build: Force-include msvc_recommended_pragmas.h on Visual
+    Studio.
+  + Update glib annotations.
+- Update to version 1.60.1:
+  + Update glib annotations.
+  + shlibs: fall back to basename on macOS for relative paths.
+  + meson: always pass --quiet to g-ir-scanner.
+  + docs: include '--c-include' in g-ir-scanner man page.
+  + tests: Fix compatibility with Python 3.5.
+- Update to version 1.60.0:
+  + gir: Update glib annotations.
+- Update to version 1.59.5:
+  + gir:
+    - Include C header in cairo gir file.
+    - Skip glib-enumtypes.h for GObject-2.0.
+- Update to version 1.59.4:
+  + tests: Add functions using flat struct arrays.
+  + Clean shebangs out of non-executable scripts and drop exec perm
+    from xmlwriter.py.
+  + maintransformer: parse deprecation annotations for section
+    blocks.
+  + repository: g_irepository_get_object_gtype_interfaces.
+  + message: handle fatal errors even if warnings are disabled.
+  + autotools: Fix build with ``-Wl,--as-needed``.
+  + maintransformer: Don't warn on (optional) annotations on
+    (inout).
+  + girepository: Fix a possible use-after-free if
+    g_mapped_file_new() fails and fix possible leak of transitive
+    dependency names.
+- Fix shebangs for files installed to /usr/bin to not use
+  /usr/bin/env.
+- Update to version 1.59.3:
+  + meson:
+    - Use underscore as a separator in build options (gtk-doc-&gt;
+      gtk_doc etc).
+    - Warn that not all tests will be run if building without
+      cairo/doctool.
+  + scanner:
+    - Merge specifiers and qualifiers when merging basic types.
+      Fixes &quot;unsigned char&quot; being wrongly parsed as &quot;unsigned&quot; etc.
+    - Rework source root directory guessing code to not depend on
+      the build directory.
+    - Remove incorrect c:type generated for array of synthesized
+      unions.
+    - Flatten multi-dimensional arrays fields.
+  + website: add cppgir C++ binding.
+- Replace -Dgtk-doc=true call to meson with -Dgtk_doc=true.
+- Pass -Ddoctool=true and -Dcairo=true to meson, build and install
+  g-ir-doc-tool and use cairo during meson_check (tests).
+- Update to version 1.59.2:
+  + Everything included in 1.58.3.
+  + meson: Various fixes and all tests have been ported.
+  + scanner: Save preprocessor input and output files with
+    ``save-temps``.
+  + automake: Use the wildcard function where needed.
+  + build: extend ``PYTHONPATH`` instead of replacing it.
+  + gir/cairo: add ``cairo_rectangle_t``.
+  + Add a ``--version`` option to g-ir-compiler and g-ir-generate.
+  + tests: various test improvements.
+  + ccompiler: don't use Python compiler flags.
+  + parser: Do not bail out when parsing GIR files without doc
+    positions.
+  + gimarshallingtests: Remove declarations of nonexistent
+    functions.
+- Changes from version 1.59.1:
+  + Everything included in 1.58.2.
+  + build:
+    - Drop Python 2 support, require Python 3.4+.
+    - Add option to make .gir files installation paths
+      configurable.
+    - Skip gobject/gvaluecollector.h when constructing GObject GIR.
+    - Port various tests to work with meson.
+  + regress:
+    - Add test for write-only property.
+    - Implement interface and override properties.
+  + writer: Include documentation and symbol position in source
+    files.
+  + giscanner:
+    - Print relative filename paths when warning.
+    - Define grefcount and gatomicrefcount as aliases to gint.
+    - Allow empty declarations. Fixes warnings with mingw headers.
+    - Replace linked lists with arrays in source scanner.
+  + girepository:
+    - Various docs cleanups and fixes.
+    - Don't abort when calling g_base_info_get_name() on a
+      GITypeInfo.
+    - Add version macros and functions.
+- Update to version 1.58.3:
+  + docwriter: Support python-markdown 3.x.
+  + scanner: Define grefcount and gatomicrefcount as aliases to
+    gint.
+  + scanner: make using bool without stdbool include work again.
+  + gir: Update glib annotations for glib 2.58.2.
+- Drop upstream fixed patches:
+  + gi-docwriter-Support-markdown-3.x.patch: docwriter: Support
+    markdown 3.x.
+  + gi-Define-grefcount-and-gatomicrefcount-as-aliases.patch:
+    Define grefcount and gatomicrefcount as aliases to gint.
+  + gi-Update-glib-annotations.patch: Update glib annotations
+    (glib-2-58).
+- Add upstream bug fix patches from stable branch:
+  + gi-docwriter-Support-markdown-3.x.patch: docwriter: Support
+    markdown 3.x.
+  + gi-Define-grefcount-and-gatomicrefcount-as-aliases.patch:
+    Define grefcount and gatomicrefcount as aliases to gint.
+  + gi-Update-glib-annotations.patch: Update glib annotations
+    (glib-2-58).
+- Update to version 1.58.2:
+  + meson: Fix random build errors (mostly MSVC).
+  + scanner:
+    - Fix parsing of __typeof__ that is part of a cast expression.
+    - Ignore __pragma keyword used by MSVC.
+- Update to version 1.58.1:
+  + meson:
+    - Install warnlib.
+    - Add back /usr/bin/env to the python-cmd.
+  + scanner: Parse __typeof__ and discard it.
+  + Fix non libtool build.
+- Drop gobject-introspection-3.30.0-install-warnlib.patch: Fixed
+  upstream.
+- Modernize spec, use autosetup macro.
+- Update gi-find-reqs.sh to support new Polari's imports.gi pattern
+  &quot;const { Foo, Bar } = imports.gi;&quot;.
+- Add gobject-introspection-3.30.0-install-warnlib.patch: Install
+  missing files, notably required by gjs (picked from upstream).
+- Update to version 1.58.0:
+  + Changes:
+    - Add a --version argument to the Python-based tools
+    - Allow selecting the output format for g-ir-doc-tool
+    - Support all _Float* C types from ISO/IEC TS 18661-3:2015
+    - g-ir-doc-tool: Add DevDocs formatting for GJS
+      (--format=devdocs).
+  + Issues resolved:
+    - Default element-type not set for GByteArray object properties
+      (glgo#GNOME/gobject-introspection#184).
+    - c:type missing pointer/array information in GIR for C array
+      parameters (glgo#GNOME/gobject-introspection#189).
+    - Allow multiple output formats
+      (glgo#GNOME/gobject-introspection#134).
+    - gtk2 hits unreachable code after enable -Wswitch-default
+      (glgo#GNOME/gobject-introspection#218).
+    - Memory leaks in GI regress and marshalling tests property
+      setter (glgo#GNOME/gobject-introspection#113).
+- Add python3-Sphinx BuildRequires: New dependency.
+- Add meson BuildRequires and replace configure/make/make_install
+  with meson/meson_build/meson_install/meson_test macros to reflect
+  upstream's build system port to Meson.
+- Enable tests run to increase QA of package.
+- Update to version 1.57.3:
+  + The autotools build now uses autoconf-archive.
+  + g-ir-doc-tool: Add DevDocs formatting for GJS
+    (--format=devdocs). This adds a dependency on the Python
+    markdown package.
+- Add python3-Markdown BuildRequires: New dependency.
+- Update to version 1.57.2:
+  + Add a --version argument to the Python-based tools.
+  + Allow selecting the output format for g-ir-doc-tool.
+  + Support all _Float* C types from ISO/IEC TS 18661-3:2015.
+  + Issues resolved: glgo#GNOME/gobject-introspection#184,
+    glgo#GNOME/gobject-introspection#189,
+    glgo#GNOME/gobject-introspection#134,
+    glgo#GNOME/gobject-introspection#218,
+    glgo#GNOME/gobject-introspection#113.
+- Update to version 1.56.1:
+  + gir: Update annotations from glib 2.56.1.
+  + giscanner: fix --no-libtool on macOS.
+- Update to version 1.56.0:
+  + gir: Update annotations from GLib git master.
+- Modernize spec-file by calling spec-cleaner
+- Update to version 1.55.2:
+  + Changes: Add _Float128 to the base C types.
+  + Bugs fixed:
+    - Fails to parse flag-constants
+      (glgo#GNOME/gobject-introspection#173).
+    - Writer: Include documentation and symbol position in source
+      files (glgo#GNOME/gobject-introspection#175).
+    - Const qualifier dropped from c:type on (type filename)
+      parameters (glgo#GNOME/gobject-introspection#190).
+    - giscanner: don't print &quot;suppressed N warnings&quot; if --quiet
+      was specified (glgo#GNOME/gobject-introspection#188).
+    - gitypelib.c: increase #define MAX_NAME_LEN from 200 to 255
+      (bgo#764791).
+    - g-ir-scanner does not recognize _Thread_local (bgo#756921).
+    - MY_ENUM_VALUE = &lt;constant&gt; only works for last member
+      (bgo#629667).
+    - os.name can be wrong in some context (bgo#761985).
+- Update '+' in GPL/LGPL License tag to '-or-later' to comply with
+  SPDX 3.0.
+- go-find-deps.sh: add riscv64 to x64bitarch.
+- Update to version 1.55.1:
+  + Sync up with glib 2.55.1.
+- Update to version 1.55.0:
+  + gir: Update annotations from GLib.
+  + Bug fix: girepository:
+    Don't skip g_irepository_get_option_group() (bgo#786665).
+- Update Url to the current GObject introspetion's web page:
+  https://wiki.gnome.org/Projects/GObjectIntrospection
+- Switch libffi-devel BuildRequires with its pkgconfig version
+  since configure just looks for its module.
+- Update glib-2.0 pkgconfig BuildRequires version to 2.55.0
+  according it to configure check.
+- Add gio-2.0, gio-unix-2.0 and gmodule-2.0 pkgconfig
+  BuildRequires: note that they were alredy being pulled with
+  pkgconfig(glib-2.0) BuildRequires and used, since they live in
+  the same devel package.
+- Switch to python3
+- Cleanup with spec-cleaner
+- Run tests during build
+- Update to version 1.54.1:
+  + girnode.c: Use locale-independent functions to parse numbers
+    (bgo#788087).
+- Drop '%if 0%{suse_version} &lt;= 1140' conditional: obsolete.
+- Update to version 1.54.0:
+  + giscanner: fix EOF check with flex &gt;= 2.6.1.
+  + gir: Update annotations from GLib 2.54.0.
+- Update to version 1.53.7:
+  + gir: Update annotations from GLib.
+  + Ignore _Nonnull,_Nullable and _Null_unspecified type
+    qualifiers.
+  + build: Only generate .pc files for this package for MSVC
+    builds.
+- Update to version 1.53.5:
+  + gir: Update annotations.
+- Update to version 1.53.4:
+  + MSVC 201x builds: Allow different Python versions per toolset.
+  + gir: Update annotations from GLib git master.
+  + regress: Test for property and method with conflicting names.
+- Update to version 1.53.3:
+  + Visual Studio builds: Use the Centricular fork of libffi.
+  + When handling errors according to errno, catch both IOError and
+    OSError.
+  + gir: Update annotations from GLib 2.53.3.
+- gi-find-deps.sh: sort autogenerated Requires to make builds fully
+  reproducible.
+- Update to version 1.53.2:
+  + gir: Update annotations.
+  + Misc fixes.
+- Update to version 1.53.1:
+  + gir: Update annotations from GLib.
+  + regress: Add test for setting a NULL strv in a GValue.
+  + Visual Studio 201x builds: Fix &quot;installation&quot;.
+  + Fix 'Bad file descriptor' error when checking libtool version.
+- Update to version 1.52.1:
+  + gir: Update annotations from GLib 2.52.1.
+  + tests: Add marshalling tests for GValue-valued properties.
+  + gimarshallingtests: Add a flags and enum property.
+  + g-ir-scanner: fix wrong order of -L options in libtool
+    invocation.
+  + giscanner: Use shlex.split() for environment variables.
+- Update to version 1.52.0:
+  + typedefs: fix type information.
+  + gir: Update annotations from GLib 2.52.0.
+- Update to version 1.51.5:
+  + g-ir-scanner: document GI_SCANNER_DEBUG in man page.
+  + Visual Studio builds: Support Visual Studio 2017.
+  + gir: Update annotations from GLib git master.
+- Update to version 1.51.3:
+  + gir: Update annotations from GLib git master.
+- Update to version 1.51.2:
+  + Fix &quot;Annotation&quot; element in RelaxNG schema.
+  + gir: Update annotations from GLib git master.
+  + scanner: Add a way to specify extra libraries to link against.
+  + girepository: Annotate array and array-length parameter.
+- Update to version 1.51.1:
+  + Gio-2.0.gir: Don't exclude gsettingsbackend.h and pass needed
+    define.
+  + gir: Update annotations from GLib git master.
+- gi-find-deps.sh: do not match &quot;from gi.repository import&quot; if
+  there is anything but white space in front of it (usually
+  indicates we are in some descriptive comment block)&quot;
+- Adjust the required version for pkgconfig(glib-2.0) according to
+  what configure expects.
+- Update to version 1.50.0:
+  + Updated translations.
+- Update to version 1.49.2:
+  + gir: Update annotations from GLib git master.
+  + gthash: free cmph objects.
+  + g-ir-inspect:
+    - Make description for --version a bit better.
+    - Remove last usage of g_autoptr().
+- Update to version 1.49.1:
+  + gir: Update annotations from GLib 2.49.4.
+  + Various MSVC build fixes.
+  + g-ir-inspect: Inspect GI typelibs.
+- Drop g-ir-dep-tool.patch: Fix upstream in a different way.
+- Rebase gi-find-deps.sh to to conform to upstreams commits.
+- Following the above: drop libtool BuildRequires and stop passing
+  autoreconf pre configure, no longer needed.
+- gi-find-deps.sh: scan GI overrides glue layers to add their
+  respective dependencies.
+- Update to GNOME 3.20  Fate#318572
+- Remove 0001-typelib-compiler-properly-initialise-memory.patch,
+  gobject-introspection-bgo729662-ownership-transfer.patch.
+- Update to version 1.48.0:
+  + gir: Update annotations from GLib 2.48.0.
+  + Various MSVC build fixes.
+- Update to version 1.47.92:
+  + Bugs fixed: bgo#696773, bgo#733535, bgo#736109, bgo#752047,
+    bgo#757126, bgo#757442, bgo#757443, bgo#757678, bgo#757934,
+    bgo#758448, bgo#759531, bgo#760682, bgo#761658, bgo#761659,
+    bgo#761981, bgo#761982, bgo#761983, bgo#761984, bgo#762653,
+    rh#1285991.
+- Add baselibs.conf: provide libgirepository-1_0-1 as -32bit
+  package as needed by libcjs0-32bit.
+- gi-find-deps.sh: work with the fact that newer file versions
+  identify python scripts differently, based on the shebang.
+- Update to version 1.47.1:
+  + No changelog provided, please check git.gnome.org.
+- Update to version 1.46.0:
+  + g-ir-scanner: Support multiple arguments for compiler.
+  + Update the GLib introspection data.
+- Update to version 1.45.4:
+  + Update the GLib introspection data.
+  + scanner:
+    - use open() as os.fdopen as context managers.
+    - fix cachestore race.
+  + g-ir-compiler: message when arguments are wrong.
+  + sourcescanner.py: Use Distutils for Preprocessing.
+  + giscanner/ccompiler.py: Initiate Distutils Compiler Instance.
+  + MSVC Builds:
+    - Update README.txt's.
+    - Builds: Drop GCC Requirement.
+    - Fix Script Generation Command.
+    - Update to Fix Build of Scripts.
+    - Clean Up And Fix the Projects.
+    - Generate The Tools Scripts.
+  + giscanner/sourcescanner.py: Use Tempfiles For Parsing.
+  + girepository: Remove &quot;optimization&quot; for found prefixes.
+  + scanner:
+    - Fix stray comment in previous commit.
+    - Recognize __signed.
+  + MSVC Introspection Builds: Make Cairo Note Clearer.
+  + build/: Fix Incorrect Naming of Script.
+  + MSVC .gir Builds: Allow More Flexibility for Cairo.
+  + build/gi-inrtospection-msvc.mak: Allow Libtool Style Names.
+  + build/gen-cairo-gir.py: Clean Up A Bit.
+  + Update glib annotations from glib 2.45.4.
+  + test: Add a test for GList containing GType.
+- Update to version 1.45.3:
+  + No changelog provided, please check git.gnome.org.
+- Update to version 1.45.2:
+  + Build system fixes.
+  + Update glib annotations.
+  + scanner: Add --symbol-filter-cmd.
+- Add 0001-typelib-compiler-properly-initialise-memory.patch:
+  typelib compiler writes uninitialised memory to typelib file
+  (bnc#930584).
+- Update to version 1.44.0:
+  + Update glib annotations from glib-2-44 git.
+  + build: use the detected pkg-config (bgo#746669).
+  + Fixed reference to obsolete name used in g-ir-generate manpage
+    (bgo#729901).
+- Update to version 1.43.92:
+  + Bugs fixed: bgo#657754, bgo#738171, bgo#744536, bgo#745498,
+    bgo#745608, bgo#746138.
+- Update to version 1.43.91:
+  + Update glib annotations from git master.
+  + Build system fixes.
+- Update to version 1.43.3:
+  + tests: Change names with case-only distinction.
+  + Don't unconditionally include config.h in regress.c.
+  + Update glib annotations from git master.
+- Update to version 1.42.0:
+  + Build fixes.
+  + Update glib annotations from git master.
+  + Bugs fixed: bgo#732669, bgo#733879.
+- Update to version 1.41.91:
+  + Updated tests.
+  + Misc fixes.
+- Add gobject-introspection-bgo729662-ownership-transfer.patch:
+  which makes it possible for language bindings to know about
+  ownership transfer for instance parameters so memory management
+  can be performed correctly (bgo#729662).
+- Update to version 1.41.4:
+  + Update Visual Studio Property Sheets.
+  + Bugs fixed: bgo#729662, bgo#732668, bgo#732669.
+- Update to version 1.41.3:
+  + Updated tests.
+  + Misc fixes.
+  + Updated documentations.
+- Update to version 1.40.0:
+  + Lots of fixes to docwriter/gjs.
+  + g-ir-compiler: Add support for callback fields on GObjects.
+  + Update tests.
+  + Misc bugfixes.
+  + Updated documentations.
+- gi-find-deps.sh: more gresource scanning (bnc#866267):
+  + Add *.gresource to gobjectintrospection.attr
+  + Parse *.gresource files the same way we already handle ELF
+    binaries with gresources embedded.
+- Update to version 1.39.90:
+  + Update glib annotations from git master.
+  + Fix errors parsing OSX 10.9 headers.
+  + gi-tester: Don't use negative substring parameters.
+  + scanner:
+    - Improve compatibility with OS X.
+    - Report __inline__ as the inline token.
+  + docwriter: Don't render private nodes.
+  + Add test passing an owned boxed structure to a callback.
+- gi-find-deps.sh: Support gresource scanning:
+  + Add *.so to gobjectintrospection.attr: those files can contain
+    gresources, which in fact could be javascript code, requiring
+    typelibs (seen since gnome-shell 3.11.5 for example).
+  + Introduce gresource_requires function in gi-find-deps.sh, which
+    extracts the javascript gresources from ELF binaries and scans
+    them for typelib dependencies.
+- Pass --enable-doctool to configure: enable g-ir-doctool.
+- Add python-Mako BuildRequires: dependency to build g-ir-doctool.
+- gi-find-deps.sh: be more resilient in detecting examples: the
+  string &quot;from gi.repository import *&quot; inside quotes does not need
+  to be parsed.
+- Update to version 1.39.3:
+  + Update glib annotations.
+  + scannerlexer: Fix bad unref.
+  + Rework The Visual Studio 2008 and 2010 Build Process.
+  + Correct a Library Name.
+  + giobjectinfo: Add missing transfer annotation to find_signal().
+  + tests: Switch two more uses to LOG_COMPILER to fix
+    parallel-tests.
+  + Bugs fixed: bgo#719566. bgo#720063, bgo#720066, bgo#720063,
+    bgo#720713, bgo#721177, bgo#581525, bgo#721477, bgo#722104.
+- Update to version 1.39.0:
+  + Updated glib annotations.
+  + Bugs fixed: bgo#571648, bgo#640812, bgo#676133, bgo#688375,
+    bgo#688897, bgo#698367, bgo#700025, bgo#708445, bgo#709462,
+    bgo#709796, bgo#710320, bgo#710560, bgo#710561, bgo#710562,
+    bgo#711153, bgo#711157, bgo#711541, bgo#712211.
+- gi-find-deps.sh: add ppc64le to x64bitarch list.
+- Update to version 1.38.0:
+  + Updated glib annotations.
+  + Bug fixed: bgo#698090.
+- Update to version 1.37.6:
+  + Updated glib annotations.
+  + MSVC build fixes.
+  + Bug fixed: bgo#704864.
+- Enhance gi-find-deps.sh: when scannig python file for
+  gi.require_version, make sure to ignore python comments (starting
+  with #).
+- Modify gi-find-deps.sh: the js package filter function seems to
+  have some issues in transfering variables (we might hit some
+  limits: the script works fine when directly invoked). Currently
+  we just specify the extracted list from gnome-weather as FILTER.
+- Enhance gi-find-deps.sh: gnome-weather came up with a nice idea
+  of specifying all dependencies in a pkg.requires(..) list
+  (hopefully this counts as standardized). Enhance the scanner to
+  identify this listing method of dependencies (bnc#811652).
+- Add pcre-tools Requires to the main package: gi-find-deps.sh uses
+  pcregrep for multi line matching.
+- Update to version 1.37.4:
+  + Updated glib annotations.
+  + Bugs fixed: bgo#701639, bgo#701679, bgo#701958, bgo#699856,
+    bgo#701058.
+- Update to version 1.37.1:
+  + Updated glib annotations.
+  + Bugs fixed: bgo#628739, bgo#637832, bgo#678794, bgo#688694,
+    bgo#688897, bgo#696765, bgo#697612, bgo#697613, bgo#697614,
+    bgo#697615, bgo#697616, bgo#697619, bgo#697620, bgo#697621,
+    bgo#697622, bgo#697623, bgo#697624, bgo#697625, bgo#697669,
+    bgo#697759, bgo#698090, bgo#698438, bgo#698521, bgo#698616,
+    bgo#698617, bgo#698698, bgo#699442, bgo#699531, bgo#699532,
+    bgo#699533, bgo#699535, bgo#699536, bgo#699722, bgo#699854,
+    bgo#699856, rh#920595.
+- Update to version 1.36.0:
+  + Update glib annotations.
+- Update to version 1.35.9:
+  + Bugs fixed: bgo#637832, bgo#662241, bgo#692165, bgo#693539,
+    bgo#694198, bgo#694426, bgo#694485, bgo#694593, bgo#695182.
+- Simplify gi-find-deps.sh to make it easier to add other 64bit
+  architectures. Include aarch64 in the list.
+- Update to version 1.35.8:
+  + Bugs fixed: bgo#660698, bgo#687522, bgo#691873, bgo#692084,
+    bgo#693040, bgo#693096, bgo#693097, bgo#693098, bgo#693598,
+    bgo#693742, bgo#693838, bgo#693876, bgo#693939.
+- Update to version 1.35.4:
+  + Update glib annotations.
+  + Various mallardwriter improvements and fixes
+  + Bugs fixed: bgo#690514, bgo#686388, bgo#656312, bgo#691030,
+    bgo#690850, bgo#690851, bgo#691524, bgo#678401, bgo#684059,
+    bgo#682355.
+- Eliminate lines which contain &quot;from gi.repository import Foo&quot;
+  (incl. quotes) as possible matches... this phrase is commonly
+  used in multiline documentation blobs (like for example in
+  python-gobject &gt;= 3.7.3).
+- Modify gi-find-deps.sh: in case of python scripts, do not add
+  python-gobject Requires: we do not know if the scripts is meant
+  for python3, which would require python3-gobject.
+- Update to version 1.35.3:
+  + scanner: Deprecate using identifier prefixes in GINames.
+  + giscanner: Don't prefer identifier prefixes over namespaces in
+    deps.
+  + Build system enhancements / fixes.
+  + Update glib annotations.
+  + Updated documentations.
+- Remove remnants of BUILD_FOR_VCS in the spec file.
+- Unconditionall BuildRequire gtk-doc and pass --enable-gtk-doc
+  to configure. The build system changed and the doc is no longer
+  built otherwise.
+- Fix gi-find-deps.sh: escape &quot;.&quot; in grep calls (&quot;\.&quot;).
+- Enhance gi-find-deps.sh: in case we add typelib() requires for
+  python scripts, we are sure that this script would also require
+  python-gobject (which provides gi.repository). Fixes issues
+  similar to bnc#793758.
+- Refactored gi-find-deps.sh: the various requires extraction
+  methods are split in functions, which allows to execute the same
+  function on different patterns. This helps us insofar as we need
+  to be able to check files in /usr/bin and want to have them
+  processed the same way as other files. Needed for example by
+  accerciser, where /usr/bin/accerciser is a python script with
+  stricter gi requirements (Wcnk 3.0).
+- Add /usr/bin/* to fileattrs to be checked for dependencies. At
+  the moment, gi-find-deps.sh only treats python scripts found like
+  this.
+- Add file Requires: gi-find-deps makes use of file to identify
+  the file types.
+- Update to version 1.34.2:
+  + gimarshallingtests: Fix return data type.
+  + scanner: correctly handle large 64bit integer constants.
+- Update to version 1.34.1.1:
+  + Add test method for GDestroy with no user data
+- Changes from version 1.34.1:
+  + Update glib annotations to 2.34.1.
+- Add pkgconfig(glib-2.0) BuildRequires, so it can be versioned.
+- Extend gi-find-deps.sh to understand gi.require_version in python
+  code. This was the last know format not yet supported.
+- Extend gi-find-deps.sh to understand versioned gi imports in
+  JavaScript (*.js) code.
+- Update to version 1.34.0:
+  + Update glib annotations.
+- Update to version 1.33.14:
+  + Update glib annotations.
+  + Bugs fixed: bgo#683596.
+- Update to version 1.33.10:
+  + Many bugfixes.
+- Update to version 1.33.9:
+  + Many bugfixes.
+- Update to version 1.33.4:
+  + Update glib annotations
+  + Scanner fixes
+  + Don't use an O(N) lookup when we already have a hashmap
+- Update to version 1.33.3:
+  + scanner: fix pairing of error quarks with registered enums.
+  + Update glib annotations.
+- Update to version 1.33.2:
+  + Add regression tests for GHashTable holding GValue.
+  + update-glib-annotations: Set required environment variables
+  + scanner: allow for functions that look like constructors but
+    aren't
+  + Add comment documenting we're ignoring C++ style comments.
+  + Improve tests.
+- Add pkgconfig(cairo-gobject) BuildRequires: new dependency.
+- Update License tags (bnc#765472):
+  + The main/src package is LGPL-2.1+ and GPL-2.0+
+  + The library subpackages are LGPL-2.1+
+- Create new subpackage girepository-1_0, which contains the
+  *.typelib files. This allows to bump the soname of
+  libgirepository and being able to parallel install several
+  libgirepository without a file conflict on the typelib files.
+  This fixes bnc#684826.
+- Add a girepository-1_0 Requires to libgirepository-1_0-1, for the
+  above. The Requires is versioned with a &gt;=, which is what allows
+  the parallel-installability.
+- Drop xz BuildRequires, as it now comes for free in the build
+  system.
+- Change rpm group of libgirepository-1_0-1 from
+  Development/Libraries/GNOME to System/Libraries.
+- Update to version 1.32.1:
+  + repository:
+    - Make g_callable_info_invoke public
+    - Fix leak
+  + Update glib annotations.
+- Update to version 1.32.0:
+  + No changes.
+- Update to version 1.31.22:
+  + repository:
+    - Fix conversion of FFI values on big-endian architectures
+    - Add new public gi_type_info_extract_ffi_return_value() API
+  + scanner: Fix matching of methods named *_get_type()
+  + Various other code changes.
+  + Update glib annotations.
+- Update to version 1.31.20:
+  + scanner:
+    - Allow adding annotations to vfuncs directly
+    - Add better errors for unknown param names
+  + typelib: fix invalid alignment assumptions, that break
+    platforms like m68k.
+  + Many improvements to g-ir-doctool.
+  + Updated annotations for glib.
+  + Several other code changes.
+  + Build and test improvements/fixes.
+- Rebase g-ir-dep-tool.patch.
+- Improve gi-find-deps.sh:
+  + ia64 also needs ()(64bit) for shlib providers.
+  + Send stderr from find to /dev/null (to avoid errors for
+    platforms where lib64 does not exist).
+- Update to version 1.31.10:
+  + scanner: Allow using GLib.List(Foo) instead of GLib.List&lt;Foo&gt;
+  + ffi: Treat enums as 32 bit signed values to fix PPC64
+  + Updated annotations for glib.
+  + Minor bug fixes.
+  + Add some tests.
+- gi-find-deps.sh: ppc64 and s390x are also 64bit so providers
+- Enhance gi-find-deps.sh: Inject subfolders of libdir containing
+  .typelib files into GI_TYPELIB_PATH.
+- Update to version 1.31.6:
+  + Update annotation for glib 2.31.6.
+  + giscanner: fix use after decref
+- Add g-ir-dep-tool.patch: add a tool to inspect .typelib files and
+  find their dependencies to be added to the rpm packages.
+- Add libtool BuildRequires and call to autoreconf, as the
+  patch above touches the build system.
+- Extend gi-find-deps.sh to use the new g-ir-dep-tool and add
+  Requires coming from the .typelib files.
+- Update to version 1.31.1:
+  + Scanner:
+    - Split CC environment variable
+    - Allow GObject.Object as a supercall return type
+    - Support --header-only flag
+    - Also add an rpath for library paths specified
+    - Only add rpaths for absolute directories
+    - Out the -l library name after the .o
+  + Minor bug fixes
+  + Bugs fixed: bgo#660338.
+- Change license to spdx identifier (LGPL-2.1+).
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Update to version 1.31.0:
+  + No longer use deprecated g_thread_init.
+  + scanner:
+    - Support --header-only flag
+    - Allow GObject.Object as a superclass return type
+    - Split CC environment variable
+    - Skip analysis of params that have been (skip)'d
+    - Show the file/line even when processing FATAL
+  + libgirepository:
+    - Add API to fix memory leak
+    - Fix g_irepository_get_c_prefix()
+    - Use the correct size when freeing unused info
+    - Prevents a segfault in gir parser
+  + Build and test improvements/fixes.
+- Update to version 1.30.0:
+  + Regenerate Gio/GLib/GObject annotations.
+  + Lots of work on the Windows port.
+  + Add &quot;Value:&quot; annotation tag.
+  + scanner: Correctly handle structs with arrays of anon unions.
+  + Various bug fixes.
+  + Build fixes.
+- Drop gobject-introspection-fix-regress.patch: fixed upstream.
+- Fix build on 11.4 by owning %{_rpmconfigdir}/fileattrs, that
+  appeared in recent rpm.
+- Add gobject-introspection-fix-regress.patch: fix wrong type for a
+  variable, which was causing build issues in gjs and
+  python-gobject.
+- Update to version 1.29.17:
+  + Fix declarations in xlib-2.0.gir.
+  + Regenerate Gio/GLib/GObject annotations.
+  + libgirepository:
+    - Deprecate ErrorDomain
+    - Switch to storing string form of error quarks
+    - Add g_irepository_find_by_error_domain()
+    - Allow enums and bitfields to have static methods
+    - Documentation improvements
+  + giscanner:
+    - Add DocBook and Mallard generator
+    - Various fixes to correctly handle the docs
+    - Add signal flags
+    - Recognize constructors ending in 'newv'
+    - Handle static methods on all types
+    - Allow enums and bitfields to have static methods
+    - Try harder to preserve c:type
+    - Forbid GPtrArrays holding non-pointer types
+    - Disallow non byte types for GByteArrays
+    - Properly handle GParamSpec and descendants
+    - Add a moved_to property to backcompat functions
+    - Avoid most of the special-casing of GObject.Object in the
+      scanner
+    - Fix warning for missing (element-type)
+    - Fix symbols being reported in invalid files
+    - Teach scanner's girparser about fundamentals
+    - Make the Transformer respect 'skip' annotations
+    - Allow passing additional include dirs when parsing a gir
+    - Workaround: Automatically turn Gdk.Rectangle gtype into
+      cairo.RectangleInt
+  + Various code cleanups.
+  + Tests improvements.
+- Extend gi-find-deps.sh with a special case for .py files:
+  &quot;raise ImportError.*&quot; lines are deleted. This is needed as
+  pygobject tries to explain with such lines how to convert the
+  sources to the new gi-based python bindings.
+- Update to version 1.29.16:
+  + Fix broken definition of DATADIR in 1.29.15, breaking scripts.
+- Update to version 1.29.15:
+  + Update glib annotations.
+  + libgirepository: Plug leak.
+  + dumper:
+    - Only make libtool silent if we were passed --silent
+    - Improve output for parallel builds
+  + giscanner:
+    - Support srcdir != builddir
+    - Mark GAsyncReadyCallbacks as allow-none
+    - Make comments starting with tab characters work
+  + Test-related changes.
+  + Build fixes.
+- gi-find-deps.sh: Remove trailing space characters from the
+  import lines, when listing the required typelibs. This fixes an
+  issue with files using \r\n to end a line (since \r was kept, and
+  was breaking the output of the script).
+- gi-find-deps.sh: Correctly deal with &quot;from gi.repository import
+  Gtk,GObject&quot; by replacing ',' with a space instead of just
+  removing it. This should fix wrong Requires like
+  typelib(GtkGObject).
+- Update to version 1.29.0:
+  + Bump version to reflect the link to the glib version.
+  + Many improvement and fixes in the scanner, including:
+    - Read (array) and (element-type) annotations for fields
+    - Add support for the (skip) annotation on parameters or return
+      values
+    - Always add a zero-terminated attribute when it cannot be
+      implied
+  + Fix accessing structure fields that are arrays
+  + Improved regression tests
+- Add an exclude path to gobjectintrospection.attr: we do not want
+  to look at files in /usr/share/doc/packages/ as those are just
+  documentation files. If examples are provided as documentation,
+  we do not want those examples to cause excessive Requires. This
+  fixes python-gobject requiring typelib(Gtk).
+- Enable typelib() Requires as well.
+- Currently only add typelib() Provides symbol to make sure we do
+  not break entire Factory.
+- Minor fixes on gi-find-deps.sh:
+  + Quotes are not allowed symbols in an import name. Fixes for
+    example gnome-shell Requiring typelib(').
+  + The typelib symbol is not supposed to contain a dot [.]. Should
+    we find a Requires / Provides that does, then we know we were
+    caught in some code using it direcly as an object. The typelib
+    symbol in this case is the first token before the first dot.
+  + Ignore anything after # in python parsing (it's a comment).
+- Provide the template-based typelib() versioned.
+- Manually provide the typelib() symbols for libgirepository-1_0-1.
+  The rpm magic is not yet in place and can thus not automatically
+  detect the symbols.
+- Add gobjectintrospection.attr: install rpm reqprov plugin
+  handler, benefitting from the new rpm 4.9 infrastructure.
+- Move the rpm helpers to the main package: this is really what is
+  used to build with gobject-introspection, while the devel
+  subpackage is mostly needed if building against
+  libgirepository-1.0.
+- Add gi-find-deps.sh: automatically detect Requires and Provides
+  for gobject-introspection typelibs.
+- Update to version 0.10.8:
+  + bgo#647621: g_spawn_async_with_pipes annotation corrections.
+  + gimarshallingtests: Remove incorrect cast.
+  + bgo#647796: Added annotation for g_variant_new_variant to mark
+    it as const.
+- Update to version 0.10.7:
+  + add annotations for g_base64_encode and g_base64_decode
+  + bgo#640264: girparser: use c:identifier-prefixes instead of
+    c:prefix.
+- Update to version 0.10.6:
+  + bgo#645692: fix generation of cairo typelib.
+- Changes from version 0.10.5:
+  + bgo#644749: support setting gobjects and ginterfaces in struct
+    fields.
+- Changes from version 0.10.4:
+  + Use fully qualified shared library for cairo-1.0.gir.
+- Update to version 0.10.3:
+  + Visible changes:
+    - Nested structs and unions (bgo#555960)
+    - Support Shadows: annotation (bgo#556475)
+    - Allow annotation of enums as bitfields (bgo#573332)
+    - Add support for a 'closure' and 'destroy' annotations
+      (bgo#574284)
+    - Add short/ushort support (bgo#584423)
+  + Many improvement and fixes in the scanner, including:
+    - Parse doc-comment tags case-insensitive (bgo#572086)
+    - #defines should be parsed in .h files but not .c files
+      (bgo#572790)
+  + Various additions and fixes to introspection data shipped with
+    gobject-introspection, including:
+    - Add annotations for g_spawn_* functions (bgo#585373)
+  + Other bugs fixed: bgo#551738, bgo#555964, bgo#561360,
+    bgo#561604, bgo#563469, bgo#563682, bgo#564016, bgo#566560,
+    bgo#567906, bgo#568680, bgo#569355, bgo#569633, bgo#569930,
+    bgo#570594, bgo#570903, bgo#571182, bgo#571248, bgo#571483,
+    bgo#571548, bgo#571649, bgo#572075, bgo#572423, bgo#572434,
+    bgo#572563, bgo#572965, bgo#573306, bgo#573309, bgo#574139,
+    bgo#574501, bgo#575613, bgo#576323, bgo#576605, bgo#576627,
+    bgo#577065, bgo#577534, bgo#577546, bgo#579522, bgo#579602,
+    bgo#581680, bgo#581682, bgo#581684, bgo#581685, bgo#581689,
+    bgo#583338, bgo#584432, bgo#584453, bgo#584816, bgo#584842,
+    bgo#585081, bgo#585141, bgo#585150, bgo#585328, bgo#585579,
+    bgo#585584, bgo#585908.
+- Changes from version 0.10.2:
+  + Add (constructor) annotation
+  + Add (method) overrides
+  + Disable missing class structure warning.
+  + Depend on cairo-gobject if available
+  + Pass shared-library as-is to g_module_open
+  + Various improvements and bug fixes.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common and gtk-doc BuildRequires.
+  + Add call to ./autogen.sh.
+  + Enforce gtk-doc html generation by passing --enable-gtk-doc to
+    configure.
+- Update to version 0.10.1:
+  + Scanner:
+    - Properly parse recursive list type nodes
+    - Fix handling of property transfer
+    - Make sure that vfuncs made to the GIR
+  + Add API to call the native implementation of a virtual function
+  + Update introspection data for gobject/gio.
+- Drop gobject-introspection-git-fixes.patch: fixed upstream.
+- Add gobject-introspection-git-fixes.patch: this patch contains
+  various commits from git, to fix the build with glib 2.27.90.
+- Update to version 0.10.0:
+  + An hash-table index has been added to the typelib format.
+    Using a perfect hash generated with the CMPH library allows
+    for much more efficient lookups in cases where symbols
+    need to be looked up repeatedly.
+  + GIO annotations are now extracted from the GLib sources
+    (as a manual step; the extracted annotations are shipped
+    with gobject-introspection.) This will be extended in
+    the future to cover the rest of GLib.
+  + UTF-8 string constants are now supported.
+  + The cairo typelib now integrates properly with the
+    cairo-gobject library.
+- Drop patches that were fixed upstream:
+  + gobject-introspection-keyring-workaround.patch
+  + gobject-introspection-libgda-workaround.patch
+- Add a rpmlintrc file: the devel-file-in-non-devel-package errors
+  for gir and source files are wrong here, because
+  gobject-introspection is, by definition, a devel package (in the
+  same way as gcc is).
+- Add an extra % to a macro in a comment to make rpmlint happy (and
+  to make sure that the macro won't get expanded).
+- Update to version 0.9.12:
+  + Ship gtk-doc files in tarball.
+- Changes from version 0.9.11:
+  + Scanner:
+    - Add -export-dynamic when compiling with libtool.
+    - Honor -L commandline option.
+  + Various scanner fixes and improvements.
+- Drop gobject-introspection-export-dynamic.patch: fixed upstream.
+- Remove comments about upstream tarball and gtk-doc, and remove
+  gtk-doc BuildRequires: the files are in the tarball now.
+- Add gobject-introspection-export-dynamic.patch: this fixes the
+  build of some gir, like in clutter.
+- Update to version 0.9.10:
+  + gir: Explicitly specify path to girepository so libtool can
+    find it
+- Changes from version 0.9.9:
+  + Actually do something about fundamentals when parsing a .gir
+  + Abort if we would be generating an empty namespace
+  + Minor fixes
+- Update to version 0.9.8:
+  + Fix --include-uninstalled
+  + Don't ignore annotations if there's a : in docs
+- Remove --enable-gtk-doc from configure: API docs got forgotten
+  again :/
+- Update to version 0.9.7:
+  + Add an annotation tool.
+  + Improve gobject/gio annotations.
+  + Validate annotations during the scan.
+  + Catch cpp errors during the scan.
+  + Make Full the default transfer for returned foreign structs.
+  + Various scanner fixes and improvements.
+- Pass --enable-gtk-doc to configure again, to get API docs.
+- Add gobject-introspection-libgda-workaround.patch: this is a
+  workaround needed when generating the gir file for libgda. See
+  bgo#629779.
+- Drop gir-repository Recommends from libgirepository-1_0-1: there
+  is no real interesting file there anymore.
+- Temporarily remove --enable-gtk-doc option from configure: the
+  0.9.6 tarball is missing all the files needed for this. See
+  bgo#629871.
+- Move all gir files to the main package (as well as the m4 file
+  and the Makefile), but still keep the /usr/share/gir-1.0
+  directory in libgirepository-1_0-1, to not force everybody to own
+  it. The reason for the move is that the gobject-introspection
+  package is more or less like a compiler, while the devel package
+  is really the devel package for the libgirepository-1.0 library.
+- However, we need to keep the pkg-config file in the devel
+  subpackage at the moment, since they cover both the library and
+  the gobject-introspection tools. We'll be able to change this
+  when bgo#629930 gets fixed.
+- Move the AUTHORS, NEWS and similar files to the main package.
+- Add gobject-introspection-keyring-workaround.patch: this is a
+  workaround needed when generating the gir file for
+  libgnome-keyring. See bgo#629426.
+- Update to version 0.9.6:
+  + Fix regressions in the scanner rewrite from 0.9.5, especially
+    issues that stopped other modules from building correctly.
+  + Various other small improvements and code cleanups in the
+    scanner.
+  + Add missing annotations to GLib and Gio.
+  + Various bug fixes.
+- Update to version 0.9.5:
+  + Major rewrite, that leads to a bump in the gir format (version
+    1.2).
+  + Rename Everything to Regress, and do no longer install it by
+    default; instead, ship the C files in
+    $(datadir)/gobject-introspection/tests/
+  + Fix giscanner crash with no cache directory.
+  + Make the scanner parse C++ files too.
+  + If GI_SCANNER_DEBUG is set, drop into a debugger on error in
+    the scanner.
+  + Import DBus, DBusGLib gir from gir-repository.
+  + Update some gir files shipped with gobject-introspection.
+  + Various bug fixes.
+- Pass --enable-gtk-doc to configure.
+- Update to version 0.9.3:
+  + Add annotations for g_variant_new_strv() and
+    g_variant_get_strv()
+  + Add annotation for g_dbus_proxy_new_sync
+  + Fix ordering in override_search_path on gir-repository
+  + Make scanner compatible with python 2.y
+  + Add g_irepository_enumerate
+  + Append -Wl,-rpath=. to the scanner compile
+  + Add g_info_type_to_string (GIInfoType type)
+  + Add new API g_typelib_require_private()
+  + Misc bug fixes
+- Add gtk-doc to BuildRequires
+- Clean up update to 0.9.2.
+- Change cairo-devel, glib2-devel BuildRequires to pkgconfig(cairo)
+  and pkgconfig(gobject-2.0).
+- Remove checks for old versions of openSUSE (&lt;= 11.1).
+- Remove glib2-devel Requires of devel package: it's now
+  automatically handled with pkgconfig() Requires.
+- Fix post/postun to be for libgirepository-1_0-1.
+- Upate to version 0.9.2:
+  + Add some cairo methods
+  + Add support for non-GObject fundamental objects
+  + Bump shared library version, typelib version
+  + Don't include machine-dependent integral types in the typelib
+  + Bug fixes
+- Rename libgirepository-1_0-0 to libgirepository-1_0-1
+- Update to version 0.9.0:
+  + Barf if running on unsupported platform
+  + Annotate GVariant as a foreign struct
+  + Support the (transfer) annotation for properties
+  + Allow for methods in GLib
+  + Add versioning to the cache
+  + Add some more Gio annotations
+  + Apply annotations from invoker to vfunc
+  + Support introspectable=no attribute, add warnings framework
+  + Allow attributes on parameters and return values
+  + Clean up annotation parsing, don't try to parse invalid
+    annotations
+  + Cleanups and code reorganization
+  + Bug fixes
+  + Update docs
+- Changes from version 0.6.14:
+  + Support unsigned long/short int
+  + Add type annotation for properties
+  + Fix marshalling of GStrv
+  + Bug fixes
+  + Update docs
+- Update to version 0.6.12:
+  + Build system cleanups
+  + Documentation updates
+  + Minor bugfixes
+- Changes from version 0.6.11:
+  + Add various annotations
+  + Take into account the underscore after the type name when
+    checking if a function is a method
+  + Use g_slice
+  + Add support for the 'foreign' annotation to g-i-scanner
+  + Bug fixes
+  + Update docs
+- Changes from version 0.6.10:
+  + Add GKeyFile annotations
+  + Revert a change that makes gjs crash
+  + Correctly use ffi_closure_alloc(), fixing mmap permissions
+    error
+  + Assert input values in Everything funcs
+  + Add GIMarshallingTests typelib
+  + If needed, convert from camelcase to underscores when stripping
+    the prefix of constants
+  + Add foreign struct funcs to Everything
+  + Add a simple callback type which has no arguments or return
+    values
+  + Make g_file_set_contents() take uint8*, not utf8
+  + Warn about annotations for unknown args
+  + Add support for GArrays
+  + Use -1 not None for closure/destroy indices
+  + Validate scope annotation values and parameter references
+  + Add a basic gir for xrandr
+  + Add uid_t, gid_t, dev_t to integral type conversions
+  + Add tests
+  + Update docs
+  + Minor bug fixes
+- BuildRequire cairo-devel
+- Update to version 0.6.9:
+  + Correctly cast to a CommonBlob when looking up embedded types
+  + g-ir-compiler: Slightly less lame error messages
+  + [everything] Add some &quot;torture&quot; test functions with baroque
+    signatures
+  + scanner: Catch OSError too when checking for libtool
+  + scanner: Always explicitely set the scope of callbacks
+- Update to version 0.6.8:
+  + [girffi] Clean up API, add g_function_info_prep_invoker
+  + Allow stack allocating GIBaseInfo, add stack retrieval variants
+  + scanner: Always explicitely set the scope of callbacks
+  + scanner: Print error instead of throwing for unknown include
+- Update to version 0.6.7:
+  + Add a Makefile.introspection file.
+  + Revert &quot;GI_TYPE_TAG_VOID != ffi_type_void&quot;
+  + protect on null retval
+  + fix invoke tests
+  + Substitute deprecated Glib symbol: g_mapped_file_free
+- Add libffi-devel Requires to devel package; this fixes the build
+  of packages linking to gobject-introspection.
+- Update to version 0.6.6:
+  + Make g-ir-scanner 64-bit enable. bgo#593639
+  + Consistently resolve symbolic links
+  + Improve warning and error messages.
+  + Explicitly sort object interfaces, properties, and signals
+  + When doing type resolution on a string, treat it as its own
+    ctype
+  + Implement callbacks as part of struct fields. bgo#557383
+  + Add g_ir_ffi_convert_arguments
+  + Add a method to compare infos
+  + Make (skip) annotation work everywhere
+  + InitiallyUnownedClass should contain all the fields as
+    ObjectClass
+  + Ignore errors caused by permissions in $HOME
+  + Add async callback tests to everything
+  + [dumper] Fix threads initialization
+  + Allow NULL to be sent in for various callbacks
+  + Fix an annotationparser bug for empty tags
+  + Add/Fix annotations.
+  + Many small bug fixes.
+  + Build fixes.
+  + Build system fixes.
+- Update to version 0.6.5:
+  + Replace LIBTOOL_LIBTOOL to LIBTOOL (bgo#592968)
+  + Use CC rather than LD to fix build issue for gir (bgo#593599)
+  + Add GVolumeMonitor interfaces
+  + Use built scanner from tarball builds (bgo#593162)
+  + Fix unref of GIUnresolvedInfo instances (bgo#593322)
+  + Add CLFAGS and LIBS variables
+  + Correctly ref repository in GIUnresolvedInfo
+- Update to version 0.6.4:
+  + Add annotations for various API, update for some API.
+  + Bug fixes.
+  + Add COPYING.GPL and COPYING.LGPL.
+- Add Requires on python-xml.
+- Update to version 0.6.3:
+  + Too many bugfixes to mention, see NEWS for full details
+- Remove gobject-introspection-git-20090501.patch.bz2 and it's
+  requirements. The tarball is newer than the used git-patch
+- Fix build on 11.1.
+- Make libgirepository-1_0-0 Recommends gir-repository.
+- Move package doc files to libgirepository-1_0-0 since this is the
+  important package.
+- Initial package. (forwarded request 1073089 from iznogood)</comment>
+    <requestid>1073225</requestid>
+  </revision>
 </revisionlist>

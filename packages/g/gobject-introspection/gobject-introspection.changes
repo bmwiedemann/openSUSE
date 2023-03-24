@@ -6,6 +6,35 @@ Wed Mar 15 10:28:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
   being scanned than needed.
 
 -------------------------------------------------------------------
+Tue Mar 14 12:51:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.76.0:
+  + Update the GIR data for GLib.
+  + Documentation fixes.
+
+-------------------------------------------------------------------
+Mon Feb 27 18:02:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.75.6:
+  + Documentation fixes.
+  + Fix build when using GLib as a subproject.
+  + Update the GIR data for GLib.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:28:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.75.4:
+  + Brown-paper bag release to fix the GLib dependency.
+- Changes from version 1.75.2:
+  + Split 'disguised' attribute into two separate attributes.
+  + Add copy/free function annotations for plain-old data types.
+  + Include the default value of GObject properties in the GIR
+    data.
+  + Drop wrap files for recursive dependencies.
+  + Add more marshalling tests.
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+
+-------------------------------------------------------------------
 Thu Sep 22 17:02:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Switch to pcre2grep (pcre is dead upstream)
