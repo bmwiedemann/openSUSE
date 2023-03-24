@@ -1,8 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 17 06:41:13 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.7:
+  * Remove duplicate binding for Shift-Delete (#2246)
+  * remove duplicate command 'GotoLocation' (#2240)
+  * docs: add git branch filter input in changelog (#2239)
+  * Fix attempting to canonicalize a path when saving a new file (#2225)
+  * Add StartupWMClass to desktop entry (#2228)
+  * feat: double-click for new file on home page (#2223)
+  * feat: highlight all occurrences of the selected text (#2222)
+  * Fix new clippy warnings (#2224)
+  * open source file from diff (#2141)
+  * feat: allow folding file content in global search results (#2217)
+  * revert back to old way of set_locale_enviroment (#2209)
+  * fix: use AND comparison instead of bitwise (#2192)
+
+-------------------------------------------------------------------
 Wed Mar 01 10:21:38 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 0.2.6:
-  * bump version
   * Make auto_closing_matching_pairs dependent on BufferContent (#2188)
   * Extended double-click options (#2127)
   * chore(deps): bump once_cell from 1.15.0 to 1.17.1 (#2173)

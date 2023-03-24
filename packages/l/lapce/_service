@@ -3,8 +3,8 @@
     <param name="url">https://github.com/lapce/lapce</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">cc154ac94fbcfd3fe9bb3ac7c03d161d300b31c8</param>
-	<param name="match-tag">v0.2.6</param>
+    <param name="revision">ce1becf</param>
+	<param name="match-tag">v0.2.7</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
