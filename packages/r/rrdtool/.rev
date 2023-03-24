@@ -602,4 +602,16 @@
 </comment>
     <requestid>969763</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>eb93fed00ef161d31bf20e80cb0d9cd0</srcmd5>
+    <version>1.8.0</version>
+    <time>1679667505</time>
+    <user>dimstar_suse</user>
+    <comment>- Decouple e59f703bbcc0af949ee365206426b6394c340c6f.patch from
+  github url
+
+- Follow upstream, disable the following, failing tests: rpn1
+  https://github.com/oetiker/rrdtool-1.x/blob/master/.travis.yml#L30</comment>
+    <requestid>1073788</requestid>
+  </revision>
 </revisionlist>

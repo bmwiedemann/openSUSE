@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 22 12:56:56 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Decouple e59f703bbcc0af949ee365206426b6394c340c6f.patch from
+  github url
+
+-------------------------------------------------------------------
+Tue Mar 21 18:55:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Follow upstream, disable the following, failing tests: rpn1
+  https://github.com/oetiker/rrdtool-1.x/blob/master/.travis.yml#L30
+
+-------------------------------------------------------------------
 Wed Apr 13 08:27:59 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix segfault (seen in %check on aarch64):

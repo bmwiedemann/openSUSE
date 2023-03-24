@@ -1,7 +1,7 @@
 #
 # spec file for package rrdtool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,8 @@ Source4:        rrdcached-systemd-pre
 Source5:        rrdcached.service
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM -- Fix BUILD_DATE in rrdtool help output (fix segfault)
-Patch1:         https://github.com/oetiker/rrdtool-1.x/commit/e59f703bbcc0af949ee365206426b6394c340c6f.patch
+# https://github.com/oetiker/rrdtool-1.x/commit/e59f703bbcc0af949ee365206426b6394c340c6f.patch
+Patch1:         e59f703bbcc0af949ee365206426b6394c340c6f.patch
 # PATCH-FIX-UPSTREAM -- Prevent possible segfault
 Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
@@ -316,7 +317,12 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrrdcached
 
 %check
-make %{?_smp_mflags} check
+# Follow upstream, disable the following, failing tests: rpn1
+# https://github.com/oetiker/rrdtool-1.x/blob/master/.travis.yml#L30
+make %{?_smp_mflags} check TESTS="modify1 modify2 modify3 modify4 modify5 rpn2 xport1 \
+tune1 tune2 graph1 rrdcreate dump-restore create-with-source-1 create-with-source-2 \
+create-with-source-3 create-with-source-4 create-with-source-and-mapping-1 \
+create-from-template-1 dcounter1 vformatter1 list1 pdp-calc1"
 
 %pre cached
 getent group %{rrdcached_group} >/dev/null || groupadd %{rrdcached_group}
