@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1004819</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>09deab105cb3b57356d0b85e06ace8bc</srcmd5>
+    <version>4.2.0</version>
+    <time>1679667470</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen). (forwarded request 1073112 from iznogood)</comment>
+    <requestid>1073236</requestid>
+  </revision>
 </revisionlist>
