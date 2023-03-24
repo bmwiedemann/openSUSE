@@ -18,7 +18,7 @@
 
 %define app_id fi.skyjake.Lagrange
 Name:           lagrange
-Version:        1.15.5
+Version:        1.15.6
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause

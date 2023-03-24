@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:13:46 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.6
+  - The Outline tab in the sidebar now uses regular UI colors, like other
+    sidebar tabs.
+  - Fixed handling of the AltGr key during text input.
+  - Fixed incorrect background colors for Preferences tab buttons with certain
+    themes (e.g., Colorful Light).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Mon Mar 20 15:24:59 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.15.5
