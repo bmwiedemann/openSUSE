@@ -274,4 +274,13 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002667 from dimstar)</comment>
     <requestid>1003193</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>57bf29bed3259d501e74122f14a25102</srcmd5>
+    <version>1.2.0</version>
+    <time>1679667469</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fa1546614190942ab266832e7470a6debf8c32cb.patch: test: Port to
+  g_inet_address_new_loopback. (forwarded request 1073093 from iznogood)</comment>
+    <requestid>1073228</requestid>
+  </revision>
 </revisionlist>
