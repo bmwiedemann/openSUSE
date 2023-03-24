@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 19 13:01:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Add copyright notice to configure.ac
+  * Make missing GNOME Keyring PAM module warning quiet (Fixes #46)
+  * build: Fix --disable-locking (Fixes #83)
+  * Remove duplicated lines in README (Fixes #109)
+  * savers: Fix critical warnings on exit
+  * savers: Fix critical warnings from GSThemeWindow on "realize"
+  * Do not redirect stderr for our own commands
+  * Round the user picture on lock dialog.
+  * build: Do not warn if PAM prefix is correct
+  * Improve lightdm detection (Fixes #39)
+  * build: Fix -Wunused-value compiler warning
+  * build: Fix -Wdeclaration-after-statement compiler warning
+  * build: Fix -Wsign-compare compiler warning
+  * build: Use XDT_FEATURE_DEBUG
+  * Fix use-after-free crash in xfce4-screensaver-dialog
+  * Fix D-Bus sleep inhibit when screen locker is disabled
+  * Complete previous commit
+  * Fix Xfconf memory management
+  * build: Set GLib macros via XDT_CHECK_PACKAGE
+  * autogen.sh: Do not `mkdir m4`
+  * Fix crash when XDG_PICTURES_DIR is not set (Fixes #86)
+  * Fix build warning from Clang
+  * --with-password-helper expects full pathname of password helper
+  * Add missing zeroing of timeout_id in dialog_timed_out() timer handler
+  * Fix wrong signal name for GtkSpinButton
+  * Remove ENABLE_NLS ifdefs and use xfce_textdomain()
+  * build: Fix intltool lock file problem during make distcheck
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Tue Jan  3 14:52:51 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.
