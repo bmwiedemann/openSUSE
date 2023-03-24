@@ -18,23 +18,23 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.6.2
+Version:        5.8.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/5.6/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/5.8/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel >= 1.70
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen
 BuildRequires:  vala
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.7
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.72
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72
 BuildRequires:  pkgconfig(gtk4) >= 4.6

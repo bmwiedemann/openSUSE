@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:39:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.8.0:
+  + vim: avoid large numbers of small deletions in filter command.
+  + adwaita.xml: add missing def:deletion style.
+  + todotxt.lang: add support for todo.txt format.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:55:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.7.2:
+  + Documentation improvements
+  + Updated languages: java.lang, html.lang
+  + Fix Y offset calculation when GtkTextView:top-margin is set
+  + Completion now requeries providers upon manual activation
+  + CSS updates for completion popover to reduce allocation jitter
+  + Assistants will more aggresively update positioning. It is
+    heavily suggested that you have GNOME/gtk!5564 in whatever GTK
+    you are linking against to reduce the potential for frames
+    rendered with missing allocations/text
+
+-------------------------------------------------------------------
+Sun Feb 26 20:23:04 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen).
+
+-------------------------------------------------------------------
+Fri Feb 24 18:49:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.7.1:
+  + Updated languages: c.lang, docker.lang, nix.lang
+  + Add missing version functions to GIR generation.
+  + Moving through snippets now retires the completion popover.
+  + Documentation updates.
+- Changes from version 5.7.0:
+  + gutterrenderermarks: avoid potential infinite loop with marks
+  + build: drop unnecessary vapigen check
+  + cpp.lang: add constinit keyword
+  + java.lang: fix escaped characters
+  + lean.lang: strings may contain line breaks
+  + nix.lang: Add Nix syntax highlighting
+  + reasonml.lang: add ReasonML language
+
+-------------------------------------------------------------------
 Wed Jan 11 11:09:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.6.2:
