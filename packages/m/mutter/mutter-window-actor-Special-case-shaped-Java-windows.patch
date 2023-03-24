@@ -11,11 +11,11 @@ by special-casing shaped Java windows.
  src/compositor/meta-window-actor-x11.c | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-Index: mutter-41.2/src/compositor/meta-window-actor-x11.c
+Index: mutter-44.beta/src/compositor/meta-window-actor-x11.c
 ===================================================================
---- mutter-41.2.orig/src/compositor/meta-window-actor-x11.c
-+++ mutter-41.2/src/compositor/meta-window-actor-x11.c
-@@ -589,6 +589,14 @@ has_shadow (MetaWindowActorX11 *actor_x1
+--- mutter-44.beta.orig/src/compositor/meta-window-actor-x11.c
++++ mutter-44.beta/src/compositor/meta-window-actor-x11.c
+@@ -428,6 +428,14 @@ has_shadow (MetaWindowActorX11 *actor_x1
     */
    if (window->has_custom_frame_extents)
      return FALSE;

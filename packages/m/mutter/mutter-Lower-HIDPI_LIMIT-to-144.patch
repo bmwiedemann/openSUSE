@@ -7,11 +7,11 @@ Subject: [PATCH] monitor: Lower HIDPI_LIMIT to 144
  src/backends/meta-monitor.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: mutter-41.2/src/backends/meta-monitor.c
+Index: mutter-44.beta/src/backends/meta-monitor.c
 ===================================================================
---- mutter-41.2.orig/src/backends/meta-monitor.c
-+++ mutter-41.2/src/backends/meta-monitor.c
-@@ -1658,7 +1658,7 @@ meta_monitor_calculate_crtc_pos (MetaMon
+--- mutter-44.beta.orig/src/backends/meta-monitor.c
++++ mutter-44.beta/src/backends/meta-monitor.c
+@@ -1805,7 +1805,7 @@ meta_monitor_calculate_crtc_pos (MetaMon
  }
  
  /* The minimum resolution at which we turn on a window-scale of 2 */

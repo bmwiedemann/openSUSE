@@ -18,11 +18,11 @@
 
 %bcond_without profiler
 
-%define api_major 11
+%define api_major 12
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        43.3+2
+Version:        44.0+8
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ URL:            https://www.gnome.org
 #Source0:        https://download.gnome.org/sources/mutter/42/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
 
-# PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
+# PATCH-NEEDS-REBASE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144 WAS PATCH-FIX-OPENSUSE
 Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch1:         mutter-disable-cvt-s390x.patch
@@ -40,8 +40,6 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-crash-meta_context_terminate.patch bsc#1199382 glgo#GNOME/mutter#2267 xwang@suse.com -- Fix SIGSEGV in meta_context_terminate
 Patch3:         mutter-crash-meta_context_terminate.patch
-# PATCH-FIX-UPSTREAM mutter-prevent-newly-focused-windows-to-steal-focus-from-shell.patch bsc#1208494, glgo#GNOME/mutter!2878 alynx.zhou@suse.com -- Fix broken window focus
-Patch4:         mutter-prevent-newly-focused-windows-to-steal-focus-from-shell.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -68,12 +66,14 @@ BuildRequires:  pkgconfig(gbm) >= 17.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.69.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+#BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(graphene-gobject-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.8
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
 BuildRequires:  pkgconfig(lcms2) >= 2.6
@@ -146,11 +146,10 @@ applications that want to make use of the mutter library.
 
 %prep
 %setup -q
-%patch0 -p1
+#patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}
@@ -192,7 +191,7 @@ applications that want to make use of the mutter library.
 %{_mandir}/man1/mutter.1%{?ext_man}
 %{_bindir}/mutter
 %{_libexecdir}/mutter-restart-helper
-%{_datadir}/applications/mutter.desktop
+%{_libexecdir}/mutter-x11-frames
 %{_udevrulesdir}/61-mutter.rules
 
 # These so files are not split out since they are private to mutter

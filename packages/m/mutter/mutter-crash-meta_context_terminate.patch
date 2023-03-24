@@ -1,8 +1,8 @@
-Index: mutter-42.1/src/x11/session.c
+Index: mutter-44.beta/src/x11/session.c
 ===================================================================
---- mutter-42.1.orig/src/x11/session.c
-+++ mutter-42.1/src/x11/session.c
-@@ -113,7 +113,8 @@ process_ice_messages (GIOChannel   *chan
+--- mutter-44.beta.orig/src/x11/session.c
++++ mutter-44.beta/src/x11/session.c
+@@ -150,7 +150,8 @@ process_ice_messages (GIOChannel   *chan
         * being cleaned up, since it is owned by libSM.
         */
        disconnect ();
@@ -12,11 +12,11 @@ Index: mutter-42.1/src/x11/session.c
  
        return FALSE;
      }
-Index: mutter-42.1/src/tests/meson.build
+Index: mutter-44.beta/src/tests/meson.build
 ===================================================================
---- mutter-42.1.orig/src/tests/meson.build
-+++ mutter-42.1/src/tests/meson.build
-@@ -35,6 +35,7 @@ tests_deps = [
+--- mutter-44.beta.orig/src/tests/meson.build
++++ mutter-44.beta/src/tests/meson.build
+@@ -43,6 +43,7 @@ tests_deps = [
  ]
  
  libmutter_test = shared_library(libmutter_test_name,

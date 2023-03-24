@@ -1,9 +1,126 @@
 -------------------------------------------------------------------
+Tue Mar 21 18:42:11 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+8:
+  + clutter: Safely transform paths to strings and vice versa
+  + Export meta_window_has_pointer ()
+  + compositor/window-drag: Fix keyboard resize
+  + backends: Fall back to the default and not the unknown color
+    space
+  + wayland/buffer: Avoid spamming the log when a buffer is not
+    scanoutable
+  + kms/device: Avoid leaking some fields
+  + kms/impl-device: Fix result listener list leak
+  + kms/impl-device/simple: Avoid destroying a NULL hash table
+
+-------------------------------------------------------------------
+Sun Mar 19 12:39:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Fix state confusion and delay on startup.
+  + Fix night light regression.
+  + Fix fullscreen regression with many SDL apps.
+  + Fixed crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 15 08:53:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop patch needed for mutter-43.x, not needed in GNOME:Next where
+  we have mutter-44.rc:
+  + mutter-prevent-newly-focused-windows-to-steal-focus-from-shell.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 08:25:25 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-prevent-newly-focused-windows-to-steal-focus-from-shell.patch:
   Revert wrong commit and try a third approach to fix focus
   (bsc#1208494).
+
+-------------------------------------------------------------------
+Mon Mar  6 18:46:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Do not overwrite previously set offsets on attach
+  + Fix Xwayland focus regressions
+  + Stop parsing unused EDID parameters
+  + Fix partial updates on offscreen rotated screens
+  + Improve Xwayland RandR emulation compatibility
+  + Fix touch window dragging on rotated monitors
+  + Remove legacy OpenGL driver support
+  + Improve default scale factor selection
+  + Handle all X11 window title fallbacks
+  + Fix handling of keyboard-driven window resize
+  + Fix recording windows on non-active workspaces
+  + Manage KMS updates more asynchronously
+  + Fix headless startup
+  + Remove support for window shading
+  + Move away from GTK3
+  + Restore zero-copy fast path for Xwayland fullscreen windows
+  + Prevent clients from locking the compositor with cursor updates
+  + Add experimental development tool for HDR modes
+  + Account for linear sampling when calculating actor damage
+  + wayland: Implement fractional_scale protocol
+  + Fixed crashes
+  + Memory handling fixes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Disable mutter-Lower-HIDPI_LIMIT-to-144.patch: Needs rebase.
+- Rebase mutter-disable-cvt-s390x.patch with quilt.
+- Replace pkgconfig(gnome-desktop-3.0) with
+  pkgconfig(gnome-desktop-4) BuildRequires, following upstream
+  changes.
+
+-------------------------------------------------------------------
+Fri Feb 24 09:33:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Don't disable KMS modifiers on newer i915 systems
+  + Set LOD bias for sharper mipmaps
+  + Fix edge resistance and window snapping regression
+  + Avoid high-level udev queries for input caps and properties
+  + Implement wl_output v3 and v4
+  + Fix recalculating viewport after window resize
+  + Fix opaque cursors and LoDPI cursor on HiDPI screens
+  + Process device removing events immediately
+  + Handle stage view updates without allocation more gracefully
+  + Fix window screenshots being cut off at the bottom right
+  + wayland/subsurface: Avoid using buffers with unfinished client
+    work
+  + Move X11 window decorations to a separate client
+  + Fix cursor position in window screencasts
+  + Skip resize effects for tiled windows during user grabs
+  + Fix pointer constrains with subsurfaces
+  + Disable direct scanout during drag-n-drop operations
+  + Ignore unmapped subsurfaces in direct scanout check
+  + Fix cursor disappearing over windows during grabs
+  + Make wl_output mode independent of the orientation
+  + Improve focus handling on workspace switches
+  + Fix initialization of keyboard accessibility
+  + Refactor API to use well-defined ownership instead of
+    singletons
+  + Add support for xdg-foreign-v2
+  + Add higher bit depth offscreen framebuffers support
+  + Overhaul dynamic max render time calculation
+  + Do not require a physical device to update pointer visibility
+  + Allow building without xwayland support
+  + Add Xwayland byte-swapped clients support
+  + Fix freeze when crossing monitors under some conditions
+  + Don't allow window activation to break global grabs
+  + Integrate window grab operations with new ClutterGrab API
+  + Support selecting an acceleration profile for touchpad devices
+  + Enforce compliant surface buffer sizes
+  + Keep proportional position when moving window between rects
+  + Introduce implicit grabbing in Clutter
+  + Fix unexpected window focus changes after global grabs
+  + Fix sloppy/mouse focus mode on wayland
+  + Add service channel Wayland clients
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Rebase patches with quilt.
+- Bump api_major define to 12 following upstream changes.
 
 -------------------------------------------------------------------
 Mon Feb 20 14:38:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>

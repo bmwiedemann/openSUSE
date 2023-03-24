@@ -1734,4 +1734,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>1071263</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>6cdcd2d9382080e5a74768a7761883e1</srcmd5>
+    <version>44.0+8</version>
+    <time>1679667506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073812</requestid>
+  </revision>
 </revisionlist>
