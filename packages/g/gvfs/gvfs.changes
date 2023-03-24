@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:33:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.4:
+  + dav: Prevent usage of NULL for nonexistent source file
+  + client: Fix copy/move operation from/to Flatpak sandbox
+  + http: Report original sizes regardless of compression usage
+  + Fix string comparison on various places
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  8 18:23:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split out a new sub-package gvfs-backend-goa. This allows
+  end-users to remove last remains of soup2 and gdata dependencies.
+  Add a Supplements on gvfs and gnome-online-accounts to pull it in
+  for most of our users.
+- Add explicit pkgconfig(libxml-2.0) BuildRequires: Meson checks
+  for it.
+
+-------------------------------------------------------------------
 Fri Jan  6 19:21:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.3:

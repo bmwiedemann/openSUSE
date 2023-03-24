@@ -18,7 +18,7 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.50.3
+Version:        1.50.4
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -63,6 +63,7 @@ BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(systemd)
@@ -139,6 +140,17 @@ APIs of libgio.
 
 This package contains FUSE support that allows applications
 not using GIO to access the GVfs filesystems.
+
+%package backend-goa
+Summary:        Google disk and GOA functionality for GLib
+License:        LGPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Supplements:    (gvfs and gnome-online-accounts)
+
+%description backend-goa
+This package provides a gvfs backend that supports Google disk
+and GNOME online accounts integration.
 
 %package devel
 Summary:        Development files for the GNOME Virtual file system
@@ -245,6 +257,14 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
 %{_datadir}/GConf/gsettings/gvfs-smb.convert
 
+%files backend-goa
+%{_libexecdir}/%{name}/gvfs-goa-volume-monitor
+%{_userunitdir}/gvfs-goa-volume-monitor.service
+%{_datadir}/%{name}/remote-volume-monitors/goa.monitor
+%{_datadir}/dbus-1/services/org.gtk.vfs.GoaVolumeMonitor.service
+%{_libexecdir}/%{name}/gvfsd-google
+%{_datadir}/%{name}/mounts/google.mount
+
 %files backends
 %doc monitor/udisks2/what-is-shown.txt
 %{_datadir}/dbus-1/services/org.gtk.vfs.UDisks2VolumeMonitor.service
@@ -281,16 +301,10 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/mounts/ftp.mount
 %{_datadir}/%{name}/mounts/ftps.mount
 %{_datadir}/%{name}/mounts/ftpis.mount
-%{_libexecdir}/%{name}/gvfsd-google
-%{_datadir}/%{name}/mounts/google.mount
 %{_libexecdir}/%{name}/gvfsd-gphoto2
 %{_datadir}/%{name}/mounts/gphoto2.mount
 %{_libexecdir}/%{name}/gvfsd-http
 %{_datadir}/%{name}/mounts/http.mount
-%{_libexecdir}/%{name}/gvfs-goa-volume-monitor
-%{_userunitdir}/gvfs-goa-volume-monitor.service
-%{_datadir}/%{name}/remote-volume-monitors/goa.monitor
-%{_datadir}/dbus-1/services/org.gtk.vfs.GoaVolumeMonitor.service
 %{_libexecdir}/%{name}/gvfsd-localtest
 %{_datadir}/%{name}/mounts/localtest.mount
 %{_libexecdir}/%{name}/gvfsd-mtp
