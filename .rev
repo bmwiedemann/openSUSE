@@ -979,4 +979,63 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>1069277</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c7d14e882c3cfefebc6b22cace06c271</srcmd5>
+    <version>44.0</version>
+    <time>1679667413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.0:
+  + Fix missing separators in system updates dialog.
+  + Updated translations.
+- Update to version 44.rc:
+  + Fix a crash during install of a firmware update.
+  + Fix notifications of a prepared update.
+  + Fix cancellation of an update.
+  + Update details page on app job start/end.
+  + Fix a crash after cancelling of a single package update.
+  + Updated translations.
+- Update to version 44.beta:
+  + Add a preference for only showing freely-licensed apps
+  + Improve design of Install/Uninstall buttons for app addons
+  + Fix loading flatpak bundles if a runtime is missing
+  + Improvements to the UI for ratings and reviews
+  + Fix refreshing the details page after searching for an app
+  + Improve choice of icons for apps where a themed icon is
+    available
+  + Improve performance of downloading remote icons significantly
+  + Updated translations.
+- Changes from version 44.alpha:
+  + Allow automatically removing unneeded runtimes
+  + Show changelogs for rpm-ostree updates
+  + Limit the maximum description length in context tiles
+  + Support a less-prominent UI for regular updates for image-based
+    OSs
+  + Improvements to error notification display
+  + Reduce reloading/refreshing of view when installing apps
+  + Minor usability improvements to review lists and adding a
+    review
+  + Stop using libdnf in rpm-ostree backend
+  + UI polish on app source chooser
+  + Fix distro upgrades
+  + Fix system-wide external AppStream support
+  + UI polish on Incompatible Software dialog
+  + Fix opening web apps
+  + Fix notifying about available firmware updates
+  + Improve scaling of Explore page on phones
+  + Add a placeholder to search entry
+  + Fix repo authentication dialog
+  + Periodically refresh cached app icons
+  + Improve labels and tooltips on Updates page
+  + Annotate firmware updates with their release urgency
+  + Adapt to GTK API deprecations
+  + Use the OS logo for minor update rows for image-based OSs
+  + Change ‘application’ to ‘app’ in translatable strings
+  + Stop notifying about unprepared critical updates
+  + Show the ‘Learn More’ link for larger updates of image-based
+    OSs if provided
+  + Add translations for more firmware device categories
+  + Updated translations.
+- Bump gs_plugin_api define to 20 following upstream changes. (forwarded request 1072609 from iznogood)</comment>
+    <requestid>1073157</requestid>
+  </revision>
 </revisionlist>

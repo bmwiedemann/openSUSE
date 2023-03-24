@@ -16,16 +16,16 @@
 #
 
 
-%define gs_plugin_api 19
+%define gs_plugin_api 20
 
 Name:           gnome-software
-Version:        43.5
+Version:        44.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/44/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
