@@ -1,7 +1,7 @@
 #
 # spec file for package broot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           broot
-Version:        1.16.2
+Version:        1.21.0
 Release:        0
 Summary:        A better way to navigate directories
 License:        MIT

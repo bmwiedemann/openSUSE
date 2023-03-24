@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Mar 23 09:30:15 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 1.21.0:
+  * better nushell integration (no need to quote arguments anymore, 
+    fix path extension broken by new version of nushell)
+  * don't show modal-only keys in help page when modal mode isn't enabled
+
+- Update to 1.20.2:
+  * fix debug statement printed in some cases (mostly on Windows)
+
+- Update to 1.20.1:
+  * fix status line not always displaying the hint of the input's verb
+
+- Update to 1.20.0:
+  * unless overriden, /proc is now no-enter, which solves freezes 
+    when searchin on / in some system
+  * SVG files now rendered as images in the preview panel
+  * new version of the nushell function. You should be prompted for an update
+  * no-hide special paths
+  * preview can now be opened on directories, showing their first level
+  * better determine whether the terminal is white or dark in some (probably rare) cases
+
+- Update to 1.19.0:
+  * Nushell support
+
+- Update to 1.18.0:
+  * Hjson configuration file can now omit outside braces (it's 
+    "braceless Hjson"), making it much cleaner
+  * allow opening the help screen with just the ? key on Windows (as for other systems)
+  * fix a crash in some cases of input being cleaned with a selection
+
+- Update to 1.17.1:
+  * Windows specific implementation of :cpp
+
+- Update to 1.17.0:
+  * max file size for content search now configurable (default is now 10MB)
+  * file summing now avoids /proc and /run
+  * default configuration sets /media as not entered by default 
+    (can be commented out, of course)
+
+-------------------------------------------------------------------
 Thu Nov 17 13:54:00 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.16.2:
