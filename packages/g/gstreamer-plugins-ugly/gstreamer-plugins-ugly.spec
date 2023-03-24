@@ -49,12 +49,12 @@ BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(libmpeg2) >= 0.5.1
+BuildRequires:  pkgconfig(opencore-amrwb) >= 0.1.3
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Enhances:       gstreamer
 # Generic name, never used in SUSE:
 Provides:       gst-plugins-ugly = %{version}
 %if 0%{?BUILD_ORIG}
-BuildRequires:  pkgconfig(opencore-amrwb) >= 0.1.3
 BuildRequires:  pkgconfig(x264) >= 0.120
 %endif
 %if 0%{?BUILD_ORIG}
@@ -109,8 +109,6 @@ export PYTHON=%{_bindir}/python3
 	-Dpackage-name='openSUSE gstreamer-plugins-ugly package' \
 	-Dasfdemux=disabled \
 	-Dpackage-origin='http://www.opensuse.org/' \
-	-Damrnb=disabled \
-	-Damrwbdec=disabled \
 	-Dx264=disabled \
 %endif
 	-Dgpl=enabled \
@@ -126,7 +124,10 @@ export PYTHON=%{_bindir}/python3
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
+%{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstamrnb.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstamrwbdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdread.so
@@ -138,12 +139,9 @@ export PYTHON=%{_bindir}/python3
 %if 0%{?BUILD_ORIG_ADDON}
 %files orig-addon
 %endif
-%{_libdir}/gstreamer-%{gst_branch}/libgstamrnb.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstamrwbdec.so
+%{_datadir}/gstreamer-%{gst_branch}/presets/GstX264Enc.prs
 %{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx264.so
-%{_datadir}/gstreamer-%{gst_branch}/presets/GstAmrnbEnc.prs
-%{_datadir}/gstreamer-%{gst_branch}/presets/GstX264Enc.prs
 %endif
 
 %files lang -f %{_name}-%{gst_branch}.lang
