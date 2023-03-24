@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        43.0.1
+Version:        44.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.52.0
@@ -64,7 +64,7 @@ Summary:        Shared library for %{name}
 Group:          System/Libraries
 
 %description -n libgcalc-%{sover}
-GNOME Calculator Library
+This package contains a shared library for %{name}.
 
 %package -n libgci-%{gcisover}
 Summary:        GNOME Calculator Library GTK Interface

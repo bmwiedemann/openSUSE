@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 17 20:23:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  5 13:16:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 15:08:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Improved factorization
+  + Number format selection documentation improvements
+  + Made builtin function descriptions translatable
+  + Fixed display showing 0 on startup
+  + Improved button tooltips
+  + Added signed int support to programming mode
+  + i and e constants updated according to ISO 80000-2:2009
+  + Help overlay updates
+  + Added preferences shortcut
+  + Destroy dialog after clicking cancel
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 18:09:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0.1:
