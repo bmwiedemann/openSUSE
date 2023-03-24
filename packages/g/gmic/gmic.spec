@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -53,6 +53,9 @@ Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-Find-the-local-gmic-library.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-Qt-form-paths-in-CMakeLists.patch
+Patch3:         0001-Do-not-build-all-host-code-by-default.patch
 #
 # SECTION pkg_vcmp
 #

@@ -12,28 +12,27 @@ To keep using CMake in gmic-qt, we need to teach it where the libgmic library is
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index 3d4b109..fd360ba 100644
+index d720221..7425466 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
-@@ -119,6 +119,9 @@ if (NOT ENABLE_SYSTEM_GMIC)
+@@ -120,8 +120,10 @@ if (NOT ENABLE_SYSTEM_GMIC)
    if (NOT(${GMIC_VERSION} EQUAL ${CIMG_VERSION}))
    message(FATAL_ERROR "\nVersion numbers of files 'gmic.h' (" ${GMIC_VERSION} ") and 'CImg.h' (" ${CIMG_VERSION} ") mismatch")
    endif()
-+
+-endif()
+ 
 +  # find the 'gmic' library built using 'make lib' in the top folder
 +  find_library(gmic NAMES gmic PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../src")
- endif()
++endif()
  
- 
-@@ -567,7 +570,7 @@ if(ENABLE_DYNAMIC_LINKING)
-   set(CMAKE_SKIP_RPATH TRUE)
-   set(gmic_qt_LIBRARIES
-     ${gmic_qt_LIBRARIES}
--    "gmic"
-+    ${gmic}
+ option(PRERELEASE "Set to ON makes this a prelease build")
+ if (${PRERELEASE})
+@@ -593,7 +595,7 @@ if(ENABLE_DYNAMIC_LINKING)
+   elseif(GMIC_LIB_PATH)
+     set(gmic_qt_LIBRARIES
+       ${gmic_qt_LIBRARIES}
+-      "gmic"
++      ${gmic}
      )
-   if (NOT ENABLE_SYSTEM_GMIC)
-     link_directories(${GMIC_LIB_PATH})
--- 
-2.36.0
-
+   else()
+     message(FATAL_ERROR "No G'MIC library is available for linking. Please build libgmic as a static library.")

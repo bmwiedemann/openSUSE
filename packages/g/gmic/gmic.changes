@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 20 13:14:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.2. No changelog.
+- Rebase krita5.patch
+- Add upstream gmic-qt changes:
+  * 0001-Fix-Qt-form-paths-in-CMakeLists.patch
+  * 0001-Do-not-build-all-host-code-by-default.patch
+
+-------------------------------------------------------------------
 Sun Feb 19 16:52:48 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.2.1. No changelog.
