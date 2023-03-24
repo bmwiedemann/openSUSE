@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 10 10:44:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- disable utf8proc (following upstreams not use it by default
+  on non-macOS) 
+
+-------------------------------------------------------------------
 Mon Jan 23 16:17:36 UTC 2023 - pgajdos@suse.com
 
 - security update

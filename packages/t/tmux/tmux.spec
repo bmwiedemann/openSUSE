@@ -31,7 +31,6 @@ Patch0:         tmux-socket-path.patch
 Patch1:         tmux-CVE-2022-47016.patch
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
-BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libevent) >= 2.0
 %{?systemd_ordering}
@@ -60,7 +59,7 @@ to (display and accept keyboard input from) multiple clients.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%configure --enable-utf8proc --with-TERM=screen-256color --enable-systemd
+%configure --disable-utf8proc --with-TERM=screen-256color --enable-systemd
 %if 0%{?suse_version} >= 1320
 %make_build
 %else
