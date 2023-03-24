@@ -1,7 +1,7 @@
 #
 # spec file for package libfdata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfdata
 %define lname	libfdata1
-Version:        20220111
+Version:        20230319
 Release:        0
 Summary:        Library to provide generic file data functions
 License:        LGPL-3.0-or-later
@@ -31,11 +31,11 @@ Source3:        %name.keyring
 Patch2:         libfdata-20211023-1TB-fix.patch
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfcache) >= 20230115
 # Various notes: https://en.opensuse.org/libyal
 
 %description

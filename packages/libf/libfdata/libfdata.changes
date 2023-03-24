@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 19 11:03:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230319
+  * Removed no longer used tree support
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are
