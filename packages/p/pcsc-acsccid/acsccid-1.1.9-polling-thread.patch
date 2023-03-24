@@ -1,8 +1,8 @@
-Index: acsccid-1.1.5/src/ifdhandler.c
+Index: acsccid-1.1.9/src/ifdhandler.c
 ===================================================================
---- acsccid-1.1.5.orig/src/ifdhandler.c
-+++ acsccid-1.1.5/src/ifdhandler.c
-@@ -427,7 +427,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
+--- acsccid-1.1.9.orig/src/ifdhandler.c
++++ acsccid-1.1.9/src/ifdhandler.c
+@@ -441,7 +441,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
  
  
  #if !defined(TWIN_SERIAL)
@@ -11,7 +11,7 @@ Index: acsccid-1.1.5/src/ifdhandler.c
  {
  	int reader_index;
  
-@@ -444,7 +444,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
+@@ -458,7 +458,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
  
  /* on an ICCD device the card is always inserted
   * so no card movement will ever happen: just do nothing */
@@ -20,7 +20,7 @@ Index: acsccid-1.1.5/src/ifdhandler.c
  {
  	int reader_index;
  
-@@ -478,6 +478,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
+@@ -492,6 +492,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
  	(void)InterruptStop(reader_index);
  	return IFD_SUCCESS;
  }
@@ -37,7 +37,7 @@ Index: acsccid-1.1.5/src/ifdhandler.c
  #endif
  
  
-@@ -681,7 +691,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -708,7 +718,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -46,7 +46,7 @@ Index: acsccid-1.1.5/src/ifdhandler.c
  				}
  
  				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
-@@ -689,7 +699,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -716,7 +726,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -55,7 +55,7 @@ Index: acsccid-1.1.5/src/ifdhandler.c
  				}
  			}
  			break;
-@@ -732,6 +742,36 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -768,6 +778,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				}
  			}
  			break;
@@ -68,6 +68,14 @@ Index: acsccid-1.1.5/src/ifdhandler.c
 +				*Length = 0;
 +
 +				ccid_desc = get_ccid_descriptor(reader_index);
++
++				/* Disable polling thread. */
++				if ((ccid_desc->readerID == ACS_APG8201_B2)
++					|| (ccid_desc->readerID == ACS_APG8201_B2RO)
++					|| ccid_desc->isSamSlot)
++				{
++					break;
++				}
 +
 +				/* CCID and not ICCD */
 +				if (((PROTOCOL_CCID == ccid_desc -> bInterfaceProtocol)

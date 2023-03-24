@@ -1,8 +1,8 @@
 #
 # spec file for package pcsc-acsccid
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Advanced Card Systems Ltd.
+# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 Advanced Card Systems Ltd.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1140
 BuildRequires:  pkgconfig(udev)
 %endif
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 URL:            http://acsccid.sourceforge.net/
 Summary:        PCSC Driver for ACS CCID Based Smart Card Readers
@@ -51,14 +51,14 @@ Group:          Productivity/Security
 Source:         http://downloads.sourceforge.net/%{_name}/%{_name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 %if 0%{?sles_version} == 11
-# PATCH-FIX-SLE acsccid-1.1.5-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
-Patch0:         %{_name}-1.1.5-libhal.patch
-# PATCH-FIX-SLE acsccid-1.1.5-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
-Patch1:         %{_name}-1.1.5-polling-thread.patch
-# PATCH-FIX-SLE acsccid-1.1.6-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
-Patch2:         %{_name}-1.1.6-polling-unplug.patch
-# PATCH-FIX-SLE acsccid-1.1.5-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
-Patch3:         %{_name}-1.1.5-libusb-1.0.8.patch
+# PATCH-FIX-SLE acsccid-1.1.9-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
+Patch0:         %{_name}-1.1.9-libhal.patch
+# PATCH-FIX-SLE acsccid-1.1.9-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
+Patch1:         %{_name}-1.1.9-polling-thread.patch
+# PATCH-FIX-SLE acsccid-1.1.9-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
+Patch2:         %{_name}-1.1.9-polling-unplug.patch
+# PATCH-FIX-SLE acsccid-1.1.9-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
+Patch3:         %{_name}-1.1.9-libusb-1.0.8.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pcsc-lite >= %{pcsc_lite_ver}
@@ -74,6 +74,7 @@ Enhances:       modalias(usb:v072Fp8301d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90CCd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90D8d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB100d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB500d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB101d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB102d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB103d*dc*dsc*dp*ic*isc*ip*)
@@ -81,7 +82,11 @@ Enhances:       modalias(usb:v072FpB10Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB104d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB113d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB114d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB116d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB117d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB000d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB501d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB504d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90D2d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8306d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2011d*dc*dsc*dp*ic*isc*ip*)
@@ -118,6 +123,8 @@ Enhances:       modalias(usb:v072Fp2244d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2259d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp225Bd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp225Cd*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp226Bd*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp226Ad*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp223Fd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2239d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2211d*dc*dsc*dp*ic*isc*ip*)
@@ -140,12 +147,15 @@ Enhances:       modalias(usb:v072Fp2213d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp222Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp220Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2258d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2301d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2300d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp0102d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp0103d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp0100d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp224Ad*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8201d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8206d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp8207d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8202d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8205d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90DBd*dc*dsc*dp*ic*isc*ip*)
@@ -185,21 +195,23 @@ cp -a src/towitoko/README README.towitoko
 %else
 %configure
 %endif
-make %{?jobs:-j%jobs}
+make %{?_smp_mflags}
 
 %install
-%makeinstall
+make install DESTDIR=%{buildroot}
 %if 0%{?suse_version} >= 1140
-mkdir -p $RPM_BUILD_ROOT/%{_udevrulesdir}
-sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_acsccid.rules >$RPM_BUILD_ROOT/%{_udevrulesdir}/92_pcscd_acsccid.rules
+mkdir -p %{buildroot}/%{_udevrulesdir}
+sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_acsccid.rules >%{buildroot}/%{_udevrulesdir}/92_pcscd_acsccid.rules
 %endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING LICENSE.openct NEWS README README.towitoko
+%if 0%{?suse_version} < 1500
+%doc AUTHORS ChangeLog COPYING LICENSE.openct README README.towitoko
+%else
+%doc AUTHORS ChangeLog README README.towitoko
+%license COPYING LICENSE.openct
+%endif
 %{ifddir}/*
 %if 0%{?suse_version} >= 1140
 %{_udevrulesdir}/*.rules
