@@ -16,16 +16,16 @@
 #
 
 
-%define base_version 43
+%define base_version 44
 
 Name:           gnote
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/44/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
 
 BuildRequires:  appstream-glib

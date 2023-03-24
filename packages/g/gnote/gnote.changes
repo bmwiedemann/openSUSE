@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:21:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + New Features: Open notes in tab next to current and move to
+    previous on close.
+  + Fixes:
+    - Fix meson a deprecation warning.
+    - Fix notebook deletion.
+    - Determine timezone offset dynamically, so the server
+      misconfig does not matter.
+- Bump base_version define to 44 following upstream changes.
+
+-------------------------------------------------------------------
 Mon Feb  6 11:47:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
