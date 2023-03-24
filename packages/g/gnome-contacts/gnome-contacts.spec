@@ -17,13 +17,13 @@
 
 
 Name:           gnome-contacts
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk4)
+BuildRequires:  pkgconfig(libqrencode)
 
 %description
 The integraded address book for GNOME.

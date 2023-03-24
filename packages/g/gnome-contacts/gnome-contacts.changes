@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Mar 18 12:40:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Contacts can now be shared with a QR code, which allows for
+    simple and easy way of sharing contact information across
+    devices.
+  + The main menu now allows you to export all contacts at once.
+  + Unsetting and editing an avatar for a contact is now more
+    intuitive with dedicated buttons that are overlayed on top of
+    the image.
+  + Support for TITLE/ORG vCard properties when importing.
+  + Fix a bug which made it impossible to add more than one address
+    for a contact.
+  + Several changes to the UI that makes it more consistent with
+    GNOME design guidelines.
+  + Birthdays on a leap year will now get a birthday notification
+    on February 28 in non-leap years.
+  + Added support for multiple keyboard shortcuts.
+  + It's now possible to explicitly unset a birthday.
+  + A bug where title buttons where shown twice is now fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:53:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Unsetting and editing an avatar for a contact is now a bit more
+    intuitive with the dedicated overlayed buttons.
+  + Several changes to comply better with the GNOME HIG.
+  + Added unit tests will now help us guarantee correctness.
+  + We now parse the first TITLE/ORG vCard properties.
+  + Fix a bug which made it impossible to add more than one address
+    for a contact.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 19:12:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + The main menu has been renamed to follow the GNOME HIG and now
+    contains an action item to export all contacts.
+  + Contacts can now be shared with a QR code, which allows for
+    simple and easy way of sharing contact information across
+    devices.
+  + Birthdays on a leap year will now get a birthday notification
+    on February 28 in non-leap years.
+  + Added support for multiple keyboard shortcuts
+  + It's now possible to explicitly unset a birthday
+  + Fix a bug where some title buttons where shown twice
+  + Updated translations.
+- Add pkgconfig(libqrencode) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Fri Feb 17 11:50:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unneeded nor used pkgconfig(clutter-gtk-1.0) BuildRequires.
