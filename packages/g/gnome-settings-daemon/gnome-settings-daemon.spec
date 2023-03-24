@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,16 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 43
+%define base_ver 44
 
 Name:           gnome-settings-daemon
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/%{base_ver}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/44/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
