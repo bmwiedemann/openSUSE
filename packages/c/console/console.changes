@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:24:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 22 12:26:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Up to date with libadwaita changes, including the new tab
+    overview that replaces the existing mobile switcher, and
+    supplements the tab bar.
+  + Cleanups for ‘Find’.
+  + Expand the scenarios considered to be ‘remote’ to include mosh
+    and waypipe.
+  + Other assorted fixes.
+  + Updated translations.
+- Drop 66b225e.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jan 19 10:34:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 66b225e.patch: style: Use accent_fg_color properly.

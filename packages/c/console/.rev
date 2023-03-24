@@ -49,4 +49,12 @@
     <comment></comment>
     <requestid>1060500</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4fa4ad4609dc15d70dfcd652cd8fd6df</srcmd5>
+    <version>44.0</version>
+    <time>1679667578</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073068 from iznogood)</comment>
+    <requestid>1073214</requestid>
+  </revision>
 </revisionlist>

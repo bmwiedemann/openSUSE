@@ -17,14 +17,12 @@
 
 
 Name:           console
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        A simple user-friendly terminal emulator for the GNOME desktop
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 66b225e.patch -- style: Use accent_fg_color properly
-Patch:          https://gitlab.gnome.org/GNOME/console/-/commit/66b225e.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
