@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 21 11:13:49 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/plotly/plotly.py/commit/c3fb1a575f009057111f0a7d149861fda2c59129
+  + python-chart-studio-no-six.patch
+
+-------------------------------------------------------------------
 Wed Jul  8 10:49:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.1.0
