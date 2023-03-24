@@ -58,19 +58,21 @@ ExclusiveArch:  do-not-build
 %if "%{flavor}" == "gtk4"
 %define _gtknamesuffix gtk4
 %define _pkgname_no_slpp libwebkit2gtk4
-%define _apiver 5.0
-%define _sover -5_0-0
-%define _wk2sover -5_0-0
-%define _sonamever 5.0
-%define _sonameverpkg 5_0
+%define _apiver 6.0
+%define _sover -6_0-0
+%define _wk2sover -6_0-0
+%define _sonamever 6.0
+%define _sonameverpkg 6_0
 %define _gtkver 4.0
-%define _jscver 5.0
+%define _jscver 6.0
 %define _pkgconfig_suffix gtk-4.0
 %define _usesoup2 0
+%define _wk2sover6api 6_0-4
+%define _soverlj6api 6_0-1
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.38.5
+Version:        2.40.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -81,10 +83,8 @@ Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 
-# PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
-Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-missing-include.patch mgorse@suse.com -- fix the build with gcc 13.
-Patch1:         webkit2gtk3-missing-include.patch
+# PATCH-FIX-UPSTREAM regression-fix.patch -- [GLib] Broke WebKitUserContentManager::script-message-received
+Patch0:         regression-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -113,6 +113,7 @@ BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  ruby >= 1.9
+BuildRequires:  unifdef
 BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
@@ -134,6 +135,7 @@ BuildRequires:  pkgconfig(gstreamer-mpegts-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 %if "%{flavor}" == "gtk3" || "%{flavor}" == "gtk3-soup2"
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
@@ -160,6 +162,7 @@ BuildRequires:  pkgconfig(libwoff2dec)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(manette-0.2)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -182,11 +185,15 @@ Summary:        Library for rendering web content, GTK+ Port
 # Require the injected bundles. The bundles are dlopen()ed
 Group:          System/Libraries
 Requires:       bubblewrap
+%if "%{flavor}" == "gtk4"
+Requires:       libjavascriptcoregtk%{_soverlj6api} = %{version}
+%else
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
+%endif
 Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
 Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
-Provides:       WebKit2GTK-%{_apiver}
+Provides:       WebKitGTK-%{_apiver}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2 < %{version}
 Recommends:     geoclue2
 Recommends:     gstreamer-plugins-bad
@@ -194,6 +201,49 @@ Recommends:     gstreamer-plugins-good
 Recommends:     xdg-desktop-portal-gtk
 
 %description -n libwebkit2gtk%{_wk2sover}
+WebKit is a web content engine, derived from KHTML and KJS from KDE,
+and used primarily in Apple's Safari browser.  It is made to be
+embedded in other applications, such as mail readers, or web browsers.
+
+It is able to display content such as HTML, SVG, XML, and others. It
+also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
+more.
+
+%package -n libwebkitgtk%{_wk2sover6api}
+Summary:        Library for rendering web content, GTK+ Port
+# Require the injected bundles. The bundles are dlopen()ed
+Group:          System/Libraries
+Requires:       bubblewrap
+%if "%{flavor}" == "gtk4"
+Requires:       libjavascriptcoregtk%{_soverlj6api} = %{version}
+Requires:       webkitgtk-%{_sonameverpkg}-injected-bundles
+%else
+Requires:       libjavascriptcoregtk%{_sover} = %{version}
+Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
+%endif
+Requires:       xdg-dbus-proxy
+Provides:       %{_pkgname_no_slpp} = %{version}
+Provides:       WebKitGTK-%{_apiver}
+Obsoletes:      webkit2gtk3-plugin-process-gtk2 < %{version}
+Recommends:     geoclue2
+Recommends:     gstreamer-plugins-bad
+Recommends:     gstreamer-plugins-good
+Recommends:     xdg-desktop-portal-gtk
+
+%description -n libwebkitgtk%{_wk2sover6api}
+WebKit is a web content engine, derived from KHTML and KJS from KDE,
+and used primarily in Apple's Safari browser.  It is made to be
+embedded in other applications, such as mail readers, or web browsers.
+
+It is able to display content such as HTML, SVG, XML, and others. It
+also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
+more.
+
+%package -n webkitgtk-%{_sonameverpkg}-injected-bundles
+Summary:        Injected bundles for %{name}
+Group:          System/Libraries
+
+%description -n webkitgtk-%{_sonameverpkg}-injected-bundles
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
 and used primarily in Apple's Safari browser.  It is made to be
 embedded in other applications, such as mail readers, or web browsers.
@@ -227,6 +277,51 @@ embedded in other applications, such as mail readers, or web browsers.
 It is able to display content such as HTML, SVG, XML, and others. It
 also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
 more.
+
+%package -n libjavascriptcoregtk%{_soverlj6api}
+Summary:        JavaScript Core Engine, GTK+ Port
+Group:          System/Libraries
+
+%description -n libjavascriptcoregtk%{_soverlj6api}
+WebKit is a web content engine, derived from KHTML and KJS from KDE,
+and used primarily in Apple's Safari browser.  It is made to be
+embedded in other applications, such as mail readers, or web browsers.
+
+It is able to display content such as HTML, SVG, XML, and others. It
+also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
+more.
+
+%package -n typelib-1_0-WebKit-%{_sonameverpkg}
+Summary:        Introspection bindings for %{name}
+Group:          System/Libraries
+
+%description -n typelib-1_0-WebKit-%{_sonameverpkg}
+WebKit is a web content engine, derived from KHTML and KJS from KDE,
+and used primarily in Apple's Safari browser.  It is made to be
+embedded in other applications, such as mail readers, or web browsers.
+
+It is able to display content such as HTML, SVG, XML, and others. It
+also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
+more.
+
+This package provides the GObject Introspection bindings for the GTK+
+port of WebKit2.
+
+%package -n typelib-1_0-WebKitWebProcessExtension-%{_sonameverpkg}
+Summary:        Introspection bindings for %{name}
+Group:          System/Libraries
+
+%description -n typelib-1_0-WebKitWebProcessExtension-%{_sonameverpkg}
+WebKit is a web content engine, derived from KHTML and KJS from KDE,
+and used primarily in Apple's Safari browser.  It is made to be
+embedded in other applications, such as mail readers, or web browsers.
+
+It is able to display content such as HTML, SVG, XML, and others. It
+also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
+more.
+
+This package provides the GObject Introspection bindings for the GTK+
+port of WebKit2.
 
 %package -n typelib-1_0-WebKit2-%{_sonameverpkg}
 Summary:        Introspection bindings for %{name}
@@ -279,11 +374,19 @@ port of the JavaScript Core engine.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
+%if "%{flavor}" == "gtk4"
+Requires:       libjavascriptcoregtk%{_soverlj6api} = %{version}
+Requires:       libwebkitgtk%{_wk2sover6api} = %{version}
+Requires:       typelib-1_0-JavaScriptCore-%{_sonameverpkg}
+Requires:       typelib-1_0-WebKit-%{_sonameverpkg}
+Requires:       typelib-1_0-WebKitWebProcessExtension-%{_sonameverpkg}
+%else
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
 Requires:       libwebkit2gtk%{_wk2sover} = %{version}
 Requires:       typelib-1_0-JavaScriptCore-%{_sonameverpkg}
 Requires:       typelib-1_0-WebKit2-%{_sonameverpkg}
 Requires:       typelib-1_0-WebKit2WebExtension-%{_sonameverpkg}
+%endif
 
 %description devel
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -317,18 +420,18 @@ A small test browswer from webkit, useful for testing features.
 
 # Expand %%lang_package to Obsoletes its older-name counterpart
 %if "%{flavor}" == "gtk3-soup2"
-%package -n WebKit2GTK-%{_apiver}-lang
+%package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
-Requires:       WebKit2GTK-%{_apiver} = %{version}
-Provides:       WebKit2GTK-%{_apiver}-lang-all = %{version}
+Requires:       WebKitGTK-%{_apiver} = %{version}
+Provides:       WebKitGTK-%{_apiver}-lang-all = %{version}
 Obsoletes:      libwebkit2gtk3-lang < %{version}
 BuildArch:      noarch
 
-%description -n WebKit2GTK-%{_apiver}-lang
+%description -n WebKitGTK-%{_apiver}-lang
 Provides translations for the "%{name}" package.
 %else
-%lang_package -n WebKit2GTK-%{_apiver}
+%lang_package -n WebKitGTK-%{_apiver}
 %endif
 
 %prep
@@ -361,10 +464,14 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_C_COMPILER=gcc-10 \
   -DCMAKE_CXX_COMPILER=g++-10 \
 %endif
-  -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkit2gtk%{_wk2sover} \
   -DPORT=GTK \
 %if "%{flavor}" == "gtk4"
+  -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkitgtk%{_wk2sover} \
   -DUSE_GTK4=ON \
+  -DENABLE_WEBDRIVER=ON \
+%else
+  -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkit2gtk%{_wk2sover} \
+  -DENABLE_WEBDRIVER=OFF \
 %endif
   -DUSE_AVIF=ON \
   -DENABLE_MINIBROWSER=ON \
@@ -386,13 +493,30 @@ export PYTHON=%{_bindir}/python3
 
 %install
 %ninja_install -C build
-rm %{buildroot}%{_bindir}/WebKitWebDriver
-%find_lang WebKit2GTK-%{_apiver}
+%find_lang WebKitGTK-%{_apiver}
 
-%post -n libwebkit2gtk%{_wk2sover} -p /sbin/ldconfig
-%postun -n libwebkit2gtk%{_wk2sover} -p /sbin/ldconfig
-%post -n libjavascriptcoregtk%{_sover} -p /sbin/ldconfig
-%postun -n libjavascriptcoregtk%{_sover} -p /sbin/ldconfig
+%if "%{flavor}" == "gtk4"
+%ldconfig_scriptlets -n libwebkitgtk%{_wk2sover6api}
+%ldconfig_scriptlets -n libjavascriptcoregtk%{_soverlj6api}
+%else
+%ldconfig_scriptlets -n libwebkit2gtk%{_wk2sover}
+%ldconfig_scriptlets -n libjavascriptcoregtk%{_sover}
+%endif
+
+%if "%{flavor}" == "gtk4"
+%files -n libwebkitgtk%{_wk2sover6api}
+# Exclude jsc and MiniBrowser - we package them on their own
+%exclude %{_libexecdir}/libwebkitgtk%{_wk2sover}/jsc
+%exclude %{_libexecdir}/libwebkitgtk%{_wk2sover}/MiniBrowser
+%{_libexecdir}/libwebkitgtk%{_wk2sover}/
+%{_libdir}/libwebkitgtk-%{_apiver}.so.*
+
+%files -n webkitgtk-%{_sonameverpkg}-injected-bundles
+%dir %{_libdir}/webkitgtk-%{_apiver}
+%dir %{_libdir}/webkitgtk-%{_apiver}/injected-bundle
+%{_libdir}/webkitgtk-%{_apiver}/injected-bundle/libwebkitgtkinjectedbundle.so
+
+%else
 
 %files -n libwebkit2gtk%{_wk2sover}
 # Exclude jsc and MiniBrowser - we package them on their own
@@ -406,6 +530,22 @@ rm %{buildroot}%{_bindir}/WebKitWebDriver
 %dir %{_libdir}/webkit2gtk-%{_apiver}/injected-bundle
 %{_libdir}/webkit2gtk-%{_apiver}/injected-bundle/libwebkit2gtkinjectedbundle.so
 
+%endif
+
+%if "%{flavor}" == "gtk4"
+
+%files -n libjavascriptcoregtk%{_soverlj6api}
+%license Source/JavaScriptCore/COPYING.LIB
+%{_libdir}/libjavascriptcoregtk-%{_apiver}.so.*
+
+%files -n typelib-1_0-WebKit-%{_sonameverpkg}
+%{_libdir}/girepository-1.0/WebKit-%{_sonamever}.typelib
+
+%files -n typelib-1_0-WebKitWebProcessExtension-%{_sonameverpkg}
+%{_libdir}/girepository-1.0/WebKitWebProcessExtension-%{_sonamever}.typelib
+
+%else
+
 %files -n libjavascriptcoregtk%{_sover}
 %license Source/JavaScriptCore/COPYING.LIB
 %{_libdir}/libjavascriptcoregtk-%{_apiver}.so.*
@@ -416,24 +556,41 @@ rm %{buildroot}%{_bindir}/WebKitWebDriver
 %files -n typelib-1_0-WebKit2WebExtension-%{_sonameverpkg}
 %{_libdir}/girepository-1.0/WebKit2WebExtension-%{_sonamever}.typelib
 
+%endif
+
 %files -n typelib-1_0-JavaScriptCore-%{_sonameverpkg}
 %{_libdir}/girepository-1.0/JavaScriptCore-%{_sonamever}.typelib
 
 %files devel
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/webkitgtk-%{_apiver}/
+%if "%{flavor}" == "gtk4"
+%{_libdir}/libwebkitgtk-%{_sonamever}.so
+%{_libdir}/pkgconfig/webkitgtk-%{_apiver}.pc
+%{_libdir}/pkgconfig/webkitgtk-web-process-extension-%{_apiver}.pc
+%else
 %{_libdir}/libwebkit2gtk-%{_sonamever}.so
-%{_libdir}/libjavascriptcoregtk-%{_sonamever}.so
-%{_libdir}/pkgconfig/javascriptcoregtk-%{_apiver}.pc
 %{_libdir}/pkgconfig/webkit2gtk-%{_apiver}.pc
 %{_libdir}/pkgconfig/webkit2gtk-web-extension-%{_apiver}.pc
+%endif
+%{_libdir}/libjavascriptcoregtk-%{_sonamever}.so
+%{_libdir}/pkgconfig/javascriptcoregtk-%{_apiver}.pc
 
 %files -n webkit-jsc-%{_jscver}
+%if "%{flavor}" == "gtk4"
+%{_libexecdir}/libwebkitgtk%{_wk2sover}/jsc
+%else
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/jsc
+%endif
 
 %files minibrowser
+%if "%{flavor}" == "gtk4"
+%{_libexecdir}/libwebkitgtk%{_wk2sover}/MiniBrowser
+%{_bindir}/WebKitWebDriver
+%else
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/MiniBrowser
+%endif
 
-%files -n WebKit2GTK-%{_apiver}-lang -f WebKit2GTK-%{_apiver}.lang
+%files -n WebKitGTK-%{_apiver}-lang -f WebKitGTK-%{_apiver}.lang
 
 %changelog
