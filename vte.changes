@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:12:45 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.72.0:
+  + fonts:
+    - Keep the PangoLayout unchanged
+    - Keep layout text available for cairo
+
+-------------------------------------------------------------------
+Mon Mar 06 17:01:33 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.71.99:
+  + pty: Do not typecast to GSpawnFlags
+  + fonts: Remove unnecessary context change call
+  + widget:
+    - Fix a deprecation warning
+    - gtk4: Hint and quantize font metrics
+    - Fix introspection API
+    - Don't consume right clicks on gtk4
+
+-------------------------------------------------------------------
+Sun Feb 26 15:13:34 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.71.92:
+  + all: Remove SIXEL support from stable branch
+  + app:
+    - Disconnect signal handlers on dispose
+    - Filter unwanted environment variables
+  + build:
+    - Add define for darwin
+    - Add define for openbsd
+    - Fix netbsd define
+    - Print warning on unstable release
+    - Update meson req version
+  + lib:
+    - Add gresources to vte/gtk4
+    - Fix spawning on netbsd
+  + missing: Add better fdwalk implementation for darawin
+  + parser:
+    - Add more OSC codes
+    - modes: Mark modes that should not be reset by DECSTR
+    - Update list of known OSC codes
+  + pty:
+    - netbsd fix
+    - Remove useless setenv calls
+  + widget:
+    - Add API to get text as HTML
+    - clipboard: Add missing else
+    - Clipboard fixes for gtk4
+    - Defer alignment API to next cycle
+    - Ensure the ringview is updated before converting coordinates
+    - Fix value type check
+    - Fix Widget::regex_match_check_at()
+    - gtk4:
+      . Don't grab the focus on focus-in
+      . Only notify terminal when focused
+      . Translate control+key events when using multiple layouts
+    - Implement clipboard for gtk4
+    - Modernise HTML output
+    - Offer text/html also in UTF-8 format
+    - Use correct end row for getting the selected text
+    - Use correct view coordinates
+  + Updated translations.
+- Rebase vte-enable-build-flag-pie.patch with quilt.
+
+-------------------------------------------------------------------
 Tue Feb 14 06:17:47 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.70.3:

@@ -1,12 +1,12 @@
-Index: vte-0.69.92/meson.build
+Index: vte-0.71.92/meson.build
 ===================================================================
---- vte-0.69.92.orig/meson.build
-+++ vte-0.69.92/meson.build
+--- vte-0.71.92.orig/meson.build
++++ vte-0.71.92/meson.build
 @@ -23,6 +23,7 @@ project(
      'buildtype=release',
      'warning_level=0',
      'b_ndebug=false',
 +    'b_pie=true',
    ],
-   meson_version: '>= 0.51.0',
+   meson_version: '>= 0.60.0',
  )

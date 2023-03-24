@@ -1133,4 +1133,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>New stable release (forwarded request 1065664 from iznogood)</comment>
     <requestid>1065736</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>8f2ea660044d413e5ca979b5cce44a6d</srcmd5>
+    <version>0.72.0</version>
+    <time>1679667450</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073060 from iznogood)</comment>
+    <requestid>1073209</requestid>
+  </revision>
 </revisionlist>
