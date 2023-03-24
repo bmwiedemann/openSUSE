@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 16:15:44 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works fine.
+
+-------------------------------------------------------------------
 Thu Oct 13 21:25:07 UTC 2022 - jfehlig@suse.com
 
 - Update to version 1.14.1:

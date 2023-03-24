@@ -1,7 +1,7 @@
 #
 # spec file for package libnbd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,7 +111,7 @@ for %{name}.
 %autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
 %configure \
     --enable-fuse \
