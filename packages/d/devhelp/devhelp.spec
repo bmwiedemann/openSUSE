@@ -1,7 +1,7 @@
 #
 # spec file for package devhelp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@ BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22

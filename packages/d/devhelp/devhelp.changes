@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 26 20:02:09 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen).
+
+-------------------------------------------------------------------
 Tue Sep 20 17:34:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

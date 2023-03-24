@@ -776,4 +776,13 @@
     <comment></comment>
     <requestid>1005046</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>b1ba36e0614f927731eeadd28b076f25</srcmd5>
+    <version>43.0</version>
+    <time>1679667585</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen). (forwarded request 1073110 from iznogood)</comment>
+    <requestid>1073234</requestid>
+  </revision>
 </revisionlist>
