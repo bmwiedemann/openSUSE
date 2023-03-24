@@ -13,10 +13,10 @@ Signed-off-by: Fabian Vogt <fvogt@suse.com>
  gdk/x11/gdkxftdefaults.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: gtk+-3.20.10/gdk/x11/gdkxftdefaults.c
+Index: b/gdk/x11/gdkxftdefaults.c
 ===================================================================
---- gtk+-3.20.10.orig/gdk/x11/gdkxftdefaults.c
-+++ gtk+-3.20.10/gdk/x11/gdkxftdefaults.c
+--- a/gdk/x11/gdkxftdefaults.c
++++ b/gdk/x11/gdkxftdefaults.c
 @@ -174,7 +174,8 @@ init_xft_settings (GdkScreen *screen)
      x11_screen->xft_rgba = FC_RGBA_UNKNOWN;
  

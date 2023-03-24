@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gtk3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,20 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
-%global pname gtk3
-%bcond_with    doc
-%endif
-%if "%{flavor}" == "doc"
-%global pname gtk3-doc
-%bcond_without doc
-%endif
-# When updating the binary version, do not forget to also update baselibs.conf
-%define         gtk_binary_version 3.0.0
-%define _name   gtk
-%bcond_without  broadway
-%bcond_with     doc
-Name:           %{pname}
-Version:        3.24.35+10
+%bcond_without broadway
+%bcond_with    clouds
+%bcond_with    tests
+
+%define _name gtk
+# When updating the binary version, please do not forget to also update the
+# baselibs.conf file accordingly.
+%define binary_version 3.0.0
+%define _immoduledir %{_libdir}/gtk-3.0/%{binary_version}/immodules
+# Filter out provides for private modules
+%define __provides_exclude_from ^%{_libdir}/gtk-3.0
+
+Name:           gtk3
+Version:        3.24.37
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -52,17 +50,16 @@ BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools-mini >= 0.19.7
+BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
-# libtool is needed since we are using a git checkout
-BuildRequires:  libtool
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(cairo-gobject) >= 1.14.0
-# Enable cloudproviders once upstream settles on a location and version
-#BuildRequires:  pkgconfig(cloudproviders) >= 0.2.5
 BuildRequires:  pkgconfig(colord) >= 0.1.9
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
@@ -91,9 +88,9 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.2.0
 BuildRequires:  pkgconfig(xrandr)
-# Autotools requires gtk-doc even with --disable-gtk-doc, try again with meson
-%if %{with doc} || 1
-BuildRequires:  gtk-doc
+# Enable cloudproviders once upstream settles on a location and version
+%if %{with clouds}
+BuildRequires:  pkgconfig(cloudproviders) >= 0.2.5
 %endif
 
 %description
@@ -363,6 +360,7 @@ This package contains the development files for GTK+ 3.x.
 %package -n gettext-its-%{name}
 Summary:        International Tag Set for GTK+ 3
 Group:          Development/Libraries/X11
+BuildArch:      noarch
 
 %description -n gettext-its-%{name}
 This package enhances gettext with an International Tag Set for GTK+ 3
@@ -372,6 +370,7 @@ This package enhances gettext with an International Tag Set for GTK+ 3
 %package -n gtk3-devel-doc
 Summary:        API documentation for the GTK+ toolkit library v3
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description -n gtk3-devel-doc
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -381,72 +380,77 @@ ranging from small one-off projects to complete application suites.
 This package contains the API documentation for GTK+ 3.x.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -N -n %{_name}-%{version}
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE1} .
-%patch0 -p1
+%autopatch -p1 0
 %endif
-%patch1 -p1
+# Apply patches 1 to 999 (1 >= 999)
+%autopatch -p1 -m 1 -M 999
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-        --disable-static \
-        %{?with_doc: \
-        --enable-gtk-doc} \
-        --enable-man \
-        --enable-x11-backend \
-        --enable-introspection \
-        %{?with_broadway: \
-        --enable-broadway-backend} \
-        --enable-wayland-backend \
-        --enable-explicit-deps=yes \
-        --enable-colord \
-        %{nil}
-
-%if "%{flavor}" == ""
-%make_build
-%else
-%make_build -C gdk
-%make_build -C gtk
-%make_build -C tests
-%make_build -C docs
-%endif
+%meson \
+    -D broadway_backend=%{?with_broadway:true}%{!?with_broadway:false} \
+    -D cloudproviders=%{?with_clouds:true}%{!?with_clouds:false} \
+    -D gtk_doc=true \
+    -D man=true \
+    -D tests=%{?with_tests:true}%{!?with_tests:false} \
+    -D builtin_immodules=wayland,waylandgtk \
+    ;
+%meson_build
 
 %install
-%if "%{flavor}" == ""
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-# Do not install the exampleapp glib schema, as the app itself is noinst
-rm %{buildroot}%{_datadir}/glib-2.0/schemas/org.gtk.exampleapp.gschema.xml
+%meson_install
 %find_lang gtk30
 %find_lang gtk30-properties
-install -m 644 -D %{SOURCE2} %{buildroot}%{_sysconfdir}/gtk-3.0/settings.ini
-touch %{buildroot}%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules.cache
+
+# Do not install the exampleapp glib schema, as the app itself is noinst
+rm -v %{buildroot}%{_datadir}/glib-2.0/schemas/org.gtk.exampleapp.gschema.xml
+
+# Upstream's default UI settings.
+install -v -m 644 -D %{SOURCE2} \
+  %{buildroot}%{_sysconfdir}/gtk-3.0/settings.ini
+
+# Input Method Modules cache needs to be created in order to be ghosted in the
+# files directive, allowing it to be removed along with the package upon
+# uninstallation.
+touch %{buildroot}%{_libdir}/gtk-3.0/%{binary_version}/immodules.cache
+
+# This hack needs to be done as long as we offer openSUSE 32-bit.
+# Maybe upstream could do something about it.
 %if "%{_lib}" == "lib64"
-  mv %{buildroot}%{_bindir}/gtk-query-immodules-3.0 %{buildroot}%{_bindir}/gtk-query-immodules-3.0-64
-  mv %{buildroot}%{_mandir}/man1/gtk-query-immodules-3.0.1 %{buildroot}%{_mandir}/man1/gtk-query-immodules-3.0-64.1
+  mv -v %{buildroot}%{_bindir}/gtk-query-immodules-3.0 \
+        %{buildroot}%{_bindir}/gtk-query-immodules-3.0-64
+  mv -v %{buildroot}%{_mandir}/man1/gtk-query-immodules-3.0.1 \
+        %{buildroot}%{_mandir}/man1/gtk-query-immodules-3.0-64.1
 %endif
-# create modules directory that should have been created during the build
-test ! -d %{buildroot}%{_libdir}/gtk-3.0/modules
-mkdir %{buildroot}%{_libdir}/gtk-3.0/modules
-# create theming-engines directory that should have been created during the build
-test ! -d %{buildroot}%{_libdir}/gtk-3.0/%{gtk_binary_version}/theming-engines
-mkdir %{buildroot}%{_libdir}/gtk-3.0/%{gtk_binary_version}/theming-engines
+
+# Create modules directory that should have been created during the build
+test ! -d %{buildroot}%{_libdir}/gtk-3.0/modules \
+  && mkdir -v %{buildroot}%{_libdir}/gtk-3.0/modules
+
+# Create immodules directory that should have been created during the build
+test ! -d %{buildroot}%{_libdir}/gtk-3.0/immodules \
+  && mkdir -v %{buildroot}%{_libdir}/gtk-3.0/immodules
+
+# Create theming-engines directory that should have been created during the build
+test ! -d %{buildroot}%{_libdir}/gtk-3.0/%{binary_version}/theming-engines \
+  && mkdir -v %{buildroot}%{_libdir}/gtk-3.0/%{binary_version}/theming-engines
+
 # Alternatives for gtk-update-icon-cache (binary and manpage)
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mv %{buildroot}%{_bindir}/gtk-update-icon-cache %{buildroot}%{_bindir}/gtk-update-icon-cache-3.0
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache %{buildroot}%{_bindir}/gtk-update-icon-cache
-mv %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1 %{buildroot}%{_mandir}/man1/gtk-update-icon-cache-3.0.1
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{ext_man} %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1%{ext_man}
+mv %{buildroot}%{_bindir}/gtk-update-icon-cache \
+  %{buildroot}%{_bindir}/gtk-update-icon-cache-3.0
+ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache \
+  %{buildroot}%{_bindir}/gtk-update-icon-cache
+mv %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1 \
+  %{buildroot}%{_mandir}/man1/gtk-update-icon-cache-3.0.1
+ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{ext_man} \
+  %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1%{ext_man}
+
 # Install rpm macros
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
-
-%else
-%make_install -C docs
-rm -Rf %{buildroot}%{_mandir}/man1/
-%endif
 
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
@@ -455,131 +459,62 @@ rm -Rf %{buildroot}%{_mandir}/man1/
 # Note: when updating scriptlets, don't forget to also update baselibs.conf
 ###########################################################################
 
-# Convenient %define for the scriplets
-%if "%{_lib}" == "lib64"
-%define _gtk_query_immodules %{_bindir}/gtk-query-immodules-3.0-64
-%else
-%define _gtk_query_immodules %{_bindir}/gtk-query-immodules-3.0
+%if "%_lib" == "lib64"
+%define ext_64 -64
 %endif
-%define _gtk_query_immodules_update_cache %{_gtk_query_immodules} --update-cache
+%define __gtk_query_immodules %{_bindir}/gtk-query-immodules-3.0%{?ext_64}
+%define __update_iconcache %{_bindir}/gtk-update-icon-cache
+%define __update_iconcache3 %{_bindir}/gtk-update-icon-cache-3.0
+%define __update_alternatives %{_sbindir}/update-alternatives
 
-%post -n libgtk-3-0
-/sbin/ldconfig
-%if 0
-# In case libgtk-3-0 gets installed before gtk3-tools, we don't want to fail.
-# So we make the call to gtk-query-immodules-3.0 dependent on the existence of
-# the binary. This is why we also have a %post for gtk3-tools.
-%endif
-if test -f %{_gtk_query_immodules}; then
-  %{_gtk_query_immodules_update_cache}
+# Until RPM (trans)filetriggers gets implemented for ldconfig calls, use
+# whatever we got.
+%ldconfig_scriptlets -n libgtk-3-0
+
+%filetriggerin tools -- %{_immoduledir}
+%__gtk_query_immodules --update-cache \
+  || echo "[GTK3] Update IM modules cache: failed"
+
+%filetriggerpostun tools -- %{_immoduledir}
+# We ignore upgrades (already handled by the newer package's filetriggerin).
+if [ "$1" -eq 0 ]; then
+  %__gtk_query_immodules --update-cache \
+    || echo "[GTK3] Update IM modules cache: failed"
 fi
-
-%post immodule-amharic
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-broadway
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-inuktitut
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-multipress
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-thai
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-tigrigna
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-vietnamese
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-wayland
-%{_gtk_query_immodules_update_cache}
-
-%post immodule-xim
-%{_gtk_query_immodules_update_cache}
-
-%post tools
-%if 0
-# If we install gtk3-tools for the first time, then we should run it in case
-# libgtk-3-0 was installed first (ie, if
-# %{_libdir}/gtk-3.0/%{gtk_binary_version} already exists) which means
-# gtk-query-immodules-3.0 couldn't run there.
-%endif
-if [ $1 = 1 ]; then
-  test -d %{_libdir}/gtk-3.0/%{gtk_binary_version} && %{_gtk_query_immodules_update_cache}
-fi
-%if 0
-# If the gtk-update-icon-cache group is in automatic mode, then this will also
-# switch all symlinks automatically
-%endif
-update-alternatives --install %{_bindir}/gtk-update-icon-cache gtk-update-icon-cache %{_bindir}/gtk-update-icon-cache-3.0 3 \
-                    --slave %{_mandir}/man1/gtk-update-icon-cache.1.gz gtk-update-icon-cache.1.gz %{_mandir}/man1/gtk-update-icon-cache-3.0.1.gz
 
 %filetriggerin tools -- %{_datadir}/icons
-if [ "$(realpath %{_bindir}/gtk-update-icon-cache)" = "%{_bindir}/gtk-update-icon-cache-3.0" ]; then
+if [ "$(realpath %__update_iconcache)" = "%__update_iconcache3" ]; then
   for ICON_THEME in $(cut -d / -f 5 | sort -u); do
     if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
-      %{_bindir}/gtk-update-icon-cache --quiet --force "%{_datadir}/icons/${ICON_THEME}"
+      %__update_iconcache --quiet --force "%{_datadir}/icons/${ICON_THEME}" \
+        || echo "[GTK3] Update icons cache: failure to add ${ICON_THEME} icons"
     fi
   done
 fi
 
 %filetriggerpostun tools -- %{_datadir}/icons
-if [ "$(realpath %{_bindir}/gtk-update-icon-cache)" = "%{_bindir}/gtk-update-icon-cache-3.0" ]; then
+# We ignore upgrades (already handled by the newer package's filetriggerin).
+if [ "$1" -eq 0 ] &&
+   [ "$(realpath %__update_iconcache)" = "%__update_iconcache3" ]; then
   for ICON_THEME in $(cut -d / -f 5 | sort -u); do
     if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
-      %{_bindir}/gtk-update-icon-cache --quiet --force "%{_datadir}/icons/${ICON_THEME}"
+      %__update_iconcache --quiet --force "%{_datadir}/icons/${ICON_THEME}" \
+        || echo "[GTK3] Update icons cache: failure to remove ${ICON_THEME} icons"
     fi
   done
 fi
 
-%if 0
-# No need to call gtk-query-immodules-3.0 in postun:
-# - if it's an upgrade, it will have been called in post
-# - if it's an uninstall, we don't care about this anymore
-%endif
-
-%postun -n libgtk-3-0 -p /sbin/ldconfig
-
-%postun immodule-amharic
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-broadway
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-inuktitut
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-multipress
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-thai
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-tigrigna
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-vietnamese
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-wayland
-%{_gtk_query_immodules_update_cache}
-
-%postun immodule-xim
-%{_gtk_query_immodules_update_cache}
+%post tools
+%__update_alternatives --install %__update_iconcache gtk-update-icon-cache \
+  %__update_iconcache3 3 --slave %{_mandir}/man1/gtk-update-icon-cache.1.gz \
+  gtk-update-icon-cache.1.gz %{_mandir}/man1/gtk-update-icon-cache-3.0.1.gz
 
 %postun tools
-%if 0
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-%endif
-if [ ! -f %{_bindir}/gtk-update-icon-cache-3.0 ]; then
-  update-alternatives --remove gtk-update-icon-cache %{_bindir}/gtk-update-icon-cache-3.0
+# We don't use "$1 -eq 0", to avoid issues if the package gets renamed.
+if [ ! -f %__update_iconcache3 ]; then
+  %__update_alternatives --remove gtk-update-icon-cache %__update_iconcache3
 fi
 
-%if "%{flavor}" == ""
 %files -n libgtk-3-0
 %license COPYING
 %if "%{_lib}" == "lib64"
@@ -587,18 +522,17 @@ fi
 %endif
 %dir %{_sysconfdir}/gtk-3.0
 %dir %{_libdir}/gtk-3.0
-%dir %{_libdir}/gtk-3.0/%{gtk_binary_version}
-%dir %{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-cedilla.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-cyrillic-translit.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-ipa.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-wayland.so
-%dir %{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-cups.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-lpr.so
-%dir %{_libdir}/gtk-3.0/%{gtk_binary_version}/theming-engines/
-%ghost %{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules.cache
+%dir %{_libdir}/gtk-3.0/%{binary_version}
+%dir %{_immoduledir}
+%{_immoduledir}/im-cedilla.so
+%{_immoduledir}/im-cyrillic-translit.so
+%{_immoduledir}/im-ipa.so
+%dir %{_libdir}/gtk-3.0/%{binary_version}/printbackends/
+%{_libdir}/gtk-3.0/%{binary_version}/printbackends/libprintbackend-cups.so
+%{_libdir}/gtk-3.0/%{binary_version}/printbackends/libprintbackend-file.so
+%{_libdir}/gtk-3.0/%{binary_version}/printbackends/libprintbackend-lpr.so
+%dir %{_libdir}/gtk-3.0/%{binary_version}/theming-engines/
+%ghost %{_libdir}/gtk-3.0/%{binary_version}/immodules.cache
 %dir %{_libdir}/gtk-3.0/modules
 %{_libdir}/libgailutil-3.so.*
 %{_libdir}/libgdk-3.so.*
@@ -610,37 +544,34 @@ fi
 %{_libdir}/girepository-1.0/Gtk-3.0.typelib
 
 %files immodule-amharic
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-am-et.so
+%{_immoduledir}/im-am-et.so
 
 %files immodule-broadway
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-broadway.so
+%{_immoduledir}/im-broadway.so
 
 %files immodule-inuktitut
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-inuktitut.so
+%{_immoduledir}/im-inuktitut.so
 
 %files immodule-multipress
 %doc modules/input/README.multipress
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-multipress.so
+%{_immoduledir}/im-multipress.so
 %config %{_sysconfdir}/gtk-3.0/im-multipress.conf
 
 %files immodule-thai
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-thai.so
+%{_immoduledir}/im-thai.so
 
 %files immodule-tigrigna
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-ti-er.so
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-ti-et.so
+%{_immoduledir}/im-ti-er.so
+%{_immoduledir}/im-ti-et.so
 
 %files immodule-vietnamese
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-viqr.so
-
-%files immodule-wayland
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-waylandgtk.so
+%{_immoduledir}/im-viqr.so
 
 %files immodule-xim
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-xim.so
+%{_immoduledir}/im-xim.so
 
 %files tools
-%doc AUTHORS README NEWS
+%doc README.md NEWS
 %{_bindir}/broadwayd
 %{_bindir}/gtk3-icon-browser
 %{_bindir}/gtk-builder-tool
@@ -662,6 +593,12 @@ fi
 %{_mandir}/man1/gtk-update-icon-cache-3.0.1%{?ext_man}
 %{_mandir}/man1/gtk-update-icon-cache.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{?ext_man}
+%dir %{_datadir}/gtk-3.0/
+%dir %{_datadir}/gtk-3.0/emoji
+%{_datadir}/gtk-3.0/emoji/de.gresource
+%{_datadir}/gtk-3.0/emoji/es.gresource
+%{_datadir}/gtk-3.0/emoji/fr.gresource
+%{_datadir}/gtk-3.0/emoji/zh.gresource
 
 %files schema
 %{_datadir}/glib-2.0/schemas/org.gtk.Settings.ColorChooser.gschema.xml
@@ -679,6 +616,7 @@ fi
 %config(noreplace) %{_sysconfdir}/gtk-3.0/settings.ini
 
 %files devel
+%doc CONTRIBUTING.md
 %{_bindir}/gtk3-demo
 %{_bindir}/gtk3-demo-application
 %{_bindir}/gtk3-widget-factory
@@ -689,7 +627,6 @@ fi
 %{_datadir}/applications/gtk3-demo.desktop
 %{_datadir}/applications/gtk3-widget-factory.desktop
 %{_datadir}/gir-1.0/*.gir
-%dir %{_datadir}/gtk-3.0
 %{_datadir}/gtk-3.0/gtkbuilder.rng
 %dir %{_datadir}/gtk-3.0/valgrind
 %{_datadir}/gtk-3.0/valgrind/gtk.supp
@@ -701,10 +638,12 @@ fi
 %{_includedir}/gtk-3.0/
 %{_libdir}/pkgconfig/gail-3.0.pc
 %{_libdir}/pkgconfig/gdk-3.0.pc
+
 %if %{with broadway}
 %{_libdir}/pkgconfig/gdk-broadway-3.0.pc
 %{_libdir}/pkgconfig/gtk+-broadway-3.0.pc
 %endif
+
 %{_libdir}/pkgconfig/gdk-wayland-3.0.pc
 %{_libdir}/pkgconfig/gtk+-wayland-3.0.pc
 %{_libdir}/pkgconfig/gdk-x11-3.0.pc
@@ -723,16 +662,12 @@ fi
 %{_datadir}/gettext/its/gtkbuilder.loc
 
 %files lang -f gtk30.lang -f gtk30-properties.lang
-# english locale should be in the main package
+# English locale should be in the main package
 %exclude %{_datadir}/locale/en
-%endif
 
-%if %{with doc}
 %files -n gtk3-devel-doc
-%doc HACKING README.commits
 %doc %{_datadir}/gtk-doc/html/gail-libgail-util3/
 %doc %{_datadir}/gtk-doc/html/gdk3/
 %doc %{_datadir}/gtk-doc/html/gtk3/
-%endif
 
 %changelog

@@ -1615,4 +1615,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   + wayland: Look for cursor themes in $HOME (boo#1206001). (forwarded request 1040644 from iznogood)</comment>
     <requestid>1040679</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>b925e64a3dc3d7e61d45e966b9557272</srcmd5>
+    <version>3.24.37</version>
+    <time>1679667489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073503</requestid>
+  </revision>
 </revisionlist>

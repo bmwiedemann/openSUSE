@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:43:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-add macros.gtk3: there are quite a few consumers left
+  requiring the defined macros.
+
+-------------------------------------------------------------------
+Tue Mar  7 00:21:45 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Prepend gtk3 to binary_version and _immoduledir macro names to
+  avoid possible name clash now that they are being defined in the
+  macros.gtk3 file instead of the spec file.
+
+-------------------------------------------------------------------
+Fri Mar  3 07:22:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.37:
+  + Support the file transfer portal for copy-paste and DND
+  + Treat XKB_MODE_NAME_LODO as super key
+  + Refactor startup notification handling to be in sync with GTK 4
+  + GL: Synchronie when calling MakeCurrent
+  + CSS: Fix a problem with stopping animations
+  + Wayland: Drop the legacy text input module
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 29 06:35:17 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.24.36:
+  + GtkLabel: Tweak selection behavior.
+  + GtkEmojiChooser: Properly handle empty recent section.
+  + GtkFileChooser: Make ~ key work regardless of dead keys.
+  + Wayland:
+    - Fix problems with X<>Wayland DND.
+    - Revert cursor changes from 3.24.35.
+    - Fix handling of surrounding text in input.
+  + Updated translation.
+- Switch from Autotools to Meson, dropping libtool build
+  requirement while adding meson and ninja. And replace configure,
+  make_build, and make_install macros with meson, meson_build and
+  meson_install.
+- Adopt the use of autosetup and autopatch macro facilities to
+  improve package maintainability.
+- Drop multibuild facility due to the fact that Gtk 3 Meson build
+  scripts can't fully disable some components. And, at least for
+  now, we cannot achieve the same degree of modularity we had with
+  Autotools.
+- Drop macros.gtk3 file as no package (if it ever had any) consumes
+  its macros.
+- After switching to Meson, the build doesn't produce a Wayland
+  Input Method module anymore, at least not as a standalone. Update
+  baselibs.conf accordingly. And some GResource files are now being
+  provided in the devel package for working with emojis.
+- Define __provides_exclude_from macro with ^%{_libdir}/gtk-3.0 as
+  its value to prevent the automatic provision generator to offer
+  private modules as requirable symbols.
+- Make cloudproviders to be easily switchable, through bcond
+  facility, to allow people to test it, or for maintainers to turn
+  it on and off easily.
+- Make gettext-its-gtk3 and gtk3-devel-doc sub-packages
+  arch-independent (noarch), as they don't contain any binaries.
+- Convert IM modules cache update post(un) scriptlets to RPM
+  file triggers. Though we had good results with icon cache update
+  scriptlets previously, we still can't use transfiletriggers to
+  trigger the cache update only once, post transaction, because
+  Zypper is still working on implementing support for them.
+- Refresh patch with Quilt: gtk3-revert-forced-xftdpi.patch.
+
+-------------------------------------------------------------------
 Mon Dec  5 16:47:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.35+10:

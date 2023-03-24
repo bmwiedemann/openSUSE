@@ -1,8 +1,8 @@
-Index: gtk+-3.5.2/gtk/gtkmodules.c
+Index: b/gtk/gtkmodules.c
 ===================================================================
---- gtk+-3.5.2.orig/gtk/gtkmodules.c
-+++ gtk+-3.5.2/gtk/gtkmodules.c
-@@ -60,7 +60,7 @@ get_module_path (void)
+--- a/gtk/gtkmodules.c
++++ b/gtk/gtkmodules.c
+@@ -61,7 +61,7 @@ get_module_path (void)
    if (result)
      return result;
  
