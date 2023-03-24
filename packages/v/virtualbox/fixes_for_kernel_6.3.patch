@@ -1,40 +1,326 @@
-Patch to fix VirtualBox builds on kernel 6.3.0 and newer
-
-Beginning with 6.3, a user is no loncer to write directly info the
-vm_flags member of struct vm_area_struct. It is now necessary to use
-the vm_flags_set() wrapper. Two locations in memobj-r0drv-linux.c are
-affected.
-
-Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
-
-Index: VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+Index: a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
-+++ VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
-@@ -1401,8 +1401,12 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+--- a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c	(revision 156192)
++++ b/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c	(revision 156193)
+@@ -1401,7 +1401,11 @@
              while (rc-- > 0)
              {
                  flush_dcache_page(pMemLnx->apPages[rc]);
--                papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
--            }
-+# if RTLNX_VER_MIN(6, 3, 0)
-+		vm_flags_set(papVMAs[rc], VM_DONTCOPY | VM_LOCKED);
++#if RTLNX_VER_MIN(6,3,0)
++                vm_flags_set(papVMAs[rc], VM_DONTCOPY | VM_LOCKED);
 +#else
-+		papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
+                 papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
 +#endif
-+	    }
+             }
  
              LNX_MM_UP_READ(pTask->mm);
- 
-@@ -1873,7 +1877,11 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(
+@@ -1872,7 +1876,10 @@
+                     rc = vm_insert_page(vma, ulAddrCur, pMemLnxToMap->apPages[iPage]);
                      /* Thes flags help making 100% sure some bad stuff wont happen (swap, core, ++).
                       * See remap_pfn_range() in mm/memory.c */
- #if    RTLNX_VER_MIN(3,7,0)
-+# if RTLNX_VER_MIN(6, 3, 0)
+-#if    RTLNX_VER_MIN(3,7,0)
++
++#if    RTLNX_VER_MIN(6,3,0)
 +                    vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
-+#else
++#elif  RTLNX_VER_MIN(3,7,0)
                      vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
-+#endif
  #else
                      vma->vm_flags |= VM_RESERVED;
+Index: s/rc/VBox/Additions/linux/drm/vbox_drv.h
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_drv.h	(revision 156193)
++++ b/src/VBox/Additions/linux/drm/vbox_drv.h	(revision 156194)
+@@ -172,8 +172,12 @@
+ # include <drm/drm_gem.h>
  #endif
+ 
+-#include <drm/ttm/ttm_bo_api.h>
+-#include <drm/ttm/ttm_bo_driver.h>
++#if RTLNX_VER_MIN(6,3,0)
++# include <drm/ttm/ttm_bo.h>
++#else
++# include <drm/ttm/ttm_bo_api.h>
++# include <drm/ttm/ttm_bo_driver.h>
++#endif
+ #include <drm/ttm/ttm_placement.h>
+ #if RTLNX_VER_MAX(5,13,0) && !RTLNX_RHEL_RANGE(8,6, 8,99)
+ # include <drm/ttm/ttm_memory.h>
+Index: a/src/VBox/Additions/linux/drm/vbox_fb.c
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_fb.c	(revision 156193)
++++ b.src/VBox/Additions/linux/drm/vbox_fb.c	(revision 156194)
+@@ -345,6 +345,7 @@
+ 	info->flags = FBINFO_DEFAULT | FBINFO_MISC_ALWAYS_SETPAR;
+ 	info->fbops = &vboxfb_ops;
+ 
++#if RTLNX_VER_MAX(6,3,0)
+ 	/*
+ 	 * This seems to be done for safety checking that the framebuffer
+ 	 * is not registered twice by different drivers.
+@@ -351,6 +352,7 @@
+ 	 */
+ 	info->apertures->ranges[0].base = pci_resource_start(VBOX_DRM_TO_PCI_DEV(dev), 0);
+ 	info->apertures->ranges[0].size = pci_resource_len(VBOX_DRM_TO_PCI_DEV(dev), 0);
++#endif
+ 
+ #if RTLNX_VER_MIN(5,2,0) || RTLNX_RHEL_MAJ_PREREQ(8,2)
+         /*
+@@ -457,11 +459,14 @@
+ 	vbox->fbdev = fbdev;
+ 	spin_lock_init(&fbdev->dirty_lock);
+ 
+-#if RTLNX_VER_MAX(3,17,0) && !RTLNX_RHEL_MAJ_PREREQ(7,2)
++#if RTLNX_VER_MIN(6,3,0)
++	drm_fb_helper_prepare(dev, &fbdev->helper, 32, &vbox_fb_helper_funcs);
++#elif RTLNX_VER_MIN(3,17,0) || RTLNX_RHEL_MIN(7,2)
++	drm_fb_helper_prepare(dev, &fbdev->helper, &vbox_fb_helper_funcs);
++#else
+ 	fbdev->helper.funcs = &vbox_fb_helper_funcs;
+-#else
+-	drm_fb_helper_prepare(dev, &fbdev->helper, &vbox_fb_helper_funcs);
+ #endif
++
+ #if RTLNX_VER_MIN(5,7,0) || RTLNX_RHEL_MIN(8,4) || RTLNX_SUSE_MAJ_PREREQ(15,3)
+         ret = drm_fb_helper_init(dev, &fbdev->helper);
+ #elif RTLNX_VER_MIN(4,11,0) || RTLNX_RHEL_MAJ_PREREQ(7,5)
+@@ -483,7 +488,11 @@
+ 	/* disable all the possible outputs/crtcs before entering KMS mode */
+ 	drm_helper_disable_unused_functions(dev);
+ 
++#if RTLNX_VER_MIN(6,3,0)
++	ret = drm_fb_helper_initial_config(&fbdev->helper);
++#else
+ 	ret = drm_fb_helper_initial_config(&fbdev->helper, 32);
++#endif
+ 	if (ret)
+ 		goto err_fini;
+ 
+@@ -498,6 +507,11 @@
+ {
+ 	struct fb_info *fbdev = VBOX_FBDEV_INFO(vbox->fbdev->helper);
+ 
++#if RTLNX_VER_MIN(6,3,0)
++    fbdev->fix.smem_start = 
++pci_resource_start(VBOX_DRM_TO_PCI_DEV(vbox->fbdev->helper.dev), 0) + gpu_addr;
++#else
+ 	fbdev->fix.smem_start = fbdev->apertures->ranges[0].base + gpu_addr;
++#endif
+ 	fbdev->fix.smem_len = vbox->available_vram_size - gpu_addr;
+ }
+Index: a/src/VBox/Additions/linux/drm/vbox_main.c
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_main.c	(revision 156193)
++++ b/src/VBox/Additions/linux/drm/vbox_main.c	(revision 156194)
+@@ -36,6 +36,10 @@
+ #include <drm/drm_fb_helper.h>
+ #include <drm/drm_crtc_helper.h>
+ 
++#if RTLNX_VER_MIN(6,3,0)
++# include <drm/drm_modeset_helper.h>
++#endif
++
+ #include <VBoxVideoGuest.h>
+ #include <VBoxVideoVBE.h>
+ 
+Index: a/src/VBox/Additions/linux/drm/vbox_mode.c
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_mode.c	(revision 156193)
++++ b/src/VBox/Additions/linux/drm/vbox_mode.c	(revision 156194)
+@@ -39,6 +39,10 @@
+ #include "vbox_drv.h"
+ #include <linux/export.h>
+ #include <drm/drm_crtc_helper.h>
++#if RTLNX_VER_MIN(6,3,0)
++# include <drm/drm_modeset_helper_vtables.h>
++# include <drm/drm_modeset_helper.h>
++#endif
+ #if RTLNX_VER_MIN(3,18,0) || RTLNX_RHEL_MAJ_PREREQ(7,2)
+ # include <drm/drm_plane_helper.h>
+ #endif
+Index: a/src/VBox/Additions/linux/drm/vbox_ttm.c
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_ttm.c	(revision 156193)
++++ b/src/VBox/Additions/linux/drm/vbox_ttm.c	(revision 156194)
+@@ -33,6 +33,11 @@
+  *          Michael Thayer <michael.thayer@oracle.com>
+  */
+ #include "vbox_drv.h"
++
++#if RTLNX_VER_MIN(6,3,0)
++# include <drm/ttm/ttm_tt.h>
++#endif
++
+ #if RTLNX_VER_MIN(5,11,0) || RTLNX_RHEL_MAJ_PREREQ(8,5)
+ # include <drm/drm_gem.h>
+ # include <drm/drm_gem_ttm_helper.h>
+Index: a/src/VBox/Additions/linux/drm/vbox_fb.c
+===================================================================
+--- a/src/VBox/Additions/linux/drm/vbox_fb.c	(revision 156195)
++++ b/src/VBox/Additions/linux/drm/vbox_fb.c	(revision 156196)
+@@ -508,7 +508,7 @@
+ 	struct fb_info *fbdev = VBOX_FBDEV_INFO(vbox->fbdev->helper);
+ 
+ #if RTLNX_VER_MIN(6,3,0)
+-    fbdev->fix.smem_start = 
++    fbdev->fix.smem_start =
+ pci_resource_start(VBOX_DRM_TO_PCI_DEV(vbox->fbdev->helper.dev), 0) + gpu_addr;
+ #else
+ 	fbdev->fix.smem_start = fbdev->apertures->ranges[0].base + gpu_addr;
+Index: a/src/VBox/Additions/linux/sharedfolders/dirops.c
+===================================================================
+--- a/src/VBox/Additions/linux/sharedfolders/dirops.c	(revision 156194)
++++ b/src/VBox/Additions/linux/sharedfolders/dirops.c	(revision 156195)
+@@ -1045,7 +1045,9 @@
+  * @param   excl    Possible O_EXCL...
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(6,3,0)
++static int vbsf_inode_create(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode, bool excl)
++#elif RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
+ static int vbsf_inode_create(struct user_namespace *ns, struct inode *parent, struct dentry *dentry, umode_t mode, bool excl)
+ #elif RTLNX_VER_MIN(3,6,0)
+ static int vbsf_inode_create(struct inode *parent, struct dentry *dentry, umode_t mode, bool excl)
+@@ -1085,7 +1087,9 @@
+  * @param   mode    file mode
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(6,3,0)
++static int vbsf_inode_mkdir(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
++#elif RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
+ static int vbsf_inode_mkdir(struct user_namespace *ns, struct inode *parent, struct dentry *dentry, umode_t mode)
+ #elif RTLNX_VER_MIN(3,3,0)
+ static int vbsf_inode_mkdir(struct inode *parent, struct dentry *dentry, umode_t mode)
+@@ -1200,7 +1204,11 @@
+  * @param   flags       flags
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(6,3,0)
++static int vbsf_inode_rename(struct mnt_idmap *idmap,
++                             struct inode *old_parent, struct dentry *old_dentry,
++                             struct inode *new_parent, struct dentry *new_dentry, unsigned flags)
++#elif RTLNX_VER_MIN(5,12,0) || defined(DOXYGEN_RUNNING)
+ static int vbsf_inode_rename(struct user_namespace *ns,
+                              struct inode *old_parent, struct dentry *old_dentry,
+                              struct inode *new_parent, struct dentry *new_dentry, unsigned flags)
+@@ -1312,7 +1320,9 @@
+ /**
+  * Create a symbolic link.
+  */
+-#if RTLNX_VER_MIN(5,12,0)
++#if RTLNX_VER_MIN(6,3,0)
++static int vbsf_inode_symlink(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, const char *target)
++#elif RTLNX_VER_MIN(5,12,0)
+ static int vbsf_inode_symlink(struct user_namespace *ns, struct inode *parent, struct dentry *dentry, const char *target)
+ #else
+ static int vbsf_inode_symlink(struct inode *parent, struct dentry *dentry, const char *target)
+Index: a/src/VBox/Additions/linux/sharedfolders/utils.c
+===================================================================
+--- a/src/VBox/Additions/linux/sharedfolders/utils.c	(revision 156194)
++++ b/src/VBox/Additions/linux/sharedfolders/utils.c	(revision 156195)
+@@ -697,8 +697,10 @@
+    has inode at all) from these new attributes we derive [kstat] via
+    [generic_fillattr] */
+ #if RTLNX_VER_MIN(2,5,18)
+-
+-# if RTLNX_VER_MIN(5,12,0)
++# if RTLNX_VER_MIN(6,3,0)
++int vbsf_inode_getattr(struct mnt_idmap *idmap, const struct path *path,
++                       struct kstat *kstat, u32 request_mask, unsigned int flags)
++# elif RTLNX_VER_MIN(5,12,0)
+ int vbsf_inode_getattr(struct user_namespace *ns, const struct path *path,
+                        struct kstat *kstat, u32 request_mask, unsigned int flags)
+ # elif RTLNX_VER_MIN(4,11,0)
+@@ -741,7 +743,9 @@
+ # endif
+     if (rc == 0) {
+         /* Do generic filling in of info. */
+-# if RTLNX_VER_MIN(5,12,0)
++# if RTLNX_VER_MIN(6,3,0)
++        generic_fillattr(idmap, dentry->d_inode, kstat);
++# elif RTLNX_VER_MIN(5,12,0)
+         generic_fillattr(ns, dentry->d_inode, kstat);
+ # else
+         generic_fillattr(dentry->d_inode, kstat);
+@@ -791,7 +795,9 @@
+ /**
+  * Modify inode attributes.
+  */
+-#if RTLNX_VER_MIN(5,12,0)
++#if RTLNX_VER_MIN(6,3,0)
++int vbsf_inode_setattr(struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr)
++#elif RTLNX_VER_MIN(5,12,0)
+ int vbsf_inode_setattr(struct user_namespace *ns, struct dentry *dentry, struct iattr *iattr)
+ #else
+ int vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr)
+@@ -815,7 +821,9 @@
+      */
+     iattr->ia_valid |= ATTR_FORCE;
+ #if (RTLNX_VER_RANGE(3,16,39,  3,17,0)) || RTLNX_VER_MIN(4,9,0) || (RTLNX_VER_RANGE(4,1,37,  4,2,0)) || RTLNX_UBUNTU_ABI_MIN(4,4,255,208)
+-# if RTLNX_VER_MIN(5,12,0)
++# if RTLNX_VER_MIN(6,3,0)
++    rc = setattr_prepare(idmap, dentry, iattr);
++# elif RTLNX_VER_MIN(5,12,0)
+     rc = setattr_prepare(ns, dentry, iattr);
+ # else
+     rc = setattr_prepare(dentry, iattr);
+Index: a/src/VBox/Additions/linux/sharedfolders/vfsmod.h
+===================================================================
+--- a/src/VBox/Additions/linux/sharedfolders/vfsmod.h	(revision 156194)
++++ b/src/VBox/Additions/linux/sharedfolders/vfsmod.h	(revision 156195)
+@@ -275,7 +275,10 @@
+ extern int  vbsf_inode_revalidate_worker(struct dentry *dentry, bool fForced, bool fInodeLocked);
+ extern int  vbsf_inode_revalidate_with_handle(struct dentry *dentry, SHFLHANDLE hHostFile, bool fForced, bool fInodeLocked);
+ #if RTLNX_VER_MIN(2,5,18)
+-# if RTLNX_VER_MIN(5,12,0)
++# if RTLNX_VER_MIN(6,3,0)
++extern int  vbsf_inode_getattr(struct mnt_idmap *idmap, const struct path *path,
++                               struct kstat *kstat, u32 request_mask, unsigned int query_flags);
++# elif RTLNX_VER_MIN(5,12,0)
+ extern int  vbsf_inode_getattr(struct user_namespace *ns, const struct path *path,
+                                struct kstat *kstat, u32 request_mask, unsigned int query_flags);
+ # elif RTLNX_VER_MIN(4,11,0)
+@@ -286,7 +289,9 @@
+ #else  /* < 2.5.44 */
+ extern int  vbsf_inode_revalidate(struct dentry *dentry);
+ #endif /* < 2.5.44 */
+-#if RTLNX_VER_MIN(5,12,0)
++#if RTLNX_VER_MIN(6,3,0)
++extern int  vbsf_inode_setattr(struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr);
++#elif RTLNX_VER_MIN(5,12,0)
+ extern int  vbsf_inode_setattr(struct user_namespace *ns, struct dentry *dentry, struct iattr *iattr);
+ #else
+ extern int  vbsf_inode_setattr(struct dentry *dentry, struct iattr *iattr);
+Index: a/src/VBox/Additions/linux/sharedfolders/dirops.c
+===================================================================
+--- a/src/VBox/Additions/linux/sharedfolders/dirops.c	(revision 156196)
++++ b/src/VBox/Additions/linux/sharedfolders/dirops.c	(revision 156197)
+@@ -1038,7 +1038,7 @@
+ /**
+  * Create a new regular file.
+  *
+- * @param   ns      The name space.
++ * @param   idmap   idmap of the mount.
+  * @param   parent  inode of the directory
+  * @param   dentry  directory cache entry
+  * @param   mode    file mode
+@@ -1081,7 +1081,7 @@
+ /**
+  * Create a new directory.
+  *
+- * @param   ns      The name space.
++ * @param   idmap   idmap of the mount.
+  * @param   parent  inode of the directory
+  * @param   dentry  directory cache entry
+  * @param   mode    file mode
+@@ -1196,7 +1196,7 @@
+ /**
+  * Rename a regular file / directory.
+  *
+- * @param   ns          The name space.
++ * @param   idmap       idmap of the mount.
+  * @param   old_parent  inode of the old parent directory
+  * @param   old_dentry  old directory cache entry
+  * @param   new_parent  inode of the new parent directory

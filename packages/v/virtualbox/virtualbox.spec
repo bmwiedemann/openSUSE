@@ -162,6 +162,8 @@ Patch35:        fixes_for_leap15.5.patch
 Patch36:        fixes_for_gcc13.patch
 # Fix for kernel 6.3
 Patch37:        fixes_for_kernel_6.3.patch
+# Fix locking problem in 7.0.6
+Patch38:        fix_7.0.6_locking_problems.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -498,6 +500,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch36 -p1
 %endif
 %patch37 -p1
+%patch38 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

@@ -1,8 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 21 17:05:39 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- File "fixes_for_kernel_6.3.patch" is updated for more API changes
+  File "fix_7.0.6_locking_problems.patch" is added. Fixes boo#1209529.
+    Larry Len Rainey and I have worked on this bug for some time. It only
+    happened on systems with large numbers of processors and many virtual
+    machines. We suspected a locking problem, but the thought of auditing
+    the entire code was daunting until it was discovered that there was no
+    problem if the host ran VB 6.1.40. It did not matter what version the
+    guests were running. That essentially eliminated every code part except
+    for vboxdrv.ko. That made the audit tractable. There were two files and
+    a total of 8 places where the locking was suspect. When those were
+    changed, the lockups while using 7.0.6 host code were no longer observed.
+
+    The lockups were infrequent, thus it is impossible to say that we have
+    fixed everything, but the frequency is clearly diminished.
+
+-------------------------------------------------------------------
 Mon Mar  6 21:14:12 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Added file "fixes_for_kernel_6.3.patch" to handle API change.
 - File "fixes_for_gcc13.patch" updated for additional changes in GCC 13 boo#1207468
+  spec-cleaner used to remove extra blank line is spec file.
 
 -------------------------------------------------------------------
 Wed Mar  1 16:13:24 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>

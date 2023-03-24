@@ -1,0 +1,96 @@
+Index: VirtualBox-7.0.6/src/VBox/HostDrivers/Support/SUPDrv.cpp
+===================================================================
+--- VirtualBox-7.0.6.orig/src/VBox/HostDrivers/Support/SUPDrv.cpp
++++ VirtualBox-7.0.6/src/VBox/HostDrivers/Support/SUPDrv.cpp
+@@ -871,8 +871,8 @@ void VBOXCALL supdrvDeleteDevExt(PSUPDRV
+ 
+     /* kill the GIP. */
+     supdrvGipDestroy(pDevExt);
+-    RTSpinlockDestroy(pDevExt->hGipSpinlock);
+     pDevExt->hGipSpinlock = NIL_RTSPINLOCK;
++    RTSpinlockDestroy(pDevExt->hGipSpinlock);
+ 
+     supdrvTracerTerm(pDevExt);
+ 
+@@ -5351,8 +5351,8 @@ static int supdrvIOCtl_LdrOpen(PSUPDRVDE
+         rc = supdrvLdrAddUsage(pDevExt, pSession, pImage, true /*fRing3Usage*/);
+     if (RT_FAILURE(rc))
+     {
+-        supdrvLdrUnlock(pDevExt);
+         pImage->uMagic = SUPDRVLDRIMAGE_MAGIC_DEAD;
++        supdrvLdrUnlock(pDevExt);
+         RTMemFree(pImage);
+         Log(("supdrvIOCtl_LdrOpen(%s): failed - %Rrc\n", pReq->u.In.szName, rc));
+         return rc;
+@@ -6095,6 +6095,7 @@ static int supdrvIOCtl_LdrFree(PSUPDRVDE
+             /* free it */
+             pUsage->pImage = NULL;
+             pUsage->pNext = NULL;
++	    RTSpinlockRelease(pDevExt->Spinlock);
+             RTMemFree(pUsage);
+ 
+             /*
+@@ -6106,7 +6107,10 @@ static int supdrvIOCtl_LdrFree(PSUPDRVDE
+                 supdrvLdrSubtractUsage(pDevExt, pImage, 1);
+         }
+         else
++	{
++	    RTSpinlockRelease(pDevExt->Spinlock);
+             Log(("supdrvIOCtl_LdrFree: Dangling objects in %p/%s!\n", pImage->pvImage, pImage->szName));
++	}
+     }
+     else
+     {
+@@ -6334,9 +6338,9 @@ static int supdrvIOCtl_LdrQuerySymbol(PS
+         rc = VERR_INVALID_HANDLE;
+     }
+ 
++    pReq->u.Out.pvSymbol = pvSymbol;
+     supdrvLdrUnlock(pDevExt);
+ 
+-    pReq->u.Out.pvSymbol = pvSymbol;
+     return rc;
+ }
+ 
+Index: VirtualBox-7.0.6/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
+===================================================================
+--- VirtualBox-7.0.6.orig/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
++++ VirtualBox-7.0.6/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
+@@ -4537,9 +4537,9 @@ static int supdrvTscDeltaThreadWait(PSUP
+  */
+ static void supdrvTscDeltaThreadStartMeasurement(PSUPDRVDEVEXT pDevExt, bool fForceAll)
+ {
++    RTSpinlockAcquire(pDevExt->hTscDeltaSpinlock);
+     if (pDevExt->hTscDeltaThread != NIL_RTTHREAD)
+     {
+-        RTSpinlockAcquire(pDevExt->hTscDeltaSpinlock);
+         if (   pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_Listening
+             || pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_Measuring)
+         {
+@@ -4550,9 +4550,9 @@ static void supdrvTscDeltaThreadStartMea
+         else if (   pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_WaitAndMeasure
+                  && fForceAll)
+             pDevExt->fTscThreadRecomputeAllDeltas = true;
+-        RTSpinlockRelease(pDevExt->hTscDeltaSpinlock);
+         RTThreadUserSignal(pDevExt->hTscDeltaThread);
+     }
++    RTSpinlockRelease(pDevExt->hTscDeltaSpinlock);
+ }
+ 
+ 
+@@ -4628,13 +4628,13 @@ static int supdrvTscDeltaThreadInit(PSUP
+             }
+             else
+                 OSDBGPRINT(("supdrvTscDeltaInit: RTThreadCreate failed. rc=%Rrc\n", rc));
+-            RTSemEventDestroy(pDevExt->hTscDeltaEvent);
+             pDevExt->hTscDeltaEvent = NIL_RTSEMEVENT;
++            RTSemEventDestroy(pDevExt->hTscDeltaEvent);
+         }
+         else
+             OSDBGPRINT(("supdrvTscDeltaInit: RTSemEventCreate failed. rc=%Rrc\n", rc));
+-        RTSpinlockDestroy(pDevExt->hTscDeltaSpinlock);
+         pDevExt->hTscDeltaSpinlock = NIL_RTSPINLOCK;
++        RTSpinlockDestroy(pDevExt->hTscDeltaSpinlock);
+     }
+     else
+         OSDBGPRINT(("supdrvTscDeltaInit: RTSpinlockCreate failed. rc=%Rrc\n", rc));
