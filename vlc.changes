@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
+
+- If version constraints for ffmpeg are in use,
+  every ffmpeg component must be constrained
+
+-------------------------------------------------------------------
 Tue Feb 28 13:15:40 UTC 2023 - pgajdos@suse.com
 
 - xosd plugin was removed in 5adefde
