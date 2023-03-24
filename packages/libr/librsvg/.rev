@@ -1052,4 +1052,12 @@
 - actually run the testsuite for x86_64 (bsc#1207167) (forwarded request 1058610 from dirkmueller)</comment>
     <requestid>1058616</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b3c8fe72c2cad77f881078d4a357132e</srcmd5>
+    <version>2.56.0</version>
+    <time>1679667435</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1072794 from iznogood)</comment>
+    <requestid>1073190</requestid>
+  </revision>
 </revisionlist>

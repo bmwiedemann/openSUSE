@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Mar 17 20:56:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.0:
+  + Fix crash when XML files get recursively included through
+    XInclude.
+  + When running the suite of reference tests, you can now use the
+    TESTS_OUTPUT_DIR environment variable to specify where results
+    for failures get written. See tests/README.md for details.
+  + The minimum supported Rust version (MSRV) is 1.64.
+
+-------------------------------------------------------------------
+Fri Mar 17 17:20:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --skip filter_morphology_from_reference_page_svg to
+  cargo_test, filter out new test that fails when building against
+  cairo-1.17.8.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:48:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.55.92:
+  + Update to cssparser 0.29.6; this adds support for hwb() color
+    syntax, from the CSS Color Module Level 4 spec
+    (https://drafts.csswg.org/css-color-4/#changes). Note that
+    values inside hwb() are *not* comma-separated, just whitespace.
+  + Fix panic when a requested font-size is too big.
+  + Validate all clipPath and mask transforms.
+  + Add a performance tracking framework. This is part of an
+    Outreachy internship.
+  + Slight improvements in the size of generated code and memory
+    consumption.
+  + The Rust crate is now called "rsvg", for consistency with other
+    crates that don't usually have a "lib" prefix.
+  + The Rust API documentation is now available at
+    https://gnome.pages.gitlab.gnome.org/librsvg/doc/rsvg/index.html
+- Add minimum harddisk size of 9G for x86_64 to constraints. The
+  cargo test uses a lot of disk space.
+
+-------------------------------------------------------------------
+Tue Feb 28 13:57:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.55.91:
+  + Support "turn" unit for CSS <angle> values.
+  + Support the feDropShadow element.
+  + Fix panic when a feTile filter gets an empty source region.
+  + Update to gtk-rs 0.17.0.
+  + Simplify the NMake Makefiles for Windows; see
+    win32/MSVC-Builds.md for details.
+  + Documentation and infrastructure updates.
+  + Consolidate the scattered .md documents into the Development
+    Guide. Updated links throughout.
+    https://gnome.pages.gitlab.gnome.org/librsvg/devel-docs/index.html
+  + Internal refactoring of the test suite.
+  + Updated dependencies to avoid duplicated crates.
+- Changes from version 2.55.90:
+  + rsvg-convert now supports Tab completion for bash, elvish,
+    fish, powershell, and zsh.  Please run rsvg-convert
+    --completion bash to generate the completion file.  You can use
+    the other shells' names as an argument to the --completion
+    option.
+  + Support vector-effect="non-scaling-stroke" for paths.
+  + Apply width, height when <use>ing an <svg>.
+  + There is a new development guide for librsvg, for people who
+    want to help in its development. I hope this will be especially
+    useful to Outreachy and Summer of Code interns:
+    https://gnome.pages.gitlab.gnome.org/librsvg/devel-docs/index.html
+  + In the use element, honor the overflow:hidden property of a
+    referenced symbol.
+  + Treat property and attribute parse errors / invalid values as
+    if they were not present, per the specs.  Previously this would
+    cause the offending element's subtree to not be rendered.
+  + Make feGaussianBlur work as a pass-through filter if the
+    stdDeviation is invalid.
+  + Define missing crate metadata for Cargo.toml.
+  + Add some tests that were missing for the C API.
+  + Fix the basic test suite in Windows.
+  + Miscellaneous fixes for the build and CI.
+  + Plenty of internal refactoring to enable more consistent
+    logging.
+  + Slight reductions in memory consumption for elements with
+    context-stroke and context-fill.
+  + Experimental gdk-pixbuf loader in Rust. This is not installed
+    yet.
+  + Update the gtk-rs crates to 0.16.0.
+  + Port rsvg-convert's argument parsing to the clap4 crate.
+  + Updates to the dependencies.
+  + The CI now has a cargo-deny step, which should help us notice
+    when there are security advisories for dependencies
+
+-------------------------------------------------------------------
 Thu Jan 12 16:13:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update vendor tarball

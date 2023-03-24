@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/librsvg.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/2.55.1</param>
+    <param name="revision">refs/tags/2.56.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
 <!--   <param name="changesgenerate">enable</param> -->
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
   <param name="srcdir">librsvg</param>
   <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="manual">
   <param name="srcdir">librsvg</param>
   </service>
 </services>
