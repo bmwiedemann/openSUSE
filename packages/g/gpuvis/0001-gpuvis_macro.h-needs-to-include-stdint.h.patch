@@ -1,0 +1,26 @@
+From df6faf200282f078605c920eae888b3f1ab0dfc6 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <pjakobsson@suse.de>
+Date: Fri, 24 Mar 2023 10:57:24 +0100
+Subject: [PATCH] gpuvis_macro.h needs to include stdint.h
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ src/gpuvis_macros.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gpuvis_macros.h b/src/gpuvis_macros.h
+index 9a6974c..3574dbd 100644
+--- a/src/gpuvis_macros.h
++++ b/src/gpuvis_macros.h
+@@ -24,6 +24,8 @@
+ #ifndef GPUVIS_MACROS_H_
+ #define GPUVIS_MACROS_H_
+ 
++#include <stdint.h>
++
+ // Disable gpuvis ftrace tracing by default
+ #define GPUVIS_TRACE_UTILS_DISABLE
+ #include "../sample/gpuvis_trace_utils.h"
+-- 
+2.40.0
+

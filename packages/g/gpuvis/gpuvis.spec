@@ -1,7 +1,7 @@
 #
 # spec file for package gpuvis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,24 @@
 #
 
 
-%define rapidjson_commit 1c2c8e085a8b2561dff17bedb689d2eb0609b689
+%define commit a0ca7a9d4a126f0ad382699010cdf15562afc307
 
 Name:           gpuvis
-Version:        0.1
+Version:        20230221
 Release:        0
 Summary:        GPU Trace Visualizer
 License:        MIT
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/mikesart/gpuvis
-Source0:        https://github.com/mikesart/gpuvis/archive/v%{version}/gpuvis.tar.gz
-Source1:        https://github.com/Tencent/rapidjson/archive/%{rapidjson_commit}/rapidjson.tar.gz
+Source0:        https://github.com/mikesart/gpuvis/archive/%{commit}/gpuvis.tar.gz
+Patch0:         0001-gpuvis_macro.h-needs-to-include-stdint.h.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
 BuildRequires:  libSDL2-devel
 BuildRequires:  meson
 BuildRequires:  ninja
+BuildRequires:  rapidjson-devel
 %ifarch %{ix86} x86_64
 %if 0%{?suse_version} > 1530
 BuildRequires:  intel-gpu-tools-devel
@@ -43,9 +44,8 @@ BuildRequires:  intel-gpu-tools-devel
 Gpuvis is a Linux GPU profiler similar to GPUView on Windows. It is designed to work with trace-cmd captures and help track down Linux gpu and application performance issues.
 
 %prep
-%setup -q -n gpuvis-%{version}
-mkdir -p lib/rapidjson
-tar -xf %{_sourcedir}/rapidjson.tar.gz --strip 1  -C lib/rapidjson
+%setup -q -n gpuvis-%{commit}
+%patch0 -p1
 
 %build
 %meson \

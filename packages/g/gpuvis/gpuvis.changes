@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 24 10:21:40 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 20230221 (a0ca7a9d4a126f0ad382699010cdf15562afc307)
+  * Fix compilation with latest version of igt
+  * Fix build using meson and not vendor rapidjson
+  * 0001-gpuvis_macro.h-needs-to-include-stdint.h.patch Fix compile error
+
+-------------------------------------------------------------------
 Thu Jan 27 16:28:02 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version v0.1 (first proper release)
