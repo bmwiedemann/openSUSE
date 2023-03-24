@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent-rasterbar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%ifarch ppc64
-%define         _lto_cflags      %{nil}
-%endif
 %define _name   libtorrent
 %define libver  2_0
 %define sover   2.0
