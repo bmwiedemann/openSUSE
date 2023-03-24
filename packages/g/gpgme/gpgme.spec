@@ -27,7 +27,7 @@
 %bcond_without qt
 %endif
 Name:           gpgme%{psuffix}
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -41,15 +41,9 @@ Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
 # PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D545
-Patch3:         gpgme-D545-python310.patch
-# PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D546
-Patch4:         gpgme-D546-python310.patch
-# PATCH-FIX-UPSTREAM fix qt tests -- https://dev.gnupg.org/T6137
-Patch5:         gpgme-1.18.0-T6137-qt_test.patch
+Patch1:         gpgme-D545-python310.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
-Patch6:         gpgme-suse-nobetasuffix.patch
-# Enable python 3.11 as well
-Patch7:         python311.patch
+Patch2:         gpgme-suse-nobetasuffix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -240,7 +234,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 
 %check
 %if ! 0%{?qemu_user_space_build}
-%make_build check
+GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $(find -name mygpgme.log -type f)
 %endif
 
 %if %{with qt}

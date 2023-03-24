@@ -1,8 +1,8 @@
-Index: gpgme-1.18.0/autogen.sh
+Index: gpgme-1.19.0/autogen.sh
 ===================================================================
---- gpgme-1.18.0.orig/autogen.sh
-+++ gpgme-1.18.0/autogen.sh
-@@ -265,8 +265,7 @@ if [ "$myhost" = "find-version" ]; then
+--- gpgme-1.19.0.orig/autogen.sh
++++ gpgme-1.19.0/autogen.sh
+@@ -268,8 +268,7 @@ if [ "$myhost" = "find-version" ]; then
        rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
      else
        ingit=no

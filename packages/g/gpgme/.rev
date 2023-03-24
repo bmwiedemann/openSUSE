@@ -737,4 +737,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1072624</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>f2d1d47c2e1a6f34d1c33d599e6b8354</srcmd5>
+    <version>1.19.0</version>
+    <time>1679667353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073534</requestid>
+  </revision>
 </revisionlist>

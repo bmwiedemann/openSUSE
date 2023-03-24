@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 20 15:46:55 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.19.0:
+  * New context flag "no-auto-check-trustdb". [T6261]
+  * Optionally, build QGpgME for Qt 6
+  * Support component "gpgtar-name" in gpgme_get_dirinfo. [T6342]
+  * Extended gpgme_op_encrypt*, gpgme_op_encrypt_sign*, and
+    gpgme_op_sign* to allow creating an encrypted and/or signed
+    archive. [T6342]
+  * Extended gpgme_op_decrypt*, gpgme_op_decrypt_verify*,
+    and gpgme_op_verify* to allow extracting an encrypted and/or
+    signed archive. [T6342]
+  * cpp: Handle error when trying to sign expired keys. [T6155]
+  * cpp: Support encryption flags ThrowKeyIds, EncryptWrap, and
+    WantAddress. [T6359]
+  * cpp, qt: Fix building with C++11.  [T6141]
+  * qt: Fix problem with expiration dates after 2038-01-19 on 32-bit
+    systems  when adding an existing subkey to another key. [T6137]
+  * cpp: Allow setting the curve to use when generating ECC keys
+    for smart cards. [T4429]
+  * qt: Extend ListAllKeysJob to allow disabling the automatic
+    trust database check when listing all keys. [T6261]
+  * qt: Allow deferred start of import jobs. [T6323]
+  * qt: Support creating and extracting signed and encrypted
+    archives. [T6342]
+  * Rebase gpgme-suse-nobetasuffix.patch
+  * Remove patches upstream:
+    - gpgme-D546-python310.patch
+    - gpgme-1.18.0-T6137-qt_test.patch
+    - python311.patch
+
+-------------------------------------------------------------------
 Fri Mar 10 12:18:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop python2 subpackage handling. we do not support python 2.x
