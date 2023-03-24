@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
+Patch0:         add-cstdint.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel
@@ -35,8 +36,8 @@ BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
 %endif
-BuildRequires:  libnova-devel
 BuildRequires:  libev-devel
+BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
@@ -65,10 +66,10 @@ Summary:        Development files for libindi
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libindiAlignmentDriver%{so_ver} = %{version}
-Requires:       libindidriver%{so_ver} = %{version}
-Requires:       libindilx200-%{so_ver} = %{version}
 Requires:       libindiclient%{so_ver} = %{version}
 Requires:       libindiclientqt%{so_ver} = %{version}
+Requires:       libindidriver%{so_ver} = %{version}
+Requires:       libindilx200-%{so_ver} = %{version}
 Conflicts:      libindi-devel >= 2.0.0
 
 %description devel

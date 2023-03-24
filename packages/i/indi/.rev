@@ -7,4 +7,13 @@
     <comment>add missing conflicts</comment>
     <requestid>1065537</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>06db9ed98e1c59f1376c155a70e2085a</srcmd5>
+    <version>1.9.9</version>
+    <time>1679667654</time>
+    <user>dimstar_suse</user>
+    <comment>- Add add-cstdint.patch.
+</comment>
+    <requestid>1073908</requestid>
+  </revision>
 </revisionlist>

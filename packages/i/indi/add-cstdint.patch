@@ -1,0 +1,44 @@
+diff -ru orig/drivers/telescope/ieqdriverbase.h mod/drivers/telescope/ieqdriverbase.h
+--- orig/drivers/telescope/ieqdriverbase.h	2022-11-29 18:29:12.000000000 +0100
++++ mod/drivers/telescope/ieqdriverbase.h	2023-03-23 08:25:17.856959827 +0100
+@@ -22,6 +22,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace iEQ
+ {
+diff -ru orig/drivers/telescope/ieqprolegacydriver.h mod/drivers/telescope/ieqprolegacydriver.h
+--- orig/drivers/telescope/ieqprolegacydriver.h	2022-11-29 18:29:12.000000000 +0100
++++ mod/drivers/telescope/ieqprolegacydriver.h	2023-03-23 08:22:24.432080650 +0100
+@@ -21,6 +21,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ 
+ typedef enum { GPS_OFF, GPS_ON, GPS_DATA_OK } IEQ_GPS_STATUS;
+ typedef enum
+diff -ru orig/libs/indibase/connectionplugins/connectionserial.h mod/libs/indibase/connectionplugins/connectionserial.h
+--- orig/libs/indibase/connectionplugins/connectionserial.h	2022-11-29 18:29:12.000000000 +0100
++++ mod/libs/indibase/connectionplugins/connectionserial.h	2023-03-23 08:07:24.695459725 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace Connection
+ {
+diff -ru orig/libs/indibase/dsp/dspinterface.h mod/libs/indibase/dsp/dspinterface.h
+--- orig/libs/indibase/dsp/dspinterface.h	2022-11-29 18:29:12.000000000 +0100
++++ mod/libs/indibase/dsp/dspinterface.h	2023-03-23 08:07:41.243548747 +0100
+@@ -26,6 +26,7 @@
+ #include <fitsio.h>
+ #include <functional>
+ #include <string>
++#include <cstdint>
+ 
+ namespace INDI
+ {
