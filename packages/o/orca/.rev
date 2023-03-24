@@ -1276,4 +1276,26 @@
     <comment></comment>
     <requestid>1056100</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>b0ed52c7cc23ad0e449693ed45e02f00</srcmd5>
+    <version>44.rc</version>
+    <time>1679667472</time>
+    <user>dimstar_suse</user>
+    <comment>Subbing RC in case upstream forgets to do stable bump
+- Update to version 44.rc:
+  + General:
+    - Fix double-presentation of indentation information
+    - Interrupt speech immediately prior to speaking &quot;screen reader
+      off&quot;
+    - Add command-line Orca modifier documentation
+    - Fix issue when using the new AT-SPI device API
+  + Web:
+    - Fix jumping in sites caused by ARIA selection-changed events
+    - Fix incorrect browsing in Firefox when popup has focus
+    - Fix double-presentation of content in ARIA's tab role
+    - Fix structural navigation commands sometimes failing to work
+      after script reactivation
+  + Updated translations. (forwarded request 1073113 from iznogood)</comment>
+    <requestid>1073237</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar  8 10:54:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + General:
+    - Fix double-presentation of indentation information
+    - Interrupt speech immediately prior to speaking "screen reader
+      off"
+    - Add command-line Orca modifier documentation
+    - Fix issue when using the new AT-SPI device API
+  + Web:
+    - Fix jumping in sites caused by ARIA selection-changed events
+    - Fix incorrect browsing in Firefox when popup has focus
+    - Fix double-presentation of content in ARIA's tab role
+    - Fix structural navigation commands sometimes failing to work
+      after script reactivation
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan  3 15:10:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
