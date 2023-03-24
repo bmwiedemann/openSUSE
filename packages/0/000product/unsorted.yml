@@ -316,7 +316,7 @@ unsorted:
   - VirtualGL-devel 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
-  - WebKit2GTK-5.0-lang: [i586] 
+  - WebKitGTK-6.0-lang: [i586] 
   - WindowMaker-devel 
   - WindowMaker-themes 
   - WoeUSB 
@@ -3277,6 +3277,7 @@ unsorted:
   - dracut-kiwi-oem-dump 
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
+  - dracut-mkinitrd-deprecated 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -3577,7 +3578,6 @@ unsorted:
   - eog-plugin-light-theme 
   - eog-plugin-map 
   - eog-plugin-maximize-windows 
-  - eog-plugin-postasa 
   - eog-plugin-pythonconsole 
   - eog-plugin-send-by-mail 
   - eog-plugin-slideshowshuffle 
@@ -6912,8 +6912,6 @@ unsorted:
   - gtk3-immodule-thai-32bit: [x86_64] 
   - gtk3-immodule-tigrigna-32bit: [x86_64] 
   - gtk3-immodule-vietnamese-32bit: [x86_64] 
-  - gtk3-immodule-wayland 
-  - gtk3-immodule-wayland-32bit: [x86_64] 
   - gtk3-immodule-xim-32bit: [x86_64] 
   - gtk3-metatheme-adapta 
   - gtk3-metatheme-ambiance 
@@ -8324,6 +8322,7 @@ unsorted:
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-pygments 
+  - jupyter-jupyterlab-rtc 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets 
   - jupyter-lineup-widget 
@@ -8345,12 +8344,12 @@ unsorted:
   - jupyter-plotly 
   - jupyter-qgrid 
   - jupyter-rpm-macros 
+  - jupyter-server-fileid 
   - jupyter-server-mathjax 
   - jupyter-server-terminals 
   - jupyter-sidecar-jupyterlab 
   - jupyter-threejs 
   - jupyter-threejs-jupyterlab 
-  - jupyter-vispy 
   - jupyter-widgetsnbextension 
   - just 
   - just-bash-completion 
@@ -11201,6 +11200,7 @@ unsorted:
   - libdocparser1 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdovi-devel 
+  - libdovi3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
   - libdqlite0 
   - libdrm-devel 
@@ -11671,12 +11671,12 @@ unsorted:
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
-  - libgck-2-0_0_0-32bit: [x86_64] 
+  - libgck-2-2-32bit: [x86_64] 
   - libgck-devel 
   - libgck-devel-32bit: [x86_64] 
   - libgck1-devel 
   - libgcr-3-1-32bit: [x86_64] 
-  - libgcr-4-0_0_0-32bit: [x86_64] 
+  - libgcr-4-4-32bit: [x86_64] 
   - libgcr-devel 
   - libgcr-devel-32bit: [x86_64] 
   - libgcr3-devel 
@@ -11738,6 +11738,7 @@ unsorted:
   - libgensiocpp4 
   - libgensiomdns0 
   - libgensioosh0 
+  - libgeocode-glib0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_11_2 
   - libgeos_c1 
@@ -11807,6 +11808,7 @@ unsorted:
   - libgltf-devel 
   - libglusterfs0 
   - libglut3-32bit: [x86_64] 
+  - libglvnd-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
   - libglyr1-32bit: [x86_64] 
@@ -11960,7 +11962,7 @@ unsorted:
   - libgstsctp-1_0-0-32bit: [x86_64] 
   - libgstsdp-1_0-0-32bit: [x86_64] 
   - libgsttag-1_0-0-32bit: [x86_64] 
-  - libgsttranscoder-1_0-0 
+  - libgsttranscoder-1_0-0-32bit: [x86_64] 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
   - libgstva-1_0-0-32bit: [x86_64] 
   - libgstvalidate-1_0-0 
@@ -12467,7 +12469,7 @@ unsorted:
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
-  - libjavascriptcoregtk-5_0-0: [i586] 
+  - libjavascriptcoregtk6_0-1: [i586] 
   - libjaylink-devel 
   - libjbig-devel 
   - libjbig-devel-32bit: [x86_64] 
@@ -12656,7 +12658,6 @@ unsorted:
   - liblbxutil-devel-32bit: [x86_64] 
   - liblbxutil1 
   - liblbxutil1-32bit: [x86_64] 
-  - liblc3-1 
   - liblc3-1-32bit: [x86_64] 
   - liblc3-devel 
   - liblc3-tools 
@@ -13453,9 +13454,7 @@ unsorted:
   - libopencascade-visualization7_7 
   - libopencl-clang11: [x86_64] 
   - libopencore-amr-devel 
-  - libopencore-amrnb0 
   - libopencore-amrnb0-32bit: [x86_64] 
-  - libopencore-amrwb0 
   - libopencore-amrwb0-32bit: [x86_64] 
   - libopencsd1 
   - libopencsd_c_api1 
@@ -13781,6 +13780,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
+  - libplacebo264-32bit: [x86_64] 
   - libplanarity0 
   - libplank1 
   - libplayerctl2 
@@ -14456,6 +14456,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
+  - librocksdb8 
   - librocsgraphtheory0 
   - libroken18 
   - librpma0: [x86_64] 
@@ -15502,7 +15503,7 @@ unsorted:
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
   - libwebkit2gtk-4_1-0-32bit: [x86_64] 
-  - libwebkit2gtk-5_0-0: [i586] 
+  - libwebkitgtk6_0-4: [i586] 
   - libwebp-devel 
   - libwebp-devel-32bit: [x86_64] 
   - libwebp-tools 
@@ -18996,6 +18997,7 @@ unsorted:
   - omniORBpy 
   - omniORBpy-devel 
   - omnisharp-server 
+  - omnispeak 
   - omping 
   - onboard 
   - onboard-data 
@@ -19447,6 +19449,8 @@ unsorted:
   - osgi-compendium-javadoc 
   - osgi-core 
   - osgi-core-javadoc 
+  - osgi-service-jdbc 
+  - osgi-service-jdbc-javadoc 
   - osgi-service-log 
   - osgi-service-log-javadoc 
   - osinfo-db-tools 
@@ -23304,6 +23308,7 @@ unsorted:
   - python310-azure-mgmt-extendedlocation 
   - python310-azure-mgmt-fluidrelay 
   - python310-azure-mgmt-frontdoor 
+  - python310-azure-mgmt-graphservices 
   - python310-azure-mgmt-guestconfig 
   - python310-azure-mgmt-hanaonazure 
   - python310-azure-mgmt-hdinsight 
@@ -23569,7 +23574,6 @@ unsorted:
   - python310-cfscrape 
   - python310-cftime 
   - python310-chai 
-  - python310-chart-studio 
   - python310-chartify 
   - python310-check-manifest 
   - python310-checkdmarc 
@@ -24337,16 +24341,19 @@ unsorted:
   - python310-junos-eznc 
   - python310-jupyter 
   - python310-jupyter-client 
+  - python310-jupyter-collaboration 
   - python310-jupyter-core 
   - python310-jupyter-events 
   - python310-jupyter-kernel-test 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
+  - python310-jupyter-server-fileid 
   - python310-jupyter-server-mathjax 
   - python310-jupyter-server-terminals 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
   - python310-jupyter-telemetry 
+  - python310-jupyter-ydoc 
   - python310-jupyter_console 
   - python310-jupyter_contrib_core 
   - python310-jupyter_highlight_selected_word 
@@ -26007,6 +26014,7 @@ unsorted:
   - python310-yaswfp 
   - python310-yg.lockfile 
   - python310-youtube-dl 
+  - python310-ypy-websocket 
   - python310-yq 
   - python310-yt 
   - python310-zake 
@@ -26271,6 +26279,7 @@ unsorted:
   - python311-URLObject 
   - python311-UkPostcodeParser 
   - python311-Unidecode 
+  - python311-VyattaConfParser 
   - python311-WSGIProxy2 
   - python311-WSME 
   - python311-WTForms 
@@ -26615,6 +26624,7 @@ unsorted:
   - python311-azure-mgmt-extendedlocation 
   - python311-azure-mgmt-fluidrelay 
   - python311-azure-mgmt-frontdoor 
+  - python311-azure-mgmt-graphservices 
   - python311-azure-mgmt-guestconfig 
   - python311-azure-mgmt-hanaonazure 
   - python311-azure-mgmt-hdinsight 
@@ -27012,6 +27022,7 @@ unsorted:
   - python311-dash-renderer 
   - python311-dash-table 
   - python311-databases 
+  - python311-datadiff 
   - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
@@ -27653,16 +27664,19 @@ unsorted:
   - python311-junos-eznc 
   - python311-jupyter 
   - python311-jupyter-client 
+  - python311-jupyter-collaboration 
   - python311-jupyter-core 
   - python311-jupyter-events 
   - python311-jupyter-kernel-test 
   - python311-jupyter-packaging 
   - python311-jupyter-server 
+  - python311-jupyter-server-fileid 
   - python311-jupyter-server-mathjax 
   - python311-jupyter-server-terminals 
   - python311-jupyter-server-test 
   - python311-jupyter-sphinx 
   - python311-jupyter-telemetry 
+  - python311-jupyter-ydoc 
   - python311-jupyter_console 
   - python311-jupyter_contrib_core 
   - python311-jupyter_highlight_selected_word 
@@ -29355,6 +29369,7 @@ unsorted:
   - python311-yaswfp 
   - python311-yg.lockfile 
   - python311-youtube-dl 
+  - python311-ypy-websocket 
   - python311-yq 
   - python311-yt 
   - python311-zake 
@@ -29974,6 +29989,7 @@ unsorted:
   - python38-azure-mgmt-extendedlocation 
   - python38-azure-mgmt-fluidrelay 
   - python38-azure-mgmt-frontdoor 
+  - python38-azure-mgmt-graphservices 
   - python38-azure-mgmt-guestconfig 
   - python38-azure-mgmt-hanaonazure 
   - python38-azure-mgmt-hdinsight 
@@ -31051,16 +31067,19 @@ unsorted:
   - python38-junos-eznc 
   - python38-jupyter 
   - python38-jupyter-client 
+  - python38-jupyter-collaboration 
   - python38-jupyter-core 
   - python38-jupyter-events 
   - python38-jupyter-kernel-test 
   - python38-jupyter-packaging 
   - python38-jupyter-server 
+  - python38-jupyter-server-fileid 
   - python38-jupyter-server-mathjax 
   - python38-jupyter-server-terminals 
   - python38-jupyter-server-test 
   - python38-jupyter-sphinx 
   - python38-jupyter-telemetry 
+  - python38-jupyter-ydoc 
   - python38-jupyter_console 
   - python38-jupyter_contrib_core 
   - python38-jupyter_highlight_selected_word 
@@ -32778,6 +32797,7 @@ unsorted:
   - python38-yaswfp 
   - python38-yg.lockfile 
   - python38-youtube-dl 
+  - python38-ypy-websocket 
   - python38-yq 
   - python38-yt 
   - python38-zake 
@@ -33398,6 +33418,7 @@ unsorted:
   - python39-azure-mgmt-extendedlocation 
   - python39-azure-mgmt-fluidrelay 
   - python39-azure-mgmt-frontdoor 
+  - python39-azure-mgmt-graphservices 
   - python39-azure-mgmt-guestconfig 
   - python39-azure-mgmt-hanaonazure 
   - python39-azure-mgmt-hdinsight 
@@ -34474,16 +34495,19 @@ unsorted:
   - python39-junos-eznc 
   - python39-jupyter 
   - python39-jupyter-client 
+  - python39-jupyter-collaboration 
   - python39-jupyter-core 
   - python39-jupyter-events 
   - python39-jupyter-kernel-test 
   - python39-jupyter-packaging 
   - python39-jupyter-server 
+  - python39-jupyter-server-fileid 
   - python39-jupyter-server-mathjax 
   - python39-jupyter-server-terminals 
   - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
   - python39-jupyter-telemetry 
+  - python39-jupyter-ydoc 
   - python39-jupyter_console 
   - python39-jupyter_contrib_core 
   - python39-jupyter_highlight_selected_word 
@@ -36203,6 +36227,7 @@ unsorted:
   - python39-yaswfp 
   - python39-yg.lockfile 
   - python39-youtube-dl 
+  - python39-ypy-websocket 
   - python39-yq 
   - python39-yt 
   - python39-zake 
@@ -37151,6 +37176,8 @@ unsorted:
   - robinhood-webgui: [x86_64] 
   - rockdodger 
   - rocket.term 
+  - rocksdb-devel 
+  - rocksdb-tools 
   - rocksndiamonds 
   - rocksndiamonds-data 
   - rocs 
@@ -37680,6 +37707,7 @@ unsorted:
   - ruby3.2-rubygem-activerecord-7.0 
   - ruby3.2-rubygem-activestorage-7.0 
   - ruby3.2-rubygem-coffee-rails 
+  - ruby3.2-rubygem-d-installer 
   - ruby3.2-rubygem-delayed_job_active_record 
   - ruby3.2-rubygem-devise 
   - ruby3.2-rubygem-devise-i18n 
@@ -47945,6 +47973,7 @@ unsorted:
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gee-1_0 
   - typelib-1_0-Gegl-0_4 
+  - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
@@ -47953,7 +47982,6 @@ unsorted:
   - typelib-1_0-Gladeui-2_0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
-  - typelib-1_0-GnomeBG-4_0 
   - typelib-1_0-GnomeBluetooth-1_0 
   - typelib-1_0-GnomeKeyring-1_0 
   - typelib-1_0-GnomeRR-4_0 
@@ -48001,7 +48029,7 @@ unsorted:
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
   - typelib-1_0-JavaScriptCore-4_0 
-  - typelib-1_0-JavaScriptCore-5_0 
+  - typelib-1_0-JavaScriptCore-6_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -48027,7 +48055,7 @@ unsorted:
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
-  - typelib-1_0-NMA4-1_0 
+  - typelib-1_0-NMA-1_0 
   - typelib-1_0-Nautilus-4_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
@@ -48046,6 +48074,7 @@ unsorted:
   - typelib-1_0-RygelServer-2_8 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
+  - typelib-1_0-Soup-2_4 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-Template-1_0 
   - typelib-1_0-Tepl-6 
@@ -48057,11 +48086,11 @@ unsorted:
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_13 
   - typelib-1_0-Vte-3_91 
+  - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
-  - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
-  - typelib-1_0-WebKit2WebExtension-5_0 
+  - typelib-1_0-WebKitWebProcessExtension-6_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_4 
@@ -48654,14 +48683,14 @@ unsorted:
   - webenginepart 
   - webkit-jsc-4 
   - webkit-jsc-4.1 
-  - webkit-jsc-5.0 
-  - webkit2gtk-5_0-injected-bundles: [i586] 
+  - webkit-jsc-6.0 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
   - webkit2gtk3-soup2-devel 
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
+  - webkitgtk-6_0-injected-bundles: [i586] 
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
   - webp-pixbuf-loader 
