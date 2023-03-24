@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 15 20:08:08 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add libbsd-glibc-2.34-closefrom.patch to avoid conflicting
+  with function provided by glibc 2.34
+
+-------------------------------------------------------------------
 Fri Oct  7 12:04:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.7:

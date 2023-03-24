@@ -27,6 +27,7 @@ URL:            https://libbsd.freedesktop.org/
 Source0:        https://libbsd.freedesktop.org/releases/libbsd-%{version}.tar.xz
 Source1:        https://libbsd.freedesktop.org/releases/libbsd-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         libbsd-glibc-2.34-closefrom.patch
 BuildRequires:  fdupes
 BuildRequires:  libmd-devel
 BuildRequires:  openssl-devel
@@ -73,7 +74,7 @@ when libbsd is loaded via dlopen() from a threaded program.  This can be
 configured using "pkg-config --libs libbsd-ctor".
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -ffat-lto-objects"
