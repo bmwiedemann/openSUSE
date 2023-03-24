@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 21 14:27:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.3:
+  * odb: restore git_odb_open by @ethomson in #6520
+  * Ensure that git_index_add_all handles ignored directories by @ethomson in #6521
+  * pack: use 64 bits for the number of objects by @carlosmn in #6530
+- Drop restore-git-odb-open.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 07:07:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add restore-git-odb-open.patch, some code was removed by error
+  upstream and they fix it after the release.
+  gh#libgit2/libgit2@e1e0d77c6f15
+
+-------------------------------------------------------------------
 Tue Mar  7 14:39:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libgit2 1.6.2:

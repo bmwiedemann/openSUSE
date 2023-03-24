@@ -536,4 +536,16 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment></comment>
     <requestid>1071149</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f43db67fe9c2410cc1e71dffa9d9659f</srcmd5>
+    <version>1.6.3</version>
+    <time>1679667401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.3:
+  * odb: restore git_odb_open by @ethomson in #6520
+  * Ensure that git_index_add_all handles ignored directories by @ethomson in #6521
+  * pack: use 64 bits for the number of objects by @carlosmn in #6530
+- Drop restore-git-odb-open.patch (forwarded request 1073569 from polslinux)</comment>
+    <requestid>1073918</requestid>
+  </revision>
 </revisionlist>
