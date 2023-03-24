@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>1004786</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3711835ac96a0e28fb826ef13335be6a</srcmd5>
+    <version>2.66.6</version>
+    <time>1679667414</time>
+    <user>dimstar_suse</user>
+    <comment>New old stable, ok to fwd (forwarded request 1072613 from iznogood)</comment>
+    <requestid>1073159</requestid>
+  </revision>
 </revisionlist>

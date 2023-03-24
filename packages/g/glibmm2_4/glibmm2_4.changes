@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 12:28:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.6:
+  + Glib: Dispatcher: Don't warn when a Dispatcher is deleted while
+    messages are pending.
+  + Gio: NetworkMonitor::get_default(): Add refreturn.
+  + gmmproc: generate_wrap_init.pl.in: Disable warning C4273 on
+    Visual Studio.
+  + Meson build:
+    - Detect if we build from a git subtree.
+    - Don't copy files with configure_file().
+
+-------------------------------------------------------------------
 Mon Sep 19 09:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.5:
