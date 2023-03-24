@@ -33,4 +33,14 @@
 - Use pytest rather than setup.py test</comment>
     <requestid>921553</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee78aa079782bd56f3732e409d8551a3</srcmd5>
+    <version>1.2.6</version>
+    <time>1679667361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.6:
+  * move away from nose to pytest
+- drop remove-nose.patch (upstream)</comment>
+    <requestid>1073577</requestid>
+  </revision>
 </revisionlist>

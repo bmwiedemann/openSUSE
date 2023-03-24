@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 21 15:24:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.6:
+  * move away from nose to pytest
+- drop remove-nose.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Sep 27 04:27:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-nose.patch
