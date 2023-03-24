@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:14:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Mon Mar  6 12:32:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Code clean ups
+  + Better handling when dbus-daemon dies
+  + Improved log output
+  + Updated translations.
+- Pass systemduserunitdir=%%{_userunitdir} to meson, ensure we set
+  the correct dir during build.
+- Drop gnome-session-exit-when-lost-name-on-bus.patch: Fixed
+  upstream.
+- Bump basever define to 44 following upstream changes.
+
+-------------------------------------------------------------------
 Tue Sep 20 17:57:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

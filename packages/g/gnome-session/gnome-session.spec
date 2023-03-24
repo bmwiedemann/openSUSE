@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,22 @@
 #
 
 
-%define basever 43
+%define basever 44
 
 Name:           gnome-session
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/%{basever}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/44/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
 # PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
-# PATCH-FIX-UPSTREAM gnome-session-exit-when-lost-name-on-bus.patch bsc#1175622 glgo!GNOME/gnome-session!60 xwang@suse.com -- gnome-session exit immediately when lost name on bus
-Patch3:         gnome-session-exit-when-lost-name-on-bus.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -110,14 +108,14 @@ functional GNOME desktop.
 %ifarch s390 s390x
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %build
 %meson \
-  -D docbook=false \
-  -D systemd=true \
-  -D systemd_journal=true \
-  %{nil}
+	-D docbook=false \
+	-D systemd=true \
+	-D systemd_journal=true \
+	-D systemduserunitdir=%{_userunitdir} \
+	%{nil}
 %meson_build
 
 %install
