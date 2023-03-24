@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 17 12:18:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 08:28:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.47.3:
+  + OAuth2: Add option to use version 2.0 of the API.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 17:57:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.47.2:
+  + Enable GitLab CI for easier testing of the changes.
+  + Remove duplicated OAuth2 code.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 10 10:31:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.4:

@@ -20,13 +20,13 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.46.4
+Version:        3.48.0
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-ews/3.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-ews/3.48/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
