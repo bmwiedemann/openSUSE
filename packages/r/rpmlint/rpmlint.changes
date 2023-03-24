@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 24 08:23:31 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230322.717aa4d:
+  * pam-module whitelist: add lastlog2 (bsc#1209238)
+
+-------------------------------------------------------------------
+Tue Mar 21 12:02:09 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230321.8da9c94:
+  * PythonCheck: Add python requirements verification
+  * TagsCheck: handle license exception in first item of a grouping
+  * TagsCheck: restore space exclusion to license_exception_regex
+  * Fix TW CI due to the new flake8 release.
+  * Remove unnnecesary lambda and map in favor generator expressions
+  * Include -prof in devel packages regex
+
+-------------------------------------------------------------------
 Thu Mar 16 17:46:50 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230316.e10f602:

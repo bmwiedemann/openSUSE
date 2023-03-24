@@ -4348,4 +4348,21 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1072571</requestid>
   </revision>
+  <revision rev="440" vrev="1">
+    <srcmd5>1791eff4ec9f5aed8efa1160d0550c20</srcmd5>
+    <version>2.4.0+git20230322.717aa4d</version>
+    <time>1679667532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230322.717aa4d:
+  * pam-module whitelist: add lastlog2 (bsc#1209238)
+
+- Update to version 2.4.0+git20230321.8da9c94:
+  * PythonCheck: Add python requirements verification
+  * TagsCheck: handle license exception in first item of a grouping
+  * TagsCheck: restore space exclusion to license_exception_regex
+  * Fix TW CI due to the new flake8 release.
+  * Remove unnnecesary lambda and map in favor generator expressions
+  * Include -prof in devel packages regex</comment>
+    <requestid>1074099</requestid>
+  </revision>
 </revisionlist>
