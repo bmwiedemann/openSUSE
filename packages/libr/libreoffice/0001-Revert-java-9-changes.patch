@@ -18,11 +18,11 @@ Change-Id: I09f046f54b107b53c86f76a39553bd11ef03d9f6
  delete mode 100644 ridljar/source/libreoffice/module-info.java
  delete mode 100644 ridljar/source/unoloader/module-info.java
 
-diff --git a/configure.ac b/configure.ac
-index f4850a8cb2dc..c2df878df1d7 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -2313,7 +2313,7 @@ AC_ARG_WITH(linker-hash-style,
+Index: libreoffice-7.5.1.2/configure.ac
+===================================================================
+--- libreoffice-7.5.1.2.orig/configure.ac
++++ libreoffice-7.5.1.2/configure.ac
+@@ -2518,7 +2518,7 @@ AC_ARG_WITH(linker-hash-style,
  
  AC_ARG_WITH(jdk-home,
      AS_HELP_STRING([--with-jdk-home=<absolute path to JDK home>],
@@ -31,7 +31,7 @@ index f4850a8cb2dc..c2df878df1d7 100644
           path here. Note that this is not the location of the java command but the
           location of the entire distribution. In case of cross-compiling, this
           is the JDK of the host os. Use --with-build-platform-configure-options
-@@ -8089,7 +8097,24 @@ if test "$ENABLE_JAVA" != "" -a "$cross_compiling" != "yes"; then
+@@ -8613,7 +8613,24 @@ if test "$ENABLE_JAVA" != "" -a "$cross_
          elif test `$JAVAINTERPRETER -version 2>&1 | $AWK '{ print }' | $GREP -c "BEA"` -gt 0; then
              AC_MSG_ERROR([No valid check available. Please check the block for your desired java in configure.ac])
          elif test `$JAVAINTERPRETER -version 2>&1 | $AWK '{ print }' | $GREP -c "IBM"` -gt 0; then
@@ -57,7 +57,7 @@ index f4850a8cb2dc..c2df878df1d7 100644
          else
              JDK=sun
  
-@@ -8097,10 +8122,10 @@ if test "$ENABLE_JAVA" != "" -a "$cross_compiling" != "yes"; then
+@@ -8621,10 +8638,10 @@ if test "$ENABLE_JAVA" != "" -a "$cross_
              _jdk=`$JAVAINTERPRETER -version 2>&1 | $AWK -F'"' '{ print \$2 }' | $SED '/^$/d' | $SED s/[[-A-Za-z]]*//`
              _jdk_ver=`echo "$_jdk" | $AWK -F. '{ print (($1 * 100) + $2) * 100 + $3;}'`
  
@@ -70,8 +70,8 @@ index f4850a8cb2dc..c2df878df1d7 100644
 +            if test "$_jdk_ver" -gt 10800; then
                  JAVA_CLASSPATH_NOT_SET=TRUE
              fi
- 
-@@ -8116,7 +8141,7 @@ if test "$ENABLE_JAVA" != "" -a "$cross_compiling" != "yes"; then
+             dnl TODO: Presumably, the Security Manager will not merely be disallowed, but be
+@@ -8646,7 +8663,7 @@ if test "$ENABLE_JAVA" != "" -a "$cross_
              JAVACFLAGS=-J-Xmx128M
          fi
      else
@@ -80,11 +80,11 @@ index f4850a8cb2dc..c2df878df1d7 100644
      fi
  else
      if test -z "$ENABLE_JAVA"; then
-diff --git a/jvmfwk/CustomTarget_jreproperties.mk b/jvmfwk/CustomTarget_jreproperties.mk
-index da509dbff5ac..ac8f7c053373 100644
---- a/jvmfwk/CustomTarget_jreproperties.mk
-+++ b/jvmfwk/CustomTarget_jreproperties.mk
-@@ -17,7 +17,7 @@ $(call gb_CustomTarget_get_workdir,jvmfwk/jreproperties)/JREProperties.class : \
+Index: libreoffice-7.5.1.2/jvmfwk/CustomTarget_jreproperties.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/jvmfwk/CustomTarget_jreproperties.mk
++++ libreoffice-7.5.1.2/jvmfwk/CustomTarget_jreproperties.mk
+@@ -17,7 +17,7 @@ $(call gb_CustomTarget_get_workdir,jvmfw
  	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),JCS,1)
  	$(call gb_Trace_StartRange,$(subst $(WORKDIR)/,,$@),JCS)
  	$(call gb_Helper_abbreviate_dirs, \
@@ -93,10 +93,10 @@ index da509dbff5ac..ac8f7c053373 100644
  	$(call gb_Trace_EndRange,$(subst $(WORKDIR)/,,$@),JCS)
  
  # vim:set shiftwidth=4 tabstop=4 noexpandtab:
-diff --git a/ridljar/Jar_libreoffice.mk b/ridljar/Jar_libreoffice.mk
-index d34ae3f5ebda..4d0f5ef2545f 100644
---- a/ridljar/Jar_libreoffice.mk
-+++ b/ridljar/Jar_libreoffice.mk
+Index: libreoffice-7.5.1.2/ridljar/Jar_libreoffice.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/ridljar/Jar_libreoffice.mk
++++ libreoffice-7.5.1.2/ridljar/Jar_libreoffice.mk
 @@ -7,7 +7,7 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  #
@@ -106,7 +106,7 @@ index d34ae3f5ebda..4d0f5ef2545f 100644
  
  $(eval $(call gb_Jar_use_customtargets,libreoffice,\
      ridljar/javamaker \
-@@ -27,15 +27,9 @@ $(eval $(call gb_Jar_add_manifest_classpath,libreoffice, \
+@@ -27,15 +27,9 @@ $(eval $(call gb_Jar_add_manifest_classp
      $(if $(filter MACOSX,$(OS)),../../Frameworks/,../) \
  ))
  
@@ -122,10 +122,10 @@ index d34ae3f5ebda..4d0f5ef2545f 100644
  ))
  
  $(eval $(call gb_Jar_add_sourcefiles,libreoffice,\
-diff --git a/ridljar/Jar_unoloader.mk b/ridljar/Jar_unoloader.mk
-index 2acf20b5b289..50b32e8f0f88 100644
---- a/ridljar/Jar_unoloader.mk
-+++ b/ridljar/Jar_unoloader.mk
+Index: libreoffice-7.5.1.2/ridljar/Jar_unoloader.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/ridljar/Jar_unoloader.mk
++++ libreoffice-7.5.1.2/ridljar/Jar_unoloader.mk
 @@ -7,21 +7,12 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  #
@@ -149,10 +149,9 @@ index 2acf20b5b289..50b32e8f0f88 100644
  $(eval $(call gb_Jar_add_sourcefiles,unoloader,\
      ridljar/source/unoloader/com/sun/star/lib/unoloader/UnoClassLoader \
      ridljar/source/unoloader/com/sun/star/lib/unoloader/UnoLoader \
-diff --git a/ridljar/source/libreoffice/module-info.java b/ridljar/source/libreoffice/module-info.java
-deleted file mode 100644
-index 8d24c7ccb13c..000000000000
---- a/ridljar/source/libreoffice/module-info.java
+Index: libreoffice-7.5.1.2/ridljar/source/libreoffice/module-info.java
+===================================================================
+--- libreoffice-7.5.1.2.orig/ridljar/source/libreoffice/module-info.java
 +++ /dev/null
 @@ -1,142 +0,0 @@
 -/*
@@ -297,10 +296,9 @@ index 8d24c7ccb13c..000000000000
 -    exports com.sun.star.xml.xslt;
 -    exports com.sun.star.xsd;
 -}
-diff --git a/ridljar/source/unoloader/module-info.java b/ridljar/source/unoloader/module-info.java
-deleted file mode 100644
-index 6eed39c96df4..000000000000
---- a/ridljar/source/unoloader/module-info.java
+Index: libreoffice-7.5.1.2/ridljar/source/unoloader/module-info.java
+===================================================================
+--- libreoffice-7.5.1.2.orig/ridljar/source/unoloader/module-info.java
 +++ /dev/null
 @@ -1,12 +0,0 @@
 -/*
@@ -315,10 +313,10 @@ index 6eed39c96df4..000000000000
 -{
 -    exports com.sun.star.lib.unoloader;
 -}
-diff --git a/solenv/gbuild/Jar.mk b/solenv/gbuild/Jar.mk
-index 9592fbbad6a6..3fa40e03c754 100644
---- a/solenv/gbuild/Jar.mk
-+++ b/solenv/gbuild/Jar.mk
+Index: libreoffice-7.5.1.2/solenv/gbuild/Jar.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/solenv/gbuild/Jar.mk
++++ libreoffice-7.5.1.2/solenv/gbuild/Jar.mk
 @@ -94,7 +94,6 @@ endef
  # creates a class set and a dependency to it
  # registers target and clean target
@@ -327,7 +325,7 @@ index 9592fbbad6a6..3fa40e03c754 100644
  define gb_Jar_Jar
  ifeq (,$$(findstring $(1),$$(gb_Jar_KNOWN)))
  $$(eval $$(call gb_Output_info,Currently known jars are: $(sort $(gb_Jar_KNOWN)),ALL))
-@@ -107,7 +106,7 @@ $(call gb_Jar_get_target,$(1)) : PACKAGEDIRS :=
+@@ -107,7 +106,7 @@ $(call gb_Jar_get_target,$(1)) : PACKAGE
  $(call gb_Jar_get_target,$(1)) : PACKAGEFILES :=
  $(call gb_Jar_get_target,$(1)) : \
  	$(call gb_JavaClassSet_get_target,$(call gb_Jar_get_classsetname,$(1)))
@@ -336,7 +334,7 @@ index 9592fbbad6a6..3fa40e03c754 100644
  $(eval $(call gb_Module_register_target,$(call gb_Jar_get_target,$(1)),$(call gb_Jar_get_clean_target,$(1))))
  $(call gb_Helper_make_userfriendly_targets,$(1),Jar,$(call gb_Jar_get_target,$(1)))
  
-@@ -122,12 +121,6 @@ $(call gb_JavaClassSet_add_sourcefile,$(call gb_Jar_get_classsetname,$(1)),$(2))
+@@ -122,12 +121,6 @@ $(call gb_JavaClassSet_add_sourcefile,$(
  
  endef
  
@@ -349,7 +347,7 @@ index 9592fbbad6a6..3fa40e03c754 100644
  # PACKAGEROOTS is the list of all root folders created by the JavaClassSet to pack into the jar (without META-INF as this is added automatically)
  define gb_Jar_set_packageroot
  $(call gb_Jar_get_target,$(1)) : PACKAGEROOTS := $(2)
-@@ -166,11 +159,6 @@ $(foreach sourcefile,$(2),$(call gb_Jar_add_sourcefile,$(1),$(sourcefile)))
+@@ -166,11 +159,6 @@ $(foreach sourcefile,$(2),$(call gb_Jar_
  
  endef
  
@@ -361,10 +359,10 @@ index 9592fbbad6a6..3fa40e03c754 100644
  define gb_Jar_add_generated_sourcefile
  $(call gb_JavaClassSet_add_generated_sourcefile,$(call gb_Jar_get_classsetname,$(1)),$(2))
  
-diff --git a/solenv/gbuild/JavaClassSet.mk b/solenv/gbuild/JavaClassSet.mk
-index 39887dee6e5b..dc7d02e8904a 100644
---- a/solenv/gbuild/JavaClassSet.mk
-+++ b/solenv/gbuild/JavaClassSet.mk
+Index: libreoffice-7.5.1.2/solenv/gbuild/JavaClassSet.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/solenv/gbuild/JavaClassSet.mk
++++ libreoffice-7.5.1.2/solenv/gbuild/JavaClassSet.mk
 @@ -17,11 +17,10 @@
  #   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  #
@@ -393,7 +391,7 @@ index 39887dee6e5b..dc7d02e8904a 100644
  	mkdir -p $(dir $(1)) && \
  	$(if $(filter-out $(JARDEPS),$(4)), \
  		rm -rf $(call gb_JavaClassSet_get_classdir,$(2))/* && \
- 		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),500,\
+ 		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),\
 -			$(filter-out $(JARDEPS) $(T_JAVA9FILES),$(4))) && \
 -		$(if $(3),$(call gb_JavaClassSet_JAVACCOMMAND,$(JAVA_TARGET_VER)) \
 +			$(filter-out $(JARDEPS),$(4))) && \
@@ -404,7 +402,7 @@ index 39887dee6e5b..dc7d02e8904a 100644
  			@$$RESPONSEFILE &&) \
  		rm -f $$RESPONSEFILE &&) \
 -		$(if $(T_MODULENAME),\
--			RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),500,\
+-			RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),\
 -				$(T_JAVA9FILES)) && \
 -			$(if $(3),$(call gb_JavaClassSet_JAVACCOMMAND,9) \
 -				$(gb_JavaClassSet_JAVACDEBUG) \
@@ -417,7 +415,7 @@ index 39887dee6e5b..dc7d02e8904a 100644
  	touch $(1))
  
  endef
-@@ -81,7 +64,6 @@ $(call gb_JavaClassSet_get_preparation_target,%) :
+@@ -81,7 +64,6 @@ $(call gb_JavaClassSet_get_preparation_t
  	mkdir -p $(dir $@) && touch $@
  
  # depend on makefile to enforce a rebuild if files are removed from the classset
@@ -425,7 +423,7 @@ index 39887dee6e5b..dc7d02e8904a 100644
  define gb_JavaClassSet_JavaClassSet
  $(call gb_JavaClassSet_get_target,$(1)) : \
  	$(gb_Module_CURRENTMAKEFILE) \
-@@ -89,8 +71,6 @@ $(call gb_JavaClassSet_get_target,$(1)) : \
+@@ -89,8 +71,6 @@ $(call gb_JavaClassSet_get_target,$(1))
  $(call gb_JavaClassSet_get_target,$(1)) : JARDEPS := \
  	$(gb_Module_CURRENTMAKEFILE) \
  	$(call gb_JavaClassSet_get_preparation_target,$(1))
@@ -434,7 +432,7 @@ index 39887dee6e5b..dc7d02e8904a 100644
  
  endef
  
-@@ -112,17 +92,6 @@ $(foreach sourcefile,$(2),$(call gb_JavaClassSet_add_sourcefile,$(1),$(sourcefil
+@@ -112,17 +92,6 @@ $(foreach sourcefile,$(2),$(call gb_Java
  
  endef
  
@@ -452,10 +450,10 @@ index 39887dee6e5b..dc7d02e8904a 100644
  define gb_JavaClassSet_add_generated_sourcefile
  $(call gb_JavaClassSet_get_target,$(1)) : $(call gb_JavaClassSet__get_generated_sourcefile,$(2))
  $(call gb_JavaClassSet__get_generated_sourcefile,$(2)) :| $(call gb_JavaClassSet_get_preparation_target,$(1))
-diff --git a/solenv/gbuild/gbuild.mk b/solenv/gbuild/gbuild.mk
-index 86ed3d32a376..da6a3d700864 100644
---- a/solenv/gbuild/gbuild.mk
-+++ b/solenv/gbuild/gbuild.mk
+Index: libreoffice-7.5.1.2/solenv/gbuild/gbuild.mk
+===================================================================
+--- libreoffice-7.5.1.2.orig/solenv/gbuild/gbuild.mk
++++ libreoffice-7.5.1.2/solenv/gbuild/gbuild.mk
 @@ -62,8 +62,6 @@ COMMA :=,
  OPEN_PAREN :=(
  CLOSE_PAREN :=)
@@ -465,6 +463,3 @@ index 86ed3d32a376..da6a3d700864 100644
  gb_VERBOSE := $(verbose)
  
  include $(GBUILDDIR)/Helper.mk
--- 
-2.30.2
-

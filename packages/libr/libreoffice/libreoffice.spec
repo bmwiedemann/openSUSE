@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.1.2
+Version:        7.5.2.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -113,6 +113,8 @@ Patch12:        fix_harfbuzz_on_sle12_sp5.patch
 Patch14:        use-fixmath-shared-library.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
+# PATCH-FIX-SUSE Allow the use of old harfbuzz versions
+Patch16:        0002-Revert-Require-HarfBuzz-5.1.0.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -278,7 +280,7 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le riscv64
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_79_0.tar.xz
+Source2020:     %{external_url}/boost_1_80_0.tar.xz
 Source2023:     %{external_url}/poppler-22.12.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.11.tar.gz
 %else
@@ -1039,7 +1041,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif
 %patch14 -p1
 %patch15 -p1
-#%patch990 -p1
+%if 0%{?suse_version} < 1550
+%patch16 -p1
+%endif
+%patch990 -p1
 %patch991 -p1
 
 # Disable some of the failing tests (some are random)

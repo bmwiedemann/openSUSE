@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 22 16:13:39 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build on SLE-15-SP4 and SLE-12-SP5
+- Refresh patches:
+  * 0001-Revert-java-9-changes.patch
+  * 0002-Revert-Require-HarfBuzz-5.1.0.patch
+  * fix_harfbuzz_on_sle12_sp5.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 13:32:12 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.5.2.1:
+  https://wiki.documentfoundation.org/Releases/7.5.2/RC1
+
+-------------------------------------------------------------------
 Wed Mar  1 10:44:06 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.5.1.2:
@@ -11,6 +26,7 @@ Wed Mar  1 10:44:06 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 - Add fix-sdk-idl.patch
 - Update bundled dependencies:
   * pdfium-5058.tar.bz2 -> pdfium-5408.tar.bz2
+  * boost_1_79_0.tar.xz -> boost_1_80_0.tar.xz
 - Refreshed patches:
   * fix_math_desktop_file.patch
   * use-fixmath-shared-library.patch

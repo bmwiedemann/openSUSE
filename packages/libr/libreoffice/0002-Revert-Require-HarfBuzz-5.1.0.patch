@@ -1,0 +1,148 @@
+From 187d3e94f0bd28b63c934bac84ba7c5fb7beb049 Mon Sep 17 00:00:00 2001
+From: Danilo Spinella <oss@danyspin97.org>
+Date: Tue, 14 Mar 2023 16:31:09 +0100
+Subject: [PATCH 2/2] Revert "Require HarfBuzz 5.1.0"
+
+This reverts commit cbdcc18778f9736ca6f186e2bbb9f0db456b1cee.
+---
+ configure.ac                            |  1 -
+ vcl/inc/font/LogicalFontInstance.hxx    |  2 ++
+ vcl/source/font/LogicalFontInstance.cxx | 13 ++++++++++++-
+ vcl/source/gdi/CommonSalLayout.cxx      |  9 +++++++--
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+
+Index: libreoffice-7.5.1.2/configure.ac
+===================================================================
+--- libreoffice-7.5.1.2.orig/configure.ac
++++ libreoffice-7.5.1.2/configure.ac
+@@ -10848,7 +10848,7 @@ AC_SUBST(SYSTEM_LIBORCUS)
+ dnl ===================================================================
+ dnl HarfBuzz
+ dnl ===================================================================
+-harfbuzz_required_version=5.1.0
++harfbuzz_required_version=0.93
+ 
+ GRAPHITE_CFLAGS_internal="-I${WORKDIR}/UnpackedTarball/graphite/include -DGRAPHITE2_STATIC"
+ GRAPHITE_LIBS_internal="-L${WORKDIR}/LinkTarget/StaticLibrary -lgraphite"
+Index: libreoffice-7.5.1.2/vcl/inc/font/LogicalFontInstance.hxx
+===================================================================
+--- libreoffice-7.5.1.2.orig/vcl/inc/font/LogicalFontInstance.hxx
++++ libreoffice-7.5.1.2/vcl/inc/font/LogicalFontInstance.hxx
+@@ -156,8 +156,10 @@ private:
+     // The value is initialized and used in NeedOffsetCorrection().
+     std::optional<FontFamilyEnum> m_xeFontFamilyEnum;
+ 
++#if HB_VERSION_ATLEAST(4, 0, 0)
+     mutable hb_draw_funcs_t* m_pHbDrawFuncs = nullptr;
+     basegfx::B2DPolygon m_aDrawPolygon;
++#endif
+ };
+ 
+ inline hb_font_t* LogicalFontInstance::GetHbFont()
+Index: libreoffice-7.5.1.2/vcl/source/font/LogicalFontInstance.cxx
+===================================================================
+--- libreoffice-7.5.1.2.orig/vcl/source/font/LogicalFontInstance.cxx
++++ libreoffice-7.5.1.2/vcl/source/font/LogicalFontInstance.cxx
+@@ -54,8 +54,10 @@ LogicalFontInstance::~LogicalFontInstanc
+     if (m_pHbFontUntransformed)
+         hb_font_destroy(m_pHbFontUntransformed);
+ 
++#if HB_VERSION_ATLEAST(4, 0, 0)
+     if (m_pHbDrawFuncs)
+         hb_draw_funcs_destroy(m_pHbDrawFuncs);
++#endif
+ }
+ 
+ hb_font_t* LogicalFontInstance::InitHbFont()
+@@ -73,10 +75,12 @@ hb_font_t* LogicalFontInstance::InitHbFo
+     if (!aVariations.empty())
+         hb_font_set_variations(pHbFont, aVariations.data(), aVariations.size());
+ 
++#if HB_VERSION_ATLEAST(3, 3, 0)
+     // If we are applying artificial italic, instruct HarfBuzz to do the same
+     // so that mark positioning is also transformed.
+     if (NeedsArtificialItalic())
+         hb_font_set_synthetic_slant(pHbFont, ARTIFICIAL_ITALIC_SKEW);
++#endif
+ 
+     ImplInitHbFont(pHbFont);
+ 
+@@ -87,6 +91,7 @@ hb_font_t* LogicalFontInstance::GetHbFon
+ {
+     auto* pHbFont = const_cast<LogicalFontInstance*>(this)->GetHbFont();
+ 
++#if HB_VERSION_ATLEAST(3, 3, 0)
+     if (NeedsArtificialItalic()) // || NeedsArtificialBold()
+     {
+         if (!m_pHbFontUntransformed)
+@@ -98,7 +103,7 @@ hb_font_t* LogicalFontInstance::GetHbFon
+         }
+         return m_pHbFontUntransformed;
+     }
+-
++#endif
+     return pHbFont;
+ }
+ 
+@@ -254,6 +259,7 @@ bool LogicalFontInstance::NeedsArtificia
+     return m_aFontSelData.GetItalic() != ITALIC_NONE && m_pFontFace->GetItalic() == ITALIC_NONE;
+ }
+ 
++#if HB_VERSION_ATLEAST(4, 0, 0)
+ namespace
+ {
+ void move_to_func(hb_draw_funcs_t*, void* /*pDrawData*/, hb_draw_state_t*, float to_x, float to_y,
+@@ -288,10 +294,12 @@ void close_path_func(hb_draw_funcs_t*, v
+     pPoly->clear();
+ }
+ }
++#endif
+ 
+ bool LogicalFontInstance::GetGlyphOutlineUntransformed(sal_GlyphId nGlyph,
+                                                        basegfx::B2DPolyPolygon& rPolyPoly) const
+ {
++#if HB_VERSION_ATLEAST(4, 0, 0)
+     if (!m_pHbDrawFuncs)
+     {
+         m_pHbDrawFuncs = hb_draw_funcs_create();
+@@ -308,6 +316,9 @@ bool LogicalFontInstance::GetGlyphOutlin
+ 
+     hb_font_get_glyph_shape(GetHbFontUntransformed(), nGlyph, m_pHbDrawFuncs, &rPolyPoly);
+     return true;
++#else
++    return false;
++#endif
+ }
+ 
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+Index: libreoffice-7.5.1.2/vcl/source/gdi/CommonSalLayout.cxx
+===================================================================
+--- libreoffice-7.5.1.2.orig/vcl/source/gdi/CommonSalLayout.cxx
++++ libreoffice-7.5.1.2/vcl/source/gdi/CommonSalLayout.cxx
+@@ -421,10 +421,10 @@ bool GenericSalLayout::LayoutText(vcl::t
+             const int nRunLen = nEndRunPos - nMinRunPos;
+ 
+             int nHbFlags = HB_BUFFER_FLAGS_DEFAULT;
+-
++#if HB_VERSION_ATLEAST(5, 1, 0)
+             // Produce HB_GLYPH_FLAG_SAFE_TO_INSERT_TATWEEL that we use below.
+             nHbFlags |= HB_BUFFER_FLAG_PRODUCE_SAFE_TO_INSERT_TATWEEL;
+-
++#endif
+             if (nMinRunPos == 0)
+                 nHbFlags |= HB_BUFFER_FLAG_BOT; /* Beginning-of-text */
+             if (nEndRunPos == nLength)
+@@ -545,8 +545,13 @@ bool GenericSalLayout::LayoutText(vcl::t
+                 if (hb_glyph_info_get_glyph_flags(&pHbGlyphInfos[i]) & HB_GLYPH_FLAG_UNSAFE_TO_BREAK)
+                     nGlyphFlags |= GlyphItemFlags::IS_UNSAFE_TO_BREAK;
+ 
++#if HB_VERSION_ATLEAST(5, 1, 0)
+                 if (hb_glyph_info_get_glyph_flags(&pHbGlyphInfos[i]) & HB_GLYPH_FLAG_SAFE_TO_INSERT_TATWEEL)
+                     nGlyphFlags |= GlyphItemFlags::IS_SAFE_TO_INSERT_KASHIDA;
++#else
++                // If support is not present, then allow kashida anywhere.
++                nGlyphFlags |= GlyphItemFlags::IS_SAFE_TO_INSERT_KASHIDA;
++#endif
+ 
+                 DeviceCoordinate nAdvance, nXOffset, nYOffset;
+                 if (aSubRun.maDirection == HB_DIRECTION_TTB)
