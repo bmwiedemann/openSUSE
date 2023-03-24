@@ -32,6 +32,7 @@ Group:          System/Base
 URL:            https://github.com/stefanberger/swtpm
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source100:      swtpm-rpmlintrc
+Patch0:         swtpm-fix-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect

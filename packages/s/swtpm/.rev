@@ -188,4 +188,12 @@
     + Patch IBM TSS2 test suite for OpenSSL 3.x</comment>
     <requestid>1069861</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>56c6989ce2148acca2ce620630c6330b</srcmd5>
+    <version>0.8.0</version>
+    <time>1679667357</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1209117 (forwarded request 1073548 from msmeissn)</comment>
+    <requestid>1073549</requestid>
+  </revision>
 </revisionlist>

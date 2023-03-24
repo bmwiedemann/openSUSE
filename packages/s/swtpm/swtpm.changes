@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 12:45:54 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- swtpm-fix-build.patch: disable -Wstack-protector, it fails on s390x
+  bsc#1209117
+
+-------------------------------------------------------------------
 Mon Mar  6 20:21:50 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop trousers requirement
