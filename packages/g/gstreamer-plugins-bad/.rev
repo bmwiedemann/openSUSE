@@ -1245,4 +1245,13 @@
     <comment></comment>
     <requestid>1070788</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>9225ff2e4d366220ea7ad4fcbb2634a9</srcmd5>
+    <version>1.22.1</version>
+    <time>1679667488</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libgsttranscoder-1_0-0 to baselibs.conf
+Please add to Staging:G</comment>
+    <requestid>1073500</requestid>
+  </revision>
 </revisionlist>
