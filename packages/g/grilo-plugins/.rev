@@ -453,4 +453,20 @@
     <comment></comment>
     <requestid>1003711</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>7d410b315682a3538b50d4b2f14ab4ba</srcmd5>
+    <version>0.3.15</version>
+    <time>1679667467</time>
+    <user>dimstar_suse</user>
+    <comment>- Build dmap plugins again now that libdmapsharing have been
+  updated to use soup-3. Drop pkgconfig(libgdata) BuildRequires.
+- Add grilo-plugin-youtube Obsoletes: Make updates painless for our
+  end-users.
+- Switch to soup3 again: Drop pkgconfig(libsoup-2.4) and
+  pkgconfig(rest-0.7), and disable pkgconfig(libgdata) and enable
+  pkgconfig(libsoup-3.0) BuildRequires and stop building youtube,
+  opensubtile and dmap plugins for now. Pass enable-dmap=no to
+  meson, as this is needed. (forwarded request 1073091 from iznogood)</comment>
+    <requestid>1073227</requestid>
+  </revision>
 </revisionlist>

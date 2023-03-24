@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  8 17:54:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build dmap plugins again now that libdmapsharing have been
+  updated to use soup-3. Drop pkgconfig(libgdata) BuildRequires.
+- Add grilo-plugin-youtube Obsoletes: Make updates painless for our
+  end-users.
+
+-------------------------------------------------------------------
+Fri Sep 23 15:23:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to soup3 again: Drop pkgconfig(libsoup-2.4) and
+  pkgconfig(rest-0.7), and disable pkgconfig(libgdata) and enable
+  pkgconfig(libsoup-3.0) BuildRequires and stop building youtube,
+  opensubtile and dmap plugins for now. Pass enable-dmap=no to
+  meson, as this is needed.
+
+-------------------------------------------------------------------
 Tue Sep 13 11:39:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add d1c0835d.patch: flickr: remove GOA support. GNOME Online

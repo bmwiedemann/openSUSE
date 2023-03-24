@@ -1,7 +1,7 @@
 #
 # spec file for package grilo-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,14 +52,11 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libgdata) >= 0.9.1
 BuildRequires:  pkgconfig(libmediaart-2.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
-#BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua) >= 5.3.0
 BuildRequires:  pkgconfig(oauth)
-BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
 BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99
@@ -71,6 +68,7 @@ BuildRequires:  gstreamer1(element-chromaprint)
 BuildRequires:  gstreamer1(element-chromaprint)()(64bit)
 %endif
 BuildRequires:  pkgconfig(libdmapsharing-4.0) >= 3.9.9
+Obsoletes:      grilo-plugin-youtube <= %{version}
 
 %description
 Grilo is a framework for browsing and searching media content from
@@ -121,7 +119,7 @@ Summary:        Development files for Grilo plugins
 Group:          Development/Libraries/GNOME
 Requires:       grilo-plugin-dleyna = %{version}
 Requires:       grilo-plugin-tracker = %{version}
-Requires:       grilo-plugin-youtube = %{version}
+#Requires:       grilo-plugin-youtube = %%{version}
 Requires:       grilo-plugins = %{version}
 
 %description devel
@@ -168,7 +166,7 @@ This package provides the development files.
 %{plugin_dir}/libgrlmagnatune.so
 %{plugin_dir}/libgrllocalmetadata.so
 %{plugin_dir}/libgrlmetadatastore.so
-%{plugin_dir}/libgrlopensubtitles.so
+#%%{plugin_dir}/libgrlopensubtitles.so
 %{plugin_dir}/libgrlopticalmedia.so
 %{plugin_dir}/libgrlpodcasts.so
 %{plugin_dir}/libgrlraitv.so
@@ -204,8 +202,8 @@ This package provides the development files.
 %files -n grilo-plugin-dleyna
 %{plugin_dir}/libgrldleyna.so
 
-%files -n grilo-plugin-youtube
-%{plugin_dir}/libgrlyoutube.so
+#%%files -n grilo-plugin-youtube
+#%%{plugin_dir}/libgrlyoutube.so
 
 %files devel
 %{_datadir}/help/*/examples/
