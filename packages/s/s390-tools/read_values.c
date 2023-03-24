@@ -378,7 +378,7 @@ int print_uuid()
 
 		result_string = NULL;
 	}
-	printf("\n", result_string);
+	printf("%s\n", result_string);
 	return 0;
 } /* print_uuid */
 

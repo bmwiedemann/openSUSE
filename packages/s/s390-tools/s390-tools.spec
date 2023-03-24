@@ -105,9 +105,8 @@ Source39:       vmlogrdr.service.suse
 Source40:       xpram.service
 Source41:       pkey.conf
 ###
-Source42:       module-setup.sh
-Source43:       parse-zdev-suse.sh
-Source44:       write-udev-live-suse.sh
+Source42:       dracut-zdev-live-20230321.tar
+
 ###
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
 ### That's been delayed to at least SLES12 SP1, but I'm leaving the comments here.
@@ -328,7 +327,7 @@ volume. If available, it reconfigures the FCP re-IPL settings to use an
 operational path.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 42
 
 cp -vi %{SOURCE22} CAUTION
 
@@ -398,6 +397,11 @@ cp %{SOURCE18} zpxe.rexx
 cp %{SOURCE2} zipl.conf.sample
 cp  %{SOURCE23} README.SUSE
 
+### Adding SUSE scripts
+install -d -m 755 %{buildroot}%{_prefix}/lib/dracut/modules.d
+cp -a 96zdev-live %{buildroot}%{_prefix}/lib/dracut/modules.d
+###
+
 cd %{buildroot}
 install -D -m755 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/hsnc
 install -D -m644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.hsnc
@@ -466,6 +470,7 @@ rm -fv %{buildroot}%{_mandir}/man8/chmem.8*
 rm -fv %{buildroot}%{_mysbindir}/lsmem
 rm -fv %{buildroot}%{_mysbindir}/chmem
 
+###
 find . ! -type d |
     sed 's/^.//;\-/man/-s/^.*$/%doc &.gz/' > %{_builddir}/%{name}-filelist
 grep -v -E 'osasnmp|etc/ziplenv|\.conf$|ekmfweb.so|ekmfweb.h|kmipclient|kmip/profiles/.*profile$|chreipl-fcp-mpath' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
@@ -677,6 +682,7 @@ done
 %dir %{_datadir}/s390-tools/netboot
 %dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
+%dir %{_prefix}/lib/dracut/modules.d/96zdev-live
 %dir %{_prefix}/lib/dracut/modules.d/99ngdump
 %dir /boot/zipl
 %dir %{_libdir}/zkey
