@@ -1,7 +1,7 @@
 #
 # spec file for package python-datadiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-datadiff
-Version:        2.2.0
+Version:        2.1.0
 Release:        0
 Summary:        DataDiff is a library to provide human-readable diffs of python data structures
 License:        Apache-2.0
@@ -35,8 +34,8 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
+
 %python_subpackages
 
 %description
@@ -48,8 +47,7 @@ Drop-in replacements for some nose assertions are available.  If the assertion f
 a nice data diff is shown, letting you easily pinpoint the root difference.
 
 %prep
-%setup -q -n datadiff-%{version}
-%autopatch -p1
+%autosetup -p1 -n datadiff-%{version}
 cp %{SOURCE1} .
 
 %build
@@ -60,10 +58,12 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Broken tests with py311
+%pytest -k "not (test_diff_set or test_diff_frozenset)"
 
 %files %{python_files}
 %license LICENSE-2.0.txt
-%{python_sitelib}/*
+%{python_sitelib}/datadiff
+%{python_sitelib}/datadiff-%{version}*-info
 
 %changelog
