@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,13 +30,13 @@
 %define ui_sover 5
 
 Name:           sysprof%{_name_suffix}
-Version:        3.46.0
+Version:        3.48.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/3.46/sysprof-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sysprof/3.48/sysprof-%{version}.tar.xz
 Patch0:         harden_sysprof2.service.patch
 Patch1:         harden_sysprof3.service.patch
 

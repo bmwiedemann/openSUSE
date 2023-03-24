@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:24:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.0:
+  + Various a11y improvements.
+  + Some widgets ported to GtkColumnView.
+  + Sysprof-dump can now symbolicate instruction pointers.
+  + Visualizer group fixes for missing rows.
+  + Fixes for inheriting stdin when spawning processes.
+  + Build system fixes to improve use as a meson subproject.
+  + Additional shortcuts added to shortcut overlay.
+  + LD_PRELOAD syntax fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 10:51:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.0:
