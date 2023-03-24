@@ -1,7 +1,7 @@
 #
 # spec file for package python-gi-docgen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2022.2
+Version:        2023.1
 Release:        0
 Summary:        Documentation tool for GObject-based libraries
 License:        Apache-2.0 AND GPL-3.0-or-later AND CC0-1.0

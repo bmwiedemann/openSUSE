@@ -66,4 +66,15 @@
     <comment></comment>
     <requestid>1035818</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>807947b490ec4fadbaf8742b4356e4b8</srcmd5>
+    <version>2023.1</version>
+    <time>1679667478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.1:
+  + Added: Use tomlib for Python &gt;= 3.11 and tomli/toml for Python
+    &lt; 3.11
+  + Fixed: Use the proper link fragment for interface prerequisite (forwarded request 1073122 from iznogood)</comment>
+    <requestid>1073243</requestid>
+  </revision>
 </revisionlist>

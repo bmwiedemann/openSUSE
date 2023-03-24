@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:34:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2023.1:
+  + Added: Use tomlib for Python >= 3.11 and tomli/toml for Python
+    < 3.11
+  + Fixed: Use the proper link fragment for interface prerequisite
+
+-------------------------------------------------------------------
 Mon Nov 14 12:26:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2022.2:
