@@ -7,10 +7,10 @@ To make it portable you have to test O_CLOEXEC support at *runtime*
 compile time is not enough.
 
 
-Index: curl-7.88.0/lib/file.c
+Index: curl-8.0.0/lib/file.c
 ===================================================================
---- curl-7.88.0.orig/lib/file.c
-+++ curl-7.88.0/lib/file.c
+--- curl-8.0.0.orig/lib/file.c
++++ curl-8.0.0/lib/file.c
 @@ -232,7 +232,7 @@ static CURLcode file_connect(struct Curl
      }
    }
@@ -29,10 +29,10 @@ Index: curl-7.88.0/lib/file.c
    if(fd < 0) {
      failf(data, "Can't open %s for writing", file->path);
      return CURLE_WRITE_ERROR;
-Index: curl-7.88.0/lib/if2ip.c
+Index: curl-8.0.0/lib/if2ip.c
 ===================================================================
---- curl-7.88.0.orig/lib/if2ip.c
-+++ curl-7.88.0/lib/if2ip.c
+--- curl-8.0.0.orig/lib/if2ip.c
++++ curl-8.0.0/lib/if2ip.c
 @@ -206,7 +206,7 @@ if2ip_result_t Curl_if2ip(int af,
    if(len >= sizeof(req.ifr_name))
      return IF2IP_NOT_FOUND;
@@ -42,10 +42,10 @@ Index: curl-7.88.0/lib/if2ip.c
    if(CURL_SOCKET_BAD == dummy)
      return IF2IP_NOT_FOUND;
  
-Index: curl-7.88.0/configure.ac
+Index: curl-8.0.0/configure.ac
 ===================================================================
---- curl-7.88.0.orig/configure.ac
-+++ curl-7.88.0/configure.ac
+--- curl-8.0.0.orig/configure.ac
++++ curl-8.0.0/configure.ac
 @@ -420,6 +420,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
  # Silence warning: ar: 'u' modifier ignored since 'D' is the default
  AC_SUBST(AR_FLAGS, [cr])
@@ -55,10 +55,10 @@ Index: curl-7.88.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-7.88.0/lib/hostip.c
+Index: curl-8.0.0/lib/hostip.c
 ===================================================================
---- curl-7.88.0.orig/lib/hostip.c
-+++ curl-7.88.0/lib/hostip.c
+--- curl-8.0.0.orig/lib/hostip.c
++++ curl-8.0.0/lib/hostip.c
 @@ -48,6 +48,7 @@
  #include <signal.h>
  #endif
@@ -67,7 +67,7 @@ Index: curl-7.88.0/lib/hostip.c
  #include "urldata.h"
  #include "sendf.h"
  #include "hostip.h"
-@@ -576,7 +577,7 @@ bool Curl_ipv6works(struct Curl_easy *da
+@@ -582,7 +583,7 @@ bool Curl_ipv6works(struct Curl_easy *da
    else {
      int ipv6_works = -1;
      /* probe to see if we have a working IPv6 stack */
@@ -76,18 +76,18 @@ Index: curl-7.88.0/lib/hostip.c
      if(s == CURL_SOCKET_BAD)
        /* an IPv6 address was requested but we can't get/use one */
        ipv6_works = 0;
-Index: curl-7.88.0/lib/cf-socket.c
+Index: curl-8.0.0/lib/cf-socket.c
 ===================================================================
---- curl-7.88.0.orig/lib/cf-socket.c
-+++ curl-7.88.0/lib/cf-socket.c
+--- curl-8.0.0.orig/lib/cf-socket.c
++++ curl-8.0.0/lib/cf-socket.c
 @@ -252,7 +252,9 @@ static CURLcode socket_open(struct Curl_
    }
    else {
      /* opensocket callback not set, so simply create the socket now */
 -    *sockfd = socket(addr->family, addr->socktype, addr->protocol);
 +    *sockfd = socket(addr->family,
-+                     addr->socktype|SOCK_CLOEXEC,
-+                     addr->protocol);
-     if(!*sockfd && addr->socktype == SOCK_DGRAM) {
-       /* This is icky and seems, at least, to happen on macOS:
-        * we get sockfd == 0 and if called again, we get a valid one > 0.
++		     addr->socktype|SOCK_CLOEXEC,
++		     addr->protocol);
+   }
+ 
+   if(*sockfd == CURL_SOCKET_BAD)

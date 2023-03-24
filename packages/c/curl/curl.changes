@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:44:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.0.1:
+  * Bugfixes:
+    - fix crash in curl_easy_cleanup
+
+-------------------------------------------------------------------
+Mon Mar 20 07:19:32 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.0.0:
+  * Security fixes:
+    - TELNET option IAC injection [bsc#1209209, CVE-2023-27533]
+    - SFTP path ~ resolving discrepancy [bsc#1209210, CVE-2023-27534]
+    - FTP too eager connection reuse [bsc#1209211, CVE-2023-27535]
+    - GSS delegation too eager connection re-use [bsc#1209212, CVE-2023-27536]
+    - HSTS double-free [bsc#1209213, CVE-2023-27537]
+    - SSH connection too eager reuse still [bsc#1209214, CVE-2023-27538]
+  * Changes:
+    - build: remove support for curl_off_t < 8 bytes 
+  * Bugfixes:
+    - aws_sigv4: fall back to UNSIGNED-PAYLOAD for sign_as_s3
+    - BINDINGS: add Fortran binding
+    - cf-socket: use port 80 when resolving name for local bind
+    - cookie: don't load cookies again when flushing
+    - curl_path: create the new path with dynbuf
+    - CURLSHOPT_SHARE.3: HSTS sharing is not thread-safe
+    - DYNBUF.md: note Curl_dyn_add* calls Curl_dyn_free on failure
+    - ftp: active mode with SSL, add the filter
+    - hostip: avoid sscanf and extra buffer copies
+    - http2: fix for http2-prior-knowledge when reusing connections
+    - http2: fix handling of RST and GOAWAY to recognize partial transfers
+    - http: don't send 100-continue for short PUT requests
+    - http: fix unix domain socket use in https connects
+    - libssh: use dynbuf instead of realloc
+    - ngtcp2-gnutls.yml: bump to gnutls 3.8.0
+    - sectransp: make read_cert() use a dynbuf when loading
+    - telnet: only accept option arguments in ascii
+    - telnet: parse telnet options without sscanf
+    - url: fix the SSH connection reuse check
+    - url: only reuse connections with same GSS delegation
+    - urlapi: '%' is illegal in host names
+    - ws: keep the socket non-blocking
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Mon Feb 20 10:35:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 7.88.1:

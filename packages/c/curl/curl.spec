@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.88.1
+Version:        8.0.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
