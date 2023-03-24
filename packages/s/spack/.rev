@@ -311,4 +311,13 @@
     <comment></comment>
     <requestid>1070345</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f211a33063ac3d5adadf975e8358b046</srcmd5>
+    <version>0.19.1</version>
+    <time>1679667698</time>
+    <user>dimstar_suse</user>
+    <comment>- run-find-external.sh: Extend the range of versions of MPI
+  flavors to be searched for when asking Spack to look (forwarded request 1074103 from eeich)</comment>
+    <requestid>1074104</requestid>
+  </revision>
 </revisionlist>

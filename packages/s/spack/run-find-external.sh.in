@@ -65,11 +65,9 @@ addpath mypath /usr/lib64/mpi/gcc/openmpi2/bin
 addpath mypath /usr/lib64/mpi/gcc/openmpi1/bin
 addpath mypath /usr/lib64/mpi/gcc/mvapich2/bin
 addpath mypath /usr/lib64/mpi/gcc/mpich/bin
-addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/4.*/bin
-addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/3.*/bin
-addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/2.*/bin
-addpath mypath /usr/lib/hpc/gnu*/mpi/mpich/3.*/bin
-addpath mypath /usr/lib/hpc/gnu*/mpi/mvapich2/2.*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/openmpi/[2-9].*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/mpich/[3-9].*/bin
+addpath mypath /usr/lib/hpc/gnu*/mpi/mvapich2/[2-9].*/bin
 addpath cpath /usr/lib/hpc/compiler/gnu/*/bin
 
 # test if we can run as nobody

@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %define spack_trigger_recommended_compilers  gcc gcc-c++ gcc-fortran
 
 # packages recognized by spack, but not recommended
-%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel
+%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mpich-gnu-hpc-devel mvapich2-devel mpich-devel
 
 %define spack_trigger_compilers gcc7 gcc8 gcc9 gcc10 gcc11 gcc12 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc12-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran gcc12-fortran
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 23 09:59:40 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- run-find-external.sh: Extend the range of versions of MPI
+  flavors to be searched for when asking Spack to look
+  for external packages (bsc#1208751).
+
+-------------------------------------------------------------------
 Wed Mar  8 19:54:55 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Improve run-find-external.sh:
