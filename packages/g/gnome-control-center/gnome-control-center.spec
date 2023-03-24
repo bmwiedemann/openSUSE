@@ -26,18 +26,16 @@
 %endif
 
 Name:           gnome-control-center
-Version:        43.4.1
+Version:        44.0+7
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://apps.gnome.org/app/org.gnome.Settings
-Source0:        https://download.gnome.org/sources/gnome-control-center/43/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
-# PATCH-FIX-UPSTREAM gnome-control-center-network-use-AdwStatusPage.patch glgo#GNOME/gnome-contorl-center/commit/2b3de01124 sckang@suse.com network-panel: Use AdwStatusPage to show NetworkManager error.
-Patch0:         gnome-control-center-network-use-AdwStatusPage.patch
-# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running Was:PATCH-FIX-OPENSUSE
+# PATCH-NEED-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
@@ -81,7 +79,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 40.alpha
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.8
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 BuildRequires:  pkgconfig(libgtop-2.0)
@@ -183,8 +181,7 @@ GNOME control center.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#patch1 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

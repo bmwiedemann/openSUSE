@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Mar 22 14:57:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0+7:
+  + common: hostname-entry: Update hostname only after apply is
+    clicked
+  + sound: Prevent duplicate sound device entries
+  + color: Do not try to access to null pointer in destruction
+  + display: Allow configuring all monitors and apply settings at
+    once
+  + Updated translations.
+- Switch to git checkout via source service, explicit tag from
+  stable gnome-44 branch.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:13:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Mouse: Prevent infinit loop on Mouse setting changes.
+  + Usage: Fix confirmation dialog when clearing file history.
+  + Notifications: Replace occurrence of "Applications" with "Apps"
+    string.
+  + Power: Label the main "batery" as UPS when that's what it is.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 15:52:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Improve state of switchers throughout the app
+  + Keyboard: Various fixes to the shortcut editor
+  + Mouse & Touchpad: Polish the panel redesign
+  + Printers: Update to more modern CUPS APIs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 16:06:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Redesigned Sound panel
+  + Redesigned Mouse & Touchpad panel
+  + Share Wi-Fi networks using QR code
+  + Many consistency improvements
+  + WireGuard support
+  + Mouse & Touchpad:
+    - Redesign the panel with videos of the preferences
+    - Move mouse test into a separate dialog
+  + Network:
+    - Add support for sharing Wi-Fi networks through QR code
+    - Add WireGuard support
+  + Sound:
+    - Move application volumes to a dialog
+    - Move sound themes to a dialog
+  + Updated translations.
+- Disable gnome-control-center-disable-error-message-for-NM.patch
+
+-------------------------------------------------------------------
+Fri Feb 17 16:33:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.alpha:
+  + Redesigned Accessibility panel.
+  + Many consistency improvements.
+  + About: Add "Firmware Version" row.
+  + Accessibility: Redesign the panel with new a navigation
+    pattern.
+  + Cellular: Various fixes.
+  + Date & Time: Improve month selector.
+  + Device Security:
+    - Improve date and time formatting.
+    - Simplify technical descriptions.
+  + Display: Improve error state of Night Light.
+  + Sound: Start implementing the new designs.
+  + Thunderbolt: Hide panel if no Thunderbolt device is found.
+  + Updated translations.
+- Drop gnome-control-center-network-use-AdwStatusPage.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Fri Feb 17 13:38:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unneeded nor used pkgconfig(clutter-1.0) BuildRequires.
