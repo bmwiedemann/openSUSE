@@ -536,4 +536,40 @@ Reduced to applicable license in SPDX format (forwarded request 107670 from dims
     <comment></comment>
     <requestid>787535</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>faf123423fd8d782070f0159d9bd6b3b</srcmd5>
+    <version>3.2.13</version>
+    <time>1679667581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.13:
+  + Optimized parsing of messages with lots of address headers
+- includes changes from 3.2.12:
+  + Fixed a memory leak in g_mime_gpgme_get_decrypt_result()
+- includes changes from 3.2.11:
+  + Fixed a bug in the new base64 decoder
+- includes changes from 3.2.10:
+  + Improved performance of base64 encoder by ~5%
+  + Improved performance of base64 decoder by ~25%
+  + Unref the autocrypt header after adding it to the list
+  + Work around a bug in g_time_zone_new_offset() by using
+    identifiers instead
+- includes changes from 3.2.9:
+  + g_mime_multipart_signed_verify() now allows type/subtype and
+    type/x-subtype signature parts
+  + Fixed header folding logic to avoid folding the first line of a
+    header value
+  + Fixed bugs discovered by static analysis
+  + Fixed GMimeStreamPipe to set errno to ESPIPE for
+    seek/tell/length methods
+  + Fixed GMimeCertificates to prefer gpgme_user_id_t's address
+    field over the email field
+- includes changes from 3.2.8:
+  + Various fixes to Vala (and other?) language bindings
+  + Added g_mime_object_write_content_to_stream()
+  + Fixed parameter list parsing logic to not report a warning when
+    everything is valid
+  + Fixed the parser to handle MIME parts without headers -or-
+    content of any kind (forwarded request 1073096 from iznogood)</comment>
+    <requestid>1073230</requestid>
+  </revision>
 </revisionlist>
