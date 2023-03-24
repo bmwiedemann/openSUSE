@@ -17,19 +17,19 @@
 
 
 %define oname sqlite
-%define tarversion 3410000
+%define tarversion 3410200
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.41.0
+Version:        3.41.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
-Source0:        https://www.sqlite.org/2022/sqlite-src-%{tarversion}.zip
+Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        https://www.sqlite.org/2022/sqlite-doc-%{tarversion}.zip
+Source2:        https://www.sqlite.org/2023/sqlite-doc-%{tarversion}.zip
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -1496,4 +1496,31 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>1071411</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2f258b4bcc32f22753dc13ec1b69848d</srcmd5>
+    <version>3.41.2</version>
+    <time>1679667375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.41.2:
+  * Multiple fixes for reads past the end of memory buffers
+  * Fix the sqlite3_error_offset() so that it does not return
+    out-of-range values when reporting errors associated with
+    generated columns.
+  * Multiple fixes in the query query optimizer for problems that
+    cause incorrect results for bizarre, fuzzer-generated queries.
+  * Increase the size of the reference counter in the page cache
+    object to 64 bits to ensure that the counter never overflows.
+  * Fix a performance regression caused by a bug fix in patch
+    release 3.41.1.
+  * Fix a few incorrect assert() statements.
+
+- Update to 3.41.1:
+  * Ensure that the datatype for column t1.x in &quot;CREATE TABLE t1 AS
+    SELECT CAST(7 AS INT) AS x;&quot; continues to be INT and is not
+    NUM, for historical compatibility.
+  * Enhance PRAGMA integrity_check to detect when extra bytes
+    appear at the end of an index record.
+  * Fix various obscure bugs reported by the user community</comment>
+    <requestid>1073837</requestid>
+  </revision>
 </revisionlist>
