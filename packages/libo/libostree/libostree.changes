@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 19 20:15:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2023.1:
+  + ostree-metadata commit API
+  + Various CLI improvements
+  + fetcher: Avoid too large queues for metadata processing
+  + bindings: Use default for uninitialized fields in checkout opts
+  + ostree/prune: Calculate reachability under exclusive lock
+  + lib/sysroot-upgrader: add some 'nullable' annotations
+  + Documentation fixes
+  + Build system updates
+
+-------------------------------------------------------------------
 Sat Nov 26 19:17:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2022.7:

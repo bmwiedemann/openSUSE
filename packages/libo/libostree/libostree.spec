@@ -1,7 +1,7 @@
 #
 # spec file for package libostree
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 %bcond_without ed25519
 Name:           libostree
-Version:        2022.7
+Version:        2023.1
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(e2p)
 BuildRequires:  pkgconfig(fuse) >= 2.9.2
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gpgme) >= 1.1.8
+BuildRequires:  pkgconfig(gpgme) >= 1.8.0
 BuildRequires:  pkgconfig(libarchive) >= 2.8.0
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(liblzma) >= 5.0.5
