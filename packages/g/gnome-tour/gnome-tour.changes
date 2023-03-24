@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 20 20:59:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to cargo_packaging:
+  + Drop cargo and rust BuildRequires, add cargo-packaging
+    BuildRequires and macros.
+  + Use source services to generate tarball + run cargo packaging.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:33:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + No upstream changes provided.
+
+-------------------------------------------------------------------
 Tue Sep 20 17:41:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
