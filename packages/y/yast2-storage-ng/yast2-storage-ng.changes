@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:42:45 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed crash in the proposal code when the requested candidate
+  device does not exist (bsc#1209523)
+- 4.6.2
+
+-------------------------------------------------------------------
 Mon Mar 13 12:04:07 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Removed unnecessary executable flags from files (bsc#1209094)
