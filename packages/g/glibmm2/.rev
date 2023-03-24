@@ -806,4 +806,12 @@
     <comment></comment>
     <requestid>1004785</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>a2bf815189e1233d1cb894e83fe49509</srcmd5>
+    <version>2.74.1</version>
+    <time>1679667416</time>
+    <user>dimstar_suse</user>
+    <comment>New old stable, ok to fwd (forwarded request 1072615 from iznogood)</comment>
+    <requestid>1073160</requestid>
+  </revision>
 </revisionlist>
