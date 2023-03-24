@@ -17,13 +17,13 @@
 
 
 Name:           gnome-initial-setup
-Version:        43.2
+Version:        44.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
