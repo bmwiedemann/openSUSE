@@ -108,7 +108,6 @@ perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
 %endif
 
 %build
-%define _lto_cflags %{nil}
 autoreconf -fi
 cd libltdl; autoreconf -fi; cd ..
 export CFLAGS="%{optflags} -fPIE -fPIC -DOPENSSL_LOAD_CONF"
