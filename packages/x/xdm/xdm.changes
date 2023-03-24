@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 23 12:12:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- No longer run "localectl set-x11-keymap ..." and only run 
+  "localectl set-keymap ..." if XKBLAYOUT is not set, i.e. if
+  nobody was making use of "localectl set-x11-keymap" after
+  installation (boo#1209594, comment#24)
+
+-------------------------------------------------------------------
+Wed Mar 22 12:58:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- keytable: exit 0 was executed too early, so 
+  "localectl set-x11-keymap" wasn't executed; fixed this 
+  (boo#1209594, comment#19)
+
+-------------------------------------------------------------------
+Wed Mar 22 10:58:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- keytable: no longer ignore XKBLAYOUT (and XKBMODEL, XKBVARIANT,
+  XKBOPTIONS) variables if available in /etc/vconsole.conf, i.e.
+  no longer overwrite keyboard settings if anybody used
+  "localectl set-x11-keymap" himself; fixed "check systemd mapping"
+  if KEYMAP_TOGGLE has been set (boo#1209594)
+
+-------------------------------------------------------------------
 Sun Dec  4 21:36:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.1.14

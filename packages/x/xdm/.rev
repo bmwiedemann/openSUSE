@@ -1011,4 +1011,25 @@
 - supersedes u_glibc-2.36.patch</comment>
     <requestid>1040075</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>15ba885c357ac6bbad2aef5c418628bf</srcmd5>
+    <version>1.1.14</version>
+    <time>1679667546</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer run &quot;localectl set-x11-keymap ...&quot; and only run 
+  &quot;localectl set-keymap ...&quot; if XKBLAYOUT is not set, i.e. if
+  nobody was making use of &quot;localectl set-x11-keymap&quot; after
+  installation (boo#1209594, comment#24)
+
+- keytable: exit 0 was executed too early, so 
+  &quot;localectl set-x11-keymap&quot; wasn't executed; fixed this 
+  (boo#1209594, comment#19)
+
+- keytable: no longer ignore XKBLAYOUT (and XKBMODEL, XKBVARIANT,
+  XKBOPTIONS) variables if available in /etc/vconsole.conf, i.e.
+  no longer overwrite keyboard settings if anybody used
+  &quot;localectl set-x11-keymap&quot; himself; fixed &quot;check systemd mapping&quot;
+  if KEYMAP_TOGGLE has been set (boo#1209594)</comment>
+    <requestid>1073959</requestid>
+  </revision>
 </revisionlist>
