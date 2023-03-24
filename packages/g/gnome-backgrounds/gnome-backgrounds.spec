@@ -17,13 +17,13 @@
 
 
 Name:           gnome-backgrounds
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        GNOME Backgrounds
 License:        CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-backgrounds
-Source0:        https://download.gnome.org/sources/gnome-backgrounds/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-backgrounds/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
