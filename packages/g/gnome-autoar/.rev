@@ -130,4 +130,12 @@
     <comment></comment>
     <requestid>953713</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3ec2d355c3d4e9bceb168db41ee193f0</srcmd5>
+    <version>0.4.4</version>
+    <time>1679667417</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072622 from iznogood)</comment>
+    <requestid>1073161</requestid>
+  </revision>
 </revisionlist>

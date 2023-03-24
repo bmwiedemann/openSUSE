@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 17 11:58:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.4:
+  + Add application/zstd to supported mime-types.
+  + Fix test suite failure with recent GLib version.
+  + Add autoar_extractor_set_passphrase function.
+
+-------------------------------------------------------------------
+Mon Mar 13 19:34:37 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.4.3+9:
+  + ci:
+    - Drop workaround to remove mount options
+    - Explicitiely set the storage driver
+    - Use rawhide for the fedora job
+  + extractor:
+    - Add autoar_extractor_set_passphrase function
+    - Fix parameter name in documentation comment
+    - Make error codes public
+    - Use g_file_info_remove_attribute instead of invalid type
+    - Use specific error code when passphrase wasn't provided
+  + tests: Skip file size check for directories
+- Switch to git checkout via source service.
+- Enable test macro again as upstream fixed the issue.
+
+-------------------------------------------------------------------
+Fri Mar 10 19:31:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Temp disable test due to changes in new glib2 2.76.0 release:
+  wait for upstream to fix in either glib or in gnome-autoar.
+  https://gitlab.gnome.org/GNOME/gnome-autoar/-/issues/44
+
+-------------------------------------------------------------------
 Fri Feb 11 09:18:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.3:

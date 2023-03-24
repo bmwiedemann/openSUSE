@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-autoar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gnome-autoar
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-autoar
-Source0:        https://download.gnome.org/sources/gnome-autoar/0.4/%{name}-%{version}.tar.xz
+# Sourceurl disabled, as we are using a git checkout via source services
+#Source0:       https://download.gnome.org/sources/gnome-autoar/0.4/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.56.0
@@ -130,11 +132,9 @@ This package brings files required to develop against gnome-autoar
 
 %files -n libgnome-autoar-0-0
 %license COPYING
-%{_libdir}/libgnome-autoar-0.so.0
-%{_libdir}/libgnome-autoar-0.so.0.1.2
+%{_libdir}/libgnome-autoar-0.so.*
 
 %files -n libgnome-autoar-gtk-0-0
-%{_libdir}/libgnome-autoar-gtk-0.so.0
-%{_libdir}/libgnome-autoar-gtk-0.so.0.1.2
+%{_libdir}/libgnome-autoar-gtk-0.so.*
 
 %changelog
