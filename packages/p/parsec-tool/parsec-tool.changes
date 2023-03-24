@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 23 09:07:03 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.6.0-rc1:
+  * Bump parsec-client
+  * Allow to exclude algorithms for encryption/decryption tests
+  * Add support for RSA OAEP into parsec-tool and parsec-cli-tests.sh
+  * Fix clippy needless_borrow warnings
+  * Update lib.rs to remove const_err
+- Add <param name="update">true</param> to _service to apply
+  security updates
+- Use cargo-packaging for all flavors
+- Enable cargo_audit
+
+-------------------------------------------------------------------
 Wed Apr  6 07:05:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use cargo-packaging (bsc#1198130)

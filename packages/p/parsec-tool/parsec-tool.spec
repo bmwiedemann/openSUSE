@@ -1,7 +1,7 @@
 #
 # spec file for package parsec-tool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+%define archive_version 0.6.0-rc1
+
 %{?systemd_ordering}
 Name:           parsec-tool
-Version:        0.5.2
+Version:        0.6.0~rc1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
 URL:            https://github.com/parallaxsecond/parsec-tool
-Source0:        https://github.com/parallaxsecond/parsec-tool/archive/%{version}.tar.gz#/parsec-tool-%{version}.tar.gz
+Source0:        https://github.com/parallaxsecond/parsec-tool/archive/%{archive_version}.tar.gz#/parsec-tool-%{archive_version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo
-%if %suse_version > 1550
 BuildRequires:  cargo-packaging
-%else
-BuildRequires:  rust-packaging
-%endif
 BuildRequires:  protobuf-devel
 Requires:       parsec
 ExcludeArch:    %{ix86} armv6l armv6hl
@@ -41,7 +39,7 @@ ExcludeArch:    %{ix86} armv6l armv6hl
 A tool to communicate with the Parsec service on the command-line.
 
 %prep
-%setup -qa1
+%setup -qa1 -n parsec-tool-%{archive_version}
 rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
