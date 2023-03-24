@@ -1,7 +1,7 @@
 #
-# spec file for package lua-busted
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,8 +26,8 @@ Release:        0
 Summary:        Unit testing framework with a focus on being easy to use
 License:        MIT
 Group:          Development/Languages/Other
-URL:            http://olivinelabs.com/busted/
-Source:         https://github.com/Olivine-Labs/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+URL:            https://lunarmodules.github.io/busted/
+Source:         https://github.com/lunarmodules/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-cliargs >= 3.0-1
 BuildRequires:  %{flavor}-devel
 # For testing
@@ -60,7 +60,7 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
