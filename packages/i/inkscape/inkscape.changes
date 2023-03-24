@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:44:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0001-Fix-build-with-GCC13.patch: Fix build with GCC13.
+
+-------------------------------------------------------------------
 Sun Dec 18 14:02:37 UTC 2022 - thod_@gmx.de
 
 - Update to version 1.2.2:

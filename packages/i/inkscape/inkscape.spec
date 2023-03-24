@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-GCC13.patch -- Fix build with GCC13
+Patch0:         0001-Fix-build-with-GCC13.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
