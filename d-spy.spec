@@ -1,7 +1,7 @@
 #
 # spec file for package d-spy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname libdspy-1
 %define sover 1
 
 Name:           d-spy
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        A D-Bus explorer for GNOME
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -48,8 +49,8 @@ Shared library for %{name}.
 
 %package        devel
 Summary:        Development/header files for %{name}
-Requires:       %{name} = %{version}
 Requires:       %{libname}-%{sover} = %{version}
+Requires:       %{name} = %{version}
 
 %description    devel
 Development/header files for %{name}.
@@ -74,7 +75,7 @@ Development/header files for %{name}.
 %license COPYING COPYING.lgpl3
 %doc NEWS
 %{_bindir}/%{name}
-%{_datadir}/appdata/org.gnome.dspy.appdata.xml
+%{_datadir}/metainfo/org.gnome.dspy.appdata.xml
 %{_datadir}/applications/org.gnome.dspy.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.dspy.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.dspy.devel.svg
@@ -90,4 +91,3 @@ Development/header files for %{name}.
 %{_libdir}/pkgconfig/dspy-1.pc
 
 %changelog
-
