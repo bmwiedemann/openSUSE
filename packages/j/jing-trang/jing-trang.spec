@@ -16,8 +16,6 @@
 #
 
 
-%global relaxng_hash 1fc8c8d337c2c75b6b15b281f2c69e86110e475f
-#
 Name:           jing-trang
 Version:        20220510
 Release:        0
@@ -25,10 +23,9 @@ Summary:        Schema validation and conversion based on RELAX NG
 License:        BSD-3-Clause
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/relaxng/%{name}
-Source0:        https://github.com/relaxng/%{name}/archive/V%{version}.tar.gz
-Source1:        https://github.com/relaxng/relaxng.org/archive/%{relaxng_hash}.zip
-Source2:        https://repo1.maven.org/maven2/org/relaxng/jing/%{version}/jing-%{version}.pom
-Source3:        https://repo1.maven.org/maven2/org/relaxng/trang/%{version}/trang-%{version}.pom
+Source0:        %{name}-%{version}.tar.xz
+Source1:        https://repo1.maven.org/maven2/org/relaxng/jing/%{version}/jing-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/org/relaxng/trang/%{version}/trang-%{version}.pom
 Source10:       dtdinst.1
 #
 Patch0:         0000-Various-build-fixes.patch
@@ -118,19 +115,14 @@ Requires:       jpackage-utils
 DTDinst is a program for converting XML DTDs into an XML instance format.
 
 %prep
-%setup -q -a 0
-rmdir relaxng.org
-unzip %{SOURCE1}
-mv relaxng.org-%{relaxng_hash} relaxng.org
+%setup -q
 
-cp %{SOURCE2} jing.pom
-cp %{SOURCE3} trang.pom
+cp %{SOURCE1} jing.pom
+cp %{SOURCE2} trang.pom
 cp %{SOURCE10} .
 mv gcj/{trang,jing}.1 .
 
-rm -r gcj mod/datatype/src/main/org $(find . -name "*.jar")
 %patch0 -p1
-# %%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 rm -f \

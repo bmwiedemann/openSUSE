@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1061149</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4266826490d36ab97c12a331e9dc865d</srcmd5>
+    <version>20220510</version>
+    <time>1679667345</time>
+    <user>dimstar_suse</user>
+    <comment>Fetch sources using source service</comment>
+    <requestid>1073357</requestid>
+  </revision>
 </revisionlist>

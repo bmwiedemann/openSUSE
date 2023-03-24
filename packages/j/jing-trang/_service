@@ -1,5 +1,17 @@
 <services>
-	<service name="download_files" mode="disabled">
-		<param name="recompress">yes</param>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/relaxng/jing-trang.git</param>
+		<param name="revision">V20220510</param>
+		<param name="match-tag">V*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">V(.*)</param>
+        <param name="exclude">lib/*.jar</param>
+        <param name="exclude">mod/datatype/src/main/org</param>
 	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
 </services>

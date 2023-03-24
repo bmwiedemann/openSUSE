@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 18:55:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch the sources using the source service and filter out stray
+  binaries and other files that we don't want to distribute because
+  of licensing.
+
+-------------------------------------------------------------------
 Sat Jan 21 15:21:58 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com>
 
 - Add Maven Provides line for Jing & Trang
