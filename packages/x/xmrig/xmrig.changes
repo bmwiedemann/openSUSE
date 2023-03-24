@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 24 07:43:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.1:
+  * v6.19.1
+  * Update CHANGELOG.md
+  * Fix build with gcc 13
+  * Resolved deprecated methods warnings with OpenSSL 3.0.
+  * Fix: `--randomx-wrmsr=-1` worked only on Intel
+  * Fix for 32-bit clang 15
+  * Fixed DnsUvBackend storage cleanup.
+  * Revert changes to fix MSVC build.
+  * Cleanup.
+  * Fix warning.
+  * Partially resolved deprecated methods warnings in OpenSSL 3.0.
+  * v6.19.1-dev
+
+-------------------------------------------------------------------
 Mon Mar  6 07:59:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.19.0:

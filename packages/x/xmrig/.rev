@@ -531,4 +531,24 @@
   * v6.18.2-dev</comment>
     <requestid>1069540</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c56e9822f09c49e1cdc8f22e38cbff20</srcmd5>
+    <version>6.19.1</version>
+    <time>1679667694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.1:
+  * v6.19.1
+  * Update CHANGELOG.md
+  * Fix build with gcc 13
+  * Resolved deprecated methods warnings with OpenSSL 3.0.
+  * Fix: `--randomx-wrmsr=-1` worked only on Intel
+  * Fix for 32-bit clang 15
+  * Fixed DnsUvBackend storage cleanup.
+  * Revert changes to fix MSVC build.
+  * Cleanup.
+  * Fix warning.
+  * Partially resolved deprecated methods warnings in OpenSSL 3.0.
+  * v6.19.1-dev</comment>
+    <requestid>1074091</requestid>
+  </revision>
 </revisionlist>
