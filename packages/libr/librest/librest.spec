@@ -1,7 +1,7 @@
 #
 # spec file for package librest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Patch1:         0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.24
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)

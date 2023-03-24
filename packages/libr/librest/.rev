@@ -233,4 +233,13 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002595 from dimstar)</comment>
     <requestid>1003277</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>bb0d0218ec830ed67a64962e48d450b8</srcmd5>
+    <version>0.9.1</version>
+    <time>1679667404</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen). (forwarded request 1072825 from iznogood)</comment>
+    <requestid>1073147</requestid>
+  </revision>
 </revisionlist>

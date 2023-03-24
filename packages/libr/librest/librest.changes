@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 26 20:28:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen).
+
+-------------------------------------------------------------------
 Sun Sep 11 12:25:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add patches to fix some minor issues that upstream have solved in
