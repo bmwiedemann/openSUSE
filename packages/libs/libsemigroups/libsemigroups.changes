@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 22 18:50:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7.0
+  * Allow computation of strongly connected components of
+    non-complete word graphs
+
+-------------------------------------------------------------------
 Mon Feb 27 13:34:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.2
