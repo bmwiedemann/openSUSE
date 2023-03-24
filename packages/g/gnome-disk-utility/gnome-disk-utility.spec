@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-disk-utility
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           gnome-disk-utility
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-disk-utility/44/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.50.0
@@ -55,6 +56,7 @@ dealing with storage devices.
 
 %build
 %meson \
+	--sysconfdir=%{_distconfdir} \
 	-Dlogind=libsystemd \
 	-Dgsd_plugin=true \
 	-Dman=true \
@@ -63,6 +65,10 @@ dealing with storage devices.
 
 %install
 %meson_install
+
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %find_lang %{name} %{?no_lang_C}
 
@@ -80,7 +86,7 @@ dealing with storage devices.
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 # The session / settings daemon plugin:
 %{_libexecdir}/gsd-disk-utility-notify
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+%{_distconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
 
 %files lang -f %{name}.lang
 

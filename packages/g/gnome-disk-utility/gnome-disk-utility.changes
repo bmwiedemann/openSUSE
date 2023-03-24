@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 17 12:10:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + flatpak:
+    - Use popt default branch
+    - popt switched to cmake
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 07:43:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + flatpak: People like to rename branches back and forth.
+  + Add .dir-locals.
+  + various: Remove GNU Emacs file variables.
+  + Updated translations.
+- Add appstream-glib BuildRequires and a check section, where we
+  validate appstream data and desktop file during build.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:23:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Update POTFILES.in.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 27 20:29:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.alpha:
+  + change-passphrase-dialog: Port to GtkBuilder templates
+  + ci: Use OCI images hosted on Quay
+  + createotherpage: Re-factor
+  + crypttab-dialog: Port to GtkBuilder templates
+  + estimator:
+    - Don't override finalize()
+    - Port to use G_DECLARE_FINAL_TYPE
+  + filesystemdialog: Port to use GtkBuilder Templates
+  + flatpak: Use new default branch name for popt
+  + format-disk-dialog: Port to GtkBuilder templates
+  + help-overlay: Remove visible properties
+  + new-disk-image-dialog: Port to GtkBuilder templates
+  + partition-dialog: Port to GtkBuilder templates
+  + passwordstrength:
+    - Don't override setter
+    - Port to use G_DECLARE_FINAL_TYPE
+  + unlock-dialog: Port to GtkBuilder templates
+  + Updated translations.
+- Pass sysconfdir=%{_distconfdir} to meson and move
+  org.gnome.SettingsDaemon.DiskUtilityNotify.desktop autostart file
+  to /usr/etc/ subdirs.
+
+-------------------------------------------------------------------
 Fri Sep 16 22:41:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
