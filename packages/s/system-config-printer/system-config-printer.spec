@@ -161,12 +161,10 @@ automatically configured when plugged on the computer.
 
 %install
 %make_install dbusdir=%{_datadir}/dbus-1/system.d/
-for size in 16x16 22x22 24x24 32x32 48x48 512x512; do
-	if test -f %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png; then
-		mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/$size/apps
-		cp -a %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png %{buildroot}/%{_datadir}/icons/hicolor/$size/apps/%{name}.png
-	fi
-done
+
+mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps
+cp -a %{_datadir}/icons/%{_iconlocation}/scalable/devices/printer.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+
 %suse_update_desktop_file print-applet
 %suse_update_desktop_file -r system-config-printer GTK System HardwareSettings
 %fdupes %{buildroot}/%{py_sitedir}
@@ -184,7 +182,7 @@ done
 
 %files common
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/apps/system-config-printer.png
+%{_datadir}/icons/hicolor/scalable/apps/system-config-printer.svg
 
 %files applet
 %{_bindir}/%{name}-applet
