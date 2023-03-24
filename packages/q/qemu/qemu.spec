@@ -245,6 +245,8 @@ Patch00078:     Revert-linux-user-fix-compat-with-glibc-.patch
 Patch00079:     acpi-cpuhp-fix-guest-visible-maximum-acc.patch
 Patch00080:     s390x-pci-shrink-DMA-aperture-to-be-boun.patch
 Patch00081:     s390x-pci-reset-ISM-passthrough-devices-.patch
+Patch00082:     qemu-osdep-Switch-position-of-extern-and.patch
+Patch00083:     test-vmstate-fix-bad-GTree-usage-use-aft.patch
 # Patches applied in roms/seabios/:
 Patch01000:     openSUSE-switch-to-python3-as-needed.patch
 Patch01001:     openSUSE-build-enable-cross-compilation-.patch

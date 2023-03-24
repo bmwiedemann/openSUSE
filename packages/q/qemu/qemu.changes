@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 22 09:29:52 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Further fixes for bsc#1209546
+* Patches added:
+  test-vmstate-fix-bad-GTree-usage-use-aft.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 22:02:50 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1209546
+* Patches added:
+  qemu-osdep-Switch-position-of-extern-and.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 16:27:19 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix bsc#1209064

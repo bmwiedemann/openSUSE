@@ -1,0 +1,63 @@
+From: Eric Auger <eric.auger@redhat.com>
+Date: Tue, 28 Feb 2023 10:29:44 +0100
+Subject: test-vmstate: fix bad GTree usage, use-after-free
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+According to g_tree_foreach() documentation:
+"The tree may not be modified while iterating over it (you can't
+add/remove items)."
+
+compare_trees()/diff_tree() fail to respect this rule.
+Historically GLib2 used a slice allocator for the GTree APIs
+which did not immediately release the memory back to the system
+allocator. As a result QEMU's use-after-free bug was not visible.
+With GLib > 2.75.3 however, GLib2 has switched to using malloc
+and now a SIGSEGV can be observed while running test-vmstate.
+
+Get rid of the node removal within the tree traversal. Also
+check the trees have the same number of nodes before the actual
+diff.
+
+Fixes: 9a85e4b8f6 ("migration: Support gtree migration")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1518
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Richard W.M. Jones <rjones@redhat.com>
+Tested-by: Richard W.M. Jones <rjones@redhat.com>
+Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+(cherry picked from commit abe2c4bdb65e8dd9cb2f01c355baa394bf49a8af)
+Resolves: bsc#1209546
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ tests/unit/test-vmstate.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/tests/unit/test-vmstate.c b/tests/unit/test-vmstate.c
+index 72077b578007227ff2415d5f552e..ff17e80fc88c8e144f1675d259af 100644
+--- a/tests/unit/test-vmstate.c
++++ b/tests/unit/test-vmstate.c
+@@ -1075,7 +1075,6 @@ static gboolean diff_tree(gpointer key, gpointer value, gpointer data)
+     struct match_node_data d = {tp->tree2, key, value};
+ 
+     g_tree_foreach(tp->tree2, tp->match_node, &d);
+-    g_tree_remove(tp->tree1, key);
+     return false;
+ }
+ 
+@@ -1084,9 +1083,9 @@ static void compare_trees(GTree *tree1, GTree *tree2,
+ {
+     struct tree_cmp_data tp = {tree1, tree2, function};
+ 
++    assert(g_tree_nnodes(tree1) == g_tree_nnodes(tree2));
+     g_tree_foreach(tree1, diff_tree, &tp);
+-    assert(g_tree_nnodes(tree1) == 0);
+-    assert(g_tree_nnodes(tree2) == 0);
++    g_tree_destroy(g_tree_ref(tree1));
+ }
+ 
+ static void diff_domain(TestGTreeDomain *d1, TestGTreeDomain *d2)

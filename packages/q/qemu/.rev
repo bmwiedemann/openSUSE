@@ -3333,4 +3333,18 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1072460</requestid>
   </revision>
+  <revision rev="250" vrev="15">
+    <srcmd5>489282fdccf5c4cb4211c1321b0b2c3c</srcmd5>
+    <version>7.1.0</version>
+    <time>1679667501</time>
+    <user>dimstar_suse</user>
+    <comment>- Further fixes for bsc#1209546
+* Patches added:
+  test-vmstate-fix-bad-GTree-usage-use-aft.patch
+- Fix bsc#1209546
+* Patches added:
+  qemu-osdep-Switch-position-of-extern-and.patch
+</comment>
+    <requestid>1073761</requestid>
+  </revision>
 </revisionlist>
