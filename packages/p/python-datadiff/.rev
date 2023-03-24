@@ -16,4 +16,32 @@
   * Stop using nose imports, use pytest instead.</comment>
     <requestid>919396</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf62de431ad21d20a3ca166845b3857c</srcmd5>
+    <version>2.1.0</version>
+    <time>1679667595</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the version in the package, it was set to 2.2.0, but the version
+  provided was 2.0.0.
+- Disable broken tests with python 3.11, related to ordering of sets
+- Remove six dependency
+- Update to version 2.1.0:
+  * Bump version
+  * Seems like this is never used
+  * Better exception testing pattern, better test coverage :)
+  * Remove python &lt;2.6 stuff; and an adhoc nose test runner
+  * Only round, not convert to hashable, when comparing dict values
+  * Coverage reporting
+  * PEP8 and other good practice fixes
+  * Add LICENSE file, build wheels
+  * Move tests into package subdir
+  * Add tox.ini and test against more versions of python
+  * fix __bool__ case when dict only has equal type diffs
+  * fuzzy matching for float comparisons, fix empty set diffs
+  * test_hashable_dict_values
+  * revert datadiff/tools.py hashable to maintain module_nose.tools compatibility
+  * use hashable when comparing
+</comment>
+    <requestid>1073698</requestid>
+  </revision>
 </revisionlist>
