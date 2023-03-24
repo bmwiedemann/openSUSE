@@ -382,4 +382,25 @@
     <comment></comment>
     <requestid>1029919</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>504afb6ee55bae935545bce3471d07c8</srcmd5>
+    <version>44.0</version>
+    <time>1679667560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.0:
+  + Updated translations.
+- Update to version 44.rc:
+  + Various fixes to calendar parsing
+  + Fix sidebar not opening events
+  + Fix search not working anymore
+  + Updated translations.
+- Drop obsolete and unused pkgconfig(libdazzle-1.0) BuildRequires.
+- Update to version 44.beta:
+  + Fix moving event to different calendars
+  + Improve default sizing of event editor dialog
+  + Updated translations.
+- Build sub-package gnome-shell-search-provider-gnome-calendar as
+  noarch. (forwarded request 1072610 from iznogood)</comment>
+    <requestid>1073158</requestid>
+  </revision>
 </revisionlist>
