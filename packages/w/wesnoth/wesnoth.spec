@@ -18,14 +18,14 @@
 
 %define boost_min_version 1.66
 Name:           wesnoth
-Version:        1.17.12
+Version:        1.17.14
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
 # https://github.com/wesnoth/wesnoth/issues/6986 - How about adding a note to the GitHub release page saying "Don't download the tarballs from here"?
-Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2 
+Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
 Patch1:         wesnoth-cmake-fix-find-readline.patch
 BuildRequires:  cmake >= 3.14
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.1
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(pangocairo) >= 1.44.0
 BuildRequires:  pkgconfig(sdl2) >= 2.0.10
 Requires:       dejavu
