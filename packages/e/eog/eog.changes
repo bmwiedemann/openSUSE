@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:50:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + help: Switch mailing list URLs over to GNOME Discourse.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 16:03:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Bug fixes and improvements: Remove all codes inside #if 0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 15:50:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.alpha:
+  + application: Add preferences shortcut.
+  + help-overlay: Use action-name properties.
+  + Drop eog_util_make_valid_utf8.
+
+-------------------------------------------------------------------
 Sat Jan  7 20:43:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

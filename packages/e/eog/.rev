@@ -1263,4 +1263,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
   + Updated translations. (forwarded request 1056817 from iznogood)</comment>
     <requestid>1057050</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>215d30f64410abdd9987f4f89d832ff4</srcmd5>
+    <version>44.0</version>
+    <time>1679667442</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072898 from iznogood)</comment>
+    <requestid>1073197</requestid>
+  </revision>
 </revisionlist>

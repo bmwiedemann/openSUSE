@@ -17,13 +17,13 @@
 
 
 Name:           eog
-Version:        43.2
+Version:        44.0
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/EyeOfGnome
-Source0:        https://download.gnome.org/sources/eog/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/eog/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  libjpeg-devel
