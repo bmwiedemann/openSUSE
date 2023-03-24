@@ -142,7 +142,7 @@ BuildRequires:  pkgconfig(libnfs)
 %endif
 BuildRequires:  (pkgconfig(libswscale) with pkgconfig(libswscale) < 6)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  (pkgconfig(libpostproc) with pkgconfig(libpostproc) < 56)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libsystemd)

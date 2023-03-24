@@ -1409,4 +1409,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1068191</requestid>
   </revision>
+  <revision rev="136" vrev="7">
+    <srcmd5>04a8fe5acbb00f9a3259569c509c3f05</srcmd5>
+    <version>3.0.18</version>
+    <time>1679667352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073533</requestid>
+  </revision>
 </revisionlist>
