@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.2.6
+%define patchversion 6.2.8
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-fa1a4c647a5aede1f288300d43f7f2f1dcd2cbfd
+BuildRequires:  kernel%kernel_flavor-srchash-221c28fbd5a8e85b11ef8168a8454521fb5cabba
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -53,20 +53,13 @@ BuildRequires:  kernel
 %endif
 
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
-%if 0%{?suse_version} < 1315
-# For SLE 11
-BuildRequires:  mkinitrd
-BuildRequires:  perl-Bootloader
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%else
 BuildRequires:  dracut
-%endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.2.6
+Version:        6.2.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfa1a4c6
+Release:        <RELEASE>.g221c28f
 %else
 Release:        0
 %endif
@@ -145,12 +138,6 @@ ROOT=""
 %define kernel_name Image
 %endif
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1315
-# For SLE 11
-/sbin/mkinitrd $ROOT \
-               -m "$KERNEL_MODULES" \
-               -k /boot/%{kernel_name}-*-default -M /boot/System.map-*-default -i /tmp/initrd.kvm -B
-%else
 # --host-only mode is needed for unlimited TasksMax workaround (boo#965564)
 dracut --reproducible --host-only --no-hostonly-cmdline \
 	--no-early-microcode --nofscks --strip --hardlink \
@@ -159,7 +146,6 @@ dracut --reproducible --host-only --no-hostonly-cmdline \
 	--compress "zstd -19 -T0" \
 %endif
 	$(echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p')
-%endif
 
 #cleanup
 rm -rf /usr/lib/dracut/modules.d/80obs

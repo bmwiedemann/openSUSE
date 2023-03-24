@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.2
-%define patchversion 6.2.6
+%define patchversion 6.2.8
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.2.6
+Version:        6.2.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfa1a4c6
+Release:        <RELEASE>.g221c28f
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-fa1a4c647a5aede1f288300d43f7f2f1dcd2cbfd
+Provides:       %name-srchash-221c28fbd5a8e85b11ef8168a8454521fb5cabba
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz

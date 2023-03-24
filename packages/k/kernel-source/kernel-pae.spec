@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.2
-%define patchversion 6.2.6
+%define patchversion 6.2.8
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.2.6
+Version:        6.2.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfa1a4c6
+Release:        <RELEASE>.g221c28f
 %else
 Release:        0
 %endif
@@ -173,6 +173,9 @@ Recommends: kernel-firmware
 # The following is copied to the -base subpackage as well
 # BEGIN COMMON DEPS
 Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
 Requires(postun): suse-kernel-rpm-scriptlets
 Requires(pre):  coreutils awk
 # For /usr/lib/module-init-tools/weak-modules2
@@ -184,21 +187,16 @@ Requires(post): modutils
 # test -x update-bootloader, having perl-Bootloader is not a hard requirement.
 # But, there is no way to tell rpm or yast to schedule the installation
 # of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for mkinitrd.
+# packages to install/update. Likewise, this is true for dracut.
 # Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
 Requires(post): perl-Bootloader >= 0.4.15
-%if %build_vanilla
-Requires(post): mkinitrd
-%else
-# Require a mkinitrd that can handle usbhid/hid-generic built-in (bnc#773559)
-Requires(post): mkinitrd >= 2.7.1
-%endif
+Requires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
-# Do not install p-b and mkinitrd for the install check, the %post script is
+# Do not install p-b and dracut for the install check, the %post script is
 # able to handle this
-#!BuildIgnore: perl-Bootloader mkinitrd distribution-release
+#!BuildIgnore: perl-Bootloader dracut distribution-release
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
@@ -240,10 +238,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fa1a4c647a5aede1f288300d43f7f2f1dcd2cbfd
-Provides:       kernel-srchash-fa1a4c647a5aede1f288300d43f7f2f1dcd2cbfd
+Provides:       kernel-%build_flavor-base-srchash-221c28fbd5a8e85b11ef8168a8454521fb5cabba
+Provides:       kernel-srchash-221c28fbd5a8e85b11ef8168a8454521fb5cabba
 # END COMMON DEPS
-Provides:       %name-srchash-fa1a4c647a5aede1f288300d43f7f2f1dcd2cbfd
+Provides:       %name-srchash-221c28fbd5a8e85b11ef8168a8454521fb5cabba
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -1278,7 +1276,7 @@ Requires:       %{name}_%_target_cpu = %version-%source_rel
 Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
-Requires(post): mkinitrd
+Requires(post): dracut
 %ifarch %ix86
 Provides:       kernel-vmi-extra = 2.6.38
 Obsoletes:      kernel-vmi-extra <= 2.6.38
@@ -1360,7 +1358,7 @@ Requires:       %name-extra_%_target_cpu = %version-%source_rel
 Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
-Requires(post): mkinitrd
+Requires(post): dracut
 %ifarch %ix86
 Provides:       kernel-vmi-optional = 2.6.38
 Obsoletes:      kernel-vmi-optional <= 2.6.38
