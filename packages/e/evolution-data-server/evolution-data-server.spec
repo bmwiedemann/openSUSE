@@ -32,13 +32,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.46.4
+Version:        3.48.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.48/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -73,8 +73,8 @@ BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.58
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf) >= 2.4
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.34.0
-BuildRequires:  pkgconfig(webkit2gtk-5.0) >= 2.36.0
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  pkgconfig(webkitgtk-6.0)
 Requires:       mozilla-nss
 # typelib-1_0-ECalendar-1_2 was dropped with e-d-s 3.7.3 due to libical not being introspecatble.
 Obsoletes:      typelib-1_0-ECalendar-1_2 <= %{version}
@@ -345,6 +345,7 @@ This package contains developer documentation.
     -DENABLE_SMIME=ON \
     -DENABLE_UOA=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH=OFF \
+    -DENABLE_OAUTH2_WEBKITGTK4=ON \
     %{?with_introspection:\
     -DENABLE_VALA_BINDINGS=ON \
     -DENABLE_INTROSPECTION=ON} \
