@@ -17,19 +17,24 @@
 
 
 Name:           zenity
-Version:        3.44.0
+Version:        3.91.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/zenity/3.91/%{name}-%{version}.tar.xz
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+# Disabled as it fails the build currently - but needed for man pages.
+#BuildRequires:  help2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
 Zenity is a basic rewrite of gdialog, without the pain involved of
@@ -56,14 +61,17 @@ Zenity is especially useful in scripts.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+%meson_test
+
 %files
-%doc AUTHORS ChangeLog NEWS README.md THANKS TODO
+%doc AUTHORS ChangeLog NEWS README.md
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
-%{_bindir}/gdialog
 %{_bindir}/zenity
-%{_datadir}/zenity/
-%{_mandir}/man?/zenity.1%{ext_man}
+#%%{_mandir}/man?/zenity.1%%{ext_man}
+%{_datadir}/applications/org.gnome.Zenity.desktop
+%{_datadir}/icons/hicolor/48x48/apps/zenity.png
 
 %files lang -f %{name}.lang
 

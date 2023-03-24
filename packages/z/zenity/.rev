@@ -525,4 +525,29 @@
     <comment></comment>
     <requestid>1062416</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>25ad42bdc28f130559f1c40df8261bc0</srcmd5>
+    <version>3.91.0</version>
+    <time>1679667473</time>
+    <user>dimstar_suse</user>
+    <comment>Subbing RC in case upstream forgets to do stable bump.
+
+- Update to version 3.91.0:
+  + tree: Port to GtkColumnView
+  + desktop file: Remove spurious translation comment
+  + i18n: rename POTFILES to POTFILES.in
+  + help:
+    - Fix invalid markup in German help translation
+    - Freedesktop.org spec fixes
+  + Updated translations.
+- Update to version 3.90.0:
+  + Initial alpha release based on libadwaita and GTK4.
+- Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4) and add
+  desktop-file-utils and pkgconfig(libadwaita-1) BuildRequires
+  following upstream changes. Also add a check section and
+  meson_test macro.
+- Add disabled help2man BuildRequires, needed for man pages but
+  currently fails the build. (forwarded request 1073114 from iznogood)</comment>
+    <requestid>1073238</requestid>
+  </revision>
 </revisionlist>
