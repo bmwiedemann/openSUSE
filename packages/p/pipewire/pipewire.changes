@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 19 08:51:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(lc3) BuildRequires, and pass
+  bluez5-codec-lc3=enabled to meson.
+
+-------------------------------------------------------------------
 Thu Mar  9 13:57:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.67:

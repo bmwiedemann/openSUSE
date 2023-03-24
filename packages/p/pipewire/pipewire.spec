@@ -102,6 +102,7 @@ BuildRequires:  pkgconfig(ldacBT-enc)
 #BuildRequires:  pkgconfig(libavcodec)
 #BuildRequires:  pkgconfig(libavfilter)
 #BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
 BuildRequires:  libcamera-devel >= 0.0.1
 %endif
@@ -386,6 +387,7 @@ export CXX=g++-9
 %else
     -Dbluez5-codec-ldac=disabled \
 %endif
+    -Dbluez5-codec-lc3=enabled \
     -Dbluez5-codec-lc3plus=disabled \
 %if %{with libcamera}
     -Dlibcamera=enabled \
