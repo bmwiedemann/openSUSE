@@ -17,13 +17,13 @@
 
 
 Name:           nautilus
-Version:        43.2
+Version:        44.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/44/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.7.2
+BuildRequires:  pkgconfig(gtk4) >= 4.9.1
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.beta
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk4)
@@ -62,6 +62,7 @@ Requires:       tracker-miner-files >= 2.99
 Recommends:     gvfs
 # Needed for tests
 BuildRequires:  python3-gobject
+BuildRequires:  tracker
 BuildRequires:  tracker-miner-files >= 2.99
 #
 
