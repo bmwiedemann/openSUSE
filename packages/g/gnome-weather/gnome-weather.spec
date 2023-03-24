@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-weather
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.gnome.org/app/org.gnome.Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-weather/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
