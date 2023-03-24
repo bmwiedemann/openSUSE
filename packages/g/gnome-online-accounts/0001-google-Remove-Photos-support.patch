@@ -13,11 +13,11 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1913641
  src/goabackend/goagoogleprovider.c | 15 ---------------
  1 file changed, 15 deletions(-)
 
-diff --git a/src/goabackend/goagoogleprovider.c b/src/goabackend/goagoogleprovider.c
-index 9332c0fdca0b..b3c0f8fdcc66 100644
---- a/src/goabackend/goagoogleprovider.c
-+++ b/src/goabackend/goagoogleprovider.c
-@@ -69,7 +69,6 @@ get_provider_features (GoaProvider *provider)
+Index: gnome-online-accounts-3.48.0/src/goabackend/goagoogleprovider.c
+===================================================================
+--- gnome-online-accounts-3.48.0.orig/src/goabackend/goagoogleprovider.c
++++ gnome-online-accounts-3.48.0/src/goabackend/goagoogleprovider.c
+@@ -70,7 +70,6 @@ get_provider_features (GoaProvider *prov
           GOA_PROVIDER_FEATURE_MAIL |
           GOA_PROVIDER_FEATURE_CALENDAR |
           GOA_PROVIDER_FEATURE_CONTACTS |
@@ -25,7 +25,7 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
           GOA_PROVIDER_FEATURE_FILES |
           GOA_PROVIDER_FEATURE_PRINTERS;
  }
-@@ -117,9 +116,6 @@ get_scope (GoaOAuth2Provider *oauth2_provider)
+@@ -149,9 +148,6 @@ get_scope (GoaOAuth2Provider *oauth2_pro
           "https://docs.googleusercontent.com/ "
           "https://spreadsheets.google.com/feeds/ "
  
@@ -35,7 +35,7 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
           /* GMail IMAP and SMTP access */
           "https://mail.google.com/ "
  
-@@ -281,7 +277,6 @@ build_object (GoaProvider         *provider,
+@@ -313,7 +309,6 @@ build_object (GoaProvider         *provi
    gboolean calendar_enabled;
    gboolean contacts_enabled;
    gboolean files_enabled;
@@ -43,7 +43,7 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
    gboolean printers_enabled;
    const gchar *email_address;
  
-@@ -342,10 +337,6 @@ build_object (GoaProvider         *provider,
+@@ -374,10 +369,6 @@ build_object (GoaProvider         *provi
                                         contacts_enabled,
                                         FALSE);
  
@@ -54,7 +54,7 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
    /* Files */
    files_enabled = g_key_file_get_boolean (key_file, group, "FilesEnabled", NULL);
    uri_drive = g_strconcat ("google-drive://", email_address, "/", NULL);
-@@ -361,7 +352,6 @@ build_object (GoaProvider         *provider,
+@@ -393,7 +384,6 @@ build_object (GoaProvider         *provi
        goa_account_set_mail_disabled (account, !mail_enabled);
        goa_account_set_calendar_disabled (account, !calendar_enabled);
        goa_account_set_contacts_disabled (account, !contacts_enabled);
@@ -62,18 +62,18 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
        goa_account_set_files_disabled (account, !files_enabled);
        goa_account_set_printers_disabled (account, !printers_enabled);
  
-@@ -377,10 +367,6 @@ build_object (GoaProvider         *provider,
-                         "notify::contacts-disabled",
+@@ -410,10 +400,6 @@ build_object (GoaProvider         *provi
                          G_CALLBACK (goa_util_account_notify_property_cb),
                          (gpointer) "ContactsEnabled");
--      g_signal_connect (account,
+       g_signal_connect (account,
 -                        "notify::photos-disabled",
 -                        G_CALLBACK (goa_util_account_notify_property_cb),
 -                        (gpointer) "PhotosEnabled");
-       g_signal_connect (account,
+-      g_signal_connect (account,
                          "notify::files-disabled",
                          G_CALLBACK (goa_util_account_notify_property_cb),
-@@ -408,7 +394,6 @@ add_account_key_values (GoaOAuth2Provider  *oauth2_provider,
+                         (gpointer) "FilesEnabled");
+@@ -440,7 +426,6 @@ add_account_key_values (GoaOAuth2Provide
    g_variant_builder_add (builder, "{ss}", "MailEnabled", "true");
    g_variant_builder_add (builder, "{ss}", "CalendarEnabled", "true");
    g_variant_builder_add (builder, "{ss}", "ContactsEnabled", "true");
@@ -81,6 +81,3 @@ index 9332c0fdca0b..b3c0f8fdcc66 100644
    g_variant_builder_add (builder, "{ss}", "FilesEnabled", "true");
    g_variant_builder_add (builder, "{ss}", "PrintersEnabled", "true");
  }
--- 
-2.30.2
-

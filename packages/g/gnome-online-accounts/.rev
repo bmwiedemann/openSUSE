@@ -700,4 +700,12 @@
     <comment></comment>
     <requestid>1004799</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d56354c52b2caf5220b2f01357aaa3a7</srcmd5>
+    <version>3.48.0</version>
+    <time>1679667432</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072763 from iznogood)</comment>
+    <requestid>1073188</requestid>
+  </revision>
 </revisionlist>
