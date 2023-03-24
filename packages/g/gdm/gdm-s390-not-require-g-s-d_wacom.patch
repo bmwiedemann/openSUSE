@@ -1,7 +1,5 @@
-Index: gdm-40.0/data/meson.build
-===================================================================
---- gdm-40.0.orig/data/meson.build
-+++ gdm-40.0/data/meson.build
+--- a/data/meson.build
++++ b/data/meson.build
 @@ -77,7 +77,6 @@ gdm_gnome_session_required_components =
    'org.gnome.SettingsDaemon.Sharing',
    'org.gnome.SettingsDaemon.Smartcard',

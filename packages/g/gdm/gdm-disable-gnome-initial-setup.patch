@@ -1,8 +1,6 @@
-Index: gdm-41.3/daemon/gdm-display.c
-===================================================================
---- gdm-41.3.orig/daemon/gdm-display.c
-+++ gdm-41.3/daemon/gdm-display.c
-@@ -1655,6 +1655,9 @@ wants_initial_setup (GdmDisplay *self)
+--- a/daemon/gdm-display.c
++++ b/daemon/gdm-display.c
+@@ -1653,6 +1653,9 @@ wants_initial_setup (GdmDisplay *self)
          gboolean enabled = FALSE;
          gboolean forced = FALSE;
  
@@ -11,8 +9,8 @@ Index: gdm-41.3/daemon/gdm-display.c
 +
          priv = gdm_display_get_instance_private (self);
  
-         if (already_done_initial_setup ()) {
-@@ -1691,6 +1694,16 @@ wants_initial_setup (GdmDisplay *self)
+         if (already_done_initial_setup_on_this_boot ()) {
+@@ -1689,6 +1692,16 @@ wants_initial_setup (GdmDisplay *self)
                  return FALSE;
          }
  

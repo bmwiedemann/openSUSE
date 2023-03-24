@@ -1,8 +1,6 @@
-Index: gdm-41.3/daemon/gdm-local-display-factory.c
-===================================================================
---- gdm-41.3.orig/daemon/gdm-local-display-factory.c
-+++ gdm-41.3/daemon/gdm-local-display-factory.c
-@@ -541,8 +541,10 @@ on_display_status_changed (GdmDisplay
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -552,8 +552,10 @@ on_display_status_changed (GdmDisplay
                   * ensures we get a new login screen when the user logs out,
                   * if there isn't one.
                   */
@@ -14,11 +12,9 @@ Index: gdm-41.3/daemon/gdm-local-display-factory.c
                          /* reset num failures */
                          factory->num_failures = 0;
  
-Index: gdm-41.3/daemon/gdm-manager.c
-===================================================================
---- gdm-41.3.orig/daemon/gdm-manager.c
-+++ gdm-41.3/daemon/gdm-manager.c
-@@ -1548,7 +1548,8 @@ on_display_status_changed (GdmDisplay *d
+--- a/daemon/gdm-manager.c
++++ b/daemon/gdm-manager.c
+@@ -1553,7 +1553,8 @@ on_display_status_changed (GdmDisplay *d
                          }
  #endif
  
@@ -26,5 +22,5 @@ Index: gdm-41.3/daemon/gdm-manager.c
 +                        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL )
 +                                g_object_set_data (G_OBJECT (display), "gdm-user-session", NULL);
  
-                         if (display == manager->priv->automatic_login_display) {
-                                 g_clear_weak_pointer (&manager->priv->automatic_login_display);
+                         if (display == manager->automatic_login_display) {
+                                 g_clear_weak_pointer (&manager->automatic_login_display);

@@ -1,7 +1,5 @@
-Index: gdm-43.0/daemon/main.c
-===================================================================
---- gdm-43.0.orig/daemon/main.c
-+++ gdm-43.0/daemon/main.c
+--- a/daemon/main.c
++++ b/daemon/main.c
 @@ -61,6 +61,31 @@ static GdmSettings     *settings      =
  static uid_t            gdm_uid       = -1;
  static gid_t            gdm_gid       = -1;

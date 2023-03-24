@@ -27,14 +27,14 @@
 %endif
 
 Name:           gdm
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdm/44/%{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -51,8 +51,10 @@ Source10:       reserveVT.conf
 # Use sysusers to create gdm system user
 Source11:       gdm.sysusers
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in accountsservice too
+# PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
+Patch0:         gdm-s390-not-require-g-s-d_wacom.patch
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
-Patch0:         gdm-sysconfig-settings.patch
+Patch1:         gdm-sysconfig-settings.patch
 # PATCH-FIX-OPENSUSE gdm-suse-xsession.patch vuntz@novell.com -- Use the /etc/X11/xdm/* scripts
 Patch2:         gdm-suse-xsession.patch
 # PATCH-FIX-OPENSUSE gdm-default-wm.patch vuntz@novell.com -- Use sysconfig to know to which desktop to use by default
@@ -60,30 +62,28 @@ Patch3:         gdm-default-wm.patch
 # PATCH-FIX-OPENSUSE gdm-xauthlocalhostname.patch bnc#538064 vuntz@novell.com -- Set XAUTHLOCALHOSTNAME to current hostname when we authenticate, for local logins, to avoid issues in the session in case the hostname changes later one. See comment 24 in the bug.
 Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
-Patch6:         gdm-switch-to-tty1.patch
+Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
-Patch9:         gdm-initial-setup-hardening.patch
-# PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
-Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
-# PATCH-FIX-UPSTREAM gdm-switch-user-tty7.patch bsc#1155408 glgo#GNOME#gdm#532 xwang@suse.com -- Switch to tty7 when switch user
-Patch14:        gdm-switch-user-tty7.patch
+Patch6:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
-Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
+Patch7:         gdm-disable-wayland-on-mgag200-chipsets.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
+## TODO: This patch might need to be rebased/changed after the changes from the 44rc release.
 # PATCH-FIX-SLE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1188912 jsc#SLE-17880 xwang@suse.com -- Add runtime option to start X under root instead of regular user.
 Patch1001:      gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 # PATCH-FIX-SLE gdm-restart-session-when-X-server-restart.patch bsc#1196974 xwang@suse.com -- Fix blank screen when X restarts with GDM_DISABLE_USER_DISPLAY_SERVER=1.
 Patch1002:      gdm-restart-session-when-X-server-restart.patch
+
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  gnome-session-core
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.57
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
@@ -230,24 +230,20 @@ running display manager.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch9 -p1
-%ifarch s390 s390x
-%patch13 -p1
-%endif
-%patch14 -p1
-%patch15 -p1
+# -N disables automatic patch application.
+%autosetup -N
+### NON-SLE patches start from 0 to 999
+## Use "autopatch -m 0 -M 999" when there's no need to skip patches.
+%autopatch -p1 -m 1 -M 999
 
-# SLE and Leap only patches start at 1000
+%ifarch s390 s390x
+%patch0 -p1
+%endif
+
+### SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
+## Use this when there's no need to skip patches.
+%autopatch -p1 -m 1000
 %endif
 
 %build

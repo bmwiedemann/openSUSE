@@ -1,7 +1,5 @@
-Index: gdm-43.0/common/gdm-settings-system-backend.c
-===================================================================
 --- /dev/null
-+++ gdm-43.0/common/gdm-settings-system-backend.c
++++ b/common/gdm-settings-system-backend.c
 @@ -0,0 +1,372 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -375,10 +373,8 @@ Index: gdm-43.0/common/gdm-settings-system-backend.c
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
-Index: gdm-43.0/common/gdm-settings-system-backend.h
-===================================================================
 --- /dev/null
-+++ gdm-43.0/common/gdm-settings-system-backend.h
++++ b/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -436,10 +432,8 @@ Index: gdm-43.0/common/gdm-settings-system-backend.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
-Index: gdm-43.0/common/gdm-settings.c
-===================================================================
---- gdm-43.0.orig/common/gdm-settings.c
-+++ gdm-43.0/common/gdm-settings.c
+--- a/common/gdm-settings.c
++++ b/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
  
@@ -448,7 +442,7 @@ Index: gdm-43.0/common/gdm-settings.c
  
  struct _GdmSettings
  {
-@@ -198,6 +199,10 @@ gdm_settings_reload (GdmSettings *settin
+@@ -203,6 +204,10 @@ gdm_settings_reload (GdmSettings *settin
          if (backend)
                  settings->backends = g_list_prepend (NULL, backend);
  
@@ -459,10 +453,8 @@ Index: gdm-43.0/common/gdm-settings.c
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
-Index: gdm-43.0/common/gdm-sysconfig.c
-===================================================================
 --- /dev/null
-+++ gdm-43.0/common/gdm-sysconfig.c
++++ b/common/gdm-sysconfig.c
 @@ -0,0 +1,484 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -948,10 +940,8 @@ Index: gdm-43.0/common/gdm-sysconfig.c
 +        g_strfreev (lines);
 +        return result;
 +}
-Index: gdm-43.0/common/gdm-sysconfig.h
-===================================================================
 --- /dev/null
-+++ gdm-43.0/common/gdm-sysconfig.h
++++ b/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -996,10 +986,8 @@ Index: gdm-43.0/common/gdm-sysconfig.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
-Index: gdm-43.0/data/gdm.conf-custom.in
-===================================================================
---- gdm-43.0.orig/data/gdm.conf-custom.in
-+++ gdm-43.0/data/gdm.conf-custom.in
+--- a/data/gdm.conf-custom.in
++++ b/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#
@@ -1008,10 +996,8 @@ Index: gdm-43.0/data/gdm.conf-custom.in
  
  [daemon]
  # Uncomment the line below to force the login screen to use Xorg
-Index: gdm-43.0/common/meson.build
-===================================================================
---- gdm-43.0.orig/common/meson.build
-+++ gdm-43.0/common/meson.build
+--- a/common/meson.build
++++ b/common/meson.build
 @@ -5,9 +5,11 @@ libgdmcommon_src = files(
    'gdm-profile.c',
    'gdm-settings-backend.c',

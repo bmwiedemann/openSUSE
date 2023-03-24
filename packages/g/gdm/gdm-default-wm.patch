@@ -1,7 +1,5 @@
-Index: gdm-43.0/daemon/gdm-session.c
-===================================================================
---- gdm-43.0.orig/daemon/gdm-session.c
-+++ gdm-43.0/daemon/gdm-session.c
+--- a/daemon/gdm-session.c
++++ b/daemon/gdm-session.c
 @@ -43,6 +43,8 @@
  #include <glib-object.h>
  #include <gio/gio.h>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 20 16:07:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  9 23:04:15 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 44.rc:
+  + Lots of code clean ups.
+  + Fix detection of virt on efi setups.
+  + Fix btmp accounting on failed logins.
+  + Ensure pam_close_session is called even if worker is killed.
+  + Updated translations.
+- Drop gdm-switch-user-tty7.patch: fixed upstream.
+- Refresh patches with Quilt.
+- Rebase gdm-xauthlocalhostname.patch due to code clean up commit:
+  88d79fe24cda8623a4b460c0aa9628178c26f745.
+
+-------------------------------------------------------------------
 Wed Jan 18 01:35:21 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Update gdm-disable-gnome-initial-setup.patch: Refactoring to

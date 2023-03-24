@@ -1,8 +1,6 @@
-Index: gdm-43.0/data/61-gdm.rules.in
-===================================================================
---- gdm-43.0.orig/data/61-gdm.rules.in
-+++ gdm-43.0/data/61-gdm.rules.in
-@@ -34,6 +34,16 @@ ATTR{vendor}=="0x1a03", ATTR{device}=="0
+--- a/data/61-gdm.rules.in
++++ b/data/61-gdm.rules.in
+@@ -29,6 +29,16 @@ ATTR{vendor}=="0x1a03", ATTR{device}=="0
  
  LABEL="gdm_pci_device_end"
  
@@ -18,4 +16,4 @@ Index: gdm-43.0/data/61-gdm.rules.in
 +
  # disable Wayland if modesetting is disabled
  KERNEL!="card[0-9]*", GOTO="gdm_nomodeset_end"
- SUBSYSTEM!="drm", GOTO="gdm_nomodeset_end"
+ KERNEL=="card[0-9]-*", GOTO="gdm_nomodeset_end"
