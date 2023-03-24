@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gnome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
-Source:         https://download.gnome.org/sources/xdg-desktop-portal-gnome/43/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/xdg-desktop-portal-gnome/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig
