@@ -1,9 +1,9 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/Kozea/CairoSVG.git</param>
+    <param name="url">https://github.com/Kozea/CairoSVG.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">e6013a3</param>
+    <param name="revision">f5170f8</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="buildtime" name="tar" />

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:27:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Drop support of Python 3.5 and 3.6, add support of Python 3.9,
+    3.10 and 3.11
+  * Support crispEdges value for text antialiasing
+  * Don’t crash when including CMYK images
+  * Only update docstrings when not optimized
+  * Don’t restore current point after empty paths
+  * Assume that 1ch equals 0.5em
+  * Fix various deprecation warnings 
+
+-------------------------------------------------------------------
 Thu Aug 12 12:01:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.5.2
