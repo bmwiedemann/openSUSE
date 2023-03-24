@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar 22 02:29:57 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-boxes-fix-stream-read.patch: Fix argument of
+  FileStream.read, it is used as document, but document is wrong
+  and translates into wrong C argument. (bsc#1207732,
+  glgo#GNOME/gnome-boxes!589, glgo#GNOME/vala#1410)
+
+-------------------------------------------------------------------
+Fri Mar 17 18:23:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Always create SPICE agent channel config.
+  + Fix increments in VM creation Storage Limit spin button.
+  + Don't fail to parse manually entered storage value on different
+    locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 15:59:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Fix VM renaming issues
+  + Fix errors saving manually edited domain configuration
+  + Fix issues with storage-limit not being set in VM creation
+  + Allow creating VMs without selecting an Osinfo operating system
+    entry
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 22 12:34:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta.1:
+  + Update POTFILES.in.
+- Changes from version 44.beta:
+  + Modernize the VM creation UI.
+  + Add new widget to rename VMs.
+  + Fix import of raw images.
+  + Create new storage volumes with compat=1.1.
+  + Update the documentation.
+
+-------------------------------------------------------------------
 Tue Feb 14 17:34:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:

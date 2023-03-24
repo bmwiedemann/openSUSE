@@ -1,0 +1,29 @@
+From 10211d09126e833af872344acca84b29aba6e92c Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Tue, 14 Mar 2023 16:43:50 +0800
+Subject: [PATCH] archive-writer: Fix wrong usage of FileStream.read()
+
+Actually we did nothing wrong, we just follow the valadoc, and the
+valadoc is wrong.
+
+See <https://github.com/vala-lang/valadoc-org/pull/380/files>.
+---
+ src/archive-writer.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/archive-writer.vala b/src/archive-writer.vala
+index c2322628..708158cd 100644
+--- a/src/archive-writer.vala
++++ b/src/archive-writer.vala
+@@ -118,7 +118,7 @@ public void insert_file (string src, string dest) throws GLib.IOError {
+ 
+         // get file info, read data into memory
+         var filestream = GLib.FileStream.open (src, "r");
+-        filestream.read ((uint8[]) buf, (size_t) len);
++        filestream.read ((uint8[]) buf);
+         execute_libarchive_function (archive, () => { return archive.write_header(entry); });
+         insert_data (buf, len);
+     }
+-- 
+GitLab
+
