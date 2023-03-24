@@ -396,4 +396,12 @@
     <comment></comment>
     <requestid>1004821</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4080bbabe5229094eed1cfb127df2624</srcmd5>
+    <version>1.36.0</version>
+    <time>1679667427</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072722 from iznogood)</comment>
+    <requestid>1073176</requestid>
+  </revision>
 </revisionlist>
