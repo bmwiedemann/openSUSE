@@ -76,4 +76,19 @@
     <comment></comment>
     <requestid>880494</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1721440e513eb9a17fa649d8b6e573ec</srcmd5>
+    <version>0.12.2</version>
+    <time>1679667592</time>
+    <user>dimstar_suse</user>
+    <comment>THIS REQUIRES SR#1073596!
+
+- We don't need six module any more.
+- Enable tests again.
+
+- version update to 0.12.2
+  * lot of changes, see
+    https://github.com/vispy/vispy/blob/main/CHANGELOG.md</comment>
+    <requestid>1073597</requestid>
+  </revision>
 </revisionlist>

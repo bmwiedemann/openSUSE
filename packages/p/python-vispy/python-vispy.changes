@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 21 13:12:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We don't need six module any more.
+- Enable tests again.
+
+-------------------------------------------------------------------
+Tue Mar 21 09:10:18 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.12.2
+  * lot of changes, see
+    https://github.com/vispy/vispy/blob/main/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Mar 20 12:41:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.6.6

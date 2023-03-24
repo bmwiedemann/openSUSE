@@ -1,7 +1,7 @@
 #
 # spec file for package python-vispy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  ext_deps
-%global skip_python36 1
 Name:           python-vispy
-Version:        0.6.6
+Version:        0.12.2
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause
@@ -29,8 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/v/vispy/vispy-%{v
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm_git_archive}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
@@ -49,11 +48,13 @@ Recommends:     python-scipy
 # SECTION test requirements
 BuildRequires:  %{python_module PySDL2}
 BuildRequires:  %{python_module glfw}
+BuildRequires:  %{python_module hsluv}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module jupyter_ipython}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pyglet}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  fontconfig
@@ -63,7 +64,6 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module freetype-py}
 BuildRequires:  %{python_module husl}
 BuildRequires:  %{python_module pypng}
-BuildRequires:  %{python_module six}
 %endif
 # /SECTION
 %if %{with ext_deps}
@@ -72,7 +72,6 @@ Requires:       python-decorator
 Requires:       python-freetype-py
 Requires:       python-husl
 Requires:       python-pypng
-Requires:       python-six
 %endif
 %python_subpackages
 
@@ -96,25 +95,29 @@ This package provides the jupyter notebook extension.
 %if %{with ext_deps}
 rm -rf vispy/ext/_bundled
 %endif
-sed -i -e '/^#!\//, 1d' vispy/glsl/build-spatial-filters.py vispy/util/transforms.py vispy/visuals/collections/util.py
+
+sed -i '1{/^#!\/usr\/bin\/env /d;}' \
+    vispy/glsl/build_spatial_filters.py \
+    vispy/util/transforms.py \
+    vispy/visuals/collections/util.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%jupyter_move_config
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%files %{python_files}
-%doc README.rst
-%license LICENSE.txt
-%{python_sitearch}/*
+%check
+# cd because of gh#vispy/vispy#1506 (they are not src-based)
+cd vispy/testing
+%pytest_arch
 
-%files -n jupyter-vispy
+%files %{python_files}
+%doc *.rst *.md
 %license LICENSE.txt
-%config %{_jupyter_nb_notebook_confdir}/vispy.json
-%{_jupyter_nbextension_dir}/vispy/
+%{python_sitearch}/vispy
+%{python_sitearch}/vispy-%{version}*-info
 
 %changelog
