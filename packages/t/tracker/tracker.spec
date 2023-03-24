@@ -1,7 +1,7 @@
 #
 # spec file for package tracker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,19 +21,20 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.4.2
+Version:        3.5.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/3.5/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.52.0
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  graphviz
 BuildRequires:  intltool
 BuildRequires:  libicu-devel >= 4.8.1.1
 BuildRequires:  meson >= 0.53
@@ -45,9 +46,9 @@ BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
-#BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(systemd)
@@ -174,8 +175,8 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %license COPYING
 %{_bindir}/tracker3
 %dir %{_libdir}/tracker-%{TrackerAPI}/
-#%%{_libdir}/tracker-%%{TrackerAPI}/libtracker-http-soup2.so
 %{_libdir}/tracker-%{TrackerAPI}/libtracker-http-soup3.so
+%{_libdir}/tracker-%{TrackerAPI}/libtracker-parser-libicu.so
 %{_datadir}/bash-completion/completions/tracker3
 %dir %{_datadir}/tracker3/
 %{_libexecdir}/tracker3/
@@ -202,7 +203,7 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %files -n tracker-devel
 %doc AUTHORS README.md NEWS
-%doc %{_datadir}/devhelp/
+%doc %{_datadir}/doc/Tracker-%{TrackerAPI}
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/tracker3
 %dir %{_datadir}/tracker3/domain-ontologies
