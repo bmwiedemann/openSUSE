@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 17 09:54:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable x86-64-v3 optimizations.
+- Exclude some unsupported architectures.
+
+-------------------------------------------------------------------
 Thu Feb  9 13:07:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Only builds for aarch64 and x86_64

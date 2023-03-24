@@ -7,4 +7,12 @@
     <comment>I want to add libblastrampoline in openSUSE:Factory</comment>
     <requestid>1064012</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec15178cfe4c03c9821d12d882a28c6a</srcmd5>
+    <version>5.4.0</version>
+    <time>1679667701</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074139</requestid>
+  </revision>
 </revisionlist>

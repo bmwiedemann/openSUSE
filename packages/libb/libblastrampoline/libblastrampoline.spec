@@ -28,7 +28,8 @@ URL:            https://github.com/JuliaLinearAlgebra/libblastrampoline
 Source:         https://github.com/JuliaLinearAlgebra/libblastrampoline/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
-ExclusiveArch:  x86_64 aarch64
+ExcludeArch:    %arm %mips ppc64 s390x %ix86
+%{?suse_build_hwcaps_libs}
 
 %description
 libblastrampoline is a BLAS/LAPACK demuxer library that uses PLT
