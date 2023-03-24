@@ -17,13 +17,13 @@
 
 
 Name:           eog-plugins
-Version:        42.3
+Version:        44.0
 Release:        0
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://live.gnome.org/EyeOfGnome/Plugins
-Source:         https://download.gnome.org/sources/eog-plugins/42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/eog-plugins/44/%{name}-%{version}.tar.xz
 Source99:       eog-plugins.SUSE
 
 BuildRequires:  fdupes
@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.53.4
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
-BuildRequires:  pkgconfig(libgdata)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 
@@ -49,12 +48,12 @@ Suggests:       eog-plugin-fullscreenbg
 Suggests:       eog-plugin-light-theme
 Suggests:       eog-plugin-map
 Suggests:       eog-plugin-maximize-windows
-Suggests:       eog-plugin-postasa
 Suggests:       eog-plugin-pythonconsole
 Suggests:       eog-plugin-send-by-mail
 Suggests:       eog-plugin-slideshowshuffle
 Enhances:       eog
 Obsoletes:      eog-plugin-hide-titlebar < 42
+Obsoletes:      eog-plugin-postasa <= %{version}
 
 %description
 This package contains plugins for additional features in Eye of GNOME.
@@ -131,15 +130,6 @@ Provides:       eog-plugins:%{_libdir}/eog/plugins/maximize-windows.plugin
 %description -n eog-plugin-maximize-windows
 The Eye of Gnome Maximize Windows plugin
 
-%package -n eog-plugin-postasa
-Summary:        Eog postasa plugin
-Group:          Productivity/Graphics/Viewers
-Requires:       %{name}-data = %{version}
-Provides:       eog-plugins:%{_libdir}/eog/plugins/postasa.plugin
-
-%description -n eog-plugin-postasa
-The Eye of Gnome postasa plugin.
-
 %package -n eog-plugin-pythonconsole
 Summary:        Eog pythonconsole plugin
 Group:          Productivity/Graphics/Viewers
@@ -175,6 +165,7 @@ install -m 644 %{SOURCE99} .
 
 %build
 %meson \
+	-D plugin_postasa=false \
 	%{nil}
 %meson_build
 
@@ -229,11 +220,6 @@ install -m 644 %{SOURCE99} .
 %{_datadir}/metainfo/eog-maximize-windows.appdata.xml
 %{_libdir}/eog/plugins/maximize-windows.plugin
 %{_libdir}/eog/plugins/maximize-windows.py
-
-%files -n eog-plugin-postasa
-%{_datadir}/metainfo/eog-postasa.appdata.xml
-%{_libdir}/eog/plugins/postasa.plugin
-%{_libdir}/eog/plugins/libpostasa.so
 
 %files -n eog-plugin-pythonconsole
 %{_datadir}/metainfo/eog-pythonconsole.appdata.xml

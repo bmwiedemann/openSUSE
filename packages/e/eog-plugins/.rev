@@ -481,4 +481,12 @@
   + Updated translations. (forwarded request 1056818 from iznogood)</comment>
     <requestid>1057051</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5131563168b21a8e32807a63bc1cbca0</srcmd5>
+    <version>44.0</version>
+    <time>1679667573</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072899 from iznogood)</comment>
+    <requestid>1073198</requestid>
+  </revision>
 </revisionlist>

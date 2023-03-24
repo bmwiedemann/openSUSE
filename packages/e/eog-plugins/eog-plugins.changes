@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:50:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 13 16:32:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libgdata) BuildRequires and pass
+  plugin_postasa=false to meson, no longer build google picasa web
+  support. Google discontinued this service some time ago.
+- Add eog-plugin-postasa Obsoletes: Make upgrades painless for
+  end-users.
+
+-------------------------------------------------------------------
 Sat Jan  7 20:45:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:
