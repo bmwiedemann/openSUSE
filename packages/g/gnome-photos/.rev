@@ -502,4 +502,21 @@
     <comment></comment>
     <requestid>1068691</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a532c4b862f9e75193ecbe610005ba29</srcmd5>
+    <version>44.0</version>
+    <time>1679667475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.0:
+  + build: Adapt for babl .pc file changes
+  + Thumbnails now have the mtime of the original item
+  + photos-properties-dialog: Check geocode results
+  + photos-item-manager: Sort photos by creation time first
+  + Prefer Exif extracted 'contentCreated' value than file creation
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 64c6f733a44bac5b7f08445a686c000681f93f5f.patch
+  + 9db32c3508a8c5d357a053d5f8278c34b4df18f3.patch (forwarded request 1073120 from iznogood)</comment>
+    <requestid>1073241</requestid>
+  </revision>
 </revisionlist>
