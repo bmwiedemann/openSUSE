@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Mar 14 10:25:29 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230309.a4b0ea1b5:
+- controller: compare recordable actions case-sensitively
+- libcrmcommon: Don't parse "-INFINITY" as a list of cmdline options (CLBZ#5509)
+- tools: crm_shadow --commit now works with CIB_file
+- scheduler: expired results shouldn't affect state
+- scheduler: avoid remap log if not remapped
+- scheduler: always treat degraded results as success
+- watchdog-fencing: correctly derive timeout with topology
+- watchdog-fencing: terminate dangling timer before watchdog-waiting
+- scheduler: ensure resource history entries have an XML ID
+- crm_resource: Add the --element option for --get-parameter
+- libcrmcommon: Fix problems with pcmk__output_and_clear_error.
+- libcrmcommon: Fix memleak in pcmk__output_xml_add_node_copy()
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * pacemaker-cts-StartCmd.patch
+
+-------------------------------------------------------------------
+Thu Mar 09 11:46:21 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230220.c4f6c191a:
+- libcrmcommon: Fix handling node=NULL in pcmk__attrd_api_query.
+- fencer: Avoid double source remove of op_timer_total (rh#2166967)
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 10:50:04 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230216.ed8bc68bc:
+- scheduler: count only containers' active nodes for bundles
+
+-------------------------------------------------------------------
+Fri Feb 10 15:33:30 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230208.231b58a40:
+- cts: Add a basic cts-attrd program.
+- daemons: Modify a couple log messages for testing.
+- daemons: Add a -l argument to pacemaker-attrd.
+- daemons: Skip connecting to the CIB in attrd standalone mode.
+- daemons: Add some additional errors for when startup fails.
+- daemons: Add a standalone argument for attrd.
+- fencer: Prevent double g_source_remove of op_timer_one (rh#2166967)
+- tools: Don't allow use of --name and --pattern at the same time.
+- tools: Add sync point support to crm_attribute.
+- tools: Add pattern support to attrd_updater.
+- scheduler: handle cleaned migrate_from history correctly (bsc#1182313)
+- scheduler: unknown_on_node() should ignore pending actions (bsc#1182313)
+- daemons: Fix pointer management in attrd_client_update.
+- scheduler: improve migration history validation
+
+-------------------------------------------------------------------
+Thu Feb 02 13:56:32 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230201.11c15a89f:
+- crm_mon: Display the descriptions in crm_mon output
+- libcrmcommon: parse_op_key() can now handle confirmed notifications
+- xml: change resources-related schemas and bump PCMK__API_VERSION
+- crm_resouce: Add the description to the XML output of crm_resource --list
+- python: Disable a couple more pylint warnings.
+- scheduler: correctly choose container vs inside resource for interleaving
+- scheduler: ignore node when getting resource inside container
+
+-------------------------------------------------------------------
 Thu Jan 26 09:49:40 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.5+20230125.95bb4788a:
@@ -524,7 +592,7 @@ Mon Sep 19 11:25:05 UTC 2022 - Yan Gao <ygao@suse.com>
 Mon Sep 19 11:16:33 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.4+20220808.986d22dd5:
-- libcrmcommon: Fix an IPC-related memory leak.
+- libcrmcommon: Fix an IPC-related memory leak. (bsc#1208544)
 
 -------------------------------------------------------------------
 Wed Aug 03 10:47:09 UTC 2022 - Yan Gao <ygao@suse.com>
