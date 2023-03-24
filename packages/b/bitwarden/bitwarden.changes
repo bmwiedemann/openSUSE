@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 19:34:04 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.3.0
+  * Restyle generator panel to be panel-like and avoid overflowing
+- Use obs-scm service for downloading clean tarball and package node vendor separately.
+
+-------------------------------------------------------------------
 Sat Feb 18 21:37:59 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Remove use of local-npm-proxy and cleanup tarball from prebuilt blobs
   * remove-esbuild-version-check.patch

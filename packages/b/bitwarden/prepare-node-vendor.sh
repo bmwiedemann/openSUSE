@@ -3,21 +3,13 @@
 # dnf install curl gzip jq npm patch tar wget
 
 PKGDIR="$(pwd)"
-TMPDIR="$(mktemp --tmpdir -d bitwarden-XXXXXXXX)"
-
-version=2023.2.0
-tag=desktop
 
 
 
 
-cd $TMPDIR
-
-curl -L https://github.com/bitwarden/clients/archive/${tag}-v${version}.tar.gz |tar --gzip -xvvf -
 
 
-
-cd clients-${tag}-v${version}
+cd clients
 
 
 
@@ -51,21 +43,11 @@ find -type f | sponge | xargs -P$(nproc) -- sh -c 'file -S "$@" | grep -v '\'' .
 echo ">>>>>> Remove empty directories"
 find . -type d -empty -print -delete
 
-cd ..
-mv -v clients-${tag}-v${version} bitwarden
-
-echo ">>>>>> Hardlink duplicate files to reduce extraction time"
-
-/usr/lib/rpm/fdupes_wrapper bitwarden
 
 echo ">>>>>> Create tarball"
-ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${PKGDIR}/bitwarden-${version}.tar.zst" bitwarden
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${PKGDIR}/node-vendor.tar.zst" node_modules
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cf failed"
     cleanup_and_exit 1
 fi
 
-
-
-
-#Run `osc service disabledrun` to regenerate vendor.tar.xz

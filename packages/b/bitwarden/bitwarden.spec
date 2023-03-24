@@ -19,7 +19,7 @@
 
 
 Name:       bitwarden
-Version:    2023.2.0
+Version:    2023.3.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -36,8 +36,11 @@ BuildArch:      i686
 
 %define version_suffix desktop
 
-# created by create-tarball.sh
-Source0:   bitwarden-%{version}.tar.zst
+# created by OBS service
+Source0:   bitwarden-%{version}.tar
+
+# created by prepare-node-vendor.sh
+Source1:   node-vendor.tar.zst
 
 Source2:   bitwarden.sh
 Source3:   bitwarden.desktop
@@ -45,12 +48,12 @@ Source3:   bitwarden.desktop
 Source4:   vendor.tar.zst
 Source5:   cargo_config
 
-Source99:  create-tarball.sh
+Source99:  prepare-node-vendor.sh
 
-#this one is already applied in tarball
-Source100: remove-unnecessary-deps.patch
+
 
 #openSUSE-specific patches
+Patch0:    remove-unnecessary-deps.patch
 Patch1:    fix-desktop-file.patch
 Patch3:    do-not-install-font-privately.patch
 Patch4:    desktop_native-rust-arch.patch
@@ -96,7 +99,7 @@ Requires: nodejs-electron%{_isa}
 Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault.  Bitwarden offers a cloud-hosted service as well as the ability to deploy the solution on-premises. This package provides the GUI client.
 
 %prep
-%autosetup -n bitwarden -p1
+%autosetup -p1 -a1
 
 
 # Remove unused postinstall script (electron-rebuild)
@@ -206,7 +209,7 @@ cp -plvr '../../../node_modules/@phc' -t node_modules/
 
 
 %install
-cd %{_builddir}/bitwarden/apps/desktop
+cd %{_builddir}/bitwarden-%{version}/apps/desktop
 mkdir -pv %{buildroot}%{_libdir}
 cp -plr build %{buildroot}%{_libdir}/%{name}
 for i in 16 32 64 128 256 512 1024

@@ -178,3 +178,15 @@
      "react": "^18.0.0"
    },
    "lint-staged": {
+--- a/apps/desktop/desktop_native/package.json
++++ b/apps/desktop/desktop_native/package.json
+@@ -10,9 +10,6 @@
+   },
+   "author": "",
+   "license": "GPL-3.0",
+-  "devDependencies": {
+-    "@napi-rs/cli": "^2.6.2"
+-  },
+   "napi": {
+     "name": "desktop_native",
+     "triples": {
