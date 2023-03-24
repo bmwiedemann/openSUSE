@@ -17,12 +17,12 @@
 
 
 Name:           gnome-text-editor
-Version:        43.2
+Version:        44.0
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
-Source:         https://download.gnome.org/sources/gnome-text-editor/43/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-text-editor/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.59.1
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69

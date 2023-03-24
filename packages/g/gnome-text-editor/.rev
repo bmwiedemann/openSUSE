@@ -237,4 +237,33 @@
     <comment>New stable release (forwarded request 1057757 from iznogood)</comment>
     <requestid>1058170</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6dcd960beba479b302cf181637b91d2</srcmd5>
+    <version>44.0</version>
+    <time>1679667569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.0:
+  + Improve spellcheck word boundaries.
+  + Various build system improvements.
+  + Updated translations.
+- Add pkgconfig(cairo) BuildRequires: New explicit dependency.
+- Update to version 44.rc:
+  + Style fixes for open popover
+  + Fix a small GtkTextTag name leak
+  + Ensure a useful size of preferences dialog
+  + Updated translations.
+- Update to version 44.beta:
+  + Help documentation updates
+  + Improvements to scroll-to-zoom
+  + Style scheme updates
+  + Additional shortcuts added to help overlay
+  + Updated translations.
+- Update to version 44.alpha:
+  + Various UI improvements across the open popover, menus, status
+    pages, search and preferences.
+  + Improvements to handling drafts.
+  + Restrict feature set when encountering large files.
+  + Updated translations. (forwarded request 1072757 from iznogood)</comment>
+    <requestid>1073187</requestid>
+  </revision>
 </revisionlist>
