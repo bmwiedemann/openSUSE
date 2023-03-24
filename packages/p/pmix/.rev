@@ -178,4 +178,14 @@
     <comment>- The devel package must require the actual library libpmix2.</comment>
     <requestid>1073547</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>7be239ad7f861e9fa50d817fcdd6da98</srcmd5>
+    <version>3.2.3</version>
+    <time>1679667700</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the requirement for pmix-runtime-config to libpmix2 and make
+  it version-independent (bsc#1209473).
+- Install pmix-plugins-munge if munge is installed. (forwarded request 1074093 from eeich)</comment>
+    <requestid>1074097</requestid>
+  </revision>
 </revisionlist>

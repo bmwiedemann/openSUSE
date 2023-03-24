@@ -39,8 +39,6 @@ BuildRequires:  libtool
 BuildRequires:  munge-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       pmix-runtime-config = %version
-Recommends:     pmix-mca-params = %version
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
@@ -56,6 +54,8 @@ This RPM contains all the tools necessary to compile and link against PMIx.
 Summary:        PMI-X lib version 1
 Group:          System/Libraries
 Requires:       pmix-plugins = %version
+Requires:       pmix-runtime-config
+Recommends:     pmix-mca-params = %version
 
 %description  -n libpmix2
 This package contains the shared library used by the PMI-X standard
@@ -64,6 +64,7 @@ This package contains the shared library used by the PMI-X standard
 Summary:        PMI-X plugins version 1
 Group:          System/Libraries
 Requires:       libmca_common_dstore1 = %version
+Requires:       (pmix-plugins-munge = %version if munge)
 Recommends:     pmix-plugins-munge = %version
 # explicit requires for package libmca_common_dstore1
 # as other providers for libmca_common_dstore.so.1 exist
