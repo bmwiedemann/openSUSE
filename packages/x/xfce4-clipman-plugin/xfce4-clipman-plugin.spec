@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-clipman-plugin
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -32,17 +32,17 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.14.0
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.29
+BuildRequires:  pkgconfig(gio-2.0) >= 2.60.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfce4util-1.0)
-BuildRequires:  pkgconfig(libxfconf-0)
-BuildRequires:  pkgconfig(xproto)
-BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.14.0
+BuildRequires:  pkgconfig(xproto) >= 7.0.0
+BuildRequires:  pkgconfig(xtst) >= 1.0.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
