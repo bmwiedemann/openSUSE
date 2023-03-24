@@ -372,4 +372,23 @@
     <comment></comment>
     <requestid>1011152</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9a30a1ac1ff04ad7305fc71ca21af531</srcmd5>
+    <version>4.1.0</version>
+    <time>1679667469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.0:
+  + The soversion is now properly set to 4.
+  + certificate: Print dates in ISO8601 format
+  + viewer: Support certificates read from PKCS#11 store
+  + gcr: Add means to construct GcrCertificate from PKCS#11 URI
+  + Several smaller fixes found with ASAN
+  + Stop using GSlice
+  + a11y: Improve reading of certificate info by screen readers
+  + Updated translations.
+- Rename sub-packages following upstreams correction of soversion.
+  libgcr-4-0_0_0 is now libgcr-4-4, and libgck-2-0_0_0 is now
+  libgck-2-2. (forwarded request 1073095 from iznogood)</comment>
+    <requestid>1073229</requestid>
+  </revision>
 </revisionlist>

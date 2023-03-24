@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  6 11:36:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.1.0:
+  + The soversion is now properly set to 4.
+  + certificate: Print dates in ISO8601 format
+  + viewer: Support certificates read from PKCS#11 store
+  + gcr: Add means to construct GcrCertificate from PKCS#11 URI
+  + Several smaller fixes found with ASAN
+  + Stop using GSlice
+  + a11y: Improve reading of certificate info by screen readers
+  + Updated translations.
+- Rename sub-packages following upstreams correction of soversion.
+  libgcr-4-0_0_0 is now libgcr-4-4, and libgck-2-0_0_0 is now
+  libgck-2-2.
+
+-------------------------------------------------------------------
 Thu Oct 13 08:25:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.0.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package gcr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gcr
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/4.0/gcr-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/4.1/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
@@ -93,7 +93,7 @@ Supplements:    (gpg2 and gnome-shell)
 gcr-ssh-agent as a standalone binary, so that it can easily be
 managed through systemd.
 
-%package -n libgcr-4-0_0_0
+%package -n libgcr-4-4
 Summary:        Library for Crypto UI related tasks
 Group:          System/Libraries
 Recommends:     %{name}-ask-pass
@@ -102,7 +102,7 @@ Recommends:     %{name}-viewer = %{version}
 # To make lang package installable
 Provides:       %{name} = %{version}
 
-%description -n libgcr-4-0_0_0
+%description -n libgcr-4-4
 GCR is a library for displaying certificates, and crypto UI, accessing
 key stores.
 
@@ -121,14 +121,14 @@ This package provides the GObject Introspection bindings for GCR.
 %package -n libgcr-devel
 Summary:        Development files for gcr, a library for crypto UI related tasks
 Group:          Development/Libraries/GNOME
-Requires:       libgcr-4-0_0_0 = %{version}
+Requires:       libgcr-4-4 = %{version}
 Requires:       typelib-1_0-Gcr-4 = %{version}
 
 %description -n libgcr-devel
 GCR is a library for displaying certificates, and crypto UI, accessing
 key stores.
 
-%package -n libgck-2-0_0_0
+%package -n libgck-2-2
 Summary:        GObject library to access PKCS#11 modules
 # Small hack, to help gnome-keyring subpackage containing gck
 # modules have a proper dependency, without having to care about
@@ -136,7 +136,7 @@ Summary:        GObject library to access PKCS#11 modules
 Group:          System/Libraries
 Provides:       gck = %{version}
 
-%description -n libgck-2-0_0_0
+%description -n libgck-2-2
 GCK is a library for accessing PKCS#11 modules like smart cards, in a
 (G)object oriented way.
 
@@ -153,7 +153,7 @@ This package provides the GObject Introspection bindings for GCK.
 %package -n libgck-devel
 Summary:        Development files for gck, a GObject library to access PKCS#11 modules
 Group:          Development/Libraries/GNOME
-Requires:       libgck-2-0_0_0 = %{version}
+Requires:       libgck-2-2 = %{version}
 Requires:       typelib-1_0-Gck-2 = %{version}
 
 %description -n libgck-devel
@@ -193,8 +193,8 @@ mv %{buildroot}%{_datadir}/doc/gcr-4* %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/gck-2* %{buildroot}%{_docdir}
 %fdupes %{buildroot}%{_docdir}
 
-%ldconfig_scriptlets -n libgcr-4-0_0_0
-%ldconfig_scriptlets -n libgck-2-0_0_0
+%ldconfig_scriptlets -n libgcr-4-4
+%ldconfig_scriptlets -n libgck-2-2
 
 %post -n %{name}-ssh-agent
 %systemd_user_post gcr-ssh-agent.service
@@ -215,7 +215,7 @@ mv %{buildroot}%{_datadir}/doc/gck-2* %{buildroot}%{_docdir}
 %{_userunitdir}/gcr-ssh-agent.service
 %{_userunitdir}/gcr-ssh-agent.socket
 
-%files -n libgcr-4-0_0_0
+%files -n libgcr-4-4
 %license COPYING
 %doc NEWS
 %{_libdir}/libgcr-4*.so.*
@@ -231,7 +231,7 @@ mv %{buildroot}%{_datadir}/doc/gck-2* %{buildroot}%{_docdir}
 %{_datadir}/vala/vapi/gcr-4.deps
 %{_datadir}/vala/vapi/gcr-4.vapi
 
-%files -n libgck-2-0_0_0
+%files -n libgck-2-2
 %license COPYING
 %doc NEWS
 %{_libdir}/libgck-2.so.*
