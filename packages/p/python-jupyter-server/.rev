@@ -504,4 +504,32 @@
 </comment>
     <requestid>1063312</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dabd81afb34d4d2f85884998524e8996</srcmd5>
+    <version>2.5.0</version>
+    <time>1679667632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0
+  * Enable KernelSpecResourceHandler to be async #1236 (@Zsailer)
+  * Added error propagation to gateway_request function #1233
+    (@broden-wanner)
+- Release 2.4.0
+  * Skip dir size check if not enumerable #1227 (@vidartf)
+  * Optimize hidden checks #1226 (@vidartf)
+  * Enable users to copy both files and directories #1190
+    (@kenyaachon)
+  * Fix port selection #1229 (@blink1073)
+  * Fix priority of deprecated NotebookApp.notebook_dir behind
+    ServerApp.root_dir #1223 (@minrk)
+  * Ensure content-type properly reflects gateway kernelspec
+    resources #1219 (@kevin-bates)
+- Release 2.3.0
+  * Support IPV6 in _find_http_port() #1207 (@schnell18)
+  * Redact tokens, etc. in url parameters from request logs #1212
+    (@minrk)
+  * Fix get_loader returning None when
+    load_jupyter_server_extension is not found (#1193)
+</comment>
+    <requestid>1073773</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.2.1
+Version:        2.5.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -149,13 +149,13 @@ fi
 
 %files %{python_files}
 %doc README.md
-%license COPYING.md
+%license LICENSE
 %python_alternative %{_bindir}/jupyter-server
 %{python_sitelib}/jupyter_server
 %{python_sitelib}/jupyter_server-%{version}*-info
 
 %files %{python_files test}
-%license COPYING.md
+%license LICENSE
 %endif
 
 %changelog
