@@ -1,7 +1,7 @@
 #
 # spec file for package kImageAnnotator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   0
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later

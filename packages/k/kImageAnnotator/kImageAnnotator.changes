@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 20 07:34:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.1
+  Fixed
+  * Fix for unnecessary scrollbars.
+  * Add KDE support for scale factor.
+  * Show tab tooltips on initial tabs.
+  * Sticker resizing is broken when bounding rect flipped.
+
+-------------------------------------------------------------------
 Mon May 23 07:34:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.0
