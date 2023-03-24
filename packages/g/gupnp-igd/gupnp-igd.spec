@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-igd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         http://download.gnome.org/sources/gupnp-igd/1.2/%{name}-%{versio
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM 79a1e4cf8c256132978a1d8ab718c8ad132386de.patch -- Port to GUPnP 1.6 API
 Patch0:         79a1e4cf8c256132978a1d8ab718c8ad132386de.patch
+# PATCH-FIX-UPSTREAM fa1546614190942ab266832e7470a6debf8c32cb.patch -- test: Port to g_inet_address_new_loopback
+Patch1:         fa1546614190942ab266832e7470a6debf8c32cb.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson

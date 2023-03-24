@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 09:06:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fa1546614190942ab266832e7470a6debf8c32cb.patch: test: Port to
+  g_inet_address_new_loopback.
+
+-------------------------------------------------------------------
 Sat Aug 27 21:54:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 79a1e4cf8c256132978a1d8ab718c8ad132386de.patch: Port to GUPnP

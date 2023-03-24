@@ -1,0 +1,34 @@
+From fa1546614190942ab266832e7470a6debf8c32cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>
+Date: Sun, 6 Nov 2022 16:12:29 -0500
+Subject: [PATCH] test: Port to g_inet_address_new_loopback
+
+---
+ tests/gtest/gupnp-simple-igd.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/gtest/gupnp-simple-igd.c b/tests/gtest/gupnp-simple-igd.c
+index ec770ca..1f30b27 100644
+--- a/tests/gtest/gupnp-simple-igd.c
++++ b/tests/gtest/gupnp-simple-igd.c
+@@ -290,13 +290,16 @@ run_gupnp_simple_igd_test (GMainContext *mainctx, GUPnPSimpleIgd *igd,
+   GUPnPDeviceInfo *subdev2;
+   const gchar *xml_path = ".";
+   GError *error = NULL;
++  GInetAddress *loopback = NULL;
+ 
+   g_signal_connect (igd, "context-available",
+         G_CALLBACK (ignore_non_localhost), NULL);
+ 
+   if (mainctx)
+     g_main_context_push_thread_default (mainctx);
+-  context = gupnp_context_new ("lo", 0, NULL);
++  loopback = g_inet_address_new_loopback (G_SOCKET_FAMILY_IPV4);
++  context = gupnp_context_new_for_address (loopback, 0, GSSDP_UDA_VERSION_1_0, NULL);
++  g_object_unref (loopback);
+   g_assert (context);
+ 
+   if (g_getenv ("XML_PATH"))
+-- 
+GitLab
+
