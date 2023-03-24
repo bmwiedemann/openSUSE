@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:51:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.10.0
+  * Add copyright notice to configure.ac
+  * Change maintainer
+  * Minor fixes to README
+  * Fix compilation warnings
+  * Fix double g_object_unref() on removing last note
+  * Fix double call to gtk_main_quit()
+  * Change default background color
+  * build: Silence compiler warnings for generated C code
+  * Update `.gitignore`
+  * Switch tabs on mouse wheel with no accelerators pressed
+  * Add ability to switch tabs with mouse scroll wheel
+  * Unmask scroll wheel events for window title
+  * Fix background color for panel plugin button
+  * Fix up intltool leaving .intltool-merge-cache.lock file behind
+  * Update COPYING
+  * Make note text darker and easier to see
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Sat Nov 20 18:34:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused pkgconfig(unique-1.0) BuildRequires.
