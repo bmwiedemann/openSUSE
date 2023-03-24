@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Mar 17 12:17:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.0:
+  + mail.error.xml: Unmark two strings from translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 08:24:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.47.3:
+  + RSS: Folder-specific options not save from Preferences.
+  + help: Replace docs mailing list URL by GNOME Discourse.
+  + Bugs fixed:
+    - Icons in the message list are rendered in low resolution on
+      HiDPI displays.
+    - Mail:
+      . Add option to confirm 'Mark as Junk'.
+      . Show S/MIME encrypted part as attachment on failed
+        decryption.
+      . Inherit format from template in Alternative Reply.
+    - Composer:
+      . Check parent element's text-align before unsetting it.
+      . "Select All" in context menu doesn't select recipients.
+    - RSS: Read of author depends on element order.
+    - ECalendarItem: Use selected text color for day names and week
+      numbers.
+    - iTIP: Override text color together with background color.
+    - Add new screenshots for AppStream metadata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 17:06:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.47.2:
+  + ENameSelectorDialog: Simplify book query.
+  + Enable GitLab CI for easier testing of the changes.
+  + Make it possible to run GitLab CI Flatpak artifact.
+  + EWebView: Stop trying to disable WebKitGTK plugins.
+  + help: Replace PNG Evolution icon with SVG.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 10 09:22:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.4:

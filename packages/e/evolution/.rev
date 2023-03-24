@@ -2448,4 +2448,12 @@ Recommended for 12.3</comment>
     <comment>New stable rel (forwarded request 1064189 from iznogood)</comment>
     <requestid>1064288</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>a8c91c871f2612d47711b027c2b988b8</srcmd5>
+    <version>3.48.0</version>
+    <time>1679667410</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072607 from iznogood)</comment>
+    <requestid>1073155</requestid>
+  </revision>
 </revisionlist>
