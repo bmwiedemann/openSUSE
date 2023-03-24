@@ -17,12 +17,12 @@
 
 
 %global systemd_unit       gnome-remote-desktop.service
-%define freerdp_version    2.8.0
+%define freerdp_version    2.10.0
 %define glib_version       2.68
 %define gstreamer_version  1.10.0
 
 Name:           gnome-remote-desktop
-Version:        43.3
+Version:        44.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later

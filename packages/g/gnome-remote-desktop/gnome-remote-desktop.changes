@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sun Mar 19 07:38:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  * rdp-audio-playback:
+    - Fix typo in debug message
+    - Also output client version, when version is too old
+    - Add SVC fallback, when DVC is unavailable
+  * session-rdp: Disable audio output redirection for mobile
+    clients
+  * build: Bump FreeRDP version requirement
+  * rdp-dsp: Fix typo in error message
+  * vnc-pipewire-stream: Acquire EGL slot for transfer tasks
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 06 13:19:11 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.rc:
+  * build: Bump FreeRDP version requirement
+  * clipboard: Always call g_task_return_pointer() after reading
+    content
+  * egl: Release current context before destroying it in error
+    paths
+  * egl-thread: Add ability to replace transfer tasks
+  * hwaccel-nvidia: Replace deprecated function
+    cuDeviceComputeCapability
+  * pipewire-utils: Fix a few style issues
+  * rdp:
+    - Be more strict with invalid monitor layouts
+    - Stop dequeuing PipeWire buffers while destroying the stream
+    - Only invoke frame source, when previous operation was
+      successful
+  * rdp-audio-output-stream: Destroy the stream before clearing its
+    pointer
+  * rdp-audio-playback:
+    - Add SVC fallback, when DVC is unavailable
+    - Also output client version, when version is too old
+    - Fix typo in debug message
+  * rdp-display-control: Disconnect clients, that violate message
+    order
+  * rdp-dsp: Fix typo in error message
+  * rdp-fuse-clipboard: Rely on include dir in pkgconfig file
+  * rdp-pipewire-stream:
+    - Acquire EGL slot for transfer tasks
+    - Remove code path, that is not hit any more
+    - Remove superfluous condition
+  * session: Fix a small style issue
+  * session-rdp:
+    - Add error info for invalid monitor layouts
+    - Also advertise RemoteFX in image mode
+    - Disable audio output redirection for mobile clients
+  * vnc:
+    - Stop dequeuing PipeWire buffers while destroying the stream
+    - Only invoke frame source, when previous operation was
+      successful
+  * vnc-pipewire-stream:
+    - Acquire EGL slot for transfer tasks
+    - Remove code path, that is not hit any more
+    - Remove superfluous condition
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:40:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.alpha:
+  * build: Use schemadir variable for installed enums
+  * clipboard-rdp: Also check for / separator when preparing
+    uri-list
+  * egl-thread:
+    - Remove unused callback context
+    - Remove unused typedef
+  * rdp:
+    - Avoid direct usage of the attributes of RDP buffers
+    - Deprecate the legacy graphics path
+  * rdp-buffer:
+    - Add API to actually unmap the CUDA resource
+    - Add API to map CUDA resource
+    - Add API to register read-only GL buffer
+    - Add getters to retrieve buffer attributes
+    - Make buffer struct private
+    - Rename unmap_resources to queue_resource_unmap
+  * rdp-pipewire-stream:
+    - Assert buffer types to be either MemFds or DmaBufs
+    - Decouple pointer updates from frame updates
+    - Ignore frame data, when mapping memfd fails
+  * rdp-server: Remove stray new line
+  * vnc-pipewire-stream:
+    - Assert buffer types to be either MemFds or DmaBufs
+    - Decouple pointer updates from frame updates
+    - Don't pass NULL as frame to on_frame_ready
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 10 14:31:18 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 43.3:
