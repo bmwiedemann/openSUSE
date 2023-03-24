@@ -28,4 +28,12 @@
   + Updated translations. (forwarded request 1058056 from iznogood)</comment>
     <requestid>1058615</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>597e8b405bb8e1b6e089e52c8a6b7041</srcmd5>
+    <version>44.0</version>
+    <time>1679667564</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072712 from iznogood)</comment>
+    <requestid>1073173</requestid>
+  </revision>
 </revisionlist>

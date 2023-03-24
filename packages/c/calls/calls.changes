@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 17 18:08:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + New features:
+    - Sort favourite contacts at the top.
+    - Support for emergency calls in "dummy" provider.
+  + Maybe noteworthy:
+    - Fixed a couple of memory leaks.
+    - Higher code coverage.
+    - Disable call waiting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  7 11:04:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.alpha.1:
+  + **Really** fix endless ringing bug
+  + Fixed a crash
+  + Database closed correctly on shutdown
+  + Updated translations.
+- Changes from version 44.alpha.0:
+  + Fixed rare endless ringing bug (requires feedbackd 0.0.1)
+  + SIP: Honour remote port in INVITE
+  + SIP: Reenable G722 codec
+  + Shuts down gracefully on SIGTERM/SIGINT
+  + Flatpak build improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan 12 17:25:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:
