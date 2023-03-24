@@ -492,4 +492,23 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>New stable release (forwarded request 1064089 from iznogood)</comment>
     <requestid>1064289</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>c413c8d793f6ba80c88435eb76ea79fd</srcmd5>
+    <version>44.rc</version>
+    <time>1679667559</time>
+    <user>dimstar_suse</user>
+    <comment>Subbing RC in case upstream forgets to do stable bump.
+- Update to version 44.rc:
+  + Updated translations.
+- Update to version 44.beta:
+  + widget: Add context menu popover to set custom geometry.
+  + appwin: Accept drag 'n' drop for files.
+  + Updated translations.
+- Update to version 44.alpha:
+  + HexWidget: Only alter payload length in insert mode.
+  + help: Remove ducktype and update to reflect change in delete
+    behaviour.
+  + Updated translations. (forwarded request 1073115 from iznogood)</comment>
+    <requestid>1073151</requestid>
+  </revision>
 </revisionlist>

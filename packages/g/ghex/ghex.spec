@@ -22,13 +22,13 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        43.1
+Version:        44.rc
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
-Source:         https://download.gnome.org/sources/ghex/43/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/ghex/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0

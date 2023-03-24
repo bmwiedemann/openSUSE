@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  9 16:23:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:54:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + widget: Add context menu popover to set custom geometry.
+  + appwin: Accept drag 'n' drop for files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb  9 21:44:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.alpha:
+  + HexWidget: Only alter payload length in insert mode.
+  + help: Remove ducktype and update to reflect change in delete
+    behaviour.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Feb  9 21:07:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
