@@ -17,16 +17,15 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
 %endif
-
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20230313
-
+%define version_unconverted 20230320
+# Force bzip2 instead of lzma compression (bsc#1176981)
+%define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20230313
+Version:        20230320
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -43,7 +42,7 @@ Source2:        ast_dp501_fw.bin
 Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
-Source99:       %{name}-rpmlintrc
+Source99:       kernel-firmware-rpmlintrc
 # temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
 Source100:      rtw8822c_fw.bin
 # install / build infrastructure
@@ -66,8 +65,12 @@ Source1100:     qcom-post
 Source1101:     uncompressed-post
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): %{_bindir}/mkdir
+Requires(post): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
+Provides:       compat-wireless-firmware = 4.4
+Obsoletes:      compat-wireless-firmware < 4.4
 BuildArch:      noarch
 Provides:       ath3k-firmware = %{version}
 Obsoletes:      ath3k-firmware < %{version}
@@ -96,15 +99,10 @@ Provides:       ralink-firmware = %{version}
 Obsoletes:      ralink-firmware < %{version}
 Provides:       qlogic-firmware = %{version}
 Obsoletes:      qlogic-firmware < %{version}
-Provides:       compat-wireless-firmware = 4.4
-Obsoletes:      compat-wireless-firmware < 4.4
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
-
-# Force bzip2 instead of lzma compression (bsc#1176981)
-%define _binary_payload w9.bzdio
 
 %description
 This package contains the raw uncompressed firmware files for Linux kernel
@@ -114,8 +112,10 @@ that do not support the compressed format.
 %package -n ucode-amd
 Summary:        Microcode updates for AMD CPUs
 Group:          System/Kernel
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): %{_bindir}/mkdir
+Requires(post): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
 # new style (after 3.12 kernel somewhen)
 Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
 # old style (before 3.16 kernel)
@@ -127,18 +127,16 @@ This package contains the microcode files used by AMD CPUs.
 %package all
 Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires(postun):/usr/bin/mkdir /usr/bin/touch
+Requires(post): %{_bindir}/mkdir
+Requires(post): %{_bindir}/touch
 Requires(post): dracut >= 049
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
+Conflicts:      kernel < 5.3
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
-Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
-%if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
-%endif
 Requires:       %{name}-amdgpu = %{version}
 Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-ath11k = %{version}
@@ -171,6 +169,10 @@ Requires:       %{name}-sound = %{version}
 Requires:       %{name}-ti = %{version}
 Requires:       %{name}-ueagle = %{version}
 Requires:       %{name}-usb-network = %{version}
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 %description all
 This package is a catch-all compatibility metapackage for providing
@@ -6317,7 +6319,7 @@ This package contains compressed kernel firmware files for
 various USB WiFi / Ethernet drivers.
 
 %prep
-%setup -q
+%setup -q -n kernel-firmware-%{version}
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -6329,7 +6331,7 @@ install -c -m 0644 %{SOURCE100} rtw88/rtw8822c_fw.bin
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
-%if "%flavor" != "compressed"
+%if "%{flavor}" != "compressed"
 sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
 %else
 sh %{_sourcedir}/install-split.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
@@ -6337,7 +6339,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
 %fdupes -s %{buildroot}
 
-%if "%flavor" != "compressed"
+%if "%{flavor}" != "compressed"
 %pre
 # ugly workaround for changing qcom/LENOVO/21BX to a symlink (bsc#1204103)
 if [ ! -L %{_firmwaredir}/qcom/LENOVO/21BX ]; then
@@ -6693,7 +6695,7 @@ fi
 %{?regenerate_initrd_posttrans}
 %endif
 
-%if "%flavor" != "compressed"
+%if "%{flavor}" != "compressed"
 %files
 %doc WHENCE README
 %license GPL-2 GPL-3 LICEN[CS]E.*
@@ -6708,7 +6710,7 @@ fi
 %{_firmwaredir}/amd-ucode
 %endif
 
-%if "%flavor" == "compressed"
+%if "%{flavor}" == "compressed"
 %files all
 %doc WHENCE README
 

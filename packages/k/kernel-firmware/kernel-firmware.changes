@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 24 08:22:16 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230320 (git commit bcdcfbcf0a8f):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX101
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: add firmware files for NXP BT chipsets
+  * rtw89: 8852b: update format-1 fw to v0.29.29.0
+  * rtw89: 8852b: add format-1 fw v0.29.26.0
+  * rtw89: 8852b: rollback firmware to v0.27.32.1
+  * i915: Update MTL DMC to v2.12
+  * i915: Update ADLP DMC to v2.19
+  * mediatek: Update mt8192/mt8195 SCP firmware to support MM21 and MT21
+- Update topics list
+- Drop the manual revert of 8852b firmware file, as it's merged into
+  the upstream
+
+-------------------------------------------------------------------
+Tue Mar 21 06:01:37 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Revert pssufix change that caused the package renaming and broke
+  dependencies from other packages
+
+-------------------------------------------------------------------
+Mon Mar 20 07:29:36 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Revert the broken rtw89/rtw8852b_fw.bin firmware temporarily
+  (bsc#1209449)
+
+-------------------------------------------------------------------
 Tue Mar 14 14:50:08 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230313 (git commit 5bc279fb161d):
@@ -38,6 +75,12 @@ Tue Mar 14 14:50:08 UTC 2023 - tiwai@suse.com
 - Update topics for catpt/avs
 - Update aliases
 - Update spec template
+
+-------------------------------------------------------------------
+Tue Mar 14 10:00:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- set psuffix to deduplicate src.rpms
+- spec-cleaner induced cleanups
 
 -------------------------------------------------------------------
 Mon Feb 13 12:59:21 UTC 2023 - tiwai@suse.com
