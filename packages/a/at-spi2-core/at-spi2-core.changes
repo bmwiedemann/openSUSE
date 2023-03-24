@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:12:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.0:
+  + Add a "atk-only" build option. This allows atk to be built
+    without libdbus installed, but it does not build libatspi or
+    the atk bridge.
+  + Fix some typos in the documentation.
+
+-------------------------------------------------------------------
+Mon Mar  6 18:21:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.47.90:
+  + Downgrade meson requirement to 0.63.
+  + at-spi-dbus-bus service: set stop timeout to 5s.
+  + Fix possible crash in screen_reader_signal_watcher.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:41:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.47.1:
+  + The meson options -Dx11 and -Dintrospection are now implemented
+    with meson features.
+  + Use gi-docgen to generate documentation.
+  + Register key grabs using the focused window, rather than the
+    root window. This should prevent the window from losing focus
+    when a key grab is used.
+  + atk-adaptor: Handle sockets in GetChildren.
+  + Improve documentation of the dbus interfaces.
+  + Various code clean-ups. Some unused code has been removed.
+- Change -Dx11=yes and -Dintrospection=yes to -Dx11=enabled and
+  -Dintrospection=enabled, following upstreams changes to use meson
+  features.
+- Add pkgconfig(gi-docgen) and python3-Sphinx BuildRequires: new
+  dependencies to build the documentation.
+- Drop gtk-doc BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Fri Oct 28 13:17:53 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure xprop is required when xwayland is installed.

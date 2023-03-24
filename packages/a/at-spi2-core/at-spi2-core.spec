@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           at-spi2-core
-Version:        2.46.0
+Version:        2.48.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.48/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes
-BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(dbus-1) >= 1.5
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
@@ -132,8 +133,8 @@ The package contains a ATK/D-Bus bridge library.
 	-Ddbus_broker=/usr/bin/dbus-broker-launch \
 	-Ddefault_bus=dbus-broker \
 	-Ddocs=true \
-	-Dintrospection=yes \
-	-Dx11=yes \
+	-Dintrospection=enabled \
+	-Dx11=enabled \
 	%{nil}
 %meson_build
 
@@ -197,8 +198,8 @@ mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdi
 %{_libdir}/pkgconfig/atk-bridge-2.0.pc
 %{_libdir}/pkgconfig/atk.pc
 %{_datadir}/gir-1.0/*.gir
-%doc %{_datadir}/gtk-doc/html/libatspi/
-%doc %{_datadir}/gtk-doc/html/atk/
+%doc %{_datadir}/doc/atk/
+%doc %{_datadir}/doc/libatspi/
 
 %files lang -f at-spi2-core.lang
 
