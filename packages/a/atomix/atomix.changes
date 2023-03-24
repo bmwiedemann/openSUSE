@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 17 20:22:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Stable release version bump.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:41:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Fixed build issues.
+  + Updated translations.
+- Drop atomix-gcc10.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jun  4 10:47:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add atomix-gcc10.patch: Fix build with GCC 10.

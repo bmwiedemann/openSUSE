@@ -1,7 +1,7 @@
 #
 # spec file for package atomix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           atomix
-Version:        3.34.0
+Version:        44.0
 Release:        0
 Summary:        A puzzle game where you move atoms to build a molecule
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Atomix
-Source0:        https://download.gnome.org/sources/atomix/3.34/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM atomix-gcc10.patch dimstar@opensuse.org -- Fix build with gcc10
-Patch0:         atomix-gcc10.patch
+Source0:        https://download.gnome.org/sources/atomix/44/%{name}-%{version}.tar.xz
+
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.5
@@ -56,7 +55,7 @@ best to find where to build the molecule, and move the atoms there.
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/atomix.appdata.xml
