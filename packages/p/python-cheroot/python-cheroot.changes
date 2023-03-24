@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 21 10:34:26 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/cherrypy/cheroot/commit/f3170d40a699219345abb5813395ff39319fec86
+  + python-cheroot-no-six.patch
+
+-------------------------------------------------------------------
 Mon Jan  2 18:19:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 9.0.0

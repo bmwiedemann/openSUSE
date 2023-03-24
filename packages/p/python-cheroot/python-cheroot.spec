@@ -23,7 +23,6 @@
 %endif
 
 %define pypi_name cheroot
-%define skip_python2 1
 %bcond_with ringdisabled
 Name:           python-%{pypi_name}
 Version:        9.0.0
@@ -38,6 +37,8 @@ Source99:       cheroot.rpmlintrc
 Patch0:         no-pypytools.patch
 # PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
 Patch1:         no-relative-imports.patch
+# https://github.com/cherrypy/cheroot/commit/f3170d40a699219345abb5813395ff39319fec86
+Patch2:         python-cheroot-no-six.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jaraco.functools}
@@ -46,7 +47,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 34.4}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools_scm_git_archive >= 1.0}
-BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -71,7 +71,6 @@ BuildRequires:  %{python_module urllib3 >= 1.25}
 # /SECTION
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
-Requires:       python-six >= 1.11.0
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif

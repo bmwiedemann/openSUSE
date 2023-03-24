@@ -1,0 +1,22 @@
+index 8ff3b02ced..b4030da6fd 100644
+--- a/cheroot/test/_pytest_plugin.py
++++ b/cheroot/test/_pytest_plugin.py
+@@ -8,7 +8,6 @@
+ __metaclass__ = type
+ 
+ import pytest
+-import six
+ 
+ 
+ pytest_version = tuple(map(int, pytest.__version__.split('.')))
+@@ -46,9 +45,6 @@ def pytest_load_initial_conftests(early_config, parser, args):
+         'pytest.PytestUnraisableExceptionWarning:_pytest.unraisableexception',
+     ))
+ 
+-    if six.PY2:
+-        return
+-
+     # NOTE: `ResourceWarning` does not exist under Python 2 and so using
+     # NOTE: it in warning filters results in an `_OptionError` exception
+     # NOTE: being raised.
+
