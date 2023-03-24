@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 17 22:11:35 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.25.0:
+  + Fixed several buffer overflow errors in ~lou_setDataPath~,
+    ~lou_logFile~ and ~resolveSubtable~ (boo#1209429 boo#1209431
+    boo#1209432 CVE-2023-26767 CVE-2023-26768 CVE-2023-26769).
+  + Braille table improvements.
+  + Removed: vi.ctb (replaced by vi-cb8.utb).
+
+-------------------------------------------------------------------
 Mon Jan 16 07:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 3.24.0:

@@ -495,4 +495,17 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     assortment of code cleanups and bug fixes.</comment>
     <requestid>1062486</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e14cc4ea99b8fc2294c387c1446d20d2</srcmd5>
+    <version>3.25.0</version>
+    <time>1679667433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.25.0:
+  + Fixed several buffer overflow errors in ~lou_setDataPath~,
+    ~lou_logFile~ and ~resolveSubtable~ (boo#1209429 boo#1209431
+    boo#1209432 CVE-2023-26767 CVE-2023-26768 CVE-2023-26769).
+  + Braille table improvements.
+  + Removed: vi.ctb (replaced by vi-cb8.utb). (forwarded request 1072764 from iznogood)</comment>
+    <requestid>1073189</requestid>
+  </revision>
 </revisionlist>
