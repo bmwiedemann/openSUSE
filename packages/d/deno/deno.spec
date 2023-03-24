@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.31.3
+Version:        1.32.1
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -68,12 +68,6 @@ cp %{SOURCE2} .cargo/config
 rm Cargo.lock
 
 %build
-# workaround to use python3
-# where "python" is invoked
-mkdir "$(pwd)/bin"
-ln -sf %{_bindir}/python3 "$(pwd)/bin/python"
-export PATH="$PATH:$(pwd)/bin"
-
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 # https://www.chromium.org/developers/gn-build-configuration
