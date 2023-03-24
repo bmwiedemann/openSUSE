@@ -17,7 +17,7 @@
 
 
 Name:           libadwaita
-Version:        1.2.3
+Version:        1.3.1
 Release:        0
 Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
@@ -31,9 +31,9 @@ BuildRequires:  sassc
 BuildRequires:  vala
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.5.0
+BuildRequires:  pkgconfig(gtk4) >= 4.9.5
 %lang_package
 
 %description

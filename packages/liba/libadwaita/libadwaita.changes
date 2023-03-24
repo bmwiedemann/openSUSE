@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:36:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.3.1:
+  + AdwAboutWindow: Add a missing Since annotation
+  + AdwCarousel: Fix allocation
+  + AdwFlap:
+    - Add a missing setter annotation for :fold-policy
+    - Correctly measure separator
+    - Avoid notify emissions in dispose()
+  + AdwTabBar: Fix clipped labels
+  + AdwTabOverview
+    - Fix clipped labels
+    - Add a translator comment for "%u tabs"
+  + Demo: Open primary menu with F10
+  + Don't show marshal functions in docs
+- Changes from version 1.3.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:35:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.3.rc:
+  + Build: Depend on GTK 4.9.5
+  + AdwApplication: Disable style loading if Granite is present
+  + AdwAvatar: Improve filtering for custom images
+  + AdwCarousel: Doc updates
+  + AdwEntryRow: Fix :disabled styles
+  + AdwExpanderRow: Expose expanded state for a11y
+  + AdwPropertyAnimationTarget: Remove critical when finalizing the
+    object before the target
+  + AdwSplitButton:
+    - Correctly set a11y relations
+    - Add a default tooltip to the dropdown
+  + AdwStyleManager:
+    - Fix regressions from 1.3.beta
+    - Disable built-in styles if Granite is present
+  + AdwTabOverview: Clarify docs
+  + AdwToastOverlay: Fix a use-after-free when quickly creating and
+    dismissing toasts
+  + Docs:
+    - Update named color descriptions
+    - Update .linked widget list to keep up with GTK 4.9.x
+    - Mention AdwHeaderBar along with GtkHeaderBar
+  + Stylesheet:
+    - Fix page switcher in GtkShortcutsWindow
+    - Fix GtkSearchBar spacing
+  + Memory leak fixes
+  + Various cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:35:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.3.beta:
+  + AboutWindow:
+    - Prevent double clicks from opening troubleshooting page
+    - Fix a GTK 4.9.x deprecation
+  + AdwActionRow: Add :subtitle-selectable
+  + AdwAnimation: Add :follow-enable-animations-setting
+  + AdwBanner: Sizing fixes
+  + AdwEntryRow: Make accessible
+  + AdwLeaflet: Fix can-unfold=false
+  + AdwMessageDialog: Increase spacing when heading or body are
+    missing
+  + AdwSpringAnimation:
+    - Add calculate_value() and calculate_velocity()
+    - Fix unsafe float comparisons
+    - Fix critical damping velocity
+  + AdwStyleManager: Support color schemes and high contrast on
+    Windows
+  + AdwSwipeable: Fix get_swipe_area() fallback
+  + AdwTabBar, AdwTabOverview: Emit ::extra-drag-value on ::enter
+  + AdwTabButton:
+    - Fix needs-attention dot after viewing AdwTabPages in
+      inspector
+    - Fix warning when building in Visual Studio
+  + AdwTabView: Make accessible
+  + AdwToastOverlay:
+    - Don't focus buttons on click
+    - Prevent toast labels from wrapping
+  + AdwViewStack: Make accessible
+  + Demo:
+    - Don't follow "enable animations" setting for the demo
+      animation
+    - Fix the switch on the avatar page
+  + Stylesheet:
+    - Style GtkMenuBar like header bars and similar widgets
+    - Add minimum width to menu popovers
+    - Fix GtkLevelBar fill colors
+    - Fix GtkFileDialog path bar padding
+    - Fix GtkAssistant sidebar color
+    - Support marked days in GtkCalendar
+  + Documentation fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:35:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.alpha:
+  + Introduce AdwBanner.
+  + Introduce AdwTabButton and AdwTabOverview.
+  + Fix or silence GTK 4.9.x deprecations.
+  + Require GTK 4.9.2 and GLib 2.72.0.
+  + Add developer name to metainfo.
+  + AdwActionRow:
+    - Deprecate icon-name property.
+    - Fix spacing after removing all prefixes/suffixes.
+  + AdwAvatar: Correctly redraw on custom image changes.
+  + AdwEntryRow:
+    - Add adw_entry_row_grab_focus_without_selecting().
+    - Respect use-markup property.
+    - Fix error/warning/success styles.
+    - Fix spacing after removing all prefixes/suffixes.
+  + AdwExpanderRow:
+    - Add title-lines and subtitle-lines properties.
+    - Deprecate icon-name property.
+    - Fix spacing after removing all prefixes/suffixes.
+  + AdwFlap: Fix natural width with fold-policy=never.
+  + AdwMessageDialog:
+    - Add adw_message_dialog_choose().
+    - Fix focus styles in RTL.
+    - Refactor adaptive layout.
+  + AdwTabBar:
+    - Add preload property and extra-drag-value signal.
+    - Fix focus handling.
+    - Fix autoscroll for non-local drags.
+  + AdwTabView:
+    - Update default tab icon.
+    - Rewrite internals to allow overview thumbnails for inactive
+      pages.
+  + AdwPreferencesPage: Add a function to scroll to top.
+  + AdwPreferencesWindow: Fix a memory leak.
+  + AdwSplitButton: Don't make dropdown insensitive when the button
+    is.
+  + AdwSpringAnimation: Correctly mark as final.
+  + AdwToastOverlay: Clarify documentation.
+  + AdwViewSwitcherBar: Fix typos in examples.
+  + AdwViewSwitcherTitle: Fix typos in examples.
+  + Demo:
+    - Update icons.
+    - Make tabs demo adaptive using the new widgets.
+    - Use G_DEFINE_FINAL_TYPE where appropriate.
+  + Doc:
+    - Rename visual index to widget gallery.
+    - Stop marking symbols from 1.0 as such to reduce clutter.
+  + Stylesheet:
+    - Fix GtkSpinButton inside toolbars.
+    - Update for file chooser changes.
+    - Use accent color for default list/grid selection.
+  + Tests: Introduce manual tests in tests/manual/.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar  5 13:24:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.3:
