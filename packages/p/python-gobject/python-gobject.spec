@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,13 @@
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.42.2
+Version:        3.44.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
-Source0:        https://download.gnome.org/sources/pygobject/3.42/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pygobject/3.44/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycairo >= 1.16.0}

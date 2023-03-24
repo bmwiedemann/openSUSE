@@ -745,4 +745,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>New stable release (forwarded request 990655 from iznogood)</comment>
     <requestid>992692</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d776ccb2d9c5e67144e3429e2110f0b7</srcmd5>
+    <version>3.44.0</version>
+    <time>1679667445</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072913 from iznogood)</comment>
+    <requestid>1073201</requestid>
+  </revision>
 </revisionlist>
