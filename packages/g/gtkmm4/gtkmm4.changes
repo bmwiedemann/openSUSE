@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Mar 20 10:33:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.0:
+  + Gdk:
+    - Add TextureDownloader
+    - Add enum MemoryFormat, identical to MemoryTexture::Format
+    - Texture: Add get_format()
+  + Gtk:
+    - VolumeButton: Deprecated
+    - ProgressBar: Deprecate property_ellipsize()
+    - FileDialog: open_multiple_finish() and
+      select_multiple_folders_finish() return
+      std::vector<Glib::RefPtr<Gio::File>> instead of
+      Glib::RefPtr<Gio::ListModel>.
+    - FileChooser: Deprecate get_files() and
+      get_shortcut_folders(). Add get_files2() and
+      get_shortcut_folders2().
+    - FileDialog: Make open[_finish](), select_folder[_finish](),
+      save[_finish](), open_multiple[_finish](),
+      select_multiple_folders[_finish]() non-const.
+    - FontDialog: Make choose_family[_finish]() and
+      choose_face[_finish]() non-const.
+    - Accessible: Add set_accessible_parent(),
+      update_next_accessible_sibling()
+    - MenuButton: Add set/get/property_active().
+    - ScaleButton: Add get/property_active().
+    - SearchEntry: Add set/get_placeholder_text().
+  + Tests: Add filedialog test
+  + Build: Require gtk4 >= 4.10.0
+
+-------------------------------------------------------------------
+Fri Feb 24 22:15:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.9.3:
+  + Gdk:
+    - Display: Deprecate get_startup_notification_id().
+    - Monitor: Add get/property_description().
+  + Gtk:
+    - Deprecated classes: Assistant, AssistantPage, LockButton,
+      Statusbar
+    - Gesture: Deprecate set_sequence_state().
+    - Accessible: Add enum Accessible::PlatformState. Add
+      get_at_context(), get_platform_state(),
+      get_accessible_parent(), get_bounds(),
+      get_first_accessible_child(), get_next_accessible_sibling().
+  + Add ATContext and UriLauncher.
+  + Documentation: Gtk::Image, Picture, StringList, StringObject:
+    Improve class descriptions
+  + Build: Require gtk4 >= 4.9.3
+
+-------------------------------------------------------------------
 Mon Sep 12 16:10:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.8.0:

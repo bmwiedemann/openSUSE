@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.8.0
+Version:        4.10.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.8/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtkmm/4.10/%{_name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM gtkmm4-docs-without-timestamp.patch -- Do not add timestamps to generated doc files
 Patch0:         gtkmm4-docs-without-timestamp.patch
 
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(cairomm-1.16) >= 1.15.4
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
 BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(gtk4) >= 4.7.2
+BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  pkgconfig(pangomm-2.48) >= 2.50.0
 
 %description
@@ -115,7 +115,7 @@ chmod -x NEWS
 %{_libdir}/gtkmm-4.0/
 
 %files doc
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_datadir}/devhelp/books/gtkmm-4.0/
 %{_datadir}/doc/gtkmm-4.0/
 # Avoid BuildRequires on devhelp
