@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 24 05:58:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.2:
+  * Upgrade to buildkit w/ performance fix.  (#4817)
+  * fix: withRegistryAuth uses secret.Store for getting plaintext
+    (#4809)
+  * Configurable network name and address range (#4711)
+  * Docs: fix diagram (#4797)
+  * docs: remove default tags pages (#4794)
+  * docs: widen guides codeblocks (#4784)
+  * update go replace dockerfile guide with default cmd (#4781)
+  * Add playground version check instructions (#4792)
+  * feat: improve Go SDK to fetch list of objects (#4683)
+  * telemetry: rotate cloud token (#4786)
+  * build(deps): bump spectaql from 2.0.4 to 2.0.5 in /website
+    (#4725)
+  * build(deps): bump @sideway/formula from 3.0.0 to 3.0.1 in
+    /website (#4751)
+  * build(deps): bump webpack from 5.74.0 to 5.76.1 in /website
+    (#4765)
+  * build(deps): bump sass from 1.58.0 to 1.59.3 in /website
+    (#4769)
+  * docs: Quickstart improvements (#4532)
+  * wire up v0.4.1 engine journal delivery (#4779)
+  * docs: fix guides rendering (#4780)
+  * update demo CTA at top (#4777)
+  * sdk: Bump engine dependency to v0.4.1 (#4775)
+  * docs: adds guide for the AWS CDK (#4734)
+
+-------------------------------------------------------------------
 Fri Mar 17 06:11:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.1:
