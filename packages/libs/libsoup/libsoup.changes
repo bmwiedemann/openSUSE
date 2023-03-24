@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:42:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0:
+  + Fix possible crash in SoupContentSniffer.
+  + Fix socket leak.
+  + Add missing annotation to
+    soup_header_g_string_append_param_quoted().
+
+-------------------------------------------------------------------
+Mon Feb 13 08:28:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.1:
+  + Fix regression in `SoupCookieJar` not handling valid Secure
+    cookies.
+  + Fix crash when skipping HTTP/1 response stream with chunked
+    enconding.
+  + Change Session to unqueue finished items earlier without an
+    extra MainContext iteration.
+
+-------------------------------------------------------------------
+Sun Jan 22 16:48:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.0:
+  + Add `SoupMessage::got-body-data` signal to monitor progress of
+    reads
+  + Add `soup_session_send_and_splice()` and
+    `soup_session_send_and_splice_async()` convenience APIs
+  + Add `soup_message_set_force_http1()` and
+    `soup_message_get_force_http1()` APIs
+  + Change `soup_cookie_copy()` to not retain default ports
+  + Ensure `SoupServerMessage` socket is available in websocket
+    handler
+  + Fix `soup_message_new()` not erroring when URI has an empty
+    host
+  + Fix thread-saftey issues in `SoupConnectionAuth`
+  + Fix various connection leaks
+  + Fix the possibility of sending invalid empty
+    `Sec-WebSocket-Protocol` header
+  + Fix IO errors not being handled on `CONNECT` messages
+  + Numerous improvements to cookies:
+    - Add support for cookie prefixes (`__Secure-` and `__Host-`)
+    - Reject cookies with control characters in name or value
+    - Reject `SameSite=None` cookies without `Secure`
+    - Change `soup_cookie_parse()` to be more strict about what is
+      considered whitespace
+    - Change default SameSite value to `Lax`
+    - Fix `soup_cookie_equal()` with `NULL` path
+
+-------------------------------------------------------------------
 Thu Nov  3 11:06:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.2:
