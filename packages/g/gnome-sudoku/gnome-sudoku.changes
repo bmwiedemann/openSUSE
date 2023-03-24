@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:45:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Help: Remove references to mailing lists.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 14:25:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Gate extra warnings behind hidden setting.
+  + Undo/redo for earmarks is now less broken.
+
+-------------------------------------------------------------------
+Fri Feb 17 15:34:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.alpha:
+  + Make earmark popover open on long press.
+  + Add "wrap around" keyboard navigation.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 24 16:07:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
