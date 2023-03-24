@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Mar 22 08:17:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Quick fix release from the right branch.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 18 09:40:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Avoid a crash caused by double free
+  + Change its wording to the more descriptive "Print this section"
+  + Convert utf8 fullwidth numbers to halfwidth
+  + Disable GtkTreeView's builtin search
+  + Explicitly enable Outline search
+  + Fix double free of GtkEntryCompletion
+  + Improve Outline context menu
+  + Leave outline search menu item always on
+  + Remove redundant ellipses
+  + Tweak 'Expand all under this element' item sensitivity
+  + Use the same term for the Outline sidebar
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  8 09:36:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Update POTFILES.in
+  + backend: Handle NULL returned from
+    poppler_layers_iter_get_title
+  + build:
+    - Build the backends on the top backend directory
+    - Replace custom target with i18n.merge_files
+    - Disable gtk_doc when introspection is disabled
+    - Fix deprecation warning on meson
+    - Fix docs cross build
+    - Update desktop database at post install
+    - Update libgd to current master
+  + data: Update URLs by GNOME Discourse
+  + help:
+    - Update URLs by GNOME Discourse
+    - Use action-name properties in help overlay
+    - Correct UI steps in gedit for SyncTex plugin
+  + libview: Fix crash when releasing click with selected text
+    holding click button
+  + shell:
+    - Code clean up
+    - Derive EvMessageArea from GtkBin to simplify GTK4 move
+    - Derive EvToolbar from GtkBin instead of HdyHeaderBar
+    - Dispose using g_clear_object and g_clear_pointer
+    - Do not hard-code event to open context menus
+    - Do not wrap SearchBar in GtkRevealer
+    - Go to requested page for links to external PDF documents
+    - Port GtkMenu to use GActions
+    - Remove active-icon-name property
+    - Remove complexity in menu popup
+    - Remove goto-bookmark action and bookmark_menu
+    - Remove unused toolbar navigation_action widget
+    - Simplify definition of EvToolbar type
+    - Simplify title set logic and sanitize before use
+    - Support display page numbers above 10000
+    - Use a GtkBox to simplify GTK4 move
+    - Use composite template for EvToolbar
+    - Use stack children to keep record of the sidebar page
+  + Updated translations.
+- Add desktop-file-utils BuildRequires, new dependency.
+
+-------------------------------------------------------------------
 Thu Oct 27 11:05:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

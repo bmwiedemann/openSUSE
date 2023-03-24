@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        43.1
+Version:        44.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/44/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
@@ -39,6 +39,7 @@ Patch7:         0005-reversed-synctex-Fix-compilation.patch
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
 BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
