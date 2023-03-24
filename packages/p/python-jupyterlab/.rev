@@ -313,4 +313,130 @@
 </comment>
     <requestid>1045951</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7ef52bbf271bd0418b5c04474ede233b</srcmd5>
+    <version>3.6.2</version>
+    <time>1679667631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.2
+  * Fix save as without changing the file name #14212 (@hbcarlos)
+  * Fix save as in collaborative mode #14182 (@hbcarlos)
+  * Fix non-document wide undo stack #14063 (@fcollonval)
+  * Fix code/content/ui font-size change #14077 (@FoSuCloud)
+  * Restore @jupyterlab/shared-models as proxy to @jupyter/ydoc
+    #14133 (@fcollonval)
+  * Doc session #14128 (@hbcarlos)
+  * Use local paths instead of driveName:path in the shared model
+    #13866 (@hbcarlos)
+  * use singleton boolean type for codemirror lineWiseCopyCut
+    setting #14055 (@bollwyvl)
+  * Fix integrity #14226 (@fcollonval)
+  * Increases timeout #14045 (@brichet)
+  * Use Python 3.11 for js-debugger tests #13941 (@fcollonval)
+  * Fix verdaccio start up with nodejs 18.14.0 #13959 (@fcollonval)
+- Update to 3.6.1
+  * Revert target to ES2017 #13914 (@fcollonval)
+- Update to 3.6.0
+  ## New features added
+  * Add copy and paste commands to terminal context menu #13535
+    (@krassowski)
+  * Turn terminal links into anchors using xterm addon #13645
+    (@mgcth)
+  * Allows to pause the execution during debug #13494 (@brichet)
+  * Ask confirmation when closing a document #13489 (@fcollonval)
+  * Add events service #13465 (@fcollonval)
+  * Add notification queue and display using toast #12959
+    (@telamonian)
+  * Add announcements #13444 (@fcollonval)
+  * Add line history to Stdin cell outputs #13431 (@fcollonval)
+  * Add user configuration for additional schemes for the sanitizer
+    plugin #13419 (@fcollonval)
+  * User service #12926 (@hbcarlos)
+  ## Enhancements made
+  * Expose contentVisibility widget hiding mode #13860
+    (@fcollonval)
+  * default locale will use OS default locale #13721 (@fcollonval)
+  * Enable strict CSS containment for MainAreaWidget #13811
+    (@krassowski)
+  * User defined default viewer take precedence for rendered
+    factory #11541 (@fcollonval)
+  * Remove not needed Completer.IRenderer.sanitizer #13700
+    (@fcollonval)
+  * Contain the tabs within the tabbar (do not use translation
+    transform) #13671 (@krassowski)
+  * Sanitize notification message #13510 (@fcollonval)
+  * Use more the contextual collaborative model attribute #13564
+    (@fcollonval)
+  * Add lumino with support for plugin deactivation #13541
+    (@fcollonval)
+  * Sets whether the model is collaborative or not when registering
+    its factory #13526 (@hbcarlos)
+  * RTC: Move user name to user panel #13517 (@martinRenou)
+  * jupyter_server_ydoc&gt;=0.6.0,&lt;0.7.0 #13499 (@fcollonval)
+  * Define file or activity icons color as static #13408
+    (@fcollonval)
+  * Added collaborative_document_save_de… #13404 (@fcollonval)
+  * Add a hover effect to plugin list entries #13384 (@krassowski)
+  * Bump Lumino 1.x #13378 (@fcollonval)
+  * Store original path as returned from contents API in the
+    Contents.IModel #13216 (@krassowski)
+  * Update document dirty logic for RTC #13364 (@davidbrochart)
+  * Store document info in the state not in a separate context map
+    out of the document interface. #13317 (@fcollonval)
+  * Use file ID #13246 (@davidbrochart)
+  * Relax doc provider API #13214 (@fcollonval)
+  * Avoids restoring widget in dock panel when first loading in
+    'single-document' mode #13314 (@brichet)
+  * Fix illegible white on yellow text of stacktrace in dark theme
+    #13249 (@NikolayXHD)
+  * Use settings icons for 6 plugins #13298 (@krassowski)
+  * Do not run galata in .ipynb_checkpoints #13297 (@krassowski)
+  * Allow empty notebook #13296 (@martinRenou)
+  * Optimize text mimerenderer: ansi vs autolink #13202 (@vidartf)
+  * Remove Yjs locking mechanism #13222 (@davidbrochart)
+  ## Bugs fixed
+  * Define colour and background for filebrowser edit field #13895
+    (@krassowski)
+  * Reset execution indicator state when kernel restarts #13832
+    (@krassowski)
+  * Restore blueprint focus overrides on 3.x branch #13879
+    (@krassowski)
+  * Restore partial border effect for menu #13878 (@krassowski)
+  * Pin jupyter_ydoc #13863 (@fcollonval)
+  * Fix preferred_dir for examples #13788 (@fcollonval)
+  * Bump canvas to version with nodejs 18 binaries #13783
+    (@fcollonval)
+  * Explain why cell model may be missing in cell toolbar #13763
+    (@krassowski)
+  * Fix handling of settingEditorType #13761 (@jtpio)
+  * Fix execution indicator in RTC mode #13693 (@trungleduc)
+  * Force jupyter-server v1 to check against notebook v6 #13716
+    (@fcollonval)
+  * Write the browser open files for test #13634 (@fcollonval)
+  * Add the scaleFactor value from the embed options when creating
+    the PNG representation for a Vega-based chart #13610
+    (@joaopalmeiro)
+  * Does not prevent default behavior when shift-clicking #13616
+    (@jmk89)
+  * Do not load CSS of disabled federated extensions #11962
+    (@jtpio)
+  * use jupyter_config_dir instead of config_path[0] for
+    workspaces, settings #13589 (@minrk)
+  * Bump @lumino/application #13590 (@fcollonval)
+  * Restores the appearance of the settingeditor's input focus
+    #13554 (@brichet)
+  * Fix a wrong argument when calling 'renderMimeVariable' #13531
+    (@brichet)
+  * fix size of toc running indicator #13568 (@uenot)
+  * Fixes backward-incompatible changes for 3.6 #13560 (@hbcarlos)
+  * Make focus visible (mostly CSS) #13415 (@gabalafou)
+  * Set corrections to icons and switch colors #13500
+    (@HaudinFlorence)
+  * Default IDocumentProviderFactory.IOptions generic to
+    ISharedDocument #13490 (@jtpio)
+  * Use same key for saving user info in local store #13482
+    @hbcarlos
+</comment>
+    <requestid>1073771</requestid>
+  </revision>
 </revisionlist>

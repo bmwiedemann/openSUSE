@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define plainpython3dist python3dist
 Name:           python-jupyterlab
-Version:        3.5.2
+Version:        3.6.2
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -25,17 +26,21 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab
 # install from wheel with all the bundled nodejs stuff
 Source0:        https://files.pythonhosted.org/packages/py3/j/jupyterlab/jupyterlab-%{version}-py3-none-any.whl
+Source1:        https://github.com/jupyterlab/jupyterlab/raw/v%{version}/conftest.py
 Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 2.1}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module jupyter-server-ydoc >= 0.8 with %python-jupyter-server-ydoc < 0.9}
+BuildRequires:  %{python_module jupyter-ydoc >= 0.2.3 with %python-jupyter-ydoc < 0.3}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module jupyter_server >= 1.16 with %python-jupyter_server < 3}
-BuildRequires:  %{python_module jupyterlab-server >= 2.10}
+BuildRequires:  %{python_module jupyterlab-server >= 2.19}
 BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module notebook < 7}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
@@ -49,7 +54,10 @@ Requires:       python-nbclassic
 Requires:       python-notebook < 7
 Requires:       python-packaging
 Requires:       python-tornado >= 6.1
+Requires:       (python-jupyter-server-ydoc >= 0.8 with python-jupyter-server-ydoc < 0.9)
+Requires:       (python-jupyter-ydoc >= 0.2.3 with python-jupyter-ydoc < 0.3)
 Requires:       (python-jupyter_server >= 1.16 with python-jupyter_server < 3)
+Requires:       (python-tomli if python-base < 3.11)
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
@@ -58,7 +66,7 @@ BuildRequires:  %{python_module jupyterlab-server-test}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-jupyter >= 0.6}
+BuildRequires:  %{python_module pytest-jupyter >= 0.5.3}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module virtualenv}
@@ -80,7 +88,7 @@ Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab-filesystem
 Requires:       nodejs >= 10
 Requires:       npm >= 10
-Requires:       python3-jupyterlab = %{version}
+Requires:       %{plainpython3dist}(jupyterlab) = %{version}
 Provides:       jupyter-jupyterlab-discovery = 6
 Obsoletes:      jupyter-jupyterlab-discovery < 6
 
@@ -106,6 +114,8 @@ for f in %{buildroot}%{$python_sitelib}/jupyterlab/{node-version-check.js,stagin
   sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' $f
   chmod a+x $f
 done
+cp %{SOURCE1} %{buildroot}%{$python_sitelib}/jupyterlab/conftest.py
+%{$python_compile}
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %fdupes %{buildroot}%{_jupyter_prefix}
@@ -130,11 +140,11 @@ donttest="$donttest or (TestExtension and test_update)"
 donttest="$donttest or (TestAppHandlerRegistry and test_get_registry)"
 donttest="$donttest or (TestAppHandlerRegistry and test_populate_staging)"
 donttest="$donttest or (TestAppHandlerRegistry and test_yarn_config)"
-# don't have the fixtures
-donttest="$donttest or (TestBuildAPI and (test_get_status or test_build))"
-donttest="$donttest or test_load_extension"
-
-%pytest --pyargs jupyterlab -k "not (${donttest:4})"
+donttest="$donttest or (TestBuildAPI and test_build)"
+# fail with mocking errror on python 3.11, fixed in Jupyterlab 4: https://github.com/jupyterlab/jupyterlab/pull/13474
+python311_donttest=" or test_announcements"
+# can't use --pyargs because of conftest.py collection problems: https://github.com/pytest-dev/pytest/issues/1596
+%pytest %{buildroot}%{$python_sitelib}/jupyterlab -k "not (${donttest:4} ${$python_donttest})"
 
 %files %{python_files}
 %license LICENSE
