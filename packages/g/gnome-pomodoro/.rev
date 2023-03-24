@@ -322,4 +322,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Add --reset commandline option (forwarded request 1063361 from jubalh)</comment>
     <requestid>1063402</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>84c12df1f3d169f8521176e86002d59f</srcmd5>
+    <version>0.22.1</version>
+    <time>1679667591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073956</requestid>
+  </revision>
 </revisionlist>

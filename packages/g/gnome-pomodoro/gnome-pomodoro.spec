@@ -27,11 +27,14 @@ URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
 
+# PATCH-FIX-UPSTREAM e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch -- Mark extension as compatible with GNOME Shell 44
+Patch:          https://github.com/gnome-pomodoro/gnome-pomodoro/commit/e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell < 44
+BuildRequires:  gnome-shell < 45
 BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -49,7 +52,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell < 44
+Requires:       gnome-shell < 45
 Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0

@@ -1,0 +1,22 @@
+From e67bf9d0d0ea3604654145aa7e40d239d3d8109d Mon Sep 17 00:00:00 2001
+From: Jeremy Bicha <jeremy.bicha@canonical.com>
+Date: Fri, 24 Feb 2023 10:31:09 -0500
+Subject: [PATCH] Mark extension as compatible with GNOME Shell 44
+
+---
+ plugins/gnome/extension/metadata.json.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/gnome/extension/metadata.json.in b/plugins/gnome/extension/metadata.json.in
+index df627731..92f624f1 100644
+--- a/plugins/gnome/extension/metadata.json.in
++++ b/plugins/gnome/extension/metadata.json.in
+@@ -2,7 +2,7 @@
+   "uuid": "@EXTENSION_UUID@",
+   "name": "Pomodoro",
+   "description": "Desktop integration for Pomodoro application.",
+-  "shell-version": ["3.38", "40", "41", "42", "43"],
++  "shell-version": ["3.38", "40", "41", "42", "43", "44"],
+   "url": "@PACKAGE_URL@",
+   "version": "@PACKAGE_VERSION@"
+ }

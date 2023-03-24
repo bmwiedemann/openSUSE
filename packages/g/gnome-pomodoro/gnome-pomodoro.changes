@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 23 10:50:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Correct the dependency on gnome-shell to allow gnome-shell 44.
+
+-------------------------------------------------------------------
+Wed Mar  1 11:29:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch: Mark
+  extension as compatible with GNOME Shell 44
+
+-------------------------------------------------------------------
 Mon Feb  6 07:12:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.1:
