@@ -22,7 +22,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
@@ -177,7 +177,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %{_libdir}/liblsp-*.a
 
 %files -n ladspa-%{name}
-%{_libdir}/ladspa/%{name}-ladspa-%{version}.so
+%{_libdir}/ladspa/%{name}-ladspa.so
 
 %files -n lv2-%{name}
 %dir %{_libdir}/lv2
