@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  7 21:06:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.15.6:
+  + Major changes:
+    - Projects should be able to use the typelib-based bindings
+    - sysprof is now used for profiling
+    - Lots of translation updates
+    - Several smaller Meson changes
+  + Bugs fixed:
+    - folks-generics: Add missing generic type argument
+    - tests/bluez: Follow PairDevice API change in python-dbusmock
+- Add global requires_exclude
+  libfolks|libfolks-dummy|libfolks-eds|libfolks-telepathy remove
+  wrong requires in typelibs.
+
+-------------------------------------------------------------------
 Wed Mar 23 14:57:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.15.5:

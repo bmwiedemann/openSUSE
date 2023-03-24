@@ -1,7 +1,7 @@
 #
 # spec file for package folks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global __requires_exclude libfolks|libfolks-dummy|libfolks-eds|libfolks-telepathy
 
 %define soversion      26
 %define module_version 26
@@ -22,7 +23,7 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
@@ -168,7 +169,7 @@ This package provides the development files.
 	-Dzeitgeist=true \
 %endif
 %if ! %{with_telepathy}
-        -Dtelepathy_backend=false \
+	-Dtelepathy_backend=false \
 %endif
 	%{nil}
 %meson_build

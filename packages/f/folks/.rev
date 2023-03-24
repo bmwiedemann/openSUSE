@@ -468,4 +468,23 @@
     <comment></comment>
     <requestid>964531</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>99ea870407955e1195b5a90f5a6499e4</srcmd5>
+    <version>0.15.6</version>
+    <time>1679667464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.6:
+  + Major changes:
+    - Projects should be able to use the typelib-based bindings
+    - sysprof is now used for profiling
+    - Lots of translation updates
+    - Several smaller Meson changes
+  + Bugs fixed:
+    - folks-generics: Add missing generic type argument
+    - tests/bluez: Follow PairDevice API change in python-dbusmock
+- Add global requires_exclude
+  libfolks|libfolks-dummy|libfolks-eds|libfolks-telepathy remove
+  wrong requires in typelibs. (forwarded request 1073088 from iznogood)</comment>
+    <requestid>1073224</requestid>
+  </revision>
 </revisionlist>
