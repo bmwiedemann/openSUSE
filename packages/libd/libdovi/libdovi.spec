@@ -15,20 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 3
 
 Name:           libdovi
 Version:        3.1.2
-Release:        1
+Release:        0
 Summary:        Library to read & write Dolby Vision metadata
-Group:          System/Libraries
+Group:          Development/Libraries/Rust
 License:        MIT
 URL:            https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 Source0:        https://github.com/quietvoid/dovi_tool/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
-BuildRequires:  cargo-packaging
+Source9:        baselibs.conf
 BuildRequires:  cargo-c
+BuildRequires:  cargo-packaging
 BuildRequires:  git
 
 %description
@@ -40,7 +42,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
-The %{name}-devel package contains libraries and header files for
+The %{name}-devel package contains C header files for
 developing applications that use %{name}.
 
 %package     -n %{name}%{sover}
@@ -90,4 +92,3 @@ cargo cinstall \
 %{_includedir}/%{name}/rpu_parser.h
 
 %changelog
-

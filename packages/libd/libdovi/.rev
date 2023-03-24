@@ -7,4 +7,12 @@
     <comment>Optional dependency for building libplacebo from git and future releases</comment>
     <requestid>1070000</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd0de244ea7c6948114d06678c3f7750</srcmd5>
+    <version>3.1.2</version>
+    <time>1679667374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073657</requestid>
+  </revision>
 </revisionlist>
