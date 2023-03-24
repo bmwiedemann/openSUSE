@@ -17,17 +17,15 @@
 
 
 Name:           gnome-maps
-Version:        43.4
+Version:        44.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
-Source0:        https://download.gnome.org/sources/gnome-maps/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-maps/44/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-maps-fix-dependency.patch -- Fix upstream dodo when setting dependency for libshumate
 Patch0:         gnome-maps-fix-dependency.patch
-# PATCH-FIX-UPSTREAM gnome-maps-icu72.patch mgorse@suse.com -- fix comparisons in time tests.
-Patch1:         gnome-maps-icu72.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -54,9 +52,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-1.0) >= 0.7.90
 BuildRequires:  pkgconfig(shumate-1.0) >= 1.0.0
 Recommends:     dbus(org.freedesktop.GeoClue2)
-# gnome-maps 43 found a new way to specify typelib deps, which are not (yet) understood by gi-dep-scanner
-Requires:       typelib(GtkClutter) = 1.0
-Requires:       typelib(GeocodeGlib) = 1.0
 
 %description
 Maps is a maps application for GNOME 3. It allows viewing street maps from

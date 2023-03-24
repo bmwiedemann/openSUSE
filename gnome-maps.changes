@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Mar 18 09:35:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Disable the go-to animation to avoid getting throttled by the
+    tile server.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  5 13:17:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated POI definitions for OpenStreetMap editing
+  + Center text in the location service dialog
+  + Tweak header captilization and ellipsation for tooltips and
+    menu items
+  + Use proper suggestions style for search result lists
+  + Add nightly builds for AArch64
+  + Updated translations.
+- Drop explicit typelib(GtkClutter) = 1.0 and
+  typelib(GeocodeGlib) = 1.0 Requires: No longer needed.
+
+-------------------------------------------------------------------
+Wed Feb 22 13:07:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Prevent the scale to cover the sidebar when the window is
+    narrow
+  + Fix keyboard navigation of search results (regression from the
+    GTK 4 port)
+  + Style fixes of the sidebar border
+  + Make the "export as image" dialog work on phones
+  + Updated translations.
+- Changes from version 44.alpha:
+  + Fix excessive margins in place bubbles
+  + Fix adaptive mode detection when maximized
+  + Fix broken long-press to bring up the context menu on touch
+    screens
+  + Fixing various issues left after the GTK 4 port
+  + Fix setting adaptive narrow (phone) mode on first launch on
+    portrait displays
+  + Fix dragging-and-dropping route entris in the sidebar
+  + Fix opening shapelayer files when dragged-and-dropped onto the
+    main window
+  + Fix selecting turnpoint instructions showing the position of
+    the instruction on the map
+  + Fix local tiles (using the --local command-line option)
+  + Fix location service dialog
+  + Fix send-to dialog
+  + Fix user location accuracy marker positioning
+  + Implement support for getting thumbnails and Wikipedia article
+    extracts from Wikidata
+  + Updated translations.
+- Drop gnome-maps-icu72.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb  1 08:56:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.4:
