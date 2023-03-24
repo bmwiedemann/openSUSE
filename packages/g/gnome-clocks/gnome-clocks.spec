@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-clocks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-clocks
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/44/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 17 15:32:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  5 13:19:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 17:47:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Display seconds in the world clock detail view
+  + Reset snooze time when disabling alarms
+  + Add mnemonics to the view switcher
+  + Say ahead/behind instead of later/earlier
+  + Fix button layout in the timer view
+  + Add missing ellipses to button labels
+  + Remove an incorrect tooltip
+  + Help fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct  5 20:19:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Package sub-package gnome-shell-search-provider-gnome-clocks as
