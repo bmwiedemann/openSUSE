@@ -17,13 +17,13 @@
 
 
 Name:           tracker-miners
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/3.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/3.5/%{name}-%{version}.tar.xz
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(totem-plparser)
-BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 3.5.0
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99
@@ -157,7 +157,6 @@ This package contains a miner to index files and applications.
 %{_datadir}/dbus-1/services/org.freedesktop.Tracker3.Miner.Files.service
 %{_datadir}/glib-2.0/schemas/org.freedesktop.Tracker3.Miner.Files.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners3.enums.xml
-%{_libdir}/tracker-miners-3.0/libtracker-miner-3.0.so
 %{_libexecdir}/tracker-miner-fs-3
 %{_libexecdir}/tracker-miner-fs-control-3
 %{_mandir}/man1/tracker-miner-fs-3.1%{ext_man}

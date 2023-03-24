@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:38:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.0:
+  + Test suite fixes.
+  + Added membarrier syscall to seccomp.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:20:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.0.rc:
+  + Fix deletion of not yet extracted files.
+  + Fix some memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:40:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.0.beta:
+  + The filesystem miner moved all SPARQL queries and updates to a
+    GResource. Consistently uses
+    TrackerSparqlStatement/TrackerResource for updates.
+  + The "tracker3 tag" has been fixed, and functional tests added
+    to avoid regressions.
+  + The functional tests have been refurbished and modernized.
+  + Internal code refactors.
+  + The extractor test suite has been extended.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:07:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.5.0.alpha:
+  + Fix GSource leak in tracker-extract-3.
+  + Disable 'fluidsynthmidi' GStreamer module.
+  + Delegate tracker-miner-fs D-Bus SPARQL endpoint to a separate
+    thread.
+
+-------------------------------------------------------------------
 Thu Jan 12 17:01:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.3:

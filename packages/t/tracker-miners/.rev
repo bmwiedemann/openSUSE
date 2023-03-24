@@ -377,4 +377,12 @@
   + Updated translations. (forwarded request 1058043 from iznogood)</comment>
     <requestid>1058614</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>97c61e85fb1ab9be2d865f0f6f1d331a</srcmd5>
+    <version>3.5.0</version>
+    <time>1679667458</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073079 from iznogood)</comment>
+    <requestid>1073219</requestid>
+  </revision>
 </revisionlist>
