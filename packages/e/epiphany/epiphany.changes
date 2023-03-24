@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Mar 17 16:39:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Fix web app creation.
+  + Build against WebKitGTK 2.39.91.
+  + Updated translations
+- Drop 1295.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 10 09:34:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Fix password popover crash when username is empty
+  + Fix criticals from EphySuggestionModel
+  + Fix warning when WebExtensions directory is empty
+  + Handle WebKitGTK 2.39.90 API changes
+  + Reimplement elementary OS support
+  + Revert "add preference to set new tab page"
+  + Updated translations.
+- Changes from version 44.beta:
+  + Add preference to set new tab page
+  + Reduce history window size
+  + Implement more of browserAction WebExtension API
+  + Add toast for switch to new tab in narrow mode
+  + Handle various changes in GTK, WebKitGTK
+  + Replace info bars with popovers, dialogs, banners
+  + Improve tooltip text for add/remove bookmark button
+  + Search entry and address bar are accessible again
+  + Don't autofill passwords in sandboxed contexts
+  + Replace tab menu with AdwTabButton
+  + Many address bar behavior fixes
+  + Updated translations.
+- Changes from 44.alpha:
+  + Epiphany now uses GTK 4, libadwaita, and webkitgtk-6.0
+  + Avoid deprecated GTK APIs
+  + Reduce height of preferences window
+  + Hide bookmark star in application mode
+  + Say "Force Stop" rather than "Kill"
+  + Remove unreachable libsoup 2 code
+  + Use AdwAboutWindow for about dialog
+  + Fix crash on malformed ephy-tab:// URI
+  + Fix JS errors in about:overview
+  + Properly encode URIs when copied from address bar
+  + Bookmarks popover now uses AdwStatusPage
+  + Always show Mute Tab in context menu
+  + Hide address bar URL scheme in narrow mode
+  + WebExtensions: Implement support for special shortcut commands
+  + Remove custom desktop notification implementation
+  + Fix some memory leaks
+  + Update icons
+  + Add "epiphany" keyword to desktop entry
+  + WebExtensions: Redesign Browser Actions to have a flexible
+    presentation
+  + Add WebExtensions preferences
+  + Improve confusing code layering
+  + Accept single-label hostnames in URIs
+  + Update to highlight.js 11.7.0
+  + Add Ctrl+comma shortcut to open preferences
+  + Use terminology "web app" rather than "web application"
+  + Duplicate tab when middle clicking on Refresh button
+  + Tweak tooltips to follow HIG
+  + Fix issues found by Coverity
+  + Updated translations.
+- Drop epiphany-fix-nb-translation.patch: Fixed upstream.
+- Following upstreams port to GTK 4, libadwaita, and webkitgtk-6.0:
+  + New dependencies: pkgconfig(gcr-4), pkgconfig(gstreamer-1.0),
+    pkgconfig(gtk4), pkgconfig(gtk4-unix-print),
+    pkgconfig(libadwaita-1), pkgconfig(libportal-gtk4),
+    pkgconfig(webkitgtk-6.0) and
+    pkgconfig(webkitgtk-web-process-extension-6.0).
+  + Dropped dependencies: pkgconfig(gcr-3), pkgconfig(gtk+-3.0),
+    pkgconfig(gtk+-unix-print-3.0), pkgconfig(libdazzle-1.0),
+    pkgconfig(libhandy-1), pkgconfig(libportal-gtk3),
+    pkgconfig(webkit2gtk-4.1) and
+    pkgconfig(webkit2gtk-web-extension-4.1).
+- Pass granite=disabled to meson, we do not want to build
+  elementary OS integration.
+- Add 1295.patch: Fix build with webkitgtk 2.39.91.
+- Add back gstreamer-plugins-rs Recommends: dav1d decoder is still
+  that much lighter on cpu usage compared to aom decoder that it
+  should be preferd for most users.
+
+-------------------------------------------------------------------
 Mon Feb 20 17:12:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

@@ -17,16 +17,13 @@
 
 
 Name:           epiphany
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/43/%{name}-%{version}.tar.xz
-
-# PATCH-FIX-UPSTREAM epiphany-fix-nb-translation.patch -- Spellfix for Norwegian Bokmål translation
-Patch1:         epiphany-fix-nb-translation.patch
+Source0:        https://download.gnome.org/sources/epiphany/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -34,35 +31,36 @@ BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.2
-BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
+BuildRequires:  pkgconfig(gcr-4) >= 3.9.0
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.13
-BuildRequires:  pkgconfig(gtk+-unix-print-3.0) >= 3.22.13
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4-unix-print)
 BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
-BuildRequires:  pkgconfig(libportal-gtk3)
+BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
-BuildRequires:  pkgconfig(libsoup-3.0) >= 2.48.0
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.4
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.37.1
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.37.1
+BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.39.90
+BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0) >= 2.39.91
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates
 Recommends:     gnome-keyring
+Recommends:     gstreamer-plugins-rs
 
 %description
 Epiphany is a Web browser for the GNOME Desktop. Its principles are
@@ -106,6 +104,7 @@ search results from Web (epiphany)
 %meson \
 	-D developer_mode=false \
 	-D unit_tests=disabled \
+	-D granite=disabled \
 	%{nil}
 %meson_build
 
