@@ -1,8 +1,8 @@
-Index: gnome-shell-42.rc/data/meson.build
+Index: gnome-shell-44.beta/data/meson.build
 ===================================================================
---- gnome-shell-42.rc.orig/data/meson.build
-+++ gnome-shell-42.rc/data/meson.build
-@@ -124,8 +124,14 @@ if have_systemd
+--- gnome-shell-44.beta.orig/data/meson.build
++++ gnome-shell-44.beta/data/meson.build
+@@ -117,8 +117,14 @@ if have_systemd
      install_dir: systemduserunitdir
    )
  
@@ -19,9 +19,9 @@ Index: gnome-shell-42.rc/data/meson.build
  
    install_data(units, install_dir: systemduserunitdir)
  endif
-Index: gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service
+Index: gnome-shell-44.beta/data/org.gnome.Shell-disable-extensions.service
 ===================================================================
---- gnome-shell-42.rc.orig/data/org.gnome.Shell-disable-extensions.service
+--- gnome-shell-44.beta.orig/data/org.gnome.Shell-disable-extensions.service
 +++ /dev/null
 @@ -1,15 +0,0 @@
 -[Unit]
@@ -39,10 +39,10 @@ Index: gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service
 -# Disable extensions
 -ExecStart=gsettings set org.gnome.shell disable-user-extensions true
 -Restart=no
-Index: gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service.in
+Index: gnome-shell-44.beta/data/org.gnome.Shell-disable-extensions.service.in
 ===================================================================
 --- /dev/null
-+++ gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service.in
++++ gnome-shell-44.beta/data/org.gnome.Shell-disable-extensions.service.in
 @@ -0,0 +1,15 @@
 +[Unit]
 +Description=Disable GNOME Shell extensions after failure

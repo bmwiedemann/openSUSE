@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:33:02 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+28:
+  * status/network: Generalize code to hide subtitle
+  * screenshot: Get cursor texture from window
+  + st/icon-theme: Disconnect from settings signals on disposal
+  + workspacesView: Update visibility after updating workspaces
+  + screenshot: Use meta_window_has_pointer () for pointer check
+  + main:
+    - Add missing newlines
+    - Fix syncing animations-enabled
+  + style: Reduce padding between quick menu toggle text and
+    separator
+  + modalDialog: Fix fading out dialog
+  + endSessionDialog: Catch async errors
+  + tests:
+    - Set GNOME_SHELL_SESSION_MODE to user
+    - Add default test setup with common env settings
+  + extension-tool: Set reminder for removing old compat code
+  + Updated translations.
+- Move patch to SLE only patches:
+  + gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+
+-------------------------------------------------------------------
+Sun Mar 19 12:42:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  8 11:16:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Soup to global Requires exclude, and add a manual
+  typelib(Soup) = 3.0 Requires. Only require 3.0, before we got a
+  dependency on Soup 2.4 as well.
+- Add St, Cogl and Clutter typelibs to global Requires exclude
+  aswell. These typelibs are provided by multiple packages, but
+  currently gnome-shell gets these provided by itself or mutter.
+  We already have an explicit mutter requires in place so no more
+  changes are needed for now from our end.
+- Drop explicit typelib(Rsvg) Requires, no longer needed.
+
+-------------------------------------------------------------------
+Mon Mar  6 18:51:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Unmute to default volume when slider was at 0
+  + Fix missing battery percentage in the top bar
+  + Fix unexpected focus order after activating apps
+  + Stop using GTK for systray support
+  + Expose GtkIconTheme replacement to extensions
+  + Disallow using (most of) GTK in the compositor process
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Replace pkgconfig(gnome-desktop-3.0) with
+  pkgconfig(gnome-desktop-4) BuildRequires following upstream
+  changes.
+- Temp disable gtk-doc, fails build atm.
+  https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6486
+
+-------------------------------------------------------------------
+Fri Feb 24 12:23:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Fix screencast UI being erroneously disabled
+  + Fix unresponsive screen area when quick settings are opened
+  + Ensure completions are disabled when hiding on-screen keyboard
+  + Fix missing name in wired network quick settings button
+  + Properly apply saved shortcuts inhibition permissions
+  + Don't let wayland popovers block overview
+  + Improve high contrast styling
+  + Open correct Settings panel from on-screen keyboard menu
+  + Test running gnome-shell in CI
+  + Do not use symbolic app icons for High Contrast
+  + Prepare extension loading for ESM
+  + Fix input source switching with focus on password entry
+  + Ensure quick settings toggles align with the pixel grid
+  + Lower OOM score of gnome-shell process
+  + Polish page switching behavior during DND in app grid
+  + Tweak lock- and login screen styling
+  + Consistently link to Settings from menus
+  + Make it easier for extensions to add a credential manager
+  + Fix mount operation dialog when Disks is not available
+  + Refine quick settings
+  + Mute/unmute volume when clicking slider icon
+  + Add device menu to Bluetooth quick settings
+  + Expose list of background apps in quick settings
+  + Compile extension GSettings after install
+  + Fixed crash
+  + Plugged memory leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Replace pkgconfig(libmutter-11), pkgconfig(mutter-clutter-11),
+  pkgconfig(mutter-cogl-11) and pkgconfig(mutter-cogl-pango-11)
+  with a new mutter_api define and set it to 12. Also add a new
+  mutter_req define and set it to 44.beta. Make future versionbumps
+  more practical.
+- Rebase patches with quilt. Disable
+  gnome-shell-exit-crash-workaround.patch for now, should no longer
+  be needed + Not sure I trust the rebase quilt did.
+- Drop gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch:
+  Fixed upstream.
+- Add a glob to typelib exclude.
+
+-------------------------------------------------------------------
 Tue Feb 14 10:40:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:

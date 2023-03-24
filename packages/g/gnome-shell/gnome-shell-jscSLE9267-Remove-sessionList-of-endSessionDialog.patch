@@ -1,8 +1,8 @@
-Index: gnome-shell-42.rc/js/ui/endSessionDialog.js
+Index: gnome-shell-44.beta/js/ui/endSessionDialog.js
 ===================================================================
---- gnome-shell-42.rc.orig/js/ui/endSessionDialog.js
-+++ gnome-shell-42.rc/js/ui/endSessionDialog.js
-@@ -298,7 +298,7 @@ class EndSessionDialog extends ModalDial
+--- gnome-shell-44.beta.orig/js/ui/endSessionDialog.js
++++ gnome-shell-44.beta/js/ui/endSessionDialog.js
+@@ -296,7 +296,7 @@ class EndSessionDialog extends ModalDial
          this.contentLayout.add_child(this._applicationSection);
  
          this._sessionSection = new Dialog.ListSection({
@@ -11,7 +11,7 @@ Index: gnome-shell-42.rc/js/ui/endSessionDialog.js
          });
          this.contentLayout.add_child(this._sessionSection);
  
-@@ -773,8 +773,8 @@ class EndSessionDialog extends ModalDial
+@@ -758,8 +758,8 @@ class EndSessionDialog extends ModalDial
              this._applications.push(inhibitor);
          }
  

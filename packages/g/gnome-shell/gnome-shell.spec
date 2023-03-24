@@ -16,10 +16,12 @@
 #
 
 
-%global __requires_exclude typelib\\(Meta\\)
+%global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter\\)
+%define mutter_api 12
+%define mutter_req 44.beta
 
 Name:           gnome-shell
-Version:        43.3
+Version:        44.0+28
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -37,14 +39,10 @@ Source2:        noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
-# PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
-Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
-# PATCH-FIX-OPENSUSE gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch bsc#1205518 xwang@suse.com -- Leak the GJS context and ShellGlobal
-Patch9:         gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -65,6 +63,8 @@ Patch1009:      gnome-shell-fate324570-Make-GDM-background-image-configurable.pa
 Patch1010:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 # PATCH-FIX-SLE gnome-shell-disable-offline-update-dialog.patch bsc#944832 milachew@mail.lv -- Disable offline update suggestion before shutdown/reboot in SLE and openSUSE Leap.
 Patch1011:      gnome-shell-disable-offline-update-dialog.patch
+# PATCH-FEATURE-SLE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
+Patch1012:      gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc
@@ -87,7 +87,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.1
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.35.90
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
@@ -103,7 +103,7 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-11) >= 43.beta
+BuildRequires:  pkgconfig(libmutter-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -113,9 +113,9 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-11) >= 43.beta
-BuildRequires:  pkgconfig(mutter-cogl-11) >= 43.beta
-BuildRequires:  pkgconfig(mutter-cogl-pango-11) >= 43.beta
+BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api}) >= %{mutter_req}
+BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api}) >= %{mutter_req}
+BuildRequires:  pkgconfig(mutter-cogl-pango-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -129,8 +129,8 @@ Requires:       gnome-settings-daemon
 # "High Contrast" in accessibility status icon
 Requires:       gnome-themes-accessibility
 Requires:       gsettings-desktop-schemas
-Requires:       mutter >= 41.0
-Requires:       typelib(Rsvg)
+Requires:       mutter >= %{mutter_req}
+Requires:       typelib(Soup) = 3.0
 Recommends:     %{name}-calendar
 ## Finally, dependencies for session services that are needed for system icons and the user menu
 # bluetooth system icon
@@ -183,10 +183,8 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %prep
 %setup -q
 #patch1 -p1
-%patch5 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
+#patch8 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1
@@ -200,6 +198,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1010 -p1
 %patch1011 -p1
 %endif
+%patch1012 -p1
 %endif
 
 cp %{SOURCE2} data/theme/
@@ -210,11 +209,11 @@ cp %{SOURCE1} js/ui/
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/%{name} \
-	-Dgtk_doc=true \
-	-Dman=true \
-	-Dnetworkmanager=true \
-	-Dsystemd=true \
-        -Dtests=false \
+	-D gtk_doc=false \
+	-D man=true \
+	-D networkmanager=true \
+	-D systemd=true \
+	-D tests=false \
 	%{nil}
 %meson_build
 
@@ -243,13 +242,12 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libexecdir}/gnome-shell/gnome-shell-perf-helper
 %{_libexecdir}/gnome-shell/gnome-shell-portal-helper
 %{_libdir}/gnome-shell/Gvc-1.0.typelib
-%{_libdir}/gnome-shell/Shell-0.1.typelib
-#%%{_libdir}/gnome-shell/ShellMenu-0.1.typelib
-%{_libdir}/gnome-shell/St-1.0.typelib
+%{_libdir}/gnome-shell/Shell-12.typelib
+%{_libdir}/gnome-shell/St-12.typelib
 %{_libdir}/gnome-shell/libgnome-shell-menu.so
-%{_libdir}/gnome-shell/libgnome-shell.so
+%{_libdir}/gnome-shell/libshell-12.so
 %{_libdir}/gnome-shell/libgvc.so
-%{_libdir}/gnome-shell/libst-1.0.so
+%{_libdir}/gnome-shell/libst-12.so
 %{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
@@ -283,8 +281,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_userunitdir}/org.gnome.Shell@wayland.service
 %{_userunitdir}/org.gnome.Shell@x11.service
 %{_userunitdir}/org.gnome.Shell-disable-extensions.service
-%{_sysconfdir}/xdg/autostart/gnome-shell-overrides-migration.desktop
-%{_libexecdir}/gnome-shell/gnome-shell-overrides-migration.sh
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
@@ -312,7 +308,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 
 %files devel
 %doc HACKING.md
-%doc %{_datadir}/gtk-doc/html
+#%%doc %%{_datadir}/gtk-doc/html
 %{_bindir}/gnome-shell-extension-tool
 %{_bindir}/gnome-shell-perf-tool
 %{_datadir}/gnome-shell/*.gir
@@ -320,7 +316,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/gir-1.0/Shew-0.gir
 
 %files calendar
-%{_datadir}/applications/evolution-calendar.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-calendar-server
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 

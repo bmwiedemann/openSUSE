@@ -1,13 +1,13 @@
-Index: gnome-shell-42.rc/src/main.c
+Index: gnome-shell-44.beta/src/main.c
 ===================================================================
---- gnome-shell-42.rc.orig/src/main.c
-+++ gnome-shell-42.rc/src/main.c
-@@ -569,7 +569,7 @@ main (int argc, char **argv)
-       ecode = EXIT_FAILURE;
-     }
+--- gnome-shell-44.beta.orig/src/main.c
++++ gnome-shell-44.beta/src/main.c
+@@ -680,7 +680,7 @@ main (int argc, char **argv)
+   g_object_unref (shell_global_get ());
  
+   g_debug ("Tearing down the mutter context");
 -  meta_context_destroy (g_steal_pointer (&context));
 +  g_steal_pointer (&context);
  
-   shell_profiler_shutdown ();
- 
+   return ecode;
+ }

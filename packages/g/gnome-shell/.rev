@@ -2085,4 +2085,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 1065710 from iznogood)</comment>
     <requestid>1065738</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>cb01c8b5285833fb6209f05912e90916</srcmd5>
+    <version>44.0+28</version>
+    <time>1679667514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073813</requestid>
+  </revision>
 </revisionlist>
