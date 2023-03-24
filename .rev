@@ -67,4 +67,14 @@
   * Remove spell check setting</comment>
     <requestid>1069116</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f92359b3a05d36aeba623f94dd5a766</srcmd5>
+    <version>0.4.2</version>
+    <time>1679667696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Maintenance release with fix for CVE-2023-28686 and bug fixes.
+    See https://dino.im/security/cve-2023-28686</comment>
+    <requestid>1074095</requestid>
+  </revision>
 </revisionlist>

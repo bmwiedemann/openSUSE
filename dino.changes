@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 07:49:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.2:
+  * Maintenance release with fix for CVE-2023-28686 and bug fixes.
+    See https://dino.im/security/cve-2023-28686
+
+-------------------------------------------------------------------
 Fri Mar  3 08:01:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.1 bugfix release:
