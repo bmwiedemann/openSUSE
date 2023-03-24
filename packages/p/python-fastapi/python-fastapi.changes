@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 20 11:52:11 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Ignore extra tests to allow building with ringdisabled.
+
+- Update to 0.95.0:
+  * Highlights
+    - This release adds support for dependencies and parameters 
+      using Annotated and recommends its usage. 
+  * Features
+    - Add support for PEP-593 Annotated for specifying dependencies 
+      and parameters. PR #4871 by @nzig.
+  * Docs
+    - Tweak tip recommending Annotated in docs. 
+      PR #9270 by @tiangolo.
+    - Update order of examples, latest Python version first, and 
+      simplify version tab names. PR #9269 by @tiangolo.
+    - Update all docs to use Annotated as the main recommendation, 
+      with new examples and tests. PR #9268 by @tiangolo.
+
+-------------------------------------------------------------------
 Tue Mar 14 09:28:08 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.94.1:
