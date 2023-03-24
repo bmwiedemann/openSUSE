@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
