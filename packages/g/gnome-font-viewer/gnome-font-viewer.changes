@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:16:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Fonts 44.0 comes with general consistency improvements to the
+    application:
+    - The app now provides standard shortcuts like Ctrl+Q and
+      Ctrl+F.
+    - New widgetry allows for navigation via the back mouse button,
+      alt+arrows, and touchscreen swipes.
+    - Various buttons can now be used with mnemonics.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:24:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:20:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + The app now provides standard shortcuts like Ctrl+Q and Ctrl+F
+  + New widgetry allows for navigation via the back mouse button,
+    alt+arrows, and touchscreen swipes
+  + Various buttons can now be used with mnemonics
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 19:08:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

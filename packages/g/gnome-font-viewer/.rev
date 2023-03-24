@@ -311,4 +311,12 @@
     <comment></comment>
     <requestid>1004796</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b9db406d9a69795dcd8ed3c66b5bc65e</srcmd5>
+    <version>44.0</version>
+    <time>1679667576</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073062 from iznogood)</comment>
+    <requestid>1073211</requestid>
+  </revision>
 </revisionlist>
