@@ -18,7 +18,7 @@
 
 Name:           libwrc
 %define lname	libwrc1
-Version:        20230214
+Version:        20230318
 Release:        0
 Summary:        Library to support the Windows Resource Compiler format
 License:        LGPL-3.0-or-later

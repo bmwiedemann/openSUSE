@@ -158,4 +158,12 @@
     <comment>- Update to reelease 20230214</comment>
     <requestid>1065865</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>63032072e542d6a583018bc0aabbba9a</srcmd5>
+    <version>20230318</version>
+    <time>1679667664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230318</comment>
+    <requestid>1073904</requestid>
+  </revision>
 </revisionlist>
