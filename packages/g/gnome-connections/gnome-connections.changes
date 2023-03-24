@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 18 10:50:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Added rdp-preferences-window.vala to POTFILES.in.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  3 19:11:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Update gtk-frdp.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 20:36:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Update gtk-frdp
+  + Allow resizing of remote desktops
+  + Use app-id for icon name
+  + Keep aspect ratios of remote desktops
+  + Fix position of cursor for original scale
+  + Switch to master branch of gtk-frdp
+  + Use GNOME module post_install with meson
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 14:37:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

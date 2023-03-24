@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-connections
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gnome-connections
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
-Source:         https://download.gnome.org/sources/gnome-connections/43/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-connections/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -57,10 +57,10 @@ A remote desktop client for the GNOME desktop environment.
 %find_lang %{name}
 # gtk-frdp is a subproject, do not offer it for consumption outside
 rm -rf %{buildroot}%{_includedir}/%{name}/gtk-frdp/
-rm %{buildroot}%{_libdir}/gnome-connections/pkgconfig/gtk-frdp-0.1.pc
-rm %{buildroot}%{_datadir}/gnome-connections/gir-1.0/GtkFrdp-0.1.gir
-rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.deps
-rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.vapi
+rm %{buildroot}%{_libdir}/gnome-connections/pkgconfig/gtk-frdp-0.2.pc
+rm %{buildroot}%{_datadir}/gnome-connections/gir-1.0/GtkFrdp-0.2.gir
+rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.2.deps
+rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.2.vapi
 
 %check
 %meson_test
@@ -70,8 +70,8 @@ rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.vapi
 %{_bindir}/gnome-connections
 %dir %{_libdir}/gnome-connections
 %dir %{_libdir}/gnome-connections/girepository-1.0
-%{_libdir}/gnome-connections/girepository-1.0/GtkFrdp-0.1.typelib
-%{_libdir}/gnome-connections/libgtk-frdp-0.1.so
+%{_libdir}/gnome-connections/girepository-1.0/GtkFrdp-0.2.typelib
+%{_libdir}/gnome-connections/libgtk-frdp-0.2.so
 %{_datadir}/metainfo/org.gnome.Connections.appdata.xml
 %{_datadir}/applications/org.gnome.Connections.desktop
 %{_datadir}/dbus-1/services/org.gnome.Connections.service
