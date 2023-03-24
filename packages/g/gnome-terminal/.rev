@@ -2424,4 +2424,12 @@
   * Updated translations. (forwarded request 1065726 from iznogood)</comment>
     <requestid>1065739</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>2dd6c73626e32a32ffd287ad91b1e6b4</srcmd5>
+    <version>3.48.0</version>
+    <time>1679667459</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073080 from iznogood)</comment>
+    <requestid>1073220</requestid>
+  </revision>
 </revisionlist>

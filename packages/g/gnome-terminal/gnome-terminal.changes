@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:41:27 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 3.48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 06 17:04:26 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 3.47.99:
+  + util: Also check /usr/etc for xdg-terminal-exec configuration
+  + docs: Document new color schemes
+
+-------------------------------------------------------------------
+Sun Feb 26 15:31:23 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 3.47.92:
+  + all:
+    - Implement xdg-terminal-exec support
+    - Make env filtering uniform
+    - ODR fix
+    - Replace %m with using g_strerror() in printf calls
+  + build:
+    - Add define for openbsd
+    - Add install tags
+    - Assert sanity
+    - Build fix for netbsd
+    - Fix libc feature defines
+    - Fix nautilus extension install directory
+    - More detailed version info
+    - Output warning on unstable release
+    - Remove erroneous volatile
+    - Remove unnecessary meson version check
+    - Update meson req version
+    - Update nautilus extension build req
+    - Update README
+    - Use built-in mandir option
+    - Use non-deprecated API
+    - Validate all desktop files
+    - Validate metainfo files
+  + client:
+    - Improve env var filters
+    - legacy: Drop debug messages
+    - legacy: Fix typo assigning XDG_ACTIVATION_TOKEN
+    - More env vars to filter
+    - Transport XDG_ACTIVATION_TOKEN to the server
+    - Use verified schema
+    - utils: Fix unused function warning on non-debug build
+  + desktop:
+    - Use Preferences icon
+    - Use standard key
+  + docs:
+    - Fix some typos in README
+    - Fix some wrong info in README
+  + icons: Add separate icons for Preferences
+  + l10n: Remove mjw from LINGUAS
+  + metainfo:
+    - Add launchable info
+    - Fix broken metainfo translations
+    - Pass validation
+  + nautilus:
+    - Don't include gdk headers in the nautilus extension
+    - Fix build
+    - Fix macro redefinition warning
+    - Try to fix the build with nautilus 43
+  + po: Mark bogus translated string as fuzzy
+  + prefs:
+    - Add NoDisplay desktop file for the prefs binary
+    - Fix default terminal check
+    - Fix serialisation format
+    - Fix standalone launch of g-t-preferences
+    - Hold application while the prefs are shown
+    - Make preferences dialogue OOP
+    - Move prefs binary to libexecdir
+    - Reduce default bus timeout
+    - Sink a floating variant
+    - Try to improve translator hint comment
+    - Use autocleanup more
+    - Use default timeout when debugging
+    - Use different wm class
+    - Use new icon
+  + profile:
+    - Use correct schema source for the profiles list schema
+    - Use the correct schema source to lookup schemas
+  + Revert "screen: Use clean env when creating new tab"
+  + screen:
+    - Add some missing casts
+    - Use correct environment filter
+  + settings:
+    - Consolidate settings related code into one source file
+    - Import some backend specific code from glib
+    - Remove direct dconf dependency
+  + util: Fix interpretation of TryExec desktop entry key
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Feb 14 11:09:43 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 3.46.8:
