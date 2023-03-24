@@ -546,4 +546,12 @@
     <comment></comment>
     <requestid>1004812</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c403a3f51187424fb4d6df02afb24620</srcmd5>
+    <version>44.0</version>
+    <time>1679667455</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1073072 from iznogood)</comment>
+    <requestid>1073216</requestid>
+  </revision>
 </revisionlist>
