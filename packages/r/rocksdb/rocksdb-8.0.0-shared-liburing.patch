@@ -1,0 +1,13 @@
+Index: rocksdb-8.0.0/cmake/modules/Finduring.cmake
+===================================================================
+--- rocksdb-8.0.0.orig/cmake/modules/Finduring.cmake
++++ rocksdb-8.0.0/cmake/modules/Finduring.cmake
+@@ -7,7 +7,7 @@
+ find_path(uring_INCLUDE_DIR
+   NAMES liburing.h)
+ find_library(uring_LIBRARIES
+-  NAMES liburing.a liburing)
++  NAMES liburing.so liburing)
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(uring

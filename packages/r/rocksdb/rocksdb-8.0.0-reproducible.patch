@@ -1,0 +1,20 @@
+Index: rocksdb-8.0.0/Makefile
+===================================================================
+--- rocksdb-8.0.0.orig/Makefile
++++ rocksdb-8.0.0/Makefile
+@@ -787,9 +787,12 @@ ROCKSDB_PATCH = $(shell grep -E "ROCKSDB
+ # the file needs to already exist or else the build will fail
+ ifndef NO_UPDATE_BUILD_VERSION
+ 
+-# By default, use the current date-time as the date.  If there are no changes,
+-# we will use the last commit date instead.
+-build_date := $(shell date "+%Y-%m-%d %T")
++DATE_FMT = %Y-%m-%d
++ifdef SOURCE_DATE_EPOCH
++	build_date ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" "+$(DATE_FMT)" 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" "+$(DATE_FMT)" 2>/dev/null || date -u "+$(DATE_FMT)")
++else
++	build_date ?= $(shell date "+$(DATE_FMT)")
++endif
+ 
+ ifdef FORCE_GIT_SHA
+ 	git_sha := $(FORCE_GIT_SHA)

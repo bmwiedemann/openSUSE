@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53df7096236542860839b53302c7933b</srcmd5>
+    <version>8.0.0</version>
+    <time>1679667676</time>
+    <user>dimstar_suse</user>
+    <comment>RocksDB for review.
+
+The conflict with mariadb is still a problem. Debian solved this by making mariadb pull in rocksdb-tools. We could do the same for TW</comment>
+    <requestid>1073982</requestid>
+  </revision>
+</revisionlist>
