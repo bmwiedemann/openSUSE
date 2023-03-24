@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Mar 20 21:48:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to jupyter_server_ydoc 0.8.0
+  * Creates document session #108 (@hbcarlos)
+
+-------------------------------------------------------------------
+Sun Feb 12 17:31:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Downgrade to v0.6.1
+  * jupyterlab, the only consumer, requires jupyter-server-ydoc<0.7
+  * v0.6.2 has been yanked
+
+-------------------------------------------------------------------
+Sun Feb  5 17:02:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.7
+- Last version to use the name jupyter-server-ydoc
