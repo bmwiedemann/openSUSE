@@ -1,7 +1,7 @@
 #
 # spec file for package lshw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.19.2+git.20220831
+Version:        B.02.19.2+git.20230320
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only

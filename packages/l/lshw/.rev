@@ -314,4 +314,14 @@ factory)</comment>
   * PA-RISC: handle pushd failure</comment>
     <requestid>1037877</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4d4d9d2210cad4c90b7f27f184219412</srcmd5>
+    <version>B.02.19.2+git.20230320</version>
+    <time>1679667655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2+git.20230320 (bsc#1209531):
+  * fix NVMe multipath detection
+  * NVMe: fix logical name with native multipath</comment>
+    <requestid>1073912</requestid>
+  </revision>
 </revisionlist>

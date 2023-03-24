@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:23:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.19.2+git.20230320 (bsc#1209531):
+  * fix NVMe multipath detection
+  * NVMe: fix logical name with native multipath
+
+-------------------------------------------------------------------
 Thu Nov 24 12:10:56 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19.2+git.20220831:
