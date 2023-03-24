@@ -141,20 +141,8 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 
 rm -rf %{buildroot}%{libdir}/drbd/crm-*fence-peer.sh     # bsc#1204276
 
-%if 0%{?suse_version} < 1550
-    # create symlink for bsc#1206364
-    rmdir %{buildroot}/lib/drbd
-    ln -sf %{libdir}/drbd %{buildroot}/lib/drbd
-%endif
-
 %pre
 %service_add_pre %{services}
-%if 0%{?suse_version} < 1550
-if [ ! -L /lib/drbd ] && [ -d /lib/drbd ]; then
-    rm -rf /lib/drbd.rpmmoved
-    mv /lib/drbd /lib/drbd.rpmmoved
-fi
-%endif
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/drbd.conf
@@ -178,6 +166,22 @@ ln -sf drbd.conf-9.0.5.gz %{_mandir}/ja/man5/drbd.conf.5.gz
 %postun
 %service_del_postun %{services}
 
+%if 0%{?suse_version} < 1550
+if [ -d /lib/drbd ]; then
+  rm -rf /lib/drbd.rpmmoved
+  mv /lib/drbd /lib/drbd.rpmmoved
+elif [ ! -e %{libdir}/drbd ] && [ -L /lib/drbd ]; then
+  rm /lib/drbd
+fi
+%endif
+
+%posttrans
+%if 0%{?suse_version} < 1550
+if [ ! -e /lib/drbd ]; then
+  ln -sf %{libdir}/drbd /lib/drbd
+fi
+%endif
+
 %files -n drbd-utils
 %config(noreplace) %{_sysconfdir}/drbd.conf
 %config(noreplace) %{_sysconfdir}/drbd.d/global_common.conf
@@ -198,11 +202,6 @@ ln -sf drbd.conf-9.0.5.gz %{_mandir}/ja/man5/drbd.conf.5.gz
 %dir %{_sysconfdir}/multipath
 %dir %{_sysconfdir}/multipath/conf.d
 %{libdir}/drbd
-%if 0%{?suse_version} < 1550
-    # symlink for bsc#1206364
-    /lib/drbd
-    %ghost /lib/drbd.rpmmoved
-%endif
 %{sbindir}/drbdadm
 %{sbindir}/drbdsetup
 %{sbindir}/drbdmeta

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 23 06:22:17 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
+
+- bsc#1208922: fails to replace directory /lib/drbd with symlink
+  * modify drbd-utils.spec to manipulate the symlink in %postun and %posttrans script
+
+-------------------------------------------------------------------
 Fri Mar 10 07:42:09 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
 
 - bsc#1208922: fails to replace directory /lib/drbd with symlink
