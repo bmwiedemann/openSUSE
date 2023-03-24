@@ -1,7 +1,7 @@
 #
 # spec file for package libpanel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define libname %{name}1-1
 
 Name:           libpanel
-Version:        1.0.2
+Version:        1.2.0
 Release:        0
 Summary:        IDE paneling library for GTK
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libpanel
-Source:         https://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/%{name}/1.2/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Mar 17 19:36:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + CSS fixes for libadwaita 1.4.
+  + Fix various gidoc warnings.
+  + Remove use of g_autoptr() which creeped in.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:32:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + Fix various leaks
+  + Improved gir annoations
+  + Docs cleanup
+  + Fixes for use with AdwTabView
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:43:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Tooltip improvements.
+  + Improved page closed handling.
+  + PanelDock::create-frame(position) signal was added.
+  + PanelDock::adpot-widget() signal was added.
+  + Correctness fixes in PanelActionMuxer.
+  + Improved i18n support.
+  + Updated translations.
+- Changes from version 1.1.0:
+  + DnD fixes.
+  + PanelWidget:tooltip property to set tooltips on tabs.
+  + Disable ctrl+home/end from adwaita for tabs by default.
+  + CSS tweaks.
+  + A new frame.close-all action.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Nov  3 11:09:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.2:
