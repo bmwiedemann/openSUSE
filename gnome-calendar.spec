@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calendar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calendar/44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.1
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.45.1
 BuildRequires:  pkgconfig(libedataserverui4-1.0) >= 3.45.1
@@ -52,6 +51,7 @@ Summary:        GNOME Shell search provider to return results from the GNOME Cal
 Group:          Productivity/Office/Organizers
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-gnome-calendar
 This package contains a search provider to enable GNOME Shell to get

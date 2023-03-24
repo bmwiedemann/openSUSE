@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 16 16:52:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  7 08:41:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Various fixes to calendar parsing
+  + Fix sidebar not opening events
+  + Fix search not working anymore
+  + Updated translations.
+- Drop obsolete and unused pkgconfig(libdazzle-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Feb 24 18:25:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Fix moving event to different calendars
+  + Improve default sizing of event editor dialog
+  + Updated translations.
+- Build sub-package gnome-shell-search-provider-gnome-calendar as
+  noarch.
+
+-------------------------------------------------------------------
 Tue Oct 18 07:57:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
