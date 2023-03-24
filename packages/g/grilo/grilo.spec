@@ -37,8 +37,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:  pkgconfig(libsoup-2.4)
-#BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(oauth)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
@@ -140,7 +139,7 @@ various sources using a single API.
 
 %build
 %meson \
-	-D soup3=false \
+	-D soup3=true \
 	%{nil}
 %meson_build
 

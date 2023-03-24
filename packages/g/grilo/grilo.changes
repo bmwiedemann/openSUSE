@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 23 15:21:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to soup3 again: Drop pkgconfig(libsoup-2.4) and enable
+  pkgconfig(libsoup-3.0) BuildRequires and pass soup3=true to
+  meson.
+
+-------------------------------------------------------------------
 Mon Aug 29 18:00:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add back pkgconfig(libsoup-2.4) and disable

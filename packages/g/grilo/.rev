@@ -390,4 +390,14 @@
     <comment></comment>
     <requestid>1000471</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>9e32b9f58a4b9848c2fe51737fefc535</srcmd5>
+    <version>0.3.15</version>
+    <time>1679667466</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to soup3 again: Drop pkgconfig(libsoup-2.4) and enable
+  pkgconfig(libsoup-3.0) BuildRequires and pass soup3=true to
+  meson. (forwarded request 1073090 from iznogood)</comment>
+    <requestid>1073226</requestid>
+  </revision>
 </revisionlist>
