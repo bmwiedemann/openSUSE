@@ -51,4 +51,13 @@
   * Update to JupyterLab 2.0</comment>
     <requestid>976236</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0e69b317eea143e93a64c3e86fd1adc2</srcmd5>
+    <version>3.1.0</version>
+    <time>1679667630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Build Requirements (avoid have choice jupyterlab)
+</comment>
+    <requestid>1073769</requestid>
+  </revision>
 </revisionlist>

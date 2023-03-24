@@ -27,9 +27,8 @@ URL:            https://github.com/jupyterlab/jupyterlab-latex
 Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_latex/jupyterlab_latex-%{version}-py3-none-any.whl
 Source99:       jupyter-jupyterlab-latex-rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab
-BuildRequires:  jupyter-notebook
 BuildRequires:  python-rpm-macros
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-pip
 Requires:       jupyter-notebook
