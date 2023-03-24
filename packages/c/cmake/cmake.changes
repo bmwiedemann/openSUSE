@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 14 20:15:20 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 3.26.0
+  * The “ASM_MARMASM” language was added to support the Microsoft
+    ARM assembler language.
+  * CMake now writes a YAML log of configure-time checks to
+    “CMakeFiles/CMakeConfigureLog.yaml” under the top of the build
+    tree.
+  * The “cmake-file-api(7)” “codemodel” version 2 “target” object
+    gained a new “fileSets” field and associated “fileSetIndex”
+    field to “sources” objects.
+
+-------------------------------------------------------------------
 Tue Mar 14 19:18:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.25.3:

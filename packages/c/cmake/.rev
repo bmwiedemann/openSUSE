@@ -2014,4 +2014,20 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>1071877</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>0f3839873441de9292031bdb7f3a9894</srcmd5>
+    <version>3.26.0</version>
+    <time>1679667347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.26.0
+  * The “ASM_MARMASM” language was added to support the Microsoft
+    ARM assembler language.
+  * CMake now writes a YAML log of configure-time checks to
+    “CMakeFiles/CMakeConfigureLog.yaml” under the top of the build
+    tree.
+  * The “cmake-file-api(7)” “codemodel” version 2 “target” object
+    gained a new “fileSets” field and associated “fileSetIndex”
+    field to “sources” objects.</comment>
+    <requestid>1073364</requestid>
+  </revision>
 </revisionlist>
