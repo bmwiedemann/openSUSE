@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 23 15:45:50 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.7.7:
+  * Media Server: fix issues in upnp-to-recoll search translation,
+    and improve search behaviour with some control points
+    (BubbleUPnP and Linn Kazoo).
+  * Fix potential issues with parallel requests.
+  * Uprcl: index artist documents so that they can be searched for
+  * When a search request is relative to objid "0", use the plugin
+    root instead of last browsed container.
+  * Avoid phantom entries by adjusting the result count for entries
+    filtered out by class.
+- Update to 1.7.2:
+  * Fix URL comparison issue which could cause false diags in checkContentFormat()
+  * Change the default value for checkcontentformat from true to false.
+  * Qobuz: always use https.
+  * New radio-browser Media Server plugin for https://www.radio-browser.info/
+  * Ensure that we exit when getting a terminating signal while waiting
+    for mpd during init
+- Update to 1.7.1:
+  * Uprcl Media Server: report composers as <upnp:artist role="Composer">
+  * Uprcl: fix possible infinite loop while parsing search string.
+- Update to 1.7.0:
+  * Media Server: implement rootalias parameter to point to arbitrary
+    container inside the tree. This is to avoid useless navigation from
+    the actual root for people who, e.g., only use the uprcl '[folders]' tree.
+  * Uprcl: support multiple values for tags (e.g. multiple genres).
+  * Uprcl: fix miscellaneous small issues.
+  * Removed Spotify support as libspotify does not work any more.
+
+-------------------------------------------------------------------
 Sat Dec  3 11:08:35 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.6.2:
