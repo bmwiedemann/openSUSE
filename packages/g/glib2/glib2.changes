@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:16:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.1:
+  + Fix build failures in third party C++ projects using
+    `g_strdup()` via C++ qualified symbol lookup.
+  + Downgrade critical warnings from `GFileInfo` about missing
+    attributes to debug messages, as it was affecting too many
+    apps; the critical warnings will be reinstated early in the
+    2.78 cycle, so apps should continue to fix their ambiguous use
+    of `GFileInfo` API.
+  + Bugs fixed: glgo#GNOME/GLib#159, glgo#GNOME/GLib#352,
+    glgo#GNOME/GLib#919, glgo#GNOME/GLib#2922,
+    glgo#GNOME/GLib#2936, glgo#GNOME/GLib#2943,
+    glgo#GNOME/GLib#2948, glgo#GNOME/GLib!3241,
+    glgo#GNOME/GLib!3315, glgo#GNOME/GLib!3318,
+    glgo#GNOME/GLib!3319, glgo#GNOME/GLib!3321,
+    glgo#GNOME/GLib!3323, glgo#GNOME/GLib!3324,
+    glgo#GNOME/GLib!3325, glgo#GNOME/GLib!3330,
+    glgo#GNOME/GLib!3338.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 10 16:55:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.0:
+  + Fix several regressions in handling `GFileInfo` attributes
+  + Bugs fixed:
+    - ETAG_VALUE not set in GFileInfo when requested
+    - File attributes are not set when their value is FALSE/NULL
+    - gfile: Fix file size detection when copying on btrfs
+    - glocalfileinfo:
+      . Mark the lost+found dir as hidden again
+      . Ensure that is-backup is always set
+  + Updated translations.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
+Wed Mar  8 16:10:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.75.4:
+  + Emit a critical warning when acquiring the notification queue
+    during GObject finalization. A type's `finalize()`
+    implementation should not call public API that emits property
+    notifications.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  7 10:23:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase glib2-suppress-schema-deprecated-path-warning.patch with
+  quilt.
+
+-------------------------------------------------------------------
+Fri Feb 24 15:54:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix license files in packages: COPYING in the source tree is
+  a symlink to LICENSES/LGPL-2.1-or-later.txt, but rpm's %license
+  macro copies the symlink, not the target. Explicitly package
+  LICENSES/LGPL-2.1-or-later.txt in this case (boo#1208497).
+
+-------------------------------------------------------------------
+Fri Feb 24 13:09:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.75.3:
+  + Drop the implementation of GSlice, and make the API use the
+    system `malloc()` internally.
+  + Use a thread-spawning thread to keep thread scheduler settings
+    consistent; fixes GThreadPool critical warnings due to failing
+    to set scheduler settings in some situations.
+  + GIR annotation improvements for multiple APIs.
+  + Optimise printing of nested maybes in `g_variant_print()`.
+  + Use `tap` test protocol within GLib, and support TAP 13/14.
+  + Fix a regression in glib-compile-schemas 2.75.2 causing schemas
+    and override files to be sorted incorrectly.
+  + Support per-desktop overrides in `GSettingsAction`.
+  + Various optimisations to `GString`.
+  + Reduce allocations in message printing functions if there’s
+    nothing to format.
+  + Add inline version of `g_strdup()`, allowing the compiler to do
+    `NULL` folding and constant folding on `strlen()` calls.
+  + Add a `GPathBuf` API for building and manipulating file paths.
+  + Add `g_string_free_and_steal()` and use it to warn on unused
+    results from`g_string_free (_, FALSE)`.
+  + Add `g_free_sized()` and `g_aligned_free_sized()` to mirror the
+    upcoming `free_sized()` function in C23; use these if porting
+    away from `g_slice_free()`.
+  + Fix underspecified dependencies on generated headers in
+    `meson.build`, which should reduce spurious build failures.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 24 02:50:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.75.2:
+  + Add `g_ptr_array_sort_values()` and
+    `g_ptr_array_sort_values_with_data()` APIs.
+  + Some fixes for activation of UWP apps on Windows.
+  + Support Markdown output from `gdbus-codegen`.
+- Changes from version 2.75.1:
+  + Add new `GFileInfo` properties for large thumbnails.
+  + Fix missing input validation in `GDBusMenuModel`.
+  + Change default `g_desktop_app_info_search()` algorithm to
+    include substring matches.
+  + Various GVariant security fixes when handling untrusted data.
+  + Add support for XDG Activation protocol in `GAppLaunchContext`.
+  + Return `application/x-zerosize` rather than `text/plain` as
+    content type for empty files.
+  + Deprecate `-Druntime_libdir` configure option because it was
+    unused.
+  + Check for snap plugs when accessing portals.
+  + Add `GArray` and `GPtrArray` constructors to take or copy C
+    arrays.
+  + Add `GHashTable` methods to get and steal hash table keys and
+    values as `GPtrArray`s.
+  + Change the default D-Bus system bus socket address from
+    `/var/run/dbus/system_bus_socket` to
+    `/run/dbus/system_bus_socket`, in line with changes in
+    dbus.git.
+- Drop glib2-dbus-socket-path.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Feb 23 14:27:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.6:

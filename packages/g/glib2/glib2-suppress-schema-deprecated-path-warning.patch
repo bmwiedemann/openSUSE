@@ -1,8 +1,8 @@
-Index: glib-2.74.1/gio/glib-compile-schemas.c
+Index: glib-2.75.3/gio/glib-compile-schemas.c
 ===================================================================
---- glib-2.74.1.orig/gio/glib-compile-schemas.c
-+++ glib-2.74.1/gio/glib-compile-schemas.c
-@@ -1234,6 +1234,7 @@ parse_state_start_schema (ParseState  *s
+--- glib-2.75.3.orig/gio/glib-compile-schemas.c
++++ glib-2.75.3/gio/glib-compile-schemas.c
+@@ -1231,6 +1231,7 @@ parse_state_start_schema (ParseState  *s
        return;
      }
  
@@ -10,7 +10,7 @@ Index: glib-2.74.1/gio/glib-compile-schemas.c
    if (path && (g_str_has_prefix (path, "/apps/") ||
                 g_str_has_prefix (path, "/desktop/") ||
                 g_str_has_prefix (path, "/system/")))
-@@ -1246,6 +1247,7 @@ parse_state_start_schema (ParseState  *s
+@@ -1243,6 +1244,7 @@ parse_state_start_schema (ParseState  *s
        g_printerr ("%s\n", message);
        g_free (message);
      }

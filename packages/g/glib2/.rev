@@ -2117,4 +2117,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
 Extra note: I see glib2 in G:N is missing its link - manual merge needed after ack of this. (forwarded request 1067421 from iznogood)</comment>
     <requestid>1067449</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>10510356ec9aacc533db5f58a4af7695</srcmd5>
+    <version>2.76.1</version>
+    <time>1679667519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073814</requestid>
+  </revision>
 </revisionlist>
