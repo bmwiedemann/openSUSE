@@ -45,6 +45,7 @@ implementing the Q16.16 format.
 Summary:        Header files for fixmath, a fixed-point math library
 Requires:       %name = %version
 Conflicts:      %name < %version-%release
+BuildArch:      noarch
 
 %description devel
 fixmath is a fixed-point math operations library written in C and
@@ -57,8 +58,8 @@ This package contains the headers.
 
 %build
 # Fix lto-no-text-in-archive rpmlint error
-export CFLAGS="${CFLAGS} -ffat-lto-objects"
-export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
+export CFLAGS="%{optflags} -ffat-lto-objects"
+export CXXFLAGS="%{optflags} -ffat-lto-objects"
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
 # Remove -fsanitize=undefined opts in SLE-12-SP5
 sed -e '/set(sanitizer_opts/d' -i tests/tests.cmake

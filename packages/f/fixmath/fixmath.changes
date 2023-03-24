@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 21 14:54:01 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Properly use optflags when building, bsc#1209201
+
+-------------------------------------------------------------------
 Wed Mar 15 13:13:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symbol versioning to library [boo#1209301]
