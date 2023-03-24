@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 20 09:18:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Change "Open Folder" to "Open Externally".
+  + Allow activating the menu by pressing the F10 key.
+  + Misc string changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 11:23:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 15:05:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Change "Open Folder" to "Open Externally".
+  + Allow activating the menu by pressing the F10 key.
+  + Misc string changes.
+  + Updated translations.
+- Add desktop-file-utils BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sun Sep 18 18:07:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

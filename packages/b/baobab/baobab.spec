@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,14 +20,15 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
-Source0:        https://download.gnome.org/sources/baobab/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/baobab/44/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
