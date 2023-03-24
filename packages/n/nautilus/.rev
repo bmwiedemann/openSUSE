@@ -1516,4 +1516,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1060497</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>0f46c0bea05a8f852830666e888e0de8</srcmd5>
+    <version>44.0</version>
+    <time>1679667418</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072625 from iznogood)</comment>
+    <requestid>1073162</requestid>
+  </revision>
 </revisionlist>

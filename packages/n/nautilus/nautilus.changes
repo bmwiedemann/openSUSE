@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Mar 17 13:08:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Bugfixes:
+    - Prevent rubberband selection instead of drag and drop.
+    - Fix critical errors with recent GLib versions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  5 13:13:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + Fix crashes caused by extra free call
+  + Fix file order after renaming
+  + Fix libadwaita include path
+  + Fix handling of missing dates from Tracker
+  + Cache clock format setting
+  + Try to own dbus name at the correct time
+  + Exchange mismatched error messages
+  + Updated translations.
+- Add explicit tracker BuildRequires, now needed for tests due to
+  changes in tracker/tracker-miners.
+
+-------------------------------------------------------------------
+Fri Feb 24 16:01:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + Enhacements:
+    - Make various appdata and desktop file improvements
+    - Make rubberband to have rounded corners
+    - Make several documentation improvements
+  + Bugfixes:
+    - Fix crashes caused by inverted g_assert condition
+    - Fix various drag and drop issues
+    - Fix several memory leaks
+    - Fix various three expander issues
+    - Export FileManager1 iface from dbus_register vfunc
+    - Fix other issues
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:08:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.alpha:
+  + Enhancements:
+    - Allow expanding subfolders in the list.
+    - Enrich tab context menus.
+    - Allow pasting image data into new PNG file.
+    - Use pregenerated thumbnails when available, e.g. MTP.
+    - Add shortcut for Preferences.
+    - Show full filename in grid, using tooltips.
+    - Reintroduce 64px icon size for grid view.
+    - Remove upper limit on thumbnailing file size range.
+    - Reword "application" to "app".
+    - Other papercuts.
+  + Other bugfixes:
+    - Avoid many crashes.
+    - Fix and improve autorun support.
+    - Fix some drag-and-drop issues.
+    - Fix some view focus and selection issues.
+    - Fix properties extensions bugs.
+    - Fix memory leaks.
+    - Fix building on certain cases.
+    - Fix bugs with file operations.
+    - Resolve some performance issues.
+    - Resolve stuttering scrolling.
+    - Save and restore sort column.
+    - Reimplement view navigation from the previewer.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan 19 12:44:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:
