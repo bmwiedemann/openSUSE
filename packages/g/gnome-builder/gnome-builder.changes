@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:19:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Fix use of unstable libadwaita API.
+  + The GJS template now uses runAsync to run the application main
+    loop.
+  + Many symbolic PNGs were regenerated from SVG sources to reduce
+    the need for runtime generation of icons.
+  + Add status message for codeshot plugin missing from
+    configuration overview.
+  + Bundle `info-symbolic` icon which is missing from some desktops
+    such as Elementary OS.
+- Drop patch fixed upstream:
+  + d89a5c95e43f4a4e1a4e9d063e3962bac8e51db0.patch
+
+-------------------------------------------------------------------
+Sun Mar 19 07:57:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream build fix patch:
+  + d89a5c95e43f4a4e1a4e9d063e3962bac8e51db0.patch: Revert "Fix
+    adw_expander_row_add_action() deprecation warning".
+
+-------------------------------------------------------------------
+Fri Mar 17 20:59:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + Improvements to IdeRunContext
+  + Gradle now checks to see if gradle wrapper already exists
+  + Todo plugin got style improvements
+  + A new "codeshot" plugin to take stylized screenshots of code
+  + Many shortcuts can now be modified by users in preferences
+  + Meson template updates
+  + The gdb plugin will now use --cd to change directories instead
+    of -ex to execute the command
+  + The terminal plugin has received style and UI updates
+  + Builder will now enforce a `.xml` suffix when installing style
+    schemes for users to ensure they are picked up by GtkSourceView
+  + An existing greeter will be used when possible when trying to
+    perform operations which require a greeter window
+  + Updates for recent WebKit ABI breaks and work around a crash in
+    paths where WebKit does not properly initialize itself
+  + Make more menu items searchable and their shortcuts overridable
+  + Make menu shortcuts update the accelerator label when
+    overridden by users with the new shortcut infrastructure
+  + Improve shortcut groupings in the shortcut overlay window
+  + Remove initial "error" CSS style when displaying the clone
+    dialog
+  + Run LSPs within a `meson devenv` when possible. This requires
+    that your project has configured before the LSP starts
+  + New keyboard shortcuts to move between diagnostics within a
+    file
+  + You can now copy a file from the project tree context menu
+  + Various fixes for changes in GIO
+  + Keyboard shortcuts to move between search results
+  + The flatpak plugin now sets the GTK 4 settings instead of GTK 3
+  + Track deprecation changes in libadwaita
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  6 18:14:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.rc:
+  + UI and CSS styling fixes
+  + Lots of memory leak fixes
+  + Various improvements in Vim emulation
+  + Fixes and performance improvements to various completion
+    providers
+  + New XML and Swift formatters
+  + Ensure we only show a single grep search panel
+  + A golang build system addin
+  + A new user messages panel
+  + Podman integration fixes
+  + Plugin symbols are no longer exported by the ELF except type
+    registration
+  + Fixes for various LSP conformance
+  + Git now uses a PTY when cloning to provide better messaging to
+    users
+  + Lots of internal operations now log to messages panel
+  + A new markdown indenter
+  + A new swift linter
+  + The sysroot plugin has been removed
+  + Updated translations.
+- Add boolean pkgconfig(webkitgtk-6.0) BuildRequires, allow build
+  with new webkit-2.39.91.
+- Drop global __requires_exclude typelib\\(Ide\\) and
+  global __requires_exclude_from %{_libdir}/gnome-builder/plugins:
+  No longer needed.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:21:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.beta:
+  + SDK extension resolving has been made asynchronous so projects
+    load much faster in conjunction with Flatpak. This brings in a
+    new dependency on libdex which I've written about on
+    planet.gnome.org.
+    https://blogs.gnome.org/chergert/2022/11/24/concurrency-parallelism-i-o-scheduling-thread-pooling-and-work-stealing/
+  + Fixes for recent WebKitGTK changes.
+  + Shortcut improvements.
+  + Rust template updates.
+  + The search entry now focuses the text editor when enter is
+    pressed.
+  + A number of new search providers have been added.
+  + Preview of search results in the global search popover.
+  + User-defined keybindings in
+    $XDG_CONFIG_DIR/gnome-builder/keybindings.json
+  + Many keyboard shortcuts have been added.
+  + The project tree has been ported to GtkListView and includes
+    DnD again.
+  + Preferences bug fixes.
+  + Lots of safety improvements under the hood.
+  + New filters for project-tree and todo panels.
+  + Podman fixes for odd configuration files.
+  + Build systems can now alter the "srcdir" allowing for projects
+    which are in subdirectories of their git project to work
+    better.
+  + Support for SourceKit LSP for Swift.
+- Changes from version 44.alpha:
+  + A new LSP subsystem that makes language server plugins
+    generally just require a .plugin file.
+  + .buildconfig file support for runtime environment settings and
+    file monitoring for tracking out-of-band updates.
+  + Updates for GTK 4-based projects.
+  + Podman integration improvements
+  + Jhbuild integration improvements
+  + Code completion robustness fixes
+  + Vim improvements
+  + Support for WebKit GTK 6.0
+  + Spellcheck fixes
+  + Improvements to pipeline integration for many build systems
+  + Fixes for C and XML auto indenters
+  + Menuing changes including more debugger integration
+  + Fix build CPU parallelism selection
+  + New keyboard shortcuts
+  + Removal of shadow bubbles
+  + Improve styling for drawing selection matches
+  + Scrolling improvements when moving through searches
+  + Support for dub/d-lang
+  + Updated translations.
+- Add pkgconfig(libdex-1) BuildRequires, new dependency.
+- Bump basever define to 44 following upstream changes.
+
+-------------------------------------------------------------------
+Sun Feb 26 20:18:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen).
+
+-------------------------------------------------------------------
 Fri Feb  3 20:55:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.6:
