@@ -3559,4 +3559,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   (now %bcond_without djvu)</comment>
     <requestid>1068700</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>a317bc0499e0599331888f076bfa9ef6</srcmd5>
+    <version>7.1.1.3</version>
+    <time>1679667359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1073564</requestid>
+  </revision>
 </revisionlist>

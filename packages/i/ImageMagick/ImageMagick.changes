@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 14 13:30:28 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.3
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
+Mon Mar 13 08:45:26 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Revert last change - it leads to file conflict involving .la files
+
+-------------------------------------------------------------------
+Thu Mar  9 09:00:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Thu Mar  2 13:14:03 UTC 2023 - pgajdos@suse.com
 
 - cleanup old conditional, really build without djvulibre if requested
