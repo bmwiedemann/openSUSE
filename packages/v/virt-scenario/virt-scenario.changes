@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 24 11:09:23 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.3:
+  * fix buggy VM image name in XML config
+  * Add more information in the documentation (step by step securevm)
+
+-------------------------------------------------------------------
+Thu Mar 23 17:02:31 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.2:
+  * fix buggy vmimage option (error if not used)
+  * summary is displayed at the end in case of differences
+  * improve user password input for VM encrypted image
+  * some typo fixes
+
+-------------------------------------------------------------------
 Wed Mar 22 17:25:34 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 1.0.1:
