@@ -18,23 +18,25 @@
 
 %define lname	libesedb1
 Name:           libesedb
-Version:        20220806
+Version:        20230318
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libesedb
 Source:         https://github.com/libyal/libesedb/releases/download/%version/libesedb-experimental-%version.tar.gz
-Source2:        Exchange.pdf
-Source3:        Extensible_Storage_Engine_ESE_Database_File_EDB_format.pdf
-Source4:        Forensic_analysis_of_the_Windows_Search_database.pdf
-Source5:        Windows_Search.pdf
-Source6:        libesedb-libfdata.pdf
+Source2:        https://github.com/libyal/libesedb/releases/download/%version/libesedb-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
+Source10:       Exchange.pdf
+Source11:       Extensible_Storage_Engine_ESE_Database_File_EDB_format.pdf
+Source12:       Forensic_analysis_of_the_Windows_Search_database.pdf
+Source13:       Windows_Search.pdf
+Source14:       libesedb-libfdata.pdf
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
 BuildRequires:  pkgconfig(libclocale) >= 20220107
@@ -42,7 +44,7 @@ BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfcache) >= 20230115
 BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
