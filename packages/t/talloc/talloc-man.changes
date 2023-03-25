@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Mon Oct  3 14:59:43 UTC 2022 - Noel Power <nopower@suse.com>
+Fri Mar 17 07:54:23 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 2.4.0
+  * Add talloc_asprintf_addbuf()
+  * Support python 3.12
+
+-------------------------------------------------------------------
+Thu Sep 22 15:39:28 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to 2.3.4
   + configure/Makefile: export PYTHONHASHSEED=1 in all

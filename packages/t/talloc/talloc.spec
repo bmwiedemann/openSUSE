@@ -1,7 +1,7 @@
 #
 # spec file for package talloc-man
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  python3-devel
 #!BuildIgnore:  python
 %endif # build_man
 URL:            http://talloc.samba.org/
-Version:        2.3.4
+Version:        2.4.0
 Release:        0
 Summary:        Samba talloc Library
 License:        LGPL-3.0-or-later

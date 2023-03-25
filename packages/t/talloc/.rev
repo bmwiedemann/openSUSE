@@ -404,4 +404,14 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>1007709</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bd17aff5d14d9e546417f10279b2362c</srcmd5>
+    <version>2.4.0</version>
+    <time>1679766877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * Add talloc_asprintf_addbuf()
+  * Support python 3.12</comment>
+    <requestid>1074012</requestid>
+  </revision>
 </revisionlist>
