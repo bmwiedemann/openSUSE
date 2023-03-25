@@ -1783,4 +1783,13 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * libmultipath: keep renames from stopping other multipath actions (forwarded request 1072176 from mwilck)</comment>
     <requestid>1072177</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>8eaadeb9f5d3dc24e3c8542181e14d6b</srcmd5>
+    <version>0.9.4+86+suse.4d8901e</version>
+    <time>1679766841</time>
+    <user>dimstar_suse</user>
+    <comment>(bsc#1209623)
+  * libmpathpersist: fix command keyword ordering (bsc#1207546, bsc#1209345) (forwarded request 1073839 from mwilck)</comment>
+    <requestid>1073840</requestid>
+  </revision>
 </revisionlist>

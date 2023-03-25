@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 16:06:50 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * libmultipath: avoid grouping paths wrongly with "find_multipaths smart"
+    (bsc#1209623)
+
+-------------------------------------------------------------------
 Wed Mar 15 17:07:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.4+79+suse.25c23a9:
@@ -25,7 +31,7 @@ Wed Jan 25 15:04:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
   * multipathd: make pr registration consistent (bsc#1207546)
   * libmultipath: don't leak memory on invalid strings  (bsc#1207546)
   * multipath.conf(5): improve documentation of dev_loss_tmo (bsc#1207546)
-  * libmpathpersist: fix command keyword ordering (bsc#1207546)
+  * libmpathpersist: fix command keyword ordering (bsc#1207546, bsc#1209345)
   * libmultipath: fix 'show paths format' failure
   * minor bugfixes
   * hwtable fixes
