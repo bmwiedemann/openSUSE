@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:04:35 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.4:
+  * change default configstore to /etc/virt-scenario/vmconfig
+    this is needed to automatically save the config in case of usage
+    of a container.
+
+-------------------------------------------------------------------
 Fri Mar 24 11:09:23 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 1.0.3:
