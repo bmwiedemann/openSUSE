@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 22 02:39:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.18.5.
+  * Too many changes to list, for details see 
+    https://petsc.org/release/docs/changes/
+- Fix broken usage of MAKEFLAGS, causing build failures with
+  gmake >= 4.4.1.
+
+-------------------------------------------------------------------
 Wed Feb 15 05:13:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove incorrect library symlink with major version only. 

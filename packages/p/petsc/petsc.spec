@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.18.4
-%define _vers 3_18_4
+%define vers 3.18.5
+%define _vers 3_18_5
 %define so_ver 3_18
 %define openblas_vers 0.3.6
 
@@ -500,6 +500,8 @@ yet supported by %{?is_opensuse:open}SUSE.
 
 %setup -q -n petsc-%{version}
 %autopatch -p1
+# Fix broken MAKEFLAGS usage
+sed -i -e 's/MAKEFLAGS="[^"]*"//' lib/petsc/conf/rules
 
 # Fix shebangs in packaged scripts
 find src lib config share -type f -iname \*.py -exec sed -i \
@@ -589,7 +591,7 @@ python%{python_ver} ./config/configure.py \
         --with-hdf5-include=$HDF5_INC
 %endif
 
-make
+%make_build
 
 %install
 %if %{without hpc}
