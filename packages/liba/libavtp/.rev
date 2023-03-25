@@ -40,4 +40,12 @@ will be required in the next version of alsa-lib plugin.</comment>
     <comment></comment>
     <requestid>976019</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ddb8beb32eb91613fddb73edc0b3821b</srcmd5>
+    <version>0.2.0</version>
+    <time>1679766901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074120</requestid>
+  </revision>
 </revisionlist>

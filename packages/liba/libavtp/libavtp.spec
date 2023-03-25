@@ -1,7 +1,7 @@
 #
 # spec file for package libavtp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define _lto_cflags %{nil}
 Name:           libavtp
 Version:        0.2.0
 Release:        0
