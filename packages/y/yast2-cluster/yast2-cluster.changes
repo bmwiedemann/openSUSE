@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:20:54 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- bsc#1209602 bugs in yast2-cluster Write funcion
+- Remove sensless call to sysconfig.openais
+- Remove sensless sysconfig.openais agent
+- Enable csync2.socket
+- Add SCR.Write(PATH,nil) to save the configuration inmediately
+- Remove all openais stuff
+- Version 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
