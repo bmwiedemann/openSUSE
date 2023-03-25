@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 25 07:37:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Disable usage of jemalloc for gh#jemalloc/jemalloc#1237 to avoid
+  "TLS error: cannot allocate memory in static TLS block"
+
+-------------------------------------------------------------------
 Wed Mar 22 21:56:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - RocksDB 8.0.0

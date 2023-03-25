@@ -9,4 +9,12 @@
 The conflict with mariadb is still a problem. Debian solved this by making mariadb pull in rocksdb-tools. We could do the same for TW</comment>
     <requestid>1073982</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a00ea1459fa84f4bf4ff9d95c0efd580</srcmd5>
+    <version>8.0.0</version>
+    <time>1679766961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074304</requestid>
+  </revision>
 </revisionlist>

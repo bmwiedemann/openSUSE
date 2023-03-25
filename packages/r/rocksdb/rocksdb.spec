@@ -18,6 +18,7 @@
 
 
 %define lib_name librocksdb8
+%bcond_with jemalloc
 Name:           rocksdb
 Version:        8.0.0
 Release:        0
@@ -35,11 +36,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Snappy)
 BuildRequires:  cmake(gflags)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+%if %{with jemalloc}
+BuildRequires:  pkgconfig(jemalloc)
+%endif
 
 %description
 RocksDB is a high performance embedded database for key-value data.
@@ -96,7 +99,9 @@ the RocksDB library.
 %cmake \
     -DPORTABLE=ON \
     -DFAIL_ON_WARNINGS=OFF \
-    -DWITH_JEMALLOC=ON \
+%if !%{with jemalloc}
+    -DWITH_JEMALLOC=0 \
+%endif
     -DWITH_SNAPPY=ON \
     -DWITH_LZ4=ON \
     -DWITH_ZLIB=ON \
