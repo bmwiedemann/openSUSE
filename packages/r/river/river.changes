@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 18 13:32:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4+g106:
+  * LayerSurface: fix surfaces on multiple outputs at once
+  * LayerSurface: handle focus when switching outputs 
+  * Cursor: apply x/y change during resize on commit
+
+-------------------------------------------------------------------
+Wed Mar 15 01:13:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4+g32:
+  * Cursor: fix warp on output change with no views
+  * Root: separate fallback list to handle 0 outputs
+  * Root: remove incorrect assertions in addOutput()
+  * Output: reinitialize output_status, cleanup
+
+-------------------------------------------------------------------
 Sun Mar 05 04:40:56 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 0.2.4+g30:
