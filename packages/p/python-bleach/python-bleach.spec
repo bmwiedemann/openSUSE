@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleach
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,13 +26,11 @@ URL:            https://github.com/jsocol/bleach
 Source:         https://files.pythonhosted.org/packages/source/b/bleach/bleach-%{version}.tar.gz
 Patch0:         de-vendor.patch
 BuildRequires:  %{python_module html5lib >= 1.1}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-html5lib >= 1.1
-Requires:       python-packaging
 BuildArch:      noarch
 %python_subpackages
 
