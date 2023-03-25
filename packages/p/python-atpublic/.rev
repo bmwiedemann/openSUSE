@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1040386</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cd62f4574f5a228b8c2b5fd69d35828d</srcmd5>
+    <version>3.1.1</version>
+    <time>1679766909</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove typing_extensions requirement not needed for python version &gt; 3.8</comment>
+    <requestid>1074153</requestid>
+  </revision>
 </revisionlist>

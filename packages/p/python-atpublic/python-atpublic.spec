@@ -1,7 +1,7 @@
 #
 # spec file for package python-atpublic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing_extensions
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
@@ -48,7 +47,6 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %endif
 %python_subpackages

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 11:28:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove typing_extensions requirement not needed for python version > 3.8
+
+-------------------------------------------------------------------
 Sun Dec  4 20:31:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to v3.1.1
