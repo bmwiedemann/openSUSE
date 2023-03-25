@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        43.1
+Version:        43.2+6
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -34,7 +34,6 @@ BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
 BuildRequires:  intltool >= 0.50.0
 BuildRequires:  meson
-BuildRequires:  mutter-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
@@ -52,6 +51,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mutter-clutter-12)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
@@ -171,7 +171,7 @@ This package provides zsh tab-completion for %{name}.
 %autosetup -p1 -n %{alt_name}-%{version}
 
 %build
-%meson -Dgcr3=false
+%meson
 %meson_build
 
 %install

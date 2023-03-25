@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/Keruspe/GPaste.git</param>
     <param name="filename">GPaste</param>
-    <param name="revision">refs/tags/v43.1</param>
+    <param name="revision">4713c11</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v([0-9.]*)(\+0)?</param>
     <param name="versionrewrite-replacement">\1</param>
