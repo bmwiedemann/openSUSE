@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 24 18:28:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.8.0:
+  * sync version comments, update actions and update cosign flag
+    (#538)
+  * Bump actions/checkout from 3.3.0 to 3.4.0 (#536)
+  * Bump actions/setup-go from 3.5.0 to 4.0.0 (#537)
+  * Bump anchore/sbom-action from 0.13.3 to 0.13.4 (#535)
+  * Update docs and examples for v3.7.1 (#527)
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#526)
+  * Bump tools (yamllint and yamale) from pypi in Dockerfile (#533)
+  * Bump tools (helm and kubectl) in Dockerfile (#534)
+  * Bump sigstore/cosign-installer from 2.8.1 to 3.0.1 (#528)
+  * Bump docker/setup-buildx-action from 2.4.0 to 2.5.0 (#532)
+  * Upgrade to go 120 (#523)
+  * Bump goreleaser/goreleaser-action from 4.1.0 to 4.2.0 (#521)
+  * Bump anchore/sbom-action from 0.13.1 to 0.13.3 (#518)
+  * Bump ludeeus/action-shellcheck from 1.1.0 to 2.0.0 (#519)
+  * Bump docker/setup-buildx-action from 2.2.1 to 2.4.0 (#520)
+  * Bump golangci/golangci-lint-action from 3.3.1 to 3.4.0 (#517)
+  * Bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#516)
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (#513)
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.1 to 0.7.2
+    (#512)
+  * Bump helm/kind-action from 1.4.0 to 1.5.0 (#506)
+  * Bump goreleaser/goreleaser-action from 3.2.0 to 4.1.0 (#505)
+  * Bump actions/setup-go from 3.4.0 to 3.5.0 (#507)
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (#503)
+  * Bump azure/setup-helm from 3.4 to 3.5 (#504)
+  * Fix parsing kubectl output with warnings (#470)
+  * Bump actions/setup-go from 3.3.1 to 3.4.0 (#501)
+  * Bump alpine from 3.16 to 3.17 (#502)
+  * Bump golangci/golangci-lint-action from 3.3.0 to 3.3.1 (#498)
+  * Bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#496)
+  * Bump anchore/sbom-action from 0.12.0 to 0.13.1 (#497)
+  * Bump azure/setup-helm from 3.3 to 3.4 (#495)
+  * Bump sigstore/cosign-installer from 2.8.0 to 2.8.1 (#490)
+  * Bump github.com/spf13/cobra from 1.6.0 to 1.6.1 (#488)
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#489)
+  * Bump golangci/golangci-lint-action from 3.2.0 to 3.3.0 (#491)
+  * Bump actions/setup-go from 3.3.0 to 3.3.1 (#492)
+  * Bump docker/setup-buildx-action from 2.0.0 to 2.2.1 (#487)
+  * Bump github.com/spf13/cobra from 1.5.0 to 1.6.0 (#482)
+  * Bump goreleaser/goreleaser-action from 3.1.0 to 3.2.0 (#484)
+  * Bump docker/setup-qemu-action from 2.0.0 to 2.1.0 (#485)
+  * Bump docker/login-action from 2.0.0 to 2.1.0 (#486)
+  * add .ct in current working-directory as config directory (#479)
+  * Bump actions/checkout from 3.0.2 to 3.1.0 (#480)
+  * Bump sigstore/cosign-installer from 2.7.0 to 2.8.0 (#481)
+  * add skip-clean-up option to not remove the charts when
+    finishing the tests (#478)
+
+-------------------------------------------------------------------
 Tue Sep 27 15:32:08 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.7.1:

@@ -1,9 +1,9 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/helm/chart-testing</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.7.1</param>
+    <param name="revision">v3.8.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -11,11 +11,11 @@
   <service name="set_version" mode="disabled">
     <param name="basename">chart-testing</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">chart-testing-3.7.1.tar.gz</param>
   </service>
 </services>
