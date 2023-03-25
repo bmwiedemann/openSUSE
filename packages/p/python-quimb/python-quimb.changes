@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 06:51:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip python311: no numba yet
+
+-------------------------------------------------------------------
 Thu Feb  2 09:37:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - upgrade opt-einsum to requires as it is imported by tensor/

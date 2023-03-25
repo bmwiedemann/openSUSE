@@ -16,6 +16,8 @@
 #
 
 
+# no numba for py311 yet
+%define skip_python311 1
 Name:           python-quimb
 Version:        1.4.2
 Release:        0
