@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -179,12 +179,11 @@ sed -i '/google_test_dir/d' python/setup.py
 sed -i -e '/env python/d' python/google/protobuf/internal/*.py
 
 %build
-%define _lto_cflags %{nil}
 autoreconf -fvi
 %configure \
 	--disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %if %{with java}
 pushd java
@@ -202,7 +201,7 @@ popd
 
 %if %{with check}
 %check
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %install
