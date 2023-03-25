@@ -1,0 +1,29 @@
+[ 2542s] ../../services/network/cookie_access_delegate_impl.cc: In member function 'virtual std::optional<base::flat_map<net::SchemefulSite, net::FirstPartySetEntry> > network::CookieAccessDelegateImpl::FindFirstPartySetEntries(base::flat_set<net::SchemefulSite>&, base::OnceCallback<void(base::flat_map<net::SchemefulSite, net::FirstPartySetEntry>)>) const':
+[ 2542s] ../../services/network/cookie_access_delegate_impl.cc:81:15: error: converting to 'std::optional<base::flat_map<net::SchemefulSite, net::FirstPartySetEntry> >' from initializer list would use explicit constructor 'constexpr std::optional<_Tp>::optional(std::in_place_t, _Args&& ...) [with _Args = {}; typename std::enable_if<__and_v<std::is_constructible<_Tp, _Args ...> >, bool>::type <anonymous> = false; _Tp = base::flat_map<net::SchemefulSite, net::FirstPartySetEntry>]'
+[ 2542s]    81 |     return {{}};
+[ 2542s]       |               ^
+[ 2542s] ../../services/network/cookie_access_delegate_impl.cc:81:15: error: converting to 'std::in_place_t' from initializer list would use explicit constructor 'constexpr std::in_place_t::in_place_t()'
+
+
+--- src/services/network/cookie_access_delegate_impl.cc.old	2023-03-24 11:21:23.446841775 +0100
++++ src/services/network/cookie_access_delegate_impl.cc	2023-03-24 13:08:04.591526417 +0100
+@@ -78,7 +78,7 @@
+     base::OnceCallback<void(FirstPartySetsAccessDelegate::EntriesResult)>
+         callback) const {
+   if (!first_party_sets_access_delegate_)
+-    return {{}};
++    return {FirstPartySetsAccessDelegate::EntriesResult()};
+   return first_party_sets_access_delegate_->FindEntries(sites,
+                                                         std::move(callback));
+ }
+--- src/services/network/first_party_sets/first_party_sets_access_delegate.cc.old	2023-03-24 11:21:23.454841767 +0100
++++ src/services/network/first_party_sets/first_party_sets_access_delegate.cc	2023-03-24 14:41:19.809786588 +0100
+@@ -95,7 +95,7 @@
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+ 
+   if (!enabled_)
+-    return {{}};
++    return {FirstPartySetsAccessDelegate::EntriesResult()};
+ 
+   if (!ready_event_.has_value()) {
+     // base::Unretained() is safe because `this` owns `pending_queries_` and

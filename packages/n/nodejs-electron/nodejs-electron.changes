@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 24 13:42:44 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.4
+  * Improved error messages on session.cookies.set failure.
+  * Vulkan: Don't close render pass if rebind to same fbo (CVE-2023-1213)
+  * CSS: In Typed CSSOM, reject adding to something that is not a list. (CVE-2023-1215)
+  * Fix potential out of bounds write in base::SampleVectorBase (CVE-2023-1220)
+- Add services-network-optional-explicit-constructor.patch
+
+-------------------------------------------------------------------
 Sat Mar 18 18:48:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - ANGLE: Link libvulkan.so and libGL.so instead of dlopening it
   * angle_link_glx.patch
