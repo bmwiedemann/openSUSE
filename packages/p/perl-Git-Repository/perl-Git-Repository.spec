@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Git-Repository
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ Summary:        Perl interface to Git repositories
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BO/BOOK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/book/Git-Repository/pull/23
+Patch0:         git-2.40.0.patch
 # PATCH-FIX-UPSTREAM https://github.com/book/Git-Repository/pull/22
-Patch0:         https://patch-diff.githubusercontent.com/raw/book/Git-Repository/pull/22.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/book/Git-Repository/pull/22.patch
 # PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Ticket/Attachment/1923740/1029935
-Patch1:         https://salsa.debian.org/perl-team/modules/packages/libgit-repository-perl/-/raw/c5e0eca06ca27fdaa547634b1e49f4637e7c1ca6/debian/patches/git-2.30.0.patch
+Patch2:         https://salsa.debian.org/perl-team/modules/packages/libgit-repository-perl/-/raw/c5e0eca06ca27fdaa547634b1e49f4637e7c1ca6/debian/patches/git-2.30.0.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -72,6 +74,7 @@ See Git::Repository::Tutorial for more code examples.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p1
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

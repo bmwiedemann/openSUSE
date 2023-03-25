@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 25 11:27:20 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add patch git-2.40.0.patch to adapt to git 2.40 changes
+
+-------------------------------------------------------------------
 Sat Dec  3 11:00:22 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Add fix from https://github.com/book/Git-Repository/pull/22 to work
@@ -639,4 +644,3 @@ Thu Oct 14 13:40:26 UTC 2010 - chris@computersalat.de
 Sat Jun 19 00:08:20 UTC 2010 - pascal.bleser@opensuse.org
 
 - initial package (1.03)
-
