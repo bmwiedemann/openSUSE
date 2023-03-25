@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -67,7 +67,6 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 Patch2:         fix_missing_return.patch
-Patch3:         https://github.com/rspamd/rspamd/commit/068714f9f5a96fbd94560211cec75775ee023d02.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -113,8 +112,11 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %endif
+BuildRequires:  lapack-devel
+BuildRequires:  pkgconfig(libunwind)
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
-
+BuildRequires:  pkgconfig(openblas)
 %if 0%{?suse_version} >= 1550
 Requires:       lua54-lpeg
 %else
@@ -173,6 +175,11 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 %cmake                                      \
+%if 0%{?force_gcc_version}
+  -DCMAKE_ASM_COMPILER="gcc-%{?force_gcc_version}" \
+%else
+  -DCMAKE_ASM_COMPILER="gcc"                \
+%endif
 %if 0%{suse_version} == 1315
   -DCMAKE_USER_MAKE_RULES_OVERRIDE=""       \
 %endif
@@ -194,6 +201,9 @@ export CXX="g++-%{?force_gcc_version}"
   -DENABLE_OPTIMIZATION=ON                  \
   %endif
   -DENABLE_REDIRECTOR=ON                    \
+  -DENABLE_LIBUNWIND:BOOL=ON                \
+  -DENABLE_BLAS:BOOL=ON                     \
+  -DSYSTEM_XXHASH:BOOL=ON                   \
   -DCMAKE_SKIP_INSTALL_RPATH=ON             \
   -DCMAKE_SKIP_RPATH=OFF                    \
   %if %{with luajit}
@@ -311,7 +321,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %defattr(-,root,root)
 %{_sbindir}/rc%{name}
 %{_bindir}/rspamd
-%{_bindir}/rspamd-redirector
 %{_bindir}/rspamd_stats
 %{_libdir}/librspamd-actrie.so
 %{_libdir}/librspamd-server.so

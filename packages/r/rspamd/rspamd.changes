@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Mar 17 21:53:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable more features
+  - Enable nice stacktraces for crashes. New BR: libunwind-devel
+  - use system xxhash: New BR: xxhash-devel
+  - enable blas/lapack support for the neural network processing
+    New BR: lapack-devel, libopenblas_openmp-devel, openblas-common-devel 
+
+-------------------------------------------------------------------
+Fri Mar 17 21:21:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5
+  - [Test] Remove test case with non-deterministic result by
+    @arkamar in #4323
+  - [WebUI] Add legacy history version badge by @moisseev in #4326
+  - [Feature] Enable Mime part filters on antivirus module by
+    @jonmoesli in #4328
+  - [Test] Use TMPDIR if available by @arkamar in #4327
+  - metadata_exporter http pusher: Extend valid return codes by
+    @yo000 in #4334
+  - [Minor] debian package: disable luajit on arm64 by @fatalbanana
+    in #4335
+  - Support external maps in Rspamd by @vstakhov in #4324
+  - [Fix] Return true from has_urls(true) if only emails are
+    present by @cpragadeesh in #4365
+  - [Fix] received: filtering of artificial header by @kakochang in
+    #4367
+  - [Fix] Replace broken strict_domains with phishing_exceptions by
+    @dupondje in #4376
+  - Fix build with gcc 13 by including by @heirecka in #4375
+  - rspamc: add -R option for human readable report by @amishmm in
+    #4377
+  - rspamc: optimize indentation condition by @amishmm in #4381
+  - Set required_score = reject score and minor change to the
+    report by @amishmm in #4383
+  - conf/modules.d/arc.conf: fix parameter name by @jendis in #4387
+  - Fixes to support global lua maps in user settings by @dpetrov67
+    in #4393
+  - [Enhancement] Make Google URL redirection rules productive by
+    @twesterhever in #4399
+  - [Enhancement] Add rule to detect Google Firebase URLs by
+    @twesterhever in #4401
+  - [Minor] Assorted cleanup and housekeeping of configuration
+    files by @twesterhever in #4397
+  - addition: add Betterbird to user_agent_thunderbird by
+    @georglauterbach in #4404
+  - [Minor] Replace "Spamhaus XBL any" hack with a more clear
+    solution by @twesterhever in #4398
+  - [Enhancement] Add IPFS URL heuristic by @twesterhever in #4310
+  - Checking for redirector url in mail by @korgoth1 in #4351
+  - fix incorrect asn references in bimi.conf by @mta59066 in #4410
+  - [Minor] Account for one more undisclosed-recipients address
+    variant by @citrin in #4413
+  - Fix for x-rspamd-action in Milter headers module by @nishils in
+    #4416
+  - [WebUI] Update JS libraries by @moisseev in #4414
+  - [WebUI] Update bootstrap by @moisseev in #4420
+  - [Minor] remove check for sys/cdefs.h in CMakelists.txt by
+    @a16bitsysop in #4430
+  - [Minor] Fix some compiler warnings by @a16bitsysop in #4436
+- Drop 068714f9f5a96fbd94560211cec75775ee023d02.patch:
+- this drops the rspamd-director binary
+
+-------------------------------------------------------------------
 Wed Jan 25 11:11:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't build against libnsl, it's not used and deprecated
