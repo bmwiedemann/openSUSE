@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 16 07:30:43 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Rewrite the script to Python:
+  * the current script is quite slow and delays libreoffice package
+    build where we install all packages and then uninstall them
+  * the script uses linkfile=${file/${datadir}/${libdir}} for replacement
+    of $datadir prefix with $libdir (if the $file path starts with $datadir;
+    if not, we end up with an empty string and we execute various shell
+    scripts with it
+  * the Python implementation should be more readable
+  * the Python version runs about 200s faster when it comes to libreoffice
+    package build (on a recent Ryzen 9 machine)
+
+-------------------------------------------------------------------
 Tue Jul  2 08:11:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Work with paranoid umask settings bsc#1139727

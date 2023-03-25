@@ -41,4 +41,12 @@
     <comment>- Work with paranoid umask settings bsc#1139727</comment>
     <requestid>713000</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>cc62bfa5c5148f3bbc13f3b34ea8760a</srcmd5>
+    <version>1</version>
+    <time>1679766838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073833</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice-share-linker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Release:        0
 Summary:        Script to link/unlink files to libreoffice home
 License:        MIT
 Group:          Productivity/Office/Suite
-Url:            http://www.opensuse.org/
-Source0:        link-to-ooo-home
+URL:            http://www.opensuse.org/
+Source0:        libreoffice-share-linker.py
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python3
 BuildArch:      noarch
 
 %description
@@ -42,13 +43,13 @@ install -Dm 755 %{SOURCE0} %{buildroot}%{_bindir}/%{name}
 # compat for migration from older releases openSUSE-13.1 and older
 mkdir -p %{buildroot}%{_datadir}/libreoffice
 pushd %{buildroot}%{_datadir}/libreoffice > /dev/null
-ln -s %{_bindir}/%{name} link-to-ooo-home
+ln -s %{_bindir}/%{name} libreoffice-share-linker.py
 popd > /dev/null
 
 %files
 %defattr(-,root,root)
 %{_bindir}/%{name}
 %dir %{_datadir}/libreoffice/
-%{_datadir}/libreoffice/link-to-ooo-home
+%{_datadir}/libreoffice/libreoffice-share-linker.py
 
 %changelog
