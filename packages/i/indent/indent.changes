@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 24 20:45:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.2.13:
+  * Fix buffer overflows and use after free bugs (boo#1209718)
+  * Recognize binary integer literals
+  * Updated translations, new translation: Portuguese
+
+-------------------------------------------------------------------
 Thu Feb 20 11:15:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use xz sources

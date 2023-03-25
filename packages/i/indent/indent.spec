@@ -1,7 +1,7 @@
 #
 # spec file for package indent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           indent
-Version:        2.2.12
+Version:        2.2.13
 Release:        0
 Summary:        Indentation of Source Code in various styles
 License:        GPL-3.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            https://www.gnu.org/software/indent
 Source0:        ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=94096#/%{name}.keyring
 BuildRequires:  makeinfo
 BuildRequires:  texi2html
 
@@ -41,31 +41,29 @@ incomplete and malformed syntax.
 %autosetup
 
 %build
-%configure
+%configure \
+	--docdir=%{_docdir}/%{name} \
+	%{nil}
 %make_build
 
 %install
 %make_install
-# indent.html is installed with doc below
-rm -f %{buildroot}%{_prefix}/doc/indent/indent.html %{buildroot}%{_bindir}/texinfo2man %{buildroot}/%{_infodir}/dir
+rm -f %{buildroot}%{_bindir}/texinfo2man
+rm -f %{buildroot}/%{_infodir}/dir
 %find_lang %{name}
 
 %check
 %make_build check
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
 %files
 %{_bindir}/*
 %license COPYING
-%doc NEWS ChangeLog doc/indent.html
+%doc NEWS ChangeLog
+%{_docdir}/%{name}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_mandir}/man1/indent.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
