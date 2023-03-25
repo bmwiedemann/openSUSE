@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 25 02:10:22 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1679673928.0929919:
+  * Streamline `openqa-clone-job` output with `openqa-cli schedule`
+  * Render web UI URLs for jobs created via `openqa-cli schedule`
+  * Assign dependencies when cloning jobs with children but without parents
+  * Prevent github from caching badges too long
+  * Provide container image to trigger/monitor jobs as CI
+  * Make key-auth work for openQA instances under nested path
+
+-------------------------------------------------------------------
 Wed Mar 22 18:10:32 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1679501784.c715f72:
