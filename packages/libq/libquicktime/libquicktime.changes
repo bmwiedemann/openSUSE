@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
+
+- Fix previous change, add version constraints for every
+  ffmpeg subpackage
+
+-------------------------------------------------------------------
 Fri Apr 29 07:52:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update BuildRequires to reflect it does not work with ffmpeg5

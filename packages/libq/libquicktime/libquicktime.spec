@@ -43,7 +43,7 @@ BuildRequires:  schroedinger-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libavcodec) < 59
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libswscale) < 6
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xext)
