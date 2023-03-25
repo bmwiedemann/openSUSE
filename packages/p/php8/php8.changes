@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:45:14 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.1.17
+  * This is a bug fix release.
+  https://www.php.net/ChangeLog-8.php#8.1.17  
+
+-------------------------------------------------------------------
 Tue Mar 14 09:50:55 UTC 2023 - pgajdos@suse.com
 
 - update to newest systzdata patch [bsc#1208199]

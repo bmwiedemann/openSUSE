@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.16
+Version:        8.1.17
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
