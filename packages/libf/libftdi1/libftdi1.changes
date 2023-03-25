@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 16 10:02:33 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix random build failures:
+  * 0001-Fix-race-during-build-of-python-bindings.patch
+
+-------------------------------------------------------------------
 Mon Sep 27 14:01:32 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 1.5.12+git.0684c1b:

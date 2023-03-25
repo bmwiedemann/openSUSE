@@ -1,7 +1,7 @@
 #
 # spec file for package libftdi1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@ License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-except
 Group:          Hardware/Other
 URL:            https://www.intra2net.com/en/developer/libftdi
 Source:         libftdi1-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- http://developer.intra2net.com/git/?p=libftdi;a=patch;h=11a50ae5b80b3e03694a19e84513345d0794e563
+# PATCH-FIX-UPSTREAM: http://developer.intra2net.com/mailarchive/html/libftdi/2023/msg00005.html
+Patch1:         0001-Fix-race-during-build-of-python-bindings.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
