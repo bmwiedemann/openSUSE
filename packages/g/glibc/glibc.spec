@@ -51,9 +51,9 @@
 
 # Enable support for livepatching.
 %ifarch x86_64
-%bcond_without livepatching 1
+%bcond_without livepatching
 %else
-%bcond_with livepatching 0
+%bcond_with livepatching
 %endif
 
 %bcond_with build_all
@@ -621,15 +621,6 @@ BuildCCplus=%{cross_arch}-suse-linux-g++
 %endif
 %endif
 
-# Add build flags that cannot be passed to configure.
-ExtraBuildFlags=
-%if %{build_main} && %{with livepatching}
-# Append necessary flags for livepatch support, if enabled. Do it on make, else
-# on configure GCC will report that it can't write the ipa-clones to /dev/ and
-# configure will fail to detect that gcc support several flags.
-ExtraBuildFlags+="-fpatchable-function-entry=16,14 -fdump-ipa-clones"
-%endif
-
 #
 # Build base glibc
 #
@@ -691,7 +682,14 @@ profile="--disable-profile"
     exit $rc;
   }
 
-make %{?_smp_mflags} %{?make_output_sync} CFLAGS="$BuildFlags $ExtraBuildFlags"
+%if %{build_main} && %{with livepatching}
+# Append necessary flags for livepatch support, if enabled.  Only objects
+# included in shared libraries should be prepared for live patching.
+echo 'CFLAGS-.os += -fpatchable-function-entry=16,14 -fdump-ipa-clones' \
+     >> Makeconfig
+%endif
+
+make %{?_smp_mflags} %{?make_output_sync}
 cd ..
 
 #

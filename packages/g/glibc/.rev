@@ -2781,4 +2781,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   dl-debug-bindings.patch, floatn.patch: Removed (forwarded request 1063589 from Andreas_Schwab)</comment>
     <requestid>1063590</requestid>
   </revision>
+  <revision rev="273" vrev="2">
+    <srcmd5>c1eea0709689b1d4fee269f45c80300a</srcmd5>
+    <version>2.37</version>
+    <time>1679766833</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude static archives from preparation for live patching (bnc#1208721) (forwarded request 1073567 from Andreas_Schwab)</comment>
+    <requestid>1073568</requestid>
+  </revision>
 </revisionlist>
