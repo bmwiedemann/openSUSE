@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 24 15:02:32 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.0:
+  * fix: Don't list entries in git-repo externals as unmanaged
+  * chore: Minor fixes
+  * feat: Add support for ejson
+  * chore: Tidy up ejson default key dir
+  * feat: Add jq template function
+  * chore: Deprecate --autotemplate
+  * feat: Set $CHEZMOI_VERBOSE based on --verbose
+  * fix: Only set $CHEZMOI_VERBOSE when --verbose is set
+  * Update dependencies
+
+-------------------------------------------------------------------
 Mon Mar 13 17:54:01 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.32.0:
