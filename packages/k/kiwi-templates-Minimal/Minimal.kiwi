@@ -354,6 +354,7 @@
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <!-- For WiFi: -->
+        <package name="wireless-regdb"/>
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
         <package name="bcm43xx-firmware"/>

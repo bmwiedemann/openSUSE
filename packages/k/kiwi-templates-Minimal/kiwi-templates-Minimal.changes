@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  7 14:55:58 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add wireless-regdb
+
+-------------------------------------------------------------------
 Thu Dec 29 08:56:59 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - editbootinstall_rpi.sh: fix loopdev name to work with new kiwi.
