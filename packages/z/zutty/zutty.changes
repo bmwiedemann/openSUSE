@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 20 19:09:06 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 0.14:
+  * Update repo urls (846c013)
+  * Correct modifyOtherKeys=2 behaviour for certain Shift-modified keys (5331995)
+  * Upgrade WAF to version 2.0.25 (8db89ee)
+  * Add mouse protocol encoding for buttons 6-7 (wheel left/right) and 8-11 (310d913)
+  * Ignore several more esoteric keysyms (db2f40a)
+  * Ignore, but do not prematurely cancel sequence on bad parameter value (bc6e089)
+- lint spec with spec-cleaner
+
+-------------------------------------------------------------------
 Sun Nov  6 09:45:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update description with the good and bad characteristics.
