@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 22 17:57:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 23.1.0:
+  * test: Use either wayland-info or weston-info.
+- Changes from version 23.1.0.rc2:
+  * A regression with keymaps which were not applied anymore.
+  * Various regressions with DRM format modifiers.
+- Changes from version 23.1.0.rc1:
+  * Support for linux_dmabuf v4 protocol.
+  * Support for wl_pointer.axis_v120 (high-resolution scrolling).
+  * Support for xwayland_shell protocol.
+  * Improved "rootful" mode for using Xwayland as a nested Xserver.
+  * Improved emulated XRandR support exposing the output names.
+  * Support for byte-swapped clients is now disabled by default.
+
+-------------------------------------------------------------------
 Tue Feb  7 14:29:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.1.8

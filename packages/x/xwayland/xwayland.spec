@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        22.1.8
+Version:        23.1.0
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(inputproto) >= 2.3.99.1
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(libbsd)
-BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libdrm) >= 2.4.109
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(openssl)
@@ -179,6 +179,7 @@ rm -f %{buildroot}%{_libdir}/xorg/protocol.txt
 %files
 %{_bindir}/Xwayland
 %{_mandir}/man1/Xwayland.1%{ext_man}
+%{_datadir}/applications/org.freedesktop.Xwayland.desktop
 
 %files devel
 %{_libdir}/pkgconfig/*.pc
