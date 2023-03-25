@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 23 10:22:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(krb5) BuildRequires: this dependency was dropped
+  upstream in commit f9c7b4e4 (2018-11-02).
+
+-------------------------------------------------------------------
 Tue Dec 27 12:37:34 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

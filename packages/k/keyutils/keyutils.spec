@@ -1,7 +1,7 @@
 #
 # spec file for package keyutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ Patch3:         keyutils-nodate.patch
 Patch4:         keyutils-usr-move.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(krb5)
 
 %description
 Utilities to control the kernel key management facility and to provide
