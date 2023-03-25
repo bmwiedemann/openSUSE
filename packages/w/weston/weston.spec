@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  xkeyboard-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
-BuildRequires:  pkgconfig(cairo-egl) >= 1.11.3
 BuildRequires:  pkgconfig(cairo-xcb)
 BuildRequires:  pkgconfig(colord) >= 0.1.27
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
