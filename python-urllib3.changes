@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 14 22:46:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.15:
+  * Fix socket timeout value when ``HTTPConnection`` is reused
+  * Remove "!" character from the unreserved characters in IPv6
+    Zone ID parsing
+  * Fix IDNA handling of '<80>' byte
+
+-------------------------------------------------------------------
 Sat Jan 21 09:59:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.14:
