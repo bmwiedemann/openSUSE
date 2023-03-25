@@ -731,4 +731,14 @@
   - Add support for pam.d/postlogin-{account,auth,password,session}</comment>
     <requestid>1073485</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>607b359e4101423f34bdc32659652773</srcmd5>
+    <version>2.2</version>
+    <time>1679766890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2
+  - Fix ecryptfs and fscrypt
+  - Add support for pam_wtmpdb</comment>
+    <requestid>1074222</requestid>
+  </revision>
 </revisionlist>

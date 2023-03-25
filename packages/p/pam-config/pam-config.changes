@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 15:41:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.2
+  - Fix ecryptfs and fscrypt
+  - Add support for pam_wtmpdb
+
+-------------------------------------------------------------------
 Tue Mar 21 08:48:12 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.1
