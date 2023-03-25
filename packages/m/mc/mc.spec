@@ -1,7 +1,7 @@
 #
 # spec file for package mc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.28
+Version:        4.8.29
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -101,7 +101,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch63
 %patch64
 %patch69
-%patch71
+%patch71 -p1
 %patch12 -p1
 %patch16
 %patch20
@@ -182,7 +182,7 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %config %{_sysconfdir}/mc/filehighlight.ini
 %config %{_sysconfdir}/mc/sfs.ini
 %config %{_sysconfdir}/mc/mc.menu
-%config %{_sysconfdir}/mc/mc.ext
+%config %{_sysconfdir}/mc/mc.ext.ini
 %config %{_sysconfdir}/mc/mcedit.menu
 %config %{_sysconfdir}/mc/mc.keymap
 %config %{_sysconfdir}/mc/mc.default.keymap
@@ -192,16 +192,16 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %{_libexecdir}/mc/ext.d
 %{_libexecdir}/mc/extfs.d
 %verify(not mode) %{_libexecdir}/mc/cons.saver
-%{_mandir}/man1/*
 %exclude %{_mandir}/*/man1/*
+%{_mandir}/man1/*
 %{_datadir}/mc
 %{_datadir}/mc/syntax/Syntax
 %{_datadir}/mc/mc.charsets
 %{_datadir}/mc/mc.lib
-%{_datadir}/mc/hints/mc.hint
 %exclude %{_datadir}/mc/hints/mc.hint.*
-%{_datadir}/mc/help/mc.hlp
+%{_datadir}/mc/hints/mc.hint
 %exclude %{_datadir}/mc/help/mc.hlp.*
+%{_datadir}/mc/help/mc.hlp
 %exclude %{_datadir}/locale/*/LC_MESSAGES/mc.mo
 
 %dir %{_datadir}/fish
@@ -244,6 +244,5 @@ rm -rf  %{buildroot}%{_datadir}/locale/be@tarask
 %lang(ru) %doc %{_datadir}/mc/*/mc.*.ru
 %lang(sr) %doc %{_datadir}/mc/*/mc.*.sr
 %lang(uk) %doc %{_datadir}/mc/*/mc.*.uk
-%lang(zh) %doc %{_datadir}/mc/*/mc.*.zh
 
 %changelog

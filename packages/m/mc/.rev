@@ -775,4 +775,41 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
 - Add mc.fish, which the fish equivalent of /usr/share/mc/mc-wrapper.sh</comment>
     <requestid>985468</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>6e0abf39bd8c5365e5a818ba587e9a9b</srcmd5>
+    <version>4.8.29</version>
+    <time>1679766862</time>
+    <user>dimstar_suse</user>
+    <comment>- mc-ext-audio.patch: refresh patch
+
+- update to 4.8.29:
+  * Add more options for panel filter (#1373):
+  * &quot;Files only&quot;
+  * &quot;Case sensitive&quot;
+  * &quot;Using shell patterns&quot;
+  * Continue copy after interrupt
+  * Restore menu accelerator for &quot;Sort order&quot;: back to &quot;S&quot;;
+    change menu accelerator for &quot;SFTP link&quot; to &quot;N&quot;
+  * Add support for cross-compilation with PERL path different
+    between --build and --host
+  * Bootstrap with autotools providing direct support for Apple
+    M1
+  * Port mc.ext to INI format and rename to mc.ext.ini
+  * Implement compound (AND) conditions (Type/Shell and
+    Type/Regex pairs) to disambiguate overloaded extensions
+  * There is no fallback to previous mc.ext format
+  * Editor
+    + Change location of all user's syntax related stuff to
+      ~/.local/share/mc/syntax/ directory
+    + syntax/Syntax: document location of syntax files
+    + Improvements of syntax highlighting:
+    + YAML: improve multiline blocks highliting
+    + New syntax highlighting:
+    + Privoxy (https://www.privoxy.org) actions files
+    + TOML (Tom's Obvious Minimal Language)
+    + sqlite3 view: use 'immutable=1' URI parameter to prevent
+      leaving wal/shm files after viewing sqlite database
+    + Support of contour terminal emulator</comment>
+    <requestid>1073958</requestid>
+  </revision>
 </revisionlist>

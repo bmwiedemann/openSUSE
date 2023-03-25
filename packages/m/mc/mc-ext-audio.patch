@@ -1,50 +1,61 @@
-Index: misc/mc.ext.in
+Index: mc-4.8.29/misc/mc.ext.ini.in
 ===================================================================
---- misc/mc.ext.in.orig
-+++ misc/mc.ext.in
-@@ -573,17 +573,20 @@ shell/i/.svg
- ### Sound files ###
+--- mc-4.8.29.orig/misc/mc.ext.ini.in
++++ mc-4.8.29/misc/mc.ext.ini.in
+@@ -557,23 +557,26 @@ Open=@EXTHELPERSDIR@/image.sh open svg
+ [sound]
+ Regex=\.(wav|snd|voc|au|smp|aiff|snd|m4a|ape|aac|wv|spx|flac)$
+ RegexIgnoreCase=true
+-Open=@EXTHELPERSDIR@/sound.sh open common
++Include=audio
+ View=%view{ascii} @EXTHELPERSDIR@/sound.sh view common
  
- regex/i/\.(wav|snd|voc|au|smp|aiff|snd|m4a|ape|aac|wv)$
--	Open=@EXTHELPERSDIR@/sound.sh open common
-+	Include=audio
- 	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view common
+ [mod]
+ Regex=\.(mod|s3m|xm|it|mtm|669|stm|ult|far)$
+ RegexIgnoreCase=true
+ Open=@EXTHELPERSDIR@/sound.sh open mod
++View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mod 
  
- regex/i/\.(mod|s3m|xm|it|mtm|669|stm|ult|far)$
- 	Open=@EXTHELPERSDIR@/sound.sh open mod
-+	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mod
+ [wav22]
+ Shell=.waw22
+ ShellIgnoreCase=true
+ Open=@EXTHELPERSDIR@/sound.sh open wav22
++View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mod 
  
- shell/i/.waw22
- 	Open=@EXTHELPERSDIR@/sound.sh open wav22
-+	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view wav22
+ [mp3]
+ Shell=.mp3
+ ShellIgnoreCase=true
+ Open=@EXTHELPERSDIR@/sound.sh open mp3
++Include=audio
+ View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mp3
  
- shell/i/.mp3
- 	Open=@EXTHELPERSDIR@/sound.sh open mp3
-+	Include=audio
- 	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mp3
+ [ogg]
+@@ -592,6 +595,7 @@ View=%view{ascii} @EXTHELPERSDIR@/sound.
+ Regex=\.(midi?|rmid?)$
+ RegexIgnoreCase=true
+ Open=@EXTHELPERSDIR@/sound.sh open midi
++View=%view{ascii} @EXTHELPERSDIR@/sound.sh view midi
  
- regex/i/\.og[gax]$
-@@ -595,15 +598,22 @@ shell/i/.opus
- 	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view opus
+ [wma]
+ Shell=.wma
+@@ -599,6 +603,10 @@ ShellIgnoreCase=true
+ Open=@EXTHELPERSDIR@/sound.sh open wma
+ View=%view{ascii} @EXTHELPERSDIR@/sound.sh view wma
  
- regex/i/\.(spx|flac)$
--	Open=@EXTHELPERSDIR@/sound.sh open common
-+	Include=audio
- 
- regex/i/\.(midi?|rmid?)$
- 	Open=@EXTHELPERSDIR@/sound.sh open midi
-+	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view midi
- 
- shell/i/.wma
- 	Open=@EXTHELPERSDIR@/sound.sh open wma
- 	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view wma
- 
-+shell/i/.mka
-+	Include=audio
++[mka]
++Shell=.mka
++Include=audio
 +
-+include/audio
-+	Open=@EXTHELPERSDIR@/sound.sh open common
-+	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view common
+ # Play list
+ [playlist]
+ Regex=\.(m3u|pls)$
+@@ -1115,6 +1123,9 @@ View=%view{ascii} @EXTHELPERSDIR@/image.
+ Open=@EXTHELPERSDIR@/video.sh open ALL_FORMATS
+ View=%view{ascii} @EXTHELPERSDIR@/video.sh view ALL_FORMATS
  
- ### Play lists ###
++[Include/audio]
++Open=@EXTHELPERSDIR@/sound.sh open common
++View=%view{ascii} @EXTHELPERSDIR@/sound.sh view common
+ 
+ ######### Default #########
  
