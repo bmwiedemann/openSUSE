@@ -91,7 +91,8 @@ BuildRequires:  %{python_module asdf >= 2.8}
 BuildRequires:  %{python_module asdf-astropy >= 0.1.1}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
 BuildRequires:  %{python_module cdflib >= 0.3.19}
-BuildRequires:  %{python_module dask-array}
+# no numba, no dask for Py 3.11 yet
+BuildRequires:  %{python_module dask-array if %python-base < 3.11}
 BuildRequires:  %{python_module drms >= 0.6.1}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
@@ -147,6 +148,8 @@ fi
 }
 # fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
 donttest="test_self_test"
+# no dask, numba for python 3.11
+python311_donttest="$python311_donttest or test_find_dependencies"
 %pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})"
 popd
 

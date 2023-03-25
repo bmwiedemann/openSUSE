@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 06:53:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with dask for python311: No numba yet
+
+-------------------------------------------------------------------
 Mon Feb 27 12:48:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove patch sunpy-pr6662-np1.24.patch
