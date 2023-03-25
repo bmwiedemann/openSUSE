@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Fri Mar 24 09:27:12 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.4
+  
+  Regularly scheduled (very late, though) major release
+
+  + New features
+    * There is a new internal merge tool called `internal:union-other-first`. 
+      It works like `internal:union` but add other side on top of local.
+    * Pullbundles are enabled by default
+    * delta-find: add a way to control the number of bases tested 
+      at the same time
+    * changelog-v2: add a configuration to disable rank computation
+    * debug: add an option to display statistic about a bundling operation
+    * debug: add an option to display statistic about a unbundling operation
+    * delta-find: add a delta-reuse policy that blindly accepts incoming deltas
+    * debug: add debug-revlog-stats command
+    * dirstate: add narrow support to `verify`
+    * verify: also check dirstate
+    * commit: add --draft option to use draft phase
+    * amend: add a --draft option to set phase to draft
+    * debug: add a config to abort update early
+    * rhg: implement checkexec to support weird filesystems
+    * debugshell: allow commands to be specified as a CLI argument
+    * rhg-files: add support for narrow when specifying a revision
+    * rust-narrow: enable narrow support for plain `rhg files`
+
+  + Bug fixes
+    
+    Aside from the following (unordered) commits which made it through a manual 
+    filter, there are a bunch of typing improvements and fixes, removal 
+    of deprecated code and general code cleanup.
+
+    * lfs: improve an exception message for blob corruption detected on transfer
+    * revlog: use the user facing filename as the display_id for filelogs
+    * rust-status: query fs traversal metadata lazily
+    * shelve: add Shelf.changed_files for resolving changed files in a plugin
+    * demandimport: ensure lazyloaderex sets loader attributes (issue6725)
+    * typing: fix a syntax error in mercurial/cext/bdiff.pyi
+    * cffi: fix a bytes vs str issue on macOS when listing directories
+    * changelog-v2: fix the docket `struct`
+    * schemes: fix a broken check for drive letter conflicts
+    * worker: avoid reading 1 byte at a time from the OS pipe
+    * rust-narrow: fix loop that never loops
+    * setup: Ensure target directory exists with building rust extension
+    * dirstate: invalidate changes when parent-change fails
+    * dirstate: warn about non-explicitly rolledback parent-change
+    * dirstate: write dirstate on successful exit of changing_parents context
+    * largefile: make sure we hold the lock when updating the second dirstate
+    * dirstate: enforce holding the lock while doing any changes
+    * run-tests: stop ignoring venv-installed packages
+    * transaction: run abort callback in all cases
+    * transaction: quietly rollback if no other changes than temporary files
+    * debugrebuilddirstate: double check that no transaction is open
+    * dirstate: do not write an empty dirstate just for backup
+    * locking: take the `wlock` for the full `hg add` duration
+    * locking: take the `wlock` for the full `hg remove` duration
+    * locking: take the `wlock` for the full `hg forget` duration
+    * locking: take the `wlock` for the full `hg addremove` duration
+    * locking: grab the wlock before touching the dirstate in `perfdirstatewrite`
+    * locking: hold the wlock for the full duration of the "keyword demo"
+    * mq: properly take the wlock during the full qfold operation
+    * dirstate: invalidate the dirstate change on transaction failure
+    * status: fix post status writing
+    * status: fix post status invalidation
+    * dirstate: avoid transaction backup/restore if we do not hold the lock
+    * rollback: explicitly skip dirstate rollback when applicable
+    * dirstate-guard: remove the feature
+    * dirstate: make `restorebackup` more robust when it is a noop
+    * dirstate: generalize the dirstate's invalidation on transaction abort
+    * dirstate: detect potential fishy transaction patterns while changing
+    * mq: write the dirstate before stripping
+    * dirstate: explicitly backup the datafile
+    * localrepo: enforce a clean dirstate when the transaction open
+    * localrepo: "blindly" do a dirstate backup at the end of the transaction
+    * dirstate: remove the dedicated backup logic
+    * rhg: fix a bug in path_encode
+    * dirstate: invalidate on all exceptions
+    * large-files: make sure we write newly initialized standin file early
+    * dirstate: warn if dirty when starting an edition
+    * dirstate: track that changes are pending in a transaction
+    * dirstate: distinct transaction callback from largefile
+    * automv: lock the repository before searching for renames
+    * dirstate: only reload the dirstate when it may have changed
+    * dirstate: cleanup the `_map` property cache
+    * status: invalidate dirstate  on LockError
+    * dirstate: check that dirstate is clean at the initial context opening
+    * dirstate: have `running_status` write the dirstate when holding the lock
+    * dirstate: have `running_status` warn when exiting with a dirty dirstate
+    * narrow: widden the lock context in `tracking`
+    * narrow: enforce that narrow spec is written within a transaction
+    * transaction: no longer explicitly cache phaseroots
+    * transaction: no longer explicitly cache bookmarks
+    * transaction: use the standard transaction mechanism to backup branch
+    * bundlerepo: handle changegroup induced phase movement in the associated method
+    * bundlerepo: apply phase data stored in the bundle instead of assuming `draft`
+    * config-item: declare undeclared path suboption
+    * narrow: read pending file when applicable
+    * rust: fix building on macOS (issue6801)
+    * run-tests: fix a crash when using the coverage options
+    * undo-files: also remove the undo.backupfiles
+    * undo-files: cleanup backup when cleaning undos
+    * undo-files: clean existing files up before writing new one
+    * undo-files: cleanup legacy files when applicable
+    * dirstate-v2: fix an incorrect handling of readdir errors
+    * rust: update zstd dependency
+    * rust: upgrade `rayon` dependency
+    * dirstate: fix the bug in [status] dealing with committed&ignored directories
+    * dirstate: fix a potential traceback when in `copy` and `rename`
+    * histedit: fix diff colors
+    * cext: fix for PyLong refactoring in CPython 3.12
+    * py3: fix for Python 3.12 emitting SyntaxWarning on invalid escape sequences
+    * statprof: with Python 3.12, lineno is (more) often None
+    * transaction: properly clean up backup file outside of .hg/store/
+    * transaction: raise on backup restoration error
+    * revlog: improve the robustness of the splitting process
+    * debugdeltachain: stop summing the same chain over and over
+    * url: don't ignore timeout for https connections
+    * py3: fix for Python 3.12 emitting SyntaxWarning on invalid escape sequences
+    * tests: accept a test output change in [tests/test-serve.t]
+    * rust: fix thread cap (for real this time)
+    * dirstate: try refreshing the changelog when parent are unknown
+    * hooks: invalidate the repo after the hooks
+
+  + Backwards Compatibility Changes
+    * rust: upgrade supported Rust toolchain version
+    * rust: move all crates in the main workspace to edition 2021
+    * hg-core: upgrade `zstd` dependency
+    * hg-core: upgrade `clap` dependency
+    * hg-core: upgrade all remaining dependencies
+    * hg-cpython: upgrade dependencies
+    * rhg: upgrade `clap` dependency
+    * rhg: upgrade the remainder of the dependencies
+
+  + Internal API Changes
+
+    * Many APIs around the dirstate have been made much stricter with regards 
+      to locking and transaction handling
+    * Some dirstate APIs have been renamed/removed
+    * In both cases, you should get loud complaints in your tests if you do 
+      something wrong.
+
+  + Miscellaneous
+
+    * pullbundle support no longer requires setting a server-side option, 
+      providing a `.hg/pullbundles.manifest` according to the syntax specified 
+      in `hg help -e clonebundles` is enough.
+    * debug-delta-find: add a --source option
+    * delta-find: add debug information about reuse of cached data
+    * delta-find: set the default candidate chunk size to 10
+    * attr: vendor 22.1.0
+    * configitems: add a default value for "merge-tools.xxx.regappend"
+    * debugrevlog: display total stored information
+    * emitrevision: if we need to compute a delta on the fly, 
+      try p1 or p2 first
+    * emitrevision: consider ancestors revision to emit as available base
+    * find-delta: pass the cache-delta usage policy alongside the cache-delta
+    * delta-find: use a smarter object for snapshot caching
+    * delta-find: use sets instead of list in the snapshot cache
+    * delta-find: make sure we only use newer full snapshot as candidate
+    * delta-find: use a single snapshot cache when applying 
+      a group to an object
+    * bundleoperation: optionnaly record the `remote` that produced the bundle
+    * bundle: when forcing acceptance of incoming delta also accept snapshot
+    * bundle: emit full snapshot as is, without doing a redelta
+    * pathutil: slightly faster path audit in the common case
+    * merge: don't pay for pathconflicts if there are none
+    * merge: short-circuit the _checkfs loop upon getting ENOENT
+    * merge: disable the whole filesystem access loop if [_realfs] is false
+    * merge: cache the fs checks made during [_checkunknownfiles]
+    * rust: use `logging_timer` instead of `micro_timer`
+    * rust: run `cargo clippy`
+    * makefile: add `cargo clippy` to tests if cargo is available
+    * heptapod-ci: add `clippy` to the CI
+    * convert: use a priority queue for sorting commits, to make sorting faster
+    * delta-find: adjust the default candidate group chunk size
+    * delta-find: declare the "paths..*:pulled-delta-reuse-policy option
+
+-------------------------------------------------------------------
 Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.3.3
