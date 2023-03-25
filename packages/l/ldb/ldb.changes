@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 08:05:30 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 2.7.1
+  * Build fix for Solaris, after removal of tevent ports backend
+    (bso#15298)
+- Changes from 2.7.0
+  * Support python 3.12
+  * Have python functions operating on DNs raise LdbError
+  * Don't call comparison() directly in LDB_TYPESAFE_QSORT
+  * Use ldb_ascii_toupper() for case folding to support
+    tr_TR.UTF-8 and other dotless i locales (bso#15248)
+
+-------------------------------------------------------------------
 Thu Sep 22 15:55:29 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to version 2.6.1

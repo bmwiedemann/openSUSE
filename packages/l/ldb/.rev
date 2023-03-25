@@ -625,4 +625,20 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>1006989</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>25f61227900be43c8948f5cc49e4d167</srcmd5>
+    <version>2.7.1</version>
+    <time>1679766888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.1
+  * Build fix for Solaris, after removal of tevent ports backend
+    (bso#15298)
+- Changes from 2.7.0
+  * Support python 3.12
+  * Have python functions operating on DNs raise LdbError
+  * Don't call comparison() directly in LDB_TYPESAFE_QSORT
+  * Use ldb_ascii_toupper() for case folding to support
+    tr_TR.UTF-8 and other dotless i locales (bso#15248)</comment>
+    <requestid>1074015</requestid>
+  </revision>
 </revisionlist>

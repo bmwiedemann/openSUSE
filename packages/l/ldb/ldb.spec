@@ -1,7 +1,7 @@
 #
 # spec file for package ldb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@
 %endif
 
 %define lmdb_version 0.9.16
-%define talloc_version 2.3.4
-%define tdb_version 1.4.7
-%define tevent_version 0.13.0
+%define talloc_version 2.4.0
+%define tdb_version 1.4.8
+%define tevent_version 0.14.1
 
 Name:           ldb
 BuildRequires:  docbook-xsl-stylesheets
@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 URL:            https://ldb.samba.org/
-Version:        2.6.1
+Version:        2.7.1
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
