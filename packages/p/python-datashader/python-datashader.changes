@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 15:16:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip python38: No xarray anymore
+- Skip python311: No dask-all and numba yet
+
+-------------------------------------------------------------------
 Tue Feb  7 09:00:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add Do-not-use-warnings-from-numpy.patch and numpy-1.24.patch to fix issues
