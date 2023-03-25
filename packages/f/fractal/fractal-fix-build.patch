@@ -1,9 +1,0 @@
-diff -Nur orig-fractal-4.4.1/fractal-gtk/src/main.rs fractal-4.4.1/fractal-gtk/src/main.rs
---- orig-fractal-4.4.1/fractal-gtk/src/main.rs	2021-10-18 12:42:06.733971000 +0200
-+++ fractal-4.4.1/fractal-gtk/src/main.rs	2022-01-26 20:37:07.818569752 +0100
-@@ -1,4 +1,4 @@
--#![deny(dead_code, unused_imports, unused_must_use, unused_variables)]
-+#![deny(unused_imports, unused_must_use, unused_variables)]
- #[macro_use]
- extern crate glib;
- 
