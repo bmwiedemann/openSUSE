@@ -411,4 +411,54 @@
 </comment>
     <requestid>1070003</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e93ab03191beb70d2c704ae9c0690826</srcmd5>
+    <version>3.41.2.1</version>
+    <time>1679766925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.41.2.1
+  * Features
+    ~ sqlite
+      bump sqlite to 3.41.2 (8cdaf59)
+  * Build
+    ~ jreleaser
+      categorize scopes in changelog (e3e5ae7)
+- Update to v3.41.0.1
+  * Features
+    ~ jdbc: remove length/dimension in DatabaseMetaData#getColumns
+      TYPE_NAME (b09e093)
+    ~ sqlite: add support for legacy_alter_table flag (26df15f),
+      closes #481
+    ~ add SQLiteDataSource #setBusyTimeout (12f2113)
+  * Fixes
+    ~ jdbc: return DatabaseMetaData#getColumns DATA_TYPE as int
+      instead of String (b7c40c3), closes #859
+    ~ database from jar resource no longer keeps the jar
+      file-descriptor open (38c25af)
+    ~ keep SQLiteConfig cached busyTimeout more consistent with
+      busy_timeout pragma (8be7243)
+  * Build
+    ~ build(deps-dev): bump mockito-core from 4.8.1 to 5.2.0
+      (1874299)
+    ~ deps: bump native-maven-plugin from 0.9.19 to 0.9.20
+      (a99ac0c)
+    ~ build(deps-dev): bump assertj-core from 3.23.1 to 3.24.2
+      (12d1f2c)
+    ~ deps: bump jreleaser-maven-plugin from 1.4.0 to 1.5.1
+      (5fba437)
+    ~ deps: bump surefire.version from 3.0.0-M7 to 3.0.0 (15db506)
+    ~ build(deps-dev): bump junit-pioneer from 1.7.1 to 2.0.0
+      (db56d15)
+    ~ deps: bump maven-javadoc-plugin from 3.4.1 to 3.5.0 (7085bf4)
+    ~ build(deps-dev): bump archunit-junit5 from 1.0.0 to 1.0.1
+      (bfe7c1b)
+    ~ build(deps-dev): bump logback-classic from 1.3.4 to 1.4.5
+      (276f682)
+    ~ deps: bump maven-enforcer-plugin from 3.1.0 to 3.2.1
+      (f67c97a)
+    ~ dependabot: enable updates for all deps (8a2a5b1)
+    ~ jreleaser: add missing perf labeler (c2bfaa4)
+</comment>
+    <requestid>1074157</requestid>
+  </revision>
 </revisionlist>
