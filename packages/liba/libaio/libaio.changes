@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 12:47:37 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Make the package respect %optflags and disable LTO.
+
+-------------------------------------------------------------------
 Fri Sep 23 18:51:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip testsuite on qemu_linux_user builds 

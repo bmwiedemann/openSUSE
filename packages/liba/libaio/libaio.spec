@@ -1,7 +1,7 @@
 #
 # spec file for package libaio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,8 @@ with, for the Linux-native asynchronous I/O facility ("async I/O", or
 %patch1 -p1
 
 %build
-%make_build OPTFLAGS="%{optflags}"
+%define _lto_cflags %nil
+CFLAGS="%{optflags}" %make_build
 
 %install
 %make_install libdir=%{_libdir}
@@ -75,7 +76,7 @@ rm %{buildroot}%{_libdir}/*.a
 %check
 # qemu-linux-user does not emulate io_setup syscall, so none of the testsuite makes sense
 %if ! 0%{?qemu_user_space_build}
-%make_build OPTFLAGS="%{optflags}" partcheck
+CFLAGS="%{optflags}" %make_build partcheck
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig

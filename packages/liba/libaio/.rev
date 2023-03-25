@@ -304,4 +304,12 @@
     <comment></comment>
     <requestid>1005713</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>8ee056d20a6943cdf86fdcb41cbfeb87</srcmd5>
+    <version>0.3.113</version>
+    <time>1679766893</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the package respect %optflags and disable LTO. (forwarded request 1073966 from marxin)</comment>
+    <requestid>1074033</requestid>
+  </revision>
 </revisionlist>
