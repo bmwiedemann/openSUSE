@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 20:38:39 UTC 2023 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- update to 3.8.6
+  * Improved support for go-i18n v2
+  * Fixed parsing unicode RC files with pragma encoding
+  * Add support for go-i18n v2
+  * Fixes in the i18next v4 and GWT formats
+  * Fixes in the JSON, YAML and stringsdict formats
+  * Adds support for gotext and i18next v4 JSON variants
+- switch back to upstream tarball
+- fix for boo#1208870 (translate/share folder not packaged)
+
+-------------------------------------------------------------------
 Mon Jan  2 17:54:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - update to 3.8.0
@@ -208,7 +221,7 @@ Mon Jan 28 12:54:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 - Replace find -exec rm by just find -delete.
 
 -------------------------------------------------------------------
-Mon Jan 28 11:30:50 UTC 2019 - Luiz Fernando Ranghetti <elchevive68@gmail.com>
+Mon Jan 28 11:30:50 UTC 2019 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Correct the Source URL
 

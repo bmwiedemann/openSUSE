@@ -1,7 +1,7 @@
 #
 # spec file for package translate-toolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,12 +42,12 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.8.0
+Version:        3.8.6
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
-Source:         translate-%{version}.tar
+Source:         %{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
 Patch1:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
@@ -153,7 +153,7 @@ The %{name}-devel-doc package contains Translate Toolkit API documentation for d
 toolkit or to use the libraries in other localization tools.
 
 %prep
-%setup -q -n translate-%{version}
+%setup -q -n %{modname}-%{version}
 %autopatch -p1
 
 sed -i 296"s|'share'|'translate/share'|" setup.py
@@ -213,8 +213,7 @@ done
 %check
 %if %{with test}
 rm -v translate/storage/test_fluent.py
-# https://github.com/translate/translate/issues/4745
-%pytest -k 'not test_wrap_gettext'
+%pytest
 %endif
 
 %post
