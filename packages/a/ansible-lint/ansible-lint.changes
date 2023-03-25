@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 25 06:41:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.3:
+  * Bugfixes
+    - Refactor task iterator (part 2) (#3212) @ssbarnea
+    - Document fix for literal_compare `== False` (#3207)
+      @jemand771
+    - docs: Provide more information about the dangers of run_once
+      (#3187) @bendem
+    - Fix sarif output to use 'match.details' in result object,
+      instead of 'match.message' (#3163) @4ch1m
+    - Allow templated boolean for any_errors_fatal (#3205) @sathieu
+    - Refactor task iterator to return an object (#3195) @ssbarnea
+    - Update SPDX license list (#3193) @ssbarnea
+    - Fix tilde interpolation in PATH (#3185) @fclaerho
+    - Fix "helpUri" assignment for SARIF output (#3176) @4ch1m
+    - docs: fix link for rule galaxy[no-runtime] (#3175)
+      @ziegenberg
+
+-------------------------------------------------------------------
 Thu Mar  9 18:26:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.14.2:
