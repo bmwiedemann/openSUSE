@@ -459,4 +459,13 @@ the http-&amp;gt;https redirect. (forwarded request 452617 from dmdiss)</comment
     <comment></comment>
     <requestid>1006988</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>69da49ba5138a4780c65ebb4d7746f67</srcmd5>
+    <version>1.4.8</version>
+    <time>1679766884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.8:
+  * Support python 3.12</comment>
+    <requestid>1074013</requestid>
+  </revision>
 </revisionlist>

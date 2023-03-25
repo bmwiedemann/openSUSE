@@ -1,7 +1,7 @@
 #
 # spec file for package tdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?python_sitearch:  %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 Name:           tdb
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        Samba Trivial Database
 License:        LGPL-3.0-or-later
