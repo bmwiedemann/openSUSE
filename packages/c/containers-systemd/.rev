@@ -345,4 +345,13 @@
   * Make sure dhcp container has NET_RAW capabilities</comment>
     <requestid>994526</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ec3d9ebfc6f226323f89070ec6141015</srcmd5>
+    <version>0.0+git20230324.9cd3b7a</version>
+    <time>1679766896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20230324.9cd3b7a:
+  * container-certbot-renew.service is a oneshot service</comment>
+    <requestid>1074101</requestid>
+  </revision>
 </revisionlist>

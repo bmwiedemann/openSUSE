@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 07:04:46 UTC 2023 - kukuk@suse.com
+
+- Update to version 0.0+git20230324.9cd3b7a:
+  * container-certbot-renew.service is a oneshot service
+
+-------------------------------------------------------------------
 Thu Aug 11 12:31:53 UTC 2022 - kukuk@suse.com
 
 - Update to version 0.0+git20220811.226e80e:
