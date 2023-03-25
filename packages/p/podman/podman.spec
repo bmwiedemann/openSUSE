@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -27,7 +27,6 @@ URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source2:        README.SUSE.SLES
-Patch0:         https://github.com/containers/podman/pull/17641.patch#./Quadlet-use-the-default-runtime.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel

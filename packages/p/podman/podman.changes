@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 24 04:56:25 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 4.4.3:
+  * Bump to v4.4.3
+  * Release notes for v4.4.3
+  * compat: /auth: parse server address correctly
+  * vendor github.com/containers/common@v0.51.1
+  * pkginstaller: bump Qemu to version 7.2.0
+  * podman machine: Adjust Chrony makestep config
+  * [v4.4] fix --health-on-failure=restart in transient unit
+  * podman logs passthrough driver support --cgroups=split
+  * journald logs: simplify entry parsing
+  * podman logs: read journald with passthrough
+  * journald: remove initializeJournal()
+  * netavark: only use aardvark ip as nameserver
+  * compat API: network create return 409 for duplicate
+  * fix "podman logs --since --follow" flake
+  * system service --log-level=trace: support hijack
+  * podman-mac-helper: exit 1 on error
+  * bump golang.org/x/net to v0.8.0
+  * Fix package restore
+  * Quadlet - use the default runtime
+  * Bump to v4.4.3-dev
+
+- Remove patch (merged upstream):
+  * Quadlet-use-the-default-runtime.patch
+    (https://github.com/containers/podman/pull/17601)
+
+-------------------------------------------------------------------
 Mon Feb 27 13:54:33 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add patch to let quadlet use the default runtime
