@@ -38,10 +38,10 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.3.4
-%define tevent_version 0.13.0
-%define tdb_version    1.4.7
-%define ldb_version    2.6.1
+%define talloc_version 2.4.0
+%define tevent_version 0.14.1
+%define tdb_version    1.4.8
+%define ldb_version    2.7.1
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.5+git.320.c38ca0f84a
+Version:        4.18.0+git.294.508b693e5c
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1298,6 +1298,7 @@ exit 0
 %_includedir/samba-4.0/gen_ndr/misc.h
 %_includedir/samba-4.0/gen_ndr/ndr_misc.h
 %_includedir/samba-4.0/gen_ndr/auth.h
+%_includedir/samba-4.0/gen_ndr/claims.h
 %_includedir/samba-4.0/gen_ndr/dcerpc.h
 %_includedir/samba-4.0/gen_ndr/drsblobs.h
 %_includedir/samba-4.0/gen_ndr/drsuapi.h
@@ -1449,6 +1450,7 @@ exit 0
 %{_libdir}/samba/liblibcli-lsa3-samba4.so
 %{_libdir}/samba/liblibcli-netlogon3-samba4.so
 %{_libdir}/samba/liblibsmb-samba4.so
+%{_libdir}/samba/libstable-sort-samba4.so
 %{_libdir}/libtevent-util.so.*
 %{_libdir}/samba/libmessages-dgm-samba4.so
 %{_libdir}/samba/libmessages-util-samba4.so
@@ -1842,8 +1844,12 @@ exit 0
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8R2.txt
 %dir %{_datadir}/samba/admx
 %{_datadir}/samba/admx/samba.admx
+%{_datadir}/samba/admx/GNOME_Settings.admx
 %dir %{_datadir}/samba/admx/en-US
 %{_datadir}/samba/admx/en-US/samba.adml
+%{_datadir}/samba/admx/en-US/GNOME_Settings.adml
+%dir %{_datadir}/samba/admx/ru-RU
+%{_datadir}/samba/admx/ru-RU/GNOME_Settings.adml
 %{_mandir}/man8/samba.8.*
 %{_mandir}/man8/samba_downgrade_db.8.*
 %endif

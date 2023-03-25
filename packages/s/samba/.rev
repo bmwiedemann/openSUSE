@@ -3615,4 +3615,20 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1066229</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>047bfa0f9375bd2d788f0701349aaf8e</srcmd5>
+    <version>4.18.0+git.294.508b693e5c</version>
+    <time>1679766889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.18.0
+  * SMB server performance improvements
+  * More succinct samba-tool error messages
+  * Color output with samba-tool --color
+    The NO_COLOR environment variable will disable colour output
+  * New samba-tool dsacl subcommand for deleting ACEs
+  * New wbinfo option --change-secret-at
+  * Net option to change the NT ACL default location
+  * Azure AD / Office365 synchronization improvements</comment>
+    <requestid>1074016</requestid>
+  </revision>
 </revisionlist>

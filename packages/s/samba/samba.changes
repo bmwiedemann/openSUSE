@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 08:09:32 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.18.0
+  * SMB server performance improvements
+  * More succinct samba-tool error messages
+  * Color output with samba-tool --color
+    The NO_COLOR environment variable will disable colour output
+  * New samba-tool dsacl subcommand for deleting ACEs
+  * New wbinfo option --change-secret-at
+  * Net option to change the NT ACL default location
+  * Azure AD / Office365 synchronization improvements
+
+-------------------------------------------------------------------
 Tue Feb 14 08:21:13 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.17.5
