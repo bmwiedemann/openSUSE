@@ -81,4 +81,12 @@
     <comment></comment>
     <requestid>975666</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>18e99750efcd57c3c32eb56e02e25467</srcmd5>
+    <version>21.3.0</version>
+    <time>1679766905</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dependency six</comment>
+    <requestid>1074138</requestid>
+  </revision>
 </revisionlist>

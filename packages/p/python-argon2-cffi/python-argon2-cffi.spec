@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 
 Name:           python-argon2-cffi
@@ -35,7 +34,6 @@ BuildRequires:  python-rpm-macros
 # For test
 BuildRequires:  %{python_module argon2-cffi-bindings}
 Requires:       python-argon2-cffi-bindings
-Requires:       python-six
 Provides:       python-argon2_cffi
 Obsoletes:      python-argon2_cffi
 %python_subpackages
