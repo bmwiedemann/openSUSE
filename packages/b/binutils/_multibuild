@@ -22,4 +22,5 @@
   <flavor>rx</flavor>
   <flavor>riscv64</flavor>
   <flavor>xtensa</flavor>
+  <flavor>bpf</flavor>
 </multibuild>

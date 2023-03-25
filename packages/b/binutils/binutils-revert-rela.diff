@@ -11,12 +11,26 @@ but for older codestreams we want to be compatible with the old (buggy)
 behaviour.  We revert the change for all relocs and not just those for
 which it arguably made some sense or where we had a report about (PLT32).
 
+On x86-64 this reversion interacts with the linker support for DT_RELR,
+i.e. packed relative relocs.  To calculate the info for that the linker
+goes through the input relocation multiple times and the obvious result
+with the above reversion happens: the addends are added multiple times
+resulting in those packed relative relocs to all have an addend twice
+as large as wanted.  As old codestreams don't have the necessary support
+for DT_RELR anyway (in the dynamic linker) we disable it whole-sale as
+well.  Only x86-64 and ppc64(le) have packed relative relocs
+and while ppc64le DT_RELR support would work there's still the problem
+of missing support in ld.so.
 
-Index: binutils-2.39/bfd/elf64-x86-64.c
+(This also disables the few explicit dt-relr tests that don't use the
+proper predicate to guard themself)
+
+
+Index: binutils-2.40/bfd/elf64-x86-64.c
 ===================================================================
---- binutils-2.39.orig/bfd/elf64-x86-64.c	2022-10-17 16:20:55.074224642 +0200
-+++ binutils-2.39/bfd/elf64-x86-64.c	2022-10-17 16:31:36.128864508 +0200
-@@ -47,127 +47,127 @@ static reloc_howto_type x86_64_elf_howto
+--- binutils-2.40.orig/bfd/elf64-x86-64.c	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/bfd/elf64-x86-64.c	2023-03-08 16:22:22.915673946 +0100
+@@ -48,127 +48,127 @@ static reloc_howto_type x86_64_elf_howto
  	bfd_elf_generic_reloc, "R_X86_64_NONE",	false, 0, 0x00000000,
  	false),
    HOWTO(R_X86_64_64, 0, 8, 64, false, 0, complain_overflow_dont,
@@ -185,7 +199,7 @@ Index: binutils-2.39/bfd/elf64-x86-64.c
  	true),
  
    /* We have a gap in the reloc numbers here.
-@@ -188,7 +188,7 @@ static reloc_howto_type x86_64_elf_howto
+@@ -189,7 +189,7 @@ static reloc_howto_type x86_64_elf_howto
  
  /* Use complain_overflow_bitfield on R_X86_64_32 for x32.  */
    HOWTO(R_X86_64_32, 0, 4, 32, false, 0, complain_overflow_bitfield,
@@ -194,11 +208,11 @@ Index: binutils-2.39/bfd/elf64-x86-64.c
  	false)
  };
  
-Index: binutils-2.39/gas/testsuite/gas/i386/i386.exp
+Index: binutils-2.40/gas/testsuite/gas/i386/i386.exp
 ===================================================================
---- binutils-2.39.orig/gas/testsuite/gas/i386/i386.exp	2022-07-08 11:46:47.000000000 +0200
-+++ binutils-2.39/gas/testsuite/gas/i386/i386.exp	2022-10-17 16:27:41.276966573 +0200
-@@ -1287,7 +1287,6 @@ if [gas_64_check] then {
+--- binutils-2.40.orig/gas/testsuite/gas/i386/i386.exp	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/gas/testsuite/gas/i386/i386.exp	2023-03-08 16:22:22.915673946 +0100
+@@ -1328,7 +1328,6 @@ if [gas_64_check] then {
  	run_list_test "reloc64" "--defsym _bad_=1"
  	run_list_test "x86-64-inval-tls"
  	run_dump_test "mixed-mode-reloc64"
@@ -206,9 +220,9 @@ Index: binutils-2.39/gas/testsuite/gas/i386/i386.exp
  	run_dump_test "x86-64-ifunc"
  	run_dump_test "x86-64-opcode-inval"
  	run_dump_test "x86-64-opcode-inval-intel"
-Index: binutils-2.39/gas/testsuite/gas/i386/rela.d
+Index: binutils-2.40/gas/testsuite/gas/i386/rela.d
 ===================================================================
---- binutils-2.39.orig/gas/testsuite/gas/i386/rela.d	2022-07-08 11:46:47.000000000 +0200
+--- binutils-2.40.orig/gas/testsuite/gas/i386/rela.d	2023-03-08 16:21:20.818669606 +0100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,13 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -224,9 +238,9 @@ Index: binutils-2.39/gas/testsuite/gas/i386/rela.d
 -
 -Contents of section .data:
 - 0+0 11 ?11 ?11 ?11 22 ?22 ?22 ?22 33 ?33 ?33 ?33 44 ?44 ?44 ?44 .*
-Index: binutils-2.39/gas/testsuite/gas/i386/rela.s
+Index: binutils-2.40/gas/testsuite/gas/i386/rela.s
 ===================================================================
---- binutils-2.39.orig/gas/testsuite/gas/i386/rela.s	2022-07-08 11:46:47.000000000 +0200
+--- binutils-2.40.orig/gas/testsuite/gas/i386/rela.s	2023-03-08 16:21:20.818669606 +0100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,14 +0,0 @@
 -# Note: This file is also used by an ld test case.
@@ -243,9 +257,9 @@ Index: binutils-2.39/gas/testsuite/gas/i386/rela.s
 -
 -	.reloc l, BFD_RELOC_64, q
 -	.reloc q, BFD_RELOC_32, l
-Index: binutils-2.39/ld/testsuite/ld-x86-64/rela.d
+Index: binutils-2.40/ld/testsuite/ld-x86-64/rela.d
 ===================================================================
---- binutils-2.39.orig/ld/testsuite/ld-x86-64/rela.d	2022-07-08 11:46:48.000000000 +0200
+--- binutils-2.40.orig/ld/testsuite/ld-x86-64/rela.d	2023-03-08 16:21:20.818669606 +0100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,10 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -258,10 +272,10 @@ Index: binutils-2.39/ld/testsuite/ld-x86-64/rela.d
 -
 -Contents of section .data:
 - *[0-9a-f]*0 .8 ?.. ?.. ?.. 00 ?00 ?00 ?00 .0 ?.. ?.. ?.. 44 ?44 ?44 ?44 .*
-Index: binutils-2.39/ld/testsuite/ld-x86-64/x86-64.exp
+Index: binutils-2.40/ld/testsuite/ld-x86-64/x86-64.exp
 ===================================================================
---- binutils-2.39.orig/ld/testsuite/ld-x86-64/x86-64.exp	2022-07-26 09:13:10.000000000 +0200
-+++ binutils-2.39/ld/testsuite/ld-x86-64/x86-64.exp	2022-10-17 16:27:41.276966573 +0200
+--- binutils-2.40.orig/ld/testsuite/ld-x86-64/x86-64.exp	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/ld/testsuite/ld-x86-64/x86-64.exp	2023-03-08 16:22:22.919674009 +0100
 @@ -286,7 +286,6 @@ run_dump_test "apic"
  run_dump_test "pcrel8"
  run_dump_test "pcrel16"
@@ -270,3 +284,92 @@ Index: binutils-2.39/ld/testsuite/ld-x86-64/x86-64.exp
  run_dump_test "tlsgd2"
  run_dump_test "tlsgd3"
  run_dump_test "tlsgd12"
+@@ -501,10 +500,10 @@ run_dump_test "pr27491-1c"
+ run_dump_test "pr27491-2"
+ run_dump_test "pr27491-3"
+ run_dump_test "pr27491-4"
+-run_dump_test "dt-relr-1a"
+-run_dump_test "dt-relr-1a-x32"
+-run_dump_test "dt-relr-1b"
+-run_dump_test "dt-relr-1b-x32"
++#run_dump_test "dt-relr-1a"
++#run_dump_test "dt-relr-1a-x32"
++#run_dump_test "dt-relr-1b"
++#run_dump_test "dt-relr-1b-x32"
+ 
+ if { ![skip_sframe_tests] } {
+     run_dump_test "sframe-simple-1"
+Index: binutils-2.40/binutils/testsuite/lib/binutils-common.exp
+===================================================================
+--- binutils-2.40.orig/binutils/testsuite/lib/binutils-common.exp	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/binutils/testsuite/lib/binutils-common.exp	2023-03-08 16:22:22.919674009 +0100
+@@ -429,6 +429,8 @@ proc supports_persistent_section {} {
+ 
+ # Whether a target support DT_RELR sections.
+ proc supports_dt_relr {} {
++    # on old codestreams we don't support DT_RELR anywhere
++    return 0
+     if { ([istarget x86_64-*-*]
+ 	  || [istarget i?86-*-*]
+ 	  || [istarget powerpc64*-*-*])
+Index: binutils-2.40/ld/emulparams/dt-relr.sh
+===================================================================
+--- binutils-2.40.orig/ld/emulparams/dt-relr.sh	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/ld/emulparams/dt-relr.sh	2023-03-08 16:22:22.919674009 +0100
+@@ -1,3 +1,8 @@
++if false; then
++    # on old codestreams we don't have the DT_RELR support in the dynamic
++    # linker, and additionally DT_RELR support will generate bad relocs
++    # when binutils-revert-rela.diff is active (as addends will be
++    # applied multiple times).  Just disable all DT_RELR support.
+ HAVE_DT_RELR=yes
+ PARSE_AND_LIST_OPTIONS_PACK_RELATIVE_RELOCS='
+   fprintf (file, _("\
+@@ -16,3 +21,5 @@ PARSE_AND_LIST_ARGS_CASE_Z_PACK_RELATIVE
+ 
+ PARSE_AND_LIST_OPTIONS="$PARSE_AND_LIST_OPTIONS $PARSE_AND_LIST_OPTIONS_PACK_RELATIVE_RELOCS"
+ PARSE_AND_LIST_ARGS_CASE_Z="$PARSE_AND_LIST_ARGS_CASE_Z $PARSE_AND_LIST_ARGS_CASE_Z_PACK_RELATIVE_RELOCS"
++
++fi
+Index: binutils-2.40/ld/testsuite/ld-i386/i386.exp
+===================================================================
+--- binutils-2.40.orig/ld/testsuite/ld-i386/i386.exp	2023-03-08 16:21:20.818669606 +0100
++++ binutils-2.40/ld/testsuite/ld-i386/i386.exp	2023-03-08 16:22:22.919674009 +0100
+@@ -507,8 +507,8 @@ run_dump_test "pr27491-1c"
+ run_dump_test "pr27491-2"
+ run_dump_test "pr27491-3"
+ run_dump_test "pr27491-4"
+-run_dump_test "dt-relr-1a"
+-run_dump_test "dt-relr-1b"
++#run_dump_test "dt-relr-1a"
++#run_dump_test "dt-relr-1b"
+ run_dump_test "pr28870"
+ run_dump_test "pr28894"
+ 
+Index: binutils-2.40/ld/testsuite/ld-powerpc/powerpc.exp
+===================================================================
+--- binutils-2.40.orig/ld/testsuite/ld-powerpc/powerpc.exp	2023-01-14 01:00:00.000000000 +0100
++++ binutils-2.40/ld/testsuite/ld-powerpc/powerpc.exp	2023-03-08 16:25:29.926698626 +0100
+@@ -378,14 +378,14 @@ set ppc64elftests {
+ 	"-a64" {abs-reloc.s}
+ 	{{objdump {-sdr} abs-shared.d}
+ 	 {readelf {-rW} abs-shared.r}} "abs-shared"}
+-    {"abs-pie-relr" "-melf64ppc -pie --hash-style=sysv -z pack-relative-relocs --defsym a=1 --defsym 'HIDDEN(b=2)' --defsym c=0x123456789abcdef0" ""
+-	"-a64" {abs-reloc.s}
+-	{{objdump {-sdr} abs-pie-relr.d}
+-	 {readelf {-rW} abs-pie-relr.r}} "abs-pie-relr"}
+-    {"abs-shared-relr" "-melf64ppc -shared --hash-style=sysv -z pack-relative-relocs --defsym a=1 --defsym 'HIDDEN(b=2)' --defsym c=0x123456789abcdef0" ""
+-	"-a64" {abs-reloc.s}
+-	{{objdump {-sdr} abs-shared-relr.d}
+-	 {readelf {-rW} abs-shared-relr.r}} "abs-shared-relr"}
++#    {"abs-pie-relr" "-melf64ppc -pie --hash-style=sysv -z pack-relative-relocs --defsym a=1 --defsym 'HIDDEN(b=2)' --defsym c=0x123456789abcdef0" ""
++#	"-a64" {abs-reloc.s}
++#	{{objdump {-sdr} abs-pie-relr.d}
++#	 {readelf {-rW} abs-pie-relr.r}} "abs-pie-relr"}
++#    {"abs-shared-relr" "-melf64ppc -shared --hash-style=sysv -z pack-relative-relocs --defsym a=1 --defsym 'HIDDEN(b=2)' --defsym c=0x123456789abcdef0" ""
++#	"-a64" {abs-reloc.s}
++#	{{objdump {-sdr} abs-shared-relr.d}
++#	 {readelf {-rW} abs-shared-relr.r}} "abs-shared-relr"}
+ }
+ 
+ set ppceabitests {

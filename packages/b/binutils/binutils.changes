@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 21 16:33:06 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Document fixed CVEs:
+  * bnc#1208037 aka CVE-2023-25588 aka PR29677
+  * bnc#1208038 aka CVE-2023-25587 aka PR29846
+  * bnc#1208040 aka CVE-2023-25585 aka PR29892
+  * bnc#1208409 aka CVE-2023-0687 aka PR29444
+
+-------------------------------------------------------------------
+Thu Mar 16 14:18:53 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Enable bpf-none cross target and add bpf-none to the multitarget
+  set of supported targets.
+
+-------------------------------------------------------------------
+Wed Mar  8 15:31:09 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Disable packed-relative-relocs for old codestreams.  They generate
+  buggy relocations when binutils-revert-rela.diff is active.
+  [bsc#1206556]
+
+-------------------------------------------------------------------
 Thu Feb 23 09:11:50 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Disable ZSTD debug section compress by default.

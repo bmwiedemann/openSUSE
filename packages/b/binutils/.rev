@@ -2135,4 +2135,23 @@ contain it.
     <comment></comment>
     <requestid>1067336</requestid>
   </revision>
+  <revision rev="164" vrev="3">
+    <srcmd5>7337729fec094e23d2e32db935dbc5d1</srcmd5>
+    <version>2.40</version>
+    <time>1679766835</time>
+    <user>dimstar_suse</user>
+    <comment>- Document fixed CVEs:
+  * bnc#1208037 aka CVE-2023-25588 aka PR29677
+  * bnc#1208038 aka CVE-2023-25587 aka PR29846
+  * bnc#1208040 aka CVE-2023-25585 aka PR29892
+  * bnc#1208409 aka CVE-2023-0687 aka PR29444
+
+- Enable bpf-none cross target and add bpf-none to the multitarget
+  set of supported targets.
+
+- Disable packed-relative-relocs for old codestreams.  They generate
+  buggy relocations when binutils-revert-rela.diff is active.
+  [bsc#1206556]</comment>
+    <requestid>1073595</requestid>
+  </revision>
 </revisionlist>

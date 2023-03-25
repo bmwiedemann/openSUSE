@@ -304,7 +304,7 @@ RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error"
 echo "Building native binutils."
 %if %build_multitarget
 EXTRA_TARGETS="%(printf ,%%s-suse-linux %target_list)"
-EXTRA_TARGETS="$EXTRA_TARGETS,powerpc-macos,powerpc-macos10,spu-elf,x86_64-pep"
+EXTRA_TARGETS="$EXTRA_TARGETS,powerpc-macos,powerpc-macos10,spu-elf,x86_64-pep,bpf-none"
 %else
 EXTRA_TARGETS=
 %ifarch sparc
@@ -444,7 +444,11 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 %if "%{TARGET}" == "arm"
 %define TARGET_OS %{TARGET}-suse-linux-gnueabi
 %else
+%if "%{TARGET}" == "bpf"
+%define TARGET_OS %{TARGET}-none
+%else
 %define TARGET_OS %{TARGET}-suse-linux
+%endif
 %endif
 %endif
 %endif
