@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 20 07:37:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.1
+  * Fixed: Loading image from stdin single instance client runner
+    side doesn't work.
+
+-------------------------------------------------------------------
 Mon May 23 07:40:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.10.0
