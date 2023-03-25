@@ -1,4 +1,405 @@
 -------------------------------------------------------------------
+Sat Mar 25 11:29:27 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1380:
+  * kernel: use KTypedAddress for addresses
+  * bounded_threadsafe_queue: Refactor Pop
+  * bounded_threadsafe_queue: Add producer cv to avoid busy waiting
+  * bounded_threadsafe_queue: Deduplicate and add PushModes
+  * bounded_threadsafe_queue: Add TryPush
+  * logging: Make use of bounded queue
+  * bounded_threadsafe_queue: Use simplified impl of bounded queue
+  * vulkan: fix more excessive waiting in scheduler
+  * kernel: fix LOG_TRACE in ipc
+  * common: string_util: Use std::string_view for UTF16ToUTF8/UTF8ToUTF16W.
+  * common: bounded_threadsafe_queue: Use polyfill_thread.
+  * config: Fix controller config from resetting
+  * Disable SRGB border color conversion for now, to fix shadows in Xenoblade.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:17:46 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Compile with GCC12 for avoid errors with new Factory default GCC13
+- Enable Discord Rich Presence
+- Use QtMultimedia for Camera and QtWebEngine for web applet implementation
+- Build with system installed cpp-httplib and Vulkan headers
+- Add clang-devel (for LLVM) and libxml2 to BuildRequires
+
+-------------------------------------------------------------------
+Sun Mar 19 00:30:19 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1374:
+  * service: nfp: Replace crc function with boost equivalent
+  * service: nfp: Close app area and recreate crc
+  * service: nfp: Convert mii colors to v3
+  * vulkan: disable extendedDynamicState3ColorBlendEquation on radv
+  * service: nfp: Actually write correct crc
+  * configure_audio: Fix output mode setting not saving
+  * input_common: sdl: Only send last vibration command
+  * kernel: additional style fixes to KThread, KProcess
+  * kernel: fix clang build
+  * kernel: remove unnecessary finalize calls
+  * kernel: convert KProcess to new style
+  * kernel: convert KThread to new style
+  * kernel: prefer std::addressof
+  * kernel: convert KResourceLimit
+  * kernel: remove kernel_
+  * kernel: remove gratitutous attribute usage
+  * kernel/svc: convert to new style
+  * kernel: convert miscellaneous
+  * kernel: conver KScopedLock, KScopedResourceReservation, KSessionRequest, KSharedMemory, KSpinLock
+  * kernel: convert KAbstractSchedulerLock
+  * kernel: convert KMemoryLayout, KMemoryRegion*, KPageTableSlabHeap, KPriorityQueue
+  * kernel: move KMemoryLayout for NX board
+  * kernel: remove KLinkedList
+  * kernel: convert KConditionVariable, KLightConditionVariable, KLightLock
+  * kernel: convert KPort, KSession
+  * kernel: convert GlobalSchedulerContext, KAddressArbiter, KScopedSchedulerLockAndSleep, KThreadQueue to new style
+  * vk_scheduler: split work queue waits and execution waits
+  * general: fix spelling mistakes
+  * video_core: Fix ogl status error when draw_texture
+  * video_core: Invalid index_buffer flag when inline_index draw
+  * general: use codespell to identify spelling mistakes
+  * yuzu: Move audio settings to audio section
+  * yuzu: Remove console id setting
+  * video_core: Update texture format
+  * gl_rasterizer: Implement AccelerateDMA DmaBufferImageCopy
+  * Refactor AccelerateDMA code
+  * gpu_thread: Use bounded queue
+
+-------------------------------------------------------------------
+Sun Mar 12 00:30:36 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1367:
+  * "Merge Tagged PR 9913"
+  * service: nfp: Improve implementation
+  * OpenGL: Prefer glClientWaitSync for OGLSync objects
+  * perf_stats: Check multicore first
+  * hid: Use nanosecond timestamps instead of ticks
+  * core: Promote CPU/GPU threads to time critical
+  * native_clock: Wait for 10 seconds instead of 30
+  * native_clock: Use RealTimeClock instead of SteadyClock
+  * steady_clock: Introduce a real time clock
+  * native_clock: Re-adjust the RDTSC frequency
+  * input_common: Minor typo issues (#9922)
+  * kernel: add timer pointer to KThreadQueue
+  * input_common: Increase mouse sensitivity  range
+  * common: make BitCast constexpr
+  * general: fix type inconsistencies
+  * kernel: avoid signed overflow UB on MSVC
+  * kernel: clone fpu status on CreateThread
+  * hle: rename legacy errors to Results
+  * kernel: add missing header for libc++
+  * fix typo in settings.h
+  * service: acc: Replace default image with a 32x32 image
+  * input_common: joycon: Add stick input from passive reports
+  * service: psc: Update names
+  * service: ssl: Add missing properties and update names
+  * service: usb: Update names
+  * kernel: fix WaitSynchronization
+  * Engines: Implement Accelerate DMA Texture.
+  * native_clock: Round RDTSC frequency to the nearest 1000
+  * timer_resolution: Set current process to High QoS
+  * general: Target Windows 10 SDK
+  * hardware_properties: Update BASE_CLOCK_RATE to exactly 1020 MHz
+  * core_timing: Use higher precision sleeps on Windows
+  * main: (Windows) Set the current timer resolution to the maximum
+  * wall_clock: Make use of SteadyClock
+  * common: Implement a method to change the Windows timer resolution
+  * common: Implement a high resolution steady clock
+  * Check all swizzle components for red, not just [0], pass float border color rather than int
+  * Fix a bug with the Reverb command in reading from the pre_delay line.
+  * buffer_cache: Add logic for non-NVN storage buffer tracking
+
+-------------------------------------------------------------------
+Sun Mar 05 00:30:28 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1360:
+  * "Merge Tagged PR 9786"
+  * "Merge Tagged PR 9890"
+  * ci: Actually enable LTO on MSVC (#9887)
+  * vulkan_common: disable vertexInputDynamicState on unsupported driver
+  * kernel: be more careful about kernel address keys
+  * kernel: refactor priority inheritance to represent locks as C++ objects
+  * kernel: simplify AddressSpaceInfo, update values
+  * kernel: barrier memory before condition variable write
+  * kernel: document previous location of interrupt disables in arbiter/condvar
+  * kernel: adjust pool allocations
+  * kernel: simplify KAbstractSchedulerLock::Lock
+  * kernel: add InfoType::IoRegionHint
+  * nvnflinger: fix name
+  * service: move hle_ipc from kernel
+  * sm:: remove unused member
+  * Update translations (2023-03-01)
+  * cmake: use correct boost imported targets
+  * cmake: support components in find modules
+  * externals: use openssl from vcpkg
+  * Partially apply LTO to only core and video_core projects.
+  * service: btm: Fix handle functions
+  * Revert "yuzu: config: Remove player 8 and 9 from config file"
+  * yuzu: config: Remove player 8 and 9 from config file
+  * config: Fix per game Force max clock
+  * core: hidbus: Fix BusType size
+  * core: Update service function tables to 16.0.0+
+  * am: avoid direct pointer access of transfer memory objects
+  * hid: avoid direct pointer access of transfer memory objects
+  * configuration: Add async ASTC decode setting
+  * texture_cache: Add async texture decoding
+  * core: hid: Restore motion state on refresh and clamp motion values
+  * input_common: Implement dedicated motion from mouse
+  * cmake: fix cpp-jwt build
+  * sm:: fix lingering session initialization issues
+  * cheat_engine: add check for hid initialization
+  * sm:: support service registration deferral
+  * service: refactor server architecture
+  * core: defer cpu shutdown
+
+-------------------------------------------------------------------
+Sun Feb 26 00:30:30 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1351:
+  * "Merge Tagged PR 9786"
+  * settings: Add more input settings to the log
+  * core: hid: Fix native mouse mappings
+  * yuzu: Set a lower timeout for discord presence
+  * svc: Fix type consistency (exposed on macOS)
+  * externals: Update cpp-httplib to latest
+  * net: translate ECONNRESET network error
+  * Qt: Reintroduce scaling for touch input
+
+-------------------------------------------------------------------
+Mon Feb 20 14:39:56 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1346:
+  * "Merge Tagged PR 9786"
+  * "Merge Tagged PR 9834"
+  * kernel: add KObjectName
+  * yuzu: Shutdown game on restart to reload per game config
+  * input_common: Split mouse input into individual devices
+  * Qt: Fix mouse scalling
+  * Reimplement the invalidate_texture_data_cache register
+  * Allow >1 cpu threads on video decoding, disable multi-frame decoding
+  * Add fallback for memory read/write in case the address goes over a 4K page
+  * Fix depop prepare receiving bad mix infos and writing out of bounds, and update aux a bit, may help
+  * kernel: Refactor thread_local variable usage
+  * Revert "shader_recompiler: Align SSBO offsets to meet host requirements"
+  * Revert "Vulkan, OpenGL: Hook up storage buffer alignment code"
+
+-------------------------------------------------------------------
+Tue Feb 14 07:13:36 UTC 2023 - svalx@svalx.net
+
+- Update to version 0.1339:
+  * "Merge Tagged PR 9588"
+  * "Merge Tagged PR 9769"
+  * "Merge Tagged PR 9778"
+  * Update settings.cpp
+  * texture_cache: OpenGL: Implement MSAA uploads and copies
+  * kernel/svc: Fix undefined info_id
+  * video_core: Speed up video frame data copy
+  * core: hid: Use gyro thresholds modes set by the game
+
+-------------------------------------------------------------------
+Tue Feb 14 07:10:17 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Change a package version format
+- Edit _service for manual run with last tag
+- Disable submodules check by YUZU_CHECK_SUBMODULES=OFF instead inline patch
+- Use mold linker
+- Drop some unneeded BuildRequires and add another few
+- Clean specfile from deprecated macroses
+
+-------------------------------------------------------------------
+Sun Feb 12 00:22:53 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01337:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9588"
+  * kernel: avoid usage of bit_cast
+  * main: Re-add QtWebEngine zoom factor
+  * input_common: Reintroduce custom pro controller support
+  * audio: cubeb: Fix yuzu crashing when it test for latency
+  * buffer_base: Partially revert changes from #9559
+  * glsl_emit_context: Remove redeclarations of gl_SampleID and gl_SampleMask
+  * service: hid: Return error if arguments of SetSupportedNpadIdType is invalid
+  * kernel/svc: switch to generated wrappers
+  * kernel: fix compilation with older gcc
+  * Update yuzu_cmd's default_ini.h
+  * Remove fake vertex bindings when dynamic state is enabled
+  * dynarmic: Update to 6.4.5
+  * kernel/svc: Split implementations into separate files
+  * Add Game Icon for Discord RPC Connected to Yuzu Compatibility Page
+  * yuzu_cmd: Order arguments alphabetically and port arguments from Qt
+  * yuzu_cmd: Fix mismatching controller input
+  * yuzu_cmd: Fix touch input
+  * shader_recompiler/value.h: Remove lingering references to S32
+  * remove disambiguation argument from mute text
+  * main: Convert to device independent coordinates for scaling
+  * main: Use passthrough scaling for non-windows OSes
+  * main: Enable High DPI fixes for Qt >= 5.14
+  * add volume quicksetting with volume slider
+
+-------------------------------------------------------------------
+Sun Feb 05 00:23:03 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01329:
+  * "Merge Tagged PR 4949"
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9588"
+  * fsp_srv: Copy HLE Read Buffer for OutputAccessLogToSdCard
+  * Revert "Merge pull request #9718 from yuzu-emu/revert-9508-hle-ipc-buffer-span"
+  * added 'Hide empty rooms' toggle to lobby
+  * Revert "hle_ipc: Use std::span to avoid heap allocations/copies when calling ReadBuffer"
+  * input_common: Simplify stick from button
+  * kernel: add KDeviceAddressSpace
+  * yuzu: config: Draw turbo buttons with a different color
+  * input_common: Implement turbo buttons
+  * Update translations (2023-02-01)
+  * kernel: add KCapabilities
+  * gl_compute_pipeline: Force context flush when loading shader cache
+  * input_common: joycon: Remove Magic numbers from common protocol
+  * cmake: Download clang format 15
+  * gl_graphics_pipeline: Force context flush when loading shader cache
+  * input_common: joycon: Fill missing enum data
+  * apply-patches-by-label: Remove unused variables and imports
+  * apply-patches-by-label: Use python f-strings
+  * ci: Abort on failure to query Github's API
+  * Move to Clang Format 15
+  * spirv: Fix TXQ with MSAA textures
+  * emit_glasm_image: Fix TXQ with MSAA textures
+  * emit_glsl_image: Implement TXQ with MSAA textures
+  * texture_pass: Fix texture descriptors comparisons
+  * texture_pass: Refactor texture handle retrieval
+  * shader_recompiler: TXQ: Skip QueryLevels when possible
+  * emit_glsl_image: Fix ImageFetch for MSAA textures
+  * yuzu: config: Avoid reading deleted object
+  * LDN Hostname Support in Direct Connect
+  * texture_cache: Adjust image view sizes by MSAA samples
+  * video_core: Implement vulkan clear specified channel
+  * polyfill_thread: satisfy execution ordering requirements of stop_callback
+  * input_common: joycon: Replace ReadSPI vector with span
+  * input_common: joycon: Remove magic numbers from calibration protocol
+  * glasm: Add MS sampler types
+  * glsl: Add MS sampler types
+  * shader_recompiler: Remove S32 IR type
+  * hle_ipc: Use thread_local ReadBuffer
+  * hle_ipc: Rename ReadBufferSpan to ReadBuffer
+  * hle_ipc: Rename ReadBuffer to ReadBufferCopy
+  * bsd: Use std::span for read payloads
+  * nvdrv: Use std::span for inputs
+  * hidbus: Use ReadBufferSpan
+  * nvflinger: Split Parcel class into InputParcel and OutputParcel
+  * service: Use ReadBufferSpan where it is trivial to do so
+  * fsp_srv: Use ReadBufferSpan
+  * hle_ipc: Add ReadBufferSpan function
+
+-------------------------------------------------------------------
+Sun Jan 29 00:22:13 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01323:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9588"
+  * kernel: unbreak min/max template deduction on Apple Clang
+  * video_core/opengl: Add FSR upscaling filter to the OpenGL renderer
+  * input_common: Implement SetLowPowerMode and TriggersElapsed for the joycon driver
+  * main: Only set AA_DisableWindowContextHelpButton below Qt6
+  * input_common: Make use of StoppableTimedWait
+  * polyfill_thread: Implement StoppableTimedWait
+  * input_common: add missing header for libc++ after 340f15d1fa79
+  * Revert 9617 and fix it on input_common
+  * default_ini: Split and concatenate the config string literal
+  * Revert "MemoryManager: use fastmem directly."
+  * main: Globally disable the "?" button on dialogs
+  * kernel: split SetAddressKey into user and kernel variants
+  * kernel: fix incorrect locking order in suspension
+  * spirv: fix multisampled image fetch
+  * cmake: prefer system llvm library
+  * kernel: KPageTable: update
+  * yuzu: Fix language comobox crash
+  * nsight_aftermath_tracker: update for latest Aftermath SDK
+  * Change licenses
+  * core: hid: Make use of SCOPE_EXIT and SCOPE_GUARD where applicable
+  * input_common: Fix joycon mappings
+  * input_common: Address byte review
+  * core: hid: Only set the polling mode to the correct side
+  * input_common: Drop Pro controller support from custom driver
+  * input_common: Fix issue where ring and irs are enabled at the same time
+  * input_common: Implement joycon ir camera
+  * yuzu: Add ring controller test button
+  * input_common: Use DriverResult on all engines
+  * Address review comments
+  * core: hid: Fix input regressions
+  * input_common: Implement joycon nfc
+  * input_common: Add dual joycon support
+  * input_common: Add support for joycon ring controller
+  * input_common: Add support for joycon input reports
+  * input_common: Use calibration from joycon
+  * input_common: Add support for joycon generic functions
+  * input_common: Add joycon low level functions
+  * service: hid: Set led pattern and fix color detection
+  * core: hid: Enable pulling color data from controllers
+  * core: hid: Migrate ring from emulated devices to emulated controller
+  * yuzu: Update controller colors and button names
+  * input_common: Disable SDL driver with switch controllers
+  * input_common: Initial skeleton for custom joycon driver
+  * fix format
+  * allow volume up/down hotkeys to be repeated
+  * Be careful of mangled out of bounds read
+  * core: hid: Fix stick minimum range
+  * Move demangle impl to cpp
+  * Add stacktrace symbol demangling
+  * cmake: support the standard cmake testing option
+  * tests: update catch2 to 3.0.1
+
+-------------------------------------------------------------------
+Sun Jan 22 00:22:04 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01315:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9588"
+  * fix(dist): wrap screenshots in <image> tags
+  * input_common: reset sdl motion if data is invalid
+  * Demote maxwell3d Firmware4 call log to debug
+  * Address feedback
+  * memory: fix watchpoint use when fastmem is enabled
+  * externals: Update dynarmic to 6.4.4
+  * timing: wait for completion on unregister
+  * upsample: Fix coefficient format
+  * audio_core: Fix off-by-one error in upsampler
+  * Update settings.h
+  * CPP
+  * UI change
+  * 1.5X resolution scaler option
+  * debugger: add host fastmem pointer fetch command
+  * nvnflinger: correct swap interval handling
+  * video_core: Implement opengl/vulkan draw_texture
+  * video_core: Implement maxwell3d draw texture method
+
+-------------------------------------------------------------------
+Sun Jan 15 00:24:20 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01307:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9556"
+  * "Merge Tagged PR 9588"
+  * yuzu: Read mouse wheel input
+  * qt: unlock during signal emission
+  * vulkan_common: fix indirect draw with count
+  * MoltenVK: restrict number of vertex attributes/bindings to 16
+  * qt: fix configuration weirdness on turbo
+  * macOS: Make Yuzu show up in the Launchpad Games folder (#9594)
+  * vulkan_device: refactor feature testing
+  * renderer_vulkan: disable turbo by default
+  * VideoCore: Fix OGL cache invalidation.
+  * Revert "Revert "k_page_group: synchronize""
+  * TAS: Show all script lengths for multiplayer
+  * renderer_vulkan: pause turbo submissions on inactive queue
+  * Avoid OOB array access reading passthrough attr mask
+  * vulkan_device: avoid attempt to access empty optional
+  * renderer_vulkan: disable clock boost on unvalidated devices
+  * qt: additional fixes for reentrant shutdown
+  * input_common: Create an update engine
+
+-------------------------------------------------------------------
 Sun Jan 08 00:08:24 UTC 2023 - pousaduarte@gmail.com
 
 - Update to version 01299:
