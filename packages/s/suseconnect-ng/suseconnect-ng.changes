@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 17 10:34:15 UTC 2023 - msabate@suse.com
+
+- Update to version 1.1.0~git0.e3c41e60892e:
+  * Bump to v1.1.0
+
+-------------------------------------------------------------------
+Tue Mar 14 10:10:09 UTC 2023 - msabate@suse.com
+
+- Update to version 1.0.0~git23.406b219ccc9e:
+  * Added MemTotal detection for HwInfo
+  * move 'ExcludeArch' out of the if block
+
+-------------------------------------------------------------------
+Wed Mar 08 10:44:59 UTC 2023 - tschmidt@suse.com
+
+- Update to version 1.0.0~git19.b225bc3:
+  * Make keepalive on SUMA systems exit without error (bsc#1207876)
+  * Update README.md
+  * Add deactivate API to ruby bindings (bsc#1202705)
+
+-------------------------------------------------------------------
 Tue Dec 13 12:57:16 UTC 2022 - tschmidt@suse.com
 
 - Update to version 1.0.0~git14.17a7901:

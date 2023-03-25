@@ -1,7 +1,7 @@
 #
 # spec file for package suseconnect-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        1.0.0~git14.17a7901
+Version:        1.1.0~git0.e3c41e60892e
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
-License:        LGPL-2.1-or-later
 Summary:        Utility to register a system with the SUSE Customer Center
+License:        LGPL-2.1-or-later
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
@@ -42,10 +42,10 @@ BuildRequires:  go >= 1.16
 BuildRequires:  ruby-devel
 BuildRequires:  zypper
 
+ExcludeArch:    %ix86 s390 ppc64
 %if %{with hwinfo}
 %global test_hwinfo_args -test-hwinfo
 
-ExcludeArch:    %ix86 s390 ppc64
 # packages required only for hwinfo tests
 %ifarch ia64 x86_64 %arm aarch64
 BuildRequires:  dmidecode
@@ -56,8 +56,8 @@ BuildRequires:  s390-tools
 BuildRequires:  systemd
 %endif
 
-Obsoletes:      SUSEConnect < 1.0.0
-Provides:       SUSEConnect = 1.0.0
+Obsoletes:      SUSEConnect < 1.1.0
+Provides:       SUSEConnect = 1.1.0
 Obsoletes:      zypper-migration-plugin < 0.99
 Provides:       zypper-migration-plugin = 0.99
 Obsoletes:      zypper-search-packages-plugin < 0.99
@@ -95,8 +95,8 @@ replaced SUSEConnect.
 
 %package -n libsuseconnect
 Summary:        C interface to suseconnect-ng
-Group:          System/Management
 # the CLI is not used by libsuseconnect but it has the same dependencies and it's easier to keep one list above
+Group:          System/Management
 Requires:       suseconnect-ng
 
 %description -n libsuseconnect
