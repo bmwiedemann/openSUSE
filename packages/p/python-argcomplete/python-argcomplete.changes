@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 10:47:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove importlib-metadata requirement, it's not needed for python > 3.7
+
+-------------------------------------------------------------------
 Thu Mar 16 09:32:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add without_fish.patch which makes fish only optional

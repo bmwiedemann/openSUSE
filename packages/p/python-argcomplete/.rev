@@ -185,4 +185,12 @@
 </comment>
     <requestid>1072312</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b1efc13153b450c7afffa863f496606f</srcmd5>
+    <version>2.0.0</version>
+    <time>1679766904</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove importlib-metadata requirement, it's not needed for python &gt; 3.7</comment>
+    <requestid>1074136</requestid>
+  </revision>
 </revisionlist>

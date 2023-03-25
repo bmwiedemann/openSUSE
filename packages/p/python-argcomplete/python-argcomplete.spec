@@ -31,13 +31,11 @@ Patch1:         trim-test-deps.patch
 # PATCH-FIX-UPSTREAM without_fish.patch gh#kislyuk/argcomplete!410 mcepl@suse.com
 # Don't fail the test suite when fish is not available
 Patch2:         without_fish.patch
-BuildRequires:  %{python_module importlib-metadata >= 0.23}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata >= 0.23
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
