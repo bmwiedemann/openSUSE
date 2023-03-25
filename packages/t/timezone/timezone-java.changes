@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 24 07:23:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2023b:
+  * In 2032 Lebanon springs forward April 20/21 not March 25/26
+
+-------------------------------------------------------------------
+Thu Mar 23 10:28:18 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- timezone update 2023a:
+  * Egypt now uses DST again, from April through October.
+  * This year Morocco springs forward April 23, not April 30.
+  * Palestine delays the start of DST this year.
+  * Much of Greenland still uses DST from 2024 on.
+  * America/Yellowknife now links to America/Edmonton.
+  * tzselect can now use current time to help infer timezone.
+  * The code now defaults to C99 or later.
+- Refresh tzdata-china.diff
+- Remove upstreamed patch gcc13-fix.patch
+
+-------------------------------------------------------------------
 Tue Mar  7 09:34:28 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add gcc13-fix.patch upsteam patch for GCC 13 compiler.

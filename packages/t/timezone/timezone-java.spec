@@ -25,7 +25,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 # COMMON-BEGIN
 # COMMON-BEGIN
-Version:        2022g
+Version:        2023b
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -37,7 +37,6 @@ Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 Patch5:         fat.patch
-Patch6:         gcc13-fix.patch
 # COMMON-END
 # COMMON-END
 URL:            https://www.iana.org/time-zones
@@ -59,7 +58,6 @@ package is intended for Java Virtual Machine based on OpenJDK.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 # COMMON-PREP-END
 # COMMON-PREP-END
