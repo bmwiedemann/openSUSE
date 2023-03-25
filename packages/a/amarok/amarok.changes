@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 23 09:26:55 UTC 2023 - christophe@krop.fr
+
+- Update to version 2.9.75git.20230322T021226~4f7c3aff99:
+  * Force scheme where KIO copies local files
+  * cmake: adjust configure file definition position ...
+  * Edit some NULLs to nullptrs.
+  * MusicDNSAudioDecoder: add support for ffmpeg 5.0
+  * Small improvements to de-deprecation changeset.
+  * Fix remaining cases of iterator problems.
+  * Fix a crash.
+  * Require Qt 5.15+
+  * Cleanup deprecated code.
+  * cmake: Require C++14
+  * Shorten onPressAndHold delay
+  * Enable dragging tracks from the album context applet.
+  * Add C++ functions for providing selected URL lists.
+  * Remove Tokens from layout first to avoid bug.
+  * Fix an old typo causing a missing icon.
+  * Fix crash when filtering collections.
+  * Fix path for qca dep
+  * Use normal KMessageBox method instead of util one
+
+-------------------------------------------------------------------
 Mon Nov 14 11:53:34 UTC 2022 - christophe@krop.fr
 
 - Update to version 2.9.75git.20221114T020258~457db492b4:

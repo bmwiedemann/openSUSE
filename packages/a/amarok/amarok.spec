@@ -17,11 +17,10 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20221114T020258~457db492b4
+Version:        2.9.75git.20230322T021226~4f7c3aff99
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://amarok.kde.org/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE flac_mimetype_bnc671581.diff bnc#671581 ctrippe@gmx.net -- Support for the changed mimetype for flac files
@@ -86,16 +85,9 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
-%if 0%{suse_version} >= 1550
-# The FFmpeg 5 port isn't ready: https://invent.kde.org/multimedia/amarok/-/merge_requests/45
-BuildRequires:  ffmpeg-4-libavcodec-devel
-BuildRequires:  ffmpeg-4-libavformat-devel
-BuildRequires:  ffmpeg-4-libavutil-devel
-%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-%endif
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0
@@ -142,12 +134,11 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 # E: devel-file-in-non-devel-package
 rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcoding}.so
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING*
-%doc AUTHORS ChangeLog README TODO
+%doc README
 %{_kf5_applicationsdir}/org.kde.amarok.desktop
 %{_kf5_applicationsdir}/org.kde.amarok_containers.desktop
 %{_kf5_appstreamdir}/org.kde.amarok.*

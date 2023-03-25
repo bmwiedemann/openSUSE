@@ -1221,4 +1221,30 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>New snapshot</comment>
     <requestid>1035634</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>69b080c5890edd6252ddde44105e499c</srcmd5>
+    <version>2.9.75git.20230322T021226~4f7c3aff99</version>
+    <time>1679766854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.75git.20230322T021226~4f7c3aff99:
+  * Force scheme where KIO copies local files
+  * cmake: adjust configure file definition position ...
+  * Edit some NULLs to nullptrs.
+  * MusicDNSAudioDecoder: add support for ffmpeg 5.0
+  * Small improvements to de-deprecation changeset.
+  * Fix remaining cases of iterator problems.
+  * Fix a crash.
+  * Require Qt 5.15+
+  * Cleanup deprecated code.
+  * cmake: Require C++14
+  * Shorten onPressAndHold delay
+  * Enable dragging tracks from the album context applet.
+  * Add C++ functions for providing selected URL lists.
+  * Remove Tokens from layout first to avoid bug.
+  * Fix an old typo causing a missing icon.
+  * Fix crash when filtering collections.
+  * Fix path for qca dep
+  * Use normal KMessageBox method instead of util one</comment>
+    <requestid>1073933</requestid>
+  </revision>
 </revisionlist>
