@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:08:08 UTC 2023 - laurin.faeller@suse.com
+
+- Update to version 1.2.154+git.40b86d2:
+  * Add cobbler stdout message to logger errors
+  * Save one call to get_primary_networkinterface()
+  * Correctly store and show amount of CPU sockets, cores and threads
+  * Fix debug server systemd script
+  * Fix django dependency
+  * Add documentation to serverconfigs
+  * Remove old scripts and introduce /usr/bin/orthos-admin
+  * Also enable code checking on pull requests
+  * Fix pycodingstyle issues
+  * Split pycodingstyle and pylint jobs
+  * Fix pylint issues
+  * Add pycodingstyle to pylint and rename it to Coding Style
+  * Only exclude own network interfaces if the instance already has an primary key
+  * Use short hostname in orthos_debug serivce file
+  * Merge
+  * [pycodingstyle] Fix all...
+  * [pycodingstyle] make files pycodingstyle clean
+  * [pycodingstyle] orthos2/utils/remote.py clean
+  * [pycodestyle] ./orthos2/data/management/commands/dump_db.py clean
+  * [pycodestyle] Fix: E301 expected 1 blank line, found 0
+  * [pycodestyle] Fix: E302 expected 2 blank lines, found 1
+  * [pycodestyle] orthos2/frontend/views.py clean now
+  * [pycodestyle] max line length 120
+  * [pycodestyle] docs/conf.py clean now
+  * [pycodesytle] E114 indentation is not a multiple of 4 (comment)
+  * Remove old dump db script
+  * Use quotes in python version github action and use v2 action
+  * Rename bashrc.sh to server_init.sh and add nginx to orthos user change
+  * Add hostname finder utility via script
+  * Show id in info <machine> command
+  * Fix up dots in button titles
+  * Fix E0602: Undefined variable 'InfoCommand' (undefined-variable)
+  * Only test python 3.10
+  * Fix too early touching of data_serverconfig key
+  * Introduce getException in api/commands/base.py
+  * Add whole info command path into exception handling
+  * Add whole info command path into exception handling
+  * Delete secondary MAC adresses if MAC got changed/modified by user
+  * Add reworked Django script dump_db
+  * Check if_valid() before touching cleaned_data or it may not exist
+  * Properly format settings and settings.py
+  * Collection of recent fixes
+  * Add systemd auto-restart hooks to service files of orthos2 and orthos2_taskmanager
+  * Fix memory multiply by 1024
+  * Allow machine name into URL
+  * Properly implement rpower and platform into query command
+  * Check for existing previous BMC before comparing its username
+  * Add python3-django BuildRequires
+  * Several VM fixes and default value adoptions
+  * Enhance orthosrc with pre-defined aliases
+  * Revert orthos2_docs_nginx.conf again
+  * Add undefined-variable to .pylintrc
+  * Fix machine bugs
+  * Get image install directory via ServerConfig key
+  * Several virtualization fixes
+  * Fix not existing attribute usage timezone.ZERO in task RegenerateMotd
+
+-------------------------------------------------------------------
 Tue Mar 15 14:11:56 UTC 2022 - trenn@suse.de
 
 - Update to version 1.2.77+git.f8950eb:
