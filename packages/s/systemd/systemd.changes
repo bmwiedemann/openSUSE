@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 23 07:07:34 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit d914e29c33c0248226a01112a3e03181ef17b06b
+
+  d914e29c33 Revert "hwdb: fix swapped buttons for Logitech Lift left" (bsc#1209618)
+  8360811d23 udev-rules: fix nvme symlink creation on namespace changes (bsc#1207410)
+  b77c13a130 systemctl: explicitly cast the constants to uint64_t (bsc#1209305)
+  51011f280d test: assume run-unit-tests.py and unit tests are installed in the same directory
+  d86e346f6b tests: don't use absolute paths when installing binaries in TEST-58-REPART
+  97e886c1f4 tests: fix inverted condition in testsuite-58.sh
+
+- Drop 5002-systemctl-explicitly-cast-the-constants-to-uint64_t.patch, it's been
+  merged in 'SUSE/v253', see above.
+
+-------------------------------------------------------------------
+Tue Mar 21 09:31:46 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add python3-pefile as requires for experimental, needed for the
+  ukify tool.
+
+-------------------------------------------------------------------
 Mon Mar 20 08:32:49 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Drop 0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch

@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version %nil
+%define archive_version +suse.6.gd914e29c33
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -213,7 +213,6 @@ Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch5000:      5000-core-manager-run-generators-directly-when-we-are-in-.patch
 Patch5001:      5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch
-Patch5002:      5002-systemctl-explicitly-cast-the-constants-to-uint64_t.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -587,6 +586,8 @@ refer to %{_testsuitedir}/integration-tests/README.testsuite.
 Summary:        Experimental systemd features
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
+# Needed by ukify
+Requires:       python3-pefile
 %systemd_requires
 # These Recommends because some symbols of these libs are dlopen()ed by home stuff
 Recommends:     libfido2
@@ -613,8 +614,8 @@ change without the usual backwards-compatibility promises.
 Components that turn out to be stable and considered as fully supported will be
 merged into the main package or moved into a dedicated package.
 
-Currently this package contains: homed, repart, userdbd, oomd, measure and
-pcrphase.
+Currently this package contains: homed, repart, userdbd, oomd, measure,
+pcrphase and ukify.
 
 In case you want to create a user with systemd-homed quickly, here are the steps
 you can follow:
