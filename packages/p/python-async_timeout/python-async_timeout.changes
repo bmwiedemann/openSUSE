@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 11:25:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dependency typing_extensions, just needed for
+  python < 3.8
+
+-------------------------------------------------------------------
 Sat Jan 15 16:39:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
