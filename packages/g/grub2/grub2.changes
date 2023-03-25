@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 23 05:25:50 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix aarch64 kiwi image's file not found due to '/@' prepended to path in
+  btrfs filesystem. (bsc#1209165)
+  * grub2-btrfs-05-grub2-mkconfig.patch
+
+-------------------------------------------------------------------
 Mon Mar 20 05:02:01 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Restrict cryptsetup key file permission for better security (bsc#1207499)

@@ -1,3 +1,7 @@
+
+Always declare path specification in case of inconsistent declaration
+elsewhere. (bsc#1209165)
+
 ---
  util/grub-mkconfig.in       |    3 ++-
  util/grub-mkconfig_lib.in   |    4 ++++
@@ -22,7 +26,7 @@
  is_path_readable_by_grub ()
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
-@@ -27,6 +27,14 @@
+@@ -27,6 +27,21 @@
  
  . "$pkgdatadir/grub-mkconfig_lib"
  
@@ -32,12 +36,19 @@
 +set btrfs_relative_path="y"
 +export btrfs_relative_path
 +EOF
++else
++# Always declare path specification in case of inconsistent declaration
++# elsewhere. (bsc#1209165)
++    cat <<EOF
++set btrfs_relative_path="n"
++export btrfs_relative_path
++EOF
 +fi
 +
  # Do this as early as possible, since other commands might depend on it.
  # (e.g. the `loadfont' command might need lvm or raid modules)
  for i in ${GRUB_PRELOAD_MODULES} ; do
-@@ -43,7 +51,9 @@
+@@ -43,7 +58,9 @@
  if [ "x${GRUB_TIMEOUT_BUTTON}" = "x" ] ; then GRUB_TIMEOUT_BUTTON="$GRUB_TIMEOUT" ; fi
  
  cat << EOF
@@ -48,7 +59,7 @@
    load_env
  fi
  
-@@ -401,3 +411,15 @@
+@@ -401,3 +418,15 @@
  if [ "x${GRUB_BADRAM}" != "x" ] ; then
    echo "badram ${GRUB_BADRAM}"
  fi
