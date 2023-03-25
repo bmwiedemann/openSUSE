@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 17 11:14:00 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Set umask 0022 before running /usr/bin/updatedb (boo#1209409)
+
+-------------------------------------------------------------------
 Fri Feb  3 15:35:01 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove ProtectKernelModules from systemd unit as it makes files

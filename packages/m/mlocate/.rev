@@ -266,4 +266,12 @@ The group warning is fixed in rpmlint devel project already.</comment>
     <comment></comment>
     <requestid>1063255</requestid>
   </revision>
+  <revision rev="31" vrev="33">
+    <srcmd5>b4b42e591f8b351919ee089ea6636d33</srcmd5>
+    <version>0.26</version>
+    <time>1679766970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074319</requestid>
+  </revision>
 </revisionlist>
