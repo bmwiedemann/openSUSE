@@ -1,0 +1,90 @@
+## module name # reason for enablement in ffmpeg (usually there is another package that already got legal review)
+aac
+apng # libpng
+ass # trivial
+ayuv # trival
+bmp # trivial
+ffv1
+ffvhuff # trivial+zlib
+flac # libFLAC
+gif # libpng
+huffyuv # trivial+zlib
+jpegls
+libaom # libaom
+libaom_av1 # libaom
+libcodec2 # codec2
+libgsm # libgsm
+libjxl # libjxl
+libmp3lame # lame
+libopenh264 # libopenh264_dlopen
+libopenjpeg # openjpeg
+libopus # opus
+librav1e # rav1e
+libschroedinger # schroedinger
+libspeex # speex
+libsvtav1
+libtheora # libtheora
+libtwolame # twolame
+libvorbis # libvorbis
+libvpx_vp8
+libvpx_vp9
+libwebp
+libwebp_anim
+mjpeg # mjpegtools
+mp2 # twolame
+mp2fixed # twolame
+mpeg1video
+mpeg2video
+opus # opus
+pam
+pbm # trivial
+pcm_alaw # trivial
+pcm_f32be # trivial
+pcm_f32le # trivial
+pcm_f64be # trivial
+pcm_f64le # trivial
+pcm_mulaw # trivial
+pcm_s16be # trivial
+pcm_s16be_planar # trivial
+pcm_s16le # trivial
+pcm_s16le_planar # trivial
+pcm_s24be # trivial
+pcm_s24le # trivial
+pcm_s24le_planar # trivial
+pcm_s32be # trivial
+pcm_s32le # trivial
+pcm_s32le_planar # trivial
+pcm_s8 # trivial
+pcm_s8_planar # trivial
+pcm_u16be # trivial
+pcm_u16le # trivial
+pcm_u24be # trivial
+pcm_u24le # trivial
+pcm_u32be # trivial
+pcm_u32le # trivial
+pcm_u8 # trivial
+pcx
+pgm # trivial
+pgmyuv # trivial
+png # libpng
+ppm # trivial
+rawvideo # trivial
+sgi # trivial
+srt # trivial
+ssa # trivial
+sunrast # trivial
+targa # trivial
+text # trivial
+tiff # libtiff
+v210 # trivial
+v308 # trivial
+v408 # trivial
+v410 # trivial
+vorbis # libvorbis
+webvtt # trivial
+wrapped_avframe # passthrough
+xbm # (X11)
+xwd # xwd
+y41p # trivial
+yuv4 # trivial
+zlib # zlib

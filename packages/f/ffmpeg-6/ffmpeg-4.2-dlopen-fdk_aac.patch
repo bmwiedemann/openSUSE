@@ -1,0 +1,195 @@
+From: Ismail Dönmez <ismail@i10z.com>
+Date: 2019-06-11 11:21:23
+
+This is ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+from OpenMandriva to optionally enable runtime enabling of
+fdkaac/lame/x264/x265.
+
+---
+ configure                  |    3 ++
+ libavcodec/dlopen.h        |   12 ++++++++++
+ libavcodec/libfdk-aacdec.c |   53 +++++++++++++++++++++++++++++++++++++++++++++
+ libavcodec/libfdk-aacenc.c |   47 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 115 insertions(+)
+
+Index: ffmpeg-5.1/configure
+===================================================================
+--- ffmpeg-5.1.orig/configure
++++ ffmpeg-5.1/configure
+@@ -231,6 +231,7 @@ External library support:
+   --enable-libdc1394       enable IIDC-1394 grabbing using libdc1394
+                            and libraw1394 [no]
+   --enable-libfdk-aac      enable AAC de/encoding via libfdk-aac [no]
++  --enable-libfdk-aac-dlopen enable AAC de/encoding via dlopen()'ed libfdk-aac [no]
+   --enable-libflite        enable flite (voice synthesis) support via libflite [no]
+   --enable-libfontconfig   enable libfontconfig, useful for drawtext filter [no]
+   --enable-libfreetype     enable libfreetype, needed for drawtext filter [no]
+@@ -1787,6 +1788,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
+ EXTERNAL_LIBRARY_NONFREE_LIST="
+     decklink
+     libfdk_aac
++    libfdk_aac_dlopen
+     libtls
+ "
+ 
+@@ -6544,6 +6546,7 @@ enabled libdrm            && require_pkg
+ enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
+                                { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
+                                  warn "using libfdk without pkg-config"; } }
++enabled libfdk_aac_dlopen && enable libfdk_aac && add_cppflags "-I/usr/include/fdk-aac"
+ flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
+ enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
+ enabled fontconfig        && enable libfontconfig
+Index: ffmpeg-5.1/libavcodec/dlopen.h
+===================================================================
+--- /dev/null
++++ ffmpeg-5.1/libavcodec/dlopen.h
+@@ -0,0 +1,12 @@
++#ifndef LOCALINC_DLOPEN_H
++#define LOCALINC_DLOPEN_H
++#include <dlfcn.h>
++#define num2str(x) str(x)
++#define str(x) #x
++
++#define dl_sym(func, args, lib) \
++	dl_##func = args dlsym(lib, #func); \
++	if ((err = dlerror())) \
++		goto error;
++
++#endif
+Index: ffmpeg-5.1/libavcodec/libfdk-aacdec.c
+===================================================================
+--- ffmpeg-5.1.orig/libavcodec/libfdk-aacdec.c
++++ ffmpeg-5.1/libavcodec/libfdk-aacdec.c
+@@ -38,6 +38,54 @@
+ #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
+ #endif
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++#include "dlopen.h"
++AAC_DECODER_ERROR (*dl_aacDecoder_AncDataInit)(HANDLE_AACDECODER, UCHAR*, int);
++HANDLE_AACDECODER (*dl_aacDecoder_Open)(TRANSPORT_TYPE, UINT);
++AAC_DECODER_ERROR (*dl_aacDecoder_Fill)(HANDLE_AACDECODER, UCHAR**, const UINT*, UINT*);
++AAC_DECODER_ERROR (*dl_aacDecoder_ConfigRaw)(HANDLE_AACDECODER, UCHAR **, const UINT*);
++AAC_DECODER_ERROR (*dl_aacDecoder_SetParam)(const HANDLE_AACDECODER, const AACDEC_PARAM, const INT);
++AAC_DECODER_ERROR (*dl_aacDecoder_DecodeFrame)(HANDLE_AACDECODER, INT_PCM*, const INT, const UINT);
++CStreamInfo* (*dl_aacDecoder_GetStreamInfo)(HANDLE_AACDECODER);
++void (*dl_aacDecoder_Close)(HANDLE_AACDECODER);
++#define aacDecoder_AncDataInit dl_aacDecoder_AncDataInit
++#define aacDecoder_Open dl_aacDecoder_Open
++#define aacDecoder_Fill dl_aacDecoder_Fill
++#define aacDecoder_ConfigRaw dl_aacDecoder_ConfigRaw
++#define aacDecoder_SetParam dl_aacDecoder_SetParam
++#define aacDecoder_DecodeFrame dl_aacDecoder_DecodeFrame
++#define aacDecoder_GetStreamInfo dl_aacDecoder_GetStreamInfo
++#define aacDecoder_Close dl_aacDecoder_Close
++#define FDKAAC_LIB "libfdk-aac.so.2"
++static int loadLibFdkAac(AVCodecContext *avctx);
++static int loadLibFdkAac(AVCodecContext *avctx) {
++	void *libfdkaac = NULL;
++	const char *err = NULL;
++
++	libfdkaac = dlopen(FDKAAC_LIB, RTLD_LAZY);
++	if(err = dlerror()) {
++		av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libfdk-aac support will be disabled\n", err, FDKAAC_LIB);
++		if(libfdkaac)
++			dlclose(libfdkaac);
++		return 1;
++	}
++	dl_sym(aacDecoder_AncDataInit, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR*, int)), libfdkaac);
++	dl_sym(aacDecoder_Open, (HANDLE_AACDECODER (*)(TRANSPORT_TYPE, UINT)), libfdkaac);
++	dl_sym(aacDecoder_Fill, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR**, const UINT*, UINT*)), libfdkaac);
++	dl_sym(aacDecoder_ConfigRaw, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, UCHAR**, const UINT*)), libfdkaac);
++	dl_sym(aacDecoder_SetParam, (AAC_DECODER_ERROR (*)(const HANDLE_AACDECODER, const AACDEC_PARAM, const INT)), libfdkaac);
++	dl_sym(aacDecoder_DecodeFrame, (AAC_DECODER_ERROR (*)(HANDLE_AACDECODER, INT_PCM*, const INT, const UINT)), libfdkaac);
++	dl_sym(aacDecoder_GetStreamInfo, (CStreamInfo* (*)(HANDLE_AACDECODER)), libfdkaac);
++	dl_sym(aacDecoder_Close, (void (*)(HANDLE_AACDECODER)), libfdkaac);
++	return 0;
++error:
++	av_log(avctx, AV_LOG_FATAL, "libfdk-aac: Missing symbols in %s: %s\n"
++		"libfdk-aac support disabled\n", FDKAAC_LIB, err);
++	dlclose(libfdkaac);
++	return 1;
++}
++#endif
++
+ enum ConcealMethod {
+     CONCEAL_METHOD_SPECTRAL_MUTING      =  0,
+     CONCEAL_METHOD_NOISE_SUBSTITUTION   =  1,
+@@ -244,6 +292,11 @@ static av_cold int fdk_aac_decode_init(A
+     FDKAACDecContext *s = avctx->priv_data;
+     AAC_DECODER_ERROR err;
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++    if (loadLibFdkAac(avctx))
++        return -1;
++#endif
++
+     s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
+     if (!s->handle) {
+         av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
+Index: ffmpeg-5.1/libavcodec/libfdk-aacenc.c
+===================================================================
+--- ffmpeg-5.1.orig/libavcodec/libfdk-aacenc.c
++++ ffmpeg-5.1/libavcodec/libfdk-aacenc.c
+@@ -36,6 +36,48 @@
+ #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
+ #endif
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++#include "dlopen.h"
++#include <fdk-aac/aacdecoder_lib.h>
++AACENC_ERROR (*dl_aacEncOpen)(HANDLE_AACENCODER*, const UINT, const UINT);
++AACENC_ERROR (*dl_aacEncoder_SetParam)(const HANDLE_AACENCODER, const AACENC_PARAM, const UINT);
++AACENC_ERROR (*dl_aacEncEncode)(const HANDLE_AACENCODER, const AACENC_BufDesc*, const AACENC_BufDesc*, const AACENC_InArgs*, AACENC_OutArgs*);
++AACENC_ERROR (*dl_aacEncInfo)(const HANDLE_AACENCODER, AACENC_InfoStruct*);
++AACENC_ERROR (*dl_aacEncClose)(HANDLE_AACENCODER*);
++
++#define aacEncOpen dl_aacEncOpen
++#define aacEncoder_SetParam dl_aacEncoder_SetParam
++#define aacEncEncode dl_aacEncEncode
++#define aacEncInfo dl_aacEncInfo
++#define aacEncClose dl_aacEncClose
++#define FDKAAC_LIB "libfdk-aac.so.2"
++
++static int loadLibFdkAac(AVCodecContext *avctx);
++static int loadLibFdkAac(AVCodecContext *avctx) {
++	void *libfdkaac = NULL;
++	const char *err = NULL;
++
++	libfdkaac = dlopen(FDKAAC_LIB, RTLD_LAZY);
++	if(err = dlerror()) {
++		av_log(avctx, AV_LOG_FATAL, "%s\n%s is missing, libfdk-aac support will be disabled\n", err, FDKAAC_LIB);
++		if(libfdkaac)
++			dlclose(libfdkaac);
++		return 1;
++	}
++	dl_sym(aacEncOpen, (AACENC_ERROR (*)(HANDLE_AACENCODER*, const UINT, const UINT)), libfdkaac);
++	dl_sym(aacEncoder_SetParam, (AACENC_ERROR (*)(const HANDLE_AACENCODER, const AACENC_PARAM, const UINT)), libfdkaac);
++	dl_sym(aacEncEncode, (AACENC_ERROR (*)(const HANDLE_AACENCODER, const AACENC_BufDesc*, const AACENC_BufDesc*, const AACENC_InArgs*, AACENC_OutArgs*)), libfdkaac);
++	dl_sym(aacEncInfo, (AACENC_ERROR (*)(const HANDLE_AACENCODER, AACENC_InfoStruct*)), libfdkaac);
++	dl_sym(aacEncClose, (AACENC_ERROR (*)(HANDLE_AACENCODER*)), libfdkaac);
++	return 0;
++error:
++	av_log(avctx, AV_LOG_FATAL, "libfdk-aac: Missing symbols in %s: %s\n"
++		"libfdk-aac support disabled\n", FDKAAC_LIB, err);
++	dlclose(libfdkaac);
++	return 1;
++}
++#endif
++
+ typedef struct AACContext {
+     const AVClass *class;
+     HANDLE_AACENCODER handle;
+@@ -128,6 +170,11 @@ static av_cold int aac_encode_init(AVCod
+     int aot = FF_PROFILE_AAC_LOW + 1;
+     int sce = 0, cpe = 0;
+ 
++#ifdef CONFIG_LIBFDK_AAC_DLOPEN
++	if (loadLibFdkAac(avctx))
++		return -1;
++#endif
++
+     if ((err = aacEncOpen(&s->handle, 0, avctx->ch_layout.nb_channels)) != AACENC_OK) {
+         av_log(avctx, AV_LOG_ERROR, "Unable to open the encoder: %s\n",
+                aac_get_error(err));

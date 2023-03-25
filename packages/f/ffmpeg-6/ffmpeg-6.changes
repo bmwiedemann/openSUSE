@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Mar 16 17:56:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
+Thu Mar  9 09:02:01 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- enable libplacebo filter
+- clean old BuildRequires conditions
+- add libjxl to enable_encoders
+
+-------------------------------------------------------------------
+Tue Feb 28 13:23:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Branch from ffmpeg-5.spec
+- Remove ffmpeg-4.4-CVE-2020-22046.patch (inapplicable),
+  no-vk-video-decoding.patch (obsolete),
+  ffmpeg-CVE-2022-3964.patch (appears merged)
+- Update to release 6.0
+  * FFmpeg now runs every muxer in a separate thread and requires
+    threading to be enabled for compilation
+  * VA-API encoding and decoding support for 10/12-bit 422,
+    10/12-bit 444 VP9 support
+  * RISC-V optimizations
