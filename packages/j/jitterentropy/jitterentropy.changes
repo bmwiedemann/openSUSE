@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 22 11:17:59 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix a stack corruption on s390x: [bsc#1209627]
+  * Output size of the STCKE command on s390x is 16 bytes, compared
+    to 8 bytes of the STCK command. Fix a stack corruption in the
+    s390x version of jent_get_nstime(). Add some more detailed
+    information on the STCKE command.
+  * github.com/smuellerDD/jitterentropy-library/commit/7bf9f85
+  * Add jitterentropy-fix-a-stack-corruption-on-s390x.patch
+
+-------------------------------------------------------------------
 Mon Sep 12 07:04:35 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 3.4.1

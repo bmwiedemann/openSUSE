@@ -1,7 +1,7 @@
 #
 # spec file for package jitterentropy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Release:        0
 URL:            https://github.com/smuellerDD/jitterentropy-library
 Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs/tags/v%{version}.tar.gz
 Source1:        baselibs.conf
+#PATCH-FIX-UPSTREAM github.com/smuellerDD/jitterentropy-library/commit/7bf9f85
+Patch0:         jitterentropy-fix-a-stack-corruption-on-s390x.patch
 
 %description
 The Jitter RNG provides a noise source using the CPU execution
