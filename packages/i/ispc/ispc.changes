@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 10:08:22 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add ispc-add-cstdint-include.patch to fix compilation with GCC 13.
+
+-------------------------------------------------------------------
 Wed Nov 23 14:08:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.18.1:

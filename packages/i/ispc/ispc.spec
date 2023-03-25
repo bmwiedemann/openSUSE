@@ -1,8 +1,8 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2022 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          ispc-add-cstdint-include.patch
 #!BuildIgnore:  clang15
 BuildRequires:  bison
 BuildRequires:  clang%llvm_ver-devel
@@ -84,7 +85,7 @@ libraries and cmake files for %{name}.  If you would like to develop
 programs using %{name}, you will need to install %{name}-devel.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # fix clang library modules for our clang 10 and above
 sed -i 's|set(CLANG_LIBRARY_LIST .*)|set(CLANG_LIBRARY_LIST clang-cpp)|' CMakeLists.txt
