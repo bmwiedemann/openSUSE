@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Pascal Bleser
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,7 +65,6 @@ Buffers from pure C (not C++).
 
 %build
 %{!?make_build:%define make_build make -O %{?_smp_mflags} V=1 VERBOSE=1}
-%define _lto_cflags %nil
 autoreconf -fvi
 %configure \
     --enable-static=no

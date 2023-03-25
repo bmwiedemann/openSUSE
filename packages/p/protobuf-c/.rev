@@ -174,4 +174,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989809</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>d237f3e57dfcf616f5f127d08bae01ed</srcmd5>
+    <version>1.4.1</version>
+    <time>1679766894</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable LTO again. (forwarded request 1073985 from marxin)</comment>
+    <requestid>1074034</requestid>
+  </revision>
 </revisionlist>
