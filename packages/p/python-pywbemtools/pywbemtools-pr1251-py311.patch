@@ -1,0 +1,260 @@
+From ef26d015057bc658e193a326fd0fb1cc1c6bece8 Mon Sep 17 00:00:00 2001
+From: Andreas Maier <andreas.r.maier@gmx.de>
+Date: Thu, 22 Dec 2022 18:31:34 +0100
+Subject: [PATCH 1/2] Support for Python 3.11
+
+Details:
+
+* Added Python 3.11 in GitHub Actions tests. Added 3.10/uuntu/latest
+  to the normal tests, as a comparison point.
+
+* Showing Python 3.11 in package metadata.
+
+* Commented out pyzmq in minimum-constraints.txt, since it is used only by
+  jupyter which is not installed in pywbemtools.
+
+* Increased minimum version of wrapt to 0.14.0 for Python >=3.11, and
+  due to dependencies also the minimum version of astroid to 2.11.5
+  and of pylint to 2.14.0.
+
+  After that, a further increase of pylint to 2.15.0 and androidn to
+  2.12.4 was needed to circumvent pylint issue 7972. Plus a subsequent
+  increase of colorama from 0.4.0 to 0.4.5, which was done for all Python
+  versions for simplicity.
+
+* Increased minimum version of dill to 0.3.6 for Python >=3.11, to
+  pick up the fix for dill issue 514.
+
+* By Karl: Fix test issue causing failure with python 3.11 when
+  PYWBEMCLI_STARTUP_ENVVAR used
+
+  The test for the python script defined when PYWBEMCLI_STARTUP_ENVVAR is
+  used fails because the python compile messages changed slightly.
+  Generalized the results testing in test_generalopeions.py and modified
+  the display text.
+
+* Increased docutils to address Sphinx build issue
+
+Signed-off-by: Andreas Maier <andreas.r.maier@gmx.de> and Karl
+---
+ .github/workflows/test.yml                   | 13 ++++---
+ dev-requirements.txt                         | 36 +++++++++++++++-----
+ docs/changes.rst                             |  2 ++
+ minimum-constraints.txt                      | 30 ++++++++++------
+ pywbemtools/pywbemcli/pywbemcli.py           | 19 ++++++-----
+ setup.py                                     |  1 +
+ tests/unit/pywbemcli/test_general_options.py |  6 ++--
+ 7 files changed, 72 insertions(+), 35 deletions(-)
+
+Index: pywbemtools-1.1.1/.github/workflows/test.yml
+===================================================================
+--- pywbemtools-1.1.1.orig/.github/workflows/test.yml
++++ pywbemtools-1.1.1/.github/workflows/test.yml
+@@ -38,7 +38,7 @@ jobs:
+         if [[ "${{ github.event_name }}" == "schedule" || "${{ github.head_ref }}" =~ ^release_ ]]; then \
+           echo "::set-output name=matrix::{ \
+             \"os\": [ \"ubuntu-latest\", \"macos-latest\", \"windows-latest\" ], \
+-            \"python-version\": [ \"2.7\", \"3.5\", \"3.6\", \"3.7\", \"3.8\", \"3.9\", \"3.10\" ], \
++            \"python-version\": [ \"2.7\", \"3.5\", \"3.6\", \"3.7\", \"3.8\", \"3.9\", \"3.10\", \"3.11\" ], \
+             \"package_level\": [ \"minimum\", \"latest\" ], \
+           }"; \
+         else \
+@@ -58,13 +58,18 @@ jobs:
+                 \"package_level\": \"minimum\" \
+               }, \
+               { \
++                \"os\": \"ubuntu-latest\", \
++                \"python-version\": \"3.10\", \
++                \"package_level\": \"latest\" \
++              }, \
++              { \
+                 \"os\": \"macos-latest\", \
+                 \"python-version\": \"3.5\", \
+                 \"package_level\": \"latest\" \
+               }, \
+               { \
+                 \"os\": \"macos-latest\", \
+-                \"python-version\": \"3.10\", \
++                \"python-version\": \"3.11\", \
+                 \"package_level\": \"latest\" \
+               }, \
+               { \
+@@ -79,7 +84,7 @@ jobs:
+               }, \
+               { \
+                 \"os\": \"windows-latest\", \
+-                \"python-version\": \"3.10\", \
++                \"python-version\": \"3.11\", \
+                 \"package_level\": \"latest\" \
+               } \
+             ] \
+Index: pywbemtools-1.1.1/dev-requirements.txt
+===================================================================
+--- pywbemtools-1.1.1.orig/dev-requirements.txt
++++ pywbemtools-1.1.1/dev-requirements.txt
+@@ -20,8 +20,9 @@ pytest>=4.3.1; python_version >= '3.5'
+ # funcsigs>=1.0.2; python_version == '2.7'
+ # Pluggy 0.12.0 has a bug causing pytest plugins to fail loading on py38
+ pluggy>=0.13.0
++# pylint>=2.15 requires colorama>=0.4.5
+ colorama>=0.3.9,<0.4.0; python_version == '2.7'
+-colorama>=0.4.0; python_version >= '3.5'
++colorama>=0.4.5; python_version >= '3.5'
+ # flake8 fails with AttributeError in importlib-metadata 5.0.0 on Python >=3.7
+ # tox 3.14 requires importlib-metadata<1,>=0.12 on Python <=3.7
+ importlib-metadata>=0.22,<5.0.0; python_version <= '3.7'
+@@ -76,7 +77,8 @@ Sphinx>=3.5.4,!=4.0.0; python_version >=
+ Sphinx>=4.2.0; python_version >= '3.10'
+ docutils>=0.13.1,<0.17; python_version == '2.7'
+ docutils>=0.13.1,<0.17; python_version >= '3.5' and python_version <= '3.9'
+-docutils>=0.14,<0.17; python_version >= '3.10'
++docutils==0.14,<0.17; python_version == '3.10'
++docutils==0.16,<0.17; python_version >= '3.11'
+ sphinx-git>=10.1.1
+ GitPython>=2.1.1;
+ Pygments>=2.1.3; python_version == '2.7'
+Index: pywbemtools-1.1.1/docs/changes.rst
+===================================================================
+--- pywbemtools-1.1.1.orig/docs/changes.rst
++++ pywbemtools-1.1.1/docs/changes.rst
+@@ -80,6 +80,8 @@ Released: 2022-11-08
+   of the general options and the creation of the mock WBEM server
+   script (see issue #1190)
+ 
++* Added support for Python 3.11. (issue #1243)
++
+ **Cleanup:**
+ 
+ * Extend use of general options in interactive mode to allow setting the
+Index: pywbemtools-1.1.1/minimum-constraints.txt
+===================================================================
+--- pywbemtools-1.1.1.orig/minimum-constraints.txt
++++ pywbemtools-1.1.1/minimum-constraints.txt
+@@ -160,7 +160,7 @@ pytest==6.2.5; python_version >= '3.10'
+ pluggy==0.13.0
+ funcsigs==1.0.2; python_version == '2.7'
+ colorama==0.3.9; python_version == '2.7'
+-colorama==0.4.0; python_version >= '3.5'
++colorama==0.4.5; python_version >= '3.5'
+ importlib-metadata==0.22; python_version <= '3.7'
+ importlib-metadata==1.1.0; python_version >= '3.8'
+ 
+@@ -190,7 +190,8 @@ Sphinx==3.5.4; python_version >= '3.5' a
+ Sphinx==4.2.0; python_version >= '3.10'
+ docutils==0.13.1; python_version == '2.7'
+ docutils==0.13.1; python_version >= '3.5' and python_version <= '3.9'
+-docutils==0.14; python_version >= '3.10'
++docutils==0.14; python_version == '3.10'
++docutils==0.16; python_version >= '3.11'
+ sphinx-git==10.1.1
+ GitPython==2.1.1
+ sphinxcontrib-websupport==1.1.2
+@@ -249,6 +250,9 @@ pkginfo==1.4.2
+ #pywin32==223; sys_platform == 'win32' and python_version == '3.7'
+ #pywin32==227; sys_platform == 'win32' and python_version >= '3.8'
+ 
++# pyzmq is used (at least?) by jupyter.
++#pyzmq==16.0.4
++
+ # Address issue that pyparsing 3.0.0b2 gets installed on py27 (used by packaging)
+ pyparsing==2.3.1
+ 
+@@ -284,7 +288,6 @@ gitdb2==2.0.0
+ html5lib==0.999999999
+ idna==2.5
+ imagesize==0.7.1
+-isort==4.3.5
+ Jinja2==2.8.1; python_version <= '3.9'
+ Jinja2==2.10.2; python_version >= '3.10'
+ jsonschema==2.6.0
+Index: pywbemtools-1.1.1/pywbemtools/pywbemcli/pywbemcli.py
+===================================================================
+--- pywbemtools-1.1.1.orig/pywbemtools/pywbemcli/pywbemcli.py
++++ pywbemtools-1.1.1/pywbemtools/pywbemcli/pywbemcli.py
+@@ -143,10 +143,13 @@ def _validate_connections_file(connectio
+ 
+ def _execute_startup_script(file_path, verbose):
+     """
+-    Execute the python script. This  executes the script defined in file_path.
++    Execute the python script defined by file_path.  This should be called only
++    if a python file is defined by the PYWBEMCLI_STARTUP_ENVVAR env var and
++    it is intended as a test support tool only to modify pywbemcli operation for
++    functional tests.
++    This compiles and executes the script defined in file_path.
+     The purpose of this code is to execute test scripts at startup.
+     """
+-
+     ext = os.path.splitext(file_path)[1]
+     if ext not in ['.py']:
+         raise click.ClickException(
+@@ -156,9 +159,10 @@ def _execute_startup_script(file_path, v
+         raise click.ClickException(
+             "File '{}' does not exist".format(file_path))
+ 
++    # Errors in executing the file cause abort
+     with io.open(file_path, 'r', encoding='utf-8') as fp:
+         file_source = fp.read()
+-        # Only verbose is allowed here
++        # Set verbose for maximum information
+         globalparams = {'VERBOSE': verbose}
+         try:
+             # Using compile+exec instead of just exec allows
+@@ -169,12 +173,11 @@ def _execute_startup_script(file_path, v
+             exec(file_code, globalparams, None)
+         except Exception:
+             exc_type, exc_value, exc_traceback = sys.exc_info()
+-            tb = traceback.format_exception(exc_type, exc_value,
+-                                            exc_traceback)
++            tb = traceback.format_exception(exc_type, exc_value, exc_traceback)
+             click.echo(
+-                "Python test process-at-startup script '{}' "
+-                "failed:\n{}".format(file_path, "\n".join(tb)),
+-                err=True)
++                "Python  script '{}' defined by env var "
++                "PYWBEMCLI_STARTUP_ENVVAR failed:\n{}"
++                .format(file_path, "\n".join(tb)), err=True)
+             raise click.Abort()
+ 
+ 
+Index: pywbemtools-1.1.1/setup.py
+===================================================================
+--- pywbemtools-1.1.1.orig/setup.py
++++ pywbemtools-1.1.1/setup.py
+@@ -135,5 +135,6 @@ setuptools.setup(
+         'Programming Language :: Python :: 3.8',
+         'Programming Language :: Python :: 3.9',
+         'Programming Language :: Python :: 3.10',
++        'Programming Language :: Python :: 3.11',
+     ]
+ )
+Index: pywbemtools-1.1.1/tests/unit/pywbemcli/test_general_options.py
+===================================================================
+--- pywbemtools-1.1.1.orig/tests/unit/pywbemcli/test_general_options.py
++++ pywbemtools-1.1.1/tests/unit/pywbemcli/test_general_options.py
+@@ -599,11 +599,9 @@ TEST_CASES = [
+       'args': ['enumerate'],
+       'env': {MOCK_DEFINITION_ENVVAR:
+               GET_TEST_PATH_STR(BAD_PY_ERR_STRTUP_FILE)}},
+-     {'stderr': ['Python test process-at-startup script',
+-                 'Traceback (most recent call last)',
+-                 'line ',
++     {'stderr': ['Traceback (most recent call last)',
+                  'def mock?prompt(msg):',
+-                 'SyntaxError: invalid syntax'],
++                 'SyntaxError:'],
+       'rc': 1,
+       'test': 'innows'},
+      None, OK],
+Index: pywbemtools-1.1.1/tests/unit/pywbemcli/all_types_method_mock_v0.py
+===================================================================
+--- pywbemtools-1.1.1.orig/tests/unit/pywbemcli/all_types_method_mock_v0.py
++++ pywbemtools-1.1.1/tests/unit/pywbemcli/all_types_method_mock_v0.py
+@@ -18,7 +18,7 @@ def alltypes_callback(conn, object_name,
+     method_callback_interface which defines the input parameters and returns
+     all parameters received.
+     """
+-    return_params = [params[p] for p in params]
++    return_params = list(params.values())
+     return_value = 0
+ 
+     return (return_value, return_params)

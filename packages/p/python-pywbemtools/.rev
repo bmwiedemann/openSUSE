@@ -25,4 +25,103 @@ See also https://build.opensuse.org/request/show/841582</comment>
     <comment></comment>
     <requestid>985572</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>355c63a05685c9c4bb63f2ee0f183b73</srcmd5>
+    <version>1.1.1</version>
+    <time>1679766938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  * Dropped support for Python 3.4. (issue #1129)
+  * Removed deprecated commands (server namespaces and server
+    interop. These commands are part of the namespace group
+    namespace list and namespace interop.)
+  ## Bug fixes:
+  * Resolved new issues reported by Pylint 2.13. (issue #1164)
+  * Fix issue where the instance shrub –fullpath option was not
+    displaying the paths. (see issue #1180)
+  * Fixed new formatting issues raised by flake8 5.0.
+  * Fixed issue where the instance shrub command duplicated the
+    results instances tree in cases where there was an
+    inter-namespace association and displayed the complete
+    ClassName of the association class rather than just the class
+    name. (see issue #1191)
+  * Fix issue where we were not setting the flag to use the general
+    option –max-pull-option when the was defined with an
+    interactive command. This meant that the option was ignored for
+    the current command. (see issue # 1193).
+  * Fixed a flake8 AttributeError when using importlib-metadata
+    5.0.0 on Python&gt;=3.7, by pinning importlib-metadata to &lt;5.0.0
+    on these Python versions.
+  ## Enhancements:
+  * Increased minimum version of Click to 8.0.1 on Python &gt;= 3.6 to
+    prepare for new features. Adjusted testcases accordingly.
+  * Extended class/instance enumerate/get/associators/references
+    and qualifier enumerate to allow getting the objects from
+    multiple namespaces with a single request. This extends the
+    command option –namespace to allow multiple namespaces for
+    these commands using either comma-separated format (ex.
+    –namespace root/cimv2,root/cimv3) or multiple definitions of
+    the option (ex. –namespace root/cimv2 –namespace root/cimv3)
+    The display of results have been extended to include the
+    namespace name for the objects in all of the output formats if
+    multiple namespaces are used. As before, the namespaces are not
+    shown if only a single or the default namespace is
+    requested.(see issues #1058 and #1059)
+  * Add a new option (–object-order) to class and instance
+    enumerate/get/associators/references and qualifier
+    enumerate/get to reorder the command results displays by the
+    object name rather than the default of namespace name. This
+    allows the user to more easily compare the objects themselves
+    in different namespaces. (see issues #1058 and #1059)
+  * Extended documentation to better document the use and
+    characteristics of the general options and the creation of the
+    mock WBEM server script (see issue #1190)
+  ## Cleanup:
+  * Extend use of general options in interactive mode to allow
+    setting the connections-file for an interactive command. (see
+    issue #1037)
+  * Change DOCKER TEST_SERVER_IMAGE defined in Makefile to use one
+    created from OpenPegasus toolset. See github
+    OpenPegasus/OpenPegasusDocker repository for pegasus, pegasus
+    tools, and pegasus docker build tools. This image should be
+    faster and is smaller (lt 400 mb) although still too large.
+    This docker file was created using the Docker definition and
+    makefiles in the github project OpenPegasus and repository
+    OpenPegasusDocker. It contains a build of OpenPegasus on Ubuntu
+    20.04 platform with the OpenPegasus test provider environment
+    installed. The docker server image build was tested against the
+    OpenPegasus testsuite. However, the interop namespace was
+    modified to use root/interop in the container. The image
+    contains the OpenPegasus components to run the server against a
+    repository based on the DMTF schema version 2.41.0.
+  * Remove deprecated commands server namespaces and server
+    interop.
+  * Fixed tests that fail because XML output of classes and
+    qualifier declarations return attributes not ordered before
+    python version 3.8. (see issue #1173).
+  * Modify tests/unit/pywbemcli/wbemserver_mock_class.py to remove
+    the CIMInstanceName host lement used in creating a
+    ProfileImplements instance. That element of CIMInstanceName is
+    not allowed on Create instance of association classes and as of
+    pywbem 1.5.0 that limitation is enforces. (see issue #1203)
+  * Modify instance shrub command to only display the classname of
+    the association class (i.e. reference_class). Even with multi
+    namespace environments the reference class must be in the
+    target namespace.
+  * Extend the pywbemtools documentation to further explain the
+    mock server support, and how to create mock environments using
+    MOF and python scripts including many more references back to
+    the pywbem documentation.
+  * Clarify the usage of the general options in the documentation.
+    (see issue #1162)
+  * Clean up issues in the docs where items in bullet lists do not
+    show the bullets Changes rtd-requirements to avoid suspect
+    versions. (see issue #1218)
+  * Update to requirements files for new Nov 2022 security issues
+    with wheel, safety, and py. (see PR # 1627)
+- Drop pywbemtools-pr1154-click8.patch 
+- Add pywbemtools-pr1251-py311.patch gh#pywbem/pywbemtools#1251
+</comment>
+    <requestid>1074213</requestid>
+  </revision>
 </revisionlist>

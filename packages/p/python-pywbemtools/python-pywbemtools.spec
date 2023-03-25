@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywbemtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pywbemtools
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Python client tools to work with WBEM Servers using the PyWBEM API
 License:        Apache-2.0
@@ -35,24 +35,25 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pywbem/pywbemtools
 # The PyPI archive does not contain the tests
 Source:         https://github.com/pywbem/pywbemtools/archive/%{version}.tar.gz#/pywbemtools-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM pywbemtools-pr1154-click8.patch -- gh#pywbem/pywbemtools#1154
-Patch1:         pywbemtools-pr1154-click8.patch
+# PATCH-FIX-UPSTREAM pywembtools-pr1251-py311.patch gh#pywbem/pywbemtools#1251
+Patch0:         pywbemtools-pr1251-py311.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 5.1
 Requires:       python-asciitree >= 0.3.3
 %if 0%{?python_version_nodots} <= 35
 Requires:       python-click < 8
 Requires:       python-click >= 7.1.1
 Requires:       python-click-repl >= 0.1.6
+Requires:       python-packaging >= 17.0
 %else
-Requires:       python-click >= 8.0.1
+Requires:       python-PyYAML >= 5.3.1
+Requires:       python-click >= 8.0.2
 Requires:       python-click-repl >= 0.2
+Requires:       python-packaging >= 21.0
 %endif
 Requires:       python-click-spinner >= 0.1.8
 Requires:       python-nocasedict >= 1.0.1
 Requires:       python-nocaselist >= 1.0.3
-Requires:       python-packaging >= 17.0
 Requires:       python-prompt_toolkit
 Requires:       python-pyparsing >= 2.3.1
 Requires:       python-pywbem >= 1.4.0
