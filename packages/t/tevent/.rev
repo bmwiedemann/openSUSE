@@ -392,4 +392,20 @@ Disable rpath-install and silent-rules while configure.</comment>
     <comment></comment>
     <requestid>1006987</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d8339b55a127882eadd26ee9c83c82b3</srcmd5>
+    <version>0.14.1</version>
+    <time>1679766886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1
+  * Build fix for GNU/Hurd
+  * Build fix for Solaris, after removal of ports backend (bso#15298)
+- Changes from version 0.14.0
+  * Support python 3.12
+  * Remove solaris port backend
+  * Make tevent_find_ops_byname() available for callers
+  * Allow the &quot;standard&quot; backend to be overloaded
+  * Add interface for request/subrequest call depth tracking</comment>
+    <requestid>1074014</requestid>
+  </revision>
 </revisionlist>

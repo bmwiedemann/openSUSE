@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 17 07:58:05 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 0.14.1
+  * Build fix for GNU/Hurd
+  * Build fix for Solaris, after removal of ports backend (bso#15298)
+- Changes from version 0.14.0
+  * Support python 3.12
+  * Remove solaris port backend
+  * Make tevent_find_ops_byname() available for callers
+  * Allow the "standard" backend to be overloaded
+  * Add interface for request/subrequest call depth tracking
+
+-------------------------------------------------------------------
 Thu Sep 22 15:48:44 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to version 0.13.0
