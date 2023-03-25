@@ -79,4 +79,303 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1045014</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2394cb468001ab493d7db9e490510e10</srcmd5>
+    <version>1.16.1</version>
+    <time>1679766917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.1:
+  * BUGFIXES:
+    - Fix usage of --input=null
+    - Use max. term width, not term width
+    - Move Winget Releaser inside CICD workflow
+- Fix install flags for shell scripts.
+- Remove hyperfine-1.15.0+g27.obscpio.
+- Update to version 1.16.0:
+  * Fix clippy suggestions
+  * Help text wrapping
+  * Update dependencies
+  * Prevent creation of file named '-'
+  * Update CHANGELOG
+  * removed unused imports
+  * used cfg!(windows) instead of env::consts::OS
+  * Fix merge conflicts
+  * Add CHANGELOG entry
+  * Change error message
+  * Change order of input/outut
+  * Formatting of help text
+  * Rename test file
+  * Add the rest of the suggestions from code review
+  * ran cargo fmt
+  * Added --stdin-data argument
+  * Bump indicatif from 0.17.1 to 0.17.3
+  * Bump nix from 0.25.0 to 0.26.2
+  * Bump actions/checkout from 2 to 3
+  * Add Winget Releaser workflow
+  * Add GitHub actions to Dependabot
+  * Bump once_cell from 1.16.0 to 1.17.1
+  * Bump anyhow from 1.0.66 to 1.0.69
+  * Add Windows installation instructions
+  * Fix a link to bench
+  * Fix a typo
+  * Bump libc from 0.2.137 to 0.2.139
+  * Bump assert_cmd from 2.0.7 to 2.0.8
+  * Suggest to use `cargo install --locked`, see #605 and
+  * Bump assert_cmd from 2.0.5 to 2.0.7
+  * Bump serde from 1.0.147 to 1.0.152
+- Update to version 1.15.0+g27:
+  * Bump serde_json from 1.0.87 to 1.0.89
+  * Bump once_cell from 1.15.0 to 1.16.0
+  * Update README.md
+  * Improve hints for outlier warnings
+  * remove unneeded var
+  * remove unneeded var
+  * bump msrv to 1.60.0
+  * chore: run fmt
+  * use wrap_help
+  * update to clap 4
+  * use set and settrue
+  * add clap deprecation notices
+  * Bump thiserror from 1.0.35 to 1.0.37
+  * Bump libc from 0.2.133 to 0.2.137
+  * Update CHANGELOG
+  * Fixes #568
+  * Default to $TERM unset = colour on Win32
+  * Revert to prev. sentence
+  * Fix Shell functions and aliases sexion in README
+  * Move information to CITATION.cff file
+  * got names wrong way around :p
+  * Update README.md
+  * Add citing guide, as per issue #566
+  * Fix typo in unit test.
+  * Update indicatif
+  * Updates for indicatif 0.17
+  * Bump indicatif from 0.16.2 to 0.17.0
+- Update to version 1.15.0:
+  * Fix clippy suggestions
+  * Bump version to 1.15
+  * Bump thiserror from 1.0.33 to 1.0.34
+  * Add new (hidden) --min-benchmarking-time option
+  * Bump anyhow from 1.0.63 to 1.0.64
+  * Bump once_cell from 1.13.1 to 1.14.0
+  * Add CHANGELOG entry
+  * Rewrite boolean condition
+  * Update dependabot config
+  * Update CHANGELOG
+  * Cleanup Windows CPUTimer
+  * Bump rust_decimal from 1.25.0 to 1.26.1
+  * Bump anyhow from 1.0.58 to 1.0.63
+  * Bump clap from 3.2.16 to 3.2.20
+  * Don't output colours by default if TERM=dumb or NO_COLOR=1
+- Update to version 1.14.0+git34:
+  * Bump clap_complete from 3.2.3 to 3.2.4
+  * Bump nix from 0.24.2 to 0.25.0
+  * Bump serde from 1.0.140 to 1.0.144
+  * Bump serde_json from 1.0.82 to 1.0.85
+  * Bump thiserror from 1.0.31 to 1.0.33
+  * Fix user and kernel times on Windows
+  * Update deb package version on README
+  * Shrink unsafe block
+  * Bump serde from 1.0.137 to 1.0.140
+  * Bump nix from 0.24.1 to 0.24.2
+  * Bump clap from 3.2.8 to 3.2.16
+  * Add full stop after help messages
+  * Add spaces and shorten prompt
+  * Remove single space character
+  * Correct default of the --time-unit option in help text
+  * Remove possible ambiguity
+  * Make --time-unit help text more generic.
+  * Add hints to all export options
+  * Add hint to --time-unit
+  * Bump serde_json from 1.0.81 to 1.0.82
+  * Bump clap from 3.2.6 to 3.2.8
+  * Bump clap_complete from 3.2.2 to 3.2.3
+  * Update dependencies
+  * Bump clap from 3.1.14 to 3.1.18
+  * Bump clap_complete from 3.1.1 to 3.1.4
+  * Bump serde_json from 1.0.80 to 1.0.81
+  * Bump rust_decimal from 1.23.1 to 1.24.0
+  * Bump libc from 0.2.125 to 0.2.126
+  * Bump serde from 1.0.136 to 1.0.137
+  * Refactor AsciiDocExporter emitting using the MarkupExporter trait
+  * Remove extraneous characters from code sample
+  * Fixed typo
+  * Add new unreleased section
+  * Fix clippy warnings
+- Automatic update of vendored dependencies
+- Automatic update of vendored dependencies
+- Update to version 1.14.0:
+  * Bump version
+  * Address review comments
+  * Forbid --output=file without a path separator
+  * Add --output=inherit as an alias for --show-output
+  * Clarify --output's help text
+  * Implement --output={null,pipe,&lt;FILE&gt;}
+  * Use cross to build x86_64-unknown-linux-gnu executables
+  * Add CHANGELOG entry for Emacs org-mode
+  * Adapt to new markup exporter changes
+  * Export of Emacs org-mode table support
+  * Bump thiserror from 1.0.30 to 1.0.31
+  * Bump libc from 0.2.121 to 0.2.125
+  * Bump anyhow from 1.0.56 to 1.0.57
+  * Bump serde_json from 1.0.79 to 1.0.80
+  * Bump clap from 3.1.7 to 3.1.14
+  * Simplify test
+  * table_line =&gt; table_divider
+  * table_data =&gt; table_row
+  * Remove superfluous newline
+  * Move determine_unit_from_results
+  * Implement Exporter for all MarkupExporters
+  * Remove the TestExporter
+  * Do not pass 'unit' into determine_unit_from_results
+  * Move Exporter::unit =&gt; determine_unit_from_results
+  * Refactor MarkupExporter to omit intermediate table result creation and simplify MarkupFormatter emitting
+  * Refactor MarkdownExporter emitting using a generic MarkupFormatter trait
+  * Refactor Markdown table emitting to generic Markup function
+  * Refactor Markdown table contents generation to generic Markup function
+  * Refactor Markdown with Markup by using generic table emitter
+  * Bump clap from 3.1.5 to 3.1.7
+  * Bump rust_decimal from 1.22.0 to 1.23.1
+  * Bump anyhow from 1.0.55 to 1.0.56
+  * Bump libc from 0.2.119 to 0.2.121
+  * Fix description of execution order
+  * Add execution order to README
+  * Update execution order image
+  * Use table for example plots
+  * Add whisker plot
+  * Update CHANGELOG
+  * Update README.md
+  * Add histogram image
+  * Update warning text
+  * Update documentation
+  * Bump version to v1.13.0
+  * Add plot_progression.py
+  * Add number of runs to advanced_statistics.py
+  * Update dependencies
+  * Add scipy to scripts README.md pre-requisites
+  * Bump clap from 3.1.1 to 3.1.3
+  * Add --t-min/--t-max to histogram script
+  * Adjust image size
+  * Add additional integration test for failing command
+  * Add simple integation test for --shell=none
+  * Add CHANGELOG entry
+  * Switch to --shell=none/-N, do not change the default
+  * Use raw executor by default, skip intermediate shell
+  * Update dependencies
+  * Extract common functionality
+  * Simplify
+  * Rename to TimerResult
+  * Move wall clock timer into execute_and_measure
+  * Change argument order
+  * Add integration test for --show-output
+  * Move Stdio extraction to enum
+  * Further simplify execute_and_measure
+  * Move to timer module
+  * Move custom functionality to executor
+  * Rename functions
+  * Rename to run_command_and_measure
+  * Rename to get_command_line
+  * Refactor timer module
+  * Fix clippy warnings
+  * Update outdated comment
+  * Update LICENSE
+  * Add environment randomization on Windows
+  * Remove comment
+  * Update CHANGELOG
+  * Proper shell overhead computation
+  * Add debug/mock mode
+  * Faster tests
+  * Add integration test for '--shell'
+  * New Benchmark struct
+  * Improve error message
+  * Formatting
+  * Better error handling in run_intermediate_command
+  * Restructure run_intermediate_command
+  * Update BenchmarkResult documentation
+  * Simplify code
+  * Rename to command
+  * Rename num
+  * Move functionality into run_cleanup_command
+  * Remove more function arguments
+  * Move functions into Scheduler
+  * Move functionality to scheduler
+  * Move exit code function to separate file
+  * Rename test
+  * Use get_program
+  * Remove unused option
+  * Rename parse to from_str
+  * Turn show_output into enum
+  * Rename _res to _result
+  * Rename Runs to RunBounds
+  * Fix clippy warning
+  * Modify doc comment
+  * Refactor command.rs
+  * Update code comments
+  * New Scheduler struct
+  * Fix SVG
+  * Expand execution order tests
+  * Add diagram explaining execution order
+  * Split range into range_step and commands
+  * Introduce Commands struct
+  * New schedule module
+  * Move a few modules to util
+  * Move more modules around
+  * New parameter module
+  * New output module
+  * New 'benchmark' module folder
+  * Move build_commands
+  * Move build_export_manager to ExportManager
+  * Rename to Options
+  * Move convert_cli_arguments_to_options to HyperfineOptions
+  * Fix Windows code
+  * Fix format call
+  * Fix formatting
+  * Rename function
+  * Unified error handling
+  * Integration test for duplicate parameter names
+  * Add integration test for prepare option
+  * Add more integration tests
+  * Remove BenchmarkResult::new
+  * Add new integration test
+  * Move execution order tests to separate file
+  * Use thiserror for to derive Error
+  * Fix deprecated clippy option
+  * Fix clippy suggestions
+  * Update install instructions
+  * Update to clap 3
+  * Update CHANGELOG
+  * Bump serde from 1.0.132 to 1.0.136
+  * Bump libc from 0.2.112 to 0.2.116
+  * Bump serde_json from 1.0.73 to 1.0.78
+  * Bump tempfile from 3.2.0 to 3.3.0
+  * Bump predicates from 2.1.0 to 2.1.1
+  * Bump assert_cmd from 2.0.2 to 2.0.4
+  * Bump serde_json from 1.0.72 to 1.0.73
+  * Bump MSRV
+  * Bump libc from 0.2.108 to 0.2.112
+  * Bump serde from 1.0.130 to 1.0.132
+  * Bump rust_decimal from 1.17.0 to 1.19.0
+  * Fixed #452 - Difference between markdown and asciidoctor output
+  * Bump clap from 2.33.3 to 2.34.0
+  * Bump serde_json from 1.0.68 to 1.0.72
+  * Bump libc from 0.2.106 to 0.2.108
+  * Bump predicates from 2.0.3 to 2.1.0
+  * Add --setup (-s) option, like --prepare but runs once per batch
+  * Make stddev fields optional, hide &quot;± σ&quot; for 1 run
+  * Add support for one run with --runs=1
+  * Bump rust_decimal from 1.16.0 to 1.17.0
+  * Bump libc from 0.2.104 to 0.2.106
+- Update to version 1.12.0:
+  * --command-name can now take parameter names from --parameter-* options
+  * Exit codes (or signals) are now printed in cases of command failures
+  * Exit codes are now part of the JSON output
+  * When --export-* commands are used, result files are now created before benchmark execution
+  * When --export-* options are used, result files are now written after each individual benchmark command
+  * Reduce number of shell startup time measurements from 200 to 50
+  * User and system time are now in consistent time units
+- Replace rust-packaging with cargo-packaging
+- initial package @ 4fa16852cf6eaba39337e7b2b37571b689152daf
+</comment>
+    <requestid>1074174</requestid>
+  </revision>
 </revisionlist>

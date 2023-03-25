@@ -1,5 +1,56 @@
 -------------------------------------------------------------------
-Fri Dec 16 13:23:53 UTC 2022 - socvirnyl.estela@gmail.com
+Thu Mar 23 04:11:44 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.16.1:
+  * BUGFIXES:
+    - Fix usage of --input=null
+    - Use max. term width, not term width
+    - Move Winget Releaser inside CICD workflow
+- Fix install flags for shell scripts.
+
+-------------------------------------------------------------------
+Wed Mar 15 11:10:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove hyperfine-1.15.0+g27.obscpio.
+
+-------------------------------------------------------------------
+Wed Mar 15 10:53:46 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.16.0:
+  * Fix clippy suggestions
+  * Help text wrapping
+  * Update dependencies
+  * Prevent creation of file named '-'
+  * Update CHANGELOG
+  * removed unused imports
+  * used cfg!(windows) instead of env::consts::OS
+  * Fix merge conflicts
+  * Add CHANGELOG entry
+  * Change error message
+  * Change order of input/outut
+  * Formatting of help text
+  * Rename test file
+  * Add the rest of the suggestions from code review
+  * ran cargo fmt
+  * Added --stdin-data argument
+  * Bump indicatif from 0.17.1 to 0.17.3
+  * Bump nix from 0.25.0 to 0.26.2
+  * Bump actions/checkout from 2 to 3
+  * Add Winget Releaser workflow
+  * Add GitHub actions to Dependabot
+  * Bump once_cell from 1.16.0 to 1.17.1
+  * Bump anyhow from 1.0.66 to 1.0.69
+  * Add Windows installation instructions
+  * Fix a link to bench
+  * Fix a typo
+  * Bump libc from 0.2.137 to 0.2.139
+  * Bump assert_cmd from 2.0.7 to 2.0.8
+  * Suggest to use `cargo install --locked`, see #605 and
+  * Bump assert_cmd from 2.0.5 to 2.0.7
+  * Bump serde from 1.0.147 to 1.0.152
+
+-------------------------------------------------------------------
+Fri Dec 16 13:23:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.15.0+g27:
   * Bump serde_json from 1.0.87 to 1.0.89
@@ -31,7 +82,7 @@ Fri Dec 16 13:23:53 UTC 2022 - socvirnyl.estela@gmail.com
   * Bump indicatif from 0.16.2 to 0.17.0
 
 -------------------------------------------------------------------
-Sat Sep 24 11:58:21 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Sep 24 11:58:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.15.0:
   * Fix clippy suggestions

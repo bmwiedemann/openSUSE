@@ -1,7 +1,7 @@
 #
 # spec file for package hyperfine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           hyperfine
-Version:        1.15.0+g27
+Version:        1.16.1
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
 Group:          System/Benchmark
 URL:            https://github.com/sharkdp/%{name}
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.46
-ExclusiveArch:  %{rust_arches}
+BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A command-line tool which runs benchmarks of other programs passed as arguments.
@@ -74,13 +75,20 @@ cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
+mkdir -p completions
+cp -v target/release/build/%{name}-*/out/%{name}.bash completions/
+cp -v target/release/build/%{name}-*/out/%{name}.fish completions/
+cp -v target/release/build/%{name}-*/out/_%{name}     completions/
 
 %install
 %{cargo_install}
-install -Dm0644 target/release/build/%{name}-*/out/%{name}.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
-install -Dm0644 target/release/build/%{name}-*/out/%{name}.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish
-install -Dm0644 target/release/build/%{name}-*/out/_%{name} %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
-install -Dm0644 doc/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
+install -Dm644 completions/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm644 completions/_%{name}     %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm644 doc/%{name}.1                                   %{buildroot}%{_mandir}/man1/%{name}.1
 
 %if %{with check}
 %check
