@@ -216,4 +216,12 @@
     <comment>Build against hamcrest 2.2</comment>
     <requestid>982391</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>db6922fb9edd730a3457914e2c83c26e</srcmd5>
+    <version>4.13.2</version>
+    <time>1679766892</time>
+    <user>dimstar_suse</user>
+    <comment>Conditionalize the spec file a bit</comment>
+    <requestid>1074021</requestid>
+  </revision>
 </revisionlist>

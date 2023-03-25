@@ -1,7 +1,7 @@
 #
 # spec file for package junit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        build.xml
 Patch0:         0001-Port-to-hamcrest-2.2.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hamcrest >= 2.2
+BuildRequires:  hamcrest >= 1.3
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Requires:       mvn(org.hamcrest:hamcrest-core)
@@ -64,15 +64,21 @@ Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}4-r%{version}
+%if %{?pkg_vcmp:%pkg_vcmp hamcrest >= 2.0}%{!?pkg_vcmp:0}
 %patch0 -p1
+%endif
 cp %{SOURCE1} .
 
 find . -type f -name "*.jar" -or -name "*.class" | xargs -t rm -rf
 
+%if %{?pkg_vcmp:%pkg_vcmp hamcrest >= 2.0}%{!?pkg_vcmp:0}
 ln -s $(build-classpath hamcrest/hamcrest) lib/hamcrest-core-1.3.jar
+%else
+ln -s $(build-classpath hamcrest/all) lib/hamcrest-core-1.3.jar
+%endif
 
 %build
-export CLASSPATH=$(build-classpath hamcrest/hamcrest)
+export CLASSPATH=$(build-classpath hamcrest)
 ant jars javadoc -Dversion-status=
 
 %install
