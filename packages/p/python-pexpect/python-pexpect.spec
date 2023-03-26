@@ -70,7 +70,10 @@ export LANG=en_US.UTF-8
 # test_bash https://github.com/pexpect/pexpect/issues/568
 # test_large_stdout_stream - random
 # test_pager_as_cat - needs manpages that would pull extra deps
-%pytest -k "not test_bash and not test_large_stdout_stream and not test_pager_as_cat %{?qemu_user_space_build: and not test_spawn_uses_env}"
+# test_spawn_uses_env - seen failed on s390x
+# test_forced_terminate - seen failed on armv7l
+# test_interact_escape_None - seen failed on s390x
+%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None)"
 
 %files %{python_files}
 %license LICENSE

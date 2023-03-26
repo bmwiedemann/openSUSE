@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 24 08:08:57 UTC 2023 - pgajdos@suse.com
+
+- disable some tests [bsc#1209560]
+  * test_spawn_uses_env - seen failed on s390x
+  * test_forced_terminate - seen failed on armv7l
+  * test_interact_escape_None - seen failed on s390x
+
+-------------------------------------------------------------------
 Thu Feb 23 08:37:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file
