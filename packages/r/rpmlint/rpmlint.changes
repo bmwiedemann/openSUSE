@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:27:31 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230324.96c1ac0:
+  * PythonCheck: Ignore python-devel in req check
+  * PythonCheck: ignore python-base package in requirements check
+  * PythonCheck: Remove spaces from requirements before compare
+  * Add new check: patchable-function-entry-in-archive.
+
+-------------------------------------------------------------------
 Fri Mar 24 08:23:31 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230322.717aa4d:

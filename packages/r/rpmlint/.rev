@@ -4365,4 +4365,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * Include -prof in devel packages regex</comment>
     <requestid>1074099</requestid>
   </revision>
+  <revision rev="441" vrev="1">
+    <srcmd5>25dc624f8b57e0d7d2b6566c250ea91a</srcmd5>
+    <version>2.4.0+git20230324.96c1ac0</version>
+    <time>1679855776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230324.96c1ac0:
+  * PythonCheck: Ignore python-devel in req check
+  * PythonCheck: ignore python-base package in requirements check
+  * PythonCheck: Remove spaces from requirements before compare
+  * Add new check: patchable-function-entry-in-archive.</comment>
+    <requestid>1074204</requestid>
+  </revision>
 </revisionlist>
