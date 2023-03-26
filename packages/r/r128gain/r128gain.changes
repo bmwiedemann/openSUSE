@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 25 20:23:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.7
+  * feat: warn if input is not a directory in recursive mode.
+  * refactor: reduce get_r128_loudness complexity.
+  * fix: mypy pre-commit hook error.
+  * fix: workaround ffmpeg ebur128 filter early stop with concat.
+  * fix: improve ffmpeg ebur128 output parsing.
+  * fix: wrong replaygain sample peak calculation for non standard
+     sample rates.
+  * fix: don't map ffmpeg filter output.
+  * feat: make progress output persistant.
+  * feat: log filter script
+- Update to version 1.0.6
+  * no functional changes
+- Update to version 1.0.5
+  * no functional changes
+
+-------------------------------------------------------------------
 Sun Oct 24 13:21:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.4:
