@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 12:30:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed requirement setuptools
+
+-------------------------------------------------------------------
 Thu Nov  3 12:24:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed dep python-six
