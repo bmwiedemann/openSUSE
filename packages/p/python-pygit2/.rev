@@ -312,4 +312,12 @@
   * Add missing newline at end of pygit2/decl/pack.h #1163</comment>
     <requestid>1040007</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a6c827c820e5772b26a67799936a492c</srcmd5>
+    <version>1.11.1</version>
+    <time>1679854798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073635</requestid>
+  </revision>
 </revisionlist>

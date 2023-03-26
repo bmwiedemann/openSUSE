@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 07:13:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add support-libgit2-1.6.patch to make it work with the latest
+  libgit2 release gh#libgit2/pygit2#1200
+
+-------------------------------------------------------------------
 Sat Dec  3 20:06:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.11.1 (2022-11-09)
