@@ -305,4 +305,12 @@
     <comment>factory fails since scons update 4.5.1</comment>
     <requestid>1070572</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d7b5d86c8b348015acf7c50799ffd2e</srcmd5>
+    <version>4.0.1</version>
+    <time>1679854774</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.1</comment>
+    <requestid>1074343</requestid>
+  </revision>
 </revisionlist>

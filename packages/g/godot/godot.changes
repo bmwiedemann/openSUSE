@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Mar 22 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.0.1
+
+  Added:
+  * Set the unlit/unshaded extension when importing/exporting glTF
+  * Keycode project conversion
+  * Conversion for common Theme Overrides
+  * Remember previously selected TileMap tile
+
+  Changed:
+  * Check for type mismatch in PropertyTweener.from()
+  * Propagate errors when creating an OpenGL context fails in X11
+  * Automatically reparent editor message dialogs to avoid error spam
+  * Disallow creating a project in the Home or Documents folder
+  * No autocomplete numbers in GDScript
+  * Add invalid font scaling check, restrict Linux/BSD system fonts
+    lookup to TrueType/CFF only (fixes crash in donors screen)
+  * Do not convert lines that start with a comment
+  * Don't strip whitespace when converting
+  * Use linear filtering without mipmaps for ProceduralSkyMaterial
+    and PhysicalSkyMaterial
+
+  Fixed:
+  * VMA build with GCC 13
+  * Don't try to link system embree3 on unsupported archs
+  * Logic related to editing audio buses and prevent crashes
+  * Set properties of ImageTexture3D when creating
+  * Crashing on startup if project has scripted theme types
+  * Disable local space for Blender-style transforms
+  * Toaster notification circle flickering
+  * Crash when showing file in FileSystem dock
+  * Cache corruption when saving resources in the editor
+  * MultiNodeEdit not cleared after deleting nodes
+  * Crash when dumping extension API in a non-writable directory
+  * Missing handler for removing font sizes in the theme editor
+  * NavigationAgent3D debug path duplicated points
+  * Check if required xkb functions exist before using it
+  * Broken shortcut key input
+  * Avoid copying CanvasTexture when updating proxy
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/4.0.1/Godot_v4.0.1-stable_changelog_chrono.txt
+
+- dropped upstreamed VMA-fix-gcc13.patch.
+
+-------------------------------------------------------------------
 Thu Mar 9 12:00:00 UTC 2023 - cunix@mail.de
 
 - added scons_regression.patch for scons 4.5.1 until 4.5.2

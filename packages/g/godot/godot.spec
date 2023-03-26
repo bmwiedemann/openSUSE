@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        4.0
+Version:        4.0.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -36,8 +36,8 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         certs_fallback.patch
 # Heap-buffer-overflow in bundled tinyexr
 Patch1:         tinyexr_thirdparty_upstream.patch
-Patch2:         VMA-fix-gcc13.patch
-Patch3:         scons_regression.patch
+# regression in scons > 4.4.0, hopefully fixed in 4.5.2
+Patch2:         scons_regression.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -235,7 +235,6 @@ Bash command line completion support for %{name} and %{name}-runner
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
