@@ -68,4 +68,13 @@
 </comment>
     <requestid>1006542</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4bb80faca7b343dae51d0afa5cf011de</srcmd5>
+    <version>0.0.26</version>
+    <time>1679854782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-gcc13-build.patch to fix build with GCC 13.
+</comment>
+    <requestid>1074356</requestid>
+  </revision>
 </revisionlist>

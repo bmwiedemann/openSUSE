@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Patch1:         no-version-check.patch
 Patch2:         PrepareZoneForGC.patch
 # PATCH-FIX-OPENSUSE -- Skip automatic addition of an RPATH.
 Patch3:         premake-no-automatic-rpath.patch
+# PATCH-FIX-UPSTREAM -- Fix build with GCC 13
+Patch4:         fix-gcc13-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -97,6 +99,7 @@ flexible game engine.
 %setup -q -n %{name}-%{version}-alpha
 %patch0 -p1
 %patch3 -p1
+%patch4 -p1
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1

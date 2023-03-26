@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 25 20:11:43 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-gcc13-build.patch to fix build with GCC 13.
+
+-------------------------------------------------------------------
 Mon Sep 26 21:28:24 UTC 2022 - C J <c.j@tuta.io>
 
 - Update to 0.0.26
