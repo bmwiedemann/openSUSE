@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %define oldpython python
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click
 Version:        8.1.3
 Release:        0
@@ -32,7 +31,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 BuildArch:      noarch
 %if "%{python_flavor}" == "python36"
 Requires:       python-importlib-metadata

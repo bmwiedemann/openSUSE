@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 12:48:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed requirement python-setuptools
+
+-------------------------------------------------------------------
 Sun Jun  5 14:19:36 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile
