@@ -29,6 +29,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  sysuser-tools
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(fontconfig)
@@ -60,6 +61,7 @@ BuildRequires:  pkgconfig(systemd) >= 242
 %if !0%{?sle_version}
 Requires:       gnome-getting-started-docs
 %endif
+%sysusers_requires
 
 %description
 Initial assistant, helping you to get the system up and running.
@@ -70,6 +72,7 @@ Initial assistant, helping you to get the system up and running.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre data/%{name}.conf %{name} %{name}.conf
 %meson \
 	-D parental_controls=disabled \
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
@@ -87,8 +90,7 @@ Initial assistant, helping you to get the system up and running.
  mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
  mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
 
-%pre
-useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
+%pre -f %{name}.pre
 
 %files
 %license COPYING

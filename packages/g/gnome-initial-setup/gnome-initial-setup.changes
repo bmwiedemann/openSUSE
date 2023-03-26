@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 21 14:03:18 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Generate %pre from sysusers.d file using sysuser-tools
+
+-------------------------------------------------------------------
 Fri Mar 17 13:10:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
