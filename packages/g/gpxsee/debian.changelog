@@ -1,3 +1,10 @@
+gpxsee (12.3) stable; urgency=low
+
+  * Improved ENC maps rendering.
+  * Minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Mar 2023 11:01:15 +0200
+
 gpxsee (12.2) stable; urgency=low
 
   * Fixed broken handling of IMG "multi-maps" (maps with overviews).
