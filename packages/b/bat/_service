@@ -4,7 +4,7 @@
   <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">https://github.com/sharkdp/bat</param>
-    <param name="revision">v0.22.1</param>
+    <param name="revision">v0.23.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

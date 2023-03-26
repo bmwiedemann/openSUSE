@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 25 22:44:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.0:
+  Features:
+  * Implemented -S and --chop-long-lines flags as aliases for
+    --wrap=never. See #2309
+  * Breaking change: Environment variables can now override config
+    file settings (but command-line arguments still have the highest
+    precedence), see #1152, #1281, and #2381
+  * Implemented --nonprintable-notation=caret to support showing
+    non-printable characters using caret notation. See #2429
+  Bugfixes:
+  * Fix bat cache --clear not clearing the --target dir if specified. See #2393
+  Other:
+  * Various bash completion improvements, see #2310
+  * Disable completion of cache subcommand, see #2399
+  * Signifigantly improve startup performance on macOS, see #2442
+  * Bump MSRV to 1.62, see #2496
+  Syntaxes:
+  * Added support for Ada, see #1300 and #2316
+  * Added todo.txt syntax, see #2375
+  * Improve Manpage.sublime-syntax. See #2364 and #2461
+  * Added a new requirements.txt syntax, see #2361
+  * Added a new VimHelp syntax, see #2366
+  * Associate pdm.lock with TOML syntax, see #2410
+  * Todo.txt: Fix highlighting of contexts and projects at beginning
+    of done.txt, see #2411
+  * cmd-help: overhaul scope names (colors) to improve theme
+    support; misc syntax improvements. See #2419
+  * Added support for Crontab, see #2509
+
+-------------------------------------------------------------------
 Wed Nov 30 22:20:13 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add shell completion packages
