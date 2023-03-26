@@ -1,7 +1,7 @@
 #
 # spec file for package python-CommonMark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %bcond_without python2
 Name:           python-CommonMark
@@ -29,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/c/commonmark/comm
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-commonmark = %{version}
@@ -80,7 +78,8 @@ PYTHONPATH=%{buildroot}%{python3_sitelib} python3 commonmark/tests/run_spec_test
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/commonmark
+%{python_sitelib}/commonmark-%{version}*-info
 %python_alternative %{_bindir}/cmark
 
 %changelog

@@ -121,4 +121,12 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931495</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>ae09d1600588233ba2f230680c65f6d9</srcmd5>
+    <version>0.9.1</version>
+    <time>1679854749</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed requirement python-setuptools</comment>
+    <requestid>1074173</requestid>
+  </revision>
 </revisionlist>

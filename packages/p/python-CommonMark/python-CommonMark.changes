@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 12:52:42 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed requirement python-setuptools
+
+-------------------------------------------------------------------
 Mon Nov  8 08:56:01 UTC 2021 - Hui-Zhi Zhao <hui.zhi.zhao@suse.com>
 
 - Remove test on python2 since it only works with python3 
