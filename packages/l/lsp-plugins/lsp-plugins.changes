@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 26 08:18:38 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Another spec clean-up
+
+-------------------------------------------------------------------
+Sun Mar 26 07:45:11 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add OpenGL BuildRequires fixes TW build
+- Update spec 
+
+-------------------------------------------------------------------
 Thu Mar 23 08:48:34 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - Version 1.2.6

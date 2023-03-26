@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
@@ -51,7 +52,7 @@ Requires:       %{name}-common = %{version}
 
 %description
 LSP (Linux Studio Plugins) is a collection of open-source plugins
-currently compatible with LADSPA, LV2 and LinuxVST formats.
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
 
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
@@ -64,21 +65,21 @@ Group:          Productivity/Multimedia/Sound/Utilities
 Common files for lsp-plugins.
 
 %package        doc
-Summary:        Linux Studio Plugins Documents
+Summary:        Linux Studio Plugins Documentation
 Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description    doc
-Documents for Linux Studio Plugins Project
+Documentation for Linux Studio Plugins Project
 
 %package -n     lv2-%{name}
-Summary:        Linux Studio Plugins Documents (LV2)
+Summary:        Linux Studio Plugins (LV2)
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name}-common = %{version}
 
 %description -n lv2-%{name}
 LSP (Linux Studio Plugins) is a collection of open-source plugins
-currently compatible with LADSPA, LV2 and LinuxVST formats.
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
 
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
@@ -86,13 +87,13 @@ the GNU/Linux platform.
 This is the LV2 version of the plugins.
 
 %package -n     vst-%{name}
-Summary:        Linux Studio Plugins Documents (VST)
+Summary:        Linux Studio Plugins (VST)
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name}-common = %{version}
 
 %description -n vst-%{name}
 LSP (Linux Studio Plugins) is a collection of open-source plugins
-currently compatible with LADSPA, LV2 and LinuxVST formats.
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
 
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
@@ -100,13 +101,13 @@ the GNU/Linux platform.
 This is the VST version of the plugins.
 
 %package -n     ladspa-%{name}
-Summary:        Linux Studio Plugins Documents (LADSPA)
+Summary:        Linux Studio Plugins (LADSPA)
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name}-common = %{version}
 
 %description -n ladspa-%{name}
 LSP (Linux Studio Plugins) is a collection of open-source plugins
-currently compatible with LADSPA, LV2 and LinuxVST formats.
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
 
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
@@ -114,13 +115,13 @@ the GNU/Linux platform.
 This is the LADSPA version of the plugins.
 
 %package -n    clap-%{name}
-Summary:       Linux Studio Plugins Documents (CLAP)
+Summary:        Linux Studio Plugins (CLAP)
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name}-common = %{version}
 
 %description -n clap-%{name}
 LSP (Linux Studio Plugins) is a collection of open-source plugins
-currently compatible with LADSPA, LV2 and LinuxVST formats.
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
 
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
@@ -141,13 +142,11 @@ Development files for Linux Studio Plugins
 %autopatch -p1
 
 %build
-#export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
 make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='lv2 vst2 clap doc jack ladspa xdg'
 %make_build
 
 %install
-#export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %make_install
 
 mkdir -p %{buildroot}/%{_docdir}
