@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 26 09:23:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20230225
+  * Adjust for changed libfdata API
+
+-------------------------------------------------------------------
 Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace pkgconfig.diff by a Require on libbfio-devel.
