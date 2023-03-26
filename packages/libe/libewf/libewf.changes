@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 26 10:01:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20230324
+  * Adjust to changed libfdata API
+- Add 20230324.diff
+
+-------------------------------------------------------------------
 Tue Feb 14 01:22:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230212

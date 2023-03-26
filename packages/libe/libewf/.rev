@@ -199,4 +199,12 @@ Replace python 2 with python 3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1066932</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>715508e02fd75844b198e264510c9dfb</srcmd5>
+    <version>20230212</version>
+    <time>1679854796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20230324</comment>
+    <requestid>1074451</requestid>
+  </revision>
 </revisionlist>

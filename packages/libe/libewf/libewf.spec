@@ -32,6 +32,7 @@ Source21:       Expert_Witness_Compression_Format_EWF.pdf
 Source23:       Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
 Patch2:         system-libs.patch
+Patch3:         20230324.diff
 BuildRequires:  %{python_module devel}
 BuildRequires:  bison
 BuildRequires:  c_compiler
@@ -140,8 +141,8 @@ echo "$python" >lastpython
 }
 
 %install
-mv %_builddir/rt/* %buildroot/
-find %buildroot -type f -name "*.la" -delete -print
+mv "%_builddir/rt"/* "%buildroot/"
+find "%buildroot" -type f -name "*.la" -delete -print
 install -Dpm0755 %_sourcedir/mount*py "%buildroot/%_sbindir/mount.ewf"
 ln -s mount.ewf "%buildroot%_sbindir/umount.ewf"
 
