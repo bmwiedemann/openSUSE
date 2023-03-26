@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 24 13:02:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.7.0:
+  * Support :has selector
+0.6.0:
+  * Improve speed of ancestors and previous siblings
+0.5.0:
+  * Support Python 3.10
+  * Drop support of Python 3.6
+  * Handle many CSS4 selectors
+  * Ignore comments at the beginning of selectors
+0.4.1:
+  * Fix PyPI description and various links.
+0.4.0:
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Don’t crash on empty :not() selectors.
+  * New code structure, new packaging, new documentation.
+
+-------------------------------------------------------------------
 Wed Apr  1 14:58:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.3.0

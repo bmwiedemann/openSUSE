@@ -52,4 +52,27 @@
     <comment></comment>
     <requestid>790649</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc9dc638e62b2c8be9273c218c35a33a</srcmd5>
+    <version>0.7.0</version>
+    <time>1679854750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Support :has selector
+0.6.0:
+  * Improve speed of ancestors and previous siblings
+0.5.0:
+  * Support Python 3.10
+  * Drop support of Python 3.6
+  * Handle many CSS4 selectors
+  * Ignore comments at the beginning of selectors
+0.4.1:
+  * Fix PyPI description and various links.
+0.4.0:
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Don’t crash on empty :not() selectors.
+  * New code structure, new packaging, new documentation.
+</comment>
+    <requestid>1074179</requestid>
+  </revision>
 </revisionlist>
