@@ -1,7 +1,7 @@
 #
-# spec file for package python-xcffib
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,39 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-Name:           python-xcffib
-Version:        0.12.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-xcffib%{?psuffix}
+Version:        1.2.0
 Release:        0
 Summary:        A drop in replacement for xpyb, an XCB python binding
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/tych0/xcffib
 Source:         https://files.pythonhosted.org/packages/source/x/xcffib/xcffib-%{version}.tar.gz
+# https://github.com/tych0/xcffib/commit/8a488867d30464913706376ca3a9f4c98ca6c5cf
+Patch0:         python-xcffib-six-leftover.patch
+# fix ffi import [bsc#1209570c4]
+Patch1:         python-xcffib-ffi-import.patch
 BuildRequires:  %{python_module cffi >= 1.1.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module xcffib}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  libxcb-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  xeyes
 BuildRequires:  xvfb-run
 Requires:       python-cffi >= 1.1.0
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,22 +57,30 @@ The xcffib package is intended to be a (mostly) drop-in
 replacement for xpyb.
 
 %prep
-%setup -q -n xcffib-%{version}
+%autosetup -p1 -n xcffib-%{version}
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run pytest-%{$python_bin_suffix} -v
+%if %{with test}
+%pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/xcffib/
 %{python_sitelib}/xcffib-%{version}-py*.egg-info
+%endif
 
 %changelog

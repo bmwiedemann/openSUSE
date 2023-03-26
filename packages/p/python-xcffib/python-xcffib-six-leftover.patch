@@ -1,0 +1,13 @@
+diff --git a/test/test_python_code.py b/test/test_python_code.py
+index f8568b4..5aa67ff 100644
+--- a/test/test_python_code.py
++++ b/test/test_python_code.py
+@@ -17,7 +17,6 @@
+ import xcffib.xproto
+ import xcffib.xinput
+ import os
+-import six
+ import struct
+ import sys
+ from xcffib._ffi import ffi
+

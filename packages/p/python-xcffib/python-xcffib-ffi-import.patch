@@ -1,0 +1,23 @@
+Index: xcffib-1.2.0/test/test_python_code.py
+===================================================================
+--- xcffib-1.2.0.orig/test/test_python_code.py
++++ xcffib-1.2.0/test/test_python_code.py
+@@ -19,7 +19,6 @@ import xcffib.xinput
+ import os
+ import struct
+ import sys
+-from xcffib._ffi import ffi
+ from xcffib.xproto import EventMask
+ 
+ from .conftest import XcffibTest
+@@ -176,8 +175,8 @@ class TestPythonCode:
+         )
+ 
+         # Create cdata from the bytearray and cast it to a generic reply
+-        cdata = ffi.new("char x[72]", B_HIT_EVENT)
+-        generic_reply = ffi.cast("xcb_generic_reply_t *", cdata)
++        cdata = xcffib.ffi.new("char x[72]", B_HIT_EVENT)
++        generic_reply = xcffib.ffi.cast("xcb_generic_reply_t *", cdata)
+ 
+         # Pass the reply to our hoist_event method
+         event = xcffib_test.conn.hoist_event(generic_reply)

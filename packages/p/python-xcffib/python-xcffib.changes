@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 23 09:19:27 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.2.0
+  * no upstream changelog found
+- do not require six
+- added patches
+  fix https://github.com/tych0/xcffib/commit/8a488867d30464913706376ca3a9f4c98ca6c5cf
+  + python-xcffib-six-leftover.patch
+  fix ffi import [bsc#1209570c4]
+  + python-xcffib-ffi-import.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 16:04:01 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.12.1
