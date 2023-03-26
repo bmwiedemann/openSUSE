@@ -1,8 +1,8 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2016-2022 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2016-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -62,7 +62,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython
+BuildRequires:  python3-Cython >= 0.29.33
 BuildRequires:  python3-base >= 3.8
 BuildRequires:  python3-devel
 BuildRequires:  python3-packaging
@@ -85,11 +85,11 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.4)
+BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.5)
 BuildConflicts: python3-msgpack = 1.0.1
 Conflicts:      python3-msgpack = 1.0.1
 Requires:       python3-packaging
-Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.4)
+Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.5)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       python3-pyfuse3 >= 3.1.1
