@@ -2578,6 +2578,7 @@ unsorted:
   - cross-avr-gcc13-bootstrap 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
+  - cross-bpf-binutils 
   - cross-epiphany-binutils 
   - cross-epiphany-gcc11 
   - cross-epiphany-gcc11-bootstrap 
@@ -3925,7 +3926,7 @@ unsorted:
   - ffmpeg-4-libswresample-devel 
   - ffmpeg-4-libswscale-devel 
   - ffmpeg-4-private-devel 
-  - ffmpeg-5: [i586] 
+  - ffmpeg-5 
   - ffmpeg-5-libavcodec-devel 
   - ffmpeg-5-libavdevice-devel 
   - ffmpeg-5-libavfilter-devel 
@@ -3937,6 +3938,18 @@ unsorted:
   - ffmpeg-5-mini-devel 
   - ffmpeg-5-mini-libs 
   - ffmpeg-5-private-devel 
+  - ffmpeg-6: [i586] 
+  - ffmpeg-6-libavcodec-devel 
+  - ffmpeg-6-libavdevice-devel 
+  - ffmpeg-6-libavfilter-devel 
+  - ffmpeg-6-libavformat-devel 
+  - ffmpeg-6-libavutil-devel 
+  - ffmpeg-6-libpostproc-devel 
+  - ffmpeg-6-libswresample-devel 
+  - ffmpeg-6-libswscale-devel 
+  - ffmpeg-6-mini-devel 
+  - ffmpeg-6-mini-libs 
+  - ffmpeg-6-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -4153,8 +4166,6 @@ unsorted:
   - fprintd-devel 
   - fprintd-doc 
   - fq 
-  - fractal 
-  - fractal-lang 
   - frame 
   - frame-devel 
   - framel 
@@ -7371,10 +7382,10 @@ unsorted:
   - hydrogen 
   - hyena 
   - hyper-v-enhanced-session 
-  - hyperfine 
-  - hyperfine-bash-completion 
-  - hyperfine-fish-completion 
-  - hyperfine-zsh-completion 
+  - hyperfine: [x86_64] 
+  - hyperfine-bash-completion: [x86_64] 
+  - hyperfine-fish-completion: [x86_64] 
+  - hyperfine-zsh-completion: [x86_64] 
   - hyperlink-app-client 
   - hyperscan-devel 
   - hyphen 
@@ -10362,15 +10373,22 @@ unsorted:
   - libavcall1 
   - libavcodec58_134-32bit: [x86_64] 
   - libavcodec59-32bit: [x86_64] 
+  - libavcodec60-32bit: [x86_64] 
   - libavdevice58_13 
   - libavdevice58_13-32bit: [x86_64] 
-  - libavdevice59: [i586] 
+  - libavdevice59 
   - libavdevice59-32bit: [x86_64] 
+  - libavdevice60: [i586] 
+  - libavdevice60-32bit: [x86_64] 
   - libavfilter7_110 
   - libavfilter7_110-32bit: [x86_64] 
   - libavfilter8-32bit: [x86_64] 
+  - libavfilter9: [i586] 
+  - libavfilter9-32bit: [x86_64] 
   - libavformat58_76-32bit: [x86_64] 
   - libavformat59-32bit: [x86_64] 
+  - libavformat60: [i586] 
+  - libavformat60-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
   - libavif15-32bit: [x86_64] 
@@ -10381,6 +10399,7 @@ unsorted:
   - libavtp0-32bit: [x86_64] 
   - libavutil56_70-32bit: [x86_64] 
   - libavutil57-32bit: [x86_64] 
+  - libavutil58-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
@@ -13745,12 +13764,12 @@ unsorted:
   - libpetsc3_18-openmpi2 
   - libpetsc3_18-openmpi3 
   - libpetsc3_18-openmpi4 
-  - libpetsc_3_18_4-gnu-mpich-hpc 
-  - libpetsc_3_18_4-gnu-mvapich2-hpc 
-  - libpetsc_3_18_4-gnu-openmpi1-hpc 
-  - libpetsc_3_18_4-gnu-openmpi2-hpc 
-  - libpetsc_3_18_4-gnu-openmpi3-hpc 
-  - libpetsc_3_18_4-gnu-openmpi4-hpc 
+  - libpetsc_3_18_5-gnu-mpich-hpc 
+  - libpetsc_3_18_5-gnu-mvapich2-hpc 
+  - libpetsc_3_18_5-gnu-openmpi1-hpc 
+  - libpetsc_3_18_5-gnu-openmpi2-hpc 
+  - libpetsc_3_18_5-gnu-openmpi3-hpc 
+  - libpetsc_3_18_5-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -13879,6 +13898,8 @@ unsorted:
   - libportmidi2: [i586] 
   - libpostproc55_9-32bit: [x86_64] 
   - libpostproc56-32bit: [x86_64] 
+  - libpostproc57: [i586] 
+  - libpostproc57-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -14944,15 +14965,18 @@ unsorted:
   - libsuperlu5-32bit: [x86_64] 
   - libsuperlu_5_3_0-gnu-hpc 
   - libsurgescript0_5_6 
-  - libsuseconnect 
+  - libsuseconnect: [x86_64] 
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
+  - libswresample4-32bit: [x86_64] 
   - libswresample4_ff5-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
   - libswscale6-32bit: [x86_64] 
+  - libswscale7: [i586] 
+  - libswscale7-32bit: [x86_64] 
   - libsybdb5 
   - libsybdb5-32bit: [x86_64] 
   - libsymmetrica2 
@@ -21348,18 +21372,18 @@ unsorted:
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_18_4-gnu-mpich-hpc-devel 
-  - petsc_3_18_4-gnu-mpich-hpc-saws 
-  - petsc_3_18_4-gnu-mvapich2-hpc-devel 
-  - petsc_3_18_4-gnu-mvapich2-hpc-saws 
-  - petsc_3_18_4-gnu-openmpi1-hpc-devel 
-  - petsc_3_18_4-gnu-openmpi1-hpc-saws 
-  - petsc_3_18_4-gnu-openmpi2-hpc-devel 
-  - petsc_3_18_4-gnu-openmpi2-hpc-saws 
-  - petsc_3_18_4-gnu-openmpi3-hpc-devel 
-  - petsc_3_18_4-gnu-openmpi3-hpc-saws 
-  - petsc_3_18_4-gnu-openmpi4-hpc-devel 
-  - petsc_3_18_4-gnu-openmpi4-hpc-saws 
+  - petsc_3_18_5-gnu-mpich-hpc-devel 
+  - petsc_3_18_5-gnu-mpich-hpc-saws 
+  - petsc_3_18_5-gnu-mvapich2-hpc-devel 
+  - petsc_3_18_5-gnu-mvapich2-hpc-saws 
+  - petsc_3_18_5-gnu-openmpi1-hpc-devel 
+  - petsc_3_18_5-gnu-openmpi1-hpc-saws 
+  - petsc_3_18_5-gnu-openmpi2-hpc-devel 
+  - petsc_3_18_5-gnu-openmpi2-hpc-saws 
+  - petsc_3_18_5-gnu-openmpi3-hpc-devel 
+  - petsc_3_18_5-gnu-openmpi3-hpc-saws 
+  - petsc_3_18_5-gnu-openmpi4-hpc-devel 
+  - petsc_3_18_5-gnu-openmpi4-hpc-saws 
   - pfsalign 
   - pfsglview 
   - pfstools 
@@ -27023,7 +27047,6 @@ unsorted:
   - python311-dash-table 
   - python311-databases 
   - python311-datadiff 
-  - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
   - python311-datrie 
@@ -29055,6 +29078,7 @@ unsorted:
   - python311-subscene-api 
   - python311-subst 
   - python311-suds 
+  - python311-sunpy 
   - python311-suntime 
   - python311-sure 
   - python311-surer 
@@ -30414,7 +30438,6 @@ unsorted:
   - python38-dask-test 
   - python38-databases 
   - python38-datadiff 
-  - python38-datashader 
   - python38-dateparser 
   - python38-dateutils 
   - python38-datrie 
@@ -38670,8 +38693,8 @@ unsorted:
   - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
-  - suseconnect-ng 
-  - suseconnect-ruby-bindings 
+  - suseconnect-ng: [x86_64] 
+  - suseconnect-ruby-bindings: [x86_64] 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 

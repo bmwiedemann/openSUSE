@@ -1540,6 +1540,7 @@
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libavcodec58_134" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libavcodec59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libavcodec60" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavfilter8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat58_76" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libavformat59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1547,6 +1548,7 @@
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libavutil57" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2551,6 +2553,7 @@
     <package name="libsvn_auth_gnome_keyring-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsvn_auth_kwallet-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libswresample4_ff5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libswscale5_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libswscale6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3492,7 +3495,7 @@
     <package name="python310-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-immutables" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-importlib-metadata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python310-importlib-metadata" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-importlib-resources" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-incremental" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-iniconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3560,7 +3563,7 @@
     <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-unicodedata2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python310-zipp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python310-zipp" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -4727,7 +4730,7 @@
     <package name="fcitx-gtk2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ffmpeg-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ffmpeg-6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fwupd-efi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4809,7 +4812,9 @@
     <package name="libaudit1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-client3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libavahi-common3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libavdevice59" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavdevice60" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavfilter9" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavformat60" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4889,6 +4894,7 @@
     <package name="libpng16-16-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libportmidi2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libpostproc57" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -4899,6 +4905,7 @@
     <package name="libstdc++6-pp-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsuil-0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="libswscale7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtalloc2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtasn1-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
