@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Mar 25 20:02:46 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Disable source services again
+
+-------------------------------------------------------------------
+Sat Mar 25 19:49:55 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.12.0:
+  * Added
+    + Uppercase -T short form for --title
+    + Support for horizontal scrolling in mouse mode and
+      alternative scrolling modes
+    + Support for fractional scaling on Wayland with
+      wp-fractional-scale protocol
+    + Support for running on GLES context
+    + Touchscreen input for click/scroll/select/zoom
+    + window.resize_increments config option, disabled by default
+  * Changed
+    + Erase in line after the last column will no longer clear the
+      last column
+    + Open new windows by default with macOS Cmd+N binding
+    + The hint about window transparency is now properly issued on
+      Wayland and macOS
+    + The IME purpose is now set to Terminal which could help with
+      OSK
+    + window.decorations_theme_variant is now using Dark, Light,
+      and None values
+    + Resize increments are now set on macOS and X11 to resize by
+      cell sizes
+  * Fixed
+    + --help output for --class does not match man pages
+    + Cursor and underlines always being black on very old hardware
+    + Crash when using very low negative font.offset
+    + Artifacts in corners for maximized window with CSD on Wayland
+    + Dotted underline not shown on macOS
+    + Crash with OT-SVG fonts on Linux/BSD
+    + Crash during text compose on old GNOME under Wayland
+    + Blurry fonts when changing padding size at runtime
+    + Crash while typing on Wayland
+    + Multi-line semantic bracket selection
+    + Reduced GPU memory usage
+    + Low frame rate when multiple windows render at the same time
+    + Redraw hanging until a keypress on X11 in rare cases
+    + Quadrants not aligned with half blocks with built-in font
+    + EOT (\x03) escaping bracketed paste mode
+    + Drag & Drop not working for the search bar
+  * Removed
+    + window.gtk_theme_variant config field; use
+      window.decorations_theme_variant instead
+    + alt_send_esc is now always set to true
+- Enable source services
+
+-------------------------------------------------------------------
 Wed Jan 25 16:15:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add back the config.guess/config.sub workaround for aarch64,

@@ -1,7 +1,7 @@
 #
 # spec file for package alacritty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           alacritty
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
