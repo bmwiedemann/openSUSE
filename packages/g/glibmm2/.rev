@@ -814,4 +814,12 @@
     <comment>New old stable, ok to fwd (forwarded request 1072615 from iznogood)</comment>
     <requestid>1073160</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>c32d529ab0f85efff9ea7806a10ae35f</srcmd5>
+    <version>2.76.0</version>
+    <time>1679854756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074236</requestid>
+  </revision>
 </revisionlist>
