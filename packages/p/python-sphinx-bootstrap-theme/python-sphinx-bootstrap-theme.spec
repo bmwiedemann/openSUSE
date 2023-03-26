@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-bootstrap-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinx-bootstra
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Fabric >= 1.13.2
 Requires:       python-Sphinx >= 1.6.1
 BuildArch:      noarch
 
