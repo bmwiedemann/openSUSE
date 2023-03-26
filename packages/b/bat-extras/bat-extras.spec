@@ -1,7 +1,7 @@
 #
 # spec file for package bat-extras
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bat-extras
-Version:        2022.07.27
+Version:        2023.03.21
 Release:        0
 Summary:        Extra scripts for bat
 License:        MIT

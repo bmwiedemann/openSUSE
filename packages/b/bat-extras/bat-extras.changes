@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 25 13:07:25 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to release 2023-03-21
+  * batdiff: Update docs to add BATDIFF_USE_DELTA
+  * batman: Allow spaces in manual sections
+  * batman: Fix parsing manual pages in fzf preview
+  * batman: Only parse first manpage when selected
+  * batman: Fix bug where some man pages would fail to open
+  * batpipe: Fix SELF variable being wrong when compressed
+  * batpipe: Add BATPIPE_TERM_WIDTH
+  * batpipe: Fix opened-in-less detection
+  * batwatch docs: Fix link to entr project
+  * docs: Update README about manual files
+
+-------------------------------------------------------------------
 Thu Jul 28 20:32:10 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to release 2022-07-27

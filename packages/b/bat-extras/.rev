@@ -17,4 +17,12 @@ As I noticed the man pages where not installed correctly which is fixed now.</co
     <comment></comment>
     <requestid>991605</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>291f770ac177edeaba97fce8a5940920</srcmd5>
+    <version>2023.03.21</version>
+    <time>1679854776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074348</requestid>
+  </revision>
 </revisionlist>
