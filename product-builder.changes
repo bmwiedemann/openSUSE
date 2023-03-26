@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 12:53:48 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.13
+  * fix version compare logic, using the newest candidate now
+
+-------------------------------------------------------------------
 Wed Dec 14 12:39:26 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.12
