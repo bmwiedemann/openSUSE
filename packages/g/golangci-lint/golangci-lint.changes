@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 25 19:17:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.52.2:
+  * build(deps): bump github.com/moricho/tparallel from 0.3.0 to 0.3.1 (#3719)
+  * fix(pre-commit): require_serial & pass_filenames (#3713)
+  * docs: Update documentation and assets
+
+-------------------------------------------------------------------
 Tue Mar 21 20:11:11 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 1.52.1:

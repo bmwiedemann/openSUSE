@@ -15,4 +15,15 @@
     <comment>Use SOURCE_DATE_EPOCH as build date (boo#1047218) (forwarded request 1073618 from bmwiedemann)</comment>
     <requestid>1073670</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e42b3404f2ed6ec201aedab22afbb06</srcmd5>
+    <version>1.52.2</version>
+    <time>1679854780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.52.2:
+  * build(deps): bump github.com/moricho/tparallel from 0.3.0 to 0.3.1 (#3719)
+  * fix(pre-commit): require_serial &amp; pass_filenames (#3713)
+  * docs: Update documentation and assets (forwarded request 1074349 from jfkw)</comment>
+    <requestid>1074351</requestid>
+  </revision>
 </revisionlist>
