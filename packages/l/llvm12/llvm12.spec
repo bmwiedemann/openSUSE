@@ -1,7 +1,7 @@
 #
 # spec file for package llvm12
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,6 +119,8 @@ Patch14:        llvm-do-not-install-static-libraries.patch
 Patch15:        tablegen-test-link-static.patch
 # Cherry pick patch from LLVM 15: https://github.com/llvm/llvm-project/issues/56421
 Patch17:        llvm-glibc-2-36.patch
+# PATCH-FIX-UPSTREAM llvm-gcc13 https://github.com/llvm/llvm-project/issues/55711
+Patch18:        llvm-gcc13-issue55711.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -554,6 +556,7 @@ This package contains the development files for Polly.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p2
+%patch18 -p2
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 21:31:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add llvm-gcc13-issue55711.patch
+  * Fix gh#llvm/llvm-project#55711 with gcc13
+
+-------------------------------------------------------------------
 Sun Oct 30 14:09:39 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
