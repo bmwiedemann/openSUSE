@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Mar 22 10:53:02 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Initial package version 0.4.1
+  * build: Use same automake init as other projects and bump autoconf
+  * Update copyright year and fix bug report address
+  * build: Use XDT_FEATURE_DEBUG
+  * basename() called but <libgen.h> not included
+  * Add option to change behavior of middle mouse button (Closes #32)
+  * build: Keep /usr/local as default prefix
+  * build: Fix autotools warnings
+  * build: Fix intltool lock file problem during make distcheck
+  * build: Bump GLib minimum required to 2.58
+  * Anchor group menu to center of app icon
+  * Add option to change inactive indicator style
+  * List window previews horizontally if panel is horizontal
+  * Add option to get the indicator color automatically from the Gtk 
+    theme foreground color
+  * Startup notification support Closes #13 Additionally, correctly 
+    release memory after launching.
+  * Reorder AppInfos.cpp for clarity
+  * Skip loadDesktopEntry() for files not ending in .desktop
+  * Pass std::string by const reference to avoid unnecessary copy
+  * Speed up ftw() by increasing handle limit
+  * Added Ciliora and Circles indicator styles
+  * Fix reordering (ctrl+dragging) icons to the right
+  * Fix size_t being truncated into uint and comparing unequal to npos
+  * Fix .desktop file StartupWMClass values being ignored
+  * Update TODO
+  * Fix warnings/crashes from timeouts In many cases the timeout's stop 
+    method was being called more than once raising GLib warnings.
+  * Don't clear this list
+  * Delete unused declarations
+  * Improve PANEL_DEBUG macro
+  * Improve debugging messages
+  * Drop the inotify dependency GLib provides a GAppInfoMonitor object 
+    that allows us to detect desktop file changes.
+  * Use the default theme hover effect The previous effect can still be 
+    achieved with CSS:
+  * Update the README Better debugging instructions and long desctiption.
+  * Cleanup: remove uneccessary casts to GtkWidget*
+  * Remove highlight on active group Related #14 It can be restored by 
+    using css or a future option.
+  * Add a "window_count" class to labels Related #9
+  * Translation Updates
