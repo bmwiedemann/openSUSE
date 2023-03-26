@@ -1,0 +1,5 @@
+<package name="lastlog2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Linux-PAM" package="lastlog2"/>
+</package>

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Mar 23 13:43:39 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 0.6.1
+  - Fix some compiler warnings
+
+-------------------------------------------------------------------
+Wed Mar 22 09:54:04 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 0.6.0
+  - Create STRICT table (#1)
+  - Use bind for DELETE and REPLACE statements (#2)
+
+-------------------------------------------------------------------
+Fri Mar 17 17:16:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 0.5.0
+  - Import old lastlog data
+
+-------------------------------------------------------------------
+Fri Mar 17 13:33:38 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add manual pages
+
+-------------------------------------------------------------------
+Mon Mar 13 14:48:44 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version 0.0.1
