@@ -604,4 +604,12 @@
   following upstreams port. (forwarded request 1073119 from iznogood)</comment>
     <requestid>1073240</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>ca5978010b991b0e30f02171f4d428e2</srcmd5>
+    <version>44.0</version>
+    <time>1679854757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074237</requestid>
+  </revision>
 </revisionlist>
