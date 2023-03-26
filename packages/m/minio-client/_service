@@ -1,11 +1,11 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/minio/mc</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">RELEASE.2023-02-28T00-12-59Z</param>
+    <param name="revision">RELEASE.2023-03-23T20-03-04Z</param>
     <param name="match-tag">RELEASE.*</param>
     <param name="versionrewrite-pattern">RELEASE\.(.*)-(.*)-(.*)-(.*)-(.*)</param>
     <param name="versionrewrite-replacement">\1\2\3\4\5</param>
@@ -13,14 +13,12 @@
   <service name="set_version" mode="disabled">
     <param name="basename">mc</param>
   </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">mc</param>
-  </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">mc-20230228T001259Z.tar.gz</param>
+    <param name="archive">mc-20230323T200304Z.obscpio</param>
   </service>
 </services>

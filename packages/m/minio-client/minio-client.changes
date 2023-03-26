@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 26 08:25:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230323T200304Z:
+  * stat: Fix output when stat a prefix which has other prefixes
+    (#4501)
+  * honor context cancellation on long-running lists (#4519)
+  * Revert query parameter `src` while diag upload to SUBNET
+    (#4516)
+  * cp: Descriptive error about why unable to locate the source
+    (#4517)
+  * add Expiration: info if present for sts/svc accounts (#4515)
+
+-------------------------------------------------------------------
+Wed Mar 22 12:00:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230320T171753Z:
+  * Incl. rules with NewerNoncurrentVersions > 0 (#4505)
+  * Add `batch cancel` command (#4506)
+  * Fix decommission status crash (#4510)
+  * update functional tests for admin_users with 'policy commands'
+    (#4508)
+  * heal: Summary output based on disks utilization (#4474)
+  * Restructure adding and removing policies from users and groups
+    (#4428)
+  * rm: --dry-run with --versions to print versions modtime (#4495)
+  * fix: ldap commands don't accept config name (#4499)
+  * fix: windows stat command (#4503)
+  * Added query parameter `src` while diag upload to SUBNET (#4504)
+  * replicate ls: fix panic (#4497)
+  * replicate status - drop stale ARNs from stats (#4494)
+  * Allow `support proxy set|remove` without registration (#4488)
+  * Skip subnet config get while `--airgap` mode of license
+    register (#4479)
+  * upgrade dependencies and move to go1.20.x (#4490)
+
+-------------------------------------------------------------------
 Tue Feb 28 09:20:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230228T001259Z:
