@@ -21,6 +21,10 @@ buildignore libreoffice-icon-themes
 buildignore libreoffice-icon-theme-breeze
 buildignore kdenetwork4-filesharing
 buildignore gnome-keyring
+# This pulls in GTK 2. We have ksshaskpass instead.
+buildignore openssh-askpass-gnome
+# Make sure it's not coming back
+buildignore libgtk-2_0-0
 
 # Packages for the installer
 source "$PWD/list-installer.sh"
@@ -66,9 +70,7 @@ buildignore vlc-lang
 buildignore kipi-plugins
 
 # Upstream branding, not used by default and HUGE
-if [ "$distro" != "leap" ]; then
-	buildignore breeze5-wallpapers
-fi
+buildignore breeze5-wallpapers
 
 install partitionmanager
 

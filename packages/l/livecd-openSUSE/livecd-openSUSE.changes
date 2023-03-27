@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:22:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore openssh-askpass-gnome and block gtk2
+- list-kde: Ignore breeze5-wallpapers on Leap as well now
+- list-common: Don't install gtk2-branding-openSUSE explicitly
+
+-------------------------------------------------------------------
 Mon Mar 13 10:34:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore pam_kwallet like gnome-keyring-pam

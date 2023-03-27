@@ -250,7 +250,6 @@ install bluez-firmware
 install crda
 install dmidecode
 install efibootmgr
-install gtk2-branding-openSUSE
 install ipw-firmware
 install iw
 install libatm1
