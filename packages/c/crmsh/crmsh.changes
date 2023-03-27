@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar 27 14:44:52 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230327.c76ad5d5:
+  * Fix: unittest: Adjust unit tests for previous changes
+  * Fix: utils: qdevice initialization should user_pair_for_ssh() to get appreciated users (crmsh#1157)
+
+-------------------------------------------------------------------
+Mon Mar 27 09:44:27 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230327.3cbdd737:
+  * Dev: behave: Change docker image as liangxin1300/haleap:15.5
+  * Fix: crm report: sustain if there are offline nodes (bsc#1209480)
+
+-------------------------------------------------------------------
+Mon Mar 27 03:50:25 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230327.1d3873bd:
+  * Dev: behave: Add Scenario: Do upgrade job without root passwordless
+  * Dev: unittest: Add unit test case for previous changes
+  * Dev: upgradeutil: Change 'upgrade' terminology to 'configuration fix'
+  * Dev: behave: Reuse crmsh.utils.check_passwordless_between_nodes function
+  * Dev: utils: Check passwordless between cluster nodes
+
+-------------------------------------------------------------------
+Thu Mar 23 14:46:37 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230323.9f3f56c1:
+  * Dev: behave: Adjust sbd functional test based on previous changes
+  * Dev: testcases: Adjust testcases after pacemaker upgrade
+  * Dev: workflows: split functional_test_resource_subcommand as two jobs
+  * Revert "Dev: workflows: Disable resource_failcount.feature temporarily"
+  * Dev: Dockerfile: Update pacemaker and libqb version
+
+-------------------------------------------------------------------
 Tue Mar 21 15:30:12 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230321.97bd51bb:
