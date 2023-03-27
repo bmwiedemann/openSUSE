@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:15:10 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add upstream fix-strict-aliasing.patch that addresses violation
+  of strict aliasing.
+
+-------------------------------------------------------------------
+Thu Mar 23 14:45:26 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO now as it works now (boo#1156301).
+
+-------------------------------------------------------------------
 Sun Feb  5 16:07:02 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add patch to fix building with OpenSSL-3 (boo#1207958)

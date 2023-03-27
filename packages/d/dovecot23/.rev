@@ -671,4 +671,15 @@
     <comment></comment>
     <requestid>1063605</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>aab29450deecce9046da643ffef13bfe</srcmd5>
+    <version>2.3.20</version>
+    <time>1679933845</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix-strict-aliasing.patch that addresses violation
+  of strict aliasing.
+
+- Enable LTO now as it works now (boo#1156301).</comment>
+    <requestid>1074626</requestid>
+  </revision>
 </revisionlist>

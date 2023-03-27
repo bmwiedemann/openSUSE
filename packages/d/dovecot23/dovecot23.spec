@@ -16,8 +16,6 @@
 #
 
 
-%global _lto_cflags %{nil}
-
 Name:           dovecot23
 Version:        2.3.20
 Release:        0
@@ -164,6 +162,7 @@ Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 # PATCH-FIX-OPENSUSE - boo#1207958
 Patch2:         fix-build-with-openssl-3.patch
+Patch3:         fix-strict-aliasing.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
