@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 24 15:48:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.0
+  * Don't let find() mess up dircache (#531)
+  * Drop py3.7 (#529)
+  * Update docs (#528)
+  * Make times UTC (#527)
+  * Use BytesIO for large bodies (#525)
+  * Fix: Don't append generation when it is absent (#523)
+  * get/put/cp consistency tests (#521)
+- Release 2023.1.0
+  * Support create time (#516, 518)
+  * defer async session creation (#513, 514)
+  * support listing of file versions (#509)
+  * fix sign following versioned split protocol (#513)
+
+-------------------------------------------------------------------
 Sat Nov 19 14:45:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.11.0

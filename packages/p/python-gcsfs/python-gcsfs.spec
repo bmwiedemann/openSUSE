@@ -1,7 +1,7 @@
 #
 # spec file for package python-gcsfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2022.11.0
+Version:        2023.3.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -25,7 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
