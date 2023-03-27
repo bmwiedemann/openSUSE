@@ -108,6 +108,8 @@ elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.7+kde177" ]; t
     cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.7
 elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.8+kde160" ]; then
     cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.8
+elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.8+kde183" ]; then
+    cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.8
 fi
 
 # Disable wayland for now: https://github.com/linuxdeepin/qt5platform-plugins/issues/47

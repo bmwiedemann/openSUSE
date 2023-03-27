@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 24 05:48:32 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Fix build with Qt 5.15.8+kde183
+
+-------------------------------------------------------------------
 Wed Jan 18 06:32:06 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Qt 5.15.8 

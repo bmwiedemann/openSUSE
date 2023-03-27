@@ -115,4 +115,12 @@
     <comment>- Fix build on Qt 5.15.8 (forwarded request 1059267 from hillwood)</comment>
     <requestid>1059270</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b9810e31247bf3ed417014a07039526d</srcmd5>
+    <version>5.0.70</version>
+    <time>1679933795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074566</requestid>
+  </revision>
 </revisionlist>
