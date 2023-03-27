@@ -72,4 +72,15 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1063604 from glaubitz)</comment>
     <requestid>1063624</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b7df74c3b5158217f411b5317182a38</srcmd5>
+    <version>1.5.0</version>
+    <time>1679933859</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1074577 from glaubitz)</comment>
+    <requestid>1074667</requestid>
+  </revision>
 </revisionlist>
