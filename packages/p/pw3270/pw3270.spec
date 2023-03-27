@@ -30,6 +30,7 @@ Group:          System/X11/Terminals
 URL:            https://github.com/PerryWerneck/pw3270
 
 Source:         pw3270-%{version}.tar.xz
+Patch0:         reproducible.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -124,6 +125,7 @@ This package contains the default branding for %{name}.
 #---[ Build & Install ]-----------------------------------------------------------------------------------------------
 %prep
 %setup
+%patch0 -p1
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 NOCONFIGURE=1 ./autogen.sh
