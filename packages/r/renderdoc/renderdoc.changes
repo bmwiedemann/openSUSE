@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:50:34 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.25
+  * All: nvidia counters can now be obtained via the performance counter
+    viewer. This requires the manual installation of the nvidia SDK 
+    obtained separately.
+  * Python: The bindings now report not-equal instead of throwing an
+    exception when comparing between incompatible types.
+  * Android: Change listing of Android packages for new Android version
+    that requires different parameters.
+  * D3D12: Resource usage depends less on root signatures and more on
+    shader reflection, which should reduce false positives of resources
+    being reported as used on events when they are bound but unused.
+  * Vulkan: Display depth resolve textures in texture viewer thumbnails.
+  * Vulkan: Add support for several extensions:
+    - VK_EXT_rasterization_order_attachment_access
+    - VK_EXT_acquire_drm_display
+    - VK_EXT_surface_maintenance1
+    - VK_EXT_swapchain_maintenance1
+    - VK_EXT_border_color_swizzle
+    - VK_EXT_non_seamless_cube_map
+    - VK_EXT_depth_clamp_zero_one
+    - VK_EXT_image_view_min_lod 
+
+-------------------------------------------------------------------
 Mon Dec 19 09:11:29 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.24

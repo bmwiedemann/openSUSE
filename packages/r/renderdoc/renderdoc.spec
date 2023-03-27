@@ -1,7 +1,7 @@
 #
 # spec file for package renderdoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           renderdoc
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        A frame-capture based graphics debugger
 License:        MIT
