@@ -60,4 +60,21 @@
     <comment></comment>
     <requestid>1005568</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f3c3b67716155c8cbde9b3db87abd036</srcmd5>
+    <version>2.11.0</version>
+    <time>1679933719</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Remove use of external mock module, try unittest.mock first.
+- Switch to pyproject macros.
+- Actually run the testsuite using pytest. 
+- Stop using %python_sitelib/*
+
+- recreate spec file using py2pack
+
+- Update to 2.11.0
+- add python-rpm-macros dependency</comment>
+    <requestid>1074564</requestid>
+  </revision>
 </revisionlist>

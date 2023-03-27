@@ -1,13 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 27 06:49:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Remove use of external mock module, try unittest.mock first.
+- Switch to pyproject macros.
+- Actually run the testsuite using pytest. 
+- Stop using %python_sitelib/*
+
+-------------------------------------------------------------------
+Tue Mar 21 07:08:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- recreate spec file using py2pack
+
+-------------------------------------------------------------------
 Fri Sep 23 02:33:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.11.0 
+- Update to 2.11.0
   * Add support for Rocky Linux and Manjaro to Bindep.
 
 -------------------------------------------------------------------
 Tue Jan 11 20:56:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add python-rpm-macros dependency 
+- add python-rpm-macros dependency
 
 -------------------------------------------------------------------
 Tue Jan  4 09:01:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
