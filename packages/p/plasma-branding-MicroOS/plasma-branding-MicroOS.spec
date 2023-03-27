@@ -24,6 +24,7 @@ Source:         COPYING
 Source1:        flathub.flatpakrepo
 Source2:        mod-firstboot.desktop
 Source3:        mod-firstboot
+Source4:        50-desktop.conf
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  transactional-update
@@ -34,7 +35,7 @@ Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20230214
+Version:        20230323
 Release:        0
 
 %description
@@ -46,6 +47,7 @@ cp -a %{SOURCE0} COPYING
 cp -a %{SOURCE1} flathub.flatpakrepo
 cp -a %{SOURCE2} mod-firstboot.desktop
 cp -a %{SOURCE3} mod-firstboot
+cp -a %{SOURCE4} 50-desktop.conf
 
 %build
 
@@ -56,12 +58,12 @@ install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 mod-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/mod-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 mod-firstboot %{buildroot}%{_bindir}/mod-firstboot
+install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.d
+install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.d/50-desktop.conf
 
 %post
-sed -i 's/^#REBOOT_METHOD=auto/REBOOT_METHOD=notify/' %{_prefix}%{_sysconfdir}/transactional-update.conf
 
 %postun
-sed -i 's/^REBOOT_METHOD=notify/#REBOOT_METHOD=auto/' %{_prefix}%{_sysconfdir}/transactional-update.conf
 
 %files
 %license COPYING
@@ -71,5 +73,7 @@ sed -i 's/^REBOOT_METHOD=notify/#REBOOT_METHOD=auto/' %{_prefix}%{_sysconfdir}/t
 %dir %{_sysconfdir}/skel/.config/autostart
 %config(noreplace) %{_sysconfdir}/skel/.config/autostart/mod-firstboot.desktop
 %{_bindir}/mod-firstboot
+%dir %{_prefix}%{_sysconfdir}/transactional-update.d
+%{_prefix}%{_sysconfdir}/transactional-update.d/50-desktop.conf
 
 %changelog

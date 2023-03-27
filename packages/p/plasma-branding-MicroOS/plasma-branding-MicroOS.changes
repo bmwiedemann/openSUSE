@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 16:26:45 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323
+
+-------------------------------------------------------------------
 Tue Feb 14 18:07:18 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Reverted prior commit, will investigate alternate method.

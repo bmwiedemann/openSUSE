@@ -34,4 +34,14 @@
 - Removed kwrite from the flatpak installations.  Kate is already in the base image.</comment>
     <requestid>1065824</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>314d9d209b5866913e427054fc921ae3</srcmd5>
+    <version>20230323</version>
+    <time>1679933718</time>
+    <user>dimstar_suse</user>
+    <comment>- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323</comment>
+    <requestid>1074230</requestid>
+  </revision>
 </revisionlist>
