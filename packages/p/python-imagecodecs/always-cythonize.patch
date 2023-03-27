@@ -1,8 +1,8 @@
-Index: imagecodecs-2022.12.24/setup.py
+Index: imagecodecs-2023.3.16/setup.py
 ===================================================================
---- imagecodecs-2022.12.24.orig/setup.py
-+++ imagecodecs-2022.12.24/setup.py
-@@ -85,7 +85,7 @@ def ext(**kwargs):
+--- imagecodecs-2023.3.16.orig/setup.py
++++ imagecodecs-2023.3.16/setup.py
+@@ -84,7 +84,7 @@ def ext(**kwargs):
          extra_link_args=[],
          depends=[],
          cython_compile_time_env={},
@@ -11,8 +11,8 @@ Index: imagecodecs-2022.12.24/setup.py
      )
      d.update(kwargs)
      return d
-@@ -106,13 +106,13 @@ OPTIONS = {
-     'extra_link_args': [],
+@@ -105,13 +105,13 @@ OPTIONS = {
+     'extra_link_args': [],  # ['-debug:full']
      'depends': ['imagecodecs/_shared.pxd'],
      'cython_compile_time_env': {},
 -    'cythonize': False,  # sys.version_info >= (3, 11)

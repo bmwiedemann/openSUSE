@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-imagecodecs%{psuffix}
-Version:        2022.12.24
+Version:        2023.3.16
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -58,9 +58,9 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module czifile}
-BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module dask-delayed}
-BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module dask if %python-base < 3.11}
+BuildRequires:  %{python_module dask-array if %python-base < 3.11}
+BuildRequires:  %{python_module dask-delayed if %python-base < 3.11}
 BuildRequires:  %{python_module imagecodecs >= %{version}}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module matplotlib >= 3.3}
@@ -77,6 +77,8 @@ BuildRequires:  %{python_module zstd}
 #BuildRequires:  %%{python_module lzf}
 # The zopfli library is linked. User can pip install zopflipy, if needed.
 #BuildRequires:  %%{python_module zopflipy}
+# The lzfse library is linked. User can pip install pyliblzfse, if needed.
+#BuildRequires:  %%{python_module pyliblzfse}
 %else
 BuildRequires:  CharLS-devel
 BuildRequires:  dav1d-devel
@@ -92,13 +94,17 @@ BuildRequires:  lzham_codec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rav1e-devel
 BuildRequires:  snappy-devel
+BuildRequires:  sz2-devel
 BuildRequires:  pkgconfig(blosc)
+BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libheif)
-BuildRequires:  pkgconfig(libjpeg)
+# Beta, not available in minimum version
+#BuildRequires:  pkgconfig(libturbojpeg) >= 2.1.91
+BuildRequires:  pkgconfig(libjxl) >= 0.8
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
@@ -110,8 +116,10 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(zlib-ng)
 %ifnarch %ix86 %arm
 # Note that upstream deprecated 32-bit as a whole
-# zfp is 64 bit only.
+# 64-bit only.
 BuildRequires:  zfp-devel
+BuildRequires:  pkgconfig(SvtAv1Dec)
+BuildRequires:  pkgconfig(SvtAv1Enc)
 # 32-bit tests fail
 BuildRequires:  pkgconfig(libavif)
 %endif
@@ -139,10 +147,8 @@ dos2unix tests/test_imagecodecs.py
 cp %SOURCE1 ./
 dos2unix README.rst
 # These libraries are not linked to, (check SOURCE1)
-rm imagecodecs/licenses/LICENSE-blosc2
 rm imagecodecs/licenses/LICENSE-brunsli
 rm imagecodecs/licenses/LICENSE-jetraw
-rm imagecodecs/licenses/LICENSE-libjxl
 rm imagecodecs/licenses/LICENSE-lerc
 rm imagecodecs/licenses/LICENSE-mozjpeg
 
@@ -166,12 +172,14 @@ export INCDIR="%{_includedir}"
 %if %{with test}
 # All heif tests fail because of unsupported filetypes (openSUSE does not ship patentend codec support with libheif)
 donttest="heif"
-# no webp and lerc support in libtiff
-donttest="$donttest or (test_tiff and (webp or lerc))"
+# no webp and lerc support in libtiff, jpeg8 disabled in imagecodecs
+donttest="$donttest or (test_tiff and (webp or lerc or jpeg))"
 %ifarch %ix86 %arm32
 donttest="$donttest or spng"
 %endif
-%pytest_arch -n auto tests -rsXfE --doctest-modules %{$python_sitearch}/imagecodecs/imagecodecs.py -k "not ($donttest)"
+# no dask because of numba for python 3.11
+python311_donttest="or imagecodecs.imagecodecs"
+%pytest_arch -n auto tests -rsXfE --doctest-modules %{$python_sitearch}/imagecodecs/imagecodecs.py -k "not ($donttest ${$python_donttest})"
 %endif
 
 %if !%{with test}
