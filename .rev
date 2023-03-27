@@ -233,4 +233,16 @@
   * Add python 3.11 support</comment>
     <requestid>1056766</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>16ca49c69f13c65f9a2d92dff0dff7a2</srcmd5>
+    <version>7.1.14</version>
+    <time>1679933771</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.14:
+  * Have single GitHub workflow YAML
+  * fget_object(): create tmp_file_path string generically
+  * Add upload_snowball_objects() API
+  * checks: ignore broad-exception-raised pylint error</comment>
+    <requestid>1074502</requestid>
+  </revision>
 </revisionlist>
