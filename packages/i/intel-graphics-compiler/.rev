@@ -7,4 +7,12 @@
     <comment>intel-graphics-compiler needed for intel-opencl. This package is built without oneAPI or vector compiler support.</comment>
     <requestid>928182</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1862146bebb66bbe76de1796e17fad2</srcmd5>
+    <version>1.0.8744</version>
+    <time>1679933866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074686</requestid>
+  </revision>
 </revisionlist>

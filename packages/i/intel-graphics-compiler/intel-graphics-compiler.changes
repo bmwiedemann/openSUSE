@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 11:00:31 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix build issues for missing include of cstdio with gcc13
+  * 0001-llvm-needs-to-include-cstdio-for-gcc13.patch
+  * 0001-libspriv-needs-to-include-cstdint-for-gcc13.patch
+
+-------------------------------------------------------------------
 Fri Oct 29 10:04:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions.

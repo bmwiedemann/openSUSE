@@ -1,0 +1,25 @@
+From 13c6be4252ba82ff1790ddd9bfc157ae7e332126 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Mon, 27 Mar 2023 12:08:02 +0200
+Subject: [PATCH] libspriv needs to include cstdint for gcc13
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ IGC/AdaptorOCL/SPIRV/libSPIRV/SPIRVUtil.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/IGC/AdaptorOCL/SPIRV/libSPIRV/SPIRVUtil.h b/IGC/AdaptorOCL/SPIRV/libSPIRV/SPIRVUtil.h
+index 1076d5d..e638b98 100644
+--- a/IGC/AdaptorOCL/SPIRV/libSPIRV/SPIRVUtil.h
++++ b/IGC/AdaptorOCL/SPIRV/libSPIRV/SPIRVUtil.h
+@@ -57,6 +57,7 @@ THE SOFTWARE.
+ #include <string>
+ #include <unordered_set>
+ #include <vector>
++#include <cstdint>
+ #include "Probe/Assertion.h"
+ 
+ namespace igc_spv{
+-- 
+2.40.0
+

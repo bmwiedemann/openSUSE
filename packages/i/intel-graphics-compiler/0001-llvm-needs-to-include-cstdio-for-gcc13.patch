@@ -1,0 +1,25 @@
+From 0d8fd59f21dfa546c07b2ff9f80c56224785b775 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Mon, 27 Mar 2023 11:03:41 +0200
+Subject: [PATCH] llvm needs to include cstdio for gcc13
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ llvm/include/llvm/Support/Signals.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/include/llvm/Support/Signals.h b/llvm/include/llvm/Support/Signals.h
+index e0a18e72f..c66ea8b33 100644
+--- a/llvm/include/llvm/Support/Signals.h
++++ b/llvm/include/llvm/Support/Signals.h
+@@ -15,6 +15,7 @@
+ #define LLVM_SUPPORT_SIGNALS_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace llvm {
+ class StringRef;
+-- 
+2.40.0
+

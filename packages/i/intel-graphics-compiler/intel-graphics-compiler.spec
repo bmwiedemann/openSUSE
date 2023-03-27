@@ -1,7 +1,7 @@
 #
 # spec file for package intel-graphics-compiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,15 @@ Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_com
 Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_commit}/spirv-llvm-translator.tar.gz
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
-BuildRequires:  memory-constraints
+Patch0:         0001-llvm-needs-to-include-cstdio-for-gcc13.patch
+Patch1:         0001-libspriv-needs-to-include-cstdint-for-gcc13.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  make
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  unzip
@@ -107,6 +109,9 @@ A wrapper library around clang.
 mkdir llvm-project
 tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
 mv llvm-project/clang llvm-project/llvm/tools/
+pushd llvm-project
+%patch0 -p1
+popd
 
 unzip %{_sourcedir}/vc-intrinsics.zip
 mv vc-intrinsics* vc-intrinsics
@@ -119,6 +124,9 @@ popd
 
 mkdir igc
 tar -xzf %{_sourcedir}/igc-%{version}.tar.gz -C igc --strip-components=1
+pushd igc
+%patch1 -p1
+popd
 
 %build
 %limit_build -m 900
