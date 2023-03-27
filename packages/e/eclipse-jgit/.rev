@@ -71,4 +71,12 @@
     <comment>Allow building against apache-sshd until/including 2.9.x</comment>
     <requestid>1036206</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>bac23f27bb2bd80333e656b0a8affbf9</srcmd5>
+    <version>5.11.0</version>
+    <time>1679933805</time>
+    <user>dimstar_suse</user>
+    <comment>optional dependency xz-java must be on the classpath</comment>
+    <requestid>1074603</requestid>
+  </revision>
 </revisionlist>

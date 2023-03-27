@@ -1,7 +1,7 @@
 #
 # spec file for package jgit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,9 @@ BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-simple)
 BuildRequires:  mvn(org.tukaani:xz)
+# This is only optional dependency of commons-compress,
+# But the jgit script needs that jar on classpath
+Requires:       xz-java
 Obsoletes:      %{name}-bootstrap
 BuildArch:      noarch
 
