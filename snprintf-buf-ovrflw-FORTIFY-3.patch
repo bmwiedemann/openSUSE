@@ -1,0 +1,206 @@
+From a4640cc51fda6b5688c9b79c2d4d7d19e6d758a3 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Sat, 25 Mar 2023 11:26:36 +0100
+Subject: [PATCH 1/2] fix: snprintf buffer overflow detected by
+ -D_FORTIFY_SOURCE=3
+
+Thread no. 1 (24 frames)
+ #8 snprintf at /usr/include/bits/stdio2.h:54
+ #9 set_cmdarg at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/eval.c:7044
+ #10 apply_autocmds_group at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/autocmd.c:1843
+ #11 apply_autocmds_exarg at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/autocmd.c:1549
+ #12 readfile at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/fileio.c:617
+ #13 buf_reload at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/fileio.c:5038
+ #14 buf_check_timestamp at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/fileio.c:4952
+ #15 check_timestamps at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/fileio.c:4678
+ #16 ex_checktime at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_cmds2.c:765
+ #17 execute_cmd0 at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:1620
+ #18 do_one_cmd at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:2275
+ #19 do_cmdline at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:584
+ #20 ex_execute at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/eval.c:7727
+ #21 execute_cmd0 at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:1620
+ #22 do_one_cmd at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:2275
+ #23 do_cmdline at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:584
+ #24 do_ucmd at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/usercmd.c:1661
+ #25 execute_cmd0 at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:1612
+ #26 do_one_cmd at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:2275
+ #27 do_cmdline at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/ex_docmd.c:584
+ #28 nv_colon at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/normal.c:4058
+ #29 normal_execute at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/normal.c:1172
+ #30 state_enter at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/state.c:88
+ #31 normal_enter at /usr/src/debug/neovim-0.8.2-2.fc38.x86_64/src/nvim/normal.c:471
+
+Signed-off-by: Andreas Schneider <asn@cryptomilk.org>
+---
+ src/nvim/eval.c | 73 +++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 55 insertions(+), 18 deletions(-)
+
+diff --git a/src/nvim/eval.c b/src/nvim/eval.c
+index cd76d110887ee..c652d9507a592 100644
+--- a/src/nvim/eval.c
++++ b/src/nvim/eval.c
+@@ -6999,20 +6999,18 @@ char *set_cmdarg(exarg_T *eap, char *oldarg)
+ {
+   char *oldval = vimvars[VV_CMDARG].vv_str;
+   if (eap == NULL) {
+-    xfree(oldval);
+-    vimvars[VV_CMDARG].vv_str = oldarg;
+-    return NULL;
++    goto error;
+   }
+ 
+   size_t len = 0;
+   if (eap->force_bin == FORCE_BIN) {
+-    len = 6;
++    len += 6;  // " ++bin"
+   } else if (eap->force_bin == FORCE_NOBIN) {
+-    len = 8;
++    len += 8;  // " ++nobin"
+   }
+ 
+   if (eap->read_edit) {
+-    len += 7;
++    len += 7;  // " ++edit"
+   }
+ 
+   if (eap->force_ff != 0) {
+@@ -7027,38 +7025,77 @@ char *set_cmdarg(exarg_T *eap, char *oldarg)
+ 
+   const size_t newval_len = len + 1;
+   char *newval = xmalloc(newval_len);
++  size_t xlen = 0;
++  int rc = 0;
+ 
+   if (eap->force_bin == FORCE_BIN) {
+-    snprintf(newval, newval_len, " ++bin");
++    rc = snprintf(newval, newval_len, " ++bin");
+   } else if (eap->force_bin == FORCE_NOBIN) {
+-    snprintf(newval, newval_len, " ++nobin");
++    rc = snprintf(newval, newval_len, " ++nobin");
+   } else {
+     *newval = NUL;
+   }
++  if (rc < 0) {
++    goto error;
++  }
++  xlen += (size_t)rc;
+ 
+   if (eap->read_edit) {
+-    STRCAT(newval, " ++edit");
++    rc = snprintf(newval + xlen, newval_len - xlen, " ++edit");
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   }
+ 
+   if (eap->force_ff != 0) {
+-    snprintf(newval + strlen(newval), newval_len, " ++ff=%s",
+-             eap->force_ff == 'u' ? "unix" :
+-             eap->force_ff == 'd' ? "dos" : "mac");
++    rc = snprintf(newval + xlen,
++                  newval_len - xlen,
++                  " ++ff=%s",
++                  eap->force_ff == 'u'   ? "unix"
++                  : eap->force_ff == 'd' ? "dos" : "mac");
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   }
+   if (eap->force_enc != 0) {
+-    snprintf(newval + strlen(newval), newval_len, " ++enc=%s",
+-             eap->cmd + eap->force_enc);
++    rc = snprintf(newval + (xlen), newval_len - xlen, " ++enc=%s", eap->cmd + eap->force_enc);
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   }
++
+   if (eap->bad_char == BAD_KEEP) {
+-    STRCPY(newval + strlen(newval), " ++bad=keep");
++    rc = snprintf(newval + xlen, newval_len - xlen, " ++bad=keep");
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   } else if (eap->bad_char == BAD_DROP) {
+-    STRCPY(newval + strlen(newval), " ++bad=drop");
++    rc = snprintf(newval + xlen, newval_len - xlen, " ++bad=drop");
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   } else if (eap->bad_char != 0) {
+-    snprintf(newval + strlen(newval), newval_len, " ++bad=%c",
+-             eap->bad_char);
++    rc = snprintf(newval + xlen, newval_len - xlen, " ++bad=%c", eap->bad_char);
++    if (rc < 0) {
++      goto error;
++    }
++    xlen += (size_t)rc;
+   }
++
++  assert(xlen <= newval_len);
++
+   vimvars[VV_CMDARG].vv_str = newval;
+   return oldval;
++
++error:
++  xfree(oldval);
++  vimvars[VV_CMDARG].vv_str = oldarg;
++  return NULL;
+ }
+ 
+ /// Check if variable "name[len]" is a local variable or an argument.
+
+From cb90257a9f6c052878cf40f819bb260865fcad4d Mon Sep 17 00:00:00 2001
+From: koeleck <779769+koeleck@users.noreply.github.com>
+Date: Sun, 19 Mar 2023 22:32:37 +0100
+Subject: [PATCH 2/2] fix: invalid buffer size argument to snprintf #22729
+
+Problem:
+Crash in findtags_add_match with FORTIFY_SOURCE=3.
+Note: Fedora 38 packages are now built with -D_FORTIFY_SOURCE=3 by default.
+1. Compile with overflow protection.
+2. nvim --clean
+3. :h <Space> <Tab>
+4. `*** overflow detected ***: terminated`
+
+The additional checks for the stated buffer size and the actual bounds
+of the buffer do not match. See `___snprintf_chk` in the glibc sources:
+https://sourceware.org/git/?p=glibc.git;a=blob;f=debug/snprintf_chk.c;h=59577de076c570b81307dd31c8c73e265808cf4c;hb=HEAD#l28
+
+Solution:
+Fix arithmetic error: The length of the previously written data is now
+subtracted from the total size of the buffer, instead of added on top.
+
+close #22718
+
+Backported by: Andreas Schneider <asn@cryptomilk.org>
+---
+ src/nvim/tag.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/nvim/tag.c b/src/nvim/tag.c
+index a8d8eebb0d02b..b2f89348d449c 100644
+--- a/src/nvim/tag.c
++++ b/src/nvim/tag.c
+@@ -2029,13 +2029,14 @@ int find_tags(char *pat, int *num_matches, char ***matchesp, int flags, int minc
+             // The format is {tagname}@{lang}NUL{heuristic}NUL
+             *tagp.tagname_end = NUL;
+             len = (size_t)(tagp.tagname_end - (char_u *)tagp.tagname);
+-            mfp = xmalloc(sizeof(char) + len + 10 + ML_EXTRA + 1);
++            size_t mfp_size = sizeof(char) + len + 10 + ML_EXTRA + 1;
++            mfp = xmalloc(mfp_size);
+ 
+             p = (char_u *)mfp;
+             STRCPY(p, tagp.tagname);
+             p[len] = '@';
+             STRCPY(p + len + 1, help_lang);
+-            snprintf((char *)p + len + 1 + ML_EXTRA, STRLEN(p) + len + 1 + ML_EXTRA, "%06d",
++            snprintf((char *)p + len + 1 + ML_EXTRA, mfp_size - (len + 1 + ML_EXTRA), "%06d",
+                      help_heuristic(tagp.tagname,
+                                     match_re ? matchoff : 0, !match_no_ic)
+                      + help_pri);
