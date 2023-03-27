@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92906e1a05c293e900e3865610a12e3b</srcmd5>
+    <version>0.7.0</version>
+    <time>1679933721</time>
+    <user>dimstar_suse</user>
+    <comment>By default both docker and podman store user's registry credentials using base64 encoding. This is an insecure way to keep confidential information.
+This package provides an helper program that allows both docker and podman to store the credentials using an encrypted format.</comment>
+    <requestid>1074024</requestid>
+  </revision>
+</revisionlist>

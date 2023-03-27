@@ -1,0 +1,5 @@
+<package name="docker-credential-secretservice" project="openSUSE:Factory">
+  <title>Use native stores to keep Docker credentials safe.</title>
+  <description>Docker by default uses base64 to store the credentials for the different registries. This behavior can be changed by leveraging the credentials storage to this program, which uses libsecret in Linux.</description>
+  <devel project="Virtualization:containers" package="docker-credential-secretservice"/>
+</package>
