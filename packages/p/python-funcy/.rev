@@ -80,4 +80,17 @@
     <comment></comment>
     <requestid>1006874</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>03a76984b8a5b32118b8f4d7c8bfdd24</srcmd5>
+    <version>1.18</version>
+    <time>1679933772</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.18:
+  * added join_with(strict=)
+  * use more precise timer `timeit.default_timer` for
+    log*durations (Saugat Pachhai)
+  * preserve metadata when using autocurry as a decorator
+  * doc improvements (thx to Tim Gates)</comment>
+    <requestid>1074503</requestid>
+  </revision>
 </revisionlist>
