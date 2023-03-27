@@ -1,0 +1,11 @@
+<package name="vo-amrwbenc" project="openSUSE:Factory">
+  <title>VisualOn AMR-WB encoder library</title>
+  <description>This library contains an encoder implementation of the Adaptive
+Multi Rate Wideband (AMR-WB) audio codec. The library is based
+on a codec implementation by VisualOn as part of the Stagefright
+framework from the Google Android project.
+
+</description>
+  <devel project="multimedia:libs" package="vo-amrwbenc"/>
+  <url>http://opencore-amr.sourceforge.net/</url>
+</package>
