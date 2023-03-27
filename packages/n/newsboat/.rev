@@ -938,4 +938,25 @@ run -osc service localrun format_spec_file to fix copyright
 </comment>
     <requestid>1069344</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a8a63a6ba899beb2c750bac867d55dab</srcmd5>
+    <version>2.31</version>
+    <time>1679933799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.31:
+  Added:
+  * Operations for scrolling by half a page (`halfpageup`, `halfpagedown`) (#36)
+  * If `--log-level` is specified but `--log-file` isn't, write the log to a file
+    named after the template `newsboat_%Y-%m-%d_%H.%M.%S.log`, i.e. use the
+    current date and time
+  * _contrib/move_url.py_ for moving feeds in Newsboat's database while keeping
+    articles
+  Changed:
+  * Updated translations: Dutch, German, Italian, Polish, Russian and Ukrainian,
+    Spanish and Turkish
+  * Bumped minimum supported Rust version to 1.64.0
+  Fixed:
+  * Inability to exit search mode when `quit` is bound to `BACKSPACE` (#2336)</comment>
+    <requestid>1074593</requestid>
+  </revision>
 </revisionlist>

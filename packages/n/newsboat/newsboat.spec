@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.30.1
+Version:        2.31
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libstfl-devel >= 0.21
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.55.0
+BuildRequires:  rust >= 1.64.0
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
@@ -73,8 +73,12 @@ EOF
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./doc/examples/example-exec-script.py
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/exportOPMLWithTags.py
+sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/move_url.py
+sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' ./contrib/newsboat_reorganize.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/nbrun
 sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/vifmimg
+sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/bookmark-buku.sh
+sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/kitty-img-pager.sh
 
 %build
 export CARGO_HOME=`pwd`/cargo-home/

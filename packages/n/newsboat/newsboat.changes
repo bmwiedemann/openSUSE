@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:18:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.31:
+  Added:
+  * Operations for scrolling by half a page (`halfpageup`, `halfpagedown`) (#36)
+  * If `--log-level` is specified but `--log-file` isn't, write the log to a file
+    named after the template `newsboat_%Y-%m-%d_%H.%M.%S.log`, i.e. use the
+    current date and time
+  * _contrib/move_url.py_ for moving feeds in Newsboat's database while keeping
+    articles
+  Changed:
+  * Updated translations: Dutch, German, Italian, Polish, Russian and Ukrainian,
+    Spanish and Turkish
+  * Bumped minimum supported Rust version to 1.64.0
+  Fixed:
+  * Inability to exit search mode when `quit` is bound to `BACKSPACE` (#2336)
+
+-------------------------------------------------------------------
 Fri Mar  3 23:15:42 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 2.30.1:
