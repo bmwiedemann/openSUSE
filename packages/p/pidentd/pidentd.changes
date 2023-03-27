@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 26 18:15:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use rundir for tmpfiles 
+
+-------------------------------------------------------------------
 Tue Oct 19 09:25:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

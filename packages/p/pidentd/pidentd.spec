@@ -1,7 +1,7 @@
 #
 # spec file for package pidentd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        An Implementation of the RFC1413 Identification Server
 License:        SUSE-Public-Domain
 Group:          Productivity/Networking/System
-Url:            https://github.com/ptrrkssn/pidentd
+URL:            https://github.com/ptrrkssn/pidentd
 Source:         https://github.com/ptrrkssn/pidentd/archive/v%{version}.tar.gz
 Source1:        pidentd.service
 Patch0:         pidentd-destdir.patch
@@ -50,9 +50,9 @@ user name and other information about the connection.
 
 %build
 autoconf
-export CFLAGS="%optflags -DHAVE_IPV6"
+export CFLAGS="%{optflags} -DHAVE_IPV6"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -65,8 +65,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/identd.service
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat > %{buildroot}%{_tmpfilesdir}/pidentd.conf <<EOF
-# See tmpfiles.d(5) for details
-d %{_localstatedir}/run/identd 0755 root root - -
+d /run/identd 0755 root root - -
 EOF
 
 %pre
@@ -83,7 +82,6 @@ EOF
 %service_del_postun identd.service
 
 %files
-%defattr(-,root,root)
 %config %{_sysconfdir}/identd.conf
 %doc ChangeLog* FAQ README
 %{_tmpfilesdir}/pidentd.conf
