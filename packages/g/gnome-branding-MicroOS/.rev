@@ -71,4 +71,14 @@
 - 20230126</comment>
     <requestid>1061200</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84edfac837f23bed94f9c7bfc47f3996</srcmd5>
+    <version>20230323</version>
+    <time>1679933718</time>
+    <user>dimstar_suse</user>
+    <comment>- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323</comment>
+    <requestid>1074231</requestid>
+  </revision>
 </revisionlist>

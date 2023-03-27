@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 16:26:45 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323
+
+-------------------------------------------------------------------
 Thu Jan 26 12:02:13 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Correct the transactional-update reboot method for GNOME Desktop
