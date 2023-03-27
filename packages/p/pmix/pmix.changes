@@ -3,7 +3,8 @@ Tue Mar 21 15:27:23 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Move the requirement for pmix-runtime-config to libpmix2 and make
   it version-independent (bsc#1209473).
-- Install pmix-plugins-munge if munge is installed.
+- Install pmix-plugin-munge if munge is installed.
+- Use correct prerequisite name: pmix-plugin-munge not pmix-plugins-munge
 
 -------------------------------------------------------------------
 Mon Mar 20 13:44:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>

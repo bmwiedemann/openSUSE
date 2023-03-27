@@ -188,4 +188,13 @@
 - Install pmix-plugins-munge if munge is installed. (forwarded request 1074093 from eeich)</comment>
     <requestid>1074097</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>7ec6cb74a5938511faa21a464d3e96f9</srcmd5>
+    <version>3.2.3</version>
+    <time>1679933801</time>
+    <user>dimstar_suse</user>
+    <comment>- Install pmix-plugin-munge if munge is installed.
+- Use correct prerequisite name: pmix-plugin-munge not pmix-plugins-munge</comment>
+    <requestid>1074587</requestid>
+  </revision>
 </revisionlist>

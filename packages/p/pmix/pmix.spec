@@ -64,8 +64,8 @@ This package contains the shared library used by the PMI-X standard
 Summary:        PMI-X plugins version 1
 Group:          System/Libraries
 Requires:       libmca_common_dstore1 = %version
-Requires:       (pmix-plugins-munge = %version if munge)
-Recommends:     pmix-plugins-munge = %version
+Requires:       (pmix-plugin-munge = %version if munge)
+Recommends:     pmix-plugin-munge = %version
 # explicit requires for package libmca_common_dstore1
 # as other providers for libmca_common_dstore.so.1 exist
 
