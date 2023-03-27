@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 27 12:09:02 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix build issues for missing include of cstdio with gcc13
+  * 0001-include-cstdint-needed-when-compiling-with-gcc13.patch
+-------------------------------------------------------------------
 Wed Nov  9 12:21:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - keep icd file in /etc/OpenCL/vendors on Leap 15.x/sle-15-SPx
