@@ -1,7 +1,7 @@
 #
 # spec file for package matcha-gtk-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,15 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2021-06-02
+%define         _version            2022-11-15
 Name:           matcha-gtk-theme
-Version:        20210602
+Version:        20221115
 Release:        0
 Summary:        Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/vinceliuice/Matcha-gtk-theme
 Source:         %{url}/archive/%{_version}/Matcha-gtk-theme-%{_version}.tar.gz
-# PATCH-FEATURE-UPSTREAM allow-setting-gnome-shell-version.patch -- Allow setting the gnome shell version, so no installed one is required
-Patch0:         allow-setting-gnome-shell-version.patch
 BuildRequires:  fdupes
 
 %description
@@ -174,7 +172,6 @@ This package contains the openbox themes.
 
 %prep
 %setup -q -n Matcha-gtk-theme-%{_version}
-%patch0 -p1
 
 %build
 # nothing to build
@@ -184,7 +181,7 @@ mkdir -p %{buildroot}%{_datadir}/themes
 ./install.sh \
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 	-s old \
-%endif	
+%endif
 	-d "%{buildroot}%{_datadir}/themes"
 
 # Remove unity and index.theme files
@@ -197,118 +194,199 @@ rm -rf %{buildroot}%{_datadir}/themes/*/gtk-4.0
 
 %fdupes %{buildroot}/%{_datadir}/themes
 
+# file list snippets generated with
+# for subdir in gtk-2.0 gtk-3.0 gtk-4.0 gnome-shell metacity-1 cinnamon xfwm4 plank openbox-3 ; do echo "\n== ${subdir} ==\n" ; for i in */ ; do test -d "${i}/${subdir}" && echo "%{_datadir}/themes/${i}${subdir}/" ; done  ; done
+
 %files -n metatheme-%{_name}-common
 %license LICENSE
 %doc README.md
-%dir %{_datadir}/themes/%{_theme}-aliz/
-%dir %{_datadir}/themes/%{_theme}-azul/
-%dir %{_datadir}/themes/%{_theme}-sea/
-%dir %{_datadir}/themes/%{_theme}-dark-aliz/
-%dir %{_datadir}/themes/%{_theme}-dark-azul/
-%dir %{_datadir}/themes/%{_theme}-dark-sea/
-%dir %{_datadir}/themes/%{_theme}-light-aliz/
-%dir %{_datadir}/themes/%{_theme}-light-azul/
-%dir %{_datadir}/themes/%{_theme}-light-sea/
+%dir %{_datadir}/themes/Matcha-aliz-hdpi/
+%dir %{_datadir}/themes/Matcha-aliz-xhdpi/
+%dir %{_datadir}/themes/Matcha-aliz/
+%dir %{_datadir}/themes/Matcha-azul-hdpi/
+%dir %{_datadir}/themes/Matcha-azul-xhdpi/
+%dir %{_datadir}/themes/Matcha-azul/
+%dir %{_datadir}/themes/Matcha-dark-aliz-hdpi/
+%dir %{_datadir}/themes/Matcha-dark-aliz-xhdpi/
+%dir %{_datadir}/themes/Matcha-dark-aliz/
+%dir %{_datadir}/themes/Matcha-dark-azul-hdpi/
+%dir %{_datadir}/themes/Matcha-dark-azul-xhdpi/
+%dir %{_datadir}/themes/Matcha-dark-azul/
+%dir %{_datadir}/themes/Matcha-dark-pueril-hdpi/
+%dir %{_datadir}/themes/Matcha-dark-pueril-xhdpi/
+%dir %{_datadir}/themes/Matcha-dark-pueril/
+%dir %{_datadir}/themes/Matcha-dark-sea-hdpi/
+%dir %{_datadir}/themes/Matcha-dark-sea-xhdpi/
+%dir %{_datadir}/themes/Matcha-dark-sea/
+%dir %{_datadir}/themes/Matcha-light-aliz-hdpi/
+%dir %{_datadir}/themes/Matcha-light-aliz-xhdpi/
+%dir %{_datadir}/themes/Matcha-light-aliz/
+%dir %{_datadir}/themes/Matcha-light-azul-hdpi/
+%dir %{_datadir}/themes/Matcha-light-azul-xhdpi/
+%dir %{_datadir}/themes/Matcha-light-azul/
+%dir %{_datadir}/themes/Matcha-light-pueril-hdpi/
+%dir %{_datadir}/themes/Matcha-light-pueril-xhdpi/
+%dir %{_datadir}/themes/Matcha-light-pueril/
+%dir %{_datadir}/themes/Matcha-light-sea-hdpi/
+%dir %{_datadir}/themes/Matcha-light-sea-xhdpi/
+%dir %{_datadir}/themes/Matcha-light-sea/
+%dir %{_datadir}/themes/Matcha-pueril-hdpi/
+%dir %{_datadir}/themes/Matcha-pueril-xhdpi/
+%dir %{_datadir}/themes/Matcha-pueril/
+%dir %{_datadir}/themes/Matcha-sea-hdpi/
+%dir %{_datadir}/themes/Matcha-sea-xhdpi/
+%dir %{_datadir}/themes/Matcha-sea/
 
 %files -n gtk2-metatheme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/gtk-2.0/
-%{_datadir}/themes/%{_theme}-azul/gtk-2.0/
-%{_datadir}/themes/%{_theme}-sea/gtk-2.0/
-%{_datadir}/themes/%{_theme}-light-aliz/gtk-2.0/
-%{_datadir}/themes/%{_theme}-light-azul/gtk-2.0/
-%{_datadir}/themes/%{_theme}-light-sea/gtk-2.0/
-%{_datadir}/themes/%{_theme}-dark-aliz/gtk-2.0/
-%{_datadir}/themes/%{_theme}-dark-azul/gtk-2.0/
-%{_datadir}/themes/%{_theme}-dark-sea/gtk-2.0/
+%{_datadir}/themes/Matcha-aliz/gtk-2.0/
+%{_datadir}/themes/Matcha-azul/gtk-2.0/
+%{_datadir}/themes/Matcha-dark-aliz/gtk-2.0/
+%{_datadir}/themes/Matcha-dark-azul/gtk-2.0/
+%{_datadir}/themes/Matcha-dark-pueril/gtk-2.0/
+%{_datadir}/themes/Matcha-dark-sea/gtk-2.0/
+%{_datadir}/themes/Matcha-light-aliz/gtk-2.0/
+%{_datadir}/themes/Matcha-light-azul/gtk-2.0/
+%{_datadir}/themes/Matcha-light-pueril/gtk-2.0/
+%{_datadir}/themes/Matcha-light-sea/gtk-2.0/
+%{_datadir}/themes/Matcha-pueril/gtk-2.0/
+%{_datadir}/themes/Matcha-sea/gtk-2.0/
 
 %files -n gtk3-metatheme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/gtk-3.0/
-%{_datadir}/themes/%{_theme}-azul/gtk-3.0/
-%{_datadir}/themes/%{_theme}-sea/gtk-3.0/
-%{_datadir}/themes/%{_theme}-light-aliz/gtk-3.0/
-%{_datadir}/themes/%{_theme}-light-azul/gtk-3.0/
-%{_datadir}/themes/%{_theme}-light-sea/gtk-3.0/
-%{_datadir}/themes/%{_theme}-dark-aliz/gtk-3.0/
-%{_datadir}/themes/%{_theme}-dark-azul/gtk-3.0/
-%{_datadir}/themes/%{_theme}-dark-sea/gtk-3.0/
+%{_datadir}/themes/Matcha-aliz/gtk-3.0/
+%{_datadir}/themes/Matcha-azul/gtk-3.0/
+%{_datadir}/themes/Matcha-dark-aliz/gtk-3.0/
+%{_datadir}/themes/Matcha-dark-azul/gtk-3.0/
+%{_datadir}/themes/Matcha-dark-pueril/gtk-3.0/
+%{_datadir}/themes/Matcha-dark-sea/gtk-3.0/
+%{_datadir}/themes/Matcha-light-aliz/gtk-3.0/
+%{_datadir}/themes/Matcha-light-azul/gtk-3.0/
+%{_datadir}/themes/Matcha-light-pueril/gtk-3.0/
+%{_datadir}/themes/Matcha-light-sea/gtk-3.0/
+%{_datadir}/themes/Matcha-pueril/gtk-3.0/
+%{_datadir}/themes/Matcha-sea/gtk-3.0/
 
 %if 0%{?suse_version} > 1500
 %files -n gtk4-metatheme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/gtk-4.0/
-%{_datadir}/themes/%{_theme}-azul/gtk-4.0/
-%{_datadir}/themes/%{_theme}-sea/gtk-4.0/
-%{_datadir}/themes/%{_theme}-light-aliz/gtk-4.0/
-%{_datadir}/themes/%{_theme}-light-azul/gtk-4.0/
-%{_datadir}/themes/%{_theme}-light-sea/gtk-4.0/
-%{_datadir}/themes/%{_theme}-dark-aliz/gtk-4.0/
-%{_datadir}/themes/%{_theme}-dark-azul/gtk-4.0/
-%{_datadir}/themes/%{_theme}-dark-sea/gtk-4.0/
+%{_datadir}/themes/Matcha-aliz/gtk-4.0/
+%{_datadir}/themes/Matcha-azul/gtk-4.0/
+%{_datadir}/themes/Matcha-dark-aliz/gtk-4.0/
+%{_datadir}/themes/Matcha-dark-azul/gtk-4.0/
+%{_datadir}/themes/Matcha-dark-pueril/gtk-4.0/
+%{_datadir}/themes/Matcha-dark-sea/gtk-4.0/
+%{_datadir}/themes/Matcha-light-aliz/gtk-4.0/
+%{_datadir}/themes/Matcha-light-azul/gtk-4.0/
+%{_datadir}/themes/Matcha-light-pueril/gtk-4.0/
+%{_datadir}/themes/Matcha-light-sea/gtk-4.0/
+%{_datadir}/themes/Matcha-pueril/gtk-4.0/
+%{_datadir}/themes/Matcha-sea/gtk-4.0/
 %endif
 
 %files -n gnome-shell-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/gnome-shell/
-%{_datadir}/themes/%{_theme}-azul/gnome-shell/
-%{_datadir}/themes/%{_theme}-sea/gnome-shell/
-%{_datadir}/themes/%{_theme}-light-aliz/gnome-shell/
-%{_datadir}/themes/%{_theme}-light-azul/gnome-shell/
-%{_datadir}/themes/%{_theme}-light-sea/gnome-shell/
-%{_datadir}/themes/%{_theme}-dark-aliz/gnome-shell/
-%{_datadir}/themes/%{_theme}-dark-azul/gnome-shell/
-%{_datadir}/themes/%{_theme}-dark-sea/gnome-shell/
+%{_datadir}/themes/Matcha-aliz/gnome-shell/
+%{_datadir}/themes/Matcha-azul/gnome-shell/
+%{_datadir}/themes/Matcha-dark-aliz/gnome-shell/
+%{_datadir}/themes/Matcha-dark-azul/gnome-shell/
+%{_datadir}/themes/Matcha-dark-pueril/gnome-shell/
+%{_datadir}/themes/Matcha-dark-sea/gnome-shell/
+%{_datadir}/themes/Matcha-light-aliz/gnome-shell/
+%{_datadir}/themes/Matcha-light-azul/gnome-shell/
+%{_datadir}/themes/Matcha-light-pueril/gnome-shell/
+%{_datadir}/themes/Matcha-light-sea/gnome-shell/
+%{_datadir}/themes/Matcha-pueril/gnome-shell/
+%{_datadir}/themes/Matcha-sea/gnome-shell/
 
 %files -n metacity-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/metacity-1/
-%{_datadir}/themes/%{_theme}-azul/metacity-1/
-%{_datadir}/themes/%{_theme}-sea/metacity-1/
-%{_datadir}/themes/%{_theme}-light-aliz/metacity-1/
-%{_datadir}/themes/%{_theme}-light-azul/metacity-1/
-%{_datadir}/themes/%{_theme}-light-sea/metacity-1/
-%{_datadir}/themes/%{_theme}-dark-aliz/metacity-1/
-%{_datadir}/themes/%{_theme}-dark-azul/metacity-1/
-%{_datadir}/themes/%{_theme}-dark-sea/metacity-1/
+%{_datadir}/themes/Matcha-aliz/metacity-1/
+%{_datadir}/themes/Matcha-azul/metacity-1/
+%{_datadir}/themes/Matcha-dark-aliz/metacity-1/
+%{_datadir}/themes/Matcha-dark-azul/metacity-1/
+%{_datadir}/themes/Matcha-dark-pueril/metacity-1/
+%{_datadir}/themes/Matcha-dark-sea/metacity-1/
+%{_datadir}/themes/Matcha-light-aliz/metacity-1/
+%{_datadir}/themes/Matcha-light-azul/metacity-1/
+%{_datadir}/themes/Matcha-light-pueril/metacity-1/
+%{_datadir}/themes/Matcha-light-sea/metacity-1/
+%{_datadir}/themes/Matcha-pueril/metacity-1/
+%{_datadir}/themes/Matcha-sea/metacity-1/
 
 %files -n cinnamon-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/cinnamon/
-%{_datadir}/themes/%{_theme}-azul/cinnamon/
-%{_datadir}/themes/%{_theme}-sea/cinnamon/
-%{_datadir}/themes/%{_theme}-light-aliz/cinnamon/
-%{_datadir}/themes/%{_theme}-light-azul/cinnamon/
-%{_datadir}/themes/%{_theme}-light-sea/cinnamon/
-%{_datadir}/themes/%{_theme}-dark-aliz/cinnamon/
-%{_datadir}/themes/%{_theme}-dark-azul/cinnamon/
-%{_datadir}/themes/%{_theme}-dark-sea/cinnamon/
+%{_datadir}/themes/Matcha-aliz/cinnamon/
+%{_datadir}/themes/Matcha-azul/cinnamon/
+%{_datadir}/themes/Matcha-dark-aliz/cinnamon/
+%{_datadir}/themes/Matcha-dark-azul/cinnamon/
+%{_datadir}/themes/Matcha-dark-pueril/cinnamon/
+%{_datadir}/themes/Matcha-dark-sea/cinnamon/
+%{_datadir}/themes/Matcha-light-aliz/cinnamon/
+%{_datadir}/themes/Matcha-light-azul/cinnamon/
+%{_datadir}/themes/Matcha-light-pueril/cinnamon/
+%{_datadir}/themes/Matcha-light-sea/cinnamon/
+%{_datadir}/themes/Matcha-pueril/cinnamon/
+%{_datadir}/themes/Matcha-sea/cinnamon/
 
 %files -n xfwm4-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/xfwm4/
-%{_datadir}/themes/%{_theme}-azul/xfwm4/
-%{_datadir}/themes/%{_theme}-sea/xfwm4/
-%{_datadir}/themes/%{_theme}-light-aliz/xfwm4/
-%{_datadir}/themes/%{_theme}-light-azul/xfwm4/
-%{_datadir}/themes/%{_theme}-light-sea/xfwm4/
-%{_datadir}/themes/%{_theme}-dark-aliz/xfwm4/
-%{_datadir}/themes/%{_theme}-dark-azul/xfwm4/
-%{_datadir}/themes/%{_theme}-dark-sea/xfwm4/
+%{_datadir}/themes/Matcha-aliz-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-aliz-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-aliz/xfwm4/
+%{_datadir}/themes/Matcha-azul-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-azul-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-azul/xfwm4/
+%{_datadir}/themes/Matcha-dark-aliz-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-aliz-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-aliz/xfwm4/
+%{_datadir}/themes/Matcha-dark-azul-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-azul-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-azul/xfwm4/
+%{_datadir}/themes/Matcha-dark-pueril-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-pueril-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-pueril/xfwm4/
+%{_datadir}/themes/Matcha-dark-sea-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-sea-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-dark-sea/xfwm4/
+%{_datadir}/themes/Matcha-light-aliz-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-aliz-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-aliz/xfwm4/
+%{_datadir}/themes/Matcha-light-azul-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-azul-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-azul/xfwm4/
+%{_datadir}/themes/Matcha-light-pueril-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-pueril-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-pueril/xfwm4/
+%{_datadir}/themes/Matcha-light-sea-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-sea-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-light-sea/xfwm4/
+%{_datadir}/themes/Matcha-pueril-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-pueril-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-pueril/xfwm4/
+%{_datadir}/themes/Matcha-sea-hdpi/xfwm4/
+%{_datadir}/themes/Matcha-sea-xhdpi/xfwm4/
+%{_datadir}/themes/Matcha-sea/xfwm4/
 
 %files -n plank-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/plank/
-%{_datadir}/themes/%{_theme}-azul/plank/
-%{_datadir}/themes/%{_theme}-sea/plank/
-%{_datadir}/themes/%{_theme}-light-aliz/plank/
-%{_datadir}/themes/%{_theme}-light-azul/plank/
-%{_datadir}/themes/%{_theme}-light-sea/plank/
-%{_datadir}/themes/%{_theme}-dark-aliz/plank/
-%{_datadir}/themes/%{_theme}-dark-azul/plank/
-%{_datadir}/themes/%{_theme}-dark-sea/plank/
+%{_datadir}/themes/Matcha-aliz/plank/
+%{_datadir}/themes/Matcha-azul/plank/
+%{_datadir}/themes/Matcha-dark-aliz/plank/
+%{_datadir}/themes/Matcha-dark-azul/plank/
+%{_datadir}/themes/Matcha-dark-pueril/plank/
+%{_datadir}/themes/Matcha-dark-sea/plank/
+%{_datadir}/themes/Matcha-light-aliz/plank/
+%{_datadir}/themes/Matcha-light-azul/plank/
+%{_datadir}/themes/Matcha-light-pueril/plank/
+%{_datadir}/themes/Matcha-light-sea/plank/
+%{_datadir}/themes/Matcha-pueril/plank/
+%{_datadir}/themes/Matcha-sea/plank/
 
 %files -n openbox-theme-%{_name}
-%{_datadir}/themes/%{_theme}-aliz/openbox-3/
-%{_datadir}/themes/%{_theme}-azul/openbox-3/
-%{_datadir}/themes/%{_theme}-sea/openbox-3/
-%{_datadir}/themes/%{_theme}-light-aliz/openbox-3/
-%{_datadir}/themes/%{_theme}-light-azul/openbox-3/
-%{_datadir}/themes/%{_theme}-light-sea/openbox-3/
-%{_datadir}/themes/%{_theme}-dark-aliz/openbox-3/
-%{_datadir}/themes/%{_theme}-dark-azul/openbox-3/
-%{_datadir}/themes/%{_theme}-dark-sea/openbox-3/
+%{_datadir}/themes/Matcha-aliz/openbox-3/
+%{_datadir}/themes/Matcha-azul/openbox-3/
+%{_datadir}/themes/Matcha-dark-aliz/openbox-3/
+%{_datadir}/themes/Matcha-dark-azul/openbox-3/
+%{_datadir}/themes/Matcha-dark-pueril/openbox-3/
+%{_datadir}/themes/Matcha-dark-sea/openbox-3/
+%{_datadir}/themes/Matcha-light-aliz/openbox-3/
+%{_datadir}/themes/Matcha-light-azul/openbox-3/
+%{_datadir}/themes/Matcha-light-pueril/openbox-3/
+%{_datadir}/themes/Matcha-light-sea/openbox-3/
+%{_datadir}/themes/Matcha-pueril/openbox-3/
+%{_datadir}/themes/Matcha-sea/openbox-3/
 
 %changelog
