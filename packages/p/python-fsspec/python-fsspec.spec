@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
 %bcond_with test
 %endif
 Name:           python-fsspec%{psuffix}
-Version:        2022.11.0
+Version:        2023.3.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fuse
@@ -54,9 +54,12 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module distributed}
+# no numba and distributed for py311 yet
+BuildRequires:  %{python_module distributed if %python-base < 3.11}
+BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
+BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module panel}
@@ -101,6 +104,8 @@ donttest+=" or test_not_cached"
 donttest+=" or test_dbfs"
 # wants to connect to ftp.fau.de
 donttest+=" or test_find"
+# does not like the '.' from the version in the build path
+donttest+=" or (test_local and test_make_path_posix)"
 %pytest -rfEs  -k "not ($donttest)"
 %endif
 

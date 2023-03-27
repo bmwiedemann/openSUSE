@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:09:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.0
+  ## Enhancements
+  * #1201, add directory FS to the registry and constructable from URLs
+  * #1194, allow JSON for setting dict-like kwargs in the config
+  * #1181, give arrow FS proper place in the registry
+  * #1178, add experimental background-thread buffering cache
+  * #1162, make ZipFS writable
+  ## Fixes
+  * #1202, fix on_error="omit" when using caching's cat
+  * #1199, 1163, get/put/cp consistency and empty directories
+  * #1197, 1183 use bytes for setting value on mapper using numpy
+  * #1191, clean up open files in spec get_file
+  * #1164, pass on kwargs correctly to http
+  ## Other
+  * #1186, make seekable=True default for pyarrow files
+  * #1184, 1185, set minimum python version to 3.8
+- Release 2023.1.0
+  ## Enhancements
+  * experimental DFReferenceFileSystem (#1157, 1138)
+  * pyarrow seeking (#1154)
+  * tar thread safety (#1132)
+  * fsid method (#1122)
+  ## Fixes
+  * ReferenceFS order fix (#1158)
+  * fix du and maxdepth (#1128, 1151)
+  * http ranges (#1141)
+  ## Other
+  * coverage on referenceFS (#1133, 1123)
+  * docs (#1152, 1150)
+  * remove code duplication in unchain (#1143, 1156, 1121)
+- Skip testing distributed for Python 3.11: no numba yet
+
+-------------------------------------------------------------------
 Sat Nov 19 14:48:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.11.0

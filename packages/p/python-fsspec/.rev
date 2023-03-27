@@ -237,4 +237,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>1036969</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>03d4dae37d3f6737c302dfa85bd5ec7a</srcmd5>
+    <version>2023.3.0</version>
+    <time>1679933736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074477</requestid>
+  </revision>
 </revisionlist>
