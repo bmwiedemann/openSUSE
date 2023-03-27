@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 27 06:42:35 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.6.1:
+  * fix: expose error instance path instead of schema path 
+  * support disabling ssl validation in openapi2jsonschema.py 
+  * Try to expose JSON paths 
+  * feat: support to set an alternative image owner 
+  * Documenting Helm support via 3rd party repo 
+  * Update LICENSE
+  * Add opencontainers label 
+  * Add informations how to use Kubeconform in Gitlab-CI
+
+-------------------------------------------------------------------
 Mon Dec 12 12:33:04 UTC 2022 - rombert@apache.org
 
 - Update to version 0.5.0:

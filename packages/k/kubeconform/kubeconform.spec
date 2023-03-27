@@ -1,7 +1,7 @@
 #
 # spec file for package kubeconform
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider_prefix github.com/yannh/kubeconform
 %global import_path     %{provider_prefix}
 
 Name:           kubeconform
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        A fast Kubernetes manifests validator, with support for custom resources
 License:        Apache-2.0
@@ -42,7 +43,7 @@ improvements:
   of Kubernetes.
 
 %prep
-%setup -qa1
+%autosetup -a1
 
 %build
 go build -buildmode=pie -mod=vendor -o bin/ .../.
