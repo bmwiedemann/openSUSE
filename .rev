@@ -1050,4 +1050,14 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>1070733</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>920f835b4e1536dab34393050e20a061</srcmd5>
+    <version>4.1.5</version>
+    <time>1679933716</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.1.5
+  - Add support for configuration file snippets
+</comment>
+    <requestid>1073957</requestid>
+  </revision>
 </revisionlist>
