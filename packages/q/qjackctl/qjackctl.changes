@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:07:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.10
+  - Setup: revert to previous settings when dismissing the dialog.
+  - Graph: Attempt to make port labels as short as possible.
+  - Graph: introducing touch pinch-gesture for zooming.
+
+-------------------------------------------------------------------
 Sat Dec 31 09:44:12 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.9
