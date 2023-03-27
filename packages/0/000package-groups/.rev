@@ -1621,4 +1621,23 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1202372</comment>
     <requestid>1069589</requestid>
   </revision>
+  <revision rev="227" vrev="225">
+    <srcmd5>10af31b2eed2111a889ea1167ca42f42</srcmd5>
+    <version>unknown</version>
+    <time>1679917854</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="228" vrev="226">
+    <srcmd5>2a9415b7002cc5d42461dbff77dffcf5</srcmd5>
+    <version>unknown</version>
+    <time>1679918135</time>
+    <user>dimstar_suse</user>
+    <comment>Drop repo migration code</comment>
+  </revision>
+  <revision rev="229" vrev="227">
+    <srcmd5>f5ca0decc258f1bf2a84aa1bd18a4ebc</srcmd5>
+    <version>unknown</version>
+    <time>1679919538</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

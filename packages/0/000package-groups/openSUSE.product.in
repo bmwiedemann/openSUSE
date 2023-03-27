@@ -90,11 +90,9 @@
            use_required="true" use_recommended="true" use_suggested="false" use_undecided="true">
 
       <archsets>
-        <!-- for this we generate a medium -->
-        <archset ref="i586"/>
         <!-- for this we generate a product file -->
         <archset ref="x86_64"/>
-        <!-- so we get 2 product files on this medium -->
+        <!-- so we get 1 product file on this medium -->
       </archsets>
       <!-- we put all packages (even suggested) on the media for the two groups below -->
       <metadata>
@@ -119,9 +117,6 @@
       <archsets>
         <archset ref="x86_64"/>
       </archsets>
-      <archsets>
-        <archset ref="i586"/>
-      </archsets>
       <metadata>
         <package name="skelcd-installer-net-openSUSE"/>
         <package name="skelcd-openSUSE"/>
@@ -133,15 +128,11 @@
            run_media_check="true" use_required="true" use_recommended="true" use_suggested="false">
 
       <use group="dvd" create_pattern="false"/>
-      <use group="dvd.i586" create_pattern="false"/>
+      <!--use group="dvd.i586" create_pattern="false"/-->
       <use group="dvd.x86_64" create_pattern="false"/>
       <use group="i586_additional" create_pattern="false"/>
       <use group="kernel_pae_special" create_pattern="false"/>
 
-      <archsets>
-        <!-- for this we generate a medium -->
-        <archset ref="i586"/>
-      </archsets>
       <archsets>
         <archset ref="x86_64"/>
       </archsets>

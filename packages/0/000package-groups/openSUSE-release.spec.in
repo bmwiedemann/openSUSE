@@ -29,11 +29,6 @@ Group:          System/Fhs
 Source100:      weakremovers.inc
 BuildRequires:  skelcd-control-openSUSE
 BuildRequires:  skelcd-openSUSE
-%ifarch %ix86
-# on ix86 we need sed to rewrite the zypper repo files for the i586 port split
-Requires:       %{_bindir}/sed
-Requires:       %{_bindir}/grep
-%endif
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Tumbleweed
 Suggests:       java-11-openjdk
@@ -263,14 +258,6 @@ if [ -x %{_sbindir}/issue-generator ]; then
     fi
     %{_sbindir}/issue-generator || :
 fi
-# on i586, we are migrating from the main TW repo to the external ports repo
-%ifarch %ix86
-  
-  if ! %{_bindir}/grep -q "ports/i586" /etc/zypp/repos.d/*; then
-    %{_bindir}/sed -i "s|opensuse.org/tumbleweed/repo|opensuse.org/ports/i586/tumbleweed/repo|gi" /etc/zypp/repos.d/* || :
-    %{_bindir}/sed -i "s|opensuse.org/update/tumbleweed|opensuse.org/ports/i586/update/tumbleweed|gi" /etc/zypp/repos.d/* || :
-  fi
-%endif
 
 %files
 %defattr(644,root,root,755)
