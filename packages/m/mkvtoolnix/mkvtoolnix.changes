@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 26 18:27:37 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>:
+
+- Update to version 75.0.0
+  New features and enhancements:
+  * mkvmerge: MP4 reader: mkvmerge will now read Timed Text
+    (FourCC `tx3g`) subtitle tracks & convert them on the fly to
+    Matroska's simple text subtitle format (`S_TEXT/UTF8`; text
+    only, no styles).
+  Bug fixes:
+  * all: switched back to using `boost::filesystem` functions
+    for creating directories instead of the ones introduced to
+    work around bugs in `std::filesystem`. The latter didn't
+    work correctly with UNC paths after the switch to
+    `boost::filesystem::path` in v74.
+  * mkvmerge: VobSub reader: mkvmerge will now probe the `.idx`
+    file during VobSub identification even if the `.sub` file is
+    passed as the source. Avoids mis-detection of the `.sub` as
+    MPEG program streams.
+  * MKVToolNix GUI: the GUI could abort with an exception on
+    startup while looking for the `mkvmerge` or `mediainfo`
+    executables due to inaccessible folders.
+  * MKVToolNix GUI: preferences: when opening the preferences
+    the first time the UI might pre-select the first entry in
+    the list of interface languages if the operating system's
+    language is not available for MKVToolNix. This might also
+    happen on Linux if e.g. `en_GB` is set, even though `en_US`
+    is available. Now English (`en_US`) will be selected instead.
+  * MKVToolNix GUI: multiplexer: when adding files the GUI has
+    special handling for chapter/tags/segment info files. This is
+    done by comparing their content to certain patterns. This
+    recognition could wrongfully be  triggered if any such file
+    was embedded in another file verbatim, e.g. with a chapter
+    XML file attachment in a Matroska file. When trying to add
+    that Matroska file, the GUI would treat it as a chapter file
+    instead of a regular one. This content-based detection was
+    fixed.
+  Other changes:
+  * mkvpropedit, GUI's header editor: removed support for the
+    deprecated "minimum cache" & "maximum cache" track header
+    elements.
+
+-------------------------------------------------------------------
 Thu Mar 16 07:31:11 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Requires qt6-multimedia in Leap 15.5
