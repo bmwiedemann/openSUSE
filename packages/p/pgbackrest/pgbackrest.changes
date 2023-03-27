@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:13:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.45
+  + Bug Fix: Skip writing recovery.signal by default for restores of offline backups. 
+  + Features: Block incremental backup (BETA)
+  + Improvements: Keep only one all-default group index.
+  + Documentation improvements
+
+-------------------------------------------------------------------
 Mon Feb  6 07:53:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.44

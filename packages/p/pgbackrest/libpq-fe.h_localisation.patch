@@ -1,7 +1,7 @@
-Index: pgbackrest-release-2.44/src/configure
+Index: pgbackrest-release-2.45/src/configure
 ===================================================================
---- pgbackrest-release-2.44.orig/src/configure
-+++ pgbackrest-release-2.44/src/configure
+--- pgbackrest-release-2.45.orig/src/configure
++++ pgbackrest-release-2.45/src/configure
 @@ -3603,12 +3603,12 @@ then :
  printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
  
@@ -17,10 +17,10 @@ Index: pgbackrest-release-2.44/src/configure
  fi
  
  
-Index: pgbackrest-release-2.44/src/postgres/client.c
+Index: pgbackrest-release-2.45/src/postgres/client.c
 ===================================================================
---- pgbackrest-release-2.44.orig/src/postgres/client.c
-+++ pgbackrest-release-2.44/src/postgres/client.c
+--- pgbackrest-release-2.45.orig/src/postgres/client.c
++++ pgbackrest-release-2.45/src/postgres/client.c
 @@ -3,7 +3,7 @@ Postgres Client
  ***********************************************************************************************************************************/
  #include "build.auto.h"
