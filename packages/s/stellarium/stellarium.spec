@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        1.2
+Version:        23.1
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -32,17 +32,16 @@ URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM - https://github.com/Stellarium/stellarium/pull/2970
-Patch1:         stellarium-gh2970.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libnova-devel
 BuildRequires:  libxkbcommon-devel >= 0.5.0
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libindi)
+BuildRequires:  pkgconfig(libindi) < 2.0.0
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
 BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
@@ -95,6 +94,8 @@ binoculars or a small telescope.
 %autosetup -p1
 
 %build
+# Require at least 4096 MB of memory per job
+%limit_build -m 4096
 export QT_HASH_SEED=0
 %cmake	-DCMAKE_BUILD_TYPE=Release \
 	-DCPM_USE_LOCAL_PACKAGES=yes \

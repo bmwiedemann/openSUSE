@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:56:08 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 23.1:
+  * Fixes CVE-2023-28371
+  * Changelog: https://github.com/Stellarium/stellarium/releases/tag/v23.1
+- Remove upstreamed patch:
+  * stellarium-gh2970.patch
+
+-------------------------------------------------------------------
+Mon Mar  6 12:46:32 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update _constraints to require at least 8 GB of disk and 16 GB of
+  memory. Also require at least 4 GB of memory per build job to prevent
+  running out of memory on build servers with lots of cores/threads.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:15:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add dependency on the newly introduced INDI 1.x package.
+  Since Stellarium doesn't support INDI 2.x, we need to depend on
+  this temporary package until INDI 2.x is fully supported.
+  (boo#1207852)
+
+-------------------------------------------------------------------
 Tue Jan 10 10:18:16 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64 with openGL ES 2:
