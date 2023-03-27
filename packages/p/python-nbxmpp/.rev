@@ -383,4 +383,16 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
     <comment></comment>
     <requestid>1063533</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a7856ca8168ebdd9607f37bd77aa8157</srcmd5>
+    <version>4.2.2</version>
+    <time>1679933740</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.2:
+  * HTTP: Reset attributes on redirect
+
+- Update to version 4.2.1:
+  * HTTP: Make sure streams are closed only once.</comment>
+    <requestid>1074496</requestid>
+  </revision>
 </revisionlist>

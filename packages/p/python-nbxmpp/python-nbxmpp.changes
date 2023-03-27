@@ -1,5 +1,17 @@
 -------------------------------------------------------------------
-Sun Feb 5 21:37:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+Sun Mar 26 19:06:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * HTTP: Reset attributes on redirect
+
+-------------------------------------------------------------------
+Thu Mar 23 15:00:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.1:
+  * HTTP: Make sure streams are closed only once.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:37:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.2.0:
   * Add support for XEP-0461: Message Replies.
