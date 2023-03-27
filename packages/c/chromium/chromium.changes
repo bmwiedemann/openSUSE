@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:40:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update gcc13-fix.patch with few fixes required for aarch64,
+  borrowed from Fedora's gcc13 patch
+  
+
+-------------------------------------------------------------------
 Wed Mar 22 09:03:45 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 111.0.5563.110 (boo#1209598)
