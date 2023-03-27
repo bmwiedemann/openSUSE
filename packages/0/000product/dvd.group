@@ -1844,6 +1844,7 @@
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgit2-1_6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglade-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3457,6 +3458,7 @@
     <package name="python310-atspi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-attrs" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="python310-cached-property" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-chardet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3529,6 +3531,7 @@
     <package name="python310-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python310-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-pyparsing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
