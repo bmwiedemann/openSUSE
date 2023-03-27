@@ -17,7 +17,7 @@
 
 
 Name:           python-line_profiler
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause

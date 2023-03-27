@@ -97,4 +97,14 @@
 - Due to build system change, massively simplify %build.</comment>
     <requestid>1066713</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a05819f6e82871fb8c67f038441e0eec</srcmd5>
+    <version>4.0.3</version>
+    <time>1679933776</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.3:
+  * FIX: Stop requiring bleeding-edge Cython unless necesasry
+    (for Python 3.12).  #206</comment>
+    <requestid>1074511</requestid>
+  </revision>
 </revisionlist>
