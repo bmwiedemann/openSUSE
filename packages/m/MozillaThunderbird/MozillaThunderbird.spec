@@ -206,6 +206,7 @@ Patch19:        mozilla-silence-no-return-type.patch
 Patch20:        mozilla-bmo531915.patch
 Patch21:        one_swizzle_to_rule_them_all.patch
 Patch22:        svg-rendering.patch
+Patch23:        gcc13-fix.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -294,6 +295,7 @@ fi
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
 %endif
 
 %build

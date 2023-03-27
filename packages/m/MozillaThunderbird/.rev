@@ -4778,4 +4778,12 @@ I cannot test locally unfortunately.
 </comment>
     <requestid>1072474</requestid>
   </revision>
+  <revision rev="306" vrev="2">
+    <srcmd5>47f90aaa755fa2163712c92679abeaee</srcmd5>
+    <version>102.9.0</version>
+    <time>1679933746</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc13-fix.patch to support current Tumbleweed</comment>
+    <requestid>1074474</requestid>
+  </revision>
 </revisionlist>
