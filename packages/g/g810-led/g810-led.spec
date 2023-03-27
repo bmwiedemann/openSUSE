@@ -1,7 +1,7 @@
 #
 # spec file for package g810-led
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/MatMoul/g810-led/wiki
 Source0:        https://github.com/MatMoul/g810-led/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         harden_g810-led-reboot.service.patch
 Patch1:         harden_g810-led.service.patch
+Patch2:         help.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libhidapi-devel
 BuildRequires:  pkgconfig
@@ -49,6 +50,7 @@ Compatible keyboards:
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %make_build

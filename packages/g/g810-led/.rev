@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1041933</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6efdafb22bd33752e21490a52a5d7cb1</srcmd5>
+    <version>0.4.3</version>
+    <time>1679933780</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compilation error with GCC13:
+  * help.patch
+</comment>
+    <requestid>1074520</requestid>
+  </revision>
 </revisionlist>

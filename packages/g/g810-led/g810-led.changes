@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 26 11:39:29 UTC 2023 - Olav Reinert <seroton10@gmail.com>
+
+- Fix compilation error with GCC13:
+  * help.patch
+
+-------------------------------------------------------------------
 Mon Dec  5 15:26:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.3:
