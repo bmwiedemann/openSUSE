@@ -3295,7 +3295,6 @@ unsorted:
   - droidcam 
   - droidcam-cli 
   - dropbox-cli 
-  - drops 
   - dropwatch 
   - drumstick 
   - drumstick-lang 
@@ -9202,6 +9201,8 @@ unsorted:
   - lash 
   - lash-devel 
   - last-resort-font 
+  - lastlog2 
+  - lastlog2-devel 
   - lastpass-cli 
   - laszip-devel 
   - latencytop 
@@ -11795,7 +11796,6 @@ unsorted:
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2 
-  - libgit2-1_6 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -12667,6 +12667,7 @@ unsorted:
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
+  - liblastlog2-0 
   - liblaszip8 
   - liblaszip_api8 
   - liblayout-javadoc 
@@ -23545,7 +23546,6 @@ unsorted:
   - python310-buttplug 
   - python310-bytecode 
   - python310-cPyparsing 
-  - python310-cached-property 
   - python310-cachelib 
   - python310-cachetools 
   - python310-cachey 
@@ -25052,7 +25052,6 @@ unsorted:
   - python310-pygame-devel 
   - python310-pygeos 
   - python310-pygerrit2 
-  - python310-pygit2 
   - python310-pyglet 
   - python310-pygments-ansi-color 
   - python310-pygments-pytest 
@@ -49019,6 +49018,8 @@ unsorted:
   - xfce4-dev-tools 
   - xfce4-diskperf-plugin 
   - xfce4-diskperf-plugin-lang 
+  - xfce4-docklike-plugin 
+  - xfce4-docklike-plugin-lang 
   - xfce4-eyes-plugin 
   - xfce4-eyes-plugin-lang 
   - xfce4-fsguard-plugin 
