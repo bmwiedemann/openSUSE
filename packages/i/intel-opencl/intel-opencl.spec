@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
 Patch0:         0001-Include-memory-in-generate_cpp_array.cpp.patch
+Patch1:         0001-include-cstdint-needed-when-compiling-with-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libigc-devel
