@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Mar 13 03:47:53 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Adjust optional-disable-docs.patch for new version
+- Add _service and vendor.tar.gz to to download, verify, and vendor Go module dependency sources
+- Drop support for openSUSE Leap 15.4 as it cannot provide go1.20
+- Update to 0.27.0 & 0.27.1:
+  * Fix modify_font not working for strikethrough position (#5946)
+  * Fix a regression causing the edit-in-kitty command not working
+    if kitten is not added to PATH (#5956)
+  * icat kitten: Fix a regression that broke display of animated
+    GIFs over SSH (#5958)
+  * Wayland GNOME: Fix for ibus not working when using XWayland (#5967)
+  * Fix regression in previous release that caused incorrect entries
+    in terminfo for modifier+F3 key combinations (#5970)
+  * Bring back the deprecated and removed kitty +complete and delegate
+    it to kitten for backward compatibility (#5977)
+  * Bump the version of Go needed to build kitty to 1.20 so we can
+    use the Go stdlib ecdh package for crypto.
+  * A new statically compiled, standalone executable, kitten (written in Go)
+    that can be used on all UNIX-like servers for remote control (kitten @),
+    viewing images (kitten icat), manipulating the
+    clipboard (kitten clipboard), etc.
+  * clipboard kitten: Allow copying arbitrary data types to/from
+    the clipboard, not just plain text
+  * Speed up the kitty @ executable by ~10x reducing the time for
+    typical remote control commands from ~50ms to ~5ms
+  * icat kitten: Speed up by using POSIX shared memory when possible
+    to transfer image data to the terminal. Also support common image
+    formats GIF/PNG/JPEG/WEBP/TIFF/BMP out of the box without needing ImageMagick.
+  * Option show_hyperlink_targets to show the target of terminal
+    hyperlinks when hovering over them with the mouse (#5830)
+  * Keyboard protocol: Remove CSI R from the allowed encodings of
+    the F3 key as it conflicts with the Cursor Position Report escape code (#5813)
+  * Allow using the cwd of the original process for launch --cwd (#5672)
+  * Session files: Expand environment variables (#5917)
+  * Pass key events mapped to scroll actions to the program running in
+    the terminal when the terminal is in alternate screen mode (#5839)
+  * Implement edit-in-kitty using the new kitten static executable (#5546, #5630)
+  * Add an option background_tint_gaps to control background image
+    tinting for window gaps (#5596)
+  * A new option undercurl_style to control the rendering of undercurls (#5883)
+  * Bash integration: Fix clone-in-kitty not working on bash >= 5.2 if environment
+    variable values contain newlines or other special characters (#5629)
+  * A new sleep action useful in combine based mappings to make
+    kitty sleep before executing the next action
+  * Wayland GNOME: Workaround for latest mutter release breaking full
+    screen for semi-transparent kitty windows (#5677)
+  * A new option tab_title_max_length to limit the length of tab (#5718)
+  * When drawing the tab bar have the default left and right margins
+    drawn in a color matching the neighboring tab (#5719)
+  * When using the include directive in kitty.conf make the environment
+    variable KITTY_OS available for OS specific config
+  * Wayland: Fix signal handling not working with some GPU drivers (#4636)
+  * Remote control: When matching windows allow using negative id numbers
+    to match recently created windows (#5753)
+  * ZSH Integration: Bind alt+left and alt+right to move by word if not already bound.
+    This mimics the default bindings in Terminal.app (#5793)
+  * When a multi-key sequence does not match any action,
+    send all key events to the child program (#5841)
+  * broadcast kitten: Allow pressing a key to stop echoing of
+    input into the broadcast window itself (#5868)
+  * When reporting unused activity in a window, ignore activity
+    that occurs soon after a window resize (#5881)
+  * Fix using cursor = none not working on text that has reverse video (#5897)
+
+-------------------------------------------------------------------
 Mon Nov  7 10:50:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.5:

@@ -1,19 +1,19 @@
-Index: kitty-0.26.1/setup.py
+Index: kitty-0.27.1/setup.py
 ===================================================================
---- kitty-0.26.1.orig/setup.py
-+++ kitty-0.26.1/setup.py
-@@ -66,6 +66,7 @@ class Options(argparse.Namespace):
+--- kitty-0.27.1.orig/setup.py
++++ kitty-0.27.1/setup.py
+@@ -61,6 +61,7 @@
      verbose: int = 0
      sanitize: bool = False
      prefix: str = './linux-package'
 +    no_docs: bool = False
+     dir_for_static_binaries: str = 'build/static'
      incremental: bool = True
      profile: bool = False
-     libdir_name: str = 'lib'
-@@ -999,12 +1000,13 @@ def compile_python(base_path: str) -> No
+@@ -1085,12 +1086,13 @@
          c(base_path, ddir='', rx=exclude, force=True, optimize=optimize, quiet=1, workers=num_workers)
- 
- 
+
+
 -def create_linux_bundle_gunk(ddir: str, libdir_name: str) -> None:
 -    if not os.path.exists('docs/_build/html'):
 -        make = 'gmake' if is_freebsd else 'make'
@@ -30,16 +30,16 @@ Index: kitty-0.26.1/setup.py
      for (icdir, ext) in {'256x256': 'png', 'scalable': 'svg'}.items():
          icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', icdir, 'apps')
          safe_makedirs(icdir)
-@@ -1377,7 +1379,7 @@ def package(args: Options, bundle_type:
-             path = os.path.join(root, f_)
-             os.chmod(path, 0o755 if should_be_executable(path) else 0o644)
+@@ -1468,7 +1470,7 @@
+     if not for_freeze and not bundle_type.startswith('macos-'):
+         build_static_kittens(args, launcher_dir=launcher_dir)
      if not is_macos:
 -        create_linux_bundle_gunk(ddir, args.libdir_name)
 +        create_linux_bundle_gunk(ddir, args.libdir_name, args.no_docs)
- 
+
      if bundle_type.startswith('macos-'):
-         create_macos_bundle_gunk(ddir)
-@@ -1470,6 +1472,12 @@ def option_parser() -> argparse.Argument
+         create_macos_bundle_gunk(ddir, for_freeze, args)
+@@ -1564,6 +1566,12 @@
          help='Where to create the linux package'
      )
      p.add_argument(
@@ -49,6 +49,6 @@ Index: kitty-0.26.1/setup.py
 +        help='Disable building documentation when creating the linux package'
 +    )
 +    p.add_argument(
-         '--full',
-         dest='incremental',
-         default=Options.incremental,
+         '--dir-for-static-binaries',
+         default=Options.dir_for_static_binaries,
+         help='Where to create the static kitten binary'

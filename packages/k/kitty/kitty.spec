@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.26.5
+Version:        0.27.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/kovidgoyal/kitty
 Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 # PATCH-FIX-OPENSUSE optional-disable-docs.patch -- Optionally disable building documentation files
 Patch0:         optional-disable-docs.patch
 # PATCH-FIX-OPENSUSE fix-librsync-leap.patch -- Fix for Leap, as librsync header is missing the stdio.h header for FILE*
@@ -35,6 +36,7 @@ BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
+BuildRequires:  go >= 1.20
 BuildRequires:  harfbuzz-devel >= 1.5.0
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel
@@ -80,7 +82,7 @@ true-color, OpenType ligatures, mouse protocol, focus tracking,
 bracketed paste and so on, and which can be controlled by scripts.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 1
 
 %if 0%{?suse_version} > 1500
 find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3@' {} +
@@ -113,6 +115,7 @@ python3.9 -B \
 %license LICENSE
 %doc CHANGELOG.rst README.asciidoc
 %{_bindir}/%{name}
+%{_bindir}/kitten
 %{_libdir}/%{name}
 %{_datadir}/applications/%{name}{,-open}.desktop
 %{_datadir}/icons/hicolor/
