@@ -1,7 +1,7 @@
 #
 # spec file for package python-ujson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ujson
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
