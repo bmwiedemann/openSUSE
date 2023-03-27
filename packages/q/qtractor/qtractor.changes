@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:15:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.32:
+  * Downgraded JACK timebase BBT information to nominal PPQN
+    resolution (aka. ticks-per-beat).
+  * Make sure all previously saved connections to identical ALSA
+    MIDI hardware devices are now discriminated and properly
+    restored, even though the target deviceds have the very same
+    name.
+  * Fix drag'n'drop in drum mode MIDI clip editor.
+  * Quick hack to get latency compensation when recording.
+  * Introducing count-in to audio and MIDI metronomes
+  * Corrected MIDI metronome bar/beat note durations.
+  * Give an early reponse upon opening any NSM session.
+
+-------------------------------------------------------------------
 Sat Jan 28 16:19:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.31:
