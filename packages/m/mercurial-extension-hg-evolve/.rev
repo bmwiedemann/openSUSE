@@ -41,4 +41,13 @@
     <comment></comment>
     <requestid>1071835</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5704b4c9091f88820564dd509c58145</srcmd5>
+    <version>11.0.1</version>
+    <time>1679933874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.0.1
+  * compatibility with Mercurial 6.4 (forwarded request 1074698 from develop7)</comment>
+    <requestid>1074699</requestid>
+  </revision>
 </revisionlist>
