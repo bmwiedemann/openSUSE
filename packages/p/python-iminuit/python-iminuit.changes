@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 24 14:45:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.21.2:
+  * Fix CITATION.CFF.
+- Changes from version 2.21.1:
+  * Fix string annotations (gh#scikit-hep/iminuit#849).
+  * Specifiy minimum required numpy version
+    (gh#scikit-hep/iminuit#848).
+- Changes from version 2.21.0:
+  * Fix of matrix_format (gh#scikit-hep/iminuit#843).
+  * Support annotated model parameters
+    (gh#scikit-hep/iminuit#839).
+  * Visualize fit in minuit._repr_html_
+    (gh#scikit-hep/iminuit#838).
+- Disable builds for python 3.11 as python311-numba is missing.
+- Use GCC 12 for openSUSE >= 1550 as GCC 13 (now the default)
+  causes build failures.
+- Update minimum version for (Build)Requires: python-numpy in
+  keeping with upstream.
+- New BuildRequires: python-typing_extensions (for tests).
+
+-------------------------------------------------------------------
 Sat Jan  7 12:22:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.18.0:

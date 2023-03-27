@@ -198,4 +198,12 @@
   * Add Python 3.11, drop 3.6</comment>
     <requestid>1056767</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>48dc31c71ba76b5a02272c50461c18c4</srcmd5>
+    <version>2.21.2</version>
+    <time>1679933744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074484</requestid>
+  </revision>
 </revisionlist>

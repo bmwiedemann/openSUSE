@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-iminuit
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -20,9 +20,17 @@
 # Python2 support dropped since version 1.4.0
 %define skip_python2 1
 %define skip_python36 1
+# No numba for python311
+%define skip_python311 1
+
+# Build fails with GCC 13, use GCC 12.x for openSUSE >= 1550
+%if 0%{?suse_version} >= 1550
+%define gccver 12
+%endif
+
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.18.0
+Version:        2.21.2
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -30,16 +38,16 @@ URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module numpy >= 1.21.0}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.11.3
+Requires:       python-numpy >= 1.21.0
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 # SECTION test requirements
@@ -48,6 +56,7 @@ BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{python_module typing_extensions}
 # Fix unresolved status for Leap 15.x on account of multiple choices for python3-importlib-metadata (python3-importlib-metadata and python3-importlib_metadata)
 BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
@@ -66,6 +75,7 @@ and to get model parameter error estimates from likelihood profile analysis.
 rm -fr extern/pybind11
 
 %build
+export CXX=g++%{?gccver:-%gccver}
 export CFLAGS="%{optflags}"
 export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON"
 %python_build
